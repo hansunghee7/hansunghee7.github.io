@@ -2,7 +2,7 @@
 title: "코드의 한계를 깨는 AI 혁신, Cursor AI"
 date: "Mar 9. 2025"
 category: "매거진: 심플리파이어 인사이트"
-cover_image: "../images/210_코드의 한계를 깨는 AI 혁신, Cursor AI_cover.jpg"
+cover_image: "../images/210_%EC%BD%94%EB%93%9C%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EA%B9%A8%EB%8A%94%20AI%20%ED%98%81%EC%8B%A0%2C%20Cursor%20AI_cover.jpg"
 summary: "스타트업의 발견 | 한 논문이 개발자 팀의 시선을 사로잡았다. 2020년, OpenAI의 스케일링 법칙 논문이었다. 그들은 깨달았다. AI가 프로그래밍의 패러다임을 완전히 바꿀 것이라는 사실을.  GitHub Copilot의 등장과 GPT-4의 초기 버전을 경험하며 이 예감은 확신으로 바뀌었다. 특히 GPT-4의 능력은 예상을 뛰어넘었다. 이제 기존 코드 에디터와는 완전히 다"
 ---
 
@@ -12,7 +12,7 @@ GitHub Copilot의 등장과 GPT-4의 초기 버전을 경험하며 이 예감은
 
 Visual Studio Code를 기반으로 하되, 이를 완전히 재구성한 AI 지원 코딩 도구를 개발하기로 결정했다. 이렇게 Cursor AI가 탄생했다. 단순한 코드 자동 완성을 넘어, 개발자의 의도를 파악하고 전체적인 코드 변경사항을 예측하는 혁신적인 도구였다.
 
-![0x0.jpg](../images/210_코드의 한계를 깨는 AI 혁신, Cursor AI_img_1.jpg)
+![0x0.jpg](../images/210_%EC%BD%94%EB%93%9C%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EA%B9%A8%EB%8A%94%20AI%20%ED%98%81%EC%8B%A0%2C%20Cursor%20AI_img_1.jpg)
 
 우리가 주목해야 할, Cursor AI의 4가지 기술적 혁신 포인트는 다음과 같다.
 
@@ -24,7 +24,7 @@ Visual Studio Code를 기반으로 하되, 이를 완전히 재구성한 AI 지�
 
 **넷째, 코드베이스 인덱싱이다.** Vector database를 활용한 인덱싱으로 대규모 프로젝트에 대한 질문도 가능하다. 복잡한 코드 분석이 한결 쉬워졌다.
 
-![watch-demo.jpg](../images/210_코드의 한계를 깨는 AI 혁신, Cursor AI_img_2.jpg)
+![watch-demo.jpg](../images/210_%EC%BD%94%EB%93%9C%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EA%B9%A8%EB%8A%94%20AI%20%ED%98%81%EC%8B%A0%2C%20Cursor%20AI_img_2.jpg)
 
 커서AI의 혁신적인 아이디어는 빠르게 인정받았다. 출시 1년 만에 개발자의 필수 앱이 되었고, Fortune 1000대 기업 중 많은 기업들이 도입을 결정했다. 현재 연간 반복 수익(ARR)은 약 1억 달러, 기업가치 25억 달러 이상으로 평가받는다.
 

@@ -2,7 +2,7 @@
 title: "Dropbox의 무료에서 유료로의 전환 비법"
 date: "May 26. 2025"
 category: "브런치북: 스타트업의 전략들"
-cover_image: "../images/129_Dropbox의 무료에서 유료로의 전환 비법_cover.jpg"
+cover_image: "../images/129_Dropbox%EC%9D%98%20%EB%AC%B4%EB%A3%8C%EC%97%90%EC%84%9C%20%EC%9C%A0%EB%A3%8C%EB%A1%9C%EC%9D%98%20%EC%A0%84%ED%99%98%20%EB%B9%84%EB%B2%95_cover.jpg"
 summary: "스타트업의 전략들 | 안녕하세요, 스타트업 성공코치 한성희입니다. 오늘은 프리미엄(Freemium) 모델을 운영하는 스타트업이라면 누구나 고민하는 '무료 사용자를 어떻게 유료로 전환시킬 것인가'에 대한 전략을 Dropbox의 성공 사례를 통해 살펴보겠습니다.  프리미엄 모델의 딜레마는 명확합니다. 무료로 너무 많은 가치를 주면 사용자들이 유료로 전환할 이유가 없고, 너무 적게"
 ---
 
@@ -22,7 +22,7 @@ Dropbox의 성공 비결은 '바이럴 루프(Viral Loop)'와 '자연스러운 �
 
 넷째, 바이럴 효과를 극대화했습니다. 친구 초대 시 용량을 늘려주는 시스템은 사용자들이 자발적으로 Dropbox를 홍보하게 만들었습니다. "이거 진짜 편해, 너도 써봐"라는 추천은 어떤 광고보다 효과적이었습니다.
 
-![dropbox-marketing-invitation.jpg](../images/129_Dropbox의 무료에서 유료로의 전환 비법_img_1.jpg)
+![dropbox-marketing-invitation.jpg](../images/129_Dropbox%EC%9D%98%20%EB%AC%B4%EB%A3%8C%EC%97%90%EC%84%9C%20%EC%9C%A0%EB%A3%8C%EB%A1%9C%EC%9D%98%20%EC%A0%84%ED%99%98%20%EB%B9%84%EB%B2%95_img_1.jpg)
 
 이제 이러한 Dropbox의 전략을 스타트업에 적용할 수 있는 실전 방법을 알아보겠습니다:
 
@@ -40,7 +40,7 @@ Dropbox의 성공 비결은 '바이럴 루프(Viral Loop)'와 '자연스러운 �
 
 지속적으로 실험하고 개선하세요 A/B 테스트를 통해 가격, 기능 제한, 결제 유도 메시지, 온보딩 플로우 등 다양한 요소를 실험해 전환율이 가장 높은 방식을 찾아내세요.
 
-![maxresdefault.jpg](../images/129_Dropbox의 무료에서 유료로의 전환 비법_img_2.jpg)
+![maxresdefault.jpg](../images/129_Dropbox%EC%9D%98%20%EB%AC%B4%EB%A3%8C%EC%97%90%EC%84%9C%20%EC%9C%A0%EB%A3%8C%EB%A1%9C%EC%9D%98%20%EC%A0%84%ED%99%98%20%EB%B9%84%EB%B2%95_img_2.jpg)
 
 무료에서 유료로의 전환은 단순히 기능을 제한하거나 가격을 올리는 것으로 해결되지 않습니다. 사용자가 서비스의 핵심 가치를 경험하고, '유료로 전환할 이유'를 명확히 느끼게 하는 것이 핵심입니다.
 

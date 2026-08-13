@@ -2,7 +2,7 @@
 title: "CPO는 어떻게 일을 할까? Part 3. 흐름의 결합"
 date: "Apr 8. 2024"
 category: "매거진: 스타트업 리더의 기술"
-cover_image: "../images/422_CPO는 어떻게 일을 할까 Part1.1 사업목표수립_cover.jpg"
+cover_image: "../images/422_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part1.1%20%EC%82%AC%EC%97%85%EB%AA%A9%ED%91%9C%EC%88%98%EB%A6%BD_cover.jpg"
 summary: "프로덕트 쪽은 일반론이 적용되기 어려운 영역이라고 생각을 했다. seed, 시리즈 A, B, C에 따라 일하는 방식이 다르고, B2C / B2B / 투사이드마켓 / SI 등의 회사의 제공서비스 형태에 따라 생산체계나 철학이 달라지기 때문이다.  그래서 나도 고객향 온라인 프로덕트 중심의 네이버에서 오랜 경험을 쌓고, 배달주문고객과 레스토랑사장님 고객이 둘"
 ---
 

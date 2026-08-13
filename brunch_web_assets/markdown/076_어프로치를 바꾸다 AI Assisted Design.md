@@ -2,7 +2,7 @@
 title: "어프로치를 바꾸다 AI Assisted Design"
 date: "Jul 17. 2025"
 category: "브런치북: UX의 언어들"
-cover_image: "../images/076_어프로치를 바꾸다 AI Assisted Design_cover.jpg"
+cover_image: "../images/076_%EC%96%B4%ED%94%84%EB%A1%9C%EC%B9%98%EB%A5%BC%20%EB%B0%94%EA%BE%B8%EB%8B%A4%20AI%20Assisted%20Design_cover.jpg"
 summary: "UX의 언어들 | '이제 몇 분 만에 수십 개의 디자인 시안을 만들 수 있어요!'  2023년 Midjourney, Stable Diffusion, ChatGPT 등 생성형 AI가 디자인 업계에 등장하면서 들려오는 감탄사입니다. AI-Assisted Design은 단순히 도구를 바꾸는 것을 넘어, 디자인 사고와 프로세스 자체를 혁신하고 있습니다.  AI를 활용한 디자인은 1"
 ---
 
@@ -12,7 +12,7 @@ summary: "UX의 언어들 | '이제 몇 분 만에 수십 개의 디자인 시�
 
 AI를 활용한 디자인은 1960년대 컴퓨터 그래픽스 연구에서 시작되었지만, 진정한 전환점은 2022년 DALL-E 2, Midjourney의 등장이었습니다. 이전까지 AI는 단순한 패턴 생성이나 이미지 필터 정도에 머물렀지만, 생성형 AI는 텍스트 프롬프트만으로 창의적인 비주얼을 만들어내는 혁신을 가져왔습니다.
 
-![1752632167617?e=1758153600&v=beta&t=RgvLHwoWrLxqYss_kGeNVDGhCUVAceJni2TynrwId8I](../images/076_어프로치를 바꾸다 AI Assisted Design_img_1.jpg)
+![1752632167617?e=1758153600&v=beta&t=RgvLHwoWrLxqYss_kGeNVDGhCUVAceJni2TynrwId8I](../images/076_%EC%96%B4%ED%94%84%EB%A1%9C%EC%B9%98%EB%A5%BC%20%EB%B0%94%EA%BE%B8%EB%8B%A4%20AI%20Assisted%20Design_img_1.jpg)
 
 Figma는 AI를 활용한 Auto Layout 개선, 스마트 컴포넌트 생성, 그리고 다양한 AI 플러그인(Magician, Uizard AI 등)을 통해 와이어프레임 자동 생성과 디자인 시스템 최적화를 지원합니다. 텍스트 프롬프트만으로 UI 컴포넌트를 생성하고, 기존 디자인을 분석해 일관성 있는 디자인 패턴을 제안하는 기능도 제공합니다.
 
@@ -20,7 +20,7 @@ Canva는 Magic Design 기능으로 몇 장의 사진과 간단한 텍스트만�
 
 AI-Assisted Design의 가장 큰 장점은 아이디어 발상 속도의 혁신입니다. 과거 하루 종일 걸리던 브레인스토밍을 몇 분 만에 끝낼 수 있고, 수십 개의 시안을 빠르게 생성해 비교 검토할 수 있습니다. 반복적인 작업의 자동화로 디자이너는 더 창의적이고 전략적인 사고에 집중할 수 있으며, 디자인 전문 지식이 부족한 사람도 전문가 수준의 결과물을 만들어낼 수 있습니다.
 
-![1752632288673?e=1758153600&v=beta&t=XGBRVOknNl5f0dUnNCnd7f-s0At0FHv6VIaXfBeGJ4s](../images/076_어프로치를 바꾸다 AI Assisted Design_img_2.jpg)
+![1752632288673?e=1758153600&v=beta&t=XGBRVOknNl5f0dUnNCnd7f-s0At0FHv6VIaXfBeGJ4s](../images/076_%EC%96%B4%ED%94%84%EB%A1%9C%EC%B9%98%EB%A5%BC%20%EB%B0%94%EA%BE%B8%EB%8B%A4%20AI%20Assisted%20Design_img_2.jpg)
 
 실무에서는 프로젝트 초기 컨셉 아이디어 생성과 무드보드 제작, 와이어프레임과 프로토타입 빠른 생성에 AI를 활용할 수 있습니다. 디자인 개발 단계에서는 로고, 아이콘, 일러스트레이션 제작과 색상 팔레트 추천에 AI를 사용하고, 마무리 단계에서는 이미지 리터칭과 다양한 포맷 변환을 AI로 자동화할 수 있습니다.
 

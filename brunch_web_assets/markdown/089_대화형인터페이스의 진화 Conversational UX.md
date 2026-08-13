@@ -2,7 +2,7 @@
 title: "대화형인터페이스의 진화 Conversational UX"
 date: "Jul 3. 2025"
 category: "브런치북: UX의 언어들"
-cover_image: "../images/089_대화형인터페이스의 진화 Conversational UX_cover.jpg"
+cover_image: "../images/089_%EB%8C%80%ED%99%94%ED%98%95%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%EC%9D%98%20%EC%A7%84%ED%99%94%20Conversational%20UX_cover.jpg"
 summary: "UX의 언어들 | '안녕하세요! 무엇을 도와드릴까요?'  이제 우리는 기계가 아닌 사람과 대화하는 것처럼 자연스럽게 AI와 소통합니다. 단순한 챗봇을 넘어 진짜 대화처럼 느껴지는 'Conversational UX'의 세계로 들어가 보겠습니다.  1966년, MIT의 조셉 바이젠바움이 만든 'ELIZA'는 컴퓨터가 사람과 자연스럽게 대화할 수 있을까라는 호기심에서 시작됐습니다"
 ---
 
@@ -12,17 +12,17 @@ summary: "UX의 언어들 | '안녕하세요! 무엇을 도와드릴까요?'  �
 
 1966년, MIT의 조셉 바이젠바움이 만든 'ELIZA'는 컴퓨터가 사람과 자연스럽게 대화할 수 있을까라는 호기심에서 시작됐습니다. ELIZA는 심리치료사를 흉내 내며 사용자의 말을 되묻는 방식으로, 당시로선 혁신적인 '대화형 인터페이스'였습니다. 오늘날 ChatGPT와 같은 초거대 언어모델의 등장으로 대화형 UX는 사람과 AI가 '진짜 대화'하듯 상호작용하는 시대를 열고 있습니다.
 
-![eliza_mj_illustration_retro_computer.png](../images/089_대화형인터페이스의 진화 Conversational UX_img_1.jpg)
+![eliza_mj_illustration_retro_computer.png](../images/089_%EB%8C%80%ED%99%94%ED%98%95%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%EC%9D%98%20%EC%A7%84%ED%99%94%20Conversational%20UX_img_1.jpg)
 
 마이크로소프트는 Bing, Teams, Copilot 등에 ChatGPT 기반의 대화형 AI를 도입해, 사용자가 정보 탐색, 문서 작성, 일정 관리 등을 자연어로 처리할 수 있게 했습니다. 구글은 Dialogflow와 Gemini 기반의 대화형 에이전트를 통해 텍스트, 음성, 이미지 등 멀티모달 대화를 지원합니다. 노션, 슬랙, 줌 등 협업툴들도 대화형 에이전트가 추천, 자동화, 문서 생성 등 복합적 업무를 지원하도록 진화하고 있습니다.
 
-![google_cloud_net_libraries_overview.png](../images/089_대화형인터페이스의 진화 Conversational UX_img_2.jpg)
+![google_cloud_net_libraries_overview.png](../images/089_%EB%8C%80%ED%99%94%ED%98%95%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%EC%9D%98%20%EC%A7%84%ED%99%94%20Conversational%20UX_img_2.jpg)
 
 대화형 UX의 이점은 명확합니다. 사용자는 명령어 대신 일상 언어로 서비스와 소통할 수 있어 진입장벽이 낮아지고, 24시간 맞춤형 응답과 빠른 문제 해결로 고객 만족도가 크게 향상됩니다. 반복적인 업무를 AI가 처리해 사람은 더 창의적인 일에 집중할 수 있으며, 디지털 소외계층도 자연어로 쉽게 접근할 수 있습니다.
 
 실제 업무에서는 다양한 분야에서 활용되고 있습니다. 현대카드는 챗봇을 통해 카드 결제, 한도 조회 등을 자연어로 처리하고, 서울시 120 다산콜센터는 민원 분류와 복지 안내를 대화형으로 응답합니다. 마이크로소프트 Copilot, 노션 AI 등은 문서 요약, 일정 관리 등을 대화형으로 지원합니다.
 
-![1_0SvVhGmHLpBmojkdL2nwQw.png](../images/089_대화형인터페이스의 진화 Conversational UX_img_3.jpg)
+![1_0SvVhGmHLpBmojkdL2nwQw.png](../images/089_%EB%8C%80%ED%99%94%ED%98%95%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%EC%9D%98%20%EC%A7%84%ED%99%94%20Conversational%20UX_img_3.jpg)
 
 잘 설계된 대화형 UX를 위해서는 몇 가지 원칙을 지켜야 합니다. 사용자의 맥락, 의도, 대화 이력을 파악해 연속적이고 자연스러운 흐름을 만들어야 하며, 텍스트뿐 아니라 버튼, 이미지, 음성 등 다양한 방식을 조합해야 합니다. 응답 지연이나 인식 실패 시 즉각적인 피드백을 제공하고, 한 번에 너무 많은 정보를 전달하지 말고 단계적으로 안내하는 것이 좋습니다. 민감한 정보 처리 시 보안 조치를 필수로 적용하고, 실제 사용자 테스트를 통해 지속적으로 개선해야 합니다.
 

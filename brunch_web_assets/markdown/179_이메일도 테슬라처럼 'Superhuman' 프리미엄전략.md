@@ -2,7 +2,7 @@
 title: "이메일도 테슬라처럼 'Superhuman' 프리미엄전략"
 date: "Apr 7. 2025"
 category: "브런치북: 스타트업의 전략들"
-cover_image: "../images/179_이메일도 테슬라처럼 'Superhuman' 프리미엄전략_cover.jpg"
+cover_image: "../images/179_%EC%9D%B4%EB%A9%94%EC%9D%BC%EB%8F%84%20%ED%85%8C%EC%8A%AC%EB%9D%BC%EC%B2%98%EB%9F%BC%20%27Superhuman%27%20%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%EC%A0%84%EB%9E%B5_cover.jpg"
 summary: "스타트업의 전략들 | 오늘은 이메일이라는 오래된 시장에 프리미엄 솔루션으로 성공적으로 진입한 Superhuman의 전략을 분석해보겠습니다.  '누가 이메일에 월 30달러를 지불할까요?'  이 의문에 대한 답을 찾아낸 Superhuman은 2014년 Rahul Vohra가 설립한 이메일 클라이언트로, 기존 무료 서비스에 익숙한 시장에 과감히 프리미엄 전략으로 진입해 성공을 거두었"
 ---
 
@@ -12,7 +12,7 @@ summary: "스타트업의 전략들 | 오늘은 이메일이라는 오래된 시
 
 이 의문에 대한 답을 찾아낸 Superhuman은 2014년 Rahul Vohra가 설립한 이메일 클라이언트로, 기존 무료 서비스에 익숙한 시장에 과감히 프리미엄 전략으로 진입해 성공을 거두었습니다.
 
-![Z1tPMZbqstJ98cEN_66ccbc7849fdfe0670b60e8a_IMG_6268-superhumancompressed.jpg](../images/179_이메일도 테슬라처럼 'Superhuman' 프리미엄전략_img_1.jpg)
+![Z1tPMZbqstJ98cEN_66ccbc7849fdfe0670b60e8a_IMG_6268-superhumancompressed.jpg](../images/179_%EC%9D%B4%EB%A9%94%EC%9D%BC%EB%8F%84%20%ED%85%8C%EC%8A%AC%EB%9D%BC%EC%B2%98%EB%9F%BC%20%27Superhuman%27%20%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%EC%A0%84%EB%9E%B5_img_1.jpg)
 
 Superhuman의 시장 진출 전략은 다음과 같은 핵심 요소로 구성되었습니다:
 
@@ -30,7 +30,7 @@ Superhuman의 시장 진출 전략은 다음과 같은 핵심 요소로 구성�
 
 일곱째, AI 기술을 활용한 지속적 혁신입니다. Superhuman은 AI를 활용해 이메일 요약, 답변 초안 작성 등 혁신적인 기능을 지속적으로 추가했습니다. 이를 통해 사용자들이 매주 최대 4시간을 절약할 수 있게 하며 subscription 가치를 강화했습니다.
 
-![superhuman-email-image8.png](../images/179_이메일도 테슬라처럼 'Superhuman' 프리미엄전략_img_2.jpg)
+![superhuman-email-image8.png](../images/179_%EC%9D%B4%EB%A9%94%EC%9D%BC%EB%8F%84%20%ED%85%8C%EC%8A%AC%EB%9D%BC%EC%B2%98%EB%9F%BC%20%27Superhuman%27%20%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%EC%A0%84%EB%9E%B5_img_2.jpg)
 
 이러한 전략적 시장 진출 노력의 결과, Superhuman은 1억 달러 이상의 투자금을 유치하고 실리콘밸리에서 큰 성공을 거두게 되었습니다.
 
@@ -50,6 +50,6 @@ Superhuman의 시장 진출 전략에서 스타트업들이 배울 수 있는 �
 
 지속적인 기술 혁신: AI와 같은 첨단 기술을 활용해 지속적인 가치 향상을 추구하라
 
-![kVLfqsm3HAwPB0Y6h08ymuwuE.jpg](../images/179_이메일도 테슬라처럼 'Superhuman' 프리미엄전략_img_3.jpg)
+![kVLfqsm3HAwPB0Y6h08ymuwuE.jpg](../images/179_%EC%9D%B4%EB%A9%94%EC%9D%BC%EB%8F%84%20%ED%85%8C%EC%8A%AC%EB%9D%BC%EC%B2%98%EB%9F%BC%20%27Superhuman%27%20%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%EC%A0%84%EB%9E%B5_img_3.jpg)
 
 Superhuman의 사례는 기존 시장에서도 명확한 타겟팅과 차별화된 가치 제안을 통해 성공적으로 진입할 수 있음을 보여줍니다. 여러분의 스타트업도 이러한 전략을 응용하여 효과적인 시장 진출 계획을 수립해보시기 바랍니다.

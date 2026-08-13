@@ -2,7 +2,7 @@
 title: "Perplexity #3 검색 시스템의 구조 설계"
 date: "May 4. 2025"
 category: "매거진: 심플리파이어 인사이트"
-cover_image: "../images/151_Perplexity 3 검색 시스템의 구조 설계_cover.jpg"
+cover_image: "../images/151_Perplexity%203%20%EA%B2%80%EC%83%89%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%EA%B5%AC%EC%A1%B0%20%EC%84%A4%EA%B3%84_cover.jpg"
 summary: "혁신의 기술 | 지금까지 Perplexity AI의 배경과 철학, 전체 아키텍처, 그리고 BM25와 벡터 검색의 하이브리드 설계에 대해 살펴보았습니다. 3부에서는 Perplexity의 핵심 기술인 RAG시스템을 완전히 해부해보겠습니다.  RAG는 Retrieval-Augmented Generation의 약자로, 방대한 외부 지식 베이스에서 정보를 검색(Retrieval)해"
 ---
 
@@ -12,7 +12,7 @@ RAG는 Retrieval-Augmented Generation의 약자로, 방대한 외부 지식 베�
 
 퍼플렉시티는 RAG를 통해 방대한 인터넷 자료들로부터 실시간으로 지식을 탐색하고, 이를 바탕으로 사용자 질의에 대한 정교한 답변을 생성해냅니다. 마치 엄청난 지식을 갖춘 전문가와 대화를 나누는 듯한 경험을 제공하죠.
 
-![2._Solution_RAG.max-1900x1900.png](../images/151_Perplexity 3 검색 시스템의 구조 설계_img_1.jpg)
+![2._Solution_RAG.max-1900x1900.png](../images/151_Perplexity%203%20%EA%B2%80%EC%83%89%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%EA%B5%AC%EC%A1%B0%20%EC%84%A4%EA%B3%84_img_1.jpg)
 
 그럼 퍼플렉시티 RAG 파이프라인의 핵심 컴포넌트들을 하나씩 살펴보겠습니다.
 
@@ -44,7 +44,7 @@ Chunk들을 잘 검색하기 위해선 벡터 표현(embedding)으로 변환해 
 
 퍼플렉시티의 RAG는 단순한 QA를 넘어, 대화의 흐름을 이어가는 인터페이스로 구현됩니다. 이는 FastAPI 등의 프레임워크를 통해 구현되며, 웹과 모바일 등 다양한 클라이언트에서 활용 가능하도록 설계되어 있습니다.
 
-![1_FNAKdB15dFRLES1aEI5NZA.png](../images/151_Perplexity 3 검색 시스템의 구조 설계_img_2.jpg)
+![1_FNAKdB15dFRLES1aEI5NZA.png](../images/151_Perplexity%203%20%EA%B2%80%EC%83%89%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%EA%B5%AC%EC%A1%B0%20%EC%84%A4%EA%B3%84_img_2.jpg)
 
 이처럼 퍼플렉시티의 RAG 시스템은 방대한 지식을 효과적으로 검색하고, 이를 토대로 고품질의 응답을 생성하는 정교한 파이프라인이라 할 수 있습니다. 검색 기술, 언어 모델, 프롬프트 엔지니어링 등이 절묘하게 결합된 결과물이죠.
 

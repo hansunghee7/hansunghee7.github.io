@@ -2,7 +2,7 @@
 title: "Perplexity #1 검색의 한계를 넘어서"
 date: "Apr 20. 2025"
 category: "매거진: 심플리파이어 인사이트"
-cover_image: "../images/167_Perplexity 1 검색의 한계를 넘어서_cover.jpg"
+cover_image: "../images/167_Perplexity%201%20%EA%B2%80%EC%83%89%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EB%84%98%EC%96%B4%EC%84%9C_cover.jpg"
 summary: "혁신의 기술 | 안녕하세요, 스타트업 성공코치 한성희입니다. 오늘부터 5주간 '검색의 재정의'를 이끌고 있는 Perplexity AI의 기술을 심층 분석하는 시리즈를 시작합니다.   기존 검색 엔진의 구조적 한계  구글이 검색 시장을 장악한 지 20년이 넘었습니다. 그동안 PageRank 알고리즘과 수많은 개선에도 불구하고, 전통적인 검색 엔진은 몇 가지 근본적인 한계에"
 ---
 
@@ -20,7 +20,7 @@ summary: "혁신의 기술 | 안녕하세요, 스타트업 성공코치 한성�
 
 셋째, 정보 과부하의 문제입니다. 검색 결과로 수백만 개의 링크가 제공되지만, 정작 사용자는 첫 페이지의 몇 개 링크만 확인합니다. 정보의 홍수 속에서 사용자는 여전히 갈증을 느끼고 있습니다.
 
-![](../images/167_Perplexity 1 검색의 한계를 넘어서_img_1.jpg)
+![](../images/167_Perplexity%201%20%EA%B2%80%EC%83%89%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EB%84%98%EC%96%B4%EC%84%9C_img_1.jpg)
 
 ### **생성형 AI 시대의 새로운 정보 탐색 기준**
 
@@ -32,7 +32,7 @@ ChatGPT의 등장으로 사람들은 정보를 얻는 새로운 방식을 경험
 
 이러한 상황에서 등장한 것이 바로 Perplexity AI입니다. Perplexity는 검색 엔진의 최신 정보 접근성과 생성형 AI의 자연어 이해 및 답변 생성 능력을 결합해 "Real-time, trustworthy, cited answers"라는 비전을 실현하고자 합니다.
 
-![](../images/167_Perplexity 1 검색의 한계를 넘어서_img_2.jpg)
+![](../images/167_Perplexity%201%20%EA%B2%80%EC%83%89%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EB%84%98%EC%96%B4%EC%84%9C_img_2.jpg)
 
 ### **Perplexity의 탄생 배경과 철학**
 
@@ -50,7 +50,7 @@ Perplexity의 철학은 다음 세 가지로 요약됩니다:
 
 이 철학을 기술적으로 구현하기 위해 Perplexity는 RAG(Retrieval-Augmented Generation) 아키텍처를 채택했습니다. 이는 검색(Retrieval)과 생성(Generation)을 결합한 접근법으로, 웹에서 실시간으로 정보를 검색하고 이를 바탕으로 AI가 응답을 생성하는 방식입니다.
 
-![](../images/167_Perplexity 1 검색의 한계를 넘어서_img_3.jpg)
+![](../images/167_Perplexity%201%20%EA%B2%80%EC%83%89%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EB%84%98%EC%96%B4%EC%84%9C_img_3.jpg)
 
 ### **RAG: 검색과 생성의 결합**
 
@@ -86,7 +86,7 @@ Perplexity는 기술적 혁신뿐만 아니라 사용자 경험(UX) 측면에서
 
 이러한 대화형 인터페이스는 검색을 '질의응답'에서 '대화'로 발전시켰습니다. 사용자는 마치 지식이 풍부한 전문가와 대화하는 듯한 경험을 하게 됩니다.
 
-![](../images/167_Perplexity 1 검색의 한계를 넘어서_img_4.jpg)
+![](../images/167_Perplexity%201%20%EA%B2%80%EC%83%89%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EB%84%98%EC%96%B4%EC%84%9C_img_4.jpg)
 
 ### **실제 비즈니스 적용 가능성**
 

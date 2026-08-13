@@ -2,49 +2,49 @@
 title: "SNS별 인기게시물 Top 3"
 date: "Feb 14. 2024"
 category: "매거진: 심플리파이어 라이프"
-cover_image: "../images/473_잉크드인대 기획학과 2화 '기획... 그런 사랑'_cover.jpg"
+cover_image: "../images/473_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%202%ED%99%94%20%27%EA%B8%B0%ED%9A%8D...%20%EA%B7%B8%EB%9F%B0%20%EC%82%AC%EB%9E%91%27_cover.jpg"
 summary: "선배분들을 벤치마킹을 해서 멀티퍼블리싱을 하고 있는데, 최근 테스트 채널까지 늘면서 육체적 피로도가 높아졌습니다. 그래서 몇 개 정리를 할까 둘러보다보니, 열손가락 깨물어 안아픈 손가락이 없다고 멈출 수 있는 SNS가 없네요. ㅜ.ㅜ (누구 좋은 방법을 아시는 분 있으면 조언 부탁드립니다.)  오히려 둘러보다보니 각 SNS 별 인기 게시물들이 각기 다른 점"
 ---
 
-![ep2_4_00.jpg](../images/473_잉크드인대 기획학과 2화 '기획... 그런 사랑'_img_1.jpg)
+![ep2_4_00.jpg](../images/473_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%202%ED%99%94%20%27%EA%B8%B0%ED%9A%8D...%20%EA%B7%B8%EB%9F%B0%20%EC%82%AC%EB%9E%91%27_img_1.jpg)
 
-![ep2_4_01.jpg](../images/473_잉크드인대 기획학과 2화 '기획... 그런 사랑'_img_10.jpg)
+![ep2_4_01.jpg](../images/473_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%202%ED%99%94%20%27%EA%B8%B0%ED%9A%8D...%20%EA%B7%B8%EB%9F%B0%20%EC%82%AC%EB%9E%91%27_img_10.jpg)
 
-![ep2_4_2.jpg](../images/473_잉크드인대 기획학과 2화 '기획... 그런 사랑'_img_11.jpg)
+![ep2_4_2.jpg](../images/473_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%202%ED%99%94%20%27%EA%B8%B0%ED%9A%8D...%20%EA%B7%B8%EB%9F%B0%20%EC%82%AC%EB%9E%91%27_img_11.jpg)
 
-![ep2_4_3.jpg](../images/473_잉크드인대 기획학과 2화 '기획... 그런 사랑'_img_12.jpg)
+![ep2_4_3.jpg](../images/473_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%202%ED%99%94%20%27%EA%B8%B0%ED%9A%8D...%20%EA%B7%B8%EB%9F%B0%20%EC%82%AC%EB%9E%91%27_img_12.jpg)
 
-![ep2_4_4.jpg](../images/473_잉크드인대 기획학과 2화 '기획... 그런 사랑'_img_13.jpg)
+![ep2_4_4.jpg](../images/473_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%202%ED%99%94%20%27%EA%B8%B0%ED%9A%8D...%20%EA%B7%B8%EB%9F%B0%20%EC%82%AC%EB%9E%91%27_img_13.jpg)
 
-![ep2_4_5.jpg](../images/473_잉크드인대 기획학과 2화 '기획... 그런 사랑'_img_14.jpg)
+![ep2_4_5.jpg](../images/473_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%202%ED%99%94%20%27%EA%B8%B0%ED%9A%8D...%20%EA%B7%B8%EB%9F%B0%20%EC%82%AC%EB%9E%91%27_img_14.jpg)
 
-![ep2_4_6.jpg](../images/473_잉크드인대 기획학과 2화 '기획... 그런 사랑'_img_15.jpg)
+![ep2_4_6.jpg](../images/473_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%202%ED%99%94%20%27%EA%B8%B0%ED%9A%8D...%20%EA%B7%B8%EB%9F%B0%20%EC%82%AC%EB%9E%91%27_img_15.jpg)
 
-![ep2_4_7.jpg](../images/473_잉크드인대 기획학과 2화 '기획... 그런 사랑'_img_16.jpg)
+![ep2_4_7.jpg](../images/473_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%202%ED%99%94%20%27%EA%B8%B0%ED%9A%8D...%20%EA%B7%B8%EB%9F%B0%20%EC%82%AC%EB%9E%91%27_img_16.jpg)
 
-![ep2_4_8.jpg](../images/473_잉크드인대 기획학과 2화 '기획... 그런 사랑'_img_17.jpg)
+![ep2_4_8.jpg](../images/473_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%202%ED%99%94%20%27%EA%B8%B0%ED%9A%8D...%20%EA%B7%B8%EB%9F%B0%20%EC%82%AC%EB%9E%91%27_img_17.jpg)
 
-![ep2_4_9.jpg](../images/473_잉크드인대 기획학과 2화 '기획... 그런 사랑'_img_18.jpg)
+![ep2_4_9.jpg](../images/473_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%202%ED%99%94%20%27%EA%B8%B0%ED%9A%8D...%20%EA%B7%B8%EB%9F%B0%20%EC%82%AC%EB%9E%91%27_img_18.jpg)
 
-![ep2_4_10.jpg](../images/473_잉크드인대 기획학과 2화 '기획... 그런 사랑'_img_19.jpg)
+![ep2_4_10.jpg](../images/473_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%202%ED%99%94%20%27%EA%B8%B0%ED%9A%8D...%20%EA%B7%B8%EB%9F%B0%20%EC%82%AC%EB%9E%91%27_img_19.jpg)
 
-![ep2_4_11.jpg](../images/473_잉크드인대 기획학과 2화 '기획... 그런 사랑'_img_2.jpg)
+![ep2_4_11.jpg](../images/473_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%202%ED%99%94%20%27%EA%B8%B0%ED%9A%8D...%20%EA%B7%B8%EB%9F%B0%20%EC%82%AC%EB%9E%91%27_img_2.jpg)
 
-![ep2_4_12.jpg](../images/473_잉크드인대 기획학과 2화 '기획... 그런 사랑'_img_20.jpg)
+![ep2_4_12.jpg](../images/473_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%202%ED%99%94%20%27%EA%B8%B0%ED%9A%8D...%20%EA%B7%B8%EB%9F%B0%20%EC%82%AC%EB%9E%91%27_img_20.jpg)
 
-![ep2_4_13.jpg](../images/473_잉크드인대 기획학과 2화 '기획... 그런 사랑'_img_3.jpg)
+![ep2_4_13.jpg](../images/473_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%202%ED%99%94%20%27%EA%B8%B0%ED%9A%8D...%20%EA%B7%B8%EB%9F%B0%20%EC%82%AC%EB%9E%91%27_img_3.jpg)
 
-![ep2_4_14.jpg](../images/473_잉크드인대 기획학과 2화 '기획... 그런 사랑'_img_4.jpg)
+![ep2_4_14.jpg](../images/473_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%202%ED%99%94%20%27%EA%B8%B0%ED%9A%8D...%20%EA%B7%B8%EB%9F%B0%20%EC%82%AC%EB%9E%91%27_img_4.jpg)
 
-![ep2_4_15.jpg](../images/473_잉크드인대 기획학과 2화 '기획... 그런 사랑'_img_5.jpg)
+![ep2_4_15.jpg](../images/473_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%202%ED%99%94%20%27%EA%B8%B0%ED%9A%8D...%20%EA%B7%B8%EB%9F%B0%20%EC%82%AC%EB%9E%91%27_img_5.jpg)
 
-![ep2_4_16.jpg](../images/473_잉크드인대 기획학과 2화 '기획... 그런 사랑'_img_6.jpg)
+![ep2_4_16.jpg](../images/473_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%202%ED%99%94%20%27%EA%B8%B0%ED%9A%8D...%20%EA%B7%B8%EB%9F%B0%20%EC%82%AC%EB%9E%91%27_img_6.jpg)
 
-![ep2_4_17.jpg](../images/473_잉크드인대 기획학과 2화 '기획... 그런 사랑'_img_7.jpg)
+![ep2_4_17.jpg](../images/473_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%202%ED%99%94%20%27%EA%B8%B0%ED%9A%8D...%20%EA%B7%B8%EB%9F%B0%20%EC%82%AC%EB%9E%91%27_img_7.jpg)
 
-![ep2_4_18.jpg](../images/473_잉크드인대 기획학과 2화 '기획... 그런 사랑'_img_8.jpg)
+![ep2_4_18.jpg](../images/473_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%202%ED%99%94%20%27%EA%B8%B0%ED%9A%8D...%20%EA%B7%B8%EB%9F%B0%20%EC%82%AC%EB%9E%91%27_img_8.jpg)
 
-![ep2_4_19.jpg](../images/473_잉크드인대 기획학과 2화 '기획... 그런 사랑'_img_9.jpg)
+![ep2_4_19.jpg](../images/473_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%202%ED%99%94%20%27%EA%B8%B0%ED%9A%8D...%20%EA%B7%B8%EB%9F%B0%20%EC%82%AC%EB%9E%91%27_img_9.jpg)
 
 [**기획 = 아이디어? 사랑?**
 

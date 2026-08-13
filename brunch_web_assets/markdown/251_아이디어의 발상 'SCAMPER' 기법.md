@@ -2,7 +2,7 @@
 title: "아이디어의 발상 'SCAMPER' 기법"
 date: "Jan 28. 2025"
 category: "브런치북: 기획자의 프레임웍"
-cover_image: "../images/251_아이디어의 발상 'SCAMPER' 기법_cover.jpg"
+cover_image: "../images/251_%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%EC%9D%98%20%EB%B0%9C%EC%83%81%20%27SCAMPER%27%20%EA%B8%B0%EB%B2%95_cover.jpg"
 summary: "기획자의 프레임워크 | 기획자의 가장 핵심적인 업무는 문제를 효과적으로 해결하는 것이다. 그 해결 아이디어를 그냥 맨땅에 헤딩하며 찾기 보다는 프레임을 활용하면 보다 창의적이고 효과적으로 찾을 수 있다. 내가 광고를 전공하면서 배웠던 프레임웍으로 남들과 다른 접근을 하는데 큰 도움을 받았기에 소개해보고자 한다.  창의적인 아이디어 발상을 위해 SCAMPER 기법만큼 강력한 도구도"
 ---
 
@@ -10,7 +10,7 @@ summary: "기획자의 프레임워크 | 기획자의 가장 핵심적인 업무
 
 창의적인 아이디어 발상을 위해 SCAMPER 기법만큼 강력한 도구도 드물다. 1950년대 광고계 거장 알렉스 오스본이 개발한 체크리스트에서 출발해 1971년 지금의 모습으로 정립된 이 기법은, 7가지 키워드로 사고의 영역을 체계화하여 구체적인 아이디어 도출을 이끌어낸다.
 
-![pjxkl6_Osborn-on-Phone-Photo-copy.jpg](../images/251_아이디어의 발상 'SCAMPER' 기법_img_1.jpg)
+![pjxkl6_Osborn-on-Phone-Photo-copy.jpg](../images/251_%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%EC%9D%98%20%EB%B0%9C%EC%83%81%20%27SCAMPER%27%20%EA%B8%B0%EB%B2%95_img_1.jpg)
 
 SCAMPER의 7가지 키워드를 하나씩 살펴보자.
 
@@ -30,7 +30,7 @@ SCAMPER의 7가지 키워드를 하나씩 살펴보자.
 
 **Rearrange(재배치)**는 구성이나 순서를 바꾸는 것이다. 화장품 용기 바닥에 병뚜껑을 붙인다거나, 자동차 운전석 위치를 바꾼다거나 하는 식이다.
 
-![scamper-221031140804-1b4ffdc9-thumbnail.jpg](../images/251_아이디어의 발상 'SCAMPER' 기법_img_2.jpg)
+![scamper-221031140804-1b4ffdc9-thumbnail.jpg](../images/251_%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%EC%9D%98%20%EB%B0%9C%EC%83%81%20%27SCAMPER%27%20%EA%B8%B0%EB%B2%95_img_2.jpg)
 
 IT 기업들은 이 SCAMPER 기법으로 제품과 서비스를 혁신한다. 애플은 'Put to other uses' 관점에서 MP3 플레이어를 디지털 라이프스타일 아이콘 아이팟으로 탈바꿈시켰다. 아마존은 'Substitute'로 종이책을 전자책 킨들로 대체했다. 넷플릭스는 비즈니스 모델 자체를 'Adapt'해 DVD 대여에서 스트리밍으로 전환했고, 구글은 메일 용량을 획기적으로 'Magnify'해 지메일로 승부수를 띄웠다.
 

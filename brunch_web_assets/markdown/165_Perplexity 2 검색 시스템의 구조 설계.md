@@ -2,7 +2,7 @@
 title: "Perplexity #2 검색 시스템의 구조 설계"
 date: "Apr 20. 2025"
 category: "매거진: 심플리파이어 인사이트"
-cover_image: "../images/165_Perplexity 2 검색 시스템의 구조 설계_cover.jpg"
+cover_image: "../images/165_Perplexity%202%20%EA%B2%80%EC%83%89%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%EA%B5%AC%EC%A1%B0%20%EC%84%A4%EA%B3%84_cover.jpg"
 summary: "혁신의 기술 | 안녕하세요, 스타트업 성공코치 한성희입니다. 지난 시간에는 Perplexity AI의 핵심 기술 아키텍처를 살펴보았습니다. 오늘은 그 중에서도 검색 시스템의 구조, 특히 BM25와 벡터 검색을 결합한 하이브리드 설계에 대해 실제 구현 방법을 중심으로 자세히 알아보겠습니다.   하이브리드 검색의 필요성  Perplexity가 기존 검색 엔진과 차별화되는 가장"
 ---
 
@@ -18,7 +18,7 @@ Perplexity가 기존 검색 엔진과 차별화되는 가장 큰 특징 중 하�
 
 예를 들어, "2024년 서울 인구는?"이라는 질문은 키워드 매칭이 효과적이지만, "도시 생활의 스트레스를 줄이는 방법은?"과 같은 개념적 질문은 의미 기반 검색이 더 적합합니다. Perplexity는 이런 상황을 인식하고 쿼리 특성에 따라 적절한 검색 방식을 적용하거나, 두 방식을 결합하여 최적의 결과를 제공합니다.
 
-![1_ld0zOBtRHnsDaycUQh2PLg.png](../images/165_Perplexity 2 검색 시스템의 구조 설계_img_1.jpg)
+![1_ld0zOBtRHnsDaycUQh2PLg.png](../images/165_Perplexity%202%20%EA%B2%80%EC%83%89%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%EA%B5%AC%EC%A1%B0%20%EC%84%A4%EA%B3%84_img_1.jpg)
 
 ### **쿼리 분석과 라우팅 시스템**
 
@@ -40,7 +40,7 @@ Perplexity와 같은 시스템에서 BM25 검색을 구현할 때는 Elasticsear
 
 대규모 문서 컬렉션에서 검색 성능을 최적화하기 위해서는 필터 캐싱, 적절한 샤딩 전략, 스코어 계산 최적화 등의 기술을 활용할 수 있습니다. 이러한 최적화는 사용자에게 빠른 응답 시간을 제공하는 데 중요합니다.
 
-![F9yayQGXAAA__wA.jpg](../images/165_Perplexity 2 검색 시스템의 구조 설계_img_2.jpg)
+![F9yayQGXAAA__wA.jpg](../images/165_Perplexity%202%20%EA%B2%80%EC%83%89%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%EA%B5%AC%EC%A1%B0%20%EC%84%A4%EA%B3%84_img_2.jpg)
 
 ### **벡터 검색 시스템 구축**
 
@@ -56,7 +56,7 @@ Perplexity와 같은 시스템에서 BM25 검색을 구현할 때는 Elasticsear
 
 벡터 검색 구현 시, 임베딩 생성과 저장은 배치 처리로 최적화하고, 검색은 비동기 처리로 응답 시간을 최소화하는 것이 중요합니다. 또한 임베딩 캐싱을 통해 동일 쿼리에 대한 중복 계산을 피하고, 정기적인 인덱스 업데이트로 최신 정보를 반영해야 합니다.
 
-![1.png](../images/165_Perplexity 2 검색 시스템의 구조 설계_img_3.jpg)
+![1.png](../images/165_Perplexity%202%20%EA%B2%80%EC%83%89%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%EA%B5%AC%EC%A1%B0%20%EC%84%A4%EA%B3%84_img_3.jpg)
 
 ### **Reranker를 통한 결과 최적화**
 
@@ -72,7 +72,7 @@ BM25와 벡터 검색 결과를 통합하는 방법으로는 가중 평균이나
 
 Reranking 과정은 계산 비용이 높기 때문에, 실제 서비스에서는 결과 캐싱, 병렬 처리, 계산량 감소 기법(early stopping 등) 등을 통해 성능을 최적화하는 것이 중요합니다.
 
-![906c3c0f8fe637840f134dbf966839ef89ac7242-3443x1641.png](../images/165_Perplexity 2 검색 시스템의 구조 설계_img_4.jpg)
+![906c3c0f8fe637840f134dbf966839ef89ac7242-3443x1641.png](../images/165_Perplexity%202%20%EA%B2%80%EC%83%89%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%EA%B5%AC%EC%A1%B0%20%EC%84%A4%EA%B3%84_img_4.jpg)
 
 ### **쿼리 라우터 설계와 통합 시스템**
 
@@ -86,7 +86,7 @@ FastAPI와 같은 현대적인 웹 프레임워크를 활용하면 비동기 처
 
 검색 성능을 지속적으로 모니터링하고 개선하기 위해서는 관련성 평가, 사용자 피드백 수집, A/B 테스트 등의 프로세스를 구축해야 합니다. 이를 통해 가중치, 임계값, 검색 파라미터 등을 최적화하고, 검색 품질을 끊임없이 향상시킬 수 있습니다.
 
-![AD_4nXctUk0KyYu4ZEz_WltqubL1XPoYllm2U_lvPGjO76N1JGpml3kyTKCZiYB2D6m8M7XhyWYpnGtTFVAKIxMp3y63CQ9xrteqrdZo19rCzP0EjhCRt3RRpOHY4NZklMb-XS27_MdqePdeyQBNqTb0ZHW6vngK?key=eMVU7KbNgmcKhH2yZMZFvQ](../images/165_Perplexity 2 검색 시스템의 구조 설계_img_5.jpg)
+![AD_4nXctUk0KyYu4ZEz_WltqubL1XPoYllm2U_lvPGjO76N1JGpml3kyTKCZiYB2D6m8M7XhyWYpnGtTFVAKIxMp3y63CQ9xrteqrdZo19rCzP0EjhCRt3RRpOHY4NZklMb-XS27_MdqePdeyQBNqTb0ZHW6vngK?key=eMVU7KbNgmcKhH2yZMZFvQ](../images/165_Perplexity%202%20%EA%B2%80%EC%83%89%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%EA%B5%AC%EC%A1%B0%20%EC%84%A4%EA%B3%84_img_5.jpg)
 
 ### **성능 최적화와 운영 전략**
 

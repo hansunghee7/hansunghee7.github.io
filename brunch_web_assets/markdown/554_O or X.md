@@ -2,7 +2,7 @@
 title: "O or X"
 date: "Nov 19. 2023"
 category: "매거진: 기획일상"
-cover_image: "../images/554_사용자를 데이터화하세요._cover.jpg"
+cover_image: "../images/554_%EC%82%AC%EC%9A%A9%EC%9E%90%EB%A5%BC%20%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%99%94%ED%95%98%EC%84%B8%EC%9A%94._cover.jpg"
 summary: "기획의 단상 | 인생도 기획도 O나 X로 풀려하지 마라  특히 다른 사람과 토론할 때 OX로 얘기하기보다는 △(제3의 대안)이 없는지 고민하라  우리가 다른 사람과 다투는 문제들의 99% 이상은 OX가 아닌 다른 대안들이 있는 문제이다.    2004년 1월에 작성한 글입니다."
 ---
 
