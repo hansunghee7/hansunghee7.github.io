@@ -8,38 +8,38 @@ summary: "glass편 | 드디어 심플리파이어 브랜딩 글래스 제작이 
 
 ![KakaoTalk_Image_2024-04-30-06-16-42_001.jpeg](../images/403_코치S 1화 '문제해결사'_img_1.jpg)
 
-![KakaoTalk_Image_2024-04-30-06-16-42_002.jpeg](../images/403_코치S 1화 '문제해결사'_img_2.jpg)
+![KakaoTalk_Image_2024-04-30-06-16-42_002.jpeg](../images/403_코치S 1화 '문제해결사'_img_10.jpg)
 
-![KakaoTalk_Image_2024-04-30-06-16-43_003.jpeg](../images/403_코치S 1화 '문제해결사'_img_3.jpg)
+![KakaoTalk_Image_2024-04-30-06-16-43_003.jpeg](../images/403_코치S 1화 '문제해결사'_img_11.jpg)
 
-![KakaoTalk_Image_2024-04-30-06-16-43_004.jpeg](../images/403_코치S 1화 '문제해결사'_img_4.jpg)
+![KakaoTalk_Image_2024-04-30-06-16-43_004.jpeg](../images/403_코치S 1화 '문제해결사'_img_12.jpg)
 
-![KakaoTalk_Image_2024-04-30-06-16-44_005.jpeg](../images/403_코치S 1화 '문제해결사'_img_5.jpg)
+![KakaoTalk_Image_2024-04-30-06-16-44_005.jpeg](../images/403_코치S 1화 '문제해결사'_img_13.jpg)
 
-![KakaoTalk_Image_2024-04-30-06-16-44_006.jpeg](../images/403_코치S 1화 '문제해결사'_img_6.jpg)
+![KakaoTalk_Image_2024-04-30-06-16-44_006.jpeg](../images/403_코치S 1화 '문제해결사'_img_14.jpg)
 
-![KakaoTalk_Image_2024-04-30-06-16-44_007.jpeg](../images/403_코치S 1화 '문제해결사'_img_7.jpg)
+![KakaoTalk_Image_2024-04-30-06-16-44_007.jpeg](../images/403_코치S 1화 '문제해결사'_img_15.jpg)
 
-![KakaoTalk_Image_2024-04-30-06-16-44_008.jpeg](../images/403_코치S 1화 '문제해결사'_img_8.jpg)
+![KakaoTalk_Image_2024-04-30-06-16-44_008.jpeg](../images/403_코치S 1화 '문제해결사'_img_16.jpg)
 
-![KakaoTalk_Image_2024-04-30-06-16-44_009.jpeg](../images/403_코치S 1화 '문제해결사'_img_9.jpg)
+![KakaoTalk_Image_2024-04-30-06-16-44_009.jpeg](../images/403_코치S 1화 '문제해결사'_img_17.jpg)
 
-![KakaoTalk_Image_2024-04-30-06-16-44_010.jpeg](../images/403_코치S 1화 '문제해결사'_img_10.jpg)
+![KakaoTalk_Image_2024-04-30-06-16-44_010.jpeg](../images/403_코치S 1화 '문제해결사'_img_18.jpg)
 
-![KakaoTalk_Image_2024-04-30-06-16-45_011.jpeg](../images/403_코치S 1화 '문제해결사'_img_11.jpg)
+![KakaoTalk_Image_2024-04-30-06-16-45_011.jpeg](../images/403_코치S 1화 '문제해결사'_img_19.jpg)
 
-![KakaoTalk_Image_2024-04-30-06-16-45_012.jpeg](../images/403_코치S 1화 '문제해결사'_img_12.jpg)
+![KakaoTalk_Image_2024-04-30-06-16-45_012.jpeg](../images/403_코치S 1화 '문제해결사'_img_2.jpg)
 
-![KakaoTalk_Image_2024-04-30-06-16-45_013.jpeg](../images/403_코치S 1화 '문제해결사'_img_13.jpg)
+![KakaoTalk_Image_2024-04-30-06-16-45_013.jpeg](../images/403_코치S 1화 '문제해결사'_img_3.jpg)
 
-![KakaoTalk_Image_2024-04-30-06-16-46_014.jpeg](../images/403_코치S 1화 '문제해결사'_img_14.jpg)
+![KakaoTalk_Image_2024-04-30-06-16-46_014.jpeg](../images/403_코치S 1화 '문제해결사'_img_4.jpg)
 
-![KakaoTalk_Image_2024-04-30-06-16-46_015.jpeg](../images/403_코치S 1화 '문제해결사'_img_15.jpg)
+![KakaoTalk_Image_2024-04-30-06-16-46_015.jpeg](../images/403_코치S 1화 '문제해결사'_img_5.jpg)
 
-![KakaoTalk_Image_2024-04-30-06-16-46_016.jpeg](../images/403_코치S 1화 '문제해결사'_img_16.jpg)
+![KakaoTalk_Image_2024-04-30-06-16-46_016.jpeg](../images/403_코치S 1화 '문제해결사'_img_6.jpg)
 
-![KakaoTalk_Image_2024-04-30-06-16-46_017.jpeg](../images/403_코치S 1화 '문제해결사'_img_17.jpg)
+![KakaoTalk_Image_2024-04-30-06-16-46_017.jpeg](../images/403_코치S 1화 '문제해결사'_img_7.jpg)
 
-![KakaoTalk_Image_2024-04-30-06-16-46_018.jpeg](../images/403_코치S 1화 '문제해결사'_img_18.jpg)
+![KakaoTalk_Image_2024-04-30-06-16-46_018.jpeg](../images/403_코치S 1화 '문제해결사'_img_8.jpg)
 
-![KakaoTalk_Image_2024-04-30-06-16-46_019.jpeg](../images/403_코치S 1화 '문제해결사'_img_19.jpg)
+![KakaoTalk_Image_2024-04-30-06-16-46_019.jpeg](../images/403_코치S 1화 '문제해결사'_img_9.jpg)
