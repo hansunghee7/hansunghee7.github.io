@@ -1,9 +1,12 @@
 ---
 layout: default
 title: '103_ZeRO, 메모리최적화로 AI 비즈니스의 한계를 넓히다'
+category: '브런치북: AI의 언어들'
 ---
 
 # 📝 103_ZeRO, 메모리최적화로 AI 비즈니스의 한계를 넓히다
+
+![대표 이미지](/brunch_web_assets/images/103_ZeRO%2C%20%EB%A9%94%EB%AA%A8%EB%A6%AC%EC%B5%9C%EC%A0%81%ED%99%94%EB%A1%9C%20AI%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EB%84%93%ED%9E%88%EB%8B%A4_cover.jpg)
 
 AI 모델이 점점 거대해지면서 기업들은 메모리 한계라는 도전에 직면하고 있습니다. 마이크로소프트 DeepSpeed 팀이 개발한 Zero Redundancy Optimizer(ZeRO)는 메모리 병목 현상을 혁신적으로 해결하여, 더 많은 기업이 대형 AI 모델 개발에 참여할 수 있는 가능성을 넓혔습니다.
 

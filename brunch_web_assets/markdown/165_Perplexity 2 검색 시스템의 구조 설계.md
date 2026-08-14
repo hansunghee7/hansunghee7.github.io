@@ -1,9 +1,12 @@
 ---
 layout: default
 title: '165_Perplexity 2 검색 시스템의 구조 설계'
+category: '미분류'
 ---
 
 # 📝 165_Perplexity 2 검색 시스템의 구조 설계
+
+![대표 이미지](/brunch_web_assets/images/165_Perplexity%202%20%EA%B2%80%EC%83%89%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%EA%B5%AC%EC%A1%B0%20%EC%84%A4%EA%B3%84_cover.jpg)
 
 안녕하세요, 스타트업 성공코치 한성희입니다. 지난 시간에는 Perplexity AI의 핵심 기술 아키텍처를 살펴보았습니다. 오늘은 그 중에서도 검색 시스템의 구조, 특히 BM25와 벡터 검색을 결합한 하이브리드 설계에 대해 실제 구현 방법을 중심으로 자세히 알아보겠습니다.
 

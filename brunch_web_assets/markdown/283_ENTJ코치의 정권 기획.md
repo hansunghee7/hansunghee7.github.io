@@ -1,9 +1,12 @@
 ---
 layout: default
 title: '283_ENTJ코치의 정권 기획'
+category: '매거진: 심플리파이어 라이프'
 ---
 
 # 📝 283_ENTJ코치의 정권 기획
+
+![대표 이미지](/brunch_web_assets/images/283_ENTJ%EC%BD%94%EC%B9%98%EC%9D%98%20%EC%A0%95%EA%B6%8C%20%EA%B8%B0%ED%9A%8D_cover.jpg)
 
 #### 
 

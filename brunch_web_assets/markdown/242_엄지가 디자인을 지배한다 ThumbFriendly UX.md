@@ -1,9 +1,12 @@
 ---
 layout: default
 title: '242_엄지가 디자인을 지배한다 ThumbFriendly UX'
+category: '브런치북: UX의 언어들'
 ---
 
 # 📝 242_엄지가 디자인을 지배한다 ThumbFriendly UX
+
+![대표 이미지](/brunch_web_assets/images/242_%EC%97%84%EC%A7%80%EA%B0%80%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%84%20%EC%A7%80%EB%B0%B0%ED%95%9C%EB%8B%A4%20ThumbFriendly%20UX_cover.jpg)
 
 스마트폰을 들고 화면을 바라보세요. 엄지손가락이 어디까지 닿을 수 있나요?
 

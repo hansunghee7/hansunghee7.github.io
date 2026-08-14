@@ -1,9 +1,12 @@
 ---
 layout: default
 title: '191_AI하드웨어, GPU와 NPU 그리고 FPGA의 차이점'
+category: '브런치북: AI의 언어들'
 ---
 
 # 📝 191_AI하드웨어, GPU와 NPU 그리고 FPGA의 차이점
+
+![대표 이미지](/brunch_web_assets/images/191_AI%ED%95%98%EB%93%9C%EC%9B%A8%EC%96%B4%2C%20GPU%EC%99%80%20NPU%20%EA%B7%B8%EB%A6%AC%EA%B3%A0%20FPGA%EC%9D%98%20%EC%B0%A8%EC%9D%B4%EC%A0%90_cover.jpg)
 
 요즘 AI 하드웨어 시장을 보면 GPU, NPU, FPGA가 치열하게 경쟁하고 있습니다. 어떤 가속기를 쓰느냐에 따라 AI 모델의 성능이 크게 달라지기 때문이라고 합니다. 학습(Training)용과 추론(Inference)용도 하드웨어 종류에 따라 성능이 크게 달라진다고 합니다. 이번 글에서는 AI 하드웨어가속기들의 차이점과 용도에 대해 쉽게 정리해보려고 합니다.
 

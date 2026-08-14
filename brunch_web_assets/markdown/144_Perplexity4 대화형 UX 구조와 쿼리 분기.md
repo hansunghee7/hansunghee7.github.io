@@ -1,9 +1,12 @@
 ---
 layout: default
 title: '144_Perplexity4 대화형 UX 구조와 쿼리 분기'
+category: '미분류'
 ---
 
 # 📝 144_Perplexity4 대화형 UX 구조와 쿼리 분기
+
+![대표 이미지](/brunch_web_assets/images/144_Perplexity4%20%EB%8C%80%ED%99%94%ED%98%95%20UX%20%EA%B5%AC%EC%A1%B0%EC%99%80%20%EC%BF%BC%EB%A6%AC%20%EB%B6%84%EA%B8%B0_cover.jpg)
 
 퍼플렉시티의 놀라운 대화형 AI 경험 뒤에는 정교한 UX 설계와 쿼리 분기 전략이 자리 잡고 있습니다. 단순한 질의-응답을 넘어 마치 인간과 대화를 나누는 듯한 자연스러운 상호작용을 구현하기 위한 일련의 기술들을 살펴보겠습니다.
 

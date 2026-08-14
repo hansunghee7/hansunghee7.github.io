@@ -1,9 +1,12 @@
 ---
 layout: default
 title: '317_ENTJ코치가 본 흑백요리사'
+category: '매거진: 심플리파이어 라이프'
 ---
 
 # 📝 317_ENTJ코치가 본 흑백요리사
+
+![대표 이미지](/brunch_web_assets/images/317_ENTJ%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B8%20%ED%9D%91%EB%B0%B1%EC%9A%94%EB%A6%AC%EC%82%AC_cover.jpg)
 
 1.
 

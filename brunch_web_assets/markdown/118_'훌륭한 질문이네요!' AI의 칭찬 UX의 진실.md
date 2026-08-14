@@ -1,9 +1,12 @@
 ---
 layout: default
 title: '118_'훌륭한 질문이네요!' AI의 칭찬 UX의 진실'
+category: '브런치북: UX의 언어들'
 ---
 
 # 📝 118_'훌륭한 질문이네요!' AI의 칭찬 UX의 진실
+
+![대표 이미지](/brunch_web_assets/images/118_%27%ED%9B%8C%EB%A5%AD%ED%95%9C%20%EC%A7%88%EB%AC%B8%EC%9D%B4%EB%84%A4%EC%9A%94%21%27%20AI%EC%9D%98%20%EC%B9%AD%EC%B0%AC%20UX%EC%9D%98%20%EC%A7%84%EC%8B%A4_cover.jpg)
 
 "훌륭한 아이디어네요!", "멋진 질문입니다."
 

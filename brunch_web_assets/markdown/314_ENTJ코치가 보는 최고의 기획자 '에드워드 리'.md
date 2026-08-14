@@ -1,9 +1,12 @@
 ---
 layout: default
 title: '314_ENTJ코치가 보는 최고의 기획자 '에드워드 리''
+category: '매거진: 기획자로 시작하기'
 ---
 
 # 📝 314_ENTJ코치가 보는 최고의 기획자 '에드워드 리'
+
+![대표 이미지](/brunch_web_assets/images/314_ENTJ%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EB%8A%94%20%EC%B5%9C%EA%B3%A0%EC%9D%98%20%EA%B8%B0%ED%9A%8D%EC%9E%90%20%27%EC%97%90%EB%93%9C%EC%9B%8C%EB%93%9C%20%EB%A6%AC%27_cover.jpg)
 
 흑백요리사가 11, 12화의 주인공은 단연 에드워드 리였다. 왜 우리는 그에게 몰입했을까 기획자의 관점에서 보자.
 

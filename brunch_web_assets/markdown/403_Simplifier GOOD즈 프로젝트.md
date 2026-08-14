@@ -1,6 +1,7 @@
 ---
 layout: default
 title: '403_Simplifier GOOD즈 프로젝트'
+category: '미분류'
 ---
 
 # 📝 403_Simplifier GOOD즈 프로젝트

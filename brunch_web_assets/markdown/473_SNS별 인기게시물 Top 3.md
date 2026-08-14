@@ -1,6 +1,7 @@
 ---
 layout: default
 title: '473_SNS별 인기게시물 Top 3'
+category: '매거진: 심플리파이어 라이프'
 ---
 
 # 📝 473_SNS별 인기게시물 Top 3

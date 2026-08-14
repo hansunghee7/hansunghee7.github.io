@@ -1,6 +1,7 @@
 ---
 layout: default
 title: '419_CPO는 어떻게 일을 할까 Part 1.2 생산구조'
+category: '미분류'
 ---
 
 # 📝 419_CPO는 어떻게 일을 할까 Part 1.2 생산구조

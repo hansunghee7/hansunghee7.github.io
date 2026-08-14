@@ -1,9 +1,12 @@
 ---
 layout: default
 title: '113_'커서 AI'의 AI 협력자 전략'
+category: '브런치북: 스타트업의 전략들'
 ---
 
 # 📝 113_'커서 AI'의 AI 협력자 전략
+
+![대표 이미지](/brunch_web_assets/images/113_%27%EC%BB%A4%EC%84%9C%20AI%27%EC%9D%98%20AI%20%ED%98%91%EB%A0%A5%EC%9E%90%20%EC%A0%84%EB%9E%B5_cover.jpg)
 
 2022년 MIT에서 만난 20대 청년 4명이 어떻게 2년 만에 한화 약 3조원의 가치를 가진 AI 기업을 만들었을까요? 바로 AI 코딩 도구 Cursor AI의 놀라운 성장 스토리입니다.
 

@@ -1,9 +1,12 @@
 ---
 layout: default
 title: '129_Dropbox의 무료에서 유료로의 전환 비법'
+category: '브런치북: 스타트업의 전략들'
 ---
 
 # 📝 129_Dropbox의 무료에서 유료로의 전환 비법
+
+![대표 이미지](/brunch_web_assets/images/129_Dropbox%EC%9D%98%20%EB%AC%B4%EB%A3%8C%EC%97%90%EC%84%9C%20%EC%9C%A0%EB%A3%8C%EB%A1%9C%EC%9D%98%20%EC%A0%84%ED%99%98%20%EB%B9%84%EB%B2%95_cover.jpg)
 
 안녕하세요, 스타트업 성공코치 한성희입니다. 오늘은 프리미엄(Freemium) 모델을 운영하는 스타트업이라면 누구나 고민하는 '무료 사용자를 어떻게 유료로 전환시킬 것인가'에 대한 전략을 Dropbox의 성공 사례를 통해 살펴보겠습니다.
 

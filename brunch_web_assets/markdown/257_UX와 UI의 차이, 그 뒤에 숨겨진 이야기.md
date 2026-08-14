@@ -1,9 +1,12 @@
 ---
 layout: default
 title: '257_UX와 UI의 차이, 그 뒤에 숨겨진 이야기'
+category: '브런치북: UX의 언어들'
 ---
 
 # 📝 257_UX와 UI의 차이, 그 뒤에 숨겨진 이야기
+
+![대표 이미지](/brunch_web_assets/images/257_UX%EC%99%80%20UI%EC%9D%98%20%EC%B0%A8%EC%9D%B4%2C%20%EA%B7%B8%20%EB%92%A4%EC%97%90%20%EC%88%A8%EA%B2%A8%EC%A7%84%20%EC%9D%B4%EC%95%BC%EA%B8%B0_cover.jpg)
 
 UX와 UI라는 용어는 디지털 시대에 자주 등장하지만, 많은 사람들이 그 차이를 혼동하곤 합니다. 오늘은 UX와 UI의 탄생 배경부터 차이점, 그리고 실무에서의 활용까지 깊이 있게 살펴보겠습니다.
 

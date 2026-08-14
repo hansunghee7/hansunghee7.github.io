@@ -1,9 +1,12 @@
 ---
 layout: default
 title: '180_'팔란티어' 4 Apollo 혁신의 배포 플랫폼'
+category: '미분류'
 ---
 
 # 📝 180_'팔란티어' 4 Apollo 혁신의 배포 플랫폼
+
+![대표 이미지](/brunch_web_assets/images/180_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%204%20Apollo%20%ED%98%81%EC%8B%A0%EC%9D%98%20%EB%B0%B0%ED%8F%AC%20%ED%94%8C%EB%9E%AB%ED%8F%BC_cover.jpg)
 
 Gotham과 Foundry가 팔란티어의 데이터 분석 역량을 보여준다면, Apollo는 그 혁신을 지속 가능케 하는 숨은 동력입니다.
 

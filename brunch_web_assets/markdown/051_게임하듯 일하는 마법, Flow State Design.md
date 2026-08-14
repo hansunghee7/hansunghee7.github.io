@@ -1,9 +1,12 @@
 ---
 layout: default
 title: '051_게임하듯 일하는 마법, Flow State Design'
+category: '브런치북: UX의 언어들'
 ---
 
 # 📝 051_게임하듯 일하는 마법, Flow State Design
+
+![대표 이미지](/brunch_web_assets/images/051_%EA%B2%8C%EC%9E%84%ED%95%98%EB%93%AF%20%EC%9D%BC%ED%95%98%EB%8A%94%20%EB%A7%88%EB%B2%95%2C%20Flow%20State%20Design_cover.jpg)
 
 "아니, 벌써 3시간이나 지났어?"
 

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: '420_CPO는 어떻게 일을 할까 Part1.1 사업목표수립'
+category: '미분류'
 ---
 
 # 📝 420_CPO는 어떻게 일을 할까 Part1.1 사업목표수립

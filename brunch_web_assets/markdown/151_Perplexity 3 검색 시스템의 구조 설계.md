@@ -1,9 +1,12 @@
 ---
 layout: default
 title: '151_Perplexity 3 검색 시스템의 구조 설계'
+category: '미분류'
 ---
 
 # 📝 151_Perplexity 3 검색 시스템의 구조 설계
+
+![대표 이미지](/brunch_web_assets/images/151_Perplexity%203%20%EA%B2%80%EC%83%89%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%EA%B5%AC%EC%A1%B0%20%EC%84%A4%EA%B3%84_cover.jpg)
 
 지금까지 Perplexity AI의 배경과 철학, 전체 아키텍처, 그리고 BM25와 벡터 검색의 하이브리드 설계에 대해 살펴보았습니다. 3부에서는 Perplexity의 핵심 기술인 RAG시스템을 완전히 해부해보겠습니다.
 

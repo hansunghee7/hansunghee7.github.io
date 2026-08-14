@@ -1,7 +1,12 @@
 ---
 layout: default
 title: '236_해적이 된 기획자들의 이야기, AARRR 프레임워크'
+category: '브런치북: 기획자의 프레임웍'
 ---
+
+# 📝 236_해적이 된 기획자들의 이야기, AARRR 프레임워크
+
+![대표 이미지](/brunch_web_assets/images/236_%ED%95%B4%EC%A0%81%EC%9D%B4%20%EB%90%9C%20%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%93%A4%EC%9D%98%20%EC%9D%B4%EC%95%BC%EA%B8%B0%2C%20AARRR%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC_cover.jpg)
 
 # **"Arrr!"**
 

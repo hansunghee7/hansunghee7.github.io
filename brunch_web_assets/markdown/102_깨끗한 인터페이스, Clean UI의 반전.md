@@ -1,9 +1,12 @@
 ---
 layout: default
 title: '102_깨끗한 인터페이스, Clean UI의 반전'
+category: '브런치북: UX의 언어들'
 ---
 
 # 📝 102_깨끗한 인터페이스, Clean UI의 반전
+
+![대표 이미지](/brunch_web_assets/images/102_%EA%B9%A8%EB%81%97%ED%95%9C%20%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%2C%20Clean%20UI%EC%9D%98%20%EB%B0%98%EC%A0%84_cover.jpg)
 
 "깔끔한 화면이 최고지!"
 

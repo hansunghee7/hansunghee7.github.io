@@ -1,9 +1,12 @@
 ---
 layout: default
 title: '121_작게 시작해 크게 터트리는 Slack의 초기마케팅전략'
+category: '브런치북: 스타트업의 전략들'
 ---
 
 # 📝 121_작게 시작해 크게 터트리는 Slack의 초기마케팅전략
+
+![대표 이미지](/brunch_web_assets/images/121_%EC%9E%91%EA%B2%8C%20%EC%8B%9C%EC%9E%91%ED%95%B4%20%ED%81%AC%EA%B2%8C%20%ED%84%B0%ED%8A%B8%EB%A6%AC%EB%8A%94%20Slack%EC%9D%98%20%EC%B4%88%EA%B8%B0%EB%A7%88%EC%BC%80%ED%8C%85%EC%A0%84%EB%9E%B5_cover.jpg)
 
 안녕하세요, 스타트업 성공코치 한성희입니다. 오늘은 제한된 자원으로 최대 효과를 내야 하는 초기 스타트업의 마케팅 채널 설정법에 대해 이야기해보겠습니다.
 

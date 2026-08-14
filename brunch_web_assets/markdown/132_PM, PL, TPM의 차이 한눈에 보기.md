@@ -1,9 +1,12 @@
 ---
 layout: default
 title: '132_PM, PL, TPM의 차이 한눈에 보기'
+category: '브런치북: PO가 꼭 알아야 할 것들'
 ---
 
 # 📝 132_PM, PL, TPM의 차이 한눈에 보기
+
+![대표 이미지](/brunch_web_assets/images/132_PM%2C%20PL%2C%20TPM%EC%9D%98%20%EC%B0%A8%EC%9D%B4%20%ED%95%9C%EB%88%88%EC%97%90%20%EB%B3%B4%EA%B8%B0_cover.jpg)
 
 프로젝트 성공을 위해 다양한 역할이 필요합니다. PM, PL, TPM은 IT 업계에서 흔히 볼 수 있는 리더십 포지션이지만, 그 차이를 명확히 이해하는 사람은 많지 않습니다. 각 역할의 주요 책임과 중점 영역을 살펴보겠습니다.
 

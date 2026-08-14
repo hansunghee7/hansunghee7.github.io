@@ -1,9 +1,12 @@
 ---
 layout: default
 title: '109_데이터 기반 PO, IT성장의 핵심 엔진'
+category: '브런치북: PO가 꼭 알아야 할 것들'
 ---
 
 # 📝 109_데이터 기반 PO, IT성장의 핵심 엔진
+
+![대표 이미지](/brunch_web_assets/images/109_%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B8%B0%EB%B0%98%20PO%2C%20IT%EC%84%B1%EC%9E%A5%EC%9D%98%20%ED%95%B5%EC%8B%AC%20%EC%97%94%EC%A7%84_cover.jpg)
 
 한 글로벌 IT 기업의 제품 책임자(PO)는 어려운 상황에 직면했습니다. 시장 성장이 둔화되고 있었고, 경쟁사들은 빠르게 시장 점유율을 확대하고 있었습니다. 이때 그는 데이터에서 답을 찾았습니다.
 

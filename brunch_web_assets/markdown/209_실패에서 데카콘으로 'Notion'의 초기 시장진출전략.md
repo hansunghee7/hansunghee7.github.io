@@ -1,9 +1,12 @@
 ---
 layout: default
 title: '209_실패에서 데카콘으로 'Notion'의 초기 시장진출전략'
+category: '브런치북: 스타트업의 전략들'
 ---
 
 # 📝 209_실패에서 데카콘으로 'Notion'의 초기 시장진출전략
+
+![대표 이미지](/brunch_web_assets/images/209_%EC%8B%A4%ED%8C%A8%EC%97%90%EC%84%9C%20%EB%8D%B0%EC%B9%B4%EC%BD%98%EC%9C%BC%EB%A1%9C%20%27Notion%27%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EC%8B%9C%EC%9E%A5%EC%A7%84%EC%B6%9C%EC%A0%84%EB%9E%B5_cover.jpg)
 
 안녕하세요, 스타트업 성공 코치 한성희입니다. 오늘은 생산성 도구 시장에 혁명을 일으킨 Notion의 시장 진출 전략에 대해 살펴보겠습니다.
 

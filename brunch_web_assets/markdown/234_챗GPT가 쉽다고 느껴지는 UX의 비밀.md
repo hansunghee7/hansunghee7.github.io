@@ -1,9 +1,12 @@
 ---
 layout: default
 title: '234_챗GPT가 쉽다고 느껴지는 UX의 비밀'
+category: '브런치북: UX의 언어들'
 ---
 
 # 📝 234_챗GPT가 쉽다고 느껴지는 UX의 비밀
+
+![대표 이미지](/brunch_web_assets/images/234_%EC%B1%97GPT%EA%B0%80%20%EC%89%BD%EB%8B%A4%EA%B3%A0%20%EB%8A%90%EA%BB%B4%EC%A7%80%EB%8A%94%20UX%EC%9D%98%20%EB%B9%84%EB%B0%80_cover.jpg)
 
 여러분 모두 챗GPT를 사용해보신 적 있을 겁니다. 그 신기한 경험, 마치 영화 속 AI와 대화하는 듯한 느낌. 챗GPT에게 느끼는 이 경험은 단순히 뛰어난 대화 능력에만 있는 것이 아닙니다. 오늘은 챗GPT의 단순한 인터페이스 뒤에 숨겨진 UX설계의 비밀을 알아보도록 하겠습니다.
 

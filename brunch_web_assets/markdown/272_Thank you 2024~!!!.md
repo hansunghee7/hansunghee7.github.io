@@ -1,9 +1,12 @@
 ---
 layout: default
 title: '272_Thank you 2024~!!!'
+category: '매거진: 심플리파이어 라이프'
 ---
 
 # 📝 272_Thank you 2024~!!!
+
+![대표 이미지](/brunch_web_assets/images/272_Thank%20you%202024~%21%21%21_cover.jpg)
 
 감사한 일들이 많은 한해였다.   
   

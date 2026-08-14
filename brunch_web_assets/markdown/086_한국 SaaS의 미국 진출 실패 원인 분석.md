@@ -1,9 +1,12 @@
 ---
 layout: default
 title: '086_한국 SaaS의 미국 진출 실패 원인 분석'
+category: '브런치북: 대한민국 스타트업 미국진출을 묻다'
 ---
 
 # 📝 086_한국 SaaS의 미국 진출 실패 원인 분석
+
+![대표 이미지](/brunch_web_assets/images/086_%ED%95%9C%EA%B5%AD%20SaaS%EC%9D%98%20%EB%AF%B8%EA%B5%AD%20%EC%A7%84%EC%B6%9C%20%EC%8B%A4%ED%8C%A8%20%EC%9B%90%EC%9D%B8%20%EB%B6%84%EC%84%9D_cover.jpg)
 
 "한국에서 성공했으니 미국에서도 될 거야." 이렇게 생각하며 미국에 진출했다가 쓴맛을 본 한국 SaaS 스타트업들이 적지 않습니다. 수많은 사례를 분석해보니 흥미롭게도 몇 가지 패턴이 반복되고 있었습니다.
 

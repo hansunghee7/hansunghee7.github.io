@@ -1,6 +1,7 @@
 ---
 layout: default
 title: '520_'Paper Face'를 아시나요'
+category: '미분류'
 ---
 
 # 📝 520_'Paper Face'를 아시나요

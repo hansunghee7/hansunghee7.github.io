@@ -1,6 +1,7 @@
 ---
 layout: default
 title: '423_CPO는 어떻게 일을 할까 Part 2. 수평적 관점'
+category: '미분류'
 ---
 
 # 📝 423_CPO는 어떻게 일을 할까 Part 2. 수평적 관점

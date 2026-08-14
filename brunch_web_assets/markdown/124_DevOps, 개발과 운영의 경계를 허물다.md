@@ -1,9 +1,12 @@
 ---
 layout: default
 title: '124_DevOps, 개발과 운영의 경계를 허물다'
+category: '브런치북: PO가 꼭 알아야 할 것들'
 ---
 
 # 📝 124_DevOps, 개발과 운영의 경계를 허물다
+
+![대표 이미지](/brunch_web_assets/images/124_DevOps%2C%20%EA%B0%9C%EB%B0%9C%EA%B3%BC%20%EC%9A%B4%EC%98%81%EC%9D%98%20%EA%B2%BD%EA%B3%84%EB%A5%BC%20%ED%97%88%EB%AC%BC%EB%8B%A4_cover.jpg)
 
 DevOps는 개발(Development)과 운영(Operations)의 합성어입니다. 단순한 용어 결합이 아니라, 개발자와 운영자가 한 팀이 되어 소프트웨어를 더 빠르고 안정적으로 제공하기 위한 문화와 철학, 그리고 실천 방법을 의미합니다.
 

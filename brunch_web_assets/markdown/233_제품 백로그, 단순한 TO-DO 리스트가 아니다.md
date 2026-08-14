@@ -1,9 +1,12 @@
 ---
 layout: default
 title: '233_제품 백로그, 단순한 TO-DO 리스트가 아니다'
+category: '미분류'
 ---
 
 # 📝 233_제품 백로그, 단순한 TO-DO 리스트가 아니다
+
+![대표 이미지](/brunch_web_assets/images/233_%EC%A0%9C%ED%92%88%20%EB%B0%B1%EB%A1%9C%EA%B7%B8%2C%20%EB%8B%A8%EC%88%9C%ED%95%9C%20TO-DO%20%EB%A6%AC%EC%8A%A4%ED%8A%B8%EA%B0%80%20%EC%95%84%EB%8B%88%EB%8B%A4_cover.jpg)
 
 많은 IT 회사의 PO들은 제품 백로그 관리에 아래와 같은 어려움을 겪고 있었다.
 

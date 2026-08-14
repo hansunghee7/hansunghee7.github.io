@@ -1,9 +1,12 @@
 ---
 layout: default
 title: '091_현재와 미래를 함께한다 3 Horizons model'
+category: '브런치북: 기획자의 프레임웍'
 ---
 
 # 📝 091_현재와 미래를 함께한다 3 Horizons model
+
+![대표 이미지](/brunch_web_assets/images/091_%ED%98%84%EC%9E%AC%EC%99%80%20%EB%AF%B8%EB%9E%98%EB%A5%BC%20%ED%95%A8%EA%BB%98%ED%95%9C%EB%8B%A4%203%20Horizons%20model_cover.jpg)
 
 1990년대 후반, 많은 대기업이 한 가지 딜레마에 빠져 있었다. 단기 실적에만 집중하다가 신생 기업에 시장을 빼앗기거나, 미래 성장 동력을 놓치는 사례가 속출했다. 맥킨지 컨설턴트들은 이 문제를 해결하기 위해 '현재를 지키면서 미래를 준비하는' 균형 잡힌 성장 전략을 고안했다. 바로 '3 Horizons 모델'이다.
 

@@ -1,9 +1,12 @@
 ---
 layout: default
 title: '170_AI 성능을 100배 높이는 비결 TensorCores'
+category: '브런치북: AI의 언어들'
 ---
 
 # 📝 170_AI 성능을 100배 높이는 비결 TensorCores
+
+![대표 이미지](/brunch_web_assets/images/170_AI%20%EC%84%B1%EB%8A%A5%EC%9D%84%20100%EB%B0%B0%20%EB%86%92%EC%9D%B4%EB%8A%94%20%EB%B9%84%EA%B2%B0%20TensorCores_cover.jpg)
 
 AI 기술이 날로 발전하면서 딥러닝 모델의 규모도 엄청나게 커지고 있습니다. 수천억 개의 파라미터를 학습시키려면 어마어마한 연산량이 필요한데요. 그 중심에는 바로 '행렬 곱셈(Matrix Multiplication)'이 자리잡고 있습니다. 행렬 곱셈이 AI 성능을 좌우한다고 해도 과언이 아닐 정도로 중요한 역할을 하고 있죠.
 

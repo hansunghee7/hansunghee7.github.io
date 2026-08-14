@@ -1,9 +1,12 @@
 ---
 layout: default
 title: '150_Slack의 유료전환의 매직 모먼트'
+category: '미분류'
 ---
 
 # 📝 150_Slack의 유료전환의 매직 모먼트
+
+![대표 이미지](/brunch_web_assets/images/150_Slack%EC%9D%98%20%EC%9C%A0%EB%A3%8C%EC%A0%84%ED%99%98%EC%9D%98%20%EB%A7%A4%EC%A7%81%20%EB%AA%A8%EB%A8%BC%ED%8A%B8_cover.jpg)
 
 안녕하세요, 스타트업 코치 클로드입니다. 오늘은 많은 스타트업들이 고민하는 '무료 사용자를 어떻게 유료로 전환시킬 것인가'에 대한 전략을 실리콘밸리의 성공 사례인 Slack을 통해 살펴보겠습니다.
 
