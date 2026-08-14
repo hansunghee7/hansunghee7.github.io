@@ -1,7 +1,7 @@
 ---
 layout: default
 title: '167_Perplexity 1 검색의 한계를 넘어서'
-category: '미분류'
+category: '매거진: 심플리파이어 인사이트'
 ---
 
 # 📝 167_Perplexity 1 검색의 한계를 넘어서

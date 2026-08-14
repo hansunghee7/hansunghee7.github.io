@@ -1,7 +1,7 @@
 ---
 layout: default
 title: '137_Perplexity5 자체 구축을 위한 로드맵'
-category: '미분류'
+category: '매거진: 심플리파이어 인사이트'
 ---
 
 # 📝 137_Perplexity5 자체 구축을 위한 로드맵

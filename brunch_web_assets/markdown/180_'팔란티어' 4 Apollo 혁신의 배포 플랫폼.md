@@ -1,7 +1,7 @@
 ---
 layout: default
 title: '180_'팔란티어' 4 Apollo 혁신의 배포 플랫폼'
-category: '미분류'
+category: '매거진: 심플리파이어 인사이트'
 ---
 
 # 📝 180_'팔란티어' 4 Apollo 혁신의 배포 플랫폼

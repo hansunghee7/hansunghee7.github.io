@@ -1,7 +1,7 @@
 ---
 layout: default
 title: '069_Predictive UX, 사용자의 다음 행동은'
-category: '미분류'
+category: '브런치북: UX의 언어들'
 ---
 
 # 📝 069_Predictive UX, 사용자의 다음 행동은

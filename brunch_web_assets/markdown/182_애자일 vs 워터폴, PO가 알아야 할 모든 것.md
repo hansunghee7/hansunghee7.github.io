@@ -1,7 +1,7 @@
 ---
 layout: default
 title: '182_애자일 vs 워터폴, PO가 알아야 할 모든 것'
-category: '미분류'
+category: '브런치북: PO가 꼭 알아야 할 것들'
 ---
 
 # 📝 182_애자일 vs 워터폴, PO가 알아야 할 모든 것

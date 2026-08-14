@@ -1,7 +1,7 @@
 ---
 layout: default
 title: '484_내가 나를 기획한다면 Fast Fail의 비밀'
-category: '미분류'
+category: '매거진: 기획일상'
 ---
 
 # 📝 484_내가 나를 기획한다면 Fast Fail의 비밀

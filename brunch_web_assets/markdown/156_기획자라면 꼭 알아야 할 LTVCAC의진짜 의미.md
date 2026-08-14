@@ -1,7 +1,7 @@
 ---
 layout: default
 title: '156_기획자라면 꼭 알아야 할 LTVCAC의진짜 의미'
-category: '미분류'
+category: '브런치북: 기획자의 프레임웍'
 ---
 
 # 📝 156_기획자라면 꼭 알아야 할 LTVCAC의진짜 의미

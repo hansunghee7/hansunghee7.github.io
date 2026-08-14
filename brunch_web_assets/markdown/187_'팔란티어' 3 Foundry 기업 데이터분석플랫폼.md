@@ -1,7 +1,7 @@
 ---
 layout: default
 title: '187_'팔란티어' 3 Foundry 기업 데이터분석플랫폼'
-category: '미분류'
+category: '매거진: 심플리파이어 인사이트'
 ---
 
 # 📝 187_'팔란티어' 3 Foundry 기업 데이터분석플랫폼

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: '195_'팔란티어' 2 Gotham 국가 안보를 위한 플랫폼'
-category: '미분류'
+category: '매거진: 심플리파이어 인사이트'
 ---
 
 # 📝 195_'팔란티어' 2 Gotham 국가 안보를 위한 플랫폼

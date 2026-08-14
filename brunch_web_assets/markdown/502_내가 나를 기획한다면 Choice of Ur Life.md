@@ -1,7 +1,7 @@
 ---
 layout: default
 title: '502_내가 나를 기획한다면 Choice of Ur Life'
-category: '미분류'
+category: '매거진: 기획일상'
 ---
 
 # 📝 502_내가 나를 기획한다면 Choice of Ur Life

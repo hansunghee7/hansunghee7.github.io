@@ -1,7 +1,7 @@
 ---
 layout: default
 title: '150_Slack의 유료전환의 매직 모먼트'
-category: '미분류'
+category: '브런치북: 스타트업의 전략들'
 ---
 
 # 📝 150_Slack의 유료전환의 매직 모먼트

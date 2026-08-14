@@ -1,7 +1,7 @@
 ---
 layout: default
 title: '424_CPO는 어떻게 일을 할까 Part 1. 수직적 관점'
-category: '미분류'
+category: '매거진: 스타트업 리더의 기술'
 ---
 
 # 📝 424_CPO는 어떻게 일을 할까 Part 1. 수직적 관점

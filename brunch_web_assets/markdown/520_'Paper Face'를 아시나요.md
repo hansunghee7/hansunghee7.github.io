@@ -1,7 +1,7 @@
 ---
 layout: default
 title: '520_'Paper Face'를 아시나요'
-category: '미분류'
+category: '매거진: 심플리파이어 라이프'
 ---
 
 # 📝 520_'Paper Face'를 아시나요

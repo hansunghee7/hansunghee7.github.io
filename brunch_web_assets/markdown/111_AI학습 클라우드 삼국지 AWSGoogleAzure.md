@@ -1,7 +1,7 @@
 ---
 layout: default
 title: '111_AI학습 클라우드 삼국지 AWSGoogleAzure'
-category: '미분류'
+category: '브런치북: AI의 언어들'
 ---
 
 # 📝 111_AI학습 클라우드 삼국지 AWSGoogleAzure

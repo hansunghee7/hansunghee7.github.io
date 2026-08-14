@@ -1,7 +1,7 @@
 ---
 layout: default
 title: '233_제품 백로그, 단순한 TO-DO 리스트가 아니다'
-category: '미분류'
+category: '브런치북: PO가 꼭 알아야 할 것들'
 ---
 
 # 📝 233_제품 백로그, 단순한 TO-DO 리스트가 아니다

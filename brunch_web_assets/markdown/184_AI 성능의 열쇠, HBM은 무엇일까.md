@@ -1,7 +1,7 @@
 ---
 layout: default
 title: '184_AI 성능의 열쇠, HBM은 무엇일까'
-category: '미분류'
+category: '브런치북: AI의 언어들'
 ---
 
 # 📝 184_AI 성능의 열쇠, HBM은 무엇일까

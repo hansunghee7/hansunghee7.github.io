@@ -1,7 +1,7 @@
 ---
 layout: default
 title: '165_Perplexity 2 검색 시스템의 구조 설계'
-category: '미분류'
+category: '매거진: 심플리파이어 인사이트'
 ---
 
 # 📝 165_Perplexity 2 검색 시스템의 구조 설계
