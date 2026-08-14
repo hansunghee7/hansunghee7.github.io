@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }}</title>
+    
+    <!-- 브런치의 핵심 감성인 'Noto Sans KR' 폰트 불러오기 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 1. 기본 바탕 및 타이포그래피 (브런치 특유의 얇은 폰트와 자간) */
+        body {
+            font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', '맑은 고딕', sans-serif;
+            font-weight: 300; /* 브런치 감성의 핵심인 얇은 두께 */
+            line-height: 1.8;
+            letter-spacing: -0.05em; /* 글자 사이를 살짝 좁혀서 가독성 극대화 */
+            color: #333333;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            word-break: keep-all;
+        }
+
+        /* 2. 본문 너비 및 정렬 (실제 브런치 PC 화면과 동일한 700px 최적화) */
+        .wrap_article {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 60px 20px 100px 20px;
+        }
+
+        /* 3. 상단 내비게이션 (뒤로 가기) */
+        .nav_header {
+            margin-bottom: 50px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+        .btn_back {
+            display: inline-flex;
+            align-items: center;
+            color: #959595;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            transition: color 0.2s;
+        }
+        .btn_back:hover {
+            color: #333;
+        }
+        .btn_back::before {
+            content: '〈';
+            margin-right: 5px;
+            font-size: 12px;
+        }
+
+        /* 4. 글 제목 영역 */
+        .article_title {
+            font-family: 'Noto Serif KR', serif; /* 브런치가 제목에 자주 쓰는 명조체 감성 */
+            font-size: 32px;
+            font-weight: 400;
+            line-height: 1.4;
+            color: #111;
+            margin-top: 0;
+            margin-bottom: 30px;
+        }
+
+        /* 5. 본문 내 텍스트 스타일 */
+        .article_content p {
+            font-size: 16px;
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 28px; /* 단락 사이의 넉넉한 여백 */
+        }
+
+        /* 6. 본문 내 이미지 스타일 */
+        .article_content img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 40px auto; /* 이미지 위아래 여백을 넓게 */
+        }
+
+        /* 7. 인용구(Blockquote) 스타일 (브런치 시그니처인 왼쪽 초록색 선) */
+        .article_content blockquote {
+            border-left: 3px solid #00c73c; /* 브런치 시그니처 민트색 */
+            margin: 40px 0;
+            padding: 2px 0 2px 20px;
+            color: #666;
+            font-size: 16px;
+        }
+        .article_content blockquote p {
+            margin-bottom: 0;
+        }
+
+        /* 8. 구분선 스타일 */
+        .article_content hr {
+            border: 0;
+            border-top: 1px solid #eee;
+            margin: 50px auto;
+            width: 30%; /* 브런치 특유의 짧고 은은한 중앙 구분선 */
+        }
+
+        /* 9. 카테고리 태그 텍스트 (우리가 강제로 넣은 📂 텍스트의 디자인) */
+        .article_content p:first-of-type {
+            font-size: 13px;
+            color: #00c73c;
+            font-weight: 500;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap_article">
+        <!-- 상단 뒤로 가기 영역 -->
+        <div class="nav_header">
+            <a href="/" class="btn_back">작가의 다른 글 보기</a>
+        </div>
+        
+        <div class="article_content">
+            <!-- 마크다운 파일의 내용이 변환되어 들어갈 자리 -->
+            {{ content }}
+        </div>
+    </div>
+</body>
+</html>
