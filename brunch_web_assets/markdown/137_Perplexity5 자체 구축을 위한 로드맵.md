@@ -6,6 +6,9 @@ category: '미분류'
 
 # 📝 137_Perplexity5 자체 구축을 위한 로드맵
 
+📂 **미분류**
+
+
 ![대표 이미지](/brunch_web_assets/images/137_Perplexity5%20%EC%9E%90%EC%B2%B4%20%EA%B5%AC%EC%B6%95%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EB%A1%9C%EB%93%9C%EB%A7%B5_cover.jpg)
 
 Perplexity AI 기술 해부 시리즈의 마지막 시간입니다. 지금까지 Perplexity의 철학, 핵심 기술 아키텍처, BM25와 벡터 검색의 하이브리드 설계, RAG 시스템, 그리고 대화형 UX에 대해 알아보았습니다.

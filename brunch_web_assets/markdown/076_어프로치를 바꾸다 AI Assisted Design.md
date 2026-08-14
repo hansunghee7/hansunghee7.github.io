@@ -6,6 +6,9 @@ category: '브런치북: UX의 언어들'
 
 # 📝 076_어프로치를 바꾸다 AI Assisted Design
 
+📂 **브런치북: UX의 언어들**
+
+
 ![대표 이미지](/brunch_web_assets/images/076_%EC%96%B4%ED%94%84%EB%A1%9C%EC%B9%98%EB%A5%BC%20%EB%B0%94%EA%BE%B8%EB%8B%A4%20AI%20Assisted%20Design_cover.jpg)
 
 "이제 몇 분 만에 수십 개의 디자인 시안을 만들 수 있어요!"

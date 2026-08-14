@@ -6,6 +6,9 @@ category: '브런치북: 기획자의 프레임웍'
 
 # 📝 200_사용자를 중독시키는 4단계 마법 'Hooked 모델'
 
+📂 **브런치북: 기획자의 프레임웍**
+
+
 ![대표 이미지](/brunch_web_assets/images/200_%EC%82%AC%EC%9A%A9%EC%9E%90%EB%A5%BC%20%EC%A4%91%EB%8F%85%EC%8B%9C%ED%82%A4%EB%8A%94%204%EB%8B%A8%EA%B3%84%20%EB%A7%88%EB%B2%95%20%27Hooked%20%EB%AA%A8%EB%8D%B8%27_cover.jpg)
 
 "오늘도 무의식적으로 스마트폰을 집어 들었다." 이런 경험, 누구나 한 번쯤 있을 것이다.

@@ -6,6 +6,9 @@ category: '미분류'
 
 # 📝 182_애자일 vs 워터폴, PO가 알아야 할 모든 것
 
+📂 **미분류**
+
+
 ![대표 이미지](/brunch_web_assets/images/182_%EC%95%A0%EC%9E%90%EC%9D%BC%20vs%20%EC%9B%8C%ED%84%B0%ED%8F%B4%2C%20PO%EA%B0%80%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%20%EB%AA%A8%EB%93%A0%20%EA%B2%83_cover.jpg)
 
 한 IT 회사의 PO(제품 책임자)는 새 프로젝트를 시작하며 고민에 빠졌습니다.

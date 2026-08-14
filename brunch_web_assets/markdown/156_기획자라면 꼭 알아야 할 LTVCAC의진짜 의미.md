@@ -6,6 +6,9 @@ category: '미분류'
 
 # 📝 156_기획자라면 꼭 알아야 할 LTVCAC의진짜 의미
 
+📂 **미분류**
+
+
 ![대표 이미지](/brunch_web_assets/images/156_%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%9D%BC%EB%A9%B4%20%EA%BC%AD%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%20LTVCAC%EC%9D%98%EC%A7%84%EC%A7%9C%20%EC%9D%98%EB%AF%B8_cover.jpg)
 
 고객을 유치하는 데 1만 원이 들고, 그 고객이 평생 우리 회사에 100만 원의 가치를 준다면? 망설일 이유가 없다. 이처럼 LTV(고객 생애 가치)와 CAC(고객 획득 비용)의 비교는 비즈니스의 본질을 꿰뚫는 프레임워크다.

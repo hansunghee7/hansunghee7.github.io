@@ -6,6 +6,9 @@ category: '미분류'
 
 # 📝 069_Predictive UX, 사용자의 다음 행동은
 
+📂 **미분류**
+
+
 ![대표 이미지](/brunch_web_assets/images/069_Predictive%20UX%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%EC%9D%98%20%EB%8B%A4%EC%9D%8C%20%ED%96%89%EB%8F%99%EC%9D%80_cover.jpg)
 
 "사용자가 원하는 것을 사용자보다 먼저 알 수 있다면?"

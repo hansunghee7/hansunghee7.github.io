@@ -6,6 +6,9 @@ category: '미분류'
 
 # 📝 141_AI데이터센터 혈관, InfiniBandNVLink
 
+📂 **미분류**
+
+
 ![대표 이미지](/brunch_web_assets/images/141_AI%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%84%BC%ED%84%B0%20%ED%98%88%EA%B4%80%2C%20InfiniBandNVLink_cover.jpg)
 
 AI 기술이 폭발적으로 성장하면서 데이터센터의 네트워크 인프라도 급격한 변화를 겪고 있습니다. 특히 대규모 AI 모델을 학습시키려면 GPU 간의 초고속 데이터 전송이 필수적인데요. 여기서 두 가지 핵심 기술이 바로 NVLink와 InfiniBand입니다. 이 둘은 서로 다른 영역에서 최적의 성능을 발휘하는 상호보완적인 관계라고 할 수 있어요.

@@ -6,6 +6,9 @@ category: '브런치북: AI의 언어들'
 
 # 📝 090_AI모델 가속화의 열쇠, Transformer병목개선
 
+📂 **브런치북: AI의 언어들**
+
+
 ![대표 이미지](/brunch_web_assets/images/090_AI%EB%AA%A8%EB%8D%B8%20%EA%B0%80%EC%86%8D%ED%99%94%EC%9D%98%20%EC%97%B4%EC%87%A0%2C%20Transformer%EB%B3%91%EB%AA%A9%EA%B0%9C%EC%84%A0_cover.jpg)
 
 GPT, BERT와 같은 최신 AI 모델의 중심인 Transformer 아키텍처는 놀라운 성능을 제공하지만, 학습 과정에서 여러 병목 현상에 직면합니다. 이러한 병목을 해결하는 것은 AI 개발의 속도와 비용 효율성을 크게 향상시키는 핵심 요소입니다.

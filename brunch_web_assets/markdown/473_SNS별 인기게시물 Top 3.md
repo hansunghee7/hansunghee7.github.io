@@ -6,6 +6,9 @@ category: '매거진: 심플리파이어 라이프'
 
 # 📝 473_SNS별 인기게시물 Top 3
 
+📂 **매거진: 심플리파이어 라이프**
+
+
 ![ep2_4_00.jpg](/brunch_web_assets/images/473_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%202%ED%99%94%20%27%EA%B8%B0%ED%9A%8D...%20%EA%B7%B8%EB%9F%B0%20%EC%82%AC%EB%9E%91%27_img_1.jpg)
 
 ![ep2_4_01.jpg](/brunch_web_assets/images/473_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%202%ED%99%94%20%27%EA%B8%B0%ED%9A%8D...%20%EA%B7%B8%EB%9F%B0%20%EC%82%AC%EB%9E%91%27_img_10.jpg)

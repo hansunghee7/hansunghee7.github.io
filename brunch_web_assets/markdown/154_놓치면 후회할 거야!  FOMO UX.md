@@ -6,6 +6,9 @@ category: '브런치북: UX의 언어들'
 
 # 📝 154_놓치면 후회할 거야!  FOMO UX
 
+📂 **브런치북: UX의 언어들**
+
+
 ![대표 이미지](/brunch_web_assets/images/154_%EB%86%93%EC%B9%98%EB%A9%B4%20%ED%9B%84%ED%9A%8C%ED%95%A0%20%EA%B1%B0%EC%95%BC%21%20%20FOMO%20UX_cover.jpg)
 
 "대박 난 상품이 품절 되기 전에 어서 구매하세요!"

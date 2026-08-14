@@ -6,6 +6,9 @@ category: '브런치북: PO가 꼭 알아야 할 것들'
 
 # 📝 189_칸반, 애자일의 Just In Time
 
+📂 **브런치북: PO가 꼭 알아야 할 것들**
+
+
 ![대표 이미지](/brunch_web_assets/images/189_%EC%B9%B8%EB%B0%98%2C%20%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%98%20Just%20In%20Time_cover.jpg)
 
 안녕하세요, 애자일을 사랑하는 여러분! 오늘은 애자일과 DevOps의 핵심 프레임워크 중 하나인 '칸반'에 대해 이야기를 나누고자 합니다.

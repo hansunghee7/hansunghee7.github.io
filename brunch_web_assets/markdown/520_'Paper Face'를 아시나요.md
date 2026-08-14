@@ -6,6 +6,9 @@ category: '미분류'
 
 # 📝 520_'Paper Face'를 아시나요
 
+📂 **미분류**
+
+
 #### 
 
 #### [여섯 색깔 모자](https://brunch.co.kr/@simplifier/96 "https://brunch.co.kr/@simplifier/96") 응용편 ‘고객에 빙의하기’입니다.

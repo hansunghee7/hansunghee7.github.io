@@ -6,6 +6,9 @@ category: '브런치북: AI의 언어들'
 
 # 📝 177_AI 칩 성능의 핵심, FLOPS와 TOPS 그리고..
 
+📂 **브런치북: AI의 언어들**
+
+
 ![대표 이미지](/brunch_web_assets/images/177_AI%20%EC%B9%A9%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%ED%95%B5%EC%8B%AC%2C%20FLOPS%EC%99%80%20TOPS%20%EA%B7%B8%EB%A6%AC%EA%B3%A0.._cover.jpg)
 
 AI 기술이 빠르게 발전하면서 AI 칩의 성능이 그 어느 때보다 중요해졌습니다. 그런데 AI 칩 성능을 결정짓는 요소가 뭔지 아시나요? 바로 FLOPS, TOPS, 그리고 메모리 대역폭인데요. 이 세 가지가 AI 모델의 학습 속도와 추론 능력을 좌우한다고 해요. 지금부터 하나씩 짚어보도록 할게요.

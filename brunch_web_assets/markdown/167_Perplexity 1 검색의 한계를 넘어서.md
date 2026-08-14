@@ -6,6 +6,9 @@ category: '미분류'
 
 # 📝 167_Perplexity 1 검색의 한계를 넘어서
 
+📂 **미분류**
+
+
 ![대표 이미지](/brunch_web_assets/images/167_Perplexity%201%20%EA%B2%80%EC%83%89%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EB%84%98%EC%96%B4%EC%84%9C_cover.jpg)
 
 안녕하세요, 스타트업 성공코치 한성희입니다. 오늘부터 5주간 '검색의 재정의'를 이끌고 있는 Perplexity AI의 기술을 심층 분석하는 시리즈를 시작합니다.

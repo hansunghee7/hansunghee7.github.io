@@ -6,6 +6,9 @@ category: '미분류'
 
 # 📝 403_Simplifier GOOD즈 프로젝트
 
+📂 **미분류**
+
+
 ![KakaoTalk_Image_2024-04-30-06-16-42_001.jpeg](/brunch_web_assets/images/403_%EC%BD%94%EC%B9%98S%201%ED%99%94%20%27%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0%EC%82%AC%27_img_1.jpg)
 
 ![KakaoTalk_Image_2024-04-30-06-16-42_002.jpeg](/brunch_web_assets/images/403_%EC%BD%94%EC%B9%98S%201%ED%99%94%20%27%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0%EC%82%AC%27_img_10.jpg)

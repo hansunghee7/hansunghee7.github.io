@@ -6,6 +6,9 @@ category: '매거진: 심플리파이어 라이프'
 
 # 📝 356_logo branding
 
+📂 **매거진: 심플리파이어 라이프**
+
+
 ![대표 이미지](/brunch_web_assets/images/356_logo%20branding_cover.jpg)
 
 **#Simplifier #Branding "로고"**

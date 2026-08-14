@@ -6,6 +6,9 @@ category: '미분류'
 
 # 📝 117_AI가 PO를 대체한다 변화에서 PO가 살아남는 법
 
+📂 **미분류**
+
+
 ![대표 이미지](/brunch_web_assets/images/117_AI%EA%B0%80%20PO%EB%A5%BC%20%EB%8C%80%EC%B2%B4%ED%95%9C%EB%8B%A4%20%EB%B3%80%ED%99%94%EC%97%90%EC%84%9C%20PO%EA%B0%80%20%EC%82%B4%EC%95%84%EB%82%A8%EB%8A%94%20%EB%B2%95_cover.jpg)
 
 한 IT 회사의 제품 관리자(PM)는 최근 AI에 대한 고민이 깊었습니다.

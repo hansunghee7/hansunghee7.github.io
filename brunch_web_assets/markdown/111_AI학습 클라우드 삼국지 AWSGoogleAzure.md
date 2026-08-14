@@ -6,6 +6,9 @@ category: '미분류'
 
 # 📝 111_AI학습 클라우드 삼국지 AWSGoogleAzure
 
+📂 **미분류**
+
+
 ![대표 이미지](/brunch_web_assets/images/111_AI%ED%95%99%EC%8A%B5%20%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%20%EC%82%BC%EA%B5%AD%EC%A7%80%20AWSGoogleAzure_cover.jpg)
 
 AI 모델 개발이 비즈니스 핵심 경쟁력으로 자리잡으면서, 효율적인 AI 학습 인프라 선택은 기업 성패를 좌우하는 중요한 결정이 되었습니다. AWS Trainium, Google TPU, Azure H100은 각각 다른 강점을 가진 주요 클라우드 AI 솔루션입니다.
