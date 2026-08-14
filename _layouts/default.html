@@ -5,124 +5,188 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }}</title>
     
-    <!-- 브런치의 핵심 감성인 'Noto Sans KR' 폰트 불러오기 -->
+    <!-- 브런치의 핵심 감성: Noto Serif(명조체)와 Noto Sans(고딕체) 얇은 폰트 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&family=Noto+Serif+KR:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
-        /* 1. 기본 바탕 및 타이포그래피 (브런치 특유의 얇은 폰트와 자간) */
         body {
-            font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', '맑은 고딕', sans-serif;
-            font-weight: 300; /* 브런치 감성의 핵심인 얇은 두께 */
-            line-height: 1.8;
-            letter-spacing: -0.05em; /* 글자 사이를 살짝 좁혀서 가독성 극대화 */
-            color: #333333;
-            background-color: #ffffff;
             margin: 0;
             padding: 0;
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #fff;
+            color: #333;
             word-break: keep-all;
         }
 
-        /* 2. 본문 너비 및 정렬 (실제 브런치 PC 화면과 동일한 700px 최적화) */
-        .wrap_article {
+        /* --- 1. 풀스크린 커버 영역 (스크린샷 1) --- */
+        .cover-wrap {
+            position: relative;
+            width: 100%;
+            height: 100vh; /* 화면 전체 높이 꽉 채우기 */
+            background-color: #333;
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 상단 네비게이션바 */
+        .cover-header {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 40px;
+            z-index: 10;
+        }
+        .cover-logo {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 22px;
+            font-style: italic;
+            font-weight: 600;
+            letter-spacing: -1px;
+        }
+        .cover-category-pill {
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 20px;
+            padding: 5px 16px;
+            font-size: 12px;
+            font-weight: 300;
+            letter-spacing: -0.5px;
+        }
+
+        /* 하단 제목 및 정보 영역 */
+        .cover-bottom {
+            position: absolute;
+            bottom: 120px;
+            left: 0; right: 0;
+            text-align: center;
+            padding: 0 20px;
+        }
+        .cover-title {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 40px;
+            font-weight: 300;
+            margin: 0 0 10px 0;
+            line-height: 1.4;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5); /* 텍스트 가독성을 위한 그림자 */
+        }
+        .cover-subtitle {
+            font-size: 14px;
+            font-weight: 300;
+            opacity: 0.8;
+        }
+        
+        /* 맨 아래 작가명 및 화살표 */
+        .cover-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 0 40px;
+            font-size: 13px;
+            font-weight: 300;
+            opacity: 0.7;
+            position: absolute;
+            bottom: 40px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .cover-meta .author { font-style: italic; }
+        .down-arrow {
+            font-size: 20px;
+            animation: bounce 2s infinite; /* 통통 튀는 화살표 애니메이션 */
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+
+        /* --- 2. 본문 영역 (스크린샷 2) --- */
+        .article-body {
             max-width: 700px;
             margin: 0 auto;
-            padding: 60px 20px 100px 20px;
+            padding: 80px 20px 120px;
         }
-
-        /* 3. 상단 내비게이션 (뒤로 가기) */
-        .nav_header {
-            margin-bottom: 50px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 15px;
-        }
-        .btn_back {
-            display: inline-flex;
-            align-items: center;
-            color: #959595;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 400;
-            letter-spacing: -0.02em;
-            transition: color 0.2s;
-        }
-        .btn_back:hover {
-            color: #333;
-        }
-        .btn_back::before {
-            content: '〈';
-            margin-right: 5px;
-            font-size: 12px;
-        }
-
-        /* 4. 글 제목 영역 */
-        .article_title {
-            font-family: 'Noto Serif KR', serif; /* 브런치가 제목에 자주 쓰는 명조체 감성 */
-            font-size: 32px;
-            font-weight: 400;
-            line-height: 1.4;
-            color: #111;
-            margin-top: 0;
-            margin-bottom: 30px;
-        }
-
-        /* 5. 본문 내 텍스트 스타일 */
-        .article_content p {
+        .article-body p {
             font-size: 16px;
+            font-weight: 300; /* 브런치 특유의 얇은 굵기 */
+            line-height: 2.1; /* 아주 넉넉한 줄 간격 */
             color: #333;
-            margin-top: 0;
-            margin-bottom: 28px; /* 단락 사이의 넉넉한 여백 */
+            margin-bottom: 35px;
         }
-
-        /* 6. 본문 내 이미지 스타일 */
-        .article_content img {
+        .article-body img {
             max-width: 100%;
             height: auto;
+            margin: 60px 0;
             display: block;
-            margin: 40px auto; /* 이미지 위아래 여백을 넓게 */
         }
-
-        /* 7. 인용구(Blockquote) 스타일 (브런치 시그니처인 왼쪽 초록색 선) */
-        .article_content blockquote {
-            border-left: 3px solid #00c73c; /* 브런치 시그니처 민트색 */
-            margin: 40px 0;
-            padding: 2px 0 2px 20px;
-            color: #666;
-            font-size: 16px;
-        }
-        .article_content blockquote p {
-            margin-bottom: 0;
-        }
-
-        /* 8. 구분선 스타일 */
-        .article_content hr {
+        .article-body hr {
             border: 0;
-            border-top: 1px solid #eee;
-            margin: 50px auto;
-            width: 30%; /* 브런치 특유의 짧고 은은한 중앙 구분선 */
+            border-top: 1px solid #eaeaea;
+            margin: 80px 0;
         }
-
-        /* 9. 카테고리 태그 텍스트 (우리가 강제로 넣은 📂 텍스트의 디자인) */
-        .article_content p:first-of-type {
-            font-size: 13px;
-            color: #00c73c;
-            font-weight: 500;
-            margin-bottom: 40px;
-        }
+        
+        /* 자바스크립트로 숨길 요소들 클래스 */
+        .hidden-element { display: none !important; }
     </style>
 </head>
 <body>
-    <div class="wrap_article">
-        <!-- 상단 뒤로 가기 영역 -->
-        <div class="nav_header">
-            <a href="/" class="btn_back">작가의 다른 글 보기</a>
+    
+    <!-- 1. 커버 영역 -->
+    <div class="cover-wrap" id="coverWrap">
+        <div class="cover-header">
+            <div class="cover-logo">≡ brunch</div>
+            <div class="cover-category-pill">{{ page.category }}</div>
+            <div></div> <!-- 우측 아이콘 여백 -->
         </div>
         
-        <div class="article_content">
-            <!-- 마크다운 파일의 내용이 변환되어 들어갈 자리 -->
-            {{ content }}
+        <div class="cover-bottom">
+            <h1 class="cover-title">{{ page.title }}</h1>
+            <div class="cover-subtitle">'UX의 언어들' Spin Off</div>
+        </div>
+        
+        <div class="cover-meta">
+            <div class="author">by 심플리파이어 한성희</div>
+            <div class="down-arrow">↓</div>
         </div>
     </div>
+
+    <!-- 2. 본문 영역 -->
+    <div class="article-body" id="articleBody">
+        {{ content }}
+    </div>
+
+    <!-- 3. 마법의 자바스크립트 -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const articleBody = document.getElementById('articleBody');
+            
+            // 본문에 있던 '대표 이미지'를 찾아서 전체화면 커버 배경으로 이동!
+            const coverImg = articleBody.querySelector('img[alt="대표 이미지"]');
+            const coverWrap = document.getElementById('coverWrap');
+            if (coverImg) {
+                // 이미지가 밝아도 흰 글씨가 잘 보이도록 어두운 그라데이션(Overlay) 씌우기
+                coverWrap.style.backgroundImage = 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%), url(' + coverImg.src + ')';
+                coverImg.classList.add('hidden-element'); // 본문에서는 숨김
+            }
+
+            // 본문에 강제로 넣었던 투박한 텍스트 제목 숨기기
+            const h1s = articleBody.querySelectorAll('h1');
+            if(h1s.length > 0) h1s[0].classList.add('hidden-element');
+
+            // 본문에 강제로 넣었던 📂 카테고리 텍스트 숨기기
+            const ps = articleBody.querySelectorAll('p');
+            ps.forEach(p => {
+                if(p.textContent.includes('📂')) {
+                    p.classList.add('hidden-element');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
