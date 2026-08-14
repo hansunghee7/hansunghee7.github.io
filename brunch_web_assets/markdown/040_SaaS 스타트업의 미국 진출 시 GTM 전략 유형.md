@@ -1,10 +1,9 @@
 ---
-title: "SaaS 스타트업의 미국 진출 시 GTM 전략 유형"
-date: "Aug 31. 2025"
-category: "브런치북: 대한민국 스타트업 미국진출을 묻다"
-cover_image: "../images/040_SaaS%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EB%AF%B8%EA%B5%AD%20%EC%A7%84%EC%B6%9C%20%EC%8B%9C%20GTM%20%EC%A0%84%EB%9E%B5%20%EC%9C%A0%ED%98%95_cover.jpg"
-summary: "GTM(Go-To-Market) 전략이란 제품을 시장에 들고 나가는 접근 방식을 말합니다. SaaS 스타트업의 미국 진출에서는 일반적으로 네 가지 GTM 전략을 활용합니다.  제품주도성장(PLG)은 제품 자체가 영업사원 역할을 하는 전략입니다. 무료 트라이얼이나 프리미엄 모델로 사용자가 직접 써보고 전환하게 유도합니다. Slack이 직원들이 무료로 써보다"
+layout: default
+title: '040_SaaS 스타트업의 미국 진출 시 GTM 전략 유형'
 ---
+
+# 📝 040_SaaS 스타트업의 미국 진출 시 GTM 전략 유형
 
 GTM(Go-To-Market) 전략이란 제품을 시장에 들고 나가는 접근 방식을 말합니다. SaaS 스타트업의 미국 진출에서는 일반적으로 네 가지 GTM 전략을 활용합니다.
 

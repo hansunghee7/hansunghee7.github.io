@@ -1,10 +1,9 @@
 ---
-title: "PM, PL, TPM의 차이 한눈에 보기"
-date: "May 23. 2025"
-category: "브런치북: PO가 꼭 알아야 할 것들"
-cover_image: "../images/132_PM%2C%20PL%2C%20TPM%EC%9D%98%20%EC%B0%A8%EC%9D%B4%20%ED%95%9C%EB%88%88%EC%97%90%20%EB%B3%B4%EA%B8%B0_cover.jpg"
-summary: "PO가 꼭 알아야 할 것들 | 프로젝트 성공을 위해 다양한 역할이 필요합니다. PM, PL, TPM은 IT 업계에서 흔히 볼 수 있는 리더십 포지션이지만, 그 차이를 명확히 이해하는 사람은 많지 않습니다. 각 역할의 주요 책임과 중점 영역을 살펴보겠습니다.  PM(Product/Project Manager), 제품의 마에스트로 PM은 제품/프로젝트의 전반을 이끄는 지휘자예요. 제품의 비"
+layout: default
+title: '132_PM, PL, TPM의 차이 한눈에 보기'
 ---
+
+# 📝 132_PM, PL, TPM의 차이 한눈에 보기
 
 프로젝트 성공을 위해 다양한 역할이 필요합니다. PM, PL, TPM은 IT 업계에서 흔히 볼 수 있는 리더십 포지션이지만, 그 차이를 명확히 이해하는 사람은 많지 않습니다. 각 역할의 주요 책임과 중점 영역을 살펴보겠습니다.
 
@@ -18,7 +17,7 @@ PM은 제품/프로젝트의 전반을 이끄는 지휘자예요.
 
 일정 관리, 우선순위 조정, 이해관계자와의 소통이 PM의 핵심 역량이에요.
 
-![project-manager-vs-project-leader-slide1.png](../images/132_PM%2C%20PL%2C%20TPM%EC%9D%98%20%EC%B0%A8%EC%9D%B4%20%ED%95%9C%EB%88%88%EC%97%90%20%EB%B3%B4%EA%B8%B0_img_1.jpg)
+![project-manager-vs-project-leader-slide1.png](/brunch_web_assets/images/132_PM%2C%20PL%2C%20TPM%EC%9D%98%20%EC%B0%A8%EC%9D%B4%20%ED%95%9C%EB%88%88%EC%97%90%20%EB%B3%B4%EA%B8%B0_img_1.jpg)
 
 **PL(Project Leader), 실전에서 팀을 이끄는 리더**
 
@@ -30,7 +29,7 @@ PL은 PM을 도와 실제 팀을 리드하는 실무 책임자입니다.
 
 실무 역량과 리더십을 겸비해야 하는 만능 플레이어랍니다.
 
-![1-1024x576.png](../images/132_PM%2C%20PL%2C%20TPM%EC%9D%98%20%EC%B0%A8%EC%9D%B4%20%ED%95%9C%EB%88%88%EC%97%90%20%EB%B3%B4%EA%B8%B0_img_2.jpg)
+![1-1024x576.png](/brunch_web_assets/images/132_PM%2C%20PL%2C%20TPM%EC%9D%98%20%EC%B0%A8%EC%9D%B4%20%ED%95%9C%EB%88%88%EC%97%90%20%EB%B3%B4%EA%B8%B0_img_2.jpg)
 
 **TPM(Technical Program Manager), 기술적 난제 해결사**
 
@@ -42,7 +41,7 @@ PM이 "왜 만드느냐(Why)"에 집중한다면, TPM은 "어떻게 만드느냐
 
 기술적 배경지식을 바탕으로 내부 개발팀을 조율하고, 리스크를 관리하죠.
 
-![title-what-is-a-technical-tpm.png](../images/132_PM%2C%20PL%2C%20TPM%EC%9D%98%20%EC%B0%A8%EC%9D%B4%20%ED%95%9C%EB%88%88%EC%97%90%20%EB%B3%B4%EA%B8%B0_img_3.jpg)
+![title-what-is-a-technical-tpm.png](/brunch_web_assets/images/132_PM%2C%20PL%2C%20TPM%EC%9D%98%20%EC%B0%A8%EC%9D%B4%20%ED%95%9C%EB%88%88%EC%97%90%20%EB%B3%B4%EA%B8%B0_img_3.jpg)
 
 이들의 환상의 팀플레이가 빛을 발하면...
 

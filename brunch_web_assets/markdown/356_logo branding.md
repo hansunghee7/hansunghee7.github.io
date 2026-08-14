@@ -1,10 +1,9 @@
 ---
-title: "logo branding"
-date: "Jul 14. 2024"
-category: "매거진: 심플리파이어 라이프"
-cover_image: "../images/356_logo%20branding_cover.jpg"
-summary: "#Simplifier #Branding '로고'  숙대에서 강의한 '링크드인 브랜딩 전략' 내용을 정제해서 업데이트합니다.    심플리파이어가 가지고 있는 의미는 복잡한 문제를 단순화하여 해결하는 사람이라는 뜻이다.  사업을 시작하고 링크드인, 사이트 그리고 명함 등에 사용될 로고가 필요했다. 처음에는 심플이라는 단어처럼 단순한 폰트로 SIMPLIFIER라"
+layout: default
+title: '356_logo branding'
 ---
+
+# 📝 356_logo branding
 
 **#Simplifier #Branding "로고"**
 
@@ -22,11 +21,11 @@ summary: "#Simplifier #Branding '로고'  숙대에서 강의한 '링크드인 �
 
 심플리파이어의 브랜드 이미지는 경험 많고 신뢰성 있는 전통적인 이미지를 주되, 스타트업에 어울리는 젊은 이미지가 필요했다. 마치 시원하지만 따뜻한 느낌이면 좋겠어요 같은... 이 이율배반적 요구에 신디자이너는 그에 걸맞은 로고를 만들어주었다.
 
-![Screenshot_20240714_084913_Drive.jpg](../images/356_logo%20branding_img_1.jpg)
+![Screenshot_20240714_084913_Drive.jpg](/brunch_web_assets/images/356_logo%20branding_img_1.jpg)
 
 원래 실력은 알고 있었지만 결과물을 보며 다시 한번 감탄을 하게 되었고, 멋진 로고 덕분에 명함뿐만 아니라 브랜딩 굿즈까지 제작을 하게 되는 계기가 되었다.
 
-![20240714_084417.jpg](../images/356_logo%20branding_img_2.jpg)
+![20240714_084417.jpg](/brunch_web_assets/images/356_logo%20branding_img_2.jpg)
 
 실력 좋고, 인성 좋은 사람과 희로애락을 함께해라.
 
@@ -34,4 +33,4 @@ summary: "#Simplifier #Branding '로고'  숙대에서 강의한 '링크드인 �
 
 ---
 
-![스크린샷 2024-07-14 오전 9.13.20.png](../images/356_logo%20branding_img_3.jpg)
+![스크린샷 2024-07-14 오전 9.13.20.png](/brunch_web_assets/images/356_logo%20branding_img_3.jpg)

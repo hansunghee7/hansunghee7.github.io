@@ -1,14 +1,13 @@
 ---
-title: "ZeRO, 메모리최적화로 AI 비즈니스의 한계를 넓히다"
-date: "Jun 18. 2025"
-category: "브런치북: AI의 언어들"
-cover_image: "../images/103_ZeRO%2C%20%EB%A9%94%EB%AA%A8%EB%A6%AC%EC%B5%9C%EC%A0%81%ED%99%94%EB%A1%9C%20AI%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EB%84%93%ED%9E%88%EB%8B%A4_cover.jpg"
-summary: "AI의 언어들 | AI 모델이 점점 거대해지면서 기업들은 메모리 한계라는 도전에 직면하고 있습니다. 마이크로소프트 DeepSpeed 팀이 개발한 Zero Redundancy Optimizer(ZeRO)는 메모리 병목 현상을 혁신적으로 해결하여, 더 많은 기업이 대형 AI 모델 개발에 참여할 수 있는 가능성을 넓혔습니다.  ZeRO는 단순한 기술 최적화를 넘어 AI 비즈니스"
+layout: default
+title: '103_ZeRO, 메모리최적화로 AI 비즈니스의 한계를 넓히다'
 ---
+
+# 📝 103_ZeRO, 메모리최적화로 AI 비즈니스의 한계를 넓히다
 
 AI 모델이 점점 거대해지면서 기업들은 메모리 한계라는 도전에 직면하고 있습니다. 마이크로소프트 DeepSpeed 팀이 개발한 Zero Redundancy Optimizer(ZeRO)는 메모리 병목 현상을 혁신적으로 해결하여, 더 많은 기업이 대형 AI 모델 개발에 참여할 수 있는 가능성을 넓혔습니다.
 
-![1_AHOACmpEgXaIxzK-UjjTOw.png](../images/103_ZeRO%2C%20%EB%A9%94%EB%AA%A8%EB%A6%AC%EC%B5%9C%EC%A0%81%ED%99%94%EB%A1%9C%20AI%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EB%84%93%ED%9E%88%EB%8B%A4_img_1.jpg)
+![1_AHOACmpEgXaIxzK-UjjTOw.png](/brunch_web_assets/images/103_ZeRO%2C%20%EB%A9%94%EB%AA%A8%EB%A6%AC%EC%B5%9C%EC%A0%81%ED%99%94%EB%A1%9C%20AI%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EB%84%93%ED%9E%88%EB%8B%A4_img_1.jpg)
 
 ZeRO는 단순한 기술 최적화를 넘어 AI 비즈니스 생태계에 중요한 변화를 가져오고 있습니다. 기존에는 GPT-3와 같은 대형 모델을 개발하려면 막대한 인프라 투자가 필요했지만, ZeRO는 이 진입장벽을 낮추고 있습니다. 물론 GPT-4급 초거대 모델은 여전히 상당한 자본과 인프라가 필요하지만, 10억~100억 파라미터급 모델은 더 접근하기 쉬워졌습니다.
 
@@ -18,7 +17,7 @@ ZeRO의 핵심은 기존 데이터 병렬 학습의 메모리 중복 문제를 �
 
 마이크로소프트는 ZeRO를 활용해 Turing-NLG(170억 파라미터) 모델을 개발했습니다. 공식 발표에 따르면, 이 모델은 256개 GPU로 효율적인 학습이 가능했으며, 기존 Megatron-LM만 사용했다면 1024개 GPU가 필요했을 것입니다. 이는 ZeRO가 실제 대규모 프로젝트에서 메모리 효율성을 크게 높일 수 있음을 보여주는 사례입니다.
 
-![GRACE-2023-BlogHeroFeature-1400x788-1.png](../images/103_ZeRO%2C%20%EB%A9%94%EB%AA%A8%EB%A6%AC%EC%B5%9C%EC%A0%81%ED%99%94%EB%A1%9C%20AI%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EB%84%93%ED%9E%88%EB%8B%A4_img_2.jpg)
+![GRACE-2023-BlogHeroFeature-1400x788-1.png](/brunch_web_assets/images/103_ZeRO%2C%20%EB%A9%94%EB%AA%A8%EB%A6%AC%EC%B5%9C%EC%A0%81%ED%99%94%EB%A1%9C%20AI%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EB%84%93%ED%9E%88%EB%8B%A4_img_2.jpg)
 
 ZeRO 도입을 위해서는 단계적 접근이 필요합니다.
 

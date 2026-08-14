@@ -1,14 +1,13 @@
 ---
-title: "기획자라면 꼭 알아야 할 LTV/CAC의진짜 의미"
-date: "Apr 29. 2025"
-category: "브런치북: 기획자의 프레임웍"
-cover_image: "../images/156_%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%9D%BC%EB%A9%B4%20%EA%BC%AD%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%20LTVCAC%EC%9D%98%EC%A7%84%EC%A7%9C%20%EC%9D%98%EB%AF%B8_cover.jpg"
-summary: "기획자의 프레임웍 | 고객을 유치하는 데 1만 원이 들고, 그 고객이 평생 우리 회사에 100만 원의 가치를 준다면? 망설일 이유가 없다. 이처럼 LTV(고객 생애 가치)와 CAC(고객 획득 비용)의 비교는 비즈니스의 본질을 꿰뚫는 프레임워크다.   LTV와 CAC는 SaaS 산업의 성장과 함께 주목받기 시작했다. 수익이 한 번이 아닌 지속적으로 발생하고, 디지털 환경에서 고객"
+layout: default
+title: '156_기획자라면 꼭 알아야 할 LTVCAC의진짜 의미'
 ---
+
+# 📝 156_기획자라면 꼭 알아야 할 LTVCAC의진짜 의미
 
 고객을 유치하는 데 1만 원이 들고, 그 고객이 평생 우리 회사에 100만 원의 가치를 준다면? 망설일 이유가 없다. 이처럼 LTV(고객 생애 가치)와 CAC(고객 획득 비용)의 비교는 비즈니스의 본질을 꿰뚫는 프레임워크다.
 
-![LTV-to-CAC-Ratio-Formula.jpg](../images/156_%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%9D%BC%EB%A9%B4%20%EA%BC%AD%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%20LTVCAC%EC%9D%98%EC%A7%84%EC%A7%9C%20%EC%9D%98%EB%AF%B8_img_1.jpg)
+![LTV-to-CAC-Ratio-Formula.jpg](/brunch_web_assets/images/156_%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%9D%BC%EB%A9%B4%20%EA%BC%AD%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%20LTVCAC%EC%9D%98%EC%A7%84%EC%A7%9C%20%EC%9D%98%EB%AF%B8_img_1.jpg)
 
 LTV와 CAC는 SaaS 산업의 성장과 함께 주목받기 시작했다. 수익이 한 번이 아닌 지속적으로 발생하고, 디지털 환경에서 고객별 가치 추적이 가능해졌기에 탄생할 수 있었던 개념이다.
 
@@ -18,7 +17,7 @@ LTV와 CAC는 SaaS 산업의 성장과 함께 주목받기 시작했다. 수익�
 
 LTV와 CAC는 이제 기업과 투자자들의 필수 언어가 되었다. 스타트업의 피칭에서도 이 두 단어는 빠지지 않는다. 펀딩의 설득력은 LTV/CAC 비율로 결정된다 해도 과언이 아니다.
 
-![How-to-Improve-CAC-LTV-Ratio.jpg](../images/156_%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%9D%BC%EB%A9%B4%20%EA%BC%AD%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%20LTVCAC%EC%9D%98%EC%A7%84%EC%A7%9C%20%EC%9D%98%EB%AF%B8_img_2.jpg)
+![How-to-Improve-CAC-LTV-Ratio.jpg](/brunch_web_assets/images/156_%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%9D%BC%EB%A9%B4%20%EA%BC%AD%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%20LTVCAC%EC%9D%98%EC%A7%84%EC%A7%9C%20%EC%9D%98%EB%AF%B8_img_2.jpg)
 
 그렇다면 기획자로서 이 프레임워크를 어떻게 활용할 수 있을까?
 

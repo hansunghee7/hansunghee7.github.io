@@ -1,10 +1,9 @@
 ---
-title: "Drop-off, 사용자가 떠나는 순간을 포착하는 방법"
-date: "May 22. 2025"
-category: "브런치북: UX의 언어들"
-cover_image: "../images/133_Drop-off%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B0%80%20%EB%96%A0%EB%82%98%EB%8A%94%20%EC%88%9C%EA%B0%84%EC%9D%84%20%ED%8F%AC%EC%B0%A9%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95_cover.jpg"
-summary: "UX의 언어들 | '장바구니에 담았는데 왜 구매는 안 할까?' '회원가입 폼에서 절반이 이탈하는 이유는 뭘까?' 디지털 서비스를 운영하는 모든 이들의 공통된 고민입니다. 이런 사용자 이탈 지점을 추적하고 분석하는 UX 용어가 바로 '드롭오프(Drop-off)'입니다.  '드롭오프(Drop-off)'라는 용어는 사용자가 특정 프로세스에서 '떨어져 나가는' 현상을 직관적으로 표"
+layout: default
+title: '133_Drop-off, 사용자가 떠나는 순간을 포착하는 방법'
 ---
+
+# 📝 133_Drop-off, 사용자가 떠나는 순간을 포착하는 방법
 
 "장바구니에 담았는데 왜 구매는 안 할까?" "회원가입 폼에서 절반이 이탈하는 이유는 뭘까?" 디지털 서비스를 운영하는 모든 이들의 공통된 고민입니다. 이런 사용자 이탈 지점을 추적하고 분석하는 UX 용어가 바로 '드롭오프(Drop-off)'입니다.
 
@@ -18,7 +17,7 @@ summary: "UX의 언어들 | '장바구니에 담았는데 왜 구매는 안 할�
 
 넷플릭스는 드롭오프 분석을 통해 회원가입 과정에서 사용자들이 이탈하는 주요 지점을 발견했습니다. 특히 신용카드 정보 입력 단계에서 높은 드롭오프율을 보이자, 이를 해결하기 위해 '첫 달 무료' 메시지 강조와 함께 폼 입력 과정을 간소화했습니다. 결과적으로 회원가입 완료율이 크게 상승했습니다.
 
-![Custom-Funnel-Path-through-Website-1024x614.png](../images/133_Drop-off%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B0%80%20%EB%96%A0%EB%82%98%EB%8A%94%20%EC%88%9C%EA%B0%84%EC%9D%84%20%ED%8F%AC%EC%B0%A9%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95_img_1.jpg)
+![Custom-Funnel-Path-through-Website-1024x614.png](/brunch_web_assets/images/133_Drop-off%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B0%80%20%EB%96%A0%EB%82%98%EB%8A%94%20%EC%88%9C%EA%B0%84%EC%9D%84%20%ED%8F%AC%EC%B0%A9%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95_img_1.jpg)
 
 드롭오프 분석의 핵심 이점은 다음과 같습니다.
 
@@ -38,7 +37,7 @@ summary: "UX의 언어들 | '장바구니에 담았는데 왜 구매는 안 할�
 
 개선 전후의 드롭오프 데이터를 비교함으로써, 변경사항이 실제로 효과가 있었는지 객관적으로 평가할 수 있습니다. 이는 데이터 기반 의사결정의 핵심입니다.
 
-![1_PJ84jwxQ2tPfhgrzSfzlEw.png](../images/133_Drop-off%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B0%80%20%EB%96%A0%EB%82%98%EB%8A%94%20%EC%88%9C%EA%B0%84%EC%9D%84%20%ED%8F%AC%EC%B0%A9%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95_img_2.jpg)
+![1_PJ84jwxQ2tPfhgrzSfzlEw.png](/brunch_web_assets/images/133_Drop-off%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B0%80%20%EB%96%A0%EB%82%98%EB%8A%94%20%EC%88%9C%EA%B0%84%EC%9D%84%20%ED%8F%AC%EC%B0%A9%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95_img_2.jpg)
 
 실무에서 드롭오프 분석을 적용한다면 다음과 같은 5단계 프로세스로 진행을 해보세요.
 
@@ -72,7 +71,7 @@ summary: "UX의 언어들 | '장바구니에 담았는데 왜 구매는 안 할�
 
 발견된 문제점을 해결할 수 있는 개선안을 도출하고, A/B 테스트를 통해 효과를 검증합니다. 효과가 입증된 변경사항만 정식으로 적용합니다.
 
-![6853ae76-6d74-472a-bb2a-2dfd537998fa.png](../images/133_Drop-off%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B0%80%20%EB%96%A0%EB%82%98%EB%8A%94%20%EC%88%9C%EA%B0%84%EC%9D%84%20%ED%8F%AC%EC%B0%A9%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95_img_3.jpg)
+![6853ae76-6d74-472a-bb2a-2dfd537998fa.png](/brunch_web_assets/images/133_Drop-off%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B0%80%20%EB%96%A0%EB%82%98%EB%8A%94%20%EC%88%9C%EA%B0%84%EC%9D%84%20%ED%8F%AC%EC%B0%A9%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95_img_3.jpg)
 
 드롭오프 분석을 해야할 때 피해야 할 함정들이 있습니다. 아래 사항을 주의하세요.
 

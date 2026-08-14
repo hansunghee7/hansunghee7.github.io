@@ -1,10 +1,9 @@
 ---
-title: "CPO는 어떻게 일을 할까? Part 2. 수평적 관점"
-date: "Apr 7. 2024"
-category: "매거진: 스타트업 리더의 기술"
-cover_image: "../images/423_%EA%B0%80%EB%81%94%EC%9D%80%20%EB%8A%90%EB%A6%B0%20%EC%82%AC%EB%9E%8C%EC%9D%B4%20%EB%8D%94%20%EB%B9%A8%EB%A6%AC%20%EA%B0%80%EB%8A%94%20%EC%9D%B4%EC%9C%A0_cover.jpg"
-summary: "CPO의 기술 | CPO가 되었을 때 단일 스쿼드를 관리하던 PM/PO 때와는 수준이 다른 다양한 난감한 일들이 생긴다. 그중 가장 어려워하는 점은 Part 1의 '복수의 스쿼드가 효과적으로 돌아가는 생산 조직 체계를 구성하는 것'과 이번 Part2의 '프로덕트 조직과 유관 부서 간의 과제 인입 프로토콜을 만드는 것'이다.  CPO가 되면 Part 1의 경영진 회의에서 결정"
+layout: default
+title: '423_CPO는 어떻게 일을 할까 Part 2. 수평적 관점'
 ---
+
+# 📝 423_CPO는 어떻게 일을 할까 Part 2. 수평적 관점
 
 #### 
 

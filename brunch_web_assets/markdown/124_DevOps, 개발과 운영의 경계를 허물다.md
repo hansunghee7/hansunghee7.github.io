@@ -1,14 +1,13 @@
 ---
-title: "DevOps, 개발과 운영의 경계를 허물다"
-date: "May 30. 2025"
-category: "브런치북: PO가 꼭 알아야 할 것들"
-cover_image: "../images/124_DevOps%2C%20%EA%B0%9C%EB%B0%9C%EA%B3%BC%20%EC%9A%B4%EC%98%81%EC%9D%98%20%EA%B2%BD%EA%B3%84%EB%A5%BC%20%ED%97%88%EB%AC%BC%EB%8B%A4_cover.jpg"
-summary: "PO가 꼭 알아야 할 것들 | DevOps는 개발(Development)과 운영(Operations)의 합성어입니다. 단순한 용어 결합이 아니라, 개발자와 운영자가 한 팀이 되어 소프트웨어를 더 빠르고 안정적으로 제공하기 위한 문화와 철학, 그리고 실천 방법을 의미합니다.   전통적으로 개발팀과 운영팀은 각자의 영역에서 분리되어 일했습니다. 개발팀은 새로운 기능을 만드는 데 집중하고,"
+layout: default
+title: '124_DevOps, 개발과 운영의 경계를 허물다'
 ---
+
+# 📝 124_DevOps, 개발과 운영의 경계를 허물다
 
 DevOps는 개발(Development)과 운영(Operations)의 합성어입니다. 단순한 용어 결합이 아니라, 개발자와 운영자가 한 팀이 되어 소프트웨어를 더 빠르고 안정적으로 제공하기 위한 문화와 철학, 그리고 실천 방법을 의미합니다.
 
-![6-essential-DevOps-roles_DevOps.jpg](../images/124_DevOps%2C%20%EA%B0%9C%EB%B0%9C%EA%B3%BC%20%EC%9A%B4%EC%98%81%EC%9D%98%20%EA%B2%BD%EA%B3%84%EB%A5%BC%20%ED%97%88%EB%AC%BC%EB%8B%A4_img_1.jpg)
+![6-essential-DevOps-roles_DevOps.jpg](/brunch_web_assets/images/124_DevOps%2C%20%EA%B0%9C%EB%B0%9C%EA%B3%BC%20%EC%9A%B4%EC%98%81%EC%9D%98%20%EA%B2%BD%EA%B3%84%EB%A5%BC%20%ED%97%88%EB%AC%BC%EB%8B%A4_img_1.jpg)
 
 전통적으로 개발팀과 운영팀은 각자의 영역에서 분리되어 일했습니다. 개발팀은 새로운 기능을 만드는 데 집중하고, 운영팀은 시스템의 안정성을 유지하는 데 초점을 맞췄습니다. 하지만 이러한 분리는 소프트웨어 출시 과정에서 병목 현상과 지연을 야기했습니다.
 
@@ -40,7 +39,7 @@ CI/CD, 이슈 트래킹, 모니터링 등 DevOps 도구를 익히고, 기획 단
 
 DevOps 환경에서는 빠른 배포만큼 빠른 장애 대응도 중요합니다. 기획자는 장애 발생 시 신속한 의사결정을 통해 롤백이나 핫픽스를 지원해야 합니다. 또한 장애를 단순한 실패가 아닌 학습의 기회로 바라보는 문화를 조성해야 합니다.
 
-![dan-ashby-devops-min.jpg](../images/124_DevOps%2C%20%EA%B0%9C%EB%B0%9C%EA%B3%BC%20%EC%9A%B4%EC%98%81%EC%9D%98%20%EA%B2%BD%EA%B3%84%EB%A5%BC%20%ED%97%88%EB%AC%BC%EB%8B%A4_img_2.jpg)
+![dan-ashby-devops-min.jpg](/brunch_web_assets/images/124_DevOps%2C%20%EA%B0%9C%EB%B0%9C%EA%B3%BC%20%EC%9A%B4%EC%98%81%EC%9D%98%20%EA%B2%BD%EA%B3%84%EB%A5%BC%20%ED%97%88%EB%AC%BC%EB%8B%A4_img_2.jpg)
 
 DevOps는 개발과 운영의 경계를 허무는 문화입니다. 기술적 자동화도 중요하지만, 더 중요한 것은 협업과 소통, 그리고 지속적인 개선을 추구하는 마인드셋입니다. 기획자 역시 DevOps 마인드셋으로, 변화에 빠르게 대응하고, 협업과 자동화를 실천할 때 비로소 진정한 애자일 조직이 됩니다.
 

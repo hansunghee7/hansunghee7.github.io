@@ -1,10 +1,9 @@
 ---
-title: "키워드로 알아보는 서비스기획자, PM, PO의 차이"
-date: "Sep 25. 2023"
-category: "매거진: 기획자로 시작하기"
-cover_image: "../images/605_%EB%84%88%20%EC%A7%84%EC%9E%91%EC%97%90%20%EC%9D%B4%EB%A0%87%EA%B2%8C%20%ED%96%88%EC%9C%BC%EB%A9%B4%20%ED%95%98%EB%B2%84%EB%93%9C%20%EA%B0%94%EA%B2%A0%EB%8B%A4_cover.jpg"
-summary: "올해 초, 큰 기업으로부터 ‘PM 리더십’ 강의 의뢰가 들어왔고, 전 2일 차 강의를 맡게 되었습니다. 해당 기업에 건설부문이 있기도 하여 강의 전 그 회사에서의 PM의 역할이 Product Manager인지? Project Manager인지? Product Owner인지? 문의를 했으나 담당자에게 정확히 모르겠다는 피드백을 받았습니다.  아니나 다를까 1"
+layout: default
+title: '605_키워드로 알아보는 서비스기획자, PM, PO의 차이'
 ---
+
+# 📝 605_키워드로 알아보는 서비스기획자, PM, PO의 차이
 
 #### 
 

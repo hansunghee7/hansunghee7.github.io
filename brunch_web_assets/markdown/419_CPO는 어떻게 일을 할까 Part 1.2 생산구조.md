@@ -1,10 +1,9 @@
 ---
-title: "CPO는 어떻게 일을 할까? Part 1.2 생산구조"
-date: "Apr 11. 2024"
-category: "매거진: 스타트업 리더의 기술"
-cover_image: "../images/419_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%BD%9C%EB%9D%BC%EB%B3%B4%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_cover.jpg"
-summary: "1. 여러분이 만약 스마트폰 SW 전문가인데, 어느 날 갑자기 스마트폰 제조 공장의 공장장이 되어서 공장 제조 프로세스를 설계하고, 제조 컨베이어벨트를 설치하고, 각 위치 별로 사람을 배치하고, 스마트폰 요구사항을 취합한 후 각 컨베이어 벨트에 배분을 하는 역할로 바뀐다면 어떨까 같은가?  이게 PO가 CPO가 되었을 때의 상황과 유사하다. 성공적인 제품기"
+layout: default
+title: '419_CPO는 어떻게 일을 할까 Part 1.2 생산구조'
 ---
+
+# 📝 419_CPO는 어떻게 일을 할까 Part 1.2 생산구조
 
 심플리파이어 콜라보 1탄 : 브랜드백
 
@@ -12,9 +11,9 @@ summary: "1. 여러분이 만약 스마트폰 SW 전문가인데, 어느 날 갑
 
 심플리파이어 X WEAST X 백프로가 함께 한 한정판 콜라보백입니다.
 
-![437592617_10160000131907776_5311422277099436224_n.jpg](../images/419_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%BD%9C%EB%9D%BC%EB%B3%B4%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_img_1.jpg)
+![437592617_10160000131907776_5311422277099436224_n.jpg](/brunch_web_assets/images/419_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%BD%9C%EB%9D%BC%EB%B3%B4%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_img_1.jpg)
 
-![436906032_10160000132212776_4397478364295992940_n.jpg](../images/419_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%BD%9C%EB%9D%BC%EB%B3%B4%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_img_2.jpg)
+![436906032_10160000132212776_4397478364295992940_n.jpg](/brunch_web_assets/images/419_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%BD%9C%EB%9D%BC%EB%B3%B4%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_img_2.jpg)
 
 친환경 소재인 듀폰 타이벡(tyvek) 소재로 만든 가방으로 한 쪽은 Simplifier 로고를 심플하게, 한 쪽은 잉크드인 유니버시티 캐릭터들이 귀염뽀짝하게 그려져 있습니다.
 
@@ -32,8 +31,8 @@ summary: "1. 여러분이 만약 스마트폰 SW 전문가인데, 어느 날 갑
 
 #백프로 [Soyoung Park](https://www.linkedin.com/in/soyoung-park-48b04a26a/ "https://www.linkedin.com/in/soyoung-park-48b04a26a/") #브랜드백 #에코백 #친환경백 #포장백
 
-![435375973_10160000132717776_4213994713489341050_n.jpg](../images/419_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%BD%9C%EB%9D%BC%EB%B3%B4%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_img_3.jpg)
+![435375973_10160000132717776_4213994713489341050_n.jpg](/brunch_web_assets/images/419_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%BD%9C%EB%9D%BC%EB%B3%B4%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_img_3.jpg)
 
-![437595342_10160000132752776_906712673501764058_n.jpg](../images/419_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%BD%9C%EB%9D%BC%EB%B3%B4%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_img_4.jpg)
+![437595342_10160000132752776_906712673501764058_n.jpg](/brunch_web_assets/images/419_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%BD%9C%EB%9D%BC%EB%B3%B4%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_img_4.jpg)
 
-![436454771_10160000132802776_485272992187702884_n.jpg](../images/419_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%BD%9C%EB%9D%BC%EB%B3%B4%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_img_5.jpg)
+![436454771_10160000132802776_485272992187702884_n.jpg](/brunch_web_assets/images/419_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%BD%9C%EB%9D%BC%EB%B3%B4%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_img_5.jpg)
