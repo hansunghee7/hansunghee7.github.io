@@ -16,10 +16,7 @@ category: 'Simplifier'
     #scrollSentinel { height: 50px; margin-top: 30px; }
 </style>
 
-<div style="margin-bottom: 25px; color: #666; font-weight: 300; font-size: 15px;">
-    Simplifier의 608개의 글입니다. 카테고리를 선택해 글을 둘러보세요!
-</div>
-
+<!-- 본문 안내 문구 삭제 후 바로 필터 영역 배치 -->
 <div class="category-filter">
     <button class="cat-btn active" data-filter="all">전체보기</button>
     <button class="cat-btn" data-filter="AI의 언어들">AI의 언어들</button>

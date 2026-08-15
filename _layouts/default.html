@@ -51,13 +51,19 @@
             line-height: 1.2;
             text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
+        .cover-sub {
+            font-size: 13px;
+            font-weight: 300;
+            opacity: 0.85;
+            margin-top: 8px;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.5);
+        }
 
         .article-body { max-width: 1100px; margin: 0 auto; padding: 40px 20px 120px; }
         .article-body p { font-size: 16px; font-weight: 300; line-height: 2.1; margin-bottom: 35px; }
         .article-body img { max-width: 100%; height: auto; margin: 60px 0; display: block; }
         .article-body hr { border: 0; border-top: 1px solid #eaeaea; margin: 80px 0; }
 
-        /* 🖼️ PC 기준 한 행에 4개씩 나오도록 카드 그리드 폭 조정 */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -162,6 +168,7 @@
         
         <div class="cover-bottom-left">
             <h1 class="cover-title" id="displayTitle">{{ page.title }}</h1>
+            <div class="cover-sub">심플리파이어의 608개의 글</div>
         </div>
     </div>
 
