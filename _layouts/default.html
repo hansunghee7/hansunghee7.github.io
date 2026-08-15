@@ -53,24 +53,24 @@
         .down-arrow { display: inline-block; font-size: 26px; color: #fff; text-decoration: none; transition: transform 0.3s ease; opacity: 0.8; }
         .down-arrow:hover { transform: translateY(-8px); opacity: 1; }
 
-        /* --- 본문 컨테이너 (카드뷰에 맞춰 넓게 조정) --- */
+        /* --- 본문 컨테이너 --- */
         .article-body { max-width: 1100px; margin: 0 auto; padding: 60px 20px 120px; }
         .article-body p { font-size: 16px; font-weight: 300; line-height: 2.1; margin-bottom: 35px; }
         .article-body img { max-width: 100%; height: auto; margin: 60px 0; display: block; }
         .article-body hr { border: 0; border-top: 1px solid #eaeaea; margin: 80px 0; }
 
-        /* --- 🎨 카드 뷰 (Card View) 전용 스타일 --- */
+        /* --- 🎨 3:2 카드 뷰 스타일 --- */
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 30px;
         }
         .card-item {
-            display: none; /* 필터 및 더보기 제어용 기본 숨김 */
+            display: none;
             background: #fff;
             border: 1px solid #f0f0f0;
-            border-radius: 4px;
+            border-radius: 8px;
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-decoration: none;
@@ -82,16 +82,17 @@
             transform: translateY(-6px);
             box-shadow: 0 12px 24px rgba(0,0,0,0.08);
         }
-        /* 세로형 이미지 표지 영역 */
+        
+        /* 🖼️ 3:2 비율 가로형 이미지 영역 */
         .card-thumb {
             width: 100%;
-            height: 320px;
+            aspect-ratio: 3 / 2; /* 3:2 비율 고정 */
             background-color: #f7f7f7;
             background-size: cover;
             background-position: center;
             border-bottom: 1px solid #f0f0f0;
         }
-        /* 카드 텍스트 콘텐츠 영역 */
+        
         .card-content {
             padding: 20px;
             display: flex;
@@ -107,7 +108,7 @@
         }
         .card-title {
             font-family: 'Noto Serif KR', serif;
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 400;
             color: #222;
             line-height: 1.4;
@@ -117,14 +118,15 @@
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
-        .card-author {
+        /* 📅 등록일 스타일 */
+        .card-date {
             font-size: 12px;
-            color: #999;
-            font-style: italic;
+            color: #aaaaaa;
             margin-top: auto;
+            font-weight: 300;
         }
 
-        /* --- 🔘 필터 버튼 & 더보기 버튼 스타일 --- */
+        /* --- 🔘 필터 및 더보기 버튼 --- */
         .category-filter {
             display: flex;
             flex-wrap: wrap;
