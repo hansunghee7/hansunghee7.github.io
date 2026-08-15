@@ -135,7 +135,6 @@ for p in posts:
     prev_post = cat_list[idx - 1] if idx > 0 else None
     next_post = cat_list[idx + 1] if idx >= 0 and idx < len(cat_list) - 1 else None
 
-    # 🌟 브라우저 화면 좌우 끝(100vw)으로 확장 및 실시간 카테고리명 반영 HTML
     nav_html = "\n\n<!-- CATEGORY_NAV_START -->\n<style>\n" \
                ".category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }\n" \
                ".cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }\n" \
@@ -171,13 +170,16 @@ html_header = f"---\nlayout: default\ntitle: 'Simplifier Log {post_count}'\nis_i
 
 default_sorts_json = json.dumps(CATEGORY_SORT_DEFAULTS, ensure_ascii=False)
 
+# 🌟 상단 모든 구조(header, header-bg, hero, nav 등)에 딥 블랙(#111111) 강제 부여
 html_body = """<style>
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 .card-item.visible { display: flex !important; animation: fadeInUp 0.4s ease forwards; }
 #scrollSentinel { height: 50px; margin-top: 30px; }
 
-.site-header, .header-wrap, .hero-section, .intro-banner {
+/* 🖤 상단 타이틀 및 헤더 영역 전체를 딥 블랙(#111111)으로 강제 적용 */
+header, .site-header, .header-wrap, .hero-section, .intro-banner, .header-bg, .top-bar, div[class*="header"], div[class*="hero"] {
     background-color: #111111 !important;
+    background: #111111 !important;
     color: #ffffff !important;
 }
 
@@ -239,4 +241,4 @@ const observer = new IntersectionObserver(entries => { entries.forEach(entry => 
 with open(index_file, 'w', encoding='utf-8') as f:
     f.write(html_header + html_body)
 
-print("✅ 하단 네비게이션: 풀-블리드 라인, 화면 양 끝 배치, 실제 카테고리명 반영 완료!")
+print("✅ 상단 모든 헤더 구조에 딥 블랙(#111111) 강제 적용 완료!")
