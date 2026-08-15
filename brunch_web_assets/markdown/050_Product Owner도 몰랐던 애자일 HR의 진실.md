@@ -24,7 +24,21 @@ Google은 연간 성과평가를 완전히 폐지한 것이 아니라, 기존 �
 
 박차장의 팀은 작은 실험부터 시작했다. 개발팀 대상으로 월간 체크인을 도입하고, 신입 채용에 실무진을 참여시켰다. 6개월 후 팀원들이 "내 의견이 반영된다"고 느끼기 시작했고, 채용 미스매치도 줄어들었다.
 
-Product Owner로서 우리가 제품의 사용자 경험을 개선하듯, 조직의 "직원 경험"도 함께 개선해나갈 때 진정한 애자일 조직이 완성된다. 애자일 HR의 본질은 프로세스를 사람에게 맞추는 것이지, 사람을 프로세스에 끼워맞추는 게 아니다.https://www.yes24.com/product/goods/193444437
+Product Owner로서 우리가 제품의 사용자 경험을 개선하듯, 조직의 "직원 경험"도 함께 개선해나갈 때 진정한 애자일 조직이 완성된다. 애자일 HR의 본질은 프로세스를 사람에게 맞추는 것이지, 사람을 프로세스에 끼워맞추는 게 아니다.<!-- CATEGORY_NAV_START -->
+<style>
+.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
+.cat-nav-item:hover { color: #111; }
+.cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
+.cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
+.nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
+</style>
+<div class="category-nav-wrap">
+  <div></div>
+  <a href="/brunch_web_assets/markdown/057_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20vs%20%EB%8C%80%EA%B8%B0%EC%97%85%20%EC%95%A0%EC%9E%90%EC%9D%BC%2C%20%EA%B7%9C%EB%AA%A8%EB%B3%84%20%EC%A0%81%EC%9A%A9%20%EC%A0%84%EB%9E%B5.html" class="cat-nav-item cat-nav-right"><span class="nav-title">스타트업 vs 대기업 애자일, 규모별 적용 전략</span><span class="cat-nav-label">'PO의 프레임웍'의 다음글</span></a>
+</div>
+<!-- CATEGORY_NAV_END -->
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->

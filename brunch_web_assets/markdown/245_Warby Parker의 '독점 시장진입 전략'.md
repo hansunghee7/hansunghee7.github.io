@@ -52,7 +52,21 @@ Warby Parker의 전략은 다음과 같습니다.
 
 여러분의 스타트업 전략은 무엇인가요? 저는 지난 25년간 스타트업부터 글로벌 IT 기업에서 프로덕트 전략을 수립했으며, 코칭과 강의를 통해 100개 이상의 스타트업들의 전략을 고민하고, 함께 만들어 가고 있습니다.
 
-고민이 되는 전략이 있다면 댓글을 남겨주세요. 커피챗을 요청해주셔도 좋아요. :-)https://www.yes24.com/product/goods/193444437
+고민이 되는 전략이 있다면 댓글을 남겨주세요. 커피챗을 요청해주셔도 좋아요. :-)<!-- CATEGORY_NAV_START -->
+<style>
+.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
+.cat-nav-item:hover { color: #111; }
+.cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
+.cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
+.nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
+</style>
+<div class="category-nav-wrap">
+  <a href="/brunch_web_assets/markdown/243_%EC%98%A4%ED%94%88AI%20%EC%83%98%20%EC%95%8C%ED%8A%B8%EB%A8%BC%EC%9D%B4%20%EC%84%A0%ED%83%9D%ED%95%9C%20%EC%9B%90%EC%9E%90%EB%A0%A5%EC%9D%98%20%EB%AF%B8%EB%9E%98%2C%20%EC%98%A4%ED%81%B4%EB%A1%9C.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'스타트업 인사이트'의 이전글</span><span class="nav-title">오픈AI 샘 알트먼이 선택한 원자력의 미래, 오클로</span></a>
+  <a href="/brunch_web_assets/markdown/246_%EC%BB%A4%EB%A8%B8%EC%8A%A4%20AI%EC%9D%98%20%EA%B2%8C%EC%9E%84%EC%B2%B4%EC%9D%B8%EC%A0%80%2C%20%EC%9D%B8%ED%95%B8%EC%8A%A4.html" class="cat-nav-item cat-nav-right"><span class="nav-title">커머스 AI의 게임체인저, 인핸스</span><span class="cat-nav-label">'스타트업 인사이트'의 다음글</span></a>
+</div>
+<!-- CATEGORY_NAV_END -->
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->

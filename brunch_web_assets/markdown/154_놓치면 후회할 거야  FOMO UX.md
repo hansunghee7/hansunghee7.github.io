@@ -36,7 +36,21 @@ FOMO는 본래 SNS 시대에 생겨난 사회 현상을 설명하는 개념이�
 
 당신의 서비스에도 사용자가 놓치고 싶지 않을 가치가 있나요? 그렇다면 FOMO의 힘을 빌려보는 것은 어떨까요? 단, 사용자의 신뢰를 잃지 않는 선에서 균형을 잡는 것이 중요합니다. FOMO는 불안이 아닌, 기대와 설렘을 주는 방향으로 쓰일 때 비로소 빛을 발하니까요.
 
-UX의 언어들이 책으로 나왔어요.https://www.yes24.com/product/goods/193444437
+UX의 언어들이 책으로 나왔어요.<!-- CATEGORY_NAV_START -->
+<style>
+.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
+.cat-nav-item:hover { color: #111; }
+.cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
+.cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
+.nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
+</style>
+<div class="category-nav-wrap">
+  <a href="/brunch_web_assets/markdown/147_%EC%95%B1%20%EC%84%B1%EB%8A%A5%EA%B3%BC%20UX%EC%B5%9C%EC%A0%81%ED%99%94%EA%B0%80%20%EB%A7%A4%EC%B6%9C%EC%9D%84%20%EC%A2%8C%EC%9A%B0%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'UX의 언어들'의 이전글</span><span class="nav-title">앱 성능과 UX최적화가 매출을 좌우하는 이유</span></a>
+  <a href="/brunch_web_assets/markdown/161_%ED%9B%84%EA%B4%91%ED%9A%A8%EA%B3%BC%28Halo%20Effect%29%2C%20UX%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%98%20%EC%B2%AB%EC%9D%B8%EC%83%81.html" class="cat-nav-item cat-nav-right"><span class="nav-title">후광효과(Halo Effect), UX 디자인의 첫인상</span><span class="cat-nav-label">'UX의 언어들'의 다음글</span></a>
+</div>
+<!-- CATEGORY_NAV_END -->
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->

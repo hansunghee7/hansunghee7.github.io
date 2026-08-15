@@ -24,7 +24,21 @@ JTBD는 기능적 니즈뿐만 아니라 정서적, 사회적 차원의 니즈�
 
 기획자가 JTBD를 활용할 때는 몇 가지 핵심 질문을 던져야 한다. "고객이 우리 제품을 통해 해결하고 싶은 '일'은 무엇인가?", "고객이 이 제품을 찾게 된 트리거는 무엇인가?", "고객이 기존에 사용하던 대체 솔루션은 무엇이었나?", "고객이 느끼는 가장 큰 불편함은 무엇인가?"
 
-JTBD는 기획자가 고객의 근본적인 니즈를 탐색하고, 진짜 문제를 해결하는 혁신의 실마리를 제공하는 강력한 도구다. 제품의 기능을 늘리는 것보다 고객의 '일'을 더 잘 해결하는 방향으로 우선순위를 설정할 때, 진정한 차별화와 성장의 기회를 포착할 수 있다.https://www.yes24.com/product/goods/193444437
+JTBD는 기획자가 고객의 근본적인 니즈를 탐색하고, 진짜 문제를 해결하는 혁신의 실마리를 제공하는 강력한 도구다. 제품의 기능을 늘리는 것보다 고객의 '일'을 더 잘 해결하는 방향으로 우선순위를 설정할 때, 진정한 차별화와 성장의 기회를 포착할 수 있다.<!-- CATEGORY_NAV_START -->
+<style>
+.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
+.cat-nav-item:hover { color: #111; }
+.cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
+.cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
+.nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
+</style>
+<div class="category-nav-wrap">
+  <a href="/brunch_web_assets/markdown/120_UX%205%20Planes%2C%20%EA%B2%BD%ED%97%98%20%EC%84%A4%EA%B3%84%EC%9D%98%20%EC%A7%80%EB%8F%84.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'기획자의 프레임웍'의 이전글</span><span class="nav-title">UX 5 Planes, 경험 설계의 지도</span></a>
+  <a href="/brunch_web_assets/markdown/135_%EC%A0%9C%ED%92%88%EC%9D%98%20%EC%83%9D%EB%AA%85%EC%84%A0%2C%20Retention%20Curve.html" class="cat-nav-item cat-nav-right"><span class="nav-title">제품의 생명선, Retention Curve</span><span class="cat-nav-label">'기획자의 프레임웍'의 다음글</span></a>
+</div>
+<!-- CATEGORY_NAV_END -->
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->

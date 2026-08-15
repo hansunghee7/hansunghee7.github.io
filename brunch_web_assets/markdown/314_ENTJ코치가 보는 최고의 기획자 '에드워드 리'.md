@@ -33,7 +33,21 @@ date_string: 'Oct 13. 2024'
 
 완성도 높은 작품을 봐서 좋았고, 뛰어난 요리사들의 기획과 요리솜씨를 보아서 좋았다. 한강 작가의 노벨상 수상을 포함하여 최근 들어 K콘텐츠들이 세상에 더욱 빛을 발하는 듯 하여 기분이 더욱 좋다.
 
-나는 내 자리에서 더욱 많은 한국의 스타트업들이 세상에 빛을 발하도록 노력하고 싶다. K 화이팅~!!!https://www.yes24.com/product/goods/193444437
+나는 내 자리에서 더욱 많은 한국의 스타트업들이 세상에 빛을 발하도록 노력하고 싶다. K 화이팅~!!!<!-- CATEGORY_NAV_START -->
+<style>
+.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
+.cat-nav-item:hover { color: #111; }
+.cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
+.cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
+.nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
+</style>
+<div class="category-nav-wrap">
+  <a href="/brunch_web_assets/markdown/311_%EC%96%B4%EB%96%A4%20%EC%A7%81%EC%9E%A5%EC%9D%84%20%EA%B3%A8%EB%9D%BC%EC%95%BC%20%ED%95%A0%EA%B9%8C%EC%9A%94.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'기획일상'의 이전글</span><span class="nav-title">어떤 직장을 골라야 할까요?</span></a>
+  <a href="/brunch_web_assets/markdown/327_%EC%9A%94%EA%B8%B0%EC%9A%94%EC%9D%98%20%EB%B6%80%ED%99%9C%EC%9D%84%20%EA%B8%B0%EB%8C%80%ED%95%98%EB%A9%B0.html" class="cat-nav-item cat-nav-right"><span class="nav-title">요기요의 부활을 기대하며...</span><span class="cat-nav-label">'기획일상'의 다음글</span></a>
+</div>
+<!-- CATEGORY_NAV_END -->
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->

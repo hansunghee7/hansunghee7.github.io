@@ -34,7 +34,21 @@ date_string: 'Apr 27. 2024'
 
 ![](//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/ysuBoHMSVkb9FuijrMn1PxOsGog)
 
-![](//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/8jasA-ssidyxGRJzo4geJasesUs)https://www.yes24.com/product/goods/193444437
+![](//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/8jasA-ssidyxGRJzo4geJasesUs)<!-- CATEGORY_NAV_START -->
+<style>
+.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
+.cat-nav-item:hover { color: #111; }
+.cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
+.cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
+.nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
+</style>
+<div class="category-nav-wrap">
+  <a href="/brunch_web_assets/markdown/399_%EB%82%B4%EA%B0%80%20%EC%9A%94%EC%A6%98%20%EC%A3%BC%EB%AA%A9%ED%95%98%EB%8A%94%20%27%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%ED%9E%88%EC%96%B4%EB%A1%9C%27%204%EC%9B%94%ED%98%B8.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'심플리파이어 라이프'의 이전글</span><span class="nav-title">내가 요즘 주목하는 '링크드인 히어로' 4월호</span></a>
+  <a href="/brunch_web_assets/markdown/410_%27%EC%BB%A4%EB%84%A5%ED%8C%85%20X%20%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%27%20%EB%B6%81%ED%86%A0%ED%81%AC%20%EC%9D%B4%EC%95%BC%EA%B8%B0.html" class="cat-nav-item cat-nav-right"><span class="nav-title">커넥팅 X 잉크드인' 북토크 이야기</span><span class="cat-nav-label">'심플리파이어 라이프'의 다음글</span></a>
+</div>
+<!-- CATEGORY_NAV_END -->
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->

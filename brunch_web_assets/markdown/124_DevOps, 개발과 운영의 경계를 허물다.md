@@ -46,7 +46,21 @@ DevOps는 개발과 운영의 경계를 허무는 문화입니다. 기술적 자
 
 DevOps는 단순히 도구나 프로세스의 문제가 아닙니다. 조직 전체가 고객 가치 창출을 위해 하나의 팀으로 움직이는 문화적 변혁입니다. 기획자가 이러한 변화를 이해하고 주도할 때, 조직은 더 빠르고 안정적인 서비스 제공이 가능해집니다.
 
-사용자의 이해를 높이기 위해서 알아야 할 언어는?https://www.yes24.com/product/goods/193444437
+사용자의 이해를 높이기 위해서 알아야 할 언어는?<!-- CATEGORY_NAV_START -->
+<style>
+.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
+.cat-nav-item:hover { color: #111; }
+.cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
+.cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
+.nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
+</style>
+<div class="category-nav-wrap">
+  <a href="/brunch_web_assets/markdown/117_AI%EA%B0%80%20PO%EB%A5%BC%20%EB%8C%80%EC%B2%B4%ED%95%9C%EB%8B%A4%20%EB%B3%80%ED%99%94%EC%97%90%EC%84%9C%20PO%EA%B0%80%20%EC%82%B4%EC%95%84%EB%82%A8%EB%8A%94%20%EB%B2%95.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'PO의 프레임웍'의 이전글</span><span class="nav-title">AI가 PO를 대체한다? 변화에서 PO가 살아남는 법</span></a>
+  <a href="/brunch_web_assets/markdown/132_PM%2C%20PL%2C%20TPM%EC%9D%98%20%EC%B0%A8%EC%9D%B4%20%ED%95%9C%EB%88%88%EC%97%90%20%EB%B3%B4%EA%B8%B0.html" class="cat-nav-item cat-nav-right"><span class="nav-title">PM, PL, TPM의 차이 한눈에 보기</span><span class="cat-nav-label">'PO의 프레임웍'의 다음글</span></a>
+</div>
+<!-- CATEGORY_NAV_END -->
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->

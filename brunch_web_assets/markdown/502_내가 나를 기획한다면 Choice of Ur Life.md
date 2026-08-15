@@ -40,7 +40,21 @@ date_string: 'Jan 15. 2024'
 
  여러분은 지금 기쁘신가요? 괴로우신가요?
 
- 그게 만약 나의 감정의 선택에 달렸다면 어떤 선택을 하실 건가요? :-)https://www.yes24.com/product/goods/193444437
+ 그게 만약 나의 감정의 선택에 달렸다면 어떤 선택을 하실 건가요? :-)<!-- CATEGORY_NAV_START -->
+<style>
+.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
+.cat-nav-item:hover { color: #111; }
+.cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
+.cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
+.nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
+</style>
+<div class="category-nav-wrap">
+  <a href="/brunch_web_assets/markdown/501_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%EC%83%9D%EC%A1%B4%EC%A0%84%EB%9E%B5%ED%8E%B8.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'기획일상'의 이전글</span><span class="nav-title">내가 나를 기획한다면? 링크드인 생존전략편</span></a>
+  <a href="/brunch_web_assets/markdown/504_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EC%BB%A4%EB%A6%AC%EC%96%B4%ED%95%B4%ED%82%B9%ED%8E%B8.html" class="cat-nav-item cat-nav-right"><span class="nav-title">내가 나를 기획한다면? 커리어해킹편</span><span class="cat-nav-label">'기획일상'의 다음글</span></a>
+</div>
+<!-- CATEGORY_NAV_END -->
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->

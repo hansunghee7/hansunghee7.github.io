@@ -44,7 +44,21 @@ Dropbox의 성공 비결은 '바이럴 루프(Viral Loop)'와 '자연스러운 �
 
 무료에서 유료로의 전환은 단순히 기능을 제한하거나 가격을 올리는 것으로 해결되지 않습니다. 사용자가 서비스의 핵심 가치를 경험하고, '유료로 전환할 이유'를 명확히 느끼게 하는 것이 핵심입니다.
 
-Dropbox처럼 사용자의 자연스러운 사용 패턴을 이해하고, 그에 맞는 전환 전략을 설계한다면 여러분의 스타트업도 지속 가능한 수익 모델을 구축할 수 있을 것입니다.https://www.yes24.com/product/goods/193444437
+Dropbox처럼 사용자의 자연스러운 사용 패턴을 이해하고, 그에 맞는 전환 전략을 설계한다면 여러분의 스타트업도 지속 가능한 수익 모델을 구축할 수 있을 것입니다.<!-- CATEGORY_NAV_START -->
+<style>
+.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
+.cat-nav-item:hover { color: #111; }
+.cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
+.cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
+.nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
+</style>
+<div class="category-nav-wrap">
+  <a href="/brunch_web_assets/markdown/121_%EC%9E%91%EA%B2%8C%20%EC%8B%9C%EC%9E%91%ED%95%B4%20%ED%81%AC%EA%B2%8C%20%ED%84%B0%ED%8A%B8%EB%A6%AC%EB%8A%94%20Slack%EC%9D%98%20%EC%B4%88%EA%B8%B0%EB%A7%88%EC%BC%80%ED%8C%85%EC%A0%84%EB%9E%B5.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'스타트업 인사이트'의 이전글</span><span class="nav-title">작게 시작해 크게 터트리는 Slack의 초기마케팅전략</span></a>
+  <a href="/brunch_web_assets/markdown/131_%EC%99%9C%20%EC%96%B4%EB%A0%A4%EC%9A%B4%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%84%20%EB%A7%88%EB%8B%A4%ED%95%98%EC%A7%80%20%EC%95%8A%EC%95%98%EC%9D%84%EA%B9%8C.html" class="cat-nav-item cat-nav-right"><span class="nav-title">왜 어려운 스타트업을 마다하지 않았을까?</span><span class="cat-nav-label">'스타트업 인사이트'의 다음글</span></a>
+</div>
+<!-- CATEGORY_NAV_END -->
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->

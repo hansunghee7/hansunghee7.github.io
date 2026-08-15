@@ -92,7 +92,21 @@ date_string: 'May 22. 2025'
 
 여러분의 서비스에서도 '드롭오프' 지점을 체계적으로 찾아내고 개선해보세요. 작은 UX 개선이 큰 비즈니스 성과로 이어질 수 있습니다.
 
-UX의 언어들이 책으로 나왔어요.https://www.yes24.com/product/goods/193444437
+UX의 언어들이 책으로 나왔어요.<!-- CATEGORY_NAV_START -->
+<style>
+.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
+.cat-nav-item:hover { color: #111; }
+.cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
+.cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
+.nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
+</style>
+<div class="category-nav-wrap">
+  <a href="/brunch_web_assets/markdown/125_%ED%9E%88%ED%8A%B8%EB%A7%B5%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%ED%96%89%EB%8F%99%EC%9D%84%20%EC%83%89%EC%9C%BC%EB%A1%9C%20%EC%9D%BD%EB%8A%94%20%EB%B2%95.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'UX의 언어들'의 이전글</span><span class="nav-title">히트맵, 사용자 행동을 색으로 읽는 법</span></a>
+  <a href="/brunch_web_assets/markdown/140_%EC%96%B4%ED%8F%AC%EB%8D%98%EC%8A%A4%20%EC%9D%B4%20%EB%B2%84%ED%8A%BC%2C%20%EC%99%9C%20%EB%88%84%EB%A5%B4%EA%B3%A0%20%EC%8B%B6%EC%9D%84%EA%B9%8C%20%EA%B7%B8%20%EB%B9%84%EB%B0%80.html" class="cat-nav-item cat-nav-right"><span class="nav-title">어포던스: "이 버튼, 왜 누르고 싶을까?" 그 비밀</span><span class="cat-nav-label">'UX의 언어들'의 다음글</span></a>
+</div>
+<!-- CATEGORY_NAV_END -->
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->

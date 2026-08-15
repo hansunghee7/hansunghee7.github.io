@@ -40,7 +40,21 @@ date_string: 'Apr 8. 2024'
 
 
 
- 여러분들의 회사의 수직적 흐름과 수평적 흐름의 위치는 어디쯤에 있는 것 같나요? 어려움이 있다면 댓글에 남겨주세요. :-)https://www.yes24.com/product/goods/193444437
+ 여러분들의 회사의 수직적 흐름과 수평적 흐름의 위치는 어디쯤에 있는 것 같나요? 어려움이 있다면 댓글에 남겨주세요. :-)<!-- CATEGORY_NAV_START -->
+<style>
+.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
+.cat-nav-item:hover { color: #111; }
+.cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
+.cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
+.nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
+</style>
+<div class="category-nav-wrap">
+  <a href="/brunch_web_assets/markdown/420_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part11%20%EC%82%AC%EC%97%85%EB%AA%A9%ED%91%9C%EC%88%98%EB%A6%BD.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'스타트업 인사이트'의 이전글</span><span class="nav-title">CPO는 어떻게 일을 할까? Part1.1 사업목표수립</span></a>
+  <a href="/brunch_web_assets/markdown/423_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part%202%20%EC%88%98%ED%8F%89%EC%A0%81%20%EA%B4%80%EC%A0%90.html" class="cat-nav-item cat-nav-right"><span class="nav-title">CPO는 어떻게 일을 할까? Part 2. 수평적 관점</span><span class="cat-nav-label">'스타트업 인사이트'의 다음글</span></a>
+</div>
+<!-- CATEGORY_NAV_END -->
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->

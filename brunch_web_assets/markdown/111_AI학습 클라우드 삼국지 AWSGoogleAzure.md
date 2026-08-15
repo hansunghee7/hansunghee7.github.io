@@ -26,7 +26,21 @@ AI 스타트업이나 자금 제약 상황에서는 최저 비용의 Google TPU 
 
 대규모 기업은 하이브리드 접근이 효과적일 수 있습니다. 프로토타이핑에는 Azure H100, 대규모 학습에는 Google TPU, 프로덕션에는 AWS 솔루션을 조합하는 전략이 유효합니다.
 
-결론적으로, 비용 효율성 최우선이면 Google TPU, 개발 속도와 생산성 중시면 Azure H100, AWS 생태계 통합과 균형 잡힌 성능을 원하면 AWS Trainium이 적합합니다. 빠르게 변화하는 AI 분야에서는 비즈니스 요구에 유연하게 대응하는 접근법이 장기적 성공의 열쇠입니다.https://www.yes24.com/product/goods/193444437
+결론적으로, 비용 효율성 최우선이면 Google TPU, 개발 속도와 생산성 중시면 Azure H100, AWS 생태계 통합과 균형 잡힌 성능을 원하면 AWS Trainium이 적합합니다. 빠르게 변화하는 AI 분야에서는 비즈니스 요구에 유연하게 대응하는 접근법이 장기적 성공의 열쇠입니다.<!-- CATEGORY_NAV_START -->
+<style>
+.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
+.cat-nav-item:hover { color: #111; }
+.cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
+.cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
+.nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
+</style>
+<div class="category-nav-wrap">
+  <a href="/brunch_web_assets/markdown/103_ZeRO%2C%20%EB%A9%94%EB%AA%A8%EB%A6%AC%EC%B5%9C%EC%A0%81%ED%99%94%EB%A1%9C%20AI%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EB%84%93%ED%9E%88%EB%8B%A4.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'AI의 언어들'의 이전글</span><span class="nav-title">ZeRO, 메모리최적화로 AI 비즈니스의 한계를 넓히다</span></a>
+  <a href="/brunch_web_assets/markdown/119_%EC%84%B1%EA%B3%BC%EB%A5%BC%20%EC%A2%8C%EC%9A%B0%ED%95%98%EB%8A%94%2C%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EB%B3%91%EB%A0%AC%ED%99%94%20vs%20%EB%AA%A8%EB%8D%B8%20%EB%B3%91%EB%A0%AC%ED%99%94.html" class="cat-nav-item cat-nav-right"><span class="nav-title">성과를 좌우하는, 데이터 병렬화 vs 모델 병렬화</span><span class="cat-nav-label">'AI의 언어들'의 다음글</span></a>
+</div>
+<!-- CATEGORY_NAV_END -->
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
