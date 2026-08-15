@@ -44,7 +44,6 @@ is_index: true
         <button class="cat-btn" data-filter="심플리파이어 라이프">심플리파이어 라이프</button>
         <button class="cat-btn" data-filter="심플리파이어 인사이트">심플리파이어 인사이트</button>
         <button class="cat-btn" data-filter="심플한 창업하고 파이어하게 일하기">심플한 창업하고 파이어하게 일하기</button>
-        <button class="cat-btn" data-filter="유니콘의 리더십">유니콘의 리더십</button>
         <button class="cat-btn" data-filter="이력서에 쓰지 않는 첫직장 이야기">이력서에 쓰지 않는 첫직장 이야기</button>
         <button class="cat-btn" data-filter="코치S">코치S</button>
     </div>
@@ -210,7 +209,7 @@ is_index: true
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
-                <h3 class="card-title">\"일주일에 며칠만 일하고 싶어요.\"</h3>
+                <h3 class="card-title">\\"일주일에 며칠만 일하고 싶어요.\\"</h3>
             </div>
             <div class="card-date">Mar 2. 2026</div>
         </div>
@@ -245,11 +244,11 @@ is_index: true
             <div class="card-date">Feb 7. 2026</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/015_%EC%BB%A4%EB%A6%AC%EC%96%B4%EA%B0%80%20%EA%BC%AC%EC%9D%B4%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="유니콘의 리더십" data-date="20260202" data-id="15">
+    <a href="/brunch_web_assets/markdown/015_%EC%BB%A4%EB%A6%AC%EC%96%B4%EA%B0%80%20%EA%BC%AC%EC%9D%B4%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="기획일상" data-date="20260202" data-id="15">
         <div class="card-thumb" style="background-image: url('https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.kakaocdn.net/brunch/service/user/5lk/image/kFGLNFjWeOu3pBzWKLFUsQuQ2cY.png');"></div>
         <div class="card-content">
             <div>
-                <div class="card-category">유니콘의 리더십</div>
+                <div class="card-category">기획일상</div>
                 <h3 class="card-title">커리어가 꼬이는 이유</h3>
             </div>
             <div class="card-date">Feb 2. 2026</div>
@@ -1620,7 +1619,7 @@ is_index: true
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
-                <h3 class="card-title">어포던스: \"이 버튼, 왜 누르고 싶을까?\" 그 비밀</h3>
+                <h3 class="card-title">어포던스: \\"이 버튼, 왜 누르고 싶을까?\\" 그 비밀</h3>
             </div>
             <div class="card-date">May 15. 2025</div>
         </div>
@@ -1640,7 +1639,7 @@ is_index: true
         <div class="card-content">
             <div>
                 <div class="card-category">기획자의 프레임웍</div>
-                <h3 class="card-title">'코호트 분석' 평균의 함정에서 벗어나는 법\"</h3>
+                <h3 class="card-title">'코호트 분석' 평균의 함정에서 벗어나는 법\\"</h3>
             </div>
             <div class="card-date">May 13. 2025</div>
         </div>
@@ -1730,7 +1729,7 @@ is_index: true
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업의 전략들</div>
-                <h3 class="card-title">Slack의 유료전환의 \"매직 모먼트\"</h3>
+                <h3 class="card-title">Slack의 유료전환의 \\"매직 모먼트\\"</h3>
             </div>
             <div class="card-date">May 5. 2025</div>
         </div>
@@ -2130,7 +2129,7 @@ is_index: true
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
-                <h3 class="card-title">애자일 vs 워터폴, PO가 알아야 할 모든 것\"</h3>
+                <h3 class="card-title">애자일 vs 워터폴, PO가 알아야 할 모든 것\\"</h3>
             </div>
             <div class="card-date">Apr 4. 2025</div>
         </div>
@@ -2300,7 +2299,7 @@ is_index: true
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
-                <h3 class="card-title">\"스크럼 마스터 vs 프로젝트 매니저' 차이는?</h3>
+                <h3 class="card-title">\\"스크럼 마스터 vs 프로젝트 매니저' 차이는?</h3>
             </div>
             <div class="card-date">Mar 21. 2025</div>
         </div>
@@ -2420,7 +2419,7 @@ is_index: true
         <div class="card-content">
             <div>
                 <div class="card-category">기획자의 프레임웍</div>
-                <h3 class="card-title">\"SWOT\" 비지니스의 4차원 분석법</h3>
+                <h3 class="card-title">\\"SWOT\\" 비지니스의 4차원 분석법</h3>
             </div>
             <div class="card-date">Mar 11. 2025</div>
         </div>
@@ -2450,7 +2449,7 @@ is_index: true
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
-                <h3 class="card-title">\"AI 시대 프로덕트 전환, 전통적 패러다임의 종말</h3>
+                <h3 class="card-title">\\"AI 시대 프로덕트 전환, 전통적 패러다임의 종말</h3>
             </div>
             <div class="card-date">Mar 8. 2025</div>
         </div>
@@ -2470,7 +2469,7 @@ is_index: true
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
-                <h3 class="card-title">콘텐츠를 맛있게 하는 UX \"레이어 케이크 패턴\"</h3>
+                <h3 class="card-title">콘텐츠를 맛있게 하는 UX \\"레이어 케이크 패턴\\"</h3>
             </div>
             <div class="card-date">Mar 6. 2025</div>
         </div>
@@ -2490,7 +2489,7 @@ is_index: true
         <div class="card-content">
             <div>
                 <div class="card-category">기획자의 프레임웍</div>
-                <h3 class="card-title">Why에서 시작하는 기획, \"골든 서클\"의 마법</h3>
+                <h3 class="card-title">Why에서 시작하는 기획, \\"골든 서클\\"의 마법</h3>
             </div>
             <div class="card-date">Mar 4. 2025</div>
         </div>
@@ -2600,7 +2599,7 @@ is_index: true
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
-                <h3 class="card-title">\"스프린트 리뷰', 준비는 덜하고 솔직함은 더하기</h3>
+                <h3 class="card-title">\\"스프린트 리뷰', 준비는 덜하고 솔직함은 더하기</h3>
             </div>
             <div class="card-date">Feb 21. 2025</div>
         </div>
@@ -2680,7 +2679,7 @@ is_index: true
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
-                <h3 class="card-title">\"제품 백로그\", 단순한 TO-DO 리스트가 아니다</h3>
+                <h3 class="card-title">\\"제품 백로그\\", 단순한 TO-DO 리스트가 아니다</h3>
             </div>
             <div class="card-date">Feb 14. 2025</div>
         </div>
@@ -2700,7 +2699,7 @@ is_index: true
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
-                <h3 class="card-title">美 국방부의 선택 \"빅베어AI\"</h3>
+                <h3 class="card-title">美 국방부의 선택 \\"빅베어AI\\"</h3>
             </div>
             <div class="card-date">Feb 12. 2025</div>
         </div>
@@ -2750,7 +2749,7 @@ is_index: true
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
-                <h3 class="card-title">\"데일리 스크럼\"이 필수일까?</h3>
+                <h3 class="card-title">\\"데일리 스크럼\\"이 필수일까?</h3>
             </div>
             <div class="card-date">Feb 7. 2025</div>
         </div>
@@ -3630,7 +3629,7 @@ is_index: true
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
-                <h3 class="card-title">기밀서재 3번째 책은 \"로지컬씽킹\"입니다.</h3>
+                <h3 class="card-title">기밀서재 3번째 책은 \\"로지컬씽킹\\"입니다.</h3>
             </div>
             <div class="card-date">Sep 29. 2024</div>
         </div>
@@ -3840,7 +3839,7 @@ is_index: true
         <div class="card-content">
             <div>
                 <div class="card-category">코치S</div>
-                <h3 class="card-title">코치S 18화 \"풀기 어려운 문제\"</h3>
+                <h3 class="card-title">코치S 18화 \\"풀기 어려운 문제\\"</h3>
             </div>
             <div class="card-date">Sep 4. 2024</div>
         </div>
@@ -3900,7 +3899,7 @@ is_index: true
         <div class="card-content">
             <div>
                 <div class="card-category">코치S</div>
-                <h3 class="card-title">코치S 15화 \"장사로 배우는 유입율과 전환율\"</h3>
+                <h3 class="card-title">코치S 15화 \\"장사로 배우는 유입율과 전환율\\"</h3>
             </div>
             <div class="card-date">Aug 14. 2024</div>
         </div>
@@ -3920,7 +3919,7 @@ is_index: true
         <div class="card-content">
             <div>
                 <div class="card-category">코치S</div>
-                <h3 class="card-title">코치S 14화 \"콜드브루 장사\"</h3>
+                <h3 class="card-title">코치S 14화 \\"콜드브루 장사\\"</h3>
             </div>
             <div class="card-date">Aug 7. 2024</div>
         </div>
@@ -3950,7 +3949,7 @@ is_index: true
         <div class="card-content">
             <div>
                 <div class="card-category">코치S</div>
-                <h3 class="card-title">코치S 13화 \"두개의 모자\"</h3>
+                <h3 class="card-title">코치S 13화 \\"두개의 모자\\"</h3>
             </div>
             <div class="card-date">Jul 31. 2024</div>
         </div>
@@ -3980,7 +3979,7 @@ is_index: true
         <div class="card-content">
             <div>
                 <div class="card-category">코치S</div>
-                <h3 class="card-title">코치S 12화 \"내 맘을 몰라줘요\"</h3>
+                <h3 class="card-title">코치S 12화 \\"내 맘을 몰라줘요\\"</h3>
             </div>
             <div class="card-date">Jul 24. 2024</div>
         </div>
@@ -4000,7 +3999,7 @@ is_index: true
         <div class="card-content">
             <div>
                 <div class="card-category">코치S</div>
-                <h3 class="card-title">코치S 11화 \"각성\"</h3>
+                <h3 class="card-title">코치S 11화 \\"각성\\"</h3>
             </div>
             <div class="card-date">Jul 17. 2024</div>
         </div>
@@ -4050,7 +4049,7 @@ is_index: true
         <div class="card-content">
             <div>
                 <div class="card-category">코치S</div>
-                <h3 class="card-title">코치S 10화 \"철없는 PO\"</h3>
+                <h3 class="card-title">코치S 10화 \\"철없는 PO\\"</h3>
             </div>
             <div class="card-date">Jul 10. 2024</div>
         </div>
@@ -4130,7 +4129,7 @@ is_index: true
         <div class="card-content">
             <div>
                 <div class="card-category">코치S</div>
-                <h3 class="card-title">코치S 9화 \"코치N의 등장\"</h3>
+                <h3 class="card-title">코치S 9화 \\"코치N의 등장\\"</h3>
             </div>
             <div class="card-date">Jun 26. 2024</div>
         </div>
@@ -4950,7 +4949,7 @@ is_index: true
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
-                <h3 class="card-title">내가 나를 기획한다면? \"끌어당김의 원리편\"</h3>
+                <h3 class="card-title">내가 나를 기획한다면? \\"끌어당김의 원리편\\"</h3>
             </div>
             <div class="card-date">Mar 16. 2024</div>
         </div>
@@ -5050,7 +5049,7 @@ is_index: true
         <div class="card-content">
             <div>
                 <div class="card-category">코치S</div>
-                <h3 class="card-title">잉크드인대 기획학과 5화 ''타이슨 선배를 도와주세요\"</h3>
+                <h3 class="card-title">잉크드인대 기획학과 5화 ''타이슨 선배를 도와주세요\\"</h3>
             </div>
             <div class="card-date">Mar 5. 2024</div>
         </div>
@@ -5840,7 +5839,7 @@ is_index: true
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
-                <h3 class="card-title">\"서울의 봄\" 그즈음에</h3>
+                <h3 class="card-title">\\"서울의 봄\\" 그즈음에</h3>
             </div>
             <div class="card-date">Dec 18. 2023</div>
         </div>
@@ -6740,7 +6739,7 @@ is_index: true
         <div class="card-content">
             <div>
                 <div class="card-category">심플한 창업하고 파이어하게 일하기</div>
-                <h3 class="card-title">\"너 진작에 이렇게 했으면 하버드 갔겠다\"</h3>
+                <h3 class="card-title">\\"너 진작에 이렇게 했으면 하버드 갔겠다\\"</h3>
             </div>
             <div class="card-date">Sep 27. 2023</div>
         </div>

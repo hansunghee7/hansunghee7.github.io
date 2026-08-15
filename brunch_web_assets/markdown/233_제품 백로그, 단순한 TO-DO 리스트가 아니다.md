@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "\\"제품 백로그\\", 단순한 TO-DO 리스트가 아니다"
+title: "\\\"제품 백로그\\\", 단순한 TO-DO 리스트가 아니다"
 category: 'PO가 꼭 알아야 할 것들'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/j1cWd9deHU2ctXYzd_qV5mI3Wq8.png'
 date_string: 'Feb 14. 2025'
