@@ -5,6 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }}</title>
     
+<!-- JSON-LD 구조화된 데이터 (GEO/SEO 최적화) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "{{ page.title }}",
+      "datePublished": "{{ page.date_string }}",
+      "author": {
+        "@type": "Person",
+        "name": "Han Sunghee"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Simplifier",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://hansunghee7.github.io/brunch_web_assets/images/logo_white.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ site.url }}{{ page.url }}"
+      }
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500&family=Noto+Serif+KR:wght@200;300;400;600&display=swap" rel="stylesheet">
