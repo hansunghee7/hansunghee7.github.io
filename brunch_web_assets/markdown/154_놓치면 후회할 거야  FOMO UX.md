@@ -68,14 +68,7 @@ UX의 언어들이 책으로 나왔어요.
     <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
     <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
   </div>
-<a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">
-    <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">
-        <div style="font-size:22px; font-weight:300; color:#333; margin-bottom:12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; letter-spacing:-0.5px;">ìë¹ì¤ ì´ì©ì ëí´ ìë´ ëë¦½ëë¤. - ìì¤24</div>
-        <div style="font-size:14px; font-weight:300; color:#888; line-height:1.6; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; word-break:keep-all;"></div>
-        <div style="margin-top:auto; font-size:13px; font-weight:300; color:#999;">www.yes24.com</div>
-    </div>
-    
-</a>
+https://www.yes24.com/product/goods/193444437
 </div>
 <!-- PROMO_BANNER_END -->
 

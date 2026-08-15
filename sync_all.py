@@ -6,6 +6,7 @@ import json
 import time
 import requests
 from bs4 import BeautifulSoup
+from datetime import datetime # 날짜 처리를 위해 추가
 
 CATEGORY_SORT_DEFAULTS = {
     "AI의 언어들": "desc",
@@ -28,6 +29,7 @@ GLOBAL_PROMO_LINKS = [
     "https://www.yes24.com/product/goods/193444437"
 ]
 
+BASE_URL = "https://hansunghee7.github.io" # 사이트맵 생성을 위한 기본 주소
 index_file = "log.html"
 csv_file = "브런치_글_모음집.csv"
 md_dir = "brunch_web_assets/markdown"
@@ -236,8 +238,6 @@ for p in posts:
     prev_post = cat_list[idx - 1] if idx > 0 else None
     next_post = cat_list[idx + 1] if idx >= 0 and idx < len(cat_list) - 1 else None
 
-    date_html = ""
-
     cat_script = f"""<!-- CAT_LINK_SCRIPT_START -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {{
@@ -379,4 +379,49 @@ const observer = new IntersectionObserver(entries => { entries.forEach(entry => 
 with open(index_file, 'w', encoding='utf-8') as f:
     f.write(html_header + html_body)
 
+# ==========================================
+# 🌟 1. SEO 강화를 위한 sitemap.xml 자동 생성
+# ==========================================
+print("🗺️ SEO를 위한 sitemap.xml 및 robots.txt 생성을 시작합니다...")
+
+today_str = datetime.now().strftime("%Y-%m-%d")
+sitemap_xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
+sitemap_xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+
+# 1-1. 메인 페이지와 블로그 리스트 페이지 추가
+for page in ["", "/log.html"]:
+    sitemap_xml += '  <url>\n'
+    sitemap_xml += f'    <loc>{BASE_URL}{page}</loc>\n'
+    sitemap_xml += f'    <lastmod>{today_str}</lastmod>\n'
+    sitemap_xml += '    <changefreq>daily</changefreq>\n'
+    sitemap_xml += '    <priority>1.0</priority>\n'
+    sitemap_xml += '  </url>\n'
+
+# 1-2. 개별 블로그 포스트 추가
+for p in posts:
+    # timestamp가 "YYYYMMDD" 형태이므로 "YYYY-MM-DD"로 변환
+    lastmod = today_str
+    if p['timestamp'] and len(p['timestamp']) == 8 and p['timestamp'] != "00000000":
+        lastmod = f"{p['timestamp'][:4]}-{p['timestamp'][4:6]}-{p['timestamp'][6:]}"
+        
+    sitemap_xml += '  <url>\n'
+    sitemap_xml += f'    <loc>{BASE_URL}{p["link"]}</loc>\n'
+    sitemap_xml += f'    <lastmod>{lastmod}</lastmod>\n'
+    sitemap_xml += '    <changefreq>weekly</changefreq>\n'
+    sitemap_xml += '    <priority>0.8</priority>\n'
+    sitemap_xml += '  </url>\n'
+
+sitemap_xml += '</urlset>'
+
+with open("sitemap.xml", 'w', encoding='utf-8') as f:
+    f.write(sitemap_xml)
+
+# ==========================================
+# 🌟 2. 검색 엔진 크롤링 허용을 위한 robots.txt 생성
+# ==========================================
+robots_txt = f"User-agent: *\nAllow: /\n\nSitemap: {BASE_URL}/sitemap.xml\n"
+with open("robots.txt", 'w', encoding='utf-8') as f:
+    f.write(robots_txt)
+
+print("✅ sitemap.xml 및 robots.txt 생성 완료!")
 print("✅ HTML 태그 이스케이프 깨짐 방지 및 흑백 필터 제거 완료!")
