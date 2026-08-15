@@ -54,14 +54,14 @@ document.addEventListener('DOMContentLoaded', function() {
 처음 칸반을 도입할 때는 칠판을 활용해도 좋아요. 하지만 본격적으로 적용하려면 Jira와 같은 가상 보드 도구가 필수적입니다. 이를 통해 팀원 간 협업과 소통이 원활해지죠.
 
 지금까지 칸반의 기본 개념과 장점들을 살펴봤는데요. 칸반은 팀에게 직관적이고 신속한 워크플로우를 제공합니다. 함께 애자일의 컨베이어벨트, 칸반을 적용해보시죠.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 80px; margin-bottom: 20px;">
-    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%;">
-        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
-        <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
-        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
-    </div>
-<!-- OG_CARD_START -->
+  <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%; margin-bottom: 20px;">
+    <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+    <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
+    <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+  </div>
 <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">
     <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">
         <div style="font-size:22px; font-weight:300; color:#333; margin-bottom:12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; letter-spacing:-0.5px;">UX의 언어들 | 한성희 | 파지트 - 예스24</div>
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
     <div style="width:25%; min-width:160px; background:url('https://image.yes24.com/goods/193444437/xl') center/cover no-repeat; border-left:1px solid #e1e1e1;"></div>
 </a>
-<!-- OG_CARD_END --></div>
+</div>
 <!-- PROMO_BANNER_END -->
 
 

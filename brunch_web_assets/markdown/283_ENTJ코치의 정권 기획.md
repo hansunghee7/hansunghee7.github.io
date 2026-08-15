@@ -48,14 +48,14 @@ document.addEventListener('DOMContentLoaded', function() {
  단순한 "정권 획득"만을 목표로 하는 정당은 유권자에게 피로감을 준다. 정당의 목표는 정권을 획득하고, 유지하며, 연속적인 정권 획득을 가능하게 하는 시스템을 만드는 것이어야 한다. 획득에서 끝나지 않고, 유지를 넘어 연속적인 획득으로. 정권을 운영할 준비가 된 정당만이 유권자의 신뢰를 얻을 수 있다.
 
  정당의 목표에 대한 설명이 교과서에서도 이렇게 바뀌어야 하지 않을까? 단순히 "정권 획득"이라고만 적혀 있다면, 우리는 계속해서 과거의 정치를 반복할지도 모른다. 획득, 유지, 연속 획득의 선순환을 만드는 것이야말로 진짜 정당의 목표가 아닐까?
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 80px; margin-bottom: 20px;">
-    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%;">
-        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
-        <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
-        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
-    </div>
-<!-- OG_CARD_START -->
+  <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%; margin-bottom: 20px;">
+    <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+    <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
+    <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+  </div>
 <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">
     <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">
         <div style="font-size:22px; font-weight:300; color:#333; margin-bottom:12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; letter-spacing:-0.5px;">UX의 언어들 | 한성희 | 파지트 - 예스24</div>
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
     <div style="width:25%; min-width:160px; background:url('https://image.yes24.com/goods/193444437/xl') center/cover no-repeat; border-left:1px solid #e1e1e1;"></div>
 </a>
-<!-- OG_CARD_END --></div>
+</div>
 <!-- PROMO_BANNER_END -->
 
 

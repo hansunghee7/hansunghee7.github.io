@@ -58,14 +58,14 @@ Cursor AI의 성공에서 우리가 배울 수 있는 핵심은 다음과 같습
 Cursor AI의 성공은 AI를 경쟁 상대나 대체재가 아닌, 함께 일하는 파트너로 만드는 것이 핵심임을 보여줍니다. 이는 AI 시대를 맞이하는 모든 스타트업들에게 기술의 변화를 직접 실험하고 활용하여 새로운 가치를 창출하는 것이 성공의 열쇠라는 중요한 시사점을 줍니다.
 
 여러분의 스타트업도 Cursor AI처럼 사용자의 진짜 문제를 해결하는 혁신을 만들어내시기 바랍니다. AI 시대, 여러분은 어떤 협력자 전략을 준비하고 계신가요?
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 80px; margin-bottom: 20px;">
-    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%;">
-        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
-        <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
-        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
-    </div>
-<!-- OG_CARD_START -->
+  <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%; margin-bottom: 20px;">
+    <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+    <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
+    <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+  </div>
 <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">
     <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">
         <div style="font-size:22px; font-weight:300; color:#333; margin-bottom:12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; letter-spacing:-0.5px;">UX의 언어들 | 한성희 | 파지트 - 예스24</div>
@@ -74,7 +74,7 @@ Cursor AI의 성공은 AI를 경쟁 상대나 대체재가 아닌, 함께 일하
     </div>
     <div style="width:25%; min-width:160px; background:url('https://image.yes24.com/goods/193444437/xl') center/cover no-repeat; border-left:1px solid #e1e1e1;"></div>
 </a>
-<!-- OG_CARD_END --></div>
+</div>
 <!-- PROMO_BANNER_END -->
 
 

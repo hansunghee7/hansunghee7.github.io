@@ -48,14 +48,14 @@ DeepSeek의 사례는 중요한 통찰을 제공한다. 자원이 부족하더�
 하지만 DeepSeek의 앞길이 순탄하기만 한 것은 아니다. 글로벌 시장 진출 과정에서 거센 규제의 벽에 부딪히고 있으며, 거대 기업들의 견제도 만만치 않다. 또한 데이터 확보와 활용을 둘러싼 논란도 끊이지 않고 있다. 살아남기 위해 풀어야 할 숙제가 산적해 있는 셈이다.
 
 그럼에도 DeepSeek은 "누구나 사용할 수 있는 고성능 AI"라는 원대한 비전을 달성하고자 하고 있다. 우리는 DeepSeek이 AI 산업계의 지형에 어떤 영향을 줄지 주목해야할 시점이다.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 80px; margin-bottom: 20px;">
-    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%;">
-        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
-        <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
-        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
-    </div>
-<!-- OG_CARD_START -->
+  <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%; margin-bottom: 20px;">
+    <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+    <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
+    <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+  </div>
 <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">
     <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">
         <div style="font-size:22px; font-weight:300; color:#333; margin-bottom:12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; letter-spacing:-0.5px;">UX의 언어들 | 한성희 | 파지트 - 예스24</div>
@@ -64,7 +64,7 @@ DeepSeek의 사례는 중요한 통찰을 제공한다. 자원이 부족하더�
     </div>
     <div style="width:25%; min-width:160px; background:url('https://image.yes24.com/goods/193444437/xl') center/cover no-repeat; border-left:1px solid #e1e1e1;"></div>
 </a>
-<!-- OG_CARD_END --></div>
+</div>
 <!-- PROMO_BANNER_END -->
 
 

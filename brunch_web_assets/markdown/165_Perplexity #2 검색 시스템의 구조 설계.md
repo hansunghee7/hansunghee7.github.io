@@ -118,14 +118,14 @@ Perplexity AI의 검색 시스템은 전통적인 키워드 기반 검색과 최
 이 기술을 자체 서비스에 적용하려는 팀은 쿼리 특성에 따른 라우팅 전략, 효과적인 인덱싱 구조, 결과 통합 및 재평가 방식, 그리고 시스템 확장성과 운영 효율성 등을 종합적으로 고려해야 합니다. 하지만 모든 구성 요소를 처음부터 구현할 필요는 없으며, 검색 엔진(Elasticsearch), 벡터 데이터베이스(Qdrant, FAISS), 임베딩 모델(SentenceTransformer) 등의 오픈소스 도구를 활용하여 단계적으로 시스템을 구축해 나갈 수 있습니다.
 
 다음 편에서는 이러한 검색 결과를 바탕으로 자연스럽고 정확한 답변을 생성하는 RAG(Retrieval-Augmented Generation) 시스템의 구조를 자세히 살펴보겠습니다. :-)
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 80px; margin-bottom: 20px;">
-    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%;">
-        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
-        <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
-        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
-    </div>
-<!-- OG_CARD_START -->
+  <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%; margin-bottom: 20px;">
+    <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+    <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
+    <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+  </div>
 <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">
     <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">
         <div style="font-size:22px; font-weight:300; color:#333; margin-bottom:12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; letter-spacing:-0.5px;">UX의 언어들 | 한성희 | 파지트 - 예스24</div>
@@ -134,7 +134,7 @@ Perplexity AI의 검색 시스템은 전통적인 키워드 기반 검색과 최
     </div>
     <div style="width:25%; min-width:160px; background:url('https://image.yes24.com/goods/193444437/xl') center/cover no-repeat; border-left:1px solid #e1e1e1;"></div>
 </a>
-<!-- OG_CARD_END --></div>
+</div>
 <!-- PROMO_BANNER_END -->
 
 

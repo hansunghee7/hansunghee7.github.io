@@ -54,14 +54,14 @@ document.addEventListener('DOMContentLoaded', function() {
 인원수를 보았을 때 2개 트랙(스쿼드)의 구성이 가능하여, 한쪽 트랙은 목표일정이 중요한 프로젝트를 담당하는 스쿼드(1번)로, 다른 쪽은 제휴사 일정에 따라 변동성이 큰 과제나 일정 중요도가 높지 않은 유관부서 요청과제를 담당하는 스쿼드(2번)로 역할을 부여했다. 해당 생산구조로 업무를 진행하니, 1번 스쿼드는 예상했던 일정에 가깝게 투자유치를 위한 프로젝트가 출시되었고, 2번 스쿼드는 제휴업무와 내부요청 프로세스 체계를 정리할 수 있게 되었다.
 
 프로덕트 조직의 생산조직 체계는 위와 같이 사업목적에 맞게 구성을 해야 하며, 사업 상황에 따라 2번 스쿼드도 프로젝트에 투입될 수 있게 유연성을 가지게 운영을 해야 한다. 그리고 스쿼드 인력 변화와 사업아이템 인입현황에 따라 생산체계를 지속적으로 조율해 주는 것도 중요하다.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 80px; margin-bottom: 20px;">
-    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%;">
-        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
-        <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
-        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
-    </div>
-<!-- OG_CARD_START -->
+  <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%; margin-bottom: 20px;">
+    <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+    <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
+    <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+  </div>
 <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">
     <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">
         <div style="font-size:22px; font-weight:300; color:#333; margin-bottom:12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; letter-spacing:-0.5px;">UX의 언어들 | 한성희 | 파지트 - 예스24</div>
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
     <div style="width:25%; min-width:160px; background:url('https://image.yes24.com/goods/193444437/xl') center/cover no-repeat; border-left:1px solid #e1e1e1;"></div>
 </a>
-<!-- OG_CARD_END --></div>
+</div>
 <!-- PROMO_BANNER_END -->
 
 

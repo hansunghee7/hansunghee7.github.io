@@ -86,7 +86,14 @@ def get_og_card(url):
         
         img_html = f'<div style="width:25%; min-width:160px; background:url(\'{img}\') center/cover no-repeat; border-left:1px solid #e1e1e1;"></div>' if img else ''
         
-        card_html = f'''\n<!-- OG_CARD_START -->\n<a href="{url}" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">\n    <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">\n        <div style="font-size:22px; font-weight:300; color:#333; margin-bottom:12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; letter-spacing:-0.5px;">{title}</div>\n        <div style="font-size:14px; font-weight:300; color:#888; line-height:1.6; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; word-break:keep-all;">{desc}</div>\n        <div style="margin-top:auto; font-size:13px; font-weight:300; color:#999;">{domain}</div>\n    </div>\n    {img_html}\n</a>\n<!-- OG_CARD_END -->\n'''
+        card_html = f'''<a href="{url}" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:\'Noto Sans KR\', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor=\'#111111\'" onmouseout="this.style.borderColor=\'#e1e1e1\'">
+    <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">
+        <div style="font-size:22px; font-weight:300; color:#333; margin-bottom:12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; letter-spacing:-0.5px;">{title}</div>
+        <div style="font-size:14px; font-weight:300; color:#888; line-height:1.6; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; word-break:keep-all;">{desc}</div>
+        <div style="margin-top:auto; font-size:13px; font-weight:300; color:#999;">{domain}</div>
+    </div>
+    {img_html}
+</a>'''
         
         og_cache[url] = card_html.strip()
         time.sleep(0.3)
@@ -126,7 +133,6 @@ for filename in md_files:
         title = filename[:-3]
 
     category = cat_match.group(1).strip() if cat_match else "기획일상"
-    # 🌟 카테고리 텍스트 오염 방지 예방 조치 (줄바꿈 및 긴 본문 잘라내기)
     if "\n" in category or len(category) > 30:
         category = category.split("\n")[0].split("|")[0].strip().strip("'\"")
     if not category:
@@ -161,7 +167,7 @@ for filename in md_files:
 
     body_content = re.sub(r'^---.*?---\s*', '', content, flags=re.DOTALL)
     
-    # 중복 방지를 위한 강력한 태그 클리너
+    # 중복 및 오염 태그 강력 청소
     body_content = re.sub(r'<!-- PROMO_BANNER_START -->.*?<!-- PROMO_BANNER_END -->', '', body_content, flags=re.DOTALL)
     body_content = re.sub(r'<!-- CATEGORY_NAV_START -->.*?<!-- CATEGORY_NAV_END -->', '', body_content, flags=re.DOTALL)
     body_content = re.sub(r'<!-- OG_CARD_START -->.*?<!-- OG_CARD_END -->', '', body_content, flags=re.DOTALL)
@@ -198,19 +204,17 @@ for cat in category_posts:
 with open(og_cache_file, 'w', encoding='utf-8') as f:
     json.dump(og_cache, f, ensure_ascii=False, indent=2)
 
+# 🌟 렌더링 에러를 방지하는 완벽한 HTML 구조화
 global_promo_html = ""
 if GLOBAL_PROMO_LINKS:
-    global_promo_html += """
-<!-- PROMO_BANNER_START -->
-<div style="margin-top: 80px; margin-bottom: 20px;">
-    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%;">
-        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
-        <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
-        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
-    </div>
-"""
+    global_promo_html += "\n\n<!-- PROMO_BANNER_START -->\n<div style=\"margin-top: 80px; margin-bottom: 20px;\">\n"
+    global_promo_html += "  <div style=\"display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%; margin-bottom: 20px;\">\n"
+    global_promo_html += "    <div style=\"flex: 1; height: 1px; background-color: #e1e1e1;\"></div>\n"
+    global_promo_html += "    <span style=\"font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;\">Simplifier Choice</span>\n"
+    global_promo_html += "    <div style=\"flex: 1; height: 1px; background-color: #e1e1e1;\"></div>\n"
+    global_promo_html += "  </div>\n"
     for purl in GLOBAL_PROMO_LINKS:
-        global_promo_html += get_og_card(purl)
+        global_promo_html += get_og_card(purl) + "\n"
     global_promo_html += "</div>\n<!-- PROMO_BANNER_END -->\n"
 
 cards_html = ""
@@ -373,4 +377,4 @@ const observer = new IntersectionObserver(entries => { entries.forEach(entry => 
 with open(index_file, 'w', encoding='utf-8') as f:
     f.write(html_header + html_body)
 
-print("✅ 카테고리 파싱 오류 정정 및 배포 완료!")
+print("✅ HTML 태그 이스케이프 깨짐 방지 및 정돈 완료!")
