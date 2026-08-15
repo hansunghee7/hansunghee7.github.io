@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "마케팅 없이 20조원 가치를 만든 Figma PLG전략"
-category: '브런치북: 스타트업의 전략들'
+category: '스타트업의 전략들'
+cover_image: '/brunch_web_assets/images/253.jpg'
 ---
 
 # 📝 253_마케팅 없이 20조원 가치를 만든 Figma PLG전략

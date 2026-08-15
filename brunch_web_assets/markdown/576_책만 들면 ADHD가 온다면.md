@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "책만 들면 ADHD가 온다면"
-category: '매거진: 심플리파이어 라이프'
+category: '심플리파이어 라이프'
+cover_image: '/brunch_web_assets/images/576.jpg'
 ---
 
 # 📝 576_책만 들면 ADHD가 온다면...

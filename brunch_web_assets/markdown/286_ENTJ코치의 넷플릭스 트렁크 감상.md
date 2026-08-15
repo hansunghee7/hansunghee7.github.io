@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "ENTJ코치의 넷플릭스 트렁크 감상"
-category: '매거진: 심플리파이어 라이프'
+category: '심플리파이어 라이프'
+cover_image: '/brunch_web_assets/images/286.jpg'
 ---
 
 # 📝 286_ENTJ코치의 넷플릭스 트렁크 감상

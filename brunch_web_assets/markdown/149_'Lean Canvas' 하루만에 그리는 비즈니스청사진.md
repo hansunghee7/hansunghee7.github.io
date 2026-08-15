@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "'Lean Canvas' 하루만에 그리는 비즈니스청사진"
-category: '브런치북: 기획자의 프레임웍'
+category: '기획자의 프레임웍'
+cover_image: '/brunch_web_assets/images/149.jpg'
 ---
 
 # 📝 149_'Lean Canvas' 하루만에 그리는 비즈니스청사진

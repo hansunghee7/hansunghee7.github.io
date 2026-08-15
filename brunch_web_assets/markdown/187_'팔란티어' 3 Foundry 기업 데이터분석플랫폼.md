@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "'팔란티어' 3 Foundry 기업 데이터분석플랫폼"
-category: '매거진: 심플리파이어 인사이트'
+category: '심플리파이어 인사이트'
+cover_image: '/brunch_web_assets/images/187.jpg'
 ---
 
 # 📝 187_'팔란티어' 3 Foundry 기업 데이터분석플랫폼

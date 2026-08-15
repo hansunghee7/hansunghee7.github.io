@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "후광효과(Halo Effect), UX 디자인의 첫인상"
-category: '브런치북: UX의 언어들'
+category: 'UX의 언어들'
+cover_image: '/brunch_web_assets/images/161.jpg'
 ---
 
 # 📝 161_후광효과(Halo Effect), UX 디자인의 첫인상

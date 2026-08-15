@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "O or X"
-category: '매거진: 기획일상'
+category: '기획일상'
+cover_image: '/brunch_web_assets/images/554.jpg'
 ---
 
 # 📝 554_O or X

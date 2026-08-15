@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "칸반, 애자일의 Just In Time"
-category: '브런치북: PO가 꼭 알아야 할 것들'
+category: 'PO가 꼭 알아야 할 것들'
+cover_image: '/brunch_web_assets/images/189.jpg'
 ---
 
 # 📝 189_칸반, 애자일의 Just In Time

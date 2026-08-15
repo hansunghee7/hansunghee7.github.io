@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "Product Owner도 몰랐던 애자일 HR의 진실"
-category: '브런치북: PO가 꼭 알아야 할 것들'
+category: 'PO가 꼭 알아야 할 것들'
+cover_image: '/brunch_web_assets/images/050.jpg'
 ---
 
 # 📝 050_Product Owner도 몰랐던 애자일 HR의 진실

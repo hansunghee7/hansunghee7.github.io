@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "DevOps, 개발과 운영의 경계를 허물다"
-category: '브런치북: PO가 꼭 알아야 할 것들'
+category: 'PO가 꼭 알아야 할 것들'
+cover_image: '/brunch_web_assets/images/124.jpg'
 ---
 
 # 📝 124_DevOps, 개발과 운영의 경계를 허물다

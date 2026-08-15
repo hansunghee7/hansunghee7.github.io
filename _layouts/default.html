@@ -18,13 +18,11 @@
         .cover-logo:hover img { opacity: 0.7; }
         .cover-category-pill { border: 1px solid rgba(255,255,255,0.4); border-radius: 20px; padding: 5px 16px; font-size: 12px; font-weight: 300; letter-spacing: -0.5px; }
         
-        /* 메인 화면 (Index) 스타일 */
+        /* 폰트 복구됨: Noto Serif KR (명조체) */
         .cover-wrap.index-mode { height: 22vh; min-height: 160px; padding: 25px 40px; }
         .index-mode .cover-bottom-left { text-align: left; position: relative; }
-        /* 제목 폰트 크기 및 디자인 유지 */
-        .index-mode .cover-title { font-family: 'Noto Sans KR', sans-serif; font-size: 28px; font-weight: 300; margin: 0; line-height: 1.2; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .index-mode .cover-title { font-family: 'Noto Serif KR', serif; font-size: 32px; font-weight: 200; margin: 0; line-height: 1.2; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
 
-        /* 개별 글 (Post) 스타일 */
         .cover-wrap.post-mode { height: 100vh; padding: 30px 40px; }
         .post-mode .cover-bottom-left { position: absolute; bottom: 40px; left: 40px; padding-right: 80px; text-align: left; }
         .post-mode .cover-title { font-family: 'Noto Serif KR', serif; font-size: 42px; font-weight: 200; margin: 0; line-height: 1.4; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
@@ -69,7 +67,6 @@
                 </a>
             </div>
             <div class="cover-bottom-left">
-                <!-- 전체 글 목록 대신 넘어온 타이틀을 바로 출력 -->
                 <h1 class="cover-title" id="displayTitle">{{ page.title }}</h1>
             </div>
         </div>

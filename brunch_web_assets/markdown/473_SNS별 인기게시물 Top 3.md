@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "SNS별 인기게시물 Top 3"
-category: '매거진: 심플리파이어 라이프'
+category: '심플리파이어 라이프'
+cover_image: '/brunch_web_assets/images/473.jpg'
 ---
 
 # 📝 473_SNS별 인기게시물 Top 3

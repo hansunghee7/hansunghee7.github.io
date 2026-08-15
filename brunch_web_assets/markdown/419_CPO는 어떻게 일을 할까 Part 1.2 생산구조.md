@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "CPO는 어떻게 일을 할까 Part 1.2 생산구조"
-category: '매거진: 스타트업 리더의 기술'
+category: '스타트업 리더의 기술'
+cover_image: '/brunch_web_assets/images/419.jpg'
 ---
 
 # 📝 419_CPO는 어떻게 일을 할까 Part 1.2 생산구조

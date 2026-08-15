@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "Thank you 2024~!!!"
-category: '매거진: 심플리파이어 라이프'
+category: '심플리파이어 라이프'
+cover_image: '/brunch_web_assets/images/272.jpg'
 ---
 
 # 📝 272_Thank you 2024~!!!

@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "AI 성능의 열쇠, HBM은 무엇일까"
-category: '브런치북: AI의 언어들'
+category: 'AI의 언어들'
+cover_image: '/brunch_web_assets/images/184.jpg'
 ---
 
 # 📝 184_AI 성능의 열쇠, HBM은 무엇일까

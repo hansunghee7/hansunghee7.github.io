@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "놓치면 후회할 거야!  FOMO UX"
-category: '브런치북: UX의 언어들'
+category: 'UX의 언어들'
+cover_image: '/brunch_web_assets/images/154.jpg'
 ---
 
 # 📝 154_놓치면 후회할 거야!  FOMO UX

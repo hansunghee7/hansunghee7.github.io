@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "우선순위 설정의 프레임워크 'RICE'"
-category: '브런치북: 기획자의 프레임웍'
+category: '기획자의 프레임웍'
+cover_image: '/brunch_web_assets/images/263.jpg'
 ---
 
 # 📝 263_우선순위 설정의 프레임워크 'RICE'

@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "작게 시작해 크게 터트리는 Slack의 초기마케팅전략"
-category: '브런치북: 스타트업의 전략들'
+category: '스타트업의 전략들'
+cover_image: '/brunch_web_assets/images/121.jpg'
 ---
 
 # 📝 121_작게 시작해 크게 터트리는 Slack의 초기마케팅전략

@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "AI 성능을 100배 높이는 비결 TensorCores"
-category: '브런치북: AI의 언어들'
+category: 'AI의 언어들'
+cover_image: '/brunch_web_assets/images/170.jpg'
 ---
 
 # 📝 170_AI 성능을 100배 높이는 비결 TensorCores

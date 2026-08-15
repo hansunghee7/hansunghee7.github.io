@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "Dropbox의 무료에서 유료로의 전환 비법"
-category: '브런치북: 스타트업의 전략들'
+category: '스타트업의 전략들'
+cover_image: '/brunch_web_assets/images/129.jpg'
 ---
 
 # 📝 129_Dropbox의 무료에서 유료로의 전환 비법

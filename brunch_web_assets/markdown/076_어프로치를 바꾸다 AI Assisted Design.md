@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "어프로치를 바꾸다 AI Assisted Design"
-category: '브런치북: UX의 언어들'
+category: 'UX의 언어들'
+cover_image: '/brunch_web_assets/images/076.jpg'
 ---
 
 # 📝 076_어프로치를 바꾸다 AI Assisted Design

@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "게임하듯 일하는 마법, Flow State Design"
-category: '브런치북: UX의 언어들'
+category: 'UX의 언어들'
+cover_image: '/brunch_web_assets/images/051.jpg'
 ---
 
 # 📝 051_게임하듯 일하는 마법, Flow State Design

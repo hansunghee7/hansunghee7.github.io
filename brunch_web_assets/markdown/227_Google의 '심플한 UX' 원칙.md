@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "Google의 '심플한 UX' 원칙"
-category: '브런치북: UX의 언어들'
+category: 'UX의 언어들'
+cover_image: '/brunch_web_assets/images/227.jpg'
 ---
 
 # 📝 227_Google의 '심플한 UX' 원칙

@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "실패가 만든 기적, 'Slack'의 초기 고객확보 전략"
-category: '브런치북: 스타트업의 전략들'
+category: '스타트업의 전략들'
+cover_image: '/brunch_web_assets/images/216.jpg'
 ---
 
 # 📝 216_실패가 만든 기적, 'Slack'의 초기 고객확보 전략

@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "아이디어의 발상 'SCAMPER' 기법"
-category: '브런치북: 기획자의 프레임웍'
+category: '기획자의 프레임웍'
+cover_image: '/brunch_web_assets/images/251.jpg'
 ---
 
 # 📝 251_아이디어의 발상 'SCAMPER' 기법

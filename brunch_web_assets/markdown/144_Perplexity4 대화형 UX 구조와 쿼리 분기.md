@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "Perplexity4 대화형 UX 구조와 쿼리 분기"
-category: '매거진: 심플리파이어 인사이트'
+category: '심플리파이어 인사이트'
+cover_image: '/brunch_web_assets/images/144.jpg'
 ---
 
 # 📝 144_Perplexity4 대화형 UX 구조와 쿼리 분기

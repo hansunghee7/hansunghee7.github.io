@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "AI모델 가속화의 열쇠, Transformer병목개선"
-category: '브런치북: AI의 언어들'
+category: 'AI의 언어들'
+cover_image: '/brunch_web_assets/images/090.jpg'
 ---
 
 # 📝 090_AI모델 가속화의 열쇠, Transformer병목개선

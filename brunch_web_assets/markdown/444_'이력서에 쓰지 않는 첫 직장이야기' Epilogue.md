@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "'이력서에 쓰지 않는 첫 직장이야기' Epilogue"
-category: '브런치북: 이력서에 쓰지 않는 첫직장 이야기'
+category: '이력서에 쓰지 않는 첫직장 이야기'
+cover_image: '/brunch_web_assets/images/444.jpg'
 ---
 
 # 📝 444_'이력서에 쓰지 않는 첫 직장이야기' Epilogue

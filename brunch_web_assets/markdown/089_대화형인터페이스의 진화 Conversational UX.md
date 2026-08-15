@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "대화형인터페이스의 진화 Conversational UX"
-category: '브런치북: UX의 언어들'
+category: 'UX의 언어들'
+cover_image: '/brunch_web_assets/images/089.jpg'
 ---
 
 # 📝 089_대화형인터페이스의 진화 Conversational UX

@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "제품의 생명선, Retention Curve"
-category: '브런치북: 기획자의 프레임웍'
+category: '기획자의 프레임웍'
+cover_image: '/brunch_web_assets/images/135.jpg'
 ---
 
 # 📝 135_제품의 생명선, Retention Curve

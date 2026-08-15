@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "'맥모닝'의 비밀, MECE 프레임워크"
-category: '브런치북: 기획자의 프레임웍'
+category: '기획자의 프레임웍'
+cover_image: '/brunch_web_assets/images/192.jpg'
 ---
 
 # 📝 192_'맥모닝'의 비밀, MECE 프레임워크

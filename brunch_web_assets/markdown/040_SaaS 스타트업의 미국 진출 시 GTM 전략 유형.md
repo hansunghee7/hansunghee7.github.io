@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "SaaS 스타트업의 미국 진출 시 GTM 전략 유형"
-category: '브런치북: 대한민국 스타트업 미국진출을 묻다'
+category: '대한민국 스타트업 미국진출을 묻다'
+cover_image: '/brunch_web_assets/images/040.jpg'
 ---
 
 # 📝 040_SaaS 스타트업의 미국 진출 시 GTM 전략 유형

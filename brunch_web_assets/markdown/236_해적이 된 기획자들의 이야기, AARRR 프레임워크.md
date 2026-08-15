@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "해적이 된 기획자들의 이야기, AARRR 프레임워크"
-category: '브런치북: 기획자의 프레임웍'
+category: '기획자의 프레임웍'
+cover_image: '/brunch_web_assets/images/236.jpg'
 ---
 
 # 📝 236_해적이 된 기획자들의 이야기, AARRR 프레임워크

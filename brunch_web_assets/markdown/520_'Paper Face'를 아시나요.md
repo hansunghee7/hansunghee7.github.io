@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "'Paper Face'를 아시나요"
-category: '매거진: 심플리파이어 라이프'
+category: '심플리파이어 라이프'
+cover_image: '/brunch_web_assets/images/520.jpg'
 ---
 
 # 📝 520_'Paper Face'를 아시나요

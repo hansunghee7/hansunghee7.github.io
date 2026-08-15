@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "Drop-off, 사용자가 떠나는 순간을 포착하는 방법"
-category: '브런치북: UX의 언어들'
+category: 'UX의 언어들'
+cover_image: '/brunch_web_assets/images/133.jpg'
 ---
 
 # 📝 133_Drop-off, 사용자가 떠나는 순간을 포착하는 방법

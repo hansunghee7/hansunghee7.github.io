@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "AI데이터센터 혈관, InfiniBandNVLink"
-category: '브런치북: AI의 언어들'
+category: 'AI의 언어들'
+cover_image: '/brunch_web_assets/images/141.jpg'
 ---
 
 # 📝 141_AI데이터센터 혈관, InfiniBandNVLink

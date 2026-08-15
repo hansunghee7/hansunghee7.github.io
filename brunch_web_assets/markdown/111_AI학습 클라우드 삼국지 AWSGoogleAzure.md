@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "AI학습 클라우드 삼국지 AWSGoogleAzure"
-category: '브런치북: AI의 언어들'
+category: 'AI의 언어들'
+cover_image: '/brunch_web_assets/images/111.jpg'
 ---
 
 # 📝 111_AI학습 클라우드 삼국지 AWSGoogleAzure

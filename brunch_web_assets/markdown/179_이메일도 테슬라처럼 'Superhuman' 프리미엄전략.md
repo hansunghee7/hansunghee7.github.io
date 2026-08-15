@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "이메일도 테슬라처럼 'Superhuman' 프리미엄전략"
-category: '브런치북: 스타트업의 전략들'
+category: '스타트업의 전략들'
+cover_image: '/brunch_web_assets/images/179.jpg'
 ---
 
 # 📝 179_이메일도 테슬라처럼 'Superhuman' 프리미엄전략

@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "UX와 UI의 차이, 그 뒤에 숨겨진 이야기"
-category: '브런치북: UX의 언어들'
+category: 'UX의 언어들'
+cover_image: '/brunch_web_assets/images/257.jpg'
 ---
 
 # 📝 257_UX와 UI의 차이, 그 뒤에 숨겨진 이야기
