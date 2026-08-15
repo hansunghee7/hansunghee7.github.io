@@ -125,7 +125,13 @@ for filename in md_files:
     else:
         title = filename[:-3]
 
-    category = cat_match.group(1).strip() if cat_match else "기타"
+    category = cat_match.group(1).strip() if cat_match else "기획일상"
+    # 🌟 카테고리 텍스트 오염 방지 예방 조치 (줄바꿈 및 긴 본문 잘라내기)
+    if "\n" in category or len(category) > 30:
+        category = category.split("\n")[0].split("|")[0].strip().strip("'\"")
+    if not category:
+        category = "기획일상"
+
     cover_image = cover_match.group(1).strip() if cover_match else "/brunch_web_assets/images/logo_white.png"
 
     title_clean = re.sub(r'[^가-힣a-zA-Z0-9]', '', title)
@@ -192,7 +198,6 @@ for cat in category_posts:
 with open(og_cache_file, 'w', encoding='utf-8') as f:
     json.dump(og_cache, f, ensure_ascii=False, indent=2)
 
-# 🌟 [NEW] 첨부 이미지 스타일의 Simplifier Choice 라이닝 헤더 구성
 global_promo_html = ""
 if GLOBAL_PROMO_LINKS:
     global_promo_html += """
@@ -368,4 +373,4 @@ const observer = new IntersectionObserver(entries => { entries.forEach(entry => 
 with open(index_file, 'w', encoding='utf-8') as f:
     f.write(html_header + html_body)
 
-print("✅ Simplifier Choice 구분선 디자인 적용 및 배포 준비 완료!")
+print("✅ 카테고리 파싱 오류 정정 및 배포 완료!")
