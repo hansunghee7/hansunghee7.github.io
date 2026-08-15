@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "데이터 기반 PO, IT성장의 핵심 엔진"
-category: 'PO가 꼭 알아야 할 것들'
+category: 'PO의 프레임웍'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/CCMucZvujvbItfL254xnze218sI.jpg'
 date_string: 'Jun 13. 2025'
 ---

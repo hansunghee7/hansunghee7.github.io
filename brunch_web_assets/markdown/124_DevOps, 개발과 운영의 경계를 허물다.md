@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "DevOps, 개발과 운영의 경계를 허물다"
-category: 'PO가 꼭 알아야 할 것들'
+category: 'PO의 프레임웍'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/CP4gWnaqscTPobkpn7u-vBdG-VY.jpg'
 date_string: 'May 30. 2025'
 ---
