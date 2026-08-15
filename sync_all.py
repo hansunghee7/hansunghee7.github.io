@@ -24,10 +24,9 @@ CATEGORY_SORT_DEFAULTS = {
     "토크세션": "desc"
 }
 
-# 🌟 모든 게시물 하단에 일괄 노출할 홍보/추천 링크
+# 🌟 모든 게시물 하단에 일괄 노출할 추천 링크 (검은 박스 없이 카드만 나옵니다!)
 GLOBAL_PROMO_LINKS = [
-    "https://www.yes24.com/product/goods/193444437",
-    "https://trevar.ink/Vmammm"
+    "https://www.yes24.com/product/goods/193444437"
 ]
 
 if os.path.exists("index.md"):
@@ -52,7 +51,6 @@ except Exception as e:
 md_files = [f for f in os.listdir(md_dir) if f.endswith(".md") and f != "index.md"]
 md_files.sort()
 
-# 🌟 v2로 변경: 기존의 안 예쁜 카드 캐시를 버리고 완전히 새로 긁어옵니다!
 og_cache_file = "og_cache_v2.json"
 og_cache = {}
 if os.path.exists(og_cache_file):
@@ -66,7 +64,7 @@ def get_og_card(url):
     if url in og_cache:
         return og_cache[url]
     
-    print(f"🔗 브런치 스타일 링크 정보 수집 중: {url}")
+    print(f"🔗 링크 정보 수집 중: {url}")
     try:
         headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
         res = requests.get(url, headers=headers, timeout=5)
@@ -89,8 +87,7 @@ def get_og_card(url):
         
         img_html = f'<div style="width:25%; min-width:160px; background:url(\'{img}\') center/cover no-repeat; border-left:1px solid #e1e1e1;"></div>' if img else ''
         
-        # 🌟 브런치(첨부 이미지) 스타일 완벽 재현 HTML
-        card_html = f'''\n<!-- OG_CARD_START -->\n<a href="{url}" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">\n    <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">\n        <div style="font-size:22px; font-weight:300; color:#333; margin-bottom:12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; letter-spacing:-0.5px;">{title}</div>\n        <div style="font-size:14px; font-weight:300; color:#888; line-height:1.6; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; word-break:keep-all;">{desc}</div>\n        <div style="margin-top:auto; font-size:13px; font-weight:300; color:#999;">{domain}</div>\n    </div>\n    {img_html}\n</a>\n<!-- OG_CARD_END -->\n'''
+        card_html = f'''\n<!-- OG_CARD_START -->\n<a href="{url}" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">\n    <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">\n        <div style="font-size:22px; font-weight:300; color:#333; margin-bottom:12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; letter-spacing:-0.5px;">{title}</div>\n        <div style="font-size:14px; font-weight:300; color:#888; line-height:1.6; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; word-break:keep-all;">{desc}</div>\n        <div style="margin-top:auto; font-size:13px; font-weight:300; color:#999;">{domain}</div>\n    </div>\n    {img_html}\n</a>\n<!-- OG_CARD_END -->\n'''
         
         og_cache[url] = card_html.strip()
         time.sleep(0.3)
@@ -150,8 +147,13 @@ for filename in md_files:
     if uid_match: uid = int(uid_match.group(1))
 
     body_content = re.sub(r'^---.*?---\s*', '', content, flags=re.DOTALL)
+    
+    # 🧹 기존의 쓸데없는 태그들(검은 배경 포함)과 잔여 텍스트 URL 싹 지우기
     body_content = re.sub(r'\n<!-- PROMO_BANNER_START -->.*?<!-- PROMO_BANNER_END -->', '', body_content, flags=re.DOTALL).strip()
     body_content = re.sub(r'\n<!-- CATEGORY_NAV_START -->.*?<!-- CATEGORY_NAV_END -->', '', body_content, flags=re.DOTALL).strip()
+    # 허공에 떠있는 예스24/트레바리 생짜 텍스트 주소 완전히 삭제
+    body_content = re.sub(r'^https://www\.yes24\.com/product/goods/\d+\s*$', '', body_content, flags=re.MULTILINE)
+    body_content = re.sub(r'^https://trevar\.ink/[a-zA-Z0-9]+\s*$', '', body_content, flags=re.MULTILINE)
 
     body_content = re.sub(r'^\s*(https?://[^\s<>]+)\s*$', replace_raw_url, body_content, flags=re.MULTILINE)
 
@@ -179,11 +181,10 @@ for cat in category_posts:
 with open(og_cache_file, 'w', encoding='utf-8') as f:
     json.dump(og_cache, f, ensure_ascii=False, indent=2)
 
+# 🌟 모든 포장(블랙 박스, 텍스트)을 완전히 버리고 순수한 카드만 생성!
 global_promo_html = ""
 if GLOBAL_PROMO_LINKS:
-    global_promo_html += "\n<!-- PROMO_BANNER_START -->\n<div class=\"promo-banner\" style=\"margin-top: 60px; padding: 35px 20px; background: #111111; border-radius: 12px; font-family: 'Noto Sans KR', sans-serif;\">\n"
-    global_promo_html += "    <h4 style=\"color: #ffffff; margin-top: 0; margin-bottom: 5px; font-weight: 500; font-size: 18px; text-align: center;\">🚀 Simplifier's Pick</h4>\n"
-    global_promo_html += "    <p style=\"color: #aaaaaa; font-size: 14px; margin-bottom: 25px; font-weight: 300; text-align: center;\">인사이트를 더 깊게 만나보세요</p>\n"
+    global_promo_html += "\n<!-- PROMO_BANNER_START -->\n<div style=\"margin-top: 60px;\">\n"
     for purl in GLOBAL_PROMO_LINKS:
         global_promo_html += get_og_card(purl)
     global_promo_html += "</div>\n<!-- PROMO_BANNER_END -->\n"
@@ -247,8 +248,9 @@ html_body = """<style>
 .card-item.visible { display: flex !important; animation: fadeInUp 0.4s ease forwards; }
 #scrollSentinel { height: 50px; margin-top: 30px; }
 
-body > header, .site-header, .page-header, .post-header, .header-wrap, .hero-section, .intro-banner, .header-bg, .top-bar, div[class*="header"], div[class*="hero"] {
+body > header, .site-header, .page-header, .post-header, .header-wrap, .hero-section, .intro-banner, .header-bg, .top-bar, div[class*="header"], div[class*="hero"], .masthead, .intro-header {
     background-color: #111111 !important;
+    background-image: none !important;
     background: #111111 !important;
     color: #ffffff !important;
     border-bottom: none !important;
@@ -286,8 +288,9 @@ for cat in sorted(list(unique_categories)):
 
 html_body += """</div><div class="sort-filter"><button class="sort-text-btn active" data-sort="desc"><span class="dot"></span>최신순</button><button class="sort-text-btn" data-sort="asc"><span class="dot"></span>날짜순</button></div></div><div class="card-grid" id="cardGrid">""" + cards_html + """</div><div id="scrollSentinel"></div><script>document.addEventListener('DOMContentLoaded', function() { 
 
-document.querySelectorAll('header, .site-header, .page-header, .post-header').forEach(el => {
+document.querySelectorAll('header, .site-header, .page-header, .post-header, .masthead, .intro-header').forEach(el => {
     el.style.setProperty('background-color', '#111111', 'important');
+    el.style.setProperty('background-image', 'none', 'important');
     el.style.setProperty('background', '#111111', 'important');
 });
 
@@ -321,4 +324,4 @@ const observer = new IntersectionObserver(entries => { entries.forEach(entry => 
 with open(index_file, 'w', encoding='utf-8') as f:
     f.write(html_header + html_body)
 
-print("✅ 브런치 스타일의 얇은 폰트 + 넓은 여백을 적용한 고품격 OG 카드 탑재 완료!")
+print("✅ 상단 배경 이미지 무력화 및 순수 OG 카드 노출 적용 완료!")
