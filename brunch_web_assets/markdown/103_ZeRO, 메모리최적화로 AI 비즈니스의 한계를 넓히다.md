@@ -28,21 +28,7 @@ ZeRO 도입을 위해서는 단계적 접근이 필요합니다.
 
 ZeRO는 AI 모델 개발의 진입장벽을 낮추고 있으며, 더 많은 기업이 10억~100억 파라미터급 모델에 도전할 수 있게 되었습니다. 다만, 수천억~수조 파라미터 모델은 여전히 막대한 인프라와 기술력이 필요하므로, "누구나 초거대 모델 개발이 가능하다"고 보기는 어렵습니다.
 
-결론적으로, ZeRO는 AI 모델 학습의 메모리 효율성을 크게 향상시켜 대형 모델 개발의 진입장벽을 낮추는 중요한 기술입니다. 특히 중견기업과 연구 기관에게 ZeRO는 제한된 리소스로도 더 크고 강력한 AI 모델을 개발할 수 있는 가능성을 열어주는 의미 있는 발전입니다.<!-- CATEGORY_NAV_START -->
-<style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
-.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
-.cat-nav-item:hover { color: #111; }
-.cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
-.cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
-.nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
-<div class="category-nav-wrap">
-  <a href="/brunch_web_assets/markdown/096_%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EA%B2%BD%EC%9F%81%EB%A0%A5%EC%97%90%20%EC%A0%80%EC%A0%84%EB%A0%A5%20NPU%EA%B0%80%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'AI의 언어들'의 이전글</span><span class="nav-title">비즈니스 경쟁력에 저전력 NPU가 중요한 이유</span></a>
-  <a href="/brunch_web_assets/markdown/111_AI%ED%95%99%EC%8A%B5%20%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%20%EC%82%BC%EA%B5%AD%EC%A7%80%20AWSGoogleAzure.html" class="cat-nav-item cat-nav-right"><span class="nav-title">AI학습 클라우드 삼국지 AWS/Google/Azure</span><span class="cat-nav-label">'AI의 언어들'의 다음글</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->
+결론적으로, ZeRO는 AI 모델 학습의 메모리 효율성을 크게 향상시켜 대형 모델 개발의 진입장벽을 낮추는 중요한 기술입니다. 특히 중견기업과 연구 기관에게 ZeRO는 제한된 리소스로도 더 크고 강력한 AI 모델을 개발할 수 있는 가능성을 열어주는 의미 있는 발전입니다.
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->

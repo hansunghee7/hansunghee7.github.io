@@ -38,21 +38,7 @@ date_string: 'Dec 25. 2023'
 
 ![h030604001621_54121850.jpg](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/U789gdzm79kcPOeT189Fhba6m-I.jpg)
 
-ps. 생각해 보니 이 작업으로 잡지취재도 하고 TV 출연도 했었네요. :-)<!-- CATEGORY_NAV_START -->
-<style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
-.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
-.cat-nav-item:hover { color: #111; }
-.cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
-.cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
-.nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
-<div class="category-nav-wrap">
-  <a href="/brunch_web_assets/markdown/515_%EB%A0%88%EC%96%B4%ED%85%9C%20%EC%84%A0%EB%AC%BC%EC%9D%84%20%EB%B0%9B%EC%95%98%EC%8A%B5%EB%8B%88%EB%8B%A4.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'심플리파이어 라이프'의 이전글</span><span class="nav-title">레어템 선물을 받았습니다.</span></a>
-  <a href="/brunch_web_assets/markdown/524_%EA%B8%80%EC%9D%84%20%EB%A7%A4%EC%9D%BC%20%EC%93%B0%EB%8B%A4%EB%B3%B4%EB%8B%88.html" class="cat-nav-item cat-nav-right"><span class="nav-title">글을 매일 쓰다보니...</span><span class="cat-nav-label">'심플리파이어 라이프'의 다음글</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->
+ps. 생각해 보니 이 작업으로 잡지취재도 하고 TV 출연도 했었네요. :-)
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->

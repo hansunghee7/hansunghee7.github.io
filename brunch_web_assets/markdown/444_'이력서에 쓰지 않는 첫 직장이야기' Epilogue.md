@@ -42,21 +42,7 @@ date_string: 'Mar 14. 2024'
 
 그 뒤로 나는 알게되었다... 우리는 모두 진심으로 살고 있다.
 
-다만 자신의 가치의 나침반이 가르치는 방향과 파도를 어떻게 헤쳐나가느냐에 따라 도착지가 달라졌을 뿐인 것을...<!-- CATEGORY_NAV_START -->
-<style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
-.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
-.cat-nav-item:hover { color: #111; }
-.cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
-.cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
-.nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
-<div class="category-nav-wrap">
-  <div></div>
-  <a href="/brunch_web_assets/markdown/445_%27%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%20%EC%A7%81%EC%9E%A5%EC%9D%B4%EC%95%BC%EA%B8%B0%27%209%ED%8E%B8.html" class="cat-nav-item cat-nav-right"><span class="nav-title">이력서에 쓰지 않는 첫 직장이야기' 9편</span><span class="cat-nav-label">'이력서에 쓰지 않는 첫직장 이야기'의 다음글</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->
+다만 자신의 가치의 나침반이 가르치는 방향과 파도를 어떻게 헤쳐나가느냐에 따라 도착지가 달라졌을 뿐인 것을...
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->

@@ -42,21 +42,7 @@ Slack은 이런 전환 포인트를 만들기 위해 치밀한 전략을 세웠�
 
 ![94115cc7-a01d-4342-b061-a1663d7b06e5.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/47wHOAuhdhjoc1OhARjqhUmMSOY.png)
 
-Slack의 성공 비결은 무료 사용자에게 충분한 가치를 제공하면서도, 서비스에 의존하게 된 순간 자연스럽게 유료로 전환하도록 유도하는 섬세한 전략에 있습니다. 여러분의 서비스에서도 이런 '매직 모먼트'를 찾아내고, 그 순간 사용자에게 명확한 업그레이드 이유를 제시할 수 있다면, 프리미엄 모델의 성공적인 수익화가 가능할 것입니다.<!-- CATEGORY_NAV_START -->
-<style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
-.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
-.cat-nav-item:hover { color: #111; }
-.cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
-.cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
-.nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
-<div class="category-nav-wrap">
-  <a href="/brunch_web_assets/markdown/144_Perplexity%234%20%EB%8C%80%ED%99%94%ED%98%95%20UX%20%EA%B5%AC%EC%A1%B0%EC%99%80%20%EC%BF%BC%EB%A6%AC%20%EB%B6%84%EA%B8%B0.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'스타트업 인사이트'의 이전글</span><span class="nav-title">Perplexity#4 대화형 UX 구조와 쿼리 분기</span></a>
-  <a href="/brunch_web_assets/markdown/151_Perplexity%20%233%20%EA%B2%80%EC%83%89%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%EA%B5%AC%EC%A1%B0%20%EC%84%A4%EA%B3%84.html" class="cat-nav-item cat-nav-right"><span class="nav-title">Perplexity #3 검색 시스템의 구조 설계</span><span class="cat-nav-label">'스타트업 인사이트'의 다음글</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->
+Slack의 성공 비결은 무료 사용자에게 충분한 가치를 제공하면서도, 서비스에 의존하게 된 순간 자연스럽게 유료로 전환하도록 유도하는 섬세한 전략에 있습니다. 여러분의 서비스에서도 이런 '매직 모먼트'를 찾아내고, 그 순간 사용자에게 명확한 업그레이드 이유를 제시할 수 있다면, 프리미엄 모델의 성공적인 수익화가 가능할 것입니다.
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->

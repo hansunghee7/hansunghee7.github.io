@@ -42,7 +42,6 @@ Foundry는 도입 기업들의 혁신을 catalyze하며 빠르게 입소문을 �
 
 ![mode_2_diagram_v2_padding.jpg](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/yGiDJFA-CPyRpGBv9adHxf9Xj5g.jpg)
 
-
 ## Foundry의 미래
 
 앞으로 Foundry를 통해 더 놀라운 변화의 물결이 일 것으로 기대됩니다. 우선 그동안 데이터 활용에서 소외되었던 중소기업들의 디지털 전환이 가속화 될 것입니다. Fortune 500대 기업들의 전유물이던 빅데이터와 AI의 혜택을, 이제 Foundry를 통해 중소기업들도 누릴 수 있게 된 것이죠.

@@ -70,21 +70,7 @@ Notion의 시장 진출 전략에서 스타트업들이 배울 수 있는 핵심
 
 **6. 시장 변화와 위기를 기회로 전환할 수 있는 민첩성을 갖출 것**
 
-Notion의 사례는 혁신적인 제품과 전략적인 시장 진출이 결합되었을 때, 포화된 시장에서도 성공적으로 자리잡을 수 있음을 보여줍니다. 여러분도 이러한 전략을 응용하여 효과적인 시장 진출 계획을 수립해보시기 바랍니다.<!-- CATEGORY_NAV_START -->
-<style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
-.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
-.cat-nav-item:hover { color: #111; }
-.cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
-.cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
-.nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
-<div class="category-nav-wrap">
-  <a href="/brunch_web_assets/markdown/207_AI%EC%9D%98%20%ED%96%89%EB%8F%99%EC%9D%84%20%EB%A7%8C%EB%93%A4%EB%8B%A4%20%27Manus%20AI%27.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'스타트업 인사이트'의 이전글</span><span class="nav-title">AI의 행동을 만들다. 'Manus AI</span></a>
-  <a href="/brunch_web_assets/markdown/210_%EC%BD%94%EB%93%9C%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EA%B9%A8%EB%8A%94%20AI%20%ED%98%81%EC%8B%A0%2C%20Cursor%20AI.html" class="cat-nav-item cat-nav-right"><span class="nav-title">코드의 한계를 깨는 AI 혁신, Cursor AI</span><span class="cat-nav-label">'스타트업 인사이트'의 다음글</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->
+Notion의 사례는 혁신적인 제품과 전략적인 시장 진출이 결합되었을 때, 포화된 시장에서도 성공적으로 자리잡을 수 있음을 보여줍니다. 여러분도 이러한 전략을 응용하여 효과적인 시장 진출 계획을 수립해보시기 바랍니다.
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->

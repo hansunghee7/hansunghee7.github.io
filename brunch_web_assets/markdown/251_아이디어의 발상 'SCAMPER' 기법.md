@@ -36,21 +36,7 @@ IT 기업들은 이 SCAMPER 기법으로 제품과 서비스를 혁신한다. �
 
 기획자라면 SCAMPER를 능숙하게 활용해야 한다. 우선 아이디어 발상 단계에서 7가지 키워드로 브레인스토밍을 하자. 기존 제품 개선, 서비스 혁신, 프로세스 최적화에도 이를 적용해보자. 삼성전자의 폴더블폰처럼 'Modify'로 새로운 디자인을 고안하고, 삼성페이처럼 'Combine'으로 카드 결제 기능 탑재 등을 고려해볼 수도 있다. 'Eliminate'로 업무 단계를 간소화하고, 'Adapt'로 이종 산업 마케팅을 벤치마킹할 수도 있다. 나아가 팀 워크숍에서 SCAMPER의 키워드들로 아이디어 발상을 진행하는 것도 좋은 방법이 될 수도 있을 것다.
 
-이처럼 SCAMPER는 체계적이고도 창의적인 사고의 틀을 제공한다. 이를 통해 기획자는 혁신적 아이디어를 찾아내고 프로젝트에 녹여낼 수 있다. 단순한 머리풀기가 아니라 전략적 사고의 비밀병기, SCAMPER 기법을 꼭 익혀두자.<!-- CATEGORY_NAV_START -->
-<style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
-.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
-.cat-nav-item:hover { color: #111; }
-.cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
-.cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
-.nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
-<div class="category-nav-wrap">
-  <a href="/brunch_web_assets/markdown/244_470%EB%AA%85%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%ED%88%B4%20%27%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EB%AA%A8%EB%8D%B8%20%EC%BA%94%EB%B2%84%EC%8A%A4%27.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'기획자의 프레임웍'의 이전글</span><span class="nav-title">470명이 만든 비즈니스 툴 '비즈니스 모델 캔버스</span></a>
-  <a href="/brunch_web_assets/markdown/259_%EA%B3%A0%EA%B0%9D%EC%9D%84%20%EC%A0%95%EC%9D%98%ED%95%98%EB%8A%94%20%EB%B2%95%20%27%ED%8E%98%EB%A5%B4%EC%86%8C%EB%82%98%27.html" class="cat-nav-item cat-nav-right"><span class="nav-title">고객을 정의하는 법 '페르소나</span><span class="cat-nav-label">'기획자의 프레임웍'의 다음글</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->
+이처럼 SCAMPER는 체계적이고도 창의적인 사고의 틀을 제공한다. 이를 통해 기획자는 혁신적 아이디어를 찾아내고 프로젝트에 녹여낼 수 있다. 단순한 머리풀기가 아니라 전략적 사고의 비밀병기, SCAMPER 기법을 꼭 익혀두자.
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->

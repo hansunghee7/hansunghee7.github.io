@@ -10,7 +10,6 @@ date_string: 'Apr 20. 2025'
 
 ### **기존 검색 엔진의 구조적 한계**
 
-
 구글이 검색 시장을 장악한 지 20년이 넘었습니다. 그동안 PageRank 알고리즘과 수많은 개선에도 불구하고, 전통적인 검색 엔진은 몇 가지 근본적인 한계에 부딪혔습니다.
 
 첫째, 링크 기반 랭킹의 한계입니다. 구글의 PageRank는 다른 웹사이트로부터 받는 링크의 수와 품질을 기준으로 웹페이지의 중요도를 평가합니다. 이 방식은 SEO(검색 엔진 최적화)를 통한 조작이 가능하여, 실제 품질보다 최적화된 콘텐츠가 상위에 노출되는 문제가 있습니다.
@@ -23,7 +22,6 @@ date_string: 'Apr 20. 2025'
 
 ### **생성형 AI 시대의 새로운 정보 탐색 기준**
 
-
 ChatGPT의 등장으로 사람들은 정보를 얻는 새로운 방식을 경험했습니다. 링크를 클릭하고 내용을 판단하는 과정 없이, 질문에 대한 직접적인 답변을 받을 수 있게 된 것입니다. 하지만 생성형 AI에도 명확한 한계가 있었습니다.
 
 가장 큰 문제는 최신성입니다. GPT-4와 같은 대규모 언어 모델은 특정 시점까지의 데이터로 학습되며, 그 이후의 정보는 알지 못합니다. 또한 출처 검증이 불가능하다는 점도 중요한 한계입니다. AI가 제공하는 정보가 어디서 왔는지 추적할 수 없어 신뢰성 문제가 발생합니다.
@@ -33,7 +31,6 @@ ChatGPT의 등장으로 사람들은 정보를 얻는 새로운 방식을 경험
 ![](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/a3DRN0AoZlFZsNW41DzcLJv0gO0.jpg)
 
 ### **Perplexity의 탄생 배경과 철학**
-
 
 Perplexity AI는 2022년 8월 캘리포니아에서 설립되었습니다. 창업자 아라빈드 스리니바스(Aravind Srinivas)는 구글 브레인 출신으로, OpenAI에서 연구원으로 일한 경험이 있습니다. 그는 검색의 미래가 단순한 링크 나열이 아닌, 질문에 대한 직접적인 답변 제공에 있다고 확신했습니다.
 
@@ -51,7 +48,6 @@ Perplexity의 철학은 다음 세 가지로 요약됩니다:
 
 ### **RAG: 검색과 생성의 결합**
 
-
 RAG는 단순히 기술적 접근법을 넘어 정보 소비 방식의 패러다임 전환을 의미합니다. 기존에는 검색 결과로 제공된 여러 웹페이지를 사용자가 직접 읽고 종합하는 '정보 수집 과정'이 필요했습니다. Perplexity는 이 과정을 AI가 대신 수행하고, 사용자에게는 요약된 답변만 제공함으로써 인지 부하를 줄였습니다.
 
 RAG가 가진 강점은 다음과 같습니다:
@@ -65,7 +61,6 @@ RAG가 가진 강점은 다음과 같습니다:
 이러한 접근법은 특히 금융, 의학, 법률과 같이 정확성과 최신성이 중요한 분야에서 큰 가치를 발휘합니다.
 
 ### **혁신적인 UX: 대화형 검색 경험**
-
 
 Perplexity는 기술적 혁신뿐만 아니라 사용자 경험(UX) 측면에서도 큰 변화를 가져왔습니다. 기존 검색 엔진이 '검색창 → 결과 페이지 → 링크 클릭 → 내용 확인'이라는 다단계 과정을 요구했다면, Perplexity는 대화하듯 질문하고 바로 답변을 받는 단순한 흐름을 제공합니다.
 
@@ -85,7 +80,6 @@ Perplexity는 기술적 혁신뿐만 아니라 사용자 경험(UX) 측면에서
 
 ### **실제 비즈니스 적용 가능성**
 
-
 Perplexity의 접근법은 다양한 비즈니스 영역에서 응용될 수 있습니다:
 
 기업 내부 지식베이스: 회사 문서, 매뉴얼, 정책 등을 RAG 모델로 연동하여 직원들이 자연어로 질문하고 답변받을 수 있는 시스템
@@ -96,21 +90,7 @@ Perplexity의 접근법은 다양한 비즈니스 영역에서 응용될 수 있
 
 이러한 응용은 단순히 기존 검색 엔진을 대체하는 것이 아니라, 정보 접근성과 활용도를 획기적으로 높이는 방향으로 발전할 것입니다.
 
-다음 편에서는 Perplexity의 핵심 기술 아키텍처를 자세히 분석하겠습니다. BM25와 같은 전통적인 검색 알고리즘부터 벡터 검색, RAG 구현 방식까지 실전적인 관점에서 살펴보겠습니다.<!-- CATEGORY_NAV_START -->
-<style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
-.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
-.cat-nav-item:hover { color: #111; }
-.cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
-.cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
-.nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
-<div class="category-nav-wrap">
-  <a href="/brunch_web_assets/markdown/165_Perplexity%20%232%20%EA%B2%80%EC%83%89%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%EA%B5%AC%EC%A1%B0%20%EC%84%A4%EA%B3%84.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'스타트업 인사이트'의 이전글</span><span class="nav-title">Perplexity #2 검색 시스템의 구조 설계</span></a>
-  <a href="/brunch_web_assets/markdown/172_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%B0%BD%EC%97%85%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%ED%95%98%EB%82%98%EC%9A%94.html" class="cat-nav-item cat-nav-right"><span class="nav-title">스타트업 창업은 어떻게 하나요?</span><span class="cat-nav-label">'스타트업 인사이트'의 다음글</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->
+다음 편에서는 Perplexity의 핵심 기술 아키텍처를 자세히 분석하겠습니다. BM25와 같은 전통적인 검색 알고리즘부터 벡터 검색, RAG 구현 방식까지 실전적인 관점에서 살펴보겠습니다.
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->

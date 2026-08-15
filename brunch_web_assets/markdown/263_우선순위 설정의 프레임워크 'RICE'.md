@@ -30,21 +30,7 @@ Effort는 아이디어 실현에 필요한 시간, 인력, 예산 등을 가늠�
 
 ---
 
-기획자의 프레임웍은 기획자들이 활용할 수 있는 프레임웍들을 연재하는 콘텐츠입니다. 다뤘으면 하는 콘텐츠가 있으면 댓글로 남겨주세요.  :-)<!-- CATEGORY_NAV_START -->
-<style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
-.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
-.cat-nav-item:hover { color: #111; }
-.cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
-.cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
-.nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
-<div class="category-nav-wrap">
-  <a href="/brunch_web_assets/markdown/259_%EA%B3%A0%EA%B0%9D%EC%9D%84%20%EC%A0%95%EC%9D%98%ED%95%98%EB%8A%94%20%EB%B2%95%20%27%ED%8E%98%EB%A5%B4%EC%86%8C%EB%82%98%27.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'기획자의 프레임웍'의 이전글</span><span class="nav-title">고객을 정의하는 법 '페르소나</span></a>
-  <div></div>
-</div>
-<!-- CATEGORY_NAV_END -->
+기획자의 프레임웍은 기획자들이 활용할 수 있는 프레임웍들을 연재하는 콘텐츠입니다. 다뤘으면 하는 콘텐츠가 있으면 댓글로 남겨주세요.  :-)
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
