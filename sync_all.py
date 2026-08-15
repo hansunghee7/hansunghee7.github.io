@@ -4,8 +4,7 @@ import urllib.parse
 import csv
 import json
 
-# 👇 [설정] 카테고리별 기본 정렬 방식을 지정하세요! ('desc': 최신순, 'asc': 날짜순)
-# 여기에 적혀있지 않은 카테고리는 무조건 기본값인 'desc'(최신순)로 작동합니다.
+# 👇 카테고리별 기본 정렬 방식
 CATEGORY_SORT_DEFAULTS = {
     "AI의 언어들": "desc",
     "Be the PO": "desc",
@@ -103,28 +102,52 @@ for filename in md_files:
     uid_match = re.match(r'^(\d+)_', filename)
     if uid_match: uid = int(uid_match.group(1))
 
-    cards_html += f'<a href="{link}" class="card-item" data-category="{category}" data-date="{timestamp}" data-id="{uid}"><div class="card-thumb" style="background-image: url(\'{cover_image}\');"></div><div class="card-content"><div><div class="card-category">{category}</div><h3 class="card-title">{title}</h3></div><div class="card-date">{date_string}</div></div></a>'
+    cards_html += f'<a href="{link}" class="card-item" data-category="{category}" data-date="{timestamp}" data-id="{uid}"><div class="card-thumb-wrap"><div class="card-thumb" style="background-image: url(\'{cover_image}\');"></div></div><div class="card-content"><div><div class="card-category">{category}</div><h3 class="card-title">{title}</h3></div><div class="card-date">{date_string}</div></div></a>'
     post_count += 1
 
 html_header = f"---\nlayout: default\ntitle: '심플리파이어의 {post_count}개의 글'\nis_index: true\n---\n"
 
-# 파이썬 딕셔너리를 자바스크립트가 읽을 수 있게 변환
 default_sorts_json = json.dumps(CATEGORY_SORT_DEFAULTS, ensure_ascii=False)
 
-html_body = """<style>@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } } .card-item.visible { display: flex !important; animation: fadeInUp 0.4s ease forwards; } #scrollSentinel { height: 50px; margin-top: 30px; } .filter-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px; margin-bottom: 35px; } .category-filter { display: flex; flex-wrap: wrap; gap: 8px; flex: 1; } .cat-btn { padding: 7px 16px; border: 1px solid #e1e1e1; border-radius: 20px; background: #fff; color: #666; font-size: 13px; font-weight: 300; cursor: pointer; transition: all 0.2s; font-family: 'Noto Sans KR', sans-serif; } .cat-btn:hover { border-color: #00c73c; color: #00c73c; } .cat-btn.active { background: #00c73c; color: #fff; border-color: #00c73c; font-weight: 400; } .sort-filter { display: flex; gap: 15px; align-items: center; margin-bottom: 5px; } .sort-text-btn { background: none; border: none; font-size: 14px; color: #a0a0a0; cursor: pointer; font-family: 'Noto Sans KR', sans-serif; font-weight: 300; display: flex; align-items: center; padding: 0; transition: color 0.2s; } .sort-text-btn:hover { color: #555; } .sort-text-btn.active { color: #333; font-weight: 400; } .sort-text-btn .dot { display: inline-block; width: 4px; height: 4px; border-radius: 50%; background-color: transparent; margin-right: 4px; margin-bottom: 2px; } .sort-text-btn.active .dot { background-color: #00c73c; }</style><div class="filter-wrap"><div class="category-filter"><button class="cat-btn active" data-filter="all">전체보기</button>"""
+# 🌟 형광그린(#6CFD33) 키컬러 및 카드 확대/테두리 롤오버 CSS 적용
+html_body = """<style>
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.card-item.visible { display: flex !important; animation: fadeInUp 0.4s ease forwards; }
+#scrollSentinel { height: 50px; margin-top: 30px; }
+
+.filter-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px; margin-bottom: 35px; }
+.category-filter { display: flex; flex-wrap: wrap; gap: 8px; flex: 1; }
+.cat-btn { padding: 7px 16px; border: 1px solid #e1e1e1; border-radius: 20px; background: #fff; color: #666; font-size: 13px; font-weight: 300; cursor: pointer; transition: all 0.2s; font-family: 'Noto Sans KR', sans-serif; }
+.cat-btn:hover { border-color: #6CFD33; color: #111; }
+.cat-btn.active { background: #6CFD33; color: #111; border-color: #6CFD33; font-weight: 500; }
+
+.sort-filter { display: flex; gap: 15px; align-items: center; margin-bottom: 5px; }
+.sort-text-btn { background: none; border: none; font-size: 14px; color: #a0a0a0; cursor: pointer; font-family: 'Noto Sans KR', sans-serif; font-weight: 300; display: flex; align-items: center; padding: 0; transition: color 0.2s; }
+.sort-text-btn:hover { color: #555; }
+.sort-text-btn.active { color: #111; font-weight: 500; }
+.sort-text-btn .dot { display: inline-block; width: 4px; height: 4px; border-radius: 50%; background-color: transparent; margin-right: 4px; margin-bottom: 2px; }
+.sort-text-btn.active .dot { background-color: #6CFD33; }
+
+/* 🎨 이미지 확대 및 형광그린 테두리 롤오버 애니메이션 */
+.card-item { border: 1px solid #e1e1e1; border-radius: 12px; overflow: hidden; transition: border-color 0.3s ease, box-shadow 0.3s ease; text-decoration: none !important; color: inherit; }
+.card-thumb-wrap { width: 100%; height: 180px; overflow: hidden; position: relative; }
+.card-thumb { width: 100%; height: 100%; background-size: cover; background-position: center; transition: transform 0.4s ease; }
+
+.card-item:hover { border-color: #6CFD33 !important; box-shadow: 0 6px 20px rgba(108, 253, 51, 0.15); }
+.card-item:hover .card-thumb { transform: scale(1.08); }
+.card-category { color: #222; font-weight: 500; }
+</style>
+
+<div class="filter-wrap"><div class="category-filter"><button class="cat-btn active" data-filter="all">전체보기</button>"""
 
 for cat in sorted(list(unique_categories)):
     html_body += f'<button class="cat-btn" data-filter="{cat}">{cat}</button>'
 
 html_body += """</div><div class="sort-filter"><button class="sort-text-btn active" data-sort="desc"><span class="dot"></span>최신순</button><button class="sort-text-btn" data-sort="asc"><span class="dot"></span>날짜순</button></div></div><div class="card-grid" id="cardGrid">""" + cards_html + """</div><div id="scrollSentinel"></div><script>document.addEventListener('DOMContentLoaded', function() { const cards = Array.from(document.querySelectorAll('.card-item')); const filterBtns = document.querySelectorAll('.cat-btn'); const sortBtns = document.querySelectorAll('.sort-text-btn'); const sentinel = document.getElementById('scrollSentinel'); const grid = document.getElementById('cardGrid'); let itemsPerBatch = 20, currentVisibleCount = 0; let filteredCards = [...cards]; let currentFilter = 'all'; 
 
-// 파이썬에서 넘겨받은 카테고리별 기본 정렬 설정
 const categoryDefaults = """ + default_sorts_json + """;
 
 function getSortMode(cat) { 
-    // 1. 유저가 마지막으로 선택한 캐시가 있으면 그것을 최우선으로 따름
-    // 2. 캐시가 없으면 파이썬에 세팅한 기본 정렬 기준을 따름
-    // 3. 둘 다 없으면 무조건 최신순(desc)
     return localStorage.getItem('brunchSort_' + cat) || categoryDefaults[cat] || 'desc'; 
 } 
 
@@ -150,4 +173,4 @@ const observer = new IntersectionObserver(entries => { entries.forEach(entry => 
 with open(index_file, 'w', encoding='utf-8') as f:
     f.write(html_header + html_body)
 
-print("✅ 카테고리별 맞춤 기본 정렬 및 캐싱 기능 적용 완료!")
+print("✅ 키컬러(#6CFD33) 변경 및 카드 호버 애니메이션(확대+테두리) 적용 완료!")
