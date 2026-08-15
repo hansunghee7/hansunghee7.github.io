@@ -84,6 +84,8 @@
   .logo-mask-wrap { position: relative; }
   .logo-mask-wrap img { transition: opacity 0.3s ease, filter 0.3s ease; opacity: 0.65; }
   .logo-item:hover .logo-mask-wrap img { opacity: 1; filter: brightness(0) invert(1); }
+  /* AmorePacific exception — its blob (darker gray) and letterform (lighter gray) are distinguished only by luminance, not alpha. On hover, invert that mapping via SVG threshold: blob → white, letterform → black. */
+  .logo-item-amore:hover .logo-mask-wrap img { filter: url(#amore-hover-mono); }
   .logo-item p { transition: color 0.3s ease; }
   .logo-item:hover p { color: #f5f3ee; }
   .reveal.is-visible { opacity: 1; transform: translateY(0); }
@@ -124,6 +126,19 @@
 </style>
 </head>
 <body class="font-sans antialiased">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="amore-hover-mono">
+      <feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0"/>
+      <feComponentTransfer>
+        <feFuncR type="discrete" tableValues="1 0"/>
+        <feFuncG type="discrete" tableValues="1 0"/>
+        <feFuncB type="discrete" tableValues="1 0"/>
+      </feComponentTransfer>
+    </filter>
+  </defs>
+</svg>
 
 <div class="concept-badge">Concept Draft · Not Live</div>
 <div id="running-folio">SIMPLIFIER</div>
@@ -174,7 +189,7 @@
         <div class="logo-mask-wrap h-24 md:h-28 w-full"><img src="assets/logos/gs.png" class="logo-default h-full w-full object-contain" alt="GS"></div>
         <p class="mt-4 text-xs text-fog">Lecturer</p>
       </a>
-      <a href="https://www.apgroup.com" target="_blank" rel="noopener" class="logo-item flex flex-col items-center text-center">
+      <a href="https://www.apgroup.com" target="_blank" rel="noopener" class="logo-item logo-item-amore flex flex-col items-center text-center">
         <div class="logo-mask-wrap h-24 md:h-28 w-full"><img src="assets/logos/amore.png" class="logo-default h-full w-full object-contain" alt="Amore Pacific"></div>
         <p class="mt-4 text-xs text-fog">Lecturer</p>
       </a>
