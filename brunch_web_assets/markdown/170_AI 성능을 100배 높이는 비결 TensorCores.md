@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.color = '#fff';
         });
         catPill.addEventListener('click', function() {
-            window.location.href = '/?cat=' + encodeURIComponent('AI의 언어들');
+            window.location.href = '/log.html?cat=' + encodeURIComponent('AI의 언어들');
         });
     }
 });

@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.color = '#fff';
         });
         catPill.addEventListener('click', function() {
-            window.location.href = '/?cat=' + encodeURIComponent('UX의 언어들');
+            window.location.href = '/log.html?cat=' + encodeURIComponent('UX의 언어들');
         });
     }
 });

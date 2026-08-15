@@ -32,7 +32,7 @@ if os.path.exists("index.md"):
     os.remove("index.md")
 
 md_dir = "brunch_web_assets/markdown"
-index_file = "index.html"
+index_file = "log.html"
 csv_file = "브런치_글_모음집.csv"
 
 csv_dates = {}
@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {{
             this.style.color = '#fff';
         }});
         catPill.addEventListener('click', function() {{
-            window.location.href = '/?cat=' + encodeURIComponent('{category}');
+            window.location.href = '/log.html?cat=' + encodeURIComponent('{category}');
         }});
     }}
 }});

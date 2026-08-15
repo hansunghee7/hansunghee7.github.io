@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.color = '#fff';
         });
         catPill.addEventListener('click', function() {
-            window.location.href = '/?cat=' + encodeURIComponent('심플리파이어 라이프');
+            window.location.href = '/log.html?cat=' + encodeURIComponent('심플리파이어 라이프');
         });
     }
 });

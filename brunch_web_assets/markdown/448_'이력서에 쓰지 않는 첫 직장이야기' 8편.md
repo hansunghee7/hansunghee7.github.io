@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.color = '#fff';
         });
         catPill.addEventListener('click', function() {
-            window.location.href = '/?cat=' + encodeURIComponent('이력서에 쓰지 않는 첫직장 이야기');
+            window.location.href = '/log.html?cat=' + encodeURIComponent('이력서에 쓰지 않는 첫직장 이야기');
         });
     }
 });

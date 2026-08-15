@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.color = '#fff';
         });
         catPill.addEventListener('click', function() {
-            window.location.href = '/?cat=' + encodeURIComponent('스타트업 인사이트');
+            window.location.href = '/log.html?cat=' + encodeURIComponent('스타트업 인사이트');
         });
     }
 });

@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.color = '#fff';
         });
         catPill.addEventListener('click', function() {
-            window.location.href = '/?cat=' + encodeURIComponent('대한민국 스타트업 미국진출을 묻다');
+            window.location.href = '/log.html?cat=' + encodeURIComponent('대한민국 스타트업 미국진출을 묻다');
         });
     }
 });

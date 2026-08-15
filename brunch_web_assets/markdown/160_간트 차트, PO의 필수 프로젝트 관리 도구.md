@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.color = '#fff';
         });
         catPill.addEventListener('click', function() {
-            window.location.href = '/?cat=' + encodeURIComponent('PO의 프레임웍');
+            window.location.href = '/log.html?cat=' + encodeURIComponent('PO의 프레임웍');
         });
     }
 });
