@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "키워드로 알아보는 서비스기획자, PM, PO의 차이"
-category: '기획자로 시작하기'
+category: '기획일상'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/87nOEPZ9_0O5YkmUWsYUCnNo7q0.jpg'
 date_string: 'Sep 25. 2023'
 ---
