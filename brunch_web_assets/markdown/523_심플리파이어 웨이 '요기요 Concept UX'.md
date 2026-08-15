@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "심플리파이어 웨이 '요기요 Concept UX'"
-category: '스타트업 리더의 기술'
+category: '스타트업 인사이트'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/2Y_JZ1nQYyhGCHffJu6s3VQQnnw.jpg'
 date_string: 'Dec 22. 2023'
 ---
