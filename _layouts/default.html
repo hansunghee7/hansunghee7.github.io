@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }}</title>
     
+<!-- 검색엔진 요약문 (Meta Description) -->
+    <meta name="description" content="{{ content | strip_html | strip_newlines | truncate: 150 }}">
+
+    <!-- 카카오톡, 슬랙, 링크드인 공유용 미리보기 (Open Graph) -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{ page.title }}">
+    <meta property="og:description" content="{{ content | strip_html | strip_newlines | truncate: 150 }}">
+    <meta property="og:image" content="{{ page.cover_image | default: 'https://hansunghee7.github.io/brunch_web_assets/images/logo_white.png' }}">
+    <meta property="og:url" content="https://hansunghee7.github.io{{ page.url }}">
+
 <!-- JSON-LD 구조화된 데이터 (GEO/SEO 최적화) -->
     <script type="application/ld+json">
     {
