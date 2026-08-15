@@ -80,12 +80,13 @@
     .gallery-panel.is-open { height: 420px; }
   }
 
-  /* Logo trust bar — pre-rendered lime version crossfades over the muted default on hover */
+  /* Logo trust bar — force all logos to render as white silhouettes so they never disappear against the dark background, whatever their original color. */
   .logo-mask-wrap { position: relative; }
-  .logo-mask-wrap img { transition: opacity 0.3s ease; }
-  .logo-mask-wrap .logo-default { opacity: 0.55; }
-  .logo-item:hover .logo-mask-wrap .logo-default { opacity: 0; }
-  .logo-mask-wrap .logo-lime-overlay { display: none; }
+  .logo-mask-wrap img { transition: opacity 0.3s ease; filter: brightness(0) invert(1); }
+  .logo-mask-wrap .logo-default { opacity: 0.5; }
+  .logo-item:hover .logo-mask-wrap .logo-default { opacity: 1; }
+  .logo-item p { transition: color 0.3s ease; }
+  .logo-item:hover p { color: #f5f3ee; }
   .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
   .eyebrow { letter-spacing: 0.14em; }
@@ -162,54 +163,54 @@
   <div class="max-w-[1400px] mx-auto px-8 md:px-14 py-10">
     <div class="folio reveal" data-folio-section><span class="folio-label">The Record</span><span class="folio-rule"></span><span class="folio-num">No. 01</span></div>
     <div class="reveal grid grid-cols-3 md:grid-cols-6 gap-x-10 gap-y-16 md:gap-x-16 md:gap-y-20">
-      <div class="logo-item flex flex-col items-center text-center">
-        <div class="logo-mask-wrap h-24 md:h-28 w-full"><img src="assets/logos/naver.png" class="logo-default h-full w-full object-contain" alt="Naver"><img src="assets/logos/naver-lime.png" class="logo-lime-overlay h-full w-full object-contain" alt=""></div>
+      <a href="https://www.naver.com" target="_blank" rel="noopener" class="logo-item flex flex-col items-center text-center">
+        <div class="logo-mask-wrap h-24 md:h-28 w-full"><img src="assets/logos/naver.png" class="logo-default h-full w-full object-contain" alt="Naver"></div>
         <p class="mt-4 text-xs text-fog">Lecturer &amp; Coach</p>
-      </div>
-      <div class="logo-item flex flex-col items-center text-center">
-        <div class="logo-mask-wrap h-24 md:h-28 w-full"><img src="assets/logos/kakaopay.png" class="logo-default h-full w-full object-contain" alt="Kakao Pay"><img src="assets/logos/kakaopay-lime.png" class="logo-lime-overlay h-full w-full object-contain" alt=""></div>
+      </a>
+      <a href="https://www.kakaopay.com" target="_blank" rel="noopener" class="logo-item flex flex-col items-center text-center">
+        <div class="logo-mask-wrap h-24 md:h-28 w-full"><img src="assets/logos/kakaopay.png" class="logo-default h-full w-full object-contain" alt="Kakao Pay"></div>
         <p class="mt-4 text-xs text-fog">Lecturer</p>
-      </div>
-      <div class="logo-item flex flex-col items-center text-center">
-        <div class="logo-mask-wrap h-24 md:h-28 w-full"><img src="assets/logos/gs.png" class="logo-default h-full w-full object-contain" alt="GS"><img src="assets/logos/gs-lime.png" class="logo-lime-overlay h-full w-full object-contain" alt=""></div>
+      </a>
+      <a href="https://www.gs.co.kr" target="_blank" rel="noopener" class="logo-item flex flex-col items-center text-center">
+        <div class="logo-mask-wrap h-24 md:h-28 w-full"><img src="assets/logos/gs.png" class="logo-default h-full w-full object-contain" alt="GS"></div>
         <p class="mt-4 text-xs text-fog">Lecturer</p>
-      </div>
-      <div class="logo-item flex flex-col items-center text-center">
-        <div class="logo-mask-wrap h-24 md:h-28 w-full"><img src="assets/logos/amore.png" class="logo-default h-full w-full object-contain" alt="Amore Pacific"><img src="assets/logos/amore-lime.png" class="logo-lime-overlay h-full w-full object-contain" alt=""></div>
+      </a>
+      <a href="https://www.apgroup.com" target="_blank" rel="noopener" class="logo-item flex flex-col items-center text-center">
+        <div class="logo-mask-wrap h-24 md:h-28 w-full"><img src="assets/logos/amore.png" class="logo-default h-full w-full object-contain" alt="Amore Pacific"></div>
         <p class="mt-4 text-xs text-fog">Lecturer</p>
-      </div>
-      <div class="logo-item flex flex-col items-center text-center">
-        <div class="logo-mask-wrap h-24 md:h-28 w-full"><img src="assets/logos/kyobo.png" class="logo-default h-full w-full object-contain" alt="Kyobo"><img src="assets/logos/kyobo-lime.png" class="logo-lime-overlay h-full w-full object-contain" alt=""></div>
+      </a>
+      <a href="https://www.kyobo.com" target="_blank" rel="noopener" class="logo-item flex flex-col items-center text-center">
+        <div class="logo-mask-wrap h-24 md:h-28 w-full"><img src="assets/logos/kyobo.png" class="logo-default h-full w-full object-contain" alt="Kyobo"></div>
         <p class="mt-4 text-xs text-fog">Lecturer</p>
-      </div>
-      <div class="logo-item flex flex-col items-center text-center">
-        <div class="logo-mask-wrap h-24 md:h-28 w-full"><img src="assets/logos/cmk.png" class="logo-default h-full w-full object-contain" alt="CMK Foundation"><img src="assets/logos/cmk-lime.png" class="logo-lime-overlay h-full w-full object-contain" alt=""></div>
+      </a>
+      <a href="https://www.hyundai-cmkfoundation.org" target="_blank" rel="noopener" class="logo-item flex flex-col items-center text-center">
+        <div class="logo-mask-wrap h-24 md:h-28 w-full"><img src="assets/logos/cmk.png" class="logo-default h-full w-full object-contain" alt="CMK Foundation"></div>
         <p class="mt-4 text-xs text-fog">Lecturer</p>
-      </div>
-      <div class="logo-item flex flex-col items-center text-center">
-        <div class="logo-mask-wrap h-24 md:h-28 w-full"><img src="assets/logos/dcamp.png" class="logo-default h-full w-full object-contain" alt="D.Camp"><img src="assets/logos/dcamp-lime.png" class="logo-lime-overlay h-full w-full object-contain" alt=""></div>
+      </a>
+      <a href="https://dcamp.kr" target="_blank" rel="noopener" class="logo-item flex flex-col items-center text-center">
+        <div class="logo-mask-wrap h-24 md:h-28 w-full"><img src="assets/logos/dcamp.png" class="logo-default h-full w-full object-contain" alt="D.Camp"></div>
         <p class="mt-4 text-xs text-fog">Mentor</p>
-      </div>
-      <div class="logo-item flex flex-col items-center text-center">
-        <div class="logo-mask-wrap h-24 md:h-28 w-full"><img src="assets/logos/asan.png" class="logo-default h-full w-full object-contain" alt="Asan Nanum"><img src="assets/logos/asan-lime.png" class="logo-lime-overlay h-full w-full object-contain" alt=""></div>
+      </a>
+      <a href="https://asan-nanum.org" target="_blank" rel="noopener" class="logo-item flex flex-col items-center text-center">
+        <div class="logo-mask-wrap h-24 md:h-28 w-full"><img src="assets/logos/asan.png" class="logo-default h-full w-full object-contain" alt="Asan Nanum"></div>
         <p class="mt-4 text-xs text-fog">Mentor</p>
-      </div>
-      <div class="logo-item flex flex-col items-center text-center">
-        <div class="logo-mask-wrap h-24 md:h-28 w-full"><img src="assets/logos/fastcampus.png" class="logo-default h-full w-full object-contain" alt="Fast Campus"><img src="assets/logos/fastcampus-lime.png" class="logo-lime-overlay h-full w-full object-contain" alt=""></div>
+      </a>
+      <a href="https://fastcampus.co.kr" target="_blank" rel="noopener" class="logo-item flex flex-col items-center text-center">
+        <div class="logo-mask-wrap h-24 md:h-28 w-full"><img src="assets/logos/fastcampus.png" class="logo-default h-full w-full object-contain" alt="Fast Campus"></div>
         <p class="mt-4 text-xs text-fog">Mentor</p>
-      </div>
-      <div class="logo-item flex flex-col items-center text-center">
-        <div class="logo-mask-wrap h-24 md:h-28 w-full"><img src="assets/logos/modoo.png" class="logo-default h-full w-full object-contain" alt="모두의 창업"><img src="assets/logos/modoo-lime.png" class="logo-lime-overlay h-full w-full object-contain" alt=""></div>
+      </a>
+      <a href="https://www.modoo.go.kr" target="_blank" rel="noopener" class="logo-item flex flex-col items-center text-center">
+        <div class="logo-mask-wrap h-24 md:h-28 w-full"><img src="assets/logos/modoo.png" class="logo-default h-full w-full object-contain" alt="모두의 창업"></div>
         <p class="mt-4 text-xs text-fog">Mentor</p>
-      </div>
-      <div class="logo-item flex flex-col items-center text-center">
-        <div class="logo-mask-wrap h-24 md:h-28 w-full"><img src="assets/logos/usimsa.png" class="logo-default h-full w-full object-contain" alt="Usimsa"><img src="assets/logos/usimsa-lime.png" class="logo-lime-overlay h-full w-full object-contain" alt=""></div>
+      </a>
+      <a href="https://www.usimsa.com" target="_blank" rel="noopener" class="logo-item flex flex-col items-center text-center">
+        <div class="logo-mask-wrap h-24 md:h-28 w-full"><img src="assets/logos/usimsa.png" class="logo-default h-full w-full object-contain" alt="Usimsa"></div>
         <p class="mt-4 text-xs text-fog">Coach</p>
-      </div>
-      <div class="logo-item flex flex-col items-center text-center">
-        <div class="logo-mask-wrap h-24 md:h-28 w-full"><img src="assets/logos/lookinsight.png" class="logo-default h-full w-full object-contain" alt="Look Insight"><img src="assets/logos/lookinsight-lime.png" class="logo-lime-overlay h-full w-full object-contain" alt=""></div>
+      </a>
+      <a href="https://www.lookinsight.co.kr" target="_blank" rel="noopener" class="logo-item flex flex-col items-center text-center">
+        <div class="logo-mask-wrap h-24 md:h-28 w-full"><img src="assets/logos/lookinsight.png" class="logo-default h-full w-full object-contain" alt="Look Insight"></div>
         <p class="mt-4 text-xs text-fog">Coach</p>
-      </div>
+      </a>
     </div>
   </div>
 </section>
