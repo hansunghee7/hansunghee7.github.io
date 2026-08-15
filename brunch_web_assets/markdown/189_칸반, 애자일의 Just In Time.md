@@ -27,6 +27,17 @@ date_string: 'Mar 28. 2025'
 처음 칸반을 도입할 때는 칠판을 활용해도 좋아요. 하지만 본격적으로 적용하려면 Jira와 같은 가상 보드 도구가 필수적입니다. 이를 통해 팀원 간 협업과 소통이 원활해지죠.
 
 지금까지 칸반의 기본 개념과 장점들을 살펴봤는데요. 칸반은 팀에게 직관적이고 신속한 워크플로우를 제공합니다. 함께 애자일의 컨베이어벨트, 칸반을 적용해보시죠.
+<!-- PROMO_BANNER_START -->
+<div class="promo-banner" style="margin-top: 60px; padding: 35px 20px; background: #181818; border-radius: 12px; text-align: center; font-family: 'Noto Sans KR', sans-serif;">
+    <h4 style="color: #6CFD33; margin-top: 0; margin-bottom: 12px; font-weight: 500; font-size: 18px;">🚀 Simplifier의 인사이트를 더 깊게 만나보세요</h4>
+    <p style="color: #aaaaaa; font-size: 15px; margin-bottom: 25px; font-weight: 300; line-height: 1.6;">책 『UX의 언어들』과 트레바리 독서모임에서 기획의 진짜 비밀을 나눕니다.</p>
+    <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+        <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="padding: 12px 24px; background: #333333; color: #ffffff; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 400; transition: background 0.2s;">📖 UX의 언어들 (예스24)</a>
+        <a href="https://trevar.ink/Vmammm" target="_blank" style="padding: 12px 24px; background: #6CFD33; color: #111111; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 600; transition: opacity 0.2s;">🔥 트레바리 기획자 모임</a>
+    </div>
+</div>
+<!-- PROMO_BANNER_END -->
+
 
 <!-- CATEGORY_NAV_START -->
 <style>
@@ -37,7 +48,7 @@ date_string: 'Mar 28. 2025'
 .cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
 .nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
+.promo-banner a:hover { opacity: 0.8; }</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/182_%EC%95%A0%EC%9E%90%EC%9D%BC%20vs%20%EC%9B%8C%ED%84%B0%ED%8F%B4%2C%20PO%EA%B0%80%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%20%EB%AA%A8%EB%93%A0%20%EA%B2%83.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'PO의 프레임웍'의 이전글</span><span class="nav-title">애자일 vs 워터폴, PO가 알아야 할 모든 것</span></a>
   <a href="/brunch_web_assets/markdown/197_%EC%8A%A4%ED%81%AC%EB%9F%BC%20%EB%A7%88%EC%8A%A4%ED%84%B0%20vs%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%A7%A4%EB%8B%88%EC%A0%80%27%20%EC%B0%A8%EC%9D%B4%EB%8A%94.html" class="cat-nav-item cat-nav-right"><span class="nav-title">스크럼 마스터 vs 프로젝트 매니저' 차이는?</span><span class="cat-nav-label">'PO의 프레임웍'의 다음글</span></a>

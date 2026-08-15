@@ -31,6 +31,17 @@ Effort는 아이디어 실현에 필요한 시간, 인력, 예산 등을 가늠�
 ---
 
 기획자의 프레임웍은 기획자들이 활용할 수 있는 프레임웍들을 연재하는 콘텐츠입니다. 다뤘으면 하는 콘텐츠가 있으면 댓글로 남겨주세요.  :-)
+<!-- PROMO_BANNER_START -->
+<div class="promo-banner" style="margin-top: 60px; padding: 35px 20px; background: #181818; border-radius: 12px; text-align: center; font-family: 'Noto Sans KR', sans-serif;">
+    <h4 style="color: #6CFD33; margin-top: 0; margin-bottom: 12px; font-weight: 500; font-size: 18px;">🚀 Simplifier의 인사이트를 더 깊게 만나보세요</h4>
+    <p style="color: #aaaaaa; font-size: 15px; margin-bottom: 25px; font-weight: 300; line-height: 1.6;">책 『UX의 언어들』과 트레바리 독서모임에서 기획의 진짜 비밀을 나눕니다.</p>
+    <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+        <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="padding: 12px 24px; background: #333333; color: #ffffff; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 400; transition: background 0.2s;">📖 UX의 언어들 (예스24)</a>
+        <a href="https://trevar.ink/Vmammm" target="_blank" style="padding: 12px 24px; background: #6CFD33; color: #111111; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 600; transition: opacity 0.2s;">🔥 트레바리 기획자 모임</a>
+    </div>
+</div>
+<!-- PROMO_BANNER_END -->
+
 
 <!-- CATEGORY_NAV_START -->
 <style>
@@ -41,7 +52,7 @@ Effort는 아이디어 실현에 필요한 시간, 인력, 예산 등을 가늠�
 .cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
 .nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
+.promo-banner a:hover { opacity: 0.8; }</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/259_%EA%B3%A0%EA%B0%9D%EC%9D%84%20%EC%A0%95%EC%9D%98%ED%95%98%EB%8A%94%20%EB%B2%95%20%27%ED%8E%98%EB%A5%B4%EC%86%8C%EB%82%98%27.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'기획자의 프레임웍'의 이전글</span><span class="nav-title">고객을 정의하는 법 '페르소나</span></a>
   <div></div>

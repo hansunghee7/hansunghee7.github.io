@@ -35,6 +35,17 @@ date_string: 'Jun 23. 2025'
 마지막으로, 장기적 관점에서 수익성과 성장의 균형을 맞추세요. 단기 매출보다 고객 생애 가치(LTV)와 재구매율이 더 중요합니다.
 
 프라이싱과 패키징은 스타트업 성장의 핵심입니다. 여러분의 제품이 창출하는 진짜 가치를 고객이 기꺼이 지불하게 만드는 구조를 실험하고 개선하세요. 이것이 바로 차별화와 수익성의 시작점입니다.
+<!-- PROMO_BANNER_START -->
+<div class="promo-banner" style="margin-top: 60px; padding: 35px 20px; background: #181818; border-radius: 12px; text-align: center; font-family: 'Noto Sans KR', sans-serif;">
+    <h4 style="color: #6CFD33; margin-top: 0; margin-bottom: 12px; font-weight: 500; font-size: 18px;">🚀 Simplifier의 인사이트를 더 깊게 만나보세요</h4>
+    <p style="color: #aaaaaa; font-size: 15px; margin-bottom: 25px; font-weight: 300; line-height: 1.6;">책 『UX의 언어들』과 트레바리 독서모임에서 기획의 진짜 비밀을 나눕니다.</p>
+    <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+        <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="padding: 12px 24px; background: #333333; color: #ffffff; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 400; transition: background 0.2s;">📖 UX의 언어들 (예스24)</a>
+        <a href="https://trevar.ink/Vmammm" target="_blank" style="padding: 12px 24px; background: #6CFD33; color: #111111; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 600; transition: opacity 0.2s;">🔥 트레바리 기획자 모임</a>
+    </div>
+</div>
+<!-- PROMO_BANNER_END -->
+
 
 <!-- CATEGORY_NAV_START -->
 <style>
@@ -45,7 +56,7 @@ date_string: 'Jun 23. 2025'
 .cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
 .nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
+.promo-banner a:hover { opacity: 0.8; }</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/092_%EB%93%9C%EB%A1%AD%EB%B0%95%EC%8A%A4%EA%B0%80%203900%25%20%EC%84%B1%EC%9E%A5%ED%95%9C%20%ED%95%98%EB%82%98%EC%9D%98%20%EB%B9%84%EB%B0%80.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'스타트업 인사이트'의 이전글</span><span class="nav-title">드롭박스가 3900% 성장한 하나의 비밀</span></a>
   <a href="/brunch_web_assets/markdown/106_2%EC%B2%9C%EB%A7%8C%EC%9B%90%EC%9C%BC%EB%A1%9C%2010%EC%96%B5%EC%9B%90%20%EB%A7%A4%EC%B6%9C%EC%9D%84%2C%20%EC%95%88%ED%8B%B0%EB%A9%94%ED%83%88%EC%9D%98%20%EB%B0%94%EC%9D%B4%EB%9F%B4%EC%A0%84%EB%9E%B5.html" class="cat-nav-item cat-nav-right"><span class="nav-title">2천만원으로 10억원 매출을, 안티메탈의 바이럴전략</span><span class="cat-nav-label">'스타트업 인사이트'의 다음글</span></a>

@@ -32,6 +32,17 @@ date_string: 'Apr 11. 2024'
 
 
  경영진 회의를 통해 5개의 목표를 고객유치와 밀접하게 연관된 2개의 목표로 줄이고, OKR 목표로 세웠다. 덕분에 고객사는 OKR에 있는 실행아이템이 워킹하고 전체 직원들이 목표에 집중해서 일하면서 연말에 목표로 하던 수치를 달성할 수 있었다.
+<!-- PROMO_BANNER_START -->
+<div class="promo-banner" style="margin-top: 60px; padding: 35px 20px; background: #181818; border-radius: 12px; text-align: center; font-family: 'Noto Sans KR', sans-serif;">
+    <h4 style="color: #6CFD33; margin-top: 0; margin-bottom: 12px; font-weight: 500; font-size: 18px;">🚀 Simplifier의 인사이트를 더 깊게 만나보세요</h4>
+    <p style="color: #aaaaaa; font-size: 15px; margin-bottom: 25px; font-weight: 300; line-height: 1.6;">책 『UX의 언어들』과 트레바리 독서모임에서 기획의 진짜 비밀을 나눕니다.</p>
+    <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+        <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="padding: 12px 24px; background: #333333; color: #ffffff; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 400; transition: background 0.2s;">📖 UX의 언어들 (예스24)</a>
+        <a href="https://trevar.ink/Vmammm" target="_blank" style="padding: 12px 24px; background: #6CFD33; color: #111111; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 600; transition: opacity 0.2s;">🔥 트레바리 기획자 모임</a>
+    </div>
+</div>
+<!-- PROMO_BANNER_END -->
+
 
 <!-- CATEGORY_NAV_START -->
 <style>
@@ -42,7 +53,7 @@ date_string: 'Apr 11. 2024'
 .cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
 .nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
+.promo-banner a:hover { opacity: 0.8; }</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/419_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part%2012%20%EC%83%9D%EC%82%B0%EA%B5%AC%EC%A1%B0.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'스타트업 인사이트'의 이전글</span><span class="nav-title">CPO는 어떻게 일을 할까? Part 1.2 생산구조</span></a>
   <a href="/brunch_web_assets/markdown/422_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part%203%20%ED%9D%90%EB%A6%84%EC%9D%98%20%EA%B2%B0%ED%95%A9.html" class="cat-nav-item cat-nav-right"><span class="nav-title">CPO는 어떻게 일을 할까? Part 3. 흐름의 결합</span><span class="cat-nav-label">'스타트업 인사이트'의 다음글</span></a>

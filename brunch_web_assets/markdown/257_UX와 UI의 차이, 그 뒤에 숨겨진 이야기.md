@@ -31,12 +31,17 @@ UX와 UI 디자인의 핵심은 사용자입니다. 끊임없이 사용자의 �
 기획자와 디자이너들이 UX와 UI에 대한 심도깊은 연구를 통해 우리들의 삶을 더 나아지게 만들기를 기대합니다. :-)
 
 UX의 언어들이 책으로 나왔어요.
+<!-- PROMO_BANNER_START -->
+<div class="promo-banner" style="margin-top: 60px; padding: 35px 20px; background: #181818; border-radius: 12px; text-align: center; font-family: 'Noto Sans KR', sans-serif;">
+    <h4 style="color: #6CFD33; margin-top: 0; margin-bottom: 12px; font-weight: 500; font-size: 18px;">🚀 Simplifier의 인사이트를 더 깊게 만나보세요</h4>
+    <p style="color: #aaaaaa; font-size: 15px; margin-bottom: 25px; font-weight: 300; line-height: 1.6;">책 『UX의 언어들』과 트레바리 독서모임에서 기획의 진짜 비밀을 나눕니다.</p>
+    <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+        <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="padding: 12px 24px; background: #333333; color: #ffffff; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 400; transition: background 0.2s;">📖 UX의 언어들 (예스24)</a>
+        <a href="https://trevar.ink/Vmammm" target="_blank" style="padding: 12px 24px; background: #6CFD33; color: #111111; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 600; transition: opacity 0.2s;">🔥 트레바리 기획자 모임</a>
+    </div>
+</div>
+<!-- PROMO_BANNER_END -->
 
-[**UX의 언어들 | 한성희 | 파지트 - 예스24**
-
-일상 속 UX의 발견UX 세계를 향한 친절한 안내서 『UX의 언어들』은 일상 속에 스며든 UX를 UX 디자이너의 시선으로 풀어내며, 우리가 이를 어떻게 경험하고 소비하는지 넷플릭스, 카카오 등 친숙
-
-https://www.yes24.com/product/goods/193444437](https://www.yes24.com/product/goods/193444437)
 
 <!-- CATEGORY_NAV_START -->
 <style>
@@ -47,7 +52,7 @@ https://www.yes24.com/product/goods/193444437](https://www.yes24.com/product/goo
 .cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
 .nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
+.promo-banner a:hover { opacity: 0.8; }</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/249_%27%EC%A2%8B%EC%95%84%EC%9A%94%27%EA%B0%80%20%EB%A7%8C%EB%93%A0%20%EC%9E%91%EC%A7%80%EB%A7%8C%20%EA%B0%95%EB%A0%A5%ED%95%9C%20UX%EC%9D%98%20%ED%98%81%EB%AA%85.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'UX의 언어들'의 이전글</span><span class="nav-title">좋아요'가 만든 작지만 강력한 UX의 혁명</span></a>
   <div></div>

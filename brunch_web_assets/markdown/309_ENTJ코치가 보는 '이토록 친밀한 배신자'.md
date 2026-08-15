@@ -16,6 +16,17 @@ date_string: 'Oct 19. 2024'
 ---
 
  부녀가 서로를 의심하고 감정적 가학을 하는 막장적 가족 서사에서 일본 소설의 플롯이 살짝 느껴지지만, 전반적으로 완성도 있는 영화를 보는 듯한 높은 수준을 보여준다. 무엇보다도 한석규가 아니었으면 이렇게 주인공의 감정적 갈등을 표현할 수 있었을까 싶다. 오랜만에 감정선이 좋은 작품을 만나서 기쁘다. 그러나 한편으론 새로운 걱정이 생겼다. 앞으로 3주를 또 어떻게 기다려야 할지.
+<!-- PROMO_BANNER_START -->
+<div class="promo-banner" style="margin-top: 60px; padding: 35px 20px; background: #181818; border-radius: 12px; text-align: center; font-family: 'Noto Sans KR', sans-serif;">
+    <h4 style="color: #6CFD33; margin-top: 0; margin-bottom: 12px; font-weight: 500; font-size: 18px;">🚀 Simplifier의 인사이트를 더 깊게 만나보세요</h4>
+    <p style="color: #aaaaaa; font-size: 15px; margin-bottom: 25px; font-weight: 300; line-height: 1.6;">책 『UX의 언어들』과 트레바리 독서모임에서 기획의 진짜 비밀을 나눕니다.</p>
+    <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+        <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="padding: 12px 24px; background: #333333; color: #ffffff; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 400; transition: background 0.2s;">📖 UX의 언어들 (예스24)</a>
+        <a href="https://trevar.ink/Vmammm" target="_blank" style="padding: 12px 24px; background: #6CFD33; color: #111111; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 600; transition: opacity 0.2s;">🔥 트레바리 기획자 모임</a>
+    </div>
+</div>
+<!-- PROMO_BANNER_END -->
+
 
 <!-- CATEGORY_NAV_START -->
 <style>
@@ -26,7 +37,7 @@ date_string: 'Oct 19. 2024'
 .cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
 .nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
+.promo-banner a:hover { opacity: 0.8; }</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/302_%EC%BD%94%EC%B9%AD%EC%9D%B4%20%EB%B3%B4%EB%9E%8C%EC%B0%AC%20%EC%8B%9C%EA%B0%84.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'심플리파이어 라이프'의 이전글</span><span class="nav-title">코칭이 보람찬 시간</span></a>
   <a href="/brunch_web_assets/markdown/312_%EC%A7%81%EA%B4%80%EB%A0%A5%EC%9D%84%20%EA%B0%80%EC%A7%80%EB%A9%B4%20%EC%96%B4%EB%A0%A4%EC%9A%B4%20%EC%A0%90.html" class="cat-nav-item cat-nav-right"><span class="nav-title">직관력을 가지면 어려운 점</span><span class="cat-nav-label">'심플리파이어 라이프'의 다음글</span></a>

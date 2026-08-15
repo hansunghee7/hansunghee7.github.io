@@ -17,6 +17,17 @@ date_string: 'Nov 19. 2023'
 99% 이상은 OX가 아닌 다른 대안들이 있는 문제이다.
 
 2004년 1월에 작성한 글입니다.
+<!-- PROMO_BANNER_START -->
+<div class="promo-banner" style="margin-top: 60px; padding: 35px 20px; background: #181818; border-radius: 12px; text-align: center; font-family: 'Noto Sans KR', sans-serif;">
+    <h4 style="color: #6CFD33; margin-top: 0; margin-bottom: 12px; font-weight: 500; font-size: 18px;">🚀 Simplifier의 인사이트를 더 깊게 만나보세요</h4>
+    <p style="color: #aaaaaa; font-size: 15px; margin-bottom: 25px; font-weight: 300; line-height: 1.6;">책 『UX의 언어들』과 트레바리 독서모임에서 기획의 진짜 비밀을 나눕니다.</p>
+    <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+        <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="padding: 12px 24px; background: #333333; color: #ffffff; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 400; transition: background 0.2s;">📖 UX의 언어들 (예스24)</a>
+        <a href="https://trevar.ink/Vmammm" target="_blank" style="padding: 12px 24px; background: #6CFD33; color: #111111; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 600; transition: opacity 0.2s;">🔥 트레바리 기획자 모임</a>
+    </div>
+</div>
+<!-- PROMO_BANNER_END -->
+
 
 <!-- CATEGORY_NAV_START -->
 <style>
@@ -27,7 +38,7 @@ date_string: 'Nov 19. 2023'
 .cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
 .nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
+.promo-banner a:hover { opacity: 0.8; }</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/552_%EC%82%AC%EC%9A%A9%EC%9E%90%EB%A5%BC%20%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%99%94%ED%95%98%EC%84%B8%EC%9A%94.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'기획일상'의 이전글</span><span class="nav-title">사용자를 데이터화하세요.</span></a>
   <a href="/brunch_web_assets/markdown/555_%EC%A7%80%EB%82%98%EA%B3%A0%20%EB%B3%B4%EB%8B%88.html" class="cat-nav-item cat-nav-right"><span class="nav-title">지나고 보니...</span><span class="cat-nav-label">'기획일상'의 다음글</span></a>

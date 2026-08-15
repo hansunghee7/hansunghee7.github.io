@@ -37,6 +37,17 @@ IT 기업들은 이 SCAMPER 기법으로 제품과 서비스를 혁신한다. �
 기획자라면 SCAMPER를 능숙하게 활용해야 한다. 우선 아이디어 발상 단계에서 7가지 키워드로 브레인스토밍을 하자. 기존 제품 개선, 서비스 혁신, 프로세스 최적화에도 이를 적용해보자. 삼성전자의 폴더블폰처럼 'Modify'로 새로운 디자인을 고안하고, 삼성페이처럼 'Combine'으로 카드 결제 기능 탑재 등을 고려해볼 수도 있다. 'Eliminate'로 업무 단계를 간소화하고, 'Adapt'로 이종 산업 마케팅을 벤치마킹할 수도 있다. 나아가 팀 워크숍에서 SCAMPER의 키워드들로 아이디어 발상을 진행하는 것도 좋은 방법이 될 수도 있을 것다.
 
 이처럼 SCAMPER는 체계적이고도 창의적인 사고의 틀을 제공한다. 이를 통해 기획자는 혁신적 아이디어를 찾아내고 프로젝트에 녹여낼 수 있다. 단순한 머리풀기가 아니라 전략적 사고의 비밀병기, SCAMPER 기법을 꼭 익혀두자.
+<!-- PROMO_BANNER_START -->
+<div class="promo-banner" style="margin-top: 60px; padding: 35px 20px; background: #181818; border-radius: 12px; text-align: center; font-family: 'Noto Sans KR', sans-serif;">
+    <h4 style="color: #6CFD33; margin-top: 0; margin-bottom: 12px; font-weight: 500; font-size: 18px;">🚀 Simplifier의 인사이트를 더 깊게 만나보세요</h4>
+    <p style="color: #aaaaaa; font-size: 15px; margin-bottom: 25px; font-weight: 300; line-height: 1.6;">책 『UX의 언어들』과 트레바리 독서모임에서 기획의 진짜 비밀을 나눕니다.</p>
+    <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+        <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="padding: 12px 24px; background: #333333; color: #ffffff; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 400; transition: background 0.2s;">📖 UX의 언어들 (예스24)</a>
+        <a href="https://trevar.ink/Vmammm" target="_blank" style="padding: 12px 24px; background: #6CFD33; color: #111111; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 600; transition: opacity 0.2s;">🔥 트레바리 기획자 모임</a>
+    </div>
+</div>
+<!-- PROMO_BANNER_END -->
+
 
 <!-- CATEGORY_NAV_START -->
 <style>
@@ -47,7 +58,7 @@ IT 기업들은 이 SCAMPER 기법으로 제품과 서비스를 혁신한다. �
 .cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
 .nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
+.promo-banner a:hover { opacity: 0.8; }</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/244_470%EB%AA%85%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%ED%88%B4%20%27%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EB%AA%A8%EB%8D%B8%20%EC%BA%94%EB%B2%84%EC%8A%A4%27.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'기획자의 프레임웍'의 이전글</span><span class="nav-title">470명이 만든 비즈니스 툴 '비즈니스 모델 캔버스</span></a>
   <a href="/brunch_web_assets/markdown/259_%EA%B3%A0%EA%B0%9D%EC%9D%84%20%EC%A0%95%EC%9D%98%ED%95%98%EB%8A%94%20%EB%B2%95%20%27%ED%8E%98%EB%A5%B4%EC%86%8C%EB%82%98%27.html" class="cat-nav-item cat-nav-right"><span class="nav-title">고객을 정의하는 법 '페르소나</span><span class="cat-nav-label">'기획자의 프레임웍'의 다음글</span></a>

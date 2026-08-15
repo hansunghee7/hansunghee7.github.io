@@ -44,6 +44,17 @@ date_string: 'Sep 25. 2023'
 
 
  용어에 따라 역할 구분은 위와 같이 했지만, Product를 만들기 위해 필요한 기술은 회사와 상황에 따라 다를 수 있습니다. 따라서 본인이 맡게 되는 프로젝트와 과제들을 보다 효과적으로 수행하기 위해 각각의 역할이 필요로 하는 기술들을 습득해 두면 좋습니다. :-)
+<!-- PROMO_BANNER_START -->
+<div class="promo-banner" style="margin-top: 60px; padding: 35px 20px; background: #181818; border-radius: 12px; text-align: center; font-family: 'Noto Sans KR', sans-serif;">
+    <h4 style="color: #6CFD33; margin-top: 0; margin-bottom: 12px; font-weight: 500; font-size: 18px;">🚀 Simplifier의 인사이트를 더 깊게 만나보세요</h4>
+    <p style="color: #aaaaaa; font-size: 15px; margin-bottom: 25px; font-weight: 300; line-height: 1.6;">책 『UX의 언어들』과 트레바리 독서모임에서 기획의 진짜 비밀을 나눕니다.</p>
+    <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+        <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="padding: 12px 24px; background: #333333; color: #ffffff; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 400; transition: background 0.2s;">📖 UX의 언어들 (예스24)</a>
+        <a href="https://trevar.ink/Vmammm" target="_blank" style="padding: 12px 24px; background: #6CFD33; color: #111111; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 600; transition: opacity 0.2s;">🔥 트레바리 기획자 모임</a>
+    </div>
+</div>
+<!-- PROMO_BANNER_END -->
+
 
 <!-- CATEGORY_NAV_START -->
 <style>
@@ -54,7 +65,7 @@ date_string: 'Sep 25. 2023'
 .cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
 .nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
+.promo-banner a:hover { opacity: 0.8; }</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/602_%EA%B2%BD%ED%97%98%EC%97%90%EC%84%9C%20%EB%B0%B0%EC%9A%B4%20%EB%AA%87%20%EA%B0%80%EC%A7%80%20%EA%B5%90%ED%9B%88.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'기획일상'의 이전글</span><span class="nav-title">경험에서 배운 몇 가지 교훈</span></a>
   <a href="/brunch_web_assets/markdown/608_%EB%8B%B9%EC%8B%A0%EC%97%90%EA%B2%8C%20%EC%A3%BC%EC%96%B4%EC%A7%84%20%EA%B3%A8%EC%9D%80%20%EC%9E%98%20%EB%84%A3%EA%B3%A0%20%EC%9E%88%EC%8A%B5%EB%8B%88%EA%B9%8C.html" class="cat-nav-item cat-nav-right"><span class="nav-title">당신에게 주어진 골은 잘 넣고 있습니까?</span><span class="cat-nav-label">'기획일상'의 다음글</span></a>

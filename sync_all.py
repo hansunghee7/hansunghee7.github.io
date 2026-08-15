@@ -4,7 +4,6 @@ import urllib.parse
 import csv
 import json
 
-# 👇 카테고리별 기본 정렬 방식
 CATEGORY_SORT_DEFAULTS = {
     "AI의 언어들": "desc",
     "Be the PO": "desc",
@@ -44,7 +43,6 @@ except Exception as e:
 md_files = [f for f in os.listdir(md_dir) if f.endswith(".md") and f != "index.md"]
 md_files.sort()
 
-# 1차 패스: 모든 글 데이터 수집 및 카테고리별 매핑
 posts = []
 category_posts = {}
 
@@ -92,6 +90,8 @@ for filename in md_files:
     if uid_match: uid = int(uid_match.group(1))
 
     body_content = re.sub(r'^---.*?---\s*', '', content, flags=re.DOTALL)
+    # 기존에 삽입되었던 배너와 네비게이션이 중복되지 않도록 깔끔하게 지우고 시작
+    body_content = re.sub(r'\n<!-- PROMO_BANNER_START -->.*?<!-- PROMO_BANNER_END -->', '', body_content, flags=re.DOTALL).strip()
     body_content = re.sub(r'\n<!-- CATEGORY_NAV_START -->.*?<!-- CATEGORY_NAV_END -->', '', body_content, flags=re.DOTALL).strip()
 
     post_data = {
@@ -112,7 +112,6 @@ for filename in md_files:
         category_posts[category] = []
     category_posts[category].append(post_data)
 
-# 카테고리별 글 정렬
 for cat in category_posts:
     category_posts[cat].sort(key=lambda x: x['uid'])
 
@@ -135,6 +134,20 @@ for p in posts:
     prev_post = cat_list[idx - 1] if idx > 0 else None
     next_post = cat_list[idx + 1] if idx >= 0 and idx < len(cat_list) - 1 else None
 
+    # 🌟 중앙 통제형 홍보 배너 HTML (디자인 변경 시 여기서만 바꾸면 됨!)
+    promo_html = """
+<!-- PROMO_BANNER_START -->
+<div class="promo-banner" style="margin-top: 60px; padding: 35px 20px; background: #181818; border-radius: 12px; text-align: center; font-family: 'Noto Sans KR', sans-serif;">
+    <h4 style="color: #6CFD33; margin-top: 0; margin-bottom: 12px; font-weight: 500; font-size: 18px;">🚀 Simplifier의 인사이트를 더 깊게 만나보세요</h4>
+    <p style="color: #aaaaaa; font-size: 15px; margin-bottom: 25px; font-weight: 300; line-height: 1.6;">책 『UX의 언어들』과 트레바리 독서모임에서 기획의 진짜 비밀을 나눕니다.</p>
+    <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+        <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="padding: 12px 24px; background: #333333; color: #ffffff; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 400; transition: background 0.2s;">📖 UX의 언어들 (예스24)</a>
+        <a href="https://trevar.ink/Vmammm" target="_blank" style="padding: 12px 24px; background: #6CFD33; color: #111111; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 600; transition: opacity 0.2s;">🔥 트레바리 기획자 모임</a>
+    </div>
+</div>
+<!-- PROMO_BANNER_END -->
+"""
+
     nav_html = "\n\n<!-- CATEGORY_NAV_START -->\n<style>\n" \
                ".category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }\n" \
                ".cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }\n" \
@@ -143,6 +156,7 @@ for p in posts:
                ".cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }\n" \
                ".nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }\n" \
                ".cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }\n" \
+               ".promo-banner a:hover { opacity: 0.8; }" \
                "</style>\n<div class=\"category-nav-wrap\">\n"
 
     if prev_post:
@@ -160,8 +174,9 @@ for p in posts:
     safe_title = p['title'].replace('"', '\\"')
     new_yaml = f"---\nlayout: default\ntitle: \"{safe_title}\"\ncategory: '{category}'\ncover_image: '{p['cover_image']}'\ndate_string: '{p['date_string']}'\n---\n\n"
 
+    # 배너 삽입: 본문 끝 -> 홍보 배너 -> 카테고리 네비게이션 순서로 결합
     with open(p['filepath'], 'w', encoding='utf-8') as f:
-        f.write(new_yaml + p['body_content'] + nav_html)
+        f.write(new_yaml + p['body_content'] + promo_html + nav_html)
 
     cards_html += f'<a href="{p["link"]}" class="card-item" data-category="{category}" data-date="{p["timestamp"]}" data-id="{p["uid"]}"><div class="card-thumb-wrap"><div class="card-thumb" style="background-image: url(\'{p["cover_image"]}\');"></div></div><div class="card-content"><div><div class="card-category">{category}</div><h3 class="card-title">{p["title"]}</h3></div><div class="card-date">{p["date_string"]}</div></div></a>'
     post_count += 1
@@ -170,13 +185,11 @@ html_header = f"---\nlayout: default\ntitle: 'Simplifier Log {post_count}'\nis_i
 
 default_sorts_json = json.dumps(CATEGORY_SORT_DEFAULTS, ensure_ascii=False)
 
-# 🌟 상단 모든 구조(header, header-bg, hero, nav 등)에 딥 블랙(#111111) 강제 부여
 html_body = """<style>
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 .card-item.visible { display: flex !important; animation: fadeInUp 0.4s ease forwards; }
 #scrollSentinel { height: 50px; margin-top: 30px; }
 
-/* 🖤 상단 타이틀 및 헤더 영역 전체를 딥 블랙(#111111)으로 강제 적용 */
 header, .site-header, .header-wrap, .hero-section, .intro-banner, .header-bg, .top-bar, div[class*="header"], div[class*="hero"] {
     background-color: #111111 !important;
     background: #111111 !important;
@@ -241,4 +254,4 @@ const observer = new IntersectionObserver(entries => { entries.forEach(entry => 
 with open(index_file, 'w', encoding='utf-8') as f:
     f.write(html_header + html_body)
 
-print("✅ 상단 모든 헤더 구조에 딥 블랙(#111111) 강제 적용 완료!")
+print("✅ 중앙 통제형 홍보 배너 HTML 탑재 완료!")

@@ -27,6 +27,17 @@ Business Model Canvas와 Lean Canvas의 선택은 비즈니스의 성장 단계�
 기획자가 Lean Canvas를 실전에서 활용할 때는 몇 가지 원칙을 기억해야 한다. 먼저, 고객 인터뷰나 설문을 통해 실제 문제를 구체화하고, 기존 대안과의 차별점을 명확히 해야 한다. 또한 성공을 정의할 수 있는 1~2개의 핵심 지표만 선정해 집중적으로 관리하는 것이 중요하다. 무엇보다 Lean Canvas는 '살아있는 문서'로, 시장 반응과 팀의 학습에 따라 수시로 내용을 수정·보완해야 한다.
 
 100페이지 사업계획서가 아니라, 한 장의 Lean Canvas만으로도 복잡한 비즈니스 모델을 한눈에 파악하고 빠르게 실행할 수 있다. 이것이 불확실성의 시대에 스타트업이 생존하고 성장하는 방법이다.
+<!-- PROMO_BANNER_START -->
+<div class="promo-banner" style="margin-top: 60px; padding: 35px 20px; background: #181818; border-radius: 12px; text-align: center; font-family: 'Noto Sans KR', sans-serif;">
+    <h4 style="color: #6CFD33; margin-top: 0; margin-bottom: 12px; font-weight: 500; font-size: 18px;">🚀 Simplifier의 인사이트를 더 깊게 만나보세요</h4>
+    <p style="color: #aaaaaa; font-size: 15px; margin-bottom: 25px; font-weight: 300; line-height: 1.6;">책 『UX의 언어들』과 트레바리 독서모임에서 기획의 진짜 비밀을 나눕니다.</p>
+    <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+        <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="padding: 12px 24px; background: #333333; color: #ffffff; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 400; transition: background 0.2s;">📖 UX의 언어들 (예스24)</a>
+        <a href="https://trevar.ink/Vmammm" target="_blank" style="padding: 12px 24px; background: #6CFD33; color: #111111; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 600; transition: opacity 0.2s;">🔥 트레바리 기획자 모임</a>
+    </div>
+</div>
+<!-- PROMO_BANNER_END -->
+
 
 <!-- CATEGORY_NAV_START -->
 <style>
@@ -37,7 +48,7 @@ Business Model Canvas와 Lean Canvas의 선택은 비즈니스의 성장 단계�
 .cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
 .nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
+.promo-banner a:hover { opacity: 0.8; }</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/142_%27%EC%BD%94%ED%98%B8%ED%8A%B8%20%EB%B6%84%EC%84%9D%27%20%ED%8F%89%EA%B7%A0%EC%9D%98%20%ED%95%A8%EC%A0%95%EC%97%90%EC%84%9C%20%EB%B2%97%EC%96%B4%EB%82%98%EB%8A%94%20%EB%B2%95.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'기획자의 프레임웍'의 이전글</span><span class="nav-title">코호트 분석' 평균의 함정에서 벗어나는 법</span></a>
   <a href="/brunch_web_assets/markdown/156_%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%9D%BC%EB%A9%B4%20%EA%BC%AD%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%20LTVCAC%EC%9D%98%20%EC%A7%84%EC%A7%9C%20%EC%9D%98%EB%AF%B8.html" class="cat-nav-item cat-nav-right"><span class="nav-title">기획자라면 꼭 알아야 할 LTV/CAC의 진짜 의미</span><span class="cat-nav-label">'기획자의 프레임웍'의 다음글</span></a>

@@ -29,6 +29,17 @@ ZeRO 도입을 위해서는 단계적 접근이 필요합니다.
 ZeRO는 AI 모델 개발의 진입장벽을 낮추고 있으며, 더 많은 기업이 10억~100억 파라미터급 모델에 도전할 수 있게 되었습니다. 다만, 수천억~수조 파라미터 모델은 여전히 막대한 인프라와 기술력이 필요하므로, "누구나 초거대 모델 개발이 가능하다"고 보기는 어렵습니다.
 
 결론적으로, ZeRO는 AI 모델 학습의 메모리 효율성을 크게 향상시켜 대형 모델 개발의 진입장벽을 낮추는 중요한 기술입니다. 특히 중견기업과 연구 기관에게 ZeRO는 제한된 리소스로도 더 크고 강력한 AI 모델을 개발할 수 있는 가능성을 열어주는 의미 있는 발전입니다.
+<!-- PROMO_BANNER_START -->
+<div class="promo-banner" style="margin-top: 60px; padding: 35px 20px; background: #181818; border-radius: 12px; text-align: center; font-family: 'Noto Sans KR', sans-serif;">
+    <h4 style="color: #6CFD33; margin-top: 0; margin-bottom: 12px; font-weight: 500; font-size: 18px;">🚀 Simplifier의 인사이트를 더 깊게 만나보세요</h4>
+    <p style="color: #aaaaaa; font-size: 15px; margin-bottom: 25px; font-weight: 300; line-height: 1.6;">책 『UX의 언어들』과 트레바리 독서모임에서 기획의 진짜 비밀을 나눕니다.</p>
+    <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+        <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="padding: 12px 24px; background: #333333; color: #ffffff; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 400; transition: background 0.2s;">📖 UX의 언어들 (예스24)</a>
+        <a href="https://trevar.ink/Vmammm" target="_blank" style="padding: 12px 24px; background: #6CFD33; color: #111111; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 600; transition: opacity 0.2s;">🔥 트레바리 기획자 모임</a>
+    </div>
+</div>
+<!-- PROMO_BANNER_END -->
+
 
 <!-- CATEGORY_NAV_START -->
 <style>
@@ -39,7 +50,7 @@ ZeRO는 AI 모델 개발의 진입장벽을 낮추고 있으며, 더 많은 기�
 .cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
 .nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
+.promo-banner a:hover { opacity: 0.8; }</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/096_%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EA%B2%BD%EC%9F%81%EB%A0%A5%EC%97%90%20%EC%A0%80%EC%A0%84%EB%A0%A5%20NPU%EA%B0%80%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'AI의 언어들'의 이전글</span><span class="nav-title">비즈니스 경쟁력에 저전력 NPU가 중요한 이유</span></a>
   <a href="/brunch_web_assets/markdown/111_AI%ED%95%99%EC%8A%B5%20%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%20%EC%82%BC%EA%B5%AD%EC%A7%80%20AWSGoogleAzure.html" class="cat-nav-item cat-nav-right"><span class="nav-title">AI학습 클라우드 삼국지 AWS/Google/Azure</span><span class="cat-nav-label">'AI의 언어들'의 다음글</span></a>

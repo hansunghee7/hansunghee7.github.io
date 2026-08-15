@@ -27,6 +27,17 @@ AI 기술이 폭발적으로 성장하면서 데이터센터의 네트워크 인
 이처럼 NVLink와 InfiniBand는 AI 데이터센터의 동맥과 정맥 같은 존재예요. 서로 다른 방식으로 데이터의 흐름을 최적화하면서 거대한 AI 모델의 학습을 돕고 있죠. 앞으로는 작업의 특성에 맞게 이 둘을 전략적으로 배치하고 오케스트레이션 하는 것이 데이터센터 설계의 핵심 과제가 될 것 같아요. 더불어 둘의 융합을 통해 더욱 혁신적인 네트워크 기술이 탄생할 것으로 기대됩니다.
 
 여러분은 데이터센터 네트워크에 대해 어떻게 생각하시나요? IT 인프라에 관심이 있으시다면 NVLink와 InfiniBand의 동향을 주의 깊게 살펴보시길 추천드려요. 단순히 배선을 깔아놓는 것 이상으로, 어떤 방식으로 연결하고 제어할 것인지가 AI의 성패를 가를 열쇠가 될 테니까요. 기술의 진화와 함께 데이터센터의 모습도 계속 달라질 텐데, 여러분도 그 변화의 흐름을 놓치지 마시기 바랍니다!
+<!-- PROMO_BANNER_START -->
+<div class="promo-banner" style="margin-top: 60px; padding: 35px 20px; background: #181818; border-radius: 12px; text-align: center; font-family: 'Noto Sans KR', sans-serif;">
+    <h4 style="color: #6CFD33; margin-top: 0; margin-bottom: 12px; font-weight: 500; font-size: 18px;">🚀 Simplifier의 인사이트를 더 깊게 만나보세요</h4>
+    <p style="color: #aaaaaa; font-size: 15px; margin-bottom: 25px; font-weight: 300; line-height: 1.6;">책 『UX의 언어들』과 트레바리 독서모임에서 기획의 진짜 비밀을 나눕니다.</p>
+    <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+        <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="padding: 12px 24px; background: #333333; color: #ffffff; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 400; transition: background 0.2s;">📖 UX의 언어들 (예스24)</a>
+        <a href="https://trevar.ink/Vmammm" target="_blank" style="padding: 12px 24px; background: #6CFD33; color: #111111; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 600; transition: opacity 0.2s;">🔥 트레바리 기획자 모임</a>
+    </div>
+</div>
+<!-- PROMO_BANNER_END -->
+
 
 <!-- CATEGORY_NAV_START -->
 <style>
@@ -37,7 +48,7 @@ AI 기술이 폭발적으로 성장하면서 데이터센터의 네트워크 인
 .cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
 .nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
+.promo-banner a:hover { opacity: 0.8; }</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/134_AI%20%EB%AA%A8%EB%8D%B8%EC%9D%98%20%ED%95%99%EC%83%9D%EA%B3%BC%20%EC%A1%B8%EC%97%85%EC%83%9D%2C%20%ED%95%99%EC%8A%B5%EA%B3%BC%20%EC%B6%94%EB%A1%A0%EC%9D%98%20%EC%B0%A8%EC%9D%B4%EC%A0%90.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'AI의 언어들'의 이전글</span><span class="nav-title">AI 모델의 학생과 졸업생, 학습과 추론의 차이점</span></a>
   <a href="/brunch_web_assets/markdown/148_AI%EB%AA%A8%EB%8D%B8%20%ED%95%99%EC%8A%B5%EC%97%90%20%EB%82%A0%EA%B0%9C%EB%A5%BC%20%EB%8B%AC%EC%9E%90%20%ED%98%BC%ED%95%A9%20%EC%A0%95%EB%B0%80%EB%8F%84%EC%9D%98%20%EB%A7%88%EB%B2%95.html" class="cat-nav-item cat-nav-right"><span class="nav-title">AI모델 학습에 날개를 달자! 혼합 정밀도의 마법</span><span class="cat-nav-label">'AI의 언어들'의 다음글</span></a>

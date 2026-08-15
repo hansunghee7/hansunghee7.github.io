@@ -45,6 +45,17 @@ Figma의 제품 주도 성장 전략은 다음과 같은 단계로 진행되었�
 여러분의 스타트업은 어떤 성장 전략을 고민하고 계신가요? 제품 주도 성장이 답이 될 수 있을까요? 저는 지난 25년간 수많은 스타트업과 글로벌기업과 함께 제품 주도 성장 전략을 설계하고 실행해 왔습니다. 여러분의 스타트업에도 맞춤형 PLG 전략이 필요하다면 커피챗을 요청해 주세요.
 
 다음 글에서는 또 다른 혁신적인 스타트업의 성장 사례를 다루도록 하겠습니다. 여러분의 제품은 어떤 성장 전략을 가지고 있나요?
+<!-- PROMO_BANNER_START -->
+<div class="promo-banner" style="margin-top: 60px; padding: 35px 20px; background: #181818; border-radius: 12px; text-align: center; font-family: 'Noto Sans KR', sans-serif;">
+    <h4 style="color: #6CFD33; margin-top: 0; margin-bottom: 12px; font-weight: 500; font-size: 18px;">🚀 Simplifier의 인사이트를 더 깊게 만나보세요</h4>
+    <p style="color: #aaaaaa; font-size: 15px; margin-bottom: 25px; font-weight: 300; line-height: 1.6;">책 『UX의 언어들』과 트레바리 독서모임에서 기획의 진짜 비밀을 나눕니다.</p>
+    <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+        <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="padding: 12px 24px; background: #333333; color: #ffffff; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 400; transition: background 0.2s;">📖 UX의 언어들 (예스24)</a>
+        <a href="https://trevar.ink/Vmammm" target="_blank" style="padding: 12px 24px; background: #6CFD33; color: #111111; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 600; transition: opacity 0.2s;">🔥 트레바리 기획자 모임</a>
+    </div>
+</div>
+<!-- PROMO_BANNER_END -->
+
 
 <!-- CATEGORY_NAV_START -->
 <style>
@@ -55,7 +66,7 @@ Figma의 제품 주도 성장 전략은 다음과 같은 단계로 진행되었�
 .cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
 .nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
+.promo-banner a:hover { opacity: 0.8; }</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/250_%EC%B4%88%EA%B3%A0%EC%9C%A8%EC%9D%98%20AI%EB%A1%9C%20%EC%8B%9C%EC%9E%A5%EC%9D%84%20%ED%9D%94%EB%93%A4%EB%8B%A4%20DeepSeek.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'스타트업 인사이트'의 이전글</span><span class="nav-title">초고율의 AI로 시장을 흔들다. DeepSeek</span></a>
   <a href="/brunch_web_assets/markdown/254_MIT%20%EC%B2%9C%EC%9E%AC%EB%93%A4%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EC%B9%9C%ED%99%98%EA%B2%BD%20%EC%95%94%EB%AA%A8%EB%8B%88%EC%95%84%20%EC%97%B0%EB%A3%8C%20%27%EC%95%84%EB%AA%A8%EC%A7%80%27.html" class="cat-nav-item cat-nav-right"><span class="nav-title">MIT 천재들이 만든 친환경 암모니아 연료 '아모지</span><span class="cat-nav-label">'스타트업 인사이트'의 다음글</span></a>

@@ -53,6 +53,17 @@ Superhuman의 시장 진출 전략에서 스타트업들이 배울 수 있는 �
 ![kVLfqsm3HAwPB0Y6h08ymuwuE.jpg](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/D7D7Vpb9FZURJToA6T0GEpbEwvc.jpg)
 
 Superhuman의 사례는 기존 시장에서도 명확한 타겟팅과 차별화된 가치 제안을 통해 성공적으로 진입할 수 있음을 보여줍니다. 여러분의 스타트업도 이러한 전략을 응용하여 효과적인 시장 진출 계획을 수립해보시기 바랍니다.
+<!-- PROMO_BANNER_START -->
+<div class="promo-banner" style="margin-top: 60px; padding: 35px 20px; background: #181818; border-radius: 12px; text-align: center; font-family: 'Noto Sans KR', sans-serif;">
+    <h4 style="color: #6CFD33; margin-top: 0; margin-bottom: 12px; font-weight: 500; font-size: 18px;">🚀 Simplifier의 인사이트를 더 깊게 만나보세요</h4>
+    <p style="color: #aaaaaa; font-size: 15px; margin-bottom: 25px; font-weight: 300; line-height: 1.6;">책 『UX의 언어들』과 트레바리 독서모임에서 기획의 진짜 비밀을 나눕니다.</p>
+    <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+        <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="padding: 12px 24px; background: #333333; color: #ffffff; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 400; transition: background 0.2s;">📖 UX의 언어들 (예스24)</a>
+        <a href="https://trevar.ink/Vmammm" target="_blank" style="padding: 12px 24px; background: #6CFD33; color: #111111; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 600; transition: opacity 0.2s;">🔥 트레바리 기획자 모임</a>
+    </div>
+</div>
+<!-- PROMO_BANNER_END -->
+
 
 <!-- CATEGORY_NAV_START -->
 <style>
@@ -63,7 +74,7 @@ Superhuman의 사례는 기존 시장에서도 명확한 타겟팅과 차별화�
 .cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
 .nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
+.promo-banner a:hover { opacity: 0.8; }</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/174_%EC%9D%B8%EC%9D%B4%20%EB%B0%B0%EA%B8%B8%20%EB%95%8C%EA%B9%8C%EC%A7%80.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'스타트업 인사이트'의 이전글</span><span class="nav-title">인이 배길 때까지...</span></a>
   <a href="/brunch_web_assets/markdown/180_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%20%234%20Apollo%20%ED%98%81%EC%8B%A0%EC%9D%98%20%EB%B0%B0%ED%8F%AC%20%ED%94%8C%EB%9E%AB%ED%8F%BC.html" class="cat-nav-item cat-nav-right"><span class="nav-title">팔란티어' #4 Apollo 혁신의 배포 플랫폼</span><span class="cat-nav-label">'스타트업 인사이트'의 다음글</span></a>

@@ -27,12 +27,17 @@ HBM은 사실 갑자기 튀어나온 신기술이 아닙니다. 2000년대 후�
 여러분은 어떻게 생각하시나요? HBM 같은 메모리 기술이 AI 발전에 어떤 역할을 할 것 같나요? 앞으로 HBM을 넘어설 만한 혁신적인 아이디어는 없을까요? 다들 한번 상상해 보시면 좋겠네요. 메모리가 빨라져야 AI지능도 한층 더 높아질테니까요?
 
 **AI시대에 알아야 할 UX의 언어는?**
+<!-- PROMO_BANNER_START -->
+<div class="promo-banner" style="margin-top: 60px; padding: 35px 20px; background: #181818; border-radius: 12px; text-align: center; font-family: 'Noto Sans KR', sans-serif;">
+    <h4 style="color: #6CFD33; margin-top: 0; margin-bottom: 12px; font-weight: 500; font-size: 18px;">🚀 Simplifier의 인사이트를 더 깊게 만나보세요</h4>
+    <p style="color: #aaaaaa; font-size: 15px; margin-bottom: 25px; font-weight: 300; line-height: 1.6;">책 『UX의 언어들』과 트레바리 독서모임에서 기획의 진짜 비밀을 나눕니다.</p>
+    <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+        <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="padding: 12px 24px; background: #333333; color: #ffffff; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 400; transition: background 0.2s;">📖 UX의 언어들 (예스24)</a>
+        <a href="https://trevar.ink/Vmammm" target="_blank" style="padding: 12px 24px; background: #6CFD33; color: #111111; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 600; transition: opacity 0.2s;">🔥 트레바리 기획자 모임</a>
+    </div>
+</div>
+<!-- PROMO_BANNER_END -->
 
-[**UX의 언어들 | 한성희 | 파지트 - 예스24**
-
-일상 속 UX의 발견UX 세계를 향한 친절한 안내서 『UX의 언어들』은 일상 속에 스며든 UX를 UX 디자이너의 시선으로 풀어내며, 우리가 이를 어떻게 경험하고 소비하는지 넷플릭스, 카카오 등 친숙
-
-https://www.yes24.com/product/goods/193444437](https://www.yes24.com/product/goods/193444437)
 
 <!-- CATEGORY_NAV_START -->
 <style>
@@ -43,7 +48,7 @@ https://www.yes24.com/product/goods/193444437](https://www.yes24.com/product/goo
 .cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
 .nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
+.promo-banner a:hover { opacity: 0.8; }</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/177_AI%20%EC%B9%A9%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%ED%95%B5%EC%8B%AC%2C%20FLOPS%EC%99%80%20TOPS%20%EA%B7%B8%EB%A6%AC%EA%B3%A0.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'AI의 언어들'의 이전글</span><span class="nav-title">AI 칩 성능의 핵심, FLOPS와 TOPS 그리고..</span></a>
   <a href="/brunch_web_assets/markdown/191_AI%ED%95%98%EB%93%9C%EC%9B%A8%EC%96%B4%2C%20GPU%EC%99%80%20NPU%20%EA%B7%B8%EB%A6%AC%EA%B3%A0%20FPGA%EC%9D%98%20%EC%B0%A8%EC%9D%B4%EC%A0%90.html" class="cat-nav-item cat-nav-right"><span class="nav-title">AI하드웨어, GPU와 NPU 그리고 FPGA의 차이점</span><span class="cat-nav-label">'AI의 언어들'의 다음글</span></a>

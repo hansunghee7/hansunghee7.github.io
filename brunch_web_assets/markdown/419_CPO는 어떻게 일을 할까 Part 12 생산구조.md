@@ -27,6 +27,17 @@ date_string: 'Apr 11. 2024'
 인원수를 보았을 때 2개 트랙(스쿼드)의 구성이 가능하여, 한쪽 트랙은 목표일정이 중요한 프로젝트를 담당하는 스쿼드(1번)로, 다른 쪽은 제휴사 일정에 따라 변동성이 큰 과제나 일정 중요도가 높지 않은 유관부서 요청과제를 담당하는 스쿼드(2번)로 역할을 부여했다. 해당 생산구조로 업무를 진행하니, 1번 스쿼드는 예상했던 일정에 가깝게 투자유치를 위한 프로젝트가 출시되었고, 2번 스쿼드는 제휴업무와 내부요청 프로세스 체계를 정리할 수 있게 되었다.
 
 프로덕트 조직의 생산조직 체계는 위와 같이 사업목적에 맞게 구성을 해야 하며, 사업 상황에 따라 2번 스쿼드도 프로젝트에 투입될 수 있게 유연성을 가지게 운영을 해야 한다. 그리고 스쿼드 인력 변화와 사업아이템 인입현황에 따라 생산체계를 지속적으로 조율해 주는 것도 중요하다.
+<!-- PROMO_BANNER_START -->
+<div class="promo-banner" style="margin-top: 60px; padding: 35px 20px; background: #181818; border-radius: 12px; text-align: center; font-family: 'Noto Sans KR', sans-serif;">
+    <h4 style="color: #6CFD33; margin-top: 0; margin-bottom: 12px; font-weight: 500; font-size: 18px;">🚀 Simplifier의 인사이트를 더 깊게 만나보세요</h4>
+    <p style="color: #aaaaaa; font-size: 15px; margin-bottom: 25px; font-weight: 300; line-height: 1.6;">책 『UX의 언어들』과 트레바리 독서모임에서 기획의 진짜 비밀을 나눕니다.</p>
+    <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+        <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="padding: 12px 24px; background: #333333; color: #ffffff; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 400; transition: background 0.2s;">📖 UX의 언어들 (예스24)</a>
+        <a href="https://trevar.ink/Vmammm" target="_blank" style="padding: 12px 24px; background: #6CFD33; color: #111111; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 600; transition: opacity 0.2s;">🔥 트레바리 기획자 모임</a>
+    </div>
+</div>
+<!-- PROMO_BANNER_END -->
+
 
 <!-- CATEGORY_NAV_START -->
 <style>
@@ -37,7 +48,7 @@ date_string: 'Apr 11. 2024'
 .cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
 .nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
+.promo-banner a:hover { opacity: 0.8; }</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/413_%ED%95%9C%EC%BD%94%EC%B9%98%EC%9D%98%20%27%EC%95%A0%EC%9E%90%EC%9D%BC%20%EC%99%9C%20%ED%95%98%EA%B2%8C%20%EB%90%98%EC%97%88%EC%9D%84%EA%B9%8C%27.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'스타트업 인사이트'의 이전글</span><span class="nav-title">한코치의 '애자일 왜 하게 되었을까?</span></a>
   <a href="/brunch_web_assets/markdown/420_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part11%20%EC%82%AC%EC%97%85%EB%AA%A9%ED%91%9C%EC%88%98%EB%A6%BD.html" class="cat-nav-item cat-nav-right"><span class="nav-title">CPO는 어떻게 일을 할까? Part1.1 사업목표수립</span><span class="cat-nav-label">'스타트업 인사이트'의 다음글</span></a>
