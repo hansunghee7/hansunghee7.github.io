@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Dec 31. 2024</div>
-<!-- POST_DATE_END -->
-
 감사한 일들이 많은 한해였다.   
   
 작년 11월 링크드인, 페이스북, 네이버블로그, 브런치에 매일 글쓰기를 시작하며 내 글을 읽어주는 전체 팔로워가 2만명을 훌쩍 넘었다.   

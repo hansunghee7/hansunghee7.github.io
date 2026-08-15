@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Jun 6. 2025</div>
-<!-- POST_DATE_END -->
-
 한 IT 회사의 제품 관리자(PM)는 최근 AI에 대한 고민이 깊었습니다.
 
 "AI가 내 일을 대신할 수 있을까?"

@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Jun 3. 2025</div>
-<!-- POST_DATE_END -->
-
 2002년, 웹사이트와 앱이 점점 복잡해지면서 한 가지 문제가 대두되고 있었다. 사용자 경험을 어떻게 체계적으로 설계할 것인가? 제시 제임스 개럿(Jesse James Garrett)은 이 문제에 대한 명쾌한 답을 제시했다. 바로 'UX 5 Planes 모델'이다.
 
 이 모델은 사용자 경험을 다섯 개의 층(Plane)으로 나누어 체계적으로 접근하는 프레임워크다. 마치 건물을 짓듯 아래에서 위로, 추상적인 단계에서 구체적인 단계로 차례차례 쌓아 올라간다. 각 층은 서로 유기적으로 연결되어 있으며, 하위 층의 결정이 상위 층에 영향을 미친다.

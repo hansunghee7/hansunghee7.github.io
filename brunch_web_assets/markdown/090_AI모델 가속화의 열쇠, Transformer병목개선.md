@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Jul 2. 2025</div>
-<!-- POST_DATE_END -->
-
 GPT, BERT와 같은 최신 AI 모델의 중심인 Transformer 아키텍처는 놀라운 성능을 제공하지만, 학습 과정에서 여러 병목 현상에 직면합니다. 이러한 병목을 해결하는 것은 AI 개발의 속도와 비용 효율성을 크게 향상시키는 핵심 요소입니다.
 
 ![img.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/vXFJmpA_z9iUj4SPyvTeY3hON5I.png)

@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">May 1. 2025</div>
-<!-- POST_DATE_END -->
-
 "대박 난 상품이 품절 되기 전에 어서 구매하세요!"
 
 "이 호텔은 오늘 예약이 10건이나 완료되었어요. 서두르세요!"

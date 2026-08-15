@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Aug 15. 2025</div>
-<!-- POST_DATE_END -->
-
 서울 여의도의 한 IT기업 HR팀장 박차장은 고민이 깊었다. 개발팀은 애자일로 2주마다 성과를 내는데, 인사평가는 여전히 1년에 한 번이었다. "조직과 과제는 계속 바뀌는데 1년 전 목표로 평가한다고?" 팀장들의 불만이 계속 쌓였다. 더 큰 문제는 채용이었다. "React 개발자 5년 경력"이라고 올려도 정작 필요한 건 "프론트엔드 잘하고 팀워크 좋은 사람"이었다.
 
 애자일 HR은 인사 업무에 애자일 원칙을 적용하는 것이다. 연간 평가 대신 지속적 피드백, 고정된 직무 대신 유연한 역할, 계층적 승진 대신 수평적 성장을 추구한다. CIPD에 따르면 애자일 HR을 도입한 기업들이 변화 적응력에서 평균 40% 높은 성과를 보인다.

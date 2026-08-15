@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Jul 1. 2025</div>
-<!-- POST_DATE_END -->
-
 1990년대 후반, 많은 대기업이 한 가지 딜레마에 빠져 있었다. 단기 실적에만 집중하다가 신생 기업에 시장을 빼앗기거나, 미래 성장 동력을 놓치는 사례가 속출했다. 맥킨지 컨설턴트들은 이 문제를 해결하기 위해 '현재를 지키면서 미래를 준비하는' 균형 잡힌 성장 전략을 고안했다. 바로 '3 Horizons 모델'이다.
 
 3 Horizons 모델은 조직의 성장 전략을 세 가지 시간축으로 나누어 관리하는 프레임워크다. Horizon 1(H1)은 현재의 핵심 사업으로, 기존 사업의 최적화와 효율화, 단기적 수익 창출에 집중한다. Horizon 2(H2)는 성장 기회의 탐색으로, 중기적으로 성장할 수 있는 신사업, 신제품, 신시장에 대한 투자를 의미한다. Horizon 3(H3)는 미래 혁신과 변혁으로, 장기적으로는 파괴적 혁신이나 새로운 시장 창출에 도전한다.

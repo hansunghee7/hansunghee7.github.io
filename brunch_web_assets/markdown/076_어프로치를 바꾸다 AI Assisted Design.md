@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Jul 17. 2025</div>
-<!-- POST_DATE_END -->
-
 "이제 몇 분 만에 수십 개의 디자인 시안을 만들 수 있어요!"
 
 2023년 Midjourney, Stable Diffusion, ChatGPT 등 생성형 AI가 디자인 업계에 등장하면서 들려오는 감탄사입니다. AI-Assisted Design은 단순히 도구를 바꾸는 것을 넘어, 디자인 사고와 프로세스 자체를 혁신하고 있습니다.

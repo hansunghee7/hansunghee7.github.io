@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">May 14. 2025</div>
-<!-- POST_DATE_END -->
-
 AI 기술이 폭발적으로 성장하면서 데이터센터의 네트워크 인프라도 급격한 변화를 겪고 있습니다. 특히 대규모 AI 모델을 학습시키려면 GPU 간의 초고속 데이터 전송이 필수적인데요. 여기서 두 가지 핵심 기술이 바로 NVLink와 InfiniBand입니다. 이 둘은 서로 다른 영역에서 최적의 성능을 발휘하는 상호보완적인 관계라고 할 수 있어요.
 
 먼저 NVLink는 NVIDIA GPU만을 위한 전용 연결 기술이에요. 마치 GPU들이 바로 옆자리에 앉아 있는 것처럼 직접적이고 빠른 소통이 가능하죠. 최신 H100 GPU에서는 무려 900GB/s의 엄청난 대역폭을 자랑합니다. 게다가 NVLink로 연결된 GPU들은 메모리를 공유할 수 있어서 데이터를 복사하는 낭비도 줄일 수 있어요. 여기에 NVSwitch라는 혁신적인 스위치까지 더해지면서 멀티캐스트나 그래디언트 집계 같은 고급 기능까지 지원하게 됐죠.

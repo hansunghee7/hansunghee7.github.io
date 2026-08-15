@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Apr 6. 2025</div>
-<!-- POST_DATE_END -->
-
 Gotham과 Foundry가 팔란티어의 데이터 분석 역량을 보여준다면, Apollo는 그 혁신을 지속 가능케 하는 숨은 동력입니다.
 
 팔란티어 플랫폼은 계속 진화합니다. 새 기능이 추가되고, 보안 패치가 적용되며, 사용자 피드백을 반영한 개선이 이뤄집니다. 빠른 기술 발전 속에서 신속한 업데이트는 필수가 되었죠.

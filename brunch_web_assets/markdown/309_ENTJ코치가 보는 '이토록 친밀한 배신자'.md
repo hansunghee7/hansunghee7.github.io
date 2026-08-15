@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Oct 19. 2024</div>
-<!-- POST_DATE_END -->
-
 오랜만에 셋탑박스를 켜고 본방사수를 하는 드라마가 생겼다. '이토록 친밀한 배신자' ... 나는 왜 이 작품에 빠져들었을까?
 
 ---

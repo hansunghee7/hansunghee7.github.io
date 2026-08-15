@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Feb 10. 2025</div>
-<!-- POST_DATE_END -->
-
 안녕하세요, 스타트업 성공코치 한성희입니다. 오늘은 많은 스타트업 창업자들이 궁금해하는 '조직 성장 전략'에 대해 이야기해보려 합니다.
 
 "규칙이 없는 회사가 가능할까요? 모든 직원에게 무제한 휴가를 준다면 어떻게 될까요?"

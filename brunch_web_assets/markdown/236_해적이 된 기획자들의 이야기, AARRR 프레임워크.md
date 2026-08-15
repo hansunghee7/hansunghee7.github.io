@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Feb 11. 2025</div>
-<!-- POST_DATE_END -->
-
 # **"Arrr!"**
 
 이 함성은 해적들의 상징적인 외침이다. 그리고 놀랍게도 이는 현대 IT 기획의 강력한 도구가 된 프레임워크의 이름이기도 하다.

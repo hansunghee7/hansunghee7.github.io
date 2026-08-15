@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Apr 20. 2025</div>
-<!-- POST_DATE_END -->
-
 안녕하세요, 스타트업 성공코치 한성희입니다. 오늘부터 5주간 '검색의 재정의'를 이끌고 있는 Perplexity AI의 기술을 심층 분석하는 시리즈를 시작합니다.
 
 ### **기존 검색 엔진의 구조적 한계**

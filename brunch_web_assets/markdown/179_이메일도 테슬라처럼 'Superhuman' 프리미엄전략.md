@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Apr 7. 2025</div>
-<!-- POST_DATE_END -->
-
 오늘은 이메일이라는 오래된 시장에 프리미엄 솔루션으로 성공적으로 진입한 Superhuman의 전략을 분석해보겠습니다.
 
 "누가 이메일에 월 30달러를 지불할까요?"

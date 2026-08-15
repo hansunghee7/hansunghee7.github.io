@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Feb 4. 2024</div>
-<!-- POST_DATE_END -->
-
 1.
 
 최근 읽은 책에는 15년 전에 입사를 한 동기 A와 B의 이야기가 나온다.

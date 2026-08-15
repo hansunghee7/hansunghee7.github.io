@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Jun 9. 2025</div>
-<!-- POST_DATE_END -->
-
 2022년 MIT에서 만난 20대 청년 4명이 어떻게 2년 만에 한화 약 3조원의 가치를 가진 AI 기업을 만들었을까요? 바로 AI 코딩 도구 Cursor AI의 놀라운 성장 스토리입니다.
 
 마이클 트루엘, 수알레 아시프, 아르비드 룬네마크, 아만 생거. 이 네 명의 MIT 학생들은 프로그래밍 과정에서 기존 AI 도구들의 한계를 직접 경험했습니다. GitHub Copilot 같은 기존 AI 코딩 어시스턴트들은 단순한 자동완성에 머물러 있었고, 맥락을 제대로 이해하지 못해 개발자와의 협업이 어색했죠.

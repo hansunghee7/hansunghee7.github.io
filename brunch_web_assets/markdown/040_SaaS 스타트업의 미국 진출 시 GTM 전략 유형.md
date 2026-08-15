@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Aug 31. 2025</div>
-<!-- POST_DATE_END -->
-
 GTM(Go-To-Market) 전략이란 제품을 시장에 들고 나가는 접근 방식을 말합니다. SaaS 스타트업의 미국 진출에서는 일반적으로 네 가지 GTM 전략을 활용합니다.
 
 **제품주도성장(PLG)**은 제품 자체가 영업사원 역할을 하는 전략입니다. 무료 트라이얼이나 프리미엄 모델로 사용자가 직접 써보고 전환하게 유도합니다. Slack이 직원들이 무료로 써보다 팀 전체로 확산된 것이 대표적 예입니다. PLG는 고객 획득과 전환을 제품 경험으로 이끌어 고객획득비용(CAC)을 낮춥니다.

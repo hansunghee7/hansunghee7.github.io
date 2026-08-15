@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Feb 13. 2025</div>
-<!-- POST_DATE_END -->
-
 여러분 모두 챗GPT를 사용해보신 적 있을 겁니다. 그 신기한 경험, 마치 영화 속 AI와 대화하는 듯한 느낌. 챗GPT에게 느끼는 이 경험은 단순히 뛰어난 대화 능력에만 있는 것이 아닙니다. 오늘은 챗GPT의 단순한 인터페이스 뒤에 숨겨진 UX설계의 비밀을 알아보도록 하겠습니다.
 
 ---

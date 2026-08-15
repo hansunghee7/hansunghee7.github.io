@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Jan 23. 2025</div>
-<!-- POST_DATE_END -->
-
 UX와 UI라는 용어는 디지털 시대에 자주 등장하지만, 많은 사람들이 그 차이를 혼동하곤 합니다. 오늘은 UX와 UI의 탄생 배경부터 차이점, 그리고 실무에서의 활용까지 깊이 있게 살펴보겠습니다.
 
 UX는 1950년대로 거슬러 올라갑니다. 당시 산업디자인 개척자 헨리 드레이퍼스가 "사람을 위한 디자인"이라는 개념을 처음 도입했죠. 하지만 UX라는 용어는 1993년, 인지심리학자 도널드 노먼이 애플에서 'User Experience Architect'로 일하면서 공식적으로 등장하게 됩니다. 사용자의 경험에 집중하는 이 개념은 이후 다양한 산업으로 확대되며 필수적인 설계 원칙으로 자리 잡았습니다.

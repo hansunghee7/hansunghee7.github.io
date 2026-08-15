@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Apr 6. 2024</div>
-<!-- POST_DATE_END -->
-
 CPO 업무의 보다 쉬운 이해를 위해 업무의 흐름을 수직적인 흐름과 수평적인 흐름 두 가지로 설명하고, 각 단계 별로 구체적인 업무 내용을 설명해 보려고 한다. 우선 수직적인 업무 흐름부터 간략히 보면 아래와 같다.
 
 ---

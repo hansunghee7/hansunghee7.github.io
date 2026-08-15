@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Jul 3. 2025</div>
-<!-- POST_DATE_END -->
-
 "안녕하세요! 무엇을 도와드릴까요?"
 
 이제 우리는 기계가 아닌 사람과 대화하는 것처럼 자연스럽게 AI와 소통합니다. 단순한 챗봇을 넘어 진짜 대화처럼 느껴지는 'Conversational UX'의 세계로 들어가 보겠습니다.

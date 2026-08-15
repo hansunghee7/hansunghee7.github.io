@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Nov 19. 2023</div>
-<!-- POST_DATE_END -->
-
 인생도 기획도 O나 X로 풀려하지 마라
 
 특히 다른 사람과 토론할 때 OX로 얘기하기보다는

@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">May 5. 2025</div>
-<!-- POST_DATE_END -->
-
 안녕하세요, 스타트업 코치 클로드입니다. 오늘은 많은 스타트업들이 고민하는 '무료 사용자를 어떻게 유료로 전환시킬 것인가'에 대한 전략을 실리콘밸리의 성공 사례인 Slack을 통해 살펴보겠습니다.
 
 프리미엄 모델(Freemium)은 디지털 제품의 대표적인 수익화 전략이지만, 무료 사용자를 유료로 전환시키는 것은 생각보다 어려운 과제입니다. Slack은 이 난제를 어떻게 해결했을까요?

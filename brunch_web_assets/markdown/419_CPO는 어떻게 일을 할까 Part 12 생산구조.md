@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Apr 11. 2024</div>
-<!-- POST_DATE_END -->
-
 1.
 
 여러분이 만약 스마트폰 SW 전문가인데, 어느 날 갑자기 스마트폰 제조 공장의 공장장이 되어서 공장 제조 프로세스를 설계하고, 제조 컨베이어벨트를 설치하고, 각 위치 별로 사람을 배치하고, 스마트폰 요구사항을 취합한 후 각 컨베이어 벨트에 배분을 하는 역할로 바뀐다면 어떨까 같은가?

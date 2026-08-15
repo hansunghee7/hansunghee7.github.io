@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Aug 14. 2025</div>
-<!-- POST_DATE_END -->
-
 "아니, 벌써 3시간이나 지났어?"
 
 넷플릭스를 보다가, 게임을 하다가 시간 가는 줄 모르고 깜짝 놀란 경험이 있을 겁니다. 바로 이 상태를 심리학자 미하이 칙센트미하이는 'Flow State(몰입 상태)'라고 명명했습니다.

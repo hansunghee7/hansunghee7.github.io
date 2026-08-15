@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Apr 11. 2024</div>
-<!-- POST_DATE_END -->
-
 1.
 
  나는 결과적으로 임원이 되고, 대표까지 되었지만, 사실 이런 직위가 나의 목표는 아니었다. 기획자가 된 후 서비스가 실패해 동료들이 떠나가는 것이 정말 싫어서, 서비스를 성공시키는 기획자가 되는 걸 목표로 잡았다.

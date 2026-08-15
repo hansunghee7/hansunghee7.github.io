@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Jun 23. 2025</div>
-<!-- POST_DATE_END -->
-
 "제품은 좋은데 왜 매출이 늘지 않을까요?"
 
 4년 차 협업 툴 스타트업 웰로(Welo.space)도 같은 고민을 했습니다. 제품의 품질은 괜찮았지만 성장이 정체되고, 기존 사용자 기반 요금제로는 차별화가 어려웠죠.

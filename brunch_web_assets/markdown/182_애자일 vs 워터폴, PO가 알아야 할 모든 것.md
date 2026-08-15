@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Apr 4. 2025</div>
-<!-- POST_DATE_END -->
-
 한 IT 회사의 PO(제품 책임자)는 새 프로젝트를 시작하며 고민에 빠졌습니다.
 
 "프로젝트 방법론으로 애자일을 써야 할까, 워터폴을 써야 할까?"

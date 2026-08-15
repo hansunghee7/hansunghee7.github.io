@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Jun 19. 2025</div>
-<!-- POST_DATE_END -->
-
 "깔끔한 화면이 최고지!"
 
 누구나 한 번쯤 생각해본 말일 겁니다. 하지만 'Clean UI'가 단순히 보기 좋은 화면 그 이상이라는 사실, 알고 계셨나요? 깨끗한 인터페이스 뒤에 숨겨진 진짜 비밀을 파헤쳐보겠습니다.

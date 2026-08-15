@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Jan 29. 2025</div>
-<!-- POST_DATE_END -->
-
 중국의 한 헤지펀드가 야심차게 선보인 AI 스타트업 DeepSeek이 글로벌 무대에서 새로운 바람을 일으키고 있다. 창업한 지 1년도 채 되지 않았지만, 독보적인 기술력과 파격적인 행보로 업계의 주목을 한 몸에 받고 있는 것이다.
 
 ![](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/tn1lyGVJK92OjgYmuDWKOi5FkpI.jpg)

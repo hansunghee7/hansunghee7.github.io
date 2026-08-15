@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">May 4. 2025</div>
-<!-- POST_DATE_END -->
-
 지금까지 Perplexity AI의 배경과 철학, 전체 아키텍처, 그리고 BM25와 벡터 검색의 하이브리드 설계에 대해 살펴보았습니다. 3부에서는 Perplexity의 핵심 기술인 RAG시스템을 완전히 해부해보겠습니다.
 
 RAG는 Retrieval-Augmented Generation의 약자로, 방대한 외부 지식 베이스에서 정보를 검색(Retrieval)해 언어모델의 생성(Generation) 과정에 활용하는 구조를 말합니다.

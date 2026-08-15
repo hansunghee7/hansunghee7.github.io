@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Mar 18. 2025</div>
-<!-- POST_DATE_END -->
-
 "오늘도 무의식적으로 스마트폰을 집어 들었다." 이런 경험, 누구나 한 번쯤 있을 것이다.
 
 2014년, 니르 이얄(Nir Eyal)은 이러한 현상을 설명하는 'Hooked(훅) 모델'을 제시했다. 그는 페이스북, 인스타그램 같은 서비스가 어떻게 우리 일상의 일부가 되었는지 분석하며, 습관을 형성하는 제품 디자인의 원리를 네 단계로 정리했다.

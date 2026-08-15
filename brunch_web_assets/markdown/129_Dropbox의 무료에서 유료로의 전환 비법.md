@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">May 26. 2025</div>
-<!-- POST_DATE_END -->
-
 안녕하세요, 스타트업 성공코치 한성희입니다. 오늘은 프리미엄(Freemium) 모델을 운영하는 스타트업이라면 누구나 고민하는 '무료 사용자를 어떻게 유료로 전환시킬 것인가'에 대한 전략을 Dropbox의 성공 사례를 통해 살펴보겠습니다.
 
 프리미엄 모델의 딜레마는 명확합니다. 무료로 너무 많은 가치를 주면 사용자들이 유료로 전환할 이유가 없고, 너무 적게 주면 서비스의 매력을 느끼지 못합니다. 이 절묘한 균형을 어떻게 맞출 수 있을까요?

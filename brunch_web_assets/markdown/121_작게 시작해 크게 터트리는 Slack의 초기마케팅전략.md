@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Jun 2. 2025</div>
-<!-- POST_DATE_END -->
-
 안녕하세요, 스타트업 성공코치 한성희입니다. 오늘은 제한된 자원으로 최대 효과를 내야 하는 초기 스타트업의 마케팅 채널 설정법에 대해 이야기해보겠습니다.
 
 "10개 채널에 예산을 분산하는 것과 2개 채널에 집중하는 것, 어느 쪽이 더 효과적일까요?"

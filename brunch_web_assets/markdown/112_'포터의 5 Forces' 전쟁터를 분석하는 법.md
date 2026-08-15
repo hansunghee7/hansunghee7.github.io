@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Jun 10. 2025</div>
-<!-- POST_DATE_END -->
-
 1979년, 미국 기업들은 절망에 빠져 있었다. 일본 기업들의 맹공격으로 주요 산업이 뒤흔들리고 있었다. 기존의 SWOT 분석처럼 내부만 바라보는 전략으로는 한계가 명확했다. 이때 하버드대 마이클 포터가 혁신적인 아이디어를 제안했다.
 
 "기업의 성패는 산업 구조에 의해 더 크게 좌우된다." 포터는 기업이 처한 경쟁 환경을 다섯 가지 힘(Forces)으로 체계화했다. 이 모델은 하버드 비즈니스 리뷰에 발표되자마자 폭발적인 반향을 일으켰고, 포터는 맥킨지 어워드를 6회 수상하며 경영 전략 분야의 최고 권위자가 되었다.

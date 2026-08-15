@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Apr 29. 2025</div>
-<!-- POST_DATE_END -->
-
 고객을 유치하는 데 1만 원이 들고, 그 고객이 평생 우리 회사에 100만 원의 가치를 준다면? 망설일 이유가 없다. 이처럼 LTV(고객 생애 가치)와 CAC(고객 획득 비용)의 비교는 비즈니스의 본질을 꿰뚫는 프레임워크다.
 
 ![LTV-to-CAC-Ratio-Formula.jpg](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/hwsJdh702JsHHJqZnuy-1ao_z1M.jpg)

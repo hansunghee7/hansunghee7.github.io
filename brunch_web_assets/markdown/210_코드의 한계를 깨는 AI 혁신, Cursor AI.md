@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Mar 9. 2025</div>
-<!-- POST_DATE_END -->
-
 한 논문이 개발자 팀의 시선을 사로잡았다. 2020년, OpenAI의 스케일링 법칙 논문이었다. 그들은 깨달았다. AI가 프로그래밍의 패러다임을 완전히 바꿀 것이라는 사실을.
 
 GitHub Copilot의 등장과 GPT-4의 초기 버전을 경험하며 이 예감은 확신으로 바뀌었다. 특히 GPT-4의 능력은 예상을 뛰어넘었다. 이제 기존 코드 에디터와는 완전히 다른 새로운 프로그래밍 환경이 필요했다.

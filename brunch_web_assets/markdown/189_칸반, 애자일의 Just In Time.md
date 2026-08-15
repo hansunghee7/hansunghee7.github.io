@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Mar 28. 2025</div>
-<!-- POST_DATE_END -->
-
 안녕하세요, 애자일을 사랑하는 여러분! 오늘은 애자일과 DevOps의 핵심 프레임워크 중 하나인 '칸반'에 대해 이야기를 나누고자 합니다.
 
 칸반은 Toyota에서 시작된 JIT(Just-In-Time) 생산 방식에 뿌리를 두고 있어요. 마치 슈퍼마켓에서 상품을 적시에 진열하듯, 칸반은 필요할 때 정확한 양의 작업이 이뤄지도록 흐름을 관리합니다.

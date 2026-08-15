@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Jun 11. 2025</div>
-<!-- POST_DATE_END -->
-
 AI 모델 개발이 비즈니스 핵심 경쟁력으로 자리잡으면서, 효율적인 AI 학습 인프라 선택은 기업 성패를 좌우하는 중요한 결정이 되었습니다. AWS Trainium, Google TPU, Azure H100은 각각 다른 강점을 가진 주요 클라우드 AI 솔루션입니다.
 
 ![Trainium2-blog-feat-img-1.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/ybkFhJXojwFS_UG2R4608TMScr4.png)

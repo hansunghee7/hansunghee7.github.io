@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Mar 14. 2024</div>
-<!-- POST_DATE_END -->
-
 1.
 
 연재를 하는 동안 25년 전으로 타임리프를 한 느낌이었다. 지금 이 글을 쓰는 동안에도… 대표가 따라준 소주를 벌컥 벌컷 원샷을 한 다음 날 아침처럼 숙취가 느껴진다.

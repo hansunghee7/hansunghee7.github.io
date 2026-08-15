@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Feb 14. 2025</div>
-<!-- POST_DATE_END -->
-
 많은 IT 회사의 PO들은 제품 백로그 관리에 아래와 같은 어려움을 겪고 있었다.
 
 **"팀원들과 이해관계자들의 요구사항이 너무 다양해요."**

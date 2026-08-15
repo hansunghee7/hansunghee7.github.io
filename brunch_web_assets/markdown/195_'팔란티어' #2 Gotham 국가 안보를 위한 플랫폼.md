@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Mar 23. 2025</div>
-<!-- POST_DATE_END -->
-
 현대 사회에서 데이터는 새로운 자원이자 무기입니다. 특히 국가 안보 분야에서 방대한 데이터를 신속 정확하게 분석하는 역량은 국가 경쟁력의 핵심으로 부상했습니다. 이런 맥락에서 팔란티어의 Gotham 플랫폼은 정부 기관과 군을 위한 최적의 데이터 통합 및 분석 솔루션으로 주목받고 있습니다.
 
 ## 이종 데이터 통합을 통한 위협 감지

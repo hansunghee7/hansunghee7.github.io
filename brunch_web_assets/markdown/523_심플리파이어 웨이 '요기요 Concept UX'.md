@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Dec 22. 2023</div>
-<!-- POST_DATE_END -->
-
 저는 CPO로써 프로덕트 생산 체계가 자리를 잡고, 계획된 과제가 안정적으로 돌아가면, UX 조직과 함께 콘셉트카를 만들 듯이 프로덕트의 미래를 그려보는 작업을 합니다.
 
  VOC(고객요구사항), 비즈니스 목표, 사용성 등을 전반적으로 고려하여 1~2년 뒤의 프로덕트의 콘셉트 시안을 만들어 보는 거죠. 그리고 이해의 용이성을 위해 시안을 조합해 프로토타이핑 동영상을 만듭니다.

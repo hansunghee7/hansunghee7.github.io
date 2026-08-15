@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Oct 6. 2024</div>
-<!-- POST_DATE_END -->
-
 1.
 
 최현석셰프는 '냉장고를 부탁해'에서 소금을 뿌리는 장난기 있는 모습으로 기억했다. 그러나 흑백요리사를 통해 시청자에게 기억되기 위한 철저히 전략적인 행동으로 판단하게 되었다.

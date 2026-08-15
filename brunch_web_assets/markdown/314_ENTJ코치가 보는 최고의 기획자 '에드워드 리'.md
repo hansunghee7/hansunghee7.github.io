@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Oct 13. 2024</div>
-<!-- POST_DATE_END -->
-
 흑백요리사가 11, 12화의 주인공은 단연 에드워드 리였다. 왜 우리는 그에게 몰입했을까 기획자의 관점에서 보자.
 
 ---

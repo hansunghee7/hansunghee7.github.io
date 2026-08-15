@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Jan 27. 2025</div>
-<!-- POST_DATE_END -->
-
 안녕하세요, 스타트업 코치 한성희입니다. 오늘은 많은 스타트업들이 고민하는 '효율적인 고객 획득 전략'에 대해 이야기해보려 합니다.
 
 ---

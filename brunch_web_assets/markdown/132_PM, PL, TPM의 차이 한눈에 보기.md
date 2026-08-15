@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">May 23. 2025</div>
-<!-- POST_DATE_END -->
-
 프로젝트 성공을 위해 다양한 역할이 필요합니다. PM, PL, TPM은 IT 업계에서 흔히 볼 수 있는 리더십 포지션이지만, 그 차이를 명확히 이해하는 사람은 많지 않습니다. 각 역할의 주요 책임과 중점 영역을 살펴보겠습니다.
 
 **PM(Product/Project Manager), 제품의 마에스트로**

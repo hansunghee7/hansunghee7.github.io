@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">May 30. 2025</div>
-<!-- POST_DATE_END -->
-
 DevOps는 개발(Development)과 운영(Operations)의 합성어입니다. 단순한 용어 결합이 아니라, 개발자와 운영자가 한 팀이 되어 소프트웨어를 더 빠르고 안정적으로 제공하기 위한 문화와 철학, 그리고 실천 방법을 의미합니다.
 
 ![6-essential-DevOps-roles_DevOps.jpg](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/FuBCaRdu0xUbtFP2ydZdwctIsjA.jpg)

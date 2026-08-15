@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Jan 15. 2024</div>
-<!-- POST_DATE_END -->
-
 브런치에 두 달을 매일 글을 올리자 구독자가 20명이 되었다.
 
  20명 구독자를 축하하는 자동 알림까지 오면서 무지 기뻤다.

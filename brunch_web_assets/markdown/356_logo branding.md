@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Jul 14. 2024</div>
-<!-- POST_DATE_END -->
-
 **#Simplifier #Branding "로고"**
 
 숙대에서 강의한 "링크드인 브랜딩 전략" 내용을 정제해서 업데이트합니다.

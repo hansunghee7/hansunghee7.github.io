@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Mar 10. 2025</div>
-<!-- POST_DATE_END -->
-
 안녕하세요, 스타트업 성공 코치 한성희입니다. 오늘은 생산성 도구 시장에 혁명을 일으킨 Notion의 시장 진출 전략에 대해 살펴보겠습니다.
 
 Notion의 여정은 많은 스타트업들이 경험하는 실패와 극복의 과정을 보여줍니다. 2013년 이반 자오와 그의 팀이 설립한 Notion은 처음부터 성공한 것이 아니었습니다. 첫 제품은 노코드 툴로, 사람들이 쉽게 웹과 앱을 만들 수 있도록 설계되었지만 시장에서 큰 반향을 일으키지 못했습니다. 창업자 이반 자오는 "우리가 세상에 전하고 싶은 것에 너무 집중했다"라고 반성하며 실제 시장 니즈를 제대로 파악하지 못했음을 인정했습니다.

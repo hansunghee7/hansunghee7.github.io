@@ -29,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!-- CAT_LINK_SCRIPT_END -->
 
-<!-- POST_DATE_START -->
-<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">May 18. 2025</div>
-<!-- POST_DATE_END -->
-
 Perplexity AI 기술 해부 시리즈의 마지막 시간입니다. 지금까지 Perplexity의 철학, 핵심 기술 아키텍처, BM25와 벡터 검색의 하이브리드 설계, RAG 시스템, 그리고 대화형 UX에 대해 알아보았습니다.
 
 이번 글에서는 중소규모 팀이나 스타트업이 실제로 Perplexity 스타일의 서비스를 구축할 수 있는 단계별 로드맵을 제시해보겠습니다.
