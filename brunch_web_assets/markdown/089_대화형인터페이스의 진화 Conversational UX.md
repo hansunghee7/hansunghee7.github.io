@@ -56,9 +56,13 @@ document.addEventListener('DOMContentLoaded', function() {
 대화형 UX는 '사람과 기술이 만나는 방식'을 근본적으로 바꾸는 패러다임입니다. 기술이 아무리 진화해도, 결국 중요한 것은 '사람과 연결되는 설계'임을 잊지 마세요.
 
 UX의 언어들이 책으로 나왔어요.
-
 <!-- PROMO_BANNER_START -->
-<div style="margin-top: 60px;">
+<div style="margin-top: 80px; margin-bottom: 20px;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%;">
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+        <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+    </div>
 <!-- OG_CARD_START -->
 <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">
     <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">

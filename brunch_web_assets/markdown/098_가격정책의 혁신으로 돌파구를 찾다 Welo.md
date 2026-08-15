@@ -62,9 +62,13 @@ document.addEventListener('DOMContentLoaded', function() {
 마지막으로, 장기적 관점에서 수익성과 성장의 균형을 맞추세요. 단기 매출보다 고객 생애 가치(LTV)와 재구매율이 더 중요합니다.
 
 프라이싱과 패키징은 스타트업 성장의 핵심입니다. 여러분의 제품이 창출하는 진짜 가치를 고객이 기꺼이 지불하게 만드는 구조를 실험하고 개선하세요. 이것이 바로 차별화와 수익성의 시작점입니다.
-
 <!-- PROMO_BANNER_START -->
-<div style="margin-top: 60px;">
+<div style="margin-top: 80px; margin-bottom: 20px;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%;">
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+        <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+    </div>
 <!-- OG_CARD_START -->
 <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">
     <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">

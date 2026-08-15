@@ -52,9 +52,13 @@ document.addEventListener('DOMContentLoaded', function() {
 늘 그렇듯이 2024년 동료 그리고 브런치 이웃들 덕에 행운의 한 해를 만들 수 있어서 감사합니다.
 
 함께 행복한 2025년을 만들어 봐요 ;-)
-
 <!-- PROMO_BANNER_START -->
-<div style="margin-top: 60px;">
+<div style="margin-top: 80px; margin-bottom: 20px;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%;">
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+        <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+    </div>
 <!-- OG_CARD_START -->
 <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">
     <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">

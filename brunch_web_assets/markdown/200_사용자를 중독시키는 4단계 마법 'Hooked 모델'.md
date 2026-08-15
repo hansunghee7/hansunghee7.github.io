@@ -54,9 +54,13 @@ document.addEventListener('DOMContentLoaded', function() {
 기획자가 훅 모델을 실전에 적용할 때는 몇 가지 주의할 점이 있다. 외부 계기에만 의존하지 말고 내부 계기를 형성해야 한다. 사용자 행동을 단순화하고, 보상은 예측 불가능하면서도 가치 있게 설계해야 한다. 그리고 투자 단계를 통해 장기적 관계를 형성해야 한다.
 
 니르 이얄의 이 모델은 단순한 마케팅 전략을 넘어, 우리의 일상 행동을 설명하는 강력한 렌즈가 되었다. 습관 형성 제품은 기존 마케팅보다 비용 효율적이고 강력한 사용자 충성도를 만들어낸다. 다만 이러한 강력한 도구는 윤리적 책임과 함께 사용되어야 한다. 궁극적으로 훅 모델의 목적은 사용자의 삶을 개선하는 습관을 형성하는 것이어야 한다.
-
 <!-- PROMO_BANNER_START -->
-<div style="margin-top: 60px;">
+<div style="margin-top: 80px; margin-bottom: 20px;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%;">
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+        <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+    </div>
 <!-- OG_CARD_START -->
 <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">
     <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">

@@ -68,9 +68,13 @@ Manus AI는 기획적으로 다음과 같은 인사이트를 준다.
 Manus의 등장으로 AI 에이전트 시장의 판도를 바꿀 가능성이 크다. 금융 분석, 의료 진단, 교육 등 다양한 분야에서 전문가 수준의 업무를 자동화할 수 있는 잠재력을 갖추고 있기 때문이다.
 
 90년대생 중국 청년들이 만든 이 혁신적인 기술이 AI의 미래를 어떻게 재정의할지, 그 여정이 이제 막 시작되었다.
-
 <!-- PROMO_BANNER_START -->
-<div style="margin-top: 60px;">
+<div style="margin-top: 80px; margin-bottom: 20px;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%;">
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+        <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+    </div>
 <!-- OG_CARD_START -->
 <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">
     <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">

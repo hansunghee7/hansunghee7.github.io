@@ -42,9 +42,13 @@ document.addEventListener('DOMContentLoaded', function() {
 ---
 
  부녀가 서로를 의심하고 감정적 가학을 하는 막장적 가족 서사에서 일본 소설의 플롯이 살짝 느껴지지만, 전반적으로 완성도 있는 영화를 보는 듯한 높은 수준을 보여준다. 무엇보다도 한석규가 아니었으면 이렇게 주인공의 감정적 갈등을 표현할 수 있었을까 싶다. 오랜만에 감정선이 좋은 작품을 만나서 기쁘다. 그러나 한편으론 새로운 걱정이 생겼다. 앞으로 3주를 또 어떻게 기다려야 할지.
-
 <!-- PROMO_BANNER_START -->
-<div style="margin-top: 60px;">
+<div style="margin-top: 80px; margin-bottom: 20px;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%;">
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+        <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+    </div>
 <!-- OG_CARD_START -->
 <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">
     <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">

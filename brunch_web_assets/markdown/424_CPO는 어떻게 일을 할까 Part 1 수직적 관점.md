@@ -66,9 +66,13 @@ CPO 업무의 보다 쉬운 이해를 위해 업무의 흐름을 수직적인 �
  PO와의 업무관계를 보았을 때는 CPO는 스쿼드 업무 전 후에 있다는 걸 알 수 있을 것이다. 아마 본인이 PO였다면 그 스쿼드 목표 달성을 위한 과제 진행을 리딩했을 것이다. 그러나 CPO가 되는 순간 그 전후의 업무 흐름과 다음에 설명할 수평적 업무 흐름을 챙기게 된다.
 
  만약 여러분의 회사에서는 위 내용과 다르게 진행되고 있다면 댓글로 알려주기 바란다. :-)
-
 <!-- PROMO_BANNER_START -->
-<div style="margin-top: 60px;">
+<div style="margin-top: 80px; margin-bottom: 20px;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%;">
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+        <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+    </div>
 <!-- OG_CARD_START -->
 <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">
     <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">

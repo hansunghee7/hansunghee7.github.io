@@ -54,9 +54,13 @@ Business Model Canvas와 Lean Canvas의 선택은 비즈니스의 성장 단계�
 기획자가 Lean Canvas를 실전에서 활용할 때는 몇 가지 원칙을 기억해야 한다. 먼저, 고객 인터뷰나 설문을 통해 실제 문제를 구체화하고, 기존 대안과의 차별점을 명확히 해야 한다. 또한 성공을 정의할 수 있는 1~2개의 핵심 지표만 선정해 집중적으로 관리하는 것이 중요하다. 무엇보다 Lean Canvas는 '살아있는 문서'로, 시장 반응과 팀의 학습에 따라 수시로 내용을 수정·보완해야 한다.
 
 100페이지 사업계획서가 아니라, 한 장의 Lean Canvas만으로도 복잡한 비즈니스 모델을 한눈에 파악하고 빠르게 실행할 수 있다. 이것이 불확실성의 시대에 스타트업이 생존하고 성장하는 방법이다.
-
 <!-- PROMO_BANNER_START -->
-<div style="margin-top: 60px;">
+<div style="margin-top: 80px; margin-bottom: 20px;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%;">
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+        <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+    </div>
 <!-- OG_CARD_START -->
 <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">
     <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">

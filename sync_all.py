@@ -28,12 +28,10 @@ GLOBAL_PROMO_LINKS = [
     "https://www.yes24.com/product/goods/193444437"
 ]
 
-# 🌟 블로그 리스트용 파일명을 아예 log.html로 고정합니다.
 index_file = "log.html"
 csv_file = "브런치_글_모음집.csv"
 md_dir = "brunch_web_assets/markdown"
 
-# 기존에 잘못 만들어진 index.md가 있다면 삭제
 if os.path.exists("index.md"):
     os.remove("index.md")
 
@@ -194,9 +192,18 @@ for cat in category_posts:
 with open(og_cache_file, 'w', encoding='utf-8') as f:
     json.dump(og_cache, f, ensure_ascii=False, indent=2)
 
+# 🌟 [NEW] 첨부 이미지 스타일의 Simplifier Choice 라이닝 헤더 구성
 global_promo_html = ""
 if GLOBAL_PROMO_LINKS:
-    global_promo_html += "\n\n<!-- PROMO_BANNER_START -->\n<div style=\"margin-top: 60px;\">\n"
+    global_promo_html += """
+<!-- PROMO_BANNER_START -->
+<div style="margin-top: 80px; margin-bottom: 20px;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%;">
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+        <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+    </div>
+"""
     for purl in GLOBAL_PROMO_LINKS:
         global_promo_html += get_og_card(purl)
     global_promo_html += "</div>\n<!-- PROMO_BANNER_END -->\n"
@@ -222,7 +229,6 @@ for p in posts:
 
     date_html = f"<!-- POST_DATE_START -->\n<div style=\"color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;\">{p['date_string']}</div>\n<!-- POST_DATE_END -->\n\n" if p['date_string'] else ""
 
-    # 🌟 알약 클릭 시 무조건 /log.html 로 이동하도록 고정!
     cat_script = f"""<!-- CAT_LINK_SCRIPT_START -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {{
@@ -342,7 +348,6 @@ function getSortMode(cat) {
 
 function saveSortMode(cat, mode) { localStorage.setItem('brunchSort_' + cat, mode); } 
 
-// 🌟 URL에서 카테고리를 읽을 때 새롭게 바뀐 log.html 기준으로 읽어옵니다.
 const urlParams = new URLSearchParams(window.location.search); const catParam = urlParams.get('cat'); if (catParam) { const targetBtn = Array.from(filterBtns).find(b => b.getAttribute('data-filter') === catParam); if (targetBtn) { filterBtns.forEach(b => b.classList.remove('active')); targetBtn.classList.add('active'); currentFilter = catParam; } } 
 
 let sortMode = getSortMode(currentFilter); 
@@ -363,4 +368,4 @@ const observer = new IntersectionObserver(entries => { entries.forEach(entry => 
 with open(index_file, 'w', encoding='utf-8') as f:
     f.write(html_header + html_body)
 
-print("✅ 블로그 홈 링크(log.html) 복구 및 찌꺼기 방지 배포 완료!")
+print("✅ Simplifier Choice 구분선 디자인 적용 및 배포 준비 완료!")

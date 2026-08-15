@@ -54,9 +54,13 @@ document.addEventListener('DOMContentLoaded', function() {
 또한, 여러 코호트의 평균 리텐션 커브를 그려 전체 서비스 건강도를 진단하고, 평탄화되는 구간을 KPI로 삼아 장기 사용자 확보 전략을 수립한다. 특정 행동(예: 첫 구매, 친구 초대 등)과 리텐션 커브의 상관관계를 분석해 장기 잔존율을 높이는 핵심 경험을 강화하는 것도 중요하다.
 
 리텐션 커브는 단순한 수치 이상의 인사이트를 제공한다. 이 커브의 모양은 제품의 미래를 예측하는 결정적 신호다. 스타트업 투자자들이 가장 먼저 보는 지표 중 하나가 리텐션 커브인 이유다. 결국 성장의 핵심은 신규 사용자 확보가 아니라, 기존 사용자의 장기적 충성도에 있기 때문이다.
-
 <!-- PROMO_BANNER_START -->
-<div style="margin-top: 60px;">
+<div style="margin-top: 80px; margin-bottom: 20px;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%;">
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+        <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+    </div>
 <!-- OG_CARD_START -->
 <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">
     <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">

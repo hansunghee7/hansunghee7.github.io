@@ -56,9 +56,13 @@ ZeRO 도입을 위해서는 단계적 접근이 필요합니다.
 ZeRO는 AI 모델 개발의 진입장벽을 낮추고 있으며, 더 많은 기업이 10억~100억 파라미터급 모델에 도전할 수 있게 되었습니다. 다만, 수천억~수조 파라미터 모델은 여전히 막대한 인프라와 기술력이 필요하므로, "누구나 초거대 모델 개발이 가능하다"고 보기는 어렵습니다.
 
 결론적으로, ZeRO는 AI 모델 학습의 메모리 효율성을 크게 향상시켜 대형 모델 개발의 진입장벽을 낮추는 중요한 기술입니다. 특히 중견기업과 연구 기관에게 ZeRO는 제한된 리소스로도 더 크고 강력한 AI 모델을 개발할 수 있는 가능성을 열어주는 의미 있는 발전입니다.
-
 <!-- PROMO_BANNER_START -->
-<div style="margin-top: 60px;">
+<div style="margin-top: 80px; margin-bottom: 20px;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%;">
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+        <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+    </div>
 <!-- OG_CARD_START -->
 <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">
     <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">

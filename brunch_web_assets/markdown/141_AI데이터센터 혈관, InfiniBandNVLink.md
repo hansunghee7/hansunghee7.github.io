@@ -54,9 +54,13 @@ AI 기술이 폭발적으로 성장하면서 데이터센터의 네트워크 인
 이처럼 NVLink와 InfiniBand는 AI 데이터센터의 동맥과 정맥 같은 존재예요. 서로 다른 방식으로 데이터의 흐름을 최적화하면서 거대한 AI 모델의 학습을 돕고 있죠. 앞으로는 작업의 특성에 맞게 이 둘을 전략적으로 배치하고 오케스트레이션 하는 것이 데이터센터 설계의 핵심 과제가 될 것 같아요. 더불어 둘의 융합을 통해 더욱 혁신적인 네트워크 기술이 탄생할 것으로 기대됩니다.
 
 여러분은 데이터센터 네트워크에 대해 어떻게 생각하시나요? IT 인프라에 관심이 있으시다면 NVLink와 InfiniBand의 동향을 주의 깊게 살펴보시길 추천드려요. 단순히 배선을 깔아놓는 것 이상으로, 어떤 방식으로 연결하고 제어할 것인지가 AI의 성패를 가를 열쇠가 될 테니까요. 기술의 진화와 함께 데이터센터의 모습도 계속 달라질 텐데, 여러분도 그 변화의 흐름을 놓치지 마시기 바랍니다!
-
 <!-- PROMO_BANNER_START -->
-<div style="margin-top: 60px;">
+<div style="margin-top: 80px; margin-bottom: 20px;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%;">
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+        <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+    </div>
 <!-- OG_CARD_START -->
 <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">
     <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">

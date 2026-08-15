@@ -54,9 +54,13 @@ document.addEventListener('DOMContentLoaded', function() {
  내가 코칭을 했던 A사의 인원은 30명 남짓이었다. 차기 투자유치를 받기 위해서 달성해야 목표는 B2B 고객유치 수였다. 목표 달성을 위한 현재 고객 수, 구현기능 수준은 요원했고 리소스는 부족했다. 그러나 최상위 목표는 5개였고, 3개는 고객 수 유치와 밀접하지 않았으나 대표가 하고 싶은 과제들이었다.
 
  경영진 회의를 통해 5개의 목표를 고객유치와 밀접하게 연관된 2개의 목표로 줄이고, OKR 목표로 세웠다. 덕분에 고객사는 OKR에 있는 실행아이템이 워킹하고 전체 직원들이 목표에 집중해서 일하면서 연말에 목표로 하던 수치를 달성할 수 있었다.
-
 <!-- PROMO_BANNER_START -->
-<div style="margin-top: 60px;">
+<div style="margin-top: 80px; margin-bottom: 20px;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%;">
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+        <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+    </div>
 <!-- OG_CARD_START -->
 <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">
     <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">

@@ -60,9 +60,13 @@ LTV와 CAC는 이제 기업과 투자자들의 필수 언어가 되었다. 스�
 LTV와 CAC, 이 두 알파벳이 내포한 깊은 뜻을 새기자. 단순한 공식이 아니다. 고객 한 명을 소중하게 여기는 기업 문화, 단기 실적에 연연하지 않는 장기적 시각, 데이터에 기반한 전략이 응축된 철학이다.
 
 기획자라면 이 프레임워크를 나침반 삼아 고객 중심적 사고를 체화해 나가야 한다. 고객의 진정한 가치를 이해하고, 그들의 장기적 충성도를 얻기 위해 부단히 고민하는 자세. 그것이 바로 LTV/CAC를 이끌 기획자의 진짜 역량이 아닐까?
-
 <!-- PROMO_BANNER_START -->
-<div style="margin-top: 60px;">
+<div style="margin-top: 80px; margin-bottom: 20px;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%;">
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+        <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+    </div>
 <!-- OG_CARD_START -->
 <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">
     <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">

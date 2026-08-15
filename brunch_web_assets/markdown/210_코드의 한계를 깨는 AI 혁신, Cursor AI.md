@@ -56,9 +56,13 @@ Visual Studio Code를 기반으로 하되, 이를 완전히 재구성한 AI 지�
 커서AI의 혁신적인 아이디어는 빠르게 인정받았다. 출시 1년 만에 개발자의 필수 앱이 되었고, Fortune 1000대 기업 중 많은 기업들이 도입을 결정했다. 현재 연간 반복 수익(ARR)은 약 1억 달러, 기업가치 25억 달러 이상으로 평가받는다.
 
 Cursor AI의 목표는 단순한 생산성 향상이 아니다. 소프트웨어를 만드는 방식 자체를 근본적으로 변화시키는 것이다. 개발자에게 진정한 '속도'와 '통제력'을 제공하는 이 혁신은 이제 AI 코딩 시장의 새로운 표준이 되고 있다.
-
 <!-- PROMO_BANNER_START -->
-<div style="margin-top: 60px;">
+<div style="margin-top: 80px; margin-bottom: 20px;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%;">
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+        <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+    </div>
 <!-- OG_CARD_START -->
 <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">
     <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">

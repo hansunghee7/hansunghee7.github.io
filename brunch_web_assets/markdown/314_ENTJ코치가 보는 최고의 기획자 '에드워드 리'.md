@@ -58,9 +58,13 @@ document.addEventListener('DOMContentLoaded', function() {
 완성도 높은 작품을 봐서 좋았고, 뛰어난 요리사들의 기획과 요리솜씨를 보아서 좋았다. 한강 작가의 노벨상 수상을 포함하여 최근 들어 K콘텐츠들이 세상에 더욱 빛을 발하는 듯 하여 기분이 더욱 좋다.
 
 나는 내 자리에서 더욱 많은 한국의 스타트업들이 세상에 빛을 발하도록 노력하고 싶다. K 화이팅~!!!
-
 <!-- PROMO_BANNER_START -->
-<div style="margin-top: 60px;">
+<div style="margin-top: 80px; margin-bottom: 20px;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%;">
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+        <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+    </div>
 <!-- OG_CARD_START -->
 <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">
     <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">

@@ -54,9 +54,13 @@ HBM은 사실 갑자기 튀어나온 신기술이 아닙니다. 2000년대 후�
 여러분은 어떻게 생각하시나요? HBM 같은 메모리 기술이 AI 발전에 어떤 역할을 할 것 같나요? 앞으로 HBM을 넘어설 만한 혁신적인 아이디어는 없을까요? 다들 한번 상상해 보시면 좋겠네요. 메모리가 빨라져야 AI지능도 한층 더 높아질테니까요?
 
 **AI시대에 알아야 할 UX의 언어는?**
-
 <!-- PROMO_BANNER_START -->
-<div style="margin-top: 60px;">
+<div style="margin-top: 80px; margin-bottom: 20px;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%;">
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+        <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+    </div>
 <!-- OG_CARD_START -->
 <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">
     <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">

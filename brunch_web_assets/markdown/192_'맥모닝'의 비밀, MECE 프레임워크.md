@@ -62,9 +62,13 @@ MECE를 정복하는 핵심은 이 두 가지 원칙을 익히는 것이다.
 기획이라는 건, 결국 문제를 얼마나 명쾌하게 정의하고 창의적으로 해결하느냐의 문제다. 이 고난도 퍼즐을 단숨에 풀어내는 스킬. 그것이 바로 MECE다. 복잡하고 어지러운 문제가 눈앞에 닥쳤을 때, MECE의 렌즈를 통해 세상을 바라보자. 혼돈 속에서 질서를, 악몽 같은 문제에서 꿈의 해답을 발견할 수 있을 것이다.
 
 MECE, 기획자에겐 그 자체로 마법 지팡이와도 같은 도구다. 상호 배타적이고 전체를 포괄하는 사고의 힘. 이것이야말로 기획의 비법이 아닐까한다.
-
 <!-- PROMO_BANNER_START -->
-<div style="margin-top: 60px;">
+<div style="margin-top: 80px; margin-bottom: 20px;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%;">
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+        <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+    </div>
 <!-- OG_CARD_START -->
 <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">
     <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">

@@ -62,9 +62,13 @@ document.addEventListener('DOMContentLoaded', function() {
 오늘 당신의 서비스를 처음 접한 사용자는 어떤 기분이 들까요? "이 서비스는 나를 위해 존재하는 것 같아". "이 서비스를 사용하면 대접받는 느낌이 들어"라는 말, 듣고 싶지 않으신가요? 바로 그 순간을 디자인하는 게 우리의 숙제입니다. 사용자의 마음을 사로잡는 첫 화면, 그 심리학의 비밀을 풀어낼 준비, 되셨나요?\
 
 UX의 언어들이 책으로 나왔어요.
-
 <!-- PROMO_BANNER_START -->
-<div style="margin-top: 60px;">
+<div style="margin-top: 80px; margin-bottom: 20px;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%;">
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+        <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+    </div>
 <!-- OG_CARD_START -->
 <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">
     <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">

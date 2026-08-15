@@ -52,9 +52,13 @@ JTBD는 기능적 니즈뿐만 아니라 정서적, 사회적 차원의 니즈�
 기획자가 JTBD를 활용할 때는 몇 가지 핵심 질문을 던져야 한다. "고객이 우리 제품을 통해 해결하고 싶은 '일'은 무엇인가?", "고객이 이 제품을 찾게 된 트리거는 무엇인가?", "고객이 기존에 사용하던 대체 솔루션은 무엇이었나?", "고객이 느끼는 가장 큰 불편함은 무엇인가?"
 
 JTBD는 기획자가 고객의 근본적인 니즈를 탐색하고, 진짜 문제를 해결하는 혁신의 실마리를 제공하는 강력한 도구다. 제품의 기능을 늘리는 것보다 고객의 '일'을 더 잘 해결하는 방향으로 우선순위를 설정할 때, 진정한 차별화와 성장의 기회를 포착할 수 있다.
-
 <!-- PROMO_BANNER_START -->
-<div style="margin-top: 60px;">
+<div style="margin-top: 80px; margin-bottom: 20px;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%;">
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+        <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+    </div>
 <!-- OG_CARD_START -->
 <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">
     <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">

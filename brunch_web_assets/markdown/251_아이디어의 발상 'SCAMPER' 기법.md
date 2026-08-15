@@ -64,9 +64,13 @@ IT 기업들은 이 SCAMPER 기법으로 제품과 서비스를 혁신한다. �
 기획자라면 SCAMPER를 능숙하게 활용해야 한다. 우선 아이디어 발상 단계에서 7가지 키워드로 브레인스토밍을 하자. 기존 제품 개선, 서비스 혁신, 프로세스 최적화에도 이를 적용해보자. 삼성전자의 폴더블폰처럼 'Modify'로 새로운 디자인을 고안하고, 삼성페이처럼 'Combine'으로 카드 결제 기능 탑재 등을 고려해볼 수도 있다. 'Eliminate'로 업무 단계를 간소화하고, 'Adapt'로 이종 산업 마케팅을 벤치마킹할 수도 있다. 나아가 팀 워크숍에서 SCAMPER의 키워드들로 아이디어 발상을 진행하는 것도 좋은 방법이 될 수도 있을 것다.
 
 이처럼 SCAMPER는 체계적이고도 창의적인 사고의 틀을 제공한다. 이를 통해 기획자는 혁신적 아이디어를 찾아내고 프로젝트에 녹여낼 수 있다. 단순한 머리풀기가 아니라 전략적 사고의 비밀병기, SCAMPER 기법을 꼭 익혀두자.
-
 <!-- PROMO_BANNER_START -->
-<div style="margin-top: 60px;">
+<div style="margin-top: 80px; margin-bottom: 20px;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%;">
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+        <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+    </div>
 <!-- OG_CARD_START -->
 <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">
     <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">

@@ -72,9 +72,13 @@ Figma의 제품 주도 성장 전략은 다음과 같은 단계로 진행되었�
 여러분의 스타트업은 어떤 성장 전략을 고민하고 계신가요? 제품 주도 성장이 답이 될 수 있을까요? 저는 지난 25년간 수많은 스타트업과 글로벌기업과 함께 제품 주도 성장 전략을 설계하고 실행해 왔습니다. 여러분의 스타트업에도 맞춤형 PLG 전략이 필요하다면 커피챗을 요청해 주세요.
 
 다음 글에서는 또 다른 혁신적인 스타트업의 성장 사례를 다루도록 하겠습니다. 여러분의 제품은 어떤 성장 전략을 가지고 있나요?
-
 <!-- PROMO_BANNER_START -->
-<div style="margin-top: 60px;">
+<div style="margin-top: 80px; margin-bottom: 20px;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%;">
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+        <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+    </div>
 <!-- OG_CARD_START -->
 <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">
     <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">

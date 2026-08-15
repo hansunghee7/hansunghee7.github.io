@@ -80,9 +80,13 @@ Perplexity AI 기술 해부 시리즈의 마지막 시간입니다. 지금까지
 물론 실전에선 더 많은 난관이 기다리고 있겠지만, 이 가이드가 RAG 시스템으로의 여정에 나침반이 되어주길 바랍니다. 작게 시작해서 빠르게 실험하고 개선해 나가다 보면, 어느새 우리만의 Perplexity를 마주하게 될 겁니다. 제가 코칭하는 회사도 하나씩 하나씩 PoC를 통해 완성도 있는 서비스를 만들어가고 있거든요.
 
 인공지능 기술의 민주화가 가속화되는 지금, 작은 팀의 도전과 혁신이 그 어느 때보다 의미 있는 시대라 생각합니다. Perplexity에서 영감을 얻어 세상에 임팩트를 만들어낼 여러분의 프로젝트를 응원하겠습니다!
-
 <!-- PROMO_BANNER_START -->
-<div style="margin-top: 60px;">
+<div style="margin-top: 80px; margin-bottom: 20px;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%;">
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+        <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+    </div>
 <!-- OG_CARD_START -->
 <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">
     <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">

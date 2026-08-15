@@ -86,9 +86,13 @@ document.addEventListener('DOMContentLoaded', function() {
 지속적인 학습과 개선: 어떤 방법론을 선택하든, 프로젝트를 통해 배운 점을 다음에 적용하세요.
 
 어떤 방법론이 옳고 그르다는 절대적인 기준은 없습니다. 중요한 것은 프로젝트와 팀에 맞는 방식을 선택하고, 필요에 따라 유연하게 조정하는 것입니다. 기획자로서 두 방법론의 장단점을 이해하고 상황에 맞게 적용한다면, 프로젝트의 성공 가능성을 높일 수 있을 것입니다.
-
 <!-- PROMO_BANNER_START -->
-<div style="margin-top: 60px;">
+<div style="margin-top: 80px; margin-bottom: 20px;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%;">
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+        <span style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
+        <div style="flex: 1; height: 1px; background-color: #e1e1e1;"></div>
+    </div>
 <!-- OG_CARD_START -->
 <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">
     <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">
