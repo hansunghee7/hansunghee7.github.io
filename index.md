@@ -8,30 +8,48 @@ is_index: true
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     .card-item.visible { display: flex !important; animation: fadeInUp 0.4s ease forwards; }
     #scrollSentinel { height: 50px; margin-top: 30px; }
+    
+    .filter-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 20px; margin-bottom: 10px; }
+    .category-filter { display: flex; flex-wrap: wrap; gap: 8px; flex: 1; }
+    .cat-btn { padding: 7px 16px; border: 1px solid #e1e1e1; border-radius: 20px; background: #fff; color: #666; font-size: 13px; font-weight: 300; cursor: pointer; transition: all 0.2s; font-family: 'Noto Sans KR', sans-serif; }
+    .cat-btn:hover { border-color: #00c73c; color: #00c73c; }
+    .cat-btn.active { background: #00c73c; color: #fff; border-color: #00c73c; font-weight: 400; }
+    
+    .sort-select { padding: 7px 12px; border: 1px solid #ddd; border-radius: 6px; outline: none; font-family: 'Noto Sans KR'; font-size: 13px; color: #444; cursor: pointer; background: #fafafa; }
+    .sort-select:hover { border-color: #00c73c; }
 </style>
 
-<div class="category-filter">
-    <button class="cat-btn active" data-filter="all">전체보기</button>
-    <button class="cat-btn" data-filter="AI의 언어들">AI의 언어들</button>
-    <button class="cat-btn" data-filter="Be the PO">Be the PO</button>
-    <button class="cat-btn" data-filter="PO가 꼭 알아야 할 것들">PO가 꼭 알아야 할 것들</button>
-    <button class="cat-btn" data-filter="UX의 언어들">UX의 언어들</button>
-    <button class="cat-btn" data-filter="기획일상">기획일상</button>
-    <button class="cat-btn" data-filter="기획자로 시작하기">기획자로 시작하기</button>
-    <button class="cat-btn" data-filter="기획자의 프레임웍">기획자의 프레임웍</button>
-    <button class="cat-btn" data-filter="대한민국 스타트업 미국진출을 묻다">대한민국 스타트업 미국진출을 묻다</button>
-    <button class="cat-btn" data-filter="성장 정체 해부학">성장 정체 해부학</button>
-    <button class="cat-btn" data-filter="스타트업 리더의 기술">스타트업 리더의 기술</button>
-    <button class="cat-btn" data-filter="스타트업의 전략들">스타트업의 전략들</button>
-    <button class="cat-btn" data-filter="심플리파이어 라이프">심플리파이어 라이프</button>
-    <button class="cat-btn" data-filter="심플리파이어 인사이트">심플리파이어 인사이트</button>
-    <button class="cat-btn" data-filter="심플한 창업하고 파이어하게 일하기">심플한 창업하고 파이어하게 일하기</button>
-    <button class="cat-btn" data-filter="유니콘의 리더십">유니콘의 리더십</button>
-    <button class="cat-btn" data-filter="이력서에 쓰지 않는 첫직장 이야기">이력서에 쓰지 않는 첫직장 이야기</button>
-    <button class="cat-btn" data-filter="코치S">코치S</button>
+<div class="filter-wrap">
+    <div class="category-filter">
+        <button class="cat-btn active" data-filter="all">전체보기</button>
+        <button class="cat-btn" data-filter="AI의 언어들">AI의 언어들</button>
+        <button class="cat-btn" data-filter="Be the PO">Be the PO</button>
+        <button class="cat-btn" data-filter="PO가 꼭 알아야 할 것들">PO가 꼭 알아야 할 것들</button>
+        <button class="cat-btn" data-filter="UX의 언어들">UX의 언어들</button>
+        <button class="cat-btn" data-filter="기획일상">기획일상</button>
+        <button class="cat-btn" data-filter="기획자로 시작하기">기획자로 시작하기</button>
+        <button class="cat-btn" data-filter="기획자의 프레임웍">기획자의 프레임웍</button>
+        <button class="cat-btn" data-filter="대한민국 스타트업 미국진출을 묻다">대한민국 스타트업 미국진출을 묻다</button>
+        <button class="cat-btn" data-filter="성장 정체 해부학">성장 정체 해부학</button>
+        <button class="cat-btn" data-filter="스타트업 리더의 기술">스타트업 리더의 기술</button>
+        <button class="cat-btn" data-filter="스타트업의 전략들">스타트업의 전략들</button>
+        <button class="cat-btn" data-filter="심플리파이어 라이프">심플리파이어 라이프</button>
+        <button class="cat-btn" data-filter="심플리파이어 인사이트">심플리파이어 인사이트</button>
+        <button class="cat-btn" data-filter="심플한 창업하고 파이어하게 일하기">심플한 창업하고 파이어하게 일하기</button>
+        <button class="cat-btn" data-filter="유니콘의 리더십">유니콘의 리더십</button>
+        <button class="cat-btn" data-filter="이력서에 쓰지 않는 첫직장 이야기">이력서에 쓰지 않는 첫직장 이야기</button>
+        <button class="cat-btn" data-filter="코치S">코치S</button>
+    </div>
+    <div class="sort-filter">
+        <select id="sortSelect" class="sort-select">
+            <option value="desc">최신순</option>
+            <option value="asc">날짜순 (오래된순)</option>
+        </select>
+    </div>
 </div>
+
 <div class="card-grid" id="cardGrid">
-    <a href="/brunch_web_assets/markdown/001_1.%20%EB%8B%B9%EC%8B%A0%EC%9D%B4%20%EC%98%A4%EB%8A%98%20%EB%88%84%EB%A5%B8%20%EC%B2%AB%20%EB%B2%88%EC%A7%B8%20%EB%B2%84%ED%8A%BC.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/001_1.%20%EB%8B%B9%EC%8B%A0%EC%9D%B4%20%EC%98%A4%EB%8A%98%20%EB%88%84%EB%A5%B8%20%EC%B2%AB%20%EB%B2%88%EC%A7%B8%20%EB%B2%84%ED%8A%BC.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20260812" data-id="1">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/001.jpg');"></div>
         <div class="card-content">
             <div>
@@ -41,7 +59,7 @@ is_index: true
             <div class="card-date">Aug 12. 2026</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/002_%EC%98%A4%EB%94%94%EC%84%B8%EC%9D%B4%2C%20%EB%A7%A4%EC%9A%B0%20%EC%82%AC%EC%A0%81%EC%9D%B8%20%EA%B4%80%EB%9E%8C%ED%8F%89.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/002_%EC%98%A4%EB%94%94%EC%84%B8%EC%9D%B4%2C%20%EB%A7%A4%EC%9A%B0%20%EC%82%AC%EC%A0%81%EC%9D%B8%20%EA%B4%80%EB%9E%8C%ED%8F%89.html" class="card-item" data-category="심플리파이어 라이프" data-date="20260806" data-id="2">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/002.jpg');"></div>
         <div class="card-content">
             <div>
@@ -51,7 +69,7 @@ is_index: true
             <div class="card-date">Aug 6. 2026</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/003_%ED%9A%8C%EC%9D%98%EC%8B%A4%EC%97%90%EC%84%9C%20%EB%AA%A9%EC%86%8C%EB%A6%AC%EA%B0%80%20%ED%81%B0%20%EC%82%AC%EB%9E%8C%EC%9D%B4%20%EA%B0%80%EC%9E%A5%20%EC%9C%84%ED%97%98%ED%95%A0%20%EC%88%98%20%EC%9E%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/003_%ED%9A%8C%EC%9D%98%EC%8B%A4%EC%97%90%EC%84%9C%20%EB%AA%A9%EC%86%8C%EB%A6%AC%EA%B0%80%20%ED%81%B0%20%EC%82%AC%EB%9E%8C%EC%9D%B4%20%EA%B0%80%EC%9E%A5%20%EC%9C%84%ED%97%98%ED%95%A0%20%EC%88%98%20%EC%9E%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20260805" data-id="3">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/003.jpg');"></div>
         <div class="card-content">
             <div>
@@ -61,7 +79,7 @@ is_index: true
             <div class="card-date">Aug 5. 2026</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/004_%EA%B5%BF%EB%B0%94%EC%9D%B4%20%ED%9E%88%EA%B0%80%EC%8B%9C%EB%85%B8.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/004_%EA%B5%BF%EB%B0%94%EC%9D%B4%20%ED%9E%88%EA%B0%80%EC%8B%9C%EB%85%B8.html" class="card-item" data-category="심플리파이어 라이프" data-date="20260728" data-id="4">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/004.jpg');"></div>
         <div class="card-content">
             <div>
@@ -71,7 +89,7 @@ is_index: true
             <div class="card-date">Jul 28. 2026</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/005_%ED%95%A0%EB%A3%A8%EC%8B%9C%EB%84%A4%EC%9D%B4%EC%85%98%20%EC%82%AC%ED%9A%8C.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/005_%ED%95%A0%EB%A3%A8%EC%8B%9C%EB%84%A4%EC%9D%B4%EC%85%98%20%EC%82%AC%ED%9A%8C.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20260720" data-id="5">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/005.jpg');"></div>
         <div class="card-content">
             <div>
@@ -81,7 +99,7 @@ is_index: true
             <div class="card-date">Jul 20. 2026</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/006_%EC%9E%90%EC%A0%95%EC%9D%B4%20%EA%B0%80%EA%B9%8C%EC%9B%8C%EC%A7%80%EB%8F%84%EB%A1%9D%20AI%20%EC%96%98%EA%B8%B0%EB%A5%BC%20%EC%9B%90%20%EC%97%86%EC%9D%B4%20%EB%82%98%EB%88%B4%EC%96%B4%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/006_%EC%9E%90%EC%A0%95%EC%9D%B4%20%EA%B0%80%EA%B9%8C%EC%9B%8C%EC%A7%80%EB%8F%84%EB%A1%9D%20AI%20%EC%96%98%EA%B8%B0%EB%A5%BC%20%EC%9B%90%20%EC%97%86%EC%9D%B4%20%EB%82%98%EB%88%B4%EC%96%B4%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프" data-date="20260715" data-id="6">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/006.jpg');"></div>
         <div class="card-content">
             <div>
@@ -91,7 +109,7 @@ is_index: true
             <div class="card-date">Jul 15. 2026</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/007_%EA%B3%B5%EC%A0%80%EA%B0%80%20%EC%A2%8B%EC%9D%80%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/007_%EA%B3%B5%EC%A0%80%EA%B0%80%20%EC%A2%8B%EC%9D%80%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 라이프" data-date="20260711" data-id="7">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/007.jpg');"></div>
         <div class="card-content">
             <div>
@@ -101,7 +119,7 @@ is_index: true
             <div class="card-date">Jul 11. 2026</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/008_%EB%91%90%EB%B2%88%EC%A7%B8%20%EC%B1%85%20%27UX%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4%27%EC%9D%84%20%EC%B6%9C%EA%B0%84%ED%96%88%EC%8A%B5%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/008_%EB%91%90%EB%B2%88%EC%A7%B8%20%EC%B1%85%20%27UX%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4%27%EC%9D%84%20%EC%B6%9C%EA%B0%84%ED%96%88%EC%8A%B5%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프" data-date="20260708" data-id="8">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/008.jpg');"></div>
         <div class="card-content">
             <div>
@@ -111,7 +129,7 @@ is_index: true
             <div class="card-date">Jul 8. 2026</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/009_PM%EC%9D%98%20%EA%B3%A0%EC%88%98%EB%8A%94%20%EA%B0%90%EC%A0%95%EC%9D%84%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EB%8B%A4%EB%A3%B0%EA%B9%8C.html" class="card-item" data-category="Be the PO">
+    <a href="/brunch_web_assets/markdown/009_PM%EC%9D%98%20%EA%B3%A0%EC%88%98%EB%8A%94%20%EA%B0%90%EC%A0%95%EC%9D%84%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EB%8B%A4%EB%A3%B0%EA%B9%8C.html" class="card-item" data-category="Be the PO" data-date="20260504" data-id="9">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/009.jpg');"></div>
         <div class="card-content">
             <div>
@@ -121,7 +139,7 @@ is_index: true
             <div class="card-date">May 4. 2026</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/010_%EC%9A%B0%EB%A6%AC%EB%8A%94%20%EB%8C%80%ED%99%94%EB%A5%BC%20%ED%96%88%EC%9D%84%EA%B9%8C.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/010_%EC%9A%B0%EB%A6%AC%EB%8A%94%20%EB%8C%80%ED%99%94%EB%A5%BC%20%ED%96%88%EC%9D%84%EA%B9%8C.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20260406" data-id="10">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/010.jpg');"></div>
         <div class="card-content">
             <div>
@@ -131,7 +149,7 @@ is_index: true
             <div class="card-date">Apr 6. 2026</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/011_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%ED%97%A4%EC%9D%BC%EB%A9%94%EB%A6%AC.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/011_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%ED%97%A4%EC%9D%BC%EB%A9%94%EB%A6%AC.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20260330" data-id="11">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/011.jpg');"></div>
         <div class="card-content">
             <div>
@@ -141,7 +159,7 @@ is_index: true
             <div class="card-date">Mar 30. 2026</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/012_%EB%88%84%EA%B0%80%20%EC%A3%BC%EC%9D%B8%EC%9D%B8%EA%B0%80%EC%9A%94.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/012_%EB%88%84%EA%B0%80%20%EC%A3%BC%EC%9D%B8%EC%9D%B8%EA%B0%80%EC%9A%94.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20260323" data-id="12">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/012.jpg');"></div>
         <div class="card-content">
             <div>
@@ -151,7 +169,7 @@ is_index: true
             <div class="card-date">Mar 23. 2026</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/013_%EC%9D%BC%EC%A3%BC%EC%9D%BC%EC%97%90%20%EB%A9%B0%EC%B9%A0%EB%A7%8C%20%EC%9D%BC%ED%95%98%EA%B3%A0%20%EC%8B%B6%EC%96%B4%EC%9A%94.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/013_%EC%9D%BC%EC%A3%BC%EC%9D%BC%EC%97%90%20%EB%A9%B0%EC%B9%A0%EB%A7%8C%20%EC%9D%BC%ED%95%98%EA%B3%A0%20%EC%8B%B6%EC%96%B4%EC%9A%94.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20260302" data-id="13">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/013.jpg');"></div>
         <div class="card-content">
             <div>
@@ -161,7 +179,7 @@ is_index: true
             <div class="card-date">Mar 2. 2026</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/014_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%2C%20%EC%8A%A4%ED%85%8C%EB%94%94%EC%85%80%EB%9F%AC%EA%B0%80%20%EB%90%98%EB%8B%A4.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/014_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%2C%20%EC%8A%A4%ED%85%8C%EB%94%94%EC%85%80%EB%9F%AC%EA%B0%80%20%EB%90%98%EB%8B%A4.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20260207" data-id="14">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/014.jpg');"></div>
         <div class="card-content">
             <div>
@@ -171,7 +189,7 @@ is_index: true
             <div class="card-date">Feb 7. 2026</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/015_%EC%BB%A4%EB%A6%AC%EC%96%B4%EA%B0%80%20%EA%BC%AC%EC%9D%B4%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="유니콘의 리더십">
+    <a href="/brunch_web_assets/markdown/015_%EC%BB%A4%EB%A6%AC%EC%96%B4%EA%B0%80%20%EA%BC%AC%EC%9D%B4%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="유니콘의 리더십" data-date="20260202" data-id="15">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/015.jpg');"></div>
         <div class="card-content">
             <div>
@@ -181,7 +199,7 @@ is_index: true
             <div class="card-date">Feb 2. 2026</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/016_%EB%82%B4%EA%B0%80%20%EC%9C%A4%EC%A3%BC%EB%AA%A8%EB%A5%BC%20%EC%9D%91%EC%9B%90%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/016_%EB%82%B4%EA%B0%80%20%EC%9C%A4%EC%A3%BC%EB%AA%A8%EB%A5%BC%20%EC%9D%91%EC%9B%90%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20260106" data-id="16">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/016.jpg');"></div>
         <div class="card-content">
             <div>
@@ -191,7 +209,7 @@ is_index: true
             <div class="card-date">Jan 6. 2026</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/017_%EC%9A%94%EC%8B%9C%EA%B0%80%20%EB%A7%8C%EB%93%A0%20%20%27%EA%B7%BC%EC%84%B1%EC%9D%98%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC%27.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/017_%EC%9A%94%EC%8B%9C%EA%B0%80%20%EB%A7%8C%EB%93%A0%20%20%27%EA%B7%BC%EC%84%B1%EC%9D%98%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC%27.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20251103" data-id="17">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/017.jpg');"></div>
         <div class="card-content">
             <div>
@@ -201,7 +219,7 @@ is_index: true
             <div class="card-date">Nov 3. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/018_%27%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%A6%AC%EB%8D%94%EC%9D%98%20%EC%A0%84%EB%9E%B5%EC%97%B0%EA%B5%AC%EC%86%8C%27%EB%A5%BC%20%EC%8B%9C%EC%9E%91%ED%95%A9%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/018_%27%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%A6%AC%EB%8D%94%EC%9D%98%20%EC%A0%84%EB%9E%B5%EC%97%B0%EA%B5%AC%EC%86%8C%27%EB%A5%BC%20%EC%8B%9C%EC%9E%91%ED%95%A9%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프" data-date="20251024" data-id="18">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/018.jpg');"></div>
         <div class="card-content">
             <div>
@@ -211,7 +229,7 @@ is_index: true
             <div class="card-date">Oct 24. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/019_%EB%8B%A4%EC%98%81%EB%8F%84%20%EB%AA%B0%EB%9E%90%EB%8D%98%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/019_%EB%8B%A4%EC%98%81%EB%8F%84%20%EB%AA%B0%EB%9E%90%EB%8D%98%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20251020" data-id="19">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/019.jpg');"></div>
         <div class="card-content">
             <div>
@@ -221,7 +239,7 @@ is_index: true
             <div class="card-date">Oct 20. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/020_%EC%A1%B0%EC%9A%A9%ED%95%84%EC%9D%98%20%EC%9C%84%EB%8C%80%ED%95%9C%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/020_%EC%A1%B0%EC%9A%A9%ED%95%84%EC%9D%98%20%EC%9C%84%EB%8C%80%ED%95%9C%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20251013" data-id="20">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/020.jpg');"></div>
         <div class="card-content">
             <div>
@@ -231,7 +249,7 @@ is_index: true
             <div class="card-date">Oct 13. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/021_%EB%B0%B1%ED%98%84%EC%A7%84%EC%9D%B4%20%EB%A7%90%ED%95%98%EB%8A%94%20%EC%9D%B8%EC%83%9D%EC%9D%98%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/021_%EB%B0%B1%ED%98%84%EC%A7%84%EC%9D%B4%20%EB%A7%90%ED%95%98%EB%8A%94%20%EC%9D%B8%EC%83%9D%EC%9D%98%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20251006" data-id="21">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/021.jpg');"></div>
         <div class="card-content">
             <div>
@@ -241,7 +259,7 @@ is_index: true
             <div class="card-date">Oct 6. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/022_%EC%86%90%ED%9D%A5%EB%AF%BC%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EB%A6%AC%EB%8D%94%EC%8B%AD%EC%9D%98%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/022_%EC%86%90%ED%9D%A5%EB%AF%BC%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EB%A6%AC%EB%8D%94%EC%8B%AD%EC%9D%98%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250929" data-id="22">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/022.jpg');"></div>
         <div class="card-content">
             <div>
@@ -251,7 +269,7 @@ is_index: true
             <div class="card-date">Sep 29. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/023_%EC%96%B4%EB%96%A4%20%EC%95%A1%EC%85%80%EB%9F%AC%EB%A0%88%EC%9D%B4%ED%84%B0%EA%B0%80%20%EB%82%98%EC%97%90%EA%B2%8C%20%EB%A7%9E%EC%9D%84%EA%B9%8C.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
+    <a href="/brunch_web_assets/markdown/023_%EC%96%B4%EB%96%A4%20%EC%95%A1%EC%85%80%EB%9F%AC%EB%A0%88%EC%9D%B4%ED%84%B0%EA%B0%80%20%EB%82%98%EC%97%90%EA%B2%8C%20%EB%A7%9E%EC%9D%84%EA%B9%8C.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다" data-date="20250928" data-id="23">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/023.jpg');"></div>
         <div class="card-content">
             <div>
@@ -261,7 +279,7 @@ is_index: true
             <div class="card-date">Sep 28. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/024_%27%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%27%EC%9D%B4%202%EC%87%84%EC%97%90%20%EB%93%A4%EC%96%B4%EA%B0%91%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/024_%27%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%27%EC%9D%B4%202%EC%87%84%EC%97%90%20%EB%93%A4%EC%96%B4%EA%B0%91%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프" data-date="20250924" data-id="24">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/024.jpg');"></div>
         <div class="card-content">
             <div>
@@ -271,7 +289,7 @@ is_index: true
             <div class="card-date">Sep 24. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/025_%EC%9A%B0%EC%A6%88%EA%B0%80%20%EC%8F%98%EC%95%84%EC%98%AC%EB%A6%B0%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/025_%EC%9A%B0%EC%A6%88%EA%B0%80%20%EC%8F%98%EC%95%84%EC%98%AC%EB%A6%B0%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250922" data-id="25">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/025.jpg');"></div>
         <div class="card-content">
             <div>
@@ -281,7 +299,7 @@ is_index: true
             <div class="card-date">Sep 22. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/026_%ED%98%BC%EC%9E%90%EC%84%9C%EB%8A%94%20%EB%B6%88%EA%B0%80%EB%8A%A5%ED%95%98%EB%8B%A4%2C%20%EB%AF%B8%EA%B5%AD%20%ED%8C%8C%ED%8A%B8%EB%84%88%EB%A5%BC%20%EC%B0%BE%EB%8A%94%203%EA%B0%80%EC%A7%80%20%EA%B2%BD%EB%A1%9C.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
+    <a href="/brunch_web_assets/markdown/026_%ED%98%BC%EC%9E%90%EC%84%9C%EB%8A%94%20%EB%B6%88%EA%B0%80%EB%8A%A5%ED%95%98%EB%8B%A4%2C%20%EB%AF%B8%EA%B5%AD%20%ED%8C%8C%ED%8A%B8%EB%84%88%EB%A5%BC%20%EC%B0%BE%EB%8A%94%203%EA%B0%80%EC%A7%80%20%EA%B2%BD%EB%A1%9C.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다" data-date="20250921" data-id="26">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/026.jpg');"></div>
         <div class="card-content">
             <div>
@@ -291,7 +309,7 @@ is_index: true
             <div class="card-date">Sep 21. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/027_AI%EC%9D%98%20%EB%85%B8%EC%98%88%EA%B0%80%20%EC%95%84%EB%8B%8C%20%EC%A3%BC%EC%9D%B8%EC%9D%B4%20%EB%90%98%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="Be the PO">
+    <a href="/brunch_web_assets/markdown/027_AI%EC%9D%98%20%EB%85%B8%EC%98%88%EA%B0%80%20%EC%95%84%EB%8B%8C%20%EC%A3%BC%EC%9D%B8%EC%9D%B4%20%EB%90%98%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="Be the PO" data-date="20250919" data-id="27">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/027.jpg');"></div>
         <div class="card-content">
             <div>
@@ -301,7 +319,7 @@ is_index: true
             <div class="card-date">Sep 19. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/028_%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%EA%B0%80%20%EB%8B%B9%EC%8B%A0%EC%9D%98%20%EB%A7%88%EC%9D%8C%EC%9D%84%20%EC%9D%BD%EB%8A%94%20%EB%B0%A9%EB%B2%95.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/028_%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%EA%B0%80%20%EB%8B%B9%EC%8B%A0%EC%9D%98%20%EB%A7%88%EC%9D%8C%EC%9D%84%20%EC%9D%BD%EB%8A%94%20%EB%B0%A9%EB%B2%95.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250918" data-id="28">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/028.jpg');"></div>
         <div class="card-content">
             <div>
@@ -311,7 +329,7 @@ is_index: true
             <div class="card-date">Sep 18. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/029_%ED%99%95%EC%9E%A5%EC%9D%B4%20%EB%B6%88%EA%B0%80%EB%8A%A5%ED%95%9C%20%EC%9D%BC%EC%9D%84%20%ED%95%98%EC%84%B8%EC%9A%94.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/029_%ED%99%95%EC%9E%A5%EC%9D%B4%20%EB%B6%88%EA%B0%80%EB%8A%A5%ED%95%9C%20%EC%9D%BC%EC%9D%84%20%ED%95%98%EC%84%B8%EC%9A%94.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250917" data-id="29">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/029.jpg');"></div>
         <div class="card-content">
             <div>
@@ -321,7 +339,7 @@ is_index: true
             <div class="card-date">Sep 17. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/030_%EC%A0%9C%ED%92%88%EA%B2%BD%ED%97%98%EC%9D%B4%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EC%82%AC%ED%99%9C%EC%9D%84%20%EA%B0%80%EB%A5%B4%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="스타트업의 전략들">
+    <a href="/brunch_web_assets/markdown/030_%EC%A0%9C%ED%92%88%EA%B2%BD%ED%97%98%EC%9D%B4%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EC%82%AC%ED%99%9C%EC%9D%84%20%EA%B0%80%EB%A5%B4%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="스타트업의 전략들" data-date="20250916" data-id="30">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/030.jpg');"></div>
         <div class="card-content">
             <div>
@@ -331,7 +349,7 @@ is_index: true
             <div class="card-date">Sep 16. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/031_%EC%B9%B4%EB%8D%94%EA%B0%80%EB%93%A0%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/031_%EC%B9%B4%EB%8D%94%EA%B0%80%EB%93%A0%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC.html" class="card-item" data-category="심플리파이어 라이프" data-date="20250915" data-id="31">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/031.jpg');"></div>
         <div class="card-content">
             <div>
@@ -341,7 +359,7 @@ is_index: true
             <div class="card-date">Sep 15. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/032_%ED%95%9C%EA%B5%AD%20%ED%8C%80%EC%9D%B4%20%EC%8B%A4%EB%A6%AC%EC%BD%98%EB%B0%B8%EB%A6%AC%EC%97%90%EC%84%9C%20%EC%B1%84%EC%9A%A9%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%9D%84%EA%B9%8C.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
+    <a href="/brunch_web_assets/markdown/032_%ED%95%9C%EA%B5%AD%20%ED%8C%80%EC%9D%B4%20%EC%8B%A4%EB%A6%AC%EC%BD%98%EB%B0%B8%EB%A6%AC%EC%97%90%EC%84%9C%20%EC%B1%84%EC%9A%A9%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%9D%84%EA%B9%8C.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다" data-date="20250914" data-id="32">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/032.jpg');"></div>
         <div class="card-content">
             <div>
@@ -351,7 +369,7 @@ is_index: true
             <div class="card-date">Sep 14. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/033_%EC%97%90%EC%96%B4%EB%B9%84%EC%95%A4%EB%B9%84%EC%9D%98%20%EB%B6%80%ED%8A%B8%EC%8A%A4%ED%8A%B8%EB%9E%98%ED%95%91.html" class="card-item" data-category="스타트업의 전략들">
+    <a href="/brunch_web_assets/markdown/033_%EC%97%90%EC%96%B4%EB%B9%84%EC%95%A4%EB%B9%84%EC%9D%98%20%EB%B6%80%ED%8A%B8%EC%8A%A4%ED%8A%B8%EB%9E%98%ED%95%91.html" class="card-item" data-category="스타트업의 전략들" data-date="20250912" data-id="33">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/033.jpg');"></div>
         <div class="card-content">
             <div>
@@ -361,7 +379,7 @@ is_index: true
             <div class="card-date">Sep 12. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/034_90%EC%B4%88%EC%9D%98%20%EA%B8%B0%EC%A0%81%2C%20%EB%A7%A5%EB%8F%84%EB%82%A0%EB%93%9C%20%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B8%8C%EC%8A%A4%EB%A3%A8%EC%9D%98%20UX.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/034_90%EC%B4%88%EC%9D%98%20%EA%B8%B0%EC%A0%81%2C%20%EB%A7%A5%EB%8F%84%EB%82%A0%EB%93%9C%20%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B8%8C%EC%8A%A4%EB%A3%A8%EC%9D%98%20UX.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250910" data-id="34">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/034.jpg');"></div>
         <div class="card-content">
             <div>
@@ -371,7 +389,7 @@ is_index: true
             <div class="card-date">Sep 10. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/035_%EC%99%BC%EC%86%90%EC%9D%B4%20%ED%95%98%EB%8A%94%20%EC%9D%BC%EC%9D%84%20%EC%98%A4%EB%A5%B8%EC%86%90%EC%9D%B4%20%EB%AA%A8%EB%A5%B4%EB%8A%94%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85.html" class="card-item" data-category="성장 정체 해부학">
+    <a href="/brunch_web_assets/markdown/035_%EC%99%BC%EC%86%90%EC%9D%B4%20%ED%95%98%EB%8A%94%20%EC%9D%BC%EC%9D%84%20%EC%98%A4%EB%A5%B8%EC%86%90%EC%9D%B4%20%EB%AA%A8%EB%A5%B4%EB%8A%94%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85.html" class="card-item" data-category="성장 정체 해부학" data-date="20250909" data-id="35">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/035.jpg');"></div>
         <div class="card-content">
             <div>
@@ -381,7 +399,7 @@ is_index: true
             <div class="card-date">Sep 9. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/036_%EC%8A%A4%ED%8F%AC%ED%8B%B0%ED%8C%8C%EC%9D%B4%20%EB%AA%A8%EB%8D%B8%EC%9D%98%20%EC%A7%84%EC%8B%A4%2C%20%EC%99%9C%20%EB%A7%8E%EC%9D%80%20%EA%B8%B0%EC%97%85%EC%9D%B4%20%EC%8B%A4%ED%8C%A8%ED%96%88%EC%9D%84%EA%B9%8C.html" class="card-item" data-category="스타트업의 전략들">
+    <a href="/brunch_web_assets/markdown/036_%EC%8A%A4%ED%8F%AC%ED%8B%B0%ED%8C%8C%EC%9D%B4%20%EB%AA%A8%EB%8D%B8%EC%9D%98%20%EC%A7%84%EC%8B%A4%2C%20%EC%99%9C%20%EB%A7%8E%EC%9D%80%20%EA%B8%B0%EC%97%85%EC%9D%B4%20%EC%8B%A4%ED%8C%A8%ED%96%88%EC%9D%84%EA%B9%8C.html" class="card-item" data-category="스타트업의 전략들" data-date="20250908" data-id="36">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/036.jpg');"></div>
         <div class="card-content">
             <div>
@@ -391,7 +409,7 @@ is_index: true
             <div class="card-date">Sep 8. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/037_%EC%8B%A4%EB%A6%AC%EC%BD%98%EB%B0%B8%EB%A6%AC%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%98%20%EA%B8%B0%EC%A4%80.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
+    <a href="/brunch_web_assets/markdown/037_%EC%8B%A4%EB%A6%AC%EC%BD%98%EB%B0%B8%EB%A6%AC%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%98%20%EA%B8%B0%EC%A4%80.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다" data-date="20250907" data-id="37">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/037.jpg');"></div>
         <div class="card-content">
             <div>
@@ -401,7 +419,7 @@ is_index: true
             <div class="card-date">Sep 7. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/038_%EC%A0%9C%ED%92%88%20%EB%8B%A8%EC%88%9C%ED%99%94%EA%B0%80%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%84%B1%EA%B3%B5%EC%97%90%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/038_%EC%A0%9C%ED%92%88%20%EB%8B%A8%EC%88%9C%ED%99%94%EA%B0%80%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%84%B1%EA%B3%B5%EC%97%90%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250904" data-id="38">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/038.jpg');"></div>
         <div class="card-content">
             <div>
@@ -411,7 +429,7 @@ is_index: true
             <div class="card-date">Sep 4. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/039_%EC%BD%94%EC%B9%98%EA%B0%80%20%ED%96%89%EB%B3%B5%ED%95%9C%20%EC%88%9C%EA%B0%84.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/039_%EC%BD%94%EC%B9%98%EA%B0%80%20%ED%96%89%EB%B3%B5%ED%95%9C%20%EC%88%9C%EA%B0%84.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250902" data-id="39">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/039.jpg');"></div>
         <div class="card-content">
             <div>
@@ -421,7 +439,7 @@ is_index: true
             <div class="card-date">Sep 2. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/040_SaaS%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EB%AF%B8%EA%B5%AD%20%EC%A7%84%EC%B6%9C%20%EC%8B%9C%20GTM%20%EC%A0%84%EB%9E%B5%20%EC%9C%A0%ED%98%95.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
+    <a href="/brunch_web_assets/markdown/040_SaaS%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EB%AF%B8%EA%B5%AD%20%EC%A7%84%EC%B6%9C%20%EC%8B%9C%20GTM%20%EC%A0%84%EB%9E%B5%20%EC%9C%A0%ED%98%95.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다" data-date="20250831" data-id="40">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/040.jpg');"></div>
         <div class="card-content">
             <div>
@@ -431,7 +449,7 @@ is_index: true
             <div class="card-date">Aug 31. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/041_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%BC%EC%88%98%EB%A1%9D%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%B4%20%EB%8D%94%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0%EB%8A%94.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/041_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%BC%EC%88%98%EB%A1%9D%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%B4%20%EB%8D%94%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0%EB%8A%94.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250830" data-id="41">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/041.jpg');"></div>
         <div class="card-content">
             <div>
@@ -441,7 +459,7 @@ is_index: true
             <div class="card-date">Aug 30. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/042_%EB%82%B4%EA%B0%80%20%EA%B3%B5%EB%B6%80%EB%A5%BC%20%EC%9E%98%ED%95%98%EA%B2%8C%20%EB%90%9C%20%EC%82%AC%EC%97%B0.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/042_%EB%82%B4%EA%B0%80%20%EA%B3%B5%EB%B6%80%EB%A5%BC%20%EC%9E%98%ED%95%98%EA%B2%8C%20%EB%90%9C%20%EC%82%AC%EC%97%B0.html" class="card-item" data-category="심플리파이어 라이프" data-date="20250829" data-id="42">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/042.jpg');"></div>
         <div class="card-content">
             <div>
@@ -451,7 +469,7 @@ is_index: true
             <div class="card-date">Aug 29. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/043_%ED%8C%8C%EC%9A%B4%EB%8D%94%EB%93%A4%EC%9D%B4%20%EC%84%B1%EC%9E%A5%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="성장 정체 해부학">
+    <a href="/brunch_web_assets/markdown/043_%ED%8C%8C%EC%9A%B4%EB%8D%94%EB%93%A4%EC%9D%B4%20%EC%84%B1%EC%9E%A5%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="성장 정체 해부학" data-date="20250826" data-id="43">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/043.jpg');"></div>
         <div class="card-content">
             <div>
@@ -461,7 +479,7 @@ is_index: true
             <div class="card-date">Aug 26. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/044_AI%20%EC%8B%9C%EB%8C%80%20%EA%B8%B0%ED%9A%8D%EC%9E%90%2C%20%EB%94%94%EC%9E%90%EC%9D%B4%EB%84%88%2C%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EB%90%A0%EA%B9%8C.html" class="card-item" data-category="기획자로 시작하기">
+    <a href="/brunch_web_assets/markdown/044_AI%20%EC%8B%9C%EB%8C%80%20%EA%B8%B0%ED%9A%8D%EC%9E%90%2C%20%EB%94%94%EC%9E%90%EC%9D%B4%EB%84%88%2C%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EB%90%A0%EA%B9%8C.html" class="card-item" data-category="기획자로 시작하기" data-date="20250822" data-id="44">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/044.jpg');"></div>
         <div class="card-content">
             <div>
@@ -471,7 +489,7 @@ is_index: true
             <div class="card-date">Aug 22. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/045_%EC%99%9C%20%EC%8A%A4%ED%83%80%EB%B2%85%EC%8A%A4%EB%8A%94%20%EB%8B%A4%EB%A5%B8%20%EC%B9%B4%ED%8E%98%EC%99%80%20%EB%8B%A4%EB%A5%B4%EA%B2%8C%20%EB%8A%90%EA%BB%B4%EC%A7%88%EA%B9%8C.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/045_%EC%99%9C%20%EC%8A%A4%ED%83%80%EB%B2%85%EC%8A%A4%EB%8A%94%20%EB%8B%A4%EB%A5%B8%20%EC%B9%B4%ED%8E%98%EC%99%80%20%EB%8B%A4%EB%A5%B4%EA%B2%8C%20%EB%8A%90%EA%BB%B4%EC%A7%88%EA%B9%8C.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250821" data-id="45">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/045.jpg');"></div>
         <div class="card-content">
             <div>
@@ -481,7 +499,7 @@ is_index: true
             <div class="card-date">Aug 21. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/046_%ED%9B%84%EB%B0%B0%EA%B0%80%20%EC%84%A0%EB%B0%B0%EA%B0%80%20%EB%90%98%EB%8B%A4.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/046_%ED%9B%84%EB%B0%B0%EA%B0%80%20%EC%84%A0%EB%B0%B0%EA%B0%80%20%EB%90%98%EB%8B%A4.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250820" data-id="46">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/046.jpg');"></div>
         <div class="card-content">
             <div>
@@ -491,7 +509,7 @@ is_index: true
             <div class="card-date">Aug 20. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/047_%EC%8B%9C%EB%A6%AC%EC%A6%88B%20%EC%9D%B4%ED%9B%84%2C%20%EC%99%9C%20%EB%8D%94%20%EC%96%B4%EB%A0%A4%EC%9B%8C%EC%A7%88%EA%B9%8C.html" class="card-item" data-category="성장 정체 해부학">
+    <a href="/brunch_web_assets/markdown/047_%EC%8B%9C%EB%A6%AC%EC%A6%88B%20%EC%9D%B4%ED%9B%84%2C%20%EC%99%9C%20%EB%8D%94%20%EC%96%B4%EB%A0%A4%EC%9B%8C%EC%A7%88%EA%B9%8C.html" class="card-item" data-category="성장 정체 해부학" data-date="20250819" data-id="47">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/047.jpg');"></div>
         <div class="card-content">
             <div>
@@ -501,7 +519,7 @@ is_index: true
             <div class="card-date">Aug 19. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/048_%EB%AF%B8%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%EC%99%9C%20%EB%8B%A4%20%27%EB%AF%B8%EC%85%98%27%EB%B6%80%ED%84%B0%20%EB%A7%90%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
+    <a href="/brunch_web_assets/markdown/048_%EB%AF%B8%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%EC%99%9C%20%EB%8B%A4%20%27%EB%AF%B8%EC%85%98%27%EB%B6%80%ED%84%B0%20%EB%A7%90%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다" data-date="20250817" data-id="48">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/048.jpg');"></div>
         <div class="card-content">
             <div>
@@ -511,7 +529,7 @@ is_index: true
             <div class="card-date">Aug 17. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/049_%EA%B0%9C%EA%B5%AC%EB%A6%AC%EA%B0%80%20%EC%9A%B0%EB%AC%BC%20%EB%B0%96%EC%9D%84%20%EB%82%98%EC%98%AC%20%EB%95%8C.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/049_%EA%B0%9C%EA%B5%AC%EB%A6%AC%EA%B0%80%20%EC%9A%B0%EB%AC%BC%20%EB%B0%96%EC%9D%84%20%EB%82%98%EC%98%AC%20%EB%95%8C.html" class="card-item" data-category="심플리파이어 라이프" data-date="20250816" data-id="49">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/049.jpg');"></div>
         <div class="card-content">
             <div>
@@ -521,7 +539,7 @@ is_index: true
             <div class="card-date">Aug 16. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/050_Product%20Owner%EB%8F%84%20%EB%AA%B0%EB%9E%90%EB%8D%98%20%EC%95%A0%EC%9E%90%EC%9D%BC%20HR%EC%9D%98%20%EC%A7%84%EC%8B%A4.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
+    <a href="/brunch_web_assets/markdown/050_Product%20Owner%EB%8F%84%20%EB%AA%B0%EB%9E%90%EB%8D%98%20%EC%95%A0%EC%9E%90%EC%9D%BC%20HR%EC%9D%98%20%EC%A7%84%EC%8B%A4.html" class="card-item" data-category="PO가 꼭 알아야 할 것들" data-date="20250815" data-id="50">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/050.jpg');"></div>
         <div class="card-content">
             <div>
@@ -531,7 +549,7 @@ is_index: true
             <div class="card-date">Aug 15. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/051_%EA%B2%8C%EC%9E%84%ED%95%98%EB%93%AF%20%EC%9D%BC%ED%95%98%EB%8A%94%20%EB%A7%88%EB%B2%95%2C%20Flow%20State%20Design.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/051_%EA%B2%8C%EC%9E%84%ED%95%98%EB%93%AF%20%EC%9D%BC%ED%95%98%EB%8A%94%20%EB%A7%88%EB%B2%95%2C%20Flow%20State%20Design.html" class="card-item" data-category="UX의 언어들" data-date="20250814" data-id="51">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/051.jpg');"></div>
         <div class="card-content">
             <div>
@@ -541,7 +559,7 @@ is_index: true
             <div class="card-date">Aug 14. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/052_%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%20%EC%A0%84%EB%AC%B8%20%EC%BD%94%EC%B9%98%EA%B0%80%20C%EB%A0%88%EB%B2%A8%20%EC%BD%94%EC%B9%AD%EA%B9%8C%EC%A7%80%20%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0%EB%8A%94.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/052_%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%20%EC%A0%84%EB%AC%B8%20%EC%BD%94%EC%B9%98%EA%B0%80%20C%EB%A0%88%EB%B2%A8%20%EC%BD%94%EC%B9%AD%EA%B9%8C%EC%A7%80%20%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0%EB%8A%94.html" class="card-item" data-category="심플리파이어 라이프" data-date="20250813" data-id="52">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/052.jpg');"></div>
         <div class="card-content">
             <div>
@@ -551,7 +569,7 @@ is_index: true
             <div class="card-date">Aug 13. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/053_%EC%8B%9C%EB%A6%AC%EC%A6%88B%20%EC%A4%80%EB%B9%84%20%EC%A4%91%20%EB%B0%9C%EA%B2%AC%ED%95%98%EB%8A%94%20%EC%88%A8%EA%B2%A8%EC%A7%84%20%EC%84%B1%EC%9E%A5%20%EC%A0%95%EC%B2%B4%20%EC%9A%94%EC%9D%B8%EB%93%A4.html" class="card-item" data-category="성장 정체 해부학">
+    <a href="/brunch_web_assets/markdown/053_%EC%8B%9C%EB%A6%AC%EC%A6%88B%20%EC%A4%80%EB%B9%84%20%EC%A4%91%20%EB%B0%9C%EA%B2%AC%ED%95%98%EB%8A%94%20%EC%88%A8%EA%B2%A8%EC%A7%84%20%EC%84%B1%EC%9E%A5%20%EC%A0%95%EC%B2%B4%20%EC%9A%94%EC%9D%B8%EB%93%A4.html" class="card-item" data-category="성장 정체 해부학" data-date="20250812" data-id="53">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/053.jpg');"></div>
         <div class="card-content">
             <div>
@@ -561,7 +579,7 @@ is_index: true
             <div class="card-date">Aug 12. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/054_%EC%84%B1%EA%B3%B5%EA%B8%B0%EC%97%85%EC%9D%98%20%EA%B3%B5%ED%86%B5%ED%8C%A8%ED%84%B4%2C%20%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%ED%9A%A8%EA%B3%BC%EC%99%80%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%9D%98%EC%82%AC%EA%B2%B0%EC%A0%95.html" class="card-item" data-category="스타트업의 전략들">
+    <a href="/brunch_web_assets/markdown/054_%EC%84%B1%EA%B3%B5%EA%B8%B0%EC%97%85%EC%9D%98%20%EA%B3%B5%ED%86%B5%ED%8C%A8%ED%84%B4%2C%20%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%ED%9A%A8%EA%B3%BC%EC%99%80%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%9D%98%EC%82%AC%EA%B2%B0%EC%A0%95.html" class="card-item" data-category="스타트업의 전략들" data-date="20250811" data-id="54">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/054.jpg');"></div>
         <div class="card-content">
             <div>
@@ -571,7 +589,7 @@ is_index: true
             <div class="card-date">Aug 11. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/055_%EB%AF%B8%EA%B5%AD%EC%97%90%EC%84%9C%20%ED%86%B5%ED%95%98%EB%8A%94%20%EC%BD%98%ED%85%90%EC%B8%A0%20%EB%A7%88%EC%BC%80%ED%8C%85%20%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
+    <a href="/brunch_web_assets/markdown/055_%EB%AF%B8%EA%B5%AD%EC%97%90%EC%84%9C%20%ED%86%B5%ED%95%98%EB%8A%94%20%EC%BD%98%ED%85%90%EC%B8%A0%20%EB%A7%88%EC%BC%80%ED%8C%85%20%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다" data-date="20250810" data-id="55">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/055.jpg');"></div>
         <div class="card-content">
             <div>
@@ -581,7 +599,7 @@ is_index: true
             <div class="card-date">Aug 10. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/056_%EB%B2%84%ED%82%B7%EB%A6%AC%EC%8A%A4%ED%8A%B8%EB%A5%BC%20%EC%9D%B4%EB%A3%A8%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/056_%EB%B2%84%ED%82%B7%EB%A6%AC%EC%8A%A4%ED%8A%B8%EB%A5%BC%20%EC%9D%B4%EB%A3%A8%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="심플리파이어 라이프" data-date="20250809" data-id="56">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/056.jpg');"></div>
         <div class="card-content">
             <div>
@@ -591,7 +609,7 @@ is_index: true
             <div class="card-date">Aug 9. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/057_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20vs%20%EB%8C%80%EA%B8%B0%EC%97%85%20%EC%95%A0%EC%9E%90%EC%9D%BC%2C%EA%B7%9C%EB%AA%A8%EB%B3%84%20%EC%A0%81%EC%9A%A9%20%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
+    <a href="/brunch_web_assets/markdown/057_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20vs%20%EB%8C%80%EA%B8%B0%EC%97%85%20%EC%95%A0%EC%9E%90%EC%9D%BC%2C%EA%B7%9C%EB%AA%A8%EB%B3%84%20%EC%A0%81%EC%9A%A9%20%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="PO가 꼭 알아야 할 것들" data-date="20250808" data-id="57">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/057.jpg');"></div>
         <div class="card-content">
             <div>
@@ -601,7 +619,7 @@ is_index: true
             <div class="card-date">Aug 8. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/058_%EB%B8%8C%EB%A0%88%EB%93%9C%ED%81%AC%EB%9F%BC%2C%20%EA%B8%B8%EC%9D%84%20%EC%9E%83%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EB%94%94%EC%A7%80%ED%84%B8%20%EB%82%98%EC%B9%A8%EB%B0%98.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/058_%EB%B8%8C%EB%A0%88%EB%93%9C%ED%81%AC%EB%9F%BC%2C%20%EA%B8%B8%EC%9D%84%20%EC%9E%83%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EB%94%94%EC%A7%80%ED%84%B8%20%EB%82%98%EC%B9%A8%EB%B0%98.html" class="card-item" data-category="UX의 언어들" data-date="20250807" data-id="58">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/058.jpg');"></div>
         <div class="card-content">
             <div>
@@ -611,7 +629,7 @@ is_index: true
             <div class="card-date">Aug 7. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/059_CEO%EA%B0%80%20%EB%AA%A8%EB%93%A0%20%EA%B1%B8%20%EA%B2%B0%EC%A0%95%ED%95%98%EB%A0%A4%20%ED%95%A0%20%EB%95%8C%20%EC%98%A4%EB%8A%94%20%EC%84%B1%EC%9E%A5%EC%9D%98%20%ED%95%9C%EA%B3%84.html" class="card-item" data-category="성장 정체 해부학">
+    <a href="/brunch_web_assets/markdown/059_CEO%EA%B0%80%20%EB%AA%A8%EB%93%A0%20%EA%B1%B8%20%EA%B2%B0%EC%A0%95%ED%95%98%EB%A0%A4%20%ED%95%A0%20%EB%95%8C%20%EC%98%A4%EB%8A%94%20%EC%84%B1%EC%9E%A5%EC%9D%98%20%ED%95%9C%EA%B3%84.html" class="card-item" data-category="성장 정체 해부학" data-date="20250805" data-id="59">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/059.jpg');"></div>
         <div class="card-content">
             <div>
@@ -621,7 +639,7 @@ is_index: true
             <div class="card-date">Aug 5. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/060_%ED%8B%B1%ED%86%A1%EC%9D%98%20%EC%A4%91%EB%8F%85%EC%84%B1%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%2C%20%EC%9D%BC%EC%82%AC%EC%9A%A9%EC%8B%9C%EA%B0%84%2058%EB%B6%84%EC%9D%98%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="스타트업의 전략들">
+    <a href="/brunch_web_assets/markdown/060_%ED%8B%B1%ED%86%A1%EC%9D%98%20%EC%A4%91%EB%8F%85%EC%84%B1%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%2C%20%EC%9D%BC%EC%82%AC%EC%9A%A9%EC%8B%9C%EA%B0%84%2058%EB%B6%84%EC%9D%98%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="스타트업의 전략들" data-date="20250804" data-id="60">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/060.jpg');"></div>
         <div class="card-content">
             <div>
@@ -631,7 +649,7 @@ is_index: true
             <div class="card-date">Aug 4. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/061_%ED%94%84%EB%9D%BC%EC%9D%B4%EC%8B%B1%20%EC%A0%84%EB%9E%B5%2C%20%EB%AF%B8%EA%B5%AD%EC%97%90%EC%84%9C%EB%8A%94%20%EC%9D%B4%EB%A0%87%EA%B2%8C%20%EB%8B%A4%EB%A5%B4%EB%8B%A4.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
+    <a href="/brunch_web_assets/markdown/061_%ED%94%84%EB%9D%BC%EC%9D%B4%EC%8B%B1%20%EC%A0%84%EB%9E%B5%2C%20%EB%AF%B8%EA%B5%AD%EC%97%90%EC%84%9C%EB%8A%94%20%EC%9D%B4%EB%A0%87%EA%B2%8C%20%EB%8B%A4%EB%A5%B4%EB%8B%A4.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다" data-date="20250803" data-id="61">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/061.jpg');"></div>
         <div class="card-content">
             <div>
@@ -641,7 +659,7 @@ is_index: true
             <div class="card-date">Aug 3. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/062_%EA%B8%B0%ED%9A%8D%2C%20%EC%95%84%EB%AC%B4%EB%82%98%20%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%A7%80%EB%A7%8C%2C%20%EC%95%84%EB%AC%B4%EB%82%98%20%ED%95%A0%20%EC%88%98%20%EC%97%86%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/062_%EA%B8%B0%ED%9A%8D%2C%20%EC%95%84%EB%AC%B4%EB%82%98%20%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%A7%80%EB%A7%8C%2C%20%EC%95%84%EB%AC%B4%EB%82%98%20%ED%95%A0%20%EC%88%98%20%EC%97%86%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="UX의 언어들" data-date="20250802" data-id="62">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/062.jpg');"></div>
         <div class="card-content">
             <div>
@@ -651,7 +669,7 @@ is_index: true
             <div class="card-date">Aug 2. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/063_%EB%A0%88%EA%B1%B0%EC%8B%9C%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EA%B3%BC%20%EC%95%A0%EC%9E%90%EC%9D%BC%2C%20%EA%B8%B0%EC%88%A0%EB%B6%80%EC%B1%84%20%ED%95%B4%EA%B2%B0%20%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
+    <a href="/brunch_web_assets/markdown/063_%EB%A0%88%EA%B1%B0%EC%8B%9C%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EA%B3%BC%20%EC%95%A0%EC%9E%90%EC%9D%BC%2C%20%EA%B8%B0%EC%88%A0%EB%B6%80%EC%B1%84%20%ED%95%B4%EA%B2%B0%20%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="PO가 꼭 알아야 할 것들" data-date="20250801" data-id="63">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/063.jpg');"></div>
         <div class="card-content">
             <div>
@@ -661,7 +679,7 @@ is_index: true
             <div class="card-date">Aug 1. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/064_%ED%99%94%EC%9E%A5%EC%8B%A4%EC%9D%98%20UX%2C%20%EA%B3%B5%ED%95%AD%EA%B3%BC%20%EA%B8%B0%EC%B0%A8%EC%97%AD%EC%9D%B4%20%EB%A7%90%ED%95%B4%EC%A3%BC%EB%8A%94%20%EA%B3%B5%EA%B0%84%20%EB%94%94%EC%9E%90%EC%9D%B8.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/064_%ED%99%94%EC%9E%A5%EC%8B%A4%EC%9D%98%20UX%2C%20%EA%B3%B5%ED%95%AD%EA%B3%BC%20%EA%B8%B0%EC%B0%A8%EC%97%AD%EC%9D%B4%20%EB%A7%90%ED%95%B4%EC%A3%BC%EB%8A%94%20%EA%B3%B5%EA%B0%84%20%EB%94%94%EC%9E%90%EC%9D%B8.html" class="card-item" data-category="UX의 언어들" data-date="20250731" data-id="64">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/064.jpg');"></div>
         <div class="card-content">
             <div>
@@ -671,7 +689,7 @@ is_index: true
             <div class="card-date">Jul 31. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/065_%EC%99%9C%20%EC%9A%B0%EB%A6%AC%EB%8A%94%20%EC%BF%A0%ED%8C%A1%EC%9D%B4%EB%82%98%20%ED%86%A0%EC%8A%A4%EA%B0%99%EC%9D%80%20PO%EC%A1%B0%EC%A7%81%EC%9D%84%20%EB%AA%BB%EB%A7%8C%EB%93%A4%EA%B9%8C.html" class="card-item" data-category="Be the PO">
+    <a href="/brunch_web_assets/markdown/065_%EC%99%9C%20%EC%9A%B0%EB%A6%AC%EB%8A%94%20%EC%BF%A0%ED%8C%A1%EC%9D%B4%EB%82%98%20%ED%86%A0%EC%8A%A4%EA%B0%99%EC%9D%80%20PO%EC%A1%B0%EC%A7%81%EC%9D%84%20%EB%AA%BB%EB%A7%8C%EB%93%A4%EA%B9%8C.html" class="card-item" data-category="Be the PO" data-date="20250730" data-id="65">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/065.jpg');"></div>
         <div class="card-content">
             <div>
@@ -681,7 +699,7 @@ is_index: true
             <div class="card-date">Jul 30. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/066_%EC%8B%9C%EB%A6%AC%EC%A6%88A%20%EC%9D%B4%ED%9B%84%20%EC%84%B1%EC%9E%A5%EC%9D%B4%20%EB%A9%88%EC%B6%94%EB%8A%94%20%EC%A7%84%EC%A7%9C%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="성장 정체 해부학">
+    <a href="/brunch_web_assets/markdown/066_%EC%8B%9C%EB%A6%AC%EC%A6%88A%20%EC%9D%B4%ED%9B%84%20%EC%84%B1%EC%9E%A5%EC%9D%B4%20%EB%A9%88%EC%B6%94%EB%8A%94%20%EC%A7%84%EC%A7%9C%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="성장 정체 해부학" data-date="20250729" data-id="66">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/066.jpg');"></div>
         <div class="card-content">
             <div>
@@ -691,7 +709,7 @@ is_index: true
             <div class="card-date">Jul 29. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/067_%EC%9A%B0%EB%B2%84%EC%9D%98%20%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%20%ED%9A%A8%EA%B3%BC%EC%99%80%20%EC%96%91%EB%A9%B4%20%EC%8B%9C%EC%9E%A5%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업의 전략들">
+    <a href="/brunch_web_assets/markdown/067_%EC%9A%B0%EB%B2%84%EC%9D%98%20%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%20%ED%9A%A8%EA%B3%BC%EC%99%80%20%EC%96%91%EB%A9%B4%20%EC%8B%9C%EC%9E%A5%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업의 전략들" data-date="20250728" data-id="67">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/067.jpg');"></div>
         <div class="card-content">
             <div>
@@ -701,7 +719,7 @@ is_index: true
             <div class="card-date">Jul 28. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/068_%ED%95%9C%EA%B5%AD%EA%B3%BC%20%EB%AF%B8%EA%B5%AD%EC%9D%98%20%27%EA%B3%A0%EA%B0%9D%20%ED%8E%98%EB%A5%B4%EC%86%8C%EB%82%98%27%20%EC%B0%A8%EC%9D%B4.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
+    <a href="/brunch_web_assets/markdown/068_%ED%95%9C%EA%B5%AD%EA%B3%BC%20%EB%AF%B8%EA%B5%AD%EC%9D%98%20%27%EA%B3%A0%EA%B0%9D%20%ED%8E%98%EB%A5%B4%EC%86%8C%EB%82%98%27%20%EC%B0%A8%EC%9D%B4.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다" data-date="20250727" data-id="68">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/068.jpg');"></div>
         <div class="card-content">
             <div>
@@ -711,7 +729,7 @@ is_index: true
             <div class="card-date">Jul 27. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/069_Predictive%20UX%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%EC%9D%98%20%EB%8B%A4%EC%9D%8C%20%ED%96%89%EB%8F%99%EC%9D%80.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/069_Predictive%20UX%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%EC%9D%98%20%EB%8B%A4%EC%9D%8C%20%ED%96%89%EB%8F%99%EC%9D%80.html" class="card-item" data-category="UX의 언어들" data-date="20250725" data-id="69">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/069.jpg');"></div>
         <div class="card-content">
             <div>
@@ -721,7 +739,7 @@ is_index: true
             <div class="card-date">Jul 25. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/070_%ED%8C%80%2050%EB%AA%85%EC%9D%84%20%EB%84%98%EC%96%B4%EC%84%9C%EB%A9%B4%EC%84%9C%20%EC%86%8D%EB%8F%84%EA%B0%80%20%EB%8A%90%EB%A0%A4%EC%A7%84%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="성장 정체 해부학">
+    <a href="/brunch_web_assets/markdown/070_%ED%8C%80%2050%EB%AA%85%EC%9D%84%20%EB%84%98%EC%96%B4%EC%84%9C%EB%A9%B4%EC%84%9C%20%EC%86%8D%EB%8F%84%EA%B0%80%20%EB%8A%90%EB%A0%A4%EC%A7%84%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="성장 정체 해부학" data-date="20250723" data-id="70">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/070.jpg');"></div>
         <div class="card-content">
             <div>
@@ -731,7 +749,7 @@ is_index: true
             <div class="card-date">Jul 23. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/071_%EA%B8%B0%EB%B0%9C%ED%95%9C%20%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%EB%B3%B4%EB%8B%A8%20%EA%B3%A0%EA%B0%9D%20%EB%B0%98%EC%9D%91%EC%9D%84%20%EC%B6%9C%EB%B0%9C%EC%A0%90%EC%9C%BC%EB%A1%9C.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/071_%EA%B8%B0%EB%B0%9C%ED%95%9C%20%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%EB%B3%B4%EB%8B%A8%20%EA%B3%A0%EA%B0%9D%20%EB%B0%98%EC%9D%91%EC%9D%84%20%EC%B6%9C%EB%B0%9C%EC%A0%90%EC%9C%BC%EB%A1%9C.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20250722" data-id="71">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/071.jpg');"></div>
         <div class="card-content">
             <div>
@@ -741,7 +759,7 @@ is_index: true
             <div class="card-date">Jul 22. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/072_%EC%8A%A4%ED%8F%AC%ED%8B%B0%ED%8C%8C%EC%9D%B4%EC%9D%98%20%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%20%EB%A7%88%EB%B2%95%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%EA%B2%BD%ED%97%98%EC%9D%84%20%ED%86%B5%ED%95%9C%20%EC%A0%84%ED%99%98.html" class="card-item" data-category="스타트업의 전략들">
+    <a href="/brunch_web_assets/markdown/072_%EC%8A%A4%ED%8F%AC%ED%8B%B0%ED%8C%8C%EC%9D%B4%EC%9D%98%20%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%20%EB%A7%88%EB%B2%95%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%EA%B2%BD%ED%97%98%EC%9D%84%20%ED%86%B5%ED%95%9C%20%EC%A0%84%ED%99%98.html" class="card-item" data-category="스타트업의 전략들" data-date="20250721" data-id="72">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/072.jpg');"></div>
         <div class="card-content">
             <div>
@@ -751,7 +769,7 @@ is_index: true
             <div class="card-date">Jul 21. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/073_%EB%AF%B8%EA%B5%AD%20%ED%98%84%EC%A7%80%20%EC%84%B8%EC%9D%BC%EC%A6%88%20%EB%A6%AC%EB%93%9C%EB%A5%BC%20%ED%99%95%EB%B3%B4%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
+    <a href="/brunch_web_assets/markdown/073_%EB%AF%B8%EA%B5%AD%20%ED%98%84%EC%A7%80%20%EC%84%B8%EC%9D%BC%EC%A6%88%20%EB%A6%AC%EB%93%9C%EB%A5%BC%20%ED%99%95%EB%B3%B4%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다" data-date="20250720" data-id="73">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/073.jpg');"></div>
         <div class="card-content">
             <div>
@@ -761,7 +779,7 @@ is_index: true
             <div class="card-date">Jul 20. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/074_%EB%AA%A9%ED%91%9C%EC%9D%98%20%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%EA%B0%80%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="기획자로 시작하기">
+    <a href="/brunch_web_assets/markdown/074_%EB%AA%A9%ED%91%9C%EC%9D%98%20%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%EA%B0%80%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="기획자로 시작하기" data-date="20250719" data-id="74">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/074.jpg');"></div>
         <div class="card-content">
             <div>
@@ -771,7 +789,7 @@ is_index: true
             <div class="card-date">Jul 19. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/075_%EC%95%A0%EC%9E%90%EC%9D%BC%20%EC%BD%94%EC%B9%AD%2C%20%EC%A0%80%ED%95%AD%ED%95%98%EB%8A%94%20%ED%8C%80%EC%9B%90%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%84%A4%EB%93%9D%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
+    <a href="/brunch_web_assets/markdown/075_%EC%95%A0%EC%9E%90%EC%9D%BC%20%EC%BD%94%EC%B9%AD%2C%20%EC%A0%80%ED%95%AD%ED%95%98%EB%8A%94%20%ED%8C%80%EC%9B%90%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%84%A4%EB%93%9D%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="PO가 꼭 알아야 할 것들" data-date="20250718" data-id="75">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/075.jpg');"></div>
         <div class="card-content">
             <div>
@@ -781,7 +799,7 @@ is_index: true
             <div class="card-date">Jul 18. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/076_%EC%96%B4%ED%94%84%EB%A1%9C%EC%B9%98%EB%A5%BC%20%EB%B0%94%EA%BE%B8%EB%8B%A4%20AI%20Assisted%20Design.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/076_%EC%96%B4%ED%94%84%EB%A1%9C%EC%B9%98%EB%A5%BC%20%EB%B0%94%EA%BE%B8%EB%8B%A4%20AI%20Assisted%20Design.html" class="card-item" data-category="UX의 언어들" data-date="20250717" data-id="76">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/076.jpg');"></div>
         <div class="card-content">
             <div>
@@ -791,7 +809,7 @@ is_index: true
             <div class="card-date">Jul 17. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/077_%EC%9C%84%EA%B8%B0%EB%A5%BC%20%EA%B8%B0%ED%9A%8C%EB%A1%9C%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EA%B8%B0%ED%9A%8D.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/077_%EC%9C%84%EA%B8%B0%EB%A5%BC%20%EA%B8%B0%ED%9A%8C%EB%A1%9C%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EA%B8%B0%ED%9A%8D.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250716" data-id="77">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/077.jpg');"></div>
         <div class="card-content">
             <div>
@@ -801,7 +819,7 @@ is_index: true
             <div class="card-date">Jul 16. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/078_%EC%8B%9C%EB%A6%AC%EC%A6%88B%EC%9D%98%20%EB%8D%B0%EC%8A%A4%EB%B0%B8%EB%A6%AC.html" class="card-item" data-category="성장 정체 해부학">
+    <a href="/brunch_web_assets/markdown/078_%EC%8B%9C%EB%A6%AC%EC%A6%88B%EC%9D%98%20%EB%8D%B0%EC%8A%A4%EB%B0%B8%EB%A6%AC.html" class="card-item" data-category="성장 정체 해부학" data-date="20250715" data-id="78">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/078.jpg');"></div>
         <div class="card-content">
             <div>
@@ -811,7 +829,7 @@ is_index: true
             <div class="card-date">Jul 15. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/079_%EC%99%9C%20%EA%B5%AC%EA%B8%80%EC%9D%80%2020%20%EC%8B%9C%EA%B0%84%EC%9D%84%20%ED%97%88%EC%9A%A9%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="스타트업의 전략들">
+    <a href="/brunch_web_assets/markdown/079_%EC%99%9C%20%EA%B5%AC%EA%B8%80%EC%9D%80%2020%20%EC%8B%9C%EA%B0%84%EC%9D%84%20%ED%97%88%EC%9A%A9%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="스타트업의 전략들" data-date="20250714" data-id="79">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/079.jpg');"></div>
         <div class="card-content">
             <div>
@@ -821,7 +839,7 @@ is_index: true
             <div class="card-date">Jul 14. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/080_%EB%AF%B8%EA%B5%AD%20%EC%A7%84%EC%B6%9C%20%EC%8B%9C%20%EB%B2%95%EC%9D%B8%EB%B6%80%ED%84%B0%20%EC%84%A4%EB%A6%BD%ED%95%B4%EC%95%BC%20%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
+    <a href="/brunch_web_assets/markdown/080_%EB%AF%B8%EA%B5%AD%20%EC%A7%84%EC%B6%9C%20%EC%8B%9C%20%EB%B2%95%EC%9D%B8%EB%B6%80%ED%84%B0%20%EC%84%A4%EB%A6%BD%ED%95%B4%EC%95%BC%20%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다" data-date="20250713" data-id="80">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/080.jpg');"></div>
         <div class="card-content">
             <div>
@@ -831,7 +849,7 @@ is_index: true
             <div class="card-date">Jul 13. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/081_%EA%B8%B0%ED%9A%8D%EC%9D%B4%EB%9E%80.html" class="card-item" data-category="기획자로 시작하기">
+    <a href="/brunch_web_assets/markdown/081_%EA%B8%B0%ED%9A%8D%EC%9D%B4%EB%9E%80.html" class="card-item" data-category="기획자로 시작하기" data-date="20250712" data-id="81">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/081.jpg');"></div>
         <div class="card-content">
             <div>
@@ -841,7 +859,7 @@ is_index: true
             <div class="card-date">Jul 12. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/082_%EB%AA%85%EB%A0%B9%ED%95%98%EC%A7%80%20%EC%95%8A%EA%B3%A0%20%EC%9D%B4%EB%81%88%EB%8B%A4%2C%20%EC%95%A0%EC%9E%90%EC%9D%BC%20%EB%A6%AC%EB%8D%94%EC%8B%AD%EC%9D%98%20%EC%A7%84%EC%A7%9C%20%ED%9E%98.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
+    <a href="/brunch_web_assets/markdown/082_%EB%AA%85%EB%A0%B9%ED%95%98%EC%A7%80%20%EC%95%8A%EA%B3%A0%20%EC%9D%B4%EB%81%88%EB%8B%A4%2C%20%EC%95%A0%EC%9E%90%EC%9D%BC%20%EB%A6%AC%EB%8D%94%EC%8B%AD%EC%9D%98%20%EC%A7%84%EC%A7%9C%20%ED%9E%98.html" class="card-item" data-category="PO가 꼭 알아야 할 것들" data-date="20250711" data-id="82">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/082.jpg');"></div>
         <div class="card-content">
             <div>
@@ -851,7 +869,7 @@ is_index: true
             <div class="card-date">Jul 11. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/083_UX%EB%8F%84%20%EB%B8%8C%EB%9E%9C%EB%94%A9%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%EA%B2%BD%ED%97%98%EC%9D%B4%20%EB%B8%8C%EB%9E%9C%EB%93%9C%20%EC%B6%A9%EC%84%B1%EB%8F%84%EB%A5%BC%20%EB%A7%8C%EB%93%A0%EB%8B%A4.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/083_UX%EB%8F%84%20%EB%B8%8C%EB%9E%9C%EB%94%A9%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%EA%B2%BD%ED%97%98%EC%9D%B4%20%EB%B8%8C%EB%9E%9C%EB%93%9C%20%EC%B6%A9%EC%84%B1%EB%8F%84%EB%A5%BC%20%EB%A7%8C%EB%93%A0%EB%8B%A4.html" class="card-item" data-category="UX의 언어들" data-date="20250710" data-id="83">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/083.jpg');"></div>
         <div class="card-content">
             <div>
@@ -861,7 +879,7 @@ is_index: true
             <div class="card-date">Jul 10. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/084_%EB%8C%80%ED%91%9C%EB%8B%98%20%EC%A7%80%EA%B8%88%EC%9D%80%20%EB%B0%9C%EB%81%9D%EB%A7%8C%20%EB%B3%B4%EC%84%B8%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/084_%EB%8C%80%ED%91%9C%EB%8B%98%20%EC%A7%80%EA%B8%88%EC%9D%80%20%EB%B0%9C%EB%81%9D%EB%A7%8C%20%EB%B3%B4%EC%84%B8%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프" data-date="20250708" data-id="84">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/084.jpg');"></div>
         <div class="card-content">
             <div>
@@ -871,7 +889,7 @@ is_index: true
             <div class="card-date">Jul 8. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/085_%27%EC%9D%B4%20%EC%8B%9C%EA%B0%84%EC%9D%80%20%EB%AC%B4%EC%97%87%EC%9D%84%20%EC%9D%B4%EB%A3%A8%EA%B8%B0%20%EC%9C%84%ED%95%B4%20%EC%A1%B4%EC%9E%AC%ED%95%98%EB%8A%94%EA%B0%80%27.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/085_%27%EC%9D%B4%20%EC%8B%9C%EA%B0%84%EC%9D%80%20%EB%AC%B4%EC%97%87%EC%9D%84%20%EC%9D%B4%EB%A3%A8%EA%B8%B0%20%EC%9C%84%ED%95%B4%20%EC%A1%B4%EC%9E%AC%ED%95%98%EB%8A%94%EA%B0%80%27.html" class="card-item" data-category="기획일상" data-date="20250707" data-id="85">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/085.jpg');"></div>
         <div class="card-content">
             <div>
@@ -881,7 +899,7 @@ is_index: true
             <div class="card-date">Jul 7. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/086_%ED%95%9C%EA%B5%AD%20SaaS%EC%9D%98%20%EB%AF%B8%EA%B5%AD%20%EC%A7%84%EC%B6%9C%20%EC%8B%A4%ED%8C%A8%20%EC%9B%90%EC%9D%B8%20%EB%B6%84%EC%84%9D.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
+    <a href="/brunch_web_assets/markdown/086_%ED%95%9C%EA%B5%AD%20SaaS%EC%9D%98%20%EB%AF%B8%EA%B5%AD%20%EC%A7%84%EC%B6%9C%20%EC%8B%A4%ED%8C%A8%20%EC%9B%90%EC%9D%B8%20%EB%B6%84%EC%84%9D.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다" data-date="20250706" data-id="86">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/086.jpg');"></div>
         <div class="card-content">
             <div>
@@ -891,7 +909,7 @@ is_index: true
             <div class="card-date">Jul 6. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/087_%EC%9E%98%ED%95%98%EB%8A%94%20%EC%82%AC%EB%9E%8C%EC%9D%80%20%EC%A7%88%EB%AC%B8%EB%B6%80%ED%84%B0%20%EB%8B%A4%EB%A5%B4%EB%8B%A4.html" class="card-item" data-category="기획자로 시작하기">
+    <a href="/brunch_web_assets/markdown/087_%EC%9E%98%ED%95%98%EB%8A%94%20%EC%82%AC%EB%9E%8C%EC%9D%80%20%EC%A7%88%EB%AC%B8%EB%B6%80%ED%84%B0%20%EB%8B%A4%EB%A5%B4%EB%8B%A4.html" class="card-item" data-category="기획자로 시작하기" data-date="20250705" data-id="87">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/087.jpg');"></div>
         <div class="card-content">
             <div>
@@ -901,7 +919,7 @@ is_index: true
             <div class="card-date">Jul 5. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/088_%EC%95%A0%EC%9E%90%EC%9D%BC%EA%B3%BC%20%EA%B8%B0%EC%88%A0%EB%B6%80%EC%B1%84.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
+    <a href="/brunch_web_assets/markdown/088_%EC%95%A0%EC%9E%90%EC%9D%BC%EA%B3%BC%20%EA%B8%B0%EC%88%A0%EB%B6%80%EC%B1%84.html" class="card-item" data-category="PO가 꼭 알아야 할 것들" data-date="20250704" data-id="88">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/088.jpg');"></div>
         <div class="card-content">
             <div>
@@ -911,7 +929,7 @@ is_index: true
             <div class="card-date">Jul 4. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/089_%EB%8C%80%ED%99%94%ED%98%95%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%EC%9D%98%20%EC%A7%84%ED%99%94%20Conversational%20UX.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/089_%EB%8C%80%ED%99%94%ED%98%95%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%EC%9D%98%20%EC%A7%84%ED%99%94%20Conversational%20UX.html" class="card-item" data-category="UX의 언어들" data-date="20250703" data-id="89">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/089.jpg');"></div>
         <div class="card-content">
             <div>
@@ -921,7 +939,7 @@ is_index: true
             <div class="card-date">Jul 3. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/090_AI%EB%AA%A8%EB%8D%B8%20%EA%B0%80%EC%86%8D%ED%99%94%EC%9D%98%20%EC%97%B4%EC%87%A0%2C%20Transformer%EB%B3%91%EB%AA%A9%EA%B0%9C%EC%84%A0.html" class="card-item" data-category="AI의 언어들">
+    <a href="/brunch_web_assets/markdown/090_AI%EB%AA%A8%EB%8D%B8%20%EA%B0%80%EC%86%8D%ED%99%94%EC%9D%98%20%EC%97%B4%EC%87%A0%2C%20Transformer%EB%B3%91%EB%AA%A9%EA%B0%9C%EC%84%A0.html" class="card-item" data-category="AI의 언어들" data-date="20250702" data-id="90">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/090.jpg');"></div>
         <div class="card-content">
             <div>
@@ -931,7 +949,7 @@ is_index: true
             <div class="card-date">Jul 2. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/091_%ED%98%84%EC%9E%AC%EC%99%80%20%EB%AF%B8%EB%9E%98%EB%A5%BC%20%ED%95%A8%EA%BB%98%ED%95%9C%EB%8B%A4%203%20Horizons%20model.html" class="card-item" data-category="기획자의 프레임웍">
+    <a href="/brunch_web_assets/markdown/091_%ED%98%84%EC%9E%AC%EC%99%80%20%EB%AF%B8%EB%9E%98%EB%A5%BC%20%ED%95%A8%EA%BB%98%ED%95%9C%EB%8B%A4%203%20Horizons%20model.html" class="card-item" data-category="기획자의 프레임웍" data-date="20250701" data-id="91">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/091.jpg');"></div>
         <div class="card-content">
             <div>
@@ -941,7 +959,7 @@ is_index: true
             <div class="card-date">Jul 1. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/092_%EB%93%9C%EB%A1%AD%EB%B0%95%EC%8A%A4%EA%B0%80%203900%20%EC%84%B1%EC%9E%A5%ED%95%9C%20%ED%95%98%EB%82%98%EC%9D%98%20%EB%B9%84%EB%B0%80.html" class="card-item" data-category="스타트업의 전략들">
+    <a href="/brunch_web_assets/markdown/092_%EB%93%9C%EB%A1%AD%EB%B0%95%EC%8A%A4%EA%B0%80%203900%20%EC%84%B1%EC%9E%A5%ED%95%9C%20%ED%95%98%EB%82%98%EC%9D%98%20%EB%B9%84%EB%B0%80.html" class="card-item" data-category="스타트업의 전략들" data-date="20250630" data-id="92">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/092.jpg');"></div>
         <div class="card-content">
             <div>
@@ -951,7 +969,7 @@ is_index: true
             <div class="card-date">Jun 30. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/093_%EB%AF%B8%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%27%EB%B8%8C%EB%9E%9C%EB%93%9C%27%EB%A5%BC%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%A0%95%EC%9D%98%ED%95%98%EB%8A%94%EA%B0%80.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
+    <a href="/brunch_web_assets/markdown/093_%EB%AF%B8%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%27%EB%B8%8C%EB%9E%9C%EB%93%9C%27%EB%A5%BC%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%A0%95%EC%9D%98%ED%95%98%EB%8A%94%EA%B0%80.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다" data-date="20250629" data-id="93">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/093.jpg');"></div>
         <div class="card-content">
             <div>
@@ -961,7 +979,7 @@ is_index: true
             <div class="card-date">Jun 29. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/094_%EC%9A%B0%EB%A6%AC%20%ED%8C%80%EC%9D%80%20%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%BC%EA%B9%8C%2C%20%EC%8A%A4%ED%81%AC%EB%9F%BC%EC%9D%BC%EA%B9%8C%20%ED%97%B7%EA%B0%88%EB%A6%AC%EB%8A%94%20%EA%B0%9C%EB%85%90.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
+    <a href="/brunch_web_assets/markdown/094_%EC%9A%B0%EB%A6%AC%20%ED%8C%80%EC%9D%80%20%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%BC%EA%B9%8C%2C%20%EC%8A%A4%ED%81%AC%EB%9F%BC%EC%9D%BC%EA%B9%8C%20%ED%97%B7%EA%B0%88%EB%A6%AC%EB%8A%94%20%EA%B0%9C%EB%85%90.html" class="card-item" data-category="PO가 꼭 알아야 할 것들" data-date="20250627" data-id="94">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/094.jpg');"></div>
         <div class="card-content">
             <div>
@@ -971,7 +989,7 @@ is_index: true
             <div class="card-date">Jun 27. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/095_%EC%98%A8%EB%B3%B4%EB%94%A9%2C%20%EB%B0%B0%EC%97%90%20%EC%98%A4%EB%A5%B4%EB%8B%A4%27%EC%97%90%EC%84%9C%20%EC%8B%9C%EC%9E%91%EB%90%9C%20UX%EC%9D%98%20%EC%B2%AB%EC%9D%B8%EC%83%81%20%EB%A7%88%EB%B2%95.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/095_%EC%98%A8%EB%B3%B4%EB%94%A9%2C%20%EB%B0%B0%EC%97%90%20%EC%98%A4%EB%A5%B4%EB%8B%A4%27%EC%97%90%EC%84%9C%20%EC%8B%9C%EC%9E%91%EB%90%9C%20UX%EC%9D%98%20%EC%B2%AB%EC%9D%B8%EC%83%81%20%EB%A7%88%EB%B2%95.html" class="card-item" data-category="UX의 언어들" data-date="20250626" data-id="95">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/095.jpg');"></div>
         <div class="card-content">
             <div>
@@ -981,7 +999,7 @@ is_index: true
             <div class="card-date">Jun 26. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/096_%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EA%B2%BD%EC%9F%81%EB%A0%A5%EC%97%90%20%EC%A0%80%EC%A0%84%EB%A0%A5%20NPU%EA%B0%80%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="AI의 언어들">
+    <a href="/brunch_web_assets/markdown/096_%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EA%B2%BD%EC%9F%81%EB%A0%A5%EC%97%90%20%EC%A0%80%EC%A0%84%EB%A0%A5%20NPU%EA%B0%80%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="AI의 언어들" data-date="20250625" data-id="96">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/096.jpg');"></div>
         <div class="card-content">
             <div>
@@ -991,7 +1009,7 @@ is_index: true
             <div class="card-date">Jun 25. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/097_MIT%20%EC%B0%BD%EC%97%85%EC%A0%84%EB%9E%B5%20%EB%82%98%EC%B9%A8%EB%B0%98%2C%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%B4%20%EA%B8%B8%EC%9D%84%20%EC%9E%83%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획자의 프레임웍">
+    <a href="/brunch_web_assets/markdown/097_MIT%20%EC%B0%BD%EC%97%85%EC%A0%84%EB%9E%B5%20%EB%82%98%EC%B9%A8%EB%B0%98%2C%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%B4%20%EA%B8%B8%EC%9D%84%20%EC%9E%83%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획자의 프레임웍" data-date="20250624" data-id="97">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/097.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1001,7 +1019,7 @@ is_index: true
             <div class="card-date">Jun 24. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/098_%EA%B0%80%EA%B2%A9%EC%A0%95%EC%B1%85%EC%9D%98%20%ED%98%81%EC%8B%A0%EC%9C%BC%EB%A1%9C%20%EB%8F%8C%ED%8C%8C%EA%B5%AC%EB%A5%BC%20%EC%B0%BE%EB%8B%A4.%20Welo.html" class="card-item" data-category="스타트업의 전략들">
+    <a href="/brunch_web_assets/markdown/098_%EA%B0%80%EA%B2%A9%EC%A0%95%EC%B1%85%EC%9D%98%20%ED%98%81%EC%8B%A0%EC%9C%BC%EB%A1%9C%20%EB%8F%8C%ED%8C%8C%EA%B5%AC%EB%A5%BC%20%EC%B0%BE%EB%8B%A4.%20Welo.html" class="card-item" data-category="스타트업의 전략들" data-date="20250623" data-id="98">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/098.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1011,7 +1029,7 @@ is_index: true
             <div class="card-date">Jun 23. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/099_%EB%AF%B8%EA%B5%AD%EC%9D%98%20SaaS%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%EC%9D%84%20%ED%99%95%EB%B3%B4%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
+    <a href="/brunch_web_assets/markdown/099_%EB%AF%B8%EA%B5%AD%EC%9D%98%20SaaS%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%EC%9D%84%20%ED%99%95%EB%B3%B4%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다" data-date="20250622" data-id="99">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/099.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1021,7 +1039,7 @@ is_index: true
             <div class="card-date">Jun 22. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/100_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%20%EB%A6%AC%EB%B7%B0%EB%A5%BC%20%EC%9D%BD%EA%B3%A0%20%EA%B0%90%EB%8F%99%EC%9D%84%20%E3%85%9C.%E3%85%9C.html" class="card-item" data-category="기획자로 시작하기">
+    <a href="/brunch_web_assets/markdown/100_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%20%EB%A6%AC%EB%B7%B0%EB%A5%BC%20%EC%9D%BD%EA%B3%A0%20%EA%B0%90%EB%8F%99%EC%9D%84%20%E3%85%9C.%E3%85%9C.html" class="card-item" data-category="기획자로 시작하기" data-date="20250620" data-id="100">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/100.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1031,7 +1049,7 @@ is_index: true
             <div class="card-date">Jun 20. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/101_%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%20%EC%A3%BC%EA%B8%B0%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EA%B2%B0%EC%A0%95%ED%95%A0%20%EA%B2%83%EC%9D%B8%EA%B0%80.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
+    <a href="/brunch_web_assets/markdown/101_%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%20%EC%A3%BC%EA%B8%B0%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EA%B2%B0%EC%A0%95%ED%95%A0%20%EA%B2%83%EC%9D%B8%EA%B0%80.html" class="card-item" data-category="PO가 꼭 알아야 할 것들" data-date="20250620" data-id="101">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/101.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1041,7 +1059,7 @@ is_index: true
             <div class="card-date">Jun 20. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/102_%EA%B9%A8%EB%81%97%ED%95%9C%20%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%2C%20Clean%20UI%EC%9D%98%20%EB%B0%98%EC%A0%84.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/102_%EA%B9%A8%EB%81%97%ED%95%9C%20%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%2C%20Clean%20UI%EC%9D%98%20%EB%B0%98%EC%A0%84.html" class="card-item" data-category="UX의 언어들" data-date="20250619" data-id="102">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/102.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1051,7 +1069,7 @@ is_index: true
             <div class="card-date">Jun 19. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/103_ZeRO%2C%20%EB%A9%94%EB%AA%A8%EB%A6%AC%EC%B5%9C%EC%A0%81%ED%99%94%EB%A1%9C%20AI%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EB%84%93%ED%9E%88%EB%8B%A4.html" class="card-item" data-category="AI의 언어들">
+    <a href="/brunch_web_assets/markdown/103_ZeRO%2C%20%EB%A9%94%EB%AA%A8%EB%A6%AC%EC%B5%9C%EC%A0%81%ED%99%94%EB%A1%9C%20AI%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EB%84%93%ED%9E%88%EB%8B%A4.html" class="card-item" data-category="AI의 언어들" data-date="20250618" data-id="103">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/103.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1061,7 +1079,7 @@ is_index: true
             <div class="card-date">Jun 18. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/104_%EA%B0%80%EC%B9%98%EC%82%AC%EC%8A%AC%20%EB%B6%84%EC%84%9D%2C%20%EB%8F%88%EC%9D%B4%20%EB%A7%8C%EB%93%A4%EC%96%B4%EC%A7%80%EB%8A%94%20%EC%A7%80%EC%A0%90%EC%9D%84%20%EC%B0%BE%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획자의 프레임웍">
+    <a href="/brunch_web_assets/markdown/104_%EA%B0%80%EC%B9%98%EC%82%AC%EC%8A%AC%20%EB%B6%84%EC%84%9D%2C%20%EB%8F%88%EC%9D%B4%20%EB%A7%8C%EB%93%A4%EC%96%B4%EC%A7%80%EB%8A%94%20%EC%A7%80%EC%A0%90%EC%9D%84%20%EC%B0%BE%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획자의 프레임웍" data-date="20250617" data-id="104">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/104.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1071,7 +1089,7 @@ is_index: true
             <div class="card-date">Jun 17. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/105_%27%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%27%20%EB%B6%81%ED%86%A0%ED%81%AC%EC%97%90%20%EC%97%AC%EB%9F%AC%EB%B6%84%EC%9D%84%20%EC%B4%88%EB%8C%80%ED%95%A9%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/105_%27%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%27%20%EB%B6%81%ED%86%A0%ED%81%AC%EC%97%90%20%EC%97%AC%EB%9F%AC%EB%B6%84%EC%9D%84%20%EC%B4%88%EB%8C%80%ED%95%A9%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프" data-date="20250616" data-id="105">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/105.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1081,7 +1099,7 @@ is_index: true
             <div class="card-date">Jun 16. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/106_2%EC%B2%9C%EB%A7%8C%EC%9B%90%EC%9C%BC%EB%A1%9C%2010%EC%96%B5%EC%9B%90%20%EB%A7%A4%EC%B6%9C%EC%9D%84%2C%20%EC%95%88%ED%8B%B0%EB%A9%94%ED%83%88%EC%9D%98%20%EB%B0%94%EC%9D%B4%EB%9F%B4%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업의 전략들">
+    <a href="/brunch_web_assets/markdown/106_2%EC%B2%9C%EB%A7%8C%EC%9B%90%EC%9C%BC%EB%A1%9C%2010%EC%96%B5%EC%9B%90%20%EB%A7%A4%EC%B6%9C%EC%9D%84%2C%20%EC%95%88%ED%8B%B0%EB%A9%94%ED%83%88%EC%9D%98%20%EB%B0%94%EC%9D%B4%EB%9F%B4%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업의 전략들" data-date="20250616" data-id="106">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/106.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1091,7 +1109,7 @@ is_index: true
             <div class="card-date">Jun 16. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/107_YC%20%EC%A1%B8%EC%97%85%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EB%93%A4%EC%9D%98%20%EA%B3%B5%ED%86%B5%EB%90%9C%20%EC%84%B1%EC%9E%A5%20%EA%B3%B5%EC%8B%9D.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
+    <a href="/brunch_web_assets/markdown/107_YC%20%EC%A1%B8%EC%97%85%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EB%93%A4%EC%9D%98%20%EA%B3%B5%ED%86%B5%EB%90%9C%20%EC%84%B1%EC%9E%A5%20%EA%B3%B5%EC%8B%9D.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다" data-date="20250615" data-id="107">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/107.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1101,7 +1119,7 @@ is_index: true
             <div class="card-date">Jun 15. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/108_%27%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%2827Qs%29%27%EC%9D%98%20%EB%B9%84%EB%B0%80.html" class="card-item" data-category="기획자로 시작하기">
+    <a href="/brunch_web_assets/markdown/108_%27%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%2827Qs%29%27%EC%9D%98%20%EB%B9%84%EB%B0%80.html" class="card-item" data-category="기획자로 시작하기" data-date="20250614" data-id="108">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/108.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1111,7 +1129,7 @@ is_index: true
             <div class="card-date">Jun 14. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/109_%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B8%B0%EB%B0%98%20PO%2C%20IT%EC%84%B1%EC%9E%A5%EC%9D%98%20%ED%95%B5%EC%8B%AC%20%EC%97%94%EC%A7%84.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
+    <a href="/brunch_web_assets/markdown/109_%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B8%B0%EB%B0%98%20PO%2C%20IT%EC%84%B1%EC%9E%A5%EC%9D%98%20%ED%95%B5%EC%8B%AC%20%EC%97%94%EC%A7%84.html" class="card-item" data-category="PO가 꼭 알아야 할 것들" data-date="20250613" data-id="109">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/109.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1121,7 +1139,7 @@ is_index: true
             <div class="card-date">Jun 13. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/110_%EA%B7%B8%EB%A6%AC%EB%93%9C%20%EC%8B%9C%EC%8A%A4%ED%85%9C%2C%20%EA%B5%AC%EA%B8%80%20%EC%95%A0%ED%94%8C%EC%9D%B4%20%EC%82%AC%EB%9E%91%ED%95%9C%20%EA%B2%A9%EC%9E%90%20%EA%B5%AC%EC%A1%B0.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/110_%EA%B7%B8%EB%A6%AC%EB%93%9C%20%EC%8B%9C%EC%8A%A4%ED%85%9C%2C%20%EA%B5%AC%EA%B8%80%20%EC%95%A0%ED%94%8C%EC%9D%B4%20%EC%82%AC%EB%9E%91%ED%95%9C%20%EA%B2%A9%EC%9E%90%20%EA%B5%AC%EC%A1%B0.html" class="card-item" data-category="UX의 언어들" data-date="20250612" data-id="110">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/110.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1131,7 +1149,7 @@ is_index: true
             <div class="card-date">Jun 12. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/111_AI%ED%95%99%EC%8A%B5%20%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%20%EC%82%BC%EA%B5%AD%EC%A7%80%20AWSGoogleAzure.html" class="card-item" data-category="AI의 언어들">
+    <a href="/brunch_web_assets/markdown/111_AI%ED%95%99%EC%8A%B5%20%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%20%EC%82%BC%EA%B5%AD%EC%A7%80%20AWSGoogleAzure.html" class="card-item" data-category="AI의 언어들" data-date="20250611" data-id="111">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/111.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1141,7 +1159,7 @@ is_index: true
             <div class="card-date">Jun 11. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/112_%27%ED%8F%AC%ED%84%B0%EC%9D%98%205%20Forces%27%20%EC%A0%84%EC%9F%81%ED%84%B0%EB%A5%BC%20%EB%B6%84%EC%84%9D%ED%95%98%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획자의 프레임웍">
+    <a href="/brunch_web_assets/markdown/112_%27%ED%8F%AC%ED%84%B0%EC%9D%98%205%20Forces%27%20%EC%A0%84%EC%9F%81%ED%84%B0%EB%A5%BC%20%EB%B6%84%EC%84%9D%ED%95%98%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획자의 프레임웍" data-date="20250610" data-id="112">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/112.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1151,7 +1169,7 @@ is_index: true
             <div class="card-date">Jun 10. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/113_%27%EC%BB%A4%EC%84%9C%20AI%27%EC%9D%98%20AI%20%ED%98%91%EB%A0%A5%EC%9E%90%20%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업의 전략들">
+    <a href="/brunch_web_assets/markdown/113_%27%EC%BB%A4%EC%84%9C%20AI%27%EC%9D%98%20AI%20%ED%98%91%EB%A0%A5%EC%9E%90%20%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업의 전략들" data-date="20250609" data-id="113">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/113.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1161,7 +1179,7 @@ is_index: true
             <div class="card-date">Jun 9. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/114_%EC%B1%85%EC%9D%84%20%EC%93%B0%EB%A9%B4%EC%84%9C%20%EB%8A%90%EB%82%80%20%EA%B2%83%EB%93%A4.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/114_%EC%B1%85%EC%9D%84%20%EC%93%B0%EB%A9%B4%EC%84%9C%20%EB%8A%90%EB%82%80%20%EA%B2%83%EB%93%A4.html" class="card-item" data-category="심플리파이어 라이프" data-date="20250608" data-id="114">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/114.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1171,7 +1189,7 @@ is_index: true
             <div class="card-date">Jun 8. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/115_%EB%AF%B8%EA%B5%AD%20%EC%86%8C%EB%B9%84%EC%9E%90%EB%8A%94%20%EC%A7%84%EC%A7%9C%20%27%EB%8B%AC%EB%9D%BC%27.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
+    <a href="/brunch_web_assets/markdown/115_%EB%AF%B8%EA%B5%AD%20%EC%86%8C%EB%B9%84%EC%9E%90%EB%8A%94%20%EC%A7%84%EC%A7%9C%20%27%EB%8B%AC%EB%9D%BC%27.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다" data-date="20250608" data-id="115">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/115.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1181,7 +1199,7 @@ is_index: true
             <div class="card-date">Jun 8. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/116_%EA%B8%B0%ED%9A%8D%EC%9D%B4%20%EC%82%AC%EB%9E%8C%EC%9D%84%20%EC%9B%80%EC%A7%81%EC%9D%B4%EB%8A%94%20%EC%9D%BC%EC%9D%B8%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="기획자로 시작하기">
+    <a href="/brunch_web_assets/markdown/116_%EA%B8%B0%ED%9A%8D%EC%9D%B4%20%EC%82%AC%EB%9E%8C%EC%9D%84%20%EC%9B%80%EC%A7%81%EC%9D%B4%EB%8A%94%20%EC%9D%BC%EC%9D%B8%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="기획자로 시작하기" data-date="20250607" data-id="116">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/116.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1191,7 +1209,7 @@ is_index: true
             <div class="card-date">Jun 7. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/117_AI%EA%B0%80%20PO%EB%A5%BC%20%EB%8C%80%EC%B2%B4%ED%95%9C%EB%8B%A4%20%EB%B3%80%ED%99%94%EC%97%90%EC%84%9C%20PO%EA%B0%80%20%EC%82%B4%EC%95%84%EB%82%A8%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
+    <a href="/brunch_web_assets/markdown/117_AI%EA%B0%80%20PO%EB%A5%BC%20%EB%8C%80%EC%B2%B4%ED%95%9C%EB%8B%A4%20%EB%B3%80%ED%99%94%EC%97%90%EC%84%9C%20PO%EA%B0%80%20%EC%82%B4%EC%95%84%EB%82%A8%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="PO가 꼭 알아야 할 것들" data-date="20250606" data-id="117">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/117.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1201,7 +1219,7 @@ is_index: true
             <div class="card-date">Jun 6. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/118_%27%ED%9B%8C%EB%A5%AD%ED%95%9C%20%EC%A7%88%EB%AC%B8%EC%9D%B4%EB%84%A4%EC%9A%94%21%27%20AI%EC%9D%98%20%EC%B9%AD%EC%B0%AC%20UX%EC%9D%98%20%EC%A7%84%EC%8B%A4.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/118_%27%ED%9B%8C%EB%A5%AD%ED%95%9C%20%EC%A7%88%EB%AC%B8%EC%9D%B4%EB%84%A4%EC%9A%94%21%27%20AI%EC%9D%98%20%EC%B9%AD%EC%B0%AC%20UX%EC%9D%98%20%EC%A7%84%EC%8B%A4.html" class="card-item" data-category="UX의 언어들" data-date="20250605" data-id="118">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/118.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1211,7 +1229,7 @@ is_index: true
             <div class="card-date">Jun 5. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/119_%EC%84%B1%EA%B3%BC%EB%A5%BC%20%EC%A2%8C%EC%9A%B0%ED%95%98%EB%8A%94%2C%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EB%B3%91%EB%A0%AC%ED%99%94%20vs%20%EB%AA%A8%EB%8D%B8%20%EB%B3%91%EB%A0%AC%ED%99%94.html" class="card-item" data-category="AI의 언어들">
+    <a href="/brunch_web_assets/markdown/119_%EC%84%B1%EA%B3%BC%EB%A5%BC%20%EC%A2%8C%EC%9A%B0%ED%95%98%EB%8A%94%2C%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EB%B3%91%EB%A0%AC%ED%99%94%20vs%20%EB%AA%A8%EB%8D%B8%20%EB%B3%91%EB%A0%AC%ED%99%94.html" class="card-item" data-category="AI의 언어들" data-date="20250604" data-id="119">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/119.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1221,7 +1239,7 @@ is_index: true
             <div class="card-date">Jun 4. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/120_UX%205%20Planes%2C%20%EA%B2%BD%ED%97%98%20%EC%84%A4%EA%B3%84%EC%9D%98%20%EC%A7%80%EB%8F%84.html" class="card-item" data-category="기획자의 프레임웍">
+    <a href="/brunch_web_assets/markdown/120_UX%205%20Planes%2C%20%EA%B2%BD%ED%97%98%20%EC%84%A4%EA%B3%84%EC%9D%98%20%EC%A7%80%EB%8F%84.html" class="card-item" data-category="기획자의 프레임웍" data-date="20250603" data-id="120">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/120.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1231,7 +1249,7 @@ is_index: true
             <div class="card-date">Jun 3. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/121_%EC%9E%91%EA%B2%8C%20%EC%8B%9C%EC%9E%91%ED%95%B4%20%ED%81%AC%EA%B2%8C%20%ED%84%B0%ED%8A%B8%EB%A6%AC%EB%8A%94%20Slack%EC%9D%98%20%EC%B4%88%EA%B8%B0%EB%A7%88%EC%BC%80%ED%8C%85%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업의 전략들">
+    <a href="/brunch_web_assets/markdown/121_%EC%9E%91%EA%B2%8C%20%EC%8B%9C%EC%9E%91%ED%95%B4%20%ED%81%AC%EA%B2%8C%20%ED%84%B0%ED%8A%B8%EB%A6%AC%EB%8A%94%20Slack%EC%9D%98%20%EC%B4%88%EA%B8%B0%EB%A7%88%EC%BC%80%ED%8C%85%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업의 전략들" data-date="20250602" data-id="121">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/121.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1241,7 +1259,7 @@ is_index: true
             <div class="card-date">Jun 2. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/122_%EB%AF%B8%EA%B5%AD%20%EC%A7%84%EC%B6%9C%EC%9D%80%20%EB%88%84%EA%B5%AC%EC%97%90%EA%B2%8C%20%ED%95%84%EC%9A%94%ED%95%9C%20%EC%A0%84%EB%9E%B5%EC%9D%B8%EA%B0%80.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
+    <a href="/brunch_web_assets/markdown/122_%EB%AF%B8%EA%B5%AD%20%EC%A7%84%EC%B6%9C%EC%9D%80%20%EB%88%84%EA%B5%AC%EC%97%90%EA%B2%8C%20%ED%95%84%EC%9A%94%ED%95%9C%20%EC%A0%84%EB%9E%B5%EC%9D%B8%EA%B0%80.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다" data-date="20250601" data-id="122">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/122.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1251,7 +1269,7 @@ is_index: true
             <div class="card-date">Jun 1. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/123_%EA%B8%B0%ED%9A%8D%EC%9D%80%20%EC%96%B4%EB%96%A0%ED%95%9C%20%EC%A7%88%EB%AC%B8%EB%93%A4%EB%A1%9C%20%EC%9D%B4%EB%A3%A8%EC%96%B4%EC%A7%88%EA%B9%8C.html" class="card-item" data-category="기획자로 시작하기">
+    <a href="/brunch_web_assets/markdown/123_%EA%B8%B0%ED%9A%8D%EC%9D%80%20%EC%96%B4%EB%96%A0%ED%95%9C%20%EC%A7%88%EB%AC%B8%EB%93%A4%EB%A1%9C%20%EC%9D%B4%EB%A3%A8%EC%96%B4%EC%A7%88%EA%B9%8C.html" class="card-item" data-category="기획자로 시작하기" data-date="20250531" data-id="123">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/123.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1261,7 +1279,7 @@ is_index: true
             <div class="card-date">May 31. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/124_DevOps%2C%20%EA%B0%9C%EB%B0%9C%EA%B3%BC%20%EC%9A%B4%EC%98%81%EC%9D%98%20%EA%B2%BD%EA%B3%84%EB%A5%BC%20%ED%97%88%EB%AC%BC%EB%8B%A4.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
+    <a href="/brunch_web_assets/markdown/124_DevOps%2C%20%EA%B0%9C%EB%B0%9C%EA%B3%BC%20%EC%9A%B4%EC%98%81%EC%9D%98%20%EA%B2%BD%EA%B3%84%EB%A5%BC%20%ED%97%88%EB%AC%BC%EB%8B%A4.html" class="card-item" data-category="PO가 꼭 알아야 할 것들" data-date="20250530" data-id="124">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/124.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1271,7 +1289,7 @@ is_index: true
             <div class="card-date">May 30. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/125_%ED%9E%88%ED%8A%B8%EB%A7%B5%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%ED%96%89%EB%8F%99%EC%9D%84%20%EC%83%89%EC%9C%BC%EB%A1%9C%20%EC%9D%BD%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/125_%ED%9E%88%ED%8A%B8%EB%A7%B5%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%ED%96%89%EB%8F%99%EC%9D%84%20%EC%83%89%EC%9C%BC%EB%A1%9C%20%EC%9D%BD%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="UX의 언어들" data-date="20250529" data-id="125">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/125.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1281,7 +1299,7 @@ is_index: true
             <div class="card-date">May 29. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/126_%EC%B2%AB%20%EC%B1%85%EC%9D%84%20%EC%B6%9C%EA%B0%84%ED%96%88%EC%8A%B5%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/126_%EC%B2%AB%20%EC%B1%85%EC%9D%84%20%EC%B6%9C%EA%B0%84%ED%96%88%EC%8A%B5%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프" data-date="20250528" data-id="126">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/126.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1291,7 +1309,7 @@ is_index: true
             <div class="card-date">May 28. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/127_%EB%B6%84%EC%82%B0%20%ED%95%99%EC%8A%B5%2C%20AI%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EA%B2%BD%EC%9F%81%EB%A0%A5%EC%9D%84%20%EC%A2%8C%EC%9A%B0%ED%95%98%EB%8A%94%20%ED%95%B5%EC%8B%AC%20%EA%B8%B0%EC%88%A0.html" class="card-item" data-category="AI의 언어들">
+    <a href="/brunch_web_assets/markdown/127_%EB%B6%84%EC%82%B0%20%ED%95%99%EC%8A%B5%2C%20AI%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EA%B2%BD%EC%9F%81%EB%A0%A5%EC%9D%84%20%EC%A2%8C%EC%9A%B0%ED%95%98%EB%8A%94%20%ED%95%B5%EC%8B%AC%20%EA%B8%B0%EC%88%A0.html" class="card-item" data-category="AI의 언어들" data-date="20250528" data-id="127">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/127.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1301,7 +1319,7 @@ is_index: true
             <div class="card-date">May 28. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/128_%EA%B3%A0%EA%B0%9D%EC%9D%80%20%EC%A0%9C%ED%92%88%EC%9D%84%20%27%EA%B3%A0%EC%9A%A9%27%ED%95%9C%EB%8B%A4.%20%27JTBD%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D%27.html" class="card-item" data-category="기획자의 프레임웍">
+    <a href="/brunch_web_assets/markdown/128_%EA%B3%A0%EA%B0%9D%EC%9D%80%20%EC%A0%9C%ED%92%88%EC%9D%84%20%27%EA%B3%A0%EC%9A%A9%27%ED%95%9C%EB%8B%A4.%20%27JTBD%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D%27.html" class="card-item" data-category="기획자의 프레임웍" data-date="20250527" data-id="128">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/128.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1311,7 +1329,7 @@ is_index: true
             <div class="card-date">May 27. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/129_Dropbox%EC%9D%98%20%EB%AC%B4%EB%A3%8C%EC%97%90%EC%84%9C%20%EC%9C%A0%EB%A3%8C%EB%A1%9C%EC%9D%98%20%EC%A0%84%ED%99%98%20%EB%B9%84%EB%B2%95.html" class="card-item" data-category="스타트업의 전략들">
+    <a href="/brunch_web_assets/markdown/129_Dropbox%EC%9D%98%20%EB%AC%B4%EB%A3%8C%EC%97%90%EC%84%9C%20%EC%9C%A0%EB%A3%8C%EB%A1%9C%EC%9D%98%20%EC%A0%84%ED%99%98%20%EB%B9%84%EB%B2%95.html" class="card-item" data-category="스타트업의 전략들" data-date="20250526" data-id="129">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/129.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1321,7 +1339,7 @@ is_index: true
             <div class="card-date">May 26. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/130_%EC%99%9C%20%ED%95%9C%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%EB%AF%B8%EA%B5%AD%20%EC%A7%84%EC%B6%9C%EC%9D%84%20%EA%BF%88%EA%BE%B8%EB%8A%94%EA%B0%80.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
+    <a href="/brunch_web_assets/markdown/130_%EC%99%9C%20%ED%95%9C%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%EB%AF%B8%EA%B5%AD%20%EC%A7%84%EC%B6%9C%EC%9D%84%20%EA%BF%88%EA%BE%B8%EB%8A%94%EA%B0%80.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다" data-date="20250525" data-id="130">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/130.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1331,7 +1349,7 @@ is_index: true
             <div class="card-date">May 25. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/131_%EC%99%9C%20%EC%96%B4%EB%A0%A4%EC%9A%B4%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%84%20%EB%A7%88%EB%8B%A4%ED%95%98%EC%A7%80%20%EC%95%8A%EC%95%98%EC%9D%84%EA%B9%8C.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/131_%EC%99%9C%20%EC%96%B4%EB%A0%A4%EC%9A%B4%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%84%20%EB%A7%88%EB%8B%A4%ED%95%98%EC%A7%80%20%EC%95%8A%EC%95%98%EC%9D%84%EA%B9%8C.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250524" data-id="131">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/131.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1341,7 +1359,7 @@ is_index: true
             <div class="card-date">May 24. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/132_PM%2C%20PL%2C%20TPM%EC%9D%98%20%EC%B0%A8%EC%9D%B4%20%ED%95%9C%EB%88%88%EC%97%90%20%EB%B3%B4%EA%B8%B0.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
+    <a href="/brunch_web_assets/markdown/132_PM%2C%20PL%2C%20TPM%EC%9D%98%20%EC%B0%A8%EC%9D%B4%20%ED%95%9C%EB%88%88%EC%97%90%20%EB%B3%B4%EA%B8%B0.html" class="card-item" data-category="PO가 꼭 알아야 할 것들" data-date="20250523" data-id="132">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/132.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1351,7 +1369,7 @@ is_index: true
             <div class="card-date">May 23. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/133_Drop-off%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B0%80%20%EB%96%A0%EB%82%98%EB%8A%94%20%EC%88%9C%EA%B0%84%EC%9D%84%20%ED%8F%AC%EC%B0%A9%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/133_Drop-off%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B0%80%20%EB%96%A0%EB%82%98%EB%8A%94%20%EC%88%9C%EA%B0%84%EC%9D%84%20%ED%8F%AC%EC%B0%A9%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95.html" class="card-item" data-category="UX의 언어들" data-date="20250522" data-id="133">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/133.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1361,7 +1379,7 @@ is_index: true
             <div class="card-date">May 22. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/134_AI%20%EB%AA%A8%EB%8D%B8%EC%9D%98%20%ED%95%99%EC%83%9D%EA%B3%BC%20%EC%A1%B8%EC%97%85%EC%83%9D%2C%20%ED%95%99%EC%8A%B5%EA%B3%BC%20%EC%B6%94%EB%A1%A0%EC%9D%98%20%EC%B0%A8%EC%9D%B4%EC%A0%90.html" class="card-item" data-category="AI의 언어들">
+    <a href="/brunch_web_assets/markdown/134_AI%20%EB%AA%A8%EB%8D%B8%EC%9D%98%20%ED%95%99%EC%83%9D%EA%B3%BC%20%EC%A1%B8%EC%97%85%EC%83%9D%2C%20%ED%95%99%EC%8A%B5%EA%B3%BC%20%EC%B6%94%EB%A1%A0%EC%9D%98%20%EC%B0%A8%EC%9D%B4%EC%A0%90.html" class="card-item" data-category="AI의 언어들" data-date="20250521" data-id="134">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/134.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1371,7 +1389,7 @@ is_index: true
             <div class="card-date">May 21. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/135_%EC%A0%9C%ED%92%88%EC%9D%98%20%EC%83%9D%EB%AA%85%EC%84%A0%2C%20Retention%20Curve.html" class="card-item" data-category="기획자의 프레임웍">
+    <a href="/brunch_web_assets/markdown/135_%EC%A0%9C%ED%92%88%EC%9D%98%20%EC%83%9D%EB%AA%85%EC%84%A0%2C%20Retention%20Curve.html" class="card-item" data-category="기획자의 프레임웍" data-date="20250520" data-id="135">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/135.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1381,7 +1399,7 @@ is_index: true
             <div class="card-date">May 20. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/136_%EB%82%B4%EA%B0%80%20%EA%B2%AA%EB%8A%94%20%EB%B6%88%ED%8E%B8%ED%95%A8%EC%9D%B4%20%EC%82%AC%EC%97%85%20%EC%95%84%EC%9D%B4%ED%85%9C%EC%9D%B4%EB%8B%A4%2C%20%27%EB%94%94%EC%8A%A4%EC%BD%94%EB%93%9C%27.html" class="card-item" data-category="스타트업의 전략들">
+    <a href="/brunch_web_assets/markdown/136_%EB%82%B4%EA%B0%80%20%EA%B2%AA%EB%8A%94%20%EB%B6%88%ED%8E%B8%ED%95%A8%EC%9D%B4%20%EC%82%AC%EC%97%85%20%EC%95%84%EC%9D%B4%ED%85%9C%EC%9D%B4%EB%8B%A4%2C%20%27%EB%94%94%EC%8A%A4%EC%BD%94%EB%93%9C%27.html" class="card-item" data-category="스타트업의 전략들" data-date="20250519" data-id="136">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/136.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1391,7 +1409,7 @@ is_index: true
             <div class="card-date">May 19. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/137_Perplexity5%20%EC%9E%90%EC%B2%B4%20%EA%B5%AC%EC%B6%95%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EB%A1%9C%EB%93%9C%EB%A7%B5.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/137_Perplexity5%20%EC%9E%90%EC%B2%B4%20%EA%B5%AC%EC%B6%95%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EB%A1%9C%EB%93%9C%EB%A7%B5.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250518" data-id="137">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/137.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1401,7 +1419,7 @@ is_index: true
             <div class="card-date">May 18. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/138_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%BD%94%EC%B9%AD%20%EB%8B%A4%EC%9D%B4%EC%96%B4%EB%A6%AC%202025%201.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/138_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%BD%94%EC%B9%AD%20%EB%8B%A4%EC%9D%B4%EC%96%B4%EB%A6%AC%202025%201.html" class="card-item" data-category="심플리파이어 라이프" data-date="20250517" data-id="138">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/138.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1411,7 +1429,7 @@ is_index: true
             <div class="card-date">May 17. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/139_%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8%20%EB%A7%A4%EB%8B%88%EC%A0%80%20vs%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%A7%A4%EB%8B%88%EC%A0%80%EC%9D%98%20%EC%B0%A8%EC%9D%B4%EB%8A%94.html" class="card-item" data-category="Be the PO">
+    <a href="/brunch_web_assets/markdown/139_%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8%20%EB%A7%A4%EB%8B%88%EC%A0%80%20vs%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%A7%A4%EB%8B%88%EC%A0%80%EC%9D%98%20%EC%B0%A8%EC%9D%B4%EB%8A%94.html" class="card-item" data-category="Be the PO" data-date="20250516" data-id="139">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/139.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1421,7 +1439,7 @@ is_index: true
             <div class="card-date">May 16. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/140_%EC%96%B4%ED%8F%AC%EB%8D%98%EC%8A%A4%20%EC%9D%B4%20%EB%B2%84%ED%8A%BC%2C%20%EC%99%9C%20%EB%88%84%EB%A5%B4%EA%B3%A0%20%EC%8B%B6%EC%9D%84%EA%B9%8C%20%EA%B7%B8%20%EB%B9%84%EB%B0%80.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/140_%EC%96%B4%ED%8F%AC%EB%8D%98%EC%8A%A4%20%EC%9D%B4%20%EB%B2%84%ED%8A%BC%2C%20%EC%99%9C%20%EB%88%84%EB%A5%B4%EA%B3%A0%20%EC%8B%B6%EC%9D%84%EA%B9%8C%20%EA%B7%B8%20%EB%B9%84%EB%B0%80.html" class="card-item" data-category="UX의 언어들" data-date="20250515" data-id="140">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/140.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1431,7 +1449,7 @@ is_index: true
             <div class="card-date">May 15. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/141_AI%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%84%BC%ED%84%B0%20%ED%98%88%EA%B4%80%2C%20InfiniBandNVLink.html" class="card-item" data-category="AI의 언어들">
+    <a href="/brunch_web_assets/markdown/141_AI%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%84%BC%ED%84%B0%20%ED%98%88%EA%B4%80%2C%20InfiniBandNVLink.html" class="card-item" data-category="AI의 언어들" data-date="20250514" data-id="141">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/141.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1441,7 +1459,7 @@ is_index: true
             <div class="card-date">May 14. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/142_%27%EC%BD%94%ED%98%B8%ED%8A%B8%20%EB%B6%84%EC%84%9D%27%20%ED%8F%89%EA%B7%A0%EC%9D%98%20%ED%95%A8%EC%A0%95%EC%97%90%EC%84%9C%20%EB%B2%97%EC%96%B4%EB%82%98%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획자의 프레임웍">
+    <a href="/brunch_web_assets/markdown/142_%27%EC%BD%94%ED%98%B8%ED%8A%B8%20%EB%B6%84%EC%84%9D%27%20%ED%8F%89%EA%B7%A0%EC%9D%98%20%ED%95%A8%EC%A0%95%EC%97%90%EC%84%9C%20%EB%B2%97%EC%96%B4%EB%82%98%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획자의 프레임웍" data-date="20250513" data-id="142">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/142.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1451,7 +1469,7 @@ is_index: true
             <div class="card-date">May 13. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/143_%EC%97%90%EC%96%B4%EB%A7%A4%ED%8A%B8%EC%97%90%EC%84%9C%20%EC%8B%9C%EC%9E%91%EB%90%9C%2C%20%EC%97%90%EC%96%B4%EB%B9%84%EC%95%A4%EB%B9%84%EC%9D%98%20%EB%AC%B4%EC%9E%90%EB%B3%B8%20%EC%B0%BD%EC%97%85%20%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업의 전략들">
+    <a href="/brunch_web_assets/markdown/143_%EC%97%90%EC%96%B4%EB%A7%A4%ED%8A%B8%EC%97%90%EC%84%9C%20%EC%8B%9C%EC%9E%91%EB%90%9C%2C%20%EC%97%90%EC%96%B4%EB%B9%84%EC%95%A4%EB%B9%84%EC%9D%98%20%EB%AC%B4%EC%9E%90%EB%B3%B8%20%EC%B0%BD%EC%97%85%20%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업의 전략들" data-date="20250512" data-id="143">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/143.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1461,7 +1479,7 @@ is_index: true
             <div class="card-date">May 12. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/144_Perplexity4%20%EB%8C%80%ED%99%94%ED%98%95%20UX%20%EA%B5%AC%EC%A1%B0%EC%99%80%20%EC%BF%BC%EB%A6%AC%20%EB%B6%84%EA%B8%B0.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/144_Perplexity4%20%EB%8C%80%ED%99%94%ED%98%95%20UX%20%EA%B5%AC%EC%A1%B0%EC%99%80%20%EC%BF%BC%EB%A6%AC%20%EB%B6%84%EA%B8%B0.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250511" data-id="144">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/144.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1471,7 +1489,7 @@ is_index: true
             <div class="card-date">May 11. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/145_%EC%9A%B4%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%B0%BE%EC%95%84%EC%98%AC%EA%B9%8C.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/145_%EC%9A%B4%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%B0%BE%EC%95%84%EC%98%AC%EA%B9%8C.html" class="card-item" data-category="심플리파이어 라이프" data-date="20250510" data-id="145">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/145.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1481,7 +1499,7 @@ is_index: true
             <div class="card-date">May 10. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/146_%EB%A6%B0%EA%B3%BC%20%EC%95%A0%EC%9E%90%EC%9D%BC%2C%20%EC%9A%B0%EB%A6%AC%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%97%94%20%EC%96%B4%EB%96%A4%20%EA%B1%B8%20%ED%95%B4%EC%95%BC%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
+    <a href="/brunch_web_assets/markdown/146_%EB%A6%B0%EA%B3%BC%20%EC%95%A0%EC%9E%90%EC%9D%BC%2C%20%EC%9A%B0%EB%A6%AC%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%97%94%20%EC%96%B4%EB%96%A4%20%EA%B1%B8%20%ED%95%B4%EC%95%BC%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="PO가 꼭 알아야 할 것들" data-date="20250509" data-id="146">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/146.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1491,7 +1509,7 @@ is_index: true
             <div class="card-date">May 9. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/147_%EC%95%B1%20%EC%84%B1%EB%8A%A5%EA%B3%BC%20UX%EC%B5%9C%EC%A0%81%ED%99%94%EA%B0%80%20%EB%A7%A4%EC%B6%9C%EC%9D%84%20%EC%A2%8C%EC%9A%B0%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/147_%EC%95%B1%20%EC%84%B1%EB%8A%A5%EA%B3%BC%20UX%EC%B5%9C%EC%A0%81%ED%99%94%EA%B0%80%20%EB%A7%A4%EC%B6%9C%EC%9D%84%20%EC%A2%8C%EC%9A%B0%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="UX의 언어들" data-date="20250508" data-id="147">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/147.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1501,7 +1519,7 @@ is_index: true
             <div class="card-date">May 8. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/148_AI%EB%AA%A8%EB%8D%B8%20%ED%95%99%EC%8A%B5%EC%97%90%20%EB%82%A0%EA%B0%9C%EB%A5%BC%20%EB%8B%AC%EC%9E%90%21%20%ED%98%BC%ED%95%A9%20%EC%A0%95%EB%B0%80%EB%8F%84%EC%9D%98%20%EB%A7%88%EB%B2%95.html" class="card-item" data-category="AI의 언어들">
+    <a href="/brunch_web_assets/markdown/148_AI%EB%AA%A8%EB%8D%B8%20%ED%95%99%EC%8A%B5%EC%97%90%20%EB%82%A0%EA%B0%9C%EB%A5%BC%20%EB%8B%AC%EC%9E%90%21%20%ED%98%BC%ED%95%A9%20%EC%A0%95%EB%B0%80%EB%8F%84%EC%9D%98%20%EB%A7%88%EB%B2%95.html" class="card-item" data-category="AI의 언어들" data-date="20250507" data-id="148">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/148.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1511,7 +1529,7 @@ is_index: true
             <div class="card-date">May 7. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/149_%27Lean%20Canvas%27%20%ED%95%98%EB%A3%A8%EB%A7%8C%EC%97%90%20%EA%B7%B8%EB%A6%AC%EB%8A%94%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%B2%AD%EC%82%AC%EC%A7%84.html" class="card-item" data-category="기획자의 프레임웍">
+    <a href="/brunch_web_assets/markdown/149_%27Lean%20Canvas%27%20%ED%95%98%EB%A3%A8%EB%A7%8C%EC%97%90%20%EA%B7%B8%EB%A6%AC%EB%8A%94%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%B2%AD%EC%82%AC%EC%A7%84.html" class="card-item" data-category="기획자의 프레임웍" data-date="20250506" data-id="149">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/149.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1521,7 +1539,7 @@ is_index: true
             <div class="card-date">May 6. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/150_Slack%EC%9D%98%20%EC%9C%A0%EB%A3%8C%EC%A0%84%ED%99%98%EC%9D%98%20%EB%A7%A4%EC%A7%81%20%EB%AA%A8%EB%A8%BC%ED%8A%B8.html" class="card-item" data-category="스타트업의 전략들">
+    <a href="/brunch_web_assets/markdown/150_Slack%EC%9D%98%20%EC%9C%A0%EB%A3%8C%EC%A0%84%ED%99%98%EC%9D%98%20%EB%A7%A4%EC%A7%81%20%EB%AA%A8%EB%A8%BC%ED%8A%B8.html" class="card-item" data-category="스타트업의 전략들" data-date="20250505" data-id="150">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/150.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1531,7 +1549,7 @@ is_index: true
             <div class="card-date">May 5. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/151_Perplexity%203%20%EA%B2%80%EC%83%89%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%EA%B5%AC%EC%A1%B0%20%EC%84%A4%EA%B3%84.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/151_Perplexity%203%20%EA%B2%80%EC%83%89%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%EA%B5%AC%EC%A1%B0%20%EC%84%A4%EA%B3%84.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250504" data-id="151">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/151.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1541,7 +1559,7 @@ is_index: true
             <div class="card-date">May 4. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/152_%EC%9E%90%EC%82%B4%EC%B9%B4%ED%8E%98%20%EC%9A%B4%EC%98%81%EC%9E%90%EB%A5%BC%20%EB%A7%8C%EB%82%98%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/152_%EC%9E%90%EC%82%B4%EC%B9%B4%ED%8E%98%20%EC%9A%B4%EC%98%81%EC%9E%90%EB%A5%BC%20%EB%A7%8C%EB%82%98%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프" data-date="20250503" data-id="152">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/152.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1551,7 +1569,7 @@ is_index: true
             <div class="card-date">May 3. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/153_%EB%82%AD%EB%B9%84%EB%8A%94%20%EC%A4%84%EC%9D%B4%EA%B3%A0%20%EA%B0%80%EC%B9%98%EB%8A%94%20%EB%86%92%EC%9D%B4%EB%8A%94%20%27%EB%A6%B0%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B4%80%EB%A6%AC%27.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
+    <a href="/brunch_web_assets/markdown/153_%EB%82%AD%EB%B9%84%EB%8A%94%20%EC%A4%84%EC%9D%B4%EA%B3%A0%20%EA%B0%80%EC%B9%98%EB%8A%94%20%EB%86%92%EC%9D%B4%EB%8A%94%20%27%EB%A6%B0%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B4%80%EB%A6%AC%27.html" class="card-item" data-category="PO가 꼭 알아야 할 것들" data-date="20250502" data-id="153">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/153.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1561,7 +1579,7 @@ is_index: true
             <div class="card-date">May 2. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/154_%EB%86%93%EC%B9%98%EB%A9%B4%20%ED%9B%84%ED%9A%8C%ED%95%A0%20%EA%B1%B0%EC%95%BC%21%20%20FOMO%20UX.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/154_%EB%86%93%EC%B9%98%EB%A9%B4%20%ED%9B%84%ED%9A%8C%ED%95%A0%20%EA%B1%B0%EC%95%BC%21%20%20FOMO%20UX.html" class="card-item" data-category="UX의 언어들" data-date="20250501" data-id="154">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/154.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1571,7 +1589,7 @@ is_index: true
             <div class="card-date">May 1. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/155_AI%20%EC%9D%B8%ED%94%84%EB%9D%BC%20%EB%B9%84%EC%9A%A9%20%EC%A0%88%EA%B0%90%EC%9D%98%20%EB%B9%84%EB%B0%80%2C%20%ED%9D%AC%EC%86%8C%20%EC%97%B0%EC%82%B0%EA%B3%BC%20%EA%B0%80%EC%A7%80%EC%B9%98%EA%B8%B0.html" class="card-item" data-category="AI의 언어들">
+    <a href="/brunch_web_assets/markdown/155_AI%20%EC%9D%B8%ED%94%84%EB%9D%BC%20%EB%B9%84%EC%9A%A9%20%EC%A0%88%EA%B0%90%EC%9D%98%20%EB%B9%84%EB%B0%80%2C%20%ED%9D%AC%EC%86%8C%20%EC%97%B0%EC%82%B0%EA%B3%BC%20%EA%B0%80%EC%A7%80%EC%B9%98%EA%B8%B0.html" class="card-item" data-category="AI의 언어들" data-date="20250430" data-id="155">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/155.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1581,7 +1599,7 @@ is_index: true
             <div class="card-date">Apr 30. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/156_%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%9D%BC%EB%A9%B4%20%EA%BC%AD%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%20LTVCAC%EC%9D%98%EC%A7%84%EC%A7%9C%20%EC%9D%98%EB%AF%B8.html" class="card-item" data-category="기획자의 프레임웍">
+    <a href="/brunch_web_assets/markdown/156_%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%9D%BC%EB%A9%B4%20%EA%BC%AD%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%20LTVCAC%EC%9D%98%EC%A7%84%EC%A7%9C%20%EC%9D%98%EB%AF%B8.html" class="card-item" data-category="기획자의 프레임웍" data-date="20250429" data-id="156">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/156.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1591,7 +1609,7 @@ is_index: true
             <div class="card-date">Apr 29. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/157_%EC%8B%9C%EA%B0%81%EC%A0%81%20%EC%86%8C%ED%86%B5%EC%9D%98%20%EB%8C%80%ED%91%9C%EC%A3%BC%EC%9E%90%2C%20%ED%95%80%ED%84%B0%EB%A0%88%EC%8A%A4%ED%8A%B8%EC%9D%98%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B8%B0%EB%B0%98%20%EC%84%B1%EC%9E%A5.html" class="card-item" data-category="스타트업의 전략들">
+    <a href="/brunch_web_assets/markdown/157_%EC%8B%9C%EA%B0%81%EC%A0%81%20%EC%86%8C%ED%86%B5%EC%9D%98%20%EB%8C%80%ED%91%9C%EC%A3%BC%EC%9E%90%2C%20%ED%95%80%ED%84%B0%EB%A0%88%EC%8A%A4%ED%8A%B8%EC%9D%98%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B8%B0%EB%B0%98%20%EC%84%B1%EC%9E%A5.html" class="card-item" data-category="스타트업의 전략들" data-date="20250428" data-id="157">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/157.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1601,7 +1619,7 @@ is_index: true
             <div class="card-date">Apr 28. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/158_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%93%A4%EC%9D%98%20%EB%B9%84%EB%B0%80%EC%84%9C%EC%9E%AC%20%27%EC%A1%B4%20%EB%8F%84%EC%96%B4%EC%9D%98%20OKR%27.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/158_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%93%A4%EC%9D%98%20%EB%B9%84%EB%B0%80%EC%84%9C%EC%9E%AC%20%27%EC%A1%B4%20%EB%8F%84%EC%96%B4%EC%9D%98%20OKR%27.html" class="card-item" data-category="심플리파이어 라이프" data-date="20250427" data-id="158">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/158.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1611,7 +1629,7 @@ is_index: true
             <div class="card-date">Apr 27. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/159_%EC%A7%84%EC%A0%95%ED%95%9C%20%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%20%EB%A6%AC%EB%8D%94%EC%8B%AD%EC%9D%B4%EB%9E%80.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/159_%EC%A7%84%EC%A0%95%ED%95%9C%20%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%20%EB%A6%AC%EB%8D%94%EC%8B%AD%EC%9D%B4%EB%9E%80.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20250426" data-id="159">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/159.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1621,7 +1639,7 @@ is_index: true
             <div class="card-date">Apr 26. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/160_%EA%B0%84%ED%8A%B8%20%EC%B0%A8%ED%8A%B8%2C%20PO%EC%9D%98%20%ED%95%84%EC%88%98%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B4%80%EB%A6%AC%20%EB%8F%84%EA%B5%AC.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
+    <a href="/brunch_web_assets/markdown/160_%EA%B0%84%ED%8A%B8%20%EC%B0%A8%ED%8A%B8%2C%20PO%EC%9D%98%20%ED%95%84%EC%88%98%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B4%80%EB%A6%AC%20%EB%8F%84%EA%B5%AC.html" class="card-item" data-category="PO가 꼭 알아야 할 것들" data-date="20250425" data-id="160">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/160.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1631,7 +1649,7 @@ is_index: true
             <div class="card-date">Apr 25. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/161_%ED%9B%84%EA%B4%91%ED%9A%A8%EA%B3%BC%28Halo%20Effect%29%2C%20UX%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%98%20%EC%B2%AB%EC%9D%B8%EC%83%81.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/161_%ED%9B%84%EA%B4%91%ED%9A%A8%EA%B3%BC%28Halo%20Effect%29%2C%20UX%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%98%20%EC%B2%AB%EC%9D%B8%EC%83%81.html" class="card-item" data-category="UX의 언어들" data-date="20250424" data-id="161">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/161.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1641,7 +1659,7 @@ is_index: true
             <div class="card-date">Apr 24. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/162_AI%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%EC%88%A8%EC%9D%80%20%EC%98%81%EC%9B%85%2C%20FP16%2C%20BF16%2C%20FP8.html" class="card-item" data-category="AI의 언어들">
+    <a href="/brunch_web_assets/markdown/162_AI%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%EC%88%A8%EC%9D%80%20%EC%98%81%EC%9B%85%2C%20FP16%2C%20BF16%2C%20FP8.html" class="card-item" data-category="AI의 언어들" data-date="20250423" data-id="162">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/162.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1651,7 +1669,7 @@ is_index: true
             <div class="card-date">Apr 23. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/163_%EA%B5%AC%EA%B8%80%EC%9D%B4%20%27AB%ED%85%8C%EC%8A%A4%ED%8A%B8%27%EB%A1%9C%202%EC%96%B5%20%EB%8B%AC%EB%9F%AC%EB%A5%BC%20%EC%B0%BD%EC%B6%9C%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95.html" class="card-item" data-category="기획자의 프레임웍">
+    <a href="/brunch_web_assets/markdown/163_%EA%B5%AC%EA%B8%80%EC%9D%B4%20%27AB%ED%85%8C%EC%8A%A4%ED%8A%B8%27%EB%A1%9C%202%EC%96%B5%20%EB%8B%AC%EB%9F%AC%EB%A5%BC%20%EC%B0%BD%EC%B6%9C%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95.html" class="card-item" data-category="기획자의 프레임웍" data-date="20250422" data-id="163">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/163.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1661,7 +1679,7 @@ is_index: true
             <div class="card-date">Apr 22. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/164_%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%20%EC%82%AC%EB%A1%80%EB%A1%9C%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%ED%95%B5%EC%8B%AC%20%EC%A7%80%ED%91%9C%20%EC%84%A4%EC%A0%95%EB%B2%95.html" class="card-item" data-category="스타트업의 전략들">
+    <a href="/brunch_web_assets/markdown/164_%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%20%EC%82%AC%EB%A1%80%EB%A1%9C%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%ED%95%B5%EC%8B%AC%20%EC%A7%80%ED%91%9C%20%EC%84%A4%EC%A0%95%EB%B2%95.html" class="card-item" data-category="스타트업의 전략들" data-date="20250421" data-id="164">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/164.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1671,7 +1689,7 @@ is_index: true
             <div class="card-date">Apr 21. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/165_Perplexity%202%20%EA%B2%80%EC%83%89%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%EA%B5%AC%EC%A1%B0%20%EC%84%A4%EA%B3%84.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/165_Perplexity%202%20%EA%B2%80%EC%83%89%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%EA%B5%AC%EC%A1%B0%20%EC%84%A4%EA%B3%84.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250420" data-id="165">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/165.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1681,7 +1699,7 @@ is_index: true
             <div class="card-date">Apr 20. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/166_%EA%B8%B0%EB%B6%84%20%EC%A2%8B%EC%9D%80%20%EB%A7%88%EB%A3%A8%20%EC%BB%A4%EB%84%A5%ED%8A%B8%20%EC%B2%AB%20%EB%A9%98%ED%86%A0%EB%A7%81.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/166_%EA%B8%B0%EB%B6%84%20%EC%A2%8B%EC%9D%80%20%EB%A7%88%EB%A3%A8%20%EC%BB%A4%EB%84%A5%ED%8A%B8%20%EC%B2%AB%20%EB%A9%98%ED%86%A0%EB%A7%81.html" class="card-item" data-category="심플리파이어 라이프" data-date="20250420" data-id="166">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/166.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1691,7 +1709,7 @@ is_index: true
             <div class="card-date">Apr 20. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/167_Perplexity%201%20%EA%B2%80%EC%83%89%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EB%84%98%EC%96%B4%EC%84%9C.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/167_Perplexity%201%20%EA%B2%80%EC%83%89%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EB%84%98%EC%96%B4%EC%84%9C.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250420" data-id="167">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/167.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1701,7 +1719,7 @@ is_index: true
             <div class="card-date">Apr 20. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/168_%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%98%20%EC%B8%A1%EC%A0%95%20%27%EC%97%90%EC%8A%A4%ED%8B%B0%EB%A9%94%EC%9D%B4%EC%85%98%27%EA%B3%BC%20%27%EC%8A%A4%ED%86%A0%EB%A6%AC%ED%8F%AC%EC%9D%B8%ED%8A%B8%27.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
+    <a href="/brunch_web_assets/markdown/168_%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%98%20%EC%B8%A1%EC%A0%95%20%27%EC%97%90%EC%8A%A4%ED%8B%B0%EB%A9%94%EC%9D%B4%EC%85%98%27%EA%B3%BC%20%27%EC%8A%A4%ED%86%A0%EB%A6%AC%ED%8F%AC%EC%9D%B8%ED%8A%B8%27.html" class="card-item" data-category="PO가 꼭 알아야 할 것들" data-date="20250418" data-id="168">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/168.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1711,7 +1729,7 @@ is_index: true
             <div class="card-date">Apr 18. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/169_%27%EA%B2%B0%EC%A0%9C%ED%95%98%EA%B8%B0%27%20%EB%B2%84%ED%8A%BC%20%ED%95%98%EB%82%98%EB%A1%9C%20%EB%A7%A4%EC%B6%9C%EC%9D%84%20%EB%86%92%EC%9D%B4%EB%8A%94%20UX.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/169_%27%EA%B2%B0%EC%A0%9C%ED%95%98%EA%B8%B0%27%20%EB%B2%84%ED%8A%BC%20%ED%95%98%EB%82%98%EB%A1%9C%20%EB%A7%A4%EC%B6%9C%EC%9D%84%20%EB%86%92%EC%9D%B4%EB%8A%94%20UX.html" class="card-item" data-category="UX의 언어들" data-date="20250417" data-id="169">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/169.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1721,7 +1739,7 @@ is_index: true
             <div class="card-date">Apr 17. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/170_AI%20%EC%84%B1%EB%8A%A5%EC%9D%84%20100%EB%B0%B0%20%EB%86%92%EC%9D%B4%EB%8A%94%20%EB%B9%84%EA%B2%B0%20TensorCores.html" class="card-item" data-category="AI의 언어들">
+    <a href="/brunch_web_assets/markdown/170_AI%20%EC%84%B1%EB%8A%A5%EC%9D%84%20100%EB%B0%B0%20%EB%86%92%EC%9D%B4%EB%8A%94%20%EB%B9%84%EA%B2%B0%20TensorCores.html" class="card-item" data-category="AI의 언어들" data-date="20250416" data-id="170">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/170.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1731,7 +1749,7 @@ is_index: true
             <div class="card-date">Apr 16. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/171_%27%ED%8D%BC%EB%84%90%20%EB%B6%84%EC%84%9D%27%20%EB%94%94%EC%A7%80%ED%84%B8%20%EC%8B%9C%EB%8C%80%EC%9D%98%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%B5%9C%EC%A0%81%ED%99%94%20%ED%95%B5%EC%8B%AC%20%EA%B8%B0%EC%88%A0.html" class="card-item" data-category="기획자의 프레임웍">
+    <a href="/brunch_web_assets/markdown/171_%27%ED%8D%BC%EB%84%90%20%EB%B6%84%EC%84%9D%27%20%EB%94%94%EC%A7%80%ED%84%B8%20%EC%8B%9C%EB%8C%80%EC%9D%98%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%B5%9C%EC%A0%81%ED%99%94%20%ED%95%B5%EC%8B%AC%20%EA%B8%B0%EC%88%A0.html" class="card-item" data-category="기획자의 프레임웍" data-date="20250415" data-id="171">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/171.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1741,7 +1759,7 @@ is_index: true
             <div class="card-date">Apr 15. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/172_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%B0%BD%EC%97%85%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%ED%95%98%EB%82%98%EC%9A%94.html" class="card-item" data-category="스타트업의 전략들">
+    <a href="/brunch_web_assets/markdown/172_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%B0%BD%EC%97%85%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%ED%95%98%EB%82%98%EC%9A%94.html" class="card-item" data-category="스타트업의 전략들" data-date="20250414" data-id="172">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/172.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1751,7 +1769,7 @@ is_index: true
             <div class="card-date">Apr 14. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/173_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%205%20%ED%95%9C%EA%B5%AD%ED%98%95%20%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%20%EA%B0%80%EB%8A%A5%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/173_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%205%20%ED%95%9C%EA%B5%AD%ED%98%95%20%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%20%EA%B0%80%EB%8A%A5%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250413" data-id="173">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/173.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1761,7 +1779,7 @@ is_index: true
             <div class="card-date">Apr 13. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/174_%EC%9D%B8%EC%9D%B4%20%EB%B0%B0%EA%B8%B8%20%EB%95%8C%EA%B9%8C%EC%A7%80.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/174_%EC%9D%B8%EC%9D%B4%20%EB%B0%B0%EA%B8%B8%20%EB%95%8C%EA%B9%8C%EC%A7%80.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20250412" data-id="174">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/174.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1771,7 +1789,7 @@ is_index: true
             <div class="card-date">Apr 12. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/175_%27%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%8A%A4%ED%86%A0%EB%A6%AC%27%20%EA%B8%B0%EB%8A%A5%EC%9D%B4%20%EC%95%84%EB%8B%8C%20%EA%B0%80%EC%B9%98%EB%A5%BC%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B9%84%EB%B0%80%20%EB%AC%B4%EA%B8%B0.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
+    <a href="/brunch_web_assets/markdown/175_%27%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%8A%A4%ED%86%A0%EB%A6%AC%27%20%EA%B8%B0%EB%8A%A5%EC%9D%B4%20%EC%95%84%EB%8B%8C%20%EA%B0%80%EC%B9%98%EB%A5%BC%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B9%84%EB%B0%80%20%EB%AC%B4%EA%B8%B0.html" class="card-item" data-category="PO가 꼭 알아야 할 것들" data-date="20250411" data-id="175">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/175.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1781,7 +1799,7 @@ is_index: true
             <div class="card-date">Apr 11. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/176_%EC%83%89%EC%83%81%EC%9D%98%20%EC%8B%AC%EB%A6%AC%ED%95%99%2C%20UX%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%98%20%EC%88%A8%EC%9D%80%20%EB%AC%B4%EA%B8%B0.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/176_%EC%83%89%EC%83%81%EC%9D%98%20%EC%8B%AC%EB%A6%AC%ED%95%99%2C%20UX%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%98%20%EC%88%A8%EC%9D%80%20%EB%AC%B4%EA%B8%B0.html" class="card-item" data-category="UX의 언어들" data-date="20250410" data-id="176">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/176.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1791,7 +1809,7 @@ is_index: true
             <div class="card-date">Apr 10. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/177_AI%20%EC%B9%A9%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%ED%95%B5%EC%8B%AC%2C%20FLOPS%EC%99%80%20TOPS%20%EA%B7%B8%EB%A6%AC%EA%B3%A0.html" class="card-item" data-category="AI의 언어들">
+    <a href="/brunch_web_assets/markdown/177_AI%20%EC%B9%A9%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%ED%95%B5%EC%8B%AC%2C%20FLOPS%EC%99%80%20TOPS%20%EA%B7%B8%EB%A6%AC%EA%B3%A0.html" class="card-item" data-category="AI의 언어들" data-date="20250409" data-id="177">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/177.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1801,7 +1819,7 @@ is_index: true
             <div class="card-date">Apr 9. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/178_%27So%20What%2C%20Why%20So%27%20%EB%85%BC%EB%A6%AC%EC%97%90%20%EC%98%81%ED%98%BC%EC%9D%84%20%EB%B6%88%EC%96%B4%EB%84%A3%EB%8B%A4.html" class="card-item" data-category="기획자의 프레임웍">
+    <a href="/brunch_web_assets/markdown/178_%27So%20What%2C%20Why%20So%27%20%EB%85%BC%EB%A6%AC%EC%97%90%20%EC%98%81%ED%98%BC%EC%9D%84%20%EB%B6%88%EC%96%B4%EB%84%A3%EB%8B%A4.html" class="card-item" data-category="기획자의 프레임웍" data-date="20250408" data-id="178">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/178.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1811,7 +1829,7 @@ is_index: true
             <div class="card-date">Apr 8. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/179_%EC%9D%B4%EB%A9%94%EC%9D%BC%EB%8F%84%20%ED%85%8C%EC%8A%AC%EB%9D%BC%EC%B2%98%EB%9F%BC%20%27Superhuman%27%20%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업의 전략들">
+    <a href="/brunch_web_assets/markdown/179_%EC%9D%B4%EB%A9%94%EC%9D%BC%EB%8F%84%20%ED%85%8C%EC%8A%AC%EB%9D%BC%EC%B2%98%EB%9F%BC%20%27Superhuman%27%20%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업의 전략들" data-date="20250407" data-id="179">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/179.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1821,7 +1839,7 @@ is_index: true
             <div class="card-date">Apr 7. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/180_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%204%20Apollo%20%ED%98%81%EC%8B%A0%EC%9D%98%20%EB%B0%B0%ED%8F%AC%20%ED%94%8C%EB%9E%AB%ED%8F%BC.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/180_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%204%20Apollo%20%ED%98%81%EC%8B%A0%EC%9D%98%20%EB%B0%B0%ED%8F%AC%20%ED%94%8C%EB%9E%AB%ED%8F%BC.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250406" data-id="180">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/180.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1831,7 +1849,7 @@ is_index: true
             <div class="card-date">Apr 6. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/181_%EC%B4%88%EA%B3%A0%EC%86%8D%20%EC%97%98%EB%A6%AC%EB%B2%A0%EC%9D%B4%ED%84%B0%EB%A5%BC%20%EC%98%AC%EB%9D%BC%ED%83%80%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/181_%EC%B4%88%EA%B3%A0%EC%86%8D%20%EC%97%98%EB%A6%AC%EB%B2%A0%EC%9D%B4%ED%84%B0%EB%A5%BC%20%EC%98%AC%EB%9D%BC%ED%83%80%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획일상" data-date="20250405" data-id="181">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/181.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1841,7 +1859,7 @@ is_index: true
             <div class="card-date">Apr 5. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/182_%EC%95%A0%EC%9E%90%EC%9D%BC%20vs%20%EC%9B%8C%ED%84%B0%ED%8F%B4%2C%20PO%EA%B0%80%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%20%EB%AA%A8%EB%93%A0%20%EA%B2%83.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
+    <a href="/brunch_web_assets/markdown/182_%EC%95%A0%EC%9E%90%EC%9D%BC%20vs%20%EC%9B%8C%ED%84%B0%ED%8F%B4%2C%20PO%EA%B0%80%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%20%EB%AA%A8%EB%93%A0%20%EA%B2%83.html" class="card-item" data-category="PO가 꼭 알아야 할 것들" data-date="20250404" data-id="182">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/182.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1851,7 +1869,7 @@ is_index: true
             <div class="card-date">Apr 4. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/183_%EA%B2%8C%EC%9D%B4%EB%AF%B8%ED%94%BC%EC%BC%80%EC%9D%B4%EC%85%98UX%EB%A1%9C%20%EB%8F%99%EA%B8%B0%EB%B6%80%EC%97%AC%EB%A5%BC%20%EB%94%94%EC%9E%90%EC%9D%B8%ED%95%98%EB%8B%A4.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/183_%EA%B2%8C%EC%9D%B4%EB%AF%B8%ED%94%BC%EC%BC%80%EC%9D%B4%EC%85%98UX%EB%A1%9C%20%EB%8F%99%EA%B8%B0%EB%B6%80%EC%97%AC%EB%A5%BC%20%EB%94%94%EC%9E%90%EC%9D%B8%ED%95%98%EB%8B%A4.html" class="card-item" data-category="UX의 언어들" data-date="20250403" data-id="183">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/183.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1861,7 +1879,7 @@ is_index: true
             <div class="card-date">Apr 3. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/184_AI%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%EC%97%B4%EC%87%A0%2C%20HBM%EC%9D%80%20%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C.html" class="card-item" data-category="AI의 언어들">
+    <a href="/brunch_web_assets/markdown/184_AI%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%EC%97%B4%EC%87%A0%2C%20HBM%EC%9D%80%20%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C.html" class="card-item" data-category="AI의 언어들" data-date="20250402" data-id="184">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/184.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1871,7 +1889,7 @@ is_index: true
             <div class="card-date">Apr 2. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/185_%EC%82%AC%EA%B3%A0%EC%9D%98%20%EC%A7%80%EB%8F%84%EB%A5%BC%20%EA%B7%B8%EB%A6%AC%EB%8A%94%20%EB%B2%95%20%27%EB%A1%9C%EC%A7%81%20%ED%8A%B8%EB%A6%AC%27.html" class="card-item" data-category="기획자의 프레임웍">
+    <a href="/brunch_web_assets/markdown/185_%EC%82%AC%EA%B3%A0%EC%9D%98%20%EC%A7%80%EB%8F%84%EB%A5%BC%20%EA%B7%B8%EB%A6%AC%EB%8A%94%20%EB%B2%95%20%27%EB%A1%9C%EC%A7%81%20%ED%8A%B8%EB%A6%AC%27.html" class="card-item" data-category="기획자의 프레임웍" data-date="20250401" data-id="185">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/185.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1881,7 +1899,7 @@ is_index: true
             <div class="card-date">Apr 1. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/186_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%20%ED%99%95%EB%B3%B4%20%EC%A0%84%EB%9E%B5%20%27%EC%8A%A4%ED%8A%B8%EB%9D%BC%EC%9D%B4%ED%94%84%27.html" class="card-item" data-category="스타트업의 전략들">
+    <a href="/brunch_web_assets/markdown/186_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%20%ED%99%95%EB%B3%B4%20%EC%A0%84%EB%9E%B5%20%27%EC%8A%A4%ED%8A%B8%EB%9D%BC%EC%9D%B4%ED%94%84%27.html" class="card-item" data-category="스타트업의 전략들" data-date="20250331" data-id="186">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/186.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1891,7 +1909,7 @@ is_index: true
             <div class="card-date">Mar 31. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/187_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%203%20Foundry%20%EA%B8%B0%EC%97%85%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%ED%94%8C%EB%9E%AB%ED%8F%BC.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/187_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%203%20Foundry%20%EA%B8%B0%EC%97%85%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%ED%94%8C%EB%9E%AB%ED%8F%BC.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250330" data-id="187">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/187.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1901,7 +1919,7 @@ is_index: true
             <div class="card-date">Mar 30. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/188_%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%EB%A6%AC%EB%8D%94%EA%B0%80%20%EA%BC%AD%20%EA%B0%80%EC%A0%B8%EC%95%BC%20%ED%95%A0%20%EA%B2%83%EC%9D%80.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/188_%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%EB%A6%AC%EB%8D%94%EA%B0%80%20%EA%BC%AD%20%EA%B0%80%EC%A0%B8%EC%95%BC%20%ED%95%A0%20%EA%B2%83%EC%9D%80.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20250329" data-id="188">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/188.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1911,7 +1929,7 @@ is_index: true
             <div class="card-date">Mar 29. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/189_%EC%B9%B8%EB%B0%98%2C%20%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%98%20Just%20In%20Time.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
+    <a href="/brunch_web_assets/markdown/189_%EC%B9%B8%EB%B0%98%2C%20%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%98%20Just%20In%20Time.html" class="card-item" data-category="PO가 꼭 알아야 할 것들" data-date="20250328" data-id="189">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/189.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1921,7 +1939,7 @@ is_index: true
             <div class="card-date">Mar 28. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/190_%27%EC%8A%A4%ED%8B%B0%ED%82%A4%20UI%27%20%EC%8A%A4%ED%81%AC%EB%A1%A4%20%EC%86%8D%EC%97%90%EC%84%9C%20%EB%B9%9B%EB%82%98%EB%8A%94%20%EB%81%88%EC%A0%81%ED%95%9C%20%EA%B2%BD%ED%97%98.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/190_%27%EC%8A%A4%ED%8B%B0%ED%82%A4%20UI%27%20%EC%8A%A4%ED%81%AC%EB%A1%A4%20%EC%86%8D%EC%97%90%EC%84%9C%20%EB%B9%9B%EB%82%98%EB%8A%94%20%EB%81%88%EC%A0%81%ED%95%9C%20%EA%B2%BD%ED%97%98.html" class="card-item" data-category="UX의 언어들" data-date="20250327" data-id="190">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/190.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1931,7 +1949,7 @@ is_index: true
             <div class="card-date">Mar 27. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/191_AI%ED%95%98%EB%93%9C%EC%9B%A8%EC%96%B4%2C%20GPU%EC%99%80%20NPU%20%EA%B7%B8%EB%A6%AC%EA%B3%A0%20FPGA%EC%9D%98%20%EC%B0%A8%EC%9D%B4%EC%A0%90.html" class="card-item" data-category="AI의 언어들">
+    <a href="/brunch_web_assets/markdown/191_AI%ED%95%98%EB%93%9C%EC%9B%A8%EC%96%B4%2C%20GPU%EC%99%80%20NPU%20%EA%B7%B8%EB%A6%AC%EA%B3%A0%20FPGA%EC%9D%98%20%EC%B0%A8%EC%9D%B4%EC%A0%90.html" class="card-item" data-category="AI의 언어들" data-date="20250326" data-id="191">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/191.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1941,7 +1959,7 @@ is_index: true
             <div class="card-date">Mar 26. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/192_%27%EB%A7%A5%EB%AA%A8%EB%8B%9D%27%EC%9D%98%20%EB%B9%84%EB%B0%80%2C%20MECE%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC.html" class="card-item" data-category="기획자의 프레임웍">
+    <a href="/brunch_web_assets/markdown/192_%27%EB%A7%A5%EB%AA%A8%EB%8B%9D%27%EC%9D%98%20%EB%B9%84%EB%B0%80%2C%20MECE%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC.html" class="card-item" data-category="기획자의 프레임웍" data-date="20250325" data-id="192">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/192.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1951,7 +1969,7 @@ is_index: true
             <div class="card-date">Mar 25. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/193_AI%EB%A1%9C%20UI%EA%B0%9C%EB%B0%9C%20%EC%86%8D%EB%8F%84%EB%A5%BC%2010%EB%B0%B0%EB%A1%9C%20%EB%A7%8C%EB%93%A4%EB%8B%A4.%20%27V0%27.html" class="card-item" data-category="스타트업의 전략들">
+    <a href="/brunch_web_assets/markdown/193_AI%EB%A1%9C%20UI%EA%B0%9C%EB%B0%9C%20%EC%86%8D%EB%8F%84%EB%A5%BC%2010%EB%B0%B0%EB%A1%9C%20%EB%A7%8C%EB%93%A4%EB%8B%A4.%20%27V0%27.html" class="card-item" data-category="스타트업의 전략들" data-date="20250324" data-id="193">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/193.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1961,7 +1979,7 @@ is_index: true
             <div class="card-date">Mar 24. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/194_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%93%A4%EC%9D%98%20%EB%B9%84%EB%B0%80%EC%84%9C%EC%9E%AC%20%27%EC%83%9D%EA%B0%81%EC%9D%98%20%ED%83%84%EC%83%9D%27.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/194_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%93%A4%EC%9D%98%20%EB%B9%84%EB%B0%80%EC%84%9C%EC%9E%AC%20%27%EC%83%9D%EA%B0%81%EC%9D%98%20%ED%83%84%EC%83%9D%27.html" class="card-item" data-category="심플리파이어 라이프" data-date="20250323" data-id="194">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/194.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1971,7 +1989,7 @@ is_index: true
             <div class="card-date">Mar 23. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/195_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%202%20Gotham%20%EA%B5%AD%EA%B0%80%20%EC%95%88%EB%B3%B4%EB%A5%BC%20%EC%9C%84%ED%95%9C%20%ED%94%8C%EB%9E%AB%ED%8F%BC.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/195_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%202%20Gotham%20%EA%B5%AD%EA%B0%80%20%EC%95%88%EB%B3%B4%EB%A5%BC%20%EC%9C%84%ED%95%9C%20%ED%94%8C%EB%9E%AB%ED%8F%BC.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250323" data-id="195">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/195.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1981,7 +1999,7 @@ is_index: true
             <div class="card-date">Mar 23. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/196_%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%EA%B0%80%20%EC%83%9D%EA%B0%81%EB%B3%B4%EB%8B%A4%20%EC%84%B1%EC%9E%A5%ED%95%98%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%9D%B4%EC%9C%A0%EB%8A%94%20%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/196_%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%EA%B0%80%20%EC%83%9D%EA%B0%81%EB%B3%B4%EB%8B%A4%20%EC%84%B1%EC%9E%A5%ED%95%98%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%9D%B4%EC%9C%A0%EB%8A%94%20%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20250322" data-id="196">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/196.jpg');"></div>
         <div class="card-content">
             <div>
@@ -1991,7 +2009,7 @@ is_index: true
             <div class="card-date">Mar 22. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/197_%EC%8A%A4%ED%81%AC%EB%9F%BC%20%EB%A7%88%EC%8A%A4%ED%84%B0%20vs%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%A7%A4%EB%8B%88%EC%A0%80%27%20%EC%B0%A8%EC%9D%B4%EB%8A%94.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
+    <a href="/brunch_web_assets/markdown/197_%EC%8A%A4%ED%81%AC%EB%9F%BC%20%EB%A7%88%EC%8A%A4%ED%84%B0%20vs%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%A7%A4%EB%8B%88%EC%A0%80%27%20%EC%B0%A8%EC%9D%B4%EB%8A%94.html" class="card-item" data-category="PO가 꼭 알아야 할 것들" data-date="20250321" data-id="197">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/197.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2001,7 +2019,7 @@ is_index: true
             <div class="card-date">Mar 21. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/198_UX%EC%97%90%EB%8F%84%20%EB%A6%AC%EB%93%AC%EC%9D%B4%20%EC%9E%88%EB%8B%A4.%20%27%ED%83%80%EC%9D%B4%EB%B0%8D%20%EC%84%A4%EA%B3%84%EB%B2%95%27.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/198_UX%EC%97%90%EB%8F%84%20%EB%A6%AC%EB%93%AC%EC%9D%B4%20%EC%9E%88%EB%8B%A4.%20%27%ED%83%80%EC%9D%B4%EB%B0%8D%20%EC%84%A4%EA%B3%84%EB%B2%95%27.html" class="card-item" data-category="UX의 언어들" data-date="20250320" data-id="198">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/198.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2011,7 +2029,7 @@ is_index: true
             <div class="card-date">Mar 20. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/199_AI%EC%8B%9C%EB%8C%80%20%EC%8A%88%ED%8D%BC%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B0%80%20%ED%95%84%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="AI의 언어들">
+    <a href="/brunch_web_assets/markdown/199_AI%EC%8B%9C%EB%8C%80%20%EC%8A%88%ED%8D%BC%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B0%80%20%ED%95%84%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="AI의 언어들" data-date="20250319" data-id="199">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/199.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2021,7 +2039,7 @@ is_index: true
             <div class="card-date">Mar 19. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/200_%EC%82%AC%EC%9A%A9%EC%9E%90%EB%A5%BC%20%EC%A4%91%EB%8F%85%EC%8B%9C%ED%82%A4%EB%8A%94%204%EB%8B%A8%EA%B3%84%20%EB%A7%88%EB%B2%95%20%27Hooked%20%EB%AA%A8%EB%8D%B8%27.html" class="card-item" data-category="기획자의 프레임웍">
+    <a href="/brunch_web_assets/markdown/200_%EC%82%AC%EC%9A%A9%EC%9E%90%EB%A5%BC%20%EC%A4%91%EB%8F%85%EC%8B%9C%ED%82%A4%EB%8A%94%204%EB%8B%A8%EA%B3%84%20%EB%A7%88%EB%B2%95%20%27Hooked%20%EB%AA%A8%EB%8D%B8%27.html" class="card-item" data-category="기획자의 프레임웍" data-date="20250318" data-id="200">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/200.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2031,7 +2049,7 @@ is_index: true
             <div class="card-date">Mar 18. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/201_3%EC%96%B5%EC%9D%B4%20%ED%99%80%EB%A6%AD%ED%95%98%EB%8A%94%20%27%EB%A6%B4%EC%88%8F%27%EC%9D%98%20%ED%8B%88%EC%83%88%EC%8B%9C%EC%9E%A5%20%EA%B3%B5%EB%9E%B5%20%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/201_3%EC%96%B5%EC%9D%B4%20%ED%99%80%EB%A6%AD%ED%95%98%EB%8A%94%20%27%EB%A6%B4%EC%88%8F%27%EC%9D%98%20%ED%8B%88%EC%83%88%EC%8B%9C%EC%9E%A5%20%EA%B3%B5%EB%9E%B5%20%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250317" data-id="201">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/201.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2041,7 +2059,7 @@ is_index: true
             <div class="card-date">Mar 17. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/202_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%201%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%86%B5%ED%95%A9%EA%B3%BC%20%EB%B6%84%EC%84%9D%EC%9D%98%20%EC%83%88%EB%A1%9C%EC%9A%B4%20%ED%8C%A8%EB%9F%AC%EB%8B%A4%EC%9E%84.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/202_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%201%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%86%B5%ED%95%A9%EA%B3%BC%20%EB%B6%84%EC%84%9D%EC%9D%98%20%EC%83%88%EB%A1%9C%EC%9A%B4%20%ED%8C%A8%EB%9F%AC%EB%8B%A4%EC%9E%84.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250315" data-id="202">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/202.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2051,7 +2069,7 @@ is_index: true
             <div class="card-date">Mar 15. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/203_%EC%84%B1%EC%9E%A5%EC%9D%98%20%EA%B0%80%EC%9E%A5%20%ED%81%B0%20%EB%B9%84%EB%B0%80...%20%EC%A7%80%EB%A3%A8%ED%95%A8.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/203_%EC%84%B1%EC%9E%A5%EC%9D%98%20%EA%B0%80%EC%9E%A5%20%ED%81%B0%20%EB%B9%84%EB%B0%80...%20%EC%A7%80%EB%A3%A8%ED%95%A8.html" class="card-item" data-category="기획일상" data-date="20250315" data-id="203">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/203.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2061,7 +2079,7 @@ is_index: true
             <div class="card-date">Mar 15. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/204_%27%EC%8A%A4%ED%81%AC%EB%9F%BC%EB%A7%88%EC%8A%A4%ED%84%B0%27%20%ED%8C%80%EC%9D%98%20%EC%88%98%ED%98%B8%EC%9E%90%EC%9D%B4%EC%9E%90%20%EC%84%9C%EB%B2%88%ED%8A%B8%20%EB%A6%AC%EB%8D%94.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
+    <a href="/brunch_web_assets/markdown/204_%27%EC%8A%A4%ED%81%AC%EB%9F%BC%EB%A7%88%EC%8A%A4%ED%84%B0%27%20%ED%8C%80%EC%9D%98%20%EC%88%98%ED%98%B8%EC%9E%90%EC%9D%B4%EC%9E%90%20%EC%84%9C%EB%B2%88%ED%8A%B8%20%EB%A6%AC%EB%8D%94.html" class="card-item" data-category="PO가 꼭 알아야 할 것들" data-date="20250314" data-id="204">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/204.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2071,7 +2089,7 @@ is_index: true
             <div class="card-date">Mar 14. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/205_%EC%95%A0%ED%94%8C%EC%9D%B4%20%27%EA%B8%B0%EB%B3%B8%EA%B0%92%27%EC%9C%BC%EB%A1%9C%20%EC%82%AC%EC%9A%A9%EC%9E%90%EB%A5%BC%20%EC%82%AC%EB%A1%9C%EC%9E%A1%EB%8A%94%20%EB%B9%84%EB%B0%80.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/205_%EC%95%A0%ED%94%8C%EC%9D%B4%20%27%EA%B8%B0%EB%B3%B8%EA%B0%92%27%EC%9C%BC%EB%A1%9C%20%EC%82%AC%EC%9A%A9%EC%9E%90%EB%A5%BC%20%EC%82%AC%EB%A1%9C%EC%9E%A1%EB%8A%94%20%EB%B9%84%EB%B0%80.html" class="card-item" data-category="UX의 언어들" data-date="20250313" data-id="205">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/205.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2081,7 +2099,7 @@ is_index: true
             <div class="card-date">Mar 13. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/206_%ED%8F%89%EB%B2%94%EC%9D%84%20%EA%B1%B0%EB%B6%80%ED%95%9C%EB%8B%A4.%20%27%ED%97%A4%EB%8D%94%EC%9C%85%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%27.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/206_%ED%8F%89%EB%B2%94%EC%9D%84%20%EA%B1%B0%EB%B6%80%ED%95%9C%EB%8B%A4.%20%27%ED%97%A4%EB%8D%94%EC%9C%85%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%27.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250312" data-id="206">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/206.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2091,7 +2109,7 @@ is_index: true
             <div class="card-date">Mar 12. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/207_AI%EC%9D%98%20%ED%96%89%EB%8F%99%EC%9D%84%20%EB%A7%8C%EB%93%A4%EB%8B%A4.%20%27Manus%20AI%27.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/207_AI%EC%9D%98%20%ED%96%89%EB%8F%99%EC%9D%84%20%EB%A7%8C%EB%93%A4%EB%8B%A4.%20%27Manus%20AI%27.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250311" data-id="207">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/207.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2101,7 +2119,7 @@ is_index: true
             <div class="card-date">Mar 11. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/208_SWOT%20%EB%B9%84%EC%A7%80%EB%8B%88%EC%8A%A4%EC%9D%98%204%EC%B0%A8%EC%9B%90%20%EB%B6%84%EC%84%9D%EB%B2%95.html" class="card-item" data-category="기획자의 프레임웍">
+    <a href="/brunch_web_assets/markdown/208_SWOT%20%EB%B9%84%EC%A7%80%EB%8B%88%EC%8A%A4%EC%9D%98%204%EC%B0%A8%EC%9B%90%20%EB%B6%84%EC%84%9D%EB%B2%95.html" class="card-item" data-category="기획자의 프레임웍" data-date="20250311" data-id="208">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/208.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2111,7 +2129,7 @@ is_index: true
             <div class="card-date">Mar 11. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/209_%EC%8B%A4%ED%8C%A8%EC%97%90%EC%84%9C%20%EB%8D%B0%EC%B9%B4%EC%BD%98%EC%9C%BC%EB%A1%9C%20%27Notion%27%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EC%8B%9C%EC%9E%A5%EC%A7%84%EC%B6%9C%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업의 전략들">
+    <a href="/brunch_web_assets/markdown/209_%EC%8B%A4%ED%8C%A8%EC%97%90%EC%84%9C%20%EB%8D%B0%EC%B9%B4%EC%BD%98%EC%9C%BC%EB%A1%9C%20%27Notion%27%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EC%8B%9C%EC%9E%A5%EC%A7%84%EC%B6%9C%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업의 전략들" data-date="20250310" data-id="209">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/209.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2121,7 +2139,7 @@ is_index: true
             <div class="card-date">Mar 10. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/210_%EC%BD%94%EB%93%9C%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EA%B9%A8%EB%8A%94%20AI%20%ED%98%81%EC%8B%A0%2C%20Cursor%20AI.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/210_%EC%BD%94%EB%93%9C%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EA%B9%A8%EB%8A%94%20AI%20%ED%98%81%EC%8B%A0%2C%20Cursor%20AI.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250309" data-id="210">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/210.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2131,7 +2149,7 @@ is_index: true
             <div class="card-date">Mar 9. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/211_AI%20%EC%8B%9C%EB%8C%80%20%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%20%EC%A0%84%ED%99%98%2C%20%EC%A0%84%ED%86%B5%EC%A0%81%20%ED%8C%A8%EB%9F%AC%EB%8B%A4%EC%9E%84%EC%9D%98%20%EC%A2%85%EB%A7%90.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/211_AI%20%EC%8B%9C%EB%8C%80%20%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%20%EC%A0%84%ED%99%98%2C%20%EC%A0%84%ED%86%B5%EC%A0%81%20%ED%8C%A8%EB%9F%AC%EB%8B%A4%EC%9E%84%EC%9D%98%20%EC%A2%85%EB%A7%90.html" class="card-item" data-category="기획일상" data-date="20250308" data-id="211">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/211.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2141,7 +2159,7 @@ is_index: true
             <div class="card-date">Mar 8. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/212_%ED%8C%80%EC%9D%98%20%ED%95%98%EB%AA%A8%EB%8B%88%EB%A5%BC%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B9%84%EB%B2%95%2C%20%27%EC%95%A0%EC%9E%90%EC%9D%BC%EB%AF%B8%ED%8C%85%27.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
+    <a href="/brunch_web_assets/markdown/212_%ED%8C%80%EC%9D%98%20%ED%95%98%EB%AA%A8%EB%8B%88%EB%A5%BC%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B9%84%EB%B2%95%2C%20%27%EC%95%A0%EC%9E%90%EC%9D%BC%EB%AF%B8%ED%8C%85%27.html" class="card-item" data-category="PO가 꼭 알아야 할 것들" data-date="20250307" data-id="212">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/212.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2151,7 +2169,7 @@ is_index: true
             <div class="card-date">Mar 7. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/213_%EC%BD%98%ED%85%90%EC%B8%A0%EB%A5%BC%20%EB%A7%9B%EC%9E%88%EA%B2%8C%20%ED%95%98%EB%8A%94%20UX%20%EB%A0%88%EC%9D%B4%EC%96%B4%20%EC%BC%80%EC%9D%B4%ED%81%AC%20%ED%8C%A8%ED%84%B4.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/213_%EC%BD%98%ED%85%90%EC%B8%A0%EB%A5%BC%20%EB%A7%9B%EC%9E%88%EA%B2%8C%20%ED%95%98%EB%8A%94%20UX%20%EB%A0%88%EC%9D%B4%EC%96%B4%20%EC%BC%80%EC%9D%B4%ED%81%AC%20%ED%8C%A8%ED%84%B4.html" class="card-item" data-category="UX의 언어들" data-date="20250306" data-id="213">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/213.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2161,7 +2179,7 @@ is_index: true
             <div class="card-date">Mar 6. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/214_30%EB%8B%AC%EB%9F%AC%EB%A1%9C%20%EB%A7%8C%EB%93%A0%20AI%20%ED%98%81%EB%AA%85%2C%20%27%ED%83%80%EC%9D%B4%EB%8B%88%20%EC%A0%9C%EB%A1%9C%27.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/214_30%EB%8B%AC%EB%9F%AC%EB%A1%9C%20%EB%A7%8C%EB%93%A0%20AI%20%ED%98%81%EB%AA%85%2C%20%27%ED%83%80%EC%9D%B4%EB%8B%88%20%EC%A0%9C%EB%A1%9C%27.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250305" data-id="214">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/214.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2171,7 +2189,7 @@ is_index: true
             <div class="card-date">Mar 5. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/215_Why%EC%97%90%EC%84%9C%20%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94%20%EA%B8%B0%ED%9A%8D%2C%20%EA%B3%A8%EB%93%A0%20%EC%84%9C%ED%81%B4%EC%9D%98%20%EB%A7%88%EB%B2%95.html" class="card-item" data-category="기획자의 프레임웍">
+    <a href="/brunch_web_assets/markdown/215_Why%EC%97%90%EC%84%9C%20%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94%20%EA%B8%B0%ED%9A%8D%2C%20%EA%B3%A8%EB%93%A0%20%EC%84%9C%ED%81%B4%EC%9D%98%20%EB%A7%88%EB%B2%95.html" class="card-item" data-category="기획자의 프레임웍" data-date="20250304" data-id="215">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/215.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2181,7 +2199,7 @@ is_index: true
             <div class="card-date">Mar 4. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/216_%EC%8B%A4%ED%8C%A8%EA%B0%80%20%EB%A7%8C%EB%93%A0%20%EA%B8%B0%EC%A0%81%2C%20%27Slack%27%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%ED%99%95%EB%B3%B4%20%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업의 전략들">
+    <a href="/brunch_web_assets/markdown/216_%EC%8B%A4%ED%8C%A8%EA%B0%80%20%EB%A7%8C%EB%93%A0%20%EA%B8%B0%EC%A0%81%2C%20%27Slack%27%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%ED%99%95%EB%B3%B4%20%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업의 전략들" data-date="20250303" data-id="216">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/216.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2191,7 +2209,7 @@ is_index: true
             <div class="card-date">Mar 3. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/217_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%84%B1%EA%B3%B5%EC%9D%98%20%EC%97%AD%EC%84%A4.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/217_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%84%B1%EA%B3%B5%EC%9D%98%20%EC%97%AD%EC%84%A4.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250301" data-id="217">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/217.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2201,7 +2219,7 @@ is_index: true
             <div class="card-date">Mar 1. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/218_%27%ED%9A%8C%EA%B3%A0%27%2C%20%ED%8C%80%EC%9D%98%20%EC%84%B1%EC%9E%A5%EC%9D%84%20%EC%9D%B4%EB%81%84%EB%8A%94%20%EB%B9%84%EA%B2%B0.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
+    <a href="/brunch_web_assets/markdown/218_%27%ED%9A%8C%EA%B3%A0%27%2C%20%ED%8C%80%EC%9D%98%20%EC%84%B1%EC%9E%A5%EC%9D%84%20%EC%9D%B4%EB%81%84%EB%8A%94%20%EB%B9%84%EA%B2%B0.html" class="card-item" data-category="PO가 꼭 알아야 할 것들" data-date="20250228" data-id="218">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/218.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2211,7 +2229,7 @@ is_index: true
             <div class="card-date">Feb 28. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/219_%EC%8B%A4%EB%A6%AC%EC%BD%98%EB%B0%B8%EB%A6%AC%20%EC%8A%B9%EC%9E%90%EB%93%A4%EC%9D%B4%20%EC%93%B0%EB%8A%94%20%27%EC%BD%9C%ED%88%AC%EC%95%A1%EC%85%98%28CTA%29%27.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/219_%EC%8B%A4%EB%A6%AC%EC%BD%98%EB%B0%B8%EB%A6%AC%20%EC%8A%B9%EC%9E%90%EB%93%A4%EC%9D%B4%20%EC%93%B0%EB%8A%94%20%27%EC%BD%9C%ED%88%AC%EC%95%A1%EC%85%98%28CTA%29%27.html" class="card-item" data-category="UX의 언어들" data-date="20250227" data-id="219">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/219.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2221,7 +2239,7 @@ is_index: true
             <div class="card-date">Feb 27. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/220_%EC%B1%97GPT%EB%A5%BC%20%EB%9B%B0%EC%96%B4%EB%84%98%EB%8B%A4...%EB%A8%B8%EC%8A%A4%ED%81%AC%EC%9D%98%20%EC%95%BC%EC%8B%AC%EC%9E%91%20%27%EA%B7%B8%EB%A1%9D3%27.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/220_%EC%B1%97GPT%EB%A5%BC%20%EB%9B%B0%EC%96%B4%EB%84%98%EB%8B%A4...%EB%A8%B8%EC%8A%A4%ED%81%AC%EC%9D%98%20%EC%95%BC%EC%8B%AC%EC%9E%91%20%27%EA%B7%B8%EB%A1%9D3%27.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250226" data-id="220">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/220.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2231,7 +2249,7 @@ is_index: true
             <div class="card-date">Feb 26. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/221_%EB%8B%A8%20%ED%95%98%EB%82%98%EC%9D%98%20%EC%A7%88%EB%AC%B8%EC%9D%B4%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EB%A5%BC%20%EB%A7%8C%EB%93%A0%EB%8B%A4.%20%27NPS%27.html" class="card-item" data-category="기획자의 프레임웍">
+    <a href="/brunch_web_assets/markdown/221_%EB%8B%A8%20%ED%95%98%EB%82%98%EC%9D%98%20%EC%A7%88%EB%AC%B8%EC%9D%B4%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EB%A5%BC%20%EB%A7%8C%EB%93%A0%EB%8B%A4.%20%27NPS%27.html" class="card-item" data-category="기획자의 프레임웍" data-date="20250225" data-id="221">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/221.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2241,7 +2259,7 @@ is_index: true
             <div class="card-date">Feb 25. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/222_%EA%B8%80%EB%A1%9C%EB%B2%8C%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EB%93%A4%EC%9D%98%20%27%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%20%ED%99%95%EB%B3%B4%20%EC%A0%84%EB%9E%B5%27.html" class="card-item" data-category="스타트업의 전략들">
+    <a href="/brunch_web_assets/markdown/222_%EA%B8%80%EB%A1%9C%EB%B2%8C%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EB%93%A4%EC%9D%98%20%27%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%20%ED%99%95%EB%B3%B4%20%EC%A0%84%EB%9E%B5%27.html" class="card-item" data-category="스타트업의 전략들" data-date="20250224" data-id="222">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/222.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2251,7 +2269,7 @@ is_index: true
             <div class="card-date">Feb 24. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/223_%EB%A6%B0%EC%9D%B4%EB%9E%80%20%EB%AC%B4%EC%8A%A8%20%EB%9C%BB%EC%9D%BC%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/223_%EB%A6%B0%EC%9D%B4%EB%9E%80%20%EB%AC%B4%EC%8A%A8%20%EB%9C%BB%EC%9D%BC%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프" data-date="20250223" data-id="223">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/223.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2261,7 +2279,7 @@ is_index: true
             <div class="card-date">Feb 23. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/224_%EB%82%98%EC%9D%98%20%ED%81%B4%EB%A1%A0%EC%9D%B4%20%ED%99%94%EC%83%81%ED%9A%8C%EC%9D%98%EB%A5%BC%20%27%ED%94%BC%ED%81%B4%27.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/224_%EB%82%98%EC%9D%98%20%ED%81%B4%EB%A1%A0%EC%9D%B4%20%ED%99%94%EC%83%81%ED%9A%8C%EC%9D%98%EB%A5%BC%20%27%ED%94%BC%ED%81%B4%27.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250223" data-id="224">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/224.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2271,7 +2289,7 @@ is_index: true
             <div class="card-date">Feb 23. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/225_%EC%83%9D%EC%82%B0%EC%84%B1%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%ED%95%A8%EC%A0%95.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/225_%EC%83%9D%EC%82%B0%EC%84%B1%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%ED%95%A8%EC%A0%95.html" class="card-item" data-category="기획일상" data-date="20250222" data-id="225">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/225.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2281,7 +2299,7 @@ is_index: true
             <div class="card-date">Feb 22. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/226_%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%20%EB%A6%AC%EB%B7%B0%27%2C%20%EC%A4%80%EB%B9%84%EB%8A%94%20%EB%8D%9C%ED%95%98%EA%B3%A0%20%EC%86%94%EC%A7%81%ED%95%A8%EC%9D%80%20%EB%8D%94%ED%95%98%EA%B8%B0.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
+    <a href="/brunch_web_assets/markdown/226_%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%20%EB%A6%AC%EB%B7%B0%27%2C%20%EC%A4%80%EB%B9%84%EB%8A%94%20%EB%8D%9C%ED%95%98%EA%B3%A0%20%EC%86%94%EC%A7%81%ED%95%A8%EC%9D%80%20%EB%8D%94%ED%95%98%EA%B8%B0.html" class="card-item" data-category="PO가 꼭 알아야 할 것들" data-date="20250221" data-id="226">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/226.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2291,7 +2309,7 @@ is_index: true
             <div class="card-date">Feb 21. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/227_Google%EC%9D%98%20%27%EC%8B%AC%ED%94%8C%ED%95%9C%20UX%27%20%EC%9B%90%EC%B9%99.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/227_Google%EC%9D%98%20%27%EC%8B%AC%ED%94%8C%ED%95%9C%20UX%27%20%EC%9B%90%EC%B9%99.html" class="card-item" data-category="UX의 언어들" data-date="20250220" data-id="227">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/227.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2301,7 +2319,7 @@ is_index: true
             <div class="card-date">Feb 20. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/228_1000%EC%9D%98%20%EC%84%B1%EC%9E%A5%20%27%EC%95%B1%EB%9F%AC%EB%B9%88%27%EC%9D%98%20%EC%88%A8%EA%B2%A8%EC%A7%84%20%EC%84%B1%EA%B3%B5%EA%B3%B5%EC%8B%9D.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/228_1000%EC%9D%98%20%EC%84%B1%EC%9E%A5%20%27%EC%95%B1%EB%9F%AC%EB%B9%88%27%EC%9D%98%20%EC%88%A8%EA%B2%A8%EC%A7%84%20%EC%84%B1%EA%B3%B5%EA%B3%B5%EC%8B%9D.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250219" data-id="228">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/228.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2311,7 +2329,7 @@ is_index: true
             <div class="card-date">Feb 19. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/229_%EC%84%B8%EC%83%81%EC%9D%84%20%EB%B0%94%EA%BE%BC%20%EC%8B%A4%ED%97%98%20%27OKR%27%EC%9D%98%203%EA%B0%80%EC%A7%80%20%EB%A7%88%EB%B2%95.html" class="card-item" data-category="기획자의 프레임웍">
+    <a href="/brunch_web_assets/markdown/229_%EC%84%B8%EC%83%81%EC%9D%84%20%EB%B0%94%EA%BE%BC%20%EC%8B%A4%ED%97%98%20%27OKR%27%EC%9D%98%203%EA%B0%80%EC%A7%80%20%EB%A7%88%EB%B2%95.html" class="card-item" data-category="기획자의 프레임웍" data-date="20250218" data-id="229">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/229.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2321,7 +2339,7 @@ is_index: true
             <div class="card-date">Feb 18. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/230_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%84%B1%EA%B3%B5%EC%9D%80%20%27%EC%88%AB%EC%9E%90%27%EC%97%90%20%EC%88%A8%EC%96%B4%EC%9E%88%EB%8B%A4.html" class="card-item" data-category="스타트업의 전략들">
+    <a href="/brunch_web_assets/markdown/230_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%84%B1%EA%B3%B5%EC%9D%80%20%27%EC%88%AB%EC%9E%90%27%EC%97%90%20%EC%88%A8%EC%96%B4%EC%9E%88%EB%8B%A4.html" class="card-item" data-category="스타트업의 전략들" data-date="20250217" data-id="230">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/230.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2331,7 +2349,7 @@ is_index: true
             <div class="card-date">Feb 17. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/231_%EA%B2%8C%EC%9E%84%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%97%90%EC%84%9C%20AI%20%EC%98%81%EC%83%81%20%ED%98%81%EC%8B%A0%EA%B0%80%EB%A1%9C%2C%20%EC%8B%9C%EB%82%98%EB%AA%AC%EC%9D%98%20%EB%8F%84%EC%A0%84.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/231_%EA%B2%8C%EC%9E%84%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%97%90%EC%84%9C%20AI%20%EC%98%81%EC%83%81%20%ED%98%81%EC%8B%A0%EA%B0%80%EB%A1%9C%2C%20%EC%8B%9C%EB%82%98%EB%AA%AC%EC%9D%98%20%EB%8F%84%EC%A0%84.html" class="card-item" data-category="UX의 언어들" data-date="20250216" data-id="231">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/231.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2341,7 +2359,7 @@ is_index: true
             <div class="card-date">Feb 16. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/232_%EC%A7%84%EC%A7%9C%20PMF%EB%A5%BC%20%EC%9C%84%ED%95%9C%20%EA%B3%A0%EA%B0%9D%20%EC%9D%B4%ED%95%B4.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/232_%EC%A7%84%EC%A7%9C%20PMF%EB%A5%BC%20%EC%9C%84%ED%95%9C%20%EA%B3%A0%EA%B0%9D%20%EC%9D%B4%ED%95%B4.html" class="card-item" data-category="기획일상" data-date="20250215" data-id="232">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/232.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2351,7 +2369,7 @@ is_index: true
             <div class="card-date">Feb 15. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/233_%EC%A0%9C%ED%92%88%20%EB%B0%B1%EB%A1%9C%EA%B7%B8%2C%20%EB%8B%A8%EC%88%9C%ED%95%9C%20TO-DO%20%EB%A6%AC%EC%8A%A4%ED%8A%B8%EA%B0%80%20%EC%95%84%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
+    <a href="/brunch_web_assets/markdown/233_%EC%A0%9C%ED%92%88%20%EB%B0%B1%EB%A1%9C%EA%B7%B8%2C%20%EB%8B%A8%EC%88%9C%ED%95%9C%20TO-DO%20%EB%A6%AC%EC%8A%A4%ED%8A%B8%EA%B0%80%20%EC%95%84%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="PO가 꼭 알아야 할 것들" data-date="20250214" data-id="233">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/233.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2361,7 +2379,7 @@ is_index: true
             <div class="card-date">Feb 14. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/234_%EC%B1%97GPT%EA%B0%80%20%EC%89%BD%EB%8B%A4%EA%B3%A0%20%EB%8A%90%EA%BB%B4%EC%A7%80%EB%8A%94%20UX%EC%9D%98%20%EB%B9%84%EB%B0%80.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/234_%EC%B1%97GPT%EA%B0%80%20%EC%89%BD%EB%8B%A4%EA%B3%A0%20%EB%8A%90%EA%BB%B4%EC%A7%80%EB%8A%94%20UX%EC%9D%98%20%EB%B9%84%EB%B0%80.html" class="card-item" data-category="UX의 언어들" data-date="20250213" data-id="234">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/234.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2371,7 +2389,7 @@ is_index: true
             <div class="card-date">Feb 13. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/235_%E7%BE%8E%20%EA%B5%AD%EB%B0%A9%EB%B6%80%EC%9D%98%20%EC%84%A0%ED%83%9D%20%EB%B9%85%EB%B2%A0%EC%96%B4AI.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/235_%E7%BE%8E%20%EA%B5%AD%EB%B0%A9%EB%B6%80%EC%9D%98%20%EC%84%A0%ED%83%9D%20%EB%B9%85%EB%B2%A0%EC%96%B4AI.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250212" data-id="235">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/235.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2381,7 +2399,7 @@ is_index: true
             <div class="card-date">Feb 12. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/236_%ED%95%B4%EC%A0%81%EC%9D%B4%20%EB%90%9C%20%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%93%A4%EC%9D%98%20%EC%9D%B4%EC%95%BC%EA%B8%B0%2C%20AARRR%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC.html" class="card-item" data-category="기획자의 프레임웍">
+    <a href="/brunch_web_assets/markdown/236_%ED%95%B4%EC%A0%81%EC%9D%B4%20%EB%90%9C%20%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%93%A4%EC%9D%98%20%EC%9D%B4%EC%95%BC%EA%B8%B0%2C%20AARRR%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC.html" class="card-item" data-category="기획자의 프레임웍" data-date="20250211" data-id="236">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/236.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2391,7 +2409,7 @@ is_index: true
             <div class="card-date">Feb 11. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/237_%EA%B7%9C%EC%B9%99%EC%9D%B4%20%EC%97%86%EB%8A%94%20%EC%A0%84%EB%9E%B5%EC%9C%BC%EB%A1%9C%20500%EC%A1%B0%EB%A5%BC%20%EB%A7%8C%EB%93%A0%20%27Netflix%27.html" class="card-item" data-category="스타트업의 전략들">
+    <a href="/brunch_web_assets/markdown/237_%EA%B7%9C%EC%B9%99%EC%9D%B4%20%EC%97%86%EB%8A%94%20%EC%A0%84%EB%9E%B5%EC%9C%BC%EB%A1%9C%20500%EC%A1%B0%EB%A5%BC%20%EB%A7%8C%EB%93%A0%20%27Netflix%27.html" class="card-item" data-category="스타트업의 전략들" data-date="20250210" data-id="237">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/237.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2401,7 +2419,7 @@ is_index: true
             <div class="card-date">Feb 10. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/238_%EC%82%BC%EC%84%B1%20%EC%82%AC%EB%82%B4%EB%B2%A4%EC%B2%98%EA%B0%80%20%EB%82%B3%EC%9D%80%20%EC%BB%A4%EB%A8%B8%EC%8A%A4AI%EC%9D%98%20%ED%98%81%EC%8B%A0%2C%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%EB%9E%A9.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/238_%EC%82%BC%EC%84%B1%20%EC%82%AC%EB%82%B4%EB%B2%A4%EC%B2%98%EA%B0%80%20%EB%82%B3%EC%9D%80%20%EC%BB%A4%EB%A8%B8%EC%8A%A4AI%EC%9D%98%20%ED%98%81%EC%8B%A0%2C%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%EB%9E%A9.html" class="card-item" data-category="UX의 언어들" data-date="20250209" data-id="238">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/238.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2411,7 +2429,7 @@ is_index: true
             <div class="card-date">Feb 9. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/239_%EC%BD%9C%EB%93%9C%EB%A9%94%EC%9D%BC%EC%9D%B4%20%EC%8B%A4%ED%8C%A8%ED%95%98%EB%8A%94%20%EC%A7%84%EC%A7%9C%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/239_%EC%BD%9C%EB%93%9C%EB%A9%94%EC%9D%BC%EC%9D%B4%20%EC%8B%A4%ED%8C%A8%ED%95%98%EB%8A%94%20%EC%A7%84%EC%A7%9C%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="기획일상" data-date="20250208" data-id="239">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/239.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2421,7 +2439,7 @@ is_index: true
             <div class="card-date">Feb 8. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/240_%EB%8D%B0%EC%9D%BC%EB%A6%AC%20%EC%8A%A4%ED%81%AC%EB%9F%BC%EC%9D%B4%20%ED%95%84%EC%88%98%EC%9D%BC%EA%B9%8C.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
+    <a href="/brunch_web_assets/markdown/240_%EB%8D%B0%EC%9D%BC%EB%A6%AC%20%EC%8A%A4%ED%81%AC%EB%9F%BC%EC%9D%B4%20%ED%95%84%EC%88%98%EC%9D%BC%EA%B9%8C.html" class="card-item" data-category="PO가 꼭 알아야 할 것들" data-date="20250207" data-id="240">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/240.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2431,7 +2449,7 @@ is_index: true
             <div class="card-date">Feb 7. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/241_1%EC%9D%B8%20%EA%B8%B0%EC%97%85%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%B0%BD%EC%97%85%ED%95%B4%EC%95%BC%20%ED%95%A0%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/241_1%EC%9D%B8%20%EA%B8%B0%EC%97%85%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%B0%BD%EC%97%85%ED%95%B4%EC%95%BC%20%ED%95%A0%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프" data-date="20250206" data-id="241">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/241.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2441,7 +2459,7 @@ is_index: true
             <div class="card-date">Feb 6. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/242_%EC%97%84%EC%A7%80%EA%B0%80%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%84%20%EC%A7%80%EB%B0%B0%ED%95%9C%EB%8B%A4%20ThumbFriendly%20UX.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/242_%EC%97%84%EC%A7%80%EA%B0%80%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%84%20%EC%A7%80%EB%B0%B0%ED%95%9C%EB%8B%A4%20ThumbFriendly%20UX.html" class="card-item" data-category="UX의 언어들" data-date="20250206" data-id="242">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/242.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2451,7 +2469,7 @@ is_index: true
             <div class="card-date">Feb 6. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/243_%EC%98%A4%ED%94%88AI%20%EC%83%98%20%EC%95%8C%ED%8A%B8%EB%A8%BC%EC%9D%B4%20%EC%84%A0%ED%83%9D%ED%95%9C%20%EC%9B%90%EC%9E%90%EB%A0%A5%EC%9D%98%20%EB%AF%B8%EB%9E%98%2C%20%EC%98%A4%ED%81%B4%EB%A1%9C.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/243_%EC%98%A4%ED%94%88AI%20%EC%83%98%20%EC%95%8C%ED%8A%B8%EB%A8%BC%EC%9D%B4%20%EC%84%A0%ED%83%9D%ED%95%9C%20%EC%9B%90%EC%9E%90%EB%A0%A5%EC%9D%98%20%EB%AF%B8%EB%9E%98%2C%20%EC%98%A4%ED%81%B4%EB%A1%9C.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250205" data-id="243">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/243.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2461,7 +2479,7 @@ is_index: true
             <div class="card-date">Feb 5. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/244_470%EB%AA%85%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%ED%88%B4%20%27%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EB%AA%A8%EB%8D%B8%20%EC%BA%94%EB%B2%84%EC%8A%A4%27.html" class="card-item" data-category="기획자의 프레임웍">
+    <a href="/brunch_web_assets/markdown/244_470%EB%AA%85%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%ED%88%B4%20%27%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EB%AA%A8%EB%8D%B8%20%EC%BA%94%EB%B2%84%EC%8A%A4%27.html" class="card-item" data-category="기획자의 프레임웍" data-date="20250204" data-id="244">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/244.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2471,7 +2489,7 @@ is_index: true
             <div class="card-date">Feb 4. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/245_Warby%20Parker%EC%9D%98%20%27%EB%8F%85%EC%A0%90%20%EC%8B%9C%EC%9E%A5%EC%A7%84%EC%9E%85%20%EC%A0%84%EB%9E%B5%27.html" class="card-item" data-category="스타트업의 전략들">
+    <a href="/brunch_web_assets/markdown/245_Warby%20Parker%EC%9D%98%20%27%EB%8F%85%EC%A0%90%20%EC%8B%9C%EC%9E%A5%EC%A7%84%EC%9E%85%20%EC%A0%84%EB%9E%B5%27.html" class="card-item" data-category="스타트업의 전략들" data-date="20250203" data-id="245">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/245.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2481,7 +2499,7 @@ is_index: true
             <div class="card-date">Feb 3. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/246_%EC%BB%A4%EB%A8%B8%EC%8A%A4%20AI%EC%9D%98%20%EA%B2%8C%EC%9E%84%EC%B2%B4%EC%9D%B8%EC%A0%80%2C%20%EC%9D%B8%ED%95%B8%EC%8A%A4.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/246_%EC%BB%A4%EB%A8%B8%EC%8A%A4%20AI%EC%9D%98%20%EA%B2%8C%EC%9E%84%EC%B2%B4%EC%9D%B8%EC%A0%80%2C%20%EC%9D%B8%ED%95%B8%EC%8A%A4.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250202" data-id="246">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/246.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2491,7 +2509,7 @@ is_index: true
             <div class="card-date">Feb 2. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/247_%EC%84%B1%EC%9E%A5%EC%9D%84%20%EC%9C%84%ED%95%9C%EC%82%AC%EC%83%89%EC%9D%98%20%ED%9E%98.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/247_%EC%84%B1%EC%9E%A5%EC%9D%84%20%EC%9C%84%ED%95%9C%EC%82%AC%EC%83%89%EC%9D%98%20%ED%9E%98.html" class="card-item" data-category="기획일상" data-date="20250201" data-id="247">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/247.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2501,7 +2519,7 @@ is_index: true
             <div class="card-date">Feb 1. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/248_%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%EC%9D%98%20%EC%B6%9C%EB%B0%9C%EC%84%A0%20%27%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%20%ED%94%8C%EB%9E%98%EB%8B%9D%27.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
+    <a href="/brunch_web_assets/markdown/248_%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%EC%9D%98%20%EC%B6%9C%EB%B0%9C%EC%84%A0%20%27%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%20%ED%94%8C%EB%9E%98%EB%8B%9D%27.html" class="card-item" data-category="PO가 꼭 알아야 할 것들" data-date="20250131" data-id="248">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/248.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2511,7 +2529,7 @@ is_index: true
             <div class="card-date">Jan 31. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/249_%27%EC%A2%8B%EC%95%84%EC%9A%94%27%EA%B0%80%20%EB%A7%8C%EB%93%A0%20%EC%9E%91%EC%A7%80%EB%A7%8C%20%EA%B0%95%EB%A0%A5%ED%95%9C%20UX%EC%9D%98%20%ED%98%81%EB%AA%85.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/249_%27%EC%A2%8B%EC%95%84%EC%9A%94%27%EA%B0%80%20%EB%A7%8C%EB%93%A0%20%EC%9E%91%EC%A7%80%EB%A7%8C%20%EA%B0%95%EB%A0%A5%ED%95%9C%20UX%EC%9D%98%20%ED%98%81%EB%AA%85.html" class="card-item" data-category="UX의 언어들" data-date="20250130" data-id="249">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/249.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2521,7 +2539,7 @@ is_index: true
             <div class="card-date">Jan 30. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/250_%EC%B4%88%EA%B3%A0%EC%9C%A8%EC%9D%98%20AI%EB%A1%9C%20%EC%8B%9C%EC%9E%A5%EC%9D%84%20%ED%9D%94%EB%93%A4%EB%8B%A4.%20DeepSeek.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/250_%EC%B4%88%EA%B3%A0%EC%9C%A8%EC%9D%98%20AI%EB%A1%9C%20%EC%8B%9C%EC%9E%A5%EC%9D%84%20%ED%9D%94%EB%93%A4%EB%8B%A4.%20DeepSeek.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250129" data-id="250">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/250.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2531,7 +2549,7 @@ is_index: true
             <div class="card-date">Jan 29. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/251_%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%EC%9D%98%20%EB%B0%9C%EC%83%81%20%27SCAMPER%27%20%EA%B8%B0%EB%B2%95.html" class="card-item" data-category="기획자의 프레임웍">
+    <a href="/brunch_web_assets/markdown/251_%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%EC%9D%98%20%EB%B0%9C%EC%83%81%20%27SCAMPER%27%20%EA%B8%B0%EB%B2%95.html" class="card-item" data-category="기획자의 프레임웍" data-date="20250128" data-id="251">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/251.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2541,7 +2559,7 @@ is_index: true
             <div class="card-date">Jan 28. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/252_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%EA%B8%B0%EB%B0%80%EC%84%9C%EC%9E%AC%EC%9D%98%20%EB%B3%80%ED%99%94%20%27%EB%8D%94%20%ED%8D%BC%EC%8B%A4%EB%A6%AC%ED%85%8C%EC%9D%B4%EC%85%98%27.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/252_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%EA%B8%B0%EB%B0%80%EC%84%9C%EC%9E%AC%EC%9D%98%20%EB%B3%80%ED%99%94%20%27%EB%8D%94%20%ED%8D%BC%EC%8B%A4%EB%A6%AC%ED%85%8C%EC%9D%B4%EC%85%98%27.html" class="card-item" data-category="심플리파이어 라이프" data-date="20250127" data-id="252">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/252.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2551,7 +2569,7 @@ is_index: true
             <div class="card-date">Jan 27. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/253_%EB%A7%88%EC%BC%80%ED%8C%85%20%EC%97%86%EC%9D%B4%2020%EC%A1%B0%EC%9B%90%20%EA%B0%80%EC%B9%98%EB%A5%BC%20%EB%A7%8C%EB%93%A0%20Figma%20PLG%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업의 전략들">
+    <a href="/brunch_web_assets/markdown/253_%EB%A7%88%EC%BC%80%ED%8C%85%20%EC%97%86%EC%9D%B4%2020%EC%A1%B0%EC%9B%90%20%EA%B0%80%EC%B9%98%EB%A5%BC%20%EB%A7%8C%EB%93%A0%20Figma%20PLG%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업의 전략들" data-date="20250127" data-id="253">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/253.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2561,7 +2579,7 @@ is_index: true
             <div class="card-date">Jan 27. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/254_MIT%20%EC%B2%9C%EC%9E%AC%EB%93%A4%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EC%B9%9C%ED%99%98%EA%B2%BD%20%EC%95%94%EB%AA%A8%EB%8B%88%EC%95%84%20%EC%97%B0%EB%A3%8C%20%27%EC%95%84%EB%AA%A8%EC%A7%80%27.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/254_MIT%20%EC%B2%9C%EC%9E%AC%EB%93%A4%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EC%B9%9C%ED%99%98%EA%B2%BD%20%EC%95%94%EB%AA%A8%EB%8B%88%EC%95%84%20%EC%97%B0%EB%A3%8C%20%27%EC%95%84%EB%AA%A8%EC%A7%80%27.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250126" data-id="254">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/254.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2571,7 +2589,7 @@ is_index: true
             <div class="card-date">Jan 26. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/255_PO%EA%B0%80%20%EA%B0%9D%EA%B4%80%EC%A0%81%EC%9D%B4%EC%96%B4%EC%95%BC%20%ED%95%A0%20%EB%95%8C%EB%8A%94%E2%80%A6.html" class="card-item" data-category="Be the PO">
+    <a href="/brunch_web_assets/markdown/255_PO%EA%B0%80%20%EA%B0%9D%EA%B4%80%EC%A0%81%EC%9D%B4%EC%96%B4%EC%95%BC%20%ED%95%A0%20%EB%95%8C%EB%8A%94%E2%80%A6.html" class="card-item" data-category="Be the PO" data-date="20250125" data-id="255">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/255.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2581,7 +2599,7 @@ is_index: true
             <div class="card-date">Jan 25. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/256_%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%98%20%EC%8B%AC%EC%9E%A5%20%E2%80%98%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%E2%80%99.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
+    <a href="/brunch_web_assets/markdown/256_%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%98%20%EC%8B%AC%EC%9E%A5%20%E2%80%98%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%E2%80%99.html" class="card-item" data-category="PO가 꼭 알아야 할 것들" data-date="20250124" data-id="256">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/256.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2591,7 +2609,7 @@ is_index: true
             <div class="card-date">Jan 24. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/257_UX%EC%99%80%20UI%EC%9D%98%20%EC%B0%A8%EC%9D%B4%2C%20%EA%B7%B8%20%EB%92%A4%EC%97%90%20%EC%88%A8%EA%B2%A8%EC%A7%84%20%EC%9D%B4%EC%95%BC%EA%B8%B0.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/257_UX%EC%99%80%20UI%EC%9D%98%20%EC%B0%A8%EC%9D%B4%2C%20%EA%B7%B8%20%EB%92%A4%EC%97%90%20%EC%88%A8%EA%B2%A8%EC%A7%84%20%EC%9D%B4%EC%95%BC%EA%B8%B0.html" class="card-item" data-category="UX의 언어들" data-date="20250123" data-id="257">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/257.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2601,7 +2619,7 @@ is_index: true
             <div class="card-date">Jan 23. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/258_%EB%B9%88%EB%9D%BC%EB%8D%B4%EC%9D%84%20%EC%B6%94%EC%A0%81%ED%95%9C%20AI%EC%9D%98%20%ED%9E%98%2C%20%EC%8B%9C%EA%B0%80%EC%B4%9D%EC%95%A1%20100%EC%A1%B0%20%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/258_%EB%B9%88%EB%9D%BC%EB%8D%B4%EC%9D%84%20%EC%B6%94%EC%A0%81%ED%95%9C%20AI%EC%9D%98%20%ED%9E%98%2C%20%EC%8B%9C%EA%B0%80%EC%B4%9D%EC%95%A1%20100%EC%A1%B0%20%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250122" data-id="258">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/258.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2611,7 +2629,7 @@ is_index: true
             <div class="card-date">Jan 22. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/259_%EA%B3%A0%EA%B0%9D%EC%9D%84%20%EC%A0%95%EC%9D%98%ED%95%98%EB%8A%94%20%EB%B2%95%20%27%ED%8E%98%EB%A5%B4%EC%86%8C%EB%82%98%27.html" class="card-item" data-category="기획자의 프레임웍">
+    <a href="/brunch_web_assets/markdown/259_%EA%B3%A0%EA%B0%9D%EC%9D%84%20%EC%A0%95%EC%9D%98%ED%95%98%EB%8A%94%20%EB%B2%95%20%27%ED%8E%98%EB%A5%B4%EC%86%8C%EB%82%98%27.html" class="card-item" data-category="기획자의 프레임웍" data-date="20250121" data-id="259">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/259.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2621,7 +2639,7 @@ is_index: true
             <div class="card-date">Jan 21. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/260_%EC%95%A0%EC%9E%90%EC%9D%BC%20%EB%A7%A4%EB%8B%88%ED%8E%98%EC%8A%A4%ED%86%A0%EB%9E%80.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
+    <a href="/brunch_web_assets/markdown/260_%EC%95%A0%EC%9E%90%EC%9D%BC%20%EB%A7%A4%EB%8B%88%ED%8E%98%EC%8A%A4%ED%86%A0%EB%9E%80.html" class="card-item" data-category="PO가 꼭 알아야 할 것들" data-date="20250117" data-id="260">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/260.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2631,7 +2649,7 @@ is_index: true
             <div class="card-date">Jan 17. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/261_%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%EA%B8%80%EC%9D%84%20%EC%93%B0%EB%8A%94%EB%8D%B0%20%EA%B0%80%EC%9D%B4%EB%93%9C%EB%9D%BC%EC%9D%B8%EC%9D%B4%20%EC%9E%88%EC%9D%84%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/261_%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%EA%B8%80%EC%9D%84%20%EC%93%B0%EB%8A%94%EB%8D%B0%20%EA%B0%80%EC%9D%B4%EB%93%9C%EB%9D%BC%EC%9D%B8%EC%9D%B4%20%EC%9E%88%EC%9D%84%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프" data-date="20250116" data-id="261">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/261.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2641,7 +2659,7 @@ is_index: true
             <div class="card-date">Jan 16. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/262_%EC%95%A4%ED%8A%B8%EB%A1%9C%ED%94%BD%2C%205%EB%85%84%20%EB%A7%8C%EC%97%90%20%EA%B8%B0%EC%97%85%EA%B0%80%EC%B9%98%2087%EC%A1%B0%EC%9D%98%20AI%EA%B8%B0%EC%97%85%EC%9D%B4%20%EB%90%98%EB%8B%A4.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/262_%EC%95%A4%ED%8A%B8%EB%A1%9C%ED%94%BD%2C%205%EB%85%84%20%EB%A7%8C%EC%97%90%20%EA%B8%B0%EC%97%85%EA%B0%80%EC%B9%98%2087%EC%A1%B0%EC%9D%98%20AI%EA%B8%B0%EC%97%85%EC%9D%B4%20%EB%90%98%EB%8B%A4.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250115" data-id="262">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/262.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2651,7 +2669,7 @@ is_index: true
             <div class="card-date">Jan 15. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/263_%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%20%EC%84%A4%EC%A0%95%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC%20%27RICE%27.html" class="card-item" data-category="기획자의 프레임웍">
+    <a href="/brunch_web_assets/markdown/263_%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%20%EC%84%A4%EC%A0%95%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC%20%27RICE%27.html" class="card-item" data-category="기획자의 프레임웍" data-date="20250114" data-id="263">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/263.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2661,7 +2679,7 @@ is_index: true
             <div class="card-date">Jan 14. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/264_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EA%B7%BC%ED%99%A9%20%EA%B3%B5%EC%9C%A0.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/264_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EA%B7%BC%ED%99%A9%20%EA%B3%B5%EC%9C%A0.html" class="card-item" data-category="심플리파이어 라이프" data-date="20250113" data-id="264">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/264.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2671,7 +2689,7 @@ is_index: true
             <div class="card-date">Jan 13. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/265_AI%20%EC%8B%9C%EB%8C%80%EC%97%90%20%EC%96%B4%EB%96%A4%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EA%B0%80%20%EB%90%98%EB%A9%B4%20%EC%A2%8B%EC%9D%84%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/265_AI%20%EC%8B%9C%EB%8C%80%EC%97%90%20%EC%96%B4%EB%96%A4%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EA%B0%80%20%EB%90%98%EB%A9%B4%20%EC%A2%8B%EC%9D%84%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프" data-date="20250112" data-id="265">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/265.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2681,7 +2699,7 @@ is_index: true
             <div class="card-date">Jan 12. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/266_%EA%B2%B0%ED%95%8D%EC%9D%98%20%EC%9D%B8%EC%8B%9D%EC%97%90%EC%84%9C%20%EB%B0%9C%EC%A0%84%EC%9D%B4%20%EC%8B%9C%EC%9E%91%EB%90%9C%EB%8B%A4.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/266_%EA%B2%B0%ED%95%8D%EC%9D%98%20%EC%9D%B8%EC%8B%9D%EC%97%90%EC%84%9C%20%EB%B0%9C%EC%A0%84%EC%9D%B4%20%EC%8B%9C%EC%9E%91%EB%90%9C%EB%8B%A4.html" class="card-item" data-category="기획일상" data-date="20250111" data-id="266">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/266.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2691,7 +2709,7 @@ is_index: true
             <div class="card-date">Jan 11. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/267_%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%B4%EB%9E%80.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
+    <a href="/brunch_web_assets/markdown/267_%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%B4%EB%9E%80.html" class="card-item" data-category="PO가 꼭 알아야 할 것들" data-date="20250110" data-id="267">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/267.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2701,7 +2719,7 @@ is_index: true
             <div class="card-date">Jan 10. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/268_%EA%B8%B0%EC%88%A0%EA%B3%BC%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A1%9C%20%EC%96%91%EC%8B%9D%EC%9D%84%20%ED%98%81%EC%8B%A0%ED%95%9C%EB%8B%A4.%20%ED%83%80%EC%9D%B4%EB%93%9C%ED%92%80.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/268_%EA%B8%B0%EC%88%A0%EA%B3%BC%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A1%9C%20%EC%96%91%EC%8B%9D%EC%9D%84%20%ED%98%81%EC%8B%A0%ED%95%9C%EB%8B%A4.%20%ED%83%80%EC%9D%B4%EB%93%9C%ED%92%80.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250109" data-id="268">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/268.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2711,7 +2729,7 @@ is_index: true
             <div class="card-date">Jan 9. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/269_50%EB%AA%85%EC%9C%BC%EB%A1%9C%201%EB%85%84%208%EA%B0%9C%EC%9B%94%EB%A7%8C%EC%97%90%20%EC%9C%A0%EB%8B%88%EC%BD%98%EC%9D%B4%20%EB%90%9C%20%27%ED%8D%BC%ED%94%8C%EB%A0%89%EC%8B%9C%ED%8B%B0%27.html" class="card-item" data-category="심플리파이어 인사이트">
+    <a href="/brunch_web_assets/markdown/269_50%EB%AA%85%EC%9C%BC%EB%A1%9C%201%EB%85%84%208%EA%B0%9C%EC%9B%94%EB%A7%8C%EC%97%90%20%EC%9C%A0%EB%8B%88%EC%BD%98%EC%9D%B4%20%EB%90%9C%20%27%ED%8D%BC%ED%94%8C%EB%A0%89%EC%8B%9C%ED%8B%B0%27.html" class="card-item" data-category="심플리파이어 인사이트" data-date="20250108" data-id="269">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/269.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2721,7 +2739,7 @@ is_index: true
             <div class="card-date">Jan 8. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/270_%EC%84%B1%EA%B3%B5%EC%9D%84%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EC%8B%9C%EA%B0%84%20%EB%A7%8C%EB%93%A4%EA%B8%B0.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/270_%EC%84%B1%EA%B3%B5%EC%9D%84%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EC%8B%9C%EA%B0%84%20%EB%A7%8C%EB%93%A4%EA%B8%B0.html" class="card-item" data-category="기획일상" data-date="20250106" data-id="270">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/270.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2731,7 +2749,7 @@ is_index: true
             <div class="card-date">Jan 6. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/271_2025%EB%85%84%EC%9D%98%20%EB%82%B4%EA%B0%80...%202015%EB%85%84%EC%9D%98%20%EB%82%98%EC%97%90%EA%B2%8C.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/271_2025%EB%85%84%EC%9D%98%20%EB%82%B4%EA%B0%80...%202015%EB%85%84%EC%9D%98%20%EB%82%98%EC%97%90%EA%B2%8C.html" class="card-item" data-category="심플리파이어 라이프" data-date="20250101" data-id="271">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/271.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2741,7 +2759,7 @@ is_index: true
             <div class="card-date">Jan 1. 2025</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/272_Thank%20you%202024~%21%21%21.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/272_Thank%20you%202024~%21%21%21.html" class="card-item" data-category="심플리파이어 라이프" data-date="20241231" data-id="272">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/272.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2751,7 +2769,7 @@ is_index: true
             <div class="card-date">Dec 31. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/273_UX%EB%8A%94%20%EB%94%94%EC%9E%90%EC%9D%B4%EB%84%88%EA%B0%80%20%EC%9E%98%ED%95%98%EB%A9%B4%20%EB%90%98%EB%8A%94%20%EA%B2%83%20%EC%95%84%EB%8B%8C%EA%B0%80%EC%9A%94.html" class="card-item" data-category="기획자로 시작하기">
+    <a href="/brunch_web_assets/markdown/273_UX%EB%8A%94%20%EB%94%94%EC%9E%90%EC%9D%B4%EB%84%88%EA%B0%80%20%EC%9E%98%ED%95%98%EB%A9%B4%20%EB%90%98%EB%8A%94%20%EA%B2%83%20%EC%95%84%EB%8B%8C%EA%B0%80%EC%9A%94.html" class="card-item" data-category="기획자로 시작하기" data-date="20241230" data-id="273">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/273.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2761,7 +2779,7 @@ is_index: true
             <div class="card-date">Dec 30. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/274_ENTJ%20%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EB%8A%94%20%EC%98%A4%EA%B2%9C2%28%EC%8A%A4%ED%8F%AC%EC%97%86%EC%9D%8C%29.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/274_ENTJ%20%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EB%8A%94%20%EC%98%A4%EA%B2%9C2%28%EC%8A%A4%ED%8F%AC%EC%97%86%EC%9D%8C%29.html" class="card-item" data-category="심플리파이어 라이프" data-date="20241229" data-id="274">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/274.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2771,7 +2789,7 @@ is_index: true
             <div class="card-date">Dec 29. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/275_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%EA%B0%80%20%EB%B0%9B%EC%9D%80%20%EC%97%B0%EB%A7%90%20%EC%84%A0%EB%AC%BC.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/275_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%EA%B0%80%20%EB%B0%9B%EC%9D%80%20%EC%97%B0%EB%A7%90%20%EC%84%A0%EB%AC%BC.html" class="card-item" data-category="심플리파이어 라이프" data-date="20241228" data-id="275">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/275.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2781,7 +2799,7 @@ is_index: true
             <div class="card-date">Dec 28. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/276_%EC%9A%B4%EB%AA%85%EA%B3%BC%20%EB%82%98%EC%9D%98%20%EC%84%A0%ED%83%9D.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/276_%EC%9A%B4%EB%AA%85%EA%B3%BC%20%EB%82%98%EC%9D%98%20%EC%84%A0%ED%83%9D.html" class="card-item" data-category="기획일상" data-date="20241226" data-id="276">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/276.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2791,7 +2809,7 @@ is_index: true
             <div class="card-date">Dec 26. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/277_PO%EC%9D%98%20%EC%84%B1%EC%9E%A5%EC%9D%84%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EC%9D%BC.html" class="card-item" data-category="Be the PO">
+    <a href="/brunch_web_assets/markdown/277_PO%EC%9D%98%20%EC%84%B1%EC%9E%A5%EC%9D%84%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EC%9D%BC.html" class="card-item" data-category="Be the PO" data-date="20241221" data-id="277">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/277.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2801,7 +2819,7 @@ is_index: true
             <div class="card-date">Dec 21. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/278_AI%20%EC%8B%9C%EB%8C%80%2C%20%EC%99%9C%20%EA%B8%B0%ED%9A%8D%EC%9D%B4%20%EB%8D%94%20%EC%A4%91%EC%9A%94%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="기획자로 시작하기">
+    <a href="/brunch_web_assets/markdown/278_AI%20%EC%8B%9C%EB%8C%80%2C%20%EC%99%9C%20%EA%B8%B0%ED%9A%8D%EC%9D%B4%20%EB%8D%94%20%EC%A4%91%EC%9A%94%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="기획자로 시작하기" data-date="20241217" data-id="278">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/278.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2811,7 +2829,7 @@ is_index: true
             <div class="card-date">Dec 17. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/279_%EA%B6%A4%EB%B3%80%EC%97%90%20%EB%8C%80%EC%9D%91%ED%95%98%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/279_%EA%B6%A4%EB%B3%80%EC%97%90%20%EB%8C%80%EC%9D%91%ED%95%98%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획일상" data-date="20241214" data-id="279">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/279.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2821,7 +2839,7 @@ is_index: true
             <div class="card-date">Dec 14. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/280_%EC%9E%98%EB%90%98%EB%8A%94%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%EB%AC%B4%EC%97%87%EC%9D%B4%20%EB%8B%A4%EB%A5%BC%EA%B9%8C.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/280_%EC%9E%98%EB%90%98%EB%8A%94%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%EB%AC%B4%EC%97%87%EC%9D%B4%20%EB%8B%A4%EB%A5%BC%EA%B9%8C.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20241213" data-id="280">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/280.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2831,7 +2849,7 @@ is_index: true
             <div class="card-date">Dec 13. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/281_PO%EA%B0%80%20%EB%A6%AC%EB%8D%94%EC%8B%AD%EC%9D%84%20%EB%B0%9C%ED%9C%98%ED%95%98%EA%B8%B0%20%EC%9C%84%ED%95%B4%20%ED%95%84%EC%9A%94%ED%95%9C%20%EA%B2%83.html" class="card-item" data-category="Be the PO">
+    <a href="/brunch_web_assets/markdown/281_PO%EA%B0%80%20%EB%A6%AC%EB%8D%94%EC%8B%AD%EC%9D%84%20%EB%B0%9C%ED%9C%98%ED%95%98%EA%B8%B0%20%EC%9C%84%ED%95%B4%20%ED%95%84%EC%9A%94%ED%95%9C%20%EA%B2%83.html" class="card-item" data-category="Be the PO" data-date="20241211" data-id="281">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/281.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2841,7 +2859,7 @@ is_index: true
             <div class="card-date">Dec 11. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/282_%EB%82%98%EC%99%80%20%EC%95%88%EB%A7%9E%EB%8A%94%20%EC%83%81%EC%82%AC%EB%A5%BC%20%EB%A7%8C%EB%82%AC%EC%9D%84%20%EB%95%8C%EB%8A%94.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/282_%EB%82%98%EC%99%80%20%EC%95%88%EB%A7%9E%EB%8A%94%20%EC%83%81%EC%82%AC%EB%A5%BC%20%EB%A7%8C%EB%82%AC%EC%9D%84%20%EB%95%8C%EB%8A%94.html" class="card-item" data-category="심플리파이어 라이프" data-date="20241209" data-id="282">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/282.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2851,7 +2869,7 @@ is_index: true
             <div class="card-date">Dec 9. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/283_ENTJ%EC%BD%94%EC%B9%98%EC%9D%98%20%EC%A0%95%EA%B6%8C%20%EA%B8%B0%ED%9A%8D.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/283_ENTJ%EC%BD%94%EC%B9%98%EC%9D%98%20%EC%A0%95%EA%B6%8C%20%EA%B8%B0%ED%9A%8D.html" class="card-item" data-category="심플리파이어 라이프" data-date="20241208" data-id="283">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/283.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2861,7 +2879,7 @@ is_index: true
             <div class="card-date">Dec 8. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/284_%EC%83%89%EB%8B%AC%EB%9E%90%EB%8D%98%20%EB%A6%AC%EB%8D%94.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/284_%EC%83%89%EB%8B%AC%EB%9E%90%EB%8D%98%20%EB%A6%AC%EB%8D%94.html" class="card-item" data-category="심플리파이어 라이프" data-date="20241207" data-id="284">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/284.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2871,7 +2889,7 @@ is_index: true
             <div class="card-date">Dec 7. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/285_%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%97%90%20%ED%8F%AC%EC%BB%A4%EC%8A%A4%ED%95%98%EC%84%B8%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/285_%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%97%90%20%ED%8F%AC%EC%BB%A4%EC%8A%A4%ED%95%98%EC%84%B8%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프" data-date="20241205" data-id="285">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/285.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2881,7 +2899,7 @@ is_index: true
             <div class="card-date">Dec 5. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/286_ENTJ%EC%BD%94%EC%B9%98%EC%9D%98%20%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%20%ED%8A%B8%EB%A0%81%ED%81%AC%20%EA%B0%90%EC%83%81.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/286_ENTJ%EC%BD%94%EC%B9%98%EC%9D%98%20%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%20%ED%8A%B8%EB%A0%81%ED%81%AC%20%EA%B0%90%EC%83%81.html" class="card-item" data-category="심플리파이어 라이프" data-date="20241202" data-id="286">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/286.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2891,7 +2909,7 @@ is_index: true
             <div class="card-date">Dec 2. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/287_%EB%82%98%EC%9D%98%20%EC%BD%94%EC%B9%AD%20%EC%97%AC%EC%A0%95.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/287_%EB%82%98%EC%9D%98%20%EC%BD%94%EC%B9%AD%20%EC%97%AC%EC%A0%95.html" class="card-item" data-category="심플리파이어 라이프" data-date="20241201" data-id="287">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/287.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2901,7 +2919,7 @@ is_index: true
             <div class="card-date">Dec 1. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/288_%EC%B4%88%EA%B8%B0%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%B9%8C%EB%93%9C%EC%97%85%EC%9D%98%20%EC%9B%90%EC%B9%99.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/288_%EC%B4%88%EA%B8%B0%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%B9%8C%EB%93%9C%EC%97%85%EC%9D%98%20%EC%9B%90%EC%B9%99.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20241129" data-id="288">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/288.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2911,7 +2929,7 @@ is_index: true
             <div class="card-date">Nov 29. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/289_%ED%95%B8%EB%94%94%EC%BA%A1%EC%9D%B4%20%EA%B0%95%EC%A0%90%EC%9D%B4%20%EB%90%98%EB%8A%94%20%EC%9B%90%EB%A6%AC.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/289_%ED%95%B8%EB%94%94%EC%BA%A1%EC%9D%B4%20%EA%B0%95%EC%A0%90%EC%9D%B4%20%EB%90%98%EB%8A%94%20%EC%9B%90%EB%A6%AC.html" class="card-item" data-category="기획일상" data-date="20241128" data-id="289">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/289.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2921,7 +2939,7 @@ is_index: true
             <div class="card-date">Nov 28. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/290_%EC%A0%84%EB%AC%B8%EA%B0%95%EC%82%AC%EB%93%A4%EC%9D%80%20%EC%A4%80%EB%B9%84%EC%97%90%20%EC%96%BC%EB%A7%88%EC%9D%98%20%EC%8B%9C%EA%B0%84%EC%9D%84%20%EC%93%B8%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/290_%EC%A0%84%EB%AC%B8%EA%B0%95%EC%82%AC%EB%93%A4%EC%9D%80%20%EC%A4%80%EB%B9%84%EC%97%90%20%EC%96%BC%EB%A7%88%EC%9D%98%20%EC%8B%9C%EA%B0%84%EC%9D%84%20%EC%93%B8%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프" data-date="20241125" data-id="290">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/290.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2931,7 +2949,7 @@ is_index: true
             <div class="card-date">Nov 25. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/291_%EB%82%B4%20%EA%B8%B0%ED%9A%8D%EC%84%9C%EB%8A%94%20%EC%99%9C%20%EA%B9%8C%EC%9D%BC%EA%B9%8C.html" class="card-item" data-category="기획자로 시작하기">
+    <a href="/brunch_web_assets/markdown/291_%EB%82%B4%20%EA%B8%B0%ED%9A%8D%EC%84%9C%EB%8A%94%20%EC%99%9C%20%EA%B9%8C%EC%9D%BC%EA%B9%8C.html" class="card-item" data-category="기획자로 시작하기" data-date="20241124" data-id="291">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/291.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2941,7 +2959,7 @@ is_index: true
             <div class="card-date">Nov 24. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/292_%EC%A0%95%EC%A3%BC%EC%98%81%ED%9A%8C%EC%9E%A5%EB%8B%98%20%ED%9B%84%EB%B0%B0%EB%93%A4%EC%9D%84%20%EB%A7%8C%EB%82%98%EA%B3%A0%20%EC%99%94%EC%8A%B5%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/292_%EC%A0%95%EC%A3%BC%EC%98%81%ED%9A%8C%EC%9E%A5%EB%8B%98%20%ED%9B%84%EB%B0%B0%EB%93%A4%EC%9D%84%20%EB%A7%8C%EB%82%98%EA%B3%A0%20%EC%99%94%EC%8A%B5%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프" data-date="20241123" data-id="292">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/292.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2951,7 +2969,7 @@ is_index: true
             <div class="card-date">Nov 23. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/293_%EC%88%AB%EC%9E%90%EB%A5%BC%20%EB%B9%8C%EB%93%9C%EC%97%85%20%ED%95%98%EC%84%B8%EC%9A%94.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/293_%EC%88%AB%EC%9E%90%EB%A5%BC%20%EB%B9%8C%EB%93%9C%EC%97%85%20%ED%95%98%EC%84%B8%EC%9A%94.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20241121" data-id="293">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/293.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2961,7 +2979,7 @@ is_index: true
             <div class="card-date">Nov 21. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/294_%EB%82%9C%EA%B0%81%EB%B2%88%ED%98%B8%201%EB%B2%88.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/294_%EB%82%9C%EA%B0%81%EB%B2%88%ED%98%B8%201%EB%B2%88.html" class="card-item" data-category="심플리파이어 라이프" data-date="20241120" data-id="294">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/294.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2971,7 +2989,7 @@ is_index: true
             <div class="card-date">Nov 20. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/295_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%EA%B0%80%20%EB%82%B4%20%EC%82%B6%EC%9D%84%20%EB%B0%94%EA%BE%BC%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/295_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%EA%B0%80%20%EB%82%B4%20%EC%82%B6%EC%9D%84%20%EB%B0%94%EA%BE%BC%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 라이프" data-date="20241116" data-id="295">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/295.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2981,7 +2999,7 @@ is_index: true
             <div class="card-date">Nov 16. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/296_%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EA%B3%A0%EC%88%98%EA%B0%80%20%EB%90%98%EB%A9%B4%20%EB%AC%B4%EC%97%87%EC%9D%B4%20%EB%8B%AC%EB%9D%BC%EC%A7%88%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="Be the PO">
+    <a href="/brunch_web_assets/markdown/296_%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EA%B3%A0%EC%88%98%EA%B0%80%20%EB%90%98%EB%A9%B4%20%EB%AC%B4%EC%97%87%EC%9D%B4%20%EB%8B%AC%EB%9D%BC%EC%A7%88%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="Be the PO" data-date="20241114" data-id="296">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/296.jpg');"></div>
         <div class="card-content">
             <div>
@@ -2991,7 +3009,7 @@ is_index: true
             <div class="card-date">Nov 14. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/297_%EB%94%94%EC%9E%90%EC%9D%B4%EB%84%88%EC%97%90%EA%B2%8C%20%EA%B8%B0%ED%9A%8D%EB%A0%A5%EC%9D%B4%20%ED%95%84%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="Be the PO">
+    <a href="/brunch_web_assets/markdown/297_%EB%94%94%EC%9E%90%EC%9D%B4%EB%84%88%EC%97%90%EA%B2%8C%20%EA%B8%B0%ED%9A%8D%EB%A0%A5%EC%9D%B4%20%ED%95%84%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="Be the PO" data-date="20241113" data-id="297">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/297.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3001,7 +3019,7 @@ is_index: true
             <div class="card-date">Nov 13. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/298_%EB%9B%B0%EC%96%B4%EB%82%9C%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%8C%80%ED%91%9C%EB%8A%94%20%EB%AC%B4%EC%97%87%EC%9D%B4%20%EB%8B%A4%EB%A5%BC%EA%B9%8C.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/298_%EB%9B%B0%EC%96%B4%EB%82%9C%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%8C%80%ED%91%9C%EB%8A%94%20%EB%AC%B4%EC%97%87%EC%9D%B4%20%EB%8B%A4%EB%A5%BC%EA%B9%8C.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20241109" data-id="298">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/298.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3011,7 +3029,7 @@ is_index: true
             <div class="card-date">Nov 9. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/299_%EC%B5%9C%EA%B3%A0%EC%9D%98%20%EA%B8%B0%ED%9A%8D%EA%B3%BC%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%B4%20%EA%B0%99%EC%9D%80%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/299_%EC%B5%9C%EA%B3%A0%EC%9D%98%20%EA%B8%B0%ED%9A%8D%EA%B3%BC%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%B4%20%EA%B0%99%EC%9D%80%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20241107" data-id="299">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/299.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3021,7 +3039,7 @@ is_index: true
             <div class="card-date">Nov 7. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/300_%EB%9B%B0%EC%96%B4%EB%82%9C%20PO%EB%8A%94%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A5%BC%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EB%B3%BC%EA%B9%8C.html" class="card-item" data-category="Be the PO">
+    <a href="/brunch_web_assets/markdown/300_%EB%9B%B0%EC%96%B4%EB%82%9C%20PO%EB%8A%94%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A5%BC%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EB%B3%BC%EA%B9%8C.html" class="card-item" data-category="Be the PO" data-date="20241104" data-id="300">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/300.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3031,7 +3049,7 @@ is_index: true
             <div class="card-date">Nov 4. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/301_%EC%9D%BC%EC%97%90%20%EB%81%8C%EB%A0%A4%EB%8B%A4%EB%8B%90%20%EB%95%8C%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%ED%95%B4%EC%95%BC%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/301_%EC%9D%BC%EC%97%90%20%EB%81%8C%EB%A0%A4%EB%8B%A4%EB%8B%90%20%EB%95%8C%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%ED%95%B4%EC%95%BC%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20241031" data-id="301">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/301.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3041,7 +3059,7 @@ is_index: true
             <div class="card-date">Oct 31. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/302_%EC%BD%94%EC%B9%AD%EC%9D%B4%20%EB%B3%B4%EB%9E%8C%EC%B0%AC%20%EC%8B%9C%EA%B0%84.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/302_%EC%BD%94%EC%B9%AD%EC%9D%B4%20%EB%B3%B4%EB%9E%8C%EC%B0%AC%20%EC%8B%9C%EA%B0%84.html" class="card-item" data-category="심플리파이어 라이프" data-date="20241028" data-id="302">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/302.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3051,7 +3069,7 @@ is_index: true
             <div class="card-date">Oct 28. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/303_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%EA%B8%B0%EB%B0%80%EC%84%9C%EC%9E%AC%20%27%EC%84%A4%EB%93%9D%EC%9D%98%20%EC%8B%AC%EB%A6%AC%ED%95%99%27.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/303_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%EA%B8%B0%EB%B0%80%EC%84%9C%EC%9E%AC%20%27%EC%84%A4%EB%93%9D%EC%9D%98%20%EC%8B%AC%EB%A6%AC%ED%95%99%27.html" class="card-item" data-category="심플리파이어 라이프" data-date="20241028" data-id="303">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/303.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3061,7 +3079,7 @@ is_index: true
             <div class="card-date">Oct 28. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/304_%EB%82%B4%20%EC%BB%A4%EB%A6%AC%EC%96%B4%EC%9D%98%20%EB%B9%84%EB%B0%80.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/304_%EB%82%B4%20%EC%BB%A4%EB%A6%AC%EC%96%B4%EC%9D%98%20%EB%B9%84%EB%B0%80.html" class="card-item" data-category="기획일상" data-date="20241027" data-id="304">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/304.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3071,7 +3089,7 @@ is_index: true
             <div class="card-date">Oct 27. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/305_%EB%9B%B0%EC%96%B4%EB%82%9C%20UX%EB%94%94%EC%9E%90%EC%9D%B4%EB%84%88%EC%9D%98%20%EB%AA%B8%EA%B0%92%EC%9D%B4%20%EB%86%92%EC%9D%80%20%EC%9D%B4%EC%9C%A0%EB%8A%94.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/305_%EB%9B%B0%EC%96%B4%EB%82%9C%20UX%EB%94%94%EC%9E%90%EC%9D%B4%EB%84%88%EC%9D%98%20%EB%AA%B8%EA%B0%92%EC%9D%B4%20%EB%86%92%EC%9D%80%20%EC%9D%B4%EC%9C%A0%EB%8A%94.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20241025" data-id="305">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/305.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3081,7 +3099,7 @@ is_index: true
             <div class="card-date">Oct 25. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/306_%EB%9B%B0%EC%96%B4%EB%82%9C%20PO%EB%8A%94%20%EC%96%B4%EB%96%A4%20%EC%9E%90%EC%A7%88%EC%9D%B4%20%EB%8B%A4%EB%A5%BC%EA%B9%8C.html" class="card-item" data-category="Be the PO">
+    <a href="/brunch_web_assets/markdown/306_%EB%9B%B0%EC%96%B4%EB%82%9C%20PO%EB%8A%94%20%EC%96%B4%EB%96%A4%20%EC%9E%90%EC%A7%88%EC%9D%B4%20%EB%8B%A4%EB%A5%BC%EA%B9%8C.html" class="card-item" data-category="Be the PO" data-date="20241023" data-id="306">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/306.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3091,7 +3109,7 @@ is_index: true
             <div class="card-date">Oct 23. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/307_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%97%90%EA%B2%8C%20%ED%95%84%EC%9A%94%ED%95%9C%20%EB%A6%AC%EB%8D%94%EC%8B%AD%EC%9D%80.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/307_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%97%90%EA%B2%8C%20%ED%95%84%EC%9A%94%ED%95%9C%20%EB%A6%AC%EB%8D%94%EC%8B%AD%EC%9D%80.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20241022" data-id="307">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/307.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3101,7 +3119,7 @@ is_index: true
             <div class="card-date">Oct 22. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/308_%EC%9D%B4%EC%A4%91%EC%83%9D%ED%99%9C%20%EC%A4%91.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/308_%EC%9D%B4%EC%A4%91%EC%83%9D%ED%99%9C%20%EC%A4%91.html" class="card-item" data-category="심플리파이어 라이프" data-date="20241020" data-id="308">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/308.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3111,7 +3129,7 @@ is_index: true
             <div class="card-date">Oct 20. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/309_ENTJ%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EB%8A%94%20%27%EC%9D%B4%ED%86%A0%EB%A1%9D%20%EC%B9%9C%EB%B0%80%ED%95%9C%20%EB%B0%B0%EC%8B%A0%EC%9E%90%27.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/309_ENTJ%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EB%8A%94%20%27%EC%9D%B4%ED%86%A0%EB%A1%9D%20%EC%B9%9C%EB%B0%80%ED%95%9C%20%EB%B0%B0%EC%8B%A0%EC%9E%90%27.html" class="card-item" data-category="심플리파이어 라이프" data-date="20241019" data-id="309">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/309.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3121,7 +3139,7 @@ is_index: true
             <div class="card-date">Oct 19. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/310_%EC%B0%A9%EC%8B%9C%EC%97%90%20%EB%B9%A0%EC%A7%80%EC%A7%80%20%EC%95%8A%EA%B8%B0.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/310_%EC%B0%A9%EC%8B%9C%EC%97%90%20%EB%B9%A0%EC%A7%80%EC%A7%80%20%EC%95%8A%EA%B8%B0.html" class="card-item" data-category="기획일상" data-date="20241019" data-id="310">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/310.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3131,7 +3149,7 @@ is_index: true
             <div class="card-date">Oct 19. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/311_%EC%96%B4%EB%96%A4%20%EC%A7%81%EC%9E%A5%EC%9D%84%20%EA%B3%A8%EB%9D%BC%EC%95%BC%20%ED%95%A0%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/311_%EC%96%B4%EB%96%A4%20%EC%A7%81%EC%9E%A5%EC%9D%84%20%EA%B3%A8%EB%9D%BC%EC%95%BC%20%ED%95%A0%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프" data-date="20241017" data-id="311">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/311.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3141,7 +3159,7 @@ is_index: true
             <div class="card-date">Oct 17. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/312_%EC%A7%81%EA%B4%80%EB%A0%A5%EC%9D%84%20%EA%B0%80%EC%A7%80%EB%A9%B4%20%EC%96%B4%EB%A0%A4%EC%9A%B4%20%EC%A0%90.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/312_%EC%A7%81%EA%B4%80%EB%A0%A5%EC%9D%84%20%EA%B0%80%EC%A7%80%EB%A9%B4%20%EC%96%B4%EB%A0%A4%EC%9A%B4%20%EC%A0%90.html" class="card-item" data-category="심플리파이어 라이프" data-date="20241016" data-id="312">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/312.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3151,7 +3169,7 @@ is_index: true
             <div class="card-date">Oct 16. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/313_%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90%20TV%ED%94%8C%EB%9F%AC%EC%8A%A4%20%EC%9D%B4%EC%95%BC%EA%B8%B0.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/313_%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90%20TV%ED%94%8C%EB%9F%AC%EC%8A%A4%20%EC%9D%B4%EC%95%BC%EA%B8%B0.html" class="card-item" data-category="심플리파이어 라이프" data-date="20241014" data-id="313">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/313.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3161,7 +3179,7 @@ is_index: true
             <div class="card-date">Oct 14. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/314_ENTJ%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EB%8A%94%20%EC%B5%9C%EA%B3%A0%EC%9D%98%20%EA%B8%B0%ED%9A%8D%EC%9E%90%20%27%EC%97%90%EB%93%9C%EC%9B%8C%EB%93%9C%20%EB%A6%AC%27.html" class="card-item" data-category="기획자로 시작하기">
+    <a href="/brunch_web_assets/markdown/314_ENTJ%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EB%8A%94%20%EC%B5%9C%EA%B3%A0%EC%9D%98%20%EA%B8%B0%ED%9A%8D%EC%9E%90%20%27%EC%97%90%EB%93%9C%EC%9B%8C%EB%93%9C%20%EB%A6%AC%27.html" class="card-item" data-category="기획자로 시작하기" data-date="20241013" data-id="314">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/314.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3171,7 +3189,7 @@ is_index: true
             <div class="card-date">Oct 13. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/315_%EC%9E%98%ED%95%98%EB%8A%94%20PO%EA%B0%80%20%EB%86%92%EC%9D%80%20%EC%97%B0%EB%B4%89%EC%9D%84%20%EB%B0%9B%EB%8A%94%20%EC%9D%B4%EC%9C%A0%EB%8A%94.html" class="card-item" data-category="Be the PO">
+    <a href="/brunch_web_assets/markdown/315_%EC%9E%98%ED%95%98%EB%8A%94%20PO%EA%B0%80%20%EB%86%92%EC%9D%80%20%EC%97%B0%EB%B4%89%EC%9D%84%20%EB%B0%9B%EB%8A%94%20%EC%9D%B4%EC%9C%A0%EB%8A%94.html" class="card-item" data-category="Be the PO" data-date="20241012" data-id="315">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/315.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3181,7 +3199,7 @@ is_index: true
             <div class="card-date">Oct 12. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/316_%5B%EB%AA%A8%EC%A7%91%EA%B3%B5%EA%B3%A0%5D%20%EC%8A%A4%EC%99%88%EB%A1%9C%EC%9A%B0%EC%A6%88%EC%99%80%20%ED%95%A8%EA%BB%98%20%ED%95%A0%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%84%20%EC%B0%BE%EC%8A%B5%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/316_%5B%EB%AA%A8%EC%A7%91%EA%B3%B5%EA%B3%A0%5D%20%EC%8A%A4%EC%99%88%EB%A1%9C%EC%9A%B0%EC%A6%88%EC%99%80%20%ED%95%A8%EA%BB%98%20%ED%95%A0%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%84%20%EC%B0%BE%EC%8A%B5%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프" data-date="20241010" data-id="316">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/316.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3191,7 +3209,7 @@ is_index: true
             <div class="card-date">Oct 10. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/317_ENTJ%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B8%20%ED%9D%91%EB%B0%B1%EC%9A%94%EB%A6%AC%EC%82%AC.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/317_ENTJ%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B8%20%ED%9D%91%EB%B0%B1%EC%9A%94%EB%A6%AC%EC%82%AC.html" class="card-item" data-category="심플리파이어 라이프" data-date="20241006" data-id="317">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/317.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3201,7 +3219,7 @@ is_index: true
             <div class="card-date">Oct 6. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/318_%EC%84%B1%EA%B3%B5%EC%A0%81%EC%9D%B8%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EC%95%84%EC%9D%B4%ED%85%9C%EC%9D%84%20%EC%B0%BE%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/318_%EC%84%B1%EA%B3%B5%EC%A0%81%EC%9D%B8%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EC%95%84%EC%9D%B4%ED%85%9C%EC%9D%84%20%EC%B0%BE%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="심플리파이어 라이프" data-date="20241004" data-id="318">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/318.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3211,7 +3229,7 @@ is_index: true
             <div class="card-date">Oct 4. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/319_%EC%8A%A4%EC%99%88%EB%A1%9C%EC%9A%B0%EC%A6%88%ED%8C%80%EC%9D%80%20%EC%96%B4%EB%96%A4%20%EC%9E%AC%EB%8A%A5%EC%9D%84%20%EA%B0%80%EC%A7%80%EA%B3%A0%20%EC%9E%88%EB%82%98%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/319_%EC%8A%A4%EC%99%88%EB%A1%9C%EC%9A%B0%EC%A6%88%ED%8C%80%EC%9D%80%20%EC%96%B4%EB%96%A4%20%EC%9E%AC%EB%8A%A5%EC%9D%84%20%EA%B0%80%EC%A7%80%EA%B3%A0%20%EC%9E%88%EB%82%98%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프" data-date="20241003" data-id="319">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/319.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3221,7 +3239,7 @@ is_index: true
             <div class="card-date">Oct 3. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/320_%EB%82%B4%EA%B0%80%20%EC%95%94%EA%B8%B0%EB%A5%BC%20%EC%9E%98%ED%95%98%EA%B2%8C%20%EB%90%9C%20%EC%82%AC%EC%97%B0.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/320_%EB%82%B4%EA%B0%80%20%EC%95%94%EA%B8%B0%EB%A5%BC%20%EC%9E%98%ED%95%98%EA%B2%8C%20%EB%90%9C%20%EC%82%AC%EC%97%B0.html" class="card-item" data-category="심플리파이어 라이프" data-date="20241001" data-id="320">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/320.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3231,7 +3249,7 @@ is_index: true
             <div class="card-date">Oct 1. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/321_%EC%96%B4%EB%96%A4%20%ED%9A%8C%EC%82%AC%2C%20%EC%96%B4%EB%96%A4%20%EB%95%8C%EA%B0%80%20%EA%B0%80%EC%9E%A5%20%EC%A6%90%EA%B1%B0%EC%9B%A0%EB%82%98%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/321_%EC%96%B4%EB%96%A4%20%ED%9A%8C%EC%82%AC%2C%20%EC%96%B4%EB%96%A4%20%EB%95%8C%EA%B0%80%20%EA%B0%80%EC%9E%A5%20%EC%A6%90%EA%B1%B0%EC%9B%A0%EB%82%98%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240930" data-id="321">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/321.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3241,7 +3259,7 @@ is_index: true
             <div class="card-date">Sep 30. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/322_%EA%B8%B0%EB%B0%80%EC%84%9C%EC%9E%AC%203%EB%B2%88%EC%A7%B8%20%EC%B1%85%EC%9D%80%20%EB%A1%9C%EC%A7%80%EC%BB%AC%EC%94%BD%ED%82%B9%EC%9E%85%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/322_%EA%B8%B0%EB%B0%80%EC%84%9C%EC%9E%AC%203%EB%B2%88%EC%A7%B8%20%EC%B1%85%EC%9D%80%20%EB%A1%9C%EC%A7%80%EC%BB%AC%EC%94%BD%ED%82%B9%EC%9E%85%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240929" data-id="322">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/322.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3251,7 +3269,7 @@ is_index: true
             <div class="card-date">Sep 29. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/323_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EC%A0%95%EB%8B%B5%EC%9D%80%20%EB%A7%A4%EC%9D%BC%EB%A7%A4%EC%9D%BC%EC%9D%B4%20%EB%8B%A4%EB%A5%B4%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/323_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EC%A0%95%EB%8B%B5%EC%9D%80%20%EB%A7%A4%EC%9D%BC%EB%A7%A4%EC%9D%BC%EC%9D%B4%20%EB%8B%A4%EB%A5%B4%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240928" data-id="323">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/323.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3261,7 +3279,7 @@ is_index: true
             <div class="card-date">Sep 28. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/324_1%EC%9D%B8%EA%B8%B0%EC%97%85%EA%B0%80%EA%B0%80%20%EB%90%98%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/324_1%EC%9D%B8%EA%B8%B0%EC%97%85%EA%B0%80%EA%B0%80%20%EB%90%98%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240927" data-id="324">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/324.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3271,7 +3289,7 @@ is_index: true
             <div class="card-date">Sep 27. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/325_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%84%B1%EA%B3%B5%EC%9D%80%20%EC%A0%9C%EB%A1%9C%EB%B2%A0%EC%9D%B4%EC%8A%A4%20%EC%94%BD%ED%82%B9%EC%97%90%EC%84%9C.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/325_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%84%B1%EA%B3%B5%EC%9D%80%20%EC%A0%9C%EB%A1%9C%EB%B2%A0%EC%9D%B4%EC%8A%A4%20%EC%94%BD%ED%82%B9%EC%97%90%EC%84%9C.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20240923" data-id="325">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/325.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3281,7 +3299,7 @@ is_index: true
             <div class="card-date">Sep 23. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/326_%EC%8A%A4%EC%99%88%EB%A1%9C%EC%9A%B0%EC%A6%88%20%EA%B0%95%EB%A6%89%EC%98%A4%ED%94%BC%EC%8A%A4%20%EC%9B%8C%ED%81%AC%EC%95%A4%EC%8A%A4%ED%85%8C%EC%9D%B4.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/326_%EC%8A%A4%EC%99%88%EB%A1%9C%EC%9A%B0%EC%A6%88%20%EA%B0%95%EB%A6%89%EC%98%A4%ED%94%BC%EC%8A%A4%20%EC%9B%8C%ED%81%AC%EC%95%A4%EC%8A%A4%ED%85%8C%EC%9D%B4.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240922" data-id="326">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/326.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3291,7 +3309,7 @@ is_index: true
             <div class="card-date">Sep 22. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/327_%EC%9A%94%EA%B8%B0%EC%9A%94%EC%9D%98%20%EB%B6%80%ED%99%9C%EC%9D%84%20%EA%B8%B0%EB%8C%80%ED%95%98%EB%A9%B0.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/327_%EC%9A%94%EA%B8%B0%EC%9A%94%EC%9D%98%20%EB%B6%80%ED%99%9C%EC%9D%84%20%EA%B8%B0%EB%8C%80%ED%95%98%EB%A9%B0.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240920" data-id="327">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/327.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3301,7 +3319,7 @@ is_index: true
             <div class="card-date">Sep 20. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/328_%EC%B0%BD%EC%97%85%20%EC%95%84%EC%9D%B4%ED%85%9C%20%EC%84%A0%EC%A0%95%20%EC%8B%9C%20%EC%A3%BC%EC%9D%98%ED%95%A0%20%EC%A0%90%EC%9D%80.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/328_%EC%B0%BD%EC%97%85%20%EC%95%84%EC%9D%B4%ED%85%9C%20%EC%84%A0%EC%A0%95%20%EC%8B%9C%20%EC%A3%BC%EC%9D%98%ED%95%A0%20%EC%A0%90%EC%9D%80.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240919" data-id="328">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/328.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3311,7 +3329,7 @@ is_index: true
             <div class="card-date">Sep 19. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/329_%EB%8B%B9%EC%8B%A0%EC%9D%98%20%EC%84%B1%EA%B3%B5%EC%9D%80%20%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/329_%EB%8B%B9%EC%8B%A0%EC%9D%98%20%EC%84%B1%EA%B3%B5%EC%9D%80%20%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240918" data-id="329">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/329.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3321,7 +3339,7 @@ is_index: true
             <div class="card-date">Sep 18. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/330_%EB%84%88%EB%8F%84%20%EB%82%98%EC%B2%98%EB%9F%BC%20%EB%85%B8%EB%A0%A5%ED%95%98%EB%A9%B4%20%EC%84%B1%EA%B3%B5%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%96%B4.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/330_%EB%84%88%EB%8F%84%20%EB%82%98%EC%B2%98%EB%9F%BC%20%EB%85%B8%EB%A0%A5%ED%95%98%EB%A9%B4%20%EC%84%B1%EA%B3%B5%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%96%B4.html" class="card-item" data-category="기획일상" data-date="20240917" data-id="330">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/330.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3331,7 +3349,7 @@ is_index: true
             <div class="card-date">Sep 17. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/331_%EC%96%B4%EB%96%A4%20%EC%BD%94%ED%8C%8C%EC%9A%B4%EB%8D%94%EB%A5%BC%20%EC%B0%BE%EC%95%84%EC%95%BC%20%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/331_%EC%96%B4%EB%96%A4%20%EC%BD%94%ED%8C%8C%EC%9A%B4%EB%8D%94%EB%A5%BC%20%EC%B0%BE%EC%95%84%EC%95%BC%20%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240915" data-id="331">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/331.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3341,7 +3359,7 @@ is_index: true
             <div class="card-date">Sep 15. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/332_%27%EC%BD%94%EC%B9%98S%27%20%EB%B8%8C%EB%9F%B0%EC%B9%98%EB%B6%81%EC%9D%84%20%EC%B6%9C%EA%B0%84%ED%95%98%EC%98%80%EC%8A%B5%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/332_%27%EC%BD%94%EC%B9%98S%27%20%EB%B8%8C%EB%9F%B0%EC%B9%98%EB%B6%81%EC%9D%84%20%EC%B6%9C%EA%B0%84%ED%95%98%EC%98%80%EC%8A%B5%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240914" data-id="332">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/332.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3351,7 +3369,7 @@ is_index: true
             <div class="card-date">Sep 14. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/333_%EC%99%9C%20%EC%8A%A4%EC%99%88%EB%A1%9C%EC%9A%B0%EC%A6%88%EB%A5%BC%20%EC%B0%BD%EC%97%85%ED%95%98%EC%85%A8%EB%82%98%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/333_%EC%99%9C%20%EC%8A%A4%EC%99%88%EB%A1%9C%EC%9A%B0%EC%A6%88%EB%A5%BC%20%EC%B0%BD%EC%97%85%ED%95%98%EC%85%A8%EB%82%98%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240914" data-id="333">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/333.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3361,7 +3379,7 @@ is_index: true
             <div class="card-date">Sep 14. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/334_%EC%BD%94%EC%B9%98S%2019%ED%99%94%20%EC%B5%9C%EC%A2%85%20%27%EC%8A%A4%EC%99%88%EB%A1%9C%EC%9A%B0%EC%A6%88%20%EB%B9%84%EA%B8%B4%EC%A6%88%27.html" class="card-item" data-category="코치S">
+    <a href="/brunch_web_assets/markdown/334_%EC%BD%94%EC%B9%98S%2019%ED%99%94%20%EC%B5%9C%EC%A2%85%20%27%EC%8A%A4%EC%99%88%EB%A1%9C%EC%9A%B0%EC%A6%88%20%EB%B9%84%EA%B8%B4%EC%A6%88%27.html" class="card-item" data-category="코치S" data-date="20240911" data-id="334">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/334.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3371,7 +3389,7 @@ is_index: true
             <div class="card-date">Sep 11. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/335_%EC%84%B8%EC%83%81%EC%9D%84%20%ED%98%81%EC%8B%A0%ED%95%98%EB%8A%94%20%EC%95%A1%EC%85%80%EB%9F%AC%EB%A0%88%EC%9D%B4%ED%84%B0%20%27%EC%8A%A4%EC%99%88%EB%A1%9C%EC%9A%B0%EC%A6%88%27%EB%A5%BC%20%EC%8B%9C%EC%9E%91%ED%95%A9%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/335_%EC%84%B8%EC%83%81%EC%9D%84%20%ED%98%81%EC%8B%A0%ED%95%98%EB%8A%94%20%EC%95%A1%EC%85%80%EB%9F%AC%EB%A0%88%EC%9D%B4%ED%84%B0%20%27%EC%8A%A4%EC%99%88%EB%A1%9C%EC%9A%B0%EC%A6%88%27%EB%A5%BC%20%EC%8B%9C%EC%9E%91%ED%95%A9%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240909" data-id="335">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/335.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3381,7 +3399,7 @@ is_index: true
             <div class="card-date">Sep 9. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/336_%ED%95%9C%EC%BD%94%EC%B9%98%EB%8B%98%EC%9D%98%2030%EB%8C%80%EB%8A%94%20%EC%96%B4%EB%95%A0%EB%82%98%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/336_%ED%95%9C%EC%BD%94%EC%B9%98%EB%8B%98%EC%9D%98%2030%EB%8C%80%EB%8A%94%20%EC%96%B4%EB%95%A0%EB%82%98%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240908" data-id="336">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/336.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3391,7 +3409,7 @@ is_index: true
             <div class="card-date">Sep 8. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/337_%EB%82%B4%EA%B0%80%20%EC%83%88%EB%A1%9C%EC%9A%B4%20%EA%B2%83%EC%9D%84%20%EA%B3%84%EC%86%8D%20%EB%8F%84%EC%A0%84%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/337_%EB%82%B4%EA%B0%80%20%EC%83%88%EB%A1%9C%EC%9A%B4%20%EA%B2%83%EC%9D%84%20%EA%B3%84%EC%86%8D%20%EB%8F%84%EC%A0%84%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240905" data-id="337">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/337.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3401,7 +3419,7 @@ is_index: true
             <div class="card-date">Sep 5. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/338_%EC%BD%94%EC%B9%98S%2018%ED%99%94%20%ED%92%80%EA%B8%B0%20%EC%96%B4%EB%A0%A4%EC%9A%B4%20%EB%AC%B8%EC%A0%9C.html" class="card-item" data-category="코치S">
+    <a href="/brunch_web_assets/markdown/338_%EC%BD%94%EC%B9%98S%2018%ED%99%94%20%ED%92%80%EA%B8%B0%20%EC%96%B4%EB%A0%A4%EC%9A%B4%20%EB%AC%B8%EC%A0%9C.html" class="card-item" data-category="코치S" data-date="20240904" data-id="338">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/338.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3411,7 +3429,7 @@ is_index: true
             <div class="card-date">Sep 4. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/339_%EB%8B%A8%EC%88%9C%ED%99%94%EA%B0%80%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/339_%EB%8B%A8%EC%88%9C%ED%99%94%EA%B0%80%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240831" data-id="339">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/339.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3421,7 +3439,7 @@ is_index: true
             <div class="card-date">Aug 31. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/340_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%ED%95%84%EC%8A%B9%20%EB%8C%80%ED%99%94%20%EB%8B%A8%EC%96%B4%EB%8A%94.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/340_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%ED%95%84%EC%8A%B9%20%EB%8C%80%ED%99%94%20%EB%8B%A8%EC%96%B4%EB%8A%94.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240826" data-id="340">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/340.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3431,7 +3449,7 @@ is_index: true
             <div class="card-date">Aug 26. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/341_%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%EA%B8%80%EC%93%B0%EA%B8%B0%20%EC%A3%BC%EC%A0%9C%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EA%B3%A0%EB%A5%B4%EB%A9%B4%20%EC%A2%8B%EC%9D%84%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/341_%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%EA%B8%80%EC%93%B0%EA%B8%B0%20%EC%A3%BC%EC%A0%9C%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EA%B3%A0%EB%A5%B4%EB%A9%B4%20%EC%A2%8B%EC%9D%84%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240824" data-id="341">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/341.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3441,7 +3459,7 @@ is_index: true
             <div class="card-date">Aug 24. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/342_%EC%8B%9C%EB%A0%A8%EC%9D%80%20%EC%9E%88%EC%96%B4%EB%8F%84%20%EC%8B%A4%ED%8C%A8%EB%8A%94%20%EC%97%86%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/342_%EC%8B%9C%EB%A0%A8%EC%9D%80%20%EC%9E%88%EC%96%B4%EB%8F%84%20%EC%8B%A4%ED%8C%A8%EB%8A%94%20%EC%97%86%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240817" data-id="342">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/342.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3451,7 +3469,7 @@ is_index: true
             <div class="card-date">Aug 17. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/343_%EC%BD%94%EC%B9%98S%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EB%A7%8C%EB%93%A4%EC%96%B4%EC%A7%88%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="코치S">
+    <a href="/brunch_web_assets/markdown/343_%EC%BD%94%EC%B9%98S%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EB%A7%8C%EB%93%A4%EC%96%B4%EC%A7%88%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="코치S" data-date="20240816" data-id="343">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/343.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3461,7 +3479,7 @@ is_index: true
             <div class="card-date">Aug 16. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/344_%EC%BD%94%EC%B9%98S%2015%ED%99%94%20%EC%9E%A5%EC%82%AC%EB%A1%9C%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20%EC%9C%A0%EC%9E%85%EC%9C%A8%EA%B3%BC%20%EC%A0%84%ED%99%98%EC%9C%A8.html" class="card-item" data-category="코치S">
+    <a href="/brunch_web_assets/markdown/344_%EC%BD%94%EC%B9%98S%2015%ED%99%94%20%EC%9E%A5%EC%82%AC%EB%A1%9C%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20%EC%9C%A0%EC%9E%85%EC%9C%A8%EA%B3%BC%20%EC%A0%84%ED%99%98%EC%9C%A8.html" class="card-item" data-category="코치S" data-date="20240814" data-id="344">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/344.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3471,7 +3489,7 @@ is_index: true
             <div class="card-date">Aug 14. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/345_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%B4%20%EB%B9%A0%EB%A5%B4%EA%B2%8C%20%EC%84%B1%EC%9E%A5%ED%95%A0%EC%88%98%EB%A1%9D%20%EA%B2%AA%EB%8A%94%20%EC%96%B4%EB%A0%A4%EC%9B%80.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/345_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%B4%20%EB%B9%A0%EB%A5%B4%EA%B2%8C%20%EC%84%B1%EC%9E%A5%ED%95%A0%EC%88%98%EB%A1%9D%20%EA%B2%AA%EB%8A%94%20%EC%96%B4%EB%A0%A4%EC%9B%80.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240812" data-id="345">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/345.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3481,7 +3499,7 @@ is_index: true
             <div class="card-date">Aug 12. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/346_%EC%BD%94%EC%B9%98S%2014%ED%99%94%20%EC%BD%9C%EB%93%9C%EB%B8%8C%EB%A3%A8%20%EC%9E%A5%EC%82%AC.html" class="card-item" data-category="코치S">
+    <a href="/brunch_web_assets/markdown/346_%EC%BD%94%EC%B9%98S%2014%ED%99%94%20%EC%BD%9C%EB%93%9C%EB%B8%8C%EB%A3%A8%20%EC%9E%A5%EC%82%AC.html" class="card-item" data-category="코치S" data-date="20240807" data-id="346">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/346.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3491,7 +3509,7 @@ is_index: true
             <div class="card-date">Aug 7. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/347_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EB%A0%88%EB%B2%A8.html" class="card-item" data-category="기획자로 시작하기">
+    <a href="/brunch_web_assets/markdown/347_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EB%A0%88%EB%B2%A8.html" class="card-item" data-category="기획자로 시작하기" data-date="20240803" data-id="347">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/347.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3501,7 +3519,7 @@ is_index: true
             <div class="card-date">Aug 3. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/348_%EC%BD%94%EC%9D%B8%EC%9C%BC%EB%A1%9C%20%EB%8F%88%EC%9D%84%20%EB%B2%84%EB%8A%94%20%EA%B0%80%EC%9E%A5%20%ED%99%95%EC%8B%A4%ED%95%9C%20%EB%B0%A9%EB%B2%95.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/348_%EC%BD%94%EC%9D%B8%EC%9C%BC%EB%A1%9C%20%EB%8F%88%EC%9D%84%20%EB%B2%84%EB%8A%94%20%EA%B0%80%EC%9E%A5%20%ED%99%95%EC%8B%A4%ED%95%9C%20%EB%B0%A9%EB%B2%95.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240801" data-id="348">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/348.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3511,7 +3529,7 @@ is_index: true
             <div class="card-date">Aug 1. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/349_%EC%BD%94%EC%B9%98S%2013%ED%99%94%20%EB%91%90%EA%B0%9C%EC%9D%98%20%EB%AA%A8%EC%9E%90.html" class="card-item" data-category="코치S">
+    <a href="/brunch_web_assets/markdown/349_%EC%BD%94%EC%B9%98S%2013%ED%99%94%20%EB%91%90%EA%B0%9C%EC%9D%98%20%EB%AA%A8%EC%9E%90.html" class="card-item" data-category="코치S" data-date="20240731" data-id="349">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/349.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3521,7 +3539,7 @@ is_index: true
             <div class="card-date">Jul 31. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/350_%EA%B8%B0%ED%9A%8D%EC%9E%90%EA%B0%80%20%EC%96%B4%EB%A0%A4%EC%9A%B4%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="기획자로 시작하기">
+    <a href="/brunch_web_assets/markdown/350_%EA%B8%B0%ED%9A%8D%EC%9E%90%EA%B0%80%20%EC%96%B4%EB%A0%A4%EC%9A%B4%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="기획자로 시작하기" data-date="20240729" data-id="350">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/350.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3531,7 +3549,7 @@ is_index: true
             <div class="card-date">Jul 29. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/351_%EB%8B%B9%EC%8B%A0%EC%9D%98%20%EC%A7%81%EC%97%85%EC%97%90%20%EA%B0%80%EC%9E%A5%20%ED%81%B0%20%EC%98%81%ED%96%A5%EC%9D%84%20%EB%81%BC%EC%B9%9C%20%EC%82%AC%EB%9E%8C%EC%9D%80%20%EB%88%84%EA%B5%AC%EC%9D%B8%EA%B0%80%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/351_%EB%8B%B9%EC%8B%A0%EC%9D%98%20%EC%A7%81%EC%97%85%EC%97%90%20%EA%B0%80%EC%9E%A5%20%ED%81%B0%20%EC%98%81%ED%96%A5%EC%9D%84%20%EB%81%BC%EC%B9%9C%20%EC%82%AC%EB%9E%8C%EC%9D%80%20%EB%88%84%EA%B5%AC%EC%9D%B8%EA%B0%80%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240728" data-id="351">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/351.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3541,7 +3559,7 @@ is_index: true
             <div class="card-date">Jul 28. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/352_%EC%BD%94%EC%B9%98S%2012%ED%99%94%20%EB%82%B4%20%EB%A7%98%EC%9D%84%20%EB%AA%B0%EB%9D%BC%EC%A4%98%EC%9A%94.html" class="card-item" data-category="코치S">
+    <a href="/brunch_web_assets/markdown/352_%EC%BD%94%EC%B9%98S%2012%ED%99%94%20%EB%82%B4%20%EB%A7%98%EC%9D%84%20%EB%AA%B0%EB%9D%BC%EC%A4%98%EC%9A%94.html" class="card-item" data-category="코치S" data-date="20240724" data-id="352">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/352.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3551,7 +3569,7 @@ is_index: true
             <div class="card-date">Jul 24. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/353_%EB%AC%B4%EC%96%B8%EA%B0%80%EB%A5%BC%20%EC%9E%98%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/353_%EB%AC%B4%EC%96%B8%EA%B0%80%EB%A5%BC%20%EC%9E%98%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240721" data-id="353">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/353.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3561,7 +3579,7 @@ is_index: true
             <div class="card-date">Jul 21. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/354_%EC%BD%94%EC%B9%98S%2011%ED%99%94%20%EA%B0%81%EC%84%B1.html" class="card-item" data-category="코치S">
+    <a href="/brunch_web_assets/markdown/354_%EC%BD%94%EC%B9%98S%2011%ED%99%94%20%EA%B0%81%EC%84%B1.html" class="card-item" data-category="코치S" data-date="20240717" data-id="354">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/354.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3571,7 +3589,7 @@ is_index: true
             <div class="card-date">Jul 17. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/355_%EC%8B%9C%EB%93%9C%20%EC%95%84%EC%9D%B4%ED%85%9C%EA%B3%BC%20%EB%A9%94%ED%83%80%EC%9D%B8%EC%A7%80.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/355_%EC%8B%9C%EB%93%9C%20%EC%95%84%EC%9D%B4%ED%85%9C%EA%B3%BC%20%EB%A9%94%ED%83%80%EC%9D%B8%EC%A7%80.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240715" data-id="355">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/355.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3581,7 +3599,7 @@ is_index: true
             <div class="card-date">Jul 15. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/356_logo%20branding.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/356_logo%20branding.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240714" data-id="356">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/356.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3591,7 +3609,7 @@ is_index: true
             <div class="card-date">Jul 14. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/357_%EC%B2%AB%20%EB%8C%80%ED%95%99%EA%B5%90%20%EA%B0%95%EC%9D%98.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/357_%EC%B2%AB%20%EB%8C%80%ED%95%99%EA%B5%90%20%EA%B0%95%EC%9D%98.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240713" data-id="357">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/357.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3601,7 +3619,7 @@ is_index: true
             <div class="card-date">Jul 13. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/358_%EC%8B%A4%EC%A0%9C%EB%A1%9C%20%EC%82%B6%EC%9D%84%20%EA%B0%9C%EC%84%A0%EC%8B%9C%EC%BC%9C%EB%9D%BC.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/358_%EC%8B%A4%EC%A0%9C%EB%A1%9C%20%EC%82%B6%EC%9D%84%20%EA%B0%9C%EC%84%A0%EC%8B%9C%EC%BC%9C%EB%9D%BC.html" class="card-item" data-category="기획일상" data-date="20240711" data-id="358">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/358.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3611,7 +3629,7 @@ is_index: true
             <div class="card-date">Jul 11. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/359_%EC%BD%94%EC%B9%98S%2010%ED%99%94%20%EC%B2%A0%EC%97%86%EB%8A%94%20PO.html" class="card-item" data-category="코치S">
+    <a href="/brunch_web_assets/markdown/359_%EC%BD%94%EC%B9%98S%2010%ED%99%94%20%EC%B2%A0%EC%97%86%EB%8A%94%20PO.html" class="card-item" data-category="코치S" data-date="20240710" data-id="359">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/359.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3621,7 +3639,7 @@ is_index: true
             <div class="card-date">Jul 10. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/360_%EB%8F%88%EA%B3%BC%20%ED%96%89%EB%B3%B5.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/360_%EB%8F%88%EA%B3%BC%20%ED%96%89%EB%B3%B5.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240706" data-id="360">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/360.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3631,7 +3649,7 @@ is_index: true
             <div class="card-date">Jul 6. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/361_UX%20%EC%84%A4%EA%B3%84%EB%A5%BC%20%EC%9E%98%ED%95%98%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/361_UX%20%EC%84%A4%EA%B3%84%EB%A5%BC%20%EC%9E%98%ED%95%98%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20240704" data-id="361">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/361.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3641,7 +3659,7 @@ is_index: true
             <div class="card-date">Jul 4. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/362_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%27%EA%B8%B0%EB%B0%80%EC%84%9C%EC%9E%AC%27%20%EC%8B%9C%EC%A6%8C3%EA%B0%80%20%EC%8B%9C%EC%9E%91%ED%95%A9%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/362_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%27%EA%B8%B0%EB%B0%80%EC%84%9C%EC%9E%AC%27%20%EC%8B%9C%EC%A6%8C3%EA%B0%80%20%EC%8B%9C%EC%9E%91%ED%95%A9%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240702" data-id="362">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/362.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3651,7 +3669,7 @@ is_index: true
             <div class="card-date">Jul 2. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/363_%EB%8B%B9%EC%8B%A0%EC%9D%80%20%ED%99%80%EB%A6%AD%ED%95%98%EB%8A%94%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EC%9D%B8%EA%B0%80%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/363_%EB%8B%B9%EC%8B%A0%EC%9D%80%20%ED%99%80%EB%A6%AD%ED%95%98%EB%8A%94%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EC%9D%B8%EA%B0%80%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240628" data-id="363">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/363.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3661,7 +3679,7 @@ is_index: true
             <div class="card-date">Jun 28. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/364_%EC%98%A4%EB%8D%95%EC%9D%98%20%EC%8A%B9%EB%A6%AC%EB%A5%BC%20%EC%B6%95%ED%95%98%ED%95%98%EB%A9%B0.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/364_%EC%98%A4%EB%8D%95%EC%9D%98%20%EC%8A%B9%EB%A6%AC%EB%A5%BC%20%EC%B6%95%ED%95%98%ED%95%98%EB%A9%B0.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240627" data-id="364">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/364.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3671,7 +3689,7 @@ is_index: true
             <div class="card-date">Jun 27. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/365_%EC%BD%94%EC%B9%98S%209%ED%99%94%20%EC%BD%94%EC%B9%98N%EC%9D%98%20%EB%93%B1%EC%9E%A5.html" class="card-item" data-category="코치S">
+    <a href="/brunch_web_assets/markdown/365_%EC%BD%94%EC%B9%98S%209%ED%99%94%20%EC%BD%94%EC%B9%98N%EC%9D%98%20%EB%93%B1%EC%9E%A5.html" class="card-item" data-category="코치S" data-date="20240626" data-id="365">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/365.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3681,7 +3699,7 @@ is_index: true
             <div class="card-date">Jun 26. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/366_%EC%B1%85%EC%9D%84%20%EB%82%98%EC%9D%98%20%EB%AC%B4%EA%B8%B0%EB%A1%9C%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/366_%EC%B1%85%EC%9D%84%20%EB%82%98%EC%9D%98%20%EB%AC%B4%EA%B8%B0%EB%A1%9C%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획일상" data-date="20240625" data-id="366">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/366.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3691,7 +3709,7 @@ is_index: true
             <div class="card-date">Jun 25. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/367_%EC%BD%94%EC%B9%98S%208%ED%99%94%20%27%EB%85%B8%EB%8B%B5%20CEO%20%EC%82%BC%ED%98%95%EC%A0%9C%27.html" class="card-item" data-category="코치S">
+    <a href="/brunch_web_assets/markdown/367_%EC%BD%94%EC%B9%98S%208%ED%99%94%20%27%EB%85%B8%EB%8B%B5%20CEO%20%EC%82%BC%ED%98%95%EC%A0%9C%27.html" class="card-item" data-category="코치S" data-date="20240619" data-id="367">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/367.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3701,7 +3719,7 @@ is_index: true
             <div class="card-date">Jun 19. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/368_%27%EC%98%A4%ED%83%80%EC%99%80%20%EB%B8%8C%EB%9E%9C%EB%94%A9%27.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/368_%27%EC%98%A4%ED%83%80%EC%99%80%20%EB%B8%8C%EB%9E%9C%EB%94%A9%27.html" class="card-item" data-category="기획일상" data-date="20240617" data-id="368">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/368.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3711,7 +3729,7 @@ is_index: true
             <div class="card-date">Jun 17. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/369_%EC%9D%BC%EC%9D%84%20%EC%A0%9C%EB%8C%80%EB%A1%9C%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/369_%EC%9D%BC%EC%9D%84%20%EC%A0%9C%EB%8C%80%EB%A1%9C%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획일상" data-date="20240615" data-id="369">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/369.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3721,7 +3739,7 @@ is_index: true
             <div class="card-date">Jun 15. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/370_%EC%BD%94%EC%B9%98S%207%ED%99%94%20%27%EC%A7%84%EC%A0%95%ED%95%9C%20%EB%B8%8C%EB%9E%9C%EB%94%A9%EC%9D%B4%EB%9E%80%27.html" class="card-item" data-category="코치S">
+    <a href="/brunch_web_assets/markdown/370_%EC%BD%94%EC%B9%98S%207%ED%99%94%20%27%EC%A7%84%EC%A0%95%ED%95%9C%20%EB%B8%8C%EB%9E%9C%EB%94%A9%EC%9D%B4%EB%9E%80%27.html" class="card-item" data-category="코치S" data-date="20240612" data-id="370">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/370.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3731,7 +3749,7 @@ is_index: true
             <div class="card-date">Jun 12. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/371_%EB%9B%B0%EC%96%B4%EB%82%9C%20PM%EC%9D%BC%EC%88%98%EB%A1%9D%20%EB%B9%84%EA%B4%80%EC%A0%81%EC%9D%B8%20%EC%9D%B4%EC%9C%A0%EB%8A%94.html" class="card-item" data-category="Be the PO">
+    <a href="/brunch_web_assets/markdown/371_%EB%9B%B0%EC%96%B4%EB%82%9C%20PM%EC%9D%BC%EC%88%98%EB%A1%9D%20%EB%B9%84%EA%B4%80%EC%A0%81%EC%9D%B8%20%EC%9D%B4%EC%9C%A0%EB%8A%94.html" class="card-item" data-category="Be the PO" data-date="20240610" data-id="371">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/371.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3741,7 +3759,7 @@ is_index: true
             <div class="card-date">Jun 10. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/372_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%9D%B8%EC%9E%AC%EB%B0%80%EB%8F%84%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EB%86%92%EC%9D%BC%EA%B9%8C.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/372_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%9D%B8%EC%9E%AC%EB%B0%80%EB%8F%84%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EB%86%92%EC%9D%BC%EA%B9%8C.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20240609" data-id="372">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/372.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3751,7 +3769,7 @@ is_index: true
             <div class="card-date">Jun 9. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/373_%EC%99%9C%20%EA%B7%B8%EB%A0%87%EA%B2%8C%20%EC%97%B4%EC%8B%AC%ED%9E%88%20%ED%95%98%EC%84%B8%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/373_%EC%99%9C%20%EA%B7%B8%EB%A0%87%EA%B2%8C%20%EC%97%B4%EC%8B%AC%ED%9E%88%20%ED%95%98%EC%84%B8%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240607" data-id="373">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/373.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3761,7 +3779,7 @@ is_index: true
             <div class="card-date">Jun 7. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/374_%EC%BD%94%EC%B9%98S%206%ED%99%94%20%27%EB%B8%8C%EB%9E%9C%EB%94%A9%EB%B3%91%27.html" class="card-item" data-category="코치S">
+    <a href="/brunch_web_assets/markdown/374_%EC%BD%94%EC%B9%98S%206%ED%99%94%20%27%EB%B8%8C%EB%9E%9C%EB%94%A9%EB%B3%91%27.html" class="card-item" data-category="코치S" data-date="20240604" data-id="374">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/374.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3771,7 +3789,7 @@ is_index: true
             <div class="card-date">Jun 4. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/375_%EC%9D%B4%EA%B8%B8%20%EC%88%98%20%EB%B0%96%EC%97%90%20%EC%97%86%EA%B2%8C%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/375_%EC%9D%B4%EA%B8%B8%20%EC%88%98%20%EB%B0%96%EC%97%90%20%EC%97%86%EA%B2%8C%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240601" data-id="375">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/375.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3781,7 +3799,7 @@ is_index: true
             <div class="card-date">Jun 1. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/376_%EC%BD%94%EC%B9%98S%20%E2%80%98%EB%AA%A9%ED%91%9C%EB%8A%94%20%EB%AA%87%20%EA%B0%9C%E2%80%99%20%ED%8E%B8%20%ED%95%B4%EC%84%A4.html" class="card-item" data-category="코치S">
+    <a href="/brunch_web_assets/markdown/376_%EC%BD%94%EC%B9%98S%20%E2%80%98%EB%AA%A9%ED%91%9C%EB%8A%94%20%EB%AA%87%20%EA%B0%9C%E2%80%99%20%ED%8E%B8%20%ED%95%B4%EC%84%A4.html" class="card-item" data-category="코치S" data-date="20240530" data-id="376">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/376.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3791,7 +3809,7 @@ is_index: true
             <div class="card-date">May 30. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/377_%EC%BD%94%EC%B9%98S%205%ED%99%94%20%27%EB%8B%A4%EC%9D%8C%20%EB%9D%BC%EC%9A%B4%EB%93%9C%EC%97%90%EC%84%9C%20%EB%B5%99%EA%B2%A0%EC%8A%B5%EB%8B%88%EB%8B%A4.%27.html" class="card-item" data-category="코치S">
+    <a href="/brunch_web_assets/markdown/377_%EC%BD%94%EC%B9%98S%205%ED%99%94%20%27%EB%8B%A4%EC%9D%8C%20%EB%9D%BC%EC%9A%B4%EB%93%9C%EC%97%90%EC%84%9C%20%EB%B5%99%EA%B2%A0%EC%8A%B5%EB%8B%88%EB%8B%A4.%27.html" class="card-item" data-category="코치S" data-date="20240528" data-id="377">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/377.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3801,7 +3819,7 @@ is_index: true
             <div class="card-date">May 28. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/378_A%EA%B8%89%2C%20C%EA%B8%89%20%EC%9D%B8%EC%9E%AC%EC%9D%98%20%EA%B8%B0%EC%A4%80.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/378_A%EA%B8%89%2C%20C%EA%B8%89%20%EC%9D%B8%EC%9E%AC%EC%9D%98%20%EA%B8%B0%EC%A4%80.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240527" data-id="378">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/378.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3811,7 +3829,7 @@ is_index: true
             <div class="card-date">May 27. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/379_%EC%9D%BC%20%EC%9E%98%ED%95%98%EB%8A%94%20PM%EB%93%A4%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%ED%95%A0%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="Be the PO">
+    <a href="/brunch_web_assets/markdown/379_%EC%9D%BC%20%EC%9E%98%ED%95%98%EB%8A%94%20PM%EB%93%A4%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%ED%95%A0%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="Be the PO" data-date="20240526" data-id="379">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/379.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3821,7 +3839,7 @@ is_index: true
             <div class="card-date">May 26. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/380_%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EC%84%9D%EC%84%B8%EA%B3%B5%EC%82%AC%EC%9D%B8%20%EC%9D%B4%EC%9C%A0%EB%8A%94.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/380_%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EC%84%9D%EC%84%B8%EA%B3%B5%EC%82%AC%EC%9D%B8%20%EC%9D%B4%EC%9C%A0%EB%8A%94.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240524" data-id="380">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/380.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3831,7 +3849,7 @@ is_index: true
             <div class="card-date">May 24. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/381_A%EA%B8%89%20%EC%9D%B8%EC%9E%AC%EB%A5%BC%20%EC%B0%BE%EB%8A%94%20%EB%B0%A9%EB%B2%95.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/381_A%EA%B8%89%20%EC%9D%B8%EC%9E%AC%EB%A5%BC%20%EC%B0%BE%EB%8A%94%20%EB%B0%A9%EB%B2%95.html" class="card-item" data-category="기획일상" data-date="20240522" data-id="381">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/381.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3841,7 +3859,7 @@ is_index: true
             <div class="card-date">May 22. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/382_%EC%BD%94%EC%B9%98S%204%ED%99%94%20%27%ED%95%9C%20%EA%B3%B3%EC%9D%84%20%EB%B3%B4%EB%8A%94%20%EB%B0%A9%EB%B2%95%27.html" class="card-item" data-category="코치S">
+    <a href="/brunch_web_assets/markdown/382_%EC%BD%94%EC%B9%98S%204%ED%99%94%20%27%ED%95%9C%20%EA%B3%B3%EC%9D%84%20%EB%B3%B4%EB%8A%94%20%EB%B0%A9%EB%B2%95%27.html" class="card-item" data-category="코치S" data-date="20240521" data-id="382">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/382.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3851,7 +3869,7 @@ is_index: true
             <div class="card-date">May 21. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/383_PO%EA%B0%80%20%EB%90%98%EA%B3%A0%20%EC%8B%B6%EB%8B%A4%EB%A9%B4.html" class="card-item" data-category="Be the PO">
+    <a href="/brunch_web_assets/markdown/383_PO%EA%B0%80%20%EB%90%98%EA%B3%A0%20%EC%8B%B6%EB%8B%A4%EB%A9%B4.html" class="card-item" data-category="Be the PO" data-date="20240519" data-id="383">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/383.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3861,7 +3879,7 @@ is_index: true
             <div class="card-date">May 19. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/384_C%EC%9D%98%20%EC%9D%98%EB%AF%B8%EB%8A%94.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/384_C%EC%9D%98%20%EC%9D%98%EB%AF%B8%EB%8A%94.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20240517" data-id="384">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/384.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3871,7 +3889,7 @@ is_index: true
             <div class="card-date">May 17. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/385_1%EC%9D%B8%20%EA%B8%B0%EC%97%85%EA%B0%80%EB%93%A4%EC%9D%B4%20%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%EC%9D%84%20%EC%9E%98%ED%95%98%EA%B8%B0%20%EC%9C%84%ED%95%B4%20%ED%95%B4%EC%95%BC%20%ED%95%A0%20%EC%A7%88%EB%AC%B8.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/385_1%EC%9D%B8%20%EA%B8%B0%EC%97%85%EA%B0%80%EB%93%A4%EC%9D%B4%20%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%EC%9D%84%20%EC%9E%98%ED%95%98%EA%B8%B0%20%EC%9C%84%ED%95%B4%20%ED%95%B4%EC%95%BC%20%ED%95%A0%20%EC%A7%88%EB%AC%B8.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240516" data-id="385">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/385.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3881,7 +3899,7 @@ is_index: true
             <div class="card-date">May 16. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/386_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%9C%A0%EC%A0%84%EC%9E%90%EB%A5%BC%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/386_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%9C%A0%EC%A0%84%EC%9E%90%EB%A5%BC%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240515" data-id="386">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/386.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3891,7 +3909,7 @@ is_index: true
             <div class="card-date">May 15. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/387_%EC%BD%94%EC%B9%98S%203%ED%99%94%20%27%EB%AA%A9%ED%91%9C%EB%8A%94%20%EB%AA%87%20%EA%B0%9C%27.html" class="card-item" data-category="코치S">
+    <a href="/brunch_web_assets/markdown/387_%EC%BD%94%EC%B9%98S%203%ED%99%94%20%27%EB%AA%A9%ED%91%9C%EB%8A%94%20%EB%AA%87%20%EA%B0%9C%27.html" class="card-item" data-category="코치S" data-date="20240514" data-id="387">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/387.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3901,7 +3919,7 @@ is_index: true
             <div class="card-date">May 14. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/388_%ED%95%A9%EB%A6%AC%EC%A0%81%20%EC%88%98%EC%9A%A9%EC%84%B1%EC%9D%B4%EB%9E%80.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/388_%ED%95%A9%EB%A6%AC%EC%A0%81%20%EC%88%98%EC%9A%A9%EC%84%B1%EC%9D%B4%EB%9E%80.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240513" data-id="388">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/388.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3911,7 +3929,7 @@ is_index: true
             <div class="card-date">May 13. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/389_%EB%A7%90%EC%9D%84%20%ED%95%98%EA%B8%B0%20%EC%A0%84%20%EC%83%9D%EA%B0%81%20%ED%95%B4%EC%95%BC%20%ED%95%A0%203%EA%B0%80%EC%A7%80.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/389_%EB%A7%90%EC%9D%84%20%ED%95%98%EA%B8%B0%20%EC%A0%84%20%EC%83%9D%EA%B0%81%20%ED%95%B4%EC%95%BC%20%ED%95%A0%203%EA%B0%80%EC%A7%80.html" class="card-item" data-category="기획일상" data-date="20240512" data-id="389">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/389.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3921,7 +3939,7 @@ is_index: true
             <div class="card-date">May 12. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/390_%EC%8A%A4%EB%83%85%EC%83%B7%EC%9D%B4%20%EC%95%84%EB%8B%8C%20%EC%8A%A4%ED%86%A0%EB%A6%AC%EB%A5%BC.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/390_%EC%8A%A4%EB%83%85%EC%83%B7%EC%9D%B4%20%EC%95%84%EB%8B%8C%20%EC%8A%A4%ED%86%A0%EB%A6%AC%EB%A5%BC.html" class="card-item" data-category="기획일상" data-date="20240511" data-id="390">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/390.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3931,7 +3949,7 @@ is_index: true
             <div class="card-date">May 11. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/391_%EC%BD%94%EC%B9%AD%EC%97%90%20%EB%8B%B5%EC%9D%B4%20%EC%97%86%EB%8A%94%20%EA%B2%BD%EC%9A%B0.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/391_%EC%BD%94%EC%B9%AD%EC%97%90%20%EB%8B%B5%EC%9D%B4%20%EC%97%86%EB%8A%94%20%EA%B2%BD%EC%9A%B0.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240510" data-id="391">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/391.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3941,7 +3959,7 @@ is_index: true
             <div class="card-date">May 10. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/392_%EC%A7%81%EC%9E%A5%EC%97%90%EC%84%9C%20%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%ED%95%98%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/392_%EC%A7%81%EC%9E%A5%EC%97%90%EC%84%9C%20%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%ED%95%98%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240509" data-id="392">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/392.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3951,7 +3969,7 @@ is_index: true
             <div class="card-date">May 9. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/393_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%8C%80%ED%91%9C%EC%9D%98%20%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%20%EA%B4%80%EB%A0%A8%20%EC%96%B4%EB%A0%A4%EC%9B%80.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/393_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%8C%80%ED%91%9C%EC%9D%98%20%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%20%EA%B4%80%EB%A0%A8%20%EC%96%B4%EB%A0%A4%EC%9B%80.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20240508" data-id="393">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/393.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3961,7 +3979,7 @@ is_index: true
             <div class="card-date">May 8. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/394_%EC%BD%94%EC%B9%98S%202%ED%99%94%20%27%EB%84%88%EB%AC%B4%20%EC%97%86%EA%B1%B0%EB%82%98%2C%20%EB%84%88%EB%AC%B4%20%EB%A7%8E%EA%B1%B0%EB%82%98%27.html" class="card-item" data-category="코치S">
+    <a href="/brunch_web_assets/markdown/394_%EC%BD%94%EC%B9%98S%202%ED%99%94%20%27%EB%84%88%EB%AC%B4%20%EC%97%86%EA%B1%B0%EB%82%98%2C%20%EB%84%88%EB%AC%B4%20%EB%A7%8E%EA%B1%B0%EB%82%98%27.html" class="card-item" data-category="코치S" data-date="20240507" data-id="394">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/394.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3971,7 +3989,7 @@ is_index: true
             <div class="card-date">May 7. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/395_%EC%B9%B4%EB%8B%88%EB%B0%9C%EB%9D%BC%EC%9D%B4%EC%A0%9C%EC%9D%B4%EC%85%98%EC%9D%84%20%EC%95%84%EC%8B%9C%EB%82%98%EC%9A%94.html" class="card-item" data-category="기획자로 시작하기">
+    <a href="/brunch_web_assets/markdown/395_%EC%B9%B4%EB%8B%88%EB%B0%9C%EB%9D%BC%EC%9D%B4%EC%A0%9C%EC%9D%B4%EC%85%98%EC%9D%84%20%EC%95%84%EC%8B%9C%EB%82%98%EC%9A%94.html" class="card-item" data-category="기획자로 시작하기" data-date="20240506" data-id="395">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/395.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3981,7 +3999,7 @@ is_index: true
             <div class="card-date">May 6. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/396_%EC%A0%80%EB%8A%94%20%EB%B8%8C%EB%9E%9C%EB%94%A9%EC%9D%B4%EB%9D%BC%EB%8A%94%20%EB%A7%90%EC%9D%84%20%EC%8B%AB%EC%96%B4%ED%96%88%EC%8A%B5%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/396_%EC%A0%80%EB%8A%94%20%EB%B8%8C%EB%9E%9C%EB%94%A9%EC%9D%B4%EB%9D%BC%EB%8A%94%20%EB%A7%90%EC%9D%84%20%EC%8B%AB%EC%96%B4%ED%96%88%EC%8A%B5%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="기획일상" data-date="20240505" data-id="396">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/396.jpg');"></div>
         <div class="card-content">
             <div>
@@ -3991,7 +4009,7 @@ is_index: true
             <div class="card-date">May 5. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/397_%EB%82%98%EC%9D%98%20%EB%B8%8C%EB%9E%9C%EB%94%A9%EC%9D%80.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/397_%EB%82%98%EC%9D%98%20%EB%B8%8C%EB%9E%9C%EB%94%A9%EC%9D%80.html" class="card-item" data-category="기획일상" data-date="20240503" data-id="397">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/397.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4001,7 +4019,7 @@ is_index: true
             <div class="card-date">May 3. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/398_%EB%8B%A4%EC%9D%8C%20%EC%A7%81%EC%9E%A5%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%84%A0%ED%83%9D%ED%95%A0%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="기획자로 시작하기">
+    <a href="/brunch_web_assets/markdown/398_%EB%8B%A4%EC%9D%8C%20%EC%A7%81%EC%9E%A5%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%84%A0%ED%83%9D%ED%95%A0%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="기획자로 시작하기" data-date="20240502" data-id="398">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/398.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4011,7 +4029,7 @@ is_index: true
             <div class="card-date">May 2. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/399_%EB%82%B4%EA%B0%80%20%EC%9A%94%EC%A6%98%20%EC%A3%BC%EB%AA%A9%ED%95%98%EB%8A%94%20%27%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%ED%9E%88%EC%96%B4%EB%A1%9C%27%204%EC%9B%94%ED%98%B8.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/399_%EB%82%B4%EA%B0%80%20%EC%9A%94%EC%A6%98%20%EC%A3%BC%EB%AA%A9%ED%95%98%EB%8A%94%20%27%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%ED%9E%88%EC%96%B4%EB%A1%9C%27%204%EC%9B%94%ED%98%B8.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240501" data-id="399">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/399.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4021,7 +4039,7 @@ is_index: true
             <div class="card-date">May 1. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/400_%EA%B3%A0%EA%B0%9D%EC%9D%B4%20%EC%9B%90%ED%95%98%EB%8A%94%20%EA%B2%83%EC%9D%84%20%EA%B8%B0%ED%9A%8D%ED%95%98%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획자로 시작하기">
+    <a href="/brunch_web_assets/markdown/400_%EA%B3%A0%EA%B0%9D%EC%9D%B4%20%EC%9B%90%ED%95%98%EB%8A%94%20%EA%B2%83%EC%9D%84%20%EA%B8%B0%ED%9A%8D%ED%95%98%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획자로 시작하기" data-date="20240501" data-id="400">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/400.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4031,7 +4049,7 @@ is_index: true
             <div class="card-date">May 1. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/401_%EC%BD%94%EC%B9%98S%201%ED%99%94%20%27%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0%EC%82%AC%27.html" class="card-item" data-category="코치S">
+    <a href="/brunch_web_assets/markdown/401_%EC%BD%94%EC%B9%98S%201%ED%99%94%20%27%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0%EC%82%AC%27.html" class="card-item" data-category="코치S" data-date="20240430" data-id="401">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/401.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4041,7 +4059,7 @@ is_index: true
             <div class="card-date">Apr 30. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/402_%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EB%90%A0%20%EC%88%98%20%EC%9E%88%EC%9D%84%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="기획자로 시작하기">
+    <a href="/brunch_web_assets/markdown/402_%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EB%90%A0%20%EC%88%98%20%EC%9E%88%EC%9D%84%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="기획자로 시작하기" data-date="20240428" data-id="402">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/402.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4051,7 +4069,7 @@ is_index: true
             <div class="card-date">Apr 28. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/403_Simplifier%20GOOD%EC%A6%88%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/403_Simplifier%20GOOD%EC%A6%88%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240427" data-id="403">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/403.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4061,7 +4079,7 @@ is_index: true
             <div class="card-date">Apr 27. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/404_%EA%B8%B0%ED%9A%8D%20%EC%96%B4%EB%94%94%EC%84%9C%EB%B6%80%ED%84%B0%20%EC%8B%9C%EC%9E%91%ED%95%B4%EC%95%BC%20%ED%95%A0%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="기획자로 시작하기">
+    <a href="/brunch_web_assets/markdown/404_%EA%B8%B0%ED%9A%8D%20%EC%96%B4%EB%94%94%EC%84%9C%EB%B6%80%ED%84%B0%20%EC%8B%9C%EC%9E%91%ED%95%B4%EC%95%BC%20%ED%95%A0%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="기획자로 시작하기" data-date="20240427" data-id="404">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/404.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4071,7 +4089,7 @@ is_index: true
             <div class="card-date">Apr 27. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/405_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EA%B8%B8%EC%9D%84%20%EC%84%A0%ED%83%9D%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="기획자로 시작하기">
+    <a href="/brunch_web_assets/markdown/405_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EA%B8%B8%EC%9D%84%20%EC%84%A0%ED%83%9D%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="기획자로 시작하기" data-date="20240426" data-id="405">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/405.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4081,7 +4099,7 @@ is_index: true
             <div class="card-date">Apr 26. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/406_%EA%B8%B0%ED%9A%8D%EC%9E%90%EA%B0%80%20%EB%90%98%EB%8A%94%20%EA%B8%B8.html" class="card-item" data-category="기획자로 시작하기">
+    <a href="/brunch_web_assets/markdown/406_%EA%B8%B0%ED%9A%8D%EC%9E%90%EA%B0%80%20%EB%90%98%EB%8A%94%20%EA%B8%B8.html" class="card-item" data-category="기획자로 시작하기" data-date="20240425" data-id="406">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/406.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4091,7 +4109,7 @@ is_index: true
             <div class="card-date">Apr 25. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/407_CPO%EB%8A%94%20%EC%96%B4%EB%96%A4%20%EC%9D%BC%EB%93%A4%EC%9D%84%20%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/407_CPO%EB%8A%94%20%EC%96%B4%EB%96%A4%20%EC%9D%BC%EB%93%A4%EC%9D%84%20%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20240423" data-id="407">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/407.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4101,7 +4119,7 @@ is_index: true
             <div class="card-date">Apr 23. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/408_%ED%95%9C%EC%BD%94%EC%B9%98%EC%9D%98%20%27%EC%95%A0%EC%9E%90%EC%9D%BC%20%EC%99%9C%20%ED%95%98%EA%B2%8C%20%EB%90%98%EC%97%88%EC%9D%84%EA%B9%8C%27.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/408_%ED%95%9C%EC%BD%94%EC%B9%98%EC%9D%98%20%27%EC%95%A0%EC%9E%90%EC%9D%BC%20%EC%99%9C%20%ED%95%98%EA%B2%8C%20%EB%90%98%EC%97%88%EC%9D%84%EA%B9%8C%27.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20240416" data-id="408">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/408.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4111,7 +4129,7 @@ is_index: true
             <div class="card-date">Apr 16. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/409_%EB%B9%84%ED%9A%A8%EC%9C%A8%EC%A0%81%EC%9C%BC%EB%A1%9C%20%EB%B8%8C%EB%9E%9C%EB%94%A9%20%EA%B8%B0%ED%9A%8D%ED%95%98%EA%B8%B0.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/409_%EB%B9%84%ED%9A%A8%EC%9C%A8%EC%A0%81%EC%9C%BC%EB%A1%9C%20%EB%B8%8C%EB%9E%9C%EB%94%A9%20%EA%B8%B0%ED%9A%8D%ED%95%98%EA%B8%B0.html" class="card-item" data-category="기획일상" data-date="20240421" data-id="409">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/409.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4121,7 +4139,7 @@ is_index: true
             <div class="card-date">Apr 21. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/410_%27%EC%BB%A4%EB%84%A5%ED%8C%85%20X%20%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%27%20%EB%B6%81%ED%86%A0%ED%81%AC%20%EC%9D%B4%EC%95%BC%EA%B8%B0.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/410_%27%EC%BB%A4%EB%84%A5%ED%8C%85%20X%20%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%27%20%EB%B6%81%ED%86%A0%ED%81%AC%20%EC%9D%B4%EC%95%BC%EA%B8%B0.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240420" data-id="410">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/410.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4131,7 +4149,7 @@ is_index: true
             <div class="card-date">Apr 20. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/411_%ED%95%9C%EC%BD%94%EC%B9%98%EC%9D%98%20%27%EC%95%A0%EC%9E%90%EC%9D%BC%20%EC%99%9C%20%ED%95%98%EA%B2%8C%20%EB%90%98%EC%97%88%EC%9D%84%EA%B9%8C%27.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/411_%ED%95%9C%EC%BD%94%EC%B9%98%EC%9D%98%20%27%EC%95%A0%EC%9E%90%EC%9D%BC%20%EC%99%9C%20%ED%95%98%EA%B2%8C%20%EB%90%98%EC%97%88%EC%9D%84%EA%B9%8C%27.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20240416" data-id="411">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/411.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4141,7 +4159,7 @@ is_index: true
             <div class="card-date">Apr 16. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/412_%ED%95%9C%EC%BD%94%EC%B9%98%EC%9D%98%20%27%EC%95%A0%EC%9E%90%EC%9D%BC%20%EC%99%9C%20%ED%95%98%EA%B2%8C%20%EB%90%98%EC%97%88%EC%9D%84%EA%B9%8C%27.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/412_%ED%95%9C%EC%BD%94%EC%B9%98%EC%9D%98%20%27%EC%95%A0%EC%9E%90%EC%9D%BC%20%EC%99%9C%20%ED%95%98%EA%B2%8C%20%EB%90%98%EC%97%88%EC%9D%84%EA%B9%8C%27.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20240416" data-id="412">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/412.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4151,7 +4169,7 @@ is_index: true
             <div class="card-date">Apr 16. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/413_%ED%95%9C%EC%BD%94%EC%B9%98%EC%9D%98%20%27%EC%95%A0%EC%9E%90%EC%9D%BC%20%EC%99%9C%20%ED%95%98%EA%B2%8C%20%EB%90%98%EC%97%88%EC%9D%84%EA%B9%8C%27.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/413_%ED%95%9C%EC%BD%94%EC%B9%98%EC%9D%98%20%27%EC%95%A0%EC%9E%90%EC%9D%BC%20%EC%99%9C%20%ED%95%98%EA%B2%8C%20%EB%90%98%EC%97%88%EC%9D%84%EA%B9%8C%27.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20240416" data-id="413">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/413.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4161,7 +4179,7 @@ is_index: true
             <div class="card-date">Apr 16. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/414_CPO%EA%B0%80%20%EB%90%98%EB%A0%A4%EB%A9%B4%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%ED%95%B4%EC%95%BC%20%ED%95%A0%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="기획자로 시작하기">
+    <a href="/brunch_web_assets/markdown/414_CPO%EA%B0%80%20%EB%90%98%EB%A0%A4%EB%A9%B4%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%ED%95%B4%EC%95%BC%20%ED%95%A0%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="기획자로 시작하기" data-date="20240416" data-id="414">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/414.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4171,7 +4189,7 @@ is_index: true
             <div class="card-date">Apr 16. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/415_%EC%82%AC%EC%97%85%EA%B0%80%EB%8F%84%20%EA%B0%9C%EC%9D%B8%EB%8F%84%20%EC%89%BD%EA%B2%8C%20%EC%9D%B4%ED%95%B4%ED%95%A0%20%EC%88%98%20%EC%9E%88%EB%8A%94%20%EA%B8%B0%ED%9A%8D%EB%B0%A9%EB%B2%95%EB%A1%A0.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/415_%EC%82%AC%EC%97%85%EA%B0%80%EB%8F%84%20%EA%B0%9C%EC%9D%B8%EB%8F%84%20%EC%89%BD%EA%B2%8C%20%EC%9D%B4%ED%95%B4%ED%95%A0%20%EC%88%98%20%EC%9E%88%EB%8A%94%20%EA%B8%B0%ED%9A%8D%EB%B0%A9%EB%B2%95%EB%A1%A0.html" class="card-item" data-category="기획일상" data-date="20240414" data-id="415">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/415.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4181,7 +4199,7 @@ is_index: true
             <div class="card-date">Apr 14. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/416_%EB%82%B4%EA%B0%80%20%ED%96%89%EB%B3%B5%ED%95%9C%20%EB%A7%88%EC%9D%B8%EB%93%9C%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%98%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/416_%EB%82%B4%EA%B0%80%20%ED%96%89%EB%B3%B5%ED%95%9C%20%EB%A7%88%EC%9D%B8%EB%93%9C%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%98%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획일상" data-date="20240413" data-id="416">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/416.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4191,7 +4209,7 @@ is_index: true
             <div class="card-date">Apr 13. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/417_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%BD%9C%EB%9D%BC%EB%B3%B4%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/417_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%BD%9C%EB%9D%BC%EB%B3%B4%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240413" data-id="417">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/417.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4201,7 +4219,7 @@ is_index: true
             <div class="card-date">Apr 13. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/418_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%ACBM%EC%9D%B4%20%EC%82%AC%EC%A3%BC%EB%AA%A8%EB%8D%B8.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/418_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%ACBM%EC%9D%B4%20%EC%82%AC%EC%A3%BC%EB%AA%A8%EB%8D%B8.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240412" data-id="418">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/418.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4211,7 +4229,7 @@ is_index: true
             <div class="card-date">Apr 12. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/419_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part%201.2%20%EC%83%9D%EC%82%B0%EA%B5%AC%EC%A1%B0.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/419_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part%201.2%20%EC%83%9D%EC%82%B0%EA%B5%AC%EC%A1%B0.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20240411" data-id="419">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/419.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4221,7 +4239,7 @@ is_index: true
             <div class="card-date">Apr 11. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/420_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part1.1%20%EC%82%AC%EC%97%85%EB%AA%A9%ED%91%9C%EC%88%98%EB%A6%BD.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/420_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part1.1%20%EC%82%AC%EC%97%85%EB%AA%A9%ED%91%9C%EC%88%98%EB%A6%BD.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20240411" data-id="420">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/420.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4231,7 +4249,7 @@ is_index: true
             <div class="card-date">Apr 11. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/421_%EA%B0%80%EB%81%94%EC%9D%80%20%EB%8A%90%EB%A6%B0%20%EC%82%AC%EB%9E%8C%EC%9D%B4%20%EB%8D%94%20%EB%B9%A8%EB%A6%AC%20%EA%B0%80%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/421_%EA%B0%80%EB%81%94%EC%9D%80%20%EB%8A%90%EB%A6%B0%20%EC%82%AC%EB%9E%8C%EC%9D%B4%20%EB%8D%94%20%EB%B9%A8%EB%A6%AC%20%EA%B0%80%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="기획일상" data-date="20240410" data-id="421">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/421.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4241,7 +4259,7 @@ is_index: true
             <div class="card-date">Apr 10. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/422_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part%203.%20%ED%9D%90%EB%A6%84%EC%9D%98%20%EA%B2%B0%ED%95%A9.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/422_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part%203.%20%ED%9D%90%EB%A6%84%EC%9D%98%20%EA%B2%B0%ED%95%A9.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20240408" data-id="422">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/422.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4251,7 +4269,7 @@ is_index: true
             <div class="card-date">Apr 8. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/423_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part%202.%20%EC%88%98%ED%8F%89%EC%A0%81%20%EA%B4%80%EC%A0%90.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/423_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part%202.%20%EC%88%98%ED%8F%89%EC%A0%81%20%EA%B4%80%EC%A0%90.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20240407" data-id="423">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/423.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4261,7 +4279,7 @@ is_index: true
             <div class="card-date">Apr 7. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/424_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part%201.%20%EC%88%98%EC%A7%81%EC%A0%81%20%EA%B4%80%EC%A0%90.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/424_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part%201.%20%EC%88%98%EC%A7%81%EC%A0%81%20%EA%B4%80%EC%A0%90.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20240406" data-id="424">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/424.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4271,7 +4289,7 @@ is_index: true
             <div class="card-date">Apr 6. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/425_CPO%EA%B0%80%20%EC%96%B4%EB%A0%A4%EC%9A%B4%20%ED%8F%AC%EC%A7%80%EC%85%98%EC%9D%B8%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/425_CPO%EA%B0%80%20%EC%96%B4%EB%A0%A4%EC%9A%B4%20%ED%8F%AC%EC%A7%80%EC%85%98%EC%9D%B8%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20240405" data-id="425">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/425.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4281,7 +4299,7 @@ is_index: true
             <div class="card-date">Apr 5. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/426_%EB%A6%AC%EB%8D%94%EC%9D%98%20%EC%8B%9C%EA%B0%84%EA%B4%80%EB%A6%AC%20%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/426_%EB%A6%AC%EB%8D%94%EC%9D%98%20%EC%8B%9C%EA%B0%84%EA%B4%80%EB%A6%AC%20%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20240404" data-id="426">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/426.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4291,7 +4309,7 @@ is_index: true
             <div class="card-date">Apr 4. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/427_%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%B4%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/427_%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%B4%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="기획일상" data-date="20240403" data-id="427">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/427.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4301,7 +4319,7 @@ is_index: true
             <div class="card-date">Apr 3. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/428_%EC%BD%94%EC%B9%98X%20%27%EC%8B%9C%EB%93%9C%20%EC%B0%BE%EA%B8%B0%27.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/428_%EC%BD%94%EC%B9%98X%20%27%EC%8B%9C%EB%93%9C%20%EC%B0%BE%EA%B8%B0%27.html" class="card-item" data-category="기획일상" data-date="20240401" data-id="428">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/428.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4311,7 +4329,7 @@ is_index: true
             <div class="card-date">Apr 1. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/429_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%EC%9D%98%20%EC%B1%85%EC%9D%BD%EA%B8%B0%20%27%EC%B2%AB%20%EC%B1%85%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B2%95%27.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/429_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%EC%9D%98%20%EC%B1%85%EC%9D%BD%EA%B8%B0%20%27%EC%B2%AB%20%EC%B1%85%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B2%95%27.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240331" data-id="429">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/429.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4321,7 +4339,7 @@ is_index: true
             <div class="card-date">Mar 31. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/430_%EB%85%B8%EC%95%88%EA%B3%BC%20%EB%82%98.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/430_%EB%85%B8%EC%95%88%EA%B3%BC%20%EB%82%98.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240330" data-id="430">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/430.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4331,7 +4349,7 @@ is_index: true
             <div class="card-date">Mar 30. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/431_%EB%82%B4%EA%B0%80%20%EC%9A%94%EC%A6%98%20%EC%A3%BC%EB%AA%A9%ED%95%98%EB%8A%94%20%27%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%ED%9E%88%EC%96%B4%EB%A1%9C%27%203%EC%9B%94%ED%98%B8.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/431_%EB%82%B4%EA%B0%80%20%EC%9A%94%EC%A6%98%20%EC%A3%BC%EB%AA%A9%ED%95%98%EB%8A%94%20%27%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%ED%9E%88%EC%96%B4%EB%A1%9C%27%203%EC%9B%94%ED%98%B8.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240329" data-id="431">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/431.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4341,7 +4359,7 @@ is_index: true
             <div class="card-date">Mar 29. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/432_%EC%95%84%EB%8B%88%20%EC%A0%9C%EA%B0%80%20%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%EC%9D%B8%ED%94%8C%EB%A3%A8%EC%96%B8%EC%84%9C%EB%9D%BC%EB%8B%88%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/432_%EC%95%84%EB%8B%88%20%EC%A0%9C%EA%B0%80%20%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%EC%9D%B8%ED%94%8C%EB%A3%A8%EC%96%B8%EC%84%9C%EB%9D%BC%EB%8B%88%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240328" data-id="432">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/432.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4351,7 +4369,7 @@ is_index: true
             <div class="card-date">Mar 28. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/433_%EB%82%B4%EA%B0%80%20%ED%95%B8%EB%94%94%EC%BA%A1%EC%9D%84%20%EC%9D%B4%EC%9A%A9%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/433_%EB%82%B4%EA%B0%80%20%ED%95%B8%EB%94%94%EC%BA%A1%EC%9D%84%20%EC%9D%B4%EC%9A%A9%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95.html" class="card-item" data-category="기획일상" data-date="20240327" data-id="433">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/433.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4361,7 +4379,7 @@ is_index: true
             <div class="card-date">Mar 27. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/434_%EC%84%B1%EB%8D%95%EC%9D%B4%20%EB%90%98%EC%97%88%EC%8A%B5%EB%8B%88%EB%8B%A4~%21.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/434_%EC%84%B1%EB%8D%95%EC%9D%B4%20%EB%90%98%EC%97%88%EC%8A%B5%EB%8B%88%EB%8B%A4~%21.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240326" data-id="434">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/434.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4371,7 +4389,7 @@ is_index: true
             <div class="card-date">Mar 26. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/435_%EC%BB%A4%EB%A6%AC%EC%96%B4%20%EA%B8%B0%ED%9A%8D%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%ED%95%A0%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/435_%EC%BB%A4%EB%A6%AC%EC%96%B4%20%EA%B8%B0%ED%9A%8D%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%ED%95%A0%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="기획일상" data-date="20240325" data-id="435">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/435.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4381,7 +4399,7 @@ is_index: true
             <div class="card-date">Mar 25. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/436_%EB%82%B4%EA%B0%80%20SNS%EC%97%90%20%ED%99%8D%EB%B3%B4%EA%B8%80%EC%9D%84%20%EC%93%B0%EB%8A%94%20%EB%B9%84%EB%B2%95.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/436_%EB%82%B4%EA%B0%80%20SNS%EC%97%90%20%ED%99%8D%EB%B3%B4%EA%B8%80%EC%9D%84%20%EC%93%B0%EB%8A%94%20%EB%B9%84%EB%B2%95.html" class="card-item" data-category="기획일상" data-date="20240323" data-id="436">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/436.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4391,7 +4409,7 @@ is_index: true
             <div class="card-date">Mar 23. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/437_%EB%82%B4%EA%B0%80%20%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%EB%A1%9C%20%EC%82%AC%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/437_%EB%82%B4%EA%B0%80%20%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%EB%A1%9C%20%EC%82%AC%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="기획일상" data-date="20240322" data-id="437">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/437.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4401,7 +4419,7 @@ is_index: true
             <div class="card-date">Mar 22. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/438_%EC%95%84%EB%B9%A4%20%EB%84%88%EB%AC%B4%20%EC%B2%A0%ED%95%99%EC%A0%81%EC%9D%B8%20%EA%B8%80%EB%A7%8C%20%EC%98%AC%EB%A6%AC%EC%9E%96%EC%95%84.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/438_%EC%95%84%EB%B9%A4%20%EB%84%88%EB%AC%B4%20%EC%B2%A0%ED%95%99%EC%A0%81%EC%9D%B8%20%EA%B8%80%EB%A7%8C%20%EC%98%AC%EB%A6%AC%EC%9E%96%EC%95%84.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240321" data-id="438">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/438.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4411,7 +4429,7 @@ is_index: true
             <div class="card-date">Mar 21. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/439_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EB%AF%B8%EC%85%98%EC%9D%80.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/439_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EB%AF%B8%EC%85%98%EC%9D%80.html" class="card-item" data-category="기획일상" data-date="20240320" data-id="439">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/439.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4421,7 +4439,7 @@ is_index: true
             <div class="card-date">Mar 20. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/440_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC7%ED%99%94%204%EA%B0%9C%EA%B5%AD%EC%96%B4%20%EB%8A%A5%EB%A0%A5%EC%9E%90%2C%20%EC%A1%B0%EC%A1%B0%EC%9D%98%20%EB%93%B1%EC%9E%A5.html" class="card-item" data-category="코치S">
+    <a href="/brunch_web_assets/markdown/440_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC7%ED%99%94%204%EA%B0%9C%EA%B5%AD%EC%96%B4%20%EB%8A%A5%EB%A0%A5%EC%9E%90%2C%20%EC%A1%B0%EC%A1%B0%EC%9D%98%20%EB%93%B1%EC%9E%A5.html" class="card-item" data-category="코치S" data-date="20240319" data-id="440">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/440.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4431,7 +4449,7 @@ is_index: true
             <div class="card-date">Mar 19. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/441_%EB%B3%B4%ED%86%B5%EC%9D%98%20%EC%B1%85%EB%8F%84%20%EC%9D%98%EB%AF%B8%EC%9E%88%EA%B2%8C%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B0%A9%EB%B2%95.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/441_%EB%B3%B4%ED%86%B5%EC%9D%98%20%EC%B1%85%EB%8F%84%20%EC%9D%98%EB%AF%B8%EC%9E%88%EA%B2%8C%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B0%A9%EB%B2%95.html" class="card-item" data-category="기획일상" data-date="20240318" data-id="441">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/441.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4441,7 +4459,7 @@ is_index: true
             <div class="card-date">Mar 18. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/442_%EC%84%B8%EA%B3%84%EC%97%90%EC%84%9C%20%EA%B0%80%EC%9E%A5%20%EC%9A%B0%EC%9A%B8%ED%95%9C%20%EB%82%98%EB%9D%BC%EB%A5%BC%20%EB%B0%94%EA%BE%B8%EB%8A%94%20%EB%B9%84%EB%B0%80.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/442_%EC%84%B8%EA%B3%84%EC%97%90%EC%84%9C%20%EA%B0%80%EC%9E%A5%20%EC%9A%B0%EC%9A%B8%ED%95%9C%20%EB%82%98%EB%9D%BC%EB%A5%BC%20%EB%B0%94%EA%BE%B8%EB%8A%94%20%EB%B9%84%EB%B0%80.html" class="card-item" data-category="기획일상" data-date="20240317" data-id="442">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/442.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4451,7 +4469,7 @@ is_index: true
             <div class="card-date">Mar 17. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/443_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%81%8C%EC%96%B4%EB%8B%B9%EA%B9%80%EC%9D%98%20%EC%9B%90%EB%A6%AC%ED%8E%B8.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/443_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%81%8C%EC%96%B4%EB%8B%B9%EA%B9%80%EC%9D%98%20%EC%9B%90%EB%A6%AC%ED%8E%B8.html" class="card-item" data-category="기획일상" data-date="20240316" data-id="443">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/443.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4461,7 +4479,7 @@ is_index: true
             <div class="card-date">Mar 16. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/444_%27%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%20%EC%A7%81%EC%9E%A5%EC%9D%B4%EC%95%BC%EA%B8%B0%27%20Epilogue.html" class="card-item" data-category="이력서에 쓰지 않는 첫직장 이야기">
+    <a href="/brunch_web_assets/markdown/444_%27%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%20%EC%A7%81%EC%9E%A5%EC%9D%B4%EC%95%BC%EA%B8%B0%27%20Epilogue.html" class="card-item" data-category="이력서에 쓰지 않는 첫직장 이야기" data-date="20240314" data-id="444">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/444.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4471,7 +4489,7 @@ is_index: true
             <div class="card-date">Mar 14. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/445_%27%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%20%EC%A7%81%EC%9E%A5%EC%9D%B4%EC%95%BC%EA%B8%B0%27%209%ED%8E%B8.html" class="card-item" data-category="이력서에 쓰지 않는 첫직장 이야기">
+    <a href="/brunch_web_assets/markdown/445_%27%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%20%EC%A7%81%EC%9E%A5%EC%9D%B4%EC%95%BC%EA%B8%B0%27%209%ED%8E%B8.html" class="card-item" data-category="이력서에 쓰지 않는 첫직장 이야기" data-date="20240313" data-id="445">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/445.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4481,7 +4499,7 @@ is_index: true
             <div class="card-date">Mar 13. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/446_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%206%ED%99%94%20%EA%B3%A0%EB%AF%BC%EC%83%81%EB%8B%B4%20%EB%8F%99%EC%95%84%EB%A6%AC%EC%9D%98%20%E2%80%98%EA%B3%A0%EB%AF%BC%E2%80%99.html" class="card-item" data-category="코치S">
+    <a href="/brunch_web_assets/markdown/446_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%206%ED%99%94%20%EA%B3%A0%EB%AF%BC%EC%83%81%EB%8B%B4%20%EB%8F%99%EC%95%84%EB%A6%AC%EC%9D%98%20%E2%80%98%EA%B3%A0%EB%AF%BC%E2%80%99.html" class="card-item" data-category="코치S" data-date="20240312" data-id="446">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/446.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4491,7 +4509,7 @@ is_index: true
             <div class="card-date">Mar 12. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/447_%EB%82%B4%20%EC%BB%A4%EB%A6%AC%EC%96%B4%EC%9D%98%20%EC%A0%90%EB%93%A4%EC%9D%84%20%EC%84%A0%EC%9C%BC%EB%A1%9C%20%EC%9E%87%EA%B3%A0%20%EC%8B%B6%EB%8B%A4%EB%A9%B4%E2%80%A6.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/447_%EB%82%B4%20%EC%BB%A4%EB%A6%AC%EC%96%B4%EC%9D%98%20%EC%A0%90%EB%93%A4%EC%9D%84%20%EC%84%A0%EC%9C%BC%EB%A1%9C%20%EC%9E%87%EA%B3%A0%20%EC%8B%B6%EB%8B%A4%EB%A9%B4%E2%80%A6.html" class="card-item" data-category="기획일상" data-date="20240311" data-id="447">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/447.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4501,7 +4519,7 @@ is_index: true
             <div class="card-date">Mar 11. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/448_%27%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%20%EC%A7%81%EC%9E%A5%EC%9D%B4%EC%95%BC%EA%B8%B0%27%208%ED%8E%B8.html" class="card-item" data-category="이력서에 쓰지 않는 첫직장 이야기">
+    <a href="/brunch_web_assets/markdown/448_%27%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%20%EC%A7%81%EC%9E%A5%EC%9D%B4%EC%95%BC%EA%B8%B0%27%208%ED%8E%B8.html" class="card-item" data-category="이력서에 쓰지 않는 첫직장 이야기" data-date="20240310" data-id="448">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/448.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4511,7 +4529,7 @@ is_index: true
             <div class="card-date">Mar 10. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/449_%EA%B0%9C%EC%9D%B8%EC%82%AC%EC%97%85%EC%9D%84%20%EC%8B%9C%EC%9E%91%ED%95%98%EB%A9%B4%20%EA%B2%AA%EA%B2%8C%20%EB%90%98%EB%8A%94%2011%EA%B0%80%EC%A7%80%20%EC%9D%BC%EB%93%A4.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/449_%EA%B0%9C%EC%9D%B8%EC%82%AC%EC%97%85%EC%9D%84%20%EC%8B%9C%EC%9E%91%ED%95%98%EB%A9%B4%20%EA%B2%AA%EA%B2%8C%20%EB%90%98%EB%8A%94%2011%EA%B0%80%EC%A7%80%20%EC%9D%BC%EB%93%A4.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240309" data-id="449">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/449.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4521,7 +4539,7 @@ is_index: true
             <div class="card-date">Mar 9. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/450_%EB%82%B4%EA%B0%80%20%EC%84%B8%EC%83%81%EC%9D%84%20%EC%95%84%EB%A6%84%EB%8B%B5%EA%B2%8C%20%EB%B3%B4%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/450_%EB%82%B4%EA%B0%80%20%EC%84%B8%EC%83%81%EC%9D%84%20%EC%95%84%EB%A6%84%EB%8B%B5%EA%B2%8C%20%EB%B3%B4%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획일상" data-date="20240308" data-id="450">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/450.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4531,7 +4549,7 @@ is_index: true
             <div class="card-date">Mar 8. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/451_%27%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%20%EC%A7%81%EC%9E%A5%EC%9D%B4%EC%95%BC%EA%B8%B0%27%207%ED%8E%B8.html" class="card-item" data-category="이력서에 쓰지 않는 첫직장 이야기">
+    <a href="/brunch_web_assets/markdown/451_%27%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%20%EC%A7%81%EC%9E%A5%EC%9D%B4%EC%95%BC%EA%B8%B0%27%207%ED%8E%B8.html" class="card-item" data-category="이력서에 쓰지 않는 첫직장 이야기" data-date="20240307" data-id="451">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/451.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4541,7 +4559,7 @@ is_index: true
             <div class="card-date">Mar 7. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/452_%EB%82%B4%EA%B0%80%20%EA%B1%B0%EC%A0%88%EC%9D%84%20%EB%8C%80%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/452_%EB%82%B4%EA%B0%80%20%EA%B1%B0%EC%A0%88%EC%9D%84%20%EB%8C%80%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95.html" class="card-item" data-category="기획일상" data-date="20240306" data-id="452">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/452.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4551,7 +4569,7 @@ is_index: true
             <div class="card-date">Mar 6. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/453_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%205%ED%99%94%20%27%27%ED%83%80%EC%9D%B4%EC%8A%A8%20%EC%84%A0%EB%B0%B0%EB%A5%BC%20%EB%8F%84%EC%99%80%EC%A3%BC%EC%84%B8%EC%9A%94.html" class="card-item" data-category="코치S">
+    <a href="/brunch_web_assets/markdown/453_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%205%ED%99%94%20%27%27%ED%83%80%EC%9D%B4%EC%8A%A8%20%EC%84%A0%EB%B0%B0%EB%A5%BC%20%EB%8F%84%EC%99%80%EC%A3%BC%EC%84%B8%EC%9A%94.html" class="card-item" data-category="코치S" data-date="20240305" data-id="453">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/453.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4561,7 +4579,7 @@ is_index: true
             <div class="card-date">Mar 5. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/454_%EA%B8%B0%EB%A1%9D%EB%B3%B4%EB%8B%A4%20%EA%B8%B0%EC%96%B5%EC%9D%B4%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%88%9C%EA%B0%84.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/454_%EA%B8%B0%EB%A1%9D%EB%B3%B4%EB%8B%A4%20%EA%B8%B0%EC%96%B5%EC%9D%B4%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%88%9C%EA%B0%84.html" class="card-item" data-category="기획일상" data-date="20240304" data-id="454">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/454.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4571,7 +4589,7 @@ is_index: true
             <div class="card-date">Mar 4. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/455_%27%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%20%EC%A7%81%EC%9E%A5%EC%9D%B4%EC%95%BC%EA%B8%B0%27%206%ED%8E%B8.html" class="card-item" data-category="이력서에 쓰지 않는 첫직장 이야기">
+    <a href="/brunch_web_assets/markdown/455_%27%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%20%EC%A7%81%EC%9E%A5%EC%9D%B4%EC%95%BC%EA%B8%B0%27%206%ED%8E%B8.html" class="card-item" data-category="이력서에 쓰지 않는 첫직장 이야기" data-date="20240303" data-id="455">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/455.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4581,7 +4599,7 @@ is_index: true
             <div class="card-date">Mar 3. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/456_%EC%A1%B0%EC%A7%81%EC%9B%90%EA%B3%BC%20%ED%95%A8%EA%BB%98%20%EC%84%B1%EA%B3%B5%ED%95%98%EB%8A%94%20%EB%A6%AC%EB%8D%94%EC%9D%98%20%EB%B9%84%EB%B0%80.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/456_%EC%A1%B0%EC%A7%81%EC%9B%90%EA%B3%BC%20%ED%95%A8%EA%BB%98%20%EC%84%B1%EA%B3%B5%ED%95%98%EB%8A%94%20%EB%A6%AC%EB%8D%94%EC%9D%98%20%EB%B9%84%EB%B0%80.html" class="card-item" data-category="기획일상" data-date="20240302" data-id="456">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/456.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4591,7 +4609,7 @@ is_index: true
             <div class="card-date">Mar 2. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/457_%EC%84%B1%EA%B3%B5%EC%A0%81%EC%9D%B8%20VC%EB%93%A4%EC%9D%B4%20%EC%9C%A0%EB%8B%88%EC%BD%98%EC%9D%B4%20%EB%90%A0%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%84%20%EC%B0%BE%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/457_%EC%84%B1%EA%B3%B5%EC%A0%81%EC%9D%B8%20VC%EB%93%A4%EC%9D%B4%20%EC%9C%A0%EB%8B%88%EC%BD%98%EC%9D%B4%20%EB%90%A0%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%84%20%EC%B0%BE%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20240301" data-id="457">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/457.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4601,7 +4619,7 @@ is_index: true
             <div class="card-date">Mar 1. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/458_%EC%9C%84%EB%8C%80%ED%95%9C%20%EC%A1%B0%EC%A7%81%EC%9D%80%20%EC%BB%A4%EB%AE%A4%EB%8B%88%EC%BC%80%EC%9D%B4%EC%85%98%20%EB%AC%B8%EC%A0%9C%EB%A5%BC%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%ED%95%B4%EA%B2%B0%ED%95%A0%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/458_%EC%9C%84%EB%8C%80%ED%95%9C%20%EC%A1%B0%EC%A7%81%EC%9D%80%20%EC%BB%A4%EB%AE%A4%EB%8B%88%EC%BC%80%EC%9D%B4%EC%85%98%20%EB%AC%B8%EC%A0%9C%EB%A5%BC%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%ED%95%B4%EA%B2%B0%ED%95%A0%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20240229" data-id="458">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/458.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4611,7 +4629,7 @@ is_index: true
             <div class="card-date">Feb 29. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/459_%EC%8B%9C%EB%8C%80%EC%98%88%EC%96%B8.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/459_%EC%8B%9C%EB%8C%80%EC%98%88%EC%96%B8.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240229" data-id="459">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/459.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4621,7 +4639,7 @@ is_index: true
             <div class="card-date">Feb 29. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/460_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%204%ED%99%94%20%27%EB%AC%B8%EC%A0%9C%EC%A0%95%EC%9D%98%27.html" class="card-item" data-category="코치S">
+    <a href="/brunch_web_assets/markdown/460_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%204%ED%99%94%20%27%EB%AC%B8%EC%A0%9C%EC%A0%95%EC%9D%98%27.html" class="card-item" data-category="코치S" data-date="20240227" data-id="460">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/460.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4631,7 +4649,7 @@ is_index: true
             <div class="card-date">Feb 27. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/461_%EC%83%81%EC%83%81%EB%8F%84%20%EB%AA%BB%20%ED%95%A0%20%EB%B9%84%EB%B0%80%EC%9D%84%20%EA%B0%80%EC%A7%84%20%ED%81%B4%EB%9F%BD.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/461_%EC%83%81%EC%83%81%EB%8F%84%20%EB%AA%BB%20%ED%95%A0%20%EB%B9%84%EB%B0%80%EC%9D%84%20%EA%B0%80%EC%A7%84%20%ED%81%B4%EB%9F%BD.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240227" data-id="461">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/461.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4641,7 +4659,7 @@ is_index: true
             <div class="card-date">Feb 27. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/462_%27%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%20%EC%A7%81%EC%9E%A5%EC%9D%B4%EC%95%BC%EA%B8%B0%27%205%ED%8E%B8.html" class="card-item" data-category="이력서에 쓰지 않는 첫직장 이야기">
+    <a href="/brunch_web_assets/markdown/462_%27%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%20%EC%A7%81%EC%9E%A5%EC%9D%B4%EC%95%BC%EA%B8%B0%27%205%ED%8E%B8.html" class="card-item" data-category="이력서에 쓰지 않는 첫직장 이야기" data-date="20240225" data-id="462">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/462.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4651,7 +4669,7 @@ is_index: true
             <div class="card-date">Feb 25. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/463_%EA%B2%BD%EB%A1%9C%EC%9D%98%20%EC%9E%AC%ED%83%90%EC%83%89.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/463_%EA%B2%BD%EB%A1%9C%EC%9D%98%20%EC%9E%AC%ED%83%90%EC%83%89.html" class="card-item" data-category="기획일상" data-date="20240224" data-id="463">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/463.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4661,7 +4679,7 @@ is_index: true
             <div class="card-date">Feb 24. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/464_%27%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%20%EC%A7%81%EC%9E%A5%EC%9D%B4%EC%95%BC%EA%B8%B0%27%204%ED%8E%B8.html" class="card-item" data-category="이력서에 쓰지 않는 첫직장 이야기">
+    <a href="/brunch_web_assets/markdown/464_%27%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%20%EC%A7%81%EC%9E%A5%EC%9D%B4%EC%95%BC%EA%B8%B0%27%204%ED%8E%B8.html" class="card-item" data-category="이력서에 쓰지 않는 첫직장 이야기" data-date="20240224" data-id="464">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/464.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4671,7 +4689,7 @@ is_index: true
             <div class="card-date">Feb 24. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/465_%27%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%20%EC%A7%81%EC%9E%A5%EC%9D%B4%EC%95%BC%EA%B8%B0%27%203%ED%8E%B8.html" class="card-item" data-category="이력서에 쓰지 않는 첫직장 이야기">
+    <a href="/brunch_web_assets/markdown/465_%27%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%20%EC%A7%81%EC%9E%A5%EC%9D%B4%EC%95%BC%EA%B8%B0%27%203%ED%8E%B8.html" class="card-item" data-category="이력서에 쓰지 않는 첫직장 이야기" data-date="20240222" data-id="465">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/465.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4681,7 +4699,7 @@ is_index: true
             <div class="card-date">Feb 22. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/466_%27%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%20%EC%A7%81%EC%9E%A5%EC%9D%B4%EC%95%BC%EA%B8%B0%27%202%ED%8E%B8.html" class="card-item" data-category="이력서에 쓰지 않는 첫직장 이야기">
+    <a href="/brunch_web_assets/markdown/466_%27%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%20%EC%A7%81%EC%9E%A5%EC%9D%B4%EC%95%BC%EA%B8%B0%27%202%ED%8E%B8.html" class="card-item" data-category="이력서에 쓰지 않는 첫직장 이야기" data-date="20240221" data-id="466">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/466.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4691,7 +4709,7 @@ is_index: true
             <div class="card-date">Feb 21. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/467_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%203%ED%99%94%20%27%EA%B3%BC%EC%A0%9C%ED%8F%AD%ED%83%84...%EA%B7%B8%EB%A6%AC%EA%B3%A0.html" class="card-item" data-category="코치S">
+    <a href="/brunch_web_assets/markdown/467_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%203%ED%99%94%20%27%EA%B3%BC%EC%A0%9C%ED%8F%AD%ED%83%84...%EA%B7%B8%EB%A6%AC%EA%B3%A0.html" class="card-item" data-category="코치S" data-date="20240220" data-id="467">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/467.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4701,7 +4719,7 @@ is_index: true
             <div class="card-date">Feb 20. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/468_%27%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%20%EC%A7%81%EC%9E%A5%EC%9D%B4%EC%95%BC%EA%B8%B0%27%201%ED%8E%B8.html" class="card-item" data-category="이력서에 쓰지 않는 첫직장 이야기">
+    <a href="/brunch_web_assets/markdown/468_%27%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%20%EC%A7%81%EC%9E%A5%EC%9D%B4%EC%95%BC%EA%B8%B0%27%201%ED%8E%B8.html" class="card-item" data-category="이력서에 쓰지 않는 첫직장 이야기" data-date="20240219" data-id="468">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/468.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4711,7 +4729,7 @@ is_index: true
             <div class="card-date">Feb 19. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/469_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EC%9D%BC%20%EA%B3%A0%EB%A5%B4%EA%B8%B0%20%EC%A0%84%EB%9E%B5%ED%8E%B8.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/469_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EC%9D%BC%20%EA%B3%A0%EB%A5%B4%EA%B8%B0%20%EC%A0%84%EB%9E%B5%ED%8E%B8.html" class="card-item" data-category="기획일상" data-date="20240218" data-id="469">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/469.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4721,7 +4739,7 @@ is_index: true
             <div class="card-date">Feb 18. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/470_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%ED%9E%88%EC%96%B4%EB%A1%9C%20%EB%90%98%EA%B8%B0%ED%8E%B8.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/470_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%ED%9E%88%EC%96%B4%EB%A1%9C%20%EB%90%98%EA%B8%B0%ED%8E%B8.html" class="card-item" data-category="기획일상" data-date="20240217" data-id="470">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/470.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4731,7 +4749,7 @@ is_index: true
             <div class="card-date">Feb 17. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/471_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%202%ED%99%94%20%27%EA%B8%B0%ED%9A%8D...%20%EA%B7%B8%EB%9F%B0%20%EC%82%AC%EB%9E%91%27.html" class="card-item" data-category="코치S">
+    <a href="/brunch_web_assets/markdown/471_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%202%ED%99%94%20%27%EA%B8%B0%ED%9A%8D...%20%EA%B7%B8%EB%9F%B0%20%EC%82%AC%EB%9E%91%27.html" class="card-item" data-category="코치S" data-date="20240217" data-id="471">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/471.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4741,7 +4759,7 @@ is_index: true
             <div class="card-date">Feb 17. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/472_%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%EC%97%90%EB%8A%94%20%EC%96%B4%EB%96%A4%20%EA%B8%80%EC%9D%84%20%EC%8D%A8%EC%95%BC%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/472_%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%EC%97%90%EB%8A%94%20%EC%96%B4%EB%96%A4%20%EA%B8%80%EC%9D%84%20%EC%8D%A8%EC%95%BC%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240215" data-id="472">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/472.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4751,7 +4769,7 @@ is_index: true
             <div class="card-date">Feb 15. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/473_SNS%EB%B3%84%20%EC%9D%B8%EA%B8%B0%EA%B2%8C%EC%8B%9C%EB%AC%BC%20Top%203.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/473_SNS%EB%B3%84%20%EC%9D%B8%EA%B8%B0%EA%B2%8C%EC%8B%9C%EB%AC%BC%20Top%203.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240214" data-id="473">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/473.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4761,7 +4779,7 @@ is_index: true
             <div class="card-date">Feb 14. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/474_%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EC%8B%9C%EC%9E%91%EC%9D%80%20%EB%AC%B8%EC%A0%9C%EC%9D%98%20%EC%9D%B8%EC%8B%9D%EB%B6%80%ED%84%B0.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/474_%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EC%8B%9C%EC%9E%91%EC%9D%80%20%EB%AC%B8%EC%A0%9C%EC%9D%98%20%EC%9D%B8%EC%8B%9D%EB%B6%80%ED%84%B0.html" class="card-item" data-category="기획일상" data-date="20240214" data-id="474">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/474.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4771,7 +4789,7 @@ is_index: true
             <div class="card-date">Feb 14. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/475_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%27%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%27%201%ED%99%94%20%EC%8B%A0%ED%95%99%EA%B8%B0%20%EA%B0%9C%EA%B0%95.html" class="card-item" data-category="코치S">
+    <a href="/brunch_web_assets/markdown/475_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%27%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%27%201%ED%99%94%20%EC%8B%A0%ED%95%99%EA%B8%B0%20%EA%B0%9C%EA%B0%95.html" class="card-item" data-category="코치S" data-date="20240213" data-id="475">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/475.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4781,7 +4799,7 @@ is_index: true
             <div class="card-date">Feb 13. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/476_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%27%EC%82%AC%EC%A0%84%EC%A4%80%EB%B9%84%EC%9D%98%20%EC%A0%84%EB%9E%B5%ED%8E%B8%27.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/476_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%27%EC%82%AC%EC%A0%84%EC%A4%80%EB%B9%84%EC%9D%98%20%EC%A0%84%EB%9E%B5%ED%8E%B8%27.html" class="card-item" data-category="기획일상" data-date="20240212" data-id="476">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/476.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4791,7 +4809,7 @@ is_index: true
             <div class="card-date">Feb 12. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/477_%EA%B8%80%EC%93%B0%EA%B8%B0%EB%8A%94%20%27%EC%9E%98%27%20%EB%B3%B4%EB%8B%A4%20%27%EC%9E%90%EC%A3%BC%27%EA%B0%80%20%EB%8D%94%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/477_%EA%B8%80%EC%93%B0%EA%B8%B0%EB%8A%94%20%27%EC%9E%98%27%20%EB%B3%B4%EB%8B%A4%20%27%EC%9E%90%EC%A3%BC%27%EA%B0%80%20%EB%8D%94%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240211" data-id="477">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/477.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4801,7 +4819,7 @@ is_index: true
             <div class="card-date">Feb 11. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/478_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%27%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%27%20%EC%98%88%EA%B3%A0%ED%8E%B8.html" class="card-item" data-category="코치S">
+    <a href="/brunch_web_assets/markdown/478_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%27%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%27%20%EC%98%88%EA%B3%A0%ED%8E%B8.html" class="card-item" data-category="코치S" data-date="20240211" data-id="478">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/478.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4811,7 +4829,7 @@ is_index: true
             <div class="card-date">Feb 11. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/479_%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A5%BC%20%EC%9E%A1%EA%B8%B0%20%EC%9D%B4%EC%A0%84%EC%97%90%20%EC%82%AC%EB%9E%8C%EC%9D%84%20%EC%9E%A1%EC%95%84%EB%9D%BC.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/479_%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A5%BC%20%EC%9E%A1%EA%B8%B0%20%EC%9D%B4%EC%A0%84%EC%97%90%20%EC%82%AC%EB%9E%8C%EC%9D%84%20%EC%9E%A1%EC%95%84%EB%9D%BC.html" class="card-item" data-category="기획일상" data-date="20240210" data-id="479">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/479.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4821,7 +4839,7 @@ is_index: true
             <div class="card-date">Feb 10. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/480_%EC%95%84%EC%9D%B4%EB%94%94%EC%96%BC%20%EC%9C%A0%EC%A0%80%20%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/480_%EC%95%84%EC%9D%B4%EB%94%94%EC%96%BC%20%EC%9C%A0%EC%A0%80%20%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4.html" class="card-item" data-category="기획일상" data-date="20240210" data-id="480">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/480.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4831,7 +4849,7 @@ is_index: true
             <div class="card-date">Feb 10. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/481_%EB%82%B4%EA%B0%80%20GS%EC%97%90%EC%84%9C%20%EA%B0%95%EC%9D%98%EB%A5%BC%20%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/481_%EB%82%B4%EA%B0%80%20GS%EC%97%90%EC%84%9C%20%EA%B0%95%EC%9D%98%EB%A5%BC%20%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240208" data-id="481">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/481.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4841,7 +4859,7 @@ is_index: true
             <div class="card-date">Feb 8. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/482_%27%EC%84%B8%EC%83%81%EC%97%90%20%EC%97%86%EB%8D%98%20%EC%9D%BC%EC%9D%84%20%ED%95%98%EC%8B%9C%EB%84%A4%EC%9A%94.%27.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/482_%27%EC%84%B8%EC%83%81%EC%97%90%20%EC%97%86%EB%8D%98%20%EC%9D%BC%EC%9D%84%20%ED%95%98%EC%8B%9C%EB%84%A4%EC%9A%94.%27.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240207" data-id="482">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/482.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4851,7 +4869,7 @@ is_index: true
             <div class="card-date">Feb 7. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/483_%EB%AA%85%EB%9E%91%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20IT%20%EB%AA%85%EC%96%B8.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/483_%EB%AA%85%EB%9E%91%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20IT%20%EB%AA%85%EC%96%B8.html" class="card-item" data-category="기획일상" data-date="20240205" data-id="483">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/483.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4861,7 +4879,7 @@ is_index: true
             <div class="card-date">Feb 5. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/484_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20Fast%20Fail%EC%9D%98%20%EB%B9%84%EB%B0%80.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/484_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20Fast%20Fail%EC%9D%98%20%EB%B9%84%EB%B0%80.html" class="card-item" data-category="기획일상" data-date="20240204" data-id="484">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/484.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4871,7 +4889,7 @@ is_index: true
             <div class="card-date">Feb 4. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/485_%EA%B8%80%EC%9D%84%20%EC%93%B0%EB%A9%B4%20%EC%9D%B4%EB%A3%A8%EC%96%B4%EC%A7%80%EB%8A%94%20%EC%9B%90%EB%A6%AC%20aka.%20%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%EC%82%B0%ED%96%89.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/485_%EA%B8%80%EC%9D%84%20%EC%93%B0%EB%A9%B4%20%EC%9D%B4%EB%A3%A8%EC%96%B4%EC%A7%80%EB%8A%94%20%EC%9B%90%EB%A6%AC%20aka.%20%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%EC%82%B0%ED%96%89.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240204" data-id="485">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/485.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4881,7 +4899,7 @@ is_index: true
             <div class="card-date">Feb 4. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/486_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EC%9B%90%ED%95%98%EB%8A%94%20%EA%B2%83%EC%9D%84%20%EC%9D%B4%EB%A3%A8%EB%8A%94%20%EB%B9%84%EB%B0%80.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/486_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EC%9B%90%ED%95%98%EB%8A%94%20%EA%B2%83%EC%9D%84%20%EC%9D%B4%EB%A3%A8%EB%8A%94%20%EB%B9%84%EB%B0%80.html" class="card-item" data-category="기획일상" data-date="20240202" data-id="486">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/486.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4891,7 +4909,7 @@ is_index: true
             <div class="card-date">Feb 2. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/487_%EB%A7%8C%EB%93%9C%EB%8A%94%20%EC%84%9C%EB%B9%84%EC%8A%A4%2C%20%ED%82%A4%EC%9A%B0%EB%8A%94%20%EC%84%9C%EB%B9%84%EC%8A%A4.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/487_%EB%A7%8C%EB%93%9C%EB%8A%94%20%EC%84%9C%EB%B9%84%EC%8A%A4%2C%20%ED%82%A4%EC%9A%B0%EB%8A%94%20%EC%84%9C%EB%B9%84%EC%8A%A4.html" class="card-item" data-category="기획일상" data-date="20240201" data-id="487">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/487.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4901,7 +4919,7 @@ is_index: true
             <div class="card-date">Feb 1. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/488_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EA%B8%80%EC%93%B0%EA%B8%B0%EC%9D%98%20%EC%8B%9C%ED%81%AC%EB%A6%BF.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/488_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EA%B8%80%EC%93%B0%EA%B8%B0%EC%9D%98%20%EC%8B%9C%ED%81%AC%EB%A6%BF.html" class="card-item" data-category="기획일상" data-date="20240130" data-id="488">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/488.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4911,7 +4929,7 @@ is_index: true
             <div class="card-date">Jan 30. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/489_%EC%9E%85%EB%8C%80%EC%9D%98%20%EC%B6%94%EC%96%B5.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/489_%EC%9E%85%EB%8C%80%EC%9D%98%20%EC%B6%94%EC%96%B5.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240130" data-id="489">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/489.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4921,7 +4939,7 @@ is_index: true
             <div class="card-date">Jan 30. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/490_%EC%83%9D%EC%A1%B4%ED%95%98%EB%8A%94%20%EA%B8%B0%EC%97%85%EC%9D%98%20%EC%A1%B0%EA%B1%B4.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/490_%EC%83%9D%EC%A1%B4%ED%95%98%EB%8A%94%20%EA%B8%B0%EC%97%85%EC%9D%98%20%EC%A1%B0%EA%B1%B4.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20240128" data-id="490">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/490.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4931,7 +4949,7 @@ is_index: true
             <div class="card-date">Jan 28. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/491_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%A9%B4%EC%A0%91%EA%B4%80%EC%9D%98%20%EC%A0%84%EB%9E%B5%ED%8E%B8.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/491_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%A9%B4%EC%A0%91%EA%B4%80%EC%9D%98%20%EC%A0%84%EB%9E%B5%ED%8E%B8.html" class="card-item" data-category="기획일상" data-date="20240127" data-id="491">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/491.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4941,7 +4959,7 @@ is_index: true
             <div class="card-date">Jan 27. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/492_IT%20%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A5%BC%20%EC%9E%98%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%ED%9A%8C%EC%82%AC%EC%9D%98%207%EA%B0%80%EC%A7%80%20%ED%8A%B9%EC%A7%95.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/492_IT%20%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A5%BC%20%EC%9E%98%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%ED%9A%8C%EC%82%AC%EC%9D%98%207%EA%B0%80%EC%A7%80%20%ED%8A%B9%EC%A7%95.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20240125" data-id="492">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/492.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4951,7 +4969,7 @@ is_index: true
             <div class="card-date">Jan 25. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/493_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%ED%94%84%EB%A0%88%EC%A0%A0%ED%85%8C%EC%9D%B4%EC%85%98%20%EB%A9%98%ED%83%88%EA%B4%80%EB%A6%AC%ED%8E%B8.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/493_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%ED%94%84%EB%A0%88%EC%A0%A0%ED%85%8C%EC%9D%B4%EC%85%98%20%EB%A9%98%ED%83%88%EA%B4%80%EB%A6%AC%ED%8E%B8.html" class="card-item" data-category="기획일상" data-date="20240124" data-id="493">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/493.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4961,7 +4979,7 @@ is_index: true
             <div class="card-date">Jan 24. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/494_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%ED%94%84%EB%A0%88%EC%A0%A0%ED%85%8C%EC%9D%B4%EC%85%98%20%EC%8A%A4%ED%86%A0%EB%A6%AC%ED%8E%B8.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/494_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%ED%94%84%EB%A0%88%EC%A0%A0%ED%85%8C%EC%9D%B4%EC%85%98%20%EC%8A%A4%ED%86%A0%EB%A6%AC%ED%8E%B8.html" class="card-item" data-category="기획일상" data-date="20240123" data-id="494">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/494.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4971,7 +4989,7 @@ is_index: true
             <div class="card-date">Jan 23. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/495_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%ED%94%84%EB%A0%88%EC%A0%A0%ED%85%8C%EC%9D%B4%EC%85%98%EC%9D%98%20%EB%B9%84%EB%B0%80%ED%8E%B8.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/495_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%ED%94%84%EB%A0%88%EC%A0%A0%ED%85%8C%EC%9D%B4%EC%85%98%EC%9D%98%20%EB%B9%84%EB%B0%80%ED%8E%B8.html" class="card-item" data-category="기획일상" data-date="20240122" data-id="495">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/495.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4981,7 +4999,7 @@ is_index: true
             <div class="card-date">Jan 22. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/496_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EA%B8%80%EA%B0%90%20%EC%B0%BE%EA%B8%B0%20%EC%A0%84%EB%9E%B5%ED%8E%B8.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/496_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EA%B8%80%EA%B0%90%20%EC%B0%BE%EA%B8%B0%20%EC%A0%84%EB%9E%B5%ED%8E%B8.html" class="card-item" data-category="기획일상" data-date="20240121" data-id="496">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/496.jpg');"></div>
         <div class="card-content">
             <div>
@@ -4991,7 +5009,7 @@ is_index: true
             <div class="card-date">Jan 21. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/497_%EC%9D%B8%EA%B8%B0%20%EC%9E%88%EB%8A%94%20%ED%8F%89%EB%A1%A0%EA%B0%80%EC%9D%B4%EA%B8%B0%EB%B3%B4%EB%8B%A4%EB%8A%94%20%EC%B6%A9%EC%8B%A4%ED%95%9C%20%EA%B0%90%EB%8F%85%EC%9D%B4%20%EB%90%98%EA%B8%B0%EB%A5%BC.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/497_%EC%9D%B8%EA%B8%B0%20%EC%9E%88%EB%8A%94%20%ED%8F%89%EB%A1%A0%EA%B0%80%EC%9D%B4%EA%B8%B0%EB%B3%B4%EB%8B%A4%EB%8A%94%20%EC%B6%A9%EC%8B%A4%ED%95%9C%20%EA%B0%90%EB%8F%85%EC%9D%B4%20%EB%90%98%EA%B8%B0%EB%A5%BC.html" class="card-item" data-category="기획일상" data-date="20240121" data-id="497">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/497.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5001,7 +5019,7 @@ is_index: true
             <div class="card-date">Jan 21. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/498_%EC%82%AC%EC%97%85%EA%B0%80%EB%8A%94.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/498_%EC%82%AC%EC%97%85%EA%B0%80%EB%8A%94.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240119" data-id="498">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/498.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5011,7 +5029,7 @@ is_index: true
             <div class="card-date">Jan 19. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/499_%EB%82%B4%EA%B0%80%20%EB%B8%94%EB%A1%9C%EA%B1%B0%EC%99%80%20%EB%A7%81%ED%81%AC%EB%93%9C%E4%BA%BA%EC%9D%84%20%EC%9D%91%EC%9B%90%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/499_%EB%82%B4%EA%B0%80%20%EB%B8%94%EB%A1%9C%EA%B1%B0%EC%99%80%20%EB%A7%81%ED%81%AC%EB%93%9C%E4%BA%BA%EC%9D%84%20%EC%9D%91%EC%9B%90%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240118" data-id="499">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/499.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5021,7 +5039,7 @@ is_index: true
             <div class="card-date">Jan 18. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/500_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%8F%85%EC%84%9C%EC%9D%98%20%EC%A0%84%EB%9E%B5%ED%8E%B8.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/500_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%8F%85%EC%84%9C%EC%9D%98%20%EC%A0%84%EB%9E%B5%ED%8E%B8.html" class="card-item" data-category="기획일상" data-date="20240117" data-id="500">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/500.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5031,7 +5049,7 @@ is_index: true
             <div class="card-date">Jan 17. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/501_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%EC%83%9D%EC%A1%B4%EC%A0%84%EB%9E%B5%ED%8E%B8.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/501_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%EC%83%9D%EC%A1%B4%EC%A0%84%EB%9E%B5%ED%8E%B8.html" class="card-item" data-category="기획일상" data-date="20240116" data-id="501">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/501.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5041,7 +5059,7 @@ is_index: true
             <div class="card-date">Jan 16. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/502_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20Choice%20of%20Ur%20Life.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/502_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20Choice%20of%20Ur%20Life.html" class="card-item" data-category="기획일상" data-date="20240115" data-id="502">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/502.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5051,7 +5069,7 @@ is_index: true
             <div class="card-date">Jan 15. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/503_%EC%8B%B1%EA%B0%80%ED%8F%AC%EB%A5%B4%20%EC%97%AC%ED%96%89%EC%9D%98%20%EB%B9%84%EB%B0%80.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/503_%EC%8B%B1%EA%B0%80%ED%8F%AC%EB%A5%B4%20%EC%97%AC%ED%96%89%EC%9D%98%20%EB%B9%84%EB%B0%80.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240113" data-id="503">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/503.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5061,7 +5079,7 @@ is_index: true
             <div class="card-date">Jan 13. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/504_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EC%BB%A4%EB%A6%AC%EC%96%B4%ED%95%B4%ED%82%B9%ED%8E%B8.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/504_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EC%BB%A4%EB%A6%AC%EC%96%B4%ED%95%B4%ED%82%B9%ED%8E%B8.html" class="card-item" data-category="기획일상" data-date="20240112" data-id="504">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/504.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5071,7 +5089,7 @@ is_index: true
             <div class="card-date">Jan 12. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/505_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%27%EC%B4%88%EB%8B%A8%EA%B8%B0%20%EB%B8%8C%EB%9E%9C%EB%94%A9%ED%8E%B8%27.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/505_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%27%EC%B4%88%EB%8B%A8%EA%B8%B0%20%EB%B8%8C%EB%9E%9C%EB%94%A9%ED%8E%B8%27.html" class="card-item" data-category="기획일상" data-date="20240111" data-id="505">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/505.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5081,7 +5099,7 @@ is_index: true
             <div class="card-date">Jan 11. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/506_%EC%97%90%EC%96%B4%ED%94%8C%EB%A0%88%EC%9D%B8%EB%AA%A8%EB%93%9C%20%EA%B8%80%EC%93%B0%EA%B8%B0.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/506_%EC%97%90%EC%96%B4%ED%94%8C%EB%A0%88%EC%9D%B8%EB%AA%A8%EB%93%9C%20%EA%B8%80%EC%93%B0%EA%B8%B0.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240110" data-id="506">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/506.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5091,7 +5109,7 @@ is_index: true
             <div class="card-date">Jan 10. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/507_%EB%82%B4%EA%B0%80%20%EA%B3%A8%ED%94%84%EB%B3%B4%EB%8B%A4%20%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%EC%9D%84%20%EC%A2%8B%EC%95%84%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/507_%EB%82%B4%EA%B0%80%20%EA%B3%A8%ED%94%84%EB%B3%B4%EB%8B%A4%20%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%EC%9D%84%20%EC%A2%8B%EC%95%84%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240109" data-id="507">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/507.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5101,7 +5119,7 @@ is_index: true
             <div class="card-date">Jan 9. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/508_%EC%8B%B1%EA%B0%80%ED%8F%AC%EB%A5%B4%20%EA%B0%80%EC%A1%B1%EC%97%AC%ED%96%89%EA%B8%B0%ED%9A%8D%20%EB%B0%9C%ED%91%9C.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/508_%EC%8B%B1%EA%B0%80%ED%8F%AC%EB%A5%B4%20%EA%B0%80%EC%A1%B1%EC%97%AC%ED%96%89%EA%B8%B0%ED%9A%8D%20%EB%B0%9C%ED%91%9C.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240107" data-id="508">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/508.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5111,7 +5129,7 @@ is_index: true
             <div class="card-date">Jan 7. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/509_%EB%8B%A4%EC%96%91%ED%95%9C%20%EB%B0%98%EC%9D%91%EB%93%A4.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/509_%EB%8B%A4%EC%96%91%ED%95%9C%20%EB%B0%98%EC%9D%91%EB%93%A4.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240106" data-id="509">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/509.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5121,7 +5139,7 @@ is_index: true
             <div class="card-date">Jan 6. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/510_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%27%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%ED%8E%B8%27.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/510_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%27%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%ED%8E%B8%27.html" class="card-item" data-category="기획일상" data-date="20240105" data-id="510">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/510.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5131,7 +5149,7 @@ is_index: true
             <div class="card-date">Jan 5. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/511_%27%EC%A2%8B%EC%95%84%EC%9A%94%27%EC%9D%98%20%EC%9D%98%EB%AF%B8.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/511_%27%EC%A2%8B%EC%95%84%EC%9A%94%27%EC%9D%98%20%EC%9D%98%EB%AF%B8.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240104" data-id="511">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/511.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5141,7 +5159,7 @@ is_index: true
             <div class="card-date">Jan 4. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/512_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%ED%88%AC%EB%AA%85%EB%AA%A8%EC%9E%90%20%EB%81%9D%ED%8C%90%EC%99%95%ED%8E%B8.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/512_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%ED%88%AC%EB%AA%85%EB%AA%A8%EC%9E%90%20%EB%81%9D%ED%8C%90%EC%99%95%ED%8E%B8.html" class="card-item" data-category="기획일상" data-date="20240102" data-id="512">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/512.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5151,7 +5169,7 @@ is_index: true
             <div class="card-date">Jan 2. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/513_2024%20%EC%83%88%ED%95%B4%20%EC%9D%B8%EC%82%AC%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/513_2024%20%EC%83%88%ED%95%B4%20%EC%9D%B8%EC%82%AC%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프" data-date="20240101" data-id="513">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/513.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5161,7 +5179,7 @@ is_index: true
             <div class="card-date">Jan 1. 2024</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/514_2023%EB%85%84%EC%9D%84%20%EB%A7%88%EB%AC%B4%EB%A6%AC%ED%95%98%EB%A9%B0%E2%80%A6.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/514_2023%EB%85%84%EC%9D%84%20%EB%A7%88%EB%AC%B4%EB%A6%AC%ED%95%98%EB%A9%B0%E2%80%A6.html" class="card-item" data-category="심플리파이어 라이프" data-date="20231231" data-id="514">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/514.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5171,7 +5189,7 @@ is_index: true
             <div class="card-date">Dec 31. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/515_%EB%A0%88%EC%96%B4%ED%85%9C%20%EC%84%A0%EB%AC%BC%EC%9D%84%20%EB%B0%9B%EC%95%98%EC%8A%B5%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/515_%EB%A0%88%EC%96%B4%ED%85%9C%20%EC%84%A0%EB%AC%BC%EC%9D%84%20%EB%B0%9B%EC%95%98%EC%8A%B5%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프" data-date="20231230" data-id="515">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/515.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5181,7 +5199,7 @@ is_index: true
             <div class="card-date">Dec 30. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/516_%EC%9B%B9%EA%B3%BC%20%EA%B2%8C%EC%8A%88%ED%83%88%ED%8A%B8%20%EC%8B%AC%EB%A6%AC%ED%95%99.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/516_%EC%9B%B9%EA%B3%BC%20%EA%B2%8C%EC%8A%88%ED%83%88%ED%8A%B8%20%EC%8B%AC%EB%A6%AC%ED%95%99.html" class="card-item" data-category="기획일상" data-date="20231230" data-id="516">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/516.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5191,7 +5209,7 @@ is_index: true
             <div class="card-date">Dec 30. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/517_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%B0%A9%ED%96%A5%EA%B3%BC%20%ED%9D%90%EB%A6%84%ED%8E%B8.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/517_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%B0%A9%ED%96%A5%EA%B3%BC%20%ED%9D%90%EB%A6%84%ED%8E%B8.html" class="card-item" data-category="기획일상" data-date="20231229" data-id="517">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/517.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5201,7 +5219,7 @@ is_index: true
             <div class="card-date">Dec 29. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/518_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EA%B3%A0%EA%B0%9D%EB%B9%99%EC%9D%98%ED%8E%B8.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/518_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EA%B3%A0%EA%B0%9D%EB%B9%99%EC%9D%98%ED%8E%B8.html" class="card-item" data-category="기획일상" data-date="20231228" data-id="518">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/518.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5211,7 +5229,7 @@ is_index: true
             <div class="card-date">Dec 28. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/519_%EB%82%B4%EA%B0%80%20%EA%B7%B8%EB%A1%9C%EC%9A%B0%EC%95%A4%EB%B2%A0%ED%84%B0%EC%97%90%EC%84%9C%20%EA%B0%95%EC%9D%98%EB%A5%BC%20%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/519_%EB%82%B4%EA%B0%80%20%EA%B7%B8%EB%A1%9C%EC%9A%B0%EC%95%A4%EB%B2%A0%ED%84%B0%EC%97%90%EC%84%9C%20%EA%B0%95%EC%9D%98%EB%A5%BC%20%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 라이프" data-date="20231226" data-id="519">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/519.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5221,7 +5239,7 @@ is_index: true
             <div class="card-date">Dec 26. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/520_%27Paper%20Face%27%EB%A5%BC%20%EC%95%84%EC%8B%9C%EB%82%98%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/520_%27Paper%20Face%27%EB%A5%BC%20%EC%95%84%EC%8B%9C%EB%82%98%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프" data-date="20231225" data-id="520">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/520.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5231,7 +5249,7 @@ is_index: true
             <div class="card-date">Dec 25. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/521_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%ED%9A%8C%EC%9D%98%EC%9D%98%20%EC%A0%84%EB%9E%B5%ED%8E%B8.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/521_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%ED%9A%8C%EC%9D%98%EC%9D%98%20%EC%A0%84%EB%9E%B5%ED%8E%B8.html" class="card-item" data-category="기획일상" data-date="20231224" data-id="521">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/521.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5241,7 +5259,7 @@ is_index: true
             <div class="card-date">Dec 24. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/522_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20AI%EB%8A%94%20%EA%B1%B0%EB%93%A4%20%EB%BF%90%ED%8E%B8.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/522_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20AI%EB%8A%94%20%EA%B1%B0%EB%93%A4%20%EB%BF%90%ED%8E%B8.html" class="card-item" data-category="기획일상" data-date="20231223" data-id="522">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/522.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5251,7 +5269,7 @@ is_index: true
             <div class="card-date">Dec 23. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/523_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%9B%A8%EC%9D%B4%20%27%EC%9A%94%EA%B8%B0%EC%9A%94%20Concept%20UX%27.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/523_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%9B%A8%EC%9D%B4%20%27%EC%9A%94%EA%B8%B0%EC%9A%94%20Concept%20UX%27.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20231222" data-id="523">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/523.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5261,7 +5279,7 @@ is_index: true
             <div class="card-date">Dec 22. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/524_%EA%B8%80%EC%9D%84%20%EB%A7%A4%EC%9D%BC%20%EC%93%B0%EB%8B%A4%EB%B3%B4%EB%8B%88.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/524_%EA%B8%80%EC%9D%84%20%EB%A7%A4%EC%9D%BC%20%EC%93%B0%EB%8B%A4%EB%B3%B4%EB%8B%88.html" class="card-item" data-category="심플리파이어 라이프" data-date="20231221" data-id="524">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/524.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5271,7 +5289,7 @@ is_index: true
             <div class="card-date">Dec 21. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/525_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EC%82%AC%EA%B3%A0%ED%9B%88%EB%A0%A8%ED%8E%B8.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/525_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EC%82%AC%EA%B3%A0%ED%9B%88%EB%A0%A8%ED%8E%B8.html" class="card-item" data-category="기획일상" data-date="20231220" data-id="525">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/525.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5281,7 +5299,7 @@ is_index: true
             <div class="card-date">Dec 20. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/526_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%EA%B0%84%EC%A6%9D.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/526_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%EA%B0%84%EC%A6%9D.html" class="card-item" data-category="심플리파이어 라이프" data-date="20231219" data-id="526">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/526.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5291,7 +5309,7 @@ is_index: true
             <div class="card-date">Dec 19. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/527_%EC%84%9C%EC%9A%B8%EC%9D%98%20%EB%B4%84%20%EA%B7%B8%EC%A6%88%EC%9D%8C%EC%97%90.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/527_%EC%84%9C%EC%9A%B8%EC%9D%98%20%EB%B4%84%20%EA%B7%B8%EC%A6%88%EC%9D%8C%EC%97%90.html" class="card-item" data-category="심플리파이어 라이프" data-date="20231218" data-id="527">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/527.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5301,7 +5319,7 @@ is_index: true
             <div class="card-date">Dec 18. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/528_%EC%B0%B8%EC%8B%A0%ED%95%9C%20%EB%B0%98%EC%9D%91.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/528_%EC%B0%B8%EC%8B%A0%ED%95%9C%20%EB%B0%98%EC%9D%91.html" class="card-item" data-category="심플리파이어 라이프" data-date="20231217" data-id="528">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/528.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5311,7 +5329,7 @@ is_index: true
             <div class="card-date">Dec 17. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/529_%EB%8C%80%ED%91%9C%EA%B0%80%20%ED%8E%98%EB%A5%B4%EC%86%8C%EB%82%98%EA%B0%80%20%EB%90%98%EB%A9%B4%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EB%90%A0%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/529_%EB%8C%80%ED%91%9C%EA%B0%80%20%ED%8E%98%EB%A5%B4%EC%86%8C%EB%82%98%EA%B0%80%20%EB%90%98%EB%A9%B4%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EB%90%A0%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="기획일상" data-date="20231216" data-id="529">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/529.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5321,7 +5339,7 @@ is_index: true
             <div class="card-date">Dec 16. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/530_%EC%9D%BC%EC%9D%84%20%EC%9E%98%ED%95%98%EB%8A%94%EC%A7%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%95%84%EC%84%B8%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/530_%EC%9D%BC%EC%9D%84%20%EC%9E%98%ED%95%98%EB%8A%94%EC%A7%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%95%84%EC%84%B8%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프" data-date="20231215" data-id="530">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/530.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5331,7 +5349,7 @@ is_index: true
             <div class="card-date">Dec 15. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/531_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%90%98%EA%B8%B0%ED%8E%B8.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/531_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%90%98%EA%B8%B0%ED%8E%B8.html" class="card-item" data-category="기획일상" data-date="20231214" data-id="531">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/531.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5341,7 +5359,7 @@ is_index: true
             <div class="card-date">Dec 14. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/532_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EC%9D%98%EC%8B%9D%20%EC%9E%88%EB%8A%94%20%ED%94%84%EB%A1%9C%ED%8E%B8.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/532_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EC%9D%98%EC%8B%9D%20%EC%9E%88%EB%8A%94%20%ED%94%84%EB%A1%9C%ED%8E%B8.html" class="card-item" data-category="기획일상" data-date="20231213" data-id="532">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/532.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5351,7 +5369,7 @@ is_index: true
             <div class="card-date">Dec 13. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/533_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%B9%8C%EB%93%9C%EC%97%85%ED%8E%B8.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/533_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%B9%8C%EB%93%9C%EC%97%85%ED%8E%B8.html" class="card-item" data-category="기획일상" data-date="20231212" data-id="533">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/533.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5361,7 +5379,7 @@ is_index: true
             <div class="card-date">Dec 12. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/534_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EC%A0%8A%EC%9D%80%20%EB%A7%88%EC%9D%B8%EB%93%9C%ED%8E%B8.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/534_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EC%A0%8A%EC%9D%80%20%EB%A7%88%EC%9D%B8%EB%93%9C%ED%8E%B8.html" class="card-item" data-category="기획일상" data-date="20231210" data-id="534">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/534.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5371,7 +5389,7 @@ is_index: true
             <div class="card-date">Dec 10. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/535_%EC%95%BD%EC%86%8D%EA%B3%BC%20%EC%82%AC%EB%AA%85%EC%9D%98%20%EA%B8%B0%ED%9A%8D.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/535_%EC%95%BD%EC%86%8D%EA%B3%BC%20%EC%82%AC%EB%AA%85%EC%9D%98%20%EA%B8%B0%ED%9A%8D.html" class="card-item" data-category="기획일상" data-date="20231209" data-id="535">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/535.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5381,7 +5399,7 @@ is_index: true
             <div class="card-date">Dec 9. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/536_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%ED%9A%8C%EC%82%AC%EC%83%9D%ED%99%9C%20%EC%83%9D%EC%A1%B4%EC%A0%84%EB%9E%B5%ED%8E%B8.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/536_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%ED%9A%8C%EC%82%AC%EC%83%9D%ED%99%9C%20%EC%83%9D%EC%A1%B4%EC%A0%84%EB%9E%B5%ED%8E%B8.html" class="card-item" data-category="기획일상" data-date="20231208" data-id="536">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/536.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5391,7 +5409,7 @@ is_index: true
             <div class="card-date">Dec 8. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/537_%EC%96%B5%EC%9A%B8%ED%95%A0%EC%88%98%EB%A1%9D%20%EB%8D%94%20%EC%97%B4%EC%8B%AC%ED%9E%88%20%EC%82%B4%EC%95%84%EC%95%BC%20%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/537_%EC%96%B5%EC%9A%B8%ED%95%A0%EC%88%98%EB%A1%9D%20%EB%8D%94%20%EC%97%B4%EC%8B%AC%ED%9E%88%20%EC%82%B4%EC%95%84%EC%95%BC%20%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 라이프" data-date="20231207" data-id="537">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/537.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5401,7 +5419,7 @@ is_index: true
             <div class="card-date">Dec 7. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/538_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%A7%88%EC%9D%B8%EB%93%9C%EA%B4%80%EB%A6%AC%ED%8E%B8.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/538_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%A7%88%EC%9D%B8%EB%93%9C%EA%B4%80%EB%A6%AC%ED%8E%B8.html" class="card-item" data-category="기획일상" data-date="20231206" data-id="538">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/538.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5411,7 +5429,7 @@ is_index: true
             <div class="card-date">Dec 6. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/539_%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%8A%94%20%EA%B0%9C%EB%B0%9C%EC%9D%84%20%EC%96%B4%EB%94%94%EA%B9%8C%EC%A7%80%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/539_%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%8A%94%20%EA%B0%9C%EB%B0%9C%EC%9D%84%20%EC%96%B4%EB%94%94%EA%B9%8C%EC%A7%80%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="기획일상" data-date="20231205" data-id="539">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/539.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5421,7 +5439,7 @@ is_index: true
             <div class="card-date">Dec 5. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/540_%EA%B8%B0%ED%9A%8D%20%20%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%20%EC%82%AC%EB%9E%91.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/540_%EA%B8%B0%ED%9A%8D%20%20%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%20%EC%82%AC%EB%9E%91.html" class="card-item" data-category="기획일상" data-date="20231204" data-id="540">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/540.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5431,7 +5449,7 @@ is_index: true
             <div class="card-date">Dec 4. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/541_%EC%A0%84%ED%98%84%EB%AC%B4%20%EC%95%84%EB%82%98%EC%99%80%20%EC%9E%A1%EC%A7%80%EC%82%AC%EC%A7%84%20%EC%B0%8D%EC%9D%80%20%EC%8D%B0%202.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/541_%EC%A0%84%ED%98%84%EB%AC%B4%20%EC%95%84%EB%82%98%EC%99%80%20%EC%9E%A1%EC%A7%80%EC%82%AC%EC%A7%84%20%EC%B0%8D%EC%9D%80%20%EC%8D%B0%202.html" class="card-item" data-category="UX의 언어들" data-date="20231203" data-id="541">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/541.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5441,7 +5459,7 @@ is_index: true
             <div class="card-date">Dec 3. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/542_%EC%A0%84%ED%98%84%EB%AC%B4%20%EC%95%84%EB%82%98%EC%99%80%20%EC%9E%A1%EC%A7%80%EC%82%AC%EC%A7%84%20%EC%B0%8D%EC%9D%80%20%EC%8D%B0%201.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/542_%EC%A0%84%ED%98%84%EB%AC%B4%20%EC%95%84%EB%82%98%EC%99%80%20%EC%9E%A1%EC%A7%80%EC%82%AC%EC%A7%84%20%EC%B0%8D%EC%9D%80%20%EC%8D%B0%201.html" class="card-item" data-category="UX의 언어들" data-date="20231202" data-id="542">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/542.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5451,7 +5469,7 @@ is_index: true
             <div class="card-date">Dec 2. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/543_%EB%8A%98%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20%EC%9E%90%EC%84%B8.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/543_%EB%8A%98%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20%EC%9E%90%EC%84%B8.html" class="card-item" data-category="기획일상" data-date="20231201" data-id="543">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/543.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5461,7 +5479,7 @@ is_index: true
             <div class="card-date">Dec 1. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/544_%EC%A0%80%ED%9D%AC%20%EB%8C%80%ED%91%9C%EB%8B%98%EC%9D%B4%20%EC%BB%A8%EC%84%A4%ED%8C%85%20%EA%B0%99%EC%9D%80%20%EA%B1%B8%20%EC%8B%AB%EC%96%B4%ED%95%98%EC%84%B8%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/544_%EC%A0%80%ED%9D%AC%20%EB%8C%80%ED%91%9C%EB%8B%98%EC%9D%B4%20%EC%BB%A8%EC%84%A4%ED%8C%85%20%EA%B0%99%EC%9D%80%20%EA%B1%B8%20%EC%8B%AB%EC%96%B4%ED%95%98%EC%84%B8%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프" data-date="20231130" data-id="544">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/544.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5471,7 +5489,7 @@ is_index: true
             <div class="card-date">Nov 30. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/545_%EA%B4%80%EB%A7%9D%EA%B3%BC%20%EC%9D%91%EC%9B%90%EC%82%AC%EC%9D%B4%20%EA%B7%B8%20%EC%96%B4%EB%94%94%EC%AF%A4%EC%97%90%EC%84%9C.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/545_%EA%B4%80%EB%A7%9D%EA%B3%BC%20%EC%9D%91%EC%9B%90%EC%82%AC%EC%9D%B4%20%EA%B7%B8%20%EC%96%B4%EB%94%94%EC%AF%A4%EC%97%90%EC%84%9C.html" class="card-item" data-category="심플리파이어 라이프" data-date="20231129" data-id="545">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/545.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5481,7 +5499,7 @@ is_index: true
             <div class="card-date">Nov 29. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/546_%EA%B0%80%EA%B9%8C%EC%9D%B4%ED%95%B4%EC%95%BC%20%ED%95%98%EB%8A%94%20%EC%82%AC%EB%9E%8C.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/546_%EA%B0%80%EA%B9%8C%EC%9D%B4%ED%95%B4%EC%95%BC%20%ED%95%98%EB%8A%94%20%EC%82%AC%EB%9E%8C.html" class="card-item" data-category="심플리파이어 라이프" data-date="20231128" data-id="546">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/546.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5491,7 +5509,7 @@ is_index: true
             <div class="card-date">Nov 28. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/547_PO%EA%B0%80%20%EC%A0%95%ED%99%95%ED%9E%88%20%EB%AD%94%EA%B0%80%EC%9A%94.html" class="card-item" data-category="Be the PO">
+    <a href="/brunch_web_assets/markdown/547_PO%EA%B0%80%20%EC%A0%95%ED%99%95%ED%9E%88%20%EB%AD%94%EA%B0%80%EC%9A%94.html" class="card-item" data-category="Be the PO" data-date="20231127" data-id="547">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/547.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5501,7 +5519,7 @@ is_index: true
             <div class="card-date">Nov 27. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/548_%EB%82%98%EB%8A%94%20%EC%9A%B4%EC%9D%B4%20%EC%A2%8B%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/548_%EB%82%98%EB%8A%94%20%EC%9A%B4%EC%9D%B4%20%EC%A2%8B%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프" data-date="20231126" data-id="548">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/548.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5511,7 +5529,7 @@ is_index: true
             <div class="card-date">Nov 26. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/549_%EC%83%9D%EC%95%A0%20%EC%B2%AB%20%EB%B8%8C%EB%9F%B0%EC%B9%98%EB%B6%81%EC%9D%84%20%EB%A7%8C%EB%93%A4%EC%97%88%EC%8A%B5%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/549_%EC%83%9D%EC%95%A0%20%EC%B2%AB%20%EB%B8%8C%EB%9F%B0%EC%B9%98%EB%B6%81%EC%9D%84%20%EB%A7%8C%EB%93%A4%EC%97%88%EC%8A%B5%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프" data-date="20231125" data-id="549">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/549.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5521,7 +5539,7 @@ is_index: true
             <div class="card-date">Nov 25. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/550_%ED%95%AB%ED%94%8C%EC%97%90%EC%84%9C%20%EC%9D%BC%ED%95%98%EB%8A%94%20%EC%A7%81%EC%97%85.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/550_%ED%95%AB%ED%94%8C%EC%97%90%EC%84%9C%20%EC%9D%BC%ED%95%98%EB%8A%94%20%EC%A7%81%EC%97%85.html" class="card-item" data-category="심플리파이어 라이프" data-date="20231124" data-id="550">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/550.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5531,7 +5549,7 @@ is_index: true
             <div class="card-date">Nov 24. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/551_%EB%82%A8%EB%93%A4%EC%9D%80%20%EB%8B%A4%20%ED%96%89%EB%B3%B5%ED%95%9C%20%EA%B1%B0%20%EA%B0%99%EC%95%84%EC%9A%94.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기">
+    <a href="/brunch_web_assets/markdown/551_%EB%82%A8%EB%93%A4%EC%9D%80%20%EB%8B%A4%20%ED%96%89%EB%B3%B5%ED%95%9C%20%EA%B1%B0%20%EA%B0%99%EC%95%84%EC%9A%94.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기" data-date="20231123" data-id="551">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/551.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5541,7 +5559,7 @@ is_index: true
             <div class="card-date">Nov 23. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/552_%EC%82%AC%EC%9A%A9%EC%9E%90%EB%A5%BC%20%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%99%94%ED%95%98%EC%84%B8%EC%9A%94.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/552_%EC%82%AC%EC%9A%A9%EC%9E%90%EB%A5%BC%20%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%99%94%ED%95%98%EC%84%B8%EC%9A%94.html" class="card-item" data-category="기획일상" data-date="20231121" data-id="552">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/552.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5551,7 +5569,7 @@ is_index: true
             <div class="card-date">Nov 21. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/553_%EA%B8%B0%ED%9A%8D%EC%9D%80%20%EB%AA%87%20%ED%98%95%EC%8B%9D.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/553_%EA%B8%B0%ED%9A%8D%EC%9D%80%20%EB%AA%87%20%ED%98%95%EC%8B%9D.html" class="card-item" data-category="심플리파이어 라이프" data-date="20231120" data-id="553">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/553.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5561,7 +5579,7 @@ is_index: true
             <div class="card-date">Nov 20. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/554_O%20or%20X.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/554_O%20or%20X.html" class="card-item" data-category="기획일상" data-date="20231119" data-id="554">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/554.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5571,7 +5589,7 @@ is_index: true
             <div class="card-date">Nov 19. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/555_%EC%A7%80%EB%82%98%EA%B3%A0%20%EB%B3%B4%EB%8B%88.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기">
+    <a href="/brunch_web_assets/markdown/555_%EC%A7%80%EB%82%98%EA%B3%A0%20%EB%B3%B4%EB%8B%88.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기" data-date="20231118" data-id="555">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/555.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5581,7 +5599,7 @@ is_index: true
             <div class="card-date">Nov 18. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/556_%ED%9B%88%EC%88%98%EC%9D%98%20%EA%B0%80%EC%B9%98.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기">
+    <a href="/brunch_web_assets/markdown/556_%ED%9B%88%EC%88%98%EC%9D%98%20%EA%B0%80%EC%B9%98.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기" data-date="20231117" data-id="556">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/556.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5591,7 +5609,7 @@ is_index: true
             <div class="card-date">Nov 17. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/557_%ED%86%A0%EB%A1%A0%EC%9D%B4%EB%9E%80.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/557_%ED%86%A0%EB%A1%A0%EC%9D%B4%EB%9E%80.html" class="card-item" data-category="기획일상" data-date="20231116" data-id="557">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/557.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5601,7 +5619,7 @@ is_index: true
             <div class="card-date">Nov 16. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/558_%ED%81%B4%EB%9F%BD%EC%9D%98%20%EB%AA%A9%EC%A0%81.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/558_%ED%81%B4%EB%9F%BD%EC%9D%98%20%EB%AA%A9%EC%A0%81.html" class="card-item" data-category="심플리파이어 라이프" data-date="20231115" data-id="558">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/558.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5611,7 +5629,7 @@ is_index: true
             <div class="card-date">Nov 15. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/559_%ED%9A%8C%EC%82%AC%20%EC%9D%B4%EC%A0%84%20%EC%95%88%EB%82%B4.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기">
+    <a href="/brunch_web_assets/markdown/559_%ED%9A%8C%EC%82%AC%20%EC%9D%B4%EC%A0%84%20%EC%95%88%EB%82%B4.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기" data-date="20231114" data-id="559">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/559.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5621,7 +5639,7 @@ is_index: true
             <div class="card-date">Nov 14. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/560_%ED%95%98%EB%A3%A8%ED%95%98%EB%A3%A8%EB%A5%BC%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EC%82%AC%EB%9E%8C%EB%93%A4.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기">
+    <a href="/brunch_web_assets/markdown/560_%ED%95%98%EB%A3%A8%ED%95%98%EB%A3%A8%EB%A5%BC%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EC%82%AC%EB%9E%8C%EB%93%A4.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기" data-date="20231113" data-id="560">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/560.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5631,7 +5649,7 @@ is_index: true
             <div class="card-date">Nov 13. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/561_%EC%84%9C%EC%84%9C%ED%9E%88%20%EA%B0%80%EB%9D%BC.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/561_%EC%84%9C%EC%84%9C%ED%9E%88%20%EA%B0%80%EB%9D%BC.html" class="card-item" data-category="기획일상" data-date="20231112" data-id="561">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/561.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5641,7 +5659,7 @@ is_index: true
             <div class="card-date">Nov 12. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/562_%EC%A7%81%EC%97%85%EB%B3%91.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기">
+    <a href="/brunch_web_assets/markdown/562_%EC%A7%81%EC%97%85%EB%B3%91.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기" data-date="20231111" data-id="562">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/562.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5651,7 +5669,7 @@ is_index: true
             <div class="card-date">Nov 11. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/563_%EC%9A%94%EA%B8%B0%EC%9A%94%20%EC%82%AC%EC%9B%90%EC%A6%9D%20%EB%A6%AC%EB%89%B4%EC%96%BC%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8.html" class="card-item" data-category="기획자로 시작하기">
+    <a href="/brunch_web_assets/markdown/563_%EC%9A%94%EA%B8%B0%EC%9A%94%20%EC%82%AC%EC%9B%90%EC%A6%9D%20%EB%A6%AC%EB%89%B4%EC%96%BC%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8.html" class="card-item" data-category="기획자로 시작하기" data-date="20231110" data-id="563">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/563.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5661,7 +5679,7 @@ is_index: true
             <div class="card-date">Nov 10. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/564_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%9B%A8%EC%9D%B4%20%27%EB%94%94%EC%9E%90%EC%9D%B8%20%ED%98%91%EC%97%85%27.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/564_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%9B%A8%EC%9D%B4%20%27%EB%94%94%EC%9E%90%EC%9D%B8%20%ED%98%91%EC%97%85%27.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20231109" data-id="564">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/564.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5671,7 +5689,7 @@ is_index: true
             <div class="card-date">Nov 9. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/565_%EC%96%B4%EB%96%BB%EA%B2%8C%20%EA%B8%80%EC%9D%84%20%EB%A7%A4%EC%9D%BC%20%EC%93%B0%EC%84%B8%EC%9A%94.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기">
+    <a href="/brunch_web_assets/markdown/565_%EC%96%B4%EB%96%BB%EA%B2%8C%20%EA%B8%80%EC%9D%84%20%EB%A7%A4%EC%9D%BC%20%EC%93%B0%EC%84%B8%EC%9A%94.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기" data-date="20231108" data-id="565">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/565.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5681,7 +5699,7 @@ is_index: true
             <div class="card-date">Nov 8. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/566_%EB%8C%80%ED%91%9C%EC%9D%98%20%EC%9D%B4%EB%A6%84%EC%9D%84%20%EB%B9%A8%EA%B0%84%EC%83%89%EC%9C%BC%EB%A1%9C%20%EC%93%B0%EC%A7%84%20%EB%A7%88%EC%84%B8%EC%9A%94.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/566_%EB%8C%80%ED%91%9C%EC%9D%98%20%EC%9D%B4%EB%A6%84%EC%9D%84%20%EB%B9%A8%EA%B0%84%EC%83%89%EC%9C%BC%EB%A1%9C%20%EC%93%B0%EC%A7%84%20%EB%A7%88%EC%84%B8%EC%9A%94.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20231107" data-id="566">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/566.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5691,7 +5709,7 @@ is_index: true
             <div class="card-date">Nov 7. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/567_%EC%A1%B0%EC%B9%B4%EC%99%80%20%ED%95%A8%EA%BB%98%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20%EA%B8%80%EC%93%B0%EA%B8%B0.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/567_%EC%A1%B0%EC%B9%B4%EC%99%80%20%ED%95%A8%EA%BB%98%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20%EA%B8%80%EC%93%B0%EA%B8%B0.html" class="card-item" data-category="기획일상" data-date="20231105" data-id="567">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/567.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5701,7 +5719,7 @@ is_index: true
             <div class="card-date">Nov 5. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/568_%EC%A0%9C%EA%B0%80%20%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%ED%81%B4%EB%9F%BD%EC%9E%A5%EC%9D%84.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/568_%EC%A0%9C%EA%B0%80%20%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%ED%81%B4%EB%9F%BD%EC%9E%A5%EC%9D%84.html" class="card-item" data-category="심플리파이어 라이프" data-date="20231103" data-id="568">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/568.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5711,7 +5729,7 @@ is_index: true
             <div class="card-date">Nov 3. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/569_%EB%8F%84%EB%8C%80%EC%B2%B4%20%EB%8B%B9%EC%8B%A0%EC%9D%80%20%ED%95%9C%20%EA%B2%8C%20%EB%AD%90%EA%B0%80%20%EC%9E%88%EB%82%98%EC%9A%94.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기">
+    <a href="/brunch_web_assets/markdown/569_%EB%8F%84%EB%8C%80%EC%B2%B4%20%EB%8B%B9%EC%8B%A0%EC%9D%80%20%ED%95%9C%20%EA%B2%8C%20%EB%AD%90%EA%B0%80%20%EC%9E%88%EB%82%98%EC%9A%94.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기" data-date="20231102" data-id="569">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/569.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5721,7 +5739,7 @@ is_index: true
             <div class="card-date">Nov 2. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/570_%EB%8C%80%EA%B8%B0%EC%97%85%20DT%EB%A5%BC%20%EC%9C%84%ED%95%9C%205%EA%B0%80%EC%A7%80%20%EC%A0%9C%EC%95%88.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/570_%EB%8C%80%EA%B8%B0%EC%97%85%20DT%EB%A5%BC%20%EC%9C%84%ED%95%9C%205%EA%B0%80%EC%A7%80%20%EC%A0%9C%EC%95%88.html" class="card-item" data-category="심플리파이어 라이프" data-date="20231101" data-id="570">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/570.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5731,7 +5749,7 @@ is_index: true
             <div class="card-date">Nov 1. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/571_%EC%88%98%EB%B0%95%EB%B0%94%20%EB%85%BC%EC%9F%81.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기">
+    <a href="/brunch_web_assets/markdown/571_%EC%88%98%EB%B0%95%EB%B0%94%20%EB%85%BC%EC%9F%81.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기" data-date="20231031" data-id="571">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/571.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5741,7 +5759,7 @@ is_index: true
             <div class="card-date">Oct 31. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/572_C%EB%A0%88%EB%B2%A8%EC%9D%98%20%EA%B8%B0%EC%88%A0%20%27%EA%B2%BD%EC%B2%AD%27.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/572_C%EB%A0%88%EB%B2%A8%EC%9D%98%20%EA%B8%B0%EC%88%A0%20%27%EA%B2%BD%EC%B2%AD%27.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20231030" data-id="572">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/572.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5751,7 +5769,7 @@ is_index: true
             <div class="card-date">Oct 30. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/573_%EC%82%AC%EA%B8%B0%EC%9D%98%20%EC%A0%91%EA%B7%BC%EB%B2%95.html" class="card-item" data-category="UX의 언어들">
+    <a href="/brunch_web_assets/markdown/573_%EC%82%AC%EA%B8%B0%EC%9D%98%20%EC%A0%91%EA%B7%BC%EB%B2%95.html" class="card-item" data-category="UX의 언어들" data-date="20231028" data-id="573">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/573.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5761,7 +5779,7 @@ is_index: true
             <div class="card-date">Oct 28. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/574_%EC%A0%95%EB%A7%90%20%EA%B0%9C%EC%9D%B8%EC%82%AC%EC%97%85%20%ED%95%98%EC%8B%A4%20%EA%B1%B0%EC%98%88%EC%9A%94.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기">
+    <a href="/brunch_web_assets/markdown/574_%EC%A0%95%EB%A7%90%20%EA%B0%9C%EC%9D%B8%EC%82%AC%EC%97%85%20%ED%95%98%EC%8B%A4%20%EA%B1%B0%EC%98%88%EC%9A%94.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기" data-date="20231028" data-id="574">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/574.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5771,7 +5789,7 @@ is_index: true
             <div class="card-date">Oct 28. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/575_%EA%B0%9C%EC%9D%B8%EC%82%AC%EC%97%85%EC%9E%90%EA%B0%80%20%EB%90%98%EB%A9%B4%20%EC%A2%8B%EC%9D%80%20%EC%A0%90%EC%9D%80%20%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80%EC%9A%94.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기">
+    <a href="/brunch_web_assets/markdown/575_%EA%B0%9C%EC%9D%B8%EC%82%AC%EC%97%85%EC%9E%90%EA%B0%80%20%EB%90%98%EB%A9%B4%20%EC%A2%8B%EC%9D%80%20%EC%A0%90%EC%9D%80%20%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80%EC%9A%94.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기" data-date="20231027" data-id="575">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/575.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5781,7 +5799,7 @@ is_index: true
             <div class="card-date">Oct 27. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/576_%EC%B1%85%EB%A7%8C%20%EB%93%A4%EB%A9%B4%20ADHD%EA%B0%80%20%EC%98%A8%EB%8B%A4%EB%A9%B4.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/576_%EC%B1%85%EB%A7%8C%20%EB%93%A4%EB%A9%B4%20ADHD%EA%B0%80%20%EC%98%A8%EB%8B%A4%EB%A9%B4.html" class="card-item" data-category="심플리파이어 라이프" data-date="20231026" data-id="576">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/576.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5791,7 +5809,7 @@ is_index: true
             <div class="card-date">Oct 26. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/577_%EC%9D%BC%20%EC%9E%98%ED%95%98%EA%B8%B0%20%EC%8B%AB%EC%9C%BC%EB%A9%B4%20%EC%A0%88%EB%8C%80%20%EC%9D%BD%EC%9C%BC%EB%A9%B4%20%EC%95%88%20%EB%90%98%EB%8A%94%20%EA%B8%80.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/577_%EC%9D%BC%20%EC%9E%98%ED%95%98%EA%B8%B0%20%EC%8B%AB%EC%9C%BC%EB%A9%B4%20%EC%A0%88%EB%8C%80%20%EC%9D%BD%EC%9C%BC%EB%A9%B4%20%EC%95%88%20%EB%90%98%EB%8A%94%20%EA%B8%80.html" class="card-item" data-category="기획일상" data-date="20231025" data-id="577">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/577.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5801,7 +5819,7 @@ is_index: true
             <div class="card-date">Oct 25. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/578_%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%20%ED%9A%8C%EC%82%AC%EC%9D%98%20%EC%95%BC%EA%B7%BC%20%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/578_%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%20%ED%9A%8C%EC%82%AC%EC%9D%98%20%EC%95%BC%EA%B7%BC%20%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20231024" data-id="578">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/578.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5811,7 +5829,7 @@ is_index: true
             <div class="card-date">Oct 24. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/579_%EB%93%B1%EC%82%B0.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/579_%EB%93%B1%EC%82%B0.html" class="card-item" data-category="기획일상" data-date="20231023" data-id="579">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/579.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5821,7 +5839,7 @@ is_index: true
             <div class="card-date">Oct 23. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/580_%EA%B0%9C%EC%9D%B8%EC%82%AC%EC%97%85%20%EC%8B%9C%EC%9E%91%20%EC%A0%84%20%ED%95%B4%EC%95%BC%20%ED%95%A0%205%EA%B0%80%EC%A7%80%20%EC%A7%88%EB%AC%B8%EC%9D%80.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기">
+    <a href="/brunch_web_assets/markdown/580_%EA%B0%9C%EC%9D%B8%EC%82%AC%EC%97%85%20%EC%8B%9C%EC%9E%91%20%EC%A0%84%20%ED%95%B4%EC%95%BC%20%ED%95%A0%205%EA%B0%80%EC%A7%80%20%EC%A7%88%EB%AC%B8%EC%9D%80.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기" data-date="20231022" data-id="580">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/580.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5831,7 +5849,7 @@ is_index: true
             <div class="card-date">Oct 22. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/581_C%EB%A0%88%EB%B2%A8%EC%9D%98%20%EA%B8%B0%EC%88%A0%20%27%ED%9A%8C%EC%9D%98%27.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/581_C%EB%A0%88%EB%B2%A8%EC%9D%98%20%EA%B8%B0%EC%88%A0%20%27%ED%9A%8C%EC%9D%98%27.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20231021" data-id="581">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/581.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5841,7 +5859,7 @@ is_index: true
             <div class="card-date">Oct 21. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/582_%EC%A0%80%EB%8A%94%20%EC%9B%90%EC%98%A8%EC%9B%90%20%EB%8C%80%EC%8B%A0%20%ED%8B%B0%ED%83%80%EC%9E%84%EC%9D%84%20%ED%95%B4%EC%9A%94.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/582_%EC%A0%80%EB%8A%94%20%EC%9B%90%EC%98%A8%EC%9B%90%20%EB%8C%80%EC%8B%A0%20%ED%8B%B0%ED%83%80%EC%9E%84%EC%9D%84%20%ED%95%B4%EC%9A%94.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20231020" data-id="582">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/582.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5851,7 +5869,7 @@ is_index: true
             <div class="card-date">Oct 20. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/583_%ED%81%B0%20%EA%B8%B0%EC%97%85%20%EC%9D%B8%EC%9E%AC%EB%93%A4%EC%9D%B4%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%97%90%EC%84%9C%20%EA%B3%A0%EC%A0%84%EC%9D%84%20%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0%EB%8A%94.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/583_%ED%81%B0%20%EA%B8%B0%EC%97%85%20%EC%9D%B8%EC%9E%AC%EB%93%A4%EC%9D%B4%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%97%90%EC%84%9C%20%EA%B3%A0%EC%A0%84%EC%9D%84%20%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0%EB%8A%94.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20231019" data-id="583">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/583.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5861,7 +5879,7 @@ is_index: true
             <div class="card-date">Oct 19. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/584_%EB%8F%8C%EC%9D%B4%EC%BC%9C%20%EB%B3%B4%EB%A9%B4.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/584_%EB%8F%8C%EC%9D%B4%EC%BC%9C%20%EB%B3%B4%EB%A9%B4.html" class="card-item" data-category="기획일상" data-date="20231018" data-id="584">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/584.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5871,7 +5889,7 @@ is_index: true
             <div class="card-date">Oct 18. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/585_%EB%8B%B9%EC%8B%A0%EC%9D%80%20%EC%9E%84%EC%9B%90%EC%9D%B4%20%EC%95%84%EB%8B%88%EC%8B%A0%20%EA%B1%B0%20%EA%B0%99%EC%9D%80%EB%8D%B0%EC%9A%94.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/585_%EB%8B%B9%EC%8B%A0%EC%9D%80%20%EC%9E%84%EC%9B%90%EC%9D%B4%20%EC%95%84%EB%8B%88%EC%8B%A0%20%EA%B1%B0%20%EA%B0%99%EC%9D%80%EB%8D%B0%EC%9A%94.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20231017" data-id="585">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/585.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5881,7 +5899,7 @@ is_index: true
             <div class="card-date">Oct 17. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/586_CPO%EB%8A%94%20%EC%96%B4%EB%96%A4%20%EC%97%AD%ED%95%A0%EC%9D%84%20%ED%95%98%EB%8A%94%20%EC%82%AC%EB%9E%8C%EC%9D%B8%EA%B0%80%EC%9A%94.html" class="card-item" data-category="Be the PO">
+    <a href="/brunch_web_assets/markdown/586_CPO%EB%8A%94%20%EC%96%B4%EB%96%A4%20%EC%97%AD%ED%95%A0%EC%9D%84%20%ED%95%98%EB%8A%94%20%EC%82%AC%EB%9E%8C%EC%9D%B8%EA%B0%80%EC%9A%94.html" class="card-item" data-category="Be the PO" data-date="20231016" data-id="586">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/586.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5891,7 +5909,7 @@ is_index: true
             <div class="card-date">Oct 16. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/587_%EC%88%98%ED%8F%89%EC%A0%81%EC%9D%B8%20%EC%A1%B0%EC%A7%81%EC%97%90%EC%84%9C%20%EB%A6%AC%EB%8D%94%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%ED%95%B4%EC%95%BC%20%ED%95%A0%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/587_%EC%88%98%ED%8F%89%EC%A0%81%EC%9D%B8%20%EC%A1%B0%EC%A7%81%EC%97%90%EC%84%9C%20%EB%A6%AC%EB%8D%94%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%ED%95%B4%EC%95%BC%20%ED%95%A0%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20231015" data-id="587">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/587.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5901,7 +5919,7 @@ is_index: true
             <div class="card-date">Oct 15. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/588_%EC%A2%8B%EC%9D%80%20%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%8A%94.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/588_%EC%A2%8B%EC%9D%80%20%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%8A%94.html" class="card-item" data-category="기획일상" data-date="20231014" data-id="588">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/588.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5911,7 +5929,7 @@ is_index: true
             <div class="card-date">Oct 14. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/589_%EB%8C%80%ED%91%9C%EA%B0%80%20%EB%82%B4%20%EC%A1%B0%EC%A7%81%EC%9B%90%EC%9D%B4%EB%9D%BC%EB%A9%B4.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/589_%EB%8C%80%ED%91%9C%EA%B0%80%20%EB%82%B4%20%EC%A1%B0%EC%A7%81%EC%9B%90%EC%9D%B4%EB%9D%BC%EB%A9%B4.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20231013" data-id="589">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/589.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5921,7 +5939,7 @@ is_index: true
             <div class="card-date">Oct 13. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/590_%EB%8C%80%ED%91%9C%EB%8B%98%20%EC%A0%9C%EA%B0%80%20%EC%9A%B4%EC%9D%B4%20%EC%A2%8B%EC%95%98%EC%8A%B5%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기">
+    <a href="/brunch_web_assets/markdown/590_%EB%8C%80%ED%91%9C%EB%8B%98%20%EC%A0%9C%EA%B0%80%20%EC%9A%B4%EC%9D%B4%20%EC%A2%8B%EC%95%98%EC%8A%B5%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기" data-date="20231012" data-id="590">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/590.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5931,7 +5949,7 @@ is_index: true
             <div class="card-date">Oct 12. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/591_%EA%B0%9C%EC%9D%B8%EC%82%AC%EC%97%85%20%EC%B0%BD%EC%97%85%20%EC%A0%84%20%EC%A4%80%EB%B9%84%ED%95%98%EB%A9%B4%20%EC%A2%8B%EC%9D%80%20%EA%B2%83%EB%93%A4.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기">
+    <a href="/brunch_web_assets/markdown/591_%EA%B0%9C%EC%9D%B8%EC%82%AC%EC%97%85%20%EC%B0%BD%EC%97%85%20%EC%A0%84%20%EC%A4%80%EB%B9%84%ED%95%98%EB%A9%B4%20%EC%A2%8B%EC%9D%80%20%EA%B2%83%EB%93%A4.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기" data-date="20231011" data-id="591">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/591.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5941,7 +5959,7 @@ is_index: true
             <div class="card-date">Oct 11. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/592_%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%ED%8C%80%EC%9D%98%20%EC%83%9D%EC%82%B0%EC%86%8D%EB%8F%84%20%ED%96%A5%EC%83%81%EC%9D%84%20%EC%9C%84%ED%95%9C%209%EA%B0%80%EC%A7%80%20%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/592_%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%ED%8C%80%EC%9D%98%20%EC%83%9D%EC%82%B0%EC%86%8D%EB%8F%84%20%ED%96%A5%EC%83%81%EC%9D%84%20%EC%9C%84%ED%95%9C%209%EA%B0%80%EC%A7%80%20%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20231010" data-id="592">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/592.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5951,7 +5969,7 @@ is_index: true
             <div class="card-date">Oct 10. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/593_%EB%BD%91%ED%9E%88%EB%8A%94%20%EC%9D%B4%EB%A0%A5%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/593_%EB%BD%91%ED%9E%88%EB%8A%94%20%EC%9D%B4%EB%A0%A5%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획일상" data-date="20231009" data-id="593">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/593.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5961,7 +5979,7 @@ is_index: true
             <div class="card-date">Oct 9. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/594_%ED%9A%8C%EC%82%AC%EC%82%AC%EC%9D%B4%ED%8A%B8%20%EC%9E%88%EC%9C%BC%EC%8B%9C%EC%A3%A0.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기">
+    <a href="/brunch_web_assets/markdown/594_%ED%9A%8C%EC%82%AC%EC%82%AC%EC%9D%B4%ED%8A%B8%20%EC%9E%88%EC%9C%BC%EC%8B%9C%EC%A3%A0.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기" data-date="20231008" data-id="594">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/594.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5971,7 +5989,7 @@ is_index: true
             <div class="card-date">Oct 8. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/595_%EB%AC%B4%EC%8A%A8%20%EC%9E%90%EC%8B%A0%EA%B0%90%EC%9C%BC%EB%A1%9C%20%EA%B0%9C%EC%9D%B8%EC%82%AC%EC%97%85%EC%9D%84%20%EC%8B%9C%EC%9E%91%ED%96%88%EB%82%98%EC%9A%94.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기">
+    <a href="/brunch_web_assets/markdown/595_%EB%AC%B4%EC%8A%A8%20%EC%9E%90%EC%8B%A0%EA%B0%90%EC%9C%BC%EB%A1%9C%20%EA%B0%9C%EC%9D%B8%EC%82%AC%EC%97%85%EC%9D%84%20%EC%8B%9C%EC%9E%91%ED%96%88%EB%82%98%EC%9A%94.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기" data-date="20231007" data-id="595">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/595.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5981,7 +5999,7 @@ is_index: true
             <div class="card-date">Oct 7. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/596_%EC%95%BC%EA%B7%BC%EC%9D%84%20%ED%95%98%EC%A7%80%20%EB%A7%90%EC%9E%90.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/596_%EC%95%BC%EA%B7%BC%EC%9D%84%20%ED%95%98%EC%A7%80%20%EB%A7%90%EC%9E%90.html" class="card-item" data-category="기획일상" data-date="20231006" data-id="596">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/596.jpg');"></div>
         <div class="card-content">
             <div>
@@ -5991,7 +6009,7 @@ is_index: true
             <div class="card-date">Oct 6. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/597_%EC%96%B4%EC%A0%9C%EB%8A%94%20%EA%B8%B0%EB%B6%84%EC%9D%B4%20%EB%84%88%EB%AC%B4%20%EC%A2%8B%EC%95%84%20%EA%B3%BC%EC%9D%8C%EC%9D%84%20%ED%96%88%EC%96%B4%EC%9A%94.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기">
+    <a href="/brunch_web_assets/markdown/597_%EC%96%B4%EC%A0%9C%EB%8A%94%20%EA%B8%B0%EB%B6%84%EC%9D%B4%20%EB%84%88%EB%AC%B4%20%EC%A2%8B%EC%95%84%20%EA%B3%BC%EC%9D%8C%EC%9D%84%20%ED%96%88%EC%96%B4%EC%9A%94.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기" data-date="20231005" data-id="597">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/597.jpg');"></div>
         <div class="card-content">
             <div>
@@ -6001,7 +6019,7 @@ is_index: true
             <div class="card-date">Oct 5. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/598_%EB%8B%B9%EC%8B%A0%EC%9D%80%20%EC%9D%BC%EC%9D%84%20%ED%95%98%EB%82%98%EC%9A%94%20%EA%B8%B0%ED%9A%8D%EC%9D%84%20%ED%95%98%EB%82%98%EC%9A%94.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/598_%EB%8B%B9%EC%8B%A0%EC%9D%80%20%EC%9D%BC%EC%9D%84%20%ED%95%98%EB%82%98%EC%9A%94%20%EA%B8%B0%ED%9A%8D%EC%9D%84%20%ED%95%98%EB%82%98%EC%9A%94.html" class="card-item" data-category="기획일상" data-date="20231004" data-id="598">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/598.jpg');"></div>
         <div class="card-content">
             <div>
@@ -6011,7 +6029,7 @@ is_index: true
             <div class="card-date">Oct 4. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/599_%EB%8B%B9%EC%8B%A0%EC%9D%B4%20%EB%AA%85%EB%9E%91%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%98%80%EB%8B%A4%EA%B3%A0%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
+    <a href="/brunch_web_assets/markdown/599_%EB%8B%B9%EC%8B%A0%EC%9D%B4%20%EB%AA%85%EB%9E%91%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%98%80%EB%8B%A4%EA%B3%A0%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프" data-date="20231003" data-id="599">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/599.jpg');"></div>
         <div class="card-content">
             <div>
@@ -6021,7 +6039,7 @@ is_index: true
             <div class="card-date">Oct 3. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/600_%EB%82%98%EB%8A%94%20%EC%84%A0%EB%B0%B0%EC%9D%BC%EA%B9%8C%EC%9A%94%20%EA%BC%B0%EB%8C%80%EC%9D%BC%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기">
+    <a href="/brunch_web_assets/markdown/600_%EB%82%98%EB%8A%94%20%EC%84%A0%EB%B0%B0%EC%9D%BC%EA%B9%8C%EC%9A%94%20%EA%BC%B0%EB%8C%80%EC%9D%BC%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기" data-date="20231002" data-id="600">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/600.jpg');"></div>
         <div class="card-content">
             <div>
@@ -6031,7 +6049,7 @@ is_index: true
             <div class="card-date">Oct 2. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/601_%EC%BB%A4%EB%A6%AC%EC%96%B4%20%EA%B4%80%EB%A6%AC%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%ED%95%98%EB%A9%B4%20%EC%A2%8B%EC%9D%84%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/601_%EC%BB%A4%EB%A6%AC%EC%96%B4%20%EA%B4%80%EB%A6%AC%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%ED%95%98%EB%A9%B4%20%EC%A2%8B%EC%9D%84%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="기획일상" data-date="20230930" data-id="601">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/601.jpg');"></div>
         <div class="card-content">
             <div>
@@ -6041,7 +6059,7 @@ is_index: true
             <div class="card-date">Sep 30. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/602_%EA%B2%BD%ED%97%98%EC%97%90%EC%84%9C%20%EB%B0%B0%EC%9A%B4%20%EB%AA%87%20%EA%B0%80%EC%A7%80%20%EA%B5%90%ED%9B%88.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/602_%EA%B2%BD%ED%97%98%EC%97%90%EC%84%9C%20%EB%B0%B0%EC%9A%B4%20%EB%AA%87%20%EA%B0%80%EC%A7%80%20%EA%B5%90%ED%9B%88.html" class="card-item" data-category="기획일상" data-date="20230928" data-id="602">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/602.jpg');"></div>
         <div class="card-content">
             <div>
@@ -6051,7 +6069,7 @@ is_index: true
             <div class="card-date">Sep 28. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/603_%EB%84%88%20%EC%A7%84%EC%9E%91%EC%97%90%20%EC%9D%B4%EB%A0%87%EA%B2%8C%20%ED%96%88%EC%9C%BC%EB%A9%B4%20%ED%95%98%EB%B2%84%EB%93%9C%20%EA%B0%94%EA%B2%A0%EB%8B%A4.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기">
+    <a href="/brunch_web_assets/markdown/603_%EB%84%88%20%EC%A7%84%EC%9E%91%EC%97%90%20%EC%9D%B4%EB%A0%87%EA%B2%8C%20%ED%96%88%EC%9C%BC%EB%A9%B4%20%ED%95%98%EB%B2%84%EB%93%9C%20%EA%B0%94%EA%B2%A0%EB%8B%A4.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기" data-date="20230927" data-id="603">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/603.jpg');"></div>
         <div class="card-content">
             <div>
@@ -6061,7 +6079,7 @@ is_index: true
             <div class="card-date">Sep 27. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/604_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%EC%96%B4%EB%96%A0%ED%95%9C%20%EA%B3%BC%EC%A0%95%EC%9D%84%20%ED%86%B5%ED%95%B4%20%EC%84%B1%EA%B3%B5%EC%9D%84%20%ED%95%A0%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/604_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%EC%96%B4%EB%96%A0%ED%95%9C%20%EA%B3%BC%EC%A0%95%EC%9D%84%20%ED%86%B5%ED%95%B4%20%EC%84%B1%EA%B3%B5%EC%9D%84%20%ED%95%A0%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20230926" data-id="604">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/604.jpg');"></div>
         <div class="card-content">
             <div>
@@ -6071,7 +6089,7 @@ is_index: true
             <div class="card-date">Sep 26. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/605_%ED%82%A4%EC%9B%8C%EB%93%9C%EB%A1%9C%20%EC%95%8C%EC%95%84%EB%B3%B4%EB%8A%94%20%EC%84%9C%EB%B9%84%EC%8A%A4%EA%B8%B0%ED%9A%8D%EC%9E%90%2C%20PM%2C%20PO%EC%9D%98%20%EC%B0%A8%EC%9D%B4.html" class="card-item" data-category="기획자로 시작하기">
+    <a href="/brunch_web_assets/markdown/605_%ED%82%A4%EC%9B%8C%EB%93%9C%EB%A1%9C%20%EC%95%8C%EC%95%84%EB%B3%B4%EB%8A%94%20%EC%84%9C%EB%B9%84%EC%8A%A4%EA%B8%B0%ED%9A%8D%EC%9E%90%2C%20PM%2C%20PO%EC%9D%98%20%EC%B0%A8%EC%9D%B4.html" class="card-item" data-category="기획자로 시작하기" data-date="20230925" data-id="605">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/605.jpg');"></div>
         <div class="card-content">
             <div>
@@ -6081,7 +6099,7 @@ is_index: true
             <div class="card-date">Sep 25. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/606_C%EB%A0%88%EB%B2%A8%EC%9D%98%20%EA%B8%B0%EC%88%A0%20%27%EC%82%AC%EA%B3%BC%27.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/606_C%EB%A0%88%EB%B2%A8%EC%9D%98%20%EA%B8%B0%EC%88%A0%20%27%EC%82%AC%EA%B3%BC%27.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20230925" data-id="606">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/606.jpg');"></div>
         <div class="card-content">
             <div>
@@ -6091,7 +6109,7 @@ is_index: true
             <div class="card-date">Sep 25. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/607_C%EB%A0%88%EB%B2%A8%EC%9D%B4%EB%9D%BC%EB%8A%94%20%EB%A6%AC%EB%8D%94%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%ED%95%B4%EC%95%BC%20%ED%95%98%EB%82%98%EC%9A%94.html" class="card-item" data-category="스타트업 리더의 기술">
+    <a href="/brunch_web_assets/markdown/607_C%EB%A0%88%EB%B2%A8%EC%9D%B4%EB%9D%BC%EB%8A%94%20%EB%A6%AC%EB%8D%94%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%ED%95%B4%EC%95%BC%20%ED%95%98%EB%82%98%EC%9A%94.html" class="card-item" data-category="스타트업 리더의 기술" data-date="20230925" data-id="607">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/607.jpg');"></div>
         <div class="card-content">
             <div>
@@ -6101,7 +6119,7 @@ is_index: true
             <div class="card-date">Sep 25. 2023</div>
         </div>
     </a>
-    <a href="/brunch_web_assets/markdown/608_%EB%8B%B9%EC%8B%A0%EC%97%90%EA%B2%8C%20%EC%A3%BC%EC%96%B4%EC%A7%84%20%EA%B3%A8%EC%9D%80%20%EC%9E%98%20%EB%84%A3%EA%B3%A0%20%EC%9E%88%EC%8A%B5%EB%8B%88%EA%B9%8C.html" class="card-item" data-category="기획일상">
+    <a href="/brunch_web_assets/markdown/608_%EB%8B%B9%EC%8B%A0%EC%97%90%EA%B2%8C%20%EC%A3%BC%EC%96%B4%EC%A7%84%20%EA%B3%A8%EC%9D%80%20%EC%9E%98%20%EB%84%A3%EA%B3%A0%20%EC%9E%88%EC%8A%B5%EB%8B%88%EA%B9%8C.html" class="card-item" data-category="기획일상" data-date="20230925" data-id="608">
         <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/608.jpg');"></div>
         <div class="card-content">
             <div>
@@ -6113,12 +6131,19 @@ is_index: true
     </a>
 </div>
 <div id="scrollSentinel"></div>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const cards = Array.from(document.querySelectorAll('.card-item'));
         const filterBtns = document.querySelectorAll('.cat-btn');
+        const sortSelect = document.getElementById('sortSelect');
         const sentinel = document.getElementById('scrollSentinel');
-        let itemsPerBatch = 20, currentVisibleCount = 0, filteredCards = cards;
+        const grid = document.getElementById('cardGrid');
+        
+        let itemsPerBatch = 20, currentVisibleCount = 0;
+        let filteredCards = [...cards];
+        let currentFilter = 'all';
+        let sortMode = 'desc'; // 최신순 기본값
         
         function loadNextBatch() {
             if (currentVisibleCount >= filteredCards.length) return;
@@ -6130,22 +6155,54 @@ is_index: true
             }
             currentVisibleCount = end;
         }
-        function applyFilter(filter) {
+        
+        function applyFilterAndSort() {
             cards.forEach(card => { card.classList.remove('visible'); card.style.animationDelay = '0s'; });
-            filteredCards = filter === 'all' ? cards : cards.filter(card => card.getAttribute('data-category') === filter);
+            
+            // 1. 필터링
+            filteredCards = currentFilter === 'all' ? [...cards] : cards.filter(card => card.getAttribute('data-category') === currentFilter);
+            
+            // 2. 정렬 (날짜 데이터 또는 고유 번호 활용)
+            filteredCards.sort((a, b) => {
+                let dateA = parseInt(a.getAttribute('data-date')) || 0;
+                let dateB = parseInt(b.getAttribute('data-date')) || 0;
+                
+                if (dateA === dateB) { // 날짜가 같거나 없으면 파일명 번호로 정렬
+                    let idA = parseInt(a.getAttribute('data-id')) || 0;
+                    let idB = parseInt(b.getAttribute('data-id')) || 0;
+                    return sortMode === 'desc' ? idB - idA : idA - idB;
+                }
+                return sortMode === 'desc' ? dateB - dateA : dateA - dateB;
+            });
+            
+            // 3. 화면(DOM) 재배치
+            filteredCards.forEach(card => grid.appendChild(card));
+            
             currentVisibleCount = 0;
             loadNextBatch();
         }
+
+        // 정렬 드롭다운 이벤트
+        sortSelect.addEventListener('change', function() {
+            sortMode = this.value;
+            applyFilterAndSort();
+        });
+
+        // 카테고리 버튼 이벤트
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                filterBtns.forEach(b => b.classList.remove('active')); this.classList.add('active');
+                currentFilter = this.getAttribute('data-filter');
+                applyFilterAndSort();
+            });
+        });
+
+        // 무한 스크롤 이벤트
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => { if (entry.isIntersecting) loadNextBatch(); });
         }, { rootMargin: '200px' });
         if (sentinel) observer.observe(sentinel);
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                filterBtns.forEach(b => b.classList.remove('active')); this.classList.add('active');
-                applyFilter(this.getAttribute('data-filter'));
-            });
-        });
-        applyFilter('all');
+        
+        applyFilterAndSort();
     });
 </script>
