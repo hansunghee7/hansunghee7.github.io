@@ -80,11 +80,10 @@
     .gallery-panel.is-open { height: 420px; }
   }
 
-  /* Logo trust bar — logos are pre-toned neutral gray with internal luminance contrast (e.g. AmorePacific's lighter letterform inside a darker blob), so no color filter here — that would flatten all internal shading into one flat white silhouette and erase the shape. Only opacity changes on hover. */
+  /* Logo trust bar — natural muted grayscale at rest (preserves each logo's internal shading), snaps to pure white silhouette on hover. Note: assets like AmorePacific distinguish blob vs letterform purely by color brightness (not alpha), so on hover that internal detail merges into one flat white shape — only the outer silhouette remains visible. */
   .logo-mask-wrap { position: relative; }
-  .logo-mask-wrap img { transition: opacity 0.3s ease; }
-  .logo-mask-wrap .logo-default { opacity: 0.65; }
-  .logo-item:hover .logo-mask-wrap .logo-default { opacity: 1; }
+  .logo-mask-wrap img { transition: opacity 0.3s ease, filter 0.3s ease; opacity: 0.65; }
+  .logo-item:hover .logo-mask-wrap img { opacity: 1; filter: brightness(0) invert(1); }
   .logo-item p { transition: color 0.3s ease; }
   .logo-item:hover p { color: #f5f3ee; }
   .reveal.is-visible { opacity: 1; transform: translateY(0); }
