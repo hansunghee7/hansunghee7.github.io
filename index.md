@@ -9,14 +9,22 @@ is_index: true
     .card-item.visible { display: flex !important; animation: fadeInUp 0.4s ease forwards; }
     #scrollSentinel { height: 50px; margin-top: 30px; }
     
-    .filter-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 20px; margin-bottom: 10px; }
+    /* 필터 및 정렬 레이아웃 */
+    .filter-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px; margin-bottom: 35px; }
     .category-filter { display: flex; flex-wrap: wrap; gap: 8px; flex: 1; }
     .cat-btn { padding: 7px 16px; border: 1px solid #e1e1e1; border-radius: 20px; background: #fff; color: #666; font-size: 13px; font-weight: 300; cursor: pointer; transition: all 0.2s; font-family: 'Noto Sans KR', sans-serif; }
     .cat-btn:hover { border-color: #00c73c; color: #00c73c; }
     .cat-btn.active { background: #00c73c; color: #fff; border-color: #00c73c; font-weight: 400; }
     
-    .sort-select { padding: 7px 12px; border: 1px solid #ddd; border-radius: 6px; outline: none; font-family: 'Noto Sans KR'; font-size: 13px; color: #444; cursor: pointer; background: #fafafa; }
-    .sort-select:hover { border-color: #00c73c; }
+    /* ★ 새로운 텍스트 토글 방식 정렬 UI 스타일 ★ */
+    .sort-filter { display: flex; gap: 15px; align-items: center; margin-bottom: 5px; }
+    .sort-text-btn { background: none; border: none; font-size: 14px; color: #a0a0a0; cursor: pointer; font-family: 'Noto Sans KR', sans-serif; font-weight: 300; display: flex; align-items: center; padding: 0; transition: color 0.2s; }
+    .sort-text-btn:hover { color: #555; }
+    .sort-text-btn.active { color: #333; font-weight: 400; }
+    
+    /* 액티브 시 나타나는 동그란 점 (Dot) */
+    .sort-text-btn .dot { display: inline-block; width: 4px; height: 4px; border-radius: 50%; background-color: transparent; margin-right: 4px; margin-bottom: 2px; }
+    .sort-text-btn.active .dot { background-color: #00c73c; } /* 브런치 시그니처 민트색 */
 </style>
 
 <div class="filter-wrap">
@@ -41,10 +49,8 @@ is_index: true
         <button class="cat-btn" data-filter="코치S">코치S</button>
     </div>
     <div class="sort-filter">
-        <select id="sortSelect" class="sort-select">
-            <option value="desc">최신순</option>
-            <option value="asc">날짜순 (오래된순)</option>
-        </select>
+        <button class="sort-text-btn active" data-sort="desc"><span class="dot"></span>최신순</button>
+        <button class="sort-text-btn" data-sort="asc"><span class="dot"></span>날짜순</button>
     </div>
 </div>
 
@@ -6136,7 +6142,7 @@ is_index: true
     document.addEventListener('DOMContentLoaded', function() {
         const cards = Array.from(document.querySelectorAll('.card-item'));
         const filterBtns = document.querySelectorAll('.cat-btn');
-        const sortSelect = document.getElementById('sortSelect');
+        const sortBtns = document.querySelectorAll('.sort-text-btn'); // 텍스트 정렬 버튼 변수
         const sentinel = document.getElementById('scrollSentinel');
         const grid = document.getElementById('cardGrid');
         
@@ -6178,7 +6184,16 @@ is_index: true
             loadNextBatch();
         }
 
-        sortSelect.addEventListener('change', function() { sortMode = this.value; applyFilterAndSort(); });
+        // 정렬 텍스트 버튼 클릭 이벤트 연결
+        sortBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                sortBtns.forEach(b => b.classList.remove('active')); 
+                this.classList.add('active');
+                sortMode = this.getAttribute('data-sort');
+                applyFilterAndSort();
+            });
+        });
+
         filterBtns.forEach(btn => {
             btn.addEventListener('click', function() {
                 filterBtns.forEach(b => b.classList.remove('active')); this.classList.add('active');
