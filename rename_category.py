@@ -4,8 +4,8 @@ import re
 md_dir = "brunch_web_assets/markdown"
 
 # 👇 여기서 바꾸고 싶은 기존 이름과 새 이름을 적어주세요!
-OLD_CATEGORY = "스타트업의 전략들"   # 예: 현재 카테고리 이름
-NEW_CATEGORY = "스타트업 인사이트"        # 예: 바꿀 카테고리 이름
+OLD_CATEGORY = "트레바리"   # 예: 현재 카테고리 이름
+NEW_CATEGORY = "Talks & Sessions"        # 예: 바꿀 카테고리 이름
 count = 0
 print(f"🚀 '{OLD_CATEGORY}' 카테고리를 '{NEW_CATEGORY}'(으)로 일괄 변경합니다...\n")
 
