@@ -28,12 +28,14 @@ GLOBAL_PROMO_LINKS = [
     "https://www.yes24.com/product/goods/193444437"
 ]
 
-if os.path.exists("index.md"):
-    os.remove("index.md")
-
-md_dir = "brunch_web_assets/markdown"
+# 🌟 블로그 리스트용 파일명을 아예 log.html로 고정합니다.
 index_file = "log.html"
 csv_file = "브런치_글_모음집.csv"
+md_dir = "brunch_web_assets/markdown"
+
+# 기존에 잘못 만들어진 index.md가 있다면 삭제
+if os.path.exists("index.md"):
+    os.remove("index.md")
 
 csv_dates = {}
 try:
@@ -155,7 +157,7 @@ for filename in md_files:
 
     body_content = re.sub(r'^---.*?---\s*', '', content, flags=re.DOTALL)
     
-    # 🌟 중복 방지를 위한 사전 청소
+    # 중복 방지를 위한 강력한 태그 클리너
     body_content = re.sub(r'<!-- PROMO_BANNER_START -->.*?<!-- PROMO_BANNER_END -->', '', body_content, flags=re.DOTALL)
     body_content = re.sub(r'<!-- CATEGORY_NAV_START -->.*?<!-- CATEGORY_NAV_END -->', '', body_content, flags=re.DOTALL)
     body_content = re.sub(r'<!-- OG_CARD_START -->.*?<!-- OG_CARD_END -->', '', body_content, flags=re.DOTALL)
@@ -218,10 +220,9 @@ for p in posts:
     prev_post = cat_list[idx - 1] if idx > 0 else None
     next_post = cat_list[idx + 1] if idx >= 0 and idx < len(cat_list) - 1 else None
 
-    # 🌟 [NEW] 본문 상단에 날짜 출력 HTML 추가
     date_html = f"<!-- POST_DATE_START -->\n<div style=\"color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;\">{p['date_string']}</div>\n<!-- POST_DATE_END -->\n\n" if p['date_string'] else ""
 
-    # 🌟 [NEW] 상단 알약 카테고리 클릭 기능 및 호버 효과 부여용 자바스크립트 추가
+    # 🌟 알약 클릭 시 무조건 /log.html 로 이동하도록 고정!
     cat_script = f"""<!-- CAT_LINK_SCRIPT_START -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {{
@@ -270,7 +271,6 @@ document.addEventListener('DOMContentLoaded', function() {{
     safe_title = p['title'].replace('"', '\\"')
     new_yaml = f"---\nlayout: default\ntitle: \"{safe_title}\"\ncategory: '{category}'\ncover_image: '{p['cover_image']}'\ndate_string: '{p['date_string']}'\n---\n\n"
 
-    # 조립 순서: YAML 헤더 -> 스크립트 -> 날짜 -> 본문 -> OG카드 배너 -> 이전/다음글
     with open(p['filepath'], 'w', encoding='utf-8') as f:
         f.write(new_yaml + cat_script + date_html + p['body_content'] + global_promo_html + nav_html)
 
@@ -342,6 +342,7 @@ function getSortMode(cat) {
 
 function saveSortMode(cat, mode) { localStorage.setItem('brunchSort_' + cat, mode); } 
 
+// 🌟 URL에서 카테고리를 읽을 때 새롭게 바뀐 log.html 기준으로 읽어옵니다.
 const urlParams = new URLSearchParams(window.location.search); const catParam = urlParams.get('cat'); if (catParam) { const targetBtn = Array.from(filterBtns).find(b => b.getAttribute('data-filter') === catParam); if (targetBtn) { filterBtns.forEach(b => b.classList.remove('active')); targetBtn.classList.add('active'); currentFilter = catParam; } } 
 
 let sortMode = getSortMode(currentFilter); 
@@ -362,4 +363,4 @@ const observer = new IntersectionObserver(entries => { entries.forEach(entry => 
 with open(index_file, 'w', encoding='utf-8') as f:
     f.write(html_header + html_body)
 
-print("✅ 상단 카테고리 링크 연결 및 본문 상단 날짜 자동 출력 완료!")
+print("✅ 블로그 홈 링크(log.html) 복구 및 찌꺼기 방지 배포 완료!")
