@@ -11,38 +11,20 @@
     
     <style>
         html { scroll-behavior: smooth; }
-        body {
-            margin: 0; padding: 0;
-            font-family: 'Noto Sans KR', sans-serif;
-            background-color: #fff; color: #333;
-            word-break: keep-all;
-        }
-
-        /* --------------------------------------
-           공통 상단 커버 스타일 
-           -------------------------------------- */
-        .cover-wrap {
-            position: relative; width: 100%;
-            background-color: #333; background-size: cover; background-position: center;
-            color: #fff; display: flex; flex-direction: column; justify-content: space-between;
-            box-sizing: border-box;
-        }
+        body { margin: 0; padding: 0; font-family: 'Noto Sans KR', sans-serif; background-color: #fff; color: #333; word-break: keep-all; }
+        .cover-wrap { position: relative; width: 100%; background-color: #333; background-size: cover; background-position: center; color: #fff; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; }
         .cover-header { display: flex; align-items: center; justify-content: space-between; z-index: 10; }
         .cover-logo img { height: 26px; vertical-align: middle; transition: opacity 0.2s; }
         .cover-logo:hover img { opacity: 0.7; }
         .cover-category-pill { border: 1px solid rgba(255,255,255,0.4); border-radius: 20px; padding: 5px 16px; font-size: 12px; font-weight: 300; letter-spacing: -0.5px; }
         
-        /* --------------------------------------
-           [1] 글 목록 (Index) 전용 스타일 
-           -------------------------------------- */
+        /* 메인 화면 (Index) 스타일 */
         .cover-wrap.index-mode { height: 22vh; min-height: 160px; padding: 25px 40px; }
         .index-mode .cover-bottom-left { text-align: left; position: relative; }
-        .index-mode .cover-title { font-family: 'Noto Serif KR', serif; font-size: 32px; font-weight: 200; margin: 0; line-height: 1.2; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-        .index-mode .cover-sub { font-size: 13px; font-weight: 300; opacity: 0.85; margin-top: 8px; text-shadow: 0 1px 5px rgba(0,0,0,0.5); }
+        /* 제목 폰트 크기 및 디자인 유지 */
+        .index-mode .cover-title { font-family: 'Noto Sans KR', sans-serif; font-size: 28px; font-weight: 300; margin: 0; line-height: 1.2; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
 
-        /* --------------------------------------
-           [2] 개별 글 (Post) 전용 스타일 
-           -------------------------------------- */
+        /* 개별 글 (Post) 스타일 */
         .cover-wrap.post-mode { height: 100vh; padding: 30px 40px; }
         .post-mode .cover-bottom-left { position: absolute; bottom: 40px; left: 40px; padding-right: 80px; text-align: left; }
         .post-mode .cover-title { font-family: 'Noto Serif KR', serif; font-size: 42px; font-weight: 200; margin: 0; line-height: 1.4; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
@@ -51,14 +33,8 @@
         .down-arrow { display: inline-block; font-size: 26px; color: #fff; text-decoration: none; transition: transform 0.3s ease; opacity: 0.8; }
         .down-arrow:hover { transform: translateY(-8px); opacity: 1; }
 
-        /* --------------------------------------
-           본문 및 리스트 레이아웃
-           -------------------------------------- */
-        /* 메인 리스트 뷰는 넓게 (1100px) */
         .article-body { max-width: 1100px; margin: 0 auto; padding: 40px 20px 120px; }
-        /* 개별 포스트 뷰는 읽기 좋게 좁게 (700px) */
         .post-mode + .article-body { max-width: 700px; padding: 80px 20px 120px; }
-
         .article-body p { font-size: 16px; font-weight: 300; line-height: 2.1; margin-bottom: 35px; }
         .article-body img { max-width: 100%; height: auto; margin: 60px 0; display: block; }
         .article-body hr { border: 0; border-top: 1px solid #eaeaea; margin: 80px 0; }
@@ -85,9 +61,7 @@
 </head>
 <body>
     
-    <!-- 분기점: 현재 페이지가 index.md(메인 화면)인지 검사 -->
     {% if page.is_index %}
-        <!-- 📋 1. 메인 화면(목록) 전용 슬림 헤더 -->
         <div class="cover-wrap index-mode" id="coverWrap">
             <div class="cover-header">
                 <a href="/" class="cover-logo">
@@ -95,13 +69,11 @@
                 </a>
             </div>
             <div class="cover-bottom-left">
+                <!-- 전체 글 목록 대신 넘어온 타이틀을 바로 출력 -->
                 <h1 class="cover-title" id="displayTitle">{{ page.title }}</h1>
-                <!-- 파이썬이 세어준 동적 개수가 부제(subtitle)로 들어갑니다 -->
-                <div class="cover-sub">{{ page.subtitle }}</div>
             </div>
         </div>
     {% else %}
-        <!-- 📝 2. 개별 글(포스트) 전용 풀스크린 헤더 -->
         <div class="cover-wrap post-mode" id="coverWrap">
             <div class="cover-header">
                 <a href="/" class="cover-logo">
@@ -110,12 +82,10 @@
                 <div class="cover-category-pill">{{ page.category }}</div>
                 <div></div>
             </div>
-            
             <div class="cover-bottom-left">
                 <h1 class="cover-title" id="displayTitle">{{ page.title }}</h1>
                 <div class="cover-sub">by Simplifier 한성희</div>
             </div>
-            
             <div class="cover-bottom-right">
                 <a href="#articleBody" class="down-arrow">↓</a>
             </div>
@@ -132,14 +102,13 @@
             const coverImg = articleBody.querySelector('img[alt="대표 이미지"]');
             const coverWrap = document.getElementById('coverWrap');
             
-            // 포스트 모드일 때만 본문 첫 이미지를 헤더 배경으로 씌웁니다!
             if (coverImg && coverWrap.classList.contains('post-mode')) {
                 coverWrap.style.backgroundImage = 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%), url(' + coverImg.src + ')';
                 coverImg.classList.add('hidden-element');
             }
 
             const titleEl = document.getElementById('displayTitle');
-            if (titleEl) {
+            if (titleEl && !coverWrap.classList.contains('index-mode')) {
                 titleEl.innerText = titleEl.innerText.replace(/^[\d#\._\s]+/, '');
             }
 

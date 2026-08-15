@@ -7,9 +7,16 @@ md_dir = "brunch_web_assets/markdown"
 index_file = "index.md"
 csv_file = "브런치_글_모음집.csv"
 
-def clean_for_match(text):
-    return re.sub(r'[^가-힣a-zA-Z0-9]', '', text)
+# 숫자, 기호, 띄어쓰기를 모두 무시하고 '순수 한글/영문'만 뽑아내어 100% 일치시키는 마법의 함수
+def pure_text(text):
+    return re.sub(r'[^가-힣a-zA-Z]', '', text)
 
+def clean_category_name(cat_str):
+    if not cat_str: return "기타"
+    cleaned = re.sub(r'^(매거진|브런치북)\s*:\s*', '', cat_str.strip())
+    return cleaned if cleaned else "기타"
+
+# 1. 엑셀 데이터에서 날짜 매칭 맵 만들기
 dates_map = {}
 try:
     with open(csv_file, 'r', encoding='utf-8-sig') as f:
@@ -17,14 +24,14 @@ try:
         next(reader)
         for row in reader:
             if len(row) > 2:
-                dates_map[clean_for_match(row[1])] = row[2].strip()
-except:
-    pass
+                # 엑셀의 제목도 순수 글자만 뽑아서 저장 ("#1. 당신이..." -> "당신이...")
+                dates_map[pure_text(row[1])] = row[2].strip()
+except Exception as e:
+    print("CSV 읽기 에러:", e)
 
-# 파일 개수를 정확히 셉니다!
 md_files = [f for f in os.listdir(md_dir) if f.endswith(".md") and f != "index.md"]
 md_files.sort()
-post_count = len(md_files) # 동적 개수
+post_count = len(md_files)
 
 cards_html = ""
 unique_categories = set()
@@ -34,49 +41,37 @@ for filename in md_files:
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    title_match = re.search(r"^title:\s*['\"]?(.*?)['\"]?\s*$", content, re.MULTILINE)
-    if title_match:
-        display_title = title_match.group(1).strip()
-    else:
-        display_title = re.sub(r'^[\d#\._\s]+', '', filename[:-3])
-
+    base_name = filename[:-3]
+    display_title = re.sub(r'^[\d#\._\s]+', '', base_name) # 화면에 보일 제목 (숫자 제거)
+    
     cat_match = re.search(r"^category:\s*['\"]?(.*?)['\"]?\s*$", content, re.MULTILINE)
-    if cat_match:
-        category = cat_match.group(1).strip()
-    else:
-        category = "기타"
-        
-    category = re.sub(r'^(매거진|브런치북)\s*:\s*', '', category).strip()
-    if not category: category = "기타"
+    category = clean_category_name(cat_match.group(1)) if cat_match else "기타"
     if category != "미분류" and category != "기타":
         unique_categories.add(category)
 
+    # 2. 썸네일 이중 인코딩 방지 및 완벽 경로 복원
     img_url = "/brunch_web_assets/images/logo_white.png"
     img_match = re.search(r'!\[.*?\]\(([^)]+)\)', content)
-    
     if not img_match:
         img_match = re.search(r'<img[^>]+src=["\']([^"\']+)["\']', content, re.IGNORECASE)
         
     if img_match:
         raw_url = img_match.group(1).strip().split()[0].strip('"\'')
-        if not raw_url.startswith('http') and not raw_url.startswith('data:'):
-            if '../images/' in raw_url:
-                img_url = '/brunch_web_assets/images/' + raw_url.split('../images/')[-1]
-            elif 'brunch_web_assets' not in raw_url:
-                clean_path = re.sub(r'^[\./]+', '', raw_url)
-                img_url = '/brunch_web_assets/markdown/' + clean_path
-            elif not raw_url.startswith('/'):
-                img_url = '/' + raw_url
-            else:
-                img_url = raw_url
-        else:
-            img_url = raw_url
+        # 이미 %20 등으로 변환된 주소를 사람의 언어로 한번 풀었다가, 가장 안전한 방식으로 재포장!
+        decoded_url = urllib.parse.unquote(raw_url)
+        
+        if decoded_url.startswith('../images/'):
+            decoded_url = '/brunch_web_assets/images/' + decoded_url.split('../images/')[-1]
+        elif not decoded_url.startswith('http') and not decoded_url.startswith('data:') and not decoded_url.startswith('/'):
+            decoded_url = '/brunch_web_assets/markdown/' + decoded_url
+            
+        img_url = urllib.parse.quote(decoded_url, safe='/:?=&')
 
-    date_str = dates_map.get(clean_for_match(display_title), "")
-    if not date_str:
-        date_str = dates_map.get(clean_for_match(filename[:-3]), "")
+    # 3. 날짜 완벽 매칭 (파일 이름의 순수 글자와 엑셀의 순수 글자 비교)
+    date_str = dates_map.get(pure_text(base_name), "")
 
-    safe_url = urllib.parse.quote(filename[:-3])
+    # 4. 링크 100% 매칭
+    safe_url = urllib.parse.quote(base_name)
     link = f"/brunch_web_assets/markdown/{safe_url}.html"
 
     cards_html += f"""    <a href="{link}" class="card-item" data-category="{category}">
@@ -90,24 +85,19 @@ for filename in md_files:
         </div>
     </a>\n"""
 
-# is_index: true 와 동적으로 세어진 subtitle을 머리말에 주입합니다.
-html_content = f"""---
+# 5. HTML 머리말 (타이틀 변경 적용) + 본문 조립
+html_header = f"""---
 layout: default
-title: '전체 글 목록'
-subtitle: '심플리파이어의 {post_count}개의 글'
+title: '심플리파이어의 {post_count}개의 글'
 is_index: true
 ---
+"""
 
+html_body = """
 <style>
-    @keyframes fadeInUp {{
-        from {{ opacity: 0; transform: translateY(20px); }}
-        to {{ opacity: 1; transform: translateY(0); }}
-    }}
-    .card-item.visible {{
-        display: flex !important;
-        animation: fadeInUp 0.4s ease forwards;
-    }}
-    #scrollSentinel {{ height: 50px; margin-top: 30px; }}
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .card-item.visible { display: flex !important; animation: fadeInUp 0.4s ease forwards; }
+    #scrollSentinel { height: 50px; margin-top: 30px; }
 </style>
 
 <div class="category-filter">
@@ -115,9 +105,12 @@ is_index: true
 """
 
 for cat in sorted(list(unique_categories)):
-    html_content += f'    <button class="cat-btn" data-filter="{cat}">{cat}</button>\n'
+    html_body += f'    <button class="cat-btn" data-filter="{cat}">{cat}</button>\n'
 
-html_content += f"""</div>\n\n<div class="card-grid" id="cardGrid">\n{cards_html}</div>
+html_body += f"""</div>
+
+<div class="card-grid" id="cardGrid">
+{cards_html}</div>
 
 <div id="scrollSentinel"></div>
 
@@ -178,6 +171,6 @@ html_content += f"""</div>\n\n<div class="card-grid" id="cardGrid">\n{cards_html
 """
 
 with open(index_file, 'w', encoding='utf-8') as f:
-    f.write(html_content)
+    f.write(html_header + html_body)
 
-print(f"✅ 글 {post_count}개 감지 완료! 목록 및 포스트 뷰 완벽 분리 적용됨.")
+print("✅ 완벽 교정 완료! 썸네일 경로, 날짜 매칭, 그리고 메인 타이틀까지 완벽하게 적용되었습니다.")

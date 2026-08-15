@@ -1,19 +1,12 @@
 ---
 layout: default
-title: '전체 글 목록'
-subtitle: '심플리파이어의 608개의 글'
+title: '심플리파이어의 608개의 글'
 is_index: true
 ---
 
 <style>
-    @keyframes fadeInUp {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    .card-item.visible {
-        display: flex !important;
-        animation: fadeInUp 0.4s ease forwards;
-    }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .card-item.visible { display: flex !important; animation: fadeInUp 0.4s ease forwards; }
     #scrollSentinel { height: 50px; margin-top: 30px; }
 </style>
 
@@ -40,17 +33,17 @@ is_index: true
 
 <div class="card-grid" id="cardGrid">
     <a href="/brunch_web_assets/markdown/001_1.%20%EB%8B%B9%EC%8B%A0%EC%9D%B4%20%EC%98%A4%EB%8A%98%20%EB%88%84%EB%A5%B8%20%EC%B2%AB%20%EB%B2%88%EC%A7%B8%20%EB%B2%84%ED%8A%BC.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/001_1.%2520%25EB%258B%25B9%25EC%258B%25A0%25EC%259D%25B4%2520%25EC%2598%25A4%25EB%258A%2598%2520%25EB%2588%2584%25EB%25A5%25B8%2520%25EC%25B2%25AB%2520%25EB%25B2%2588%25EC%25A7%25B8%2520%25EB%25B2%2584%25ED%258A%25BC_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/001_1.%20%EB%8B%B9%EC%8B%A0%EC%9D%B4%20%EC%98%A4%EB%8A%98%20%EB%88%84%EB%A5%B8%20%EC%B2%AB%20%EB%B2%88%EC%A7%B8%20%EB%B2%84%ED%8A%BC_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
                 <h3 class="card-title">당신이 오늘 누른 첫 번째 버튼</h3>
             </div>
-            <div class="card-date"></div>
+            <div class="card-date">Aug 12. 2026</div>
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/002_%EC%98%A4%EB%94%94%EC%84%B8%EC%9D%B4%2C%20%EB%A7%A4%EC%9A%B0%20%EC%82%AC%EC%A0%81%EC%9D%B8%20%EA%B4%80%EB%9E%8C%ED%8F%89.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/002_%25EC%2598%25A4%25EB%2594%2594%25EC%2584%25B8%25EC%259D%25B4%252C%2520%25EB%25A7%25A4%25EC%259A%25B0%2520%25EC%2582%25AC%25EC%25A0%2581%25EC%259D%25B8%2520%25EA%25B4%2580%25EB%259E%258C%25ED%258F%2589_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/002_%EC%98%A4%EB%94%94%EC%84%B8%EC%9D%B4%2C%20%EB%A7%A4%EC%9A%B0%20%EC%82%AC%EC%A0%81%EC%9D%B8%20%EA%B4%80%EB%9E%8C%ED%8F%89_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -60,7 +53,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/003_%ED%9A%8C%EC%9D%98%EC%8B%A4%EC%97%90%EC%84%9C%20%EB%AA%A9%EC%86%8C%EB%A6%AC%EA%B0%80%20%ED%81%B0%20%EC%82%AC%EB%9E%8C%EC%9D%B4%20%EA%B0%80%EC%9E%A5%20%EC%9C%84%ED%97%98%ED%95%A0%20%EC%88%98%20%EC%9E%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/003_%25ED%259A%258C%25EC%259D%2598%25EC%258B%25A4%25EC%2597%2590%25EC%2584%259C%2520%25EB%25AA%25A9%25EC%2586%258C%25EB%25A6%25AC%25EA%25B0%2580%2520%25ED%2581%25B0%2520%25EC%2582%25AC%25EB%259E%258C%25EC%259D%25B4%2520%25EA%25B0%2580%25EC%259E%25A5%2520%25EC%259C%2584%25ED%2597%2598%25ED%2595%25A0%2520%25EC%2588%2598%2520%25EC%259E%2588%25EB%258B%25A4_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/003_%ED%9A%8C%EC%9D%98%EC%8B%A4%EC%97%90%EC%84%9C%20%EB%AA%A9%EC%86%8C%EB%A6%AC%EA%B0%80%20%ED%81%B0%20%EC%82%AC%EB%9E%8C%EC%9D%B4%20%EA%B0%80%EC%9E%A5%20%EC%9C%84%ED%97%98%ED%95%A0%20%EC%88%98%20%EC%9E%88%EB%8B%A4_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -70,7 +63,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/004_%EA%B5%BF%EB%B0%94%EC%9D%B4%20%ED%9E%88%EA%B0%80%EC%8B%9C%EB%85%B8.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/004_%25EA%25B5%25BF%25EB%25B0%2594%25EC%259D%25B4%2520%25ED%259E%2588%25EA%25B0%2580%25EC%258B%259C%25EB%2585%25B8_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/004_%EA%B5%BF%EB%B0%94%EC%9D%B4%20%ED%9E%88%EA%B0%80%EC%8B%9C%EB%85%B8_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -80,7 +73,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/005_%ED%95%A0%EB%A3%A8%EC%8B%9C%EB%84%A4%EC%9D%B4%EC%85%98%20%EC%82%AC%ED%9A%8C.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/005_%25ED%2595%25A0%25EB%25A3%25A8%25EC%258B%259C%25EB%2584%25A4%25EC%259D%25B4%25EC%2585%2598%2520%25EC%2582%25AC%25ED%259A%258C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/005_%ED%95%A0%EB%A3%A8%EC%8B%9C%EB%84%A4%EC%9D%B4%EC%85%98%20%EC%82%AC%ED%9A%8C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -90,7 +83,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/006_%EC%9E%90%EC%A0%95%EC%9D%B4%20%EA%B0%80%EA%B9%8C%EC%9B%8C%EC%A7%80%EB%8F%84%EB%A1%9D%20AI%20%EC%96%98%EA%B8%B0%EB%A5%BC%20%EC%9B%90%20%EC%97%86%EC%9D%B4%20%EB%82%98%EB%88%B4%EC%96%B4%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/006_%25EC%259E%2590%25EC%25A0%2595%25EC%259D%25B4%2520%25EA%25B0%2580%25EA%25B9%258C%25EC%259B%258C%25EC%25A7%2580%25EB%258F%2584%25EB%25A1%259D%2520AI%2520%25EC%2596%2598%25EA%25B8%25B0%25EB%25A5%25BC%2520%25EC%259B%2590%2520%25EC%2597%2586%25EC%259D%25B4%2520%25EB%2582%2598%25EB%2588%25B4%25EC%2596%25B4%25EC%259A%2594._cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/006_%EC%9E%90%EC%A0%95%EC%9D%B4%20%EA%B0%80%EA%B9%8C%EC%9B%8C%EC%A7%80%EB%8F%84%EB%A1%9D%20AI%20%EC%96%98%EA%B8%B0%EB%A5%BC%20%EC%9B%90%20%EC%97%86%EC%9D%B4%20%EB%82%98%EB%88%B4%EC%96%B4%EC%9A%94._cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -100,7 +93,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/007_%EA%B3%B5%EC%A0%80%EA%B0%80%20%EC%A2%8B%EC%9D%80%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/007_%25EA%25B3%25B5%25EC%25A0%2580%25EA%25B0%2580%2520%25EC%25A2%258B%25EC%259D%2580%2520%25EC%259D%25B4%25EC%259C%25A0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/007_%EA%B3%B5%EC%A0%80%EA%B0%80%20%EC%A2%8B%EC%9D%80%20%EC%9D%B4%EC%9C%A0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -110,7 +103,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/008_%EB%91%90%EB%B2%88%EC%A7%B8%20%EC%B1%85%20%27UX%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4%27%EC%9D%84%20%EC%B6%9C%EA%B0%84%ED%96%88%EC%8A%B5%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/008_%25EB%2591%2590%25EB%25B2%2588%25EC%25A7%25B8%2520%25EC%25B1%2585%2520%2527UX%25EC%259D%2598%2520%25EC%2596%25B8%25EC%2596%25B4%25EB%2593%25A4%2527%25EC%259D%2584%2520%25EC%25B6%259C%25EA%25B0%2584%25ED%2596%2588%25EC%258A%25B5%25EB%258B%2588%25EB%258B%25A4._cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/008_%EB%91%90%EB%B2%88%EC%A7%B8%20%EC%B1%85%20%27UX%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4%27%EC%9D%84%20%EC%B6%9C%EA%B0%84%ED%96%88%EC%8A%B5%EB%8B%88%EB%8B%A4._cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -120,7 +113,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/009_PM%EC%9D%98%20%EA%B3%A0%EC%88%98%EB%8A%94%20%EA%B0%90%EC%A0%95%EC%9D%84%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EB%8B%A4%EB%A3%B0%EA%B9%8C.html" class="card-item" data-category="Be the PO">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/009_PM%25EC%259D%2598%2520%25EA%25B3%25A0%25EC%2588%2598%25EB%258A%2594%2520%25EA%25B0%2590%25EC%25A0%2595%25EC%259D%2584%2520%25EC%2596%25B4%25EB%2596%25BB%25EA%25B2%258C%2520%25EB%258B%25A4%25EB%25A3%25B0%25EA%25B9%258C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/009_PM%EC%9D%98%20%EA%B3%A0%EC%88%98%EB%8A%94%20%EA%B0%90%EC%A0%95%EC%9D%84%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EB%8B%A4%EB%A3%B0%EA%B9%8C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">Be the PO</div>
@@ -130,7 +123,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/010_%EC%9A%B0%EB%A6%AC%EB%8A%94%20%EB%8C%80%ED%99%94%EB%A5%BC%20%ED%96%88%EC%9D%84%EA%B9%8C.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/010_%25EC%259A%25B0%25EB%25A6%25AC%25EB%258A%2594%2520%25EB%258C%2580%25ED%2599%2594%25EB%25A5%25BC%2520%25ED%2596%2588%25EC%259D%2584%25EA%25B9%258C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/010_%EC%9A%B0%EB%A6%AC%EB%8A%94%20%EB%8C%80%ED%99%94%EB%A5%BC%20%ED%96%88%EC%9D%84%EA%B9%8C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -140,7 +133,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/011_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%ED%97%A4%EC%9D%BC%EB%A9%94%EB%A6%AC.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/011_%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%25EC%2597%2585%2520%25ED%2597%25A4%25EC%259D%25BC%25EB%25A9%2594%25EB%25A6%25AC_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/011_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%ED%97%A4%EC%9D%BC%EB%A9%94%EB%A6%AC_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -150,7 +143,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/012_%EB%88%84%EA%B0%80%20%EC%A3%BC%EC%9D%B8%EC%9D%B8%EA%B0%80%EC%9A%94.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/012_%25EB%2588%2584%25EA%25B0%2580%2520%25EC%25A3%25BC%25EC%259D%25B8%25EC%259D%25B8%25EA%25B0%2580%25EC%259A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/012_%EB%88%84%EA%B0%80%20%EC%A3%BC%EC%9D%B8%EC%9D%B8%EA%B0%80%EC%9A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -160,7 +153,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/013_%EC%9D%BC%EC%A3%BC%EC%9D%BC%EC%97%90%20%EB%A9%B0%EC%B9%A0%EB%A7%8C%20%EC%9D%BC%ED%95%98%EA%B3%A0%20%EC%8B%B6%EC%96%B4%EC%9A%94.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/013_%25EC%259D%25BC%25EC%25A3%25BC%25EC%259D%25BC%25EC%2597%2590%2520%25EB%25A9%25B0%25EC%25B9%25A0%25EB%25A7%258C%2520%25EC%259D%25BC%25ED%2595%2598%25EA%25B3%25A0%2520%25EC%258B%25B6%25EC%2596%25B4%25EC%259A%2594._cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/013_%EC%9D%BC%EC%A3%BC%EC%9D%BC%EC%97%90%20%EB%A9%B0%EC%B9%A0%EB%A7%8C%20%EC%9D%BC%ED%95%98%EA%B3%A0%20%EC%8B%B6%EC%96%B4%EC%9A%94._cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -170,7 +163,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/014_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%2C%20%EC%8A%A4%ED%85%8C%EB%94%94%EC%85%80%EB%9F%AC%EA%B0%80%20%EB%90%98%EB%8B%A4.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/014_%25EA%25B8%25B0%25ED%259A%258D%25EC%259E%2590%25EC%259D%2598%2520%25EC%25A7%2588%25EB%25AC%25B8%25EB%25B2%2595%252C%2520%25EC%258A%25A4%25ED%2585%258C%25EB%2594%2594%25EC%2585%2580%25EB%259F%25AC%25EA%25B0%2580%2520%25EB%2590%2598%25EB%258B%25A4._cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/014_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%2C%20%EC%8A%A4%ED%85%8C%EB%94%94%EC%85%80%EB%9F%AC%EA%B0%80%20%EB%90%98%EB%8B%A4._cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -180,7 +173,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/015_%EC%BB%A4%EB%A6%AC%EC%96%B4%EA%B0%80%20%EA%BC%AC%EC%9D%B4%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="유니콘의 리더십">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/015_%25EC%25BB%25A4%25EB%25A6%25AC%25EC%2596%25B4%25EA%25B0%2580%2520%25EA%25BC%25AC%25EC%259D%25B4%25EB%258A%2594%2520%25EC%259D%25B4%25EC%259C%25A0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/015_%EC%BB%A4%EB%A6%AC%EC%96%B4%EA%B0%80%20%EA%BC%AC%EC%9D%B4%EB%8A%94%20%EC%9D%B4%EC%9C%A0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">유니콘의 리더십</div>
@@ -190,7 +183,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/016_%EB%82%B4%EA%B0%80%20%EC%9C%A4%EC%A3%BC%EB%AA%A8%EB%A5%BC%20%EC%9D%91%EC%9B%90%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/016_%25EB%2582%25B4%25EA%25B0%2580%2520%25EC%259C%25A4%25EC%25A3%25BC%25EB%25AA%25A8%25EB%25A5%25BC%2520%25EC%259D%2591%25EC%259B%2590%25ED%2595%2598%25EB%258A%2594%2520%25EC%259D%25B4%25EC%259C%25A0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/016_%EB%82%B4%EA%B0%80%20%EC%9C%A4%EC%A3%BC%EB%AA%A8%EB%A5%BC%20%EC%9D%91%EC%9B%90%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -200,7 +193,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/017_%EC%9A%94%EC%8B%9C%EA%B0%80%20%EB%A7%8C%EB%93%A0%20%20%27%EA%B7%BC%EC%84%B1%EC%9D%98%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC%27.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/017_%25EC%259A%2594%25EC%258B%259C%25EA%25B0%2580%2520%25EB%25A7%258C%25EB%2593%25A0%2520%2520%2527%25EA%25B7%25BC%25EC%2584%25B1%25EC%259D%2598%2520%25EC%258A%25A4%25EB%2585%25B8%25EC%259A%25B0%25EB%25B3%25BC%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/017_%EC%9A%94%EC%8B%9C%EA%B0%80%20%EB%A7%8C%EB%93%A0%20%20%27%EA%B7%BC%EC%84%B1%EC%9D%98%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -210,7 +203,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/018_%27%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%A6%AC%EB%8D%94%EC%9D%98%20%EC%A0%84%EB%9E%B5%EC%97%B0%EA%B5%AC%EC%86%8C%27%EB%A5%BC%20%EC%8B%9C%EC%9E%91%ED%95%A9%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/018_%2527%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%25EC%2597%2585%2520%25EB%25A6%25AC%25EB%258D%2594%25EC%259D%2598%2520%25EC%25A0%2584%25EB%259E%25B5%25EC%2597%25B0%25EA%25B5%25AC%25EC%2586%258C%2527%25EB%25A5%25BC%2520%25EC%258B%259C%25EC%259E%2591%25ED%2595%25A9%25EB%258B%2588%25EB%258B%25A4._cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/018_%27%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%A6%AC%EB%8D%94%EC%9D%98%20%EC%A0%84%EB%9E%B5%EC%97%B0%EA%B5%AC%EC%86%8C%27%EB%A5%BC%20%EC%8B%9C%EC%9E%91%ED%95%A9%EB%8B%88%EB%8B%A4._cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -220,7 +213,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/019_%EB%8B%A4%EC%98%81%EB%8F%84%20%EB%AA%B0%EB%9E%90%EB%8D%98%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/019_%25EB%258B%25A4%25EC%2598%2581%25EB%258F%2584%2520%25EB%25AA%25B0%25EB%259E%2590%25EB%258D%2598%2520%25EC%258A%25A4%25EB%2585%25B8%25EC%259A%25B0%25EB%25B3%25BC_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/019_%EB%8B%A4%EC%98%81%EB%8F%84%20%EB%AA%B0%EB%9E%90%EB%8D%98%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -230,7 +223,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/020_%EC%A1%B0%EC%9A%A9%ED%95%84%EC%9D%98%20%EC%9C%84%EB%8C%80%ED%95%9C%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/020_%25EC%25A1%25B0%25EC%259A%25A9%25ED%2595%2584%25EC%259D%2598%2520%25EC%259C%2584%25EB%258C%2580%25ED%2595%259C%2520%25EC%258A%25A4%25EB%2585%25B8%25EC%259A%25B0%25EB%25B3%25BC_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/020_%EC%A1%B0%EC%9A%A9%ED%95%84%EC%9D%98%20%EC%9C%84%EB%8C%80%ED%95%9C%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -240,7 +233,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/021_%EB%B0%B1%ED%98%84%EC%A7%84%EC%9D%B4%20%EB%A7%90%ED%95%98%EB%8A%94%20%EC%9D%B8%EC%83%9D%EC%9D%98%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/021_%25EB%25B0%25B1%25ED%2598%2584%25EC%25A7%2584%25EC%259D%25B4%2520%25EB%25A7%2590%25ED%2595%2598%25EB%258A%2594%2520%25EC%259D%25B8%25EC%2583%259D%25EC%259D%2598%2520%25EC%258A%25A4%25EB%2585%25B8%25EC%259A%25B0%25EB%25B3%25BC_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/021_%EB%B0%B1%ED%98%84%EC%A7%84%EC%9D%B4%20%EB%A7%90%ED%95%98%EB%8A%94%20%EC%9D%B8%EC%83%9D%EC%9D%98%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -250,7 +243,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/022_%EC%86%90%ED%9D%A5%EB%AF%BC%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EB%A6%AC%EB%8D%94%EC%8B%AD%EC%9D%98%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/022_%25EC%2586%2590%25ED%259D%25A5%25EB%25AF%25BC%25EC%259D%25B4%2520%25EB%25A7%258C%25EB%2593%25A0%2520%25EB%25A6%25AC%25EB%258D%2594%25EC%258B%25AD%25EC%259D%2598%2520%25EC%258A%25A4%25EB%2585%25B8%25EC%259A%25B0%25EB%25B3%25BC_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/022_%EC%86%90%ED%9D%A5%EB%AF%BC%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EB%A6%AC%EB%8D%94%EC%8B%AD%EC%9D%98%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -260,7 +253,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/023_%EC%96%B4%EB%96%A4%20%EC%95%A1%EC%85%80%EB%9F%AC%EB%A0%88%EC%9D%B4%ED%84%B0%EA%B0%80%20%EB%82%98%EC%97%90%EA%B2%8C%20%EB%A7%9E%EC%9D%84%EA%B9%8C.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/023_%25EC%2596%25B4%25EB%2596%25A4%2520%25EC%2595%25A1%25EC%2585%2580%25EB%259F%25AC%25EB%25A0%2588%25EC%259D%25B4%25ED%2584%25B0%25EA%25B0%2580%2520%25EB%2582%2598%25EC%2597%2590%25EA%25B2%258C%2520%25EB%25A7%259E%25EC%259D%2584%25EA%25B9%258C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/023_%EC%96%B4%EB%96%A4%20%EC%95%A1%EC%85%80%EB%9F%AC%EB%A0%88%EC%9D%B4%ED%84%B0%EA%B0%80%20%EB%82%98%EC%97%90%EA%B2%8C%20%EB%A7%9E%EC%9D%84%EA%B9%8C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">대한민국 스타트업 미국진출을 묻다</div>
@@ -270,7 +263,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/024_%27%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%27%EC%9D%B4%202%EC%87%84%EC%97%90%20%EB%93%A4%EC%96%B4%EA%B0%91%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/024_%2527%25EA%25B8%25B0%25ED%259A%258D%25EC%259E%2590%25EC%259D%2598%2520%25EC%25A7%2588%25EB%25AC%25B8%25EB%25B2%2595%2527%25EC%259D%25B4%25202%25EC%2587%2584%25EC%2597%2590%2520%25EB%2593%25A4%25EC%2596%25B4%25EA%25B0%2591%25EB%258B%2588%25EB%258B%25A4._cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/024_%27%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%27%EC%9D%B4%202%EC%87%84%EC%97%90%20%EB%93%A4%EC%96%B4%EA%B0%91%EB%8B%88%EB%8B%A4._cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -280,7 +273,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/025_%EC%9A%B0%EC%A6%88%EA%B0%80%20%EC%8F%98%EC%95%84%EC%98%AC%EB%A6%B0%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/025_%25EC%259A%25B0%25EC%25A6%2588%25EA%25B0%2580%2520%25EC%258F%2598%25EC%2595%2584%25EC%2598%25AC%25EB%25A6%25B0%2520%25EC%258A%25A4%25EB%2585%25B8%25EC%259A%25B0%25EB%25B3%25BC_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/025_%EC%9A%B0%EC%A6%88%EA%B0%80%20%EC%8F%98%EC%95%84%EC%98%AC%EB%A6%B0%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -290,7 +283,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/026_%ED%98%BC%EC%9E%90%EC%84%9C%EB%8A%94%20%EB%B6%88%EA%B0%80%EB%8A%A5%ED%95%98%EB%8B%A4%2C%20%EB%AF%B8%EA%B5%AD%20%ED%8C%8C%ED%8A%B8%EB%84%88%EB%A5%BC%20%EC%B0%BE%EB%8A%94%203%EA%B0%80%EC%A7%80%20%EA%B2%BD%EB%A1%9C.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/026_%25ED%2598%25BC%25EC%259E%2590%25EC%2584%259C%25EB%258A%2594%2520%25EB%25B6%2588%25EA%25B0%2580%25EB%258A%25A5%25ED%2595%2598%25EB%258B%25A4%252C%2520%25EB%25AF%25B8%25EA%25B5%25AD%2520%25ED%258C%258C%25ED%258A%25B8%25EB%2584%2588%25EB%25A5%25BC%2520%25EC%25B0%25BE%25EB%258A%2594%25203%25EA%25B0%2580%25EC%25A7%2580%2520%25EA%25B2%25BD%25EB%25A1%259C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/026_%ED%98%BC%EC%9E%90%EC%84%9C%EB%8A%94%20%EB%B6%88%EA%B0%80%EB%8A%A5%ED%95%98%EB%8B%A4%2C%20%EB%AF%B8%EA%B5%AD%20%ED%8C%8C%ED%8A%B8%EB%84%88%EB%A5%BC%20%EC%B0%BE%EB%8A%94%203%EA%B0%80%EC%A7%80%20%EA%B2%BD%EB%A1%9C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">대한민국 스타트업 미국진출을 묻다</div>
@@ -300,7 +293,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/027_AI%EC%9D%98%20%EB%85%B8%EC%98%88%EA%B0%80%20%EC%95%84%EB%8B%8C%20%EC%A3%BC%EC%9D%B8%EC%9D%B4%20%EB%90%98%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="Be the PO">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/027_AI%25EC%259D%2598%2520%25EB%2585%25B8%25EC%2598%2588%25EA%25B0%2580%2520%25EC%2595%2584%25EB%258B%258C%2520%25EC%25A3%25BC%25EC%259D%25B8%25EC%259D%25B4%2520%25EB%2590%2598%25EB%258A%2594%2520%25EB%25B2%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/027_AI%EC%9D%98%20%EB%85%B8%EC%98%88%EA%B0%80%20%EC%95%84%EB%8B%8C%20%EC%A3%BC%EC%9D%B8%EC%9D%B4%20%EB%90%98%EB%8A%94%20%EB%B2%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">Be the PO</div>
@@ -310,7 +303,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/028_%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%EA%B0%80%20%EB%8B%B9%EC%8B%A0%EC%9D%98%20%EB%A7%88%EC%9D%8C%EC%9D%84%20%EC%9D%BD%EB%8A%94%20%EB%B0%A9%EB%B2%95.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/028_%25EB%2584%25B7%25ED%2594%258C%25EB%25A6%25AD%25EC%258A%25A4%25EA%25B0%2580%2520%25EB%258B%25B9%25EC%258B%25A0%25EC%259D%2598%2520%25EB%25A7%2588%25EC%259D%258C%25EC%259D%2584%2520%25EC%259D%25BD%25EB%258A%2594%2520%25EB%25B0%25A9%25EB%25B2%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/028_%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%EA%B0%80%20%EB%8B%B9%EC%8B%A0%EC%9D%98%20%EB%A7%88%EC%9D%8C%EC%9D%84%20%EC%9D%BD%EB%8A%94%20%EB%B0%A9%EB%B2%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -320,7 +313,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/029_%ED%99%95%EC%9E%A5%EC%9D%B4%20%EB%B6%88%EA%B0%80%EB%8A%A5%ED%95%9C%20%EC%9D%BC%EC%9D%84%20%ED%95%98%EC%84%B8%EC%9A%94.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/029_%25ED%2599%2595%25EC%259E%25A5%25EC%259D%25B4%2520%25EB%25B6%2588%25EA%25B0%2580%25EB%258A%25A5%25ED%2595%259C%2520%25EC%259D%25BC%25EC%259D%2584%2520%25ED%2595%2598%25EC%2584%25B8%25EC%259A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/029_%ED%99%95%EC%9E%A5%EC%9D%B4%20%EB%B6%88%EA%B0%80%EB%8A%A5%ED%95%9C%20%EC%9D%BC%EC%9D%84%20%ED%95%98%EC%84%B8%EC%9A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -330,7 +323,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/030_%EC%A0%9C%ED%92%88%EA%B2%BD%ED%97%98%EC%9D%B4%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EC%82%AC%ED%99%9C%EC%9D%84%20%EA%B0%80%EB%A5%B4%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="스타트업의 전략들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/030_%25EC%25A0%259C%25ED%2592%2588%25EA%25B2%25BD%25ED%2597%2598%25EC%259D%25B4%2520%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%25EC%2597%2585%25EC%259D%2598%2520%25EC%2582%25AC%25ED%2599%259C%25EC%259D%2584%2520%25EA%25B0%2580%25EB%25A5%25B4%25EB%258A%2594%2520%25EC%259D%25B4%25EC%259C%25A0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/030_%EC%A0%9C%ED%92%88%EA%B2%BD%ED%97%98%EC%9D%B4%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EC%82%AC%ED%99%9C%EC%9D%84%20%EA%B0%80%EB%A5%B4%EB%8A%94%20%EC%9D%B4%EC%9C%A0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업의 전략들</div>
@@ -340,7 +333,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/031_%EC%B9%B4%EB%8D%94%EA%B0%80%EB%93%A0%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/031_%25EC%25B9%25B4%25EB%258D%2594%25EA%25B0%2580%25EB%2593%25A0%25EC%259D%25B4%2520%25EB%25A7%258C%25EB%2593%25A0%2520%25EC%258A%25A4%25EB%2585%25B8%25EC%259A%25B0%25EB%25B3%25BC_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/031_%EC%B9%B4%EB%8D%94%EA%B0%80%EB%93%A0%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -350,7 +343,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/032_%ED%95%9C%EA%B5%AD%20%ED%8C%80%EC%9D%B4%20%EC%8B%A4%EB%A6%AC%EC%BD%98%EB%B0%B8%EB%A6%AC%EC%97%90%EC%84%9C%20%EC%B1%84%EC%9A%A9%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%9D%84%EA%B9%8C.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/032_%25ED%2595%259C%25EA%25B5%25AD%2520%25ED%258C%2580%25EC%259D%25B4%2520%25EC%258B%25A4%25EB%25A6%25AC%25EC%25BD%2598%25EB%25B0%25B8%25EB%25A6%25AC%25EC%2597%2590%25EC%2584%259C%2520%25EC%25B1%2584%25EC%259A%25A9%25ED%2595%25A0%2520%25EC%2588%2598%2520%25EC%259E%2588%25EC%259D%2584%25EA%25B9%258C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/032_%ED%95%9C%EA%B5%AD%20%ED%8C%80%EC%9D%B4%20%EC%8B%A4%EB%A6%AC%EC%BD%98%EB%B0%B8%EB%A6%AC%EC%97%90%EC%84%9C%20%EC%B1%84%EC%9A%A9%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%9D%84%EA%B9%8C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">대한민국 스타트업 미국진출을 묻다</div>
@@ -360,7 +353,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/033_%EC%97%90%EC%96%B4%EB%B9%84%EC%95%A4%EB%B9%84%EC%9D%98%20%EB%B6%80%ED%8A%B8%EC%8A%A4%ED%8A%B8%EB%9E%98%ED%95%91.html" class="card-item" data-category="스타트업의 전략들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/033_%25EC%2597%2590%25EC%2596%25B4%25EB%25B9%2584%25EC%2595%25A4%25EB%25B9%2584%25EC%259D%2598%2520%25EB%25B6%2580%25ED%258A%25B8%25EC%258A%25A4%25ED%258A%25B8%25EB%259E%2598%25ED%2595%2591_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/033_%EC%97%90%EC%96%B4%EB%B9%84%EC%95%A4%EB%B9%84%EC%9D%98%20%EB%B6%80%ED%8A%B8%EC%8A%A4%ED%8A%B8%EB%9E%98%ED%95%91_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업의 전략들</div>
@@ -370,17 +363,17 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/034_90%EC%B4%88%EC%9D%98%20%EA%B8%B0%EC%A0%81%2C%20%EB%A7%A5%EB%8F%84%EB%82%A0%EB%93%9C%20%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B8%8C%EC%8A%A4%EB%A3%A8%EC%9D%98%20UX.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/034_90%25EC%25B4%2588%25EC%259D%2598%2520%25EA%25B8%25B0%25EC%25A0%2581%252C%2520%25EB%25A7%25A5%25EB%258F%2584%25EB%2582%25A0%25EB%2593%259C%2520%25EB%2593%259C%25EB%259D%25BC%25EC%259D%25B4%25EB%25B8%258C%25EC%258A%25A4%25EB%25A3%25A8%25EC%259D%2598%2520UX_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/034_90%EC%B4%88%EC%9D%98%20%EA%B8%B0%EC%A0%81%2C%20%EB%A7%A5%EB%8F%84%EB%82%A0%EB%93%9C%20%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B8%8C%EC%8A%A4%EB%A3%A8%EC%9D%98%20UX_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
                 <h3 class="card-title">초의 기적, 맥도날드 드라이브스루의 UX</h3>
             </div>
-            <div class="card-date"></div>
+            <div class="card-date">Sep 10. 2025</div>
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/035_%EC%99%BC%EC%86%90%EC%9D%B4%20%ED%95%98%EB%8A%94%20%EC%9D%BC%EC%9D%84%20%EC%98%A4%EB%A5%B8%EC%86%90%EC%9D%B4%20%EB%AA%A8%EB%A5%B4%EB%8A%94%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85.html" class="card-item" data-category="성장 정체 해부학">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/035_%25EC%2599%25BC%25EC%2586%2590%25EC%259D%25B4%2520%25ED%2595%2598%25EB%258A%2594%2520%25EC%259D%25BC%25EC%259D%2584%2520%25EC%2598%25A4%25EB%25A5%25B8%25EC%2586%2590%25EC%259D%25B4%2520%25EB%25AA%25A8%25EB%25A5%25B4%25EB%258A%2594%2520%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%25EC%2597%2585_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/035_%EC%99%BC%EC%86%90%EC%9D%B4%20%ED%95%98%EB%8A%94%20%EC%9D%BC%EC%9D%84%20%EC%98%A4%EB%A5%B8%EC%86%90%EC%9D%B4%20%EB%AA%A8%EB%A5%B4%EB%8A%94%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">성장 정체 해부학</div>
@@ -390,7 +383,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/036_%EC%8A%A4%ED%8F%AC%ED%8B%B0%ED%8C%8C%EC%9D%B4%20%EB%AA%A8%EB%8D%B8%EC%9D%98%20%EC%A7%84%EC%8B%A4%2C%20%EC%99%9C%20%EB%A7%8E%EC%9D%80%20%EA%B8%B0%EC%97%85%EC%9D%B4%20%EC%8B%A4%ED%8C%A8%ED%96%88%EC%9D%84%EA%B9%8C.html" class="card-item" data-category="스타트업의 전략들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/036_%25EC%258A%25A4%25ED%258F%25AC%25ED%258B%25B0%25ED%258C%258C%25EC%259D%25B4%2520%25EB%25AA%25A8%25EB%258D%25B8%25EC%259D%2598%2520%25EC%25A7%2584%25EC%258B%25A4%252C%2520%25EC%2599%259C%2520%25EB%25A7%258E%25EC%259D%2580%2520%25EA%25B8%25B0%25EC%2597%2585%25EC%259D%25B4%2520%25EC%258B%25A4%25ED%258C%25A8%25ED%2596%2588%25EC%259D%2584%25EA%25B9%258C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/036_%EC%8A%A4%ED%8F%AC%ED%8B%B0%ED%8C%8C%EC%9D%B4%20%EB%AA%A8%EB%8D%B8%EC%9D%98%20%EC%A7%84%EC%8B%A4%2C%20%EC%99%9C%20%EB%A7%8E%EC%9D%80%20%EA%B8%B0%EC%97%85%EC%9D%B4%20%EC%8B%A4%ED%8C%A8%ED%96%88%EC%9D%84%EA%B9%8C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업의 전략들</div>
@@ -400,7 +393,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/037_%EC%8B%A4%EB%A6%AC%EC%BD%98%EB%B0%B8%EB%A6%AC%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%98%20%EA%B8%B0%EC%A4%80.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/037_%25EC%258B%25A4%25EB%25A6%25AC%25EC%25BD%2598%25EB%25B0%25B8%25EB%25A6%25AC%2520%25EB%2594%2594%25EC%259E%2590%25EC%259D%25B8%25EC%259D%2598%2520%25EA%25B8%25B0%25EC%25A4%2580_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/037_%EC%8B%A4%EB%A6%AC%EC%BD%98%EB%B0%B8%EB%A6%AC%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%98%20%EA%B8%B0%EC%A4%80_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">대한민국 스타트업 미국진출을 묻다</div>
@@ -410,7 +403,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/038_%EC%A0%9C%ED%92%88%20%EB%8B%A8%EC%88%9C%ED%99%94%EA%B0%80%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%84%B1%EA%B3%B5%EC%97%90%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/038_%25EC%25A0%259C%25ED%2592%2588%2520%25EB%258B%25A8%25EC%2588%259C%25ED%2599%2594%25EA%25B0%2580%2520%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%25EC%2597%2585%2520%25EC%2584%25B1%25EA%25B3%25B5%25EC%2597%2590%2520%25EC%25A4%2591%25EC%259A%2594%25ED%2595%259C%2520%25EC%259D%25B4%25EC%259C%25A0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/038_%EC%A0%9C%ED%92%88%20%EB%8B%A8%EC%88%9C%ED%99%94%EA%B0%80%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%84%B1%EA%B3%B5%EC%97%90%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -420,7 +413,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/039_%EC%BD%94%EC%B9%98%EA%B0%80%20%ED%96%89%EB%B3%B5%ED%95%9C%20%EC%88%9C%EA%B0%84.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/039_%25EC%25BD%2594%25EC%25B9%2598%25EA%25B0%2580%2520%25ED%2596%2589%25EB%25B3%25B5%25ED%2595%259C%2520%25EC%2588%259C%25EA%25B0%2584_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/039_%EC%BD%94%EC%B9%98%EA%B0%80%20%ED%96%89%EB%B3%B5%ED%95%9C%20%EC%88%9C%EA%B0%84_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -430,7 +423,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/040_SaaS%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EB%AF%B8%EA%B5%AD%20%EC%A7%84%EC%B6%9C%20%EC%8B%9C%20GTM%20%EC%A0%84%EB%9E%B5%20%EC%9C%A0%ED%98%95.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/040_SaaS%2520%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%25EC%2597%2585%25EC%259D%2598%2520%25EB%25AF%25B8%25EA%25B5%25AD%2520%25EC%25A7%2584%25EC%25B6%259C%2520%25EC%258B%259C%2520GTM%2520%25EC%25A0%2584%25EB%259E%25B5%2520%25EC%259C%25A0%25ED%2598%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/040_SaaS%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EB%AF%B8%EA%B5%AD%20%EC%A7%84%EC%B6%9C%20%EC%8B%9C%20GTM%20%EC%A0%84%EB%9E%B5%20%EC%9C%A0%ED%98%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">대한민국 스타트업 미국진출을 묻다</div>
@@ -440,7 +433,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/041_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%BC%EC%88%98%EB%A1%9D%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%B4%20%EB%8D%94%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0%EB%8A%94.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/041_%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%25EC%2597%2585%25EC%259D%25BC%25EC%2588%2598%25EB%25A1%259D%2520%25EB%2594%2594%25EC%259E%2590%25EC%259D%25B8%25EC%259D%25B4%2520%25EB%258D%2594%2520%25EC%25A4%2591%25EC%259A%2594%25ED%2595%259C%2520%25EC%259D%25B4%25EC%259C%25A0%25EB%258A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/041_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%BC%EC%88%98%EB%A1%9D%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%B4%20%EB%8D%94%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0%EB%8A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -450,7 +443,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/042_%EB%82%B4%EA%B0%80%20%EA%B3%B5%EB%B6%80%EB%A5%BC%20%EC%9E%98%ED%95%98%EA%B2%8C%20%EB%90%9C%20%EC%82%AC%EC%97%B0.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/042_%25EB%2582%25B4%25EA%25B0%2580%2520%25EA%25B3%25B5%25EB%25B6%2580%25EB%25A5%25BC%2520%25EC%259E%2598%25ED%2595%2598%25EA%25B2%258C%2520%25EB%2590%259C%2520%25EC%2582%25AC%25EC%2597%25B0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/042_%EB%82%B4%EA%B0%80%20%EA%B3%B5%EB%B6%80%EB%A5%BC%20%EC%9E%98%ED%95%98%EA%B2%8C%20%EB%90%9C%20%EC%82%AC%EC%97%B0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -460,7 +453,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/043_%ED%8C%8C%EC%9A%B4%EB%8D%94%EB%93%A4%EC%9D%B4%20%EC%84%B1%EC%9E%A5%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="성장 정체 해부학">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/043_%25ED%258C%258C%25EC%259A%25B4%25EB%258D%2594%25EB%2593%25A4%25EC%259D%25B4%2520%25EC%2584%25B1%25EC%259E%25A5%25EC%259D%2598%2520%25ED%2595%259C%25EA%25B3%2584%25EB%25A5%25BC%2520%25EB%25A7%258C%25EB%2593%259C%25EB%258A%2594%2520%25EC%259D%25B4%25EC%259C%25A0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/043_%ED%8C%8C%EC%9A%B4%EB%8D%94%EB%93%A4%EC%9D%B4%20%EC%84%B1%EC%9E%A5%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EC%9D%B4%EC%9C%A0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">성장 정체 해부학</div>
@@ -470,7 +463,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/044_AI%20%EC%8B%9C%EB%8C%80%20%EA%B8%B0%ED%9A%8D%EC%9E%90%2C%20%EB%94%94%EC%9E%90%EC%9D%B4%EB%84%88%2C%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EB%90%A0%EA%B9%8C.html" class="card-item" data-category="기획자로 시작하기">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/044_AI%2520%25EC%258B%259C%25EB%258C%2580%2520%25EA%25B8%25B0%25ED%259A%258D%25EC%259E%2590%252C%2520%25EB%2594%2594%25EC%259E%2590%25EC%259D%25B4%25EB%2584%2588%252C%2520%25EA%25B0%259C%25EB%25B0%259C%25EC%259E%2590%25EB%258A%2594%2520%25EC%2596%25B4%25EB%2596%25BB%25EA%25B2%258C%2520%25EB%2590%25A0%25EA%25B9%258C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/044_AI%20%EC%8B%9C%EB%8C%80%20%EA%B8%B0%ED%9A%8D%EC%9E%90%2C%20%EB%94%94%EC%9E%90%EC%9D%B4%EB%84%88%2C%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EB%90%A0%EA%B9%8C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자로 시작하기</div>
@@ -480,7 +473,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/045_%EC%99%9C%20%EC%8A%A4%ED%83%80%EB%B2%85%EC%8A%A4%EB%8A%94%20%EB%8B%A4%EB%A5%B8%20%EC%B9%B4%ED%8E%98%EC%99%80%20%EB%8B%A4%EB%A5%B4%EA%B2%8C%20%EB%8A%90%EA%BB%B4%EC%A7%88%EA%B9%8C.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/045_%25EC%2599%259C%2520%25EC%258A%25A4%25ED%2583%2580%25EB%25B2%2585%25EC%258A%25A4%25EB%258A%2594%2520%25EB%258B%25A4%25EB%25A5%25B8%2520%25EC%25B9%25B4%25ED%258E%2598%25EC%2599%2580%2520%25EB%258B%25A4%25EB%25A5%25B4%25EA%25B2%258C%2520%25EB%258A%2590%25EA%25BB%25B4%25EC%25A7%2588%25EA%25B9%258C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/045_%EC%99%9C%20%EC%8A%A4%ED%83%80%EB%B2%85%EC%8A%A4%EB%8A%94%20%EB%8B%A4%EB%A5%B8%20%EC%B9%B4%ED%8E%98%EC%99%80%20%EB%8B%A4%EB%A5%B4%EA%B2%8C%20%EB%8A%90%EA%BB%B4%EC%A7%88%EA%B9%8C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -490,7 +483,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/046_%ED%9B%84%EB%B0%B0%EA%B0%80%20%EC%84%A0%EB%B0%B0%EA%B0%80%20%EB%90%98%EB%8B%A4.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/046_%25ED%259B%2584%25EB%25B0%25B0%25EA%25B0%2580%2520%25EC%2584%25A0%25EB%25B0%25B0%25EA%25B0%2580%2520%25EB%2590%2598%25EB%258B%25A4._cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/046_%ED%9B%84%EB%B0%B0%EA%B0%80%20%EC%84%A0%EB%B0%B0%EA%B0%80%20%EB%90%98%EB%8B%A4._cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -500,7 +493,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/047_%EC%8B%9C%EB%A6%AC%EC%A6%88B%20%EC%9D%B4%ED%9B%84%2C%20%EC%99%9C%20%EB%8D%94%20%EC%96%B4%EB%A0%A4%EC%9B%8C%EC%A7%88%EA%B9%8C.html" class="card-item" data-category="성장 정체 해부학">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/047_%25EC%258B%259C%25EB%25A6%25AC%25EC%25A6%2588B%2520%25EC%259D%25B4%25ED%259B%2584%252C%2520%25EC%2599%259C%2520%25EB%258D%2594%2520%25EC%2596%25B4%25EB%25A0%25A4%25EC%259B%258C%25EC%25A7%2588%25EA%25B9%258C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/047_%EC%8B%9C%EB%A6%AC%EC%A6%88B%20%EC%9D%B4%ED%9B%84%2C%20%EC%99%9C%20%EB%8D%94%20%EC%96%B4%EB%A0%A4%EC%9B%8C%EC%A7%88%EA%B9%8C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">성장 정체 해부학</div>
@@ -510,7 +503,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/048_%EB%AF%B8%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%EC%99%9C%20%EB%8B%A4%20%27%EB%AF%B8%EC%85%98%27%EB%B6%80%ED%84%B0%20%EB%A7%90%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/048_%25EB%25AF%25B8%25EA%25B5%25AD%2520%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%25EC%2597%2585%25EC%259D%2580%2520%25EC%2599%259C%2520%25EB%258B%25A4%2520%2527%25EB%25AF%25B8%25EC%2585%2598%2527%25EB%25B6%2580%25ED%2584%25B0%2520%25EB%25A7%2590%25ED%2595%25A0%25EA%25B9%258C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/048_%EB%AF%B8%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%EC%99%9C%20%EB%8B%A4%20%27%EB%AF%B8%EC%85%98%27%EB%B6%80%ED%84%B0%20%EB%A7%90%ED%95%A0%EA%B9%8C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">대한민국 스타트업 미국진출을 묻다</div>
@@ -520,7 +513,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/049_%EA%B0%9C%EA%B5%AC%EB%A6%AC%EA%B0%80%20%EC%9A%B0%EB%AC%BC%20%EB%B0%96%EC%9D%84%20%EB%82%98%EC%98%AC%20%EB%95%8C.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/049_%25EA%25B0%259C%25EA%25B5%25AC%25EB%25A6%25AC%25EA%25B0%2580%2520%25EC%259A%25B0%25EB%25AC%25BC%2520%25EB%25B0%2596%25EC%259D%2584%2520%25EB%2582%2598%25EC%2598%25AC%2520%25EB%2595%258C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/049_%EA%B0%9C%EA%B5%AC%EB%A6%AC%EA%B0%80%20%EC%9A%B0%EB%AC%BC%20%EB%B0%96%EC%9D%84%20%EB%82%98%EC%98%AC%20%EB%95%8C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -530,7 +523,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/050_Product%20Owner%EB%8F%84%20%EB%AA%B0%EB%9E%90%EB%8D%98%20%EC%95%A0%EC%9E%90%EC%9D%BC%20HR%EC%9D%98%20%EC%A7%84%EC%8B%A4.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/050_Product%2520Owner%25EB%258F%2584%2520%25EB%25AA%25B0%25EB%259E%2590%25EB%258D%2598%2520%25EC%2595%25A0%25EC%259E%2590%25EC%259D%25BC%2520HR%25EC%259D%2598%2520%25EC%25A7%2584%25EC%258B%25A4_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/050_Product%20Owner%EB%8F%84%20%EB%AA%B0%EB%9E%90%EB%8D%98%20%EC%95%A0%EC%9E%90%EC%9D%BC%20HR%EC%9D%98%20%EC%A7%84%EC%8B%A4_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
@@ -540,7 +533,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/051_%EA%B2%8C%EC%9E%84%ED%95%98%EB%93%AF%20%EC%9D%BC%ED%95%98%EB%8A%94%20%EB%A7%88%EB%B2%95%2C%20Flow%20State%20Design.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/051_%25EA%25B2%258C%25EC%259E%2584%25ED%2595%2598%25EB%2593%25AF%2520%25EC%259D%25BC%25ED%2595%2598%25EB%258A%2594%2520%25EB%25A7%2588%25EB%25B2%2595%252C%2520Flow%2520State%2520Design_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/051_%EA%B2%8C%EC%9E%84%ED%95%98%EB%93%AF%20%EC%9D%BC%ED%95%98%EB%8A%94%20%EB%A7%88%EB%B2%95%2C%20Flow%20State%20Design_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -550,7 +543,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/052_%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%20%EC%A0%84%EB%AC%B8%20%EC%BD%94%EC%B9%98%EA%B0%80%20C%EB%A0%88%EB%B2%A8%20%EC%BD%94%EC%B9%AD%EA%B9%8C%EC%A7%80%20%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0%EB%8A%94.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/052_%25ED%2594%2584%25EB%25A1%259C%25EB%258D%2595%25ED%258A%25B8%2520%25EC%25A0%2584%25EB%25AC%25B8%2520%25EC%25BD%2594%25EC%25B9%2598%25EA%25B0%2580%2520C%25EB%25A0%2588%25EB%25B2%25A8%2520%25EC%25BD%2594%25EC%25B9%25AD%25EA%25B9%258C%25EC%25A7%2580%2520%25ED%2595%2598%25EB%258A%2594%2520%25EC%259D%25B4%25EC%259C%25A0%25EB%258A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/052_%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%20%EC%A0%84%EB%AC%B8%20%EC%BD%94%EC%B9%98%EA%B0%80%20C%EB%A0%88%EB%B2%A8%20%EC%BD%94%EC%B9%AD%EA%B9%8C%EC%A7%80%20%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0%EB%8A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -560,7 +553,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/053_%EC%8B%9C%EB%A6%AC%EC%A6%88B%20%EC%A4%80%EB%B9%84%20%EC%A4%91%20%EB%B0%9C%EA%B2%AC%ED%95%98%EB%8A%94%20%EC%88%A8%EA%B2%A8%EC%A7%84%20%EC%84%B1%EC%9E%A5%20%EC%A0%95%EC%B2%B4%20%EC%9A%94%EC%9D%B8%EB%93%A4.html" class="card-item" data-category="성장 정체 해부학">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/053_%25EC%258B%259C%25EB%25A6%25AC%25EC%25A6%2588B%2520%25EC%25A4%2580%25EB%25B9%2584%2520%25EC%25A4%2591%2520%25EB%25B0%259C%25EA%25B2%25AC%25ED%2595%2598%25EB%258A%2594%2520%25EC%2588%25A8%25EA%25B2%25A8%25EC%25A7%2584%2520%25EC%2584%25B1%25EC%259E%25A5%2520%25EC%25A0%2595%25EC%25B2%25B4%2520%25EC%259A%2594%25EC%259D%25B8%25EB%2593%25A4_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/053_%EC%8B%9C%EB%A6%AC%EC%A6%88B%20%EC%A4%80%EB%B9%84%20%EC%A4%91%20%EB%B0%9C%EA%B2%AC%ED%95%98%EB%8A%94%20%EC%88%A8%EA%B2%A8%EC%A7%84%20%EC%84%B1%EC%9E%A5%20%EC%A0%95%EC%B2%B4%20%EC%9A%94%EC%9D%B8%EB%93%A4_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">성장 정체 해부학</div>
@@ -570,7 +563,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/054_%EC%84%B1%EA%B3%B5%EA%B8%B0%EC%97%85%EC%9D%98%20%EA%B3%B5%ED%86%B5%ED%8C%A8%ED%84%B4%2C%20%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%ED%9A%A8%EA%B3%BC%EC%99%80%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%9D%98%EC%82%AC%EA%B2%B0%EC%A0%95.html" class="card-item" data-category="스타트업의 전략들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/054_%25EC%2584%25B1%25EA%25B3%25B5%25EA%25B8%25B0%25EC%2597%2585%25EC%259D%2598%2520%25EA%25B3%25B5%25ED%2586%25B5%25ED%258C%25A8%25ED%2584%25B4%252C%2520%25EB%2584%25A4%25ED%258A%25B8%25EC%259B%258C%25ED%2581%25AC%25ED%259A%25A8%25EA%25B3%25BC%25EC%2599%2580%2520%25EB%258D%25B0%25EC%259D%25B4%25ED%2584%25B0%25EC%259D%2598%25EC%2582%25AC%25EA%25B2%25B0%25EC%25A0%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/054_%EC%84%B1%EA%B3%B5%EA%B8%B0%EC%97%85%EC%9D%98%20%EA%B3%B5%ED%86%B5%ED%8C%A8%ED%84%B4%2C%20%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%ED%9A%A8%EA%B3%BC%EC%99%80%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%9D%98%EC%82%AC%EA%B2%B0%EC%A0%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업의 전략들</div>
@@ -580,7 +573,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/055_%EB%AF%B8%EA%B5%AD%EC%97%90%EC%84%9C%20%ED%86%B5%ED%95%98%EB%8A%94%20%EC%BD%98%ED%85%90%EC%B8%A0%20%EB%A7%88%EC%BC%80%ED%8C%85%20%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/055_%25EB%25AF%25B8%25EA%25B5%25AD%25EC%2597%2590%25EC%2584%259C%2520%25ED%2586%25B5%25ED%2595%2598%25EB%258A%2594%2520%25EC%25BD%2598%25ED%2585%2590%25EC%25B8%25A0%2520%25EB%25A7%2588%25EC%25BC%2580%25ED%258C%2585%2520%25EC%25A0%2584%25EB%259E%25B5_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/055_%EB%AF%B8%EA%B5%AD%EC%97%90%EC%84%9C%20%ED%86%B5%ED%95%98%EB%8A%94%20%EC%BD%98%ED%85%90%EC%B8%A0%20%EB%A7%88%EC%BC%80%ED%8C%85%20%EC%A0%84%EB%9E%B5_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">대한민국 스타트업 미국진출을 묻다</div>
@@ -590,7 +583,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/056_%EB%B2%84%ED%82%B7%EB%A6%AC%EC%8A%A4%ED%8A%B8%EB%A5%BC%20%EC%9D%B4%EB%A3%A8%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/056_%25EB%25B2%2584%25ED%2582%25B7%25EB%25A6%25AC%25EC%258A%25A4%25ED%258A%25B8%25EB%25A5%25BC%2520%25EC%259D%25B4%25EB%25A3%25A8%25EB%258A%2594%2520%25EB%25B2%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/056_%EB%B2%84%ED%82%B7%EB%A6%AC%EC%8A%A4%ED%8A%B8%EB%A5%BC%20%EC%9D%B4%EB%A3%A8%EB%8A%94%20%EB%B2%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -600,7 +593,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/057_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20vs%20%EB%8C%80%EA%B8%B0%EC%97%85%20%EC%95%A0%EC%9E%90%EC%9D%BC%2C%EA%B7%9C%EB%AA%A8%EB%B3%84%20%EC%A0%81%EC%9A%A9%20%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/057_%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%25EC%2597%2585%2520vs%2520%25EB%258C%2580%25EA%25B8%25B0%25EC%2597%2585%2520%25EC%2595%25A0%25EC%259E%2590%25EC%259D%25BC%252C%25EA%25B7%259C%25EB%25AA%25A8%25EB%25B3%2584%2520%25EC%25A0%2581%25EC%259A%25A9%2520%25EC%25A0%2584%25EB%259E%25B5_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/057_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20vs%20%EB%8C%80%EA%B8%B0%EC%97%85%20%EC%95%A0%EC%9E%90%EC%9D%BC%2C%EA%B7%9C%EB%AA%A8%EB%B3%84%20%EC%A0%81%EC%9A%A9%20%EC%A0%84%EB%9E%B5_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
@@ -610,7 +603,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/058_%EB%B8%8C%EB%A0%88%EB%93%9C%ED%81%AC%EB%9F%BC%2C%20%EA%B8%B8%EC%9D%84%20%EC%9E%83%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EB%94%94%EC%A7%80%ED%84%B8%20%EB%82%98%EC%B9%A8%EB%B0%98.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/058_%25EB%25B8%258C%25EB%25A0%2588%25EB%2593%259C%25ED%2581%25AC%25EB%259F%25BC%252C%2520%25EA%25B8%25B8%25EC%259D%2584%2520%25EC%259E%2583%25EC%25A7%2580%2520%25EC%2595%258A%25EB%258A%2594%2520%25EB%2594%2594%25EC%25A7%2580%25ED%2584%25B8%2520%25EB%2582%2598%25EC%25B9%25A8%25EB%25B0%2598_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/058_%EB%B8%8C%EB%A0%88%EB%93%9C%ED%81%AC%EB%9F%BC%2C%20%EA%B8%B8%EC%9D%84%20%EC%9E%83%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EB%94%94%EC%A7%80%ED%84%B8%20%EB%82%98%EC%B9%A8%EB%B0%98_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -620,7 +613,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/059_CEO%EA%B0%80%20%EB%AA%A8%EB%93%A0%20%EA%B1%B8%20%EA%B2%B0%EC%A0%95%ED%95%98%EB%A0%A4%20%ED%95%A0%20%EB%95%8C%20%EC%98%A4%EB%8A%94%20%EC%84%B1%EC%9E%A5%EC%9D%98%20%ED%95%9C%EA%B3%84.html" class="card-item" data-category="성장 정체 해부학">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/059_CEO%25EA%25B0%2580%2520%25EB%25AA%25A8%25EB%2593%25A0%2520%25EA%25B1%25B8%2520%25EA%25B2%25B0%25EC%25A0%2595%25ED%2595%2598%25EB%25A0%25A4%2520%25ED%2595%25A0%2520%25EB%2595%258C%2520%25EC%2598%25A4%25EB%258A%2594%2520%25EC%2584%25B1%25EC%259E%25A5%25EC%259D%2598%2520%25ED%2595%259C%25EA%25B3%2584_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/059_CEO%EA%B0%80%20%EB%AA%A8%EB%93%A0%20%EA%B1%B8%20%EA%B2%B0%EC%A0%95%ED%95%98%EB%A0%A4%20%ED%95%A0%20%EB%95%8C%20%EC%98%A4%EB%8A%94%20%EC%84%B1%EC%9E%A5%EC%9D%98%20%ED%95%9C%EA%B3%84_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">성장 정체 해부학</div>
@@ -630,7 +623,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/060_%ED%8B%B1%ED%86%A1%EC%9D%98%20%EC%A4%91%EB%8F%85%EC%84%B1%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%2C%20%EC%9D%BC%EC%82%AC%EC%9A%A9%EC%8B%9C%EA%B0%84%2058%EB%B6%84%EC%9D%98%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="스타트업의 전략들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/060_%25ED%258B%25B1%25ED%2586%25A1%25EC%259D%2598%2520%25EC%25A4%2591%25EB%258F%2585%25EC%2584%25B1%2520%25EC%2595%258C%25EA%25B3%25A0%25EB%25A6%25AC%25EC%25A6%2598%252C%2520%25EC%259D%25BC%25EC%2582%25AC%25EC%259A%25A9%25EC%258B%259C%25EA%25B0%2584%252058%25EB%25B6%2584%25EC%259D%2598%2520%25EC%259D%25B4%25EC%259C%25A0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/060_%ED%8B%B1%ED%86%A1%EC%9D%98%20%EC%A4%91%EB%8F%85%EC%84%B1%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%2C%20%EC%9D%BC%EC%82%AC%EC%9A%A9%EC%8B%9C%EA%B0%84%2058%EB%B6%84%EC%9D%98%20%EC%9D%B4%EC%9C%A0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업의 전략들</div>
@@ -640,7 +633,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/061_%ED%94%84%EB%9D%BC%EC%9D%B4%EC%8B%B1%20%EC%A0%84%EB%9E%B5%2C%20%EB%AF%B8%EA%B5%AD%EC%97%90%EC%84%9C%EB%8A%94%20%EC%9D%B4%EB%A0%87%EA%B2%8C%20%EB%8B%A4%EB%A5%B4%EB%8B%A4.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/061_%25ED%2594%2584%25EB%259D%25BC%25EC%259D%25B4%25EC%258B%25B1%2520%25EC%25A0%2584%25EB%259E%25B5%252C%2520%25EB%25AF%25B8%25EA%25B5%25AD%25EC%2597%2590%25EC%2584%259C%25EB%258A%2594%2520%25EC%259D%25B4%25EB%25A0%2587%25EA%25B2%258C%2520%25EB%258B%25A4%25EB%25A5%25B4%25EB%258B%25A4_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/061_%ED%94%84%EB%9D%BC%EC%9D%B4%EC%8B%B1%20%EC%A0%84%EB%9E%B5%2C%20%EB%AF%B8%EA%B5%AD%EC%97%90%EC%84%9C%EB%8A%94%20%EC%9D%B4%EB%A0%87%EA%B2%8C%20%EB%8B%A4%EB%A5%B4%EB%8B%A4_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">대한민국 스타트업 미국진출을 묻다</div>
@@ -650,7 +643,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/062_%EA%B8%B0%ED%9A%8D%2C%20%EC%95%84%EB%AC%B4%EB%82%98%20%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%A7%80%EB%A7%8C%2C%20%EC%95%84%EB%AC%B4%EB%82%98%20%ED%95%A0%20%EC%88%98%20%EC%97%86%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/062_%25EA%25B8%25B0%25ED%259A%258D%252C%2520%25EC%2595%2584%25EB%25AC%25B4%25EB%2582%2598%2520%25ED%2595%25A0%2520%25EC%2588%2598%2520%25EC%259E%2588%25EC%25A7%2580%25EB%25A7%258C%252C%2520%25EC%2595%2584%25EB%25AC%25B4%25EB%2582%2598%2520%25ED%2595%25A0%2520%25EC%2588%2598%2520%25EC%2597%2586%25EB%258A%2594%2520%25EC%259D%25B4%25EC%259C%25A0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/062_%EA%B8%B0%ED%9A%8D%2C%20%EC%95%84%EB%AC%B4%EB%82%98%20%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%A7%80%EB%A7%8C%2C%20%EC%95%84%EB%AC%B4%EB%82%98%20%ED%95%A0%20%EC%88%98%20%EC%97%86%EB%8A%94%20%EC%9D%B4%EC%9C%A0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -660,7 +653,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/063_%EB%A0%88%EA%B1%B0%EC%8B%9C%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EA%B3%BC%20%EC%95%A0%EC%9E%90%EC%9D%BC%2C%20%EA%B8%B0%EC%88%A0%EB%B6%80%EC%B1%84%20%ED%95%B4%EA%B2%B0%20%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/063_%25EB%25A0%2588%25EA%25B1%25B0%25EC%258B%259C%2520%25EC%258B%259C%25EC%258A%25A4%25ED%2585%259C%25EA%25B3%25BC%2520%25EC%2595%25A0%25EC%259E%2590%25EC%259D%25BC%252C%2520%25EA%25B8%25B0%25EC%2588%25A0%25EB%25B6%2580%25EC%25B1%2584%2520%25ED%2595%25B4%25EA%25B2%25B0%2520%25EC%25A0%2584%25EB%259E%25B5_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/063_%EB%A0%88%EA%B1%B0%EC%8B%9C%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EA%B3%BC%20%EC%95%A0%EC%9E%90%EC%9D%BC%2C%20%EA%B8%B0%EC%88%A0%EB%B6%80%EC%B1%84%20%ED%95%B4%EA%B2%B0%20%EC%A0%84%EB%9E%B5_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
@@ -670,7 +663,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/064_%ED%99%94%EC%9E%A5%EC%8B%A4%EC%9D%98%20UX%2C%20%EA%B3%B5%ED%95%AD%EA%B3%BC%20%EA%B8%B0%EC%B0%A8%EC%97%AD%EC%9D%B4%20%EB%A7%90%ED%95%B4%EC%A3%BC%EB%8A%94%20%EA%B3%B5%EA%B0%84%20%EB%94%94%EC%9E%90%EC%9D%B8.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/064_%25ED%2599%2594%25EC%259E%25A5%25EC%258B%25A4%25EC%259D%2598%2520UX%252C%2520%25EA%25B3%25B5%25ED%2595%25AD%25EA%25B3%25BC%2520%25EA%25B8%25B0%25EC%25B0%25A8%25EC%2597%25AD%25EC%259D%25B4%2520%25EB%25A7%2590%25ED%2595%25B4%25EC%25A3%25BC%25EB%258A%2594%2520%25EA%25B3%25B5%25EA%25B0%2584%2520%25EB%2594%2594%25EC%259E%2590%25EC%259D%25B8_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/064_%ED%99%94%EC%9E%A5%EC%8B%A4%EC%9D%98%20UX%2C%20%EA%B3%B5%ED%95%AD%EA%B3%BC%20%EA%B8%B0%EC%B0%A8%EC%97%AD%EC%9D%B4%20%EB%A7%90%ED%95%B4%EC%A3%BC%EB%8A%94%20%EA%B3%B5%EA%B0%84%20%EB%94%94%EC%9E%90%EC%9D%B8_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -680,7 +673,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/065_%EC%99%9C%20%EC%9A%B0%EB%A6%AC%EB%8A%94%20%EC%BF%A0%ED%8C%A1%EC%9D%B4%EB%82%98%20%ED%86%A0%EC%8A%A4%EA%B0%99%EC%9D%80%20PO%EC%A1%B0%EC%A7%81%EC%9D%84%20%EB%AA%BB%EB%A7%8C%EB%93%A4%EA%B9%8C.html" class="card-item" data-category="Be the PO">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/065_%25EC%2599%259C%2520%25EC%259A%25B0%25EB%25A6%25AC%25EB%258A%2594%2520%25EC%25BF%25A0%25ED%258C%25A1%25EC%259D%25B4%25EB%2582%2598%2520%25ED%2586%25A0%25EC%258A%25A4%25EA%25B0%2599%25EC%259D%2580%2520PO%25EC%25A1%25B0%25EC%25A7%2581%25EC%259D%2584%2520%25EB%25AA%25BB%25EB%25A7%258C%25EB%2593%25A4%25EA%25B9%258C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/065_%EC%99%9C%20%EC%9A%B0%EB%A6%AC%EB%8A%94%20%EC%BF%A0%ED%8C%A1%EC%9D%B4%EB%82%98%20%ED%86%A0%EC%8A%A4%EA%B0%99%EC%9D%80%20PO%EC%A1%B0%EC%A7%81%EC%9D%84%20%EB%AA%BB%EB%A7%8C%EB%93%A4%EA%B9%8C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">Be the PO</div>
@@ -690,7 +683,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/066_%EC%8B%9C%EB%A6%AC%EC%A6%88A%20%EC%9D%B4%ED%9B%84%20%EC%84%B1%EC%9E%A5%EC%9D%B4%20%EB%A9%88%EC%B6%94%EB%8A%94%20%EC%A7%84%EC%A7%9C%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="성장 정체 해부학">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/066_%25EC%258B%259C%25EB%25A6%25AC%25EC%25A6%2588A%2520%25EC%259D%25B4%25ED%259B%2584%2520%25EC%2584%25B1%25EC%259E%25A5%25EC%259D%25B4%2520%25EB%25A9%2588%25EC%25B6%2594%25EB%258A%2594%2520%25EC%25A7%2584%25EC%25A7%259C%2520%25EC%259D%25B4%25EC%259C%25A0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/066_%EC%8B%9C%EB%A6%AC%EC%A6%88A%20%EC%9D%B4%ED%9B%84%20%EC%84%B1%EC%9E%A5%EC%9D%B4%20%EB%A9%88%EC%B6%94%EB%8A%94%20%EC%A7%84%EC%A7%9C%20%EC%9D%B4%EC%9C%A0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">성장 정체 해부학</div>
@@ -700,7 +693,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/067_%EC%9A%B0%EB%B2%84%EC%9D%98%20%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%20%ED%9A%A8%EA%B3%BC%EC%99%80%20%EC%96%91%EB%A9%B4%20%EC%8B%9C%EC%9E%A5%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업의 전략들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/067_%25EC%259A%25B0%25EB%25B2%2584%25EC%259D%2598%2520%25EB%2584%25A4%25ED%258A%25B8%25EC%259B%258C%25ED%2581%25AC%2520%25ED%259A%25A8%25EA%25B3%25BC%25EC%2599%2580%2520%25EC%2596%2591%25EB%25A9%25B4%2520%25EC%258B%259C%25EC%259E%25A5%2520%25EC%25B5%259C%25EC%25A0%2581%25ED%2599%2594%2520%25EC%25A0%2584%25EB%259E%25B5_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/067_%EC%9A%B0%EB%B2%84%EC%9D%98%20%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%20%ED%9A%A8%EA%B3%BC%EC%99%80%20%EC%96%91%EB%A9%B4%20%EC%8B%9C%EC%9E%A5%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EC%A0%84%EB%9E%B5_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업의 전략들</div>
@@ -710,7 +703,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/068_%ED%95%9C%EA%B5%AD%EA%B3%BC%20%EB%AF%B8%EA%B5%AD%EC%9D%98%20%27%EA%B3%A0%EA%B0%9D%20%ED%8E%98%EB%A5%B4%EC%86%8C%EB%82%98%27%20%EC%B0%A8%EC%9D%B4.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/068_%25ED%2595%259C%25EA%25B5%25AD%25EA%25B3%25BC%2520%25EB%25AF%25B8%25EA%25B5%25AD%25EC%259D%2598%2520%2527%25EA%25B3%25A0%25EA%25B0%259D%2520%25ED%258E%2598%25EB%25A5%25B4%25EC%2586%258C%25EB%2582%2598%2527%2520%25EC%25B0%25A8%25EC%259D%25B4_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/068_%ED%95%9C%EA%B5%AD%EA%B3%BC%20%EB%AF%B8%EA%B5%AD%EC%9D%98%20%27%EA%B3%A0%EA%B0%9D%20%ED%8E%98%EB%A5%B4%EC%86%8C%EB%82%98%27%20%EC%B0%A8%EC%9D%B4_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">대한민국 스타트업 미국진출을 묻다</div>
@@ -720,7 +713,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/069_Predictive%20UX%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%EC%9D%98%20%EB%8B%A4%EC%9D%8C%20%ED%96%89%EB%8F%99%EC%9D%80.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/069_Predictive%2520UX%252C%2520%25EC%2582%25AC%25EC%259A%25A9%25EC%259E%2590%25EC%259D%2598%2520%25EB%258B%25A4%25EC%259D%258C%2520%25ED%2596%2589%25EB%258F%2599%25EC%259D%2580_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/069_Predictive%20UX%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%EC%9D%98%20%EB%8B%A4%EC%9D%8C%20%ED%96%89%EB%8F%99%EC%9D%80_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -730,7 +723,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/070_%ED%8C%80%2050%EB%AA%85%EC%9D%84%20%EB%84%98%EC%96%B4%EC%84%9C%EB%A9%B4%EC%84%9C%20%EC%86%8D%EB%8F%84%EA%B0%80%20%EB%8A%90%EB%A0%A4%EC%A7%84%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="성장 정체 해부학">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/070_%25ED%258C%2580%252050%25EB%25AA%2585%25EC%259D%2584%2520%25EB%2584%2598%25EC%2596%25B4%25EC%2584%259C%25EB%25A9%25B4%25EC%2584%259C%2520%25EC%2586%258D%25EB%258F%2584%25EA%25B0%2580%2520%25EB%258A%2590%25EB%25A0%25A4%25EC%25A7%2584%2520%25EC%259D%25B4%25EC%259C%25A0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/070_%ED%8C%80%2050%EB%AA%85%EC%9D%84%20%EB%84%98%EC%96%B4%EC%84%9C%EB%A9%B4%EC%84%9C%20%EC%86%8D%EB%8F%84%EA%B0%80%20%EB%8A%90%EB%A0%A4%EC%A7%84%20%EC%9D%B4%EC%9C%A0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">성장 정체 해부학</div>
@@ -740,7 +733,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/071_%EA%B8%B0%EB%B0%9C%ED%95%9C%20%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%EB%B3%B4%EB%8B%A8%20%EA%B3%A0%EA%B0%9D%20%EB%B0%98%EC%9D%91%EC%9D%84%20%EC%B6%9C%EB%B0%9C%EC%A0%90%EC%9C%BC%EB%A1%9C.html" class="card-item" data-category="스타트업 리더의 기술">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/071_%25EA%25B8%25B0%25EB%25B0%259C%25ED%2595%259C%2520%25EC%2595%2584%25EC%259D%25B4%25EB%2594%2594%25EC%2596%25B4%25EB%25B3%25B4%25EB%258B%25A8%2520%25EA%25B3%25A0%25EA%25B0%259D%2520%25EB%25B0%2598%25EC%259D%2591%25EC%259D%2584%2520%25EC%25B6%259C%25EB%25B0%259C%25EC%25A0%2590%25EC%259C%25BC%25EB%25A1%259C..._cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/071_%EA%B8%B0%EB%B0%9C%ED%95%9C%20%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%EB%B3%B4%EB%8B%A8%20%EA%B3%A0%EA%B0%9D%20%EB%B0%98%EC%9D%91%EC%9D%84%20%EC%B6%9C%EB%B0%9C%EC%A0%90%EC%9C%BC%EB%A1%9C..._cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업 리더의 기술</div>
@@ -750,7 +743,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/072_%EC%8A%A4%ED%8F%AC%ED%8B%B0%ED%8C%8C%EC%9D%B4%EC%9D%98%20%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%20%EB%A7%88%EB%B2%95%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%EA%B2%BD%ED%97%98%EC%9D%84%20%ED%86%B5%ED%95%9C%20%EC%A0%84%ED%99%98.html" class="card-item" data-category="스타트업의 전략들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/072_%25EC%258A%25A4%25ED%258F%25AC%25ED%258B%25B0%25ED%258C%258C%25EC%259D%25B4%25EC%259D%2598%2520%25ED%2594%2584%25EB%25A6%25AC%25EB%25AF%25B8%25EC%2597%2584%2520%25EB%25A7%2588%25EB%25B2%2595%252C%2520%25EC%2582%25AC%25EC%259A%25A9%25EC%259E%2590%2520%25EA%25B2%25BD%25ED%2597%2598%25EC%259D%2584%2520%25ED%2586%25B5%25ED%2595%259C%2520%25EC%25A0%2584%25ED%2599%2598_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/072_%EC%8A%A4%ED%8F%AC%ED%8B%B0%ED%8C%8C%EC%9D%B4%EC%9D%98%20%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%20%EB%A7%88%EB%B2%95%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%EA%B2%BD%ED%97%98%EC%9D%84%20%ED%86%B5%ED%95%9C%20%EC%A0%84%ED%99%98_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업의 전략들</div>
@@ -760,7 +753,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/073_%EB%AF%B8%EA%B5%AD%20%ED%98%84%EC%A7%80%20%EC%84%B8%EC%9D%BC%EC%A6%88%20%EB%A6%AC%EB%93%9C%EB%A5%BC%20%ED%99%95%EB%B3%B4%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/073_%25EB%25AF%25B8%25EA%25B5%25AD%2520%25ED%2598%2584%25EC%25A7%2580%2520%25EC%2584%25B8%25EC%259D%25BC%25EC%25A6%2588%2520%25EB%25A6%25AC%25EB%2593%259C%25EB%25A5%25BC%2520%25ED%2599%2595%25EB%25B3%25B4%25ED%2595%2598%25EB%258A%2594%2520%25EB%25B0%25A9%25EB%25B2%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/073_%EB%AF%B8%EA%B5%AD%20%ED%98%84%EC%A7%80%20%EC%84%B8%EC%9D%BC%EC%A6%88%20%EB%A6%AC%EB%93%9C%EB%A5%BC%20%ED%99%95%EB%B3%B4%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">대한민국 스타트업 미국진출을 묻다</div>
@@ -770,7 +763,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/074_%EB%AA%A9%ED%91%9C%EC%9D%98%20%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%EA%B0%80%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="기획자로 시작하기">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/074_%25EB%25AA%25A9%25ED%2591%259C%25EC%259D%2598%2520%25EC%259A%25B0%25EC%2584%25A0%25EC%2588%259C%25EC%259C%2584%25EA%25B0%2580%2520%25EC%25A4%2591%25EC%259A%2594%25ED%2595%259C%2520%25EC%259D%25B4%25EC%259C%25A0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/074_%EB%AA%A9%ED%91%9C%EC%9D%98%20%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%EA%B0%80%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자로 시작하기</div>
@@ -780,7 +773,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/075_%EC%95%A0%EC%9E%90%EC%9D%BC%20%EC%BD%94%EC%B9%AD%2C%20%EC%A0%80%ED%95%AD%ED%95%98%EB%8A%94%20%ED%8C%80%EC%9B%90%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%84%A4%EB%93%9D%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/075_%25EC%2595%25A0%25EC%259E%2590%25EC%259D%25BC%2520%25EC%25BD%2594%25EC%25B9%25AD%252C%2520%25EC%25A0%2580%25ED%2595%25AD%25ED%2595%2598%25EB%258A%2594%2520%25ED%258C%2580%25EC%259B%2590%2520%25EC%2596%25B4%25EB%2596%25BB%25EA%25B2%258C%2520%25EC%2584%25A4%25EB%2593%259D%25ED%2595%25A0%25EA%25B9%258C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/075_%EC%95%A0%EC%9E%90%EC%9D%BC%20%EC%BD%94%EC%B9%AD%2C%20%EC%A0%80%ED%95%AD%ED%95%98%EB%8A%94%20%ED%8C%80%EC%9B%90%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%84%A4%EB%93%9D%ED%95%A0%EA%B9%8C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
@@ -790,7 +783,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/076_%EC%96%B4%ED%94%84%EB%A1%9C%EC%B9%98%EB%A5%BC%20%EB%B0%94%EA%BE%B8%EB%8B%A4%20AI%20Assisted%20Design.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/076_%25EC%2596%25B4%25ED%2594%2584%25EB%25A1%259C%25EC%25B9%2598%25EB%25A5%25BC%2520%25EB%25B0%2594%25EA%25BE%25B8%25EB%258B%25A4%2520AI%2520Assisted%2520Design_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/076_%EC%96%B4%ED%94%84%EB%A1%9C%EC%B9%98%EB%A5%BC%20%EB%B0%94%EA%BE%B8%EB%8B%A4%20AI%20Assisted%20Design_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -800,7 +793,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/077_%EC%9C%84%EA%B8%B0%EB%A5%BC%20%EA%B8%B0%ED%9A%8C%EB%A1%9C%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EA%B8%B0%ED%9A%8D.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/077_%25EC%259C%2584%25EA%25B8%25B0%25EB%25A5%25BC%2520%25EA%25B8%25B0%25ED%259A%258C%25EB%25A1%259C%2520%25EB%25A7%258C%25EB%2593%259C%25EB%258A%2594%2520%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%25EC%2597%2585%2520%25EA%25B8%25B0%25ED%259A%258D_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/077_%EC%9C%84%EA%B8%B0%EB%A5%BC%20%EA%B8%B0%ED%9A%8C%EB%A1%9C%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EA%B8%B0%ED%9A%8D_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -810,7 +803,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/078_%EC%8B%9C%EB%A6%AC%EC%A6%88B%EC%9D%98%20%EB%8D%B0%EC%8A%A4%EB%B0%B8%EB%A6%AC.html" class="card-item" data-category="성장 정체 해부학">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/078_%25EC%258B%259C%25EB%25A6%25AC%25EC%25A6%2588B%25EC%259D%2598%2520%25EB%258D%25B0%25EC%258A%25A4%25EB%25B0%25B8%25EB%25A6%25AC_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/078_%EC%8B%9C%EB%A6%AC%EC%A6%88B%EC%9D%98%20%EB%8D%B0%EC%8A%A4%EB%B0%B8%EB%A6%AC_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">성장 정체 해부학</div>
@@ -820,7 +813,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/079_%EC%99%9C%20%EA%B5%AC%EA%B8%80%EC%9D%80%2020%20%EC%8B%9C%EA%B0%84%EC%9D%84%20%ED%97%88%EC%9A%A9%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="스타트업의 전략들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/079_%25EC%2599%259C%2520%25EA%25B5%25AC%25EA%25B8%2580%25EC%259D%2580%252020%2520%25EC%258B%259C%25EA%25B0%2584%25EC%259D%2584%2520%25ED%2597%2588%25EC%259A%25A9%25ED%2595%25A0%25EA%25B9%258C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/079_%EC%99%9C%20%EA%B5%AC%EA%B8%80%EC%9D%80%2020%20%EC%8B%9C%EA%B0%84%EC%9D%84%20%ED%97%88%EC%9A%A9%ED%95%A0%EA%B9%8C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업의 전략들</div>
@@ -830,7 +823,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/080_%EB%AF%B8%EA%B5%AD%20%EC%A7%84%EC%B6%9C%20%EC%8B%9C%20%EB%B2%95%EC%9D%B8%EB%B6%80%ED%84%B0%20%EC%84%A4%EB%A6%BD%ED%95%B4%EC%95%BC%20%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/080_%25EB%25AF%25B8%25EA%25B5%25AD%2520%25EC%25A7%2584%25EC%25B6%259C%2520%25EC%258B%259C%2520%25EB%25B2%2595%25EC%259D%25B8%25EB%25B6%2580%25ED%2584%25B0%2520%25EC%2584%25A4%25EB%25A6%25BD%25ED%2595%25B4%25EC%2595%25BC%2520%25ED%2595%25A0%25EA%25B9%258C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/080_%EB%AF%B8%EA%B5%AD%20%EC%A7%84%EC%B6%9C%20%EC%8B%9C%20%EB%B2%95%EC%9D%B8%EB%B6%80%ED%84%B0%20%EC%84%A4%EB%A6%BD%ED%95%B4%EC%95%BC%20%ED%95%A0%EA%B9%8C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">대한민국 스타트업 미국진출을 묻다</div>
@@ -840,7 +833,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/081_%EA%B8%B0%ED%9A%8D%EC%9D%B4%EB%9E%80.html" class="card-item" data-category="기획자로 시작하기">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/081_%25EA%25B8%25B0%25ED%259A%258D%25EC%259D%25B4%25EB%259E%2580..._cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/081_%EA%B8%B0%ED%9A%8D%EC%9D%B4%EB%9E%80..._cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자로 시작하기</div>
@@ -850,7 +843,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/082_%EB%AA%85%EB%A0%B9%ED%95%98%EC%A7%80%20%EC%95%8A%EA%B3%A0%20%EC%9D%B4%EB%81%88%EB%8B%A4%2C%20%EC%95%A0%EC%9E%90%EC%9D%BC%20%EB%A6%AC%EB%8D%94%EC%8B%AD%EC%9D%98%20%EC%A7%84%EC%A7%9C%20%ED%9E%98.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/082_%25EB%25AA%2585%25EB%25A0%25B9%25ED%2595%2598%25EC%25A7%2580%2520%25EC%2595%258A%25EA%25B3%25A0%2520%25EC%259D%25B4%25EB%2581%2588%25EB%258B%25A4%252C%2520%25EC%2595%25A0%25EC%259E%2590%25EC%259D%25BC%2520%25EB%25A6%25AC%25EB%258D%2594%25EC%258B%25AD%25EC%259D%2598%2520%25EC%25A7%2584%25EC%25A7%259C%2520%25ED%259E%2598_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/082_%EB%AA%85%EB%A0%B9%ED%95%98%EC%A7%80%20%EC%95%8A%EA%B3%A0%20%EC%9D%B4%EB%81%88%EB%8B%A4%2C%20%EC%95%A0%EC%9E%90%EC%9D%BC%20%EB%A6%AC%EB%8D%94%EC%8B%AD%EC%9D%98%20%EC%A7%84%EC%A7%9C%20%ED%9E%98_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
@@ -860,7 +853,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/083_UX%EB%8F%84%20%EB%B8%8C%EB%9E%9C%EB%94%A9%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%EA%B2%BD%ED%97%98%EC%9D%B4%20%EB%B8%8C%EB%9E%9C%EB%93%9C%20%EC%B6%A9%EC%84%B1%EB%8F%84%EB%A5%BC%20%EB%A7%8C%EB%93%A0%EB%8B%A4.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/083_UX%25EB%258F%2584%2520%25EB%25B8%258C%25EB%259E%259C%25EB%2594%25A9%252C%2520%25EC%2582%25AC%25EC%259A%25A9%25EC%259E%2590%2520%25EA%25B2%25BD%25ED%2597%2598%25EC%259D%25B4%2520%25EB%25B8%258C%25EB%259E%259C%25EB%2593%259C%2520%25EC%25B6%25A9%25EC%2584%25B1%25EB%258F%2584%25EB%25A5%25BC%2520%25EB%25A7%258C%25EB%2593%25A0%25EB%258B%25A4_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/083_UX%EB%8F%84%20%EB%B8%8C%EB%9E%9C%EB%94%A9%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%EA%B2%BD%ED%97%98%EC%9D%B4%20%EB%B8%8C%EB%9E%9C%EB%93%9C%20%EC%B6%A9%EC%84%B1%EB%8F%84%EB%A5%BC%20%EB%A7%8C%EB%93%A0%EB%8B%A4_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -870,7 +863,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/084_%EB%8C%80%ED%91%9C%EB%8B%98%20%EC%A7%80%EA%B8%88%EC%9D%80%20%EB%B0%9C%EB%81%9D%EB%A7%8C%20%EB%B3%B4%EC%84%B8%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/084_%25EB%258C%2580%25ED%2591%259C%25EB%258B%2598%2520%25EC%25A7%2580%25EA%25B8%2588%25EC%259D%2580%2520%25EB%25B0%259C%25EB%2581%259D%25EB%25A7%258C%2520%25EB%25B3%25B4%25EC%2584%25B8%25EC%259A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/084_%EB%8C%80%ED%91%9C%EB%8B%98%20%EC%A7%80%EA%B8%88%EC%9D%80%20%EB%B0%9C%EB%81%9D%EB%A7%8C%20%EB%B3%B4%EC%84%B8%EC%9A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -880,7 +873,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/085_%27%EC%9D%B4%20%EC%8B%9C%EA%B0%84%EC%9D%80%20%EB%AC%B4%EC%97%87%EC%9D%84%20%EC%9D%B4%EB%A3%A8%EA%B8%B0%20%EC%9C%84%ED%95%B4%20%EC%A1%B4%EC%9E%AC%ED%95%98%EB%8A%94%EA%B0%80%27.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/085_%2527%25EC%259D%25B4%2520%25EC%258B%259C%25EA%25B0%2584%25EC%259D%2580%2520%25EB%25AC%25B4%25EC%2597%2587%25EC%259D%2584%2520%25EC%259D%25B4%25EB%25A3%25A8%25EA%25B8%25B0%2520%25EC%259C%2584%25ED%2595%25B4%2520%25EC%25A1%25B4%25EC%259E%25AC%25ED%2595%2598%25EB%258A%2594%25EA%25B0%2580%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/085_%27%EC%9D%B4%20%EC%8B%9C%EA%B0%84%EC%9D%80%20%EB%AC%B4%EC%97%87%EC%9D%84%20%EC%9D%B4%EB%A3%A8%EA%B8%B0%20%EC%9C%84%ED%95%B4%20%EC%A1%B4%EC%9E%AC%ED%95%98%EB%8A%94%EA%B0%80%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -890,7 +883,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/086_%ED%95%9C%EA%B5%AD%20SaaS%EC%9D%98%20%EB%AF%B8%EA%B5%AD%20%EC%A7%84%EC%B6%9C%20%EC%8B%A4%ED%8C%A8%20%EC%9B%90%EC%9D%B8%20%EB%B6%84%EC%84%9D.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/086_%25ED%2595%259C%25EA%25B5%25AD%2520SaaS%25EC%259D%2598%2520%25EB%25AF%25B8%25EA%25B5%25AD%2520%25EC%25A7%2584%25EC%25B6%259C%2520%25EC%258B%25A4%25ED%258C%25A8%2520%25EC%259B%2590%25EC%259D%25B8%2520%25EB%25B6%2584%25EC%2584%259D_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/086_%ED%95%9C%EA%B5%AD%20SaaS%EC%9D%98%20%EB%AF%B8%EA%B5%AD%20%EC%A7%84%EC%B6%9C%20%EC%8B%A4%ED%8C%A8%20%EC%9B%90%EC%9D%B8%20%EB%B6%84%EC%84%9D_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">대한민국 스타트업 미국진출을 묻다</div>
@@ -900,7 +893,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/087_%EC%9E%98%ED%95%98%EB%8A%94%20%EC%82%AC%EB%9E%8C%EC%9D%80%20%EC%A7%88%EB%AC%B8%EB%B6%80%ED%84%B0%20%EB%8B%A4%EB%A5%B4%EB%8B%A4.html" class="card-item" data-category="기획자로 시작하기">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/087_%25EC%259E%2598%25ED%2595%2598%25EB%258A%2594%2520%25EC%2582%25AC%25EB%259E%258C%25EC%259D%2580%2520%25EC%25A7%2588%25EB%25AC%25B8%25EB%25B6%2580%25ED%2584%25B0%2520%25EB%258B%25A4%25EB%25A5%25B4%25EB%258B%25A4_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/087_%EC%9E%98%ED%95%98%EB%8A%94%20%EC%82%AC%EB%9E%8C%EC%9D%80%20%EC%A7%88%EB%AC%B8%EB%B6%80%ED%84%B0%20%EB%8B%A4%EB%A5%B4%EB%8B%A4_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자로 시작하기</div>
@@ -910,7 +903,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/088_%EC%95%A0%EC%9E%90%EC%9D%BC%EA%B3%BC%20%EA%B8%B0%EC%88%A0%EB%B6%80%EC%B1%84.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/088_%25EC%2595%25A0%25EC%259E%2590%25EC%259D%25BC%25EA%25B3%25BC%2520%25EA%25B8%25B0%25EC%2588%25A0%25EB%25B6%2580%25EC%25B1%2584_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/088_%EC%95%A0%EC%9E%90%EC%9D%BC%EA%B3%BC%20%EA%B8%B0%EC%88%A0%EB%B6%80%EC%B1%84_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
@@ -920,7 +913,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/089_%EB%8C%80%ED%99%94%ED%98%95%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%EC%9D%98%20%EC%A7%84%ED%99%94%20Conversational%20UX.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/089_%25EB%258C%2580%25ED%2599%2594%25ED%2598%2595%25EC%259D%25B8%25ED%2584%25B0%25ED%258E%2598%25EC%259D%25B4%25EC%258A%25A4%25EC%259D%2598%2520%25EC%25A7%2584%25ED%2599%2594%2520Conversational%2520UX_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/089_%EB%8C%80%ED%99%94%ED%98%95%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%EC%9D%98%20%EC%A7%84%ED%99%94%20Conversational%20UX_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -930,7 +923,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/090_AI%EB%AA%A8%EB%8D%B8%20%EA%B0%80%EC%86%8D%ED%99%94%EC%9D%98%20%EC%97%B4%EC%87%A0%2C%20Transformer%EB%B3%91%EB%AA%A9%EA%B0%9C%EC%84%A0.html" class="card-item" data-category="AI의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/090_AI%25EB%25AA%25A8%25EB%258D%25B8%2520%25EA%25B0%2580%25EC%2586%258D%25ED%2599%2594%25EC%259D%2598%2520%25EC%2597%25B4%25EC%2587%25A0%252C%2520Transformer%25EB%25B3%2591%25EB%25AA%25A9%25EA%25B0%259C%25EC%2584%25A0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/090_AI%EB%AA%A8%EB%8D%B8%20%EA%B0%80%EC%86%8D%ED%99%94%EC%9D%98%20%EC%97%B4%EC%87%A0%2C%20Transformer%EB%B3%91%EB%AA%A9%EA%B0%9C%EC%84%A0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">AI의 언어들</div>
@@ -940,7 +933,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/091_%ED%98%84%EC%9E%AC%EC%99%80%20%EB%AF%B8%EB%9E%98%EB%A5%BC%20%ED%95%A8%EA%BB%98%ED%95%9C%EB%8B%A4%203%20Horizons%20model.html" class="card-item" data-category="기획자의 프레임웍">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/091_%25ED%2598%2584%25EC%259E%25AC%25EC%2599%2580%2520%25EB%25AF%25B8%25EB%259E%2598%25EB%25A5%25BC%2520%25ED%2595%25A8%25EA%25BB%2598%25ED%2595%259C%25EB%258B%25A4%25203%2520Horizons%2520model_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/091_%ED%98%84%EC%9E%AC%EC%99%80%20%EB%AF%B8%EB%9E%98%EB%A5%BC%20%ED%95%A8%EA%BB%98%ED%95%9C%EB%8B%A4%203%20Horizons%20model_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자의 프레임웍</div>
@@ -950,7 +943,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/092_%EB%93%9C%EB%A1%AD%EB%B0%95%EC%8A%A4%EA%B0%80%203900%20%EC%84%B1%EC%9E%A5%ED%95%9C%20%ED%95%98%EB%82%98%EC%9D%98%20%EB%B9%84%EB%B0%80.html" class="card-item" data-category="스타트업의 전략들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/092_%25EB%2593%259C%25EB%25A1%25AD%25EB%25B0%2595%25EC%258A%25A4%25EA%25B0%2580%25203900%2520%25EC%2584%25B1%25EC%259E%25A5%25ED%2595%259C%2520%25ED%2595%2598%25EB%2582%2598%25EC%259D%2598%2520%25EB%25B9%2584%25EB%25B0%2580_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/092_%EB%93%9C%EB%A1%AD%EB%B0%95%EC%8A%A4%EA%B0%80%203900%20%EC%84%B1%EC%9E%A5%ED%95%9C%20%ED%95%98%EB%82%98%EC%9D%98%20%EB%B9%84%EB%B0%80_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업의 전략들</div>
@@ -960,7 +953,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/093_%EB%AF%B8%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%27%EB%B8%8C%EB%9E%9C%EB%93%9C%27%EB%A5%BC%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%A0%95%EC%9D%98%ED%95%98%EB%8A%94%EA%B0%80.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/093_%25EB%25AF%25B8%25EA%25B5%25AD%2520%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%25EC%2597%2585%25EC%259D%2580%2520%2527%25EB%25B8%258C%25EB%259E%259C%25EB%2593%259C%2527%25EB%25A5%25BC%2520%25EC%2596%25B4%25EB%2596%25BB%25EA%25B2%258C%2520%25EC%25A0%2595%25EC%259D%2598%25ED%2595%2598%25EB%258A%2594%25EA%25B0%2580_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/093_%EB%AF%B8%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%27%EB%B8%8C%EB%9E%9C%EB%93%9C%27%EB%A5%BC%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%A0%95%EC%9D%98%ED%95%98%EB%8A%94%EA%B0%80_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">대한민국 스타트업 미국진출을 묻다</div>
@@ -970,7 +963,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/094_%EC%9A%B0%EB%A6%AC%20%ED%8C%80%EC%9D%80%20%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%BC%EA%B9%8C%2C%20%EC%8A%A4%ED%81%AC%EB%9F%BC%EC%9D%BC%EA%B9%8C%20%ED%97%B7%EA%B0%88%EB%A6%AC%EB%8A%94%20%EA%B0%9C%EB%85%90.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/094_%25EC%259A%25B0%25EB%25A6%25AC%2520%25ED%258C%2580%25EC%259D%2580%2520%25EC%2595%25A0%25EC%259E%2590%25EC%259D%25BC%25EC%259D%25BC%25EA%25B9%258C%252C%2520%25EC%258A%25A4%25ED%2581%25AC%25EB%259F%25BC%25EC%259D%25BC%25EA%25B9%258C%2520%25ED%2597%25B7%25EA%25B0%2588%25EB%25A6%25AC%25EB%258A%2594%2520%25EA%25B0%259C%25EB%2585%2590_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/094_%EC%9A%B0%EB%A6%AC%20%ED%8C%80%EC%9D%80%20%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%BC%EA%B9%8C%2C%20%EC%8A%A4%ED%81%AC%EB%9F%BC%EC%9D%BC%EA%B9%8C%20%ED%97%B7%EA%B0%88%EB%A6%AC%EB%8A%94%20%EA%B0%9C%EB%85%90_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
@@ -980,7 +973,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/095_%EC%98%A8%EB%B3%B4%EB%94%A9%2C%20%EB%B0%B0%EC%97%90%20%EC%98%A4%EB%A5%B4%EB%8B%A4%27%EC%97%90%EC%84%9C%20%EC%8B%9C%EC%9E%91%EB%90%9C%20UX%EC%9D%98%20%EC%B2%AB%EC%9D%B8%EC%83%81%20%EB%A7%88%EB%B2%95.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/095_%25EC%2598%25A8%25EB%25B3%25B4%25EB%2594%25A9%252C%2520%25EB%25B0%25B0%25EC%2597%2590%2520%25EC%2598%25A4%25EB%25A5%25B4%25EB%258B%25A4%2527%25EC%2597%2590%25EC%2584%259C%2520%25EC%258B%259C%25EC%259E%2591%25EB%2590%259C%2520UX%25EC%259D%2598%2520%25EC%25B2%25AB%25EC%259D%25B8%25EC%2583%2581%2520%25EB%25A7%2588%25EB%25B2%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/095_%EC%98%A8%EB%B3%B4%EB%94%A9%2C%20%EB%B0%B0%EC%97%90%20%EC%98%A4%EB%A5%B4%EB%8B%A4%27%EC%97%90%EC%84%9C%20%EC%8B%9C%EC%9E%91%EB%90%9C%20UX%EC%9D%98%20%EC%B2%AB%EC%9D%B8%EC%83%81%20%EB%A7%88%EB%B2%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -990,7 +983,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/096_%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EA%B2%BD%EC%9F%81%EB%A0%A5%EC%97%90%20%EC%A0%80%EC%A0%84%EB%A0%A5%20NPU%EA%B0%80%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="AI의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/096_%25EB%25B9%2584%25EC%25A6%2588%25EB%258B%2588%25EC%258A%25A4%2520%25EA%25B2%25BD%25EC%259F%2581%25EB%25A0%25A5%25EC%2597%2590%2520%25EC%25A0%2580%25EC%25A0%2584%25EB%25A0%25A5%2520NPU%25EA%25B0%2580%2520%25EC%25A4%2591%25EC%259A%2594%25ED%2595%259C%2520%25EC%259D%25B4%25EC%259C%25A0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/096_%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EA%B2%BD%EC%9F%81%EB%A0%A5%EC%97%90%20%EC%A0%80%EC%A0%84%EB%A0%A5%20NPU%EA%B0%80%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">AI의 언어들</div>
@@ -1000,7 +993,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/097_MIT%20%EC%B0%BD%EC%97%85%EC%A0%84%EB%9E%B5%20%EB%82%98%EC%B9%A8%EB%B0%98%2C%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%B4%20%EA%B8%B8%EC%9D%84%20%EC%9E%83%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획자의 프레임웍">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/097_MIT%2520%25EC%25B0%25BD%25EC%2597%2585%25EC%25A0%2584%25EB%259E%25B5%2520%25EB%2582%2598%25EC%25B9%25A8%25EB%25B0%2598%252C%2520%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%25EC%2597%2585%25EC%259D%25B4%2520%25EA%25B8%25B8%25EC%259D%2584%2520%25EC%259E%2583%25EC%25A7%2580%2520%25EC%2595%258A%25EB%258A%2594%2520%25EB%25B2%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/097_MIT%20%EC%B0%BD%EC%97%85%EC%A0%84%EB%9E%B5%20%EB%82%98%EC%B9%A8%EB%B0%98%2C%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%B4%20%EA%B8%B8%EC%9D%84%20%EC%9E%83%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EB%B2%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자의 프레임웍</div>
@@ -1010,7 +1003,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/098_%EA%B0%80%EA%B2%A9%EC%A0%95%EC%B1%85%EC%9D%98%20%ED%98%81%EC%8B%A0%EC%9C%BC%EB%A1%9C%20%EB%8F%8C%ED%8C%8C%EA%B5%AC%EB%A5%BC%20%EC%B0%BE%EB%8B%A4.%20Welo.html" class="card-item" data-category="스타트업의 전략들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/098_%25EA%25B0%2580%25EA%25B2%25A9%25EC%25A0%2595%25EC%25B1%2585%25EC%259D%2598%2520%25ED%2598%2581%25EC%258B%25A0%25EC%259C%25BC%25EB%25A1%259C%2520%25EB%258F%258C%25ED%258C%258C%25EA%25B5%25AC%25EB%25A5%25BC%2520%25EC%25B0%25BE%25EB%258B%25A4.%2520Welo_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/098_%EA%B0%80%EA%B2%A9%EC%A0%95%EC%B1%85%EC%9D%98%20%ED%98%81%EC%8B%A0%EC%9C%BC%EB%A1%9C%20%EB%8F%8C%ED%8C%8C%EA%B5%AC%EB%A5%BC%20%EC%B0%BE%EB%8B%A4.%20Welo_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업의 전략들</div>
@@ -1020,7 +1013,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/099_%EB%AF%B8%EA%B5%AD%EC%9D%98%20SaaS%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%EC%9D%84%20%ED%99%95%EB%B3%B4%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/099_%25EB%25AF%25B8%25EA%25B5%25AD%25EC%259D%2598%2520SaaS%2520%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%25EC%2597%2585%25EC%259D%2580%2520%25EC%2596%25B4%25EB%2596%25BB%25EA%25B2%258C%2520%25EC%25B4%2588%25EA%25B8%25B0%2520%25EA%25B3%25A0%25EA%25B0%259D%25EC%259D%2584%2520%25ED%2599%2595%25EB%25B3%25B4%25ED%2595%25A0%25EA%25B9%258C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/099_%EB%AF%B8%EA%B5%AD%EC%9D%98%20SaaS%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%EC%9D%84%20%ED%99%95%EB%B3%B4%ED%95%A0%EA%B9%8C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">대한민국 스타트업 미국진출을 묻다</div>
@@ -1030,7 +1023,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/100_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%20%EB%A6%AC%EB%B7%B0%EB%A5%BC%20%EC%9D%BD%EA%B3%A0%20%EA%B0%90%EB%8F%99%EC%9D%84%20%E3%85%9C.%E3%85%9C.html" class="card-item" data-category="기획자로 시작하기">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/100_%25EA%25B8%25B0%25ED%259A%258D%25EC%259E%2590%25EC%259D%2598%2520%25EC%25A7%2588%25EB%25AC%25B8%25EB%25B2%2595%2520%25EB%25A6%25AC%25EB%25B7%25B0%25EB%25A5%25BC%2520%25EC%259D%25BD%25EA%25B3%25A0%2520%25EA%25B0%2590%25EB%258F%2599%25EC%259D%2584%2520%25E3%2585%259C.%25E3%2585%259C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/100_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%20%EB%A6%AC%EB%B7%B0%EB%A5%BC%20%EC%9D%BD%EA%B3%A0%20%EA%B0%90%EB%8F%99%EC%9D%84%20%E3%85%9C.%E3%85%9C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자로 시작하기</div>
@@ -1040,7 +1033,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/101_%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%20%EC%A3%BC%EA%B8%B0%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EA%B2%B0%EC%A0%95%ED%95%A0%20%EA%B2%83%EC%9D%B8%EA%B0%80.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/101_%25EC%258A%25A4%25ED%2594%2584%25EB%25A6%25B0%25ED%258A%25B8%2520%25EC%25A3%25BC%25EA%25B8%25B0%2520%25EC%2596%25B4%25EB%2596%25BB%25EA%25B2%258C%2520%25EA%25B2%25B0%25EC%25A0%2595%25ED%2595%25A0%2520%25EA%25B2%2583%25EC%259D%25B8%25EA%25B0%2580_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/101_%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%20%EC%A3%BC%EA%B8%B0%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EA%B2%B0%EC%A0%95%ED%95%A0%20%EA%B2%83%EC%9D%B8%EA%B0%80_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
@@ -1050,7 +1043,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/102_%EA%B9%A8%EB%81%97%ED%95%9C%20%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%2C%20Clean%20UI%EC%9D%98%20%EB%B0%98%EC%A0%84.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/102_%25EA%25B9%25A8%25EB%2581%2597%25ED%2595%259C%2520%25EC%259D%25B8%25ED%2584%25B0%25ED%258E%2598%25EC%259D%25B4%25EC%258A%25A4%252C%2520Clean%2520UI%25EC%259D%2598%2520%25EB%25B0%2598%25EC%25A0%2584_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/102_%EA%B9%A8%EB%81%97%ED%95%9C%20%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%2C%20Clean%20UI%EC%9D%98%20%EB%B0%98%EC%A0%84_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -1060,7 +1053,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/103_ZeRO%2C%20%EB%A9%94%EB%AA%A8%EB%A6%AC%EC%B5%9C%EC%A0%81%ED%99%94%EB%A1%9C%20AI%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EB%84%93%ED%9E%88%EB%8B%A4.html" class="card-item" data-category="AI의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/103_ZeRO%252C%2520%25EB%25A9%2594%25EB%25AA%25A8%25EB%25A6%25AC%25EC%25B5%259C%25EC%25A0%2581%25ED%2599%2594%25EB%25A1%259C%2520AI%2520%25EB%25B9%2584%25EC%25A6%2588%25EB%258B%2588%25EC%258A%25A4%25EC%259D%2598%2520%25ED%2595%259C%25EA%25B3%2584%25EB%25A5%25BC%2520%25EB%2584%2593%25ED%259E%2588%25EB%258B%25A4_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/103_ZeRO%2C%20%EB%A9%94%EB%AA%A8%EB%A6%AC%EC%B5%9C%EC%A0%81%ED%99%94%EB%A1%9C%20AI%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EB%84%93%ED%9E%88%EB%8B%A4_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">AI의 언어들</div>
@@ -1070,7 +1063,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/104_%EA%B0%80%EC%B9%98%EC%82%AC%EC%8A%AC%20%EB%B6%84%EC%84%9D%2C%20%EB%8F%88%EC%9D%B4%20%EB%A7%8C%EB%93%A4%EC%96%B4%EC%A7%80%EB%8A%94%20%EC%A7%80%EC%A0%90%EC%9D%84%20%EC%B0%BE%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획자의 프레임웍">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/104_%25EA%25B0%2580%25EC%25B9%2598%25EC%2582%25AC%25EC%258A%25AC%2520%25EB%25B6%2584%25EC%2584%259D%252C%2520%25EB%258F%2588%25EC%259D%25B4%2520%25EB%25A7%258C%25EB%2593%25A4%25EC%2596%25B4%25EC%25A7%2580%25EB%258A%2594%2520%25EC%25A7%2580%25EC%25A0%2590%25EC%259D%2584%2520%25EC%25B0%25BE%25EB%258A%2594%2520%25EB%25B2%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/104_%EA%B0%80%EC%B9%98%EC%82%AC%EC%8A%AC%20%EB%B6%84%EC%84%9D%2C%20%EB%8F%88%EC%9D%B4%20%EB%A7%8C%EB%93%A4%EC%96%B4%EC%A7%80%EB%8A%94%20%EC%A7%80%EC%A0%90%EC%9D%84%20%EC%B0%BE%EB%8A%94%20%EB%B2%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자의 프레임웍</div>
@@ -1080,7 +1073,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/105_%27%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%27%20%EB%B6%81%ED%86%A0%ED%81%AC%EC%97%90%20%EC%97%AC%EB%9F%AC%EB%B6%84%EC%9D%84%20%EC%B4%88%EB%8C%80%ED%95%A9%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/105_%2527%25EA%25B8%25B0%25ED%259A%258D%25EC%259E%2590%25EC%259D%2598%2520%25EC%25A7%2588%25EB%25AC%25B8%25EB%25B2%2595%2527%2520%25EB%25B6%2581%25ED%2586%25A0%25ED%2581%25AC%25EC%2597%2590%2520%25EC%2597%25AC%25EB%259F%25AC%25EB%25B6%2584%25EC%259D%2584%2520%25EC%25B4%2588%25EB%258C%2580%25ED%2595%25A9%25EB%258B%2588%25EB%258B%25A4._cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/105_%27%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%27%20%EB%B6%81%ED%86%A0%ED%81%AC%EC%97%90%20%EC%97%AC%EB%9F%AC%EB%B6%84%EC%9D%84%20%EC%B4%88%EB%8C%80%ED%95%A9%EB%8B%88%EB%8B%A4._cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -1090,17 +1083,17 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/106_2%EC%B2%9C%EB%A7%8C%EC%9B%90%EC%9C%BC%EB%A1%9C%2010%EC%96%B5%EC%9B%90%20%EB%A7%A4%EC%B6%9C%EC%9D%84%2C%20%EC%95%88%ED%8B%B0%EB%A9%94%ED%83%88%EC%9D%98%20%EB%B0%94%EC%9D%B4%EB%9F%B4%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업의 전략들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/106_2%25EC%25B2%259C%25EB%25A7%258C%25EC%259B%2590%25EC%259C%25BC%25EB%25A1%259C%252010%25EC%2596%25B5%25EC%259B%2590%2520%25EB%25A7%25A4%25EC%25B6%259C%25EC%259D%2584%252C%2520%25EC%2595%2588%25ED%258B%25B0%25EB%25A9%2594%25ED%2583%2588%25EC%259D%2598%2520%25EB%25B0%2594%25EC%259D%25B4%25EB%259F%25B4%25EC%25A0%2584%25EB%259E%25B5_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/106_2%EC%B2%9C%EB%A7%8C%EC%9B%90%EC%9C%BC%EB%A1%9C%2010%EC%96%B5%EC%9B%90%20%EB%A7%A4%EC%B6%9C%EC%9D%84%2C%20%EC%95%88%ED%8B%B0%EB%A9%94%ED%83%88%EC%9D%98%20%EB%B0%94%EC%9D%B4%EB%9F%B4%EC%A0%84%EB%9E%B5_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업의 전략들</div>
                 <h3 class="card-title">천만원으로 10억원 매출을, 안티메탈의 바이럴전략</h3>
             </div>
-            <div class="card-date"></div>
+            <div class="card-date">Jun 16. 2025</div>
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/107_YC%20%EC%A1%B8%EC%97%85%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EB%93%A4%EC%9D%98%20%EA%B3%B5%ED%86%B5%EB%90%9C%20%EC%84%B1%EC%9E%A5%20%EA%B3%B5%EC%8B%9D.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/107_YC%2520%25EC%25A1%25B8%25EC%2597%2585%2520%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%25EC%2597%2585%25EB%2593%25A4%25EC%259D%2598%2520%25EA%25B3%25B5%25ED%2586%25B5%25EB%2590%259C%2520%25EC%2584%25B1%25EC%259E%25A5%2520%25EA%25B3%25B5%25EC%258B%259D_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/107_YC%20%EC%A1%B8%EC%97%85%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EB%93%A4%EC%9D%98%20%EA%B3%B5%ED%86%B5%EB%90%9C%20%EC%84%B1%EC%9E%A5%20%EA%B3%B5%EC%8B%9D_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">대한민국 스타트업 미국진출을 묻다</div>
@@ -1110,7 +1103,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/108_%27%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%2827Qs%29%27%EC%9D%98%20%EB%B9%84%EB%B0%80.html" class="card-item" data-category="기획자로 시작하기">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/108_%2527%25EA%25B8%25B0%25ED%259A%258D%25EC%259E%2590%25EC%259D%2598%2520%25EC%25A7%2588%25EB%25AC%25B8%25EB%25B2%2595%252827Qs%2529%2527%25EC%259D%2598%2520%25EB%25B9%2584%25EB%25B0%2580_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/108_%27%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%2827Qs%29%27%EC%9D%98%20%EB%B9%84%EB%B0%80_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자로 시작하기</div>
@@ -1120,7 +1113,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/109_%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B8%B0%EB%B0%98%20PO%2C%20IT%EC%84%B1%EC%9E%A5%EC%9D%98%20%ED%95%B5%EC%8B%AC%20%EC%97%94%EC%A7%84.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/109_%25EB%258D%25B0%25EC%259D%25B4%25ED%2584%25B0%2520%25EA%25B8%25B0%25EB%25B0%2598%2520PO%252C%2520IT%25EC%2584%25B1%25EC%259E%25A5%25EC%259D%2598%2520%25ED%2595%25B5%25EC%258B%25AC%2520%25EC%2597%2594%25EC%25A7%2584_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/109_%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B8%B0%EB%B0%98%20PO%2C%20IT%EC%84%B1%EC%9E%A5%EC%9D%98%20%ED%95%B5%EC%8B%AC%20%EC%97%94%EC%A7%84_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
@@ -1130,7 +1123,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/110_%EA%B7%B8%EB%A6%AC%EB%93%9C%20%EC%8B%9C%EC%8A%A4%ED%85%9C%2C%20%EA%B5%AC%EA%B8%80%20%EC%95%A0%ED%94%8C%EC%9D%B4%20%EC%82%AC%EB%9E%91%ED%95%9C%20%EA%B2%A9%EC%9E%90%20%EA%B5%AC%EC%A1%B0.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/110_%25EA%25B7%25B8%25EB%25A6%25AC%25EB%2593%259C%2520%25EC%258B%259C%25EC%258A%25A4%25ED%2585%259C%252C%2520%25EA%25B5%25AC%25EA%25B8%2580%2520%25EC%2595%25A0%25ED%2594%258C%25EC%259D%25B4%2520%25EC%2582%25AC%25EB%259E%2591%25ED%2595%259C%2520%25EA%25B2%25A9%25EC%259E%2590%2520%25EA%25B5%25AC%25EC%25A1%25B0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/110_%EA%B7%B8%EB%A6%AC%EB%93%9C%20%EC%8B%9C%EC%8A%A4%ED%85%9C%2C%20%EA%B5%AC%EA%B8%80%20%EC%95%A0%ED%94%8C%EC%9D%B4%20%EC%82%AC%EB%9E%91%ED%95%9C%20%EA%B2%A9%EC%9E%90%20%EA%B5%AC%EC%A1%B0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -1140,7 +1133,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/111_AI%ED%95%99%EC%8A%B5%20%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%20%EC%82%BC%EA%B5%AD%EC%A7%80%20AWSGoogleAzure.html" class="card-item" data-category="AI의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/111_AI%25ED%2595%2599%25EC%258A%25B5%2520%25ED%2581%25B4%25EB%259D%25BC%25EC%259A%25B0%25EB%2593%259C%2520%25EC%2582%25BC%25EA%25B5%25AD%25EC%25A7%2580%2520AWSGoogleAzure_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/111_AI%ED%95%99%EC%8A%B5%20%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%20%EC%82%BC%EA%B5%AD%EC%A7%80%20AWSGoogleAzure_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">AI의 언어들</div>
@@ -1150,7 +1143,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/112_%27%ED%8F%AC%ED%84%B0%EC%9D%98%205%20Forces%27%20%EC%A0%84%EC%9F%81%ED%84%B0%EB%A5%BC%20%EB%B6%84%EC%84%9D%ED%95%98%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획자의 프레임웍">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/112_%2527%25ED%258F%25AC%25ED%2584%25B0%25EC%259D%2598%25205%2520Forces%2527%2520%25EC%25A0%2584%25EC%259F%2581%25ED%2584%25B0%25EB%25A5%25BC%2520%25EB%25B6%2584%25EC%2584%259D%25ED%2595%2598%25EB%258A%2594%2520%25EB%25B2%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/112_%27%ED%8F%AC%ED%84%B0%EC%9D%98%205%20Forces%27%20%EC%A0%84%EC%9F%81%ED%84%B0%EB%A5%BC%20%EB%B6%84%EC%84%9D%ED%95%98%EB%8A%94%20%EB%B2%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자의 프레임웍</div>
@@ -1160,7 +1153,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/113_%27%EC%BB%A4%EC%84%9C%20AI%27%EC%9D%98%20AI%20%ED%98%91%EB%A0%A5%EC%9E%90%20%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업의 전략들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/113_%2527%25EC%25BB%25A4%25EC%2584%259C%2520AI%2527%25EC%259D%2598%2520AI%2520%25ED%2598%2591%25EB%25A0%25A5%25EC%259E%2590%2520%25EC%25A0%2584%25EB%259E%25B5_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/113_%27%EC%BB%A4%EC%84%9C%20AI%27%EC%9D%98%20AI%20%ED%98%91%EB%A0%A5%EC%9E%90%20%EC%A0%84%EB%9E%B5_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업의 전략들</div>
@@ -1170,7 +1163,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/114_%EC%B1%85%EC%9D%84%20%EC%93%B0%EB%A9%B4%EC%84%9C%20%EB%8A%90%EB%82%80%20%EA%B2%83%EB%93%A4.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/114_%25EC%25B1%2585%25EC%259D%2584%2520%25EC%2593%25B0%25EB%25A9%25B4%25EC%2584%259C%2520%25EB%258A%2590%25EB%2582%2580%2520%25EA%25B2%2583%25EB%2593%25A4..._cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/114_%EC%B1%85%EC%9D%84%20%EC%93%B0%EB%A9%B4%EC%84%9C%20%EB%8A%90%EB%82%80%20%EA%B2%83%EB%93%A4..._cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -1180,7 +1173,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/115_%EB%AF%B8%EA%B5%AD%20%EC%86%8C%EB%B9%84%EC%9E%90%EB%8A%94%20%EC%A7%84%EC%A7%9C%20%27%EB%8B%AC%EB%9D%BC%27.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/115_%25EB%25AF%25B8%25EA%25B5%25AD%2520%25EC%2586%258C%25EB%25B9%2584%25EC%259E%2590%25EB%258A%2594%2520%25EC%25A7%2584%25EC%25A7%259C%2520%2527%25EB%258B%25AC%25EB%259D%25BC%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/115_%EB%AF%B8%EA%B5%AD%20%EC%86%8C%EB%B9%84%EC%9E%90%EB%8A%94%20%EC%A7%84%EC%A7%9C%20%27%EB%8B%AC%EB%9D%BC%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">대한민국 스타트업 미국진출을 묻다</div>
@@ -1190,7 +1183,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/116_%EA%B8%B0%ED%9A%8D%EC%9D%B4%20%EC%82%AC%EB%9E%8C%EC%9D%84%20%EC%9B%80%EC%A7%81%EC%9D%B4%EB%8A%94%20%EC%9D%BC%EC%9D%B8%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="기획자로 시작하기">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/116_%25EA%25B8%25B0%25ED%259A%258D%25EC%259D%25B4%2520%25EC%2582%25AC%25EB%259E%258C%25EC%259D%2584%2520%25EC%259B%2580%25EC%25A7%2581%25EC%259D%25B4%25EB%258A%2594%2520%25EC%259D%25BC%25EC%259D%25B8%2520%25EC%259D%25B4%25EC%259C%25A0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/116_%EA%B8%B0%ED%9A%8D%EC%9D%B4%20%EC%82%AC%EB%9E%8C%EC%9D%84%20%EC%9B%80%EC%A7%81%EC%9D%B4%EB%8A%94%20%EC%9D%BC%EC%9D%B8%20%EC%9D%B4%EC%9C%A0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자로 시작하기</div>
@@ -1200,7 +1193,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/117_AI%EA%B0%80%20PO%EB%A5%BC%20%EB%8C%80%EC%B2%B4%ED%95%9C%EB%8B%A4%20%EB%B3%80%ED%99%94%EC%97%90%EC%84%9C%20PO%EA%B0%80%20%EC%82%B4%EC%95%84%EB%82%A8%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/117_AI%25EA%25B0%2580%2520PO%25EB%25A5%25BC%2520%25EB%258C%2580%25EC%25B2%25B4%25ED%2595%259C%25EB%258B%25A4%2520%25EB%25B3%2580%25ED%2599%2594%25EC%2597%2590%25EC%2584%259C%2520PO%25EA%25B0%2580%2520%25EC%2582%25B4%25EC%2595%2584%25EB%2582%25A8%25EB%258A%2594%2520%25EB%25B2%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/117_AI%EA%B0%80%20PO%EB%A5%BC%20%EB%8C%80%EC%B2%B4%ED%95%9C%EB%8B%A4%20%EB%B3%80%ED%99%94%EC%97%90%EC%84%9C%20PO%EA%B0%80%20%EC%82%B4%EC%95%84%EB%82%A8%EB%8A%94%20%EB%B2%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
@@ -1210,7 +1203,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/118_%27%ED%9B%8C%EB%A5%AD%ED%95%9C%20%EC%A7%88%EB%AC%B8%EC%9D%B4%EB%84%A4%EC%9A%94%21%27%20AI%EC%9D%98%20%EC%B9%AD%EC%B0%AC%20UX%EC%9D%98%20%EC%A7%84%EC%8B%A4.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/118_%2527%25ED%259B%258C%25EB%25A5%25AD%25ED%2595%259C%2520%25EC%25A7%2588%25EB%25AC%25B8%25EC%259D%25B4%25EB%2584%25A4%25EC%259A%2594%2521%2527%2520AI%25EC%259D%2598%2520%25EC%25B9%25AD%25EC%25B0%25AC%2520UX%25EC%259D%2598%2520%25EC%25A7%2584%25EC%258B%25A4_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/118_%27%ED%9B%8C%EB%A5%AD%ED%95%9C%20%EC%A7%88%EB%AC%B8%EC%9D%B4%EB%84%A4%EC%9A%94%21%27%20AI%EC%9D%98%20%EC%B9%AD%EC%B0%AC%20UX%EC%9D%98%20%EC%A7%84%EC%8B%A4_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -1220,7 +1213,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/119_%EC%84%B1%EA%B3%BC%EB%A5%BC%20%EC%A2%8C%EC%9A%B0%ED%95%98%EB%8A%94%2C%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EB%B3%91%EB%A0%AC%ED%99%94%20vs%20%EB%AA%A8%EB%8D%B8%20%EB%B3%91%EB%A0%AC%ED%99%94.html" class="card-item" data-category="AI의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/119_%25EC%2584%25B1%25EA%25B3%25BC%25EB%25A5%25BC%2520%25EC%25A2%258C%25EC%259A%25B0%25ED%2595%2598%25EB%258A%2594%252C%2520%25EB%258D%25B0%25EC%259D%25B4%25ED%2584%25B0%2520%25EB%25B3%2591%25EB%25A0%25AC%25ED%2599%2594%2520vs%2520%25EB%25AA%25A8%25EB%258D%25B8%2520%25EB%25B3%2591%25EB%25A0%25AC%25ED%2599%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/119_%EC%84%B1%EA%B3%BC%EB%A5%BC%20%EC%A2%8C%EC%9A%B0%ED%95%98%EB%8A%94%2C%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EB%B3%91%EB%A0%AC%ED%99%94%20vs%20%EB%AA%A8%EB%8D%B8%20%EB%B3%91%EB%A0%AC%ED%99%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">AI의 언어들</div>
@@ -1230,7 +1223,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/120_UX%205%20Planes%2C%20%EA%B2%BD%ED%97%98%20%EC%84%A4%EA%B3%84%EC%9D%98%20%EC%A7%80%EB%8F%84.html" class="card-item" data-category="기획자의 프레임웍">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/120_UX%25205%2520Planes%252C%2520%25EA%25B2%25BD%25ED%2597%2598%2520%25EC%2584%25A4%25EA%25B3%2584%25EC%259D%2598%2520%25EC%25A7%2580%25EB%258F%2584_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/120_UX%205%20Planes%2C%20%EA%B2%BD%ED%97%98%20%EC%84%A4%EA%B3%84%EC%9D%98%20%EC%A7%80%EB%8F%84_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자의 프레임웍</div>
@@ -1240,7 +1233,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/121_%EC%9E%91%EA%B2%8C%20%EC%8B%9C%EC%9E%91%ED%95%B4%20%ED%81%AC%EA%B2%8C%20%ED%84%B0%ED%8A%B8%EB%A6%AC%EB%8A%94%20Slack%EC%9D%98%20%EC%B4%88%EA%B8%B0%EB%A7%88%EC%BC%80%ED%8C%85%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업의 전략들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/121_%25EC%259E%2591%25EA%25B2%258C%2520%25EC%258B%259C%25EC%259E%2591%25ED%2595%25B4%2520%25ED%2581%25AC%25EA%25B2%258C%2520%25ED%2584%25B0%25ED%258A%25B8%25EB%25A6%25AC%25EB%258A%2594%2520Slack%25EC%259D%2598%2520%25EC%25B4%2588%25EA%25B8%25B0%25EB%25A7%2588%25EC%25BC%2580%25ED%258C%2585%25EC%25A0%2584%25EB%259E%25B5_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/121_%EC%9E%91%EA%B2%8C%20%EC%8B%9C%EC%9E%91%ED%95%B4%20%ED%81%AC%EA%B2%8C%20%ED%84%B0%ED%8A%B8%EB%A6%AC%EB%8A%94%20Slack%EC%9D%98%20%EC%B4%88%EA%B8%B0%EB%A7%88%EC%BC%80%ED%8C%85%EC%A0%84%EB%9E%B5_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업의 전략들</div>
@@ -1250,7 +1243,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/122_%EB%AF%B8%EA%B5%AD%20%EC%A7%84%EC%B6%9C%EC%9D%80%20%EB%88%84%EA%B5%AC%EC%97%90%EA%B2%8C%20%ED%95%84%EC%9A%94%ED%95%9C%20%EC%A0%84%EB%9E%B5%EC%9D%B8%EA%B0%80.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/122_%25EB%25AF%25B8%25EA%25B5%25AD%2520%25EC%25A7%2584%25EC%25B6%259C%25EC%259D%2580%2520%25EB%2588%2584%25EA%25B5%25AC%25EC%2597%2590%25EA%25B2%258C%2520%25ED%2595%2584%25EC%259A%2594%25ED%2595%259C%2520%25EC%25A0%2584%25EB%259E%25B5%25EC%259D%25B8%25EA%25B0%2580_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/122_%EB%AF%B8%EA%B5%AD%20%EC%A7%84%EC%B6%9C%EC%9D%80%20%EB%88%84%EA%B5%AC%EC%97%90%EA%B2%8C%20%ED%95%84%EC%9A%94%ED%95%9C%20%EC%A0%84%EB%9E%B5%EC%9D%B8%EA%B0%80_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">대한민국 스타트업 미국진출을 묻다</div>
@@ -1260,7 +1253,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/123_%EA%B8%B0%ED%9A%8D%EC%9D%80%20%EC%96%B4%EB%96%A0%ED%95%9C%20%EC%A7%88%EB%AC%B8%EB%93%A4%EB%A1%9C%20%EC%9D%B4%EB%A3%A8%EC%96%B4%EC%A7%88%EA%B9%8C.html" class="card-item" data-category="기획자로 시작하기">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/123_%25EA%25B8%25B0%25ED%259A%258D%25EC%259D%2580%2520%25EC%2596%25B4%25EB%2596%25A0%25ED%2595%259C%2520%25EC%25A7%2588%25EB%25AC%25B8%25EB%2593%25A4%25EB%25A1%259C%2520%25EC%259D%25B4%25EB%25A3%25A8%25EC%2596%25B4%25EC%25A7%2588%25EA%25B9%258C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/123_%EA%B8%B0%ED%9A%8D%EC%9D%80%20%EC%96%B4%EB%96%A0%ED%95%9C%20%EC%A7%88%EB%AC%B8%EB%93%A4%EB%A1%9C%20%EC%9D%B4%EB%A3%A8%EC%96%B4%EC%A7%88%EA%B9%8C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자로 시작하기</div>
@@ -1270,7 +1263,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/124_DevOps%2C%20%EA%B0%9C%EB%B0%9C%EA%B3%BC%20%EC%9A%B4%EC%98%81%EC%9D%98%20%EA%B2%BD%EA%B3%84%EB%A5%BC%20%ED%97%88%EB%AC%BC%EB%8B%A4.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/124_DevOps%252C%2520%25EA%25B0%259C%25EB%25B0%259C%25EA%25B3%25BC%2520%25EC%259A%25B4%25EC%2598%2581%25EC%259D%2598%2520%25EA%25B2%25BD%25EA%25B3%2584%25EB%25A5%25BC%2520%25ED%2597%2588%25EB%25AC%25BC%25EB%258B%25A4_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/124_DevOps%2C%20%EA%B0%9C%EB%B0%9C%EA%B3%BC%20%EC%9A%B4%EC%98%81%EC%9D%98%20%EA%B2%BD%EA%B3%84%EB%A5%BC%20%ED%97%88%EB%AC%BC%EB%8B%A4_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
@@ -1280,7 +1273,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/125_%ED%9E%88%ED%8A%B8%EB%A7%B5%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%ED%96%89%EB%8F%99%EC%9D%84%20%EC%83%89%EC%9C%BC%EB%A1%9C%20%EC%9D%BD%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/125_%25ED%259E%2588%25ED%258A%25B8%25EB%25A7%25B5%252C%2520%25EC%2582%25AC%25EC%259A%25A9%25EC%259E%2590%2520%25ED%2596%2589%25EB%258F%2599%25EC%259D%2584%2520%25EC%2583%2589%25EC%259C%25BC%25EB%25A1%259C%2520%25EC%259D%25BD%25EB%258A%2594%2520%25EB%25B2%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/125_%ED%9E%88%ED%8A%B8%EB%A7%B5%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%ED%96%89%EB%8F%99%EC%9D%84%20%EC%83%89%EC%9C%BC%EB%A1%9C%20%EC%9D%BD%EB%8A%94%20%EB%B2%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -1290,7 +1283,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/126_%EC%B2%AB%20%EC%B1%85%EC%9D%84%20%EC%B6%9C%EA%B0%84%ED%96%88%EC%8A%B5%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/126_%25EC%25B2%25AB%2520%25EC%25B1%2585%25EC%259D%2584%2520%25EC%25B6%259C%25EA%25B0%2584%25ED%2596%2588%25EC%258A%25B5%25EB%258B%2588%25EB%258B%25A4._cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/126_%EC%B2%AB%20%EC%B1%85%EC%9D%84%20%EC%B6%9C%EA%B0%84%ED%96%88%EC%8A%B5%EB%8B%88%EB%8B%A4._cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -1300,7 +1293,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/127_%EB%B6%84%EC%82%B0%20%ED%95%99%EC%8A%B5%2C%20AI%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EA%B2%BD%EC%9F%81%EB%A0%A5%EC%9D%84%20%EC%A2%8C%EC%9A%B0%ED%95%98%EB%8A%94%20%ED%95%B5%EC%8B%AC%20%EA%B8%B0%EC%88%A0.html" class="card-item" data-category="AI의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/127_%25EB%25B6%2584%25EC%2582%25B0%2520%25ED%2595%2599%25EC%258A%25B5%252C%2520AI%2520%25EB%25B9%2584%25EC%25A6%2588%25EB%258B%2588%25EC%258A%25A4%2520%25EA%25B2%25BD%25EC%259F%2581%25EB%25A0%25A5%25EC%259D%2584%2520%25EC%25A2%258C%25EC%259A%25B0%25ED%2595%2598%25EB%258A%2594%2520%25ED%2595%25B5%25EC%258B%25AC%2520%25EA%25B8%25B0%25EC%2588%25A0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/127_%EB%B6%84%EC%82%B0%20%ED%95%99%EC%8A%B5%2C%20AI%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EA%B2%BD%EC%9F%81%EB%A0%A5%EC%9D%84%20%EC%A2%8C%EC%9A%B0%ED%95%98%EB%8A%94%20%ED%95%B5%EC%8B%AC%20%EA%B8%B0%EC%88%A0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">AI의 언어들</div>
@@ -1310,7 +1303,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/128_%EA%B3%A0%EA%B0%9D%EC%9D%80%20%EC%A0%9C%ED%92%88%EC%9D%84%20%27%EA%B3%A0%EC%9A%A9%27%ED%95%9C%EB%8B%A4.%20%27JTBD%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D%27.html" class="card-item" data-category="기획자의 프레임웍">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/128_%25EA%25B3%25A0%25EA%25B0%259D%25EC%259D%2580%2520%25EC%25A0%259C%25ED%2592%2588%25EC%259D%2584%2520%2527%25EA%25B3%25A0%25EC%259A%25A9%2527%25ED%2595%259C%25EB%258B%25A4.%2520%2527JTBD%25ED%2594%2584%25EB%25A0%2588%25EC%259E%2584%25EC%259B%258D%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/128_%EA%B3%A0%EA%B0%9D%EC%9D%80%20%EC%A0%9C%ED%92%88%EC%9D%84%20%27%EA%B3%A0%EC%9A%A9%27%ED%95%9C%EB%8B%A4.%20%27JTBD%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자의 프레임웍</div>
@@ -1320,7 +1313,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/129_Dropbox%EC%9D%98%20%EB%AC%B4%EB%A3%8C%EC%97%90%EC%84%9C%20%EC%9C%A0%EB%A3%8C%EB%A1%9C%EC%9D%98%20%EC%A0%84%ED%99%98%20%EB%B9%84%EB%B2%95.html" class="card-item" data-category="스타트업의 전략들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/129_Dropbox%25EC%259D%2598%2520%25EB%25AC%25B4%25EB%25A3%258C%25EC%2597%2590%25EC%2584%259C%2520%25EC%259C%25A0%25EB%25A3%258C%25EB%25A1%259C%25EC%259D%2598%2520%25EC%25A0%2584%25ED%2599%2598%2520%25EB%25B9%2584%25EB%25B2%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/129_Dropbox%EC%9D%98%20%EB%AC%B4%EB%A3%8C%EC%97%90%EC%84%9C%20%EC%9C%A0%EB%A3%8C%EB%A1%9C%EC%9D%98%20%EC%A0%84%ED%99%98%20%EB%B9%84%EB%B2%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업의 전략들</div>
@@ -1330,7 +1323,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/130_%EC%99%9C%20%ED%95%9C%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%EB%AF%B8%EA%B5%AD%20%EC%A7%84%EC%B6%9C%EC%9D%84%20%EA%BF%88%EA%BE%B8%EB%8A%94%EA%B0%80.html" class="card-item" data-category="대한민국 스타트업 미국진출을 묻다">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/130_%25EC%2599%259C%2520%25ED%2595%259C%25EA%25B5%25AD%2520%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%25EC%2597%2585%25EC%259D%2580%2520%25EB%25AF%25B8%25EA%25B5%25AD%2520%25EC%25A7%2584%25EC%25B6%259C%25EC%259D%2584%2520%25EA%25BF%2588%25EA%25BE%25B8%25EB%258A%2594%25EA%25B0%2580_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/130_%EC%99%9C%20%ED%95%9C%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%EB%AF%B8%EA%B5%AD%20%EC%A7%84%EC%B6%9C%EC%9D%84%20%EA%BF%88%EA%BE%B8%EB%8A%94%EA%B0%80_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">대한민국 스타트업 미국진출을 묻다</div>
@@ -1340,7 +1333,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/131_%EC%99%9C%20%EC%96%B4%EB%A0%A4%EC%9A%B4%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%84%20%EB%A7%88%EB%8B%A4%ED%95%98%EC%A7%80%20%EC%95%8A%EC%95%98%EC%9D%84%EA%B9%8C.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/131_%25EC%2599%259C%2520%25EC%2596%25B4%25EB%25A0%25A4%25EC%259A%25B4%2520%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%25EC%2597%2585%25EC%259D%2584%2520%25EB%25A7%2588%25EB%258B%25A4%25ED%2595%2598%25EC%25A7%2580%2520%25EC%2595%258A%25EC%2595%2598%25EC%259D%2584%25EA%25B9%258C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/131_%EC%99%9C%20%EC%96%B4%EB%A0%A4%EC%9A%B4%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%84%20%EB%A7%88%EB%8B%A4%ED%95%98%EC%A7%80%20%EC%95%8A%EC%95%98%EC%9D%84%EA%B9%8C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -1350,7 +1343,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/132_PM%2C%20PL%2C%20TPM%EC%9D%98%20%EC%B0%A8%EC%9D%B4%20%ED%95%9C%EB%88%88%EC%97%90%20%EB%B3%B4%EA%B8%B0.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/132_PM%252C%2520PL%252C%2520TPM%25EC%259D%2598%2520%25EC%25B0%25A8%25EC%259D%25B4%2520%25ED%2595%259C%25EB%2588%2588%25EC%2597%2590%2520%25EB%25B3%25B4%25EA%25B8%25B0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/132_PM%2C%20PL%2C%20TPM%EC%9D%98%20%EC%B0%A8%EC%9D%B4%20%ED%95%9C%EB%88%88%EC%97%90%20%EB%B3%B4%EA%B8%B0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
@@ -1360,7 +1353,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/133_Drop-off%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B0%80%20%EB%96%A0%EB%82%98%EB%8A%94%20%EC%88%9C%EA%B0%84%EC%9D%84%20%ED%8F%AC%EC%B0%A9%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/133_Drop-off%252C%2520%25EC%2582%25AC%25EC%259A%25A9%25EC%259E%2590%25EA%25B0%2580%2520%25EB%2596%25A0%25EB%2582%2598%25EB%258A%2594%2520%25EC%2588%259C%25EA%25B0%2584%25EC%259D%2584%2520%25ED%258F%25AC%25EC%25B0%25A9%25ED%2595%2598%25EB%258A%2594%2520%25EB%25B0%25A9%25EB%25B2%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/133_Drop-off%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B0%80%20%EB%96%A0%EB%82%98%EB%8A%94%20%EC%88%9C%EA%B0%84%EC%9D%84%20%ED%8F%AC%EC%B0%A9%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -1370,7 +1363,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/134_AI%20%EB%AA%A8%EB%8D%B8%EC%9D%98%20%ED%95%99%EC%83%9D%EA%B3%BC%20%EC%A1%B8%EC%97%85%EC%83%9D%2C%20%ED%95%99%EC%8A%B5%EA%B3%BC%20%EC%B6%94%EB%A1%A0%EC%9D%98%20%EC%B0%A8%EC%9D%B4%EC%A0%90.html" class="card-item" data-category="AI의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/134_AI%2520%25EB%25AA%25A8%25EB%258D%25B8%25EC%259D%2598%2520%25ED%2595%2599%25EC%2583%259D%25EA%25B3%25BC%2520%25EC%25A1%25B8%25EC%2597%2585%25EC%2583%259D%252C%2520%25ED%2595%2599%25EC%258A%25B5%25EA%25B3%25BC%2520%25EC%25B6%2594%25EB%25A1%25A0%25EC%259D%2598%2520%25EC%25B0%25A8%25EC%259D%25B4%25EC%25A0%2590_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/134_AI%20%EB%AA%A8%EB%8D%B8%EC%9D%98%20%ED%95%99%EC%83%9D%EA%B3%BC%20%EC%A1%B8%EC%97%85%EC%83%9D%2C%20%ED%95%99%EC%8A%B5%EA%B3%BC%20%EC%B6%94%EB%A1%A0%EC%9D%98%20%EC%B0%A8%EC%9D%B4%EC%A0%90_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">AI의 언어들</div>
@@ -1380,7 +1373,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/135_%EC%A0%9C%ED%92%88%EC%9D%98%20%EC%83%9D%EB%AA%85%EC%84%A0%2C%20Retention%20Curve.html" class="card-item" data-category="기획자의 프레임웍">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/135_%25EC%25A0%259C%25ED%2592%2588%25EC%259D%2598%2520%25EC%2583%259D%25EB%25AA%2585%25EC%2584%25A0%252C%2520Retention%2520Curve_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/135_%EC%A0%9C%ED%92%88%EC%9D%98%20%EC%83%9D%EB%AA%85%EC%84%A0%2C%20Retention%20Curve_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자의 프레임웍</div>
@@ -1390,7 +1383,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/136_%EB%82%B4%EA%B0%80%20%EA%B2%AA%EB%8A%94%20%EB%B6%88%ED%8E%B8%ED%95%A8%EC%9D%B4%20%EC%82%AC%EC%97%85%20%EC%95%84%EC%9D%B4%ED%85%9C%EC%9D%B4%EB%8B%A4%2C%20%27%EB%94%94%EC%8A%A4%EC%BD%94%EB%93%9C%27.html" class="card-item" data-category="스타트업의 전략들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/136_%25EB%2582%25B4%25EA%25B0%2580%2520%25EA%25B2%25AA%25EB%258A%2594%2520%25EB%25B6%2588%25ED%258E%25B8%25ED%2595%25A8%25EC%259D%25B4%2520%25EC%2582%25AC%25EC%2597%2585%2520%25EC%2595%2584%25EC%259D%25B4%25ED%2585%259C%25EC%259D%25B4%25EB%258B%25A4%252C%2520%2527%25EB%2594%2594%25EC%258A%25A4%25EC%25BD%2594%25EB%2593%259C%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/136_%EB%82%B4%EA%B0%80%20%EA%B2%AA%EB%8A%94%20%EB%B6%88%ED%8E%B8%ED%95%A8%EC%9D%B4%20%EC%82%AC%EC%97%85%20%EC%95%84%EC%9D%B4%ED%85%9C%EC%9D%B4%EB%8B%A4%2C%20%27%EB%94%94%EC%8A%A4%EC%BD%94%EB%93%9C%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업의 전략들</div>
@@ -1400,7 +1393,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/137_Perplexity5%20%EC%9E%90%EC%B2%B4%20%EA%B5%AC%EC%B6%95%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EB%A1%9C%EB%93%9C%EB%A7%B5.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/137_Perplexity5%2520%25EC%259E%2590%25EC%25B2%25B4%2520%25EA%25B5%25AC%25EC%25B6%2595%25EC%259D%2584%2520%25EC%259C%2584%25ED%2595%259C%2520%25EB%25A1%259C%25EB%2593%259C%25EB%25A7%25B5_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/137_Perplexity5%20%EC%9E%90%EC%B2%B4%20%EA%B5%AC%EC%B6%95%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EB%A1%9C%EB%93%9C%EB%A7%B5_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -1410,7 +1403,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/138_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%BD%94%EC%B9%AD%20%EB%8B%A4%EC%9D%B4%EC%96%B4%EB%A6%AC%202025%201.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/138_%25EC%258B%25AC%25ED%2594%258C%25EB%25A6%25AC%25ED%258C%258C%25EC%259D%25B4%25EC%2596%25B4%2520%25EC%25BD%2594%25EC%25B9%25AD%2520%25EB%258B%25A4%25EC%259D%25B4%25EC%2596%25B4%25EB%25A6%25AC%25202025%25201_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/138_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%BD%94%EC%B9%AD%20%EB%8B%A4%EC%9D%B4%EC%96%B4%EB%A6%AC%202025%201_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -1420,7 +1413,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/139_%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8%20%EB%A7%A4%EB%8B%88%EC%A0%80%20vs%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%A7%A4%EB%8B%88%EC%A0%80%EC%9D%98%20%EC%B0%A8%EC%9D%B4%EB%8A%94.html" class="card-item" data-category="Be the PO">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/139_%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%25A8%2520%25EB%25A7%25A4%25EB%258B%2588%25EC%25A0%2580%2520vs%2520%25ED%2594%2584%25EB%25A1%259C%25EC%25A0%259D%25ED%258A%25B8%2520%25EB%25A7%25A4%25EB%258B%2588%25EC%25A0%2580%25EC%259D%2598%2520%25EC%25B0%25A8%25EC%259D%25B4%25EB%258A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/139_%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8%20%EB%A7%A4%EB%8B%88%EC%A0%80%20vs%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%A7%A4%EB%8B%88%EC%A0%80%EC%9D%98%20%EC%B0%A8%EC%9D%B4%EB%8A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">Be the PO</div>
@@ -1430,7 +1423,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/140_%EC%96%B4%ED%8F%AC%EB%8D%98%EC%8A%A4%20%EC%9D%B4%20%EB%B2%84%ED%8A%BC%2C%20%EC%99%9C%20%EB%88%84%EB%A5%B4%EA%B3%A0%20%EC%8B%B6%EC%9D%84%EA%B9%8C%20%EA%B7%B8%20%EB%B9%84%EB%B0%80.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/140_%25EC%2596%25B4%25ED%258F%25AC%25EB%258D%2598%25EC%258A%25A4%2520%25EC%259D%25B4%2520%25EB%25B2%2584%25ED%258A%25BC%252C%2520%25EC%2599%259C%2520%25EB%2588%2584%25EB%25A5%25B4%25EA%25B3%25A0%2520%25EC%258B%25B6%25EC%259D%2584%25EA%25B9%258C%2520%25EA%25B7%25B8%2520%25EB%25B9%2584%25EB%25B0%2580_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/140_%EC%96%B4%ED%8F%AC%EB%8D%98%EC%8A%A4%20%EC%9D%B4%20%EB%B2%84%ED%8A%BC%2C%20%EC%99%9C%20%EB%88%84%EB%A5%B4%EA%B3%A0%20%EC%8B%B6%EC%9D%84%EA%B9%8C%20%EA%B7%B8%20%EB%B9%84%EB%B0%80_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -1440,7 +1433,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/141_AI%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%84%BC%ED%84%B0%20%ED%98%88%EA%B4%80%2C%20InfiniBandNVLink.html" class="card-item" data-category="AI의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/141_AI%25EB%258D%25B0%25EC%259D%25B4%25ED%2584%25B0%25EC%2584%25BC%25ED%2584%25B0%2520%25ED%2598%2588%25EA%25B4%2580%252C%2520InfiniBandNVLink_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/141_AI%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%84%BC%ED%84%B0%20%ED%98%88%EA%B4%80%2C%20InfiniBandNVLink_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">AI의 언어들</div>
@@ -1450,7 +1443,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/142_%27%EC%BD%94%ED%98%B8%ED%8A%B8%20%EB%B6%84%EC%84%9D%27%20%ED%8F%89%EA%B7%A0%EC%9D%98%20%ED%95%A8%EC%A0%95%EC%97%90%EC%84%9C%20%EB%B2%97%EC%96%B4%EB%82%98%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획자의 프레임웍">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/142_%2527%25EC%25BD%2594%25ED%2598%25B8%25ED%258A%25B8%2520%25EB%25B6%2584%25EC%2584%259D%2527%2520%25ED%258F%2589%25EA%25B7%25A0%25EC%259D%2598%2520%25ED%2595%25A8%25EC%25A0%2595%25EC%2597%2590%25EC%2584%259C%2520%25EB%25B2%2597%25EC%2596%25B4%25EB%2582%2598%25EB%258A%2594%2520%25EB%25B2%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/142_%27%EC%BD%94%ED%98%B8%ED%8A%B8%20%EB%B6%84%EC%84%9D%27%20%ED%8F%89%EA%B7%A0%EC%9D%98%20%ED%95%A8%EC%A0%95%EC%97%90%EC%84%9C%20%EB%B2%97%EC%96%B4%EB%82%98%EB%8A%94%20%EB%B2%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자의 프레임웍</div>
@@ -1460,7 +1453,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/143_%EC%97%90%EC%96%B4%EB%A7%A4%ED%8A%B8%EC%97%90%EC%84%9C%20%EC%8B%9C%EC%9E%91%EB%90%9C%2C%20%EC%97%90%EC%96%B4%EB%B9%84%EC%95%A4%EB%B9%84%EC%9D%98%20%EB%AC%B4%EC%9E%90%EB%B3%B8%20%EC%B0%BD%EC%97%85%20%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업의 전략들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/143_%25EC%2597%2590%25EC%2596%25B4%25EB%25A7%25A4%25ED%258A%25B8%25EC%2597%2590%25EC%2584%259C%2520%25EC%258B%259C%25EC%259E%2591%25EB%2590%259C%252C%2520%25EC%2597%2590%25EC%2596%25B4%25EB%25B9%2584%25EC%2595%25A4%25EB%25B9%2584%25EC%259D%2598%2520%25EB%25AC%25B4%25EC%259E%2590%25EB%25B3%25B8%2520%25EC%25B0%25BD%25EC%2597%2585%2520%25EC%25A0%2584%25EB%259E%25B5_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/143_%EC%97%90%EC%96%B4%EB%A7%A4%ED%8A%B8%EC%97%90%EC%84%9C%20%EC%8B%9C%EC%9E%91%EB%90%9C%2C%20%EC%97%90%EC%96%B4%EB%B9%84%EC%95%A4%EB%B9%84%EC%9D%98%20%EB%AC%B4%EC%9E%90%EB%B3%B8%20%EC%B0%BD%EC%97%85%20%EC%A0%84%EB%9E%B5_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업의 전략들</div>
@@ -1470,7 +1463,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/144_Perplexity4%20%EB%8C%80%ED%99%94%ED%98%95%20UX%20%EA%B5%AC%EC%A1%B0%EC%99%80%20%EC%BF%BC%EB%A6%AC%20%EB%B6%84%EA%B8%B0.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/144_Perplexity4%2520%25EB%258C%2580%25ED%2599%2594%25ED%2598%2595%2520UX%2520%25EA%25B5%25AC%25EC%25A1%25B0%25EC%2599%2580%2520%25EC%25BF%25BC%25EB%25A6%25AC%2520%25EB%25B6%2584%25EA%25B8%25B0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/144_Perplexity4%20%EB%8C%80%ED%99%94%ED%98%95%20UX%20%EA%B5%AC%EC%A1%B0%EC%99%80%20%EC%BF%BC%EB%A6%AC%20%EB%B6%84%EA%B8%B0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -1480,7 +1473,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/145_%EC%9A%B4%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%B0%BE%EC%95%84%EC%98%AC%EA%B9%8C.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/145_%25EC%259A%25B4%25EC%259D%2580%2520%25EC%2596%25B4%25EB%2596%25BB%25EA%25B2%258C%2520%25EC%25B0%25BE%25EC%2595%2584%25EC%2598%25AC%25EA%25B9%258C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/145_%EC%9A%B4%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%B0%BE%EC%95%84%EC%98%AC%EA%B9%8C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -1490,7 +1483,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/146_%EB%A6%B0%EA%B3%BC%20%EC%95%A0%EC%9E%90%EC%9D%BC%2C%20%EC%9A%B0%EB%A6%AC%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%97%94%20%EC%96%B4%EB%96%A4%20%EA%B1%B8%20%ED%95%B4%EC%95%BC%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/146_%25EB%25A6%25B0%25EA%25B3%25BC%2520%25EC%2595%25A0%25EC%259E%2590%25EC%259D%25BC%252C%2520%25EC%259A%25B0%25EB%25A6%25AC%2520%25ED%2594%2584%25EB%25A1%259C%25EC%25A0%259D%25ED%258A%25B8%25EC%2597%2594%2520%25EC%2596%25B4%25EB%2596%25A4%2520%25EA%25B1%25B8%2520%25ED%2595%25B4%25EC%2595%25BC%25ED%2595%25A0%25EA%25B9%258C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/146_%EB%A6%B0%EA%B3%BC%20%EC%95%A0%EC%9E%90%EC%9D%BC%2C%20%EC%9A%B0%EB%A6%AC%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%97%94%20%EC%96%B4%EB%96%A4%20%EA%B1%B8%20%ED%95%B4%EC%95%BC%ED%95%A0%EA%B9%8C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
@@ -1500,7 +1493,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/147_%EC%95%B1%20%EC%84%B1%EB%8A%A5%EA%B3%BC%20UX%EC%B5%9C%EC%A0%81%ED%99%94%EA%B0%80%20%EB%A7%A4%EC%B6%9C%EC%9D%84%20%EC%A2%8C%EC%9A%B0%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/147_%25EC%2595%25B1%2520%25EC%2584%25B1%25EB%258A%25A5%25EA%25B3%25BC%2520UX%25EC%25B5%259C%25EC%25A0%2581%25ED%2599%2594%25EA%25B0%2580%2520%25EB%25A7%25A4%25EC%25B6%259C%25EC%259D%2584%2520%25EC%25A2%258C%25EC%259A%25B0%25ED%2595%2598%25EB%258A%2594%2520%25EC%259D%25B4%25EC%259C%25A0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/147_%EC%95%B1%20%EC%84%B1%EB%8A%A5%EA%B3%BC%20UX%EC%B5%9C%EC%A0%81%ED%99%94%EA%B0%80%20%EB%A7%A4%EC%B6%9C%EC%9D%84%20%EC%A2%8C%EC%9A%B0%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -1510,7 +1503,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/148_AI%EB%AA%A8%EB%8D%B8%20%ED%95%99%EC%8A%B5%EC%97%90%20%EB%82%A0%EA%B0%9C%EB%A5%BC%20%EB%8B%AC%EC%9E%90%21%20%ED%98%BC%ED%95%A9%20%EC%A0%95%EB%B0%80%EB%8F%84%EC%9D%98%20%EB%A7%88%EB%B2%95.html" class="card-item" data-category="AI의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/148_AI%25EB%25AA%25A8%25EB%258D%25B8%2520%25ED%2595%2599%25EC%258A%25B5%25EC%2597%2590%2520%25EB%2582%25A0%25EA%25B0%259C%25EB%25A5%25BC%2520%25EB%258B%25AC%25EC%259E%2590%2521%2520%25ED%2598%25BC%25ED%2595%25A9%2520%25EC%25A0%2595%25EB%25B0%2580%25EB%258F%2584%25EC%259D%2598%2520%25EB%25A7%2588%25EB%25B2%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/148_AI%EB%AA%A8%EB%8D%B8%20%ED%95%99%EC%8A%B5%EC%97%90%20%EB%82%A0%EA%B0%9C%EB%A5%BC%20%EB%8B%AC%EC%9E%90%21%20%ED%98%BC%ED%95%A9%20%EC%A0%95%EB%B0%80%EB%8F%84%EC%9D%98%20%EB%A7%88%EB%B2%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">AI의 언어들</div>
@@ -1520,7 +1513,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/149_%27Lean%20Canvas%27%20%ED%95%98%EB%A3%A8%EB%A7%8C%EC%97%90%20%EA%B7%B8%EB%A6%AC%EB%8A%94%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%B2%AD%EC%82%AC%EC%A7%84.html" class="card-item" data-category="기획자의 프레임웍">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/149_%2527Lean%2520Canvas%2527%2520%25ED%2595%2598%25EB%25A3%25A8%25EB%25A7%258C%25EC%2597%2590%2520%25EA%25B7%25B8%25EB%25A6%25AC%25EB%258A%2594%2520%25EB%25B9%2584%25EC%25A6%2588%25EB%258B%2588%25EC%258A%25A4%25EC%25B2%25AD%25EC%2582%25AC%25EC%25A7%2584_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/149_%27Lean%20Canvas%27%20%ED%95%98%EB%A3%A8%EB%A7%8C%EC%97%90%20%EA%B7%B8%EB%A6%AC%EB%8A%94%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%B2%AD%EC%82%AC%EC%A7%84_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자의 프레임웍</div>
@@ -1530,7 +1523,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/150_Slack%EC%9D%98%20%EC%9C%A0%EB%A3%8C%EC%A0%84%ED%99%98%EC%9D%98%20%EB%A7%A4%EC%A7%81%20%EB%AA%A8%EB%A8%BC%ED%8A%B8.html" class="card-item" data-category="스타트업의 전략들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/150_Slack%25EC%259D%2598%2520%25EC%259C%25A0%25EB%25A3%258C%25EC%25A0%2584%25ED%2599%2598%25EC%259D%2598%2520%25EB%25A7%25A4%25EC%25A7%2581%2520%25EB%25AA%25A8%25EB%25A8%25BC%25ED%258A%25B8_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/150_Slack%EC%9D%98%20%EC%9C%A0%EB%A3%8C%EC%A0%84%ED%99%98%EC%9D%98%20%EB%A7%A4%EC%A7%81%20%EB%AA%A8%EB%A8%BC%ED%8A%B8_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업의 전략들</div>
@@ -1540,17 +1533,17 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/151_Perplexity%203%20%EA%B2%80%EC%83%89%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%EA%B5%AC%EC%A1%B0%20%EC%84%A4%EA%B3%84.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/151_Perplexity%25203%2520%25EA%25B2%2580%25EC%2583%2589%2520%25EC%258B%259C%25EC%258A%25A4%25ED%2585%259C%25EC%259D%2598%2520%25EA%25B5%25AC%25EC%25A1%25B0%2520%25EC%2584%25A4%25EA%25B3%2584_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/151_Perplexity%203%20%EA%B2%80%EC%83%89%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%EA%B5%AC%EC%A1%B0%20%EC%84%A4%EA%B3%84_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
                 <h3 class="card-title">Perplexity 3 검색 시스템의 구조 설계</h3>
             </div>
-            <div class="card-date">May 4. 2025</div>
+            <div class="card-date">Apr 20. 2025</div>
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/152_%EC%9E%90%EC%82%B4%EC%B9%B4%ED%8E%98%20%EC%9A%B4%EC%98%81%EC%9E%90%EB%A5%BC%20%EB%A7%8C%EB%82%98%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/152_%25EC%259E%2590%25EC%2582%25B4%25EC%25B9%25B4%25ED%258E%2598%2520%25EC%259A%25B4%25EC%2598%2581%25EC%259E%2590%25EB%25A5%25BC%2520%25EB%25A7%258C%25EB%2582%2598%25EB%258B%25A4._cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/152_%EC%9E%90%EC%82%B4%EC%B9%B4%ED%8E%98%20%EC%9A%B4%EC%98%81%EC%9E%90%EB%A5%BC%20%EB%A7%8C%EB%82%98%EB%8B%A4._cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -1560,7 +1553,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/153_%EB%82%AD%EB%B9%84%EB%8A%94%20%EC%A4%84%EC%9D%B4%EA%B3%A0%20%EA%B0%80%EC%B9%98%EB%8A%94%20%EB%86%92%EC%9D%B4%EB%8A%94%20%27%EB%A6%B0%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B4%80%EB%A6%AC%27.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/153_%25EB%2582%25AD%25EB%25B9%2584%25EB%258A%2594%2520%25EC%25A4%2584%25EC%259D%25B4%25EA%25B3%25A0%2520%25EA%25B0%2580%25EC%25B9%2598%25EB%258A%2594%2520%25EB%2586%2592%25EC%259D%25B4%25EB%258A%2594%2520%2527%25EB%25A6%25B0%2520%25ED%2594%2584%25EB%25A1%259C%25EC%25A0%259D%25ED%258A%25B8%2520%25EA%25B4%2580%25EB%25A6%25AC%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/153_%EB%82%AD%EB%B9%84%EB%8A%94%20%EC%A4%84%EC%9D%B4%EA%B3%A0%20%EA%B0%80%EC%B9%98%EB%8A%94%20%EB%86%92%EC%9D%B4%EB%8A%94%20%27%EB%A6%B0%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B4%80%EB%A6%AC%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
@@ -1570,7 +1563,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/154_%EB%86%93%EC%B9%98%EB%A9%B4%20%ED%9B%84%ED%9A%8C%ED%95%A0%20%EA%B1%B0%EC%95%BC%21%20%20FOMO%20UX.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/154_%25EB%2586%2593%25EC%25B9%2598%25EB%25A9%25B4%2520%25ED%259B%2584%25ED%259A%258C%25ED%2595%25A0%2520%25EA%25B1%25B0%25EC%2595%25BC%2521%2520%2520FOMO%2520UX_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/154_%EB%86%93%EC%B9%98%EB%A9%B4%20%ED%9B%84%ED%9A%8C%ED%95%A0%20%EA%B1%B0%EC%95%BC%21%20%20FOMO%20UX_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -1580,7 +1573,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/155_AI%20%EC%9D%B8%ED%94%84%EB%9D%BC%20%EB%B9%84%EC%9A%A9%20%EC%A0%88%EA%B0%90%EC%9D%98%20%EB%B9%84%EB%B0%80%2C%20%ED%9D%AC%EC%86%8C%20%EC%97%B0%EC%82%B0%EA%B3%BC%20%EA%B0%80%EC%A7%80%EC%B9%98%EA%B8%B0.html" class="card-item" data-category="AI의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/155_AI%2520%25EC%259D%25B8%25ED%2594%2584%25EB%259D%25BC%2520%25EB%25B9%2584%25EC%259A%25A9%2520%25EC%25A0%2588%25EA%25B0%2590%25EC%259D%2598%2520%25EB%25B9%2584%25EB%25B0%2580%252C%2520%25ED%259D%25AC%25EC%2586%258C%2520%25EC%2597%25B0%25EC%2582%25B0%25EA%25B3%25BC%2520%25EA%25B0%2580%25EC%25A7%2580%25EC%25B9%2598%25EA%25B8%25B0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/155_AI%20%EC%9D%B8%ED%94%84%EB%9D%BC%20%EB%B9%84%EC%9A%A9%20%EC%A0%88%EA%B0%90%EC%9D%98%20%EB%B9%84%EB%B0%80%2C%20%ED%9D%AC%EC%86%8C%20%EC%97%B0%EC%82%B0%EA%B3%BC%20%EA%B0%80%EC%A7%80%EC%B9%98%EA%B8%B0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">AI의 언어들</div>
@@ -1590,7 +1583,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/156_%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%9D%BC%EB%A9%B4%20%EA%BC%AD%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%20LTVCAC%EC%9D%98%EC%A7%84%EC%A7%9C%20%EC%9D%98%EB%AF%B8.html" class="card-item" data-category="기획자의 프레임웍">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/156_%25EA%25B8%25B0%25ED%259A%258D%25EC%259E%2590%25EB%259D%25BC%25EB%25A9%25B4%2520%25EA%25BC%25AD%2520%25EC%2595%258C%25EC%2595%2584%25EC%2595%25BC%2520%25ED%2595%25A0%2520LTVCAC%25EC%259D%2598%25EC%25A7%2584%25EC%25A7%259C%2520%25EC%259D%2598%25EB%25AF%25B8_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/156_%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%9D%BC%EB%A9%B4%20%EA%BC%AD%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%20LTVCAC%EC%9D%98%EC%A7%84%EC%A7%9C%20%EC%9D%98%EB%AF%B8_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자의 프레임웍</div>
@@ -1600,7 +1593,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/157_%EC%8B%9C%EA%B0%81%EC%A0%81%20%EC%86%8C%ED%86%B5%EC%9D%98%20%EB%8C%80%ED%91%9C%EC%A3%BC%EC%9E%90%2C%20%ED%95%80%ED%84%B0%EB%A0%88%EC%8A%A4%ED%8A%B8%EC%9D%98%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B8%B0%EB%B0%98%20%EC%84%B1%EC%9E%A5.html" class="card-item" data-category="스타트업의 전략들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/157_%25EC%258B%259C%25EA%25B0%2581%25EC%25A0%2581%2520%25EC%2586%258C%25ED%2586%25B5%25EC%259D%2598%2520%25EB%258C%2580%25ED%2591%259C%25EC%25A3%25BC%25EC%259E%2590%252C%2520%25ED%2595%2580%25ED%2584%25B0%25EB%25A0%2588%25EC%258A%25A4%25ED%258A%25B8%25EC%259D%2598%2520%25EB%258D%25B0%25EC%259D%25B4%25ED%2584%25B0%2520%25EA%25B8%25B0%25EB%25B0%2598%2520%25EC%2584%25B1%25EC%259E%25A5_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/157_%EC%8B%9C%EA%B0%81%EC%A0%81%20%EC%86%8C%ED%86%B5%EC%9D%98%20%EB%8C%80%ED%91%9C%EC%A3%BC%EC%9E%90%2C%20%ED%95%80%ED%84%B0%EB%A0%88%EC%8A%A4%ED%8A%B8%EC%9D%98%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B8%B0%EB%B0%98%20%EC%84%B1%EC%9E%A5_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업의 전략들</div>
@@ -1610,7 +1603,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/158_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%93%A4%EC%9D%98%20%EB%B9%84%EB%B0%80%EC%84%9C%EC%9E%AC%20%27%EC%A1%B4%20%EB%8F%84%EC%96%B4%EC%9D%98%20OKR%27.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/158_%25ED%258A%25B8%25EB%25A0%2588%25EB%25B0%2594%25EB%25A6%25AC%2520%25EA%25B8%25B0%25ED%259A%258D%25EC%259E%2590%25EB%2593%25A4%25EC%259D%2598%2520%25EB%25B9%2584%25EB%25B0%2580%25EC%2584%259C%25EC%259E%25AC%2520%2527%25EC%25A1%25B4%2520%25EB%258F%2584%25EC%2596%25B4%25EC%259D%2598%2520OKR%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/158_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%93%A4%EC%9D%98%20%EB%B9%84%EB%B0%80%EC%84%9C%EC%9E%AC%20%27%EC%A1%B4%20%EB%8F%84%EC%96%B4%EC%9D%98%20OKR%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -1620,7 +1613,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/159_%EC%A7%84%EC%A0%95%ED%95%9C%20%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%20%EB%A6%AC%EB%8D%94%EC%8B%AD%EC%9D%B4%EB%9E%80.html" class="card-item" data-category="스타트업 리더의 기술">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/159_%25EC%25A7%2584%25EC%25A0%2595%25ED%2595%259C%2520%25ED%2594%2584%25EB%25A1%259C%25EB%258D%2595%25ED%258A%25B8%2520%25EB%25A6%25AC%25EB%258D%2594%25EC%258B%25AD%25EC%259D%25B4%25EB%259E%2580_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/159_%EC%A7%84%EC%A0%95%ED%95%9C%20%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%20%EB%A6%AC%EB%8D%94%EC%8B%AD%EC%9D%B4%EB%9E%80_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업 리더의 기술</div>
@@ -1630,7 +1623,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/160_%EA%B0%84%ED%8A%B8%20%EC%B0%A8%ED%8A%B8%2C%20PO%EC%9D%98%20%ED%95%84%EC%88%98%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B4%80%EB%A6%AC%20%EB%8F%84%EA%B5%AC.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/160_%25EA%25B0%2584%25ED%258A%25B8%2520%25EC%25B0%25A8%25ED%258A%25B8%252C%2520PO%25EC%259D%2598%2520%25ED%2595%2584%25EC%2588%2598%2520%25ED%2594%2584%25EB%25A1%259C%25EC%25A0%259D%25ED%258A%25B8%2520%25EA%25B4%2580%25EB%25A6%25AC%2520%25EB%258F%2584%25EA%25B5%25AC_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/160_%EA%B0%84%ED%8A%B8%20%EC%B0%A8%ED%8A%B8%2C%20PO%EC%9D%98%20%ED%95%84%EC%88%98%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B4%80%EB%A6%AC%20%EB%8F%84%EA%B5%AC_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
@@ -1640,7 +1633,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/161_%ED%9B%84%EA%B4%91%ED%9A%A8%EA%B3%BC%28Halo%20Effect%29%2C%20UX%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%98%20%EC%B2%AB%EC%9D%B8%EC%83%81.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/161_%25ED%259B%2584%25EA%25B4%2591%25ED%259A%25A8%25EA%25B3%25BC%2528Halo%2520Effect%2529%252C%2520UX%2520%25EB%2594%2594%25EC%259E%2590%25EC%259D%25B8%25EC%259D%2598%2520%25EC%25B2%25AB%25EC%259D%25B8%25EC%2583%2581_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/161_%ED%9B%84%EA%B4%91%ED%9A%A8%EA%B3%BC%28Halo%20Effect%29%2C%20UX%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%98%20%EC%B2%AB%EC%9D%B8%EC%83%81_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -1650,7 +1643,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/162_AI%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%EC%88%A8%EC%9D%80%20%EC%98%81%EC%9B%85%2C%20FP16%2C%20BF16%2C%20FP8.html" class="card-item" data-category="AI의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/162_AI%2520%25EC%2584%25B1%25EB%258A%25A5%25EC%259D%2598%2520%25EC%2588%25A8%25EC%259D%2580%2520%25EC%2598%2581%25EC%259B%2585%252C%2520FP16%252C%2520BF16%252C%2520FP8_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/162_AI%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%EC%88%A8%EC%9D%80%20%EC%98%81%EC%9B%85%2C%20FP16%2C%20BF16%2C%20FP8_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">AI의 언어들</div>
@@ -1660,7 +1653,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/163_%EA%B5%AC%EA%B8%80%EC%9D%B4%20%27AB%ED%85%8C%EC%8A%A4%ED%8A%B8%27%EB%A1%9C%202%EC%96%B5%20%EB%8B%AC%EB%9F%AC%EB%A5%BC%20%EC%B0%BD%EC%B6%9C%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95.html" class="card-item" data-category="기획자의 프레임웍">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/163_%25EA%25B5%25AC%25EA%25B8%2580%25EC%259D%25B4%2520%2527AB%25ED%2585%258C%25EC%258A%25A4%25ED%258A%25B8%2527%25EB%25A1%259C%25202%25EC%2596%25B5%2520%25EB%258B%25AC%25EB%259F%25AC%25EB%25A5%25BC%2520%25EC%25B0%25BD%25EC%25B6%259C%25ED%2595%2598%25EB%258A%2594%2520%25EB%25B0%25A9%25EB%25B2%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/163_%EA%B5%AC%EA%B8%80%EC%9D%B4%20%27AB%ED%85%8C%EC%8A%A4%ED%8A%B8%27%EB%A1%9C%202%EC%96%B5%20%EB%8B%AC%EB%9F%AC%EB%A5%BC%20%EC%B0%BD%EC%B6%9C%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자의 프레임웍</div>
@@ -1670,7 +1663,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/164_%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%20%EC%82%AC%EB%A1%80%EB%A1%9C%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%ED%95%B5%EC%8B%AC%20%EC%A7%80%ED%91%9C%20%EC%84%A4%EC%A0%95%EB%B2%95.html" class="card-item" data-category="스타트업의 전략들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/164_%25EB%2584%25B7%25ED%2594%258C%25EB%25A6%25AD%25EC%258A%25A4%2520%25EC%2582%25AC%25EB%25A1%2580%25EB%25A1%259C%2520%25EB%25B0%25B0%25EC%259A%25B0%25EB%258A%2594%2520%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%25EC%2597%2585%2520%25ED%2595%25B5%25EC%258B%25AC%2520%25EC%25A7%2580%25ED%2591%259C%2520%25EC%2584%25A4%25EC%25A0%2595%25EB%25B2%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/164_%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%20%EC%82%AC%EB%A1%80%EB%A1%9C%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%ED%95%B5%EC%8B%AC%20%EC%A7%80%ED%91%9C%20%EC%84%A4%EC%A0%95%EB%B2%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업의 전략들</div>
@@ -1680,7 +1673,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/165_Perplexity%202%20%EA%B2%80%EC%83%89%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%EA%B5%AC%EC%A1%B0%20%EC%84%A4%EA%B3%84.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/165_Perplexity%25202%2520%25EA%25B2%2580%25EC%2583%2589%2520%25EC%258B%259C%25EC%258A%25A4%25ED%2585%259C%25EC%259D%2598%2520%25EA%25B5%25AC%25EC%25A1%25B0%2520%25EC%2584%25A4%25EA%25B3%2584_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/165_Perplexity%202%20%EA%B2%80%EC%83%89%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%EA%B5%AC%EC%A1%B0%20%EC%84%A4%EA%B3%84_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -1690,7 +1683,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/166_%EA%B8%B0%EB%B6%84%20%EC%A2%8B%EC%9D%80%20%EB%A7%88%EB%A3%A8%20%EC%BB%A4%EB%84%A5%ED%8A%B8%20%EC%B2%AB%20%EB%A9%98%ED%86%A0%EB%A7%81.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/166_%25EA%25B8%25B0%25EB%25B6%2584%2520%25EC%25A2%258B%25EC%259D%2580%2520%25EB%25A7%2588%25EB%25A3%25A8%2520%25EC%25BB%25A4%25EB%2584%25A5%25ED%258A%25B8%2520%25EC%25B2%25AB%2520%25EB%25A9%2598%25ED%2586%25A0%25EB%25A7%2581_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/166_%EA%B8%B0%EB%B6%84%20%EC%A2%8B%EC%9D%80%20%EB%A7%88%EB%A3%A8%20%EC%BB%A4%EB%84%A5%ED%8A%B8%20%EC%B2%AB%20%EB%A9%98%ED%86%A0%EB%A7%81_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -1700,7 +1693,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/167_Perplexity%201%20%EA%B2%80%EC%83%89%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EB%84%98%EC%96%B4%EC%84%9C.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/167_Perplexity%25201%2520%25EA%25B2%2580%25EC%2583%2589%25EC%259D%2598%2520%25ED%2595%259C%25EA%25B3%2584%25EB%25A5%25BC%2520%25EB%2584%2598%25EC%2596%25B4%25EC%2584%259C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/167_Perplexity%201%20%EA%B2%80%EC%83%89%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EB%84%98%EC%96%B4%EC%84%9C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -1710,7 +1703,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/168_%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%98%20%EC%B8%A1%EC%A0%95%20%27%EC%97%90%EC%8A%A4%ED%8B%B0%EB%A9%94%EC%9D%B4%EC%85%98%27%EA%B3%BC%20%27%EC%8A%A4%ED%86%A0%EB%A6%AC%ED%8F%AC%EC%9D%B8%ED%8A%B8%27.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/168_%25EC%2595%25A0%25EC%259E%2590%25EC%259D%25BC%25EC%259D%2598%2520%25EC%25B8%25A1%25EC%25A0%2595%2520%2527%25EC%2597%2590%25EC%258A%25A4%25ED%258B%25B0%25EB%25A9%2594%25EC%259D%25B4%25EC%2585%2598%2527%25EA%25B3%25BC%2520%2527%25EC%258A%25A4%25ED%2586%25A0%25EB%25A6%25AC%25ED%258F%25AC%25EC%259D%25B8%25ED%258A%25B8%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/168_%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%98%20%EC%B8%A1%EC%A0%95%20%27%EC%97%90%EC%8A%A4%ED%8B%B0%EB%A9%94%EC%9D%B4%EC%85%98%27%EA%B3%BC%20%27%EC%8A%A4%ED%86%A0%EB%A6%AC%ED%8F%AC%EC%9D%B8%ED%8A%B8%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
@@ -1720,7 +1713,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/169_%27%EA%B2%B0%EC%A0%9C%ED%95%98%EA%B8%B0%27%20%EB%B2%84%ED%8A%BC%20%ED%95%98%EB%82%98%EB%A1%9C%20%EB%A7%A4%EC%B6%9C%EC%9D%84%20%EB%86%92%EC%9D%B4%EB%8A%94%20UX.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/169_%2527%25EA%25B2%25B0%25EC%25A0%259C%25ED%2595%2598%25EA%25B8%25B0%2527%2520%25EB%25B2%2584%25ED%258A%25BC%2520%25ED%2595%2598%25EB%2582%2598%25EB%25A1%259C%2520%25EB%25A7%25A4%25EC%25B6%259C%25EC%259D%2584%2520%25EB%2586%2592%25EC%259D%25B4%25EB%258A%2594%2520UX_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/169_%27%EA%B2%B0%EC%A0%9C%ED%95%98%EA%B8%B0%27%20%EB%B2%84%ED%8A%BC%20%ED%95%98%EB%82%98%EB%A1%9C%20%EB%A7%A4%EC%B6%9C%EC%9D%84%20%EB%86%92%EC%9D%B4%EB%8A%94%20UX_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -1730,7 +1723,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/170_AI%20%EC%84%B1%EB%8A%A5%EC%9D%84%20100%EB%B0%B0%20%EB%86%92%EC%9D%B4%EB%8A%94%20%EB%B9%84%EA%B2%B0%20TensorCores.html" class="card-item" data-category="AI의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/170_AI%2520%25EC%2584%25B1%25EB%258A%25A5%25EC%259D%2584%2520100%25EB%25B0%25B0%2520%25EB%2586%2592%25EC%259D%25B4%25EB%258A%2594%2520%25EB%25B9%2584%25EA%25B2%25B0%2520TensorCores_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/170_AI%20%EC%84%B1%EB%8A%A5%EC%9D%84%20100%EB%B0%B0%20%EB%86%92%EC%9D%B4%EB%8A%94%20%EB%B9%84%EA%B2%B0%20TensorCores_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">AI의 언어들</div>
@@ -1740,7 +1733,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/171_%27%ED%8D%BC%EB%84%90%20%EB%B6%84%EC%84%9D%27%20%EB%94%94%EC%A7%80%ED%84%B8%20%EC%8B%9C%EB%8C%80%EC%9D%98%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%B5%9C%EC%A0%81%ED%99%94%20%ED%95%B5%EC%8B%AC%20%EA%B8%B0%EC%88%A0.html" class="card-item" data-category="기획자의 프레임웍">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/171_%2527%25ED%258D%25BC%25EB%2584%2590%2520%25EB%25B6%2584%25EC%2584%259D%2527%2520%25EB%2594%2594%25EC%25A7%2580%25ED%2584%25B8%2520%25EC%258B%259C%25EB%258C%2580%25EC%259D%2598%2520%25EC%2582%25AC%25EC%259A%25A9%25EC%259E%2590%2520%25EC%25B5%259C%25EC%25A0%2581%25ED%2599%2594%2520%25ED%2595%25B5%25EC%258B%25AC%2520%25EA%25B8%25B0%25EC%2588%25A0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/171_%27%ED%8D%BC%EB%84%90%20%EB%B6%84%EC%84%9D%27%20%EB%94%94%EC%A7%80%ED%84%B8%20%EC%8B%9C%EB%8C%80%EC%9D%98%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%B5%9C%EC%A0%81%ED%99%94%20%ED%95%B5%EC%8B%AC%20%EA%B8%B0%EC%88%A0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자의 프레임웍</div>
@@ -1750,7 +1743,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/172_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%B0%BD%EC%97%85%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%ED%95%98%EB%82%98%EC%9A%94.html" class="card-item" data-category="스타트업의 전략들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/172_%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%25EC%2597%2585%2520%25EC%25B0%25BD%25EC%2597%2585%25EC%259D%2580%2520%25EC%2596%25B4%25EB%2596%25BB%25EA%25B2%258C%2520%25ED%2595%2598%25EB%2582%2598%25EC%259A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/172_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%B0%BD%EC%97%85%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%ED%95%98%EB%82%98%EC%9A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업의 전략들</div>
@@ -1760,7 +1753,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/173_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%205%20%ED%95%9C%EA%B5%AD%ED%98%95%20%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%20%EA%B0%80%EB%8A%A5%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/173_%2527%25ED%258C%2594%25EB%259E%2580%25ED%258B%25B0%25EC%2596%25B4%2527%25205%2520%25ED%2595%259C%25EA%25B5%25AD%25ED%2598%2595%2520%25ED%258C%2594%25EB%259E%2580%25ED%258B%25B0%25EC%2596%25B4%2520%25EA%25B0%2580%25EB%258A%25A5%25ED%2595%25A0%25EA%25B9%258C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/173_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%205%20%ED%95%9C%EA%B5%AD%ED%98%95%20%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%20%EA%B0%80%EB%8A%A5%ED%95%A0%EA%B9%8C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -1770,7 +1763,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/174_%EC%9D%B8%EC%9D%B4%20%EB%B0%B0%EA%B8%B8%20%EB%95%8C%EA%B9%8C%EC%A7%80.html" class="card-item" data-category="스타트업 리더의 기술">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/174_%25EC%259D%25B8%25EC%259D%25B4%2520%25EB%25B0%25B0%25EA%25B8%25B8%2520%25EB%2595%258C%25EA%25B9%258C%25EC%25A7%2580..._cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/174_%EC%9D%B8%EC%9D%B4%20%EB%B0%B0%EA%B8%B8%20%EB%95%8C%EA%B9%8C%EC%A7%80..._cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업 리더의 기술</div>
@@ -1780,7 +1773,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/175_%27%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%8A%A4%ED%86%A0%EB%A6%AC%27%20%EA%B8%B0%EB%8A%A5%EC%9D%B4%20%EC%95%84%EB%8B%8C%20%EA%B0%80%EC%B9%98%EB%A5%BC%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B9%84%EB%B0%80%20%EB%AC%B4%EA%B8%B0.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/175_%2527%25EC%2582%25AC%25EC%259A%25A9%25EC%259E%2590%2520%25EC%258A%25A4%25ED%2586%25A0%25EB%25A6%25AC%2527%2520%25EA%25B8%25B0%25EB%258A%25A5%25EC%259D%25B4%2520%25EC%2595%2584%25EB%258B%258C%2520%25EA%25B0%2580%25EC%25B9%2598%25EB%25A5%25BC%2520%25EB%25A7%258C%25EB%2593%259C%25EB%258A%2594%2520%25EB%25B9%2584%25EB%25B0%2580%2520%25EB%25AC%25B4%25EA%25B8%25B0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/175_%27%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%8A%A4%ED%86%A0%EB%A6%AC%27%20%EA%B8%B0%EB%8A%A5%EC%9D%B4%20%EC%95%84%EB%8B%8C%20%EA%B0%80%EC%B9%98%EB%A5%BC%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B9%84%EB%B0%80%20%EB%AC%B4%EA%B8%B0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
@@ -1790,7 +1783,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/176_%EC%83%89%EC%83%81%EC%9D%98%20%EC%8B%AC%EB%A6%AC%ED%95%99%2C%20UX%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%98%20%EC%88%A8%EC%9D%80%20%EB%AC%B4%EA%B8%B0.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/176_%25EC%2583%2589%25EC%2583%2581%25EC%259D%2598%2520%25EC%258B%25AC%25EB%25A6%25AC%25ED%2595%2599%252C%2520UX%2520%25EB%2594%2594%25EC%259E%2590%25EC%259D%25B8%25EC%259D%2598%2520%25EC%2588%25A8%25EC%259D%2580%2520%25EB%25AC%25B4%25EA%25B8%25B0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/176_%EC%83%89%EC%83%81%EC%9D%98%20%EC%8B%AC%EB%A6%AC%ED%95%99%2C%20UX%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%98%20%EC%88%A8%EC%9D%80%20%EB%AC%B4%EA%B8%B0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -1800,7 +1793,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/177_AI%20%EC%B9%A9%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%ED%95%B5%EC%8B%AC%2C%20FLOPS%EC%99%80%20TOPS%20%EA%B7%B8%EB%A6%AC%EA%B3%A0.html" class="card-item" data-category="AI의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/177_AI%2520%25EC%25B9%25A9%2520%25EC%2584%25B1%25EB%258A%25A5%25EC%259D%2598%2520%25ED%2595%25B5%25EC%258B%25AC%252C%2520FLOPS%25EC%2599%2580%2520TOPS%2520%25EA%25B7%25B8%25EB%25A6%25AC%25EA%25B3%25A0.._cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/177_AI%20%EC%B9%A9%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%ED%95%B5%EC%8B%AC%2C%20FLOPS%EC%99%80%20TOPS%20%EA%B7%B8%EB%A6%AC%EA%B3%A0.._cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">AI의 언어들</div>
@@ -1810,7 +1803,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/178_%27So%20What%2C%20Why%20So%27%20%EB%85%BC%EB%A6%AC%EC%97%90%20%EC%98%81%ED%98%BC%EC%9D%84%20%EB%B6%88%EC%96%B4%EB%84%A3%EB%8B%A4.html" class="card-item" data-category="기획자의 프레임웍">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/178_%2527So%2520What%252C%2520Why%2520So%2527%2520%25EB%2585%25BC%25EB%25A6%25AC%25EC%2597%2590%2520%25EC%2598%2581%25ED%2598%25BC%25EC%259D%2584%2520%25EB%25B6%2588%25EC%2596%25B4%25EB%2584%25A3%25EB%258B%25A4_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/178_%27So%20What%2C%20Why%20So%27%20%EB%85%BC%EB%A6%AC%EC%97%90%20%EC%98%81%ED%98%BC%EC%9D%84%20%EB%B6%88%EC%96%B4%EB%84%A3%EB%8B%A4_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자의 프레임웍</div>
@@ -1820,7 +1813,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/179_%EC%9D%B4%EB%A9%94%EC%9D%BC%EB%8F%84%20%ED%85%8C%EC%8A%AC%EB%9D%BC%EC%B2%98%EB%9F%BC%20%27Superhuman%27%20%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업의 전략들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/179_%25EC%259D%25B4%25EB%25A9%2594%25EC%259D%25BC%25EB%258F%2584%2520%25ED%2585%258C%25EC%258A%25AC%25EB%259D%25BC%25EC%25B2%2598%25EB%259F%25BC%2520%2527Superhuman%2527%2520%25ED%2594%2584%25EB%25A6%25AC%25EB%25AF%25B8%25EC%2597%2584%25EC%25A0%2584%25EB%259E%25B5_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/179_%EC%9D%B4%EB%A9%94%EC%9D%BC%EB%8F%84%20%ED%85%8C%EC%8A%AC%EB%9D%BC%EC%B2%98%EB%9F%BC%20%27Superhuman%27%20%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%EC%A0%84%EB%9E%B5_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업의 전략들</div>
@@ -1830,7 +1823,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/180_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%204%20Apollo%20%ED%98%81%EC%8B%A0%EC%9D%98%20%EB%B0%B0%ED%8F%AC%20%ED%94%8C%EB%9E%AB%ED%8F%BC.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/180_%2527%25ED%258C%2594%25EB%259E%2580%25ED%258B%25B0%25EC%2596%25B4%2527%25204%2520Apollo%2520%25ED%2598%2581%25EC%258B%25A0%25EC%259D%2598%2520%25EB%25B0%25B0%25ED%258F%25AC%2520%25ED%2594%258C%25EB%259E%25AB%25ED%258F%25BC_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/180_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%204%20Apollo%20%ED%98%81%EC%8B%A0%EC%9D%98%20%EB%B0%B0%ED%8F%AC%20%ED%94%8C%EB%9E%AB%ED%8F%BC_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -1840,7 +1833,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/181_%EC%B4%88%EA%B3%A0%EC%86%8D%20%EC%97%98%EB%A6%AC%EB%B2%A0%EC%9D%B4%ED%84%B0%EB%A5%BC%20%EC%98%AC%EB%9D%BC%ED%83%80%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/181_%25EC%25B4%2588%25EA%25B3%25A0%25EC%2586%258D%2520%25EC%2597%2598%25EB%25A6%25AC%25EB%25B2%25A0%25EC%259D%25B4%25ED%2584%25B0%25EB%25A5%25BC%2520%25EC%2598%25AC%25EB%259D%25BC%25ED%2583%2580%25EB%258A%2594%2520%25EB%25B2%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/181_%EC%B4%88%EA%B3%A0%EC%86%8D%20%EC%97%98%EB%A6%AC%EB%B2%A0%EC%9D%B4%ED%84%B0%EB%A5%BC%20%EC%98%AC%EB%9D%BC%ED%83%80%EB%8A%94%20%EB%B2%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -1850,7 +1843,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/182_%EC%95%A0%EC%9E%90%EC%9D%BC%20vs%20%EC%9B%8C%ED%84%B0%ED%8F%B4%2C%20PO%EA%B0%80%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%20%EB%AA%A8%EB%93%A0%20%EA%B2%83.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/182_%25EC%2595%25A0%25EC%259E%2590%25EC%259D%25BC%2520vs%2520%25EC%259B%258C%25ED%2584%25B0%25ED%258F%25B4%252C%2520PO%25EA%25B0%2580%2520%25EC%2595%258C%25EC%2595%2584%25EC%2595%25BC%2520%25ED%2595%25A0%2520%25EB%25AA%25A8%25EB%2593%25A0%2520%25EA%25B2%2583_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/182_%EC%95%A0%EC%9E%90%EC%9D%BC%20vs%20%EC%9B%8C%ED%84%B0%ED%8F%B4%2C%20PO%EA%B0%80%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%20%EB%AA%A8%EB%93%A0%20%EA%B2%83_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
@@ -1860,7 +1853,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/183_%EA%B2%8C%EC%9D%B4%EB%AF%B8%ED%94%BC%EC%BC%80%EC%9D%B4%EC%85%98UX%EB%A1%9C%20%EB%8F%99%EA%B8%B0%EB%B6%80%EC%97%AC%EB%A5%BC%20%EB%94%94%EC%9E%90%EC%9D%B8%ED%95%98%EB%8B%A4.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/183_%25EA%25B2%258C%25EC%259D%25B4%25EB%25AF%25B8%25ED%2594%25BC%25EC%25BC%2580%25EC%259D%25B4%25EC%2585%2598UX%25EB%25A1%259C%2520%25EB%258F%2599%25EA%25B8%25B0%25EB%25B6%2580%25EC%2597%25AC%25EB%25A5%25BC%2520%25EB%2594%2594%25EC%259E%2590%25EC%259D%25B8%25ED%2595%2598%25EB%258B%25A4_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/183_%EA%B2%8C%EC%9D%B4%EB%AF%B8%ED%94%BC%EC%BC%80%EC%9D%B4%EC%85%98UX%EB%A1%9C%20%EB%8F%99%EA%B8%B0%EB%B6%80%EC%97%AC%EB%A5%BC%20%EB%94%94%EC%9E%90%EC%9D%B8%ED%95%98%EB%8B%A4_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -1870,7 +1863,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/184_AI%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%EC%97%B4%EC%87%A0%2C%20HBM%EC%9D%80%20%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C.html" class="card-item" data-category="AI의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/184_AI%2520%25EC%2584%25B1%25EB%258A%25A5%25EC%259D%2598%2520%25EC%2597%25B4%25EC%2587%25A0%252C%2520HBM%25EC%259D%2580%2520%25EB%25AC%25B4%25EC%2597%2587%25EC%259D%25BC%25EA%25B9%258C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/184_AI%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%EC%97%B4%EC%87%A0%2C%20HBM%EC%9D%80%20%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">AI의 언어들</div>
@@ -1880,7 +1873,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/185_%EC%82%AC%EA%B3%A0%EC%9D%98%20%EC%A7%80%EB%8F%84%EB%A5%BC%20%EA%B7%B8%EB%A6%AC%EB%8A%94%20%EB%B2%95%20%27%EB%A1%9C%EC%A7%81%20%ED%8A%B8%EB%A6%AC%27.html" class="card-item" data-category="기획자의 프레임웍">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/185_%25EC%2582%25AC%25EA%25B3%25A0%25EC%259D%2598%2520%25EC%25A7%2580%25EB%258F%2584%25EB%25A5%25BC%2520%25EA%25B7%25B8%25EB%25A6%25AC%25EB%258A%2594%2520%25EB%25B2%2595%2520%2527%25EB%25A1%259C%25EC%25A7%2581%2520%25ED%258A%25B8%25EB%25A6%25AC%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/185_%EC%82%AC%EA%B3%A0%EC%9D%98%20%EC%A7%80%EB%8F%84%EB%A5%BC%20%EA%B7%B8%EB%A6%AC%EB%8A%94%20%EB%B2%95%20%27%EB%A1%9C%EC%A7%81%20%ED%8A%B8%EB%A6%AC%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자의 프레임웍</div>
@@ -1890,7 +1883,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/186_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%20%ED%99%95%EB%B3%B4%20%EC%A0%84%EB%9E%B5%20%27%EC%8A%A4%ED%8A%B8%EB%9D%BC%EC%9D%B4%ED%94%84%27.html" class="card-item" data-category="스타트업의 전략들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/186_%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%25EC%2597%2585%25EC%259D%2598%2520%25EC%25B4%2588%25EA%25B8%25B0%2520%25EA%25B3%25A0%25EA%25B0%259D%2520%25ED%2599%2595%25EB%25B3%25B4%2520%25EC%25A0%2584%25EB%259E%25B5%2520%2527%25EC%258A%25A4%25ED%258A%25B8%25EB%259D%25BC%25EC%259D%25B4%25ED%2594%2584%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/186_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%20%ED%99%95%EB%B3%B4%20%EC%A0%84%EB%9E%B5%20%27%EC%8A%A4%ED%8A%B8%EB%9D%BC%EC%9D%B4%ED%94%84%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업의 전략들</div>
@@ -1900,7 +1893,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/187_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%203%20Foundry%20%EA%B8%B0%EC%97%85%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%ED%94%8C%EB%9E%AB%ED%8F%BC.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/187_%2527%25ED%258C%2594%25EB%259E%2580%25ED%258B%25B0%25EC%2596%25B4%2527%25203%2520Foundry%2520%25EA%25B8%25B0%25EC%2597%2585%2520%25EB%258D%25B0%25EC%259D%25B4%25ED%2584%25B0%25EB%25B6%2584%25EC%2584%259D%25ED%2594%258C%25EB%259E%25AB%25ED%258F%25BC_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/187_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%203%20Foundry%20%EA%B8%B0%EC%97%85%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%ED%94%8C%EB%9E%AB%ED%8F%BC_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -1910,7 +1903,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/188_%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%EB%A6%AC%EB%8D%94%EA%B0%80%20%EA%BC%AD%20%EA%B0%80%EC%A0%B8%EC%95%BC%20%ED%95%A0%20%EA%B2%83%EC%9D%80.html" class="card-item" data-category="스타트업 리더의 기술">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/188_%25ED%2594%2584%25EB%25A1%259C%25EB%258D%2595%25ED%258A%25B8%25EB%25A6%25AC%25EB%258D%2594%25EA%25B0%2580%2520%25EA%25BC%25AD%2520%25EA%25B0%2580%25EC%25A0%25B8%25EC%2595%25BC%2520%25ED%2595%25A0%2520%25EA%25B2%2583%25EC%259D%2580_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/188_%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%EB%A6%AC%EB%8D%94%EA%B0%80%20%EA%BC%AD%20%EA%B0%80%EC%A0%B8%EC%95%BC%20%ED%95%A0%20%EA%B2%83%EC%9D%80_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업 리더의 기술</div>
@@ -1920,7 +1913,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/189_%EC%B9%B8%EB%B0%98%2C%20%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%98%20Just%20In%20Time.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/189_%25EC%25B9%25B8%25EB%25B0%2598%252C%2520%25EC%2595%25A0%25EC%259E%2590%25EC%259D%25BC%25EC%259D%2598%2520Just%2520In%2520Time_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/189_%EC%B9%B8%EB%B0%98%2C%20%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%98%20Just%20In%20Time_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
@@ -1930,7 +1923,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/190_%27%EC%8A%A4%ED%8B%B0%ED%82%A4%20UI%27%20%EC%8A%A4%ED%81%AC%EB%A1%A4%20%EC%86%8D%EC%97%90%EC%84%9C%20%EB%B9%9B%EB%82%98%EB%8A%94%20%EB%81%88%EC%A0%81%ED%95%9C%20%EA%B2%BD%ED%97%98.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/190_%2527%25EC%258A%25A4%25ED%258B%25B0%25ED%2582%25A4%2520UI%2527%2520%25EC%258A%25A4%25ED%2581%25AC%25EB%25A1%25A4%2520%25EC%2586%258D%25EC%2597%2590%25EC%2584%259C%2520%25EB%25B9%259B%25EB%2582%2598%25EB%258A%2594%2520%25EB%2581%2588%25EC%25A0%2581%25ED%2595%259C%2520%25EA%25B2%25BD%25ED%2597%2598_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/190_%27%EC%8A%A4%ED%8B%B0%ED%82%A4%20UI%27%20%EC%8A%A4%ED%81%AC%EB%A1%A4%20%EC%86%8D%EC%97%90%EC%84%9C%20%EB%B9%9B%EB%82%98%EB%8A%94%20%EB%81%88%EC%A0%81%ED%95%9C%20%EA%B2%BD%ED%97%98_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -1940,7 +1933,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/191_AI%ED%95%98%EB%93%9C%EC%9B%A8%EC%96%B4%2C%20GPU%EC%99%80%20NPU%20%EA%B7%B8%EB%A6%AC%EA%B3%A0%20FPGA%EC%9D%98%20%EC%B0%A8%EC%9D%B4%EC%A0%90.html" class="card-item" data-category="AI의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/191_AI%25ED%2595%2598%25EB%2593%259C%25EC%259B%25A8%25EC%2596%25B4%252C%2520GPU%25EC%2599%2580%2520NPU%2520%25EA%25B7%25B8%25EB%25A6%25AC%25EA%25B3%25A0%2520FPGA%25EC%259D%2598%2520%25EC%25B0%25A8%25EC%259D%25B4%25EC%25A0%2590_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/191_AI%ED%95%98%EB%93%9C%EC%9B%A8%EC%96%B4%2C%20GPU%EC%99%80%20NPU%20%EA%B7%B8%EB%A6%AC%EA%B3%A0%20FPGA%EC%9D%98%20%EC%B0%A8%EC%9D%B4%EC%A0%90_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">AI의 언어들</div>
@@ -1950,7 +1943,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/192_%27%EB%A7%A5%EB%AA%A8%EB%8B%9D%27%EC%9D%98%20%EB%B9%84%EB%B0%80%2C%20MECE%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC.html" class="card-item" data-category="기획자의 프레임웍">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/192_%2527%25EB%25A7%25A5%25EB%25AA%25A8%25EB%258B%259D%2527%25EC%259D%2598%2520%25EB%25B9%2584%25EB%25B0%2580%252C%2520MECE%2520%25ED%2594%2584%25EB%25A0%2588%25EC%259E%2584%25EC%259B%258C%25ED%2581%25AC_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/192_%27%EB%A7%A5%EB%AA%A8%EB%8B%9D%27%EC%9D%98%20%EB%B9%84%EB%B0%80%2C%20MECE%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자의 프레임웍</div>
@@ -1960,7 +1953,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/193_AI%EB%A1%9C%20UI%EA%B0%9C%EB%B0%9C%20%EC%86%8D%EB%8F%84%EB%A5%BC%2010%EB%B0%B0%EB%A1%9C%20%EB%A7%8C%EB%93%A4%EB%8B%A4.%20%27V0%27.html" class="card-item" data-category="스타트업의 전략들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/193_AI%25EB%25A1%259C%2520UI%25EA%25B0%259C%25EB%25B0%259C%2520%25EC%2586%258D%25EB%258F%2584%25EB%25A5%25BC%252010%25EB%25B0%25B0%25EB%25A1%259C%2520%25EB%25A7%258C%25EB%2593%25A4%25EB%258B%25A4.%2520%2527V0%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/193_AI%EB%A1%9C%20UI%EA%B0%9C%EB%B0%9C%20%EC%86%8D%EB%8F%84%EB%A5%BC%2010%EB%B0%B0%EB%A1%9C%20%EB%A7%8C%EB%93%A4%EB%8B%A4.%20%27V0%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업의 전략들</div>
@@ -1970,7 +1963,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/194_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%93%A4%EC%9D%98%20%EB%B9%84%EB%B0%80%EC%84%9C%EC%9E%AC%20%27%EC%83%9D%EA%B0%81%EC%9D%98%20%ED%83%84%EC%83%9D%27.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/194_%25ED%258A%25B8%25EB%25A0%2588%25EB%25B0%2594%25EB%25A6%25AC%2520%25EA%25B8%25B0%25ED%259A%258D%25EC%259E%2590%25EB%2593%25A4%25EC%259D%2598%2520%25EB%25B9%2584%25EB%25B0%2580%25EC%2584%259C%25EC%259E%25AC%2520%2527%25EC%2583%259D%25EA%25B0%2581%25EC%259D%2598%2520%25ED%2583%2584%25EC%2583%259D%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/194_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%93%A4%EC%9D%98%20%EB%B9%84%EB%B0%80%EC%84%9C%EC%9E%AC%20%27%EC%83%9D%EA%B0%81%EC%9D%98%20%ED%83%84%EC%83%9D%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -1980,7 +1973,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/195_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%202%20Gotham%20%EA%B5%AD%EA%B0%80%20%EC%95%88%EB%B3%B4%EB%A5%BC%20%EC%9C%84%ED%95%9C%20%ED%94%8C%EB%9E%AB%ED%8F%BC.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/195_%2527%25ED%258C%2594%25EB%259E%2580%25ED%258B%25B0%25EC%2596%25B4%2527%25202%2520Gotham%2520%25EA%25B5%25AD%25EA%25B0%2580%2520%25EC%2595%2588%25EB%25B3%25B4%25EB%25A5%25BC%2520%25EC%259C%2584%25ED%2595%259C%2520%25ED%2594%258C%25EB%259E%25AB%25ED%258F%25BC_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/195_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%202%20Gotham%20%EA%B5%AD%EA%B0%80%20%EC%95%88%EB%B3%B4%EB%A5%BC%20%EC%9C%84%ED%95%9C%20%ED%94%8C%EB%9E%AB%ED%8F%BC_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -1990,7 +1983,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/196_%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%EA%B0%80%20%EC%83%9D%EA%B0%81%EB%B3%B4%EB%8B%A4%20%EC%84%B1%EC%9E%A5%ED%95%98%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%9D%B4%EC%9C%A0%EB%8A%94%20%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="스타트업 리더의 기술">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/196_%25ED%2594%2584%25EB%25A1%259C%25EB%258D%2595%25ED%258A%25B8%25EA%25B0%2580%2520%25EC%2583%259D%25EA%25B0%2581%25EB%25B3%25B4%25EB%258B%25A4%2520%25EC%2584%25B1%25EC%259E%25A5%25ED%2595%2598%25EC%25A7%2580%2520%25EC%2595%258A%25EB%258A%2594%2520%25EC%259D%25B4%25EC%259C%25A0%25EB%258A%2594%2520%25EB%25AC%25B4%25EC%2597%2587%25EC%259D%25BC%25EA%25B9%258C%25EC%259A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/196_%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%EA%B0%80%20%EC%83%9D%EA%B0%81%EB%B3%B4%EB%8B%A4%20%EC%84%B1%EC%9E%A5%ED%95%98%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%9D%B4%EC%9C%A0%EB%8A%94%20%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C%EC%9A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업 리더의 기술</div>
@@ -2000,7 +1993,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/197_%EC%8A%A4%ED%81%AC%EB%9F%BC%20%EB%A7%88%EC%8A%A4%ED%84%B0%20vs%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%A7%A4%EB%8B%88%EC%A0%80%27%20%EC%B0%A8%EC%9D%B4%EB%8A%94.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/197_%25EC%258A%25A4%25ED%2581%25AC%25EB%259F%25BC%2520%25EB%25A7%2588%25EC%258A%25A4%25ED%2584%25B0%2520vs%2520%25ED%2594%2584%25EB%25A1%259C%25EC%25A0%259D%25ED%258A%25B8%2520%25EB%25A7%25A4%25EB%258B%2588%25EC%25A0%2580%2527%2520%25EC%25B0%25A8%25EC%259D%25B4%25EB%258A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/197_%EC%8A%A4%ED%81%AC%EB%9F%BC%20%EB%A7%88%EC%8A%A4%ED%84%B0%20vs%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%A7%A4%EB%8B%88%EC%A0%80%27%20%EC%B0%A8%EC%9D%B4%EB%8A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
@@ -2010,7 +2003,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/198_UX%EC%97%90%EB%8F%84%20%EB%A6%AC%EB%93%AC%EC%9D%B4%20%EC%9E%88%EB%8B%A4.%20%27%ED%83%80%EC%9D%B4%EB%B0%8D%20%EC%84%A4%EA%B3%84%EB%B2%95%27.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/198_UX%25EC%2597%2590%25EB%258F%2584%2520%25EB%25A6%25AC%25EB%2593%25AC%25EC%259D%25B4%2520%25EC%259E%2588%25EB%258B%25A4.%2520%2527%25ED%2583%2580%25EC%259D%25B4%25EB%25B0%258D%2520%25EC%2584%25A4%25EA%25B3%2584%25EB%25B2%2595%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/198_UX%EC%97%90%EB%8F%84%20%EB%A6%AC%EB%93%AC%EC%9D%B4%20%EC%9E%88%EB%8B%A4.%20%27%ED%83%80%EC%9D%B4%EB%B0%8D%20%EC%84%A4%EA%B3%84%EB%B2%95%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -2020,7 +2013,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/199_AI%EC%8B%9C%EB%8C%80%20%EC%8A%88%ED%8D%BC%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B0%80%20%ED%95%84%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="AI의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/199_AI%25EC%258B%259C%25EB%258C%2580%2520%25EC%258A%2588%25ED%258D%25BC%25EC%25BB%25B4%25ED%2593%25A8%25ED%2584%25B0%25EA%25B0%2580%2520%25ED%2595%2584%25EC%259A%2594%25ED%2595%259C%2520%25EC%259D%25B4%25EC%259C%25A0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/199_AI%EC%8B%9C%EB%8C%80%20%EC%8A%88%ED%8D%BC%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B0%80%20%ED%95%84%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">AI의 언어들</div>
@@ -2030,7 +2023,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/200_%EC%82%AC%EC%9A%A9%EC%9E%90%EB%A5%BC%20%EC%A4%91%EB%8F%85%EC%8B%9C%ED%82%A4%EB%8A%94%204%EB%8B%A8%EA%B3%84%20%EB%A7%88%EB%B2%95%20%27Hooked%20%EB%AA%A8%EB%8D%B8%27.html" class="card-item" data-category="기획자의 프레임웍">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/200_%25EC%2582%25AC%25EC%259A%25A9%25EC%259E%2590%25EB%25A5%25BC%2520%25EC%25A4%2591%25EB%258F%2585%25EC%258B%259C%25ED%2582%25A4%25EB%258A%2594%25204%25EB%258B%25A8%25EA%25B3%2584%2520%25EB%25A7%2588%25EB%25B2%2595%2520%2527Hooked%2520%25EB%25AA%25A8%25EB%258D%25B8%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/200_%EC%82%AC%EC%9A%A9%EC%9E%90%EB%A5%BC%20%EC%A4%91%EB%8F%85%EC%8B%9C%ED%82%A4%EB%8A%94%204%EB%8B%A8%EA%B3%84%20%EB%A7%88%EB%B2%95%20%27Hooked%20%EB%AA%A8%EB%8D%B8%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자의 프레임웍</div>
@@ -2040,17 +2033,17 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/201_3%EC%96%B5%EC%9D%B4%20%ED%99%80%EB%A6%AD%ED%95%98%EB%8A%94%20%27%EB%A6%B4%EC%88%8F%27%EC%9D%98%20%ED%8B%88%EC%83%88%EC%8B%9C%EC%9E%A5%20%EA%B3%B5%EB%9E%B5%20%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/201_3%25EC%2596%25B5%25EC%259D%25B4%2520%25ED%2599%2580%25EB%25A6%25AD%25ED%2595%2598%25EB%258A%2594%2520%2527%25EB%25A6%25B4%25EC%2588%258F%2527%25EC%259D%2598%2520%25ED%258B%2588%25EC%2583%2588%25EC%258B%259C%25EC%259E%25A5%2520%25EA%25B3%25B5%25EB%259E%25B5%2520%25EC%25A0%2584%25EB%259E%25B5_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/201_3%EC%96%B5%EC%9D%B4%20%ED%99%80%EB%A6%AD%ED%95%98%EB%8A%94%20%27%EB%A6%B4%EC%88%8F%27%EC%9D%98%20%ED%8B%88%EC%83%88%EC%8B%9C%EC%9E%A5%20%EA%B3%B5%EB%9E%B5%20%EC%A0%84%EB%9E%B5_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
                 <h3 class="card-title">억이 홀릭하는 '릴숏'의 틈새시장 공략 전략</h3>
             </div>
-            <div class="card-date"></div>
+            <div class="card-date">Mar 17. 2025</div>
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/202_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%201%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%86%B5%ED%95%A9%EA%B3%BC%20%EB%B6%84%EC%84%9D%EC%9D%98%20%EC%83%88%EB%A1%9C%EC%9A%B4%20%ED%8C%A8%EB%9F%AC%EB%8B%A4%EC%9E%84.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/202_%2527%25ED%258C%2594%25EB%259E%2580%25ED%258B%25B0%25EC%2596%25B4%2527%25201%2520%25EB%258D%25B0%25EC%259D%25B4%25ED%2584%25B0%2520%25ED%2586%25B5%25ED%2595%25A9%25EA%25B3%25BC%2520%25EB%25B6%2584%25EC%2584%259D%25EC%259D%2598%2520%25EC%2583%2588%25EB%25A1%259C%25EC%259A%25B4%2520%25ED%258C%25A8%25EB%259F%25AC%25EB%258B%25A4%25EC%259E%2584_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/202_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%201%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%86%B5%ED%95%A9%EA%B3%BC%20%EB%B6%84%EC%84%9D%EC%9D%98%20%EC%83%88%EB%A1%9C%EC%9A%B4%20%ED%8C%A8%EB%9F%AC%EB%8B%A4%EC%9E%84_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -2060,7 +2053,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/203_%EC%84%B1%EC%9E%A5%EC%9D%98%20%EA%B0%80%EC%9E%A5%20%ED%81%B0%20%EB%B9%84%EB%B0%80...%20%EC%A7%80%EB%A3%A8%ED%95%A8.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/203_%25EC%2584%25B1%25EC%259E%25A5%25EC%259D%2598%2520%25EA%25B0%2580%25EC%259E%25A5%2520%25ED%2581%25B0%2520%25EB%25B9%2584%25EB%25B0%2580...%2520%25EC%25A7%2580%25EB%25A3%25A8%25ED%2595%25A8_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/203_%EC%84%B1%EC%9E%A5%EC%9D%98%20%EA%B0%80%EC%9E%A5%20%ED%81%B0%20%EB%B9%84%EB%B0%80...%20%EC%A7%80%EB%A3%A8%ED%95%A8_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -2070,7 +2063,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/204_%27%EC%8A%A4%ED%81%AC%EB%9F%BC%EB%A7%88%EC%8A%A4%ED%84%B0%27%20%ED%8C%80%EC%9D%98%20%EC%88%98%ED%98%B8%EC%9E%90%EC%9D%B4%EC%9E%90%20%EC%84%9C%EB%B2%88%ED%8A%B8%20%EB%A6%AC%EB%8D%94.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/204_%2527%25EC%258A%25A4%25ED%2581%25AC%25EB%259F%25BC%25EB%25A7%2588%25EC%258A%25A4%25ED%2584%25B0%2527%2520%25ED%258C%2580%25EC%259D%2598%2520%25EC%2588%2598%25ED%2598%25B8%25EC%259E%2590%25EC%259D%25B4%25EC%259E%2590%2520%25EC%2584%259C%25EB%25B2%2588%25ED%258A%25B8%2520%25EB%25A6%25AC%25EB%258D%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/204_%27%EC%8A%A4%ED%81%AC%EB%9F%BC%EB%A7%88%EC%8A%A4%ED%84%B0%27%20%ED%8C%80%EC%9D%98%20%EC%88%98%ED%98%B8%EC%9E%90%EC%9D%B4%EC%9E%90%20%EC%84%9C%EB%B2%88%ED%8A%B8%20%EB%A6%AC%EB%8D%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
@@ -2080,7 +2073,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/205_%EC%95%A0%ED%94%8C%EC%9D%B4%20%27%EA%B8%B0%EB%B3%B8%EA%B0%92%27%EC%9C%BC%EB%A1%9C%20%EC%82%AC%EC%9A%A9%EC%9E%90%EB%A5%BC%20%EC%82%AC%EB%A1%9C%EC%9E%A1%EB%8A%94%20%EB%B9%84%EB%B0%80.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/205_%25EC%2595%25A0%25ED%2594%258C%25EC%259D%25B4%2520%2527%25EA%25B8%25B0%25EB%25B3%25B8%25EA%25B0%2592%2527%25EC%259C%25BC%25EB%25A1%259C%2520%25EC%2582%25AC%25EC%259A%25A9%25EC%259E%2590%25EB%25A5%25BC%2520%25EC%2582%25AC%25EB%25A1%259C%25EC%259E%25A1%25EB%258A%2594%2520%25EB%25B9%2584%25EB%25B0%2580_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/205_%EC%95%A0%ED%94%8C%EC%9D%B4%20%27%EA%B8%B0%EB%B3%B8%EA%B0%92%27%EC%9C%BC%EB%A1%9C%20%EC%82%AC%EC%9A%A9%EC%9E%90%EB%A5%BC%20%EC%82%AC%EB%A1%9C%EC%9E%A1%EB%8A%94%20%EB%B9%84%EB%B0%80_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -2090,7 +2083,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/206_%ED%8F%89%EB%B2%94%EC%9D%84%20%EA%B1%B0%EB%B6%80%ED%95%9C%EB%8B%A4.%20%27%ED%97%A4%EB%8D%94%EC%9C%85%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%27.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/206_%25ED%258F%2589%25EB%25B2%2594%25EC%259D%2584%2520%25EA%25B1%25B0%25EB%25B6%2580%25ED%2595%259C%25EB%258B%25A4.%2520%2527%25ED%2597%25A4%25EB%258D%2594%25EC%259C%2585%2520%25EC%258A%25A4%25ED%258A%259C%25EB%2594%2594%25EC%2598%25A4%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/206_%ED%8F%89%EB%B2%94%EC%9D%84%20%EA%B1%B0%EB%B6%80%ED%95%9C%EB%8B%A4.%20%27%ED%97%A4%EB%8D%94%EC%9C%85%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -2100,7 +2093,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/207_AI%EC%9D%98%20%ED%96%89%EB%8F%99%EC%9D%84%20%EB%A7%8C%EB%93%A4%EB%8B%A4.%20%27Manus%20AI%27.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/207_AI%25EC%259D%2598%2520%25ED%2596%2589%25EB%258F%2599%25EC%259D%2584%2520%25EB%25A7%258C%25EB%2593%25A4%25EB%258B%25A4.%2520%2527Manus%2520AI%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/207_AI%EC%9D%98%20%ED%96%89%EB%8F%99%EC%9D%84%20%EB%A7%8C%EB%93%A4%EB%8B%A4.%20%27Manus%20AI%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -2110,7 +2103,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/208_SWOT%20%EB%B9%84%EC%A7%80%EB%8B%88%EC%8A%A4%EC%9D%98%204%EC%B0%A8%EC%9B%90%20%EB%B6%84%EC%84%9D%EB%B2%95.html" class="card-item" data-category="기획자의 프레임웍">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/208_SWOT%2520%25EB%25B9%2584%25EC%25A7%2580%25EB%258B%2588%25EC%258A%25A4%25EC%259D%2598%25204%25EC%25B0%25A8%25EC%259B%2590%2520%25EB%25B6%2584%25EC%2584%259D%25EB%25B2%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/208_SWOT%20%EB%B9%84%EC%A7%80%EB%8B%88%EC%8A%A4%EC%9D%98%204%EC%B0%A8%EC%9B%90%20%EB%B6%84%EC%84%9D%EB%B2%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자의 프레임웍</div>
@@ -2120,7 +2113,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/209_%EC%8B%A4%ED%8C%A8%EC%97%90%EC%84%9C%20%EB%8D%B0%EC%B9%B4%EC%BD%98%EC%9C%BC%EB%A1%9C%20%27Notion%27%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EC%8B%9C%EC%9E%A5%EC%A7%84%EC%B6%9C%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업의 전략들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/209_%25EC%258B%25A4%25ED%258C%25A8%25EC%2597%2590%25EC%2584%259C%2520%25EB%258D%25B0%25EC%25B9%25B4%25EC%25BD%2598%25EC%259C%25BC%25EB%25A1%259C%2520%2527Notion%2527%25EC%259D%2598%2520%25EC%25B4%2588%25EA%25B8%25B0%2520%25EC%258B%259C%25EC%259E%25A5%25EC%25A7%2584%25EC%25B6%259C%25EC%25A0%2584%25EB%259E%25B5_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/209_%EC%8B%A4%ED%8C%A8%EC%97%90%EC%84%9C%20%EB%8D%B0%EC%B9%B4%EC%BD%98%EC%9C%BC%EB%A1%9C%20%27Notion%27%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EC%8B%9C%EC%9E%A5%EC%A7%84%EC%B6%9C%EC%A0%84%EB%9E%B5_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업의 전략들</div>
@@ -2130,7 +2123,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/210_%EC%BD%94%EB%93%9C%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EA%B9%A8%EB%8A%94%20AI%20%ED%98%81%EC%8B%A0%2C%20Cursor%20AI.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/210_%25EC%25BD%2594%25EB%2593%259C%25EC%259D%2598%2520%25ED%2595%259C%25EA%25B3%2584%25EB%25A5%25BC%2520%25EA%25B9%25A8%25EB%258A%2594%2520AI%2520%25ED%2598%2581%25EC%258B%25A0%252C%2520Cursor%2520AI_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/210_%EC%BD%94%EB%93%9C%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EA%B9%A8%EB%8A%94%20AI%20%ED%98%81%EC%8B%A0%2C%20Cursor%20AI_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -2140,7 +2133,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/211_AI%20%EC%8B%9C%EB%8C%80%20%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%20%EC%A0%84%ED%99%98%2C%20%EC%A0%84%ED%86%B5%EC%A0%81%20%ED%8C%A8%EB%9F%AC%EB%8B%A4%EC%9E%84%EC%9D%98%20%EC%A2%85%EB%A7%90.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/211_AI%2520%25EC%258B%259C%25EB%258C%2580%2520%25ED%2594%2584%25EB%25A1%259C%25EB%258D%2595%25ED%258A%25B8%2520%25EC%25A0%2584%25ED%2599%2598%252C%2520%25EC%25A0%2584%25ED%2586%25B5%25EC%25A0%2581%2520%25ED%258C%25A8%25EB%259F%25AC%25EB%258B%25A4%25EC%259E%2584%25EC%259D%2598%2520%25EC%25A2%2585%25EB%25A7%2590_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/211_AI%20%EC%8B%9C%EB%8C%80%20%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%20%EC%A0%84%ED%99%98%2C%20%EC%A0%84%ED%86%B5%EC%A0%81%20%ED%8C%A8%EB%9F%AC%EB%8B%A4%EC%9E%84%EC%9D%98%20%EC%A2%85%EB%A7%90_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -2150,7 +2143,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/212_%ED%8C%80%EC%9D%98%20%ED%95%98%EB%AA%A8%EB%8B%88%EB%A5%BC%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B9%84%EB%B2%95%2C%20%27%EC%95%A0%EC%9E%90%EC%9D%BC%EB%AF%B8%ED%8C%85%27.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/212_%25ED%258C%2580%25EC%259D%2598%2520%25ED%2595%2598%25EB%25AA%25A8%25EB%258B%2588%25EB%25A5%25BC%2520%25EB%25A7%258C%25EB%2593%259C%25EB%258A%2594%2520%25EB%25B9%2584%25EB%25B2%2595%252C%2520%2527%25EC%2595%25A0%25EC%259E%2590%25EC%259D%25BC%25EB%25AF%25B8%25ED%258C%2585%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/212_%ED%8C%80%EC%9D%98%20%ED%95%98%EB%AA%A8%EB%8B%88%EB%A5%BC%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B9%84%EB%B2%95%2C%20%27%EC%95%A0%EC%9E%90%EC%9D%BC%EB%AF%B8%ED%8C%85%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
@@ -2160,7 +2153,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/213_%EC%BD%98%ED%85%90%EC%B8%A0%EB%A5%BC%20%EB%A7%9B%EC%9E%88%EA%B2%8C%20%ED%95%98%EB%8A%94%20UX%20%EB%A0%88%EC%9D%B4%EC%96%B4%20%EC%BC%80%EC%9D%B4%ED%81%AC%20%ED%8C%A8%ED%84%B4.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/213_%25EC%25BD%2598%25ED%2585%2590%25EC%25B8%25A0%25EB%25A5%25BC%2520%25EB%25A7%259B%25EC%259E%2588%25EA%25B2%258C%2520%25ED%2595%2598%25EB%258A%2594%2520UX%2520%25EB%25A0%2588%25EC%259D%25B4%25EC%2596%25B4%2520%25EC%25BC%2580%25EC%259D%25B4%25ED%2581%25AC%2520%25ED%258C%25A8%25ED%2584%25B4_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/213_%EC%BD%98%ED%85%90%EC%B8%A0%EB%A5%BC%20%EB%A7%9B%EC%9E%88%EA%B2%8C%20%ED%95%98%EB%8A%94%20UX%20%EB%A0%88%EC%9D%B4%EC%96%B4%20%EC%BC%80%EC%9D%B4%ED%81%AC%20%ED%8C%A8%ED%84%B4_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -2170,17 +2163,17 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/214_30%EB%8B%AC%EB%9F%AC%EB%A1%9C%20%EB%A7%8C%EB%93%A0%20AI%20%ED%98%81%EB%AA%85%2C%20%27%ED%83%80%EC%9D%B4%EB%8B%88%20%EC%A0%9C%EB%A1%9C%27.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/214_30%25EB%258B%25AC%25EB%259F%25AC%25EB%25A1%259C%2520%25EB%25A7%258C%25EB%2593%25A0%2520AI%2520%25ED%2598%2581%25EB%25AA%2585%252C%2520%2527%25ED%2583%2580%25EC%259D%25B4%25EB%258B%2588%2520%25EC%25A0%259C%25EB%25A1%259C%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/214_30%EB%8B%AC%EB%9F%AC%EB%A1%9C%20%EB%A7%8C%EB%93%A0%20AI%20%ED%98%81%EB%AA%85%2C%20%27%ED%83%80%EC%9D%B4%EB%8B%88%20%EC%A0%9C%EB%A1%9C%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
                 <h3 class="card-title">달러로 만든 AI 혁명, '타이니 제로'</h3>
             </div>
-            <div class="card-date"></div>
+            <div class="card-date">Mar 5. 2025</div>
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/215_Why%EC%97%90%EC%84%9C%20%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94%20%EA%B8%B0%ED%9A%8D%2C%20%EA%B3%A8%EB%93%A0%20%EC%84%9C%ED%81%B4%EC%9D%98%20%EB%A7%88%EB%B2%95.html" class="card-item" data-category="기획자의 프레임웍">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/215_Why%25EC%2597%2590%25EC%2584%259C%2520%25EC%258B%259C%25EC%259E%2591%25ED%2595%2598%25EB%258A%2594%2520%25EA%25B8%25B0%25ED%259A%258D%252C%2520%25EA%25B3%25A8%25EB%2593%25A0%2520%25EC%2584%259C%25ED%2581%25B4%25EC%259D%2598%2520%25EB%25A7%2588%25EB%25B2%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/215_Why%EC%97%90%EC%84%9C%20%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94%20%EA%B8%B0%ED%9A%8D%2C%20%EA%B3%A8%EB%93%A0%20%EC%84%9C%ED%81%B4%EC%9D%98%20%EB%A7%88%EB%B2%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자의 프레임웍</div>
@@ -2190,7 +2183,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/216_%EC%8B%A4%ED%8C%A8%EA%B0%80%20%EB%A7%8C%EB%93%A0%20%EA%B8%B0%EC%A0%81%2C%20%27Slack%27%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%ED%99%95%EB%B3%B4%20%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업의 전략들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/216_%25EC%258B%25A4%25ED%258C%25A8%25EA%25B0%2580%2520%25EB%25A7%258C%25EB%2593%25A0%2520%25EA%25B8%25B0%25EC%25A0%2581%252C%2520%2527Slack%2527%25EC%259D%2598%2520%25EC%25B4%2588%25EA%25B8%25B0%2520%25EA%25B3%25A0%25EA%25B0%259D%25ED%2599%2595%25EB%25B3%25B4%2520%25EC%25A0%2584%25EB%259E%25B5_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/216_%EC%8B%A4%ED%8C%A8%EA%B0%80%20%EB%A7%8C%EB%93%A0%20%EA%B8%B0%EC%A0%81%2C%20%27Slack%27%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%ED%99%95%EB%B3%B4%20%EC%A0%84%EB%9E%B5_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업의 전략들</div>
@@ -2200,7 +2193,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/217_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%84%B1%EA%B3%B5%EC%9D%98%20%EC%97%AD%EC%84%A4.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/217_%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%25EC%2597%2585%2520%25EC%2584%25B1%25EA%25B3%25B5%25EC%259D%2598%2520%25EC%2597%25AD%25EC%2584%25A4_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/217_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%84%B1%EA%B3%B5%EC%9D%98%20%EC%97%AD%EC%84%A4_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -2210,7 +2203,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/218_%27%ED%9A%8C%EA%B3%A0%27%2C%20%ED%8C%80%EC%9D%98%20%EC%84%B1%EC%9E%A5%EC%9D%84%20%EC%9D%B4%EB%81%84%EB%8A%94%20%EB%B9%84%EA%B2%B0.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/218_%2527%25ED%259A%258C%25EA%25B3%25A0%2527%252C%2520%25ED%258C%2580%25EC%259D%2598%2520%25EC%2584%25B1%25EC%259E%25A5%25EC%259D%2584%2520%25EC%259D%25B4%25EB%2581%2584%25EB%258A%2594%2520%25EB%25B9%2584%25EA%25B2%25B0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/218_%27%ED%9A%8C%EA%B3%A0%27%2C%20%ED%8C%80%EC%9D%98%20%EC%84%B1%EC%9E%A5%EC%9D%84%20%EC%9D%B4%EB%81%84%EB%8A%94%20%EB%B9%84%EA%B2%B0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
@@ -2220,7 +2213,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/219_%EC%8B%A4%EB%A6%AC%EC%BD%98%EB%B0%B8%EB%A6%AC%20%EC%8A%B9%EC%9E%90%EB%93%A4%EC%9D%B4%20%EC%93%B0%EB%8A%94%20%27%EC%BD%9C%ED%88%AC%EC%95%A1%EC%85%98%28CTA%29%27.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/219_%25EC%258B%25A4%25EB%25A6%25AC%25EC%25BD%2598%25EB%25B0%25B8%25EB%25A6%25AC%2520%25EC%258A%25B9%25EC%259E%2590%25EB%2593%25A4%25EC%259D%25B4%2520%25EC%2593%25B0%25EB%258A%2594%2520%2527%25EC%25BD%259C%25ED%2588%25AC%25EC%2595%25A1%25EC%2585%2598%2528CTA%2529%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/219_%EC%8B%A4%EB%A6%AC%EC%BD%98%EB%B0%B8%EB%A6%AC%20%EC%8A%B9%EC%9E%90%EB%93%A4%EC%9D%B4%20%EC%93%B0%EB%8A%94%20%27%EC%BD%9C%ED%88%AC%EC%95%A1%EC%85%98%28CTA%29%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -2230,7 +2223,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/220_%EC%B1%97GPT%EB%A5%BC%20%EB%9B%B0%EC%96%B4%EB%84%98%EB%8B%A4...%EB%A8%B8%EC%8A%A4%ED%81%AC%EC%9D%98%20%EC%95%BC%EC%8B%AC%EC%9E%91%20%27%EA%B7%B8%EB%A1%9D3%27.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/220_%25EC%25B1%2597GPT%25EB%25A5%25BC%2520%25EB%259B%25B0%25EC%2596%25B4%25EB%2584%2598%25EB%258B%25A4...%25EB%25A8%25B8%25EC%258A%25A4%25ED%2581%25AC%25EC%259D%2598%2520%25EC%2595%25BC%25EC%258B%25AC%25EC%259E%2591%2520%2527%25EA%25B7%25B8%25EB%25A1%259D3%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/220_%EC%B1%97GPT%EB%A5%BC%20%EB%9B%B0%EC%96%B4%EB%84%98%EB%8B%A4...%EB%A8%B8%EC%8A%A4%ED%81%AC%EC%9D%98%20%EC%95%BC%EC%8B%AC%EC%9E%91%20%27%EA%B7%B8%EB%A1%9D3%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -2240,7 +2233,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/221_%EB%8B%A8%20%ED%95%98%EB%82%98%EC%9D%98%20%EC%A7%88%EB%AC%B8%EC%9D%B4%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EB%A5%BC%20%EB%A7%8C%EB%93%A0%EB%8B%A4.%20%27NPS%27.html" class="card-item" data-category="기획자의 프레임웍">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/221_%25EB%258B%25A8%2520%25ED%2595%2598%25EB%2582%2598%25EC%259D%2598%2520%25EC%25A7%2588%25EB%25AC%25B8%25EC%259D%25B4%2520%25EB%25B8%258C%25EB%259E%259C%25EB%2593%259C%25EB%25A5%25BC%2520%25EB%25A7%258C%25EB%2593%25A0%25EB%258B%25A4.%2520%2527NPS%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/221_%EB%8B%A8%20%ED%95%98%EB%82%98%EC%9D%98%20%EC%A7%88%EB%AC%B8%EC%9D%B4%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EB%A5%BC%20%EB%A7%8C%EB%93%A0%EB%8B%A4.%20%27NPS%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자의 프레임웍</div>
@@ -2250,7 +2243,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/222_%EA%B8%80%EB%A1%9C%EB%B2%8C%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EB%93%A4%EC%9D%98%20%27%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%20%ED%99%95%EB%B3%B4%20%EC%A0%84%EB%9E%B5%27.html" class="card-item" data-category="스타트업의 전략들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/222_%25EA%25B8%2580%25EB%25A1%259C%25EB%25B2%258C%2520%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%25EC%2597%2585%25EB%2593%25A4%25EC%259D%2598%2520%2527%25EC%25B4%2588%25EA%25B8%25B0%2520%25EA%25B3%25A0%25EA%25B0%259D%2520%25ED%2599%2595%25EB%25B3%25B4%2520%25EC%25A0%2584%25EB%259E%25B5%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/222_%EA%B8%80%EB%A1%9C%EB%B2%8C%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EB%93%A4%EC%9D%98%20%27%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%20%ED%99%95%EB%B3%B4%20%EC%A0%84%EB%9E%B5%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업의 전략들</div>
@@ -2260,7 +2253,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/223_%EB%A6%B0%EC%9D%B4%EB%9E%80%20%EB%AC%B4%EC%8A%A8%20%EB%9C%BB%EC%9D%BC%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/223_%25EB%25A6%25B0%25EC%259D%25B4%25EB%259E%2580%2520%25EB%25AC%25B4%25EC%258A%25A8%2520%25EB%259C%25BB%25EC%259D%25BC%25EA%25B9%258C%25EC%259A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/223_%EB%A6%B0%EC%9D%B4%EB%9E%80%20%EB%AC%B4%EC%8A%A8%20%EB%9C%BB%EC%9D%BC%EA%B9%8C%EC%9A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -2270,7 +2263,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/224_%EB%82%98%EC%9D%98%20%ED%81%B4%EB%A1%A0%EC%9D%B4%20%ED%99%94%EC%83%81%ED%9A%8C%EC%9D%98%EB%A5%BC%20%27%ED%94%BC%ED%81%B4%27.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/224_%25EB%2582%2598%25EC%259D%2598%2520%25ED%2581%25B4%25EB%25A1%25A0%25EC%259D%25B4%2520%25ED%2599%2594%25EC%2583%2581%25ED%259A%258C%25EC%259D%2598%25EB%25A5%25BC%2520%2527%25ED%2594%25BC%25ED%2581%25B4%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/224_%EB%82%98%EC%9D%98%20%ED%81%B4%EB%A1%A0%EC%9D%B4%20%ED%99%94%EC%83%81%ED%9A%8C%EC%9D%98%EB%A5%BC%20%27%ED%94%BC%ED%81%B4%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -2280,7 +2273,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/225_%EC%83%9D%EC%82%B0%EC%84%B1%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%ED%95%A8%EC%A0%95.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/225_%25EC%2583%259D%25EC%2582%25B0%25EC%2584%25B1%2520%25EC%258B%259C%25EC%258A%25A4%25ED%2585%259C%25EC%259D%2598%2520%25ED%2595%25A8%25EC%25A0%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/225_%EC%83%9D%EC%82%B0%EC%84%B1%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%ED%95%A8%EC%A0%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -2290,7 +2283,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/226_%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%20%EB%A6%AC%EB%B7%B0%27%2C%20%EC%A4%80%EB%B9%84%EB%8A%94%20%EB%8D%9C%ED%95%98%EA%B3%A0%20%EC%86%94%EC%A7%81%ED%95%A8%EC%9D%80%20%EB%8D%94%ED%95%98%EA%B8%B0.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/226_%25EC%258A%25A4%25ED%2594%2584%25EB%25A6%25B0%25ED%258A%25B8%2520%25EB%25A6%25AC%25EB%25B7%25B0%2527%252C%2520%25EC%25A4%2580%25EB%25B9%2584%25EB%258A%2594%2520%25EB%258D%259C%25ED%2595%2598%25EA%25B3%25A0%2520%25EC%2586%2594%25EC%25A7%2581%25ED%2595%25A8%25EC%259D%2580%2520%25EB%258D%2594%25ED%2595%2598%25EA%25B8%25B0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/226_%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%20%EB%A6%AC%EB%B7%B0%27%2C%20%EC%A4%80%EB%B9%84%EB%8A%94%20%EB%8D%9C%ED%95%98%EA%B3%A0%20%EC%86%94%EC%A7%81%ED%95%A8%EC%9D%80%20%EB%8D%94%ED%95%98%EA%B8%B0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
@@ -2300,7 +2293,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/227_Google%EC%9D%98%20%27%EC%8B%AC%ED%94%8C%ED%95%9C%20UX%27%20%EC%9B%90%EC%B9%99.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/227_Google%25EC%259D%2598%2520%2527%25EC%258B%25AC%25ED%2594%258C%25ED%2595%259C%2520UX%2527%2520%25EC%259B%2590%25EC%25B9%2599_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/227_Google%EC%9D%98%20%27%EC%8B%AC%ED%94%8C%ED%95%9C%20UX%27%20%EC%9B%90%EC%B9%99_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -2310,17 +2303,17 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/228_1000%EC%9D%98%20%EC%84%B1%EC%9E%A5%20%27%EC%95%B1%EB%9F%AC%EB%B9%88%27%EC%9D%98%20%EC%88%A8%EA%B2%A8%EC%A7%84%20%EC%84%B1%EA%B3%B5%EA%B3%B5%EC%8B%9D.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/228_1000%25EC%259D%2598%2520%25EC%2584%25B1%25EC%259E%25A5%2520%2527%25EC%2595%25B1%25EB%259F%25AC%25EB%25B9%2588%2527%25EC%259D%2598%2520%25EC%2588%25A8%25EA%25B2%25A8%25EC%25A7%2584%2520%25EC%2584%25B1%25EA%25B3%25B5%25EA%25B3%25B5%25EC%258B%259D_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/228_1000%EC%9D%98%20%EC%84%B1%EC%9E%A5%20%27%EC%95%B1%EB%9F%AC%EB%B9%88%27%EC%9D%98%20%EC%88%A8%EA%B2%A8%EC%A7%84%20%EC%84%B1%EA%B3%B5%EA%B3%B5%EC%8B%9D_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
                 <h3 class="card-title">의 성장 '앱러빈'의 숨겨진 성공공식</h3>
             </div>
-            <div class="card-date"></div>
+            <div class="card-date">Feb 19. 2025</div>
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/229_%EC%84%B8%EC%83%81%EC%9D%84%20%EB%B0%94%EA%BE%BC%20%EC%8B%A4%ED%97%98%20%27OKR%27%EC%9D%98%203%EA%B0%80%EC%A7%80%20%EB%A7%88%EB%B2%95.html" class="card-item" data-category="기획자의 프레임웍">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/229_%25EC%2584%25B8%25EC%2583%2581%25EC%259D%2584%2520%25EB%25B0%2594%25EA%25BE%25BC%2520%25EC%258B%25A4%25ED%2597%2598%2520%2527OKR%2527%25EC%259D%2598%25203%25EA%25B0%2580%25EC%25A7%2580%2520%25EB%25A7%2588%25EB%25B2%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/229_%EC%84%B8%EC%83%81%EC%9D%84%20%EB%B0%94%EA%BE%BC%20%EC%8B%A4%ED%97%98%20%27OKR%27%EC%9D%98%203%EA%B0%80%EC%A7%80%20%EB%A7%88%EB%B2%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자의 프레임웍</div>
@@ -2330,7 +2323,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/230_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%84%B1%EA%B3%B5%EC%9D%80%20%27%EC%88%AB%EC%9E%90%27%EC%97%90%20%EC%88%A8%EC%96%B4%EC%9E%88%EB%8B%A4.html" class="card-item" data-category="스타트업의 전략들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/230_%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%25EC%2597%2585%2520%25EC%2584%25B1%25EA%25B3%25B5%25EC%259D%2580%2520%2527%25EC%2588%25AB%25EC%259E%2590%2527%25EC%2597%2590%2520%25EC%2588%25A8%25EC%2596%25B4%25EC%259E%2588%25EB%258B%25A4_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/230_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%84%B1%EA%B3%B5%EC%9D%80%20%27%EC%88%AB%EC%9E%90%27%EC%97%90%20%EC%88%A8%EC%96%B4%EC%9E%88%EB%8B%A4_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업의 전략들</div>
@@ -2340,7 +2333,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/231_%EA%B2%8C%EC%9E%84%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%97%90%EC%84%9C%20AI%20%EC%98%81%EC%83%81%20%ED%98%81%EC%8B%A0%EA%B0%80%EB%A1%9C%2C%20%EC%8B%9C%EB%82%98%EB%AA%AC%EC%9D%98%20%EB%8F%84%EC%A0%84.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/231_%25EA%25B2%258C%25EC%259E%2584%2520%25EA%25B0%259C%25EB%25B0%259C%25EC%259E%2590%25EC%2597%2590%25EC%2584%259C%2520AI%2520%25EC%2598%2581%25EC%2583%2581%2520%25ED%2598%2581%25EC%258B%25A0%25EA%25B0%2580%25EB%25A1%259C%252C%2520%25EC%258B%259C%25EB%2582%2598%25EB%25AA%25AC%25EC%259D%2598%2520%25EB%258F%2584%25EC%25A0%2584_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/231_%EA%B2%8C%EC%9E%84%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%97%90%EC%84%9C%20AI%20%EC%98%81%EC%83%81%20%ED%98%81%EC%8B%A0%EA%B0%80%EB%A1%9C%2C%20%EC%8B%9C%EB%82%98%EB%AA%AC%EC%9D%98%20%EB%8F%84%EC%A0%84_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -2350,7 +2343,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/232_%EC%A7%84%EC%A7%9C%20PMF%EB%A5%BC%20%EC%9C%84%ED%95%9C%20%EA%B3%A0%EA%B0%9D%20%EC%9D%B4%ED%95%B4.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/232_%25EC%25A7%2584%25EC%25A7%259C%2520PMF%25EB%25A5%25BC%2520%25EC%259C%2584%25ED%2595%259C%2520%25EA%25B3%25A0%25EA%25B0%259D%2520%25EC%259D%25B4%25ED%2595%25B4_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/232_%EC%A7%84%EC%A7%9C%20PMF%EB%A5%BC%20%EC%9C%84%ED%95%9C%20%EA%B3%A0%EA%B0%9D%20%EC%9D%B4%ED%95%B4_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -2360,7 +2353,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/233_%EC%A0%9C%ED%92%88%20%EB%B0%B1%EB%A1%9C%EA%B7%B8%2C%20%EB%8B%A8%EC%88%9C%ED%95%9C%20TO-DO%20%EB%A6%AC%EC%8A%A4%ED%8A%B8%EA%B0%80%20%EC%95%84%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/233_%25EC%25A0%259C%25ED%2592%2588%2520%25EB%25B0%25B1%25EB%25A1%259C%25EA%25B7%25B8%252C%2520%25EB%258B%25A8%25EC%2588%259C%25ED%2595%259C%2520TO-DO%2520%25EB%25A6%25AC%25EC%258A%25A4%25ED%258A%25B8%25EA%25B0%2580%2520%25EC%2595%2584%25EB%258B%2588%25EB%258B%25A4_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/233_%EC%A0%9C%ED%92%88%20%EB%B0%B1%EB%A1%9C%EA%B7%B8%2C%20%EB%8B%A8%EC%88%9C%ED%95%9C%20TO-DO%20%EB%A6%AC%EC%8A%A4%ED%8A%B8%EA%B0%80%20%EC%95%84%EB%8B%88%EB%8B%A4_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
@@ -2370,7 +2363,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/234_%EC%B1%97GPT%EA%B0%80%20%EC%89%BD%EB%8B%A4%EA%B3%A0%20%EB%8A%90%EA%BB%B4%EC%A7%80%EB%8A%94%20UX%EC%9D%98%20%EB%B9%84%EB%B0%80.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/234_%25EC%25B1%2597GPT%25EA%25B0%2580%2520%25EC%2589%25BD%25EB%258B%25A4%25EA%25B3%25A0%2520%25EB%258A%2590%25EA%25BB%25B4%25EC%25A7%2580%25EB%258A%2594%2520UX%25EC%259D%2598%2520%25EB%25B9%2584%25EB%25B0%2580_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/234_%EC%B1%97GPT%EA%B0%80%20%EC%89%BD%EB%8B%A4%EA%B3%A0%20%EB%8A%90%EA%BB%B4%EC%A7%80%EB%8A%94%20UX%EC%9D%98%20%EB%B9%84%EB%B0%80_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -2380,7 +2373,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/235_%E7%BE%8E%20%EA%B5%AD%EB%B0%A9%EB%B6%80%EC%9D%98%20%EC%84%A0%ED%83%9D%20%EB%B9%85%EB%B2%A0%EC%96%B4AI.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/235_%25E7%25BE%258E%2520%25EA%25B5%25AD%25EB%25B0%25A9%25EB%25B6%2580%25EC%259D%2598%2520%25EC%2584%25A0%25ED%2583%259D%2520%25EB%25B9%2585%25EB%25B2%25A0%25EC%2596%25B4AI_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/235_%E7%BE%8E%20%EA%B5%AD%EB%B0%A9%EB%B6%80%EC%9D%98%20%EC%84%A0%ED%83%9D%20%EB%B9%85%EB%B2%A0%EC%96%B4AI_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -2390,7 +2383,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/236_%ED%95%B4%EC%A0%81%EC%9D%B4%20%EB%90%9C%20%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%93%A4%EC%9D%98%20%EC%9D%B4%EC%95%BC%EA%B8%B0%2C%20AARRR%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC.html" class="card-item" data-category="기획자의 프레임웍">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/236_%25ED%2595%25B4%25EC%25A0%2581%25EC%259D%25B4%2520%25EB%2590%259C%2520%25EA%25B8%25B0%25ED%259A%258D%25EC%259E%2590%25EB%2593%25A4%25EC%259D%2598%2520%25EC%259D%25B4%25EC%2595%25BC%25EA%25B8%25B0%252C%2520AARRR%2520%25ED%2594%2584%25EB%25A0%2588%25EC%259E%2584%25EC%259B%258C%25ED%2581%25AC_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/236_%ED%95%B4%EC%A0%81%EC%9D%B4%20%EB%90%9C%20%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%93%A4%EC%9D%98%20%EC%9D%B4%EC%95%BC%EA%B8%B0%2C%20AARRR%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자의 프레임웍</div>
@@ -2400,7 +2393,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/237_%EA%B7%9C%EC%B9%99%EC%9D%B4%20%EC%97%86%EB%8A%94%20%EC%A0%84%EB%9E%B5%EC%9C%BC%EB%A1%9C%20500%EC%A1%B0%EB%A5%BC%20%EB%A7%8C%EB%93%A0%20%27Netflix%27.html" class="card-item" data-category="스타트업의 전략들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/237_%25EA%25B7%259C%25EC%25B9%2599%25EC%259D%25B4%2520%25EC%2597%2586%25EB%258A%2594%2520%25EC%25A0%2584%25EB%259E%25B5%25EC%259C%25BC%25EB%25A1%259C%2520500%25EC%25A1%25B0%25EB%25A5%25BC%2520%25EB%25A7%258C%25EB%2593%25A0%2520%2527Netflix%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/237_%EA%B7%9C%EC%B9%99%EC%9D%B4%20%EC%97%86%EB%8A%94%20%EC%A0%84%EB%9E%B5%EC%9C%BC%EB%A1%9C%20500%EC%A1%B0%EB%A5%BC%20%EB%A7%8C%EB%93%A0%20%27Netflix%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업의 전략들</div>
@@ -2410,7 +2403,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/238_%EC%82%BC%EC%84%B1%20%EC%82%AC%EB%82%B4%EB%B2%A4%EC%B2%98%EA%B0%80%20%EB%82%B3%EC%9D%80%20%EC%BB%A4%EB%A8%B8%EC%8A%A4AI%EC%9D%98%20%ED%98%81%EC%8B%A0%2C%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%EB%9E%A9.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/238_%25EC%2582%25BC%25EC%2584%25B1%2520%25EC%2582%25AC%25EB%2582%25B4%25EB%25B2%25A4%25EC%25B2%2598%25EA%25B0%2580%2520%25EB%2582%25B3%25EC%259D%2580%2520%25EC%25BB%25A4%25EB%25A8%25B8%25EC%258A%25A4AI%25EC%259D%2598%2520%25ED%2598%2581%25EC%258B%25A0%252C%2520%25EC%258A%25A4%25ED%258A%259C%25EB%2594%2594%25EC%2598%25A4%25EB%259E%25A9_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/238_%EC%82%BC%EC%84%B1%20%EC%82%AC%EB%82%B4%EB%B2%A4%EC%B2%98%EA%B0%80%20%EB%82%B3%EC%9D%80%20%EC%BB%A4%EB%A8%B8%EC%8A%A4AI%EC%9D%98%20%ED%98%81%EC%8B%A0%2C%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%EB%9E%A9_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -2420,7 +2413,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/239_%EC%BD%9C%EB%93%9C%EB%A9%94%EC%9D%BC%EC%9D%B4%20%EC%8B%A4%ED%8C%A8%ED%95%98%EB%8A%94%20%EC%A7%84%EC%A7%9C%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/239_%25EC%25BD%259C%25EB%2593%259C%25EB%25A9%2594%25EC%259D%25BC%25EC%259D%25B4%2520%25EC%258B%25A4%25ED%258C%25A8%25ED%2595%2598%25EB%258A%2594%2520%25EC%25A7%2584%25EC%25A7%259C%2520%25EC%259D%25B4%25EC%259C%25A0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/239_%EC%BD%9C%EB%93%9C%EB%A9%94%EC%9D%BC%EC%9D%B4%20%EC%8B%A4%ED%8C%A8%ED%95%98%EB%8A%94%20%EC%A7%84%EC%A7%9C%20%EC%9D%B4%EC%9C%A0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -2430,7 +2423,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/240_%EB%8D%B0%EC%9D%BC%EB%A6%AC%20%EC%8A%A4%ED%81%AC%EB%9F%BC%EC%9D%B4%20%ED%95%84%EC%88%98%EC%9D%BC%EA%B9%8C.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/240_%25EB%258D%25B0%25EC%259D%25BC%25EB%25A6%25AC%2520%25EC%258A%25A4%25ED%2581%25AC%25EB%259F%25BC%25EC%259D%25B4%2520%25ED%2595%2584%25EC%2588%2598%25EC%259D%25BC%25EA%25B9%258C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/240_%EB%8D%B0%EC%9D%BC%EB%A6%AC%20%EC%8A%A4%ED%81%AC%EB%9F%BC%EC%9D%B4%20%ED%95%84%EC%88%98%EC%9D%BC%EA%B9%8C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
@@ -2440,17 +2433,17 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/241_1%EC%9D%B8%20%EA%B8%B0%EC%97%85%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%B0%BD%EC%97%85%ED%95%B4%EC%95%BC%20%ED%95%A0%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/241_1%25EC%259D%25B8%2520%25EA%25B8%25B0%25EC%2597%2585%2520%25EC%2596%25B4%25EB%2596%25BB%25EA%25B2%258C%2520%25EC%25B0%25BD%25EC%2597%2585%25ED%2595%25B4%25EC%2595%25BC%2520%25ED%2595%25A0%25EA%25B9%258C%25EC%259A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/241_1%EC%9D%B8%20%EA%B8%B0%EC%97%85%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%B0%BD%EC%97%85%ED%95%B4%EC%95%BC%20%ED%95%A0%EA%B9%8C%EC%9A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
                 <h3 class="card-title">인 기업 어떻게 창업해야 할까요</h3>
             </div>
-            <div class="card-date"></div>
+            <div class="card-date">Feb 6. 2025</div>
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/242_%EC%97%84%EC%A7%80%EA%B0%80%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%84%20%EC%A7%80%EB%B0%B0%ED%95%9C%EB%8B%A4%20ThumbFriendly%20UX.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/242_%25EC%2597%2584%25EC%25A7%2580%25EA%25B0%2580%2520%25EB%2594%2594%25EC%259E%2590%25EC%259D%25B8%25EC%259D%2584%2520%25EC%25A7%2580%25EB%25B0%25B0%25ED%2595%259C%25EB%258B%25A4%2520ThumbFriendly%2520UX_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/242_%EC%97%84%EC%A7%80%EA%B0%80%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%84%20%EC%A7%80%EB%B0%B0%ED%95%9C%EB%8B%A4%20ThumbFriendly%20UX_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -2460,7 +2453,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/243_%EC%98%A4%ED%94%88AI%20%EC%83%98%20%EC%95%8C%ED%8A%B8%EB%A8%BC%EC%9D%B4%20%EC%84%A0%ED%83%9D%ED%95%9C%20%EC%9B%90%EC%9E%90%EB%A0%A5%EC%9D%98%20%EB%AF%B8%EB%9E%98%2C%20%EC%98%A4%ED%81%B4%EB%A1%9C.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/243_%25EC%2598%25A4%25ED%2594%2588AI%2520%25EC%2583%2598%2520%25EC%2595%258C%25ED%258A%25B8%25EB%25A8%25BC%25EC%259D%25B4%2520%25EC%2584%25A0%25ED%2583%259D%25ED%2595%259C%2520%25EC%259B%2590%25EC%259E%2590%25EB%25A0%25A5%25EC%259D%2598%2520%25EB%25AF%25B8%25EB%259E%2598%252C%2520%25EC%2598%25A4%25ED%2581%25B4%25EB%25A1%259C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/243_%EC%98%A4%ED%94%88AI%20%EC%83%98%20%EC%95%8C%ED%8A%B8%EB%A8%BC%EC%9D%B4%20%EC%84%A0%ED%83%9D%ED%95%9C%20%EC%9B%90%EC%9E%90%EB%A0%A5%EC%9D%98%20%EB%AF%B8%EB%9E%98%2C%20%EC%98%A4%ED%81%B4%EB%A1%9C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -2470,17 +2463,17 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/244_470%EB%AA%85%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%ED%88%B4%20%27%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EB%AA%A8%EB%8D%B8%20%EC%BA%94%EB%B2%84%EC%8A%A4%27.html" class="card-item" data-category="기획자의 프레임웍">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/244_470%25EB%25AA%2585%25EC%259D%25B4%2520%25EB%25A7%258C%25EB%2593%25A0%2520%25EB%25B9%2584%25EC%25A6%2588%25EB%258B%2588%25EC%258A%25A4%2520%25ED%2588%25B4%2520%2527%25EB%25B9%2584%25EC%25A6%2588%25EB%258B%2588%25EC%258A%25A4%2520%25EB%25AA%25A8%25EB%258D%25B8%2520%25EC%25BA%2594%25EB%25B2%2584%25EC%258A%25A4%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/244_470%EB%AA%85%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%ED%88%B4%20%27%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EB%AA%A8%EB%8D%B8%20%EC%BA%94%EB%B2%84%EC%8A%A4%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자의 프레임웍</div>
                 <h3 class="card-title">명이 만든 비즈니스 툴 '비즈니스 모델 캔버스'</h3>
             </div>
-            <div class="card-date"></div>
+            <div class="card-date">Feb 4. 2025</div>
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/245_Warby%20Parker%EC%9D%98%20%27%EB%8F%85%EC%A0%90%20%EC%8B%9C%EC%9E%A5%EC%A7%84%EC%9E%85%20%EC%A0%84%EB%9E%B5%27.html" class="card-item" data-category="스타트업의 전략들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/245_Warby%2520Parker%25EC%259D%2598%2520%2527%25EB%258F%2585%25EC%25A0%2590%2520%25EC%258B%259C%25EC%259E%25A5%25EC%25A7%2584%25EC%259E%2585%2520%25EC%25A0%2584%25EB%259E%25B5%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/245_Warby%20Parker%EC%9D%98%20%27%EB%8F%85%EC%A0%90%20%EC%8B%9C%EC%9E%A5%EC%A7%84%EC%9E%85%20%EC%A0%84%EB%9E%B5%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업의 전략들</div>
@@ -2490,7 +2483,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/246_%EC%BB%A4%EB%A8%B8%EC%8A%A4%20AI%EC%9D%98%20%EA%B2%8C%EC%9E%84%EC%B2%B4%EC%9D%B8%EC%A0%80%2C%20%EC%9D%B8%ED%95%B8%EC%8A%A4.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/246_%25EC%25BB%25A4%25EB%25A8%25B8%25EC%258A%25A4%2520AI%25EC%259D%2598%2520%25EA%25B2%258C%25EC%259E%2584%25EC%25B2%25B4%25EC%259D%25B8%25EC%25A0%2580%252C%2520%25EC%259D%25B8%25ED%2595%25B8%25EC%258A%25A4_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/246_%EC%BB%A4%EB%A8%B8%EC%8A%A4%20AI%EC%9D%98%20%EA%B2%8C%EC%9E%84%EC%B2%B4%EC%9D%B8%EC%A0%80%2C%20%EC%9D%B8%ED%95%B8%EC%8A%A4_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -2500,7 +2493,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/247_%EC%84%B1%EC%9E%A5%EC%9D%84%20%EC%9C%84%ED%95%9C%EC%82%AC%EC%83%89%EC%9D%98%20%ED%9E%98.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/247_%25EC%2584%25B1%25EC%259E%25A5%25EC%259D%2584%2520%25EC%259C%2584%25ED%2595%259C%25EC%2582%25AC%25EC%2583%2589%25EC%259D%2598%2520%25ED%259E%2598_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/247_%EC%84%B1%EC%9E%A5%EC%9D%84%20%EC%9C%84%ED%95%9C%EC%82%AC%EC%83%89%EC%9D%98%20%ED%9E%98_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -2510,7 +2503,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/248_%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%EC%9D%98%20%EC%B6%9C%EB%B0%9C%EC%84%A0%20%27%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%20%ED%94%8C%EB%9E%98%EB%8B%9D%27.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/248_%25EC%258A%25A4%25ED%2594%2584%25EB%25A6%25B0%25ED%258A%25B8%25EC%259D%2598%2520%25EC%25B6%259C%25EB%25B0%259C%25EC%2584%25A0%2520%2527%25EC%258A%25A4%25ED%2594%2584%25EB%25A6%25B0%25ED%258A%25B8%2520%25ED%2594%258C%25EB%259E%2598%25EB%258B%259D%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/248_%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%EC%9D%98%20%EC%B6%9C%EB%B0%9C%EC%84%A0%20%27%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%20%ED%94%8C%EB%9E%98%EB%8B%9D%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
@@ -2520,7 +2513,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/249_%27%EC%A2%8B%EC%95%84%EC%9A%94%27%EA%B0%80%20%EB%A7%8C%EB%93%A0%20%EC%9E%91%EC%A7%80%EB%A7%8C%20%EA%B0%95%EB%A0%A5%ED%95%9C%20UX%EC%9D%98%20%ED%98%81%EB%AA%85.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/249_%2527%25EC%25A2%258B%25EC%2595%2584%25EC%259A%2594%2527%25EA%25B0%2580%2520%25EB%25A7%258C%25EB%2593%25A0%2520%25EC%259E%2591%25EC%25A7%2580%25EB%25A7%258C%2520%25EA%25B0%2595%25EB%25A0%25A5%25ED%2595%259C%2520UX%25EC%259D%2598%2520%25ED%2598%2581%25EB%25AA%2585_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/249_%27%EC%A2%8B%EC%95%84%EC%9A%94%27%EA%B0%80%20%EB%A7%8C%EB%93%A0%20%EC%9E%91%EC%A7%80%EB%A7%8C%20%EA%B0%95%EB%A0%A5%ED%95%9C%20UX%EC%9D%98%20%ED%98%81%EB%AA%85_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -2530,7 +2523,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/250_%EC%B4%88%EA%B3%A0%EC%9C%A8%EC%9D%98%20AI%EB%A1%9C%20%EC%8B%9C%EC%9E%A5%EC%9D%84%20%ED%9D%94%EB%93%A4%EB%8B%A4.%20DeepSeek.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/250_%25EC%25B4%2588%25EA%25B3%25A0%25EC%259C%25A8%25EC%259D%2598%2520AI%25EB%25A1%259C%2520%25EC%258B%259C%25EC%259E%25A5%25EC%259D%2584%2520%25ED%259D%2594%25EB%2593%25A4%25EB%258B%25A4.%2520DeepSeek_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/250_%EC%B4%88%EA%B3%A0%EC%9C%A8%EC%9D%98%20AI%EB%A1%9C%20%EC%8B%9C%EC%9E%A5%EC%9D%84%20%ED%9D%94%EB%93%A4%EB%8B%A4.%20DeepSeek_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -2540,7 +2533,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/251_%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%EC%9D%98%20%EB%B0%9C%EC%83%81%20%27SCAMPER%27%20%EA%B8%B0%EB%B2%95.html" class="card-item" data-category="기획자의 프레임웍">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/251_%25EC%2595%2584%25EC%259D%25B4%25EB%2594%2594%25EC%2596%25B4%25EC%259D%2598%2520%25EB%25B0%259C%25EC%2583%2581%2520%2527SCAMPER%2527%2520%25EA%25B8%25B0%25EB%25B2%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/251_%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%EC%9D%98%20%EB%B0%9C%EC%83%81%20%27SCAMPER%27%20%EA%B8%B0%EB%B2%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자의 프레임웍</div>
@@ -2550,7 +2543,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/252_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%EA%B8%B0%EB%B0%80%EC%84%9C%EC%9E%AC%EC%9D%98%20%EB%B3%80%ED%99%94%20%27%EB%8D%94%20%ED%8D%BC%EC%8B%A4%EB%A6%AC%ED%85%8C%EC%9D%B4%EC%85%98%27.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/252_%25ED%258A%25B8%25EB%25A0%2588%25EB%25B0%2594%25EB%25A6%25AC%2520%25EA%25B8%25B0%25EB%25B0%2580%25EC%2584%259C%25EC%259E%25AC%25EC%259D%2598%2520%25EB%25B3%2580%25ED%2599%2594%2520%2527%25EB%258D%2594%2520%25ED%258D%25BC%25EC%258B%25A4%25EB%25A6%25AC%25ED%2585%258C%25EC%259D%25B4%25EC%2585%2598%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/252_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%EA%B8%B0%EB%B0%80%EC%84%9C%EC%9E%AC%EC%9D%98%20%EB%B3%80%ED%99%94%20%27%EB%8D%94%20%ED%8D%BC%EC%8B%A4%EB%A6%AC%ED%85%8C%EC%9D%B4%EC%85%98%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -2560,7 +2553,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/253_%EB%A7%88%EC%BC%80%ED%8C%85%20%EC%97%86%EC%9D%B4%2020%EC%A1%B0%EC%9B%90%20%EA%B0%80%EC%B9%98%EB%A5%BC%20%EB%A7%8C%EB%93%A0%20Figma%20PLG%EC%A0%84%EB%9E%B5.html" class="card-item" data-category="스타트업의 전략들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/253_%25EB%25A7%2588%25EC%25BC%2580%25ED%258C%2585%2520%25EC%2597%2586%25EC%259D%25B4%252020%25EC%25A1%25B0%25EC%259B%2590%2520%25EA%25B0%2580%25EC%25B9%2598%25EB%25A5%25BC%2520%25EB%25A7%258C%25EB%2593%25A0%2520Figma%2520PLG%25EC%25A0%2584%25EB%259E%25B5_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/253_%EB%A7%88%EC%BC%80%ED%8C%85%20%EC%97%86%EC%9D%B4%2020%EC%A1%B0%EC%9B%90%20%EA%B0%80%EC%B9%98%EB%A5%BC%20%EB%A7%8C%EB%93%A0%20Figma%20PLG%EC%A0%84%EB%9E%B5_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업의 전략들</div>
@@ -2570,7 +2563,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/254_MIT%20%EC%B2%9C%EC%9E%AC%EB%93%A4%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EC%B9%9C%ED%99%98%EA%B2%BD%20%EC%95%94%EB%AA%A8%EB%8B%88%EC%95%84%20%EC%97%B0%EB%A3%8C%20%27%EC%95%84%EB%AA%A8%EC%A7%80%27.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/254_MIT%2520%25EC%25B2%259C%25EC%259E%25AC%25EB%2593%25A4%25EC%259D%25B4%2520%25EB%25A7%258C%25EB%2593%25A0%2520%25EC%25B9%259C%25ED%2599%2598%25EA%25B2%25BD%2520%25EC%2595%2594%25EB%25AA%25A8%25EB%258B%2588%25EC%2595%2584%2520%25EC%2597%25B0%25EB%25A3%258C%2520%2527%25EC%2595%2584%25EB%25AA%25A8%25EC%25A7%2580%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/254_MIT%20%EC%B2%9C%EC%9E%AC%EB%93%A4%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EC%B9%9C%ED%99%98%EA%B2%BD%20%EC%95%94%EB%AA%A8%EB%8B%88%EC%95%84%20%EC%97%B0%EB%A3%8C%20%27%EC%95%84%EB%AA%A8%EC%A7%80%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -2580,7 +2573,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/255_PO%EA%B0%80%20%EA%B0%9D%EA%B4%80%EC%A0%81%EC%9D%B4%EC%96%B4%EC%95%BC%20%ED%95%A0%20%EB%95%8C%EB%8A%94%E2%80%A6.html" class="card-item" data-category="Be the PO">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/255_PO%25EA%25B0%2580%2520%25EA%25B0%259D%25EA%25B4%2580%25EC%25A0%2581%25EC%259D%25B4%25EC%2596%25B4%25EC%2595%25BC%2520%25ED%2595%25A0%2520%25EB%2595%258C%25EB%258A%2594%25E2%2580%25A6_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/255_PO%EA%B0%80%20%EA%B0%9D%EA%B4%80%EC%A0%81%EC%9D%B4%EC%96%B4%EC%95%BC%20%ED%95%A0%20%EB%95%8C%EB%8A%94%E2%80%A6_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">Be the PO</div>
@@ -2590,7 +2583,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/256_%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%98%20%EC%8B%AC%EC%9E%A5%20%E2%80%98%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%E2%80%99.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/256_%25EC%2595%25A0%25EC%259E%2590%25EC%259D%25BC%25EC%259D%2598%2520%25EC%258B%25AC%25EC%259E%25A5%2520%25E2%2580%2598%25EC%258A%25A4%25ED%2594%2584%25EB%25A6%25B0%25ED%258A%25B8%25E2%2580%2599_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/256_%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%98%20%EC%8B%AC%EC%9E%A5%20%E2%80%98%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%E2%80%99_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
@@ -2600,7 +2593,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/257_UX%EC%99%80%20UI%EC%9D%98%20%EC%B0%A8%EC%9D%B4%2C%20%EA%B7%B8%20%EB%92%A4%EC%97%90%20%EC%88%A8%EA%B2%A8%EC%A7%84%20%EC%9D%B4%EC%95%BC%EA%B8%B0.html" class="card-item" data-category="UX의 언어들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/257_UX%25EC%2599%2580%2520UI%25EC%259D%2598%2520%25EC%25B0%25A8%25EC%259D%25B4%252C%2520%25EA%25B7%25B8%2520%25EB%2592%25A4%25EC%2597%2590%2520%25EC%2588%25A8%25EA%25B2%25A8%25EC%25A7%2584%2520%25EC%259D%25B4%25EC%2595%25BC%25EA%25B8%25B0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/257_UX%EC%99%80%20UI%EC%9D%98%20%EC%B0%A8%EC%9D%B4%2C%20%EA%B7%B8%20%EB%92%A4%EC%97%90%20%EC%88%A8%EA%B2%A8%EC%A7%84%20%EC%9D%B4%EC%95%BC%EA%B8%B0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">UX의 언어들</div>
@@ -2610,7 +2603,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/258_%EB%B9%88%EB%9D%BC%EB%8D%B4%EC%9D%84%20%EC%B6%94%EC%A0%81%ED%95%9C%20AI%EC%9D%98%20%ED%9E%98%2C%20%EC%8B%9C%EA%B0%80%EC%B4%9D%EC%95%A1%20100%EC%A1%B0%20%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/258_%25EB%25B9%2588%25EB%259D%25BC%25EB%258D%25B4%25EC%259D%2584%2520%25EC%25B6%2594%25EC%25A0%2581%25ED%2595%259C%2520AI%25EC%259D%2598%2520%25ED%259E%2598%252C%2520%25EC%258B%259C%25EA%25B0%2580%25EC%25B4%259D%25EC%2595%25A1%2520100%25EC%25A1%25B0%2520%25ED%258C%2594%25EB%259E%2580%25ED%258B%25B0%25EC%2596%25B4_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/258_%EB%B9%88%EB%9D%BC%EB%8D%B4%EC%9D%84%20%EC%B6%94%EC%A0%81%ED%95%9C%20AI%EC%9D%98%20%ED%9E%98%2C%20%EC%8B%9C%EA%B0%80%EC%B4%9D%EC%95%A1%20100%EC%A1%B0%20%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -2620,7 +2613,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/259_%EA%B3%A0%EA%B0%9D%EC%9D%84%20%EC%A0%95%EC%9D%98%ED%95%98%EB%8A%94%20%EB%B2%95%20%27%ED%8E%98%EB%A5%B4%EC%86%8C%EB%82%98%27.html" class="card-item" data-category="기획자의 프레임웍">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/259_%25EA%25B3%25A0%25EA%25B0%259D%25EC%259D%2584%2520%25EC%25A0%2595%25EC%259D%2598%25ED%2595%2598%25EB%258A%2594%2520%25EB%25B2%2595%2520%2527%25ED%258E%2598%25EB%25A5%25B4%25EC%2586%258C%25EB%2582%2598%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/259_%EA%B3%A0%EA%B0%9D%EC%9D%84%20%EC%A0%95%EC%9D%98%ED%95%98%EB%8A%94%20%EB%B2%95%20%27%ED%8E%98%EB%A5%B4%EC%86%8C%EB%82%98%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자의 프레임웍</div>
@@ -2630,7 +2623,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/260_%EC%95%A0%EC%9E%90%EC%9D%BC%20%EB%A7%A4%EB%8B%88%ED%8E%98%EC%8A%A4%ED%86%A0%EB%9E%80.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/260_%25EC%2595%25A0%25EC%259E%2590%25EC%259D%25BC%2520%25EB%25A7%25A4%25EB%258B%2588%25ED%258E%2598%25EC%258A%25A4%25ED%2586%25A0%25EB%259E%2580_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/260_%EC%95%A0%EC%9E%90%EC%9D%BC%20%EB%A7%A4%EB%8B%88%ED%8E%98%EC%8A%A4%ED%86%A0%EB%9E%80_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
@@ -2640,7 +2633,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/261_%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%EA%B8%80%EC%9D%84%20%EC%93%B0%EB%8A%94%EB%8D%B0%20%EA%B0%80%EC%9D%B4%EB%93%9C%EB%9D%BC%EC%9D%B8%EC%9D%B4%20%EC%9E%88%EC%9D%84%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/261_%25EB%25A7%2581%25ED%2581%25AC%25EB%2593%259C%25EC%259D%25B8%2520%25EA%25B8%2580%25EC%259D%2584%2520%25EC%2593%25B0%25EB%258A%2594%25EB%258D%25B0%2520%25EA%25B0%2580%25EC%259D%25B4%25EB%2593%259C%25EB%259D%25BC%25EC%259D%25B8%25EC%259D%25B4%2520%25EC%259E%2588%25EC%259D%2584%25EA%25B9%258C%25EC%259A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/261_%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%EA%B8%80%EC%9D%84%20%EC%93%B0%EB%8A%94%EB%8D%B0%20%EA%B0%80%EC%9D%B4%EB%93%9C%EB%9D%BC%EC%9D%B8%EC%9D%B4%20%EC%9E%88%EC%9D%84%EA%B9%8C%EC%9A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -2650,7 +2643,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/262_%EC%95%A4%ED%8A%B8%EB%A1%9C%ED%94%BD%2C%205%EB%85%84%20%EB%A7%8C%EC%97%90%20%EA%B8%B0%EC%97%85%EA%B0%80%EC%B9%98%2087%EC%A1%B0%EC%9D%98%20AI%EA%B8%B0%EC%97%85%EC%9D%B4%20%EB%90%98%EB%8B%A4.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/262_%25EC%2595%25A4%25ED%258A%25B8%25EB%25A1%259C%25ED%2594%25BD%252C%25205%25EB%2585%2584%2520%25EB%25A7%258C%25EC%2597%2590%2520%25EA%25B8%25B0%25EC%2597%2585%25EA%25B0%2580%25EC%25B9%2598%252087%25EC%25A1%25B0%25EC%259D%2598%2520AI%25EA%25B8%25B0%25EC%2597%2585%25EC%259D%25B4%2520%25EB%2590%2598%25EB%258B%25A4_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/262_%EC%95%A4%ED%8A%B8%EB%A1%9C%ED%94%BD%2C%205%EB%85%84%20%EB%A7%8C%EC%97%90%20%EA%B8%B0%EC%97%85%EA%B0%80%EC%B9%98%2087%EC%A1%B0%EC%9D%98%20AI%EA%B8%B0%EC%97%85%EC%9D%B4%20%EB%90%98%EB%8B%A4_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -2660,7 +2653,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/263_%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%20%EC%84%A4%EC%A0%95%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC%20%27RICE%27.html" class="card-item" data-category="기획자의 프레임웍">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/263_%25EC%259A%25B0%25EC%2584%25A0%25EC%2588%259C%25EC%259C%2584%2520%25EC%2584%25A4%25EC%25A0%2595%25EC%259D%2598%2520%25ED%2594%2584%25EB%25A0%2588%25EC%259E%2584%25EC%259B%258C%25ED%2581%25AC%2520%2527RICE%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/263_%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%20%EC%84%A4%EC%A0%95%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC%20%27RICE%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자의 프레임웍</div>
@@ -2670,7 +2663,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/264_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EA%B7%BC%ED%99%A9%20%EA%B3%B5%EC%9C%A0.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/264_%25EC%258B%25AC%25ED%2594%258C%25EB%25A6%25AC%25ED%258C%258C%25EC%259D%25B4%25EC%2596%25B4%2520%25EA%25B7%25BC%25ED%2599%25A9%2520%25EA%25B3%25B5%25EC%259C%25A0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/264_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EA%B7%BC%ED%99%A9%20%EA%B3%B5%EC%9C%A0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -2680,7 +2673,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/265_AI%20%EC%8B%9C%EB%8C%80%EC%97%90%20%EC%96%B4%EB%96%A4%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EA%B0%80%20%EB%90%98%EB%A9%B4%20%EC%A2%8B%EC%9D%84%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/265_AI%2520%25EC%258B%259C%25EB%258C%2580%25EC%2597%2590%2520%25EC%2596%25B4%25EB%2596%25A4%2520%25EA%25B0%259C%25EB%25B0%259C%25EC%259E%2590%25EA%25B0%2580%2520%25EB%2590%2598%25EB%25A9%25B4%2520%25EC%25A2%258B%25EC%259D%2584%25EA%25B9%258C%25EC%259A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/265_AI%20%EC%8B%9C%EB%8C%80%EC%97%90%20%EC%96%B4%EB%96%A4%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EA%B0%80%20%EB%90%98%EB%A9%B4%20%EC%A2%8B%EC%9D%84%EA%B9%8C%EC%9A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -2690,7 +2683,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/266_%EA%B2%B0%ED%95%8D%EC%9D%98%20%EC%9D%B8%EC%8B%9D%EC%97%90%EC%84%9C%20%EB%B0%9C%EC%A0%84%EC%9D%B4%20%EC%8B%9C%EC%9E%91%EB%90%9C%EB%8B%A4.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/266_%25EA%25B2%25B0%25ED%2595%258D%25EC%259D%2598%2520%25EC%259D%25B8%25EC%258B%259D%25EC%2597%2590%25EC%2584%259C%2520%25EB%25B0%259C%25EC%25A0%2584%25EC%259D%25B4%2520%25EC%258B%259C%25EC%259E%2591%25EB%2590%259C%25EB%258B%25A4._cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/266_%EA%B2%B0%ED%95%8D%EC%9D%98%20%EC%9D%B8%EC%8B%9D%EC%97%90%EC%84%9C%20%EB%B0%9C%EC%A0%84%EC%9D%B4%20%EC%8B%9C%EC%9E%91%EB%90%9C%EB%8B%A4._cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -2700,7 +2693,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/267_%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%B4%EB%9E%80.html" class="card-item" data-category="PO가 꼭 알아야 할 것들">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/267_%25EC%2595%25A0%25EC%259E%2590%25EC%259D%25BC%25EC%259D%25B4%25EB%259E%2580_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/267_%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%B4%EB%9E%80_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">PO가 꼭 알아야 할 것들</div>
@@ -2710,7 +2703,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/268_%EA%B8%B0%EC%88%A0%EA%B3%BC%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A1%9C%20%EC%96%91%EC%8B%9D%EC%9D%84%20%ED%98%81%EC%8B%A0%ED%95%9C%EB%8B%A4.%20%ED%83%80%EC%9D%B4%EB%93%9C%ED%92%80.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/268_%25EA%25B8%25B0%25EC%2588%25A0%25EA%25B3%25BC%2520%25EB%258D%25B0%25EC%259D%25B4%25ED%2584%25B0%25EB%25A1%259C%2520%25EC%2596%2591%25EC%258B%259D%25EC%259D%2584%2520%25ED%2598%2581%25EC%258B%25A0%25ED%2595%259C%25EB%258B%25A4.%2520%25ED%2583%2580%25EC%259D%25B4%25EB%2593%259C%25ED%2592%2580_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/268_%EA%B8%B0%EC%88%A0%EA%B3%BC%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A1%9C%20%EC%96%91%EC%8B%9D%EC%9D%84%20%ED%98%81%EC%8B%A0%ED%95%9C%EB%8B%A4.%20%ED%83%80%EC%9D%B4%EB%93%9C%ED%92%80_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
@@ -2720,17 +2713,17 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/269_50%EB%AA%85%EC%9C%BC%EB%A1%9C%201%EB%85%84%208%EA%B0%9C%EC%9B%94%EB%A7%8C%EC%97%90%20%EC%9C%A0%EB%8B%88%EC%BD%98%EC%9D%B4%20%EB%90%9C%20%27%ED%8D%BC%ED%94%8C%EB%A0%89%EC%8B%9C%ED%8B%B0%27.html" class="card-item" data-category="심플리파이어 인사이트">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/269_50%25EB%25AA%2585%25EC%259C%25BC%25EB%25A1%259C%25201%25EB%2585%2584%25208%25EA%25B0%259C%25EC%259B%2594%25EB%25A7%258C%25EC%2597%2590%2520%25EC%259C%25A0%25EB%258B%2588%25EC%25BD%2598%25EC%259D%25B4%2520%25EB%2590%259C%2520%2527%25ED%258D%25BC%25ED%2594%258C%25EB%25A0%2589%25EC%258B%259C%25ED%258B%25B0%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/269_50%EB%AA%85%EC%9C%BC%EB%A1%9C%201%EB%85%84%208%EA%B0%9C%EC%9B%94%EB%A7%8C%EC%97%90%20%EC%9C%A0%EB%8B%88%EC%BD%98%EC%9D%B4%20%EB%90%9C%20%27%ED%8D%BC%ED%94%8C%EB%A0%89%EC%8B%9C%ED%8B%B0%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 인사이트</div>
                 <h3 class="card-title">명으로 1년 8개월만에 유니콘이 된 '퍼플렉시티'</h3>
             </div>
-            <div class="card-date"></div>
+            <div class="card-date">Jan 8. 2025</div>
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/270_%EC%84%B1%EA%B3%B5%EC%9D%84%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EC%8B%9C%EA%B0%84%20%EB%A7%8C%EB%93%A4%EA%B8%B0.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/270_%25EC%2584%25B1%25EA%25B3%25B5%25EC%259D%2584%2520%25EB%25A7%258C%25EB%2593%259C%25EB%258A%2594%2520%25EC%258B%259C%25EA%25B0%2584%2520%25EB%25A7%258C%25EB%2593%25A4%25EA%25B8%25B0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/270_%EC%84%B1%EA%B3%B5%EC%9D%84%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EC%8B%9C%EA%B0%84%20%EB%A7%8C%EB%93%A4%EA%B8%B0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -2740,17 +2733,17 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/271_2025%EB%85%84%EC%9D%98%20%EB%82%B4%EA%B0%80...%202015%EB%85%84%EC%9D%98%20%EB%82%98%EC%97%90%EA%B2%8C.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/271_2025%25EB%2585%2584%25EC%259D%2598%2520%25EB%2582%25B4%25EA%25B0%2580...%25202015%25EB%2585%2584%25EC%259D%2598%2520%25EB%2582%2598%25EC%2597%2590%25EA%25B2%258C..._cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/271_2025%EB%85%84%EC%9D%98%20%EB%82%B4%EA%B0%80...%202015%EB%85%84%EC%9D%98%20%EB%82%98%EC%97%90%EA%B2%8C..._cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
                 <h3 class="card-title">년의 내가... 2015년의 나에게</h3>
             </div>
-            <div class="card-date"></div>
+            <div class="card-date">Jan 1. 2025</div>
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/272_Thank%20you%202024~%21%21%21.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/272_Thank%2520you%25202024~%2521%2521%2521_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/272_Thank%20you%202024~%21%21%21_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -2760,7 +2753,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/273_UX%EB%8A%94%20%EB%94%94%EC%9E%90%EC%9D%B4%EB%84%88%EA%B0%80%20%EC%9E%98%ED%95%98%EB%A9%B4%20%EB%90%98%EB%8A%94%20%EA%B2%83%20%EC%95%84%EB%8B%8C%EA%B0%80%EC%9A%94.html" class="card-item" data-category="기획자로 시작하기">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/273_UX%25EB%258A%2594%2520%25EB%2594%2594%25EC%259E%2590%25EC%259D%25B4%25EB%2584%2588%25EA%25B0%2580%2520%25EC%259E%2598%25ED%2595%2598%25EB%25A9%25B4%2520%25EB%2590%2598%25EB%258A%2594%2520%25EA%25B2%2583%2520%25EC%2595%2584%25EB%258B%258C%25EA%25B0%2580%25EC%259A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/273_UX%EB%8A%94%20%EB%94%94%EC%9E%90%EC%9D%B4%EB%84%88%EA%B0%80%20%EC%9E%98%ED%95%98%EB%A9%B4%20%EB%90%98%EB%8A%94%20%EA%B2%83%20%EC%95%84%EB%8B%8C%EA%B0%80%EC%9A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자로 시작하기</div>
@@ -2770,7 +2763,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/274_ENTJ%20%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EB%8A%94%20%EC%98%A4%EA%B2%9C2%28%EC%8A%A4%ED%8F%AC%EC%97%86%EC%9D%8C%29.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/274_ENTJ%2520%25EC%25BD%2594%25EC%25B9%2598%25EA%25B0%2580%2520%25EB%25B3%25B4%25EB%258A%2594%2520%25EC%2598%25A4%25EA%25B2%259C2%2528%25EC%258A%25A4%25ED%258F%25AC%25EC%2597%2586%25EC%259D%258C%2529_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/274_ENTJ%20%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EB%8A%94%20%EC%98%A4%EA%B2%9C2%28%EC%8A%A4%ED%8F%AC%EC%97%86%EC%9D%8C%29_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -2780,7 +2773,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/275_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%EA%B0%80%20%EB%B0%9B%EC%9D%80%20%EC%97%B0%EB%A7%90%20%EC%84%A0%EB%AC%BC.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/275_%25EC%258B%25AC%25ED%2594%258C%25EB%25A6%25AC%25ED%258C%258C%25EC%259D%25B4%25EC%2596%25B4%25EA%25B0%2580%2520%25EB%25B0%259B%25EC%259D%2580%2520%25EC%2597%25B0%25EB%25A7%2590%2520%25EC%2584%25A0%25EB%25AC%25BC_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/275_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%EA%B0%80%20%EB%B0%9B%EC%9D%80%20%EC%97%B0%EB%A7%90%20%EC%84%A0%EB%AC%BC_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -2790,7 +2783,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/276_%EC%9A%B4%EB%AA%85%EA%B3%BC%20%EB%82%98%EC%9D%98%20%EC%84%A0%ED%83%9D.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/276_%25EC%259A%25B4%25EB%25AA%2585%25EA%25B3%25BC%2520%25EB%2582%2598%25EC%259D%2598%2520%25EC%2584%25A0%25ED%2583%259D_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/276_%EC%9A%B4%EB%AA%85%EA%B3%BC%20%EB%82%98%EC%9D%98%20%EC%84%A0%ED%83%9D_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -2800,7 +2793,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/277_PO%EC%9D%98%20%EC%84%B1%EC%9E%A5%EC%9D%84%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EC%9D%BC.html" class="card-item" data-category="Be the PO">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/277_PO%25EC%259D%2598%2520%25EC%2584%25B1%25EC%259E%25A5%25EC%259D%2584%2520%25EB%25A7%258C%25EB%2593%259C%25EB%258A%2594%2520%25EC%259D%25BC_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/277_PO%EC%9D%98%20%EC%84%B1%EC%9E%A5%EC%9D%84%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EC%9D%BC_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">Be the PO</div>
@@ -2810,7 +2803,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/278_AI%20%EC%8B%9C%EB%8C%80%2C%20%EC%99%9C%20%EA%B8%B0%ED%9A%8D%EC%9D%B4%20%EB%8D%94%20%EC%A4%91%EC%9A%94%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="기획자로 시작하기">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/278_AI%2520%25EC%258B%259C%25EB%258C%2580%252C%2520%25EC%2599%259C%2520%25EA%25B8%25B0%25ED%259A%258D%25EC%259D%25B4%2520%25EB%258D%2594%2520%25EC%25A4%2591%25EC%259A%2594%25ED%2595%25A0%25EA%25B9%258C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/278_AI%20%EC%8B%9C%EB%8C%80%2C%20%EC%99%9C%20%EA%B8%B0%ED%9A%8D%EC%9D%B4%20%EB%8D%94%20%EC%A4%91%EC%9A%94%ED%95%A0%EA%B9%8C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자로 시작하기</div>
@@ -2820,7 +2813,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/279_%EA%B6%A4%EB%B3%80%EC%97%90%20%EB%8C%80%EC%9D%91%ED%95%98%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/279_%25EA%25B6%25A4%25EB%25B3%2580%25EC%2597%2590%2520%25EB%258C%2580%25EC%259D%2591%25ED%2595%2598%25EB%258A%2594%2520%25EB%25B2%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/279_%EA%B6%A4%EB%B3%80%EC%97%90%20%EB%8C%80%EC%9D%91%ED%95%98%EB%8A%94%20%EB%B2%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -2830,7 +2823,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/280_%EC%9E%98%EB%90%98%EB%8A%94%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%EB%AC%B4%EC%97%87%EC%9D%B4%20%EB%8B%A4%EB%A5%BC%EA%B9%8C.html" class="card-item" data-category="스타트업 리더의 기술">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/280_%25EC%259E%2598%25EB%2590%2598%25EB%258A%2594%2520%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%25EC%2597%2585%25EC%259D%2580%2520%25EB%25AC%25B4%25EC%2597%2587%25EC%259D%25B4%2520%25EB%258B%25A4%25EB%25A5%25BC%25EA%25B9%258C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/280_%EC%9E%98%EB%90%98%EB%8A%94%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%EB%AC%B4%EC%97%87%EC%9D%B4%20%EB%8B%A4%EB%A5%BC%EA%B9%8C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업 리더의 기술</div>
@@ -2840,7 +2833,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/281_PO%EA%B0%80%20%EB%A6%AC%EB%8D%94%EC%8B%AD%EC%9D%84%20%EB%B0%9C%ED%9C%98%ED%95%98%EA%B8%B0%20%EC%9C%84%ED%95%B4%20%ED%95%84%EC%9A%94%ED%95%9C%20%EA%B2%83.html" class="card-item" data-category="Be the PO">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/281_PO%25EA%25B0%2580%2520%25EB%25A6%25AC%25EB%258D%2594%25EC%258B%25AD%25EC%259D%2584%2520%25EB%25B0%259C%25ED%259C%2598%25ED%2595%2598%25EA%25B8%25B0%2520%25EC%259C%2584%25ED%2595%25B4%2520%25ED%2595%2584%25EC%259A%2594%25ED%2595%259C%2520%25EA%25B2%2583_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/281_PO%EA%B0%80%20%EB%A6%AC%EB%8D%94%EC%8B%AD%EC%9D%84%20%EB%B0%9C%ED%9C%98%ED%95%98%EA%B8%B0%20%EC%9C%84%ED%95%B4%20%ED%95%84%EC%9A%94%ED%95%9C%20%EA%B2%83_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">Be the PO</div>
@@ -2850,7 +2843,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/282_%EB%82%98%EC%99%80%20%EC%95%88%EB%A7%9E%EB%8A%94%20%EC%83%81%EC%82%AC%EB%A5%BC%20%EB%A7%8C%EB%82%AC%EC%9D%84%20%EB%95%8C%EB%8A%94.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/282_%25EB%2582%2598%25EC%2599%2580%2520%25EC%2595%2588%25EB%25A7%259E%25EB%258A%2594%2520%25EC%2583%2581%25EC%2582%25AC%25EB%25A5%25BC%2520%25EB%25A7%258C%25EB%2582%25AC%25EC%259D%2584%2520%25EB%2595%258C%25EB%258A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/282_%EB%82%98%EC%99%80%20%EC%95%88%EB%A7%9E%EB%8A%94%20%EC%83%81%EC%82%AC%EB%A5%BC%20%EB%A7%8C%EB%82%AC%EC%9D%84%20%EB%95%8C%EB%8A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -2860,7 +2853,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/283_ENTJ%EC%BD%94%EC%B9%98%EC%9D%98%20%EC%A0%95%EA%B6%8C%20%EA%B8%B0%ED%9A%8D.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/283_ENTJ%25EC%25BD%2594%25EC%25B9%2598%25EC%259D%2598%2520%25EC%25A0%2595%25EA%25B6%258C%2520%25EA%25B8%25B0%25ED%259A%258D_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/283_ENTJ%EC%BD%94%EC%B9%98%EC%9D%98%20%EC%A0%95%EA%B6%8C%20%EA%B8%B0%ED%9A%8D_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -2870,7 +2863,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/284_%EC%83%89%EB%8B%AC%EB%9E%90%EB%8D%98%20%EB%A6%AC%EB%8D%94.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/284_%25EC%2583%2589%25EB%258B%25AC%25EB%259E%2590%25EB%258D%2598%2520%25EB%25A6%25AC%25EB%258D%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/284_%EC%83%89%EB%8B%AC%EB%9E%90%EB%8D%98%20%EB%A6%AC%EB%8D%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -2880,7 +2873,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/285_%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%97%90%20%ED%8F%AC%EC%BB%A4%EC%8A%A4%ED%95%98%EC%84%B8%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/285_%25EB%25B9%2584%25EC%25A6%2588%25EB%258B%2588%25EC%258A%25A4%25EC%2597%2590%2520%25ED%258F%25AC%25EC%25BB%25A4%25EC%258A%25A4%25ED%2595%2598%25EC%2584%25B8%25EC%259A%2594._cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/285_%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%97%90%20%ED%8F%AC%EC%BB%A4%EC%8A%A4%ED%95%98%EC%84%B8%EC%9A%94._cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -2890,7 +2883,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/286_ENTJ%EC%BD%94%EC%B9%98%EC%9D%98%20%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%20%ED%8A%B8%EB%A0%81%ED%81%AC%20%EA%B0%90%EC%83%81.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/286_ENTJ%25EC%25BD%2594%25EC%25B9%2598%25EC%259D%2598%2520%25EB%2584%25B7%25ED%2594%258C%25EB%25A6%25AD%25EC%258A%25A4%2520%25ED%258A%25B8%25EB%25A0%2581%25ED%2581%25AC%2520%25EA%25B0%2590%25EC%2583%2581_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/286_ENTJ%EC%BD%94%EC%B9%98%EC%9D%98%20%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%20%ED%8A%B8%EB%A0%81%ED%81%AC%20%EA%B0%90%EC%83%81_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -2900,7 +2893,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/287_%EB%82%98%EC%9D%98%20%EC%BD%94%EC%B9%AD%20%EC%97%AC%EC%A0%95.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/287_%25EB%2582%2598%25EC%259D%2598%2520%25EC%25BD%2594%25EC%25B9%25AD%2520%25EC%2597%25AC%25EC%25A0%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/287_%EB%82%98%EC%9D%98%20%EC%BD%94%EC%B9%AD%20%EC%97%AC%EC%A0%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -2910,7 +2903,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/288_%EC%B4%88%EA%B8%B0%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%B9%8C%EB%93%9C%EC%97%85%EC%9D%98%20%EC%9B%90%EC%B9%99.html" class="card-item" data-category="스타트업 리더의 기술">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/288_%25EC%25B4%2588%25EA%25B8%25B0%2520%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%25EC%2597%2585%2520%25EB%25B9%258C%25EB%2593%259C%25EC%2597%2585%25EC%259D%2598%2520%25EC%259B%2590%25EC%25B9%2599_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/288_%EC%B4%88%EA%B8%B0%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%B9%8C%EB%93%9C%EC%97%85%EC%9D%98%20%EC%9B%90%EC%B9%99_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업 리더의 기술</div>
@@ -2920,7 +2913,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/289_%ED%95%B8%EB%94%94%EC%BA%A1%EC%9D%B4%20%EA%B0%95%EC%A0%90%EC%9D%B4%20%EB%90%98%EB%8A%94%20%EC%9B%90%EB%A6%AC.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/289_%25ED%2595%25B8%25EB%2594%2594%25EC%25BA%25A1%25EC%259D%25B4%2520%25EA%25B0%2595%25EC%25A0%2590%25EC%259D%25B4%2520%25EB%2590%2598%25EB%258A%2594%2520%25EC%259B%2590%25EB%25A6%25AC_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/289_%ED%95%B8%EB%94%94%EC%BA%A1%EC%9D%B4%20%EA%B0%95%EC%A0%90%EC%9D%B4%20%EB%90%98%EB%8A%94%20%EC%9B%90%EB%A6%AC_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -2930,7 +2923,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/290_%EC%A0%84%EB%AC%B8%EA%B0%95%EC%82%AC%EB%93%A4%EC%9D%80%20%EC%A4%80%EB%B9%84%EC%97%90%20%EC%96%BC%EB%A7%88%EC%9D%98%20%EC%8B%9C%EA%B0%84%EC%9D%84%20%EC%93%B8%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/290_%25EC%25A0%2584%25EB%25AC%25B8%25EA%25B0%2595%25EC%2582%25AC%25EB%2593%25A4%25EC%259D%2580%2520%25EC%25A4%2580%25EB%25B9%2584%25EC%2597%2590%2520%25EC%2596%25BC%25EB%25A7%2588%25EC%259D%2598%2520%25EC%258B%259C%25EA%25B0%2584%25EC%259D%2584%2520%25EC%2593%25B8%25EA%25B9%258C%25EC%259A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/290_%EC%A0%84%EB%AC%B8%EA%B0%95%EC%82%AC%EB%93%A4%EC%9D%80%20%EC%A4%80%EB%B9%84%EC%97%90%20%EC%96%BC%EB%A7%88%EC%9D%98%20%EC%8B%9C%EA%B0%84%EC%9D%84%20%EC%93%B8%EA%B9%8C%EC%9A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -2940,7 +2933,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/291_%EB%82%B4%20%EA%B8%B0%ED%9A%8D%EC%84%9C%EB%8A%94%20%EC%99%9C%20%EA%B9%8C%EC%9D%BC%EA%B9%8C.html" class="card-item" data-category="기획자로 시작하기">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/291_%25EB%2582%25B4%2520%25EA%25B8%25B0%25ED%259A%258D%25EC%2584%259C%25EB%258A%2594%2520%25EC%2599%259C%2520%25EA%25B9%258C%25EC%259D%25BC%25EA%25B9%258C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/291_%EB%82%B4%20%EA%B8%B0%ED%9A%8D%EC%84%9C%EB%8A%94%20%EC%99%9C%20%EA%B9%8C%EC%9D%BC%EA%B9%8C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자로 시작하기</div>
@@ -2950,7 +2943,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/292_%EC%A0%95%EC%A3%BC%EC%98%81%ED%9A%8C%EC%9E%A5%EB%8B%98%20%ED%9B%84%EB%B0%B0%EB%93%A4%EC%9D%84%20%EB%A7%8C%EB%82%98%EA%B3%A0%20%EC%99%94%EC%8A%B5%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/292_%25EC%25A0%2595%25EC%25A3%25BC%25EC%2598%2581%25ED%259A%258C%25EC%259E%25A5%25EB%258B%2598%2520%25ED%259B%2584%25EB%25B0%25B0%25EB%2593%25A4%25EC%259D%2584%2520%25EB%25A7%258C%25EB%2582%2598%25EA%25B3%25A0%2520%25EC%2599%2594%25EC%258A%25B5%25EB%258B%2588%25EB%258B%25A4._cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/292_%EC%A0%95%EC%A3%BC%EC%98%81%ED%9A%8C%EC%9E%A5%EB%8B%98%20%ED%9B%84%EB%B0%B0%EB%93%A4%EC%9D%84%20%EB%A7%8C%EB%82%98%EA%B3%A0%20%EC%99%94%EC%8A%B5%EB%8B%88%EB%8B%A4._cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -2960,7 +2953,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/293_%EC%88%AB%EC%9E%90%EB%A5%BC%20%EB%B9%8C%EB%93%9C%EC%97%85%20%ED%95%98%EC%84%B8%EC%9A%94.html" class="card-item" data-category="스타트업 리더의 기술">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/293_%25EC%2588%25AB%25EC%259E%2590%25EB%25A5%25BC%2520%25EB%25B9%258C%25EB%2593%259C%25EC%2597%2585%2520%25ED%2595%2598%25EC%2584%25B8%25EC%259A%2594._cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/293_%EC%88%AB%EC%9E%90%EB%A5%BC%20%EB%B9%8C%EB%93%9C%EC%97%85%20%ED%95%98%EC%84%B8%EC%9A%94._cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업 리더의 기술</div>
@@ -2970,7 +2963,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/294_%EB%82%9C%EA%B0%81%EB%B2%88%ED%98%B8%201%EB%B2%88.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/294_%25EB%2582%259C%25EA%25B0%2581%25EB%25B2%2588%25ED%2598%25B8%25201%25EB%25B2%2588_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/294_%EB%82%9C%EA%B0%81%EB%B2%88%ED%98%B8%201%EB%B2%88_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -2980,7 +2973,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/295_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%EA%B0%80%20%EB%82%B4%20%EC%82%B6%EC%9D%84%20%EB%B0%94%EA%BE%BC%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/295_%25ED%258A%25B8%25EB%25A0%2588%25EB%25B0%2594%25EB%25A6%25AC%25EA%25B0%2580%2520%25EB%2582%25B4%2520%25EC%2582%25B6%25EC%259D%2584%2520%25EB%25B0%2594%25EA%25BE%25BC%2520%25EC%259D%25B4%25EC%259C%25A0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/295_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%EA%B0%80%20%EB%82%B4%20%EC%82%B6%EC%9D%84%20%EB%B0%94%EA%BE%BC%20%EC%9D%B4%EC%9C%A0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -2990,7 +2983,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/296_%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EA%B3%A0%EC%88%98%EA%B0%80%20%EB%90%98%EB%A9%B4%20%EB%AC%B4%EC%97%87%EC%9D%B4%20%EB%8B%AC%EB%9D%BC%EC%A7%88%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="Be the PO">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/296_%25EA%25B8%25B0%25ED%259A%258D%25EC%259D%2598%2520%25EA%25B3%25A0%25EC%2588%2598%25EA%25B0%2580%2520%25EB%2590%2598%25EB%25A9%25B4%2520%25EB%25AC%25B4%25EC%2597%2587%25EC%259D%25B4%2520%25EB%258B%25AC%25EB%259D%25BC%25EC%25A7%2588%25EA%25B9%258C%25EC%259A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/296_%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EA%B3%A0%EC%88%98%EA%B0%80%20%EB%90%98%EB%A9%B4%20%EB%AC%B4%EC%97%87%EC%9D%B4%20%EB%8B%AC%EB%9D%BC%EC%A7%88%EA%B9%8C%EC%9A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">Be the PO</div>
@@ -3000,7 +2993,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/297_%EB%94%94%EC%9E%90%EC%9D%B4%EB%84%88%EC%97%90%EA%B2%8C%20%EA%B8%B0%ED%9A%8D%EB%A0%A5%EC%9D%B4%20%ED%95%84%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="Be the PO">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/297_%25EB%2594%2594%25EC%259E%2590%25EC%259D%25B4%25EB%2584%2588%25EC%2597%2590%25EA%25B2%258C%2520%25EA%25B8%25B0%25ED%259A%258D%25EB%25A0%25A5%25EC%259D%25B4%2520%25ED%2595%2584%25EC%259A%2594%25ED%2595%259C%2520%25EC%259D%25B4%25EC%259C%25A0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/297_%EB%94%94%EC%9E%90%EC%9D%B4%EB%84%88%EC%97%90%EA%B2%8C%20%EA%B8%B0%ED%9A%8D%EB%A0%A5%EC%9D%B4%20%ED%95%84%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">Be the PO</div>
@@ -3010,7 +3003,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/298_%EB%9B%B0%EC%96%B4%EB%82%9C%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%8C%80%ED%91%9C%EB%8A%94%20%EB%AC%B4%EC%97%87%EC%9D%B4%20%EB%8B%A4%EB%A5%BC%EA%B9%8C.html" class="card-item" data-category="스타트업 리더의 기술">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/298_%25EB%259B%25B0%25EC%2596%25B4%25EB%2582%259C%2520%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%25EC%2597%2585%2520%25EB%258C%2580%25ED%2591%259C%25EB%258A%2594%2520%25EB%25AC%25B4%25EC%2597%2587%25EC%259D%25B4%2520%25EB%258B%25A4%25EB%25A5%25BC%25EA%25B9%258C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/298_%EB%9B%B0%EC%96%B4%EB%82%9C%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%8C%80%ED%91%9C%EB%8A%94%20%EB%AC%B4%EC%97%87%EC%9D%B4%20%EB%8B%A4%EB%A5%BC%EA%B9%8C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업 리더의 기술</div>
@@ -3020,7 +3013,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/299_%EC%B5%9C%EA%B3%A0%EC%9D%98%20%EA%B8%B0%ED%9A%8D%EA%B3%BC%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%B4%20%EA%B0%99%EC%9D%80%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="스타트업 리더의 기술">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/299_%25EC%25B5%259C%25EA%25B3%25A0%25EC%259D%2598%2520%25EA%25B8%25B0%25ED%259A%258D%25EA%25B3%25BC%2520%25EB%2594%2594%25EC%259E%2590%25EC%259D%25B8%25EC%259D%25B4%2520%25EA%25B0%2599%25EC%259D%2580%2520%25EC%259D%25B4%25EC%259C%25A0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/299_%EC%B5%9C%EA%B3%A0%EC%9D%98%20%EA%B8%B0%ED%9A%8D%EA%B3%BC%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%B4%20%EA%B0%99%EC%9D%80%20%EC%9D%B4%EC%9C%A0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업 리더의 기술</div>
@@ -3030,7 +3023,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/300_%EB%9B%B0%EC%96%B4%EB%82%9C%20PO%EB%8A%94%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A5%BC%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EB%B3%BC%EA%B9%8C.html" class="card-item" data-category="Be the PO">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/300_%25EB%259B%25B0%25EC%2596%25B4%25EB%2582%259C%2520PO%25EB%258A%2594%2520%25EB%258D%25B0%25EC%259D%25B4%25ED%2584%25B0%25EB%25A5%25BC%2520%25EC%2596%25B4%25EB%2596%25BB%25EA%25B2%258C%2520%25EB%25B3%25BC%25EA%25B9%258C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/300_%EB%9B%B0%EC%96%B4%EB%82%9C%20PO%EB%8A%94%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A5%BC%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EB%B3%BC%EA%B9%8C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">Be the PO</div>
@@ -3040,7 +3033,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/301_%EC%9D%BC%EC%97%90%20%EB%81%8C%EB%A0%A4%EB%8B%A4%EB%8B%90%20%EB%95%8C%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%ED%95%B4%EC%95%BC%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="스타트업 리더의 기술">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/301_%25EC%259D%25BC%25EC%2597%2590%2520%25EB%2581%258C%25EB%25A0%25A4%25EB%258B%25A4%25EB%258B%2590%2520%25EB%2595%258C%25EB%258A%2594%2520%25EC%2596%25B4%25EB%2596%25BB%25EA%25B2%258C%2520%25ED%2595%25B4%25EC%2595%25BC%25ED%2595%25A0%25EA%25B9%258C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/301_%EC%9D%BC%EC%97%90%20%EB%81%8C%EB%A0%A4%EB%8B%A4%EB%8B%90%20%EB%95%8C%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%ED%95%B4%EC%95%BC%ED%95%A0%EA%B9%8C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업 리더의 기술</div>
@@ -3050,7 +3043,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/302_%EC%BD%94%EC%B9%AD%EC%9D%B4%20%EB%B3%B4%EB%9E%8C%EC%B0%AC%20%EC%8B%9C%EA%B0%84.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/302_%25EC%25BD%2594%25EC%25B9%25AD%25EC%259D%25B4%2520%25EB%25B3%25B4%25EB%259E%258C%25EC%25B0%25AC%2520%25EC%258B%259C%25EA%25B0%2584_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/302_%EC%BD%94%EC%B9%AD%EC%9D%B4%20%EB%B3%B4%EB%9E%8C%EC%B0%AC%20%EC%8B%9C%EA%B0%84_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3060,7 +3053,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/303_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%EA%B8%B0%EB%B0%80%EC%84%9C%EC%9E%AC%20%27%EC%84%A4%EB%93%9D%EC%9D%98%20%EC%8B%AC%EB%A6%AC%ED%95%99%27.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/303_%25ED%258A%25B8%25EB%25A0%2588%25EB%25B0%2594%25EB%25A6%25AC%2520%25EA%25B8%25B0%25EB%25B0%2580%25EC%2584%259C%25EC%259E%25AC%2520%2527%25EC%2584%25A4%25EB%2593%259D%25EC%259D%2598%2520%25EC%258B%25AC%25EB%25A6%25AC%25ED%2595%2599%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/303_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%EA%B8%B0%EB%B0%80%EC%84%9C%EC%9E%AC%20%27%EC%84%A4%EB%93%9D%EC%9D%98%20%EC%8B%AC%EB%A6%AC%ED%95%99%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3070,7 +3063,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/304_%EB%82%B4%20%EC%BB%A4%EB%A6%AC%EC%96%B4%EC%9D%98%20%EB%B9%84%EB%B0%80.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/304_%25EB%2582%25B4%2520%25EC%25BB%25A4%25EB%25A6%25AC%25EC%2596%25B4%25EC%259D%2598%2520%25EB%25B9%2584%25EB%25B0%2580_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/304_%EB%82%B4%20%EC%BB%A4%EB%A6%AC%EC%96%B4%EC%9D%98%20%EB%B9%84%EB%B0%80_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -3080,7 +3073,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/305_%EB%9B%B0%EC%96%B4%EB%82%9C%20UX%EB%94%94%EC%9E%90%EC%9D%B4%EB%84%88%EC%9D%98%20%EB%AA%B8%EA%B0%92%EC%9D%B4%20%EB%86%92%EC%9D%80%20%EC%9D%B4%EC%9C%A0%EB%8A%94.html" class="card-item" data-category="스타트업 리더의 기술">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/305_%25EB%259B%25B0%25EC%2596%25B4%25EB%2582%259C%2520UX%25EB%2594%2594%25EC%259E%2590%25EC%259D%25B4%25EB%2584%2588%25EC%259D%2598%2520%25EB%25AA%25B8%25EA%25B0%2592%25EC%259D%25B4%2520%25EB%2586%2592%25EC%259D%2580%2520%25EC%259D%25B4%25EC%259C%25A0%25EB%258A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/305_%EB%9B%B0%EC%96%B4%EB%82%9C%20UX%EB%94%94%EC%9E%90%EC%9D%B4%EB%84%88%EC%9D%98%20%EB%AA%B8%EA%B0%92%EC%9D%B4%20%EB%86%92%EC%9D%80%20%EC%9D%B4%EC%9C%A0%EB%8A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업 리더의 기술</div>
@@ -3090,7 +3083,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/306_%EB%9B%B0%EC%96%B4%EB%82%9C%20PO%EB%8A%94%20%EC%96%B4%EB%96%A4%20%EC%9E%90%EC%A7%88%EC%9D%B4%20%EB%8B%A4%EB%A5%BC%EA%B9%8C.html" class="card-item" data-category="Be the PO">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/306_%25EB%259B%25B0%25EC%2596%25B4%25EB%2582%259C%2520PO%25EB%258A%2594%2520%25EC%2596%25B4%25EB%2596%25A4%2520%25EC%259E%2590%25EC%25A7%2588%25EC%259D%25B4%2520%25EB%258B%25A4%25EB%25A5%25BC%25EA%25B9%258C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/306_%EB%9B%B0%EC%96%B4%EB%82%9C%20PO%EB%8A%94%20%EC%96%B4%EB%96%A4%20%EC%9E%90%EC%A7%88%EC%9D%B4%20%EB%8B%A4%EB%A5%BC%EA%B9%8C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">Be the PO</div>
@@ -3100,7 +3093,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/307_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%97%90%EA%B2%8C%20%ED%95%84%EC%9A%94%ED%95%9C%20%EB%A6%AC%EB%8D%94%EC%8B%AD%EC%9D%80.html" class="card-item" data-category="스타트업 리더의 기술">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/307_%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%25EC%2597%2585%25EC%2597%2590%25EA%25B2%258C%2520%25ED%2595%2584%25EC%259A%2594%25ED%2595%259C%2520%25EB%25A6%25AC%25EB%258D%2594%25EC%258B%25AD%25EC%259D%2580_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/307_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%97%90%EA%B2%8C%20%ED%95%84%EC%9A%94%ED%95%9C%20%EB%A6%AC%EB%8D%94%EC%8B%AD%EC%9D%80_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업 리더의 기술</div>
@@ -3110,7 +3103,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/308_%EC%9D%B4%EC%A4%91%EC%83%9D%ED%99%9C%20%EC%A4%91.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/308_%25EC%259D%25B4%25EC%25A4%2591%25EC%2583%259D%25ED%2599%259C%2520%25EC%25A4%2591_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/308_%EC%9D%B4%EC%A4%91%EC%83%9D%ED%99%9C%20%EC%A4%91_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3120,7 +3113,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/309_ENTJ%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EB%8A%94%20%27%EC%9D%B4%ED%86%A0%EB%A1%9D%20%EC%B9%9C%EB%B0%80%ED%95%9C%20%EB%B0%B0%EC%8B%A0%EC%9E%90%27.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/309_ENTJ%25EC%25BD%2594%25EC%25B9%2598%25EA%25B0%2580%2520%25EB%25B3%25B4%25EB%258A%2594%2520%2527%25EC%259D%25B4%25ED%2586%25A0%25EB%25A1%259D%2520%25EC%25B9%259C%25EB%25B0%2580%25ED%2595%259C%2520%25EB%25B0%25B0%25EC%258B%25A0%25EC%259E%2590%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/309_ENTJ%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EB%8A%94%20%27%EC%9D%B4%ED%86%A0%EB%A1%9D%20%EC%B9%9C%EB%B0%80%ED%95%9C%20%EB%B0%B0%EC%8B%A0%EC%9E%90%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3130,7 +3123,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/310_%EC%B0%A9%EC%8B%9C%EC%97%90%20%EB%B9%A0%EC%A7%80%EC%A7%80%20%EC%95%8A%EA%B8%B0.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/310_%25EC%25B0%25A9%25EC%258B%259C%25EC%2597%2590%2520%25EB%25B9%25A0%25EC%25A7%2580%25EC%25A7%2580%2520%25EC%2595%258A%25EA%25B8%25B0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/310_%EC%B0%A9%EC%8B%9C%EC%97%90%20%EB%B9%A0%EC%A7%80%EC%A7%80%20%EC%95%8A%EA%B8%B0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -3140,7 +3133,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/311_%EC%96%B4%EB%96%A4%20%EC%A7%81%EC%9E%A5%EC%9D%84%20%EA%B3%A8%EB%9D%BC%EC%95%BC%20%ED%95%A0%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/311_%25EC%2596%25B4%25EB%2596%25A4%2520%25EC%25A7%2581%25EC%259E%25A5%25EC%259D%2584%2520%25EA%25B3%25A8%25EB%259D%25BC%25EC%2595%25BC%2520%25ED%2595%25A0%25EA%25B9%258C%25EC%259A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/311_%EC%96%B4%EB%96%A4%20%EC%A7%81%EC%9E%A5%EC%9D%84%20%EA%B3%A8%EB%9D%BC%EC%95%BC%20%ED%95%A0%EA%B9%8C%EC%9A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3150,7 +3143,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/312_%EC%A7%81%EA%B4%80%EB%A0%A5%EC%9D%84%20%EA%B0%80%EC%A7%80%EB%A9%B4%20%EC%96%B4%EB%A0%A4%EC%9A%B4%20%EC%A0%90.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/312_%25EC%25A7%2581%25EA%25B4%2580%25EB%25A0%25A5%25EC%259D%2584%2520%25EA%25B0%2580%25EC%25A7%2580%25EB%25A9%25B4%2520%25EC%2596%25B4%25EB%25A0%25A4%25EC%259A%25B4%2520%25EC%25A0%2590_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/312_%EC%A7%81%EA%B4%80%EB%A0%A5%EC%9D%84%20%EA%B0%80%EC%A7%80%EB%A9%B4%20%EC%96%B4%EB%A0%A4%EC%9A%B4%20%EC%A0%90_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3160,7 +3153,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/313_%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90%20TV%ED%94%8C%EB%9F%AC%EC%8A%A4%20%EC%9D%B4%EC%95%BC%EA%B8%B0.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/313_%25EC%2582%25BC%25EC%2584%25B1%25EC%25A0%2584%25EC%259E%2590%2520TV%25ED%2594%258C%25EB%259F%25AC%25EC%258A%25A4%2520%25EC%259D%25B4%25EC%2595%25BC%25EA%25B8%25B0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/313_%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90%20TV%ED%94%8C%EB%9F%AC%EC%8A%A4%20%EC%9D%B4%EC%95%BC%EA%B8%B0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3170,7 +3163,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/314_ENTJ%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EB%8A%94%20%EC%B5%9C%EA%B3%A0%EC%9D%98%20%EA%B8%B0%ED%9A%8D%EC%9E%90%20%27%EC%97%90%EB%93%9C%EC%9B%8C%EB%93%9C%20%EB%A6%AC%27.html" class="card-item" data-category="기획자로 시작하기">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/314_ENTJ%25EC%25BD%2594%25EC%25B9%2598%25EA%25B0%2580%2520%25EB%25B3%25B4%25EB%258A%2594%2520%25EC%25B5%259C%25EA%25B3%25A0%25EC%259D%2598%2520%25EA%25B8%25B0%25ED%259A%258D%25EC%259E%2590%2520%2527%25EC%2597%2590%25EB%2593%259C%25EC%259B%258C%25EB%2593%259C%2520%25EB%25A6%25AC%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/314_ENTJ%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EB%8A%94%20%EC%B5%9C%EA%B3%A0%EC%9D%98%20%EA%B8%B0%ED%9A%8D%EC%9E%90%20%27%EC%97%90%EB%93%9C%EC%9B%8C%EB%93%9C%20%EB%A6%AC%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자로 시작하기</div>
@@ -3180,7 +3173,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/315_%EC%9E%98%ED%95%98%EB%8A%94%20PO%EA%B0%80%20%EB%86%92%EC%9D%80%20%EC%97%B0%EB%B4%89%EC%9D%84%20%EB%B0%9B%EB%8A%94%20%EC%9D%B4%EC%9C%A0%EB%8A%94.html" class="card-item" data-category="Be the PO">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/315_%25EC%259E%2598%25ED%2595%2598%25EB%258A%2594%2520PO%25EA%25B0%2580%2520%25EB%2586%2592%25EC%259D%2580%2520%25EC%2597%25B0%25EB%25B4%2589%25EC%259D%2584%2520%25EB%25B0%259B%25EB%258A%2594%2520%25EC%259D%25B4%25EC%259C%25A0%25EB%258A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/315_%EC%9E%98%ED%95%98%EB%8A%94%20PO%EA%B0%80%20%EB%86%92%EC%9D%80%20%EC%97%B0%EB%B4%89%EC%9D%84%20%EB%B0%9B%EB%8A%94%20%EC%9D%B4%EC%9C%A0%EB%8A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">Be the PO</div>
@@ -3190,7 +3183,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/316_%5B%EB%AA%A8%EC%A7%91%EA%B3%B5%EA%B3%A0%5D%20%EC%8A%A4%EC%99%88%EB%A1%9C%EC%9A%B0%EC%A6%88%EC%99%80%20%ED%95%A8%EA%BB%98%20%ED%95%A0%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%84%20%EC%B0%BE%EC%8A%B5%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/316_%255B%25EB%25AA%25A8%25EC%25A7%2591%25EA%25B3%25B5%25EA%25B3%25A0%255D%2520%25EC%258A%25A4%25EC%2599%2588%25EB%25A1%259C%25EC%259A%25B0%25EC%25A6%2588%25EC%2599%2580%2520%25ED%2595%25A8%25EA%25BB%2598%2520%25ED%2595%25A0%2520%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%25EC%2597%2585%25EC%259D%2584%2520%25EC%25B0%25BE%25EC%258A%25B5%25EB%258B%2588%25EB%258B%25A4._cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/316_%5B%EB%AA%A8%EC%A7%91%EA%B3%B5%EA%B3%A0%5D%20%EC%8A%A4%EC%99%88%EB%A1%9C%EC%9A%B0%EC%A6%88%EC%99%80%20%ED%95%A8%EA%BB%98%20%ED%95%A0%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%84%20%EC%B0%BE%EC%8A%B5%EB%8B%88%EB%8B%A4._cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3200,7 +3193,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/317_ENTJ%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B8%20%ED%9D%91%EB%B0%B1%EC%9A%94%EB%A6%AC%EC%82%AC.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/317_ENTJ%25EC%25BD%2594%25EC%25B9%2598%25EA%25B0%2580%2520%25EB%25B3%25B8%2520%25ED%259D%2591%25EB%25B0%25B1%25EC%259A%2594%25EB%25A6%25AC%25EC%2582%25AC_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/317_ENTJ%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B8%20%ED%9D%91%EB%B0%B1%EC%9A%94%EB%A6%AC%EC%82%AC_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3210,7 +3203,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/318_%EC%84%B1%EA%B3%B5%EC%A0%81%EC%9D%B8%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EC%95%84%EC%9D%B4%ED%85%9C%EC%9D%84%20%EC%B0%BE%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/318_%25EC%2584%25B1%25EA%25B3%25B5%25EC%25A0%2581%25EC%259D%25B8%2520%25EB%25B9%2584%25EC%25A6%2588%25EB%258B%2588%25EC%258A%25A4%2520%25EC%2595%2584%25EC%259D%25B4%25ED%2585%259C%25EC%259D%2584%2520%25EC%25B0%25BE%25EB%258A%2594%2520%25EB%25B2%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/318_%EC%84%B1%EA%B3%B5%EC%A0%81%EC%9D%B8%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EC%95%84%EC%9D%B4%ED%85%9C%EC%9D%84%20%EC%B0%BE%EB%8A%94%20%EB%B2%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3220,7 +3213,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/319_%EC%8A%A4%EC%99%88%EB%A1%9C%EC%9A%B0%EC%A6%88%ED%8C%80%EC%9D%80%20%EC%96%B4%EB%96%A4%20%EC%9E%AC%EB%8A%A5%EC%9D%84%20%EA%B0%80%EC%A7%80%EA%B3%A0%20%EC%9E%88%EB%82%98%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/319_%25EC%258A%25A4%25EC%2599%2588%25EB%25A1%259C%25EC%259A%25B0%25EC%25A6%2588%25ED%258C%2580%25EC%259D%2580%2520%25EC%2596%25B4%25EB%2596%25A4%2520%25EC%259E%25AC%25EB%258A%25A5%25EC%259D%2584%2520%25EA%25B0%2580%25EC%25A7%2580%25EA%25B3%25A0%2520%25EC%259E%2588%25EB%2582%2598%25EC%259A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/319_%EC%8A%A4%EC%99%88%EB%A1%9C%EC%9A%B0%EC%A6%88%ED%8C%80%EC%9D%80%20%EC%96%B4%EB%96%A4%20%EC%9E%AC%EB%8A%A5%EC%9D%84%20%EA%B0%80%EC%A7%80%EA%B3%A0%20%EC%9E%88%EB%82%98%EC%9A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3230,7 +3223,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/320_%EB%82%B4%EA%B0%80%20%EC%95%94%EA%B8%B0%EB%A5%BC%20%EC%9E%98%ED%95%98%EA%B2%8C%20%EB%90%9C%20%EC%82%AC%EC%97%B0.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/320_%25EB%2582%25B4%25EA%25B0%2580%2520%25EC%2595%2594%25EA%25B8%25B0%25EB%25A5%25BC%2520%25EC%259E%2598%25ED%2595%2598%25EA%25B2%258C%2520%25EB%2590%259C%2520%25EC%2582%25AC%25EC%2597%25B0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/320_%EB%82%B4%EA%B0%80%20%EC%95%94%EA%B8%B0%EB%A5%BC%20%EC%9E%98%ED%95%98%EA%B2%8C%20%EB%90%9C%20%EC%82%AC%EC%97%B0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3240,7 +3233,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/321_%EC%96%B4%EB%96%A4%20%ED%9A%8C%EC%82%AC%2C%20%EC%96%B4%EB%96%A4%20%EB%95%8C%EA%B0%80%20%EA%B0%80%EC%9E%A5%20%EC%A6%90%EA%B1%B0%EC%9B%A0%EB%82%98%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/321_%25EC%2596%25B4%25EB%2596%25A4%2520%25ED%259A%258C%25EC%2582%25AC%252C%2520%25EC%2596%25B4%25EB%2596%25A4%2520%25EB%2595%258C%25EA%25B0%2580%2520%25EA%25B0%2580%25EC%259E%25A5%2520%25EC%25A6%2590%25EA%25B1%25B0%25EC%259B%25A0%25EB%2582%2598%25EC%259A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/321_%EC%96%B4%EB%96%A4%20%ED%9A%8C%EC%82%AC%2C%20%EC%96%B4%EB%96%A4%20%EB%95%8C%EA%B0%80%20%EA%B0%80%EC%9E%A5%20%EC%A6%90%EA%B1%B0%EC%9B%A0%EB%82%98%EC%9A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3250,7 +3243,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/322_%EA%B8%B0%EB%B0%80%EC%84%9C%EC%9E%AC%203%EB%B2%88%EC%A7%B8%20%EC%B1%85%EC%9D%80%20%EB%A1%9C%EC%A7%80%EC%BB%AC%EC%94%BD%ED%82%B9%EC%9E%85%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/322_%25EA%25B8%25B0%25EB%25B0%2580%25EC%2584%259C%25EC%259E%25AC%25203%25EB%25B2%2588%25EC%25A7%25B8%2520%25EC%25B1%2585%25EC%259D%2580%2520%25EB%25A1%259C%25EC%25A7%2580%25EC%25BB%25AC%25EC%2594%25BD%25ED%2582%25B9%25EC%259E%2585%25EB%258B%2588%25EB%258B%25A4._cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/322_%EA%B8%B0%EB%B0%80%EC%84%9C%EC%9E%AC%203%EB%B2%88%EC%A7%B8%20%EC%B1%85%EC%9D%80%20%EB%A1%9C%EC%A7%80%EC%BB%AC%EC%94%BD%ED%82%B9%EC%9E%85%EB%8B%88%EB%8B%A4._cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3260,7 +3253,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/323_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EC%A0%95%EB%8B%B5%EC%9D%80%20%EB%A7%A4%EC%9D%BC%EB%A7%A4%EC%9D%BC%EC%9D%B4%20%EB%8B%A4%EB%A5%B4%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/323_%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%25EC%2597%2585%25EC%259D%2598%2520%25EC%25A0%2595%25EB%258B%25B5%25EC%259D%2580%2520%25EB%25A7%25A4%25EC%259D%25BC%25EB%25A7%25A4%25EC%259D%25BC%25EC%259D%25B4%2520%25EB%258B%25A4%25EB%25A5%25B4%25EB%258B%25A4._cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/323_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EC%A0%95%EB%8B%B5%EC%9D%80%20%EB%A7%A4%EC%9D%BC%EB%A7%A4%EC%9D%BC%EC%9D%B4%20%EB%8B%A4%EB%A5%B4%EB%8B%A4._cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3270,17 +3263,17 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/324_1%EC%9D%B8%EA%B8%B0%EC%97%85%EA%B0%80%EA%B0%80%20%EB%90%98%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/324_1%25EC%259D%25B8%25EA%25B8%25B0%25EC%2597%2585%25EA%25B0%2580%25EA%25B0%2580%2520%25EB%2590%2598%25EB%258A%2594%2520%25EB%25B2%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/324_1%EC%9D%B8%EA%B8%B0%EC%97%85%EA%B0%80%EA%B0%80%20%EB%90%98%EB%8A%94%20%EB%B2%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
                 <h3 class="card-title">인기업가가 되는 법</h3>
             </div>
-            <div class="card-date"></div>
+            <div class="card-date">Sep 27. 2024</div>
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/325_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%84%B1%EA%B3%B5%EC%9D%80%20%EC%A0%9C%EB%A1%9C%EB%B2%A0%EC%9D%B4%EC%8A%A4%20%EC%94%BD%ED%82%B9%EC%97%90%EC%84%9C.html" class="card-item" data-category="스타트업 리더의 기술">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/325_%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%25EC%2597%2585%2520%25EC%2584%25B1%25EA%25B3%25B5%25EC%259D%2580%2520%25EC%25A0%259C%25EB%25A1%259C%25EB%25B2%25A0%25EC%259D%25B4%25EC%258A%25A4%2520%25EC%2594%25BD%25ED%2582%25B9%25EC%2597%2590%25EC%2584%259C..._cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/325_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%84%B1%EA%B3%B5%EC%9D%80%20%EC%A0%9C%EB%A1%9C%EB%B2%A0%EC%9D%B4%EC%8A%A4%20%EC%94%BD%ED%82%B9%EC%97%90%EC%84%9C..._cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업 리더의 기술</div>
@@ -3290,7 +3283,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/326_%EC%8A%A4%EC%99%88%EB%A1%9C%EC%9A%B0%EC%A6%88%20%EA%B0%95%EB%A6%89%EC%98%A4%ED%94%BC%EC%8A%A4%20%EC%9B%8C%ED%81%AC%EC%95%A4%EC%8A%A4%ED%85%8C%EC%9D%B4.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/326_%25EC%258A%25A4%25EC%2599%2588%25EB%25A1%259C%25EC%259A%25B0%25EC%25A6%2588%2520%25EA%25B0%2595%25EB%25A6%2589%25EC%2598%25A4%25ED%2594%25BC%25EC%258A%25A4%2520%25EC%259B%258C%25ED%2581%25AC%25EC%2595%25A4%25EC%258A%25A4%25ED%2585%258C%25EC%259D%25B4_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/326_%EC%8A%A4%EC%99%88%EB%A1%9C%EC%9A%B0%EC%A6%88%20%EA%B0%95%EB%A6%89%EC%98%A4%ED%94%BC%EC%8A%A4%20%EC%9B%8C%ED%81%AC%EC%95%A4%EC%8A%A4%ED%85%8C%EC%9D%B4_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3300,7 +3293,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/327_%EC%9A%94%EA%B8%B0%EC%9A%94%EC%9D%98%20%EB%B6%80%ED%99%9C%EC%9D%84%20%EA%B8%B0%EB%8C%80%ED%95%98%EB%A9%B0.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/327_%25EC%259A%2594%25EA%25B8%25B0%25EC%259A%2594%25EC%259D%2598%2520%25EB%25B6%2580%25ED%2599%259C%25EC%259D%2584%2520%25EA%25B8%25B0%25EB%258C%2580%25ED%2595%2598%25EB%25A9%25B0..._cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/327_%EC%9A%94%EA%B8%B0%EC%9A%94%EC%9D%98%20%EB%B6%80%ED%99%9C%EC%9D%84%20%EA%B8%B0%EB%8C%80%ED%95%98%EB%A9%B0..._cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3310,7 +3303,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/328_%EC%B0%BD%EC%97%85%20%EC%95%84%EC%9D%B4%ED%85%9C%20%EC%84%A0%EC%A0%95%20%EC%8B%9C%20%EC%A3%BC%EC%9D%98%ED%95%A0%20%EC%A0%90%EC%9D%80.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/328_%25EC%25B0%25BD%25EC%2597%2585%2520%25EC%2595%2584%25EC%259D%25B4%25ED%2585%259C%2520%25EC%2584%25A0%25EC%25A0%2595%2520%25EC%258B%259C%2520%25EC%25A3%25BC%25EC%259D%2598%25ED%2595%25A0%2520%25EC%25A0%2590%25EC%259D%2580_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/328_%EC%B0%BD%EC%97%85%20%EC%95%84%EC%9D%B4%ED%85%9C%20%EC%84%A0%EC%A0%95%20%EC%8B%9C%20%EC%A3%BC%EC%9D%98%ED%95%A0%20%EC%A0%90%EC%9D%80_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3320,7 +3313,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/329_%EB%8B%B9%EC%8B%A0%EC%9D%98%20%EC%84%B1%EA%B3%B5%EC%9D%80%20%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/329_%25EB%258B%25B9%25EC%258B%25A0%25EC%259D%2598%2520%25EC%2584%25B1%25EA%25B3%25B5%25EC%259D%2580%2520%25EB%25AC%25B4%25EC%2597%2587%25EC%259D%25B8%25EA%25B0%2580%25EC%259A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/329_%EB%8B%B9%EC%8B%A0%EC%9D%98%20%EC%84%B1%EA%B3%B5%EC%9D%80%20%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80%EC%9A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3330,7 +3323,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/330_%EB%84%88%EB%8F%84%20%EB%82%98%EC%B2%98%EB%9F%BC%20%EB%85%B8%EB%A0%A5%ED%95%98%EB%A9%B4%20%EC%84%B1%EA%B3%B5%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%96%B4.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/330_%25EB%2584%2588%25EB%258F%2584%2520%25EB%2582%2598%25EC%25B2%2598%25EB%259F%25BC%2520%25EB%2585%25B8%25EB%25A0%25A5%25ED%2595%2598%25EB%25A9%25B4%2520%25EC%2584%25B1%25EA%25B3%25B5%25ED%2595%25A0%2520%25EC%2588%2598%2520%25EC%259E%2588%25EC%2596%25B4_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/330_%EB%84%88%EB%8F%84%20%EB%82%98%EC%B2%98%EB%9F%BC%20%EB%85%B8%EB%A0%A5%ED%95%98%EB%A9%B4%20%EC%84%B1%EA%B3%B5%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%96%B4_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -3340,7 +3333,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/331_%EC%96%B4%EB%96%A4%20%EC%BD%94%ED%8C%8C%EC%9A%B4%EB%8D%94%EB%A5%BC%20%EC%B0%BE%EC%95%84%EC%95%BC%20%ED%95%A0%EA%B9%8C.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/331_%25EC%2596%25B4%25EB%2596%25A4%2520%25EC%25BD%2594%25ED%258C%258C%25EC%259A%25B4%25EB%258D%2594%25EB%25A5%25BC%2520%25EC%25B0%25BE%25EC%2595%2584%25EC%2595%25BC%2520%25ED%2595%25A0%25EA%25B9%258C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/331_%EC%96%B4%EB%96%A4%20%EC%BD%94%ED%8C%8C%EC%9A%B4%EB%8D%94%EB%A5%BC%20%EC%B0%BE%EC%95%84%EC%95%BC%20%ED%95%A0%EA%B9%8C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3350,7 +3343,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/332_%27%EC%BD%94%EC%B9%98S%27%20%EB%B8%8C%EB%9F%B0%EC%B9%98%EB%B6%81%EC%9D%84%20%EC%B6%9C%EA%B0%84%ED%95%98%EC%98%80%EC%8A%B5%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/332_%2527%25EC%25BD%2594%25EC%25B9%2598S%2527%2520%25EB%25B8%258C%25EB%259F%25B0%25EC%25B9%2598%25EB%25B6%2581%25EC%259D%2584%2520%25EC%25B6%259C%25EA%25B0%2584%25ED%2595%2598%25EC%2598%2580%25EC%258A%25B5%25EB%258B%2588%25EB%258B%25A4._cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/332_%27%EC%BD%94%EC%B9%98S%27%20%EB%B8%8C%EB%9F%B0%EC%B9%98%EB%B6%81%EC%9D%84%20%EC%B6%9C%EA%B0%84%ED%95%98%EC%98%80%EC%8A%B5%EB%8B%88%EB%8B%A4._cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3360,7 +3353,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/333_%EC%99%9C%20%EC%8A%A4%EC%99%88%EB%A1%9C%EC%9A%B0%EC%A6%88%EB%A5%BC%20%EC%B0%BD%EC%97%85%ED%95%98%EC%85%A8%EB%82%98%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/333_%25EC%2599%259C%2520%25EC%258A%25A4%25EC%2599%2588%25EB%25A1%259C%25EC%259A%25B0%25EC%25A6%2588%25EB%25A5%25BC%2520%25EC%25B0%25BD%25EC%2597%2585%25ED%2595%2598%25EC%2585%25A8%25EB%2582%2598%25EC%259A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/333_%EC%99%9C%20%EC%8A%A4%EC%99%88%EB%A1%9C%EC%9A%B0%EC%A6%88%EB%A5%BC%20%EC%B0%BD%EC%97%85%ED%95%98%EC%85%A8%EB%82%98%EC%9A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3370,7 +3363,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/334_%EC%BD%94%EC%B9%98S%2019%ED%99%94%20%EC%B5%9C%EC%A2%85%20%27%EC%8A%A4%EC%99%88%EB%A1%9C%EC%9A%B0%EC%A6%88%20%EB%B9%84%EA%B8%B4%EC%A6%88%27.html" class="card-item" data-category="코치S">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/334_%25EC%25BD%2594%25EC%25B9%2598S%252019%25ED%2599%2594%2520%25EC%25B5%259C%25EC%25A2%2585%2520%2527%25EC%258A%25A4%25EC%2599%2588%25EB%25A1%259C%25EC%259A%25B0%25EC%25A6%2588%2520%25EB%25B9%2584%25EA%25B8%25B4%25EC%25A6%2588%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/334_%EC%BD%94%EC%B9%98S%2019%ED%99%94%20%EC%B5%9C%EC%A2%85%20%27%EC%8A%A4%EC%99%88%EB%A1%9C%EC%9A%B0%EC%A6%88%20%EB%B9%84%EA%B8%B4%EC%A6%88%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">코치S</div>
@@ -3380,7 +3373,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/335_%EC%84%B8%EC%83%81%EC%9D%84%20%ED%98%81%EC%8B%A0%ED%95%98%EB%8A%94%20%EC%95%A1%EC%85%80%EB%9F%AC%EB%A0%88%EC%9D%B4%ED%84%B0%20%27%EC%8A%A4%EC%99%88%EB%A1%9C%EC%9A%B0%EC%A6%88%27%EB%A5%BC%20%EC%8B%9C%EC%9E%91%ED%95%A9%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/335_%25EC%2584%25B8%25EC%2583%2581%25EC%259D%2584%2520%25ED%2598%2581%25EC%258B%25A0%25ED%2595%2598%25EB%258A%2594%2520%25EC%2595%25A1%25EC%2585%2580%25EB%259F%25AC%25EB%25A0%2588%25EC%259D%25B4%25ED%2584%25B0%2520%2527%25EC%258A%25A4%25EC%2599%2588%25EB%25A1%259C%25EC%259A%25B0%25EC%25A6%2588%2527%25EB%25A5%25BC%2520%25EC%258B%259C%25EC%259E%2591%25ED%2595%25A9%25EB%258B%2588%25EB%258B%25A4_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/335_%EC%84%B8%EC%83%81%EC%9D%84%20%ED%98%81%EC%8B%A0%ED%95%98%EB%8A%94%20%EC%95%A1%EC%85%80%EB%9F%AC%EB%A0%88%EC%9D%B4%ED%84%B0%20%27%EC%8A%A4%EC%99%88%EB%A1%9C%EC%9A%B0%EC%A6%88%27%EB%A5%BC%20%EC%8B%9C%EC%9E%91%ED%95%A9%EB%8B%88%EB%8B%A4_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3390,7 +3383,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/336_%ED%95%9C%EC%BD%94%EC%B9%98%EB%8B%98%EC%9D%98%2030%EB%8C%80%EB%8A%94%20%EC%96%B4%EB%95%A0%EB%82%98%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/336_%25ED%2595%259C%25EC%25BD%2594%25EC%25B9%2598%25EB%258B%2598%25EC%259D%2598%252030%25EB%258C%2580%25EB%258A%2594%2520%25EC%2596%25B4%25EB%2595%25A0%25EB%2582%2598%25EC%259A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/336_%ED%95%9C%EC%BD%94%EC%B9%98%EB%8B%98%EC%9D%98%2030%EB%8C%80%EB%8A%94%20%EC%96%B4%EB%95%A0%EB%82%98%EC%9A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3400,7 +3393,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/337_%EB%82%B4%EA%B0%80%20%EC%83%88%EB%A1%9C%EC%9A%B4%20%EA%B2%83%EC%9D%84%20%EA%B3%84%EC%86%8D%20%EB%8F%84%EC%A0%84%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/337_%25EB%2582%25B4%25EA%25B0%2580%2520%25EC%2583%2588%25EB%25A1%259C%25EC%259A%25B4%2520%25EA%25B2%2583%25EC%259D%2584%2520%25EA%25B3%2584%25EC%2586%258D%2520%25EB%258F%2584%25EC%25A0%2584%25ED%2595%2598%25EB%258A%2594%2520%25EC%259D%25B4%25EC%259C%25A0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/337_%EB%82%B4%EA%B0%80%20%EC%83%88%EB%A1%9C%EC%9A%B4%20%EA%B2%83%EC%9D%84%20%EA%B3%84%EC%86%8D%20%EB%8F%84%EC%A0%84%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3410,7 +3403,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/338_%EC%BD%94%EC%B9%98S%2018%ED%99%94%20%ED%92%80%EA%B8%B0%20%EC%96%B4%EB%A0%A4%EC%9A%B4%20%EB%AC%B8%EC%A0%9C.html" class="card-item" data-category="코치S">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/338_%25EC%25BD%2594%25EC%25B9%2598S%252018%25ED%2599%2594%2520%25ED%2592%2580%25EA%25B8%25B0%2520%25EC%2596%25B4%25EB%25A0%25A4%25EC%259A%25B4%2520%25EB%25AC%25B8%25EC%25A0%259C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/338_%EC%BD%94%EC%B9%98S%2018%ED%99%94%20%ED%92%80%EA%B8%B0%20%EC%96%B4%EB%A0%A4%EC%9A%B4%20%EB%AC%B8%EC%A0%9C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">코치S</div>
@@ -3420,7 +3413,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/339_%EB%8B%A8%EC%88%9C%ED%99%94%EA%B0%80%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/339_%25EB%258B%25A8%25EC%2588%259C%25ED%2599%2594%25EA%25B0%2580%2520%25EC%25A4%2591%25EC%259A%2594%25ED%2595%259C%2520%25EC%259D%25B4%25EC%259C%25A0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/339_%EB%8B%A8%EC%88%9C%ED%99%94%EA%B0%80%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3430,7 +3423,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/340_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%ED%95%84%EC%8A%B9%20%EB%8C%80%ED%99%94%20%EB%8B%A8%EC%96%B4%EB%8A%94.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/340_%25EA%25B8%25B0%25ED%259A%258D%25EC%259E%2590%25EC%259D%2598%2520%25ED%2595%2584%25EC%258A%25B9%2520%25EB%258C%2580%25ED%2599%2594%2520%25EB%258B%25A8%25EC%2596%25B4%25EB%258A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/340_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%ED%95%84%EC%8A%B9%20%EB%8C%80%ED%99%94%20%EB%8B%A8%EC%96%B4%EB%8A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3440,7 +3433,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/341_%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%EA%B8%80%EC%93%B0%EA%B8%B0%20%EC%A3%BC%EC%A0%9C%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EA%B3%A0%EB%A5%B4%EB%A9%B4%20%EC%A2%8B%EC%9D%84%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/341_%25EB%25A7%2581%25ED%2581%25AC%25EB%2593%259C%25EC%259D%25B8%2520%25EA%25B8%2580%25EC%2593%25B0%25EA%25B8%25B0%2520%25EC%25A3%25BC%25EC%25A0%259C%25EB%258A%2594%2520%25EC%2596%25B4%25EB%2596%25BB%25EA%25B2%258C%2520%25EA%25B3%25A0%25EB%25A5%25B4%25EB%25A9%25B4%2520%25EC%25A2%258B%25EC%259D%2584%25EA%25B9%258C%25EC%259A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/341_%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%EA%B8%80%EC%93%B0%EA%B8%B0%20%EC%A3%BC%EC%A0%9C%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EA%B3%A0%EB%A5%B4%EB%A9%B4%20%EC%A2%8B%EC%9D%84%EA%B9%8C%EC%9A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3450,7 +3443,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/342_%EC%8B%9C%EB%A0%A8%EC%9D%80%20%EC%9E%88%EC%96%B4%EB%8F%84%20%EC%8B%A4%ED%8C%A8%EB%8A%94%20%EC%97%86%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/342_%25EC%258B%259C%25EB%25A0%25A8%25EC%259D%2580%2520%25EC%259E%2588%25EC%2596%25B4%25EB%258F%2584%2520%25EC%258B%25A4%25ED%258C%25A8%25EB%258A%2594%2520%25EC%2597%2586%25EB%258A%2594%2520%25EC%259D%25B4%25EC%259C%25A0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/342_%EC%8B%9C%EB%A0%A8%EC%9D%80%20%EC%9E%88%EC%96%B4%EB%8F%84%20%EC%8B%A4%ED%8C%A8%EB%8A%94%20%EC%97%86%EB%8A%94%20%EC%9D%B4%EC%9C%A0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3460,7 +3453,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/343_%EC%BD%94%EC%B9%98S%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EB%A7%8C%EB%93%A4%EC%96%B4%EC%A7%88%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="코치S">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/343_%25EC%25BD%2594%25EC%25B9%2598S%2520%25EC%2596%25B4%25EB%2596%25BB%25EA%25B2%258C%2520%25EB%25A7%258C%25EB%2593%25A4%25EC%2596%25B4%25EC%25A7%2588%25EA%25B9%258C%25EC%259A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/343_%EC%BD%94%EC%B9%98S%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EB%A7%8C%EB%93%A4%EC%96%B4%EC%A7%88%EA%B9%8C%EC%9A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">코치S</div>
@@ -3470,7 +3463,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/344_%EC%BD%94%EC%B9%98S%2015%ED%99%94%20%EC%9E%A5%EC%82%AC%EB%A1%9C%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20%EC%9C%A0%EC%9E%85%EC%9C%A8%EA%B3%BC%20%EC%A0%84%ED%99%98%EC%9C%A8.html" class="card-item" data-category="코치S">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/344_%25EC%25BD%2594%25EC%25B9%2598S%252015%25ED%2599%2594%2520%25EC%259E%25A5%25EC%2582%25AC%25EB%25A1%259C%2520%25EB%25B0%25B0%25EC%259A%25B0%25EB%258A%2594%2520%25EC%259C%25A0%25EC%259E%2585%25EC%259C%25A8%25EA%25B3%25BC%2520%25EC%25A0%2584%25ED%2599%2598%25EC%259C%25A8_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/344_%EC%BD%94%EC%B9%98S%2015%ED%99%94%20%EC%9E%A5%EC%82%AC%EB%A1%9C%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20%EC%9C%A0%EC%9E%85%EC%9C%A8%EA%B3%BC%20%EC%A0%84%ED%99%98%EC%9C%A8_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">코치S</div>
@@ -3480,7 +3473,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/345_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%B4%20%EB%B9%A0%EB%A5%B4%EA%B2%8C%20%EC%84%B1%EC%9E%A5%ED%95%A0%EC%88%98%EB%A1%9D%20%EA%B2%AA%EB%8A%94%20%EC%96%B4%EB%A0%A4%EC%9B%80.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/345_%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%25EC%2597%2585%25EC%259D%25B4%2520%25EB%25B9%25A0%25EB%25A5%25B4%25EA%25B2%258C%2520%25EC%2584%25B1%25EC%259E%25A5%25ED%2595%25A0%25EC%2588%2598%25EB%25A1%259D%2520%25EA%25B2%25AA%25EB%258A%2594%2520%25EC%2596%25B4%25EB%25A0%25A4%25EC%259B%2580_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/345_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%B4%20%EB%B9%A0%EB%A5%B4%EA%B2%8C%20%EC%84%B1%EC%9E%A5%ED%95%A0%EC%88%98%EB%A1%9D%20%EA%B2%AA%EB%8A%94%20%EC%96%B4%EB%A0%A4%EC%9B%80_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3490,7 +3483,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/346_%EC%BD%94%EC%B9%98S%2014%ED%99%94%20%EC%BD%9C%EB%93%9C%EB%B8%8C%EB%A3%A8%20%EC%9E%A5%EC%82%AC.html" class="card-item" data-category="코치S">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/346_%25EC%25BD%2594%25EC%25B9%2598S%252014%25ED%2599%2594%2520%25EC%25BD%259C%25EB%2593%259C%25EB%25B8%258C%25EB%25A3%25A8%2520%25EC%259E%25A5%25EC%2582%25AC_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/346_%EC%BD%94%EC%B9%98S%2014%ED%99%94%20%EC%BD%9C%EB%93%9C%EB%B8%8C%EB%A3%A8%20%EC%9E%A5%EC%82%AC_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">코치S</div>
@@ -3500,7 +3493,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/347_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EB%A0%88%EB%B2%A8.html" class="card-item" data-category="기획자로 시작하기">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/347_%25EA%25B8%25B0%25ED%259A%258D%25EC%259E%2590%25EC%259D%2598%2520%25EB%25A0%2588%25EB%25B2%25A8_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/347_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EB%A0%88%EB%B2%A8_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자로 시작하기</div>
@@ -3510,7 +3503,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/348_%EC%BD%94%EC%9D%B8%EC%9C%BC%EB%A1%9C%20%EB%8F%88%EC%9D%84%20%EB%B2%84%EB%8A%94%20%EA%B0%80%EC%9E%A5%20%ED%99%95%EC%8B%A4%ED%95%9C%20%EB%B0%A9%EB%B2%95.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/348_%25EC%25BD%2594%25EC%259D%25B8%25EC%259C%25BC%25EB%25A1%259C%2520%25EB%258F%2588%25EC%259D%2584%2520%25EB%25B2%2584%25EB%258A%2594%2520%25EA%25B0%2580%25EC%259E%25A5%2520%25ED%2599%2595%25EC%258B%25A4%25ED%2595%259C%2520%25EB%25B0%25A9%25EB%25B2%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/348_%EC%BD%94%EC%9D%B8%EC%9C%BC%EB%A1%9C%20%EB%8F%88%EC%9D%84%20%EB%B2%84%EB%8A%94%20%EA%B0%80%EC%9E%A5%20%ED%99%95%EC%8B%A4%ED%95%9C%20%EB%B0%A9%EB%B2%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3520,7 +3513,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/349_%EC%BD%94%EC%B9%98S%2013%ED%99%94%20%EB%91%90%EA%B0%9C%EC%9D%98%20%EB%AA%A8%EC%9E%90.html" class="card-item" data-category="코치S">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/349_%25EC%25BD%2594%25EC%25B9%2598S%252013%25ED%2599%2594%2520%25EB%2591%2590%25EA%25B0%259C%25EC%259D%2598%2520%25EB%25AA%25A8%25EC%259E%2590_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/349_%EC%BD%94%EC%B9%98S%2013%ED%99%94%20%EB%91%90%EA%B0%9C%EC%9D%98%20%EB%AA%A8%EC%9E%90_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">코치S</div>
@@ -3530,7 +3523,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/350_%EA%B8%B0%ED%9A%8D%EC%9E%90%EA%B0%80%20%EC%96%B4%EB%A0%A4%EC%9A%B4%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="기획자로 시작하기">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/350_%25EA%25B8%25B0%25ED%259A%258D%25EC%259E%2590%25EA%25B0%2580%2520%25EC%2596%25B4%25EB%25A0%25A4%25EC%259A%25B4%2520%25EC%259D%25B4%25EC%259C%25A0_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/350_%EA%B8%B0%ED%9A%8D%EC%9E%90%EA%B0%80%20%EC%96%B4%EB%A0%A4%EC%9A%B4%20%EC%9D%B4%EC%9C%A0_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자로 시작하기</div>
@@ -3540,7 +3533,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/351_%EB%8B%B9%EC%8B%A0%EC%9D%98%20%EC%A7%81%EC%97%85%EC%97%90%20%EA%B0%80%EC%9E%A5%20%ED%81%B0%20%EC%98%81%ED%96%A5%EC%9D%84%20%EB%81%BC%EC%B9%9C%20%EC%82%AC%EB%9E%8C%EC%9D%80%20%EB%88%84%EA%B5%AC%EC%9D%B8%EA%B0%80%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/351_%25EB%258B%25B9%25EC%258B%25A0%25EC%259D%2598%2520%25EC%25A7%2581%25EC%2597%2585%25EC%2597%2590%2520%25EA%25B0%2580%25EC%259E%25A5%2520%25ED%2581%25B0%2520%25EC%2598%2581%25ED%2596%25A5%25EC%259D%2584%2520%25EB%2581%25BC%25EC%25B9%259C%2520%25EC%2582%25AC%25EB%259E%258C%25EC%259D%2580%2520%25EB%2588%2584%25EA%25B5%25AC%25EC%259D%25B8%25EA%25B0%2580%25EC%259A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/351_%EB%8B%B9%EC%8B%A0%EC%9D%98%20%EC%A7%81%EC%97%85%EC%97%90%20%EA%B0%80%EC%9E%A5%20%ED%81%B0%20%EC%98%81%ED%96%A5%EC%9D%84%20%EB%81%BC%EC%B9%9C%20%EC%82%AC%EB%9E%8C%EC%9D%80%20%EB%88%84%EA%B5%AC%EC%9D%B8%EA%B0%80%EC%9A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3550,7 +3543,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/352_%EC%BD%94%EC%B9%98S%2012%ED%99%94%20%EB%82%B4%20%EB%A7%98%EC%9D%84%20%EB%AA%B0%EB%9D%BC%EC%A4%98%EC%9A%94.html" class="card-item" data-category="코치S">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/352_%25EC%25BD%2594%25EC%25B9%2598S%252012%25ED%2599%2594%2520%25EB%2582%25B4%2520%25EB%25A7%2598%25EC%259D%2584%2520%25EB%25AA%25B0%25EB%259D%25BC%25EC%25A4%2598%25EC%259A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/352_%EC%BD%94%EC%B9%98S%2012%ED%99%94%20%EB%82%B4%20%EB%A7%98%EC%9D%84%20%EB%AA%B0%EB%9D%BC%EC%A4%98%EC%9A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">코치S</div>
@@ -3560,7 +3553,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/353_%EB%AC%B4%EC%96%B8%EA%B0%80%EB%A5%BC%20%EC%9E%98%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/353_%25EB%25AC%25B4%25EC%2596%25B8%25EA%25B0%2580%25EB%25A5%25BC%2520%25EC%259E%2598%25ED%2595%2598%25EB%258A%2594%2520%25EB%25B0%25A9%25EB%25B2%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/353_%EB%AC%B4%EC%96%B8%EA%B0%80%EB%A5%BC%20%EC%9E%98%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3570,7 +3563,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/354_%EC%BD%94%EC%B9%98S%2011%ED%99%94%20%EA%B0%81%EC%84%B1.html" class="card-item" data-category="코치S">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/354_%25EC%25BD%2594%25EC%25B9%2598S%252011%25ED%2599%2594%2520%25EA%25B0%2581%25EC%2584%25B1_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/354_%EC%BD%94%EC%B9%98S%2011%ED%99%94%20%EA%B0%81%EC%84%B1_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">코치S</div>
@@ -3580,7 +3573,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/355_%EC%8B%9C%EB%93%9C%20%EC%95%84%EC%9D%B4%ED%85%9C%EA%B3%BC%20%EB%A9%94%ED%83%80%EC%9D%B8%EC%A7%80.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/355_%25EC%258B%259C%25EB%2593%259C%2520%25EC%2595%2584%25EC%259D%25B4%25ED%2585%259C%25EA%25B3%25BC%2520%25EB%25A9%2594%25ED%2583%2580%25EC%259D%25B8%25EC%25A7%2580_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/355_%EC%8B%9C%EB%93%9C%20%EC%95%84%EC%9D%B4%ED%85%9C%EA%B3%BC%20%EB%A9%94%ED%83%80%EC%9D%B8%EC%A7%80_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3590,7 +3583,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/356_logo%20branding.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/356_logo%2520branding_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/356_logo%20branding_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3600,7 +3593,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/357_%EC%B2%AB%20%EB%8C%80%ED%95%99%EA%B5%90%20%EA%B0%95%EC%9D%98.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/357_%25EC%25B2%25AB%2520%25EB%258C%2580%25ED%2595%2599%25EA%25B5%2590%2520%25EA%25B0%2595%25EC%259D%2598_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/357_%EC%B2%AB%20%EB%8C%80%ED%95%99%EA%B5%90%20%EA%B0%95%EC%9D%98_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3610,7 +3603,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/358_%EC%8B%A4%EC%A0%9C%EB%A1%9C%20%EC%82%B6%EC%9D%84%20%EA%B0%9C%EC%84%A0%EC%8B%9C%EC%BC%9C%EB%9D%BC.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/358_%25EC%258B%25A4%25EC%25A0%259C%25EB%25A1%259C%2520%25EC%2582%25B6%25EC%259D%2584%2520%25EA%25B0%259C%25EC%2584%25A0%25EC%258B%259C%25EC%25BC%259C%25EB%259D%25BC_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/358_%EC%8B%A4%EC%A0%9C%EB%A1%9C%20%EC%82%B6%EC%9D%84%20%EA%B0%9C%EC%84%A0%EC%8B%9C%EC%BC%9C%EB%9D%BC_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -3620,7 +3613,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/359_%EC%BD%94%EC%B9%98S%2010%ED%99%94%20%EC%B2%A0%EC%97%86%EB%8A%94%20PO.html" class="card-item" data-category="코치S">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/359_%25EC%25BD%2594%25EC%25B9%2598S%252010%25ED%2599%2594%2520%25EC%25B2%25A0%25EC%2597%2586%25EB%258A%2594%2520PO_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/359_%EC%BD%94%EC%B9%98S%2010%ED%99%94%20%EC%B2%A0%EC%97%86%EB%8A%94%20PO_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">코치S</div>
@@ -3630,7 +3623,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/360_%EB%8F%88%EA%B3%BC%20%ED%96%89%EB%B3%B5.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/360_%25EB%258F%2588%25EA%25B3%25BC%2520%25ED%2596%2589%25EB%25B3%25B5_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/360_%EB%8F%88%EA%B3%BC%20%ED%96%89%EB%B3%B5_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3640,7 +3633,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/361_UX%20%EC%84%A4%EA%B3%84%EB%A5%BC%20%EC%9E%98%ED%95%98%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="스타트업 리더의 기술">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/361_UX%2520%25EC%2584%25A4%25EA%25B3%2584%25EB%25A5%25BC%2520%25EC%259E%2598%25ED%2595%2598%25EB%258A%2594%2520%25EB%25B2%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/361_UX%20%EC%84%A4%EA%B3%84%EB%A5%BC%20%EC%9E%98%ED%95%98%EB%8A%94%20%EB%B2%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업 리더의 기술</div>
@@ -3650,7 +3643,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/362_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%27%EA%B8%B0%EB%B0%80%EC%84%9C%EC%9E%AC%27%20%EC%8B%9C%EC%A6%8C3%EA%B0%80%20%EC%8B%9C%EC%9E%91%ED%95%A9%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/362_%25ED%258A%25B8%25EB%25A0%2588%25EB%25B0%2594%25EB%25A6%25AC%2520%2527%25EA%25B8%25B0%25EB%25B0%2580%25EC%2584%259C%25EC%259E%25AC%2527%2520%25EC%258B%259C%25EC%25A6%258C3%25EA%25B0%2580%2520%25EC%258B%259C%25EC%259E%2591%25ED%2595%25A9%25EB%258B%2588%25EB%258B%25A4._cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/362_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%27%EA%B8%B0%EB%B0%80%EC%84%9C%EC%9E%AC%27%20%EC%8B%9C%EC%A6%8C3%EA%B0%80%20%EC%8B%9C%EC%9E%91%ED%95%A9%EB%8B%88%EB%8B%A4._cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3660,7 +3653,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/363_%EB%8B%B9%EC%8B%A0%EC%9D%80%20%ED%99%80%EB%A6%AD%ED%95%98%EB%8A%94%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EC%9D%B8%EA%B0%80%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/363_%25EB%258B%25B9%25EC%258B%25A0%25EC%259D%2580%2520%25ED%2599%2580%25EB%25A6%25AD%25ED%2595%2598%25EB%258A%2594%2520%25EB%25B8%258C%25EB%259E%259C%25EB%2593%259C%25EC%259D%25B8%25EA%25B0%2580%25EC%259A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/363_%EB%8B%B9%EC%8B%A0%EC%9D%80%20%ED%99%80%EB%A6%AD%ED%95%98%EB%8A%94%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EC%9D%B8%EA%B0%80%EC%9A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3670,7 +3663,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/364_%EC%98%A4%EB%8D%95%EC%9D%98%20%EC%8A%B9%EB%A6%AC%EB%A5%BC%20%EC%B6%95%ED%95%98%ED%95%98%EB%A9%B0.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/364_%25EC%2598%25A4%25EB%258D%2595%25EC%259D%2598%2520%25EC%258A%25B9%25EB%25A6%25AC%25EB%25A5%25BC%2520%25EC%25B6%2595%25ED%2595%2598%25ED%2595%2598%25EB%25A9%25B0..._cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/364_%EC%98%A4%EB%8D%95%EC%9D%98%20%EC%8A%B9%EB%A6%AC%EB%A5%BC%20%EC%B6%95%ED%95%98%ED%95%98%EB%A9%B0..._cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3680,7 +3673,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/365_%EC%BD%94%EC%B9%98S%209%ED%99%94%20%EC%BD%94%EC%B9%98N%EC%9D%98%20%EB%93%B1%EC%9E%A5.html" class="card-item" data-category="코치S">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/365_%25EC%25BD%2594%25EC%25B9%2598S%25209%25ED%2599%2594%2520%25EC%25BD%2594%25EC%25B9%2598N%25EC%259D%2598%2520%25EB%2593%25B1%25EC%259E%25A5_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/365_%EC%BD%94%EC%B9%98S%209%ED%99%94%20%EC%BD%94%EC%B9%98N%EC%9D%98%20%EB%93%B1%EC%9E%A5_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">코치S</div>
@@ -3690,7 +3683,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/366_%EC%B1%85%EC%9D%84%20%EB%82%98%EC%9D%98%20%EB%AC%B4%EA%B8%B0%EB%A1%9C%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/366_%25EC%25B1%2585%25EC%259D%2584%2520%25EB%2582%2598%25EC%259D%2598%2520%25EB%25AC%25B4%25EA%25B8%25B0%25EB%25A1%259C%2520%25EB%25A7%258C%25EB%2593%259C%25EB%258A%2594%2520%25EB%25B2%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/366_%EC%B1%85%EC%9D%84%20%EB%82%98%EC%9D%98%20%EB%AC%B4%EA%B8%B0%EB%A1%9C%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B2%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -3700,7 +3693,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/367_%EC%BD%94%EC%B9%98S%208%ED%99%94%20%27%EB%85%B8%EB%8B%B5%20CEO%20%EC%82%BC%ED%98%95%EC%A0%9C%27.html" class="card-item" data-category="코치S">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/367_%25EC%25BD%2594%25EC%25B9%2598S%25208%25ED%2599%2594%2520%2527%25EB%2585%25B8%25EB%258B%25B5%2520CEO%2520%25EC%2582%25BC%25ED%2598%2595%25EC%25A0%259C%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/367_%EC%BD%94%EC%B9%98S%208%ED%99%94%20%27%EB%85%B8%EB%8B%B5%20CEO%20%EC%82%BC%ED%98%95%EC%A0%9C%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">코치S</div>
@@ -3710,7 +3703,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/368_%27%EC%98%A4%ED%83%80%EC%99%80%20%EB%B8%8C%EB%9E%9C%EB%94%A9%27.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/368_%2527%25EC%2598%25A4%25ED%2583%2580%25EC%2599%2580%2520%25EB%25B8%258C%25EB%259E%259C%25EB%2594%25A9%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/368_%27%EC%98%A4%ED%83%80%EC%99%80%20%EB%B8%8C%EB%9E%9C%EB%94%A9%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -3720,7 +3713,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/369_%EC%9D%BC%EC%9D%84%20%EC%A0%9C%EB%8C%80%EB%A1%9C%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/369_%25EC%259D%25BC%25EC%259D%2584%2520%25EC%25A0%259C%25EB%258C%2580%25EB%25A1%259C%2520%25EB%25B0%25B0%25EC%259A%25B0%25EB%258A%2594%2520%25EB%25B2%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/369_%EC%9D%BC%EC%9D%84%20%EC%A0%9C%EB%8C%80%EB%A1%9C%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20%EB%B2%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -3730,7 +3723,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/370_%EC%BD%94%EC%B9%98S%207%ED%99%94%20%27%EC%A7%84%EC%A0%95%ED%95%9C%20%EB%B8%8C%EB%9E%9C%EB%94%A9%EC%9D%B4%EB%9E%80%27.html" class="card-item" data-category="코치S">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/370_%25EC%25BD%2594%25EC%25B9%2598S%25207%25ED%2599%2594%2520%2527%25EC%25A7%2584%25EC%25A0%2595%25ED%2595%259C%2520%25EB%25B8%258C%25EB%259E%259C%25EB%2594%25A9%25EC%259D%25B4%25EB%259E%2580%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/370_%EC%BD%94%EC%B9%98S%207%ED%99%94%20%27%EC%A7%84%EC%A0%95%ED%95%9C%20%EB%B8%8C%EB%9E%9C%EB%94%A9%EC%9D%B4%EB%9E%80%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">코치S</div>
@@ -3740,7 +3733,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/371_%EB%9B%B0%EC%96%B4%EB%82%9C%20PM%EC%9D%BC%EC%88%98%EB%A1%9D%20%EB%B9%84%EA%B4%80%EC%A0%81%EC%9D%B8%20%EC%9D%B4%EC%9C%A0%EB%8A%94.html" class="card-item" data-category="Be the PO">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/371_%25EB%259B%25B0%25EC%2596%25B4%25EB%2582%259C%2520PM%25EC%259D%25BC%25EC%2588%2598%25EB%25A1%259D%2520%25EB%25B9%2584%25EA%25B4%2580%25EC%25A0%2581%25EC%259D%25B8%2520%25EC%259D%25B4%25EC%259C%25A0%25EB%258A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/371_%EB%9B%B0%EC%96%B4%EB%82%9C%20PM%EC%9D%BC%EC%88%98%EB%A1%9D%20%EB%B9%84%EA%B4%80%EC%A0%81%EC%9D%B8%20%EC%9D%B4%EC%9C%A0%EB%8A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">Be the PO</div>
@@ -3750,7 +3743,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/372_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%9D%B8%EC%9E%AC%EB%B0%80%EB%8F%84%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EB%86%92%EC%9D%BC%EA%B9%8C.html" class="card-item" data-category="스타트업 리더의 기술">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/372_%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%25EC%2597%2585%2520%25EC%259D%25B8%25EC%259E%25AC%25EB%25B0%2580%25EB%258F%2584%2520%25EC%2596%25B4%25EB%2596%25BB%25EA%25B2%258C%2520%25EB%2586%2592%25EC%259D%25BC%25EA%25B9%258C_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/372_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%9D%B8%EC%9E%AC%EB%B0%80%EB%8F%84%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EB%86%92%EC%9D%BC%EA%B9%8C_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업 리더의 기술</div>
@@ -3760,7 +3753,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/373_%EC%99%9C%20%EA%B7%B8%EB%A0%87%EA%B2%8C%20%EC%97%B4%EC%8B%AC%ED%9E%88%20%ED%95%98%EC%84%B8%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/373_%25EC%2599%259C%2520%25EA%25B7%25B8%25EB%25A0%2587%25EA%25B2%258C%2520%25EC%2597%25B4%25EC%258B%25AC%25ED%259E%2588%2520%25ED%2595%2598%25EC%2584%25B8%25EC%259A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/373_%EC%99%9C%20%EA%B7%B8%EB%A0%87%EA%B2%8C%20%EC%97%B4%EC%8B%AC%ED%9E%88%20%ED%95%98%EC%84%B8%EC%9A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3770,7 +3763,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/374_%EC%BD%94%EC%B9%98S%206%ED%99%94%20%27%EB%B8%8C%EB%9E%9C%EB%94%A9%EB%B3%91%27.html" class="card-item" data-category="코치S">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/374_%25EC%25BD%2594%25EC%25B9%2598S%25206%25ED%2599%2594%2520%2527%25EB%25B8%258C%25EB%259E%259C%25EB%2594%25A9%25EB%25B3%2591%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/374_%EC%BD%94%EC%B9%98S%206%ED%99%94%20%27%EB%B8%8C%EB%9E%9C%EB%94%A9%EB%B3%91%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">코치S</div>
@@ -3780,7 +3773,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/375_%EC%9D%B4%EA%B8%B8%20%EC%88%98%20%EB%B0%96%EC%97%90%20%EC%97%86%EA%B2%8C%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/375_%25EC%259D%25B4%25EA%25B8%25B8%2520%25EC%2588%2598%2520%25EB%25B0%2596%25EC%2597%2590%2520%25EC%2597%2586%25EA%25B2%258C%2520%25EB%25A7%258C%25EB%2593%259C%25EB%258A%2594%2520%25EB%25B2%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/375_%EC%9D%B4%EA%B8%B8%20%EC%88%98%20%EB%B0%96%EC%97%90%20%EC%97%86%EA%B2%8C%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B2%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3790,7 +3783,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/376_%EC%BD%94%EC%B9%98S%20%E2%80%98%EB%AA%A9%ED%91%9C%EB%8A%94%20%EB%AA%87%20%EA%B0%9C%E2%80%99%20%ED%8E%B8%20%ED%95%B4%EC%84%A4.html" class="card-item" data-category="코치S">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/376_%25EC%25BD%2594%25EC%25B9%2598S%2520%25E2%2580%2598%25EB%25AA%25A9%25ED%2591%259C%25EB%258A%2594%2520%25EB%25AA%2587%2520%25EA%25B0%259C%25E2%2580%2599%2520%25ED%258E%25B8%2520%25ED%2595%25B4%25EC%2584%25A4_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/376_%EC%BD%94%EC%B9%98S%20%E2%80%98%EB%AA%A9%ED%91%9C%EB%8A%94%20%EB%AA%87%20%EA%B0%9C%E2%80%99%20%ED%8E%B8%20%ED%95%B4%EC%84%A4_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">코치S</div>
@@ -3800,7 +3793,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/377_%EC%BD%94%EC%B9%98S%205%ED%99%94%20%27%EB%8B%A4%EC%9D%8C%20%EB%9D%BC%EC%9A%B4%EB%93%9C%EC%97%90%EC%84%9C%20%EB%B5%99%EA%B2%A0%EC%8A%B5%EB%8B%88%EB%8B%A4.%27.html" class="card-item" data-category="코치S">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/377_%25EC%25BD%2594%25EC%25B9%2598S%25205%25ED%2599%2594%2520%2527%25EB%258B%25A4%25EC%259D%258C%2520%25EB%259D%25BC%25EC%259A%25B4%25EB%2593%259C%25EC%2597%2590%25EC%2584%259C%2520%25EB%25B5%2599%25EA%25B2%25A0%25EC%258A%25B5%25EB%258B%2588%25EB%258B%25A4.%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/377_%EC%BD%94%EC%B9%98S%205%ED%99%94%20%27%EB%8B%A4%EC%9D%8C%20%EB%9D%BC%EC%9A%B4%EB%93%9C%EC%97%90%EC%84%9C%20%EB%B5%99%EA%B2%A0%EC%8A%B5%EB%8B%88%EB%8B%A4.%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">코치S</div>
@@ -3810,7 +3803,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/378_A%EA%B8%89%2C%20C%EA%B8%89%20%EC%9D%B8%EC%9E%AC%EC%9D%98%20%EA%B8%B0%EC%A4%80.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/378_A%25EA%25B8%2589%252C%2520C%25EA%25B8%2589%2520%25EC%259D%25B8%25EC%259E%25AC%25EC%259D%2598%2520%25EA%25B8%25B0%25EC%25A4%2580_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/378_A%EA%B8%89%2C%20C%EA%B8%89%20%EC%9D%B8%EC%9E%AC%EC%9D%98%20%EA%B8%B0%EC%A4%80_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3820,7 +3813,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/379_%EC%9D%BC%20%EC%9E%98%ED%95%98%EB%8A%94%20PM%EB%93%A4%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%ED%95%A0%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="Be the PO">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/379_%25EC%259D%25BC%2520%25EC%259E%2598%25ED%2595%2598%25EB%258A%2594%2520PM%25EB%2593%25A4%25EC%259D%2580%2520%25EC%2596%25B4%25EB%2596%25BB%25EA%25B2%258C%2520%25EC%259D%25BC%25ED%2595%25A0%25EA%25B9%258C%25EC%259A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/379_%EC%9D%BC%20%EC%9E%98%ED%95%98%EB%8A%94%20PM%EB%93%A4%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%ED%95%A0%EA%B9%8C%EC%9A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">Be the PO</div>
@@ -3830,7 +3823,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/380_%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EC%84%9D%EC%84%B8%EA%B3%B5%EC%82%AC%EC%9D%B8%20%EC%9D%B4%EC%9C%A0%EB%8A%94.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/380_%25EC%25BD%2594%25EC%25B9%2598%25EA%25B0%2580%2520%25EB%25B3%25B4%25EC%2584%259D%25EC%2584%25B8%25EA%25B3%25B5%25EC%2582%25AC%25EC%259D%25B8%2520%25EC%259D%25B4%25EC%259C%25A0%25EB%258A%2594_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/380_%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EC%84%9D%EC%84%B8%EA%B3%B5%EC%82%AC%EC%9D%B8%20%EC%9D%B4%EC%9C%A0%EB%8A%94_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -3840,7 +3833,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/381_A%EA%B8%89%20%EC%9D%B8%EC%9E%AC%EB%A5%BC%20%EC%B0%BE%EB%8A%94%20%EB%B0%A9%EB%B2%95.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/381_A%25EA%25B8%2589%2520%25EC%259D%25B8%25EC%259E%25AC%25EB%25A5%25BC%2520%25EC%25B0%25BE%25EB%258A%2594%2520%25EB%25B0%25A9%25EB%25B2%2595_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/381_A%EA%B8%89%20%EC%9D%B8%EC%9E%AC%EB%A5%BC%20%EC%B0%BE%EB%8A%94%20%EB%B0%A9%EB%B2%95_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -3850,7 +3843,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/382_%EC%BD%94%EC%B9%98S%204%ED%99%94%20%27%ED%95%9C%20%EA%B3%B3%EC%9D%84%20%EB%B3%B4%EB%8A%94%20%EB%B0%A9%EB%B2%95%27.html" class="card-item" data-category="코치S">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/382_%25EC%25BD%2594%25EC%25B9%2598S%25204%25ED%2599%2594%2520%2527%25ED%2595%259C%2520%25EA%25B3%25B3%25EC%259D%2584%2520%25EB%25B3%25B4%25EB%258A%2594%2520%25EB%25B0%25A9%25EB%25B2%2595%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/382_%EC%BD%94%EC%B9%98S%204%ED%99%94%20%27%ED%95%9C%20%EA%B3%B3%EC%9D%84%20%EB%B3%B4%EB%8A%94%20%EB%B0%A9%EB%B2%95%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">코치S</div>
@@ -3870,7 +3863,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/384_C%EC%9D%98%20%EC%9D%98%EB%AF%B8%EB%8A%94.html" class="card-item" data-category="스타트업 리더의 기술">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/384_%25EC%25BD%2594%25EC%25B9%2598S%25204%25ED%2599%2594%2520%2527%25ED%2595%259C%2520%25EA%25B3%25B3%25EC%259D%2584%2520%25EB%25B3%25B4%25EB%258A%2594%2520%25EB%25B0%25A9%25EB%25B2%2595%2527_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/384_%EC%BD%94%EC%B9%98S%204%ED%99%94%20%27%ED%95%9C%20%EA%B3%B3%EC%9D%84%20%EB%B3%B4%EB%8A%94%20%EB%B0%A9%EB%B2%95%27_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업 리더의 기술</div>
@@ -3886,7 +3879,7 @@ is_index: true
                 <div class="card-category">심플리파이어 라이프</div>
                 <h3 class="card-title">인 기업가들이 링크드인을 잘하기 위해 해야 할 질문</h3>
             </div>
-            <div class="card-date"></div>
+            <div class="card-date">May 16. 2024</div>
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/386_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%9C%A0%EC%A0%84%EC%9E%90%EB%A5%BC%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="심플리파이어 라이프">
@@ -3920,7 +3913,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/389_%EB%A7%90%EC%9D%84%20%ED%95%98%EA%B8%B0%20%EC%A0%84%20%EC%83%9D%EA%B0%81%20%ED%95%B4%EC%95%BC%20%ED%95%A0%203%EA%B0%80%EC%A7%80.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/389_%25EC%25BD%2594%25EC%25B9%2598S%25203%25ED%2599%2594%2520%2527%25EB%25AA%25A9%25ED%2591%259C%25EB%258A%2594%2520%25EB%25AA%2587%2520%25EA%25B0%259C%2527_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/389_%EC%BD%94%EC%B9%98S%203%ED%99%94%20%27%EB%AA%A9%ED%91%9C%EB%8A%94%20%EB%AA%87%20%EA%B0%9C%27_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -3990,7 +3983,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/396_%EC%A0%80%EB%8A%94%20%EB%B8%8C%EB%9E%9C%EB%94%A9%EC%9D%B4%EB%9D%BC%EB%8A%94%20%EB%A7%90%EC%9D%84%20%EC%8B%AB%EC%96%B4%ED%96%88%EC%8A%B5%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/396_%25EC%25BD%2594%25EC%25B9%2598S%25202%25ED%2599%2594%2520%2527%25EB%2584%2588%25EB%25AC%25B4%2520%25EC%2597%2586%25EA%25B1%25B0%25EB%2582%2598%252C%2520%25EB%2584%2588%25EB%25AC%25B4%2520%25EB%25A7%258E%25EA%25B1%25B0%25EB%2582%2598%2527_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/396_%EC%BD%94%EC%B9%98S%202%ED%99%94%20%27%EB%84%88%EB%AC%B4%20%EC%97%86%EA%B1%B0%EB%82%98%2C%20%EB%84%88%EB%AC%B4%20%EB%A7%8E%EA%B1%B0%EB%82%98%27_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -4000,7 +3993,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/397_%EB%82%98%EC%9D%98%20%EB%B8%8C%EB%9E%9C%EB%94%A9%EC%9D%80.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/397_%25EC%25B9%25B4%25EB%258B%2588%25EB%25B0%259C%25EB%259D%25BC%25EC%259D%25B4%25EC%25A0%259C%25EC%259D%25B4%25EC%2585%2598%25EC%259D%2584%2520%25EC%2595%2584%25EC%258B%259C%25EB%2582%2598%25EC%259A%2594_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/397_%EC%B9%B4%EB%8B%88%EB%B0%9C%EB%9D%BC%EC%9D%B4%EC%A0%9C%EC%9D%B4%EC%85%98%EC%9D%84%20%EC%95%84%EC%8B%9C%EB%82%98%EC%9A%94_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -4010,7 +4003,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/398_%EB%8B%A4%EC%9D%8C%20%EC%A7%81%EC%9E%A5%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%84%A0%ED%83%9D%ED%95%A0%EA%B9%8C%EC%9A%94.html" class="card-item" data-category="기획자로 시작하기">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/398_%25EC%25A0%2580%25EB%258A%2594%2520%25EB%25B8%258C%25EB%259E%259C%25EB%2594%25A9%25EC%259D%25B4%25EB%259D%25BC%25EB%258A%2594%2520%25EB%25A7%2590%25EC%259D%2584%2520%25EC%258B%25AB%25EC%2596%25B4%25ED%2596%2588%25EC%258A%25B5%25EB%258B%2588%25EB%258B%25A4._img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/398_%EC%A0%80%EB%8A%94%20%EB%B8%8C%EB%9E%9C%EB%94%A9%EC%9D%B4%EB%9D%BC%EB%8A%94%20%EB%A7%90%EC%9D%84%20%EC%8B%AB%EC%96%B4%ED%96%88%EC%8A%B5%EB%8B%88%EB%8B%A4._img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자로 시작하기</div>
@@ -4026,7 +4019,7 @@ is_index: true
                 <div class="card-category">심플리파이어 라이프</div>
                 <h3 class="card-title">내가 요즘 주목하는 '링크드인 히어로' 4월호</h3>
             </div>
-            <div class="card-date">May 1. 2024</div>
+            <div class="card-date">Mar 29. 2024</div>
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/400_%EA%B3%A0%EA%B0%9D%EC%9D%B4%20%EC%9B%90%ED%95%98%EB%8A%94%20%EA%B2%83%EC%9D%84%20%EA%B8%B0%ED%9A%8D%ED%95%98%EB%8A%94%20%EB%B2%95.html" class="card-item" data-category="기획자로 시작하기">
@@ -4060,7 +4053,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/403_Simplifier%20GOOD%EC%A6%88%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/403_%25EC%25BD%2594%25EC%25B9%2598S%25201%25ED%2599%2594%2520%2527%25EB%25AC%25B8%25EC%25A0%259C%25ED%2595%25B4%25EA%25B2%25B0%25EC%2582%25AC%2527_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/403_%EC%BD%94%EC%B9%98S%201%ED%99%94%20%27%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0%EC%82%AC%27_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -4080,7 +4073,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/405_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EA%B8%B8%EC%9D%84%20%EC%84%A0%ED%83%9D%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="기획자로 시작하기">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/405_Simplifier%2520GOOD%25EC%25A6%2588%2520%25ED%2594%2584%25EB%25A1%259C%25EC%25A0%259D%25ED%258A%25B8_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/405_Simplifier%20GOOD%EC%A6%88%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획자로 시작하기</div>
@@ -4140,7 +4133,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/411_%ED%95%9C%EC%BD%94%EC%B9%98%EC%9D%98%20%27%EC%95%A0%EC%9E%90%EC%9D%BC%20%EC%99%9C%20%ED%95%98%EA%B2%8C%20%EB%90%98%EC%97%88%EC%9D%84%EA%B9%8C%27.html" class="card-item" data-category="스타트업 리더의 기술">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/411_%25EB%25B9%2584%25ED%259A%25A8%25EC%259C%25A8%25EC%25A0%2581%25EC%259C%25BC%25EB%25A1%259C%2520%25EB%25B8%258C%25EB%259E%259C%25EB%2594%25A9%2520%25EA%25B8%25B0%25ED%259A%258D%25ED%2595%2598%25EA%25B8%25B0_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/411_%EB%B9%84%ED%9A%A8%EC%9C%A8%EC%A0%81%EC%9C%BC%EB%A1%9C%20%EB%B8%8C%EB%9E%9C%EB%94%A9%20%EA%B8%B0%ED%9A%8D%ED%95%98%EA%B8%B0_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업 리더의 기술</div>
@@ -4160,7 +4153,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/413_%ED%95%9C%EC%BD%94%EC%B9%98%EC%9D%98%20%27%EC%95%A0%EC%9E%90%EC%9D%BC%20%EC%99%9C%20%ED%95%98%EA%B2%8C%20%EB%90%98%EC%97%88%EC%9D%84%EA%B9%8C%27.html" class="card-item" data-category="스타트업 리더의 기술">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/413_%25ED%2595%259C%25EC%25BD%2594%25EC%25B9%2598%25EC%259D%2598%2520%2527%25EC%2595%25A0%25EC%259E%2590%25EC%259D%25BC%2520%25EC%2599%259C%2520%25ED%2595%2598%25EA%25B2%258C%2520%25EB%2590%2598%25EC%2597%2588%25EC%259D%2584%25EA%25B9%258C%2527_cover.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/413_%ED%95%9C%EC%BD%94%EC%B9%98%EC%9D%98%20%27%EC%95%A0%EC%9E%90%EC%9D%BC%20%EC%99%9C%20%ED%95%98%EA%B2%8C%20%EB%90%98%EC%97%88%EC%9D%84%EA%B9%8C%27_cover.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업 리더의 기술</div>
@@ -4220,7 +4213,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/419_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part%201.2%20%EC%83%9D%EC%82%B0%EA%B5%AC%EC%A1%B0.html" class="card-item" data-category="스타트업 리더의 기술">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/419_%25EC%258B%25AC%25ED%2594%258C%25EB%25A6%25AC%25ED%258C%258C%25EC%259D%25B4%25EC%2596%25B4%2520%25EC%25BD%259C%25EB%259D%25BC%25EB%25B3%25B4%2520%25ED%2594%2584%25EB%25A1%259C%25EC%25A0%259D%25ED%258A%25B8_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/419_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%BD%9C%EB%9D%BC%EB%B3%B4%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업 리더의 기술</div>
@@ -4320,7 +4313,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/429_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%EC%9D%98%20%EC%B1%85%EC%9D%BD%EA%B8%B0%20%27%EC%B2%AB%20%EC%B1%85%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B2%95%27.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/429_%25EB%2594%2594%25EC%259E%2590%25EC%259D%25B8%25EC%259D%25B4%2520%25EC%25A4%2591%25EC%259A%2594%25ED%2595%259C%2520%25EC%259D%25B4%25EC%259C%25A0_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/429_%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%B4%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -4340,7 +4333,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/431_%EB%82%B4%EA%B0%80%20%EC%9A%94%EC%A6%98%20%EC%A3%BC%EB%AA%A9%ED%95%98%EB%8A%94%20%27%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%ED%9E%88%EC%96%B4%EB%A1%9C%27%203%EC%9B%94%ED%98%B8.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/431_%25EC%258B%25AC%25ED%2594%258C%25EB%25A6%25AC%25ED%258C%258C%25EC%259D%25B4%25EC%2596%25B4%25EC%259D%2598%2520%25EC%25B1%2585%25EC%259D%25BD%25EA%25B8%25B0%2520%2527%25EC%25B2%25AB%2520%25EC%25B1%2585%2520%25EB%25A7%258C%25EB%2593%259C%25EB%258A%2594%2520%25EB%25B2%2595%2527_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/431_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%EC%9D%98%20%EC%B1%85%EC%9D%BD%EA%B8%B0%20%27%EC%B2%AB%20%EC%B1%85%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B2%95%27_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -4350,7 +4343,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/432_%EC%95%84%EB%8B%88%20%EC%A0%9C%EA%B0%80%20%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%EC%9D%B8%ED%94%8C%EB%A3%A8%EC%96%B8%EC%84%9C%EB%9D%BC%EB%8B%88%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/432_%25EB%2585%25B8%25EC%2595%2588%25EA%25B3%25BC%2520%25EB%2582%2598_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/432_%EB%85%B8%EC%95%88%EA%B3%BC%20%EB%82%98_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -4370,7 +4363,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/434_%EC%84%B1%EB%8D%95%EC%9D%B4%20%EB%90%98%EC%97%88%EC%8A%B5%EB%8B%88%EB%8B%A4~%21.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/434_%25EC%2595%2584%25EB%258B%2588%2520%25EC%25A0%259C%25EA%25B0%2580%2520%25EB%25A7%2581%25ED%2581%25AC%25EB%2593%259C%25EC%259D%25B8%2520%25EC%259D%25B8%25ED%2594%258C%25EB%25A3%25A8%25EC%2596%25B8%25EC%2584%259C%25EB%259D%25BC%25EB%258B%2588%25EC%259A%2594_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/434_%EC%95%84%EB%8B%88%20%EC%A0%9C%EA%B0%80%20%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%EC%9D%B8%ED%94%8C%EB%A3%A8%EC%96%B8%EC%84%9C%EB%9D%BC%EB%8B%88%EC%9A%94_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -4430,7 +4423,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/440_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC7%ED%99%94%204%EA%B0%9C%EA%B5%AD%EC%96%B4%20%EB%8A%A5%EB%A0%A5%EC%9E%90%2C%20%EC%A1%B0%EC%A1%B0%EC%9D%98%20%EB%93%B1%EC%9E%A5.html" class="card-item" data-category="코치S">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/440_%25EC%2595%2584%25EB%25B9%25A4%2520%25EB%2584%2588%25EB%25AC%25B4%2520%25EC%25B2%25A0%25ED%2595%2599%25EC%25A0%2581%25EC%259D%25B8%2520%25EA%25B8%2580%25EB%25A7%258C%2520%25EC%2598%25AC%25EB%25A6%25AC%25EC%259E%2596%25EC%2595%2584_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/440_%EC%95%84%EB%B9%A4%20%EB%84%88%EB%AC%B4%20%EC%B2%A0%ED%95%99%EC%A0%81%EC%9D%B8%20%EA%B8%80%EB%A7%8C%20%EC%98%AC%EB%A6%AC%EC%9E%96%EC%95%84_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">코치S</div>
@@ -4450,7 +4443,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/442_%EC%84%B8%EA%B3%84%EC%97%90%EC%84%9C%20%EA%B0%80%EC%9E%A5%20%EC%9A%B0%EC%9A%B8%ED%95%9C%20%EB%82%98%EB%9D%BC%EB%A5%BC%20%EB%B0%94%EA%BE%B8%EB%8A%94%20%EB%B9%84%EB%B0%80.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/442_%25EC%259E%2589%25ED%2581%25AC%25EB%2593%259C%25EC%259D%25B8%25EB%258C%2580%2520%25EA%25B8%25B0%25ED%259A%258D%25ED%2595%2599%25EA%25B3%25BC7%25ED%2599%2594%25204%25EA%25B0%259C%25EA%25B5%25AD%25EC%2596%25B4%2520%25EB%258A%25A5%25EB%25A0%25A5%25EC%259E%2590%252C%2520%25EC%25A1%25B0%25EC%25A1%25B0%25EC%259D%2598%2520%25EB%2593%25B1%25EC%259E%25A5_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/442_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC7%ED%99%94%204%EA%B0%9C%EA%B5%AD%EC%96%B4%20%EB%8A%A5%EB%A0%A5%EC%9E%90%2C%20%EC%A1%B0%EC%A1%B0%EC%9D%98%20%EB%93%B1%EC%9E%A5_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -4460,7 +4453,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/443_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%81%8C%EC%96%B4%EB%8B%B9%EA%B9%80%EC%9D%98%20%EC%9B%90%EB%A6%AC%ED%8E%B8.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/443_%25EB%25B3%25B4%25ED%2586%25B5%25EC%259D%2598%2520%25EC%25B1%2585%25EB%258F%2584%2520%25EC%259D%2598%25EB%25AF%25B8%25EC%259E%2588%25EA%25B2%258C%2520%25EB%25A7%258C%25EB%2593%259C%25EB%258A%2594%2520%25EB%25B0%25A9%25EB%25B2%2595_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/443_%EB%B3%B4%ED%86%B5%EC%9D%98%20%EC%B1%85%EB%8F%84%20%EC%9D%98%EB%AF%B8%EC%9E%88%EA%B2%8C%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B0%A9%EB%B2%95_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -4486,7 +4479,7 @@ is_index: true
                 <div class="card-category">이력서에 쓰지 않는 첫직장 이야기</div>
                 <h3 class="card-title">'이력서에 쓰지 않는 첫 직장이야기' 9편</h3>
             </div>
-            <div class="card-date">Mar 13. 2024</div>
+            <div class="card-date">Feb 19. 2024</div>
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/446_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%206%ED%99%94%20%EA%B3%A0%EB%AF%BC%EC%83%81%EB%8B%B4%20%EB%8F%99%EC%95%84%EB%A6%AC%EC%9D%98%20%E2%80%98%EA%B3%A0%EB%AF%BC%E2%80%99.html" class="card-item" data-category="코치S">
@@ -4510,13 +4503,13 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/448_%27%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%20%EC%A7%81%EC%9E%A5%EC%9D%B4%EC%95%BC%EA%B8%B0%27%208%ED%8E%B8.html" class="card-item" data-category="이력서에 쓰지 않는 첫직장 이야기">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/448_%25EC%259E%2589%25ED%2581%25AC%25EB%2593%259C%25EC%259D%25B8%25EB%258C%2580%2520%25EA%25B8%25B0%25ED%259A%258D%25ED%2595%2599%25EA%25B3%25BC%25206%25ED%2599%2594%2520%25EA%25B3%25A0%25EB%25AF%25BC%25EC%2583%2581%25EB%258B%25B4%2520%25EB%258F%2599%25EC%2595%2584%25EB%25A6%25AC%25EC%259D%2598%2520%25E2%2580%2598%25EA%25B3%25A0%25EB%25AF%25BC%25E2%2580%2599_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/448_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%206%ED%99%94%20%EA%B3%A0%EB%AF%BC%EC%83%81%EB%8B%B4%20%EB%8F%99%EC%95%84%EB%A6%AC%EC%9D%98%20%E2%80%98%EA%B3%A0%EB%AF%BC%E2%80%99_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">이력서에 쓰지 않는 첫직장 이야기</div>
                 <h3 class="card-title">'이력서에 쓰지 않는 첫 직장이야기' 8편</h3>
             </div>
-            <div class="card-date">Mar 10. 2024</div>
+            <div class="card-date">Feb 19. 2024</div>
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/449_%EA%B0%9C%EC%9D%B8%EC%82%AC%EC%97%85%EC%9D%84%20%EC%8B%9C%EC%9E%91%ED%95%98%EB%A9%B4%20%EA%B2%AA%EA%B2%8C%20%EB%90%98%EB%8A%94%2011%EA%B0%80%EC%A7%80%20%EC%9D%BC%EB%93%A4.html" class="card-item" data-category="심플리파이어 라이프">
@@ -4546,7 +4539,7 @@ is_index: true
                 <div class="card-category">이력서에 쓰지 않는 첫직장 이야기</div>
                 <h3 class="card-title">'이력서에 쓰지 않는 첫 직장이야기' 7편</h3>
             </div>
-            <div class="card-date">Mar 7. 2024</div>
+            <div class="card-date">Feb 19. 2024</div>
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/452_%EB%82%B4%EA%B0%80%20%EA%B1%B0%EC%A0%88%EC%9D%84%20%EB%8C%80%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95.html" class="card-item" data-category="기획일상">
@@ -4580,13 +4573,13 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/455_%27%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%20%EC%A7%81%EC%9E%A5%EC%9D%B4%EC%95%BC%EA%B8%B0%27%206%ED%8E%B8.html" class="card-item" data-category="이력서에 쓰지 않는 첫직장 이야기">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/455_%25EC%259E%2589%25ED%2581%25AC%25EB%2593%259C%25EC%259D%25B8%25EB%258C%2580%2520%25EA%25B8%25B0%25ED%259A%258D%25ED%2595%2599%25EA%25B3%25BC%25205%25ED%2599%2594%2520%2527%2527%25ED%2583%2580%25EC%259D%25B4%25EC%258A%25A8%2520%25EC%2584%25A0%25EB%25B0%25B0%25EB%25A5%25BC%2520%25EB%258F%2584%25EC%2599%2580%25EC%25A3%25BC%25EC%2584%25B8%25EC%259A%2594_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/455_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%205%ED%99%94%20%27%27%ED%83%80%EC%9D%B4%EC%8A%A8%20%EC%84%A0%EB%B0%B0%EB%A5%BC%20%EB%8F%84%EC%99%80%EC%A3%BC%EC%84%B8%EC%9A%94_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">이력서에 쓰지 않는 첫직장 이야기</div>
                 <h3 class="card-title">'이력서에 쓰지 않는 첫 직장이야기' 6편</h3>
             </div>
-            <div class="card-date">Mar 3. 2024</div>
+            <div class="card-date">Feb 19. 2024</div>
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/456_%EC%A1%B0%EC%A7%81%EC%9B%90%EA%B3%BC%20%ED%95%A8%EA%BB%98%20%EC%84%B1%EA%B3%B5%ED%95%98%EB%8A%94%20%EB%A6%AC%EB%8D%94%EC%9D%98%20%EB%B9%84%EB%B0%80.html" class="card-item" data-category="기획일상">
@@ -4650,13 +4643,13 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/462_%27%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%20%EC%A7%81%EC%9E%A5%EC%9D%B4%EC%95%BC%EA%B8%B0%27%205%ED%8E%B8.html" class="card-item" data-category="이력서에 쓰지 않는 첫직장 이야기">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/462_%25EC%259E%2589%25ED%2581%25AC%25EB%2593%259C%25EC%259D%25B8%25EB%258C%2580%2520%25EA%25B8%25B0%25ED%259A%258D%25ED%2595%2599%25EA%25B3%25BC%25204%25ED%2599%2594%2520%2527%25EB%25AC%25B8%25EC%25A0%259C%25EC%25A0%2595%25EC%259D%2598%2527_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/462_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%204%ED%99%94%20%27%EB%AC%B8%EC%A0%9C%EC%A0%95%EC%9D%98%27_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">이력서에 쓰지 않는 첫직장 이야기</div>
                 <h3 class="card-title">'이력서에 쓰지 않는 첫 직장이야기' 5편</h3>
             </div>
-            <div class="card-date">Feb 25. 2024</div>
+            <div class="card-date">Feb 19. 2024</div>
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/463_%EA%B2%BD%EB%A1%9C%EC%9D%98%20%EC%9E%AC%ED%83%90%EC%83%89.html" class="card-item" data-category="기획일상">
@@ -4676,7 +4669,7 @@ is_index: true
                 <div class="card-category">이력서에 쓰지 않는 첫직장 이야기</div>
                 <h3 class="card-title">'이력서에 쓰지 않는 첫 직장이야기' 4편</h3>
             </div>
-            <div class="card-date">Feb 24. 2024</div>
+            <div class="card-date">Feb 19. 2024</div>
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/465_%27%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%20%EC%A7%81%EC%9E%A5%EC%9D%B4%EC%95%BC%EA%B8%B0%27%203%ED%8E%B8.html" class="card-item" data-category="이력서에 쓰지 않는 첫직장 이야기">
@@ -4686,7 +4679,7 @@ is_index: true
                 <div class="card-category">이력서에 쓰지 않는 첫직장 이야기</div>
                 <h3 class="card-title">'이력서에 쓰지 않는 첫 직장이야기' 3편</h3>
             </div>
-            <div class="card-date">Feb 22. 2024</div>
+            <div class="card-date">Feb 19. 2024</div>
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/466_%27%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%20%EC%A7%81%EC%9E%A5%EC%9D%B4%EC%95%BC%EA%B8%B0%27%202%ED%8E%B8.html" class="card-item" data-category="이력서에 쓰지 않는 첫직장 이야기">
@@ -4696,7 +4689,7 @@ is_index: true
                 <div class="card-category">이력서에 쓰지 않는 첫직장 이야기</div>
                 <h3 class="card-title">'이력서에 쓰지 않는 첫 직장이야기' 2편</h3>
             </div>
-            <div class="card-date">Feb 21. 2024</div>
+            <div class="card-date">Feb 19. 2024</div>
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/467_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%203%ED%99%94%20%27%EA%B3%BC%EC%A0%9C%ED%8F%AD%ED%83%84...%EA%B7%B8%EB%A6%AC%EA%B3%A0.html" class="card-item" data-category="코치S">
@@ -4720,7 +4713,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/469_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EC%9D%BC%20%EA%B3%A0%EB%A5%B4%EA%B8%B0%20%EC%A0%84%EB%9E%B5%ED%8E%B8.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/469_%25EC%259E%2589%25ED%2581%25AC%25EB%2593%259C%25EC%259D%25B8%25EB%258C%2580%2520%25EA%25B8%25B0%25ED%259A%258D%25ED%2595%2599%25EA%25B3%25BC%25203%25ED%2599%2594%2520%2527%25EA%25B3%25BC%25EC%25A0%259C%25ED%258F%25AD%25ED%2583%2584...%25EA%25B7%25B8%25EB%25A6%25AC%25EA%25B3%25A0_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/469_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%203%ED%99%94%20%27%EA%B3%BC%EC%A0%9C%ED%8F%AD%ED%83%84...%EA%B7%B8%EB%A6%AC%EA%B3%A0_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -4760,7 +4753,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/473_SNS%EB%B3%84%20%EC%9D%B8%EA%B8%B0%EA%B2%8C%EC%8B%9C%EB%AC%BC%20Top%203.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/473_%25EC%259E%2589%25ED%2581%25AC%25EB%2593%259C%25EC%259D%25B8%25EB%258C%2580%2520%25EA%25B8%25B0%25ED%259A%258D%25ED%2595%2599%25EA%25B3%25BC%25202%25ED%2599%2594%2520%2527%25EA%25B8%25B0%25ED%259A%258D...%2520%25EA%25B7%25B8%25EB%259F%25B0%2520%25EC%2582%25AC%25EB%259E%2591%2527_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/473_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%202%ED%99%94%20%27%EA%B8%B0%ED%9A%8D...%20%EA%B7%B8%EB%9F%B0%20%EC%82%AC%EB%9E%91%27_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -4800,7 +4793,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/477_%EA%B8%80%EC%93%B0%EA%B8%B0%EB%8A%94%20%27%EC%9E%98%27%20%EB%B3%B4%EB%8B%A4%20%27%EC%9E%90%EC%A3%BC%27%EA%B0%80%20%EB%8D%94%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/477_%25EC%259E%2589%25ED%2581%25AC%25EB%2593%259C%25EC%259D%25B8%25EB%258C%2580%2520%2527%25EA%25B8%25B0%25ED%259A%258D%25ED%2595%2599%25EA%25B3%25BC%2527%25201%25ED%2599%2594%2520%25EC%258B%25A0%25ED%2595%2599%25EA%25B8%25B0%2520%25EA%25B0%259C%25EA%25B0%2595_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/477_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%27%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%27%201%ED%99%94%20%EC%8B%A0%ED%95%99%EA%B8%B0%20%EA%B0%9C%EA%B0%95_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -4810,7 +4803,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/478_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%27%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%27%20%EC%98%88%EA%B3%A0%ED%8E%B8.html" class="card-item" data-category="코치S">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/478_%25EB%2582%25B4%25EA%25B0%2580%2520%25EB%2582%2598%25EB%25A5%25BC%2520%25EA%25B8%25B0%25ED%259A%258D%25ED%2595%259C%25EB%258B%25A4%25EB%25A9%25B4%2520%2527%25EC%2582%25AC%25EC%25A0%2584%25EC%25A4%2580%25EB%25B9%2584%25EC%259D%2598%2520%25EC%25A0%2584%25EB%259E%25B5%25ED%258E%25B8%2527_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/478_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%27%EC%82%AC%EC%A0%84%EC%A4%80%EB%B9%84%EC%9D%98%20%EC%A0%84%EB%9E%B5%ED%8E%B8%27_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">코치S</div>
@@ -4820,7 +4813,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/479_%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A5%BC%20%EC%9E%A1%EA%B8%B0%20%EC%9D%B4%EC%A0%84%EC%97%90%20%EC%82%AC%EB%9E%8C%EC%9D%84%20%EC%9E%A1%EC%95%84%EB%9D%BC.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/479_%25EA%25B8%2580%25EC%2593%25B0%25EA%25B8%25B0%25EB%258A%2594%2520%2527%25EC%259E%2598%2527%2520%25EB%25B3%25B4%25EB%258B%25A4%2520%2527%25EC%259E%2590%25EC%25A3%25BC%2527%25EA%25B0%2580%2520%25EB%258D%2594%2520%25EC%25A4%2591%25EC%259A%2594%25ED%2595%259C%2520%25EC%259D%25B4%25EC%259C%25A0_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/479_%EA%B8%80%EC%93%B0%EA%B8%B0%EB%8A%94%20%27%EC%9E%98%27%20%EB%B3%B4%EB%8B%A4%20%27%EC%9E%90%EC%A3%BC%27%EA%B0%80%20%EB%8D%94%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -4830,7 +4823,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/480_%EC%95%84%EC%9D%B4%EB%94%94%EC%96%BC%20%EC%9C%A0%EC%A0%80%20%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/480_%25EC%259E%2589%25ED%2581%25AC%25EB%2593%259C%25EC%259D%25B8%25EB%258C%2580%2520%2527%25EA%25B8%25B0%25ED%259A%258D%25ED%2595%2599%25EA%25B3%25BC%2527%2520%25EC%2598%2588%25EA%25B3%25A0%25ED%258E%25B8_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/480_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%27%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%27%20%EC%98%88%EA%B3%A0%ED%8E%B8_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -4860,7 +4853,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/483_%EB%AA%85%EB%9E%91%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20IT%20%EB%AA%85%EC%96%B8.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/483_%25EB%2582%25B4%25EA%25B0%2580%2520GS%25EC%2597%2590%25EC%2584%259C%2520%25EA%25B0%2595%25EC%259D%2598%25EB%25A5%25BC%2520%25ED%2595%2598%25EB%258A%2594%2520%25EC%259D%25B4%25EC%259C%25A0_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/483_%EB%82%B4%EA%B0%80%20GS%EC%97%90%EC%84%9C%20%EA%B0%95%EC%9D%98%EB%A5%BC%20%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -4900,7 +4893,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/487_%EB%A7%8C%EB%93%9C%EB%8A%94%20%EC%84%9C%EB%B9%84%EC%8A%A4%2C%20%ED%82%A4%EC%9A%B0%EB%8A%94%20%EC%84%9C%EB%B9%84%EC%8A%A4.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/487_%25EA%25B8%2580%25EC%259D%2584%2520%25EC%2593%25B0%25EB%25A9%25B4%2520%25EC%259D%25B4%25EB%25A3%25A8%25EC%2596%25B4%25EC%25A7%2580%25EB%258A%2594%2520%25EC%259B%2590%25EB%25A6%25AC%2520aka.%2520%25ED%258A%25B8%25EB%25A0%2588%25EB%25B0%2594%25EB%25A6%25AC%2520%25EC%2582%25B0%25ED%2596%2589_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/487_%EA%B8%80%EC%9D%84%20%EC%93%B0%EB%A9%B4%20%EC%9D%B4%EB%A3%A8%EC%96%B4%EC%A7%80%EB%8A%94%20%EC%9B%90%EB%A6%AC%20aka.%20%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%EC%82%B0%ED%96%89_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -5060,7 +5053,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/503_%EC%8B%B1%EA%B0%80%ED%8F%AC%EB%A5%B4%20%EC%97%AC%ED%96%89%EC%9D%98%20%EB%B9%84%EB%B0%80.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/503_%25EB%2582%25B4%25EA%25B0%2580%2520%25EB%2582%2598%25EB%25A5%25BC%2520%25EA%25B8%25B0%25ED%259A%258D%25ED%2595%259C%25EB%258B%25A4%25EB%25A9%25B4%2520%25EB%25A7%2581%25ED%2581%25AC%25EB%2593%259C%25EC%259D%25B8%2520%25EC%2583%259D%25EC%25A1%25B4%25EC%25A0%2584%25EB%259E%25B5%25ED%258E%25B8_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/503_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%EC%83%9D%EC%A1%B4%EC%A0%84%EB%9E%B5%ED%8E%B8_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -5080,7 +5073,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/505_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%27%EC%B4%88%EB%8B%A8%EA%B8%B0%20%EB%B8%8C%EB%9E%9C%EB%94%A9%ED%8E%B8%27.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/505_%25EC%258B%25B1%25EA%25B0%2580%25ED%258F%25AC%25EB%25A5%25B4%2520%25EC%2597%25AC%25ED%2596%2589%25EC%259D%2598%2520%25EB%25B9%2584%25EB%25B0%2580_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/505_%EC%8B%B1%EA%B0%80%ED%8F%AC%EB%A5%B4%20%EC%97%AC%ED%96%89%EC%9D%98%20%EB%B9%84%EB%B0%80_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -5100,7 +5093,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/507_%EB%82%B4%EA%B0%80%20%EA%B3%A8%ED%94%84%EB%B3%B4%EB%8B%A4%20%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%EC%9D%84%20%EC%A2%8B%EC%95%84%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/507_%25EB%2582%25B4%25EA%25B0%2580%2520%25EB%2582%2598%25EB%25A5%25BC%2520%25EA%25B8%25B0%25ED%259A%258D%25ED%2595%259C%25EB%258B%25A4%25EB%25A9%25B4%2520%2527%25EC%25B4%2588%25EB%258B%25A8%25EA%25B8%25B0%2520%25EB%25B8%258C%25EB%259E%259C%25EB%2594%25A9%25ED%258E%25B8%2527_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/507_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%27%EC%B4%88%EB%8B%A8%EA%B8%B0%20%EB%B8%8C%EB%9E%9C%EB%94%A9%ED%8E%B8%27_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -5110,7 +5103,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/508_%EC%8B%B1%EA%B0%80%ED%8F%AC%EB%A5%B4%20%EA%B0%80%EC%A1%B1%EC%97%AC%ED%96%89%EA%B8%B0%ED%9A%8D%20%EB%B0%9C%ED%91%9C.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/508_%25EC%2597%2590%25EC%2596%25B4%25ED%2594%258C%25EB%25A0%2588%25EC%259D%25B8%25EB%25AA%25A8%25EB%2593%259C%2520%25EA%25B8%2580%25EC%2593%25B0%25EA%25B8%25B0_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/508_%EC%97%90%EC%96%B4%ED%94%8C%EB%A0%88%EC%9D%B8%EB%AA%A8%EB%93%9C%20%EA%B8%80%EC%93%B0%EA%B8%B0_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -5120,7 +5113,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/509_%EB%8B%A4%EC%96%91%ED%95%9C%20%EB%B0%98%EC%9D%91%EB%93%A4.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/509_%25EB%2582%25B4%25EA%25B0%2580%2520%25EA%25B3%25A8%25ED%2594%2584%25EB%25B3%25B4%25EB%258B%25A4%2520%25EB%25A7%2581%25ED%2581%25AC%25EB%2593%259C%25EC%259D%25B8%25EC%259D%2584%2520%25EC%25A2%258B%25EC%2595%2584%25ED%2595%2598%25EB%258A%2594%2520%25EC%259D%25B4%25EC%259C%25A0_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/509_%EB%82%B4%EA%B0%80%20%EA%B3%A8%ED%94%84%EB%B3%B4%EB%8B%A4%20%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%EC%9D%84%20%EC%A2%8B%EC%95%84%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -5130,7 +5123,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/510_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%27%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%ED%8E%B8%27.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/510_%25EC%258B%25B1%25EA%25B0%2580%25ED%258F%25AC%25EB%25A5%25B4%2520%25EA%25B0%2580%25EC%25A1%25B1%25EC%2597%25AC%25ED%2596%2589%25EA%25B8%25B0%25ED%259A%258D%2520%25EB%25B0%259C%25ED%2591%259C_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/510_%EC%8B%B1%EA%B0%80%ED%8F%AC%EB%A5%B4%20%EA%B0%80%EC%A1%B1%EC%97%AC%ED%96%89%EA%B8%B0%ED%9A%8D%20%EB%B0%9C%ED%91%9C_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -5166,7 +5159,7 @@ is_index: true
                 <div class="card-category">심플리파이어 라이프</div>
                 <h3 class="card-title">새해 인사드립니다</h3>
             </div>
-            <div class="card-date"></div>
+            <div class="card-date">Jan 1. 2024</div>
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/514_2023%EB%85%84%EC%9D%84%20%EB%A7%88%EB%AC%B4%EB%A6%AC%ED%95%98%EB%A9%B0%E2%80%A6.html" class="card-item" data-category="심플리파이어 라이프">
@@ -5176,11 +5169,11 @@ is_index: true
                 <div class="card-category">심플리파이어 라이프</div>
                 <h3 class="card-title">년을 마무리하며…</h3>
             </div>
-            <div class="card-date"></div>
+            <div class="card-date">Dec 31. 2023</div>
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/515_%EB%A0%88%EC%96%B4%ED%85%9C%20%EC%84%A0%EB%AC%BC%EC%9D%84%20%EB%B0%9B%EC%95%98%EC%8A%B5%EB%8B%88%EB%8B%A4.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/515_2024%2520%25EC%2583%2588%25ED%2595%25B4%2520%25EC%259D%25B8%25EC%2582%25AC%25EB%2593%259C%25EB%25A6%25BD%25EB%258B%2588%25EB%258B%25A4._img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/515_2024%20%EC%83%88%ED%95%B4%20%EC%9D%B8%EC%82%AC%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4._img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -5190,7 +5183,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/516_%EC%9B%B9%EA%B3%BC%20%EA%B2%8C%EC%8A%88%ED%83%88%ED%8A%B8%20%EC%8B%AC%EB%A6%AC%ED%95%99.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/516_2023%25EB%2585%2584%25EC%259D%2584%2520%25EB%25A7%2588%25EB%25AC%25B4%25EB%25A6%25AC%25ED%2595%2598%25EB%25A9%25B0%25E2%2580%25A6_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/516_2023%EB%85%84%EC%9D%84%20%EB%A7%88%EB%AC%B4%EB%A6%AC%ED%95%98%EB%A9%B0%E2%80%A6_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -5200,7 +5193,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/517_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%B0%A9%ED%96%A5%EA%B3%BC%20%ED%9D%90%EB%A6%84%ED%8E%B8.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/517_%25EB%25A0%2588%25EC%2596%25B4%25ED%2585%259C%2520%25EC%2584%25A0%25EB%25AC%25BC%25EC%259D%2584%2520%25EB%25B0%259B%25EC%2595%2598%25EC%258A%25B5%25EB%258B%2588%25EB%258B%25A4._img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/517_%EB%A0%88%EC%96%B4%ED%85%9C%20%EC%84%A0%EB%AC%BC%EC%9D%84%20%EB%B0%9B%EC%95%98%EC%8A%B5%EB%8B%88%EB%8B%A4._img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -5210,7 +5203,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/518_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EA%B3%A0%EA%B0%9D%EB%B9%99%EC%9D%98%ED%8E%B8.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/518_%25EC%259B%25B9%25EA%25B3%25BC%2520%25EA%25B2%258C%25EC%258A%2588%25ED%2583%2588%25ED%258A%25B8%2520%25EC%258B%25AC%25EB%25A6%25AC%25ED%2595%2599_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/518_%EC%9B%B9%EA%B3%BC%20%EA%B2%8C%EC%8A%88%ED%83%88%ED%8A%B8%20%EC%8B%AC%EB%A6%AC%ED%95%99_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -5250,7 +5243,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/522_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20AI%EB%8A%94%20%EA%B1%B0%EB%93%A4%20%EB%BF%90%ED%8E%B8.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/522_%2527Paper%2520Face%2527%25EB%25A5%25BC%2520%25EC%2595%2584%25EC%258B%259C%25EB%2582%2598%25EC%259A%2594_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/522_%27Paper%20Face%27%EB%A5%BC%20%EC%95%84%EC%8B%9C%EB%82%98%EC%9A%94_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -5350,7 +5343,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/532_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EC%9D%98%EC%8B%9D%20%EC%9E%88%EB%8A%94%20%ED%94%84%EB%A1%9C%ED%8E%B8.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/532_%25EC%259D%25BC%25EC%259D%2584%2520%25EC%259E%2598%25ED%2595%2598%25EB%258A%2594%25EC%25A7%2580%2520%25EC%2596%25B4%25EB%2596%25BB%25EA%25B2%258C%2520%25EC%2595%2584%25EC%2584%25B8%25EC%259A%2594_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/532_%EC%9D%BC%EC%9D%84%20%EC%9E%98%ED%95%98%EB%8A%94%EC%A7%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%95%84%EC%84%B8%EC%9A%94_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -5380,7 +5373,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/535_%EC%95%BD%EC%86%8D%EA%B3%BC%20%EC%82%AC%EB%AA%85%EC%9D%98%20%EA%B8%B0%ED%9A%8D.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/535_%25EB%2582%25B4%25EA%25B0%2580%2520%25EB%2582%2598%25EB%25A5%25BC%2520%25EA%25B8%25B0%25ED%259A%258D%25ED%2595%259C%25EB%258B%25A4%25EB%25A9%25B4%2520%25EB%25B9%258C%25EB%2593%259C%25EC%2597%2585%25ED%258E%25B8_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/535_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%B9%8C%EB%93%9C%EC%97%85%ED%8E%B8_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -5410,7 +5403,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/538_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%A7%88%EC%9D%B8%EB%93%9C%EA%B4%80%EB%A6%AC%ED%8E%B8.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/538_%25EB%2582%25B4%25EA%25B0%2580%2520%25EB%2582%2598%25EB%25A5%25BC%2520%25EA%25B8%25B0%25ED%259A%258D%25ED%2595%259C%25EB%258B%25A4%25EB%25A9%25B4%2520%25ED%259A%258C%25EC%2582%25AC%25EC%2583%259D%25ED%2599%259C%2520%25EC%2583%259D%25EC%25A1%25B4%25EC%25A0%2584%25EB%259E%25B5%25ED%258E%25B8_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/538_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%ED%9A%8C%EC%82%AC%EC%83%9D%ED%99%9C%20%EC%83%9D%EC%A1%B4%EC%A0%84%EB%9E%B5%ED%8E%B8_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -5446,7 +5439,7 @@ is_index: true
                 <div class="card-category">UX의 언어들</div>
                 <h3 class="card-title">전현무 아나와 잡지사진 찍은 썰 2</h3>
             </div>
-            <div class="card-date">Dec 3. 2023</div>
+            <div class="card-date">Dec 2. 2023</div>
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/542_%EC%A0%84%ED%98%84%EB%AC%B4%20%EC%95%84%EB%82%98%EC%99%80%20%EC%9E%A1%EC%A7%80%EC%82%AC%EC%A7%84%20%EC%B0%8D%EC%9D%80%20%EC%8D%B0%201.html" class="card-item" data-category="UX의 언어들">
@@ -5460,7 +5453,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/543_%EB%8A%98%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20%EC%9E%90%EC%84%B8.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/543_%25EC%25A0%2584%25ED%2598%2584%25EB%25AC%25B4%2520%25EC%2595%2584%25EB%2582%2598%25EC%2599%2580%2520%25EC%259E%25A1%25EC%25A7%2580%25EC%2582%25AC%25EC%25A7%2584%2520%25EC%25B0%258D%25EC%259D%2580%2520%25EC%258D%25B0%25202_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/543_%EC%A0%84%ED%98%84%EB%AC%B4%20%EC%95%84%EB%82%98%EC%99%80%20%EC%9E%A1%EC%A7%80%EC%82%AC%EC%A7%84%20%EC%B0%8D%EC%9D%80%20%EC%8D%B0%202_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -5470,7 +5463,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/544_%EC%A0%80%ED%9D%AC%20%EB%8C%80%ED%91%9C%EB%8B%98%EC%9D%B4%20%EC%BB%A8%EC%84%A4%ED%8C%85%20%EA%B0%99%EC%9D%80%20%EA%B1%B8%20%EC%8B%AB%EC%96%B4%ED%95%98%EC%84%B8%EC%9A%94.html" class="card-item" data-category="심플리파이어 라이프">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/544_%25EC%25A0%2584%25ED%2598%2584%25EB%25AC%25B4%2520%25EC%2595%2584%25EB%2582%2598%25EC%2599%2580%2520%25EC%259E%25A1%25EC%25A7%2580%25EC%2582%25AC%25EC%25A7%2584%2520%25EC%25B0%258D%25EC%259D%2580%2520%25EC%258D%25B0%25201_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/544_%EC%A0%84%ED%98%84%EB%AC%B4%20%EC%95%84%EB%82%98%EC%99%80%20%EC%9E%A1%EC%A7%80%EC%82%AC%EC%A7%84%20%EC%B0%8D%EC%9D%80%20%EC%8D%B0%201_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플리파이어 라이프</div>
@@ -5500,7 +5493,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/547_PO%EA%B0%80%20%EC%A0%95%ED%99%95%ED%9E%88%20%EB%AD%94%EA%B0%80%EC%9A%94.html" class="card-item" data-category="Be the PO">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/547_%25EA%25B4%2580%25EB%25A7%259D%25EA%25B3%25BC%2520%25EC%259D%2591%25EC%259B%2590%25EC%2582%25AC%25EC%259D%25B4%2520%25EA%25B7%25B8%2520%25EC%2596%25B4%25EB%2594%2594%25EC%25AF%25A4%25EC%2597%2590%25EC%2584%259C..._img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/547_%EA%B4%80%EB%A7%9D%EA%B3%BC%20%EC%9D%91%EC%9B%90%EC%82%AC%EC%9D%B4%20%EA%B7%B8%20%EC%96%B4%EB%94%94%EC%AF%A4%EC%97%90%EC%84%9C..._img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">Be the PO</div>
@@ -5540,7 +5533,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/551_%EB%82%A8%EB%93%A4%EC%9D%80%20%EB%8B%A4%20%ED%96%89%EB%B3%B5%ED%95%9C%20%EA%B1%B0%20%EA%B0%99%EC%95%84%EC%9A%94.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/551_%25EC%2583%259D%25EC%2595%25A0%2520%25EC%25B2%25AB%2520%25EB%25B8%258C%25EB%259F%25B0%25EC%25B9%2598%25EB%25B6%2581%25EC%259D%2584%2520%25EB%25A7%258C%25EB%2593%25A4%25EC%2597%2588%25EC%258A%25B5%25EB%258B%2588%25EB%258B%25A4._img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/551_%EC%83%9D%EC%95%A0%20%EC%B2%AB%20%EB%B8%8C%EB%9F%B0%EC%B9%98%EB%B6%81%EC%9D%84%20%EB%A7%8C%EB%93%A4%EC%97%88%EC%8A%B5%EB%8B%88%EB%8B%A4._img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플한 창업하고 파이어하게 일하기</div>
@@ -5550,7 +5543,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/552_%EC%82%AC%EC%9A%A9%EC%9E%90%EB%A5%BC%20%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%99%94%ED%95%98%EC%84%B8%EC%9A%94.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/552_%25ED%2595%25AB%25ED%2594%258C%25EC%2597%2590%25EC%2584%259C%2520%25EC%259D%25BC%25ED%2595%2598%25EB%258A%2594%2520%25EC%25A7%2581%25EC%2597%2585_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/552_%ED%95%AB%ED%94%8C%EC%97%90%EC%84%9C%20%EC%9D%BC%ED%95%98%EB%8A%94%20%EC%A7%81%EC%97%85_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -5580,7 +5573,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/555_%EC%A7%80%EB%82%98%EA%B3%A0%20%EB%B3%B4%EB%8B%88.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/555_%25EA%25B8%25B0%25ED%259A%258D%25EC%259D%2580%2520%25EB%25AA%2587%2520%25ED%2598%2595%25EC%258B%259D_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/555_%EA%B8%B0%ED%9A%8D%EC%9D%80%20%EB%AA%87%20%ED%98%95%EC%8B%9D_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플한 창업하고 파이어하게 일하기</div>
@@ -5640,7 +5633,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/561_%EC%84%9C%EC%84%9C%ED%9E%88%20%EA%B0%80%EB%9D%BC.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/561_%25ED%259A%258C%25EC%2582%25AC%2520%25EC%259D%25B4%25EC%25A0%2584%2520%25EC%2595%2588%25EB%2582%25B4_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/561_%ED%9A%8C%EC%82%AC%20%EC%9D%B4%EC%A0%84%20%EC%95%88%EB%82%B4_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -5680,7 +5673,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/565_%EC%96%B4%EB%96%BB%EA%B2%8C%20%EA%B8%80%EC%9D%84%20%EB%A7%A4%EC%9D%BC%20%EC%93%B0%EC%84%B8%EC%9A%94.html" class="card-item" data-category="심플한 창업하고 파이어하게 일하기">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/565_%25EC%259A%2594%25EA%25B8%25B0%25EC%259A%2594%2520%25EC%2582%25AC%25EC%259B%2590%25EC%25A6%259D%2520%25EB%25A6%25AC%25EB%2589%25B4%25EC%2596%25BC%2520%25ED%2594%2584%25EB%25A1%259C%25EC%25A0%259D%25ED%258A%25B8_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/565_%EC%9A%94%EA%B8%B0%EC%9A%94%20%EC%82%AC%EC%9B%90%EC%A6%9D%20%EB%A6%AC%EB%89%B4%EC%96%BC%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">심플한 창업하고 파이어하게 일하기</div>
@@ -5990,7 +5983,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/596_%EC%95%BC%EA%B7%BC%EC%9D%84%20%ED%95%98%EC%A7%80%20%EB%A7%90%EC%9E%90.html" class="card-item" data-category="기획일상">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/596_%25ED%259A%258C%25EC%2582%25AC%25EC%2582%25AC%25EC%259D%25B4%25ED%258A%25B8%2520%25EC%259E%2588%25EC%259C%25BC%25EC%258B%259C%25EC%25A3%25A0_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/596_%ED%9A%8C%EC%82%AC%EC%82%AC%EC%9D%B4%ED%8A%B8%20%EC%9E%88%EC%9C%BC%EC%8B%9C%EC%A3%A0_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">기획일상</div>
@@ -6090,7 +6083,7 @@ is_index: true
         </div>
     </a>
     <a href="/brunch_web_assets/markdown/606_C%EB%A0%88%EB%B2%A8%EC%9D%98%20%EA%B8%B0%EC%88%A0%20%27%EC%82%AC%EA%B3%BC%27.html" class="card-item" data-category="스타트업 리더의 기술">
-        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/606_%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%25EC%2597%2585%25EC%259D%2580%2520%25EC%2596%25B4%25EB%2596%25A0%25ED%2595%259C%2520%25EA%25B3%25BC%25EC%25A0%2595%25EC%259D%2584%2520%25ED%2586%25B5%25ED%2595%25B4%2520%25EC%2584%25B1%25EA%25B3%25B5%25EC%259D%2584%2520%25ED%2595%25A0%25EA%25B9%258C%25EC%259A%2594_img_1.jpg');"></div>
+        <div class="card-thumb" style="background-image: url('/brunch_web_assets/images/606_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%EC%96%B4%EB%96%A0%ED%95%9C%20%EA%B3%BC%EC%A0%95%EC%9D%84%20%ED%86%B5%ED%95%B4%20%EC%84%B1%EA%B3%B5%EC%9D%84%20%ED%95%A0%EA%B9%8C%EC%9A%94_img_1.jpg');"></div>
         <div class="card-content">
             <div>
                 <div class="card-category">스타트업 리더의 기술</div>
