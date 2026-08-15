@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }}</title>
     
-    <!-- 더 얇은 폰트(200 굵기)를 추가로 불러옵니다 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&family=Noto+Serif+KR:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500&family=Noto+Serif+KR:wght@200;300;400;600&display=swap" rel="stylesheet">
     
     <style>
         html { scroll-behavior: smooth; }
@@ -19,12 +18,12 @@
             word-break: keep-all;
         }
 
+        /* --- 상단 커버 --- */
         .cover-wrap {
             position: relative; width: 100%; height: 100vh;
             background-color: #333; background-size: cover; background-position: center;
             color: #fff; display: flex; flex-direction: column;
         }
-
         .cover-header {
             position: absolute; top: 0; left: 0; right: 0;
             display: flex; justify-content: space-between; align-items: center;
@@ -37,17 +36,12 @@
             border: 1px solid rgba(255,255,255,0.4); border-radius: 20px;
             padding: 5px 16px; font-size: 12px; font-weight: 300; letter-spacing: -0.5px;
         }
-
         .cover-bottom-left {
             position: absolute; bottom: 40px; left: 40px; text-align: left; padding-right: 80px;
         }
-        
-        /* 제목 폰트를 훨씬 더 얇게(200) 변경했습니다! */
         .cover-title {
             font-family: 'Noto Serif KR', serif;
-            font-size: 42px; 
-            font-weight: 200; 
-            margin: 0; line-height: 1.4;
+            font-size: 42px; font-weight: 200; margin: 0; line-height: 1.4;
             text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
         .cover-author {
@@ -55,29 +49,116 @@
             font-style: italic; margin-top: 20px;
             text-shadow: 0 1px 5px rgba(0,0,0,0.5);
         }
-
         .cover-bottom-right { position: absolute; bottom: 40px; right: 40px; }
         .down-arrow { display: inline-block; font-size: 26px; color: #fff; text-decoration: none; transition: transform 0.3s ease; opacity: 0.8; }
         .down-arrow:hover { transform: translateY(-8px); opacity: 1; }
 
-        .article-body { max-width: 700px; margin: 0 auto; padding: 80px 20px 120px; }
+        /* --- 본문 컨테이너 (카드뷰에 맞춰 넓게 조정) --- */
+        .article-body { max-width: 1100px; margin: 0 auto; padding: 60px 20px 120px; }
         .article-body p { font-size: 16px; font-weight: 300; line-height: 2.1; margin-bottom: 35px; }
         .article-body img { max-width: 100%; height: auto; margin: 60px 0; display: block; }
         .article-body hr { border: 0; border-top: 1px solid #eaeaea; margin: 80px 0; }
-        
-        /* 메인 화면 전체 글 목록 전용 디자인 추가 */
-        .article-body ul { list-style: none; padding-left: 0; }
-        .article-body li { margin-bottom: 30px; }
-        .article-body li a { text-decoration: none; color: #333; font-size: 18px; font-weight: 400; transition: color 0.2s; }
-        .article-body li a:hover { color: #00c73c; } /* 마우스 올리면 브런치 민트색으로! */
-        
-        .list-category {
-            display: block;
+
+        /* --- 🎨 카드 뷰 (Card View) 전용 스타일 --- */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .card-item {
+            display: none; /* 필터 및 더보기 제어용 기본 숨김 */
+            background: #fff;
+            border: 1px solid #f0f0f0;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            flex-direction: column;
+        }
+        .card-item.visible { display: flex; }
+        .card-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+        }
+        /* 세로형 이미지 표지 영역 */
+        .card-thumb {
+            width: 100%;
+            height: 320px;
+            background-color: #f7f7f7;
+            background-size: cover;
+            background-position: center;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        /* 카드 텍스트 콘텐츠 영역 */
+        .card-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
+        }
+        .card-category {
             font-size: 12px;
             color: #00c73c;
-            margin-bottom: 5px;
             font-weight: 400;
+            margin-bottom: 8px;
         }
+        .card-title {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 17px;
+            font-weight: 400;
+            color: #222;
+            line-height: 1.4;
+            margin: 0 0 15px 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .card-author {
+            font-size: 12px;
+            color: #999;
+            font-style: italic;
+            margin-top: auto;
+        }
+
+        /* --- 🔘 필터 버튼 & 더보기 버튼 스타일 --- */
+        .category-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 40px;
+        }
+        .cat-btn {
+            padding: 7px 18px;
+            border: 1px solid #e1e1e1;
+            border-radius: 20px;
+            background: #fff;
+            color: #666;
+            font-size: 13px;
+            font-weight: 300;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        .cat-btn:hover { border-color: #00c73c; color: #00c73c; }
+        .cat-btn.active { background: #00c73c; color: #fff; border-color: #00c73c; font-weight: 400; }
+
+        .load-more-wrap { text-align: center; margin-top: 60px; }
+        .load-more-btn {
+            padding: 12px 45px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            background: #fff;
+            color: #444;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        .load-more-btn:hover { background: #f9f9f9; border-color: #00c73c; color: #00c73c; }
 
         .hidden-element { display: none !important; }
     </style>
