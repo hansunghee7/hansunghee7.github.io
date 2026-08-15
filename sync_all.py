@@ -105,21 +105,30 @@ for filename in md_files:
     cards_html += f'<a href="{link}" class="card-item" data-category="{category}" data-date="{timestamp}" data-id="{uid}"><div class="card-thumb-wrap"><div class="card-thumb" style="background-image: url(\'{cover_image}\');"></div></div><div class="card-content"><div><div class="card-category">{category}</div><h3 class="card-title">{title}</h3></div><div class="card-date">{date_string}</div></div></a>'
     post_count += 1
 
-html_header = f"---\nlayout: default\ntitle: '심플리파이어의 {post_count}개의 글'\nis_index: true\n---\n"
+# 🌟 타이틀을 'Simplifier Log [포스팅수]' 로 변경
+html_header = f"---\nlayout: default\ntitle: 'Simplifier Log {post_count}'\nis_index: true\n---\n"
 
 default_sorts_json = json.dumps(CATEGORY_SORT_DEFAULTS, ensure_ascii=False)
 
-# 🌟 모노톤 ➡️ 컬러 롤오버 CSS 추가 적용
+# 🌟 블랙 상단 패널 / 화이트 활성 카테고리 텍스트 CSS 적용
 html_body = """<style>
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 .card-item.visible { display: flex !important; animation: fadeInUp 0.4s ease forwards; }
 #scrollSentinel { height: 50px; margin-top: 30px; }
 
+/* 🖤 상단 그레이 영역을 딥 블랙으로 변경하는 스타일 */
+.site-header, .header-wrap, .hero-section, .intro-banner {
+    background-color: #111111 !important;
+    color: #ffffff !important;
+}
+
 .filter-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px; margin-bottom: 35px; }
 .category-filter { display: flex; flex-wrap: wrap; gap: 8px; flex: 1; }
 .cat-btn { padding: 7px 16px; border: 1px solid #e1e1e1; border-radius: 20px; background: #fff; color: #666; font-size: 13px; font-weight: 300; cursor: pointer; transition: all 0.2s; font-family: 'Noto Sans KR', sans-serif; }
 .cat-btn:hover { border-color: #6CFD33; color: #111; }
-.cat-btn.active { background: #6CFD33; color: #111; border-color: #6CFD33; font-weight: 500; }
+
+/* 🌟 선택된 카테고리의 텍스트를 화이트(#ffffff)로 변경 */
+.cat-btn.active { background: #6CFD33; color: #ffffff !important; border-color: #6CFD33; font-weight: 600; }
 
 .sort-filter { display: flex; gap: 15px; align-items: center; margin-bottom: 5px; }
 .sort-text-btn { background: none; border: none; font-size: 14px; color: #a0a0a0; cursor: pointer; font-family: 'Noto Sans KR', sans-serif; font-weight: 300; display: flex; align-items: center; padding: 0; transition: color 0.2s; }
@@ -173,4 +182,4 @@ const observer = new IntersectionObserver(entries => { entries.forEach(entry => 
 with open(index_file, 'w', encoding='utf-8') as f:
     f.write(html_header + html_body)
 
-print("✅ 모노톤 ➡️ 원본 컬러 전환 롤오버 효과 적용 완료!")
+print("✅ 상단 딥블랙 적용, 타이틀 변경(Simplifier Log), 활성 카테고리 텍스트 화이트화 완료!")
