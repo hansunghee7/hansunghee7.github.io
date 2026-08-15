@@ -3,8 +3,12 @@ import re
 import urllib.parse
 import csv
 
+# 🚨 문제의 원흉인 예전 마크다운 파일을 파이썬이 강제로 삭제합니다!
+if os.path.exists("index.md"):
+    os.remove("index.md")
+
 md_dir = "brunch_web_assets/markdown"
-index_file = "index.md"
+index_file = "index.html"
 csv_file = "브런치_글_모음집.csv"
 
 csv_dates = {}
@@ -25,8 +29,6 @@ md_files.sort()
 cards_html = ""
 unique_categories = set()
 post_count = 0
-
-print("🚀 데이터 동기화 및 렌더링 오류(</div>) 교정 시작...")
 
 for filename in md_files:
     filepath = os.path.join(md_dir, filename)
@@ -75,135 +77,22 @@ for filename in md_files:
     uid_match = re.match(r'^(\d+)_', filename)
     if uid_match: uid = int(uid_match.group(1))
 
-    # 들여쓰기를 제거하여 마크다운 파서의 오작동 방지
-    cards_html += f"""<a href="{link}" class="card-item" data-category="{category}" data-date="{timestamp}" data-id="{uid}">
-    <div class="card-thumb" style="background-image: url('{cover_image}');"></div>
-    <div class="card-content">
-        <div>
-            <div class="card-category">{category}</div>
-            <h3 class="card-title">{title}</h3>
-        </div>
-        <div class="card-date">{date_string}</div>
-    </div>
-</a>\n"""
+    # 🚨 들여쓰기/줄바꿈 완전 제거 (파서 간섭 원천 차단)
+    cards_html += f'<a href="{link}" class="card-item" data-category="{category}" data-date="{timestamp}" data-id="{uid}"><div class="card-thumb" style="background-image: url(\'{cover_image}\');"></div><div class="card-content"><div><div class="card-category">{category}</div><h3 class="card-title">{title}</h3></div><div class="card-date">{date_string}</div></div></a>'
     
     post_count += 1
 
 html_header = f"---\nlayout: default\ntitle: '심플리파이어의 {post_count}개의 글'\nis_index: true\n---\n"
 
-# HTML 블록 요소들의 들여쓰기를 제거
-html_body = """
-<style>
-@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-.card-item.visible { display: flex !important; animation: fadeInUp 0.4s ease forwards; }
-#scrollSentinel { height: 50px; margin-top: 30px; }
-
-.filter-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px; margin-bottom: 35px; }
-.category-filter { display: flex; flex-wrap: wrap; gap: 8px; flex: 1; }
-.cat-btn { padding: 7px 16px; border: 1px solid #e1e1e1; border-radius: 20px; background: #fff; color: #666; font-size: 13px; font-weight: 300; cursor: pointer; transition: all 0.2s; font-family: 'Noto Sans KR', sans-serif; }
-.cat-btn:hover { border-color: #00c73c; color: #00c73c; }
-.cat-btn.active { background: #00c73c; color: #fff; border-color: #00c73c; font-weight: 400; }
-
-.sort-filter { display: flex; gap: 15px; align-items: center; margin-bottom: 5px; }
-.sort-text-btn { background: none; border: none; font-size: 14px; color: #a0a0a0; cursor: pointer; font-family: 'Noto Sans KR', sans-serif; font-weight: 300; display: flex; align-items: center; padding: 0; transition: color 0.2s; }
-.sort-text-btn:hover { color: #555; }
-.sort-text-btn.active { color: #333; font-weight: 400; }
-.sort-text-btn .dot { display: inline-block; width: 4px; height: 4px; border-radius: 50%; background-color: transparent; margin-right: 4px; margin-bottom: 2px; }
-.sort-text-btn.active .dot { background-color: #00c73c; }
-</style>
-
-<div class="filter-wrap">
-<div class="category-filter">
-<button class="cat-btn active" data-filter="all">전체보기</button>
-"""
+# 🚨 공백 없는 방탄 HTML 블록
+html_body = """<style>@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } } .card-item.visible { display: flex !important; animation: fadeInUp 0.4s ease forwards; } #scrollSentinel { height: 50px; margin-top: 30px; } .filter-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px; margin-bottom: 35px; } .category-filter { display: flex; flex-wrap: wrap; gap: 8px; flex: 1; } .cat-btn { padding: 7px 16px; border: 1px solid #e1e1e1; border-radius: 20px; background: #fff; color: #666; font-size: 13px; font-weight: 300; cursor: pointer; transition: all 0.2s; font-family: 'Noto Sans KR', sans-serif; } .cat-btn:hover { border-color: #00c73c; color: #00c73c; } .cat-btn.active { background: #00c73c; color: #fff; border-color: #00c73c; font-weight: 400; } .sort-filter { display: flex; gap: 15px; align-items: center; margin-bottom: 5px; } .sort-text-btn { background: none; border: none; font-size: 14px; color: #a0a0a0; cursor: pointer; font-family: 'Noto Sans KR', sans-serif; font-weight: 300; display: flex; align-items: center; padding: 0; transition: color 0.2s; } .sort-text-btn:hover { color: #555; } .sort-text-btn.active { color: #333; font-weight: 400; } .sort-text-btn .dot { display: inline-block; width: 4px; height: 4px; border-radius: 50%; background-color: transparent; margin-right: 4px; margin-bottom: 2px; } .sort-text-btn.active .dot { background-color: #00c73c; }</style><div class="filter-wrap"><div class="category-filter"><button class="cat-btn active" data-filter="all">전체보기</button>"""
 
 for cat in sorted(list(unique_categories)):
-    html_body += f'<button class="cat-btn" data-filter="{cat}">{cat}</button>\n'
+    html_body += f'<button class="cat-btn" data-filter="{cat}">{cat}</button>'
 
-html_body += """</div>
-<div class="sort-filter">
-<button class="sort-text-btn active" data-sort="desc"><span class="dot"></span>최신순</button>
-<button class="sort-text-btn" data-sort="asc"><span class="dot"></span>날짜순</button>
-</div>
-</div>
-
-<div class="card-grid" id="cardGrid">\n""" + cards_html + """</div>
-<div id="scrollSentinel"></div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const cards = Array.from(document.querySelectorAll('.card-item'));
-    const filterBtns = document.querySelectorAll('.cat-btn');
-    const sortBtns = document.querySelectorAll('.sort-text-btn');
-    const sentinel = document.getElementById('scrollSentinel');
-    const grid = document.getElementById('cardGrid');
-    
-    let itemsPerBatch = 20, currentVisibleCount = 0;
-    let filteredCards = [...cards];
-    let currentFilter = 'all';
-    let sortMode = 'desc';
-    
-    function loadNextBatch() {
-        if (currentVisibleCount >= filteredCards.length) return;
-        const start = currentVisibleCount;
-        const end = Math.min(currentVisibleCount + itemsPerBatch, filteredCards.length);
-        for (let i = start; i < end; i++) {
-            filteredCards[i].classList.add('visible');
-            filteredCards[i].style.animationDelay = (i - start) * 0.03 + 's';
-        }
-        currentVisibleCount = end;
-    }
-    
-    function applyFilterAndSort() {
-        cards.forEach(card => { card.classList.remove('visible'); card.style.animationDelay = '0s'; });
-        
-        filteredCards = currentFilter === 'all' ? [...cards] : cards.filter(card => card.getAttribute('data-category') === currentFilter);
-        
-        filteredCards.sort((a, b) => {
-            let dateA = parseInt(a.getAttribute('data-date')) || 0;
-            let dateB = parseInt(b.getAttribute('data-date')) || 0;
-            
-            if (dateA === dateB) { 
-                let idA = parseInt(a.getAttribute('data-id')) || 0;
-                let idB = parseInt(b.getAttribute('data-id')) || 0;
-                return sortMode === 'desc' ? idB - idA : idA - idB;
-            }
-            return sortMode === 'desc' ? dateB - dateA : dateA - dateB;
-        });
-        
-        filteredCards.forEach(card => grid.appendChild(card));
-        currentVisibleCount = 0;
-        loadNextBatch();
-    }
-
-    sortBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            sortBtns.forEach(b => b.classList.remove('active')); 
-            this.classList.add('active');
-            sortMode = this.getAttribute('data-sort');
-            applyFilterAndSort();
-        });
-    });
-
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            filterBtns.forEach(b => b.classList.remove('active')); this.classList.add('active');
-            currentFilter = this.getAttribute('data-filter');
-            applyFilterAndSort();
-        });
-    });
-
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => { if (entry.isIntersecting) loadNextBatch(); });
-    }, { rootMargin: '200px' });
-    if (sentinel) observer.observe(sentinel);
-    
-    applyFilterAndSort();
-});
-</script>
-"""
+html_body += """</div><div class="sort-filter"><button class="sort-text-btn active" data-sort="desc"><span class="dot"></span>최신순</button><button class="sort-text-btn" data-sort="asc"><span class="dot"></span>날짜순</button></div></div><div class="card-grid" id="cardGrid">""" + cards_html + """</div><div id="scrollSentinel"></div><script>document.addEventListener('DOMContentLoaded', function() { const cards = Array.from(document.querySelectorAll('.card-item')); const filterBtns = document.querySelectorAll('.cat-btn'); const sortBtns = document.querySelectorAll('.sort-text-btn'); const sentinel = document.getElementById('scrollSentinel'); const grid = document.getElementById('cardGrid'); let itemsPerBatch = 20, currentVisibleCount = 0; let filteredCards = [...cards]; let currentFilter = 'all'; let sortMode = 'desc'; function loadNextBatch() { if (currentVisibleCount >= filteredCards.length) return; const start = currentVisibleCount; const end = Math.min(currentVisibleCount + itemsPerBatch, filteredCards.length); for (let i = start; i < end; i++) { filteredCards[i].classList.add('visible'); filteredCards[i].style.animationDelay = (i - start) * 0.03 + 's'; } currentVisibleCount = end; } function applyFilterAndSort() { cards.forEach(card => { card.classList.remove('visible'); card.style.animationDelay = '0s'; }); filteredCards = currentFilter === 'all' ? [...cards] : cards.filter(card => card.getAttribute('data-category') === currentFilter); filteredCards.sort((a, b) => { let dateA = parseInt(a.getAttribute('data-date')) || 0; let dateB = parseInt(b.getAttribute('data-date')) || 0; if (dateA === dateB) { let idA = parseInt(a.getAttribute('data-id')) || 0; let idB = parseInt(b.getAttribute('data-id')) || 0; return sortMode === 'desc' ? idB - idA : idA - idB; } return sortMode === 'desc' ? dateB - dateA : dateA - dateB; }); filteredCards.forEach(card => grid.appendChild(card)); currentVisibleCount = 0; loadNextBatch(); } sortBtns.forEach(btn => { btn.addEventListener('click', function() { sortBtns.forEach(b => b.classList.remove('active')); this.classList.add('active'); sortMode = this.getAttribute('data-sort'); applyFilterAndSort(); }); }); filterBtns.forEach(btn => { btn.addEventListener('click', function() { filterBtns.forEach(b => b.classList.remove('active')); this.classList.add('active'); currentFilter = this.getAttribute('data-filter'); applyFilterAndSort(); }); }); const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) loadNextBatch(); }); }, { rootMargin: '200px' }); if (sentinel) observer.observe(sentinel); applyFilterAndSort(); });</script>"""
 
 with open(index_file, 'w', encoding='utf-8') as f:
     f.write(html_header + html_body)
 
-print("✅ 오작동 텍스트(</div>) 렌더링 문제 완벽 해결!")
+print("✅ 원흉 파일 강제 삭제 및 방탄 HTML 렌더링 완료!")
