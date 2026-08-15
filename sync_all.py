@@ -6,7 +6,7 @@ import json
 
 # 👇 카테고리별 기본 정렬 방식
 CATEGORY_SORT_DEFAULTS = {
-    "AI의 언어들": "desc",
+    "AI의 언어들": "asc",
     "Be the PO": "desc",
     "PO의 프레임웍": "asc",
     "UX의 언어들": "desc",
