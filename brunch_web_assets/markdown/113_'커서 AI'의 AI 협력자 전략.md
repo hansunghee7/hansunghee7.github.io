@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "'커서 AI'의 AI 협력자 전략"
+title: "커서 AI'의 AI 협력자 전략"
 category: '스타트업 인사이트'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/4-PHJW7Ag-Wgi6OsBMANgR2qftY.jpg'
 date_string: 'Jun 9. 2025'

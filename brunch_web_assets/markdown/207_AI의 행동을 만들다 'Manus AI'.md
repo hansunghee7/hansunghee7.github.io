@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "AI의 행동을 만들다. 'Manus AI'"
+title: "AI의 행동을 만들다. 'Manus AI"
 category: '심플리파이어 인사이트'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/pMGhCz8MVJ-D_BQPWL6fe5PV5jk.png'
 date_string: 'Mar 11. 2025'

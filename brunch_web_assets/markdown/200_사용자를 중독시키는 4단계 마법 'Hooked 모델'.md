@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "사용자를 중독시키는 4단계 마법 'Hooked 모델'"
+title: "사용자를 중독시키는 4단계 마법 'Hooked 모델"
 category: '기획자의 프레임웍'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/4tqlzShMkIZWsyyQAurF24GjFSo.jpg'
 date_string: 'Mar 18. 2025'

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "고객은 제품을 '고용'한다. 'JTBD프레임웍'"
+title: "고객은 제품을 '고용'한다. 'JTBD프레임웍"
 category: '기획자의 프레임웍'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/qponB-T3ADK9ZlOheigVp_XddU8.png'
 date_string: 'May 27. 2025'

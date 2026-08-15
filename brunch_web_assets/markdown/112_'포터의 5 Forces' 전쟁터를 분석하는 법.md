@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "'포터의 5 Forces' 전쟁터를 분석하는 법"
+title: "포터의 5 Forces' 전쟁터를 분석하는 법"
 category: '기획자의 프레임웍'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/D9Q8t1G5q3Q2sNt4KfSFOpqD3pA.jpg'
 date_string: 'Jun 10. 2025'

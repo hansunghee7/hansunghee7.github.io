@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "'이력서에 쓰지 않는 첫 직장이야기' Epilogue"
+title: "이력서에 쓰지 않는 첫 직장이야기' Epilogue"
 category: '이력서에 쓰지 않는 첫직장 이야기'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/nUkg2wZhry8k186QcS0VwBmGqVw.png'
 date_string: 'Mar 14. 2024'
