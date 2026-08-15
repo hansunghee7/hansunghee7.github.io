@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Slack의 유료전환의 \"매직 모먼트"
-category: '스타트업의 전략들'
+category: '스타트업 인사이트'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/wIQRrqL4A6gaallqkhXVNkHhTss.jpg'
 date_string: 'May 5. 2025'
 ---
