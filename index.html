@@ -80,10 +80,10 @@
     .gallery-panel.is-open { height: 420px; }
   }
 
-  /* Logo trust bar — force all logos to render as white silhouettes so they never disappear against the dark background, whatever their original color. */
+  /* Logo trust bar — logos are pre-toned neutral gray with internal luminance contrast (e.g. AmorePacific's lighter letterform inside a darker blob), so no color filter here — that would flatten all internal shading into one flat white silhouette and erase the shape. Only opacity changes on hover. */
   .logo-mask-wrap { position: relative; }
-  .logo-mask-wrap img { transition: opacity 0.3s ease; filter: brightness(0) invert(1); }
-  .logo-mask-wrap .logo-default { opacity: 0.5; }
+  .logo-mask-wrap img { transition: opacity 0.3s ease; }
+  .logo-mask-wrap .logo-default { opacity: 0.65; }
   .logo-item:hover .logo-mask-wrap .logo-default { opacity: 1; }
   .logo-item p { transition: color 0.3s ease; }
   .logo-item:hover p { color: #f5f3ee; }
