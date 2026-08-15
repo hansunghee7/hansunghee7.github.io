@@ -56,7 +56,7 @@
     {% if page.is_index %}
         <div class="cover-wrap index-mode" id="coverWrap">
             <div class="cover-header">
-                <a href="/" class="cover-logo"><img src="/brunch_web_assets/images/logo_white.png" alt="Simplifier Logo"></a>
+                <a href="/log.html"cover-logo"><img src="/brunch_web_assets/images/logo_white.png" alt="Simplifier Logo"></a>
             </div>
             <div class="cover-bottom-left">
                 <h1 class="cover-title" id="displayTitle">{{ page.title }}</h1>
@@ -66,8 +66,8 @@
         <div class="cover-wrap post-mode" id="coverWrap" 
              style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%), url('{{ page.cover_image | default: "/brunch_web_assets/images/logo_white.png" }}');">
             <div class="cover-header">
-                <a href="/" class="cover-logo"><img src="/brunch_web_assets/images/logo_white.png" alt="Simplifier Logo"></a>
-                <div class="cover-category-pill">{{ page.category }}</div>
+                 <a href="/log.html"cover-logo"><img src="/brunch_web_assets/images/logo_white.png" alt="Simplifier Logo"></a>
+                 <div class="cover-category-pill">{{ page.category }}</div>
                 <div></div>
             </div>
             <div class="cover-bottom-left">
