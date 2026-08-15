@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "코드의 한계를 깨는 AI 혁신, Cursor AI"
-category: '심플리파이어 인사이트'
+category: '스타트업 인사이트'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/pTtB9OUSU96risdXLTCL-rVw_c4.jpg'
 date_string: 'Mar 9. 2025'
 ---

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Perplexity #2 검색 시스템의 구조 설계"
-category: '심플리파이어 인사이트'
+category: '스타트업 인사이트'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/ea0JK6P4BIQJxzW_h5fais4yano.jpg'
 date_string: 'Apr 20. 2025'
 ---

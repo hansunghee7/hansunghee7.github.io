@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Perplexity#4 대화형 UX 구조와 쿼리 분기"
-category: '심플리파이어 인사이트'
+category: '스타트업 인사이트'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/7laS35X23ORe1nbycFX2aOa0W2k.png'
 date_string: 'May 11. 2025'
 ---
