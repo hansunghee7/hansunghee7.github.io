@@ -2,6 +2,26 @@ import os
 import re
 import urllib.parse
 import csv
+import json
+
+# 👇 [설정] 카테고리별 기본 정렬 방식을 지정하세요! ('desc': 최신순, 'asc': 날짜순)
+# 여기에 적혀있지 않은 카테고리는 무조건 기본값인 'desc'(최신순)로 작동합니다.
+CATEGORY_SORT_DEFAULTS = {
+    "AI의 언어들": "desc",
+    "Be the PO": "desc",
+    "PO의 프레임웍": "asc"
+    "UX의 언어들": "dsc",
+    "기획일상": "desc",
+    "기획자의 프레임웍": "asc"
+    "대한민국 스타트업 미국진출을 묻다": "asc",
+    "스타트업 인사이트": "desc",
+    "심플리파이어 라이프": "desc"
+    "심플한 창업하고 파이어하게 일하기": "asc",
+    "이력서에 쓰지 않는 첫직장 이야기": "asc",
+    "잉크드인대 기획학과": "asc"
+    "코치S": "asc",
+    "토크세션": "desc"
+}
 
 if os.path.exists("index.md"):
     os.remove("index.md")
@@ -88,14 +108,46 @@ for filename in md_files:
 
 html_header = f"---\nlayout: default\ntitle: '심플리파이어의 {post_count}개의 글'\nis_index: true\n---\n"
 
+# 파이썬 딕셔너리를 자바스크립트가 읽을 수 있게 변환
+default_sorts_json = json.dumps(CATEGORY_SORT_DEFAULTS, ensure_ascii=False)
+
 html_body = """<style>@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } } .card-item.visible { display: flex !important; animation: fadeInUp 0.4s ease forwards; } #scrollSentinel { height: 50px; margin-top: 30px; } .filter-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px; margin-bottom: 35px; } .category-filter { display: flex; flex-wrap: wrap; gap: 8px; flex: 1; } .cat-btn { padding: 7px 16px; border: 1px solid #e1e1e1; border-radius: 20px; background: #fff; color: #666; font-size: 13px; font-weight: 300; cursor: pointer; transition: all 0.2s; font-family: 'Noto Sans KR', sans-serif; } .cat-btn:hover { border-color: #00c73c; color: #00c73c; } .cat-btn.active { background: #00c73c; color: #fff; border-color: #00c73c; font-weight: 400; } .sort-filter { display: flex; gap: 15px; align-items: center; margin-bottom: 5px; } .sort-text-btn { background: none; border: none; font-size: 14px; color: #a0a0a0; cursor: pointer; font-family: 'Noto Sans KR', sans-serif; font-weight: 300; display: flex; align-items: center; padding: 0; transition: color 0.2s; } .sort-text-btn:hover { color: #555; } .sort-text-btn.active { color: #333; font-weight: 400; } .sort-text-btn .dot { display: inline-block; width: 4px; height: 4px; border-radius: 50%; background-color: transparent; margin-right: 4px; margin-bottom: 2px; } .sort-text-btn.active .dot { background-color: #00c73c; }</style><div class="filter-wrap"><div class="category-filter"><button class="cat-btn active" data-filter="all">전체보기</button>"""
 
 for cat in sorted(list(unique_categories)):
     html_body += f'<button class="cat-btn" data-filter="{cat}">{cat}</button>'
 
-html_body += """</div><div class="sort-filter"><button class="sort-text-btn active" data-sort="desc"><span class="dot"></span>최신순</button><button class="sort-text-btn" data-sort="asc"><span class="dot"></span>날짜순</button></div></div><div class="card-grid" id="cardGrid">""" + cards_html + """</div><div id="scrollSentinel"></div><script>document.addEventListener('DOMContentLoaded', function() { const cards = Array.from(document.querySelectorAll('.card-item')); const filterBtns = document.querySelectorAll('.cat-btn'); const sortBtns = document.querySelectorAll('.sort-text-btn'); const sentinel = document.getElementById('scrollSentinel'); const grid = document.getElementById('cardGrid'); let itemsPerBatch = 20, currentVisibleCount = 0; let filteredCards = [...cards]; let currentFilter = 'all'; function getSortMode(cat) { return localStorage.getItem('brunchSort_' + cat) || 'desc'; } function saveSortMode(cat, mode) { localStorage.setItem('brunchSort_' + cat, mode); } const urlParams = new URLSearchParams(window.location.search); const catParam = urlParams.get('cat'); if (catParam) { const targetBtn = Array.from(filterBtns).find(b => b.getAttribute('data-filter') === catParam); if (targetBtn) { filterBtns.forEach(b => b.classList.remove('active')); targetBtn.classList.add('active'); currentFilter = catParam; } } let sortMode = getSortMode(currentFilter); function updateSortUI() { sortBtns.forEach(b => { b.classList.remove('active'); if(b.getAttribute('data-sort') === sortMode) { b.classList.add('active'); } }); } updateSortUI(); function loadNextBatch() { if (currentVisibleCount >= filteredCards.length) return; const start = currentVisibleCount; const end = Math.min(currentVisibleCount + itemsPerBatch, filteredCards.length); for (let i = start; i < end; i++) { filteredCards[i].classList.add('visible'); filteredCards[i].style.animationDelay = (i - start) * 0.03 + 's'; } currentVisibleCount = end; } function applyFilterAndSort() { cards.forEach(card => { card.classList.remove('visible'); card.style.animationDelay = '0s'; }); filteredCards = currentFilter === 'all' ? [...cards] : cards.filter(card => card.getAttribute('data-category') === currentFilter); filteredCards.sort((a, b) => { let dateA = parseInt(a.getAttribute('data-date')) || 0; let dateB = parseInt(b.getAttribute('data-date')) || 0; if (dateA === dateB) { let idA = parseInt(a.getAttribute('data-id')) || 0; let idB = parseInt(b.getAttribute('data-id')) || 0; return sortMode === 'desc' ? idB - idA : idA - idB; } return sortMode === 'desc' ? dateB - dateA : dateA - dateB; }); filteredCards.forEach(card => grid.appendChild(card)); currentVisibleCount = 0; loadNextBatch(); } sortBtns.forEach(btn => { btn.addEventListener('click', function() { sortMode = this.getAttribute('data-sort'); saveSortMode(currentFilter, sortMode); updateSortUI(); applyFilterAndSort(); }); }); filterBtns.forEach(btn => { btn.addEventListener('click', function() { filterBtns.forEach(b => b.classList.remove('active')); this.classList.add('active'); currentFilter = this.getAttribute('data-filter'); const newUrl = currentFilter === 'all' ? window.location.pathname : window.location.pathname + '?cat=' + encodeURIComponent(currentFilter); window.history.pushState({path:newUrl}, '', newUrl); sortMode = getSortMode(currentFilter); updateSortUI(); applyFilterAndSort(); }); }); const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) loadNextBatch(); }); }, { rootMargin: '200px' }); if (sentinel) observer.observe(sentinel); applyFilterAndSort(); });</script>"""
+html_body += """</div><div class="sort-filter"><button class="sort-text-btn active" data-sort="desc"><span class="dot"></span>최신순</button><button class="sort-text-btn" data-sort="asc"><span class="dot"></span>날짜순</button></div></div><div class="card-grid" id="cardGrid">""" + cards_html + """</div><div id="scrollSentinel"></div><script>document.addEventListener('DOMContentLoaded', function() { const cards = Array.from(document.querySelectorAll('.card-item')); const filterBtns = document.querySelectorAll('.cat-btn'); const sortBtns = document.querySelectorAll('.sort-text-btn'); const sentinel = document.getElementById('scrollSentinel'); const grid = document.getElementById('cardGrid'); let itemsPerBatch = 20, currentVisibleCount = 0; let filteredCards = [...cards]; let currentFilter = 'all'; 
+
+// 파이썬에서 넘겨받은 카테고리별 기본 정렬 설정
+const categoryDefaults = """ + default_sorts_json + """;
+
+function getSortMode(cat) { 
+    // 1. 유저가 마지막으로 선택한 캐시가 있으면 그것을 최우선으로 따름
+    // 2. 캐시가 없으면 파이썬에 세팅한 기본 정렬 기준을 따름
+    // 3. 둘 다 없으면 무조건 최신순(desc)
+    return localStorage.getItem('brunchSort_' + cat) || categoryDefaults[cat] || 'desc'; 
+} 
+
+function saveSortMode(cat, mode) { localStorage.setItem('brunchSort_' + cat, mode); } 
+
+const urlParams = new URLSearchParams(window.location.search); const catParam = urlParams.get('cat'); if (catParam) { const targetBtn = Array.from(filterBtns).find(b => b.getAttribute('data-filter') === catParam); if (targetBtn) { filterBtns.forEach(b => b.classList.remove('active')); targetBtn.classList.add('active'); currentFilter = catParam; } } 
+
+let sortMode = getSortMode(currentFilter); 
+
+function updateSortUI() { sortBtns.forEach(b => { b.classList.remove('active'); if(b.getAttribute('data-sort') === sortMode) { b.classList.add('active'); } }); } 
+updateSortUI(); 
+
+function loadNextBatch() { if (currentVisibleCount >= filteredCards.length) return; const start = currentVisibleCount; const end = Math.min(currentVisibleCount + itemsPerBatch, filteredCards.length); for (let i = start; i < end; i++) { filteredCards[i].classList.add('visible'); filteredCards[i].style.animationDelay = (i - start) * 0.03 + 's'; } currentVisibleCount = end; } 
+
+function applyFilterAndSort() { cards.forEach(card => { card.classList.remove('visible'); card.style.animationDelay = '0s'; }); filteredCards = currentFilter === 'all' ? [...cards] : cards.filter(card => card.getAttribute('data-category') === currentFilter); filteredCards.sort((a, b) => { let dateA = parseInt(a.getAttribute('data-date')) || 0; let dateB = parseInt(b.getAttribute('data-date')) || 0; if (dateA === dateB) { let idA = parseInt(a.getAttribute('data-id')) || 0; let idB = parseInt(b.getAttribute('data-id')) || 0; return sortMode === 'desc' ? idB - idA : idA - idB; } return sortMode === 'desc' ? dateB - dateA : dateA - dateB; }); filteredCards.forEach(card => grid.appendChild(card)); currentVisibleCount = 0; loadNextBatch(); } 
+
+sortBtns.forEach(btn => { btn.addEventListener('click', function() { sortMode = this.getAttribute('data-sort'); saveSortMode(currentFilter, sortMode); updateSortUI(); applyFilterAndSort(); }); }); 
+
+filterBtns.forEach(btn => { btn.addEventListener('click', function() { filterBtns.forEach(b => b.classList.remove('active')); this.classList.add('active'); currentFilter = this.getAttribute('data-filter'); const newUrl = currentFilter === 'all' ? window.location.pathname : window.location.pathname + '?cat=' + encodeURIComponent(currentFilter); window.history.pushState({path:newUrl}, '', newUrl); sortMode = getSortMode(currentFilter); updateSortUI(); applyFilterAndSort(); }); }); 
+
+const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) loadNextBatch(); }); }, { rootMargin: '200px' }); if (sentinel) observer.observe(sentinel); applyFilterAndSort(); });</script>"""
 
 with open(index_file, 'w', encoding='utf-8') as f:
     f.write(html_header + html_body)
 
-print("✅ 정렬 상태 기억(로컬스토리지 캐싱) 적용 완료!")
+print("✅ 카테고리별 맞춤 기본 정렬 및 캐싱 기능 적용 완료!")
