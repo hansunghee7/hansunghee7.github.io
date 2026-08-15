@@ -297,41 +297,49 @@ html_header = f"---\nlayout: default\ntitle: 'Simplifier Log {post_count}'\nis_i
 default_sorts_json = json.dumps(CATEGORY_SORT_DEFAULTS, ensure_ascii=False)
 
 html_body = """<style>
-@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-.card-item.visible { display: flex !important; animation: fadeInUp 0.4s ease forwards; }
-#scrollSentinel { height: 50px; margin-top: 30px; }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .card-item.visible { display: flex !important; animation: fadeInUp 0.6s cubic-bezier(.16,1,.3,1) forwards; }
+  #scrollSentinel { height: 50px; margin-top: 30px; }
 
-body > header, .site-header, .page-header, .post-header, .header-wrap, .hero-section, .intro-banner, .header-bg, .top-bar, div[class*="header"], div[class*="hero"], .masthead, .intro-header {
-    background-color: #111111 !important;
+  /* 전체 배경을 메인 페이지와 동일한 다크 모드로 변경 */
+  body, html { background: #080808 !important; color: #f5f3ee !important; font-family: 'Pretendard Variable', sans-serif; }
+  
+  body > header, .site-header, .page-header, .post-header, .header-wrap, .hero-section, .intro-banner, .header-bg, .top-bar, div[class*="header"], div[class*="hero"], .masthead, .intro-header {
+    background-color: #080808 !important;
     background-image: none !important;
-    background: #111111 !important;
-    color: #ffffff !important;
-    border-bottom: none !important;
-}
+    color: #f5f3ee !important;
+    border-bottom: 1px solid rgba(245,243,238,0.14) !important;
+  }
 
-.site-header *, .page-header *, .post-header * { color: #ffffff !important; }
+  /* 필터 버튼 디자인을 고급스럽게 변경 */
+  .filter-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px; margin-bottom: 40px; border-bottom: 1px solid rgba(245,243,238,0.14); padding-bottom: 20px; }
+  .category-filter { display: flex; flex-wrap: wrap; gap: 8px; flex: 1; }
+  .cat-btn { padding: 6px 16px; border: 1px solid rgba(245,243,238,0.14); border-radius: 30px; background: transparent; color: #8f8b82; font-size: 13px; font-weight: 400; cursor: pointer; transition: all 0.3s ease; }
+  .cat-btn:hover { border-color: #f5f3ee; color: #f5f3ee; }
+  .cat-btn.active { background: #f5f3ee; color: #080808 !important; border-color: #f5f3ee; font-weight: 600; }
 
-.filter-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px; margin-bottom: 35px; }
-.category-filter { display: flex; flex-wrap: wrap; gap: 8px; flex: 1; }
-.cat-btn { padding: 7px 16px; border: 1px solid #e1e1e1; border-radius: 20px; background: #fff; color: #666; font-size: 13px; font-weight: 300; cursor: pointer; transition: all 0.2s; font-family: 'Noto Sans KR', sans-serif; }
-.cat-btn:hover { border-color: #111111; color: #111111; }
+  /* 정렬 버튼 텍스트 색상 수정 */
+  .sort-filter { display: flex; gap: 15px; align-items: center; margin-bottom: 5px; }
+  .sort-text-btn { background: none; border: none; font-size: 13px; color: #8f8b82; cursor: pointer; display: flex; align-items: center; padding: 0; transition: color 0.3s ease; }
+  .sort-text-btn:hover { color: #f5f3ee; }
+  .sort-text-btn.active { color: #f5f3ee; font-weight: 500; }
+  .sort-text-btn .dot { display: inline-block; width: 4px; height: 4px; border-radius: 50%; background-color: transparent; margin-right: 6px; margin-bottom: 1px; transition: background-color 0.3s ease;}
+  .sort-text-btn.active .dot { background-color: #f5f3ee !important; }
 
-.cat-btn.active { background: #111111; color: #ffffff !important; border-color: #111111; font-weight: 300; }
-
-.sort-filter { display: flex; gap: 15px; align-items: center; margin-bottom: 5px; }
-.sort-text-btn { background: none; border: none; font-size: 14px; color: #a0a0a0; cursor: pointer; font-family: 'Noto Sans KR', sans-serif; font-weight: 300; display: flex; align-items: center; padding: 0; transition: color 0.2s; }
-.sort-text-btn:hover { color: #555; }
-.sort-text-btn.active { color: #111; font-weight: 400; }
-.sort-text-btn .dot { display: inline-block; width: 4px; height: 4px; border-radius: 50%; background-color: transparent; margin-right: 4px; margin-bottom: 2px; }
-.sort-text-btn.active .dot { background-color: #111111 !important; }
-
-.card-item { border: 1px solid #e1e1e1; border-radius: 12px; overflow: hidden; transition: border-color 0.3s ease, box-shadow 0.3s ease; text-decoration: none !important; color: inherit; }
-.card-thumb-wrap { width: 100%; height: 180px; overflow: hidden; position: relative; }
-.card-thumb { width: 100%; height: 100%; background-size: cover; background-position: center; filter: grayscale(100%); transition: transform 0.4s ease, filter 0.4s ease; }
-
-.card-item:hover { border-color: #111111 !important; box-shadow: 0 6px 20px rgba(17, 17, 17, 0.15) !important; }
-.card-item:hover .card-thumb { transform: scale(1.08); filter: grayscale(0%); }
-.card-category { color: #222; font-weight: 500; }
+  /* 카드 레이아웃을 매거진 형태로 깔끔하게 정돈 */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; }
+  .card-item { border: 1px solid rgba(245,243,238,0.14); border-radius: 0; display: flex; flex-direction: column; overflow: hidden; transition: transform 0.4s ease, border-color 0.4s ease; text-decoration: none !important; background: transparent; }
+  .card-thumb-wrap { width: 100%; height: 220px; overflow: hidden; position: relative; border-bottom: 1px solid rgba(245,243,238,0.14); }
+  .card-thumb { width: 100%; height: 100%; background-size: cover; background-position: center; filter: grayscale(100%) brightness(0.7); transition: transform 0.6s cubic-bezier(.22,.61,.36,1), filter 0.6s ease; }
+  
+  .card-item:hover { border-color: #f5f3ee !important; transform: translateY(-4px); }
+  .card-item:hover .card-thumb { transform: scale(1.05); filter: grayscale(0%) brightness(0.95); }
+  
+  /* 텍스트 요소(제목, 날짜, 카테고리) 정렬 */
+  .card-content { padding: 24px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
+  .card-category { color: #8f8b82; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 12px; }
+  .card-title { font-family: 'Boska', serif; font-size: 1.5rem; font-weight: 500; color: #f5f3ee; line-height: 1.3; margin: 0 0 20px 0; }
+  .card-date { color: #8f8b82; font-size: 12px; letter-spacing: 0.05em; }
 </style>
 
 <div class="filter-wrap"><div class="category-filter"><button class="cat-btn active" data-filter="all">전체보기</button>"""
