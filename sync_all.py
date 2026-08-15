@@ -7,7 +7,6 @@ import time
 import requests
 from bs4 import BeautifulSoup
 
-# 👇 카테고리별 기본 정렬 방식
 CATEGORY_SORT_DEFAULTS = {
     "AI의 언어들": "desc",
     "Be the PO": "desc",
@@ -25,11 +24,10 @@ CATEGORY_SORT_DEFAULTS = {
     "토크세션": "desc"
 }
 
-# 🌟 [NEW] 모든 게시물 하단에 일괄 노출할 홍보/추천 링크!
-# 여기에 주소만 적어두면 자동으로 예쁜 오픈그래프 카드로 변환되어 모든 글 하단에 노출됩니다.
+# 🌟 모든 게시물 하단에 일괄 노출할 홍보/추천 링크
 GLOBAL_PROMO_LINKS = [
     "https://www.yes24.com/product/goods/193444437",
-    
+    "https://trevar.ink/Vmammm"
 ]
 
 if os.path.exists("index.md"):
@@ -54,7 +52,6 @@ except Exception as e:
 md_files = [f for f in os.listdir(md_dir) if f.endswith(".md") and f != "index.md"]
 md_files.sort()
 
-# 🌟 오픈그래프(OG) 카드 캐싱 (속도 저하 방지)
 og_cache_file = "og_cache.json"
 og_cache = {}
 if os.path.exists(og_cache_file):
@@ -91,7 +88,7 @@ def get_og_card(url):
         
         img_html = f'<div style="width:30%; max-width:200px; min-width:140px; background:url(\'{img}\') center/cover no-repeat; border-left:1px solid #e1e1e1;"></div>' if img else ''
         
-        card_html = f'''\n<!-- OG_CARD_START -->\n<a href="{url}" target="_blank" style="display:flex; border:1px solid #e1e1e1; border-radius:8px; overflow:hidden; text-decoration:none !important; color:inherit; margin:15px 0; height:140px; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#6CFD33'" onmouseout="this.style.borderColor='#e1e1e1'">\n    <div style="flex:1; padding:20px; display:flex; flex-direction:column; justify-content:center; overflow:hidden; background:#fff;">\n        <div style="font-size:16px; font-weight:600; color:#222; margin-bottom:8px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{title}</div>\n        <div style="font-size:13px; color:#666; line-height:1.5; margin-bottom:12px; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;">{desc}</div>\n        <div style="font-size:12px; color:#999;">{domain}</div>\n    </div>\n    {img_html}\n</a>\n<!-- OG_CARD_END -->\n'''
+        card_html = f'''\n<!-- OG_CARD_START -->\n<a href="{url}" target="_blank" style="display:flex; border:1px solid #e1e1e1; border-radius:8px; overflow:hidden; text-decoration:none !important; color:inherit; margin:15px 0; height:140px; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">\n    <div style="flex:1; padding:20px; display:flex; flex-direction:column; justify-content:center; overflow:hidden; background:#fff;">\n        <div style="font-size:16px; font-weight:600; color:#222; margin-bottom:8px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{title}</div>\n        <div style="font-size:13px; color:#666; line-height:1.5; margin-bottom:12px; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;">{desc}</div>\n        <div style="font-size:12px; color:#999;">{domain}</div>\n    </div>\n    {img_html}\n</a>\n<!-- OG_CARD_END -->\n'''
         
         og_cache[url] = card_html.strip()
         time.sleep(0.3)
@@ -180,11 +177,10 @@ for cat in category_posts:
 with open(og_cache_file, 'w', encoding='utf-8') as f:
     json.dump(og_cache, f, ensure_ascii=False, indent=2)
 
-# 🌟 모든 글 하단에 붙일 중앙 통제형 배너 자동 생성 (링크 기반)
-global_promo_html = "https://www.yes24.com/product/goods/193444437"
+global_promo_html = ""
 if GLOBAL_PROMO_LINKS:
     global_promo_html += "\n<!-- PROMO_BANNER_START -->\n<div class=\"promo-banner\" style=\"margin-top: 60px; padding: 35px 20px; background: #111111; border-radius: 12px; font-family: 'Noto Sans KR', sans-serif;\">\n"
-    global_promo_html += "    <h4 style=\"color: #6CFD33; margin-top: 0; margin-bottom: 5px; font-weight: 500; font-size: 18px; text-align: center;\">🚀 Simplifier's Pick</h4>\n"
+    global_promo_html += "    <h4 style=\"color: #ffffff; margin-top: 0; margin-bottom: 5px; font-weight: 500; font-size: 18px; text-align: center;\">🚀 Simplifier's Pick</h4>\n"
     global_promo_html += "    <p style=\"color: #aaaaaa; font-size: 14px; margin-bottom: 25px; font-weight: 300; text-align: center;\">인사이트를 더 깊게 만나보세요</p>\n"
     for purl in GLOBAL_PROMO_LINKS:
         global_promo_html += get_og_card(purl)
@@ -234,7 +230,6 @@ for p in posts:
     safe_title = p['title'].replace('"', '\\"')
     new_yaml = f"---\nlayout: default\ntitle: \"{safe_title}\"\ncategory: '{category}'\ncover_image: '{p['cover_image']}'\ndate_string: '{p['date_string']}'\n---\n\n"
 
-    # 배너(global_promo_html)를 본문 바로 아래에 찰싹 붙여줍니다.
     with open(p['filepath'], 'w', encoding='utf-8') as f:
         f.write(new_yaml + p['body_content'] + global_promo_html + nav_html)
 
@@ -250,11 +245,15 @@ html_body = """<style>
 .card-item.visible { display: flex !important; animation: fadeInUp 0.4s ease forwards; }
 #scrollSentinel { height: 50px; margin-top: 30px; }
 
-header, .site-header, .header-wrap, .hero-section, .intro-banner, .header-bg, .top-bar, div[class*="header"], div[class*="hero"] {
+/* 🖤 1. 헤더 배경색 강제 블랙 적용 (더욱 광범위한 선택자 사용) */
+body > header, .site-header, .page-header, .post-header, .header-wrap, .hero-section, .intro-banner, .header-bg, .top-bar, div[class*="header"], div[class*="hero"] {
     background-color: #111111 !important;
     background: #111111 !important;
     color: #ffffff !important;
+    border-bottom: none !important;
 }
+
+.site-header *, .page-header *, .post-header * { color: #ffffff !important; }
 
 .filter-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px; margin-bottom: 35px; }
 .category-filter { display: flex; flex-wrap: wrap; gap: 8px; flex: 1; }
@@ -268,13 +267,16 @@ header, .site-header, .header-wrap, .hero-section, .intro-banner, .header-bg, .t
 .sort-text-btn:hover { color: #555; }
 .sort-text-btn.active { color: #111; font-weight: 400; }
 .sort-text-btn .dot { display: inline-block; width: 4px; height: 4px; border-radius: 50%; background-color: transparent; margin-right: 4px; margin-bottom: 2px; }
-.sort-text-btn.active .dot { background-color: #6CFD33; }
+
+/* 🖤 2. 최신순 아이콘 색상을 블랙으로 변경 */
+.sort-text-btn.active .dot { background-color: #111111 !important; }
 
 .card-item { border: 1px solid #e1e1e1; border-radius: 12px; overflow: hidden; transition: border-color 0.3s ease, box-shadow 0.3s ease; text-decoration: none !important; color: inherit; }
 .card-thumb-wrap { width: 100%; height: 180px; overflow: hidden; position: relative; }
 .card-thumb { width: 100%; height: 100%; background-size: cover; background-position: center; filter: grayscale(100%); transition: transform 0.4s ease, filter 0.4s ease; }
 
-.card-item:hover { border-color: #6CFD33 !important; box-shadow: 0 6px 20px rgba(108, 253, 51, 0.15); }
+/* 🖤 3. 카드 선택(호버) 시 테두리를 블랙으로 변경 */
+.card-item:hover { border-color: #111111 !important; box-shadow: 0 6px 20px rgba(17, 17, 17, 0.15) !important; }
 .card-item:hover .card-thumb { transform: scale(1.08); filter: grayscale(0%); }
 .card-category { color: #222; font-weight: 500; }
 </style>
@@ -284,7 +286,15 @@ header, .site-header, .header-wrap, .hero-section, .intro-banner, .header-bg, .t
 for cat in sorted(list(unique_categories)):
     html_body += f'<button class="cat-btn" data-filter="{cat}">{cat}</button>'
 
-html_body += """</div><div class="sort-filter"><button class="sort-text-btn active" data-sort="desc"><span class="dot"></span>최신순</button><button class="sort-text-btn" data-sort="asc"><span class="dot"></span>날짜순</button></div></div><div class="card-grid" id="cardGrid">""" + cards_html + """</div><div id="scrollSentinel"></div><script>document.addEventListener('DOMContentLoaded', function() { const cards = Array.from(document.querySelectorAll('.card-item')); const filterBtns = document.querySelectorAll('.cat-btn'); const sortBtns = document.querySelectorAll('.sort-text-btn'); const sentinel = document.getElementById('scrollSentinel'); const grid = document.getElementById('cardGrid'); let itemsPerBatch = 20, currentVisibleCount = 0; let filteredCards = [...cards]; let currentFilter = 'all'; 
+html_body += """</div><div class="sort-filter"><button class="sort-text-btn active" data-sort="desc"><span class="dot"></span>최신순</button><button class="sort-text-btn" data-sort="asc"><span class="dot"></span>날짜순</button></div></div><div class="card-grid" id="cardGrid">""" + cards_html + """</div><div id="scrollSentinel"></div><script>document.addEventListener('DOMContentLoaded', function() { 
+
+// CSS 우선순위 무시하고 테마의 모든 헤더 배경을 자바스크립트로 강제 딥 블랙 변환
+document.querySelectorAll('header, .site-header, .page-header, .post-header').forEach(el => {
+    el.style.setProperty('background-color', '#111111', 'important');
+    el.style.setProperty('background', '#111111', 'important');
+});
+
+const cards = Array.from(document.querySelectorAll('.card-item')); const filterBtns = document.querySelectorAll('.cat-btn'); const sortBtns = document.querySelectorAll('.sort-text-btn'); const sentinel = document.getElementById('scrollSentinel'); const grid = document.getElementById('cardGrid'); let itemsPerBatch = 20, currentVisibleCount = 0; let filteredCards = [...cards]; let currentFilter = 'all'; 
 
 const categoryDefaults = """ + default_sorts_json + """;
 
@@ -314,4 +324,4 @@ const observer = new IntersectionObserver(entries => { entries.forEach(entry => 
 with open(index_file, 'w', encoding='utf-8') as f:
     f.write(html_header + html_body)
 
-print("✅ 자동 링크 카드(Open Graph) 기능 탑재 완료!")
+print("✅ 상단 배경 100% 딥블랙 강제화 및 정렬/카드 호버 포인트 컬러 블랙 변경 완료!")
