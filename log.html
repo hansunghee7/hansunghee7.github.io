@@ -34,10 +34,12 @@ body > header, .site-header, .page-header, .post-header, .header-wrap, .hero-sec
 
 .card-item { border: 1px solid #e1e1e1; border-radius: 12px; overflow: hidden; transition: border-color 0.3s ease, box-shadow 0.3s ease; text-decoration: none !important; color: inherit; }
 .card-thumb-wrap { width: 100%; height: 180px; overflow: hidden; position: relative; }
-.card-thumb { width: 100%; height: 100%; background-size: cover; background-position: center; filter: grayscale(100%); transition: transform 0.4s ease, filter 0.4s ease; }
+/* 흑백 필터 제거, 크기 커지는 효과만 유지 */
+.card-thumb { width: 100%; height: 100%; background-size: cover; background-position: center; transition: transform 0.4s ease; }
 
 .card-item:hover { border-color: #111111 !important; box-shadow: 0 6px 20px rgba(17, 17, 17, 0.15) !important; }
-.card-item:hover .card-thumb { transform: scale(1.08); filter: grayscale(0%); }
+/* 호버 시 확대 효과 */
+.card-item:hover .card-thumb { transform: scale(1.08); }
 .card-category { color: #222; font-weight: 500; }
 </style>
 

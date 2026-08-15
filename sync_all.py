@@ -236,7 +236,6 @@ for p in posts:
     prev_post = cat_list[idx - 1] if idx > 0 else None
     next_post = cat_list[idx + 1] if idx >= 0 and idx < len(cat_list) - 1 else None
 
-    # 중복 출력되던 날짜 변수를 삭제 (빈 문자열)
     date_html = ""
 
     cat_script = f"""<!-- CAT_LINK_SCRIPT_START -->
@@ -297,7 +296,6 @@ html_header = f"---\nlayout: default\ntitle: 'Simplifier Log {post_count}'\nis_i
 
 default_sorts_json = json.dumps(CATEGORY_SORT_DEFAULTS, ensure_ascii=False)
 
-# 여기서부터가 오리지널(밝은 테두리/라이트 모드) CSS 코드입니다.
 html_body = """<style>
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 .card-item.visible { display: flex !important; animation: fadeInUp 0.4s ease forwards; }
@@ -329,10 +327,12 @@ body > header, .site-header, .page-header, .post-header, .header-wrap, .hero-sec
 
 .card-item { border: 1px solid #e1e1e1; border-radius: 12px; overflow: hidden; transition: border-color 0.3s ease, box-shadow 0.3s ease; text-decoration: none !important; color: inherit; }
 .card-thumb-wrap { width: 100%; height: 180px; overflow: hidden; position: relative; }
-.card-thumb { width: 100%; height: 100%; background-size: cover; background-position: center; filter: grayscale(100%); transition: transform 0.4s ease, filter 0.4s ease; }
+/* 흑백 필터 제거, 크기 커지는 효과만 유지 */
+.card-thumb { width: 100%; height: 100%; background-size: cover; background-position: center; transition: transform 0.4s ease; }
 
 .card-item:hover { border-color: #111111 !important; box-shadow: 0 6px 20px rgba(17, 17, 17, 0.15) !important; }
-.card-item:hover .card-thumb { transform: scale(1.08); filter: grayscale(0%); }
+/* 호버 시 확대 효과 */
+.card-item:hover .card-thumb { transform: scale(1.08); }
 .card-category { color: #222; font-weight: 500; }
 </style>
 
@@ -379,4 +379,4 @@ const observer = new IntersectionObserver(entries => { entries.forEach(entry => 
 with open(index_file, 'w', encoding='utf-8') as f:
     f.write(html_header + html_body)
 
-print("✅ HTML 태그 이스케이프 깨짐 방지 및 정돈 완료!")
+print("✅ HTML 태그 이스케이프 깨짐 방지 및 흑백 필터 제거 완료!")
