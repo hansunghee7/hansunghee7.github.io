@@ -3,6 +3,7 @@ layout: default
 title: "심플리파이어 웨이 '요기요 Concept UX'"
 category: '스타트업 리더의 기술'
 cover_image: '/brunch_web_assets/images/523.jpg'
+date_string: 'Dec 22. 2023'
 ---
 
 # 📝 523_심플리파이어 웨이 '요기요 Concept UX'

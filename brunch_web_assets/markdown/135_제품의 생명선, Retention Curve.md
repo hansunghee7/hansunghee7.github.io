@@ -3,6 +3,7 @@ layout: default
 title: "제품의 생명선, Retention Curve"
 category: '기획자의 프레임웍'
 cover_image: '/brunch_web_assets/images/135.jpg'
+date_string: 'May 20. 2025'
 ---
 
 # 📝 135_제품의 생명선, Retention Curve

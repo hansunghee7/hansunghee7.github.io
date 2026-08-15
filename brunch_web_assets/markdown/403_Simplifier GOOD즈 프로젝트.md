@@ -3,6 +3,7 @@ layout: default
 title: "Simplifier GOOD즈 프로젝트"
 category: '심플리파이어 라이프'
 cover_image: '/brunch_web_assets/images/403.jpg'
+date_string: 'Apr 27. 2024'
 ---
 
 # 📝 403_Simplifier GOOD즈 프로젝트

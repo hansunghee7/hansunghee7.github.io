@@ -3,6 +3,7 @@ layout: default
 title: "AI 성능의 열쇠, HBM은 무엇일까"
 category: 'AI의 언어들'
 cover_image: '/brunch_web_assets/images/184.jpg'
+date_string: 'Apr 2. 2025'
 ---
 
 # 📝 184_AI 성능의 열쇠, HBM은 무엇일까

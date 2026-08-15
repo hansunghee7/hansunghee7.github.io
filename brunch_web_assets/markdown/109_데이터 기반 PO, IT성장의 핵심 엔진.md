@@ -3,6 +3,7 @@ layout: default
 title: "데이터 기반 PO, IT성장의 핵심 엔진"
 category: 'PO가 꼭 알아야 할 것들'
 cover_image: '/brunch_web_assets/images/109.jpg'
+date_string: 'Jun 13. 2025'
 ---
 
 # 📝 109_데이터 기반 PO, IT성장의 핵심 엔진

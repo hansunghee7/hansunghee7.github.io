@@ -3,6 +3,7 @@ layout: default
 title: "키워드로 알아보는 서비스기획자, PM, PO의 차이"
 category: '기획자로 시작하기'
 cover_image: '/brunch_web_assets/images/605.jpg'
+date_string: 'Sep 25. 2023'
 ---
 
 # 📝 605_키워드로 알아보는 서비스기획자, PM, PO의 차이

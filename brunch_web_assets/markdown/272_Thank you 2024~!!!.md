@@ -3,6 +3,7 @@ layout: default
 title: "Thank you 2024~!!!"
 category: '심플리파이어 라이프'
 cover_image: '/brunch_web_assets/images/272.jpg'
+date_string: 'Dec 31. 2024'
 ---
 
 # 📝 272_Thank you 2024~!!!

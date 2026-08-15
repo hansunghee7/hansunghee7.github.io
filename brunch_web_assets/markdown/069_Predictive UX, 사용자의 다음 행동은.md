@@ -3,6 +3,7 @@ layout: default
 title: "Predictive UX, 사용자의 다음 행동은"
 category: 'UX의 언어들'
 cover_image: '/brunch_web_assets/images/069.jpg'
+date_string: 'Jul 25. 2025'
 ---
 
 # 📝 069_Predictive UX, 사용자의 다음 행동은

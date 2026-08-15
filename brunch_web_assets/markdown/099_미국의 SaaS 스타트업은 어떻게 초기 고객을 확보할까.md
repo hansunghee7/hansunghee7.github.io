@@ -3,6 +3,7 @@ layout: default
 title: "미국의 SaaS 스타트업은 어떻게 초기 고객을 확보할까"
 category: '대한민국 스타트업 미국진출을 묻다'
 cover_image: '/brunch_web_assets/images/099.jpg'
+date_string: 'Jun 22. 2025'
 ---
 
 # 📝 099_미국의 SaaS 스타트업은 어떻게 초기 고객을 확보할까

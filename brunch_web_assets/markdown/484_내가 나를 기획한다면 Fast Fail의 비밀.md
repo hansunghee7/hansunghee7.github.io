@@ -3,6 +3,7 @@ layout: default
 title: "내가 나를 기획한다면 Fast Fail의 비밀"
 category: '기획일상'
 cover_image: '/brunch_web_assets/images/484.jpg'
+date_string: 'Feb 4. 2024'
 ---
 
 # 📝 484_내가 나를 기획한다면 Fast Fail의 비밀

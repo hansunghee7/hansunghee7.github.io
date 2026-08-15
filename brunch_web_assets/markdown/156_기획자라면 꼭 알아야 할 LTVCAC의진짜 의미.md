@@ -3,6 +3,7 @@ layout: default
 title: "기획자라면 꼭 알아야 할 LTVCAC의진짜 의미"
 category: '기획자의 프레임웍'
 cover_image: '/brunch_web_assets/images/156.jpg'
+date_string: 'Apr 29. 2025'
 ---
 
 # 📝 156_기획자라면 꼭 알아야 할 LTVCAC의진짜 의미

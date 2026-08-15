@@ -3,6 +3,7 @@ layout: default
 title: "AI 칩 성능의 핵심, FLOPS와 TOPS 그리고"
 category: 'AI의 언어들'
 cover_image: '/brunch_web_assets/images/177.jpg'
+date_string: 'Apr 9. 2025'
 ---
 
 # 📝 177_AI 칩 성능의 핵심, FLOPS와 TOPS 그리고..

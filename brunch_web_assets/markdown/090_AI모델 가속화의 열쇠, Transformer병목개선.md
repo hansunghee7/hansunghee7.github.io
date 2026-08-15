@@ -3,6 +3,7 @@ layout: default
 title: "AI모델 가속화의 열쇠, Transformer병목개선"
 category: 'AI의 언어들'
 cover_image: '/brunch_web_assets/images/090.jpg'
+date_string: 'Jul 2. 2025'
 ---
 
 # 📝 090_AI모델 가속화의 열쇠, Transformer병목개선

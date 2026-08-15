@@ -3,6 +3,7 @@ layout: default
 title: "'팔란티어' 4 Apollo 혁신의 배포 플랫폼"
 category: '심플리파이어 인사이트'
 cover_image: '/brunch_web_assets/images/180.jpg'
+date_string: 'Apr 6. 2025'
 ---
 
 # 📝 180_'팔란티어' 4 Apollo 혁신의 배포 플랫폼

@@ -3,6 +3,7 @@ layout: default
 title: "CPO는 어떻게 일을 할까 Part 2. 수평적 관점"
 category: '스타트업 리더의 기술'
 cover_image: '/brunch_web_assets/images/423.jpg'
+date_string: 'Apr 7. 2024'
 ---
 
 # 📝 423_CPO는 어떻게 일을 할까 Part 2. 수평적 관점

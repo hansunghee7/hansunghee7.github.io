@@ -63,7 +63,6 @@
             </div>
         </div>
     {% else %}
-        <!-- 💡 해결: 파이썬이 저장한 cover_image를 무조건 최우선으로 사용하여 배경으로 고정합니다! -->
         <div class="cover-wrap post-mode" id="coverWrap" 
              style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%), url('{{ page.cover_image | default: "/brunch_web_assets/images/logo_white.png" }}');">
             <div class="cover-header">
@@ -73,7 +72,10 @@
             </div>
             <div class="cover-bottom-left">
                 <h1 class="cover-title" id="displayTitle">{{ page.title }}</h1>
-                <div class="cover-sub">by Simplifier 한성희</div>
+                <!-- 💡 해결: 등록일(date_string) 정보가 있으면 함께 출력합니다! -->
+                <div class="cover-sub">
+                    {% if page.date_string %}{{ page.date_string }} | {% endif %}by Simplifier 한성희
+                </div>
             </div>
             <div class="cover-bottom-right">
                 <a href="#articleBody" class="down-arrow">↓</a>
@@ -89,7 +91,6 @@
         document.addEventListener("DOMContentLoaded", function() {
             const articleBody = document.getElementById('articleBody');
             if (articleBody) {
-                // 본문에 삽입된 이미지 중복 노출만 방지하고, 배경 이미지는 건드리지 않습니다!
                 const coverImg = articleBody.querySelector('img[alt="대표 이미지"]');
                 if (coverImg) coverImg.classList.add('hidden-element');
 

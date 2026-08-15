@@ -3,6 +3,7 @@ layout: default
 title: "Perplexity 3 검색 시스템의 구조 설계"
 category: '심플리파이어 인사이트'
 cover_image: '/brunch_web_assets/images/151.jpg'
+date_string: 'May 4. 2025'
 ---
 
 # 📝 151_Perplexity 3 검색 시스템의 구조 설계

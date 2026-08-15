@@ -3,6 +3,7 @@ layout: default
 title: "ENTJ코치의 정권 기획"
 category: '심플리파이어 라이프'
 cover_image: '/brunch_web_assets/images/283.jpg'
+date_string: 'Dec 8. 2024'
 ---
 
 # 📝 283_ENTJ코치의 정권 기획

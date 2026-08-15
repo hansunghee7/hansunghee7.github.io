@@ -3,6 +3,7 @@ layout: default
 title: "'맥모닝'의 비밀, MECE 프레임워크"
 category: '기획자의 프레임웍'
 cover_image: '/brunch_web_assets/images/192.jpg'
+date_string: 'Mar 25. 2025'
 ---
 
 # 📝 192_'맥모닝'의 비밀, MECE 프레임워크

@@ -3,6 +3,7 @@ layout: default
 title: "logo branding"
 category: '심플리파이어 라이프'
 cover_image: '/brunch_web_assets/images/356.jpg'
+date_string: 'Jul 14. 2024'
 ---
 
 # 📝 356_logo branding

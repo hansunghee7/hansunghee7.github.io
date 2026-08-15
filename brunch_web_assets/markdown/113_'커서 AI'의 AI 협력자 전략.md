@@ -3,6 +3,7 @@ layout: default
 title: "'커서 AI'의 AI 협력자 전략"
 category: '스타트업의 전략들'
 cover_image: '/brunch_web_assets/images/113.jpg'
+date_string: 'Jun 9. 2025'
 ---
 
 # 📝 113_'커서 AI'의 AI 협력자 전략

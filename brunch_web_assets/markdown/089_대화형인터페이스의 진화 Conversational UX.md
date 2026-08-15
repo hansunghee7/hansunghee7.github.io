@@ -3,6 +3,7 @@ layout: default
 title: "대화형인터페이스의 진화 Conversational UX"
 category: 'UX의 언어들'
 cover_image: '/brunch_web_assets/images/089.jpg'
+date_string: 'Jul 3. 2025'
 ---
 
 # 📝 089_대화형인터페이스의 진화 Conversational UX

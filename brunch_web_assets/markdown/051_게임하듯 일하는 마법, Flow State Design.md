@@ -3,6 +3,7 @@ layout: default
 title: "게임하듯 일하는 마법, Flow State Design"
 category: 'UX의 언어들'
 cover_image: '/brunch_web_assets/images/051.jpg'
+date_string: 'Aug 14. 2025'
 ---
 
 # 📝 051_게임하듯 일하는 마법, Flow State Design

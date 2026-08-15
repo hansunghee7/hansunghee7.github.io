@@ -3,6 +3,7 @@ layout: default
 title: "아이디어의 발상 'SCAMPER' 기법"
 category: '기획자의 프레임웍'
 cover_image: '/brunch_web_assets/images/251.jpg'
+date_string: 'Jan 28. 2025'
 ---
 
 # 📝 251_아이디어의 발상 'SCAMPER' 기법

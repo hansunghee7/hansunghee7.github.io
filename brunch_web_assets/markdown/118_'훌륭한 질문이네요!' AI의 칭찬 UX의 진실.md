@@ -3,6 +3,7 @@ layout: default
 title: "'훌륭한 질문이네요!' AI의 칭찬 UX의 진실"
 category: 'UX의 언어들'
 cover_image: '/brunch_web_assets/images/118.jpg'
+date_string: 'Jun 5. 2025'
 ---
 
 # 📝 118_'훌륭한 질문이네요!' AI의 칭찬 UX의 진실

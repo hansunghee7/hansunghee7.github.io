@@ -3,6 +3,7 @@ layout: default
 title: "엄지가 디자인을 지배한다 ThumbFriendly UX"
 category: 'UX의 언어들'
 cover_image: '/brunch_web_assets/images/242.jpg'
+date_string: 'Feb 6. 2025'
 ---
 
 # 📝 242_엄지가 디자인을 지배한다 ThumbFriendly UX

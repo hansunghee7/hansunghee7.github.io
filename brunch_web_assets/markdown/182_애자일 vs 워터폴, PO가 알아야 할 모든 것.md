@@ -3,6 +3,7 @@ layout: default
 title: "애자일 vs 워터폴, PO가 알아야 할 모든 것"
 category: 'PO가 꼭 알아야 할 것들'
 cover_image: '/brunch_web_assets/images/182.jpg'
+date_string: 'Apr 4. 2025'
 ---
 
 # 📝 182_애자일 vs 워터폴, PO가 알아야 할 모든 것

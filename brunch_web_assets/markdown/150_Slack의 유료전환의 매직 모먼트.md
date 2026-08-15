@@ -3,6 +3,7 @@ layout: default
 title: "Slack의 유료전환의 매직 모먼트"
 category: '스타트업의 전략들'
 cover_image: '/brunch_web_assets/images/150.jpg'
+date_string: 'May 5. 2025'
 ---
 
 # 📝 150_Slack의 유료전환의 매직 모먼트

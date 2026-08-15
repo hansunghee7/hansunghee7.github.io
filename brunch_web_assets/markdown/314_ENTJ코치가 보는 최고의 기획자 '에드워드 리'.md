@@ -3,6 +3,7 @@ layout: default
 title: "ENTJ코치가 보는 최고의 기획자 '에드워드 리'"
 category: '기획자로 시작하기'
 cover_image: '/brunch_web_assets/images/314.jpg'
+date_string: 'Oct 13. 2024'
 ---
 
 # 📝 314_ENTJ코치가 보는 최고의 기획자 '에드워드 리'

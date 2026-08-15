@@ -3,6 +3,7 @@ layout: default
 title: "현재와 미래를 함께한다 3 Horizons model"
 category: '기획자의 프레임웍'
 cover_image: '/brunch_web_assets/images/091.jpg'
+date_string: 'Jul 1. 2025'
 ---
 
 # 📝 091_현재와 미래를 함께한다 3 Horizons model

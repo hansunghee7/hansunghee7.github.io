@@ -3,6 +3,7 @@ layout: default
 title: "실패에서 데카콘으로 'Notion'의 초기 시장진출전략"
 category: '스타트업의 전략들'
 cover_image: '/brunch_web_assets/images/209.jpg'
+date_string: 'Mar 10. 2025'
 ---
 
 # 📝 209_실패에서 데카콘으로 'Notion'의 초기 시장진출전략

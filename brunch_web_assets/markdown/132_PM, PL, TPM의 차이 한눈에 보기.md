@@ -3,6 +3,7 @@ layout: default
 title: "PM, PL, TPM의 차이 한눈에 보기"
 category: 'PO가 꼭 알아야 할 것들'
 cover_image: '/brunch_web_assets/images/132.jpg'
+date_string: 'May 23. 2025'
 ---
 
 # 📝 132_PM, PL, TPM의 차이 한눈에 보기

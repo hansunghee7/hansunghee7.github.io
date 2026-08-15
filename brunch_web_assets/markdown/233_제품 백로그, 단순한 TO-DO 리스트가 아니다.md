@@ -3,6 +3,7 @@ layout: default
 title: "제품 백로그, 단순한 TO-DO 리스트가 아니다"
 category: 'PO가 꼭 알아야 할 것들'
 cover_image: '/brunch_web_assets/images/233.jpg'
+date_string: 'Feb 14. 2025'
 ---
 
 # 📝 233_제품 백로그, 단순한 TO-DO 리스트가 아니다

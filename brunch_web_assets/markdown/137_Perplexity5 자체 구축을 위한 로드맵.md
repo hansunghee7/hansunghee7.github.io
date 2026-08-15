@@ -3,6 +3,7 @@ layout: default
 title: "Perplexity5 자체 구축을 위한 로드맵"
 category: '심플리파이어 인사이트'
 cover_image: '/brunch_web_assets/images/137.jpg'
+date_string: 'May 18. 2025'
 ---
 
 # 📝 137_Perplexity5 자체 구축을 위한 로드맵

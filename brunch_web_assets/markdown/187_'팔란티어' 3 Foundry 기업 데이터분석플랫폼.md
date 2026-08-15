@@ -3,6 +3,7 @@ layout: default
 title: "'팔란티어' 3 Foundry 기업 데이터분석플랫폼"
 category: '심플리파이어 인사이트'
 cover_image: '/brunch_web_assets/images/187.jpg'
+date_string: 'Mar 30. 2025'
 ---
 
 # 📝 187_'팔란티어' 3 Foundry 기업 데이터분석플랫폼

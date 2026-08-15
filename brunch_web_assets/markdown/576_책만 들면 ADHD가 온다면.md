@@ -3,6 +3,7 @@ layout: default
 title: "책만 들면 ADHD가 온다면"
 category: '심플리파이어 라이프'
 cover_image: '/brunch_web_assets/images/576.jpg'
+date_string: 'Oct 26. 2023'
 ---
 
 # 📝 576_책만 들면 ADHD가 온다면...

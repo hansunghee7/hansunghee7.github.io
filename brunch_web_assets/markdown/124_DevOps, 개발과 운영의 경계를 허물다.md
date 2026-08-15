@@ -3,6 +3,7 @@ layout: default
 title: "DevOps, 개발과 운영의 경계를 허물다"
 category: 'PO가 꼭 알아야 할 것들'
 cover_image: '/brunch_web_assets/images/124.jpg'
+date_string: 'May 30. 2025'
 ---
 
 # 📝 124_DevOps, 개발과 운영의 경계를 허물다

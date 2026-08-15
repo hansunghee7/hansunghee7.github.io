@@ -3,6 +3,7 @@ layout: default
 title: "챗GPT가 쉽다고 느껴지는 UX의 비밀"
 category: 'UX의 언어들'
 cover_image: '/brunch_web_assets/images/234.jpg'
+date_string: 'Feb 13. 2025'
 ---
 
 # 📝 234_챗GPT가 쉽다고 느껴지는 UX의 비밀

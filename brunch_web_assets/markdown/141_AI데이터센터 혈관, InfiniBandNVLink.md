@@ -3,6 +3,7 @@ layout: default
 title: "AI데이터센터 혈관, InfiniBandNVLink"
 category: 'AI의 언어들'
 cover_image: '/brunch_web_assets/images/141.jpg'
+date_string: 'May 14. 2025'
 ---
 
 # 📝 141_AI데이터센터 혈관, InfiniBandNVLink

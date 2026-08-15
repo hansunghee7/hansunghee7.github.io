@@ -3,6 +3,7 @@ layout: default
 title: "AI하드웨어, GPU와 NPU 그리고 FPGA의 차이점"
 category: 'AI의 언어들'
 cover_image: '/brunch_web_assets/images/191.jpg'
+date_string: 'Mar 26. 2025'
 ---
 
 # 📝 191_AI하드웨어, GPU와 NPU 그리고 FPGA의 차이점

@@ -3,6 +3,7 @@ layout: default
 title: "코드의 한계를 깨는 AI 혁신, Cursor AI"
 category: '심플리파이어 인사이트'
 cover_image: '/brunch_web_assets/images/210.jpg'
+date_string: 'Mar 9. 2025'
 ---
 
 # 📝 210_코드의 한계를 깨는 AI 혁신, Cursor AI

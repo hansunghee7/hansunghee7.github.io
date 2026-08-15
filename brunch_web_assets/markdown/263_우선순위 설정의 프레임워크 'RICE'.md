@@ -3,6 +3,7 @@ layout: default
 title: "우선순위 설정의 프레임워크 'RICE'"
 category: '기획자의 프레임웍'
 cover_image: '/brunch_web_assets/images/263.jpg'
+date_string: 'Jan 14. 2025'
 ---
 
 # 📝 263_우선순위 설정의 프레임워크 'RICE'

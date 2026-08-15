@@ -3,6 +3,7 @@ layout: default
 title: "ENTJ코치의 넷플릭스 트렁크 감상"
 category: '심플리파이어 라이프'
 cover_image: '/brunch_web_assets/images/286.jpg'
+date_string: 'Dec 2. 2024'
 ---
 
 # 📝 286_ENTJ코치의 넷플릭스 트렁크 감상

@@ -3,6 +3,7 @@ layout: default
 title: "Google의 '심플한 UX' 원칙"
 category: 'UX의 언어들'
 cover_image: '/brunch_web_assets/images/227.jpg'
+date_string: 'Feb 20. 2025'
 ---
 
 # 📝 227_Google의 '심플한 UX' 원칙

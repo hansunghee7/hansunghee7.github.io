@@ -3,6 +3,7 @@ layout: default
 title: "한국 SaaS의 미국 진출 실패 원인 분석"
 category: '대한민국 스타트업 미국진출을 묻다'
 cover_image: '/brunch_web_assets/images/086.jpg'
+date_string: 'Jul 6. 2025'
 ---
 
 # 📝 086_한국 SaaS의 미국 진출 실패 원인 분석

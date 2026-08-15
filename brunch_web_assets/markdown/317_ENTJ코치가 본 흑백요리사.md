@@ -3,6 +3,7 @@ layout: default
 title: "ENTJ코치가 본 흑백요리사"
 category: '심플리파이어 라이프'
 cover_image: '/brunch_web_assets/images/317.jpg'
+date_string: 'Oct 6. 2024'
 ---
 
 # 📝 317_ENTJ코치가 본 흑백요리사

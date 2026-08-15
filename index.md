@@ -6143,7 +6143,7 @@ is_index: true
         let itemsPerBatch = 20, currentVisibleCount = 0;
         let filteredCards = [...cards];
         let currentFilter = 'all';
-        let sortMode = 'desc'; // 최신순 기본값
+        let sortMode = 'desc';
         
         function loadNextBatch() {
             if (currentVisibleCount >= filteredCards.length) return;
@@ -6159,15 +6159,13 @@ is_index: true
         function applyFilterAndSort() {
             cards.forEach(card => { card.classList.remove('visible'); card.style.animationDelay = '0s'; });
             
-            // 1. 필터링
             filteredCards = currentFilter === 'all' ? [...cards] : cards.filter(card => card.getAttribute('data-category') === currentFilter);
             
-            // 2. 정렬 (날짜 데이터 또는 고유 번호 활용)
             filteredCards.sort((a, b) => {
                 let dateA = parseInt(a.getAttribute('data-date')) || 0;
                 let dateB = parseInt(b.getAttribute('data-date')) || 0;
                 
-                if (dateA === dateB) { // 날짜가 같거나 없으면 파일명 번호로 정렬
+                if (dateA === dateB) { 
                     let idA = parseInt(a.getAttribute('data-id')) || 0;
                     let idB = parseInt(b.getAttribute('data-id')) || 0;
                     return sortMode === 'desc' ? idB - idA : idA - idB;
@@ -6175,20 +6173,12 @@ is_index: true
                 return sortMode === 'desc' ? dateB - dateA : dateA - dateB;
             });
             
-            // 3. 화면(DOM) 재배치
             filteredCards.forEach(card => grid.appendChild(card));
-            
             currentVisibleCount = 0;
             loadNextBatch();
         }
 
-        // 정렬 드롭다운 이벤트
-        sortSelect.addEventListener('change', function() {
-            sortMode = this.value;
-            applyFilterAndSort();
-        });
-
-        // 카테고리 버튼 이벤트
+        sortSelect.addEventListener('change', function() { sortMode = this.value; applyFilterAndSort(); });
         filterBtns.forEach(btn => {
             btn.addEventListener('click', function() {
                 filterBtns.forEach(b => b.classList.remove('active')); this.classList.add('active');
@@ -6197,7 +6187,6 @@ is_index: true
             });
         });
 
-        // 무한 스크롤 이벤트
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => { if (entry.isIntersecting) loadNextBatch(); });
         }, { rootMargin: '200px' });

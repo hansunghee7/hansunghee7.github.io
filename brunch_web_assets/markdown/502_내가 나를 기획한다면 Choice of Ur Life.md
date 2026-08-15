@@ -3,6 +3,7 @@ layout: default
 title: "내가 나를 기획한다면 Choice of Ur Life"
 category: '기획일상'
 cover_image: '/brunch_web_assets/images/502.jpg'
+date_string: 'Jan 15. 2024'
 ---
 
 # 📝 502_내가 나를 기획한다면 Choice of Ur Life

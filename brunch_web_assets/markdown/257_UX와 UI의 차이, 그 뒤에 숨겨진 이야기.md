@@ -3,6 +3,7 @@ layout: default
 title: "UX와 UI의 차이, 그 뒤에 숨겨진 이야기"
 category: 'UX의 언어들'
 cover_image: '/brunch_web_assets/images/257.jpg'
+date_string: 'Jan 23. 2025'
 ---
 
 # 📝 257_UX와 UI의 차이, 그 뒤에 숨겨진 이야기

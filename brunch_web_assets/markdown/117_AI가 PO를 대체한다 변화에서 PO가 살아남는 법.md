@@ -3,6 +3,7 @@ layout: default
 title: "AI가 PO를 대체한다 변화에서 PO가 살아남는 법"
 category: 'PO가 꼭 알아야 할 것들'
 cover_image: '/brunch_web_assets/images/117.jpg'
+date_string: 'Jun 6. 2025'
 ---
 
 # 📝 117_AI가 PO를 대체한다 변화에서 PO가 살아남는 법

@@ -3,6 +3,7 @@ layout: default
 title: "UX 5 Planes, 경험 설계의 지도"
 category: '기획자의 프레임웍'
 cover_image: '/brunch_web_assets/images/120.jpg'
+date_string: 'Jun 3. 2025'
 ---
 
 # 📝 120_UX 5 Planes, 경험 설계의 지도

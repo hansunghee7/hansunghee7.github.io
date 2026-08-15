@@ -3,6 +3,7 @@ layout: default
 title: "O or X"
 category: '기획일상'
 cover_image: '/brunch_web_assets/images/554.jpg'
+date_string: 'Nov 19. 2023'
 ---
 
 # 📝 554_O or X

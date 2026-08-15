@@ -3,6 +3,7 @@ layout: default
 title: "규칙이 없는 전략으로 500조를 만든 'Netflix'"
 category: '스타트업의 전략들'
 cover_image: '/brunch_web_assets/images/237.jpg'
+date_string: 'Feb 10. 2025'
 ---
 
 # 📝 237_규칙이 없는 전략으로 500조를 만든 'Netflix'

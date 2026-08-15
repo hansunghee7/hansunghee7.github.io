@@ -3,6 +3,7 @@ layout: default
 title: "Perplexity 1 검색의 한계를 넘어서"
 category: '심플리파이어 인사이트'
 cover_image: '/brunch_web_assets/images/167.jpg'
+date_string: 'Apr 20. 2025'
 ---
 
 # 📝 167_Perplexity 1 검색의 한계를 넘어서

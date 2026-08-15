@@ -3,6 +3,7 @@ layout: default
 title: "'Lean Canvas' 하루만에 그리는 비즈니스청사진"
 category: '기획자의 프레임웍'
 cover_image: '/brunch_web_assets/images/149.jpg'
+date_string: 'May 6. 2025'
 ---
 
 # 📝 149_'Lean Canvas' 하루만에 그리는 비즈니스청사진
