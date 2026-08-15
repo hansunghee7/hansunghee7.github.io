@@ -30,16 +30,16 @@ Tensor Cores가 업계 스탠다드로 자리 잡으면서 AI 프레임워크들
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 60px; padding-top: 25px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 20px; }
-.cat-nav-item { display: flex; align-items: center; gap: 8px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 48%; }
+.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
-.cat-nav-label { font-size: 12px; color: #999; white-space: nowrap; font-weight: 300; }
+.cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
 .nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
 </style>
 <div class="category-nav-wrap">
-  <a href="/brunch_web_assets/markdown/162_AI%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%EC%88%A8%EC%9D%80%20%EC%98%81%EC%9B%85%2C%20FP16%2C%20BF16%2C%20FP8.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">카테고리의 이전글</span><span class="nav-title">AI 성능의 숨은 영웅, FP16, BF16, FP8</span></a>
-  <a href="/brunch_web_assets/markdown/177_AI%20%EC%B9%A9%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%ED%95%B5%EC%8B%AC%2C%20FLOPS%EC%99%80%20TOPS%20%EA%B7%B8%EB%A6%AC%EA%B3%A0.html" class="cat-nav-item cat-nav-right"><span class="nav-title">AI 칩 성능의 핵심, FLOPS와 TOPS 그리고..</span><span class="cat-nav-label">카테고리의 다음글</span></a>
+  <a href="/brunch_web_assets/markdown/162_AI%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%EC%88%A8%EC%9D%80%20%EC%98%81%EC%9B%85%2C%20FP16%2C%20BF16%2C%20FP8.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'AI의 언어들'의 이전글</span><span class="nav-title">AI 성능의 숨은 영웅, FP16, BF16, FP8</span></a>
+  <a href="/brunch_web_assets/markdown/177_AI%20%EC%B9%A9%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%ED%95%B5%EC%8B%AC%2C%20FLOPS%EC%99%80%20TOPS%20%EA%B7%B8%EB%A6%AC%EA%B3%A0.html" class="cat-nav-item cat-nav-right"><span class="nav-title">AI 칩 성능의 핵심, FLOPS와 TOPS 그리고..</span><span class="cat-nav-label">'AI의 언어들'의 다음글</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

@@ -34,16 +34,16 @@ https://product.kyobobook.co.kr/detail/S000216681258](https://product.kyobobook.
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 60px; padding-top: 25px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 20px; }
-.cat-nav-item { display: flex; align-items: center; gap: 8px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 48%; }
+.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
-.cat-nav-label { font-size: 12px; color: #999; white-space: nowrap; font-weight: 300; }
+.cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
 .nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
 </style>
 <div class="category-nav-wrap">
-  <a href="/brunch_web_assets/markdown/037_%EC%8B%A4%EB%A6%AC%EC%BD%98%EB%B0%B8%EB%A6%AC%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%98%20%EA%B8%B0%EC%A4%80.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">카테고리의 이전글</span><span class="nav-title">실리콘밸리 디자인의 기준</span></a>
-  <a href="/brunch_web_assets/markdown/048_%EB%AF%B8%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%EC%99%9C%20%EB%8B%A4%20%27%EB%AF%B8%EC%85%98%27%EB%B6%80%ED%84%B0%20%EB%A7%90%ED%95%A0%EA%B9%8C.html" class="cat-nav-item cat-nav-right"><span class="nav-title">미국 스타트업은 왜 다 '미션'부터 말할까</span><span class="cat-nav-label">카테고리의 다음글</span></a>
+  <a href="/brunch_web_assets/markdown/037_%EC%8B%A4%EB%A6%AC%EC%BD%98%EB%B0%B8%EB%A6%AC%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%98%20%EA%B8%B0%EC%A4%80.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'대한민국 스타트업 미국진출을 묻다'의 이전글</span><span class="nav-title">실리콘밸리 디자인의 기준</span></a>
+  <a href="/brunch_web_assets/markdown/048_%EB%AF%B8%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%EC%99%9C%20%EB%8B%A4%20%27%EB%AF%B8%EC%85%98%27%EB%B6%80%ED%84%B0%20%EB%A7%90%ED%95%A0%EA%B9%8C.html" class="cat-nav-item cat-nav-right"><span class="nav-title">미국 스타트업은 왜 다 '미션'부터 말할까</span><span class="cat-nav-label">'대한민국 스타트업 미국진출을 묻다'의 다음글</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

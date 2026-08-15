@@ -28,16 +28,16 @@ https://www.classu.co.kr/class/classDetail/19442](https://classu.co.kr/me/19442)
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 60px; padding-top: 25px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 20px; }
-.cat-nav-item { display: flex; align-items: center; gap: 8px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 48%; }
+.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
-.cat-nav-label { font-size: 12px; color: #999; white-space: nowrap; font-weight: 300; }
+.cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
 .nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
 </style>
 <div class="category-nav-wrap">
-  <a href="/brunch_web_assets/markdown/170_AI%20%EC%84%B1%EB%8A%A5%EC%9D%84%20100%EB%B0%B0%20%EB%86%92%EC%9D%B4%EB%8A%94%20%EB%B9%84%EA%B2%B0%20TensorCores.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">카테고리의 이전글</span><span class="nav-title">AI 성능을 100배 높이는 비결 TensorCores</span></a>
-  <a href="/brunch_web_assets/markdown/184_AI%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%EC%97%B4%EC%87%A0%2C%20HBM%EC%9D%80%20%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C.html" class="cat-nav-item cat-nav-right"><span class="nav-title">AI 성능의 열쇠, HBM은 무엇일까?</span><span class="cat-nav-label">카테고리의 다음글</span></a>
+  <a href="/brunch_web_assets/markdown/170_AI%20%EC%84%B1%EB%8A%A5%EC%9D%84%20100%EB%B0%B0%20%EB%86%92%EC%9D%B4%EB%8A%94%20%EB%B9%84%EA%B2%B0%20TensorCores.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'AI의 언어들'의 이전글</span><span class="nav-title">AI 성능을 100배 높이는 비결 TensorCores</span></a>
+  <a href="/brunch_web_assets/markdown/184_AI%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%EC%97%B4%EC%87%A0%2C%20HBM%EC%9D%80%20%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C.html" class="cat-nav-item cat-nav-right"><span class="nav-title">AI 성능의 열쇠, HBM은 무엇일까?</span><span class="cat-nav-label">'AI의 언어들'의 다음글</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

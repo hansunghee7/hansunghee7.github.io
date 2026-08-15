@@ -30,16 +30,16 @@ SNS 활용도 빼놓을 수 없습니다. 미국에서 비즈니스 네트워킹
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 60px; padding-top: 25px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 20px; }
-.cat-nav-item { display: flex; align-items: center; gap: 8px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 48%; }
+.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
-.cat-nav-label { font-size: 12px; color: #999; white-space: nowrap; font-weight: 300; }
+.cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
 .nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
 </style>
 <div class="category-nav-wrap">
-  <a href="/brunch_web_assets/markdown/093_%EB%AF%B8%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%27%EB%B8%8C%EB%9E%9C%EB%93%9C%27%EB%A5%BC%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%A0%95%EC%9D%98%ED%95%98%EB%8A%94%EA%B0%80.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">카테고리의 이전글</span><span class="nav-title">미국 스타트업은 '브랜드'를 어떻게 정의하는가</span></a>
-  <a href="/brunch_web_assets/markdown/107_YC%20%EC%A1%B8%EC%97%85%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EB%93%A4%EC%9D%98%20%EA%B3%B5%ED%86%B5%EB%90%9C%20%EC%84%B1%EC%9E%A5%20%EA%B3%B5%EC%8B%9D.html" class="cat-nav-item cat-nav-right"><span class="nav-title">YC 졸업 스타트업들의 공통된 성장 공식</span><span class="cat-nav-label">카테고리의 다음글</span></a>
+  <a href="/brunch_web_assets/markdown/093_%EB%AF%B8%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%27%EB%B8%8C%EB%9E%9C%EB%93%9C%27%EB%A5%BC%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%A0%95%EC%9D%98%ED%95%98%EB%8A%94%EA%B0%80.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'대한민국 스타트업 미국진출을 묻다'의 이전글</span><span class="nav-title">미국 스타트업은 '브랜드'를 어떻게 정의하는가</span></a>
+  <a href="/brunch_web_assets/markdown/107_YC%20%EC%A1%B8%EC%97%85%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EB%93%A4%EC%9D%98%20%EA%B3%B5%ED%86%B5%EB%90%9C%20%EC%84%B1%EC%9E%A5%20%EA%B3%B5%EC%8B%9D.html" class="cat-nav-item cat-nav-right"><span class="nav-title">YC 졸업 스타트업들의 공통된 성장 공식</span><span class="cat-nav-label">'대한민국 스타트업 미국진출을 묻다'의 다음글</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

@@ -92,7 +92,6 @@ for filename in md_files:
     if uid_match: uid = int(uid_match.group(1))
 
     body_content = re.sub(r'^---.*?---\s*', '', content, flags=re.DOTALL)
-    # 기존 하단 네비게이션 찌꺼기가 있다면 제거
     body_content = re.sub(r'\n<!-- CATEGORY_NAV_START -->.*?<!-- CATEGORY_NAV_END -->', '', body_content, flags=re.DOTALL).strip()
 
     post_data = {
@@ -113,11 +112,10 @@ for filename in md_files:
         category_posts[category] = []
     category_posts[category].append(post_data)
 
-# 카테고리별 글 정렬 (uid 순 정렬)
+# 카테고리별 글 정렬
 for cat in category_posts:
     category_posts[cat].sort(key=lambda x: x['uid'])
 
-# 2차 패스: 각 마크다운 파일 업데이트 (카테고리 내 이전글/다음글 HTML 바인딩)
 cards_html = ""
 unique_categories = set()
 post_count = 0
@@ -137,24 +135,24 @@ for p in posts:
     prev_post = cat_list[idx - 1] if idx > 0 else None
     next_post = cat_list[idx + 1] if idx >= 0 and idx < len(cat_list) - 1 else None
 
-    # 브런치 스타일의 하단 카테고리 네비게이션 HTML
+    # 🌟 브라우저 화면 좌우 끝(100vw)으로 확장 및 실시간 카테고리명 반영 HTML
     nav_html = "\n\n<!-- CATEGORY_NAV_START -->\n<style>\n" \
-               ".category-nav-wrap { margin-top: 60px; padding-top: 25px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 20px; }\n" \
-               ".cat-nav-item { display: flex; align-items: center; gap: 8px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 48%; }\n" \
+               ".category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }\n" \
+               ".cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }\n" \
                ".cat-nav-item:hover { color: #111; }\n" \
                ".cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }\n" \
-               ".cat-nav-label { font-size: 12px; color: #999; white-space: nowrap; font-weight: 300; }\n" \
+               ".cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }\n" \
                ".nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }\n" \
                ".cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }\n" \
                "</style>\n<div class=\"category-nav-wrap\">\n"
 
     if prev_post:
-        nav_html += f'  <a href="{prev_post["link"]}" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">카테고리의 이전글</span><span class="nav-title">{prev_post["title"]}</span></a>\n'
+        nav_html += f'  <a href="{prev_post["link"]}" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">\'{category}\'의 이전글</span><span class="nav-title">{prev_post["title"]}</span></a>\n'
     else:
         nav_html += f'  <div></div>\n'
 
     if next_post:
-        nav_html += f'  <a href="{next_post["link"]}" class="cat-nav-item cat-nav-right"><span class="nav-title">{next_post["title"]}</span><span class="cat-nav-label">카테고리의 다음글</span></a>\n'
+        nav_html += f'  <a href="{next_post["link"]}" class="cat-nav-item cat-nav-right"><span class="nav-title">{next_post["title"]}</span><span class="cat-nav-label">\'{category}\'의 다음글</span></a>\n'
     else:
         nav_html += f'  <div></div>\n'
 
@@ -186,14 +184,14 @@ html_body = """<style>
 .filter-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px; margin-bottom: 35px; }
 .category-filter { display: flex; flex-wrap: wrap; gap: 8px; flex: 1; }
 .cat-btn { padding: 7px 16px; border: 1px solid #e1e1e1; border-radius: 20px; background: #fff; color: #666; font-size: 13px; font-weight: 300; cursor: pointer; transition: all 0.2s; font-family: 'Noto Sans KR', sans-serif; }
-.cat-btn:hover { border-color: #6CFD33; color: #111; }
+.cat-btn:hover { border-color: #111111; color: #111111; }
 
-.cat-btn.active { background: #6CFD33; color: #ffffff !important; border-color: #6CFD33; font-weight: 600; }
+.cat-btn.active { background: #111111; color: #ffffff !important; border-color: #111111; font-weight: 300; }
 
 .sort-filter { display: flex; gap: 15px; align-items: center; margin-bottom: 5px; }
 .sort-text-btn { background: none; border: none; font-size: 14px; color: #a0a0a0; cursor: pointer; font-family: 'Noto Sans KR', sans-serif; font-weight: 300; display: flex; align-items: center; padding: 0; transition: color 0.2s; }
 .sort-text-btn:hover { color: #555; }
-.sort-text-btn.active { color: #111; font-weight: 500; }
+.sort-text-btn.active { color: #111; font-weight: 400; }
 .sort-text-btn .dot { display: inline-block; width: 4px; height: 4px; border-radius: 50%; background-color: transparent; margin-right: 4px; margin-bottom: 2px; }
 .sort-text-btn.active .dot { background-color: #6CFD33; }
 
@@ -241,4 +239,4 @@ const observer = new IntersectionObserver(entries => { entries.forEach(entry => 
 with open(index_file, 'w', encoding='utf-8') as f:
     f.write(html_header + html_body)
 
-print("✅ 카테고리별 이전글/다음글 하단 네비게이션 적용 완료!")
+print("✅ 하단 네비게이션: 풀-블리드 라인, 화면 양 끝 배치, 실제 카테고리명 반영 완료!")
