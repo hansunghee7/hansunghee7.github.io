@@ -69,6 +69,7 @@ date_string: 'Feb 14. 2024'
 3. [[웹툰] 잉크드인대 기획학과 '예고'](https://eopla.net/magazines/11891)
 
 EO Planet은 시작한지 얼마 안되었지만 큰 기업 인재들이...가 4.1k 조회수를 얻었고, 일반게시물도 양호하게 조회되고 있다.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -86,7 +87,7 @@ EO Planet은 시작한지 얼마 안되었지만 큰 기업 인재들이...가 4
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

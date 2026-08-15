@@ -27,6 +27,7 @@ date_string: 'Mar 18. 2025'
 기획자가 훅 모델을 실전에 적용할 때는 몇 가지 주의할 점이 있다. 외부 계기에만 의존하지 말고 내부 계기를 형성해야 한다. 사용자 행동을 단순화하고, 보상은 예측 불가능하면서도 가치 있게 설계해야 한다. 그리고 투자 단계를 통해 장기적 관계를 형성해야 한다.
 
 니르 이얄의 이 모델은 단순한 마케팅 전략을 넘어, 우리의 일상 행동을 설명하는 강력한 렌즈가 되었다. 습관 형성 제품은 기존 마케팅보다 비용 효율적이고 강력한 사용자 충성도를 만들어낸다. 다만 이러한 강력한 도구는 윤리적 책임과 함께 사용되어야 한다. 궁극적으로 훅 모델의 목적은 사용자의 삶을 개선하는 습관을 형성하는 것이어야 한다.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -44,7 +45,7 @@ date_string: 'Mar 18. 2025'
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

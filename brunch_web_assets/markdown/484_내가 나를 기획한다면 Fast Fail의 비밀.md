@@ -37,6 +37,7 @@ A는 해외에서 박사과정까지 거친 재원이었다. 집을 구하면서
 안 해 본 일을 하는 건 누구에게나 두렵고 어렵다. 그러나 '세상의 모든 놀라운 성취의 시작은 크고 작은 실패와 거절의 경험에서 시작되었다.'는 걸 알아야 한다.
 
 지금 당신은 성취를 위해 어떤 경험의 씨앗을 심고 있는가?
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -54,7 +55,7 @@ A는 해외에서 박사과정까지 거친 재원이었다. 집을 구하면서
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

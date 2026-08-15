@@ -27,6 +27,7 @@ Tensor Cores가 업계 스탠다드로 자리 잡으면서 AI 프레임워크들
 앞으로도 AI 기술은 계속해서 발전할 것이고, 그 중심에는 언제나 행렬 곱셈이 있을 것입니다. Transformer나 GPT 같은 대형 모델들이 GPU와 행렬 곱셈 병렬화 기술 없이는 상상조차 못 했을 테니까요. 물론 도전 과제도 만만치 않습니다. 파라미터 수가 늘어날수록 연산량도 기하급수적으로 증가하고, 고성능 연산을 뒷받침할 HBM 같은 고대역 메모리 수요도 폭발할 테니까요.
 
 하지만 걱정은 접어두죠. Tensor Cores를 필두로 한 행렬 곱셈 가속화 기술이 한발 앞서 우리를 인도해 줄 테니까요. 앞으로 NVIDIA, AMD, 인텔, 구글 같은 대형 테크 기업들이 내놓을 새로운 AI 칩들의 행렬 곱셈 성능이 어떻게 진화할지 지켜보는 것만으로도 흥분되지 않나요? 우리가 상상하는 것보다 더 놀라운 미래가 펼쳐질 지도 모르겠네요.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -44,7 +45,7 @@ Tensor Cores가 업계 스탠다드로 자리 잡으면서 AI 프레임워크들
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

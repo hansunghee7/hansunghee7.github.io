@@ -31,6 +31,7 @@ Effort는 아이디어 실현에 필요한 시간, 인력, 예산 등을 가늠�
 ---
 
 기획자의 프레임웍은 기획자들이 활용할 수 있는 프레임웍들을 연재하는 콘텐츠입니다. 다뤘으면 하는 콘텐츠가 있으면 댓글로 남겨주세요.  :-)
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -48,7 +49,7 @@ Effort는 아이디어 실현에 필요한 시간, 인력, 예산 등을 가늠�
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

@@ -23,6 +23,7 @@ date_string: 'Jul 6. 2025'
 다행히 이러한 실패 요인은 선배들의 경험을 통해 예측하고 대비할 수 있습니다. "직감 대신 데이터와 고객 목소리에 의존할 것", "하위 세분시장부터 파고들 것", "철저히 현지화하고 리더가 직접 뛸 것", "시간과 자금을 넉넉히 잡을 것" 등의 교훈을 바탕으로 준비한다면 실패 확률을 크게 낮출 수 있을 것입니다.
 
 다음 포스팅에서는 "미국 진출 시 법인부터 설립해야 할까"에 대해 살펴보겠습니다.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -40,7 +41,7 @@ date_string: 'Jul 6. 2025'
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

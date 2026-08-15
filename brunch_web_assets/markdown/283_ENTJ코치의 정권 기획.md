@@ -21,6 +21,7 @@ date_string: 'Dec 8. 2024'
  단순한 "정권 획득"만을 목표로 하는 정당은 유권자에게 피로감을 준다. 정당의 목표는 정권을 획득하고, 유지하며, 연속적인 정권 획득을 가능하게 하는 시스템을 만드는 것이어야 한다. 획득에서 끝나지 않고, 유지를 넘어 연속적인 획득으로. 정권을 운영할 준비가 된 정당만이 유권자의 신뢰를 얻을 수 있다.
 
  정당의 목표에 대한 설명이 교과서에서도 이렇게 바뀌어야 하지 않을까? 단순히 "정권 획득"이라고만 적혀 있다면, 우리는 계속해서 과거의 정치를 반복할지도 모른다. 획득, 유지, 연속 획득의 선순환을 만드는 것이야말로 진짜 정당의 목표가 아닐까?
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -38,7 +39,7 @@ date_string: 'Dec 8. 2024'
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

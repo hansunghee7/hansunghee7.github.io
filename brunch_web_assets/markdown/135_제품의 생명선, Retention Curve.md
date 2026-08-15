@@ -27,6 +27,7 @@ date_string: 'May 20. 2025'
 또한, 여러 코호트의 평균 리텐션 커브를 그려 전체 서비스 건강도를 진단하고, 평탄화되는 구간을 KPI로 삼아 장기 사용자 확보 전략을 수립한다. 특정 행동(예: 첫 구매, 친구 초대 등)과 리텐션 커브의 상관관계를 분석해 장기 잔존율을 높이는 핵심 경험을 강화하는 것도 중요하다.
 
 리텐션 커브는 단순한 수치 이상의 인사이트를 제공한다. 이 커브의 모양은 제품의 미래를 예측하는 결정적 신호다. 스타트업 투자자들이 가장 먼저 보는 지표 중 하나가 리텐션 커브인 이유다. 결국 성장의 핵심은 신규 사용자 확보가 아니라, 기존 사용자의 장기적 충성도에 있기 때문이다.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -44,7 +45,7 @@ date_string: 'May 20. 2025'
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

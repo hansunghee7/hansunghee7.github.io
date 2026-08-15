@@ -33,6 +33,7 @@ date_string: 'Feb 6. 2025'
 지금 이 순간에도 수많은 엄지손가락들이 스마트폰 위를 춤추고 있습니다. 그들의 리듬에 맞추는 것, 이것이 바로 엄지 친화적 디자인의 핵심이죠. 엄지손가락이 행복한 디자인, 바로 우리가 추구해야 할 사용자 중심의 UX디자인입니다.
 
 UX의 언어들이 책으로 나왔어요.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -50,7 +51,7 @@ UX의 언어들이 책으로 나왔어요.
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

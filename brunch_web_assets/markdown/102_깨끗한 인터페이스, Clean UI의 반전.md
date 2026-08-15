@@ -33,6 +33,7 @@ Clean UI가 제공하는 이점은 명확합니다. 사용자가 핵심 정보�
 'Clean UI'는 단순함 그 자체가 아니라, 사용자에게 '최적의 경험'을 주기 위한 '숨은 배려'와 '발견의 재미'까지 담고 있습니다. 진정한 Clean UI는 복잡함을 단순화하는 기술이지, 단순히 빼내는 것이 아닙니다.
 
 UX의 언어들이 책으로 나왔어요.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -50,7 +51,7 @@ UX의 언어들이 책으로 나왔어요.
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

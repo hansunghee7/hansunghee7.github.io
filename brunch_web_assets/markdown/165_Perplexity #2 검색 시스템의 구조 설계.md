@@ -91,6 +91,7 @@ Perplexity AI의 검색 시스템은 전통적인 키워드 기반 검색과 최
 이 기술을 자체 서비스에 적용하려는 팀은 쿼리 특성에 따른 라우팅 전략, 효과적인 인덱싱 구조, 결과 통합 및 재평가 방식, 그리고 시스템 확장성과 운영 효율성 등을 종합적으로 고려해야 합니다. 하지만 모든 구성 요소를 처음부터 구현할 필요는 없으며, 검색 엔진(Elasticsearch), 벡터 데이터베이스(Qdrant, FAISS), 임베딩 모델(SentenceTransformer) 등의 오픈소스 도구를 활용하여 단계적으로 시스템을 구축해 나갈 수 있습니다.
 
 다음 편에서는 이러한 검색 결과를 바탕으로 자연스럽고 정확한 답변을 생성하는 RAG(Retrieval-Augmented Generation) 시스템의 구조를 자세히 살펴보겠습니다. :-)
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -108,7 +109,7 @@ Perplexity AI의 검색 시스템은 전통적인 키워드 기반 검색과 최
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

@@ -27,6 +27,7 @@ date_string: 'Apr 11. 2024'
 인원수를 보았을 때 2개 트랙(스쿼드)의 구성이 가능하여, 한쪽 트랙은 목표일정이 중요한 프로젝트를 담당하는 스쿼드(1번)로, 다른 쪽은 제휴사 일정에 따라 변동성이 큰 과제나 일정 중요도가 높지 않은 유관부서 요청과제를 담당하는 스쿼드(2번)로 역할을 부여했다. 해당 생산구조로 업무를 진행하니, 1번 스쿼드는 예상했던 일정에 가깝게 투자유치를 위한 프로젝트가 출시되었고, 2번 스쿼드는 제휴업무와 내부요청 프로세스 체계를 정리할 수 있게 되었다.
 
 프로덕트 조직의 생산조직 체계는 위와 같이 사업목적에 맞게 구성을 해야 하며, 사업 상황에 따라 2번 스쿼드도 프로젝트에 투입될 수 있게 유연성을 가지게 운영을 해야 한다. 그리고 스쿼드 인력 변화와 사업아이템 인입현황에 따라 생산체계를 지속적으로 조율해 주는 것도 중요하다.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -44,7 +45,7 @@ date_string: 'Apr 11. 2024'
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

@@ -47,6 +47,7 @@ DevOps는 개발과 운영의 경계를 허무는 문화입니다. 기술적 자
 DevOps는 단순히 도구나 프로세스의 문제가 아닙니다. 조직 전체가 고객 가치 창출을 위해 하나의 팀으로 움직이는 문화적 변혁입니다. 기획자가 이러한 변화를 이해하고 주도할 때, 조직은 더 빠르고 안정적인 서비스 제공이 가능해집니다.
 
 사용자의 이해를 높이기 위해서 알아야 할 언어는?
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -64,7 +65,7 @@ DevOps는 단순히 도구나 프로세스의 문제가 아닙니다. 조직 전
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

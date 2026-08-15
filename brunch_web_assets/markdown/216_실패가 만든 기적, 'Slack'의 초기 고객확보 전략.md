@@ -43,6 +43,7 @@ Slack은 통합 파트너 웹사이트로부터 추천 트래픽을 확보하고
 Slack의 사례에서 스타트업들이 배울 수 있는 교훈은 다양합니다. 때로는 주력 제품이 아닌 부산물에서 더 큰 기회가 올 수 있으며, "이메일 죽이기"처럼 강력한 메시지 구축이 중요합니다. 또한 한 명의 사용자가 여러 명을 데려오는 네트워크 효과를 설계하고, 사용자가 더 많이 사용할수록 빠져나가기 어려워지는 제품 생태계를 구축하는 것이 초기 성장을 가속화합니다. 마지막으로, 초기 사용자들의 의견을 적극 수렴하고 빠르게 제품에 반영하는 피드백 루프를 활성화하는 것이 중요합니다.
 
 Slack의 사례는 뛰어난 제품, 명확한 가치 제안, 그리고 전략적인 고객 확보 방법이 결합되었을 때 얼마나 빠른 성장을 이룰 수 있는지 보여줍니다. 여러분의 스타트업도 이러한 전략을 참고해 초기 고객을 확보하고 성장의 발판을 마련해보세요.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -60,7 +61,7 @@ Slack의 사례는 뛰어난 제품, 명확한 가치 제안, 그리고 전략�
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

@@ -59,6 +59,7 @@ date_string: 'Apr 4. 2025'
 지속적인 학습과 개선: 어떤 방법론을 선택하든, 프로젝트를 통해 배운 점을 다음에 적용하세요.
 
 어떤 방법론이 옳고 그르다는 절대적인 기준은 없습니다. 중요한 것은 프로젝트와 팀에 맞는 방식을 선택하고, 필요에 따라 유연하게 조정하는 것입니다. 기획자로서 두 방법론의 장단점을 이해하고 상황에 맞게 적용한다면, 프로젝트의 성공 가능성을 높일 수 있을 것입니다.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -76,7 +77,7 @@ date_string: 'Apr 4. 2025'
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

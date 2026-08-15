@@ -45,6 +45,7 @@ Dropbox의 성공 비결은 '바이럴 루프(Viral Loop)'와 '자연스러운 �
 무료에서 유료로의 전환은 단순히 기능을 제한하거나 가격을 올리는 것으로 해결되지 않습니다. 사용자가 서비스의 핵심 가치를 경험하고, '유료로 전환할 이유'를 명확히 느끼게 하는 것이 핵심입니다.
 
 Dropbox처럼 사용자의 자연스러운 사용 패턴을 이해하고, 그에 맞는 전환 전략을 설계한다면 여러분의 스타트업도 지속 가능한 수익 모델을 구축할 수 있을 것입니다.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -62,7 +63,7 @@ Dropbox처럼 사용자의 자연스러운 사용 패턴을 이해하고, 그에
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

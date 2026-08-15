@@ -71,6 +71,7 @@ Notion의 시장 진출 전략에서 스타트업들이 배울 수 있는 핵심
 **6. 시장 변화와 위기를 기회로 전환할 수 있는 민첩성을 갖출 것**
 
 Notion의 사례는 혁신적인 제품과 전략적인 시장 진출이 결합되었을 때, 포화된 시장에서도 성공적으로 자리잡을 수 있음을 보여줍니다. 여러분도 이러한 전략을 응용하여 효과적인 시장 진출 계획을 수립해보시기 바랍니다.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -88,7 +89,7 @@ Notion의 사례는 혁신적인 제품과 전략적인 시장 진출이 결합�
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

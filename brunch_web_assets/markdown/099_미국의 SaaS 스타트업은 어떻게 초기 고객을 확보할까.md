@@ -27,6 +27,7 @@ SNS 활용도 빼놓을 수 없습니다. 미국에서 비즈니스 네트워킹
 한국 스타트업들도 글로벌 초기 고객을 얻고자 한다면 이처럼 콘텐츠, 커뮤니티, 직접 네트워킹 위주의 전략을 참고할 만합니다.
 
 다음 포스팅에서는 "미국 스타트업은 '브랜드'를 어떻게 정의하는가"에 대해 다뤄보겠습니다.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -44,7 +45,7 @@ SNS 활용도 빼놓을 수 없습니다. 미국에서 비즈니스 네트워킹
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

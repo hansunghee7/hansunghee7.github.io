@@ -39,6 +39,7 @@ FPGA는 현장에서 프로그래밍 가능한 반도체입니다. 어떻게 설
 앞으로 AI 모델은 계속 진화할 겁니다. 하드웨어와 소프트웨어가 긴밀하게 연계되어야만 최고의 성능을 끌어낼 수 있기 때문이죠. NVIDIA나 구글, 애플 같은 선두 기업들이 어떤 AI 칩을 내놓을지 눈여겨볼 일입니다. 최적의 하드웨어로 무장해야 AI 경쟁에서 살아남을 수 있으니까요. 우리 모두 관심 있게 지켜보면 좋겠습니다.
 
 **AI시대에 알아야 할 UX의 언어는?**
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -56,7 +57,7 @@ FPGA는 현장에서 프로그래밍 가능한 반도체입니다. 어떻게 설
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

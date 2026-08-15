@@ -35,6 +35,7 @@ MECE를 정복하는 핵심은 이 두 가지 원칙을 익히는 것이다.
 기획이라는 건, 결국 문제를 얼마나 명쾌하게 정의하고 창의적으로 해결하느냐의 문제다. 이 고난도 퍼즐을 단숨에 풀어내는 스킬. 그것이 바로 MECE다. 복잡하고 어지러운 문제가 눈앞에 닥쳤을 때, MECE의 렌즈를 통해 세상을 바라보자. 혼돈 속에서 질서를, 악몽 같은 문제에서 꿈의 해답을 발견할 수 있을 것이다.
 
 MECE, 기획자에겐 그 자체로 마법 지팡이와도 같은 도구다. 상호 배타적이고 전체를 포괄하는 사고의 힘. 이것이야말로 기획의 비법이 아닐까한다.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -52,7 +53,7 @@ MECE, 기획자에겐 그 자체로 마법 지팡이와도 같은 도구다. 상
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

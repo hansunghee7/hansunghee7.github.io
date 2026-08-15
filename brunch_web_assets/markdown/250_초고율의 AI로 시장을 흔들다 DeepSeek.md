@@ -21,6 +21,7 @@ DeepSeek의 사례는 중요한 통찰을 제공한다. 자원이 부족하더�
 하지만 DeepSeek의 앞길이 순탄하기만 한 것은 아니다. 글로벌 시장 진출 과정에서 거센 규제의 벽에 부딪히고 있으며, 거대 기업들의 견제도 만만치 않다. 또한 데이터 확보와 활용을 둘러싼 논란도 끊이지 않고 있다. 살아남기 위해 풀어야 할 숙제가 산적해 있는 셈이다.
 
 그럼에도 DeepSeek은 "누구나 사용할 수 있는 고성능 AI"라는 원대한 비전을 달성하고자 하고 있다. 우리는 DeepSeek이 AI 산업계의 지형에 어떤 영향을 줄지 주목해야할 시점이다.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -38,7 +39,7 @@ DeepSeek의 사례는 중요한 통찰을 제공한다. 자원이 부족하더�
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

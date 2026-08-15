@@ -53,6 +53,7 @@ Superhuman의 시장 진출 전략에서 스타트업들이 배울 수 있는 �
 ![kVLfqsm3HAwPB0Y6h08ymuwuE.jpg](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/D7D7Vpb9FZURJToA6T0GEpbEwvc.jpg)
 
 Superhuman의 사례는 기존 시장에서도 명확한 타겟팅과 차별화된 가치 제안을 통해 성공적으로 진입할 수 있음을 보여줍니다. 여러분의 스타트업도 이러한 전략을 응용하여 효과적인 시장 진출 계획을 수립해보시기 바랍니다.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -70,7 +71,7 @@ Superhuman의 사례는 기존 시장에서도 명확한 타겟팅과 차별화�
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

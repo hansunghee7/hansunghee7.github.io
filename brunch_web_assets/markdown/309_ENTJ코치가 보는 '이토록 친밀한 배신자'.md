@@ -15,6 +15,7 @@ date_string: 'Oct 19. 2024'
 ---
 
  부녀가 서로를 의심하고 감정적 가학을 하는 막장적 가족 서사에서 일본 소설의 플롯이 살짝 느껴지지만, 전반적으로 완성도 있는 영화를 보는 듯한 높은 수준을 보여준다. 무엇보다도 한석규가 아니었으면 이렇게 주인공의 감정적 갈등을 표현할 수 있었을까 싶다. 오랜만에 감정선이 좋은 작품을 만나서 기쁘다. 그러나 한편으론 새로운 걱정이 생겼다. 앞으로 3주를 또 어떻게 기다려야 할지.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -32,7 +33,7 @@ date_string: 'Oct 19. 2024'
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

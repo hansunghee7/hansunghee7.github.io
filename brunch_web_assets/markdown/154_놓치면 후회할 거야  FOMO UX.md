@@ -37,6 +37,7 @@ FOMO는 본래 SNS 시대에 생겨난 사회 현상을 설명하는 개념이�
 당신의 서비스에도 사용자가 놓치고 싶지 않을 가치가 있나요? 그렇다면 FOMO의 힘을 빌려보는 것은 어떨까요? 단, 사용자의 신뢰를 잃지 않는 선에서 균형을 잡는 것이 중요합니다. FOMO는 불안이 아닌, 기대와 설렘을 주는 방향으로 쓰일 때 비로소 빛을 발하니까요.
 
 UX의 언어들이 책으로 나왔어요.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -54,7 +55,7 @@ UX의 언어들이 책으로 나왔어요.
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

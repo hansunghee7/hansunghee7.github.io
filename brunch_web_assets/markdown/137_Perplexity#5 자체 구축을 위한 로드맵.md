@@ -53,6 +53,7 @@ Perplexity AI 기술 해부 시리즈의 마지막 시간입니다. 지금까지
 물론 실전에선 더 많은 난관이 기다리고 있겠지만, 이 가이드가 RAG 시스템으로의 여정에 나침반이 되어주길 바랍니다. 작게 시작해서 빠르게 실험하고 개선해 나가다 보면, 어느새 우리만의 Perplexity를 마주하게 될 겁니다. 제가 코칭하는 회사도 하나씩 하나씩 PoC를 통해 완성도 있는 서비스를 만들어가고 있거든요.
 
 인공지능 기술의 민주화가 가속화되는 지금, 작은 팀의 도전과 혁신이 그 어느 때보다 의미 있는 시대라 생각합니다. Perplexity에서 영감을 얻어 세상에 임팩트를 만들어낼 여러분의 프로젝트를 응원하겠습니다!
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -70,7 +71,7 @@ Perplexity AI 기술 해부 시리즈의 마지막 시간입니다. 지금까지
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

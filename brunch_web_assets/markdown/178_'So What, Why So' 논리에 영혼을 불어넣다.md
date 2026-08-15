@@ -25,6 +25,7 @@ date_string: 'Apr 8. 2025'
 일상 생활에서도 적용 가능하다. 점심 메뉴를 고를 때도 "빠르게 결정해야 한다(So What)"와 "1시간 후 회의가 있기 때문(Why So)"이라는 간단한 논리 구조를 만들 수 있다. 이처럼 'So What, Why So'는 복잡한 컨설팅 프로젝트부터 일상의 소소한 결정까지, 모든 상황에서 논리적 사고를 돕는 강력한 도구다.
 
 논리는 사고의 골격이지만, 'So What, Why So'는 그 골격에 영혼을 불어넣는다. 단순한 데이터는 의미 있는 인사이트로, 막연한 주장은 설득력 있는 논리로 변모한다. 간단하지만 두 질문이 지닌 마법과도 같은 힘을 잘 활용하길 바란다.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -42,7 +43,7 @@ date_string: 'Apr 8. 2025'
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

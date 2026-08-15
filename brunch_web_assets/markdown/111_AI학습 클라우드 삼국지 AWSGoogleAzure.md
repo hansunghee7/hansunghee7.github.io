@@ -27,6 +27,7 @@ AI 스타트업이나 자금 제약 상황에서는 최저 비용의 Google TPU 
 대규모 기업은 하이브리드 접근이 효과적일 수 있습니다. 프로토타이핑에는 Azure H100, 대규모 학습에는 Google TPU, 프로덕션에는 AWS 솔루션을 조합하는 전략이 유효합니다.
 
 결론적으로, 비용 효율성 최우선이면 Google TPU, 개발 속도와 생산성 중시면 Azure H100, AWS 생태계 통합과 균형 잡힌 성능을 원하면 AWS Trainium이 적합합니다. 빠르게 변화하는 AI 분야에서는 비즈니스 요구에 유연하게 대응하는 접근법이 장기적 성공의 열쇠입니다.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -44,7 +45,7 @@ AI 스타트업이나 자금 제약 상황에서는 최저 비용의 Google TPU 
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

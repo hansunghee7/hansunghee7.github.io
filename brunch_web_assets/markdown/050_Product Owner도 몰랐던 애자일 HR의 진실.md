@@ -25,6 +25,7 @@ Google은 연간 성과평가를 완전히 폐지한 것이 아니라, 기존 �
 박차장의 팀은 작은 실험부터 시작했다. 개발팀 대상으로 월간 체크인을 도입하고, 신입 채용에 실무진을 참여시켰다. 6개월 후 팀원들이 "내 의견이 반영된다"고 느끼기 시작했고, 채용 미스매치도 줄어들었다.
 
 Product Owner로서 우리가 제품의 사용자 경험을 개선하듯, 조직의 "직원 경험"도 함께 개선해나갈 때 진정한 애자일 조직이 완성된다. 애자일 HR의 본질은 프로세스를 사람에게 맞추는 것이지, 사람을 프로세스에 끼워맞추는 게 아니다.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -42,7 +43,7 @@ Product Owner로서 우리가 제품의 사용자 경험을 개선하듯, 조직
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

@@ -37,6 +37,7 @@ IT 기업들은 이 SCAMPER 기법으로 제품과 서비스를 혁신한다. �
 기획자라면 SCAMPER를 능숙하게 활용해야 한다. 우선 아이디어 발상 단계에서 7가지 키워드로 브레인스토밍을 하자. 기존 제품 개선, 서비스 혁신, 프로세스 최적화에도 이를 적용해보자. 삼성전자의 폴더블폰처럼 'Modify'로 새로운 디자인을 고안하고, 삼성페이처럼 'Combine'으로 카드 결제 기능 탑재 등을 고려해볼 수도 있다. 'Eliminate'로 업무 단계를 간소화하고, 'Adapt'로 이종 산업 마케팅을 벤치마킹할 수도 있다. 나아가 팀 워크숍에서 SCAMPER의 키워드들로 아이디어 발상을 진행하는 것도 좋은 방법이 될 수도 있을 것다.
 
 이처럼 SCAMPER는 체계적이고도 창의적인 사고의 틀을 제공한다. 이를 통해 기획자는 혁신적 아이디어를 찾아내고 프로젝트에 녹여낼 수 있다. 단순한 머리풀기가 아니라 전략적 사고의 비밀병기, SCAMPER 기법을 꼭 익혀두자.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -54,7 +55,7 @@ IT 기업들은 이 SCAMPER 기법으로 제품과 서비스를 혁신한다. �
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

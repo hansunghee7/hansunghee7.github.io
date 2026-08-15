@@ -114,8 +114,6 @@ for filename in md_files:
     title_match = re.search(r"^title:\s*(.*)$", content, re.MULTILINE)
     cat_match = re.search(r"^category:\s*['\"]?(.*?)['\"]?\s*$", content, re.MULTILINE)
     cover_match = re.search(r"^cover_image:\s*['\"]?(.*?)['\"]?\s*$", content, re.MULTILINE)
-    
-    # 🌟 [NEW] 마크다운에 수동으로 입력된 날짜를 추출합니다.
     date_match = re.search(r"^date_string:\s*['\"]?(.*?)['\"]?\s*$", content, re.MULTILINE)
     md_date = date_match.group(1).strip() if date_match else ""
     
@@ -133,22 +131,20 @@ for filename in md_files:
     title_clean = re.sub(r'[^가-힣a-zA-Z0-9]', '', title)
     filename_clean = re.sub(r'[^가-힣a-zA-Z0-9]', '', filename[:-3])
     
-    # 🌟 [NEW] CSV에 날짜가 없으면, 마크다운에 적어둔 날짜(md_date)를 존중하여 사용합니다!
     csv_date = csv_dates.get(title_clean, csv_dates.get(filename_clean, ""))
     date_string = csv_date if csv_date else md_date
 
     safe_url = urllib.parse.quote(filename[:-3])
     link = f"/brunch_web_assets/markdown/{safe_url}.html"
 
-    # 🌟 [NEW] 정렬 기능(Timestamp)이 YYYY. MM. DD. 형태도 인식하도록 업그레이드!
     timestamp = "00000000"
     try:
         clean_date = date_string.replace('.', ' ').replace(',', ' ').strip()
         parts = clean_date.split()
         if len(parts) >= 3:
-            if len(parts[0]) == 4 and parts[0].isdigit(): # 예: 2026. 08. 15.
+            if len(parts[0]) == 4 and parts[0].isdigit():
                 timestamp = f"{parts[0]}{parts[1].zfill(2)}{parts[2].zfill(2)}"
-            else: # 기존 브런치 형식 예: Aug 15. 2026
+            else:
                 months = {'Jan':'01', 'Feb':'02', 'Mar':'03', 'Apr':'04', 'May':'05', 'Jun':'06', 'Jul':'07', 'Aug':'08', 'Sep':'09', 'Oct':'10', 'Nov':'11', 'Dec':'12'}
                 timestamp = f"{parts[2]}{months.get(parts[0][:3], '00')}{parts[1].zfill(2)}"
     except: pass
@@ -158,12 +154,19 @@ for filename in md_files:
     if uid_match: uid = int(uid_match.group(1))
 
     body_content = re.sub(r'^---.*?---\s*', '', content, flags=re.DOTALL)
-    body_content = re.sub(r'\n<!-- PROMO_BANNER_START -->.*?<!-- PROMO_BANNER_END -->', '', body_content, flags=re.DOTALL).strip()
-    body_content = re.sub(r'\n<!-- CATEGORY_NAV_START -->.*?<!-- CATEGORY_NAV_END -->', '', body_content, flags=re.DOTALL).strip()
+    
+    # 🌟 [강력 패치] 줄바꿈(\n) 유무 상관없이, 찰싹 붙어있는 중복 태그까지 모조리 박멸!
+    body_content = re.sub(r'<!-- PROMO_BANNER_START -->.*?<!-- PROMO_BANNER_END -->', '', body_content, flags=re.DOTALL)
+    body_content = re.sub(r'<!-- CATEGORY_NAV_START -->.*?<!-- CATEGORY_NAV_END -->', '', body_content, flags=re.DOTALL)
+    body_content = re.sub(r'<!-- OG_CARD_START -->.*?<!-- OG_CARD_END -->', '', body_content, flags=re.DOTALL)
+    
     body_content = re.sub(r'^https://www\.yes24\.com/product/goods/\d+\s*$', '', body_content, flags=re.MULTILINE)
     body_content = re.sub(r'^https://trevar\.ink/[a-zA-Z0-9]+\s*$', '', body_content, flags=re.MULTILINE)
 
     body_content = re.sub(r'^\s*(https?://[^\s<>]+)\s*$', replace_raw_url, body_content, flags=re.MULTILINE)
+    
+    # 끝부분에 남은 불필요한 빈 줄 완벽 제거
+    body_content = body_content.strip()
 
     post_data = {
         'filename': filename,
@@ -191,7 +194,7 @@ with open(og_cache_file, 'w', encoding='utf-8') as f:
 
 global_promo_html = ""
 if GLOBAL_PROMO_LINKS:
-    global_promo_html += "\n<!-- PROMO_BANNER_START -->\n<div style=\"margin-top: 60px;\">\n"
+    global_promo_html += "\n\n<!-- PROMO_BANNER_START -->\n<div style=\"margin-top: 60px;\">\n"
     for purl in GLOBAL_PROMO_LINKS:
         global_promo_html += get_og_card(purl)
     global_promo_html += "</div>\n<!-- PROMO_BANNER_END -->\n"
@@ -216,7 +219,7 @@ for p in posts:
     next_post = cat_list[idx + 1] if idx >= 0 and idx < len(cat_list) - 1 else None
 
     nav_html = "\n\n<!-- CATEGORY_NAV_START -->\n<style>\n" \
-               ".category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }\n" \
+               ".category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }\n" \
                ".cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }\n" \
                ".cat-nav-item:hover { color: #111; }\n" \
                ".cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }\n" \
@@ -235,7 +238,7 @@ for p in posts:
     else:
         nav_html += f'  <div></div>\n'
 
-    nav_html += "</div>\n<!-- CATEGORY_NAV_END -->"
+    nav_html += "</div>\n<!-- CATEGORY_NAV_END -->\n"
 
     safe_title = p['title'].replace('"', '\\"')
     new_yaml = f"---\nlayout: default\ntitle: \"{safe_title}\"\ncategory: '{category}'\ncover_image: '{p['cover_image']}'\ndate_string: '{p['date_string']}'\n---\n\n"
@@ -331,4 +334,4 @@ const observer = new IntersectionObserver(entries => { entries.forEach(entry => 
 with open(index_file, 'w', encoding='utf-8') as f:
     f.write(html_header + html_body)
 
-print("✅ 수동 날짜 입력 지원 및 OG 카드 기능 적용 완료!")
+print("✅ 중복된 찌꺼기 네비게이션 완벽 제거 및 정상 정렬 배포 완료!")

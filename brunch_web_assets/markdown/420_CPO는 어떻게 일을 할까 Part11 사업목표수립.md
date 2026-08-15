@@ -27,6 +27,7 @@ date_string: 'Apr 11. 2024'
  내가 코칭을 했던 A사의 인원은 30명 남짓이었다. 차기 투자유치를 받기 위해서 달성해야 목표는 B2B 고객유치 수였다. 목표 달성을 위한 현재 고객 수, 구현기능 수준은 요원했고 리소스는 부족했다. 그러나 최상위 목표는 5개였고, 3개는 고객 수 유치와 밀접하지 않았으나 대표가 하고 싶은 과제들이었다.
 
  경영진 회의를 통해 5개의 목표를 고객유치와 밀접하게 연관된 2개의 목표로 줄이고, OKR 목표로 세웠다. 덕분에 고객사는 OKR에 있는 실행아이템이 워킹하고 전체 직원들이 목표에 집중해서 일하면서 연말에 목표로 하던 수치를 달성할 수 있었다.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -44,7 +45,7 @@ date_string: 'Apr 11. 2024'
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

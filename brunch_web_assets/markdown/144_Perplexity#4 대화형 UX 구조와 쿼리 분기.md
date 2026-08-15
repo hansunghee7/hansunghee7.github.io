@@ -37,6 +37,7 @@ date_string: 'May 11. 2025'
 물론 이런 UX를 완성하기까지는 수많은 고민과 실험이 필요할 거예요. 무엇보다 사용자의 니즈와 행동 패턴에 대한 깊이 있는 이해가 바탕이 돼야 하고요. 언어 모델의 특성에 맞는 입출력 처리 전략, 시각 디자인과 브랜드 아이덴티티와의 조화 등도 세심하게 설계해야 할 부분이겠죠. 하지만 퍼플렉시티의 사례는 분명 이 분야의 이정표가 될 것입니다. 단순 기능을 넘어 사용자의 마음을 사로잡는 AI 경험. 퍼플렉시티가 추구하는 이 가치가 자연어 AI 시장의 진화를 이끌어갈 것으로 기대합니다.
 
 여러분도 이 과정에 동참해 보시는 건 어떨까요? 기술과 사용자 경험의 접점에서, 우리가 상상하는 미래의 AI가 하나둘 현실로 다가올 테니까요.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -54,7 +55,7 @@ date_string: 'May 11. 2025'
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

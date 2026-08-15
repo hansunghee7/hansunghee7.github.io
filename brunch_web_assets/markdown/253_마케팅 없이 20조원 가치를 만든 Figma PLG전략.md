@@ -45,6 +45,7 @@ Figma의 제품 주도 성장 전략은 다음과 같은 단계로 진행되었�
 여러분의 스타트업은 어떤 성장 전략을 고민하고 계신가요? 제품 주도 성장이 답이 될 수 있을까요? 저는 지난 25년간 수많은 스타트업과 글로벌기업과 함께 제품 주도 성장 전략을 설계하고 실행해 왔습니다. 여러분의 스타트업에도 맞춤형 PLG 전략이 필요하다면 커피챗을 요청해 주세요.
 
 다음 글에서는 또 다른 혁신적인 스타트업의 성장 사례를 다루도록 하겠습니다. 여러분의 제품은 어떤 성장 전략을 가지고 있나요?
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -62,7 +63,7 @@ Figma의 제품 주도 성장 전략은 다음과 같은 단계로 진행되었�
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

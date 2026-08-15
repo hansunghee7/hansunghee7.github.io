@@ -27,6 +27,7 @@ date_string: 'Mar 28. 2025'
 처음 칸반을 도입할 때는 칠판을 활용해도 좋아요. 하지만 본격적으로 적용하려면 Jira와 같은 가상 보드 도구가 필수적입니다. 이를 통해 팀원 간 협업과 소통이 원활해지죠.
 
 지금까지 칸반의 기본 개념과 장점들을 살펴봤는데요. 칸반은 팀에게 직관적이고 신속한 워크플로우를 제공합니다. 함께 애자일의 컨베이어벨트, 칸반을 적용해보시죠.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -44,7 +45,7 @@ date_string: 'Mar 28. 2025'
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

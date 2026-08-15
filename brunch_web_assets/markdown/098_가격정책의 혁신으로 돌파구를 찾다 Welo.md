@@ -35,6 +35,7 @@ date_string: 'Jun 23. 2025'
 마지막으로, 장기적 관점에서 수익성과 성장의 균형을 맞추세요. 단기 매출보다 고객 생애 가치(LTV)와 재구매율이 더 중요합니다.
 
 프라이싱과 패키징은 스타트업 성장의 핵심입니다. 여러분의 제품이 창출하는 진짜 가치를 고객이 기꺼이 지불하게 만드는 구조를 실험하고 개선하세요. 이것이 바로 차별화와 수익성의 시작점입니다.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -52,7 +53,7 @@ date_string: 'Jun 23. 2025'
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

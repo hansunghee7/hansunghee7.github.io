@@ -39,6 +39,7 @@ CPO 업무의 보다 쉬운 이해를 위해 업무의 흐름을 수직적인 �
  PO와의 업무관계를 보았을 때는 CPO는 스쿼드 업무 전 후에 있다는 걸 알 수 있을 것이다. 아마 본인이 PO였다면 그 스쿼드 목표 달성을 위한 과제 진행을 리딩했을 것이다. 그러나 CPO가 되는 순간 그 전후의 업무 흐름과 다음에 설명할 수평적 업무 흐름을 챙기게 된다.
 
  만약 여러분의 회사에서는 위 내용과 다르게 진행되고 있다면 댓글로 알려주기 바란다. :-)
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -56,7 +57,7 @@ CPO 업무의 보다 쉬운 이해를 위해 업무의 흐름을 수직적인 �
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

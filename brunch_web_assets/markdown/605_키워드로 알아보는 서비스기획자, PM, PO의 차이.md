@@ -33,6 +33,7 @@ date_string: 'Sep 25. 2023'
  강의를 받은 기업의 PM들도 위 역할의 부분 부분을 모두 수행하지만 Product Manager 역할이 70~80%, Product Owner 역할이 20~30%인 거 같다고 하더군요.
 
  용어에 따라 역할 구분은 위와 같이 했지만, Product를 만들기 위해 필요한 기술은 회사와 상황에 따라 다를 수 있습니다. 따라서 본인이 맡게 되는 프로젝트와 과제들을 보다 효과적으로 수행하기 위해 각각의 역할이 필요로 하는 기술들을 습득해 두면 좋습니다. :-)
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -50,7 +51,7 @@ date_string: 'Sep 25. 2023'
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

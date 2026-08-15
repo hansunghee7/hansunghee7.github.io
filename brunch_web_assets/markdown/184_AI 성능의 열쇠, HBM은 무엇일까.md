@@ -27,6 +27,7 @@ HBM은 사실 갑자기 튀어나온 신기술이 아닙니다. 2000년대 후�
 여러분은 어떻게 생각하시나요? HBM 같은 메모리 기술이 AI 발전에 어떤 역할을 할 것 같나요? 앞으로 HBM을 넘어설 만한 혁신적인 아이디어는 없을까요? 다들 한번 상상해 보시면 좋겠네요. 메모리가 빨라져야 AI지능도 한층 더 높아질테니까요?
 
 **AI시대에 알아야 할 UX의 언어는?**
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -44,7 +45,7 @@ HBM은 사실 갑자기 튀어나온 신기술이 아닙니다. 2000년대 후�
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

@@ -53,6 +53,7 @@ Warby Parker의 전략은 다음과 같습니다.
 여러분의 스타트업 전략은 무엇인가요? 저는 지난 25년간 스타트업부터 글로벌 IT 기업에서 프로덕트 전략을 수립했으며, 코칭과 강의를 통해 100개 이상의 스타트업들의 전략을 고민하고, 함께 만들어 가고 있습니다.
 
 고민이 되는 전략이 있다면 댓글을 남겨주세요. 커피챗을 요청해주셔도 좋아요. :-)
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -70,7 +71,7 @@ Warby Parker의 전략은 다음과 같습니다.
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

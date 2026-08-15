@@ -31,6 +31,7 @@ Transformer의 주요 병목 현상은 크게 네 가지로 나타납니다.
 실제 적용 사례를 보면, 70억 파라미터 언어 모델에 FlashAttention과 Mixed Precision을 적용해 학습 속도 3배 향상을 달성했고, 컴퓨터 비전 모델은 Sparse Attention과 최적 하이퍼파라미터로 학습 시간을 65% 단축했습니다.
 
 이러한 최적화 기법들은 동일한 하드웨어로 2-10배 빠른 학습을 가능하게 하며, 이는 AI 개발의 비용과 시간을 크게 절감합니다. 비즈니스 관점에서 이러한 기술에 투자하는 것은 AI 개발 비용을 낮추고 더 빠른 혁신 주기를 가능하게 하는 전략적 결정이 될 것입니다.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -48,7 +49,7 @@ Transformer의 주요 병목 현상은 크게 네 가지로 나타납니다.
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

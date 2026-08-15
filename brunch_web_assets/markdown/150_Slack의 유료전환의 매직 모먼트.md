@@ -43,6 +43,7 @@ Slack은 이런 전환 포인트를 만들기 위해 치밀한 전략을 세웠�
 ![94115cc7-a01d-4342-b061-a1663d7b06e5.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/47wHOAuhdhjoc1OhARjqhUmMSOY.png)
 
 Slack의 성공 비결은 무료 사용자에게 충분한 가치를 제공하면서도, 서비스에 의존하게 된 순간 자연스럽게 유료로 전환하도록 유도하는 섬세한 전략에 있습니다. 여러분의 서비스에서도 이런 '매직 모먼트'를 찾아내고, 그 순간 사용자에게 명확한 업그레이드 이유를 제시할 수 있다면, 프리미엄 모델의 성공적인 수익화가 가능할 것입니다.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -60,7 +61,7 @@ Slack의 성공 비결은 무료 사용자에게 충분한 가치를 제공하�
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

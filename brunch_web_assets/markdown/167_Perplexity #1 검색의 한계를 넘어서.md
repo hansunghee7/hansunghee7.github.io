@@ -91,6 +91,7 @@ Perplexity의 접근법은 다양한 비즈니스 영역에서 응용될 수 있
 이러한 응용은 단순히 기존 검색 엔진을 대체하는 것이 아니라, 정보 접근성과 활용도를 획기적으로 높이는 방향으로 발전할 것입니다.
 
 다음 편에서는 Perplexity의 핵심 기술 아키텍처를 자세히 분석하겠습니다. BM25와 같은 전통적인 검색 알고리즘부터 벡터 검색, RAG 구현 방식까지 실전적인 관점에서 살펴보겠습니다.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -108,7 +109,7 @@ Perplexity의 접근법은 다양한 비즈니스 영역에서 응용될 수 있
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

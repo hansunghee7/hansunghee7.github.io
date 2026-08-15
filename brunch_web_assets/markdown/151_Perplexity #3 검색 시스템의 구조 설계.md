@@ -55,6 +55,7 @@ Chunk들을 잘 검색하기 위해선 벡터 표현(embedding)으로 변환해 
 이 강력한 RAG 파이프라인이 어떤 분야에서 어떻게 활용될지 상상하면 가슴이 설레는데요. 교육, 헬스케어, 법률, 고객 서비스 등 전문 지식이 필요한 영역에서 게임 체인저로 자리매김할 것으로 기대됩니다.
 
 여러분도 퍼플렉시티의 RAG 구조에서 영감을 얻어, 각자의 도메인에 최적화된 지식 기반 AI 에이전트를 만들어 보는 건 어떨까요? 앞으로 이런 시도들이 더욱 활발해질수록 AI와 인간의 협업도 더 깊어질 것 같습니다.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -72,7 +73,7 @@ Chunk들을 잘 검색하기 위해선 벡터 표현(embedding)으로 변환해 
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

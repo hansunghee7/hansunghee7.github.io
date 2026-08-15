@@ -79,6 +79,7 @@ date_string: 'Feb 10. 2025'
 여러분의 스타트업은 어떤 조직 문화를 꿈꾸시나요? 자유와 책임의 균형을 어떻게 맞추고 계신가요?
 
 저는 지난 25년간 스타트업부터 글로벌기업의 경험을 바탕으로 함께 혁신적인 조직 문화를 만들어 가고 있습니다. 여러분의 스타트업도 조직 전략에 대한 고민이 있다면 언제든 커피챗을 요청해 주세요. :-)
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -96,7 +97,7 @@ date_string: 'Feb 10. 2025'
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

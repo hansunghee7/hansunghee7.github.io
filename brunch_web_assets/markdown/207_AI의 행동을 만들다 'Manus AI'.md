@@ -41,6 +41,7 @@ Manus AI는 기획적으로 다음과 같은 인사이트를 준다.
 Manus의 등장으로 AI 에이전트 시장의 판도를 바꿀 가능성이 크다. 금융 분석, 의료 진단, 교육 등 다양한 분야에서 전문가 수준의 업무를 자동화할 수 있는 잠재력을 갖추고 있기 때문이다.
 
 90년대생 중국 청년들이 만든 이 혁신적인 기술이 AI의 미래를 어떻게 재정의할지, 그 여정이 이제 막 시작되었다.
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -58,7 +59,7 @@ Manus의 등장으로 AI 에이전트 시장의 판도를 바꿀 가능성이 �
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }

@@ -33,6 +33,7 @@ LTV와 CAC는 이제 기업과 투자자들의 필수 언어가 되었다. 스�
 LTV와 CAC, 이 두 알파벳이 내포한 깊은 뜻을 새기자. 단순한 공식이 아니다. 고객 한 명을 소중하게 여기는 기업 문화, 단기 실적에 연연하지 않는 장기적 시각, 데이터에 기반한 전략이 응축된 철학이다.
 
 기획자라면 이 프레임워크를 나침반 삼아 고객 중심적 사고를 체화해 나가야 한다. 고객의 진정한 가치를 이해하고, 그들의 장기적 충성도를 얻기 위해 부단히 고민하는 자세. 그것이 바로 LTV/CAC를 이끌 기획자의 진짜 역량이 아닐까?
+
 <!-- PROMO_BANNER_START -->
 <div style="margin-top: 60px;">
 <!-- OG_CARD_START -->
@@ -50,7 +51,7 @@ LTV와 CAC, 이 두 알파벳이 내포한 깊은 뜻을 새기자. 단순한 �
 
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #111; }
 .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
