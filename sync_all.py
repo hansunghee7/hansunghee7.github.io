@@ -24,7 +24,6 @@ CATEGORY_SORT_DEFAULTS = {
     "토크세션": "desc"
 }
 
-# 🌟 모든 게시물 하단에 일괄 노출할 추천 링크 (검은 박스 없이 카드만 나옵니다!)
 GLOBAL_PROMO_LINKS = [
     "https://www.yes24.com/product/goods/193444437"
 ]
@@ -116,6 +115,10 @@ for filename in md_files:
     cat_match = re.search(r"^category:\s*['\"]?(.*?)['\"]?\s*$", content, re.MULTILINE)
     cover_match = re.search(r"^cover_image:\s*['\"]?(.*?)['\"]?\s*$", content, re.MULTILINE)
     
+    # 🌟 [NEW] 마크다운에 수동으로 입력된 날짜를 추출합니다.
+    date_match = re.search(r"^date_string:\s*['\"]?(.*?)['\"]?\s*$", content, re.MULTILINE)
+    md_date = date_match.group(1).strip() if date_match else ""
+    
     if title_match:
         raw_title = title_match.group(1).strip()
         if (raw_title.startswith('"') and raw_title.endswith('"')) or (raw_title.startswith("'") and raw_title.endswith("'")):
@@ -129,17 +132,25 @@ for filename in md_files:
 
     title_clean = re.sub(r'[^가-힣a-zA-Z0-9]', '', title)
     filename_clean = re.sub(r'[^가-힣a-zA-Z0-9]', '', filename[:-3])
-    date_string = csv_dates.get(title_clean, csv_dates.get(filename_clean, ""))
+    
+    # 🌟 [NEW] CSV에 날짜가 없으면, 마크다운에 적어둔 날짜(md_date)를 존중하여 사용합니다!
+    csv_date = csv_dates.get(title_clean, csv_dates.get(filename_clean, ""))
+    date_string = csv_date if csv_date else md_date
 
     safe_url = urllib.parse.quote(filename[:-3])
     link = f"/brunch_web_assets/markdown/{safe_url}.html"
 
-    months = {'Jan':'01', 'Feb':'02', 'Mar':'03', 'Apr':'04', 'May':'05', 'Jun':'06', 'Jul':'07', 'Aug':'08', 'Sep':'09', 'Oct':'10', 'Nov':'11', 'Dec':'12'}
+    # 🌟 [NEW] 정렬 기능(Timestamp)이 YYYY. MM. DD. 형태도 인식하도록 업그레이드!
     timestamp = "00000000"
     try:
-        parts = date_string.replace('.', '').replace(',', '').split()
+        clean_date = date_string.replace('.', ' ').replace(',', ' ').strip()
+        parts = clean_date.split()
         if len(parts) >= 3:
-            timestamp = f"{parts[2]}{months.get(parts[0][:3], '00')}{parts[1].zfill(2)}"
+            if len(parts[0]) == 4 and parts[0].isdigit(): # 예: 2026. 08. 15.
+                timestamp = f"{parts[0]}{parts[1].zfill(2)}{parts[2].zfill(2)}"
+            else: # 기존 브런치 형식 예: Aug 15. 2026
+                months = {'Jan':'01', 'Feb':'02', 'Mar':'03', 'Apr':'04', 'May':'05', 'Jun':'06', 'Jul':'07', 'Aug':'08', 'Sep':'09', 'Oct':'10', 'Nov':'11', 'Dec':'12'}
+                timestamp = f"{parts[2]}{months.get(parts[0][:3], '00')}{parts[1].zfill(2)}"
     except: pass
 
     uid = 0
@@ -147,11 +158,8 @@ for filename in md_files:
     if uid_match: uid = int(uid_match.group(1))
 
     body_content = re.sub(r'^---.*?---\s*', '', content, flags=re.DOTALL)
-    
-    # 🧹 기존의 쓸데없는 태그들(검은 배경 포함)과 잔여 텍스트 URL 싹 지우기
     body_content = re.sub(r'\n<!-- PROMO_BANNER_START -->.*?<!-- PROMO_BANNER_END -->', '', body_content, flags=re.DOTALL).strip()
     body_content = re.sub(r'\n<!-- CATEGORY_NAV_START -->.*?<!-- CATEGORY_NAV_END -->', '', body_content, flags=re.DOTALL).strip()
-    # 허공에 떠있는 예스24/트레바리 생짜 텍스트 주소 완전히 삭제
     body_content = re.sub(r'^https://www\.yes24\.com/product/goods/\d+\s*$', '', body_content, flags=re.MULTILINE)
     body_content = re.sub(r'^https://trevar\.ink/[a-zA-Z0-9]+\s*$', '', body_content, flags=re.MULTILINE)
 
@@ -181,7 +189,6 @@ for cat in category_posts:
 with open(og_cache_file, 'w', encoding='utf-8') as f:
     json.dump(og_cache, f, ensure_ascii=False, indent=2)
 
-# 🌟 모든 포장(블랙 박스, 텍스트)을 완전히 버리고 순수한 카드만 생성!
 global_promo_html = ""
 if GLOBAL_PROMO_LINKS:
     global_promo_html += "\n<!-- PROMO_BANNER_START -->\n<div style=\"margin-top: 60px;\">\n"
@@ -324,4 +331,4 @@ const observer = new IntersectionObserver(entries => { entries.forEach(entry => 
 with open(index_file, 'w', encoding='utf-8') as f:
     f.write(html_header + html_body)
 
-print("✅ 상단 배경 이미지 무력화 및 순수 OG 카드 노출 적용 완료!")
+print("✅ 수동 날짜 입력 지원 및 OG 카드 기능 적용 완료!")
