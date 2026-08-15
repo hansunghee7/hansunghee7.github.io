@@ -56,7 +56,6 @@
     {% if page.url == '/' or page.url == '/log.html' or page.is_index %}
         <div class="cover-wrap index-mode" id="coverWrap">
             <div class="cover-header">
-                <!-- 🌟 로고 클릭 시 메인 홈(/)으로 이동 -->
                 <a href="/" class="cover-logo"><img src="/brunch_web_assets/images/logo_white.png" alt="Simplifier Logo"></a>
             </div>
             <div class="cover-bottom-left">
@@ -64,18 +63,17 @@
             </div>
         </div>
     {% else %}
-        <div class="cover-wrap post-mode" id="coverWrap" 
-             style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%), url('{{ page.cover_image | default: "/brunch_web_assets/images/logo_white.png" }}');">
+        {% assign bg_img = page.cover_image | default: '/brunch_web_assets/images/logo_white.png' %}
+        <div class="cover-wrap post-mode" id="coverWrap" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%), url('{{ bg_img }}');">
             <div class="cover-header">
-                 <!-- 🌟 로고 클릭 시 메인 홈(/)으로 이동 -->
-                 <a href="/" class="cover-logo"><img src="/brunch_web_assets/images/logo_white.png" alt="Simplifier Logo"></a>
-                 <div class="cover-category-pill">{{ page.category }}</div>
-                <div></div>
+                <a href="/" class="cover-logo"><img src="/brunch_web_assets/images/logo_white.png" alt="Simplifier Logo"></a>
+                <div class="cover-category-pill">{{ page.category }}</div>
+                <div style="width: 26px;"></div>
             </div>
             <div class="cover-bottom-left">
                 <h1 class="cover-title" id="displayTitle">{{ page.title }}</h1>
                 <div class="cover-sub">
-                    {% if page.date_string %}{{ page.date_string }} {% endif %}
+                    {% if page.date_string %}{{ page.date_string }}{% endif %}
                 </div>
             </div>
             <div class="cover-bottom-right">
