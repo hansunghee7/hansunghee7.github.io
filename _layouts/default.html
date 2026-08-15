@@ -74,7 +74,7 @@
                 <h1 class="cover-title" id="displayTitle">{{ page.title }}</h1>
                 <!-- 💡 해결: 등록일(date_string) 정보가 있으면 함께 출력합니다! -->
                 <div class="cover-sub">
-                    {% if page.date_string %}{{ page.date_string }} | {% endif %}by Simplifier 한성희
+                    {% if page.date_string %}{{ page.date_string }} {% endif %}
                 </div>
             </div>
             <div class="cover-bottom-right">
