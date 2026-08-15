@@ -38,11 +38,19 @@ for filename in md_files:
     if pub_match and pub_match.group(1).lower() == 'false':
         continue
 
-    title_match = re.search(r"^title:\s*['\"]?(.*?)['\"]?\s*$", content, re.MULTILINE)
+    title_match = re.search(r"^title:\s*(.*)$", content, re.MULTILINE)
     cat_match = re.search(r"^category:\s*['\"]?(.*?)['\"]?\s*$", content, re.MULTILINE)
     cover_match = re.search(r"^cover_image:\s*['\"]?(.*?)['\"]?\s*$", content, re.MULTILINE)
     
-    title = title_match.group(1).strip() if title_match else filename[:-3]
+    # 🚨 백슬래시 문제 해결: 따옴표를 깔끔하게 분리하고 이스케이프(\)를 화면에서 제거합니다.
+    if title_match:
+        raw_title = title_match.group(1).strip()
+        if (raw_title.startswith('"') and raw_title.endswith('"')) or (raw_title.startswith("'") and raw_title.endswith("'")):
+            raw_title = raw_title[1:-1]
+        title = raw_title.replace('\\"', '"').replace("\\'", "'")
+    else:
+        title = filename[:-3]
+
     category = cat_match.group(1).strip() if cat_match else "기타"
     cover_image = cover_match.group(1).strip() if cover_match else "/brunch_web_assets/images/logo_white.png"
 
@@ -54,8 +62,9 @@ for filename in md_files:
         unique_categories.add(category)
 
     body_content = re.sub(r'^---.*?---\s*', '', content, flags=re.DOTALL)
-    safe_title = title.replace('"', '\\"')
     
+    # YAML 저장을 위해서는 다시 안전하게 백슬래시 포장지를 씌웁니다.
+    safe_title = title.replace('"', '\\"')
     new_yaml = f"---\nlayout: default\ntitle: \"{safe_title}\"\ncategory: '{category}'\ncover_image: '{cover_image}'\ndate_string: '{date_string}'\n---\n\n"
     
     with open(filepath, 'w', encoding='utf-8') as f:
@@ -76,12 +85,12 @@ for filename in md_files:
     uid_match = re.match(r'^(\d+)_', filename)
     if uid_match: uid = int(uid_match.group(1))
 
+    # 화면에 그릴 때는 백슬래시가 없는 깔끔한 순정 title을 사용합니다.
     cards_html += f'<a href="{link}" class="card-item" data-category="{category}" data-date="{timestamp}" data-id="{uid}"><div class="card-thumb" style="background-image: url(\'{cover_image}\');"></div><div class="card-content"><div><div class="card-category">{category}</div><h3 class="card-title">{title}</h3></div><div class="card-date">{date_string}</div></div></a>'
     post_count += 1
 
 html_header = f"---\nlayout: default\ntitle: '심플리파이어의 {post_count}개의 글'\nis_index: true\n---\n"
 
-# 🌟 카테고리 URL 기능이 추가된 자바스크립트 블록
 html_body = """<style>@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } } .card-item.visible { display: flex !important; animation: fadeInUp 0.4s ease forwards; } #scrollSentinel { height: 50px; margin-top: 30px; } .filter-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px; margin-bottom: 35px; } .category-filter { display: flex; flex-wrap: wrap; gap: 8px; flex: 1; } .cat-btn { padding: 7px 16px; border: 1px solid #e1e1e1; border-radius: 20px; background: #fff; color: #666; font-size: 13px; font-weight: 300; cursor: pointer; transition: all 0.2s; font-family: 'Noto Sans KR', sans-serif; } .cat-btn:hover { border-color: #00c73c; color: #00c73c; } .cat-btn.active { background: #00c73c; color: #fff; border-color: #00c73c; font-weight: 400; } .sort-filter { display: flex; gap: 15px; align-items: center; margin-bottom: 5px; } .sort-text-btn { background: none; border: none; font-size: 14px; color: #a0a0a0; cursor: pointer; font-family: 'Noto Sans KR', sans-serif; font-weight: 300; display: flex; align-items: center; padding: 0; transition: color 0.2s; } .sort-text-btn:hover { color: #555; } .sort-text-btn.active { color: #333; font-weight: 400; } .sort-text-btn .dot { display: inline-block; width: 4px; height: 4px; border-radius: 50%; background-color: transparent; margin-right: 4px; margin-bottom: 2px; } .sort-text-btn.active .dot { background-color: #00c73c; }</style><div class="filter-wrap"><div class="category-filter"><button class="cat-btn active" data-filter="all">전체보기</button>"""
 
 for cat in sorted(list(unique_categories)):
@@ -92,4 +101,4 @@ html_body += """</div><div class="sort-filter"><button class="sort-text-btn acti
 with open(index_file, 'w', encoding='utf-8') as f:
     f.write(html_header + html_body)
 
-print("✅ 카테고리 URL 파라미터 적용 및 동기화 완료!")
+print("✅ 제목의 백슬래시(\\) 기호 제거 완료!")
