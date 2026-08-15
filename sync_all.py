@@ -3,7 +3,11 @@ import re
 import urllib.parse
 import csv
 import json
+import time
+import requests
+from bs4 import BeautifulSoup
 
+# 👇 카테고리별 기본 정렬 방식
 CATEGORY_SORT_DEFAULTS = {
     "AI의 언어들": "desc",
     "Be the PO": "desc",
@@ -20,6 +24,13 @@ CATEGORY_SORT_DEFAULTS = {
     "코치S": "asc",
     "토크세션": "desc"
 }
+
+# 🌟 [NEW] 모든 게시물 하단에 일괄 노출할 홍보/추천 링크!
+# 여기에 주소만 적어두면 자동으로 예쁜 오픈그래프 카드로 변환되어 모든 글 하단에 노출됩니다.
+GLOBAL_PROMO_LINKS = [
+    "https://www.yes24.com/product/goods/193444437",
+    
+]
 
 if os.path.exists("index.md"):
     os.remove("index.md")
@@ -42,6 +53,56 @@ except Exception as e:
 
 md_files = [f for f in os.listdir(md_dir) if f.endswith(".md") and f != "index.md"]
 md_files.sort()
+
+# 🌟 오픈그래프(OG) 카드 캐싱 (속도 저하 방지)
+og_cache_file = "og_cache.json"
+og_cache = {}
+if os.path.exists(og_cache_file):
+    try:
+        with open(og_cache_file, 'r', encoding='utf-8') as f:
+            og_cache = json.load(f)
+    except: pass
+
+def get_og_card(url):
+    url = url.strip()
+    if url in og_cache:
+        return og_cache[url]
+    
+    print(f"🔗 링크 정보 수집 중: {url}")
+    try:
+        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
+        res = requests.get(url, headers=headers, timeout=5)
+        soup = BeautifulSoup(res.text, 'html.parser')
+        
+        title_tag = soup.find('meta', property='og:title')
+        title = title_tag['content'] if title_tag and title_tag.get('content') else soup.title.string if soup.title else url
+        
+        desc_tag = soup.find('meta', property='og:description')
+        desc = desc_tag['content'] if desc_tag and desc_tag.get('content') else ""
+        
+        img_tag = soup.find('meta', property='og:image')
+        img = img_tag['content'] if img_tag and img_tag.get('content') else ""
+        
+        if img and img.startswith('/'):
+            parsed_uri = urllib.parse.urlparse(url)
+            img = f"{parsed_uri.scheme}://{parsed_uri.netloc}{img}"
+            
+        domain = urllib.parse.urlparse(url).netloc
+        
+        img_html = f'<div style="width:30%; max-width:200px; min-width:140px; background:url(\'{img}\') center/cover no-repeat; border-left:1px solid #e1e1e1;"></div>' if img else ''
+        
+        card_html = f'''\n<!-- OG_CARD_START -->\n<a href="{url}" target="_blank" style="display:flex; border:1px solid #e1e1e1; border-radius:8px; overflow:hidden; text-decoration:none !important; color:inherit; margin:15px 0; height:140px; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#6CFD33'" onmouseout="this.style.borderColor='#e1e1e1'">\n    <div style="flex:1; padding:20px; display:flex; flex-direction:column; justify-content:center; overflow:hidden; background:#fff;">\n        <div style="font-size:16px; font-weight:600; color:#222; margin-bottom:8px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{title}</div>\n        <div style="font-size:13px; color:#666; line-height:1.5; margin-bottom:12px; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;">{desc}</div>\n        <div style="font-size:12px; color:#999;">{domain}</div>\n    </div>\n    {img_html}\n</a>\n<!-- OG_CARD_END -->\n'''
+        
+        og_cache[url] = card_html.strip()
+        time.sleep(0.3)
+        return og_cache[url]
+    except Exception:
+        return url
+
+def replace_raw_url(match):
+    url = match.group(1).strip()
+    card = get_og_card(url)
+    return card if card else url
 
 posts = []
 category_posts = {}
@@ -90,9 +151,10 @@ for filename in md_files:
     if uid_match: uid = int(uid_match.group(1))
 
     body_content = re.sub(r'^---.*?---\s*', '', content, flags=re.DOTALL)
-    # 기존에 삽입되었던 배너와 네비게이션이 중복되지 않도록 깔끔하게 지우고 시작
     body_content = re.sub(r'\n<!-- PROMO_BANNER_START -->.*?<!-- PROMO_BANNER_END -->', '', body_content, flags=re.DOTALL).strip()
     body_content = re.sub(r'\n<!-- CATEGORY_NAV_START -->.*?<!-- CATEGORY_NAV_END -->', '', body_content, flags=re.DOTALL).strip()
+
+    body_content = re.sub(r'^\s*(https?://[^\s<>]+)\s*$', replace_raw_url, body_content, flags=re.MULTILINE)
 
     post_data = {
         'filename': filename,
@@ -115,6 +177,19 @@ for filename in md_files:
 for cat in category_posts:
     category_posts[cat].sort(key=lambda x: x['uid'])
 
+with open(og_cache_file, 'w', encoding='utf-8') as f:
+    json.dump(og_cache, f, ensure_ascii=False, indent=2)
+
+# 🌟 모든 글 하단에 붙일 중앙 통제형 배너 자동 생성 (링크 기반)
+global_promo_html = "https://www.yes24.com/product/goods/193444437"
+if GLOBAL_PROMO_LINKS:
+    global_promo_html += "\n<!-- PROMO_BANNER_START -->\n<div class=\"promo-banner\" style=\"margin-top: 60px; padding: 35px 20px; background: #111111; border-radius: 12px; font-family: 'Noto Sans KR', sans-serif;\">\n"
+    global_promo_html += "    <h4 style=\"color: #6CFD33; margin-top: 0; margin-bottom: 5px; font-weight: 500; font-size: 18px; text-align: center;\">🚀 Simplifier's Pick</h4>\n"
+    global_promo_html += "    <p style=\"color: #aaaaaa; font-size: 14px; margin-bottom: 25px; font-weight: 300; text-align: center;\">인사이트를 더 깊게 만나보세요</p>\n"
+    for purl in GLOBAL_PROMO_LINKS:
+        global_promo_html += get_og_card(purl)
+    global_promo_html += "</div>\n<!-- PROMO_BANNER_END -->\n"
+
 cards_html = ""
 unique_categories = set()
 post_count = 0
@@ -134,20 +209,6 @@ for p in posts:
     prev_post = cat_list[idx - 1] if idx > 0 else None
     next_post = cat_list[idx + 1] if idx >= 0 and idx < len(cat_list) - 1 else None
 
-    # 🌟 중앙 통제형 홍보 배너 HTML (디자인 변경 시 여기서만 바꾸면 됨!)
-    promo_html = """
-<!-- PROMO_BANNER_START -->
-<div class="promo-banner" style="margin-top: 60px; padding: 35px 20px; background: #181818; border-radius: 12px; text-align: center; font-family: 'Noto Sans KR', sans-serif;">
-    <h4 style="color: #6CFD33; margin-top: 0; margin-bottom: 12px; font-weight: 500; font-size: 18px;">🚀 Simplifier의 인사이트를 더 깊게 만나보세요</h4>
-    <p style="color: #aaaaaa; font-size: 15px; margin-bottom: 25px; font-weight: 300; line-height: 1.6;">책 『UX의 언어들』과 트레바리 독서모임에서 기획의 진짜 비밀을 나눕니다.</p>
-    <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
-        <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="padding: 12px 24px; background: #333333; color: #ffffff; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 400; transition: background 0.2s;">📖 UX의 언어들 (예스24)</a>
-        <a href="https://trevar.ink/Vmammm" target="_blank" style="padding: 12px 24px; background: #6CFD33; color: #111111; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 600; transition: opacity 0.2s;">🔥 트레바리 기획자 모임</a>
-    </div>
-</div>
-<!-- PROMO_BANNER_END -->
-"""
-
     nav_html = "\n\n<!-- CATEGORY_NAV_START -->\n<style>\n" \
                ".category-nav-wrap { margin-top: 80px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }\n" \
                ".cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }\n" \
@@ -156,7 +217,6 @@ for p in posts:
                ".cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }\n" \
                ".nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }\n" \
                ".cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }\n" \
-               ".promo-banner a:hover { opacity: 0.8; }" \
                "</style>\n<div class=\"category-nav-wrap\">\n"
 
     if prev_post:
@@ -174,9 +234,9 @@ for p in posts:
     safe_title = p['title'].replace('"', '\\"')
     new_yaml = f"---\nlayout: default\ntitle: \"{safe_title}\"\ncategory: '{category}'\ncover_image: '{p['cover_image']}'\ndate_string: '{p['date_string']}'\n---\n\n"
 
-    # 배너 삽입: 본문 끝 -> 홍보 배너 -> 카테고리 네비게이션 순서로 결합
+    # 배너(global_promo_html)를 본문 바로 아래에 찰싹 붙여줍니다.
     with open(p['filepath'], 'w', encoding='utf-8') as f:
-        f.write(new_yaml + p['body_content'] + promo_html + nav_html)
+        f.write(new_yaml + p['body_content'] + global_promo_html + nav_html)
 
     cards_html += f'<a href="{p["link"]}" class="card-item" data-category="{category}" data-date="{p["timestamp"]}" data-id="{p["uid"]}"><div class="card-thumb-wrap"><div class="card-thumb" style="background-image: url(\'{p["cover_image"]}\');"></div></div><div class="card-content"><div><div class="card-category">{category}</div><h3 class="card-title">{p["title"]}</h3></div><div class="card-date">{p["date_string"]}</div></div></a>'
     post_count += 1
@@ -254,4 +314,4 @@ const observer = new IntersectionObserver(entries => { entries.forEach(entry => 
 with open(index_file, 'w', encoding='utf-8') as f:
     f.write(html_header + html_body)
 
-print("✅ 중앙 통제형 홍보 배너 HTML 탑재 완료!")
+print("✅ 자동 링크 카드(Open Graph) 기능 탑재 완료!")

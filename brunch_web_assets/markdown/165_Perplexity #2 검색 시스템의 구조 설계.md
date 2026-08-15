@@ -98,16 +98,21 @@ Perplexity AI의 검색 시스템은 전통적인 키워드 기반 검색과 최
 
 이 기술을 자체 서비스에 적용하려는 팀은 쿼리 특성에 따른 라우팅 전략, 효과적인 인덱싱 구조, 결과 통합 및 재평가 방식, 그리고 시스템 확장성과 운영 효율성 등을 종합적으로 고려해야 합니다. 하지만 모든 구성 요소를 처음부터 구현할 필요는 없으며, 검색 엔진(Elasticsearch), 벡터 데이터베이스(Qdrant, FAISS), 임베딩 모델(SentenceTransformer) 등의 오픈소스 도구를 활용하여 단계적으로 시스템을 구축해 나갈 수 있습니다.
 
-다음 편에서는 이러한 검색 결과를 바탕으로 자연스럽고 정확한 답변을 생성하는 RAG(Retrieval-Augmented Generation) 시스템의 구조를 자세히 살펴보겠습니다. :-)
+다음 편에서는 이러한 검색 결과를 바탕으로 자연스럽고 정확한 답변을 생성하는 RAG(Retrieval-Augmented Generation) 시스템의 구조를 자세히 살펴보겠습니다. :-)https://www.yes24.com/product/goods/193444437
 <!-- PROMO_BANNER_START -->
-<div class="promo-banner" style="margin-top: 60px; padding: 35px 20px; background: #181818; border-radius: 12px; text-align: center; font-family: 'Noto Sans KR', sans-serif;">
-    <h4 style="color: #6CFD33; margin-top: 0; margin-bottom: 12px; font-weight: 500; font-size: 18px;">🚀 Simplifier의 인사이트를 더 깊게 만나보세요</h4>
-    <p style="color: #aaaaaa; font-size: 15px; margin-bottom: 25px; font-weight: 300; line-height: 1.6;">책 『UX의 언어들』과 트레바리 독서모임에서 기획의 진짜 비밀을 나눕니다.</p>
-    <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
-        <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="padding: 12px 24px; background: #333333; color: #ffffff; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 400; transition: background 0.2s;">📖 UX의 언어들 (예스24)</a>
-        <a href="https://trevar.ink/Vmammm" target="_blank" style="padding: 12px 24px; background: #6CFD33; color: #111111; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 600; transition: opacity 0.2s;">🔥 트레바리 기획자 모임</a>
+<div class="promo-banner" style="margin-top: 60px; padding: 35px 20px; background: #111111; border-radius: 12px; font-family: 'Noto Sans KR', sans-serif;">
+    <h4 style="color: #6CFD33; margin-top: 0; margin-bottom: 5px; font-weight: 500; font-size: 18px; text-align: center;">🚀 Simplifier's Pick</h4>
+    <p style="color: #aaaaaa; font-size: 14px; margin-bottom: 25px; font-weight: 300; text-align: center;">인사이트를 더 깊게 만나보세요</p>
+<!-- OG_CARD_START -->
+<a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; border-radius:8px; overflow:hidden; text-decoration:none !important; color:inherit; margin:15px 0; height:140px; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#6CFD33'" onmouseout="this.style.borderColor='#e1e1e1'">
+    <div style="flex:1; padding:20px; display:flex; flex-direction:column; justify-content:center; overflow:hidden; background:#fff;">
+        <div style="font-size:16px; font-weight:600; color:#222; margin-bottom:8px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">UX의 언어들 | 한성희 | 파지트 - 예스24</div>
+        <div style="font-size:13px; color:#666; line-height:1.5; margin-bottom:12px; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;">일상 속 UX의 발견UX 세계를 향한 친절한 안내서 『UX의 언어들』은 일상 속에 스며든 UX를 UX 디자이너의 시선으로 풀어내며, 우리가 이를 어떻게 경험하고 소비하는지 넷플릭스, 카카오 등 친숙한 사례를 통해 UX의 세계로 안내한다.UX는 제품, 서비스, ...</div>
+        <div style="font-size:12px; color:#999;">www.yes24.com</div>
     </div>
-</div>
+    <div style="width:30%; max-width:200px; min-width:140px; background:url('https://image.yes24.com/goods/193444437/xl') center/cover no-repeat; border-left:1px solid #e1e1e1;"></div>
+</a>
+<!-- OG_CARD_END --></div>
 <!-- PROMO_BANNER_END -->
 
 
@@ -120,7 +125,7 @@ Perplexity AI의 검색 시스템은 전통적인 키워드 기반 검색과 최
 .cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
 .nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-.promo-banner a:hover { opacity: 0.8; }</style>
+</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/164_%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%20%EC%82%AC%EB%A1%80%EB%A1%9C%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%ED%95%B5%EC%8B%AC%20%EC%A7%80%ED%91%9C%20%EC%84%A4%EC%A0%95%EB%B2%95.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'스타트업 인사이트'의 이전글</span><span class="nav-title">넷플릭스 사례로 배우는 스타트업 핵심 지표 설정법</span></a>
   <a href="/brunch_web_assets/markdown/167_Perplexity%20%231%20%EA%B2%80%EC%83%89%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EB%84%98%EC%96%B4%EC%84%9C.html" class="cat-nav-item cat-nav-right"><span class="nav-title">Perplexity #1 검색의 한계를 넘어서</span><span class="cat-nav-label">'스타트업 인사이트'의 다음글</span></a>

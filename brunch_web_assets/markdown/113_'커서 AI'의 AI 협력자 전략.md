@@ -30,16 +30,21 @@ Cursor AI의 성공에서 우리가 배울 수 있는 핵심은 다음과 같습
 
 Cursor AI의 성공은 AI를 경쟁 상대나 대체재가 아닌, 함께 일하는 파트너로 만드는 것이 핵심임을 보여줍니다. 이는 AI 시대를 맞이하는 모든 스타트업들에게 기술의 변화를 직접 실험하고 활용하여 새로운 가치를 창출하는 것이 성공의 열쇠라는 중요한 시사점을 줍니다.
 
-여러분의 스타트업도 Cursor AI처럼 사용자의 진짜 문제를 해결하는 혁신을 만들어내시기 바랍니다. AI 시대, 여러분은 어떤 협력자 전략을 준비하고 계신가요?
+여러분의 스타트업도 Cursor AI처럼 사용자의 진짜 문제를 해결하는 혁신을 만들어내시기 바랍니다. AI 시대, 여러분은 어떤 협력자 전략을 준비하고 계신가요?https://www.yes24.com/product/goods/193444437
 <!-- PROMO_BANNER_START -->
-<div class="promo-banner" style="margin-top: 60px; padding: 35px 20px; background: #181818; border-radius: 12px; text-align: center; font-family: 'Noto Sans KR', sans-serif;">
-    <h4 style="color: #6CFD33; margin-top: 0; margin-bottom: 12px; font-weight: 500; font-size: 18px;">🚀 Simplifier의 인사이트를 더 깊게 만나보세요</h4>
-    <p style="color: #aaaaaa; font-size: 15px; margin-bottom: 25px; font-weight: 300; line-height: 1.6;">책 『UX의 언어들』과 트레바리 독서모임에서 기획의 진짜 비밀을 나눕니다.</p>
-    <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
-        <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="padding: 12px 24px; background: #333333; color: #ffffff; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 400; transition: background 0.2s;">📖 UX의 언어들 (예스24)</a>
-        <a href="https://trevar.ink/Vmammm" target="_blank" style="padding: 12px 24px; background: #6CFD33; color: #111111; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 600; transition: opacity 0.2s;">🔥 트레바리 기획자 모임</a>
+<div class="promo-banner" style="margin-top: 60px; padding: 35px 20px; background: #111111; border-radius: 12px; font-family: 'Noto Sans KR', sans-serif;">
+    <h4 style="color: #6CFD33; margin-top: 0; margin-bottom: 5px; font-weight: 500; font-size: 18px; text-align: center;">🚀 Simplifier's Pick</h4>
+    <p style="color: #aaaaaa; font-size: 14px; margin-bottom: 25px; font-weight: 300; text-align: center;">인사이트를 더 깊게 만나보세요</p>
+<!-- OG_CARD_START -->
+<a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; border-radius:8px; overflow:hidden; text-decoration:none !important; color:inherit; margin:15px 0; height:140px; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#6CFD33'" onmouseout="this.style.borderColor='#e1e1e1'">
+    <div style="flex:1; padding:20px; display:flex; flex-direction:column; justify-content:center; overflow:hidden; background:#fff;">
+        <div style="font-size:16px; font-weight:600; color:#222; margin-bottom:8px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">UX의 언어들 | 한성희 | 파지트 - 예스24</div>
+        <div style="font-size:13px; color:#666; line-height:1.5; margin-bottom:12px; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;">일상 속 UX의 발견UX 세계를 향한 친절한 안내서 『UX의 언어들』은 일상 속에 스며든 UX를 UX 디자이너의 시선으로 풀어내며, 우리가 이를 어떻게 경험하고 소비하는지 넷플릭스, 카카오 등 친숙한 사례를 통해 UX의 세계로 안내한다.UX는 제품, 서비스, ...</div>
+        <div style="font-size:12px; color:#999;">www.yes24.com</div>
     </div>
-</div>
+    <div style="width:30%; max-width:200px; min-width:140px; background:url('https://image.yes24.com/goods/193444437/xl') center/cover no-repeat; border-left:1px solid #e1e1e1;"></div>
+</a>
+<!-- OG_CARD_END --></div>
 <!-- PROMO_BANNER_END -->
 
 
@@ -52,7 +57,7 @@ Cursor AI의 성공은 AI를 경쟁 상대나 대체재가 아닌, 함께 일하
 .cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
 .nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-.promo-banner a:hover { opacity: 0.8; }</style>
+</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/106_2%EC%B2%9C%EB%A7%8C%EC%9B%90%EC%9C%BC%EB%A1%9C%2010%EC%96%B5%EC%9B%90%20%EB%A7%A4%EC%B6%9C%EC%9D%84%2C%20%EC%95%88%ED%8B%B0%EB%A9%94%ED%83%88%EC%9D%98%20%EB%B0%94%EC%9D%B4%EB%9F%B4%EC%A0%84%EB%9E%B5.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'스타트업 인사이트'의 이전글</span><span class="nav-title">2천만원으로 10억원 매출을, 안티메탈의 바이럴전략</span></a>
   <a href="/brunch_web_assets/markdown/121_%EC%9E%91%EA%B2%8C%20%EC%8B%9C%EC%9E%91%ED%95%B4%20%ED%81%AC%EA%B2%8C%20%ED%84%B0%ED%8A%B8%EB%A6%AC%EB%8A%94%20Slack%EC%9D%98%20%EC%B4%88%EA%B8%B0%EB%A7%88%EC%BC%80%ED%8C%85%EC%A0%84%EB%9E%B5.html" class="cat-nav-item cat-nav-right"><span class="nav-title">작게 시작해 크게 터트리는 Slack의 초기마케팅전략</span><span class="cat-nav-label">'스타트업 인사이트'의 다음글</span></a>

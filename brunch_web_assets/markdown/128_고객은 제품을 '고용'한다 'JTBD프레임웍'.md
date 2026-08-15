@@ -24,16 +24,21 @@ JTBD는 기능적 니즈뿐만 아니라 정서적, 사회적 차원의 니즈�
 
 기획자가 JTBD를 활용할 때는 몇 가지 핵심 질문을 던져야 한다. "고객이 우리 제품을 통해 해결하고 싶은 '일'은 무엇인가?", "고객이 이 제품을 찾게 된 트리거는 무엇인가?", "고객이 기존에 사용하던 대체 솔루션은 무엇이었나?", "고객이 느끼는 가장 큰 불편함은 무엇인가?"
 
-JTBD는 기획자가 고객의 근본적인 니즈를 탐색하고, 진짜 문제를 해결하는 혁신의 실마리를 제공하는 강력한 도구다. 제품의 기능을 늘리는 것보다 고객의 '일'을 더 잘 해결하는 방향으로 우선순위를 설정할 때, 진정한 차별화와 성장의 기회를 포착할 수 있다.
+JTBD는 기획자가 고객의 근본적인 니즈를 탐색하고, 진짜 문제를 해결하는 혁신의 실마리를 제공하는 강력한 도구다. 제품의 기능을 늘리는 것보다 고객의 '일'을 더 잘 해결하는 방향으로 우선순위를 설정할 때, 진정한 차별화와 성장의 기회를 포착할 수 있다.https://www.yes24.com/product/goods/193444437
 <!-- PROMO_BANNER_START -->
-<div class="promo-banner" style="margin-top: 60px; padding: 35px 20px; background: #181818; border-radius: 12px; text-align: center; font-family: 'Noto Sans KR', sans-serif;">
-    <h4 style="color: #6CFD33; margin-top: 0; margin-bottom: 12px; font-weight: 500; font-size: 18px;">🚀 Simplifier의 인사이트를 더 깊게 만나보세요</h4>
-    <p style="color: #aaaaaa; font-size: 15px; margin-bottom: 25px; font-weight: 300; line-height: 1.6;">책 『UX의 언어들』과 트레바리 독서모임에서 기획의 진짜 비밀을 나눕니다.</p>
-    <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
-        <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="padding: 12px 24px; background: #333333; color: #ffffff; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 400; transition: background 0.2s;">📖 UX의 언어들 (예스24)</a>
-        <a href="https://trevar.ink/Vmammm" target="_blank" style="padding: 12px 24px; background: #6CFD33; color: #111111; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 600; transition: opacity 0.2s;">🔥 트레바리 기획자 모임</a>
+<div class="promo-banner" style="margin-top: 60px; padding: 35px 20px; background: #111111; border-radius: 12px; font-family: 'Noto Sans KR', sans-serif;">
+    <h4 style="color: #6CFD33; margin-top: 0; margin-bottom: 5px; font-weight: 500; font-size: 18px; text-align: center;">🚀 Simplifier's Pick</h4>
+    <p style="color: #aaaaaa; font-size: 14px; margin-bottom: 25px; font-weight: 300; text-align: center;">인사이트를 더 깊게 만나보세요</p>
+<!-- OG_CARD_START -->
+<a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; border-radius:8px; overflow:hidden; text-decoration:none !important; color:inherit; margin:15px 0; height:140px; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#6CFD33'" onmouseout="this.style.borderColor='#e1e1e1'">
+    <div style="flex:1; padding:20px; display:flex; flex-direction:column; justify-content:center; overflow:hidden; background:#fff;">
+        <div style="font-size:16px; font-weight:600; color:#222; margin-bottom:8px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">UX의 언어들 | 한성희 | 파지트 - 예스24</div>
+        <div style="font-size:13px; color:#666; line-height:1.5; margin-bottom:12px; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;">일상 속 UX의 발견UX 세계를 향한 친절한 안내서 『UX의 언어들』은 일상 속에 스며든 UX를 UX 디자이너의 시선으로 풀어내며, 우리가 이를 어떻게 경험하고 소비하는지 넷플릭스, 카카오 등 친숙한 사례를 통해 UX의 세계로 안내한다.UX는 제품, 서비스, ...</div>
+        <div style="font-size:12px; color:#999;">www.yes24.com</div>
     </div>
-</div>
+    <div style="width:30%; max-width:200px; min-width:140px; background:url('https://image.yes24.com/goods/193444437/xl') center/cover no-repeat; border-left:1px solid #e1e1e1;"></div>
+</a>
+<!-- OG_CARD_END --></div>
 <!-- PROMO_BANNER_END -->
 
 
@@ -46,7 +51,7 @@ JTBD는 기획자가 고객의 근본적인 니즈를 탐색하고, 진짜 문�
 .cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
 .nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-.promo-banner a:hover { opacity: 0.8; }</style>
+</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/120_UX%205%20Planes%2C%20%EA%B2%BD%ED%97%98%20%EC%84%A4%EA%B3%84%EC%9D%98%20%EC%A7%80%EB%8F%84.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'기획자의 프레임웍'의 이전글</span><span class="nav-title">UX 5 Planes, 경험 설계의 지도</span></a>
   <a href="/brunch_web_assets/markdown/135_%EC%A0%9C%ED%92%88%EC%9D%98%20%EC%83%9D%EB%AA%85%EC%84%A0%2C%20Retention%20Curve.html" class="cat-nav-item cat-nav-right"><span class="nav-title">제품의 생명선, Retention Curve</span><span class="cat-nav-label">'기획자의 프레임웍'의 다음글</span></a>

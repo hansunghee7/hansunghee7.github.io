@@ -36,16 +36,21 @@ date_string: 'May 11. 2025'
 
 물론 이런 UX를 완성하기까지는 수많은 고민과 실험이 필요할 거예요. 무엇보다 사용자의 니즈와 행동 패턴에 대한 깊이 있는 이해가 바탕이 돼야 하고요. 언어 모델의 특성에 맞는 입출력 처리 전략, 시각 디자인과 브랜드 아이덴티티와의 조화 등도 세심하게 설계해야 할 부분이겠죠. 하지만 퍼플렉시티의 사례는 분명 이 분야의 이정표가 될 것입니다. 단순 기능을 넘어 사용자의 마음을 사로잡는 AI 경험. 퍼플렉시티가 추구하는 이 가치가 자연어 AI 시장의 진화를 이끌어갈 것으로 기대합니다.
 
-여러분도 이 과정에 동참해 보시는 건 어떨까요? 기술과 사용자 경험의 접점에서, 우리가 상상하는 미래의 AI가 하나둘 현실로 다가올 테니까요.
+여러분도 이 과정에 동참해 보시는 건 어떨까요? 기술과 사용자 경험의 접점에서, 우리가 상상하는 미래의 AI가 하나둘 현실로 다가올 테니까요.https://www.yes24.com/product/goods/193444437
 <!-- PROMO_BANNER_START -->
-<div class="promo-banner" style="margin-top: 60px; padding: 35px 20px; background: #181818; border-radius: 12px; text-align: center; font-family: 'Noto Sans KR', sans-serif;">
-    <h4 style="color: #6CFD33; margin-top: 0; margin-bottom: 12px; font-weight: 500; font-size: 18px;">🚀 Simplifier의 인사이트를 더 깊게 만나보세요</h4>
-    <p style="color: #aaaaaa; font-size: 15px; margin-bottom: 25px; font-weight: 300; line-height: 1.6;">책 『UX의 언어들』과 트레바리 독서모임에서 기획의 진짜 비밀을 나눕니다.</p>
-    <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
-        <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="padding: 12px 24px; background: #333333; color: #ffffff; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 400; transition: background 0.2s;">📖 UX의 언어들 (예스24)</a>
-        <a href="https://trevar.ink/Vmammm" target="_blank" style="padding: 12px 24px; background: #6CFD33; color: #111111; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 600; transition: opacity 0.2s;">🔥 트레바리 기획자 모임</a>
+<div class="promo-banner" style="margin-top: 60px; padding: 35px 20px; background: #111111; border-radius: 12px; font-family: 'Noto Sans KR', sans-serif;">
+    <h4 style="color: #6CFD33; margin-top: 0; margin-bottom: 5px; font-weight: 500; font-size: 18px; text-align: center;">🚀 Simplifier's Pick</h4>
+    <p style="color: #aaaaaa; font-size: 14px; margin-bottom: 25px; font-weight: 300; text-align: center;">인사이트를 더 깊게 만나보세요</p>
+<!-- OG_CARD_START -->
+<a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; border-radius:8px; overflow:hidden; text-decoration:none !important; color:inherit; margin:15px 0; height:140px; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#6CFD33'" onmouseout="this.style.borderColor='#e1e1e1'">
+    <div style="flex:1; padding:20px; display:flex; flex-direction:column; justify-content:center; overflow:hidden; background:#fff;">
+        <div style="font-size:16px; font-weight:600; color:#222; margin-bottom:8px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">UX의 언어들 | 한성희 | 파지트 - 예스24</div>
+        <div style="font-size:13px; color:#666; line-height:1.5; margin-bottom:12px; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;">일상 속 UX의 발견UX 세계를 향한 친절한 안내서 『UX의 언어들』은 일상 속에 스며든 UX를 UX 디자이너의 시선으로 풀어내며, 우리가 이를 어떻게 경험하고 소비하는지 넷플릭스, 카카오 등 친숙한 사례를 통해 UX의 세계로 안내한다.UX는 제품, 서비스, ...</div>
+        <div style="font-size:12px; color:#999;">www.yes24.com</div>
     </div>
-</div>
+    <div style="width:30%; max-width:200px; min-width:140px; background:url('https://image.yes24.com/goods/193444437/xl') center/cover no-repeat; border-left:1px solid #e1e1e1;"></div>
+</a>
+<!-- OG_CARD_END --></div>
 <!-- PROMO_BANNER_END -->
 
 
@@ -58,7 +63,7 @@ date_string: 'May 11. 2025'
 .cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
 .nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-.promo-banner a:hover { opacity: 0.8; }</style>
+</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/143_%EC%97%90%EC%96%B4%EB%A7%A4%ED%8A%B8%EC%97%90%EC%84%9C%20%EC%8B%9C%EC%9E%91%EB%90%9C%2C%20%EC%97%90%EC%96%B4%EB%B9%84%EC%95%A4%EB%B9%84%EC%9D%98%20%EB%AC%B4%EC%9E%90%EB%B3%B8%20%EC%B0%BD%EC%97%85%20%EC%A0%84%EB%9E%B5.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'스타트업 인사이트'의 이전글</span><span class="nav-title">에어매트에서 시작된, 에어비앤비의 무자본 창업 전략</span></a>
   <a href="/brunch_web_assets/markdown/150_Slack%EC%9D%98%20%EC%9C%A0%EB%A3%8C%EC%A0%84%ED%99%98%EC%9D%98%20%EB%A7%A4%EC%A7%81%20%EB%AA%A8%EB%A8%BC%ED%8A%B8.html" class="cat-nav-item cat-nav-right"><span class="nav-title">Slack의 유료전환의 "매직 모먼트</span><span class="cat-nav-label">'스타트업 인사이트'의 다음글</span></a>

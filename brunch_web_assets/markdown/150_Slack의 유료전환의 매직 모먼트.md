@@ -42,16 +42,21 @@ Slack은 이런 전환 포인트를 만들기 위해 치밀한 전략을 세웠�
 
 ![94115cc7-a01d-4342-b061-a1663d7b06e5.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/47wHOAuhdhjoc1OhARjqhUmMSOY.png)
 
-Slack의 성공 비결은 무료 사용자에게 충분한 가치를 제공하면서도, 서비스에 의존하게 된 순간 자연스럽게 유료로 전환하도록 유도하는 섬세한 전략에 있습니다. 여러분의 서비스에서도 이런 '매직 모먼트'를 찾아내고, 그 순간 사용자에게 명확한 업그레이드 이유를 제시할 수 있다면, 프리미엄 모델의 성공적인 수익화가 가능할 것입니다.
+Slack의 성공 비결은 무료 사용자에게 충분한 가치를 제공하면서도, 서비스에 의존하게 된 순간 자연스럽게 유료로 전환하도록 유도하는 섬세한 전략에 있습니다. 여러분의 서비스에서도 이런 '매직 모먼트'를 찾아내고, 그 순간 사용자에게 명확한 업그레이드 이유를 제시할 수 있다면, 프리미엄 모델의 성공적인 수익화가 가능할 것입니다.https://www.yes24.com/product/goods/193444437
 <!-- PROMO_BANNER_START -->
-<div class="promo-banner" style="margin-top: 60px; padding: 35px 20px; background: #181818; border-radius: 12px; text-align: center; font-family: 'Noto Sans KR', sans-serif;">
-    <h4 style="color: #6CFD33; margin-top: 0; margin-bottom: 12px; font-weight: 500; font-size: 18px;">🚀 Simplifier의 인사이트를 더 깊게 만나보세요</h4>
-    <p style="color: #aaaaaa; font-size: 15px; margin-bottom: 25px; font-weight: 300; line-height: 1.6;">책 『UX의 언어들』과 트레바리 독서모임에서 기획의 진짜 비밀을 나눕니다.</p>
-    <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
-        <a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="padding: 12px 24px; background: #333333; color: #ffffff; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 400; transition: background 0.2s;">📖 UX의 언어들 (예스24)</a>
-        <a href="https://trevar.ink/Vmammm" target="_blank" style="padding: 12px 24px; background: #6CFD33; color: #111111; text-decoration: none !important; border-radius: 8px; font-size: 14px; font-weight: 600; transition: opacity 0.2s;">🔥 트레바리 기획자 모임</a>
+<div class="promo-banner" style="margin-top: 60px; padding: 35px 20px; background: #111111; border-radius: 12px; font-family: 'Noto Sans KR', sans-serif;">
+    <h4 style="color: #6CFD33; margin-top: 0; margin-bottom: 5px; font-weight: 500; font-size: 18px; text-align: center;">🚀 Simplifier's Pick</h4>
+    <p style="color: #aaaaaa; font-size: 14px; margin-bottom: 25px; font-weight: 300; text-align: center;">인사이트를 더 깊게 만나보세요</p>
+<!-- OG_CARD_START -->
+<a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid #e1e1e1; border-radius:8px; overflow:hidden; text-decoration:none !important; color:inherit; margin:15px 0; height:140px; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#6CFD33'" onmouseout="this.style.borderColor='#e1e1e1'">
+    <div style="flex:1; padding:20px; display:flex; flex-direction:column; justify-content:center; overflow:hidden; background:#fff;">
+        <div style="font-size:16px; font-weight:600; color:#222; margin-bottom:8px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">UX의 언어들 | 한성희 | 파지트 - 예스24</div>
+        <div style="font-size:13px; color:#666; line-height:1.5; margin-bottom:12px; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;">일상 속 UX의 발견UX 세계를 향한 친절한 안내서 『UX의 언어들』은 일상 속에 스며든 UX를 UX 디자이너의 시선으로 풀어내며, 우리가 이를 어떻게 경험하고 소비하는지 넷플릭스, 카카오 등 친숙한 사례를 통해 UX의 세계로 안내한다.UX는 제품, 서비스, ...</div>
+        <div style="font-size:12px; color:#999;">www.yes24.com</div>
     </div>
-</div>
+    <div style="width:30%; max-width:200px; min-width:140px; background:url('https://image.yes24.com/goods/193444437/xl') center/cover no-repeat; border-left:1px solid #e1e1e1;"></div>
+</a>
+<!-- OG_CARD_END --></div>
 <!-- PROMO_BANNER_END -->
 
 
@@ -64,7 +69,7 @@ Slack의 성공 비결은 무료 사용자에게 충분한 가치를 제공하�
 .cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
 .nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-.promo-banner a:hover { opacity: 0.8; }</style>
+</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/144_Perplexity%234%20%EB%8C%80%ED%99%94%ED%98%95%20UX%20%EA%B5%AC%EC%A1%B0%EC%99%80%20%EC%BF%BC%EB%A6%AC%20%EB%B6%84%EA%B8%B0.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'스타트업 인사이트'의 이전글</span><span class="nav-title">Perplexity#4 대화형 UX 구조와 쿼리 분기</span></a>
   <a href="/brunch_web_assets/markdown/151_Perplexity%20%233%20%EA%B2%80%EC%83%89%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%EA%B5%AC%EC%A1%B0%20%EC%84%A4%EA%B3%84.html" class="cat-nav-item cat-nav-right"><span class="nav-title">Perplexity #3 검색 시스템의 구조 설계</span><span class="cat-nav-label">'스타트업 인사이트'의 다음글</span></a>
