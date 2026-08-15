@@ -63,3 +63,19 @@ Gotham과 같은 강력한 감시 플랫폼이 안보 역량 강화에 기여한
 기획자에서 C레벨 임원까지 한번에. 매출 1조를 만드는 리더십 실전
 
 https://www.classu.co.kr/class/classDetail/19442](https://classu.co.kr/me/19442)
+
+<!-- CATEGORY_NAV_START -->
+<style>
+.category-nav-wrap { margin-top: 60px; padding-top: 25px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 20px; }
+.cat-nav-item { display: flex; align-items: center; gap: 8px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 48%; }
+.cat-nav-item:hover { color: #111; }
+.cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
+.cat-nav-label { font-size: 12px; color: #999; white-space: nowrap; font-weight: 300; }
+.nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
+</style>
+<div class="category-nav-wrap">
+  <a href="/brunch_web_assets/markdown/193_AI%EB%A1%9C%20UI%EA%B0%9C%EB%B0%9C%20%EC%86%8D%EB%8F%84%EB%A5%BC%2010%EB%B0%B0%EB%A1%9C%20%EB%A7%8C%EB%93%A4%EB%8B%A4%20%27V0%27.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">카테고리의 이전글</span><span class="nav-title">AI로 UI개발 속도를 10배로 만들다. 'V0</span></a>
+  <a href="/brunch_web_assets/markdown/196_%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%EA%B0%80%20%EC%83%9D%EA%B0%81%EB%B3%B4%EB%8B%A4%20%EC%84%B1%EC%9E%A5%ED%95%98%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%9D%B4%EC%9C%A0%EB%8A%94%20%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C%EC%9A%94.html" class="cat-nav-item cat-nav-right"><span class="nav-title">프로덕트가 생각보다 성장하지 않는 이유는 무엇일까요?</span><span class="cat-nav-label">카테고리의 다음글</span></a>
+</div>
+<!-- CATEGORY_NAV_END -->

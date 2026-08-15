@@ -37,3 +37,19 @@ A는 해외에서 박사과정까지 거친 재원이었다. 집을 구하면서
 안 해 본 일을 하는 건 누구에게나 두렵고 어렵다. 그러나 '세상의 모든 놀라운 성취의 시작은 크고 작은 실패와 거절의 경험에서 시작되었다.'는 걸 알아야 한다.
 
 지금 당신은 성취를 위해 어떤 경험의 씨앗을 심고 있는가?
+
+<!-- CATEGORY_NAV_START -->
+<style>
+.category-nav-wrap { margin-top: 60px; padding-top: 25px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 20px; }
+.cat-nav-item { display: flex; align-items: center; gap: 8px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 48%; }
+.cat-nav-item:hover { color: #111; }
+.cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
+.cat-nav-label { font-size: 12px; color: #999; white-space: nowrap; font-weight: 300; }
+.nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
+</style>
+<div class="category-nav-wrap">
+  <a href="/brunch_web_assets/markdown/483_%EB%AA%85%EB%9E%91%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20IT%20%EB%AA%85%EC%96%B8.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">카테고리의 이전글</span><span class="nav-title">명랑기획자의 IT 명언</span></a>
+  <a href="/brunch_web_assets/markdown/486_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EC%9B%90%ED%95%98%EB%8A%94%20%EA%B2%83%EC%9D%84%20%EC%9D%B4%EB%A3%A8%EB%8A%94%20%EB%B9%84%EB%B0%80.html" class="cat-nav-item cat-nav-right"><span class="nav-title">내가 나를 기획한다면? 원하는 것을 이루는 비밀</span><span class="cat-nav-label">카테고리의 다음글</span></a>
+</div>
+<!-- CATEGORY_NAV_END -->

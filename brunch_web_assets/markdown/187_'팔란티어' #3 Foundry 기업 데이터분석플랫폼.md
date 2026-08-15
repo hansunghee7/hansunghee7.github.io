@@ -64,3 +64,19 @@ Foundry는 도입 기업들의 혁신을 catalyze하며 빠르게 입소문을 �
 기획자에서 C레벨 임원까지 한번에. 매출 1조를 만드는 리더십 실전
 
 https://www.classu.co.kr/class/classDetail/19442](https://classu.co.kr/me/19442)
+
+<!-- CATEGORY_NAV_START -->
+<style>
+.category-nav-wrap { margin-top: 60px; padding-top: 25px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 20px; }
+.cat-nav-item { display: flex; align-items: center; gap: 8px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 48%; }
+.cat-nav-item:hover { color: #111; }
+.cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
+.cat-nav-label { font-size: 12px; color: #999; white-space: nowrap; font-weight: 300; }
+.nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
+</style>
+<div class="category-nav-wrap">
+  <a href="/brunch_web_assets/markdown/186_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%20%ED%99%95%EB%B3%B4%20%EC%A0%84%EB%9E%B5%20%27%EC%8A%A4%ED%8A%B8%EB%9D%BC%EC%9D%B4%ED%94%84%27.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">카테고리의 이전글</span><span class="nav-title">스타트업의 초기 고객 확보 전략 '스트라이프</span></a>
+  <a href="/brunch_web_assets/markdown/188_%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%EB%A6%AC%EB%8D%94%EA%B0%80%20%EA%BC%AD%20%EA%B0%80%EC%A0%B8%EC%95%BC%20%ED%95%A0%20%EA%B2%83%EC%9D%80.html" class="cat-nav-item cat-nav-right"><span class="nav-title">프로덕트리더가 꼭 가져야 할 것은?</span><span class="cat-nav-label">카테고리의 다음글</span></a>
+</div>
+<!-- CATEGORY_NAV_END -->

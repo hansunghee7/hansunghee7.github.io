@@ -44,9 +44,9 @@ except Exception as e:
 md_files = [f for f in os.listdir(md_dir) if f.endswith(".md") and f != "index.md"]
 md_files.sort()
 
-cards_html = ""
-unique_categories = set()
-post_count = 0
+# 1차 패스: 모든 글 데이터 수집 및 카테고리별 매핑
+posts = []
+category_posts = {}
 
 for filename in md_files:
     filepath = os.path.join(md_dir, filename)
@@ -76,17 +76,6 @@ for filename in md_files:
     filename_clean = re.sub(r'[^가-힣a-zA-Z0-9]', '', filename[:-3])
     date_string = csv_dates.get(title_clean, csv_dates.get(filename_clean, ""))
 
-    if category != "미분류" and category != "기타":
-        unique_categories.add(category)
-
-    body_content = re.sub(r'^---.*?---\s*', '', content, flags=re.DOTALL)
-    
-    safe_title = title.replace('"', '\\"')
-    new_yaml = f"---\nlayout: default\ntitle: \"{safe_title}\"\ncategory: '{category}'\ncover_image: '{cover_image}'\ndate_string: '{date_string}'\n---\n\n"
-    
-    with open(filepath, 'w', encoding='utf-8') as f:
-        f.write(new_yaml + body_content)
-
     safe_url = urllib.parse.quote(filename[:-3])
     link = f"/brunch_web_assets/markdown/{safe_url}.html"
 
@@ -97,26 +86,98 @@ for filename in md_files:
         if len(parts) >= 3:
             timestamp = f"{parts[2]}{months.get(parts[0][:3], '00')}{parts[1].zfill(2)}"
     except: pass
-    
+
     uid = 0
     uid_match = re.match(r'^(\d+)_', filename)
     if uid_match: uid = int(uid_match.group(1))
 
-    cards_html += f'<a href="{link}" class="card-item" data-category="{category}" data-date="{timestamp}" data-id="{uid}"><div class="card-thumb-wrap"><div class="card-thumb" style="background-image: url(\'{cover_image}\');"></div></div><div class="card-content"><div><div class="card-category">{category}</div><h3 class="card-title">{title}</h3></div><div class="card-date">{date_string}</div></div></a>'
+    body_content = re.sub(r'^---.*?---\s*', '', content, flags=re.DOTALL)
+    # 기존 하단 네비게이션 찌꺼기가 있다면 제거
+    body_content = re.sub(r'\n<!-- CATEGORY_NAV_START -->.*?<!-- CATEGORY_NAV_END -->', '', body_content, flags=re.DOTALL).strip()
+
+    post_data = {
+        'filename': filename,
+        'filepath': filepath,
+        'title': title,
+        'category': category,
+        'cover_image': cover_image,
+        'date_string': date_string,
+        'link': link,
+        'timestamp': timestamp,
+        'uid': uid,
+        'body_content': body_content
+    }
+    posts.append(post_data)
+
+    if category not in category_posts:
+        category_posts[category] = []
+    category_posts[category].append(post_data)
+
+# 카테고리별 글 정렬 (uid 순 정렬)
+for cat in category_posts:
+    category_posts[cat].sort(key=lambda x: x['uid'])
+
+# 2차 패스: 각 마크다운 파일 업데이트 (카테고리 내 이전글/다음글 HTML 바인딩)
+cards_html = ""
+unique_categories = set()
+post_count = 0
+
+for p in posts:
+    category = p['category']
+    if category != "미분류" and category != "기타":
+        unique_categories.add(category)
+
+    cat_list = category_posts.get(category, [])
+    idx = -1
+    for i, item in enumerate(cat_list):
+        if item['filename'] == p['filename']:
+            idx = i
+            break
+
+    prev_post = cat_list[idx - 1] if idx > 0 else None
+    next_post = cat_list[idx + 1] if idx >= 0 and idx < len(cat_list) - 1 else None
+
+    # 브런치 스타일의 하단 카테고리 네비게이션 HTML
+    nav_html = "\n\n<!-- CATEGORY_NAV_START -->\n<style>\n" \
+               ".category-nav-wrap { margin-top: 60px; padding-top: 25px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 20px; }\n" \
+               ".cat-nav-item { display: flex; align-items: center; gap: 8px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 48%; }\n" \
+               ".cat-nav-item:hover { color: #111; }\n" \
+               ".cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }\n" \
+               ".cat-nav-label { font-size: 12px; color: #999; white-space: nowrap; font-weight: 300; }\n" \
+               ".nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }\n" \
+               ".cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }\n" \
+               "</style>\n<div class=\"category-nav-wrap\">\n"
+
+    if prev_post:
+        nav_html += f'  <a href="{prev_post["link"]}" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">카테고리의 이전글</span><span class="nav-title">{prev_post["title"]}</span></a>\n'
+    else:
+        nav_html += f'  <div></div>\n'
+
+    if next_post:
+        nav_html += f'  <a href="{next_post["link"]}" class="cat-nav-item cat-nav-right"><span class="nav-title">{next_post["title"]}</span><span class="cat-nav-label">카테고리의 다음글</span></a>\n'
+    else:
+        nav_html += f'  <div></div>\n'
+
+    nav_html += "</div>\n<!-- CATEGORY_NAV_END -->"
+
+    safe_title = p['title'].replace('"', '\\"')
+    new_yaml = f"---\nlayout: default\ntitle: \"{safe_title}\"\ncategory: '{category}'\ncover_image: '{p['cover_image']}'\ndate_string: '{p['date_string']}'\n---\n\n"
+
+    with open(p['filepath'], 'w', encoding='utf-8') as f:
+        f.write(new_yaml + p['body_content'] + nav_html)
+
+    cards_html += f'<a href="{p["link"]}" class="card-item" data-category="{category}" data-date="{p["timestamp"]}" data-id="{p["uid"]}"><div class="card-thumb-wrap"><div class="card-thumb" style="background-image: url(\'{p["cover_image"]}\');"></div></div><div class="card-content"><div><div class="card-category">{category}</div><h3 class="card-title">{p["title"]}</h3></div><div class="card-date">{p["date_string"]}</div></div></a>'
     post_count += 1
 
-# 🌟 타이틀을 'Simplifier Log [포스팅수]' 로 변경
 html_header = f"---\nlayout: default\ntitle: 'Simplifier Log {post_count}'\nis_index: true\n---\n"
 
 default_sorts_json = json.dumps(CATEGORY_SORT_DEFAULTS, ensure_ascii=False)
 
-# 🌟 블랙 상단 패널 / 화이트 활성 카테고리 텍스트 CSS 적용
 html_body = """<style>
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 .card-item.visible { display: flex !important; animation: fadeInUp 0.4s ease forwards; }
 #scrollSentinel { height: 50px; margin-top: 30px; }
 
-/* 🖤 상단 그레이 영역을 딥 블랙으로 변경하는 스타일 */
 .site-header, .header-wrap, .hero-section, .intro-banner {
     background-color: #111111 !important;
     color: #ffffff !important;
@@ -127,7 +188,6 @@ html_body = """<style>
 .cat-btn { padding: 7px 16px; border: 1px solid #e1e1e1; border-radius: 20px; background: #fff; color: #666; font-size: 13px; font-weight: 300; cursor: pointer; transition: all 0.2s; font-family: 'Noto Sans KR', sans-serif; }
 .cat-btn:hover { border-color: #6CFD33; color: #111; }
 
-/* 🌟 선택된 카테고리의 텍스트를 화이트(#ffffff)로 변경 */
 .cat-btn.active { background: #6CFD33; color: #ffffff !important; border-color: #6CFD33; font-weight: 600; }
 
 .sort-filter { display: flex; gap: 15px; align-items: center; margin-bottom: 5px; }
@@ -137,7 +197,6 @@ html_body = """<style>
 .sort-text-btn .dot { display: inline-block; width: 4px; height: 4px; border-radius: 50%; background-color: transparent; margin-right: 4px; margin-bottom: 2px; }
 .sort-text-btn.active .dot { background-color: #6CFD33; }
 
-/* 🎨 카드 기본: 모노톤(흑백) / 호버: 컬러 + 이미지 확대 + 형광그린 테두리 */
 .card-item { border: 1px solid #e1e1e1; border-radius: 12px; overflow: hidden; transition: border-color 0.3s ease, box-shadow 0.3s ease; text-decoration: none !important; color: inherit; }
 .card-thumb-wrap { width: 100%; height: 180px; overflow: hidden; position: relative; }
 .card-thumb { width: 100%; height: 100%; background-size: cover; background-position: center; filter: grayscale(100%); transition: transform 0.4s ease, filter 0.4s ease; }
@@ -182,4 +241,4 @@ const observer = new IntersectionObserver(entries => { entries.forEach(entry => 
 with open(index_file, 'w', encoding='utf-8') as f:
     f.write(html_header + html_body)
 
-print("✅ 상단 딥블랙 적용, 타이틀 변경(Simplifier Log), 활성 카테고리 텍스트 화이트화 완료!")
+print("✅ 카테고리별 이전글/다음글 하단 네비게이션 적용 완료!")

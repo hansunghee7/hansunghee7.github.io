@@ -59,3 +59,19 @@ CPO 업무의 보다 쉬운 이해를 위해 업무의 흐름을 수직적인 �
 
 
  만약 여러분의 회사에서는 위 내용과 다르게 진행되고 있다면 댓글로 알려주기 바란다. :-)
+
+<!-- CATEGORY_NAV_START -->
+<style>
+.category-nav-wrap { margin-top: 60px; padding-top: 25px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 20px; }
+.cat-nav-item { display: flex; align-items: center; gap: 8px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 48%; }
+.cat-nav-item:hover { color: #111; }
+.cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
+.cat-nav-label { font-size: 12px; color: #999; white-space: nowrap; font-weight: 300; }
+.nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
+</style>
+<div class="category-nav-wrap">
+  <a href="/brunch_web_assets/markdown/423_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part%202%20%EC%88%98%ED%8F%89%EC%A0%81%20%EA%B4%80%EC%A0%90.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">카테고리의 이전글</span><span class="nav-title">CPO는 어떻게 일을 할까? Part 2. 수평적 관점</span></a>
+  <a href="/brunch_web_assets/markdown/425_CPO%EA%B0%80%20%EC%96%B4%EB%A0%A4%EC%9A%B4%20%ED%8F%AC%EC%A7%80%EC%85%98%EC%9D%B8%20%EC%9D%B4%EC%9C%A0.html" class="cat-nav-item cat-nav-right"><span class="nav-title">CPO가 어려운 포지션인 이유</span><span class="cat-nav-label">카테고리의 다음글</span></a>
+</div>
+<!-- CATEGORY_NAV_END -->

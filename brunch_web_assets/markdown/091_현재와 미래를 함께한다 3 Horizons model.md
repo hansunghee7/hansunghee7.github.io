@@ -25,3 +25,19 @@ date_string: 'Jul 1. 2025'
 실전 적용 팁으로는 조직 내 '혁신 포트폴리오 워크숍'을 열어 각 부서별로 H1~H3 프로젝트를 공유하고, 중장기 로드맵을 수립하는 것이 효과적이다. H3 프로젝트는 외부 파트너십(스타트업, 대학 등)과의 협업을 적극 활용해야 한다.
 
 3 Horizons 모델은 단기 성과와 장기 혁신 사이의 균형을 잡아주는 전략적 프레임워크다. 단기 이익에만 집착하지 않고, 미래를 위한 실험과 투자를 병행할 때 조직은 지속적으로 성장할 수 있다. 이 프레임워크는 '지금'과 '미래'를 잇는 가장 실용적인 혁신 관리 도구다.
+
+<!-- CATEGORY_NAV_START -->
+<style>
+.category-nav-wrap { margin-top: 60px; padding-top: 25px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 20px; }
+.cat-nav-item { display: flex; align-items: center; gap: 8px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 48%; }
+.cat-nav-item:hover { color: #111; }
+.cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
+.cat-nav-label { font-size: 12px; color: #999; white-space: nowrap; font-weight: 300; }
+.nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
+</style>
+<div class="category-nav-wrap">
+  <div></div>
+  <a href="/brunch_web_assets/markdown/097_MIT%20%EC%B0%BD%EC%97%85%EC%A0%84%EB%9E%B5%20%EB%82%98%EC%B9%A8%EB%B0%98%2C%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%B4%20%EA%B8%B8%EC%9D%84%20%EC%9E%83%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EB%B2%95.html" class="cat-nav-item cat-nav-right"><span class="nav-title">MIT 창업전략 나침반, 스타트업이 길을 잃지 않는 법</span><span class="cat-nav-label">카테고리의 다음글</span></a>
+</div>
+<!-- CATEGORY_NAV_END -->

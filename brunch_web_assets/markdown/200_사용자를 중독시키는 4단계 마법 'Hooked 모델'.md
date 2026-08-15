@@ -27,3 +27,19 @@ date_string: 'Mar 18. 2025'
 기획자가 훅 모델을 실전에 적용할 때는 몇 가지 주의할 점이 있다. 외부 계기에만 의존하지 말고 내부 계기를 형성해야 한다. 사용자 행동을 단순화하고, 보상은 예측 불가능하면서도 가치 있게 설계해야 한다. 그리고 투자 단계를 통해 장기적 관계를 형성해야 한다.
 
 니르 이얄의 이 모델은 단순한 마케팅 전략을 넘어, 우리의 일상 행동을 설명하는 강력한 렌즈가 되었다. 습관 형성 제품은 기존 마케팅보다 비용 효율적이고 강력한 사용자 충성도를 만들어낸다. 다만 이러한 강력한 도구는 윤리적 책임과 함께 사용되어야 한다. 궁극적으로 훅 모델의 목적은 사용자의 삶을 개선하는 습관을 형성하는 것이어야 한다.
+
+<!-- CATEGORY_NAV_START -->
+<style>
+.category-nav-wrap { margin-top: 60px; padding-top: 25px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 20px; }
+.cat-nav-item { display: flex; align-items: center; gap: 8px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 48%; }
+.cat-nav-item:hover { color: #111; }
+.cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
+.cat-nav-label { font-size: 12px; color: #999; white-space: nowrap; font-weight: 300; }
+.nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
+</style>
+<div class="category-nav-wrap">
+  <a href="/brunch_web_assets/markdown/192_%27%EB%A7%A5%EB%AA%A8%EB%8B%9D%27%EC%9D%98%20%EB%B9%84%EB%B0%80%2C%20MECE%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">카테고리의 이전글</span><span class="nav-title">맥모닝'의 비밀, MECE 프레임워크</span></a>
+  <a href="/brunch_web_assets/markdown/208_SWOT%20%EB%B9%84%EC%A7%80%EB%8B%88%EC%8A%A4%EC%9D%98%204%EC%B0%A8%EC%9B%90%20%EB%B6%84%EC%84%9D%EB%B2%95.html" class="cat-nav-item cat-nav-right"><span class="nav-title">SWOT" 비지니스의 4차원 분석법</span><span class="cat-nav-label">카테고리의 다음글</span></a>
+</div>
+<!-- CATEGORY_NAV_END -->

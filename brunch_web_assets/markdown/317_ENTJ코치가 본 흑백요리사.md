@@ -39,3 +39,19 @@ date_string: 'Oct 6. 2024'
 흑백요리사 처음에는 단순한 흥미로운 경연으로 보았지만 복기를 해보니 새롭게 나에게 다가왔다. ENTJ이자 스타트업 코칭을 하는 나는 흑백요리사에서 조직의 리더와 중간관리자의 조건 그리고 성공의 본질을 보았다.
 
 ps. 그런데 이거 직업병 맞죠?;;;
+
+<!-- CATEGORY_NAV_START -->
+<style>
+.category-nav-wrap { margin-top: 60px; padding-top: 25px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 20px; }
+.cat-nav-item { display: flex; align-items: center; gap: 8px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 48%; }
+.cat-nav-item:hover { color: #111; }
+.cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
+.cat-nav-label { font-size: 12px; color: #999; white-space: nowrap; font-weight: 300; }
+.nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
+</style>
+<div class="category-nav-wrap">
+  <a href="/brunch_web_assets/markdown/316_%5B%EB%AA%A8%EC%A7%91%EA%B3%B5%EA%B3%A0%5D%20%EC%8A%A4%EC%99%88%EB%A1%9C%EC%9A%B0%EC%A6%88%EC%99%80%20%ED%95%A8%EA%BB%98%20%ED%95%A0%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%84%20%EC%B0%BE%EC%8A%B5%EB%8B%88%EB%8B%A4.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">카테고리의 이전글</span><span class="nav-title">[모집공고] 스왈로우즈와 함께 할 스타트업을 찾습니다.</span></a>
+  <a href="/brunch_web_assets/markdown/320_%EB%82%B4%EA%B0%80%20%EC%95%94%EA%B8%B0%EB%A5%BC%20%EC%9E%98%ED%95%98%EA%B2%8C%20%EB%90%9C%20%EC%82%AC%EC%97%B0.html" class="cat-nav-item cat-nav-right"><span class="nav-title">내가 암기를 잘하게 된 사연</span><span class="cat-nav-label">카테고리의 다음글</span></a>
+</div>
+<!-- CATEGORY_NAV_END -->

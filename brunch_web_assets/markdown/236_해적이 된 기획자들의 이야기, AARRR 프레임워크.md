@@ -33,3 +33,19 @@ date_string: 'Feb 11. 2025'
 ![How-to-utilize-AARRR_growthmk_07 복사본.jpg](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/4xqOSbddt0J3fudvYKnxMdFh-0A.jpg)
 
 지금 당신의 서비스는 어떤 항로에 있을까? AARRR 프레임워크로 성장의 항로를 찾아보자.
+
+<!-- CATEGORY_NAV_START -->
+<style>
+.category-nav-wrap { margin-top: 60px; padding-top: 25px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 20px; }
+.cat-nav-item { display: flex; align-items: center; gap: 8px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 48%; }
+.cat-nav-item:hover { color: #111; }
+.cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
+.cat-nav-label { font-size: 12px; color: #999; white-space: nowrap; font-weight: 300; }
+.nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
+</style>
+<div class="category-nav-wrap">
+  <a href="/brunch_web_assets/markdown/229_%EC%84%B8%EC%83%81%EC%9D%84%20%EB%B0%94%EA%BE%BC%20%EC%8B%A4%ED%97%98%20%27OKR%27%EC%9D%98%203%EA%B0%80%EC%A7%80%20%EB%A7%88%EB%B2%95.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">카테고리의 이전글</span><span class="nav-title">세상을 바꾼 실험 'OKR'의 3가지 마법</span></a>
+  <a href="/brunch_web_assets/markdown/244_470%EB%AA%85%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%ED%88%B4%20%27%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EB%AA%A8%EB%8D%B8%20%EC%BA%94%EB%B2%84%EC%8A%A4%27.html" class="cat-nav-item cat-nav-right"><span class="nav-title">470명이 만든 비즈니스 툴 '비즈니스 모델 캔버스</span><span class="cat-nav-label">카테고리의 다음글</span></a>
+</div>
+<!-- CATEGORY_NAV_END -->

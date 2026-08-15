@@ -16,3 +16,19 @@ date_string: 'Oct 19. 2024'
 ---
 
  부녀가 서로를 의심하고 감정적 가학을 하는 막장적 가족 서사에서 일본 소설의 플롯이 살짝 느껴지지만, 전반적으로 완성도 있는 영화를 보는 듯한 높은 수준을 보여준다. 무엇보다도 한석규가 아니었으면 이렇게 주인공의 감정적 갈등을 표현할 수 있었을까 싶다. 오랜만에 감정선이 좋은 작품을 만나서 기쁘다. 그러나 한편으론 새로운 걱정이 생겼다. 앞으로 3주를 또 어떻게 기다려야 할지.
+
+<!-- CATEGORY_NAV_START -->
+<style>
+.category-nav-wrap { margin-top: 60px; padding-top: 25px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 20px; }
+.cat-nav-item { display: flex; align-items: center; gap: 8px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 48%; }
+.cat-nav-item:hover { color: #111; }
+.cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
+.cat-nav-label { font-size: 12px; color: #999; white-space: nowrap; font-weight: 300; }
+.nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
+</style>
+<div class="category-nav-wrap">
+  <a href="/brunch_web_assets/markdown/302_%EC%BD%94%EC%B9%AD%EC%9D%B4%20%EB%B3%B4%EB%9E%8C%EC%B0%AC%20%EC%8B%9C%EA%B0%84.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">카테고리의 이전글</span><span class="nav-title">코칭이 보람찬 시간</span></a>
+  <a href="/brunch_web_assets/markdown/312_%EC%A7%81%EA%B4%80%EB%A0%A5%EC%9D%84%20%EA%B0%80%EC%A7%80%EB%A9%B4%20%EC%96%B4%EB%A0%A4%EC%9A%B4%20%EC%A0%90.html" class="cat-nav-item cat-nav-right"><span class="nav-title">직관력을 가지면 어려운 점</span><span class="cat-nav-label">카테고리의 다음글</span></a>
+</div>
+<!-- CATEGORY_NAV_END -->
