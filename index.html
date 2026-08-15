@@ -70,7 +70,7 @@
   .gallery-panel.is-open { flex: 4; }
   .gallery-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) brightness(0.65); transition: filter 0.7s cubic-bezier(.22,.61,.36,1); }
   .gallery-panel.is-open .gallery-img { filter: grayscale(0) brightness(0.92); }
-  .gallery-panel::after { content: ''; position: absolute; inset: 0; border: 1px solid #6CFD33; opacity: 0; transition: opacity 0.4s ease; pointer-events: none; }
+  .gallery-panel::after { content: ''; position: absolute; inset: 0; border: 1px solid #f5f3ee; opacity: 0; transition: opacity 0.4s ease; pointer-events: none; }
   .gallery-panel.is-open::after { opacity: 1; }
   .gallery-caption { position: absolute; left: 0; right: 0; bottom: 0; padding: 28px; opacity: 0; transition: opacity 0.4s ease; background: linear-gradient(to top, rgba(8,8,8,0.85), transparent); }
   .gallery-panel.is-open .gallery-caption { opacity: 1; }
@@ -85,8 +85,7 @@
   .logo-mask-wrap img { transition: opacity 0.3s ease; }
   .logo-mask-wrap .logo-default { opacity: 0.55; }
   .logo-item:hover .logo-mask-wrap .logo-default { opacity: 0; }
-  .logo-mask-wrap .logo-lime-overlay { position: absolute; inset: 0; opacity: 0; pointer-events: none; }
-  .logo-item:hover .logo-mask-wrap .logo-lime-overlay { opacity: 1; }
+  .logo-mask-wrap .logo-lime-overlay { display: none; }
   .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
   .eyebrow { letter-spacing: 0.14em; }
@@ -95,7 +94,7 @@
 
   .concept-badge {
     position: fixed; bottom: 20px; right: 20px; z-index: 100;
-    background: #D7FF3E; color: #080808; font-family: 'Pretendard Variable', sans-serif;
+    background: #f5f3ee; color: #080808; font-family: 'Pretendard Variable', sans-serif;
     font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
     padding: 8px 14px; text-transform: uppercase;
   }
@@ -105,7 +104,10 @@
   .bento-tile:hover img { transform: scale(1.06); }
 
   .lime-hover { transition: color 0.3s ease; }
-  .group:hover .lime-hover { color: #D7FF3E; }
+  .group:hover .lime-hover { color: #f5f3ee; }
+
+  .hover-invert { transition: background-color 0.3s ease, color 0.3s ease; }
+  .hover-invert:hover { background-color: #080808; color: #f5f3ee; }
 
   /* Flat monochrome logo treatment — Clay-style: single muted tone regardless of source color.
      Source images now have real alpha transparency (background removed), so a simple
@@ -118,7 +120,7 @@
     filter: grayscale(1) invert(1) opacity(1);
   }
 
-  ::selection { background: #D7FF3E; color: #080808; }
+  ::selection { background: #f5f3ee; color: #080808; }
 </style>
 </head>
 <body class="font-sans antialiased">
@@ -135,7 +137,7 @@
       <a href="#why" class="hover:text-paper transition-colors">Why Simplifier</a>
       <a href="#ceo" class="hover:text-paper transition-colors">CEO</a>
     </nav>
-    <a href="#contact" class="inline-flex items-center gap-2 bg-paper text-ink px-5 py-2.5 text-sm font-medium hover:bg-lime transition-colors">
+    <a href="#contact" class="inline-flex items-center gap-2 bg-paper text-ink px-5 py-2.5 text-sm font-medium hover-invert">
       Contact <span>↗</span>
     </a>
   </div>
@@ -298,27 +300,27 @@
     <div class="reveal divide-y divide-white/10 border-t border-b border-white/10 mb-8">
       <a href="https://hansunghee7.github.io/brunch_web_assets/markdown/481_%EB%82%B4%EA%B0%80%20GS%EC%97%90%EC%84%9C%20%EA%B0%95%EC%9D%98%EB%A5%BC%20%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" target="_blank" class="talk-row group">
         <img src="assets/talks/gs.jpg" class="talk-thumb">
-        <div class="flex-1"><p class="eyebrow uppercase text-xs text-fog mb-1">토크세션 · GS</p><h3 class="font-display text-lg group-hover:text-lime transition-colors">내가 GS에서 강의를 하는 이유</h3></div>
+        <div class="flex-1"><p class="eyebrow uppercase text-xs text-fog mb-1">토크세션 · GS</p><h3 class="font-display text-lg group-hover:text-paper transition-colors">내가 GS에서 강의를 하는 이유</h3></div>
         <span class="text-fog text-xs group-hover:text-paper transition-colors">자세히 보기 →</span>
       </a>
       <a href="https://hansunghee7.github.io/brunch_web_assets/markdown/357_%EC%B2%AB%20%EB%8C%80%ED%95%99%EA%B5%90%20%EA%B0%95%EC%9D%98.html" target="_blank" class="talk-row group">
         <div class="talk-thumb bg-white/[0.04] flex items-center justify-center"><span class="text-fog text-[10px]">숙명여대</span></div>
-        <div class="flex-1"><p class="eyebrow uppercase text-xs text-fog mb-1">토크세션 · 숙명여대</p><h3 class="font-display text-lg group-hover:text-lime transition-colors">첫 대학교 강의</h3></div>
+        <div class="flex-1"><p class="eyebrow uppercase text-xs text-fog mb-1">토크세션 · 숙명여대</p><h3 class="font-display text-lg group-hover:text-paper transition-colors">첫 대학교 강의</h3></div>
         <span class="text-fog text-xs group-hover:text-paper transition-colors">자세히 보기 →</span>
       </a>
       <a href="https://hansunghee7.github.io/brunch_web_assets/markdown/006_%EC%9E%90%EC%A0%95%EC%9D%B4%20%EA%B0%80%EA%B9%8C%EC%9B%8C%EC%A7%80%EB%8F%84%EB%A1%9D%20AI%20%EC%96%98%EA%B8%B0%EB%A5%BC%20%EC%9B%90%20%EC%97%86%EC%9D%B4%20%EB%82%98%EB%88%B4%EC%96%B4%EC%9A%94.html" target="_blank" class="talk-row group">
         <div class="talk-thumb bg-white/[0.04] flex items-center justify-center"><span class="text-fog text-[10px]">트레바리</span></div>
-        <div class="flex-1"><p class="eyebrow uppercase text-xs text-fog mb-1">토크세션 · 트레바리</p><h3 class="font-display text-lg group-hover:text-lime transition-colors">자정이 가까워지도록 AI 얘기를 원 없이 나눴어요</h3></div>
+        <div class="flex-1"><p class="eyebrow uppercase text-xs text-fog mb-1">토크세션 · 트레바리</p><h3 class="font-display text-lg group-hover:text-paper transition-colors">자정이 가까워지도록 AI 얘기를 원 없이 나눴어요</h3></div>
         <span class="text-fog text-xs group-hover:text-paper transition-colors">자세히 보기 →</span>
       </a>
       <a href="https://hansunghee7.github.io/brunch_web_assets/markdown/292_%EC%A0%95%EC%A3%BC%EC%98%81%ED%9A%8C%EC%9E%A5%EB%8B%98%20%ED%9B%84%EB%B0%B0%EB%93%A4%EC%9D%84%20%EB%A7%8C%EB%82%98%EA%B3%A0%20%EC%99%94%EC%8A%B5%EB%8B%88%EB%8B%A4.html" target="_blank" class="talk-row group">
         <div class="talk-thumb bg-white/[0.04] flex items-center justify-center"><span class="text-fog text-[10px]">아산나눔재단</span></div>
-        <div class="flex-1"><p class="eyebrow uppercase text-xs text-fog mb-1">토크세션 · 아산나눔재단</p><h3 class="font-display text-lg group-hover:text-lime transition-colors">정주영회장님 후배들을 만나고 왔습니다</h3></div>
+        <div class="flex-1"><p class="eyebrow uppercase text-xs text-fog mb-1">토크세션 · 아산나눔재단</p><h3 class="font-display text-lg group-hover:text-paper transition-colors">정주영회장님 후배들을 만나고 왔습니다</h3></div>
         <span class="text-fog text-xs group-hover:text-paper transition-colors">자세히 보기 →</span>
       </a>
       <a href="https://www.classu.co.kr/new/class/1019442" target="_blank" class="talk-row group">
         <div class="talk-thumb bg-white/[0.04] flex items-center justify-center"><span class="text-fog text-[10px]">클래스유</span></div>
-        <div class="flex-1"><p class="eyebrow uppercase text-xs text-fog mb-1">토크세션 · 클래스유</p><h3 class="font-display text-lg group-hover:text-lime transition-colors">온라인 클래스로 만나는 프로덕트 코칭</h3></div>
+        <div class="flex-1"><p class="eyebrow uppercase text-xs text-fog mb-1">토크세션 · 클래스유</p><h3 class="font-display text-lg group-hover:text-paper transition-colors">온라인 클래스로 만나는 프로덕트 코칭</h3></div>
         <span class="text-fog text-xs group-hover:text-paper transition-colors">자세히 보기 →</span>
       </a>
     </div>
@@ -391,7 +393,7 @@
   <div class="max-w-[1400px] mx-auto px-8 md:px-14 py-24 md:py-36 text-center">
     <div class="folio reveal" data-folio-section style="justify-content:center"><span class="folio-label">Contact</span><span class="folio-rule" style="max-width:120px"></span><span class="folio-num">No. 08</span></div>
     <h2 class="reveal font-display text-5xl md:text-8xl leading-[0.95] tracking-tight mb-10">Let&rsquo;s make<br>it simpler.</h2>
-    <a href="#" class="reveal inline-flex items-center gap-3 bg-lime text-ink px-8 py-4 text-base font-medium hover:bg-paper transition-colors">함께 이야기 나눠요 <span>→</span></a>
+    <a href="#" class="reveal inline-flex items-center gap-3 bg-paper text-ink px-8 py-4 text-base font-medium hover-invert">함께 이야기 나눠요 <span>→</span></a>
   </div>
 </section>
 
