@@ -6,6 +6,33 @@ cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daum
 date_string: 'Mar 30. 2025'
 ---
 
+<!-- CAT_LINK_SCRIPT_START -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const catPill = document.querySelector('.cover-category-pill');
+    if(catPill) {
+        catPill.style.cursor = 'pointer';
+        catPill.style.transition = 'all 0.2s ease';
+        catPill.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = '#fff';
+            this.style.color = '#111';
+        });
+        catPill.addEventListener('mouseleave', function() {
+            this.style.backgroundColor = 'transparent';
+            this.style.color = '#fff';
+        });
+        catPill.addEventListener('click', function() {
+            window.location.href = '/?cat=' + encodeURIComponent('스타트업 인사이트');
+        });
+    }
+});
+</script>
+<!-- CAT_LINK_SCRIPT_END -->
+
+<!-- POST_DATE_START -->
+<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Mar 30. 2025</div>
+<!-- POST_DATE_END -->
+
 4차 산업혁명 시대, 데이터는 기업 경쟁력의 핵심 요소로 부상했습니다. 하지만 많은 기업이 여전히 데이터 활용에 어려움을 겪고 있는데요. 부서별로 흩어진 데이터, 레거시 시스템과의 호환성 문제, 보안과 규제 이슈까지... 데이터 통합과 분석에는 복잡한 난제들이 도사리고 있습니다.
 
 이런 상황에서 기업들에게 돌파구를 제시하는 것이 바로 팔란티어의 Foundry 플랫폼입니다. Gotham이 정부와 국방에 특화된 만큼, Foundry는 순수 상업 부문을 겨냥한 제품이라 할 수 있죠. 금융, 제조, 에너지, 헬스케어 등 다양한 산업군의 고객사들이 Foundry를 통해 데이터 기반 의사결정 역량을 강화해 나가고 있습니다.

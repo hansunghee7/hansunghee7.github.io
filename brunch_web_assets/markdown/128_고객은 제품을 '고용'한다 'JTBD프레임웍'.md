@@ -6,6 +6,33 @@ cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daum
 date_string: 'May 27. 2025'
 ---
 
+<!-- CAT_LINK_SCRIPT_START -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const catPill = document.querySelector('.cover-category-pill');
+    if(catPill) {
+        catPill.style.cursor = 'pointer';
+        catPill.style.transition = 'all 0.2s ease';
+        catPill.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = '#fff';
+            this.style.color = '#111';
+        });
+        catPill.addEventListener('mouseleave', function() {
+            this.style.backgroundColor = 'transparent';
+            this.style.color = '#fff';
+        });
+        catPill.addEventListener('click', function() {
+            window.location.href = '/?cat=' + encodeURIComponent('기획자의 프레임웍');
+        });
+    }
+});
+</script>
+<!-- CAT_LINK_SCRIPT_END -->
+
+<!-- POST_DATE_START -->
+<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">May 27. 2025</div>
+<!-- POST_DATE_END -->
+
 하버드 경영대학원의 클레이튼 크리스텐슨 교수가 제시한 간단한 통찰이 비즈니스 세계를 뒤흔들었다. "사람들은 1/4인치 드릴을 원하는 것이 아니라, 1/4인치 구멍이 필요한 것이다." 이 한 문장이 JTBD(Job To Be Done) 프레임워크의 핵심을 담고 있다.
 
 JTBD의 철학은 단순하지만 혁신적이다. 고객은 제품 자체가 아니라, 그 제품이 해결해주는 '일(Job)'을 위해 제품을 '고용'한다는 것이다. 여기서 '일'은 고객이 달성하고자 하는 바람직한 상황이나 피하고 싶은 문제 상황을 의미한다. 이는 기존의 제품 중심, 고객 속성 중심 접근법과는 완전히 다른 관점이다.

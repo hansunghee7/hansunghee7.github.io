@@ -6,6 +6,33 @@ cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daum
 date_string: 'Mar 26. 2025'
 ---
 
+<!-- CAT_LINK_SCRIPT_START -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const catPill = document.querySelector('.cover-category-pill');
+    if(catPill) {
+        catPill.style.cursor = 'pointer';
+        catPill.style.transition = 'all 0.2s ease';
+        catPill.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = '#fff';
+            this.style.color = '#111';
+        });
+        catPill.addEventListener('mouseleave', function() {
+            this.style.backgroundColor = 'transparent';
+            this.style.color = '#fff';
+        });
+        catPill.addEventListener('click', function() {
+            window.location.href = '/?cat=' + encodeURIComponent('AI의 언어들');
+        });
+    }
+});
+</script>
+<!-- CAT_LINK_SCRIPT_END -->
+
+<!-- POST_DATE_START -->
+<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Mar 26. 2025</div>
+<!-- POST_DATE_END -->
+
 요즘 AI 하드웨어 시장을 보면 GPU, NPU, FPGA가 치열하게 경쟁하고 있습니다. 어떤 가속기를 쓰느냐에 따라 AI 모델의 성능이 크게 달라지기 때문이라고 합니다. 학습(Training)용과 추론(Inference)용도 하드웨어 종류에 따라 성능이 크게 달라진다고 합니다. 이번 글에서는 AI 하드웨어가속기들의 차이점과 용도에 대해 쉽게 정리해보려고 합니다.
 
 ## 학습과 추론처리의 차이

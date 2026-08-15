@@ -6,6 +6,33 @@ cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daum
 date_string: 'Aug 14. 2025'
 ---
 
+<!-- CAT_LINK_SCRIPT_START -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const catPill = document.querySelector('.cover-category-pill');
+    if(catPill) {
+        catPill.style.cursor = 'pointer';
+        catPill.style.transition = 'all 0.2s ease';
+        catPill.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = '#fff';
+            this.style.color = '#111';
+        });
+        catPill.addEventListener('mouseleave', function() {
+            this.style.backgroundColor = 'transparent';
+            this.style.color = '#fff';
+        });
+        catPill.addEventListener('click', function() {
+            window.location.href = '/?cat=' + encodeURIComponent('UX의 언어들');
+        });
+    }
+});
+</script>
+<!-- CAT_LINK_SCRIPT_END -->
+
+<!-- POST_DATE_START -->
+<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Aug 14. 2025</div>
+<!-- POST_DATE_END -->
+
 "아니, 벌써 3시간이나 지났어?"
 
 넷플릭스를 보다가, 게임을 하다가 시간 가는 줄 모르고 깜짝 놀란 경험이 있을 겁니다. 바로 이 상태를 심리학자 미하이 칙센트미하이는 'Flow State(몰입 상태)'라고 명명했습니다.

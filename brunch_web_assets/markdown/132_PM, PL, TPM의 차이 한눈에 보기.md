@@ -6,6 +6,33 @@ cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daum
 date_string: 'May 23. 2025'
 ---
 
+<!-- CAT_LINK_SCRIPT_START -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const catPill = document.querySelector('.cover-category-pill');
+    if(catPill) {
+        catPill.style.cursor = 'pointer';
+        catPill.style.transition = 'all 0.2s ease';
+        catPill.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = '#fff';
+            this.style.color = '#111';
+        });
+        catPill.addEventListener('mouseleave', function() {
+            this.style.backgroundColor = 'transparent';
+            this.style.color = '#fff';
+        });
+        catPill.addEventListener('click', function() {
+            window.location.href = '/?cat=' + encodeURIComponent('PO의 프레임웍');
+        });
+    }
+});
+</script>
+<!-- CAT_LINK_SCRIPT_END -->
+
+<!-- POST_DATE_START -->
+<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">May 23. 2025</div>
+<!-- POST_DATE_END -->
+
 프로젝트 성공을 위해 다양한 역할이 필요합니다. PM, PL, TPM은 IT 업계에서 흔히 볼 수 있는 리더십 포지션이지만, 그 차이를 명확히 이해하는 사람은 많지 않습니다. 각 역할의 주요 책임과 중점 영역을 살펴보겠습니다.
 
 **PM(Product/Project Manager), 제품의 마에스트로**

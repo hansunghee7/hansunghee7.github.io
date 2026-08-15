@@ -6,6 +6,33 @@ cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daum
 date_string: 'Dec 22. 2023'
 ---
 
+<!-- CAT_LINK_SCRIPT_START -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const catPill = document.querySelector('.cover-category-pill');
+    if(catPill) {
+        catPill.style.cursor = 'pointer';
+        catPill.style.transition = 'all 0.2s ease';
+        catPill.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = '#fff';
+            this.style.color = '#111';
+        });
+        catPill.addEventListener('mouseleave', function() {
+            this.style.backgroundColor = 'transparent';
+            this.style.color = '#fff';
+        });
+        catPill.addEventListener('click', function() {
+            window.location.href = '/?cat=' + encodeURIComponent('스타트업 인사이트');
+        });
+    }
+});
+</script>
+<!-- CAT_LINK_SCRIPT_END -->
+
+<!-- POST_DATE_START -->
+<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Dec 22. 2023</div>
+<!-- POST_DATE_END -->
+
 저는 CPO로써 프로덕트 생산 체계가 자리를 잡고, 계획된 과제가 안정적으로 돌아가면, UX 조직과 함께 콘셉트카를 만들 듯이 프로덕트의 미래를 그려보는 작업을 합니다.
 
  VOC(고객요구사항), 비즈니스 목표, 사용성 등을 전반적으로 고려하여 1~2년 뒤의 프로덕트의 콘셉트 시안을 만들어 보는 거죠. 그리고 이해의 용이성을 위해 시안을 조합해 프로토타이핑 동영상을 만듭니다.

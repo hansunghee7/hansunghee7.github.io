@@ -6,6 +6,33 @@ cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daum
 date_string: 'Apr 2. 2025'
 ---
 
+<!-- CAT_LINK_SCRIPT_START -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const catPill = document.querySelector('.cover-category-pill');
+    if(catPill) {
+        catPill.style.cursor = 'pointer';
+        catPill.style.transition = 'all 0.2s ease';
+        catPill.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = '#fff';
+            this.style.color = '#111';
+        });
+        catPill.addEventListener('mouseleave', function() {
+            this.style.backgroundColor = 'transparent';
+            this.style.color = '#fff';
+        });
+        catPill.addEventListener('click', function() {
+            window.location.href = '/?cat=' + encodeURIComponent('AI의 언어들');
+        });
+    }
+});
+</script>
+<!-- CAT_LINK_SCRIPT_END -->
+
+<!-- POST_DATE_START -->
+<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Apr 2. 2025</div>
+<!-- POST_DATE_END -->
+
 AI 기술이 급속도로 발전하면서 방대한 데이터를 빠르게 처리할 수 있는 고성능 메모리의 중요성이 부각되고 있습니다. 특히 HBM(High Bandwidth Memory)은 기존 DRAM의 한계를 뛰어넘는 혁신적인 기술로 주목받고 있죠. 그런데 HBM이 정확히 뭐길래 AI 학습에 그렇게 필수적일까요? 오늘은 HBM의 탄생 배경부터 최신 동향, 그리고 AI 학습에서의 역할까지 살펴보도록 하겠습니다.
 
 HBM은 사실 갑자기 튀어나온 신기술이 아닙니다. 2000년대 후반 AMD가 고성능 GPU용 메모리 솔루션을 고민하면서 HBM 개발에 착수했고, 비슷한 시기 SK하이닉스도 TSV(Through Silicon Via) 기술에 주목하며 HBM 연구에 뛰어들었죠. 두 회사의 협력으로 2013년 HBM이 JEDEC 표준으로 제정되었고, 2015년 AMD의 Fiji GPU와 함께 상용화되기 시작했습니다.

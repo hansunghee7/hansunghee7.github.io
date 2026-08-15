@@ -6,6 +6,33 @@ cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daum
 date_string: 'Jul 6. 2025'
 ---
 
+<!-- CAT_LINK_SCRIPT_START -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const catPill = document.querySelector('.cover-category-pill');
+    if(catPill) {
+        catPill.style.cursor = 'pointer';
+        catPill.style.transition = 'all 0.2s ease';
+        catPill.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = '#fff';
+            this.style.color = '#111';
+        });
+        catPill.addEventListener('mouseleave', function() {
+            this.style.backgroundColor = 'transparent';
+            this.style.color = '#fff';
+        });
+        catPill.addEventListener('click', function() {
+            window.location.href = '/?cat=' + encodeURIComponent('대한민국 스타트업 미국진출을 묻다');
+        });
+    }
+});
+</script>
+<!-- CAT_LINK_SCRIPT_END -->
+
+<!-- POST_DATE_START -->
+<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Jul 6. 2025</div>
+<!-- POST_DATE_END -->
+
 "한국에서 성공했으니 미국에서도 될 거야." 이렇게 생각하며 미국에 진출했다가 쓴맛을 본 한국 SaaS 스타트업들이 적지 않습니다. 수많은 사례를 분석해보니 흥미롭게도 몇 가지 패턴이 반복되고 있었습니다.
 
 첫 번째 실패 원인은 현지 고객에 대한 이해 부족입니다. 한국에서 성공했다고 자신의 직감만 믿고 미국 시장에 제품을 내놓는 것이 대표적 실수입니다. 한국에서는 창업자 본인과 주변인이 타깃 고객과 비슷해 직관적 제품 개발이 통했을지 몰라도, 미국에서는 창업자와 고객층의 교집합이 거의 없어 직감이 어긋날 가능성이 높습니다. 실제로 어떤 한국 스타트업은 미국에서 제품 출시 전에 현지 잠재고객 인터뷰를 소홀히 했다가 엉뚱한 기능에 자원을 투입하는 바람에 초기 모멘텀을 놓쳤습니다.

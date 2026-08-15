@@ -6,6 +6,33 @@ cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daum
 date_string: 'May 22. 2025'
 ---
 
+<!-- CAT_LINK_SCRIPT_START -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const catPill = document.querySelector('.cover-category-pill');
+    if(catPill) {
+        catPill.style.cursor = 'pointer';
+        catPill.style.transition = 'all 0.2s ease';
+        catPill.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = '#fff';
+            this.style.color = '#111';
+        });
+        catPill.addEventListener('mouseleave', function() {
+            this.style.backgroundColor = 'transparent';
+            this.style.color = '#fff';
+        });
+        catPill.addEventListener('click', function() {
+            window.location.href = '/?cat=' + encodeURIComponent('UX의 언어들');
+        });
+    }
+});
+</script>
+<!-- CAT_LINK_SCRIPT_END -->
+
+<!-- POST_DATE_START -->
+<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">May 22. 2025</div>
+<!-- POST_DATE_END -->
+
 "장바구니에 담았는데 왜 구매는 안 할까?" "회원가입 폼에서 절반이 이탈하는 이유는 뭘까?" 디지털 서비스를 운영하는 모든 이들의 공통된 고민입니다. 이런 사용자 이탈 지점을 추적하고 분석하는 UX 용어가 바로 '드롭오프(Drop-off)'입니다.
 
 '드롭오프(Drop-off)'라는 용어는 사용자가 특정 프로세스에서 '떨어져 나가는' 현상을 직관적으로 표현합니다. 이는 웹 분석과 UX 연구에서 사용자가 의도된 경로를 완료하지 않고 이탈하는 지점을 가리키는 전문 용어입니다.

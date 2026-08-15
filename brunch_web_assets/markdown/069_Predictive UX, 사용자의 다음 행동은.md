@@ -6,6 +6,33 @@ cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daum
 date_string: 'Jul 25. 2025'
 ---
 
+<!-- CAT_LINK_SCRIPT_START -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const catPill = document.querySelector('.cover-category-pill');
+    if(catPill) {
+        catPill.style.cursor = 'pointer';
+        catPill.style.transition = 'all 0.2s ease';
+        catPill.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = '#fff';
+            this.style.color = '#111';
+        });
+        catPill.addEventListener('mouseleave', function() {
+            this.style.backgroundColor = 'transparent';
+            this.style.color = '#fff';
+        });
+        catPill.addEventListener('click', function() {
+            window.location.href = '/?cat=' + encodeURIComponent('UX의 언어들');
+        });
+    }
+});
+</script>
+<!-- CAT_LINK_SCRIPT_END -->
+
+<!-- POST_DATE_START -->
+<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Jul 25. 2025</div>
+<!-- POST_DATE_END -->
+
 "사용자가 원하는 것을 사용자보다 먼저 알 수 있다면?"
 
 이제는 공상과학 영화의 이야기가 아닙니다. 아마존이 주문 전에 미리 상품을 배송지 근처로 옮겨두고, 넷플릭스가 시청 패턴을 분석해 다음에 볼 영화를 추천하는 것처럼, Predictive UX는 이미 우리 생활 속에 깊숙이 들어와 있습니다.

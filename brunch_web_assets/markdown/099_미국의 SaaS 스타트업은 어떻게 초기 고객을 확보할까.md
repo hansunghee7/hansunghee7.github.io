@@ -6,6 +6,33 @@ cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daum
 date_string: 'Jun 22. 2025'
 ---
 
+<!-- CAT_LINK_SCRIPT_START -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const catPill = document.querySelector('.cover-category-pill');
+    if(catPill) {
+        catPill.style.cursor = 'pointer';
+        catPill.style.transition = 'all 0.2s ease';
+        catPill.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = '#fff';
+            this.style.color = '#111';
+        });
+        catPill.addEventListener('mouseleave', function() {
+            this.style.backgroundColor = 'transparent';
+            this.style.color = '#fff';
+        });
+        catPill.addEventListener('click', function() {
+            window.location.href = '/?cat=' + encodeURIComponent('대한민국 스타트업 미국진출을 묻다');
+        });
+    }
+});
+</script>
+<!-- CAT_LINK_SCRIPT_END -->
+
+<!-- POST_DATE_START -->
+<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Jun 22. 2025</div>
+<!-- POST_DATE_END -->
+
 SaaS 스타트업에게 가장 어려운 순간이 언제일까요? 바로 첫 번째 유료 고객을 확보하는 때입니다. 제품은 만들었는데 누가 써줄지 모르겠고, 광고비는 부담스럽고... 이런 상황에서 미국의 성공한 SaaS 스타트업들은 어떻게 돌파구를 찾았을까요?
 
 흥미롭게도 이들은 돈보다는 시간과 노력을 투자해 고객을 확보하는 공통된 패턴을 보입니다. 크게 세 가지 전략으로 정리됩니다.

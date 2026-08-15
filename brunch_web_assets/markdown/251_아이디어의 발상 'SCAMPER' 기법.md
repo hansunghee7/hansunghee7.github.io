@@ -6,6 +6,33 @@ cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daum
 date_string: 'Jan 28. 2025'
 ---
 
+<!-- CAT_LINK_SCRIPT_START -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const catPill = document.querySelector('.cover-category-pill');
+    if(catPill) {
+        catPill.style.cursor = 'pointer';
+        catPill.style.transition = 'all 0.2s ease';
+        catPill.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = '#fff';
+            this.style.color = '#111';
+        });
+        catPill.addEventListener('mouseleave', function() {
+            this.style.backgroundColor = 'transparent';
+            this.style.color = '#fff';
+        });
+        catPill.addEventListener('click', function() {
+            window.location.href = '/?cat=' + encodeURIComponent('기획자의 프레임웍');
+        });
+    }
+});
+</script>
+<!-- CAT_LINK_SCRIPT_END -->
+
+<!-- POST_DATE_START -->
+<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Jan 28. 2025</div>
+<!-- POST_DATE_END -->
+
 기획자의 가장 핵심적인 업무는 문제를 효과적으로 해결하는 것이다. 그 해결 아이디어를 그냥 맨땅에 헤딩하며 찾기 보다는 프레임을 활용하면 보다 창의적이고 효과적으로 찾을 수 있다. 내가 광고를 전공하면서 배웠던 프레임웍으로 남들과 다른 접근을 하는데 큰 도움을 받았기에 소개해보고자 한다.
 
 창의적인 아이디어 발상을 위해 SCAMPER 기법만큼 강력한 도구도 드물다. 1950년대 광고계 거장 알렉스 오스본이 개발한 체크리스트에서 출발해 1971년 지금의 모습으로 정립된 이 기법은, 7가지 키워드로 사고의 영역을 체계화하여 구체적인 아이디어 도출을 이끌어낸다.

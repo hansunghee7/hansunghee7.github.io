@@ -6,6 +6,33 @@ cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daum
 date_string: 'Apr 24. 2025'
 ---
 
+<!-- CAT_LINK_SCRIPT_START -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const catPill = document.querySelector('.cover-category-pill');
+    if(catPill) {
+        catPill.style.cursor = 'pointer';
+        catPill.style.transition = 'all 0.2s ease';
+        catPill.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = '#fff';
+            this.style.color = '#111';
+        });
+        catPill.addEventListener('mouseleave', function() {
+            this.style.backgroundColor = 'transparent';
+            this.style.color = '#fff';
+        });
+        catPill.addEventListener('click', function() {
+            window.location.href = '/?cat=' + encodeURIComponent('UX의 언어들');
+        });
+    }
+});
+</script>
+<!-- CAT_LINK_SCRIPT_END -->
+
+<!-- POST_DATE_START -->
+<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Apr 24. 2025</div>
+<!-- POST_DATE_END -->
+
 "당신의 서비스를 처음 접한 사용자, 과연 어떤 생각을 할까요?"
 
 바로 이 질문이 UX 디자인의 시작점입니다. 특히 첫 화면은 사용자가 서비스의 가치를 판단하는 결정적 순간인데요. 그 순간을 사로잡기 위해 디자이너들이 심리학의 힘을 빌리곤 합니다. 이번 글에서는 첫인상의 마법, 그 뒤에 숨은 심리학적 비밀을 파헤쳐 보겠습니다.

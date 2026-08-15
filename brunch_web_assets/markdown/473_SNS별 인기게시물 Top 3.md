@@ -6,6 +6,33 @@ cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.dau
 date_string: 'Feb 14. 2024'
 ---
 
+<!-- CAT_LINK_SCRIPT_START -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const catPill = document.querySelector('.cover-category-pill');
+    if(catPill) {
+        catPill.style.cursor = 'pointer';
+        catPill.style.transition = 'all 0.2s ease';
+        catPill.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = '#fff';
+            this.style.color = '#111';
+        });
+        catPill.addEventListener('mouseleave', function() {
+            this.style.backgroundColor = 'transparent';
+            this.style.color = '#fff';
+        });
+        catPill.addEventListener('click', function() {
+            window.location.href = '/?cat=' + encodeURIComponent('심플리파이어 라이프');
+        });
+    }
+});
+</script>
+<!-- CAT_LINK_SCRIPT_END -->
+
+<!-- POST_DATE_START -->
+<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Feb 14. 2024</div>
+<!-- POST_DATE_END -->
+
 선배분들을 벤치마킹을 해서 멀티퍼블리싱을 하고 있는데, 최근 테스트 채널까지 늘면서 육체적 피로도가 높아졌습니다. 그래서 몇 개 정리를 할까 둘러보다보니, 열손가락 깨물어 안아픈 손가락이 없다고 멈출 수 있는 SNS가 없네요. ㅜ.ㅜ (누구 좋은 방법을 아시는 분 있으면 조언 부탁드립니다.)
 
 오히려 둘러보다보니 각 SNS 별 인기 게시물들이 각기 다른 점이 흥미로워, 한번 비교를 해보았는데 재미있어서 이웃들에게도 공유해 봅니다.

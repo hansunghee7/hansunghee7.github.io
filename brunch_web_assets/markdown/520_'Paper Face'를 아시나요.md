@@ -6,6 +6,33 @@ cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daum
 date_string: 'Dec 25. 2023'
 ---
 
+<!-- CAT_LINK_SCRIPT_START -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const catPill = document.querySelector('.cover-category-pill');
+    if(catPill) {
+        catPill.style.cursor = 'pointer';
+        catPill.style.transition = 'all 0.2s ease';
+        catPill.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = '#fff';
+            this.style.color = '#111';
+        });
+        catPill.addEventListener('mouseleave', function() {
+            this.style.backgroundColor = 'transparent';
+            this.style.color = '#fff';
+        });
+        catPill.addEventListener('click', function() {
+            window.location.href = '/?cat=' + encodeURIComponent('심플리파이어 라이프');
+        });
+    }
+});
+</script>
+<!-- CAT_LINK_SCRIPT_END -->
+
+<!-- POST_DATE_START -->
+<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Dec 25. 2023</div>
+<!-- POST_DATE_END -->
+
 '크리스마스 특집' 재미로 보는 추억의 사진들;;;
 
 혹시 '[신디셔먼](https://www.google.com/search?q=%EC%8B%A0%EB%94%94%EC%85%94%EB%A8%BC&sca_esv=593400454&tbm=isch&source=lnms&sa=X&ved=2ahUKEwiouJmRp6iDAxW9sVYBHYktAeAQ_AUoAXoECAIQAw&biw=1440&bih=719&dpr=2)'이라는 사진작가를 아시나요? 다양한 인물들을 흉내 낸 사진으로 유명한 작가인데요. 사진 한 장만 보면 약간 미친 것 아닌가 생각이 듭니다. 그런데 그걸 꾸준히 하면 작가로 인정을 받더군요.

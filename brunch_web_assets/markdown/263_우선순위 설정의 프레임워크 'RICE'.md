@@ -6,6 +6,33 @@ cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daum
 date_string: 'Jan 14. 2025'
 ---
 
+<!-- CAT_LINK_SCRIPT_START -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const catPill = document.querySelector('.cover-category-pill');
+    if(catPill) {
+        catPill.style.cursor = 'pointer';
+        catPill.style.transition = 'all 0.2s ease';
+        catPill.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = '#fff';
+            this.style.color = '#111';
+        });
+        catPill.addEventListener('mouseleave', function() {
+            this.style.backgroundColor = 'transparent';
+            this.style.color = '#fff';
+        });
+        catPill.addEventListener('click', function() {
+            window.location.href = '/?cat=' + encodeURIComponent('기획자의 프레임웍');
+        });
+    }
+});
+</script>
+<!-- CAT_LINK_SCRIPT_END -->
+
+<!-- POST_DATE_START -->
+<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Jan 14. 2025</div>
+<!-- POST_DATE_END -->
+
 제품 아이디어 백로그의 우선순위를 정하는 일은 기획자에게 매우 중요하면서 어려운 일입니다. 이때 RICE 프레임워크를 활용하면 보다 객관적이고 효과적으로 의사결정을 내릴 수 있습니다.
 
 RICE는 Reach(도달 범위), Impact(영향력), Confidence(자신감), Effort(노력)의 네 가지 요소를 평가하여 아이디어의 우선순위를 매기는 방법론입니다. 2012년 인터콤의 제품 관리자 숀 맥브라이드가 고안한 이 프레임워크는 IT 업계에서 널리 사용되고 있죠.

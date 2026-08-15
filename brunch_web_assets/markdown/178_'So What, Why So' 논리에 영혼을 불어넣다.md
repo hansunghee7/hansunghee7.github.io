@@ -6,6 +6,33 @@ cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daum
 date_string: 'Apr 8. 2025'
 ---
 
+<!-- CAT_LINK_SCRIPT_START -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const catPill = document.querySelector('.cover-category-pill');
+    if(catPill) {
+        catPill.style.cursor = 'pointer';
+        catPill.style.transition = 'all 0.2s ease';
+        catPill.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = '#fff';
+            this.style.color = '#111';
+        });
+        catPill.addEventListener('mouseleave', function() {
+            this.style.backgroundColor = 'transparent';
+            this.style.color = '#fff';
+        });
+        catPill.addEventListener('click', function() {
+            window.location.href = '/?cat=' + encodeURIComponent('기획자의 프레임웍');
+        });
+    }
+});
+</script>
+<!-- CAT_LINK_SCRIPT_END -->
+
+<!-- POST_DATE_START -->
+<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Apr 8. 2025</div>
+<!-- POST_DATE_END -->
+
 맥킨지와 같은 글로벌 컨설팅 회사에서 탄생한 'So What, Why So' 프레임워크는 얼핏 간단해 보이지만, 논리적 사고의 핵심을 짚어내는 강력한 도구다. 이는 단순한 질문이 아니라 복잡한 정보를 명확한 인사이트로 변환하는 마법의 문구와도 같다.
 
 'So What(그래서 뭐?)'은 데이터나 분석 결과가 주는 핵심 메시지를 추출하는 질문이다. 이는 단순히 "그래서요?"라고 묻는 것이 아니라, "이 정보가 왜 중요한가?", "이것이 의미하는 바는 무엇인가?"를 묻는 것이다. 구글은 방대한 사용자 데이터 분석 결과에서 'So What' 질문을 통해 핵심 인사이트를 도출하고, 이를 제품 개선에 활용한다.

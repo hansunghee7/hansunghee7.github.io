@@ -6,6 +6,33 @@ cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.dau
 date_string: 'Apr 9. 2025'
 ---
 
+<!-- CAT_LINK_SCRIPT_START -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const catPill = document.querySelector('.cover-category-pill');
+    if(catPill) {
+        catPill.style.cursor = 'pointer';
+        catPill.style.transition = 'all 0.2s ease';
+        catPill.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = '#fff';
+            this.style.color = '#111';
+        });
+        catPill.addEventListener('mouseleave', function() {
+            this.style.backgroundColor = 'transparent';
+            this.style.color = '#fff';
+        });
+        catPill.addEventListener('click', function() {
+            window.location.href = '/?cat=' + encodeURIComponent('AI의 언어들');
+        });
+    }
+});
+</script>
+<!-- CAT_LINK_SCRIPT_END -->
+
+<!-- POST_DATE_START -->
+<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Apr 9. 2025</div>
+<!-- POST_DATE_END -->
+
 AI 기술이 빠르게 발전하면서 AI 칩의 성능이 그 어느 때보다 중요해졌습니다. 그런데 AI 칩 성능을 결정짓는 요소가 뭔지 아시나요? 바로 FLOPS, TOPS, 그리고 메모리 대역폭인데요. 이 세 가지가 AI 모델의 학습 속도와 추론 능력을 좌우한다고 해요. 지금부터 하나씩 짚어보도록 할게요.
 
 먼저 FLOPS는 "Floating Point Operations Per Second"의 약자로, 초당 처리할 수 있는 부동소수점 연산 횟수를 말해요. 쉽게 말해 복잡한 수식 계산을 얼마나 빠르게 해낼 수 있는지를 나타내는 거죠. FLOPS가 높을수록 딥러닝 모델을 더 빨리 학습시킬 수 있어요. 슈퍼컴퓨터 성능을 비교할 때도 FLOPS를 주로 따져 봅니다.

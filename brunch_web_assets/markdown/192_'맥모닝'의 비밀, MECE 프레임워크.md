@@ -6,6 +6,33 @@ cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daum
 date_string: 'Mar 25. 2025'
 ---
 
+<!-- CAT_LINK_SCRIPT_START -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const catPill = document.querySelector('.cover-category-pill');
+    if(catPill) {
+        catPill.style.cursor = 'pointer';
+        catPill.style.transition = 'all 0.2s ease';
+        catPill.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = '#fff';
+            this.style.color = '#111';
+        });
+        catPill.addEventListener('mouseleave', function() {
+            this.style.backgroundColor = 'transparent';
+            this.style.color = '#fff';
+        });
+        catPill.addEventListener('click', function() {
+            window.location.href = '/?cat=' + encodeURIComponent('기획자의 프레임웍');
+        });
+    }
+});
+</script>
+<!-- CAT_LINK_SCRIPT_END -->
+
+<!-- POST_DATE_START -->
+<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Mar 25. 2025</div>
+<!-- POST_DATE_END -->
+
 2006년 맥도날드는 한 가지 고민에 빠져 있었다. 매출이 정체된 이유를 찾기 위해 글로벌 컨설팅 회사 맥킨지의 MECE(미씨) 프레임워크를 활용했다. 분석 결과, 맥도날드는 점심과 저녁 메뉴만 판매하고 있었고, 아침 시간대의 매출이 빠져 있다는 사실을 깨달았다. 바로 '맥모닝'의 시작이었다. 이 결정 하나로 맥도날드는 아침 시장을 공략해 큰 성공을 거두었다.
 
 이처럼 MECE는 '상호 배타적(Mutually Exclusive)', '전체 포괄적(Collectively Exhaustive)'이라는 뜻을 지닌 문제 해결 프레임워크다. 쉽게 말해, 중복 없이 명확하게 나누고, 빠짐없이 모든 요소를 고려하는 방식이다.

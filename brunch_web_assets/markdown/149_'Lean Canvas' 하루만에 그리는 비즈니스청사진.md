@@ -6,6 +6,33 @@ cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daum
 date_string: 'May 6. 2025'
 ---
 
+<!-- CAT_LINK_SCRIPT_START -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const catPill = document.querySelector('.cover-category-pill');
+    if(catPill) {
+        catPill.style.cursor = 'pointer';
+        catPill.style.transition = 'all 0.2s ease';
+        catPill.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = '#fff';
+            this.style.color = '#111';
+        });
+        catPill.addEventListener('mouseleave', function() {
+            this.style.backgroundColor = 'transparent';
+            this.style.color = '#fff';
+        });
+        catPill.addEventListener('click', function() {
+            window.location.href = '/?cat=' + encodeURIComponent('기획자의 프레임웍');
+        });
+    }
+});
+</script>
+<!-- CAT_LINK_SCRIPT_END -->
+
+<!-- POST_DATE_START -->
+<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">May 6. 2025</div>
+<!-- POST_DATE_END -->
+
 비즈니스 모델을 구상하는 방법은 크게 두 가지다. 하나는 100페이지짜리 사업계획서를 작성하는 것, 다른 하나는 한 장의 Lean Canvas를 그리는 것이다. 2010년, 애시 모리아(Ash Maurya)는 후자를 선택했다.
 
 "대부분의 스타트업이 실패하는 이유는 제품을 만들지 못해서가 아니라, 잘못된 제품을 만드느라 시간과 돈과 노력을 낭비해서다." 애시 모리아의 이 말은 Lean Canvas의 본질을 정확히 설명한다.

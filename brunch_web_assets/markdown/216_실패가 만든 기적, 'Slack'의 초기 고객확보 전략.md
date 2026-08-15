@@ -6,6 +6,33 @@ cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daum
 date_string: 'Mar 3. 2025'
 ---
 
+<!-- CAT_LINK_SCRIPT_START -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const catPill = document.querySelector('.cover-category-pill');
+    if(catPill) {
+        catPill.style.cursor = 'pointer';
+        catPill.style.transition = 'all 0.2s ease';
+        catPill.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = '#fff';
+            this.style.color = '#111';
+        });
+        catPill.addEventListener('mouseleave', function() {
+            this.style.backgroundColor = 'transparent';
+            this.style.color = '#fff';
+        });
+        catPill.addEventListener('click', function() {
+            window.location.href = '/?cat=' + encodeURIComponent('스타트업 인사이트');
+        });
+    }
+});
+</script>
+<!-- CAT_LINK_SCRIPT_END -->
+
+<!-- POST_DATE_START -->
+<div style="color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">Mar 3. 2025</div>
+<!-- POST_DATE_END -->
+
 안녕하세요, 스타트업 성공코치 한성희입니다. 오늘은 업무용 메신저 시장을 단숨에 장악한 Slack의 놀라운 초기 고객 확보 전략에 대해 알아보겠습니다.
 
 Slack의 창업은 역설적이게도 실패한 게임 프로젝트에서 시작되었습니다. 스튜어트 버터필드와 그의 팀은 'Glitch'라는 게임을 개발하는 과정에서 내부 커뮤니케이션 도구로 Slack을 만들었습니다. 게임은 실패했지만, 이 부산물이 세계적인 기업으로 성장했죠. 2013년 8월, "Searchable Log of All Communication and Knowledge"의 약자인 'Slack'이라는 이름으로 베타 서비스를 시작했고, 출시 단 하루 만에 8,000명의 사용자를 확보하는 놀라운 성과를 이루었습니다.

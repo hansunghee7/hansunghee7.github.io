@@ -155,17 +155,17 @@ for filename in md_files:
 
     body_content = re.sub(r'^---.*?---\s*', '', content, flags=re.DOTALL)
     
-    # 🌟 [강력 패치] 줄바꿈(\n) 유무 상관없이, 찰싹 붙어있는 중복 태그까지 모조리 박멸!
+    # 🌟 중복 방지를 위한 사전 청소
     body_content = re.sub(r'<!-- PROMO_BANNER_START -->.*?<!-- PROMO_BANNER_END -->', '', body_content, flags=re.DOTALL)
     body_content = re.sub(r'<!-- CATEGORY_NAV_START -->.*?<!-- CATEGORY_NAV_END -->', '', body_content, flags=re.DOTALL)
     body_content = re.sub(r'<!-- OG_CARD_START -->.*?<!-- OG_CARD_END -->', '', body_content, flags=re.DOTALL)
+    body_content = re.sub(r'<!-- POST_DATE_START -->.*?<!-- POST_DATE_END -->', '', body_content, flags=re.DOTALL)
+    body_content = re.sub(r'<!-- CAT_LINK_SCRIPT_START -->.*?<!-- CAT_LINK_SCRIPT_END -->', '', body_content, flags=re.DOTALL)
     
     body_content = re.sub(r'^https://www\.yes24\.com/product/goods/\d+\s*$', '', body_content, flags=re.MULTILINE)
     body_content = re.sub(r'^https://trevar\.ink/[a-zA-Z0-9]+\s*$', '', body_content, flags=re.MULTILINE)
 
     body_content = re.sub(r'^\s*(https?://[^\s<>]+)\s*$', replace_raw_url, body_content, flags=re.MULTILINE)
-    
-    # 끝부분에 남은 불필요한 빈 줄 완벽 제거
     body_content = body_content.strip()
 
     post_data = {
@@ -218,6 +218,33 @@ for p in posts:
     prev_post = cat_list[idx - 1] if idx > 0 else None
     next_post = cat_list[idx + 1] if idx >= 0 and idx < len(cat_list) - 1 else None
 
+    # 🌟 [NEW] 본문 상단에 날짜 출력 HTML 추가
+    date_html = f"<!-- POST_DATE_START -->\n<div style=\"color: #888; font-size: 14px; margin-bottom: 40px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;\">{p['date_string']}</div>\n<!-- POST_DATE_END -->\n\n" if p['date_string'] else ""
+
+    # 🌟 [NEW] 상단 알약 카테고리 클릭 기능 및 호버 효과 부여용 자바스크립트 추가
+    cat_script = f"""<!-- CAT_LINK_SCRIPT_START -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {{
+    const catPill = document.querySelector('.cover-category-pill');
+    if(catPill) {{
+        catPill.style.cursor = 'pointer';
+        catPill.style.transition = 'all 0.2s ease';
+        catPill.addEventListener('mouseenter', function() {{
+            this.style.backgroundColor = '#fff';
+            this.style.color = '#111';
+        }});
+        catPill.addEventListener('mouseleave', function() {{
+            this.style.backgroundColor = 'transparent';
+            this.style.color = '#fff';
+        }});
+        catPill.addEventListener('click', function() {{
+            window.location.href = '/?cat=' + encodeURIComponent('{category}');
+        }});
+    }}
+}});
+</script>
+<!-- CAT_LINK_SCRIPT_END -->\n\n"""
+
     nav_html = "\n\n<!-- CATEGORY_NAV_START -->\n<style>\n" \
                ".category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }\n" \
                ".cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }\n" \
@@ -243,8 +270,9 @@ for p in posts:
     safe_title = p['title'].replace('"', '\\"')
     new_yaml = f"---\nlayout: default\ntitle: \"{safe_title}\"\ncategory: '{category}'\ncover_image: '{p['cover_image']}'\ndate_string: '{p['date_string']}'\n---\n\n"
 
+    # 조립 순서: YAML 헤더 -> 스크립트 -> 날짜 -> 본문 -> OG카드 배너 -> 이전/다음글
     with open(p['filepath'], 'w', encoding='utf-8') as f:
-        f.write(new_yaml + p['body_content'] + global_promo_html + nav_html)
+        f.write(new_yaml + cat_script + date_html + p['body_content'] + global_promo_html + nav_html)
 
     cards_html += f'<a href="{p["link"]}" class="card-item" data-category="{category}" data-date="{p["timestamp"]}" data-id="{p["uid"]}"><div class="card-thumb-wrap"><div class="card-thumb" style="background-image: url(\'{p["cover_image"]}\');"></div></div><div class="card-content"><div><div class="card-category">{category}</div><h3 class="card-title">{p["title"]}</h3></div><div class="card-date">{p["date_string"]}</div></div></a>'
     post_count += 1
@@ -334,4 +362,4 @@ const observer = new IntersectionObserver(entries => { entries.forEach(entry => 
 with open(index_file, 'w', encoding='utf-8') as f:
     f.write(html_header + html_body)
 
-print("✅ 중복된 찌꺼기 네비게이션 완벽 제거 및 정상 정렬 배포 완료!")
+print("✅ 상단 카테고리 링크 연결 및 본문 상단 날짜 자동 출력 완료!")
