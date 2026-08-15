@@ -52,7 +52,8 @@ except Exception as e:
 md_files = [f for f in os.listdir(md_dir) if f.endswith(".md") and f != "index.md"]
 md_files.sort()
 
-og_cache_file = "og_cache.json"
+# 🌟 v2로 변경: 기존의 안 예쁜 카드 캐시를 버리고 완전히 새로 긁어옵니다!
+og_cache_file = "og_cache_v2.json"
 og_cache = {}
 if os.path.exists(og_cache_file):
     try:
@@ -65,7 +66,7 @@ def get_og_card(url):
     if url in og_cache:
         return og_cache[url]
     
-    print(f"🔗 링크 정보 수집 중: {url}")
+    print(f"🔗 브런치 스타일 링크 정보 수집 중: {url}")
     try:
         headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
         res = requests.get(url, headers=headers, timeout=5)
@@ -86,9 +87,10 @@ def get_og_card(url):
             
         domain = urllib.parse.urlparse(url).netloc
         
-        img_html = f'<div style="width:30%; max-width:200px; min-width:140px; background:url(\'{img}\') center/cover no-repeat; border-left:1px solid #e1e1e1;"></div>' if img else ''
+        img_html = f'<div style="width:25%; min-width:160px; background:url(\'{img}\') center/cover no-repeat; border-left:1px solid #e1e1e1;"></div>' if img else ''
         
-        card_html = f'''\n<!-- OG_CARD_START -->\n<a href="{url}" target="_blank" style="display:flex; border:1px solid #e1e1e1; border-radius:8px; overflow:hidden; text-decoration:none !important; color:inherit; margin:15px 0; height:140px; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">\n    <div style="flex:1; padding:20px; display:flex; flex-direction:column; justify-content:center; overflow:hidden; background:#fff;">\n        <div style="font-size:16px; font-weight:600; color:#222; margin-bottom:8px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{title}</div>\n        <div style="font-size:13px; color:#666; line-height:1.5; margin-bottom:12px; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;">{desc}</div>\n        <div style="font-size:12px; color:#999;">{domain}</div>\n    </div>\n    {img_html}\n</a>\n<!-- OG_CARD_END -->\n'''
+        # 🌟 브런치(첨부 이미지) 스타일 완벽 재현 HTML
+        card_html = f'''\n<!-- OG_CARD_START -->\n<a href="{url}" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Noto Sans KR', sans-serif;" onmouseover="this.style.borderColor='#111111'" onmouseout="this.style.borderColor='#e1e1e1'">\n    <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">\n        <div style="font-size:22px; font-weight:300; color:#333; margin-bottom:12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; letter-spacing:-0.5px;">{title}</div>\n        <div style="font-size:14px; font-weight:300; color:#888; line-height:1.6; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; word-break:keep-all;">{desc}</div>\n        <div style="margin-top:auto; font-size:13px; font-weight:300; color:#999;">{domain}</div>\n    </div>\n    {img_html}\n</a>\n<!-- OG_CARD_END -->\n'''
         
         og_cache[url] = card_html.strip()
         time.sleep(0.3)
@@ -245,7 +247,6 @@ html_body = """<style>
 .card-item.visible { display: flex !important; animation: fadeInUp 0.4s ease forwards; }
 #scrollSentinel { height: 50px; margin-top: 30px; }
 
-/* 🖤 1. 헤더 배경색 강제 블랙 적용 (더욱 광범위한 선택자 사용) */
 body > header, .site-header, .page-header, .post-header, .header-wrap, .hero-section, .intro-banner, .header-bg, .top-bar, div[class*="header"], div[class*="hero"] {
     background-color: #111111 !important;
     background: #111111 !important;
@@ -267,15 +268,12 @@ body > header, .site-header, .page-header, .post-header, .header-wrap, .hero-sec
 .sort-text-btn:hover { color: #555; }
 .sort-text-btn.active { color: #111; font-weight: 400; }
 .sort-text-btn .dot { display: inline-block; width: 4px; height: 4px; border-radius: 50%; background-color: transparent; margin-right: 4px; margin-bottom: 2px; }
-
-/* 🖤 2. 최신순 아이콘 색상을 블랙으로 변경 */
 .sort-text-btn.active .dot { background-color: #111111 !important; }
 
 .card-item { border: 1px solid #e1e1e1; border-radius: 12px; overflow: hidden; transition: border-color 0.3s ease, box-shadow 0.3s ease; text-decoration: none !important; color: inherit; }
 .card-thumb-wrap { width: 100%; height: 180px; overflow: hidden; position: relative; }
 .card-thumb { width: 100%; height: 100%; background-size: cover; background-position: center; filter: grayscale(100%); transition: transform 0.4s ease, filter 0.4s ease; }
 
-/* 🖤 3. 카드 선택(호버) 시 테두리를 블랙으로 변경 */
 .card-item:hover { border-color: #111111 !important; box-shadow: 0 6px 20px rgba(17, 17, 17, 0.15) !important; }
 .card-item:hover .card-thumb { transform: scale(1.08); filter: grayscale(0%); }
 .card-category { color: #222; font-weight: 500; }
@@ -288,7 +286,6 @@ for cat in sorted(list(unique_categories)):
 
 html_body += """</div><div class="sort-filter"><button class="sort-text-btn active" data-sort="desc"><span class="dot"></span>최신순</button><button class="sort-text-btn" data-sort="asc"><span class="dot"></span>날짜순</button></div></div><div class="card-grid" id="cardGrid">""" + cards_html + """</div><div id="scrollSentinel"></div><script>document.addEventListener('DOMContentLoaded', function() { 
 
-// CSS 우선순위 무시하고 테마의 모든 헤더 배경을 자바스크립트로 강제 딥 블랙 변환
 document.querySelectorAll('header, .site-header, .page-header, .post-header').forEach(el => {
     el.style.setProperty('background-color', '#111111', 'important');
     el.style.setProperty('background', '#111111', 'important');
@@ -324,4 +321,4 @@ const observer = new IntersectionObserver(entries => { entries.forEach(entry => 
 with open(index_file, 'w', encoding='utf-8') as f:
     f.write(html_header + html_body)
 
-print("✅ 상단 배경 100% 딥블랙 강제화 및 정렬/카드 호버 포인트 컬러 블랙 변경 완료!")
+print("✅ 브런치 스타일의 얇은 폰트 + 넓은 여백을 적용한 고품격 OG 카드 탑재 완료!")
