@@ -1,29 +1,22 @@
 ---
 layout: default
-title: "AI학습 클라우드 삼국지 AWSGoogleAzure"
+title: "AI학습 클라우드 삼국지 AWS/Google/Azure"
 category: 'AI의 언어들'
-cover_image: '/brunch_web_assets/images/111.jpg'
+cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/hG4jNnh2g7utJki7N4NpXwfGPt0.png'
 date_string: 'Jun 11. 2025'
 ---
 
-# 📝 111_AI학습 클라우드 삼국지 AWSGoogleAzure
-
-📂 **미분류**
-
-
-![대표 이미지](/brunch_web_assets/images/111_AI%ED%95%99%EC%8A%B5%20%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%20%EC%82%BC%EA%B5%AD%EC%A7%80%20AWSGoogleAzure_cover.jpg)
-
 AI 모델 개발이 비즈니스 핵심 경쟁력으로 자리잡으면서, 효율적인 AI 학습 인프라 선택은 기업 성패를 좌우하는 중요한 결정이 되었습니다. AWS Trainium, Google TPU, Azure H100은 각각 다른 강점을 가진 주요 클라우드 AI 솔루션입니다.
 
-![Trainium2-blog-feat-img-1.png](/brunch_web_assets/images/111_AI%ED%95%99%EC%8A%B5%20%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%20%EC%82%BC%EA%B5%AD%EC%A7%80%20AWSGoogleAzure_img_1.jpg)
+![Trainium2-blog-feat-img-1.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/ybkFhJXojwFS_UG2R4608TMScr4.png)
 
 AWS Trainium은 아마존의 AI 학습 전용 칩으로, 칩당 시간당 $1.34 수준으로 NVIDIA GPU 대비 저렴하며 SageMaker와의 통합이 뛰어납니다. AWS 서비스를 주력으로 사용하고 비용과 확장성 균형을 찾는 기업에 적합합니다.
 
-![230830_TPU-v5e_00001.jpg](/brunch_web_assets/images/111_AI%ED%95%99%EC%8A%B5%20%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%20%EC%82%BC%EA%B5%AD%EC%A7%80%20AWSGoogleAzure_img_2.jpg)
+![230830_TPU-v5e_00001.jpg](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/p6TPsmaX8OKRDl9xKrF-we6nxm8.jpg)
 
 Google TPU v5e는 가장 비용 효율적인 옵션으로, 칩당 시간당 $1.20, 1B 토큰 학습 비용 약 $8,000으로 최저 수준입니다. H100 대비 5배 낮은 전력 소비와 50,000+ 칩 규모의 대규모 학습 검증 사례가 있어, 비용 최적화가 우선이거나 대규모 언어 모델 개발 스타트업에 이상적입니다.
 
-![4fd0b82b7a9ce29b6f668c310a8776f02a7acaa3.png](/brunch_web_assets/images/111_AI%ED%95%99%EC%8A%B5%20%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%20%EC%82%BC%EA%B5%AD%EC%A7%80%20AWSGoogleAzure_img_3.jpg)
+![4fd0b82b7a9ce29b6f668c310a8776f02a7acaa3.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/ow9RZ9ZNHwvqtvJgG_VonBHmlBY.png)
 
 Azure ND H100은 NVIDIA H100 GPU로 최고 성능을 제공하며, CUDA 기반 코드를 그대로 활용할 수 있고 기업 IT 환경과 통합이 용이합니다. 개발 속도가 중요하거나 NVIDIA 생태계 코드를 보유한 기업에 적합합니다.
 

@@ -2,16 +2,9 @@
 layout: default
 title: "logo branding"
 category: '심플리파이어 라이프'
-cover_image: '/brunch_web_assets/images/356.jpg'
+cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/g00uozFCdyrVc20r1sBD4GlfpOE.jpg'
 date_string: 'Jul 14. 2024'
 ---
-
-# 📝 356_logo branding
-
-📂 **매거진: 심플리파이어 라이프**
-
-
-![대표 이미지](/brunch_web_assets/images/356_logo%20branding_cover.jpg)
 
 **#Simplifier #Branding "로고"**
 
@@ -29,11 +22,11 @@ date_string: 'Jul 14. 2024'
 
 심플리파이어의 브랜드 이미지는 경험 많고 신뢰성 있는 전통적인 이미지를 주되, 스타트업에 어울리는 젊은 이미지가 필요했다. 마치 시원하지만 따뜻한 느낌이면 좋겠어요 같은... 이 이율배반적 요구에 신디자이너는 그에 걸맞은 로고를 만들어주었다.
 
-![Screenshot_20240714_084913_Drive.jpg](/brunch_web_assets/images/356_logo%20branding_img_1.jpg)
+![Screenshot_20240714_084913_Drive.jpg](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/QQItueIKHDulTwFxOCeB2zKZkqI.jpg)
 
 원래 실력은 알고 있었지만 결과물을 보며 다시 한번 감탄을 하게 되었고, 멋진 로고 덕분에 명함뿐만 아니라 브랜딩 굿즈까지 제작을 하게 되는 계기가 되었다.
 
-![20240714_084417.jpg](/brunch_web_assets/images/356_logo%20branding_img_2.jpg)
+![20240714_084417.jpg](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/5MK_rujQ8JqKH-gIfM3i7iCMFV4.jpg)
 
 실력 좋고, 인성 좋은 사람과 희로애락을 함께해라.
 
@@ -41,4 +34,4 @@ date_string: 'Jul 14. 2024'
 
 ---
 
-![스크린샷 2024-07-14 오전 9.13.20.png](/brunch_web_assets/images/356_logo%20branding_img_3.jpg)
+![스크린샷 2024-07-14 오전 9.13.20.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/qgaegiicbeSq_5rWuxqRZl9D-Uk.png)

@@ -2,16 +2,9 @@
 layout: default
 title: "놓치면 후회할 거야!  FOMO UX"
 category: 'UX의 언어들'
-cover_image: '/brunch_web_assets/images/154.jpg'
+cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/zF-Tf6ihsmpUGRvN4y_2Ou-PHwE.png'
 date_string: 'May 1. 2025'
 ---
-
-# 📝 154_놓치면 후회할 거야!  FOMO UX
-
-📂 **브런치북: UX의 언어들**
-
-
-![대표 이미지](/brunch_web_assets/images/154_%EB%86%93%EC%B9%98%EB%A9%B4%20%ED%9B%84%ED%9A%8C%ED%95%A0%20%EA%B1%B0%EC%95%BC%21%20%20FOMO%20UX_cover.jpg)
 
 "대박 난 상품이 품절 되기 전에 어서 구매하세요!"
 
@@ -25,7 +18,7 @@ FOMO는 본래 SNS 시대에 생겨난 사회 현상을 설명하는 개념이�
 
 아마존, 에어비앤비, 틴더 같은 글로벌 서비스들이 FOMO를 적극 활용하는 이유도 바로 여기에 있습니다. 사용자의 결정을 재촉하는 다양한 UX 패턴으로 바로 행동으로 이어지게 만드는 거죠. 이들의 전략을 살펴보면 FOMO 디자인의 본질을 파악할 수 있습니다.
 
-![fomo-nudge-hotel.png](/brunch_web_assets/images/154_%EB%86%93%EC%B9%98%EB%A9%B4%20%ED%9B%84%ED%9A%8C%ED%95%A0%20%EA%B1%B0%EC%95%BC%21%20%20FOMO%20UX_img_1.jpg)
+![fomo-nudge-hotel.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/Lfa8rZ6IE0A9uKhojQ59ISDt5Ag.png)
 
 먼저 실시간성입니다. "지금 이 상품을 3명이 보고 있습니다", "2명이 방금 예약했어요". 실시간 정보는 사용자에게 긴장감을 선사하죠. '망설이면 기회를 놓칠지도 몰라'라는 압박감이 느껴집니다.
 
@@ -35,7 +28,7 @@ FOMO는 본래 SNS 시대에 생겨난 사회 현상을 설명하는 개념이�
 
 이렇게 실시간성, 희소성, 사회적 증거라는 세 가지 축을 중심으로, FOMO 디자인은 사용자의 즉각적인 행동을 이끌어냅니다. 망설임을 최소화하고, 서비스의 가치를 부각시켜 몰입도를 높이는 거죠.
 
-![51985372-8bda-4669-90f1-0736f0e9986a.png](/brunch_web_assets/images/154_%EB%86%93%EC%B9%98%EB%A9%B4%20%ED%9B%84%ED%9A%8C%ED%95%A0%20%EA%B1%B0%EC%95%BC%21%20%20FOMO%20UX_img_2.jpg)
+![51985372-8bda-4669-90f1-0736f0e9986a.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/36WXyMZS6cah9gsJEPUwtrdnd2o.png)
 
 하지만 FOMO를 활용할 때는 주의할 점도 있습니다. 지나친 자극은 사용자에게 피로감을 줄 수 있습니다. 진정성 없는 희소성 연출은 신뢰를 잃게 만들 수도 있고요. FOMO는 어디까지나 사용자에게 긍정적 경험을 주는 방향으로 활용되어야 합니다.
 
@@ -49,4 +42,4 @@ UX의 언어들이 책으로 나왔어요.
 
 일상 속 UX의 발견UX 세계를 향한 친절한 안내서 『UX의 언어들』은 일상 속에 스며든 UX를 UX 디자이너의 시선으로 풀어내며, 우리가 이를 어떻게 경험하고 소비하는지 넷플릭스, 카카오 등 친숙
 
-https://www.yes24.com/product/goods/193444437](https://www.yes24.com/product/goods/193444437 "https://www.yes24.com/product/goods/193444437")
+https://www.yes24.com/product/goods/193444437](https://www.yes24.com/product/goods/193444437)

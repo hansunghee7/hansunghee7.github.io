@@ -2,16 +2,9 @@
 layout: default
 title: "'So What, Why So' 논리에 영혼을 불어넣다"
 category: '기획자의 프레임웍'
-cover_image: '/brunch_web_assets/images/178.jpg'
+cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/slJdp06JqBmSuQfbhUh8ga_455A.jpg'
 date_string: 'Apr 8. 2025'
 ---
-
-# 📝 178_'So What, Why So' 논리에 영혼을 불어넣다
-
-📂 **브런치북: 기획자의 프레임웍**
-
-
-![대표 이미지](/brunch_web_assets/images/178_%27So%20What%2C%20Why%20So%27%20%EB%85%BC%EB%A6%AC%EC%97%90%20%EC%98%81%ED%98%BC%EC%9D%84%20%EB%B6%88%EC%96%B4%EB%84%A3%EB%8B%A4_cover.jpg)
 
 맥킨지와 같은 글로벌 컨설팅 회사에서 탄생한 'So What, Why So' 프레임워크는 얼핏 간단해 보이지만, 논리적 사고의 핵심을 짚어내는 강력한 도구다. 이는 단순한 질문이 아니라 복잡한 정보를 명확한 인사이트로 변환하는 마법의 문구와도 같다.
 
@@ -19,13 +12,13 @@ date_string: 'Apr 8. 2025'
 
 'Why So(왜 그런가?)'는 도출된 결론의 타당성을 검증하는 질문이다. 이는 "왜 그렇게 생각하는가?", "그 결론을 뒷받침하는 근거는 무엇인가?"를 묻는 것이다. 아마존은 고객 경험 개선 프로젝트에서 'Why So' 질문을 통해 문제의 근본 원인을 파악하고, 해결책의 논리적 근거를 명확히 한다.
 
-![PTwbolkK2xbZRG9r09z8t1eZRKQ](/brunch_web_assets/images/178_%27So%20What%2C%20Why%20So%27%20%EB%85%BC%EB%A6%AC%EC%97%90%20%EC%98%81%ED%98%BC%EC%9D%84%20%EB%B6%88%EC%96%B4%EB%84%A3%EB%8B%A4_img_1.jpg)
+![PTwbolkK2xbZRG9r09z8t1eZRKQ](//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/srUtsIvsaKGVivcsAxUPxsD38VI)
 
 이 두 질문은 마치 태극과 같이 상호 보완적이다. 'So What'이 분석의 핵심을 추출한다면, 'Why So'는 그 타당성을 검증한다. 이 과정을 통해 단순한 정보가 아닌, 의미 있고 활용 가능한 인사이트로 변모한다.
 
 글로벌 회사들도 이 프레임워크를 활용한다. 시장 조사 데이터를 분석할 때 'So What'으로 핵심 인사이트를 도출하고, 'Why So'로 그 인사이트의 신뢰성을 검토한다. 예를 들어, "스마트폰 사용자들이 배터리 수명에 불만을 표시한다"는 데이터에서 "배터리 기술에 투자해야 한다"라는 인사이트를 도출하고, 이를 "경쟁사 대비 배터리 성능이 15% 낮다"라는 근거로 뒷받침한다.
 
-![?src=http%3A%2F%2Fblogfiles.naver.net%2F20161021_145%2Fultech11_14769788203967uOFg_JPEG%2F10.JPG&type=sc960_832](/brunch_web_assets/images/178_%27So%20What%2C%20Why%20So%27%20%EB%85%BC%EB%A6%AC%EC%97%90%20%EC%98%81%ED%98%BC%EC%9D%84%20%EB%B6%88%EC%96%B4%EB%84%A3%EB%8B%A4_img_2.jpg)
+![?src=http%3A%2F%2Fblogfiles.naver.net%2F20161021_145%2Fultech11_14769788203967uOFg_JPEG%2F10.JPG&type=sc960_832](//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/PyxhCpNjZd2w_oQsxJqJlZCawIA)
 
 실전에서 이 프레임워크를 활용하는 방법은 간단하다. 회의나 보고서 작성 시 결론을 제시한 후 스스로에게 "So What?"을 물어보라. 이 결론이 왜 중요한지, 어떤 가치를 제공하는지 명확히 하라. 그리고 "Why So?"를 통해 그 결론의 근거를 검증하라. 데이터, 사례, 논리적 연결고리가 탄탄한지 확인하라.
 

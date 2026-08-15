@@ -2,16 +2,9 @@
 layout: default
 title: "Product Owner도 몰랐던 애자일 HR의 진실"
 category: 'PO가 꼭 알아야 할 것들'
-cover_image: '/brunch_web_assets/images/050.jpg'
+cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/YJSGtXvl9qxyJOMEFeK-gfeRThU.jpg'
 date_string: 'Aug 15. 2025'
 ---
-
-# 📝 050_Product Owner도 몰랐던 애자일 HR의 진실
-
-📂 **브런치북: PO가 꼭 알아야 할 것들**
-
-
-![대표 이미지](/brunch_web_assets/images/050_Product%20Owner%EB%8F%84%20%EB%AA%B0%EB%9E%90%EB%8D%98%20%EC%95%A0%EC%9E%90%EC%9D%BC%20HR%EC%9D%98%20%EC%A7%84%EC%8B%A4_cover.jpg)
 
 서울 여의도의 한 IT기업 HR팀장 박차장은 고민이 깊었다. 개발팀은 애자일로 2주마다 성과를 내는데, 인사평가는 여전히 1년에 한 번이었다. "조직과 과제는 계속 바뀌는데 1년 전 목표로 평가한다고?" 팀장들의 불만이 계속 쌓였다. 더 큰 문제는 채용이었다. "React 개발자 5년 경력"이라고 올려도 정작 필요한 건 "프론트엔드 잘하고 팀워크 좋은 사람"이었다.
 

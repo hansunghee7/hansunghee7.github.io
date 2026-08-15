@@ -1,17 +1,10 @@
 ---
 layout: default
-title: "제품 백로그, 단순한 TO-DO 리스트가 아니다"
+title: "\\"제품 백로그\\", 단순한 TO-DO 리스트가 아니다"
 category: 'PO가 꼭 알아야 할 것들'
-cover_image: '/brunch_web_assets/images/233.jpg'
+cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/j1cWd9deHU2ctXYzd_qV5mI3Wq8.png'
 date_string: 'Feb 14. 2025'
 ---
-
-# 📝 233_제품 백로그, 단순한 TO-DO 리스트가 아니다
-
-📂 **미분류**
-
-
-![대표 이미지](/brunch_web_assets/images/233_%EC%A0%9C%ED%92%88%20%EB%B0%B1%EB%A1%9C%EA%B7%B8%2C%20%EB%8B%A8%EC%88%9C%ED%95%9C%20TO-DO%20%EB%A6%AC%EC%8A%A4%ED%8A%B8%EA%B0%80%20%EC%95%84%EB%8B%88%EB%8B%A4_cover.jpg)
 
 많은 IT 회사의 PO들은 제품 백로그 관리에 아래와 같은 어려움을 겪고 있었다.
 
@@ -33,11 +26,11 @@ date_string: 'Feb 14. 2025'
 
 이것이 바로 제품 백로그가 중요한 이유다.
 
-![](/brunch_web_assets/images/233_%EC%A0%9C%ED%92%88%20%EB%B0%B1%EB%A1%9C%EA%B7%B8%2C%20%EB%8B%A8%EC%88%9C%ED%95%9C%20TO-DO%20%EB%A6%AC%EC%8A%A4%ED%8A%B8%EA%B0%80%20%EC%95%84%EB%8B%88%EB%8B%A4_img_1.jpg)
+![](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/TZ5IRphUja5hyzGl55orvB8iS4w.jpg)
 
 제품 백로그는 단순한 작업 목록이 아니다. 마치 레스토랑 주방장이 식재료 주문서를 관리하는 것과 같다. 단순히 필요한 재료를 나열하는 게 아니라, 계절성, 고객 선호도, 비용, 보관 기간을 고려해 우선순위를 정하고 주문 시기를 조절한다. 제품 백로그도 이와 같이 전략적으로 관리해야 한다.
 
-![img (1).jpg](/brunch_web_assets/images/233_%EC%A0%9C%ED%92%88%20%EB%B0%B1%EB%A1%9C%EA%B7%B8%2C%20%EB%8B%A8%EC%88%9C%ED%95%9C%20TO-DO%20%EB%A6%AC%EC%8A%A4%ED%8A%B8%EA%B0%80%20%EC%95%84%EB%8B%88%EB%8B%A4_img_2.jpg)
+![img (1).jpg](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/fW0DXQCjML_aubkkNN2kJYo1gnE.jpg)
 
 성공적인 제품 백로그 관리의 비결은 간단하다.
 

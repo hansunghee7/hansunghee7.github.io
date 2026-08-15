@@ -2,16 +2,9 @@
 layout: default
 title: "ENTJ코치의 정권 기획"
 category: '심플리파이어 라이프'
-cover_image: '/brunch_web_assets/images/283.jpg'
+cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/UhJ_gbdgHUxx83QQGOQ_cI5qrYM'
 date_string: 'Dec 8. 2024'
 ---
-
-# 📝 283_ENTJ코치의 정권 기획
-
-📂 **매거진: 심플리파이어 라이프**
-
-
-![대표 이미지](/brunch_web_assets/images/283_ENTJ%EC%BD%94%EC%B9%98%EC%9D%98%20%EC%A0%95%EA%B6%8C%20%EA%B8%B0%ED%9A%8D_cover.jpg)
 
 #### 
 

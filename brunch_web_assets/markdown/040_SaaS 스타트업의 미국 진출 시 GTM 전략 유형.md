@@ -2,16 +2,9 @@
 layout: default
 title: "SaaS 스타트업의 미국 진출 시 GTM 전략 유형"
 category: '대한민국 스타트업 미국진출을 묻다'
-cover_image: '/brunch_web_assets/images/040.jpg'
+cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/88BITrNSdHjNaAtNRuJFlOYZhwE.jpg'
 date_string: 'Aug 31. 2025'
 ---
-
-# 📝 040_SaaS 스타트업의 미국 진출 시 GTM 전략 유형
-
-📂 **브런치북: 대한민국 스타트업 미국진출을 묻다**
-
-
-![대표 이미지](/brunch_web_assets/images/040_SaaS%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EB%AF%B8%EA%B5%AD%20%EC%A7%84%EC%B6%9C%20%EC%8B%9C%20GTM%20%EC%A0%84%EB%9E%B5%20%EC%9C%A0%ED%98%95_cover.jpg)
 
 GTM(Go-To-Market) 전략이란 제품을 시장에 들고 나가는 접근 방식을 말합니다. SaaS 스타트업의 미국 진출에서는 일반적으로 네 가지 GTM 전략을 활용합니다.
 
@@ -37,4 +30,4 @@ GTM 전략은 시간에 따라 진화합니다. 초기에는 PLG로 사용자를
 
 기획자의 질문법 | 기획자가 던지는 질문 조직이 만들어내는 결과이 책은 기획의 본질을 다시 묻는다. ‘이 기획은 왜 필요한가?’ ‘누구의 행동을 바꾸고 싶은가?’ ‘우리가 말하는 성공은
 
-https://product.kyobobook.co.kr/detail/S000216681258](https://product.kyobobook.co.kr/detail/S000216681258 "https://product.kyobobook.co.kr/detail/S000216681258")
+https://product.kyobobook.co.kr/detail/S000216681258](https://product.kyobobook.co.kr/detail/S000216681258)

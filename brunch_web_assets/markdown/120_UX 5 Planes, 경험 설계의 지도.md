@@ -2,16 +2,9 @@
 layout: default
 title: "UX 5 Planes, 경험 설계의 지도"
 category: '기획자의 프레임웍'
-cover_image: '/brunch_web_assets/images/120.jpg'
+cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/2P81qCe8gde1BjobwZ-zjL-o9NA.png'
 date_string: 'Jun 3. 2025'
 ---
-
-# 📝 120_UX 5 Planes, 경험 설계의 지도
-
-📂 **브런치북: 기획자의 프레임웍**
-
-
-![대표 이미지](/brunch_web_assets/images/120_UX%205%20Planes%2C%20%EA%B2%BD%ED%97%98%20%EC%84%A4%EA%B3%84%EC%9D%98%20%EC%A7%80%EB%8F%84_cover.jpg)
 
 2002년, 웹사이트와 앱이 점점 복잡해지면서 한 가지 문제가 대두되고 있었다. 사용자 경험을 어떻게 체계적으로 설계할 것인가? 제시 제임스 개럿(Jesse James Garrett)은 이 문제에 대한 명쾌한 답을 제시했다. 바로 'UX 5 Planes 모델'이다.
 
@@ -27,13 +20,13 @@ date_string: 'Jun 3. 2025'
 
 마지막 층인 '표면(Surface)'은 시각적 완성 단계로, 비주얼 디자인, UI 시안, 프로토타입이 탄생한다.
 
-![1_onwMt3XG1X1BwSdqM-X16g.png](/brunch_web_assets/images/120_UX%205%20Planes%2C%20%EA%B2%BD%ED%97%98%20%EC%84%A4%EA%B3%84%EC%9D%98%20%EC%A7%80%EB%8F%84_img_1.jpg)
+![1_onwMt3XG1X1BwSdqM-X16g.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/8codnZLVPVM5DQWEaYoNSsPbm_k.png)
 
 구글은 이 프레임워크를 신규 서비스 기획에 적극 활용한다. 전략 단계에서 철저한 사용자 리서치와 비즈니스 목표를 정의하고, 범위 단계에서 MVP를 도출한다. 구조와 뼈대 단계에서는 빠른 프로토타이핑과 사용자 테스트를 반복하며, 표면 단계에서 브랜드 가이드라인에 맞춘 완성된 UI/UX를 만들어낸다.
 
 에어비앤비는 사용자 여정 맵과 페르소나 정의를 전략 단계에서 진행하고, 각 단계별 산출물을 명확히 문서화하여 디자이너, 개발자, 기획자 간의 협업을 극대화한다. 국내 IT기업인 네이버와 카카오도 서비스 기획 시 5 Planes 모델을 도입해 각 단계별 산출물을 명확히 구분하고, 단계별 리뷰 및 피드백 과정을 체계화하여 품질을 높이고 있다.
 
-![1_sWyyVWbBI72Jw2W3jhPXLQ.png](/brunch_web_assets/images/120_UX%205%20Planes%2C%20%EA%B2%BD%ED%97%98%20%EC%84%A4%EA%B3%84%EC%9D%98%20%EC%A7%80%EB%8F%84_img_2.jpg)
+![1_sWyyVWbBI72Jw2W3jhPXLQ.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/lQsYFynZAsa77aVDYk2q8Fb0hdg.png)
 
 기획자가 이 프레임워크를 실전에 적용하려면 몇 가지 원칙을 기억해야 한다. 각 단계별 산출물을 미리 정의하고 체크리스트를 활용해 누락 없이 진행해야 한다. 기획, 디자인, 개발 등 각 역할별로 어느 단계에서 어떤 산출물이 필요한지 명확히 공유하면 커뮤니케이션 오류를 줄일 수 있다. 또한 각 단계에서 산출물을 빠르게 만들고 실제 사용자나 이해관계자와 피드백을 주고받으며 유연하게 수정해야 한다.
 
@@ -51,4 +44,4 @@ UX 5 Planes 모델은 복잡한 사용자 경험을 체계적으로 설계할 �
 
 기획자가 던지는 질문조직이 만들어내는 결과이 책은 기획의 본질을 다시 묻는다. ‘이 기획은 왜 필요한가?’ ‘누구의 행동을 바꾸고 싶은가?’ ‘우리가 말하는 성공은 구체적으로 무엇인가
 
-https://www.yes24.com/product/goods/147079674](https://www.yes24.com/product/goods/147079674 "https://www.yes24.com/product/goods/147079674")
+https://www.yes24.com/product/goods/147079674](https://www.yes24.com/product/goods/147079674)

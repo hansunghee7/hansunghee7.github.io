@@ -2,16 +2,9 @@
 layout: default
 title: "ENTJ코치의 넷플릭스 트렁크 감상"
 category: '심플리파이어 라이프'
-cover_image: '/brunch_web_assets/images/286.jpg'
+cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/A7luiO2KFLSHQr4oZycBw7ulOd4'
 date_string: 'Dec 2. 2024'
 ---
-
-# 📝 286_ENTJ코치의 넷플릭스 트렁크 감상
-
-📂 **매거진: 심플리파이어 라이프**
-
-
-![대표 이미지](/brunch_web_assets/images/286_ENTJ%EC%BD%94%EC%B9%98%EC%9D%98%20%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%20%ED%8A%B8%EB%A0%81%ED%81%AC%20%EA%B0%90%EC%83%81_cover.jpg)
 
 #### 
 

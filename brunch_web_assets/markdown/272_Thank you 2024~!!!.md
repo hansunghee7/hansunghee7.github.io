@@ -2,16 +2,9 @@
 layout: default
 title: "Thank you 2024~!!!"
 category: '심플리파이어 라이프'
-cover_image: '/brunch_web_assets/images/272.jpg'
+cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/bl55HEwjPFRTrUq-3EVfeaG4C-E.jpeg'
 date_string: 'Dec 31. 2024'
 ---
-
-# 📝 272_Thank you 2024~!!!
-
-📂 **매거진: 심플리파이어 라이프**
-
-
-![대표 이미지](/brunch_web_assets/images/272_Thank%20you%202024~%21%21%21_cover.jpg)
 
 감사한 일들이 많은 한해였다.   
   

@@ -2,16 +2,9 @@
 layout: default
 title: "ENTJ코치가 본 흑백요리사"
 category: '심플리파이어 라이프'
-cover_image: '/brunch_web_assets/images/317.jpg'
+cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/cd07ocy7MWIRwI4AnRN32lwPJgw.png'
 date_string: 'Oct 6. 2024'
 ---
-
-# 📝 317_ENTJ코치가 본 흑백요리사
-
-📂 **매거진: 심플리파이어 라이프**
-
-
-![대표 이미지](/brunch_web_assets/images/317_ENTJ%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B8%20%ED%9D%91%EB%B0%B1%EC%9A%94%EB%A6%AC%EC%82%AC_cover.jpg)
 
 1.
 

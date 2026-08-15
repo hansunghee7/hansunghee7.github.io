@@ -2,28 +2,21 @@
 layout: default
 title: "'커서 AI'의 AI 협력자 전략"
 category: '스타트업의 전략들'
-cover_image: '/brunch_web_assets/images/113.jpg'
+cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/4-PHJW7Ag-Wgi6OsBMANgR2qftY.jpg'
 date_string: 'Jun 9. 2025'
 ---
-
-# 📝 113_'커서 AI'의 AI 협력자 전략
-
-📂 **브런치북: 스타트업의 전략들**
-
-
-![대표 이미지](/brunch_web_assets/images/113_%27%EC%BB%A4%EC%84%9C%20AI%27%EC%9D%98%20AI%20%ED%98%91%EB%A0%A5%EC%9E%90%20%EC%A0%84%EB%9E%B5_cover.jpg)
 
 2022년 MIT에서 만난 20대 청년 4명이 어떻게 2년 만에 한화 약 3조원의 가치를 가진 AI 기업을 만들었을까요? 바로 AI 코딩 도구 Cursor AI의 놀라운 성장 스토리입니다.
 
 마이클 트루엘, 수알레 아시프, 아르비드 룬네마크, 아만 생거. 이 네 명의 MIT 학생들은 프로그래밍 과정에서 기존 AI 도구들의 한계를 직접 경험했습니다. GitHub Copilot 같은 기존 AI 코딩 어시스턴트들은 단순한 자동완성에 머물러 있었고, 맥락을 제대로 이해하지 못해 개발자와의 협업이 어색했죠.
 
-![Cursor-1040x1300.png](/brunch_web_assets/images/113_%27%EC%BB%A4%EC%84%9C%20AI%27%EC%9D%98%20AI%20%ED%98%91%EB%A0%A5%EC%9E%90%20%EC%A0%84%EB%9E%B5_img_1.jpg)
+![Cursor-1040x1300.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/MG_-4JsFVzW7PL-tR7hanl9HFwI.png)
 
 이들이 내놓은 해답은 AI를 단순한 도구가 아닌 '진정한 협력 파트너'로 만드는 것이었습니다. Cursor AI는 실제 페어 프로그래머처럼 사용자의 작업 맥락을 파악하고, 필요할 때만 적절한 도움을 제공합니다. 프로젝트 전체의 규칙을 이해하는 지침 시스템을 구축해 반복적인 실수를 방지하고, 실시간으로 오류를 감지해 즉각적인 해결책을 제안하는 시스템을 만들었습니다.
 
 이 전략의 결과는 놀라웠습니다. 2023년 800만 달러 시드 투자부터 시작해 2025년 기업가치 25억 달러를 달성하며 실리콘밸리 역사상 가장 빠른 성장을 기록했습니다. 특히 대기업이 아닌 36만 명의 개인 개발자들로부터 시작된 성장이라는 점이 인상적입니다.
 
-![1741201705353.jpg](/brunch_web_assets/images/113_%27%EC%BB%A4%EC%84%9C%20AI%27%EC%9D%98%20AI%20%ED%98%91%EB%A0%A5%EC%9E%90%20%EC%A0%84%EB%9E%B5_img_2.jpg)
+![1741201705353.jpg](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/Xg7NTojgTovqJp_XOIoGG18HeZE.jpg)
 
 Cursor AI의 성공에서 우리가 배울 수 있는 핵심은 다음과 같습니다.
 

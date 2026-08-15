@@ -2,16 +2,9 @@
 layout: default
 title: "규칙이 없는 전략으로 500조를 만든 'Netflix'"
 category: '스타트업의 전략들'
-cover_image: '/brunch_web_assets/images/237.jpg'
+cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/WozTNOmmV_YnEgdFjclzG1EQInI.jpg'
 date_string: 'Feb 10. 2025'
 ---
-
-# 📝 237_규칙이 없는 전략으로 500조를 만든 'Netflix'
-
-📂 **브런치북: 스타트업의 전략들**
-
-
-![대표 이미지](/brunch_web_assets/images/237_%EA%B7%9C%EC%B9%99%EC%9D%B4%20%EC%97%86%EB%8A%94%20%EC%A0%84%EB%9E%B5%EC%9C%BC%EB%A1%9C%20500%EC%A1%B0%EB%A5%BC%20%EB%A7%8C%EB%93%A0%20%27Netflix%27_cover.jpg)
 
 안녕하세요, 스타트업 성공코치 한성희입니다. 오늘은 많은 스타트업 창업자들이 궁금해하는 '조직 성장 전략'에 대해 이야기해보려 합니다.
 

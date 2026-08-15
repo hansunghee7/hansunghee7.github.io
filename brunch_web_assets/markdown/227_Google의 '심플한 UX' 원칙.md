@@ -2,16 +2,9 @@
 layout: default
 title: "Google의 '심플한 UX' 원칙"
 category: 'UX의 언어들'
-cover_image: '/brunch_web_assets/images/227.jpg'
+cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/K-ovclvCDcZU6xQn8D0IAKYHdwI.jpg'
 date_string: 'Feb 20. 2025'
 ---
-
-# 📝 227_Google의 '심플한 UX' 원칙
-
-📂 **브런치북: UX의 언어들**
-
-
-![대표 이미지](/brunch_web_assets/images/227_Google%EC%9D%98%20%27%EC%8B%AC%ED%94%8C%ED%95%9C%20UX%27%20%EC%9B%90%EC%B9%99_cover.jpg)
 
 1998년 스탠포드 대학원생이었던 래리 페이지와 세르게이 브린은 하얀 배경에 검색창 하나만 둔 심플한 페이지를 만들었다. 당시 포털들이 화려한 배너와 뉴스로 채워진 것과는 정반대였다. 이 단순함이 구글을 세계 최고의 기업으로 만든 시작점이 되었다.
 
@@ -31,7 +24,7 @@ date_string: 'Feb 20. 2025'
 
 Material Design을 통해 모든 서비스에 일관된 시각 언어를 적용한다.
 
-![5afc20bbefa69.png](/brunch_web_assets/images/227_Google%EC%9D%98%20%27%EC%8B%AC%ED%94%8C%ED%95%9C%20UX%27%20%EC%9B%90%EC%B9%99_img_1.jpg)
+![5afc20bbefa69.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/gIXrPeVLbIJp420kBgJJPAr02ro.png)
 
 이러한 설계 방법은 구글의 실제 서비스에서 뚜렷한 성과를 보여주었다. 구글 검색의 경우, 심플하게 인터페이스로 전환한 후 사용자 체류 시간이 23% 증가했다. 구글 드라이브는 복잡한 파일 관리 시스템을 직관적인 드래그앤드롭 방식으로 단순화하여 사용자 만족도를 크게 높였다. 이는 단순함이 사용성과 직결된다는 것을 보여주는 좋은 사례다.
 
@@ -57,4 +50,4 @@ UX의 언어들이 책으로 나왔어요.
 
 일상 속 UX의 발견UX 세계를 향한 친절한 안내서 『UX의 언어들』은 일상 속에 스며든 UX를 UX 디자이너의 시선으로 풀어내며, 우리가 이를 어떻게 경험하고 소비하는지 넷플릭스, 카카오 등 친숙
 
-https://www.yes24.com/product/goods/193444437](https://www.yes24.com/product/goods/193444437 "https://www.yes24.com/product/goods/193444437")
+https://www.yes24.com/product/goods/193444437](https://www.yes24.com/product/goods/193444437)

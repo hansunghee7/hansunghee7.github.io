@@ -1,17 +1,10 @@
 ---
 layout: default
-title: "애자일 vs 워터폴, PO가 알아야 할 모든 것"
+title: "애자일 vs 워터폴, PO가 알아야 할 모든 것\\""
 category: 'PO가 꼭 알아야 할 것들'
-cover_image: '/brunch_web_assets/images/182.jpg'
+cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/5GuLaxnBW6ydK_Xmq4-47_KI2UI.jpg'
 date_string: 'Apr 4. 2025'
 ---
-
-# 📝 182_애자일 vs 워터폴, PO가 알아야 할 모든 것
-
-📂 **미분류**
-
-
-![대표 이미지](/brunch_web_assets/images/182_%EC%95%A0%EC%9E%90%EC%9D%BC%20vs%20%EC%9B%8C%ED%84%B0%ED%8F%B4%2C%20PO%EA%B0%80%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%20%EB%AA%A8%EB%93%A0%20%EA%B2%83_cover.jpg)
 
 한 IT 회사의 PO(제품 책임자)는 새 프로젝트를 시작하며 고민에 빠졌습니다.
 
@@ -25,7 +18,7 @@ date_string: 'Apr 4. 2025'
 
 반면 애자일은 빠른 변화에 대응하기 위해 짧은 주기의 스프린트를 반복하며 점진적으로 개선해 나가는 방식입니다. 고객 피드백을 수시로 반영하고 우선순위에 따라 유연하게 조정할 수 있죠. 협업과 소통을 중시하기에 작은 팀에서도 효과적이에요. 다만 장기적 계획이나 예산 예측은 상대적으로 어려울 수 있습니다.
 
-![Agile-vs-Waterfall.jpg](/brunch_web_assets/images/182_%EC%95%A0%EC%9E%90%EC%9D%BC%20vs%20%EC%9B%8C%ED%84%B0%ED%8F%B4%2C%20PO%EA%B0%80%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%20%EB%AA%A8%EB%93%A0%20%EA%B2%83_img_1.jpg)
+![Agile-vs-Waterfall.jpg](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/zTZS1BRicxXN71PXXsaTkrUiO6Q.jpg)
 
 어떤 방식을 선택해야 할지는 프로젝트의 특성과 조직 상황에 따라 적합한 방법론이 달라집니다.
 
@@ -53,7 +46,7 @@ date_string: 'Apr 4. 2025'
 
 많은 성공적인 기업들은 두 방식의 장점을 결합한 하이브리드 접근법을 사용합니다. 글로벌 커머스기업은 초기 계획 단계에서 워터폴 방식으로 큰 그림을 그리고, 실제 개발 과정에서는 애자일 방식을 도입하여 유연성을 확보합니다. 글로벌 전자회사는 하드웨어 개발에는 워터폴을, 소프트웨어 개발에는 애자일을 적용하는 하이브리드 전략을 활용합니다.
 
-![cd08cf17-0de2-4950-a4c2-f0f4fa93b0c1.png?v=1707839661592](/brunch_web_assets/images/182_%EC%95%A0%EC%9E%90%EC%9D%BC%20vs%20%EC%9B%8C%ED%84%B0%ED%8F%B4%2C%20PO%EA%B0%80%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%20%EB%AA%A8%EB%93%A0%20%EA%B2%83_img_2.jpg)
+![cd08cf17-0de2-4950-a4c2-f0f4fa93b0c1.png?v=1707839661592](//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/fDnNvNWcINw4rnYtmtU4ITgqpZQ)
 
 **기획자를 위한 실천 팁**
 

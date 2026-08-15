@@ -2,16 +2,9 @@
 layout: default
 title: "작게 시작해 크게 터트리는 Slack의 초기마케팅전략"
 category: '스타트업의 전략들'
-cover_image: '/brunch_web_assets/images/121.jpg'
+cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/H21BD6_N7Fa18EwB0pn6UwhcZZk.jpg'
 date_string: 'Jun 2. 2025'
 ---
-
-# 📝 121_작게 시작해 크게 터트리는 Slack의 초기마케팅전략
-
-📂 **브런치북: 스타트업의 전략들**
-
-
-![대표 이미지](/brunch_web_assets/images/121_%EC%9E%91%EA%B2%8C%20%EC%8B%9C%EC%9E%91%ED%95%B4%20%ED%81%AC%EA%B2%8C%20%ED%84%B0%ED%8A%B8%EB%A6%AC%EB%8A%94%20Slack%EC%9D%98%20%EC%B4%88%EA%B8%B0%EB%A7%88%EC%BC%80%ED%8C%85%EC%A0%84%EB%9E%B5_cover.jpg)
 
 안녕하세요, 스타트업 성공코치 한성희입니다. 오늘은 제한된 자원으로 최대 효과를 내야 하는 초기 스타트업의 마케팅 채널 설정법에 대해 이야기해보겠습니다.
 
@@ -19,7 +12,7 @@ date_string: 'Jun 2. 2025'
 
 많은 창업자들이 "많은 채널에서 활동해야 더 많은 고객을 만날 수 있다"고 생각하지만, 실제로는 정반대입니다. Slack의 초기 마케팅 전략이 이를 잘 보여줍니다.
 
-![16bits-slack-facebookJumbo.jpg](/brunch_web_assets/images/121_%EC%9E%91%EA%B2%8C%20%EC%8B%9C%EC%9E%91%ED%95%B4%20%ED%81%AC%EA%B2%8C%20%ED%84%B0%ED%8A%B8%EB%A6%AC%EB%8A%94%20Slack%EC%9D%98%20%EC%B4%88%EA%B8%B0%EB%A7%88%EC%BC%80%ED%8C%85%EC%A0%84%EB%9E%B5_img_1.jpg)
+![16bits-slack-facebookJumbo.jpg](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/pBMZNJmVndgGroEkVvJPoUQiu6E.jpg)
 
 2013년, 협업툴 시장은 이미 Microsoft Teams, Skype for Business 등 거대 기업들이 점유하고 있었습니다. 후발주자인 Slack이 어떻게 이 시장에서 성공할 수 있었을까요?
 
@@ -33,7 +26,7 @@ Slack은 대규모 광고나 무분별한 채널 확장 대신, 세 가지 핵�
 
 이러한 전략으로 Slack은 출시 첫 해에 50만 명의 일일 활성 사용자를 확보했고, 현재는 전 세계 수천만 명이 사용하는 플랫폼으로 성장했습니다.
 
-![Slack-graph.jpg](/brunch_web_assets/images/121_%EC%9E%91%EA%B2%8C%20%EC%8B%9C%EC%9E%91%ED%95%B4%20%ED%81%AC%EA%B2%8C%20%ED%84%B0%ED%8A%B8%EB%A6%AC%EB%8A%94%20Slack%EC%9D%98%20%EC%B4%88%EA%B8%B0%EB%A7%88%EC%BC%80%ED%8C%85%EC%A0%84%EB%9E%B5_img_2.jpg)
+![Slack-graph.jpg](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/BIGdeaceC9Lxa_Banpz7b15ze9U.jpg)
 
 이제 Slack의 사례에서 배운 초기 마케팅 채널 설정법을 단계별로 살펴보겠습니다.
 
@@ -71,4 +64,4 @@ Slack처럼 작게 시작해 빠르게 실험하고, 잘 되는 채널에 집중
 
 기획자가 던지는 질문조직이 만들어내는 결과이 책은 기획의 본질을 다시 묻는다. ‘이 기획은 왜 필요한가?’ ‘누구의 행동을 바꾸고 싶은가?’ ‘우리가 말하는 성공은 구체적으로 무엇인가
 
-https://www.yes24.com/product/goods/147079674](https://www.yes24.com/product/goods/147079674 "https://www.yes24.com/product/goods/147079674")
+https://www.yes24.com/product/goods/147079674](https://www.yes24.com/product/goods/147079674)

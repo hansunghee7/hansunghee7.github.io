@@ -2,16 +2,9 @@
 layout: default
 title: "UX와 UI의 차이, 그 뒤에 숨겨진 이야기"
 category: 'UX의 언어들'
-cover_image: '/brunch_web_assets/images/257.jpg'
+cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/jmQQAlyj5xNMf3CkWGAEUlvxH1k.png'
 date_string: 'Jan 23. 2025'
 ---
-
-# 📝 257_UX와 UI의 차이, 그 뒤에 숨겨진 이야기
-
-📂 **브런치북: UX의 언어들**
-
-
-![대표 이미지](/brunch_web_assets/images/257_UX%EC%99%80%20UI%EC%9D%98%20%EC%B0%A8%EC%9D%B4%2C%20%EA%B7%B8%20%EB%92%A4%EC%97%90%20%EC%88%A8%EA%B2%A8%EC%A7%84%20%EC%9D%B4%EC%95%BC%EA%B8%B0_cover.jpg)
 
 UX와 UI라는 용어는 디지털 시대에 자주 등장하지만, 많은 사람들이 그 차이를 혼동하곤 합니다. 오늘은 UX와 UI의 탄생 배경부터 차이점, 그리고 실무에서의 활용까지 깊이 있게 살펴보겠습니다.
 
@@ -19,11 +12,11 @@ UX는 1950년대로 거슬러 올라갑니다. 당시 산업디자인 개척자 
 
 UI의 역사는 컴퓨터 기술의 발전과 궤를 같이합니다. 1970년대 제록스 PARC에서 개발된 그래픽 사용자 인터페이스(GUI)는 오늘날 UI 디자인의 기반이 되었고, 1980년대 애플의 매킨토시가 이를 대중화하면서 UI 디자인의 중요성이 본격적으로 주목받기 시작했죠. 기술과 그래픽의 융합으로 사용자와의 상호작용이 한층 직관적이고 매력적으로 변모했습니다.
 
-![다운로드.jpg](/brunch_web_assets/images/257_UX%EC%99%80%20UI%EC%9D%98%20%EC%B0%A8%EC%9D%B4%2C%20%EA%B7%B8%20%EB%92%A4%EC%97%90%20%EC%88%A8%EA%B2%A8%EC%A7%84%20%EC%9D%B4%EC%95%BC%EA%B8%B0_img_1.jpg)
+![다운로드.jpg](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/BqwTloNOdTIXMgaticgyCFoMdNI.jpg)
 
 UX는 사용자가 제품이나 서비스를 사용하면서 느끼는 전반적인 경험을 다룹니다. 사용성, 접근성, 감성적인 만족감까지 포괄하는 넓은 개념이죠. 반면 UI는 사용자가 제품과 상호작용하는 시각적이고 물리적인 요소에 집중합니다. 화면의 레이아웃, 색상 조합, 아이콘과 같은 디자인이 바로 UI 디자이너의 손길에서 나옵니다. 두 개념은 서로 다르지만, 궁극적으로 하나의 목표를 향해 협력합니다. 사용자에게 긍정적인 경험을 제공하는 것이죠.
 
-![](/brunch_web_assets/images/257_UX%EC%99%80%20UI%EC%9D%98%20%EC%B0%A8%EC%9D%B4%2C%20%EA%B7%B8%20%EB%92%A4%EC%97%90%20%EC%88%A8%EA%B2%A8%EC%A7%84%20%EC%9D%B4%EC%95%BC%EA%B8%B0_img_2.jpg)
+![](//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/ZtXmqfkGzJkv2DDlHA1B3AJEZfU)
 
 이러한 UX와 UI는 오늘날 세계적인 IT 기업에서 중요한 전략으로 활용되고 있습니다. 예를 들어 애플은 하드웨어, 소프트웨어, 서비스를 매끄럽게 연결해 일관된 경험을 제공합니다. 구글은 단순하고 직관적인 UI를 통해 방대한 정보를 효과적으로 탐색할 수 있게 도와줍니다.
 
@@ -31,7 +24,7 @@ UX는 사용자가 제품이나 서비스를 사용하면서 느끼는 전반적
 
 앞으로 UX와 UI는 AR, VR과 같은 첨단 기술과 결합하며 더욱 혁신적인 방향으로 발전할 것입니다. 그러나 기술이 아무리 발전하더라도, 사용자의 니즈를 파악하고 공감하며 문제를 해결하려는 자세는 변하지 않을 것입니다.
 
-![Artboard-1-copy-1.jpg](/brunch_web_assets/images/257_UX%EC%99%80%20UI%EC%9D%98%20%EC%B0%A8%EC%9D%B4%2C%20%EA%B7%B8%20%EB%92%A4%EC%97%90%20%EC%88%A8%EA%B2%A8%EC%A7%84%20%EC%9D%B4%EC%95%BC%EA%B8%B0_img_3.jpg)
+![Artboard-1-copy-1.jpg](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/zQLXckml6AqWUZX77-cZEgT0DfA.jpg)
 
 UX와 UI 디자인의 핵심은 사용자입니다. 끊임없이 사용자의 경험을 관찰하고 분석하며 개선해 나가는 것이 성공의 열쇠죠. 우리 모두 제품의 사용자 또는 메이커인 만큼, UX와 UI가 일상에 미치는 영향을 돌아보는 것도 의미 있을 것입니다.
 
@@ -43,4 +36,4 @@ UX의 언어들이 책으로 나왔어요.
 
 일상 속 UX의 발견UX 세계를 향한 친절한 안내서 『UX의 언어들』은 일상 속에 스며든 UX를 UX 디자이너의 시선으로 풀어내며, 우리가 이를 어떻게 경험하고 소비하는지 넷플릭스, 카카오 등 친숙
 
-https://www.yes24.com/product/goods/193444437](https://www.yes24.com/product/goods/193444437 "https://www.yes24.com/product/goods/193444437")
+https://www.yes24.com/product/goods/193444437](https://www.yes24.com/product/goods/193444437)

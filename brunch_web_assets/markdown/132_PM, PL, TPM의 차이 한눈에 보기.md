@@ -2,16 +2,9 @@
 layout: default
 title: "PM, PL, TPM의 차이 한눈에 보기"
 category: 'PO가 꼭 알아야 할 것들'
-cover_image: '/brunch_web_assets/images/132.jpg'
+cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/q3vo9KdSNFhK7mRQnaOr47JB9xQ.jpg'
 date_string: 'May 23. 2025'
 ---
-
-# 📝 132_PM, PL, TPM의 차이 한눈에 보기
-
-📂 **브런치북: PO가 꼭 알아야 할 것들**
-
-
-![대표 이미지](/brunch_web_assets/images/132_PM%2C%20PL%2C%20TPM%EC%9D%98%20%EC%B0%A8%EC%9D%B4%20%ED%95%9C%EB%88%88%EC%97%90%20%EB%B3%B4%EA%B8%B0_cover.jpg)
 
 프로젝트 성공을 위해 다양한 역할이 필요합니다. PM, PL, TPM은 IT 업계에서 흔히 볼 수 있는 리더십 포지션이지만, 그 차이를 명확히 이해하는 사람은 많지 않습니다. 각 역할의 주요 책임과 중점 영역을 살펴보겠습니다.
 
@@ -25,7 +18,7 @@ PM은 제품/프로젝트의 전반을 이끄는 지휘자예요.
 
 일정 관리, 우선순위 조정, 이해관계자와의 소통이 PM의 핵심 역량이에요.
 
-![project-manager-vs-project-leader-slide1.png](/brunch_web_assets/images/132_PM%2C%20PL%2C%20TPM%EC%9D%98%20%EC%B0%A8%EC%9D%B4%20%ED%95%9C%EB%88%88%EC%97%90%20%EB%B3%B4%EA%B8%B0_img_1.jpg)
+![project-manager-vs-project-leader-slide1.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/lOd8MDF1nvp8oWjxT310ofo2Cj0.png)
 
 **PL(Project Leader), 실전에서 팀을 이끄는 리더**
 
@@ -37,7 +30,7 @@ PL은 PM을 도와 실제 팀을 리드하는 실무 책임자입니다.
 
 실무 역량과 리더십을 겸비해야 하는 만능 플레이어랍니다.
 
-![1-1024x576.png](/brunch_web_assets/images/132_PM%2C%20PL%2C%20TPM%EC%9D%98%20%EC%B0%A8%EC%9D%B4%20%ED%95%9C%EB%88%88%EC%97%90%20%EB%B3%B4%EA%B8%B0_img_2.jpg)
+![1-1024x576.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/0IxkqSTw78Mc5zf-yZrhmHD-bXc.png)
 
 **TPM(Technical Program Manager), 기술적 난제 해결사**
 
@@ -49,7 +42,7 @@ PM이 "왜 만드느냐(Why)"에 집중한다면, TPM은 "어떻게 만드느냐
 
 기술적 배경지식을 바탕으로 내부 개발팀을 조율하고, 리스크를 관리하죠.
 
-![title-what-is-a-technical-tpm.png](/brunch_web_assets/images/132_PM%2C%20PL%2C%20TPM%EC%9D%98%20%EC%B0%A8%EC%9D%B4%20%ED%95%9C%EB%88%88%EC%97%90%20%EB%B3%B4%EA%B8%B0_img_3.jpg)
+![title-what-is-a-technical-tpm.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/4LdPI8JT6fAv0cxT44M8_YnGoDY.png)
 
 이들의 환상의 팀플레이가 빛을 발하면...
 
@@ -71,4 +64,4 @@ TPM은 기술적 복잡성을 풀어내고, 여러 팀을 조율합니다.
 
 기획자의 질문법 | 기획자가 던지는 질문 조직이 만들어내는 결과이 책은 기획의 본질을 다시 묻는다. ‘이 기획은 왜 필요한가?’ ‘누구의 행동을 바꾸고 싶은가?’ ‘우리가 말하는 성공은
 
-https://product.kyobobook.co.kr/detail/S000216681258](https://product.kyobobook.co.kr/detail/S000216681258 "https://product.kyobobook.co.kr/detail/S000216681258")
+https://product.kyobobook.co.kr/detail/S000216681258](https://product.kyobobook.co.kr/detail/S000216681258)

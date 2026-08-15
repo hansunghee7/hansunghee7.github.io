@@ -2,16 +2,9 @@
 layout: default
 title: "ENTJ코치가 보는 '이토록 친밀한 배신자'"
 category: '심플리파이어 라이프'
-cover_image: '/brunch_web_assets/images/309.jpg'
+cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/0t9wUp3M1JfDuqvMhnGLwLrMkfI'
 date_string: 'Oct 19. 2024'
 ---
-
-# 📝 309_ENTJ코치가 보는 '이토록 친밀한 배신자'
-
-📂 **매거진: 심플리파이어 라이프**
-
-
-![대표 이미지](/brunch_web_assets/images/309_ENTJ%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EB%8A%94%20%27%EC%9D%B4%ED%86%A0%EB%A1%9D%20%EC%B9%9C%EB%B0%80%ED%95%9C%20%EB%B0%B0%EC%8B%A0%EC%9E%90%27_cover.jpg)
 
 #### 
 

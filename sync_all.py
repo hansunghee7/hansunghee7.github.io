@@ -7,7 +7,7 @@ md_dir = "brunch_web_assets/markdown"
 index_file = "index.md"
 csv_file = "브런치_글_모음집.csv"
 
-# 1. 날짜 데이터만 엑셀에서 가져옵니다 (매칭 오류 방지를 위해 글자와 숫자만 비교)
+# 1. 날짜 데이터 매칭 (순수 텍스트 기준)
 csv_dates = {}
 try:
     with open(csv_file, 'r', encoding='utf-8-sig') as f:
@@ -27,14 +27,12 @@ post_count = len(md_files)
 cards_html = ""
 unique_categories = set()
 
-print("🚀 데이터 1:1 완벽 동기화 시작...")
-
 for filename in md_files:
     filepath = os.path.join(md_dir, filename)
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # 2. 가장 중요한 핵심: 카드에 표시할 정보를 '마크다운 파일 내부'에서 직접 읽습니다! (언매칭 원천 차단)
+    # 2. 마크다운 파일 내부 정보 직접 추출
     title_match = re.search(r"^title:\s*['\"]?(.*?)['\"]?\s*$", content, re.MULTILINE)
     cat_match = re.search(r"^category:\s*['\"]?(.*?)['\"]?\s*$", content, re.MULTILINE)
     cover_match = re.search(r"^cover_image:\s*['\"]?(.*?)['\"]?\s*$", content, re.MULTILINE)
@@ -43,7 +41,7 @@ for filename in md_files:
     category = cat_match.group(1).strip() if cat_match else "기타"
     cover_image = cover_match.group(1).strip() if cover_match else "/brunch_web_assets/images/logo_white.png"
 
-    # 날짜 매칭 및 주입
+    # 날짜 주입 로직
     title_clean = re.sub(r'[^가-힣a-zA-Z0-9]', '', title)
     filename_clean = re.sub(r'[^가-힣a-zA-Z0-9]', '', filename[:-3])
     date_string = csv_dates.get(title_clean, csv_dates.get(filename_clean, ""))
@@ -51,7 +49,7 @@ for filename in md_files:
     if category != "미분류" and category != "기타":
         unique_categories.add(category)
 
-    # 3. 개별 파일 머리말(YAML) 업데이트 (날짜 정보 주입)
+    # 3. 개별 파일 머리말(YAML) 동기화 업데이트
     body_content = re.sub(r'^---.*?---\s*', '', content, flags=re.DOTALL)
     safe_title = title.replace('"', '\\"')
     
@@ -60,7 +58,7 @@ for filename in md_files:
     with open(filepath, 'w', encoding='utf-8') as f:
         f.write(new_yaml + body_content)
 
-    # 4. 카드 HTML 생성 (링크는 파일명 기준, 내용은 내부 YAML 기준)
+    # 4. 카드 HTML 조립
     safe_url = urllib.parse.quote(filename[:-3])
     link = f"/brunch_web_assets/markdown/{safe_url}.html"
 
@@ -91,7 +89,7 @@ for filename in md_files:
         </div>
     </a>\n"""
 
-# 5. index.md 생성 (정렬 기능 포함)
+# 5. index.md 생성 (★요청하신 텍스트 형태의 정렬 UI 적용★)
 html_header = f"---\nlayout: default\ntitle: '심플리파이어의 {post_count}개의 글'\nis_index: true\n---\n"
 
 html_body = """
@@ -100,14 +98,22 @@ html_body = """
     .card-item.visible { display: flex !important; animation: fadeInUp 0.4s ease forwards; }
     #scrollSentinel { height: 50px; margin-top: 30px; }
     
-    .filter-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 20px; margin-bottom: 10px; }
+    /* 필터 및 정렬 레이아웃 */
+    .filter-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px; margin-bottom: 35px; }
     .category-filter { display: flex; flex-wrap: wrap; gap: 8px; flex: 1; }
     .cat-btn { padding: 7px 16px; border: 1px solid #e1e1e1; border-radius: 20px; background: #fff; color: #666; font-size: 13px; font-weight: 300; cursor: pointer; transition: all 0.2s; font-family: 'Noto Sans KR', sans-serif; }
     .cat-btn:hover { border-color: #00c73c; color: #00c73c; }
     .cat-btn.active { background: #00c73c; color: #fff; border-color: #00c73c; font-weight: 400; }
     
-    .sort-select { padding: 7px 12px; border: 1px solid #ddd; border-radius: 6px; outline: none; font-family: 'Noto Sans KR'; font-size: 13px; color: #444; cursor: pointer; background: #fafafa; }
-    .sort-select:hover { border-color: #00c73c; }
+    /* ★ 새로운 텍스트 토글 방식 정렬 UI 스타일 ★ */
+    .sort-filter { display: flex; gap: 15px; align-items: center; margin-bottom: 5px; }
+    .sort-text-btn { background: none; border: none; font-size: 14px; color: #a0a0a0; cursor: pointer; font-family: 'Noto Sans KR', sans-serif; font-weight: 300; display: flex; align-items: center; padding: 0; transition: color 0.2s; }
+    .sort-text-btn:hover { color: #555; }
+    .sort-text-btn.active { color: #333; font-weight: 400; }
+    
+    /* 액티브 시 나타나는 동그란 점 (Dot) */
+    .sort-text-btn .dot { display: inline-block; width: 4px; height: 4px; border-radius: 50%; background-color: transparent; margin-right: 4px; margin-bottom: 2px; }
+    .sort-text-btn.active .dot { background-color: #00c73c; } /* 브런치 시그니처 민트색 */
 </style>
 
 <div class="filter-wrap">
@@ -118,12 +124,11 @@ html_body = """
 for cat in sorted(list(unique_categories)):
     html_body += f'        <button class="cat-btn" data-filter="{cat}">{cat}</button>\n'
 
+# 드롭다운 제거 후 텍스트 버튼으로 변경
 html_body += """    </div>
     <div class="sort-filter">
-        <select id="sortSelect" class="sort-select">
-            <option value="desc">최신순</option>
-            <option value="asc">날짜순 (오래된순)</option>
-        </select>
+        <button class="sort-text-btn active" data-sort="desc"><span class="dot"></span>최신순</button>
+        <button class="sort-text-btn" data-sort="asc"><span class="dot"></span>날짜순</button>
     </div>
 </div>
 
@@ -134,7 +139,7 @@ html_body += """    </div>
     document.addEventListener('DOMContentLoaded', function() {
         const cards = Array.from(document.querySelectorAll('.card-item'));
         const filterBtns = document.querySelectorAll('.cat-btn');
-        const sortSelect = document.getElementById('sortSelect');
+        const sortBtns = document.querySelectorAll('.sort-text-btn'); // 텍스트 정렬 버튼 변수
         const sentinel = document.getElementById('scrollSentinel');
         const grid = document.getElementById('cardGrid');
         
@@ -176,7 +181,16 @@ html_body += """    </div>
             loadNextBatch();
         }
 
-        sortSelect.addEventListener('change', function() { sortMode = this.value; applyFilterAndSort(); });
+        // 정렬 텍스트 버튼 클릭 이벤트 연결
+        sortBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                sortBtns.forEach(b => b.classList.remove('active')); 
+                this.classList.add('active');
+                sortMode = this.getAttribute('data-sort');
+                applyFilterAndSort();
+            });
+        });
+
         filterBtns.forEach(btn => {
             btn.addEventListener('click', function() {
                 filterBtns.forEach(b => b.classList.remove('active')); this.classList.add('active');
@@ -198,4 +212,4 @@ html_body += """    </div>
 with open(index_file, 'w', encoding='utf-8') as f:
     f.write(html_header + html_body)
 
-print("✅ 완벽 동기화 완료! 언매칭 원천 차단 및 등록일 정보(date_string) 주입이 적용되었습니다.")
+print("✅ 정렬 기능 UI가 첨부하신 이미지 스타일(미니멀 텍스트 + 민트색 Dot)로 업데이트되었습니다.")

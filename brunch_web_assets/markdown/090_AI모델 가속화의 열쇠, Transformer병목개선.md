@@ -2,20 +2,13 @@
 layout: default
 title: "AI모델 가속화의 열쇠, Transformer병목개선"
 category: 'AI의 언어들'
-cover_image: '/brunch_web_assets/images/090.jpg'
+cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/r1zAstxXQfZ_WZA_ofY6Jj8yusE.png'
 date_string: 'Jul 2. 2025'
 ---
 
-# 📝 090_AI모델 가속화의 열쇠, Transformer병목개선
-
-📂 **브런치북: AI의 언어들**
-
-
-![대표 이미지](/brunch_web_assets/images/090_AI%EB%AA%A8%EB%8D%B8%20%EA%B0%80%EC%86%8D%ED%99%94%EC%9D%98%20%EC%97%B4%EC%87%A0%2C%20Transformer%EB%B3%91%EB%AA%A9%EA%B0%9C%EC%84%A0_cover.jpg)
-
 GPT, BERT와 같은 최신 AI 모델의 중심인 Transformer 아키텍처는 놀라운 성능을 제공하지만, 학습 과정에서 여러 병목 현상에 직면합니다. 이러한 병목을 해결하는 것은 AI 개발의 속도와 비용 효율성을 크게 향상시키는 핵심 요소입니다.
 
-![img.png](/brunch_web_assets/images/090_AI%EB%AA%A8%EB%8D%B8%20%EA%B0%80%EC%86%8D%ED%99%94%EC%9D%98%20%EC%97%B4%EC%87%A0%2C%20Transformer%EB%B3%91%EB%AA%A9%EA%B0%9C%EC%84%A0_img_1.jpg)
+![img.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/vXFJmpA_z9iUj4SPyvTeY3hON5I.png)
 
 Transformer의 주요 병목 현상은 크게 네 가지로 나타납니다.
 
@@ -29,11 +22,11 @@ Transformer의 주요 병목 현상은 크게 네 가지로 나타납니다.
 
 이러한 병목을 해결하기 위한 혁신적 방법들이 개발되었습니다. FlashAttention은 GPU 메모리 계층 간 데이터 이동을 최소화해 긴 시퀀스 처리 속도를 최대 7배 향상시킵니다. Sparse Attention(Longformer, Reformer 등)은 중요한 관계만 계산해 연산량을 크게 줄입니다. 분산 학습에서는 파이프라인 병렬화와 텐서 병렬화가 메모리와 연산 효율을 높입니다.
 
-![1_i4tDdwgvGtXuTIyJpFUn8A.png](/brunch_web_assets/images/090_AI%EB%AA%A8%EB%8D%B8%20%EA%B0%80%EC%86%8D%ED%99%94%EC%9D%98%20%EC%97%B4%EC%87%A0%2C%20Transformer%EB%B3%91%EB%AA%A9%EA%B0%9C%EC%84%A0_img_2.jpg)
+![1_i4tDdwgvGtXuTIyJpFUn8A.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/-Ivbw9WzvCtnqnB-QB8Qwd1owno.png)
 
 연산 효율화 측면에서 Mixed Precision Training은 저정밀도 연산(FP16, BF16)을 적용해 메모리 사용량을 절반으로 줄이고 속도를 2배 이상 높입니다. NVIDIA GPU의 2:4 sparsity 활용은 FFN 연산을 2배 가량 가속화합니다. 또한 적절한 학습률 스케줄링과 Transformer 특화 초기화 기법은 학습 시간을 30-50% 단축할 수 있습니다.
 
-![image-12.png](/brunch_web_assets/images/090_AI%EB%AA%A8%EB%8D%B8%20%EA%B0%80%EC%86%8D%ED%99%94%EC%9D%98%20%EC%97%B4%EC%87%A0%2C%20Transformer%EB%B3%91%EB%AA%A9%EA%B0%9C%EC%84%A0_img_3.jpg)
+![image-12.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/JJKI-X6dQw-9SrRCNsrn9MhCz4k.png)
 
 실제 적용 사례를 보면, 70억 파라미터 언어 모델에 FlashAttention과 Mixed Precision을 적용해 학습 속도 3배 향상을 달성했고, 컴퓨터 비전 모델은 Sparse Attention과 최적 하이퍼파라미터로 학습 시간을 65% 단축했습니다.
 

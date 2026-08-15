@@ -2,16 +2,9 @@
 layout: default
 title: "우선순위 설정의 프레임워크 'RICE'"
 category: '기획자의 프레임웍'
-cover_image: '/brunch_web_assets/images/263.jpg'
+cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/dwAUfJUvzApBda-lSTSJspxjxDU.png'
 date_string: 'Jan 14. 2025'
 ---
-
-# 📝 263_우선순위 설정의 프레임워크 'RICE'
-
-📂 **브런치북: 기획자의 프레임웍**
-
-
-![대표 이미지](/brunch_web_assets/images/263_%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%20%EC%84%A4%EC%A0%95%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC%20%27RICE%27_cover.jpg)
 
 제품 아이디어 백로그의 우선순위를 정하는 일은 기획자에게 매우 중요하면서 어려운 일입니다. 이때 RICE 프레임워크를 활용하면 보다 객관적이고 효과적으로 의사결정을 내릴 수 있습니다.
 

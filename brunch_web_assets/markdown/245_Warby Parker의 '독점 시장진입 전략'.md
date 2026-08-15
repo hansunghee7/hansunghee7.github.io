@@ -2,16 +2,9 @@
 layout: default
 title: "Warby Parker의 '독점 시장진입 전략'"
 category: '스타트업의 전략들'
-cover_image: '/brunch_web_assets/images/245.jpg'
+cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/Wdz6woGjrj5ixwZ_yJpXCL7jszg.jpg'
 date_string: 'Feb 3. 2025'
 ---
-
-# 📝 245_Warby Parker의 '독점 시장진입 전략'
-
-📂 **브런치북: 스타트업의 전략들**
-
-
-![대표 이미지](/brunch_web_assets/images/245_Warby%20Parker%EC%9D%98%20%27%EB%8F%85%EC%A0%90%20%EC%8B%9C%EC%9E%A5%EC%A7%84%EC%9E%85%20%EC%A0%84%EB%9E%B5%27_cover.jpg)
 
 제가 다양한 스타트업들을 만나면서 겪는 주요 문제들을 글로벌 기업들은 어떻게 해결하였는지 연재를 해보려고 합니다. 이번 주제는 스타트업들이 겪고 있는 가장 큰 고민거리 중 하나인 '시장 진입 전략'입니다.
 
@@ -21,9 +14,9 @@ date_string: 'Feb 3. 2025'
 
 당시 미국의 안경 시장은 이탈리아의 럭소티카(Luxottica)가 장악하고 있었습니다. 80%에 달하는 시장 점유율을 보유한 이 기업은 레이밴, 오클리와 같은 유명 브랜드부터 렌즈크래프터스 같은 소매점까지 모두 소유하고 있었죠. 그리고 이런 독점은 터무니없이 비싼 안경 가격으로 이어졌습니다.
 
-![다운로드.png](/brunch_web_assets/images/245_Warby%20Parker%EC%9D%98%20%27%EB%8F%85%EC%A0%90%20%EC%8B%9C%EC%9E%A5%EC%A7%84%EC%9E%85%20%EC%A0%84%EB%9E%B5%27_img_1.jpg)
+![다운로드.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/O41gPNXellZWd56OhC4KObFwvC4.png)
 
-![다운로드 (2).jpeg](/brunch_web_assets/images/245_Warby%20Parker%EC%9D%98%20%27%EB%8F%85%EC%A0%90%20%EC%8B%9C%EC%9E%A5%EC%A7%84%EC%9E%85%20%EC%A0%84%EB%9E%B5%27_img_2.jpg)
+![다운로드 (2).jpeg](//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/84IIPbcbby8DWOXq6OlZY24y3iw.jpeg)
 
 Warby Parker의 설립자들은 이 문제를 혁신적인 방식으로 해결했습니다. 그들은 "왜 안경이 아이폰보다 비싸야 하는가?"라는 단순한 질문에서 시작했습니다.
 
@@ -37,9 +30,9 @@ Warby Parker의 전략은 다음과 같습니다.
 
 이런 전략들은 큰 성공을 거두었고, Warby Parker는 설립 10년 만에 기업가치 30억 달러를 달성했습니다.
 
-![다운로드 (1).jpg](/brunch_web_assets/images/245_Warby%20Parker%EC%9D%98%20%27%EB%8F%85%EC%A0%90%20%EC%8B%9C%EC%9E%A5%EC%A7%84%EC%9E%85%20%EC%A0%84%EB%9E%B5%27_img_3.jpg)
+![다운로드 (1).jpg](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/qrwEPH6vqiGszjcEEcotkQ4XJUM.jpg)
 
-![screen-shot-2018-03-24-at-07-28-51 (1).png](/brunch_web_assets/images/245_Warby%20Parker%EC%9D%98%20%27%EB%8F%85%EC%A0%90%20%EC%8B%9C%EC%9E%A5%EC%A7%84%EC%9E%85%20%EC%A0%84%EB%9E%B5%27_img_4.jpg)
+![screen-shot-2018-03-24-at-07-28-51 (1).png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/u8LvyHYXOZtTM6X6emPszRyP-do.png)
 
 이제 막 시작하는 스타트업들은 여기서 무엇을 배울 수 있을까요?
 

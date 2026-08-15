@@ -2,16 +2,9 @@
 layout: default
 title: "마케팅 없이 20조원 가치를 만든 Figma PLG전략"
 category: '스타트업의 전략들'
-cover_image: '/brunch_web_assets/images/253.jpg'
+cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/klhuRw69SbMOqliz0reN8ALzacI.jpg'
 date_string: 'Jan 27. 2025'
 ---
-
-# 📝 253_마케팅 없이 20조원 가치를 만든 Figma PLG전략
-
-📂 **브런치북: 스타트업의 전략들**
-
-
-![대표 이미지](/brunch_web_assets/images/253_%EB%A7%88%EC%BC%80%ED%8C%85%20%EC%97%86%EC%9D%B4%2020%EC%A1%B0%EC%9B%90%20%EA%B0%80%EC%B9%98%EB%A5%BC%20%EB%A7%8C%EB%93%A0%20Figma%20PLG%EC%A0%84%EB%9E%B5_cover.jpg)
 
 안녕하세요, 스타트업 코치 한성희입니다. 오늘은 많은 스타트업들이 고민하는 '효율적인 고객 획득 전략'에 대해 이야기해보려 합니다.
 
