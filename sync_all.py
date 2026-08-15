@@ -6,7 +6,7 @@ import json
 
 # 👇 카테고리별 기본 정렬 방식
 CATEGORY_SORT_DEFAULTS = {
-    "AI의 언어들": "asc",
+    "AI의 언어들": "desc",
     "Be the PO": "desc",
     "PO의 프레임웍": "asc",
     "UX의 언어들": "desc",
@@ -109,7 +109,7 @@ html_header = f"---\nlayout: default\ntitle: '심플리파이어의 {post_count}
 
 default_sorts_json = json.dumps(CATEGORY_SORT_DEFAULTS, ensure_ascii=False)
 
-# 🌟 형광그린(#6CFD33) 키컬러 및 카드 확대/테두리 롤오버 CSS 적용
+# 🌟 모노톤 ➡️ 컬러 롤오버 CSS 추가 적용
 html_body = """<style>
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 .card-item.visible { display: flex !important; animation: fadeInUp 0.4s ease forwards; }
@@ -128,13 +128,13 @@ html_body = """<style>
 .sort-text-btn .dot { display: inline-block; width: 4px; height: 4px; border-radius: 50%; background-color: transparent; margin-right: 4px; margin-bottom: 2px; }
 .sort-text-btn.active .dot { background-color: #6CFD33; }
 
-/* 🎨 이미지 확대 및 형광그린 테두리 롤오버 애니메이션 */
+/* 🎨 카드 기본: 모노톤(흑백) / 호버: 컬러 + 이미지 확대 + 형광그린 테두리 */
 .card-item { border: 1px solid #e1e1e1; border-radius: 12px; overflow: hidden; transition: border-color 0.3s ease, box-shadow 0.3s ease; text-decoration: none !important; color: inherit; }
 .card-thumb-wrap { width: 100%; height: 180px; overflow: hidden; position: relative; }
-.card-thumb { width: 100%; height: 100%; background-size: cover; background-position: center; transition: transform 0.4s ease; }
+.card-thumb { width: 100%; height: 100%; background-size: cover; background-position: center; filter: grayscale(100%); transition: transform 0.4s ease, filter 0.4s ease; }
 
 .card-item:hover { border-color: #6CFD33 !important; box-shadow: 0 6px 20px rgba(108, 253, 51, 0.15); }
-.card-item:hover .card-thumb { transform: scale(1.08); }
+.card-item:hover .card-thumb { transform: scale(1.08); filter: grayscale(0%); }
 .card-category { color: #222; font-weight: 500; }
 </style>
 
@@ -173,4 +173,4 @@ const observer = new IntersectionObserver(entries => { entries.forEach(entry => 
 with open(index_file, 'w', encoding='utf-8') as f:
     f.write(html_header + html_body)
 
-print("✅ 키컬러(#6CFD33) 변경 및 카드 호버 애니메이션(확대+테두리) 적용 완료!")
+print("✅ 모노톤 ➡️ 원본 컬러 전환 롤오버 효과 적용 완료!")
