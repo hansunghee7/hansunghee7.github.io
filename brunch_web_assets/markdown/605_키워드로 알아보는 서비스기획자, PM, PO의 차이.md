@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '605_키워드로 알아보는 서비스기획자, PM, PO의 차이'
+title: "키워드로 알아보는 서비스기획자, PM, PO의 차이"
 category: '매거진: 기획자로 시작하기'
 ---
 

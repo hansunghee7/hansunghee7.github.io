@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '234_챗GPT가 쉽다고 느껴지는 UX의 비밀'
+title: "챗GPT가 쉽다고 느껴지는 UX의 비밀"
 category: '브런치북: UX의 언어들'
 ---
 

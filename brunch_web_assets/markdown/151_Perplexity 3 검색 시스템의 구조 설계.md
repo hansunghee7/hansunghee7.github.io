@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '151_Perplexity 3 검색 시스템의 구조 설계'
+title: "Perplexity 3 검색 시스템의 구조 설계"
 category: '매거진: 심플리파이어 인사이트'
 ---
 

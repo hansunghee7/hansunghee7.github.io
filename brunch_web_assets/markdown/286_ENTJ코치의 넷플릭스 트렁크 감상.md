@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '286_ENTJ코치의 넷플릭스 트렁크 감상'
+title: "ENTJ코치의 넷플릭스 트렁크 감상"
 category: '매거진: 심플리파이어 라이프'
 ---
 

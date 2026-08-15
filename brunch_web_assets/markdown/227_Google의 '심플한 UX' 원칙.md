@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '227_Google의 '심플한 UX' 원칙'
+title: "Google의 '심플한 UX' 원칙"
 category: '브런치북: UX의 언어들'
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '251_아이디어의 발상 'SCAMPER' 기법'
+title: "아이디어의 발상 'SCAMPER' 기법"
 category: '브런치북: 기획자의 프레임웍'
 ---
 

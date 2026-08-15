@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '283_ENTJ코치의 정권 기획'
+title: "ENTJ코치의 정권 기획"
 category: '매거진: 심플리파이어 라이프'
 ---
 

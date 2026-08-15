@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '554_O or X'
+title: "O or X"
 category: '매거진: 기획일상'
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '132_PM, PL, TPM의 차이 한눈에 보기'
+title: "PM, PL, TPM의 차이 한눈에 보기"
 category: '브런치북: PO가 꼭 알아야 할 것들'
 ---
 

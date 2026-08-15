@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '091_현재와 미래를 함께한다 3 Horizons model'
+title: "현재와 미래를 함께한다 3 Horizons model"
 category: '브런치북: 기획자의 프레임웍'
 ---
 

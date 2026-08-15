@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '050_Product Owner도 몰랐던 애자일 HR의 진실'
+title: "Product Owner도 몰랐던 애자일 HR의 진실"
 category: '브런치북: PO가 꼭 알아야 할 것들'
 ---
 

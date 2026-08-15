@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '403_Simplifier GOOD즈 프로젝트'
+title: "Simplifier GOOD즈 프로젝트"
 category: '매거진: 심플리파이어 라이프'
 ---
 

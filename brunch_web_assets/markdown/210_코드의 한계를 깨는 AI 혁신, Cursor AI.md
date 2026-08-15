@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '210_코드의 한계를 깨는 AI 혁신, Cursor AI'
+title: "코드의 한계를 깨는 AI 혁신, Cursor AI"
 category: '매거진: 심플리파이어 인사이트'
 ---
 

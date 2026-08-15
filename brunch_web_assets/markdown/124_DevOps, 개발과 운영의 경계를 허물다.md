@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '124_DevOps, 개발과 운영의 경계를 허물다'
+title: "DevOps, 개발과 운영의 경계를 허물다"
 category: '브런치북: PO가 꼭 알아야 할 것들'
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '086_한국 SaaS의 미국 진출 실패 원인 분석'
+title: "한국 SaaS의 미국 진출 실패 원인 분석"
 category: '브런치북: 대한민국 스타트업 미국진출을 묻다'
 ---
 

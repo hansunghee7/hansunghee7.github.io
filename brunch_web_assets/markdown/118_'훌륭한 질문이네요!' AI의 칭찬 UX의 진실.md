@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '118_'훌륭한 질문이네요!' AI의 칭찬 UX의 진실'
+title: "'훌륭한 질문이네요!' AI의 칭찬 UX의 진실"
 category: '브런치북: UX의 언어들'
 ---
 

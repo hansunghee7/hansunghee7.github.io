@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '135_제품의 생명선, Retention Curve'
+title: "제품의 생명선, Retention Curve"
 category: '브런치북: 기획자의 프레임웍'
 ---
 

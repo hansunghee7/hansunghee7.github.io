@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '422_CPO는 어떻게 일을 할까 Part 3. 흐름의 결합'
+title: "CPO는 어떻게 일을 할까 Part 3. 흐름의 결합"
 category: '매거진: 스타트업 리더의 기술'
 ---
 

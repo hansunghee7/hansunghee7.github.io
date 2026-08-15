@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '209_실패에서 데카콘으로 'Notion'의 초기 시장진출전략'
+title: "실패에서 데카콘으로 'Notion'의 초기 시장진출전략"
 category: '브런치북: 스타트업의 전략들'
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '150_Slack의 유료전환의 매직 모먼트'
+title: "Slack의 유료전환의 매직 모먼트"
 category: '브런치북: 스타트업의 전략들'
 ---
 

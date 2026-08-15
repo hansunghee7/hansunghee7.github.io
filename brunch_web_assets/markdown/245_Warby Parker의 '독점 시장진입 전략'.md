@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '245_Warby Parker의 '독점 시장진입 전략''
+title: "Warby Parker의 '독점 시장진입 전략'"
 category: '브런치북: 스타트업의 전략들'
 ---
 

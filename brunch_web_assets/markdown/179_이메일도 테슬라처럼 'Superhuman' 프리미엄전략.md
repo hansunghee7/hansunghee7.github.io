@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '179_이메일도 테슬라처럼 'Superhuman' 프리미엄전략'
+title: "이메일도 테슬라처럼 'Superhuman' 프리미엄전략"
 category: '브런치북: 스타트업의 전략들'
 ---
 

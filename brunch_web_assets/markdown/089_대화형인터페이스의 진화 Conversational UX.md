@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '089_대화형인터페이스의 진화 Conversational UX'
+title: "대화형인터페이스의 진화 Conversational UX"
 category: '브런치북: UX의 언어들'
 ---
 

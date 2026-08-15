@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '444_'이력서에 쓰지 않는 첫 직장이야기' Epilogue'
+title: "'이력서에 쓰지 않는 첫 직장이야기' Epilogue"
 category: '브런치북: 이력서에 쓰지 않는 첫직장 이야기'
 ---
 

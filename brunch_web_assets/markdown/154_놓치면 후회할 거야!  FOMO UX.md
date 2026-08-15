@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '154_놓치면 후회할 거야!  FOMO UX'
+title: "놓치면 후회할 거야!  FOMO UX"
 category: '브런치북: UX의 언어들'
 ---
 

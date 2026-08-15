@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '076_어프로치를 바꾸다 AI Assisted Design'
+title: "어프로치를 바꾸다 AI Assisted Design"
 category: '브런치북: UX의 언어들'
 ---
 

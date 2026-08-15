@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '314_ENTJ코치가 보는 최고의 기획자 '에드워드 리''
+title: "ENTJ코치가 보는 최고의 기획자 '에드워드 리'"
 category: '매거진: 기획자로 시작하기'
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '144_Perplexity4 대화형 UX 구조와 쿼리 분기'
+title: "Perplexity4 대화형 UX 구조와 쿼리 분기"
 category: '매거진: 심플리파이어 인사이트'
 ---
 

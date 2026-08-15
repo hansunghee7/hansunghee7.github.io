@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '112_'포터의 5 Forces' 전쟁터를 분석하는 법'
+title: "'포터의 5 Forces' 전쟁터를 분석하는 법"
 category: '브런치북: 기획자의 프레임웍'
 ---
 

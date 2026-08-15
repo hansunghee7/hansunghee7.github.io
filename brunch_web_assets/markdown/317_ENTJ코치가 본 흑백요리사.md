@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '317_ENTJ코치가 본 흑백요리사'
+title: "ENTJ코치가 본 흑백요리사"
 category: '매거진: 심플리파이어 라이프'
 ---
 

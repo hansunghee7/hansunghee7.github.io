@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '111_AI학습 클라우드 삼국지 AWSGoogleAzure'
+title: "AI학습 클라우드 삼국지 AWSGoogleAzure"
 category: '브런치북: AI의 언어들'
 ---
 

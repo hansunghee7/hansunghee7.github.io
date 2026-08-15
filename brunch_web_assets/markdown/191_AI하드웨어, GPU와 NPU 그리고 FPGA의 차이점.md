@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '191_AI하드웨어, GPU와 NPU 그리고 FPGA의 차이점'
+title: "AI하드웨어, GPU와 NPU 그리고 FPGA의 차이점"
 category: '브런치북: AI의 언어들'
 ---
 

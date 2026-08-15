@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '356_logo branding'
+title: "logo branding"
 category: '매거진: 심플리파이어 라이프'
 ---
 

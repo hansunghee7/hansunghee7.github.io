@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '502_내가 나를 기획한다면 Choice of Ur Life'
+title: "내가 나를 기획한다면 Choice of Ur Life"
 category: '매거진: 기획일상'
 ---
 

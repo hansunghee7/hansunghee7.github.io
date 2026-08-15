@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '178_'So What, Why So' 논리에 영혼을 불어넣다'
+title: "'So What, Why So' 논리에 영혼을 불어넣다"
 category: '브런치북: 기획자의 프레임웍'
 ---
 

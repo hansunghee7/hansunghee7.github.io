@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '113_'커서 AI'의 AI 협력자 전략'
+title: "'커서 AI'의 AI 협력자 전략"
 category: '브런치북: 스타트업의 전략들'
 ---
 

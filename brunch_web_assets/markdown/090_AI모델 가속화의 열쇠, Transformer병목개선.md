@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '090_AI모델 가속화의 열쇠, Transformer병목개선'
+title: "AI모델 가속화의 열쇠, Transformer병목개선"
 category: '브런치북: AI의 언어들'
 ---
 

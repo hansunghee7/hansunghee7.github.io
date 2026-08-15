@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '420_CPO는 어떻게 일을 할까 Part1.1 사업목표수립'
+title: "CPO는 어떻게 일을 할까 Part1.1 사업목표수립"
 category: '매거진: 스타트업 리더의 기술'
 ---
 

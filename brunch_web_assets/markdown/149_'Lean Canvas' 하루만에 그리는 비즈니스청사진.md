@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '149_'Lean Canvas' 하루만에 그리는 비즈니스청사진'
+title: "'Lean Canvas' 하루만에 그리는 비즈니스청사진"
 category: '브런치북: 기획자의 프레임웍'
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '236_해적이 된 기획자들의 이야기, AARRR 프레임워크'
+title: "해적이 된 기획자들의 이야기, AARRR 프레임워크"
 category: '브런치북: 기획자의 프레임웍'
 ---
 

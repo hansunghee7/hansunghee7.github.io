@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '051_게임하듯 일하는 마법, Flow State Design'
+title: "게임하듯 일하는 마법, Flow State Design"
 category: '브런치북: UX의 언어들'
 ---
 

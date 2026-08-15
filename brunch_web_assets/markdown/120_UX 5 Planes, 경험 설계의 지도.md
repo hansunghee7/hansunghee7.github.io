@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '120_UX 5 Planes, 경험 설계의 지도'
+title: "UX 5 Planes, 경험 설계의 지도"
 category: '브런치북: 기획자의 프레임웍'
 ---
 

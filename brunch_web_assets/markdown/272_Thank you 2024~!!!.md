@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '272_Thank you 2024~!!!'
+title: "Thank you 2024~!!!"
 category: '매거진: 심플리파이어 라이프'
 ---
 

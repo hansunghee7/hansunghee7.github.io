@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '419_CPO는 어떻게 일을 할까 Part 1.2 생산구조'
+title: "CPO는 어떻게 일을 할까 Part 1.2 생산구조"
 category: '매거진: 스타트업 리더의 기술'
 ---
 

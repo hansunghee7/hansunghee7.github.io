@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '170_AI 성능을 100배 높이는 비결 TensorCores'
+title: "AI 성능을 100배 높이는 비결 TensorCores"
 category: '브런치북: AI의 언어들'
 ---
 

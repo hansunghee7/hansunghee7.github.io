@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '103_ZeRO, 메모리최적화로 AI 비즈니스의 한계를 넓히다'
+title: "ZeRO, 메모리최적화로 AI 비즈니스의 한계를 넓히다"
 category: '브런치북: AI의 언어들'
 ---
 

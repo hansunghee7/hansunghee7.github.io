@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '102_깨끗한 인터페이스, Clean UI의 반전'
+title: "깨끗한 인터페이스, Clean UI의 반전"
 category: '브런치북: UX의 언어들'
 ---
 

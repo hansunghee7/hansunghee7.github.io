@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '523_심플리파이어 웨이 '요기요 Concept UX''
+title: "심플리파이어 웨이 '요기요 Concept UX'"
 category: '매거진: 스타트업 리더의 기술'
 ---
 

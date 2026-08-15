@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '200_사용자를 중독시키는 4단계 마법 'Hooked 모델''
+title: "사용자를 중독시키는 4단계 마법 'Hooked 모델'"
 category: '브런치북: 기획자의 프레임웍'
 ---
 

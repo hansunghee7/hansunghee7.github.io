@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '257_UX와 UI의 차이, 그 뒤에 숨겨진 이야기'
+title: "UX와 UI의 차이, 그 뒤에 숨겨진 이야기"
 category: '브런치북: UX의 언어들'
 ---
 

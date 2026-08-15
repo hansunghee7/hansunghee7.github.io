@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '189_칸반, 애자일의 Just In Time'
+title: "칸반, 애자일의 Just In Time"
 category: '브런치북: PO가 꼭 알아야 할 것들'
 ---
 

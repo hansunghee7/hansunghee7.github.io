@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '263_우선순위 설정의 프레임워크 'RICE''
+title: "우선순위 설정의 프레임워크 'RICE'"
 category: '브런치북: 기획자의 프레임웍'
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '177_AI 칩 성능의 핵심, FLOPS와 TOPS 그리고..'
+title: "AI 칩 성능의 핵심, FLOPS와 TOPS 그리고"
 category: '브런치북: AI의 언어들'
 ---
 
