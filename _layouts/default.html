@@ -18,43 +18,53 @@
             word-break: keep-all;
         }
 
-        /* --- 상단 커버 --- */
+        /* --- ✂️ 슬림해진 상단 커버 (높이를 1/4 수준인 25vh로 축소) --- */
         .cover-wrap {
-            position: relative; width: 100%; height: 100vh;
-            background-color: #333; background-size: cover; background-position: center;
-            color: #fff; display: flex; flex-direction: column;
+            position: relative; 
+            width: 100%; 
+            height: 25vh; /* 기존 100vh에서 1/4 크기로 대폭 감소 */
+            min-height: 180px; /* 최소 높이 보장 */
+            background-color: #333; 
+            background-size: cover; 
+            background-position: center;
+            color: #fff; 
+            display: flex; 
+            flex-direction: column;
+            justify-content: space-between;
+            box-sizing: border-box;
+            padding: 25px 40px;
         }
+
         .cover-header {
-            position: absolute; top: 0; left: 0; right: 0;
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 30px 40px; z-index: 10;
+            display: flex; 
+            align-items: center;
+            z-index: 10;
         }
-        .cover-logo img { height: 28px; vertical-align: middle; transition: opacity 0.2s; }
+        .cover-logo img { height: 26px; vertical-align: middle; transition: opacity 0.2s; }
         .cover-logo:hover img { opacity: 0.7; }
         
-        .cover-category-pill {
-            border: 1px solid rgba(255,255,255,0.4); border-radius: 20px;
-            padding: 5px 16px; font-size: 12px; font-weight: 300; letter-spacing: -0.5px;
-        }
         .cover-bottom-left {
-            position: absolute; bottom: 40px; left: 40px; text-align: left; padding-right: 80px;
+            text-align: left;
         }
         .cover-title {
             font-family: 'Noto Serif KR', serif;
-            font-size: 42px; font-weight: 200; margin: 0; line-height: 1.4;
+            font-size: 32px; /* 헤더 크기에 맞게 미세 조정 */
+            font-weight: 200; 
+            margin: 0; 
+            line-height: 1.2;
             text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
         .cover-author {
-            font-size: 13px; font-weight: 300; opacity: 0.8;
-            font-style: italic; margin-top: 20px;
+            font-size: 12px; 
+            font-weight: 300; 
+            opacity: 0.8;
+            font-style: italic; 
+            margin-top: 8px;
             text-shadow: 0 1px 5px rgba(0,0,0,0.5);
         }
-        .cover-bottom-right { position: absolute; bottom: 40px; right: 40px; }
-        .down-arrow { display: inline-block; font-size: 26px; color: #fff; text-decoration: none; transition: transform 0.3s ease; opacity: 0.8; }
-        .down-arrow:hover { transform: translateY(-8px); opacity: 1; }
 
         /* --- 본문 컨테이너 --- */
-        .article-body { max-width: 1100px; margin: 0 auto; padding: 60px 20px 120px; }
+        .article-body { max-width: 1100px; margin: 0 auto; padding: 40px 20px 120px; }
         .article-body p { font-size: 16px; font-weight: 300; line-height: 2.1; margin-bottom: 35px; }
         .article-body img { max-width: 100%; height: auto; margin: 60px 0; display: block; }
         .article-body hr { border: 0; border-top: 1px solid #eaeaea; margin: 80px 0; }
@@ -77,16 +87,10 @@
             color: inherit;
             flex-direction: column;
         }
-        .card-item.visible { display: flex; }
-        .card-item:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.08);
-        }
         
-        /* 🖼️ 3:2 비율 가로형 이미지 영역 */
         .card-thumb {
             width: 100%;
-            aspect-ratio: 3 / 2; /* 3:2 비율 고정 */
+            aspect-ratio: 3 / 2;
             background-color: #f7f7f7;
             background-size: cover;
             background-position: center;
@@ -118,7 +122,6 @@
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
-        /* 📅 등록일 스타일 */
         .card-date {
             font-size: 12px;
             color: #aaaaaa;
@@ -126,7 +129,7 @@
             font-weight: 300;
         }
 
-        /* --- 🔘 필터 및 더보기 버튼 --- */
+        /* --- 🔘 필터 버튼 --- */
         .category-filter {
             display: flex;
             flex-wrap: wrap;
@@ -148,42 +151,25 @@
         .cat-btn:hover { border-color: #00c73c; color: #00c73c; }
         .cat-btn.active { background: #00c73c; color: #fff; border-color: #00c73c; font-weight: 400; }
 
-        .load-more-wrap { text-align: center; margin-top: 60px; }
-        .load-more-btn {
-            padding: 12px 45px;
-            border: 1px solid #ddd;
-            border-radius: 30px;
-            background: #fff;
-            color: #444;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-family: 'Noto Sans KR', sans-serif;
-        }
-        .load-more-btn:hover { background: #f9f9f9; border-color: #00c73c; color: #00c73c; }
-
         .hidden-element { display: none !important; }
     </style>
 </head>
 <body>
     
     <div class="cover-wrap" id="coverWrap">
+        <!-- 상단 헤더: 중앙 Simplifier 알약 태그 지움 -->
         <div class="cover-header">
             <a href="/" class="cover-logo">
                 <img src="/brunch_web_assets/images/logo_white.png" alt="Simplifier Logo">
             </a>
-            <div class="cover-category-pill">{{ page.category }}</div>
-            <div></div>
         </div>
         
+        <!-- 하단 제목 영역 -->
         <div class="cover-bottom-left">
             <h1 class="cover-title" id="displayTitle">{{ page.title }}</h1>
             <div class="cover-author">by Simplifier 한성희</div>
         </div>
-        
-        <div class="cover-bottom-right">
-            <a href="#articleBody" class="down-arrow">↓</a>
-        </div>
+        <!-- 화살표 요소 완전 삭제 -->
     </div>
 
     <div class="article-body" id="articleBody">
