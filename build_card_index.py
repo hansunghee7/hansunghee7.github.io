@@ -11,18 +11,33 @@ def clean_and_pure(text):
     no_prefix = re.sub(r'^[\d#\._\s]+', '', text)
     return re.sub(r'[^가-힣a-zA-Z0-9]', '', no_prefix)
 
+# '매거진: ', '브런치북: ' 단어 정화 함수
+def clean_category_name(cat_str):
+    if not cat_str: return "기타"
+    cleaned = re.sub(r'^(매거진|브런치북)\s*:\s*', '', cat_str.strip())
+    return cleaned if cleaned else "기타"
+
+# 마크다운 파일 내 첫 번째 이미지 태그 추출 (썸네일)
 def get_first_image(filepath):
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
             content = f.read()
+            # ![alt](url) 또는 <img src="url"> 형태 모두 감지
             match = re.search(r'!\[.*?\]\((.*?)\)', content)
+            if not match:
+                match = re.search(r'<img\s+.*?src=["\'](.*?)["\']', content)
+            
             if match:
-                return match.group(1)
-    except:
+                img_path = match.group(1).strip()
+                # 상대 경로 보정
+                if not img_path.startswith('http') and not img_path.startswith('/'):
+                    img_path = '/' + img_path
+                return img_path
+    except Exception as e:
         pass
     return "/brunch_web_assets/images/logo_white.png"
 
-# 1. CSV 정보 읽어오기
+# 1. CSV 데이터 읽어서 정밀 매칭 사전 만들기
 categories_map = {}
 dates_map = {}
 unique_categories = set()
@@ -34,9 +49,11 @@ try:
         for row in reader:
             if len(row) > 1:
                 pure_title = clean_and_pure(row[1])
-                cat = row[0].strip()
+                raw_cat = row[0].strip()
+                cat = clean_category_name(raw_cat)
+                
                 categories_map[pure_title] = cat
-                if cat and cat != "미분류":
+                if cat and cat != "미분류" and cat != "기타":
                     unique_categories.add(cat)
                 
                 if len(row) > 2:
@@ -44,10 +61,10 @@ try:
 except Exception as e:
     print("❌ CSV 파일 읽기 오류:", e)
 
+# 2. 실제 마크다운 파일 목록을 수집하여 1:1 완벽 연결
 md_files = [f for f in os.listdir(md_dir) if f.endswith(".md") and f != "index.md"]
 md_files.sort()
 
-# 2. index.md 생성 (무한 스크롤 & 카드 상승 애니메이션 포함)
 html_content = f"""---
 layout: default
 title: '전체 글 목록'
@@ -55,32 +72,19 @@ category: 'Simplifier'
 ---
 
 <style>
-    /* 🎬 카드가 스르륵 올라오는 애니메이션 정의 */
     @keyframes fadeInUp {{
-        from {{
-            opacity: 0;
-            transform: translateY(30px);
-        }}
-        to {{
-            opacity: 1;
-            transform: translateY(0);
-        }}
+        from {{ opacity: 0; transform: translateY(20px); }}
+        to {{ opacity: 1; transform: translateY(0); }}
     }}
-
     .card-item.visible {{
         display: flex !important;
-        animation: fadeInUp 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        animation: fadeInUp 0.4s ease forwards;
     }}
-
-    /* 무한 스크롤 감지용 센서 영역 */
-    #scrollSentinel {{
-        height: 60px;
-        margin-top: 40px;
-    }}
+    #scrollSentinel {{ height: 50px; margin-top: 30px; }}
 </style>
 
-<div style="margin-bottom: 25px; color: #666; font-weight: 300;">
-    성희님의 브런치 글 {len(md_files)}개입니다. 카테고리를 선택해 글을 둘러보세요!
+<div style="margin-bottom: 25px; color: #666; font-weight: 300; font-size: 15px;">
+    Simplifier의 {len(md_files)}개의 글입니다. 카테고리를 선택해 글을 둘러보세요!
 </div>
 
 <div class="category-filter">
@@ -97,13 +101,15 @@ html_content += """</div>
 
 for filename in md_files:
     filepath = os.path.join(md_dir, filename)
-    base_name = filename[:-3]
+    base_name = filename[:-3] # .md 제거
     display_title = re.sub(r'^[\d#\._\s]+', '', base_name)
     pure_title = clean_and_pure(base_name)
-    category = categories_map.get(pure_title, "미분류")
+    
+    category = categories_map.get(pure_title, "기타")
     date_str = dates_map.get(pure_title, "")
     img_url = get_first_image(filepath)
     
+    # 깃허브 웹소스에 딱 들어맞는 정확한 HTML URL 인코딩
     safe_url = urllib.parse.quote(base_name)
     link = f"/brunch_web_assets/markdown/{safe_url}.html"
     
@@ -121,7 +127,6 @@ for filename in md_files:
 
 html_content += """</div>
 
-<!-- 바닥 감지용 무한 스크롤 감지기 -->
 <div id="scrollSentinel"></div>
 
 <script>
@@ -130,11 +135,10 @@ html_content += """</div>
         const filterBtns = document.querySelectorAll('.cat-btn');
         const sentinel = document.getElementById('scrollSentinel');
         
-        const itemsPerBatch = 20; // 스크롤 시 추가 노출 개수
+        const itemsPerBatch = 20;
         let currentVisibleCount = 0;
         let filteredCards = cards;
 
-        // 다음 배치 로드 함수
         function loadNextBatch() {
             if (currentVisibleCount >= filteredCards.length) return;
 
@@ -143,14 +147,12 @@ html_content += """</div>
 
             for (let i = start; i < end; i++) {
                 filteredCards[i].classList.add('visible');
-                // 카드마다 약간의 시간차(Stagger)를 주어 순차적으로 솟아오르는 효과
-                filteredCards[i].style.animationDelay = (i - start) * 0.04 + 's';
+                filteredCards[i].style.animationDelay = (i - start) * 0.03 + 's';
             }
 
             currentVisibleCount = end;
         }
 
-        // 필터 변경 처리
         function applyFilter(filter) {
             cards.forEach(card => {
                 card.classList.remove('visible');
@@ -167,16 +169,13 @@ html_content += """</div>
             loadNextBatch();
         }
 
-        // 🚀 IntersectionObserver를 활용한 무한 스크롤 구현 (고성능)
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     loadNextBatch();
                 }
             });
-        }, {
-            rootMargin: '200px' // 화면 바닥 도착 200px 전에 미리 로딩 시작
-        });
+        }, { rootMargin: '200px' });
 
         if (sentinel) observer.observe(sentinel);
 
@@ -196,4 +195,4 @@ html_content += """</div>
 with open(index_file, 'w', encoding='utf-8') as f:
     f.write(html_content)
 
-print("✅ 무한 스크롤 및 카드 등장 애니메이션 적용 완료!")
+print("✅ 카테고리 접두어 제거, 4열 그리드, 정확한 URL 및 썸네일 매칭 완료!")
