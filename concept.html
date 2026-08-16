@@ -15,13 +15,14 @@
      🎛️ [디자인 컨트롤러]
      ========================================================= */
   :root {
-    --logo-max-height: 180px;
-    --logo-max-width: 320px;
-    --company-name-size: 52px;
-    --role-text-size: 20px;
-    --final-grid-logo-height: 100px;
-    --stats-number-size: 84px;
-    --stats-label-size: 16px;
+    --nav-height: 68px;
+    --logo-max-height: clamp(90px, 20vw, 180px);
+    --logo-max-width: clamp(140px, 45vw, 320px);
+    --company-name-size: clamp(26px, 6.5vw, 52px);
+    --role-text-size: clamp(13px, 3.2vw, 20px);
+    --final-grid-logo-height: clamp(56px, 14vw, 100px);
+    --stats-number-size: clamp(36px, 9vw, 84px);
+    --stats-label-size: clamp(10px, 2.6vw, 16px);
   }
 
   * { box-sizing: border-box; }
@@ -58,9 +59,9 @@
   /* 🎯 [히어로 오버랩] Sticky Stacking 적용 */
   .hero-wrapper { 
     position: sticky; /* 화면에 고정되어 뒤에 머묾 */
-    top: 68px; 
+    top: var(--nav-height); 
     z-index: 5; /* 리빌 영역보다 낮게 설정하여 덮이게 함 */
-    height: calc(100vh - 68px);
+    height: calc(100vh - var(--nav-height));
   }
   .hero { height: 100%; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; }
   #hero-fade { will-change: opacity; width: 100%; }
@@ -80,7 +81,7 @@
     z-index: 10; /* 히어로 위로 물리적으로 타고 올라옴 */
     margin-top: 0; 
   } 
-  .reveal-sticky { position:sticky; top:68px; height:calc(100vh - 68px); display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .reveal-sticky { position:sticky; top:var(--nav-height); height:calc(100vh - var(--nav-height)); display:flex; align-items:center; justify-content:center; overflow:hidden; }
   
   .reveal-split-container { display: flex; width: min(1200px, 92vw); height: 100%; align-items: center; position: relative; margin: 0 auto; will-change: opacity; }
   .reveal-left-spot { width: 45%; height: 100%; position: absolute; left: 0; top: 0; display: flex; align-items: center; justify-content: center; }
@@ -98,9 +99,16 @@
   .text-item { height: 160px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding-left: 20px; opacity: 0.15; transition: opacity 0.1s ease; }
   .text-item.active { opacity: 1; transform: scale(1.03); }
   
-  .rname { font-family: 'Boska', 'Noto Serif KR', serif; font-weight: 300; font-size: var(--company-name-size); color: #f5f3ee; margin: 0 0 8px 0; line-height: 1.2; }
-  .rrole { font-weight:300; font-style:italic; font-size: var(--role-text-size); color:#8f8b82; }
+  .rname { font-family: 'Boska', 'Noto Serif KR', serif; font-weight: 300; font-size: var(--company-name-size); color: #f5f3ee; margin: 0 0 8px 0; line-height: 1.2; word-break: keep-all; }
+  .rrole { font-weight:300; font-style:italic; font-size: var(--role-text-size); color:#8f8b82; word-break: keep-all; line-height: 1.4; }
   .text-item:nth-child(7) .rname, .text-item:nth-child(9) .rname { font-family: 'Noto Serif KR', serif; font-weight: 200; letter-spacing: -0.01em; }
+
+  /* 📱 모바일: 좌(로고) 45/50 우(텍스트) 비율 조정 + itemHeight(JS 120px)와 일치시킴 */
+  @media (max-width:760px){
+    .reveal-left-spot { width: 36%; }
+    .reveal-right-texts { width: 60%; }
+    .text-item { height: 120px; padding-left: 14px; }
+  }
 
   /* 3. 최종 피날레 씬 */
   .reveal-final { 
@@ -132,9 +140,19 @@
   .reveal-grid img[alt*="D.Camp"] { transform: scale(1.15); }
   .reveal-grid img:hover { opacity: 1; filter: grayscale(0%) brightness(1); transform: scale(1.18) !important; }
   
-  .reveal-stats .rs-row { display:flex; gap:100px; justify-content:center; text-align:center; }
-  .reveal-stats .rs-num { font-family: 'Source Serif 4', serif; font-weight: 200; font-size: var(--stats-number-size); color: #f5f3ee; margin-bottom: 8px; line-height: 1; }
+  .reveal-stats .rs-row { display:flex; gap:100px; justify-content:center; text-align:center; flex-wrap: wrap; row-gap: 28px; }
+  .reveal-stats .rs-num { font-family: 'Source Serif 4', serif; font-weight: 200; font-size: var(--stats-number-size); color: #f5f3ee; margin-bottom: 8px; line-height: 1; white-space: nowrap; }
   .reveal-stats .rs-label { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-weight: 400; font-size: var(--stats-label-size); color:#8f8b82; letter-spacing: 0.05em; text-transform: uppercase; }
+
+  /* 📱 모바일: 5열 → 3열 로고그리드, 스탯 gap 축소 */
+  @media (max-width:760px){
+    .reveal-grid { grid-template-columns: repeat(3, 1fr); gap:28px 16px; margin-bottom: 44px; }
+    .reveal-stats .rs-row { gap: 40px; }
+  }
+  @media (max-width:480px){
+    .reveal-grid { grid-template-columns: repeat(2, 1fr); }
+    .reveal-stats .rs-row { gap: 28px 36px; }
+  }
 
 
   /* =========================================================
@@ -168,11 +186,28 @@
   .gallery-item img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%) brightness(0.9); transition: transform 0.5s ease, filter 0.5s ease; }
   .gallery-item img:hover { transform: scale(1.06); filter: grayscale(0%) brightness(1.05); }
 
+  /* 📱 모바일: 갤러리 5열 → 3열/2열, 세로로 긴 얇은 띠 방지 */
+  @media (max-width:760px){
+    .story-gallery { grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 90px; }
+    .gallery-item { height: 140px; }
+  }
+  @media (max-width:480px){
+    .story-gallery { grid-template-columns: repeat(2, 1fr); }
+    .gallery-item { height: 160px; }
+  }
+
   .story-testimonials { max-width: 720px; margin: 0 auto; text-align: left; }
   .testimonial-header { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; color: #8f8b82; text-transform: uppercase; margin-bottom: 48px; }
   .quote-block { margin-bottom: 44px; font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-size: 21px; font-weight: 300; line-height: 1.75; color: #f5f3ee; border-bottom: 1px dashed rgba(245, 243, 238, 0.12); padding-bottom: 32px; word-break: keep-all; }
   .quote-avatar { display: inline-block; width: 28px; height: 28px; border-radius: 50%; vertical-align: middle; margin: 0 6px; object-fit: cover; border: 1px solid rgba(245, 243, 238, 0.3); }
 </style>
+<noscript><style>
+  /* JS가 실행되지 않을 경우(차단/오류) 핵심 콘텐츠가 영구히 숨겨지는 것을 방지 */
+  #story-section { opacity:1 !important; pointer-events:auto !important; }
+  #split-container { display:none !important; }
+  #reveal-final { opacity:1 !important; visibility:visible !important; pointer-events:auto !important; }
+  #hero-fade { opacity:1 !important; }
+</style></noscript>
 </head>
 <body>
 
@@ -286,6 +321,9 @@
 
 <script>
 (function(){
+  var NAV_HEIGHT = 68; // header.nav 실제 높이(px). CSS --nav-height 변수와 반드시 동일하게 유지할 것.
+  var MOBILE_BP = 760;  // CSS의 @media (max-width:760px) .text-item 높이 변경 지점과 반드시 일치해야 함
+
   var heroFade = document.getElementById('hero-fade');
   var heroWrapper = document.getElementById('hero-wrapper');
   var sticky = document.getElementById('reveal-sticky');
@@ -301,7 +339,7 @@
   if(!wrap || textItems.length === 0) return;
 
   var totalItems = textItems.length;
-  var itemHeight = window.innerWidth <= 760 ? 120 : 160; 
+  var itemHeight = window.innerWidth <= MOBILE_BP ? 120 : 160; // CSS .text-item height(760px 이하 120px)와 반드시 일치
   var currentStage = -1;
 
   var counted = false;
@@ -331,6 +369,7 @@
   }
 
   function syncScrollEffects() {
+    try {
     var scrolled = window.scrollY;
     var vh = window.innerHeight;
     
@@ -342,8 +381,8 @@
 
     // 2) 리빌 트랙 계산
     var rect = wrap.getBoundingClientRect();
-    var wrapTop = rect.top - 68; 
-    var stickyHeight = vh - 68;
+    var wrapTop = rect.top - NAV_HEIGHT; 
+    var stickyHeight = vh - NAV_HEIGHT;
     var scrollable = wrap.offsetHeight - stickyHeight;
     
     var progress = 0;
@@ -370,7 +409,7 @@
       var currentTranslate = -(moveProgress * maxTranslate);
 
       var startTopTranslate = 80;
-      var centerTranslate = ((window.innerHeight - 68) / 2) - (itemHeight / 2);
+      var centerTranslate = ((window.innerHeight - NAV_HEIGHT) / 2) - (itemHeight / 2);
       var alignP = Math.min(1, scrolled / 300);
       var initialTranslate = startTopTranslate + (centerTranslate - startTopTranslate) * alignP;
 
@@ -444,11 +483,19 @@
         }
       }
     }
+    } catch (err) {
+      // 안전장치: 스크롤 계산 중 예상치 못한 에러가 나도 콘텐츠가 영구히 숨겨지지 않도록 강제 노출
+      console.error('syncScrollEffects error, falling back to static visible state:', err);
+      if (heroFade) heroFade.style.opacity = 1;
+      if (splitContainer) splitContainer.style.display = 'none';
+      if (finalScene) { finalScene.style.opacity = 1; finalScene.style.visibility = 'visible'; }
+      if (storySection) storySection.style.opacity = 1;
+    }
   }
 
   window.addEventListener('scroll', function(){ requestAnimationFrame(syncScrollEffects); }, {passive:true});
   window.addEventListener('resize', function(){
-    itemHeight = window.innerWidth <= 760 ? 120 : 160; 
+    itemHeight = window.innerWidth <= MOBILE_BP ? 120 : 160; 
     syncScrollEffects();
   });
   syncScrollEffects();
