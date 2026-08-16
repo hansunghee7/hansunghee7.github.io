@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simplifier — Concept: Black YC (Parallax Overlap Engine)</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<!-- 💎 Boska 폰트 -->
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=boska@200,300,400,500,600,700&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200;0,8..60,300;0,8..60,400;1,8..60,200;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* =========================================================
+     🎛️ [디자인 컨트롤러]
+     ========================================================= */
+  :root {
+    --logo-max-height: 180px;
+    --logo-max-width: 320px;
+    --company-name-size: 52px;
+    --role-text-size: 20px;
+    --final-grid-logo-height: 100px;
+    --stats-number-size: 84px;
+    --stats-label-size: 16px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  
+  body { 
+    background: #080808; 
+    color: #f5f3ee; 
+    font-family: 'Boska', 'Source Serif 4', 'Noto Serif KR', serif; 
+    margin:0; 
+    overflow-x: hidden;
+  }
+  .italic { font-style: italic; }
+  ::selection { background: #f5f3ee; color: #080808; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+  @media (max-width:700px){ .wrap{ padding: 0 20px; } }
+
+  /* NAVIGATION */
+  header.nav { position: sticky; top:0; z-index: 100; background: rgba(8,8,8,0.85); backdrop-filter: blur(10px); }
+  .nav-inner { position:relative; display:flex; align-items:center; padding: 16px 32px; max-width:1200px; margin:0 auto; gap: 24px; }
+  .nav-logo { height: 26px; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); }
+  .nav-logo img { height: 100%; width:auto; display:block; }
+  .nav-links, .nav-apply { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; }
+  .nav-links { display:flex; align-items:center; gap: 30px; font-size: 14px; color:#c9c8c2; }
+  .nav-links a:hover { color:#f5f3ee; }
+  .nav-right { display:flex; align-items:center; gap: 22px; font-size:14px; margin-left:auto; }
+  .nav-loginlike { color:#c9c8c2; }
+  .nav-loginlike:hover { color:#f5f3ee; }
+  .nav-apply { background:#f5f3ee; color:#080808; padding: 9px 22px; border-radius:999px; font-weight: 500; font-size:14px; transition: background .2s, color .2s; }
+  .nav-apply:hover { background:#080808; color:#f5f3ee; box-shadow: inset 0 0 0 1px #f5f3ee; }
+  @media (max-width:860px){ .nav-links{ display:none; } }
+
+  /* 🎯 [히어로 오버랩] Sticky Stacking 적용 */
+  .hero-wrapper { 
+    position: sticky; /* 화면에 고정되어 뒤에 머묾 */
+    top: 68px; 
+    z-index: 5; /* 리빌 영역보다 낮게 설정하여 덮이게 함 */
+    height: calc(100vh - 68px);
+  }
+  .hero { height: 100%; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; }
+  #hero-fade { will-change: opacity; width: 100%; }
+  
+  .hero h1 { font-family: 'Boska', 'Source Serif 4', serif; font-weight: 200; font-size: clamp(42px, 7.3vw, 79px); line-height: 1.2; max-width: 1060px; margin: 0 auto 6px; }
+  .hero h1 .accent { font-style: italic; }
+  .hero-footnote { max-width: 480px; margin: 36px auto 0; text-align:left; }
+  .hero-footnote .q { font-weight:300; font-size: 15px; line-height:1.9; color:#8f8b82; letter-spacing:-0.01em; }
+  .hero-footnote .who { display:block; margin-top: 10px; text-align:right; font-weight:300; font-style:italic; font-size:14px; color:#8f8b82; }
+  .scroll-cue { position:absolute; left:50%; bottom:40px; transform:translateX(-50%); display: flex; justify-content: center; width: 40px; }
+  .scroll-cue .chev { display:block; width:13px; height:13px; border-right:1.5px solid #8f8b82; border-bottom:1.5px solid #8f8b82; transform: rotate(45deg); }
+
+  /* SCROLL-REVEAL YC SPLIT STYLE */
+  .reveal-wrap { 
+    position: relative; 
+    height: 500vh; 
+    z-index: 10; /* 히어로 위로 물리적으로 타고 올라옴 */
+    margin-top: 0; 
+  } 
+  .reveal-sticky { position:sticky; top:68px; height:calc(100vh - 68px); display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  
+  .reveal-split-container { display: flex; width: min(1200px, 92vw); height: 100%; align-items: center; position: relative; margin: 0 auto; will-change: opacity; }
+  .reveal-left-spot { width: 45%; height: 100%; position: absolute; left: 0; top: 0; display: flex; align-items: center; justify-content: center; }
+  
+  .rspot-img { position: absolute; max-height: var(--logo-max-height); max-width: var(--logo-max-width); object-fit:contain; filter: grayscale(100%) brightness(1.5); opacity:0; transform: scale(0.95); }
+  .rspot-img.show { opacity:1 !important; filter: grayscale(0%) brightness(1.05); transform:scale(1); }
+  .rspot-img[src*="asan"].show { transform: scale(1.35); }
+  .rspot-img[src*="modoo"].show { transform: scale(1.4); }
+  .rspot-img[src*="usimsa"].show { transform: scale(1.35); }
+  .rspot-img[src*="dcamp"].show { transform: scale(1.15); }
+  .rspot-img.show:hover { transform: scale(1.1) !important; cursor: pointer; }
+
+  /* 우측 영역 */
+  .reveal-right-texts { width: 50%; position: absolute; right: 0; top: 0; will-change: transform; }
+  .text-item { height: 160px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding-left: 20px; opacity: 0.15; transition: opacity 0.1s ease; }
+  .text-item.active { opacity: 1; transform: scale(1.03); }
+  
+  .rname { font-family: 'Boska', 'Noto Serif KR', serif; font-weight: 300; font-size: var(--company-name-size); color: #f5f3ee; margin: 0 0 8px 0; line-height: 1.2; }
+  .rrole { font-weight:300; font-style:italic; font-size: var(--role-text-size); color:#8f8b82; }
+  .text-item:nth-child(7) .rname, .text-item:nth-child(9) .rname { font-family: 'Noto Serif KR', serif; font-weight: 200; letter-spacing: -0.01em; }
+
+  /* 3. 최종 피날레 씬 */
+  .reveal-final { 
+    position:absolute; 
+    top:50%; 
+    left:50%; 
+    transform:translate(-50%, -50%); 
+    display:flex; 
+    flex-direction:column; 
+    align-items:center; 
+    justify-content:center; 
+    width:100%; 
+    height:100vh; 
+    opacity:0; 
+    visibility:hidden;
+    pointer-events:none; 
+    will-change: opacity;
+    z-index: 30; 
+  }
+  .reveal-final.show { visibility:visible !important; pointer-events:auto !important; }
+
+  .reveal-grid { display:grid; grid-template-columns:repeat(5, 1fr); gap:36px 24px; width:min(1200px, 92vw); margin-bottom: 60px; align-items: center; justify-items: center; }
+  .reveal-grid .gitem { display:flex; align-items:center; justify-content:center; width:100%; height: var(--final-grid-logo-height); }
+  
+  .reveal-grid img { max-height: var(--final-grid-logo-height); max-width:200px; object-fit:contain; filter: grayscale(100%) brightness(1.3); opacity: 0.75; cursor: pointer; transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease; }
+  .reveal-grid img[alt*="Asan"] { transform: scale(1.35); }
+  .reveal-grid img[alt*="Modoo"] { transform: scale(1.4); }
+  .reveal-grid img[alt*="Usimsa"] { transform: scale(1.35); }
+  .reveal-grid img[alt*="D.Camp"] { transform: scale(1.15); }
+  .reveal-grid img:hover { opacity: 1; filter: grayscale(0%) brightness(1); transform: scale(1.18) !important; }
+  
+  .reveal-stats .rs-row { display:flex; gap:100px; justify-content:center; text-align:center; }
+  .reveal-stats .rs-num { font-family: 'Source Serif 4', serif; font-weight: 200; font-size: var(--stats-number-size); color: #f5f3ee; margin-bottom: 8px; line-height: 1; }
+  .reveal-stats .rs-label { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-weight: 400; font-size: var(--stats-label-size); color:#8f8b82; letter-spacing: 0.05em; text-transform: uppercase; }
+
+
+  /* =========================================================
+     📖 4. STORY SECTION (🎯 Gradient Feathering Overlap)
+     ========================================================= */
+  .story-section {
+    position: relative;
+    z-index: 40; 
+    
+    /* 🎯 안개처럼 덮어주는 그라데이션 마스킹 효과 (하드 컷 차단) */
+    background: linear-gradient(to bottom, rgba(8,8,8,0) 0%, rgba(8,8,8,1) 250px, rgba(8,8,8,1) 100%); 
+    
+    color: #f5f3ee;
+    margin-top: -45vh; /* 깊은 오버랩 교차 범위 */
+    padding: 180px 0 180px 0;
+    opacity: 0;
+    will-change: opacity;
+    pointer-events: none; /* 피날레 클릭 간섭 방지 */
+  }
+
+  .story-essay, .story-gallery, .story-testimonials {
+    pointer-events: auto; /* 내부 콘텐츠 활성화 */
+  }
+
+  .story-essay { max-width: 680px; margin: 0 auto 120px auto; }
+  .story-essay p { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-weight: 300; font-size: 20px; line-height: 1.85; color: #c9c8c2; margin-bottom: 32px; word-break: keep-all; }
+  .story-essay p.intro-p::first-letter { font-family: 'Boska', serif; font-weight: 300; font-size: 5.2rem; float: left; line-height: 0.78; padding-right: 18px; padding-top: 6px; color: #f5f3ee; }
+
+  .story-gallery { width: min(1200px, 94vw); margin: 0 auto 140px auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+  .gallery-item { width: 100%; height: 240px; border-radius: 12px; overflow: hidden; background: #181818; }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%) brightness(0.9); transition: transform 0.5s ease, filter 0.5s ease; }
+  .gallery-item img:hover { transform: scale(1.06); filter: grayscale(0%) brightness(1.05); }
+
+  .story-testimonials { max-width: 720px; margin: 0 auto; text-align: left; }
+  .testimonial-header { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; color: #8f8b82; text-transform: uppercase; margin-bottom: 48px; }
+  .quote-block { margin-bottom: 44px; font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-size: 21px; font-weight: 300; line-height: 1.75; color: #f5f3ee; border-bottom: 1px dashed rgba(245, 243, 238, 0.12); padding-bottom: 32px; word-break: keep-all; }
+  .quote-avatar { display: inline-block; width: 28px; height: 28px; border-radius: 50%; vertical-align: middle; margin: 0 6px; object-fit: cover; border: 1px solid rgba(245, 243, 238, 0.3); }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-links"><a href="#track">Track Record</a><a href="#knowledge">Knowledge</a></div>
+    <a href="#" class="nav-logo"><img src="assets/nav-logo-white.avif" alt="Simplifier"></a>
+    <div class="nav-right"><div class="nav-links"><a href="/log.html">Log</a><a href="#profile">Profile</a></div><a href="#contact" class="nav-apply">Contact</a></div>
+  </div>
+</header>
+
+<div class="hero-wrapper" id="hero-wrapper">
+  <section class="hero wrap" id="hero-section">
+    <div id="hero-fade">
+      <h1>Simplifier turns complexity<br>into <span class="accent">explosive growth.</span></h1>
+      <p class="hero-footnote"><span class="q">"폭발적 성장은 갑작스럽게 오는 것이 아닙니다. 단순화해온 모든 것이 마침내 위로 향할 곳밖에 남지 않은 순간에 찾아옵니다."</span><span class="who">— 한성희</span></p>
+      <div class="scroll-cue"><span class="chev"></span></div>
+    </div>
+  </section>
+</div>
+
+<div class="reveal-wrap" id="reveal-wrap">
+  <div class="reveal-sticky" id="reveal-sticky">
+    <div class="reveal-split-container" id="split-container">
+      <div class="reveal-left-spot">
+        <img class="rspot-img" src="assets/logos/naver.png" alt="NAVER">
+        <img class="rspot-img" src="assets/logos/kakaopay.png" alt="Kakao Pay">
+        <img class="rspot-img" src="assets/logos/gs.png" alt="GS">
+        <img class="rspot-img" src="assets/logos/amore.png" alt="Amore Pacific">
+        <img class="rspot-img" src="assets/logos/kyobo.png" alt="Kyobo">
+        <img class="rspot-img" src="assets/logos/dcamp.png" alt="D.Camp">
+        <img class="rspot-img" src="assets/logos/asan.png" alt="Asan Nanum">
+        <img class="rspot-img" src="assets/logos/fastcampus.png" alt="Fast Campus">
+        <img class="rspot-img" src="assets/logos/modoo.png" alt="Modoo">
+        <img class="rspot-img" src="assets/logos/usimsa.png" alt="Usimsa">
+      </div>
+      <div class="reveal-right-texts" id="reveal-texts">
+        <div class="text-item"><div class="rname">NAVER</div><div class="rrole">프로젝트관리 역량강화 코치</div></div>
+        <div class="text-item"><div class="rname">Kakao Pay</div><div class="rrole">프로덕트 관리 전략 강연</div></div>
+        <div class="text-item"><div class="rname">GS Group</div><div class="rrole">신사업 기획 및 프로젝트관리 워크샵</div></div>
+        <div class="text-item"><div class="rname">Amore Pacific</div><div class="rrole">디지털트랜스포메이션 UX 강연</div></div>
+        <div class="text-item"><div class="rname">Kyobo</div><div class="rrole">신사업 전략 기획강연</div></div>
+        <div class="text-item"><div class="rname">d·camp</div><div class="rrole">비즈니스 전문가 멘토</div></div>
+        <div class="text-item"><div class="rname">아산나눔재단</div><div class="rrole">마루 마일스톤 밋업 전담멘토</div></div>
+        <div class="text-item"><div class="rname">Fast Campus</div><div class="rrole">커널아카데미 AI창업자과정 대표멘토</div></div>
+        <div class="text-item"><div class="rname">모두의창업</div><div class="rrole">평가위원 및 책임멘토</div></div>
+        <div class="text-item"><div class="rname">USIMSA</div><div class="rrole">사업 및 프로덕트전략 플레잉코칭</div></div>
+      </div>
+    </div>
+
+    <div class="reveal-final" id="reveal-final">
+      <div class="reveal-grid">
+        <div class="gitem"><img src="assets/logos/naver.png" alt="NAVER"></div>
+        <div class="gitem"><img src="assets/logos/kakaopay.png" alt="Kakao Pay"></div>
+        <div class="gitem"><img src="assets/logos/gs.png" alt="GS"></div>
+        <div class="gitem"><img src="assets/logos/amore.png" alt="Amore Pacific"></div>
+        <div class="gitem"><img src="assets/logos/kyobo.png" alt="Kyobo"></div>
+        <div class="gitem"><img src="assets/logos/dcamp.png" alt="D.Camp"></div>
+        <div class="gitem"><img src="assets/logos/asan.png" alt="Asan"></div>
+        <div class="gitem"><img src="assets/logos/fastcampus.png" alt="Fast Campus"></div>
+        <div class="gitem"><img src="assets/logos/modoo.png" alt="Modoo"></div>
+        <div class="gitem"><img src="assets/logos/usimsa.png" alt="Usimsa"></div>
+      </div>
+      <div class="reveal-stats">
+        <div class="rs-row">
+          <div><div class="rs-num" id="num-startups">0+</div><div class="rs-label">STARTUPS TRAINED</div></div>
+          <div><div class="rs-num" id="num-orgs">0+</div><div class="rs-label">PARTNER ORGANIZATIONS</div></div>
+          <div><div class="rs-num" id="num-rating">0.00 / 5.0</div><div class="rs-label">MAX RATING</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<section class="story-section wrap" id="story-section">
+  <div class="story-essay">
+    <p class="intro-p">
+      In 2000, 저는 다모임에서 기획자로 커리어를 시작했습니다. 회원 천만 명을 모은 성공적인 서비스였지만, 끝내 수익화 모델을 찾지 못해 동료들을 떠나보내야 했습니다. 그때 결심했습니다. 좋은 서비스를 만드는 것과 사업을 성공시키는 것은 전혀 다른 일이라는 것을, 그리고 저는 후자가 되겠다고.
+    </p>
+    <p>
+      이후 심플리파이어를 창업하기 전까지 20여 년간, 네이버에서 커뮤니티·콘텐츠 서비스의 프로젝트매니저로, 삼성전자에서 스마트TV 헤드PM으로, 딜리버리히어로 코리아에서 CPO로, 빗썸에서 COO로 — 자리를 옮길 때마다 사업의 완전히 다른 층위와 스케일을 다루었습니다.
+    </p>
+    <p>
+      2024년 말, 코칭했던 한 창업가분이 반기 만에 분기 흑자로 돌아선 뒤 저를 아산나눔재단에 추천해주셨습니다. 그렇게 시작된 마루밋업 파일럿은 2025년 정기 프로그램이 되었고, 2026년엔 입주사 필수 프로그램으로 자리잡았습니다. 현재는 디캠프 비즈니스 멘토로서 수많은 창업가들의 복잡한 문제를 단순하게 정의하고 있습니다.
+    </p>
+  </div>
+  <div class="story-gallery">
+    <div class="gallery-item"><img src="https://picsum.photos/400/300?random=1" alt="Session 1"></div>
+    <div class="gallery-item"><img src="https://picsum.photos/400/300?random=2" alt="Session 2"></div>
+    <div class="gallery-item"><img src="https://picsum.photos/400/300?random=3" alt="Session 3"></div>
+    <div class="gallery-item"><img src="https://picsum.photos/400/300?random=4" alt="Session 4"></div>
+    <div class="gallery-item"><img src="https://picsum.photos/400/300?random=5" alt="Session 5"></div>
+  </div>
+  <div class="story-testimonials">
+    <div class="testimonial-header">IN FOUNDERS' WORDS</div>
+    <div class="quote-block">
+      Simplifier compresses months of growth into weeks. 
+      <img class="quote-avatar" src="https://i.pravatar.cc/100?img=33" alt="Founder"> 
+      복잡하게 엉켜있던 PMF 문제와 사업 전략이 한성희 코치님의 단순화 세션을 거치며 단 한 줄의 실행 로드맵으로 정리되었습니다.
+      <img class="quote-avatar" src="https://i.pravatar.cc/100?img=12" alt="Founder">
+    </div>
+    <div class="quote-block">
+      창업자가 혼자 밤새 고민하던 수십 가지 가설 중, 
+      <img class="quote-avatar" src="https://i.pravatar.cc/100?img=60" alt="Founder">
+      진짜 매출로 이어지는 오직 단 하나의 본질만 남겨주셨습니다. 완전히 새로운 기준을 얻었습니다.
+      <img class="quote-avatar" src="https://i.pravatar.cc/100?img=47" alt="Founder">
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var heroFade = document.getElementById('hero-fade');
+  var heroWrapper = document.getElementById('hero-wrapper');
+  var sticky = document.getElementById('reveal-sticky');
+  
+  var wrap = document.getElementById('reveal-wrap');
+  var splitContainer = document.getElementById('split-container');
+  var texts = document.getElementById('reveal-texts');
+  var textItems = document.querySelectorAll('.text-item');
+  var spotImgs = document.querySelectorAll('.rspot-img');
+  var finalScene = document.getElementById('reveal-final');
+  var storySection = document.getElementById('story-section');
+  
+  if(!wrap || textItems.length === 0) return;
+
+  var totalItems = textItems.length;
+  var itemHeight = window.innerWidth <= 760 ? 120 : 160; 
+  var currentStage = -1;
+
+  var counted = false;
+  function animateNumbers() {
+    if (counted) return;
+    counted = true;
+    var targets = [
+      { id: 'num-startups', end: 300, suffix: '+', decimals: 0 },
+      { id: 'num-orgs', end: 20, suffix: '+', decimals: 0 },
+      { id: 'num-rating', end: 4.95, suffix: ' / 5.0', decimals: 2 }
+    ];
+    targets.forEach(function(item) {
+      var el = document.getElementById(item.id);
+      if (!el) return;
+      var startTime = null;
+      var duration = 1800;
+      function step(timestamp) {
+        if (!startTime) startTime = timestamp;
+        var progress = Math.min((timestamp - startTime) / duration, 1);
+        var easeProgress = (progress === 1) ? 1 : 1 - Math.pow(2, -10 * progress);
+        var currentValue = item.end * easeProgress;
+        el.textContent = currentValue.toFixed(item.decimals) + item.suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }
+
+  function syncScrollEffects() {
+    var scrolled = window.scrollY;
+    var vh = window.innerHeight;
+    
+    // 1) 히어로 페이드아웃 (화면 50%를 내릴 때 투명해짐)
+    var heroFadeDist = vh * 0.5; 
+    var heroOpacity = Math.max(0, 1 - (scrolled / heroFadeDist));
+    if (heroFade) heroFade.style.opacity = heroOpacity;
+    if (heroWrapper) heroWrapper.style.pointerEvents = (heroOpacity <= 0) ? 'none' : 'auto';
+
+    // 2) 리빌 트랙 계산
+    var rect = wrap.getBoundingClientRect();
+    var wrapTop = rect.top - 68; 
+    var stickyHeight = vh - 68;
+    var scrollable = wrap.offsetHeight - stickyHeight;
+    
+    var progress = 0;
+    if (wrapTop <= 0) {
+      progress = Math.min(1, Math.abs(wrapTop) / scrollable);
+    }
+
+    var logoPhaseEnd = 0.50; 
+    var newStage = -1;
+
+    // 3) 페이즈 1: 로고 스플릿 롤링 (진행률 0.0 ~ 0.75 구간)
+    if (progress <= logoPhaseEnd) {
+      if (splitContainer) {
+        splitContainer.style.opacity = 1;
+        splitContainer.style.visibility = 'visible';
+      }
+      if (finalScene) {
+        finalScene.style.opacity = 0;
+        finalScene.style.visibility = 'hidden';
+      }
+
+      var moveProgress = progress / logoPhaseEnd; 
+      var maxTranslate = totalItems * itemHeight; 
+      var currentTranslate = -(moveProgress * maxTranslate);
+
+      var startTopTranslate = 80;
+      var centerTranslate = ((window.innerHeight - 68) / 2) - (itemHeight / 2);
+      var alignP = Math.min(1, scrolled / 300);
+      var initialTranslate = startTopTranslate + (centerTranslate - startTopTranslate) * alignP;
+
+      if (wrapTop <= 0) {
+        texts.style.transform = 'translateY(' + (initialTranslate + currentTranslate) + 'px)';
+      } else {
+        texts.style.transform = 'translateY(' + initialTranslate + 'px)';
+      }
+
+      newStage = Math.floor(Math.abs(currentTranslate) / itemHeight);
+      newStage = Math.min(newStage, totalItems - 1);
+    } 
+    // 4) 페이즈 2: 로고 지워짐 & 피날레 씬 등장 (진행률 0.75 ~ 0.80 구간)
+    else if (progress > logoPhaseEnd && progress < 0.80) {
+      newStage = totalItems;
+      var switchProg = (progress - logoPhaseEnd) / 0.05; 
+      
+      if (splitContainer) {
+        splitContainer.style.opacity = 1 - switchProg;
+        if (switchProg > 0.99) splitContainer.style.visibility = 'hidden';
+      }
+      if (finalScene) {
+        finalScene.style.visibility = 'visible';
+        finalScene.style.opacity = switchProg;
+      }
+      if (switchProg > 0.5) animateNumbers();
+    } 
+    // 5) 페이즈 3: 피날레 유지 
+    else {
+      newStage = totalItems;
+      if (splitContainer) {
+        splitContainer.style.opacity = 0;
+        splitContainer.style.visibility = 'hidden';
+      }
+      if (finalScene) {
+        finalScene.style.visibility = 'visible';
+      }
+    }
+
+    // 🎯 DOM 요소 클래스 스위칭 (잔상 제거 완벽 제어)
+    if (newStage !== currentStage) {
+      currentStage = newStage;
+      if (currentStage < totalItems) {
+        textItems.forEach((el, i) => el.classList.toggle('active', i === currentStage));
+        spotImgs.forEach((el, i) => el.classList.toggle('show', i === currentStage));
+      } else {
+        textItems.forEach(el => el.classList.remove('active'));
+        spotImgs.forEach(el => el.classList.remove('show'));
+      }
+    }
+
+    // 6) 페이즈 4: 스토리 안개 교차 크로스페이드 (화면 물리 픽셀 기반 연동)
+    if (storySection) {
+      var storyRect = storySection.getBoundingClientRect();
+      var windowH = window.innerHeight;
+
+      if (storyRect.top < windowH) {
+        var overlapDist = windowH - storyRect.top;
+        var fadeRange = windowH * 0.45; 
+        var crossRatio = Math.min(1, Math.max(0, overlapDist / fadeRange));
+
+        storySection.style.opacity = crossRatio;
+
+        if (progress >= 0.80 && finalScene) {
+          finalScene.style.opacity = 1 - crossRatio;
+        }
+      } else {
+        storySection.style.opacity = 0;
+        if (progress >= 0.80 && finalScene) {
+          finalScene.style.opacity = 1; 
+        }
+      }
+    }
+  }
+
+  window.addEventListener('scroll', function(){ requestAnimationFrame(syncScrollEffects); }, {passive:true});
+  window.addEventListener('resize', function(){
+    itemHeight = window.innerWidth <= 760 ? 120 : 160; 
+    syncScrollEffects();
+  });
+  syncScrollEffects();
+})();
+</script>
+
+</body>
+</html>
