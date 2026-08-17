@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }}</title>
     
-<!-- 검색엔진 요약문 (Meta Description) -->
+    <!-- 검색엔진 요약문 (Meta Description) -->
     <meta name="description" content="{{ content | strip_html | strip_newlines | truncate: 150 }}">
 
     <!-- 카카오톡, 슬랙, 링크드인 공유용 미리보기 (Open Graph) -->
@@ -15,7 +15,7 @@
     <meta property="og:image" content="{{ page.cover_image | default: 'https://hansunghee7.github.io/brunch_web_assets/images/logo_white.png' }}">
     <meta property="og:url" content="https://hansunghee7.github.io{{ page.url }}">
 
-<!-- JSON-LD 구조화된 데이터 (GEO/SEO 최적화) -->
+    <!-- JSON-LD 구조화된 데이터 (GEO/SEO 최적화) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -85,6 +85,37 @@
         .card-date { font-size: 11px; color: #aaaaaa; margin-top: auto; font-weight: 300; }
 
         .hidden-element { display: none !important; }
+
+        /* =========================================================
+           📱 웹툰/카드뉴스용 가로 스와이프 뷰어 (추가된 부분)
+           ========================================================= */
+        .swipe-viewer {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            gap: 16px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .swipe-viewer::-webkit-scrollbar { display: none; }
+        .swipe-viewer p {
+            flex: 0 0 100%;
+            scroll-snap-align: center;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .swipe-viewer img {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+            margin: 0; /* 기존 마진 덮어쓰기 */
+        }
     </style>
 </head>
 <body>
@@ -119,7 +150,14 @@
     {% endif %}
 
     <div class="article-body" id="articleBody">
-        {{ content }}
+        <!-- 🎯 스위치가 켜지면 스와이프 모드, 아니면 일반 모드로 출력 (추가된 부분) -->
+        {% if page.is_swipe %}
+            <div class="swipe-viewer">
+                {{ content }}
+            </div>
+        {% else %}
+            {{ content }}
+        {% endif %}
     </div>
 
     <script>
