@@ -1,249 +1,99 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }}</title>
-    
-    <!-- 검색엔진 요약문 (Meta Description) -->
-    <meta name="description" content="{{ content | strip_html | strip_newlines | truncate: 150 }}">
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const articleBody = document.getElementById('articleBody');
+        if (articleBody) {
+            const coverImg = articleBody.querySelector('img[alt="대표 이미지"]');
+            if (coverImg) coverImg.classList.add('hidden-element');
 
-    <!-- 카카오톡, 슬랙, 링크드인 공유용 미리보기 (Open Graph) -->
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="{{ page.title }}">
-    <meta property="og:description" content="{{ content | strip_html | strip_newlines | truncate: 150 }}">
-    <meta property="og:image" content="{{ page.cover_image | default: 'https://hansunghee7.github.io/brunch_web_assets/images/logo_white.png' }}">
-    <meta property="og:url" content="https://hansunghee7.github.io{{ page.url }}">
+            const titleEl = document.getElementById('displayTitle');
+            if (titleEl && !document.getElementById('coverWrap').classList.contains('index-mode')) {
+                titleEl.innerText = titleEl.innerText.replace(/^[\d#\._\s]+/, '');
+            }
 
-    <!-- JSON-LD 구조화된 데이터 -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": "{{ page.title }}",
-      "datePublished": "{{ page.date_string }}",
-      "author": {
-        "@type": "Person",
-        "name": "Han Sunghee"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Simplifier",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://hansunghee7.github.io/brunch_web_assets/images/logo_white.png"
-        }
-      },
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "{{ site.url }}{{ page.url }}"
-      }
-    }
-    </script>
+            const h1s = articleBody.querySelectorAll('h1');
+            if(h1s.length > 0) h1s[0].classList.add('hidden-element');
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500&family=Noto+Serif+KR:wght@200;300;400;600&display=swap" rel="stylesheet">
-    
-    <style>
-        html { scroll-behavior: smooth; }
-        body { margin: 0; padding: 0; font-family: 'Noto Sans KR', sans-serif; background-color: #fff; color: #333; word-break: keep-all; }
-        .cover-wrap { position: relative; width: 100%; background-color: #111111; background-size: cover; background-position: center; color: #fff; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; }
-        .cover-header { display: flex; align-items: center; justify-content: space-between; z-index: 10; }
-        .cover-logo img { height: 26px; vertical-align: middle; transition: opacity 0.2s; }
-        .cover-logo:hover img { opacity: 0.7; }
-        .cover-category-pill { border: 1px solid rgba(255,255,255,0.4); border-radius: 20px; padding: 5px 16px; font-size: 12px; font-weight: 300; letter-spacing: -0.5px; }
-        
-        .cover-wrap.index-mode { height: 22vh; min-height: 160px; padding: 25px 40px; }
-        .index-mode .cover-bottom-left { text-align: left; position: relative; }
-        .index-mode .cover-title { font-family: 'Noto Serif KR', serif; font-size: 32px; font-weight: 200; margin: 0; line-height: 1.2; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-
-        .cover-wrap.post-mode { height: 65vh; padding: 30px 40px; }
-        .post-mode .cover-bottom-left { position: absolute; bottom: 40px; left: 40px; padding-right: 80px; text-align: left; }
-        .post-mode .cover-title { font-family: 'Noto Serif KR', serif; font-size: 42px; font-weight: 200; margin: 0; line-height: 1.4; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-        .post-mode .cover-sub { font-size: 13px; font-weight: 300; opacity: 0.8; font-style: italic; margin-top: 20px; text-shadow: 0 1px 5px rgba(0,0,0,0.5); }
-        .post-mode .cover-bottom-right { position: absolute; bottom: 40px; right: 40px; }
-        .down-arrow { display: inline-block; font-size: 26px; color: #fff; text-decoration: none; transition: transform 0.3s ease; opacity: 0.8; }
-        .down-arrow:hover { transform: translateY(-8px); opacity: 1; }
-
-        .article-body { max-width: 1100px; margin: 0 auto; padding: 40px 20px 120px; }
-        .post-mode + .article-body { max-width: 700px; padding: 80px 20px 120px; }
-        .article-body p { font-size: 16px; font-weight: 300; line-height: 2.1; margin-bottom: 35px; }
-        .article-body img { max-width: 100%; height: auto; margin: 60px 0; display: block; }
-        .article-body hr { border: 0; border-top: 1px solid #eaeaea; margin: 80px 0; }
-
-        /* 🖼️ 카드 그리드 (로그 목록) */
-        .card-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 20px; }
-        @media (max-width: 1024px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
-        @media (max-width: 768px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 480px) { .card-grid { grid-template-columns: repeat(1, 1fr); } }
-
-        .card-item { display: none; background: #fff; border: 1px solid #f0f0f0; border-radius: 8px; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; text-decoration: none; color: inherit; flex-direction: column; }
-        .card-thumb { width: 100%; aspect-ratio: 3 / 2; background-color: #f7f7f7; background-size: cover; background-position: center; border-bottom: 1px solid #f0f0f0; }
-        .card-content { padding: 16px; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; }
-        .card-category { font-size: 12px; color: #00c73c; font-weight: 400; margin-bottom: 8px; }
-        .card-title { font-family: 'Noto Serif KR', serif; font-size: 15px; font-weight: 400; color: #222; line-height: 1.4; margin: 0 0 12px 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        .card-date { font-size: 11px; color: #aaaaaa; margin-top: auto; font-weight: 300; }
-
-        .hidden-element { display: none !important; }
-
-        /* 📱 코치S 스와이프/웹툰 전용 고급 CSS */
-        body.is-swipe-mode { background-color: #0f1015; color: #eee; }
-        body.is-swipe-mode .cover-wrap.post-mode { height: 30vh; min-height: 200px; background: #181920 !important; }
-        body.is-swipe-mode .post-mode + .article-body { max-width: 650px; padding: 20px 15px 80px; }
-
-        .swipe-outer-wrap { position: relative; width: 100%; max-width: 650px; margin: 0 auto; user-select: none; }
-        .swipe-box { display: flex !important; overflow-x: auto !important; scroll-behavior: smooth; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; gap: 0px; scrollbar-width: none; -ms-overflow-style: none; border-radius: 12px; background: #000; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .swipe-box::-webkit-scrollbar { display: none; }
-        
-        /* 컷 슬라이드 내부 요소 정렬 */
-        .swipe-box > * { flex: 0 0 100% !important; scroll-snap-align: center; margin: 0 !important; display: flex !important; justify-content: center; align-items: center; max-width: 100%; height: auto; max-height: 75vh; object-fit: contain; }
-        .swipe-box img { width: 100%; height: auto; max-height: 75vh; object-fit: contain; display: block; border-radius: 8px; }
-
-        /* 좌우 화살표 버튼 디자인 */
-        .swipe-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; background: rgba(0, 0, 0, 0.6); color: #fff; border: 1px solid rgba(255, 255, 255, 0.2); font-size: 18px; cursor: pointer; z-index: 99; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(6px); transition: background 0.2s, transform 0.2s; }
-        .swipe-btn:hover { background: rgba(0, 0, 0, 0.9); transform: translateY(-50%) scale(1.08); }
-        .swipe-btn.prev { left: -22px; }
-        .swipe-btn.next { right: -22px; }
-        
-        @media (max-width: 768px) {
-            .swipe-btn { width: 38px; height: 38px; font-size: 16px; }
-            .swipe-btn.prev { left: 8px; }
-            .swipe-btn.next { right: 8px; }
+            const ps = articleBody.querySelectorAll('p');
+            ps.forEach(p => {
+                if(p.textContent.includes('📂')) p.classList.add('hidden-element');
+            });
         }
 
-        /* 컷 위치 표시 인디케이터 (ex: 1 / 8) */
-        .swipe-indicator { text-align: center; margin-top: 15px; font-size: 14px; font-weight: 400; color: #888; letter-spacing: 1px; }
-        .swipe-indicator span.current { color: #00c73c; font-weight: 600; }
-    </style>
-</head>
-<body>
-    <!-- JS 스위치 판단을 위한 메타 태그 -->
-    <meta id="isSwipeData" data-is-swipe="{{ page.is_swipe }}">
+        // 🎯 스마트 웹툰 뷰어 감지 스위치
+        const isSwipeMeta = document.getElementById('isSwipeData');
+        const isSwipeVal = isSwipeMeta ? isSwipeMeta.getAttribute('data-is-swipe') : '';
+        const categoryPill = document.querySelector('.cover-category-pill');
+        const categoryText = categoryPill ? categoryPill.innerText : '';
 
-    {% if page.url == '/' or page.url == '/log.html' or page.is_index %}
-        <div class="cover-wrap index-mode" id="coverWrap">
-            <div class="cover-header">
-                <a href="/" class="cover-logo"><img src="/brunch_web_assets/images/logo_white.png" alt="Simplifier Logo"></a>
-            </div>
-            <div class="cover-bottom-left">
-                <h1 class="cover-title" id="displayTitle">{{ page.title }}</h1>
-            </div>
-        </div>
-    {% else %}
-        {% assign bg_img = page.cover_image | default: '/brunch_web_assets/images/logo_white.png' %}
-        <div class="cover-wrap post-mode" id="coverWrap" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%), url('{{ bg_img }}');">
-            <div class="cover-header">
-                <a href="/" class="cover-logo"><img src="/brunch_web_assets/images/logo_white.png" alt="Simplifier Logo"></a>
-                <div class="cover-category-pill">{{ page.category }}</div>
-                <div style="width: 26px;"></div>
-            </div>
-            <div class="cover-bottom-left">
-                <h1 class="cover-title" id="displayTitle">{{ page.title }}</h1>
-                <div class="cover-sub">
-                    {% if page.date_string %}{{ page.date_string }}{% endif %}
-                </div>
-            </div>
-            <div class="cover-bottom-right">
-                <a href="#articleBody" class="down-arrow">↓</a>
-            </div>
-        </div>
-    {% endif %}
+        // 카테고리가 '코치S'이거나 URL에 '코치S'가 들어가면 자동 발동!
+        const isSwipeMode = (
+            isSwipeVal === 'true' || 
+            isSwipeVal === 'True' || 
+            categoryText.includes('코치S') || 
+            decodeURIComponent(window.location.href).includes('코치S') ||
+            document.querySelector('.swipe-viewer')
+        );
 
-    <div class="article-body" id="articleBody">
-        {{ content }}
-    </div>
+        if (isSwipeMode && articleBody) {
+            // 웹툰 전용 다크 모드 적용
+            document.body.classList.add('is-swipe-mode');
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const articleBody = document.getElementById('articleBody');
-            if (articleBody) {
-                const coverImg = articleBody.querySelector('img[alt="대표 이미지"]');
-                if (coverImg) coverImg.classList.add('hidden-element');
+            let targetBox = document.querySelector('.swipe-viewer') || articleBody;
+            
+            if (targetBox && !targetBox.classList.contains('swipe-box')) {
+                const outer = document.createElement('div');
+                outer.className = 'swipe-outer-wrap';
 
-                const titleEl = document.getElementById('displayTitle');
-                if (titleEl && !document.getElementById('coverWrap').classList.contains('index-mode')) {
-                    titleEl.innerText = titleEl.innerText.replace(/^[\d#\._\s]+/, '');
+                const pBtn = document.createElement('button');
+                pBtn.className = 'swipe-btn prev';
+                pBtn.innerHTML = '❮';
+                pBtn.setAttribute('aria-label', '이전 컷');
+
+                const nBtn = document.createElement('button');
+                nBtn.className = 'swipe-btn next';
+                nBtn.innerHTML = '❯';
+                nBtn.setAttribute('aria-label', '다음 컷');
+
+                // 컷 인디케이터 (페이지 번호)
+                const indicator = document.createElement('div');
+                indicator.className = 'swipe-indicator';
+
+                // 요소 배치
+                targetBox.classList.add('swipe-box');
+                targetBox.parentNode.insertBefore(outer, targetBox);
+                outer.appendChild(pBtn);
+                outer.appendChild(targetBox);
+                outer.appendChild(nBtn);
+                outer.appendChild(indicator);
+
+                // 슬라이드 요소 계산 (hidden 요소 제외)
+                const slides = Array.from(targetBox.children).filter(el => !el.classList.contains('hidden-element'));
+                const totalCount = slides.length;
+
+                function updateIndicator() {
+                    if (totalCount === 0) return;
+                    const scrollLeft = targetBox.scrollLeft;
+                    const slideWidth = targetBox.clientWidth;
+                    const currentIndex = Math.round(scrollLeft / slideWidth) + 1;
+                    indicator.innerHTML = `<span class="current">${Math.min(currentIndex, totalCount)}</span> / ${totalCount}`;
                 }
 
-                const h1s = articleBody.querySelectorAll('h1');
-                if(h1s.length > 0) h1s[0].classList.add('hidden-element');
+                targetBox.addEventListener('scroll', updateIndicator);
+                updateIndicator();
 
-                const ps = articleBody.querySelectorAll('p');
-                ps.forEach(p => {
-                    if(p.textContent.includes('📂')) p.classList.add('hidden-element');
+                // 좌우 버튼 클릭 및 키보드 이벤트
+                pBtn.addEventListener('click', function() { 
+                    targetBox.scrollBy({ left: -targetBox.clientWidth, behavior: 'smooth' }); 
+                });
+                nBtn.addEventListener('click', function() { 
+                    targetBox.scrollBy({ left: targetBox.clientWidth, behavior: 'smooth' }); 
+                });
+                
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'ArrowLeft') targetBox.scrollBy({ left: -targetBox.clientWidth, behavior: 'smooth' });
+                    if (e.key === 'ArrowRight') targetBox.scrollBy({ left: targetBox.clientWidth, behavior: 'smooth' });
                 });
             }
-
-            // 🎯 스와이프/웹툰 동적 뷰어 안전 격리 로직
-            const isSwipeMeta = document.getElementById('isSwipeData');
-            const isSwipeVal = isSwipeMeta ? isSwipeMeta.getAttribute('data-is-swipe') : '';
-            
-            // ⚠️ is_swipe: true 조건이 명확하거나 .swipe-viewer가 존재하는 '상세글'에서만 스와이프 UI 발동!
-            const isSwipeMode = (isSwipeVal === 'true' || isSwipeVal === 'True' || document.querySelector('.swipe-viewer'));
-
-            if (isSwipeMode && articleBody) {
-                // 웹툰 전용 다크 모드 적용
-                document.body.classList.add('is-swipe-mode');
-
-                let targetBox = document.querySelector('.swipe-viewer') || articleBody;
-                
-                if (targetBox && !targetBox.classList.contains('swipe-box')) {
-                    const outer = document.createElement('div');
-                    outer.className = 'swipe-outer-wrap';
-
-                    const pBtn = document.createElement('button');
-                    pBtn.className = 'swipe-btn prev';
-                    pBtn.innerHTML = '❮';
-                    pBtn.setAttribute('aria-label', '이전 컷');
-
-                    const nBtn = document.createElement('button');
-                    nBtn.className = 'swipe-btn next';
-                    nBtn.innerHTML = '❯';
-                    nBtn.setAttribute('aria-label', '다음 컷');
-
-                    // 컷 인디케이터 (페이지 번호)
-                    const indicator = document.createElement('div');
-                    indicator.className = 'swipe-indicator';
-
-                    // 요소 배치
-                    targetBox.classList.add('swipe-box');
-                    targetBox.parentNode.insertBefore(outer, targetBox);
-                    outer.appendChild(pBtn);
-                    outer.appendChild(targetBox);
-                    outer.appendChild(nBtn);
-                    outer.appendChild(indicator);
-
-                    // 슬라이드 요소 계산 (hidden 요소 제외)
-                    const slides = Array.from(targetBox.children).filter(el => !el.classList.contains('hidden-element'));
-                    const totalCount = slides.length;
-
-                    function updateIndicator() {
-                        if (totalCount === 0) return;
-                        const scrollLeft = targetBox.scrollLeft;
-                        const slideWidth = targetBox.clientWidth;
-                        const currentIndex = Math.round(scrollLeft / slideWidth) + 1;
-                        indicator.innerHTML = `<span class="current">${Math.min(currentIndex, totalCount)}</span> / ${totalCount}`;
-                    }
-
-                    targetBox.addEventListener('scroll', updateIndicator);
-                    updateIndicator();
-
-                    // 좌우 버튼 클릭 및 키보드 이벤트
-                    pBtn.addEventListener('click', function() { 
-                        targetBox.scrollBy({ left: -targetBox.clientWidth, behavior: 'smooth' }); 
-                    });
-                    nBtn.addEventListener('click', function() { 
-                        targetBox.scrollBy({ left: targetBox.clientWidth, behavior: 'smooth' }); 
-                    });
-                    
-                    document.addEventListener('keydown', function(e) {
-                        if (e.key === 'ArrowLeft') targetBox.scrollBy({ left: -targetBox.clientWidth, behavior: 'smooth' });
-                        if (e.key === 'ArrowRight') targetBox.scrollBy({ left: targetBox.clientWidth, behavior: 'smooth' });
-                    });
-                }
-            }
-        });
-    </script>
-</body>
-</html>
+        }
+    });
+</script>
