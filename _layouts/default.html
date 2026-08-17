@@ -87,7 +87,7 @@
         .hidden-element { display: none !important; }
 
         /* =========================================================
-           📱 웹툰/카드뉴스용 가로 스와이프 뷰어 (추가된 부분)
+           📱 웹툰/카드뉴스용 가로 스와이프 뷰어 (수정 완료)
            ========================================================= */
         .swipe-viewer {
             display: flex;
@@ -100,21 +100,25 @@
             -ms-overflow-style: none;
         }
         .swipe-viewer::-webkit-scrollbar { display: none; }
-        .swipe-viewer p {
+        
+        /* 🎯 p 태그뿐만 아니라 배너(div), 네비게이션(div) 등 모든 직계 자식을 슬라이드로 만듭니다 */
+        .swipe-viewer > * {
             flex: 0 0 100%;
             scroll-snap-align: center;
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
+            box-sizing: border-box; /* 패딩이나 테두리가 있어도 너비 100%를 초과하지 않게 보호 */
         }
+        
         .swipe-viewer img {
             max-width: 100%;
             max-height: 80vh;
             object-fit: contain;
             border-radius: 12px;
             box-shadow: 0 4px 24px rgba(0,0,0,0.15);
-            margin: 0; /* 기존 마진 덮어쓰기 */
+            margin: 0; 
         }
     </style>
 </head>
@@ -150,7 +154,7 @@
     {% endif %}
 
     <div class="article-body" id="articleBody">
-        <!-- 🎯 스위치가 켜지면 스와이프 모드, 아니면 일반 모드로 출력 (추가된 부분) -->
+        <!-- 🎯 스위치가 켜지면 스와이프 모드, 아니면 일반 모드로 출력 -->
         {% if page.is_swipe %}
             <div class="swipe-viewer">
                 {{ content }}
