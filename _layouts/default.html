@@ -43,19 +43,25 @@
         .article-body img { max-width: 100%; height: auto; margin: 60px 0; display: block; }
         .article-body hr { border: 0; border-top: 1px solid #eaeaea; margin: 80px 0; }
 
-        /* 📱 웹툰 전용 스와이프 스타일 */
+        /* 📱 동적 동의 스와이프 전용 CSS */
         .swipe-outer-wrap { position: relative; width: 100%; max-width: 700px; margin: 0 auto; }
-        .swipe-box { display: flex; overflow-x: auto; scroll-behavior: smooth; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; gap: 16px; scrollbar-width: none; -ms-overflow-style: none; }
+        .swipe-box { display: flex !important; overflow-x: auto !important; scroll-behavior: smooth; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; gap: 16px; scrollbar-width: none; -ms-overflow-style: none; }
         .swipe-box::-webkit-scrollbar { display: none; }
-        .swipe-box p, .swipe-box img { flex: 0 0 100%; scroll-snap-align: center; margin: 0 !important; display: flex; justify-content: center; align-items: center; max-width: 100%; max-height: 80vh; object-fit: contain; border-radius: 12px; }
+        .swipe-box p, .swipe-box img { flex: 0 0 100% !important; scroll-snap-align: center; margin: 0 !important; display: flex !important; justify-content: center; align-items: center; max-width: 100%; max-height: 80vh; object-fit: contain; border-radius: 12px; }
         
-        .swipe-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; background: rgba(0,0,0,0.6); color: #fff; border: 1px solid rgba(255,255,255,0.3); font-size: 20px; cursor: pointer; z-index: 99; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); }
-        .swipe-btn.prev { left: 10px; }
-        .swipe-btn.next { right: 10px; }
+        .swipe-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; background: rgba(0,0,0,0.7); color: #fff; border: 1px solid rgba(255,255,255,0.3); font-size: 22px; cursor: pointer; z-index: 99; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); user-select: none; }
+        .swipe-btn.prev { left: -24px; }
+        .swipe-btn.next { right: -24px; }
+        @media (max-width: 768px) {
+            .swipe-btn.prev { left: 8px; }
+            .swipe-btn.next { right: 8px; }
+        }
     </style>
 </head>
 <body>
-    
+    <!-- JS 스위치 판단을 위한 메타 태그 -->
+    <meta id="isSwipeData" data-is-swipe="{{ page.is_swipe }}">
+
     {% if page.url == '/' or page.url == '/log.html' or page.is_index %}
         <div class="cover-wrap index-mode" id="coverWrap">
             <div class="cover-header">
@@ -86,17 +92,7 @@
     {% endif %}
 
     <div class="article-body" id="articleBody">
-        {% if page.is_swipe %}
-            <div class="swipe-outer-wrap">
-                <button class="swipe-btn prev" id="swipePrev">❮</button>
-                <div class="swipe-box" id="swipeBox">
-                    {{ content }}
-                </div>
-                <button class="swipe-btn next" id="swipeNext">❯</button>
-            </div>
-        {% else %}
-            {{ content }}
-        {% endif %}
+        {{ content }}
     </div>
 
     <script>
@@ -120,17 +116,41 @@
                 });
             }
 
-            // 스와이프 버튼 조작 스크립트
-            const box = document.getElementById('swipeBox');
-            const pBtn = document.getElementById('swipePrev');
-            const nBtn = document.getElementById('swipeNext');
-            if (box && pBtn && nBtn) {
-                pBtn.addEventListener('click', function() { box.scrollBy({ left: -box.clientWidth, behavior: 'smooth' }); });
-                nBtn.addEventListener('click', function() { box.scrollBy({ left: box.clientWidth, behavior: 'smooth' }); });
-                document.addEventListener('keydown', function(e) {
-                    if (e.key === 'ArrowLeft') box.scrollBy({ left: -box.clientWidth, behavior: 'smooth' });
-                    if (e.key === 'ArrowRight') box.scrollBy({ left: box.clientWidth, behavior: 'smooth' });
-                });
+            // 🎯 파이썬 변환과 상관없이 JS로 동적으로 스와이프 UI 구성하는 핵심 로직
+            const isSwipeMeta = document.getElementById('isSwipeData');
+            const isSwipeVal = isSwipeMeta ? isSwipeMeta.getAttribute('data-is-swipe') : '';
+            
+            // is_swipe가 true이거나 본문에 스와이프 마커가 있는 경우 실행
+            if (isSwipeVal === 'true' || isSwipeVal === 'True' || document.querySelector('.swipe-viewer')) {
+                let targetBox = document.querySelector('.swipe-viewer') || articleBody;
+                
+                if (targetBox && !targetBox.classList.contains('swipe-box')) {
+                    const outer = document.createElement('div');
+                    outer.className = 'swipe-outer-wrap';
+
+                    const pBtn = document.createElement('button');
+                    pBtn.className = 'swipe-btn prev';
+                    pBtn.innerHTML = '❮';
+
+                    const nBtn = document.createElement('button');
+                    nBtn.className = 'swipe-btn next';
+                    nBtn.innerHTML = '❯';
+
+                    // articleBody 내부 요소를 스와이프 박스로 감싸기
+                    targetBox.classList.add('swipe-box');
+                    targetBox.parentNode.insertBefore(outer, targetBox);
+                    outer.appendChild(pBtn);
+                    outer.appendChild(targetBox);
+                    outer.appendChild(nBtn);
+
+                    pBtn.addEventListener('click', function() { targetBox.scrollBy({ left: -targetBox.clientWidth, behavior: 'smooth' }); });
+                    nBtn.addEventListener('click', function() { targetBox.scrollBy({ left: targetBox.clientWidth, behavior: 'smooth' }); });
+                    
+                    document.addEventListener('keydown', function(e) {
+                        if (e.key === 'ArrowLeft') targetBox.scrollBy({ left: -targetBox.clientWidth, behavior: 'smooth' });
+                        if (e.key === 'ArrowRight') targetBox.scrollBy({ left: targetBox.clientWidth, behavior: 'smooth' });
+                    });
+                }
             }
         });
     </script>
