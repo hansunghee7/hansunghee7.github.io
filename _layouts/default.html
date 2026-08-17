@@ -88,19 +88,21 @@
         .hidden-element { display: none !important; }
 
         /* =======================================================
-           📱 [웹툰 전용 플렉스 100vh 레이아웃 (스크롤 원천차단)] 
+           📱 [웹툰 전용 플렉스 100vh 완벽 고정 레이아웃] 
            ======================================================= */
         body.is-swipe-mode { 
             background-color: #0f1015; 
             color: #eee; 
-            overflow-x: hidden; 
+            overflow: hidden !important; /* 스크롤 완벽 차단 */
             display: flex; 
             flex-direction: column; 
-            min-height: 100vh; /* 화면 꽉 차게 설정 */
+            height: 100vh; /* 브라우저 화면 딱 100% 꽉 채우기 */
+            width: 100vw;
         }
         
-        /* [상단 바] 슬림해진 웹툰 전용 상단 헤더 */
+        /* 1. 상단 헤더 (높이 고정) */
         body.is-swipe-mode .cover-wrap.post-mode { 
+            flex: 0 0 auto !important; /* 축소/확장 방지 */
             height: auto !important; 
             min-height: 0 !important; 
             padding: 14px 24px !important; 
@@ -110,7 +112,6 @@
             align-items: center !important; 
             justify-content: space-between !important; 
             border-bottom: 1px solid rgba(255,255,255,0.08);
-            flex-shrink: 0;
         }
         body.is-swipe-mode .cover-header {
             justify-content: flex-start !important;
@@ -135,28 +136,45 @@
             display: none !important; 
         }
 
-        /* [중앙 영역] 웹툰 뷰어 컨테이너 */
+        /* 2. 본문 컨테이너 (남은 중간 공간을 쫙 늘려서 모두 차지) */
         body.is-swipe-mode .post-mode + .article-body { 
-            max-width: 100% !important; /* 가로 꽉 차게 */
+            flex: 1 1 auto !important; /* 핵심: 남는 공간 모두 차지 */
+            display: flex !important;
+            flex-direction: column !important;
+            max-width: 100% !important;
             padding: 0 !important; 
-            margin: 0 auto;
-            flex-grow: 1; /* ★핵심: 남은 상하 공간을 전부 밀어서 차지함 */
-            display: flex;
-            flex-direction: column; 
+            margin: 0 !important;
+            overflow: hidden !important; 
         }
-        body.is-swipe-mode .article-body hr { display: none !important; }
 
+        /* 🔥 초강력 방어막: 웹툰 뷰어와 하단 바를 제외한 모든 파이썬 찌꺼기(배너 등) 강제 숨김 */
+        body.is-swipe-mode .article-body > * {
+            display: none !important;
+        }
+        body.is-swipe-mode .article-body > .swipe-outer-wrap {
+            display: flex !important; 
+        }
+        body.is-swipe-mode .article-body > .category-nav-wrap {
+            display: flex !important; 
+        }
+
+        /* 3. 웹툰 뷰어 영역 (수직/수평 정중앙 정렬) */
         .swipe-outer-wrap { 
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
             position: relative; 
             width: 100%; 
             max-width: 650px; 
-            margin: auto; /* ★핵심: Flexbox 안에서 웹툰 박스를 상하좌우 정중앙에 고정 */
-            padding: 20px 15px; 
+            margin: 0 auto; 
             user-select: none; 
             box-sizing: border-box;
+            padding: 20px 0 10px;
+            min-height: 0; /* Flexbox 자식의 넘침 방지 */
         }
         
         .swipe-box { 
+            flex: 1 1 auto;
             display: flex !important; 
             overflow-x: auto !important; 
             scroll-behavior: smooth; 
@@ -165,9 +183,10 @@
             gap: 0px; 
             scrollbar-width: none; 
             -ms-overflow-style: none; 
-            border-radius: 12px; 
-            background: transparent !important; /* 배경 이질감 제거 */
+            width: 100%;
+            background: transparent !important; 
             box-shadow: none !important; 
+            min-height: 0;
         }
         .swipe-box::-webkit-scrollbar { display: none; }
         
@@ -179,10 +198,9 @@
             justify-content: center; 
             align-items: center; 
             width: 100%; 
-            height: calc(100vh - 170px) !important; /* 상/하단 바 높이만큼 빼서 무조건 핏 */
-            max-height: 720px; 
+            height: 100% !important; 
             box-sizing: border-box;
-            padding: 10px;
+            padding: 0 20px;
         }
         .swipe-slide img { 
             max-width: 100%; 
@@ -194,7 +212,7 @@
         }
 
         /* 좌우 화살표 버튼 */
-        .swipe-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; background: rgba(0, 0, 0, 0.6); color: #fff; border: 1px solid rgba(255, 255, 255, 0.2); font-size: 18px; cursor: pointer; z-index: 99; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(6px); transition: background 0.2s, transform 0.2s; }
+        .swipe-btn { position: absolute; top: calc(50% - 15px); transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; background: rgba(0, 0, 0, 0.6); color: #fff; border: 1px solid rgba(255, 255, 255, 0.2); font-size: 18px; cursor: pointer; z-index: 99; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(6px); transition: background 0.2s, transform 0.2s; }
         .swipe-btn:hover { background: rgba(0, 0, 0, 0.9); transform: translateY(-50%) scale(1.08); }
         .swipe-btn.prev { left: -22px; }
         .swipe-btn.next { right: -22px; }
@@ -205,21 +223,29 @@
         }
 
         /* 컷 위치 표시 인디케이터 */
-        .swipe-indicator { text-align: center; margin-top: 15px; font-size: 14px; font-weight: 400; color: #888; letter-spacing: 1px; }
+        .swipe-indicator { 
+            flex: 0 0 auto;
+            text-align: center; 
+            margin-top: 15px; 
+            font-size: 14px; 
+            font-weight: 400; 
+            color: #888; 
+            letter-spacing: 1px; 
+        }
         .swipe-indicator span.current { color: #00c73c; font-weight: 600; }
         
-        /* [하단 바] 상단 헤더와 똑같은 형태의 100% 바텀 푸터로 변신! */
+        /* 4. 하단 이전글/다음글 네비게이션 바 (바닥 완벽 고정) */
         body.is-swipe-mode .category-nav-wrap {
-            margin-top: auto !important; /* ★핵심: 여백 없이 화면 맨 밑바닥으로 강력하게 밀어냄 */
-            padding: 14px 24px !important; /* 상단 헤더와 패딩 맞춤 */
-            background: #181920 !important; /* 상단 헤더와 배경색 맞춤 */
+            flex: 0 0 auto !important; /* 높이 축소/확장 방지 */
+            margin-top: 0 !important; 
+            padding: 14px 24px !important; 
+            background: #181920 !important; 
             border-top: 1px solid rgba(255,255,255,0.08) !important;
             width: 100% !important;
-            max-width: 100% !important; /* 가로 100% 꽉 채우기 */
+            max-width: 100% !important; 
             left: 0 !important;
             transform: none !important;
             box-sizing: border-box;
-            flex-shrink: 0;
         }
         body.is-swipe-mode .nav-title { color: #ccc !important; }
         body.is-swipe-mode .cat-nav-item:hover .nav-title { color: #fff !important; }
@@ -301,13 +327,15 @@
             if (isSwipeMode && articleBody) {
                 document.body.classList.add('is-swipe-mode');
 
-                /* 🎯 Simplifier Choice 배너 가리기 (주석 처리됨)
+                // 🎯 [완벽 제거] Simplifier Choice 배너 가리기 (이젠 활성화됨)
                 const promoSpan = Array.from(document.querySelectorAll('span')).find(s => s.textContent.trim() === 'Simplifier Choice');
                 if (promoSpan) {
                     const promoWrap = promoSpan.closest('div').parentElement;
-                    if(promoWrap) promoWrap.style.display = 'none';
+                    if(promoWrap) {
+                        promoWrap.style.display = 'none';
+                        promoWrap.classList.add('hidden-element'); // 확실하게 투명화
+                    }
                 }
-                */
 
                 const rawImgs = Array.from(articleBody.querySelectorAll('img')).filter(img => {
                     return !img.classList.contains('hidden-element') && 
