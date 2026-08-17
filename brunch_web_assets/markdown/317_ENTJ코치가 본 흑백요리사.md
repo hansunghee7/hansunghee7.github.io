@@ -93,7 +93,7 @@ ps. 그런데 이거 직업병 맞죠?;;;
 .cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
 </style>
 <div class="category-nav-wrap">
-  <a href="/brunch_web_assets/markdown/316_%5B%EB%AA%A8%EC%A7%91%EA%B3%B5%EA%B3%A0%5D%20%EC%8A%A4%EC%99%88%EB%A1%9C%EC%9A%B0%EC%A6%88%EC%99%80%20%ED%95%A8%EA%BB%98%20%ED%95%A0%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%84%20%EC%B0%BE%EC%8A%B5%EB%8B%88%EB%8B%A4.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'심플리파이어 라이프'의 이전글</span><span class="nav-title">[모집공고] 스왈로우즈와 함께 할 스타트업을 찾습니다.</span></a>
+  <a href="/brunch_web_assets/markdown/313_%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90%20TV%ED%94%8C%EB%9F%AC%EC%8A%A4%20%EC%9D%B4%EC%95%BC%EA%B8%B0.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'심플리파이어 라이프'의 이전글</span><span class="nav-title">삼성전자 TV플러스 이야기</span></a>
   <a href="/brunch_web_assets/markdown/320_%EB%82%B4%EA%B0%80%20%EC%95%94%EA%B8%B0%EB%A5%BC%20%EC%9E%98%ED%95%98%EA%B2%8C%20%EB%90%9C%20%EC%82%AC%EC%97%B0.html" class="cat-nav-item cat-nav-right"><span class="nav-title">내가 암기를 잘하게 된 사연</span><span class="cat-nav-label">'심플리파이어 라이프'의 다음글</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->
