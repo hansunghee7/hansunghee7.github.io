@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simplifier — Concept: Black YC (Parallax Overlap Engine)</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<!-- 💎 Boska 폰트 -->
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=boska@200,300,400,500,600,700&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200;0,8..60,300;0,8..60,400;1,8..60,200;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* =========================================================
+     🎛️ [디자인 컨트롤러]
+     ========================================================= */
+  :root {
+    --nav-height: 68px;
+    --logo-max-height: clamp(90px, 20vw, 180px);
+    --logo-max-width: clamp(140px, 45vw, 320px);
+    --company-name-size: clamp(26px, 6.5vw, 52px);
+    --role-text-size: clamp(13px, 3.2vw, 20px);
+    --final-grid-logo-height: clamp(56px, 14vw, 100px);
+    --stats-number-size: clamp(36px, 9vw, 84px);
+    --stats-label-size: clamp(10px, 2.6vw, 16px);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  
+  body { 
+    background: #080808; 
+    color: #f5f3ee; 
+    font-family: 'Boska', 'Source Serif 4', 'Noto Serif KR', serif; 
+    margin:0; 
+    overflow-x: hidden;
+  }
+  .italic { font-style: italic; }
+  ::selection { background: #f5f3ee; color: #080808; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+  @media (max-width:700px){ .wrap{ padding: 0 32px; } }
+
+  /* NAVIGATION & DROPDOWN */
+  header.nav { position: sticky; top:0; z-index: 100; background: rgba(8,8,8,0.85); backdrop-filter: blur(10px); }
+  .nav-inner { position:relative; display:flex; align-items:center; padding: 16px 32px; max-width:1200px; margin:0 auto; gap: 24px; }
+  .nav-logo { height: 26px; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); }
+  .nav-logo img { height: 100%; width:auto; display:block; }
+
+  .nav-links, .nav-apply { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; }
+  .nav-links { display:flex; align-items:center; gap: 32px; font-size: 14px; color:#c9c8c2; }
+  .nav-right { display:flex; align-items:center; gap: 32px; font-size:14px; margin-left:auto; }
+
+  /* 🎯 데스크톱 드롭다운 메뉴 — 상위 메뉴는 트리거 전용(button)이라 존재하지 않는 앵커로 이동하지 않음 */
+  .nav-item { position: relative; }
+  .nav-item > button {
+    display:flex; align-items:center; gap:9px; padding: 10px 0; margin:0; background:none; border:none; cursor:pointer;
+    font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:14px; color:#c9c8c2; transition: color 0.2s;
+  }
+  .nav-item:hover > button, .nav-item:focus-within > button { color:#f5f3ee; }
+  .nav-item > button::after {
+    content:''; display:inline-block; width:4px; height:4px;
+    border-right:1.2px solid currentColor; border-bottom:1.2px solid currentColor;
+    transform: rotate(45deg); margin-top:-2px;
+  }
+
+  .dropdown-menu {
+    position: absolute; top: 100%; left: 0; 
+    background: #f5f3ee;
+    border: 1px solid rgba(8,8,8,0.06); border-radius: 12px;
+    padding: 12px 0; display: flex; flex-direction: column;
+    opacity: 0; visibility: hidden;
+    min-width: 220px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+  /* :hover(마우스) + :focus-within(키보드 Tab 이동) 둘 다 대응, 애니메이션 없이 즉시 표시/숨김 */
+  .nav-item:hover .dropdown-menu,
+  .nav-item:focus-within .dropdown-menu { opacity: 1; visibility: visible; }
+
+  .dropdown-menu a {
+    padding: 10px 20px; font-size: 13px; color: #2a2822;
+    transition: color 0.2s, background 0.2s; text-align: left; word-break: keep-all;
+  }
+  .dropdown-menu a:hover, .dropdown-menu a:focus { color: #080808; background: rgba(8,8,8,0.06); }
+
+  .nav-apply { background:#f5f3ee; color:#080808; padding: 9px 22px; border-radius:999px; font-weight: 500; font-size:14px; transition: background .2s, color .2s; }
+  .nav-apply:hover { background:#080808; color:#f5f3ee; box-shadow: inset 0 0 0 1px #f5f3ee; }
+
+  /* 🍔 모바일 햄버거 메뉴 */
+  .nav-burger { display:none; flex-direction:column; justify-content:center; align-items:center; gap:5px; width:32px; height:32px; background:none; border:none; padding:0; cursor:pointer; }
+  .nav-burger span { display:block; width:20px; height:1.5px; background:#f5f3ee; transition: transform .25s ease, opacity .25s ease; }
+  .nav-burger.open span:nth-child(1){ transform: translateY(6.5px) rotate(45deg); }
+  .nav-burger.open span:nth-child(2){ opacity:0; }
+  .nav-burger.open span:nth-child(3){ transform: translateY(-6.5px) rotate(-45deg); }
+
+  .mobile-menu { 
+    display:none; 
+    flex-direction:column; 
+    position: fixed; 
+    top: var(--nav-height); 
+    left: 0; right: 0; bottom: 0; 
+    z-index: 200; 
+    padding: 0 32px 40px; 
+    background: #080808; 
+    border-top: 1px solid rgba(245,243,238,0.08); 
+    overflow-y: auto;
+  }
+  .mobile-menu.open { display:flex; }
+
+  /* 🎯 모바일 아코디언 메뉴 (JS 없이 <details>/<summary>로 처리) */
+  .mobile-details { border-bottom: 1px solid rgba(245,243,238,0.07); }
+  .mobile-summary {
+    font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 17px; color: #c9c8c2;
+    padding: 20px 0; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;
+  }
+  .mobile-summary::-webkit-details-marker { display: none; }
+  .mobile-summary::after { content: '+'; font-size: 20px; font-weight: 300; transition: transform 0.3s; color: #8f8b82; }
+  .mobile-details[open] .mobile-summary::after { transform: rotate(45deg); color: #f5f3ee; }
+  .mobile-details[open] .mobile-summary { color: #f5f3ee; }
+
+  .mobile-submenu { padding: 0 0 20px 16px; display: flex; flex-direction: column; gap: 16px; }
+  .mobile-submenu a { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 15px; color: #8f8b82; text-decoration: none; word-break: keep-all; }
+  .mobile-submenu a:hover { color: #f5f3ee; }
+
+  .mobile-menu-cta { display:block; text-align:center; margin-top:30px; margin-bottom: 8px; padding:14px 0 !important; border-radius:999px; background:#f5f3ee; color:#080808 !important; font-weight:500; font-family: 'Pretendard Variable', 'Pretendard', sans-serif; text-decoration: none; }
+
+  @media (max-width:860px){
+    .nav-links{ display:none; }
+    .nav-burger{ display:flex; }
+    .nav-right > .nav-apply { display:none; } /* 상단바 Contact 숨김 → 햄버거 메뉴 안으로 이동 (로고와 겹침 방지) */
+  }
+
+  /* 🎯 [히어로 오버랩] Sticky Stacking 적용 */
+  .hero-wrapper { 
+    position: sticky; /* 화면에 고정되어 뒤에 머묾 */
+    top: var(--nav-height); 
+    z-index: 5; /* 리빌 영역보다 낮게 설정하여 덮이게 함 */
+    height: calc(100vh - var(--nav-height));
+  }
+  .hero { height: 100%; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; }
+  #hero-fade { will-change: opacity; width: 100%; }
+  
+  .hero h1 { font-family: 'Boska', 'Source Serif 4', serif; font-weight: 200; font-size: clamp(42px, 7.3vw, 79px); line-height: 1.2; max-width: 1060px; margin: 0 auto 6px; }
+  .hero h1 .accent { font-style: italic; }
+  /* 📱 모바일: "into"를 독립된 줄로 분리 (Simplifier turns / complexity / into / explosive growth.) */
+  @media (max-width:760px){
+    .hero h1 .into-word { display:block; }
+  }
+  .hero-footnote { max-width: 480px; margin: 36px auto 0; text-align:left; }
+  .hero-footnote .q { font-weight:300; font-size: 15px; line-height:1.9; color:#8f8b82; letter-spacing:-0.01em; }
+  .hero-footnote .who { display:block; margin-top: 10px; text-align:right; font-weight:300; font-style:italic; font-size:14px; color:#8f8b82; }
+  .scroll-cue { position:absolute; left:50%; bottom:40px; transform:translateX(-50%); display: flex; justify-content: center; width: 40px; }
+  .scroll-cue .chev { display:block; width:13px; height:13px; border-right:1.5px solid #8f8b82; border-bottom:1.5px solid #8f8b82; transform: rotate(45deg); }
+
+  /* =========================================================
+     ✨ CONCEPT2: 로고 스크롤재킹 영역 없이 — 정적 Proven 섹션
+     (히어로 → 전체 로고그리드+숫자 → 스토리, 픽셀 스크롤 계산 없음)
+     ========================================================= */
+  .proven-section { 
+    position: relative; 
+    z-index: 10; 
+    padding: 140px 0 120px; 
+    display: flex; flex-direction: column; align-items: center;
+    opacity: 0; transform: translateY(24px); 
+    transition: opacity .8s ease, transform .8s ease;
+  }
+  .proven-section.show { opacity: 1; transform: translateY(0); }
+
+  .reveal-grid { display:grid; grid-template-columns:repeat(5, 1fr); gap:36px 24px; width:min(1200px, 92vw); margin-bottom: 60px; align-items: stretch; justify-items: center; }
+  .reveal-grid .gitem { position:relative; display:flex; align-items:center; justify-content:center; width:100%; height: var(--final-grid-logo-height); text-decoration:none; cursor:pointer; }
+
+  .reveal-grid img { position:relative; max-height: var(--final-grid-logo-height); max-width:200px; object-fit:contain; filter: grayscale(100%) brightness(1.3); opacity: 0.75; transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease; }
+  .reveal-grid img[alt*="Asan"] { transform: scale(1.35); }
+  .reveal-grid img[alt*="Modoo"] { transform: scale(1.4); }
+  .reveal-grid img[alt*="Usimsa"] { transform: scale(1.35); }
+  .reveal-grid img[alt*="D.Camp"] { transform: scale(1.15); }
+  .reveal-grid .gitem:hover img, .reveal-grid .gitem.active img { opacity:1; filter: grayscale(0%) brightness(1); transform: scale(1.12) !important; }
+  /* 기본 배율이 있는 로고는 호버 시 (기본 배율 × 1.12)로 곱연산 — 그냥 1.12로 덮어쓰면 오히려 작아지는 버그 수정 */
+  .reveal-grid .gitem:hover img[alt*="Asan"], .reveal-grid .gitem.active img[alt*="Asan"] { transform: scale(1.51) !important; }
+  .reveal-grid .gitem:hover img[alt*="Modoo"], .reveal-grid .gitem.active img[alt*="Modoo"] { transform: scale(1.57) !important; }
+  .reveal-grid .gitem:hover img[alt*="Usimsa"], .reveal-grid .gitem.active img[alt*="Usimsa"] { transform: scale(1.51) !important; }
+  .reveal-grid .gitem:hover img[alt*="D.Camp"], .reveal-grid .gitem.active img[alt*="D.Camp"] { transform: scale(1.29) !important; }
+
+  .reveal-stats .rs-row { display:flex; gap:100px; justify-content:center; text-align:center; flex-wrap: wrap; row-gap: 28px; }
+  .reveal-stats .rs-num { font-family: 'Source Serif 4', serif; font-weight: 200; font-size: var(--stats-number-size); color: #f5f3ee; margin-bottom: 8px; line-height: 1; white-space: nowrap; }
+  .reveal-stats .rs-label { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-weight: 400; font-size: var(--stats-label-size); color:#8f8b82; letter-spacing: 0.05em; text-transform: uppercase; }
+
+  /* 📱 모바일: 5열 → 2열 로고그리드, 스탯 gap 축소 */
+  @media (max-width:760px){
+    .reveal-grid { grid-template-columns: repeat(2, 1fr); gap:32px 20px; margin-bottom: 48px; }
+    .reveal-grid .gitem { height: 92px; }
+    .reveal-grid img { max-height: 78px; max-width: 180px; }
+    .reveal-stats .rs-row { gap: 40px; }
+  }
+  @media (max-width:480px){
+    .reveal-grid { grid-template-columns: repeat(2, 1fr); gap:26px 14px; }
+    .reveal-stats .rs-row { gap: 28px 36px; }
+  }
+
+
+  /* =========================================================
+     📖 4. STORY SECTION — 일반 섹션 (오버랩/크로스페이드 없음)
+     ========================================================= */
+  .story-section {
+    position: relative;
+    z-index: 40; 
+    background: #080808;
+    color: #f5f3ee;
+    padding: 60px 0 180px 0;
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .9s ease, transform .9s ease;
+  }
+  .story-section.show { opacity: 1; transform: translateY(0); }
+
+  .story-essay, .story-gallery, .story-testimonials {
+    pointer-events: auto; /* 내부 콘텐츠 활성화 */
+  }
+
+  .story-essay { max-width: 680px; margin: 0 auto 120px auto; }
+  .story-essay p { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-weight: 300; font-size: 20px; line-height: 1.85; color: #c9c8c2; margin-bottom: 32px; word-break: keep-all; }
+  .story-essay p.intro-p::first-letter { font-family: 'Boska', serif; font-weight: 300; font-size: 5.2rem; float: left; line-height: 0.78; padding-right: 18px; padding-top: 6px; color: #f5f3ee; }
+  @media (max-width:700px){
+    .story-essay p.intro-p::first-letter { font-size: 3.6rem; padding-right: 12px; padding-top: 4px; }
+  }
+
+  .story-gallery { width: min(1200px, 94vw); margin: 0 auto 140px auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+  .gallery-item { width: 100%; height: 240px; border-radius: 12px; overflow: hidden; background: #181818; }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%) brightness(0.9); transition: transform 0.5s ease, filter 0.5s ease; }
+  .gallery-item img:hover { transform: scale(1.06); filter: grayscale(0%) brightness(1.05); }
+
+  /* 📱 모바일: 5장 → 3장으로 줄임 (YC 실제 방식 — 스크롤 아님, 개수 자체를 축소) */
+  @media (max-width:760px){
+    .story-gallery { 
+      grid-template-columns: repeat(3, 1fr); 
+      gap: 8px; 
+      margin-bottom: 90px; 
+    }
+    .gallery-item { height: 130px; }
+    .gallery-item:nth-child(4), .gallery-item:nth-child(5) { display: none; }
+  }
+  @media (max-width:480px){
+    .gallery-item { height: 110px; }
+  }
+
+  .story-testimonials { max-width: 720px; margin: 0 auto; text-align: left; }
+  .testimonial-header { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; color: #8f8b82; text-transform: uppercase; margin-bottom: 48px; }
+  .quote-block { margin-bottom: 44px; border-bottom: 1px dashed rgba(245, 243, 238, 0.12); padding-bottom: 32px; }
+  .quote-stat { display:inline-flex; align-items:baseline; gap:8px; font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:13px; font-weight:500; letter-spacing:0.03em; color:#f5f3ee; background:rgba(245,243,238,0.06); border:1px solid rgba(245,243,238,0.14); border-radius:999px; padding:6px 14px; margin-bottom:18px; }
+  .quote-stat .arrow { color:#8f8b82; font-weight:400; }
+  .quote-stat .period { color:#8f8b82; font-weight:400; font-size:12px; margin-left:2px; }
+  .quote-text { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-size: 21px; font-weight: 300; line-height: 1.75; color: #f5f3ee; word-break: keep-all; margin:0 0 16px; }
+  .quote-attribution { font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:14px; color:#8f8b82; display:flex; align-items:center; gap:8px; }
+  .quote-avatar { display: inline-block; width: 28px; height: 28px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(245, 243, 238, 0.3); }
+</style>
+<noscript><style>
+  /* JS가 실행되지 않을 경우(차단/오류) 핵심 콘텐츠가 영구히 숨겨지는 것을 방지 */
+  .proven-section { opacity:1 !important; transform:none !important; }
+  .story-section { opacity:1 !important; transform:none !important; }
+  #hero-fade { opacity:1 !important; }
+</style></noscript>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-links">
+      <div class="nav-item">
+        <button type="button">Content</button>
+        <div class="dropdown-menu">
+          <a href="/log.html?cat=AI%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">AI의 언어들</a>
+          <a href="/log.html?cat=Be%20the%20PO">Be the PO</a>
+          <a href="/log.html?cat=PO%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">PO의 프레임웍</a>
+          <a href="/log.html?cat=UX%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">UX의 언어들</a>
+          <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9D%BC%EC%83%81">기획일상</a>
+          <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">기획자의 프레임웍</a>
+          <a href="/log.html?cat=%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC">잉크드인대 기획학과</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button type="button">Startup</button>
+        <div class="dropdown-menu">
+          <a href="/log.html?cat=%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%AF%B8%EA%B5%AD%EC%A7%84%EC%B6%9C%EC%9D%84%20%EB%AC%BB%EB%8B%A4">대한민국 스타트업 미국진출을 묻다</a>
+          <a href="/log.html?cat=%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8">스타트업 인사이트</a>
+          <a href="/log.html?cat=%EC%BD%94%EC%B9%98S%ED%86%A0%ED%81%AC">코치S토크</a>
+          <a href="/log.html?cat=%EC%84%B8%EC%85%98">세션</a>
+        </div>
+      </div>
+    </div>
+
+    <a href="#" class="nav-logo"><img src="https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/assets/nav-logo-white.avif" alt="Simplifier"></a>
+
+    <div class="nav-right">
+      <div class="nav-links">
+        <div class="nav-item">
+          <button type="button">Knowledge</button>
+          <div class="dropdown-menu">
+            <a href="#book1">기획자의 질문법</a>
+            <a href="#book2">UX의 언어들</a>
+            <a href="#book3">리더십 실전</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <button type="button">Life</button>
+          <div class="dropdown-menu">
+            <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EB%9D%BC%EC%9D%B4%ED%94%84">심플리파이어 라이프</a>
+            <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%ED%95%9C%20%EC%B0%BD%EC%97%85%ED%95%98%EA%B3%A0%20%ED%8C%8C%EC%9D%B4%EC%96%B4%ED%95%98%EA%B2%8C%20%EC%9D%BC%ED%95%98%EA%B8%B0">심플한 창업하고 파이어하게 일하기</a>
+            <a href="/log.html?cat=%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%EC%A7%81%EC%9E%A5%20%EC%9D%B4%EC%95%BC%EA%B8%B0">이력서에 쓰지 않는 첫직장 이야기</a>
+            <a href="/log.html?cat=%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC">트레바리</a>
+          </div>
+        </div>
+      </div>
+      <a href="#contact" class="nav-apply">Contact</a>
+      <button class="nav-burger" id="nav-burger" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <nav class="mobile-menu" id="mobile-menu">
+    <details class="mobile-details">
+      <summary class="mobile-summary">Content</summary>
+      <div class="mobile-submenu">
+        <a href="/log.html?cat=AI%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">AI의 언어들</a>
+        <a href="/log.html?cat=Be%20the%20PO">Be the PO</a>
+        <a href="/log.html?cat=PO%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">PO의 프레임웍</a>
+        <a href="/log.html?cat=UX%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">UX의 언어들</a>
+        <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9D%BC%EC%83%81">기획일상</a>
+        <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">기획자의 프레임웍</a>
+        <a href="/log.html?cat=%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC">잉크드인대 기획학과</a>
+      </div>
+    </details>
+    <details class="mobile-details">
+      <summary class="mobile-summary">Startup</summary>
+      <div class="mobile-submenu">
+        <a href="/log.html?cat=%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%AF%B8%EA%B5%AD%EC%A7%84%EC%B6%9C%EC%9D%84%20%EB%AC%BB%EB%8B%A4">대한민국 스타트업 미국진출을 묻다</a>
+        <a href="/log.html?cat=%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8">스타트업 인사이트</a>
+        <a href="/log.html?cat=%EC%BD%94%EC%B9%98S%ED%86%A0%ED%81%AC">코치S토크</a>
+        <a href="/log.html?cat=%EC%84%B8%EC%85%98">세션</a>
+      </div>
+    </details>
+    <details class="mobile-details">
+      <summary class="mobile-summary">Knowledge</summary>
+      <div class="mobile-submenu">
+        <a href="#book1">기획자의 질문법</a>
+        <a href="#book2">UX의 언어들</a>
+        <a href="#book3">리더십 실전</a>
+      </div>
+    </details>
+    <details class="mobile-details">
+      <summary class="mobile-summary">Life</summary>
+      <div class="mobile-submenu">
+        <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EB%9D%BC%EC%9D%B4%ED%94%84">심플리파이어 라이프</a>
+        <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%ED%95%9C%20%EC%B0%BD%EC%97%85%ED%95%98%EA%B3%A0%20%ED%8C%8C%EC%9D%B4%EC%96%B4%ED%95%98%EA%B2%8C%20%EC%9D%BC%ED%95%98%EA%B8%B0">심플한 창업하고 파이어하게 일하기</a>
+        <a href="/log.html?cat=%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%EC%A7%81%EC%9E%A5%20%EC%9D%B4%EC%95%BC%EA%B8%B0">이력서에 쓰지 않는 첫직장 이야기</a>
+        <a href="/log.html?cat=%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC">트레바리</a>
+      </div>
+    </details>
+    <a href="#contact" class="mobile-menu-cta">Contact</a>
+  </nav>
+</header>
+<script>
+(function(){
+  var burger = document.getElementById('nav-burger');
+  var menu = document.getElementById('mobile-menu');
+  if(!burger || !menu) return;
+  function closeMenu(){
+    menu.classList.remove('open');
+    burger.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  burger.addEventListener('click', function(){
+    var isOpen = menu.classList.toggle('open');
+    burger.classList.toggle('open', isOpen);
+    burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    document.body.style.overflow = isOpen ? 'hidden' : ''; // 메뉴 열린 동안 배경 스크롤 방지
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', closeMenu);
+  });
+})();
+</script>
+
+<div class="hero-wrapper" id="hero-wrapper">
+  <section class="hero wrap" id="hero-section">
+    <div id="hero-fade">
+      <h1>Simplifier turns complexity<br><span class="into-word">into</span> <span class="accent">explosive growth.</span></h1>
+      <p class="hero-footnote"><span class="q">"폭발적 성장은 갑작스럽게 오는 것이 아닙니다. 단순화해온 모든 것이 마침내 위로 향할 곳밖에 남지 않은 순간에 찾아옵니다."</span><span class="who">— 한성희</span></p>
+      <div class="scroll-cue"><span class="chev"></span></div>
+    </div>
+  </section>
+</div>
+
+<section class="proven-section wrap" id="proven-section">
+  <div class="reveal-grid">
+    <a class="gitem" href="https://www.navercorp.com/" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/assets/logos/naver.png" alt="NAVER"></a>
+    <a class="gitem" href="https://www.kakaopay.com" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/assets/logos/kakaopay.png" alt="Kakao Pay"></a>
+    <a class="gitem" href="https://www.52g.gs/" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/assets/logos/gs.png" alt="GS"></a>
+    <a class="gitem" href="https://www.apgroup.com/int/ko/" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/assets/logos/amore.png" alt="Amore Pacific"></a>
+    <a class="gitem" href="https://company.kyobobook.co.kr/" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/assets/logos/kyobo.png" alt="Kyobo"></a>
+    <a class="gitem" href="https://dcamp.kr/" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/assets/logos/dcamp.png" alt="D.Camp"></a>
+    <a class="gitem" href="https://asan-nanum.org/" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/assets/logos/asan.png" alt="Asan"></a>
+    <a class="gitem" href="https://fastcampus.co.kr" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/assets/logos/fastcampus.png" alt="Fast Campus"></a>
+    <a class="gitem" href="https://www.modoo.or.kr/" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/assets/logos/modoo.png" alt="Modoo"></a>
+    <a class="gitem" href="https://www.usimsa.com/" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/assets/logos/usimsa.png" alt="Usimsa"></a>
+  </div>
+  <div class="reveal-stats">
+    <div class="rs-row">
+      <div><div class="rs-num" id="num-startups">0+</div><div class="rs-label">STARTUPS TRAINED</div></div>
+      <div><div class="rs-num" id="num-orgs">0+</div><div class="rs-label">PARTNER ORGANIZATIONS</div></div>
+      <div><div class="rs-num" id="num-rating">0.00 / 5.0</div><div class="rs-label">MAX RATING</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="story-section wrap" id="story-section">
+  <div class="story-essay">
+    <p class="intro-p">
+      Simplifier는 2022년에 시작했지만, 그 정신은 2001년으로 거슬러 올라갑니다. 첫 회사에서 수익화 모델을 끝내 찾지 못해 동료들을 떠나보내야 했던 날, 좋은 서비스를 만드는 사람보다, 사업을 성공시키는 사람이 되기로 했습니다.
+    </p>
+    <p>
+      이후 네이버, 삼성전자, 딜리버리히어로 코리아, 빗썸을 거치며, 실무자에서 팀장, PM, CPO, COO — 누군가는 좋은 경력을 가졌다고 말합니다. 저에게는 심플리파이어를 만들어가는 과정이었습니다. 50명에서 1,000명이 되는 조직, 막 시작한 스타트업부터 글로벌 대기업까지. 성장 단계마다 회사가 겪는 문제는 다르고, 그 문제를 명확히 할 때 진짜 해법이 동작한다는 걸 알게 되었습니다.
+    </p>
+    <p>
+      그래서 Simplifier는 조언이 아니라 실무를 함께 뛰는 플레잉코칭을 지향합니다. 때로는 CPO로, 때로는 코치로, 때로는 강연자로 — 현장에서 직접 문제를 단순화합니다. 복잡한 것들을 하나씩 걷어내다 보면, 결국 모든 것이 성장으로 향할 수밖에 없는 순간이 오기 때문입니다.
+    </p>
+  </div>
+  <div class="story-gallery">
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/assets/story/1-lecture.jpg" alt="강연 현장"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/assets/story/2-session.jpg" alt="실무진과 논의하는 모습"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/assets/story/3-whiteboard.jpg" alt="문제를 구조화하는 장면"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/assets/story/4-meetup.jpg" alt="그룹 밋업"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/assets/story/5-casual.jpg" alt="캐주얼한 순간"></div>
+  </div>
+  <div class="story-testimonials">
+    <div class="testimonial-header">IN FOUNDERS' WORDS</div>
+    <div class="quote-block">
+      <div class="quote-stat">매출 60억 <span class="arrow">→</span> 200억<span class="period">· 1년</span></div>
+      <p class="quote-text">복잡하게 엉켜있던 PMF 문제와 사업 전략이, 한성희 코치님과의 단순화 세션을 거치며 단 한 줄의 실행 로드맵으로 정리됐습니다. 그 로드맵 하나로 1년 만에 매출이 세 배 넘게 뛰었습니다.</p>
+      <div class="quote-attribution"><img class="quote-avatar" src="https://i.pravatar.cc/100?img=33" alt="Founder">여행커머스 플랫폼 대표</div>
+    </div>
+    <div class="quote-block">
+      <div class="quote-stat">적자 <span class="arrow">→</span> 흑자 전환<span class="period">· 6개월</span></div>
+      <p class="quote-text">혼자 밤새 고민하던 수십 가지 가설 중, 진짜 매출로 이어지는 단 하나의 본질만 남겨주셨습니다. 6개월 만에 적자를 흑자로 돌려세운 건 그 하나의 본질이었습니다.</p>
+      <div class="quote-attribution"><img class="quote-avatar" src="https://i.pravatar.cc/100?img=60" alt="Founder">온라인 미디어사 대표</div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var heroFade = document.getElementById('hero-fade');
+  var heroWrapper = document.getElementById('hero-wrapper');
+  var provenSection = document.getElementById('proven-section');
+  var storySection = document.getElementById('story-section');
+
+  // 1) 히어로 페이드아웃 (화면 50%를 내릴 때 투명해짐) — 스크롤재킹 없이 단순 opacity만
+  function syncHeroFade() {
+    var scrolled = window.scrollY;
+    var vh = window.innerHeight;
+    var heroFadeDist = vh * 0.5;
+    var heroOpacity = Math.max(0, 1 - (scrolled / heroFadeDist));
+    if (heroFade) heroFade.style.opacity = heroOpacity;
+    if (heroWrapper) heroWrapper.style.pointerEvents = (heroOpacity <= 0) ? 'none' : 'auto';
+  }
+  window.addEventListener('scroll', function(){ requestAnimationFrame(syncHeroFade); }, {passive:true});
+  syncHeroFade();
+
+  // 2) 숫자 카운트업 (한 번만 실행)
+  var counted = false;
+  function animateNumbers() {
+    if (counted) return;
+    counted = true;
+    var targets = [
+      { id: 'num-startups', end: 300, suffix: '+', decimals: 0 },
+      { id: 'num-orgs', end: 20, suffix: '+', decimals: 0 },
+      { id: 'num-rating', end: 4.95, suffix: ' / 5.0', decimals: 2 }
+    ];
+    targets.forEach(function(item) {
+      var el = document.getElementById(item.id);
+      if (!el) return;
+      var startTime = null;
+      var duration = 1800;
+      function step(timestamp) {
+        if (!startTime) startTime = timestamp;
+        var progress = Math.min((timestamp - startTime) / duration, 1);
+        var easeProgress = (progress === 1) ? 1 : 1 - Math.pow(2, -10 * progress);
+        var currentValue = item.end * easeProgress;
+        el.textContent = currentValue.toFixed(item.decimals) + item.suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }
+
+  // 3) Proven 섹션 그리드: 아래에서 올라오며 뷰포트에 들어오는 즉시 페이드인
+  var statsBlock = document.querySelector('.reveal-stats');
+  if (provenSection) {
+    if ('IntersectionObserver' in window) {
+      var provenObserver = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting) {
+            provenSection.classList.add('show');
+            provenObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      provenObserver.observe(provenSection);
+    } else {
+      provenSection.classList.add('show');
+    }
+  }
+
+  // 4) 숫자 카운트업: 화면 정중앙 부근을 지날 때 트리거 (rootMargin으로 중앙선 감지)
+  if (statsBlock) {
+    if ('IntersectionObserver' in window) {
+      var statsObserver = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting) {
+            animateNumbers();
+            statsObserver.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+      statsObserver.observe(statsBlock);
+    } else {
+      animateNumbers();
+    }
+  }
+
+  // 5) 스토리 섹션: 아래에서 올라오며 뷰포트에 들어오면 페이드인 (Proven과 동일한 방식)
+  if (storySection) {
+    if ('IntersectionObserver' in window) {
+      var storyObserver = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting) {
+            storySection.classList.add('show');
+            storyObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      storyObserver.observe(storySection);
+    } else {
+      storySection.classList.add('show');
+    }
+  }
+})();
+</script>
+
+</body>
+</html>

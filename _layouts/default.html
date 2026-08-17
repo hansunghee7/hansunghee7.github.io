@@ -87,8 +87,14 @@
         .hidden-element { display: none !important; }
 
         /* =========================================================
-           📱 웹툰/카드뉴스용 가로 스와이프 뷰어 (수정 완료)
+           📱 웹툰/카드뉴스용 가로 스와이프 뷰어 & 좌우 버튼
            ========================================================= */
+        .swipe-container {
+            position: relative;
+            width: 100%;
+            margin: 0 auto;
+        }
+
         .swipe-viewer {
             display: flex;
             overflow-x: auto;
@@ -101,7 +107,6 @@
         }
         .swipe-viewer::-webkit-scrollbar { display: none; }
         
-        /* 🎯 p 태그뿐만 아니라 배너(div), 네비게이션(div) 등 모든 직계 자식을 슬라이드로 만듭니다 */
         .swipe-viewer > * {
             flex: 0 0 100%;
             scroll-snap-align: center;
@@ -109,7 +114,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            box-sizing: border-box; /* 패딩이나 테두리가 있어도 너비 100%를 초과하지 않게 보호 */
+            box-sizing: border-box;
         }
         
         .swipe-viewer img {
@@ -119,6 +124,40 @@
             border-radius: 12px;
             box-shadow: 0 4px 24px rgba(0,0,0,0.15);
             margin: 0; 
+        }
+
+        /* 🎯 좌우 화살표 버튼 스타일 */
+        .swipe-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            background: rgba(17, 17, 17, 0.7);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, transform 0.2s, opacity 0.2s;
+            backdrop-filter: blur(4px);
+            user-select: none;
+        }
+        .swipe-btn:hover {
+            background: rgba(17, 17, 17, 0.95);
+            transform: translateY(-50%) scale(1.1);
+        }
+        .swipe-btn.prev { left: -24px; }
+        .swipe-btn.next { right: -24px; }
+
+        /* 모바일에서는 버튼을 조금 더 안쪽으로 배치 */
+        @media (max-width: 768px) {
+            .swipe-btn.prev { left: 8px; }
+            .swipe-btn.next { right: 8px; }
         }
     </style>
 </head>
@@ -154,10 +193,14 @@
     {% endif %}
 
     <div class="article-body" id="articleBody">
-        <!-- 🎯 스위치가 켜지면 스와이프 모드, 아니면 일반 모드로 출력 -->
+        <!-- 🎯 스위치가 켜지면 스와이프 모드로 출력 -->
         {% if page.is_swipe %}
-            <div class="swipe-viewer">
-                {{ content }}
+            <div class="swipe-container">
+                <button class="swipe-btn prev" id="swipePrev" aria-label="이전 컷">❮</button>
+                <div class="swipe-viewer" id="swipeViewer">
+                    {{ content }}
+                </div>
+                <button class="swipe-btn next" id="swipeNext" aria-label="다음 컷">❯</button>
             </div>
         {% else %}
             {{ content }}
@@ -182,6 +225,29 @@
                 const ps = articleBody.querySelectorAll('p');
                 ps.forEach(p => {
                     if(p.textContent.includes('📂')) p.classList.add('hidden-element');
+                });
+            }
+
+            // 🎯 스와이프 좌우 버튼 클릭 및 키보드 화살표 동작 스크립트
+            const viewer = document.getElementById('swipeViewer');
+            const prevBtn = document.getElementById('swipePrev');
+            const nextBtn = document.getElementById('swipeNext');
+
+            if (viewer && prevBtn && nextBtn) {
+                prevBtn.addEventListener('click', function() {
+                    viewer.scrollBy({ left: -viewer.clientWidth, behavior: 'smooth' });
+                });
+                nextBtn.addEventListener('click', function() {
+                    viewer.scrollBy({ left: viewer.clientWidth, behavior: 'smooth' });
+                });
+
+                // 키보드 좌/우 화살표 키로도 넘길 수 있도록 지원
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'ArrowLeft') {
+                        viewer.scrollBy({ left: -viewer.clientWidth, behavior: 'smooth' });
+                    } else if (e.key === 'ArrowRight') {
+                        viewer.scrollBy({ left: viewer.clientWidth, behavior: 'smooth' });
+                    }
                 });
             }
         });
