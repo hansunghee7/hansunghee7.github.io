@@ -90,7 +90,7 @@
         /* 📱 [코치S 웹툰 전용 100vh 피팅 CSS] */
         body.is-swipe-mode { background-color: #0f1015; color: #eee; overflow-x: hidden; }
         
-        /* 슬림해진 웹툰 전용 상단 헤더 */
+        /* 🎯 [1번 해결] 슬림해진 웹툰 전용 상단 헤더 간격 조절 */
         body.is-swipe-mode .cover-wrap.post-mode { 
             height: auto !important; 
             min-height: 0 !important; 
@@ -102,6 +102,12 @@
             justify-content: space-between !important; 
             border-bottom: 1px solid rgba(255,255,255,0.08);
         }
+        body.is-swipe-mode .cover-header {
+            justify-content: flex-start !important;
+            gap: 24px !important; /* 로고와 카테고리 사이 여백 벌림 */
+        }
+        body.is-swipe-mode .cover-header > div:last-child { display: none !important; } /* 우측 빈 공간 요소 제거 */
+        
         body.is-swipe-mode .cover-bottom-left { 
             position: static !important; 
             padding: 0 !important; 
@@ -123,11 +129,13 @@
         /* 웹툰 본문 레이아웃 */
         body.is-swipe-mode .post-mode + .article-body { 
             max-width: 800px; 
-            padding: 10px 15px 30px !important; 
+            padding: 10px 15px 10px !important; 
             margin: 0 auto;
         }
 
         .swipe-outer-wrap { position: relative; width: 100%; max-width: 650px; margin: 0 auto; user-select: none; }
+        
+        /* 🎯 [2번 해결] 웹툰 배경 이질감 제거 */
         .swipe-box { 
             display: flex !important; 
             overflow-x: auto !important; 
@@ -138,12 +146,11 @@
             scrollbar-width: none; 
             -ms-overflow-style: none; 
             border-radius: 12px; 
-            background: #000; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+            background: transparent !important; /* 검은색 제거, 투명하게 설정 */
+            box-shadow: none !important; /* 그림자 제거 */
         }
         .swipe-box::-webkit-scrollbar { display: none; }
         
-        /* 🎯 1슬라이드 = 1컷 규격화 (한 화면 피팅) */
         .swipe-slide { 
             flex: 0 0 100% !important; 
             scroll-snap-align: center; 
@@ -152,7 +159,7 @@
             justify-content: center; 
             align-items: center; 
             width: 100%; 
-            height: calc(100vh - 160px) !important; /* 화면 높이에 맞춰 자동 피팅 */
+            height: calc(100vh - 150px) !important; 
             max-height: 720px; 
             box-sizing: border-box;
             padding: 10px;
@@ -178,9 +185,26 @@
             .swipe-btn.next { right: 8px; }
         }
 
-        /* 컷 위치 표시 인디케이터 (1 / 19) */
-        .swipe-indicator { text-align: center; margin-top: 10px; font-size: 14px; font-weight: 400; color: #888; letter-spacing: 1px; }
+        /* 컷 위치 표시 인디케이터 */
+        .swipe-indicator { text-align: center; margin-top: 10px; margin-bottom: 20px; font-size: 14px; font-weight: 400; color: #888; letter-spacing: 1px; }
         .swipe-indicator span.current { color: #00c73c; font-weight: 600; }
+        
+        /* 🎯 [4번 해결] 하단 영역 간격 및 다크모드 컬러 조정 */
+        body.is-swipe-mode .category-nav-wrap {
+            margin-top: 10px !important;
+            padding: 16px 24px !important;
+            border-top: 1px solid rgba(255,255,255,0.08) !important;
+            width: 100% !important;
+            max-width: 800px;
+            left: 0 !important;
+            transform: none !important;
+            margin-left: auto;
+            margin-right: auto;
+            box-sizing: border-box;
+        }
+        body.is-swipe-mode .nav-title { color: #ccc !important; }
+        body.is-swipe-mode .cat-nav-item:hover .nav-title { color: #fff !important; }
+        body.is-swipe-mode .cat-nav-label { color: #666 !important; }
     </style>
 </head>
 <body>
@@ -241,7 +265,6 @@
                 });
             }
 
-            // 🎯 스와이프 감지 스위치
             const isSwipeMeta = document.getElementById('isSwipeData');
             const isSwipeVal = isSwipeMeta ? isSwipeMeta.getAttribute('data-is-swipe') : '';
             const categoryPill = document.querySelector('.cover-category-pill');
@@ -258,8 +281,14 @@
 
             if (isSwipeMode && articleBody) {
                 document.body.classList.add('is-swipe-mode');
+                
+                // 🎯 [3번 임시 해결] Simplifier Choice 배너 가리기
+                const promoSpan = Array.from(document.querySelectorAll('span')).find(s => s.textContent.trim() === 'Simplifier Choice');
+                if (promoSpan) {
+                    const promoWrap = promoSpan.closest('div').parentElement;
+                    if(promoWrap) promoWrap.style.display = 'none';
+                }
 
-                // 🎯 [핵심 개선] 뭉쳐있던 이미지들을 1장씩 낱개 슬라이드로 완전 분리
                 const rawImgs = Array.from(articleBody.querySelectorAll('img')).filter(img => {
                     return !img.classList.contains('hidden-element') && 
                            !img.closest('.PROMO_BANNER_START') && 
@@ -286,7 +315,6 @@
                     const indicator = document.createElement('div');
                     indicator.className = 'swipe-indicator';
 
-                    // 이미지 각각을 .swipe-slide 감싸서 1컷 = 1슬라이드로 등록
                     rawImgs.forEach(img => {
                         const slide = document.createElement('div');
                         slide.className = 'swipe-slide';
@@ -294,13 +322,11 @@
                         swipeBox.appendChild(slide);
                     });
 
-                    // 기존 p 태그 정리
                     const ps = articleBody.querySelectorAll('p');
                     ps.forEach(p => {
                         if (p.children.length === 0 && p.textContent.trim() === '') p.remove();
                     });
 
-                    // DOM에 슬라이더 삽입
                     articleBody.insertBefore(outer, articleBody.firstChild);
                     outer.appendChild(pBtn);
                     outer.appendChild(swipeBox);
