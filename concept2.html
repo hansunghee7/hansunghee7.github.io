@@ -172,11 +172,11 @@
     position:relative; display:flex; align-items:center; justify-content:center; width:100%; height: var(--final-grid-logo-height); 
     text-decoration:none; cursor:pointer;
     opacity: 0; transform: translateY(18px);
-    transition: opacity .6s ease, transform .6s ease;
+    transition: opacity 1s ease, transform 1s ease;
   }
   .reveal-grid .gitem.show { opacity: 1; transform: translateY(0); }
 
-  .reveal-grid img { position:relative; max-height: var(--final-grid-logo-height); max-width:200px; object-fit:contain; filter: grayscale(100%) brightness(1.3); opacity: 0.85; transition: transform 0.3s ease, filter .6s ease, opacity .6s ease; }
+  .reveal-grid img { position:relative; max-height: var(--final-grid-logo-height); max-width:200px; object-fit:contain; filter: grayscale(100%) brightness(1.3); opacity: 0.85; transition: transform 0.3s ease, filter 1s ease, opacity 1s ease; }
   .reveal-grid img[alt*="Asan"] { transform: scale(1.35); }
   .reveal-grid img[alt*="Modoo"] { transform: scale(1.4); }
   .reveal-grid img[alt*="Usimsa"] { transform: scale(1.35); }
@@ -295,7 +295,8 @@
       </div>
     </div>
 
-    <a href="#" class="nav-logo"><img src="https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/assets/nav-logo-white.avif" alt="Simplifier"></a>
+    <!-- 🎯 1. 네비게이션 로고: 기존 assets의 화이트 로고로 교체 -->
+    <a href="#" class="nav-logo"><img src="/brunch_web_assets/images/logo_white.png" alt="Simplifier"></a>
 
     <div class="nav-right">
       <div class="nav-links">
@@ -402,16 +403,17 @@
 <div class="proven-wrap" id="proven-wrap">
 <section class="proven-section wrap" id="proven-section">
   <div class="reveal-grid">
-    <a class="gitem" href="https://www.navercorp.com/" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/assets/logos/naver.png" alt="NAVER"></a>
-    <a class="gitem" href="https://www.kakaopay.com" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/assets/logos/kakaopay.png" alt="Kakao Pay"></a>
-    <a class="gitem" href="https://www.52g.gs/" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/assets/logos/gs.png" alt="GS"></a>
-    <a class="gitem" href="https://www.apgroup.com/int/ko/" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/assets/logos/amore.png" alt="Amore Pacific"></a>
-    <a class="gitem" href="https://company.kyobobook.co.kr/" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/assets/logos/kyobo.png" alt="Kyobo"></a>
-    <a class="gitem" href="https://dcamp.kr/" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/assets/logos/dcamp.png" alt="D.Camp"></a>
-    <a class="gitem" href="https://asan-nanum.org/" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/assets/logos/asan.png" alt="Asan"></a>
-    <a class="gitem" href="https://fastcampus.co.kr" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/assets/logos/fastcampus.png" alt="Fast Campus"></a>
-    <a class="gitem" href="https://www.modoo.or.kr/" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/assets/logos/modoo.png" alt="Modoo"></a>
-    <a class="gitem" href="https://www.usimsa.com/" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/assets/logos/usimsa.png" alt="Usimsa"></a>
+    <!-- 🎯 2. 로고 절대 경로 적용 -->
+    <a class="gitem" href="https://www.navercorp.com/" target="_blank" rel="noopener"><img src="/assets/logos/naver.png" alt="NAVER"></a>
+    <a class="gitem" href="https://www.kakaopay.com" target="_blank" rel="noopener"><img src="/assets/logos/kakaopay.png" alt="Kakao Pay"></a>
+    <a class="gitem" href="https://www.52g.gs/" target="_blank" rel="noopener"><img src="/assets/logos/gs.png" alt="GS"></a>
+    <a class="gitem" href="https://www.apgroup.com/int/ko/" target="_blank" rel="noopener"><img src="/assets/logos/amore.png" alt="Amore Pacific"></a>
+    <a class="gitem" href="https://company.kyobobook.co.kr/" target="_blank" rel="noopener"><img src="/assets/logos/kyobo.png" alt="Kyobo"></a>
+    <a class="gitem" href="https://dcamp.kr/" target="_blank" rel="noopener"><img src="/assets/logos/dcamp.png" alt="D.Camp"></a>
+    <a class="gitem" href="https://asan-nanum.org/" target="_blank" rel="noopener"><img src="/assets/logos/asan.png" alt="Asan"></a>
+    <a class="gitem" href="https://fastcampus.co.kr" target="_blank" rel="noopener"><img src="/assets/logos/fastcampus.png" alt="Fast Campus"></a>
+    <a class="gitem" href="https://www.modoo.or.kr/" target="_blank" rel="noopener"><img src="/assets/logos/modoo.png" alt="Modoo"></a>
+    <a class="gitem" href="https://www.usimsa.com/" target="_blank" rel="noopener"><img src="/assets/logos/usimsa.png" alt="Usimsa"></a>
   </div>
   <div class="reveal-stats">
     <div class="rs-row">
@@ -436,11 +438,12 @@
     </p>
   </div>
   <div class="story-gallery">
-    <div class="gallery-item"><img src="https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/assets/story/1-lecture.jpg" alt="강연 현장"></div>
-    <div class="gallery-item"><img src="https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/assets/story/2-session.jpg" alt="실무진과 논의하는 모습"></div>
-    <div class="gallery-item"><img src="https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/assets/story/3-whiteboard.jpg" alt="문제를 구조화하는 장면"></div>
-    <div class="gallery-item"><img src="https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/assets/story/4-meetup.jpg" alt="그룹 밋업"></div>
-    <div class="gallery-item"><img src="https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/assets/story/5-casual.jpg" alt="캐주얼한 순간"></div>
+    <!-- 🎯 3. 갤러리 이미지 절대 경로 적용 -->
+    <div class="gallery-item"><img src="/assets/story/1-lecture.jpg" alt="강연 현장"></div>
+    <div class="gallery-item"><img src="/assets/story/2-session.jpg" alt="실무진과 논의하는 모습"></div>
+    <div class="gallery-item"><img src="/assets/story/3-whiteboard.jpg" alt="문제를 구조화하는 장면"></div>
+    <div class="gallery-item"><img src="/assets/story/4-meetup.jpg" alt="그룹 밋업"></div>
+    <div class="gallery-item"><img src="/assets/story/5-casual.jpg" alt="캐주얼한 순간"></div>
   </div>
   <div class="story-testimonials">
     <div class="testimonial-header">IN FOUNDERS' WORDS</div>
@@ -502,27 +505,61 @@
     });
   }
 
-  // 3) Proven 섹션: 뷰포트에 들어오면 컨테이너 페이드인 + 로고 하나씩 순차적으로 떠오르며 컬러 전환
+  // 3) Proven 섹션: proven-wrap이 스크롤로 '딱 고정되는 순간'에 로고가 하나씩 순차적으로 떠오르며 컬러 전환
+  //    (IntersectionObserver 대신 스크롤 진행률로 감지 — sticky 요소는 살짝만 걸쳐도 조기 발동되는 문제가 있었음)
   var statsBlock = document.querySelector('.reveal-stats');
   var gitems = document.querySelectorAll('.reveal-grid .gitem');
-  if (provenSection) {
-    if ('IntersectionObserver' in window) {
-      var provenObserver = new IntersectionObserver(function(entries){
-        entries.forEach(function(entry){
-          if (entry.isIntersecting) {
-            provenSection.classList.add('show');
-            gitems.forEach(function(item, i){
-              setTimeout(function(){ item.classList.add('show'); }, i * 70);
-            });
-            provenObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.15 });
-      provenObserver.observe(provenSection);
-    } else {
-      provenSection.classList.add('show');
-      gitems.forEach(function(item){ item.classList.add('show'); });
+  var provenWrap = document.getElementById('proven-wrap');
+  var provenRevealed = false;
+
+  var provenFadeControlActive = false;
+  function revealProven() {
+    if (provenRevealed) return;
+    provenRevealed = true;
+    if (provenSection) provenSection.classList.add('show');
+    gitems.forEach(function(item, i){
+      setTimeout(function(){ item.classList.add('show'); }, i * 110);
+    });
+    // 등장 트랜지션(0.8s)이 다 끝난 뒤에만 스크롤 기반 페이드아웃이 opacity를 넘겨받도록 (스크롤 속도와 무관하게 항상 완주)
+    setTimeout(function(){ 
+      provenFadeControlActive = true; 
+      if (provenSection) provenSection.style.transitionProperty = 'transform'; // opacity는 이제부터 스크롤에 즉시 반응하도록 트랜지션 제외
+    }, 2100);
+  }
+
+  if (provenWrap && provenSection) {
+    function syncProvenFade() {
+      var navHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-height')) || 68;
+      var vh = window.innerHeight;
+      var rect = provenWrap.getBoundingClientRect();
+      var wrapTop = rect.top - navHeight;
+      var stickyHeight = vh - navHeight;
+      var scrollable = provenWrap.offsetHeight - stickyHeight;
+
+      var progress = 0;
+      if (wrapTop <= 0 && scrollable > 0) {
+        progress = Math.min(1, Math.abs(wrapTop) / scrollable);
+      }
+
+      // 완전히 고정되기 200px 전에 미리 트리거 → 스크롤로 올라오는 자연스러운 움직임과 겹쳐서 재생됨
+      if (wrapTop <= 200) revealProven();
+
+      // 페이드아웃은 고정 구간의 후반부(55%~72%)에서 진행 → 스토리와 겹치기 직전에 이미 다 사라짐
+      var fadeStart = 0.55, fadeEnd = 0.72;
+      var op = 1;
+      if (progress > fadeStart) {
+        op = 1 - Math.min(1, (progress - fadeStart) / (fadeEnd - fadeStart));
+      }
+      // 등장 애니메이션이 시간상 아직 안 끝났으면 인라인 opacity를 건드리지 않아 CSS 트랜지션이 온전히 재생되게 둠
+      if (provenFadeControlActive) {
+        provenSection.style.opacity = op;
+      }
     }
+    window.addEventListener('scroll', function(){ requestAnimationFrame(syncProvenFade); }, {passive:true});
+    syncProvenFade();
+  } else if (provenSection) {
+    // proven-wrap이 없는 예외 상황 폴백
+    revealProven();
   }
 
   // 4) 숫자 카운트업: 화면 65% 지점(=중앙보다 먼저 지나가는 지점)에서 트리거
@@ -540,35 +577,6 @@
     } else {
       animateNumbers();
     }
-  }
-
-  // 5) Proven 그리드 자체 페이드아웃: proven-wrap 안에서 스크롤 진행률 기반으로,
-  // 스토리와 부딪히기 한참 전(핀 고정 구간의 절반 지점)에 이미 다 사라지도록 함
-  // — 스토리 쪽 상태와는 완전히 무관하게 독립적으로 동작
-  var provenWrap = document.getElementById('proven-wrap');
-  if (provenWrap && provenSection) {
-    function syncProvenFade() {
-      var navHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-height')) || 68;
-      var vh = window.innerHeight;
-      var rect = provenWrap.getBoundingClientRect();
-      var wrapTop = rect.top - navHeight;
-      var stickyHeight = vh - navHeight;
-      var scrollable = provenWrap.offsetHeight - stickyHeight;
-
-      var progress = 0;
-      if (wrapTop <= 0 && scrollable > 0) {
-        progress = Math.min(1, Math.abs(wrapTop) / scrollable);
-      }
-
-      var fadeStart = 0.2, fadeEnd = 0.5; // 이 구간에서 페이드아웃 완료 → 이후 스토리가 겹칠 때는 이미 안 보임
-      var op = 1;
-      if (progress > fadeStart) {
-        op = 1 - Math.min(1, (progress - fadeStart) / (fadeEnd - fadeStart));
-      }
-      provenSection.style.opacity = op;
-    }
-    window.addEventListener('scroll', function(){ requestAnimationFrame(syncProvenFade); }, {passive:true});
-    syncProvenFade();
   }
 })();
 </script>

@@ -5,12 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }}</title>
     
+    <!-- 검색엔진 요약문 (Meta Description) -->
     <meta name="description" content="{{ content | strip_html | strip_newlines | truncate: 150 }}">
+
+    <!-- 카카오톡, 슬랙, 링크드인 공유용 미리보기 (Open Graph) -->
     <meta property="og:type" content="article">
     <meta property="og:title" content="{{ page.title }}">
     <meta property="og:description" content="{{ content | strip_html | strip_newlines | truncate: 150 }}">
     <meta property="og:image" content="{{ page.cover_image | default: 'https://hansunghee7.github.io/brunch_web_assets/images/logo_white.png' }}">
     <meta property="og:url" content="https://hansunghee7.github.io{{ page.url }}">
+
+    <!-- JSON-LD 구조화된 데이터 (GEO/SEO 최적화) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "{{ page.title }}",
+      "datePublished": "{{ page.date_string }}",
+      "author": {
+        "@type": "Person",
+        "name": "Han Sunghee"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Simplifier",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://hansunghee7.github.io/brunch_web_assets/images/logo_white.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ site.url }}{{ page.url }}"
+      }
+    }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,7 +72,22 @@
         .article-body img { max-width: 100%; height: auto; margin: 60px 0; display: block; }
         .article-body hr { border: 0; border-top: 1px solid #eaeaea; margin: 80px 0; }
 
-        /* 📱 동적 동의 스와이프 전용 CSS */
+        /* 👇 [복구 완료] 로그 페이지 썸네일 카드 그리드 CSS */
+        .card-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 20px; }
+        @media (max-width: 1024px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 768px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 480px) { .card-grid { grid-template-columns: repeat(1, 1fr); } }
+
+        .card-item { display: none; background: #fff; border: 1px solid #f0f0f0; border-radius: 8px; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; text-decoration: none; color: inherit; flex-direction: column; }
+        .card-thumb { width: 100%; aspect-ratio: 3 / 2; background-color: #f7f7f7; background-size: cover; background-position: center; border-bottom: 1px solid #f0f0f0; }
+        .card-content { padding: 16px; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; }
+        .card-category { font-size: 12px; color: #00c73c; font-weight: 400; margin-bottom: 8px; }
+        .card-title { font-family: 'Noto Serif KR', serif; font-size: 15px; font-weight: 400; color: #222; line-height: 1.4; margin: 0 0 12px 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .card-date { font-size: 11px; color: #aaaaaa; margin-top: auto; font-weight: 300; }
+
+        .hidden-element { display: none !important; }
+
+        /* 📱 코치S 스와이프 전용 CSS (그대로 유지) */
         .swipe-outer-wrap { position: relative; width: 100%; max-width: 700px; margin: 0 auto; }
         .swipe-box { display: flex !important; overflow-x: auto !important; scroll-behavior: smooth; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; gap: 16px; scrollbar-width: none; -ms-overflow-style: none; }
         .swipe-box::-webkit-scrollbar { display: none; }
