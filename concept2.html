@@ -29,17 +29,18 @@
   @media (max-width:700px){ .wrap{ padding: 0 32px; } }
 
   header.nav { position: sticky; top:0; z-index: 100; background: rgba(8,8,8,0.85); backdrop-filter: blur(10px); }
-  .nav-inner { position:relative; display:flex; align-items:center; padding: 16px 32px; max-width:1200px; margin:0 auto; gap: 24px; }
+  .nav-inner { position:relative; display:flex; align-items:center; justify-content:center; padding: 16px 32px; max-width:1200px; margin:0 auto; gap: 240px; }
   .nav-logo { height: 26px; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); }
   .nav-logo img { height: 100%; width:auto; display:block; }
   .nav-links, .nav-apply { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; }
-  .nav-links { display:flex; align-items:center; gap: 32px; font-size: 14px; color:#c9c8c2; }
-  .nav-right { display:flex; align-items:center; gap: 32px; font-size:14px; margin-left:auto; }
+  .nav-links { display:flex; align-items:center; gap: 40px; font-size: 14px; color:#c9c8c2; }
+  .nav-right { display:flex; align-items:center; gap: 32px; font-size:14px; }
+  .nav-actions { position:absolute; right:32px; top:50%; transform:translateY(-50%); display:flex; align-items:center; gap:22px; }
   .nav-item { position: relative; }
   .nav-item > button { display:flex; align-items:center; gap:9px; padding: 10px 0; margin:0; background:none; border:none; cursor:pointer; font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:14px; color:#c9c8c2; transition: color 0.2s; }
   .nav-item:hover > button, .nav-item:focus-within > button { color:#f5f3ee; }
   .nav-item > button::after { content:''; display:inline-block; width:4px; height:4px; border-right:1.2px solid currentColor; border-bottom:1.2px solid currentColor; transform: rotate(45deg); margin-top:-2px; }
-  .dropdown-menu { position: absolute; top: 100%; left: 0; background: #f5f3ee; border: 1px solid rgba(8,8,8,0.06); border-radius: 12px; padding: 12px 0; display: flex; flex-direction: column; opacity: 0; visibility: hidden; min-width: 220px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+  .dropdown-menu { position: absolute; top: 100%; left: 0; background: #f5f3ee; background-clip: padding-box; border: 1px solid rgba(8,8,8,0.06); border-top: 10px solid transparent; border-radius: 12px; padding: 12px 0; display: flex; flex-direction: column; opacity: 0; visibility: hidden; min-width: 220px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
   .nav-item:hover .dropdown-menu, .nav-item:focus-within .dropdown-menu { opacity: 1; visibility: visible; }
   .dropdown-menu a { padding: 10px 20px; font-size: 13px; color: #2a2822; transition: color 0.2s, background 0.2s; text-align: left; word-break: keep-all; }
   .dropdown-menu a:hover, .dropdown-menu a:focus { color: #080808; background: rgba(8,8,8,0.06); }
@@ -50,7 +51,7 @@
   .nav-burger.open span:nth-child(1){ transform: translateY(6.5px) rotate(45deg); }
   .nav-burger.open span:nth-child(2){ opacity:0; }
   .nav-burger.open span:nth-child(3){ transform: translateY(-6.5px) rotate(-45deg); }
-  .mobile-menu { display:none; flex-direction:column; position: fixed; top: var(--nav-height); left: 0; right: 0; bottom: 0; z-index: 200; padding: 0 32px 40px; background: #080808; border-top: 1px solid rgba(245,243,238,0.08); overflow-y: auto; }
+  .mobile-menu { display:none; flex-direction:column; position: fixed; top: var(--nav-height); left: 0; right: 0; bottom: 0; z-index: 200; padding: 0 32px 40px; background: #080808; border-top: 5px solid rgba(245,243,238,0.08); overflow-y: auto; }
   .mobile-menu.open { display:flex; }
   .mobile-details { border-bottom: 1px solid rgba(245,243,238,0.07); }
   .mobile-summary { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 17px; color: #c9c8c2; padding: 20px 0; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
@@ -62,7 +63,7 @@
   .mobile-submenu a { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 15px; color: #8f8b82; text-decoration: none; word-break: keep-all; }
   .mobile-submenu a:hover { color: #f5f3ee; }
   .mobile-menu-cta { display:block; text-align:center; margin-top:30px; margin-bottom: 8px; padding:14px 0 !important; border-radius:999px; background:#f5f3ee; color:#080808 !important; font-weight:500; font-family: 'Pretendard Variable', 'Pretendard', sans-serif; text-decoration: none; }
-  @media (max-width:860px){ .nav-links{ display:none; } .nav-burger{ display:flex; } .nav-right > .nav-apply { display:none; } }
+  @media (max-width:860px){ .nav-links{ display:none; } .nav-burger{ display:flex; } .nav-actions .nav-apply { display:none; } }
 
   .hero-wrapper { position: sticky; top: var(--nav-height); z-index: 5; height: calc(100vh - var(--nav-height)); }
   .hero { height: 100%; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; }
@@ -78,13 +79,11 @@
 
   /* =========================================================
      ✨ PROVEN — 히어로와 정확히 동일한 방식으로 처리
-     (position:sticky 컨테이너 + 그 내부에 fade 전용 요소, 절대 scrollY 기반 단순 opacity 공식)
-     히어로가 "position:sticky 래퍼(정확히 1화면 높이) + #hero-fade" 구조인 것과 완전히 동일한 패턴
      ========================================================= */
   .proven-wrap {
     position: sticky;
     top: var(--nav-height);
-    z-index: 10; /* 히어로보다 높은 z-index로, 히어로 위를 타고 올라옴 (히어로가 5인 것과 동일한 관계) */
+    z-index: 10;
     height: calc(100vh - var(--nav-height));
   }
   .proven-section { height: 100%; display:flex; flex-direction:column; align-items:center; justify-content:center; }
@@ -108,6 +107,8 @@
   .reveal-stats .rs-row { display:flex; gap:100px; justify-content:center; text-align:center; flex-wrap: wrap; row-gap: 28px; }
   .reveal-stats .rs-num { font-family: 'Source Serif 4', serif; font-weight: 200; font-size: var(--stats-number-size); color: #f5f3ee; margin-bottom: 8px; line-height: 1; white-space: nowrap; }
   .reveal-stats .rs-label { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-weight: 400; font-size: var(--stats-label-size); color:#8f8b82; letter-spacing: 0.05em; text-transform: uppercase; }
+  .proven-label { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; color: #8f8b82; text-transform: uppercase; text-align: center; margin: 0 auto 36px; max-width: min(1200px, 92vw); }
+  .story-label { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; color: #8f8b82; text-transform: uppercase; text-align: center; margin-bottom: 24px; }
 
   @media (max-width:760px){
     .reveal-grid { grid-template-columns: repeat(2, 1fr); gap:32px 20px; margin-bottom: 48px; }
@@ -121,31 +122,35 @@
   }
 
   /* =========================================================
-     📖 STORY — 히어로 다음에 오는 Proven과 동일하게, 별도 오버랩 트릭 없이 자연스러운 다음 섹션
+     📖 STORY
      ========================================================= */
-  .story-section { position: relative; z-index: 40; background: #080808; color: #f5f3ee; padding: 140px 0 180px 0; }
+  .story-section { position: relative; z-index: 40; background: #080808; color: #f5f3ee; padding: 60px 0 180px 0; opacity: 0; }
   .story-essay, .story-gallery, .story-testimonials { pointer-events: auto; }
   .story-essay { max-width: 680px; margin: 0 auto 120px auto; }
-  .story-essay p { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-weight: 300; font-size: 20px; line-height: 1.85; color: #c9c8c2; margin-bottom: 32px; word-break: keep-all; }
+  .story-essay p { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-weight: 300; font-size: 17px; line-height: 1.85; color: #c9c8c2; margin-bottom: 32px; word-break: keep-all; }
   .story-essay p.intro-p::first-letter { font-family: 'Boska', serif; font-weight: 300; font-size: 5.2rem; float: left; line-height: 0.78; padding-right: 18px; padding-top: 6px; color: #f5f3ee; }
   @media (max-width:700px){ .story-essay p.intro-p::first-letter { font-size: 3.6rem; padding-right: 12px; padding-top: 4px; } }
+
   .story-gallery { width: min(1200px, 94vw); margin: 0 auto 140px auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
-  .gallery-item { width: 100%; height: 240px; border-radius: 12px; overflow: hidden; background: #181818; }
-  .gallery-item img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%) brightness(0.9); transition: transform 0.5s ease, filter 0.5s ease; }
-  .gallery-item img:hover { transform: scale(1.06); filter: grayscale(0%) brightness(1.05); }
+  .gallery-item {
+    width: 100%; height: 240px; border-radius: 6px; overflow: hidden; background: #181818;
+    opacity: 0; transform: translateY(18px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  .gallery-item.show { opacity: 1; transform: translateY(0); }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; filter: saturate(1.2) brightness(1.03) contrast(1.05); transition: transform 0.5s ease, filter 0.5s ease; }
+  .gallery-item img:hover { transform: scale(1.06); filter: saturate(1.35) brightness(1.08) contrast(1.08); }
   @media (max-width:760px){
     .story-gallery { grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 90px; }
     .gallery-item { height: 130px; }
     .gallery-item:nth-child(4), .gallery-item:nth-child(5) { display: none; }
   }
   @media (max-width:480px){ .gallery-item { height: 110px; } }
+
   .story-testimonials { max-width: 720px; margin: 0 auto; text-align: left; }
-  .testimonial-header { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; color: #8f8b82; text-transform: uppercase; margin-bottom: 48px; }
-  .quote-block { margin-bottom: 44px; border-bottom: 1px dashed rgba(245, 243, 238, 0.12); padding-bottom: 32px; }
-  .quote-stat { display:inline-flex; align-items:baseline; gap:8px; font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:13px; font-weight:500; letter-spacing:0.03em; color:#f5f3ee; background:rgba(245,243,238,0.06); border:1px solid rgba(245,243,238,0.14); border-radius:999px; padding:6px 14px; margin-bottom:18px; }
-  .quote-stat .arrow { color:#8f8b82; font-weight:400; }
-  .quote-stat .period { color:#8f8b82; font-weight:400; font-size:12px; margin-left:2px; }
-  .quote-text { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-size: 21px; font-weight: 300; line-height: 1.75; color: #f5f3ee; word-break: keep-all; margin:0 0 16px; }
+  .testimonial-header { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; color: #8f8b82; text-transform: uppercase; text-align: center; margin-bottom: 48px; }
+  .quote-block { margin-bottom: 44px; }
+  .quote-text { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-size: 17px; font-weight: 300; line-height: 2.1; color: #f5f3ee; word-break: keep-all; margin:0 0 16px; text-decoration: underline; text-decoration-color: rgba(245,243,238,0.28); text-underline-offset: 7px; text-decoration-thickness: 1px; }
   .quote-attribution { font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:14px; color:#8f8b82; display:flex; align-items:center; gap:8px; }
   .quote-avatar { display: inline-block; width: 28px; height: 28px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(245, 243, 238, 0.3); }
 </style>
@@ -154,6 +159,8 @@
   .reveal-grid .gitem { opacity:1 !important; transform:none !important; }
   .reveal-grid .gitem img { filter:none !important; opacity:1 !important; }
   #hero-fade { opacity:1 !important; }
+  .story-section { opacity:1 !important; }
+  .gallery-item { opacity:1 !important; transform:none !important; }
 </style></noscript>
 </head>
 <body>
@@ -206,6 +213,9 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="nav-actions">
       <a href="#contact" class="nav-apply">Contact</a>
       <button class="nav-burger" id="nav-burger" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobile-menu">
         <span></span><span></span><span></span>
@@ -291,6 +301,7 @@
 <div class="proven-wrap" id="proven-wrap">
   <section class="proven-section" id="proven-section">
     <div id="proven-fade">
+      <div class="proven-label">PROVEN IN THE FIELD</div>
       <div class="reveal-grid">
         <a class="gitem" href="https://www.navercorp.com/" target="_blank" rel="noopener"><img src="/assets/logos/naver.png" alt="NAVER"></a>
         <a class="gitem" href="https://www.kakaopay.com" target="_blank" rel="noopener"><img src="/assets/logos/kakaopay.png" alt="Kakao Pay"></a>
@@ -316,6 +327,7 @@
 
 <section class="story-section wrap" id="story-section">
   <div class="story-essay">
+    <div class="story-label">ORIGIN</div>
     <p class="intro-p">
       Simplifier는 2022년에 시작했지만, 그 정신은 2001년으로 거슬러 올라갑니다. 첫 회사에서 수익화 모델을 끝내 찾지 못해 동료들을 떠나보내야 했던 날, 좋은 서비스를 만드는 사람보다, 사업을 성공시키는 사람이 되기로 했습니다.
     </p>
@@ -334,16 +346,18 @@
     <div class="gallery-item"><img src="/assets/story/5-casual.jpg" alt="캐주얼한 순간"></div>
   </div>
   <div class="story-testimonials">
-    <div class="testimonial-header">IN FOUNDERS' WORDS</div>
+    <div class="testimonial-header">FOUNDERS' WORDS</div>
     <div class="quote-block">
-      <div class="quote-stat">매출 60억 <span class="arrow">→</span> 200억<span class="period">· 1년</span></div>
-      <p class="quote-text">복잡하게 엉켜있던 PMF 문제와 사업 전략이, 한성희 코치님과의 단순화 세션을 거치며 단 한 줄의 실행 로드맵으로 정리됐습니다. 그 로드맵 하나로 1년 만에 매출이 세 배 넘게 뛰었습니다.</p>
-      <div class="quote-attribution"><img class="quote-avatar" src="https://i.pravatar.cc/100?img=33" alt="Founder">여행커머스 플랫폼 대표</div>
+      <p class="quote-text">코치님과 함께한 후 제품팀이 몰라보게 안정화됐습니다. 덕분에 저는 대표로서 사업에 집중할 수 있었고, 제품 UX가 개선되면서 1년 만에 매출이 3배 이상 성장할 수 있었습니다.</p>
+      <div class="quote-attribution"><img class="quote-avatar" src="https://i.pravatar.cc/100?img=45" alt="Founder">U 이커머스사 대표</div>
     </div>
     <div class="quote-block">
-      <div class="quote-stat">적자 <span class="arrow">→</span> 흑자 전환<span class="period">· 6개월</span></div>
-      <p class="quote-text">혼자 밤새 고민하던 수십 가지 가설 중, 진짜 매출로 이어지는 단 하나의 본질만 남겨주셨습니다. 6개월 만에 적자를 흑자로 돌려세운 건 그 하나의 본질이었습니다.</p>
-      <div class="quote-attribution"><img class="quote-avatar" src="https://i.pravatar.cc/100?img=60" alt="Founder">온라인 미디어사 대표</div>
+      <p class="quote-text">코치님이 알려주신 석세스 매트릭스 — 성공지표인 코어인덱스, 그리고 그 지표를 달성할 아이템을 시뮬레이션해보는 플렉서블로드맵 — 를 도입한 후, 성과 지향의 가설과 검증 체계를 내재화할 수 있었습니다. 이제는 무엇을 실행해야 성과로 이어질지 예측할 수 있게 됐습니다.</p>
+      <div class="quote-attribution"><img class="quote-avatar" src="https://i.pravatar.cc/100?img=52" alt="Founder">A 스타트업 대표</div>
+    </div>
+    <div class="quote-block">
+      <p class="quote-text">회사 전략의 변화로, 리더들이 큰 혼란을 겪고 있던 시기였습니다. 코치님 강연을 통해 이 혼란이 왜 생기는지, 그리고 이걸 위기가 아니라 '지형변화'로 받아들이고 본인의 리더십 기회로 만들어야 한다는 걸 알게 됐습니다. 시기적으로 꼭 필요했던 강연이었습니다.</p>
+      <div class="quote-attribution"><img class="quote-avatar" src="https://i.pravatar.cc/100?img=68" alt="Founder">F 기업 HR Leader</div>
     </div>
   </div>
 </section>
@@ -365,17 +379,27 @@
     if (heroWrapper) heroWrapper.style.pointerEvents = (heroOpacity <= 0) ? 'none' : 'auto';
   }
 
-  // 2) Proven 페이드아웃 — 히어로와 완전히 동일한 공식, 다만 기준점만 "proven-wrap이 시작되는 지점"으로 이동
-  //    (헤더+히어로가 정확히 1화면을 채우도록 설계되어 있어, proven-wrap의 자연스러운 시작 위치 = 1 viewport 높이)
+  // 2) Proven 페이드아웃 + 스토리 페이드인 — 독립 조절 가능
+  var storySection = document.getElementById('story-section');
+  var navHeight = 68;
   function syncProvenFade() {
-    var scrolled = window.scrollY;
+    if (!storySection) return;
     var vh = window.innerHeight;
-    var provenStaticTop = vh; // 헤더(navHeight) + 히어로(100vh-navHeight) = 정확히 1 viewport
-    var scrolledPastProven = scrolled - provenStaticTop;
-    var fadeDist = vh * 0.5; // 히어로와 동일한 페이드 거리
-    var provenOpacity = Math.min(1, Math.max(0, 1 - (scrolledPastProven / fadeDist)));
+    var storyTop = storySection.getBoundingClientRect().top;
+    var coverableRange = vh - navHeight;
+    var covered = Math.min(1, Math.max(0, (vh - storyTop) / coverableRange));
+
+    // 로고 그리드 페이드아웃 시점과 스토리 페이드인 시점을 독립적으로 조절 (두 값을 따로 바꿔보세요)
+    var provenFadeEnd = 0.3; // 로고 그리드가 완전히 사라지는 지점 (작을수록 더 빨리 사라짐)
+    var storyFadeEnd = 0.5;  // 스토리가 완전히 나타나는 지점 (클수록 더 천천히 나타남)
+
+    var provenT = Math.min(1, Math.max(0, covered / provenFadeEnd));
+    var storyT = Math.min(1, Math.max(0, covered / storyFadeEnd));
+
+    var provenOpacity = 1 - provenT;
     if (provenFade) provenFade.style.opacity = provenOpacity;
     if (provenWrap) provenWrap.style.pointerEvents = (provenOpacity <= 0) ? 'none' : 'auto';
+    storySection.style.opacity = storyT;
   }
 
   function syncAll(){ syncHeroFade(); syncProvenFade(); }
@@ -391,7 +415,7 @@
     var targets = [
       { id: 'num-startups', end: 300, suffix: '+', decimals: 0 },
       { id: 'num-orgs', end: 20, suffix: '+', decimals: 0 },
-      { id: 'num-rating', end: 4.95, suffix: ' / 5.0', decimals: 2 }
+      { id: 'num-rating', end: 4.96, suffix: ' / 5.0', decimals: 2 }
     ];
     targets.forEach(function(item) {
       var el = document.getElementById(item.id);
@@ -410,7 +434,7 @@
     });
   }
 
-  // 4) 로고 개별 등장(떠오르며 컬러 전환) — IntersectionObserver로 간단하게, sticky 재진입 이슈 없는 threshold 사용
+  // 4) 로고 개별 등장(떠오르며 컬러 전환) — IntersectionObserver로 간단하게
   var gitems = document.querySelectorAll('.reveal-grid .gitem');
   var statsBlock = document.querySelector('.reveal-stats');
   var revealed = false;
@@ -451,6 +475,32 @@
       statsObserver.observe(statsBlock);
     } else {
       animateNumbers();
+    }
+  }
+
+  // 6) 스토리 갤러리 사진: 로고 그리드와 동일한 방식(떠오르며 나타남)으로 하나씩 순차 등장
+  var galleryItems = document.querySelectorAll('.gallery-item');
+  var galleryRevealed = false;
+  function revealGallery(){
+    if (galleryRevealed) return;
+    galleryRevealed = true;
+    galleryItems.forEach(function(item, i){
+      setTimeout(function(){ item.classList.add('show'); }, i * 110);
+    });
+  }
+  if (galleryItems.length > 0) {
+    if ('IntersectionObserver' in window) {
+      var galleryObserver = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting) {
+            revealGallery();
+            galleryObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      galleryObserver.observe(document.querySelector('.story-gallery'));
+    } else {
+      revealGallery();
     }
   }
 })();
