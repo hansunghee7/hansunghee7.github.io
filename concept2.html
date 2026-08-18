@@ -152,7 +152,9 @@
   .quote-block { margin-bottom: 44px; }
   .quote-text { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-size: 17px; font-weight: 300; line-height: 2.1; color: #f5f3ee; word-break: keep-all; margin:0 0 16px; text-decoration: underline; text-decoration-color: rgba(245,243,238,0.28); text-underline-offset: 7px; text-decoration-thickness: 1px; }
   .quote-attribution { font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:14px; color:#8f8b82; display:flex; align-items:center; gap:8px; }
-  .quote-avatar { display: inline-block; width: 28px; height: 28px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(245, 243, 238, 0.3); }
+  .quote-avatar { display: flex; align-items:center; justify-content:center; width: 28px; height: 28px; border-radius: 50%; background: #000; border: 1px solid rgba(245,243,238,0.18); flex-shrink:0; overflow:hidden; }
+  .quote-avatar img { width:100%; height:100%; object-fit:cover; display:block; }
+  .quote-avatar svg { display:block; }
 </style>
 <noscript><style>
   .proven-wrap, #proven-fade { opacity:1 !important; }
@@ -349,15 +351,15 @@
     <div class="testimonial-header">FOUNDERS' WORDS</div>
     <div class="quote-block">
       <p class="quote-text">코치님과 함께한 후 제품팀이 몰라보게 안정화됐습니다. 덕분에 저는 대표로서 사업에 집중할 수 있었고, 제품 UX가 개선되면서 1년 만에 매출이 3배 이상 성장할 수 있었습니다.</p>
-      <div class="quote-attribution"><img class="quote-avatar" src="https://i.pravatar.cc/100?img=45" alt="Founder">U 이커머스사 대표</div>
+      <div class="quote-attribution"><div class="quote-avatar"><img src="assets/testimonials/u.png" alt="이커머스사 대표"></div>이커머스사 대표</div>
     </div>
     <div class="quote-block">
       <p class="quote-text">코치님이 알려주신 석세스 매트릭스를 도입한 후, 성과 지향의 가설검증 체계를 내재화할 수 있었습니다. 덕분에 이제는 실행 결과까지 예측할 수 있게 되었고, 이를 기반으로 빠른 성장을 만들어낼 수 있었습니다.</p>
-      <div class="quote-attribution"><img class="quote-avatar" src="https://i.pravatar.cc/100?img=52" alt="Founder">A 스타트업 대표</div>
+      <div class="quote-attribution"><div class="quote-avatar"><img src="assets/testimonials/a.png" alt="스타트업 대표"></div>스타트업 대표</div>
     </div>
     <div class="quote-block">
       <p class="quote-text">회사 전략의 변화로, 리더들이 큰 혼란을 겪고 있던 시기였습니다. 코치님 강연을 통해 이 혼란이 왜 생기는지, 그리고 이걸 위기가 아니라 '지형변화'로 받아들이고 본인의 리더십 기회로 만들어야 한다는 걸 알게 됐습니다. 시기적으로 꼭 필요했던 강연이었습니다.</p>
-      <div class="quote-attribution"><img class="quote-avatar" src="https://i.pravatar.cc/100?img=68" alt="Founder">F 기업 HR Leader</div>
+      <div class="quote-attribution"><div class="quote-avatar"><img src="assets/testimonials/f.png" alt="기업 HR Leader"></div>기업 HR Leader</div>
     </div>
   </div>
 </section>

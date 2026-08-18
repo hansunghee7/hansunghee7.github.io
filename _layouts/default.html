@@ -93,16 +93,16 @@
         body.is-swipe-mode { 
             background-color: #0f1015; 
             color: #eee; 
-            overflow: hidden !important; /* 스크롤 완벽 차단 */
+            overflow: hidden !important; 
             display: flex; 
             flex-direction: column; 
-            height: 100vh; /* 브라우저 화면 딱 100% 꽉 채우기 */
+            height: 100vh; 
             width: 100vw;
         }
         
         /* 1. 상단 헤더 (높이 고정) */
         body.is-swipe-mode .cover-wrap.post-mode { 
-            flex: 0 0 auto !important; /* 축소/확장 방지 */
+            flex: 0 0 auto !important; 
             height: auto !important; 
             min-height: 0 !important; 
             padding: 14px 24px !important; 
@@ -136,9 +136,9 @@
             display: none !important; 
         }
 
-        /* 2. 본문 컨테이너 (남은 중간 공간을 쫙 늘려서 모두 차지) */
+        /* 2. 본문 컨테이너 (남은 중간 공간을 쫙 늘려서 차지) */
         body.is-swipe-mode .post-mode + .article-body { 
-            flex: 1 1 auto !important; /* 핵심: 남는 공간 모두 차지 */
+            flex: 1 1 auto !important; 
             display: flex !important;
             flex-direction: column !important;
             max-width: 100% !important;
@@ -147,18 +147,12 @@
             overflow: hidden !important; 
         }
 
-        /* 🔥 초강력 방어막: 웹툰 뷰어와 하단 바를 제외한 모든 파이썬 찌꺼기(배너 등) 강제 숨김 */
-        body.is-swipe-mode .article-body > * {
-            display: none !important;
-        }
-        body.is-swipe-mode .article-body > .swipe-outer-wrap {
-            display: flex !important; 
-        }
-        body.is-swipe-mode .article-body > .category-nav-wrap {
-            display: flex !important; 
-        }
+        /* 🔥 초강력 방어막: 배너 찌꺼기 등을 강제로 숨김 */
+        body.is-swipe-mode .article-body > * { display: none !important; }
+        body.is-swipe-mode .article-body > .swipe-outer-wrap { display: flex !important; }
+        body.is-swipe-mode .article-body > .category-nav-wrap { display: flex !important; }
 
-        /* 3. 웹툰 뷰어 영역 (수직/수평 정중앙 정렬) */
+        /* 3. 웹툰 뷰어 영역 */
         .swipe-outer-wrap { 
             flex: 1 1 auto;
             display: flex;
@@ -170,7 +164,7 @@
             user-select: none; 
             box-sizing: border-box;
             padding: 20px 0 10px;
-            min-height: 0; /* Flexbox 자식의 넘침 방지 */
+            min-height: 0; 
         }
         
         .swipe-box { 
@@ -236,7 +230,7 @@
         
         /* 4. 하단 이전글/다음글 네비게이션 바 (바닥 완벽 고정) */
         body.is-swipe-mode .category-nav-wrap {
-            flex: 0 0 auto !important; /* 높이 축소/확장 방지 */
+            flex: 0 0 auto !important; 
             margin-top: 0 !important; 
             padding: 14px 24px !important; 
             background: #181920 !important; 
@@ -327,16 +321,40 @@
             if (isSwipeMode && articleBody) {
                 document.body.classList.add('is-swipe-mode');
 
-                // 🎯 [완벽 제거] Simplifier Choice 배너 가리기 (이젠 활성화됨)
+                // 🎯 [3번 완벽 차단] Simplifier Choice 배너 가리기
                 const promoSpan = Array.from(document.querySelectorAll('span')).find(s => s.textContent.trim() === 'Simplifier Choice');
                 if (promoSpan) {
                     const promoWrap = promoSpan.closest('div').parentElement;
                     if(promoWrap) {
                         promoWrap.style.display = 'none';
-                        promoWrap.classList.add('hidden-element'); // 확실하게 투명화
+                        promoWrap.classList.add('hidden-element'); 
                     }
                 }
 
+                // 🎯 [5번 해결] 이전글/다음글 위치 및 텍스트 자동 스왑 (웹툰 역순 교정)
+                const navWrap = document.querySelector('.category-nav-wrap');
+                if (navWrap) {
+                    const labels = navWrap.querySelectorAll('.cat-nav-label');
+                    labels.forEach(label => {
+                        if (label.innerText.includes('이전글')) {
+                            label.innerHTML = label.innerHTML.replace('이전글', '다음 화 <span style="font-size:11px;">❯</span>');
+                        } else if (label.innerText.includes('다음글')) {
+                            label.innerHTML = label.innerHTML.replace('다음글', '<span style="font-size:11px;">❮</span> 이전 화');
+                        }
+                    });
+                    
+                    // Flexbox를 이용해 좌우 위치 즉시 반전
+                    navWrap.style.flexDirection = 'row-reverse';
+                    
+                    // 우측으로 넘어간 요소의 내부 정렬도 우측으로 변경
+                    const rightSideItem = navWrap.firstElementChild;
+                    if (rightSideItem && rightSideItem.classList.contains('cat-nav-item')) {
+                        rightSideItem.style.flexDirection = 'row-reverse';
+                        rightSideItem.style.textAlign = 'right';
+                    }
+                }
+
+                // 웹툰 이미지 로드
                 const rawImgs = Array.from(articleBody.querySelectorAll('img')).filter(img => {
                     return !img.classList.contains('hidden-element') && 
                            !img.closest('.PROMO_BANNER_START') && 
