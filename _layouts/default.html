@@ -100,9 +100,10 @@
             width: 100vw;
         }
         
-        /* 1. 상단 헤더 (높이 고정) */
+        /* 🎯 [개선] 상단 헤더 & 중앙 타이틀 */
         body.is-swipe-mode .cover-wrap.post-mode { 
             flex: 0 0 auto !important; 
+            position: relative !important; /* 자식 요소 절대 배치를 위해 relative 설정 */
             height: auto !important; 
             min-height: 0 !important; 
             padding: 14px 24px !important; 
@@ -110,33 +111,46 @@
             display: flex !important; 
             flex-direction: row !important; 
             align-items: center !important; 
-            justify-content: space-between !important; 
             border-bottom: 1px solid rgba(255,255,255,0.08);
         }
         body.is-swipe-mode .cover-header {
+            position: relative;
+            z-index: 10;
             justify-content: flex-start !important;
             gap: 24px !important; 
         }
         body.is-swipe-mode .cover-header > div:last-child { display: none !important; } 
+        
+        /* 🎯 [2번 해결] 타이틀을 헤더 정중앙으로 완전히 분리하여 고정 */
         body.is-swipe-mode .cover-bottom-left { 
-            position: static !important; 
+            position: absolute !important; 
+            left: 50% !important; 
+            top: 50% !important;
+            transform: translate(-50%, -50%) !important;
             padding: 0 !important; 
+            margin: 0 !important;
             display: flex !important; 
             align-items: center !important; 
-            gap: 12px !important; 
+            z-index: 5;
+            width: auto !important;
         }
         body.is-swipe-mode .cover-title { 
-            font-size: 18px !important; 
+            font-size: 16px !important; /* 모바일을 위해 살짝 작게 */
             margin: 0 !important; 
             line-height: 1.2 !important; 
             font-weight: 400 !important;
+            text-align: center !important;
+            white-space: nowrap !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            max-width: 45vw !important; /* 양옆 로고를 침범하지 않도록 제한 */
         }
         body.is-swipe-mode .cover-sub, 
         body.is-swipe-mode .cover-bottom-right { 
             display: none !important; 
         }
 
-        /* 2. 본문 컨테이너 (남은 중간 공간을 쫙 늘려서 차지) */
+        /* 2. 본문 컨테이너 */
         body.is-swipe-mode .post-mode + .article-body { 
             flex: 1 1 auto !important; 
             display: flex !important;
@@ -147,7 +161,7 @@
             overflow: hidden !important; 
         }
 
-        /* 🔥 초강력 방어막: 배너 찌꺼기 등을 강제로 숨김 */
+        /* 🔥 초강력 방어막: 배너 찌꺼기 강제 숨김 */
         body.is-swipe-mode .article-body > * { display: none !important; }
         body.is-swipe-mode .article-body > .swipe-outer-wrap { display: flex !important; }
         body.is-swipe-mode .article-body > .category-nav-wrap { display: flex !important; }
@@ -228,7 +242,7 @@
         }
         .swipe-indicator span.current { color: #00c73c; font-weight: 600; }
         
-        /* 4. 하단 이전글/다음글 네비게이션 바 (바닥 완벽 고정) */
+        /* 4. 하단 이전글/다음글 네비게이션 바 */
         body.is-swipe-mode .category-nav-wrap {
             flex: 0 0 auto !important; 
             margin-top: 0 !important; 
@@ -321,7 +335,7 @@
             if (isSwipeMode && articleBody) {
                 document.body.classList.add('is-swipe-mode');
 
-                // 🎯 [3번 완벽 차단] Simplifier Choice 배너 가리기
+                // Simplifier Choice 배너 가리기
                 const promoSpan = Array.from(document.querySelectorAll('span')).find(s => s.textContent.trim() === 'Simplifier Choice');
                 if (promoSpan) {
                     const promoWrap = promoSpan.closest('div').parentElement;
@@ -331,27 +345,45 @@
                     }
                 }
 
-                // 🎯 [5번 해결] 이전글/다음글 위치 및 텍스트 자동 스왑 (웹툰 역순 교정)
+                // 🎯 [1번 완벽 해결] 이전글/다음글 위치 DOM 완전 분해 재조립
                 const navWrap = document.querySelector('.category-nav-wrap');
                 if (navWrap) {
-                    const labels = navWrap.querySelectorAll('.cat-nav-label');
-                    labels.forEach(label => {
-                        if (label.innerText.includes('이전글')) {
-                            label.innerHTML = label.innerHTML.replace('이전글', '다음 화 <span style="font-size:11px;">❯</span>');
-                        } else if (label.innerText.includes('다음글')) {
-                            label.innerHTML = label.innerHTML.replace('다음글', '<span style="font-size:11px;">❮</span> 이전 화');
+                    const items = Array.from(navWrap.querySelectorAll('.cat-nav-item'));
+                    
+                    // 기존 영역을 깨끗하게 비우고 좌/우 박스 새로 생성
+                    navWrap.innerHTML = ''; 
+                    navWrap.style.display = 'flex';
+                    navWrap.style.justifyContent = 'space-between';
+                    navWrap.style.alignItems = 'center';
+
+                    const leftBox = document.createElement('div');
+                    const rightBox = document.createElement('div');
+                    leftBox.style.flex = '1'; leftBox.style.display = 'flex'; leftBox.style.justifyContent = 'flex-start';
+                    rightBox.style.flex = '1'; rightBox.style.display = 'flex'; rightBox.style.justifyContent = 'flex-end';
+
+                    items.forEach(item => {
+                        const label = item.querySelector('.cat-nav-label');
+                        if (label) {
+                            // 과거글(블로그상 이전글) -> 무조건 왼쪽 박스로!
+                            if (label.innerText.includes('이전글')) {
+                                label.innerHTML = '<span style="font-size:11px;">❮</span> 이전 화';
+                                item.style.flexDirection = 'row'; 
+                                item.style.textAlign = 'left';
+                                leftBox.appendChild(item);
+                            } 
+                            // 최신글(블로그상 다음글) -> 무조건 오른쪽 박스로!
+                            else if (label.innerText.includes('다음글')) {
+                                label.innerHTML = '다음 화 <span style="font-size:11px;">❯</span>';
+                                item.style.flexDirection = 'row-reverse'; 
+                                item.style.textAlign = 'right';
+                                rightBox.appendChild(item);
+                            }
                         }
                     });
-                    
-                    // Flexbox를 이용해 좌우 위치 즉시 반전
-                    navWrap.style.flexDirection = 'row-reverse';
-                    
-                    // 우측으로 넘어간 요소의 내부 정렬도 우측으로 변경
-                    const rightSideItem = navWrap.firstElementChild;
-                    if (rightSideItem && rightSideItem.classList.contains('cat-nav-item')) {
-                        rightSideItem.style.flexDirection = 'row-reverse';
-                        rightSideItem.style.textAlign = 'right';
-                    }
+
+                    // 분해 조립된 박스를 장착
+                    navWrap.appendChild(leftBox);
+                    navWrap.appendChild(rightBox);
                 }
 
                 // 웹툰 이미지 로드
