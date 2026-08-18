@@ -334,7 +334,7 @@
             if (isSwipeMode && articleBody) {
                 document.body.classList.add('is-swipe-mode');
 
-                // Simplifier Choice 배너 가리기
+                // 배너 가리기
                 const promoSpan = Array.from(document.querySelectorAll('span')).find(s => s.textContent.trim() === 'Simplifier Choice');
                 if (promoSpan) {
                     const promoWrap = promoSpan.closest('div').parentElement;
@@ -344,10 +344,14 @@
                     }
                 }
 
-                // 🎯 [완벽 해결] 역순 블로그 정렬을 웹툰 정방향 순서로 교정 배치
+                // 🎯 [지능형 스왑 및 여백 완벽 교정]
                 const navWrap = document.querySelector('.category-nav-wrap');
                 if (navWrap) {
                     const items = Array.from(navWrap.querySelectorAll('.cat-nav-item'));
+                    
+                    const currentTitleStr = document.getElementById('displayTitle') ? document.getElementById('displayTitle').innerText : '';
+                    const currentMatch = currentTitleStr.match(/(\d+)화/);
+                    const currentEp = currentMatch ? parseInt(currentMatch[1], 10) : 0;
                     
                     navWrap.innerHTML = ''; 
                     navWrap.style.display = 'flex';
@@ -360,17 +364,31 @@
                     rightBox.style.flex = '1'; rightBox.style.display = 'flex'; rightBox.style.justifyContent = 'flex-end';
 
                     items.forEach(item => {
+                        // ★ 핵심 해결: 불필요한 클래스를 지우고, 마진 속성(margin-left: auto)을 강제 초기화하여 중앙 쏠림 방지
+                        item.classList.remove('cat-nav-right', 'cat-nav-left');
+                        item.style.marginLeft = '0';
+                        item.style.marginRight = '0';
+                        
                         const label = item.querySelector('.cat-nav-label');
-                        if (label) {
-                            // 블로그 '다음글' = 과거 글 = 이전 화 (좌측 배치)
-                            if (label.innerText.includes('다음글')) {
+                        const titleEl = item.querySelector('.nav-title');
+                        
+                        if (label && titleEl) {
+                            const linkMatch = titleEl.innerText.match(/(\d+)화/);
+                            const linkEp = linkMatch ? parseInt(linkMatch[1], 10) : 0;
+
+                            let isPrev = false;
+                            if (currentEp > 0 && linkEp > 0) {
+                                isPrev = (linkEp < currentEp);
+                            } else {
+                                isPrev = (label.innerText.includes('다음글') || label.innerText.includes('이전 화'));
+                            }
+
+                            if (isPrev) {
                                 label.innerHTML = '<span style="font-size:11px;">❮</span> 이전 화';
                                 item.style.flexDirection = 'row'; 
                                 item.style.textAlign = 'left';
                                 leftBox.appendChild(item);
-                            } 
-                            // 블로그 '이전글' = 최신 글 = 다음 화 (우측 배치)
-                            else if (label.innerText.includes('이전글')) {
+                            } else {
                                 label.innerHTML = '다음 화 <span style="font-size:11px;">❯</span>';
                                 item.style.flexDirection = 'row-reverse'; 
                                 item.style.textAlign = 'right';
@@ -379,7 +397,6 @@
                         }
                     });
 
-                    // 분해 조립된 박스를 장착 (왼쪽: 과거화, 오른쪽: 최신화)
                     navWrap.appendChild(leftBox);
                     navWrap.appendChild(rightBox);
                 }

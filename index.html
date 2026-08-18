@@ -127,7 +127,7 @@
   .story-section { position: relative; z-index: 40; background: #080808; color: #f5f3ee; padding: 60px 0 180px 0; opacity: 0; }
   .story-essay, .story-gallery, .story-testimonials { pointer-events: auto; }
   .story-essay { max-width: 680px; margin: 0 auto 120px auto; }
-  .story-essay p { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-weight: 300; font-size: 15px; line-height: 1.85; color: #c9c8c2; margin-bottom: 32px; word-break: keep-all; }
+  .story-essay p { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-weight: 300; font-size: 17px; line-height: 1.85; color: #c9c8c2; margin-bottom: 32px; word-break: keep-all; }
   .story-essay p.intro-p::first-letter { font-family: 'Boska', serif; font-weight: 300; font-size: 5.2rem; float: left; line-height: 0.78; padding-right: 18px; padding-top: 6px; color: #f5f3ee; }
   @media (max-width:700px){ .story-essay p.intro-p::first-letter { font-size: 3.6rem; padding-right: 12px; padding-top: 4px; } }
 
@@ -150,11 +150,46 @@
   .story-testimonials { max-width: 720px; margin: 0 auto; text-align: left; }
   .testimonial-header { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; color: #8f8b82; text-transform: uppercase; text-align: center; margin-bottom: 48px; }
   .quote-block { margin-bottom: 44px; }
-  .quote-text { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-size: 15px; font-weight: 300; line-height: 2.1; color: #f5f3ee; word-break: keep-all; margin:0 0 16px; text-decoration: underline; text-decoration-color: rgba(245,243,238,0.28); text-underline-offset: 7px; text-decoration-thickness: 1px; }
+  .quote-text { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-size: 17px; font-weight: 300; line-height: 2.1; color: #f5f3ee; word-break: keep-all; margin:0 0 16px; text-decoration: underline; text-decoration-color: rgba(245,243,238,0.28); text-underline-offset: 7px; text-decoration-thickness: 1px; }
   .quote-attribution { font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:14px; color:#8f8b82; display:flex; align-items:center; gap:8px; }
   .quote-avatar { display: flex; align-items:center; justify-content:center; width: 28px; height: 28px; border-radius: 50%; background: #000; border: 1px solid rgba(245,243,238,0.18); flex-shrink:0; overflow:hidden; }
   .quote-avatar img { width:100%; height:100%; object-fit:cover; display:block; }
   .quote-avatar svg { display:block; }
+
+  /* =========================================================
+     🎯 CTA
+     ========================================================= */
+  .cta-section { padding: 160px 0; text-align:center; }
+  .cta-section h2 { font-family:'Boska','Source Serif 4',serif; font-weight:200; font-style:italic; font-size:clamp(32px, 5vw, 54px); color:#f5f3ee; margin:0 0 20px; line-height:1.3; }
+  .cta-section p { font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:16px; color:#8f8b82; margin:0 0 40px; }
+  .cta-button { display:inline-block; background:#f5f3ee; color:#080808; font-family:'Boska',serif; font-style:italic; font-weight:400; font-size:18px; padding:16px 40px; border-radius:999px; transition: background .2s, color .2s, transform .2s; }
+  .cta-button:hover { background:#080808; color:#f5f3ee; box-shadow: inset 0 0 0 1px #f5f3ee; transform: translateY(-1px); }
+
+  /* =========================================================
+     📎 FOOTER
+     ========================================================= */
+  footer.site-footer { background:#080808; border-top:1px solid rgba(245,243,238,0.08); padding: 64px 0 32px; }
+  .footer-top { display:flex; justify-content:space-between; gap:60px; flex-wrap:wrap; margin-bottom:56px; }
+  .footer-brand { max-width: 280px; }
+  .footer-brand img { height:22px; width:auto; display:block; margin-bottom:14px; }
+  .footer-brand p { font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:13px; color:#8f8b82; line-height:1.6; margin:0; }
+  .footer-links { display:flex; gap:64px; flex-wrap:wrap; }
+  .footer-col h4 { font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:12px; font-weight:500; letter-spacing:0.08em; color:#8f8b82; text-transform:uppercase; margin:0 0 16px; }
+  .footer-col a { display:block; font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:14px; color:#c9c8c2; margin-bottom:12px; transition:color .2s; }
+  .footer-col a:hover { color:#f5f3ee; }
+  .footer-bottom { border-top:1px solid rgba(245,243,238,0.08); padding-top:24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+  .footer-legal { font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:12px; color:#5c5952; line-height:1.7; }
+  .footer-social { display:flex; gap:16px; }
+  .footer-social a { color:#8f8b82; transition:color .2s; display:flex; align-items:center; }
+  .footer-social a:hover { color:#f5f3ee; }
+
+  @media (max-width:700px){
+    .cta-section { padding: 100px 0; }
+    .footer-top { flex-direction:column; gap:40px; }
+    .footer-links { gap:40px; }
+    .footer-bottom { flex-direction:column; align-items:flex-start; }
+  }
+
 </style>
 <noscript><style>
   .proven-wrap, #proven-fade { opacity:1 !important; }
@@ -350,7 +385,7 @@
   <div class="story-testimonials">
     <div class="testimonial-header">FOUNDERS' WORDS</div>
     <div class="quote-block">
-      <p class="quote-text">코치님과 함께한 후 제품팀이 몰라보게 안정화됐습니다. 덕분에 저는 대표로서 사업에 집중할 수 있었고, 제품 UX까지 개선되면서 1년 만에 매출이 3배 이상 성장할 수 있었습니다.</p>
+      <p class="quote-text">코치님과 함께한 후 제품팀이 몰라보게 안정화됐습니다. 덕분에 저는 대표로서 사업에 집중할 수 있었고, 제품 UX가 개선되면서 1년 만에 매출이 3배 이상 성장할 수 있었습니다.</p>
       <div class="quote-attribution"><div class="quote-avatar"><img src="assets/testimonials/u.png" alt="이커머스사 대표"></div>이커머스사 대표</div>
     </div>
     <div class="quote-block">
@@ -363,6 +398,52 @@
     </div>
   </div>
 </section>
+
+<section class="cta-section wrap" id="contact">
+  <h2>It's never too late to simplify.</h2>
+  <p>복잡한 문제, 함께 풀어볼까요?</p>
+  <a href="mailto:simon@simplifier.co.kr" class="cta-button">함께 이야기 나눠요</a>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/nav-logo-white.avif" alt="Simplifier">
+        <p>복잡한 것을 단순화하면,<br>성장은 저절로 따라옵니다.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="/log.html">Content</a>
+          <a href="/log.html">Startup</a>
+          <a href="https://www.yes24.com/product/goods/147079674" target="_blank" rel="noopener">Knowledge</a>
+          <a href="/log.html">Life</a>
+        </div>
+        <div class="footer-col">
+          <h4>Simplifier</h4>
+          <a href="#contact">Contact</a>
+          <a href="/log.html">Log</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legal">
+        주식회사 심플리파이어 · 대표 한성희, 박미나<br>
+        서울 강남구 테헤란로 128 성곡빌딩 3F 388호 · simon@simplifier.co.kr<br>
+        © 2026 Simplifier. All rights reserved.
+      </div>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.11 20.45H3.56V9h3.55v11.45z"/></svg>
+        </a>
+        <a href="https://hansunghee7.github.io/log.html" target="_blank" rel="noopener" aria-label="Log">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="3" width="16" height="18" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="12" y2="16"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
 
 <script>
 (function(){
