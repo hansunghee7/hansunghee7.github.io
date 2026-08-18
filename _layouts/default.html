@@ -100,10 +100,10 @@
             width: 100vw;
         }
         
-        /* 🎯 [개선] 상단 헤더 & 중앙 타이틀 */
+        /* 1. 상단 헤더 (높이 고정 & 타이틀 중앙) */
         body.is-swipe-mode .cover-wrap.post-mode { 
             flex: 0 0 auto !important; 
-            position: relative !important; /* 자식 요소 절대 배치를 위해 relative 설정 */
+            position: relative !important; 
             height: auto !important; 
             min-height: 0 !important; 
             padding: 14px 24px !important; 
@@ -121,7 +121,6 @@
         }
         body.is-swipe-mode .cover-header > div:last-child { display: none !important; } 
         
-        /* 🎯 [2번 해결] 타이틀을 헤더 정중앙으로 완전히 분리하여 고정 */
         body.is-swipe-mode .cover-bottom-left { 
             position: absolute !important; 
             left: 50% !important; 
@@ -135,7 +134,7 @@
             width: auto !important;
         }
         body.is-swipe-mode .cover-title { 
-            font-size: 16px !important; /* 모바일을 위해 살짝 작게 */
+            font-size: 16px !important; 
             margin: 0 !important; 
             line-height: 1.2 !important; 
             font-weight: 400 !important;
@@ -143,7 +142,7 @@
             white-space: nowrap !important;
             overflow: hidden !important;
             text-overflow: ellipsis !important;
-            max-width: 45vw !important; /* 양옆 로고를 침범하지 않도록 제한 */
+            max-width: 45vw !important; 
         }
         body.is-swipe-mode .cover-sub, 
         body.is-swipe-mode .cover-bottom-right { 
@@ -345,12 +344,11 @@
                     }
                 }
 
-                // 🎯 [1번 완벽 해결] 이전글/다음글 위치 DOM 완전 분해 재조립
+                // 🎯 [완벽 해결] 역순 블로그 정렬을 웹툰 정방향 순서로 교정 배치
                 const navWrap = document.querySelector('.category-nav-wrap');
                 if (navWrap) {
                     const items = Array.from(navWrap.querySelectorAll('.cat-nav-item'));
                     
-                    // 기존 영역을 깨끗하게 비우고 좌/우 박스 새로 생성
                     navWrap.innerHTML = ''; 
                     navWrap.style.display = 'flex';
                     navWrap.style.justifyContent = 'space-between';
@@ -364,15 +362,15 @@
                     items.forEach(item => {
                         const label = item.querySelector('.cat-nav-label');
                         if (label) {
-                            // 과거글(블로그상 이전글) -> 무조건 왼쪽 박스로!
-                            if (label.innerText.includes('이전글')) {
+                            // 블로그 '다음글' = 과거 글 = 이전 화 (좌측 배치)
+                            if (label.innerText.includes('다음글')) {
                                 label.innerHTML = '<span style="font-size:11px;">❮</span> 이전 화';
                                 item.style.flexDirection = 'row'; 
                                 item.style.textAlign = 'left';
                                 leftBox.appendChild(item);
                             } 
-                            // 최신글(블로그상 다음글) -> 무조건 오른쪽 박스로!
-                            else if (label.innerText.includes('다음글')) {
+                            // 블로그 '이전글' = 최신 글 = 다음 화 (우측 배치)
+                            else if (label.innerText.includes('이전글')) {
                                 label.innerHTML = '다음 화 <span style="font-size:11px;">❯</span>';
                                 item.style.flexDirection = 'row-reverse'; 
                                 item.style.textAlign = 'right';
@@ -381,7 +379,7 @@
                         }
                     });
 
-                    // 분해 조립된 박스를 장착
+                    // 분해 조립된 박스를 장착 (왼쪽: 과거화, 오른쪽: 최신화)
                     navWrap.appendChild(leftBox);
                     navWrap.appendChild(rightBox);
                 }
