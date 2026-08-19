@@ -65,7 +65,7 @@
   .mobile-menu-cta { display:block; text-align:center; margin-top:30px; margin-bottom: 8px; padding:14px 0 !important; border-radius:999px; background:#f5f3ee; color:#080808 !important; font-weight:500; font-family: 'Pretendard Variable', 'Pretendard', sans-serif; text-decoration: none; }
   @media (max-width:860px){ .nav-links{ display:none; } .nav-burger{ display:flex; } .nav-actions .nav-apply { display:none; } }
 
-  .hero-wrapper { position: sticky; top: var(--nav-height); z-index: 5; height: calc(100vh - var(--nav-height)); }
+  .hero-wrapper { position: sticky; top: var(--nav-height); z-index: 5; height: calc(100vh - var(--nav-height)); background: #080808; }
   .hero { height: 100%; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; }
   #hero-fade { will-change: opacity; width: 100%; }
   .hero h1 { font-family: 'Boska', 'Source Serif 4', serif; font-weight: 200; font-size: clamp(42px, 7.3vw, 79px); line-height: 1.2; max-width: 1060px; margin: 0 auto 6px; }
@@ -78,13 +78,14 @@
   .scroll-cue .chev { display:block; width:13px; height:13px; border-right:1.5px solid #8f8b82; border-bottom:1.5px solid #8f8b82; transform: rotate(45deg); }
 
   /* =========================================================
-     ✨ PROVEN — 히어로와 정확히 동일한 방식으로 처리
+     ✨ PROVEN
      ========================================================= */
   .proven-wrap {
     position: sticky;
     top: var(--nav-height);
     z-index: 10;
     height: calc(100vh - var(--nav-height));
+    background: #080808;
   }
   .proven-section { height: 100%; display:flex; flex-direction:column; align-items:center; justify-content:center; }
   #proven-fade { will-change: opacity; width: 100%; }
@@ -122,9 +123,9 @@
   }
 
   /* =========================================================
-     📖 STORY
+     📖 STORY (에세이 + 원래 스토리 갤러리 + 테스티모니얼)
      ========================================================= */
-  .story-section { position: relative; z-index: 40; background: #080808; color: #f5f3ee; padding: 60px 0 180px 0; opacity: 0; }
+  .story-section { position: relative; z-index: 40; background: #080808; color: #f5f3ee; padding: 60px 0 120px 0; opacity: 0; }
   .story-essay, .story-gallery, .story-testimonials { pointer-events: auto; }
   .story-essay { max-width: 680px; margin: 0 auto 120px auto; }
   .story-essay p { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-weight: 300; font-size: 17px; line-height: 1.85; color: #c9c8c2; margin-bottom: 32px; word-break: keep-all; }
@@ -132,24 +133,26 @@
   @media (max-width:700px){ .story-essay p.intro-p::first-letter { font-size: 3.6rem; padding-right: 12px; padding-top: 4px; } }
 
   .story-gallery { width: min(1200px, 94vw); margin: 0 auto 140px auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
-  .gallery-item {
+  .story-gallery .gallery-item {
     width: 100%; height: 240px; border-radius: 6px; overflow: hidden; background: #181818;
     opacity: 0; transform: translateY(18px);
     transition: opacity 1s ease, transform 1s ease;
   }
-  .gallery-item.show { opacity: 1; transform: translateY(0); }
-  .gallery-item img { width: 100%; height: 100%; object-fit: cover; filter: saturate(1.2) brightness(1.03) contrast(1.05); transition: transform 0.5s ease, filter 0.5s ease; }
-  .gallery-item img:hover { transform: scale(1.06); filter: saturate(1.35) brightness(1.08) contrast(1.08); }
+  .story-gallery .gallery-item.show { opacity: 1; transform: translateY(0); }
+  .story-gallery .gallery-item img { width: 100%; height: 100%; object-fit: cover; filter: saturate(1.2) brightness(1.03) contrast(1.05); transition: transform 0.5s ease, filter 0.5s ease; }
+  .story-gallery .gallery-item img:hover { transform: scale(1.06); filter: saturate(1.35) brightness(1.08) contrast(1.08); }
   @media (max-width:760px){
     .story-gallery { grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 90px; }
-    .gallery-item { height: 130px; }
-    .gallery-item:nth-child(4), .gallery-item:nth-child(5) { display: none; }
+    .story-gallery .gallery-item { height: 130px; }
+    .story-gallery .gallery-item:nth-child(4), .story-gallery .gallery-item:nth-child(5) { display: none; }
   }
-  @media (max-width:480px){ .gallery-item { height: 110px; } }
+  @media (max-width:480px){ .story-gallery .gallery-item { height: 110px; } }
 
   .story-testimonials { max-width: 720px; margin: 0 auto; text-align: left; }
   .testimonial-header { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; color: #8f8b82; text-transform: uppercase; text-align: center; margin-bottom: 48px; }
-  .quote-block { margin-bottom: 44px; }
+  
+  .quote-block { margin-bottom: 44px; opacity: 0; transform: translateY(18px); transition: opacity 1s ease, transform 1s ease; }
+  .quote-block.show { opacity: 1; transform: translateY(0); }
   .quote-text { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-size: 17px; font-weight: 300; line-height: 2.1; color: #f5f3ee; word-break: keep-all; margin:0 0 16px; text-decoration: underline; text-decoration-color: rgba(245,243,238,0.28); text-underline-offset: 7px; text-decoration-thickness: 1px; }
   .quote-attribution { font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:14px; color:#8f8b82; display:flex; align-items:center; gap:8px; }
   .quote-avatar { display: flex; align-items:center; justify-content:center; width: 28px; height: 28px; border-radius: 50%; background: #000; border: 1px solid rgba(245,243,238,0.18); flex-shrink:0; overflow:hidden; }
@@ -157,36 +160,75 @@
   .quote-avatar svg { display:block; }
 
   /* =========================================================
-     🎯 CTA
+     🎯 CTA + YC STYLE GALLERY (검은색 배경 내부에 배치)
      ========================================================= */
-  .cta-section { padding: 160px 0; text-align:center; }
-  .cta-section h2 { font-family:'Boska','Source Serif 4',serif; font-weight:200; font-style:italic; font-size:clamp(32px, 5vw, 54px); color:#f5f3ee; margin:0 0 20px; line-height:1.3; }
-  .cta-section p { font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:16px; color:#8f8b82; margin:0 0 40px; }
-  .cta-button { display:inline-block; background:#f5f3ee; color:#080808; font-family:'Boska',serif; font-style:italic; font-weight:400; font-size:18px; padding:16px 40px; border-radius:999px; transition: background .2s, color .2s, transform .2s; }
-  .cta-button:hover { background:#080808; color:#f5f3ee; box-shadow: inset 0 0 0 1px #f5f3ee; transform: translateY(-1px); }
+  .cta-section { position: relative; z-index: 40; background: #080808; padding-top: 100px; }
+  
+  .cta-content { text-align:center; margin-bottom: 80px; }
+  
+  /* YC 스타일로 기울임, 크기, 간격 조정 */
+  .cta-content h2 { 
+    font-family:'Boska','Source Serif 4',serif; 
+    font-weight:300; 
+    font-style:italic; 
+    font-size:clamp(36px, 5.5vw, 56px); 
+    color:#f5f3ee; 
+    margin:0 0 8px; /* 문구와의 간격 타이트하게 */
+    line-height:1.2; 
+    letter-spacing:-0.01em; 
+  }
+  .cta-content p { 
+    font-family:'Pretendard Variable','Pretendard',sans-serif; 
+    font-size:15.5px; 
+    font-weight:300; 
+    color:#a3a097; 
+    margin:0 0 32px; /* 버튼과의 간격 */
+  }
+  .cta-button { display:inline-block; background:#f5f3ee; color:#080808; font-family:'Boska',serif; font-style:italic; font-weight:400; font-size:18px; padding:16px 44px; border-radius:999px; transition: background .2s, color .2s, transform .2s; }
+  .cta-button:hover { background:#fff; box-shadow: inset 0 0 0 1px #f5f3ee; transform: translateY(-1px); }
+
+  /* 신규 사진 영역 (검은색 CTA 영역 내부에 위치) */
+  .new-bottom-gallery-section { padding: 0 24px 80px; }
+  .new-bottom-gallery { max-width: 1360px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .new-gallery-item {
+    width: 100%; height: 260px; border-radius: 12px; overflow: hidden; background: #181818;
+    opacity: 0; transform: translateY(18px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  .new-gallery-item.show { opacity: 1; transform: translateY(0); }
+  .new-gallery-item img { width: 100%; height: 100%; object-fit: cover; filter: saturate(1.2) brightness(1.03) contrast(1.05); transition: transform 0.5s ease, filter 0.5s ease; }
+  .new-gallery-item img:hover { transform: scale(1.06); filter: saturate(1.35) brightness(1.08) contrast(1.08); }
+  
+  @media (max-width:860px){
+    .new-bottom-gallery { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .new-gallery-item { height: 180px; }
+    .new-gallery-item:nth-child(4), .new-gallery-item:nth-child(5) { display: none; }
+  }
+  @media (max-width:480px){ .new-gallery-item { height: 140px; } }
 
   /* =========================================================
-     📎 FOOTER
+     📎 FOOTER (크림색 바탕 / 검은색 텍스트 & 라인 반전)
      ========================================================= */
-  footer.site-footer { background:#080808; border-top:1px solid rgba(245,243,238,0.08); padding: 64px 0 32px; }
-  .footer-top { display:flex; justify-content:space-between; gap:60px; flex-wrap:wrap; margin-bottom:56px; }
+  footer.site-footer { background:#f5f3ee; border-top: none; padding: 60px 0 60px; color:#080808; position: relative; z-index: 40; }
+  .footer-top { display:flex; justify-content:space-between; gap:60px; flex-wrap:wrap; margin-bottom:64px; }
   .footer-brand { max-width: 280px; }
-  .footer-brand img { height:22px; width:auto; display:block; margin-bottom:14px; }
-  .footer-brand p { font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:13px; color:#8f8b82; line-height:1.6; margin:0; }
-  .footer-links { display:flex; gap:64px; flex-wrap:wrap; }
-  .footer-col h4 { font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:12px; font-weight:500; letter-spacing:0.08em; color:#8f8b82; text-transform:uppercase; margin:0 0 16px; }
-  .footer-col a { display:block; font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:14px; color:#c9c8c2; margin-bottom:12px; transition:color .2s; }
-  .footer-col a:hover { color:#f5f3ee; }
-  .footer-bottom { border-top:1px solid rgba(245,243,238,0.08); padding-top:24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
-  .footer-legal { font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:12px; color:#5c5952; line-height:1.7; }
-  .footer-social { display:flex; gap:16px; }
-  .footer-social a { color:#8f8b82; transition:color .2s; display:flex; align-items:center; }
-  .footer-social a:hover { color:#f5f3ee; }
+  /* 검은색 로고용 인버트 필터 */
+  .footer-brand img { height:22px; width:auto; display:block; margin-bottom:20px; filter: invert(1); }
+  .footer-brand p { font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:14px; color:#5c5952; line-height:1.6; margin:0; }
+  .footer-links { display:flex; gap:80px; flex-wrap:wrap; }
+  .footer-col h4 { font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:14px; font-weight:600; color:#080808; text-transform:none; margin:0 0 20px; }
+  .footer-col a { display:block; font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:13.5px; color:#5c5952; margin-bottom:14px; transition:color .2s; }
+  .footer-col a:hover { color:#080808; }
+  .footer-bottom { border-top:1px solid rgba(8,8,8,0.12); padding-top:32px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+  .footer-legal { font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:13px; color:#8f8b82; line-height:1.7; }
+  .footer-social { display:flex; gap:20px; }
+  .footer-social a { color:#5c5952; transition:color .2s; display:flex; align-items:center; }
+  .footer-social a:hover { color:#080808; }
 
   @media (max-width:700px){
-    .cta-section { padding: 100px 0; }
-    .footer-top { flex-direction:column; gap:40px; }
-    .footer-links { gap:40px; }
+    footer.site-footer { padding: 40px 0 40px; }
+    .footer-top { flex-direction:column; gap:48px; margin-bottom: 48px; }
+    .footer-links { gap:48px; }
     .footer-bottom { flex-direction:column; align-items:flex-start; }
   }
 
@@ -197,7 +239,9 @@
   .reveal-grid .gitem img { filter:none !important; opacity:1 !important; }
   #hero-fade { opacity:1 !important; }
   .story-section { opacity:1 !important; }
-  .gallery-item { opacity:1 !important; transform:none !important; }
+  .story-gallery .gallery-item { opacity:1 !important; transform:none !important; }
+  .new-gallery-item { opacity:1 !important; transform:none !important; }
+  .quote-block { opacity:1 !important; transform:none !important; }
 </style></noscript>
 </head>
 <body>
@@ -304,23 +348,11 @@
 </header>
 <script>
 (function(){
-  // ==========================================
-  // 🎛️ VIBE CODING CONTROL PANEL (인터랙션 설정)
-  // ==========================================
   var CONFIG = {
-    // 1. [프로븐 영역 숫자 카운트업 시작점]
-    // 화면의 위에서부터 몇 % 지점을 통과할 때 카운팅을 시작할지 조절합니다.
-    // '-65% 0px -35% 0px' : 화면 상단에서 65% 내려온 지점 (기본값)
-    // '-50% 0px -50% 0px' : 화면 정중앙
-    // '-80% 0px -20% 0px' : 화면의 80%를 덮었을 때 (더 늦게 시작)
     statsTriggerMargin: '-65% 0px -35% 0px',
-
-    // 2. [스크롤 겹침(Overlap) 페이드 아웃/인 타이밍]
-    // 0~1 사이의 값으로 조절합니다.
-    provenFadeEnd: 0.3, // 로고 그리드가 옅어지며 완전히 사라지는 시점 (작을수록 빨리 사라짐)
-    storyFadeEnd: 0.5   // 검은색 스토리 영역이 완전히 나타나는 시점 (클수록 천천히 나타남)
+    provenFadeEnd: 0.3,
+    storyFadeEnd: 0.5   
   };
-  // ==========================================
 
   var burger = document.getElementById('nav-burger');
   var menu = document.getElementById('mobile-menu');
@@ -393,6 +425,7 @@
       그래서 Simplifier는 조언이 아니라 실무를 함께 뛰는 플레잉코칭을 지향합니다. 때로는 CPO로, 때로는 코치로, 때로는 강연자로 — 현장에서 직접 문제를 단순화합니다. 복잡한 것들을 하나씩 걷어내다 보면, 결국 모든 것이 성장으로 향할 수밖에 없는 순간이 오기 때문입니다.
     </p>
   </div>
+  
   <div class="story-gallery">
     <div class="gallery-item"><img src="assets/story/1-lecture.jpg" alt="강연 현장"></div>
     <div class="gallery-item"><img src="assets/story/2-session.jpg" alt="실무진과 논의하는 모습"></div>
@@ -400,6 +433,7 @@
     <div class="gallery-item"><img src="assets/story/4-meetup.jpg" alt="그룹 밋업"></div>
     <div class="gallery-item"><img src="assets/story/5-casual.jpg" alt="캐주얼한 순간"></div>
   </div>
+
   <div class="story-testimonials">
     <div class="testimonial-header">FOUNDERS' WORDS</div>
     <div class="quote-block">
@@ -417,18 +451,32 @@
   </div>
 </section>
 
-<section class="cta-section wrap" id="contact">
-  <h2>It's time to simplify.</h2>
-  <p>성장의 문제를 함께 풀어볼까요?</p>
-  <a href="mailto:simon@simplifier.co.kr" class="cta-button">Contact</a>
+<!-- 2. CTA (Contact) 영역 -->
+<section class="cta-section" id="contact">
+  <div class="cta-content wrap">
+    <h2>It's time to simplify.</h2>
+    <p>폭발적 성장을 만들 문제를 함께 풀어볼까요?</p>
+    <a href="mailto:simon@simplifier.co.kr" class="cta-button">Contact</a>
+  </div>
+
+  <div class="new-bottom-gallery-section">
+    <div class="new-bottom-gallery">
+      <div class="new-gallery-item"><img src="assets/story/1-lecture.jpg" alt="신규 사진 1"></div>
+      <div class="new-gallery-item"><img src="assets/story/2-session.jpg" alt="신규 사진 2"></div>
+      <div class="new-gallery-item"><img src="assets/story/3-whiteboard.jpg" alt="신규 사진 3"></div>
+      <div class="new-gallery-item"><img src="assets/story/4-meetup.jpg" alt="신규 사진 4"></div>
+      <div class="new-gallery-item"><img src="assets/story/5-casual.jpg" alt="신규 사진 5"></div>
+    </div>
+  </div>
 </section>
 
+<!-- 3. 크림색 반전 푸터 영역 -->
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-top">
       <div class="footer-brand">
         <img src="assets/nav-logo-white.avif" alt="Simplifier">
-        <p>복잡함을 단순화할 때,<br>폭발적 성장이 만들어집니다.</p>
+        <p>복잡함을 단순화하는 순간<br>폭발적 성장이 만들어집니다.</p>
       </div>
       <div class="footer-links">
         <div class="footer-col">
@@ -471,14 +519,12 @@
 
 <script>
 (function(){
-  // Vibe Coding 패널 변수 가져오기 (전역스코프 접근 방지)
   var CONFIG = {
     statsTriggerMargin: '-65% 0px -35% 0px',
     provenFadeEnd: 0.3,
     storyFadeEnd: 0.5
   };
 
-  // Vibe Coding 컨트롤 패널 설정 덮어쓰기 (상단에 정의된 스크립트가 있다면)
   if (typeof window.CONFIG !== 'undefined') {
     CONFIG = window.CONFIG;
   }
@@ -488,7 +534,6 @@
   var provenFade = document.getElementById('proven-fade');
   var provenWrap = document.getElementById('proven-wrap');
 
-  // 1) 히어로 페이드아웃 — 페이지 최상단 기준 절대 scrollY로 단순 계산
   function syncHeroFade() {
     var scrolled = window.scrollY;
     var vh = window.innerHeight;
@@ -498,7 +543,6 @@
     if (heroWrapper) heroWrapper.style.pointerEvents = (heroOpacity <= 0) ? 'none' : 'auto';
   }
 
-  // 2) Proven 페이드아웃 + 스토리 페이드인 — 독립 조절 가능
   var storySection = document.getElementById('story-section');
   var navHeight = 68;
   function syncProvenFade() {
@@ -508,7 +552,6 @@
     var coverableRange = vh - navHeight;
     var covered = Math.min(1, Math.max(0, (vh - storyTop) / coverableRange));
 
-    // 상단 CONFIG 변수를 활용하여 페이드 시점을 조절
     var provenT = Math.min(1, Math.max(0, covered / CONFIG.provenFadeEnd));
     var storyT = Math.min(1, Math.max(0, covered / CONFIG.storyFadeEnd));
 
@@ -523,7 +566,6 @@
   window.addEventListener('resize', syncAll);
   syncAll();
 
-  // 3) 숫자 카운트업 (한 번만 실행)
   var counted = false;
   function animateNumbers() {
     if (counted) return;
@@ -550,7 +592,6 @@
     });
   }
 
-  // 4) 로고 개별 등장(떠오르며 컬러 전환) — IntersectionObserver로 간단하게
   var gitems = document.querySelectorAll('.reveal-grid .gitem');
   var statsBlock = document.querySelector('.reveal-stats');
   var revealed = false;
@@ -577,7 +618,6 @@
     }
   }
 
-  // 5) 숫자 카운트업: CONFIG.statsTriggerMargin 변수 연동
   if (statsBlock) {
     if ('IntersectionObserver' in window) {
       var statsObserver = new IntersectionObserver(function(entries){
@@ -594,29 +634,78 @@
     }
   }
 
-  // 6) 스토리 갤러리 사진: 순차 등장
-  var galleryItems = document.querySelectorAll('.gallery-item');
-  var galleryRevealed = false;
-  function revealGallery(){
-    if (galleryRevealed) return;
-    galleryRevealed = true;
-    galleryItems.forEach(function(item, i){
+  var storyGalleryItems = document.querySelectorAll('.story-gallery .gallery-item');
+  var storyGalleryRevealed = false;
+  function revealStoryGallery(){
+    if (storyGalleryRevealed) return;
+    storyGalleryRevealed = true;
+    storyGalleryItems.forEach(function(item, i){
       setTimeout(function(){ item.classList.add('show'); }, i * 110);
     });
   }
-  if (galleryItems.length > 0) {
+  if (storyGalleryItems.length > 0) {
     if ('IntersectionObserver' in window) {
-      var galleryObserver = new IntersectionObserver(function(entries){
+      var storyGalleryObserver = new IntersectionObserver(function(entries){
         entries.forEach(function(entry){
           if (entry.isIntersecting) {
-            revealGallery();
-            galleryObserver.unobserve(entry.target);
+            revealStoryGallery();
+            storyGalleryObserver.unobserve(entry.target);
           }
         });
       }, { threshold: 0.2 });
-      galleryObserver.observe(document.querySelector('.story-gallery'));
+      storyGalleryObserver.observe(document.querySelector('.story-gallery'));
     } else {
-      revealGallery();
+      revealStoryGallery();
+    }
+  }
+
+  var newGalleryItems = document.querySelectorAll('.new-gallery-item');
+  var newGalleryRevealed = false;
+  function revealNewGallery(){
+    if (newGalleryRevealed) return;
+    newGalleryRevealed = true;
+    newGalleryItems.forEach(function(item, i){
+      setTimeout(function(){ item.classList.add('show'); }, i * 110);
+    });
+  }
+  if (newGalleryItems.length > 0) {
+    if ('IntersectionObserver' in window) {
+      var newGalleryObserver = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting) {
+            revealNewGallery();
+            newGalleryObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      newGalleryObserver.observe(document.querySelector('.new-bottom-gallery'));
+    } else {
+      revealNewGallery();
+    }
+  }
+
+  var quoteBlocks = document.querySelectorAll('.quote-block');
+  var quoteRevealed = false;
+  function revealQuotes(){
+    if (quoteRevealed) return;
+    quoteRevealed = true;
+    quoteBlocks.forEach(function(item, i){
+      setTimeout(function(){ item.classList.add('show'); }, i * 600);
+    });
+  }
+  if (quoteBlocks.length > 0) {
+    if ('IntersectionObserver' in window) {
+      var quoteObserver = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting) {
+            revealQuotes();
+            quoteObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      quoteObserver.observe(document.querySelector('.story-testimonials'));
+    } else {
+      revealQuotes();
     }
   }
 })();
