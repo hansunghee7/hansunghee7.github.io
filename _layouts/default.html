@@ -73,7 +73,6 @@
         .index-mode .cover-title { font-family: 'Noto Serif KR', serif; font-size: 32px; font-weight: 200; margin: 0; line-height: 1.2; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
 
         .cover-wrap.post-mode { height: 100vh; padding: 40px; overflow: hidden; }
-        /* 🎯 [타이틀 및 작성일 위치 상향 조정: bottom 60px -> 120px] */
         .post-mode .cover-bottom-left { position: absolute; bottom: 120px; left: 40px; padding-right: 80px; text-align: left; transition: opacity 0.05s ease-out; }
         .post-mode .cover-title { font-family: 'Noto Serif KR', serif; font-size: 42px; font-weight: 200; margin: 0; line-height: 1.35; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
         .post-mode .cover-sub { font-size: 14px; font-weight: 300; opacity: 0.8; font-style: italic; margin-top: 16px; text-shadow: 0 1px 5px rgba(0,0,0,0.5); }
@@ -85,11 +84,10 @@
         .article-body img { max-width: 100%; height: auto; margin: 40px auto; display: block; border-radius: 4px; }
         .article-body hr { border: 0; border-top: 1px solid #eaeaea; margin: 60px 0; }
 
-        /* 🎯 [이전글/다음글 및 하단 여백 슬림화 최적화] */
         .category-nav-wrap { 
             margin-top: 60px !important;    
-            margin-bottom: 15px !important; /* 하단 붕 뜨던 여백 대폭 감소 */
-            padding: 18px 40px;            /* 내적 상하 여백 축소 */
+            margin-bottom: 15px !important; 
+            padding: 18px 40px;            
             border-top: 1px solid #eaeaea; 
             display: flex; 
             justify-content: space-between; 
@@ -333,7 +331,6 @@
                 {% if page.date_string %}{{ page.date_string }}{% endif %}
             </div>
         </div>
-        <!-- 🎯 화살표 요소 완전 제거 완료 -->
     </div>
 {% endif %}
 
@@ -419,6 +416,7 @@
                 }
             }
 
+            // 🎯 [정렬 기준(Asc/Desc) 맞춤 지능형 스왑 로직]
             const navWrap = document.querySelector('.category-nav-wrap');
             if (navWrap) {
                 const items = Array.from(navWrap.querySelectorAll('.cat-nav-item'));
@@ -432,6 +430,10 @@
                 leftBox.style.flex = '1'; leftBox.style.display = 'flex'; leftBox.style.justifyContent = 'flex-start';
                 rightBox.style.flex = '1'; rightBox.style.display = 'flex'; rightBox.style.justifyContent = 'flex-end';
 
+                const currentTitleStr = document.getElementById('displayTitle') ? document.getElementById('displayTitle').innerText : '';
+                const currentMatch = currentTitleStr.match(/(\d+)화/);
+                const currentEp = currentMatch ? parseInt(currentMatch[1], 10) : 0;
+
                 items.forEach(item => {
                     item.classList.remove('cat-nav-right', 'cat-nav-left');
                     item.style.marginLeft = '0';
@@ -441,7 +443,18 @@
                     const titleEl = item.querySelector('.nav-title');
                     
                     if (label && titleEl) {
-                        const isPrev = label.innerText.includes('이전글') || label.innerText.includes('이전 화');
+                        const linkMatch = titleEl.innerText.match(/(\d+)화/);
+                        const linkEp = linkMatch ? parseInt(linkMatch[1], 10) : 0;
+
+                        let isPrev = false;
+
+                        // 1. 화수 수치 직접 판별 (1화 vs 2화)
+                        if (currentEp > 0 && linkEp > 0) {
+                            isPrev = (linkEp < currentEp);
+                        } else {
+                            // 2. HTML 태그 원본 라벨 기준 판별
+                            isPrev = (label.innerText.includes('이전글') || label.innerText.includes('이전 화'));
+                        }
 
                         if (isPrev) {
                             label.innerHTML = '<span style="font-size:11px;">❮</span> 이전 화';
