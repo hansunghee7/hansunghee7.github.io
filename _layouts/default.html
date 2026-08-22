@@ -52,7 +52,7 @@
         html { scroll-behavior: smooth; }
         body { margin: 0; padding: 0; font-family: 'Noto Sans KR', sans-serif; background-color: #fff; color: #333; word-break: keep-all; }
         
-        /* 1. 상단 커버 영역 (상하폭 축소: 35vh & min-height 250px) */
+        /* 1. 상단 커버 영역 */
         .cover-wrap { 
             position: relative; 
             width: 100%; 
@@ -65,35 +65,35 @@
             justify-content: space-between; 
             box-sizing: border-box; 
             will-change: height, opacity;
-            transition: height 0.1s ease-out;
+            transition: height 0.05s ease-out;
         }
         
         .cover-wrap.index-mode { height: 22vh; min-height: 160px; padding: 25px 40px; }
         .index-mode .cover-bottom-left { text-align: left; position: relative; }
         .index-mode .cover-title { font-family: 'Noto Serif KR', serif; font-size: 32px; font-weight: 200; margin: 0; line-height: 1.2; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
 
-        /* 💡 2. 상단 커버 이미지 높이 축소 (기존 45vh -> 35vh) */
-        .cover-wrap.post-mode { height: 35vh; min-height: 250px; padding: 30px 40px; overflow: hidden; }
-        .post-mode .cover-bottom-left { position: absolute; bottom: 28px; left: 40px; padding-right: 80px; text-align: left; transition: opacity 0.1s ease-out; }
-        .post-mode .cover-title { font-family: 'Noto Serif KR', serif; font-size: 34px; font-weight: 200; margin: 0; line-height: 1.35; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-        .post-mode .cover-sub { font-size: 13px; font-weight: 300; opacity: 0.8; font-style: italic; margin-top: 10px; text-shadow: 0 1px 5px rgba(0,0,0,0.5); }
+        /* 💡 진입 시 화면 전체(100vh)를 꽉 채우는 타이틀 커버 */
+        .cover-wrap.post-mode { height: 100vh; padding: 40px; overflow: hidden; }
+        .post-mode .cover-bottom-left { position: absolute; bottom: 60px; left: 40px; padding-right: 80px; text-align: left; transition: opacity 0.05s ease-out; }
+        .post-mode .cover-title { font-family: 'Noto Serif KR', serif; font-size: 42px; font-weight: 200; margin: 0; line-height: 1.35; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .post-mode .cover-sub { font-size: 14px; font-weight: 300; opacity: 0.8; font-style: italic; margin-top: 16px; text-shadow: 0 1px 5px rgba(0,0,0,0.5); }
         
-        .post-mode .cover-bottom-right { position: absolute; bottom: 28px; right: 40px; }
+        .post-mode .cover-bottom-right { position: absolute; bottom: 60px; right: 40px; transition: opacity 0.05s ease-out; }
         .down-arrow { 
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            width: 32px; 
-            height: 32px; 
+            width: 36px; 
+            height: 36px; 
             color: #fff; 
             text-decoration: none; 
-            opacity: 0.35; 
+            opacity: 0.4; 
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
         }
         .down-arrow svg {
-            width: 22px;
-            height: 22px;
+            width: 24px;
+            height: 24px;
             stroke-width: 1;
             transition: transform 0.3s ease;
         }
@@ -106,7 +106,7 @@
         /* [포스트 상세 본문 여백 조절] */
         .post-mode + .article-body { 
             max-width: 700px; 
-            padding-top: 50px;    
+            padding-top: 60px;    
             padding-bottom: 10px; 
         }
         .article-body p { font-size: 16px; font-weight: 300; line-height: 2.1; margin-bottom: 35px; }
@@ -115,7 +115,7 @@
         .article-body img { max-width: 100%; height: auto; margin: 40px auto; display: block; border-radius: 4px; }
         .article-body hr { border: 0; border-top: 1px solid #eaeaea; margin: 60px 0; }
 
-        /* [이전글 / 다음글 화면 양쪽 끝 풀-비전 정렬 복구] */
+        /* [이전글 / 다음글 화면 양쪽 끝 풀-비전 정렬] */
         .category-nav-wrap { 
             margin-top: 60px;     
             margin-bottom: 0px;   
@@ -194,15 +194,15 @@
 {% if page.url == '/' or page.url == '/log.html' or page.is_index %}
     {% include header.html %}
 {% else %}
-    <!-- 💡 1. 중앙 정렬 및 좁혀진 간격(gap: 12px)을 가진 로고+카테고리 GNB -->
+    <!-- 로고+카테고리 GNB -->
     <style>
       .log-nav {
         position: absolute;
         top: 0; left: 0; right: 0;
         height: 68px;
-        display: flex; align-items: center; justify-content: center; /* 중앙 정렬 */
+        display: flex; align-items: center; justify-content: center;
         padding: 0 32px;
-        gap: 12px; /* 간격 좁힘 (기존 20px -> 12px) */
+        gap: 12px;
         z-index: 100;
         background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 100%);
       }
@@ -234,7 +234,7 @@
         <img src="/brunch_web_assets/images/logo_white.png" alt="Simplifier">
       </a>
       
-      <!-- 카테고리 태그 (해당 카테고리 필터링된 log.html 로 이동) -->
+      <!-- 카테고리 태그 -->
       {% if page.category %}
       <a href="/log.html?cat={{ page.category | url_encode }}" class="log-nav-category">
         {{ page.category }}
@@ -262,8 +262,7 @@
             </div>
         </div>
         
-        <!-- 💡 3. 정교한 본문 최상단 스크롤용 화살표 -->
-        <div class="cover-bottom-right">
+        <div class="cover-bottom-right" id="coverArrowBox">
             <a id="scrollDownBtn" class="down-arrow" aria-label="본문으로 이동">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 4V20M12 20L6 14M12 20L18 14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
@@ -285,14 +284,12 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        // 💡 3. 아래 화살표 클릭 시 본문 첫 문단이 브라우저 최상단에 딱 맞춰지도록 스크롤 이동
         const scrollBtn = document.getElementById('scrollDownBtn');
         const articleBody = document.getElementById('articleBody');
         
         if (scrollBtn && articleBody) {
             scrollBtn.addEventListener('click', function(e) {
                 e.preventDefault();
-                // articleBody의 위치를 구해서 상단 여백(50px) 위치에 깔끔하게 도착하도록 계산
                 const bodyTop = articleBody.getBoundingClientRect().top + window.pageYOffset;
                 window.scrollTo({
                     top: bodyTop,
@@ -301,22 +298,25 @@
             });
         }
 
-        // 스크롤할 때 커버가 매끄럽게 접히는 인터랙션 (Parallax Folding)
+        // 💡 스크롤 시 100vh 커버 이미지가 매우 빠르게 상단으로 소멸하는 패러랙스 애니메이션
         const coverWrap = document.getElementById('coverWrap');
         const coverTitleBox = document.getElementById('coverTitleBox');
+        const coverArrowBox = document.getElementById('coverArrowBox');
         
         if (coverWrap && coverWrap.classList.contains('post-mode')) {
-            const initialHeight = coverWrap.offsetHeight;
-            const minHeight = 100;
+            const initialHeight = window.innerHeight; // 100vh
+            const minHeight = 0; // 스크롤 시 완전히 접힘
             
             window.addEventListener('scroll', function() {
                 const scrolled = window.scrollY;
                 if (scrolled <= initialHeight) {
-                    const newHeight = Math.max(minHeight, initialHeight - scrolled * 0.6);
-                    const opacity = Math.max(0, 1 - (scrolled / (initialHeight * 0.7)));
+                    // 스크롤 감도를 1.8배로 높여 매우 빠르게 접히고 투명해짐
+                    const newHeight = Math.max(minHeight, initialHeight - scrolled * 1.8);
+                    const opacity = Math.max(0, 1 - (scrolled / (initialHeight * 0.3)));
                     
                     coverWrap.style.height = newHeight + 'px';
                     if (coverTitleBox) coverTitleBox.style.opacity = opacity;
+                    if (coverArrowBox) coverArrowBox.style.opacity = opacity;
                 }
             }, { passive: true });
         }
