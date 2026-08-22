@@ -140,6 +140,11 @@ for filename in md_files:
     if not category:
         category = "기획일상"
 
+    # 👇 여기서부터 아래 3줄을 추가해 주세요! 👇
+    if category == "트레바리":
+        category = "토크세션" # '트레바리'를 '토크세션'이나 '스타트업 인사이트' 등 원하시는 곳으로 흡수시킵니다.
+    # 👆 추가 끝 👆
+
     cover_image = cover_match.group(1).strip() if cover_match else "/brunch_web_assets/images/logo_white.png"
 
     title_clean = re.sub(r'[^가-힣a-zA-Z0-9]', '', title)
