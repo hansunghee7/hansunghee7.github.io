@@ -79,7 +79,7 @@ Superhuman의 사례는 기존 시장에서도 명확한 타겟팅과 차별화�
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/180_'팔란티어' #4 Apollo 혁신의 배포 플랫폼.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">팔란티어' #4 Apollo 혁신의 배포 플랫폼</span></a>
-  <a href="/log_assets/markdown/174_인이 배길 때까지.html" class="cat-nav-item cat-nav-right"><span class="nav-title">인이 배길 때까지...</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/174_인이 배길 때까지.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">인이 배길 때까지...</span></a>
+  <a href="/log_assets/markdown/180_'팔란티어' #4 Apollo 혁신의 배포 플랫폼.html" class="cat-nav-item cat-nav-right"><span class="nav-title">팔란티어' #4 Apollo 혁신의 배포 플랫폼</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

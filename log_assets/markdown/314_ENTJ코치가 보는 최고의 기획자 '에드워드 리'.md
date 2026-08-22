@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/327_요기요의 부활을 기대하며.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">요기요의 부활을 기대하며...</span></a>
-  <a href="/log_assets/markdown/311_어떤 직장을 골라야 할까요.html" class="cat-nav-item cat-nav-right"><span class="nav-title">어떤 직장을 골라야 할까요?</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/311_어떤 직장을 골라야 할까요.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">어떤 직장을 골라야 할까요?</span></a>
+  <a href="/log_assets/markdown/327_요기요의 부활을 기대하며.html" class="cat-nav-item cat-nav-right"><span class="nav-title">요기요의 부활을 기대하며...</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

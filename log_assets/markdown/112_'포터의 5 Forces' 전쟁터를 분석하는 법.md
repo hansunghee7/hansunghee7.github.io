@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/120_UX 5 Planes, 경험 설계의 지도.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">UX 5 Planes, 경험 설계의 지도</span></a>
-  <a href="/log_assets/markdown/104_가치사슬 분석, 돈이 만들어지는 지점을 찾는 법.html" class="cat-nav-item cat-nav-right"><span class="nav-title">가치사슬 분석, 돈이 만들어지는 지점을 찾는 법</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/104_가치사슬 분석, 돈이 만들어지는 지점을 찾는 법.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">가치사슬 분석, 돈이 만들어지는 지점을 찾는 법</span></a>
+  <a href="/log_assets/markdown/120_UX 5 Planes, 경험 설계의 지도.html" class="cat-nav-item cat-nav-right"><span class="nav-title">UX 5 Planes, 경험 설계의 지도</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

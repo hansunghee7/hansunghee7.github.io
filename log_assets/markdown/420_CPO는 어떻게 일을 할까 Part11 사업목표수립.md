@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/422_CPO는 어떻게 일을 할까 Part 3 흐름의 결합.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">CPO는 어떻게 일을 할까? Part 3. 흐름의 결합</span></a>
-  <a href="/log_assets/markdown/419_CPO는 어떻게 일을 할까 Part 12 생산구조.html" class="cat-nav-item cat-nav-right"><span class="nav-title">CPO는 어떻게 일을 할까? Part 1.2 생산구조</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/419_CPO는 어떻게 일을 할까 Part 12 생산구조.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">CPO는 어떻게 일을 할까? Part 1.2 생산구조</span></a>
+  <a href="/log_assets/markdown/422_CPO는 어떻게 일을 할까 Part 3 흐름의 결합.html" class="cat-nav-item cat-nav-right"><span class="nav-title">CPO는 어떻게 일을 할까? Part 3. 흐름의 결합</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

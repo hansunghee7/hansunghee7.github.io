@@ -79,7 +79,7 @@ PO라면 이렇게 해보자.
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/240_데일리 스크럼이 필수일까.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">데일리 스크럼"이 필수일까?</span></a>
-  <a href="/log_assets/markdown/226_스프린트 리뷰', 준비는 덜하고 솔직함은 더하기.html" class="cat-nav-item cat-nav-right"><span class="nav-title">스프린트 리뷰', 준비는 덜하고 솔직함은 더하기</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/226_스프린트 리뷰', 준비는 덜하고 솔직함은 더하기.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">스프린트 리뷰', 준비는 덜하고 솔직함은 더하기</span></a>
+  <a href="/log_assets/markdown/240_데일리 스크럼이 필수일까.html" class="cat-nav-item cat-nav-right"><span class="nav-title">데일리 스크럼"이 필수일까?</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

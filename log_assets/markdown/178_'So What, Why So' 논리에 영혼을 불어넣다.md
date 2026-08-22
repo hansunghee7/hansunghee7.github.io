@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/185_사고의 지도를 그리는 법 '로직 트리'.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">사고의 지도를 그리는 법 '로직 트리</span></a>
-  <a href="/log_assets/markdown/171_'퍼널 분석' 디지털 시대의 사용자 최적화 핵심 기술.html" class="cat-nav-item cat-nav-right"><span class="nav-title">퍼널 분석' 디지털 시대의 사용자 최적화 핵심 기술</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/171_'퍼널 분석' 디지털 시대의 사용자 최적화 핵심 기술.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">퍼널 분석' 디지털 시대의 사용자 최적화 핵심 기술</span></a>
+  <a href="/log_assets/markdown/185_사고의 지도를 그리는 법 '로직 트리'.html" class="cat-nav-item cat-nav-right"><span class="nav-title">사고의 지도를 그리는 법 '로직 트리</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

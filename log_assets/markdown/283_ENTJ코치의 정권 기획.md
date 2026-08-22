@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/285_비즈니스에 포커스하세요.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">비즈니스에 포커스하세요.</span></a>
-  <a href="/log_assets/markdown/275_심플리파이어가 받은 연말 선물.html" class="cat-nav-item cat-nav-right"><span class="nav-title">심플리파이어가 받은 연말 선물</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/275_심플리파이어가 받은 연말 선물.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">심플리파이어가 받은 연말 선물</span></a>
+  <a href="/log_assets/markdown/285_비즈니스에 포커스하세요.html" class="cat-nav-item cat-nav-right"><span class="nav-title">비즈니스에 포커스하세요.</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

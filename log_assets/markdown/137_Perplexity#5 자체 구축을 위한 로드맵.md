@@ -79,7 +79,7 @@ Perplexity AI 기술 해부 시리즈의 마지막 시간입니다. 지금까지
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/143_에어매트에서 시작된, 에어비앤비의 무자본 창업 전략.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">에어매트에서 시작된, 에어비앤비의 무자본 창업 전략</span></a>
-  <a href="/log_assets/markdown/136_내가 겪는 불편함이 사업 아이템이다, '디스코드'.html" class="cat-nav-item cat-nav-right"><span class="nav-title">내가 겪는 불편함이 사업 아이템이다, '디스코드</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/136_내가 겪는 불편함이 사업 아이템이다, '디스코드'.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">내가 겪는 불편함이 사업 아이템이다, '디스코드</span></a>
+  <a href="/log_assets/markdown/143_에어매트에서 시작된, 에어비앤비의 무자본 창업 전략.html" class="cat-nav-item cat-nav-right"><span class="nav-title">에어매트에서 시작된, 에어비앤비의 무자본 창업 전략</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

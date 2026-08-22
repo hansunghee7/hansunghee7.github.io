@@ -64,29 +64,37 @@ if os.path.exists(MARKDOWN_DIR):
 
     # 카테고리별 정렬 및 이전글/다음글 링크 주입
     for cat, posts in posts_by_cat.items():
-        if cat in ASCENDING_CATS:
+        is_ascending = (cat in ASCENDING_CATS)
+        
+        if is_ascending:
             # 웹툰형: 예고편(0) -> 1화 -> 2화 순 오름차순 정렬
             posts.sort(key=lambda x: (x['ep_num'], x['fname']))
         else:
             # 일반 블로그형: 최신글 우선 내림차순 정렬
             posts.sort(key=lambda x: x['fname'], reverse=True)
 
-        # HTML 파일 내부의 CATEGORY_NAV 영역 갱신
         for i, p in enumerate(posts):
-            prev_post = posts[i-1] if i > 0 else None
-            next_post = posts[i+1] if i < len(posts)-1 else None
+            # 💡 핵심 수정: 오름차순/내림차순에 따라 '과거 글'과 '최신 글'의 인덱스 방향을 반전
+            if is_ascending:
+                older_post = posts[i-1] if i > 0 else None
+                newer_post = posts[i+1] if i < len(posts)-1 else None
+            else:
+                newer_post = posts[i-1] if i > 0 else None
+                older_post = posts[i+1] if i < len(posts)-1 else None
 
             nav_html = '<div class="category-nav-wrap">\n'
             
-            if prev_post:
-                label = "이전 화" if cat in ASCENDING_CATS else "이전글"
-                nav_html += f'  <a href="/log_assets/markdown/{prev_post["html_name"]}" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ {label}</span><span class="nav-title">{prev_post["title"]}</span></a>\n'
+            # 왼쪽 영역 (무조건 과거 글 / 이전 화)
+            if older_post:
+                label = "이전 화" if is_ascending else "이전글"
+                nav_html += f'  <a href="/log_assets/markdown/{older_post["html_name"]}" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ {label}</span><span class="nav-title">{older_post["title"]}</span></a>\n'
             else:
                 nav_html += '  <div></div>\n'
 
-            if next_post:
-                label = "다음 화" if cat in ASCENDING_CATS else "다음글"
-                nav_html += f'  <a href="/log_assets/markdown/{next_post["html_name"]}" class="cat-nav-item cat-nav-right"><span class="nav-title">{next_post["title"]}</span><span class="cat-nav-label">{label} ❯</span></a>\n'
+            # 오른쪽 영역 (무조건 최신 글 / 다음 화)
+            if newer_post:
+                label = "다음 화" if is_ascending else "다음글"
+                nav_html += f'  <a href="/log_assets/markdown/{newer_post["html_name"]}" class="cat-nav-item cat-nav-right"><span class="nav-title">{newer_post["title"]}</span><span class="cat-nav-label">{label} ❯</span></a>\n'
             else:
                 nav_html += '  <div></div>\n'
 
@@ -106,4 +114,4 @@ if os.path.exists(MARKDOWN_DIR):
                 with open(p['filepath'], 'w', encoding='utf-8') as f:
                     f.write(file_text)
 
-print("✅ 카테고리별 정렬 및 이전화/다음화 매핑 완벽 재구성 완료!")
+print("✅ 카테고리별 정렬 및 이전글/다음글 매핑 완벽 재구성 완료!")

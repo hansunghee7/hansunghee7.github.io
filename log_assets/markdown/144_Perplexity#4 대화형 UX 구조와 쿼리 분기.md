@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/150_Slack의 유료전환의 매직 모먼트.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">Slack의 유료전환의 "매직 모먼트</span></a>
-  <a href="/log_assets/markdown/143_에어매트에서 시작된, 에어비앤비의 무자본 창업 전략.html" class="cat-nav-item cat-nav-right"><span class="nav-title">에어매트에서 시작된, 에어비앤비의 무자본 창업 전략</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/143_에어매트에서 시작된, 에어비앤비의 무자본 창업 전략.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">에어매트에서 시작된, 에어비앤비의 무자본 창업 전략</span></a>
+  <a href="/log_assets/markdown/150_Slack의 유료전환의 매직 모먼트.html" class="cat-nav-item cat-nav-right"><span class="nav-title">Slack의 유료전환의 "매직 모먼트</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

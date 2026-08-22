@@ -47,7 +47,7 @@ DeepSeek의 사례는 중요한 통찰을 제공한다. 자원이 부족하더�
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/253_마케팅 없이 20조원 가치를 만든 Figma PLG전략.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">마케팅 없이 20조원 가치를 만든 Figma PLG전략</span></a>
-  <a href="/log_assets/markdown/246_커머스 AI의 게임체인저, 인핸스.html" class="cat-nav-item cat-nav-right"><span class="nav-title">커머스 AI의 게임체인저, 인핸스</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/246_커머스 AI의 게임체인저, 인핸스.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">커머스 AI의 게임체인저, 인핸스</span></a>
+  <a href="/log_assets/markdown/253_마케팅 없이 20조원 가치를 만든 Figma PLG전략.html" class="cat-nav-item cat-nav-right"><span class="nav-title">마케팅 없이 20조원 가치를 만든 Figma PLG전략</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

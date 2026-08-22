@@ -63,7 +63,7 @@ A는 해외에서 박사과정까지 거친 재원이었다. 집을 구하면서
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/486_내가 나를 기획한다면 원하는 것을 이루는 비밀.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">내가 나를 기획한다면? 원하는 것을 이루는 비밀</span></a>
-  <a href="/log_assets/markdown/483_명랑기획자의 IT 명언.html" class="cat-nav-item cat-nav-right"><span class="nav-title">명랑기획자의 IT 명언</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/483_명랑기획자의 IT 명언.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">명랑기획자의 IT 명언</span></a>
+  <a href="/log_assets/markdown/486_내가 나를 기획한다면 원하는 것을 이루는 비밀.html" class="cat-nav-item cat-nav-right"><span class="nav-title">내가 나를 기획한다면? 원하는 것을 이루는 비밀</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

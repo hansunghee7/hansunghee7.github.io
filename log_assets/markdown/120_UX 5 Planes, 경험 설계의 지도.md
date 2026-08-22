@@ -69,7 +69,7 @@ UX 5 Planes 모델은 복잡한 사용자 경험을 체계적으로 설계할 �
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/128_고객은 제품을 '고용'한다 'JTBD프레임웍'.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">고객은 제품을 '고용'한다. 'JTBD프레임웍</span></a>
-  <a href="/log_assets/markdown/112_'포터의 5 Forces' 전쟁터를 분석하는 법.html" class="cat-nav-item cat-nav-right"><span class="nav-title">포터의 5 Forces' 전쟁터를 분석하는 법</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/112_'포터의 5 Forces' 전쟁터를 분석하는 법.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">포터의 5 Forces' 전쟁터를 분석하는 법</span></a>
+  <a href="/log_assets/markdown/128_고객은 제품을 '고용'한다 'JTBD프레임웍'.html" class="cat-nav-item cat-nav-right"><span class="nav-title">고객은 제품을 '고용'한다. 'JTBD프레임웍</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

@@ -51,7 +51,7 @@ JTBD는 기획자가 고객의 근본적인 니즈를 탐색하고, 진짜 문�
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/135_제품의 생명선, Retention Curve.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">제품의 생명선, Retention Curve</span></a>
-  <a href="/log_assets/markdown/120_UX 5 Planes, 경험 설계의 지도.html" class="cat-nav-item cat-nav-right"><span class="nav-title">UX 5 Planes, 경험 설계의 지도</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/120_UX 5 Planes, 경험 설계의 지도.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">UX 5 Planes, 경험 설계의 지도</span></a>
+  <a href="/log_assets/markdown/135_제품의 생명선, Retention Curve.html" class="cat-nav-item cat-nav-right"><span class="nav-title">제품의 생명선, Retention Curve</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

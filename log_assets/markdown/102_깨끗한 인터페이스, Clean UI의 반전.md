@@ -59,7 +59,7 @@ UX의 언어들이 책으로 나왔어요.
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/110_그리드 시스템, 구글 애플이 사랑한 격자 구조.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">그리드 시스템, 구글 애플이 사랑한 격자 구조</span></a>
-  <a href="/log_assets/markdown/095_온보딩, 배에 오르다'에서 시작된 UX의 첫인상 마법.html" class="cat-nav-item cat-nav-right"><span class="nav-title">온보딩, 배에 오르다'에서 시작된 UX의 첫인상 마법</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/095_온보딩, 배에 오르다'에서 시작된 UX의 첫인상 마법.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">온보딩, 배에 오르다'에서 시작된 UX의 첫인상 마법</span></a>
+  <a href="/log_assets/markdown/110_그리드 시스템, 구글 애플이 사랑한 격자 구조.html" class="cat-nav-item cat-nav-right"><span class="nav-title">그리드 시스템, 구글 애플이 사랑한 격자 구조</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

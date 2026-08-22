@@ -53,7 +53,7 @@ AI 기술이 폭발적으로 성장하면서 데이터센터의 네트워크 인
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/148_AI모델 학습에 날개를 달자 혼합 정밀도의 마법.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">AI모델 학습에 날개를 달자! 혼합 정밀도의 마법</span></a>
-  <a href="/log_assets/markdown/134_AI 모델의 학생과 졸업생, 학습과 추론의 차이점.html" class="cat-nav-item cat-nav-right"><span class="nav-title">AI 모델의 학생과 졸업생, 학습과 추론의 차이점</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/134_AI 모델의 학생과 졸업생, 학습과 추론의 차이점.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">AI 모델의 학생과 졸업생, 학습과 추론의 차이점</span></a>
+  <a href="/log_assets/markdown/148_AI모델 학습에 날개를 달자 혼합 정밀도의 마법.html" class="cat-nav-item cat-nav-right"><span class="nav-title">AI모델 학습에 날개를 달자! 혼합 정밀도의 마법</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

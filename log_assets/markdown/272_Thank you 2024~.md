@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/274_ENTJ 코치가 보는 오겜2(스포없음).html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">ENTJ 코치가 보는 오겜2(스포없음)</span></a>
-  <a href="/log_assets/markdown/271_2025년의 내가 2015년의 나에게.html" class="cat-nav-item cat-nav-right"><span class="nav-title">2025년의 내가... 2015년의 나에게...</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/271_2025년의 내가 2015년의 나에게.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">2025년의 내가... 2015년의 나에게...</span></a>
+  <a href="/log_assets/markdown/274_ENTJ 코치가 보는 오겜2(스포없음).html" class="cat-nav-item cat-nav-right"><span class="nav-title">ENTJ 코치가 보는 오겜2(스포없음)</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

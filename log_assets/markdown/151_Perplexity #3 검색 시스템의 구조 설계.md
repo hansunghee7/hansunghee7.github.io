@@ -81,7 +81,7 @@ Chunk들을 잘 검색하기 위해선 벡터 표현(embedding)으로 변환해 
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/157_시각적 소통의 대표주자, 핀터레스트의 데이터 기반 성장.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">시각적 소통의 대표주자, 핀터레스트의 데이터 기반 성장</span></a>
-  <a href="/log_assets/markdown/150_Slack의 유료전환의 매직 모먼트.html" class="cat-nav-item cat-nav-right"><span class="nav-title">Slack의 유료전환의 "매직 모먼트</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/150_Slack의 유료전환의 매직 모먼트.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">Slack의 유료전환의 "매직 모먼트</span></a>
+  <a href="/log_assets/markdown/157_시각적 소통의 대표주자, 핀터레스트의 데이터 기반 성장.html" class="cat-nav-item cat-nav-right"><span class="nav-title">시각적 소통의 대표주자, 핀터레스트의 데이터 기반 성장</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

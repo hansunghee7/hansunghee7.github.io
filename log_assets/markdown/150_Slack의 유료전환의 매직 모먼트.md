@@ -69,7 +69,7 @@ Slack의 성공 비결은 무료 사용자에게 충분한 가치를 제공하�
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/151_Perplexity #3 검색 시스템의 구조 설계.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">Perplexity #3 검색 시스템의 구조 설계</span></a>
-  <a href="/log_assets/markdown/144_Perplexity#4 대화형 UX 구조와 쿼리 분기.html" class="cat-nav-item cat-nav-right"><span class="nav-title">Perplexity#4 대화형 UX 구조와 쿼리 분기</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/144_Perplexity#4 대화형 UX 구조와 쿼리 분기.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">Perplexity#4 대화형 UX 구조와 쿼리 분기</span></a>
+  <a href="/log_assets/markdown/151_Perplexity #3 검색 시스템의 구조 설계.html" class="cat-nav-item cat-nav-right"><span class="nav-title">Perplexity #3 검색 시스템의 구조 설계</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

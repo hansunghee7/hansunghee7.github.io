@@ -55,7 +55,7 @@ GTM 전략은 시간에 따라 진화합니다. 초기에는 PLG로 사용자를
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/048_미국 스타트업은 왜 다 '미션'부터 말할까.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">미국 스타트업은 왜 다 '미션'부터 말할까</span></a>
-  <a href="/log_assets/markdown/037_실리콘밸리 디자인의 기준.html" class="cat-nav-item cat-nav-right"><span class="nav-title">실리콘밸리 디자인의 기준</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/037_실리콘밸리 디자인의 기준.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">실리콘밸리 디자인의 기준</span></a>
+  <a href="/log_assets/markdown/048_미국 스타트업은 왜 다 '미션'부터 말할까.html" class="cat-nav-item cat-nav-right"><span class="nav-title">미국 스타트업은 왜 다 '미션'부터 말할까</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

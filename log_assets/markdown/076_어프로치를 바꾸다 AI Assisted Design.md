@@ -55,7 +55,7 @@ UX의 언어들이 책으로 나왔어요.
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/083_UX도 브랜딩, 사용자 경험이 브랜드 충성도를 만든다.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">UX도 브랜딩, 사용자 경험이 브랜드 충성도를 만든다</span></a>
-  <a href="/log_assets/markdown/069_Predictive UX, 사용자의 다음 행동은.html" class="cat-nav-item cat-nav-right"><span class="nav-title">Predictive UX, 사용자의 다음 행동은?</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/069_Predictive UX, 사용자의 다음 행동은.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">Predictive UX, 사용자의 다음 행동은?</span></a>
+  <a href="/log_assets/markdown/083_UX도 브랜딩, 사용자 경험이 브랜드 충성도를 만든다.html" class="cat-nav-item cat-nav-right"><span class="nav-title">UX도 브랜딩, 사용자 경험이 브랜드 충성도를 만든다</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->
