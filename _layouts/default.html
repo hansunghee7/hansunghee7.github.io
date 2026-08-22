@@ -257,17 +257,232 @@
         body.is-swipe-mode .nav-title { color: #ccc !important; }
         body.is-swipe-mode .cat-nav-item:hover .nav-title { color: #fff !important; }
         body.is-swipe-mode .cat-nav-label { color: #666 !important; }
+
+    /* =========================================================
+       🧭 GNB (concept2.html과 통일)
+       ========================================================= */
+    .simp-nav { position: sticky; top:0; z-index: 1000; background: rgba(8,8,8,0.85); backdrop-filter: blur(10px); font-family: 'Pretendard Variable','Pretendard',sans-serif; }
+    .simp-nav-inner { position:relative; display:flex; align-items:center; justify-content:center; padding: 16px 32px; max-width:1200px; margin:0 auto; gap: 240px; }
+    .simp-nav-logo { height: 26px; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); }
+    .simp-nav-logo img { height: 100%; width:auto; display:block; }
+    .simp-nav-links { display:flex; align-items:center; gap: 40px; font-size: 14px; color:#c9c8c2; }
+    .simp-nav-right { display:flex; align-items:center; gap: 32px; font-size:14px; }
+    .simp-nav-actions { position:absolute; right:32px; top:50%; transform:translateY(-50%); display:flex; align-items:center; gap:22px; }
+    .simp-nav-item { position: relative; }
+    .simp-nav-item > button { display:flex; align-items:center; gap:9px; padding: 10px 0; margin:0; background:none; border:none; cursor:pointer; font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:14px; color:#c9c8c2; transition: color 0.2s; }
+    .simp-nav-item:hover > button, .simp-nav-item:focus-within > button { color:#f5f3ee; }
+    .simp-nav-item > button::after { content:''; display:inline-block; width:4px; height:4px; border-right:1.2px solid currentColor; border-bottom:1.2px solid currentColor; transform: rotate(45deg); margin-top:-2px; }
+
+    .simp-dropdown {
+        position: absolute; top: 100%; left: 0;
+        background: #f5f3ee;
+        border: 1px solid rgba(8,8,8,0.06);
+        border-radius: 12px;
+        padding: 12px 0;
+        display: flex; flex-direction: column;
+        opacity: 0; visibility: hidden;
+        width: 210px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        margin-top: 8px;
+    }
+    .simp-dropdown::before { content: ''; position: absolute; top: -12px; left: 0; right: 0; height: 12px; background: transparent; }
+    .simp-nav-item:hover .simp-dropdown, .simp-nav-item:focus-within .simp-dropdown { opacity: 1; visibility: visible; }
+    .simp-dropdown a { padding: 10px 20px; font-size: 13.5px; color: #2a2822 !important; transition: color 0.2s, background 0.2s; text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-decoration:none; display:block; }
+    .simp-dropdown a:hover, .simp-dropdown a:focus { color: #080808 !important; background: rgba(8,8,8,0.06); }
+
+    .simp-nav-apply { background:#f5f3ee; color:#080808; padding: 9px 22px; border-radius:999px; font-weight: 500; font-size:14px; transition: background .2s, color .2s; border:none; cursor:pointer; font-family:'Pretendard Variable','Pretendard',sans-serif; }
+    .simp-nav-apply:hover { background:#080808; color:#f5f3ee; box-shadow: inset 0 0 0 1px #f5f3ee; }
+
+    .simp-nav-burger { display:none; flex-direction:column; justify-content:center; align-items:center; gap:5px; width:32px; height:32px; background:none; border:none; padding:0; cursor:pointer; }
+    .simp-nav-burger span { display:block; width:20px; height:1.5px; background:#f5f3ee; transition: transform .25s ease, opacity .25s ease; }
+    .simp-nav-burger.open span:nth-child(1){ transform: translateY(6.5px) rotate(45deg); }
+    .simp-nav-burger.open span:nth-child(2){ opacity:0; }
+    .simp-nav-burger.open span:nth-child(3){ transform: translateY(-6.5px) rotate(-45deg); }
+
+    .simp-mobile-menu { display:none; flex-direction:column; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; z-index: 1100; padding: 0 32px 40px; background: #080808; border-top: 5px solid rgba(245,243,238,0.08); overflow-y: auto; }
+    .simp-mobile-menu.open { display:flex; }
+    .simp-mobile-details { border-bottom: 1px solid rgba(245,243,238,0.07); }
+    .simp-mobile-summary { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 17px; color: #c9c8c2; padding: 20px 0; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .simp-mobile-summary::-webkit-details-marker { display: none; }
+    .simp-mobile-summary::after { content: '+'; font-size: 20px; font-weight: 300; transition: transform 0.3s; color: #8f8b82; }
+    .simp-mobile-details[open] .simp-mobile-summary::after { transform: rotate(45deg); color: #f5f3ee; }
+    .simp-mobile-details[open] .simp-mobile-summary { color: #f5f3ee; }
+    .simp-mobile-submenu { padding: 0 0 20px 16px; display: flex; flex-direction: column; gap: 16px; }
+    .simp-mobile-submenu a { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 15px; color: #8f8b82 !important; text-decoration: none; word-break: keep-all; }
+    .simp-mobile-submenu a:hover { color: #f5f3ee !important; }
+    .simp-mobile-cta { display:block; text-align:center; margin-top:30px; margin-bottom: 8px; padding:14px 0 !important; border-radius:999px; background:#f5f3ee; color:#080808 !important; font-weight:500; font-family: 'Pretendard Variable', 'Pretendard', sans-serif; text-decoration: none; border:none; cursor:pointer; width:100%; font-size:15px; }
+
+    @media (max-width:860px){ .simp-nav-links{ display:none; } .simp-nav-burger{ display:flex; } .simp-nav-actions .simp-nav-apply { display:none; } }
+
+    /* =========================================================
+       📬 Contact 모달
+       ========================================================= */
+    #simp-contact-modal-overlay { position: fixed; inset: 0; z-index: 9999; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: opacity 0.3s; padding: 24px; }
+    #simp-contact-modal-overlay.show { opacity: 1; visibility: visible; }
+    .simp-modal-bg { position: absolute; inset: 0; background: rgba(8,8,8,0.85); backdrop-filter: blur(8px); }
+    .simp-modal-content { position: relative; background: #080808; border: 1px solid rgba(245,243,238,0.15); padding: 48px; border-radius: 12px; width: 100%; max-width: 600px; max-height: 90vh; overflow-y: auto; transform: translateY(20px); transition: transform 0.3s; font-family:'Pretendard Variable','Pretendard',sans-serif; }
+    #simp-contact-modal-overlay.show .simp-modal-content { transform: translateY(0); }
+    .simp-modal-close { position: absolute; top: 24px; right: 24px; background: none; border: none; color: #8f8b82; cursor: pointer; padding: 8px; transition: color 0.2s; }
+    .simp-modal-close:hover { color: #f5f3ee; }
+    .simp-modal-content .simp-eyebrow { font-size: 13px; font-weight: 500; letter-spacing: 0.12em; color: #8f8b82; text-transform: uppercase; margin-bottom: 16px; display: block; }
+    .simp-modal-content h2 { font-family: 'Noto Serif KR', serif; font-weight: 300; font-size: 32px; color: #f5f3ee; margin: 0 0 12px; }
+    .simp-modal-content .simp-modal-desc { font-size: 14px; font-weight: 300; color: #8f8b82; margin: 0 0 40px; }
+    .simp-form-group { margin-bottom: 24px; }
+    .simp-form-group label { display: block; font-size: 14px; font-weight: 400; color: #f5f3ee; margin-bottom: 8px; text-align: left; }
+    .simp-form-group input, .simp-form-group textarea { width: 100%; background: transparent; border: 1px solid rgba(245,243,238,0.2); padding: 14px 16px; color: #f5f3ee; font-family: inherit; font-size: 14px; border-radius: 6px; outline: none; transition: border-color 0.2s; box-sizing: border-box; }
+    .simp-form-group input:focus, .simp-form-group textarea:focus { border-color: #f5f3ee; }
+    .simp-cf-error { color: #ff6b6b; font-size: 13px; margin-top: -16px; margin-bottom: 24px; display: none; text-align: left; }
+    .simp-cf-error.show { display: block; }
+    #simp-cf-submit { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #f5f3ee; color: #080808; font-weight: 600; font-size: 15px; padding: 14px 28px; border: none; border-radius: 6px; cursor: pointer; transition: opacity 0.2s; margin-top: 12px; }
+    #simp-cf-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+    #simp-copy-toast { position: fixed; left: 50%; bottom: 32px; transform: translate(-50%, 20px); background: #f5f3ee; color: #080808; font-family:'Pretendard Variable','Pretendard',sans-serif; font-size: 14px; font-weight: 500; padding: 12px 24px; border-radius: 8px; opacity: 0; visibility: hidden; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); z-index: 10000; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+    #simp-copy-toast.show { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+    @media (max-width:700px){ .simp-modal-content { padding: 32px 24px; } }
+
     </style>
 </head>
 <body>
+<header class="simp-nav">
+  <div class="simp-nav-inner">
+    <div class="simp-nav-links">
+      <div class="simp-nav-item">
+        <button type="button">Startup</button>
+        <div class="simp-dropdown">
+          <a href="/log.html?cat=%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8">스타트업 인사이트</a>
+          <a href="/log.html?cat=%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%AF%B8%EA%B5%AD%EC%A7%84%EC%B6%9C%EC%9D%84%20%EB%AC%BB%EB%8B%A4" title="대한민국 스타트업 미국진출을 묻다">대한민국 스타트업 미국진출을 묻다</a>
+          <a href="/log.html?cat=%EC%BD%94%EC%B9%98S">코치S</a>
+        </div>
+      </div>
+      <div class="simp-nav-item">
+        <button type="button">FieldPlay</button>
+        <div class="simp-dropdown">
+          <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9D%BC%EC%83%81">기획일상</a>
+          <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D" title="기획자의 프레임웍">기획자의 프레임웍</a>
+          <a href="/log.html?cat=%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC" title="잉크드인대 기획학과">잉크드인대 기획학과</a>
+          <a href="/log.html?cat=Be%20the%20PO">Be the PO</a>
+          <a href="/log.html?cat=PO%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">PO의 프레임웍</a>
+          <a href="/log.html?cat=UX%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">UX의 언어들</a>
+          <a href="/log.html?cat=AI%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">AI의 언어들</a>
+        </div>
+      </div>
+    </div>
+
+    <a href="/" class="simp-nav-logo"><img src="/brunch_web_assets/images/logo_white.png" alt="Simplifier"></a>
+
+    <div class="simp-nav-right">
+      <div class="simp-nav-links">
+        <div class="simp-nav-item">
+          <button type="button">Life</button>
+          <div class="simp-dropdown">
+            <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EB%9D%BC%EC%9D%B4%ED%94%84" title="심플리파이어 라이프">심플리파이어 라이프</a>
+            <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%ED%95%9C%20%EC%B0%BD%EC%97%85%ED%95%98%EA%B3%A0%20%ED%8C%8C%EC%9D%B4%EC%96%B4%ED%95%98%EA%B2%8C%20%EC%9D%BC%ED%95%98%EA%B8%B0" title="심플한 창업하고 파이어하게 일하기">심플한 창업하고 파이어하게 일하기</a>
+            <a href="/log.html?cat=%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%EC%A7%81%EC%9E%A5%20%EC%9D%B4%EC%95%BC%EA%B8%B0" title="이력서에 쓰지 않는 첫직장 이야기">이력서에 쓰지 않는 첫직장 이야기</a>
+            <a href="/log.html?cat=%ED%86%A0%ED%81%AC%EC%84%B8%EC%85%98">토크세션</a>
+          </div>
+        </div>
+        <div class="simp-nav-item">
+          <button type="button">Book & Class</button>
+          <div class="simp-dropdown">
+            <a href="https://www.yes24.com/product/goods/147079674" target="_blank" rel="noopener">기획자의 질문법</a>
+            <a href="https://www.yes24.com/product/goods/193444437" target="_blank" rel="noopener">UX의 언어들</a>
+            <a href="https://www.classu.co.kr/new/class/1019442" target="_blank" rel="noopener">유니콘의 리더십</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="simp-nav-actions">
+      <button type="button" class="simp-nav-apply simp-open-contact-modal">Contact</button>
+      <button class="simp-nav-burger" id="simp-nav-burger" aria-label="메뉴 열기" aria-expanded="false" aria-controls="simp-mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <nav class="simp-mobile-menu" id="simp-mobile-menu">
+    <details class="simp-mobile-details">
+      <summary class="simp-mobile-summary">Startup</summary>
+      <div class="simp-mobile-submenu">
+        <a href="/log.html?cat=%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8">스타트업 인사이트</a>
+        <a href="/log.html?cat=%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%AF%B8%EA%B5%AD%EC%A7%84%EC%B6%9C%EC%9D%84%20%EB%AC%BB%EB%8B%A4">대한민국 스타트업 미국진출을 묻다</a>
+        <a href="/log.html?cat=%EC%BD%94%EC%B9%98S">코치S</a>
+      </div>
+    </details>
+    <details class="simp-mobile-details">
+      <summary class="simp-mobile-summary">FieldPlay</summary>
+      <div class="simp-mobile-submenu">
+        <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9D%BC%EC%83%81">기획일상</a>
+        <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">기획자의 프레임웍</a>
+        <a href="/log.html?cat=%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC">잉크드인대 기획학과</a>
+        <a href="/log.html?cat=Be%20the%20PO">Be the PO</a>
+        <a href="/log.html?cat=PO%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">PO의 프레임웍</a>
+        <a href="/log.html?cat=UX%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">UX의 언어들</a>
+        <a href="/log.html?cat=AI%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">AI의 언어들</a>
+      </div>
+    </details>
+    <details class="simp-mobile-details">
+      <summary class="simp-mobile-summary">Life</summary>
+      <div class="simp-mobile-submenu">
+        <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EB%9D%BC%EC%9D%B4%ED%94%84">심플리파이어 라이프</a>
+        <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%ED%95%9C%20%EC%B0%BD%EC%97%85%ED%95%98%EA%B3%A0%20%ED%8C%8C%EC%9D%B4%EC%96%B4%ED%95%98%EA%B2%8C%20%EC%9D%BC%ED%95%98%EA%B8%B0">심플한 창업하고 파이어하게 일하기</a>
+        <a href="/log.html?cat=%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%EC%A7%81%EC%9E%A5%20%EC%9D%B4%EC%95%BC%EA%B8%B0">이력서에 쓰지 않는 첫직장 이야기</a>
+        <a href="/log.html?cat=%ED%86%A0%ED%81%AC%EC%84%B8%EC%85%98">토크세션</a>
+      </div>
+    </details>
+    <details class="simp-mobile-details">
+      <summary class="simp-mobile-summary">Book & Class</summary>
+      <div class="simp-mobile-submenu">
+        <a href="https://www.yes24.com/product/goods/147079674" target="_blank" rel="noopener">기획자의 질문법</a>
+        <a href="https://www.yes24.com/product/goods/193444437" target="_blank" rel="noopener">UX의 언어들</a>
+        <a href="https://www.classu.co.kr/new/class/1019442" target="_blank" rel="noopener">유니콘의 리더십</a>
+      </div>
+    </details>
+    <button type="button" class="simp-mobile-cta simp-open-contact-modal">Contact</button>
+  </nav>
+</header>
+
+<div id="simp-contact-modal-overlay">
+  <div class="simp-modal-bg" data-simp-close-modal></div>
+  <div class="simp-modal-content">
+    <button type="button" data-simp-close-modal aria-label="닫기" class="simp-modal-close">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true">
+        <path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <span class="simp-eyebrow">Contact</span>
+    <h2>함께 최선의 답을 찾겠습니다</h2>
+    <p class="simp-modal-desc">코칭, 강연, 협업 제안 등 어떤 말씀이든 편하게 남겨주세요.</p>
+    <form id="simp-contact-form" novalidate>
+      <div class="simp-form-group">
+        <label for="simp-cf-phone">회신받으실 전화번호를 알려주세요</label>
+        <input type="tel" id="simp-cf-phone" name="phone" required placeholder="010-1234-5678">
+      </div>
+      <div class="simp-form-group">
+        <label for="simp-cf-email">회신받으실 이메일 주소를 알려주세요</label>
+        <input type="email" id="simp-cf-email" name="email" required>
+      </div>
+      <div class="simp-form-group">
+        <label for="simp-cf-message">전달하고 싶은 내용을 남겨주세요</label>
+        <textarea id="simp-cf-message" name="message" required rows="5"></textarea>
+      </div>
+      <p id="simp-cf-error" class="simp-cf-error">빠짐없이 입력해주세요.</p>
+      <button type="submit" id="simp-cf-submit">
+        보내기
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true">
+          <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </form>
+  </div>
+</div>
+<div id="simp-copy-toast" role="status" aria-live="polite"></div>
+
+
     <!-- JS 스위치 판단 메타 태그 -->
     <meta id="isSwipeData" data-is-swipe="{{ page.is_swipe }}">
 
     {% if page.url == '/' or page.url == '/log.html' or page.is_index %}
         <div class="cover-wrap index-mode" id="coverWrap">
-            <div class="cover-header">
-                <a href="/" class="cover-logo"><img src="/brunch_web_assets/images/logo_white.png" alt="Simplifier Logo"></a>
-            </div>
             <div class="cover-bottom-left">
                 <h1 class="cover-title" id="displayTitle">{{ page.title }}</h1>
             </div>
@@ -275,10 +490,8 @@
     {% else %}
         {% assign bg_img = page.cover_image | default: '/brunch_web_assets/images/logo_white.png' %}
         <div class="cover-wrap post-mode" id="coverWrap" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%), url('{{ bg_img }}');">
-            <div class="cover-header">
-                <a href="/" class="cover-logo"><img src="/brunch_web_assets/images/logo_white.png" alt="Simplifier Logo"></a>
+            <div class="cover-header" style="justify-content: flex-end;">
                 <div class="cover-category-pill">{{ page.category }}</div>
-                <div style="width: 26px;"></div>
             </div>
             <div class="cover-bottom-left">
                 <h1 class="cover-title" id="displayTitle">{{ page.title }}</h1>
@@ -474,5 +687,117 @@
             }
         });
     </script>
+<script>
+(function(){
+  var burger = document.getElementById('simp-nav-burger');
+  var menu = document.getElementById('simp-mobile-menu');
+  if (burger && menu) {
+    function closeMenu(){
+      menu.classList.remove('open');
+      burger.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+    burger.addEventListener('click', function(){
+      var isOpen = menu.classList.toggle('open');
+      burger.classList.toggle('open', isOpen);
+      burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', closeMenu);
+    });
+  }
+})();
+
+(function initSimpContactModal() {
+  var FORMSPREE_ENDPOINT = 'https://formspree.io/f/xjybggkw';
+
+  var openBtns = document.querySelectorAll('.simp-open-contact-modal');
+  var overlay = document.getElementById('simp-contact-modal-overlay');
+  var closeEls = document.querySelectorAll('[data-simp-close-modal]');
+  var form = document.getElementById('simp-contact-form');
+  var submitBtn = document.getElementById('simp-cf-submit');
+  var errorMsg = document.getElementById('simp-cf-error');
+  var toast = document.getElementById('simp-copy-toast');
+  var toastTimer = null;
+
+  if (!overlay) return;
+
+  function showToast(message) {
+    clearTimeout(toastTimer);
+    toast.textContent = message;
+    toast.classList.add('show');
+    toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 2600);
+  }
+
+  function openModal() {
+    overlay.classList.add('show');
+    document.body.style.overflow = 'hidden';
+    var first = document.getElementById('simp-cf-phone');
+    if (first) first.focus();
+  }
+
+  function closeModal() {
+    overlay.classList.remove('show');
+    document.body.style.overflow = '';
+  }
+
+  openBtns.forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      openModal();
+    });
+  });
+
+  closeEls.forEach(function (el) { el.addEventListener('click', closeModal); });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && overlay.classList.contains('show')) closeModal();
+  });
+
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      errorMsg.classList.remove('show');
+
+      var data = {
+        phone: form.phone.value.trim(),
+        email: form.email.value.trim(),
+        message: form.message.value.trim(),
+      };
+
+      if (!data.phone || !data.email || !data.message) {
+        errorMsg.classList.add('show');
+        return;
+      }
+
+      submitBtn.disabled = true;
+
+      fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(data),
+      })
+        .then(function (res) {
+          if (res.ok) {
+            form.reset();
+            closeModal();
+            showToast('문의가 정상적으로 접수되었습니다.');
+          } else {
+            showToast('전송에 실패했습니다. 잠시 후 다시 시도해주세요.');
+          }
+        })
+        .catch(function () {
+          showToast('전송에 실패했습니다. 잠시 후 다시 시도해주세요.');
+        })
+        .finally(function () {
+          submitBtn.disabled = false;
+        });
+    });
+  }
+})();
+</script>
 </body>
+
 </html>
