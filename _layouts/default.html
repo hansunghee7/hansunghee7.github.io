@@ -52,10 +52,6 @@
         html { scroll-behavior: smooth; }
         body { margin: 0; padding: 0; font-family: 'Noto Sans KR', sans-serif; background-color: #fff; color: #333; word-break: keep-all; }
         .cover-wrap { position: relative; width: 100%; background-color: #111111; background-size: cover; background-position: center; color: #fff; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; }
-        .cover-header { display: flex; align-items: center; justify-content: space-between; z-index: 10; }
-        .cover-logo img { height: 26px; vertical-align: middle; transition: opacity 0.2s; }
-        .cover-logo:hover img { opacity: 0.7; }
-        .cover-category-pill { border: 1px solid rgba(255,255,255,0.4); border-radius: 20px; padding: 5px 16px; font-size: 12px; font-weight: 300; letter-spacing: -0.5px; }
         
         .cover-wrap.index-mode { height: 22vh; min-height: 160px; padding: 25px 40px; }
         .index-mode .cover-bottom-left { text-align: left; position: relative; }
@@ -69,7 +65,6 @@
         .down-arrow { display: inline-block; font-size: 26px; color: #fff; text-decoration: none; transition: transform 0.3s ease; opacity: 0.8; }
         .down-arrow:hover { transform: translateY(-8px); opacity: 1; }
 
-        /* 💡 본문 여백 축소 (기존 120px -> 20px) */
         .article-body { max-width: 1100px; margin: 0 auto; padding: 40px 20px 40px; }
         .post-mode + .article-body { max-width: 700px; padding: 80px 20px 20px; }
         .article-body p { font-size: 16px; font-weight: 300; line-height: 2.1; margin-bottom: 35px; }
@@ -95,8 +90,6 @@
            ======================================================= */
         body.is-swipe-mode { background-color: #0f1015; color: #eee; overflow: hidden !important; display: flex; flex-direction: column; height: 100vh; width: 100vw; }
         body.is-swipe-mode .cover-wrap.post-mode { flex: 0 0 auto !important; position: relative !important; height: auto !important; min-height: 0 !important; padding: 14px 24px !important; background: #181920 !important; display: flex !important; flex-direction: row !important; align-items: center !important; border-bottom: 1px solid rgba(255,255,255,0.08); }
-        body.is-swipe-mode .cover-header { position: relative; z-index: 10; justify-content: flex-start !important; gap: 24px !important; }
-        body.is-swipe-mode .cover-header > div:last-child { display: none !important; } 
         body.is-swipe-mode .cover-bottom-left { position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; padding: 0 !important; margin: 0 !important; display: flex !important; align-items: center !important; z-index: 5; width: auto !important; }
         body.is-swipe-mode .cover-title { font-size: 16px !important; margin: 0 !important; line-height: 1.2 !important; font-weight: 400 !important; text-align: center !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; max-width: 45vw !important; }
         body.is-swipe-mode .cover-sub, body.is-swipe-mode .cover-bottom-right { display: none !important; }
@@ -134,59 +127,52 @@
 {% if page.url == '/' or page.url == '/log.html' or page.is_index %}
     {% include header.html %}
 {% else %}
-    <!-- 💡 개별 콘텐츠(포스트)에는 투명하고 가벼운 로그 전용 GNB 노출 -->
+    <!-- 💡 개별 콘텐츠(포스트) 전용 GNB: 로고 + 카테고리 콤보 -->
     <style>
       .log-nav {
         position: absolute;
         top: 0; left: 0; right: 0;
         height: 68px;
-        display: flex; align-items: center; justify-content: space-between;
+        display: flex; align-items: center; justify-content: flex-start;
         padding: 0 32px;
+        gap: 20px;
         z-index: 100;
         background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 100%);
       }
-      .log-nav-left a {
-        color: rgba(245,243,238,0.8);
-        text-decoration: none;
-        font-family: 'Pretendard Variable', sans-serif;
-        font-size: 14px;
-        transition: color 0.2s;
-        display: flex; align-items: center; gap: 4px;
-      }
-      .log-nav-left a:hover { color: #f5f3ee; }
       .log-nav-logo img { height: 22px; display: block; opacity: 0.9; transition: opacity 0.2s; }
       .log-nav-logo:hover img { opacity: 1; }
-      .log-nav-right .log-contact {
-        background: rgba(245,243,238,0.15);
-        color: #f5f3ee;
-        border: 1px solid rgba(245,243,238,0.3);
-        padding: 6px 16px;
-        border-radius: 999px;
+      
+      .log-nav-category {
+        border: 1px solid rgba(245,243,238,0.4);
+        border-radius: 20px;
+        padding: 5px 16px;
         font-size: 13px;
-        cursor: pointer;
-        transition: background 0.2s, color 0.2s;
-        font-family: 'Pretendard Variable', sans-serif;
+        font-weight: 300;
+        color: #f5f3ee;
+        text-decoration: none;
+        letter-spacing: -0.5px;
+        transition: all 0.2s ease;
+        font-family: 'Pretendard Variable', 'Noto Sans KR', sans-serif;
       }
-      .log-nav-right .log-contact:hover {
-        background: #f5f3ee;
+      .log-nav-category:hover {
+        background-color: #f5f3ee;
         color: #080808;
       }
-      /* 웹툰 스와이프 모드에서는 심플 헤더도 숨김 처리하여 완벽한 풀스크린 제공 */
       body.is-swipe-mode .log-nav { display: none !important; }
     </style>
+    
     <header class="log-nav">
-      <div class="log-nav-left">
-        <a href="/log.html">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-          List
-        </a>
-      </div>
+      <!-- 로고 (홈으로 이동) -->
       <a href="/" class="log-nav-logo">
         <img src="/brunch_web_assets/images/logo_white.png" alt="Simplifier">
       </a>
-      <div class="log-nav-right">
-        <button class="log-contact open-contact-modal">Contact</button>
-      </div>
+      
+      <!-- 카테고리 태그 (해당 카테고리 필터링된 log.html 로 이동) -->
+      {% if page.category %}
+      <a href="/log.html?cat={{ page.category | url_encode }}" class="log-nav-category">
+        {{ page.category }}
+      </a>
+      {% endif %}
     </header>
 {% endif %}
 
@@ -202,9 +188,6 @@
 {% else %}
     {% assign bg_img = page.cover_image | default: '/brunch_web_assets/images/logo_white.png' %}
     <div class="cover-wrap post-mode" id="coverWrap" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%), url('{{ bg_img }}');">
-        <div class="cover-header" style="justify-content: flex-end;">
-            <div class="cover-category-pill">{{ page.category }}</div>
-        </div>
         <div class="cover-bottom-left">
             <h1 class="cover-title" id="displayTitle">{{ page.title }}</h1>
             <div class="cover-sub">
@@ -250,7 +233,9 @@
 
         const isSwipeMeta = document.getElementById('isSwipeData');
         const isSwipeVal = isSwipeMeta ? isSwipeMeta.getAttribute('data-is-swipe') : '';
-        const categoryPill = document.querySelector('.cover-category-pill');
+        
+        // 새로 추가된 카테고리 태그 클래스로 변경
+        const categoryPill = document.querySelector('.log-nav-category');
         const categoryText = categoryPill ? categoryPill.innerText : '';
 
         const isLogPage = window.location.pathname.includes('log.html') || window.location.pathname === '/' || document.querySelector('.card-grid') !== null;
