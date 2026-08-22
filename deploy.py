@@ -2,7 +2,6 @@ import subprocess
 import sys
 import os
 
-# ignore_error 파라미터 추가
 def run_cmd(cmd_list, ignore_error=False):
     cmd_str = " ".join(cmd_list)
     print(f"\n🚀 실행 중: {cmd_str}")
@@ -26,9 +25,10 @@ print("==========================================")
 
 python_cmd = "py" if os.name == "nt" else "python3"
 
+# sync_all.py 실행
 run_cmd([python_cmd, "sync_all.py"])
 run_cmd(["git", "add", "-A"])
-# 커밋은 '변경사항 없음' 에러가 날 수 있으므로 예외 처리 추가
+# 변경사항이 없어서 생기는 에러를 무시하고 진행
 run_cmd(["git", "commit", "-m", commit_msg], ignore_error=True) 
 run_cmd(["git", "push"])
 

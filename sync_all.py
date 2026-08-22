@@ -6,7 +6,7 @@ import json
 import time
 import requests
 from bs4 import BeautifulSoup
-from datetime import datetime # 날짜 처리를 위해 추가
+from datetime import datetime
 
 CATEGORY_SORT_DEFAULTS = {
     "AI의 언어들": "desc",
@@ -29,7 +29,7 @@ GLOBAL_PROMO_LINKS = [
     "https://www.yes24.com/product/goods/193444437"
 ]
 
-BASE_URL = "https://hansunghee7.github.io" # 사이트맵 생성을 위한 기본 주소
+BASE_URL = "https://hansunghee7.github.io" 
 index_file = "log.html"
 csv_file = "브런치_글_모음집.csv"
 md_dir = "brunch_web_assets/markdown"
@@ -88,11 +88,11 @@ def get_og_card(url):
         
         img_html = f'<div style="width:25%; min-width:160px; background:url(\'{img}\') center/cover no-repeat; border-left:1px solid #e1e1e1;"></div>' if img else ''
         
-        card_html = f'''<a href="{url}" target="_blank" style="display:flex; border:1px solid #e1e1e1; background-color:#fff; overflow:hidden; text-decoration:none !important; color:inherit; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:\'Noto Sans KR\', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor=\'#111111\'" onmouseout="this.style.borderColor=\'#e1e1e1\'">
+        card_html = f'''<a href="{url}" target="_blank" style="display:flex; border:1px solid rgba(245,243,238,0.08); background-color:#111; overflow:hidden; text-decoration:none !important; color:#f5f3ee; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:\'Pretendard Variable\', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor=\'rgba(245,243,238,0.4)\'" onmouseout="this.style.borderColor=\'rgba(245,243,238,0.08)\'">
     <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">
-        <div style="font-size:22px; font-weight:300; color:#333; margin-bottom:12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; letter-spacing:-0.5px;">{title}</div>
-        <div style="font-size:14px; font-weight:300; color:#888; line-height:1.6; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; word-break:keep-all;">{desc}</div>
-        <div style="margin-top:auto; font-size:13px; font-weight:300; color:#999;">{domain}</div>
+        <div style="font-size:20px; font-weight:500; color:#f5f3ee; margin-bottom:12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; letter-spacing:-0.5px;">{title}</div>
+        <div style="font-size:14px; font-weight:300; color:#8f8b82; line-height:1.6; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; word-break:keep-all;">{desc}</div>
+        <div style="margin-top:auto; font-size:13px; font-weight:300; color:#736f67;">{domain}</div>
     </div>
     {img_html}
 </a>'''
@@ -169,7 +169,6 @@ for filename in md_files:
 
     body_content = re.sub(r'^---.*?---\s*', '', content, flags=re.DOTALL)
     
-    # 중복 및 오염 태그 강력 청소
     body_content = re.sub(r'<!-- PROMO_BANNER_START -->.*?<!-- PROMO_BANNER_END -->', '', body_content, flags=re.DOTALL)
     body_content = re.sub(r'<!-- CATEGORY_NAV_START -->.*?<!-- CATEGORY_NAV_END -->', '', body_content, flags=re.DOTALL)
     body_content = re.sub(r'<!-- OG_CARD_START -->.*?<!-- OG_CARD_END -->', '', body_content, flags=re.DOTALL)
@@ -206,14 +205,13 @@ for cat in category_posts:
 with open(og_cache_file, 'w', encoding='utf-8') as f:
     json.dump(og_cache, f, ensure_ascii=False, indent=2)
 
-# 🌟 렌더링 에러를 방지하는 완벽한 HTML 구조화
 global_promo_html = ""
 if GLOBAL_PROMO_LINKS:
     global_promo_html += "\n\n<!-- PROMO_BANNER_START -->\n<div style=\"margin-top: 80px; margin-bottom: 20px;\">\n"
     global_promo_html += "  <div style=\"display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%; margin-bottom: 20px;\">\n"
-    global_promo_html += "    <div style=\"flex: 1; height: 1px; background-color: #e1e1e1;\"></div>\n"
-    global_promo_html += "    <span style=\"font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-size: 16px; color: #888; letter-spacing: 0.5px; white-space: nowrap;\">Simplifier Choice</span>\n"
-    global_promo_html += "    <div style=\"flex: 1; height: 1px; background-color: #e1e1e1;\"></div>\n"
+    global_promo_html += "    <div style=\"flex: 1; height: 1px; background-color: rgba(245,243,238,0.1);\"></div>\n"
+    global_promo_html += "    <span style=\"font-family: 'Boska', serif; font-style: italic; font-size: 16px; color: #8f8b82; letter-spacing: 0.5px; white-space: nowrap;\">Simplifier Choice</span>\n"
+    global_promo_html += "    <div style=\"flex: 1; height: 1px; background-color: rgba(245,243,238,0.1);\"></div>\n"
     global_promo_html += "  </div>\n"
     for purl in GLOBAL_PROMO_LINKS:
         global_promo_html += get_og_card(purl) + "\n"
@@ -246,12 +244,12 @@ document.addEventListener('DOMContentLoaded', function() {{
         catPill.style.cursor = 'pointer';
         catPill.style.transition = 'all 0.2s ease';
         catPill.addEventListener('mouseenter', function() {{
-            this.style.backgroundColor = '#fff';
-            this.style.color = '#111';
+            this.style.backgroundColor = '#f5f3ee';
+            this.style.color = '#080808';
         }});
         catPill.addEventListener('mouseleave', function() {{
             this.style.backgroundColor = 'transparent';
-            this.style.color = '#fff';
+            this.style.color = '#f5f3ee';
         }});
         catPill.addEventListener('click', function() {{
             window.location.href = '/log.html?cat=' + encodeURIComponent('{category}');
@@ -262,12 +260,12 @@ document.addEventListener('DOMContentLoaded', function() {{
 <!-- CAT_LINK_SCRIPT_END -->\n\n"""
 
     nav_html = "\n\n<!-- CATEGORY_NAV_START -->\n<style>\n" \
-               ".category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid #e1e1e1; display: flex; justify-content: space-between; align-items: center; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: #888; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }\n" \
-               ".cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #666; transition: color 0.2s; max-width: 45%; }\n" \
-               ".cat-nav-item:hover { color: #111; }\n" \
-               ".cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }\n" \
-               ".cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }\n" \
-               ".nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }\n" \
+               ".category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid rgba(245,243,238,0.1); display: flex; justify-content: space-between; align-items: center; font-family: 'Pretendard Variable', sans-serif; font-size: 14px; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }\n" \
+               ".cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #8f8b82; transition: color 0.2s; max-width: 45%; }\n" \
+               ".cat-nav-item:hover { color: #f5f3ee; }\n" \
+               ".cat-nav-item:hover .nav-title { color: #f5f3ee; text-decoration: underline; }\n" \
+               ".cat-nav-label { font-size: 13px; color: #736f67; white-space: nowrap; font-weight: 300; }\n" \
+               ".nav-title { font-weight: 400; color: #c9c8c2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }\n" \
                ".cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }\n" \
                "</style>\n<div class=\"category-nav-wrap\">\n"
 
@@ -297,43 +295,51 @@ html_header = f"---\nlayout: default\ntitle: 'Simplifier Log {post_count}'\nis_i
 default_sorts_json = json.dumps(CATEGORY_SORT_DEFAULTS, ensure_ascii=False)
 
 html_body = """<style>
+/* 1. 상단 무거운 "Simplifier Log" 배너 영역 완전 숨김 */
+.cover-wrap.index-mode { display: none !important; }
+
+/* 2. 전체 페이지 배경을 다크 테마(#080808)로 고정 */
+body { background-color: #080808 !important; color: #f5f3ee !important; }
+
+/* 3. 본문 영역 컨테이너 여백 및 배경 조정 */
+.article-body { max-width: 1200px !important; margin: 0 auto; padding: 60px 32px 120px !important; background-color: #080808 !important; }
+
+/* 4. 카테고리 필터 & 정렬 영역 스타일 */
+.filter-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px; margin-bottom: 40px; }
+.category-filter { display: flex; flex-wrap: wrap; gap: 8px; flex: 1; }
+.cat-btn { padding: 8px 18px; border: 1px solid rgba(245,243,238,0.12); border-radius: 20px; background: transparent; color: #8f8b82; font-size: 13.5px; font-weight: 400; cursor: pointer; transition: all 0.2s; font-family: 'Pretendard Variable', sans-serif; }
+.cat-btn:hover { border-color: rgba(245,243,238,0.4); color: #f5f3ee; }
+.cat-btn.active { background: #f5f3ee; color: #080808 !important; border-color: #f5f3ee; font-weight: 600; }
+
+/* 5. 정렬 버튼 (최신순 / 날짜순) 다크 테마 */
+.sort-filter { display: flex; gap: 15px; align-items: center; margin-bottom: 5px; }
+.sort-text-btn { background: none; border: none; font-size: 14px; color: #8f8b82; cursor: pointer; font-family: 'Pretendard Variable', sans-serif; font-weight: 300; display: flex; align-items: center; padding: 0; transition: color 0.2s; }
+.sort-text-btn:hover { color: #f5f3ee; }
+.sort-text-btn.active { color: #f5f3ee; font-weight: 500; }
+.sort-text-btn .dot { display: inline-block; width: 4px; height: 4px; border-radius: 50%; background-color: transparent; margin-right: 6px; margin-bottom: 2px; }
+.sort-text-btn.active .dot { background-color: #f5f3ee !important; }
+
+/* 6. 로그 카드 그리드 다크 테마 디자인 */
+.card-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 20px; }
+@media (max-width: 1024px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .card-grid { grid-template-columns: repeat(1, 1fr); } }
+
+.card-item { display: none; background: #111 !important; border: 1px solid rgba(245,243,238,0.08) !important; border-radius: 12px; overflow: hidden; transition: transform 0.3s ease, border-color 0.3s ease !important; text-decoration: none !important; color: inherit; flex-direction: column; }
+.card-thumb-wrap { width: 100%; height: 180px; overflow: hidden; position: relative; border-bottom: 1px solid rgba(245,243,238,0.05); }
+.card-thumb { width: 100%; height: 100%; background-size: cover; background-position: center; transition: transform 0.4s ease; }
+
+.card-item:hover { border-color: rgba(245,243,238,0.25) !important; transform: translateY(-4px); box-shadow: none !important; }
+.card-item:hover .card-thumb { transform: scale(1.05); }
+
+.card-content { padding: 20px; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; }
+.card-category { font-size: 11.5px; color: #8f8b82 !important; font-weight: 500; margin-bottom: 8px; font-family: 'Pretendard Variable', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; }
+.card-title { font-family: 'Pretendard Variable', sans-serif; font-size: 15.5px; font-weight: 500; color: #f5f3ee !important; line-height: 1.45; margin: 0 0 16px 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.card-date { font-size: 12px; color: #736f67 !important; margin-top: auto; font-weight: 300; font-family: 'Pretendard Variable', sans-serif; }
+
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 .card-item.visible { display: flex !important; animation: fadeInUp 0.4s ease forwards; }
 #scrollSentinel { height: 50px; margin-top: 30px; }
-
-body > header, .site-header, .page-header, .post-header, .header-wrap, .hero-section, .intro-banner, .header-bg, .top-bar, div[class*="header"], div[class*="hero"], .masthead, .intro-header {
-    background-color: #111111 !important;
-    background-image: none !important;
-    background: #111111 !important;
-    color: #ffffff !important;
-    border-bottom: none !important;
-}
-
-.site-header *, .page-header *, .post-header * { color: #ffffff !important; }
-
-.filter-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px; margin-bottom: 35px; }
-.category-filter { display: flex; flex-wrap: wrap; gap: 8px; flex: 1; }
-.cat-btn { padding: 7px 16px; border: 1px solid #e1e1e1; border-radius: 20px; background: #fff; color: #666; font-size: 13px; font-weight: 300; cursor: pointer; transition: all 0.2s; font-family: 'Noto Sans KR', sans-serif; }
-.cat-btn:hover { border-color: #111111; color: #111111; }
-
-.cat-btn.active { background: #111111; color: #ffffff !important; border-color: #111111; font-weight: 300; }
-
-.sort-filter { display: flex; gap: 15px; align-items: center; margin-bottom: 5px; }
-.sort-text-btn { background: none; border: none; font-size: 14px; color: #a0a0a0; cursor: pointer; font-family: 'Noto Sans KR', sans-serif; font-weight: 300; display: flex; align-items: center; padding: 0; transition: color 0.2s; }
-.sort-text-btn:hover { color: #555; }
-.sort-text-btn.active { color: #111; font-weight: 400; }
-.sort-text-btn .dot { display: inline-block; width: 4px; height: 4px; border-radius: 50%; background-color: transparent; margin-right: 4px; margin-bottom: 2px; }
-.sort-text-btn.active .dot { background-color: #111111 !important; }
-
-.card-item { border: 1px solid #e1e1e1; border-radius: 12px; overflow: hidden; transition: border-color 0.3s ease, box-shadow 0.3s ease; text-decoration: none !important; color: inherit; }
-.card-thumb-wrap { width: 100%; height: 180px; overflow: hidden; position: relative; }
-/* 흑백 필터 제거, 크기 커지는 효과만 유지 */
-.card-thumb { width: 100%; height: 100%; background-size: cover; background-position: center; transition: transform 0.4s ease; }
-
-.card-item:hover { border-color: #111111 !important; box-shadow: 0 6px 20px rgba(17, 17, 17, 0.15) !important; }
-/* 호버 시 확대 효과 */
-.card-item:hover .card-thumb { transform: scale(1.08); }
-.card-category { color: #222; font-weight: 500; }
 </style>
 
 <div class="filter-wrap"><div class="category-filter"><button class="cat-btn active" data-filter="all">전체보기</button>"""
@@ -344,9 +350,9 @@ for cat in sorted(list(unique_categories)):
 html_body += """</div><div class="sort-filter"><button class="sort-text-btn active" data-sort="desc"><span class="dot"></span>최신순</button><button class="sort-text-btn" data-sort="asc"><span class="dot"></span>날짜순</button></div></div><div class="card-grid" id="cardGrid">""" + cards_html + """</div><div id="scrollSentinel"></div><script>document.addEventListener('DOMContentLoaded', function() { 
 
 document.querySelectorAll('header, .site-header, .page-header, .post-header, .masthead, .intro-header').forEach(el => {
-    el.style.setProperty('background-color', '#111111', 'important');
+    el.style.setProperty('background-color', '#080808', 'important');
     el.style.setProperty('background-image', 'none', 'important');
-    el.style.setProperty('background', '#111111', 'important');
+    el.style.setProperty('background', '#080808', 'important');
 });
 
 const cards = Array.from(document.querySelectorAll('.card-item')); const filterBtns = document.querySelectorAll('.cat-btn'); const sortBtns = document.querySelectorAll('.sort-text-btn'); const sentinel = document.getElementById('scrollSentinel'); const grid = document.getElementById('cardGrid'); let itemsPerBatch = 20, currentVisibleCount = 0; let filteredCards = [...cards]; let currentFilter = 'all'; 
@@ -388,7 +394,6 @@ today_str = datetime.now().strftime("%Y-%m-%d")
 sitemap_xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
 sitemap_xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
 
-# 1-1. 메인 페이지와 블로그 리스트 페이지 추가
 for page in ["", "/log.html"]:
     sitemap_xml += '  <url>\n'
     sitemap_xml += f'    <loc>{BASE_URL}{page}</loc>\n'
@@ -397,9 +402,7 @@ for page in ["", "/log.html"]:
     sitemap_xml += '    <priority>1.0</priority>\n'
     sitemap_xml += '  </url>\n'
 
-# 1-2. 개별 블로그 포스트 추가
 for p in posts:
-    # timestamp가 "YYYYMMDD" 형태이므로 "YYYY-MM-DD"로 변환
     lastmod = today_str
     if p['timestamp'] and len(p['timestamp']) == 8 and p['timestamp'] != "00000000":
         lastmod = f"{p['timestamp'][:4]}-{p['timestamp'][4:6]}-{p['timestamp'][6:]}"
