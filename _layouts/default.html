@@ -103,11 +103,11 @@
         /* 2. 포스트 본문 영역 */
         .article-body { max-width: 1100px; margin: 0 auto; padding: 40px 20px 40px; }
         
-        /* [포스트 상세 본문 여백 조절] */
+        /* 💡 [포스트 상세 본문 여백 확대 - 바닥 여백을 120px로 확보] */
         .post-mode + .article-body { 
             max-width: 700px; 
             padding-top: 60px;    
-            padding-bottom: 10px; 
+            padding-bottom: 120px !important; 
         }
         .article-body p { font-size: 16px; font-weight: 300; line-height: 2.1; margin-bottom: 35px; }
         
@@ -115,11 +115,11 @@
         .article-body img { max-width: 100%; height: auto; margin: 40px auto; display: block; border-radius: 4px; }
         .article-body hr { border: 0; border-top: 1px solid #eaeaea; margin: 60px 0; }
 
-        /* [이전글 / 다음글 화면 양쪽 끝 풀-비전 정렬] */
+        /* 💡 [이전글 / 다음글 바 상하 여백 대폭 확대] */
         .category-nav-wrap { 
-            margin-top: 60px;     
-            margin-bottom: 0px;   
-            padding: 25px 40px;    
+            margin-top: 120px !important;     /* 본문 글 끝 ~ 구분선 간격 120px */
+            margin-bottom: 40px !important;   /* 하단 여백 추가 */
+            padding: 35px 40px;    
             border-top: 1px solid #eaeaea; 
             display: flex; 
             justify-content: space-between; 
@@ -284,33 +284,38 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
+        // 💡 화살표 클릭 시 100vh 커버 축소 여부와 관계없이 문서 절대 좌표 기준으로 본문 시작점에 딱 정렬
         const scrollBtn = document.getElementById('scrollDownBtn');
         const articleBody = document.getElementById('articleBody');
         
         if (scrollBtn && articleBody) {
             scrollBtn.addEventListener('click', function(e) {
                 e.preventDefault();
-                const bodyTop = articleBody.getBoundingClientRect().top + window.pageYOffset;
+                e.stopPropagation();
+                
+                // 문서 최상단부터 articleBody까지의 실제 절대 높이 계산
+                const bodyRect = articleBody.getBoundingClientRect();
+                const absoluteTop = bodyRect.top + window.pageYOffset;
+                
                 window.scrollTo({
-                    top: bodyTop,
+                    top: absoluteTop,
                     behavior: 'smooth'
                 });
             });
         }
 
-        // 💡 스크롤 시 100vh 커버 이미지가 매우 빠르게 상단으로 소멸하는 패러랙스 애니메이션
+        // 스크롤 시 100vh 커버 이미지가 빠르게 상단으로 접히는 애니메이션
         const coverWrap = document.getElementById('coverWrap');
         const coverTitleBox = document.getElementById('coverTitleBox');
         const coverArrowBox = document.getElementById('coverArrowBox');
         
         if (coverWrap && coverWrap.classList.contains('post-mode')) {
             const initialHeight = window.innerHeight; // 100vh
-            const minHeight = 0; // 스크롤 시 완전히 접힘
+            const minHeight = 0; 
             
             window.addEventListener('scroll', function() {
                 const scrolled = window.scrollY;
                 if (scrolled <= initialHeight) {
-                    // 스크롤 감도를 1.8배로 높여 매우 빠르게 접히고 투명해짐
                     const newHeight = Math.max(minHeight, initialHeight - scrolled * 1.8);
                     const opacity = Math.max(0, 1 - (scrolled / (initialHeight * 0.3)));
                     
