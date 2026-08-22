@@ -1,0 +1,124 @@
+<style>
+  /* Contact Modal 공통 스타일 */
+  #contact-modal-overlay { position: fixed; inset: 0; z-index: 9999; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: opacity 0.3s; padding: 24px; box-sizing: border-box;}
+  #contact-modal-overlay.show { opacity: 1; visibility: visible; }
+  .modal-bg { position: absolute; inset: 0; background: rgba(8,8,8,0.85); backdrop-filter: blur(8px); }
+  .modal-content { position: relative; background: #080808; border: 1px solid rgba(245,243,238,0.15); padding: 48px; border-radius: 12px; width: 100%; max-width: 600px; max-height: 90vh; overflow-y: auto; transform: translateY(20px); transition: transform 0.3s; font-family: 'Pretendard Variable', sans-serif;}
+  #contact-modal-overlay.show .modal-content { transform: translateY(0); }
+  .modal-close { position: absolute; top: 24px; right: 24px; background: none; border: none; color: #8f8b82; cursor: pointer; padding: 8px; transition: color 0.2s; }
+  .modal-close:hover { color: #f5f3ee; }
+  
+  .eyebrow-modal { font-size: 13px; font-weight: 500; letter-spacing: 0.12em; color: #8f8b82; text-transform: uppercase; margin-bottom: 16px; display: block; }
+  .modal-content h2 { font-family: 'Boska', 'Noto Serif KR', serif; font-weight: 300; font-size: 32px; color: #f5f3ee; margin: 0 0 12px; }
+  .modal-content .modal-desc { font-size: 14px; font-weight: 300; color: #8f8b82; margin: 0 0 40px; }
+  
+  .form-group { margin-bottom: 24px; }
+  .form-group label { display: block; font-size: 14px; font-weight: 400; color: #f5f3ee; margin-bottom: 8px; text-align: left; }
+  .form-group input, .form-group textarea { width: 100%; background: transparent; border: 1px solid rgba(245,243,238,0.2); padding: 14px 16px; color: #f5f3ee; font-family: inherit; font-size: 14px; border-radius: 6px; outline: none; transition: border-color 0.2s; box-sizing: border-box;}
+  .form-group input:focus, .form-group textarea:focus { border-color: #f5f3ee; }
+  .cf-error { color: #ff6b6b; font-size: 13px; margin-top: -16px; margin-bottom: 24px; display: none; text-align: left; }
+  .cf-error.show { display: block; }
+  
+  #cf-submit { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #f5f3ee; color: #080808; font-weight: 600; font-size: 15px; padding: 14px 28px; border: none; border-radius: 6px; cursor: pointer; transition: opacity 0.2s; margin-top: 12px; }
+  #cf-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  #copy-toast { position: fixed; left: 50%; bottom: 32px; transform: translate(-50%, 20px); background: #f5f3ee; color: #080808; font-family: 'Pretendard Variable', sans-serif; font-size: 14px; font-weight: 500; padding: 12px 24px; border-radius: 8px; opacity: 0; visibility: hidden; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); z-index: 10000; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+  #copy-toast.show { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+  @media (max-width:700px){ .modal-content { padding: 32px 24px; } }
+</style>
+
+<div id="contact-modal-overlay">
+  <div class="modal-bg" data-close-modal></div>
+  <div class="modal-content">
+    <button type="button" data-close-modal aria-label="닫기" class="modal-close">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true">
+        <path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <p class="eyebrow-modal">Contact</p>
+    <h2>함께 최선의 답을 찾겠습니다</h2>
+    <p class="modal-desc">코칭, 강연, 협업 제안 등 어떤 말씀이든 편하게 남겨주세요.</p>
+    <form id="contact-form" novalidate>
+      <div class="form-group">
+        <label for="cf-phone">회신받으실 전화번호를 알려주세요</label>
+        <input type="tel" id="cf-phone" name="phone" required placeholder="010-1234-5678">
+      </div>
+      <div class="form-group">
+        <label for="cf-email">회신받으실 이메일 주소를 알려주세요</label>
+        <input type="email" id="cf-email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="cf-message">전달하고 싶은 내용을 남겨주세요</label>
+        <textarea id="cf-message" name="message" required rows="5"></textarea>
+      </div>
+      <p id="cf-error" class="cf-error">빠짐없이 입력해주세요.</p>
+      <button type="submit" id="cf-submit">보내기 <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </form>
+  </div>
+</div>
+
+<div id="copy-toast" role="status" aria-live="polite">이메일 주소가 복사되었습니다.</div>
+
+<script>
+(function initContactModal() {
+  var FORMSPREE_ENDPOINT = 'https://formspree.io/f/xjybggkw';
+  var openBtns = document.querySelectorAll('.open-contact-modal');
+  var overlay = document.getElementById('contact-modal-overlay');
+  var closeEls = document.querySelectorAll('[data-close-modal]');
+  var form = document.getElementById('contact-form');
+  var submitBtn = document.getElementById('cf-submit');
+  var errorMsg = document.getElementById('cf-error');
+  var toast = document.getElementById('copy-toast');
+  var toastTimer = null;
+
+  if (!overlay) return;
+
+  function showToast(message) {
+    if(!toast) return;
+    clearTimeout(toastTimer);
+    toast.textContent = message;
+    toast.classList.add('show');
+    toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 2600);
+  }
+
+  function openModal() {
+    overlay.classList.add('show');
+    document.body.style.overflow = 'hidden';
+    var first = document.getElementById('cf-phone');
+    if (first) first.focus();
+  }
+
+  function closeModal() {
+    overlay.classList.remove('show');
+    document.body.style.overflow = '';
+  }
+
+  openBtns.forEach(function(btn) {
+    btn.addEventListener('click', function(e) { e.preventDefault(); openModal(); });
+  });
+
+  closeEls.forEach(function (el) { el.addEventListener('click', closeModal); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && overlay.classList.contains('show')) closeModal(); });
+
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      errorMsg.classList.remove('show');
+
+      var data = { phone: form.phone.value.trim(), email: form.email.value.trim(), message: form.message.value.trim() };
+      if (!data.phone || !data.email || !data.message) { errorMsg.classList.add('show'); return; }
+
+      submitBtn.disabled = true;
+      fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(data)
+      })
+      .then(function (res) {
+        if (res.ok) { form.reset(); closeModal(); showToast('문의가 정상적으로 접수되었습니다.'); } 
+        else { showToast('전송에 실패했습니다. 잠시 후 다시 시도해주세요.'); }
+      })
+      .catch(function () { showToast('전송에 실패했습니다. 잠시 후 다시 시도해주세요.'); })
+      .finally(function () { submitBtn.disabled = false; });
+    });
+  }
+})();
+</script>

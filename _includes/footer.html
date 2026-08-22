@@ -1,0 +1,117 @@
+<style>
+  /* Footer 공통 스타일 */
+  footer.site-footer { background:#f5f3ee; border-top: none; padding: 80px 0 60px; color:#080808; position: relative; z-index: 40; font-family: 'Pretendard Variable', sans-serif; }
+  .site-footer .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; box-sizing: border-box; }
+  .footer-top { display:flex; justify-content:space-between; gap:60px; flex-wrap:wrap; margin-bottom:64px; }
+  .footer-brand { max-width: 280px; }
+  .footer-brand img { height:22px; width:auto; display:block; margin-bottom:20px; filter: invert(1); }
+  .footer-brand p { font-size:14px; color:#5c5952; line-height:1.6; margin:0; }
+  .footer-links { display:flex; gap:32px; flex-wrap:wrap; flex:0 0 auto; }
+  .footer-col h4 { font-size:14px; font-weight:600; color:#080808; margin:0 0 20px; }
+  .footer-col { max-width: 165px; min-width: 0; flex: 0 0 165px; }
+  .footer-col a { display:block; font-size:13.5px; color:#5c5952; margin-bottom:14px; transition:color .2s; text-decoration: none; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .footer-col a:hover { color:#080808; }
+  .footer-bottom { border-top:1px solid rgba(8,8,8,0.12); padding-top:32px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+  .footer-legal { font-size:13px; color:#8f8b82; line-height:1.7; }
+  .footer-legal-row { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .footer-email-copy { display:inline-block; background:none; border:none; padding:0; margin:0; font-family:inherit; font-size:13px; color:#5c5952; cursor:pointer; transition:color .2s; text-decoration:underline; text-underline-offset:3px; }
+  .footer-email-copy:hover { color:#080808; }
+  .footer-social { display:flex; gap:20px; }
+  .footer-social a { color:#5c5952; transition:color .2s; display:flex; align-items:center; }
+  .footer-social a:hover { color:#080808; }
+  @media (max-width:700px){
+    footer.site-footer { padding: 40px 0 40px; }
+    .footer-top { flex-direction:column; gap:48px; margin-bottom: 48px; }
+    .footer-links { gap:48px; }
+    .footer-bottom { flex-direction:column; align-items:flex-start; }
+  }
+</style>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <!-- 기본 로고 이미지 경로 통일 -->
+        <img src="/brunch_web_assets/images/logo_white.png" alt="Simplifier">
+        <p>복잡함을 단순화하는 순간<br>성장은 자연스럽게 따라옵니다.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Startup</h4>
+          <a href="/log.html?cat=%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8">스타트업 인사이트</a>
+          <a href="/log.html?cat=%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%AF%B8%EA%B5%AD%EC%A7%84%EC%B6%9C%EC%9D%84%20%EB%AC%BB%EB%8B%A4">대한민국 스타트업 미국진출을 묻다</a>
+          <a href="/log.html?cat=%EC%BD%94%EC%B9%98S">코치S</a>
+        </div>
+        <div class="footer-col">
+          <h4>FieldPlay</h4>
+          <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9D%BC%EC%83%81">기획일상</a>
+          <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">기획자의 프레임웍</a>
+          <a href="/log.html?cat=%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC">잉크드인대 기획학과</a>
+          <a href="/log.html?cat=Be%20the%20PO">Be the PO</a>
+          <a href="/log.html?cat=PO%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">PO의 프레임웍</a>
+          <a href="/log.html?cat=UX%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">UX의 언어들</a>
+          <a href="/log.html?cat=AI%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">AI의 언어들</a>
+        </div>
+        <div class="footer-col">
+          <h4>Life</h4>
+          <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EB%9D%BC%EC%9D%B4%ED%94%84">심플리파이어 라이프</a>
+          <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%ED%95%9C%20%EC%B0%BD%EC%97%85%ED%95%98%EA%B3%A0%20%ED%8C%8C%EC%9D%B4%EC%96%B4%ED%95%98%EA%B2%8C%20%EC%9D%BC%ED%95%98%EA%B8%B0">심플한 창업하고 파이어하게 일하기</a>
+          <a href="/log.html?cat=%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%EC%A7%81%EC%9E%A5%20%EC%9D%B4%EC%95%BC%EA%B8%B0">이력서에 쓰지 않는 첫직장 이야기</a>
+          <a href="/log.html?cat=%ED%86%A0%ED%81%AC%EC%84%B8%EC%85%98">토크세션</a>
+        </div>
+        <div class="footer-col">
+          <h4>Book & Class</h4>
+          <a href="https://www.yes24.com/product/goods/147079674" target="_blank" rel="noopener">기획자의 질문법</a>
+          <a href="https://www.yes24.com/product/goods/193444437" target="_blank" rel="noopener">UX의 언어들</a>
+          <a href="https://www.classu.co.kr/new/class/1019442" target="_blank" rel="noopener">유니콘의 리더십</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legal">
+        <div class="footer-legal-row">
+          <span>주식회사 심플리파이어 · 대표 한성희</span>
+          <button type="button" class="footer-email-copy" id="footer-email-copy">simon@simplifier.co.kr</button>
+        </div>
+        서울 강남구 테헤란로 128 성곡빌딩 3F 388호<br>
+        © 2022 Simplifier. All rights reserved.
+      </div>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/simplifier/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.11 20.45H3.56V9h3.55v11.45z"/></svg></a>
+        <a href="https://www.facebook.com/simplifier.seoul" target="_blank" rel="noopener" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8.1h2.7l.4-3.2h-3.1V7.6c0-.9.3-1.6 1.6-1.6h1.7V3.1C16.5 3 15.6 3 14.6 3c-2.5 0-4.2 1.5-4.2 4.3v2.4H7.7v3.2h2.7V21h3.1z"/></svg></a>
+        <a href="https://brunch.co.kr/@simplifier" target="_blank" rel="noopener" aria-label="Brunch"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></a>
+        <a href="https://blog.naver.com/simplifiers" target="_blank" rel="noopener" aria-label="Naver Blog"><svg width="18" height="18" viewBox="0 0 24 24"><text x="2" y="18" font-family="Arial, sans-serif" font-weight="800" font-size="18" fill="currentColor">N</text></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function initEmailCopy() {
+  var EMAIL = 'simon@simplifier.co.kr';
+  var button = document.getElementById('footer-email-copy');
+  var toast = document.getElementById('copy-toast');
+  var toastTimer = null;
+  function showToast(message) {
+    if(!toast) return;
+    clearTimeout(toastTimer);
+    toast.textContent = message;
+    toast.classList.add('show');
+    toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 2200);
+  }
+  function fallbackCopy() {
+    var el = document.createElement('textarea');
+    el.value = EMAIL;
+    el.style.position = 'fixed'; el.style.opacity = '0';
+    document.body.appendChild(el); el.focus(); el.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(el); showToast('이메일 주소가 복사되었습니다.');
+  }
+  function copyEmail() {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(EMAIL).then(function(){ showToast('이메일 주소가 복사되었습니다.'); }, fallbackCopy);
+    } else { fallbackCopy(); }
+  }
+  if (button) { button.addEventListener('click', copyEmail); }
+})();
+</script>
