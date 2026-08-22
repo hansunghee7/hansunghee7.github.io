@@ -2,13 +2,14 @@ import subprocess
 import sys
 import os
 
+# deploy.py 수정 예시
 def run_cmd(cmd_list, ignore_error=False):
     cmd_str = " ".join(cmd_list)
     print(f"\n🚀 실행 중: {cmd_str}")
     
-    result = subprocess.run(cmd_list)
+    # input="n\n"을 추가하여 질문이 나와도 자동으로 n을 입력하고 넘어가게 함
+    result = subprocess.run(cmd_list, input="n\n", text=True)
     
-    # 에러가 발생했고, 무시하라는 설정이 없을 때만 중단
     if result.returncode != 0 and not ignore_error:
         print(f"❌ 에러가 발생하여 작업을 중단합니다: {cmd_str}")
         sys.exit(1)
