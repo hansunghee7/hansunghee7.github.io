@@ -69,8 +69,9 @@
         .down-arrow { display: inline-block; font-size: 26px; color: #fff; text-decoration: none; transition: transform 0.3s ease; opacity: 0.8; }
         .down-arrow:hover { transform: translateY(-8px); opacity: 1; }
 
-        .article-body { max-width: 1100px; margin: 0 auto; padding: 40px 20px 120px; }
-        .post-mode + .article-body { max-width: 700px; padding: 80px 20px 120px; }
+        /* 💡 본문 여백 축소 (기존 120px -> 20px) */
+        .article-body { max-width: 1100px; margin: 0 auto; padding: 40px 20px 40px; }
+        .post-mode + .article-body { max-width: 700px; padding: 80px 20px 20px; }
         .article-body p { font-size: 16px; font-weight: 300; line-height: 2.1; margin-bottom: 35px; }
         .article-body img { max-width: 100%; height: auto; margin: 60px 0; display: block; }
         .article-body hr { border: 0; border-top: 1px solid #eaeaea; margin: 80px 0; }
@@ -220,9 +221,11 @@
     {{ content }}
 </div>
 
-<!-- 💡 공통 Footer 및 Contact 모달 파일을 불러옵니다 -->
-{% include footer.html %}
-{% include contact_modal.html %}
+<!-- 💡 하단 Footer와 Contact 모달을 메인/목록 페이지에서만 노출 -->
+{% if page.url == '/' or page.url == '/log.html' or page.is_index %}
+    {% include footer.html %}
+    {% include contact_modal.html %}
+{% endif %}
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -272,7 +275,7 @@
                 }
             }
 
-            // 🎯 [지능형 스왑 및 여백 완벽 교정]
+            // [지능형 스왑 및 여백 완벽 교정]
             const navWrap = document.querySelector('.category-nav-wrap');
             if (navWrap) {
                 const items = Array.from(navWrap.querySelectorAll('.cat-nav-item'));

@@ -51,28 +51,9 @@ Tensor Cores가 업계 스탠다드로 자리 잡으면서 AI 프레임워크들
 
 하지만 걱정은 접어두죠. Tensor Cores를 필두로 한 행렬 곱셈 가속화 기술이 한발 앞서 우리를 인도해 줄 테니까요. 앞으로 NVIDIA, AMD, 인텔, 구글 같은 대형 테크 기업들이 내놓을 새로운 AI 칩들의 행렬 곱셈 성능이 어떻게 진화할지 지켜보는 것만으로도 흥분되지 않나요? 우리가 상상하는 것보다 더 놀라운 미래가 펼쳐질 지도 모르겠네요.
 
-<!-- PROMO_BANNER_START -->
-<div style="margin-top: 80px; margin-bottom: 20px;">
-  <div style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%; margin-bottom: 20px;">
-    <div style="flex: 1; height: 1px; background-color: rgba(245,243,238,0.1);"></div>
-    <span style="font-family: 'Boska', serif; font-style: italic; font-size: 16px; color: #8f8b82; letter-spacing: 0.5px; white-space: nowrap;">Simplifier Choice</span>
-    <div style="flex: 1; height: 1px; background-color: rgba(245,243,238,0.1);"></div>
-  </div>
-<a href="https://www.yes24.com/product/goods/193444437" target="_blank" style="display:flex; border:1px solid rgba(245,243,238,0.08); background-color:#111; overflow:hidden; text-decoration:none !important; color:#f5f3ee; margin:20px 0; height:160px; transition:border-color 0.2s; font-family:'Pretendard Variable', sans-serif; border-radius: 8px;" onmouseover="this.style.borderColor='rgba(245,243,238,0.4)'" onmouseout="this.style.borderColor='rgba(245,243,238,0.08)'">
-    <div style="flex:1; padding:25px 30px; display:flex; flex-direction:column; overflow:hidden;">
-        <div style="font-size:20px; font-weight:500; color:#f5f3ee; margin-bottom:12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; letter-spacing:-0.5px;">UX의 언어들 | 한성희 | 파지트 - 예스24</div>
-        <div style="font-size:14px; font-weight:300; color:#8f8b82; line-height:1.6; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; word-break:keep-all;">일상 속 UX의 발견UX 세계를 향한 친절한 안내서 『UX의 언어들』은 일상 속에 스며든 UX를 UX 디자이너의 시선으로 풀어내며, 우리가 이를 어떻게 경험하고 소비하는지 넷플릭스, 카카오 등 친숙한 사례를 통해 UX의 세계로 안내한다.UX는 제품, 서비스, ...</div>
-        <div style="margin-top:auto; font-size:13px; font-weight:300; color:#736f67;">www.yes24.com</div>
-    </div>
-    <div style="width:25%; min-width:160px; background:url('https://image.yes24.com/goods/193444437/xl') center/cover no-repeat; border-left:1px solid #e1e1e1;"></div>
-</a>
-</div>
-<!-- PROMO_BANNER_END -->
-
-
 <!-- CATEGORY_NAV_START -->
 <style>
-.category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid rgba(245,243,238,0.1); display: flex; justify-content: space-between; align-items: center; font-family: 'Pretendard Variable', sans-serif; font-size: 14px; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
+.category-nav-wrap { margin-top: 30px; margin-bottom: 0px; padding: 25px 40px; border-top: 1px solid rgba(245,243,238,0.1); display: flex; justify-content: space-between; align-items: center; font-family: 'Pretendard Variable', sans-serif; font-size: 14px; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #8f8b82; transition: color 0.2s; max-width: 45%; }
 .cat-nav-item:hover { color: #f5f3ee; }
 .cat-nav-item:hover .nav-title { color: #f5f3ee; text-decoration: underline; }

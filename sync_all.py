@@ -25,10 +25,6 @@ CATEGORY_SORT_DEFAULTS = {
     "토크세션": "desc"
 }
 
-GLOBAL_PROMO_LINKS = [
-    "https://www.yes24.com/product/goods/193444437"
-]
-
 BASE_URL = "https://hansunghee7.github.io" 
 index_file = "log.html"
 csv_file = "브런치_글_모음집.csv"
@@ -140,10 +136,9 @@ for filename in md_files:
     if not category:
         category = "기획일상"
 
-    # 👇 여기서부터 아래 3줄을 추가해 주세요! 👇
+    # 💡 트레바리 카테고리 강제 변경 규칙
     if category == "트레바리":
-        category = "토크세션" # '트레바리'를 '토크세션'이나 '스타트업 인사이트' 등 원하시는 곳으로 흡수시킵니다.
-    # 👆 추가 끝 👆
+        category = "토크세션"
 
     cover_image = cover_match.group(1).strip() if cover_match else "/brunch_web_assets/images/logo_white.png"
 
@@ -210,18 +205,6 @@ for cat in category_posts:
 with open(og_cache_file, 'w', encoding='utf-8') as f:
     json.dump(og_cache, f, ensure_ascii=False, indent=2)
 
-global_promo_html = ""
-if GLOBAL_PROMO_LINKS:
-    global_promo_html += "\n\n<!-- PROMO_BANNER_START -->\n<div style=\"margin-top: 80px; margin-bottom: 20px;\">\n"
-    global_promo_html += "  <div style=\"display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%; margin-bottom: 20px;\">\n"
-    global_promo_html += "    <div style=\"flex: 1; height: 1px; background-color: rgba(245,243,238,0.1);\"></div>\n"
-    global_promo_html += "    <span style=\"font-family: 'Boska', serif; font-style: italic; font-size: 16px; color: #8f8b82; letter-spacing: 0.5px; white-space: nowrap;\">Simplifier Choice</span>\n"
-    global_promo_html += "    <div style=\"flex: 1; height: 1px; background-color: rgba(245,243,238,0.1);\"></div>\n"
-    global_promo_html += "  </div>\n"
-    for purl in GLOBAL_PROMO_LINKS:
-        global_promo_html += get_og_card(purl) + "\n"
-    global_promo_html += "</div>\n<!-- PROMO_BANNER_END -->\n"
-
 cards_html = ""
 unique_categories = set()
 post_count = 0
@@ -264,8 +247,9 @@ document.addEventListener('DOMContentLoaded', function() {{
 </script>
 <!-- CAT_LINK_SCRIPT_END -->\n\n"""
 
+    # 💡 이전글/다음글 컨테이너 여백(margin-top, margin-bottom) 대폭 축소
     nav_html = "\n\n<!-- CATEGORY_NAV_START -->\n<style>\n" \
-               ".category-nav-wrap { margin-top: 60px; padding: 25px 40px; border-top: 1px solid rgba(245,243,238,0.1); display: flex; justify-content: space-between; align-items: center; font-family: 'Pretendard Variable', sans-serif; font-size: 14px; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }\n" \
+               ".category-nav-wrap { margin-top: 30px; margin-bottom: 0px; padding: 25px 40px; border-top: 1px solid rgba(245,243,238,0.1); display: flex; justify-content: space-between; align-items: center; font-family: 'Pretendard Variable', sans-serif; font-size: 14px; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }\n" \
                ".cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #8f8b82; transition: color 0.2s; max-width: 45%; }\n" \
                ".cat-nav-item:hover { color: #f5f3ee; }\n" \
                ".cat-nav-item:hover .nav-title { color: #f5f3ee; text-decoration: underline; }\n" \
@@ -289,8 +273,9 @@ document.addEventListener('DOMContentLoaded', function() {{
     safe_title = p['title'].replace('"', '\\"')
     new_yaml = f"---\nlayout: default\ntitle: \"{safe_title}\"\ncategory: '{category}'\ncover_image: '{p['cover_image']}'\ndate_string: '{p['date_string']}'\n---\n\n"
 
+    # 💡 글로벌 프로모션(Simplifier Choice) 변수 아예 제외하고 파일 저장
     with open(p['filepath'], 'w', encoding='utf-8') as f:
-        f.write(new_yaml + cat_script + p['body_content'] + global_promo_html + nav_html)
+        f.write(new_yaml + cat_script + p['body_content'] + nav_html)
 
     cards_html += f'<a href="{p["link"]}" class="card-item" data-category="{category}" data-date="{p["timestamp"]}" data-id="{p["uid"]}"><div class="card-thumb-wrap"><div class="card-thumb" style="background-image: url(\'{p["cover_image"]}\');"></div></div><div class="card-content"><div><div class="card-category">{category}</div><h3 class="card-title">{p["title"]}</h3></div><div class="card-date">{p["date_string"]}</div></div></a>'
     post_count += 1
