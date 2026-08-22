@@ -54,15 +54,6 @@ GTM 전략은 시간에 따라 진화합니다. 초기에는 PLG로 사용자를
 기획자의 질문법 | 기획자가 던지는 질문 조직이 만들어내는 결과이 책은 기획의 본질을 다시 묻는다. ‘이 기획은 왜 필요한가?’ ‘누구의 행동을 바꾸고 싶은가?’ ‘우리가 말하는 성공은
 
 <!-- CATEGORY_NAV_START -->
-<style>
-.category-nav-wrap { margin-top: 30px; margin-bottom: 5px; padding: 20px 0px 0px; border-top: 1px solid rgba(245,243,238,0.1); display: flex; justify-content: space-between; align-items: center; font-family: 'Pretendard Variable', sans-serif; font-size: 14px; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
-.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #8f8b82; transition: color 0.2s; max-width: 45%; }
-.cat-nav-item:hover { color: #f5f3ee; }
-.cat-nav-item:hover .nav-title { color: #f5f3ee; text-decoration: underline; }
-.cat-nav-label { font-size: 13px; color: #736f67; white-space: nowrap; font-weight: 300; }
-.nav-title { font-weight: 400; color: #c9c8c2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/037_%EC%8B%A4%EB%A6%AC%EC%BD%98%EB%B0%B8%EB%A6%AC%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%98%20%EA%B8%B0%EC%A4%80.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'대한민국 스타트업 미국진출을 묻다'의 이전글</span><span class="nav-title">실리콘밸리 디자인의 기준</span></a>
   <a href="/brunch_web_assets/markdown/048_%EB%AF%B8%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%EC%99%9C%20%EB%8B%A4%20%27%EB%AF%B8%EC%85%98%27%EB%B6%80%ED%84%B0%20%EB%A7%90%ED%95%A0%EA%B9%8C.html" class="cat-nav-item cat-nav-right"><span class="nav-title">미국 스타트업은 왜 다 '미션'부터 말할까</span><span class="cat-nav-label">'대한민국 스타트업 미국진출을 묻다'의 다음글</span></a>

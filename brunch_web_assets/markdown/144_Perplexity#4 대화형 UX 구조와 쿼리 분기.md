@@ -62,15 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
 여러분도 이 과정에 동참해 보시는 건 어떨까요? 기술과 사용자 경험의 접점에서, 우리가 상상하는 미래의 AI가 하나둘 현실로 다가올 테니까요.
 
 <!-- CATEGORY_NAV_START -->
-<style>
-.category-nav-wrap { margin-top: 30px; margin-bottom: 5px; padding: 20px 0px 0px; border-top: 1px solid rgba(245,243,238,0.1); display: flex; justify-content: space-between; align-items: center; font-family: 'Pretendard Variable', sans-serif; font-size: 14px; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
-.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #8f8b82; transition: color 0.2s; max-width: 45%; }
-.cat-nav-item:hover { color: #f5f3ee; }
-.cat-nav-item:hover .nav-title { color: #f5f3ee; text-decoration: underline; }
-.cat-nav-label { font-size: 13px; color: #736f67; white-space: nowrap; font-weight: 300; }
-.nav-title { font-weight: 400; color: #c9c8c2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/143_%EC%97%90%EC%96%B4%EB%A7%A4%ED%8A%B8%EC%97%90%EC%84%9C%20%EC%8B%9C%EC%9E%91%EB%90%9C%2C%20%EC%97%90%EC%96%B4%EB%B9%84%EC%95%A4%EB%B9%84%EC%9D%98%20%EB%AC%B4%EC%9E%90%EB%B3%B8%20%EC%B0%BD%EC%97%85%20%EC%A0%84%EB%9E%B5.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'스타트업 인사이트'의 이전글</span><span class="nav-title">에어매트에서 시작된, 에어비앤비의 무자본 창업 전략</span></a>
   <a href="/brunch_web_assets/markdown/150_Slack%EC%9D%98%20%EC%9C%A0%EB%A3%8C%EC%A0%84%ED%99%98%EC%9D%98%20%EB%A7%A4%EC%A7%81%20%EB%AA%A8%EB%A8%BC%ED%8A%B8.html" class="cat-nav-item cat-nav-right"><span class="nav-title">Slack의 유료전환의 "매직 모먼트</span><span class="cat-nav-label">'스타트업 인사이트'의 다음글</span></a>

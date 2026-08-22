@@ -70,15 +70,6 @@ Figma의 제품 주도 성장 전략은 다음과 같은 단계로 진행되었�
 다음 글에서는 또 다른 혁신적인 스타트업의 성장 사례를 다루도록 하겠습니다. 여러분의 제품은 어떤 성장 전략을 가지고 있나요?
 
 <!-- CATEGORY_NAV_START -->
-<style>
-.category-nav-wrap { margin-top: 30px; margin-bottom: 5px; padding: 20px 0px 0px; border-top: 1px solid rgba(245,243,238,0.1); display: flex; justify-content: space-between; align-items: center; font-family: 'Pretendard Variable', sans-serif; font-size: 14px; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
-.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #8f8b82; transition: color 0.2s; max-width: 45%; }
-.cat-nav-item:hover { color: #f5f3ee; }
-.cat-nav-item:hover .nav-title { color: #f5f3ee; text-decoration: underline; }
-.cat-nav-label { font-size: 13px; color: #736f67; white-space: nowrap; font-weight: 300; }
-.nav-title { font-weight: 400; color: #c9c8c2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/250_%EC%B4%88%EA%B3%A0%EC%9C%A8%EC%9D%98%20AI%EB%A1%9C%20%EC%8B%9C%EC%9E%A5%EC%9D%84%20%ED%9D%94%EB%93%A4%EB%8B%A4%20DeepSeek.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'스타트업 인사이트'의 이전글</span><span class="nav-title">초고율의 AI로 시장을 흔들다. DeepSeek</span></a>
   <a href="/brunch_web_assets/markdown/254_MIT%20%EC%B2%9C%EC%9E%AC%EB%93%A4%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EC%B9%9C%ED%99%98%EA%B2%BD%20%EC%95%94%EB%AA%A8%EB%8B%88%EC%95%84%20%EC%97%B0%EB%A3%8C%20%27%EC%95%84%EB%AA%A8%EC%A7%80%27.html" class="cat-nav-item cat-nav-right"><span class="nav-title">MIT 천재들이 만든 친환경 암모니아 연료 '아모지</span><span class="cat-nav-label">'스타트업 인사이트'의 다음글</span></a>

@@ -64,15 +64,6 @@ FPGA는 현장에서 프로그래밍 가능한 반도체입니다. 어떻게 설
 **AI시대에 알아야 할 UX의 언어는?**
 
 <!-- CATEGORY_NAV_START -->
-<style>
-.category-nav-wrap { margin-top: 30px; margin-bottom: 5px; padding: 20px 0px 0px; border-top: 1px solid rgba(245,243,238,0.1); display: flex; justify-content: space-between; align-items: center; font-family: 'Pretendard Variable', sans-serif; font-size: 14px; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
-.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #8f8b82; transition: color 0.2s; max-width: 45%; }
-.cat-nav-item:hover { color: #f5f3ee; }
-.cat-nav-item:hover .nav-title { color: #f5f3ee; text-decoration: underline; }
-.cat-nav-label { font-size: 13px; color: #736f67; white-space: nowrap; font-weight: 300; }
-.nav-title { font-weight: 400; color: #c9c8c2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/184_AI%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%EC%97%B4%EC%87%A0%2C%20HBM%EC%9D%80%20%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'AI의 언어들'의 이전글</span><span class="nav-title">AI 성능의 열쇠, HBM은 무엇일까?</span></a>
   <a href="/brunch_web_assets/markdown/199_AI%EC%8B%9C%EB%8C%80%20%EC%8A%88%ED%8D%BC%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B0%80%20%ED%95%84%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="cat-nav-item cat-nav-right"><span class="nav-title">AI시대 슈퍼컴퓨터가 필요한 이유</span><span class="cat-nav-label">'AI의 언어들'의 다음글</span></a>

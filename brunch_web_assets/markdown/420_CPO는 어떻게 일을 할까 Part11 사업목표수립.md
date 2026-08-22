@@ -52,15 +52,6 @@ document.addEventListener('DOMContentLoaded', function() {
  경영진 회의를 통해 5개의 목표를 고객유치와 밀접하게 연관된 2개의 목표로 줄이고, OKR 목표로 세웠다. 덕분에 고객사는 OKR에 있는 실행아이템이 워킹하고 전체 직원들이 목표에 집중해서 일하면서 연말에 목표로 하던 수치를 달성할 수 있었다.
 
 <!-- CATEGORY_NAV_START -->
-<style>
-.category-nav-wrap { margin-top: 30px; margin-bottom: 5px; padding: 20px 0px 0px; border-top: 1px solid rgba(245,243,238,0.1); display: flex; justify-content: space-between; align-items: center; font-family: 'Pretendard Variable', sans-serif; font-size: 14px; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
-.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #8f8b82; transition: color 0.2s; max-width: 45%; }
-.cat-nav-item:hover { color: #f5f3ee; }
-.cat-nav-item:hover .nav-title { color: #f5f3ee; text-decoration: underline; }
-.cat-nav-label { font-size: 13px; color: #736f67; white-space: nowrap; font-weight: 300; }
-.nav-title { font-weight: 400; color: #c9c8c2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/419_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part%2012%20%EC%83%9D%EC%82%B0%EA%B5%AC%EC%A1%B0.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'스타트업 인사이트'의 이전글</span><span class="nav-title">CPO는 어떻게 일을 할까? Part 1.2 생산구조</span></a>
   <a href="/brunch_web_assets/markdown/422_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part%203%20%ED%9D%90%EB%A6%84%EC%9D%98%20%EA%B2%B0%ED%95%A9.html" class="cat-nav-item cat-nav-right"><span class="nav-title">CPO는 어떻게 일을 할까? Part 3. 흐름의 결합</span><span class="cat-nav-label">'스타트업 인사이트'의 다음글</span></a>

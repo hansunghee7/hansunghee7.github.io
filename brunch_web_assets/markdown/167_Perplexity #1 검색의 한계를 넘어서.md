@@ -116,15 +116,6 @@ Perplexity의 접근법은 다양한 비즈니스 영역에서 응용될 수 있
 다음 편에서는 Perplexity의 핵심 기술 아키텍처를 자세히 분석하겠습니다. BM25와 같은 전통적인 검색 알고리즘부터 벡터 검색, RAG 구현 방식까지 실전적인 관점에서 살펴보겠습니다.
 
 <!-- CATEGORY_NAV_START -->
-<style>
-.category-nav-wrap { margin-top: 30px; margin-bottom: 5px; padding: 20px 0px 0px; border-top: 1px solid rgba(245,243,238,0.1); display: flex; justify-content: space-between; align-items: center; font-family: 'Pretendard Variable', sans-serif; font-size: 14px; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
-.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #8f8b82; transition: color 0.2s; max-width: 45%; }
-.cat-nav-item:hover { color: #f5f3ee; }
-.cat-nav-item:hover .nav-title { color: #f5f3ee; text-decoration: underline; }
-.cat-nav-label { font-size: 13px; color: #736f67; white-space: nowrap; font-weight: 300; }
-.nav-title { font-weight: 400; color: #c9c8c2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/165_Perplexity%20%232%20%EA%B2%80%EC%83%89%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%EA%B5%AC%EC%A1%B0%20%EC%84%A4%EA%B3%84.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'스타트업 인사이트'의 이전글</span><span class="nav-title">Perplexity #2 검색 시스템의 구조 설계</span></a>
   <a href="/brunch_web_assets/markdown/172_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%B0%BD%EC%97%85%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%ED%95%98%EB%82%98%EC%9A%94.html" class="cat-nav-item cat-nav-right"><span class="nav-title">스타트업 창업은 어떻게 하나요?</span><span class="cat-nav-label">'스타트업 인사이트'의 다음글</span></a>

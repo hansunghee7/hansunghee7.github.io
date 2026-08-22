@@ -58,15 +58,6 @@ document.addEventListener('DOMContentLoaded', function() {
  용어에 따라 역할 구분은 위와 같이 했지만, Product를 만들기 위해 필요한 기술은 회사와 상황에 따라 다를 수 있습니다. 따라서 본인이 맡게 되는 프로젝트와 과제들을 보다 효과적으로 수행하기 위해 각각의 역할이 필요로 하는 기술들을 습득해 두면 좋습니다. :-)
 
 <!-- CATEGORY_NAV_START -->
-<style>
-.category-nav-wrap { margin-top: 30px; margin-bottom: 5px; padding: 20px 0px 0px; border-top: 1px solid rgba(245,243,238,0.1); display: flex; justify-content: space-between; align-items: center; font-family: 'Pretendard Variable', sans-serif; font-size: 14px; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
-.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #8f8b82; transition: color 0.2s; max-width: 45%; }
-.cat-nav-item:hover { color: #f5f3ee; }
-.cat-nav-item:hover .nav-title { color: #f5f3ee; text-decoration: underline; }
-.cat-nav-label { font-size: 13px; color: #736f67; white-space: nowrap; font-weight: 300; }
-.nav-title { font-weight: 400; color: #c9c8c2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/602_%EA%B2%BD%ED%97%98%EC%97%90%EC%84%9C%20%EB%B0%B0%EC%9A%B4%20%EB%AA%87%20%EA%B0%80%EC%A7%80%20%EA%B5%90%ED%9B%88.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'기획일상'의 이전글</span><span class="nav-title">경험에서 배운 몇 가지 교훈</span></a>
   <a href="/brunch_web_assets/markdown/608_%EB%8B%B9%EC%8B%A0%EC%97%90%EA%B2%8C%20%EC%A3%BC%EC%96%B4%EC%A7%84%20%EA%B3%A8%EC%9D%80%20%EC%9E%98%20%EB%84%A3%EA%B3%A0%20%EC%9E%88%EC%8A%B5%EB%8B%88%EA%B9%8C.html" class="cat-nav-item cat-nav-right"><span class="nav-title">당신에게 주어진 골은 잘 넣고 있습니까?</span><span class="cat-nav-label">'기획일상'의 다음글</span></a>

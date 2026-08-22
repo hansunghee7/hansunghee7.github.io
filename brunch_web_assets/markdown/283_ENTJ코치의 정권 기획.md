@@ -46,15 +46,6 @@ document.addEventListener('DOMContentLoaded', function() {
  정당의 목표에 대한 설명이 교과서에서도 이렇게 바뀌어야 하지 않을까? 단순히 "정권 획득"이라고만 적혀 있다면, 우리는 계속해서 과거의 정치를 반복할지도 모른다. 획득, 유지, 연속 획득의 선순환을 만드는 것이야말로 진짜 정당의 목표가 아닐까?
 
 <!-- CATEGORY_NAV_START -->
-<style>
-.category-nav-wrap { margin-top: 30px; margin-bottom: 5px; padding: 20px 0px 0px; border-top: 1px solid rgba(245,243,238,0.1); display: flex; justify-content: space-between; align-items: center; font-family: 'Pretendard Variable', sans-serif; font-size: 14px; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
-.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #8f8b82; transition: color 0.2s; max-width: 45%; }
-.cat-nav-item:hover { color: #f5f3ee; }
-.cat-nav-item:hover .nav-title { color: #f5f3ee; text-decoration: underline; }
-.cat-nav-label { font-size: 13px; color: #736f67; white-space: nowrap; font-weight: 300; }
-.nav-title { font-weight: 400; color: #c9c8c2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/275_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%EA%B0%80%20%EB%B0%9B%EC%9D%80%20%EC%97%B0%EB%A7%90%20%EC%84%A0%EB%AC%BC.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'심플리파이어 라이프'의 이전글</span><span class="nav-title">심플리파이어가 받은 연말 선물</span></a>
   <a href="/brunch_web_assets/markdown/285_%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%97%90%20%ED%8F%AC%EC%BB%A4%EC%8A%A4%ED%95%98%EC%84%B8%EC%9A%94.html" class="cat-nav-item cat-nav-right"><span class="nav-title">비즈니스에 포커스하세요.</span><span class="cat-nav-label">'심플리파이어 라이프'의 다음글</span></a>

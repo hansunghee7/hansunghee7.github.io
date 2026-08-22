@@ -68,15 +68,6 @@ Slack의 사례에서 스타트업들이 배울 수 있는 교훈은 다양합�
 Slack의 사례는 뛰어난 제품, 명확한 가치 제안, 그리고 전략적인 고객 확보 방법이 결합되었을 때 얼마나 빠른 성장을 이룰 수 있는지 보여줍니다. 여러분의 스타트업도 이러한 전략을 참고해 초기 고객을 확보하고 성장의 발판을 마련해보세요.
 
 <!-- CATEGORY_NAV_START -->
-<style>
-.category-nav-wrap { margin-top: 30px; margin-bottom: 5px; padding: 20px 0px 0px; border-top: 1px solid rgba(245,243,238,0.1); display: flex; justify-content: space-between; align-items: center; font-family: 'Pretendard Variable', sans-serif; font-size: 14px; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
-.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #8f8b82; transition: color 0.2s; max-width: 45%; }
-.cat-nav-item:hover { color: #f5f3ee; }
-.cat-nav-item:hover .nav-title { color: #f5f3ee; text-decoration: underline; }
-.cat-nav-label { font-size: 13px; color: #736f67; white-space: nowrap; font-weight: 300; }
-.nav-title { font-weight: 400; color: #c9c8c2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/214_30%EB%8B%AC%EB%9F%AC%EB%A1%9C%20%EB%A7%8C%EB%93%A0%20AI%20%ED%98%81%EB%AA%85%2C%20%27%ED%83%80%EC%9D%B4%EB%8B%88%20%EC%A0%9C%EB%A1%9C%27.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'스타트업 인사이트'의 이전글</span><span class="nav-title">30달러로 만든 AI 혁명, '타이니 제로</span></a>
   <a href="/brunch_web_assets/markdown/217_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%84%B1%EA%B3%B5%EC%9D%98%20%EC%97%AD%EC%84%A4.html" class="cat-nav-item cat-nav-right"><span class="nav-title">스타트업 성공의 역설</span><span class="cat-nav-label">'스타트업 인사이트'의 다음글</span></a>

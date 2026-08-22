@@ -136,7 +136,6 @@ for filename in md_files:
     if not category:
         category = "기획일상"
 
-    # 💡 트레바리 카테고리 강제 변경 규칙
     if category == "트레바리":
         category = "토크세션"
 
@@ -247,16 +246,8 @@ document.addEventListener('DOMContentLoaded', function() {{
 </script>
 <!-- CAT_LINK_SCRIPT_END -->\n\n"""
 
-    # 💡 이전글/다음글 컨테이너 여백(margin-top, margin-bottom) 대폭 축소
-    nav_html = "\n\n<!-- CATEGORY_NAV_START -->\n<style>\n" \
-               ".category-nav-wrap { margin-top: 30px; margin-bottom: 5px; padding: 20px 0px 0px; border-top: 1px solid rgba(245,243,238,0.1); display: flex; justify-content: space-between; align-items: center; font-family: 'Pretendard Variable', sans-serif; font-size: 14px; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }\n" \
-               ".cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #8f8b82; transition: color 0.2s; max-width: 45%; }\n" \
-               ".cat-nav-item:hover { color: #f5f3ee; }\n" \
-               ".cat-nav-item:hover .nav-title { color: #f5f3ee; text-decoration: underline; }\n" \
-               ".cat-nav-label { font-size: 13px; color: #736f67; white-space: nowrap; font-weight: 300; }\n" \
-               ".nav-title { font-weight: 400; color: #c9c8c2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }\n" \
-               ".cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }\n" \
-               "</style>\n<div class=\"category-nav-wrap\">\n"
+    # 💡 인라인 CSS 제거 후 가벼운 순수 HTML 태그 구조만 주입
+    nav_html = "\n\n<!-- CATEGORY_NAV_START -->\n<div class=\"category-nav-wrap\">\n"
 
     if prev_post:
         nav_html += f'  <a href="{prev_post["link"]}" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">\'{category}\'의 이전글</span><span class="nav-title">{prev_post["title"]}</span></a>\n'
@@ -273,7 +264,6 @@ document.addEventListener('DOMContentLoaded', function() {{
     safe_title = p['title'].replace('"', '\\"')
     new_yaml = f"---\nlayout: default\ntitle: \"{safe_title}\"\ncategory: '{category}'\ncover_image: '{p['cover_image']}'\ndate_string: '{p['date_string']}'\n---\n\n"
 
-    # 💡 글로벌 프로모션(Simplifier Choice) 변수 아예 제외하고 파일 저장
     with open(p['filepath'], 'w', encoding='utf-8') as f:
         f.write(new_yaml + cat_script + p['body_content'] + nav_html)
 
@@ -375,9 +365,6 @@ const observer = new IntersectionObserver(entries => { entries.forEach(entry => 
 with open(index_file, 'w', encoding='utf-8') as f:
     f.write(html_header + html_body)
 
-# ==========================================
-# 🌟 1. SEO 강화를 위한 sitemap.xml 자동 생성
-# ==========================================
 print("🗺️ SEO를 위한 sitemap.xml 및 robots.txt 생성을 시작합니다...")
 
 today_str = datetime.now().strftime("%Y-%m-%d")
@@ -409,9 +396,6 @@ sitemap_xml += '</urlset>'
 with open("sitemap.xml", 'w', encoding='utf-8') as f:
     f.write(sitemap_xml)
 
-# ==========================================
-# 🌟 2. 검색 엔진 크롤링 허용을 위한 robots.txt 생성
-# ==========================================
 robots_txt = f"User-agent: *\nAllow: /\n\nSitemap: {BASE_URL}/sitemap.xml\n"
 with open("robots.txt", 'w', encoding='utf-8') as f:
     f.write(robots_txt)

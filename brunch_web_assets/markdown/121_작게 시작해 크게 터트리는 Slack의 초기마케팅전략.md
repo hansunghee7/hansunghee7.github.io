@@ -88,15 +88,6 @@ Slack처럼 작게 시작해 빠르게 실험하고, 잘 되는 채널에 집중
 기획자가 던지는 질문조직이 만들어내는 결과이 책은 기획의 본질을 다시 묻는다. ‘이 기획은 왜 필요한가?’ ‘누구의 행동을 바꾸고 싶은가?’ ‘우리가 말하는 성공은 구체적으로 무엇인가
 
 <!-- CATEGORY_NAV_START -->
-<style>
-.category-nav-wrap { margin-top: 30px; margin-bottom: 5px; padding: 20px 0px 0px; border-top: 1px solid rgba(245,243,238,0.1); display: flex; justify-content: space-between; align-items: center; font-family: 'Pretendard Variable', sans-serif; font-size: 14px; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
-.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #8f8b82; transition: color 0.2s; max-width: 45%; }
-.cat-nav-item:hover { color: #f5f3ee; }
-.cat-nav-item:hover .nav-title { color: #f5f3ee; text-decoration: underline; }
-.cat-nav-label { font-size: 13px; color: #736f67; white-space: nowrap; font-weight: 300; }
-.nav-title { font-weight: 400; color: #c9c8c2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/113_%27%EC%BB%A4%EC%84%9C%20AI%27%EC%9D%98%20AI%20%ED%98%91%EB%A0%A5%EC%9E%90%20%EC%A0%84%EB%9E%B5.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'스타트업 인사이트'의 이전글</span><span class="nav-title">커서 AI'의 AI 협력자 전략</span></a>
   <a href="/brunch_web_assets/markdown/129_Dropbox%EC%9D%98%20%EB%AC%B4%EB%A3%8C%EC%97%90%EC%84%9C%20%EC%9C%A0%EB%A3%8C%EB%A1%9C%EC%9D%98%20%EC%A0%84%ED%99%98%20%EB%B9%84%EB%B2%95.html" class="cat-nav-item cat-nav-right"><span class="nav-title">Dropbox의 무료에서 유료로의 전환 비법</span><span class="cat-nav-label">'스타트업 인사이트'의 다음글</span></a>

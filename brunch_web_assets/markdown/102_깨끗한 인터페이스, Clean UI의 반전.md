@@ -58,15 +58,6 @@ Clean UI가 제공하는 이점은 명확합니다. 사용자가 핵심 정보�
 UX의 언어들이 책으로 나왔어요.
 
 <!-- CATEGORY_NAV_START -->
-<style>
-.category-nav-wrap { margin-top: 30px; margin-bottom: 5px; padding: 20px 0px 0px; border-top: 1px solid rgba(245,243,238,0.1); display: flex; justify-content: space-between; align-items: center; font-family: 'Pretendard Variable', sans-serif; font-size: 14px; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
-.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #8f8b82; transition: color 0.2s; max-width: 45%; }
-.cat-nav-item:hover { color: #f5f3ee; }
-.cat-nav-item:hover .nav-title { color: #f5f3ee; text-decoration: underline; }
-.cat-nav-label { font-size: 13px; color: #736f67; white-space: nowrap; font-weight: 300; }
-.nav-title { font-weight: 400; color: #c9c8c2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/095_%EC%98%A8%EB%B3%B4%EB%94%A9%2C%20%EB%B0%B0%EC%97%90%20%EC%98%A4%EB%A5%B4%EB%8B%A4%27%EC%97%90%EC%84%9C%20%EC%8B%9C%EC%9E%91%EB%90%9C%20UX%EC%9D%98%20%EC%B2%AB%EC%9D%B8%EC%83%81%20%EB%A7%88%EB%B2%95.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'UX의 언어들'의 이전글</span><span class="nav-title">온보딩, 배에 오르다'에서 시작된 UX의 첫인상 마법</span></a>
   <a href="/brunch_web_assets/markdown/110_%EA%B7%B8%EB%A6%AC%EB%93%9C%20%EC%8B%9C%EC%8A%A4%ED%85%9C%2C%20%EA%B5%AC%EA%B8%80%20%EC%95%A0%ED%94%8C%EC%9D%B4%20%EC%82%AC%EB%9E%91%ED%95%9C%20%EA%B2%A9%EC%9E%90%20%EA%B5%AC%EC%A1%B0.html" class="cat-nav-item cat-nav-right"><span class="nav-title">그리드 시스템, 구글 애플이 사랑한 격자 구조</span><span class="cat-nav-label">'UX의 언어들'의 다음글</span></a>

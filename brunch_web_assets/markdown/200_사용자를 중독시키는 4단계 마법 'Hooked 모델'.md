@@ -52,15 +52,6 @@ document.addEventListener('DOMContentLoaded', function() {
 니르 이얄의 이 모델은 단순한 마케팅 전략을 넘어, 우리의 일상 행동을 설명하는 강력한 렌즈가 되었다. 습관 형성 제품은 기존 마케팅보다 비용 효율적이고 강력한 사용자 충성도를 만들어낸다. 다만 이러한 강력한 도구는 윤리적 책임과 함께 사용되어야 한다. 궁극적으로 훅 모델의 목적은 사용자의 삶을 개선하는 습관을 형성하는 것이어야 한다.
 
 <!-- CATEGORY_NAV_START -->
-<style>
-.category-nav-wrap { margin-top: 30px; margin-bottom: 5px; padding: 20px 0px 0px; border-top: 1px solid rgba(245,243,238,0.1); display: flex; justify-content: space-between; align-items: center; font-family: 'Pretendard Variable', sans-serif; font-size: 14px; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
-.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #8f8b82; transition: color 0.2s; max-width: 45%; }
-.cat-nav-item:hover { color: #f5f3ee; }
-.cat-nav-item:hover .nav-title { color: #f5f3ee; text-decoration: underline; }
-.cat-nav-label { font-size: 13px; color: #736f67; white-space: nowrap; font-weight: 300; }
-.nav-title { font-weight: 400; color: #c9c8c2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/192_%27%EB%A7%A5%EB%AA%A8%EB%8B%9D%27%EC%9D%98%20%EB%B9%84%EB%B0%80%2C%20MECE%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'기획자의 프레임웍'의 이전글</span><span class="nav-title">맥모닝'의 비밀, MECE 프레임워크</span></a>
   <a href="/brunch_web_assets/markdown/208_SWOT%20%EB%B9%84%EC%A7%80%EB%8B%88%EC%8A%A4%EC%9D%98%204%EC%B0%A8%EC%9B%90%20%EB%B6%84%EC%84%9D%EB%B2%95.html" class="cat-nav-item cat-nav-right"><span class="nav-title">SWOT" 비지니스의 4차원 분석법</span><span class="cat-nav-label">'기획자의 프레임웍'의 다음글</span></a>

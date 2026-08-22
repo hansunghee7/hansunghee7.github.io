@@ -54,15 +54,6 @@ Predictive UX는 사용자와 서비스 간의 관계를 더욱 스마트하고 
 UX의 언어들이 책으로 나왔어요.
 
 <!-- CATEGORY_NAV_START -->
-<style>
-.category-nav-wrap { margin-top: 30px; margin-bottom: 5px; padding: 20px 0px 0px; border-top: 1px solid rgba(245,243,238,0.1); display: flex; justify-content: space-between; align-items: center; font-family: 'Pretendard Variable', sans-serif; font-size: 14px; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
-.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #8f8b82; transition: color 0.2s; max-width: 45%; }
-.cat-nav-item:hover { color: #f5f3ee; }
-.cat-nav-item:hover .nav-title { color: #f5f3ee; text-decoration: underline; }
-.cat-nav-label { font-size: 13px; color: #736f67; white-space: nowrap; font-weight: 300; }
-.nav-title { font-weight: 400; color: #c9c8c2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/064_%ED%99%94%EC%9E%A5%EC%8B%A4%EC%9D%98%20UX%2C%20%EA%B3%B5%ED%95%AD%EA%B3%BC%20%EA%B8%B0%EC%B0%A8%EC%97%AD%EC%9D%B4%20%EB%A7%90%ED%95%B4%EC%A3%BC%EB%8A%94%20%EA%B3%B5%EA%B0%84%20%EB%94%94%EC%9E%90%EC%9D%B8.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'UX의 언어들'의 이전글</span><span class="nav-title">화장실의 UX, 공항과 기차역이 말해주는 공간 디자인</span></a>
   <a href="/brunch_web_assets/markdown/076_%EC%96%B4%ED%94%84%EB%A1%9C%EC%B9%98%EB%A5%BC%20%EB%B0%94%EA%BE%B8%EB%8B%A4%20AI%20Assisted%20Design.html" class="cat-nav-item cat-nav-right"><span class="nav-title">어프로치를 바꾸다 AI Assisted Design</span><span class="cat-nav-label">'UX의 언어들'의 다음글</span></a>

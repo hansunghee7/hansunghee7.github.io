@@ -56,15 +56,6 @@ UX와 UI 디자인의 핵심은 사용자입니다. 끊임없이 사용자의 �
 UX의 언어들이 책으로 나왔어요.
 
 <!-- CATEGORY_NAV_START -->
-<style>
-.category-nav-wrap { margin-top: 30px; margin-bottom: 5px; padding: 20px 0px 0px; border-top: 1px solid rgba(245,243,238,0.1); display: flex; justify-content: space-between; align-items: center; font-family: 'Pretendard Variable', sans-serif; font-size: 14px; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
-.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #8f8b82; transition: color 0.2s; max-width: 45%; }
-.cat-nav-item:hover { color: #f5f3ee; }
-.cat-nav-item:hover .nav-title { color: #f5f3ee; text-decoration: underline; }
-.cat-nav-label { font-size: 13px; color: #736f67; white-space: nowrap; font-weight: 300; }
-.nav-title { font-weight: 400; color: #c9c8c2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/249_%27%EC%A2%8B%EC%95%84%EC%9A%94%27%EA%B0%80%20%EB%A7%8C%EB%93%A0%20%EC%9E%91%EC%A7%80%EB%A7%8C%20%EA%B0%95%EB%A0%A5%ED%95%9C%20UX%EC%9D%98%20%ED%98%81%EB%AA%85.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'UX의 언어들'의 이전글</span><span class="nav-title">좋아요'가 만든 작지만 강력한 UX의 혁명</span></a>
   <div></div>

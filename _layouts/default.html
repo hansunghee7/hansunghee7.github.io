@@ -52,7 +52,7 @@
         html { scroll-behavior: smooth; }
         body { margin: 0; padding: 0; font-family: 'Noto Sans KR', sans-serif; background-color: #fff; color: #333; word-break: keep-all; }
         
-        /* 💡 1 & 2. 커버 영역 높이 45vh 설정 및 스크롤 접힘 애니메이션 준비 */
+        /* 1. 상단 커버 영역 (45vh 설정 & 스크롤 접힘 준비) */
         .cover-wrap { 
             position: relative; 
             width: 100%; 
@@ -72,13 +72,11 @@
         .index-mode .cover-bottom-left { text-align: left; position: relative; }
         .index-mode .cover-title { font-family: 'Noto Serif KR', serif; font-size: 32px; font-weight: 200; margin: 0; line-height: 1.2; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
 
-        /* 화면 50% 언더(45vh) 고정 */
         .cover-wrap.post-mode { height: 45vh; min-height: 320px; padding: 30px 40px; overflow: hidden; }
         .post-mode .cover-bottom-left { position: absolute; bottom: 32px; left: 40px; padding-right: 80px; text-align: left; transition: opacity 0.1s ease-out; }
         .post-mode .cover-title { font-family: 'Noto Serif KR', serif; font-size: 36px; font-weight: 200; margin: 0; line-height: 1.35; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
         .post-mode .cover-sub { font-size: 13px; font-weight: 300; opacity: 0.8; font-style: italic; margin-top: 14px; text-shadow: 0 1px 5px rgba(0,0,0,0.5); }
         
-        /* 💡 3. 매우 슬림한 화살표 디자인 및 롤오버 효과 */
         .post-mode .cover-bottom-right { position: absolute; bottom: 32px; right: 40px; }
         .down-arrow { 
             display: flex; 
@@ -94,23 +92,47 @@
         .down-arrow svg {
             width: 22px;
             height: 22px;
-            stroke-width: 1; /* 매우 얇은 선 두께 */
+            stroke-width: 1;
             transition: transform 0.3s ease;
         }
-        .down-arrow:hover { 
-            opacity: 1; 
-        }
-        .down-arrow:hover svg {
-            transform: translateY(4px); /* 롤오버 시 살짝 내려가는 살랑임 */
-        }
+        .down-arrow:hover { opacity: 1; }
+        .down-arrow:hover svg { transform: translateY(4px); }
 
-        .article-body { max-width: 1100px; margin: 0 auto; padding: 40px 20px 0px; }
-        .post-mode + .article-body { max-width: 700px; padding: 50px 20px 10px; }
+        /* 2. 포스트 본문 영역 (여백 단권화 핵심) */
+        .article-body { max-width: 1100px; margin: 0 auto; padding: 40px 20px 40px; }
+        
+        /* 🎯 [포스트 상세 본문 여백 조절 점] */
+        .post-mode + .article-body { 
+            max-width: 700px; 
+            padding-top: 60px;    /* 본문 위쪽 여백 */
+            padding-bottom: 20px; /* 맨 바닥 여백 (최소화) */
+        }
         .article-body p { font-size: 16px; font-weight: 300; line-height: 2.1; margin-bottom: 35px; }
         
-        /* 포스트 내 사진 스타일 및 여백 */
+        /* 🎯 [본문 사진 크기 조절 점] */
         .article-body img { max-width: 100%; height: auto; margin: 40px auto; display: block; border-radius: 4px; }
         .article-body hr { border: 0; border-top: 1px solid #eaeaea; margin: 60px 0; }
+
+        /* 🎯 [이전글 / 다음글 바 디자인 및 여백 단권화 관리점] */
+        .category-nav-wrap { 
+            margin-top: 60px;     /* 본문 끝 ~ 이전글/다음글 선 사이 위쪽 간격 */
+            margin-bottom: 0px;   /* 바닥 쪽 아래 간격 */
+            padding-top: 25px;    /* 선 아래 텍스트까지의 내부 간격 */
+            border-top: 1px solid #eaeaea; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            font-family: 'Pretendard Variable', 'Noto Sans KR', sans-serif; 
+            font-size: 14px; 
+            gap: 30px; 
+            box-sizing: border-box; 
+        }
+        .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #888; transition: color 0.2s; max-width: 45%; }
+        .cat-nav-item:hover { color: #111; }
+        .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
+        .cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
+        .nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
 
         .card-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 20px; }
         @media (max-width: 1024px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
@@ -234,7 +256,6 @@
             </div>
         </div>
         
-        <!-- 💡 3. 극도로 얇고 세련된 SVG 하단 화살표 -->
         <div class="cover-bottom-right">
             <a href="#articleBody" class="down-arrow" aria-label="본문으로 이동">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -257,18 +278,17 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        // 💡 2. 스크롤할 때 커버가 매끄럽게 접히는 인터랙션 (Parallax Folding)
+        // 스크롤할 때 커버가 매끄럽게 접히는 인터랙션 (Parallax Folding)
         const coverWrap = document.getElementById('coverWrap');
         const coverTitleBox = document.getElementById('coverTitleBox');
         
         if (coverWrap && coverWrap.classList.contains('post-mode')) {
             const initialHeight = coverWrap.offsetHeight;
-            const minHeight = 120; // 스크롤 시 최소 접힘 높이
+            const minHeight = 120;
             
             window.addEventListener('scroll', function() {
                 const scrolled = window.scrollY;
                 if (scrolled <= initialHeight) {
-                    // 스크롤에 따라 높이 및 텍스트 투명도 조절
                     const newHeight = Math.max(minHeight, initialHeight - scrolled * 0.6);
                     const opacity = Math.max(0, 1 - (scrolled / (initialHeight * 0.7)));
                     

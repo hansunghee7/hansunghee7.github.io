@@ -84,15 +84,6 @@ Apollo는 인류를 달에 보낸 아폴로 계획을 연상케 합니다. 불�
 기획자에서 C레벨 임원까지 한번에. 매출 1조를 만드는 리더십 실전
 
 <!-- CATEGORY_NAV_START -->
-<style>
-.category-nav-wrap { margin-top: 30px; margin-bottom: 5px; padding: 20px 0px 0px; border-top: 1px solid rgba(245,243,238,0.1); display: flex; justify-content: space-between; align-items: center; font-family: 'Pretendard Variable', sans-serif; font-size: 14px; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
-.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #8f8b82; transition: color 0.2s; max-width: 45%; }
-.cat-nav-item:hover { color: #f5f3ee; }
-.cat-nav-item:hover .nav-title { color: #f5f3ee; text-decoration: underline; }
-.cat-nav-label { font-size: 13px; color: #736f67; white-space: nowrap; font-weight: 300; }
-.nav-title { font-weight: 400; color: #c9c8c2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/179_%EC%9D%B4%EB%A9%94%EC%9D%BC%EB%8F%84%20%ED%85%8C%EC%8A%AC%EB%9D%BC%EC%B2%98%EB%9F%BC%20%27Superhuman%27%20%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%EC%A0%84%EB%9E%B5.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'스타트업 인사이트'의 이전글</span><span class="nav-title">이메일도 테슬라처럼 'Superhuman' 프리미엄전략</span></a>
   <a href="/brunch_web_assets/markdown/186_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%20%ED%99%95%EB%B3%B4%20%EC%A0%84%EB%9E%B5%20%27%EC%8A%A4%ED%8A%B8%EB%9D%BC%EC%9D%B4%ED%94%84%27.html" class="cat-nav-item cat-nav-right"><span class="nav-title">스타트업의 초기 고객 확보 전략 '스트라이프</span><span class="cat-nav-label">'스타트업 인사이트'의 다음글</span></a>

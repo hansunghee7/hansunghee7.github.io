@@ -116,15 +116,6 @@ Perplexity AI의 검색 시스템은 전통적인 키워드 기반 검색과 최
 다음 편에서는 이러한 검색 결과를 바탕으로 자연스럽고 정확한 답변을 생성하는 RAG(Retrieval-Augmented Generation) 시스템의 구조를 자세히 살펴보겠습니다. :-)
 
 <!-- CATEGORY_NAV_START -->
-<style>
-.category-nav-wrap { margin-top: 30px; margin-bottom: 5px; padding: 20px 0px 0px; border-top: 1px solid rgba(245,243,238,0.1); display: flex; justify-content: space-between; align-items: center; font-family: 'Pretendard Variable', sans-serif; font-size: 14px; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }
-.cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #8f8b82; transition: color 0.2s; max-width: 45%; }
-.cat-nav-item:hover { color: #f5f3ee; }
-.cat-nav-item:hover .nav-title { color: #f5f3ee; text-decoration: underline; }
-.cat-nav-label { font-size: 13px; color: #736f67; white-space: nowrap; font-weight: 300; }
-.nav-title { font-weight: 400; color: #c9c8c2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
-</style>
 <div class="category-nav-wrap">
   <a href="/brunch_web_assets/markdown/164_%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%20%EC%82%AC%EB%A1%80%EB%A1%9C%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%ED%95%B5%EC%8B%AC%20%EC%A7%80%ED%91%9C%20%EC%84%A4%EC%A0%95%EB%B2%95.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'스타트업 인사이트'의 이전글</span><span class="nav-title">넷플릭스 사례로 배우는 스타트업 핵심 지표 설정법</span></a>
   <a href="/brunch_web_assets/markdown/167_Perplexity%20%231%20%EA%B2%80%EC%83%89%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EB%84%98%EC%96%B4%EC%84%9C.html" class="cat-nav-item cat-nav-right"><span class="nav-title">Perplexity #1 검색의 한계를 넘어서</span><span class="cat-nav-label">'스타트업 인사이트'의 다음글</span></a>
