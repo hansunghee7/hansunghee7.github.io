@@ -139,7 +139,7 @@
 
         .hidden-element { display: none !important; }
 
-        /* 🎯 [웹툰 전용 올-블랙 #080808 럭셔리 뷰어 레이아웃] */
+        /* [웹툰 전용 올-블랙 #080808 럭셔리 뷰어 레이아웃] */
         body.is-swipe-mode { 
             background-color: #080808 !important; 
             color: #f5f3ee !important; 
@@ -152,7 +152,6 @@
 
         body.is-swipe-mode .cover-wrap.post-mode { display: none !important; }
 
-        /* 💡 웹툰 상단 타이틀 노출용 GNB */
         body.is-swipe-mode .log-nav {
             display: flex !important;
             position: relative !important;
@@ -280,7 +279,6 @@
 </head>
 <body>
 
-<!-- 메인 페이지와 로그 목록 페이지에는 풀버전 GNB 노출 -->
 {% if page.url == '/' or page.url == '/log.html' or page.is_index %}
     {% include header.html %}
 {% else %}
@@ -327,7 +325,6 @@
       </a>
       {% endif %}
 
-      <!-- 💡 웹툰 모드일 때 보여줄 화 타이틀 영역 -->
       <span class="swipe-header-title" id="swipeHeaderTitle" style="display:none;">
         {{ page.title }}
       </span>
@@ -438,17 +435,19 @@
 
         const isLogPage = window.location.pathname.includes('log.html') || window.location.pathname === '/' || document.querySelector('.card-grid') !== null;
 
+        // 🎯 '코치S' 및 '잉크드인대 기획학과' 카테고리 자동 스wipe 모드 활성화
         const isSwipeMode = !isLogPage && (
             isSwipeVal === 'true' || 
             isSwipeVal === 'True' || 
             categoryText.includes('코치S') || 
+            categoryText.includes('잉크드인대 기획학과') || 
+            categoryText.includes('잉크드인대') ||
             document.querySelector('.swipe-viewer') !== null
         );
 
         if (isSwipeMode && articleBody) {
             document.body.classList.add('is-swipe-mode');
 
-            // 💡 웹툰 상단 타이틀 활성화
             const swipeTitleSpan = document.getElementById('swipeHeaderTitle');
             if(swipeTitleSpan) {
                 swipeTitleSpan.style.display = 'inline-block';
