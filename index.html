@@ -28,6 +28,9 @@
   .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
   @media (max-width:700px){ .wrap{ padding: 0 32px; } }
 
+  /* =========================================================
+     🧭 GNB
+     ========================================================= */
   header.nav { position: sticky; top:0; z-index: 100; background: rgba(8,8,8,0.85); backdrop-filter: blur(10px); }
   .nav-inner { position:relative; display:flex; align-items:center; justify-content:center; padding: 16px 32px; max-width:1200px; margin:0 auto; gap: 240px; }
   .nav-logo { height: 26px; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); }
@@ -40,9 +43,25 @@
   .nav-item > button { display:flex; align-items:center; gap:9px; padding: 10px 0; margin:0; background:none; border:none; cursor:pointer; font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:14px; color:#c9c8c2; transition: color 0.2s; }
   .nav-item:hover > button, .nav-item:focus-within > button { color:#f5f3ee; }
   .nav-item > button::after { content:''; display:inline-block; width:4px; height:4px; border-right:1.2px solid currentColor; border-bottom:1.2px solid currentColor; transform: rotate(45deg); margin-top:-2px; }
-  .dropdown-menu { position: absolute; top: 100%; left: 0; background: #f5f3ee; background-clip: padding-box; border: 1px solid rgba(8,8,8,0.06); border-top: 10px solid transparent; border-radius: 12px; padding: 12px 0; display: flex; flex-direction: column; opacity: 0; visibility: hidden; min-width: 220px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+  
+  .dropdown-menu { 
+    position: absolute; top: 100%; left: 0; 
+    background: #f5f3ee; 
+    border: 1px solid rgba(8,8,8,0.06); 
+    border-radius: 12px; 
+    padding: 12px 0; 
+    display: flex; flex-direction: column; 
+    opacity: 0; visibility: hidden; 
+    min-width: 220px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3); 
+    margin-top: 8px; 
+  }
+  .dropdown-menu::before {
+    content: ''; position: absolute; top: -12px; left: 0; right: 0; height: 12px; background: transparent;
+  }
+  
   .nav-item:hover .dropdown-menu, .nav-item:focus-within .dropdown-menu { opacity: 1; visibility: visible; }
-  .dropdown-menu a { padding: 10px 20px; font-size: 13px; color: #2a2822; transition: color 0.2s, background 0.2s; text-align: left; word-break: keep-all; }
+  .dropdown-menu a { padding: 10px 20px; font-size: 13.5px; color: #2a2822; transition: color 0.2s, background 0.2s; text-align: left; word-break: keep-all; }
   .dropdown-menu a:hover, .dropdown-menu a:focus { color: #080808; background: rgba(8,8,8,0.06); }
   .nav-apply { background:#f5f3ee; color:#080808; padding: 9px 22px; border-radius:999px; font-weight: 500; font-size:14px; transition: background .2s, color .2s; }
   .nav-apply:hover { background:#080808; color:#f5f3ee; box-shadow: inset 0 0 0 1px #f5f3ee; }
@@ -63,8 +82,12 @@
   .mobile-submenu a { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 15px; color: #8f8b82; text-decoration: none; word-break: keep-all; }
   .mobile-submenu a:hover { color: #f5f3ee; }
   .mobile-menu-cta { display:block; text-align:center; margin-top:30px; margin-bottom: 8px; padding:14px 0 !important; border-radius:999px; background:#f5f3ee; color:#080808 !important; font-weight:500; font-family: 'Pretendard Variable', 'Pretendard', sans-serif; text-decoration: none; }
+  
   @media (max-width:860px){ .nav-links{ display:none; } .nav-burger{ display:flex; } .nav-actions .nav-apply { display:none; } }
 
+  /* =========================================================
+     🚀 HERO & PROVEN
+     ========================================================= */
   .hero-wrapper { position: sticky; top: var(--nav-height); z-index: 5; height: calc(100vh - var(--nav-height)); background: #080808; }
   .hero { height: 100%; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; }
   #hero-fade { will-change: opacity; width: 100%; }
@@ -77,16 +100,7 @@
   .scroll-cue { position:absolute; left:50%; bottom:40px; transform:translateX(-50%); display: flex; justify-content: center; width: 40px; }
   .scroll-cue .chev { display:block; width:13px; height:13px; border-right:1.5px solid #8f8b82; border-bottom:1.5px solid #8f8b82; transform: rotate(45deg); }
 
-  /* =========================================================
-     ✨ PROVEN
-     ========================================================= */
-  .proven-wrap {
-    position: sticky;
-    top: var(--nav-height);
-    z-index: 10;
-    height: calc(100vh - var(--nav-height));
-    background: #080808;
-  }
+  .proven-wrap { position: sticky; top: var(--nav-height); z-index: 10; height: calc(100vh - var(--nav-height)); background: #080808; }
   .proven-section { height: 100%; display:flex; flex-direction:column; align-items:center; justify-content:center; }
   #proven-fade { will-change: opacity; width: 100%; }
 
@@ -109,8 +123,7 @@
   .reveal-stats .rs-num { font-family: 'Source Serif 4', serif; font-weight: 200; font-size: var(--stats-number-size); color: #f5f3ee; margin-bottom: 8px; line-height: 1; white-space: nowrap; }
   .reveal-stats .rs-label { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-weight: 400; font-size: var(--stats-label-size); color:#8f8b82; letter-spacing: 0.05em; text-transform: uppercase; }
   .proven-label { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; color: #8f8b82; text-transform: uppercase; text-align: center; margin: 0 auto 36px; max-width: min(1200px, 92vw); }
-  .story-label { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; color: #8f8b82; text-transform: uppercase; text-align: center; margin-bottom: 24px; }
-
+  
   @media (max-width:760px){
     .reveal-grid { grid-template-columns: repeat(2, 1fr); gap:32px 20px; margin-bottom: 48px; }
     .reveal-grid .gitem { height: 92px; }
@@ -123,57 +136,120 @@
   }
 
   /* =========================================================
-     📖 STORY (에세이 + 원래 스토리 갤러리 + 테스티모니얼)
+     📖 STORY & TESTIMONIALS
      ========================================================= */
-  .story-section { position: relative; z-index: 40; background: #080808; color: #f5f3ee; padding: 60px 0 120px 0; opacity: 0; }
+  .story-section { position: relative; z-index: 40; background: #080808; color: #f5f3ee; padding: 60px 0 80px 0; opacity: 0; }
+  .story-label { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; color: #8f8b82; text-transform: uppercase; text-align: center; margin-bottom: 24px; }
   .story-essay, .story-gallery, .story-testimonials { pointer-events: auto; }
   .story-essay { max-width: 680px; margin: 0 auto 120px auto; }
   .story-essay p { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-weight: 300; font-size: 17px; line-height: 1.85; color: #c9c8c2; margin-bottom: 32px; word-break: keep-all; }
   .story-essay p.intro-p::first-letter { font-family: 'Boska', serif; font-weight: 300; font-size: 5.2rem; float: left; line-height: 0.78; padding-right: 18px; padding-top: 6px; color: #f5f3ee; }
   @media (max-width:700px){ .story-essay p.intro-p::first-letter { font-size: 3.6rem; padding-right: 12px; padding-top: 4px; } }
 
+  /* 🌟 스토리 갤러리 Focus & Blur 애니메이션 */
   .story-gallery { width: min(1200px, 94vw); margin: 0 auto 140px auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
-  .story-gallery .gallery-item {
-    width: 100%; height: 240px; border-radius: 6px; overflow: hidden; background: #181818;
-    opacity: 0; transform: translateY(18px);
-    transition: opacity 1s ease, transform 1s ease;
-  }
+  .story-gallery .gallery-item { width: 100%; height: 240px; border-radius: 6px; overflow: hidden; background: #181818; opacity: 0; transform: translateY(18px); transition: opacity 1s ease, transform 1s ease; cursor: pointer; }
   .story-gallery .gallery-item.show { opacity: 1; transform: translateY(0); }
-  .story-gallery .gallery-item img { width: 100%; height: 100%; object-fit: cover; filter: saturate(1.2) brightness(1.03) contrast(1.05); transition: transform 0.5s ease, filter 0.5s ease; }
-  .story-gallery .gallery-item img:hover { transform: scale(1.06); filter: saturate(1.35) brightness(1.08) contrast(1.08); }
+  
+  .story-gallery .gallery-item img { 
+    width: 100%; height: 100%; object-fit: cover; 
+    filter: saturate(1.2) brightness(1.03) contrast(1.05); 
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.5s ease; 
+  }
+  
+  /* 갤러리에 마우스 진입 시 모든 사진 흑백 및 딤(Dim) 처리 */
+  .story-gallery:hover .gallery-item img { filter: grayscale(100%) brightness(0.6); }
+  /* 마우스가 올라간 대상만 원본 컬러 + 확대 적용 */
+  .story-gallery .gallery-item:hover img { transform: scale(1.06); filter: grayscale(0%) saturate(1.35) brightness(1.08) contrast(1.08); }
+
   @media (max-width:760px){
     .story-gallery { grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 90px; }
     .story-gallery .gallery-item { height: 130px; }
     .story-gallery .gallery-item:nth-child(4), .story-gallery .gallery-item:nth-child(5) { display: none; }
   }
-  @media (max-width:480px){ .story-gallery .gallery-item { height: 110px; } }
 
   .story-testimonials { max-width: 720px; margin: 0 auto; text-align: left; }
   .testimonial-header { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; color: #8f8b82; text-transform: uppercase; text-align: center; margin-bottom: 48px; }
-  
   .quote-block { margin-bottom: 44px; opacity: 0; transform: translateY(18px); transition: opacity 1s ease, transform 1s ease; }
   .quote-block.show { opacity: 1; transform: translateY(0); }
   .quote-text { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-size: 17px; font-weight: 300; line-height: 2.1; color: #f5f3ee; word-break: keep-all; margin:0 0 16px; text-decoration: underline; text-decoration-color: rgba(245,243,238,0.28); text-underline-offset: 7px; text-decoration-thickness: 1px; }
   .quote-attribution { font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:14px; color:#8f8b82; display:flex; align-items:center; gap:8px; }
   .quote-avatar { display: flex; align-items:center; justify-content:center; width: 28px; height: 28px; border-radius: 50%; background: #000; border: 1px solid rgba(245,243,238,0.18); flex-shrink:0; overflow:hidden; }
   .quote-avatar img { width:100%; height:100%; object-fit:cover; display:block; }
-  .quote-avatar svg { display:block; }
 
   /* =========================================================
-     🎯 CTA + YC STYLE GALLERY (검은색 배경 내부에 배치)
+     📰 LOG 600 / KNOWLEDGE SECTIONS
      ========================================================= */
-  .cta-section { position: relative; z-index: 40; background: #080808; padding-top: 100px; }
+  .yc-sections { position: relative; z-index: 40; background: #080808; padding: 40px 0; }
   
+  .yc-title {
+    font-family: 'Pretendard Variable', 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 13px;
+    color: #8f8b82;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 80px 0 40px;
+  }
+
+  /* 1. Knowledge & Insights (Startup / FieldPlay / CEO Log 3개 카테고리 전부 대표) */
+  .yc-knowledge-grid { display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 32px; max-width: 1200px; margin: 0 auto; align-items: start; }
+  .k-col { display: flex; flex-direction: column; gap: 24px; }
+  
+  .k-card { background: #111; border: 1px solid rgba(245,243,238,0.08); border-radius: 8px; overflow: hidden; transition: transform 0.2s, border-color 0.2s; cursor: pointer; text-decoration: none; display:block; }
+  .k-card:hover { transform: translateY(-3px); border-color: rgba(245,243,238,0.2); }
+  .k-card img { width: 100%; height: 160px; object-fit: cover; border-bottom: 1px solid rgba(245,243,238,0.05); }
+  .k-card-large img { height: 344px; }
+  .k-content { padding: 20px; }
+  .k-tag { display: inline-block; background: #f5f3ee; color: #080808; font-family: 'Pretendard Variable', sans-serif; font-size: 11px; font-weight: 600; padding: 4px 8px; border-radius: 4px; margin-bottom: 12px; }
+  .k-card h3 { font-family: 'Pretendard Variable', sans-serif; font-size: 16px; font-weight: 500; color: #f5f3ee; margin: 0 0 8px; line-height: 1.4; word-break: keep-all; }
+  .k-card p { font-family: 'Pretendard Variable', sans-serif; font-size: 14px; font-weight: 300; color: #8f8b82; margin: 0; line-height: 1.5; }
+  
+  .k-card-large h3 { font-size: 24px; margin-bottom: 12px; }
+  .k-card-large p { font-size: 15px; }
+
+  .k-list-group { margin-bottom: 36px; }
+  .k-list-group h4 { font-family: 'Boska', serif; font-style: italic; font-weight: 400; font-size: 24px; color: #f5f3ee; margin: 0 0 16px; padding-bottom: 12px; border-bottom: 1px solid rgba(245,243,238,0.1); }
+  .k-list-group ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
+  .k-list-group a { font-family: 'Pretendard Variable', sans-serif; font-size: 14px; color: #c9c8c2; text-decoration: none; transition: color 0.2s; display: block; line-height: 1.4; word-break: keep-all; }
+  .k-list-group a:hover { color: #f5f3ee; }
+
+  /* 2. Book & Class */
+  .yc-overlay-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto; }
+  .overlay-card { position: relative; height: 380px; border-radius: 12px; overflow: hidden; cursor: pointer; text-decoration: none; display: block; }
+  .overlay-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+  .overlay-card:hover img { transform: scale(1.05); }
+  .overlay-content { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.85) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 32px 24px; }
+  .overlay-content h3 { font-family: 'Pretendard Variable', sans-serif; font-size: 22px; font-weight: 600; color: #f5f3ee; margin: 0 0 8px; }
+  .overlay-content p { font-family: 'Pretendard Variable', sans-serif; font-size: 14px; font-weight: 300; color: #c9c8c2; margin: 0; line-height: 1.5; word-break: keep-all; }
+
+  @media (max-width: 960px) {
+    .yc-knowledge-grid { grid-template-columns: 1fr; gap: 48px; }
+    .k-col-left { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .k-card-large img { height: 260px; }
+    .yc-overlay-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .k-col-left { grid-template-columns: 1fr; }
+    .k-card-large img { height: 200px; }
+    .yc-overlay-grid { grid-template-columns: 1fr; gap: 16px; }
+    .overlay-card { height: 320px; }
+  }
+
+  /* =========================================================
+     🎯 CTA (Contact) & 정적 갤러리 영역 (Focus & Blur 애니메이션)
+     ========================================================= */
+  .cta-section { position: relative; z-index: 40; background: #080808; padding: 100px 0 0; }
   .cta-content { text-align:center; margin-bottom: 80px; }
-  
-  /* YC 스타일로 기울임, 크기, 간격 조정 */
   .cta-content h2 { 
     font-family:'Boska','Source Serif 4',serif; 
     font-weight:300; 
     font-style:italic; 
     font-size:clamp(36px, 5.5vw, 56px); 
     color:#f5f3ee; 
-    margin:0 0 8px; /* 문구와의 간격 타이트하게 */
+    margin:0 0 8px; 
     line-height:1.2; 
     letter-spacing:-0.01em; 
   }
@@ -182,22 +258,27 @@
     font-size:15.5px; 
     font-weight:300; 
     color:#a3a097; 
-    margin:0 0 32px; /* 버튼과의 간격 */
+    margin:0 0 36px; 
   }
   .cta-button { display:inline-block; background:#f5f3ee; color:#080808; font-family:'Boska',serif; font-style:italic; font-weight:400; font-size:18px; padding:16px 44px; border-radius:999px; transition: background .2s, color .2s, transform .2s; }
-  .cta-button:hover { background:#fff; box-shadow: inset 0 0 0 1px #f5f3ee; transform: translateY(-1px); }
+  .cta-button:hover { background:#080808; color:#f5f3ee; box-shadow: inset 0 0 0 1px #f5f3ee; }
 
-  /* 신규 사진 영역 (검은색 CTA 영역 내부에 위치) */
+  /* 🌟 하단 5장 갤러리 Focus & Blur 애니메이션 적용 */
   .new-bottom-gallery-section { padding: 0 24px 80px; }
   .new-bottom-gallery { max-width: 1360px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
   .new-gallery-item {
-    width: 100%; height: 260px; border-radius: 12px; overflow: hidden; background: #181818;
-    opacity: 0; transform: translateY(18px);
-    transition: opacity 1s ease, transform 1s ease;
+    width: 100%; height: 260px; border-radius: 12px; overflow: hidden; background: #181818; cursor: pointer;
   }
-  .new-gallery-item.show { opacity: 1; transform: translateY(0); }
-  .new-gallery-item img { width: 100%; height: 100%; object-fit: cover; filter: saturate(1.2) brightness(1.03) contrast(1.05); transition: transform 0.5s ease, filter 0.5s ease; }
-  .new-gallery-item img:hover { transform: scale(1.06); filter: saturate(1.35) brightness(1.08) contrast(1.08); }
+  .new-gallery-item img { 
+    width: 100%; height: 100%; object-fit: cover; 
+    filter: saturate(1.2) brightness(1.03) contrast(1.05); 
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.5s ease; 
+  }
+  
+  /* 부모 호버 시 전체 사진 흑백+Dim 처리 */
+  .new-bottom-gallery:hover .new-gallery-item img { filter: grayscale(100%) brightness(0.6); }
+  /* 호버된 자신만 컬러+확대 */
+  .new-bottom-gallery .new-gallery-item:hover img { transform: scale(1.06); filter: grayscale(0%) saturate(1.35) brightness(1.08) contrast(1.08); }
   
   @media (max-width:860px){
     .new-bottom-gallery { grid-template-columns: repeat(3, 1fr); gap: 8px; }
@@ -207,12 +288,11 @@
   @media (max-width:480px){ .new-gallery-item { height: 140px; } }
 
   /* =========================================================
-     📎 FOOTER (크림색 바탕 / 검은색 텍스트 & 라인 반전)
+     📎 FOOTER (크림색 바탕 반전)
      ========================================================= */
-  footer.site-footer { background:#f5f3ee; border-top: none; padding: 60px 0 60px; color:#080808; position: relative; z-index: 40; }
+  footer.site-footer { background:#f5f3ee; border-top: none; padding: 80px 0 60px; color:#080808; position: relative; z-index: 40; }
   .footer-top { display:flex; justify-content:space-between; gap:60px; flex-wrap:wrap; margin-bottom:64px; }
   .footer-brand { max-width: 280px; }
-  /* 검은색 로고용 인버트 필터 */
   .footer-brand img { height:22px; width:auto; display:block; margin-bottom:20px; filter: invert(1); }
   .footer-brand p { font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:14px; color:#5c5952; line-height:1.6; margin:0; }
   .footer-links { display:flex; gap:80px; flex-wrap:wrap; }
@@ -240,7 +320,6 @@
   #hero-fade { opacity:1 !important; }
   .story-section { opacity:1 !important; }
   .story-gallery .gallery-item { opacity:1 !important; transform:none !important; }
-  .new-gallery-item { opacity:1 !important; transform:none !important; }
   .quote-block { opacity:1 !important; transform:none !important; }
 </style></noscript>
 </head>
@@ -250,24 +329,23 @@
   <div class="nav-inner">
     <div class="nav-links">
       <div class="nav-item">
-        <button type="button">Content</button>
+        <button type="button">Startup</button>
         <div class="dropdown-menu">
-          <a href="/log.html?cat=AI%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">AI의 언어들</a>
-          <a href="/log.html?cat=Be%20the%20PO">Be the PO</a>
-          <a href="/log.html?cat=PO%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">PO의 프레임웍</a>
-          <a href="/log.html?cat=UX%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">UX의 언어들</a>
-          <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9D%BC%EC%83%81">기획일상</a>
-          <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">기획자의 프레임웍</a>
-          <a href="/log.html?cat=%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC">잉크드인대 기획학과</a>
+          <a href="/log.html?cat=%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8">스타트업 인사이트</a>
+          <a href="/log.html?cat=%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%AF%B8%EA%B5%AD%EC%A7%84%EC%B6%9C%EC%9D%84%20%EB%AC%BB%EB%8B%A4">대한민국 스타트업 미국진출을 묻다</a>
+          <a href="/log.html?cat=%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EC%A0%84%EB%9E%B5%EB%93%A4">스타트업의 전략들</a>
+          <a href="/log.html?cat=%EC%BD%94%EC%B9%98S">코치S</a>
         </div>
       </div>
       <div class="nav-item">
-        <button type="button">Startup</button>
+        <button type="button">FieldPlay</button>
         <div class="dropdown-menu">
-          <a href="/log.html?cat=%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%AF%B8%EA%B5%AD%EC%A7%84%EC%B6%9C%EC%9D%84%20%EB%AC%BB%EB%8B%A4">대한민국 스타트업 미국진출을 묻다</a>
-          <a href="/log.html?cat=%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8">스타트업 인사이트</a>
-          <a href="/log.html?cat=%EC%BD%94%EC%B9%98S%ED%86%A0%ED%81%AC">코치S토크</a>
-          <a href="/log.html?cat=%EC%84%B8%EC%85%98">세션</a>
+          <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">기획자의 프레임웍</a>
+          <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9D%BC%EC%83%81">기획일상</a>
+          <a href="/log.html?cat=%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC">잉크드인대 기획학과</a>
+          <a href="/log.html?cat=PO%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">PO의 프레임웍</a>
+          <a href="/log.html?cat=Be%20the%20PO">Be the PO</a>
+          <a href="/log.html?cat=UX%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">UX의 언어들</a>
         </div>
       </div>
     </div>
@@ -277,20 +355,18 @@
     <div class="nav-right">
       <div class="nav-links">
         <div class="nav-item">
-          <button type="button">Knowledge</button>
+          <button type="button">CEO Log</button>
           <div class="dropdown-menu">
-            <a href="https://www.yes24.com/product/goods/147079674" target="_blank" rel="noopener">기획자의 질문법</a>
-            <a href="https://www.yes24.com/product/goods/193444437" target="_blank" rel="noopener">UX의 언어들</a>
-            <a href="https://www.classu.co.kr/new/studio/19442/dashboard" target="_blank" rel="noopener">리더십 실전</a>
+            <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8">심플리파이어 인사이트</a>
+            <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EB%9D%BC%EC%9D%B4%ED%94%84">심플리파이어 라이프</a>
           </div>
         </div>
         <div class="nav-item">
-          <button type="button">Life</button>
+          <button type="button">Book & Class</button>
           <div class="dropdown-menu">
-            <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EB%9D%BC%EC%9D%B4%ED%94%84">심플리파이어 라이프</a>
-            <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%ED%95%9C%20%EC%B0%BD%EC%97%85%ED%95%98%EA%B3%A0%20%ED%8C%8C%EC%9D%B4%EC%96%B4%ED%95%98%EA%B2%8C%20%EC%9D%BC%ED%95%98%EA%B8%B0">심플한 창업하고 파이어하게 일하기</a>
-            <a href="/log.html?cat=%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%EC%A7%81%EC%9E%A5%20%EC%9D%B4%EC%95%BC%EA%B8%B0">이력서에 쓰지 않는 첫직장 이야기</a>
-            <a href="/log.html?cat=%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC">트레바리</a>
+            <a href="https://www.yes24.com/product/goods/147079674" target="_blank" rel="noopener">기획자의 질문법</a>
+            <a href="https://www.yes24.com/product/goods/193444437" target="_blank" rel="noopener">UX의 언어들</a>
+            <a href="https://www.classu.co.kr/new/studio/19442/dashboard" target="_blank" rel="noopener">유니콘의 리더십</a>
           </div>
         </div>
       </div>
@@ -306,41 +382,38 @@
 
   <nav class="mobile-menu" id="mobile-menu">
     <details class="mobile-details">
-      <summary class="mobile-summary">Content</summary>
-      <div class="mobile-submenu">
-        <a href="/log.html?cat=AI%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">AI의 언어들</a>
-        <a href="/log.html?cat=Be%20the%20PO">Be the PO</a>
-        <a href="/log.html?cat=PO%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">PO의 프레임웍</a>
-        <a href="/log.html?cat=UX%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">UX의 언어들</a>
-        <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9D%BC%EC%83%81">기획일상</a>
-        <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">기획자의 프레임웍</a>
-        <a href="/log.html?cat=%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC">잉크드인대 기획학과</a>
-      </div>
-    </details>
-    <details class="mobile-details">
       <summary class="mobile-summary">Startup</summary>
       <div class="mobile-submenu">
-        <a href="/log.html?cat=%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%AF%B8%EA%B5%AD%EC%A7%84%EC%B6%9C%EC%9D%84%20%EB%AC%BB%EB%8B%A4">대한민국 스타트업 미국진출을 묻다</a>
         <a href="/log.html?cat=%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8">스타트업 인사이트</a>
-        <a href="/log.html?cat=%EC%BD%94%EC%B9%98S%ED%86%A0%ED%81%AC">코치S토크</a>
-        <a href="/log.html?cat=%EC%84%B8%EC%85%98">세션</a>
+        <a href="/log.html?cat=%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%AF%B8%EA%B5%AD%EC%A7%84%EC%B6%9C%EC%9D%84%20%EB%AC%BB%EB%8B%A4">대한민국 스타트업 미국진출을 묻다</a>
+        <a href="/log.html?cat=%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EC%A0%84%EB%9E%B5%EB%93%A4">스타트업의 전략들</a>
+        <a href="/log.html?cat=%EC%BD%94%EC%B9%98S">코치S</a>
       </div>
     </details>
     <details class="mobile-details">
-      <summary class="mobile-summary">Knowledge</summary>
+      <summary class="mobile-summary">FieldPlay</summary>
+      <div class="mobile-submenu">
+        <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">기획자의 프레임웍</a>
+        <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9D%BC%EC%83%81">기획일상</a>
+        <a href="/log.html?cat=%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC">잉크드인대 기획학과</a>
+        <a href="/log.html?cat=PO%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">PO의 프레임웍</a>
+        <a href="/log.html?cat=Be%20the%20PO">Be the PO</a>
+        <a href="/log.html?cat=UX%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">UX의 언어들</a>
+      </div>
+    </details>
+    <details class="mobile-details">
+      <summary class="mobile-summary">CEO Log</summary>
+      <div class="mobile-submenu">
+        <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8">심플리파이어 인사이트</a>
+        <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EB%9D%BC%EC%9D%B4%ED%94%84">심플리파이어 라이프</a>
+      </div>
+    </details>
+    <details class="mobile-details">
+      <summary class="mobile-summary">Book & Class</summary>
       <div class="mobile-submenu">
         <a href="https://www.yes24.com/product/goods/147079674" target="_blank" rel="noopener">기획자의 질문법</a>
         <a href="https://www.yes24.com/product/goods/193444437" target="_blank" rel="noopener">UX의 언어들</a>
-        <a href="https://www.classu.co.kr/new/studio/19442/dashboard" target="_blank" rel="noopener">리더십 실전</a>
-      </div>
-    </details>
-    <details class="mobile-details">
-      <summary class="mobile-summary">Life</summary>
-      <div class="mobile-submenu">
-        <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EB%9D%BC%EC%9D%B4%ED%94%84">심플리파이어 라이프</a>
-        <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%ED%95%9C%20%EC%B0%BD%EC%97%85%ED%95%98%EA%B3%A0%20%ED%8C%8C%EC%9D%B4%EC%96%B4%ED%95%98%EA%B2%8C%20%EC%9D%BC%ED%95%98%EA%B8%B0">심플한 창업하고 파이어하게 일하기</a>
-        <a href="/log.html?cat=%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%EC%A7%81%EC%9E%A5%20%EC%9D%B4%EC%95%BC%EA%B8%B0">이력서에 쓰지 않는 첫직장 이야기</a>
-        <a href="/log.html?cat=%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC">트레바리</a>
+        <a href="https://www.classu.co.kr/new/studio/19442/dashboard" target="_blank" rel="noopener">유니콘의 리더십</a>
       </div>
     </details>
     <a href="#contact" class="mobile-menu-cta">Contact</a>
@@ -348,12 +421,6 @@
 </header>
 <script>
 (function(){
-  var CONFIG = {
-    statsTriggerMargin: '-65% 0px -35% 0px',
-    provenFadeEnd: 0.3,
-    storyFadeEnd: 0.5   
-  };
-
   var burger = document.getElementById('nav-burger');
   var menu = document.getElementById('mobile-menu');
   if(!burger || !menu) return;
@@ -435,7 +502,7 @@
   </div>
 
   <div class="story-testimonials">
-    <div class="testimonial-header">FOUNDERS' WORDS</div>
+    <div class="testimonial-header">VOICES IN THE FIELD</div>
     <div class="quote-block">
       <p class="quote-text">코치님과 함께한 후 제품팀이 몰라보게 안정화됐습니다. 덕분에 저는 대표로서 사업에 집중할 수 있었고, 제품 UX가 개선되면서 1년 만에 매출이 3배 이상 성장할 수 있었습니다.</p>
       <div class="quote-attribution"><div class="quote-avatar"><img src="assets/testimonials/u.png" alt="이커머스사 대표"></div>이커머스사 대표</div>
@@ -451,7 +518,99 @@
   </div>
 </section>
 
-<!-- 2. CTA (Contact) 영역 -->
+<section class="yc-sections wrap">
+  
+  <h2 class="yc-title">Simplifier Log</h2>
+  <div class="yc-knowledge-grid">
+    <div class="k-col k-col-left">
+      <a href="/log.html?cat=%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8" class="k-card k-card-small">
+        <img src="assets/story/2-session.jpg" alt="스타트업 인사이트" style="filter: grayscale(100%);">
+        <div class="k-content">
+          <div class="k-tag">스타트업 인사이트</div>
+          <h3>초기 팀이 흔들리는 진짜 이유</h3>
+          <p>사람이 아니라 구조가 문제일 때가 많습니다</p>
+        </div>
+      </a>
+      <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9D%BC%EC%83%81" class="k-card k-card-small">
+        <img src="assets/story/1-lecture.jpg" alt="기획일상" style="filter: grayscale(100%);">
+        <div class="k-content">
+          <div class="k-tag">기획일상</div>
+          <h3>회의실에서 목소리가 큰 사람</h3>
+          <p>가장 위험할 수 있는 이유에 대하여</p>
+        </div>
+      </a>
+    </div>
+    
+    <div class="k-col k-col-center">
+      <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8" class="k-card k-card-large">
+        <img src="assets/story/3-whiteboard.jpg" alt="심플리파이어 인사이트" style="filter: grayscale(100%);">
+        <div class="k-content">
+          <div class="k-tag">심플리파이어 인사이트</div>
+          <h3>복잡한 문제일수록, 단순한 질문 하나로 풀립니다</h3>
+          <p>24년간 현장에서 확인한 단순화의 원리. 자정이 가까워지도록 창업가와 나눴던 대화에서 시작된 생각들.</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="k-col k-col-right">
+      <div class="k-list-group">
+        <h4>Startup</h4>
+        <ul>
+          <li><a href="/log.html?cat=%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8">스타트업 인사이트 ↗</a></li>
+          <li><a href="/log.html?cat=%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%AF%B8%EA%B5%AD%EC%A7%84%EC%B6%9C%EC%9D%84%20%EB%AC%BB%EB%8B%A4">대한민국 스타트업 미국진출을 묻다 ↗</a></li>
+          <li><a href="/log.html?cat=%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EC%A0%84%EB%9E%B5%EB%93%A4">스타트업의 전략들 ↗</a></li>
+          <li><a href="/log.html?cat=%EC%BD%94%EC%B9%98S">코치S 세션 ↗</a></li>
+        </ul>
+      </div>
+      <div class="k-list-group">
+        <h4>FieldPlay</h4>
+        <ul>
+          <li><a href="/log.html?cat=PO%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">PO의 프레임웍 ↗</a></li>
+          <li><a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">기획자의 프레임웍 ↗</a></li>
+          <li><a href="/log.html?cat=UX%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">UX의 언어들 ↗</a></li>
+          <li><a href="/log.html?cat=%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC">잉크드인대 기획학과 ↗</a></li>
+        </ul>
+      </div>
+      <div class="k-list-group">
+        <h4>CEO Log</h4>
+        <ul>
+          <li><a href="/log.html?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8">심플리파이어 인사이트 ↗</a></li>
+          <li><a href="/log.html?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EB%9D%BC%EC%9D%B4%ED%94%84">심플리파이어 라이프 ↗</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="yc-title">Book & Class</h2>
+  <div class="yc-overlay-grid">
+    <a href="https://www.yes24.com/product/goods/147079674" target="_blank" rel="noopener" class="overlay-card">
+      <img src="assets/story/4-meetup.jpg" alt="기획자의 질문법" style="filter: grayscale(80%);">
+      <div class="overlay-content">
+        <h3>기획자의 질문법</h3>
+        <p>복잡한 문제를 해결하는 가장 심플한 방법. 기획의 본질을 파고드는 실무 노하우.</p>
+      </div>
+    </a>
+    <a href="https://www.yes24.com/product/goods/193444437" target="_blank" rel="noopener" class="overlay-card">
+      <img src="assets/story/2-session.jpg" alt="UX의 언어들" style="filter: grayscale(80%);">
+      <div class="overlay-content">
+        <h3>UX의 언어들</h3>
+        <p>기획자와 디자이너가 같은 곳을 바라보며 서비스 성장을 만들어내는 커뮤니케이션.</p>
+      </div>
+    </a>
+    <a href="https://www.classu.co.kr/new/studio/19442/dashboard" target="_blank" rel="noopener" class="overlay-card">
+      <img src="assets/story/1-lecture.jpg" alt="유니콘의 리더십" style="filter: grayscale(80%);">
+      <div class="overlay-content">
+        <h3>유니콘의 리더십</h3>
+        <p>1,000명 규모의 조직까지 견인하는 C레벨 리더들을 위한 실전 리더십 프레임워크.</p>
+      </div>
+    </a>
+  </div>
+
+</section>
+
+<!-- ==========================================
+     🎯 CTA (Contact) & 정적 갤러리 영역
+     ========================================== -->
 <section class="cta-section" id="contact">
   <div class="cta-content wrap">
     <h2>It's time to simplify.</h2>
@@ -461,22 +620,25 @@
 
   <div class="new-bottom-gallery-section">
     <div class="new-bottom-gallery">
-      <div class="new-gallery-item"><img src="assets/story/1-lecture.jpg" alt="신규 사진 1"></div>
-      <div class="new-gallery-item"><img src="assets/story/2-session.jpg" alt="신규 사진 2"></div>
-      <div class="new-gallery-item"><img src="assets/story/3-whiteboard.jpg" alt="신규 사진 3"></div>
-      <div class="new-gallery-item"><img src="assets/story/4-meetup.jpg" alt="신규 사진 4"></div>
-      <div class="new-gallery-item"><img src="assets/story/5-casual.jpg" alt="신규 사진 5"></div>
+      <!-- 굳즈 이미지 경로 미리 세팅 완료 -->
+      <div class="new-gallery-item"><img src="assets/goods/goods-1.jpg" alt="Simplifier Goods 1"></div>
+      <div class="new-gallery-item"><img src="assets/goods/goods-2.jpg" alt="Simplifier Goods 2"></div>
+      <div class="new-gallery-item"><img src="assets/goods/goods-3.jpg" alt="Simplifier Goods 3"></div>
+      <div class="new-gallery-item"><img src="assets/goods/goods-4.jpg" alt="Simplifier Goods 4"></div>
+      <div class="new-gallery-item"><img src="assets/goods/goods-5.jpg" alt="Simplifier Goods 5"></div>
     </div>
   </div>
 </section>
 
-<!-- 3. 크림색 반전 푸터 영역 -->
+<!-- ==========================================
+     📎 FOOTER (크림색 반전 영역)
+     ========================================== -->
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-top">
       <div class="footer-brand">
         <img src="assets/nav-logo-white.avif" alt="Simplifier">
-        <p>복잡함을 단순화하는 순간<br>폭발적 성장이 만들어집니다.</p>
+        <p>복잡함을 단순화하는 순간<br>성장은 자연스럽게 따라옵니다.</p>
       </div>
       <div class="footer-links">
         <div class="footer-col">
@@ -520,14 +682,10 @@
 <script>
 (function(){
   var CONFIG = {
-    statsTriggerMargin: '-65% 0px -35% 0px',
+    statsTriggerMargin: '0px 0px -15% 0px', 
     provenFadeEnd: 0.3,
     storyFadeEnd: 0.5
   };
-
-  if (typeof window.CONFIG !== 'undefined') {
-    CONFIG = window.CONFIG;
-  }
 
   var heroFade = document.getElementById('hero-fade');
   var heroWrapper = document.getElementById('hero-wrapper');
@@ -656,31 +814,6 @@
       storyGalleryObserver.observe(document.querySelector('.story-gallery'));
     } else {
       revealStoryGallery();
-    }
-  }
-
-  var newGalleryItems = document.querySelectorAll('.new-gallery-item');
-  var newGalleryRevealed = false;
-  function revealNewGallery(){
-    if (newGalleryRevealed) return;
-    newGalleryRevealed = true;
-    newGalleryItems.forEach(function(item, i){
-      setTimeout(function(){ item.classList.add('show'); }, i * 110);
-    });
-  }
-  if (newGalleryItems.length > 0) {
-    if ('IntersectionObserver' in window) {
-      var newGalleryObserver = new IntersectionObserver(function(entries){
-        entries.forEach(function(entry){
-          if (entry.isIntersecting) {
-            revealNewGallery();
-            newGalleryObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.2 });
-      newGalleryObserver.observe(document.querySelector('.new-bottom-gallery'));
-    } else {
-      revealNewGallery();
     }
   }
 
