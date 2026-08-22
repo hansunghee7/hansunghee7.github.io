@@ -63,7 +63,7 @@
   .nav-item:hover .dropdown-menu, .nav-item:focus-within .dropdown-menu { opacity: 1; visibility: visible; }
   .dropdown-menu a { padding: 10px 20px; font-size: 13.5px; color: #2a2822; transition: color 0.2s, background 0.2s; text-align: left; word-break: keep-all; }
   .dropdown-menu a:hover, .dropdown-menu a:focus { color: #080808; background: rgba(8,8,8,0.06); }
-  .nav-apply { background:#f5f3ee; color:#080808; padding: 9px 22px; border-radius:999px; font-weight: 500; font-size:14px; transition: background .2s, color .2s; }
+  .nav-apply { background:#f5f3ee; color:#080808; padding: 9px 22px; border-radius:999px; font-weight: 500; font-size:14px; transition: background .2s, color .2s; border:none; cursor:pointer; }
   .nav-apply:hover { background:#080808; color:#f5f3ee; box-shadow: inset 0 0 0 1px #f5f3ee; }
   .nav-burger { display:none; flex-direction:column; justify-content:center; align-items:center; gap:5px; width:32px; height:32px; background:none; border:none; padding:0; cursor:pointer; }
   .nav-burger span { display:block; width:20px; height:1.5px; background:#f5f3ee; transition: transform .25s ease, opacity .25s ease; }
@@ -81,7 +81,7 @@
   .mobile-submenu { padding: 0 0 20px 16px; display: flex; flex-direction: column; gap: 16px; }
   .mobile-submenu a { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 15px; color: #8f8b82; text-decoration: none; word-break: keep-all; }
   .mobile-submenu a:hover { color: #f5f3ee; }
-  .mobile-menu-cta { display:block; text-align:center; margin-top:30px; margin-bottom: 8px; padding:14px 0 !important; border-radius:999px; background:#f5f3ee; color:#080808 !important; font-weight:500; font-family: 'Pretendard Variable', 'Pretendard', sans-serif; text-decoration: none; }
+  .mobile-menu-cta { display:block; text-align:center; margin-top:30px; margin-bottom: 8px; padding:14px 0 !important; border-radius:999px; background:#f5f3ee; color:#080808 !important; font-weight:500; font-family: 'Pretendard Variable', 'Pretendard', sans-serif; text-decoration: none; border:none; cursor:pointer; width:100%; }
   
   @media (max-width:860px){ .nav-links{ display:none; } .nav-burger{ display:flex; } .nav-actions .nav-apply { display:none; } }
 
@@ -147,17 +147,10 @@
   .story-essay p.intro-p::first-letter { font-family: 'Boska', serif; font-weight: 300; font-size: 5.2rem; float: left; line-height: 0.78; padding-right: 18px; padding-top: 6px; color: #f5f3ee; }
   @media (max-width:700px){ .story-essay p.intro-p::first-letter { font-size: 3.6rem; padding-right: 12px; padding-top: 4px; } }
 
-  /* 🌟 스토리 갤러리 */
   .story-gallery { width: min(1200px, 94vw); margin: 0 auto 140px auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
   .story-gallery .gallery-item { width: 100%; height: 240px; border-radius: 6px; overflow: hidden; background: #181818; opacity: 0; transform: translateY(18px); transition: opacity 1s ease, transform 1s ease; cursor: pointer; }
   .story-gallery .gallery-item.show { opacity: 1; transform: translateY(0); }
-  
-  .story-gallery .gallery-item img { 
-    width: 100%; height: 100%; object-fit: cover; 
-    filter: saturate(1.2) brightness(1.03) contrast(1.05); 
-    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.5s ease; 
-  }
-  
+  .story-gallery .gallery-item img { width: 100%; height: 100%; object-fit: cover; filter: saturate(1.2) brightness(1.03) contrast(1.05); transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.5s ease; }
   .story-gallery:hover .gallery-item img { filter: grayscale(100%) brightness(0.6); }
   .story-gallery .gallery-item:hover img { transform: scale(1.06); filter: grayscale(0%) saturate(1.35) brightness(1.08) contrast(1.08); }
 
@@ -192,7 +185,6 @@
     margin: 60px 0 32px;
   }
 
-  /* 1. Knowledge & Insights */
   .yc-knowledge-grid { display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 32px; max-width: 1200px; margin: 0 auto; align-items: start; }
   .k-col { display: flex; flex-direction: column; gap: 24px; }
   
@@ -214,7 +206,6 @@
   .k-list-group a { font-family: 'Pretendard Variable', sans-serif; font-size: 14px; color: #c9c8c2; text-decoration: none; transition: color 0.2s; display: block; line-height: 1.4; word-break: keep-all; }
   .k-list-group a:hover { color: #f5f3ee; }
 
-  /* 2. Book & Class */
   .yc-overlay-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto; }
   .overlay-card { position: relative; height: 380px; border-radius: 12px; overflow: hidden; cursor: pointer; text-decoration: none; display: block; }
   .overlay-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
@@ -258,10 +249,9 @@
     color:#a3a097; 
     margin:0 0 36px; 
   }
-  .cta-button { display:inline-block; background:#f5f3ee; color:#080808; font-family:'Boska',serif; font-style:italic; font-weight:400; font-size:18px; padding:16px 44px; border-radius:999px; transition: background .2s, color .2s, transform .2s; }
+  .cta-button { display:inline-block; background:#f5f3ee; color:#080808; font-family:'Boska',serif; font-style:italic; font-weight:400; font-size:18px; padding:16px 44px; border-radius:999px; transition: background .2s, color .2s, transform .2s; border:none; cursor:pointer; }
   .cta-button:hover { background:#fff; box-shadow: inset 0 0 0 1px #f5f3ee; transform: translateY(-1px); }
 
-  /* 🌟 하단 5장 갤러리 */
   .new-bottom-gallery-section { padding: 0 24px 80px; }
   .new-bottom-gallery { max-width: 1360px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
   .new-gallery-item {
@@ -272,7 +262,6 @@
     filter: saturate(1.2) brightness(1.03) contrast(1.05); 
     transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.5s ease; 
   }
-  
   .new-bottom-gallery:hover .new-gallery-item img { filter: grayscale(100%) brightness(0.6); }
   .new-bottom-gallery .new-gallery-item:hover img { transform: scale(1.06); filter: grayscale(0%) saturate(1.35) brightness(1.08) contrast(1.08); }
   
@@ -284,6 +273,34 @@
   @media (max-width:480px){ .new-gallery-item { height: 140px; } }
 
   /* =========================================================
+     📬 MODAL & TOAST
+     ========================================================= */
+  #contact-modal-overlay { position: fixed; inset: 0; z-index: 9999; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: opacity 0.3s; padding: 24px; }
+  #contact-modal-overlay.show { opacity: 1; visibility: visible; }
+  .modal-bg { position: absolute; inset: 0; background: rgba(8,8,8,0.85); backdrop-filter: blur(8px); }
+  .modal-content { position: relative; background: #080808; border: 1px solid rgba(245,243,238,0.15); padding: 48px; border-radius: 12px; width: 100%; max-width: 600px; max-height: 90vh; overflow-y: auto; transform: translateY(20px); transition: transform 0.3s; }
+  #contact-modal-overlay.show .modal-content { transform: translateY(0); }
+  .modal-close { position: absolute; top: 24px; right: 24px; background: none; border: none; color: #8f8b82; cursor: pointer; padding: 8px; transition: color 0.2s; }
+  .modal-close:hover { color: #f5f3ee; }
+  
+  .modal-content .eyebrow-modal { font-family: 'Pretendard Variable', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; color: #8f8b82; text-transform: uppercase; margin-bottom: 16px; display: block; }
+  .modal-content h2 { font-family: 'Boska', serif; font-weight: 300; font-size: 32px; color: #f5f3ee; margin: 0 0 12px; }
+  .modal-content .modal-desc { font-family: 'Pretendard Variable', sans-serif; font-size: 14px; font-weight: 300; color: #8f8b82; margin: 0 0 40px; }
+  
+  .form-group { margin-bottom: 24px; }
+  .form-group label { display: block; font-family: 'Pretendard Variable', sans-serif; font-size: 14px; font-weight: 400; color: #f5f3ee; margin-bottom: 8px; text-align: left; }
+  .form-group input, .form-group textarea { width: 100%; background: transparent; border: 1px solid rgba(245,243,238,0.2); padding: 14px 16px; color: #f5f3ee; font-family: 'Pretendard Variable', sans-serif; font-size: 14px; border-radius: 6px; outline: none; transition: border-color 0.2s; }
+  .form-group input:focus, .form-group textarea:focus { border-color: #f5f3ee; }
+  .cf-error { color: #ff6b6b; font-family: 'Pretendard Variable', sans-serif; font-size: 13px; margin-top: -16px; margin-bottom: 24px; display: none; text-align: left; }
+  .cf-error.show { display: block; }
+  
+  #cf-submit { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #f5f3ee; color: #080808; font-family: 'Pretendard Variable', sans-serif; font-weight: 600; font-size: 15px; padding: 14px 28px; border: none; border-radius: 6px; cursor: pointer; transition: opacity 0.2s; margin-top: 12px; }
+  #cf-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  #copy-toast { position: fixed; left: 50%; bottom: 32px; transform: translate(-50%, 20px); background: #f5f3ee; color: #080808; font-family: 'Pretendard Variable', sans-serif; font-size: 14px; font-weight: 500; padding: 12px 24px; border-radius: 8px; opacity: 0; visibility: hidden; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); z-index: 10000; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+  #copy-toast.show { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+
+  /* =========================================================
      📎 FOOTER (크림색 바탕 반전)
      ========================================================= */
   footer.site-footer { background:#f5f3ee; border-top: none; padding: 80px 0 60px; color:#080808; position: relative; z-index: 40; }
@@ -293,7 +310,7 @@
   .footer-brand p { font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:14px; color:#5c5952; line-height:1.6; margin:0; }
   .footer-links { display:flex; gap:80px; flex-wrap:wrap; }
   .footer-col h4 { font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:14px; font-weight:600; color:#080808; text-transform:none; margin:0 0 20px; }
-  .footer-col a { display:block; font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:13.5px; color:#5c5952; margin-bottom:14px; transition:color .2s; }
+  .footer-col a { display:block; font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:13.5px; color:#5c5952; margin-bottom:14px; transition:color .2s; text-decoration: none; }
   .footer-col a:hover { color:#080808; }
   .footer-bottom { border-top:1px solid rgba(8,8,8,0.12); padding-top:32px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
   .footer-legal { font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:13px; color:#8f8b82; line-height:1.7; }
@@ -306,8 +323,8 @@
     .footer-top { flex-direction:column; gap:48px; margin-bottom: 48px; }
     .footer-links { gap:48px; }
     .footer-bottom { flex-direction:column; align-items:flex-start; }
+    .modal-content { padding: 32px 24px; }
   }
-
 </style>
 <noscript><style>
   .proven-wrap, #proven-fade { opacity:1 !important; }
@@ -327,22 +344,22 @@
       <div class="nav-item">
         <button type="button">Startup</button>
         <div class="dropdown-menu">
-          <a href="/log.html?cat=%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8">스타트업 인사이트</a>
-          <a href="/log.html?cat=%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%AF%B8%EA%B5%AD%EC%A7%84%EC%B6%9C%EC%9D%84%20%EB%AC%BB%EB%8B%A4">대한민국 스타트업 미국진출을 묻다</a>
-          <a href="/log.html?cat=%EC%BD%94%EC%B9%98S">코치S</a>
-          <a href="/log.html?cat=%ED%86%A0%ED%81%AC%EC%84%B8%EC%85%98">토크세션</a>
+          <a href="/log?cat=%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8">스타트업 인사이트</a>
+          <a href="/log?cat=%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%AF%B8%EA%B5%AD%EC%A7%84%EC%B6%9C%EC%9D%84%20%EB%AC%BB%EB%8B%A4">대한민국 스타트업 미국진출을 묻다</a>
+          <a href="/log?cat=%EC%BD%94%EC%B9%98S">코치S</a>
+          <a href="/log?cat=%ED%86%A0%ED%81%AC%EC%84%B8%EC%85%98">토크세션</a>
         </div>
       </div>
       <div class="nav-item">
         <button type="button">FieldPlay</button>
         <div class="dropdown-menu">
-          <a href="/log.html?cat=AI%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">AI의 언어들</a>
-          <a href="/log.html?cat=Be%20the%20PO">Be the PO</a>
-          <a href="/log.html?cat=PO%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">PO의 프레임웍</a>
-          <a href="/log.html?cat=UX%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">UX의 언어들</a>
-          <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9D%BC%EC%83%81">기획일상</a>
-          <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">기획자의 프레임웍</a>
-          <a href="/log.html?cat=%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC">잉크드인대 기획학과</a>
+          <a href="/log?cat=AI%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">AI의 언어들</a>
+          <a href="/log?cat=Be%20the%20PO">Be the PO</a>
+          <a href="/log?cat=PO%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">PO의 프레임웍</a>
+          <a href="/log?cat=UX%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">UX의 언어들</a>
+          <a href="/log?cat=%EA%B8%B0%ED%9A%8D%EC%9D%BC%EC%83%81">기획일상</a>
+          <a href="/log?cat=%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">기획자의 프레임웍</a>
+          <a href="/log?cat=%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC">잉크드인대 기획학과</a>
         </div>
       </div>
     </div>
@@ -354,11 +371,11 @@
         <div class="nav-item">
           <button type="button">CEO Log</button>
           <div class="dropdown-menu">
-            <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8">심플리파이어 인사이트</a>
-            <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EB%9D%BC%EC%9D%B4%ED%94%84">심플리파이어 라이프</a>
-            <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%ED%95%9C%20%EC%B0%BD%EC%97%85%ED%95%98%EA%B3%A0%20%ED%8C%8C%EC%9D%B4%EC%96%B4%ED%95%98%EA%B2%8C%20%EC%9D%BC%ED%95%98%EA%B8%B0">심플한 창업하고 파이어하게 일하기</a>
-            <a href="/log.html?cat=%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%EC%A7%81%EC%9E%A5%20%EC%9D%B4%EC%95%BC%EA%B8%B0">이력서에 쓰지 않는 첫직장 이야기</a>
-            <a href="/log.html?cat=%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC">트레바리</a>
+            <a href="/log?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8">심플리파이어 인사이트</a>
+            <a href="/log?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EB%9D%BC%EC%9D%B4%ED%94%84">심플리파이어 라이프</a>
+            <a href="/log?cat=%EC%8B%AC%ED%94%8C%ED%95%9C%20%EC%B0%BD%EC%97%85%ED%95%98%EA%B3%A0%20%ED%8C%8C%EC%9D%B4%EC%96%B4%ED%95%98%EA%B2%8C%20%EC%9D%BC%ED%95%98%EA%B8%B0">심플한 창업하고 파이어하게 일하기</a>
+            <a href="/log?cat=%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%EC%A7%81%EC%9E%A5%20%EC%9D%B4%EC%95%BC%EA%B8%B0">이력서에 쓰지 않는 첫직장 이야기</a>
+            <a href="/log?cat=%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC">트레바리</a>
           </div>
         </div>
         <div class="nav-item">
@@ -373,7 +390,8 @@
     </div>
 
     <div class="nav-actions">
-      <a href="#contact" class="nav-apply">Contact</a>
+      <!-- 💡 모달 연결 공통 클래스(.open-contact-modal) 적용 -->
+      <button type="button" class="nav-apply open-contact-modal">Contact</button>
       <button class="nav-burger" id="nav-burger" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobile-menu">
         <span></span><span></span><span></span>
       </button>
@@ -384,32 +402,32 @@
     <details class="mobile-details">
       <summary class="mobile-summary">Startup</summary>
       <div class="mobile-submenu">
-        <a href="/log.html?cat=%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8">스타트업 인사이트</a>
-        <a href="/log.html?cat=%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%AF%B8%EA%B5%AD%EC%A7%84%EC%B6%9C%EC%9D%84%20%EB%AC%BB%EB%8B%A4">대한민국 스타트업 미국진출을 묻다</a>
-        <a href="/log.html?cat=%EC%BD%94%EC%B9%98S">코치S</a>
-        <a href="/log.html?cat=%ED%86%A0%ED%81%AC%EC%84%B8%EC%85%98">토크세션</a>
+        <a href="/log?cat=%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8">스타트업 인사이트</a>
+        <a href="/log?cat=%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%AF%B8%EA%B5%AD%EC%A7%84%EC%B6%9C%EC%9D%84%20%EB%AC%BB%EB%8B%A4">대한민국 스타트업 미국진출을 묻다</a>
+        <a href="/log?cat=%EC%BD%94%EC%B9%98S">코치S</a>
+        <a href="/log?cat=%ED%86%A0%ED%81%AC%EC%84%B8%EC%85%98">토크세션</a>
       </div>
     </details>
     <details class="mobile-details">
       <summary class="mobile-summary">FieldPlay</summary>
       <div class="mobile-submenu">
-        <a href="/log.html?cat=AI%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">AI의 언어들</a>
-        <a href="/log.html?cat=Be%20the%20PO">Be the PO</a>
-        <a href="/log.html?cat=PO%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">PO의 프레임웍</a>
-        <a href="/log.html?cat=UX%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">UX의 언어들</a>
-        <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9D%BC%EC%83%81">기획일상</a>
-        <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">기획자의 프레임웍</a>
-        <a href="/log.html?cat=%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC">잉크드인대 기획학과</a>
+        <a href="/log?cat=AI%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">AI의 언어들</a>
+        <a href="/log?cat=Be%20the%20PO">Be the PO</a>
+        <a href="/log?cat=PO%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">PO의 프레임웍</a>
+        <a href="/log?cat=UX%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">UX의 언어들</a>
+        <a href="/log?cat=%EA%B8%B0%ED%9A%8D%EC%9D%BC%EC%83%81">기획일상</a>
+        <a href="/log?cat=%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">기획자의 프레임웍</a>
+        <a href="/log?cat=%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC">잉크드인대 기획학과</a>
       </div>
     </details>
     <details class="mobile-details">
       <summary class="mobile-summary">CEO Log</summary>
       <div class="mobile-submenu">
-        <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8">심플리파이어 인사이트</a>
-        <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EB%9D%BC%EC%9D%B4%ED%94%84">심플리파이어 라이프</a>
-        <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%ED%95%9C%20%EC%B0%BD%EC%97%85%ED%95%98%EA%B3%A0%20%ED%8C%8C%EC%9D%B4%EC%96%B4%ED%95%98%EA%B2%8C%20%EC%9D%BC%ED%95%98%EA%B8%B0">심플한 창업하고 파이어하게 일하기</a>
-        <a href="/log.html?cat=%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%EC%A7%81%EC%9E%A5%20%EC%9D%B4%EC%95%BC%EA%B8%B0">이력서에 쓰지 않는 첫직장 이야기</a>
-        <a href="/log.html?cat=%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC">트레바리</a>
+        <a href="/log?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8">심플리파이어 인사이트</a>
+        <a href="/log?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EB%9D%BC%EC%9D%B4%ED%94%84">심플리파이어 라이프</a>
+        <a href="/log?cat=%EC%8B%AC%ED%94%8C%ED%95%9C%20%EC%B0%BD%EC%97%85%ED%95%98%EA%B3%A0%20%ED%8C%8C%EC%9D%B4%EC%96%B4%ED%95%98%EA%B2%8C%20%EC%9D%BC%ED%95%98%EA%B8%B0">심플한 창업하고 파이어하게 일하기</a>
+        <a href="/log?cat=%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%EC%A7%81%EC%9E%A5%20%EC%9D%B4%EC%95%BC%EA%B8%B0">이력서에 쓰지 않는 첫직장 이야기</a>
+        <a href="/log?cat=%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC">트레바리</a>
       </div>
     </details>
     <details class="mobile-details">
@@ -420,7 +438,8 @@
         <a href="https://www.classu.co.kr/new/class/1019442" target="_blank" rel="noopener">유니콘의 리더십</a>
       </div>
     </details>
-    <a href="#contact" class="mobile-menu-cta">Contact</a>
+    <!-- 💡 모달 연결 공통 클래스 적용 -->
+    <button type="button" class="mobile-menu-cta open-contact-modal">Contact</button>
   </nav>
 </header>
 <script>
@@ -625,7 +644,8 @@
   <div class="cta-content wrap">
     <h2>It's time to simplify.</h2>
     <p>폭발적 성장을 만들 문제를 함께 풀어볼까요?</p>
-    <a href="mailto:simon@simplifier.co.kr" class="cta-button">Contact</a>
+    <!-- 💡 하단 중앙 모달 연결 -->
+    <button type="button" class="cta-button open-contact-modal">Contact</button>
   </div>
 
   <div class="new-bottom-gallery-section">
@@ -659,7 +679,8 @@
         </div>
         <div class="footer-col">
           <h4>Simplifier</h4>
-          <a href="#contact">Contact</a>
+          <!-- 💡 푸터 모달 연결 -->
+          <a href="#" class="open-contact-modal">Contact</a>
           <a href="/log.html">Log</a>
         </div>
       </div>
@@ -687,6 +708,46 @@
     </div>
   </div>
 </footer>
+
+<!-- ==========================================
+     📬 MODAL & TOAST (바닐라 CSS 통합)
+     ========================================== -->
+<div id="contact-modal-overlay">
+  <div class="modal-bg" data-close-modal></div>
+  <div class="modal-content">
+    <button type="button" data-close-modal aria-label="닫기" class="modal-close">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true">
+        <path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <p class="eyebrow" style="font-family:'Pretendard Variable', sans-serif; font-size:13px; font-weight:500; letter-spacing:0.12em; color:#8f8b82; text-transform:uppercase; margin-bottom:16px;">Contact</p>
+    <h2>함께 최선의 답을 찾겠습니다</h2>
+    <p class="modal-desc">코칭, 강연, 협업 제안 등 어떤 말씀이든 편하게 남겨주세요.</p>
+    <form id="contact-form" novalidate>
+      <div class="form-group">
+        <label for="cf-phone">회신받으실 전화번호를 알려주세요</label>
+        <input type="tel" id="cf-phone" name="phone" required placeholder="010-1234-5678">
+      </div>
+      <div class="form-group">
+        <label for="cf-email">회신받으실 이메일 주소를 알려주세요</label>
+        <input type="email" id="cf-email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="cf-message">전달하고 싶은 내용을 남겨주세요</label>
+        <textarea id="cf-message" name="message" required rows="5"></textarea>
+      </div>
+      <p id="cf-error" class="cf-error">빠짐없이 입력해주세요.</p>
+      <button type="submit" id="cf-submit">
+        보내기 
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true">
+          <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </form>
+  </div>
+</div>
+
+<div id="copy-toast" role="status" aria-live="polite">이메일 주소가 복사되었습니다.</div>
 
 <script>
 (function(){
@@ -853,6 +914,147 @@
     } else {
       revealQuotes();
     }
+  }
+})();
+
+// ==========================================
+// 💡 이메일 복사 (Toast) 스크립트
+// ==========================================
+(function initEmailCopy() {
+  var EMAIL = 'simon@simplifier.co.kr';
+  var button = document.getElementById('copy-email-row');
+  var toast = document.getElementById('copy-toast');
+  var toastTimer = null;
+
+  function showToast(message) {
+    clearTimeout(toastTimer);
+    if(message) toast.textContent = message;
+    toast.classList.add('show');
+    toastTimer = setTimeout(function () {
+      toast.classList.remove('show');
+    }, 2200);
+  }
+
+  function fallbackCopy() {
+    var el = document.createElement('textarea');
+    el.value = EMAIL;
+    el.style.position = 'fixed';
+    el.style.opacity = '0';
+    document.body.appendChild(el);
+    el.focus();
+    el.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(el);
+    showToast('이메일 주소가 복사되었습니다.');
+  }
+
+  function copyEmail() {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(EMAIL).then(function(){
+        showToast('이메일 주소가 복사되었습니다.');
+      }, fallbackCopy);
+    } else {
+      fallbackCopy();
+    }
+  }
+
+  if (button) {
+    button.addEventListener('click', copyEmail);
+  }
+})();
+
+// ==========================================
+// 💡 문의하기 모달 (다중 버튼 지원) 스크립트
+// ==========================================
+(function initContactModal() {
+  var FORMSPREE_ENDPOINT = 'https://formspree.io/f/xjybggkw';
+
+  // 클래스로 모든 모달 열기 버튼을 잡습니다.
+  var openBtns = document.querySelectorAll('.open-contact-modal');
+  var overlay = document.getElementById('contact-modal-overlay');
+  var closeEls = document.querySelectorAll('[data-close-modal]');
+  var form = document.getElementById('contact-form');
+  var submitBtn = document.getElementById('cf-submit');
+  var errorMsg = document.getElementById('cf-error');
+  var toast = document.getElementById('copy-toast');
+  var toastTimer = null;
+
+  function showToast(message) {
+    clearTimeout(toastTimer);
+    toast.textContent = message;
+    toast.classList.add('show');
+    toastTimer = setTimeout(function () {
+      toast.classList.remove('show');
+    }, 2600);
+  }
+
+  function openModal() {
+    overlay.classList.add('show');
+    document.body.style.overflow = 'hidden';
+    var first = document.getElementById('cf-phone');
+    if (first) first.focus();
+  }
+
+  function closeModal() {
+    overlay.classList.remove('show');
+    document.body.style.overflow = '';
+  }
+
+  // 모든 버튼에 클릭 이벤트 등록
+  openBtns.forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault(); // a 태그의 경우 위로 튕기는 현상 방지
+      openModal();
+    });
+  });
+
+  closeEls.forEach(function (el) {
+    el.addEventListener('click', closeModal);
+  });
+  
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && overlay.classList.contains('show')) closeModal();
+  });
+
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      errorMsg.classList.remove('show');
+
+      var data = {
+        phone: form.phone.value.trim(),
+        email: form.email.value.trim(),
+        message: form.message.value.trim(),
+      };
+
+      if (!data.phone || !data.email || !data.message) {
+        errorMsg.classList.add('show');
+        return;
+      }
+
+      submitBtn.disabled = true;
+
+      fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(data),
+      })
+        .then(function (res) {
+          if (res.ok) {
+            form.reset();
+            closeModal();
+            showToast('문의가 정상적으로 접수되었습니다.');
+          } else {
+            showToast('전송에 실패했습니다. 잠시 후 다시 시도해주세요.');
+          }
+        })
+        .catch(function () {
+          showToast('전송에 실패했습니다. 잠시 후 다시 시도해주세요.');
+        })
+        .finally(function () {
+          submitBtn.disabled = false;
+        });
+    });
   }
 })();
 </script>
