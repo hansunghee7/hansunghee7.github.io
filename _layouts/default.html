@@ -72,7 +72,6 @@
         .index-mode .cover-bottom-left { text-align: left; position: relative; }
         .index-mode .cover-title { font-family: 'Noto Serif KR', serif; font-size: 32px; font-weight: 200; margin: 0; line-height: 1.2; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
 
-        /* 진입 시 화면 전체(100vh)를 꽉 채우는 타이틀 커버 */
         .cover-wrap.post-mode { height: 100vh; padding: 40px; overflow: hidden; }
         .post-mode .cover-bottom-left { position: absolute; bottom: 60px; left: 40px; padding-right: 80px; text-align: left; transition: opacity 0.05s ease-out; }
         .post-mode .cover-title { font-family: 'Noto Serif KR', serif; font-size: 42px; font-weight: 200; margin: 0; line-height: 1.35; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
@@ -91,31 +90,17 @@
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
         }
-        .down-arrow svg {
-            width: 24px;
-            height: 24px;
-            stroke-width: 1;
-            transition: transform 0.3s ease;
-        }
+        .down-arrow svg { width: 24px; height: 24px; stroke-width: 1; transition: transform 0.3s ease; }
         .down-arrow:hover { opacity: 1; }
         .down-arrow:hover svg { transform: translateY(4px); }
 
         /* 2. 포스트 본문 영역 */
         .article-body { max-width: 1100px; margin: 0 auto; padding: 40px 20px 40px; }
-        
-        /* [포스트 상세 본문 여백 최적화] */
-        .post-mode + .article-body { 
-            max-width: 700px; 
-            padding-top: 60px;    
-            padding-bottom: 0px !important; 
-        }
+        .post-mode + .article-body { max-width: 700px; padding-top: 60px; padding-bottom: 0px !important; }
         .article-body p { font-size: 16px; font-weight: 300; line-height: 2.1; margin-bottom: 35px; }
-        
-        /* [본문 사진 크기 조절] */
         .article-body img { max-width: 100%; height: auto; margin: 40px auto; display: block; border-radius: 4px; }
         .article-body hr { border: 0; border-top: 1px solid #eaeaea; margin: 60px 0; }
 
-        /* [이전글 / 다음글 바 여백 최적화] */
         .category-nav-wrap { 
             margin-top: 70px !important;    
             margin-bottom: 60px !important; 
@@ -167,12 +152,28 @@
 
         body.is-swipe-mode .cover-wrap.post-mode { display: none !important; }
 
+        /* 💡 웹툰 상단 타이틀 노출용 GNB */
         body.is-swipe-mode .log-nav {
             display: flex !important;
             position: relative !important;
             background: #080808 !important;
             border-bottom: 1px solid rgba(245,243,238,0.08);
             height: 60px !important;
+            padding: 0 20px;
+        }
+
+        .swipe-header-title {
+            color: #f5f3ee;
+            font-size: 14px;
+            font-weight: 400;
+            margin-left: 8px;
+            padding-left: 12px;
+            border-left: 1px solid rgba(245,243,238,0.2);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 40vw;
+            font-family: 'Pretendard Variable', sans-serif;
         }
 
         body.is-swipe-mode .post-mode + .article-body { 
@@ -259,7 +260,6 @@
         }
         .swipe-indicator span.current { color: #f5f3ee; font-weight: 500; }
 
-        /* 🎯 [웹툰 하단 네비게이션 다크 모드 디자인 완벽 통일] */
         body.is-swipe-mode .category-nav-wrap { 
             flex: 0 0 auto !important; 
             margin-top: 0 !important; 
@@ -284,7 +284,6 @@
 {% if page.url == '/' or page.url == '/log.html' or page.is_index %}
     {% include header.html %}
 {% else %}
-    <!-- 로고+카테고리 GNB -->
     <style>
       .log-nav {
         position: absolute;
@@ -317,22 +316,24 @@
       }
     </style>
     
-    <header class="log-nav">
-      <!-- 로고 (홈으로 이동) -->
+    <header class="log-nav" id="mainLogNav">
       <a href="/" class="log-nav-logo">
         <img src="/log_assets/images/logo_white.png" alt="Simplifier">
       </a>
       
-      <!-- 카테고리 태그 -->
       {% if page.category %}
       <a href="/log.html?cat={{ page.category | url_encode }}" class="log-nav-category">
         {{ page.category }}
       </a>
       {% endif %}
+
+      <!-- 💡 웹툰 모드일 때 보여줄 화 타이틀 영역 -->
+      <span class="swipe-header-title" id="swipeHeaderTitle" style="display:none;">
+        {{ page.title }}
+      </span>
     </header>
 {% endif %}
 
-<!-- JS 스위치 판단 메타 태그 -->
 <meta id="isSwipeData" data-is-swipe="{{ page.is_swipe }}">
 
 {% if page.url == '/' or page.url == '/log.html' or page.is_index %}
@@ -365,7 +366,6 @@
     {{ content }}
 </div>
 
-<!-- 하단 Footer와 Contact 모달을 메인/목록 페이지에서만 노출 -->
 {% if page.url == '/' or page.url == '/log.html' or page.is_index %}
     {% include footer.html %}
     {% include contact_modal.html %}
@@ -373,7 +373,6 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        // 화살표 클릭 시 문서 절대 좌표 기준 완벽 상단 정렬
         const scrollBtn = document.getElementById('scrollDownBtn');
         const articleBody = document.getElementById('articleBody');
         
@@ -392,7 +391,6 @@
             });
         }
 
-        // 스크롤 시 100vh 커버 패러랙스 접힘 애니메이션
         const coverWrap = document.getElementById('coverWrap');
         const coverTitleBox = document.getElementById('coverTitleBox');
         const coverArrowBox = document.getElementById('coverArrowBox');
@@ -450,7 +448,12 @@
         if (isSwipeMode && articleBody) {
             document.body.classList.add('is-swipe-mode');
 
-            // 배너 가리기
+            // 💡 웹툰 상단 타이틀 활성화
+            const swipeTitleSpan = document.getElementById('swipeHeaderTitle');
+            if(swipeTitleSpan) {
+                swipeTitleSpan.style.display = 'inline-block';
+            }
+
             const promoSpan = Array.from(document.querySelectorAll('span')).find(s => s.textContent.trim() === 'Simplifier Choice');
             if (promoSpan) {
                 const promoWrap = promoSpan.closest('div').parentElement;
@@ -460,15 +463,9 @@
                 }
             }
 
-            // [지능형 스왑 및 여백 완벽 교정]
             const navWrap = document.querySelector('.category-nav-wrap');
             if (navWrap) {
                 const items = Array.from(navWrap.querySelectorAll('.cat-nav-item'));
-                
-                const currentTitleStr = document.getElementById('displayTitle') ? document.getElementById('displayTitle').innerText : '';
-                const currentMatch = currentTitleStr.match(/(\d+)화/);
-                const currentEp = currentMatch ? parseInt(currentMatch[1], 10) : 0;
-                
                 navWrap.innerHTML = ''; 
                 navWrap.style.display = 'flex';
                 navWrap.style.justifyContent = 'space-between';
@@ -488,15 +485,7 @@
                     const titleEl = item.querySelector('.nav-title');
                     
                     if (label && titleEl) {
-                        const linkMatch = titleEl.innerText.match(/(\d+)화/);
-                        const linkEp = linkMatch ? parseInt(linkMatch[1], 10) : 0;
-
-                        let isPrev = false;
-                        if (currentEp > 0 && linkEp > 0) {
-                            isPrev = (linkEp < currentEp);
-                        } else {
-                            isPrev = (label.innerText.includes('다음글') || label.innerText.includes('이전 화'));
-                        }
+                        const isPrev = label.innerText.includes('이전글') || label.innerText.includes('이전 화');
 
                         if (isPrev) {
                             label.innerHTML = '<span style="font-size:11px;">❮</span> 이전 화';
@@ -516,7 +505,6 @@
                 navWrap.appendChild(rightBox);
             }
 
-            // 웹툰 이미지 로드
             const rawImgs = Array.from(articleBody.querySelectorAll('img')).filter(img => {
                 return !img.classList.contains('hidden-element') && 
                        !img.closest('.PROMO_BANNER_START') && 
