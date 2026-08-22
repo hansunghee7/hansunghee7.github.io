@@ -140,13 +140,14 @@
      ========================================================= */
   .story-section { position: relative; z-index: 40; background: #080808; color: #f5f3ee; padding: 60px 0 80px 0; opacity: 0; }
   .story-label { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; color: #8f8b82; text-transform: uppercase; text-align: center; margin-bottom: 24px; }
+  
   .story-essay, .story-gallery, .story-testimonials { pointer-events: auto; }
   .story-essay { max-width: 680px; margin: 0 auto 120px auto; }
   .story-essay p { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-weight: 300; font-size: 17px; line-height: 1.85; color: #c9c8c2; margin-bottom: 32px; word-break: keep-all; }
   .story-essay p.intro-p::first-letter { font-family: 'Boska', serif; font-weight: 300; font-size: 5.2rem; float: left; line-height: 0.78; padding-right: 18px; padding-top: 6px; color: #f5f3ee; }
   @media (max-width:700px){ .story-essay p.intro-p::first-letter { font-size: 3.6rem; padding-right: 12px; padding-top: 4px; } }
 
-  /* 🌟 스토리 갤러리 Focus & Blur 애니메이션 */
+  /* 🌟 스토리 갤러리 */
   .story-gallery { width: min(1200px, 94vw); margin: 0 auto 140px auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
   .story-gallery .gallery-item { width: 100%; height: 240px; border-radius: 6px; overflow: hidden; background: #181818; opacity: 0; transform: translateY(18px); transition: opacity 1s ease, transform 1s ease; cursor: pointer; }
   .story-gallery .gallery-item.show { opacity: 1; transform: translateY(0); }
@@ -157,9 +158,7 @@
     transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.5s ease; 
   }
   
-  /* 갤러리에 마우스 진입 시 모든 사진 흑백 및 딤(Dim) 처리 */
   .story-gallery:hover .gallery-item img { filter: grayscale(100%) brightness(0.6); }
-  /* 마우스가 올라간 대상만 원본 컬러 + 확대 적용 */
   .story-gallery .gallery-item:hover img { transform: scale(1.06); filter: grayscale(0%) saturate(1.35) brightness(1.08) contrast(1.08); }
 
   @media (max-width:760px){
@@ -178,23 +177,22 @@
   .quote-avatar img { width:100%; height:100%; object-fit:cover; display:block; }
 
   /* =========================================================
-     📰 LOG 600 / KNOWLEDGE SECTIONS
+     📰 LOG & KNOWLEDGE SECTIONS
      ========================================================= */
-  .yc-sections { position: relative; z-index: 40; background: #080808; padding: 40px 0; }
+  .yc-sections { position: relative; z-index: 40; background: #080808; padding: 20px 0 60px; }
   
   .yc-title {
     font-family: 'Pretendard Variable', 'Pretendard', sans-serif;
-    font-weight: 500;
-    font-style: normal;
     font-size: 13px;
-    color: #8f8b82;
-    text-align: center;
-    text-transform: uppercase;
+    font-weight: 500;
     letter-spacing: 0.12em;
-    margin: 80px 0 40px;
+    color: #8f8b82;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 60px 0 32px;
   }
 
-  /* 1. Knowledge & Insights (Startup / FieldPlay / CEO Log 3개 카테고리 전부 대표) */
+  /* 1. Knowledge & Insights */
   .yc-knowledge-grid { display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 32px; max-width: 1200px; margin: 0 auto; align-items: start; }
   .k-col { display: flex; flex-direction: column; gap: 24px; }
   
@@ -239,7 +237,7 @@
   }
 
   /* =========================================================
-     🎯 CTA (Contact) & 정적 갤러리 영역 (Focus & Blur 애니메이션)
+     🎯 CTA (Contact) & 정적 갤러리 영역
      ========================================================= */
   .cta-section { position: relative; z-index: 40; background: #080808; padding: 100px 0 0; }
   .cta-content { text-align:center; margin-bottom: 80px; }
@@ -261,9 +259,9 @@
     margin:0 0 36px; 
   }
   .cta-button { display:inline-block; background:#f5f3ee; color:#080808; font-family:'Boska',serif; font-style:italic; font-weight:400; font-size:18px; padding:16px 44px; border-radius:999px; transition: background .2s, color .2s, transform .2s; }
-  .cta-button:hover { background:#080808; color:#f5f3ee; box-shadow: inset 0 0 0 1px #f5f3ee; }
+  .cta-button:hover { background:#fff; box-shadow: inset 0 0 0 1px #f5f3ee; transform: translateY(-1px); }
 
-  /* 🌟 하단 5장 갤러리 Focus & Blur 애니메이션 적용 */
+  /* 🌟 하단 5장 갤러리 */
   .new-bottom-gallery-section { padding: 0 24px 80px; }
   .new-bottom-gallery { max-width: 1360px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
   .new-gallery-item {
@@ -275,9 +273,7 @@
     transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.5s ease; 
   }
   
-  /* 부모 호버 시 전체 사진 흑백+Dim 처리 */
   .new-bottom-gallery:hover .new-gallery-item img { filter: grayscale(100%) brightness(0.6); }
-  /* 호버된 자신만 컬러+확대 */
   .new-bottom-gallery .new-gallery-item:hover img { transform: scale(1.06); filter: grayscale(0%) saturate(1.35) brightness(1.08) contrast(1.08); }
   
   @media (max-width:860px){
@@ -333,19 +329,20 @@
         <div class="dropdown-menu">
           <a href="/log.html?cat=%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8">스타트업 인사이트</a>
           <a href="/log.html?cat=%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%AF%B8%EA%B5%AD%EC%A7%84%EC%B6%9C%EC%9D%84%20%EB%AC%BB%EB%8B%A4">대한민국 스타트업 미국진출을 묻다</a>
-          <a href="/log.html?cat=%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EC%A0%84%EB%9E%B5%EB%93%A4">스타트업의 전략들</a>
           <a href="/log.html?cat=%EC%BD%94%EC%B9%98S">코치S</a>
+          <a href="/log.html?cat=%ED%86%A0%ED%81%AC%EC%84%B8%EC%85%98">토크세션</a>
         </div>
       </div>
       <div class="nav-item">
         <button type="button">FieldPlay</button>
         <div class="dropdown-menu">
-          <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">기획자의 프레임웍</a>
-          <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9D%BC%EC%83%81">기획일상</a>
-          <a href="/log.html?cat=%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC">잉크드인대 기획학과</a>
-          <a href="/log.html?cat=PO%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">PO의 프레임웍</a>
+          <a href="/log.html?cat=AI%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">AI의 언어들</a>
           <a href="/log.html?cat=Be%20the%20PO">Be the PO</a>
+          <a href="/log.html?cat=PO%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">PO의 프레임웍</a>
           <a href="/log.html?cat=UX%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">UX의 언어들</a>
+          <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9D%BC%EC%83%81">기획일상</a>
+          <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">기획자의 프레임웍</a>
+          <a href="/log.html?cat=%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC">잉크드인대 기획학과</a>
         </div>
       </div>
     </div>
@@ -359,6 +356,9 @@
           <div class="dropdown-menu">
             <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8">심플리파이어 인사이트</a>
             <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EB%9D%BC%EC%9D%B4%ED%94%84">심플리파이어 라이프</a>
+            <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%ED%95%9C%20%EC%B0%BD%EC%97%85%ED%95%98%EA%B3%A0%20%ED%8C%8C%EC%9D%B4%EC%96%B4%ED%95%98%EA%B2%8C%20%EC%9D%BC%ED%95%98%EA%B8%B0">심플한 창업하고 파이어하게 일하기</a>
+            <a href="/log.html?cat=%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%EC%A7%81%EC%9E%A5%20%EC%9D%B4%EC%95%BC%EA%B8%B0">이력서에 쓰지 않는 첫직장 이야기</a>
+            <a href="/log.html?cat=%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC">트레바리</a>
           </div>
         </div>
         <div class="nav-item">
@@ -366,7 +366,7 @@
           <div class="dropdown-menu">
             <a href="https://www.yes24.com/product/goods/147079674" target="_blank" rel="noopener">기획자의 질문법</a>
             <a href="https://www.yes24.com/product/goods/193444437" target="_blank" rel="noopener">UX의 언어들</a>
-            <a href="https://www.classu.co.kr/new/studio/19442/dashboard" target="_blank" rel="noopener">유니콘의 리더십</a>
+            <a href="https://www.classu.co.kr/new/class/1019442" target="_blank" rel="noopener">유니콘의 리더십</a>
           </div>
         </div>
       </div>
@@ -386,19 +386,20 @@
       <div class="mobile-submenu">
         <a href="/log.html?cat=%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8">스타트업 인사이트</a>
         <a href="/log.html?cat=%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%AF%B8%EA%B5%AD%EC%A7%84%EC%B6%9C%EC%9D%84%20%EB%AC%BB%EB%8B%A4">대한민국 스타트업 미국진출을 묻다</a>
-        <a href="/log.html?cat=%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EC%A0%84%EB%9E%B5%EB%93%A4">스타트업의 전략들</a>
         <a href="/log.html?cat=%EC%BD%94%EC%B9%98S">코치S</a>
+        <a href="/log.html?cat=%ED%86%A0%ED%81%AC%EC%84%B8%EC%85%98">토크세션</a>
       </div>
     </details>
     <details class="mobile-details">
       <summary class="mobile-summary">FieldPlay</summary>
       <div class="mobile-submenu">
-        <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">기획자의 프레임웍</a>
-        <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9D%BC%EC%83%81">기획일상</a>
-        <a href="/log.html?cat=%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC">잉크드인대 기획학과</a>
-        <a href="/log.html?cat=PO%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">PO의 프레임웍</a>
+        <a href="/log.html?cat=AI%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">AI의 언어들</a>
         <a href="/log.html?cat=Be%20the%20PO">Be the PO</a>
+        <a href="/log.html?cat=PO%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">PO의 프레임웍</a>
         <a href="/log.html?cat=UX%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">UX의 언어들</a>
+        <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9D%BC%EC%83%81">기획일상</a>
+        <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">기획자의 프레임웍</a>
+        <a href="/log.html?cat=%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC">잉크드인대 기획학과</a>
       </div>
     </details>
     <details class="mobile-details">
@@ -406,6 +407,9 @@
       <div class="mobile-submenu">
         <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8">심플리파이어 인사이트</a>
         <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EB%9D%BC%EC%9D%B4%ED%94%84">심플리파이어 라이프</a>
+        <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%ED%95%9C%20%EC%B0%BD%EC%97%85%ED%95%98%EA%B3%A0%20%ED%8C%8C%EC%9D%B4%EC%96%B4%ED%95%98%EA%B2%8C%20%EC%9D%BC%ED%95%98%EA%B8%B0">심플한 창업하고 파이어하게 일하기</a>
+        <a href="/log.html?cat=%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%EC%A7%81%EC%9E%A5%20%EC%9D%B4%EC%95%BC%EA%B8%B0">이력서에 쓰지 않는 첫직장 이야기</a>
+        <a href="/log.html?cat=%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC">트레바리</a>
       </div>
     </details>
     <details class="mobile-details">
@@ -413,7 +417,7 @@
       <div class="mobile-submenu">
         <a href="https://www.yes24.com/product/goods/147079674" target="_blank" rel="noopener">기획자의 질문법</a>
         <a href="https://www.yes24.com/product/goods/193444437" target="_blank" rel="noopener">UX의 언어들</a>
-        <a href="https://www.classu.co.kr/new/studio/19442/dashboard" target="_blank" rel="noopener">유니콘의 리더십</a>
+        <a href="https://www.classu.co.kr/new/class/1019442" target="_blank" rel="noopener">유니콘의 리더십</a>
       </div>
     </details>
     <a href="#contact" class="mobile-menu-cta">Contact</a>
@@ -520,34 +524,34 @@
 
 <section class="yc-sections wrap">
   
-  <h2 class="yc-title">Simplifier Log</h2>
+  <h2 class="yc-title">SIMPLIFIER LOG</h2>
   <div class="yc-knowledge-grid">
     <div class="k-col k-col-left">
-      <a href="/log.html?cat=%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8" class="k-card k-card-small">
-        <img src="assets/story/2-session.jpg" alt="스타트업 인사이트" style="filter: grayscale(100%);">
+      <a href="/log.html?cat=UX%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4" class="k-card k-card-small">
+        <img src="assets/log_thumbs/ux-button.jpg" alt="UX의 언어들">
         <div class="k-content">
-          <div class="k-tag">스타트업 인사이트</div>
-          <h3>초기 팀이 흔들리는 진짜 이유</h3>
-          <p>사람이 아니라 구조가 문제일 때가 많습니다</p>
+          <div class="k-tag">UX의 언어들</div>
+          <h3>당신이 오늘 누른 첫 번째 버튼</h3>
+          <p>Aug 12. 2026</p>
         </div>
       </a>
       <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9D%BC%EC%83%81" class="k-card k-card-small">
-        <img src="assets/story/1-lecture.jpg" alt="기획일상" style="filter: grayscale(100%);">
+        <img src="assets/log_thumbs/meeting-room.jpg" alt="기획일상">
         <div class="k-content">
           <div class="k-tag">기획일상</div>
-          <h3>회의실에서 목소리가 큰 사람</h3>
-          <p>가장 위험할 수 있는 이유에 대하여</p>
+          <h3>회의실에서 목소리가 큰 사람이 가장 위험할 수 있다</h3>
+          <p>Aug 5. 2026</p>
         </div>
       </a>
     </div>
     
     <div class="k-col k-col-center">
-      <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8" class="k-card k-card-large">
-        <img src="assets/story/3-whiteboard.jpg" alt="심플리파이어 인사이트" style="filter: grayscale(100%);">
+      <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EB%9D%BC%EC%9D%B4%ED%94%84" class="k-card k-card-large">
+        <img src="assets/log_thumbs/odyssey.jpg" alt="심플리파이어 라이프">
         <div class="k-content">
-          <div class="k-tag">심플리파이어 인사이트</div>
-          <h3>복잡한 문제일수록, 단순한 질문 하나로 풀립니다</h3>
-          <p>24년간 현장에서 확인한 단순화의 원리. 자정이 가까워지도록 창업가와 나눴던 대화에서 시작된 생각들.</p>
+          <div class="k-tag">심플리파이어 라이프</div>
+          <h3>오디세이, 매우 사적인 관람평</h3>
+          <p>Aug 6. 2026</p>
         </div>
       </a>
     </div>
@@ -558,16 +562,19 @@
         <ul>
           <li><a href="/log.html?cat=%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8">스타트업 인사이트 ↗</a></li>
           <li><a href="/log.html?cat=%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%AF%B8%EA%B5%AD%EC%A7%84%EC%B6%9C%EC%9D%84%20%EB%AC%BB%EB%8B%A4">대한민국 스타트업 미국진출을 묻다 ↗</a></li>
-          <li><a href="/log.html?cat=%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EC%A0%84%EB%9E%B5%EB%93%A4">스타트업의 전략들 ↗</a></li>
-          <li><a href="/log.html?cat=%EC%BD%94%EC%B9%98S">코치S 세션 ↗</a></li>
+          <li><a href="/log.html?cat=%EC%BD%94%EC%B9%98S">코치S ↗</a></li>
+          <li><a href="/log.html?cat=%ED%86%A0%ED%81%AC%EC%84%B8%EC%85%98">토크세션 ↗</a></li>
         </ul>
       </div>
       <div class="k-list-group">
         <h4>FieldPlay</h4>
         <ul>
+          <li><a href="/log.html?cat=AI%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">AI의 언어들 ↗</a></li>
+          <li><a href="/log.html?cat=Be%20the%20PO">Be the PO ↗</a></li>
           <li><a href="/log.html?cat=PO%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">PO의 프레임웍 ↗</a></li>
-          <li><a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">기획자의 프레임웍 ↗</a></li>
           <li><a href="/log.html?cat=UX%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">UX의 언어들 ↗</a></li>
+          <li><a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9D%BC%EC%83%81">기획일상 ↗</a></li>
+          <li><a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">기획자의 프레임웍 ↗</a></li>
           <li><a href="/log.html?cat=%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC">잉크드인대 기획학과 ↗</a></li>
         </ul>
       </div>
@@ -576,32 +583,35 @@
         <ul>
           <li><a href="/log.html?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8">심플리파이어 인사이트 ↗</a></li>
           <li><a href="/log.html?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EB%9D%BC%EC%9D%B4%ED%94%84">심플리파이어 라이프 ↗</a></li>
+          <li><a href="/log.html?cat=%EC%8B%AC%ED%94%8C%ED%95%9C%20%EC%B0%BD%EC%97%85%ED%95%98%EA%B3%A0%20%ED%8C%8C%EC%9D%B4%EC%96%B4%ED%95%98%EA%B2%8C%20%EC%9D%BC%ED%95%98%EA%B8%B0">심플한 창업하고 파이어하게 일하기 ↗</a></li>
+          <li><a href="/log.html?cat=%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%EC%A7%81%EC%9E%A5%20%EC%9D%B4%EC%95%BC%EA%B8%B0">이력서에 쓰지 않는 첫직장 이야기 ↗</a></li>
+          <li><a href="/log.html?cat=%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC">트레바리 ↗</a></li>
         </ul>
       </div>
     </div>
   </div>
 
-  <h2 class="yc-title">Book & Class</h2>
+  <h2 class="yc-title">BOOK & CLASS</h2>
   <div class="yc-overlay-grid">
     <a href="https://www.yes24.com/product/goods/147079674" target="_blank" rel="noopener" class="overlay-card">
-      <img src="assets/story/4-meetup.jpg" alt="기획자의 질문법" style="filter: grayscale(80%);">
+      <img src="assets/books/book-question.png" alt="기획자의 질문법">
       <div class="overlay-content">
         <h3>기획자의 질문법</h3>
-        <p>복잡한 문제를 해결하는 가장 심플한 방법. 기획의 본질을 파고드는 실무 노하우.</p>
+        <p>복잡한 문제를 해결하는 가장 심플한 방법. 기획의 본질을 찾아가는 27가지 질문들.</p>
       </div>
     </a>
     <a href="https://www.yes24.com/product/goods/193444437" target="_blank" rel="noopener" class="overlay-card">
-      <img src="assets/story/2-session.jpg" alt="UX의 언어들" style="filter: grayscale(80%);">
+      <img src="assets/books/book-ux.png" alt="UX의 언어들">
       <div class="overlay-content">
         <h3>UX의 언어들</h3>
-        <p>기획자와 디자이너가 같은 곳을 바라보며 서비스 성장을 만들어내는 커뮤니케이션.</p>
+        <p>일상의 편리함 속에 숨겨진 정교한 UX의 비밀을 비즈니스 관점으로 풀어낸 가장 쉬운 안내서.</p>
       </div>
     </a>
-    <a href="https://www.classu.co.kr/new/studio/19442/dashboard" target="_blank" rel="noopener" class="overlay-card">
-      <img src="assets/story/1-lecture.jpg" alt="유니콘의 리더십" style="filter: grayscale(80%);">
+    <a href="https://www.classu.co.kr/new/class/1019442" target="_blank" rel="noopener" class="overlay-card">
+      <img src="assets/books/class-unicorn.png" alt="유니콘의 리더십">
       <div class="overlay-content">
         <h3>유니콘의 리더십</h3>
-        <p>1,000명 규모의 조직까지 견인하는 C레벨 리더들을 위한 실전 리더십 프레임워크.</p>
+        <p>매출 1조를 만든 실전 리더십으로 당신을 유니콘 리더로 이끕니다.</p>
       </div>
     </a>
   </div>
@@ -620,7 +630,6 @@
 
   <div class="new-bottom-gallery-section">
     <div class="new-bottom-gallery">
-      <!-- 굳즈 이미지 경로 미리 세팅 완료 -->
       <div class="new-gallery-item"><img src="assets/goods/goods-1.jpg" alt="Simplifier Goods 1"></div>
       <div class="new-gallery-item"><img src="assets/goods/goods-2.jpg" alt="Simplifier Goods 2"></div>
       <div class="new-gallery-item"><img src="assets/goods/goods-3.jpg" alt="Simplifier Goods 3"></div>
@@ -646,7 +655,7 @@
           <a href="/log.html">Content</a>
           <a href="/log.html">Startup</a>
           <a href="https://www.yes24.com/product/goods/147079674" target="_blank" rel="noopener">Knowledge</a>
-          <a href="/log.html">Life</a>
+          <a href="/log.html">CEO Log</a>
         </div>
         <div class="footer-col">
           <h4>Simplifier</h4>
@@ -686,6 +695,10 @@
     provenFadeEnd: 0.3,
     storyFadeEnd: 0.5
   };
+
+  if (typeof window.CONFIG !== 'undefined') {
+    CONFIG = window.CONFIG;
+  }
 
   var heroFade = document.getElementById('hero-fade');
   var heroWrapper = document.getElementById('hero-wrapper');
