@@ -89,7 +89,9 @@
 
         .hidden-element { display: none !important; }
 
-        /* [웹툰 전용 플렉스 100vh 완벽 고정 레이아웃] */
+        /* =======================================================
+           📱 [웹툰 전용 플렉스 100vh 완벽 고정 레이아웃] 
+           ======================================================= */
         body.is-swipe-mode { background-color: #0f1015; color: #eee; overflow: hidden !important; display: flex; flex-direction: column; height: 100vh; width: 100vw; }
         body.is-swipe-mode .cover-wrap.post-mode { flex: 0 0 auto !important; position: relative !important; height: auto !important; min-height: 0 !important; padding: 14px 24px !important; background: #181920 !important; display: flex !important; flex-direction: row !important; align-items: center !important; border-bottom: 1px solid rgba(255,255,255,0.08); }
         body.is-swipe-mode .cover-header { position: relative; z-index: 10; justify-content: flex-start !important; gap: 24px !important; }
@@ -127,216 +129,277 @@
 </head>
 <body>
 
-    <!-- 💡 추출된 공통 헤더 파일을 불러옵니다 -->
+<!-- 💡 메인 페이지와 로그 목록 페이지에는 풀버전 GNB 노출 -->
+{% if page.url == '/' or page.url == '/log.html' or page.is_index %}
     {% include header.html %}
+{% else %}
+    <!-- 💡 개별 콘텐츠(포스트)에는 투명하고 가벼운 로그 전용 GNB 노출 -->
+    <style>
+      .log-nav {
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 68px;
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 0 32px;
+        z-index: 100;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 100%);
+      }
+      .log-nav-left a {
+        color: rgba(245,243,238,0.8);
+        text-decoration: none;
+        font-family: 'Pretendard Variable', sans-serif;
+        font-size: 14px;
+        transition: color 0.2s;
+        display: flex; align-items: center; gap: 4px;
+      }
+      .log-nav-left a:hover { color: #f5f3ee; }
+      .log-nav-logo img { height: 22px; display: block; opacity: 0.9; transition: opacity 0.2s; }
+      .log-nav-logo:hover img { opacity: 1; }
+      .log-nav-right .log-contact {
+        background: rgba(245,243,238,0.15);
+        color: #f5f3ee;
+        border: 1px solid rgba(245,243,238,0.3);
+        padding: 6px 16px;
+        border-radius: 999px;
+        font-size: 13px;
+        cursor: pointer;
+        transition: background 0.2s, color 0.2s;
+        font-family: 'Pretendard Variable', sans-serif;
+      }
+      .log-nav-right .log-contact:hover {
+        background: #f5f3ee;
+        color: #080808;
+      }
+      /* 웹툰 스와이프 모드에서는 심플 헤더도 숨김 처리하여 완벽한 풀스크린 제공 */
+      body.is-swipe-mode .log-nav { display: none !important; }
+    </style>
+    <header class="log-nav">
+      <div class="log-nav-left">
+        <a href="/log.html">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          List
+        </a>
+      </div>
+      <a href="/" class="log-nav-logo">
+        <img src="/brunch_web_assets/images/logo_white.png" alt="Simplifier">
+      </a>
+      <div class="log-nav-right">
+        <button class="log-contact open-contact-modal">Contact</button>
+      </div>
+    </header>
+{% endif %}
 
-    <!-- JS 스위치 판단 메타 태그 -->
-    <meta id="isSwipeData" data-is-swipe="{{ page.is_swipe }}">
+<!-- JS 스위치 판단 메타 태그 -->
+<meta id="isSwipeData" data-is-swipe="{{ page.is_swipe }}">
 
-    {% if page.url == '/' or page.url == '/log.html' or page.is_index %}
-        <div class="cover-wrap index-mode" id="coverWrap">
-            <div class="cover-bottom-left">
-                <h1 class="cover-title" id="displayTitle">{{ page.title }}</h1>
-            </div>
+{% if page.url == '/' or page.url == '/log.html' or page.is_index %}
+    <div class="cover-wrap index-mode" id="coverWrap">
+        <div class="cover-bottom-left">
+            <h1 class="cover-title" id="displayTitle">{{ page.title }}</h1>
         </div>
-    {% else %}
-        {% assign bg_img = page.cover_image | default: '/brunch_web_assets/images/logo_white.png' %}
-        <div class="cover-wrap post-mode" id="coverWrap" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%), url('{{ bg_img }}');">
-            <div class="cover-header" style="justify-content: flex-end;">
-                <div class="cover-category-pill">{{ page.category }}</div>
-            </div>
-            <div class="cover-bottom-left">
-                <h1 class="cover-title" id="displayTitle">{{ page.title }}</h1>
-                <div class="cover-sub">
-                    {% if page.date_string %}{{ page.date_string }}{% endif %}
-                </div>
-            </div>
-            <div class="cover-bottom-right">
-                <a href="#articleBody" class="down-arrow">↓</a>
-            </div>
-        </div>
-    {% endif %}
-
-    <div class="article-body" id="articleBody">
-        {{ content }}
     </div>
+{% else %}
+    {% assign bg_img = page.cover_image | default: '/brunch_web_assets/images/logo_white.png' %}
+    <div class="cover-wrap post-mode" id="coverWrap" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%), url('{{ bg_img }}');">
+        <div class="cover-header" style="justify-content: flex-end;">
+            <div class="cover-category-pill">{{ page.category }}</div>
+        </div>
+        <div class="cover-bottom-left">
+            <h1 class="cover-title" id="displayTitle">{{ page.title }}</h1>
+            <div class="cover-sub">
+                {% if page.date_string %}{{ page.date_string }}{% endif %}
+            </div>
+        </div>
+        <div class="cover-bottom-right">
+            <a href="#articleBody" class="down-arrow">↓</a>
+        </div>
+    </div>
+{% endif %}
 
-    <!-- 💡 추출된 공통 Footer 및 Contact 모달 파일을 불러옵니다 -->
-    {% include footer.html %}
-    {% include contact_modal.html %}
+<div class="article-body" id="articleBody">
+    {{ content }}
+</div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const articleBody = document.getElementById('articleBody');
-            if (articleBody) {
-                const coverImg = articleBody.querySelector('img[alt="대표 이미지"]');
-                if (coverImg) coverImg.classList.add('hidden-element');
+<!-- 💡 공통 Footer 및 Contact 모달 파일을 불러옵니다 -->
+{% include footer.html %}
+{% include contact_modal.html %}
 
-                const titleEl = document.getElementById('displayTitle');
-                if (titleEl && !document.getElementById('coverWrap').classList.contains('index-mode')) {
-                    titleEl.innerText = titleEl.innerText.replace(/^[\d#\._\s]+/, '');
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const articleBody = document.getElementById('articleBody');
+        if (articleBody) {
+            const coverImg = articleBody.querySelector('img[alt="대표 이미지"]');
+            if (coverImg) coverImg.classList.add('hidden-element');
+
+            const titleEl = document.getElementById('displayTitle');
+            if (titleEl && !document.getElementById('coverWrap').classList.contains('index-mode')) {
+                titleEl.innerText = titleEl.innerText.replace(/^[\d#\._\s]+/, '');
+            }
+
+            const h1s = articleBody.querySelectorAll('h1');
+            if(h1s.length > 0) h1s[0].classList.add('hidden-element');
+
+            const ps = articleBody.querySelectorAll('p');
+            ps.forEach(p => {
+                if(p.textContent.includes('📂')) p.classList.add('hidden-element');
+            });
+        }
+
+        const isSwipeMeta = document.getElementById('isSwipeData');
+        const isSwipeVal = isSwipeMeta ? isSwipeMeta.getAttribute('data-is-swipe') : '';
+        const categoryPill = document.querySelector('.cover-category-pill');
+        const categoryText = categoryPill ? categoryPill.innerText : '';
+
+        const isLogPage = window.location.pathname.includes('log.html') || window.location.pathname === '/' || document.querySelector('.card-grid') !== null;
+
+        const isSwipeMode = !isLogPage && (
+            isSwipeVal === 'true' || 
+            isSwipeVal === 'True' || 
+            categoryText.includes('코치S') || 
+            document.querySelector('.swipe-viewer') !== null
+        );
+
+        if (isSwipeMode && articleBody) {
+            document.body.classList.add('is-swipe-mode');
+
+            // 배너 가리기
+            const promoSpan = Array.from(document.querySelectorAll('span')).find(s => s.textContent.trim() === 'Simplifier Choice');
+            if (promoSpan) {
+                const promoWrap = promoSpan.closest('div').parentElement;
+                if(promoWrap) {
+                    promoWrap.style.display = 'none';
+                    promoWrap.classList.add('hidden-element'); 
                 }
+            }
 
-                const h1s = articleBody.querySelectorAll('h1');
-                if(h1s.length > 0) h1s[0].classList.add('hidden-element');
+            // 🎯 [지능형 스왑 및 여백 완벽 교정]
+            const navWrap = document.querySelector('.category-nav-wrap');
+            if (navWrap) {
+                const items = Array.from(navWrap.querySelectorAll('.cat-nav-item'));
+                
+                const currentTitleStr = document.getElementById('displayTitle') ? document.getElementById('displayTitle').innerText : '';
+                const currentMatch = currentTitleStr.match(/(\d+)화/);
+                const currentEp = currentMatch ? parseInt(currentMatch[1], 10) : 0;
+                
+                navWrap.innerHTML = ''; 
+                navWrap.style.display = 'flex';
+                navWrap.style.justifyContent = 'space-between';
+                navWrap.style.alignItems = 'center';
+
+                const leftBox = document.createElement('div');
+                const rightBox = document.createElement('div');
+                leftBox.style.flex = '1'; leftBox.style.display = 'flex'; leftBox.style.justifyContent = 'flex-start';
+                rightBox.style.flex = '1'; rightBox.style.display = 'flex'; rightBox.style.justifyContent = 'flex-end';
+
+                items.forEach(item => {
+                    item.classList.remove('cat-nav-right', 'cat-nav-left');
+                    item.style.marginLeft = '0';
+                    item.style.marginRight = '0';
+                    
+                    const label = item.querySelector('.cat-nav-label');
+                    const titleEl = item.querySelector('.nav-title');
+                    
+                    if (label && titleEl) {
+                        const linkMatch = titleEl.innerText.match(/(\d+)화/);
+                        const linkEp = linkMatch ? parseInt(linkMatch[1], 10) : 0;
+
+                        let isPrev = false;
+                        if (currentEp > 0 && linkEp > 0) {
+                            isPrev = (linkEp < currentEp);
+                        } else {
+                            isPrev = (label.innerText.includes('다음글') || label.innerText.includes('이전 화'));
+                        }
+
+                        if (isPrev) {
+                            label.innerHTML = '<span style="font-size:11px;">❮</span> 이전 화';
+                            item.style.flexDirection = 'row'; 
+                            item.style.textAlign = 'left';
+                            leftBox.appendChild(item);
+                        } else {
+                            label.innerHTML = '다음 화 <span style="font-size:11px;">❯</span>';
+                            item.style.flexDirection = 'row-reverse'; 
+                            item.style.textAlign = 'right';
+                            rightBox.appendChild(item);
+                        }
+                    }
+                });
+
+                navWrap.appendChild(leftBox);
+                navWrap.appendChild(rightBox);
+            }
+
+            // 웹툰 이미지 로드
+            const rawImgs = Array.from(articleBody.querySelectorAll('img')).filter(img => {
+                return !img.classList.contains('hidden-element') && 
+                       !img.closest('.PROMO_BANNER_START') && 
+                       !img.closest('a[href*="yes24"]');
+            });
+
+            if (rawImgs.length > 0) {
+                const outer = document.createElement('div');
+                outer.className = 'swipe-outer-wrap';
+
+                const pBtn = document.createElement('button');
+                pBtn.className = 'swipe-btn prev';
+                pBtn.innerHTML = '❮';
+                pBtn.setAttribute('aria-label', '이전 컷');
+
+                const nBtn = document.createElement('button');
+                nBtn.className = 'swipe-btn next';
+                nBtn.innerHTML = '❯';
+                nBtn.setAttribute('aria-label', '다음 컷');
+
+                const swipeBox = document.createElement('div');
+                swipeBox.className = 'swipe-box';
+
+                const indicator = document.createElement('div');
+                indicator.className = 'swipe-indicator';
+
+                rawImgs.forEach(img => {
+                    const slide = document.createElement('div');
+                    slide.className = 'swipe-slide';
+                    slide.appendChild(img);
+                    swipeBox.appendChild(slide);
+                });
 
                 const ps = articleBody.querySelectorAll('p');
                 ps.forEach(p => {
-                    if(p.textContent.includes('📂')) p.classList.add('hidden-element');
-                });
-            }
-
-            const isSwipeMeta = document.getElementById('isSwipeData');
-            const isSwipeVal = isSwipeMeta ? isSwipeMeta.getAttribute('data-is-swipe') : '';
-            const categoryPill = document.querySelector('.cover-category-pill');
-            const categoryText = categoryPill ? categoryPill.innerText : '';
-
-            const isLogPage = window.location.pathname.includes('log.html') || window.location.pathname === '/' || document.querySelector('.card-grid') !== null;
-
-            const isSwipeMode = !isLogPage && (
-                isSwipeVal === 'true' || 
-                isSwipeVal === 'True' || 
-                categoryText.includes('코치S') || 
-                document.querySelector('.swipe-viewer') !== null
-            );
-
-            if (isSwipeMode && articleBody) {
-                document.body.classList.add('is-swipe-mode');
-
-                // 배너 가리기
-                const promoSpan = Array.from(document.querySelectorAll('span')).find(s => s.textContent.trim() === 'Simplifier Choice');
-                if (promoSpan) {
-                    const promoWrap = promoSpan.closest('div').parentElement;
-                    if(promoWrap) {
-                        promoWrap.style.display = 'none';
-                        promoWrap.classList.add('hidden-element'); 
-                    }
-                }
-
-                // 🎯 [지능형 스왑 및 여백 완벽 교정]
-                const navWrap = document.querySelector('.category-nav-wrap');
-                if (navWrap) {
-                    const items = Array.from(navWrap.querySelectorAll('.cat-nav-item'));
-                    
-                    const currentTitleStr = document.getElementById('displayTitle') ? document.getElementById('displayTitle').innerText : '';
-                    const currentMatch = currentTitleStr.match(/(\d+)화/);
-                    const currentEp = currentMatch ? parseInt(currentMatch[1], 10) : 0;
-                    
-                    navWrap.innerHTML = ''; 
-                    navWrap.style.display = 'flex';
-                    navWrap.style.justifyContent = 'space-between';
-                    navWrap.style.alignItems = 'center';
-
-                    const leftBox = document.createElement('div');
-                    const rightBox = document.createElement('div');
-                    leftBox.style.flex = '1'; leftBox.style.display = 'flex'; leftBox.style.justifyContent = 'flex-start';
-                    rightBox.style.flex = '1'; rightBox.style.display = 'flex'; rightBox.style.justifyContent = 'flex-end';
-
-                    items.forEach(item => {
-                        item.classList.remove('cat-nav-right', 'cat-nav-left');
-                        item.style.marginLeft = '0';
-                        item.style.marginRight = '0';
-                        
-                        const label = item.querySelector('.cat-nav-label');
-                        const titleEl = item.querySelector('.nav-title');
-                        
-                        if (label && titleEl) {
-                            const linkMatch = titleEl.innerText.match(/(\d+)화/);
-                            const linkEp = linkMatch ? parseInt(linkMatch[1], 10) : 0;
-
-                            let isPrev = false;
-                            if (currentEp > 0 && linkEp > 0) {
-                                isPrev = (linkEp < currentEp);
-                            } else {
-                                isPrev = (label.innerText.includes('다음글') || label.innerText.includes('이전 화'));
-                            }
-
-                            if (isPrev) {
-                                label.innerHTML = '<span style="font-size:11px;">❮</span> 이전 화';
-                                item.style.flexDirection = 'row'; 
-                                item.style.textAlign = 'left';
-                                leftBox.appendChild(item);
-                            } else {
-                                label.innerHTML = '다음 화 <span style="font-size:11px;">❯</span>';
-                                item.style.flexDirection = 'row-reverse'; 
-                                item.style.textAlign = 'right';
-                                rightBox.appendChild(item);
-                            }
-                        }
-                    });
-
-                    navWrap.appendChild(leftBox);
-                    navWrap.appendChild(rightBox);
-                }
-
-                // 웹툰 이미지 로드
-                const rawImgs = Array.from(articleBody.querySelectorAll('img')).filter(img => {
-                    return !img.classList.contains('hidden-element') && 
-                           !img.closest('.PROMO_BANNER_START') && 
-                           !img.closest('a[href*="yes24"]');
+                    if (p.children.length === 0 && p.textContent.trim() === '') p.remove();
                 });
 
-                if (rawImgs.length > 0) {
-                    const outer = document.createElement('div');
-                    outer.className = 'swipe-outer-wrap';
+                articleBody.insertBefore(outer, articleBody.firstChild);
+                outer.appendChild(pBtn);
+                outer.appendChild(swipeBox);
+                outer.appendChild(nBtn);
+                outer.appendChild(indicator);
 
-                    const pBtn = document.createElement('button');
-                    pBtn.className = 'swipe-btn prev';
-                    pBtn.innerHTML = '❮';
-                    pBtn.setAttribute('aria-label', '이전 컷');
+                const totalCount = rawImgs.length;
 
-                    const nBtn = document.createElement('button');
-                    nBtn.className = 'swipe-btn next';
-                    nBtn.innerHTML = '❯';
-                    nBtn.setAttribute('aria-label', '다음 컷');
-
-                    const swipeBox = document.createElement('div');
-                    swipeBox.className = 'swipe-box';
-
-                    const indicator = document.createElement('div');
-                    indicator.className = 'swipe-indicator';
-
-                    rawImgs.forEach(img => {
-                        const slide = document.createElement('div');
-                        slide.className = 'swipe-slide';
-                        slide.appendChild(img);
-                        swipeBox.appendChild(slide);
-                    });
-
-                    const ps = articleBody.querySelectorAll('p');
-                    ps.forEach(p => {
-                        if (p.children.length === 0 && p.textContent.trim() === '') p.remove();
-                    });
-
-                    articleBody.insertBefore(outer, articleBody.firstChild);
-                    outer.appendChild(pBtn);
-                    outer.appendChild(swipeBox);
-                    outer.appendChild(nBtn);
-                    outer.appendChild(indicator);
-
-                    const totalCount = rawImgs.length;
-
-                    function updateIndicator() {
-                        if (totalCount === 0) return;
-                        const scrollLeft = swipeBox.scrollLeft;
-                        const slideWidth = swipeBox.clientWidth;
-                        const currentIndex = Math.round(scrollLeft / slideWidth) + 1;
-                        indicator.innerHTML = `<span class="current">${Math.min(Math.max(1, currentIndex), totalCount)}</span> / ${totalCount}`;
-                    }
-
-                    swipeBox.addEventListener('scroll', updateIndicator);
-                    updateIndicator();
-
-                    pBtn.addEventListener('click', function() { swipeBox.scrollBy({ left: -swipeBox.clientWidth, behavior: 'smooth' }); });
-                    nBtn.addEventListener('click', function() { swipeBox.scrollBy({ left: swipeBox.clientWidth, behavior: 'smooth' }); });
-                    
-                    document.addEventListener('keydown', function(e) {
-                        if (e.key === 'ArrowLeft') swipeBox.scrollBy({ left: -swipeBox.clientWidth, behavior: 'smooth' });
-                        if (e.key === 'ArrowRight') swipeBox.scrollBy({ left: swipeBox.clientWidth, behavior: 'smooth' });
-                    });
+                function updateIndicator() {
+                    if (totalCount === 0) return;
+                    const scrollLeft = swipeBox.scrollLeft;
+                    const slideWidth = swipeBox.clientWidth;
+                    const currentIndex = Math.round(scrollLeft / slideWidth) + 1;
+                    indicator.innerHTML = `<span class="current">${Math.min(Math.max(1, currentIndex), totalCount)}</span> / ${totalCount}`;
                 }
+
+                swipeBox.addEventListener('scroll', updateIndicator);
+                updateIndicator();
+
+                pBtn.addEventListener('click', function() { 
+                    swipeBox.scrollBy({ left: -swipeBox.clientWidth, behavior: 'smooth' }); 
+                });
+                nBtn.addEventListener('click', function() { 
+                    swipeBox.scrollBy({ left: swipeBox.clientWidth, behavior: 'smooth' }); 
+                });
+                
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'ArrowLeft') swipeBox.scrollBy({ left: -swipeBox.clientWidth, behavior: 'smooth' });
+                    if (e.key === 'ArrowRight') swipeBox.scrollBy({ left: swipeBox.clientWidth, behavior: 'smooth' });
+                });
             }
-        });
-    </script>
+        }
+    });
+</script>
 </body>
 </html>
