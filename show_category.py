@@ -1,7 +1,7 @@
 import os
 import re
 
-md_dir = "brunch_web_assets/markdown"
+md_dir = "log_assets/markdown"
 count = 0
 
 for filename in os.listdir(md_dir):

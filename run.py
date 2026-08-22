@@ -37,7 +37,7 @@ def run():
         print("❌ 시트에 데이터가 없습니다.")
         sys.exit(1)
 
-    base_dir = "brunch_web_assets"
+    base_dir = "log_assets"
     html_dir = os.path.join(base_dir, "html")
     img_dir = os.path.join(base_dir, "images")
     image_files = os.listdir(img_dir) if os.path.exists(img_dir) else []

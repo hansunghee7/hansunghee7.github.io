@@ -12,7 +12,7 @@
     <meta property="og:type" content="article">
     <meta property="og:title" content="{{ page.title }}">
     <meta property="og:description" content="{{ content | strip_html | strip_newlines | truncate: 150 }}">
-    <meta property="og:image" content="{{ page.cover_image | default: 'https://hansunghee7.github.io/brunch_web_assets/images/logo_white.png' }}">
+    <meta property="og:image" content="{{ page.cover_image | default: 'https://hansunghee7.github.io/log_assets/images/logo_white.png' }}">
     <meta property="og:url" content="https://hansunghee7.github.io{{ page.url }}">
 
     <!-- JSON-LD -->
@@ -31,7 +31,7 @@
         "name": "Simplifier",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://hansunghee7.github.io/brunch_web_assets/images/logo_white.png"
+          "url": "https://hansunghee7.github.io/log_assets/images/logo_white.png"
         }
       },
       "mainEntityOfPage": {
@@ -231,7 +231,7 @@
     <header class="log-nav">
       <!-- 로고 (홈으로 이동) -->
       <a href="/" class="log-nav-logo">
-        <img src="/brunch_web_assets/images/logo_white.png" alt="Simplifier">
+        <img src="/log_assets/images/logo_white.png" alt="Simplifier">
       </a>
       
       <!-- 카테고리 태그 -->
@@ -253,7 +253,7 @@
         </div>
     </div>
 {% else %}
-    {% assign bg_img = page.cover_image | default: '/brunch_web_assets/images/logo_white.png' %}
+    {% assign bg_img = page.cover_image | default: '/log_assets/images/logo_white.png' %}
     <div class="cover-wrap post-mode" id="coverWrap" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%), url('{{ bg_img }}');">
         <div class="cover-bottom-left" id="coverTitleBox">
             <h1 class="cover-title" id="displayTitle">{{ page.title }}</h1>

@@ -3,7 +3,7 @@ import csv
 import urllib.parse
 import re
 
-md_dir = "brunch_web_assets/markdown"
+md_dir = "log_assets/markdown"
 index_file = "index.md"
 csv_file = "브런치_글_모음집.csv"
 
@@ -91,7 +91,7 @@ for filename in md_files:
     safe_cat = category.replace('"', '&quot;')
     
     safe_url = urllib.parse.quote(base_name)
-    link = f"/brunch_web_assets/markdown/{safe_url}.html"
+    link = f"/log_assets/markdown/{safe_url}.html"
     
     index_content += f"    <li class=\"post-item\" data-category=\"{safe_cat}\"><span class='list-category'>{category}</span><a href=\"{link}\">{display_title}</a></li>\n"
 

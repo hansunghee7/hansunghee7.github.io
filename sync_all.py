@@ -28,7 +28,9 @@ CATEGORY_SORT_DEFAULTS = {
 BASE_URL = "https://hansunghee7.github.io" 
 index_file = "log.html"
 csv_file = "브런치_글_모음집.csv"
-md_dir = "brunch_web_assets/markdown"
+
+# 💡 [핵심] 폴더 경로를 log_assets 로 변경
+md_dir = "log_assets/markdown"
 
 if os.path.exists("index.md"):
     os.remove("index.md")
@@ -44,6 +46,13 @@ try:
                 csv_dates[clean_title] = row[2].strip()
 except Exception as e:
     pass
+
+# 만약 아직 폴더가 log_assets라면 자동 변경
+if os.path.exists("log_assets") and not os.path.exists("log_assets"):
+    os.rename("log_assets", "log_assets")
+
+if os.path.exists("log_articles_text") and not os.path.exists("log_articles_text"):
+    os.rename("log_articles_text", "log_articles_text")
 
 md_files = [f for f in os.listdir(md_dir) if f.endswith(".md") and f != "index.md"]
 md_files.sort()
@@ -139,7 +148,9 @@ for filename in md_files:
     if category == "트레바리":
         category = "토크세션"
 
-    cover_image = cover_match.group(1).strip() if cover_match else "/brunch_web_assets/images/logo_white.png"
+    # 💡 [핵심] 기존 cover_image 의 brunch 경로를 log_assets 로 변경
+    cover_image = cover_match.group(1).strip() if cover_match else "/log_assets/images/logo_white.png"
+    cover_image = cover_image.replace("log_assets", "log_assets")
 
     title_clean = re.sub(r'[^가-힣a-zA-Z0-9]', '', title)
     filename_clean = re.sub(r'[^가-힣a-zA-Z0-9]', '', filename[:-3])
@@ -148,7 +159,9 @@ for filename in md_files:
     date_string = csv_date if csv_date else md_date
 
     safe_url = urllib.parse.quote(filename[:-3])
-    link = f"/brunch_web_assets/markdown/{safe_url}.html"
+
+    # 💡 [핵심] 개별 포스트 HTML 링크를 log_assets 로 변경
+    link = f"/log_assets/markdown/{safe_url}.html"
 
     timestamp = "00000000"
     try:
@@ -178,6 +191,7 @@ for filename in md_files:
     body_content = re.sub(r'^https://trevar\.ink/[a-zA-Z0-9]+\s*$', '', body_content, flags=re.MULTILINE)
 
     body_content = re.sub(r'^\s*(https?://[^\s<>]+)\s*$', replace_raw_url, body_content, flags=re.MULTILINE)
+    body_content = body_content.replace("log_assets", "log_assets")
     body_content = body_content.strip()
 
     post_data = {
@@ -210,7 +224,7 @@ post_count = 0
 
 for p in posts:
     category = p['category']
-    if category != "미분류" and category != "기타":
+    if category != "미분류" and category != "기 기타":
         unique_categories.add(category)
 
     cat_list = category_posts.get(category, [])
@@ -246,7 +260,6 @@ document.addEventListener('DOMContentLoaded', function() {{
 </script>
 <!-- CAT_LINK_SCRIPT_END -->\n\n"""
 
-    # 💡 인라인 CSS 제거 후 가벼운 순수 HTML 태그 구조만 주입
     nav_html = "\n\n<!-- CATEGORY_NAV_START -->\n<div class=\"category-nav-wrap\">\n"
 
     if prev_post:
@@ -275,23 +288,16 @@ html_header = f"---\nlayout: default\ntitle: 'Simplifier Log {post_count}'\nis_i
 default_sorts_json = json.dumps(CATEGORY_SORT_DEFAULTS, ensure_ascii=False)
 
 html_body = """<style>
-/* 1. 상단 무거운 "Simplifier Log" 배너 영역 완전 숨김 */
 .cover-wrap.index-mode { display: none !important; }
-
-/* 2. 전체 페이지 배경을 다크 테마(#080808)로 고정 */
 body { background-color: #080808 !important; color: #f5f3ee !important; }
-
-/* 3. 본문 영역 컨테이너 여백 및 배경 조정 */
 .article-body { max-width: 1200px !important; margin: 0 auto; padding: 60px 32px 120px !important; background-color: #080808 !important; }
 
-/* 4. 카테고리 필터 & 정렬 영역 스타일 */
 .filter-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px; margin-bottom: 40px; }
 .category-filter { display: flex; flex-wrap: wrap; gap: 8px; flex: 1; }
 .cat-btn { padding: 8px 18px; border: 1px solid rgba(245,243,238,0.12); border-radius: 20px; background: transparent; color: #8f8b82; font-size: 13.5px; font-weight: 400; cursor: pointer; transition: all 0.2s; font-family: 'Pretendard Variable', sans-serif; }
 .cat-btn:hover { border-color: rgba(245,243,238,0.4); color: #f5f3ee; }
 .cat-btn.active { background: #f5f3ee; color: #080808 !important; border-color: #f5f3ee; font-weight: 600; }
 
-/* 5. 정렬 버튼 (최신순 / 날짜순) 다크 테마 */
 .sort-filter { display: flex; gap: 15px; align-items: center; margin-bottom: 5px; }
 .sort-text-btn { background: none; border: none; font-size: 14px; color: #8f8b82; cursor: pointer; font-family: 'Pretendard Variable', sans-serif; font-weight: 300; display: flex; align-items: center; padding: 0; transition: color 0.2s; }
 .sort-text-btn:hover { color: #f5f3ee; }
@@ -299,7 +305,6 @@ body { background-color: #080808 !important; color: #f5f3ee !important; }
 .sort-text-btn .dot { display: inline-block; width: 4px; height: 4px; border-radius: 50%; background-color: transparent; margin-right: 6px; margin-bottom: 2px; }
 .sort-text-btn.active .dot { background-color: #f5f3ee !important; }
 
-/* 6. 로그 카드 그리드 다크 테마 디자인 */
 .card-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 20px; }
 @media (max-width: 1024px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 768px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -401,4 +406,4 @@ with open("robots.txt", 'w', encoding='utf-8') as f:
     f.write(robots_txt)
 
 print("✅ sitemap.xml 및 robots.txt 생성 완료!")
-print("✅ HTML 태그 이스케이프 깨짐 방지 및 흑백 필터 제거 완료!")
+print("✅ log_assets 경로 변경 마이그레이션이 성공적으로 완료되었습니다!")

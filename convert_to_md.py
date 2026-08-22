@@ -23,7 +23,7 @@ def run():
         print("❌ 시트에 데이터가 없습니다.")
         return
 
-    base_dir = "brunch_web_assets"
+    base_dir = "log_assets"
     html_dir = os.path.join(base_dir, "html")
     img_dir = os.path.join(base_dir, "images")
     md_dir = os.path.join(base_dir, "markdown")

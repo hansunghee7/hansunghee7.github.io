@@ -1,7 +1,7 @@
 import os
 import urllib.parse
 
-md_dir = "brunch_web_assets/markdown"
+md_dir = "log_assets/markdown"
 files = sorted([f for f in os.listdir(md_dir) if f.endswith('.md') and f != 'index.md'])
 
 index_path = os.path.join(md_dir, "index.md")

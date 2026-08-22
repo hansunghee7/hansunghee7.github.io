@@ -3,7 +3,7 @@ import re
 import urllib.parse
 import csv
 
-md_dir = "brunch_web_assets/markdown"
+md_dir = "log_assets/markdown"
 index_file = "index.md"
 csv_file = "브런치_글_모음집.csv"
 
@@ -50,7 +50,7 @@ for filename in md_files:
         unique_categories.add(category)
 
     # 2. 썸네일 이중 인코딩 방지 및 완벽 경로 복원
-    img_url = "/brunch_web_assets/images/logo_white.png"
+    img_url = "/log_assets/images/logo_white.png"
     img_match = re.search(r'!\[.*?\]\(([^)]+)\)', content)
     if not img_match:
         img_match = re.search(r'<img[^>]+src=["\']([^"\']+)["\']', content, re.IGNORECASE)
@@ -61,9 +61,9 @@ for filename in md_files:
         decoded_url = urllib.parse.unquote(raw_url)
         
         if decoded_url.startswith('../images/'):
-            decoded_url = '/brunch_web_assets/images/' + decoded_url.split('../images/')[-1]
+            decoded_url = '/log_assets/images/' + decoded_url.split('../images/')[-1]
         elif not decoded_url.startswith('http') and not decoded_url.startswith('data:') and not decoded_url.startswith('/'):
-            decoded_url = '/brunch_web_assets/markdown/' + decoded_url
+            decoded_url = '/log_assets/markdown/' + decoded_url
             
         img_url = urllib.parse.quote(decoded_url, safe='/:?=&')
 
@@ -72,7 +72,7 @@ for filename in md_files:
 
     # 4. 링크 100% 매칭
     safe_url = urllib.parse.quote(base_name)
-    link = f"/brunch_web_assets/markdown/{safe_url}.html"
+    link = f"/log_assets/markdown/{safe_url}.html"
 
     cards_html += f"""    <a href="{link}" class="card-item" data-category="{category}">
         <div class="card-thumb" style="background-image: url('{img_url}');"></div>
