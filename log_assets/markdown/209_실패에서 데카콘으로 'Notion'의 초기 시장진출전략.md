@@ -97,7 +97,7 @@ Notion의 사례는 혁신적인 제품과 전략적인 시장 진출이 결합�
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/207_AI%EC%9D%98%20%ED%96%89%EB%8F%99%EC%9D%84%20%EB%A7%8C%EB%93%A4%EB%8B%A4%20%27Manus%20AI%27.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'스타트업 인사이트'의 이전글</span><span class="nav-title">AI의 행동을 만들다. 'Manus AI</span></a>
-  <a href="/log_assets/markdown/210_%EC%BD%94%EB%93%9C%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EA%B9%A8%EB%8A%94%20AI%20%ED%98%81%EC%8B%A0%2C%20Cursor%20AI.html" class="cat-nav-item cat-nav-right"><span class="nav-title">코드의 한계를 깨는 AI 혁신, Cursor AI</span><span class="cat-nav-label">'스타트업 인사이트'의 다음글</span></a>
+  <a href="/log_assets/markdown/210_코드의 한계를 깨는 AI 혁신, Cursor AI.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">코드의 한계를 깨는 AI 혁신, Cursor AI</span></a>
+  <a href="/log_assets/markdown/207_AI의 행동을 만들다 'Manus AI'.html" class="cat-nav-item cat-nav-right"><span class="nav-title">AI의 행동을 만들다. 'Manus AI</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

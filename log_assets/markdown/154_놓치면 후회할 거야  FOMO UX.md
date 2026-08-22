@@ -63,7 +63,7 @@ UX의 언어들이 책으로 나왔어요.
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/147_%EC%95%B1%20%EC%84%B1%EB%8A%A5%EA%B3%BC%20UX%EC%B5%9C%EC%A0%81%ED%99%94%EA%B0%80%20%EB%A7%A4%EC%B6%9C%EC%9D%84%20%EC%A2%8C%EC%9A%B0%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'UX의 언어들'의 이전글</span><span class="nav-title">앱 성능과 UX최적화가 매출을 좌우하는 이유</span></a>
-  <a href="/log_assets/markdown/161_%ED%9B%84%EA%B4%91%ED%9A%A8%EA%B3%BC%28Halo%20Effect%29%2C%20UX%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%98%20%EC%B2%AB%EC%9D%B8%EC%83%81.html" class="cat-nav-item cat-nav-right"><span class="nav-title">후광효과(Halo Effect), UX 디자인의 첫인상</span><span class="cat-nav-label">'UX의 언어들'의 다음글</span></a>
+  <a href="/log_assets/markdown/161_후광효과(Halo Effect), UX 디자인의 첫인상.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">후광효과(Halo Effect), UX 디자인의 첫인상</span></a>
+  <a href="/log_assets/markdown/147_앱 성능과 UX최적화가 매출을 좌우하는 이유.html" class="cat-nav-item cat-nav-right"><span class="nav-title">앱 성능과 UX최적화가 매출을 좌우하는 이유</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/182_%EC%95%A0%EC%9E%90%EC%9D%BC%20vs%20%EC%9B%8C%ED%84%B0%ED%8F%B4%2C%20PO%EA%B0%80%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%20%EB%AA%A8%EB%93%A0%20%EA%B2%83.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'PO의 프레임웍'의 이전글</span><span class="nav-title">애자일 vs 워터폴, PO가 알아야 할 모든 것</span></a>
-  <a href="/log_assets/markdown/197_%EC%8A%A4%ED%81%AC%EB%9F%BC%20%EB%A7%88%EC%8A%A4%ED%84%B0%20vs%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%A7%A4%EB%8B%88%EC%A0%80%27%20%EC%B0%A8%EC%9D%B4%EB%8A%94.html" class="cat-nav-item cat-nav-right"><span class="nav-title">스크럼 마스터 vs 프로젝트 매니저' 차이는?</span><span class="cat-nav-label">'PO의 프레임웍'의 다음글</span></a>
+  <a href="/log_assets/markdown/197_스크럼 마스터 vs 프로젝트 매니저' 차이는.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">스크럼 마스터 vs 프로젝트 매니저' 차이는?</span></a>
+  <a href="/log_assets/markdown/182_애자일 vs 워터폴, PO가 알아야 할 모든 것.html" class="cat-nav-item cat-nav-right"><span class="nav-title">애자일 vs 워터폴, PO가 알아야 할 모든 것</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

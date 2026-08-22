@@ -55,7 +55,7 @@ GTM 전략은 시간에 따라 진화합니다. 초기에는 PLG로 사용자를
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/037_%EC%8B%A4%EB%A6%AC%EC%BD%98%EB%B0%B8%EB%A6%AC%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%98%20%EA%B8%B0%EC%A4%80.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'대한민국 스타트업 미국진출을 묻다'의 이전글</span><span class="nav-title">실리콘밸리 디자인의 기준</span></a>
-  <a href="/log_assets/markdown/048_%EB%AF%B8%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%EC%99%9C%20%EB%8B%A4%20%27%EB%AF%B8%EC%85%98%27%EB%B6%80%ED%84%B0%20%EB%A7%90%ED%95%A0%EA%B9%8C.html" class="cat-nav-item cat-nav-right"><span class="nav-title">미국 스타트업은 왜 다 '미션'부터 말할까</span><span class="cat-nav-label">'대한민국 스타트업 미국진출을 묻다'의 다음글</span></a>
+  <a href="/log_assets/markdown/048_미국 스타트업은 왜 다 '미션'부터 말할까.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">미국 스타트업은 왜 다 '미션'부터 말할까</span></a>
+  <a href="/log_assets/markdown/037_실리콘밸리 디자인의 기준.html" class="cat-nav-item cat-nav-right"><span class="nav-title">실리콘밸리 디자인의 기준</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

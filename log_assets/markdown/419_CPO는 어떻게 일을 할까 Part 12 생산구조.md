@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/413_%ED%95%9C%EC%BD%94%EC%B9%98%EC%9D%98%20%27%EC%95%A0%EC%9E%90%EC%9D%BC%20%EC%99%9C%20%ED%95%98%EA%B2%8C%20%EB%90%98%EC%97%88%EC%9D%84%EA%B9%8C%27.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'스타트업 인사이트'의 이전글</span><span class="nav-title">한코치의 '애자일 왜 하게 되었을까?</span></a>
-  <a href="/log_assets/markdown/420_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part11%20%EC%82%AC%EC%97%85%EB%AA%A9%ED%91%9C%EC%88%98%EB%A6%BD.html" class="cat-nav-item cat-nav-right"><span class="nav-title">CPO는 어떻게 일을 할까? Part1.1 사업목표수립</span><span class="cat-nav-label">'스타트업 인사이트'의 다음글</span></a>
+  <a href="/log_assets/markdown/420_CPO는 어떻게 일을 할까 Part11 사업목표수립.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">CPO는 어떻게 일을 할까? Part1.1 사업목표수립</span></a>
+  <a href="/log_assets/markdown/413_한코치의 '애자일 왜 하게 되었을까'.html" class="cat-nav-item cat-nav-right"><span class="nav-title">한코치의 '애자일 왜 하게 되었을까?</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

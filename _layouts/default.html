@@ -416,62 +416,26 @@
                 }
             }
 
-            // 🎯 [정렬 기준(Asc/Desc) 맞춤 지능형 스왑 로직]
+            // 🎯 [하단 네비게이션 DOM 정돈 (중복 생성 방지)]
             const navWrap = document.querySelector('.category-nav-wrap');
             if (navWrap) {
                 const items = Array.from(navWrap.querySelectorAll('.cat-nav-item'));
-                navWrap.innerHTML = ''; 
                 navWrap.style.display = 'flex';
                 navWrap.style.justifyContent = 'space-between';
                 navWrap.style.alignItems = 'center';
-
-                const leftBox = document.createElement('div');
-                const rightBox = document.createElement('div');
-                leftBox.style.flex = '1'; leftBox.style.display = 'flex'; leftBox.style.justifyContent = 'flex-start';
-                rightBox.style.flex = '1'; rightBox.style.display = 'flex'; rightBox.style.justifyContent = 'flex-end';
-
-                const currentTitleStr = document.getElementById('displayTitle') ? document.getElementById('displayTitle').innerText : '';
-                const currentMatch = currentTitleStr.match(/(\d+)화/);
-                const currentEp = currentMatch ? parseInt(currentMatch[1], 10) : 0;
+                navWrap.style.width = '100%';
 
                 items.forEach(item => {
-                    item.classList.remove('cat-nav-right', 'cat-nav-left');
-                    item.style.marginLeft = '0';
-                    item.style.marginRight = '0';
-                    
+                    item.style.maxWidth = '45%';
                     const label = item.querySelector('.cat-nav-label');
-                    const titleEl = item.querySelector('.nav-title');
-                    
-                    if (label && titleEl) {
-                        const linkMatch = titleEl.innerText.match(/(\d+)화/);
-                        const linkEp = linkMatch ? parseInt(linkMatch[1], 10) : 0;
-
-                        let isPrev = false;
-
-                        // 1. 화수 수치 직접 판별 (1화 vs 2화)
-                        if (currentEp > 0 && linkEp > 0) {
-                            isPrev = (linkEp < currentEp);
-                        } else {
-                            // 2. HTML 태그 원본 라벨 기준 판별
-                            isPrev = (label.innerText.includes('이전글') || label.innerText.includes('이전 화'));
-                        }
-
-                        if (isPrev) {
-                            label.innerHTML = '<span style="font-size:11px;">❮</span> 이전 화';
-                            item.style.flexDirection = 'row'; 
-                            item.style.textAlign = 'left';
-                            leftBox.appendChild(item);
-                        } else {
-                            label.innerHTML = '다음 화 <span style="font-size:11px;">❯</span>';
-                            item.style.flexDirection = 'row-reverse'; 
-                            item.style.textAlign = 'right';
-                            rightBox.appendChild(item);
+                    if (label) {
+                        if (item.classList.contains('cat-nav-left')) {
+                            label.innerHTML = '❮ 이전 화';
+                        } else if (item.classList.contains('cat-nav-right')) {
+                            label.innerHTML = '다음 화 ❯';
                         }
                     }
                 });
-
-                navWrap.appendChild(leftBox);
-                navWrap.appendChild(rightBox);
             }
 
             const rawImgs = Array.from(articleBody.querySelectorAll('img')).filter(img => {

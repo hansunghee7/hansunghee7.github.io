@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/573_%EC%82%AC%EA%B8%B0%EC%9D%98%20%EC%A0%91%EA%B7%BC%EB%B2%95.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'심플리파이어 라이프'의 이전글</span><span class="nav-title">사기의 접근법</span></a>
-  <a href="/log_assets/markdown/599_%EB%8B%B9%EC%8B%A0%EC%9D%B4%20%EB%AA%85%EB%9E%91%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%98%80%EB%8B%A4%EA%B3%A0%EC%9A%94.html" class="cat-nav-item cat-nav-right"><span class="nav-title">당신이 명랑기획자였다고요?</span><span class="cat-nav-label">'심플리파이어 라이프'의 다음글</span></a>
+  <a href="/log_assets/markdown/599_당신이 명랑기획자였다고요.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">당신이 명랑기획자였다고요?</span></a>
+  <a href="/log_assets/markdown/573_사기의 접근법.html" class="cat-nav-item cat-nav-right"><span class="nav-title">사기의 접근법</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

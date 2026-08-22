@@ -67,7 +67,7 @@ UX의 언어들이 책으로 나왔어요.
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/227_Google%EC%9D%98%20%27%EC%8B%AC%ED%94%8C%ED%95%9C%20UX%27%20%EC%9B%90%EC%B9%99.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'UX의 언어들'의 이전글</span><span class="nav-title">Google의 '심플한 UX' 원칙</span></a>
-  <a href="/log_assets/markdown/242_%EC%97%84%EC%A7%80%EA%B0%80%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%84%20%EC%A7%80%EB%B0%B0%ED%95%9C%EB%8B%A4%20ThumbFriendly%20UX.html" class="cat-nav-item cat-nav-right"><span class="nav-title">엄지가 디자인을 지배한다 ThumbFriendly UX</span><span class="cat-nav-label">'UX의 언어들'의 다음글</span></a>
+  <a href="/log_assets/markdown/242_엄지가 디자인을 지배한다 ThumbFriendly UX.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">엄지가 디자인을 지배한다 ThumbFriendly UX</span></a>
+  <a href="/log_assets/markdown/227_Google의 '심플한 UX' 원칙.html" class="cat-nav-item cat-nav-right"><span class="nav-title">Google의 '심플한 UX' 원칙</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

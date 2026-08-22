@@ -89,7 +89,7 @@ Slack처럼 작게 시작해 빠르게 실험하고, 잘 되는 채널에 집중
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/113_%27%EC%BB%A4%EC%84%9C%20AI%27%EC%9D%98%20AI%20%ED%98%91%EB%A0%A5%EC%9E%90%20%EC%A0%84%EB%9E%B5.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'스타트업 인사이트'의 이전글</span><span class="nav-title">커서 AI'의 AI 협력자 전략</span></a>
-  <a href="/log_assets/markdown/129_Dropbox%EC%9D%98%20%EB%AC%B4%EB%A3%8C%EC%97%90%EC%84%9C%20%EC%9C%A0%EB%A3%8C%EB%A1%9C%EC%9D%98%20%EC%A0%84%ED%99%98%20%EB%B9%84%EB%B2%95.html" class="cat-nav-item cat-nav-right"><span class="nav-title">Dropbox의 무료에서 유료로의 전환 비법</span><span class="cat-nav-label">'스타트업 인사이트'의 다음글</span></a>
+  <a href="/log_assets/markdown/129_Dropbox의 무료에서 유료로의 전환 비법.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">Dropbox의 무료에서 유료로의 전환 비법</span></a>
+  <a href="/log_assets/markdown/113_'커서 AI'의 AI 협력자 전략.html" class="cat-nav-item cat-nav-right"><span class="nav-title">커서 AI'의 AI 협력자 전략</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

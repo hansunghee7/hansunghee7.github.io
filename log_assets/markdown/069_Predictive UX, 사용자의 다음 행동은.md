@@ -55,7 +55,7 @@ UX의 언어들이 책으로 나왔어요.
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/064_%ED%99%94%EC%9E%A5%EC%8B%A4%EC%9D%98%20UX%2C%20%EA%B3%B5%ED%95%AD%EA%B3%BC%20%EA%B8%B0%EC%B0%A8%EC%97%AD%EC%9D%B4%20%EB%A7%90%ED%95%B4%EC%A3%BC%EB%8A%94%20%EA%B3%B5%EA%B0%84%20%EB%94%94%EC%9E%90%EC%9D%B8.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">'UX의 언어들'의 이전글</span><span class="nav-title">화장실의 UX, 공항과 기차역이 말해주는 공간 디자인</span></a>
-  <a href="/log_assets/markdown/076_%EC%96%B4%ED%94%84%EB%A1%9C%EC%B9%98%EB%A5%BC%20%EB%B0%94%EA%BE%B8%EB%8B%A4%20AI%20Assisted%20Design.html" class="cat-nav-item cat-nav-right"><span class="nav-title">어프로치를 바꾸다 AI Assisted Design</span><span class="cat-nav-label">'UX의 언어들'의 다음글</span></a>
+  <a href="/log_assets/markdown/076_어프로치를 바꾸다 AI Assisted Design.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">어프로치를 바꾸다 AI Assisted Design</span></a>
+  <a href="/log_assets/markdown/064_화장실의 UX, 공항과 기차역이 말해주는 공간 디자인.html" class="cat-nav-item cat-nav-right"><span class="nav-title">화장실의 UX, 공항과 기차역이 말해주는 공간 디자인</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->
