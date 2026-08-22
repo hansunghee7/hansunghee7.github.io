@@ -73,26 +73,10 @@
         .index-mode .cover-title { font-family: 'Noto Serif KR', serif; font-size: 32px; font-weight: 200; margin: 0; line-height: 1.2; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
 
         .cover-wrap.post-mode { height: 100vh; padding: 40px; overflow: hidden; }
-        .post-mode .cover-bottom-left { position: absolute; bottom: 60px; left: 40px; padding-right: 80px; text-align: left; transition: opacity 0.05s ease-out; }
+        /* 🎯 [타이틀 및 작성일 위치 상향 조정: bottom 60px -> 120px] */
+        .post-mode .cover-bottom-left { position: absolute; bottom: 120px; left: 40px; padding-right: 80px; text-align: left; transition: opacity 0.05s ease-out; }
         .post-mode .cover-title { font-family: 'Noto Serif KR', serif; font-size: 42px; font-weight: 200; margin: 0; line-height: 1.35; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
         .post-mode .cover-sub { font-size: 14px; font-weight: 300; opacity: 0.8; font-style: italic; margin-top: 16px; text-shadow: 0 1px 5px rgba(0,0,0,0.5); }
-        
-        .post-mode .cover-bottom-right { position: absolute; bottom: 60px; right: 40px; transition: opacity 0.05s ease-out; }
-        .down-arrow { 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            width: 36px; 
-            height: 36px; 
-            color: #fff; 
-            text-decoration: none; 
-            opacity: 0.4; 
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
-        }
-        .down-arrow svg { width: 24px; height: 24px; stroke-width: 1; transition: transform 0.3s ease; }
-        .down-arrow:hover { opacity: 1; }
-        .down-arrow:hover svg { transform: translateY(4px); }
 
         /* 2. 포스트 본문 영역 */
         .article-body { max-width: 1100px; margin: 0 auto; padding: 40px 20px 40px; }
@@ -101,10 +85,11 @@
         .article-body img { max-width: 100%; height: auto; margin: 40px auto; display: block; border-radius: 4px; }
         .article-body hr { border: 0; border-top: 1px solid #eaeaea; margin: 60px 0; }
 
+        /* 🎯 [이전글/다음글 및 하단 여백 슬림화 최적화] */
         .category-nav-wrap { 
-            margin-top: 70px !important;    
-            margin-bottom: 60px !important; 
-            padding: 25px 40px;    
+            margin-top: 60px !important;    
+            margin-bottom: 15px !important; /* 하단 붕 뜨던 여백 대폭 감소 */
+            padding: 18px 40px;            /* 내적 상하 여백 축소 */
             border-top: 1px solid #eaeaea; 
             display: flex; 
             justify-content: space-between; 
@@ -348,14 +333,7 @@
                 {% if page.date_string %}{{ page.date_string }}{% endif %}
             </div>
         </div>
-        
-        <div class="cover-bottom-right" id="coverArrowBox">
-            <a id="scrollDownBtn" class="down-arrow" aria-label="본문으로 이동">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 4V20M12 20L6 14M12 20L18 14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </a>
-        </div>
+        <!-- 🎯 화살표 요소 완전 제거 완료 -->
     </div>
 {% endif %}
 
@@ -370,27 +348,8 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        const scrollBtn = document.getElementById('scrollDownBtn');
-        const articleBody = document.getElementById('articleBody');
-        
-        if (scrollBtn && articleBody) {
-            scrollBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                const bodyRect = articleBody.getBoundingClientRect();
-                const absoluteTop = bodyRect.top + window.pageYOffset;
-                
-                window.scrollTo({
-                    top: absoluteTop,
-                    behavior: 'smooth'
-                });
-            });
-        }
-
         const coverWrap = document.getElementById('coverWrap');
         const coverTitleBox = document.getElementById('coverTitleBox');
-        const coverArrowBox = document.getElementById('coverArrowBox');
         
         if (coverWrap && coverWrap.classList.contains('post-mode')) {
             const initialHeight = window.innerHeight; 
@@ -404,7 +363,6 @@
                     
                     coverWrap.style.height = newHeight + 'px';
                     if (coverTitleBox) coverTitleBox.style.opacity = opacity;
-                    if (coverArrowBox) coverArrowBox.style.opacity = opacity;
                 }
             }, { passive: true });
         }
@@ -435,7 +393,6 @@
 
         const isLogPage = window.location.pathname.includes('log.html') || window.location.pathname === '/' || document.querySelector('.card-grid') !== null;
 
-        // 🎯 '코치S' 및 '잉크드인대 기획학과' 카테고리 자동 스wipe 모드 활성화
         const isSwipeMode = !isLogPage && (
             isSwipeVal === 'true' || 
             isSwipeVal === 'True' || 
