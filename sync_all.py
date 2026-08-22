@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', function() {{
 
     # 💡 이전글/다음글 컨테이너 여백(margin-top, margin-bottom) 대폭 축소
     nav_html = "\n\n<!-- CATEGORY_NAV_START -->\n<style>\n" \
-               ".category-nav-wrap { margin-top: 20px; margin-bottom: 20px; padding: 25px 40px; border-top: 1px solid rgba(245,243,238,0.1); display: flex; justify-content: space-between; align-items: center; font-family: 'Pretendard Variable', sans-serif; font-size: 14px; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }\n" \
+               ".category-nav-wrap { margin-top: 15px; margin-bottom: 30px; padding: 25px 40px; border-top: 1px solid rgba(245,243,238,0.1); display: flex; justify-content: space-between; align-items: center; font-family: 'Pretendard Variable', sans-serif; font-size: 14px; gap: 30px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; }\n" \
                ".cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #8f8b82; transition: color 0.2s; max-width: 45%; }\n" \
                ".cat-nav-item:hover { color: #f5f3ee; }\n" \
                ".cat-nav-item:hover .nav-title { color: #f5f3ee; text-decoration: underline; }\n" \
