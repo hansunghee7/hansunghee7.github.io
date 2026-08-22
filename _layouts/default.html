@@ -51,25 +51,66 @@
     <style>
         html { scroll-behavior: smooth; }
         body { margin: 0; padding: 0; font-family: 'Noto Sans KR', sans-serif; background-color: #fff; color: #333; word-break: keep-all; }
-        .cover-wrap { position: relative; width: 100%; background-color: #111111; background-size: cover; background-position: center; color: #fff; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; }
+        
+        /* 💡 1 & 2. 커버 영역 높이 45vh 설정 및 스크롤 접힘 애니메이션 준비 */
+        .cover-wrap { 
+            position: relative; 
+            width: 100%; 
+            background-color: #111111; 
+            background-size: cover; 
+            background-position: center; 
+            color: #fff; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            box-sizing: border-box; 
+            will-change: height, opacity;
+            transition: height 0.1s ease-out;
+        }
         
         .cover-wrap.index-mode { height: 22vh; min-height: 160px; padding: 25px 40px; }
         .index-mode .cover-bottom-left { text-align: left; position: relative; }
         .index-mode .cover-title { font-family: 'Noto Serif KR', serif; font-size: 32px; font-weight: 200; margin: 0; line-height: 1.2; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
 
-        .cover-wrap.post-mode { height: 65vh; padding: 30px 40px; }
-        .post-mode .cover-bottom-left { position: absolute; bottom: 40px; left: 40px; padding-right: 80px; text-align: left; }
-        .post-mode .cover-title { font-family: 'Noto Serif KR', serif; font-size: 42px; font-weight: 200; margin: 0; line-height: 1.4; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-        .post-mode .cover-sub { font-size: 13px; font-weight: 300; opacity: 0.8; font-style: italic; margin-top: 20px; text-shadow: 0 1px 5px rgba(0,0,0,0.5); }
-        .post-mode .cover-bottom-right { position: absolute; bottom: 40px; right: 40px; }
-        .down-arrow { display: inline-block; font-size: 26px; color: #fff; text-decoration: none; transition: transform 0.3s ease; opacity: 0.8; }
-        .down-arrow:hover { transform: translateY(-8px); opacity: 1; }
+        /* 화면 50% 언더(45vh) 고정 */
+        .cover-wrap.post-mode { height: 45vh; min-height: 320px; padding: 30px 40px; overflow: hidden; }
+        .post-mode .cover-bottom-left { position: absolute; bottom: 32px; left: 40px; padding-right: 80px; text-align: left; transition: opacity 0.1s ease-out; }
+        .post-mode .cover-title { font-family: 'Noto Serif KR', serif; font-size: 36px; font-weight: 200; margin: 0; line-height: 1.35; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .post-mode .cover-sub { font-size: 13px; font-weight: 300; opacity: 0.8; font-style: italic; margin-top: 14px; text-shadow: 0 1px 5px rgba(0,0,0,0.5); }
+        
+        /* 💡 3. 매우 슬림한 화살표 디자인 및 롤오버 효과 */
+        .post-mode .cover-bottom-right { position: absolute; bottom: 32px; right: 40px; }
+        .down-arrow { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            width: 32px; 
+            height: 32px; 
+            color: #fff; 
+            text-decoration: none; 
+            opacity: 0.35; 
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
+        }
+        .down-arrow svg {
+            width: 22px;
+            height: 22px;
+            stroke-width: 1; /* 매우 얇은 선 두께 */
+            transition: transform 0.3s ease;
+        }
+        .down-arrow:hover { 
+            opacity: 1; 
+        }
+        .down-arrow:hover svg {
+            transform: translateY(4px); /* 롤오버 시 살짝 내려가는 살랑임 */
+        }
 
         .article-body { max-width: 1100px; margin: 0 auto; padding: 40px 20px 40px; }
-        .post-mode + .article-body { max-width: 700px; padding: 80px 20px 20px; }
+        .post-mode + .article-body { max-width: 700px; padding: 60px 20px 20px; }
         .article-body p { font-size: 16px; font-weight: 300; line-height: 2.1; margin-bottom: 35px; }
-        .article-body img { max-width: 80%; height: auto; margin: 60px 0; display: block; }
-        .article-body hr { border: 0; border-top: 1px solid #eaeaea; margin: 80px 0; }
+        
+        /* 포스트 내 사진 스타일 및 여백 */
+        .article-body img { max-width: 100%; height: auto; margin: 40px auto; display: block; border-radius: 4px; }
+        .article-body hr { border: 0; border-top: 1px solid #eaeaea; margin: 60px 0; }
 
         .card-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 20px; }
         @media (max-width: 1024px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
@@ -85,9 +126,7 @@
 
         .hidden-element { display: none !important; }
 
-        /* =======================================================
-           📱 [웹툰 전용 플렉스 100vh 완벽 고정 레이아웃] 
-           ======================================================= */
+        /* [웹툰 전용 플렉스 100vh 완벽 고정 레이아웃] */
         body.is-swipe-mode { background-color: #0f1015; color: #eee; overflow: hidden !important; display: flex; flex-direction: column; height: 100vh; width: 100vw; }
         body.is-swipe-mode .cover-wrap.post-mode { flex: 0 0 auto !important; position: relative !important; height: auto !important; min-height: 0 !important; padding: 14px 24px !important; background: #181920 !important; display: flex !important; flex-direction: row !important; align-items: center !important; border-bottom: 1px solid rgba(255,255,255,0.08); }
         body.is-swipe-mode .cover-bottom-left { position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; padding: 0 !important; margin: 0 !important; display: flex !important; align-items: center !important; z-index: 5; width: auto !important; }
@@ -123,11 +162,11 @@
 </head>
 <body>
 
-<!-- 💡 메인 페이지와 로그 목록 페이지에는 풀버전 GNB 노출 -->
+<!-- 메인 페이지와 로그 목록 페이지에는 풀버전 GNB 노출 -->
 {% if page.url == '/' or page.url == '/log.html' or page.is_index %}
     {% include header.html %}
 {% else %}
-    <!-- 💡 개별 콘텐츠(포스트) 전용 GNB: 로고 + 카테고리 콤보 -->
+    <!-- 개별 콘텐츠(포스트) 전용 GNB: 로고 + 카테고리 콤보 -->
     <style>
       .log-nav {
         position: absolute;
@@ -187,15 +226,21 @@
     </div>
 {% else %}
     {% assign bg_img = page.cover_image | default: '/brunch_web_assets/images/logo_white.png' %}
-    <div class="cover-wrap post-mode" id="coverWrap" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%), url('{{ bg_img }}');">
-        <div class="cover-bottom-left">
+    <div class="cover-wrap post-mode" id="coverWrap" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%), url('{{ bg_img }}');">
+        <div class="cover-bottom-left" id="coverTitleBox">
             <h1 class="cover-title" id="displayTitle">{{ page.title }}</h1>
             <div class="cover-sub">
                 {% if page.date_string %}{{ page.date_string }}{% endif %}
             </div>
         </div>
+        
+        <!-- 💡 3. 극도로 얇고 세련된 SVG 하단 화살표 -->
         <div class="cover-bottom-right">
-            <a href="#articleBody" class="down-arrow">↓</a>
+            <a href="#articleBody" class="down-arrow" aria-label="본문으로 이동">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 4V20M12 20L6 14M12 20L18 14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
         </div>
     </div>
 {% endif %}
@@ -204,7 +249,7 @@
     {{ content }}
 </div>
 
-<!-- 💡 하단 Footer와 Contact 모달을 메인/목록 페이지에서만 노출 -->
+<!-- 하단 Footer와 Contact 모달을 메인/목록 페이지에서만 노출 -->
 {% if page.url == '/' or page.url == '/log.html' or page.is_index %}
     {% include footer.html %}
     {% include contact_modal.html %}
@@ -212,6 +257,27 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
+        // 💡 2. 스크롤할 때 커버가 매끄럽게 접히는 인터랙션 (Parallax Folding)
+        const coverWrap = document.getElementById('coverWrap');
+        const coverTitleBox = document.getElementById('coverTitleBox');
+        
+        if (coverWrap && coverWrap.classList.contains('post-mode')) {
+            const initialHeight = coverWrap.offsetHeight;
+            const minHeight = 120; // 스크롤 시 최소 접힘 높이
+            
+            window.addEventListener('scroll', function() {
+                const scrolled = window.scrollY;
+                if (scrolled <= initialHeight) {
+                    // 스크롤에 따라 높이 및 텍스트 투명도 조절
+                    const newHeight = Math.max(minHeight, initialHeight - scrolled * 0.6);
+                    const opacity = Math.max(0, 1 - (scrolled / (initialHeight * 0.7)));
+                    
+                    coverWrap.style.height = newHeight + 'px';
+                    if (coverTitleBox) coverTitleBox.style.opacity = opacity;
+                }
+            }, { passive: true });
+        }
+
         const articleBody = document.getElementById('articleBody');
         if (articleBody) {
             const coverImg = articleBody.querySelector('img[alt="대표 이미지"]');
@@ -234,7 +300,6 @@
         const isSwipeMeta = document.getElementById('isSwipeData');
         const isSwipeVal = isSwipeMeta ? isSwipeMeta.getAttribute('data-is-swipe') : '';
         
-        // 새로 추가된 카테고리 태그 클래스로 변경
         const categoryPill = document.querySelector('.log-nav-category');
         const categoryText = categoryPill ? categoryPill.innerText : '';
 
