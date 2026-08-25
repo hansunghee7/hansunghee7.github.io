@@ -163,7 +163,12 @@ layout: null
   #hero-fade { will-change: opacity; width: 100%; }
   .hero h1 { font-family: 'Boska', 'Source Serif 4', serif; font-weight: 200; font-size: clamp(42px, 7.3vw, 79px); line-height: 1.2; max-width: 1060px; margin: 0 auto 6px; }
   .hero h1 .accent { font-style: italic; }
-  @media (max-width:760px){ .hero h1 .into-word { display:block; } }
+  /* 히어로 문구 줄바꿈: 데스크톱 2줄 / 모바일 3줄(의미 단위로 끊어 고아 단어 방지) */
+  .hero h1 .br-m { display: none; }
+  @media (max-width:760px){
+    .hero h1 .br-m { display: inline; }
+    .hero h1 .br-d { display: none; }
+  }
   .hero-footnote { max-width: 480px; margin: 36px auto 0; text-align:left; }
   .hero-footnote .q { font-weight:300; font-size: 15px; line-height:1.9; color:#8f8b82; letter-spacing:-0.01em; }
   .hero-footnote .who { display:block; margin-top: 10px; text-align:right; font-weight:300; font-style:italic; font-size:14px; color:#8f8b82; }
@@ -366,7 +371,7 @@ layout: null
 <div class="hero-wrapper" id="hero-wrapper">
   <section class="hero wrap" id="hero-section">
     <div id="hero-fade">
-      <h1>Simplifier turns complexity<br><span class="into-word">into</span> <span class="accent">explosive growth.</span></h1>
+      <h1>Simplifier turns<br class="br-m"> complexity<br class="br-d"> <span class="into-word">into</span><br class="br-m"> <span class="accent">explosive growth.</span></h1>
       <p class="hero-footnote"><span class="q">"폭발적 성장은 갑작스럽게 오는 것이 아닙니다. 단순화해온 모든 것이 마침내 위로 향할 곳밖에 남지 않은 순간에 찾아옵니다."</span><span class="who">— 한성희</span></p>
       <div class="scroll-cue"><span class="chev"></span></div>
     </div>
