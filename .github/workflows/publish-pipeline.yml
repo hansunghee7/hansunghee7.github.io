@@ -1,0 +1,68 @@
+name: Publish log pipeline
+
+# Decap CMS(admin/)로 새 글을 커밋하면(또는 log_assets/markdown 아래 파일을
+# 직접 고치면) 여기서 자동으로:
+#   1. 새 글에 순번/date_string/카테고리 링크 스크립트/이전글-다음글 자리 채우기
+#   2. 이전글/다음글 링크 재계산 (sync_all.py)
+#   3. log.html 카드 그리드에 새 글 카드 추가
+#   4. 썸네일 매핑·posts.json 갱신
+# 을 실행하고, 바뀐 파일이 있으면 같은 브랜치에 커밋해서 되돌려 놓습니다.
+# 기존 글은 절대 건드리지 않도록 각 스크립트가 변경 없는 파일엔 손을 대지
+# 않는 것을 전제로 만들어졌습니다(스크립트 안 주석 참고).
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "log_assets/markdown/**"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-pipeline
+  cancel-in-progress: false
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    env:
+      PYTHONIOENCODING: utf-8
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Normalize any newly-added posts
+        run: python scripts/normalize_new_post.py
+
+      - name: Rebuild prev/next links for all posts
+        run: python sync_all.py
+
+      - name: Add log.html cards for any new posts
+        run: python scripts/add_new_log_cards.py
+
+      - name: Refresh thumbnail mapping + posts.json
+        run: python fix_thumb_mapping.py
+
+      - name: Commit changes if any
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add log_assets/markdown log.html assets/data/posts.json
+          if git diff --cached --quiet; then
+            echo "no changes to commit"
+          else
+            git commit -m "chore: auto-regenerate log pipeline output [skip ci]"
+            git push
+          fi
