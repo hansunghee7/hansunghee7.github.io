@@ -34,12 +34,6 @@ for fname in md_files:
     pure_to_bases[p].append(base)
 
 
-def score_candidate(target_pure, cand_pure):
-    if cand_pure == target_pure:
-        return 9999
-    return len(os.path.commonprefix([target_pure, cand_pure]))
-
-
 def resolve_cover(base):
     m = re.match(r'^(\d{3})_(.*)$', base)
     if not m:
@@ -47,37 +41,30 @@ def resolve_cover(base):
     pid, title_part = m.group(1), m.group(2)
     target = pure_text(title_part)
 
-    # 1) same-ID candidates
-    same_id = cover_by_id.get(pid, [])
-    if same_id:
-        if len(same_id) == 1:
-            cand_pure = pure_text(same_id[0][0])
-            # accept only if it's a reasonable match, else fall through to global search
-            if cand_pure == target or (len(target) > 0 and score_candidate(target, cand_pure) >= max(4, len(target) * 0.6)):
-                return same_id[0][1]
-        else:
-            best, best_score = None, -1
-            for cand_title, fname in same_id:
-                s = score_candidate(target, pure_text(cand_title))
-                if s > best_score:
-                    best_score, best = s, fname
-            if best_score == 9999 or best_score >= max(4, len(target) * 0.6):
-                return best
-
-    # 2) global pure-text search
+    # 1) global EXACT pure-text match is the only trustworthy signal -- a
+    # naive same-ID or prefix-based fuzzy match is unsafe here because many
+    # posts share a long common title prefix (e.g. "내가 나를 기획한다면 ...편")
+    # and only differ in a short suffix, which fools prefix-similarity scoring.
     globals_ = cover_by_pure.get(target, [])
     if len(globals_) == 1:
         return globals_[0]
     if len(globals_) > 1:
-        # prefer a candidate whose id also belongs to a sibling md file sharing this exact title
+        # genuine duplicate title across IDs (e.g. a repeated post): prefer
+        # the candidate whose id also belongs to a sibling md file sharing
+        # this exact title, else the numerically closest id, else lowest.
         sibling_ids = set(re.match(r'^(\d{3})_', b).group(1) for b in pure_to_bases.get(target, []))
         for f in globals_:
             fid = re.match(r'^(\d{3})_', f).group(1)
             if fid in sibling_ids:
                 return f
-        return sorted(globals_)[0]
+        def dist(f):
+            fid = re.match(r'^(\d{3})_', f).group(1)
+            return abs(int(fid) - int(pid))
+        return sorted(globals_, key=dist)[0]
 
-    # 3) fall back to same-ID single candidate even if match was weak, better than nothing
+    # 2) no exact match anywhere: fall back to whatever exists under the
+    # same numeric id, purely as a last resort (better than the default logo).
+    same_id = cover_by_id.get(pid, [])
     if same_id:
         return same_id[0][1]
 
