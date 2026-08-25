@@ -329,6 +329,12 @@ layout: null
   .k-list-group ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px; }
   .k-list-group a { font-family: 'Pretendard Variable', sans-serif; font-size: 14px; color: #c9c8c2; text-decoration: none; transition: color 0.2s; display: block; line-height: 1.4; word-break: keep-all; padding: 9px 0; }
   .k-list-group a:hover { color: #f5f3ee; }
+  /* 3단 배치에서 카테고리 열(715px)이 카드 열(630px)보다 길어 아래쪽 균형이 깨집니다.
+     링크 12개의 상하 여백을 줄여 카드 높이에 맞춥니다.
+     좁은 화면은 한 줄로 쌓여 균형 문제가 없고 터치 영역이 필요하므로 그대로 둡니다. */
+  @media (min-width: 961px) {
+    .k-list-group a { padding: 5px 0; }
+  }
 
   .yc-overlay-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto; }
   .overlay-card { position: relative; height: 380px; border-radius: 12px; overflow: hidden; cursor: pointer; text-decoration: none; display: block; }
