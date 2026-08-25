@@ -107,7 +107,8 @@
         .lightbox-overlay { position: fixed; inset: 0; background: rgba(8,8,8,0.92); display: none; align-items: center; justify-content: center; z-index: 9999; padding: 40px; cursor: zoom-out; }
         .lightbox-overlay.active { display: flex; }
         .lightbox-overlay img { max-width: 100%; max-height: 100%; width: auto !important; height: auto !important; object-fit: contain; margin: 0 !important; border-radius: 0; cursor: default; }
-        .lightbox-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: #f5f3ee; font-size: 36px; line-height: 1; cursor: pointer; padding: 8px; z-index: 2; }
+        .lightbox-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: #f5f3ee; line-height: 1; cursor: pointer; padding: 8px; z-index: 2; display: flex; align-items: center; justify-content: center; }
+        .lightbox-close svg { width: 26px; height: 26px; display: block; }
         .lightbox-close:hover { color: #fff; }
         .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(245,243,238,0.1); border: none; color: #f5f3ee; font-size: 20px; width: 48px; height: 48px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2; }
         .lightbox-nav:hover { background: rgba(245,243,238,0.25); }
@@ -116,7 +117,8 @@
         @media (max-width:700px){
             .lightbox-overlay { padding: 16px; }
             .lightbox-nav { width: 40px; height: 40px; font-size: 16px; }
-            .lightbox-close { font-size: 28px; top: 10px; right: 12px; }
+            .lightbox-close { top: 10px; right: 12px; }
+            .lightbox-close svg { width: 22px; height: 22px; }
         }
 
         .category-nav-wrap {
@@ -464,7 +466,7 @@
                 const closeBtn = document.createElement('button');
                 closeBtn.type = 'button';
                 closeBtn.className = 'lightbox-close';
-                closeBtn.innerHTML = '&times;';
+                closeBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>';
                 closeBtn.setAttribute('aria-label', '닫기');
 
                 const prevBtn = document.createElement('button');
