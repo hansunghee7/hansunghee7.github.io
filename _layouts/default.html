@@ -88,9 +88,14 @@
         .article-body p { font-size: 15px; font-weight: 300; line-height: 2; letter-spacing: 0.8px; margin-bottom: 30px; }
         .article-body img { width: 88%; height: auto; margin: 40px auto; display: block; border-radius: 0; }
         .article-body hr { border: 0; border-top: 1px solid #eaeaea; margin: 60px 0; }
-        .article-body .img-gallery { display: flex; gap: 12px; width: 88%; margin: 40px auto; }
-        .article-body .img-gallery img { width: 0; flex: 1 1 0; min-width: 0; height: auto; margin: 0; }
+        .article-body .img-gallery { display: flex; gap: 12px; width: 88%; margin: 40px auto; justify-content: center; }
+        .article-body .img-gallery img { width: auto; flex: 1 1 0; min-width: 0; height: auto; margin: 0; object-fit: cover; }
         @media (max-width:700px){ .article-body .img-gallery { gap: 6px; } }
+        .article-body img { cursor: zoom-in; }
+        .lightbox-overlay { position: fixed; inset: 0; background: rgba(8,8,8,0.92); display: none; align-items: center; justify-content: center; z-index: 9999; padding: 40px; cursor: zoom-out; }
+        .lightbox-overlay.active { display: flex; }
+        .lightbox-overlay img { max-width: 100%; max-height: 100%; width: auto !important; height: auto !important; object-fit: contain; margin: 0 !important; border-radius: 0; cursor: default; }
+        @media (max-width:700px){ .lightbox-overlay { padding: 16px; } }
 
         .category-nav-wrap {
             margin-top: var(--nav-margin-top) !important;
@@ -389,6 +394,56 @@
             bodyLinks.forEach(a => {
                 a.setAttribute('target', '_blank');
                 a.setAttribute('rel', 'noopener noreferrer');
+            });
+
+            // 갤러리(여러 장) 이미지: 브런치처럼 비율은 유지한 채 한 줄 높이를 맞춤
+            const GALLERY_GAP = 12;
+            articleBody.querySelectorAll('.img-gallery').forEach(gallery => {
+                const imgs = Array.from(gallery.querySelectorAll('img'));
+                function layoutRow() {
+                    const containerWidth = gallery.clientWidth;
+                    const ratios = imgs.map(im => (im.naturalWidth && im.naturalHeight) ? im.naturalWidth / im.naturalHeight : 1);
+                    const sumRatio = ratios.reduce((a, b) => a + b, 0);
+                    const totalGap = GALLERY_GAP * (imgs.length - 1);
+                    const h = Math.max(0, (containerWidth - totalGap) / sumRatio);
+                    imgs.forEach((im, i) => {
+                        im.style.flex = 'none';
+                        im.style.height = h + 'px';
+                        im.style.width = (ratios[i] * h) + 'px';
+                    });
+                }
+                let loadedCount = 0;
+                imgs.forEach(im => {
+                    if (im.complete && im.naturalWidth) {
+                        loadedCount++;
+                    } else {
+                        im.addEventListener('load', function () {
+                            loadedCount++;
+                            if (loadedCount === imgs.length) layoutRow();
+                        });
+                    }
+                });
+                if (loadedCount === imgs.length) layoutRow();
+                window.addEventListener('resize', layoutRow);
+            });
+
+            // 본문 이미지 클릭 시 원본 크기로 팝업(라이트박스)
+            const lightbox = document.createElement('div');
+            lightbox.className = 'lightbox-overlay';
+            const lightboxImg = document.createElement('img');
+            lightbox.appendChild(lightboxImg);
+            document.body.appendChild(lightbox);
+            function closeLightbox() { lightbox.classList.remove('active'); }
+            lightbox.addEventListener('click', closeLightbox);
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') closeLightbox();
+            });
+            articleBody.querySelectorAll('img').forEach(im => {
+                if (im.alt === '대표 이미지') return;
+                im.addEventListener('click', function () {
+                    lightboxImg.src = im.currentSrc || im.src;
+                    lightbox.classList.add('active');
+                });
             });
         }
 
