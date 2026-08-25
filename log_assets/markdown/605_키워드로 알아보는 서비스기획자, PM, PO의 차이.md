@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/608_당신에게 주어진 골은 잘 넣고 있습니까.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">당신에게 주어진 골은 잘 넣고 있습니까?</span></a>
-  <a href="/log_assets/markdown/602_경험에서 배운 몇 가지 교훈.html" class="cat-nav-item cat-nav-right"><span class="nav-title">경험에서 배운 몇 가지 교훈</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/602_경험에서 배운 몇 가지 교훈.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">경험에서 배운 몇 가지 교훈</span></a>
+  <a href="/log_assets/markdown/608_당신에게 주어진 골은 잘 넣고 있습니까.html" class="cat-nav-item cat-nav-right"><span class="nav-title">당신에게 주어진 골은 잘 넣고 있습니까?</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

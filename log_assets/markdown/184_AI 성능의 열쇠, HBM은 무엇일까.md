@@ -54,7 +54,7 @@ HBM은 사실 갑자기 튀어나온 신기술이 아닙니다. 2000년대 후�
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/191_AI하드웨어, GPU와 NPU 그리고 FPGA의 차이점.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">AI하드웨어, GPU와 NPU 그리고 FPGA의 차이점</span></a>
-  <a href="/log_assets/markdown/177_AI 칩 성능의 핵심, FLOPS와 TOPS 그리고.html" class="cat-nav-item cat-nav-right"><span class="nav-title">AI 칩 성능의 핵심, FLOPS와 TOPS 그리고..</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/177_AI 칩 성능의 핵심, FLOPS와 TOPS 그리고.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">AI 칩 성능의 핵심, FLOPS와 TOPS 그리고..</span></a>
+  <a href="/log_assets/markdown/191_AI하드웨어, GPU와 NPU 그리고 FPGA의 차이점.html" class="cat-nav-item cat-nav-right"><span class="nav-title">AI하드웨어, GPU와 NPU 그리고 FPGA의 차이점</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

@@ -66,7 +66,7 @@ FPGA는 현장에서 프로그래밍 가능한 반도체입니다. 어떻게 설
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/199_AI시대 슈퍼컴퓨터가 필요한 이유.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">AI시대 슈퍼컴퓨터가 필요한 이유</span></a>
-  <a href="/log_assets/markdown/184_AI 성능의 열쇠, HBM은 무엇일까.html" class="cat-nav-item cat-nav-right"><span class="nav-title">AI 성능의 열쇠, HBM은 무엇일까?</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/184_AI 성능의 열쇠, HBM은 무엇일까.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">AI 성능의 열쇠, HBM은 무엇일까?</span></a>
+  <a href="/log_assets/markdown/199_AI시대 슈퍼컴퓨터가 필요한 이유.html" class="cat-nav-item cat-nav-right"><span class="nav-title">AI시대 슈퍼컴퓨터가 필요한 이유</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

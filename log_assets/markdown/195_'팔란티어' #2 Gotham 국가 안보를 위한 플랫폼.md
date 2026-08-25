@@ -84,7 +84,7 @@ Gotham과 같은 강력한 감시 플랫폼이 안보 역량 강화에 기여한
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/196_프로덕트가 생각보다 성장하지 않는 이유는 무엇일까요.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">프로덕트가 생각보다 성장하지 않는 이유는 무엇일까요?</span></a>
-  <a href="/log_assets/markdown/193_AI로 UI개발 속도를 10배로 만들다 'V0'.html" class="cat-nav-item cat-nav-right"><span class="nav-title">AI로 UI개발 속도를 10배로 만들다. 'V0</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/193_AI로 UI개발 속도를 10배로 만들다 'V0'.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">AI로 UI개발 속도를 10배로 만들다. 'V0</span></a>
+  <a href="/log_assets/markdown/196_프로덕트가 생각보다 성장하지 않는 이유는 무엇일까요.html" class="cat-nav-item cat-nav-right"><span class="nav-title">프로덕트가 생각보다 성장하지 않는 이유는 무엇일까요?</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

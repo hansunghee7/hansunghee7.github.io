@@ -64,7 +64,7 @@ MECE, 기획자에겐 그 자체로 마법 지팡이와도 같은 도구다. 상
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/200_사용자를 중독시키는 4단계 마법 'Hooked 모델'.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">사용자를 중독시키는 4단계 마법 'Hooked 모델</span></a>
-  <a href="/log_assets/markdown/185_사고의 지도를 그리는 법 '로직 트리'.html" class="cat-nav-item cat-nav-right"><span class="nav-title">사고의 지도를 그리는 법 '로직 트리</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/185_사고의 지도를 그리는 법 '로직 트리'.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">사고의 지도를 그리는 법 '로직 트리</span></a>
+  <a href="/log_assets/markdown/200_사용자를 중독시키는 4단계 마법 'Hooked 모델'.html" class="cat-nav-item cat-nav-right"><span class="nav-title">사용자를 중독시키는 4단계 마법 'Hooked 모델</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

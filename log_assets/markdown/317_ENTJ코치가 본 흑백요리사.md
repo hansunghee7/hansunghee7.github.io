@@ -68,7 +68,7 @@ ps. 그런데 이거 직업병 맞죠?;;;
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/320_내가 암기를 잘하게 된 사연.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">내가 암기를 잘하게 된 사연</span></a>
-  <a href="/log_assets/markdown/313_삼성전자 TV플러스 이야기.html" class="cat-nav-item cat-nav-right"><span class="nav-title">삼성전자 TV플러스 이야기</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/313_삼성전자 TV플러스 이야기.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">삼성전자 TV플러스 이야기</span></a>
+  <a href="/log_assets/markdown/320_내가 암기를 잘하게 된 사연.html" class="cat-nav-item cat-nav-right"><span class="nav-title">내가 암기를 잘하게 된 사연</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

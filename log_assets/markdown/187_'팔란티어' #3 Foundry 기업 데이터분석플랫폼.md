@@ -84,7 +84,7 @@ Foundry는 도입 기업들의 혁신을 catalyze하며 빠르게 입소문을 �
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/188_프로덕트리더가 꼭 가져야 할 것은.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">프로덕트리더가 꼭 가져야 할 것은?</span></a>
-  <a href="/log_assets/markdown/186_스타트업의 초기 고객 확보 전략 '스트라이프'.html" class="cat-nav-item cat-nav-right"><span class="nav-title">스타트업의 초기 고객 확보 전략 '스트라이프</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/186_스타트업의 초기 고객 확보 전략 '스트라이프'.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">스타트업의 초기 고객 확보 전략 '스트라이프</span></a>
+  <a href="/log_assets/markdown/188_프로덕트리더가 꼭 가져야 할 것은.html" class="cat-nav-item cat-nav-right"><span class="nav-title">프로덕트리더가 꼭 가져야 할 것은?</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

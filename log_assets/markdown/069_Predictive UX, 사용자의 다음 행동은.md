@@ -56,7 +56,7 @@ Predictive UX는 사용자와 서비스 간의 관계를 더욱 스마트하고 
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/076_어프로치를 바꾸다 AI Assisted Design.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">어프로치를 바꾸다 AI Assisted Design</span></a>
-  <a href="/log_assets/markdown/064_화장실의 UX, 공항과 기차역이 말해주는 공간 디자인.html" class="cat-nav-item cat-nav-right"><span class="nav-title">화장실의 UX, 공항과 기차역이 말해주는 공간 디자인</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/064_화장실의 UX, 공항과 기차역이 말해주는 공간 디자인.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">화장실의 UX, 공항과 기차역이 말해주는 공간 디자인</span></a>
+  <a href="/log_assets/markdown/076_어프로치를 바꾸다 AI Assisted Design.html" class="cat-nav-item cat-nav-right"><span class="nav-title">어프로치를 바꾸다 AI Assisted Design</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

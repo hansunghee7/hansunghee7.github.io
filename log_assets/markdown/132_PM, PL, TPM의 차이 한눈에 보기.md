@@ -89,7 +89,7 @@ TPM은 기술적 복잡성을 풀어내고, 여러 팀을 조율합니다.
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/146_린과 애자일, 우리 프로젝트엔 어떤 걸 해야할까.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">린과 애자일, 우리 프로젝트엔 어떤 걸 해야할까?</span></a>
-  <a href="/log_assets/markdown/124_DevOps, 개발과 운영의 경계를 허물다.html" class="cat-nav-item cat-nav-right"><span class="nav-title">DevOps, 개발과 운영의 경계를 허물다</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/124_DevOps, 개발과 운영의 경계를 허물다.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">DevOps, 개발과 운영의 경계를 허물다</span></a>
+  <a href="/log_assets/markdown/146_린과 애자일, 우리 프로젝트엔 어떤 걸 해야할까.html" class="cat-nav-item cat-nav-right"><span class="nav-title">린과 애자일, 우리 프로젝트엔 어떤 걸 해야할까?</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

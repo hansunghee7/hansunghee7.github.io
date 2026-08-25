@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/208_SWOT 비지니스의 4차원 분석법.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">SWOT" 비지니스의 4차원 분석법</span></a>
-  <a href="/log_assets/markdown/192_'맥모닝'의 비밀, MECE 프레임워크.html" class="cat-nav-item cat-nav-right"><span class="nav-title">맥모닝'의 비밀, MECE 프레임워크</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/192_'맥모닝'의 비밀, MECE 프레임워크.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">맥모닝'의 비밀, MECE 프레임워크</span></a>
+  <a href="/log_assets/markdown/208_SWOT 비지니스의 4차원 분석법.html" class="cat-nav-item cat-nav-right"><span class="nav-title">SWOT" 비지니스의 4차원 분석법</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

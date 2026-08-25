@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/360_돈과 행복.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">돈과 행복</span></a>
-  <a href="/log_assets/markdown/355_시드 아이템과 메타인지.html" class="cat-nav-item cat-nav-right"><span class="nav-title">시드 아이템과 메타인지</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/355_시드 아이템과 메타인지.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">시드 아이템과 메타인지</span></a>
+  <a href="/log_assets/markdown/360_돈과 행복.html" class="cat-nav-item cat-nav-right"><span class="nav-title">돈과 행복</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

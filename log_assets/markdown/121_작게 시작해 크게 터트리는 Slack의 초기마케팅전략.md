@@ -89,7 +89,7 @@ Slack처럼 작게 시작해 빠르게 실험하고, 잘 되는 채널에 집중
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/129_Dropbox의 무료에서 유료로의 전환 비법.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">Dropbox의 무료에서 유료로의 전환 비법</span></a>
-  <a href="/log_assets/markdown/113_'커서 AI'의 AI 협력자 전략.html" class="cat-nav-item cat-nav-right"><span class="nav-title">커서 AI'의 AI 협력자 전략</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/113_'커서 AI'의 AI 협력자 전략.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">커서 AI'의 AI 협력자 전략</span></a>
+  <a href="/log_assets/markdown/129_Dropbox의 무료에서 유료로의 전환 비법.html" class="cat-nav-item cat-nav-right"><span class="nav-title">Dropbox의 무료에서 유료로의 전환 비법</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

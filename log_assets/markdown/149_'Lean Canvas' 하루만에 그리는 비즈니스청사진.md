@@ -56,7 +56,7 @@ Business Model Canvas와 Lean Canvas의 선택은 비즈니스의 성장 단계�
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/156_기획자라면 꼭 알아야 할 LTVCAC의 진짜 의미.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">기획자라면 꼭 알아야 할 LTV/CAC의 진짜 의미</span></a>
-  <a href="/log_assets/markdown/142_'코호트 분석' 평균의 함정에서 벗어나는 법.html" class="cat-nav-item cat-nav-right"><span class="nav-title">코호트 분석' 평균의 함정에서 벗어나는 법</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/142_'코호트 분석' 평균의 함정에서 벗어나는 법.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">코호트 분석' 평균의 함정에서 벗어나는 법</span></a>
+  <a href="/log_assets/markdown/156_기획자라면 꼭 알아야 할 LTVCAC의 진짜 의미.html" class="cat-nav-item cat-nav-right"><span class="nav-title">기획자라면 꼭 알아야 할 LTV/CAC의 진짜 의미</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/117_AI가 PO를 대체한다 변화에서 PO가 살아남는 법.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">AI가 PO를 대체한다? 변화에서 PO가 살아남는 법</span></a>
-  <a href="/log_assets/markdown/101_스프린트 주기 어떻게 결정할 것인가.html" class="cat-nav-item cat-nav-right"><span class="nav-title">스프린트 주기 어떻게 결정할 것인가?</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/101_스프린트 주기 어떻게 결정할 것인가.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">스프린트 주기 어떻게 결정할 것인가?</span></a>
+  <a href="/log_assets/markdown/117_AI가 PO를 대체한다 변화에서 PO가 살아남는 법.html" class="cat-nav-item cat-nav-right"><span class="nav-title">AI가 PO를 대체한다? 변화에서 PO가 살아남는 법</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

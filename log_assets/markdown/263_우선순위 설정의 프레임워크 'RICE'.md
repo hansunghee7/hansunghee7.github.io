@@ -60,7 +60,7 @@ Effort는 아이디어 실현에 필요한 시간, 인력, 예산 등을 가늠�
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
+  <a href="/log_assets/markdown/259_고객을 정의하는 법 '페르소나'.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">고객을 정의하는 법 '페르소나</span></a>
   <div></div>
-  <a href="/log_assets/markdown/259_고객을 정의하는 법 '페르소나'.html" class="cat-nav-item cat-nav-right"><span class="nav-title">고객을 정의하는 법 '페르소나</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

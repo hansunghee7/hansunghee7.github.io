@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/106_2천만원으로 10억원 매출을, 안티메탈의 바이럴전략.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">2천만원으로 10억원 매출을, 안티메탈의 바이럴전략</span></a>
-  <a href="/log_assets/markdown/092_드롭박스가 3900% 성장한 하나의 비밀.html" class="cat-nav-item cat-nav-right"><span class="nav-title">드롭박스가 3900% 성장한 하나의 비밀</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/092_드롭박스가 3900% 성장한 하나의 비밀.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">드롭박스가 3900% 성장한 하나의 비밀</span></a>
+  <a href="/log_assets/markdown/106_2천만원으로 10억원 매출을, 안티메탈의 바이럴전략.html" class="cat-nav-item cat-nav-right"><span class="nav-title">2천만원으로 10억원 매출을, 안티메탈의 바이럴전략</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

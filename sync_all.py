@@ -80,24 +80,33 @@ if os.path.exists(MARKDOWN_DIR):
             posts.sort(key=lambda x: x['fname'], reverse=True)
 
         for i, p in enumerate(posts):
-            # 파일명 번호가 낮을수록 최신글이므로, 정렬 방향과 무관하게
-            # 인덱스가 작아지는 쪽(posts[i-1])이 항상 '과거 글', 커지는 쪽(posts[i+1])이 '최신 글'
-            older_post = posts[i-1] if i > 0 else None
-            newer_post = posts[i+1] if i < len(posts)-1 else None
+            # '이전글/다음글'은 절대적인 신구(新舊) 순서가 아니라, 이 카테고리를
+            # 훑어보는 자연스러운 방향을 따른다.
+            # - 연재형(오름차순: 예고편→1화→2화...): 다음 화 = posts[i+1] (더 최신 화)
+            # - 일반 블로그형(내림차순: 최신글이 목록 맨 앞): 다음글 = posts[i-1]
+            #   (목록을 계속 훑어볼 때 다음으로 만나는, 더 과거의 글).
+            #   그래야 목록 맨 앞의 최신글을 열었을 때 '다음글'이 뜨고,
+            #   가장 오래된 글에 도달하면 '다음글'이 사라진다.
+            if is_ascending:
+                prev_post = posts[i-1] if i > 0 else None
+                next_post = posts[i+1] if i < len(posts)-1 else None
+            else:
+                prev_post = posts[i+1] if i < len(posts)-1 else None
+                next_post = posts[i-1] if i > 0 else None
 
             nav_html = '<div class="category-nav-wrap">\n'
-            
-            # 왼쪽 영역 (무조건 과거 글 / 이전 화)
-            if older_post:
+
+            # 왼쪽 영역 (이전글 / 이전 화)
+            if prev_post:
                 label = "이전 화" if is_ascending else "이전글"
-                nav_html += f'  <a href="/log_assets/markdown/{older_post["html_name"]}" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ {label}</span><span class="nav-title">{html.escape(older_post["title"], quote=False)}</span></a>\n'
+                nav_html += f'  <a href="/log_assets/markdown/{prev_post["html_name"]}" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ {label}</span><span class="nav-title">{html.escape(prev_post["title"], quote=False)}</span></a>\n'
             else:
                 nav_html += '  <div></div>\n'
 
-            # 오른쪽 영역 (무조건 최신 글 / 다음 화)
-            if newer_post:
+            # 오른쪽 영역 (다음글 / 다음 화)
+            if next_post:
                 label = "다음 화" if is_ascending else "다음글"
-                nav_html += f'  <a href="/log_assets/markdown/{newer_post["html_name"]}" class="cat-nav-item cat-nav-right"><span class="nav-title">{html.escape(newer_post["title"], quote=False)}</span><span class="cat-nav-label">{label} ❯</span></a>\n'
+                nav_html += f'  <a href="/log_assets/markdown/{next_post["html_name"]}" class="cat-nav-item cat-nav-right"><span class="nav-title">{html.escape(next_post["title"], quote=False)}</span><span class="cat-nav-label">{label} ❯</span></a>\n'
             else:
                 nav_html += '  <div></div>\n'
 

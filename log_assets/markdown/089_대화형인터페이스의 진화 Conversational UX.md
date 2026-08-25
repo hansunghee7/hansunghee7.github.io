@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/095_온보딩, 배에 오르다'에서 시작된 UX의 첫인상 마법.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">온보딩, 배에 오르다'에서 시작된 UX의 첫인상 마법</span></a>
-  <a href="/log_assets/markdown/083_UX도 브랜딩, 사용자 경험이 브랜드 충성도를 만든다.html" class="cat-nav-item cat-nav-right"><span class="nav-title">UX도 브랜딩, 사용자 경험이 브랜드 충성도를 만든다</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/083_UX도 브랜딩, 사용자 경험이 브랜드 충성도를 만든다.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">UX도 브랜딩, 사용자 경험이 브랜드 충성도를 만든다</span></a>
+  <a href="/log_assets/markdown/095_온보딩, 배에 오르다'에서 시작된 UX의 첫인상 마법.html" class="cat-nav-item cat-nav-right"><span class="nav-title">온보딩, 배에 오르다'에서 시작된 UX의 첫인상 마법</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

@@ -64,7 +64,7 @@ FOMO는 본래 SNS 시대에 생겨난 사회 현상을 설명하는 개념이�
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/161_후광효과(Halo Effect), UX 디자인의 첫인상.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">후광효과(Halo Effect), UX 디자인의 첫인상</span></a>
-  <a href="/log_assets/markdown/147_앱 성능과 UX최적화가 매출을 좌우하는 이유.html" class="cat-nav-item cat-nav-right"><span class="nav-title">앱 성능과 UX최적화가 매출을 좌우하는 이유</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/147_앱 성능과 UX최적화가 매출을 좌우하는 이유.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">앱 성능과 UX최적화가 매출을 좌우하는 이유</span></a>
+  <a href="/log_assets/markdown/161_후광효과(Halo Effect), UX 디자인의 첫인상.html" class="cat-nav-item cat-nav-right"><span class="nav-title">후광효과(Halo Effect), UX 디자인의 첫인상</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

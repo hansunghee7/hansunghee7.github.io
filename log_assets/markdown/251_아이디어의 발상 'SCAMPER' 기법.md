@@ -66,7 +66,7 @@ IT 기업들은 이 SCAMPER 기법으로 제품과 서비스를 혁신한다. �
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/259_고객을 정의하는 법 '페르소나'.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">고객을 정의하는 법 '페르소나</span></a>
-  <a href="/log_assets/markdown/244_470명이 만든 비즈니스 툴 '비즈니스 모델 캔버스'.html" class="cat-nav-item cat-nav-right"><span class="nav-title">470명이 만든 비즈니스 툴 '비즈니스 모델 캔버스</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/244_470명이 만든 비즈니스 툴 '비즈니스 모델 캔버스'.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">470명이 만든 비즈니스 툴 '비즈니스 모델 캔버스</span></a>
+  <a href="/log_assets/markdown/259_고객을 정의하는 법 '페르소나'.html" class="cat-nav-item cat-nav-right"><span class="nav-title">고객을 정의하는 법 '페르소나</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

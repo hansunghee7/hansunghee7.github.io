@@ -68,7 +68,7 @@ ps. 생각해 보니 이 작업으로 잡지취재도 하고 TV 출연도 했었
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/524_글을 매일 쓰다보니.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">글을 매일 쓰다보니...</span></a>
-  <a href="/log_assets/markdown/515_레어템 선물을 받았습니다.html" class="cat-nav-item cat-nav-right"><span class="nav-title">레어템 선물을 받았습니다.</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/515_레어템 선물을 받았습니다.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">레어템 선물을 받았습니다.</span></a>
+  <a href="/log_assets/markdown/524_글을 매일 쓰다보니.html" class="cat-nav-item cat-nav-right"><span class="nav-title">글을 매일 쓰다보니...</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

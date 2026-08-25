@@ -58,7 +58,7 @@ Today Workflow
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/564_심플리파이어 웨이 '디자인 협업'.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">심플리파이어 웨이 '디자인 협업</span></a>
-  <a href="/log_assets/markdown/492_IT 서비스를 잘 만드는 회사의 7가지 특징.html" class="cat-nav-item cat-nav-right"><span class="nav-title">IT 서비스를 잘 만드는 회사의 7가지 특징</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/492_IT 서비스를 잘 만드는 회사의 7가지 특징.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">IT 서비스를 잘 만드는 회사의 7가지 특징</span></a>
+  <a href="/log_assets/markdown/564_심플리파이어 웨이 '디자인 협업'.html" class="cat-nav-item cat-nav-right"><span class="nav-title">심플리파이어 웨이 '디자인 협업</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->
