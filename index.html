@@ -393,6 +393,21 @@ layout: null
     /* FAQ -> Contact: 다른 섹션으로 넘어가는 지점 (80px = 40px + 40px, .cta-section 쪽은
        기본 정의가 이 블록보다 뒤에 있어 여기선 안 먹혀 아래 별도 규칙으로 둠) */
     .faq-section { padding-bottom: 40px; }
+    /* FAQ 제목의 인라인 margin-top:0 을 CSS로 옮긴 것 (모바일 간격 유지) */
+    .faq-section .yc-title { margin-top: 0; }
+  }
+
+  /* PC 섹션 간격 통일(100px).
+     기존에는 섹션 패딩 + 마지막 인용문 여백 + 제목 여백이 겹쳐 60~204px로 들쭉날쭉했습니다.
+     간격을 .yc-title 위쪽 한 곳에서만 만들고, 겹쳐 더해지던 패딩은 0으로 정리합니다. */
+  @media (min-width: 761px) {
+    .story-essay { margin-bottom: 100px; }
+    .story-gallery { margin-bottom: 100px; }
+    .story-testimonials .quote-block:last-child { margin-bottom: 0; }
+    .story-section { padding-bottom: 0; }
+    .yc-sections { padding-top: 0; padding-bottom: 0; }
+    .faq-section { padding-top: 0; }
+    .yc-title { margin-top: 100px; }
   }
 
   .cta-section { position: relative; z-index: 40; background: #080808; padding: 100px 0 0; }
@@ -660,7 +675,7 @@ layout: null
 
 <section class="faq-section">
   <div class="faq-wrap">
-    <div class="yc-title" style="margin-top:0;">FAQ</div>
+    <div class="yc-title">FAQ</div>
     <div class="faq-item is-open">
       <button type="button" class="faq-question" aria-expanded="true"><span>왜 회사명이 심플리파이어인가요?</span><span class="faq-icon"></span></button>
       <div class="faq-panel"><div class="faq-panel-inner"><p class="faq-answer">스타트업과 조직이 마주하는 문제는 대부분 여러 원인이 얽혀 있어 무엇부터 손대야 할지조차 불분명한 경우가 많습니다. 심플리파이어는 이런 복잡한 상황에서 핵심 목표와 실행 가능한 성장 경로를 함께 찾아내는 것을 방법론으로 삼고 있습니다. 외부 컨설턴트처럼 진단과 조언만 남기고 떠나는 것이 아니라, 실무자와 같은 자리에서 함께 실행하며 문제를 해결한다는 점이 일반적인 컨설팅과 다른 부분입니다.</p></div></div>
