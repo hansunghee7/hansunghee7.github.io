@@ -82,7 +82,7 @@ Apollo는 인류를 달에 보낸 아폴로 계획을 연상케 합니다. 불�
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/179_이메일도 테슬라처럼 'Superhuman' 프리미엄전략.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">이메일도 테슬라처럼 'Superhuman' 프리미엄전략</span></a>
-  <a href="/log_assets/markdown/186_스타트업의 초기 고객 확보 전략 '스트라이프'.html" class="cat-nav-item cat-nav-right"><span class="nav-title">스타트업의 초기 고객 확보 전략 '스트라이프</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/186_스타트업의 초기 고객 확보 전략 '스트라이프'.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">스타트업의 초기 고객 확보 전략 '스트라이프</span></a>
+  <a href="/log_assets/markdown/179_이메일도 테슬라처럼 'Superhuman' 프리미엄전략.html" class="cat-nav-item cat-nav-right"><span class="nav-title">이메일도 테슬라처럼 'Superhuman' 프리미엄전략</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

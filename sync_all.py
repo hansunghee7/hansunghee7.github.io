@@ -75,13 +75,10 @@ if os.path.exists(MARKDOWN_DIR):
             posts.sort(key=lambda x: x['fname'], reverse=True)
 
         for i, p in enumerate(posts):
-            # 💡 핵심 수정: 오름차순/내림차순에 따라 '과거 글'과 '최신 글'의 인덱스 방향을 반전
-            if is_ascending:
-                older_post = posts[i-1] if i > 0 else None
-                newer_post = posts[i+1] if i < len(posts)-1 else None
-            else:
-                newer_post = posts[i-1] if i > 0 else None
-                older_post = posts[i+1] if i < len(posts)-1 else None
+            # 파일명 번호가 낮을수록 최신글이므로, 정렬 방향과 무관하게
+            # 인덱스가 작아지는 쪽(posts[i-1])이 항상 '과거 글', 커지는 쪽(posts[i+1])이 '최신 글'
+            older_post = posts[i-1] if i > 0 else None
+            newer_post = posts[i+1] if i < len(posts)-1 else None
 
             nav_html = '<div class="category-nav-wrap">\n'
             

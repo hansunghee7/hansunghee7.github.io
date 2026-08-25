@@ -71,7 +71,7 @@ Figma의 제품 주도 성장 전략은 다음과 같은 단계로 진행되었�
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/250_초고율의 AI로 시장을 흔들다 DeepSeek.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">초고율의 AI로 시장을 흔들다. DeepSeek</span></a>
-  <a href="/log_assets/markdown/254_MIT 천재들이 만든 친환경 암모니아 연료 '아모지'.html" class="cat-nav-item cat-nav-right"><span class="nav-title">MIT 천재들이 만든 친환경 암모니아 연료 '아모지</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/254_MIT 천재들이 만든 친환경 암모니아 연료 '아모지'.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">MIT 천재들이 만든 친환경 암모니아 연료 '아모지</span></a>
+  <a href="/log_assets/markdown/250_초고율의 AI로 시장을 흔들다 DeepSeek.html" class="cat-nav-item cat-nav-right"><span class="nav-title">초고율의 AI로 시장을 흔들다. DeepSeek</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

@@ -55,7 +55,7 @@ UX와 UI 디자인의 핵심은 사용자입니다. 끊임없이 사용자의 �
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/249_'좋아요'가 만든 작지만 강력한 UX의 혁명.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">좋아요'가 만든 작지만 강력한 UX의 혁명</span></a>
   <div></div>
+  <a href="/log_assets/markdown/249_'좋아요'가 만든 작지만 강력한 UX의 혁명.html" class="cat-nav-item cat-nav-right"><span class="nav-title">좋아요'가 만든 작지만 강력한 UX의 혁명</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

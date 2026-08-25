@@ -73,7 +73,7 @@ DevOps는 단순히 도구나 프로세스의 문제가 아닙니다. 조직 전
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/117_AI가 PO를 대체한다 변화에서 PO가 살아남는 법.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">AI가 PO를 대체한다? 변화에서 PO가 살아남는 법</span></a>
-  <a href="/log_assets/markdown/132_PM, PL, TPM의 차이 한눈에 보기.html" class="cat-nav-item cat-nav-right"><span class="nav-title">PM, PL, TPM의 차이 한눈에 보기</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/132_PM, PL, TPM의 차이 한눈에 보기.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">PM, PL, TPM의 차이 한눈에 보기</span></a>
+  <a href="/log_assets/markdown/117_AI가 PO를 대체한다 변화에서 PO가 살아남는 법.html" class="cat-nav-item cat-nav-right"><span class="nav-title">AI가 PO를 대체한다? 변화에서 PO가 살아남는 법</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

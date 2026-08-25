@@ -57,7 +57,7 @@ Cursor AI의 성공은 AI를 경쟁 상대나 대체재가 아닌, 함께 일하
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/106_2천만원으로 10억원 매출을, 안티메탈의 바이럴전략.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">2천만원으로 10억원 매출을, 안티메탈의 바이럴전략</span></a>
-  <a href="/log_assets/markdown/121_작게 시작해 크게 터트리는 Slack의 초기마케팅전략.html" class="cat-nav-item cat-nav-right"><span class="nav-title">작게 시작해 크게 터트리는 Slack의 초기마케팅전략</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/121_작게 시작해 크게 터트리는 Slack의 초기마케팅전략.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">작게 시작해 크게 터트리는 Slack의 초기마케팅전략</span></a>
+  <a href="/log_assets/markdown/106_2천만원으로 10억원 매출을, 안티메탈의 바이럴전략.html" class="cat-nav-item cat-nav-right"><span class="nav-title">2천만원으로 10억원 매출을, 안티메탈의 바이럴전략</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

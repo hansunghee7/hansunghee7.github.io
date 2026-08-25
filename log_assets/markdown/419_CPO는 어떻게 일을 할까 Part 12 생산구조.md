@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/413_한코치의 '애자일 왜 하게 되었을까'.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">한코치의 '애자일 왜 하게 되었을까?</span></a>
-  <a href="/log_assets/markdown/420_CPO는 어떻게 일을 할까 Part11 사업목표수립.html" class="cat-nav-item cat-nav-right"><span class="nav-title">CPO는 어떻게 일을 할까? Part1.1 사업목표수립</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/420_CPO는 어떻게 일을 할까 Part11 사업목표수립.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">CPO는 어떻게 일을 할까? Part1.1 사업목표수립</span></a>
+  <a href="/log_assets/markdown/413_한코치의 '애자일 왜 하게 되었을까'.html" class="cat-nav-item cat-nav-right"><span class="nav-title">한코치의 '애자일 왜 하게 되었을까?</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

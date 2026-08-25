@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/182_애자일 vs 워터폴, PO가 알아야 할 모든 것.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">애자일 vs 워터폴, PO가 알아야 할 모든 것</span></a>
-  <a href="/log_assets/markdown/197_스크럼 마스터 vs 프로젝트 매니저' 차이는.html" class="cat-nav-item cat-nav-right"><span class="nav-title">스크럼 마스터 vs 프로젝트 매니저' 차이는?</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/197_스크럼 마스터 vs 프로젝트 매니저' 차이는.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">스크럼 마스터 vs 프로젝트 매니저' 차이는?</span></a>
+  <a href="/log_assets/markdown/182_애자일 vs 워터폴, PO가 알아야 할 모든 것.html" class="cat-nav-item cat-nav-right"><span class="nav-title">애자일 vs 워터폴, PO가 알아야 할 모든 것</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

@@ -65,7 +65,7 @@ AI의 칭찬은 때론 따뜻하지만, 그 이면에는 기업의 책임 회피
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/110_그리드 시스템, 구글 애플이 사랑한 격자 구조.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">그리드 시스템, 구글 애플이 사랑한 격자 구조</span></a>
-  <a href="/log_assets/markdown/125_히트맵, 사용자 행동을 색으로 읽는 법.html" class="cat-nav-item cat-nav-right"><span class="nav-title">히트맵, 사용자 행동을 색으로 읽는 법</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/125_히트맵, 사용자 행동을 색으로 읽는 법.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">히트맵, 사용자 행동을 색으로 읽는 법</span></a>
+  <a href="/log_assets/markdown/110_그리드 시스템, 구글 애플이 사랑한 격자 구조.html" class="cat-nav-item cat-nav-right"><span class="nav-title">그리드 시스템, 구글 애플이 사랑한 격자 구조</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

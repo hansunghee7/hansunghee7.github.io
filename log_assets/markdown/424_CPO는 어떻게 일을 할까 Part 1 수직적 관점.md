@@ -65,7 +65,7 @@ CPO 업무의 보다 쉬운 이해를 위해 업무의 흐름을 수직적인 �
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/423_CPO는 어떻게 일을 할까 Part 2 수평적 관점.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">CPO는 어떻게 일을 할까? Part 2. 수평적 관점</span></a>
-  <a href="/log_assets/markdown/425_CPO가 어려운 포지션인 이유.html" class="cat-nav-item cat-nav-right"><span class="nav-title">CPO가 어려운 포지션인 이유</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/425_CPO가 어려운 포지션인 이유.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">CPO가 어려운 포지션인 이유</span></a>
+  <a href="/log_assets/markdown/423_CPO는 어떻게 일을 할까 Part 2 수평적 관점.html" class="cat-nav-item cat-nav-right"><span class="nav-title">CPO는 어떻게 일을 할까? Part 2. 수평적 관점</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

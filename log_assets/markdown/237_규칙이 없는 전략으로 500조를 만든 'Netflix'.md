@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/235_美 국방부의 선택 빅베어AI.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">美 국방부의 선택 "빅베어AI</span></a>
-  <a href="/log_assets/markdown/238_삼성 사내벤처가 낳은 커머스AI의 혁신, 스튜디오랩.html" class="cat-nav-item cat-nav-right"><span class="nav-title">삼성 사내벤처가 낳은 커머스AI의 혁신, 스튜디오랩</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/238_삼성 사내벤처가 낳은 커머스AI의 혁신, 스튜디오랩.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">삼성 사내벤처가 낳은 커머스AI의 혁신, 스튜디오랩</span></a>
+  <a href="/log_assets/markdown/235_美 국방부의 선택 빅베어AI.html" class="cat-nav-item cat-nav-right"><span class="nav-title">美 국방부의 선택 "빅베어AI</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

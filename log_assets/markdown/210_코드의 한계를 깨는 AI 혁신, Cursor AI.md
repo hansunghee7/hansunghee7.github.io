@@ -55,7 +55,7 @@ Cursor AI의 목표는 단순한 생산성 향상이 아니다. 소프트웨어�
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/209_실패에서 데카콘으로 'Notion'의 초기 시장진출전략.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">실패에서 데카콘으로 'Notion'의 초기 시장진출전략</span></a>
-  <a href="/log_assets/markdown/214_30달러로 만든 AI 혁명, '타이니 제로'.html" class="cat-nav-item cat-nav-right"><span class="nav-title">30달러로 만든 AI 혁명, '타이니 제로</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/214_30달러로 만든 AI 혁명, '타이니 제로'.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">30달러로 만든 AI 혁명, '타이니 제로</span></a>
+  <a href="/log_assets/markdown/209_실패에서 데카콘으로 'Notion'의 초기 시장진출전략.html" class="cat-nav-item cat-nav-right"><span class="nav-title">실패에서 데카콘으로 'Notion'의 초기 시장진출전략</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

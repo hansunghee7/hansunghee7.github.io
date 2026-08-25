@@ -46,7 +46,7 @@ AI 기술이 빠르게 발전하면서 AI 칩의 성능이 그 어느 때보다 
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/170_AI 성능을 100배 높이는 비결 TensorCores.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">AI 성능을 100배 높이는 비결 TensorCores</span></a>
-  <a href="/log_assets/markdown/184_AI 성능의 열쇠, HBM은 무엇일까.html" class="cat-nav-item cat-nav-right"><span class="nav-title">AI 성능의 열쇠, HBM은 무엇일까?</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/184_AI 성능의 열쇠, HBM은 무엇일까.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">AI 성능의 열쇠, HBM은 무엇일까?</span></a>
+  <a href="/log_assets/markdown/170_AI 성능을 100배 높이는 비결 TensorCores.html" class="cat-nav-item cat-nav-right"><span class="nav-title">AI 성능을 100배 높이는 비결 TensorCores</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

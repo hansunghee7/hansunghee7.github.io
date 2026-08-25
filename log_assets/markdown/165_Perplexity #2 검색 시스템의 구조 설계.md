@@ -117,7 +117,7 @@ Perplexity AI의 검색 시스템은 전통적인 키워드 기반 검색과 최
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/164_넷플릭스 사례로 배우는 스타트업 핵심 지표 설정법.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">넷플릭스 사례로 배우는 스타트업 핵심 지표 설정법</span></a>
-  <a href="/log_assets/markdown/167_Perplexity #1 검색의 한계를 넘어서.html" class="cat-nav-item cat-nav-right"><span class="nav-title">Perplexity #1 검색의 한계를 넘어서</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/167_Perplexity #1 검색의 한계를 넘어서.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">Perplexity #1 검색의 한계를 넘어서</span></a>
+  <a href="/log_assets/markdown/164_넷플릭스 사례로 배우는 스타트업 핵심 지표 설정법.html" class="cat-nav-item cat-nav-right"><span class="nav-title">넷플릭스 사례로 배우는 스타트업 핵심 지표 설정법</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

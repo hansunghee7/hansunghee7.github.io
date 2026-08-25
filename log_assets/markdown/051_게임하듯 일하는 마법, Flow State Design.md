@@ -53,7 +53,7 @@ Flow State Design은 사용자를 오래 붙잡아두는 기술이 아닌, 진�
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/045_왜 스타벅스는 다른 카페와 다르게 느껴질까.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">왜 스타벅스는 다른 카페와 다르게 느껴질까?</span></a>
-  <a href="/log_assets/markdown/058_브레드크럼, 길을 잃지 않는 디지털 나침반.html" class="cat-nav-item cat-nav-right"><span class="nav-title">브레드크럼, 길을 잃지 않는 디지털 나침반</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/058_브레드크럼, 길을 잃지 않는 디지털 나침반.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">브레드크럼, 길을 잃지 않는 디지털 나침반</span></a>
+  <a href="/log_assets/markdown/045_왜 스타벅스는 다른 카페와 다르게 느껴질까.html" class="cat-nav-item cat-nav-right"><span class="nav-title">왜 스타벅스는 다른 카페와 다르게 느껴질까?</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

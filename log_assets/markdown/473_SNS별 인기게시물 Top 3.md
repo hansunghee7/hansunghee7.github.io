@@ -95,7 +95,7 @@ EO Planet은 시작한지 얼마 안되었지만 큰 기업 인재들이...가 4
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/472_링크드인에는 어떤 글을 써야할까.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">링크드인에는 어떤 글을 써야할까?</span></a>
-  <a href="/log_assets/markdown/477_글쓰기는 '잘' 보다 '자주'가 더 중요한 이유.html" class="cat-nav-item cat-nav-right"><span class="nav-title">글쓰기는 '잘' 보다 '자주'가 더 중요한 이유</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/477_글쓰기는 '잘' 보다 '자주'가 더 중요한 이유.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">글쓰기는 '잘' 보다 '자주'가 더 중요한 이유</span></a>
+  <a href="/log_assets/markdown/472_링크드인에는 어떤 글을 써야할까.html" class="cat-nav-item cat-nav-right"><span class="nav-title">링크드인에는 어떤 글을 써야할까?</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

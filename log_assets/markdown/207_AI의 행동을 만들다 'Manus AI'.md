@@ -67,7 +67,7 @@ Manus의 등장으로 AI 에이전트 시장의 판도를 바꿀 가능성이 �
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/206_평범을 거부한다 '헤더윅 스튜디오'.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">평범을 거부한다. '헤더윅 스튜디오</span></a>
-  <a href="/log_assets/markdown/209_실패에서 데카콘으로 'Notion'의 초기 시장진출전략.html" class="cat-nav-item cat-nav-right"><span class="nav-title">실패에서 데카콘으로 'Notion'의 초기 시장진출전략</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/209_실패에서 데카콘으로 'Notion'의 초기 시장진출전략.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">실패에서 데카콘으로 'Notion'의 초기 시장진출전략</span></a>
+  <a href="/log_assets/markdown/206_평범을 거부한다 '헤더윅 스튜디오'.html" class="cat-nav-item cat-nav-right"><span class="nav-title">평범을 거부한다. '헤더윅 스튜디오</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

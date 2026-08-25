@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/154_놓치면 후회할 거야  FOMO UX.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">놓치면 후회할 거야!  FOMO UX</span></a>
-  <a href="/log_assets/markdown/169_'결제하기' 버튼 하나로 매출을 높이는 UX.html" class="cat-nav-item cat-nav-right"><span class="nav-title">결제하기' 버튼 하나로 매출을 높이는 UX</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/169_'결제하기' 버튼 하나로 매출을 높이는 UX.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">결제하기' 버튼 하나로 매출을 높이는 UX</span></a>
+  <a href="/log_assets/markdown/154_놓치면 후회할 거야  FOMO UX.html" class="cat-nav-item cat-nav-right"><span class="nav-title">놓치면 후회할 거야!  FOMO UX</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/234_챗GPT가 쉽다고 느껴지는 UX의 비밀.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">챗GPT가 쉽다고 느껴지는 UX의 비밀</span></a>
-  <a href="/log_assets/markdown/249_'좋아요'가 만든 작지만 강력한 UX의 혁명.html" class="cat-nav-item cat-nav-right"><span class="nav-title">좋아요'가 만든 작지만 강력한 UX의 혁명</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/249_'좋아요'가 만든 작지만 강력한 UX의 혁명.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">좋아요'가 만든 작지만 강력한 UX의 혁명</span></a>
+  <a href="/log_assets/markdown/234_챗GPT가 쉽다고 느껴지는 UX의 비밀.html" class="cat-nav-item cat-nav-right"><span class="nav-title">챗GPT가 쉽다고 느껴지는 UX의 비밀</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

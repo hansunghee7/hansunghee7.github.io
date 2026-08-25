@@ -53,7 +53,7 @@ SNS 활용도 빼놓을 수 없습니다. 미국에서 비즈니스 네트워킹
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/093_미국 스타트업은 '브랜드'를 어떻게 정의하는가.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">미국 스타트업은 '브랜드'를 어떻게 정의하는가</span></a>
-  <a href="/log_assets/markdown/107_YC 졸업 스타트업들의 공통된 성장 공식.html" class="cat-nav-item cat-nav-right"><span class="nav-title">YC 졸업 스타트업들의 공통된 성장 공식</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/107_YC 졸업 스타트업들의 공통된 성장 공식.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">YC 졸업 스타트업들의 공통된 성장 공식</span></a>
+  <a href="/log_assets/markdown/093_미국 스타트업은 '브랜드'를 어떻게 정의하는가.html" class="cat-nav-item cat-nav-right"><span class="nav-title">미국 스타트업은 '브랜드'를 어떻게 정의하는가</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

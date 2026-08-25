@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/175_'사용자 스토리' 기능이 아닌 가치를 만드는 비밀 무기.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">사용자 스토리' 기능이 아닌 가치를 만드는 비밀 무기</span></a>
-  <a href="/log_assets/markdown/189_칸반, 애자일의 Just In Time.html" class="cat-nav-item cat-nav-right"><span class="nav-title">칸반, 애자일의 Just In Time</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/189_칸반, 애자일의 Just In Time.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">칸반, 애자일의 Just In Time</span></a>
+  <a href="/log_assets/markdown/175_'사용자 스토리' 기능이 아닌 가치를 만드는 비밀 무기.html" class="cat-nav-item cat-nav-right"><span class="nav-title">사용자 스토리' 기능이 아닌 가치를 만드는 비밀 무기</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

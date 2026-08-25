@@ -88,7 +88,7 @@ AI의 강점과 한계를 명확히 이해하고, 인간만의 감성과 통찰�
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/109_데이터 기반 PO, IT성장의 핵심 엔진.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">데이터 기반 PO, IT성장의 핵심 엔진</span></a>
-  <a href="/log_assets/markdown/124_DevOps, 개발과 운영의 경계를 허물다.html" class="cat-nav-item cat-nav-right"><span class="nav-title">DevOps, 개발과 운영의 경계를 허물다</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/124_DevOps, 개발과 운영의 경계를 허물다.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">DevOps, 개발과 운영의 경계를 허물다</span></a>
+  <a href="/log_assets/markdown/109_데이터 기반 PO, IT성장의 핵심 엔진.html" class="cat-nav-item cat-nav-right"><span class="nav-title">데이터 기반 PO, IT성장의 핵심 엔진</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

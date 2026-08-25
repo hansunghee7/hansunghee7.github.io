@@ -81,7 +81,7 @@ Warby Parker의 전략은 다음과 같습니다.
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/243_오픈AI 샘 알트먼이 선택한 원자력의 미래, 오클로.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">오픈AI 샘 알트먼이 선택한 원자력의 미래, 오클로</span></a>
-  <a href="/log_assets/markdown/246_커머스 AI의 게임체인저, 인핸스.html" class="cat-nav-item cat-nav-right"><span class="nav-title">커머스 AI의 게임체인저, 인핸스</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/246_커머스 AI의 게임체인저, 인핸스.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">커머스 AI의 게임체인저, 인핸스</span></a>
+  <a href="/log_assets/markdown/243_오픈AI 샘 알트먼이 선택한 원자력의 미래, 오클로.html" class="cat-nav-item cat-nav-right"><span class="nav-title">오픈AI 샘 알트먼이 선택한 원자력의 미래, 오클로</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

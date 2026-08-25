@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/229_세상을 바꾼 실험 'OKR'의 3가지 마법.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">세상을 바꾼 실험 'OKR'의 3가지 마법</span></a>
-  <a href="/log_assets/markdown/244_470명이 만든 비즈니스 툴 '비즈니스 모델 캔버스'.html" class="cat-nav-item cat-nav-right"><span class="nav-title">470명이 만든 비즈니스 툴 '비즈니스 모델 캔버스</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/244_470명이 만든 비즈니스 툴 '비즈니스 모델 캔버스'.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">470명이 만든 비즈니스 툴 '비즈니스 모델 캔버스</span></a>
+  <a href="/log_assets/markdown/229_세상을 바꾼 실험 'OKR'의 3가지 마법.html" class="cat-nav-item cat-nav-right"><span class="nav-title">세상을 바꾼 실험 'OKR'의 3가지 마법</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

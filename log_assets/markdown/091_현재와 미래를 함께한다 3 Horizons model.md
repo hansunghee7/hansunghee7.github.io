@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
+  <a href="/log_assets/markdown/097_MIT 창업전략 나침반, 스타트업이 길을 잃지 않는 법.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">MIT 창업전략 나침반, 스타트업이 길을 잃지 않는 법</span></a>
   <div></div>
-  <a href="/log_assets/markdown/097_MIT 창업전략 나침반, 스타트업이 길을 잃지 않는 법.html" class="cat-nav-item cat-nav-right"><span class="nav-title">MIT 창업전략 나침반, 스타트업이 길을 잃지 않는 법</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

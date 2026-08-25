@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/128_고객은 제품을 '고용'한다 'JTBD프레임웍'.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">고객은 제품을 '고용'한다. 'JTBD프레임웍</span></a>
-  <a href="/log_assets/markdown/142_'코호트 분석' 평균의 함정에서 벗어나는 법.html" class="cat-nav-item cat-nav-right"><span class="nav-title">코호트 분석' 평균의 함정에서 벗어나는 법</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/142_'코호트 분석' 평균의 함정에서 벗어나는 법.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">코호트 분석' 평균의 함정에서 벗어나는 법</span></a>
+  <a href="/log_assets/markdown/128_고객은 제품을 '고용'한다 'JTBD프레임웍'.html" class="cat-nav-item cat-nav-right"><span class="nav-title">고객은 제품을 '고용'한다. 'JTBD프레임웍</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

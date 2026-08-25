@@ -55,7 +55,7 @@ ZeRO는 AI 모델 개발의 진입장벽을 낮추고 있으며, 더 많은 기�
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/096_비즈니스 경쟁력에 저전력 NPU가 중요한 이유.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">비즈니스 경쟁력에 저전력 NPU가 중요한 이유</span></a>
-  <a href="/log_assets/markdown/111_AI학습 클라우드 삼국지 AWSGoogleAzure.html" class="cat-nav-item cat-nav-right"><span class="nav-title">AI학습 클라우드 삼국지 AWS/Google/Azure</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/111_AI학습 클라우드 삼국지 AWSGoogleAzure.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">AI학습 클라우드 삼국지 AWS/Google/Azure</span></a>
+  <a href="/log_assets/markdown/096_비즈니스 경쟁력에 저전력 NPU가 중요한 이유.html" class="cat-nav-item cat-nav-right"><span class="nav-title">비즈니스 경쟁력에 저전력 NPU가 중요한 이유</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

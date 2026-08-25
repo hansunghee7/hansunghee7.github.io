@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/575_개인사업자가 되면 좋은 점은 무엇인가요.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">개인사업자가 되면 좋은 점은 무엇인가요?</span></a>
-  <a href="/log_assets/markdown/580_개인사업 시작 전 해야 할 5가지 질문은.html" class="cat-nav-item cat-nav-right"><span class="nav-title">개인사업 시작 전 해야 할 5가지 질문은?</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/580_개인사업 시작 전 해야 할 5가지 질문은.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">개인사업 시작 전 해야 할 5가지 질문은?</span></a>
+  <a href="/log_assets/markdown/575_개인사업자가 되면 좋은 점은 무엇인가요.html" class="cat-nav-item cat-nav-right"><span class="nav-title">개인사업자가 되면 좋은 점은 무엇인가요?</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

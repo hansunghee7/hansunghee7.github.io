@@ -65,7 +65,7 @@ CPO가 되었을 때 단일 스쿼드를 관리하던 PM/PO 때와는 수준이 
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/422_CPO는 어떻게 일을 할까 Part 3 흐름의 결합.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">CPO는 어떻게 일을 할까? Part 3. 흐름의 결합</span></a>
-  <a href="/log_assets/markdown/424_CPO는 어떻게 일을 할까 Part 1 수직적 관점.html" class="cat-nav-item cat-nav-right"><span class="nav-title">CPO는 어떻게 일을 할까? Part 1. 수직적 관점</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/424_CPO는 어떻게 일을 할까 Part 1 수직적 관점.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">CPO는 어떻게 일을 할까? Part 1. 수직적 관점</span></a>
+  <a href="/log_assets/markdown/422_CPO는 어떻게 일을 할까 Part 3 흐름의 결합.html" class="cat-nav-item cat-nav-right"><span class="nav-title">CPO는 어떻게 일을 할까? Part 3. 흐름의 결합</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

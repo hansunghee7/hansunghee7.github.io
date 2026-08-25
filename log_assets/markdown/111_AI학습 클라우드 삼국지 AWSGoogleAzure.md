@@ -53,7 +53,7 @@ AI 스타트업이나 자금 제약 상황에서는 최저 비용의 Google TPU 
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/103_ZeRO, 메모리최적화로 AI 비즈니스의 한계를 넓히다.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">ZeRO, 메모리최적화로 AI 비즈니스의 한계를 넓히다</span></a>
-  <a href="/log_assets/markdown/119_성과를 좌우하는, 데이터 병렬화 vs 모델 병렬화.html" class="cat-nav-item cat-nav-right"><span class="nav-title">성과를 좌우하는, 데이터 병렬화 vs 모델 병렬화</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/119_성과를 좌우하는, 데이터 병렬화 vs 모델 병렬화.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">성과를 좌우하는, 데이터 병렬화 vs 모델 병렬화</span></a>
+  <a href="/log_assets/markdown/103_ZeRO, 메모리최적화로 AI 비즈니스의 한계를 넓히다.html" class="cat-nav-item cat-nav-right"><span class="nav-title">ZeRO, 메모리최적화로 AI 비즈니스의 한계를 넓히다</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

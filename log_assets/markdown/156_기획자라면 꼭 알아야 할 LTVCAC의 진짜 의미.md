@@ -59,7 +59,7 @@ LTV와 CAC, 이 두 알파벳이 내포한 깊은 뜻을 새기자. 단순한 �
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/149_'Lean Canvas' 하루만에 그리는 비즈니스청사진.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">Lean Canvas' 하루만에 그리는 비즈니스청사진</span></a>
-  <a href="/log_assets/markdown/163_구글이 'AB테스트'로 2억 달러를 창출하는 방법.html" class="cat-nav-item cat-nav-right"><span class="nav-title">구글이 'AB테스트'로 2억 달러를 창출하는 방법</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/163_구글이 'AB테스트'로 2억 달러를 창출하는 방법.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">구글이 'AB테스트'로 2억 달러를 창출하는 방법</span></a>
+  <a href="/log_assets/markdown/149_'Lean Canvas' 하루만에 그리는 비즈니스청사진.html" class="cat-nav-item cat-nav-right"><span class="nav-title">Lean Canvas' 하루만에 그리는 비즈니스청사진</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->
