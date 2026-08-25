@@ -73,9 +73,10 @@ Notion은 다양한 언어 지원과 현지화된 콘텐츠를 통해 글로벌 
 
 2020년 원격 근무가 확산되면서 Notion은 이 변화에 빠르게 대응했습니다. 원격 팀을 위한 템플릿과 가이드를 제공하고, 협업 기능을 강화하여 팬데믹 상황에서 급증한 원격 작업 수요를 효과적으로 포착했습니다.
 
-![bdb4c939-823e-40b7-9da6-b218441348ed.jpg](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/cewuSp9WmJlVD9Fi6mpk-PqYYZw.jpg)
-
-![5818e5b6-0729-4732-a594-2c4f22813404.jpg](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/s0nmOAt6u64pIHbi8FvKlf7aK_g.jpg)
+<div class="img-gallery">
+  <img src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/cewuSp9WmJlVD9Fi6mpk-PqYYZw.jpg" alt="bdb4c939-823e-40b7-9da6-b218441348ed.jpg">
+  <img src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/s0nmOAt6u64pIHbi8FvKlf7aK_g.jpg" alt="5818e5b6-0729-4732-a594-2c4f22813404.jpg">
+</div>
 
 이러한 전략적 시장 진출 노력의 결과, Notion은 2021년 기업 가치 100억 달러의 데카 기업으로 성장했으며, 현재는 전 세계 수백만 명의 사용자를 보유한 생산성 도구의 대표주자로 자리매김했습니다.
 

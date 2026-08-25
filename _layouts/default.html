@@ -83,6 +83,9 @@
         .article-body p { font-size: 15px; font-weight: 300; line-height: 2; letter-spacing: 0.8px; margin-bottom: 30px; }
         .article-body img { width: 88%; height: auto; margin: 40px auto; display: block; border-radius: 0; }
         .article-body hr { border: 0; border-top: 1px solid #eaeaea; margin: 60px 0; }
+        .article-body .img-gallery { display: flex; gap: 12px; width: 88%; margin: 40px auto; }
+        .article-body .img-gallery img { width: 0; flex: 1 1 0; min-width: 0; height: auto; margin: 0; }
+        @media (max-width:700px){ .article-body .img-gallery { gap: 6px; } }
 
         .category-nav-wrap {
             margin-top: 40px !important;
