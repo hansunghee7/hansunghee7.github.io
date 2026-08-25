@@ -347,6 +347,11 @@ layout: null
   .overlay-content h3 { font-family: 'Pretendard Variable', sans-serif; font-size: 22px; font-weight: 600; color: #f5f3ee; margin: 0 0 8px; }
   .overlay-content p { font-family: 'Pretendard Variable', sans-serif; font-size: 14px; font-weight: 300; color: #c9c8c2; margin: 0; line-height: 1.5; word-break: keep-all; }
 
+  /* BOOK & CLASS 스와이프 인디케이터 (모바일에서만 표시) */
+  .book-dots { display: none; justify-content: center; gap: 8px; margin-top: 18px; }
+  .book-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(245,243,238,0.25); transition: background .25s ease, transform .25s ease; }
+  .book-dot.is-active { background: #f5f3ee; transform: scale(1.2); }
+
   @media (max-width: 960px) {
     .yc-knowledge-grid { grid-template-columns: 1fr; gap: 40px; }
     .k-col-left { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
@@ -354,6 +359,10 @@ layout: null
     .yc-overlay-grid { grid-template-columns: repeat(2, 1fr); }
     /* 한 줄로 쌓일 때 노출 순서를 Startup(큰 카드) -> FieldPlay -> Life 로 */
     .k-col-center { order: -1; }
+    /* 3단에서는 큰 카드가 시각적 앵커였지만, 한 줄로 쌓이면 같은 카드로 보여
+       제목만 24px로 튀어 보입니다. 나머지 카드와 동일하게 맞춥니다. */
+    .k-card-large h3 { font-size: 16px; margin-bottom: 8px; }
+    .k-card-large p { font-size: 14px; }
   }
   @media (max-width: 600px) {
     .k-col-left { grid-template-columns: 1fr; }
@@ -378,9 +387,10 @@ layout: null
     /* BOOK & CLASS: 큰 카드를 세로로 쌓지 않고 좌우 스크롤 */
     .yc-overlay-grid { display: flex; overflow-x: auto; gap: 12px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
     .yc-overlay-grid::-webkit-scrollbar { display: none; }
-    .overlay-card { flex: 0 0 78%; height: 300px; scroll-snap-align: start; }
+    .overlay-card { flex: 0 0 100%; height: 300px; scroll-snap-align: start; }
     .overlay-content { padding: 24px 20px; }
     .overlay-content h3 { font-size: 19px; }
+    .book-dots { display: flex; }
   }
 
   /* 모바일 섹션 간격 원칙: 서로 다른 섹션(주제가 바뀌는 지점)은 80px,
@@ -788,6 +798,39 @@ layout: null
   shuffleChildren(document.querySelector('.story-gallery'));
   shuffleChildren(document.querySelector('.yc-overlay-grid'));
   shuffleChildren(document.querySelector('.new-bottom-gallery'));
+
+  /* BOOK & CLASS 스와이프 점 인디케이터.
+     카드를 섞은 뒤에 만들어야 점 개수/순서가 실제 카드와 맞습니다. */
+  (function(){
+    var grid = document.querySelector('.yc-overlay-grid');
+    if (!grid) return;
+    var cards = Array.prototype.slice.call(grid.children);
+    if (cards.length < 2) return;
+
+    var dots = document.createElement('div');
+    dots.className = 'book-dots';
+    cards.forEach(function(_, i){
+      var d = document.createElement('span');
+      d.className = 'book-dot' + (i === 0 ? ' is-active' : '');
+      dots.appendChild(d);
+    });
+    grid.parentNode.insertBefore(dots, grid.nextSibling);
+
+    var items = Array.prototype.slice.call(dots.children);
+    var ticking = false;
+    grid.addEventListener('scroll', function(){
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(function(){
+        /* 카드 폭 + gap 을 실제 위치 차이로 계산 (하드코딩하지 않음) */
+        var step = cards.length > 1 ? (cards[1].offsetLeft - cards[0].offsetLeft) : grid.clientWidth;
+        var idx = step > 0 ? Math.round(grid.scrollLeft / step) : 0;
+        idx = Math.max(0, Math.min(items.length - 1, idx));
+        items.forEach(function(el, i){ el.classList.toggle('is-active', i === idx); });
+        ticking = false;
+      });
+    }, { passive: true });
+  })();
 })();
 </script>
 
