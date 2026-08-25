@@ -389,9 +389,12 @@
                 if(p.textContent.includes('📂')) p.classList.add('hidden-element');
             });
 
-            // 본문 안 링크는 새 창으로 열기 (이전글/다음글 내비게이션은 제외)
-            const bodyLinks = articleBody.querySelectorAll('a:not(.category-nav-wrap a)');
+            // 본문 안 "외부" 링크만 새 창으로 열기. 내부 이동(로그 카드, 이전글/다음글,
+            // 상대경로 링크 등)은 같은 창에서 그대로 전환되어야 하므로 제외
+            const bodyLinks = articleBody.querySelectorAll('a[href^="http://"], a[href^="https://"]');
             bodyLinks.forEach(a => {
+                const href = a.getAttribute('href') || '';
+                if (href.indexOf(location.hostname) !== -1) return;
                 a.setAttribute('target', '_blank');
                 a.setAttribute('rel', 'noopener noreferrer');
             });
