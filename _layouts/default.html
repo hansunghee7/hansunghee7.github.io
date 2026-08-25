@@ -739,13 +739,20 @@
                 pBtn.addEventListener('click', function() { 
                     swipeBox.scrollBy({ left: -swipeBox.clientWidth, behavior: 'smooth' }); 
                 });
-                nBtn.addEventListener('click', function() { 
-                    swipeBox.scrollBy({ left: swipeBox.clientWidth, behavior: 'smooth' }); 
+                nBtn.addEventListener('click', function() {
+                    const slideWidth = swipeBox.clientWidth;
+                    const maxScrollLeft = swipeBox.scrollWidth - slideWidth;
+                    const isAtLastSlide = swipeBox.scrollLeft >= maxScrollLeft - 5;
+                    if (hasNextCard && isAtLastSlide) {
+                        window.location.href = nextLink.getAttribute('href');
+                        return;
+                    }
+                    swipeBox.scrollBy({ left: slideWidth, behavior: 'smooth' });
                 });
                 
                 document.addEventListener('keydown', function(e) {
                     if (e.key === 'ArrowLeft') swipeBox.scrollBy({ left: -swipeBox.clientWidth, behavior: 'smooth' });
-                    if (e.key === 'ArrowRight') swipeBox.scrollBy({ left: swipeBox.clientWidth, behavior: 'smooth' });
+                    if (e.key === 'ArrowRight') nBtn.click();
                 });
             }
         }
