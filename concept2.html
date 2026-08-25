@@ -420,17 +420,18 @@ layout: null
     .faq-question { font-size: 17px; }
   }
 
-  /* PC 섹션 간격 통일(100px).
+  /* PC 섹션 간격 통일(130px).
      기존에는 섹션 패딩 + 마지막 인용문 여백 + 제목 여백이 겹쳐 60~204px로 들쭉날쭉했습니다.
-     간격을 .yc-title 위쪽 한 곳에서만 만들고, 겹쳐 더해지던 패딩은 0으로 정리합니다. */
+     간격을 .yc-title 위쪽 한 곳에서만 만들고, 겹쳐 더해지던 패딩은 0으로 정리합니다.
+     값을 바꿀 때는 아래 130px 세 곳만 함께 수정하면 됩니다. */
   @media (min-width: 761px) {
-    .story-essay { margin-bottom: 110px; }
-    .story-gallery { margin-bottom: 110px; }
+    .story-essay { margin-bottom: 130px; }
+    .story-gallery { margin-bottom: 130px; }
     .story-testimonials .quote-block:last-child { margin-bottom: 0; }
     .story-section { padding-bottom: 0; }
     .yc-sections { padding-top: 0; padding-bottom: 0; }
     .faq-section { padding-top: 0; }
-    .yc-title { margin-top: 110px; }
+    .yc-title { margin-top: 130px; }
   }
 
   .cta-section { position: relative; z-index: 40; background: #080808; padding: 100px 0 0; }
