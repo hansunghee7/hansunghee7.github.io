@@ -6,11 +6,12 @@ is_index: true
 <style>
 .cover-wrap.index-mode { display: none !important; }
 body { background-color: #080808 !important; color: #f5f3ee !important; }
-.article-body { max-width: 1200px !important; margin: 0 auto; padding: 60px 32px 120px !important; background-color: #080808 !important; }
+.article-body { max-width: 1200px !important; margin: 0 auto; padding: 24px 32px 120px !important; background-color: #080808 !important; }
 
 .filter-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px; margin-bottom: 40px; position: sticky; top: var(--nav-height); z-index: 50; background: #080808; padding: 16px 0; }
 .category-filter { display: flex; flex-wrap: wrap; gap: 8px; flex: 1; }
 @media (max-width: 700px) {
+  .article-body { padding-top: 16px !important; }
   .filter-wrap { flex-wrap: wrap; }
   .category-filter { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; flex: 1 1 100%; padding-bottom: 2px; }
   .category-filter::-webkit-scrollbar { display: none; }
