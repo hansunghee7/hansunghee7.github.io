@@ -87,11 +87,15 @@ layout: null
   @media (max-width:700px){ .story-essay p.intro-p::first-letter { font-size: 3.6rem; padding-right: 12px; padding-top: 4px; } }
 
   .story-gallery { width: min(1200px, 94vw); margin: 0 auto 140px auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
-  .story-gallery .gallery-item { width: 100%; height: 240px; border-radius: 6px; overflow: hidden; background: #181818; opacity: 0; transform: translateY(18px); transition: opacity 1s ease, transform 1s ease; cursor: pointer; }
+  .story-gallery .gallery-item { position: relative; display: block; width: 100%; height: 240px; border-radius: 6px; overflow: hidden; background: #181818; opacity: 0; transform: translateY(18px); transition: opacity 1s ease, transform 1s ease; cursor: pointer; }
   .story-gallery .gallery-item.show { opacity: 1; transform: translateY(0); }
   .story-gallery .gallery-item img { width: 100%; height: 100%; object-fit: cover; filter: saturate(1.2) brightness(1.03) contrast(1.05); transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.5s ease; }
   .story-gallery:hover .gallery-item img { filter: grayscale(100%) brightness(0.6); }
   .story-gallery .gallery-item:hover img { transform: scale(1.06); filter: grayscale(0%) saturate(1.35) brightness(1.08) contrast(1.08); }
+  .gallery-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 14px; background: rgba(8,8,8,0.35); opacity: 0; transition: opacity 0.35s ease; }
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+  .gallery-overlay span { color: #f5f3ee; font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 12.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.5; }
+  @media (max-width:700px){ .gallery-overlay span { font-size: 11px; } }
 
   @media (max-width:760px){
     .story-gallery { grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 90px; }
@@ -272,11 +276,11 @@ layout: null
   </div>
   
   <div class="story-gallery">
-    <div class="gallery-item"><img src="/assets/story/1-lecture.jpg" alt="강연 현장"></div>
-    <div class="gallery-item"><img src="/assets/story/2-session.jpg" alt="실무진과 논의하는 모습"></div>
-    <div class="gallery-item"><img src="/assets/story/3-whiteboard.jpg" alt="문제를 구조화하는 장면"></div>
-    <div class="gallery-item"><img src="/assets/story/4-meetup.jpg" alt="그룹 밋업"></div>
-    <div class="gallery-item"><img src="/assets/story/5-casual.jpg" alt="캐주얼한 순간"></div>
+    <a class="gallery-item" href="https://www.venturesquare.net/1095863/" target="_blank" rel="noopener noreferrer"><img src="/assets/story/1-lecture.jpg" alt="강연 현장"><div class="gallery-overlay"><span>VentureSquare<br>Interview</span></div></a>
+    <a class="gallery-item" href="https://blog.naver.com/asan_nanum/224297017512" target="_blank" rel="noopener noreferrer"><img src="/assets/story/2-session.jpg" alt="실무진과 논의하는 모습"><div class="gallery-overlay"><span>Asan Sanghoe<br>Lecture</span></div></a>
+    <a class="gallery-item" href="https://blog.naver.com/hyundai-cmk/223834445926" target="_blank" rel="noopener noreferrer"><img src="/assets/story/3-whiteboard.jpg" alt="문제를 구조화하는 장면"><div class="gallery-overlay"><span>CMK Foundation<br>Lecture</span></div></a>
+    <a class="gallery-item" href="https://hansunghee7.github.io/log_assets/markdown/292_%EC%A0%95%EC%A3%BC%EC%98%81%ED%9A%8C%EC%9E%A5%EB%8B%98%20%ED%9B%84%EB%B0%B0%EB%93%A4%EC%9D%84%20%EB%A7%8C%EB%82%98%EA%B3%A0%20%EC%99%94%EC%8A%B5%EB%8B%88%EB%8B%A4.html" target="_blank" rel="noopener noreferrer"><img src="/assets/story/4-meetup.jpg" alt="그룹 밋업"><div class="gallery-overlay"><span>Maru Meetup<br>Workshop</span></div></a>
+    <a class="gallery-item" href="https://hansunghee7.github.io/log_assets/markdown/481_%EB%82%B4%EA%B0%80%20GS%EC%97%90%EC%84%9C%20%EA%B0%95%EC%9D%98%EB%A5%BC%20%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" target="_blank" rel="noopener noreferrer"><img src="/assets/story/5-casual.jpg" alt="캐주얼한 순간"><div class="gallery-overlay"><span>GS 52g<br>Workshop</span></div></a>
   </div>
 
   <div class="story-testimonials">
