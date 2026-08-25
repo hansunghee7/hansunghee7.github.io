@@ -55,8 +55,6 @@ Clean UI가 제공하는 이점은 명확합니다. 사용자가 핵심 정보�
 
 'Clean UI'는 단순함 그 자체가 아니라, 사용자에게 '최적의 경험'을 주기 위한 '숨은 배려'와 '발견의 재미'까지 담고 있습니다. 진정한 Clean UI는 복잡함을 단순화하는 기술이지, 단순히 빼내는 것이 아닙니다.
 
-UX의 언어들이 책으로 나왔어요.
-
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/095_온보딩, 배에 오르다'에서 시작된 UX의 첫인상 마법.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">온보딩, 배에 오르다'에서 시작된 UX의 첫인상 마법</span></a>

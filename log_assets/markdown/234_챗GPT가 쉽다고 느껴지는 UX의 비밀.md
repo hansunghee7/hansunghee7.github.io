@@ -63,8 +63,6 @@ document.addEventListener('DOMContentLoaded', function() {
   
 여러분도 챗GPT를 위 관점으로 이용을 해보세요. 사용자를 위해 최대한 직관적으로 설계되어 있는 UX의 배려가 느껴지실 겁니다.
 
-UX의 언어들이 책으로 나왔어요.
-
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/227_Google의 '심플한 UX' 원칙.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">Google의 '심플한 UX' 원칙</span></a>

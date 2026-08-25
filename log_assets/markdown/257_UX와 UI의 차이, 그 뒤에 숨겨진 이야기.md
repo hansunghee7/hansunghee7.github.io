@@ -53,8 +53,6 @@ UX와 UI 디자인의 핵심은 사용자입니다. 끊임없이 사용자의 �
 
 기획자와 디자이너들이 UX와 UI에 대한 심도깊은 연구를 통해 우리들의 삶을 더 나아지게 만들기를 기대합니다. :-)
 
-UX의 언어들이 책으로 나왔어요.
-
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/249_'좋아요'가 만든 작지만 강력한 UX의 혁명.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">좋아요'가 만든 작지만 강력한 UX의 혁명</span></a>

@@ -55,8 +55,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 지금 이 순간에도 수많은 엄지손가락들이 스마트폰 위를 춤추고 있습니다. 그들의 리듬에 맞추는 것, 이것이 바로 엄지 친화적 디자인의 핵심이죠. 엄지손가락이 행복한 디자인, 바로 우리가 추구해야 할 사용자 중심의 UX디자인입니다.
 
-UX의 언어들이 책으로 나왔어요.
-
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/234_챗GPT가 쉽다고 느껴지는 UX의 비밀.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">챗GPT가 쉽다고 느껴지는 UX의 비밀</span></a>

@@ -51,8 +51,6 @@ AI-Assisted Design의 가장 큰 장점은 아이디어 발상 속도의 혁신�
 
 AI-Assisted Design은 디자이너의 창의성을 확장하고 업무 효율을 높이는 강력한 도구입니다. 하지만 AI는 어디까지나 '어시스턴트'이며, 최종 결정과 창의적 방향성은 여전히 인간 디자이너의 몫입니다.
 
-UX의 언어들이 책으로 나왔어요.
-
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/069_Predictive UX, 사용자의 다음 행동은.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">Predictive UX, 사용자의 다음 행동은?</span></a>

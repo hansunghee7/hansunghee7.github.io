@@ -242,22 +242,22 @@
         }
         .swipe-indicator span.current { color: #f5f3ee; font-weight: 500; }
 
-        body.is-swipe-mode .category-nav-wrap { 
-            flex: 0 0 auto !important; 
-            margin-top: 0 !important; 
+        body.is-swipe-mode .category-nav-wrap {
+            flex: 0 0 auto !important;
+            margin-top: 0 !important;
             margin-bottom: 0 !important;
-            padding: 16px 32px !important; 
-            background: #080808 !important; 
-            border-top: 1px solid rgba(245,243,238,0.08) !important; 
-            width: 100% !important; 
-            max-width: 100% !important; 
-            left: 0 !important; 
-            transform: none !important; 
-            box-sizing: border-box; 
+            padding: 18px 40px !important;
+            background: #080808 !important;
+            border-top: 1px solid rgba(245,243,238,0.08) !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            left: 0 !important;
+            transform: none !important;
+            box-sizing: border-box;
         }
-        body.is-swipe-mode .nav-title { color: #8f8b82 !important; font-size: 13.5px; }
+        body.is-swipe-mode .nav-title { color: #8f8b82 !important; }
         body.is-swipe-mode .cat-nav-item:hover .nav-title { color: #f5f3ee !important; text-decoration: none; }
-        body.is-swipe-mode .cat-nav-label { color: #555 !important; font-size: 12px; }
+        body.is-swipe-mode .cat-nav-label { color: #555 !important; }
     </style>
 </head>
 <body>
@@ -368,17 +368,19 @@
             const coverImg = articleBody.querySelector('img[alt="대표 이미지"]');
             if (coverImg) coverImg.classList.add('hidden-element');
 
-            const titleEl = document.getElementById('displayTitle');
-            if (titleEl && !document.getElementById('coverWrap').classList.contains('index-mode')) {
-                titleEl.innerText = titleEl.innerText.replace(/^[\d#\._\s]+/, '');
-            }
-
             const h1s = articleBody.querySelectorAll('h1');
             if(h1s.length > 0) h1s[0].classList.add('hidden-element');
 
             const ps = articleBody.querySelectorAll('p');
             ps.forEach(p => {
                 if(p.textContent.includes('📂')) p.classList.add('hidden-element');
+            });
+
+            // 본문 안 링크는 새 창으로 열기 (이전글/다음글 내비게이션은 제외)
+            const bodyLinks = articleBody.querySelectorAll('a:not(.category-nav-wrap a)');
+            bodyLinks.forEach(a => {
+                a.setAttribute('target', '_blank');
+                a.setAttribute('rel', 'noopener noreferrer');
             });
         }
 

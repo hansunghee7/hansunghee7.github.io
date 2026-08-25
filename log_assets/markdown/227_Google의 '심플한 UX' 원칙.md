@@ -67,8 +67,6 @@ Material Design을 통해 모든 서비스에 일관된 시각 언어를 적용�
 
 여러분도 담당한 서비스가 사용자를 위해 단순화 되었는지 한번 체크해보길 바란다.
 
-UX의 언어들이 책으로 나왔어요.
-
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/219_실리콘밸리 승자들이 쓰는 '콜투액션(CTA)'.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">실리콘밸리 승자들이 쓰는 '콜투액션(CTA)</span></a>

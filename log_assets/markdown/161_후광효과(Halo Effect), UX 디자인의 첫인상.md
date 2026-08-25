@@ -57,8 +57,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 오늘 당신의 서비스를 처음 접한 사용자는 어떤 기분이 들까요? "이 서비스는 나를 위해 존재하는 것 같아". "이 서비스를 사용하면 대접받는 느낌이 들어"라는 말, 듣고 싶지 않으신가요? 바로 그 순간을 디자인하는 게 우리의 숙제입니다. 사용자의 마음을 사로잡는 첫 화면, 그 심리학의 비밀을 풀어낼 준비, 되셨나요?\
 
-UX의 언어들이 책으로 나왔어요.
-
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/154_놓치면 후회할 거야  FOMO UX.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">놓치면 후회할 거야!  FOMO UX</span></a>

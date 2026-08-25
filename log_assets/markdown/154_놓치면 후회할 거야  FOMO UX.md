@@ -59,8 +59,6 @@ FOMO는 본래 SNS 시대에 생겨난 사회 현상을 설명하는 개념이�
 
 당신의 서비스에도 사용자가 놓치고 싶지 않을 가치가 있나요? 그렇다면 FOMO의 힘을 빌려보는 것은 어떨까요? 단, 사용자의 신뢰를 잃지 않는 선에서 균형을 잡는 것이 중요합니다. FOMO는 불안이 아닌, 기대와 설렘을 주는 방향으로 쓰일 때 비로소 빛을 발하니까요.
 
-UX의 언어들이 책으로 나왔어요.
-
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/147_앱 성능과 UX최적화가 매출을 좌우하는 이유.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">앱 성능과 UX최적화가 매출을 좌우하는 이유</span></a>

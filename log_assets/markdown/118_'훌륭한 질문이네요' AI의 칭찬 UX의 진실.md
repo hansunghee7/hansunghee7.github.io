@@ -63,8 +63,6 @@ AI의 칭찬은 때론 따뜻하지만, 그 이면에는 기업의 책임 회피
 
 참고자료 : [The AI Praise Paradox](https://feelthebern.substack.com/p/the-ai-praise-paradox?r=5a1cza&utm_campaign=post&utm_medium=web&triedRedirect=true)
 
-UX의 언어들이 책으로 나왔어요.
-
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/110_그리드 시스템, 구글 애플이 사랑한 격자 구조.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">그리드 시스템, 구글 애플이 사랑한 격자 구조</span></a>

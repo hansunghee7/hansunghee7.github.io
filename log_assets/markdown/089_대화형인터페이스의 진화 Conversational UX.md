@@ -51,8 +51,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 대화형 UX는 '사람과 기술이 만나는 방식'을 근본적으로 바꾸는 패러다임입니다. 기술이 아무리 진화해도, 결국 중요한 것은 '사람과 연결되는 설계'임을 잊지 마세요.
 
-UX의 언어들이 책으로 나왔어요.
-
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/083_UX도 브랜딩, 사용자 경험이 브랜드 충성도를 만든다.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">UX도 브랜딩, 사용자 경험이 브랜드 충성도를 만든다</span></a>

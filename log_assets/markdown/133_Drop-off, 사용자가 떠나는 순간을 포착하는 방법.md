@@ -115,8 +115,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 여러분의 서비스에서도 '드롭오프' 지점을 체계적으로 찾아내고 개선해보세요. 작은 UX 개선이 큰 비즈니스 성과로 이어질 수 있습니다.
 
-UX의 언어들이 책으로 나왔어요.
-
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/125_히트맵, 사용자 행동을 색으로 읽는 법.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">히트맵, 사용자 행동을 색으로 읽는 법</span></a>

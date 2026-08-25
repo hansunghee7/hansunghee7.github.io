@@ -51,8 +51,6 @@ Flow State를 유도하려면 세 가지 요소가 필요합니다. 명확한 �
 
 Flow State Design은 사용자를 오래 붙잡아두는 기술이 아닌, 진정으로 가치 있는 일에 몰입할 수 있도록 돕는 철학입니다. "이 기능이 사용자의 몰입을 돕는가, 아니면 방해하는가?"라는 질문이 평범한 제품과 중독적인 제품을 가릅니다.
 
-UX의 언어들이 책으로 나왔어요.
-
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/045_왜 스타벅스는 다른 카페와 다르게 느껴질까.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">왜 스타벅스는 다른 카페와 다르게 느껴질까?</span></a>

@@ -51,8 +51,6 @@ Predictive UX의 가장 큰 장점은 사용자 만족도와 편의성의 극대
 
 Predictive UX는 사용자와 서비스 간의 관계를 더욱 스마트하고 개인화된 차원으로 끌어올리는 혁신적인 접근법입니다. 하지만 기술의 힘은 사용자의 신뢰와 동의를 바탕으로 할 때만 진정한 가치를 발휘한다는 점을 잊지 말아야 합니다.
 
-UX의 언어들이 책으로 나왔어요.
-
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/064_화장실의 UX, 공항과 기차역이 말해주는 공간 디자인.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">화장실의 UX, 공항과 기차역이 말해주는 공간 디자인</span></a>
