@@ -253,10 +253,6 @@ layout: null
     .reveal-grid .gitem { height: 66px; }
     .reveal-grid img { max-height: 56px; max-width: 112px; }
     .reveal-stats .rs-row { gap: 40px; }
-    /* 테스티모니얼과 SIMPLIFIER LOG 사이 여백 축소 */
-    .story-section { padding-bottom: 36px; }
-    .yc-sections { padding-top: 0; }
-    .yc-title { margin: 28px 0 24px; }
   }
   @media (max-width:480px){
     .reveal-grid { grid-template-columns: repeat(3, 1fr); gap:22px 10px; }
@@ -374,6 +370,14 @@ layout: null
     .overlay-card { flex: 0 0 78%; height: 300px; scroll-snap-align: start; }
     .overlay-content { padding: 24px 20px; }
     .overlay-content h3 { font-size: 19px; }
+  }
+
+  /* 테스티모니얼 -> SIMPLIFIER LOG 사이 여백 축소.
+     .story-section / .yc-sections / .yc-title 기본 정의보다 뒤에 있어야 적용됩니다(우선순위 동일). */
+  @media (max-width: 760px) {
+    .story-section { padding-bottom: 36px; }
+    .yc-sections { padding-top: 0; }
+    .yc-sections .yc-title { margin-top: 28px; }
   }
 
   .cta-section { position: relative; z-index: 40; background: #080808; padding: 100px 0 0; }
