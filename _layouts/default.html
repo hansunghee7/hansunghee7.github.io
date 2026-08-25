@@ -120,6 +120,9 @@
             .lightbox-close { top: 10px; right: 12px; }
             .lightbox-close svg { width: 22px; height: 22px; }
         }
+        @media (max-width:480px){
+            .category-nav-wrap { padding: 18px 20px !important; }
+        }
 
         .category-nav-wrap {
             margin-top: var(--nav-margin-top) !important;
@@ -138,7 +141,7 @@
             transform: translateX(-50%);
             box-sizing: border-box; 
         }
-        .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #888; transition: color 0.2s; max-width: 45%; }
+        .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #888; transition: color 0.2s; max-width: 45%; padding: 18px 0; margin: -18px 0; }
         .cat-nav-item:hover { color: #111; }
         .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
         .cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
@@ -292,6 +295,9 @@
             transform: none !important;
             box-sizing: border-box;
         }
+        @media (max-width:480px){
+            body.is-swipe-mode .category-nav-wrap { padding: 18px 20px !important; }
+        }
         body.is-swipe-mode .nav-title { color: #8f8b82 !important; }
         body.is-swipe-mode .cat-nav-item:hover .nav-title { color: #f5f3ee !important; text-decoration: none; }
         body.is-swipe-mode .cat-nav-label { color: #555 !important; }
@@ -313,13 +319,14 @@
         z-index: 100;
         background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 100%);
       }
+      .log-nav-logo { padding: 20px 0; margin: -20px 0; }
       .log-nav-logo img { height: 22px; display: block; opacity: 0.9; transition: opacity 0.2s; }
       .log-nav-logo:hover img { opacity: 1; }
-      
+
       .log-nav-category {
         border: 1px solid rgba(245,243,238,0.4);
         border-radius: 20px;
-        padding: 4px 14px;
+        padding: 8px 14px;
         font-size: 12.5px;
         font-weight: 300;
         color: #f5f3ee;
