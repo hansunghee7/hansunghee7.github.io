@@ -14,6 +14,9 @@ body { background-color: #080808 !important; color: #f5f3ee !important; }
   .filter-wrap { flex-wrap: wrap; }
   .category-filter { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; flex: 1 1 100%; padding-bottom: 2px; }
   .category-filter::-webkit-scrollbar { display: none; }
+  .category-filter { --chip-fade-l: 0px; --chip-fade-r: 0px; -webkit-mask-image: linear-gradient(to right, transparent 0, #000 var(--chip-fade-l), #000 calc(100% - var(--chip-fade-r)), transparent 100%); mask-image: linear-gradient(to right, transparent 0, #000 var(--chip-fade-l), #000 calc(100% - var(--chip-fade-r)), transparent 100%); }
+  .category-filter.fade-left { --chip-fade-l: 26px; }
+  .category-filter.fade-right { --chip-fade-r: 26px; }
   .cat-btn { flex-shrink: 0; white-space: nowrap; }
 }
 .cat-btn { padding: 10px 18px; border: 1px solid rgba(245,243,238,0.12); border-radius: 20px; background: transparent; color: #8f8b82; font-size: 13.5px; font-weight: 400; cursor: pointer; transition: all 0.2s; font-family: 'Pretendard Variable', sans-serif; touch-action: manipulation; }
@@ -72,12 +75,19 @@ let sortMode = getSortMode(currentFilter);
 function updateSortUI() { sortBtns.forEach(b => { b.classList.remove('active'); if(b.getAttribute('data-sort') === sortMode) { b.classList.add('active'); } }); } 
 updateSortUI(); 
 
+function scrollActiveChipIntoView(smooth) { const bar = document.querySelector('.category-filter'); if (!bar) return; const active = bar.querySelector('.cat-btn.active'); if (!active) return; if (bar.scrollWidth <= bar.clientWidth + 1) return; const barRect = bar.getBoundingClientRect(), btnRect = active.getBoundingClientRect(), pad = 16; let delta = 0; if (btnRect.left < barRect.left + pad) { delta = btnRect.left - barRect.left - pad; } else if (btnRect.right > barRect.right - pad) { delta = btnRect.right - barRect.right + pad; } if (!delta) return; if (bar.scrollBy) { bar.scrollBy({ left: delta, behavior: smooth ? 'smooth' : 'auto' }); } else { bar.scrollLeft += delta; } } 
+function updateChipFades() { const bar = document.querySelector('.category-filter'); if (!bar) return; const max = bar.scrollWidth - bar.clientWidth; bar.classList.toggle('fade-left', bar.scrollLeft > 4); bar.classList.toggle('fade-right', bar.scrollLeft < max - 4); } 
+const chipBar = document.querySelector('.category-filter'); if (chipBar) { chipBar.addEventListener('scroll', updateChipFades, { passive: true }); } 
+window.addEventListener('resize', updateChipFades); 
+requestAnimationFrame(function() { scrollActiveChipIntoView(false); updateChipFades(); }); 
+window.addEventListener('load', function() { scrollActiveChipIntoView(false); updateChipFades(); }); 
+
 function loadNextBatch() { if (currentVisibleCount >= filteredCards.length) return; const start = currentVisibleCount; const end = Math.min(currentVisibleCount + itemsPerBatch, filteredCards.length); for (let i = start; i < end; i++) { filteredCards[i].classList.add('visible'); filteredCards[i].style.animationDelay = (i - start) * 0.03 + 's'; } currentVisibleCount = end; } 
 
 function applyFilterAndSort() { cards.forEach(card => { card.classList.remove('visible'); card.style.animationDelay = '0s'; }); filteredCards = currentFilter === 'all' ? [...cards] : cards.filter(card => card.getAttribute('data-category') === currentFilter); filteredCards.sort((a, b) => { let dateA = parseInt(a.getAttribute('data-date')) || 0; let dateB = parseInt(b.getAttribute('data-date')) || 0; if (dateA === dateB) { let idA = parseInt(a.getAttribute('data-id')) || 0; let idB = parseInt(b.getAttribute('data-id')) || 0; return sortMode === 'desc' ? idB - idA : idA - idB; } return sortMode === 'desc' ? dateB - dateA : dateA - dateB; }); filteredCards.forEach(card => grid.appendChild(card)); currentVisibleCount = 0; loadNextBatch(); } 
 
 sortBtns.forEach(btn => { btn.addEventListener('click', function() { sortMode = this.getAttribute('data-sort'); updateSortUI(); applyFilterAndSort(); }); }); 
 
-filterBtns.forEach(btn => { btn.addEventListener('click', function() { filterBtns.forEach(b => b.classList.remove('active')); this.classList.add('active'); currentFilter = this.getAttribute('data-filter'); const newUrl = currentFilter === 'all' ? window.location.pathname : window.location.pathname + '?cat=' + encodeURIComponent(currentFilter); window.history.pushState({path:newUrl}, '', newUrl); sortMode = getSortMode(currentFilter); updateSortUI(); applyFilterAndSort(); }); }); 
+filterBtns.forEach(btn => { btn.addEventListener('click', function() { filterBtns.forEach(b => b.classList.remove('active')); this.classList.add('active'); currentFilter = this.getAttribute('data-filter'); const newUrl = currentFilter === 'all' ? window.location.pathname : window.location.pathname + '?cat=' + encodeURIComponent(currentFilter); window.history.pushState({path:newUrl}, '', newUrl); sortMode = getSortMode(currentFilter); updateSortUI(); applyFilterAndSort(); scrollActiveChipIntoView(true); updateChipFades(); }); }); 
 
 const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) loadNextBatch(); }); }, { rootMargin: '200px' }); if (sentinel) observer.observe(sentinel); applyFilterAndSort(); });</script>
