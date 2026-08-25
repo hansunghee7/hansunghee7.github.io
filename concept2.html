@@ -338,9 +338,11 @@ layout: null
     .k-card-large img { height: 200px; }
     .yc-knowledge-grid { gap: 32px; }
     .k-col { gap: 16px; }
-    /* 카테고리 목록이 한 줄에 하나씩이라 세로로 너무 길어져 칩 형태로 접습니다 */
-    /* 칩 배열 위의 구분선은 답답해 보여서 모바일에선 제거 */
-    .k-list-group h4 { font-size: 20px; margin-bottom: 10px; padding-bottom: 0; border-bottom: none; }
+    /* 카테고리 목록이 한 줄에 하나씩이라 세로로 너무 길어져 칩 형태로 접습니다.
+       그룹 제목은 큰 세리프 이탤릭 대신 PROVEN IN THE FIELD / SIMPLIFIER LOG 와
+       같은 작은 대문자 라벨로 맞춰 칩 줄 위에서 조용히 물러나게 합니다. */
+    .k-list-group h4 { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-style: normal; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #8f8b82; margin: 0 0 12px; padding-bottom: 0; border-bottom: none; }
+    .k-col-right { gap: 26px; }
     /* 여러 줄로 감싸지 않고 한 줄 좌우 스크롤.
        그리드/플렉스 아이템의 기본값 min-width:auto 를 풀지 않으면
        칩 줄이 스크롤되지 않고 컬럼 자체를 밀어 넓혀버립니다. */
@@ -348,7 +350,8 @@ layout: null
     .k-list-group { min-width: 0; }
     .k-list-group ul { flex-direction: row; flex-wrap: nowrap; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
     .k-list-group ul::-webkit-scrollbar { display: none; }
-    .k-list-group a { padding: 9px 14px; font-size: 13px; line-height: 1.2; border: 1px solid rgba(245,243,238,0.12); border-radius: 20px; white-space: nowrap; }
+    /* 테두리 대신 은은한 배경만 */
+    .k-list-group a { padding: 10px 15px; font-size: 13px; line-height: 1.2; border: none; background: rgba(245,243,238,0.07); border-radius: 20px; color: #c9c8c2; white-space: nowrap; }
     .k-list-group li { flex-shrink: 0; }
     /* BOOK & CLASS: 큰 카드를 세로로 쌓지 않고 좌우 스크롤 */
     .yc-overlay-grid { display: flex; overflow-x: auto; gap: 12px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
