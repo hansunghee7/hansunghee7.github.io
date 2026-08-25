@@ -397,6 +397,16 @@ layout: null
     .faq-section .yc-title { margin-top: 0; }
   }
 
+  /* 모바일 본문 크기.
+     ORIGIN / 인용문 / FAQ 질문은 세리프(Source Serif 4)라 같은 px에서도
+     산세리프보다 크고 무겁게 보여, 좁은 화면에서만 한 단계 낮춥니다.
+     PC는 본문 폭이 넓어 기존 크기(17/17/18px)를 유지합니다. */
+  @media (max-width: 760px) {
+    .story-essay p { font-size: 16px; }
+    .quote-text { font-size: 16px; }
+    .faq-question { font-size: 17px; }
+  }
+
   /* PC 섹션 간격 통일(100px).
      기존에는 섹션 패딩 + 마지막 인용문 여백 + 제목 여백이 겹쳐 60~204px로 들쭉날쭉했습니다.
      간격을 .yc-title 위쪽 한 곳에서만 만들고, 겹쳐 더해지던 패딩은 0으로 정리합니다. */
