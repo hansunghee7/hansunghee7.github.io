@@ -200,7 +200,8 @@
         body.is-swipe-mode {
             background-color: #080808 !important;
             color: #f5f3ee !important;
-            overflow: hidden !important;
+            overflow-x: hidden !important;
+            overflow-y: auto !important;
             display: flex;
             flex-direction: column;
             height: 100vh; /* 구형 브라우저 폴백 */
@@ -233,14 +234,15 @@
             font-family: 'Pretendard Variable', sans-serif;
         }
 
-        body.is-swipe-mode .post-mode + .article-body { 
-            flex: 1 1 auto !important; 
-            display: flex !important; 
-            flex-direction: column !important; 
-            max-width: 100% !important; 
-            padding: 0 !important; 
-            margin: 0 !important; 
-            overflow: hidden !important; 
+        body.is-swipe-mode .post-mode + .article-body {
+            flex: 1 1 auto !important;
+            display: flex !important;
+            flex-direction: column !important;
+            max-width: 100% !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            overflow: hidden !important;
+            min-height: 0 !important;
             background-color: #080808 !important;
         }
 
