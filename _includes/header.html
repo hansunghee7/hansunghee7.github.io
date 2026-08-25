@@ -30,18 +30,20 @@
   .nav-burger.open span:nth-child(2){ opacity:0; }
   .nav-burger.open span:nth-child(3){ transform: translateY(-6.5px) rotate(-45deg); }
   
-  .mobile-menu { display:none; flex-direction:column; position: fixed; top: var(--nav-height); left: 0; right: 0; bottom: 0; z-index: 1100; padding: 0 32px 40px; background: #080808; border-top: 5px solid rgba(245,243,238,0.08); overflow-y: auto; }
+  .mobile-menu { display:none; flex-direction:column; position: fixed; top: var(--nav-height); left: 0; right: 0; bottom: 0; z-index: 1100; padding: 28px 32px 40px; background: #080808; overflow-y: auto; }
   .mobile-menu.open { display:flex; }
-  .mobile-details { border-bottom: 1px solid rgba(245,243,238,0.07); }
-  .mobile-summary { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 17px; color: #c9c8c2; padding: 20px 0; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; touch-action: manipulation; -webkit-touch-callout: none; }
+  .mobile-details { border-bottom: none; }
+  .mobile-summary { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 22px; font-weight: 500; color: #e8e6e1; padding: 17px 0; cursor: pointer; list-style: none; display: flex; justify-content: flex-start; align-items: center; gap: 12px; touch-action: manipulation; -webkit-touch-callout: none; }
   .mobile-summary::-webkit-details-marker { display: none; }
-  .mobile-summary::after { content: '+'; font-size: 20px; font-weight: 300; transition: transform 0.3s; color: #8f8b82; }
-  .mobile-details[open] .mobile-summary::after { transform: rotate(45deg); color: #f5f3ee; }
+  /* YC처럼 라벨 바로 옆의 얇은 쉐브론 */
+  .mobile-summary::after { content: ''; width: 7px; height: 7px; border-right: 1.5px solid #8f8b82; border-bottom: 1.5px solid #8f8b82; transform: rotate(45deg) translate(-2px, -2px); transition: transform 0.3s; }
+  .mobile-details[open] .mobile-summary::after { transform: rotate(225deg) translate(-2px, -2px); border-color: #f5f3ee; }
   .mobile-details[open] .mobile-summary { color: #f5f3ee; }
-  .mobile-submenu { padding: 0 0 8px 16px; display: flex; flex-direction: column; gap: 2px; }
-  .mobile-submenu a { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 15px; color: #8f8b82; text-decoration: none; word-break: keep-all; padding: 11px 0; touch-action: manipulation; }
+  .mobile-submenu { padding: 2px 0 14px 2px; display: flex; flex-direction: column; gap: 2px; }
+  .mobile-submenu a { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 16px; color: #8f8b82; text-decoration: none; word-break: keep-all; padding: 11px 0; touch-action: manipulation; }
   .mobile-submenu a:hover { color: #f5f3ee; }
-  .mobile-menu-cta { display:block; text-align:center; margin-top:30px; margin-bottom: 8px; padding:14px 0; border-radius:999px; background:#f5f3ee; color:#080808; font-weight:500; font-family: 'Pretendard Variable', sans-serif; border:none; cursor:pointer; width:100%; font-size:15px; touch-action: manipulation; }
+  /* CTA는 YC의 Apply처럼 메뉴 맨 아래에 고정 */
+  .mobile-menu-cta { display:block; text-align:center; margin-top: auto; margin-bottom: 8px; padding:18px 0; border-radius:999px; background:#f5f3ee; color:#080808; font-weight:500; font-family: 'Pretendard Variable', sans-serif; border:none; cursor:pointer; width:100%; font-size:17px; flex-shrink: 0; touch-action: manipulation; }
 
   @media (max-width:860px){ .nav-links{ display:none; } .nav-burger{ display:flex; } .nav-actions .nav-apply { display:none; } }
 </style>
