@@ -424,11 +424,7 @@ layout: null
   }
 
   .cta-section { position: relative; z-index: 40; background: #080808; padding: 100px 0 0; }
-  @media (max-width: 760px) {
-    .cta-section { padding-top: 56px; }
-    .cta-content { margin-bottom: 72px; }
-    .new-bottom-gallery-section { padding-bottom: 96px; }
-  }
+  @media (max-width: 760px) { .cta-section { padding-top: 56px; } }
   .cta-content { text-align:center; margin-bottom: 140px; }
   .cta-content h2 { 
     font-family:'Boska','Source Serif 4',serif; 
@@ -451,6 +447,14 @@ layout: null
   .cta-button:hover { background:#080808; color:#f5f3ee; box-shadow: inset 0 0 0 1px #f5f3ee; }
 
   .new-bottom-gallery-section { padding: 0 24px 80px; }
+
+  /* 아래 두 값은 .cta-content / .new-bottom-gallery-section 기본 정의보다
+     뒤에 있어야 적용됩니다(우선순위 동일 → 나중 규칙 우선).
+     CONTACT → 굿즈 = 섹션 내부 72px, 굿즈 → 푸터 = 섹션 사이 96px */
+  @media (max-width: 760px) {
+    .cta-content { margin-bottom: 72px; }
+    .new-bottom-gallery-section { padding-bottom: 96px; }
+  }
   .new-bottom-gallery { max-width: 1360px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
   .new-gallery-item {
     width: 100%; aspect-ratio: 1 / 1; border-radius: 12px; overflow: hidden; background: #181818;
