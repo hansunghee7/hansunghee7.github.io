@@ -43,9 +43,14 @@ if os.path.exists(MARKDOWN_DIR):
                     except Exception:
                         pass
 
+            # 비공개(published: false) 글은 실제로 빌드되지 않아 링크가 깨지므로
+            # 이전글/다음글 순서에서 완전히 제외
+            if frontmatter.get("published") is False:
+                continue
+
             cat = frontmatter.get("category", "기타")
             title = frontmatter.get("title", fname.replace(".md", ""))
-            
+
             # HTML 파일명 매핑
             html_name = fname.replace(".md", ".html")
             ep_num = extract_ep_num(fname, title)

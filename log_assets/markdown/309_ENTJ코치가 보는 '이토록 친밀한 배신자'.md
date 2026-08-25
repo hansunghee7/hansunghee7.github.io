@@ -42,6 +42,6 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/312_직관력을 가지면 어려운 점.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">직관력을 가지면 어려운 점</span></a>
-  <a href="/log_assets/markdown/308_이중생활 중.html" class="cat-nav-item cat-nav-right"><span class="nav-title">이중생활 중</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/302_코칭이 보람찬 시간.html" class="cat-nav-item cat-nav-right"><span class="nav-title">코칭이 보람찬 시간</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->
