@@ -4,6 +4,7 @@ title: "후광효과(Halo Effect), UX 디자인의 첫인상"
 category: 'UX의 언어들'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/_taE8XOPzKv9tVb_TYbNgdgvmn8.jpg'
 date_string: 'Apr 24. 2025'
+date: 2025-04-24
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

@@ -4,6 +4,7 @@ title: "logo branding"
 category: '심플리파이어 라이프'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/g00uozFCdyrVc20r1sBD4GlfpOE.jpg'
 date_string: 'Jul 14. 2024'
+date: 2024-07-14
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

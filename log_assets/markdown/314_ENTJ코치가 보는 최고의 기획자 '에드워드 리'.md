@@ -4,6 +4,7 @@ title: "ENTJ코치가 보는 최고의 기획자 '에드워드 리"
 category: '기획일상'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/Ec5OJonk__O8xC3pcqZdqfhAwgc.jpeg'
 date_string: 'Oct 13. 2024'
+date: 2024-10-13
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

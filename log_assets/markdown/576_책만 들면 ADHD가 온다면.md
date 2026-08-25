@@ -4,6 +4,7 @@ title: "책만 들면 ADHD가 온다면..."
 category: '심플리파이어 라이프'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/pD2riFuW3Qsnq_6d6yyaUVTcVOo'
 date_string: 'Oct 26. 2023'
+date: 2023-10-26
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

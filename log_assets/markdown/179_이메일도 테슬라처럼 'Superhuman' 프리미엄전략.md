@@ -4,6 +4,7 @@ title: "이메일도 테슬라처럼 'Superhuman' 프리미엄전략"
 category: '스타트업 인사이트'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/c5LD2TxjNIx0Cs8q_M40fulTkjM.jpeg'
 date_string: 'Apr 7. 2025'
+date: 2025-04-07
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

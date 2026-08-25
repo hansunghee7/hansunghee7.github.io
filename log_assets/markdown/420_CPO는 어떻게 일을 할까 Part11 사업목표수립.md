@@ -4,6 +4,7 @@ title: "CPO는 어떻게 일을 할까? Part1.1 사업목표수립"
 category: '스타트업 인사이트'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/vwjYHvoUpm4MWUFERpFWRcNAv7c.png'
 date_string: 'Apr 11. 2024'
+date: 2024-04-11
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

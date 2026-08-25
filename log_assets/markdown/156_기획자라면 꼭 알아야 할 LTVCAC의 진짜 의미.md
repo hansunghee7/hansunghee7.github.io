@@ -4,6 +4,7 @@ title: "기획자라면 꼭 알아야 할 LTV/CAC의 진짜 의미"
 category: '기획자의 프레임웍'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/cb9j5xH2bpNLhSnWvq16Ra5clpA.png'
 date_string: 'Apr 29. 2025'
+date: 2025-04-29
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

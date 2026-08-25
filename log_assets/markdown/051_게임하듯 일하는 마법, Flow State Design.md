@@ -4,6 +4,7 @@ title: "게임하듯 일하는 마법, Flow State Design"
 category: 'UX의 언어들'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/n2ICeF2kzCzaxtz5JF2procPFRs.png'
 date_string: 'Aug 14. 2025'
+date: 2025-08-14
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

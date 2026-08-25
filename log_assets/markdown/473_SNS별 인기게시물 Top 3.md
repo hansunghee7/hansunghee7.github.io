@@ -4,6 +4,7 @@ title: "SNS별 인기게시물 Top 3"
 category: '심플리파이어 라이프'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/hY_vRGnBsnfW6cj8anDnkg94aQU.JPG'
 date_string: 'Feb 14. 2024'
+date: 2024-02-14
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

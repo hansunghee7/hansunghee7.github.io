@@ -4,6 +4,7 @@ title: "작게 시작해 크게 터트리는 Slack의 초기마케팅전략"
 category: '스타트업 인사이트'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/H21BD6_N7Fa18EwB0pn6UwhcZZk.jpg'
 date_string: 'Jun 2. 2025'
+date: 2025-06-02
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

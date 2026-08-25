@@ -4,6 +4,7 @@ title: "Paper Face'를 아시나요?"
 category: '심플리파이어 라이프'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/q7qqSMWrFJHk9N-xP4cYStqgL1A.jpg'
 date_string: 'Dec 25. 2023'
+date: 2023-12-25
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

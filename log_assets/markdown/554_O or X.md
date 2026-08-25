@@ -4,6 +4,7 @@ title: "O or X"
 category: '기획일상'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/B7qpXFSfQF9frkQcxiDGYWcZiWM.png'
 date_string: 'Nov 19. 2023'
+date: 2023-11-19
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

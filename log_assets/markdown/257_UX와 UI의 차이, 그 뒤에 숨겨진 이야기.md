@@ -4,6 +4,7 @@ title: "UX와 UI의 차이, 그 뒤에 숨겨진 이야기"
 category: 'UX의 언어들'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/jmQQAlyj5xNMf3CkWGAEUlvxH1k.png'
 date_string: 'Jan 23. 2025'
+date: 2025-01-23
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

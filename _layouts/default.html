@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }}</title>
-    
+
     <!-- 검색엔진 요약문 (Meta Description) -->
     <meta name="description" content="{{ content | strip_html | strip_newlines | truncate: 150 }}">
+
+    <!-- 이 사이트가 원본임을 명시 (중복 콘텐츠 방지) -->
+    <link rel="canonical" href="https://hansunghee7.github.io{{ page.url }}">
 
     <!-- Open Graph -->
     <meta property="og:type" content="article">
@@ -14,6 +17,8 @@
     <meta property="og:description" content="{{ content | strip_html | strip_newlines | truncate: 150 }}">
     <meta property="og:image" content="{{ page.cover_image | default: 'https://hansunghee7.github.io/log_assets/images/character_black.png' }}">
     <meta property="og:url" content="https://hansunghee7.github.io{{ page.url }}">
+    {% if page.date %}<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">{% endif %}
+    {% if page.category %}<meta property="article:section" content="{{ page.category }}">{% endif %}
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ page.title }}">
@@ -33,7 +38,14 @@
       "@context": "https://schema.org",
       "@type": "BlogPosting",
       "headline": "{{ page.title }}",
-      "datePublished": "{{ page.date_string }}",
+      "datePublished": "{% if page.date %}{{ page.date | date_to_xmlschema }}{% else %}{{ page.date_string }}{% endif %}",
+      "dateModified": "{% if page.date %}{{ page.date | date_to_xmlschema }}{% else %}{{ page.date_string }}{% endif %}",
+      "image": "{{ page.cover_image | default: 'https://hansunghee7.github.io/log_assets/images/character_black.png' }}",
+      "articleSection": "{{ page.category }}",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://hansunghee7.github.io{{ page.url }}"
+      },
       "author": {
         "@type": "Person",
         "name": "Han Sunghee",
@@ -52,10 +64,6 @@
           "@type": "ImageObject",
           "url": "https://hansunghee7.github.io/log_assets/images/logo_white.png"
         }
-      },
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "{{ site.url }}{{ page.url }}"
       }
     }
     </script>

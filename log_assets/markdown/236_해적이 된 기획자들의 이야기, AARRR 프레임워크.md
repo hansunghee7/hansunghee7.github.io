@@ -4,6 +4,7 @@ title: "해적이 된 기획자들의 이야기, AARRR 프레임워크"
 category: '기획자의 프레임웍'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/XkXGdGhFzkoeBjlqGbJtGlsvxdE.jpg'
 date_string: 'Feb 11. 2025'
+date: 2025-02-11
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

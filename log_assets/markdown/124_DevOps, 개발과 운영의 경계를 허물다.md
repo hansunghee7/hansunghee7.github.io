@@ -4,6 +4,7 @@ title: "DevOps, 개발과 운영의 경계를 허물다"
 category: 'PO의 프레임웍'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/CP4gWnaqscTPobkpn7u-vBdG-VY.jpg'
 date_string: 'May 30. 2025'
+date: 2025-05-30
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

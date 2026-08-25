@@ -4,6 +4,7 @@ title: "Drop-off, 사용자가 떠나는 순간을 포착하는 방법"
 category: 'UX의 언어들'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/Mtj_UEvnkZMGQw4HOpm3KQf8wkA.jpg'
 date_string: 'May 22. 2025'
+date: 2025-05-22
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

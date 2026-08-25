@@ -4,6 +4,7 @@ title: "Dropbox의 무료에서 유료로의 전환 비법"
 category: '스타트업 인사이트'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/S9L0uZHiYHruFtGQ1Z-7Rs3qm1c.png'
 date_string: 'May 26. 2025'
+date: 2025-05-26
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

@@ -4,6 +4,7 @@ title: "Perplexity #1 검색의 한계를 넘어서"
 category: '스타트업 인사이트'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/zElxWkUx4Jed427xLvwKEbFV7YU.jpg'
 date_string: 'Apr 20. 2025'
+date: 2025-04-20
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

@@ -4,6 +4,7 @@ title: "Warby Parker의 '독점 시장진입 전략"
 category: '스타트업 인사이트'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/Wdz6woGjrj5ixwZ_yJpXCL7jszg.jpg'
 date_string: 'Feb 3. 2025'
+date: 2025-02-03
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

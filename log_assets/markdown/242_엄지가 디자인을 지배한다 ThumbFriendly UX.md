@@ -4,6 +4,7 @@ title: "엄지가 디자인을 지배한다 ThumbFriendly UX"
 category: 'UX의 언어들'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/uldN0QJ9Nt2v-OoWnvu_vEqRKXQ.png'
 date_string: 'Feb 6. 2025'
+date: 2025-02-06
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

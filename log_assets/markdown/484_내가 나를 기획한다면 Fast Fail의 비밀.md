@@ -4,6 +4,7 @@ title: "내가 나를 기획한다면? Fast Fail의 비밀"
 category: '기획일상'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/JOAj_Dzkhsu5X_E0tuhNmOIW4vs.JPG'
 date_string: 'Feb 4. 2024'
+date: 2024-02-04
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

@@ -4,6 +4,7 @@ title: "ENTJ코치의 넷플릭스 트렁크 감상"
 category: '심플리파이어 라이프'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/A7luiO2KFLSHQr4oZycBw7ulOd4'
 date_string: 'Dec 2. 2024'
+date: 2024-12-02
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

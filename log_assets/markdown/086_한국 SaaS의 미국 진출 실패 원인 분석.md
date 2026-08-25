@@ -4,6 +4,7 @@ title: "한국 SaaS의 미국 진출 실패 원인 분석"
 category: '대한민국 스타트업 미국진출을 묻다'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/tqqPpm8m5iGuiqc-jNpuhz9kEcw.png'
 date_string: 'Jul 6. 2025'
+date: 2025-07-06
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

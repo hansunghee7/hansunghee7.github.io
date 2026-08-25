@@ -4,6 +4,7 @@ title: "팔란티어' #3 Foundry 기업 데이터분석플랫폼"
 category: '스타트업 인사이트'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/UDIJJ2LmiMmX0k3Nbx-EEIiQZlw.png'
 date_string: 'Mar 30. 2025'
+date: 2025-03-30
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

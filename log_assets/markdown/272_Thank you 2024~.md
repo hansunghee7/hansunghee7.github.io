@@ -4,6 +4,7 @@ title: "Thank you 2024~!!!"
 category: '심플리파이어 라이프'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/bl55HEwjPFRTrUq-3EVfeaG4C-E.jpeg'
 date_string: 'Dec 31. 2024'
+date: 2024-12-31
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->
