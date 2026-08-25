@@ -205,6 +205,14 @@ layout: null
   .reveal-grid img[alt*="Usimsa"] { transform: scale(1.35); }
   .reveal-grid img[alt*="D.Camp"] { transform: scale(1.15); }
   .reveal-grid .gitem.show img { filter: grayscale(0%) brightness(1); opacity: 1; }
+  /* 원본이 거의 검정이라 #080808 배경에서 묻히는 로고들.
+     측정치(불투명 픽셀 평균 밝기): 아모레 18, 카카오페이 32, 교보 72, 모두의창업 84.
+     단색 반전이 아니라 흰색 실루엣으로 통일해야 모두의창업의 파란 도형이
+     보색(주황)으로 뒤집히지 않습니다. */
+  .reveal-grid img[alt*="Kakao"],
+  .reveal-grid img[alt*="Amore"],
+  .reveal-grid img[alt*="Kyobo"],
+  .reveal-grid img[alt*="Modoo"] { filter: brightness(0) invert(1) !important; }
   .reveal-grid .gitem:hover img, .reveal-grid .gitem.active img { transform: scale(1.12) !important; }
   .reveal-grid .gitem:hover img[alt*="Asan"], .reveal-grid .gitem.active img[alt*="Asan"] { transform: scale(1.51) !important; }
   .reveal-grid .gitem:hover img[alt*="Modoo"], .reveal-grid .gitem.active img[alt*="Modoo"] { transform: scale(1.57) !important; }
