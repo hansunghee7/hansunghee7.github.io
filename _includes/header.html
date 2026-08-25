@@ -2,7 +2,9 @@
   /* Header 공통 스타일 */
   :root { --nav-height: 68px; }
   header.nav { position: sticky; top:0; z-index: 1000; background: rgba(8,8,8,0.85); backdrop-filter: blur(10px); }
-  .nav-inner { position:relative; display:flex; align-items:center; justify-content:center; padding: 16px 32px; max-width:1200px; margin:0 auto; gap: 240px; }
+  /* 로고와 우측 액션이 모두 position:absolute라 모바일에선 흐름상 내용이 없어집니다.
+     min-height가 없으면 헤더가 padding 높이(36px)로 쪼그라들어 로고가 상단에 붙습니다. */
+  .nav-inner { position:relative; display:flex; align-items:center; justify-content:center; padding: 16px 32px; max-width:1200px; margin:0 auto; gap: 240px; min-height: var(--nav-height); box-sizing: border-box; }
   .nav-logo { height: 26px; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); }
   .nav-logo img { height: 100%; width:auto; display:block; }
   .nav-links { display:flex; align-items:center; gap: 40px; font-size: 14px; color:#c9c8c2; font-family: 'Pretendard Variable', 'Pretendard', sans-serif; }
@@ -41,7 +43,7 @@
   .mobile-submenu a:hover { color: #f5f3ee; }
   .mobile-menu-cta { display:block; text-align:center; margin-top:30px; margin-bottom: 8px; padding:14px 0; border-radius:999px; background:#f5f3ee; color:#080808; font-weight:500; font-family: 'Pretendard Variable', sans-serif; border:none; cursor:pointer; width:100%; font-size:15px; touch-action: manipulation; }
 
-  @media (max-width:860px){ .nav-links{ display:none; } .nav-burger{ display:flex; } .nav-actions .nav-apply { display:none; } .nav-inner{ padding: 20px 32px 16px; } }
+  @media (max-width:860px){ .nav-links{ display:none; } .nav-burger{ display:flex; } .nav-actions .nav-apply { display:none; } }
 </style>
 
 <header class="nav">
@@ -98,8 +100,12 @@
       </button>
     </div>
   </div>
+</header>
 
-  <nav class="mobile-menu" id="mobile-menu">
+<!-- 모바일 메뉴는 header 밖에 둡니다.
+     header에 backdrop-filter가 걸려 있으면 그 안의 position:fixed 요소가
+     뷰포트가 아닌 header를 기준으로 잡혀서 높이가 무너집니다. -->
+<nav class="mobile-menu" id="mobile-menu">
     <details class="mobile-details"><summary class="mobile-summary">Startup</summary>
       <div class="mobile-submenu">
         <a href="/log.html?cat=%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8">스타트업 인사이트</a>
@@ -133,8 +139,7 @@
       </div>
     </details>
     <button type="button" class="mobile-menu-cta open-contact-modal">Contact</button>
-  </nav>
-</header>
+</nav>
 
 <script>
 (function(){
