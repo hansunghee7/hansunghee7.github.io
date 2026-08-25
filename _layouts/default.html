@@ -103,6 +103,10 @@
         }
         .article-body .img-gallery img { width: auto; flex: 1 1 0; min-width: 0; height: auto; margin: 0; object-fit: cover; }
         @media (max-width:700px){ .article-body .img-gallery { gap: 6px; padding: 0 12px; } }
+        @media (max-width:600px){
+            .article-body .img-gallery { flex-direction: column; }
+            .article-body .img-gallery img { width: 100% !important; height: auto !important; }
+        }
         .article-body img { cursor: zoom-in; }
         .lightbox-overlay { position: fixed; inset: 0; background: rgba(8,8,8,0.92); display: none; align-items: center; justify-content: center; z-index: 9999; padding: 40px; cursor: zoom-out; }
         .lightbox-overlay.active { display: flex; }
