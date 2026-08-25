@@ -158,7 +158,7 @@ layout: null
   .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
   @media (max-width:700px){ .wrap{ padding: 0 32px; } }
 
-  .hero-wrapper { position: sticky; top: var(--nav-height); z-index: 5; height: calc(100vh - var(--nav-height)); background: #080808; }
+  .hero-wrapper { position: sticky; top: var(--nav-height); z-index: 5; height: calc(100vh - var(--nav-height)); height: calc(100dvh - var(--nav-height)); background: #080808; }
   .hero { height: 100%; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; }
   #hero-fade { will-change: opacity; width: 100%; }
   .hero h1 { font-family: 'Boska', 'Source Serif 4', serif; font-weight: 200; font-size: clamp(42px, 7.3vw, 79px); line-height: 1.2; max-width: 1060px; margin: 0 auto 6px; }
@@ -168,9 +168,9 @@ layout: null
   .hero-footnote .q { font-weight:300; font-size: 15px; line-height:1.9; color:#8f8b82; letter-spacing:-0.01em; }
   .hero-footnote .who { display:block; margin-top: 10px; text-align:right; font-weight:300; font-style:italic; font-size:14px; color:#8f8b82; }
   .scroll-cue { position:absolute; left:50%; bottom:40px; transform:translateX(-50%); display: flex; justify-content: center; width: 40px; }
-  .scroll-cue .chev { display:block; width:13px; height:13px; border-right:1.5px solid #8f8b82; border-bottom:1.5px solid #8f8b82; transform: rotate(45deg); }
+  .scroll-cue .chev { display:block; width:9px; height:9px; border-right:1px solid #8f8b82; border-bottom:1px solid #8f8b82; transform: rotate(45deg); }
 
-  .proven-wrap { position: sticky; top: var(--nav-height); z-index: 10; height: calc(100vh - var(--nav-height)); background: #080808; }
+  .proven-wrap { position: sticky; top: var(--nav-height); z-index: 10; height: calc(100vh - var(--nav-height)); height: calc(100dvh - var(--nav-height)); background: #080808; }
   .proven-section { height: 100%; display:flex; flex-direction:column; align-items:center; justify-content:center; }
   #proven-fade { will-change: opacity; width: 100%; }
 
