@@ -250,6 +250,8 @@ layout: null
        0으로 만들어 버립니다. 모바일에선 항상 보이도록 고정. */
     #proven-fade { opacity: 1 !important; }
     .reveal-grid { grid-template-columns: repeat(3, 1fr); gap:26px 12px; margin-bottom: 40px; }
+    /* 3단 배치이므로 10번째 로고는 숨겨 3x3으로 딱 맞춥니다 */
+    .reveal-grid .gitem:nth-child(n+10) { display: none; }
     .reveal-grid .gitem { height: 66px; }
     .reveal-grid img { max-height: 56px; max-width: 112px; }
     .reveal-stats .rs-row { gap: 40px; }
@@ -362,8 +364,11 @@ layout: null
     .k-col { gap: 16px; }
     /* 카테고리 목록이 한 줄에 하나씩이라 세로로 너무 길어져 칩 형태로 접습니다 */
     .k-list-group h4 { font-size: 20px; margin-bottom: 12px; padding-bottom: 8px; }
-    .k-list-group ul { flex-direction: row; flex-wrap: wrap; gap: 8px; }
-    .k-list-group a { padding: 9px 14px; font-size: 13px; line-height: 1.2; border: 1px solid rgba(245,243,238,0.12); border-radius: 20px; }
+    /* 여러 줄로 감싸지 않고 한 줄 좌우 스크롤 */
+    .k-list-group ul { flex-direction: row; flex-wrap: nowrap; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .k-list-group ul::-webkit-scrollbar { display: none; }
+    .k-list-group a { padding: 9px 14px; font-size: 13px; line-height: 1.2; border: 1px solid rgba(245,243,238,0.12); border-radius: 20px; white-space: nowrap; }
+    .k-list-group li { flex-shrink: 0; }
     /* BOOK & CLASS: 큰 카드를 세로로 쌓지 않고 좌우 스크롤 */
     .yc-overlay-grid { display: flex; overflow-x: auto; gap: 12px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
     .yc-overlay-grid::-webkit-scrollbar { display: none; }
@@ -705,6 +710,30 @@ layout: null
 <!-- 💡 분리된 공통 Footer 및 Contact 모달을 인클루드합니다 -->
 {% include footer.html %}
 {% include contact_modal.html %}
+
+<script>
+/* 모바일에서 갤러리 노출 순서를 매 방문마다 섞습니다.
+   CSS(order)가 아니라 DOM 순서를 직접 바꾸는 이유:
+   스토리/굿즈 갤러리는 :nth-child로 뒤쪽 항목을 숨기고 있어서,
+   DOM을 섞어야 '어떤 사진이 보이는지'까지 함께 랜덤해집니다. */
+(function(){
+  if (!window.matchMedia || !window.matchMedia('(max-width: 860px)').matches) return;
+  function shuffleChildren(container){
+    if (!container) return;
+    var items = Array.prototype.slice.call(container.children);
+    for (var i = items.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = items[i]; items[i] = items[j]; items[j] = tmp;
+    }
+    var frag = document.createDocumentFragment();
+    items.forEach(function(el){ frag.appendChild(el); });
+    container.appendChild(frag);
+  }
+  shuffleChildren(document.querySelector('.story-gallery'));
+  shuffleChildren(document.querySelector('.yc-overlay-grid'));
+  shuffleChildren(document.querySelector('.new-bottom-gallery'));
+})();
+</script>
 
 <script>
 (function(){
