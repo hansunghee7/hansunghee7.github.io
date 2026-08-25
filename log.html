@@ -53,7 +53,7 @@ document.querySelectorAll('header, .site-header, .page-header, .post-header, .ma
 
 const cards = Array.from(document.querySelectorAll('.card-item')); const filterBtns = document.querySelectorAll('.cat-btn'); const sortBtns = document.querySelectorAll('.sort-text-btn'); const sentinel = document.getElementById('scrollSentinel'); const grid = document.getElementById('cardGrid'); let itemsPerBatch = 20, currentVisibleCount = 0; let filteredCards = [...cards]; let currentFilter = 'all'; 
 
-const categoryDefaults = {"AI의 언어들": "desc", "Be the PO": "desc", "PO의 프레임웍": "asc", "UX의 언어들": "desc", "기획일상": "desc", "기획자의 프레임웍": "asc", "대한민국 스타트업 미국진출을 묻다": "asc", "스타트업 인사이트": "desc", "심플리파이어 라이프": "desc", "이력서에 쓰지 않는 첫직장 이야기": "asc", "잉크드인대 기획학과": "asc", "코치S": "asc", "토크세션": "desc"};
+const categoryDefaults = {"AI의 언어들": "asc", "Be the PO": "desc", "PO의 프레임웍": "asc", "UX의 언어들": "desc", "기획일상": "desc", "기획자의 프레임웍": "asc", "대한민국 스타트업 미국진출을 묻다": "asc", "스타트업 인사이트": "desc", "심플리파이어 라이프": "desc", "이력서에 쓰지 않는 첫직장 이야기": "asc", "잉크드인대 기획학과": "asc", "코치S": "asc", "토크세션": "desc"};
 
 function getSortMode(cat) { 
     return localStorage.getItem('brunchSort_' + cat) || categoryDefaults[cat] || 'desc'; 
