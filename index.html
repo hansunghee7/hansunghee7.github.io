@@ -224,12 +224,15 @@ layout: null
        내용이 위쪽으로 넘쳐 히어로 첫 화면에 PROVEN 문구가 비칩니다. 자연스러운 흐름으로 전환. */
     /* static으로 두면 z-index가 무시돼서, sticky로 붙어있는 히어로(z-index:5)가
        이 섹션을 덮어버립니다. 흐름 배치는 유지하되 relative로 z-index를 살립니다. */
-    .proven-wrap { position: relative; z-index: 10; height: auto; pointer-events: auto !important; }
-    .proven-section { height: auto; padding: 80px 0 72px; }
+    /* sticky 기준값이던 top:var(--nav-height)가 relative에서도 살아있어
+       이 섹션이 68px 아래로 밀리고 다음 섹션과 겹쳐 보였습니다. */
+    .proven-wrap { position: relative; top: auto; z-index: 10; height: auto; pointer-events: auto !important; }
+    .proven-section { height: auto; padding: 80px 0 36px; }
     /* 흐름 배치로 바뀌면서 스크롤 연동 페이드(syncProvenFade)가 이 섹션을 보이는 도중에
        0으로 만들어 버립니다. 모바일에선 항상 보이도록 고정. */
     #proven-fade { opacity: 1 !important; }
-    .reveal-grid { grid-template-columns: repeat(3, 1fr); gap:26px 12px; margin-bottom: 40px; }
+    .proven-label { margin-bottom: 32px; }
+    .reveal-grid { grid-template-columns: repeat(3, 1fr); gap:26px 12px; margin-bottom: 72px; }
     /* 3단 배치이므로 10번째 로고는 숨겨 3x3으로 딱 맞춥니다 */
     .reveal-grid .gitem:nth-child(n+10) { display: none; }
     .reveal-grid .gitem { height: 66px; }
@@ -421,7 +424,11 @@ layout: null
   }
 
   .cta-section { position: relative; z-index: 40; background: #080808; padding: 100px 0 0; }
-  @media (max-width: 760px) { .cta-section { padding-top: 40px; } }
+  @media (max-width: 760px) {
+    .cta-section { padding-top: 56px; }
+    .cta-content { margin-bottom: 72px; }
+    .new-bottom-gallery-section { padding-bottom: 96px; }
+  }
   .cta-content { text-align:center; margin-bottom: 140px; }
   .cta-content h2 { 
     font-family:'Boska','Source Serif 4',serif; 
