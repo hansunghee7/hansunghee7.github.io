@@ -79,9 +79,6 @@ Gotham과 같은 강력한 감시 플랫폼이 안보 역량 강화에 기여한
 
 다음 편에서는 팔란티어의 기업용 플랫폼인 Foundry의 활용 사례를 살펴보겠습니다. Gotham과는 또 다른 방식으로 비즈니스 가치를 창출하는 Foundry의 역량, 함께 파헤쳐 보시죠.
 
-**팔란티어 시대의 리더십은 무엇이 달라야 할까요?**
-
-
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/196_프로덕트가 생각보다 성장하지 않는 이유는 무엇일까요.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">프로덕트가 생각보다 성장하지 않는 이유는 무엇일까요?</span></a>

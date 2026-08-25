@@ -79,9 +79,6 @@ Foundry는 도입 기업들의 혁신을 catalyze하며 빠르게 입소문을 �
 
 다음 편은 고담과 파운드리의 배포를 관리하는 'Apollo에 대해서입니다. 팔란티어의 배포 관리는 무엇이 다를지 함께 알아보죠.
 
-**팔란티어 시대의 리더십은 무엇이 달라야 할까요?**
-
-
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/188_프로덕트리더가 꼭 가져야 할 것은.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">프로덕트리더가 꼭 가져야 할 것은?</span></a>

@@ -77,9 +77,6 @@ Apollo는 인류를 달에 보낸 아폴로 계획을 연상케 합니다. 불�
 
 이제 Apollo까지 다뤄 팔란티어 제품군 소개를 마칩니다. 데이터 통합, 분석, 시각화, 협업, 배포까지 그들의 기술과 비전을 샅샅이 살펴봤는데요. 이 모든 게 우리에겐 어떤 의미가 있을지, 한국에선 어떻게 적용될 수 있을지 궁금하지 않으신가요? 바로 다음 편에서 팔란티어 혁신 모델의 한국 적용을 상상해 보겠습니다. '한국형 팔란티어'는 가능할까요? 함께 생각 나눠 보시죠!
 
-**팔란티어 시대의 리더십은 무엇이 달라야 할까요?**
-
-
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/186_스타트업의 초기 고객 확보 전략 '스트라이프'.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">스타트업의 초기 고객 확보 전략 '스트라이프</span></a>
