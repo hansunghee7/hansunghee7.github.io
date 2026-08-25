@@ -1,91 +1,110 @@
-# Simplifier Log 글쓰기 (Decap CMS)
+# 홈페이지에서 글쓰기 — 로그인 연결하기
 
-`/admin/` 페이지에서 로그인하면 브라우저에서 바로 글을 쓰고 저장할 수 있습니다.
-저장하면 이 저장소의 `log_assets/markdown/`에 파일이 커밋되고, GitHub Actions
-(`.github/workflows/publish-pipeline.yml`)가 자동으로:
+`/admin/`에서 브라우저로 바로 글을 쓰려면, GitHub한테 "이 사람이 진짜 사장님
+맞다"는 걸 확인시켜주는 절차가 딱 한 번 필요합니다. 로그인 창을 하나 새로
+만드는 것과 비슷한 작업인데, 복잡한 부분은 전부 제가 터미널에서 대신
+처리하겠습니다. **사장님이 직접 하실 일은 딱 두 가지, 각각 3분 정도입니다.**
+나머지는 그 결과값 몇 개를 저한테 복사해서 붙여넣어 주시기만 하면 됩니다.
 
-1. 파일명에 순번을 붙이고, 발행일 표시 텍스트를 채우고, 카테고리 링크 스크립트를 넣고
-2. 이전글/다음글 링크를 다시 계산하고
-3. `log.html` 카드 목록에 새 카드를 추가하고
-4. 홈페이지 미리보기가 읽는 `assets/data/posts.json`을 갱신합니다.
+전체 순서는 이렇습니다:
 
-**아직 안 된 것 하나**: 로그인이 되려면 GitHub OAuth 앱 하나와, 그 로그인을
-중계해줄 아주 작은 서버(프록시) 하나가 필요합니다. GitHub이 브라우저에서
-직접 로그인 토큰을 내주지 않기 때문에 이 저장소 파일만으로는 끝낼 수 없는
-유일한 단계입니다. 아래 순서대로 하시면 됩니다 (10분 내외, 전부 무료).
-
-## 1) GitHub OAuth 앱 만들기
-
-1. https://github.com/settings/developers 접속 → **New OAuth App**
-2. 아래처럼 입력:
-   - Application name: `Simplifier Log CMS` (아무 이름이나 무방)
-   - Homepage URL: `https://hansunghee7.github.io`
-   - Authorization callback URL: `https://<3번에서 만들 프록시 주소>/callback`
-     (예: `https://simplifier-cms-auth.<본인계정>.workers.dev/callback`
-     — 정확한 주소는 3번을 먼저 끝낸 뒤 다시 와서 채워도 됩니다)
-3. **Register application** 클릭 → **Client ID**가 보입니다
-4. **Generate a new client secret** 클릭 → 나오는 값을 복사해둡니다
-   (이 화면을 벗어나면 다시 못 봅니다)
-
-## 2) Cloudflare 계정 (없다면)
-
-https://dash.cloudflare.com/sign-up 무료 가입. 카드 등록 불필요.
-
-## 3) OAuth 프록시를 Cloudflare Worker로 배포
-
-[`sterlingwes/decap-proxy`](https://github.com/sterlingwes/decap-proxy)를 씁니다
-— Decap CMS 전용으로 만들어진, 딱 이 역할만 하는 작은 오픈소스 프록시입니다.
-
-1. 위 저장소 페이지 오른쪽의 안내(README)대로 Cloudflare Worker에 배포합니다.
-   (`Deploy to Cloudflare Workers` 버튼이 있으면 그걸 누르는 게 제일 빠릅니다.
-   버튼이 안 보이면 README의 `wrangler` 배포 안내를 따라갑니다 — 이 부분은
-   막히면 저한테 화면을 보여주시면 같이 진행하겠습니다.)
-2. 배포 시 환경변수로 1번에서 만든 **Client ID**, **Client Secret**을 넣습니다.
-3. 배포가 끝나면 `https://아무개.workers.dev` 같은 주소가 나옵니다 — 이게
-   프록시 주소입니다.
-4. 1번의 OAuth 앱 설정으로 돌아가서 **Authorization callback URL**을
-   `https://<그 주소>/callback`으로 정확히 맞춰줍니다.
-
-## 4) 이 저장소에 프록시 주소 반영
-
-`admin/config.yml`의 `backend.base_url` 값을 3번에서 받은 주소로 바꿔서
-커밋 · 푸시합니다.
-
-```yaml
-backend:
-  name: github
-  repo: hansunghee7/hansunghee7.github.io
-  branch: main
-  base_url: https://아무개.workers.dev   # <- 여기
-```
-
-## 5) 확인
-
-`https://hansunghee7.github.io/admin/`에 접속해서 **Login with GitHub**을
-누르면 GitHub 로그인 창이 뜨고, 승인하면 CMS 화면으로 들어갑니다. 이때부터
-글쓰기·수정이 전부 브라우저에서 됩니다.
+1. **(사장님)** Cloudflare라는 곳에서 열쇠 하나를 발급받아 저한테 줍니다
+2. **(저)** 그 열쇠로 로그인 중계 서버를 하나 만듭니다 → 주소가 하나 생깁니다
+3. **(사장님)** 그 주소로 GitHub에 "출입증"을 하나 만들어서 저한테 줍니다
+4. **(저)** 그 출입증 정보를 서버에 등록하고, 홈페이지 설정을 마무리합니다
+5. **(사장님)** `/admin/`에서 로그인 버튼을 눌러 확인합니다
 
 ---
 
-## 참고: 로그인 없이 미리 테스트해보기 (선택)
+## 1단계 (사장님이 하실 일) — Cloudflare 열쇠 발급받기
 
-Node.js가 설치된 PC라면, 위 OAuth 단계를 하기 전에도 로컬에서 필드 구성이
-어떻게 보이는지 미리 볼 수 있습니다.
+Cloudflare는 이 로그인 중계 서버를 무료로 돌려주는 곳입니다. 계정이 없으면
+먼저 만드셔야 합니다.
 
-```bash
-npx decap-server
-```
+1. https://dash.cloudflare.com/sign-up 접속 → 이메일·비밀번호로 가입
+   (신용카드 필요 없습니다)
+2. 로그인이 되면 왼쪽 메뉴 어딘가에 **"API 토큰(API Tokens)"** 이라는 항목이
+   있습니다. 안 보이면 화면 오른쪽 위 **내 프로필 아이콘 → My Profile → API
+   Tokens** 순서로 들어가시면 됩니다.
+3. **"토큰 생성(Create Token)"** 버튼을 누릅니다.
+4. 목록 중에 **"Edit Cloudflare Workers"** 라는 이름의 항목을 찾아서
+   그 옆의 **"사용(Use template)"** 버튼을 누릅니다.
+5. 별다른 설정 변경 없이 아래로 내려가서 **"계속(Continue to summary)"** →
+   **"토큰 생성(Create Token)"** 을 누릅니다.
+6. 화면에 긴 영어+숫자 조합 문자열이 한 번 나타납니다. 이게 **열쇠(토큰)**
+   입니다. **이 화면을 벗어나면 다시 못 봅니다** — 지금 바로 복사해서
+   **저한테 붙여넣어 주세요.**
 
-띄운 채로 `/admin/`을 열면(현재 `admin/config.yml`에 `local_backend: true`가
-켜져 있어) 로그인 없이 로컬 파일을 직접 편집하는 모드로 들어갑니다. 실제
-운영(다른 기기에서 글쓰기)에는 위 1~5번의 GitHub 로그인 경로가 필요합니다.
+> 이 문자열은 사장님의 Cloudflare 계정 안에서 딱 이 로그인 서버 하나만
+> 만들고 손댈 수 있는 제한된 열쇠입니다(위 4번에서 "Workers 편집"이라는
+> 용도로만 만들었기 때문입니다). 다 쓰고 나면 같은 화면에서 언제든
+> 삭제(Revoke)하실 수 있습니다.
 
-## 다음 단계 (아직 안 만든 것)
+여기까지 하시면 제가 이어받아서 로그인 중계 서버를 만들고, 그 서버의
+주소(예: `https://simplifier-cms-auth.아무개.workers.dev`)를 알려드리겠습니다.
 
-- 링크드인/페이스북/인스타그램/스레드 자동 발행: Buffer 또는 Zapier에 RSS
-  피드를 연결하는 방식으로, 홈페이지 쪽에 RSS 피드를 먼저 만들어야 합니다.
-  이건 CMS가 실제로 한 번 써보고 잘 돌아가는 걸 확인한 뒤에 이어서
-  만드는 게 안전합니다.
-- 브런치/네이버블로그/리멤버 커넥트/로켓펀치: 공개 API가 없어 자동화 불가.
-  글쓰기 화면의 "수동 발행 채널용 복사 텍스트" 필드에 쓴 내용을 그대로
-  복사해서 붙여넣는 방식입니다.
+---
+
+## 2단계 (저) — 로그인 중계 서버 만들기
+
+사장님이 주신 열쇠로 제가 터미널에서 서버를 하나 배포합니다. 이 부분은
+사장님이 하실 일이 없습니다 — 완료되면 서버 주소를 말씀드릴게요.
+
+---
+
+## 3단계 (사장님이 하실 일) — GitHub 출입증 만들기
+
+이번엔 반대로, GitHub한테 "이 로그인 서버는 믿어도 된다"고 등록해주는
+단계입니다. **2단계에서 제가 드린 서버 주소가 있어야 하니, 그걸 받은 뒤에
+진행해주세요.**
+
+1. https://github.com/settings/developers 접속 (GitHub 로그인 필요)
+2. **"New OAuth App"** 버튼 클릭
+3. 아래 칸들을 채웁니다:
+   - **Application name**: 아무 이름이나 괜찮습니다. 예: `Simplifier Log`
+   - **Homepage URL**: 제가 드린 서버 주소를 그대로 붙여넣으세요
+     (예: `https://simplifier-cms-auth.아무개.workers.dev`)
+   - **Authorization callback URL**: 위와 같은 주소 뒤에 `/callback`을
+     붙여서 넣으세요 (예: `https://simplifier-cms-auth.아무개.workers.dev/callback`)
+4. **"Register application"** 클릭
+5. 화면에 **Client ID**라는 문자열이 보입니다 — 복사해서 저한테 주세요.
+6. 그 아래 **"Generate a new client secret"** 버튼을 누르면 **Client
+   Secret**이라는 또 다른 문자열이 한 번 나타납니다. **이것도 화면을
+   벗어나면 다시 못 보니, 바로 복사해서 저한테 주세요.**
+
+이 두 값(Client ID, Client Secret)을 주시면 제가 나머지를 전부
+마무리하겠습니다.
+
+---
+
+## 4단계 (저) — 마무리
+
+받은 값들을 로그인 서버에 등록하고, 홈페이지 설정 파일도 실제 주소로
+고쳐서 커밋·푸시까지 해드립니다. 다 되면 말씀드릴게요.
+
+---
+
+## 5단계 (사장님이 하실 일) — 확인
+
+1. https://hansunghee7.github.io/admin/ 접속
+2. **"Login with GitHub"** 버튼 클릭
+3. GitHub 로그인 창이 뜨면 로그인 → **"Authorize"** 클릭
+4. 글쓰기 화면이 뜨면 성공입니다
+
+---
+
+## 막히면
+
+어느 단계에서 화면이 이상하거나 뭘 눌러야 할지 모르겠으면, 지금 보이는
+화면을 그대로 캡처해서 저한테 보여주세요. 바로 다음에 뭘 누르면 되는지
+알려드리겠습니다.
+
+## 참고 — 이건 지금 안 만들었습니다
+
+- **링크드인/페이스북/인스타그램/스레드 자동 발행**: 위 로그인 연결이 끝나고
+  실제로 글을 한 번 써서 잘 되는 걸 확인한 다음에 이어서 만드는 게
+  안전합니다.
+- **브런치/네이버블로그/리멤버 커넥트/로켓펀치**: 이 네 곳은 자동 발행을
+  받아주는 통로 자체가 없어서(공개된 API 없음), 글쓰기 화면의 "수동 발행
+  채널용 복사 텍스트" 칸에 써둔 내용을 그대로 복사해서 직접 올리시면
+  됩니다.
