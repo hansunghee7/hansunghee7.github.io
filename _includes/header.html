@@ -35,17 +35,19 @@
   .mobile-menu { display:none; flex-direction:column; position: fixed; top: var(--nav-height); left: 0; right: 0; bottom: 0; z-index: 1100; padding: 28px 32px 40px; background: #080808; overflow-y: auto; }
   .mobile-menu.open { display:flex; }
   .mobile-details { border-bottom: none; }
-  .mobile-summary { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 22px; font-weight: 500; color: #e8e6e1; padding: 17px 0; cursor: pointer; list-style: none; display: flex; justify-content: flex-start; align-items: center; gap: 12px; touch-action: manipulation; -webkit-touch-callout: none; }
+  .mobile-summary { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 20px; font-weight: 500; letter-spacing: -0.2px; color: #e8e6e1; padding: 17px 0; cursor: pointer; list-style: none; display: flex; justify-content: flex-start; align-items: center; gap: 10px; touch-action: manipulation; -webkit-touch-callout: none; }
   .mobile-summary::-webkit-details-marker { display: none; }
-  /* YC처럼 라벨 바로 옆의 얇은 쉐브론 */
-  .mobile-summary::after { content: ''; width: 7px; height: 7px; border-right: 1.5px solid #8f8b82; border-bottom: 1.5px solid #8f8b82; transform: rotate(45deg) translate(-2px, -2px); transition: transform 0.3s; }
-  .mobile-details[open] .mobile-summary::after { transform: rotate(225deg) translate(-2px, -2px); border-color: #f5f3ee; }
+  /* YC와 같은 넓고 완만한 V자 쉐브론(끝 둥근 처리). 각진 border 방식으로는 안 나와서 SVG 사용 */
+  .mobile-summary::after { content: ''; width: 15px; height: 15px; flex-shrink: 0; transition: transform 0.3s;
+    background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238f8b82' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat center / contain; }
+  .mobile-details[open] .mobile-summary::after { transform: rotate(180deg);
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f5f3ee' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); }
   .mobile-details[open] .mobile-summary { color: #f5f3ee; }
   .mobile-submenu { padding: 2px 0 14px 2px; display: flex; flex-direction: column; gap: 2px; }
   .mobile-submenu a { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 16px; color: #8f8b82; text-decoration: none; word-break: keep-all; padding: 11px 0; touch-action: manipulation; }
   .mobile-submenu a:hover { color: #f5f3ee; }
   /* CTA는 YC의 Apply처럼 메뉴 맨 아래에 고정 */
-  .mobile-menu-cta { display:block; text-align:center; margin-top: auto; margin-bottom: 8px; padding:18px 0; border-radius:999px; background:#f5f3ee; color:#080808; font-weight:500; font-family: 'Pretendard Variable', sans-serif; border:none; cursor:pointer; width:100%; font-size:17px; flex-shrink: 0; touch-action: manipulation; }
+  .mobile-menu-cta { display:block; text-align:center; margin-top: auto; margin-bottom: 8px; padding:18px 0; border-radius:999px; background:#f5f3ee; color:#080808; font-weight:500; font-family: 'Boska', 'Source Serif 4', serif; font-style: italic; border:none; cursor:pointer; width:100%; font-size:21px; flex-shrink: 0; touch-action: manipulation; }
 
   @media (max-width:860px){ .nav-links{ display:none; } .nav-burger{ display:flex; } .nav-actions .nav-apply { display:none; } }
 </style>
