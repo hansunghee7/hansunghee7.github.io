@@ -1,6 +1,7 @@
 import os
 import re
 import yaml
+import html
 
 LOG_ASSETS_DIR = "log_assets"
 MARKDOWN_DIR = os.path.join(LOG_ASSETS_DIR, "markdown")
@@ -87,14 +88,14 @@ if os.path.exists(MARKDOWN_DIR):
             # 왼쪽 영역 (무조건 과거 글 / 이전 화)
             if older_post:
                 label = "이전 화" if is_ascending else "이전글"
-                nav_html += f'  <a href="/log_assets/markdown/{older_post["html_name"]}" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ {label}</span><span class="nav-title">{older_post["title"]}</span></a>\n'
+                nav_html += f'  <a href="/log_assets/markdown/{older_post["html_name"]}" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ {label}</span><span class="nav-title">{html.escape(older_post["title"], quote=False)}</span></a>\n'
             else:
                 nav_html += '  <div></div>\n'
 
             # 오른쪽 영역 (무조건 최신 글 / 다음 화)
             if newer_post:
                 label = "다음 화" if is_ascending else "다음글"
-                nav_html += f'  <a href="/log_assets/markdown/{newer_post["html_name"]}" class="cat-nav-item cat-nav-right"><span class="nav-title">{newer_post["title"]}</span><span class="cat-nav-label">{label} ❯</span></a>\n'
+                nav_html += f'  <a href="/log_assets/markdown/{newer_post["html_name"]}" class="cat-nav-item cat-nav-right"><span class="nav-title">{html.escape(newer_post["title"], quote=False)}</span><span class="cat-nav-label">{label} ❯</span></a>\n'
             else:
                 nav_html += '  <div></div>\n'
 
