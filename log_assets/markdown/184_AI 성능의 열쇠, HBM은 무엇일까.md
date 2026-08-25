@@ -49,8 +49,6 @@ HBM은 사실 갑자기 튀어나온 신기술이 아닙니다. 2000년대 후�
 
 여러분은 어떻게 생각하시나요? HBM 같은 메모리 기술이 AI 발전에 어떤 역할을 할 것 같나요? 앞으로 HBM을 넘어설 만한 혁신적인 아이디어는 없을까요? 다들 한번 상상해 보시면 좋겠네요. 메모리가 빨라져야 AI지능도 한층 더 높아질테니까요?
 
-**AI시대에 알아야 할 UX의 언어는?**
-
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/191_AI하드웨어, GPU와 NPU 그리고 FPGA의 차이점.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">AI하드웨어, GPU와 NPU 그리고 FPGA의 차이점</span></a>

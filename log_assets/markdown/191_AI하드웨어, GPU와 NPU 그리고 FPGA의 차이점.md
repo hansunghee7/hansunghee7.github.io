@@ -61,8 +61,6 @@ FPGA는 현장에서 프로그래밍 가능한 반도체입니다. 어떻게 설
 
 앞으로 AI 모델은 계속 진화할 겁니다. 하드웨어와 소프트웨어가 긴밀하게 연계되어야만 최고의 성능을 끌어낼 수 있기 때문이죠. NVIDIA나 구글, 애플 같은 선두 기업들이 어떤 AI 칩을 내놓을지 눈여겨볼 일입니다. 최적의 하드웨어로 무장해야 AI 경쟁에서 살아남을 수 있으니까요. 우리 모두 관심 있게 지켜보면 좋겠습니다.
 
-**AI시대에 알아야 할 UX의 언어는?**
-
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/199_AI시대 슈퍼컴퓨터가 필요한 이유.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">AI시대 슈퍼컴퓨터가 필요한 이유</span></a>
