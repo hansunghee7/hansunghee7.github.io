@@ -62,10 +62,8 @@ const cards = Array.from(document.querySelectorAll('.card-item')); const filterB
 const categoryDefaults = {"AI의 언어들": "asc", "Be the PO": "desc", "PO의 프레임웍": "asc", "UX의 언어들": "desc", "기획일상": "desc", "기획자의 프레임웍": "asc", "대한민국 스타트업 미국진출을 묻다": "asc", "스타트업 인사이트": "desc", "심플리파이어 라이프": "desc", "이력서에 쓰지 않는 첫직장 이야기": "asc", "잉크드인대 기획학과": "asc", "코치S": "asc", "토크세션": "desc"};
 
 function getSortMode(cat) { 
-    return localStorage.getItem('brunchSort_' + cat) || categoryDefaults[cat] || 'desc'; 
+    return categoryDefaults[cat] || 'desc'; 
 } 
-
-function saveSortMode(cat, mode) { localStorage.setItem('brunchSort_' + cat, mode); } 
 
 const urlParams = new URLSearchParams(window.location.search); const catParam = urlParams.get('cat'); if (catParam) { const targetBtn = Array.from(filterBtns).find(b => b.getAttribute('data-filter') === catParam); if (targetBtn) { filterBtns.forEach(b => b.classList.remove('active')); targetBtn.classList.add('active'); currentFilter = catParam; } } 
 
@@ -78,7 +76,7 @@ function loadNextBatch() { if (currentVisibleCount >= filteredCards.length) retu
 
 function applyFilterAndSort() { cards.forEach(card => { card.classList.remove('visible'); card.style.animationDelay = '0s'; }); filteredCards = currentFilter === 'all' ? [...cards] : cards.filter(card => card.getAttribute('data-category') === currentFilter); filteredCards.sort((a, b) => { let dateA = parseInt(a.getAttribute('data-date')) || 0; let dateB = parseInt(b.getAttribute('data-date')) || 0; if (dateA === dateB) { let idA = parseInt(a.getAttribute('data-id')) || 0; let idB = parseInt(b.getAttribute('data-id')) || 0; return sortMode === 'desc' ? idB - idA : idA - idB; } return sortMode === 'desc' ? dateB - dateA : dateA - dateB; }); filteredCards.forEach(card => grid.appendChild(card)); currentVisibleCount = 0; loadNextBatch(); } 
 
-sortBtns.forEach(btn => { btn.addEventListener('click', function() { sortMode = this.getAttribute('data-sort'); saveSortMode(currentFilter, sortMode); updateSortUI(); applyFilterAndSort(); }); }); 
+sortBtns.forEach(btn => { btn.addEventListener('click', function() { sortMode = this.getAttribute('data-sort'); updateSortUI(); applyFilterAndSort(); }); }); 
 
 filterBtns.forEach(btn => { btn.addEventListener('click', function() { filterBtns.forEach(b => b.classList.remove('active')); this.classList.add('active'); currentFilter = this.getAttribute('data-filter'); const newUrl = currentFilter === 'all' ? window.location.pathname : window.location.pathname + '?cat=' + encodeURIComponent(currentFilter); window.history.pushState({path:newUrl}, '', newUrl); sortMode = getSortMode(currentFilter); updateSortUI(); applyFilterAndSort(); }); }); 
 
