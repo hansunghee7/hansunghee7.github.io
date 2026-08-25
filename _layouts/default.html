@@ -84,7 +84,7 @@
             --nav-margin-top: 0px;
             --nav-margin-bottom: 0px;
         }
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; background-color: #f5f3ee; }
         body { margin: 0; padding: 0; font-family: 'Noto Sans KR', sans-serif; background-color: #fff; color: #333; word-break: keep-all; }
         
         /* 1. 상단 커버 영역 */
@@ -107,15 +107,15 @@
         .index-mode .cover-bottom-left { text-align: left; position: relative; }
         .index-mode .cover-title { font-family: 'Noto Serif KR', serif; font-size: 32px; font-weight: 200; margin: 0; line-height: 1.2; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
 
-        .cover-wrap.post-mode { height: 100vh; padding: 40px; overflow: hidden; }
-        .post-mode .cover-bottom-left { position: absolute; bottom: 120px; left: 40px; padding-right: 80px; text-align: left; transition: opacity 0.05s ease-out; }
+        .cover-wrap.post-mode { position: fixed; top: 0; left: 0; height: 100vh; padding: 40px; overflow: hidden; }
+        .post-mode .cover-bottom-left { position: absolute; bottom: 120px; left: 40px; padding-right: 80px; text-align: left; }
         .post-mode .cover-title { font-family: 'Noto Serif KR', serif; font-size: 42px; font-weight: 200; margin: 0; line-height: 1.35; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
         .post-mode .cover-sub { font-size: 14px; font-weight: 300; opacity: 0.8; font-style: italic; margin-top: 16px; text-shadow: 0 1px 5px rgba(0,0,0,0.5); }
 
         /* 2. 포스트 본문 영역 */
-        .article-body { max-width: 1100px; margin: 0 auto; padding: 40px 20px 40px; }
-        .post-mode + .article-body { max-width: 700px; padding-top: 60px; padding-bottom: 0px !important; }
-        .article-body p { font-size: 15px; font-weight: 300; line-height: 2; letter-spacing: 0.8px; margin-bottom: 30px; }
+        .article-body { max-width: 1100px; margin: 0 auto; padding: 40px 20px 40px; background-color: #fff; position: relative; }
+        .post-mode + .article-body { max-width: 700px; padding-top: 60px; padding-bottom: 0px !important; margin-top: 100vh; }
+        .article-body p { font-size: 15px; font-weight: 400; line-height: 2; letter-spacing: 0.8px; margin-bottom: 30px; }
         .article-body img { width: 88%; height: auto; margin: 40px auto; display: block; border-radius: 0; }
         .article-body hr { border: 0; border-top: 1px solid #eaeaea; margin: 60px 0; }
         .article-body .img-gallery {
@@ -432,25 +432,6 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        const coverWrap = document.getElementById('coverWrap');
-        const coverTitleBox = document.getElementById('coverTitleBox');
-        
-        if (coverWrap && coverWrap.classList.contains('post-mode')) {
-            const initialHeight = window.innerHeight; 
-            const minHeight = 0; 
-            
-            window.addEventListener('scroll', function() {
-                const scrolled = window.scrollY;
-                if (scrolled <= initialHeight) {
-                    const newHeight = Math.max(minHeight, initialHeight - scrolled * 1.8);
-                    const opacity = Math.max(0, 1 - (scrolled / (initialHeight * 0.3)));
-                    
-                    coverWrap.style.height = newHeight + 'px';
-                    if (coverTitleBox) coverTitleBox.style.opacity = opacity;
-                }
-            }, { passive: true });
-        }
-
         if (articleBody) {
             const coverImg = articleBody.querySelector('img[alt="대표 이미지"]');
             if (coverImg) coverImg.classList.add('hidden-element');
