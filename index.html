@@ -373,6 +373,13 @@ layout: null
       'FieldPlay': ['기획일상', '기획자의 프레임웍', '잉크드인대 기획학과', 'Be the PO', 'PO의 프레임웍', 'UX의 언어들', 'AI의 언어들'],
       'Life': ['심플리파이어 라이프', '토크세션']
     };
+    // log.html의 카테고리별 기본 정렬(최신순 desc / 날짜순 asc)과 동일한 기준
+    var SORT_MODE = {
+      'AI의 언어들': 'desc', 'Be the PO': 'desc', 'PO의 프레임웍': 'asc', 'UX의 언어들': 'desc',
+      '기획일상': 'desc', '기획자의 프레임웍': 'asc', '대한민국 스타트업 미국진출을 묻다': 'asc',
+      '스타트업 인사이트': 'desc', '심플리파이어 라이프': 'desc', '잉크드인대 기획학과': 'asc',
+      '코치S': 'asc', '토크세션': 'desc'
+    };
     var cards = document.querySelectorAll('.k-card[data-group]');
     if (!cards.length) return;
     fetch('/assets/data/posts.json').then(function(res) { return res.json(); }).then(function(posts) {
@@ -380,7 +387,14 @@ layout: null
         var cats = GROUPS[card.getAttribute('data-group')];
         if (!cats) return;
         var cat = cats[Math.floor(Math.random() * cats.length)];
-        var latest = posts.find(function(p) { return p.category === cat; });
+        var matches = posts.filter(function(p) { return p.category === cat; });
+        if (!matches.length) return;
+        // posts.json은 id 오름차순 = 최신글이 먼저 온다. desc(최신순)는 첫 항목,
+        // asc(날짜순, 시리즈 1화부터 보기)는 id가 가장 큰(가장 오래된) 항목을 사용
+        var mode = SORT_MODE[cat] || 'desc';
+        var latest = mode === 'asc'
+          ? matches.reduce(function(a, b) { return b.id > a.id ? b : a; })
+          : matches[0];
         if (!latest) return;
         card.setAttribute('href', latest.url);
         var img = card.querySelector('img');
