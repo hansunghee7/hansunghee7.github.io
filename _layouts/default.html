@@ -341,10 +341,8 @@
     {{ content }}
 </div>
 
-{% if page.url == '/' or page.url == '/log.html' or page.is_index %}
-    {% include footer.html %}
-    {% include contact_modal.html %}
-{% endif %}
+{% include footer.html %}
+{% include contact_modal.html %}
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
