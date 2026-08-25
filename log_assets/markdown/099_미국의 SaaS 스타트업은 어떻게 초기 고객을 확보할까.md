@@ -5,6 +5,8 @@ category: '대한민국 스타트업 미국진출을 묻다'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/O-RG4dmDIIs0S1fINZChdwsj5do.jpg'
 date_string: 'Jun 22. 2025'
 date: 2025-06-22
+keywords: '스타트업 미국진출, 글로벌 진출 전략'
+about: '미국 진출, 글로벌 스타트업'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

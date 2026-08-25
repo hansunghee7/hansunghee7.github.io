@@ -5,6 +5,8 @@ category: '스타트업 인사이트'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/Wdz6woGjrj5ixwZ_yJpXCL7jszg.jpg'
 date_string: 'Feb 3. 2025'
 date: 2025-02-03
+keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'
+about: '스타트업, 그로스 코칭, 조직 성장'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

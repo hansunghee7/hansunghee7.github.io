@@ -5,6 +5,8 @@ category: '심플리파이어 라이프'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/cd07ocy7MWIRwI4AnRN32lwPJgw.png'
 date_string: 'Oct 6. 2024'
 date: 2024-10-06
+keywords: '플레잉코치, 스타트업 그로스 코치, 코칭 일상'
+about: '심플리파이어, 코칭 방법론'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

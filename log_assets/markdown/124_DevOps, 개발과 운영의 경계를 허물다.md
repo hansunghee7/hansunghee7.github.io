@@ -5,6 +5,8 @@ category: 'PO의 프레임웍'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/CP4gWnaqscTPobkpn7u-vBdG-VY.jpg'
 date_string: 'May 30. 2025'
 date: 2025-05-30
+keywords: 'PO 코칭, 프로덕트 오너 실무, 프로덕트 전략'
+about: 'PO, 프로덕트 전략'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

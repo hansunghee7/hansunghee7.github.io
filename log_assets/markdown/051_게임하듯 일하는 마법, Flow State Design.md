@@ -5,6 +5,8 @@ category: 'UX의 언어들'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/n2ICeF2kzCzaxtz5JF2procPFRs.png'
 date_string: 'Aug 14. 2025'
 date: 2025-08-14
+keywords: 'UX 컨설팅, UX 디자인, 프로덕트 UX'
+about: 'UX, 프로덕트 디자인'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

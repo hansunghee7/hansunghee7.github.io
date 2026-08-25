@@ -5,6 +5,8 @@ category: 'AI의 언어들'
 cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/r1zAstxXQfZ_WZA_ofY6Jj8yusE.png'
 date_string: 'Jul 2. 2025'
 date: 2025-07-02
+keywords: 'AI 트렌드, AI 기술 이해'
+about: 'AI, 기술 트렌드'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

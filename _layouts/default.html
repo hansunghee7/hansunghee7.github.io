@@ -7,6 +7,7 @@
 
     <!-- 검색엔진 요약문 (Meta Description) -->
     <meta name="description" content="{{ content | strip_html | strip_newlines | truncate: 150 }}">
+    {% if page.keywords %}<meta name="keywords" content="{{ page.keywords }}">{% endif %}
 
     <!-- 이 사이트가 원본임을 명시 (중복 콘텐츠 방지) -->
     <link rel="canonical" href="https://hansunghee7.github.io{{ page.url }}">
@@ -42,6 +43,8 @@
       "dateModified": "{% if page.date %}{{ page.date | date_to_xmlschema }}{% else %}{{ page.date_string }}{% endif %}",
       "image": "{{ page.cover_image | default: 'https://hansunghee7.github.io/log_assets/images/character_black.png' }}",
       "articleSection": "{{ page.category }}",
+      {% if page.keywords %}"keywords": "{{ page.keywords }}",{% endif %}
+      {% if page.about %}"about": [{% assign about_list = page.about | split: ', ' %}{% for item in about_list %}{"@type":"Thing","name":"{{ item }}"}{% unless forloop.last %},{% endunless %}{% endfor %}],{% endif %}
       "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "https://hansunghee7.github.io{{ page.url }}"
