@@ -202,7 +202,8 @@ layout: null
   /* 파트너 로고는 흰색 실루엣으로 통일합니다. 원본 밝기가 제각각이라
      (아모레 18 ~ 아산 204) 색을 살리면 어두운 로고가 배경에 묻힙니다.
      brightness(0)로 눌러 실루엣을 만든 뒤 invert(1)로 흰색을 만듭니다. */
-  .reveal-grid img { position:relative; max-height: var(--final-grid-logo-height); max-width:200px; object-fit:contain; filter: brightness(0) invert(1); opacity: 0.6; transition: transform 0.3s ease, opacity 1s ease; }
+  /* max-width가 px 고정값이면 가로로 긴 워드마크(예: 아모레 10:1)가 셀 밖으로 삐져나옵니다. */
+  .reveal-grid img { position:relative; max-height: var(--final-grid-logo-height); max-width: min(200px, 100%); object-fit:contain; filter: brightness(0) invert(1); opacity: 0.6; transition: transform 0.3s ease, opacity 1s ease; }
   .reveal-grid img[alt*="Asan"] { transform: scale(1.35); }
   .reveal-grid img[alt*="Modoo"] { transform: scale(1.4); }
   .reveal-grid img[alt*="Usimsa"] { transform: scale(1.35); }
@@ -233,13 +234,13 @@ layout: null
     /* 3단 배치이므로 10번째 로고는 숨겨 3x3으로 딱 맞춥니다 */
     .reveal-grid .gitem:nth-child(n+10) { display: none; }
     .reveal-grid .gitem { height: 66px; }
-    .reveal-grid img { max-height: 56px; max-width: 112px; }
+    .reveal-grid img { max-height: 56px; max-width: 100%; }
     .reveal-stats .rs-row { gap: 40px; }
   }
   @media (max-width:480px){
     .reveal-grid { grid-template-columns: repeat(3, 1fr); gap:22px 10px; }
     .reveal-grid .gitem { height: 58px; }
-    .reveal-grid img { max-height: 48px; max-width: 96px; }
+    .reveal-grid img { max-height: 48px; max-width: 100%; }
     .reveal-stats .rs-row { gap: 28px 36px; }
   }
 
