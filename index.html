@@ -249,13 +249,19 @@ layout: null
     /* 흐름 배치로 바뀌면서 스크롤 연동 페이드(syncProvenFade)가 이 섹션을 보이는 도중에
        0으로 만들어 버립니다. 모바일에선 항상 보이도록 고정. */
     #proven-fade { opacity: 1 !important; }
-    .reveal-grid { grid-template-columns: repeat(2, 1fr); gap:32px 20px; margin-bottom: 48px; }
-    .reveal-grid .gitem { height: 92px; }
-    .reveal-grid img { max-height: 78px; max-width: 180px; }
+    .reveal-grid { grid-template-columns: repeat(3, 1fr); gap:26px 12px; margin-bottom: 40px; }
+    .reveal-grid .gitem { height: 66px; }
+    .reveal-grid img { max-height: 56px; max-width: 112px; }
     .reveal-stats .rs-row { gap: 40px; }
+    /* 테스티모니얼과 SIMPLIFIER LOG 사이 여백 축소 */
+    .story-section { padding-bottom: 36px; }
+    .yc-sections { padding-top: 0; }
+    .yc-title { margin: 28px 0 24px; }
   }
   @media (max-width:480px){
-    .reveal-grid { grid-template-columns: repeat(2, 1fr); gap:26px 14px; }
+    .reveal-grid { grid-template-columns: repeat(3, 1fr); gap:22px 10px; }
+    .reveal-grid .gitem { height: 58px; }
+    .reveal-grid img { max-height: 48px; max-width: 96px; }
     .reveal-stats .rs-row { gap: 28px 36px; }
   }
 
@@ -346,16 +352,28 @@ layout: null
   .overlay-content p { font-family: 'Pretendard Variable', sans-serif; font-size: 14px; font-weight: 300; color: #c9c8c2; margin: 0; line-height: 1.5; word-break: keep-all; }
 
   @media (max-width: 960px) {
-    .yc-knowledge-grid { grid-template-columns: 1fr; gap: 48px; }
+    .yc-knowledge-grid { grid-template-columns: 1fr; gap: 40px; }
     .k-col-left { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
     .k-card-large img { height: 260px; }
     .yc-overlay-grid { grid-template-columns: repeat(2, 1fr); }
+    /* 한 줄로 쌓일 때 노출 순서를 Startup(큰 카드) -> FieldPlay -> Life 로 */
+    .k-col-center { order: -1; }
   }
   @media (max-width: 600px) {
     .k-col-left { grid-template-columns: 1fr; }
     .k-card-large img { height: 200px; }
-    .yc-overlay-grid { grid-template-columns: 1fr; gap: 16px; }
-    .overlay-card { height: 320px; }
+    .yc-knowledge-grid { gap: 32px; }
+    .k-col { gap: 16px; }
+    /* 카테고리 목록이 한 줄에 하나씩이라 세로로 너무 길어져 칩 형태로 접습니다 */
+    .k-list-group h4 { font-size: 20px; margin-bottom: 12px; padding-bottom: 8px; }
+    .k-list-group ul { flex-direction: row; flex-wrap: wrap; gap: 8px; }
+    .k-list-group a { padding: 9px 14px; font-size: 13px; line-height: 1.2; border: 1px solid rgba(245,243,238,0.12); border-radius: 20px; }
+    /* BOOK & CLASS: 큰 카드를 세로로 쌓지 않고 좌우 스크롤 */
+    .yc-overlay-grid { display: flex; overflow-x: auto; gap: 12px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .yc-overlay-grid::-webkit-scrollbar { display: none; }
+    .overlay-card { flex: 0 0 78%; height: 300px; scroll-snap-align: start; }
+    .overlay-content { padding: 24px 20px; }
+    .overlay-content h3 { font-size: 19px; }
   }
 
   .cta-section { position: relative; z-index: 40; background: #080808; padding: 100px 0 0; }

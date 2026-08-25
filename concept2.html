@@ -8,7 +8,7 @@ layout: null
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Simplifier</title>
 <meta name="description" content="복잡함을 단순화하는 순간, 성장은 자연스럽게 따라옵니다. 스타트업 그로스 코치 심플리파이어의 인사이트.">
-<meta name="keywords" content="스타트업 코칭, 스타트업 성장 전략, 프로덕트 코칭, PO 코칭, CPO 코칭, 플레잉코치, 기업 강연, 임원 코칭, 리더십 교육, UX 컨설팅, 조직 성장 전략, 한성희">
+<meta name="keywords" content="스타트업 코칭, 스타트업 성장 전략, PMF 이후 전략, 프로덕트 코칭, PO 코칭, CPO 코칭, 플레잉코치, 기업 강연, 임원 코칭, 임직원 교육, 리더십 교육, UX 컨설팅, 조직 성장 전략, 한성희">
 <link rel="canonical" href="https://hansunghee7.github.io/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Simplifier">
@@ -74,7 +74,7 @@ layout: null
       "itemOffered": {
         "@type": "Service",
         "name": "스타트업 Playing Coach 코칭",
-        "description": "CPO, PO, Advisor 역할로 주 1~5일 상주하며 실무를 함께 수행하는 스타트업 성장 코칭 프로그램."
+        "description": "PMF 이후 비즈니스 전환기를 지나는 초기 스타트업을 대상으로, CPO, PO, Advisor 역할로 주 1~5일 상주하며 실무를 함께 수행하는 스타트업 성장 코칭 프로그램."
       }
     },
     {
@@ -82,7 +82,7 @@ layout: null
       "itemOffered": {
         "@type": "Service",
         "name": "기업 임원 강연 및 리더십 워크샵",
-        "description": "리더, 승진자, 실무자 대상 리더십·시간관리·프로젝트 관리 강연 및 실전 워크샵."
+        "description": "리더, 승진자, 임직원 등 실무자 대상 리더십·시간관리·프로젝트 관리 강연 및 실전 워크샵."
       }
     }
   ],
@@ -112,7 +112,7 @@ layout: null
       "name": "심플리파이어 프로그램에는 어떤 것이 있고 장점은 무엇인가요?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "두 가지 트랙으로 운영됩니다. 스타트업 Playing Coach 트랙은 CPO, PO, Advisor 역할로 주 1~5일 상주하며, 프로덕트 전략 수립부터 실제 실행까지 실무를 함께 수행합니다. 프로덕트 지표 개선과 조직원의 역량 강화라는 두 가지 효과를 동시에 얻을 수 있다는 점이 가장 큰 차별점입니다. 기업 강연 트랙은 리더, 승진자, 실무자를 대상으로 리더십, 시간관리, 프로젝트 관리 등 실무에 바로 적용 가능한 주제로 1~3시간 강연과 워크샵을 함께 진행하며, 이론 전달에 그치지 않고 실전 적용까지 이어지도록 설계되어 있습니다."
+        "text": "두 가지 트랙으로 운영됩니다. 스타트업 Playing Coach 트랙은 PMF 이후 비즈니스 전환기의 초기 스타트업을 대상으로, CPO, PO, Advisor 역할로 주 1~5일 상주하며 프로덕트 전략 수립부터 실제 실행까지 실무를 함께 수행합니다. 프로덕트 지표 개선과 조직원의 역량 강화라는 두 가지 효과를 동시에 얻을 수 있다는 점이 가장 큰 차별점입니다. 기업 강연 트랙은 리더, 승진자, 임직원을 대상으로 리더십, 시간관리, 프로젝트 관리 등 실무에 바로 적용 가능한 주제로 1~3시간 강연과 워크샵을 함께 진행하며, 이론 전달에 그치지 않고 실전 적용까지 이어지도록 설계되어 있습니다."
       }
     },
     {
@@ -152,7 +152,7 @@ layout: null
       "name": "신임 팀장이나 승진자 대상 리더십 워크샵을 진행할 강사를 찾고 있어요.",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "기업 강연 트랙은 리더·승진자·실무자를 대상으로 리더십·시간관리·프로젝트관리 등 실무에 바로 적용 가능한 주제를 1~3시간 강연 또는 워크샵 형태로 진행합니다. 이론 전달에 그치지 않고 실전 적용까지 이어지도록 설계되어 있습니다."
+        "text": "기업 강연 트랙은 리더·승진자·임직원을 대상으로 리더십·시간관리·프로젝트관리 등 실무에 바로 적용 가능한 주제를 1~3시간 강연 또는 워크샵 형태로 진행합니다. 이론 전달에 그치지 않고 실전 적용까지 이어지도록 설계되어 있습니다."
       }
     },
     {
@@ -249,13 +249,19 @@ layout: null
     /* 흐름 배치로 바뀌면서 스크롤 연동 페이드(syncProvenFade)가 이 섹션을 보이는 도중에
        0으로 만들어 버립니다. 모바일에선 항상 보이도록 고정. */
     #proven-fade { opacity: 1 !important; }
-    .reveal-grid { grid-template-columns: repeat(2, 1fr); gap:32px 20px; margin-bottom: 48px; }
-    .reveal-grid .gitem { height: 92px; }
-    .reveal-grid img { max-height: 78px; max-width: 180px; }
+    .reveal-grid { grid-template-columns: repeat(3, 1fr); gap:26px 12px; margin-bottom: 40px; }
+    .reveal-grid .gitem { height: 66px; }
+    .reveal-grid img { max-height: 56px; max-width: 112px; }
     .reveal-stats .rs-row { gap: 40px; }
+    /* 테스티모니얼과 SIMPLIFIER LOG 사이 여백 축소 */
+    .story-section { padding-bottom: 36px; }
+    .yc-sections { padding-top: 0; }
+    .yc-title { margin: 28px 0 24px; }
   }
   @media (max-width:480px){
-    .reveal-grid { grid-template-columns: repeat(2, 1fr); gap:26px 14px; }
+    .reveal-grid { grid-template-columns: repeat(3, 1fr); gap:22px 10px; }
+    .reveal-grid .gitem { height: 58px; }
+    .reveal-grid img { max-height: 48px; max-width: 96px; }
     .reveal-stats .rs-row { gap: 28px 36px; }
   }
 
@@ -346,16 +352,28 @@ layout: null
   .overlay-content p { font-family: 'Pretendard Variable', sans-serif; font-size: 14px; font-weight: 300; color: #c9c8c2; margin: 0; line-height: 1.5; word-break: keep-all; }
 
   @media (max-width: 960px) {
-    .yc-knowledge-grid { grid-template-columns: 1fr; gap: 48px; }
+    .yc-knowledge-grid { grid-template-columns: 1fr; gap: 40px; }
     .k-col-left { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
     .k-card-large img { height: 260px; }
     .yc-overlay-grid { grid-template-columns: repeat(2, 1fr); }
+    /* 한 줄로 쌓일 때 노출 순서를 Startup(큰 카드) -> FieldPlay -> Life 로 */
+    .k-col-center { order: -1; }
   }
   @media (max-width: 600px) {
     .k-col-left { grid-template-columns: 1fr; }
     .k-card-large img { height: 200px; }
-    .yc-overlay-grid { grid-template-columns: 1fr; gap: 16px; }
-    .overlay-card { height: 320px; }
+    .yc-knowledge-grid { gap: 32px; }
+    .k-col { gap: 16px; }
+    /* 카테고리 목록이 한 줄에 하나씩이라 세로로 너무 길어져 칩 형태로 접습니다 */
+    .k-list-group h4 { font-size: 20px; margin-bottom: 12px; padding-bottom: 8px; }
+    .k-list-group ul { flex-direction: row; flex-wrap: wrap; gap: 8px; }
+    .k-list-group a { padding: 9px 14px; font-size: 13px; line-height: 1.2; border: 1px solid rgba(245,243,238,0.12); border-radius: 20px; }
+    /* BOOK & CLASS: 큰 카드를 세로로 쌓지 않고 좌우 스크롤 */
+    .yc-overlay-grid { display: flex; overflow-x: auto; gap: 12px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .yc-overlay-grid::-webkit-scrollbar { display: none; }
+    .overlay-card { flex: 0 0 78%; height: 300px; scroll-snap-align: start; }
+    .overlay-content { padding: 24px 20px; }
+    .overlay-content h3 { font-size: 19px; }
   }
 
   .cta-section { position: relative; z-index: 40; background: #080808; padding: 100px 0 0; }
@@ -629,7 +647,7 @@ layout: null
     </details>
     <details class="faq-item">
       <summary>심플리파이어 프로그램에는 어떤 것이 있고 장점은 무엇인가요?</summary>
-      <p class="faq-answer">두 가지 트랙으로 운영됩니다. 스타트업 Playing Coach 트랙은 CPO, PO, Advisor 역할로 주 1~5일 상주하며, 프로덕트 전략 수립부터 실제 실행까지 실무를 함께 수행합니다. 프로덕트 지표 개선과 조직원의 역량 강화라는 두 가지 효과를 동시에 얻을 수 있다는 점이 가장 큰 차별점입니다. 기업 강연 트랙은 리더, 승진자, 실무자를 대상으로 리더십, 시간관리, 프로젝트 관리 등 실무에 바로 적용 가능한 주제로 1~3시간 강연과 워크샵을 함께 진행하며, 이론 전달에 그치지 않고 실전 적용까지 이어지도록 설계되어 있습니다.</p>
+      <p class="faq-answer">두 가지 트랙으로 운영됩니다. 스타트업 Playing Coach 트랙은 PMF 이후 비즈니스 전환기의 초기 스타트업을 대상으로, CPO, PO, Advisor 역할로 주 1~5일 상주하며 프로덕트 전략 수립부터 실제 실행까지 실무를 함께 수행합니다. 프로덕트 지표 개선과 조직원의 역량 강화라는 두 가지 효과를 동시에 얻을 수 있다는 점이 가장 큰 차별점입니다. 기업 강연 트랙은 리더, 승진자, 임직원을 대상으로 리더십, 시간관리, 프로젝트 관리 등 실무에 바로 적용 가능한 주제로 1~3시간 강연과 워크샵을 함께 진행하며, 이론 전달에 그치지 않고 실전 적용까지 이어지도록 설계되어 있습니다.</p>
     </details>
     <details class="faq-item">
       <summary>플레잉코칭 착수 및 진행과정은 어떻게 되나요?</summary>
@@ -649,7 +667,7 @@ layout: null
     </details>
     <details class="faq-item">
       <summary>신임 팀장이나 승진자 대상 리더십 워크샵을 진행할 강사를 찾고 있어요.</summary>
-      <p class="faq-answer">기업 강연 트랙은 리더·승진자·실무자를 대상으로 리더십·시간관리·프로젝트관리 등 실무에 바로 적용 가능한 주제를 1~3시간 강연 또는 워크샵 형태로 진행합니다. 이론 전달에 그치지 않고 실전 적용까지 이어지도록 설계되어 있습니다.</p>
+      <p class="faq-answer">기업 강연 트랙은 리더·승진자·임직원을 대상으로 리더십·시간관리·프로젝트관리 등 실무에 바로 적용 가능한 주제를 1~3시간 강연 또는 워크샵 형태로 진행합니다. 이론 전달에 그치지 않고 실전 적용까지 이어지도록 설계되어 있습니다.</p>
     </details>
     <details class="faq-item">
       <summary>PM·PO 역량강화를 위한 사내 교육을 하고 싶은데 어떤 강사가 적합할까요?</summary>
