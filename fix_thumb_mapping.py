@@ -162,6 +162,9 @@ for fname in md_files:
             except Exception:
                 pass
 
+    if frontmatter.get('published') is False:
+        continue
+
     category = (frontmatter.get('category') or '').strip()
     title = frontmatter.get('title', base)
     date_string = frontmatter.get('date_string', '')
