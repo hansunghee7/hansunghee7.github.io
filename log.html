@@ -36,15 +36,15 @@ body { background-color: #080808 !important; color: #f5f3ee !important; }
 @media (max-width: 480px) { .card-grid { grid-template-columns: repeat(1, 1fr); } }
 
 .card-item { display: none; background: #111 !important; border: 1px solid rgba(245,243,238,0.08) !important; border-radius: 12px; overflow: hidden; transition: transform 0.3s ease, border-color 0.3s ease !important; text-decoration: none !important; color: inherit; flex-direction: column; }
-.card-thumb-wrap { width: 100%; height: 180px; overflow: hidden; position: relative; border-bottom: 1px solid rgba(245,243,238,0.05); }
+.card-thumb-wrap { width: 100%; aspect-ratio: 2.2 / 1; overflow: hidden; position: relative; border-bottom: 1px solid rgba(245,243,238,0.05); }
 .card-thumb { width: 100%; height: 100%; background-size: cover; background-position: center; transition: transform 0.4s ease; }
 
 .card-item:hover { border-color: rgba(245,243,238,0.25) !important; transform: translateY(-4px); box-shadow: none !important; }
 .card-item:hover .card-thumb { transform: scale(1.05); }
 
-.card-content { padding: 20px; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; }
-.card-category { font-size: 11.5px; color: #8f8b82 !important; font-weight: 500; margin-bottom: 8px; font-family: 'Pretendard Variable', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; }
-.card-title { font-family: 'Pretendard Variable', sans-serif; font-size: 15.5px; font-weight: 500; color: #f5f3ee !important; line-height: 1.45; margin: 0 0 16px 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.card-content { padding: 16px; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; }
+.card-category { font-size: 11.5px; color: #8f8b82 !important; font-weight: 500; margin-bottom: 6px; font-family: 'Pretendard Variable', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; }
+.card-title { font-family: 'Pretendard Variable', sans-serif; font-size: 15.5px; font-weight: 500; color: #f5f3ee !important; line-height: 1.45; margin: 0 0 10px 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .card-date { font-size: 12px; color: #736f67 !important; margin-top: auto; font-weight: 300; font-family: 'Pretendard Variable', sans-serif; }
 
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
