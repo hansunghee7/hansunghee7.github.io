@@ -339,7 +339,8 @@ layout: null
     .yc-knowledge-grid { gap: 32px; }
     .k-col { gap: 16px; }
     /* 카테고리 목록이 한 줄에 하나씩이라 세로로 너무 길어져 칩 형태로 접습니다 */
-    .k-list-group h4 { font-size: 20px; margin-bottom: 12px; padding-bottom: 8px; }
+    /* 칩 배열 위의 구분선은 답답해 보여서 모바일에선 제거 */
+    .k-list-group h4 { font-size: 20px; margin-bottom: 10px; padding-bottom: 0; border-bottom: none; }
     /* 여러 줄로 감싸지 않고 한 줄 좌우 스크롤.
        그리드/플렉스 아이템의 기본값 min-width:auto 를 풀지 않으면
        칩 줄이 스크롤되지 않고 컬럼 자체를 밀어 넓혀버립니다. */
