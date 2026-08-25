@@ -289,6 +289,7 @@ layout: null
   .faq-item summary::-webkit-details-marker { display: none; }
   .faq-item summary::after { content: '+'; font-size: 22px; font-weight: 300; color: #8f8b82; transition: transform 0.3s; flex-shrink: 0; }
   .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item.faq-animating { overflow: hidden; }
   .faq-answer { font-family: 'Pretendard Variable', sans-serif; font-size: 15px; font-weight: 300; line-height: 1.9; color: #c9c8c2; word-break: keep-all; padding: 0 0 30px; margin: 0; }
 
   .yc-sections { position: relative; z-index: 40; background: #080808; padding: 20px 0 60px; }
@@ -670,6 +671,81 @@ layout: null
     </details>
   </div>
 </section>
+
+<script>
+(function() {
+  var DURATION = 300;
+  var EASING = 'ease-out';
+
+  function FaqAccordion(el) {
+    this.el = el;
+    this.summary = el.querySelector('summary');
+    this.content = el.querySelector('.faq-answer');
+    this.animation = null;
+    this.isClosing = false;
+    this.isExpanding = false;
+    this.summary.addEventListener('click', this.onClick.bind(this));
+  }
+
+  FaqAccordion.prototype.onClick = function(e) {
+    e.preventDefault();
+    this.el.classList.add('faq-animating');
+    if (this.isClosing || !this.el.open) {
+      allItems.forEach(function(other) {
+        if (other !== this && other.el.open) other.shrink();
+      }.bind(this));
+      this.open();
+    } else if (this.isExpanding || this.el.open) {
+      this.shrink();
+    }
+  };
+
+  FaqAccordion.prototype.shrink = function() {
+    this.isClosing = true;
+    var startHeight = this.el.offsetHeight + 'px';
+    var endHeight = this.summary.offsetHeight + 'px';
+    if (this.animation) this.animation.cancel();
+    this.animation = this.el.animate(
+      { height: [startHeight, endHeight] },
+      { duration: DURATION, easing: EASING }
+    );
+    this.animation.onfinish = this.onFinish.bind(this, false);
+    this.animation.oncancel = function() { this.isClosing = false; }.bind(this);
+  };
+
+  FaqAccordion.prototype.open = function() {
+    this.el.style.height = this.el.offsetHeight + 'px';
+    this.el.open = true;
+    window.requestAnimationFrame(this.expand.bind(this));
+  };
+
+  FaqAccordion.prototype.expand = function() {
+    this.isExpanding = true;
+    var startHeight = this.el.offsetHeight + 'px';
+    var endHeight = (this.summary.offsetHeight + this.content.offsetHeight) + 'px';
+    if (this.animation) this.animation.cancel();
+    this.animation = this.el.animate(
+      { height: [startHeight, endHeight] },
+      { duration: DURATION, easing: EASING }
+    );
+    this.animation.onfinish = this.onFinish.bind(this, true);
+    this.animation.oncancel = function() { this.isExpanding = false; }.bind(this);
+  };
+
+  FaqAccordion.prototype.onFinish = function(open) {
+    this.el.open = open;
+    this.animation = null;
+    this.isClosing = false;
+    this.isExpanding = false;
+    this.el.style.height = '';
+    this.el.classList.remove('faq-animating');
+  };
+
+  var allItems = Array.prototype.map.call(document.querySelectorAll('.faq-section .faq-item'), function(el) {
+    return new FaqAccordion(el);
+  });
+})();
+</script>
 
 <section class="cta-section" id="contact">
   <div class="cta-content wrap">
