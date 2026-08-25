@@ -2,6 +2,7 @@ import os
 import re
 import yaml
 import html
+import urllib.parse
 
 LOG_ASSETS_DIR = "log_assets"
 MARKDOWN_DIR = os.path.join(LOG_ASSETS_DIR, "markdown")
@@ -99,14 +100,18 @@ if os.path.exists(MARKDOWN_DIR):
             # 왼쪽 영역 (이전글 / 이전 화)
             if prev_post:
                 label = "이전 화" if is_ascending else "이전글"
-                nav_html += f'  <a href="/log_assets/markdown/{prev_post["html_name"]}" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ {label}</span><span class="nav-title">{html.escape(prev_post["title"], quote=False)}</span></a>\n'
+                # 파일명의 '#' 등은 URL 인코딩하지 않으면 브라우저가 프래그먼트로
+                # 해석해 링크가 깨진다 (예: "...2025 #1.html" -> "...2025 " 요청 + #1 프래그먼트)
+                prev_href = urllib.parse.quote(prev_post["html_name"])
+                nav_html += f'  <a href="/log_assets/markdown/{prev_href}" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ {label}</span><span class="nav-title">{html.escape(prev_post["title"], quote=False)}</span></a>\n'
             else:
                 nav_html += '  <div></div>\n'
 
             # 오른쪽 영역 (다음글 / 다음 화)
             if next_post:
                 label = "다음 화" if is_ascending else "다음글"
-                nav_html += f'  <a href="/log_assets/markdown/{next_post["html_name"]}" class="cat-nav-item cat-nav-right"><span class="nav-title">{html.escape(next_post["title"], quote=False)}</span><span class="cat-nav-label">{label} ❯</span></a>\n'
+                next_href = urllib.parse.quote(next_post["html_name"])
+                nav_html += f'  <a href="/log_assets/markdown/{next_href}" class="cat-nav-item cat-nav-right"><span class="nav-title">{html.escape(next_post["title"], quote=False)}</span><span class="cat-nav-label">{label} ❯</span></a>\n'
             else:
                 nav_html += '  <div></div>\n'
 

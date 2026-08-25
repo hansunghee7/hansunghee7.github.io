@@ -61,6 +61,6 @@ Transformer의 주요 병목 현상은 크게 네 가지로 나타납니다.
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
   <div></div>
-  <a href="/log_assets/markdown/096_비즈니스 경쟁력에 저전력 NPU가 중요한 이유.html" class="cat-nav-item cat-nav-right"><span class="nav-title">비즈니스 경쟁력에 저전력 NPU가 중요한 이유</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/096_%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EA%B2%BD%EC%9F%81%EB%A0%A5%EC%97%90%20%EC%A0%80%EC%A0%84%EB%A0%A5%20NPU%EA%B0%80%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="cat-nav-item cat-nav-right"><span class="nav-title">비즈니스 경쟁력에 저전력 NPU가 중요한 이유</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

@@ -62,7 +62,7 @@ LTV와 CAC, 이 두 알파벳이 내포한 깊은 뜻을 새기자. 단순한 �
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/149_'Lean Canvas' 하루만에 그리는 비즈니스청사진.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">Lean Canvas' 하루만에 그리는 비즈니스청사진</span></a>
-  <a href="/log_assets/markdown/163_구글이 'AB테스트'로 2억 달러를 창출하는 방법.html" class="cat-nav-item cat-nav-right"><span class="nav-title">구글이 'AB테스트'로 2억 달러를 창출하는 방법</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/149_%27Lean%20Canvas%27%20%ED%95%98%EB%A3%A8%EB%A7%8C%EC%97%90%20%EA%B7%B8%EB%A6%AC%EB%8A%94%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%B2%AD%EC%82%AC%EC%A7%84.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">Lean Canvas' 하루만에 그리는 비즈니스청사진</span></a>
+  <a href="/log_assets/markdown/163_%EA%B5%AC%EA%B8%80%EC%9D%B4%20%27AB%ED%85%8C%EC%8A%A4%ED%8A%B8%27%EB%A1%9C%202%EC%96%B5%20%EB%8B%AC%EB%9F%AC%EB%A5%BC%20%EC%B0%BD%EC%B6%9C%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95.html" class="cat-nav-item cat-nav-right"><span class="nav-title">구글이 'AB테스트'로 2억 달러를 창출하는 방법</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

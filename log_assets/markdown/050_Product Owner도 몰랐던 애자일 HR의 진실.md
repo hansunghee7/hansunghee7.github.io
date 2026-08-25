@@ -55,6 +55,6 @@ Product Owner로서 우리가 제품의 사용자 경험을 개선하듯, 조직
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
   <div></div>
-  <a href="/log_assets/markdown/057_스타트업 vs 대기업 애자일, 규모별 적용 전략.html" class="cat-nav-item cat-nav-right"><span class="nav-title">스타트업 vs 대기업 애자일, 규모별 적용 전략</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/057_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20vs%20%EB%8C%80%EA%B8%B0%EC%97%85%20%EC%95%A0%EC%9E%90%EC%9D%BC%2C%20%EA%B7%9C%EB%AA%A8%EB%B3%84%20%EC%A0%81%EC%9A%A9%20%EC%A0%84%EB%9E%B5.html" class="cat-nav-item cat-nav-right"><span class="nav-title">스타트업 vs 대기업 애자일, 규모별 적용 전략</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->
