@@ -49,6 +49,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200;0,8..60,300;0,8..60,400;1,8..60,200;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
     
     <style>
+        /* ▼ 이전글/다음글 영역 위아래 여백 -- 이 두 값만 바꾸면 전체(일반형+웹툰형) 다 적용됩니다 */
+        :root {
+            --nav-margin-top: 40px;
+            --nav-margin-bottom: 40px;
+        }
         html { scroll-behavior: smooth; }
         body { margin: 0; padding: 0; font-family: 'Noto Sans KR', sans-serif; background-color: #fff; color: #333; word-break: keep-all; }
         
@@ -341,8 +346,10 @@
     {{ content }}
 </div>
 
-{% include footer.html %}
-{% include contact_modal.html %}
+{% if page.url == '/' or page.url == '/log.html' or page.is_index %}
+    {% include footer.html %}
+    {% include contact_modal.html %}
+{% endif %}
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
