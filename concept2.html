@@ -252,8 +252,8 @@ layout: null
   .story-essay p.intro-p::first-letter { font-family: 'Boska', serif; font-weight: 300; font-size: 5.2rem; float: left; line-height: 0.78; padding-right: 18px; padding-top: 6px; color: #f5f3ee; }
   @media (max-width:700px){
     .story-essay p.intro-p::first-letter { font-size: 3.6rem; padding-right: 12px; padding-top: 4px; }
-    /* 섹션 내부 하위 블록 간 여백(같은 배경색 안에서 이어지는 요소들) 기준값: 64px */
-    .story-essay { margin-bottom: 64px; }
+    /* 섹션 내부 하위 블록 간 여백(같은 배경색 안에서 이어지는 요소들) 기준값: 72px */
+    .story-essay { margin-bottom: 72px; }
   }
 
   .story-gallery { width: min(1200px, 94vw); margin: 0 auto 140px auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
@@ -268,7 +268,7 @@ layout: null
   @media (max-width:700px){ .gallery-overlay span { font-size: 11px; } }
 
   @media (max-width:760px){
-    .story-gallery { grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 64px; }
+    .story-gallery { grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 72px; }
     .story-gallery .gallery-item:nth-child(4), .story-gallery .gallery-item:nth-child(5) { display: none; }
   }
 
@@ -384,15 +384,15 @@ layout: null
      같은 섹션 안에서 이어지는 하위 블록은 64px.
      .story-section / .yc-sections / .yc-title 기본 정의보다 뒤에 있어야 적용됩니다(우선순위 동일). */
   @media (max-width: 760px) {
-    .story-section { padding-bottom: 36px; }
+    .story-section { padding-bottom: 52px; }
     .yc-sections { padding-top: 0; }
     /* Story 섹션 -> SIMPLIFIER LOG: 다른 섹션으로 넘어가는 지점 (80px) */
     .yc-sections .yc-title:first-of-type { margin-top: 0; }
     /* SIMPLIFIER LOG 하위 콘텐츠 -> BOOK & CLASS: 같은 섹션 안의 하위 블록 (64px) */
-    .yc-sections .yc-title:not(:first-of-type) { margin-top: 64px; }
+    .yc-sections .yc-title:not(:first-of-type) { margin-top: 72px; }
     /* FAQ -> Contact: 다른 섹션으로 넘어가는 지점 (80px = 40px + 40px, .cta-section 쪽은
        기본 정의가 이 블록보다 뒤에 있어 여기선 안 먹혀 아래 별도 규칙으로 둠) */
-    .faq-section { padding-bottom: 40px; }
+    .faq-section { padding-top: 36px; padding-bottom: 40px; }
     /* FAQ 제목의 인라인 margin-top:0 을 CSS로 옮긴 것 (모바일 간격 유지) */
     .faq-section .yc-title { margin-top: 0; }
   }
@@ -401,13 +401,13 @@ layout: null
      기존에는 섹션 패딩 + 마지막 인용문 여백 + 제목 여백이 겹쳐 60~204px로 들쭉날쭉했습니다.
      간격을 .yc-title 위쪽 한 곳에서만 만들고, 겹쳐 더해지던 패딩은 0으로 정리합니다. */
   @media (min-width: 761px) {
-    .story-essay { margin-bottom: 100px; }
-    .story-gallery { margin-bottom: 100px; }
+    .story-essay { margin-bottom: 110px; }
+    .story-gallery { margin-bottom: 110px; }
     .story-testimonials .quote-block:last-child { margin-bottom: 0; }
     .story-section { padding-bottom: 0; }
     .yc-sections { padding-top: 0; padding-bottom: 0; }
     .faq-section { padding-top: 0; }
-    .yc-title { margin-top: 100px; }
+    .yc-title { margin-top: 110px; }
   }
 
   .cta-section { position: relative; z-index: 40; background: #080808; padding: 100px 0 0; }
