@@ -364,7 +364,11 @@ layout: null
     .k-col { gap: 16px; }
     /* 카테고리 목록이 한 줄에 하나씩이라 세로로 너무 길어져 칩 형태로 접습니다 */
     .k-list-group h4 { font-size: 20px; margin-bottom: 12px; padding-bottom: 8px; }
-    /* 여러 줄로 감싸지 않고 한 줄 좌우 스크롤 */
+    /* 여러 줄로 감싸지 않고 한 줄 좌우 스크롤.
+       그리드/플렉스 아이템의 기본값 min-width:auto 를 풀지 않으면
+       칩 줄이 스크롤되지 않고 컬럼 자체를 밀어 넓혀버립니다. */
+    .yc-knowledge-grid > .k-col { min-width: 0; }
+    .k-list-group { min-width: 0; }
     .k-list-group ul { flex-direction: row; flex-wrap: nowrap; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
     .k-list-group ul::-webkit-scrollbar { display: none; }
     .k-list-group a { padding: 9px 14px; font-size: 13px; line-height: 1.2; border: 1px solid rgba(245,243,238,0.12); border-radius: 20px; white-space: nowrap; }
