@@ -5,7 +5,9 @@
   /* 로고와 우측 액션이 모두 position:absolute라 모바일에선 흐름상 내용이 없어집니다.
      min-height가 없으면 헤더가 padding 높이(36px)로 쪼그라들어 로고가 상단에 붙습니다. */
   .nav-inner { position:relative; display:flex; align-items:center; justify-content:center; padding: 16px 32px; max-width:1200px; margin:0 auto; gap: 240px; min-height: var(--nav-height); box-sizing: border-box; }
-  .nav-logo { height: 26px; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); }
+  .nav-logo { height: 26px; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); transition: opacity .2s ease; }
+  /* YC처럼 모바일 메뉴가 열리면 가운데 로고는 숨기고 닫기(X)만 남깁니다 */
+  body.nav-menu-open .nav-logo { opacity: 0; pointer-events: none; }
   .nav-logo img { height: 100%; width:auto; display:block; }
   .nav-links { display:flex; align-items:center; gap: 40px; font-size: 14px; color:#c9c8c2; font-family: 'Pretendard Variable', 'Pretendard', sans-serif; }
   .nav-right { display:flex; align-items:center; gap: 32px; font-size:14px; }
@@ -153,12 +155,14 @@
     burger.classList.remove('open');
     burger.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
+    document.body.classList.remove('nav-menu-open');
   }
   burger.addEventListener('click', function(){
     var isOpen = menu.classList.toggle('open');
     burger.classList.toggle('open', isOpen);
     burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     document.body.style.overflow = isOpen ? 'hidden' : '';
+    document.body.classList.toggle('nav-menu-open', isOpen);
   });
   menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
 })();
