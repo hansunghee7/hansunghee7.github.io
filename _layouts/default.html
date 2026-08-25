@@ -85,7 +85,7 @@
             --nav-margin-bottom: 0px;
         }
         html { scroll-behavior: smooth; background-color: #f5f3ee; }
-        body { margin: 0; padding: 0; font-family: 'Noto Sans KR', sans-serif; background-color: #fff; color: #333; word-break: keep-all; }
+        body { margin: 0; padding: 0; font-family: 'Noto Sans KR', sans-serif; background-color: #fff; color: #333; word-break: keep-all; display: flex; flex-direction: column; min-height: 100vh; }
         
         /* 1. 상단 커버 영역 */
         .cover-wrap { 
@@ -114,8 +114,11 @@
 
         /* 2. 포스트 본문 영역 */
         .article-body { max-width: 1100px; margin: 0 auto; padding: 40px 20px 40px; background-color: #fff; position: relative; }
-        .post-mode + .article-body { max-width: 700px; padding-top: 60px; padding-bottom: 0px !important; margin-top: 100vh; }
+        .post-mode + .article-body { max-width: 700px; padding-top: 60px; padding-bottom: 60px !important; margin-top: 100vh; }
         .article-body p { font-size: 15px; font-weight: 400; line-height: 2; letter-spacing: 0.8px; margin-bottom: 30px; }
+        @media (max-width: 600px) {
+            .article-body p { font-size: 17px; letter-spacing: 0.3px; }
+        }
         .article-body img { width: 88%; height: auto; margin: 40px auto; display: block; border-radius: 0; }
         .article-body hr { border: 0; border-top: 1px solid #eaeaea; margin: 60px 0; }
         .article-body .img-gallery {
