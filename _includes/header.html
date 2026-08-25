@@ -22,6 +22,9 @@
   .nav-item:hover .dropdown-menu, .nav-item:focus-within .dropdown-menu { opacity: 1; visibility: visible; }
   .dropdown-menu a { padding: 10px 20px; font-size: 13.5px; color: #2a2822; transition: color 0.2s, background 0.2s; text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-decoration: none; display:block; }
   .dropdown-menu a:hover, .dropdown-menu a:focus { color: #080808; background: rgba(8,8,8,0.06); }
+  /* 사이트를 벗어나 새 탭으로 열리는 링크에만 새창 아이콘 (교보/yes24/클래스유 등) */
+  .dropdown-menu a[target="_blank"]::after { content: ''; display: inline-block; width: 11px; height: 11px; margin-left: 6px; vertical-align: -1px; opacity: 0.65;
+    background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232a2822' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cline x1='10' y1='14' x2='21' y2='3'/%3E%3C/svg%3E") no-repeat center / contain; }
   
   .nav-apply { background:#f5f3ee; color:#080808; padding: 9px 22px; border-radius:999px; font-weight: 500; font-size:14px; transition: background .2s, color .2s; border:none; cursor:pointer; font-family: 'Pretendard Variable', sans-serif; }
   .nav-apply:hover { background:#080808; color:#f5f3ee; box-shadow: inset 0 0 0 1px #f5f3ee; }
@@ -46,6 +49,8 @@
   .mobile-submenu { padding: 2px 0 14px 2px; display: flex; flex-direction: column; gap: 2px; }
   .mobile-submenu a { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 16px; color: #8f8b82; text-decoration: none; word-break: keep-all; padding: 11px 0; touch-action: manipulation; }
   .mobile-submenu a:hover { color: #f5f3ee; }
+  .mobile-submenu a[target="_blank"]::after { content: ''; display: inline-block; width: 12px; height: 12px; margin-left: 7px; vertical-align: -1px; opacity: 0.8;
+    background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238f8b82' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cline x1='10' y1='14' x2='21' y2='3'/%3E%3C/svg%3E") no-repeat center / contain; }
   /* CTA는 YC의 Apply처럼 메뉴 맨 아래에 고정 */
   .mobile-menu-cta { display:block; text-align:center; margin-top: auto; margin-bottom: 8px; padding:18px 0; border-radius:999px; background:#f5f3ee; color:#080808; font-weight:500; font-family: 'Boska', 'Source Serif 4', serif; font-style: italic; border:none; cursor:pointer; width:100%; font-size:21px; flex-shrink: 0; touch-action: manipulation; }
 
