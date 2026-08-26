@@ -22,6 +22,9 @@ collections:
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     identifier_field: title
+    # 글 목록(리스트/그리드) 카드에 제목과 함께 발행일을 같이 보여줍니다.
+    # date_string은 파이프라인이 date에서 자동으로 채워주는 표시용 값입니다.
+    summary: "{{title}}  ·  {{date_string}}"
     format: "yaml-frontmatter"
     # 저장하면 이 순서/모양대로 front matter가 써집니다.
     # (파일명 순번 매기기·date_string 채우기·카테고리 링크 스크립트 삽입은
