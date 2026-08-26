@@ -172,7 +172,9 @@ layout: null
   ::selection { background: #f5f3ee; color: #080808; }
   a { color: inherit; text-decoration: none; }
   .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
-  @media (max-width:700px){ .wrap{ padding: 0 32px; } }
+  /* 모바일 좌우 거터는 전 섹션 16px로 통일합니다(YC 모바일 실측값: main에 px-4).
+     헤더 nav는 예외로 32px를 유지합니다 -- YC도 내비게이션은 본문보다 넓게 잡습니다. */
+  @media (max-width:760px){ .wrap{ padding: 0 16px; } }
 
   .hero-wrapper { position: sticky; top: var(--nav-height); z-index: 5; height: calc(100vh - var(--nav-height)); height: calc(100dvh - var(--nav-height)); background: #080808; }
   .hero { height: 100%; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; }
@@ -231,8 +233,9 @@ layout: null
     /* 흐름 배치로 바뀌면서 스크롤 연동 페이드(syncProvenFade)가 이 섹션을 보이는 도중에
        0으로 만들어 버립니다. 모바일에선 항상 보이도록 고정. */
     #proven-fade { opacity: 1 !important; }
-    .proven-label { margin-bottom: 32px; }
-    .reveal-grid { grid-template-columns: repeat(3, 1fr); gap:26px 12px; margin-bottom: 72px; }
+    /* 92vw로 자체 폭을 잡던 것을 공통 16px 거터에 맞춥니다(좌우 16px씩 = 32px). */
+    .proven-label { margin-bottom: 32px; max-width: calc(100% - 32px); }
+    .reveal-grid { grid-template-columns: repeat(3, 1fr); gap:26px 12px; margin-bottom: 72px; width: calc(100% - 32px); }
     /* 3단 배치이므로 10번째 로고는 숨겨 3x3으로 딱 맞춥니다 */
     .reveal-grid .gitem:nth-child(n+10) { display: none; }
     .reveal-grid .gitem { height: 66px; }
@@ -403,7 +406,10 @@ layout: null
     .story-section { padding-bottom: 62px; padding-left: 16px; padding-right: 16px; }
     /* 갤러리는 94vw로 자체 폭을 잡아 위 패딩을 무시하므로 같은 거터에 맞춥니다. */
     .story-gallery { width: 100%; }
-    .yc-sections { padding-top: 0; }
+    /* .yc-sections도 padding 단축 지정이 .wrap의 좌우값을 덮어써서
+       LOG 제목/카드와 BOOK & CLASS가 화면 끝에 붙어 있었습니다. */
+    .yc-sections { padding-top: 0; padding-left: 16px; padding-right: 16px; }
+    .faq-wrap { padding-left: 16px; padding-right: 16px; }
     /* Story 섹션 -> SIMPLIFIER LOG: 다른 섹션으로 넘어가는 지점 (90px) */
     .yc-sections .yc-title:first-of-type { margin-top: 0; }
     /* SIMPLIFIER LOG 하위 콘텐츠 -> BOOK & CLASS: 같은 섹션 안의 하위 블록 (74px) */
@@ -469,7 +475,9 @@ layout: null
      CONTACT → 굿즈 = 섹션 내부 72px, 굿즈 → 푸터 = 섹션 사이 96px */
   @media (max-width: 760px) {
     .cta-content { margin-bottom: 72px; }
-    .new-bottom-gallery-section { padding-bottom: 96px; }
+    /* 좌우는 공통 16px 거터로 통일(기본값 24px). 이 블록은 위 기본 정의보다
+       뒤에 있어야 단축 지정 padding에 덮이지 않습니다. */
+    .new-bottom-gallery-section { padding-bottom: 96px; padding-left: 16px; padding-right: 16px; }
   }
   .new-bottom-gallery { max-width: 1360px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
   .new-gallery-item {
