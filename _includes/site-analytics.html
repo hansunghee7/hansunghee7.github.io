@@ -1,0 +1,50 @@
+{%- comment -%}
+============================================================
+측정 도구 · 검색엔진 소유확인 — 여기 4줄만 채우면 전체 적용됩니다.
+============================================================
+이 파일은 index.html과 _layouts/default.html(= 모든 글 페이지, log.html)의
+<head>에서 함께 불러갑니다. 그래서 아래 값을 채우면 사이트 전 페이지에
+한 번에 적용되고, 비워두면 아무것도 삽입되지 않습니다.
+
+  GA4_ID         Google Analytics 4 측정 ID.  예: G-ABCD123456
+  CLARITY_ID     Microsoft Clarity 프로젝트 ID. 예: abcd1234ef
+  GOOGLE_VERIFY  구글 서치콘솔 소유확인 코드(content 값만, 태그 통째로 X)
+  NAVER_VERIFY   네이버 서치어드바이저 소유확인 코드(content 값만)
+
+소유확인 코드는 "확인" 버튼을 누른 뒤에도 지우면 안 됩니다.
+지우면 소유권이 풀려서 데이터가 끊깁니다.
+{%- endcomment -%}
+
+{%- assign GA4_ID        = "" -%}
+{%- assign CLARITY_ID    = "" -%}
+{%- assign GOOGLE_VERIFY = "" -%}
+{%- assign NAVER_VERIFY  = "" -%}
+
+{%- if GOOGLE_VERIFY != "" %}
+<meta name="google-site-verification" content="{{ GOOGLE_VERIFY }}">
+{%- endif %}
+{%- if NAVER_VERIFY != "" %}
+<meta name="naver-site-verification" content="{{ NAVER_VERIFY }}">
+{%- endif %}
+
+{%- if GA4_ID != "" %}
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ GA4_ID }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{{ GA4_ID }}');
+</script>
+{%- endif %}
+
+{%- if CLARITY_ID != "" %}
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "{{ CLARITY_ID }}");
+</script>
+{%- endif %}
