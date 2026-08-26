@@ -2,7 +2,7 @@
 layout: default
 title: "logo branding"
 category: '심플리파이어 라이프'
-cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/g00uozFCdyrVc20r1sBD4GlfpOE.jpg'
+cover_image: '/log_assets/images/356_logo branding_cover.jpg'
 date_string: 'Jul 14. 2024'
 date: 2024-07-14
 keywords: '플레잉코치, 스타트업 그로스 코치, 코칭 일상'

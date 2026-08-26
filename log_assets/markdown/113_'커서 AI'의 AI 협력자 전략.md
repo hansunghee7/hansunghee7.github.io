@@ -2,7 +2,7 @@
 layout: default
 title: "커서 AI'의 AI 협력자 전략"
 category: '스타트업 인사이트'
-cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/4-PHJW7Ag-Wgi6OsBMANgR2qftY.jpg'
+cover_image: '/log_assets/images/113_'커서 AI'의 AI 협력자 전략_cover.jpg'
 date_string: 'Jun 9. 2025'
 date: 2025-06-09
 keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'

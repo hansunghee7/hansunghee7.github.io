@@ -2,7 +2,7 @@
 layout: default
 title: "현재와 미래를 함께한다 3 Horizons model"
 category: '기획자의 프레임웍'
-cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/st0GvzeKMiDd9qEAC-dXU0lS1JE.png'
+cover_image: '/log_assets/images/091_현재와 미래를 함께한다 3 Horizons model_cover.jpg'
 date_string: 'Jul 1. 2025'
 date: 2025-07-01
 keywords: '기획자의 질문법, 기획 프레임워크, PM 역량강화'

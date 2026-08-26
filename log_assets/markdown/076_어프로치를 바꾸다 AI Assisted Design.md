@@ -2,7 +2,7 @@
 layout: default
 title: "어프로치를 바꾸다 AI Assisted Design"
 category: 'UX의 언어들'
-cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/6Y7r9thKQUBFSDu1mFZCZdWzzpQ.jpg'
+cover_image: '/log_assets/images/076_어프로치를 바꾸다 AI Assisted Design_cover.jpg'
 date_string: 'Jul 17. 2025'
 date: 2025-07-17
 keywords: 'UX 컨설팅, UX 디자인, 프로덕트 UX'

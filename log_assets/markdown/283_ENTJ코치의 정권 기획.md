@@ -2,7 +2,7 @@
 layout: default
 title: "ENTJ코치의 정권 기획"
 category: '심플리파이어 라이프'
-cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/UhJ_gbdgHUxx83QQGOQ_cI5qrYM'
+cover_image: '/log_assets/images/283_ENTJ코치의 정권 기획_cover.jpg'
 date_string: 'Dec 8. 2024'
 date: 2024-12-08
 keywords: '플레잉코치, 스타트업 그로스 코치, 코칭 일상'

@@ -2,7 +2,7 @@
 layout: default
 title: "AI 성능의 열쇠, HBM은 무엇일까?"
 category: 'AI의 언어들'
-cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/JObnKEBRNb52fha0MD4UaBc-iME.jpg'
+cover_image: '/log_assets/images/184_AI 성능의 열쇠, HBM은 무엇일까_cover.jpg'
 date_string: 'Apr 2. 2025'
 date: 2025-04-02
 keywords: 'AI 트렌드, AI 기술 이해'

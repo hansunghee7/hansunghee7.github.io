@@ -2,7 +2,7 @@
 layout: default
 title: "코드의 한계를 깨는 AI 혁신, Cursor AI"
 category: '스타트업 인사이트'
-cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/pTtB9OUSU96risdXLTCL-rVw_c4.jpg'
+cover_image: '/log_assets/images/210_코드의 한계를 깨는 AI 혁신, Cursor AI_cover.jpg'
 date_string: 'Mar 9. 2025'
 date: 2025-03-09
 keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'

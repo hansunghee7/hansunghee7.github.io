@@ -2,7 +2,7 @@
 layout: default
 title: "애자일 vs 워터폴, PO가 알아야 할 모든 것"
 category: 'PO의 프레임웍'
-cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/5GuLaxnBW6ydK_Xmq4-47_KI2UI.jpg'
+cover_image: '/log_assets/images/182_애자일 vs 워터폴, PO가 알아야 할 모든 것_cover.jpg'
 date_string: 'Apr 4. 2025'
 date: 2025-04-04
 keywords: 'PO 코칭, 프로덕트 오너 실무, 프로덕트 전략'

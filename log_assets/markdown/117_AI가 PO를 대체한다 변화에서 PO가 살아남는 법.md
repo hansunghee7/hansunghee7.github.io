@@ -2,7 +2,7 @@
 layout: default
 title: "AI가 PO를 대체한다? 변화에서 PO가 살아남는 법"
 category: 'PO의 프레임웍'
-cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/iWVqSPn_ZfB1jtiwnZ_kfLfZQAM.jpg'
+cover_image: '/log_assets/images/117_AI가 PO를 대체한다 변화에서 PO가 살아남는 법_cover.jpg'
 date_string: 'Jun 6. 2025'
 date: 2025-06-06
 keywords: 'PO 코칭, 프로덕트 오너 실무, 프로덕트 전략'

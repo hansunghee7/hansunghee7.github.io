@@ -2,7 +2,7 @@
 layout: default
 title: "ZeRO, 메모리최적화로 AI 비즈니스의 한계를 넓히다"
 category: 'AI의 언어들'
-cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/ic-v5rmlHY0e9DeykvxoDtYA7M0.jpg'
+cover_image: '/log_assets/images/103_ZeRO, 메모리최적화로 AI 비즈니스의 한계를 넓히다_cover.jpg'
 date_string: 'Jun 18. 2025'
 date: 2025-06-18
 keywords: 'AI 트렌드, AI 기술 이해'

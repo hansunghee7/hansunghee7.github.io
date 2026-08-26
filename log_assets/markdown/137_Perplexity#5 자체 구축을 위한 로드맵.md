@@ -2,7 +2,7 @@
 layout: default
 title: "Perplexity#5 자체 구축을 위한 로드맵"
 category: '스타트업 인사이트'
-cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/-AehHKNV0YOkhOpsssKNfto3KP0.jpg'
+cover_image: '/log_assets/images/137_Perplexity5 자체 구축을 위한 로드맵_cover.jpg'
 date_string: 'May 18. 2025'
 date: 2025-05-18
 keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'

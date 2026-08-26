@@ -2,7 +2,7 @@
 layout: default
 title: "마케팅 없이 20조원 가치를 만든 Figma PLG전략"
 category: '스타트업 인사이트'
-cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/klhuRw69SbMOqliz0reN8ALzacI.jpg'
+cover_image: '/log_assets/images/253_마케팅 없이 20조원 가치를 만든 Figma PLG전략_cover.jpg'
 date_string: 'Jan 27. 2025'
 date: 2025-01-27
 keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'

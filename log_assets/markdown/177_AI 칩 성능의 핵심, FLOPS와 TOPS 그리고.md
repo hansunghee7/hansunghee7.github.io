@@ -2,7 +2,7 @@
 layout: default
 title: "AI 칩 성능의 핵심, FLOPS와 TOPS 그리고.."
 category: 'AI의 언어들'
-cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/YynRQvh2ddYU6haSmG4orqQQUzY'
+cover_image: '/log_assets/images/177_AI 칩 성능의 핵심, FLOPS와 TOPS 그리고.._cover.jpg'
 date_string: 'Apr 9. 2025'
 date: 2025-04-09
 keywords: 'AI 트렌드, AI 기술 이해'

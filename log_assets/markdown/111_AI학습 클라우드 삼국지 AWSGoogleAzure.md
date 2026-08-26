@@ -2,7 +2,7 @@
 layout: default
 title: "AI학습 클라우드 삼국지 AWS/Google/Azure"
 category: 'AI의 언어들'
-cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/hG4jNnh2g7utJki7N4NpXwfGPt0.png'
+cover_image: '/log_assets/images/111_AI학습 클라우드 삼국지 AWSGoogleAzure_cover.jpg'
 date_string: 'Jun 11. 2025'
 date: 2025-06-11
 keywords: 'AI 트렌드, AI 기술 이해'

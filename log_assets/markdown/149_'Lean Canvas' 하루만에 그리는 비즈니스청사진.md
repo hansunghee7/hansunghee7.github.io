@@ -2,7 +2,7 @@
 layout: default
 title: "Lean Canvas' 하루만에 그리는 비즈니스청사진"
 category: '기획자의 프레임웍'
-cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/Z42jZ_sRdqg09NtT2LypV1iTHhY.jpg'
+cover_image: '/log_assets/images/149_'Lean Canvas' 하루만에 그리는 비즈니스청사진_cover.jpg'
 date_string: 'May 6. 2025'
 date: 2025-05-06
 keywords: '기획자의 질문법, 기획 프레임워크, PM 역량강화'

@@ -2,7 +2,7 @@
 layout: default
 title: "내가 나를 기획한다면? Choice of Ur Life"
 category: '기획일상'
-cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/0Izr4uD9ZemtmWhNgViNHHmQsLI.jpeg'
+cover_image: '/log_assets/images/504_내가 나를 기획한다면 Choice of Ur Life_cover.jpg'
 date_string: 'Jan 15. 2024'
 date: 2024-01-15
 keywords: '기획자 커리어, PM 실무, 기획 방법론'

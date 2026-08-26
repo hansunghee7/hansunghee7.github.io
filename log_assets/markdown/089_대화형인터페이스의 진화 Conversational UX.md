@@ -2,7 +2,7 @@
 layout: default
 title: "대화형인터페이스의 진화 Conversational UX"
 category: 'UX의 언어들'
-cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/nh32tQQAIdTrOMxOMqr40svdqJ8.jpg'
+cover_image: '/log_assets/images/089_대화형인터페이스의 진화 Conversational UX_cover.jpg'
 date_string: 'Jul 3. 2025'
 date: 2025-07-03
 keywords: 'UX 컨설팅, UX 디자인, 프로덕트 UX'

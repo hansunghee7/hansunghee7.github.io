@@ -2,7 +2,7 @@
 layout: default
 title: "AI데이터센터 혈관, InfiniBand/NVLink"
 category: 'AI의 언어들'
-cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fgif/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/pl-P3SzvsWaA3JVZqRFbPjTpW1U.gif'
+cover_image: '/log_assets/images/141_AI데이터센터 혈관, InfiniBandNVLink_cover.jpg'
 date_string: 'May 14. 2025'
 date: 2025-05-14
 keywords: 'AI 트렌드, AI 기술 이해'

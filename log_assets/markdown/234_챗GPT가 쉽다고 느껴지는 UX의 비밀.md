@@ -2,7 +2,7 @@
 layout: default
 title: "챗GPT가 쉽다고 느껴지는 UX의 비밀"
 category: 'UX의 언어들'
-cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/P-o3Sg3O-fVIGRKRQWnx4DhN_QY.jpg'
+cover_image: '/log_assets/images/234_챗GPT가 쉽다고 느껴지는 UX의 비밀_cover.jpg'
 date_string: 'Feb 13. 2025'
 date: 2025-02-13
 keywords: 'UX 컨설팅, UX 디자인, 프로덕트 UX'

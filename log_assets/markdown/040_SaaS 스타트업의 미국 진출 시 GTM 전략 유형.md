@@ -2,7 +2,7 @@
 layout: default
 title: "SaaS 스타트업의 미국 진출 시 GTM 전략 유형"
 category: '대한민국 스타트업 미국진출을 묻다'
-cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/88BITrNSdHjNaAtNRuJFlOYZhwE.jpg'
+cover_image: '/log_assets/images/040_SaaS 스타트업의 미국 진출 시 GTM 전략 유형_cover.jpg'
 date_string: 'Aug 31. 2025'
 date: 2025-08-31
 keywords: '스타트업 미국진출, 글로벌 진출 전략'

@@ -2,7 +2,7 @@
 layout: default
 title: "Perplexity#4 대화형 UX 구조와 쿼리 분기"
 category: '스타트업 인사이트'
-cover_image: 'https://img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/7laS35X23ORe1nbycFX2aOa0W2k.png'
+cover_image: '/log_assets/images/144_Perplexity4 대화형 UX 구조와 쿼리 분기_cover.jpg'
 date_string: 'May 11. 2025'
 date: 2025-05-11
 keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'
