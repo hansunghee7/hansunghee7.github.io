@@ -277,6 +277,13 @@
 </details>
 
 <details class="dsec">
+  <summary><span class="dsec-grip" aria-hidden="true">⠿</span><h2>많이 읽힌 글 <button type="button" class="h2note-q" aria-label="설명 보기">?<span class="h2note-text">그 글이 세션의 첫 페이지였는지와 무관하게, 실제로 그 글을 본 사람 수(유니크)와 총 조회수입니다. "랜딩이 많았던 글"은 첫 착지만 세지만, 여긴 로그 목록이나 다른 글을 거쳐 들어온 조회도 포함합니다.</span></button></h2></summary>
+  <div class="dsec-body">
+  <div class="tablebox" id="topViewedTable"></div>
+  </div>
+</details>
+
+<details class="dsec">
   <summary><span class="dsec-grip" aria-hidden="true">⠿</span><h2>월별 발행 추이 <button type="button" class="h2note-q" aria-label="설명 보기">?<span class="h2note-text">최근 24개월. 막대에 마우스를 올리면 밝아집니다.</span></button></h2></summary>
   <div class="dsec-body">
   <div class="chartbox">
@@ -673,6 +680,30 @@
     box.appendChild(table);
   }
 
+  /* 첫 착지였는지와 무관한 순수 조회 랭킹 -- 유니크 방문자 기준으로 정렬합니다. */
+  function renderTopViewed(d){
+    var box = document.getElementById('topViewedTable'); box.textContent='';
+    var rows = d.top_viewed_posts || [];
+    if(!rows.length){
+      box.appendChild(el('div','note','아직 데이터가 없습니다.'));
+      return;
+    }
+    var table = el('table');
+    var thead = el('thead'), htr = el('tr');
+    ['글 제목','조회한 사람(유니크)','총 조회수'].forEach(function(h){ htr.appendChild(el('th',null,h)); });
+    thead.appendChild(htr); table.appendChild(thead);
+    var tb = el('tbody');
+    rows.forEach(function(r){
+      var tr = el('tr');
+      tr.appendChild(el('td','ttl', r.title));
+      tr.appendChild(el('td','num', String(r.uniqueViews)));
+      tr.appendChild(el('td','num', String(r.views)));
+      tb.appendChild(tr);
+    });
+    table.appendChild(tb);
+    box.appendChild(table);
+  }
+
   function renderAnalytics(){
     fetch('/assets/data/analytics.json?t=' + Date.now(), { cache:'no-store' })
       .then(function(r){ if(!r.ok) throw { notYet: r.status===404 }; return r.json(); })
@@ -696,6 +727,7 @@
         renderKpiDetails(d);
         renderLeadPosts(d);
         renderTopLanding(d);
+        renderTopViewed(d);
 
         /* 신규/재방문 총합은 위 ①의 최초방문·재방문 카드가 이미 보여주므로 여기서 반복하지 않습니다.
            여긴 트렌드 카드가 못 보여주는 것만: 세션(방문 횟수, 사람 수와 다름)과 방문자 총합. */
@@ -748,6 +780,7 @@
         document.getElementById('kpiDetails').textContent='';
         document.getElementById('leadPostsTable').textContent='';
         document.getElementById('topLandingTable').textContent='';
+        document.getElementById('topViewedTable').textContent='';
       });
   }
 

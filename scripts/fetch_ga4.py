@@ -11,6 +11,7 @@ KPI가 "리드 가능성 높은 예비고객의 최초·재방문"이라, 여기
     온 세션만 따로 -- GEO/AEO가 실제로 유입을 만드는지 보는 지표
   - _includes/site-analytics.html에 이미 심어둔 관여 신호 이벤트
     (section_view_*, faq_open, read_complete) 발생 횟수
+  - 개별 글의 순수 조회 랭킹(유니크 방문자·총 조회수) -- 랜딩(첫 착지) 여부와 무관
 
 인증 정보(서비스 계정 키)는 절대 이 저장소나 대화에 남기지 않는다 -- GitHub
 Actions Secrets에서 환경변수로만 주입받는다. 로컬에서 테스트할 때도 같은
@@ -230,6 +231,35 @@ def fetch_top_landing_posts(client, property_id, title_map):
     return rows[:15]
 
 
+def fetch_post_pageviews(client, property_id, title_map):
+    """개별 글의 순수 조회 랭킹 -- 랜딩(첫 착지)이었는지와 무관하게, 그 글을 실제로
+    본 사람이 몇 명인지(유니크 방문자)와 총 조회수. top_landing_posts는 세션의
+    '첫 페이지'였던 경우만 잡으므로, 로그 목록이나 다른 글을 거쳐 들어온 조회는
+    거기 안 잡힌다 -- 이건 그것까지 포함한 순수 조회수다."""
+    resp = run_report(
+        client, property_id,
+        date_ranges=[DateRange(start_date="30daysAgo", end_date="today")],
+        dimensions=[Dimension(name="pagePath")],
+        metrics=[Metric(name="activeUsers"), Metric(name="screenPageViews")],
+        limit=500,
+    )
+    rows = []
+    for r in resp.rows:
+        path = r.dimension_values[0].value or ""
+        if not path.startswith("/log_assets/markdown/"):
+            continue  # 개별 글만 -- 홈/로그목록/기타는 이 랭킹의 대상이 아니다
+        unique = int(r.metric_values[0].value)
+        views = int(r.metric_values[1].value)
+        rows.append({
+            "path": path,
+            "title": title_map.get(path, path),
+            "uniqueViews": unique,
+            "views": views,
+        })
+    rows.sort(key=lambda x: -x["uniqueViews"])
+    return rows[:15]
+
+
 def fetch_landing_types(client, property_id):
     """방문자가 처음 착지하는 곳이 홈 / 로그 홈(목록) / 개별 글 중 어디인지.
     최초방문을 만드는 또 다른 축 -- GEO/AEO 유입은 홈이 아니라 특정 글로 바로
@@ -316,6 +346,7 @@ def main():
         "contact_funnel": fetch_event_totals(client, property_id, ["contact_open", "generate_lead", "contact_error"]),
         "leads_by_post": fetch_leads_by_landing_page(client, property_id, title_map),
         "top_landing_posts": fetch_top_landing_posts(client, property_id, title_map),
+        "top_viewed_posts": fetch_post_pageviews(client, property_id, title_map),
     }
 
     os.makedirs(os.path.dirname(OUT_PATH), exist_ok=True)
