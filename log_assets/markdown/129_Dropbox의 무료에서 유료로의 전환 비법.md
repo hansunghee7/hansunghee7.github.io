@@ -5,8 +5,8 @@ category: '스타트업 인사이트'
 image: '/log_assets/images/129_Dropbox의 무료에서 유료로의 전환 비법_cover.jpg'
 date_string: 'May 26. 2025'
 date: 2025-05-26
-keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'
-about: '스타트업, 그로스 코칭, 조직 성장'
+keywords: '프리미엄 전환 전략, 바이럴 루프, Dropbox 그로스전략'
+about: '그로스 전략, 프리미엄 비즈니스 모델'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

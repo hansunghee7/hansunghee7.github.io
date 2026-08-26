@@ -5,8 +5,8 @@ category: 'PO의 프레임웍'
 image: '/log_assets/images/117_AI가 PO를 대체한다 변화에서 PO가 살아남는 법_cover.jpg'
 date_string: 'Jun 6. 2025'
 date: 2025-06-06
-keywords: 'PO 코칭, 프로덕트 오너 실무, 프로덕트 전략'
-about: 'PO, 프로덕트 전략'
+keywords: 'AI시대 PO 생존전략, AI와 협업하는 PM, AI 도구 활용법'
+about: 'AI와 제품관리, PO 커리어'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

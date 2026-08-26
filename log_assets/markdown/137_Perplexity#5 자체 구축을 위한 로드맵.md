@@ -5,8 +5,8 @@ category: '스타트업 인사이트'
 image: '/log_assets/images/137_Perplexity5 자체 구축을 위한 로드맵_cover.jpg'
 date_string: 'May 18. 2025'
 date: 2025-05-18
-keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'
-about: '스타트업, 그로스 코칭, 조직 성장'
+keywords: 'RAG 시스템 구축, 벡터 데이터베이스, AI 검색엔진 로드맵'
+about: 'RAG, AI 검색 기술, 스타트업 기술 구축'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

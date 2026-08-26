@@ -5,8 +5,8 @@ category: '스타트업 인사이트'
 image: '/log_assets/images/421_CPO는 어떻게 일을 할까 Part 1.2 생산구조_cover.jpg'
 date_string: 'Apr 11. 2024'
 date: 2024-04-11
-keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'
-about: '스타트업, 그로스 코칭, 조직 성장'
+keywords: '스쿼드 조직 설계, 프로덕트 생산체계, CPO 코칭 사례'
+about: 'CPO, 프로덕트 조직, 스쿼드 운영'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

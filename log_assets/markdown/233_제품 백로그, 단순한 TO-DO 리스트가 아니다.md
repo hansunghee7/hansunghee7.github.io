@@ -5,8 +5,8 @@ category: 'PO의 프레임웍'
 image: '/log_assets/images/233_제품 백로그, 단순한 TO-DO 리스트가 아니다_cover.jpg'
 date_string: 'Feb 14. 2025'
 date: 2025-02-14
-keywords: 'PO 코칭, 프로덕트 오너 실무, 프로덕트 전략'
-about: 'PO, 프로덕트 전략'
+keywords: '제품 백로그 관리, 백로그 우선순위 전략, 애자일 스쿼드 운영'
+about: '제품 백로그, 애자일 프로덕트 관리'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

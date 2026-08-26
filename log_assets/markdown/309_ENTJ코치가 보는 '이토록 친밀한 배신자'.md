@@ -5,8 +5,8 @@ category: '심플리파이어 라이프'
 image: '/log_assets/images/309_ENTJ코치가 보는 이토록 친밀한 배신자_cover.jpg'
 date_string: 'Oct 19. 2024'
 date: 2024-10-19
-keywords: '플레잉코치, 스타트업 그로스 코치, 코칭 일상'
-about: '심플리파이어, 코칭 방법론'
+keywords: '이토록 친밀한 배신자, 드라마 리뷰, 한석규 연기'
+about: '드라마 감상, 콘텐츠 리뷰, 일상 에세이'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

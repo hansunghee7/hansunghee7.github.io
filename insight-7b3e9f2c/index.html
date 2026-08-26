@@ -70,6 +70,14 @@
   #conversionTiles .ql-link{color:var(--dim); text-decoration:none;}
   #conversionTiles .ql-link:hover{color:var(--ink);}
 
+  /* ---- 재고 요약 줄 (신뢰 자산) -- ①의 KPI 카드와 일부러 다르게 생기게 합니다.
+     큰 볼드 숫자를 쓰면 "성장하는 성과"처럼 보이는데, 이건 홈페이지를 고쳐야만
+     바뀌는 정적 재고라 그렇게 보이면 안 됩니다. */
+  .inventory-row{display:flex; flex-wrap:wrap; row-gap:8px; padding:14px 18px; background:var(--card); border:1px solid var(--line); border-radius:10px; font-size:13.5px; color:var(--dim);}
+  .inventory-row .inv-item{padding-right:16px; margin-right:16px; border-right:1px solid var(--line-soft);}
+  .inventory-row .inv-item:last-child{border-right:none; padding-right:0; margin-right:0;}
+  .inventory-row .inv-item b{font-weight:600; color:var(--ink);}
+
   /* ---- KPI 하위요소 (각 KPI 카드 바로 아래, 같은 열에 정렬 -- "무엇이 이 숫자를 만드나") ---- */
   .kpi-detail-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:8px;}
   @media (max-width:760px){ .kpi-detail-grid{grid-template-columns:1fr;} }
@@ -179,8 +187,8 @@
 
 <section>
   <h2>② 신뢰 자산</h2>
-  <p class="h2note">섭외 담당자가 결정을 내릴 때 실제로 보는 요소들입니다. 홈페이지를 직접 읽어와 세기 때문에 홈을 고치면 이 숫자도 따라 바뀝니다.</p>
-  <div class="tiles" id="trustTiles"></div>
+  <p class="h2note">섭외 담당자가 결정을 내릴 때 실제로 보는 요소들입니다. <b>성과 지표가 아니라 재고</b>입니다 — 방문 행동이 아니라 홈페이지에 지금 뭐가 있는지를 세는 것이라, 홈을 고쳐야만 바뀝니다.</p>
+  <div class="inventory-row" id="trustTiles"></div>
 </section>
 
 <section>
@@ -377,23 +385,33 @@
     t.appendChild(tb);
   }
 
-  /* ③ 신뢰 자산 — 홈페이지 HTML을 직접 읽어 세므로 홈을 고치면 자동으로 반영됩니다. */
+  function invItem(label, n, unit){
+    var item = el('span','inv-item');
+    item.appendChild(document.createTextNode(label+' '));
+    item.appendChild(el('b',null,String(n)));
+    item.appendChild(document.createTextNode(unit));
+    return item;
+  }
+
+  /* ③ 신뢰 자산 — 홈페이지 HTML을 직접 읽어 세므로 홈을 고치면 자동으로 반영됩니다.
+     GA4처럼 방문 행동을 측정한 게 아니라 정적 재고라, ①의 KPI 카드와 똑같이 생기면
+     성과처럼 오해될 수 있습니다. 그래서 큰 볼드 숫자 카드 대신 얇은 재고 목록 줄로 표시. */
   function renderTrust(){
     var box = document.getElementById('trustTiles');
     box.textContent='';
-    box.appendChild(tile('신뢰 자산','읽는 중…','',''));
+    box.appendChild(el('span','inv-item','읽는 중…'));
     fetch('/?t=' + Date.now(), { cache:'no-store' })
       .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.text(); })
       .then(function(html){
         var doc = new DOMParser().parseFromString(html, 'text/html');
         var n = function(sel){ return doc.querySelectorAll(sel).length; };
         box.textContent='';
-        box.appendChild(tile('고객사 로고', n('.reveal-grid .gitem'), '개', '실적 증거'));
-        box.appendChild(tile('현장 후기', n('.quote-block'), '건', 'VOICES IN THE FIELD'));
-        box.appendChild(tile('책 · 클래스', n('.overlay-card'), '개', '클릭 시 book_class_click 기록'));
-        box.appendChild(tile('FAQ', n('.faq-item'), '문항', '섭외 절차 안내'));
-        box.appendChild(tile('현장 사진', n('.story-gallery .gallery-item'), '장', '강연·워크숍 장면'));
-        box.appendChild(tile('문의 버튼', n('.open-contact-modal'), '곳', '전환 진입점'));
+        box.appendChild(invItem('고객사 로고', n('.reveal-grid .gitem'), '개'));
+        box.appendChild(invItem('현장 후기', n('.quote-block'), '건'));
+        box.appendChild(invItem('책·클래스', n('.overlay-card'), '개'));
+        box.appendChild(invItem('FAQ', n('.faq-item'), '문항'));
+        box.appendChild(invItem('현장 사진', n('.story-gallery .gallery-item'), '장'));
+        box.appendChild(invItem('문의 버튼', n('.open-contact-modal'), '곳'));
       })
       .catch(function(e){
         box.textContent='';

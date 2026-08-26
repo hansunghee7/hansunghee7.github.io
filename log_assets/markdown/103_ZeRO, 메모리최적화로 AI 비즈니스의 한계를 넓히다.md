@@ -5,8 +5,8 @@ category: 'AI의 언어들'
 image: '/log_assets/images/103_ZeRO, 메모리최적화로 AI 비즈니스의 한계를 넓히다_cover.jpg'
 date_string: 'Jun 18. 2025'
 date: 2025-06-18
-keywords: 'AI 트렌드, AI 기술 이해'
-about: 'AI, 기술 트렌드'
+keywords: 'ZeRO 메모리 최적화, AI 모델 학습 비용, GPU 효율화'
+about: 'AI 인프라, 딥러닝 기술'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

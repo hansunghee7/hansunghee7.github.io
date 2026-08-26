@@ -5,8 +5,8 @@ category: '스타트업 인사이트'
 image: '/log_assets/images/144_Perplexity4 대화형 UX 구조와 쿼리 분기_cover.jpg'
 date_string: 'May 11. 2025'
 date: 2025-05-11
-keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'
-about: '스타트업, 그로스 코칭, 조직 성장'
+keywords: '대화형 AI UX, 쿼리 리라이팅, 응답 스트리밍'
+about: 'AI 프로덕트 UX, 챗봇 설계'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

@@ -5,8 +5,8 @@ category: '심플리파이어 라이프'
 image: '/log_assets/images/283_ENTJ코치의 정권 기획_cover.jpg'
 date_string: 'Dec 8. 2024'
 date: 2024-12-08
-keywords: '플레잉코치, 스타트업 그로스 코치, 코칭 일상'
-about: '심플리파이어, 코칭 방법론'
+keywords: '정치 전략 기획, 정권 운영 전략, 기획자의 시선'
+about: '정치기획, 전략 경영, 시사 단상'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

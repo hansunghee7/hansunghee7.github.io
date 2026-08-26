@@ -5,8 +5,8 @@ category: '심플리파이어 라이프'
 image: '/log_assets/images/272_Thank you 2024~!!!_cover.jpg'
 date_string: 'Dec 31. 2024'
 date: 2024-12-31
-keywords: '플레잉코치, 스타트업 그로스 코치, 코칭 일상'
-about: '심플리파이어, 코칭 방법론'
+keywords: '2024년 회고, 스타트업 액셀러레이팅, 코칭 성과'
+about: '심플리파이어, 연말 회고'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

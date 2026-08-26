@@ -5,8 +5,8 @@ category: 'UX의 언어들'
 image: '/log_assets/images/234_챗GPT가 쉽다고 느껴지는 UX의 비밀_cover.jpg'
 date_string: 'Feb 13. 2025'
 date: 2025-02-13
-keywords: 'UX 컨설팅, UX 디자인, 프로덕트 UX'
-about: 'UX, 프로덕트 디자인'
+keywords: '챗GPT UX 설계, 대화형 인터페이스 디자인, 맞춤형 UX'
+about: '대화형 UX, AI 프로덕트 디자인'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

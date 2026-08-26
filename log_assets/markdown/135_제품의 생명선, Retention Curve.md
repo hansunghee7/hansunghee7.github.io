@@ -5,8 +5,8 @@ category: '기획자의 프레임웍'
 image: '/log_assets/images/135_제품의 생명선, Retention Curve_cover.jpg'
 date_string: 'May 20. 2025'
 date: 2025-05-20
-keywords: '기획자의 질문법, 기획 프레임워크, PM 역량강화'
-about: '기획 프레임워크, PM 교육'
+keywords: '리텐션 커브, 코호트 리텐션 분석, PMF 진단'
+about: '사용자 리텐션, 프로덕트 그로스'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

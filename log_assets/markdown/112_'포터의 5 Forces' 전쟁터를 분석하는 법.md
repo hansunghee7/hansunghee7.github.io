@@ -5,8 +5,8 @@ category: '기획자의 프레임웍'
 image: '/log_assets/images/112_포터의 5 Forces 전쟁터를 분석하는 법_cover.jpg'
 date_string: 'Jun 10. 2025'
 date: 2025-06-10
-keywords: '기획자의 질문법, 기획 프레임워크, PM 역량강화'
-about: '기획 프레임워크, PM 교육'
+keywords: '포터의 5 Forces, 산업구조 분석, 경쟁전략 프레임워크'
+about: '전략 프레임워크, 산업 분석'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

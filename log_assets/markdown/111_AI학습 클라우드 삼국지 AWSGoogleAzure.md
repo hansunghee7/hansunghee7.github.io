@@ -5,8 +5,8 @@ category: 'AI의 언어들'
 image: '/log_assets/images/111_AI학습 클라우드 삼국지 AWSGoogleAzure_cover.jpg'
 date_string: 'Jun 11. 2025'
 date: 2025-06-11
-keywords: 'AI 트렌드, AI 기술 이해'
-about: 'AI, 기술 트렌드'
+keywords: 'AI 학습 인프라 비교, AWS Trainium vs TPU, 클라우드 GPU 선택'
+about: 'AI 인프라, 클라우드 컴퓨팅'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

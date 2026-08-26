@@ -5,8 +5,8 @@ category: 'PO의 프레임웍'
 image: '/log_assets/images/132_PM, PL, TPM의 차이 한눈에 보기_cover.jpg'
 date_string: 'May 23. 2025'
 date: 2025-05-23
-keywords: 'PO 코칭, 프로덕트 오너 실무, 프로덕트 전략'
-about: 'PO, 프로덕트 전략'
+keywords: 'PM PL TPM 차이, 프로젝트 리더십 역할, 테크니컬 프로그램 매니저'
+about: '프로젝트 관리, 팀 리더십 역할'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

@@ -5,8 +5,8 @@ category: 'UX의 언어들'
 image: '/log_assets/images/102_깨끗한 인터페이스, Clean UI의 반전_cover.jpg'
 date_string: 'Jun 19. 2025'
 date: 2025-06-19
-keywords: 'UX 컨설팅, UX 디자인, 프로덕트 UX'
-about: 'UX, 프로덕트 디자인'
+keywords: 'Clean UI, 미니멀 인터페이스, UX 디자인 원칙'
+about: 'UI 디자인, 인터페이스 트렌드'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

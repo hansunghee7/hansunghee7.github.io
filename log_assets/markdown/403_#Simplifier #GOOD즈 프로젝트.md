@@ -5,8 +5,8 @@ category: '심플리파이어 라이프'
 image: '/log_assets/images/405_Simplifier GOOD즈 프로젝트_cover.jpg'
 date_string: 'Apr 27. 2024'
 date: 2024-04-27
-keywords: '플레잉코치, 스타트업 그로스 코치, 코칭 일상'
-about: '심플리파이어, 코칭 방법론'
+keywords: '심플리파이어 굿즈, 브랜드 상품 제작, 브랜딩 글래스'
+about: '심플리파이어 브랜드, 굿즈 마케팅'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

@@ -5,8 +5,8 @@ category: '스타트업 인사이트'
 image: '/log_assets/images/195_팔란티어 2 Gotham 국가 안보를 위한 플랫폼_cover.jpg'
 date_string: 'Mar 23. 2025'
 date: 2025-03-23
-keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'
-about: '스타트업, 그로스 코칭, 조직 성장'
+keywords: '팔란티어 고담, 국가안보 데이터 플랫폼, 실시간 위협 탐지'
+about: '팔란티어, 데이터 분석, 국가안보'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

@@ -5,8 +5,8 @@ category: '스타트업 인사이트'
 image: '/log_assets/images/425_CPO는 어떻게 일을 할까 Part 2. 수평적 관점_cover.jpg'
 date_string: 'Apr 7. 2024'
 date: 2024-04-07
-keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'
-about: '스타트업, 그로스 코칭, 조직 성장'
+keywords: 'CPO 협업 프로토콜, 유관부서 백로그 관리, 프로덕트 우선순위 조율'
+about: 'CPO, 프로덕트 조직운영, 협업 프로세스'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

@@ -5,8 +5,8 @@ category: 'AI의 언어들'
 image: '/log_assets/images/191_AI하드웨어, GPU와 NPU 그리고 FPGA의 차이점_cover.jpg'
 date_string: 'Mar 26. 2025'
 date: 2025-03-26
-keywords: 'AI 트렌드, AI 기술 이해'
-about: 'AI, 기술 트렌드'
+keywords: 'GPU NPU FPGA 비교, AI 반도체 가속기, AI 학습과 추론'
+about: 'AI 하드웨어, 반도체 기술'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

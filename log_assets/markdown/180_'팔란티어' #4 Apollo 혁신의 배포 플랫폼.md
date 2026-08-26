@@ -5,8 +5,8 @@ category: '스타트업 인사이트'
 image: '/log_assets/images/180_팔란티어 4 Apollo 혁신의 배포 플랫폼_cover.jpg'
 date_string: 'Apr 6. 2025'
 date: 2025-04-06
-keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'
-about: '스타트업, 그로스 코칭, 조직 성장'
+keywords: '팔란티어 Apollo, CI/CD 자동화, 블루그린 배포'
+about: '데이터 플랫폼, 소프트웨어 배포 전략'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

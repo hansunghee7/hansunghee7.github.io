@@ -5,8 +5,8 @@ category: '스타트업 인사이트'
 image: '/log_assets/images/121_작게 시작해 크게 터트리는 Slack의 초기마케팅전략_cover.jpg'
 date_string: 'Jun 2. 2025'
 date: 2025-06-02
-keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'
-about: '스타트업, 그로스 코칭, 조직 성장'
+keywords: 'Slack 초기 마케팅, 채널 집중 전략, 스타트업 그로스 해킹'
+about: '스타트업 마케팅, 그로스 전략'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

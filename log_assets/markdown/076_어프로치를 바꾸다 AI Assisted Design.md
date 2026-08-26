@@ -5,8 +5,8 @@ category: 'UX의 언어들'
 image: '/log_assets/images/076_어프로치를 바꾸다 AI Assisted Design_cover.jpg'
 date_string: 'Jul 17. 2025'
 date: 2025-07-17
-keywords: 'UX 컨설팅, UX 디자인, 프로덕트 UX'
-about: 'UX, 프로덕트 디자인'
+keywords: '생성형 AI 디자인, AI 디자인 툴, Figma AI 플러그인'
+about: 'AI 디자인, UX 디자인'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

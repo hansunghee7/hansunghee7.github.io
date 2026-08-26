@@ -5,8 +5,8 @@ category: '스타트업 인사이트'
 image: '/log_assets/images/207_AI의 행동을 만들다. Manus AI_cover.jpg'
 date_string: 'Mar 11. 2025'
 date: 2025-03-11
-keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'
-about: '스타트업, 그로스 코칭, 조직 성장'
+keywords: 'Manus AI, 자율 AI 에이전트, 멀티 에이전트 아키텍처'
+about: 'AI 에이전트, AI 스타트업'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

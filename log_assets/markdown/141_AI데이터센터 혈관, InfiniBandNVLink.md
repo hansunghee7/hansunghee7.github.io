@@ -5,8 +5,8 @@ category: 'AI의 언어들'
 image: '/log_assets/images/141_AI데이터센터 혈관, InfiniBandNVLink_cover.jpg'
 date_string: 'May 14. 2025'
 date: 2025-05-14
-keywords: 'AI 트렌드, AI 기술 이해'
-about: 'AI, 기술 트렌드'
+keywords: 'AI 데이터센터, GPU 네트워킹, NVLink InfiniBand'
+about: 'AI 인프라, 반도체 네트워크 기술'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

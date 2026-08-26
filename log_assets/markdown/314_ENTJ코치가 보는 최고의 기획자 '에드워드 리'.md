@@ -5,8 +5,8 @@ category: '기획일상'
 image: '/log_assets/images/314_ENTJ코치가 보는 최고의 기획자 에드워드 리_cover.jpg'
 date_string: 'Oct 13. 2024'
 date: 2024-10-13
-keywords: '기획자 커리어, PM 실무, 기획 방법론'
-about: 'PM, 기획자, 업무 커리어'
+keywords: '흑백요리사 에드워드 리, 기획자 관점 분석, 스토리텔링 기획'
+about: '콘텐츠 리뷰, 기획력 사례분석, K콘텐츠'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

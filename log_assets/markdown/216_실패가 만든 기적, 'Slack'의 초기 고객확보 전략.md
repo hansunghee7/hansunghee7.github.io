@@ -5,8 +5,8 @@ category: '스타트업 인사이트'
 image: '/log_assets/images/216_실패가 만든 기적, Slack의 초기 고객확보 전략_cover.jpg'
 date_string: 'Mar 3. 2025'
 date: 2025-03-03
-keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'
-about: '스타트업, 그로스 코칭, 조직 성장'
+keywords: 'Slack 성장전략, 초기 고객확보, 네트워크 효과'
+about: '스타트업 그로스, B2B SaaS 마케팅'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

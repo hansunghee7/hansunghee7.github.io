@@ -5,8 +5,8 @@ category: '스타트업 인사이트'
 image: '/log_assets/images/187_팔란티어 3 Foundry 기업 데이터분석플랫폼_cover.jpg'
 date_string: 'Mar 30. 2025'
 date: 2025-03-30
-keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'
-about: '스타트업, 그로스 코칭, 조직 성장'
+keywords: '팔란티어 Foundry, 기업 데이터 통합, 온톨로지 분석'
+about: '데이터 플랫폼, 엔터프라이즈 AI'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

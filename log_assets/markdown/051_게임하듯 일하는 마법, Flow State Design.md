@@ -5,8 +5,8 @@ category: 'UX의 언어들'
 image: '/log_assets/images/051_게임하듯 일하는 마법, Flow State Design_cover.jpg'
 date_string: 'Aug 14. 2025'
 date: 2025-08-14
-keywords: 'UX 컨설팅, UX 디자인, 프로덕트 UX'
-about: 'UX, 프로덕트 디자인'
+keywords: '플로우 스테이트, 몰입 설계, 게이미피케이션 UX'
+about: 'UX, 몰입 디자인'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

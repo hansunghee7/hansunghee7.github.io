@@ -5,8 +5,8 @@ category: '스타트업 인사이트'
 image: '/log_assets/images/250_초고율의 AI로 시장을 흔들다. DeepSeek_cover.jpg'
 date_string: 'Jan 29. 2025'
 date: 2025-01-29
-keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'
-about: '스타트업, 그로스 코칭, 조직 성장'
+keywords: 'DeepSeek 오픈소스 전략, 저비용 AI 모델, 중국 AI 스타트업'
+about: 'AI 스타트업, 오픈소스 전략'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

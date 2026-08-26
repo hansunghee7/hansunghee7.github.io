@@ -5,8 +5,8 @@ category: 'UX의 언어들'
 image: '/log_assets/images/133_Drop-off, 사용자가 떠나는 순간을 포착하는 방법_cover.jpg'
 date_string: 'May 22. 2025'
 date: 2025-05-22
-keywords: 'UX 컨설팅, UX 디자인, 프로덕트 UX'
-about: 'UX, 프로덕트 디자인'
+keywords: '드롭오프 분석, 퍼널 분석, 이탈 지점 개선'
+about: 'UX 데이터 분석, 전환율 최적화'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

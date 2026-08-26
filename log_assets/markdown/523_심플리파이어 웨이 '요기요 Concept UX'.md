@@ -5,8 +5,8 @@ category: '스타트업 인사이트'
 image: '/log_assets/images/525_심플리파이어 웨이 요기요 Concept UX_cover.jpg'
 date_string: 'Dec 22. 2023'
 date: 2023-12-22
-keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'
-about: '스타트업, 그로스 코칭, 조직 성장'
+keywords: '컨셉 UX, 프로덕트 비전 설계, 요기요 콘셉트 영상'
+about: '프로덕트 전략, UX 프로토타이핑, CPO 업무'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

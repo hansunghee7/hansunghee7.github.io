@@ -5,8 +5,8 @@ category: '심플리파이어 라이프'
 image: '/log_assets/images/317_ENTJ코치가 본 흑백요리사_cover.jpg'
 date_string: 'Oct 6. 2024'
 date: 2024-10-06
-keywords: '플레잉코치, 스타트업 그로스 코치, 코칭 일상'
-about: '심플리파이어, 코칭 방법론'
+keywords: '흑백요리사 리더십 분석, ENTJ 리더십, 조직 리더 유형'
+about: '리더십, 조직 관찰기'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

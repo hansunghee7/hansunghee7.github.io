@@ -5,8 +5,8 @@ category: '스타트업 인사이트'
 image: '/log_assets/images/210_코드의 한계를 깨는 AI 혁신, Cursor AI_cover.jpg'
 date_string: 'Mar 9. 2025'
 date: 2025-03-09
-keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'
-about: '스타트업, 그로스 코칭, 조직 성장'
+keywords: 'Cursor AI, AI 코딩 도구, 개발자 생산성'
+about: 'AI 코딩툴, 개발자 도구 스타트업'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

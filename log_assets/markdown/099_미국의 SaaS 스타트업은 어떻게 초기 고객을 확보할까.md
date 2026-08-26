@@ -5,8 +5,8 @@ category: '대한민국 스타트업 미국진출을 묻다'
 image: '/log_assets/images/099_미국의 SaaS 스타트업은 어떻게 초기 고객을 확보할까_cover.jpg'
 date_string: 'Jun 22. 2025'
 date: 2025-06-22
-keywords: '스타트업 미국진출, 글로벌 진출 전략'
-about: '미국 진출, 글로벌 스타트업'
+keywords: 'SaaS 초기 고객 확보, 콘텐츠 마케팅 SEO, 아웃바운드 세일즈'
+about: '스타트업 미국진출, 고객 확보 전략'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

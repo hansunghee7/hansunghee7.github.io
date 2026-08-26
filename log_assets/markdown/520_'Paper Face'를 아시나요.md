@@ -5,8 +5,8 @@ category: '심플리파이어 라이프'
 image: '/log_assets/images/522_Paper Face를 아시나요_cover.jpg'
 date_string: 'Dec 25. 2023'
 date: 2023-12-25
-keywords: '플레잉코치, 스타트업 그로스 코치, 코칭 일상'
-about: '심플리파이어, 코칭 방법론'
+keywords: '크리스마스 에피소드, 대학시절 추억, 페이퍼페이스'
+about: '개인 에세이, 추억, 사진 놀이'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

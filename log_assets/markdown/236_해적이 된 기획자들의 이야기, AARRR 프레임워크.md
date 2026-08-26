@@ -5,8 +5,8 @@ category: '기획자의 프레임웍'
 image: '/log_assets/images/236_해적이 된 기획자들의 이야기, AARRR 프레임워크_cover.jpg'
 date_string: 'Feb 11. 2025'
 date: 2025-02-11
-keywords: '기획자의 질문법, 기획 프레임워크, PM 역량강화'
-about: '기획 프레임워크, PM 교육'
+keywords: 'AARRR 프레임워크, 그로스 퍼널 분석, 스타트업 성장지표'
+about: '그로스 프레임워크, 데이터 기반 성장 전략'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

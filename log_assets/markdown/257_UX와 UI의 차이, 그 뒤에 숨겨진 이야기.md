@@ -5,8 +5,8 @@ category: 'UX의 언어들'
 image: '/log_assets/images/257_UX와 UI의 차이, 그 뒤에 숨겨진 이야기_cover.jpg'
 date_string: 'Jan 23. 2025'
 date: 2025-01-23
-keywords: 'UX 컨설팅, UX 디자인, 프로덕트 UX'
-about: 'UX, 프로덕트 디자인'
+keywords: 'UX UI 차이, UX 디자인 역사, UI 디자인 원칙'
+about: 'UX 디자인, UI 디자인'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

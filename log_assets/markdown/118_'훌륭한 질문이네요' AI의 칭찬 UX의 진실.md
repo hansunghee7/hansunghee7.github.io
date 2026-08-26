@@ -5,8 +5,8 @@ category: 'UX의 언어들'
 image: '/log_assets/images/118_훌륭한 질문이네요! AI의 칭찬 UX의 진실_cover.jpg'
 date_string: 'Jun 5. 2025'
 date: 2025-06-05
-keywords: 'UX 컨설팅, UX 디자인, 프로덕트 UX'
-about: 'UX, 프로덕트 디자인'
+keywords: 'AI 칭찬 패러독스, AI 챗봇 UX, AI 신뢰 설계'
+about: 'AI UX, 대화형 인터페이스'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

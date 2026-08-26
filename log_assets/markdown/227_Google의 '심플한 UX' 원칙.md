@@ -5,8 +5,8 @@ category: 'UX의 언어들'
 image: '/log_assets/images/227_Google의 심플한 UX 원칙_cover.jpg'
 date_string: 'Feb 20. 2025'
 date: 2025-02-20
-keywords: 'UX 컨설팅, UX 디자인, 프로덕트 UX'
-about: 'UX, 프로덕트 디자인'
+keywords: '구글 UX 철학, 미니멀 디자인, 심플한 인터페이스'
+about: 'UX 디자인, 프로덕트 심플리시티'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

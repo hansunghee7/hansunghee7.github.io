@@ -5,8 +5,8 @@ category: '기획자의 프레임웍'
 image: '/log_assets/images/263_우선순위 설정의 프레임워크 RICE_cover.jpg'
 date_string: 'Jan 14. 2025'
 date: 2025-01-14
-keywords: '기획자의 질문법, 기획 프레임워크, PM 역량강화'
-about: '기획 프레임워크, PM 교육'
+keywords: 'RICE 프레임워크, 우선순위 설정, 백로그 우선순위'
+about: '기획 프레임워크, 제품 우선순위 관리'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

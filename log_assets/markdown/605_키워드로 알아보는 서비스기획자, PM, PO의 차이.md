@@ -5,8 +5,8 @@ category: '기획일상'
 image: '/log_assets/images/607_키워드로 알아보는 서비스기획자, PM, PO의 차이_cover.jpg'
 date_string: 'Sep 25. 2023'
 date: 2023-09-25
-keywords: '기획자 커리어, PM 실무, 기획 방법론'
-about: 'PM, 기획자, 업무 커리어'
+keywords: '서비스기획자 PM PO 차이, 프로덕트 매니저 역할, 직무 정의'
+about: 'PM, 프로덕트 오너, 직무 정의'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

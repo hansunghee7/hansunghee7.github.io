@@ -5,8 +5,8 @@ category: 'PO의 프레임웍'
 image: '/log_assets/images/189_칸반, 애자일의 Just In Time_cover.jpg'
 date_string: 'Mar 28. 2025'
 date: 2025-03-28
-keywords: 'PO 코칭, 프로덕트 오너 실무, 프로덕트 전략'
-about: 'PO, 프로덕트 전략'
+keywords: '칸반 보드, 애자일 워크플로우, WIP 제한'
+about: '애자일 방법론, 프로젝트 관리'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

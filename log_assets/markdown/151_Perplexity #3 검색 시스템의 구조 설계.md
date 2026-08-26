@@ -5,8 +5,8 @@ category: '스타트업 인사이트'
 image: '/log_assets/images/151_Perplexity 3 검색 시스템의 구조 설계_cover.jpg'
 date_string: 'May 4. 2025'
 date: 2025-05-04
-keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'
-about: '스타트업, 그로스 코칭, 조직 성장'
+keywords: 'RAG 파이프라인, 하이브리드 검색, 벡터 임베딩'
+about: '검색 시스템, AI 아키텍처'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

@@ -5,8 +5,8 @@ category: '기획일상'
 image: '/log_assets/images/556_O or X_cover.jpg'
 date_string: 'Nov 19. 2023'
 date: 2023-11-19
-keywords: '기획자 커리어, PM 실무, 기획 방법론'
-about: 'PM, 기획자, 업무 커리어'
+keywords: '이분법적 사고, 제3의 대안, 토론 태도'
+about: '의사결정, 커뮤니케이션'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

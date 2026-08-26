@@ -5,8 +5,8 @@ category: '스타트업 인사이트'
 image: '/log_assets/images/253_마케팅 없이 20조원 가치를 만든 Figma PLG전략_cover.jpg'
 date_string: 'Jan 27. 2025'
 date: 2025-01-27
-keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'
-about: '스타트업, 그로스 코칭, 조직 성장'
+keywords: 'Figma PLG전략, 제품주도성장, 바이럴 루프 설계'
+about: '스타트업, 제품 주도 성장'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

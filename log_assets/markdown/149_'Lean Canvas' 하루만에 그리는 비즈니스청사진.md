@@ -5,8 +5,8 @@ category: '기획자의 프레임웍'
 image: '/log_assets/images/149_Lean Canvas 하루만에 그리는 비즈니스청사진_cover.jpg'
 date_string: 'May 6. 2025'
 date: 2025-05-06
-keywords: '기획자의 질문법, 기획 프레임워크, PM 역량강화'
-about: '기획 프레임워크, PM 교육'
+keywords: '린 캔버스, 비즈니스 모델 캔버스, 스타트업 문제 정의'
+about: '비즈니스 모델링, 스타트업 기획'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

@@ -5,8 +5,8 @@ category: '스타트업 인사이트'
 image: '/log_assets/images/167_Perplexity 1 검색의 한계를 넘어서_cover.jpg'
 date_string: 'Apr 20. 2025'
 date: 2025-04-20
-keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'
-about: '스타트업, 그로스 코칭, 조직 성장'
+keywords: 'RAG 아키텍처, 검색엔진 한계, Perplexity 사례분석'
+about: 'AI 검색, RAG'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

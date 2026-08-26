@@ -5,8 +5,8 @@ category: 'UX의 언어들'
 image: '/log_assets/images/069_Predictive UX, 사용자의 다음 행동은_cover.jpg'
 date_string: 'Jul 25. 2025'
 date: 2025-07-25
-keywords: 'UX 컨설팅, UX 디자인, 프로덕트 UX'
-about: 'UX, 프로덕트 디자인'
+keywords: 'Predictive UX, 사용자 행동 예측, 개인화 추천 시스템'
+about: 'UX 디자인, 데이터 기반 개인화'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

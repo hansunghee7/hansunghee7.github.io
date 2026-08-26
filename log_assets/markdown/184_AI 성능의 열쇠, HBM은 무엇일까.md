@@ -5,8 +5,8 @@ category: 'AI의 언어들'
 image: '/log_assets/images/184_AI 성능의 열쇠, HBM은 무엇일까_cover.jpg'
 date_string: 'Apr 2. 2025'
 date: 2025-04-02
-keywords: 'AI 트렌드, AI 기술 이해'
-about: 'AI, 기술 트렌드'
+keywords: 'HBM 메모리, AI 반도체, 고대역폭메모리'
+about: 'AI 하드웨어, 반도체 기술'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

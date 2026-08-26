@@ -5,8 +5,8 @@ category: '기획자의 프레임웍'
 image: '/log_assets/images/120_UX 5 Planes, 경험 설계의 지도_cover.jpg'
 date_string: 'Jun 3. 2025'
 date: 2025-06-03
-keywords: '기획자의 질문법, 기획 프레임워크, PM 역량강화'
-about: '기획 프레임워크, PM 교육'
+keywords: 'UX 5 Planes 모델, 제시 제임스 개럿, 경험 설계 프레임워크'
+about: 'UX 설계 프레임워크, 정보 구조'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

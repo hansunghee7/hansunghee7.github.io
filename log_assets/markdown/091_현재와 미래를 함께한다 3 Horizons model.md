@@ -5,8 +5,8 @@ category: '기획자의 프레임웍'
 image: '/log_assets/images/091_현재와 미래를 함께한다 3 Horizons model_cover.jpg'
 date_string: 'Jul 1. 2025'
 date: 2025-07-01
-keywords: '기획자의 질문법, 기획 프레임워크, PM 역량강화'
-about: '기획 프레임워크, PM 교육'
+keywords: '3 Horizons 모델, 혁신 포트폴리오 전략, 신사업 자원배분'
+about: '혁신 전략 프레임워크, 신사업 포트폴리오 관리'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

@@ -5,8 +5,8 @@ category: '심플리파이어 라이프'
 image: '/log_assets/images/356_logo branding_cover.jpg'
 date_string: 'Jul 14. 2024'
 date: 2024-07-14
-keywords: '플레잉코치, 스타트업 그로스 코치, 코칭 일상'
-about: '심플리파이어, 코칭 방법론'
+keywords: '브랜드 로고 디자인, 스타트업 브랜딩, 디자이너 협업'
+about: '브랜드 디자인, 로고'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

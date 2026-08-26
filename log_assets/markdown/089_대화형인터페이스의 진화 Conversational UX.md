@@ -5,8 +5,8 @@ category: 'UX의 언어들'
 image: '/log_assets/images/089_대화형인터페이스의 진화 Conversational UX_cover.jpg'
 date_string: 'Jul 3. 2025'
 date: 2025-07-03
-keywords: 'UX 컨설팅, UX 디자인, 프로덕트 UX'
-about: 'UX, 프로덕트 디자인'
+keywords: '대화형 UX, 챗봇 인터페이스 설계, AI 대화 UX 원칙'
+about: 'Conversational UX, AI 인터페이스 디자인'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

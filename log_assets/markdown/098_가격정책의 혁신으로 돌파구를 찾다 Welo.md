@@ -5,8 +5,8 @@ category: '스타트업 인사이트'
 image: '/log_assets/images/098_가격정책의 혁신으로 돌파구를 찾다. Welo_cover.jpg'
 date_string: 'Jun 23. 2025'
 date: 2025-06-23
-keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'
-about: '스타트업, 그로스 코칭, 조직 성장'
+keywords: '가격 정책 전략, 가치기반 프라이싱, SaaS 요금제 설계'
+about: '프라이싱 전략, SaaS 비즈니스모델'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

@@ -5,8 +5,8 @@ category: '스타트업 인사이트'
 image: '/log_assets/images/179_이메일도 테슬라처럼 Superhuman 프리미엄전략_cover.jpg'
 date_string: 'Apr 7. 2025'
 date: 2025-04-07
-keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'
-about: '스타트업, 그로스 코칭, 조직 성장'
+keywords: 'Superhuman 사례, 프리미엄 가격 전략, 타겟 고객 설정'
+about: '스타트업 마케팅 전략, 프로덕트 포지셔닝'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

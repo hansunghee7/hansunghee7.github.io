@@ -5,8 +5,8 @@ category: '대한민국 스타트업 미국진출을 묻다'
 image: '/log_assets/images/086_한국 SaaS의 미국 진출 실패 원인 분석_cover.jpg'
 date_string: 'Jul 6. 2025'
 date: 2025-07-06
-keywords: '스타트업 미국진출, 글로벌 진출 전략'
-about: '미국 진출, 글로벌 스타트업'
+keywords: '한국 SaaS 미국진출 실패, 미국 시장 현지화, 미국 진출 리스크 요인'
+about: '미국 시장 진출, SaaS 현지화 전략'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

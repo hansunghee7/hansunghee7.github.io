@@ -5,8 +5,8 @@ category: 'AI의 언어들'
 image: '/log_assets/images/177_AI 칩 성능의 핵심, FLOPS와 TOPS 그리고.._cover.jpg'
 date_string: 'Apr 9. 2025'
 date: 2025-04-09
-keywords: 'AI 트렌드, AI 기술 이해'
-about: 'AI, 기술 트렌드'
+keywords: 'AI 반도체 성능, FLOPS TOPS 비교, HBM 메모리 대역폭'
+about: 'AI 반도체, AI 하드웨어'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

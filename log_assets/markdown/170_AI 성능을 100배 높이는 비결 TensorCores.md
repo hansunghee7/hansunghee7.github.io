@@ -5,8 +5,8 @@ category: 'AI의 언어들'
 image: '/log_assets/images/170_AI 성능을 100배 높이는 비결 TensorCores_cover.jpg'
 date_string: 'Apr 16. 2025'
 date: 2025-04-16
-keywords: 'AI 트렌드, AI 기술 이해'
-about: 'AI, 기술 트렌드'
+keywords: 'Tensor Cores, 행렬곱셈 가속, GPU 연산 최적화'
+about: 'AI 하드웨어, GPU 연산'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

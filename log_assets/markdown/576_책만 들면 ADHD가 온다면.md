@@ -5,8 +5,8 @@ category: '심플리파이어 라이프'
 image: '/log_assets/images/578_책만 들면 ADHD가 온다면..._cover.jpg'
 date_string: 'Oct 26. 2023'
 date: 2023-10-26
-keywords: '플레잉코치, 스타트업 그로스 코치, 코칭 일상'
-about: '심플리파이어, 코칭 방법론'
+keywords: '독서 습관 만들기, 숏츠형 독서법, 트레바리 독서모임'
+about: '독서 습관, 자기계발 루틴'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

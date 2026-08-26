@@ -5,8 +5,8 @@ category: '스타트업 인사이트'
 image: '/log_assets/images/150_Slack의 유료전환의 매직 모먼트_cover.jpg'
 date_string: 'May 5. 2025'
 date: 2025-05-05
-keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'
-about: '스타트업, 그로스 코칭, 조직 성장'
+keywords: '프리미엄 전환 전략, 매직 모먼트, 유료화 KPI'
+about: '수익화 전략, 그로스 전략'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

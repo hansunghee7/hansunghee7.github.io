@@ -5,8 +5,8 @@ category: '대한민국 스타트업 미국진출을 묻다'
 image: '/log_assets/images/040_SaaS 스타트업의 미국 진출 시 GTM 전략 유형_cover.jpg'
 date_string: 'Aug 31. 2025'
 date: 2025-08-31
-keywords: '스타트업 미국진출, 글로벌 진출 전략'
-about: '미국 진출, 글로벌 스타트업'
+keywords: 'SaaS GTM 전략, 프로덕트주도성장, 미국 세일즈 전략'
+about: '미국 진출, GTM 전략'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

@@ -5,8 +5,8 @@ category: 'AI의 언어들'
 image: '/log_assets/images/090_AI모델 가속화의 열쇠, Transformer병목개선_cover.jpg'
 date_string: 'Jul 2. 2025'
 date: 2025-07-02
-keywords: 'AI 트렌드, AI 기술 이해'
-about: 'AI, 기술 트렌드'
+keywords: 'Transformer 병목현상, FlashAttention, AI 모델 학습 최적화'
+about: 'Transformer 아키텍처, AI 모델 학습 효율화'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

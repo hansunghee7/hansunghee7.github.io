@@ -5,8 +5,8 @@ category: '스타트업 인사이트'
 image: '/log_assets/images/237_규칙이 없는 전략으로 500조를 만든 Netflix_cover.jpg'
 date_string: 'Feb 10. 2025'
 date: 2025-02-10
-keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'
-about: '스타트업, 그로스 코칭, 조직 성장'
+keywords: '넷플릭스 조직문화, 자유와 책임 원칙, 인재밀도 전략'
+about: '조직문화, 스타트업 인사관리'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

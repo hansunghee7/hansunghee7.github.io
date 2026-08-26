@@ -5,8 +5,8 @@ category: '스타트업 인사이트'
 image: '/log_assets/images/422_CPO는 어떻게 일을 할까 Part1.1 사업목표수립_cover.jpg'
 date_string: 'Apr 11. 2024'
 date: 2024-04-11
-keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'
-about: '스타트업, 그로스 코칭, 조직 성장'
+keywords: '사업목표 수립, OKR 목표설정, 투자유치 지표'
+about: 'CPO, 사업전략, 목표관리'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

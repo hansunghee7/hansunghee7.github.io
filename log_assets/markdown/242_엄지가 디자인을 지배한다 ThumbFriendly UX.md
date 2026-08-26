@@ -5,8 +5,8 @@ category: 'UX의 언어들'
 image: '/log_assets/images/242_엄지가 디자인을 지배한다 ThumbFriendly UX_cover.jpg'
 date_string: 'Feb 6. 2025'
 date: 2025-02-06
-keywords: 'UX 컨설팅, UX 디자인, 프로덕트 UX'
-about: 'UX, 프로덕트 디자인'
+keywords: '엄지 친화적 디자인, 모바일 UX 설계, 썸존 UI'
+about: '모바일 UX, 인터랙션 디자인'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

@@ -5,8 +5,8 @@ category: 'PO의 프레임웍'
 image: '/log_assets/images/109_데이터 기반 PO, IT성장의 핵심 엔진_cover.jpg'
 date_string: 'Jun 13. 2025'
 date: 2025-06-13
-keywords: 'PO 코칭, 프로덕트 오너 실무, 프로덕트 전략'
-about: 'PO, 프로덕트 전략'
+keywords: '데이터 기반 의사결정, PO 데이터 역량, AB테스트 코호트분석'
+about: '프로덕트 오너, 데이터 분석'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

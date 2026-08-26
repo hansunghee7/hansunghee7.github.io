@@ -5,8 +5,8 @@ category: '스타트업 인사이트'
 image: '/log_assets/images/245_Warby Parker의 독점 시장진입 전략_cover.jpg'
 date_string: 'Feb 3. 2025'
 date: 2025-02-03
-keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'
-about: '스타트업, 그로스 코칭, 조직 성장'
+keywords: 'Warby Parker 사례, 독점시장 진입전략, D2C 브랜드 전략'
+about: '스타트업, 시장 진입 전략'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

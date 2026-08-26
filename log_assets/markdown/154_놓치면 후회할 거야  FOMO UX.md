@@ -5,8 +5,8 @@ category: 'UX의 언어들'
 image: '/log_assets/images/154_놓치면 후회할 거야!  FOMO UX_cover.jpg'
 date_string: 'May 1. 2025'
 date: 2025-05-01
-keywords: 'UX 컨설팅, UX 디자인, 프로덕트 UX'
-about: 'UX, 프로덕트 디자인'
+keywords: 'FOMO UX, 희소성 마케팅, 사회적 증거'
+about: '행동 심리 UX, 전환 설계'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->

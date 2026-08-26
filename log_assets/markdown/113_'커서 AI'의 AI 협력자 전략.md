@@ -5,8 +5,8 @@ category: '스타트업 인사이트'
 image: '/log_assets/images/113_커서 AI의 AI 협력자 전략_cover.jpg'
 date_string: 'Jun 9. 2025'
 date: 2025-06-09
-keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'
-about: '스타트업, 그로스 코칭, 조직 성장'
+keywords: 'Cursor AI 성장전략, AI 코딩 도구, 스타트업 창업 스토리'
+about: 'AI 스타트업, 제품 성장 전략'
 ---
 
 <!-- CAT_LINK_SCRIPT_START -->
