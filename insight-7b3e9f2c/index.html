@@ -51,6 +51,21 @@
   }
   .h2note{font-size:13px; color:var(--muted); margin:0 0 22px; line-height:1.6;}
 
+  /* 설명문을 "?" 뒤에 숨겨두고 누를 때만 펼칩니다. 평소엔 동그라미 하나만 남아서
+     제목 옆이 훨씬 조용해집니다. */
+  .h2note-q{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:16px; height:16px; border-radius:50%; flex:none;
+    border:1px solid var(--line); background:none; color:var(--muted);
+    font-size:10px; font-family:inherit; line-height:1; cursor:pointer; padding:0;
+    transition:border-color .15s, color .15s;
+  }
+  .h2note-q:hover, .h2note-q[aria-pressed="true"]{border-color:var(--dim); color:var(--ink);}
+  .h2note-text[hidden]{display:none;}
+  .h2note-text{margin-left:8px;}
+  p.h2note.h2note-toggle, .sub.h2note-toggle{margin-bottom:22px;}
+  h1 + .sub.h2note-toggle{margin-bottom:0;}
+
   /* ---- 접이식 상세 섹션 -- ①(핵심 KPI)만 매일 펼쳐 보고, 나머지는 필요할 때
      클릭해서 펴 보게 합니다. 정보량이 늘면서 매일 훑기엔 너무 무거워져서 나눴습니다. */
   details.dsec{padding:22px 0; border-bottom:1px solid var(--line-soft);}
@@ -183,8 +198,7 @@
 
 <header>
   <h1>사이트 인사이트</h1>
-  <p class="sub">이 사이트가 하는 일은 <b>코칭 계약과 강연 섭외로 이어질 문의를 받는 것</b>입니다.
-  그래서 맨 위가 문의(전환)이고, 글은 그 문의를 뒷받침하는 근거 자산으로 아래에 둡니다.</p>
+  <p class="sub"><button type="button" class="h2note-q" aria-label="설명 보기">?</button><span class="h2note-text" hidden>이 사이트가 하는 일은 <b>코칭 계약과 강연 섭외로 이어질 문의를 받는 것</b>입니다. 그래서 맨 위가 문의(전환)이고, 글은 그 문의를 뒷받침하는 근거 자산으로 아래에 둡니다.</span></p>
   <div class="metaline">
     <button class="refresh" id="refreshBtn">↻ 새로고침</button>
     <span id="dataAsOf">데이터 불러오는 중…</span>
@@ -205,9 +219,7 @@
   <div id="conversionTiles" style="margin-top:16px"></div>
 </section>
 
-<p class="note" style="margin:0 0 4px">아래는 매일 볼 필요는 없는 상세 항목입니다 — 제목을 누르면 펼쳐집니다.
-왼쪽 <span style="color:var(--muted)">⠿</span> 를 잡고 끌면 순서를 바꿀 수 있고, 펼침 상태와 순서는 <b>이 컴퓨터에</b> 기억됩니다.
-<button type="button" class="dsec-reset" id="dsecReset">기본값으로</button></p>
+<p class="note h2note-toggle" style="margin:0 0 4px"><button type="button" class="h2note-q" aria-label="설명 보기">?</button><span class="h2note-text" hidden>아래는 매일 볼 필요는 없는 상세 항목입니다 — 제목을 누르면 펼쳐집니다. 왼쪽 <span style="color:var(--muted)">⠿</span> 를 잡고 끌면 순서를 바꿀 수 있고, 펼침 상태와 순서는 <b>이 컴퓨터에</b> 기억됩니다.</span> <button type="button" class="dsec-reset" id="dsecReset">기본값으로</button></p>
 
 <div id="dsecList">
 
@@ -216,9 +228,9 @@
   <div class="dsec-body">
   <p class="h2note" id="analyticsNote">GA4 데이터를 불러오는 중…</p>
   <div class="tiles" id="analyticsTiles"></div>
-  <p class="h2note" style="margin-top:20px">최근 30일 트래픽 소스 상위. AI 엔진(ChatGPT·Perplexity·Gemini 등)에서 온 세션은 따로 표시합니다 — GEO/AEO가 실제 유입으로 이어지는지 보는 지표입니다.</p>
+  <p class="h2note" style="margin-top:20px"><button type="button" class="h2note-q" aria-label="설명 보기">?</button><span class="h2note-text" hidden>최근 30일 트래픽 소스 상위. AI 엔진(ChatGPT·Perplexity·Gemini 등)에서 온 세션은 따로 표시합니다 — GEO/AEO가 실제 유입으로 이어지는지 보는 지표입니다.</span></p>
   <div class="tablebox" id="sourceTable"></div>
-  <p class="h2note" style="margin-top:20px">관여 신호 — 방문자가 신뢰 구간(로고월·후기·FAQ)까지 도달했는지, 글을 완독했는지. 아직 코칭·강연 서비스 페이지가 없어 "진지한 검토자"를 행동으로 가늠합니다.</p>
+  <p class="h2note" style="margin-top:20px"><button type="button" class="h2note-q" aria-label="설명 보기">?</button><span class="h2note-text" hidden>관여 신호 — 방문자가 신뢰 구간(로고월·후기·FAQ)까지 도달했는지, 글을 완독했는지. 아직 코칭·강연 서비스 페이지가 없어 "진지한 검토자"를 행동으로 가늠합니다.</span></p>
   <div class="tiles" id="engagementTiles"></div>
   </div>
 </details>
@@ -226,7 +238,7 @@
 <details class="dsec">
   <summary><span class="dsec-grip" aria-hidden="true">⠿</span><h2>신뢰 자산</h2></summary>
   <div class="dsec-body">
-  <p class="h2note">섭외 담당자가 결정을 내릴 때 실제로 보는 요소들입니다. <b>성과 지표가 아니라 재고</b>입니다 — 방문 행동이 아니라 홈페이지에 지금 뭐가 있는지를 세는 것이라, 홈을 고쳐야만 바뀝니다.</p>
+  <p class="h2note"><button type="button" class="h2note-q" aria-label="설명 보기">?</button><span class="h2note-text" hidden>섭외 담당자가 결정을 내릴 때 실제로 보는 요소들입니다. <b>성과 지표가 아니라 재고</b>입니다 — 방문 행동이 아니라 홈페이지에 지금 뭐가 있는지를 세는 것이라, 홈을 고쳐야만 바뀝니다.</span></p>
   <div class="inventory-row" id="trustTiles"></div>
   </div>
 </details>
@@ -234,7 +246,7 @@
 <details class="dsec">
   <summary><span class="dsec-grip" aria-hidden="true">⠿</span><h2>콘텐츠 자산</h2></summary>
   <div class="dsec-body">
-  <p class="h2note">글은 목적이 아니라 <b>신뢰의 근거</b>입니다. 아래는 성과가 아니라 재고 현황으로 보세요 — 발행량이 많다고 문의가 느는 건 아닙니다.</p>
+  <p class="h2note"><button type="button" class="h2note-q" aria-label="설명 보기">?</button><span class="h2note-text" hidden>글은 목적이 아니라 <b>신뢰의 근거</b>입니다. 아래는 성과가 아니라 재고 현황으로 보세요 — 발행량이 많다고 문의가 느는 건 아닙니다.</span></p>
   <div class="tiles" id="kpis"></div>
   </div>
 </details>
@@ -242,7 +254,7 @@
 <details class="dsec">
   <summary><span class="dsec-grip" aria-hidden="true">⠿</span><h2>문의로 이어진 글</h2></summary>
   <div class="dsec-body">
-  <p class="h2note">재고(586건)와 실제 성과(문의)를 잇는 연결고리 — 어떤 글이 진짜 기여하는지입니다. 방문자가 그 글에 착지한 세션에서 문의까지 이어진 경우만 셉니다.</p>
+  <p class="h2note"><button type="button" class="h2note-q" aria-label="설명 보기">?</button><span class="h2note-text" hidden>재고(586건)와 실제 성과(문의)를 잇는 연결고리 — 어떤 글이 진짜 기여하는지입니다. 방문자가 그 글에 착지한 세션에서 문의까지 이어진 경우만 셉니다.</span></p>
   <div class="tablebox" id="leadPostsTable"></div>
   </div>
 </details>
@@ -250,7 +262,7 @@
 <details class="dsec">
   <summary><span class="dsec-grip" aria-hidden="true">⠿</span><h2>랜딩이 많았던 글</h2></summary>
   <div class="dsec-body">
-  <p class="h2note">문의로 이어졌는지와 무관하게, 방문자가 첫 착지로 가장 많이 들어온 글 순위입니다 — 어떤 글이 실제로 사람을 데려오는지(유입 자체)를 봅니다.</p>
+  <p class="h2note"><button type="button" class="h2note-q" aria-label="설명 보기">?</button><span class="h2note-text" hidden>문의로 이어졌는지와 무관하게, 방문자가 첫 착지로 가장 많이 들어온 글 순위입니다 — 어떤 글이 실제로 사람을 데려오는지(유입 자체)를 봅니다.</span></p>
   <div class="tablebox" id="topLandingTable"></div>
   </div>
 </details>
@@ -258,7 +270,7 @@
 <details class="dsec">
   <summary><span class="dsec-grip" aria-hidden="true">⠿</span><h2>월별 발행 추이</h2></summary>
   <div class="dsec-body">
-  <p class="h2note">최근 24개월. 막대에 마우스를 올리면 밝아집니다.</p>
+  <p class="h2note"><button type="button" class="h2note-q" aria-label="설명 보기">?</button><span class="h2note-text" hidden>최근 24개월. 막대에 마우스를 올리면 밝아집니다.</span></p>
   <div class="chartbox">
     <div class="bars" id="bars"></div>
     <div class="xaxis" id="xaxis"></div>
@@ -269,7 +281,7 @@
 <details class="dsec">
   <summary><span class="dsec-grip" aria-hidden="true">⠿</span><h2>카테고리 분포</h2></summary>
   <div class="dsec-body">
-  <p class="h2note">글이 어느 주제에 몰려 있는지 봅니다.</p>
+  <p class="h2note"><button type="button" class="h2note-q" aria-label="설명 보기">?</button><span class="h2note-text" hidden>글이 어느 주제에 몰려 있는지 봅니다.</span></p>
   <div id="cats"></div>
   </div>
 </details>
@@ -277,7 +289,7 @@
 <details class="dsec">
   <summary><span class="dsec-grip" aria-hidden="true">⠿</span><h2>카테고리별 마지막 발행</h2></summary>
   <div class="dsec-body">
-  <p class="h2note">연재중인 카테고리만 경과일을 따집니다 — 6개월 넘게 비어 있으면 주황, 1년 넘으면 빨강. 기간을 정해놓고 끝낸 <b>완결</b> 시리즈(웹툰 협업 연재 등)는 새 글이 없는 게 정상이라 경고 대상에서 빼고 아래로 내렸습니다.</p>
+  <p class="h2note"><button type="button" class="h2note-q" aria-label="설명 보기">?</button><span class="h2note-text" hidden>연재중인 카테고리만 경과일을 따집니다 — 6개월 넘게 비어 있으면 주황, 1년 넘으면 빨강. 기간을 정해놓고 끝낸 <b>완결</b> 시리즈(웹툰 협업 연재 등)는 새 글이 없는 게 정상이라 경고 대상에서 빼고 아래로 내렸습니다.</span></p>
   <div class="tablebox"><table id="staleTable"></table></div>
   </div>
 </details>
@@ -285,7 +297,7 @@
 <details class="dsec">
   <summary><span class="dsec-grip" aria-hidden="true">⠿</span><h2>최근 글</h2></summary>
   <div class="dsec-body">
-  <p class="h2note">가장 최근 발행한 10건입니다.</p>
+  <p class="h2note"><button type="button" class="h2note-q" aria-label="설명 보기">?</button><span class="h2note-text" hidden>가장 최근 발행한 10건입니다.</span></p>
   <div class="tablebox"><table id="recentTable"></table></div>
   </div>
 </details>
@@ -295,7 +307,7 @@
 <details class="dsec">
   <summary><span class="dsec-grip" aria-hidden="true">⠿</span><h2>깔때기 — 문의까지 가는 길 <span style="font-size:11px;color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(참고)</span></h2></summary>
   <div class="dsec-body">
-  <p class="h2note">각 단계가 지금 측정되고 있는지, 실제 숫자는 어디서 보는지 정리했습니다.</p>
+  <p class="h2note"><button type="button" class="h2note-q" aria-label="설명 보기">?</button><span class="h2note-text" hidden>각 단계가 지금 측정되고 있는지, 실제 숫자는 어디서 보는지 정리했습니다.</span></p>
   <div class="tablebox"><table id="funnelTable"></table></div>
   </div>
 </details>
@@ -303,7 +315,7 @@
 <details class="dsec">
   <summary><span class="dsec-grip" aria-hidden="true">⠿</span><h2>측정 도구 연동 <span style="font-size:11px;color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(참고)</span></h2></summary>
   <div class="dsec-body">
-  <p class="h2note">위 지표들이 실제로 쌓이려면 아래 4개가 살아 있어야 합니다.</p>
+  <p class="h2note"><button type="button" class="h2note-q" aria-label="설명 보기">?</button><span class="h2note-text" hidden>위 지표들이 실제로 쌓이려면 아래 4개가 살아 있어야 합니다.</span></p>
   <div class="integrations" id="integrations"></div>
   </div>
 </details>
@@ -994,6 +1006,18 @@
       });
     }
   }
+
+  /* "?" 눌러서 설명문 펼치기/접기. 페이지 전체에 한 번만 위임해두면
+     나중에 h2note를 더 추가해도 따로 손댈 필요가 없습니다. */
+  document.addEventListener('click', function(e){
+    var q = e.target.closest ? e.target.closest('.h2note-q') : null;
+    if(!q) return;
+    var text = q.nextElementSibling;
+    if(!text || !text.classList.contains('h2note-text')) return;
+    var show = text.hasAttribute('hidden');
+    if(show) text.removeAttribute('hidden'); else text.setAttribute('hidden','');
+    q.setAttribute('aria-pressed', show ? 'true' : 'false');
+  });
 
   initSections();
   renderConversion();
