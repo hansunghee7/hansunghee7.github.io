@@ -31,6 +31,121 @@
        버전을 ^0.200.0으로 묶어둔 이유: Sveltia는 아직 0.x라 릴리스가 잦아서,
        평가하는 동안 화면이 저절로 바뀌지 않게 하기 위함입니다. -->
   <script src="https://unpkg.com/@sveltia/cms@^0.200.0/dist/sveltia-cms.js"></script>
+  <script>
+    // AIO 키워드 칸에 붙는 "제목+본문 프롬프트 복사" 버튼 (Sveltia 판).
+    //
+    // Decap판과 같은 기능이지만 훨씬 단단합니다. Decap은 커스텀 위젯에 글 전체
+    // 데이터를 안 넘겨줘서 화면에 그려진 입력칸을 라벨 텍스트로 뒤져 값을
+    // 읽어와야 했는데, Sveltia는 control에 entry prop을 넘겨주기 때문에
+    // 제목/본문을 정식 경로로 바로 꺼낼 수 있습니다.
+    function copyTextToClipboard(text, onDone) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          function () { onDone(true); },
+          function () { onDone(legacyCopy(text)); }
+        );
+      } else {
+        onDone(legacyCopy(text));
+      }
+    }
+
+    function legacyCopy(text) {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      var ok = false;
+      try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+      document.body.removeChild(ta);
+      return ok;
+    }
+
+    var AioCopyControl = createClass({
+      getInitialState: function () {
+        return { status: "idle" };
+      },
+      handleTextChange: function (e) {
+        this.props.onChange(e.target.value);
+      },
+      reset: function () {
+        this.setState({ status: "idle" });
+      },
+      handleCopy: function () {
+        var entry = this.props.entry;
+        var title = (entry && entry.getIn(["data", "title"])) || "";
+        var body = (entry && entry.getIn(["data", "body"])) || "";
+        if (!body) {
+          this.setState({ status: "empty" });
+          setTimeout(this.reset, 3000);
+          return;
+        }
+        var prompt = [
+          "다음은 블로그 글의 제목과 본문이야. 이 글을 분석해서 아래 두 가지를 만들어줘.",
+          "1) SEO 키워드 5~8개 (쉼표로 구분된 한 줄)",
+          "2) 이 글의 핵심 주제를 나타내는 5~10단어 이내의 짧은 문구",
+          "",
+          "제목: " + title,
+          "",
+          "본문:",
+          body,
+        ].join("\n");
+        var self = this;
+        copyTextToClipboard(prompt, function (ok) {
+          self.setState({ status: ok ? "copied" : "failed" });
+          setTimeout(self.reset, 3000);
+        });
+      },
+      render: function () {
+        var label =
+          this.state.status === "copied"
+            ? "복사 완료! Claude/ChatGPT에 붙여넣으세요"
+            : this.state.status === "empty"
+            ? "본문을 먼저 써주세요"
+            : this.state.status === "failed"
+            ? "복사 실패 — 직접 선택해서 복사해주세요"
+            : "📋 제목+본문 프롬프트 복사";
+        return h(
+          "div",
+          {},
+          h("input", {
+            id: this.props.forID,
+            className: this.props.classNameWrapper,
+            type: "text",
+            value: this.props.value || "",
+            onChange: this.handleTextChange,
+          }),
+          h(
+            "button",
+            {
+              type: "button",
+              onClick: this.handleCopy,
+              style: {
+                marginTop: "6px",
+                padding: "5px 10px",
+                fontSize: "12px",
+                cursor: "pointer",
+                border: "1px solid #ccc",
+                borderRadius: "4px",
+                background: this.state.status === "idle" ? "#f5f5f5" : "#e6f7e6",
+              },
+            },
+            label
+          )
+        );
+      },
+    });
+
+    var AioCopyPreview = createClass({
+      render: function () {
+        return h("div", {}, this.props.value);
+      },
+    });
+
+    CMS.registerWidget("aio-copy-assist", AioCopyControl, AioCopyPreview);
+  </script>
   <div id="sandbox-badge">테스트 화면 · cms-test 브랜치 · 실제 사이트 영향 없음</div>
 </body>
 </html>
