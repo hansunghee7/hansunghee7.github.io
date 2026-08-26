@@ -46,8 +46,8 @@
   section{padding:38px 0; border-bottom:1px solid var(--line-soft);}
   section:last-of-type{border-bottom:none;}
   h2{
-    font-size:12px; font-weight:500; letter-spacing:0.12em; color:var(--muted);
-    text-transform:uppercase; margin:0 0 4px;
+    font-size:17px; font-weight:700; letter-spacing:-0.01em; color:var(--ink);
+    margin:0 0 6px;
   }
   .h2note{font-size:13px; color:var(--muted); margin:0 0 22px; line-height:1.6;}
 
@@ -62,6 +62,24 @@
   details.dsec summary h2{margin:0;}
   details.dsec .dsec-body{padding-top:16px;}
   details.dsec summary:hover h2{color:var(--ink);}
+
+  /* 드래그 손잡이. summary 전체를 draggable로 두면 제목 클릭(펼치기)과 싸우기 때문에,
+     손잡이를 누르고 있는 동안에만 draggable을 켭니다(아래 JS). */
+  .dsec-grip{
+    flex:none; cursor:grab; color:var(--line); font-size:13px; line-height:1;
+    padding:2px 2px; margin-left:-2px; user-select:none; transition:color .15s;
+  }
+  .dsec-grip:active{cursor:grabbing;}
+  details.dsec summary:hover .dsec-grip{color:var(--muted);}
+  details.dsec.dragging{opacity:.4;}
+  details.dsec.drop-before{box-shadow:0 -2px 0 0 var(--dim);}
+  details.dsec.drop-after{box-shadow:0 2px 0 0 var(--dim);}
+  #dsecList.reordering details.dsec{transition:box-shadow .1s;}
+  .dsec-reset{
+    background:none; border:none; color:var(--muted); font-size:11.5px; cursor:pointer;
+    font-family:inherit; padding:0; text-decoration:underline; text-underline-offset:2px;
+  }
+  .dsec-reset:hover{color:var(--ink);}
 
   /* ---- KPI trend cards (AARRR 순서: 최초방문 → 재방문 → 문의) ---- */
   .kpi-trend-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px;}
@@ -175,7 +193,7 @@
 </header>
 
 <section>
-  <h2>① 핵심 KPI — 최초방문 → 재방문 → 문의</h2>
+  <h2>핵심 KPI — 최초방문 → 재방문 → 문의</h2>
   <p class="h2note" id="measureNote">GA4 데이터를 불러오는 중…</p>
   <div class="kpi-trend-grid" id="kpiTrends"></div>
   <div class="kpi-detail-grid" id="kpiDetails"></div>
@@ -187,10 +205,14 @@
   <div id="conversionTiles" style="margin-top:16px"></div>
 </section>
 
-<p class="note" style="margin:0 0 4px">아래는 매일 볼 필요는 없는 상세 항목입니다 — 제목을 누르면 펼쳐집니다.</p>
+<p class="note" style="margin:0 0 4px">아래는 매일 볼 필요는 없는 상세 항목입니다 — 제목을 누르면 펼쳐집니다.
+왼쪽 <span style="color:var(--muted)">⠿</span> 를 잡고 끌면 순서를 바꿀 수 있고, 펼침 상태와 순서는 <b>이 컴퓨터에</b> 기억됩니다.
+<button type="button" class="dsec-reset" id="dsecReset">기본값으로</button></p>
+
+<div id="dsecList">
 
 <details class="dsec">
-  <summary><h2>유입 상세 — 방문자 · 재방문 · GEO/AEO 효과</h2></summary>
+  <summary><span class="dsec-grip" aria-hidden="true">⠿</span><h2>유입 상세 — 방문자 · 재방문 · GEO/AEO 효과</h2></summary>
   <div class="dsec-body">
   <p class="h2note" id="analyticsNote">GA4 데이터를 불러오는 중…</p>
   <div class="tiles" id="analyticsTiles"></div>
@@ -202,7 +224,7 @@
 </details>
 
 <details class="dsec">
-  <summary><h2>② 신뢰 자산</h2></summary>
+  <summary><span class="dsec-grip" aria-hidden="true">⠿</span><h2>신뢰 자산</h2></summary>
   <div class="dsec-body">
   <p class="h2note">섭외 담당자가 결정을 내릴 때 실제로 보는 요소들입니다. <b>성과 지표가 아니라 재고</b>입니다 — 방문 행동이 아니라 홈페이지에 지금 뭐가 있는지를 세는 것이라, 홈을 고쳐야만 바뀝니다.</p>
   <div class="inventory-row" id="trustTiles"></div>
@@ -210,7 +232,7 @@
 </details>
 
 <details class="dsec">
-  <summary><h2>③ 콘텐츠 자산</h2></summary>
+  <summary><span class="dsec-grip" aria-hidden="true">⠿</span><h2>콘텐츠 자산</h2></summary>
   <div class="dsec-body">
   <p class="h2note">글은 목적이 아니라 <b>신뢰의 근거</b>입니다. 아래는 성과가 아니라 재고 현황으로 보세요 — 발행량이 많다고 문의가 느는 건 아닙니다.</p>
   <div class="tiles" id="kpis"></div>
@@ -218,7 +240,7 @@
 </details>
 
 <details class="dsec">
-  <summary><h2>문의로 이어진 글</h2></summary>
+  <summary><span class="dsec-grip" aria-hidden="true">⠿</span><h2>문의로 이어진 글</h2></summary>
   <div class="dsec-body">
   <p class="h2note">재고(586건)와 실제 성과(문의)를 잇는 연결고리 — 어떤 글이 진짜 기여하는지입니다. 방문자가 그 글에 착지한 세션에서 문의까지 이어진 경우만 셉니다.</p>
   <div class="tablebox" id="leadPostsTable"></div>
@@ -226,7 +248,7 @@
 </details>
 
 <details class="dsec">
-  <summary><h2>월별 발행 추이</h2></summary>
+  <summary><span class="dsec-grip" aria-hidden="true">⠿</span><h2>월별 발행 추이</h2></summary>
   <div class="dsec-body">
   <p class="h2note">최근 24개월. 막대에 마우스를 올리면 밝아집니다.</p>
   <div class="chartbox">
@@ -237,7 +259,7 @@
 </details>
 
 <details class="dsec">
-  <summary><h2>카테고리 분포</h2></summary>
+  <summary><span class="dsec-grip" aria-hidden="true">⠿</span><h2>카테고리 분포</h2></summary>
   <div class="dsec-body">
   <p class="h2note">글이 어느 주제에 몰려 있는지 봅니다.</p>
   <div id="cats"></div>
@@ -245,7 +267,7 @@
 </details>
 
 <details class="dsec">
-  <summary><h2>카테고리별 마지막 발행</h2></summary>
+  <summary><span class="dsec-grip" aria-hidden="true">⠿</span><h2>카테고리별 마지막 발행</h2></summary>
   <div class="dsec-body">
   <p class="h2note">연재중인 카테고리만 경과일을 따집니다 — 6개월 넘게 비어 있으면 주황, 1년 넘으면 빨강. 기간을 정해놓고 끝낸 <b>완결</b> 시리즈(웹툰 협업 연재 등)는 새 글이 없는 게 정상이라 경고 대상에서 빼고 아래로 내렸습니다.</p>
   <div class="tablebox"><table id="staleTable"></table></div>
@@ -253,7 +275,7 @@
 </details>
 
 <details class="dsec">
-  <summary><h2>최근 글</h2></summary>
+  <summary><span class="dsec-grip" aria-hidden="true">⠿</span><h2>최근 글</h2></summary>
   <div class="dsec-body">
   <p class="h2note">가장 최근 발행한 10건입니다.</p>
   <div class="tablebox"><table id="recentTable"></table></div>
@@ -263,7 +285,7 @@
 <!-- 아래 둘은 잘 안 바뀌는 설명형/참조용 정보라 하단으로 내렸습니다. -->
 
 <details class="dsec">
-  <summary><h2>깔때기 — 문의까지 가는 길 <span style="font-size:11px;color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(참고)</span></h2></summary>
+  <summary><span class="dsec-grip" aria-hidden="true">⠿</span><h2>깔때기 — 문의까지 가는 길 <span style="font-size:11px;color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(참고)</span></h2></summary>
   <div class="dsec-body">
   <p class="h2note">각 단계가 지금 측정되고 있는지, 실제 숫자는 어디서 보는지 정리했습니다.</p>
   <div class="tablebox"><table id="funnelTable"></table></div>
@@ -271,7 +293,7 @@
 </details>
 
 <details class="dsec">
-  <summary><h2>측정 도구 연동 <span style="font-size:11px;color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(참고)</span></h2></summary>
+  <summary><span class="dsec-grip" aria-hidden="true">⠿</span><h2>측정 도구 연동 <span style="font-size:11px;color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(참고)</span></h2></summary>
   <div class="dsec-body">
   <p class="h2note">위 지표들이 실제로 쌓이려면 아래 4개가 살아 있어야 합니다.</p>
   <div class="integrations" id="integrations"></div>
@@ -279,16 +301,18 @@
 </details>
 
 <details class="dsec">
-  <summary><h2>읽는 법</h2></summary>
+  <summary><span class="dsec-grip" aria-hidden="true">⠿</span><h2>읽는 법</h2></summary>
   <div class="dsec-body">
   <p class="note"><b>이 페이지는 어떻게 갱신되나요?</b> 글 데이터는 사이트가 새 글을 발행할 때마다 자동으로 갱신되는 <code>posts.json</code>을 그대로 읽습니다. 따로 수집 작업이 돌지 않아도 항상 최신입니다.</p>
   <p class="note"><b>방문자 수는 어디서 갱신되나요?</b> 매일 06:00에 GitHub Actions가 GA4 API로 최근 30일 지표를 가져와 <code>assets/data/analytics.json</code>에 저장하고, 이 페이지가 그걸 그대로 읽습니다. "유입 상세" 섹션에 아무것도 안 뜨면 그 파일이 아직 없다는 뜻 — 처음 한 번은 GitHub 저장소의 Actions 탭에서 "Fetch GA4 analytics"를 수동 실행해야 합니다.</p>
   <p class="note"><b>발행량이 왜 맨 아래인가요?</b> 글을 많이 쓰는 것 자체는 성과가 아니기 때문입니다. 이 사이트의 성과는 <b>문의</b>이고, 글은 그 문의가 들어올 만한 사람이라는 걸 보여주는 근거입니다. 그래서 발행량은 "성과"가 아니라 "재고"로 읽어야 합니다.</p>
   <p class="note"><b>주소를 공유하지 마세요.</b> 이 저장소는 공개라서, 주소를 아는 사람은 누구나 이 페이지를 볼 수 있습니다. 검색에는 걸리지 않도록 막아 두었지만 주소 자체가 유일한 자물쇠입니다.</p>
   <p class="note"><b>왜 "깔때기"와 "측정 도구 연동"이 맨 아래에 있나요?</b> 둘 다 숫자가 아니라 설명입니다 — 한 번 읽으면 웬만해선 안 바뀌는 참고 정보라, 매일 바뀌는 지표들보다 아래로 내렸습니다.</p>
-  <p class="note"><b>왜 다 접혀 있나요?</b> 정보가 늘면서 매일 훑어보기엔 무거워져서, ①(핵심 KPI)만 기본으로 펼쳐두고 나머지는 필요할 때 펴 보게 했습니다.</p>
+  <p class="note"><b>왜 다 접혀 있나요?</b> 정보가 늘면서 매일 훑어보기엔 무거워져서, 핵심 KPI만 기본으로 펼쳐두고 나머지는 필요할 때 펴 보게 했습니다.</p>
   </div>
 </details>
+
+</div>
 
 <footer>
   Simplifier 내부용 대시보드 · 검색엔진 비노출(noindex) · 사이트 메뉴에 링크되어 있지 않습니다.
@@ -837,6 +861,111 @@
       });
   }
 
+  /* ---- 접이식 섹션: 순서 드래그 변경 + 펼침 상태 기억 ----
+     저장 위치는 이 브라우저의 localStorage입니다. 사장님 PC에만 남고 서버로도,
+     다른 기기로도 넘어가지 않습니다. 시크릿 창이나 다른 컴퓨터에서는 기본값으로 보입니다.
+     섹션을 식별하는 키는 제목 글자 그대로 씁니다 -- id를 새로 붙이지 않아도 되고,
+     나중에 제목이 바뀌면 그 항목만 기본값으로 조용히 돌아갑니다(고장나지 않음). */
+  function initSections(){
+    var list = document.getElementById('dsecList');
+    if(!list) return;
+    var ORDER_KEY = 'insight.dsec.order';
+    var OPEN_KEY  = 'insight.dsec.open';
+
+    function keyOf(d){
+      var h = d.querySelector('summary h2');
+      return h ? h.textContent.trim() : '';
+    }
+    function load(k){
+      try { var v = JSON.parse(localStorage.getItem(k)); return Array.isArray(v) ? v : null; }
+      catch(e){ return null; }
+    }
+    function save(k, v){
+      try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){}
+    }
+    function items(){
+      return Array.prototype.slice.call(list.querySelectorAll(':scope > details.dsec'));
+    }
+
+    /* 저장된 순서 복원. 저장 목록에 없는 새 섹션은 원래 자리를 잃지 않도록 뒤에 남깁니다. */
+    var savedOrder = load(ORDER_KEY);
+    if(savedOrder){
+      var byKey = {};
+      items().forEach(function(d){ byKey[keyOf(d)] = d; });
+      savedOrder.forEach(function(k){
+        if(byKey[k]) list.appendChild(byKey[k]);   // appendChild = 이동
+      });
+    }
+
+    /* 펼침 상태 복원 */
+    var savedOpen = load(OPEN_KEY);
+    if(savedOpen){
+      items().forEach(function(d){
+        d.open = savedOpen.indexOf(keyOf(d)) !== -1;
+      });
+    }
+
+    function saveOrder(){ save(ORDER_KEY, items().map(keyOf)); }
+    function saveOpen(){
+      save(OPEN_KEY, items().filter(function(d){ return d.open; }).map(keyOf));
+    }
+
+    items().forEach(function(d){
+      d.addEventListener('toggle', saveOpen);
+
+      /* 손잡이를 누르고 있는 동안에만 draggable을 켭니다.
+         항상 켜두면 제목 클릭(펼치기)과 텍스트 선택이 방해받습니다. */
+      var grip = d.querySelector('.dsec-grip');
+      if(grip){
+        grip.addEventListener('mousedown', function(){ d.draggable = true; });
+        grip.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); });
+      }
+      d.addEventListener('dragstart', function(e){
+        d.classList.add('dragging');
+        list.classList.add('reordering');
+        try { e.dataTransfer.effectAllowed = 'move'; e.dataTransfer.setData('text/plain',''); } catch(err){}
+      });
+      d.addEventListener('dragend', function(){
+        d.draggable = false;
+        d.classList.remove('dragging');
+        list.classList.remove('reordering');
+        items().forEach(function(x){ x.classList.remove('drop-before','drop-after'); });
+        saveOrder();
+      });
+      d.addEventListener('dragover', function(e){
+        var dragging = list.querySelector('details.dsec.dragging');
+        if(!dragging || dragging === d) return;
+        e.preventDefault();
+        var r = d.getBoundingClientRect();
+        var before = (e.clientY - r.top) < r.height/2;
+        d.classList.toggle('drop-before', before);
+        d.classList.toggle('drop-after', !before);
+      });
+      d.addEventListener('dragleave', function(){
+        d.classList.remove('drop-before','drop-after');
+      });
+      d.addEventListener('drop', function(e){
+        var dragging = list.querySelector('details.dsec.dragging');
+        if(!dragging || dragging === d) return;
+        e.preventDefault();
+        var r = d.getBoundingClientRect();
+        var before = (e.clientY - r.top) < r.height/2;
+        d.classList.remove('drop-before','drop-after');
+        list.insertBefore(dragging, before ? d : d.nextSibling);
+        saveOrder();
+      });
+    });
+
+    var resetBtn = document.getElementById('dsecReset');
+    if(resetBtn){
+      resetBtn.addEventListener('click', function(){
+        try { localStorage.removeItem(ORDER_KEY); localStorage.removeItem(OPEN_KEY); } catch(e){}
+        location.reload();
+      });
+    }
+  }
+
+  initSections();
   renderConversion();
   renderFunnel();
   renderTrust();
