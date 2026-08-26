@@ -1,0 +1,27 @@
+# Simplifier — 한성희
+
+> 25년 경력 제품·조직 전략가 한성희(前 Naver, Samsung, Delivery Hero Korea, Bithumb)가 운영하는 스타트업 성장 코칭 & 기업 임원 강연 브랜드. PMF 이후 성장 전략, 프로덕트 코칭, 리더십 교육을 실무진과 함께 만드는 Playing Coach로 소개된다.
+
+## 핵심 페이지
+- [홈페이지](https://simplifier.co.kr/): 서비스 소개, 프로그램, FAQ, 문의
+- [사이트맵](https://simplifier.co.kr/sitemap.xml)
+
+## 제공 서비스
+- 스타트업 Playing Coach 코칭: PMF 이후 비즈니스 전환기의 초기 스타트업을 대상으로 CPO, PO, Advisor 역할로 주 1~5일 상주하며 실무를 함께 수행
+- 기업 임원 강연 및 리더십 워크샵: 신임 팀장, 승진자, 임직원 대상 리더십·시간관리·프로젝트관리 강연 및 워크샵
+
+## 저서
+- [기획자의 질문법](https://product.kyobobook.co.kr/detail/S000216681258)
+- [UX의 언어들](https://product.kyobobook.co.kr/detail/S000220493173)
+
+## 블로그 카테고리
+- [스타트업 인사이트](https://simplifier.co.kr/log.html?cat=%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8)
+- [기획자의 프레임웍](https://simplifier.co.kr/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D)
+- [PO의 프레임웍](https://simplifier.co.kr/log.html?cat=PO%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D)
+- [UX의 언어들](https://simplifier.co.kr/log.html?cat=UX%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4)
+- [AI의 언어들](https://simplifier.co.kr/log.html?cat=AI%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4)
+- [심플리파이어 라이프](https://simplifier.co.kr/log.html?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EB%9D%BC%EC%9D%B4%ED%94%84)
+
+## 연락처
+- Email: simon@simplifier.co.kr
+- LinkedIn: https://www.linkedin.com/in/simplifier/
