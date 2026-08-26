@@ -115,7 +115,7 @@
             ? "본문을 먼저 써주세요"
             : this.state.status === "failed"
             ? "복사 실패 — 직접 선택해서 복사해주세요"
-            : "📋 제목+본문 프롬프트 복사";
+            : "제목+본문 프롬프트 복사";
         // 바깥 div에 레이아웃을 명시적으로 지정합니다. Sveltia의 필드 줄은
         // 보통 입력창 하나가 그 줄 전체를 차지하는 걸 전제로 높이를 잡는데,
         // 우리는 입력창+버튼 두 개를 넣다 보니 아무 스타일도 안 주면 그
@@ -145,9 +145,27 @@
               type: "button",
               onClick: this.handleCopy,
               style: {
+                // Sveltia 자체 버튼들이 보통 아이콘 하나만 들어가는 정사각형
+                // 크기로 스타일링돼 있어서, 그 규칙이 우리 버튼(아이콘+글자)에도
+                // 상속돼 글자가 잘려나갔을 가능성이 커서 강하게 재정의합니다.
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
                 alignSelf: "flex-start",
-                padding: "5px 10px",
+                boxSizing: "content-box",
+                width: "auto",
+                minWidth: 0,
+                maxWidth: "none",
+                height: "auto",
+                minHeight: 0,
+                maxHeight: "none",
+                overflow: "visible",
+                whiteSpace: "normal",
+                textAlign: "center",
+                padding: "6px 12px",
+                margin: 0,
                 fontSize: "12px",
+                fontFamily: "inherit",
                 lineHeight: "1.4",
                 cursor: "pointer",
                 border: "1px solid #ccc",
