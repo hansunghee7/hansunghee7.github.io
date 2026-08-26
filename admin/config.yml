@@ -23,10 +23,15 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     identifier_field: title
     summary: "{{title}}  ·  {{date_string}}"
+    # Sveltia는 이 옵션 문법이 Decap과 다릅니다(Decap의
+    # `[{field, default_sort}, ...]` 배열이 아니라 fields/default 구조).
+    # Decap 문법 그대로 넣었더니 통째로 무시되면서 "발행일" 정렬 옵션 자체가
+    # 사라지고 커밋 기준 정렬만 남았던 게 실제 원인이었습니다.
     sortable_fields:
-      - { field: date, default_sort: desc }
-      - title
-      - commit_date
+      fields: [title, date]
+      default:
+        field: date
+        direction: descending
     format: "yaml-frontmatter"
     fields:
       - { name: "layout", label: "레이아웃", widget: "hidden", default: "default" }
