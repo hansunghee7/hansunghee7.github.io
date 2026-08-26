@@ -64,6 +64,19 @@
   .kpi-card.stage-3 .mini-bars .b{background:linear-gradient(180deg,#c99a5a,#a3690f);}
   .kpi-foot{font-size:11px; color:var(--muted); margin-top:8px; line-height:1.5;}
 
+  /* ---- KPI 하위요소 (각 KPI 카드 바로 아래, 같은 열에 정렬 -- "무엇이 이 숫자를 만드나") ---- */
+  .kpi-detail-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:8px;}
+  @media (max-width:760px){ .kpi-detail-grid{grid-template-columns:1fr;} }
+  .kpi-detail-col{border:1px dashed var(--line); border-top:none; border-radius:0 0 10px 10px; padding:14px 16px 15px; background:rgba(20,20,15,0.012);}
+  .kdcol-label{font-size:11px; color:var(--muted); margin-bottom:10px;}
+  .kdcol-row{display:flex; align-items:baseline; justify-content:space-between; gap:10px; padding:5px 0; font-size:13px; border-bottom:1px solid var(--line-soft);}
+  .kdcol-row:last-of-type{border-bottom:none;}
+  .kdcol-row .k{color:var(--dim); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  .kdcol-row .v{color:var(--ink); font-variant-numeric:tabular-nums; flex:none;}
+  .kdcol-empty{font-size:12.5px; color:var(--muted);}
+  .kdcol-link{display:block; margin-top:10px; font-size:12px; color:var(--dim); text-decoration:none; border-bottom:1px solid var(--line); align-self:flex-start; width:fit-content;}
+  .kdcol-link:hover{color:var(--ink);}
+
   /* ---- tiles ---- */
   .tiles{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px;}
   .tile{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:18px 18px 16px;}
@@ -139,6 +152,7 @@
   <h2>① 핵심 KPI — 최초방문 → 재방문 → 문의</h2>
   <p class="h2note" id="measureNote">GA4 데이터를 불러오는 중…</p>
   <div class="kpi-trend-grid" id="kpiTrends"></div>
+  <div class="kpi-detail-grid" id="kpiDetails"></div>
   <p class="note" style="margin-top:16px">
     문의는 모달 안에서 전송돼 페이지 이동이 없기 때문에, 원래는 GA4가 이걸 전혀 보지 못했습니다.
     2026-08-26에 <b>generate_lead</b> 이벤트를 심어서 이제부터 잡힙니다.
@@ -434,6 +448,57 @@
     });
   }
 
+  /* ①의 세 KPI 카드 바로 아래, 같은 열에 "무엇이 이 숫자를 만드나"를 한 단 내려서 보여줍니다.
+     최초방문 밑엔 어디서 왔는지(소스), 재방문 밑엔 뭘 보고 돌아오는지(관여신호),
+     문의 밑엔 섭외 절차를 읽는 행동(FAQ 펼침)을 둡니다 -- 트리 구조로 원인을 계단식으로 내려보이게. */
+  function kdCol(label, rows, linkText, linkHref){
+    var col = el('div','kpi-detail-col');
+    col.appendChild(el('div','kdcol-label', label));
+    if(!rows.length){
+      col.appendChild(el('div','kdcol-empty','아직 데이터 없음'));
+    } else {
+      rows.forEach(function(r){
+        var row = el('div','kdcol-row');
+        row.appendChild(el('span','k', r[0]));
+        row.appendChild(el('span','v', r[1]));
+        col.appendChild(row);
+      });
+    }
+    if(linkText){
+      var a = el('a','kdcol-link', linkText+' ↗');
+      a.href = linkHref; a.target='_blank'; a.rel='noopener noreferrer';
+      col.appendChild(a);
+    }
+    return col;
+  }
+
+  function renderKpiDetails(d){
+    var box = document.getElementById('kpiDetails'); box.textContent='';
+
+    /* 최초방문 하위 -- 어느 경로로 왔는가. AI 엔진 유입은 합계를 맨 위에 올려 바로 보이게 합니다. */
+    var sources = (d.top_sources||[]).slice(0,4).map(function(s){ return [s.source, s.sessions.toLocaleString()]; });
+    var aiTotal = (d.ai_referrals||[]).reduce(function(s,r){ return s+r.sessions; }, 0);
+    var col1Rows = [['AI 엔진 유입 합계', aiTotal.toLocaleString()]].concat(sources);
+    box.appendChild(kdCol('무엇이 최초방문을 만드나 — 유입 경로', col1Rows, 'Google 서치콘솔 실적', 'https://search.google.com/search-console'));
+
+    /* 재방문 하위 -- 뭘 보고 다시 오는가. 신뢰 구간 도달 4종. */
+    var ev = d.engagement_events || {};
+    var col2Rows = [
+      ['로고월(실적) 도달', ev.section_view_proven||0],
+      ['후기 도달', ev.section_view_voices||0],
+      ['책/클래스 도달', ev.section_view_book_class||0],
+      ['FAQ 도달', ev.section_view_faq||0]
+    ];
+    box.appendChild(kdCol('무엇이 재방문을 만드나 — 관여 신호', col2Rows, 'Clarity 레코딩', 'https://clarity.microsoft.com/'));
+
+    /* 문의 하위 -- 섭외 절차를 읽는 강한 의도 신호. */
+    var col3Rows = [
+      ['FAQ 펼침(절차 확인)', ev.faq_open||0],
+      ['글 완독(온라인강의 신호)', ev.read_complete||0]
+    ];
+    box.appendChild(kdCol('무엇이 문의를 만드나 — 전환 직전 행동', col3Rows, 'GA4 실시간 이벤트', 'https://analytics.google.com/'));
+  }
+
   function renderAnalytics(){
     fetch('/assets/data/analytics.json?t=' + Date.now(), { cache:'no-store' })
       .then(function(r){ if(!r.ok) throw { notYet: r.status===404 }; return r.json(); })
@@ -443,6 +508,7 @@
         note.textContent = '최근 30일 · ' + (updated ? fmt(updated) + ' 갱신' : '');
 
         renderKpiTrends(d);
+        renderKpiDetails(d);
 
         /* 신규/재방문 총합은 위 ①의 최초방문·재방문 카드가 이미 보여주므로 여기서 반복하지 않습니다.
            여긴 트렌드 카드가 못 보여주는 것만: 세션(방문 횟수, 사람 수와 다름)과 방문자 총합. */
@@ -491,6 +557,7 @@
         document.getElementById('analyticsTiles').textContent='';
         document.getElementById('sourceTable').textContent='';
         document.getElementById('engagementTiles').textContent='';
+        document.getElementById('kpiDetails').textContent='';
       });
   }
 
