@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hansunghee7.github.io/sitemap.xml
+Sitemap: https://simplifier.co.kr/sitemap.xml

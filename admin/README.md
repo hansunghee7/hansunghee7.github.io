@@ -50,7 +50,7 @@ Cloudflare에서 열쇠(토큰)를 하나 발급받아서 저한테 주세요.
 
 ## 5단계 (사장님이 하실 일)
 
-1. https://hansunghee7.github.io/admin/ 접속
+1. https://simplifier.co.kr/admin/ 접속
 2. "Login with GitHub" 버튼 클릭
 3. 로그인 창이 뜨면 로그인 후 "Authorize" 클릭
 4. 글쓰기 화면이 뜨면 성공입니다.
