@@ -137,6 +137,32 @@ def fetch_daily_event(client, property_id, event_name):
     return rows
 
 
+def fetch_landing_types(client, property_id):
+    """방문자가 처음 착지하는 곳이 홈 / 로그 홈(목록) / 개별 글 중 어디인지.
+    최초방문을 만드는 또 다른 축 -- GEO/AEO 유입은 홈이 아니라 특정 글로 바로
+    착지할 가능성이 높으므로, 소스만으로는 안 보이는 걸 여기서 잡는다."""
+    resp = run_report(
+        client, property_id,
+        date_ranges=[DateRange(start_date="30daysAgo", end_date="today")],
+        dimensions=[Dimension(name="landingPage")],
+        metrics=[Metric(name="sessions")],
+        limit=500,
+    )
+    buckets = {"home": 0, "log_home": 0, "individual_post": 0, "other": 0}
+    for r in resp.rows:
+        path = r.dimension_values[0].value or ""
+        sessions = int(r.metric_values[0].value)
+        if path in ("/", ""):
+            buckets["home"] += sessions
+        elif path.startswith("/log.html"):
+            buckets["log_home"] += sessions
+        elif path.startswith("/log_assets/markdown/"):
+            buckets["individual_post"] += sessions
+        else:
+            buckets["other"] += sessions
+    return buckets
+
+
 def fetch_sources(client, property_id):
     resp = run_report(
         client, property_id,
@@ -189,6 +215,7 @@ def main():
         "totals": fetch_totals(client, property_id),
         "daily": fetch_daily(client, property_id),
         "daily_leads": fetch_daily_event(client, property_id, "generate_lead"),
+        "landing_types": fetch_landing_types(client, property_id),
         "top_sources": top_sources,
         "ai_referrals": ai_referrals,
         "engagement_events": fetch_engagement_events(client, property_id),

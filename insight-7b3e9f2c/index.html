@@ -481,11 +481,18 @@
   function renderKpiDetails(d){
     var box = document.getElementById('kpiDetails'); box.textContent='';
 
-    /* 최초방문 하위 -- 어느 경로로 왔는가. AI 엔진 유입은 합계를 맨 위에 올려 바로 보이게 합니다. */
-    var sources = (d.top_sources||[]).slice(0,4).map(function(s){ return [s.source, s.sessions.toLocaleString()]; });
+    /* 최초방문 하위 -- 어느 경로로(소스) + 어디로 착지하는가(랜딩페이지). AI 엔진 유입 합계를
+       맨 위에 둡니다. 착지 페이지는 GEO/AEO 유입이 홈이 아니라 특정 글로 바로 꽂히는지 보여줍니다. */
+    var sources = (d.top_sources||[]).slice(0,3).map(function(s){ return [s.source, s.sessions.toLocaleString()]; });
     var aiTotal = (d.ai_referrals||[]).reduce(function(s,r){ return s+r.sessions; }, 0);
-    var col1Rows = [['AI 엔진 유입 합계', aiTotal.toLocaleString()]].concat(sources);
-    box.appendChild(kdCol('무엇이 최초방문을 만드나 — 유입 경로', col1Rows, 'Google 서치콘솔 실적', 'https://search.google.com/search-console'));
+    var lt = d.landing_types || {};
+    var col1Rows = [
+      ['AI 엔진 유입 합계', aiTotal.toLocaleString()],
+      ['착지: 홈', (lt.home||0).toLocaleString()],
+      ['착지: 로그 홈(목록)', (lt.log_home||0).toLocaleString()],
+      ['착지: 개별 글', (lt.individual_post||0).toLocaleString()]
+    ].concat(sources);
+    box.appendChild(kdCol('무엇이 최초방문을 만드나 — 유입 경로 · 착지 페이지', col1Rows, 'Google 서치콘솔 실적', 'https://search.google.com/search-console'));
 
     /* 재방문 하위 -- 뭘 보고 다시 오는가. 신뢰 구간 도달 4종. */
     var ev = d.engagement_events || {};
@@ -509,9 +516,20 @@
     fetch('/assets/data/analytics.json?t=' + Date.now(), { cache:'no-store' })
       .then(function(r){ if(!r.ok) throw { notYet: r.status===404 }; return r.json(); })
       .then(function(d){
+        /* 파이프라인 실패 경보 -- GitHub Actions가 매일 06:00에 돌아야 하는데,
+           조용히 실패하면 대시보드가 오래된 데이터를 "최신"인 것처럼 계속 보여줄 수
+           있습니다. updated_at이 너무 오래됐으면 색으로 눈에 띄게 알립니다. */
         var note = document.getElementById('analyticsNote');
         var updated = d.updated_at ? new Date(d.updated_at) : null;
-        note.textContent = '최근 30일 · ' + (updated ? fmt(updated) + ' 갱신' : '');
+        var hoursSince = updated ? (Date.now() - updated.getTime())/3600000 : null;
+        var staleClass = '', stalePrefix = '';
+        if (hoursSince !== null && hoursSince > 96) {
+          staleClass = ' stale-bad'; stalePrefix = '⚠ 자동 갱신이 4일 넘게 안 됐습니다 — "Fetch GA4 analytics" 워크플로가 실패 중일 수 있습니다. GitHub Actions 탭을 확인하세요. ';
+        } else if (hoursSince !== null && hoursSince > 48) {
+          staleClass = ' stale-warn'; stalePrefix = '⚠ 자동 갱신이 이틀 넘게 안 됐습니다. ';
+        }
+        note.className = 'h2note' + staleClass;
+        note.textContent = stalePrefix + '최근 30일 · ' + (updated ? fmt(updated) + ' 갱신' : '');
 
         renderKpiTrends(d);
         renderKpiDetails(d);
@@ -555,6 +573,7 @@
       })
       .catch(function(e){
         var note = document.getElementById('analyticsNote');
+        note.className = 'h2note';
         if(e && e.notYet){
           note.textContent = '아직 수집 전입니다. GA4 서비스 계정 연결 후 "Fetch GA4 analytics" 워크플로가 한 번 돌면 채워집니다 (매일 06:00 자동 실행).';
         } else {
