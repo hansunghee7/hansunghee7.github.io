@@ -32,10 +32,14 @@
   @media (min-width:761px){ :root{ --gutter:32px; } }
 
   /* ---- header ---- */
-  header{padding:48px 0 28px; border-bottom:1px solid var(--line);}
-  h1{font-family:'Boska','Source Serif 4',serif; font-weight:300; font-size:clamp(28px,5vw,42px); margin:0 0 10px; line-height:1.2;}
+  header{
+    padding:48px 0 28px; border-bottom:1px solid var(--line);
+    display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center;
+    column-gap:24px; row-gap:10px;
+  }
+  h1{font-family:'Boska','Source Serif 4',serif; font-weight:300; font-size:clamp(28px,5vw,42px); margin:0; line-height:1.2;}
   .sub{color:var(--dim); font-size:14px; line-height:1.7; margin:0;}
-  .metaline{color:var(--muted); font-size:12.5px; margin-top:14px; display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center;}
+  .metaline{color:var(--muted); font-size:12.5px; display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center; min-width:0;}
   .refresh{
     background:none; border:1px solid var(--line); color:var(--dim); cursor:pointer;
     border-radius:999px; padding:7px 15px; font-size:12.5px; font-family:inherit;
