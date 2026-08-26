@@ -348,6 +348,28 @@ layout: null
     .k-list-group a { padding: 5px 0; }
   }
 
+  /* WORK WITH SIMPLIFIER 섹션의 서비스 카드.
+     아래 상품 카드(책·강의)는 표지 이미지가 있지만 강연은 없으므로 글 중심으로 둡니다.
+     코칭 페이지가 생기면 이 줄에 카드를 하나 더 넣습니다. */
+  .service-card { display:block; border:1px solid rgba(245,243,238,0.16); border-radius:12px;
+                  padding:34px 32px; margin: 0 auto 20px; max-width:1200px; text-decoration:none;
+                  transition: border-color .2s, background .2s; }
+  .service-card:hover { border-color: rgba(245,243,238,0.45); background: rgba(245,243,238,0.03); }
+  .service-eyebrow { font-family:'Pretendard Variable',sans-serif; font-size:11.5px; font-weight:500;
+                     letter-spacing:0.12em; text-transform:uppercase; color:#8f8b82; margin:0 0 12px; }
+  .service-card h3 { font-family:'Pretendard Variable',sans-serif; font-size:24px; font-weight:600;
+                     color:#f5f3ee; margin:0 0 10px; }
+  .service-card p { font-family:'Pretendard Variable',sans-serif; font-size:14.5px; font-weight:300;
+                    color:#c9c8c2; line-height:1.7; margin:0 0 16px; max-width:760px; word-break:keep-all; }
+  .service-more { font-family:'Pretendard Variable',sans-serif; font-size:14px; color:#f5f3ee;
+                  border-bottom:1px solid rgba(245,243,238,0.35); padding-bottom:2px; }
+  .shelf-label { font-family:'Pretendard Variable',sans-serif; font-size:11.5px; font-weight:500;
+                 letter-spacing:0.12em; text-transform:uppercase; color:#8f8b82; margin:34px 0 16px; }
+  @media (max-width:760px){
+    .service-card { padding:24px 20px; }
+    .service-card h3 { font-size:20px; }
+  }
+
   .yc-overlay-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto; }
   .overlay-card { position: relative; height: 380px; border-radius: 12px; overflow: hidden; cursor: pointer; text-decoration: none; display: block; }
   .overlay-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
@@ -697,7 +719,17 @@ layout: null
   })();
   </script>
 
-  <h2 class="yc-title">BOOK & CLASS</h2>
+  <h2 class="yc-title">WORK WITH SIMPLIFIER</h2>
+
+  <a href="/speaking/" class="service-card">
+    <p class="service-eyebrow">Speaking &amp; Workshop</p>
+    <h3>기업 강연 · 워크숍</h3>
+    <p>리더십 · 승진자 · PM 역량. 표준 프로그램 3종을 대상과 시간에 맞춰 구성합니다.
+       워크숍형 10~100명, 특강형 최대 500명. 강의만 하는 사람이 아니라, 지금도 현장에서 일하는 CPO가 진행합니다.</p>
+    <span class="service-more">프로그램 보기 →</span>
+  </a>
+
+  <p class="shelf-label">Book &amp; Class</p>
   <div class="yc-overlay-grid">
     <a href="https://www.yes24.com/product/goods/147079674" target="_blank" rel="noopener" class="overlay-card">
       <img src="/assets/books/book-question.png" alt="기획자의 질문법">

@@ -106,11 +106,12 @@
           </div>
         </div>
         <div class="nav-item">
-          <!-- TODO(강연페이지): /speaking/ 배포와 동시에 이 메뉴를 "Work with"로 바꾸고
-               맨 위에 <a href="/speaking/">강연 · 워크숍</a> + 구분선을 넣습니다.
-               지금 넣으면 없는 페이지로 연결돼 404가 납니다. 기획_강연페이지_PRD.md 11장 참고 -->
-          <button type="button">Book & Class</button>
+          <!-- 위: 의뢰할 수 있는 것(서비스) / 아래: 살 수 있는 것(책·강의).
+               코칭 페이지가 생기면 강연 아래에 함께 넣습니다. -->
+          <button type="button">Work with</button>
           <div class="dropdown-menu">
+            <a href="/speaking/"><span class="cat-name">강연 · 워크숍</span></a>
+            <div class="dropdown-sep"></div>
             <a href="https://www.yes24.com/product/goods/147079674" target="_blank" rel="noopener"><span class="cat-name">기획자의 질문법</span></a>
             <a href="https://www.yes24.com/product/goods/193444437" target="_blank" rel="noopener"><span class="cat-name">UX의 언어들</span></a>
             <a href="https://www.classu.co.kr/new/class/1019442" target="_blank" rel="noopener"><span class="cat-name">유니콘의 리더십</span></a>
@@ -158,9 +159,10 @@
         <a href="/log.html?cat=%ED%86%A0%ED%81%AC%EC%84%B8%EC%85%98">토크세션</a>
       </div>
     </details>
-    <!-- TODO(강연페이지): /speaking/ 배포와 동시에 "Work with"로 변경 + 강연 항목 추가 -->
-    <details class="mobile-details"><summary class="mobile-summary">Book & Class</summary>
+    <details class="mobile-details"><summary class="mobile-summary">Work with</summary>
       <div class="mobile-submenu">
+        <a href="/speaking/">강연 · 워크숍</a>
+        <div class="mobile-sep"></div>
         <a href="https://www.yes24.com/product/goods/147079674" target="_blank" rel="noopener">기획자의 질문법</a>
         <a href="https://www.yes24.com/product/goods/193444437" target="_blank" rel="noopener">UX의 언어들</a>
         <a href="https://www.classu.co.kr/new/class/1019442" target="_blank" rel="noopener">유니콘의 리더십</a>
