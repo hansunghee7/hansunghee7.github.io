@@ -2,7 +2,7 @@
 layout: default
 title: "So What, Why So' 논리에 영혼을 불어넣다"
 category: '기획자의 프레임웍'
-cover_image: '/log_assets/images/178_'So What, Why So' 논리에 영혼을 불어넣다_cover.jpg'
+cover_image: '/log_assets/images/178_''So What, Why So'' 논리에 영혼을 불어넣다_cover.jpg'
 date_string: 'Apr 8. 2025'
 date: 2025-04-08
 keywords: '기획자의 질문법, 기획 프레임워크, PM 역량강화'

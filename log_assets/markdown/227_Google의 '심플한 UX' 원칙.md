@@ -2,7 +2,7 @@
 layout: default
 title: "Google의 '심플한 UX' 원칙"
 category: 'UX의 언어들'
-cover_image: '/log_assets/images/227_Google의 '심플한 UX' 원칙_cover.jpg'
+cover_image: '/log_assets/images/227_Google의 ''심플한 UX'' 원칙_cover.jpg'
 date_string: 'Feb 20. 2025'
 date: 2025-02-20
 keywords: 'UX 컨설팅, UX 디자인, 프로덕트 UX'

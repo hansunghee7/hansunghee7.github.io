@@ -2,7 +2,7 @@
 layout: default
 title: "팔란티어' #3 Foundry 기업 데이터분석플랫폼"
 category: '스타트업 인사이트'
-cover_image: '/log_assets/images/187_'팔란티어' 3 Foundry 기업 데이터분석플랫폼_cover.jpg'
+cover_image: '/log_assets/images/187_''팔란티어'' 3 Foundry 기업 데이터분석플랫폼_cover.jpg'
 date_string: 'Mar 30. 2025'
 date: 2025-03-30
 keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'

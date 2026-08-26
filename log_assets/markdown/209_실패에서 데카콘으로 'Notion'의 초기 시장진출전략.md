@@ -2,7 +2,7 @@
 layout: default
 title: "실패에서 데카콘으로 'Notion'의 초기 시장진출전략"
 category: '스타트업 인사이트'
-cover_image: '/log_assets/images/209_실패에서 데카콘으로 'Notion'의 초기 시장진출전략_cover.jpg'
+cover_image: '/log_assets/images/209_실패에서 데카콘으로 ''Notion''의 초기 시장진출전략_cover.jpg'
 date_string: 'Mar 10. 2025'
 date: 2025-03-10
 keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'

@@ -2,7 +2,7 @@
 layout: default
 title: "ENTJ코치가 보는 '이토록 친밀한 배신자"
 category: '심플리파이어 라이프'
-cover_image: '/log_assets/images/309_ENTJ코치가 보는 '이토록 친밀한 배신자'_cover.jpg'
+cover_image: '/log_assets/images/309_ENTJ코치가 보는 ''이토록 친밀한 배신자''_cover.jpg'
 date_string: 'Oct 19. 2024'
 date: 2024-10-19
 keywords: '플레잉코치, 스타트업 그로스 코치, 코칭 일상'
