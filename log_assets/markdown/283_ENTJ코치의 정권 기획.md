@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
 </div>
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/275_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%EA%B0%80%20%EB%B0%9B%EC%9D%80%20%EC%97%B0%EB%A7%90%20%EC%84%A0%EB%AC%BC.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">심플리파이어가 받은 연말 선물</span></a>
-  <a href="/log_assets/markdown/285_%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%97%90%20%ED%8F%AC%EC%BB%A4%EC%8A%A4%ED%95%98%EC%84%B8%EC%9A%94.html" class="cat-nav-item cat-nav-right"><span class="nav-title">비즈니스에 포커스하세요.</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/285_%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%97%90%20%ED%8F%AC%EC%BB%A4%EC%8A%A4%ED%95%98%EC%84%B8%EC%9A%94.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">비즈니스에 포커스하세요.</span></a>
+  <a href="/log_assets/markdown/275_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%EA%B0%80%20%EB%B0%9B%EC%9D%80%20%EC%97%B0%EB%A7%90%20%EC%84%A0%EB%AC%BC.html" class="cat-nav-item cat-nav-right"><span class="nav-title">심플리파이어가 받은 연말 선물</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

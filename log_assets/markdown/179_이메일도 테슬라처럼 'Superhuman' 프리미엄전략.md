@@ -92,7 +92,7 @@ Superhuman의 사례는 기존 시장에서도 명확한 타겟팅과 차별화�
   <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
 </div>
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/174_%EC%9D%B8%EC%9D%B4%20%EB%B0%B0%EA%B8%B8%20%EB%95%8C%EA%B9%8C%EC%A7%80.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">인이 배길 때까지...</span></a>
-  <a href="/log_assets/markdown/180_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%20%234%20Apollo%20%ED%98%81%EC%8B%A0%EC%9D%98%20%EB%B0%B0%ED%8F%AC%20%ED%94%8C%EB%9E%AB%ED%8F%BC.html" class="cat-nav-item cat-nav-right"><span class="nav-title">'팔란티어' #4 Apollo 혁신의 배포 플랫폼</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/180_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%20%234%20Apollo%20%ED%98%81%EC%8B%A0%EC%9D%98%20%EB%B0%B0%ED%8F%AC%20%ED%94%8C%EB%9E%AB%ED%8F%BC.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">'팔란티어' #4 Apollo 혁신의 배포 플랫폼</span></a>
+  <a href="/log_assets/markdown/174_%EC%9D%B8%EC%9D%B4%20%EB%B0%B0%EA%B8%B8%20%EB%95%8C%EA%B9%8C%EC%A7%80.html" class="cat-nav-item cat-nav-right"><span class="nav-title">인이 배길 때까지...</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

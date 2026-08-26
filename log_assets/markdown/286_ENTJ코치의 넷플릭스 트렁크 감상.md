@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
 </div>
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/285_%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%97%90%20%ED%8F%AC%EC%BB%A4%EC%8A%A4%ED%95%98%EC%84%B8%EC%9A%94.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">비즈니스에 포커스하세요.</span></a>
-  <a href="/log_assets/markdown/287_%EB%82%98%EC%9D%98%20%EC%BD%94%EC%B9%AD%20%EC%97%AC%EC%A0%95.html" class="cat-nav-item cat-nav-right"><span class="nav-title">나의 코칭 여정</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/287_%EB%82%98%EC%9D%98%20%EC%BD%94%EC%B9%AD%20%EC%97%AC%EC%A0%95.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">나의 코칭 여정</span></a>
+  <a href="/log_assets/markdown/285_%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%97%90%20%ED%8F%AC%EC%BB%A4%EC%8A%A4%ED%95%98%EC%84%B8%EC%9A%94.html" class="cat-nav-item cat-nav-right"><span class="nav-title">비즈니스에 포커스하세요.</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

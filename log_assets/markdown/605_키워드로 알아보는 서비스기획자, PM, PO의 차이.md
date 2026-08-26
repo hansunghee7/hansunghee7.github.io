@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
 </div>
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/602_%EA%B2%BD%ED%97%98%EC%97%90%EC%84%9C%20%EB%B0%B0%EC%9A%B4%20%EB%AA%87%20%EA%B0%80%EC%A7%80%20%EA%B5%90%ED%9B%88.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">경험에서 배운 몇 가지 교훈</span></a>
-  <a href="/log_assets/markdown/608_%EB%8B%B9%EC%8B%A0%EC%97%90%EA%B2%8C%20%EC%A3%BC%EC%96%B4%EC%A7%84%20%EA%B3%A8%EC%9D%80%20%EC%9E%98%20%EB%84%A3%EA%B3%A0%20%EC%9E%88%EC%8A%B5%EB%8B%88%EA%B9%8C.html" class="cat-nav-item cat-nav-right"><span class="nav-title">당신에게 주어진 골은 잘 넣고 있습니까?</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/608_%EB%8B%B9%EC%8B%A0%EC%97%90%EA%B2%8C%20%EC%A3%BC%EC%96%B4%EC%A7%84%20%EA%B3%A8%EC%9D%80%20%EC%9E%98%20%EB%84%A3%EA%B3%A0%20%EC%9E%88%EC%8A%B5%EB%8B%88%EA%B9%8C.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">당신에게 주어진 골은 잘 넣고 있습니까?</span></a>
+  <a href="/log_assets/markdown/602_%EA%B2%BD%ED%97%98%EC%97%90%EC%84%9C%20%EB%B0%B0%EC%9A%B4%20%EB%AA%87%20%EA%B0%80%EC%A7%80%20%EA%B5%90%ED%9B%88.html" class="cat-nav-item cat-nav-right"><span class="nav-title">경험에서 배운 몇 가지 교훈</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

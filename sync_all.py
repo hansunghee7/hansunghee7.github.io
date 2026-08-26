@@ -109,16 +109,17 @@ if os.path.exists(MARKDOWN_DIR):
             # '이전글/다음글'은 절대적인 신구(新舊) 순서가 아니라, 이 카테고리를
             # 훑어보는 자연스러운 방향을 따른다.
             # - 연재형(오름차순: 예고편→1화→2화...): 다음 화 = posts[i+1] (더 최신 화)
-            # - 일반 블로그형(내림차순: 최신글이 목록 맨 앞): 다음글 = posts[i-1]
-            #   (목록을 계속 훑어볼 때 다음으로 만나는, 더 과거의 글).
-            #   그래야 목록 맨 앞의 최신글을 열었을 때 '다음글'이 뜨고,
-            #   가장 오래된 글에 도달하면 '다음글'이 사라진다.
-            if is_ascending:
-                prev_post = posts[i-1] if i > 0 else None
-                next_post = posts[i+1] if i < len(posts)-1 else None
-            else:
-                prev_post = posts[i+1] if i < len(posts)-1 else None
-                next_post = posts[i-1] if i > 0 else None
+            # - 일반 블로그형(내림차순: 최신글이 목록 맨 앞, index 0 = 최신):
+            #   다음글 = posts[i+1] (목록을 계속 훑어볼 때 다음으로 만나는, 더 과거의 글)
+            #   이전글 = posts[i-1] (더 최신 글)
+            #   그래야 목록 맨 앞의 최신글을 열었을 때(i=0) '다음글'만 뜨고
+            #   '이전글'은 안 보이며, 가장 오래된 글에 도달하면(i=len-1) 반대로
+            #   '다음글'이 사라지고 '이전글'만 남는다.
+            #   (예전엔 일반 블로그형 쪽 이 두 줄이 뒤바뀌어 있어서 최신글에
+            #   '다음글' 대신 '이전글'만 뜨는 버그가 있었다. 오름차순/내림차순
+            #   둘 다 결국 "index가 커지는 방향 = 다음"으로 동일한 식이 된다.)
+            prev_post = posts[i-1] if i > 0 else None
+            next_post = posts[i+1] if i < len(posts)-1 else None
 
             nav_html = build_cta_html(cat)
             nav_html += '<div class="category-nav-wrap">\n'

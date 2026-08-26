@@ -68,7 +68,7 @@ Flow State Design은 사용자를 오래 붙잡아두는 기술이 아닌, 진�
   <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
 </div>
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/045_%EC%99%9C%20%EC%8A%A4%ED%83%80%EB%B2%85%EC%8A%A4%EB%8A%94%20%EB%8B%A4%EB%A5%B8%20%EC%B9%B4%ED%8E%98%EC%99%80%20%EB%8B%A4%EB%A5%B4%EA%B2%8C%20%EB%8A%90%EA%BB%B4%EC%A7%88%EA%B9%8C.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">왜 스타벅스는 다른 카페와 다르게 느껴질까?</span></a>
-  <a href="/log_assets/markdown/058_%EB%B8%8C%EB%A0%88%EB%93%9C%ED%81%AC%EB%9F%BC%2C%20%EA%B8%B8%EC%9D%84%20%EC%9E%83%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EB%94%94%EC%A7%80%ED%84%B8%20%EB%82%98%EC%B9%A8%EB%B0%98.html" class="cat-nav-item cat-nav-right"><span class="nav-title">브레드크럼, 길을 잃지 않는 디지털 나침반</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/058_%EB%B8%8C%EB%A0%88%EB%93%9C%ED%81%AC%EB%9F%BC%2C%20%EA%B8%B8%EC%9D%84%20%EC%9E%83%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EB%94%94%EC%A7%80%ED%84%B8%20%EB%82%98%EC%B9%A8%EB%B0%98.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">브레드크럼, 길을 잃지 않는 디지털 나침반</span></a>
+  <a href="/log_assets/markdown/045_%EC%99%9C%20%EC%8A%A4%ED%83%80%EB%B2%85%EC%8A%A4%EB%8A%94%20%EB%8B%A4%EB%A5%B8%20%EC%B9%B4%ED%8E%98%EC%99%80%20%EB%8B%A4%EB%A5%B4%EA%B2%8C%20%EB%8A%90%EA%BB%B4%EC%A7%88%EA%B9%8C.html" class="cat-nav-item cat-nav-right"><span class="nav-title">왜 스타벅스는 다른 카페와 다르게 느껴질까?</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

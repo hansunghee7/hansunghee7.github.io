@@ -82,7 +82,7 @@ Dropbox처럼 사용자의 자연스러운 사용 패턴을 이해하고, 그에
   <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
 </div>
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/121_%EC%9E%91%EA%B2%8C%20%EC%8B%9C%EC%9E%91%ED%95%B4%20%ED%81%AC%EA%B2%8C%20%ED%84%B0%ED%8A%B8%EB%A6%AC%EB%8A%94%20Slack%EC%9D%98%20%EC%B4%88%EA%B8%B0%EB%A7%88%EC%BC%80%ED%8C%85%EC%A0%84%EB%9E%B5.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">작게 시작해 크게 터트리는 Slack의 초기마케팅전략</span></a>
-  <a href="/log_assets/markdown/131_%EC%99%9C%20%EC%96%B4%EB%A0%A4%EC%9A%B4%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%84%20%EB%A7%88%EB%8B%A4%ED%95%98%EC%A7%80%20%EC%95%8A%EC%95%98%EC%9D%84%EA%B9%8C.html" class="cat-nav-item cat-nav-right"><span class="nav-title">왜 어려운 스타트업을 마다하지 않았을까?</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/131_%EC%99%9C%20%EC%96%B4%EB%A0%A4%EC%9A%B4%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%84%20%EB%A7%88%EB%8B%A4%ED%95%98%EC%A7%80%20%EC%95%8A%EC%95%98%EC%9D%84%EA%B9%8C.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">왜 어려운 스타트업을 마다하지 않았을까?</span></a>
+  <a href="/log_assets/markdown/121_%EC%9E%91%EA%B2%8C%20%EC%8B%9C%EC%9E%91%ED%95%B4%20%ED%81%AC%EA%B2%8C%20%ED%84%B0%ED%8A%B8%EB%A6%AC%EB%8A%94%20Slack%EC%9D%98%20%EC%B4%88%EA%B8%B0%EB%A7%88%EC%BC%80%ED%8C%85%EC%A0%84%EB%9E%B5.html" class="cat-nav-item cat-nav-right"><span class="nav-title">작게 시작해 크게 터트리는 Slack의 초기마케팅전략</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->
