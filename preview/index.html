@@ -702,12 +702,14 @@ layout: null
         var cat = cats[Math.floor(Math.random() * cats.length)];
         var matches = posts.filter(function(p) { return p.category === cat; });
         if (!matches.length) return;
-        // posts.json은 id 오름차순 = 최신글이 먼저 온다. desc(최신순)는 첫 항목,
-        // asc(날짜순, 시리즈 1화부터 보기)는 id가 가장 큰(가장 오래된) 항목을 사용
+        // 새 글은 항상 배열 맨 끝에 "다음 번호"로 추가되는데, 그 번호(id)가
+        // 브런치 이관 당시의 낮은 번호들보다 커서 "가장 오래된 글"로 오인되는 버그가 있었다.
+        // desc(최신순)는 이제 날짜를 직접 비교해 진짜 최신글을 찾는다.
+        // asc(날짜순, 시리즈 1화부터 보기)는 완결된 시리즈에만 쓰이므로 기존 id 기준 유지.
         var mode = SORT_MODE[cat] || 'desc';
         var latest = mode === 'asc'
           ? matches.reduce(function(a, b) { return b.id > a.id ? b : a; })
-          : matches[0];
+          : matches.reduce(function(a, b) { return new Date(b.date.replace('.', '')) > new Date(a.date.replace('.', '')) ? b : a; });
         if (!latest) return;
         card.setAttribute('href', latest.url);
         var img = card.querySelector('img');
