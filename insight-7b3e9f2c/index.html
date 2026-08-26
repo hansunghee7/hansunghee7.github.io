@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simplifier — 사이트 인사이트</title>
+
+<!-- 이 페이지는 검색에 노출되면 안 됩니다.
+     robots.txt에 Disallow를 쓰면 오히려 주소가 공개되므로, 여기서 noindex만 겁니다.
+     sitemap.xml에도 넣지 마세요. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=boska@200,300,400,500,600,700&display=swap">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+
+<style>
+  :root{
+    --bg:#080808; --ink:#f5f3ee; --muted:#8f8b82; --dim:#c9c8c2;
+    --line:rgba(245,243,238,0.12); --line-soft:rgba(245,243,238,0.07);
+    --card:#0e0e0e; --good:#7fc8a9; --warn:#e0b169; --bad:#d98b7a;
+    --gutter:16px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'Pretendard Variable','Pretendard',-apple-system,sans-serif;
+    -webkit-font-smoothing:antialiased; word-break:keep-all;
+  }
+  .wrap{max-width:1100px; margin:0 auto; padding:0 var(--gutter);}
+  @media (min-width:761px){ :root{ --gutter:32px; } }
+
+  /* ---- header ---- */
+  header{padding:48px 0 28px; border-bottom:1px solid var(--line);}
+  h1{font-family:'Boska','Source Serif 4',serif; font-weight:300; font-size:clamp(28px,5vw,42px); margin:0 0 10px; line-height:1.2;}
+  .sub{color:var(--dim); font-size:14px; line-height:1.7; margin:0;}
+  .metaline{color:var(--muted); font-size:12.5px; margin-top:14px; display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center;}
+  .refresh{
+    background:none; border:1px solid var(--line); color:var(--dim); cursor:pointer;
+    border-radius:999px; padding:7px 15px; font-size:12.5px; font-family:inherit;
+    transition:border-color .2s,color .2s;
+  }
+  .refresh:hover{border-color:rgba(245,243,238,0.4); color:var(--ink);}
+
+  section{padding:38px 0; border-bottom:1px solid var(--line-soft);}
+  section:last-of-type{border-bottom:none;}
+  h2{
+    font-size:12px; font-weight:500; letter-spacing:0.12em; color:var(--muted);
+    text-transform:uppercase; margin:0 0 4px;
+  }
+  .h2note{font-size:13px; color:var(--muted); margin:0 0 22px; line-height:1.6;}
+
+  /* ---- tiles ---- */
+  .tiles{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px;}
+  .tile{background:var(--card); border:1px solid var(--line-soft); border-radius:10px; padding:18px 18px 16px;}
+  .tile .label{font-size:12px; color:var(--muted); margin-bottom:9px; line-height:1.4;}
+  .tile .val{font-family:'Boska','Source Serif 4',serif; font-weight:300; font-size:34px; line-height:1; letter-spacing:-0.01em;}
+  .tile .val .unit{font-size:15px; color:var(--dim); margin-left:3px; font-family:'Pretendard Variable',sans-serif;}
+  .tile .foot{font-size:11.5px; color:var(--muted); margin-top:9px; line-height:1.5;}
+
+  /* ---- integration status ---- */
+  .integrations{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:12px;}
+  .ig{background:var(--card); border:1px solid var(--line-soft); border-radius:10px; padding:16px 18px; display:flex; flex-direction:column; gap:8px;}
+  .ig .top{display:flex; align-items:center; justify-content:space-between; gap:10px;}
+  .ig .name{font-size:14px; font-weight:500;}
+  .badge{font-size:11px; padding:3px 9px; border-radius:999px; white-space:nowrap; border:1px solid transparent;}
+  .badge.on{color:var(--good); border-color:rgba(127,200,169,0.35); background:rgba(127,200,169,0.08);}
+  .badge.off{color:var(--muted); border-color:var(--line); }
+  .ig .desc{font-size:12px; color:var(--muted); line-height:1.6;}
+  .ig a{color:var(--dim); font-size:12.5px; text-decoration:none; border-bottom:1px solid var(--line); align-self:flex-start; padding-bottom:1px;}
+  .ig a:hover{color:var(--ink);}
+
+  /* ---- bar chart (monthly) ---- */
+  .chartbox{background:var(--card); border:1px solid var(--line-soft); border-radius:10px; padding:20px 16px 12px; overflow-x:auto;}
+  .bars{display:flex; align-items:flex-end; gap:3px; height:170px; min-width:520px;}
+  .bar{flex:1; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; gap:6px; height:100%; position:relative;}
+  .bar .fill{width:100%; background:linear-gradient(180deg,#5f5c55,#2a2823); border-radius:2px 2px 0 0; min-height:2px; transition:background .2s;}
+  .bar:hover .fill{background:linear-gradient(180deg,#f5f3ee,#8f8b82);}
+  .bar .n{font-size:10px; color:var(--muted); height:12px;}
+  .xaxis{display:flex; gap:3px; min-width:520px; margin-top:8px; border-top:1px solid var(--line-soft); padding-top:7px;}
+  .xaxis span{flex:1; text-align:center; font-size:9.5px; color:var(--muted); white-space:nowrap; overflow:hidden;}
+
+  /* ---- category bars ---- */
+  .catrow{display:grid; grid-template-columns:minmax(120px,1.4fr) 1fr auto; gap:12px; align-items:center; padding:9px 0; border-bottom:1px solid var(--line-soft); font-size:13.5px;}
+  .catrow:last-child{border-bottom:none;}
+  .catrow .nm{color:var(--dim); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  .track{height:7px; background:rgba(245,243,238,0.07); border-radius:99px; overflow:hidden;}
+  .track i{display:block; height:100%; background:#6f6c64; border-radius:99px;}
+  .catrow .ct{color:var(--muted); font-size:12.5px; min-width:56px; text-align:right; font-variant-numeric:tabular-nums;}
+
+  /* ---- table ---- */
+  .tablebox{overflow-x:auto; border:1px solid var(--line-soft); border-radius:10px; background:var(--card);}
+  table{border-collapse:collapse; width:100%; min-width:520px; font-size:13px;}
+  th,td{padding:11px 14px; text-align:left; border-bottom:1px solid var(--line-soft); white-space:nowrap;}
+  th{color:var(--muted); font-weight:500; font-size:11.5px; letter-spacing:0.05em; text-transform:uppercase;}
+  tr:last-child td{border-bottom:none;}
+  td.num{text-align:right; font-variant-numeric:tabular-nums;}
+  td a{color:var(--dim); text-decoration:none;}
+  td a:hover{color:var(--ink); text-decoration:underline;}
+  .stale-ok{color:var(--good);} .stale-warn{color:var(--warn);} .stale-bad{color:var(--bad);}
+  .ttl{max-width:340px; overflow:hidden; text-overflow:ellipsis;}
+
+  /* ---- notes ---- */
+  .note{font-size:12.5px; color:var(--muted); line-height:1.85; margin:0 0 12px;}
+  .note b{color:var(--dim); font-weight:500;}
+  footer{padding:30px 0 60px; color:var(--muted); font-size:11.5px; line-height:1.8;}
+  .err{color:var(--bad); font-size:13px; padding:16px; border:1px solid rgba(217,139,122,0.3); border-radius:8px; background:rgba(217,139,122,0.06);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>사이트 인사이트</h1>
+  <p class="sub">simplifier.co.kr 콘텐츠 현황과 측정 도구 연동 상태를 한눈에 봅니다.</p>
+  <div class="metaline">
+    <button class="refresh" id="refreshBtn">↻ 새로고침</button>
+    <span id="dataAsOf">데이터 불러오는 중…</span>
+    <span>· 검색 비노출(noindex) 페이지</span>
+  </div>
+</header>
+
+<section>
+  <h2>측정 도구 연동</h2>
+  <p class="h2note">아래 4개가 모두 켜져야 방문자·검색 유입 데이터가 쌓이기 시작합니다.</p>
+  <div class="integrations" id="integrations"></div>
+</section>
+
+<section>
+  <h2>콘텐츠 현황</h2>
+  <p class="h2note">사이트에 실제로 올라가 있는 글 기준입니다.</p>
+  <div class="tiles" id="kpis"></div>
+</section>
+
+<section>
+  <h2>월별 발행 추이</h2>
+  <p class="h2note">최근 24개월. 막대에 마우스를 올리면 밝아집니다.</p>
+  <div class="chartbox">
+    <div class="bars" id="bars"></div>
+    <div class="xaxis" id="xaxis"></div>
+  </div>
+</section>
+
+<section>
+  <h2>카테고리 분포</h2>
+  <p class="h2note">글이 어느 주제에 몰려 있는지 봅니다.</p>
+  <div id="cats"></div>
+</section>
+
+<section>
+  <h2>카테고리별 마지막 발행</h2>
+  <p class="h2note">오래 손대지 않은 카테고리를 위에 올렸습니다. 6개월 넘게 비어 있으면 주황, 1년 넘으면 빨강입니다.</p>
+  <div class="tablebox"><table id="staleTable"></table></div>
+</section>
+
+<section>
+  <h2>최근 글</h2>
+  <p class="h2note">가장 최근 발행한 10건입니다.</p>
+  <div class="tablebox"><table id="recentTable"></table></div>
+</section>
+
+<section>
+  <h2>읽는 법</h2>
+  <p class="note"><b>이 페이지는 어떻게 갱신되나요?</b> 글 데이터는 사이트가 새 글을 발행할 때마다 자동으로 갱신되는 <code>posts.json</code>을 그대로 읽습니다. 따로 수집 작업이 돌지 않아도 항상 최신입니다.</p>
+  <p class="note"><b>방문자 수는 왜 없나요?</b> 아직 측정 도구가 연동되지 않았기 때문입니다. 위 "측정 도구 연동"이 모두 켜지면 방문자·유입경로·인기글·검색어를 이 페이지에 붙일 수 있습니다. 데이터는 도구를 켠 시점부터 쌓이고, 그 이전 기간은 소급해서 볼 수 없습니다.</p>
+  <p class="note"><b>주소를 공유하지 마세요.</b> 이 저장소는 공개라서, 주소를 아는 사람은 누구나 이 페이지를 볼 수 있습니다. 검색에는 걸리지 않도록 막아 두었지만 주소 자체가 유일한 자물쇠입니다.</p>
+</section>
+
+<footer>
+  Simplifier 내부용 대시보드 · 검색엔진 비노출(noindex) · 사이트 메뉴에 링크되어 있지 않습니다.
+</footer>
+
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* 연동이 끝나면 done:true 로 바꾸고, 필요하면 note에 ID를 적어둡니다. */
+  var INTEGRATIONS = [
+    { name:'Google Analytics 4', done:false, desc:'방문자 수, 유입 경로, 인기 글을 측정합니다.', href:'https://analytics.google.com/', link:'GA4 열기' },
+    { name:'Google Search Console', done:false, desc:'구글 검색 노출·클릭·검색어를 봅니다. 사이트 등록이 먼저 필요합니다.', href:'https://search.google.com/search-console', link:'서치콘솔 열기' },
+    { name:'네이버 서치어드바이저', done:false, desc:'네이버 검색 수집·노출을 관리합니다.', href:'https://searchadvisor.naver.com/', link:'서치어드바이저 열기' },
+    { name:'Microsoft Clarity', done:false, desc:'클릭 히트맵과 세션 녹화로 실제 행동을 봅니다.', href:'https://clarity.microsoft.com/', link:'Clarity 열기' }
+  ];
+
+  var MONTH = {Jan:1,Feb:2,Mar:3,Apr:4,May:5,Jun:6,Jul:7,Aug:8,Sep:9,Oct:10,Nov:11,Dec:12};
+
+  function parseDate(s){
+    var m = /^([A-Za-z]{3})\s+(\d{1,2})\.\s*(\d{4})$/.exec((s||'').trim());
+    if(!m || !MONTH[m[1]]) return null;
+    return new Date(+m[3], MONTH[m[1]]-1, +m[2]);
+  }
+  function fmt(d){
+    if(!d) return '—';
+    return d.getFullYear()+'.'+String(d.getMonth()+1).padStart(2,'0')+'.'+String(d.getDate()).padStart(2,'0');
+  }
+  function daysBetween(a,b){ return Math.floor((a-b)/86400000); }
+  function el(tag, cls, txt){ var e=document.createElement(tag); if(cls)e.className=cls; if(txt!=null)e.textContent=txt; return e; }
+
+  function renderIntegrations(){
+    var box = document.getElementById('integrations');
+    box.textContent='';
+    INTEGRATIONS.forEach(function(g){
+      var c = el('div','ig');
+      var top = el('div','top');
+      top.appendChild(el('span','name',g.name));
+      top.appendChild(el('span','badge '+(g.done?'on':'off'), g.done?'연동됨':'미연동'));
+      c.appendChild(top);
+      c.appendChild(el('div','desc', g.desc));
+      var a = el('a',null,g.link+' ↗');
+      a.href=g.href; a.target='_blank'; a.rel='noopener noreferrer';
+      c.appendChild(a);
+      box.appendChild(c);
+    });
+  }
+
+  function tile(label, val, unit, foot){
+    var t = el('div','tile');
+    t.appendChild(el('div','label',label));
+    var v = el('div','val'); v.textContent = val;
+    if(unit){ var u=el('span','unit',unit); v.appendChild(u); }
+    t.appendChild(v);
+    if(foot) t.appendChild(el('div','foot',foot));
+    return t;
+  }
+
+  function render(posts){
+    var today = new Date(); today.setHours(0,0,0,0);
+
+    var rows = posts.map(function(p){
+      return { title:p.title, category:p.category||'(미분류)', url:p.url, d:parseDate(p.date), raw:p.date };
+    });
+    var dated = rows.filter(function(r){ return r.d; });
+    dated.sort(function(a,b){ return b.d - a.d; });
+
+    document.getElementById('dataAsOf').textContent =
+      '글 ' + posts.length.toLocaleString() + '건 · 최신 발행 ' + fmt(dated.length?dated[0].d:null);
+
+    /* ---- KPI ---- */
+    var thisYear = today.getFullYear();
+    var inYear = dated.filter(function(r){ return r.d.getFullYear()===thisYear; }).length;
+    var last90 = dated.filter(function(r){ return daysBetween(today,r.d) <= 90; }).length;
+    var cats = {};
+    dated.forEach(function(r){ (cats[r.category] = cats[r.category] || []).push(r); });
+    var catNames = Object.keys(cats);
+    var sinceLast = dated.length ? daysBetween(today, dated[0].d) : null;
+
+    var firstDate = dated.length ? dated[dated.length-1].d : null;
+    var months = firstDate ? Math.max(1, (today.getFullYear()-firstDate.getFullYear())*12 + (today.getMonth()-firstDate.getMonth()) + 1) : 1;
+
+    var k = document.getElementById('kpis'); k.textContent='';
+    k.appendChild(tile('전체 글', posts.length.toLocaleString(), '건', firstDate ? fmt(firstDate)+' 부터' : ''));
+    k.appendChild(tile('카테고리', catNames.length, '개', '가장 많은 곳: ' + catNames.sort(function(a,b){return cats[b].length-cats[a].length;})[0]));
+    k.appendChild(tile(thisYear+'년 발행', inYear, '건', '올해 누적'));
+    k.appendChild(tile('최근 90일', last90, '건', last90===0 ? '90일간 새 글 없음' : '약 '+(last90/13).toFixed(1)+'건/주'));
+    /* 예약 발행 등으로 최신 글이 미래 날짜면 음수가 나오므로 0으로 묶습니다. */
+    k.appendChild(tile('마지막 발행', sinceLast===null?'—':Math.max(0,sinceLast), '일 전', dated.length?fmt(dated[0].d):''));
+    k.appendChild(tile('월 평균', (dated.length/months).toFixed(1), '건', '전체 기간 기준'));
+
+    /* ---- monthly bars (last 24) ---- */
+    var buckets = {};
+    dated.forEach(function(r){
+      var key = r.d.getFullYear()+'-'+String(r.d.getMonth()+1).padStart(2,'0');
+      buckets[key] = (buckets[key]||0)+1;
+    });
+    var series = [];
+    var cur = new Date(today.getFullYear(), today.getMonth(), 1);
+    for(var i=23;i>=0;i--){
+      var dt = new Date(cur.getFullYear(), cur.getMonth()-i, 1);
+      var key = dt.getFullYear()+'-'+String(dt.getMonth()+1).padStart(2,'0');
+      series.push({ key:key, label:(dt.getMonth()+1)+'월', year:dt.getFullYear(), n:buckets[key]||0 });
+    }
+    var max = Math.max.apply(null, series.map(function(s){return s.n;})) || 1;
+    var barsEl = document.getElementById('bars'), xEl = document.getElementById('xaxis');
+    barsEl.textContent=''; xEl.textContent='';
+    series.forEach(function(s){
+      var b = el('div','bar');
+      b.title = s.year+'년 '+s.label+' · '+s.n+'건';
+      b.appendChild(el('div','n', s.n ? String(s.n) : ''));
+      var f = el('div','fill'); f.style.height = Math.round((s.n/max)*130)+'px';
+      b.appendChild(f);
+      barsEl.appendChild(b);
+      xEl.appendChild(el('span',null, s.label==='1월' ? String(s.year).slice(2)+"'1월" : s.label));
+    });
+
+    /* ---- category distribution ---- */
+    var cbox = document.getElementById('cats'); cbox.textContent='';
+    var maxCat = Math.max.apply(null, catNames.map(function(c){return cats[c].length;}));
+    catNames.forEach(function(c){
+      var n = cats[c].length;
+      var row = el('div','catrow');
+      row.appendChild(el('div','nm', c));
+      var tr = el('div','track'); var fill=el('i'); fill.style.width = Math.round((n/maxCat)*100)+'%';
+      tr.appendChild(fill); row.appendChild(tr);
+      row.appendChild(el('div','ct', n+'건 · '+Math.round(n/dated.length*100)+'%'));
+      cbox.appendChild(row);
+    });
+
+    /* ---- staleness table ---- */
+    var stale = catNames.map(function(c){
+      var latest = cats[c].reduce(function(a,b){ return a.d>b.d?a:b; });
+      return { cat:c, n:cats[c].length, last:latest.d, days:daysBetween(today, latest.d) };
+    }).sort(function(a,b){ return b.days - a.days; });
+
+    var st = document.getElementById('staleTable'); st.textContent='';
+    var thead = el('thead'), htr = el('tr');
+    ['카테고리','글 수','마지막 발행','경과'].forEach(function(h,i){
+      var th = el('th',null,h); if(i>0) th.style.textAlign = i===1?'right':'left'; htr.appendChild(th);
+    });
+    thead.appendChild(htr); st.appendChild(thead);
+    var tb = el('tbody');
+    stale.forEach(function(s){
+      var tr = el('tr');
+      tr.appendChild(el('td',null,s.cat));
+      tr.appendChild(el('td','num',String(s.n)));
+      tr.appendChild(el('td',null,fmt(s.last)));
+      var cls = s.days>365 ? 'stale-bad' : (s.days>180 ? 'stale-warn' : 'stale-ok');
+      var td = el('td',cls, s.days+'일');
+      tr.appendChild(td);
+      tb.appendChild(tr);
+    });
+    st.appendChild(tb);
+
+    /* ---- recent ---- */
+    var rt = document.getElementById('recentTable'); rt.textContent='';
+    var rhead = el('thead'), rtr = el('tr');
+    ['발행일','카테고리','제목'].forEach(function(h){ rtr.appendChild(el('th',null,h)); });
+    rhead.appendChild(rtr); rt.appendChild(rhead);
+    var rtb = el('tbody');
+    dated.slice(0,10).forEach(function(r){
+      var tr = el('tr');
+      tr.appendChild(el('td',null,fmt(r.d)));
+      tr.appendChild(el('td',null,r.category));
+      var td = el('td','ttl');
+      if(r.url){ var a=el('a',null,r.title); a.href=r.url; a.target='_blank'; a.rel='noopener'; td.appendChild(a); }
+      else td.textContent = r.title;
+      tr.appendChild(td);
+      rtb.appendChild(tr);
+    });
+    rt.appendChild(rtb);
+  }
+
+  function load(){
+    document.getElementById('dataAsOf').textContent = '데이터 불러오는 중…';
+    fetch('/assets/data/posts.json?t=' + Date.now(), { cache:'no-store' })
+      .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
+      .then(function(d){ render(Array.isArray(d) ? d : (d.posts||[])); })
+      .catch(function(e){
+        document.getElementById('dataAsOf').textContent = '불러오기 실패';
+        var k = document.getElementById('kpis'); k.textContent='';
+        k.appendChild(el('div','err','글 데이터를 불러오지 못했습니다 ('+e.message+'). /assets/data/posts.json 이 있는지 확인하세요.'));
+      });
+  }
+
+  renderIntegrations();
+  document.getElementById('refreshBtn').addEventListener('click', load);
+  load();
+})();
+</script>
+</body>
+</html>
