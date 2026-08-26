@@ -107,17 +107,18 @@
         .index-mode .cover-bottom-left { text-align: left; position: relative; }
         .index-mode .cover-title { font-family: 'Noto Serif KR', serif; font-size: 32px; font-weight: 200; margin: 0; line-height: 1.2; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
 
-        .cover-wrap.post-mode { position: fixed; top: 0; left: 0; height: 100vh; padding: 40px; overflow: hidden; }
-        /* 제목은 본문과 같은 700px 중앙 컬럼에 맞춥니다(브런치 동일). */
-        .post-mode .cover-bottom-left { position: absolute; bottom: 120px; left: 50%; transform: translateX(-50%); width: 700px; max-width: calc(100% - 80px); text-align: left; }
+        /* 커버는 일반 흐름에 두고, 스크롤에 따라 아래 JS가 높이를 줄이고 제목을 페이드아웃시킵니다.
+           (position:fixed로 고정해 두면 커버가 줄지 않고 본문이 그 위를 덮는 형태가 됩니다.) */
+        .cover-wrap.post-mode { height: 100vh; padding: 40px; overflow: hidden; }
+        .post-mode .cover-bottom-left { position: absolute; bottom: 120px; left: 40px; padding-right: 80px; text-align: left; transition: opacity 0.05s ease-out; }
         .post-mode .cover-title { font-family: 'Noto Serif KR', serif; font-size: 42px; font-weight: 200; margin: 0; line-height: 1.35; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
         .post-mode .cover-sub { font-size: 14px; font-weight: 300; opacity: 0.8; font-style: italic; margin-top: 16px; text-shadow: 0 1px 5px rgba(0,0,0,0.5); }
 
         /* 2. 포스트 본문 영역 */
         .article-body { max-width: 1100px; margin: 0 auto; padding: 40px 20px 40px; background-color: #fff; position: relative; }
-        /* 브런치처럼 본문 시트는 화면 전체 폭(흰 배경)이고, 글은 그 안의 700px 중앙 컬럼에 들어갑니다.
-           max-width로 폭을 잡으면 시트 자체가 좁아져 고정 커버 위에 뜬 박스처럼 보입니다. */
-        .post-mode + .article-body { box-sizing: border-box; width: 100%; max-width: none; padding-left: max(20px, calc((100% - 700px) / 2)); padding-right: max(20px, calc((100% - 700px) / 2)); padding-top: 60px; padding-bottom: 60px !important; margin-top: 100vh; }
+        /* 본문 시트는 화면 전체 폭(흰 배경)이고, 글은 그 안의 700px 중앙 컬럼에 들어갑니다.
+           max-width로 폭을 잡으면 시트 자체가 좁아져 커버 위에 뜬 박스처럼 보입니다. */
+        .post-mode + .article-body { box-sizing: border-box; width: 100%; max-width: none; padding-left: max(20px, calc((100% - 700px) / 2)); padding-right: max(20px, calc((100% - 700px) / 2)); padding-top: 60px; padding-bottom: 60px !important; }
         .article-body p { font-size: 15px; font-weight: 400; line-height: 2; letter-spacing: 0.8px; margin-bottom: 30px; }
         @media (max-width: 600px) {
             .article-body p { font-size: 17px; letter-spacing: 0.3px; }
@@ -438,6 +439,27 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
+        // 포스트 커버: 스크롤에 따라 커버 높이를 줄이고 제목을 페이드아웃시킵니다.
+        // 커버가 1.8배 속도로 접히면서 그 아래 본문이 따라 올라오는 연출입니다.
+        const coverWrap = document.getElementById('coverWrap');
+        const coverTitleBox = document.getElementById('coverTitleBox');
+
+        if (coverWrap && coverWrap.classList.contains('post-mode')) {
+            const initialHeight = window.innerHeight;
+            const minHeight = 0;
+
+            window.addEventListener('scroll', function() {
+                const scrolled = window.scrollY;
+                if (scrolled <= initialHeight) {
+                    const newHeight = Math.max(minHeight, initialHeight - scrolled * 1.8);
+                    const opacity = Math.max(0, 1 - (scrolled / (initialHeight * 0.3)));
+
+                    coverWrap.style.height = newHeight + 'px';
+                    if (coverTitleBox) coverTitleBox.style.opacity = opacity;
+                }
+            }, { passive: true });
+        }
+
         if (articleBody) {
             const coverImg = articleBody.querySelector('img[alt="대표 이미지"]');
             if (coverImg) coverImg.classList.add('hidden-element');
