@@ -73,6 +73,31 @@
 
   if (!overlay) return;
 
+  /* ── 전환 측정 ──────────────────────────────────────────────
+     문의는 모달 안에서 AJAX로 전송돼 페이지 이동이 없습니다. 그래서 아무것도
+     심지 않으면 GA4는 이 사이트의 유일한 목표 행동(문의)을 볼 수 없습니다.
+     아래 track()이 GA4 이벤트와 Clarity 태그를 함께 남깁니다.
+     - GA4  : contact_open(관심) / generate_lead(전환) / contact_error(실패)
+              generate_lead는 GA4 표준 리드 이벤트명이라 전환으로 바로 잡힙니다.
+     - Clarity: 세션 녹화를 "문의한 사람"으로 필터링해 볼 수 있게 태그를 답니다.
+     둘 중 하나가 없거나 광고차단으로 막혀도 문의 전송 자체는 영향받지 않도록
+     전부 try/catch로 감쌉니다. */
+  function track(eventName, clarityValue) {
+    try {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', eventName, {
+          page_path: location.pathname,
+          page_title: document.title
+        });
+      }
+    } catch (e) {}
+    try {
+      if (clarityValue && typeof window.clarity === 'function') {
+        window.clarity('set', 'contact', clarityValue);
+      }
+    } catch (e) {}
+  }
+
   function showToast(message) {
     if(!toast) return;
     clearTimeout(toastTimer);
@@ -82,6 +107,7 @@
   }
 
   function openModal() {
+    track('contact_open', 'opened');
     overlay.classList.add('show');
     document.body.style.overflow = 'hidden';
     var first = document.getElementById('cf-phone');
@@ -113,10 +139,18 @@
         method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(data)
       })
       .then(function (res) {
-        if (res.ok) { form.reset(); closeModal(); showToast('문의가 정상적으로 접수되었습니다.'); } 
-        else { showToast('전송에 실패했습니다. 잠시 후 다시 시도해주세요.'); }
+        if (res.ok) {
+          track('generate_lead', 'submitted');   /* ← 이 사이트의 핵심 전환 */
+          form.reset(); closeModal(); showToast('문의가 정상적으로 접수되었습니다.');
+        } else {
+          track('contact_error', 'failed');
+          showToast('전송에 실패했습니다. 잠시 후 다시 시도해주세요.');
+        }
       })
-      .catch(function () { showToast('전송에 실패했습니다. 잠시 후 다시 시도해주세요.'); })
+      .catch(function () {
+        track('contact_error', 'failed');
+        showToast('전송에 실패했습니다. 잠시 후 다시 시도해주세요.');
+      })
       .finally(function () { submitBtn.disabled = false; });
     });
   }

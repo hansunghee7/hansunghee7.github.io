@@ -38,6 +38,37 @@
 </script>
 {%- endif %}
 
+{%- if GA4_ID != "" %}
+<!-- 사이트를 떠나는 클릭 측정.
+     이 사이트의 목표는 문의(generate_lead)지만, 책·클래스 판매 페이지로 나가는
+     클릭도 구매 의향 신호라 따로 잡습니다. 링크에 직접 손대지 않고 문서 전체에서
+     한 번만 위임 처리하므로, 나중에 링크가 늘어도 수정할 필요가 없습니다. -->
+<script>
+(function(){
+  var COMMERCE = /(yes24|kyobobook|aladin|classu|class101|coupang)\./i;
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if(!a) return;
+    var href = a.getAttribute('href') || '';
+    if(!/^https?:\/\//i.test(href)) return;              /* 사이트 내부 링크는 제외 */
+    var host;
+    try { host = new URL(href, location.href).hostname; } catch(err){ return; }
+    if(host === location.hostname) return;
+    try {
+      if(typeof window.gtag !== 'function') return;
+      var isBuy = COMMERCE.test(host);
+      window.gtag('event', isBuy ? 'book_class_click' : 'outbound_click', {
+        link_domain: host,
+        link_url: href,
+        link_text: (a.innerText || '').trim().slice(0, 60),
+        page_path: location.pathname
+      });
+    } catch(err){}
+  }, true);
+})();
+</script>
+{%- endif %}
+
 {%- if CLARITY_ID != "" %}
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
