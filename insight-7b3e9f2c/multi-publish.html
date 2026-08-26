@@ -103,7 +103,7 @@
   <div class="shell-title">Simplifier Studio</div>
   <a href="/insight-7b3e9f2c/">사이트 인사이트</a>
   <a href="/insight-7b3e9f2c/multi-publish.html" class="active">멀티 퍼블리싱</a>
-  <a href="/admin/">글쓰기</a>
+  <a href="/insight-7b3e9f2c/write.html">글쓰기</a>
 </nav>
 
 <div class="wrap">
@@ -292,9 +292,10 @@
     els.downloadImgBtn.href = els.postImg.src;
     els.downloadImgBtn.setAttribute("download", (fm.title || post.title) + "_cover" + guessExt(els.postImg.src));
     els.openPostBtn.href = post.url;
-    // 정확한 CMS 편집 화면 딥링크는 슬러그 규칙이 글마다 달라 신뢰하기 어려워,
-    // 검색해서 바로 찾을 수 있게 컬렉션 목록으로 보냅니다.
-    els.openCmsBtn.href = "/admin/#/collections/posts";
+    // 정확한 글 편집 화면 딥링크는 슬러그 규칙이 글마다 달라 신뢰하기 어려워,
+    // 검색해서 바로 찾을 수 있게 컬렉션 목록으로 보냅니다. write.html이
+    // 이 해시를 읽어서 안의 iframe(/admin/)에 그대로 넘겨줍니다.
+    els.openCmsBtn.href = "/insight-7b3e9f2c/write.html#/collections/posts";
 
     currentTitle = fm.title || post.title;
     currentBody = body;
