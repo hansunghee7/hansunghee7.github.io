@@ -63,6 +63,6 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/154_%EB%86%93%EC%B9%98%EB%A9%B4%20%ED%9B%84%ED%9A%8C%ED%95%A0%20%EA%B1%B0%EC%95%BC%20%20FOMO%20UX.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">놓치면 후회할 거야!  FOMO UX</span></a>
-  <a href="/log_assets/markdown/169_%27%EA%B2%B0%EC%A0%9C%ED%95%98%EA%B8%B0%27%20%EB%B2%84%ED%8A%BC%20%ED%95%98%EB%82%98%EB%A1%9C%20%EB%A7%A4%EC%B6%9C%EC%9D%84%20%EB%86%92%EC%9D%B4%EB%8A%94%20UX.html" class="cat-nav-item cat-nav-right"><span class="nav-title">결제하기' 버튼 하나로 매출을 높이는 UX</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/176_%EC%83%89%EC%83%81%EC%9D%98%20%EC%8B%AC%EB%A6%AC%ED%95%99%2C%20UX%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%98%20%EC%88%A8%EC%9D%80%20%EB%AC%B4%EA%B8%B0.html" class="cat-nav-item cat-nav-right"><span class="nav-title">색상의 심리학, UX 디자인의 숨은 무기</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->
