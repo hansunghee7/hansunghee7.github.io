@@ -57,8 +57,8 @@
   details.dsec:last-of-type{border-bottom:none;}
   details.dsec summary{cursor:pointer; list-style:none; display:flex; align-items:baseline; gap:8px;}
   details.dsec summary::-webkit-details-marker{display:none;}
-  details.dsec summary::before{content:'▸'; color:var(--muted); font-size:11px; transition:transform .15s; flex:none; transform:translateY(-1px);}
-  details.dsec[open] summary::before{transform:rotate(90deg) translateX(1px);}
+  details.dsec summary .dsec-grip::after{content:'▸'; display:inline-block; margin-left:8px; color:var(--muted); font-size:11px; transition:transform .15s; transform:translateY(-1px);}
+  details.dsec[open] summary .dsec-grip::after{transform:rotate(90deg) translateX(1px);}
   details.dsec summary h2{margin:0;}
   details.dsec .dsec-body{padding-top:16px;}
   details.dsec summary:hover h2{color:var(--ink);}
