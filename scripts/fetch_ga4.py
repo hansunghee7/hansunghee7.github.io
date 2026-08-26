@@ -25,6 +25,8 @@ from google.analytics.data_v1beta import BetaAnalyticsDataClient
 from google.analytics.data_v1beta.types import (
     DateRange,
     Dimension,
+    Filter,
+    FilterExpression,
     Metric,
     RunReportRequest,
 )
@@ -85,19 +87,51 @@ def fetch_totals(client, property_id):
 
 
 def fetch_daily(client, property_id):
+    """AARRR 상단 KPI(최초방문→재방문→문의)의 앞 두 단계용 일별 시계열.
+    activeUsers - newUsers = 그날의 재방문자. 음수 방지로 0 하한."""
     resp = run_report(
         client, property_id,
         date_ranges=[DateRange(start_date="30daysAgo", end_date="today")],
         dimensions=[Dimension(name="date")],
-        metrics=[Metric(name="sessions"), Metric(name="activeUsers")],
+        metrics=[Metric(name="sessions"), Metric(name="activeUsers"), Metric(name="newUsers")],
     )
     rows = []
     for r in resp.rows:
         d = r.dimension_values[0].value  # YYYYMMDD
+        active = int(r.metric_values[1].value)
+        new = int(r.metric_values[2].value)
         rows.append({
             "date": f"{d[0:4]}-{d[4:6]}-{d[6:8]}",
             "sessions": int(r.metric_values[0].value),
-            "activeUsers": int(r.metric_values[1].value),
+            "activeUsers": active,
+            "newUsers": new,
+            "returningUsers": max(active - new, 0),
+        })
+    rows.sort(key=lambda x: x["date"])
+    return rows
+
+
+def fetch_daily_event(client, property_id, event_name):
+    """AARRR 상단 KPI의 마지막 단계(문의)용 일별 이벤트 발생 횟수.
+    eventName 차원에 필터를 걸어 해당 이벤트만 날짜별로 집계한다."""
+    resp = run_report(
+        client, property_id,
+        date_ranges=[DateRange(start_date="30daysAgo", end_date="today")],
+        dimensions=[Dimension(name="date")],
+        metrics=[Metric(name="eventCount")],
+        dimension_filter=FilterExpression(
+            filter=Filter(
+                field_name="eventName",
+                string_filter=Filter.StringFilter(value=event_name),
+            )
+        ),
+    )
+    rows = []
+    for r in resp.rows:
+        d = r.dimension_values[0].value
+        rows.append({
+            "date": f"{d[0:4]}-{d[4:6]}-{d[6:8]}",
+            "count": int(r.metric_values[0].value),
         })
     rows.sort(key=lambda x: x["date"])
     return rows
@@ -154,6 +188,7 @@ def main():
         "range": "last_30_days",
         "totals": fetch_totals(client, property_id),
         "daily": fetch_daily(client, property_id),
+        "daily_leads": fetch_daily_event(client, property_id, "generate_lead"),
         "top_sources": top_sources,
         "ai_referrals": ai_referrals,
         "engagement_events": fetch_engagement_events(client, property_id),
