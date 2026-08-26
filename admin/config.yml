@@ -71,9 +71,13 @@ collections:
       - name: "date"
         label: "발행일"
         widget: "datetime"
-        format: "YYYY-MM-DD"
-        date_format: "YYYY-MM-DD"
-        time_format: false
+        # Sveltia에서는 time_format: false가 "type: date"와 완전히 같은 뜻이라
+        # 시/분 선택 자체가 화면에서 사라졌습니다(문서에 명시됨). type을 직접
+        # datetime-local로 지정해서 날짜+시간을 다 받게 하고, 저장 형식은
+        # 공식 권장대로 커스텀 포맷 없이 ISO 8601 그대로 둡니다(파이프라인은
+        # 앞 10글자 YYYY-MM-DD만 읽어서 date_string을 만들기 때문에 시간이
+        # 붙어도 문제없습니다).
+        type: "datetime-local"
         picker_utc: true
 
       - name: "date_string"

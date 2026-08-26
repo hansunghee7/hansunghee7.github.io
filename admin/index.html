@@ -116,15 +116,28 @@
             : this.state.status === "failed"
             ? "복사 실패 — 직접 선택해서 복사해주세요"
             : "📋 제목+본문 프롬프트 복사";
+        // 바깥 div에 레이아웃을 명시적으로 지정합니다. Sveltia의 필드 줄은
+        // 보통 입력창 하나가 그 줄 전체를 차지하는 걸 전제로 높이를 잡는데,
+        // 우리는 입력창+버튼 두 개를 넣다 보니 아무 스타일도 안 주면 그
+        // 자리가 안 넓어지고 아래 힌트 문구·다음 필드 라벨과 겹쳐 보였습니다.
         return h(
           "div",
-          {},
+          {
+            style: {
+              position: "relative",
+              display: "flex",
+              flexDirection: "column",
+              gap: "6px",
+              width: "100%",
+            },
+          },
           h("input", {
             id: this.props.forID,
             className: this.props.classNameWrapper,
             type: "text",
             value: this.props.value || "",
             onChange: this.handleTextChange,
+            style: { width: "100%", boxSizing: "border-box" },
           }),
           h(
             "button",
@@ -132,13 +145,15 @@
               type: "button",
               onClick: this.handleCopy,
               style: {
-                marginTop: "6px",
+                alignSelf: "flex-start",
                 padding: "5px 10px",
                 fontSize: "12px",
+                lineHeight: "1.4",
                 cursor: "pointer",
                 border: "1px solid #ccc",
                 borderRadius: "4px",
                 background: this.state.status === "idle" ? "#f5f5f5" : "#e6f7e6",
+                color: "#111",
               },
             },
             label
