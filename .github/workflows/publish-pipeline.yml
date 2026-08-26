@@ -55,11 +55,15 @@ jobs:
       - name: Refresh thumbnail mapping + posts.json
         run: python fix_thumb_mapping.py
 
+      # posts.json이 갱신된 뒤에 돌아야 발행 목록을 기준으로 맞출 수 있습니다.
+      - name: Sync sitemap.xml + drop any un-published posts
+        run: python scripts/sync_sitemap_and_drafts.py
+
       - name: Commit changes if any
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add log_assets/markdown log.html assets/data/posts.json
+          git add log_assets/markdown log.html assets/data/posts.json sitemap.xml
           if git diff --cached --quiet; then
             echo "no changes to commit"
           else
