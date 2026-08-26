@@ -80,8 +80,6 @@
      서비스 페이지가 생기면 그 페이지 조회가 더 깨끗한 신호가 되므로 이 지표들은 보조로 내려갑니다. -->
 <script>
 (function(){
-  if (!('IntersectionObserver' in window)) return;
-
   /* 이 include는 <head>에서 실행됩니다. 그 시점엔 <body>가 없어서 querySelector가
      전부 null이 되므로, DOM이 준비된 뒤에 붙여야 합니다.
      (아래 FAQ 클릭은 document 위임이라 예외지만, 함께 묶어 둡니다.) */
@@ -105,20 +103,38 @@
     ['book_class', '.overlay-card'],
     ['faq',        '.faq-section']
   ];
+  /* 도달 판정은 스크롤 위치로 직접 계산합니다.
+     IntersectionObserver를 쓰지 않는 이유: 화면보다 큰 섹션에서는 비율 임계값이
+     직관과 다르게 동작하고, 렌더링이 멈춘 환경에서는 콜백 자체가 돌지 않아
+     동작을 확인할 수가 없습니다. 스크롤 계산은 어디서나 결과가 같습니다.
+     기준: 섹션 상단이 화면 높이의 75% 지점까지 올라오면 "봤다"로 봅니다. */
   ready(function(){
-    SECTIONS.forEach(function(pair){
-      var elm = document.querySelector(pair[1]);
-      if (!elm) return;
-      /* 화면보다 큰 섹션은 40%가 절대 안 채워지므로, 뷰포트 기준으로도 판정합니다. */
-      var io = new IntersectionObserver(function(entries){
-        entries.forEach(function(en){
-          if (!en.isIntersecting) return;
-          send('section_view_' + pair[0], { section: pair[0], page_path: location.pathname });
-          io.disconnect();
-        });
-      }, { threshold: [0, 0.25], rootMargin: '0px 0px -25% 0px' });
-      io.observe(elm);
-    });
+    var targets = SECTIONS.map(function(pair){
+      return { key: pair[0], el: document.querySelector(pair[1]) };
+    }).filter(function(t){ return t.el; });
+    if (!targets.length) return;
+
+    var ticking = false;
+    function check(){
+      ticking = false;
+      var line = window.innerHeight * 0.75;
+      targets = targets.filter(function(t){
+        var r = t.el.getBoundingClientRect();
+        if (r.height > 0 && r.top < line && r.bottom > 0) {
+          send('section_view_' + t.key, { section: t.key, page_path: location.pathname });
+          return false;          /* 한 번 보내면 목록에서 제거 */
+        }
+        return true;
+      });
+      if (!targets.length) window.removeEventListener('scroll', onScroll);
+    }
+    function onScroll(){
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame ? requestAnimationFrame(check) : setTimeout(check, 100);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    check();   /* 로드 시점에 이미 보이는 섹션도 잡습니다 */
   });
 
   /* FAQ 를 펼치는 건 절차를 읽고 있다는 뜻이라 따로 봅니다. */
