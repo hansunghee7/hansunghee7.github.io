@@ -6,44 +6,47 @@
   <meta name="robots" content="noindex" />
   <title>글쓰기 - Simplifier</title>
   <link rel="icon" href="data:," />
+  <script>
+    // Sveltia는 스크립트를 읽는 즉시 스스로 초기화하면서 화면을 점유합니다.
+    // 그러면 그 뒤에 오는 우리 스크립트(커스텀 버튼 등록)가 실행될 기회를
+    // 잃어버립니다. 그래서 자동 초기화를 꺼두고, 아래에서 버튼을 먼저 등록한
+    // 다음 CMS.init()을 직접 호출합니다. (공식 문서의 CMS_MANUAL_INIT 방식)
+    window.CMS_MANUAL_INIT = true;
+  </script>
+  <style>
+    /* 예전 화면(Decap)으로 돌아가는 링크. 평소엔 조용히 있다가,
+       문제가 생겼을 때 찾기 쉽도록 우측 하단에 작게 둡니다. */
+    #legacy-link {
+      position: fixed;
+      right: 8px;
+      bottom: 8px;
+      z-index: 2147483647;
+      background: #f5f5f5;
+      color: #444;
+      font: 12px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      padding: 6px 10px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      text-decoration: none;
+      opacity: 0.85;
+    }
+    #legacy-link:hover { opacity: 1; }
+  </style>
 </head>
 <body>
-  <!-- Decap CMS (구 Netlify CMS): 깃허브 저장소에 직접 커밋하는 방식의 CMS.
-       별도 서버/DB 없이 이 저장소의 log_assets/markdown/*.md 파일을 브라우저에서
-       쓰고 고치게 해줍니다. 로그인은 GitHub OAuth App + 프록시가 필요합니다
-       (admin/README.md 참고). -->
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <!-- Sveltia CMS — 심플리파이어 글쓰기 화면 (2026-08-26부터 여기가 메인).
+       예전에 쓰던 Decap CMS는 /admin-legacy/ 에 그대로 남아있습니다.
+       버전을 ^0.200.0으로 묶어둔 이유: Sveltia는 아직 0.x라 릴리스가 잦아서,
+       예고 없이 화면/동작이 바뀌지 않게 하기 위함입니다. 버전을 올릴 땐
+       admin-legacy에서 먼저 새 화면이 잘 동작하는지 확인 후 옮기세요. -->
+  <script src="https://unpkg.com/@sveltia/cms@^0.200.0/dist/sveltia-cms.js"></script>
   <script>
-    // AIO(키워드/주제어) 칸 옆에 붙는 복사 버튼. 본문을 다 쓴 뒤 누르면
-    // 제목+본문을 프롬프트 형태로 클립보드에 복사해서 Claude/ChatGPT에
-    // 붙여넣어 키워드를 받아올 수 있게 해준다.
+    // AIO 키워드 칸에 붙는 "제목+본문 프롬프트 복사" 버튼 (Sveltia 판).
     //
-    // 위젯 Control은 다른 필드 값을 공식적으로 읽을 수 없어서(Decap CMS
-    // 문서상 Control props에는 entry가 없음), 같은 화면(iframe이 아닌
-    // 왼쪽 편집 폼)에 실제로 렌더링된 제목/본문 입력창을 라벨 텍스트로
-    // 찾아 값을 읽어온다. 못 찾으면 조용히 틀린 값을 복사하는 대신
-    // 실패했다고 알려준다.
-    function findByLabelText(labelText) {
-      var labels = document.querySelectorAll("label");
-      for (var i = 0; i < labels.length; i++) {
-        if (labels[i].textContent.trim().indexOf(labelText) === 0) {
-          var container = labels[i].parentElement;
-          for (var hops = 0; hops < 4 && container; hops++) {
-            var codeMirrorEl = container.querySelector(".CodeMirror");
-            if (codeMirrorEl && codeMirrorEl.CodeMirror) {
-              return codeMirrorEl.CodeMirror.getValue();
-            }
-            var editable = container.querySelector("[contenteditable='true']");
-            if (editable) return editable.innerText || "";
-            var input = container.querySelector("input, textarea");
-            if (input) return input.value || "";
-            container = container.parentElement;
-          }
-        }
-      }
-      return null;
-    }
-
+    // Decap판과 같은 기능이지만 훨씬 단단합니다. Decap은 커스텀 위젯에 글 전체
+    // 데이터를 안 넘겨줘서 화면에 그려진 입력칸을 라벨 텍스트로 뒤져 값을
+    // 읽어와야 했는데, Sveltia는 control에 entry prop을 넘겨주기 때문에
+    // 제목/본문을 정식 경로로 바로 꺼낼 수 있습니다.
     function copyTextToClipboard(text, onDone) {
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).then(
@@ -76,11 +79,15 @@
       handleTextChange: function (e) {
         this.props.onChange(e.target.value);
       },
+      reset: function () {
+        this.setState({ status: "idle" });
+      },
       handleCopy: function () {
-        var title = findByLabelText("제목");
-        var body = findByLabelText("본문");
+        var entry = this.props.entry;
+        var title = (entry && entry.getIn(["data", "title"])) || "";
+        var body = (entry && entry.getIn(["data", "body"])) || "";
         if (!body) {
-          this.setState({ status: "notfound" });
+          this.setState({ status: "empty" });
           setTimeout(this.reset, 3000);
           return;
         }
@@ -89,7 +96,7 @@
           "1) SEO 키워드 5~8개 (쉼표로 구분된 한 줄)",
           "2) 이 글의 핵심 주제를 나타내는 5~10단어 이내의 짧은 문구",
           "",
-          "제목: " + (title || ""),
+          "제목: " + title,
           "",
           "본문:",
           body,
@@ -100,15 +107,12 @@
           setTimeout(self.reset, 3000);
         });
       },
-      reset: function () {
-        this.setState({ status: "idle" });
-      },
       render: function () {
         var label =
           this.state.status === "copied"
             ? "복사 완료! Claude/ChatGPT에 붙여넣으세요"
-            : this.state.status === "notfound"
-            ? "본문을 찾지 못했어요 — 직접 복사해주세요"
+            : this.state.status === "empty"
+            ? "본문을 먼저 써주세요"
             : this.state.status === "failed"
             ? "복사 실패 — 직접 선택해서 복사해주세요"
             : "📋 제목+본문 프롬프트 복사";
@@ -151,116 +155,9 @@
 
     CMS.registerWidget("aio-copy-assist", AioCopyControl, AioCopyPreview);
 
-    // 본문 위에 작은 버튼 4개를 붙여서, 누르면 본문/LinkedIn·Threads/
-    // Instagram/수동발행 중 하나만 보이고 나머지는 숨겨지게 한다 (DOM을
-    // 옮기지 않고 각 필드 컨테이너의 display만 토글 -- React가 관리하는
-    // 노드를 직접 이동시키면 위험하므로 안전한 방식만 사용).
-    // Decap은 화면 전환마다 폼을 새로 그리므로, 주기적으로 다시 확인해서
-    // 없어졌으면 다시 붙인다.
-    var CONTENT_TABS = [
-      { key: "본문", find: "본문" },
-      { key: "LinkedIn·Threads", find: "LinkedIn / Threads용 요약" },
-      { key: "Instagram", find: "Instagram 캡션" },
-      { key: "수동발행", find: "수동 발행 채널용 복사 텍스트" },
-    ];
-
-    function findFieldContainer(labelText) {
-      var labels = document.querySelectorAll("label");
-      for (var i = 0; i < labels.length; i++) {
-        if (labels[i].textContent.trim().indexOf(labelText) === 0) {
-          return labels[i].parentElement;
-        }
-      }
-      return null;
-    }
-
-    function setupContentTabs() {
-      if (document.getElementById("content-tab-bar")) return;
-
-      var containers = {};
-      var allFound = true;
-      CONTENT_TABS.forEach(function (t) {
-        var c = findFieldContainer(t.find);
-        if (!c) allFound = false;
-        containers[t.key] = c;
-      });
-      if (!allFound) return;
-
-      var bar = document.createElement("div");
-      bar.id = "content-tab-bar";
-      bar.style.cssText = "display:flex;gap:6px;margin:4px 0 10px;flex-wrap:wrap;";
-
-      var lastBodyRect = null;
-
-      function clearOverlayStyle(el) {
-        el.style.position = "";
-        el.style.top = "";
-        el.style.left = "";
-        el.style.width = "";
-        el.style.maxHeight = "";
-        el.style.overflow = "";
-        el.style.zIndex = "";
-        el.style.background = "";
-        el.style.border = "";
-        el.style.boxShadow = "";
-        el.style.padding = "";
-      }
-
-      function selectTab(activeKey) {
-        // 이전에 다른 필드를 "본문 자리에 겹쳐" 보여주고 있었다면 스타일 원복
-        CONTENT_TABS.forEach(function (t) {
-          if (t.key !== "본문" && containers[t.key]) clearOverlayStyle(containers[t.key]);
-        });
-
-        if (activeKey === "본문") {
-          CONTENT_TABS.forEach(function (t) {
-            if (containers[t.key]) containers[t.key].style.display = t.key === "본문" ? "" : "none";
-          });
-          // 본문이 실제 자리를 차지하고 있을 때 위치를 다시 재보 -- 다음에
-          // 다른 탭으로 바꿀 때 이 좌표에 겹쳐서 띄운다.
-          lastBodyRect = containers["본문"].getBoundingClientRect();
-        } else {
-          var rect = lastBodyRect || containers["본문"].getBoundingClientRect();
-          CONTENT_TABS.forEach(function (t) {
-            if (!containers[t.key]) return;
-            containers[t.key].style.display = t.key === activeKey ? "" : "none";
-          });
-          var target = containers[activeKey];
-          target.style.position = "fixed";
-          target.style.top = Math.max(rect.top, 8) + "px";
-          target.style.left = rect.left + "px";
-          target.style.width = rect.width + "px";
-          target.style.maxHeight = window.innerHeight - Math.max(rect.top, 8) - 16 + "px";
-          target.style.overflow = "auto";
-          target.style.zIndex = "9999";
-          target.style.background = "#fff";
-          target.style.border = "1px solid #999";
-          target.style.boxShadow = "0 4px 16px rgba(0,0,0,.2)";
-          target.style.padding = "10px";
-        }
-
-        Array.prototype.forEach.call(bar.children, function (btn, i) {
-          var isActive = CONTENT_TABS[i].key === activeKey;
-          btn.style.background = isActive ? "#dcefff" : "#f5f5f5";
-          btn.style.fontWeight = isActive ? "bold" : "normal";
-        });
-      }
-
-      CONTENT_TABS.forEach(function (t) {
-        var btn = document.createElement("button");
-        btn.type = "button";
-        btn.textContent = t.key;
-        btn.style.cssText =
-          "padding:6px 12px;font-size:13px;cursor:pointer;border:1px solid #ccc;border-radius:4px;background:#f5f5f5;";
-        btn.addEventListener("click", function () { selectTab(t.key); });
-        bar.appendChild(btn);
-      });
-
-      containers["본문"].parentElement.insertBefore(bar, containers["본문"]);
-      selectTab("본문");
-    }
-
-    setInterval(setupContentTabs, 800);
+    // 버튼 등록이 끝난 뒤에 CMS를 띄웁니다(위 CMS_MANUAL_INIT과 한 쌍).
+    CMS.init();
   </script>
+  <a id="legacy-link" href="/admin-legacy/">예전 글쓰기 화면으로</a>
 </body>
 </html>
