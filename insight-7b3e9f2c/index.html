@@ -64,9 +64,11 @@
   .kpi-card.stage-3 .mini-bars .b{background:linear-gradient(180deg,#c99a5a,#a3690f);}
   .kpi-foot{font-size:11px; color:var(--muted); margin-top:8px; line-height:1.5;}
 
-  /* 카드 1개만 남은 그리드가 auto-fit 때문에 폭 전체로 늘어나는 것 방지
-     (원래 3장이던 자리에 "지금 확인하기" 카드 1개만 남았을 때). */
-  #conversionTiles{grid-template-columns:minmax(150px,300px);}
+  /* "지금 확인하기" — 카드가 아니라 제목+링크 전부를 한 줄에 붙인 얇은 바 */
+  #conversionTiles{display:flex; align-items:center; flex-wrap:wrap; gap:6px 18px; padding:12px 18px; background:var(--card); border:1px solid var(--line); border-radius:10px; font-size:13px;}
+  #conversionTiles .ql-label{color:var(--muted); font-size:12px;}
+  #conversionTiles .ql-link{color:var(--dim); text-decoration:none;}
+  #conversionTiles .ql-link:hover{color:var(--ink);}
 
   /* ---- KPI 하위요소 (각 KPI 카드 바로 아래, 같은 열에 정렬 -- "무엇이 이 숫자를 만드나") ---- */
   .kpi-detail-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:8px;}
@@ -162,7 +164,7 @@
     2026-08-26에 <b>generate_lead</b> 이벤트를 심어서 이제부터 잡힙니다.
     <b>그 이전 기간의 문의는 소급해서 볼 수 없습니다.</b>
   </p>
-  <div class="tiles" id="conversionTiles" style="margin-top:16px"></div>
+  <div id="conversionTiles" style="margin-top:16px"></div>
 </section>
 
 <section>
@@ -339,20 +341,17 @@
       '문의(generate_lead) 측정 ' + days + '일차 (' + MEASURE_START + ' 시작, 이전 기간은 소급 불가). 최초·재방문은 GA4 자체 집계라 처음부터 정확합니다.';
 
     var box = document.getElementById('conversionTiles'); box.textContent='';
-    var t = el('div','tile');
-    t.appendChild(el('div','label','지금 확인하기'));
+    box.appendChild(el('span','ql-label','지금 확인하기'));
     var links = [
       ['GA4 실시간','https://analytics.google.com/'],
       ['Clarity 레코딩','https://clarity.microsoft.com/'],
       ['서치콘솔 실적','https://search.google.com/search-console']
     ];
     links.forEach(function(l){
-      var a = el('a',null,l[0]+' ↗');
+      var a = el('a','ql-link',l[0]+' ↗');
       a.href=l[1]; a.target='_blank'; a.rel='noopener noreferrer';
-      a.style.cssText='display:block;color:var(--dim);font-size:13px;text-decoration:none;margin-top:7px';
-      t.appendChild(a);
+      box.appendChild(a);
     });
-    box.appendChild(t);
   }
 
   /* ② 깔때기 */
