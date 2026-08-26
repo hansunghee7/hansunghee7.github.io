@@ -198,6 +198,12 @@
 </section>
 
 <section>
+  <h2>문의로 이어진 글</h2>
+  <p class="h2note">재고(586건)와 실제 성과(문의)를 잇는 연결고리 — 어떤 글이 진짜 기여하는지입니다. 방문자가 그 글에 착지한 세션에서 문의까지 이어진 경우만 셉니다.</p>
+  <div class="tablebox" id="leadPostsTable"></div>
+</section>
+
+<section>
   <h2>월별 발행 추이</h2>
   <p class="h2note">최근 24개월. 막대에 마우스를 올리면 밝아집니다.</p>
   <div class="chartbox">
@@ -522,12 +528,45 @@
     ];
     box.appendChild(kdCol('무엇이 재방문을 만드나 — 관여 신호', col2Rows, 'Clarity 레코딩', 'https://clarity.microsoft.com/'));
 
-    /* 문의 하위 -- 섭외 절차를 읽는 강한 의도 신호. */
+    /* 문의 하위 -- 섭외 절차를 읽는 강한 의도 신호 + 모달 열림→제출 전환율.
+       열림 대비 제출이 낮으면 "관심은 있는데 폼에서 이탈한다"는 뜻이라
+       원인(항목 너무 많음 등)을 찾아야 할 신호입니다. */
+    var cf = d.contact_funnel || {};
+    var opens = cf.contact_open || 0;
+    var submits = cf.generate_lead || 0;
+    var rate = opens > 0 ? Math.round(submits/opens*100) + '%' : '—';
     var col3Rows = [
+      ['문의 모달 열림', opens],
+      ['제출 완료', submits],
+      ['제출율', rate],
       ['FAQ 펼침(절차 확인)', ev.faq_open||0],
       ['글 완독(온라인강의 신호)', ev.read_complete||0]
     ];
     box.appendChild(kdCol('무엇이 문의를 만드나 — 전환 직전 행동', col3Rows, 'GA4 실시간 이벤트', 'https://analytics.google.com/'));
+  }
+
+  /* 콘텐츠 자산(재고)과 실제 성과(문의)를 잇는 연결고리. 아직 문의가 안 쌓였으면
+     빈 상태를 "에러"가 아니라 "아직 없음"으로 조용히 보여줍니다. */
+  function renderLeadPosts(d){
+    var box = document.getElementById('leadPostsTable'); box.textContent='';
+    var rows = d.leads_by_post || [];
+    if(!rows.length){
+      box.appendChild(el('div','note','아직 문의로 이어진 글이 없습니다 (2026-08-26부터 측정 시작).'));
+      return;
+    }
+    var table = el('table');
+    var thead = el('thead'), htr = el('tr');
+    ['글 제목','문의 건수'].forEach(function(h){ htr.appendChild(el('th',null,h)); });
+    thead.appendChild(htr); table.appendChild(thead);
+    var tb = el('tbody');
+    rows.forEach(function(r){
+      var tr = el('tr');
+      tr.appendChild(el('td','ttl', r.title));
+      tr.appendChild(el('td','num', String(r.count)));
+      tb.appendChild(tr);
+    });
+    table.appendChild(tb);
+    box.appendChild(table);
   }
 
   function renderAnalytics(){
@@ -551,6 +590,7 @@
 
         renderKpiTrends(d);
         renderKpiDetails(d);
+        renderLeadPosts(d);
 
         /* 신규/재방문 총합은 위 ①의 최초방문·재방문 카드가 이미 보여주므로 여기서 반복하지 않습니다.
            여긴 트렌드 카드가 못 보여주는 것만: 세션(방문 횟수, 사람 수와 다름)과 방문자 총합. */
@@ -601,6 +641,7 @@
         document.getElementById('sourceTable').textContent='';
         document.getElementById('engagementTiles').textContent='';
         document.getElementById('kpiDetails').textContent='';
+        document.getElementById('leadPostsTable').textContent='';
       });
   }
 

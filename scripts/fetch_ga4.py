@@ -137,6 +137,77 @@ def fetch_daily_event(client, property_id, event_name):
     return rows
 
 
+def fetch_event_totals(client, property_id, event_names):
+    """지정한 이벤트들의 최근 30일 총 발생 횟수를 한 번에. 문의 퍼널(모달 열림→
+    제출→실패)처럼 여러 이벤트를 나란히 비교할 때 쓴다."""
+    resp = run_report(
+        client, property_id,
+        date_ranges=[DateRange(start_date="30daysAgo", end_date="today")],
+        dimensions=[Dimension(name="eventName")],
+        metrics=[Metric(name="eventCount")],
+        dimension_filter=FilterExpression(
+            filter=Filter(
+                field_name="eventName",
+                in_list_filter=Filter.InListFilter(values=event_names),
+            )
+        ),
+    )
+    counts = {name: 0 for name in event_names}
+    for r in resp.rows:
+        name = r.dimension_values[0].value
+        if name in counts:
+            counts[name] = int(r.metric_values[0].value)
+    return counts
+
+
+def load_post_titles():
+    """posts.json에서 URL→제목 매핑을 만든다. GA4는 랜딩페이지를 경로로만 주기
+    때문에, 어떤 글이 문의로 이어졌는지 사람이 읽을 수 있는 제목으로 보여주려면
+    필요하다. 파일이 없거나 형식이 다르면 빈 매핑으로 조용히 넘어간다."""
+    try:
+        with open("assets/data/posts.json", encoding="utf-8") as f:
+            posts = json.load(f)
+        if isinstance(posts, dict):
+            posts = posts.get("posts", [])
+        return {p.get("url", ""): p.get("title", "") for p in posts if p.get("url")}
+    except Exception:
+        return {}
+
+
+def fetch_leads_by_landing_page(client, property_id, title_map):
+    """실제로 문의(generate_lead)로 이어진 세션이 어느 페이지에 착지했었는지.
+    콘텐츠 자산(재고 586건)과 실제 성과를 잇는 연결고리 -- 어떤 글이 진짜
+    기여하는지는 지금까지 전혀 안 보였다."""
+    resp = run_report(
+        client, property_id,
+        date_ranges=[DateRange(start_date="30daysAgo", end_date="today")],
+        dimensions=[Dimension(name="landingPage")],
+        metrics=[Metric(name="eventCount")],
+        dimension_filter=FilterExpression(
+            filter=Filter(
+                field_name="eventName",
+                string_filter=Filter.StringFilter(value="generate_lead"),
+            )
+        ),
+        limit=20,
+    )
+    rows = []
+    for r in resp.rows:
+        path = r.dimension_values[0].value or ""
+        count = int(r.metric_values[0].value)
+        title = title_map.get(path)
+        if not title:
+            if path in ("/", ""):
+                title = "홈"
+            elif path.startswith("/log.html"):
+                title = "로그 목록"
+            else:
+                title = path
+        rows.append({"path": path, "title": title, "count": count})
+    rows.sort(key=lambda x: -x["count"])
+    return rows
+
+
 def fetch_landing_types(client, property_id):
     """방문자가 처음 착지하는 곳이 홈 / 로그 홈(목록) / 개별 글 중 어디인지.
     최초방문을 만드는 또 다른 축 -- GEO/AEO 유입은 홈이 아니라 특정 글로 바로
@@ -208,6 +279,7 @@ def main():
 
     client = get_client()
     top_sources, ai_referrals = fetch_sources(client, property_id)
+    title_map = load_post_titles()
 
     data = {
         "updated_at": datetime.now(timezone.utc).isoformat(),
@@ -219,6 +291,8 @@ def main():
         "top_sources": top_sources,
         "ai_referrals": ai_referrals,
         "engagement_events": fetch_engagement_events(client, property_id),
+        "contact_funnel": fetch_event_totals(client, property_id, ["contact_open", "generate_lead", "contact_error"]),
+        "leads_by_post": fetch_leads_by_landing_page(client, property_id, title_map),
     }
 
     os.makedirs(os.path.dirname(OUT_PATH), exist_ok=True)
