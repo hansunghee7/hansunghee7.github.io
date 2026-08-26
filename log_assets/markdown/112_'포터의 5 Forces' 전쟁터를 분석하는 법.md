@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
 </div>
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/120_UX%205%20Planes%2C%20%EA%B2%BD%ED%97%98%20%EC%84%A4%EA%B3%84%EC%9D%98%20%EC%A7%80%EB%8F%84.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">UX 5 Planes, 경험 설계의 지도</span></a>
-  <a href="/log_assets/markdown/104_%EA%B0%80%EC%B9%98%EC%82%AC%EC%8A%AC%20%EB%B6%84%EC%84%9D%2C%20%EB%8F%88%EC%9D%B4%20%EB%A7%8C%EB%93%A4%EC%96%B4%EC%A7%80%EB%8A%94%20%EC%A7%80%EC%A0%90%EC%9D%84%20%EC%B0%BE%EB%8A%94%20%EB%B2%95.html" class="cat-nav-item cat-nav-right"><span class="nav-title">가치사슬 분석, 돈이 만들어지는 지점을 찾는 법</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/104_%EA%B0%80%EC%B9%98%EC%82%AC%EC%8A%AC%20%EB%B6%84%EC%84%9D%2C%20%EB%8F%88%EC%9D%B4%20%EB%A7%8C%EB%93%A4%EC%96%B4%EC%A7%80%EB%8A%94%20%EC%A7%80%EC%A0%90%EC%9D%84%20%EC%B0%BE%EB%8A%94%20%EB%B2%95.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">가치사슬 분석, 돈이 만들어지는 지점을 찾는 법</span></a>
+  <a href="/log_assets/markdown/120_UX%205%20Planes%2C%20%EA%B2%BD%ED%97%98%20%EC%84%A4%EA%B3%84%EC%9D%98%20%EC%A7%80%EB%8F%84.html" class="cat-nav-item cat-nav-right"><span class="nav-title">UX 5 Planes, 경험 설계의 지도</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

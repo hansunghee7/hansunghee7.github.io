@@ -7,11 +7,28 @@ import urllib.parse
 LOG_ASSETS_DIR = "log_assets"
 MARKDOWN_DIR = os.path.join(LOG_ASSETS_DIR, "markdown")
 
-# 🎯 오름차순(연재형: 예고편 -> 1화 -> 2화)으로 순서를 엮어야 하는 카테고리 지정
-ASCENDING_CATS = ["코치S", "잉크드인대 기획학과", "잉크드인대"]
+# 🎯 예고편 -> 1화 -> 2화 순서로 회차 라벨("이전 화"/"다음 화")을 붙이고
+# CTA도 생략하는 연재 웹툰 카테고리.
+EPISODIC_CATS = ["코치S", "잉크드인대 기획학과"]
+
+# 카테고리별 기본 정렬 방향(asc=날짜순/오래된 글부터, desc=최신순).
+# log.html / index.html / concept2.html의 categoryDefaults(JS)와 반드시 동일하게
+# 유지할 것 -- 여기서 어긋나면 카드 목록에 보이는 순서와 글 하단 이전글/다음글이
+# 서로 다른 방향을 가리키게 된다.
+CATEGORY_SORT_MODE = {
+    "AI의 언어들": "asc", "Be the PO": "desc", "PO의 프레임웍": "asc", "UX의 언어들": "desc",
+    "기획일상": "desc", "기획자의 프레임웍": "asc", "대한민국 스타트업 미국진출을 묻다": "asc",
+    "스타트업 인사이트": "desc", "심플리파이어 라이프": "desc",
+    "잉크드인대 기획학과": "asc", "코치S": "asc", "토크세션": "desc",
+}
+
+
+def is_ascending_cat(cat):
+    return CATEGORY_SORT_MODE.get(cat, "desc") == "asc"
+
 
 # 💬 포스트 하단 문의 CTA -- 카테고리별로 문구/문의유형을 다르게 건다.
-# 웹툰 연재(ASCENDING_CATS)는 뷰어 UX가 따로라 CTA를 넣지 않는다.
+# 웹툰 연재(EPISODIC_CATS)는 뷰어 UX가 따로라 CTA를 넣지 않는다.
 SPEAKING_CATS = ["토크세션"]
 CTA_COACHING = (
     "비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?",
@@ -25,7 +42,7 @@ CTA_SPEAKING = (
 )
 
 def build_cta_html(cat):
-    if cat in ASCENDING_CATS:
+    if cat in EPISODIC_CATS:
         return ""
     line, label, contact_type = CTA_SPEAKING if cat in SPEAKING_CATS else CTA_COACHING
     return (
@@ -96,28 +113,26 @@ if os.path.exists(MARKDOWN_DIR):
 
     # 카테고리별 정렬 및 이전글/다음글 링크 주입
     for cat, posts in posts_by_cat.items():
-        is_ascending = (cat in ASCENDING_CATS)
-        
-        if is_ascending:
-            # 웹툰형: 예고편(0) -> 1화 -> 2화 순 오름차순 정렬
+        is_episodic = (cat in EPISODIC_CATS)
+        ascending = is_ascending_cat(cat)
+
+        if is_episodic:
+            # 웹툰형: 예고편(0) -> 1화 -> 2화 순 오름차순 정렬 (회차 역전은 없음)
             posts.sort(key=lambda x: (x['ep_num'], x['fname']))
         else:
-            # 일반 블로그형: 최신글 우선 내림차순 정렬
-            posts.sort(key=lambda x: x['fname'], reverse=True)
+            # 일반 블로그형: CATEGORY_SORT_MODE를 따라 오래된 글부터(asc) 또는
+            # 최신글부터(desc) 정렬. 파일명 ID가 3자리로 고정돼 있어 문자열
+            # 정렬이 곧 숫자(=발행 순서) 정렬과 같다.
+            posts.sort(key=lambda x: x['fname'], reverse=not ascending)
 
         for i, p in enumerate(posts):
-            # '이전글/다음글'은 절대적인 신구(新舊) 순서가 아니라, 이 카테고리를
-            # 훑어보는 자연스러운 방향을 따른다.
-            # - 연재형(오름차순: 예고편→1화→2화...): 다음 화 = posts[i+1] (더 최신 화)
-            # - 일반 블로그형(내림차순: 최신글이 목록 맨 앞, index 0 = 최신):
-            #   다음글 = posts[i+1] (목록을 계속 훑어볼 때 다음으로 만나는, 더 과거의 글)
-            #   이전글 = posts[i-1] (더 최신 글)
-            #   그래야 목록 맨 앞의 최신글을 열었을 때(i=0) '다음글'만 뜨고
-            #   '이전글'은 안 보이며, 가장 오래된 글에 도달하면(i=len-1) 반대로
-            #   '다음글'이 사라지고 '이전글'만 남는다.
-            #   (예전엔 일반 블로그형 쪽 이 두 줄이 뒤바뀌어 있어서 최신글에
-            #   '다음글' 대신 '이전글'만 뜨는 버그가 있었다. 오름차순/내림차순
-            #   둘 다 결국 "index가 커지는 방향 = 다음"으로 동일한 식이 된다.)
+            # posts는 이미 이 카테고리가 실제로 보여지는 순서(asc=오래된 글부터,
+            # desc=최신글부터)로 정렬돼 있다. '이전글' = 그 목록에서 바로 앞
+            # (index-1), '다음글' = 바로 뒤(index+1) -- 정렬 방향과 무관하게
+            # 항상 이 식 하나로 충분하다. 목록 맨 앞 글은 '이전글'이 없고,
+            # 맨 끝 글은 '다음글'이 없다.
+            # (예전엔 desc 카테고리 쪽 이 두 줄이 뒤바뀌어 있어서 최신글에
+            # '다음글' 대신 '이전글'만 뜨는 버그가 있었다.)
             prev_post = posts[i-1] if i > 0 else None
             next_post = posts[i+1] if i < len(posts)-1 else None
 
@@ -126,7 +141,7 @@ if os.path.exists(MARKDOWN_DIR):
 
             # 왼쪽 영역 (이전글 / 이전 화)
             if prev_post:
-                label = "이전 화" if is_ascending else "이전글"
+                label = "이전 화" if is_episodic else "이전글"
                 # 파일명의 '#' 등은 URL 인코딩하지 않으면 브라우저가 프래그먼트로
                 # 해석해 링크가 깨진다 (예: "...2025 #1.html" -> "...2025 " 요청 + #1 프래그먼트)
                 prev_href = urllib.parse.quote(prev_post["html_name"])
@@ -136,7 +151,7 @@ if os.path.exists(MARKDOWN_DIR):
 
             # 오른쪽 영역 (다음글 / 다음 화)
             if next_post:
-                label = "다음 화" if is_ascending else "다음글"
+                label = "다음 화" if is_episodic else "다음글"
                 next_href = urllib.parse.quote(next_post["html_name"])
                 nav_html += f'  <a href="/log_assets/markdown/{next_href}" class="cat-nav-item cat-nav-right"><span class="nav-title">{html.escape(next_post["title"], quote=False)}</span><span class="cat-nav-label">{label} ❯</span></a>\n'
             else:

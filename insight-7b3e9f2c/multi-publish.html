@@ -93,10 +93,12 @@
   .panel-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; flex-wrap:wrap; gap:8px;}
   .panel-head h3{margin:0; font-size:15px; font-weight:600;}
   .panel-head .badge{font-size:11px; font-weight:500; color:var(--muted); text-transform:uppercase; letter-spacing:0.04em;}
-  #channelPanel .title-field{width:100%; font-family:inherit; font-size:20px; font-weight:700; padding:10px 2px; border:none; border-bottom:1px solid var(--line-soft); margin-bottom:14px; color:var(--ink); background:transparent;}
+  #channelPanel .title-field{width:100%; font-family:inherit; padding:10px 2px; border:none; border-bottom:1px solid var(--line-soft); margin-bottom:14px; color:var(--ink); background:transparent;}
   #channelPanel .title-field:focus{outline:none; border-bottom-color:var(--ink);}
-  #channelPanel.layout-narrow textarea{min-height:220px;}
-  #channelPanel.layout-wide textarea{min-height:480px;}
+  /* wide: 실제 화면처럼 제목이 큼직하게. narrow: 실제 서비스엔 제목칸이
+     없으니, "복사용으로 같이 보여주는 제목"이라는 걸 알 수 있게 작고 옅게. */
+  #channelPanel.layout-wide .title-field{font-size:20px; font-weight:700;}
+  #channelPanel.layout-narrow .title-field{font-size:13.5px; font-weight:500; color:var(--muted); padding:8px 2px; margin-bottom:10px;}
   #channelPanel textarea{width:100%; resize:vertical; padding:16px; border:1px solid var(--line-soft); border-radius:8px; color:var(--ink);}
   #channelPanel textarea::placeholder{color:var(--muted);}
 
@@ -246,8 +248,11 @@
   fetch(POSTS_JSON)
     .then(function (r) { return r.json(); })
     .then(function (data) {
+      // id는 실제 작성일과 다를 수 있어서(예: 연재물은 회차 번호로 id가
+      // 매겨짐), posts.json의 date 문자열("Aug 26. 2026")을 직접 파싱해서
+      // 진짜 최신 작성일 순으로 정렬합니다.
       allPosts = data.slice().sort(function (a, b) {
-        return (b.id || 0) - (a.id || 0);
+        return parsePostDate(b.date) - parsePostDate(a.date);
       });
       renderResults(allPosts.slice(0, 30));
     })
@@ -378,6 +383,19 @@
     renderPanel();
   });
 
+  // 입력창이 스크롤 없이 브라우저 화면에 보이는 만큼 꽉 차게 늘립니다
+  // (아래 버튼 줄만큼만 남기고). 탭을 바꾸거나 창 크기를 바꿀 때마다
+  // 다시 계산합니다.
+  function fitActiveTextareaHeight() {
+    var textarea = els.panel.querySelector("textarea");
+    if (!textarea) return;
+    var top = textarea.getBoundingClientRect().top;
+    var reserveBelow = 130; // 글자수 표시 + 버튼 줄 + 여백
+    var available = window.innerHeight - top - reserveBelow;
+    textarea.style.height = Math.max(240, available) + "px";
+  }
+  window.addEventListener("resize", fitActiveTextareaHeight);
+
   function renderPanel() {
     var state = channelState[activeChannelIdx];
     if (!state) return;
@@ -393,12 +411,11 @@
       ? '<button type="button" class="btn ai-btn">🤖 AI 요청 복사</button>'
       : "";
 
-    // wide(브런치·네이버블로그형)만 실제 화면처럼 제목칸을 따로 둡니다.
-    // narrow(LinkedIn/Threads/Facebook/Instagram)는 실제 서비스에도 제목칸이
-    // 없어서, 제목은 복사 버튼으로만 따로 꺼낼 수 있게 둡니다.
-    var titleFieldHtml = isWide
-      ? '<input type="text" class="title-field" value="' + escapeHtml(currentTitle) + '">'
-      : "";
+    // 실제 서비스에 제목칸이 없는 narrow 채널도, 편의상 제목을 이미
+    // 채워서 보여줍니다(복사 버튼을 눌러야만 보이는 대신 바로 보고
+    // 바로 복사할 수 있게). wide는 실제 화면처럼 큼직하게, narrow는
+    // 작고 옅게 — "이 채널엔 원래 제목칸이 없다"는 느낌은 유지합니다.
+    var titleFieldHtml = '<input type="text" class="title-field" value="' + escapeHtml(currentTitle) + '">';
 
     els.panel.innerHTML =
       '<div class="panel-head"><h3>' + escapeHtml(ch.label) + "</h3>" +
@@ -419,6 +436,8 @@
     var copyBtn = els.panel.querySelector(".copy-btn");
     var titleBtn = els.panel.querySelector(".title-btn");
     var aiBtn = els.panel.querySelector(".ai-btn");
+
+    fitActiveTextareaHeight();
 
     function updateCount() {
       var len = textarea.value.length;
@@ -515,6 +534,13 @@
   function guessExt(url) {
     var m = (url || "").match(/\.(jpg|jpeg|png|webp|gif)(\?|$)/i);
     return m ? "." + m[1].toLowerCase() : ".jpg";
+  }
+
+  var MONTH_NAMES = { Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5, Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11 };
+  function parsePostDate(str) {
+    var m = /^(\w{3})\s+(\d{1,2})\.\s*(\d{4})$/.exec((str || "").trim());
+    if (!m || !(m[1] in MONTH_NAMES)) return 0;
+    return new Date(Number(m[3]), MONTH_NAMES[m[1]], Number(m[2])).getTime();
   }
 
   function escapeHtml(s) {

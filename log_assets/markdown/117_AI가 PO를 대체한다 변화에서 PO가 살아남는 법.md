@@ -103,7 +103,7 @@ AI의 강점과 한계를 명확히 이해하고, 인간만의 감성과 통찰�
   <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
 </div>
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/124_DevOps%2C%20%EA%B0%9C%EB%B0%9C%EA%B3%BC%20%EC%9A%B4%EC%98%81%EC%9D%98%20%EA%B2%BD%EA%B3%84%EB%A5%BC%20%ED%97%88%EB%AC%BC%EB%8B%A4.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">DevOps, 개발과 운영의 경계를 허물다</span></a>
-  <a href="/log_assets/markdown/109_%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B8%B0%EB%B0%98%20PO%2C%20IT%EC%84%B1%EC%9E%A5%EC%9D%98%20%ED%95%B5%EC%8B%AC%20%EC%97%94%EC%A7%84.html" class="cat-nav-item cat-nav-right"><span class="nav-title">데이터 기반 PO, IT성장의 핵심 엔진</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/109_%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B8%B0%EB%B0%98%20PO%2C%20IT%EC%84%B1%EC%9E%A5%EC%9D%98%20%ED%95%B5%EC%8B%AC%20%EC%97%94%EC%A7%84.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">데이터 기반 PO, IT성장의 핵심 엔진</span></a>
+  <a href="/log_assets/markdown/124_DevOps%2C%20%EA%B0%9C%EB%B0%9C%EA%B3%BC%20%EC%9A%B4%EC%98%81%EC%9D%98%20%EA%B2%BD%EA%B3%84%EB%A5%BC%20%ED%97%88%EB%AC%BC%EB%8B%A4.html" class="cat-nav-item cat-nav-right"><span class="nav-title">DevOps, 개발과 운영의 경계를 허물다</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->
