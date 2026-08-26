@@ -112,9 +112,11 @@ layout: null
   .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
   @media (max-width:760px){ .wrap { padding: 0 16px; } }
 
-  .sec { padding: 96px 0; border-top: 1px solid rgba(245,243,238,0.08); }
+  /* 세로 여백은 반드시 longhand로. padding 단축 지정을 쓰면 .wrap의 좌우 거터를
+     덮어써서 모바일에서 글이 화면 끝에 붙습니다. */
+  .sec { padding-top: 96px; padding-bottom: 96px; border-top: 1px solid rgba(245,243,238,0.08); }
   .sec:first-of-type { border-top: none; }
-  @media (max-width:760px){ .sec { padding: 62px 0; } }
+  @media (max-width:760px){ .sec { padding-top: 62px; padding-bottom: 62px; } }
 
   .eyebrow { font-size:12px; font-weight:500; letter-spacing:0.12em; color:#8f8b82;
              text-transform:uppercase; margin:0 0 20px; }
@@ -125,8 +127,8 @@ layout: null
   @media (max-width:760px){ .lead { font-size:16px; } }
 
   /* hero */
-  .hero { padding: 120px 0 84px; }
-  @media (max-width:760px){ .hero { padding: 72px 0 56px; } }
+  .hero { padding-top: 120px; padding-bottom: 84px; }
+  @media (max-width:760px){ .hero { padding-top: 72px; padding-bottom: 56px; } }
   .hero h1 { font-family:'Boska','Source Serif 4',serif; font-weight:200;
              font-size:clamp(34px,6vw,64px); line-height:1.22; margin:0 0 26px; max-width:16em; }
   .hero .lead { font-size:18px; max-width:640px; }
@@ -215,8 +217,8 @@ layout: null
 
   .note { font-size:13.5px; color:#8f8b82; line-height:1.85; max-width:760px; }
 
-  .final { text-align:center; padding:104px 0 120px; }
-  @media (max-width:760px){ .final { padding:64px 0 80px; } }
+  .final { text-align:center; padding-top:104px; padding-bottom:120px; }
+  @media (max-width:760px){ .final { padding-top:64px; padding-bottom:80px; } }
   .final h2 { margin-bottom:14px; }
   .final .lead { margin-left:auto; margin-right:auto; }
 </style>
