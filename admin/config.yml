@@ -78,7 +78,11 @@ collections:
         # 앞 10글자 YYYY-MM-DD만 읽어서 date_string을 만들기 때문에 시간이
         # 붙어도 문제없습니다).
         type: "datetime-local"
-        picker_utc: true
+        # 항상 한국시간으로 입력/표시합니다. 예전 picker_utc: true는 UTC로
+        # 보여줘서 "지금"을 눌러도 9시간 어긋나 보였습니다(값 자체는 맞았지만
+        # 사람이 헷갈림). 브라우저 로컬(local)이 아니라 Asia/Seoul로 고정한
+        # 이유: 해외 출장 중에 글을 써도 발행일이 한국 기준으로 일관되게 남습니다.
+        input_timezone: "Asia/Seoul"
 
       - name: "date_string"
         label: "발행일 표시 텍스트"
