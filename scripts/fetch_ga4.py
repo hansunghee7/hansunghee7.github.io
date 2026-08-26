@@ -208,6 +208,28 @@ def fetch_leads_by_landing_page(client, property_id, title_map):
     return rows
 
 
+def fetch_top_landing_posts(client, property_id, title_map):
+    """개별 글이 랜딩(첫 착지)으로 얼마나 쓰였는지 상위 목록 -- 전환(문의) 여부와
+    무관하게 어떤 글이 실제로 사람을 데려오는지. leads_by_post는 문의로 이어진
+    것만 보여주므로, 이건 그보다 앞단(유입 자체)의 순위표다."""
+    resp = run_report(
+        client, property_id,
+        date_ranges=[DateRange(start_date="30daysAgo", end_date="today")],
+        dimensions=[Dimension(name="landingPage")],
+        metrics=[Metric(name="sessions")],
+        limit=500,
+    )
+    rows = []
+    for r in resp.rows:
+        path = r.dimension_values[0].value or ""
+        if not path.startswith("/log_assets/markdown/"):
+            continue  # 개별 글만 -- 홈/로그목록/기타 비중은 landing_types에서 이미 다룬다
+        sessions = int(r.metric_values[0].value)
+        rows.append({"path": path, "title": title_map.get(path, path), "sessions": sessions})
+    rows.sort(key=lambda x: -x["sessions"])
+    return rows[:15]
+
+
 def fetch_landing_types(client, property_id):
     """방문자가 처음 착지하는 곳이 홈 / 로그 홈(목록) / 개별 글 중 어디인지.
     최초방문을 만드는 또 다른 축 -- GEO/AEO 유입은 홈이 아니라 특정 글로 바로
@@ -293,6 +315,7 @@ def main():
         "engagement_events": fetch_engagement_events(client, property_id),
         "contact_funnel": fetch_event_totals(client, property_id, ["contact_open", "generate_lead", "contact_error"]),
         "leads_by_post": fetch_leads_by_landing_page(client, property_id, title_map),
+        "top_landing_posts": fetch_top_landing_posts(client, property_id, title_map),
     }
 
     os.makedirs(os.path.dirname(OUT_PATH), exist_ok=True)

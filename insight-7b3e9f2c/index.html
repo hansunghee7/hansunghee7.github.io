@@ -248,6 +248,14 @@
 </details>
 
 <details class="dsec">
+  <summary><span class="dsec-grip" aria-hidden="true">⠿</span><h2>랜딩이 많았던 글</h2></summary>
+  <div class="dsec-body">
+  <p class="h2note">문의로 이어졌는지와 무관하게, 방문자가 첫 착지로 가장 많이 들어온 글 순위입니다 — 어떤 글이 실제로 사람을 데려오는지(유입 자체)를 봅니다.</p>
+  <div class="tablebox" id="topLandingTable"></div>
+  </div>
+</details>
+
+<details class="dsec">
   <summary><span class="dsec-grip" aria-hidden="true">⠿</span><h2>월별 발행 추이</h2></summary>
   <div class="dsec-body">
   <p class="h2note">최근 24개월. 막대에 마우스를 올리면 밝아집니다.</p>
@@ -626,6 +634,30 @@
     box.appendChild(table);
   }
 
+  /* 전환 여부와 무관한 유입 자체의 순위 -- renderLeadPosts와 데이터는 다르지만
+     "글 데이터 없으면 조용히 빈 상태" 패턴은 그대로 씁니다. */
+  function renderTopLanding(d){
+    var box = document.getElementById('topLandingTable'); box.textContent='';
+    var rows = d.top_landing_posts || [];
+    if(!rows.length){
+      box.appendChild(el('div','note','아직 데이터가 없습니다.'));
+      return;
+    }
+    var table = el('table');
+    var thead = el('thead'), htr = el('tr');
+    ['글 제목','랜딩 세션'].forEach(function(h){ htr.appendChild(el('th',null,h)); });
+    thead.appendChild(htr); table.appendChild(thead);
+    var tb = el('tbody');
+    rows.forEach(function(r){
+      var tr = el('tr');
+      tr.appendChild(el('td','ttl', r.title));
+      tr.appendChild(el('td','num', String(r.sessions)));
+      tb.appendChild(tr);
+    });
+    table.appendChild(tb);
+    box.appendChild(table);
+  }
+
   function renderAnalytics(){
     fetch('/assets/data/analytics.json?t=' + Date.now(), { cache:'no-store' })
       .then(function(r){ if(!r.ok) throw { notYet: r.status===404 }; return r.json(); })
@@ -648,6 +680,7 @@
         renderKpiTrends(d);
         renderKpiDetails(d);
         renderLeadPosts(d);
+        renderTopLanding(d);
 
         /* 신규/재방문 총합은 위 ①의 최초방문·재방문 카드가 이미 보여주므로 여기서 반복하지 않습니다.
            여긴 트렌드 카드가 못 보여주는 것만: 세션(방문 횟수, 사람 수와 다름)과 방문자 총합. */
@@ -699,6 +732,7 @@
         document.getElementById('engagementTiles').textContent='';
         document.getElementById('kpiDetails').textContent='';
         document.getElementById('leadPostsTable').textContent='';
+        document.getElementById('topLandingTable').textContent='';
       });
   }
 
