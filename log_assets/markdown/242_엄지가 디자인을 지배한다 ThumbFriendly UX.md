@@ -2,7 +2,7 @@
 layout: default
 title: "엄지가 디자인을 지배한다 ThumbFriendly UX"
 category: 'UX의 언어들'
-cover_image: '/log_assets/images/242_엄지가 디자인을 지배한다 ThumbFriendly UX_cover.jpg'
+image: '/log_assets/images/242_엄지가 디자인을 지배한다 ThumbFriendly UX_cover.jpg'
 date_string: 'Feb 6. 2025'
 date: 2025-02-06
 keywords: 'UX 컨설팅, UX 디자인, 프로덕트 UX'

@@ -2,7 +2,7 @@
 layout: default
 title: "DevOps, 개발과 운영의 경계를 허물다"
 category: 'PO의 프레임웍'
-cover_image: '/log_assets/images/124_DevOps, 개발과 운영의 경계를 허물다_cover.jpg'
+image: '/log_assets/images/124_DevOps, 개발과 운영의 경계를 허물다_cover.jpg'
 date_string: 'May 30. 2025'
 date: 2025-05-30
 keywords: 'PO 코칭, 프로덕트 오너 실무, 프로덕트 전략'

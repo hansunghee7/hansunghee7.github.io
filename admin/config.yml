@@ -56,7 +56,7 @@ collections:
           - "코치S"
           - "토크세션"
 
-      - name: "cover_image"
+      - name: "image"
         label: "커버 이미지"
         widget: "image"
         hint: "글 상단 배경과 로그 카드 썸네일에 같이 쓰입니다."

@@ -2,7 +2,7 @@
 layout: default
 title: "내가 나를 기획한다면? Fast Fail의 비밀"
 category: '기획일상'
-cover_image: '/log_assets/images/486_내가 나를 기획한다면 Fast Fail의 비밀_cover.jpg'
+image: '/log_assets/images/486_내가 나를 기획한다면 Fast Fail의 비밀_cover.jpg'
 date_string: 'Feb 4. 2024'
 date: 2024-02-04
 keywords: '기획자 커리어, PM 실무, 기획 방법론'

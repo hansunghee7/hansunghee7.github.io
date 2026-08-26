@@ -2,7 +2,7 @@
 layout: default
 title: "Perplexity #2 검색 시스템의 구조 설계"
 category: '스타트업 인사이트'
-cover_image: '/log_assets/images/165_Perplexity 2 검색 시스템의 구조 설계_cover.jpg'
+image: '/log_assets/images/165_Perplexity 2 검색 시스템의 구조 설계_cover.jpg'
 date_string: 'Apr 20. 2025'
 date: 2025-04-20
 keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'

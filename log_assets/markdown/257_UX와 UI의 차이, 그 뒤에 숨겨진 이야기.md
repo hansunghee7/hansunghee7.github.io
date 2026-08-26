@@ -2,7 +2,7 @@
 layout: default
 title: "UX와 UI의 차이, 그 뒤에 숨겨진 이야기"
 category: 'UX의 언어들'
-cover_image: '/log_assets/images/257_UX와 UI의 차이, 그 뒤에 숨겨진 이야기_cover.jpg'
+image: '/log_assets/images/257_UX와 UI의 차이, 그 뒤에 숨겨진 이야기_cover.jpg'
 date_string: 'Jan 23. 2025'
 date: 2025-01-23
 keywords: 'UX 컨설팅, UX 디자인, 프로덕트 UX'

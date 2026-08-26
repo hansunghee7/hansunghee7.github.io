@@ -2,7 +2,7 @@
 layout: default
 title: "제품의 생명선, Retention Curve"
 category: '기획자의 프레임웍'
-cover_image: '/log_assets/images/135_제품의 생명선, Retention Curve_cover.jpg'
+image: '/log_assets/images/135_제품의 생명선, Retention Curve_cover.jpg'
 date_string: 'May 20. 2025'
 date: 2025-05-20
 keywords: '기획자의 질문법, 기획 프레임워크, PM 역량강화'

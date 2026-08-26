@@ -16,7 +16,7 @@
     <meta property="og:type" content="article">
     <meta property="og:title" content="{{ page.title }}">
     <meta property="og:description" content="{{ content | strip_html | strip_newlines | truncate: 150 }}">
-    <meta property="og:image" content="{{ page.cover_image | default: 'https://simplifier.co.kr/assets/og-image.png' }}">
+    <meta property="og:image" content="{{ page.image | default: 'https://simplifier.co.kr/assets/og-image.png' }}">
     <meta property="og:url" content="https://simplifier.co.kr{{ page.url }}">
     {% if page.date %}<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">{% endif %}
     {% if page.category %}<meta property="article:section" content="{{ page.category }}">{% endif %}
@@ -24,7 +24,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ page.title }}">
     <meta name="twitter:description" content="{{ content | strip_html | strip_newlines | truncate: 150 }}">
-    <meta name="twitter:image" content="{{ page.cover_image | default: 'https://simplifier.co.kr/assets/og-image.png' }}">
+    <meta name="twitter:image" content="{{ page.image | default: 'https://simplifier.co.kr/assets/og-image.png' }}">
 
     <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
@@ -43,7 +43,7 @@
       "headline": "{{ page.title }}",
       "datePublished": "{% if page.date %}{{ page.date | date_to_xmlschema }}{% else %}{{ page.date_string }}{% endif %}",
       "dateModified": "{% if page.date %}{{ page.date | date_to_xmlschema }}{% else %}{{ page.date_string }}{% endif %}",
-      "image": "{{ page.cover_image | default: 'https://simplifier.co.kr/assets/og-image.png' }}",
+      "image": "{{ page.image | default: 'https://simplifier.co.kr/assets/og-image.png' }}",
       "articleSection": "{{ page.category }}",
       {% if page.keywords %}"keywords": "{{ page.keywords }}",{% endif %}
       {% if page.about %}"about": [{% assign about_list = page.about | split: ', ' %}{% for item in about_list %}{"@type":"Thing","name":"{{ item }}"}{% unless forloop.last %},{% endunless %}{% endfor %}],{% endif %}
@@ -419,7 +419,7 @@
         </div>
     </div>
 {% else %}
-    {% assign bg_img = page.cover_image | default: '/log_assets/images/logo_white.png' %}
+    {% assign bg_img = page.image | default: '/log_assets/images/logo_white.png' %}
     <div class="cover-wrap post-mode" id="coverWrap" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%), url('{{ bg_img }}');">
         <div class="cover-bottom-left" id="coverTitleBox">
             <h1 class="cover-title" id="displayTitle">{{ page.title }}</h1>

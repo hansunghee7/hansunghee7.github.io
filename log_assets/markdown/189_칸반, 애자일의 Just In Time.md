@@ -2,7 +2,7 @@
 layout: default
 title: "칸반, 애자일의 Just In Time"
 category: 'PO의 프레임웍'
-cover_image: '/log_assets/images/189_칸반, 애자일의 Just In Time_cover.jpg'
+image: '/log_assets/images/189_칸반, 애자일의 Just In Time_cover.jpg'
 date_string: 'Mar 28. 2025'
 date: 2025-03-28
 keywords: 'PO 코칭, 프로덕트 오너 실무, 프로덕트 전략'

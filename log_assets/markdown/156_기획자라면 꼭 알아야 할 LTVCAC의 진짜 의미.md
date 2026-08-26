@@ -2,7 +2,7 @@
 layout: default
 title: "기획자라면 꼭 알아야 할 LTV/CAC의 진짜 의미"
 category: '기획자의 프레임웍'
-cover_image: '/log_assets/images/156_기획자라면 꼭 알아야 할 LTVCAC의진짜 의미_cover.jpg'
+image: '/log_assets/images/156_기획자라면 꼭 알아야 할 LTVCAC의진짜 의미_cover.jpg'
 date_string: 'Apr 29. 2025'
 date: 2025-04-29
 keywords: '기획자의 질문법, 기획 프레임워크, PM 역량강화'

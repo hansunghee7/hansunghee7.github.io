@@ -2,7 +2,7 @@
 layout: default
 title: "ENTJ코치의 넷플릭스 트렁크 감상"
 category: '심플리파이어 라이프'
-cover_image: '/log_assets/images/286_ENTJ코치의 넷플릭스 트렁크 감상_cover.jpg'
+image: '/log_assets/images/286_ENTJ코치의 넷플릭스 트렁크 감상_cover.jpg'
 date_string: 'Dec 2. 2024'
 date: 2024-12-02
 keywords: '플레잉코치, 스타트업 그로스 코치, 코칭 일상'

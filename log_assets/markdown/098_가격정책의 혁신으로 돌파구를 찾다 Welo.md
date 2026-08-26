@@ -2,7 +2,7 @@
 layout: default
 title: "가격정책의 혁신으로 돌파구를 찾다. Welo"
 category: '스타트업 인사이트'
-cover_image: '/log_assets/images/098_가격정책의 혁신으로 돌파구를 찾다. Welo_cover.jpg'
+image: '/log_assets/images/098_가격정책의 혁신으로 돌파구를 찾다. Welo_cover.jpg'
 date_string: 'Jun 23. 2025'
 date: 2025-06-23
 keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'

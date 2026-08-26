@@ -2,7 +2,7 @@
 layout: default
 title: "책만 들면 ADHD가 온다면..."
 category: '심플리파이어 라이프'
-cover_image: '/log_assets/images/578_책만 들면 ADHD가 온다면..._cover.jpg'
+image: '/log_assets/images/578_책만 들면 ADHD가 온다면..._cover.jpg'
 date_string: 'Oct 26. 2023'
 date: 2023-10-26
 keywords: '플레잉코치, 스타트업 그로스 코치, 코칭 일상'

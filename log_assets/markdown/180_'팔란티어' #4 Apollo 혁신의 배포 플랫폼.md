@@ -2,7 +2,7 @@
 layout: default
 title: "팔란티어' #4 Apollo 혁신의 배포 플랫폼"
 category: '스타트업 인사이트'
-cover_image: '/log_assets/images/180_''팔란티어'' 4 Apollo 혁신의 배포 플랫폼_cover.jpg'
+image: '/log_assets/images/180_''팔란티어'' 4 Apollo 혁신의 배포 플랫폼_cover.jpg'
 date_string: 'Apr 6. 2025'
 date: 2025-04-06
 keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'

@@ -2,7 +2,7 @@
 layout: default
 title: "Drop-off, 사용자가 떠나는 순간을 포착하는 방법"
 category: 'UX의 언어들'
-cover_image: '/log_assets/images/133_Drop-off, 사용자가 떠나는 순간을 포착하는 방법_cover.jpg'
+image: '/log_assets/images/133_Drop-off, 사용자가 떠나는 순간을 포착하는 방법_cover.jpg'
 date_string: 'May 22. 2025'
 date: 2025-05-22
 keywords: 'UX 컨설팅, UX 디자인, 프로덕트 UX'

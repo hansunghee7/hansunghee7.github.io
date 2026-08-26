@@ -2,7 +2,7 @@
 layout: default
 title: "깨끗한 인터페이스, Clean UI의 반전"
 category: 'UX의 언어들'
-cover_image: '/log_assets/images/102_깨끗한 인터페이스, Clean UI의 반전_cover.jpg'
+image: '/log_assets/images/102_깨끗한 인터페이스, Clean UI의 반전_cover.jpg'
 date_string: 'Jun 19. 2025'
 date: 2025-06-19
 keywords: 'UX 컨설팅, UX 디자인, 프로덕트 UX'

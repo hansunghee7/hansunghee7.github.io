@@ -49,7 +49,7 @@ def build_card(base, fm):
     post_id = re.match(r"^(\d+)_", base)
     post_id = post_id.group(1) if post_id else "0"
     href = "/log_assets/markdown/" + urllib.parse.quote(base) + ".html"
-    thumb = quote_if_local(fm.get("cover_image"))
+    thumb = quote_if_local(fm.get("image"))
 
     return (
         f'<a href="{href}" class="card-item" data-category="{category}" '

@@ -161,11 +161,11 @@ for fname in md_files:
     cover = mapping.get(base)
     if cover:
         image = '/log_assets/images/' + urllib.parse.quote(cover)
-    elif frontmatter.get('cover_image'):
+    elif frontmatter.get('image'):
         # 브런치 스크래핑 매핑에 안 걸리는 글(예: CMS로 직접 쓴 새 글)은
-        # front matter의 cover_image를 그대로 쓴다. 기존 599개 글은 전부
+        # front matter의 image를 그대로 쓴다. 기존 599개 글은 전부
         # 위 mapping에서 잡히므로 이 분기는 실질적으로 새 글에만 해당된다.
-        raw_cover = frontmatter['cover_image']
+        raw_cover = frontmatter['image']
         if raw_cover.startswith('http://') or raw_cover.startswith('https://'):
             image = raw_cover
         else:

@@ -2,7 +2,7 @@
 layout: default
 title: "AI모델 가속화의 열쇠, Transformer병목개선"
 category: 'AI의 언어들'
-cover_image: '/log_assets/images/090_AI모델 가속화의 열쇠, Transformer병목개선_cover.jpg'
+image: '/log_assets/images/090_AI모델 가속화의 열쇠, Transformer병목개선_cover.jpg'
 date_string: 'Jul 2. 2025'
 date: 2025-07-02
 keywords: 'AI 트렌드, AI 기술 이해'

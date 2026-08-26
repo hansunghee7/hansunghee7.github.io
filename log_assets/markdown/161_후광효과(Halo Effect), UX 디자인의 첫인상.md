@@ -2,7 +2,7 @@
 layout: default
 title: "후광효과(Halo Effect), UX 디자인의 첫인상"
 category: 'UX의 언어들'
-cover_image: '/log_assets/images/161_후광효과(Halo Effect), UX 디자인의 첫인상_cover.jpg'
+image: '/log_assets/images/161_후광효과(Halo Effect), UX 디자인의 첫인상_cover.jpg'
 date_string: 'Apr 24. 2025'
 date: 2025-04-24
 keywords: 'UX 컨설팅, UX 디자인, 프로덕트 UX'

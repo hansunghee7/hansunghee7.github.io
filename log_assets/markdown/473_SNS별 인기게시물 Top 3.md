@@ -2,7 +2,7 @@
 layout: default
 title: "SNS별 인기게시물 Top 3"
 category: '심플리파이어 라이프'
-cover_image: '/log_assets/images/475_SNS별 인기게시물 Top 3_cover.jpg'
+image: '/log_assets/images/475_SNS별 인기게시물 Top 3_cover.jpg'
 date_string: 'Feb 14. 2024'
 date: 2024-02-14
 keywords: '플레잉코치, 스타트업 그로스 코치, 코칭 일상'

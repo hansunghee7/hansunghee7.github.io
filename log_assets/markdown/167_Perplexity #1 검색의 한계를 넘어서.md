@@ -2,7 +2,7 @@
 layout: default
 title: "Perplexity #1 검색의 한계를 넘어서"
 category: '스타트업 인사이트'
-cover_image: '/log_assets/images/167_Perplexity 1 검색의 한계를 넘어서_cover.jpg'
+image: '/log_assets/images/167_Perplexity 1 검색의 한계를 넘어서_cover.jpg'
 date_string: 'Apr 20. 2025'
 date: 2025-04-20
 keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'

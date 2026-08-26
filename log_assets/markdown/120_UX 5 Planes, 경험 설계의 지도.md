@@ -2,7 +2,7 @@
 layout: default
 title: "UX 5 Planes, 경험 설계의 지도"
 category: '기획자의 프레임웍'
-cover_image: '/log_assets/images/120_UX 5 Planes, 경험 설계의 지도_cover.jpg'
+image: '/log_assets/images/120_UX 5 Planes, 경험 설계의 지도_cover.jpg'
 date_string: 'Jun 3. 2025'
 date: 2025-06-03
 keywords: '기획자의 질문법, 기획 프레임워크, PM 역량강화'

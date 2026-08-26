@@ -2,7 +2,7 @@
 layout: default
 title: "PM, PL, TPM의 차이 한눈에 보기"
 category: 'PO의 프레임웍'
-cover_image: '/log_assets/images/132_PM, PL, TPM의 차이 한눈에 보기_cover.jpg'
+image: '/log_assets/images/132_PM, PL, TPM의 차이 한눈에 보기_cover.jpg'
 date_string: 'May 23. 2025'
 date: 2025-05-23
 keywords: 'PO 코칭, 프로덕트 오너 실무, 프로덕트 전략'

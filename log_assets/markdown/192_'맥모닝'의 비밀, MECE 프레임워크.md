@@ -2,7 +2,7 @@
 layout: default
 title: "맥모닝'의 비밀, MECE 프레임워크"
 category: '기획자의 프레임웍'
-cover_image: '/log_assets/images/192_''맥모닝''의 비밀, MECE 프레임워크_cover.jpg'
+image: '/log_assets/images/192_''맥모닝''의 비밀, MECE 프레임워크_cover.jpg'
 date_string: 'Mar 25. 2025'
 date: 2025-03-25
 keywords: '기획자의 질문법, 기획 프레임워크, PM 역량강화'

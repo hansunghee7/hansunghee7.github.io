@@ -2,7 +2,7 @@
 layout: default
 title: "Product Owner도 몰랐던 애자일 HR의 진실"
 category: 'PO의 프레임웍'
-cover_image: '/log_assets/images/050_Product Owner도 몰랐던 애자일 HR의 진실_cover.jpg'
+image: '/log_assets/images/050_Product Owner도 몰랐던 애자일 HR의 진실_cover.jpg'
 date_string: 'Aug 15. 2025'
 date: 2025-08-15
 keywords: 'PO 코칭, 프로덕트 오너 실무, 프로덕트 전략'

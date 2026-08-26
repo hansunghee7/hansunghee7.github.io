@@ -2,7 +2,7 @@
 layout: default
 title: "CPO는 어떻게 일을 할까? Part 3. 흐름의 결합"
 category: '스타트업 인사이트'
-cover_image: '/log_assets/images/424_CPO는 어떻게 일을 할까 Part 3. 흐름의 결합_cover.jpg'
+image: '/log_assets/images/424_CPO는 어떻게 일을 할까 Part 3. 흐름의 결합_cover.jpg'
 date_string: 'Apr 8. 2024'
 date: 2024-04-08
 keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'

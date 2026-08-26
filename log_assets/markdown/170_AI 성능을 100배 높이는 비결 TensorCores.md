@@ -2,7 +2,7 @@
 layout: default
 title: "AI 성능을 100배 높이는 비결 TensorCores"
 category: 'AI의 언어들'
-cover_image: '/log_assets/images/170_AI 성능을 100배 높이는 비결 TensorCores_cover.jpg'
+image: '/log_assets/images/170_AI 성능을 100배 높이는 비결 TensorCores_cover.jpg'
 date_string: 'Apr 16. 2025'
 date: 2025-04-16
 keywords: 'AI 트렌드, AI 기술 이해'

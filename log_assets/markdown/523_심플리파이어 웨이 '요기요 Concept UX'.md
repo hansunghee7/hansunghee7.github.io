@@ -2,7 +2,7 @@
 layout: default
 title: "심플리파이어 웨이 '요기요 Concept UX"
 category: '스타트업 인사이트'
-cover_image: '/log_assets/images/525_심플리파이어 웨이 ''요기요 Concept UX''_cover.jpg'
+image: '/log_assets/images/525_심플리파이어 웨이 ''요기요 Concept UX''_cover.jpg'
 date_string: 'Dec 22. 2023'
 date: 2023-12-22
 keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'

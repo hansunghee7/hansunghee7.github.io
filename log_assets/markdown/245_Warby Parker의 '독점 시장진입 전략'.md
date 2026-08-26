@@ -2,7 +2,7 @@
 layout: default
 title: "Warby Parker의 '독점 시장진입 전략"
 category: '스타트업 인사이트'
-cover_image: '/log_assets/images/245_Warby Parker의 ''독점 시장진입 전략''_cover.jpg'
+image: '/log_assets/images/245_Warby Parker의 ''독점 시장진입 전략''_cover.jpg'
 date_string: 'Feb 3. 2025'
 date: 2025-02-03
 keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'

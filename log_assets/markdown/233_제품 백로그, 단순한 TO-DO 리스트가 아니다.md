@@ -2,7 +2,7 @@
 layout: default
 title: "제품 백로그\", 단순한 TO-DO 리스트가 아니다"
 category: 'PO의 프레임웍'
-cover_image: '/log_assets/images/233_제품 백로그, 단순한 TO-DO 리스트가 아니다_cover.jpg'
+image: '/log_assets/images/233_제품 백로그, 단순한 TO-DO 리스트가 아니다_cover.jpg'
 date_string: 'Feb 14. 2025'
 date: 2025-02-14
 keywords: 'PO 코칭, 프로덕트 오너 실무, 프로덕트 전략'

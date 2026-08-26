@@ -2,7 +2,7 @@
 layout: default
 title: "Thank you 2024~!!!"
 category: '심플리파이어 라이프'
-cover_image: '/log_assets/images/272_Thank you 2024~!!!_cover.jpg'
+image: '/log_assets/images/272_Thank you 2024~!!!_cover.jpg'
 date_string: 'Dec 31. 2024'
 date: 2024-12-31
 keywords: '플레잉코치, 스타트업 그로스 코치, 코칭 일상'

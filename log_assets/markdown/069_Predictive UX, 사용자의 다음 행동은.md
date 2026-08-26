@@ -2,7 +2,7 @@
 layout: default
 title: "Predictive UX, 사용자의 다음 행동은?"
 category: 'UX의 언어들'
-cover_image: '/log_assets/images/069_Predictive UX, 사용자의 다음 행동은_cover.jpg'
+image: '/log_assets/images/069_Predictive UX, 사용자의 다음 행동은_cover.jpg'
 date_string: 'Jul 25. 2025'
 date: 2025-07-25
 keywords: 'UX 컨설팅, UX 디자인, 프로덕트 UX'
