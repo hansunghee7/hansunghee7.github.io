@@ -81,6 +81,15 @@
 <script>
 (function(){
   if (!('IntersectionObserver' in window)) return;
+
+  /* 이 include는 <head>에서 실행됩니다. 그 시점엔 <body>가 없어서 querySelector가
+     전부 null이 되므로, DOM이 준비된 뒤에 붙여야 합니다.
+     (아래 FAQ 클릭은 document 위임이라 예외지만, 함께 묶어 둡니다.) */
+  function ready(fn){
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn);
+    else fn();
+  }
+
   var sent = {};
   function send(name, params){
     if (sent[name]) return;
@@ -96,17 +105,20 @@
     ['book_class', '.overlay-card'],
     ['faq',        '.faq-section']
   ];
-  SECTIONS.forEach(function(pair){
-    var elm = document.querySelector(pair[1]);
-    if (!elm) return;
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if (!en.isIntersecting) return;
-        send('section_view_' + pair[0], { section: pair[0], page_path: location.pathname });
-        io.disconnect();
-      });
-    }, { threshold: 0.4 });
-    io.observe(elm);
+  ready(function(){
+    SECTIONS.forEach(function(pair){
+      var elm = document.querySelector(pair[1]);
+      if (!elm) return;
+      /* 화면보다 큰 섹션은 40%가 절대 안 채워지므로, 뷰포트 기준으로도 판정합니다. */
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if (!en.isIntersecting) return;
+          send('section_view_' + pair[0], { section: pair[0], page_path: location.pathname });
+          io.disconnect();
+        });
+      }, { threshold: [0, 0.25], rootMargin: '0px 0px -25% 0px' });
+      io.observe(elm);
+    });
   });
 
   /* FAQ 를 펼치는 건 절차를 읽고 있다는 뜻이라 따로 봅니다. */
@@ -121,8 +133,9 @@
   }, true);
 
   /* 글을 끝까지 읽었는가. 본문이 있는 페이지에서만 동작합니다. */
-  var article = document.querySelector('.post-mode + .article-body');
-  if (article) {
+  ready(function(){
+    var article = document.querySelector('.post-mode + .article-body');
+    if (!article) return;
     var onScroll = function(){
       var r = article.getBoundingClientRect();
       var seen = window.innerHeight - r.top;
@@ -132,7 +145,7 @@
       }
     };
     window.addEventListener('scroll', onScroll, { passive: true });
-  }
+  });
 })();
 </script>
 {%- endif %}
