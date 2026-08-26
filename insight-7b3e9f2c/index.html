@@ -64,6 +64,10 @@
   .kpi-card.stage-3 .mini-bars .b{background:linear-gradient(180deg,#c99a5a,#a3690f);}
   .kpi-foot{font-size:11px; color:var(--muted); margin-top:8px; line-height:1.5;}
 
+  /* 카드 1개만 남은 그리드가 auto-fit 때문에 폭 전체로 늘어나는 것 방지
+     (원래 3장이던 자리에 "지금 확인하기" 카드 1개만 남았을 때). */
+  #conversionTiles{grid-template-columns:minmax(150px,300px);}
+
   /* ---- KPI 하위요소 (각 KPI 카드 바로 아래, 같은 열에 정렬 -- "무엇이 이 숫자를 만드나") ---- */
   .kpi-detail-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:8px;}
   @media (max-width:760px){ .kpi-detail-grid{grid-template-columns:1fr;} }
