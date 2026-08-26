@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Slack의 유료전환의 \"매직 모먼트"
+title: "Slack의 유료전환의 매직 모먼트"
 category: '스타트업 인사이트'
 image: '/log_assets/images/150_Slack의 유료전환의 매직 모먼트_cover.jpg'
 date_string: 'May 5. 2025'

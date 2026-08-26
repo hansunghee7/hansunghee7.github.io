@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "훌륭한 질문이네요!' AI의 칭찬 UX의 진실"
+title: "훌륭한 질문이네요! AI의 칭찬 UX의 진실"
 category: 'UX의 언어들'
 image: '/log_assets/images/118_''훌륭한 질문이네요!'' AI의 칭찬 UX의 진실_cover.jpg'
 date_string: 'Jun 5. 2025'

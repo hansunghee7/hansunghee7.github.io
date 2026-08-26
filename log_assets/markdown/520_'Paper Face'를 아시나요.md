@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Paper Face'를 아시나요?"
+title: "'Paper Face'를 아시나요?"
 category: '심플리파이어 라이프'
 image: '/log_assets/images/522_''Paper Face''를 아시나요_cover.jpg'
 date_string: 'Dec 25. 2023'

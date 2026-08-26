@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "커서 AI'의 AI 협력자 전략"
+title: "'커서 AI'의 AI 협력자 전략"
 category: '스타트업 인사이트'
 image: '/log_assets/images/113_''커서 AI''의 AI 협력자 전략_cover.jpg'
 date_string: 'Jun 9. 2025'

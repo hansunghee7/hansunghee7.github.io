@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "ENTJ코치가 보는 '이토록 친밀한 배신자"
+title: "ENTJ코치가 보는 '이토록 친밀한 배신자'"
 category: '심플리파이어 라이프'
 image: '/log_assets/images/309_ENTJ코치가 보는 ''이토록 친밀한 배신자''_cover.jpg'
 date_string: 'Oct 19. 2024'

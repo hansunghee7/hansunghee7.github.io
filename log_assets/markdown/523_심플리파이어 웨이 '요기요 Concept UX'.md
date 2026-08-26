@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "심플리파이어 웨이 '요기요 Concept UX"
+title: "심플리파이어 웨이 '요기요 Concept UX'"
 category: '스타트업 인사이트'
 image: '/log_assets/images/525_심플리파이어 웨이 ''요기요 Concept UX''_cover.jpg'
 date_string: 'Dec 22. 2023'
@@ -63,6 +63,6 @@ Today Workflow
 </div>
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/492_IT%20%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A5%BC%20%EC%9E%98%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%ED%9A%8C%EC%82%AC%EC%9D%98%207%EA%B0%80%EC%A7%80%20%ED%8A%B9%EC%A7%95.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">IT 서비스를 잘 만드는 회사의 7가지 특징</span></a>
-  <a href="/log_assets/markdown/564_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%9B%A8%EC%9D%B4%20%27%EB%94%94%EC%9E%90%EC%9D%B8%20%ED%98%91%EC%97%85%27.html" class="cat-nav-item cat-nav-right"><span class="nav-title">심플리파이어 웨이 '디자인 협업</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/564_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%9B%A8%EC%9D%B4%20%27%EB%94%94%EC%9E%90%EC%9D%B8%20%ED%98%91%EC%97%85%27.html" class="cat-nav-item cat-nav-right"><span class="nav-title">심플리파이어 웨이 '디자인 협업'</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

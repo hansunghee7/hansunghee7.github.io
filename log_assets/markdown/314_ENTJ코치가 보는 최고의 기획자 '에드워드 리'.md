@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "ENTJ코치가 보는 최고의 기획자 '에드워드 리"
+title: "ENTJ코치가 보는 최고의 기획자 '에드워드 리'"
 category: '기획일상'
 image: '/log_assets/images/314_ENTJ코치가 보는 최고의 기획자 ''에드워드 리''_cover.jpg'
 date_string: 'Oct 13. 2024'

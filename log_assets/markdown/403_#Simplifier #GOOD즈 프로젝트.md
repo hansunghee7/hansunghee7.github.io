@@ -61,6 +61,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/399_%EB%82%B4%EA%B0%80%20%EC%9A%94%EC%A6%98%20%EC%A3%BC%EB%AA%A9%ED%95%98%EB%8A%94%20%27%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%ED%9E%88%EC%96%B4%EB%A1%9C%27%204%EC%9B%94%ED%98%B8.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">내가 요즘 주목하는 '링크드인 히어로' 4월호</span></a>
-  <a href="/log_assets/markdown/410_%27%EC%BB%A4%EB%84%A5%ED%8C%85%20X%20%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%27%20%EB%B6%81%ED%86%A0%ED%81%AC%20%EC%9D%B4%EC%95%BC%EA%B8%B0.html" class="cat-nav-item cat-nav-right"><span class="nav-title">커넥팅 X 잉크드인' 북토크 이야기</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/410_%27%EC%BB%A4%EB%84%A5%ED%8C%85%20X%20%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%27%20%EB%B6%81%ED%86%A0%ED%81%AC%20%EC%9D%B4%EC%95%BC%EA%B8%B0.html" class="cat-nav-item cat-nav-right"><span class="nav-title">'커넥팅 X 잉크드인' 북토크 이야기</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

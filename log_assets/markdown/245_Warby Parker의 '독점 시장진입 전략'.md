@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Warby Parker의 '독점 시장진입 전략"
+title: "Warby Parker의 '독점 시장진입 전략'"
 category: '스타트업 인사이트'
 image: '/log_assets/images/245_Warby Parker의 ''독점 시장진입 전략''_cover.jpg'
 date_string: 'Feb 3. 2025'

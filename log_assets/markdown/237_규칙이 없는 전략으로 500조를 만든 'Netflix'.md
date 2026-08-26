@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "규칙이 없는 전략으로 500조를 만든 'Netflix"
+title: "규칙이 없는 전략으로 500조를 만든 'Netflix'"
 category: '스타트업 인사이트'
 image: '/log_assets/images/237_규칙이 없는 전략으로 500조를 만든 ''Netflix''_cover.jpg'
 date_string: 'Feb 10. 2025'
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
 </div>
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/235_%E7%BE%8E%20%EA%B5%AD%EB%B0%A9%EB%B6%80%EC%9D%98%20%EC%84%A0%ED%83%9D%20%EB%B9%85%EB%B2%A0%EC%96%B4AI.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">美 국방부의 선택 "빅베어AI</span></a>
+  <a href="/log_assets/markdown/235_%E7%BE%8E%20%EA%B5%AD%EB%B0%A9%EB%B6%80%EC%9D%98%20%EC%84%A0%ED%83%9D%20%EB%B9%85%EB%B2%A0%EC%96%B4AI.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">美 국방부의 선택 빅베어AI</span></a>
   <a href="/log_assets/markdown/238_%EC%82%BC%EC%84%B1%20%EC%82%AC%EB%82%B4%EB%B2%A4%EC%B2%98%EA%B0%80%20%EB%82%B3%EC%9D%80%20%EC%BB%A4%EB%A8%B8%EC%8A%A4AI%EC%9D%98%20%ED%98%81%EC%8B%A0%2C%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%EB%9E%A9.html" class="cat-nav-item cat-nav-right"><span class="nav-title">삼성 사내벤처가 낳은 커머스AI의 혁신, 스튜디오랩</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "고객은 제품을 '고용'한다. 'JTBD프레임웍"
+title: "고객은 제품을 '고용'한다 'JTBD프레임웍'"
 category: '기획자의 프레임웍'
 image: '/log_assets/images/128_고객은 제품을 ''고용''한다. ''JTBD프레임웍''_cover.jpg'
 date_string: 'May 27. 2025'
