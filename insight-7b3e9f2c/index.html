@@ -166,12 +166,6 @@
 </section>
 
 <section>
-  <h2>② 깔때기 — 문의까지 가는 길</h2>
-  <p class="h2note">각 단계가 지금 측정되고 있는지, 실제 숫자는 어디서 보는지 정리했습니다.</p>
-  <div class="tablebox"><table id="funnelTable"></table></div>
-</section>
-
-<section>
   <h2>유입 상세 — 방문자 · 재방문 · GEO/AEO 효과</h2>
   <p class="h2note" id="analyticsNote">GA4 데이터를 불러오는 중…</p>
   <div class="tiles" id="analyticsTiles"></div>
@@ -182,19 +176,13 @@
 </section>
 
 <section>
-  <h2>③ 신뢰 자산</h2>
+  <h2>② 신뢰 자산</h2>
   <p class="h2note">섭외 담당자가 결정을 내릴 때 실제로 보는 요소들입니다. 홈페이지를 직접 읽어와 세기 때문에 홈을 고치면 이 숫자도 따라 바뀝니다.</p>
   <div class="tiles" id="trustTiles"></div>
 </section>
 
 <section>
-  <h2>④ 측정 도구 연동</h2>
-  <p class="h2note">위 지표들이 실제로 쌓이려면 아래 4개가 살아 있어야 합니다.</p>
-  <div class="integrations" id="integrations"></div>
-</section>
-
-<section>
-  <h2>⑤ 콘텐츠 자산</h2>
+  <h2>③ 콘텐츠 자산</h2>
   <p class="h2note">글은 목적이 아니라 <b>신뢰의 근거</b>입니다. 아래는 성과가 아니라 재고 현황으로 보세요 — 발행량이 많다고 문의가 느는 건 아닙니다.</p>
   <div class="tiles" id="kpis"></div>
 </section>
@@ -226,12 +214,27 @@
   <div class="tablebox"><table id="recentTable"></table></div>
 </section>
 
+<!-- 아래 둘은 잘 안 바뀌는 설명형/참조용 정보라 하단으로 내렸습니다. -->
+
+<section>
+  <h2>깔때기 — 문의까지 가는 길 <span style="font-size:11px;color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(참고)</span></h2>
+  <p class="h2note">각 단계가 지금 측정되고 있는지, 실제 숫자는 어디서 보는지 정리했습니다.</p>
+  <div class="tablebox"><table id="funnelTable"></table></div>
+</section>
+
+<section>
+  <h2>측정 도구 연동 <span style="font-size:11px;color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(참고)</span></h2>
+  <p class="h2note">위 지표들이 실제로 쌓이려면 아래 4개가 살아 있어야 합니다.</p>
+  <div class="integrations" id="integrations"></div>
+</section>
+
 <section>
   <h2>읽는 법</h2>
   <p class="note"><b>이 페이지는 어떻게 갱신되나요?</b> 글 데이터는 사이트가 새 글을 발행할 때마다 자동으로 갱신되는 <code>posts.json</code>을 그대로 읽습니다. 따로 수집 작업이 돌지 않아도 항상 최신입니다.</p>
   <p class="note"><b>방문자 수는 어디서 갱신되나요?</b> 매일 06:00에 GitHub Actions가 GA4 API로 최근 30일 지표를 가져와 <code>assets/data/analytics.json</code>에 저장하고, 이 페이지가 그걸 그대로 읽습니다. "유입 상세" 섹션에 아무것도 안 뜨면 그 파일이 아직 없다는 뜻 — 처음 한 번은 GitHub 저장소의 Actions 탭에서 "Fetch GA4 analytics"를 수동 실행해야 합니다.</p>
   <p class="note"><b>발행량이 왜 맨 아래인가요?</b> 글을 많이 쓰는 것 자체는 성과가 아니기 때문입니다. 이 사이트의 성과는 <b>문의</b>이고, 글은 그 문의가 들어올 만한 사람이라는 걸 보여주는 근거입니다. 그래서 발행량은 "성과"가 아니라 "재고"로 읽어야 합니다.</p>
   <p class="note"><b>주소를 공유하지 마세요.</b> 이 저장소는 공개라서, 주소를 아는 사람은 누구나 이 페이지를 볼 수 있습니다. 검색에는 걸리지 않도록 막아 두었지만 주소 자체가 유일한 자물쇠입니다.</p>
+  <p class="note"><b>왜 "깔때기"와 "측정 도구 연동"이 맨 아래에 있나요?</b> 둘 다 숫자가 아니라 설명입니다 — 한 번 읽으면 웬만해선 안 바뀌는 참고 정보라, 매일 바뀌는 지표들보다 아래로 내렸습니다.</p>
 </section>
 
 <footer>
