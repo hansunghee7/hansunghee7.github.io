@@ -140,6 +140,16 @@
 </section>
 
 <section>
+  <h2>유입 상세 — 방문자 · 재방문 · GEO/AEO 효과</h2>
+  <p class="h2note" id="analyticsNote">GA4 데이터를 불러오는 중…</p>
+  <div class="tiles" id="analyticsTiles"></div>
+  <p class="h2note" style="margin-top:20px">최근 30일 트래픽 소스 상위. AI 엔진(ChatGPT·Perplexity·Gemini 등)에서 온 세션은 따로 표시합니다 — GEO/AEO가 실제 유입으로 이어지는지 보는 지표입니다.</p>
+  <div class="tablebox" id="sourceTable"></div>
+  <p class="h2note" style="margin-top:20px">관여 신호 — 방문자가 신뢰 구간(로고월·후기·FAQ)까지 도달했는지, 글을 완독했는지. 아직 코칭·강연 서비스 페이지가 없어 "진지한 검토자"를 행동으로 가늠합니다.</p>
+  <div class="tiles" id="engagementTiles"></div>
+</section>
+
+<section>
   <h2>③ 신뢰 자산</h2>
   <p class="h2note">섭외 담당자가 결정을 내릴 때 실제로 보는 요소들입니다. 홈페이지를 직접 읽어와 세기 때문에 홈을 고치면 이 숫자도 따라 바뀝니다.</p>
   <div class="tiles" id="trustTiles"></div>
@@ -187,7 +197,7 @@
 <section>
   <h2>읽는 법</h2>
   <p class="note"><b>이 페이지는 어떻게 갱신되나요?</b> 글 데이터는 사이트가 새 글을 발행할 때마다 자동으로 갱신되는 <code>posts.json</code>을 그대로 읽습니다. 따로 수집 작업이 돌지 않아도 항상 최신입니다.</p>
-  <p class="note"><b>왜 방문자 수가 이 페이지에 없나요?</b> 측정은 되고 있지만(GA4·Clarity 모두 연동됨), 그 숫자를 이 페이지로 끌어오려면 GA4 API 연결이 따로 필요합니다. 지금은 링크로 바로 넘어가 보는 편이 낫습니다 — 데이터가 며칠 쌓인 뒤에 붙이는 게 순서상 맞습니다.</p>
+  <p class="note"><b>방문자 수는 어디서 갱신되나요?</b> 매일 06:00에 GitHub Actions가 GA4 API로 최근 30일 지표를 가져와 <code>assets/data/analytics.json</code>에 저장하고, 이 페이지가 그걸 그대로 읽습니다. "유입 상세" 섹션에 아무것도 안 뜨면 그 파일이 아직 없다는 뜻 — 처음 한 번은 GitHub 저장소의 Actions 탭에서 "Fetch GA4 analytics"를 수동 실행해야 합니다.</p>
   <p class="note"><b>발행량이 왜 맨 아래인가요?</b> 글을 많이 쓰는 것 자체는 성과가 아니기 때문입니다. 이 사이트의 성과는 <b>문의</b>이고, 글은 그 문의가 들어올 만한 사람이라는 걸 보여주는 근거입니다. 그래서 발행량은 "성과"가 아니라 "재고"로 읽어야 합니다.</p>
   <p class="note"><b>주소를 공유하지 마세요.</b> 이 저장소는 공개라서, 주소를 아는 사람은 누구나 이 페이지를 볼 수 있습니다. 검색에는 걸리지 않도록 막아 두었지만 주소 자체가 유일한 자물쇠입니다.</p>
 </section>
@@ -360,6 +370,76 @@
       });
   }
 
+  /* 유입 상세 — GA4 API가 매일 써주는 analytics.json을 읽습니다.
+     아직 서비스 계정을 안 붙였거나(파일 없음, 404) 워크플로가 한 번도
+     안 돌았으면 에러가 아니라 "아직 수집 전" 안내를 보여줍니다. */
+  var ENGAGEMENT_LABELS = {
+    section_view_proven: ['로고월 도달', '실적(고객사) 구간까지 스크롤'],
+    section_view_voices: ['후기 도달', 'VOICES IN THE FIELD 구간까지 스크롤'],
+    section_view_book_class: ['책/클래스 도달', '판매 링크 구간까지 스크롤'],
+    section_view_faq: ['FAQ 도달', 'FAQ 구간까지 스크롤'],
+    faq_open: ['FAQ 펼침', '섭외 절차를 읽음 — 강한 의도'],
+    read_complete: ['글 완독', '온라인강의 예비고객 신호']
+  };
+
+  function renderAnalytics(){
+    fetch('/assets/data/analytics.json?t=' + Date.now(), { cache:'no-store' })
+      .then(function(r){ if(!r.ok) throw { notYet: r.status===404 }; return r.json(); })
+      .then(function(d){
+        var note = document.getElementById('analyticsNote');
+        var updated = d.updated_at ? new Date(d.updated_at) : null;
+        note.textContent = '최근 30일 · ' + (updated ? fmt(updated) + ' 갱신' : '');
+
+        var t = d.totals || {};
+        var box = document.getElementById('analyticsTiles'); box.textContent='';
+        box.appendChild(tile('세션', (t.sessions||0).toLocaleString(), '', '최근 30일'));
+        box.appendChild(tile('방문자', (t.activeUsers||0).toLocaleString(), '', ''));
+        box.appendChild(tile('신규 방문자', (t.newUsers||0).toLocaleString(), '', '최초방문 — GEO/AEO가 늘려야 할 숫자'));
+        box.appendChild(tile('재방문자', (t.returningUsers||0).toLocaleString(), '', '이 사이트의 핵심 KPI'));
+
+        var stbl = document.getElementById('sourceTable'); stbl.textContent='';
+        var thead = el('thead'), htr = el('tr');
+        ['소스','세션','AI 엔진 유입'].forEach(function(h){ htr.appendChild(el('th',null,h)); });
+        thead.appendChild(htr); stbl.appendChild(thead);
+        var tb = el('tbody');
+        var aiSources = {};
+        (d.ai_referrals||[]).forEach(function(a){ aiSources[a.source]=true; });
+        var sources = d.top_sources || [];
+        if(!sources.length){
+          var tr0 = el('tr'); var td0 = el('td',null,'아직 데이터 없음'); td0.colSpan=3; td0.style.color='var(--muted)';
+          tr0.appendChild(td0); tb.appendChild(tr0);
+        }
+        sources.forEach(function(s){
+          var tr = el('tr');
+          tr.appendChild(el('td',null,s.source));
+          tr.appendChild(el('td','num',(s.sessions||0).toLocaleString()));
+          var badgeTd = el('td');
+          if(aiSources[s.source]) badgeTd.appendChild(el('span','badge on','AI'));
+          tr.appendChild(badgeTd);
+          tb.appendChild(tr);
+        });
+        stbl.appendChild(tb);
+
+        var eBox = document.getElementById('engagementTiles'); eBox.textContent='';
+        var ev = d.engagement_events || {};
+        Object.keys(ENGAGEMENT_LABELS).forEach(function(key){
+          var lab = ENGAGEMENT_LABELS[key];
+          eBox.appendChild(tile(lab[0], (ev[key]||0).toLocaleString(), '회', lab[1]));
+        });
+      })
+      .catch(function(e){
+        var note = document.getElementById('analyticsNote');
+        if(e && e.notYet){
+          note.textContent = '아직 수집 전입니다. GA4 서비스 계정 연결 후 "Fetch GA4 analytics" 워크플로가 한 번 돌면 채워집니다 (매일 06:00 자동 실행).';
+        } else {
+          note.textContent = '불러오기 실패했습니다.';
+        }
+        document.getElementById('analyticsTiles').textContent='';
+        document.getElementById('sourceTable').textContent='';
+        document.getElementById('engagementTiles').textContent='';
+      });
+  }
+
   function tile(label, val, unit, foot){
     var t = el('div','tile');
     t.appendChild(el('div','label',label));
@@ -518,6 +598,7 @@
   renderConversion();
   renderFunnel();
   renderTrust();
+  renderAnalytics();
   renderIntegrations();
   document.getElementById('refreshBtn').addEventListener('click', load);
   load();

@@ -1,0 +1,55 @@
+name: Fetch GA4 analytics
+
+# GA4 Data API에서 최근 30일 방문 지표를 매일 한 번 가져와서
+# assets/data/analytics.json에 커밋한다. 비공개 대시보드(insight-7b3e9f2c/)가
+# 이 파일을 읽어서 화면에 그린다.
+#
+# 필요한 저장소 Secrets (Settings → Secrets and variables → Actions):
+#   GA4_SERVICE_ACCOUNT_JSON  서비스 계정 키 JSON 파일 내용 전체
+#   GA4_PROPERTY_ID           GA4 속성 숫자 ID (측정ID G-XXXX와 다름)
+# 두 값 모두 대화로 주고받지 말고 이 화면에 사장님이 직접 붙여넣을 것.
+
+on:
+  schedule:
+    - cron: "0 21 * * *"  # 매일 06:00 KST
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-analytics
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install google-analytics-data
+
+      - name: Fetch GA4 report
+        env:
+          GA4_SERVICE_ACCOUNT_JSON: ${{ secrets.GA4_SERVICE_ACCOUNT_JSON }}
+          GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}
+        run: python scripts/fetch_ga4.py
+
+      - name: Commit changes if any
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/data/analytics.json
+          if git diff --cached --quiet; then
+            echo "no changes to commit"
+          else
+            git commit -m "chore: refresh GA4 analytics snapshot [skip ci]"
+            git push
+          fi
