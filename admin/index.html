@@ -190,20 +190,60 @@
       bar.id = "content-tab-bar";
       bar.style.cssText = "display:flex;gap:6px;margin:4px 0 10px;flex-wrap:wrap;";
 
+      var lastBodyRect = null;
+
+      function clearOverlayStyle(el) {
+        el.style.position = "";
+        el.style.top = "";
+        el.style.left = "";
+        el.style.width = "";
+        el.style.maxHeight = "";
+        el.style.overflow = "";
+        el.style.zIndex = "";
+        el.style.background = "";
+        el.style.border = "";
+        el.style.boxShadow = "";
+        el.style.padding = "";
+      }
+
       function selectTab(activeKey) {
+        // 이전에 다른 필드를 "본문 자리에 겹쳐" 보여주고 있었다면 스타일 원복
         CONTENT_TABS.forEach(function (t) {
-          if (containers[t.key]) {
-            containers[t.key].style.display = t.key === activeKey ? "" : "none";
-          }
+          if (t.key !== "본문" && containers[t.key]) clearOverlayStyle(containers[t.key]);
         });
+
+        if (activeKey === "본문") {
+          CONTENT_TABS.forEach(function (t) {
+            if (containers[t.key]) containers[t.key].style.display = t.key === "본문" ? "" : "none";
+          });
+          // 본문이 실제 자리를 차지하고 있을 때 위치를 다시 재보 -- 다음에
+          // 다른 탭으로 바꿀 때 이 좌표에 겹쳐서 띄운다.
+          lastBodyRect = containers["본문"].getBoundingClientRect();
+        } else {
+          var rect = lastBodyRect || containers["본문"].getBoundingClientRect();
+          CONTENT_TABS.forEach(function (t) {
+            if (!containers[t.key]) return;
+            containers[t.key].style.display = t.key === activeKey ? "" : "none";
+          });
+          var target = containers[activeKey];
+          target.style.position = "fixed";
+          target.style.top = Math.max(rect.top, 8) + "px";
+          target.style.left = rect.left + "px";
+          target.style.width = rect.width + "px";
+          target.style.maxHeight = window.innerHeight - Math.max(rect.top, 8) - 16 + "px";
+          target.style.overflow = "auto";
+          target.style.zIndex = "9999";
+          target.style.background = "#fff";
+          target.style.border = "1px solid #999";
+          target.style.boxShadow = "0 4px 16px rgba(0,0,0,.2)";
+          target.style.padding = "10px";
+        }
+
         Array.prototype.forEach.call(bar.children, function (btn, i) {
           var isActive = CONTENT_TABS[i].key === activeKey;
           btn.style.background = isActive ? "#dcefff" : "#f5f5f5";
           btn.style.fontWeight = isActive ? "bold" : "normal";
         });
-        if (containers[activeKey]) {
-          containers[activeKey].scrollIntoView({ behavior: "smooth", block: "start" });
-        }
       }
 
       CONTENT_TABS.forEach(function (t) {
