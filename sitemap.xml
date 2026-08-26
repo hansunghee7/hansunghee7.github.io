@@ -3528,4 +3528,10 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://simplifier.co.kr/log_assets/markdown/615_%EB%82%B4%20%EC%9D%B8%EC%83%9D%EC%9D%98%20%EB%8F%9B%2C%20%EB%82%B4%EA%B0%80%20%EC%9E%A1%EA%B3%A0%20%EC%9E%88%EB%82%98.html</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
