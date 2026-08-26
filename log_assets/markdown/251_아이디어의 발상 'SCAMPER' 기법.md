@@ -2,7 +2,7 @@
 layout: default
 title: "아이디어의 발상 'SCAMPER' 기법"
 category: '기획자의 프레임웍'
-image: '/log_assets/images/251_아이디어의 발상 ''SCAMPER'' 기법_cover.jpg'
+image: '/log_assets/images/251_아이디어의 발상 SCAMPER 기법_cover.jpg'
 date_string: 'Jan 28. 2025'
 date: 2025-01-28
 keywords: '기획자의 질문법, 기획 프레임워크, PM 역량강화'

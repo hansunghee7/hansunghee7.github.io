@@ -2,7 +2,7 @@
 layout: default
 title: "AI의 행동을 만들다. Manus AI"
 category: '스타트업 인사이트'
-image: '/log_assets/images/207_AI의 행동을 만들다. ''Manus AI''_cover.jpg'
+image: '/log_assets/images/207_AI의 행동을 만들다. Manus AI_cover.jpg'
 date_string: 'Mar 11. 2025'
 date: 2025-03-11
 keywords: '스타트업 성장 전략, 스타트업 코칭, PMF 이후 전략'

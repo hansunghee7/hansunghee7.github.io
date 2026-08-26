@@ -2,7 +2,7 @@
 layout: default
 title: "고객은 제품을 '고용'한다 'JTBD프레임웍'"
 category: '기획자의 프레임웍'
-image: '/log_assets/images/128_고객은 제품을 ''고용''한다. ''JTBD프레임웍''_cover.jpg'
+image: '/log_assets/images/128_고객은 제품을 고용한다. JTBD프레임웍_cover.jpg'
 date_string: 'May 27. 2025'
 date: 2025-05-27
 keywords: '기획자의 질문법, 기획 프레임워크, PM 역량강화'

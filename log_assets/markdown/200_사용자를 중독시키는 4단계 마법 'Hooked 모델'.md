@@ -2,7 +2,7 @@
 layout: default
 title: "사용자를 중독시키는 4단계 마법 'Hooked 모델'"
 category: '기획자의 프레임웍'
-image: '/log_assets/images/200_사용자를 중독시키는 4단계 마법 ''Hooked 모델''_cover.jpg'
+image: '/log_assets/images/200_사용자를 중독시키는 4단계 마법 Hooked 모델_cover.jpg'
 date_string: 'Mar 18. 2025'
 date: 2025-03-18
 keywords: '기획자의 질문법, 기획 프레임워크, PM 역량강화'
