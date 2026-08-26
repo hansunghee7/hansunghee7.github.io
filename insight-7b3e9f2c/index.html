@@ -113,7 +113,8 @@
 
 <header>
   <h1>사이트 인사이트</h1>
-  <p class="sub">simplifier.co.kr 콘텐츠 현황과 측정 도구 연동 상태를 한눈에 봅니다.</p>
+  <p class="sub">이 사이트가 하는 일은 <b>코칭 계약과 강연 섭외로 이어질 문의를 받는 것</b>입니다.
+  그래서 맨 위가 문의(전환)이고, 글은 그 문의를 뒷받침하는 근거 자산으로 아래에 둡니다.</p>
   <div class="metaline">
     <button class="refresh" id="refreshBtn">↻ 새로고침</button>
     <span id="dataAsOf">데이터 불러오는 중…</span>
@@ -122,14 +123,37 @@
 </header>
 
 <section>
-  <h2>측정 도구 연동</h2>
-  <p class="h2note">아래 4개가 모두 켜져야 방문자·검색 유입 데이터가 쌓이기 시작합니다.</p>
+  <h2>① 문의 — 이 사이트의 핵심 지표</h2>
+  <p class="h2note" id="measureNote">측정 상태를 확인하는 중…</p>
+  <div class="tiles" id="conversionTiles"></div>
+  <p class="note" style="margin-top:16px">
+    문의는 모달 안에서 전송돼 페이지 이동이 없기 때문에, 원래는 GA4가 이걸 전혀 보지 못했습니다.
+    2026-08-26에 <b>generate_lead</b> 이벤트를 심어서 이제부터 잡힙니다.
+    <b>그 이전 기간의 문의는 소급해서 볼 수 없습니다.</b>
+  </p>
+</section>
+
+<section>
+  <h2>② 깔때기 — 문의까지 가는 길</h2>
+  <p class="h2note">각 단계가 지금 측정되고 있는지, 실제 숫자는 어디서 보는지 정리했습니다.</p>
+  <div class="tablebox"><table id="funnelTable"></table></div>
+</section>
+
+<section>
+  <h2>③ 신뢰 자산</h2>
+  <p class="h2note">섭외 담당자가 결정을 내릴 때 실제로 보는 요소들입니다. 홈페이지를 직접 읽어와 세기 때문에 홈을 고치면 이 숫자도 따라 바뀝니다.</p>
+  <div class="tiles" id="trustTiles"></div>
+</section>
+
+<section>
+  <h2>④ 측정 도구 연동</h2>
+  <p class="h2note">위 지표들이 실제로 쌓이려면 아래 4개가 살아 있어야 합니다.</p>
   <div class="integrations" id="integrations"></div>
 </section>
 
 <section>
-  <h2>콘텐츠 현황</h2>
-  <p class="h2note">사이트에 실제로 올라가 있는 글 기준입니다.</p>
+  <h2>⑤ 콘텐츠 자산</h2>
+  <p class="h2note">글은 목적이 아니라 <b>신뢰의 근거</b>입니다. 아래는 성과가 아니라 재고 현황으로 보세요 — 발행량이 많다고 문의가 느는 건 아닙니다.</p>
   <div class="tiles" id="kpis"></div>
 </section>
 
@@ -163,7 +187,8 @@
 <section>
   <h2>읽는 법</h2>
   <p class="note"><b>이 페이지는 어떻게 갱신되나요?</b> 글 데이터는 사이트가 새 글을 발행할 때마다 자동으로 갱신되는 <code>posts.json</code>을 그대로 읽습니다. 따로 수집 작업이 돌지 않아도 항상 최신입니다.</p>
-  <p class="note"><b>방문자 수는 왜 없나요?</b> 아직 측정 도구가 연동되지 않았기 때문입니다. 위 "측정 도구 연동"이 모두 켜지면 방문자·유입경로·인기글·검색어를 이 페이지에 붙일 수 있습니다. 데이터는 도구를 켠 시점부터 쌓이고, 그 이전 기간은 소급해서 볼 수 없습니다.</p>
+  <p class="note"><b>왜 방문자 수가 이 페이지에 없나요?</b> 측정은 되고 있지만(GA4·Clarity 모두 연동됨), 그 숫자를 이 페이지로 끌어오려면 GA4 API 연결이 따로 필요합니다. 지금은 링크로 바로 넘어가 보는 편이 낫습니다 — 데이터가 며칠 쌓인 뒤에 붙이는 게 순서상 맞습니다.</p>
+  <p class="note"><b>발행량이 왜 맨 아래인가요?</b> 글을 많이 쓰는 것 자체는 성과가 아니기 때문입니다. 이 사이트의 성과는 <b>문의</b>이고, 글은 그 문의가 들어올 만한 사람이라는 걸 보여주는 근거입니다. 그래서 발행량은 "성과"가 아니라 "재고"로 읽어야 합니다.</p>
   <p class="note"><b>주소를 공유하지 마세요.</b> 이 저장소는 공개라서, 주소를 아는 사람은 누구나 이 페이지를 볼 수 있습니다. 검색에는 걸리지 않도록 막아 두었지만 주소 자체가 유일한 자물쇠입니다.</p>
 </section>
 
@@ -199,6 +224,35 @@
     '대한민국 스타트업 미국진출을 묻다'
   ];
 
+  /* 전환 측정을 심은 날. 이 날짜 이전의 문의는 GA4로 소급 확인할 수 없습니다. */
+  var MEASURE_START = '2026-08-26';
+
+  /* 문의까지 가는 단계. 각 단계를 "무엇으로 재는지 / 어디서 보는지"로 적습니다.
+     숫자를 여기 직접 넣지 않는 이유: GA4 API를 붙이기 전까지는 실제 값을 가져올
+     수 없고, 빈 숫자를 띄우면 측정되는 것처럼 오해하게 됩니다. */
+  var FUNNEL = [
+    { step:'① 발견',
+      q:'섭외하려는 사람이 우리를 찾아내는가',
+      metric:'검색 노출·클릭, 특히 "강사 섭외 · 기업교육 강사 · 스타트업 코칭" 같은 섭외 의도 검색어',
+      where:'Google 서치콘솔 → 실적', ok:true,
+      href:'https://search.google.com/search-console' },
+    { step:'② 신뢰',
+      q:'와서 우리를 믿을 만하다고 보는가',
+      metric:'로고월·후기·책까지 스크롤 도달, 이탈 지점, 실제 클릭',
+      where:'Clarity → 열 지도 / 레코딩', ok:true,
+      href:'https://clarity.microsoft.com/' },
+    { step:'③ 전환',
+      q:'문의 버튼을 누르고 실제로 보내는가',
+      metric:'contact_open(관심) → generate_lead(문의 완료), 그리고 그 사이 이탈률',
+      where:'GA4 → 보고서 → 실시간 / 이벤트', ok:true,
+      href:'https://analytics.google.com/' },
+    { step:'④ 귀결',
+      q:'그 문의가 계약·섭외로 이어졌는가',
+      metric:'문의 내용과 성사 여부 (자동 측정 불가 — 사람이 기록해야 하는 영역)',
+      where:'Formspree 메일함 + 직접 기록', ok:false,
+      href:'https://formspree.io/' }
+  ];
+
   var MONTH = {Jan:1,Feb:2,Mar:3,Apr:4,May:5,Jun:6,Jul:7,Aug:8,Sep:9,Oct:10,Nov:11,Dec:12};
 
   function parseDate(s){
@@ -228,6 +282,82 @@
       c.appendChild(a);
       box.appendChild(c);
     });
+  }
+
+  /* ① 문의 — 아직 GA4 API를 안 붙였으므로 "숫자"가 아니라 "측정 상태"를 정직하게 보여줍니다. */
+  function renderConversion(){
+    var start = new Date(MEASURE_START + 'T00:00:00');
+    var today = new Date(); today.setHours(0,0,0,0);
+    var days = Math.max(0, daysBetween(today, start)) + 1;
+
+    document.getElementById('measureNote').textContent =
+      '전환 측정 ' + days + '일차 (' + MEASURE_START + ' 시작). 실제 문의 건수는 아직 이 페이지로 가져오지 않습니다 — 아래 GA4에서 확인하세요.';
+
+    var box = document.getElementById('conversionTiles'); box.textContent='';
+    box.appendChild(tile('문의 (generate_lead)', '측정중', '', days + '일치 수집됨 · 수치는 GA4에서'));
+    box.appendChild(tile('측정 시작', MEASURE_START, '', '이전 기간은 소급 불가'));
+
+    var t = el('div','tile');
+    t.appendChild(el('div','label','지금 확인하기'));
+    var links = [
+      ['GA4 실시간','https://analytics.google.com/'],
+      ['Clarity 레코딩','https://clarity.microsoft.com/'],
+      ['서치콘솔 실적','https://search.google.com/search-console']
+    ];
+    links.forEach(function(l){
+      var a = el('a',null,l[0]+' ↗');
+      a.href=l[1]; a.target='_blank'; a.rel='noopener noreferrer';
+      a.style.cssText='display:block;color:var(--dim);font-size:13px;text-decoration:none;margin-top:7px';
+      t.appendChild(a);
+    });
+    box.appendChild(t);
+  }
+
+  /* ② 깔때기 */
+  function renderFunnel(){
+    var t = document.getElementById('funnelTable'); t.textContent='';
+    var thead = el('thead'), htr = el('tr');
+    ['단계','묻는 질문','무엇으로 재나','어디서 보나'].forEach(function(h){ htr.appendChild(el('th',null,h)); });
+    thead.appendChild(htr); t.appendChild(thead);
+    var tb = el('tbody');
+    FUNNEL.forEach(function(f){
+      var tr = el('tr');
+      var s = el('td'); s.appendChild(el('span',null,f.step));
+      s.appendChild(el('span','badge '+(f.ok?'on':'off'), f.ok?' 측정됨':' 수동'));
+      s.querySelector('.badge').style.marginLeft='8px';
+      tr.appendChild(s);
+      var q = el('td',null,f.q); q.style.whiteSpace='normal'; q.style.maxWidth='190px'; tr.appendChild(q);
+      var m = el('td',null,f.metric); m.style.whiteSpace='normal'; m.style.maxWidth='330px'; m.style.color='var(--muted)'; tr.appendChild(m);
+      var w = el('td'); var a = el('a',null,f.where+' ↗');
+      a.href=f.href; a.target='_blank'; a.rel='noopener noreferrer';
+      w.appendChild(a); w.style.whiteSpace='normal'; tr.appendChild(w);
+      tb.appendChild(tr);
+    });
+    t.appendChild(tb);
+  }
+
+  /* ③ 신뢰 자산 — 홈페이지 HTML을 직접 읽어 세므로 홈을 고치면 자동으로 반영됩니다. */
+  function renderTrust(){
+    var box = document.getElementById('trustTiles');
+    box.textContent='';
+    box.appendChild(tile('신뢰 자산','읽는 중…','',''));
+    fetch('/?t=' + Date.now(), { cache:'no-store' })
+      .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.text(); })
+      .then(function(html){
+        var doc = new DOMParser().parseFromString(html, 'text/html');
+        var n = function(sel){ return doc.querySelectorAll(sel).length; };
+        box.textContent='';
+        box.appendChild(tile('고객사 로고', n('.reveal-grid .gitem'), '개', '실적 증거'));
+        box.appendChild(tile('현장 후기', n('.quote-block'), '건', 'VOICES IN THE FIELD'));
+        box.appendChild(tile('책 · 클래스', n('.overlay-card'), '개', '클릭 시 book_class_click 기록'));
+        box.appendChild(tile('FAQ', n('.faq-item'), '문항', '섭외 절차 안내'));
+        box.appendChild(tile('현장 사진', n('.story-gallery .gallery-item'), '장', '강연·워크숍 장면'));
+        box.appendChild(tile('문의 버튼', n('.open-contact-modal'), '곳', '전환 진입점'));
+      })
+      .catch(function(e){
+        box.textContent='';
+        box.appendChild(el('div','err','홈페이지를 읽지 못했습니다 ('+e.message+').'));
+      });
   }
 
   function tile(label, val, unit, foot){
@@ -385,6 +515,9 @@
       });
   }
 
+  renderConversion();
+  renderFunnel();
+  renderTrust();
   renderIntegrations();
   document.getElementById('refreshBtn').addEventListener('click', load);
   load();
