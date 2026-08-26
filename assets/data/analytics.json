@@ -1,0 +1,32 @@
+{
+  "updated_at": "2026-08-26T09:33:34.501096+00:00",
+  "range": "last_30_days",
+  "totals": {
+    "sessions": 3,
+    "activeUsers": 3,
+    "newUsers": 2,
+    "returningUsers": 1
+  },
+  "daily": [
+    {
+      "date": "2026-08-26",
+      "sessions": 3,
+      "activeUsers": 3
+    }
+  ],
+  "top_sources": [
+    {
+      "source": "(not set)",
+      "sessions": 3
+    }
+  ],
+  "ai_referrals": [],
+  "engagement_events": {
+    "section_view_proven": 0,
+    "section_view_voices": 0,
+    "section_view_book_class": 0,
+    "section_view_faq": 0,
+    "faq_open": 0,
+    "read_complete": 0
+  }
+}
