@@ -34,6 +34,10 @@ collections:
         widget: "string"
         hint: "홈페이지 카드/탭 제목에 그대로 노출됩니다."
 
+      - name: "body"
+        label: "본문"
+        widget: "markdown"
+
       - name: "category"
         label: "카테고리"
         widget: "select"
@@ -75,22 +79,19 @@ collections:
         label: "SEO 키워드"
         widget: "string"
         required: false
-        hint: "쉼표로 구분. 검색엔진용, 화면에 안 보입니다."
+        hint: "쉼표로 구분. 검색엔진용, 화면에 안 보입니다. 본문 다 쓰신 뒤, 오른쪽 미리보기 위의 복사 버튼으로 Claude/ChatGPT에 물어봐서 붙여넣으세요."
 
       - name: "about"
         label: "SEO 주제어"
         widget: "string"
         required: false
+        hint: "위 복사 버튼으로 함께 받은 주제어를 붙여넣으세요."
 
       - name: "published"
         label: "공개 여부"
         widget: "boolean"
         default: true
         hint: "꺼두면 초안 상태로 저장되고 홈페이지 어디에도 노출되지 않습니다."
-
-      - name: "body"
-        label: "본문"
-        widget: "markdown"
 
       - name: "channel_variants"
         label: "채널별 발행 텍스트 (선택)"

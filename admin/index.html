@@ -13,5 +13,97 @@
        쓰고 고치게 해줍니다. 로그인은 GitHub OAuth App + 프록시가 필요합니다
        (admin/README.md 참고). -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    // 본문을 다 쓴 뒤, 제목+본문을 프롬프트 형태로 클립보드에 복사해서
+    // Claude/ChatGPT 같은 곳에 붙여넣어 SEO 키워드/주제어를 받아올 수 있게
+    // 해주는 버튼. 미리보기 패널 전체를 대체하는 방식으로 등록한다 -- 위젯
+    // Control은 다른 필드 값에 접근할 수 없지만, 미리보기(Preview)는 글
+    // 전체 데이터(entry)에 접근할 수 있기 때문.
+    function copyTextToClipboard(text, onDone) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          function () { onDone(true); },
+          function () { onDone(legacyCopy(text)); }
+        );
+      } else {
+        onDone(legacyCopy(text));
+      }
+    }
+
+    function legacyCopy(text) {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      var ok = false;
+      try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+      document.body.removeChild(ta);
+      return ok;
+    }
+
+    var PostPreview = createClass({
+      getInitialState: function () {
+        return { status: "idle" };
+      },
+      handleCopy: function () {
+        var entry = this.props.entry;
+        var title = entry.getIn(["data", "title"]) || "";
+        var body = entry.getIn(["data", "body"]) || "";
+        var prompt = [
+          "다음은 블로그 글의 제목과 본문이야. 이 글을 분석해서 아래 두 가지를 만들어줘.",
+          "1) SEO 키워드 5~8개 (쉼표로 구분된 한 줄)",
+          "2) 이 글의 핵심 주제를 나타내는 5~10단어 이내의 짧은 문구",
+          "",
+          "제목: " + title,
+          "",
+          "본문:",
+          body,
+        ].join("\n");
+        var self = this;
+        copyTextToClipboard(prompt, function (ok) {
+          self.setState({ status: ok ? "copied" : "failed" });
+          setTimeout(function () { self.setState({ status: "idle" }); }, 3000);
+        });
+      },
+      render: function () {
+        var label =
+          this.state.status === "copied"
+            ? "복사 완료! Claude나 ChatGPT에 붙여넣으세요"
+            : this.state.status === "failed"
+            ? "복사 실패 — 직접 선택해서 복사해주세요"
+            : "📋 제목+본문 프롬프트 복사 (SEO 키워드용)";
+        return h(
+          "div",
+          { style: { padding: "16px" } },
+          h(
+            "button",
+            {
+              type: "button",
+              onClick: this.handleCopy,
+              style: {
+                display: "block",
+                width: "100%",
+                marginBottom: "16px",
+                padding: "10px 14px",
+                fontSize: "14px",
+                cursor: "pointer",
+                border: "1px solid #ccc",
+                borderRadius: "6px",
+                background: this.state.status === "idle" ? "#f5f5f5" : "#e6f7e6",
+              },
+            },
+            label
+          ),
+          h("h1", {}, this.props.entry.getIn(["data", "title"]) || ""),
+          this.props.widgetFor("body")
+        );
+      },
+    });
+
+    CMS.registerPreviewTemplate("posts", PostPreview);
+  </script>
 </body>
 </html>
