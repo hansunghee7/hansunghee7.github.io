@@ -115,7 +115,7 @@
         .post-mode .cover-sub { font-size: 14px; font-weight: 300; opacity: 0.8; font-style: italic; margin-top: 16px; text-shadow: 0 1px 5px rgba(0,0,0,0.5); }
 
         /* 2. 포스트 본문 영역 */
-        .article-body { max-width: 1100px; margin: 0 auto; padding: 40px 20px 40px; background-color: #fff; position: relative; }
+        .article-body { max-width: 1100px; width: 100%; min-width: 0; box-sizing: border-box; margin: 0 auto; padding: 40px 20px 40px; background-color: #fff; position: relative; }
         /* 본문 시트는 화면 전체 폭(흰 배경)이고, 글은 그 안의 700px 중앙 컬럼에 들어갑니다.
            max-width로 폭을 잡으면 시트 자체가 좁아져 커버 위에 뜬 박스처럼 보입니다. */
         .post-mode + .article-body { box-sizing: border-box; width: 100%; max-width: none; padding-left: max(20px, calc((100% - 700px) / 2)); padding-right: max(20px, calc((100% - 700px) / 2)); padding-top: 60px; padding-bottom: 60px !important; }
