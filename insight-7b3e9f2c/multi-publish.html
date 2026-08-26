@@ -75,17 +75,23 @@
   .btn.primary:hover{opacity:0.85;}
   .btn.copied{background:var(--good); color:#fff; border-color:var(--good);}
 
-  /* ---- 채널 카드 ---- */
-  #channels{display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:16px;}
-  .channel-card{border:1px solid var(--line-soft); border-radius:10px; padding:16px; display:flex; flex-direction:column; gap:10px;}
-  .channel-card h3{margin:0; font-size:13.5px; font-weight:600; display:flex; align-items:center; justify-content:space-between;}
-  .channel-card h3 .badge{font-size:10.5px; font-weight:500; color:var(--muted); text-transform:uppercase; letter-spacing:0.04em;}
-  .channel-card textarea{width:100%; min-height:160px; resize:vertical; font-family:inherit; font-size:13px; line-height:1.7; padding:10px; border:1px solid var(--line-soft); border-radius:6px; color:var(--ink);}
-  .channel-card textarea::placeholder{color:var(--muted);}
-  .channel-card .charcount{font-size:11px; color:var(--muted); text-align:right;}
-  .channel-card .charcount.over{color:var(--bad); font-weight:600;}
-  .channel-card .row{display:flex; gap:8px; flex-wrap:wrap;}
-  .channel-card .row .btn{flex:1 1 auto; justify-content:center; white-space:nowrap;}
+  /* ---- 채널 탭 ---- */
+  #channelTabs{display:flex; gap:4px; overflow-x:auto; border-bottom:1px solid var(--line); margin-bottom:0;}
+  #channelTabs button{flex:0 0 auto; padding:12px 18px; font-size:14px; font-weight:500; color:var(--muted); background:none; border:none; border-bottom:2px solid transparent; cursor:pointer; white-space:nowrap; font-family:inherit; margin-bottom:-1px;}
+  #channelTabs button:hover{color:var(--ink);}
+  #channelTabs button.active{color:var(--ink); font-weight:600; border-bottom-color:var(--ink);}
+
+  /* ---- 채널 쓰기 화면 (선택된 탭 1개만 크게) ---- */
+  #channelPanel{border:1px solid var(--line-soft); border-top:none; border-radius:0 0 10px 10px; padding:22px; margin-bottom:40px;}
+  .panel-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; flex-wrap:wrap; gap:8px;}
+  .panel-head h3{margin:0; font-size:15px; font-weight:600;}
+  .panel-head .badge{font-size:11px; font-weight:500; color:var(--muted); text-transform:uppercase; letter-spacing:0.04em;}
+  #channelPanel textarea{width:100%; min-height:420px; resize:vertical; font-family:inherit; font-size:14.5px; line-height:1.8; padding:16px; border:1px solid var(--line-soft); border-radius:8px; color:var(--ink);}
+  #channelPanel textarea::placeholder{color:var(--muted);}
+  #channelPanel .charcount{font-size:11.5px; color:var(--muted); text-align:right; margin-top:6px;}
+  #channelPanel .charcount.over{color:var(--bad); font-weight:600;}
+  #channelPanel .row{display:flex; gap:8px; flex-wrap:wrap; margin-top:14px;}
+  #channelPanel .row .btn{padding:9px 16px; font-size:13px;}
 
   .empty-hint{font-size:12px; color:var(--muted); padding:20px; text-align:center; border:1px dashed var(--line); border-radius:8px;}
   .loading, .err{font-size:13px; color:var(--muted); padding:20px 0;}
@@ -127,7 +133,8 @@
       </div>
     </div>
 
-    <div id="channels"></div>
+    <div id="channelTabs"></div>
+    <div id="channelPanel"></div>
   </div>
 </div>
 
@@ -175,10 +182,17 @@
     downloadImgBtn: document.getElementById("downloadImgBtn"),
     openPostBtn: document.getElementById("openPostBtn"),
     openCmsBtn: document.getElementById("openCmsBtn"),
-    channels: document.getElementById("channels"),
+    tabs: document.getElementById("channelTabs"),
+    panel: document.getElementById("channelPanel"),
   };
 
   var allPosts = [];
+  // 지금 고른 글의 채널별 텍스트 상태. 탭을 옮겨도 여기서 고친 내용이
+  // 유지되도록, 화면을 새로 그릴 때마다 여기서 값을 읽고 씁니다.
+  var channelState = []; // [{ch, text}]
+  var activeChannelIdx = 0;
+  var currentTitle = "";
+  var currentBody = "";
 
   function setStatus(html) {
     els.status.innerHTML = html;
@@ -282,45 +296,70 @@
     // 검색해서 바로 찾을 수 있게 컬렉션 목록으로 보냅니다.
     els.openCmsBtn.href = "/admin/#/collections/posts";
 
-    els.channels.innerHTML = "";
-    CHANNELS.forEach(function (ch) {
-      var text = (ch.source(fm) || "").toString().trim();
-      els.channels.appendChild(buildChannelCard(ch, text, fm.title || post.title, body));
+    currentTitle = fm.title || post.title;
+    currentBody = body;
+    channelState = CHANNELS.map(function (ch) {
+      return { ch: ch, text: (ch.source(fm) || "").toString().trim() };
     });
+    activeChannelIdx = 0;
+
+    renderTabs();
+    renderPanel();
 
     els.selected.classList.add("show");
   }
 
-  function buildChannelCard(ch, text, title, body) {
-    var card = document.createElement("div");
-    card.className = "channel-card";
+  // 탭 UI: SNS 이름이 상단에 나란히 있고, 고른 탭 하나만 그 채널의
+  // 실제 쓰기 화면처럼 크게 보입니다(네이버블로그·브런치 글쓰기 화면과
+  // 같은 느낌 — 좁은 카드 여러 개가 아니라 한 화면 하나).
+  function renderTabs() {
+    els.tabs.innerHTML = channelState
+      .map(function (s, idx) {
+        return (
+          '<button type="button" class="tab-btn' + (idx === activeChannelIdx ? " active" : "") + '" data-idx="' + idx + '">' +
+          escapeHtml(s.ch.label) +
+          "</button>"
+        );
+      })
+      .join("");
+  }
 
-    var isEmpty = !text;
-    var placeholder = isEmpty
-      ? "CMS의 채널별 발행 텍스트가 비어 있습니다. 여기 직접 입력해서 복사만 하셔도 되고, CMS에서 채워두시면 다음부터 자동으로 채워집니다."
-      : "";
+  els.tabs.addEventListener("click", function (e) {
+    var btn = e.target.closest(".tab-btn");
+    if (!btn) return;
+    activeChannelIdx = Number(btn.getAttribute("data-idx"));
+    renderTabs();
+    renderPanel();
+  });
 
-    // 채널별로 버튼은 최대 3개: AI 요청 프롬프트 복사 / 제목 복사 / 본문 복사.
-    // AI 변환이 필요없는 채널(브런치·네이버블로그 등)은 AI 버튼을 뺍니다.
+  function renderPanel() {
+    var state = channelState[activeChannelIdx];
+    if (!state) return;
+    var ch = state.ch;
+
+    var placeholder = "CMS의 채널별 발행 텍스트가 비어 있습니다. 여기 직접 입력해서 복사만 하셔도 되고, CMS에서 채워두시면 다음부터 자동으로 채워집니다.";
+
     var aiBtnHtml = ch.aiInstruction
       ? '<button type="button" class="btn ai-btn">🤖 AI 요청 복사</button>'
       : "";
 
-    card.innerHTML =
-      "<h3>" + ch.label + (ch.limit ? '<span class="badge">권장 ' + ch.limit + "자 이내</span>" : "") + "</h3>" +
-      '<textarea placeholder="' + escapeHtml(placeholder) + '">' + escapeHtml(text) + "</textarea>" +
-      '<div class="row"><span class="charcount">0자</span></div>' +
+    els.panel.innerHTML =
+      '<div class="panel-head"><h3>' + escapeHtml(ch.label) + "</h3>" +
+      (ch.limit ? '<span class="badge">권장 ' + ch.limit + "자 이내</span>" : "") +
+      "</div>" +
+      '<textarea placeholder="' + escapeHtml(placeholder) + '">' + escapeHtml(state.text) + "</textarea>" +
+      '<div class="charcount">0자</div>' +
       '<div class="row">' +
         aiBtnHtml +
         '<button type="button" class="btn title-btn">제목 복사</button>' +
         '<button type="button" class="btn primary copy-btn">본문 복사</button>' +
       "</div>";
 
-    var textarea = card.querySelector("textarea");
-    var count = card.querySelector(".charcount");
-    var copyBtn = card.querySelector(".copy-btn");
-    var titleBtn = card.querySelector(".title-btn");
-    var aiBtn = card.querySelector(".ai-btn");
+    var textarea = els.panel.querySelector("textarea");
+    var count = els.panel.querySelector(".charcount");
+    var copyBtn = els.panel.querySelector(".copy-btn");
+    var titleBtn = els.panel.querySelector(".title-btn");
+    var aiBtn = els.panel.querySelector(".ai-btn");
 
     function updateCount() {
       var len = textarea.value.length;
@@ -328,7 +367,10 @@
       count.classList.toggle("over", !!ch.limit && len > ch.limit);
     }
     updateCount();
-    textarea.addEventListener("input", updateCount);
+    textarea.addEventListener("input", function () {
+      state.text = textarea.value;
+      updateCount();
+    });
 
     copyBtn.addEventListener("click", function () {
       copyText(textarea.value, function (ok) {
@@ -337,21 +379,19 @@
     });
 
     titleBtn.addEventListener("click", function () {
-      copyText(title, function (ok) {
+      copyText(currentTitle, function (ok) {
         flashBtn(titleBtn, ok, "제목 복사");
       });
     });
 
     if (aiBtn) {
       aiBtn.addEventListener("click", function () {
-        var prompt = buildAiPrompt(ch, title, body);
+        var prompt = buildAiPrompt(ch, currentTitle, currentBody);
         copyText(prompt, function (ok) {
           flashBtn(aiBtn, ok, "🤖 AI 요청 복사");
         });
       });
     }
-
-    return card;
   }
 
   function flashBtn(btn, ok, restoreLabel) {
