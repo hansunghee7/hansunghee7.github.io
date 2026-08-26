@@ -12,6 +12,8 @@
 <meta name="referrer" content="no-referrer">
 
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<!-- 브런치·네이버블로그 같은 장문 플랫폼은 세리프 계열의 넉넉한 본문 서체를 씁니다. -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
 
 <style>
@@ -81,13 +83,30 @@
   #channelTabs button:hover{color:var(--ink);}
   #channelTabs button.active{color:var(--ink); font-weight:600; border-bottom-color:var(--ink);}
 
-  /* ---- 채널 쓰기 화면 (선택된 탭 1개만 크게) ---- */
-  #channelPanel{border:1px solid var(--line-soft); border-top:none; border-radius:0 0 10px 10px; padding:22px; margin-bottom:40px;}
+  /* ---- 채널 쓰기 화면 (선택된 탭 1개만 크게) ----
+     각 서비스의 실제 쓰기 화면 생김새를 흉내냅니다.
+     narrow = 제목 없이 본문만, 좁은 폭 (LinkedIn/Facebook 포스트, Threads, Instagram)
+     wide   = 제목 입력칸 + 넓은 본문 (브런치·네이버블로그 같은 장문 에디터) */
+  #channelPanel{border:1px solid var(--line-soft); border-top:none; border-radius:0 0 10px 10px; padding:22px; margin-bottom:40px; background:#fdfdfb;}
+  #channelPanel.layout-narrow{max-width:560px; margin-left:auto; margin-right:auto;}
+  #channelPanel.layout-wide{max-width:760px; margin-left:auto; margin-right:auto;}
   .panel-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; flex-wrap:wrap; gap:8px;}
   .panel-head h3{margin:0; font-size:15px; font-weight:600;}
   .panel-head .badge{font-size:11px; font-weight:500; color:var(--muted); text-transform:uppercase; letter-spacing:0.04em;}
-  #channelPanel textarea{width:100%; min-height:420px; resize:vertical; font-family:inherit; font-size:14.5px; line-height:1.8; padding:16px; border:1px solid var(--line-soft); border-radius:8px; color:var(--ink);}
+  #channelPanel .title-field{width:100%; font-family:inherit; font-size:20px; font-weight:700; padding:10px 2px; border:none; border-bottom:1px solid var(--line-soft); margin-bottom:14px; color:var(--ink); background:transparent;}
+  #channelPanel .title-field:focus{outline:none; border-bottom-color:var(--ink);}
+  #channelPanel.layout-narrow textarea{min-height:220px;}
+  #channelPanel.layout-wide textarea{min-height:480px;}
+  #channelPanel textarea{width:100%; resize:vertical; padding:16px; border:1px solid var(--line-soft); border-radius:8px; color:var(--ink);}
   #channelPanel textarea::placeholder{color:var(--muted);}
+
+  /* 채널별 실제 서체·줄간격·글자 크기 — 각 서비스 쓰기 화면 느낌을 흉내냅니다. */
+  #channelPanel[data-key="linkedin"] textarea{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; font-size:15px; line-height:1.55;}
+  #channelPanel[data-key="threads"] textarea{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; font-size:15px; line-height:1.4;}
+  #channelPanel[data-key="facebook"] textarea{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; font-size:15px; line-height:1.55;}
+  #channelPanel[data-key="instagram"] textarea{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; font-size:14px; line-height:1.4;}
+  #channelPanel[data-key="manual"] textarea{font-family:"Noto Serif KR","Nanum Myeongjo",serif; font-size:17px; line-height:1.85; letter-spacing:-0.01em;}
+  #channelPanel[data-key="manual"] .title-field{font-family:"Noto Serif KR","Nanum Myeongjo",serif;}
   #channelPanel .charcount{font-size:11.5px; color:var(--muted); text-align:right; margin-top:6px;}
   #channelPanel .charcount.over{color:var(--bad); font-weight:600;}
   #channelPanel .row{display:flex; gap:8px; flex-wrap:wrap; margin-top:14px;}
@@ -143,29 +162,32 @@
   var POSTS_JSON = "/assets/data/posts.json";
   var RAW_BASE = "https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main";
 
+  // layout: 실제 그 서비스의 쓰기 화면 생김새를 흉내냅니다.
+  // "narrow" = 제목 없이 본문만, 좁은 폭 (LinkedIn/Facebook 포스트, Threads, Instagram 캡션)
+  // "wide"   = 제목 + 넓은 본문 (브런치·네이버블로그처럼 장문 에디터에 제목이 따로 있는 화면)
   var CHANNELS = [
     {
-      key: "linkedin", label: "LinkedIn", limit: 3000,
+      key: "linkedin", label: "LinkedIn", limit: 3000, layout: "narrow",
       source: function (fm) { return fm.channel_variants && fm.channel_variants.linkedin_threads; },
       aiInstruction: "전문적이고 통찰력 있는 톤으로, 문단 사이 줄바꿈을 넉넉히 넣어 가독성 좋게, 3000자 이내로 다듬어줘. 마지막 줄에 관련 해시태그 3~5개를 붙여줘.",
     },
     {
-      key: "threads", label: "Threads", limit: 500,
+      key: "threads", label: "Threads", limit: 500, layout: "narrow",
       source: function (fm) { return fm.channel_variants && fm.channel_variants.linkedin_threads; },
       aiInstruction: "짧고 캐주얼한 말투로, 500자 이내로 핵심만 압축해줘. 첫 문장이 스크롤을 멈추게 할 만큼 강렬해야 해. 해시태그는 1~2개만.",
     },
     {
-      key: "facebook", label: "Facebook (개인 프로필)", limit: 63206,
+      key: "facebook", label: "Facebook (개인 프로필)", limit: 63206, layout: "narrow",
       source: function (fm) { return fm.channel_variants && fm.channel_variants.linkedin_threads; },
       aiInstruction: "친근하고 개인적인 톤으로, 이모지를 적절히 섞어서 편하게 다듬어줘. 너무 길지 않게, 읽기 편한 호흡으로 문단을 나눠줘.",
     },
     {
-      key: "instagram", label: "Instagram", limit: 2200,
+      key: "instagram", label: "Instagram", limit: 2200, layout: "narrow",
       source: function (fm) { return (fm.channel_variants && (fm.channel_variants.instagram_caption || fm.channel_variants.linkedin_threads)); },
       aiInstruction: "감성적인 캡션 스타일로, 문장을 짧게 끊어서 다듬어줘. 마지막 줄에 관련 해시태그 10~15개를 붙여줘.",
     },
     {
-      key: "manual", label: "브런치 · 네이버블로그 · 리멤버 · 로켓펀치", limit: null,
+      key: "manual", label: "브런치 · 네이버블로그 · 리멤버 · 로켓펀치", limit: null, layout: "wide",
       source: function (fm) { return fm.channel_variants && fm.channel_variants.manual_copy_block; },
       aiInstruction: null,
     },
@@ -337,6 +359,10 @@
     var state = channelState[activeChannelIdx];
     if (!state) return;
     var ch = state.ch;
+    var isWide = ch.layout === "wide";
+
+    els.panel.className = isWide ? "layout-wide" : "layout-narrow";
+    els.panel.setAttribute("data-key", ch.key);
 
     var placeholder = "CMS의 채널별 발행 텍스트가 비어 있습니다. 여기 직접 입력해서 복사만 하셔도 되고, CMS에서 채워두시면 다음부터 자동으로 채워집니다.";
 
@@ -344,10 +370,18 @@
       ? '<button type="button" class="btn ai-btn">🤖 AI 요청 복사</button>'
       : "";
 
+    // wide(브런치·네이버블로그형)만 실제 화면처럼 제목칸을 따로 둡니다.
+    // narrow(LinkedIn/Threads/Facebook/Instagram)는 실제 서비스에도 제목칸이
+    // 없어서, 제목은 복사 버튼으로만 따로 꺼낼 수 있게 둡니다.
+    var titleFieldHtml = isWide
+      ? '<input type="text" class="title-field" value="' + escapeHtml(currentTitle) + '">'
+      : "";
+
     els.panel.innerHTML =
       '<div class="panel-head"><h3>' + escapeHtml(ch.label) + "</h3>" +
       (ch.limit ? '<span class="badge">권장 ' + ch.limit + "자 이내</span>" : "") +
       "</div>" +
+      titleFieldHtml +
       '<textarea placeholder="' + escapeHtml(placeholder) + '">' + escapeHtml(state.text) + "</textarea>" +
       '<div class="charcount">0자</div>' +
       '<div class="row">' +
@@ -357,6 +391,7 @@
       "</div>";
 
     var textarea = els.panel.querySelector("textarea");
+    var titleField = els.panel.querySelector(".title-field");
     var count = els.panel.querySelector(".charcount");
     var copyBtn = els.panel.querySelector(".copy-btn");
     var titleBtn = els.panel.querySelector(".title-btn");
@@ -380,7 +415,7 @@
     });
 
     titleBtn.addEventListener("click", function () {
-      copyText(currentTitle, function (ok) {
+      copyText(titleField ? titleField.value : currentTitle, function (ok) {
         flashBtn(titleBtn, ok, "제목 복사");
       });
     });
