@@ -167,6 +167,37 @@ layout: null
   @media (max-width:760px){ .close { padding-top:76px; padding-bottom:90px; } }
   .close .body { margin:0 auto 34px; }
   .fine { font-size:13.5px; color:#8f8b82; line-height:1.9; margin-top:30px; }
+
+  /* 히어로: 글과 인물 사진을 나란히. 좁은 화면에선 사진이 글 아래로. */
+  .hero-grid { display:grid; grid-template-columns: 1.15fr 0.85fr; gap:56px; align-items:center; }
+  @media (max-width:860px){ .hero-grid { grid-template-columns:1fr; gap:38px; } }
+  .portrait { width:100%; border-radius:12px; display:block;
+              filter: grayscale(18%) contrast(1.03); }
+  @media (max-width:860px){ .portrait { max-width:420px; } }
+
+  /* 현장 사진 — 정사각 5장을 한 줄로, 좁아지면 3장만 */
+  .shots { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-top:56px; }
+  .shots figure { margin:0; }
+  .shots img { width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:6px; display:block;
+               filter: grayscale(22%); transition: filter .35s ease, transform .35s ease; }
+  .shots figure:hover img { filter:none; transform:scale(1.03); }
+  .shots figcaption { font-size:11.5px; color:#8f8b82; margin-top:9px; line-height:1.5; letter-spacing:0.02em; }
+  @media (max-width:760px){
+    .shots { grid-template-columns:repeat(3,1fr); gap:8px; margin-top:38px; }
+    .shots figure:nth-child(n+4) { display:none; }
+    .shots figcaption { font-size:10.5px; }
+  }
+
+  /* 고객사 로고 */
+  .logos { display:grid; grid-template-columns:repeat(5,1fr); gap:34px 26px;
+           align-items:center; justify-items:center; margin-top:44px; }
+  .logos img { max-height:38px; max-width:100%; object-fit:contain;
+               filter: brightness(0) invert(1); opacity:0.55; transition: opacity .3s; }
+  .logos img:hover { opacity:0.95; }
+  @media (max-width:760px){
+    .logos { grid-template-columns:repeat(3,1fr); gap:26px 16px; margin-top:34px; }
+    .logos img { max-height:30px; }
+  }
 </style>
 </head>
 <body>
@@ -178,16 +209,22 @@ layout: null
 <!-- 1. 정체성 -->
 <section class="sec wrap" style="padding-top:132px;">
   <p class="eyebrow">Speaking</p>
-  <h1>강의만 하는 사람의<br>이야기가 <em>아닙니다</em></h1>
-  <p class="body">
-    저는 프로덕트를 만드는 사람입니다. 네이버에서 시작해 삼성전자, 요기요, 빗썸을 거쳐
-    실무자에서 팀장, PM, CPO, COO까지. 그리고 <strong>지금도 스타트업 현장에서 제품을 만들고 있습니다.</strong>
-  </p>
-  <p class="body">
-    강연은 그 일의 부산물입니다. 어제 회의에서 막혔던 문제, 이번 분기에 틀렸던 판단,
-    팀원과의 껄끄러웠던 대화 — <strong>지금 겪고 있는 것을 그대로 가져갑니다.</strong>
-    그래서 이론이 아니라 사례가 먼저 나오고, 끝은 늘 실습입니다.
-  </p>
+  <div class="hero-grid">
+    <div>
+      <h1>강의만 하는 사람의<br>이야기가 <em>아닙니다</em></h1>
+      <p class="body">
+        저는 프로덕트를 만드는 사람입니다. 네이버에서 시작해 삼성전자, 요기요, 빗썸을 거쳐
+        실무자에서 팀장, PM, CPO, COO까지. 그리고 <strong>지금도 스타트업 현장에서 제품을 만들고 있습니다.</strong>
+      </p>
+      <p class="body">
+        강연은 그 일의 부산물입니다. 어제 회의에서 막혔던 문제, 이번 분기에 틀렸던 판단,
+        팀원과의 껄끄러웠던 대화 — <strong>지금 겪고 있는 것을 그대로 가져갑니다.</strong>
+        그래서 이론이 아니라 사례가 먼저 나오고, 끝은 늘 실습입니다.
+      </p>
+    </div>
+    <img class="portrait" src="/assets/ceo-portrait.avif"
+         alt="강연 중인 한성희 — 심플리파이어 대표" width="999" height="873" loading="eager" decoding="async">
+  </div>
   <dl class="now">
     <div><dt>1조</dt><dd>빗썸 COO로 200명 조직을 이끌며 달성한 매출</dd></div>
     <div><dt>50 → 1,000</dt><dd>요기요 CPO로 함께한 조직의 성장 규모</dd></div>
@@ -250,6 +287,14 @@ layout: null
     실습을 포함한 워크숍형은 10~100명, 실습을 줄인 특강형은 500명까지 가능합니다.
     오프라인을 기본으로 하며 온라인도 진행합니다.
   </p>
+
+  <div class="shots">
+    <figure><img src="/assets/story/2.asan.png" alt="아산나눔재단 마루밋업 창업자 리더십 프로그램 현장" loading="lazy" decoding="async"><figcaption>아산나눔재단<br>마루밋업</figcaption></figure>
+    <figure><img src="/assets/story/5.gs.jpg" alt="GS 52g 실전 PM 리더십 워크숍 현장" loading="lazy" decoding="async"><figcaption>GS<br>52g 워크숍</figcaption></figure>
+    <figure><img src="/assets/story/3.CMK.png" alt="CMK재단 강연 현장" loading="lazy" decoding="async"><figcaption>CMK재단<br>강연</figcaption></figure>
+    <figure><img src="/assets/story/4.MMM.png" alt="마루 밋업 그룹 워크숍 현장" loading="lazy" decoding="async"><figcaption>마루 밋업<br>워크숍</figcaption></figure>
+    <figure><img src="/assets/story/1.news.png" alt="벤처스퀘어 인터뷰" loading="lazy" decoding="async"><figcaption>벤처스퀘어<br>인터뷰</figcaption></figure>
+  </div>
 </section>
 
 <!-- 3. 함께한 곳 -->
@@ -261,6 +306,18 @@ layout: null
     <b>아산나눔재단</b> · <b>정몽구재단</b> · <b>패스트캠퍼스</b> · <b>IBK창공</b> ·
     <b>그로우앤베터</b> · <b>숙명여대</b> · <b>국회</b>
   </p>
+  <div class="logos">
+    <img src="/assets/logos/gs.png" alt="GS" loading="lazy" decoding="async">
+    <img src="/assets/logos/amore.png" alt="아모레퍼시픽" loading="lazy" decoding="async">
+    <img src="/assets/logos/kakaopay.png" alt="카카오페이" loading="lazy" decoding="async">
+    <img src="/assets/logos/kyobo.png" alt="교보문고" loading="lazy" decoding="async">
+    <img src="/assets/logos/asan.png" alt="아산나눔재단" loading="lazy" decoding="async">
+    <img src="/assets/logos/fastcampus.png" alt="패스트캠퍼스" loading="lazy" decoding="async">
+    <img src="/assets/logos/cmk.png" alt="CMK재단" loading="lazy" decoding="async">
+    <img src="/assets/logos/dcamp.png" alt="디캠프" loading="lazy" decoding="async">
+    <img src="/assets/logos/naver.png" alt="네이버" loading="lazy" decoding="async">
+    <img src="/assets/logos/modoo.png" alt="모두의연구소" loading="lazy" decoding="async">
+  </div>
   <p class="again">
     이 중 <b>네 곳은 다시 불렀습니다.</b>
     아산나눔재단 마루밋업은 2024·2025·2026 3년 연속, 패스트캠퍼스는 2025·2026,
