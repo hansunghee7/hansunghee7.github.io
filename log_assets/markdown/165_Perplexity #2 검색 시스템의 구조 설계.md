@@ -42,7 +42,7 @@ Perplexity가 기존 검색 엔진과 차별화되는 가장 큰 특징 중 하�
 
 예를 들어, "2024년 서울 인구는?"이라는 질문은 키워드 매칭이 효과적이지만, "도시 생활의 스트레스를 줄이는 방법은?"과 같은 개념적 질문은 의미 기반 검색이 더 적합합니다. Perplexity는 이런 상황을 인식하고 쿼리 특성에 따라 적절한 검색 방식을 적용하거나, 두 방식을 결합하여 최적의 결과를 제공합니다.
 
-![1_ld0zOBtRHnsDaycUQh2PLg.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/xaAB7bjFtrwTEDbZ2KJtY2MDXXo.png)
+![쿼리를 라우팅하는 시맨틱 라우터 구조도](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/xaAB7bjFtrwTEDbZ2KJtY2MDXXo.png)
 
 ### **쿼리 분석과 라우팅 시스템**
 
@@ -60,7 +60,7 @@ Perplexity와 같은 시스템에서 BM25 검색을 구현할 때는 Elasticsear
 
 대규모 문서 컬렉션에서 검색 성능을 최적화하기 위해서는 필터 캐싱, 적절한 샤딩 전략, 스코어 계산 최적화 등의 기술을 활용할 수 있습니다. 이러한 최적화는 사용자에게 빠른 응답 시간을 제공하는 데 중요합니다.
 
-![F9yayQGXAAA__wA.jpg](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/pdjnKDPzOhDZWv4U6Vx1AJTkFaM.jpg)
+![키워드 벡터 하이브리드 검색 관계를 표현한 궤도형 다이어그램](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/pdjnKDPzOhDZWv4U6Vx1AJTkFaM.jpg)
 
 ### **벡터 검색 시스템 구축**
 
@@ -74,7 +74,7 @@ Perplexity와 같은 시스템에서 BM25 검색을 구현할 때는 Elasticsear
 
 벡터 검색 구현 시, 임베딩 생성과 저장은 배치 처리로 최적화하고, 검색은 비동기 처리로 응답 시간을 최소화하는 것이 중요합니다. 또한 임베딩 캐싱을 통해 동일 쿼리에 대한 중복 계산을 피하고, 정기적인 인덱스 업데이트로 최신 정보를 반영해야 합니다.
 
-![1.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/LQKiZE_RomYrJVvB5WM3pbzg4hk.png)
+![BM25 알고리즘의 문서 매칭 벤 다이어그램](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/LQKiZE_RomYrJVvB5WM3pbzg4hk.png)
 
 ### **Reranker를 통한 결과 최적화**
 
@@ -88,7 +88,7 @@ BM25와 벡터 검색 결과를 통합하는 방법으로는 가중 평균이나
 
 Reranking 과정은 계산 비용이 높기 때문에, 실제 서비스에서는 결과 캐싱, 병렬 처리, 계산량 감소 기법(early stopping 등) 등을 통해 성능을 최적화하는 것이 중요합니다.
 
-![906c3c0f8fe637840f134dbf966839ef89ac7242-3443x1641.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/66tiaKTwCphBeZD4r6EwJZI2F18.png)
+![벡터DB 검색 후 리랭커로 재정렬하는 손그림 다이어그램](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/66tiaKTwCphBeZD4r6EwJZI2F18.png)
 
 ### **쿼리 라우터 설계와 통합 시스템**
 
@@ -100,7 +100,7 @@ FastAPI와 같은 현대적인 웹 프레임워크를 활용하면 비동기 처
 
 검색 성능을 지속적으로 모니터링하고 개선하기 위해서는 관련성 평가, 사용자 피드백 수집, A/B 테스트 등의 프로세스를 구축해야 합니다. 이를 통해 가중치, 임계값, 검색 파라미터 등을 최적화하고, 검색 품질을 끊임없이 향상시킬 수 있습니다.
 
-![AD_4nXctUk0KyYu4ZEz_WltqubL1XPoYllm2U_lvPGjO76N1JGpml3kyTKCZiYB2D6m8M7XhyWYpnGtTFVAKIxMp3y63CQ9xrteqrdZo19rCzP0EjhCRt3RRpOHY4NZklMb-XS27_MdqePdeyQBNqTb0ZHW6vngK?key=eMVU7KbNgmcKhH2yZMZFvQ](//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/fnLx4OyzWe9SDk20MxGzxtNvqOI)
+![퍼플렉시티 AI 핵심 기능과 버전을 정리한 마인드맵](//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/fnLx4OyzWe9SDk20MxGzxtNvqOI)
 
 ### **성능 최적화와 운영 전략**
 

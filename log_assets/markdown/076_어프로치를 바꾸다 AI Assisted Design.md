@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 AI를 활용한 디자인은 1960년대 컴퓨터 그래픽스 연구에서 시작되었지만, 진정한 전환점은 2022년 DALL-E 2, Midjourney의 등장이었습니다. 이전까지 AI는 단순한 패턴 생성이나 이미지 필터 정도에 머물렀지만, 생성형 AI는 텍스트 프롬프트만으로 창의적인 비주얼을 만들어내는 혁신을 가져왔습니다.
 
-![1752632167617?e=1758153600&v=beta&t=RgvLHwoWrLxqYss_kGeNVDGhCUVAceJni2TynrwId8I](//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/EHQlr3rGvNzSk8sSz8DyY1dQ6s4)
+![이미지 생성, 요약, 분석 등 AI 기능을 소개하는 Figma AI 안내 화면](//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/EHQlr3rGvNzSk8sSz8DyY1dQ6s4)
 
 Figma는 AI를 활용한 Auto Layout 개선, 스마트 컴포넌트 생성, 그리고 다양한 AI 플러그인(Magician, Uizard AI 등)을 통해 와이어프레임 자동 생성과 디자인 시스템 최적화를 지원합니다. 텍스트 프롬프트만으로 UI 컴포넌트를 생성하고, 기존 디자인을 분석해 일관성 있는 디자인 패턴을 제안하는 기능도 제공합니다.
 
@@ -46,7 +46,7 @@ Canva는 Magic Design 기능으로 몇 장의 사진과 간단한 텍스트만�
 
 AI-Assisted Design의 가장 큰 장점은 아이디어 발상 속도의 혁신입니다. 과거 하루 종일 걸리던 브레인스토밍을 몇 분 만에 끝낼 수 있고, 수십 개의 시안을 빠르게 생성해 비교 검토할 수 있습니다. 반복적인 작업의 자동화로 디자이너는 더 창의적이고 전략적인 사고에 집중할 수 있으며, 디자인 전문 지식이 부족한 사람도 전문가 수준의 결과물을 만들어낼 수 있습니다.
 
-![1752632288673?e=1758153600&v=beta&t=XGBRVOknNl5f0dUnNCnd7f-s0At0FHv6VIaXfBeGJ4s](//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/r6CkDX0WjN27rIjYB0k6hpYSk24)
+![텍스트 프롬프트로 프레젠테이션 템플릿을 생성하는 캔바 매직 디자인 화면](//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/r6CkDX0WjN27rIjYB0k6hpYSk24)
 
 실무에서는 프로젝트 초기 컨셉 아이디어 생성과 무드보드 제작, 와이어프레임과 프로토타입 빠른 생성에 AI를 활용할 수 있습니다. 디자인 개발 단계에서는 로고, 아이콘, 일러스트레이션 제작과 색상 팔레트 추천에 AI를 사용하고, 마무리 단계에서는 이미지 리터칭과 다양한 포맷 변환을 AI로 자동화할 수 있습니다.
 

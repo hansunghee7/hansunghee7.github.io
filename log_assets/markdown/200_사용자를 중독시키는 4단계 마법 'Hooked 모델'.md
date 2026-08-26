@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 2014년, 니르 이얄(Nir Eyal)은 이러한 현상을 설명하는 'Hooked(훅) 모델'을 제시했다. 그는 페이스북, 인스타그램 같은 서비스가 어떻게 우리 일상의 일부가 되었는지 분석하며, 습관을 형성하는 제품 디자인의 원리를 네 단계로 정리했다.
 
-![1_U-YxdMeE-KAxtTS7TBQ4UQ.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/3ILn2o34JLAsulk_XBIYqqF-cnU.png)
+![훅(Hook) 모델의 계기·행동·보상·투자 4단계를 표현한 그래픽](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/3ILn2o34JLAsulk_XBIYqqF-cnU.png)
 
 훅 모델의 첫 단계는 **'계기(Trigger)'**다. 이는 행동을 시작하게 만드는 방아쇠와 같다. 외부 계기는 알림, 이메일, 광고처럼 외부에서 오는 자극이다. 내부 계기는 심심함, 외로움, FOMO(Fear of Missing Out)처럼 감정이나 상황에서 비롯된다. 진정한 습관은 외부 계기가 내부 계기로 전환될 때 형성된다.
 
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 페이스북은 이 모델을 완벽하게 구현한 예다. 친구의 태그나 좋아요 알림(계기)을 통해 앱에 접속하게 하고, 뉴스피드 스크롤과 좋아요 누르기(행동)를 쉽게 만든다. 친구들의 예측 불가능한 반응과 다양한 콘텐츠(가변적 보상)로 흥미를 유지하며, 프로필 업데이트와 친구 추가(투자)를 통해 서비스에 대한 몰입을 강화한다.
 
-![1_F9u_BkH4f1bsdTTl7NDr4Q.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/PXhYdryDs6z76nHlUy-lIokSLM4.png)
+![페이스북 사례에 훅 모델을 적용한 트리거·액션·투자·보상 사분면 다이어그램](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/PXhYdryDs6z76nHlUy-lIokSLM4.png)
 
 기획자가 훅 모델을 실전에 적용할 때는 몇 가지 주의할 점이 있다. 외부 계기에만 의존하지 말고 내부 계기를 형성해야 한다. 사용자 행동을 단순화하고, 보상은 예측 불가능하면서도 가치 있게 설계해야 한다. 그리고 투자 단계를 통해 장기적 관계를 형성해야 한다.
 

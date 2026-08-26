@@ -38,7 +38,7 @@ GitHub Copilot의 등장과 GPT-4의 초기 버전을 경험하며 이 예감은
 
 Visual Studio Code를 기반으로 하되, 이를 완전히 재구성한 AI 지원 코딩 도구를 개발하기로 결정했다. 이렇게 Cursor AI가 탄생했다. 단순한 코드 자동 완성을 넘어, 개발자의 의도를 파악하고 전체적인 코드 변경사항을 예측하는 혁신적인 도구였다.
 
-![0x0.jpg](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/9RW6v-ueTCT6Mm6BBuFeFlVy7iY.jpg)
+![커서AI 공동창업자 네 명이 함께 찍은 거리 사진](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/9RW6v-ueTCT6Mm6BBuFeFlVy7iY.jpg)
 
 우리가 주목해야 할, Cursor AI의 4가지 기술적 혁신 포인트는 다음과 같다.
 
@@ -50,7 +50,7 @@ Visual Studio Code를 기반으로 하되, 이를 완전히 재구성한 AI 지�
 
 **넷째, 코드베이스 인덱싱이다.** Vector database를 활용한 인덱싱으로 대규모 프로젝트에 대한 질문도 가능하다. 복잡한 코드 분석이 한결 쉬워졌다.
 
-![watch-demo.jpg](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/ijnK_xCydLuMm7r3epJqVv8QssY.jpg)
+![커서AI 에디터에서 AI가 코드 수정을 제안하는 화면](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/ijnK_xCydLuMm7r3epJqVv8QssY.jpg)
 
 커서AI의 혁신적인 아이디어는 빠르게 인정받았다. 출시 1년 만에 개발자의 필수 앱이 되었고, Fortune 1000대 기업 중 많은 기업들이 도입을 결정했다. 현재 연간 반복 수익(ARR)은 약 1억 달러, 기업가치 25억 달러 이상으로 평가받는다.
 

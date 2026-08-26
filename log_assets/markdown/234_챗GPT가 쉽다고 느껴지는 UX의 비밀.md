@@ -40,25 +40,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
 챗GPT의 인터페이스는 마치 구글의 검색창처럼 심플합니다. 텍스트를 입력하고 엔터를 누르는 것, 그게 다입니다. 하지만 이 단순함에 힘이 있죠. 별도의 매뉴얼 없이도 누구나 직관적으로 사용할 수 있는 것, 바로 챗GPT 인터페이스의 가장 큰 장점입니다.
 
-![](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/s309wZpSdPrDaRODq9bfDc7JXCE.jpg)
+![챗GPT 초기 화면의 예시·기능·한계 안내 카드](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/s309wZpSdPrDaRODq9bfDc7JXCE.jpg)
 
 **대화의 흐름을 따라, 자연스럽게**
 
 챗GPT와 대화할 때 느껴보셨나요? 마치 오래된 친구와 이야기하는 것처럼 자연스러운 흐름. 이건 우연이 아닙니다. 챗GPT의 인터페이스는 우리가 일상에서 대화하는 방식을 최대한 반영하려고 하고있습니다. 이전 대화 내용을 기억하고, 문맥에 맞는 답변을 제시하는 등 마치 영화 속 AI와 대화하는 듯한 경험을 선사합니다.
 
-![](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/WQ79d6IC0b9M6tW1t92RqbGhews.png)
+![챗GPT가 UX 리소스 목록을 답변한 대화 화면](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/WQ79d6IC0b9M6tW1t92RqbGhews.png)
 
 **당신만을 위한 맞춤형 대화**
 
 챗GPT는 다른 검색서비스처럼 모든 사용자에게 똑같은 답변을 내놓지 않습니다. 사용자 개개인의 말투, 관심사, 대화 패턴 등을 분석해 가장 맥락에 맞는 답변을 주고자 합니다. 마치 오랜 친구가 당신의 취향을 알아서 추천해주는 것 같은 느낌이랄까요? 이런 맞춤형 인터페이스는 사용자와 챗GPT 사이의 유대감을 한층 끌어올리는 데 큰 역할을 합니다.
 
-![](//img1.kakaocdn.net/thumb/R1280x0.fgif/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/NjbOV8jH_uOmsL2vIvWKFnzJJGA.gif)
+![챗GPT가 답변을 실시간으로 생성하는 도중의 화면](//img1.kakaocdn.net/thumb/R1280x0.fgif/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/NjbOV8jH_uOmsL2vIvWKFnzJJGA.gif)
 
 **고객의 피드백으로 진화하는 인터페이스**
 
 챗GPT의 인터페이스는 고정되어 있지 않아요. 끊임없이 사용자들의 피드백을 수렴하고, 대화 데이터를 분석해 더 나은 방향으로 진화합니다. 사용자들이 원하는 방식으로 소통하고, 사용자들이 필요로 하는 정보를 제공하는 것. 챗GPT의 인터페이스는 그렇게 사용자와 함께 성장해 나가고 있습니다.
 
-![](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/7gZmfB9u_infzFZhBgmFTkM-pJk.png)
+![챗GPT 모바일 앱의 라이트·다크 모드 화면 모음](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/7gZmfB9u_infzFZhBgmFTkM-pJk.png)
 
 ---
 

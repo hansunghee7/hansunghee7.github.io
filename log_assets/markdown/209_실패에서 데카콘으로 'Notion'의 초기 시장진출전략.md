@@ -36,15 +36,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 Notion의 여정은 많은 스타트업들이 경험하는 실패와 극복의 과정을 보여줍니다. 2013년 이반 자오와 그의 팀이 설립한 Notion은 처음부터 성공한 것이 아니었습니다. 첫 제품은 노코드 툴로, 사람들이 쉽게 웹과 앱을 만들 수 있도록 설계되었지만 시장에서 큰 반향을 일으키지 못했습니다. 창업자 이반 자오는 "우리가 세상에 전하고 싶은 것에 너무 집중했다"라고 반성하며 실제 시장 니즈를 제대로 파악하지 못했음을 인정했습니다.
 
-![inline-notion-new.jpg](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/0Zs_zkzd-Xvj0uqA6ZUCewEwShk.jpg)
+![노션 창업 멤버들의 인물 사진 세 컷](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/0Zs_zkzd-Xvj0uqA6ZUCewEwShk.jpg)
 
 게다가 기술적 문제와 자금 부족으로 인해 팀원 4명을 해고하고 실리콘밸리를 떠나야 할 정도로 회사는 파산 직전에 놓였습니다. 그러나 이 위기 속에서 Notion은 과감한 결정을 내립니다. 기존 제품을 완전히 버리고 사람들이 여러 생산성 툴에 지친다는 인사이트를 바탕으로 하나의 워크스페이스에서 모든 작업을 할 수 있는 새로운 도구를 개발하기로 한 것입니다.
 
-![264e012bd8db43e2b92d62623f96d2e7.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/AjiBkb7SdQaUZbslBGSgmf5qf8M.png)
+![노션 로고 위에 조명이 비추는 Notion is Here 그래픽](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/AjiBkb7SdQaUZbslBGSgmf5qf8M.png)
 
 일본 교토로 이사한 창업자들은 부엌 테이블에서 속옷 차림으로 코딩하며 제품 개발에 몰두했습니다. 그들은 제품 디자인에 집착하며 사용자 인터페이스와 플로우를 반복적으로 수정하며 사용자 경험을 극대화했습니다. 이 노력의 결실로 2016년에 재출시된 Notion은 블록 기반 시스템과 직관적인 UI를 통해 사용자들이 코딩 없이도 자신만의 작업 공간을 구성할 수 있게 했습니다.
 
-![639ade19c2c9605682737d8a_624558acdeaf1470fcc95f82_content-strategy-all-in-1-template-1-0optim0_zxdb5i.jpg](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/avWcoIHtQOf95J-YcczGJS7f6Qs.jpg)
+![노션의 콘텐츠 전략 올인원 템플릿 화면](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/avWcoIHtQOf95J-YcczGJS7f6Qs.jpg)
 
 Notion의 시장 진출 전략은 다음과 같은 핵심 요소로 구성되었습니다.
 
@@ -77,8 +77,8 @@ Notion은 다양한 언어 지원과 현지화된 콘텐츠를 통해 글로벌 
 2020년 원격 근무가 확산되면서 Notion은 이 변화에 빠르게 대응했습니다. 원격 팀을 위한 템플릿과 가이드를 제공하고, 협업 기능을 강화하여 팬데믹 상황에서 급증한 원격 작업 수요를 효과적으로 포착했습니다.
 
 <div class="img-gallery">
-  <img src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/cewuSp9WmJlVD9Fi6mpk-PqYYZw.jpg" alt="bdb4c939-823e-40b7-9da6-b218441348ed.jpg">
-  <img src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/s0nmOAt6u64pIHbi8FvKlf7aK_g.jpg" alt="5818e5b6-0729-4732-a594-2c4f22813404.jpg">
+  <img src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/cewuSp9WmJlVD9Fi6mpk-PqYYZw.jpg" alt="빈백 소파에서 대화 나누는 노션 사무실 풍경">
+  <img src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/s0nmOAt6u64pIHbi8FvKlf7aK_g.jpg" alt="목재 책상이 늘어선 노션 사무실 전경">
 </div>
 
 이러한 전략적 시장 진출 노력의 결과, Notion은 2021년 기업 가치 100억 달러의 데카 기업으로 성장했으며, 현재는 전 세계 수백만 명의 사용자를 보유한 생산성 도구의 대표주자로 자리매김했습니다.

@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 Slack의 전략은 '사용자가 느끼는 가치'와 '제한된 기능' 사이의 균형을 절묘하게 맞춘 것에서 시작합니다. 그들은 무료 플랜에서도 팀 협업에 필수적인 기능들을 제공하면서, 동시에 명확한 제한점을 설정했습니다.
 
-![slack-pricing-plans-1024x508.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/0PoPz7SzapFT4Q-KTpWHlVDcMOE.png)
+![Slack의 Free, Pro, Business+, Enterprise Grid 요금제별 기능 비교표](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/0PoPz7SzapFT4Q-KTpWHlVDcMOE.png)
 
 가장 효과적이었던 제한은 '메시지 검색 및 보관'이었습니다. Slack은 무료 플랜에서 최근 90일간의 메시지만 검색할 수 있게 했습니다. 이는 절묘한 선택이었는데, 팀이 Slack을 적극적으로 사용할수록 과거 대화 내용에 접근해야 할 필요성이 커지기 때문입니다. 팀원들이 "지난번에 논의한 내용을 찾을 수 없어"라고 불평하기 시작할 때, 바로 그 순간이 '매직 모먼트'가 됩니다.
 
@@ -66,7 +66,7 @@ Slack은 이런 전환 포인트를 만들기 위해 치밀한 전략을 세웠�
 
 여섯째, 업그레이드 프로세스를 간소화하세요. 사용자가 유료 플랜의 필요성을 느끼는 순간, 바로 전환할 수 있도록 명확한 안내와 간편한 결제 절차를 마련하세요.
 
-![94115cc7-a01d-4342-b061-a1663d7b06e5.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/47wHOAuhdhjoc1OhARjqhUmMSOY.png)
+![무료 체험 사용자를 유료 고객으로 전환하는 6단계 전략 인포그래픽](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/47wHOAuhdhjoc1OhARjqhUmMSOY.png)
 
 Slack의 성공 비결은 무료 사용자에게 충분한 가치를 제공하면서도, 서비스에 의존하게 된 순간 자연스럽게 유료로 전환하도록 유도하는 섬세한 전략에 있습니다. 여러분의 서비스에서도 이런 '매직 모먼트'를 찾아내고, 그 순간 사용자에게 명확한 업그레이드 이유를 제시할 수 있다면, 프리미엄 모델의 성공적인 수익화가 가능할 것입니다.
 

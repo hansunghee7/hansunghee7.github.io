@@ -36,13 +36,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 3 Horizons 모델은 조직의 성장 전략을 세 가지 시간축으로 나누어 관리하는 프레임워크다. Horizon 1(H1)은 현재의 핵심 사업으로, 기존 사업의 최적화와 효율화, 단기적 수익 창출에 집중한다. Horizon 2(H2)는 성장 기회의 탐색으로, 중기적으로 성장할 수 있는 신사업, 신제품, 신시장에 대한 투자를 의미한다. Horizon 3(H3)는 미래 혁신과 변혁으로, 장기적으로는 파괴적 혁신이나 새로운 시장 창출에 도전한다.
 
-![McKinsey-Three-Horizons-Model-PowerPoint-Google-Slides-Template.jpg](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/l4GjZ1t84jIjUOJzZsaMdMq6Vs0.jpg)
+![현재부터 미래까지 세 단계 성장곡선으로 그린 맥킨지 3 Horizons 모델 도표](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/l4GjZ1t84jIjUOJzZsaMdMq6Vs0.jpg)
 
 이 모델의 핵심은 세 가지 호라이즌을 '동시에' 관리한다는 점이다. 현재의 수익을 유지하면서도 미래의 성장 동력을 준비하고, 혁신을 위한 실험을 병행해야 지속가능한 성장이 가능하다.
 
 아마존이 대표적인 성공 사례다. 초기엔 온라인 서점(H1)으로 시작했지만, 전자제품·클라우드(AWS) 등 인접 시장(H2)으로 확장했고, AI 스피커(알렉사) 등 완전히 새로운 서비스(H3)를 통해 시장을 재편했다. 구글은 검색·광고(H1)를 기반으로, 안드로이드·유튜브 등 신성장 동력(H2), 그리고 자율주행(웨이모), 헬스케어(베릴리) 등 미래 혁신(H3)에 투자한다. 구글의 '20% 룰'은 직원이 미래 혁신에 자율적으로 시간과 자원을 투입하도록 장려한 대표적 사례다.
 
-![1_vuLv0S2YrbzHdbIRT1JL9A.jpg](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/z3O4Iva0WVWhg1hFSYv7uW3AsTc.jpg)
+![기존 사업과 혁신 사업의 관계를 손으로 그린 3 호라이즌 3레인 모델 스케치](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/z3O4Iva0WVWhg1hFSYv7uW3AsTc.jpg)
 
 기획자가 3 Horizons 모델을 실전에 적용하려면 몇 가지 원칙을 따라야 한다. 먼저, 현재 조직의 모든 프로젝트와 사업을 H1, H2, H3로 분류해본다. 각 호라이즌별로 자원 배분 현황을 시각화하면 조직의 혁신 포트폴리오가 한눈에 보인다. 일반적으로 H1에 70%, H2에 20%, H3에 10% 정도의 자원을 투자하는 '70/20/10 룰'이 권장된다.
 

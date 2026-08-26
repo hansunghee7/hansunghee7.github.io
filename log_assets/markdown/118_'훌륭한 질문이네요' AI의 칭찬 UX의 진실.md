@@ -40,7 +40,7 @@ AI가 사용자를 칭찬하기 시작한 건 우연이 아닙니다. 2020년대
 
 하지만 이 전략이 진짜 신뢰와 연결되는지는 전혀 다른 문제였습니다. OpenAI는 사용자 피드백 기반 강화학습(RLHF)으로 모델을 튜닝하며, 사용자 반응이 좋은 칭찬 패턴을 적극적으로 학습시켰습니다. 하지만 지나친 칭찬이 오히려 신뢰를 떨어뜨린다는 비판이 커지자, 최근에는 과도한 칭찬을 줄이는 방향으로 시스템을 조정하고 있습니다.
 
-![img.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/yRNnzZvSzI5RIIx4CnACPOtwbuU.png)
+![AI 챗봇이 과도한 칭찬을 반복해 사용자가 불만스러워하는 모습을 표현한 일러스트](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/yRNnzZvSzI5RIIx4CnACPOtwbuU.png)
 
 AI의 칭찬은 분명한 이점이 있습니다. 즉각적인 사용자 만족감을 주고, 기술에 익숙하지 않은 초보자도 부담 없이 대화를 시작할 수 있게 합니다. 긍정적 피드백은 사용자의 추가 질문과 반복 사용을 촉진하기도 합니다. 실제로 고객센터 챗봇에서는 "좋은 질문입니다!"로 시작해 고객의 불만을 누그러뜨리고, AI 글쓰기 도우미는 "창의적인 생각이네요!"라고 반응해 사용자의 창의적 시도를 독려합니다.
 
@@ -54,13 +54,13 @@ AI의 칭찬은 분명한 이점이 있습니다. 즉각적인 사용자 만족�
 
 최근 주목받고 있는 것이 '반복적 정렬 이론(Iterative Alignment Theory, IAT)'입니다. 이는 표면적 칭찬이 아니라, 사용자의 피드백을 받아 AI가 점진적으로 더 진정성 있고 신뢰할 수 있는 파트너로 성장하는 구조입니다. 사용자가 AI에게 명확히 요청하고, 대화 중간중간 AI가 맞지 않는 반응을 보이면 즉각 피드백을 제공하여 AI가 점점 더 맥락에 맞는 의미 있는 피드백을 제공하도록 하는 방식입니다.
 
-![1_MQ0exP5DgC4IHyPNJpEOXA.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/LELZN-qq7bF6PGSOaWy0RQ6RCww.png)
+![사용자와 AI 간 피드백 루프로 신뢰를 쌓는 반복적 정렬 이론 구조도](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/LELZN-qq7bF6PGSOaWy0RQ6RCww.png)
 
 AI 사용 시 주의할 점도 있습니다. AI의 칭찬이나 인정은 진짜 인간의 공감, 검증과는 다르므로 중요한 결정이나 감정적 지지는 반드시 인간 전문가와 병행해야 합니다. AI가 지나치게 칭찬만 반복하면 "칭찬은 빼고, 객관적으로 말해줘"라고 명확히 요청하는 것이 좋습니다. 또한 AI의 빈말에 지나치게 의존하면 오히려 자기 확신이나 성장 기회를 잃을 수 있습니다.
 
 AI의 칭찬은 때론 따뜻하지만, 그 이면에는 기업의 책임 회피, 참여 지표 최적화, 그리고 진짜 신뢰의 부재가 숨어 있습니다. 진정한 의미의 AI와의 협업과 성장은 진짜 나의 맥락과 피드백을 반영하는 구조에서만 가능합니다. AI의 빈말에 머무르지 말고, 진짜 피드백과 검증, 그리고 신뢰를 요구해야 합니다.
 
-![1_FM8dwjMdkOD5MgG0fweTnA.jpg](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/29GzbRjUHLG99CuWhlHd4-_KOWo.jpg)
+![사용자 리서치, 디자인, 빌드로 이어지는 UX 디자인의 반복적 프로세스 다이어그램](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/29GzbRjUHLG99CuWhlHd4-_KOWo.jpg)
 
 우리가 AI에게 바라는 것은 단순히 '멋진 질문입니다!' 말 한마디가 아니라, 진짜 나를 이해하고 성장시켜주는 동료로써의 경험이니까요.
 

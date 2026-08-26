@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 Material Design을 통해 모든 서비스에 일관된 시각 언어를 적용한다.
 
-![5afc20bbefa69.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/gIXrPeVLbIJp420kBgJJPAr02ro.png)
+![구글 머티리얼 디자인 공식 페이지의 Informative, Focused, Expressive 3대 원칙 소개 화면](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/gIXrPeVLbIJp420kBgJJPAr02ro.png)
 
 이러한 설계 방법은 구글의 실제 서비스에서 뚜렷한 성과를 보여주었다. 구글 검색의 경우, 심플하게 인터페이스로 전환한 후 사용자 체류 시간이 23% 증가했다. 구글 드라이브는 복잡한 파일 관리 시스템을 직관적인 드래그앤드롭 방식으로 단순화하여 사용자 만족도를 크게 높였다. 이는 단순함이 사용성과 직결된다는 것을 보여주는 좋은 사례다.
 

@@ -38,13 +38,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 Predictive UX는 2010년대 초 빅데이터와 머신러닝 기술이 발전하면서 본격적으로 등장했습니다. 구글이 2012년 Google Now를 출시하며 사용자의 위치, 시간, 검색 기록을 분석해 필요한 정보를 선제적으로 제공한 것이 출발점이었습니다. 이후 스마트폰의 센서 데이터, IoT 기기의 확산, 그리고 AI 기술의 발전으로 사용자 행동 예측의 정확도가 급격히 높아졌습니다. 현재는 단순한 추천을 넘어 사용자의 감정 상태, 컨텍스트, 향후 니즈까지 예측하여 선제적으로 대응하는 수준에 이르렀습니다.
 
-![https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdeb44162-bc26-400a-98a3-28a8ad98ef08_1200x675.jpeg](//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/DiCc4bj8H5kk_WwSfLRFs8Vt10I.jpeg)
+![시간대별로 개인화된 플레이리스트를 보여주는 스포티파이 데이라이스트 화면](//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/DiCc4bj8H5kk_WwSfLRFs8Vt10I.jpeg)
 
 스포티파이는 사용자의 음악 청취 패턴, 시간대, 요일, 날씨, 위치 정보를 종합 분석해 "Discover Weekly", "Daily Mix" 등 개인화된 플레이리스트를 생성합니다. 심지어 운동할 때, 출퇴근할 때, 휴식할 때 등 상황별로 최적화된 음악을 추천합니다. 우버는 사용자의 이동 패턴을 학습해 평소 출근 시간이나 공항 이용 시점을 예측하고, 미리 차량을 대기시켜 대기 시간을 줄입니다.
 
 구글 지도는 교통 상황, 사용자의 일정, 과거 이동 패턴을 분석해 집에 갈 시간이나 약속 장소로 출발해야 할 시간을 자동으로 알려줍니다. 심지어 주차 공간이 부족한 지역에서는 미리 주차장 정보를 제공하기도 합니다. 아마존은 사용자의 구매 이력과 검색 행동을 분석해 구매 가능성이 높은 상품을 미리 근처 물류센터로 이동시키는 "예상 배송" 시스템을 운영합니다.
 
-![googlenow_lead.1419978966.jpg?quality=90&strip=all&crop=23.039215686275,0,53.921568627451,100](//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/tq7pV0Qjr4X2x_5jP5MVh9ONF40)
+![박물관 가는 길을 미리 안내하는 구글 나우 검색 및 지도 화면](//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/tq7pV0Qjr4X2x_5jP5MVh9ONF40)
 
 Predictive UX의 가장 큰 장점은 사용자 만족도와 편의성의 극대화입니다. 사용자가 원하는 것을 찾기 위해 여러 단계를 거칠 필요가 없어 인지 부하가 줄어들고, 개인화된 경험 제공으로 사용자는 서비스가 자신을 이해한다고 느끼게 됩니다. 기업 관점에서는 사용자 이탈률 감소와 전환율 향상, 운영 효율성 증대 등의 이점을 얻을 수 있습니다.
 

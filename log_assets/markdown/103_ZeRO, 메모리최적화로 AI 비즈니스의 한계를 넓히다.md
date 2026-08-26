@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 AI 모델이 점점 거대해지면서 기업들은 메모리 한계라는 도전에 직면하고 있습니다. 마이크로소프트 DeepSpeed 팀이 개발한 Zero Redundancy Optimizer(ZeRO)는 메모리 병목 현상을 혁신적으로 해결하여, 더 많은 기업이 대형 AI 모델 개발에 참여할 수 있는 가능성을 넓혔습니다.
 
-![1_AHOACmpEgXaIxzK-UjjTOw.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/ND3OOHIfUgpQwYSYlv1_0W9zYf8.png)
+![ZeRO 적용 전후 GPU별 메모리 사용량 비교 다이어그램](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/ND3OOHIfUgpQwYSYlv1_0W9zYf8.png)
 
 ZeRO는 단순한 기술 최적화를 넘어 AI 비즈니스 생태계에 중요한 변화를 가져오고 있습니다. 기존에는 GPT-3와 같은 대형 모델을 개발하려면 막대한 인프라 투자가 필요했지만, ZeRO는 이 진입장벽을 낮추고 있습니다. 물론 GPT-4급 초거대 모델은 여전히 상당한 자본과 인프라가 필요하지만, 10억~100억 파라미터급 모델은 더 접근하기 쉬워졌습니다.
 
@@ -44,7 +44,7 @@ ZeRO의 핵심은 기존 데이터 병렬 학습의 메모리 중복 문제를 �
 
 마이크로소프트는 ZeRO를 활용해 Turing-NLG(170억 파라미터) 모델을 개발했습니다. 공식 발표에 따르면, 이 모델은 256개 GPU로 효율적인 학습이 가능했으며, 기존 Megatron-LM만 사용했다면 1024개 GPU가 필요했을 것입니다. 이는 ZeRO가 실제 대규모 프로젝트에서 메모리 효율성을 크게 높일 수 있음을 보여주는 사례입니다.
 
-![GRACE-2023-BlogHeroFeature-1400x788-1.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/fbHSgo9Va4EzJNnpEvlRv3Y7mbU.png)
+![레이어 간 연결 구조를 나타낸 신경망 다이어그램](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/fbHSgo9Va4EzJNnpEvlRv3Y7mbU.png)
 
 ZeRO 도입을 위해서는 단계적 접근이 필요합니다.
 

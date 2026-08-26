@@ -40,11 +40,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 결정적 순간은 2007년 애플이 첫 아이폰을 공개할 때였습니다. 당시 스마트폰과는 달리 물리적 키를 최소화하고, 터치 인터페이스와 심플한 앱 아이콘만 남긴 파격적 디자인이 전 세계에 충격을 주었습니다. 이후 구글, 에어비앤비, 넷플릭스 등도 이 트렌드를 적극 받아들이면서 글로벌 표준이 되었습니다.
 
-![1398044180-iOS7.jpg](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/wzSWz50vy-4B8XGuiwcTvj4ybyM.jpg)
+![iOS 7의 플랫 디자인 홈 화면을 보여주는 아이폰 다섯 대](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/wzSWz50vy-4B8XGuiwcTvj4ybyM.jpg)
 
 여기서 흥미로운 반전이 있습니다. 글로벌 기업들은 단순히 비우기만 하는 것이 아닌 'Clean UI + Twist' 전략을 사용합니다. 애플은 단순함 속에 다양한 제스처와 숨은 기능을 넣어, 사용자가 '직접 발견'하는 재미를 줍니다. iOS의 '스와이프 제스처'나 '롱프레스' 같은 숨겨진 기능들이 대표적입니다.
 
-![original-8732ef9a140ed91639ca71cfb7d3094e.jpg](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/n-Tw2SxUxvlQHOqCZ-yhwn-XymE.jpg)
+![주식 매수 주문의 스와이프 확인 인터페이스](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/n-Tw2SxUxvlQHOqCZ-yhwn-XymE.jpg)
 
 구글 검색창은 극도로 단순해 보이지만, 실제로는 엄청난 AI와 추천 기능, 자동완성 등 '보이지 않는 기술'이 숨어 있습니다. 에어비앤비의 숙소 검색화면도 깔끔하지만, 필터나 지도, 날짜 선택 등은 사용자가 필요할 때만 자연스럽게 드러나도록 설계되어 있습니다.
 
@@ -54,7 +54,7 @@ Clean UI가 제공하는 이점은 명확합니다. 사용자가 핵심 정보�
 
 다만 주의할 점도 있습니다. 너무 단순하게 만들면 오히려 사용자가 '뭘 해야 하는지' 모를 수 있고, 모든 사용자가 '발견'하는 걸 좋아하지 않으므로 꼭 필요한 기능은 명확히 보여줘야 합니다. 시각장애인이나 고령자를 위한 접근성도 고려해야 합니다.
 
-![thumbnail.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/ccmoqxOLN6D2zXt0RerAc-X2Io8.png)
+![드롭다운 버튼 등 미니멀한 UI 컴포넌트 모음](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/ccmoqxOLN6D2zXt0RerAc-X2Io8.png)
 
 'Clean UI'는 단순함 그 자체가 아니라, 사용자에게 '최적의 경험'을 주기 위한 '숨은 배려'와 '발견의 재미'까지 담고 있습니다. 진정한 Clean UI는 복잡함을 단순화하는 기술이지, 단순히 빼내는 것이 아닙니다.
 
