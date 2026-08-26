@@ -38,11 +38,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ![커서 AI의 투자 유치와 매출 성장 타임라인, 창업자 4인의 모습](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/MG_-4JsFVzW7PL-tR7hanl9HFwI.png)
 
+## AI를 협력 파트너로 만들다
+
 이들이 내놓은 해답은 AI를 단순한 도구가 아닌 '진정한 협력 파트너'로 만드는 것이었습니다. Cursor AI는 실제 페어 프로그래머처럼 사용자의 작업 맥락을 파악하고, 필요할 때만 적절한 도움을 제공합니다. 프로젝트 전체의 규칙을 이해하는 지침 시스템을 구축해 반복적인 실수를 방지하고, 실시간으로 오류를 감지해 즉각적인 해결책을 제안하는 시스템을 만들었습니다.
+
+## 놀라운 성장의 결과
 
 이 전략의 결과는 놀라웠습니다. 2023년 800만 달러 시드 투자부터 시작해 2025년 기업가치 25억 달러를 달성하며 실리콘밸리 역사상 가장 빠른 성장을 기록했습니다. 특히 대기업이 아닌 36만 명의 개인 개발자들로부터 시작된 성장이라는 점이 인상적입니다.
 
 ![커서가 SaaS 역사상 가장 빠르게 매출 1억 달러를 달성한 성장 곡선 비교 그래프](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/Xg7NTojgTovqJp_XOIoGG18HeZE.jpg)
+
+## Cursor AI 성공에서 배우는 핵심 교훈
 
 Cursor AI의 성공에서 우리가 배울 수 있는 핵심은 다음과 같습니다.
 

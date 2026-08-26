@@ -36,17 +36,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
 이 함성은 해적들의 상징적인 외침이다. 그리고 놀랍게도 이는 현대 IT 기획의 강력한 도구가 된 프레임워크의 이름이기도 하다.
 
+## 데이브 맥클루어의 AARRR 탄생기
+
 2007년 6월, 실리콘밸리의 투자자 데이브 맥클루어는 한 가지 고민에 빠져있었다. 수많은 스타트업이 제품을 만들었지만, 성장의 지표를 체계적으로 추적하지 못하고 있었다. 그는 이를 해결하기 위해 'Product Marketing for Pirates: AARRR'을 발표했다.
 
 ![AARRR 성장 퍼널을 단계별로 표현한 도식](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/roIE95XjHlxV3n2Zwia0b3a0tsU.jpg)
 
+## 왜 하필 '해적'이었을까
+
 왜 하필 '해적'이었을까? 맥클루어는 스타트업을 모험을 두려워하지 않는 해적에 비유했다. 그리고 재치있게도 프레임워크의 다섯 단계를 해적의 함성 'AARRR'로 표현했다.
+
+## 트위터와 스포티파이의 AARRR 활용법
 
 트위터는 AARRR을 활용해 폭발적인 성장을 이뤘다. 새로운 사용자가 가입하면(Acquisition) 즉시 관심사 기반의 계정을 추천했고(Activation), 개인화된 타임라인으로 지속 사용을 유도했다(Retention). 광고로 수익을 창출하고(Revenue), 리트윗으로 자연스러운 확장을 만들어냈다(Referral).
 
 스포티파이도 마찬가지다. 첫 로그인 시 취향 분석으로 맞춤 플레이리스트를 제공하고, 지속적인 음악 추천으로 사용자를 붙잡았다. 프리미엄 구독 모델로 수익을 만들고, 플레이리스트 공유 기능으로 입소문을 타게 했다.
 
 ![AARRR 단계별 전환 규모를 보여주는 손그림 퍼널](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/t94YO2hv9YPWYbmeEjwf6kxN97U.jpg)
+
+## 기획자를 위한 AARRR 실천법
 
 기획자라면 이렇게 시작하면 좋다.
 

@@ -42,6 +42,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 이런 고민을 하는 PO들이 많다. 하지만 잠깐, 제품 백로그의 진정한 가치를 이해하고 있는 걸까?
 
+## 제품 백로그의 3가지 핵심 가치
+
 제품 백로그의 핵심은 명확하다.
 
 **1. 명확한 프로젝트 방향성 제시**
@@ -54,9 +56,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ![프로젝트 백로그에서 스프린트 백로그로 이어지는 흐름도](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/TZ5IRphUja5hyzGl55orvB8iS4w.jpg)
 
+## 레스토랑 주방장처럼, 전략적으로 관리하기
+
 제품 백로그는 단순한 작업 목록이 아니다. 마치 레스토랑 주방장이 식재료 주문서를 관리하는 것과 같다. 단순히 필요한 재료를 나열하는 게 아니라, 계절성, 고객 선호도, 비용, 보관 기간을 고려해 우선순위를 정하고 주문 시기를 조절한다. 제품 백로그도 이와 같이 전략적으로 관리해야 한다.
 
 ![백로그 항목의 추정·재우선순위·삭제 작업을 보여주는 도식](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/fW0DXQCjML_aubkkNN2kJYo1gnE.jpg)
+
+## 성공적인 백로그 관리의 3원칙
 
 성공적인 제품 백로그 관리의 비결은 간단하다.
 
@@ -66,7 +72,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 **투명성: 모든 이해관계자와의 명확한 커뮤니케이션**
 
+## 스포티파이 스쿼드의 백로그 운영법
+
 스포티파이 같은 경우는 작은 자율 팀(스쿼드)이 각자의 제품 백로그를 관리한다. 6-12명으로 구성된 스쿼드는 특정 기능이나 제품 영역에 집중한다. 더 큰 조직(트라이브)이 여러 스쿼드의 제품 백로그를 조율하며, 전체 제품의 일관성을 유지한다.
+
+## PO를 위한 실천 가이드
 
 PO라면 이렇게 해보자.
 

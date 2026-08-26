@@ -38,6 +38,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 웰로는 문제의 핵심을 파악했습니다. 기존 '사용자 수 기반 요금제'가 제품의 진짜 가치와 연결되지 않는다는 점이었죠. 고객들은 가상 회의실과 공간을 사용하는 것이 핵심 가치인데, 단순히 사용자 수로만 과금하니 가치와 가격이 따로 놀고 있었습니다.
 
+## 공간 단위 과금이라는 해결책
+
 해결책은 과감했습니다. 사용자 수가 아닌 '공간(Space)' 단위로 과금하는 모델로 완전히 전환한 것입니다. 고객이 사용하는 가상 공간의 개수에 따라 요금을 부과하는 방식으로, 이는 단순한 가격 변경이 아니라 완전히 새로운 가치 제안이었습니다.
 
 ![웰로의 공간 단위 요금제, Small Medium Large 플랜](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/yG4PBGR1xfaQ_URnQvkOtHvLMgc.png)
@@ -46,9 +48,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 결과는 기대 이상이었습니다. 제품 기획과 가치 전달이 명확하게 정렬되었고, 고객 참여도가 크게 높아졌습니다. 공간 기반 요금제는 향후 주요 성장 동력이 될 것으로 전망되고 있습니다.
 
+## 다른 기업들의 성공 사례
+
 다른 기업들도 유사한 성공을 거두었습니다. Adobe는 구독제로 전환하여 2,200만 유료 구독자를 확보했고, SAP는 사용량 기반 요금제로 ARR 성장을 달성했습니다.
 
 ![Adobe SAP Zoho Splunk의 프라이싱 전략 비교표](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/qiOLKKnHgPG96Qw0gTprg32bzEo.png)
+
+## 웰로의 성공에서 배우는 핵심 전략
 
 웰로의 성공에서 배울 수 있는 핵심 전략은 다음과 같습니다.
 

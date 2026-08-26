@@ -36,6 +36,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ---
 
+## 럭소티카가 지배한 미국 안경 시장
+
 여러분은 기존 시장을 지배하고 있는 거대 기업들과 경쟁하면서 어떻게 차별화된 가치를 제공할 수 있을지 고민해보신 적이 있으신가요? 2010년 설립된 아이웨어 브랜드 Warby Parker도 같은 고민을 했습니다.
 
 당시 미국의 안경 시장은 이탈리아의 럭소티카(Luxottica)가 장악하고 있었습니다. 80%에 달하는 시장 점유율을 보유한 이 기업은 레이밴, 오클리와 같은 유명 브랜드부터 렌즈크래프터스 같은 소매점까지 모두 소유하고 있었죠. 그리고 이런 독점은 터무니없이 비싼 안경 가격으로 이어졌습니다.
@@ -44,6 +46,8 @@ document.addEventListener('DOMContentLoaded', function() {
   <img src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/O41gPNXellZWd56OhC4KObFwvC4.png" alt="럭소티카 산하 명품 안경 브랜드 로고 모음">
   <img src="//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/84IIPbcbby8DWOXq6OlZY24y3iw.jpeg" alt="럭소티카의 대형 전시 부스 내부 모습">
 </div>
+
+## Warby Parker의 독점 시장진입 전략
 
 Warby Parker의 설립자들은 이 문제를 혁신적인 방식으로 해결했습니다. 그들은 "왜 안경이 아이폰보다 비싸야 하는가?"라는 단순한 질문에서 시작했습니다.
 
@@ -61,6 +65,8 @@ Warby Parker의 전략은 다음과 같습니다.
   <img src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/qrwEPH6vqiGszjcEEcotkQ4XJUM.jpg" alt="워비파커 공동창업자들의 인터뷰 장면">
   <img src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/u8LvyHYXOZtTM6X6emPszRyP-do.png" alt="워비파커 홈 트라이온 안경 모양 선택 화면">
 </div>
+
+## 스타트업이 배워야 할 교훈
 
 이제 막 시작하는 스타트업들은 여기서 무엇을 배울 수 있을까요?
 

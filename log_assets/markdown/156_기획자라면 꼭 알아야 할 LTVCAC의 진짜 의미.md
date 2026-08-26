@@ -36,15 +36,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ![LTV를 CAC로 나눠 계산하는 LTV:CAC 비율 공식과 계산 예시](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/hwsJdh702JsHHJqZnuy-1ao_z1M.jpg)
 
+## LTV/CAC의 탄생 배경 - SaaS 산업과 함께
+
 LTV와 CAC는 SaaS 산업의 성장과 함께 주목받기 시작했다. 수익이 한 번이 아닌 지속적으로 발생하고, 디지털 환경에서 고객별 가치 추적이 가능해졌기에 탄생할 수 있었던 개념이다.
 
 실리콘밸리와 투자 시장은 이 공식에 열광했다. 단순한 매출이 아닌, 고객 한 명이 가져다주는 이익을 기준으로 기업의 잠재력을 평가했다. 이는 고객의 장기적 가치에 방점을 둔 혁신적 사고의 전환이었다. 그 과정에서 'LTV가 CAC의 3배는 돼야 한다'는 법칙도 자리 잡았다. 유치 비용의 3배 이상 장기 이익을 내는 비즈니스야말로 지속 가능하다는 믿음이 반영된 결과다.
+
+## 아마존과 넷플릭스의 LTV 극대화 전략
 
 아마존은 이 모델을 글로벌 전자상거래에 접목했다. 킨들을 저렴하게 판매하면서도 플랫폼 내 구매를 유도해 고객당 수익을 극대화했다. 넷플릭스 역시 콘텐츠 제작에 막대한 돈을 쏟아붓는 이유가 바로 장기적인 고객 가치에 있다.
 
 LTV와 CAC는 이제 기업과 투자자들의 필수 언어가 되었다. 스타트업의 피칭에서도 이 두 단어는 빠지지 않는다. 펀딩의 설득력은 LTV/CAC 비율로 결정된다 해도 과언이 아니다.
 
 ![CAC:LTV 비율을 개선하는 7가지 방법을 정리한 원형 다이어그램](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/SiYaf5G6kM13DDVFRLxO9TWibY0.jpg)
+
+## 기획자를 위한 LTV/CAC 활용법
 
 그렇다면 기획자로서 이 프레임워크를 어떻게 활용할 수 있을까?
 

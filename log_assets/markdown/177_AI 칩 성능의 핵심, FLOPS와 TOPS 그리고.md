@@ -34,9 +34,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 AI 기술이 빠르게 발전하면서 AI 칩의 성능이 그 어느 때보다 중요해졌습니다. 그런데 AI 칩 성능을 결정짓는 요소가 뭔지 아시나요? 바로 FLOPS, TOPS, 그리고 메모리 대역폭인데요. 이 세 가지가 AI 모델의 학습 속도와 추론 능력을 좌우한다고 해요. 지금부터 하나씩 짚어보도록 할게요.
 
+## FLOPS, 연산 속도의 척도
+
 먼저 FLOPS는 "Floating Point Operations Per Second"의 약자로, 초당 처리할 수 있는 부동소수점 연산 횟수를 말해요. 쉽게 말해 복잡한 수식 계산을 얼마나 빠르게 해낼 수 있는지를 나타내는 거죠. FLOPS가 높을수록 딥러닝 모델을 더 빨리 학습시킬 수 있어요. 슈퍼컴퓨터 성능을 비교할 때도 FLOPS를 주로 따져 봅니다.
 
+## TOPS, 추론 성능의 지표
+
 그다음 TOPS는 "Tera Operations Per Second"의 줄임말로, 1초에 수행 가능한 연산 횟수를 1조 단위로 표시한 것이에요. 여기서 말하는 연산은 정수 연산을 뜻하는데, 이건 주로 추론(Inference) 단계에서 사용돼요. NPU(Neural Processing Unit)처럼 AI 연산에 특화된 칩에서는 TOPS가 성능 지표로 쓰이죠. 높은 TOPS를 자랑하는 AI 칩일수록 실시간 추론 속도가 빠릅니다.
+
+## 메모리 대역폭의 역할
 
 마지막으로 메모리 대역폭(Memory Bandwidth)은 칩과 메모리 사이의 데이터 전송 속도를 말해요. AI 모델 학습에는 어마어마한 양의 데이터가 오가는데, 이때 병목 현상이 발생하지 않으려면 충분한 대역폭이 확보되어야 해요. 최근 각광받는 HBM(High Bandwidth Memory)은 기존 메모리보다 대역폭이 훨씬 넓어서 빅데이터 처리에 안성맞춤이라고 합니다.
 

@@ -36,11 +36,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ---
 
+## 단순함이 주는 직관적인 힘
+
 **심플함의 미학, 그 이상의 힘**
 
 챗GPT의 인터페이스는 마치 구글의 검색창처럼 심플합니다. 텍스트를 입력하고 엔터를 누르는 것, 그게 다입니다. 하지만 이 단순함에 힘이 있죠. 별도의 매뉴얼 없이도 누구나 직관적으로 사용할 수 있는 것, 바로 챗GPT 인터페이스의 가장 큰 장점입니다.
 
 ![챗GPT 초기 화면의 예시·기능·한계 안내 카드](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/s309wZpSdPrDaRODq9bfDc7JXCE.jpg)
+
+## 자연스러운 대화의 흐름 설계
 
 **대화의 흐름을 따라, 자연스럽게**
 
@@ -48,11 +52,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ![챗GPT가 UX 리소스 목록을 답변한 대화 화면](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/WQ79d6IC0b9M6tW1t92RqbGhews.png)
 
+## 개인화가 만드는 유대감
+
 **당신만을 위한 맞춤형 대화**
 
 챗GPT는 다른 검색서비스처럼 모든 사용자에게 똑같은 답변을 내놓지 않습니다. 사용자 개개인의 말투, 관심사, 대화 패턴 등을 분석해 가장 맥락에 맞는 답변을 주고자 합니다. 마치 오랜 친구가 당신의 취향을 알아서 추천해주는 것 같은 느낌이랄까요? 이런 맞춤형 인터페이스는 사용자와 챗GPT 사이의 유대감을 한층 끌어올리는 데 큰 역할을 합니다.
 
 ![챗GPT가 답변을 실시간으로 생성하는 도중의 화면](//img1.kakaocdn.net/thumb/R1280x0.fgif/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/NjbOV8jH_uOmsL2vIvWKFnzJJGA.gif)
+
+## 피드백으로 계속 진화하는 UX
 
 **고객의 피드백으로 진화하는 인터페이스**
 

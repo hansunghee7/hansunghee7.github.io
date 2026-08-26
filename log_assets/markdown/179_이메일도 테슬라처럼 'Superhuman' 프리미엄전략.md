@@ -42,6 +42,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 Superhuman의 시장 진출 전략은 다음과 같은 핵심 요소로 구성되었습니다:
 
+## Superhuman의 시장 진출 전략
+
 첫째, 명확한 타겟 고객 설정입니다. Superhuman은 이메일을 많이 사용하는 바쁜 전문가층을 타겟으로 삼았습니다. 이들은 시간 가치가 높고, 생산성 향상에 대한 투자 의지가 있는 사람들이었습니다. 일반 대중을 대상으로 하지 않고, 특정 페인 포인트를 가진 명확한 고객층에 집중했죠.
 
 둘째, 속도라는 핵심 가치 제안입니다. Superhuman은 "The Fastest Email Experience Ever Made"라는 명확한 가치 제안으로 시장에 진입했습니다. 속도를 핵심 가치로 설정하고 이를 제품의 모든 측면에 반영했습니다. 0.1초 내에 작동하는 인터페이스와 키보드 단축키 중심의 설계는 이 가치를 실현하는 수단이었습니다.
@@ -58,7 +60,11 @@ Superhuman의 시장 진출 전략은 다음과 같은 핵심 요소로 구성�
 
 ![슈퍼휴먼의 스니펫 기능 편집 화면](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/XmCfqj_5TmGDjv2IkDQfMFBao2o.png)
 
+## 전략이 만든 성과
+
 이러한 전략적 시장 진출 노력의 결과, Superhuman은 1억 달러 이상의 투자금을 유치하고 실리콘밸리에서 큰 성공을 거두게 되었습니다.
+
+## 스타트업이 얻을 수 있는 교훈
 
 Superhuman의 시장 진출 전략에서 스타트업들이 배울 수 있는 핵심 교훈은 다음과 같습니다:
 

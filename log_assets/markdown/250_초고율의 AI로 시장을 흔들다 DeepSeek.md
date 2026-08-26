@@ -36,13 +36,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ![딥시크 공식 홈페이지 메인 화면](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/tn1lyGVJK92OjgYmuDWKOi5FkpI.jpg)
 
+## DeepSeek의 효율성과 오픈소스 전략
+
 DeepSeek은 창업 초기부터 '높은 효율성'과 '오픈소스'라는 투 트랙 전략을 분명히 했다. 그리고 이를 실현하기 위해 MoE(Mixture of Experts)와 MLA(Multi-Head Latent Attention) 같은 혁신 기술을 속속 내놓았다. MoE는 적은 자원으로도 막강한 성능을 뽑아내는 기술이며, MLA는 메모리 사용량을 기존 대비 획기적으로 줄인 솔루션이다.
 
 여기에 그치지 않고, DeepSeek은 OpenAI 수준의 성능을 최대 50배 저렴한 비용으로 제공하겠다는 파격 행보를 보이고 있다. 상용 AI를 대중화하겠다는 원대한 포부를 실현하기 위한 전략인 것이다.
 
 ![딥시크-V3와 주요 AI 모델의 성능·가격 비교 그래프](//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/gZi-IxkOWy_Q8h1P3ZlkmS-o9Lc.jpeg)
 
+## 스타트업이 배울 수 있는 통찰
+
 DeepSeek의 사례는 중요한 통찰을 제공한다. 자원이 부족하더라도 끊임없는 최적화로 효율을 극대화하라는 것, 오픈소스로 신뢰와 협력의 생태계를 구축하라는 것, 특화 분야를 집중 공략해 차별화를 이뤄내라는 것 등 스타트업에게 든든한 무기가 될 만한 전략들이 곳곳에 숨어있다.
+
+## DeepSeek이 마주한 도전과제
 
 하지만 DeepSeek의 앞길이 순탄하기만 한 것은 아니다. 글로벌 시장 진출 과정에서 거센 규제의 벽에 부딪히고 있으며, 거대 기업들의 견제도 만만치 않다. 또한 데이터 확보와 활용을 둘러싼 논란도 끊이지 않고 있다. 살아남기 위해 풀어야 할 숙제가 산적해 있는 셈이다.
 

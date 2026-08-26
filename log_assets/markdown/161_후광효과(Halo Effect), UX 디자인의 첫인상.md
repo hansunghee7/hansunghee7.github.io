@@ -38,11 +38,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ![후광 효과 개념을 정의한 레드톤 슬라이드](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/ygad1LhJizNGr-ogBj1ipy42xwE.png)
 
+## 후광 효과란 무엇인가
+
 첫 화면 설계의 핵심 법칙, 후광 효과(Halo Effect)부터 시작할게요. 이는 첫인상이 전체 경험을 지배하는 현상을 말합니다. 1920년대 심리학자 에드워드 손다이크가 발견한 이 개념은, "첫 화면이 서비스의 운명을 결정한다"는 UX 디자인 철학의 바탕이 되었죠.
+
+## 애플이 보여준 후광 효과
 
 이 법칙을 가장 극적으로 보여준 건 바로 애플입니다. 그들은 아이폰 개봉 경험부터 홈 화면의 직관적인 아이콘 배열까지, 모든 접점에서 최상의 첫인상을 연출하죠. 사용자가 제품을 처음 켜는 순간 "이건 특별한 물건이야"라는 확신을 심어주는 거예요. 사소해 보이는 디테일이 브랜드 전체에 대한 호감으로 이어지는 거죠.
 
 ![아이폰 언박싱 구성품과 하트 모양 손짓](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/GQ_Q50m8Owb46qcnUp4r-gqUNLE.jpg)
+
+## 첫 화면에 후광 효과 적용하는 법
 
 이런 후광 효과를 첫 화면에 적용하는 방법, 크게 세 가지로 정리해 보았습니다.
 
@@ -53,6 +59,8 @@ document.addEventListener('DOMContentLoaded', function() {
 마지막으로 심리학적 프레이밍인데요. 이는 정보의 구조와 순서를 의도적으로 배열하는 기술이에요. 메뉴는 7개 내외로 묶어 인지 부담을 줄이고, 마지막엔 할인 쿠폰 팝업 같은 프로모션으로 끝맺음을 하는 거죠. 첫 경험의 절정과 끝이 기억에 오래 남는다는 '피크-엔드 법칙'을 활용한 것입니다.
 
 ![후광 효과를 설명한 9컷 스케치노트](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/Eu9qEgQ_JV6R5CSj49aLKhLLq7I.jpg)
+
+## 후광 효과의 함정과 주의점
 
 물론 주의해야 할 함정도 있습니다. 과도한 정보 노출은 사람이 무언가를 선택하는데 걸리는 시간은 선택하려는 가지수에 따라 결정된다는 '힉의 법칙'을 위반해 고객의 이탈을 부를 수 있습니다. 과도한 독창성을 추구하다 일관성을 잃으면 사용자에게 이용의 혼란을 줄 수 있겠죠. 무엇보다 저시력자나 고령층 등 모든 사용자를 배려하는 접근성은 필수입니다.
 

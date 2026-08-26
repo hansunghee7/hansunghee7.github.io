@@ -36,15 +36,25 @@ AI 기술이 날로 발전하면서 딥러닝 모델의 규모도 엄청나게 �
 
 ![3x2 행렬과 2x3 행렬의 곱셈 연산 과정 도식](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/X3qSKucWLT6XWy99gHoTv-SnRLM.jpg)
 
+## Tensor Cores의 등장
+
 그런데 최근 들어 행렬 곱셈의 새로운 히어로가 등장했습니다. 바로 NVIDIA의 'Tensor Cores'인데요. 기존 GPU가 단일 정밀도 연산에 특화된 것과 달리, Tensor Cores는 혼합 정밀도를 지원하면서 행렬 곱셈 속도를 비약적으로 끌어올렸습니다. 단일 클럭 주기 안에 FP16 4x4 행렬 두 개를 곱하고 FP32 행렬에 누적하는 방식으로 말이죠.
+
+## Tensor Cores가 강력한 이유
 
 이게 왜 대단하냐고요? Tensor Cores는 CUDA 코어 대비 무려 128배나 빠른 처리량(Throughput)을 자랑합니다. 특히 CNN이나 RNN에서 많이 쓰이는 GEMM(General Matrix Multiplication) 연산을 가속화해서 학습 시간을 크게 단축시키거든요. 게다가 불필요한 연산은 아예 건너뛰는 희소 연산(Sparse Operation)까지 지원해서 에너지 효율까지 높였습니다.
 
 ![엔비디아 텐서 코어의 행렬 연산 구조를 나타낸 그래픽](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/zXtpA-eKQNynzzNlF4Z5gONlCNc.jpg)
 
+## CUDA 코어와 Tensor Cores의 역할 분담
+
 물론 CUDA 코어도 여전히 중요합니다. 정확도가 생명인 모델 검증 같은 작업에서는 싱글 프리시전의 CUDA 코어가 빛을 발하니까요. 하지만 행렬 곱셈이 지배적인 대규모 AI 모델에서는 Tensor Cores의 위력이 발휘될 수밖에 없습니다. 실제로 NVIDIA A100 GPU는 Tensor Cores 덕분에 동일 전력 대비 10배 높은 성능을 보여준다고 해요.
 
+## AI 프레임워크의 Tensor Cores 지원
+
 Tensor Cores가 업계 스탠다드로 자리 잡으면서 AI 프레임워크들도 적극적으로 지원에 나서고 있습니다. CUDA 딥러닝 라이브러리인 cuDNN은 Convolution 연산을 GEMM으로 변환해서 Tensor Cores를 활용하고 있고요. TensorRT는 연산 그래프를 최적화하고 레이어를 병합해서 지연 시간을 최소화합니다. 덕분에 우리는 더 빠르고 효율적인 AI 모델을 만날 수 있게 된 거죠.
+
+## 모바일 기기로 확장되는 가속화 혜택
 
 행렬 곱셈 가속화의 혜택은 비단 서버용 GPU뿐만 아니라 모바일 기기에서도 체감할 수 있습니다. 예를 들어 삼성 엑시노스 칩에 내장된 NPU(Neural Processing Unit)는 Tensor Cores와 유사한 원리로 BERT 추론 속도를 2배 끌어올렸다고 해요. 이제 AI 어시스턴트의 응답 속도가 50밀리초 미만으로 줄어든 데에는 행렬 곱셈 최적화 기술이 한 몫 했다고 볼 수 있겠네요.
 

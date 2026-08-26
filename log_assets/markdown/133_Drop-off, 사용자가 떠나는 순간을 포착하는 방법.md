@@ -38,6 +38,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 2000년대 초, 미국의 대형 이커머스 기업들이 체크아웃 프로세스에서 사용자 이탈을 분석하면서 이 용어가 본격적으로 사용되기 시작했습니다. "왜 사용자들이 결제 직전에 떠날까?"라는 고민에서 출발한 이 개념은, 이제 다양한 디지털 서비스의 사용자 여정(User Journey) 분석에 필수적인 요소가 되었습니다.
 
+## 실전 사례로 보는 드롭오프 개선
+
 아마존은 장바구니 드롭오프를 줄이기 위해 '원클릭 주문'을 도입했습니다. 전통적인 결제 프로세스에서 사용자들이 배송지 입력, 결제 방법 선택 등 여러 단계에서 이탈하는 현상을 분석한 결과였습니다. 이 혁신적인 해결책은 드롭오프 분석이 어떻게 비즈니스 모델 자체를 변화시킬 수 있는지 보여주는 사례입니다.
 
 구글은 애널리틱스 도구에 '퍼널 분석' 기능을 통합했는데, 이는 사용자 드롭오프를 시각화하는 대표적인 방법입니다. 이 기능은 사용자가 웹사이트나 앱에서 특정 플로우(예: 상품 검색 → 상세 페이지 → 장바구니 추가 → 결제)를 따라가다 어디서 이탈하는지 시각적으로 보여줍니다. 마치 깔때기(funnel)처럼 각 단계별 드롭오프율을 한눈에 파악할 수 있어, UX 개선의 우선순위를 정하는 데 큰 도움이 됩니다.
@@ -45,6 +47,8 @@ document.addEventListener('DOMContentLoaded', function() {
 넷플릭스는 드롭오프 분석을 통해 회원가입 과정에서 사용자들이 이탈하는 주요 지점을 발견했습니다. 특히 신용카드 정보 입력 단계에서 높은 드롭오프율을 보이자, 이를 해결하기 위해 '첫 달 무료' 메시지 강조와 함께 폼 입력 과정을 간소화했습니다. 결과적으로 회원가입 완료율이 크게 상승했습니다.
 
 ![단계별 이탈률을 보여주는 퍼널 분석 차트, 시작페이지부터 전환까지](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/Zsc5M0kcLyWqfJPin04NJxiLeAI.png)
+
+## 드롭오프 분석의 핵심 이점
 
 드롭오프 분석의 핵심 이점은 다음과 같습니다.
 
@@ -65,6 +69,8 @@ document.addEventListener('DOMContentLoaded', function() {
 개선 전후의 드롭오프 데이터를 비교함으로써, 변경사항이 실제로 효과가 있었는지 객관적으로 평가할 수 있습니다. 이는 데이터 기반 의사결정의 핵심입니다.
 
 ![상품 조회부터 구매까지 단계별 전환율을 나타낸 퍼널 차트](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/7NoO0v7QH6AA9CjwRid2LpdE4f4.png)
+
+## 실무 적용을 위한 5단계 프로세스
 
 실무에서 드롭오프 분석을 적용한다면 다음과 같은 5단계 프로세스로 진행을 해보세요.
 
@@ -99,6 +105,8 @@ document.addEventListener('DOMContentLoaded', function() {
 발견된 문제점을 해결할 수 있는 개선안을 도출하고, A/B 테스트를 통해 효과를 검증합니다. 효과가 입증된 변경사항만 정식으로 적용합니다.
 
 ![드롭오프의 실제 원인을 나열한 슬라이드, 가입 루프와 UI 문제 등](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/DyjlTCKB6xZ13oVv_yhi1S78v4c.png)
+
+## 분석 시 피해야 할 함정들
 
 드롭오프 분석을 해야할 때 피해야 할 함정들이 있습니다. 아래 사항을 주의하세요.
 

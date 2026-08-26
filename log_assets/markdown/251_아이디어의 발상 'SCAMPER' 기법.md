@@ -38,6 +38,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ![SCAMPER 기법을 고안한 알렉스 오스본이 전화 통화하는 흑백 사진](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/dRpv39W6ETAbAgogcEjxfFjuQRw.jpg)
 
+## SCAMPER의 7가지 키워드
+
 SCAMPER의 7가지 키워드를 하나씩 살펴보자.
 
 **Substitute(대체하기)**는 기존 요소를 다른 것으로 바꾸는 것이다. 쌀을 과자로, 우유를 목욕용품으로 대체하는 식이다.
@@ -58,7 +60,11 @@ SCAMPER의 7가지 키워드를 하나씩 살펴보자.
 
 ![오레오 과자로 SCAMPER 7가지 기법을 설명하는 예시 도표](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/DxaQXv4FQIR5ek5Zc6_a8lNVnYM.jpg)
 
+## IT 기업들의 SCAMPER 활용 사례
+
 IT 기업들은 이 SCAMPER 기법으로 제품과 서비스를 혁신한다. 애플은 'Put to other uses' 관점에서 MP3 플레이어를 디지털 라이프스타일 아이콘 아이팟으로 탈바꿈시켰다. 아마존은 'Substitute'로 종이책을 전자책 킨들로 대체했다. 넷플릭스는 비즈니스 모델 자체를 'Adapt'해 DVD 대여에서 스트리밍으로 전환했고, 구글은 메일 용량을 획기적으로 'Magnify'해 지메일로 승부수를 띄웠다.
+
+## 기획자를 위한 SCAMPER 활용법
 
 기획자라면 SCAMPER를 능숙하게 활용해야 한다. 우선 아이디어 발상 단계에서 7가지 키워드로 브레인스토밍을 하자. 기존 제품 개선, 서비스 혁신, 프로세스 최적화에도 이를 적용해보자. 삼성전자의 폴더블폰처럼 'Modify'로 새로운 디자인을 고안하고, 삼성페이처럼 'Combine'으로 카드 결제 기능 탑재 등을 고려해볼 수도 있다. 'Eliminate'로 업무 단계를 간소화하고, 'Adapt'로 이종 산업 마케팅을 벤치마킹할 수도 있다. 나아가 팀 워크숍에서 SCAMPER의 키워드들로 아이디어 발상을 진행하는 것도 좋은 방법이 될 수도 있을 것다.
 

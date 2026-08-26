@@ -34,6 +34,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 2006년 맥도날드는 한 가지 고민에 빠져 있었다. 매출이 정체된 이유를 찾기 위해 글로벌 컨설팅 회사 맥킨지의 MECE(미씨) 프레임워크를 활용했다. 분석 결과, 맥도날드는 점심과 저녁 메뉴만 판매하고 있었고, 아침 시간대의 매출이 빠져 있다는 사실을 깨달았다. 바로 '맥모닝'의 시작이었다. 이 결정 하나로 맥도날드는 아침 시장을 공략해 큰 성공을 거두었다.
 
+## MECE란 무엇인가 - 두 가지 원칙
+
 이처럼 MECE는 '상호 배타적(Mutually Exclusive)', '전체 포괄적(Collectively Exhaustive)'이라는 뜻을 지닌 문제 해결 프레임워크다. 쉽게 말해, 중복 없이 명확하게 나누고, 빠짐없이 모든 요소를 고려하는 방식이다.
 
 MECE를 정복하는 핵심은 이 두 가지 원칙을 익히는 것이다.
@@ -43,6 +45,8 @@ MECE를 정복하는 핵심은 이 두 가지 원칙을 익히는 것이다.
 둘째, 그렇게 나눈 요소들이 전체 문제를 빠짐없이 포괄해야 한다. 퍼즐을 완성하듯 부분을 조합하면 온전한 그림이 나와야 한다는 의미다.
 
 ![상호 배타성과 전체 포괄성 개념을 원과 사각형으로 설명한 MECE 원칙 다이어그램](//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/38X5DpC3ewiLIaKA5EHRHefTFYs)
+
+## 기획자를 위한 MECE 활용법 다섯 가지
 
 그렇다면 기획자는 MECE를 어떻게 활용할 수 있을까?
 

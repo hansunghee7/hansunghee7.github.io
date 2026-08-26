@@ -36,17 +36,27 @@ AI 모델 개발이 비즈니스 핵심 경쟁력으로 자리잡으면서, 효�
 
 ![AWS Trainium AI 학습 전용 칩](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/ybkFhJXojwFS_UG2R4608TMScr4.png)
 
+## AWS Trainium - 가성비와 확장성의 균형
+
 AWS Trainium은 아마존의 AI 학습 전용 칩으로, 칩당 시간당 $1.34 수준으로 NVIDIA GPU 대비 저렴하며 SageMaker와의 통합이 뛰어납니다. AWS 서비스를 주력으로 사용하고 비용과 확장성 균형을 찾는 기업에 적합합니다.
 
 ![구글 TPU v5e 보드를 들고 있는 모습](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/p6TPsmaX8OKRDl9xKrF-we6nxm8.jpg)
+
+## Google TPU - 최고의 비용 효율성
 
 Google TPU v5e는 가장 비용 효율적인 옵션으로, 칩당 시간당 $1.20, 1B 토큰 학습 비용 약 $8,000으로 최저 수준입니다. H100 대비 5배 낮은 전력 소비와 50,000+ 칩 규모의 대규모 학습 검증 사례가 있어, 비용 최적화가 우선이거나 대규모 언어 모델 개발 스타트업에 이상적입니다.
 
 ![Azure 데이터센터의 H100 서버랙 통로](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/ow9RZ9ZNHwvqtvJgG_VonBHmlBY.png)
 
+## Azure H100 - 최고 성능과 호환성
+
 Azure ND H100은 NVIDIA H100 GPU로 최고 성능을 제공하며, CUDA 기반 코드를 그대로 활용할 수 있고 기업 IT 환경과 통합이 용이합니다. 개발 속도가 중요하거나 NVIDIA 생태계 코드를 보유한 기업에 적합합니다.
 
+## 클라우드별 비용과 생산성 비교
+
 비용 측면에서 Google TPU(1B 토큰 학습 약 $8,000)가 가장 효율적이며, AWS Trainium(약 $10,000), Azure H100(약 $15,000) 순입니다. 개발 생산성에서는 Azure H100이 표준 CUDA 코드를 즉시 실행할 수 있어 진입장벽이 낮고, AWS와 Google은 각각 Neuron SDK와 XLA 컴파일러 학습이 필요합니다.
+
+## 기업 상황별 최적의 선택
 
 AI 스타트업이나 자금 제약 상황에서는 최저 비용의 Google TPU v5e가 유리하고, NVIDIA 코드베이스 기업은 코드 변경 없이 Azure H100을, AWS 중심 기업은 기존 인프라와 통합되는 AWS Trainium이 적합합니다.
 
