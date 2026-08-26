@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>멀티 퍼블리싱 - Simplifier</title>
+
+<!-- 이 페이지는 검색에 노출되면 안 됩니다.
+     robots.txt에 Disallow를 쓰면 오히려 주소가 공개되므로, 여기서 noindex만 겁니다.
+     sitemap.xml에도 넣지 마세요. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+
+<style>
+  :root{
+    --bg:#ffffff; --ink:#121210; --muted:#6e6a62; --dim:#403d37;
+    --line:#c8c6bf; --line-soft:rgba(20,20,15,0.07);
+    --card:#ffffff; --good:#1f7a4f; --warn:#a3690f; --bad:#b8402a;
+    --gutter:16px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'Pretendard Variable','Pretendard',-apple-system,sans-serif;
+    -webkit-font-smoothing:antialiased; word-break:keep-all;
+  }
+  .wrap{max-width:1100px; margin:0 auto; padding:0 var(--gutter) 60px;}
+  header{padding:28px 0 18px; border-bottom:1px solid var(--line-soft); margin-bottom:24px;}
+  h1{font-size:20px; font-weight:600; margin:0 0 6px;}
+  .sub{font-size:12.5px; color:var(--muted);}
+
+  /* ---- admin shell: 사이드바 ----
+     insight-7b3e9f2c/index.html 과 동일한 블록입니다. 메뉴를 바꾸면
+     그 파일에도 똑같이 반영해야 합니다(Jekyll include가 아니라
+     순수 정적 HTML이라 공유가 안 됩니다). */
+  #adminShellNav{position:fixed; top:0; left:0; bottom:0; width:180px; padding:24px 14px; background:#f7f6f2; border-right:1px solid var(--line-soft); overflow-y:auto; z-index:100;}
+  #adminShellNav .shell-title{font-size:12px; font-weight:600; color:var(--muted); letter-spacing:0.05em; text-transform:uppercase; margin:0 0 16px; padding:0 10px;}
+  #adminShellNav a{display:block; padding:9px 10px; margin-bottom:2px; border-radius:6px; color:var(--dim); text-decoration:none; font-size:14px;}
+  #adminShellNav a:hover{background:var(--line-soft);}
+  #adminShellNav a.active{background:var(--ink); color:#fff;}
+  body.has-shell-nav{padding-left:180px;}
+  @media (max-width:760px){
+    #adminShellNav{position:static; width:auto; display:flex; gap:4px; overflow-x:auto; border-right:none; border-bottom:1px solid var(--line-soft); padding:10px 12px;}
+    #adminShellNav .shell-title{display:none;}
+    #adminShellNav a{white-space:nowrap; margin-bottom:0;}
+    body.has-shell-nav{padding-left:0;}
+  }
+
+  /* ---- 글 선택 ---- */
+  #postPicker{position:relative; margin-bottom:28px;}
+  #postSearch{width:100%; padding:11px 14px; font-size:14px; border:1px solid var(--line); border-radius:8px; font-family:inherit;}
+  #postSearch:focus{outline:2px solid var(--ink); outline-offset:-1px;}
+  #postResults{position:absolute; top:calc(100% + 4px); left:0; right:0; max-height:360px; overflow-y:auto; background:#fff; border:1px solid var(--line); border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,0.1); z-index:20; display:none;}
+  #postResults.open{display:block;}
+  #postResults .item{padding:10px 14px; cursor:pointer; font-size:13.5px; display:flex; justify-content:space-between; gap:10px;}
+  #postResults .item:hover{background:var(--line-soft);}
+  #postResults .item .t{overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  #postResults .item .d{color:var(--muted); font-size:12px; white-space:nowrap;}
+
+  /* ---- 선택된 글 ---- */
+  #selectedPost{display:none;}
+  #selectedPost.show{display:block;}
+  .post-head{display:flex; gap:16px; align-items:flex-start; padding:18px; background:#f7f6f2; border-radius:10px; margin-bottom:24px;}
+  .post-head img{width:120px; height:80px; object-fit:cover; border-radius:6px; background:#e5e3dc; flex-shrink:0;}
+  .post-head .info{flex:1; min-width:0;}
+  .post-head h2{font-size:16px; font-weight:600; margin:0 0 6px;}
+  .post-head .meta{font-size:12px; color:var(--muted); margin-bottom:12px;}
+  .post-head .actions{display:flex; gap:8px; flex-wrap:wrap;}
+  .btn{display:inline-flex; align-items:center; gap:6px; padding:7px 13px; font-size:12.5px; border:1px solid var(--line); border-radius:6px; background:#fff; color:var(--ink); text-decoration:none; cursor:pointer; font-family:inherit;}
+  .btn:hover{background:var(--line-soft);}
+  .btn.primary{background:var(--ink); color:#fff; border-color:var(--ink);}
+  .btn.primary:hover{opacity:0.85;}
+  .btn.copied{background:var(--good); color:#fff; border-color:var(--good);}
+
+  /* ---- 채널 카드 ---- */
+  #channels{display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:16px;}
+  .channel-card{border:1px solid var(--line-soft); border-radius:10px; padding:16px; display:flex; flex-direction:column; gap:10px;}
+  .channel-card h3{margin:0; font-size:13.5px; font-weight:600; display:flex; align-items:center; justify-content:space-between;}
+  .channel-card h3 .badge{font-size:10.5px; font-weight:500; color:var(--muted); text-transform:uppercase; letter-spacing:0.04em;}
+  .channel-card textarea{width:100%; min-height:160px; resize:vertical; font-family:inherit; font-size:13px; line-height:1.7; padding:10px; border:1px solid var(--line-soft); border-radius:6px; color:var(--ink);}
+  .channel-card textarea::placeholder{color:var(--muted);}
+  .channel-card .charcount{font-size:11px; color:var(--muted); text-align:right;}
+  .channel-card .charcount.over{color:var(--bad); font-weight:600;}
+  .channel-card .row{display:flex; gap:8px; flex-wrap:wrap;}
+  .channel-card .row .btn{flex:1 1 auto; justify-content:center; white-space:nowrap;}
+
+  .empty-hint{font-size:12px; color:var(--muted); padding:20px; text-align:center; border:1px dashed var(--line); border-radius:8px;}
+  .loading, .err{font-size:13px; color:var(--muted); padding:20px 0;}
+  .err{color:var(--bad);}
+</style>
+</head>
+<body class="has-shell-nav">
+<nav id="adminShellNav">
+  <div class="shell-title">Simplifier 관리</div>
+  <a href="/insight-7b3e9f2c/">사이트 인사이트</a>
+  <a href="/insight-7b3e9f2c/multi-publish.html" class="active">멀티 퍼블리싱</a>
+  <a href="/admin/">글쓰기</a>
+</nav>
+
+<div class="wrap">
+  <header>
+    <h1>멀티 퍼블리싱</h1>
+    <div class="sub">글을 고르면 채널별로 준비해둔 텍스트를 바로 복사하고, 커버 이미지를 내려받을 수 있습니다. 여기서 고친 내용은 저장되지 않아요 — 계속 남기려면 CMS에서 고쳐주세요.</div>
+  </header>
+
+  <div id="postPicker">
+    <input type="text" id="postSearch" placeholder="글 제목으로 검색... (기본은 최신순 목록)" autocomplete="off">
+    <div id="postResults"></div>
+  </div>
+
+  <div id="statusArea"></div>
+
+  <div id="selectedPost">
+    <div class="post-head">
+      <img id="postImg" src="" alt="">
+      <div class="info">
+        <h2 id="postTitle"></h2>
+        <div class="meta"><span id="postMeta"></span></div>
+        <div class="actions">
+          <a class="btn" id="downloadImgBtn" download>🖼 이미지 다운로드</a>
+          <a class="btn" id="openPostBtn" target="_blank" rel="noopener">📰 실제 글 보기</a>
+          <a class="btn" id="openCmsBtn" target="_blank" rel="noopener">✏️ CMS에서 열기</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="channels"></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var POSTS_JSON = "/assets/data/posts.json";
+  var RAW_BASE = "https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main";
+
+  var CHANNELS = [
+    {
+      key: "linkedin", label: "LinkedIn", limit: 3000,
+      source: function (fm) { return fm.channel_variants && fm.channel_variants.linkedin_threads; },
+      aiInstruction: "전문적이고 통찰력 있는 톤으로, 문단 사이 줄바꿈을 넉넉히 넣어 가독성 좋게, 3000자 이내로 다듬어줘. 마지막 줄에 관련 해시태그 3~5개를 붙여줘.",
+    },
+    {
+      key: "threads", label: "Threads", limit: 500,
+      source: function (fm) { return fm.channel_variants && fm.channel_variants.linkedin_threads; },
+      aiInstruction: "짧고 캐주얼한 말투로, 500자 이내로 핵심만 압축해줘. 첫 문장이 스크롤을 멈추게 할 만큼 강렬해야 해. 해시태그는 1~2개만.",
+    },
+    {
+      key: "facebook", label: "Facebook (개인 프로필)", limit: 63206,
+      source: function (fm) { return fm.channel_variants && fm.channel_variants.linkedin_threads; },
+      aiInstruction: "친근하고 개인적인 톤으로, 이모지를 적절히 섞어서 편하게 다듬어줘. 너무 길지 않게, 읽기 편한 호흡으로 문단을 나눠줘.",
+    },
+    {
+      key: "instagram", label: "Instagram", limit: 2200,
+      source: function (fm) { return (fm.channel_variants && (fm.channel_variants.instagram_caption || fm.channel_variants.linkedin_threads)); },
+      aiInstruction: "감성적인 캡션 스타일로, 문장을 짧게 끊어서 다듬어줘. 마지막 줄에 관련 해시태그 10~15개를 붙여줘.",
+    },
+    {
+      key: "manual", label: "브런치 · 네이버블로그 · 리멤버 · 로켓펀치", limit: null,
+      source: function (fm) { return fm.channel_variants && fm.channel_variants.manual_copy_block; },
+      aiInstruction: null,
+    },
+  ];
+
+  var els = {
+    search: document.getElementById("postSearch"),
+    results: document.getElementById("postResults"),
+    status: document.getElementById("statusArea"),
+    selected: document.getElementById("selectedPost"),
+    postImg: document.getElementById("postImg"),
+    postTitle: document.getElementById("postTitle"),
+    postMeta: document.getElementById("postMeta"),
+    downloadImgBtn: document.getElementById("downloadImgBtn"),
+    openPostBtn: document.getElementById("openPostBtn"),
+    openCmsBtn: document.getElementById("openCmsBtn"),
+    channels: document.getElementById("channels"),
+  };
+
+  var allPosts = [];
+
+  function setStatus(html) {
+    els.status.innerHTML = html;
+  }
+
+  fetch(POSTS_JSON)
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      allPosts = data.slice().sort(function (a, b) {
+        return (b.id || 0) - (a.id || 0);
+      });
+      renderResults(allPosts.slice(0, 30));
+    })
+    .catch(function (e) {
+      setStatus('<div class="err">글 목록을 못 불러왔습니다: ' + escapeHtml(String(e)) + "</div>");
+    });
+
+  function renderResults(list) {
+    if (!list.length) {
+      els.results.innerHTML = '<div class="item"><span class="t">검색 결과 없음</span></div>';
+      els.results.classList.add("open");
+      return;
+    }
+    els.results.innerHTML = list
+      .slice(0, 50)
+      .map(function (p) {
+        return (
+          '<div class="item" data-id="' + p.id + '">' +
+          '<span class="t">' + escapeHtml(p.title) + "</span>" +
+          '<span class="d">' + escapeHtml(p.date || "") + "</span>" +
+          "</div>"
+        );
+      })
+      .join("");
+    els.results.classList.add("open");
+  }
+
+  els.search.addEventListener("focus", function () {
+    var q = els.search.value.trim();
+    renderResults(q ? filterPosts(q) : allPosts.slice(0, 30));
+  });
+  els.search.addEventListener("input", function () {
+    var q = els.search.value.trim();
+    renderResults(q ? filterPosts(q) : allPosts.slice(0, 30));
+  });
+  document.addEventListener("click", function (e) {
+    if (!els.results.contains(e.target) && e.target !== els.search) {
+      els.results.classList.remove("open");
+    }
+  });
+  els.results.addEventListener("click", function (e) {
+    var item = e.target.closest(".item[data-id]");
+    if (!item) return;
+    var id = Number(item.getAttribute("data-id"));
+    var post = allPosts.filter(function (p) { return p.id === id; })[0];
+    if (post) {
+      els.search.value = post.title;
+      els.results.classList.remove("open");
+      loadPost(post);
+    }
+  });
+
+  function filterPosts(q) {
+    var lower = q.toLowerCase();
+    return allPosts.filter(function (p) {
+      return (p.title || "").toLowerCase().indexOf(lower) !== -1;
+    });
+  }
+
+  function loadPost(post) {
+    setStatus('<div class="loading">불러오는 중…</div>');
+    els.selected.classList.remove("show");
+
+    var mdPath = decodeURIComponent(post.url).replace(/\.html$/, ".md");
+    var rawUrl = RAW_BASE + mdPath;
+
+    fetch(rawUrl)
+      .then(function (r) {
+        if (!r.ok) throw new Error("원본 파일을 못 찾았습니다 (" + r.status + ")");
+        return r.text();
+      })
+      .then(function (raw) {
+        var fm = parseFrontMatter(raw);
+        var body = extractBody(raw);
+        showPost(post, fm, body);
+        setStatus("");
+      })
+      .catch(function (e) {
+        setStatus('<div class="err">' + escapeHtml(String(e.message || e)) + "</div>");
+      });
+  }
+
+  function showPost(post, fm, body) {
+    els.postImg.src = post.image && !post.image.startsWith("http") ? post.image : (fm.image || "");
+    els.postTitle.textContent = fm.title || post.title;
+    els.postMeta.textContent = (fm.category || post.category || "") + "  ·  " + (fm.date_string || post.date || "");
+    els.downloadImgBtn.href = els.postImg.src;
+    els.downloadImgBtn.setAttribute("download", (fm.title || post.title) + "_cover" + guessExt(els.postImg.src));
+    els.openPostBtn.href = post.url;
+    // 정확한 CMS 편집 화면 딥링크는 슬러그 규칙이 글마다 달라 신뢰하기 어려워,
+    // 검색해서 바로 찾을 수 있게 컬렉션 목록으로 보냅니다.
+    els.openCmsBtn.href = "/admin/#/collections/posts";
+
+    els.channels.innerHTML = "";
+    CHANNELS.forEach(function (ch) {
+      var text = (ch.source(fm) || "").toString().trim();
+      els.channels.appendChild(buildChannelCard(ch, text, fm.title || post.title, body));
+    });
+
+    els.selected.classList.add("show");
+  }
+
+  function buildChannelCard(ch, text, title, body) {
+    var card = document.createElement("div");
+    card.className = "channel-card";
+
+    var isEmpty = !text;
+    var placeholder = isEmpty
+      ? "CMS의 채널별 발행 텍스트가 비어 있습니다. 여기 직접 입력해서 복사만 하셔도 되고, CMS에서 채워두시면 다음부터 자동으로 채워집니다."
+      : "";
+
+    // 채널별로 버튼은 최대 3개: AI 요청 프롬프트 복사 / 제목 복사 / 본문 복사.
+    // AI 변환이 필요없는 채널(브런치·네이버블로그 등)은 AI 버튼을 뺍니다.
+    var aiBtnHtml = ch.aiInstruction
+      ? '<button type="button" class="btn ai-btn">🤖 AI 요청 복사</button>'
+      : "";
+
+    card.innerHTML =
+      "<h3>" + ch.label + (ch.limit ? '<span class="badge">권장 ' + ch.limit + "자 이내</span>" : "") + "</h3>" +
+      '<textarea placeholder="' + escapeHtml(placeholder) + '">' + escapeHtml(text) + "</textarea>" +
+      '<div class="row"><span class="charcount">0자</span></div>' +
+      '<div class="row">' +
+        aiBtnHtml +
+        '<button type="button" class="btn title-btn">제목 복사</button>' +
+        '<button type="button" class="btn primary copy-btn">본문 복사</button>' +
+      "</div>";
+
+    var textarea = card.querySelector("textarea");
+    var count = card.querySelector(".charcount");
+    var copyBtn = card.querySelector(".copy-btn");
+    var titleBtn = card.querySelector(".title-btn");
+    var aiBtn = card.querySelector(".ai-btn");
+
+    function updateCount() {
+      var len = textarea.value.length;
+      count.textContent = len + "자" + (ch.limit ? " / " + ch.limit : "");
+      count.classList.toggle("over", !!ch.limit && len > ch.limit);
+    }
+    updateCount();
+    textarea.addEventListener("input", updateCount);
+
+    copyBtn.addEventListener("click", function () {
+      copyText(textarea.value, function (ok) {
+        flashBtn(copyBtn, ok, "본문 복사");
+      });
+    });
+
+    titleBtn.addEventListener("click", function () {
+      copyText(title, function (ok) {
+        flashBtn(titleBtn, ok, "제목 복사");
+      });
+    });
+
+    if (aiBtn) {
+      aiBtn.addEventListener("click", function () {
+        var prompt = buildAiPrompt(ch, title, body);
+        copyText(prompt, function (ok) {
+          flashBtn(aiBtn, ok, "🤖 AI 요청 복사");
+        });
+      });
+    }
+
+    return card;
+  }
+
+  function flashBtn(btn, ok, restoreLabel) {
+    btn.textContent = ok ? "복사됨!" : "복사 실패 — 직접 선택해주세요";
+    btn.classList.toggle("copied", ok);
+    setTimeout(function () {
+      btn.textContent = restoreLabel;
+      btn.classList.remove("copied");
+    }, 2000);
+  }
+
+  // 채널별로 "이 글을 이 채널 스타일로 다듬어줘" 프롬프트를 만들어 복사합니다.
+  // 그대로 Claude/ChatGPT 대화창에 붙여넣으면 채널에 맞게 각색된 글이 나옵니다.
+  function buildAiPrompt(ch, title, body) {
+    var trimmedBody = (body || "").trim();
+    if (trimmedBody.length > 6000) {
+      trimmedBody = trimmedBody.slice(0, 6000) + "\n\n(이하 생략)";
+    }
+    return (
+      "아래는 내가 쓴 글의 제목과 본문이야. 이 내용을 " + ch.label + " 게시용으로 다듬어줘.\n" +
+      "지침: " + ch.aiInstruction + "\n\n" +
+      "제목: " + title + "\n\n" +
+      "본문:\n" + trimmedBody
+    );
+  }
+
+  // markdown 본문에서 카테고리 클릭 스크립트, 이전/다음글 내비게이션 같은
+  // 화면용 HTML 조각을 걷어내고 실제 글 텍스트만 남깁니다.
+  function extractBody(raw) {
+    var parts = raw.split(/^---\s*$/m);
+    var body = parts.slice(2).join("---");
+    body = body.replace(/<!--\s*CAT_LINK_SCRIPT_START\s*-->[\s\S]*?<!--\s*CAT_LINK_SCRIPT_END\s*-->/, "");
+    body = body.replace(/<!--\s*CATEGORY_NAV_START\s*-->[\s\S]*?<!--\s*CATEGORY_NAV_END\s*-->/, "");
+    return body.trim();
+  }
+
+  function copyText(text, cb) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(
+        function () { cb(true); },
+        function () { cb(legacyCopy(text)); }
+      );
+    } else {
+      cb(legacyCopy(text));
+    }
+  }
+
+  function legacyCopy(text) {
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    document.body.removeChild(ta);
+    return ok;
+  }
+
+  function guessExt(url) {
+    var m = (url || "").match(/\.(jpg|jpeg|png|webp|gif)(\?|$)/i);
+    return m ? "." + m[1].toLowerCase() : ".jpg";
+  }
+
+  function escapeHtml(s) {
+    return (s || "").replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  // ---- 아주 단순한 front matter 파서 ----
+  // 이 사이트의 front matter는 평평한 key: value 줄과, channel_variants처럼
+  // 한 단계 중첩된 매핑, 그리고 `|` 블록 스칼라(여러 줄 텍스트) 정도만
+  // 씁니다. 그 범위만 정확히 처리하면 되므로 범용 YAML 파서 대신
+  // 이 스키마 전용으로 가볍게 짰습니다.
+  function parseFrontMatter(raw) {
+    var parts = raw.split(/^---\s*$/m);
+    var fmText = parts[1] || "";
+    var lines = fmText.split("\n");
+    var i = 0;
+
+    function stripQuotes(v) {
+      v = v.trim();
+      if (v === "null" || v === "~" || v === "") return null;
+      if (v.length >= 2 && v[0] === "'" && v[v.length - 1] === "'") {
+        return v.slice(1, -1).replace(/''/g, "'");
+      }
+      if (v.length >= 2 && v[0] === '"' && v[v.length - 1] === '"') {
+        return v.slice(1, -1).replace(/\\"/g, '"');
+      }
+      return v;
+    }
+
+    function indentOf(line) {
+      var m = line.match(/^(\s*)/);
+      return m ? m[1].length : 0;
+    }
+
+    function parseBlockScalar(indent) {
+      var raw = [];
+      while (i < lines.length) {
+        var l = lines[i];
+        if (l.trim() === "") { raw.push(""); i++; continue; }
+        if (indentOf(l) <= indent) break;
+        raw.push(l);
+        i++;
+      }
+      while (raw.length && raw[raw.length - 1].trim() === "") raw.pop();
+      var nonEmpty = raw.filter(function (l) { return l.trim() !== ""; });
+      var minIndent = nonEmpty.length ? Math.min.apply(null, nonEmpty.map(indentOf)) : 0;
+      return raw.map(function (l) { return l.trim() === "" ? "" : l.slice(minIndent); }).join("\n");
+    }
+
+    function parseMapping(indent) {
+      var obj = {};
+      while (i < lines.length) {
+        var line = lines[i];
+        if (line.trim() === "") { i++; continue; }
+        var li = indentOf(line);
+        if (li < indent) break;
+        var m = line.match(/^\s*([A-Za-z_][A-Za-z0-9_]*):\s*(.*)$/);
+        if (!m) { i++; continue; }
+        var key = m[1];
+        var val = m[2];
+        i++;
+        if (/^\|[+-]?\d*$/.test(val)) {
+          // `|`, `|-`, `|+` 등 블록 스칼라 지시자 — 뒤에 오는 들여쓴 줄들이 본문입니다.
+          obj[key] = parseBlockScalar(li);
+        } else if (val === "") {
+          var nextIsNested = i < lines.length && lines[i].trim() !== "" && indentOf(lines[i]) > li;
+          obj[key] = nextIsNested ? parseMapping(indentOf(lines[i])) : null;
+        } else {
+          obj[key] = stripQuotes(val);
+        }
+      }
+      return obj;
+    }
+
+    return parseMapping(0);
+  }
+})();
+</script>
+</body>
+</html>

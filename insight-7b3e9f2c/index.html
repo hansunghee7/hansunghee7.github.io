@@ -207,9 +207,33 @@
   .note b{color:var(--dim); font-weight:500;}
   footer{padding:30px 0 60px; color:var(--muted); font-size:11.5px; line-height:1.8;}
   .err{color:var(--bad); font-size:13px; padding:16px; border:1px solid rgba(184,64,42,0.3); border-radius:8px; background:rgba(184,64,42,0.06);}
+
+  /* ---- admin shell: 사이드바 ----
+     이 블록(및 아래 <nav id="adminShellNav">)은 insight-7b3e9f2c/ 안의
+     모든 내부 도구 페이지에 그대로 복사해서 씁니다(Jekyll include가
+     아니라 순수 정적 HTML이라 공유가 안 돼서 그렇습니다). 메뉴를
+     바꾸면 다른 페이지에도 똑같이 반영해야 합니다. */
+  #adminShellNav{position:fixed; top:0; left:0; bottom:0; width:180px; padding:24px 14px; background:#f7f6f2; border-right:1px solid var(--line-soft); overflow-y:auto; z-index:100;}
+  #adminShellNav .shell-title{font-size:12px; font-weight:600; color:var(--muted); letter-spacing:0.05em; text-transform:uppercase; margin:0 0 16px; padding:0 10px;}
+  #adminShellNav a{display:block; padding:9px 10px; margin-bottom:2px; border-radius:6px; color:var(--dim); text-decoration:none; font-size:14px;}
+  #adminShellNav a:hover{background:var(--line-soft);}
+  #adminShellNav a.active{background:var(--ink); color:#fff;}
+  body.has-shell-nav{padding-left:180px;}
+  @media (max-width:760px){
+    #adminShellNav{position:static; width:auto; display:flex; gap:4px; overflow-x:auto; border-right:none; border-bottom:1px solid var(--line-soft); padding:10px 12px;}
+    #adminShellNav .shell-title{display:none;}
+    #adminShellNav a{white-space:nowrap; margin-bottom:0;}
+    body.has-shell-nav{padding-left:0;}
+  }
 </style>
 </head>
-<body>
+<body class="has-shell-nav">
+<nav id="adminShellNav">
+  <div class="shell-title">Simplifier 관리</div>
+  <a href="/insight-7b3e9f2c/" class="active">사이트 인사이트</a>
+  <a href="/insight-7b3e9f2c/multi-publish.html">멀티 퍼블리싱</a>
+  <a href="/admin/">글쓰기</a>
+</nav>
 <div class="wrap">
 
 <header>
