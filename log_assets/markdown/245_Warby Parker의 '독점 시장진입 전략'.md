@@ -83,6 +83,10 @@ Warby Parker의 전략은 다음과 같습니다.
 고민이 되는 전략이 있다면 댓글을 남겨주세요. 커피챗을 요청해주셔도 좋아요. :-)
 
 <!-- CATEGORY_NAV_START -->
+<div class="post-cta">
+  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
+  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
+</div>
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/243_%EC%98%A4%ED%94%88AI%20%EC%83%98%20%EC%95%8C%ED%8A%B8%EB%A8%BC%EC%9D%B4%20%EC%84%A0%ED%83%9D%ED%95%9C%20%EC%9B%90%EC%9E%90%EB%A0%A5%EC%9D%98%20%EB%AF%B8%EB%9E%98%2C%20%EC%98%A4%ED%81%B4%EB%A1%9C.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">오픈AI 샘 알트먼이 선택한 원자력의 미래, 오클로</span></a>
   <a href="/log_assets/markdown/246_%EC%BB%A4%EB%A8%B8%EC%8A%A4%20AI%EC%9D%98%20%EA%B2%8C%EC%9E%84%EC%B2%B4%EC%9D%B8%EC%A0%80%2C%20%EC%9D%B8%ED%95%B8%EC%8A%A4.html" class="cat-nav-item cat-nav-right"><span class="nav-title">커머스 AI의 게임체인저, 인핸스</span><span class="cat-nav-label">다음글 ❯</span></a>

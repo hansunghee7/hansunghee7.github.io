@@ -57,6 +57,10 @@ Visual Studio Code를 기반으로 하되, 이를 완전히 재구성한 AI 지�
 Cursor AI의 목표는 단순한 생산성 향상이 아니다. 소프트웨어를 만드는 방식 자체를 근본적으로 변화시키는 것이다. 개발자에게 진정한 '속도'와 '통제력'을 제공하는 이 혁신은 이제 AI 코딩 시장의 새로운 표준이 되고 있다.
 
 <!-- CATEGORY_NAV_START -->
+<div class="post-cta">
+  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
+  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
+</div>
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/209_%EC%8B%A4%ED%8C%A8%EC%97%90%EC%84%9C%20%EB%8D%B0%EC%B9%B4%EC%BD%98%EC%9C%BC%EB%A1%9C%20%27Notion%27%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EC%8B%9C%EC%9E%A5%EC%A7%84%EC%B6%9C%EC%A0%84%EB%9E%B5.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">실패에서 데카콘으로 'Notion'의 초기 시장진출전략</span></a>
   <a href="/log_assets/markdown/214_30%EB%8B%AC%EB%9F%AC%EB%A1%9C%20%EB%A7%8C%EB%93%A0%20AI%20%ED%98%81%EB%AA%85%2C%20%27%ED%83%80%EC%9D%B4%EB%8B%88%20%EC%A0%9C%EB%A1%9C%27.html" class="cat-nav-item cat-nav-right"><span class="nav-title">30달러로 만든 AI 혁명, '타이니 제로</span><span class="cat-nav-label">다음글 ❯</span></a>

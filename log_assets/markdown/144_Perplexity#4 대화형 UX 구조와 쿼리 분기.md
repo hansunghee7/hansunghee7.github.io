@@ -65,6 +65,10 @@ document.addEventListener('DOMContentLoaded', function() {
 여러분도 이 과정에 동참해 보시는 건 어떨까요? 기술과 사용자 경험의 접점에서, 우리가 상상하는 미래의 AI가 하나둘 현실로 다가올 테니까요.
 
 <!-- CATEGORY_NAV_START -->
+<div class="post-cta">
+  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
+  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
+</div>
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/143_%EC%97%90%EC%96%B4%EB%A7%A4%ED%8A%B8%EC%97%90%EC%84%9C%20%EC%8B%9C%EC%9E%91%EB%90%9C%2C%20%EC%97%90%EC%96%B4%EB%B9%84%EC%95%A4%EB%B9%84%EC%9D%98%20%EB%AC%B4%EC%9E%90%EB%B3%B8%20%EC%B0%BD%EC%97%85%20%EC%A0%84%EB%9E%B5.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">에어매트에서 시작된, 에어비앤비의 무자본 창업 전략</span></a>
   <a href="/log_assets/markdown/150_Slack%EC%9D%98%20%EC%9C%A0%EB%A3%8C%EC%A0%84%ED%99%98%EC%9D%98%20%EB%A7%A4%EC%A7%81%20%EB%AA%A8%EB%A8%BC%ED%8A%B8.html" class="cat-nav-item cat-nav-right"><span class="nav-title">Slack의 유료전환의 "매직 모먼트</span><span class="cat-nav-label">다음글 ❯</span></a>

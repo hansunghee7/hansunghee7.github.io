@@ -55,6 +55,10 @@ SNS 활용도 빼놓을 수 없습니다. 미국에서 비즈니스 네트워킹
 다음 포스팅에서는 "미국 스타트업은 '브랜드'를 어떻게 정의하는가"에 대해 다뤄보겠습니다.
 
 <!-- CATEGORY_NAV_START -->
+<div class="post-cta">
+  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
+  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
+</div>
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/093_%EB%AF%B8%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%27%EB%B8%8C%EB%9E%9C%EB%93%9C%27%EB%A5%BC%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%A0%95%EC%9D%98%ED%95%98%EB%8A%94%EA%B0%80.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">미국 스타트업은 '브랜드'를 어떻게 정의하는가</span></a>
   <a href="/log_assets/markdown/107_YC%20%EC%A1%B8%EC%97%85%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EB%93%A4%EC%9D%98%20%EA%B3%B5%ED%86%B5%EB%90%9C%20%EC%84%B1%EC%9E%A5%20%EA%B3%B5%EC%8B%9D.html" class="cat-nav-item cat-nav-right"><span class="nav-title">YC 졸업 스타트업들의 공통된 성장 공식</span><span class="cat-nav-label">다음글 ❯</span></a>

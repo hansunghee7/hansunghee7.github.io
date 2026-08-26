@@ -88,6 +88,10 @@ TPM은 기술적 복잡성을 풀어내고, 여러 팀을 조율합니다.
 
 
 <!-- CATEGORY_NAV_START -->
+<div class="post-cta">
+  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
+  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
+</div>
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/124_DevOps%2C%20%EA%B0%9C%EB%B0%9C%EA%B3%BC%20%EC%9A%B4%EC%98%81%EC%9D%98%20%EA%B2%BD%EA%B3%84%EB%A5%BC%20%ED%97%88%EB%AC%BC%EB%8B%A4.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">DevOps, 개발과 운영의 경계를 허물다</span></a>
   <a href="/log_assets/markdown/146_%EB%A6%B0%EA%B3%BC%20%EC%95%A0%EC%9E%90%EC%9D%BC%2C%20%EC%9A%B0%EB%A6%AC%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%97%94%20%EC%96%B4%EB%96%A4%20%EA%B1%B8%20%ED%95%B4%EC%95%BC%ED%95%A0%EA%B9%8C.html" class="cat-nav-item cat-nav-right"><span class="nav-title">린과 애자일, 우리 프로젝트엔 어떤 걸 해야할까?</span><span class="cat-nav-label">다음글 ❯</span></a>

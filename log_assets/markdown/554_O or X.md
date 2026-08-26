@@ -45,6 +45,10 @@ document.addEventListener('DOMContentLoaded', function() {
 2004년 1월에 작성한 글입니다.
 
 <!-- CATEGORY_NAV_START -->
+<div class="post-cta">
+  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
+  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
+</div>
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/552_%EC%82%AC%EC%9A%A9%EC%9E%90%EB%A5%BC%20%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%99%94%ED%95%98%EC%84%B8%EC%9A%94.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">사용자를 데이터화하세요.</span></a>
   <a href="/log_assets/markdown/555_%EC%A7%80%EB%82%98%EA%B3%A0%20%EB%B3%B4%EB%8B%88.html" class="cat-nav-item cat-nav-right"><span class="nav-title">지나고 보니...</span><span class="cat-nav-label">다음글 ❯</span></a>

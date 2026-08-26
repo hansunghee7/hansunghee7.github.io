@@ -65,6 +65,10 @@ FPGA는 현장에서 프로그래밍 가능한 반도체입니다. 어떻게 설
 앞으로 AI 모델은 계속 진화할 겁니다. 하드웨어와 소프트웨어가 긴밀하게 연계되어야만 최고의 성능을 끌어낼 수 있기 때문이죠. NVIDIA나 구글, 애플 같은 선두 기업들이 어떤 AI 칩을 내놓을지 눈여겨볼 일입니다. 최적의 하드웨어로 무장해야 AI 경쟁에서 살아남을 수 있으니까요. 우리 모두 관심 있게 지켜보면 좋겠습니다.
 
 <!-- CATEGORY_NAV_START -->
+<div class="post-cta">
+  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
+  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
+</div>
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/184_AI%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%EC%97%B4%EC%87%A0%2C%20HBM%EC%9D%80%20%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">AI 성능의 열쇠, HBM은 무엇일까?</span></a>
   <a href="/log_assets/markdown/199_AI%EC%8B%9C%EB%8C%80%20%EC%8A%88%ED%8D%BC%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B0%80%20%ED%95%84%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="cat-nav-item cat-nav-right"><span class="nav-title">AI시대 슈퍼컴퓨터가 필요한 이유</span><span class="cat-nav-label">다음글 ❯</span></a>

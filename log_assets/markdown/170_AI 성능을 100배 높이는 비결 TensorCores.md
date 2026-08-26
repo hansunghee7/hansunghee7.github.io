@@ -55,6 +55,10 @@ Tensor Cores가 업계 스탠다드로 자리 잡으면서 AI 프레임워크들
 하지만 걱정은 접어두죠. Tensor Cores를 필두로 한 행렬 곱셈 가속화 기술이 한발 앞서 우리를 인도해 줄 테니까요. 앞으로 NVIDIA, AMD, 인텔, 구글 같은 대형 테크 기업들이 내놓을 새로운 AI 칩들의 행렬 곱셈 성능이 어떻게 진화할지 지켜보는 것만으로도 흥분되지 않나요? 우리가 상상하는 것보다 더 놀라운 미래가 펼쳐질 지도 모르겠네요.
 
 <!-- CATEGORY_NAV_START -->
+<div class="post-cta">
+  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
+  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
+</div>
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/162_AI%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%EC%88%A8%EC%9D%80%20%EC%98%81%EC%9B%85%2C%20FP16%2C%20BF16%2C%20FP8.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">AI 성능의 숨은 영웅, FP16, BF16, FP8</span></a>
   <a href="/log_assets/markdown/177_AI%20%EC%B9%A9%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%ED%95%B5%EC%8B%AC%2C%20FLOPS%EC%99%80%20TOPS%20%EA%B7%B8%EB%A6%AC%EA%B3%A0.html" class="cat-nav-item cat-nav-right"><span class="nav-title">AI 칩 성능의 핵심, FLOPS와 TOPS 그리고..</span><span class="cat-nav-label">다음글 ❯</span></a>

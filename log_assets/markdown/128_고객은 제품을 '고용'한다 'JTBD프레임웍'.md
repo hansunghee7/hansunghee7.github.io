@@ -53,6 +53,10 @@ JTBD는 기능적 니즈뿐만 아니라 정서적, 사회적 차원의 니즈�
 JTBD는 기획자가 고객의 근본적인 니즈를 탐색하고, 진짜 문제를 해결하는 혁신의 실마리를 제공하는 강력한 도구다. 제품의 기능을 늘리는 것보다 고객의 '일'을 더 잘 해결하는 방향으로 우선순위를 설정할 때, 진정한 차별화와 성장의 기회를 포착할 수 있다.
 
 <!-- CATEGORY_NAV_START -->
+<div class="post-cta">
+  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
+  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
+</div>
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/120_UX%205%20Planes%2C%20%EA%B2%BD%ED%97%98%20%EC%84%A4%EA%B3%84%EC%9D%98%20%EC%A7%80%EB%8F%84.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">UX 5 Planes, 경험 설계의 지도</span></a>
   <a href="/log_assets/markdown/135_%EC%A0%9C%ED%92%88%EC%9D%98%20%EC%83%9D%EB%AA%85%EC%84%A0%2C%20Retention%20Curve.html" class="cat-nav-item cat-nav-right"><span class="nav-title">제품의 생명선, Retention Curve</span><span class="cat-nav-label">다음글 ❯</span></a>

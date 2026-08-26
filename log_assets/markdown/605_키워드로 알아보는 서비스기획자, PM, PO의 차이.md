@@ -61,6 +61,10 @@ document.addEventListener('DOMContentLoaded', function() {
  용어에 따라 역할 구분은 위와 같이 했지만, Product를 만들기 위해 필요한 기술은 회사와 상황에 따라 다를 수 있습니다. 따라서 본인이 맡게 되는 프로젝트와 과제들을 보다 효과적으로 수행하기 위해 각각의 역할이 필요로 하는 기술들을 습득해 두면 좋습니다. :-)
 
 <!-- CATEGORY_NAV_START -->
+<div class="post-cta">
+  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
+  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
+</div>
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/602_%EA%B2%BD%ED%97%98%EC%97%90%EC%84%9C%20%EB%B0%B0%EC%9A%B4%20%EB%AA%87%20%EA%B0%80%EC%A7%80%20%EA%B5%90%ED%9B%88.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">경험에서 배운 몇 가지 교훈</span></a>
   <a href="/log_assets/markdown/608_%EB%8B%B9%EC%8B%A0%EC%97%90%EA%B2%8C%20%EC%A3%BC%EC%96%B4%EC%A7%84%20%EA%B3%A8%EC%9D%80%20%EC%9E%98%20%EB%84%A3%EA%B3%A0%20%EC%9E%88%EC%8A%B5%EB%8B%88%EA%B9%8C.html" class="cat-nav-item cat-nav-right"><span class="nav-title">당신에게 주어진 골은 잘 넣고 있습니까?</span><span class="cat-nav-label">다음글 ❯</span></a>

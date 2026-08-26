@@ -10,6 +10,31 @@ MARKDOWN_DIR = os.path.join(LOG_ASSETS_DIR, "markdown")
 # 🎯 오름차순(연재형: 예고편 -> 1화 -> 2화)으로 순서를 엮어야 하는 카테고리 지정
 ASCENDING_CATS = ["코치S", "잉크드인대 기획학과", "잉크드인대"]
 
+# 💬 포스트 하단 문의 CTA -- 카테고리별로 문구/문의유형을 다르게 건다.
+# 웹툰 연재(ASCENDING_CATS)는 뷰어 UX가 따로라 CTA를 넣지 않는다.
+SPEAKING_CATS = ["토크세션"]
+CTA_COACHING = (
+    "비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?",
+    "코칭 문의",
+    "coaching",
+)
+CTA_SPEAKING = (
+    "이런 이야기를 강연으로 더 듣고 싶으시다면",
+    "강연 문의",
+    "speaking",
+)
+
+def build_cta_html(cat):
+    if cat in ASCENDING_CATS:
+        return ""
+    line, label, contact_type = CTA_SPEAKING if cat in SPEAKING_CATS else CTA_COACHING
+    return (
+        '<div class="post-cta">\n'
+        f'  <p class="post-cta-line">{html.escape(line, quote=False)}</p>\n'
+        f'  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="{contact_type}">{html.escape(label, quote=False)}</button>\n'
+        '</div>\n'
+    )
+
 def extract_ep_num(filename, title):
     # '예고편'은 가장 첫 번째(0화)로 간주
     if '예고편' in filename or '예고편' in title:
@@ -95,7 +120,8 @@ if os.path.exists(MARKDOWN_DIR):
                 prev_post = posts[i+1] if i < len(posts)-1 else None
                 next_post = posts[i-1] if i > 0 else None
 
-            nav_html = '<div class="category-nav-wrap">\n'
+            nav_html = build_cta_html(cat)
+            nav_html += '<div class="category-nav-wrap">\n'
 
             # 왼쪽 영역 (이전글 / 이전 화)
             if prev_post:

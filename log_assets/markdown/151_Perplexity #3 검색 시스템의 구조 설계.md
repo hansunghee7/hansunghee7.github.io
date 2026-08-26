@@ -83,6 +83,10 @@ Chunk들을 잘 검색하기 위해선 벡터 표현(embedding)으로 변환해 
 여러분도 퍼플렉시티의 RAG 구조에서 영감을 얻어, 각자의 도메인에 최적화된 지식 기반 AI 에이전트를 만들어 보는 건 어떨까요? 앞으로 이런 시도들이 더욱 활발해질수록 AI와 인간의 협업도 더 깊어질 것 같습니다.
 
 <!-- CATEGORY_NAV_START -->
+<div class="post-cta">
+  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
+  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
+</div>
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/150_Slack%EC%9D%98%20%EC%9C%A0%EB%A3%8C%EC%A0%84%ED%99%98%EC%9D%98%20%EB%A7%A4%EC%A7%81%20%EB%AA%A8%EB%A8%BC%ED%8A%B8.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">Slack의 유료전환의 "매직 모먼트</span></a>
   <a href="/log_assets/markdown/157_%EC%8B%9C%EA%B0%81%EC%A0%81%20%EC%86%8C%ED%86%B5%EC%9D%98%20%EB%8C%80%ED%91%9C%EC%A3%BC%EC%9E%90%2C%20%ED%95%80%ED%84%B0%EB%A0%88%EC%8A%A4%ED%8A%B8%EC%9D%98%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B8%B0%EB%B0%98%20%EC%84%B1%EC%9E%A5.html" class="cat-nav-item cat-nav-right"><span class="nav-title">시각적 소통의 대표주자, 핀터레스트의 데이터 기반 성장</span><span class="cat-nav-label">다음글 ❯</span></a>

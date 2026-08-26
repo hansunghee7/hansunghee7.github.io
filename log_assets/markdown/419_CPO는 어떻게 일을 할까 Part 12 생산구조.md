@@ -55,6 +55,10 @@ document.addEventListener('DOMContentLoaded', function() {
 프로덕트 조직의 생산조직 체계는 위와 같이 사업목적에 맞게 구성을 해야 하며, 사업 상황에 따라 2번 스쿼드도 프로젝트에 투입될 수 있게 유연성을 가지게 운영을 해야 한다. 그리고 스쿼드 인력 변화와 사업아이템 인입현황에 따라 생산체계를 지속적으로 조율해 주는 것도 중요하다.
 
 <!-- CATEGORY_NAV_START -->
+<div class="post-cta">
+  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
+  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
+</div>
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/413_%ED%95%9C%EC%BD%94%EC%B9%98%EC%9D%98%20%27%EC%95%A0%EC%9E%90%EC%9D%BC%20%EC%99%9C%20%ED%95%98%EA%B2%8C%20%EB%90%98%EC%97%88%EC%9D%84%EA%B9%8C%27.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">한코치의 '애자일 왜 하게 되었을까?</span></a>
   <a href="/log_assets/markdown/420_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part11%20%EC%82%AC%EC%97%85%EB%AA%A9%ED%91%9C%EC%88%98%EB%A6%BD.html" class="cat-nav-item cat-nav-right"><span class="nav-title">CPO는 어떻게 일을 할까? Part1.1 사업목표수립</span><span class="cat-nav-label">다음글 ❯</span></a>

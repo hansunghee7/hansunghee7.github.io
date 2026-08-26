@@ -67,6 +67,10 @@ document.addEventListener('DOMContentLoaded', function() {
 여러분도 챗GPT를 위 관점으로 이용을 해보세요. 사용자를 위해 최대한 직관적으로 설계되어 있는 UX의 배려가 느껴지실 겁니다.
 
 <!-- CATEGORY_NAV_START -->
+<div class="post-cta">
+  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
+  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
+</div>
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/227_Google%EC%9D%98%20%27%EC%8B%AC%ED%94%8C%ED%95%9C%20UX%27%20%EC%9B%90%EC%B9%99.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">Google의 '심플한 UX' 원칙</span></a>
   <a href="/log_assets/markdown/242_%EC%97%84%EC%A7%80%EA%B0%80%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%84%20%EC%A7%80%EB%B0%B0%ED%95%9C%EB%8B%A4%20ThumbFriendly%20UX.html" class="cat-nav-item cat-nav-right"><span class="nav-title">엄지가 디자인을 지배한다 ThumbFriendly UX</span><span class="cat-nav-label">다음글 ❯</span></a>

@@ -49,6 +49,10 @@ DeepSeek의 사례는 중요한 통찰을 제공한다. 자원이 부족하더�
 그럼에도 DeepSeek은 "누구나 사용할 수 있는 고성능 AI"라는 원대한 비전을 달성하고자 하고 있다. 우리는 DeepSeek이 AI 산업계의 지형에 어떤 영향을 줄지 주목해야할 시점이다.
 
 <!-- CATEGORY_NAV_START -->
+<div class="post-cta">
+  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
+  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
+</div>
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/246_%EC%BB%A4%EB%A8%B8%EC%8A%A4%20AI%EC%9D%98%20%EA%B2%8C%EC%9E%84%EC%B2%B4%EC%9D%B8%EC%A0%80%2C%20%EC%9D%B8%ED%95%B8%EC%8A%A4.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">커머스 AI의 게임체인저, 인핸스</span></a>
   <a href="/log_assets/markdown/253_%EB%A7%88%EC%BC%80%ED%8C%85%20%EC%97%86%EC%9D%B4%2020%EC%A1%B0%EC%9B%90%20%EA%B0%80%EC%B9%98%EB%A5%BC%20%EB%A7%8C%EB%93%A0%20Figma%20PLG%EC%A0%84%EB%9E%B5.html" class="cat-nav-item cat-nav-right"><span class="nav-title">마케팅 없이 20조원 가치를 만든 Figma PLG전략</span><span class="cat-nav-label">다음글 ❯</span></a>

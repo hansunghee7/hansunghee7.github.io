@@ -178,6 +178,12 @@
             .category-nav-wrap { padding: 18px 20px !important; }
         }
 
+        /* 포스트 하단 문의 CTA -- 배너가 아니라 에세이가 자연스럽게 끝나는 한 줄 + 조용한 버튼 하나 */
+        .post-cta { text-align: center; padding: 8px 20px 44px; }
+        .post-cta-line { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-weight: 300; font-style: italic; font-size: 15.5px; color: #767672; margin: 0 0 20px; line-height: 1.7; }
+        .post-cta-btn { display: inline-block; background: #080808; color: #f5f3ee; font-family: 'Boska', serif; font-style: italic; font-weight: 400; font-size: 15.5px; padding: 13px 36px; border-radius: 999px; text-decoration: none !important; border: none; cursor: pointer; transition: background 0.2s, color 0.2s, box-shadow 0.2s; }
+        .post-cta-btn:hover { background: #f5f3ee; color: #080808; box-shadow: inset 0 0 0 1px #080808; }
+
         .category-nav-wrap {
             margin-top: var(--nav-margin-top) !important;
             margin-bottom: var(--nav-margin-bottom) !important;
@@ -447,8 +453,8 @@
 
 {% if page.url == '/' or page.url == '/log.html' or page.is_index %}
     {% include footer.html %}
-    {% include contact_modal.html %}
 {% endif %}
+{% include contact_modal.html %}
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {

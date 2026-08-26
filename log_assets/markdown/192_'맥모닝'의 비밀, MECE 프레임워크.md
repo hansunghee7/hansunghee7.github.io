@@ -63,6 +63,10 @@ MECE를 정복하는 핵심은 이 두 가지 원칙을 익히는 것이다.
 MECE, 기획자에겐 그 자체로 마법 지팡이와도 같은 도구다. 상호 배타적이고 전체를 포괄하는 사고의 힘. 이것이야말로 기획의 비법이 아닐까한다.
 
 <!-- CATEGORY_NAV_START -->
+<div class="post-cta">
+  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
+  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
+</div>
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/185_%EC%82%AC%EA%B3%A0%EC%9D%98%20%EC%A7%80%EB%8F%84%EB%A5%BC%20%EA%B7%B8%EB%A6%AC%EB%8A%94%20%EB%B2%95%20%27%EB%A1%9C%EC%A7%81%20%ED%8A%B8%EB%A6%AC%27.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">사고의 지도를 그리는 법 '로직 트리</span></a>
   <a href="/log_assets/markdown/200_%EC%82%AC%EC%9A%A9%EC%9E%90%EB%A5%BC%20%EC%A4%91%EB%8F%85%EC%8B%9C%ED%82%A4%EB%8A%94%204%EB%8B%A8%EA%B3%84%20%EB%A7%88%EB%B2%95%20%27Hooked%20%EB%AA%A8%EB%8D%B8%27.html" class="cat-nav-item cat-nav-right"><span class="nav-title">사용자를 중독시키는 4단계 마법 'Hooked 모델</span><span class="cat-nav-label">다음글 ❯</span></a>
