@@ -150,6 +150,77 @@
     });
 
     CMS.registerWidget("aio-copy-assist", AioCopyControl, AioCopyPreview);
+
+    // 본문 위에 작은 버튼 4개를 붙여서, 누르면 본문/LinkedIn·Threads/
+    // Instagram/수동발행 중 하나만 보이고 나머지는 숨겨지게 한다 (DOM을
+    // 옮기지 않고 각 필드 컨테이너의 display만 토글 -- React가 관리하는
+    // 노드를 직접 이동시키면 위험하므로 안전한 방식만 사용).
+    // Decap은 화면 전환마다 폼을 새로 그리므로, 주기적으로 다시 확인해서
+    // 없어졌으면 다시 붙인다.
+    var CONTENT_TABS = [
+      { key: "본문", find: "본문" },
+      { key: "LinkedIn·Threads", find: "LinkedIn / Threads용 요약" },
+      { key: "Instagram", find: "Instagram 캡션" },
+      { key: "수동발행", find: "수동 발행 채널용 복사 텍스트" },
+    ];
+
+    function findFieldContainer(labelText) {
+      var labels = document.querySelectorAll("label");
+      for (var i = 0; i < labels.length; i++) {
+        if (labels[i].textContent.trim().indexOf(labelText) === 0) {
+          return labels[i].parentElement;
+        }
+      }
+      return null;
+    }
+
+    function setupContentTabs() {
+      if (document.getElementById("content-tab-bar")) return;
+
+      var containers = {};
+      var allFound = true;
+      CONTENT_TABS.forEach(function (t) {
+        var c = findFieldContainer(t.find);
+        if (!c) allFound = false;
+        containers[t.key] = c;
+      });
+      if (!allFound) return;
+
+      var bar = document.createElement("div");
+      bar.id = "content-tab-bar";
+      bar.style.cssText = "display:flex;gap:6px;margin:4px 0 10px;flex-wrap:wrap;";
+
+      function selectTab(activeKey) {
+        CONTENT_TABS.forEach(function (t) {
+          if (containers[t.key]) {
+            containers[t.key].style.display = t.key === activeKey ? "" : "none";
+          }
+        });
+        Array.prototype.forEach.call(bar.children, function (btn, i) {
+          var isActive = CONTENT_TABS[i].key === activeKey;
+          btn.style.background = isActive ? "#dcefff" : "#f5f5f5";
+          btn.style.fontWeight = isActive ? "bold" : "normal";
+        });
+        if (containers[activeKey]) {
+          containers[activeKey].scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }
+
+      CONTENT_TABS.forEach(function (t) {
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.textContent = t.key;
+        btn.style.cssText =
+          "padding:6px 12px;font-size:13px;cursor:pointer;border:1px solid #ccc;border-radius:4px;background:#f5f5f5;";
+        btn.addEventListener("click", function () { selectTab(t.key); });
+        bar.appendChild(btn);
+      });
+
+      containers["본문"].parentElement.insertBefore(bar, containers["본문"]);
+      selectTab("본문");
+    }
+
+    setInterval(setupContentTabs, 800);
   </script>
 </body>
 </html>

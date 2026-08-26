@@ -96,7 +96,7 @@ collections:
       - name: "channel_variants"
         label: "채널별 발행 텍스트 (선택)"
         widget: "object"
-        collapsed: true
+        collapsed: false
         required: false
         hint: "비워두면 그 채널엔 이 글을 안 보냅니다."
         fields:
