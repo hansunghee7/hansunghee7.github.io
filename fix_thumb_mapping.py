@@ -85,6 +85,47 @@ print('mapping built for', len(mapping), 'of', len(md_files), 'posts; unmatched:
 for u in unmatched[:20]:
     print('  unmatched:', u)
 
+# --- front matter의 image가 최우선 (CMS가 쓰는 값이 곧 정답) ---
+# 위 mapping은 브런치에서 긁어온 이미지 파일명에 글 제목이 들어있다는 전제로
+# "제목이 비슷한 이미지"를 추측하는 로직이다. 이제 모든 글의 front matter에
+# image 경로가 명시돼 있으므로 그쪽이 우선이어야 한다. 안 그러면 CMS에서
+# 커버 이미지를 바꿔도 이 스크립트가 옛 추측값으로 되돌려버린다(실제로
+# 이미지 파일명을 바꾸자 엉뚱한 글의 이미지가 붙는 사고가 났다).
+def _quote_path(p):
+    return '/'.join(urllib.parse.quote(seg) if seg else seg for seg in p.split('/'))
+
+
+fm_image_by_base = {}
+for _fname in md_files:
+    with open(os.path.join('log_assets/markdown', _fname), encoding='utf-8', errors='ignore') as _f:
+        _raw = _f.read()
+    if not _raw.startswith('---'):
+        continue
+    _parts = _raw.split('---', 2)
+    if len(_parts) < 3:
+        continue
+    try:
+        _fm = yaml.safe_load(_parts[1]) or {}
+    except Exception:
+        continue
+    _img = _fm.get('image')
+    if _img:
+        fm_image_by_base[_fname[:-3]] = _img
+
+
+def resolve_image_url(base):
+    """카드/posts.json에 쓸 최종 이미지 URL. front matter > 제목추측 > 기본로고."""
+    raw = fm_image_by_base.get(base)
+    if raw:
+        if raw.startswith('http://') or raw.startswith('https://'):
+            return raw
+        return _quote_path(raw)
+    cover = mapping.get(base)
+    if cover:
+        return '/log_assets/images/' + urllib.parse.quote(cover)
+    return None
+
+
 # --- Patch log.html card thumbnails, matched by exact href base name ---
 with open('log.html', encoding='utf-8') as f:
     content = f.read()
@@ -104,11 +145,10 @@ def repl(m):
     encoded_base, attrs, old_url = m.group(1), m.group(2), m.group(3)
     base = urllib.parse.unquote(encoded_base)
     total += 1
-    cover = mapping.get(base)
-    if not cover:
+    new_url = resolve_image_url(base)
+    if not new_url:
         mismatches.append(base)
         return m.group(0)
-    new_url = '/log_assets/images/' + urllib.parse.quote(cover)
     if new_url != old_url:
         changed += 1
     return (
@@ -158,20 +198,7 @@ for fname in md_files:
 
     url = '/log_assets/markdown/' + urllib.parse.quote(base) + '.html'
 
-    cover = mapping.get(base)
-    if cover:
-        image = '/log_assets/images/' + urllib.parse.quote(cover)
-    elif frontmatter.get('image'):
-        # 브런치 스크래핑 매핑에 안 걸리는 글(예: CMS로 직접 쓴 새 글)은
-        # front matter의 image를 그대로 쓴다. 기존 599개 글은 전부
-        # 위 mapping에서 잡히므로 이 분기는 실질적으로 새 글에만 해당된다.
-        raw_cover = frontmatter['image']
-        if raw_cover.startswith('http://') or raw_cover.startswith('https://'):
-            image = raw_cover
-        else:
-            image = '/'.join(urllib.parse.quote(p) if p else p for p in raw_cover.split('/'))
-    else:
-        image = '/log_assets/images/logo_white.png'
+    image = resolve_image_url(base) or '/log_assets/images/logo_white.png'
 
     posts.append({
         'id': pid,

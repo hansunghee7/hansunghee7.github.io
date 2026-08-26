@@ -2,7 +2,7 @@
 layout: default
 title: "키워드로 알아보는 서비스기획자, PM, PO의 차이"
 category: '기획일상'
-image: '/log_assets/images/607_cover.jpg'
+image: '/log_assets/images/607_키워드로 알아보는 서비스기획자, PM, PO의 차이_cover.jpg'
 date_string: 'Sep 25. 2023'
 date: 2023-09-25
 keywords: '기획자 커리어, PM 실무, 기획 방법론'
