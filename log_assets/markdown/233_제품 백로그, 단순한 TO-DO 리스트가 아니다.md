@@ -82,7 +82,7 @@ PO라면 이렇게 해보자.
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/189_%EC%B9%B8%EB%B0%98%2C%20%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%98%20Just%20In%20Time.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">칸반, 애자일의 Just In Time</span></a>
+  <a href="/log_assets/markdown/226_%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%20%EB%A6%AC%EB%B7%B0%27%2C%20%EC%A4%80%EB%B9%84%EB%8A%94%20%EB%8D%9C%ED%95%98%EA%B3%A0%20%EC%86%94%EC%A7%81%ED%95%A8%EC%9D%80%20%EB%8D%94%ED%95%98%EA%B8%B0.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">스프린트 리뷰', 준비는 덜하고 솔직함은 더하기</span></a>
   <a href="/log_assets/markdown/240_%EB%8D%B0%EC%9D%BC%EB%A6%AC%20%EC%8A%A4%ED%81%AC%EB%9F%BC%EC%9D%B4%20%ED%95%84%EC%88%98%EC%9D%BC%EA%B9%8C.html" class="cat-nav-item cat-nav-right"><span class="nav-title">데일리 스크럼"이 필수일까?</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

@@ -68,7 +68,7 @@ AI의 칭찬은 때론 따뜻하지만, 그 이면에는 기업의 책임 회피
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/115_%EB%AF%B8%EA%B5%AD%20%EC%86%8C%EB%B9%84%EC%9E%90%EB%8A%94%20%EC%A7%84%EC%A7%9C%20%27%EB%8B%AC%EB%9D%BC%27.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">115_미국 소비자는 진짜 '달라'</span></a>
-  <a href="/log_assets/markdown/128_%EA%B3%A0%EA%B0%9D%EC%9D%80%20%EC%A0%9C%ED%92%88%EC%9D%84%20%27%EA%B3%A0%EC%9A%A9%27%ED%95%9C%EB%8B%A4%20%27JTBD%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D%27.html" class="cat-nav-item cat-nav-right"><span class="nav-title">128_고객은 제품을 '고용'한다 'JTBD프레임웍'</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/110_%EA%B7%B8%EB%A6%AC%EB%93%9C%20%EC%8B%9C%EC%8A%A4%ED%85%9C%2C%20%EA%B5%AC%EA%B8%80%20%EC%95%A0%ED%94%8C%EC%9D%B4%20%EC%82%AC%EB%9E%91%ED%95%9C%20%EA%B2%A9%EC%9E%90%20%EA%B5%AC%EC%A1%B0.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">그리드 시스템, 구글 애플이 사랑한 격자 구조</span></a>
+  <a href="/log_assets/markdown/125_%ED%9E%88%ED%8A%B8%EB%A7%B5%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%ED%96%89%EB%8F%99%EC%9D%84%20%EC%83%89%EC%9C%BC%EB%A1%9C%20%EC%9D%BD%EB%8A%94%20%EB%B2%95.html" class="cat-nav-item cat-nav-right"><span class="nav-title">히트맵, 사용자 행동을 색으로 읽는 법</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

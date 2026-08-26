@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/230_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%84%B1%EA%B3%B5%EC%9D%80%20%27%EC%88%AB%EC%9E%90%27%EC%97%90%20%EC%88%A8%EC%96%B4%EC%9E%88%EB%8B%A4.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">230_스타트업 성공은 '숫자'에 숨어있다</span></a>
-  <a href="/log_assets/markdown/244_470%EB%AA%85%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%ED%88%B4%20%27%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EB%AA%A8%EB%8D%B8%20%EC%BA%94%EB%B2%84%EC%8A%A4%27.html" class="cat-nav-item cat-nav-right"><span class="nav-title">244_470명이 만든 비즈니스 툴 '비즈니스 모델 캔버스'</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/235_%E7%BE%8E%20%EA%B5%AD%EB%B0%A9%EB%B6%80%EC%9D%98%20%EC%84%A0%ED%83%9D%20%EB%B9%85%EB%B2%A0%EC%96%B4AI.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">美 국방부의 선택 "빅베어AI</span></a>
+  <a href="/log_assets/markdown/238_%EC%82%BC%EC%84%B1%20%EC%82%AC%EB%82%B4%EB%B2%A4%EC%B2%98%EA%B0%80%20%EB%82%B3%EC%9D%80%20%EC%BB%A4%EB%A8%B8%EC%8A%A4AI%EC%9D%98%20%ED%98%81%EC%8B%A0%2C%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%EB%9E%A9.html" class="cat-nav-item cat-nav-right"><span class="nav-title">삼성 사내벤처가 낳은 커머스AI의 혁신, 스튜디오랩</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

@@ -54,7 +54,7 @@ JTBD는 기획자가 고객의 근본적인 니즈를 탐색하고, 진짜 문�
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/118_%27%ED%9B%8C%EB%A5%AD%ED%95%9C%20%EC%A7%88%EB%AC%B8%EC%9D%B4%EB%84%A4%EC%9A%94%27%20AI%EC%9D%98%20%EC%B9%AD%EC%B0%AC%20UX%EC%9D%98%20%EC%A7%84%EC%8B%A4.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">118_'훌륭한 질문이네요' AI의 칭찬 UX의 진실</span></a>
-  <a href="/log_assets/markdown/136_%EB%82%B4%EA%B0%80%20%EA%B2%AA%EB%8A%94%20%EB%B6%88%ED%8E%B8%ED%95%A8%EC%9D%B4%20%EC%82%AC%EC%97%85%20%EC%95%84%EC%9D%B4%ED%85%9C%EC%9D%B4%EB%8B%A4%2C%20%27%EB%94%94%EC%8A%A4%EC%BD%94%EB%93%9C%27.html" class="cat-nav-item cat-nav-right"><span class="nav-title">136_내가 겪는 불편함이 사업 아이템이다, '디스코드'</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/120_UX%205%20Planes%2C%20%EA%B2%BD%ED%97%98%20%EC%84%A4%EA%B3%84%EC%9D%98%20%EC%A7%80%EB%8F%84.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">UX 5 Planes, 경험 설계의 지도</span></a>
+  <a href="/log_assets/markdown/135_%EC%A0%9C%ED%92%88%EC%9D%98%20%EC%83%9D%EB%AA%85%EC%84%A0%2C%20Retention%20Curve.html" class="cat-nav-item cat-nav-right"><span class="nav-title">제품의 생명선, Retention Curve</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

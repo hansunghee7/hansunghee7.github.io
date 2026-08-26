@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/309_ENTJ%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EB%8A%94%20%27%EC%9D%B4%ED%86%A0%EB%A1%9D%20%EC%B9%9C%EB%B0%80%ED%95%9C%20%EB%B0%B0%EC%8B%A0%EC%9E%90%27.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">309_ENTJ코치가 보는 '이토록 친밀한 배신자'</span></a>
-  <a href="/log_assets/markdown/332_%27%EC%BD%94%EC%B9%98S%27%20%EB%B8%8C%EB%9F%B0%EC%B9%98%EB%B6%81%EC%9D%84%20%EC%B6%9C%EA%B0%84%ED%95%98%EC%98%80%EC%8A%B5%EB%8B%88%EB%8B%A4.html" class="cat-nav-item cat-nav-right"><span class="nav-title">332_'코치S' 브런치북을 출간하였습니다</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/311_%EC%96%B4%EB%96%A4%20%EC%A7%81%EC%9E%A5%EC%9D%84%20%EA%B3%A8%EB%9D%BC%EC%95%BC%20%ED%95%A0%EA%B9%8C%EC%9A%94.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">어떤 직장을 골라야 할까요?</span></a>
+  <a href="/log_assets/markdown/327_%EC%9A%94%EA%B8%B0%EC%9A%94%EC%9D%98%20%EB%B6%80%ED%99%9C%EC%9D%84%20%EA%B8%B0%EB%8C%80%ED%95%98%EB%A9%B0.html" class="cat-nav-item cat-nav-right"><span class="nav-title">요기요의 부활을 기대하며...</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

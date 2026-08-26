@@ -75,6 +75,6 @@ Figma의 제품 주도 성장 전략은 다음과 같은 단계로 진행되었�
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
   <a href="/log_assets/markdown/250_%EC%B4%88%EA%B3%A0%EC%9C%A8%EC%9D%98%20AI%EB%A1%9C%20%EC%8B%9C%EC%9E%A5%EC%9D%84%20%ED%9D%94%EB%93%A4%EB%8B%A4%20DeepSeek.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">초고율의 AI로 시장을 흔들다. DeepSeek</span></a>
-  <a href="/log_assets/markdown/258_%EB%B9%88%EB%9D%BC%EB%8D%B4%EC%9D%84%20%EC%B6%94%EC%A0%81%ED%95%9C%20AI%EC%9D%98%20%ED%9E%98%2C%20%EC%8B%9C%EA%B0%80%EC%B4%9D%EC%95%A1%20100%EC%A1%B0%20%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4.html" class="cat-nav-item cat-nav-right"><span class="nav-title">빈라덴을 추적한 AI의 힘, 시가총액 100조 팔란티어</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/254_MIT%20%EC%B2%9C%EC%9E%AC%EB%93%A4%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EC%B9%9C%ED%99%98%EA%B2%BD%20%EC%95%94%EB%AA%A8%EB%8B%88%EC%95%84%20%EC%97%B0%EB%A3%8C%20%27%EC%95%84%EB%AA%A8%EC%A7%80%27.html" class="cat-nav-item cat-nav-right"><span class="nav-title">MIT 천재들이 만든 친환경 암모니아 연료 '아모지</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

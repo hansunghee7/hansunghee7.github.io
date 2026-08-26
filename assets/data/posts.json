@@ -57,9 +57,9 @@
 },
 {
 "id": 8,
-"title": "008_두번째 책 'UX의 언어들'을 출간했습니다",
-"category": "",
-"date": "",
+"title": "두번째 책 'UX의 언어들'을 출간했습니다.",
+"category": "UX의 언어들",
+"date": "Jul 8. 2026",
 "url": "/log_assets/markdown/008_%EB%91%90%EB%B2%88%EC%A7%B8%20%EC%B1%85%20%27UX%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4%27%EC%9D%84%20%EC%B6%9C%EA%B0%84%ED%96%88%EC%8A%B5%EB%8B%88%EB%8B%A4.html",
 "image": "/log_assets/images/008_%EB%91%90%EB%B2%88%EC%A7%B8%20%EC%B1%85%20%27UX%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4%27%EC%9D%84%20%EC%B6%9C%EA%B0%84%ED%96%88%EC%8A%B5%EB%8B%88%EB%8B%A4._cover.jpg"
 },
@@ -129,19 +129,11 @@
 },
 {
 "id": 17,
-"title": "017_요시가 만든  '근성의 스노우볼'",
-"category": "",
-"date": "",
+"title": "요시가 만든  '근성의 스노우볼",
+"category": "기획일상",
+"date": "Nov 3. 2025",
 "url": "/log_assets/markdown/017_%EC%9A%94%EC%8B%9C%EA%B0%80%20%EB%A7%8C%EB%93%A0%20%20%27%EA%B7%BC%EC%84%B1%EC%9D%98%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC%27.html",
 "image": "/log_assets/images/017_%EC%9A%94%EC%8B%9C%EA%B0%80%20%EB%A7%8C%EB%93%A0%20%20%27%EA%B7%BC%EC%84%B1%EC%9D%98%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC%27_cover.jpg"
-},
-{
-"id": 18,
-"title": "018_'스타트업 리더의 전략연구소'를 시작합니다.",
-"category": "",
-"date": "",
-"url": "/log_assets/markdown/018_%27%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%A6%AC%EB%8D%94%EC%9D%98%20%EC%A0%84%EB%9E%B5%EC%97%B0%EA%B5%AC%EC%86%8C%27%EB%A5%BC%20%EC%8B%9C%EC%9E%91%ED%95%A9%EB%8B%88%EB%8B%A4..html",
-"image": "/log_assets/images/018_%27%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%A6%AC%EB%8D%94%EC%9D%98%20%EC%A0%84%EB%9E%B5%EC%97%B0%EA%B5%AC%EC%86%8C%27%EB%A5%BC%20%EC%8B%9C%EC%9E%91%ED%95%A9%EB%8B%88%EB%8B%A4._cover.jpg"
 },
 {
 "id": 19,
@@ -185,9 +177,9 @@
 },
 {
 "id": 24,
-"title": "024_'기획자의 질문법'이 2쇄에 들어갑니다",
-"category": "",
-"date": "",
+"title": "기획자의 질문법'이 2쇄에 들어갑니다.",
+"category": "심플리파이어 라이프",
+"date": "Sep 24. 2025",
 "url": "/log_assets/markdown/024_%27%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%27%EC%9D%B4%202%EC%87%84%EC%97%90%20%EB%93%A4%EC%96%B4%EA%B0%91%EB%8B%88%EB%8B%A4.html",
 "image": "/log_assets/images/024_%27%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%27%EC%9D%B4%202%EC%87%84%EC%97%90%20%EB%93%A4%EC%96%B4%EA%B0%91%EB%8B%88%EB%8B%A4._cover.jpg"
 },
@@ -377,9 +369,9 @@
 },
 {
 "id": 48,
-"title": "048_미국 스타트업은 왜 다 '미션'부터 말할까",
-"category": "",
-"date": "",
+"title": "미국 스타트업은 왜 다 '미션'부터 말할까",
+"category": "대한민국 스타트업 미국진출을 묻다",
+"date": "Aug 17. 2025",
 "url": "/log_assets/markdown/048_%EB%AF%B8%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%EC%99%9C%20%EB%8B%A4%20%27%EB%AF%B8%EC%85%98%27%EB%B6%80%ED%84%B0%20%EB%A7%90%ED%95%A0%EA%B9%8C.html",
 "image": "/log_assets/images/048_%EB%AF%B8%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%EC%99%9C%20%EB%8B%A4%20%27%EB%AF%B8%EC%85%98%27%EB%B6%80%ED%84%B0%20%EB%A7%90%ED%95%A0%EA%B9%8C_cover.jpg"
 },
@@ -537,9 +529,9 @@
 },
 {
 "id": 68,
-"title": "068_한국과 미국의 '고객 페르소나' 차이",
-"category": "",
-"date": "",
+"title": "한국과 미국의 '고객 페르소나' 차이",
+"category": "대한민국 스타트업 미국진출을 묻다",
+"date": "Jul 27. 2025",
 "url": "/log_assets/markdown/068_%ED%95%9C%EA%B5%AD%EA%B3%BC%20%EB%AF%B8%EA%B5%AD%EC%9D%98%20%27%EA%B3%A0%EA%B0%9D%20%ED%8E%98%EB%A5%B4%EC%86%8C%EB%82%98%27%20%EC%B0%A8%EC%9D%B4.html",
 "image": "/log_assets/images/068_%ED%95%9C%EA%B5%AD%EA%B3%BC%20%EB%AF%B8%EA%B5%AD%EC%9D%98%20%27%EA%B3%A0%EA%B0%9D%20%ED%8E%98%EB%A5%B4%EC%86%8C%EB%82%98%27%20%EC%B0%A8%EC%9D%B4_cover.jpg"
 },
@@ -673,9 +665,9 @@
 },
 {
 "id": 85,
-"title": "085_'이 시간은 무엇을 이루기 위해 존재하는가'",
-"category": "",
-"date": "",
+"title": "이 시간은 무엇을 이루기 위해 존재하는가?",
+"category": "기획일상",
+"date": "Jul 7. 2025",
 "url": "/log_assets/markdown/085_%27%EC%9D%B4%20%EC%8B%9C%EA%B0%84%EC%9D%80%20%EB%AC%B4%EC%97%87%EC%9D%84%20%EC%9D%B4%EB%A3%A8%EA%B8%B0%20%EC%9C%84%ED%95%B4%20%EC%A1%B4%EC%9E%AC%ED%95%98%EB%8A%94%EA%B0%80%27.html",
 "image": "/log_assets/images/085_%27%EC%9D%B4%20%EC%8B%9C%EA%B0%84%EC%9D%80%20%EB%AC%B4%EC%97%87%EC%9D%84%20%EC%9D%B4%EB%A3%A8%EA%B8%B0%20%EC%9C%84%ED%95%B4%20%EC%A1%B4%EC%9E%AC%ED%95%98%EB%8A%94%EA%B0%80%27_cover.jpg"
 },
@@ -737,9 +729,9 @@
 },
 {
 "id": 93,
-"title": "093_미국 스타트업은 '브랜드'를 어떻게 정의하는가",
-"category": "",
-"date": "",
+"title": "미국 스타트업은 '브랜드'를 어떻게 정의하는가",
+"category": "대한민국 스타트업 미국진출을 묻다",
+"date": "Jun 29. 2025",
 "url": "/log_assets/markdown/093_%EB%AF%B8%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%27%EB%B8%8C%EB%9E%9C%EB%93%9C%27%EB%A5%BC%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%A0%95%EC%9D%98%ED%95%98%EB%8A%94%EA%B0%80.html",
 "image": "/log_assets/images/093_%EB%AF%B8%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%27%EB%B8%8C%EB%9E%9C%EB%93%9C%27%EB%A5%BC%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%A0%95%EC%9D%98%ED%95%98%EB%8A%94%EA%B0%80_cover.jpg"
 },
@@ -753,9 +745,9 @@
 },
 {
 "id": 95,
-"title": "095_온보딩, 배에 오르다'에서 시작된 UX의 첫인상 마법",
-"category": "",
-"date": "",
+"title": "온보딩, 배에 오르다'에서 시작된 UX의 첫인상 마법",
+"category": "UX의 언어들",
+"date": "Jun 26. 2025",
 "url": "/log_assets/markdown/095_%EC%98%A8%EB%B3%B4%EB%94%A9%2C%20%EB%B0%B0%EC%97%90%20%EC%98%A4%EB%A5%B4%EB%8B%A4%27%EC%97%90%EC%84%9C%20%EC%8B%9C%EC%9E%91%EB%90%9C%20UX%EC%9D%98%20%EC%B2%AB%EC%9D%B8%EC%83%81%20%EB%A7%88%EB%B2%95.html",
 "image": "/log_assets/images/095_%EC%98%A8%EB%B3%B4%EB%94%A9%2C%20%EB%B0%B0%EC%97%90%20%EC%98%A4%EB%A5%B4%EB%8B%A4%27%EC%97%90%EC%84%9C%20%EC%8B%9C%EC%9E%91%EB%90%9C%20UX%EC%9D%98%20%EC%B2%AB%EC%9D%B8%EC%83%81%20%EB%A7%88%EB%B2%95_cover.jpg"
 },
@@ -832,14 +824,6 @@
 "image": "/log_assets/images/104_%EA%B0%80%EC%B9%98%EC%82%AC%EC%8A%AC%20%EB%B6%84%EC%84%9D%2C%20%EB%8F%88%EC%9D%B4%20%EB%A7%8C%EB%93%A4%EC%96%B4%EC%A7%80%EB%8A%94%20%EC%A7%80%EC%A0%90%EC%9D%84%20%EC%B0%BE%EB%8A%94%20%EB%B2%95_cover.jpg"
 },
 {
-"id": 105,
-"title": "105_'기획자의 질문법' 북토크에 여러분을 초대합니다",
-"category": "",
-"date": "",
-"url": "/log_assets/markdown/105_%27%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%27%20%EB%B6%81%ED%86%A0%ED%81%AC%EC%97%90%20%EC%97%AC%EB%9F%AC%EB%B6%84%EC%9D%84%20%EC%B4%88%EB%8C%80%ED%95%A9%EB%8B%88%EB%8B%A4.html",
-"image": "/log_assets/images/105_%27%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%27%20%EB%B6%81%ED%86%A0%ED%81%AC%EC%97%90%20%EC%97%AC%EB%9F%AC%EB%B6%84%EC%9D%84%20%EC%B4%88%EB%8C%80%ED%95%A9%EB%8B%88%EB%8B%A4._cover.jpg"
-},
-{
 "id": 106,
 "title": "2천만원으로 10억원 매출을, 안티메탈의 바이럴전략",
 "category": "스타트업 인사이트",
@@ -857,9 +841,9 @@
 },
 {
 "id": 108,
-"title": "108_'기획자의 질문법(27Qs)'의 비밀",
-"category": "",
-"date": "",
+"title": "기획자의 질문법(27Qs)'의 비밀",
+"category": "기획일상",
+"date": "Jun 14. 2025",
 "url": "/log_assets/markdown/108_%27%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%2827Qs%29%27%EC%9D%98%20%EB%B9%84%EB%B0%80.html",
 "image": "/log_assets/images/108_%27%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%2827Qs%29%27%EC%9D%98%20%EB%B9%84%EB%B0%80_cover.jpg"
 },
@@ -889,17 +873,17 @@
 },
 {
 "id": 112,
-"title": "112_'포터의 5 Forces' 전쟁터를 분석하는 법",
-"category": "",
-"date": "",
+"title": "포터의 5 Forces' 전쟁터를 분석하는 법",
+"category": "기획자의 프레임웍",
+"date": "Jun 10. 2025",
 "url": "/log_assets/markdown/112_%27%ED%8F%AC%ED%84%B0%EC%9D%98%205%20Forces%27%20%EC%A0%84%EC%9F%81%ED%84%B0%EB%A5%BC%20%EB%B6%84%EC%84%9D%ED%95%98%EB%8A%94%20%EB%B2%95.html",
 "image": "/log_assets/images/112_%27%ED%8F%AC%ED%84%B0%EC%9D%98%205%20Forces%27%20%EC%A0%84%EC%9F%81%ED%84%B0%EB%A5%BC%20%EB%B6%84%EC%84%9D%ED%95%98%EB%8A%94%20%EB%B2%95_cover.jpg"
 },
 {
 "id": 113,
-"title": "113_'커서 AI'의 AI 협력자 전략",
-"category": "",
-"date": "",
+"title": "커서 AI'의 AI 협력자 전략",
+"category": "스타트업 인사이트",
+"date": "Jun 9. 2025",
 "url": "/log_assets/markdown/113_%27%EC%BB%A4%EC%84%9C%20AI%27%EC%9D%98%20AI%20%ED%98%91%EB%A0%A5%EC%9E%90%20%EC%A0%84%EB%9E%B5.html",
 "image": "/log_assets/images/113_%27%EC%BB%A4%EC%84%9C%20AI%27%EC%9D%98%20AI%20%ED%98%91%EB%A0%A5%EC%9E%90%20%EC%A0%84%EB%9E%B5_cover.jpg"
 },
@@ -913,9 +897,9 @@
 },
 {
 "id": 115,
-"title": "115_미국 소비자는 진짜 '달라'",
-"category": "",
-"date": "",
+"title": "미국 소비자는 진짜 '달라",
+"category": "대한민국 스타트업 미국진출을 묻다",
+"date": "Jun 8. 2025",
 "url": "/log_assets/markdown/115_%EB%AF%B8%EA%B5%AD%20%EC%86%8C%EB%B9%84%EC%9E%90%EB%8A%94%20%EC%A7%84%EC%A7%9C%20%27%EB%8B%AC%EB%9D%BC%27.html",
 "image": "/log_assets/images/115_%EB%AF%B8%EA%B5%AD%20%EC%86%8C%EB%B9%84%EC%9E%90%EB%8A%94%20%EC%A7%84%EC%A7%9C%20%27%EB%8B%AC%EB%9D%BC%27_cover.jpg"
 },
@@ -937,9 +921,9 @@
 },
 {
 "id": 118,
-"title": "118_'훌륭한 질문이네요' AI의 칭찬 UX의 진실",
-"category": "",
-"date": "",
+"title": "훌륭한 질문이네요!' AI의 칭찬 UX의 진실",
+"category": "UX의 언어들",
+"date": "Jun 5. 2025",
 "url": "/log_assets/markdown/118_%27%ED%9B%8C%EB%A5%AD%ED%95%9C%20%EC%A7%88%EB%AC%B8%EC%9D%B4%EB%84%A4%EC%9A%94%27%20AI%EC%9D%98%20%EC%B9%AD%EC%B0%AC%20UX%EC%9D%98%20%EC%A7%84%EC%8B%A4.html",
 "image": "/log_assets/images/118_%27%ED%9B%8C%EB%A5%AD%ED%95%9C%20%EC%A7%88%EB%AC%B8%EC%9D%B4%EB%84%A4%EC%9A%94%21%27%20AI%EC%9D%98%20%EC%B9%AD%EC%B0%AC%20UX%EC%9D%98%20%EC%A7%84%EC%8B%A4_cover.jpg"
 },
@@ -1017,9 +1001,9 @@
 },
 {
 "id": 128,
-"title": "128_고객은 제품을 '고용'한다 'JTBD프레임웍'",
-"category": "",
-"date": "",
+"title": "고객은 제품을 '고용'한다. 'JTBD프레임웍",
+"category": "기획자의 프레임웍",
+"date": "May 27. 2025",
 "url": "/log_assets/markdown/128_%EA%B3%A0%EA%B0%9D%EC%9D%80%20%EC%A0%9C%ED%92%88%EC%9D%84%20%27%EA%B3%A0%EC%9A%A9%27%ED%95%9C%EB%8B%A4%20%27JTBD%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D%27.html",
 "image": "/log_assets/images/128_%EA%B3%A0%EA%B0%9D%EC%9D%80%20%EC%A0%9C%ED%92%88%EC%9D%84%20%27%EA%B3%A0%EC%9A%A9%27%ED%95%9C%EB%8B%A4.%20%27JTBD%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D%27_cover.jpg"
 },
@@ -1081,9 +1065,9 @@
 },
 {
 "id": 136,
-"title": "136_내가 겪는 불편함이 사업 아이템이다, '디스코드'",
-"category": "",
-"date": "",
+"title": "내가 겪는 불편함이 사업 아이템이다, '디스코드",
+"category": "스타트업 인사이트",
+"date": "May 19. 2025",
 "url": "/log_assets/markdown/136_%EB%82%B4%EA%B0%80%20%EA%B2%AA%EB%8A%94%20%EB%B6%88%ED%8E%B8%ED%95%A8%EC%9D%B4%20%EC%82%AC%EC%97%85%20%EC%95%84%EC%9D%B4%ED%85%9C%EC%9D%B4%EB%8B%A4%2C%20%27%EB%94%94%EC%8A%A4%EC%BD%94%EB%93%9C%27.html",
 "image": "/log_assets/images/136_%EB%82%B4%EA%B0%80%20%EA%B2%AA%EB%8A%94%20%EB%B6%88%ED%8E%B8%ED%95%A8%EC%9D%B4%20%EC%82%AC%EC%97%85%20%EC%95%84%EC%9D%B4%ED%85%9C%EC%9D%B4%EB%8B%A4%2C%20%27%EB%94%94%EC%8A%A4%EC%BD%94%EB%93%9C%27_cover.jpg"
 },
@@ -1129,9 +1113,9 @@
 },
 {
 "id": 142,
-"title": "142_'코호트 분석' 평균의 함정에서 벗어나는 법",
-"category": "",
-"date": "",
+"title": "코호트 분석' 평균의 함정에서 벗어나는 법",
+"category": "기획자의 프레임웍",
+"date": "May 13. 2025",
 "url": "/log_assets/markdown/142_%27%EC%BD%94%ED%98%B8%ED%8A%B8%20%EB%B6%84%EC%84%9D%27%20%ED%8F%89%EA%B7%A0%EC%9D%98%20%ED%95%A8%EC%A0%95%EC%97%90%EC%84%9C%20%EB%B2%97%EC%96%B4%EB%82%98%EB%8A%94%20%EB%B2%95.html",
 "image": "/log_assets/images/142_%27%EC%BD%94%ED%98%B8%ED%8A%B8%20%EB%B6%84%EC%84%9D%27%20%ED%8F%89%EA%B7%A0%EC%9D%98%20%ED%95%A8%EC%A0%95%EC%97%90%EC%84%9C%20%EB%B2%97%EC%96%B4%EB%82%98%EB%8A%94%20%EB%B2%95_cover.jpg"
 },
@@ -1185,9 +1169,9 @@
 },
 {
 "id": 149,
-"title": "149_'Lean Canvas' 하루만에 그리는 비즈니스청사진",
-"category": "",
-"date": "",
+"title": "Lean Canvas' 하루만에 그리는 비즈니스청사진",
+"category": "기획자의 프레임웍",
+"date": "May 6. 2025",
 "url": "/log_assets/markdown/149_%27Lean%20Canvas%27%20%ED%95%98%EB%A3%A8%EB%A7%8C%EC%97%90%20%EA%B7%B8%EB%A6%AC%EB%8A%94%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%B2%AD%EC%82%AC%EC%A7%84.html",
 "image": "/log_assets/images/149_%27Lean%20Canvas%27%20%ED%95%98%EB%A3%A8%EB%A7%8C%EC%97%90%20%EA%B7%B8%EB%A6%AC%EB%8A%94%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%B2%AD%EC%82%AC%EC%A7%84_cover.jpg"
 },
@@ -1217,9 +1201,9 @@
 },
 {
 "id": 153,
-"title": "153_낭비는 줄이고 가치는 높이는 '린 프로젝트 관리'",
-"category": "",
-"date": "",
+"title": "낭비는 줄이고 가치는 높이는 '린 프로젝트 관리",
+"category": "PO의 프레임웍",
+"date": "May 2. 2025",
 "url": "/log_assets/markdown/153_%EB%82%AD%EB%B9%84%EB%8A%94%20%EC%A4%84%EC%9D%B4%EA%B3%A0%20%EA%B0%80%EC%B9%98%EB%8A%94%20%EB%86%92%EC%9D%B4%EB%8A%94%20%27%EB%A6%B0%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B4%80%EB%A6%AC%27.html",
 "image": "/log_assets/images/153_%EB%82%AD%EB%B9%84%EB%8A%94%20%EC%A4%84%EC%9D%B4%EA%B3%A0%20%EA%B0%80%EC%B9%98%EB%8A%94%20%EB%86%92%EC%9D%B4%EB%8A%94%20%27%EB%A6%B0%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B4%80%EB%A6%AC%27_cover.jpg"
 },
@@ -1257,9 +1241,9 @@
 },
 {
 "id": 158,
-"title": "158_트레바리 기획자들의 비밀서재 '존 도어의 OKR'",
-"category": "",
-"date": "",
+"title": "트레바리 기획자들의 비밀서재 '존 도어의 OKR",
+"category": "토크세션",
+"date": "Apr 27. 2025",
 "url": "/log_assets/markdown/158_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%93%A4%EC%9D%98%20%EB%B9%84%EB%B0%80%EC%84%9C%EC%9E%AC%20%27%EC%A1%B4%20%EB%8F%84%EC%96%B4%EC%9D%98%20OKR%27.html",
 "image": "/log_assets/images/158_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%93%A4%EC%9D%98%20%EB%B9%84%EB%B0%80%EC%84%9C%EC%9E%AC%20%27%EC%A1%B4%20%EB%8F%84%EC%96%B4%EC%9D%98%20OKR%27_cover.jpg"
 },
@@ -1297,9 +1281,9 @@
 },
 {
 "id": 163,
-"title": "163_구글이 'AB테스트'로 2억 달러를 창출하는 방법",
-"category": "",
-"date": "",
+"title": "구글이 'AB테스트'로 2억 달러를 창출하는 방법",
+"category": "기획자의 프레임웍",
+"date": "Apr 22. 2025",
 "url": "/log_assets/markdown/163_%EA%B5%AC%EA%B8%80%EC%9D%B4%20%27AB%ED%85%8C%EC%8A%A4%ED%8A%B8%27%EB%A1%9C%202%EC%96%B5%20%EB%8B%AC%EB%9F%AC%EB%A5%BC%20%EC%B0%BD%EC%B6%9C%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95.html",
 "image": "/log_assets/images/163_%EA%B5%AC%EA%B8%80%EC%9D%B4%20%27AB%ED%85%8C%EC%8A%A4%ED%8A%B8%27%EB%A1%9C%202%EC%96%B5%20%EB%8B%AC%EB%9F%AC%EB%A5%BC%20%EC%B0%BD%EC%B6%9C%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95_cover.jpg"
 },
@@ -1337,17 +1321,17 @@
 },
 {
 "id": 168,
-"title": "168_애자일의 측정 '에스티메이션'과 '스토리포인트'",
-"category": "",
-"date": "",
+"title": "애자일의 측정 '에스티메이션'과 '스토리포인트",
+"category": "PO의 프레임웍",
+"date": "Apr 18. 2025",
 "url": "/log_assets/markdown/168_%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%98%20%EC%B8%A1%EC%A0%95%20%27%EC%97%90%EC%8A%A4%ED%8B%B0%EB%A9%94%EC%9D%B4%EC%85%98%27%EA%B3%BC%20%27%EC%8A%A4%ED%86%A0%EB%A6%AC%ED%8F%AC%EC%9D%B8%ED%8A%B8%27.html",
 "image": "/log_assets/images/168_%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%98%20%EC%B8%A1%EC%A0%95%20%27%EC%97%90%EC%8A%A4%ED%8B%B0%EB%A9%94%EC%9D%B4%EC%85%98%27%EA%B3%BC%20%27%EC%8A%A4%ED%86%A0%EB%A6%AC%ED%8F%AC%EC%9D%B8%ED%8A%B8%27_cover.jpg"
 },
 {
 "id": 169,
-"title": "169_'결제하기' 버튼 하나로 매출을 높이는 UX",
-"category": "",
-"date": "",
+"title": "결제하기' 버튼 하나로 매출을 높이는 UX",
+"category": "UX의 언어들",
+"date": "Apr 17. 2025",
 "url": "/log_assets/markdown/169_%27%EA%B2%B0%EC%A0%9C%ED%95%98%EA%B8%B0%27%20%EB%B2%84%ED%8A%BC%20%ED%95%98%EB%82%98%EB%A1%9C%20%EB%A7%A4%EC%B6%9C%EC%9D%84%20%EB%86%92%EC%9D%B4%EB%8A%94%20UX.html",
 "image": "/log_assets/images/169_%27%EA%B2%B0%EC%A0%9C%ED%95%98%EA%B8%B0%27%20%EB%B2%84%ED%8A%BC%20%ED%95%98%EB%82%98%EB%A1%9C%20%EB%A7%A4%EC%B6%9C%EC%9D%84%20%EB%86%92%EC%9D%B4%EB%8A%94%20UX_cover.jpg"
 },
@@ -1361,9 +1345,9 @@
 },
 {
 "id": 171,
-"title": "171_'퍼널 분석' 디지털 시대의 사용자 최적화 핵심 기술",
-"category": "",
-"date": "",
+"title": "퍼널 분석' 디지털 시대의 사용자 최적화 핵심 기술",
+"category": "기획자의 프레임웍",
+"date": "Apr 15. 2025",
 "url": "/log_assets/markdown/171_%27%ED%8D%BC%EB%84%90%20%EB%B6%84%EC%84%9D%27%20%EB%94%94%EC%A7%80%ED%84%B8%20%EC%8B%9C%EB%8C%80%EC%9D%98%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%B5%9C%EC%A0%81%ED%99%94%20%ED%95%B5%EC%8B%AC%20%EA%B8%B0%EC%88%A0.html",
 "image": "/log_assets/images/171_%27%ED%8D%BC%EB%84%90%20%EB%B6%84%EC%84%9D%27%20%EB%94%94%EC%A7%80%ED%84%B8%20%EC%8B%9C%EB%8C%80%EC%9D%98%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%B5%9C%EC%A0%81%ED%99%94%20%ED%95%B5%EC%8B%AC%20%EA%B8%B0%EC%88%A0_cover.jpg"
 },
@@ -1377,9 +1361,9 @@
 },
 {
 "id": 173,
-"title": "173_'팔란티어' #5 한국형 팔란티어 가능할까",
-"category": "",
-"date": "",
+"title": "팔란티어' #5 한국형 팔란티어 가능할까?",
+"category": "스타트업 인사이트",
+"date": "Apr 13. 2025",
 "url": "/log_assets/markdown/173_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%20%235%20%ED%95%9C%EA%B5%AD%ED%98%95%20%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%20%EA%B0%80%EB%8A%A5%ED%95%A0%EA%B9%8C.html",
 "image": "/log_assets/images/173_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%205%20%ED%95%9C%EA%B5%AD%ED%98%95%20%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%20%EA%B0%80%EB%8A%A5%ED%95%A0%EA%B9%8C_cover.jpg"
 },
@@ -1393,9 +1377,9 @@
 },
 {
 "id": 175,
-"title": "175_'사용자 스토리' 기능이 아닌 가치를 만드는 비밀 무기",
-"category": "",
-"date": "",
+"title": "사용자 스토리' 기능이 아닌 가치를 만드는 비밀 무기",
+"category": "PO의 프레임웍",
+"date": "Apr 11. 2025",
 "url": "/log_assets/markdown/175_%27%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%8A%A4%ED%86%A0%EB%A6%AC%27%20%EA%B8%B0%EB%8A%A5%EC%9D%B4%20%EC%95%84%EB%8B%8C%20%EA%B0%80%EC%B9%98%EB%A5%BC%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B9%84%EB%B0%80%20%EB%AC%B4%EA%B8%B0.html",
 "image": "/log_assets/images/175_%27%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%8A%A4%ED%86%A0%EB%A6%AC%27%20%EA%B8%B0%EB%8A%A5%EC%9D%B4%20%EC%95%84%EB%8B%8C%20%EA%B0%80%EC%B9%98%EB%A5%BC%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B9%84%EB%B0%80%20%EB%AC%B4%EA%B8%B0_cover.jpg"
 },
@@ -1417,25 +1401,25 @@
 },
 {
 "id": 178,
-"title": "178_'So What, Why So' 논리에 영혼을 불어넣다",
-"category": "",
-"date": "",
+"title": "So What, Why So' 논리에 영혼을 불어넣다",
+"category": "기획자의 프레임웍",
+"date": "Apr 8. 2025",
 "url": "/log_assets/markdown/178_%27So%20What%2C%20Why%20So%27%20%EB%85%BC%EB%A6%AC%EC%97%90%20%EC%98%81%ED%98%BC%EC%9D%84%20%EB%B6%88%EC%96%B4%EB%84%A3%EB%8B%A4.html",
 "image": "/log_assets/images/178_%27So%20What%2C%20Why%20So%27%20%EB%85%BC%EB%A6%AC%EC%97%90%20%EC%98%81%ED%98%BC%EC%9D%84%20%EB%B6%88%EC%96%B4%EB%84%A3%EB%8B%A4_cover.jpg"
 },
 {
 "id": 179,
-"title": "179_이메일도 테슬라처럼 'Superhuman' 프리미엄전략",
-"category": "",
-"date": "",
+"title": "이메일도 테슬라처럼 'Superhuman' 프리미엄전략",
+"category": "스타트업 인사이트",
+"date": "Apr 7. 2025",
 "url": "/log_assets/markdown/179_%EC%9D%B4%EB%A9%94%EC%9D%BC%EB%8F%84%20%ED%85%8C%EC%8A%AC%EB%9D%BC%EC%B2%98%EB%9F%BC%20%27Superhuman%27%20%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%EC%A0%84%EB%9E%B5.html",
 "image": "/log_assets/images/179_%EC%9D%B4%EB%A9%94%EC%9D%BC%EB%8F%84%20%ED%85%8C%EC%8A%AC%EB%9D%BC%EC%B2%98%EB%9F%BC%20%27Superhuman%27%20%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%EC%A0%84%EB%9E%B5_cover.jpg"
 },
 {
 "id": 180,
-"title": "180_'팔란티어' #4 Apollo 혁신의 배포 플랫폼",
-"category": "",
-"date": "",
+"title": "팔란티어' #4 Apollo 혁신의 배포 플랫폼",
+"category": "스타트업 인사이트",
+"date": "Apr 6. 2025",
 "url": "/log_assets/markdown/180_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%20%234%20Apollo%20%ED%98%81%EC%8B%A0%EC%9D%98%20%EB%B0%B0%ED%8F%AC%20%ED%94%8C%EB%9E%AB%ED%8F%BC.html",
 "image": "/log_assets/images/180_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%204%20Apollo%20%ED%98%81%EC%8B%A0%EC%9D%98%20%EB%B0%B0%ED%8F%AC%20%ED%94%8C%EB%9E%AB%ED%8F%BC_cover.jpg"
 },
@@ -1473,25 +1457,25 @@
 },
 {
 "id": 185,
-"title": "185_사고의 지도를 그리는 법 '로직 트리'",
-"category": "",
-"date": "",
+"title": "사고의 지도를 그리는 법 '로직 트리",
+"category": "기획자의 프레임웍",
+"date": "Apr 1. 2025",
 "url": "/log_assets/markdown/185_%EC%82%AC%EA%B3%A0%EC%9D%98%20%EC%A7%80%EB%8F%84%EB%A5%BC%20%EA%B7%B8%EB%A6%AC%EB%8A%94%20%EB%B2%95%20%27%EB%A1%9C%EC%A7%81%20%ED%8A%B8%EB%A6%AC%27.html",
 "image": "/log_assets/images/185_%EC%82%AC%EA%B3%A0%EC%9D%98%20%EC%A7%80%EB%8F%84%EB%A5%BC%20%EA%B7%B8%EB%A6%AC%EB%8A%94%20%EB%B2%95%20%27%EB%A1%9C%EC%A7%81%20%ED%8A%B8%EB%A6%AC%27_cover.jpg"
 },
 {
 "id": 186,
-"title": "186_스타트업의 초기 고객 확보 전략 '스트라이프'",
-"category": "",
-"date": "",
+"title": "스타트업의 초기 고객 확보 전략 '스트라이프",
+"category": "스타트업 인사이트",
+"date": "Mar 31. 2025",
 "url": "/log_assets/markdown/186_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%20%ED%99%95%EB%B3%B4%20%EC%A0%84%EB%9E%B5%20%27%EC%8A%A4%ED%8A%B8%EB%9D%BC%EC%9D%B4%ED%94%84%27.html",
 "image": "/log_assets/images/186_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%20%ED%99%95%EB%B3%B4%20%EC%A0%84%EB%9E%B5%20%27%EC%8A%A4%ED%8A%B8%EB%9D%BC%EC%9D%B4%ED%94%84%27_cover.jpg"
 },
 {
 "id": 187,
-"title": "187_'팔란티어' #3 Foundry 기업 데이터분석플랫폼",
-"category": "",
-"date": "",
+"title": "팔란티어' #3 Foundry 기업 데이터분석플랫폼",
+"category": "스타트업 인사이트",
+"date": "Mar 30. 2025",
 "url": "/log_assets/markdown/187_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%20%233%20Foundry%20%EA%B8%B0%EC%97%85%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%ED%94%8C%EB%9E%AB%ED%8F%BC.html",
 "image": "/log_assets/images/187_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%203%20Foundry%20%EA%B8%B0%EC%97%85%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%ED%94%8C%EB%9E%AB%ED%8F%BC_cover.jpg"
 },
@@ -1513,9 +1497,9 @@
 },
 {
 "id": 190,
-"title": "190_'스티키 UI' 스크롤 속에서 빛나는 끈적한 경험",
-"category": "",
-"date": "",
+"title": "스티키 UI' 스크롤 속에서 빛나는 끈적한 경험",
+"category": "UX의 언어들",
+"date": "Mar 27. 2025",
 "url": "/log_assets/markdown/190_%27%EC%8A%A4%ED%8B%B0%ED%82%A4%20UI%27%20%EC%8A%A4%ED%81%AC%EB%A1%A4%20%EC%86%8D%EC%97%90%EC%84%9C%20%EB%B9%9B%EB%82%98%EB%8A%94%20%EB%81%88%EC%A0%81%ED%95%9C%20%EA%B2%BD%ED%97%98.html",
 "image": "/log_assets/images/190_%27%EC%8A%A4%ED%8B%B0%ED%82%A4%20UI%27%20%EC%8A%A4%ED%81%AC%EB%A1%A4%20%EC%86%8D%EC%97%90%EC%84%9C%20%EB%B9%9B%EB%82%98%EB%8A%94%20%EB%81%88%EC%A0%81%ED%95%9C%20%EA%B2%BD%ED%97%98_cover.jpg"
 },
@@ -1529,33 +1513,33 @@
 },
 {
 "id": 192,
-"title": "192_'맥모닝'의 비밀, MECE 프레임워크",
-"category": "",
-"date": "",
+"title": "맥모닝'의 비밀, MECE 프레임워크",
+"category": "기획자의 프레임웍",
+"date": "Mar 25. 2025",
 "url": "/log_assets/markdown/192_%27%EB%A7%A5%EB%AA%A8%EB%8B%9D%27%EC%9D%98%20%EB%B9%84%EB%B0%80%2C%20MECE%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC.html",
 "image": "/log_assets/images/192_%27%EB%A7%A5%EB%AA%A8%EB%8B%9D%27%EC%9D%98%20%EB%B9%84%EB%B0%80%2C%20MECE%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC_cover.jpg"
 },
 {
 "id": 193,
-"title": "193_AI로 UI개발 속도를 10배로 만들다 'V0'",
-"category": "",
-"date": "",
+"title": "AI로 UI개발 속도를 10배로 만들다. 'V0",
+"category": "스타트업 인사이트",
+"date": "Mar 24. 2025",
 "url": "/log_assets/markdown/193_AI%EB%A1%9C%20UI%EA%B0%9C%EB%B0%9C%20%EC%86%8D%EB%8F%84%EB%A5%BC%2010%EB%B0%B0%EB%A1%9C%20%EB%A7%8C%EB%93%A4%EB%8B%A4%20%27V0%27.html",
 "image": "/log_assets/images/193_AI%EB%A1%9C%20UI%EA%B0%9C%EB%B0%9C%20%EC%86%8D%EB%8F%84%EB%A5%BC%2010%EB%B0%B0%EB%A1%9C%20%EB%A7%8C%EB%93%A4%EB%8B%A4.%20%27V0%27_cover.jpg"
 },
 {
 "id": 194,
-"title": "194_트레바리 기획자들의 비밀서재 '생각의 탄생'",
-"category": "",
-"date": "",
+"title": "트레바리 기획자들의 비밀서재 '생각의 탄생",
+"category": "토크세션",
+"date": "Mar 23. 2025",
 "url": "/log_assets/markdown/194_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%93%A4%EC%9D%98%20%EB%B9%84%EB%B0%80%EC%84%9C%EC%9E%AC%20%27%EC%83%9D%EA%B0%81%EC%9D%98%20%ED%83%84%EC%83%9D%27.html",
 "image": "/log_assets/images/194_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%93%A4%EC%9D%98%20%EB%B9%84%EB%B0%80%EC%84%9C%EC%9E%AC%20%27%EC%83%9D%EA%B0%81%EC%9D%98%20%ED%83%84%EC%83%9D%27_cover.jpg"
 },
 {
 "id": 195,
-"title": "195_'팔란티어' #2 Gotham 국가 안보를 위한 플랫폼",
-"category": "",
-"date": "",
+"title": "팔란티어' #2 Gotham 국가 안보를 위한 플랫폼",
+"category": "스타트업 인사이트",
+"date": "Mar 23. 2025",
 "url": "/log_assets/markdown/195_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%20%232%20Gotham%20%EA%B5%AD%EA%B0%80%20%EC%95%88%EB%B3%B4%EB%A5%BC%20%EC%9C%84%ED%95%9C%20%ED%94%8C%EB%9E%AB%ED%8F%BC.html",
 "image": "/log_assets/images/195_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%202%20Gotham%20%EA%B5%AD%EA%B0%80%20%EC%95%88%EB%B3%B4%EB%A5%BC%20%EC%9C%84%ED%95%9C%20%ED%94%8C%EB%9E%AB%ED%8F%BC_cover.jpg"
 },
@@ -1569,17 +1553,17 @@
 },
 {
 "id": 197,
-"title": "197_스크럼 마스터 vs 프로젝트 매니저' 차이는",
-"category": "",
-"date": "",
+"title": "스크럼 마스터 vs 프로젝트 매니저' 차이는?",
+"category": "PO의 프레임웍",
+"date": "Mar 21. 2025",
 "url": "/log_assets/markdown/197_%EC%8A%A4%ED%81%AC%EB%9F%BC%20%EB%A7%88%EC%8A%A4%ED%84%B0%20vs%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%A7%A4%EB%8B%88%EC%A0%80%27%20%EC%B0%A8%EC%9D%B4%EB%8A%94.html",
 "image": "/log_assets/images/197_%EC%8A%A4%ED%81%AC%EB%9F%BC%20%EB%A7%88%EC%8A%A4%ED%84%B0%20vs%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%A7%A4%EB%8B%88%EC%A0%80%27%20%EC%B0%A8%EC%9D%B4%EB%8A%94_cover.jpg"
 },
 {
 "id": 198,
-"title": "198_UX에도 리듬이 있다 '타이밍 설계법'",
-"category": "",
-"date": "",
+"title": "UX에도 리듬이 있다. '타이밍 설계법",
+"category": "UX의 언어들",
+"date": "Mar 20. 2025",
 "url": "/log_assets/markdown/198_UX%EC%97%90%EB%8F%84%20%EB%A6%AC%EB%93%AC%EC%9D%B4%20%EC%9E%88%EB%8B%A4%20%27%ED%83%80%EC%9D%B4%EB%B0%8D%20%EC%84%A4%EA%B3%84%EB%B2%95%27.html",
 "image": "/log_assets/images/198_UX%EC%97%90%EB%8F%84%20%EB%A6%AC%EB%93%AC%EC%9D%B4%20%EC%9E%88%EB%8B%A4.%20%27%ED%83%80%EC%9D%B4%EB%B0%8D%20%EC%84%A4%EA%B3%84%EB%B2%95%27_cover.jpg"
 },
@@ -1593,25 +1577,25 @@
 },
 {
 "id": 200,
-"title": "200_사용자를 중독시키는 4단계 마법 'Hooked 모델'",
-"category": "",
-"date": "",
+"title": "사용자를 중독시키는 4단계 마법 'Hooked 모델",
+"category": "기획자의 프레임웍",
+"date": "Mar 18. 2025",
 "url": "/log_assets/markdown/200_%EC%82%AC%EC%9A%A9%EC%9E%90%EB%A5%BC%20%EC%A4%91%EB%8F%85%EC%8B%9C%ED%82%A4%EB%8A%94%204%EB%8B%A8%EA%B3%84%20%EB%A7%88%EB%B2%95%20%27Hooked%20%EB%AA%A8%EB%8D%B8%27.html",
 "image": "/log_assets/images/200_%EC%82%AC%EC%9A%A9%EC%9E%90%EB%A5%BC%20%EC%A4%91%EB%8F%85%EC%8B%9C%ED%82%A4%EB%8A%94%204%EB%8B%A8%EA%B3%84%20%EB%A7%88%EB%B2%95%20%27Hooked%20%EB%AA%A8%EB%8D%B8%27_cover.jpg"
 },
 {
 "id": 201,
-"title": "201_3억이 홀릭하는 '릴숏'의 틈새시장 공략 전략",
-"category": "",
-"date": "",
+"title": "3억이 홀릭하는 '릴숏'의 틈새시장 공략 전략",
+"category": "스타트업 인사이트",
+"date": "Mar 17. 2025",
 "url": "/log_assets/markdown/201_3%EC%96%B5%EC%9D%B4%20%ED%99%80%EB%A6%AD%ED%95%98%EB%8A%94%20%27%EB%A6%B4%EC%88%8F%27%EC%9D%98%20%ED%8B%88%EC%83%88%EC%8B%9C%EC%9E%A5%20%EA%B3%B5%EB%9E%B5%20%EC%A0%84%EB%9E%B5.html",
 "image": "/log_assets/images/201_3%EC%96%B5%EC%9D%B4%20%ED%99%80%EB%A6%AD%ED%95%98%EB%8A%94%20%27%EB%A6%B4%EC%88%8F%27%EC%9D%98%20%ED%8B%88%EC%83%88%EC%8B%9C%EC%9E%A5%20%EA%B3%B5%EB%9E%B5%20%EC%A0%84%EB%9E%B5_cover.jpg"
 },
 {
 "id": 202,
-"title": "202_'팔란티어' #1 데이터 통합과 분석의 새로운 패러다임",
-"category": "",
-"date": "",
+"title": "팔란티어' #1 데이터 통합과 분석의 새로운 패러다임",
+"category": "스타트업 인사이트",
+"date": "Mar 15. 2025",
 "url": "/log_assets/markdown/202_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%20%231%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%86%B5%ED%95%A9%EA%B3%BC%20%EB%B6%84%EC%84%9D%EC%9D%98%20%EC%83%88%EB%A1%9C%EC%9A%B4%20%ED%8C%A8%EB%9F%AC%EB%8B%A4%EC%9E%84.html",
 "image": "/log_assets/images/202_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%201%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%86%B5%ED%95%A9%EA%B3%BC%20%EB%B6%84%EC%84%9D%EC%9D%98%20%EC%83%88%EB%A1%9C%EC%9A%B4%20%ED%8C%A8%EB%9F%AC%EB%8B%A4%EC%9E%84_cover.jpg"
 },
@@ -1625,33 +1609,33 @@
 },
 {
 "id": 204,
-"title": "204_'스크럼마스터' 팀의 수호자이자 서번트 리더",
-"category": "",
-"date": "",
+"title": "스크럼마스터' 팀의 수호자이자 서번트 리더",
+"category": "PO의 프레임웍",
+"date": "Mar 14. 2025",
 "url": "/log_assets/markdown/204_%27%EC%8A%A4%ED%81%AC%EB%9F%BC%EB%A7%88%EC%8A%A4%ED%84%B0%27%20%ED%8C%80%EC%9D%98%20%EC%88%98%ED%98%B8%EC%9E%90%EC%9D%B4%EC%9E%90%20%EC%84%9C%EB%B2%88%ED%8A%B8%20%EB%A6%AC%EB%8D%94.html",
 "image": "/log_assets/images/204_%27%EC%8A%A4%ED%81%AC%EB%9F%BC%EB%A7%88%EC%8A%A4%ED%84%B0%27%20%ED%8C%80%EC%9D%98%20%EC%88%98%ED%98%B8%EC%9E%90%EC%9D%B4%EC%9E%90%20%EC%84%9C%EB%B2%88%ED%8A%B8%20%EB%A6%AC%EB%8D%94_cover.jpg"
 },
 {
 "id": 205,
-"title": "205_애플이 '기본값'으로 사용자를 사로잡는 비밀",
-"category": "",
-"date": "",
+"title": "애플이 '기본값'으로 사용자를 사로잡는 비밀",
+"category": "UX의 언어들",
+"date": "Mar 13. 2025",
 "url": "/log_assets/markdown/205_%EC%95%A0%ED%94%8C%EC%9D%B4%20%27%EA%B8%B0%EB%B3%B8%EA%B0%92%27%EC%9C%BC%EB%A1%9C%20%EC%82%AC%EC%9A%A9%EC%9E%90%EB%A5%BC%20%EC%82%AC%EB%A1%9C%EC%9E%A1%EB%8A%94%20%EB%B9%84%EB%B0%80.html",
 "image": "/log_assets/images/205_%EC%95%A0%ED%94%8C%EC%9D%B4%20%27%EA%B8%B0%EB%B3%B8%EA%B0%92%27%EC%9C%BC%EB%A1%9C%20%EC%82%AC%EC%9A%A9%EC%9E%90%EB%A5%BC%20%EC%82%AC%EB%A1%9C%EC%9E%A1%EB%8A%94%20%EB%B9%84%EB%B0%80_cover.jpg"
 },
 {
 "id": 206,
-"title": "206_평범을 거부한다 '헤더윅 스튜디오'",
-"category": "",
-"date": "",
+"title": "평범을 거부한다. '헤더윅 스튜디오",
+"category": "스타트업 인사이트",
+"date": "Mar 12. 2025",
 "url": "/log_assets/markdown/206_%ED%8F%89%EB%B2%94%EC%9D%84%20%EA%B1%B0%EB%B6%80%ED%95%9C%EB%8B%A4%20%27%ED%97%A4%EB%8D%94%EC%9C%85%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%27.html",
 "image": "/log_assets/images/206_%ED%8F%89%EB%B2%94%EC%9D%84%20%EA%B1%B0%EB%B6%80%ED%95%9C%EB%8B%A4.%20%27%ED%97%A4%EB%8D%94%EC%9C%85%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%27_cover.jpg"
 },
 {
 "id": 207,
-"title": "207_AI의 행동을 만들다 'Manus AI'",
-"category": "",
-"date": "",
+"title": "AI의 행동을 만들다. 'Manus AI",
+"category": "스타트업 인사이트",
+"date": "Mar 11. 2025",
 "url": "/log_assets/markdown/207_AI%EC%9D%98%20%ED%96%89%EB%8F%99%EC%9D%84%20%EB%A7%8C%EB%93%A4%EB%8B%A4%20%27Manus%20AI%27.html",
 "image": "/log_assets/images/207_AI%EC%9D%98%20%ED%96%89%EB%8F%99%EC%9D%84%20%EB%A7%8C%EB%93%A4%EB%8B%A4.%20%27Manus%20AI%27_cover.jpg"
 },
@@ -1665,9 +1649,9 @@
 },
 {
 "id": 209,
-"title": "209_실패에서 데카콘으로 'Notion'의 초기 시장진출전략",
-"category": "",
-"date": "",
+"title": "실패에서 데카콘으로 'Notion'의 초기 시장진출전략",
+"category": "스타트업 인사이트",
+"date": "Mar 10. 2025",
 "url": "/log_assets/markdown/209_%EC%8B%A4%ED%8C%A8%EC%97%90%EC%84%9C%20%EB%8D%B0%EC%B9%B4%EC%BD%98%EC%9C%BC%EB%A1%9C%20%27Notion%27%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EC%8B%9C%EC%9E%A5%EC%A7%84%EC%B6%9C%EC%A0%84%EB%9E%B5.html",
 "image": "/log_assets/images/209_%EC%8B%A4%ED%8C%A8%EC%97%90%EC%84%9C%20%EB%8D%B0%EC%B9%B4%EC%BD%98%EC%9C%BC%EB%A1%9C%20%27Notion%27%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EC%8B%9C%EC%9E%A5%EC%A7%84%EC%B6%9C%EC%A0%84%EB%9E%B5_cover.jpg"
 },
@@ -1689,9 +1673,9 @@
 },
 {
 "id": 212,
-"title": "212_팀의 하모니를 만드는 비법, '애자일미팅'",
-"category": "",
-"date": "",
+"title": "팀의 하모니를 만드는 비법, '애자일미팅",
+"category": "PO의 프레임웍",
+"date": "Mar 7. 2025",
 "url": "/log_assets/markdown/212_%ED%8C%80%EC%9D%98%20%ED%95%98%EB%AA%A8%EB%8B%88%EB%A5%BC%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B9%84%EB%B2%95%2C%20%27%EC%95%A0%EC%9E%90%EC%9D%BC%EB%AF%B8%ED%8C%85%27.html",
 "image": "/log_assets/images/212_%ED%8C%80%EC%9D%98%20%ED%95%98%EB%AA%A8%EB%8B%88%EB%A5%BC%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B9%84%EB%B2%95%2C%20%27%EC%95%A0%EC%9E%90%EC%9D%BC%EB%AF%B8%ED%8C%85%27_cover.jpg"
 },
@@ -1705,9 +1689,9 @@
 },
 {
 "id": 214,
-"title": "214_30달러로 만든 AI 혁명, '타이니 제로'",
-"category": "",
-"date": "",
+"title": "30달러로 만든 AI 혁명, '타이니 제로",
+"category": "스타트업 인사이트",
+"date": "Mar 5. 2025",
 "url": "/log_assets/markdown/214_30%EB%8B%AC%EB%9F%AC%EB%A1%9C%20%EB%A7%8C%EB%93%A0%20AI%20%ED%98%81%EB%AA%85%2C%20%27%ED%83%80%EC%9D%B4%EB%8B%88%20%EC%A0%9C%EB%A1%9C%27.html",
 "image": "/log_assets/images/214_30%EB%8B%AC%EB%9F%AC%EB%A1%9C%20%EB%A7%8C%EB%93%A0%20AI%20%ED%98%81%EB%AA%85%2C%20%27%ED%83%80%EC%9D%B4%EB%8B%88%20%EC%A0%9C%EB%A1%9C%27_cover.jpg"
 },
@@ -1721,9 +1705,9 @@
 },
 {
 "id": 216,
-"title": "216_실패가 만든 기적, 'Slack'의 초기 고객확보 전략",
-"category": "",
-"date": "",
+"title": "실패가 만든 기적, 'Slack'의 초기 고객확보 전략",
+"category": "스타트업 인사이트",
+"date": "Mar 3. 2025",
 "url": "/log_assets/markdown/216_%EC%8B%A4%ED%8C%A8%EA%B0%80%20%EB%A7%8C%EB%93%A0%20%EA%B8%B0%EC%A0%81%2C%20%27Slack%27%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%ED%99%95%EB%B3%B4%20%EC%A0%84%EB%9E%B5.html",
 "image": "/log_assets/images/216_%EC%8B%A4%ED%8C%A8%EA%B0%80%20%EB%A7%8C%EB%93%A0%20%EA%B8%B0%EC%A0%81%2C%20%27Slack%27%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%ED%99%95%EB%B3%B4%20%EC%A0%84%EB%9E%B5_cover.jpg"
 },
@@ -1737,41 +1721,41 @@
 },
 {
 "id": 218,
-"title": "218_'회고', 팀의 성장을 이끄는 비결",
-"category": "",
-"date": "",
+"title": "회고', 팀의 성장을 이끄는 비결",
+"category": "PO의 프레임웍",
+"date": "Feb 28. 2025",
 "url": "/log_assets/markdown/218_%27%ED%9A%8C%EA%B3%A0%27%2C%20%ED%8C%80%EC%9D%98%20%EC%84%B1%EC%9E%A5%EC%9D%84%20%EC%9D%B4%EB%81%84%EB%8A%94%20%EB%B9%84%EA%B2%B0.html",
 "image": "/log_assets/images/218_%27%ED%9A%8C%EA%B3%A0%27%2C%20%ED%8C%80%EC%9D%98%20%EC%84%B1%EC%9E%A5%EC%9D%84%20%EC%9D%B4%EB%81%84%EB%8A%94%20%EB%B9%84%EA%B2%B0_cover.jpg"
 },
 {
 "id": 219,
-"title": "219_실리콘밸리 승자들이 쓰는 '콜투액션(CTA)'",
-"category": "",
-"date": "",
+"title": "실리콘밸리 승자들이 쓰는 '콜투액션(CTA)",
+"category": "UX의 언어들",
+"date": "Feb 27. 2025",
 "url": "/log_assets/markdown/219_%EC%8B%A4%EB%A6%AC%EC%BD%98%EB%B0%B8%EB%A6%AC%20%EC%8A%B9%EC%9E%90%EB%93%A4%EC%9D%B4%20%EC%93%B0%EB%8A%94%20%27%EC%BD%9C%ED%88%AC%EC%95%A1%EC%85%98%28CTA%29%27.html",
 "image": "/log_assets/images/219_%EC%8B%A4%EB%A6%AC%EC%BD%98%EB%B0%B8%EB%A6%AC%20%EC%8A%B9%EC%9E%90%EB%93%A4%EC%9D%B4%20%EC%93%B0%EB%8A%94%20%27%EC%BD%9C%ED%88%AC%EC%95%A1%EC%85%98%28CTA%29%27_cover.jpg"
 },
 {
 "id": 220,
-"title": "220_챗GPT를 뛰어넘다머스크의 야심작 '그록3'",
-"category": "",
-"date": "",
+"title": "챗GPT를 뛰어넘다...머스크의 야심작 '그록3",
+"category": "스타트업 인사이트",
+"date": "Feb 26. 2025",
 "url": "/log_assets/markdown/220_%EC%B1%97GPT%EB%A5%BC%20%EB%9B%B0%EC%96%B4%EB%84%98%EB%8B%A4%EB%A8%B8%EC%8A%A4%ED%81%AC%EC%9D%98%20%EC%95%BC%EC%8B%AC%EC%9E%91%20%27%EA%B7%B8%EB%A1%9D3%27.html",
 "image": "/log_assets/images/220_%EC%B1%97GPT%EB%A5%BC%20%EB%9B%B0%EC%96%B4%EB%84%98%EB%8B%A4...%EB%A8%B8%EC%8A%A4%ED%81%AC%EC%9D%98%20%EC%95%BC%EC%8B%AC%EC%9E%91%20%27%EA%B7%B8%EB%A1%9D3%27_cover.jpg"
 },
 {
 "id": 221,
-"title": "221_단 하나의 질문이 브랜드를 만든다 'NPS'",
-"category": "",
-"date": "",
+"title": "단 하나의 질문이 브랜드를 만든다. 'NPS",
+"category": "기획자의 프레임웍",
+"date": "Feb 25. 2025",
 "url": "/log_assets/markdown/221_%EB%8B%A8%20%ED%95%98%EB%82%98%EC%9D%98%20%EC%A7%88%EB%AC%B8%EC%9D%B4%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EB%A5%BC%20%EB%A7%8C%EB%93%A0%EB%8B%A4%20%27NPS%27.html",
 "image": "/log_assets/images/221_%EB%8B%A8%20%ED%95%98%EB%82%98%EC%9D%98%20%EC%A7%88%EB%AC%B8%EC%9D%B4%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EB%A5%BC%20%EB%A7%8C%EB%93%A0%EB%8B%A4.%20%27NPS%27_cover.jpg"
 },
 {
 "id": 222,
-"title": "222_글로벌 스타트업들의 '초기 고객 확보 전략'",
-"category": "",
-"date": "",
+"title": "글로벌 스타트업들의 '초기 고객 확보 전략",
+"category": "스타트업 인사이트",
+"date": "Feb 24. 2025",
 "url": "/log_assets/markdown/222_%EA%B8%80%EB%A1%9C%EB%B2%8C%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EB%93%A4%EC%9D%98%20%27%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%20%ED%99%95%EB%B3%B4%20%EC%A0%84%EB%9E%B5%27.html",
 "image": "/log_assets/images/222_%EA%B8%80%EB%A1%9C%EB%B2%8C%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EB%93%A4%EC%9D%98%20%27%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%20%ED%99%95%EB%B3%B4%20%EC%A0%84%EB%9E%B5%27_cover.jpg"
 },
@@ -1785,9 +1769,9 @@
 },
 {
 "id": 224,
-"title": "224_나의 클론이 화상회의를 '피클'",
-"category": "",
-"date": "",
+"title": "나의 클론이 화상회의를 '피클",
+"category": "스타트업 인사이트",
+"date": "Feb 23. 2025",
 "url": "/log_assets/markdown/224_%EB%82%98%EC%9D%98%20%ED%81%B4%EB%A1%A0%EC%9D%B4%20%ED%99%94%EC%83%81%ED%9A%8C%EC%9D%98%EB%A5%BC%20%27%ED%94%BC%ED%81%B4%27.html",
 "image": "/log_assets/images/224_%EB%82%98%EC%9D%98%20%ED%81%B4%EB%A1%A0%EC%9D%B4%20%ED%99%94%EC%83%81%ED%9A%8C%EC%9D%98%EB%A5%BC%20%27%ED%94%BC%ED%81%B4%27_cover.jpg"
 },
@@ -1801,41 +1785,41 @@
 },
 {
 "id": 226,
-"title": "226_스프린트 리뷰', 준비는 덜하고 솔직함은 더하기",
-"category": "",
-"date": "",
+"title": "스프린트 리뷰', 준비는 덜하고 솔직함은 더하기",
+"category": "PO의 프레임웍",
+"date": "Feb 21. 2025",
 "url": "/log_assets/markdown/226_%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%20%EB%A6%AC%EB%B7%B0%27%2C%20%EC%A4%80%EB%B9%84%EB%8A%94%20%EB%8D%9C%ED%95%98%EA%B3%A0%20%EC%86%94%EC%A7%81%ED%95%A8%EC%9D%80%20%EB%8D%94%ED%95%98%EA%B8%B0.html",
 "image": "/log_assets/images/226_%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%20%EB%A6%AC%EB%B7%B0%27%2C%20%EC%A4%80%EB%B9%84%EB%8A%94%20%EB%8D%9C%ED%95%98%EA%B3%A0%20%EC%86%94%EC%A7%81%ED%95%A8%EC%9D%80%20%EB%8D%94%ED%95%98%EA%B8%B0_cover.jpg"
 },
 {
 "id": 227,
-"title": "227_Google의 '심플한 UX' 원칙",
-"category": "",
-"date": "",
+"title": "Google의 '심플한 UX' 원칙",
+"category": "UX의 언어들",
+"date": "Feb 20. 2025",
 "url": "/log_assets/markdown/227_Google%EC%9D%98%20%27%EC%8B%AC%ED%94%8C%ED%95%9C%20UX%27%20%EC%9B%90%EC%B9%99.html",
 "image": "/log_assets/images/227_Google%EC%9D%98%20%27%EC%8B%AC%ED%94%8C%ED%95%9C%20UX%27%20%EC%9B%90%EC%B9%99_cover.jpg"
 },
 {
 "id": 228,
-"title": "228_1000퍼센트의 성장 '앱러빈'의 숨겨진 성공공식",
-"category": "",
-"date": "",
+"title": "1000%의 성장 '앱러빈'의 숨겨진 성공공식",
+"category": "스타트업 인사이트",
+"date": "Feb 19. 2025",
 "url": "/log_assets/markdown/228_1000%ED%8D%BC%EC%84%BC%ED%8A%B8%EC%9D%98%20%EC%84%B1%EC%9E%A5%20%27%EC%95%B1%EB%9F%AC%EB%B9%88%27%EC%9D%98%20%EC%88%A8%EA%B2%A8%EC%A7%84%20%EC%84%B1%EA%B3%B5%EA%B3%B5%EC%8B%9D.html",
 "image": "/log_assets/images/228_1000%EC%9D%98%20%EC%84%B1%EC%9E%A5%20%27%EC%95%B1%EB%9F%AC%EB%B9%88%27%EC%9D%98%20%EC%88%A8%EA%B2%A8%EC%A7%84%20%EC%84%B1%EA%B3%B5%EA%B3%B5%EC%8B%9D_cover.jpg"
 },
 {
 "id": 229,
-"title": "229_세상을 바꾼 실험 'OKR'의 3가지 마법",
-"category": "",
-"date": "",
+"title": "세상을 바꾼 실험 'OKR'의 3가지 마법",
+"category": "기획자의 프레임웍",
+"date": "Feb 18. 2025",
 "url": "/log_assets/markdown/229_%EC%84%B8%EC%83%81%EC%9D%84%20%EB%B0%94%EA%BE%BC%20%EC%8B%A4%ED%97%98%20%27OKR%27%EC%9D%98%203%EA%B0%80%EC%A7%80%20%EB%A7%88%EB%B2%95.html",
 "image": "/log_assets/images/229_%EC%84%B8%EC%83%81%EC%9D%84%20%EB%B0%94%EA%BE%BC%20%EC%8B%A4%ED%97%98%20%27OKR%27%EC%9D%98%203%EA%B0%80%EC%A7%80%20%EB%A7%88%EB%B2%95_cover.jpg"
 },
 {
 "id": 230,
-"title": "230_스타트업 성공은 '숫자'에 숨어있다",
-"category": "",
-"date": "",
+"title": "스타트업 성공은 '숫자'에 숨어있다",
+"category": "스타트업 인사이트",
+"date": "Feb 17. 2025",
 "url": "/log_assets/markdown/230_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%84%B1%EA%B3%B5%EC%9D%80%20%27%EC%88%AB%EC%9E%90%27%EC%97%90%20%EC%88%A8%EC%96%B4%EC%9E%88%EB%8B%A4.html",
 "image": "/log_assets/images/230_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%84%B1%EA%B3%B5%EC%9D%80%20%27%EC%88%AB%EC%9E%90%27%EC%97%90%20%EC%88%A8%EC%96%B4%EC%9E%88%EB%8B%A4_cover.jpg"
 },
@@ -1889,9 +1873,9 @@
 },
 {
 "id": 237,
-"title": "237_규칙이 없는 전략으로 500조를 만든 'Netflix'",
-"category": "",
-"date": "",
+"title": "규칙이 없는 전략으로 500조를 만든 'Netflix",
+"category": "스타트업 인사이트",
+"date": "Feb 10. 2025",
 "url": "/log_assets/markdown/237_%EA%B7%9C%EC%B9%99%EC%9D%B4%20%EC%97%86%EB%8A%94%20%EC%A0%84%EB%9E%B5%EC%9C%BC%EB%A1%9C%20500%EC%A1%B0%EB%A5%BC%20%EB%A7%8C%EB%93%A0%20%27Netflix%27.html",
 "image": "/log_assets/images/237_%EA%B7%9C%EC%B9%99%EC%9D%B4%20%EC%97%86%EB%8A%94%20%EC%A0%84%EB%9E%B5%EC%9C%BC%EB%A1%9C%20500%EC%A1%B0%EB%A5%BC%20%EB%A7%8C%EB%93%A0%20%27Netflix%27_cover.jpg"
 },
@@ -1945,17 +1929,17 @@
 },
 {
 "id": 244,
-"title": "244_470명이 만든 비즈니스 툴 '비즈니스 모델 캔버스'",
-"category": "",
-"date": "",
+"title": "470명이 만든 비즈니스 툴 '비즈니스 모델 캔버스",
+"category": "기획자의 프레임웍",
+"date": "Feb 4. 2025",
 "url": "/log_assets/markdown/244_470%EB%AA%85%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%ED%88%B4%20%27%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EB%AA%A8%EB%8D%B8%20%EC%BA%94%EB%B2%84%EC%8A%A4%27.html",
 "image": "/log_assets/images/244_470%EB%AA%85%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%ED%88%B4%20%27%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EB%AA%A8%EB%8D%B8%20%EC%BA%94%EB%B2%84%EC%8A%A4%27_cover.jpg"
 },
 {
 "id": 245,
-"title": "245_Warby Parker의 '독점 시장진입 전략'",
-"category": "",
-"date": "",
+"title": "Warby Parker의 '독점 시장진입 전략",
+"category": "스타트업 인사이트",
+"date": "Feb 3. 2025",
 "url": "/log_assets/markdown/245_Warby%20Parker%EC%9D%98%20%27%EB%8F%85%EC%A0%90%20%EC%8B%9C%EC%9E%A5%EC%A7%84%EC%9E%85%20%EC%A0%84%EB%9E%B5%27.html",
 "image": "/log_assets/images/245_Warby%20Parker%EC%9D%98%20%27%EB%8F%85%EC%A0%90%20%EC%8B%9C%EC%9E%A5%EC%A7%84%EC%9E%85%20%EC%A0%84%EB%9E%B5%27_cover.jpg"
 },
@@ -1977,17 +1961,17 @@
 },
 {
 "id": 248,
-"title": "248_스프린트의 출발선 '스프린트 플래닝'",
-"category": "",
-"date": "",
+"title": "스프린트의 출발선 '스프린트 플래닝",
+"category": "PO의 프레임웍",
+"date": "Jan 31. 2025",
 "url": "/log_assets/markdown/248_%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%EC%9D%98%20%EC%B6%9C%EB%B0%9C%EC%84%A0%20%27%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%20%ED%94%8C%EB%9E%98%EB%8B%9D%27.html",
 "image": "/log_assets/images/248_%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%EC%9D%98%20%EC%B6%9C%EB%B0%9C%EC%84%A0%20%27%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%20%ED%94%8C%EB%9E%98%EB%8B%9D%27_cover.jpg"
 },
 {
 "id": 249,
-"title": "249_'좋아요'가 만든 작지만 강력한 UX의 혁명",
-"category": "",
-"date": "",
+"title": "좋아요'가 만든 작지만 강력한 UX의 혁명",
+"category": "UX의 언어들",
+"date": "Jan 30. 2025",
 "url": "/log_assets/markdown/249_%27%EC%A2%8B%EC%95%84%EC%9A%94%27%EA%B0%80%20%EB%A7%8C%EB%93%A0%20%EC%9E%91%EC%A7%80%EB%A7%8C%20%EA%B0%95%EB%A0%A5%ED%95%9C%20UX%EC%9D%98%20%ED%98%81%EB%AA%85.html",
 "image": "/log_assets/images/249_%27%EC%A2%8B%EC%95%84%EC%9A%94%27%EA%B0%80%20%EB%A7%8C%EB%93%A0%20%EC%9E%91%EC%A7%80%EB%A7%8C%20%EA%B0%95%EB%A0%A5%ED%95%9C%20UX%EC%9D%98%20%ED%98%81%EB%AA%85_cover.jpg"
 },
@@ -2001,17 +1985,17 @@
 },
 {
 "id": 251,
-"title": "251_아이디어의 발상 'SCAMPER' 기법",
-"category": "",
-"date": "",
+"title": "아이디어의 발상 'SCAMPER' 기법",
+"category": "기획자의 프레임웍",
+"date": "Jan 28. 2025",
 "url": "/log_assets/markdown/251_%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%EC%9D%98%20%EB%B0%9C%EC%83%81%20%27SCAMPER%27%20%EA%B8%B0%EB%B2%95.html",
 "image": "/log_assets/images/251_%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%EC%9D%98%20%EB%B0%9C%EC%83%81%20%27SCAMPER%27%20%EA%B8%B0%EB%B2%95_cover.jpg"
 },
 {
 "id": 252,
-"title": "252_트레바리 기밀서재의 변화 '더 퍼실리테이션'",
-"category": "",
-"date": "",
+"title": "트레바리 기밀서재의 변화 '더 퍼실리테이션",
+"category": "토크세션",
+"date": "Jan 27. 2025",
 "url": "/log_assets/markdown/252_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%EA%B8%B0%EB%B0%80%EC%84%9C%EC%9E%AC%EC%9D%98%20%EB%B3%80%ED%99%94%20%27%EB%8D%94%20%ED%8D%BC%EC%8B%A4%EB%A6%AC%ED%85%8C%EC%9D%B4%EC%85%98%27.html",
 "image": "/log_assets/images/252_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%EA%B8%B0%EB%B0%80%EC%84%9C%EC%9E%AC%EC%9D%98%20%EB%B3%80%ED%99%94%20%27%EB%8D%94%20%ED%8D%BC%EC%8B%A4%EB%A6%AC%ED%85%8C%EC%9D%B4%EC%85%98%27_cover.jpg"
 },
@@ -2025,9 +2009,9 @@
 },
 {
 "id": 254,
-"title": "254_MIT 천재들이 만든 친환경 암모니아 연료 '아모지'",
-"category": "",
-"date": "",
+"title": "MIT 천재들이 만든 친환경 암모니아 연료 '아모지",
+"category": "스타트업 인사이트",
+"date": "Jan 26. 2025",
 "url": "/log_assets/markdown/254_MIT%20%EC%B2%9C%EC%9E%AC%EB%93%A4%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EC%B9%9C%ED%99%98%EA%B2%BD%20%EC%95%94%EB%AA%A8%EB%8B%88%EC%95%84%20%EC%97%B0%EB%A3%8C%20%27%EC%95%84%EB%AA%A8%EC%A7%80%27.html",
 "image": "/log_assets/images/254_MIT%20%EC%B2%9C%EC%9E%AC%EB%93%A4%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EC%B9%9C%ED%99%98%EA%B2%BD%20%EC%95%94%EB%AA%A8%EB%8B%88%EC%95%84%20%EC%97%B0%EB%A3%8C%20%27%EC%95%84%EB%AA%A8%EC%A7%80%27_cover.jpg"
 },
@@ -2065,9 +2049,9 @@
 },
 {
 "id": 259,
-"title": "259_고객을 정의하는 법 '페르소나'",
-"category": "",
-"date": "",
+"title": "고객을 정의하는 법 '페르소나",
+"category": "기획자의 프레임웍",
+"date": "Jan 21. 2025",
 "url": "/log_assets/markdown/259_%EA%B3%A0%EA%B0%9D%EC%9D%84%20%EC%A0%95%EC%9D%98%ED%95%98%EB%8A%94%20%EB%B2%95%20%27%ED%8E%98%EB%A5%B4%EC%86%8C%EB%82%98%27.html",
 "image": "/log_assets/images/259_%EA%B3%A0%EA%B0%9D%EC%9D%84%20%EC%A0%95%EC%9D%98%ED%95%98%EB%8A%94%20%EB%B2%95%20%27%ED%8E%98%EB%A5%B4%EC%86%8C%EB%82%98%27_cover.jpg"
 },
@@ -2097,9 +2081,9 @@
 },
 {
 "id": 263,
-"title": "263_우선순위 설정의 프레임워크 'RICE'",
-"category": "",
-"date": "",
+"title": "우선순위 설정의 프레임워크 'RICE",
+"category": "기획자의 프레임웍",
+"date": "Jan 14. 2025",
 "url": "/log_assets/markdown/263_%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%20%EC%84%A4%EC%A0%95%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC%20%27RICE%27.html",
 "image": "/log_assets/images/263_%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%20%EC%84%A4%EC%A0%95%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC%20%27RICE%27_cover.jpg"
 },
@@ -2145,9 +2129,9 @@
 },
 {
 "id": 269,
-"title": "269_50명으로 1년 8개월만에 유니콘이 된 '퍼플렉시티'",
-"category": "",
-"date": "",
+"title": "50명으로 1년 8개월만에 유니콘이 된 '퍼플렉시티",
+"category": "스타트업 인사이트",
+"date": "Jan 8. 2025",
 "url": "/log_assets/markdown/269_50%EB%AA%85%EC%9C%BC%EB%A1%9C%201%EB%85%84%208%EA%B0%9C%EC%9B%94%EB%A7%8C%EC%97%90%20%EC%9C%A0%EB%8B%88%EC%BD%98%EC%9D%B4%20%EB%90%9C%20%27%ED%8D%BC%ED%94%8C%EB%A0%89%EC%8B%9C%ED%8B%B0%27.html",
 "image": "/log_assets/images/269_50%EB%AA%85%EC%9C%BC%EB%A1%9C%201%EB%85%84%208%EA%B0%9C%EC%9B%94%EB%A7%8C%EC%97%90%20%EC%9C%A0%EB%8B%88%EC%BD%98%EC%9D%B4%20%EB%90%9C%20%27%ED%8D%BC%ED%94%8C%EB%A0%89%EC%8B%9C%ED%8B%B0%27_cover.jpg"
 },
@@ -2417,9 +2401,9 @@
 },
 {
 "id": 303,
-"title": "303_트레바리 기밀서재 '설득의 심리학'",
-"category": "",
-"date": "",
+"title": "트레바리 기밀서재 '설득의 심리학",
+"category": "토크세션",
+"date": "Oct 28. 2024",
 "url": "/log_assets/markdown/303_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%EA%B8%B0%EB%B0%80%EC%84%9C%EC%9E%AC%20%27%EC%84%A4%EB%93%9D%EC%9D%98%20%EC%8B%AC%EB%A6%AC%ED%95%99%27.html",
 "image": "/log_assets/images/303_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%EA%B8%B0%EB%B0%80%EC%84%9C%EC%9E%AC%20%27%EC%84%A4%EB%93%9D%EC%9D%98%20%EC%8B%AC%EB%A6%AC%ED%95%99%27_cover.jpg"
 },
@@ -2457,9 +2441,9 @@
 },
 {
 "id": 309,
-"title": "309_ENTJ코치가 보는 '이토록 친밀한 배신자'",
-"category": "",
-"date": "",
+"title": "ENTJ코치가 보는 '이토록 친밀한 배신자",
+"category": "심플리파이어 라이프",
+"date": "Oct 19. 2024",
 "url": "/log_assets/markdown/309_ENTJ%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EB%8A%94%20%27%EC%9D%B4%ED%86%A0%EB%A1%9D%20%EC%B9%9C%EB%B0%80%ED%95%9C%20%EB%B0%B0%EC%8B%A0%EC%9E%90%27.html",
 "image": "/log_assets/images/309_ENTJ%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EB%8A%94%20%27%EC%9D%B4%ED%86%A0%EB%A1%9D%20%EC%B9%9C%EB%B0%80%ED%95%9C%20%EB%B0%B0%EC%8B%A0%EC%9E%90%27_cover.jpg"
 },
@@ -2497,9 +2481,9 @@
 },
 {
 "id": 314,
-"title": "314_ENTJ코치가 보는 최고의 기획자 '에드워드 리'",
-"category": "",
-"date": "",
+"title": "ENTJ코치가 보는 최고의 기획자 '에드워드 리",
+"category": "기획일상",
+"date": "Oct 13. 2024",
 "url": "/log_assets/markdown/314_ENTJ%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EB%8A%94%20%EC%B5%9C%EA%B3%A0%EC%9D%98%20%EA%B8%B0%ED%9A%8D%EC%9E%90%20%27%EC%97%90%EB%93%9C%EC%9B%8C%EB%93%9C%20%EB%A6%AC%27.html",
 "image": "/log_assets/images/314_ENTJ%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EB%8A%94%20%EC%B5%9C%EA%B3%A0%EC%9D%98%20%EA%B8%B0%ED%9A%8D%EC%9E%90%20%27%EC%97%90%EB%93%9C%EC%9B%8C%EB%93%9C%20%EB%A6%AC%27_cover.jpg"
 },
@@ -2616,28 +2600,12 @@
 "image": "/log_assets/images/331_%EC%96%B4%EB%96%A4%20%EC%BD%94%ED%8C%8C%EC%9A%B4%EB%8D%94%EB%A5%BC%20%EC%B0%BE%EC%95%84%EC%95%BC%20%ED%95%A0%EA%B9%8C_cover.jpg"
 },
 {
-"id": 332,
-"title": "332_'코치S' 브런치북을 출간하였습니다",
-"category": "",
-"date": "",
-"url": "/log_assets/markdown/332_%27%EC%BD%94%EC%B9%98S%27%20%EB%B8%8C%EB%9F%B0%EC%B9%98%EB%B6%81%EC%9D%84%20%EC%B6%9C%EA%B0%84%ED%95%98%EC%98%80%EC%8A%B5%EB%8B%88%EB%8B%A4.html",
-"image": "/log_assets/images/332_%27%EC%BD%94%EC%B9%98S%27%20%EB%B8%8C%EB%9F%B0%EC%B9%98%EB%B6%81%EC%9D%84%20%EC%B6%9C%EA%B0%84%ED%95%98%EC%98%80%EC%8A%B5%EB%8B%88%EB%8B%A4._cover.jpg"
-},
-{
 "id": 334,
-"title": "334_코치S 19화 최종 '스왈로우즈 비긴즈'",
-"category": "",
-"date": "",
+"title": "19화 최종 '스왈로우즈 비긴즈",
+"category": "코치S",
+"date": "Sep 11. 2024",
 "url": "/log_assets/markdown/334_%EC%BD%94%EC%B9%98S%2019%ED%99%94%20%EC%B5%9C%EC%A2%85%20%27%EC%8A%A4%EC%99%88%EB%A1%9C%EC%9A%B0%EC%A6%88%20%EB%B9%84%EA%B8%B4%EC%A6%88%27.html",
 "image": "/log_assets/images/334_%EC%BD%94%EC%B9%98S%2019%ED%99%94%20%EC%B5%9C%EC%A2%85%20%27%EC%8A%A4%EC%99%88%EB%A1%9C%EC%9A%B0%EC%A6%88%20%EB%B9%84%EA%B8%B4%EC%A6%88%27_cover.jpg"
-},
-{
-"id": 335,
-"title": "335_세상을 혁신하는 액셀러레이터 '스왈로우즈'를 시작합니다",
-"category": "",
-"date": "",
-"url": "/log_assets/markdown/335_%EC%84%B8%EC%83%81%EC%9D%84%20%ED%98%81%EC%8B%A0%ED%95%98%EB%8A%94%20%EC%95%A1%EC%85%80%EB%9F%AC%EB%A0%88%EC%9D%B4%ED%84%B0%20%27%EC%8A%A4%EC%99%88%EB%A1%9C%EC%9A%B0%EC%A6%88%27%EB%A5%BC%20%EC%8B%9C%EC%9E%91%ED%95%A9%EB%8B%88%EB%8B%A4.html",
-"image": "/log_assets/images/335_%EC%84%B8%EC%83%81%EC%9D%84%20%ED%98%81%EC%8B%A0%ED%95%98%EB%8A%94%20%EC%95%A1%EC%85%80%EB%9F%AC%EB%A0%88%EC%9D%B4%ED%84%B0%20%27%EC%8A%A4%EC%99%88%EB%A1%9C%EC%9A%B0%EC%A6%88%27%EB%A5%BC%20%EC%8B%9C%EC%9E%91%ED%95%A9%EB%8B%88%EB%8B%A4_cover.jpg"
 },
 {
 "id": 336,
@@ -2840,14 +2808,6 @@
 "image": "/log_assets/images/361_UX%20%EC%84%A4%EA%B3%84%EB%A5%BC%20%EC%9E%98%ED%95%98%EB%8A%94%20%EB%B2%95_cover.jpg"
 },
 {
-"id": 362,
-"title": "362_트레바리 '기밀서재' 시즌3가 시작합니다",
-"category": "",
-"date": "",
-"url": "/log_assets/markdown/362_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%27%EA%B8%B0%EB%B0%80%EC%84%9C%EC%9E%AC%27%20%EC%8B%9C%EC%A6%8C3%EA%B0%80%20%EC%8B%9C%EC%9E%91%ED%95%A9%EB%8B%88%EB%8B%A4.html",
-"image": "/log_assets/images/362_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%27%EA%B8%B0%EB%B0%80%EC%84%9C%EC%9E%AC%27%20%EC%8B%9C%EC%A6%8C3%EA%B0%80%20%EC%8B%9C%EC%9E%91%ED%95%A9%EB%8B%88%EB%8B%A4._cover.jpg"
-},
-{
 "id": 363,
 "title": "당신은 홀릭하는 브랜드인가요?",
 "category": "토크세션",
@@ -2881,17 +2841,17 @@
 },
 {
 "id": 367,
-"title": "367_코치S 8화 '노답 CEO 삼형제'",
-"category": "",
-"date": "",
+"title": "8화 '노답 CEO 삼형제",
+"category": "코치S",
+"date": "Jun 19. 2024",
 "url": "/log_assets/markdown/367_%EC%BD%94%EC%B9%98S%208%ED%99%94%20%27%EB%85%B8%EB%8B%B5%20CEO%20%EC%82%BC%ED%98%95%EC%A0%9C%27.html",
 "image": "/log_assets/images/367_%EC%BD%94%EC%B9%98S%208%ED%99%94%20%27%EB%85%B8%EB%8B%B5%20CEO%20%EC%82%BC%ED%98%95%EC%A0%9C%27_cover.jpg"
 },
 {
 "id": 368,
-"title": "368_'오타와 브랜딩'",
-"category": "",
-"date": "",
+"title": "오타와 브랜딩",
+"category": "기획일상",
+"date": "Jun 17. 2024",
 "url": "/log_assets/markdown/368_%27%EC%98%A4%ED%83%80%EC%99%80%20%EB%B8%8C%EB%9E%9C%EB%94%A9%27.html",
 "image": "/log_assets/images/368_%27%EC%98%A4%ED%83%80%EC%99%80%20%EB%B8%8C%EB%9E%9C%EB%94%A9%27_cover.jpg"
 },
@@ -2905,9 +2865,9 @@
 },
 {
 "id": 370,
-"title": "370_코치S 7화 '진정한 브랜딩이란'",
-"category": "",
-"date": "",
+"title": "7화 '진정한 브랜딩이란?",
+"category": "코치S",
+"date": "Jun 12. 2024",
 "url": "/log_assets/markdown/370_%EC%BD%94%EC%B9%98S%207%ED%99%94%20%27%EC%A7%84%EC%A0%95%ED%95%9C%20%EB%B8%8C%EB%9E%9C%EB%94%A9%EC%9D%B4%EB%9E%80%27.html",
 "image": "/log_assets/images/370_%EC%BD%94%EC%B9%98S%207%ED%99%94%20%27%EC%A7%84%EC%A0%95%ED%95%9C%20%EB%B8%8C%EB%9E%9C%EB%94%A9%EC%9D%B4%EB%9E%80%27_cover.jpg"
 },
@@ -2937,9 +2897,9 @@
 },
 {
 "id": 374,
-"title": "374_코치S 6화 '브랜딩병'",
-"category": "",
-"date": "",
+"title": "6화 '브랜딩병",
+"category": "코치S",
+"date": "Jun 4. 2024",
 "url": "/log_assets/markdown/374_%EC%BD%94%EC%B9%98S%206%ED%99%94%20%27%EB%B8%8C%EB%9E%9C%EB%94%A9%EB%B3%91%27.html",
 "image": "/log_assets/images/374_%EC%BD%94%EC%B9%98S%206%ED%99%94%20%27%EB%B8%8C%EB%9E%9C%EB%94%A9%EB%B3%91%27_cover.jpg"
 },
@@ -2953,9 +2913,9 @@
 },
 {
 "id": 377,
-"title": "377_코치S 5화 '다음 라운드에서 뵙겠습니다'",
-"category": "",
-"date": "",
+"title": "5화 '다음 **라운드에서 뵙겠습니다.",
+"category": "코치S",
+"date": "May 28. 2024",
 "url": "/log_assets/markdown/377_%EC%BD%94%EC%B9%98S%205%ED%99%94%20%27%EB%8B%A4%EC%9D%8C%20%EB%9D%BC%EC%9A%B4%EB%93%9C%EC%97%90%EC%84%9C%20%EB%B5%99%EA%B2%A0%EC%8A%B5%EB%8B%88%EB%8B%A4%27.html",
 "image": "/log_assets/images/377_%EC%BD%94%EC%B9%98S%205%ED%99%94%20%27%EB%8B%A4%EC%9D%8C%20%EB%9D%BC%EC%9A%B4%EB%93%9C%EC%97%90%EC%84%9C%20%EB%B5%99%EA%B2%A0%EC%8A%B5%EB%8B%88%EB%8B%A4.%27_cover.jpg"
 },
@@ -2993,9 +2953,9 @@
 },
 {
 "id": 382,
-"title": "382_코치S 4화 '한 곳을 보는 방법'",
-"category": "",
-"date": "",
+"title": "4화 '한 곳을 보는 방법",
+"category": "코치S",
+"date": "May 21. 2024",
 "url": "/log_assets/markdown/382_%EC%BD%94%EC%B9%98S%204%ED%99%94%20%27%ED%95%9C%20%EA%B3%B3%EC%9D%84%20%EB%B3%B4%EB%8A%94%20%EB%B0%A9%EB%B2%95%27.html",
 "image": "/log_assets/images/382_%EC%BD%94%EC%B9%98S%204%ED%99%94%20%27%ED%95%9C%20%EA%B3%B3%EC%9D%84%20%EB%B3%B4%EB%8A%94%20%EB%B0%A9%EB%B2%95%27_cover.jpg"
 },
@@ -3033,9 +2993,9 @@
 },
 {
 "id": 387,
-"title": "387_코치S 3화 '목표는 몇 개'",
-"category": "",
-"date": "",
+"title": "3화 '목표는 몇 개?",
+"category": "코치S",
+"date": "May 14. 2024",
 "url": "/log_assets/markdown/387_%EC%BD%94%EC%B9%98S%203%ED%99%94%20%27%EB%AA%A9%ED%91%9C%EB%8A%94%20%EB%AA%87%20%EA%B0%9C%27.html",
 "image": "/log_assets/images/389_%EC%BD%94%EC%B9%98S%203%ED%99%94%20%27%EB%AA%A9%ED%91%9C%EB%8A%94%20%EB%AA%87%20%EA%B0%9C%27_cover.jpg"
 },
@@ -3089,9 +3049,9 @@
 },
 {
 "id": 394,
-"title": "394_코치S 2화 '너무 없거나, 너무 많거나'",
-"category": "",
-"date": "",
+"title": "2화 '너무 없거나, 너무 많거나",
+"category": "코치S",
+"date": "May 7. 2024",
 "url": "/log_assets/markdown/394_%EC%BD%94%EC%B9%98S%202%ED%99%94%20%27%EB%84%88%EB%AC%B4%20%EC%97%86%EA%B1%B0%EB%82%98%2C%20%EB%84%88%EB%AC%B4%20%EB%A7%8E%EA%B1%B0%EB%82%98%27.html",
 "image": "/log_assets/images/396_%EC%BD%94%EC%B9%98S%202%ED%99%94%20%27%EB%84%88%EB%AC%B4%20%EC%97%86%EA%B1%B0%EB%82%98%2C%20%EB%84%88%EB%AC%B4%20%EB%A7%8E%EA%B1%B0%EB%82%98%27_cover.jpg"
 },
@@ -3129,9 +3089,9 @@
 },
 {
 "id": 399,
-"title": "399_내가 요즘 주목하는 '링크드인 히어로' 4월호",
-"category": "",
-"date": "",
+"title": "내가 요즘 주목하는 '링크드인 히어로' 4월호",
+"category": "심플리파이어 라이프",
+"date": "May 1. 2024",
 "url": "/log_assets/markdown/399_%EB%82%B4%EA%B0%80%20%EC%9A%94%EC%A6%98%20%EC%A3%BC%EB%AA%A9%ED%95%98%EB%8A%94%20%27%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%ED%9E%88%EC%96%B4%EB%A1%9C%27%204%EC%9B%94%ED%98%B8.html",
 "image": "/log_assets/images/401_%EB%82%B4%EA%B0%80%20%EC%9A%94%EC%A6%98%20%EC%A3%BC%EB%AA%A9%ED%95%98%EB%8A%94%20%27%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%ED%9E%88%EC%96%B4%EB%A1%9C%27%204%EC%9B%94%ED%98%B8_cover.jpg"
 },
@@ -3145,9 +3105,9 @@
 },
 {
 "id": 401,
-"title": "401_코치S 1화 '문제해결사'",
-"category": "",
-"date": "",
+"title": "1화 - 문제해결사편",
+"category": "코치S",
+"date": "Apr 30. 2024",
 "url": "/log_assets/markdown/401_%EC%BD%94%EC%B9%98S%201%ED%99%94%20%27%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0%EC%82%AC%27.html",
 "image": "/log_assets/images/403_%EC%BD%94%EC%B9%98S%201%ED%99%94%20%27%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0%EC%82%AC%27_cover.jpg"
 },
@@ -3201,9 +3161,9 @@
 },
 {
 "id": 408,
-"title": "408_한코치의 '애자일 왜 하게 되었을까'",
-"category": "",
-"date": "",
+"title": "한코치의 '애자일 왜 하게 되었을까?",
+"category": "스타트업 인사이트",
+"date": "Apr 16. 2024",
 "url": "/log_assets/markdown/408_%ED%95%9C%EC%BD%94%EC%B9%98%EC%9D%98%20%27%EC%95%A0%EC%9E%90%EC%9D%BC%20%EC%99%9C%20%ED%95%98%EA%B2%8C%20%EB%90%98%EC%97%88%EC%9D%84%EA%B9%8C%27.html",
 "image": "/log_assets/images/413_%ED%95%9C%EC%BD%94%EC%B9%98%EC%9D%98%20%27%EC%95%A0%EC%9E%90%EC%9D%BC%20%EC%99%9C%20%ED%95%98%EA%B2%8C%20%EB%90%98%EC%97%88%EC%9D%84%EA%B9%8C%27_cover.jpg"
 },
@@ -3217,33 +3177,33 @@
 },
 {
 "id": 410,
-"title": "410_'커넥팅 X 잉크드인' 북토크 이야기",
-"category": "",
-"date": "",
+"title": "커넥팅 X 잉크드인' 북토크 이야기",
+"category": "심플리파이어 라이프",
+"date": "Apr 20. 2024",
 "url": "/log_assets/markdown/410_%27%EC%BB%A4%EB%84%A5%ED%8C%85%20X%20%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%27%20%EB%B6%81%ED%86%A0%ED%81%AC%20%EC%9D%B4%EC%95%BC%EA%B8%B0.html",
 "image": "/log_assets/images/412_%27%EC%BB%A4%EB%84%A5%ED%8C%85%20X%20%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%27%20%EB%B6%81%ED%86%A0%ED%81%AC%20%EC%9D%B4%EC%95%BC%EA%B8%B0_cover.jpg"
 },
 {
 "id": 411,
-"title": "411_한코치의 '애자일 왜 하게 되었을까'",
-"category": "",
-"date": "",
+"title": "한코치의 '애자일 왜 하게 되었을까?",
+"category": "스타트업 인사이트",
+"date": "Apr 16. 2024",
 "url": "/log_assets/markdown/411_%ED%95%9C%EC%BD%94%EC%B9%98%EC%9D%98%20%27%EC%95%A0%EC%9E%90%EC%9D%BC%20%EC%99%9C%20%ED%95%98%EA%B2%8C%20%EB%90%98%EC%97%88%EC%9D%84%EA%B9%8C%27.html",
 "image": "/log_assets/images/413_%ED%95%9C%EC%BD%94%EC%B9%98%EC%9D%98%20%27%EC%95%A0%EC%9E%90%EC%9D%BC%20%EC%99%9C%20%ED%95%98%EA%B2%8C%20%EB%90%98%EC%97%88%EC%9D%84%EA%B9%8C%27_cover.jpg"
 },
 {
 "id": 412,
-"title": "412_한코치의 '애자일 왜 하게 되었을까'",
-"category": "",
-"date": "",
+"title": "한코치의 '애자일 왜 하게 되었을까?",
+"category": "스타트업 인사이트",
+"date": "Apr 16. 2024",
 "url": "/log_assets/markdown/412_%ED%95%9C%EC%BD%94%EC%B9%98%EC%9D%98%20%27%EC%95%A0%EC%9E%90%EC%9D%BC%20%EC%99%9C%20%ED%95%98%EA%B2%8C%20%EB%90%98%EC%97%88%EC%9D%84%EA%B9%8C%27.html",
 "image": "/log_assets/images/413_%ED%95%9C%EC%BD%94%EC%B9%98%EC%9D%98%20%27%EC%95%A0%EC%9E%90%EC%9D%BC%20%EC%99%9C%20%ED%95%98%EA%B2%8C%20%EB%90%98%EC%97%88%EC%9D%84%EA%B9%8C%27_cover.jpg"
 },
 {
 "id": 413,
-"title": "413_한코치의 '애자일 왜 하게 되었을까'",
-"category": "",
-"date": "",
+"title": "한코치의 '애자일 왜 하게 되었을까?",
+"category": "스타트업 인사이트",
+"date": "Apr 16. 2024",
 "url": "/log_assets/markdown/413_%ED%95%9C%EC%BD%94%EC%B9%98%EC%9D%98%20%27%EC%95%A0%EC%9E%90%EC%9D%BC%20%EC%99%9C%20%ED%95%98%EA%B2%8C%20%EB%90%98%EC%97%88%EC%9D%84%EA%B9%8C%27.html",
 "image": "/log_assets/images/413_%ED%95%9C%EC%BD%94%EC%B9%98%EC%9D%98%20%27%EC%95%A0%EC%9E%90%EC%9D%BC%20%EC%99%9C%20%ED%95%98%EA%B2%8C%20%EB%90%98%EC%97%88%EC%9D%84%EA%B9%8C%27_cover.jpg"
 },
@@ -3353,17 +3313,17 @@
 },
 {
 "id": 428,
-"title": "428_코치X '시드 찾기'",
-"category": "",
-"date": "",
+"title": "코치X '시드 찾기",
+"category": "기획일상",
+"date": "Apr 1. 2024",
 "url": "/log_assets/markdown/428_%EC%BD%94%EC%B9%98X%20%27%EC%8B%9C%EB%93%9C%20%EC%B0%BE%EA%B8%B0%27.html",
 "image": "/log_assets/images/430_%EC%BD%94%EC%B9%98X%20%27%EC%8B%9C%EB%93%9C%20%EC%B0%BE%EA%B8%B0%27_cover.jpg"
 },
 {
 "id": 429,
-"title": "429_심플리파이어의 책읽기 '첫 책 만드는 법'",
-"category": "",
-"date": "",
+"title": "심플리파이어의 책읽기 '첫 책 만드는 법",
+"category": "심플리파이어 라이프",
+"date": "Mar 31. 2024",
 "url": "/log_assets/markdown/429_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%EC%9D%98%20%EC%B1%85%EC%9D%BD%EA%B8%B0%20%27%EC%B2%AB%20%EC%B1%85%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B2%95%27.html",
 "image": "/log_assets/images/431_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%EC%9D%98%20%EC%B1%85%EC%9D%BD%EA%B8%B0%20%27%EC%B2%AB%20%EC%B1%85%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B2%95%27_cover.jpg"
 },
@@ -3377,9 +3337,9 @@
 },
 {
 "id": 431,
-"title": "431_내가 요즘 주목하는 '링크드인 히어로' 3월호",
-"category": "",
-"date": "",
+"title": "내가 요즘 주목하는 '링크드인 히어로' 3월호",
+"category": "심플리파이어 라이프",
+"date": "Mar 29. 2024",
 "url": "/log_assets/markdown/431_%EB%82%B4%EA%B0%80%20%EC%9A%94%EC%A6%98%20%EC%A3%BC%EB%AA%A9%ED%95%98%EB%8A%94%20%27%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%ED%9E%88%EC%96%B4%EB%A1%9C%27%203%EC%9B%94%ED%98%B8.html",
 "image": "/log_assets/images/433_%EB%82%B4%EA%B0%80%20%EC%9A%94%EC%A6%98%20%EC%A3%BC%EB%AA%A9%ED%95%98%EB%8A%94%20%27%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%ED%9E%88%EC%96%B4%EB%A1%9C%27%203%EC%9B%94%ED%98%B8_cover.jpg"
 },
@@ -3569,9 +3529,9 @@
 },
 {
 "id": 460,
-"title": "460_잉크드인대 기획학과 4화 '문제정의'",
-"category": "",
-"date": "",
+"title": "4화 '문제정의",
+"category": "잉크드인대 기획학과",
+"date": "Feb 27. 2024",
 "url": "/log_assets/markdown/460_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%204%ED%99%94%20%27%EB%AC%B8%EC%A0%9C%EC%A0%95%EC%9D%98%27.html",
 "image": "/log_assets/images/462_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%204%ED%99%94%20%27%EB%AC%B8%EC%A0%9C%EC%A0%95%EC%9D%98%27_cover.jpg"
 },
@@ -3593,9 +3553,9 @@
 },
 {
 "id": 467,
-"title": "467_잉크드인대 기획학과 3화 '과제폭탄그리고",
-"category": "",
-"date": "",
+"title": "3화 '과제폭탄...그리고",
+"category": "잉크드인대 기획학과",
+"date": "Feb 20. 2024",
 "url": "/log_assets/markdown/467_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%203%ED%99%94%20%27%EA%B3%BC%EC%A0%9C%ED%8F%AD%ED%83%84%EA%B7%B8%EB%A6%AC%EA%B3%A0.html",
 "image": "/log_assets/images/469_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%203%ED%99%94%20%27%EA%B3%BC%EC%A0%9C%ED%8F%AD%ED%83%84...%EA%B7%B8%EB%A6%AC%EA%B3%A0_cover.jpg"
 },
@@ -3617,9 +3577,9 @@
 },
 {
 "id": 471,
-"title": "471_잉크드인대 기획학과 2화 '기획 그런 사랑'",
-"category": "",
-"date": "",
+"title": "2화 '기획... 그런 사랑",
+"category": "잉크드인대 기획학과",
+"date": "Feb 17. 2024",
 "url": "/log_assets/markdown/471_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%202%ED%99%94%20%27%EA%B8%B0%ED%9A%8D%20%EA%B7%B8%EB%9F%B0%20%EC%82%AC%EB%9E%91%27.html",
 "image": "/log_assets/images/473_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%202%ED%99%94%20%27%EA%B8%B0%ED%9A%8D...%20%EA%B7%B8%EB%9F%B0%20%EC%82%AC%EB%9E%91%27_cover.jpg"
 },
@@ -3649,33 +3609,33 @@
 },
 {
 "id": 475,
-"title": "475_잉크드인대 '기획학과' 1화 신학기 개강",
-"category": "",
-"date": "",
+"title": "1화 신학기 개강",
+"category": "잉크드인대 기획학과",
+"date": "Feb 13. 2024",
 "url": "/log_assets/markdown/475_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%27%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%27%201%ED%99%94%20%EC%8B%A0%ED%95%99%EA%B8%B0%20%EA%B0%9C%EA%B0%95.html",
 "image": "/log_assets/images/477_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%27%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%27%201%ED%99%94%20%EC%8B%A0%ED%95%99%EA%B8%B0%20%EA%B0%9C%EA%B0%95_cover.jpg"
 },
 {
 "id": 476,
-"title": "476_내가 나를 기획한다면 '사전준비의 전략편'",
-"category": "",
-"date": "",
+"title": "내가 나를 기획한다면 '사전준비의 전략편",
+"category": "기획일상",
+"date": "Feb 12. 2024",
 "url": "/log_assets/markdown/476_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%27%EC%82%AC%EC%A0%84%EC%A4%80%EB%B9%84%EC%9D%98%20%EC%A0%84%EB%9E%B5%ED%8E%B8%27.html",
 "image": "/log_assets/images/478_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%27%EC%82%AC%EC%A0%84%EC%A4%80%EB%B9%84%EC%9D%98%20%EC%A0%84%EB%9E%B5%ED%8E%B8%27_cover.jpg"
 },
 {
 "id": 477,
-"title": "477_글쓰기는 '잘' 보다 '자주'가 더 중요한 이유",
-"category": "",
-"date": "",
+"title": "글쓰기는 '잘' 보다 '자주'가 더 중요한 이유",
+"category": "심플리파이어 라이프",
+"date": "Feb 11. 2024",
 "url": "/log_assets/markdown/477_%EA%B8%80%EC%93%B0%EA%B8%B0%EB%8A%94%20%27%EC%9E%98%27%20%EB%B3%B4%EB%8B%A4%20%27%EC%9E%90%EC%A3%BC%27%EA%B0%80%20%EB%8D%94%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html",
 "image": "/log_assets/images/479_%EA%B8%80%EC%93%B0%EA%B8%B0%EB%8A%94%20%27%EC%9E%98%27%20%EB%B3%B4%EB%8B%A4%20%27%EC%9E%90%EC%A3%BC%27%EA%B0%80%20%EB%8D%94%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0_cover.jpg"
 },
 {
 "id": 478,
-"title": "478_잉크드인대 '기획학과' 예고편",
-"category": "",
-"date": "",
+"title": "예고편",
+"category": "잉크드인대 기획학과",
+"date": "Feb 11. 2024",
 "url": "/log_assets/markdown/478_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%27%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%27%20%EC%98%88%EA%B3%A0%ED%8E%B8.html",
 "image": "/log_assets/images/480_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%27%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%27%20%EC%98%88%EA%B3%A0%ED%8E%B8_cover.jpg"
 },
@@ -3705,9 +3665,9 @@
 },
 {
 "id": 482,
-"title": "482_'세상에 없던 일을 하시네요'",
-"category": "",
-"date": "",
+"title": "세상에 없던 일을 하시네요.",
+"category": "심플리파이어 라이프",
+"date": "Feb 7. 2024",
 "url": "/log_assets/markdown/482_%27%EC%84%B8%EC%83%81%EC%97%90%20%EC%97%86%EB%8D%98%20%EC%9D%BC%EC%9D%84%20%ED%95%98%EC%8B%9C%EB%84%A4%EC%9A%94%27.html",
 "image": "/log_assets/images/484_%27%EC%84%B8%EC%83%81%EC%97%90%20%EC%97%86%EB%8D%98%20%EC%9D%BC%EC%9D%84%20%ED%95%98%EC%8B%9C%EB%84%A4%EC%9A%94.%27_cover.jpg"
 },
@@ -3889,9 +3849,9 @@
 },
 {
 "id": 505,
-"title": "505_내가 나를 기획한다면 '초단기 브랜딩편'",
-"category": "",
-"date": "",
+"title": "내가 나를 기획한다면? '초단기 브랜딩편",
+"category": "기획일상",
+"date": "Jan 11. 2024",
 "url": "/log_assets/markdown/505_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%27%EC%B4%88%EB%8B%A8%EA%B8%B0%20%EB%B8%8C%EB%9E%9C%EB%94%A9%ED%8E%B8%27.html",
 "image": "/log_assets/images/507_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%27%EC%B4%88%EB%8B%A8%EA%B8%B0%20%EB%B8%8C%EB%9E%9C%EB%94%A9%ED%8E%B8%27_cover.jpg"
 },
@@ -3929,17 +3889,17 @@
 },
 {
 "id": 510,
-"title": "510_내가 나를 기획한다면 '기획학과편'",
-"category": "",
-"date": "",
+"title": "내가 나를 기획한다면? '기획학과편",
+"category": "기획일상",
+"date": "Jan 5. 2024",
 "url": "/log_assets/markdown/510_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%27%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%ED%8E%B8%27.html",
 "image": "/log_assets/images/512_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%27%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%ED%8E%B8%27_cover.jpg"
 },
 {
 "id": 511,
-"title": "511_'좋아요'의 의미",
-"category": "",
-"date": "",
+"title": "좋아요'의 의미",
+"category": "심플리파이어 라이프",
+"date": "Jan 4. 2024",
 "url": "/log_assets/markdown/511_%27%EC%A2%8B%EC%95%84%EC%9A%94%27%EC%9D%98%20%EC%9D%98%EB%AF%B8.html",
 "image": "/log_assets/images/513_%27%EC%A2%8B%EC%95%84%EC%9A%94%27%EC%9D%98%20%EC%9D%98%EB%AF%B8_cover.jpg"
 },
@@ -4009,9 +3969,9 @@
 },
 {
 "id": 520,
-"title": "520_'Paper Face'를 아시나요",
-"category": "",
-"date": "",
+"title": "Paper Face'를 아시나요?",
+"category": "심플리파이어 라이프",
+"date": "Dec 25. 2023",
 "url": "/log_assets/markdown/520_%27Paper%20Face%27%EB%A5%BC%20%EC%95%84%EC%8B%9C%EB%82%98%EC%9A%94.html",
 "image": "/log_assets/images/522_%27Paper%20Face%27%EB%A5%BC%20%EC%95%84%EC%8B%9C%EB%82%98%EC%9A%94_cover.jpg"
 },
@@ -4033,9 +3993,9 @@
 },
 {
 "id": 523,
-"title": "523_심플리파이어 웨이 '요기요 Concept UX'",
-"category": "",
-"date": "",
+"title": "심플리파이어 웨이 '요기요 Concept UX",
+"category": "스타트업 인사이트",
+"date": "Dec 22. 2023",
 "url": "/log_assets/markdown/523_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%9B%A8%EC%9D%B4%20%27%EC%9A%94%EA%B8%B0%EC%9A%94%20Concept%20UX%27.html",
 "image": "/log_assets/images/525_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%9B%A8%EC%9D%B4%20%27%EC%9A%94%EA%B8%B0%EC%9A%94%20Concept%20UX%27_cover.jpg"
 },
@@ -4353,9 +4313,9 @@
 },
 {
 "id": 564,
-"title": "564_심플리파이어 웨이 '디자인 협업'",
-"category": "",
-"date": "",
+"title": "심플리파이어 웨이 '디자인 협업",
+"category": "스타트업 인사이트",
+"date": "Nov 9. 2023",
 "url": "/log_assets/markdown/564_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%9B%A8%EC%9D%B4%20%27%EB%94%94%EC%9E%90%EC%9D%B8%20%ED%98%91%EC%97%85%27.html",
 "image": "/log_assets/images/566_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%9B%A8%EC%9D%B4%20%27%EB%94%94%EC%9E%90%EC%9D%B8%20%ED%98%91%EC%97%85%27_cover.jpg"
 },
@@ -4417,9 +4377,9 @@
 },
 {
 "id": 572,
-"title": "572_C레벨의 기술 '경청'",
-"category": "",
-"date": "",
+"title": "C레벨의 기술 '경청",
+"category": "스타트업 인사이트",
+"date": "Oct 30. 2023",
 "url": "/log_assets/markdown/572_C%EB%A0%88%EB%B2%A8%EC%9D%98%20%EA%B8%B0%EC%88%A0%20%27%EA%B2%BD%EC%B2%AD%27.html",
 "image": "/log_assets/images/574_C%EB%A0%88%EB%B2%A8%EC%9D%98%20%EA%B8%B0%EC%88%A0%20%27%EA%B2%BD%EC%B2%AD%27_cover.jpg"
 },
@@ -4489,9 +4449,9 @@
 },
 {
 "id": 581,
-"title": "581_C레벨의 기술 '회의'",
-"category": "",
-"date": "",
+"title": "C레벨의 기술 '회의",
+"category": "스타트업 인사이트",
+"date": "Oct 21. 2023",
 "url": "/log_assets/markdown/581_C%EB%A0%88%EB%B2%A8%EC%9D%98%20%EA%B8%B0%EC%88%A0%20%27%ED%9A%8C%EC%9D%98%27.html",
 "image": "/log_assets/images/583_C%EB%A0%88%EB%B2%A8%EC%9D%98%20%EA%B8%B0%EC%88%A0%20%27%ED%9A%8C%EC%9D%98%27_cover.jpg"
 },
@@ -4689,9 +4649,9 @@
 },
 {
 "id": 606,
-"title": "606_C레벨의 기술 '사과'",
-"category": "",
-"date": "",
+"title": "C레벨의 기술 '사과",
+"category": "스타트업 인사이트",
+"date": "Sep 25. 2023",
 "url": "/log_assets/markdown/606_C%EB%A0%88%EB%B2%A8%EC%9D%98%20%EA%B8%B0%EC%88%A0%20%27%EC%82%AC%EA%B3%BC%27.html",
 "image": "/log_assets/images/608_C%EB%A0%88%EB%B2%A8%EC%9D%98%20%EA%B8%B0%EC%88%A0%20%27%EC%82%AC%EA%B3%BC%27_cover.jpg"
 },

@@ -84,7 +84,7 @@ Warby Parker의 전략은 다음과 같습니다.
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/244_470%EB%AA%85%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%ED%88%B4%20%27%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EB%AA%A8%EB%8D%B8%20%EC%BA%94%EB%B2%84%EC%8A%A4%27.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">244_470명이 만든 비즈니스 툴 '비즈니스 모델 캔버스'</span></a>
-  <a href="/log_assets/markdown/248_%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%EC%9D%98%20%EC%B6%9C%EB%B0%9C%EC%84%A0%20%27%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%20%ED%94%8C%EB%9E%98%EB%8B%9D%27.html" class="cat-nav-item cat-nav-right"><span class="nav-title">248_스프린트의 출발선 '스프린트 플래닝'</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/243_%EC%98%A4%ED%94%88AI%20%EC%83%98%20%EC%95%8C%ED%8A%B8%EB%A8%BC%EC%9D%B4%20%EC%84%A0%ED%83%9D%ED%95%9C%20%EC%9B%90%EC%9E%90%EB%A0%A5%EC%9D%98%20%EB%AF%B8%EB%9E%98%2C%20%EC%98%A4%ED%81%B4%EB%A1%9C.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">오픈AI 샘 알트먼이 선택한 원자력의 미래, 오클로</span></a>
+  <a href="/log_assets/markdown/246_%EC%BB%A4%EB%A8%B8%EC%8A%A4%20AI%EC%9D%98%20%EA%B2%8C%EC%9E%84%EC%B2%B4%EC%9D%B8%EC%A0%80%2C%20%EC%9D%B8%ED%95%B8%EC%8A%A4.html" class="cat-nav-item cat-nav-right"><span class="nav-title">커머스 AI의 게임체인저, 인핸스</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

@@ -72,7 +72,7 @@ Material Design을 통해 모든 서비스에 일관된 시각 언어를 적용�
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/226_%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%20%EB%A6%AC%EB%B7%B0%27%2C%20%EC%A4%80%EB%B9%84%EB%8A%94%20%EB%8D%9C%ED%95%98%EA%B3%A0%20%EC%86%94%EC%A7%81%ED%95%A8%EC%9D%80%20%EB%8D%94%ED%95%98%EA%B8%B0.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">226_스프린트 리뷰', 준비는 덜하고 솔직함은 더하기</span></a>
-  <a href="/log_assets/markdown/228_1000%ED%8D%BC%EC%84%BC%ED%8A%B8%EC%9D%98%20%EC%84%B1%EC%9E%A5%20%27%EC%95%B1%EB%9F%AC%EB%B9%88%27%EC%9D%98%20%EC%88%A8%EA%B2%A8%EC%A7%84%20%EC%84%B1%EA%B3%B5%EA%B3%B5%EC%8B%9D.html" class="cat-nav-item cat-nav-right"><span class="nav-title">228_1000퍼센트의 성장 '앱러빈'의 숨겨진 성공공식</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/219_%EC%8B%A4%EB%A6%AC%EC%BD%98%EB%B0%B8%EB%A6%AC%20%EC%8A%B9%EC%9E%90%EB%93%A4%EC%9D%B4%20%EC%93%B0%EB%8A%94%20%27%EC%BD%9C%ED%88%AC%EC%95%A1%EC%85%98%28CTA%29%27.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">실리콘밸리 승자들이 쓰는 '콜투액션(CTA)</span></a>
+  <a href="/log_assets/markdown/234_%EC%B1%97GPT%EA%B0%80%20%EC%89%BD%EB%8B%A4%EA%B3%A0%20%EB%8A%90%EA%BB%B4%EC%A7%80%EB%8A%94%20UX%EC%9D%98%20%EB%B9%84%EB%B0%80.html" class="cat-nav-item cat-nav-right"><span class="nav-title">챗GPT가 쉽다고 느껴지는 UX의 비밀</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

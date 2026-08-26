@@ -89,7 +89,7 @@ Slack처럼 작게 시작해 빠르게 실험하고, 잘 되는 채널에 집중
 
 <!-- CATEGORY_NAV_START -->
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/106_2%EC%B2%9C%EB%A7%8C%EC%9B%90%EC%9C%BC%EB%A1%9C%2010%EC%96%B5%EC%9B%90%20%EB%A7%A4%EC%B6%9C%EC%9D%84%2C%20%EC%95%88%ED%8B%B0%EB%A9%94%ED%83%88%EC%9D%98%20%EB%B0%94%EC%9D%B4%EB%9F%B4%EC%A0%84%EB%9E%B5.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">2천만원으로 10억원 매출을, 안티메탈의 바이럴전략</span></a>
+  <a href="/log_assets/markdown/113_%27%EC%BB%A4%EC%84%9C%20AI%27%EC%9D%98%20AI%20%ED%98%91%EB%A0%A5%EC%9E%90%20%EC%A0%84%EB%9E%B5.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">커서 AI'의 AI 협력자 전략</span></a>
   <a href="/log_assets/markdown/129_Dropbox%EC%9D%98%20%EB%AC%B4%EB%A3%8C%EC%97%90%EC%84%9C%20%EC%9C%A0%EB%A3%8C%EB%A1%9C%EC%9D%98%20%EC%A0%84%ED%99%98%20%EB%B9%84%EB%B2%95.html" class="cat-nav-item cat-nav-right"><span class="nav-title">Dropbox의 무료에서 유료로의 전환 비법</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->
