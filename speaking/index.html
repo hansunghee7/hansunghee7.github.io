@@ -171,7 +171,8 @@ layout: null
   /* 히어로: 글과 인물 사진을 나란히. 좁은 화면에선 사진이 글 아래로. */
   .hero-grid { display:grid; grid-template-columns: 1.15fr 0.85fr; gap:56px; align-items:center; }
   @media (max-width:860px){ .hero-grid { grid-template-columns:1fr; gap:38px; } }
-  .portrait { width:100%; border-radius:12px; display:block;
+  /* height:auto 가 없으면 width/height 속성값(873px)이 그대로 적용돼 세로로 늘어납니다. */
+  .portrait { width:100%; height:auto; border-radius:12px; display:block;
               filter: grayscale(18%) contrast(1.03); }
   @media (max-width:860px){ .portrait { max-width:420px; } }
 
