@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>글쓰기 (Sveltia 테스트) - Simplifier</title>
+  <link rel="icon" href="data:," />
+  <style>
+    /* 지금 보고 있는 게 테스트 화면이라는 걸 잊지 않도록 하는 표시.
+       pointer-events:none 이라 실제 조작을 가로막지 않습니다. */
+    #sandbox-badge {
+      position: fixed;
+      right: 8px;
+      bottom: 8px;
+      z-index: 2147483647;
+      pointer-events: none;
+      background: #b45309;
+      color: #fff;
+      font: 12px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      padding: 6px 10px;
+      border-radius: 6px;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <!-- Sveltia CMS 테스트판.
+       실제 운영 화면은 /admin/ (Decap CMS)이고 이 페이지는 거기에 영향을 주지 않습니다.
+       내용은 cms-test 브랜치를 보기 때문에, 여기서 저장해도 홈페이지에는 안 나갑니다.
+       버전을 ^0.200.0으로 묶어둔 이유: Sveltia는 아직 0.x라 릴리스가 잦아서,
+       평가하는 동안 화면이 저절로 바뀌지 않게 하기 위함입니다. -->
+  <script src="https://unpkg.com/@sveltia/cms@^0.200.0/dist/sveltia-cms.js"></script>
+  <div id="sandbox-badge">테스트 화면 · cms-test 브랜치 · 실제 사이트 영향 없음</div>
+</body>
+</html>
