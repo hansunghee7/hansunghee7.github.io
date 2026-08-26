@@ -150,7 +150,7 @@
 
 <section>
   <h2>카테고리별 마지막 발행</h2>
-  <p class="h2note">오래 손대지 않은 카테고리를 위에 올렸습니다. 6개월 넘게 비어 있으면 주황, 1년 넘으면 빨강입니다.</p>
+  <p class="h2note">연재중인 카테고리만 경과일을 따집니다 — 6개월 넘게 비어 있으면 주황, 1년 넘으면 빨강. 기간을 정해놓고 끝낸 <b>완결</b> 시리즈(웹툰 협업 연재 등)는 새 글이 없는 게 정상이라 경고 대상에서 빼고 아래로 내렸습니다.</p>
   <div class="tablebox"><table id="staleTable"></table></div>
 </section>
 
@@ -184,6 +184,13 @@
     { name:'네이버 서치어드바이저', done:true, desc:'네이버 검색 수집·노출을 관리합니다. HTML 태그로 소유확인.', href:'https://searchadvisor.naver.com/', link:'서치어드바이저 열기' },
     { name:'Microsoft Clarity', done:true, desc:'클릭 히트맵과 세션 녹화로 실제 행동을 봅니다. 프로젝트 Simplifier 20260826 (y8afhrh0tc).', href:'https://clarity.microsoft.com/', link:'Clarity 열기' }
   ];
+
+  /* 기간을 정해놓고 완결한 프로젝트성 시리즈. 새 글이 없는 게 정상이므로
+     "오래 방치됨" 경고 대상에서 뺍니다.
+     아래 둘은 웹툰 작가와 협업한 연재물로, _layouts/default.html의 스와이프
+     뷰어도 같은 두 카테고리를 기준으로 동작합니다. 완결된 시리즈가 더 있으면
+     여기에 이름을 그대로 추가하세요. */
+  var SERIES_DONE = ['코치S', '잉크드인대 기획학과'];
 
   var MONTH = {Jan:1,Feb:2,Mar:3,Apr:4,May:5,Jun:6,Jul:7,Aug:8,Sep:9,Oct:10,Nov:11,Dec:12};
 
@@ -301,24 +308,41 @@
     /* ---- staleness table ---- */
     var stale = catNames.map(function(c){
       var latest = cats[c].reduce(function(a,b){ return a.d>b.d?a:b; });
-      return { cat:c, n:cats[c].length, last:latest.d, days:daysBetween(today, latest.d) };
-    }).sort(function(a,b){ return b.days - a.days; });
+      return { cat:c, n:cats[c].length, last:latest.d, days:daysBetween(today, latest.d),
+               done: SERIES_DONE.indexOf(c) !== -1 };
+    }).sort(function(a,b){
+      /* 완결 시리즈는 경고 대상이 아니므로 항상 아래로 내립니다. */
+      if(a.done !== b.done) return a.done ? 1 : -1;
+      return b.days - a.days;
+    });
 
     var st = document.getElementById('staleTable'); st.textContent='';
     var thead = el('thead'), htr = el('tr');
-    ['카테고리','글 수','마지막 발행','경과'].forEach(function(h,i){
-      var th = el('th',null,h); if(i>0) th.style.textAlign = i===1?'right':'left'; htr.appendChild(th);
+    ['카테고리','상태','글 수','마지막 발행','경과'].forEach(function(h,i){
+      var th = el('th',null,h); if(i===2) th.style.textAlign='right'; htr.appendChild(th);
     });
     thead.appendChild(htr); st.appendChild(thead);
     var tb = el('tbody');
     stale.forEach(function(s){
       var tr = el('tr');
       tr.appendChild(el('td',null,s.cat));
+
+      var stTd = el('td');
+      stTd.appendChild(el('span','badge '+(s.done?'off':'on'), s.done?'완결':'연재중'));
+      tr.appendChild(stTd);
+
       tr.appendChild(el('td','num',String(s.n)));
       tr.appendChild(el('td',null,fmt(s.last)));
-      var cls = s.days>365 ? 'stale-bad' : (s.days>180 ? 'stale-warn' : 'stale-ok');
-      var td = el('td',cls, s.days+'일');
-      tr.appendChild(td);
+
+      if(s.done){
+        /* 완결 시리즈는 경과일에 색을 입히지 않습니다 -- 새 글이 없는 게 정상입니다. */
+        var doneTd = el('td',null,'—');
+        doneTd.style.color = 'var(--muted)';
+        tr.appendChild(doneTd);
+      } else {
+        var cls = s.days>365 ? 'stale-bad' : (s.days>180 ? 'stale-warn' : 'stale-ok');
+        tr.appendChild(el('td',cls, s.days+'일'));
+      }
       tb.appendChild(tr);
     });
     st.appendChild(tb);
