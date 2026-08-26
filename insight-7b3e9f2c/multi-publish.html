@@ -107,6 +107,7 @@
   #channelPanel[data-key="instagram"] textarea{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; font-size:14px; line-height:1.4;}
   #channelPanel[data-key="manual"] textarea{font-family:"Noto Serif KR","Nanum Myeongjo",serif; font-size:17px; line-height:1.85; letter-spacing:-0.01em;}
   #channelPanel[data-key="manual"] .title-field{font-family:"Noto Serif KR","Nanum Myeongjo",serif;}
+  #channelPanel[data-key="linkedin_newsletter"] textarea{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; font-size:16.5px; line-height:1.7;}
   #channelPanel .charcount{font-size:11.5px; color:var(--muted); text-align:right; margin-top:6px;}
   #channelPanel .charcount.over{color:var(--bad); font-weight:600;}
   #channelPanel .row{display:flex; gap:8px; flex-wrap:wrap; margin-top:14px;}
@@ -172,6 +173,14 @@
       aiInstruction: "전문적이고 통찰력 있는 톤으로, 문단 사이 줄바꿈을 넉넉히 넣어 가독성 좋게, 3000자 이내로 다듬어줘. 마지막 줄에 관련 해시태그 3~5개를 붙여줘.",
     },
     {
+      // 같은 LinkedIn이라도 일반 포스트(제목 없이 좁은 폭)와 뉴스레터/아티클
+      // (제목+커버이미지 있는 넓은 장문 에디터)은 화면이 완전히 다릅니다
+      // (사용자 스크린샷 확인). 그래서 따로 탭을 둡니다.
+      key: "linkedin_newsletter", label: "LinkedIn 뉴스레터", limit: null, layout: "wide",
+      source: function (fm) { return fm.channel_variants && fm.channel_variants.manual_copy_block; },
+      aiInstruction: null,
+    },
+    {
       key: "threads", label: "Threads", limit: 500, layout: "narrow",
       source: function (fm) { return fm.channel_variants && fm.channel_variants.linkedin_threads; },
       aiInstruction: "짧고 캐주얼한 말투로, 500자 이내로 핵심만 압축해줘. 첫 문장이 스크롤을 멈추게 할 만큼 강렬해야 해. 해시태그는 1~2개만.",
@@ -187,9 +196,23 @@
       aiInstruction: "감성적인 캡션 스타일로, 문장을 짧게 끊어서 다듬어줘. 마지막 줄에 관련 해시태그 10~15개를 붙여줘.",
     },
     {
-      key: "manual", label: "브런치 · 네이버블로그 · 리멤버 · 로켓펀치", limit: null, layout: "wide",
+      // 브런치·네이버블로그는 실제로 제목칸이 따로 있는 넓은 장문 에디터라서
+      // 이 둘만 wide로 묶습니다. 리멤버·로켓펀치는 실제 화면을 보면(사용자
+      // 스크린샷 확인) 제목 없이 좁은 폭에 글자수 제한이 있는 피드형 글쓰기
+      // 창이라 LinkedIn/Facebook과 같은 narrow로 따로 뺍니다.
+      key: "manual", label: "브런치 · 네이버블로그", limit: null, layout: "wide",
       source: function (fm) { return fm.channel_variants && fm.channel_variants.manual_copy_block; },
       aiInstruction: null,
+    },
+    {
+      key: "remember", label: "리멤버 커넥트", limit: 1500, layout: "narrow",
+      source: function (fm) { return fm.channel_variants && fm.channel_variants.manual_copy_block; },
+      aiInstruction: "커리어/인사이트 커뮤니티에 어울리는 담백한 톤으로, 제목 없이 첫 문장에서 바로 훅을 만들어서 1500자 이내로 압축해줘.",
+    },
+    {
+      key: "rocketpunch", label: "로켓펀치", limit: 2000, layout: "narrow",
+      source: function (fm) { return fm.channel_variants && fm.channel_variants.manual_copy_block; },
+      aiInstruction: "스타트업 종사자들이 보는 커리어 피드에 어울리는 톤으로, 제목 없이 2000자 이내로 압축해줘.",
     },
   ];
 
