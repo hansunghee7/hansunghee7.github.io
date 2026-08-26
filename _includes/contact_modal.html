@@ -16,6 +16,17 @@
   .form-group label { display: block; font-size: 14px; font-weight: 400; color: #f5f3ee; margin-bottom: 8px; text-align: left; }
   .form-group input, .form-group textarea { width: 100%; background: transparent; border: 1px solid rgba(245,243,238,0.2); padding: 14px 16px; color: #f5f3ee; font-family: inherit; font-size: 14px; border-radius: 6px; outline: none; transition: border-color 0.2s; box-sizing: border-box;}
   .form-group input:focus, .form-group textarea:focus { border-color: #f5f3ee; }
+  .cf-optional { color: #8f8b82; font-weight: 300; }
+  .cf-types { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  @media (max-width: 560px) { .cf-types { grid-template-columns: 1fr; } }
+  .cf-type { display: flex; flex-direction: column; gap: 4px; text-align: left; background: transparent;
+    border: 1px solid rgba(245,243,238,0.2); border-radius: 6px; padding: 13px 14px; cursor: pointer;
+    font-family: inherit; color: #c9c8c2; transition: border-color .2s, background .2s, color .2s; }
+  .cf-type b { font-size: 14px; font-weight: 500; color: #f5f3ee; }
+  .cf-type span { font-size: 11.5px; color: #8f8b82; line-height: 1.4; }
+  .cf-type:hover { border-color: rgba(245,243,238,0.5); }
+  .cf-type[aria-checked="true"] { background: #f5f3ee; border-color: #f5f3ee; }
+  .cf-type[aria-checked="true"] b, .cf-type[aria-checked="true"] span { color: #080808; }
   .cf-error { color: #ff6b6b; font-size: 13px; margin-top: -16px; margin-bottom: 24px; display: none; text-align: left; }
   .cf-error.show { display: block; }
   
@@ -39,6 +50,24 @@
     <h2>함께 최선의 답을 찾겠습니다</h2>
     <p class="modal-desc">코칭, 강연, 협업 제안 등 어떤 말씀이든 편하게 남겨주세요.</p>
     <form id="contact-form" novalidate>
+      <div class="form-group">
+        <label>어떤 일로 연락 주셨나요?</label>
+        <div class="cf-types" role="radiogroup" aria-label="문의 유형">
+          <button type="button" class="cf-type" data-type="coaching" role="radio" aria-checked="false">
+            <b>스타트업 코칭</b><span>PMF 이후 성장·프로덕트·조직</span>
+          </button>
+          <button type="button" class="cf-type" data-type="speaking" role="radio" aria-checked="false">
+            <b>강연 · 워크숍 섭외</b><span>리더십 · PM/PO · UX</span>
+          </button>
+          <button type="button" class="cf-type" data-type="other" role="radio" aria-checked="false">
+            <b>그 외</b><span>취재 · 협업 · 기타</span>
+          </button>
+        </div>
+      </div>
+      <div class="form-group" id="cf-org-group" hidden>
+        <label for="cf-org">기관 · 회사명 <span class="cf-optional">(선택)</span></label>
+        <input type="text" id="cf-org" name="org" placeholder="예: OO그룹 인재개발원 / OO에이전시">
+      </div>
       <div class="form-group">
         <label for="cf-phone">회신받으실 전화번호를 알려주세요</label>
         <input type="tel" id="cf-phone" name="phone" required placeholder="010-1234-5678">
@@ -82,18 +111,18 @@
      - Clarity: 세션 녹화를 "문의한 사람"으로 필터링해 볼 수 있게 태그를 답니다.
      둘 중 하나가 없거나 광고차단으로 막혀도 문의 전송 자체는 영향받지 않도록
      전부 try/catch로 감쌉니다. */
-  function track(eventName, clarityValue) {
+  function track(eventName, clarityValue, leadType) {
     try {
       if (typeof window.gtag === 'function') {
-        window.gtag('event', eventName, {
-          page_path: location.pathname,
-          page_title: document.title
-        });
+        var payload = { page_path: location.pathname, page_title: document.title };
+        if (leadType) payload.lead_type = leadType;   /* coaching / speaking / other */
+        window.gtag('event', eventName, payload);
       }
     } catch (e) {}
     try {
-      if (clarityValue && typeof window.clarity === 'function') {
-        window.clarity('set', 'contact', clarityValue);
+      if (typeof window.clarity === 'function') {
+        if (clarityValue) window.clarity('set', 'contact', clarityValue);
+        if (leadType) window.clarity('set', 'lead_type', leadType);
       }
     } catch (e) {}
   }
@@ -106,7 +135,36 @@
     toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 2600);
   }
 
-  function openModal() {
+  /* ── 문의 유형 ────────────────────────────────────────────────
+     엔드포인트를 나누지 않고 payload에 type을 실어 보냅니다. Formspree는
+     임의 필드를 그대로 받아 메일에 표시하므로 SaaS 쪽 설정 변경이 없습니다.
+     _subject는 Formspree 특수 필드라 메일 제목이 유형별로 갈립니다. */
+  var TYPES = {
+    coaching: { label: '스타트업 코칭',      subject: '[코칭 문의]' },
+    speaking: { label: '강연 · 워크숍 섭외', subject: '[강연 섭외]' },
+    other:    { label: '그 외',              subject: '[일반 문의]' }
+  };
+  var typeBtns = document.querySelectorAll('.cf-type');
+  var orgGroup = document.getElementById('cf-org-group');
+  var selectedType = null;
+
+  function selectType(type) {
+    selectedType = TYPES[type] ? type : null;
+    typeBtns.forEach(function (b) {
+      b.setAttribute('aria-checked', b.dataset.type === selectedType ? 'true' : 'false');
+    });
+    /* 기관명은 섭외 건에서만 실제로 쓸모가 있어 그때만 보여줍니다. */
+    if (orgGroup) orgGroup.hidden = (selectedType !== 'speaking');
+  }
+  typeBtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      selectType(b.dataset.type);
+      if (errorMsg) errorMsg.classList.remove('show');
+    });
+  });
+
+  function openModal(presetType) {
+    selectType(presetType || null);
     track('contact_open', 'opened');
     overlay.classList.add('show');
     document.body.style.overflow = 'hidden';
@@ -119,8 +177,13 @@
     document.body.style.overflow = '';
   }
 
+  /* 버튼에 data-contact-type="speaking" 을 달아두면 그 유형이 미리 선택된 채
+     열립니다. 강연 섭외용 CTA를 따로 둘 때 쓰세요. */
   openBtns.forEach(function(btn) {
-    btn.addEventListener('click', function(e) { e.preventDefault(); openModal(); });
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      openModal(btn.getAttribute('data-contact-type'));
+    });
   });
 
   closeEls.forEach(function (el) { el.addEventListener('click', closeModal); });
@@ -132,7 +195,18 @@
       errorMsg.classList.remove('show');
 
       var data = { phone: form.phone.value.trim(), email: form.email.value.trim(), message: form.message.value.trim() };
-      if (!data.phone || !data.email || !data.message) { errorMsg.classList.add('show'); return; }
+      if (!data.phone || !data.email || !data.message || !selectedType) {
+        errorMsg.textContent = !selectedType ? '어떤 일로 연락 주셨는지 먼저 골라주세요.' : '빠짐없이 입력해주세요.';
+        errorMsg.classList.add('show');
+        return;
+      }
+
+      var meta = TYPES[selectedType];
+      data.type = meta.label;
+      data._subject = meta.subject + ' ' + (form.org && form.org.value.trim() ? form.org.value.trim() + ' · ' : '') + data.email;
+      if (selectedType === 'speaking' && form.org && form.org.value.trim()) {
+        data.org = form.org.value.trim();
+      }
 
       submitBtn.disabled = true;
       fetch(FORMSPREE_ENDPOINT, {
@@ -140,8 +214,10 @@
       })
       .then(function (res) {
         if (res.ok) {
-          track('generate_lead', 'submitted');   /* ← 이 사이트의 핵심 전환 */
-          form.reset(); closeModal(); showToast('문의가 정상적으로 접수되었습니다.');
+          /* ← 이 사이트의 핵심 전환. 유형을 같이 보내야 GA4에서
+             "강연 섭외가 몇 건인지"를 코칭과 나눠 볼 수 있습니다. */
+          track('generate_lead', 'submitted', selectedType);
+          form.reset(); selectType(null); closeModal(); showToast('문의가 정상적으로 접수되었습니다.');
         } else {
           track('contact_error', 'failed');
           showToast('전송에 실패했습니다. 잠시 후 다시 시도해주세요.');
