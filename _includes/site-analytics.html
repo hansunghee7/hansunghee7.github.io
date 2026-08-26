@@ -69,6 +69,74 @@
 </script>
 {%- endif %}
 
+{%- if GA4_ID != "" %}
+<!-- 관여 신호 측정.
+     KPI가 "리드 가능성이 높은 예비고객의 최초·재방문"이라 방문 수만으로는 부족합니다.
+     아직 코칭·강연 서비스 페이지가 없어서 "누가 진지한 검토자인지" 가릴 방법이 없으므로,
+     대신 행동으로 가늠합니다. 각 신호는 한 번만 보냅니다(중복 집계 방지).
+       section_view  실적(로고월)·후기·책/클래스·FAQ까지 실제로 내려왔는가 = 검증 행동
+       faq_open      FAQ 항목을 펼쳤는가 = 섭외 절차를 읽는 강한 의도
+       read_complete 글을 끝까지 읽었는가 = 온라인강의 세그먼트의 핵심 신호
+     서비스 페이지가 생기면 그 페이지 조회가 더 깨끗한 신호가 되므로 이 지표들은 보조로 내려갑니다. -->
+<script>
+(function(){
+  if (!('IntersectionObserver' in window)) return;
+  var sent = {};
+  function send(name, params){
+    if (sent[name]) return;
+    sent[name] = true;
+    try { if (typeof window.gtag === 'function') window.gtag('event', name, params || {}); } catch(e){}
+    try { if (typeof window.clarity === 'function') window.clarity('set', name, '1'); } catch(e){}
+  }
+
+  /* 홈의 신뢰 구간 도달 -- 해당 요소가 없는 페이지에선 그냥 건너뜁니다. */
+  var SECTIONS = [
+    ['proven',     '.proven-section'],
+    ['voices',     '.story-testimonials'],
+    ['book_class', '.overlay-card'],
+    ['faq',        '.faq-section']
+  ];
+  SECTIONS.forEach(function(pair){
+    var elm = document.querySelector(pair[1]);
+    if (!elm) return;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (!en.isIntersecting) return;
+        send('section_view_' + pair[0], { section: pair[0], page_path: location.pathname });
+        io.disconnect();
+      });
+    }, { threshold: 0.4 });
+    io.observe(elm);
+  });
+
+  /* FAQ 를 펼치는 건 절차를 읽고 있다는 뜻이라 따로 봅니다. */
+  document.addEventListener('click', function(e){
+    var q = e.target && e.target.closest ? e.target.closest('.faq-question') : null;
+    if (!q) return;
+    try {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'faq_open', { question: (q.innerText || '').trim().slice(0, 80) });
+      }
+    } catch(err){}
+  }, true);
+
+  /* 글을 끝까지 읽었는가. 본문이 있는 페이지에서만 동작합니다. */
+  var article = document.querySelector('.post-mode + .article-body');
+  if (article) {
+    var onScroll = function(){
+      var r = article.getBoundingClientRect();
+      var seen = window.innerHeight - r.top;
+      if (r.height > 0 && seen / r.height >= 0.9) {
+        send('read_complete', { page_path: location.pathname, page_title: document.title });
+        window.removeEventListener('scroll', onScroll);
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+})();
+</script>
+{%- endif %}
+
 {%- if CLARITY_ID != "" %}
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
