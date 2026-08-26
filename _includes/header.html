@@ -17,11 +17,18 @@
   .nav-item:hover > button, .nav-item:focus-within > button { color:#f5f3ee; }
   .nav-item > button::after { content:''; display:inline-block; width:4px; height:4px; border-right:1.2px solid currentColor; border-bottom:1.2px solid currentColor; transform: rotate(45deg); margin-top:-2px; }
   
-  .dropdown-menu { position: absolute; top: 100%; left: 0; background: #f5f3ee; border: 1px solid rgba(8,8,8,0.06); border-radius: 12px; padding: 12px 0; display: flex; flex-direction: column; opacity: 0; visibility: hidden; width: 210px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-top: 8px; font-family: 'Pretendard Variable', 'Pretendard', sans-serif; }
+  /* 완결 배지가 들어가면서 210px로는 긴 카테고리명이 과하게 잘려 240px로 넓힘 */
+  .dropdown-menu { position: absolute; top: 100%; left: 0; background: #f5f3ee; border: 1px solid rgba(8,8,8,0.06); border-radius: 12px; padding: 12px 0; display: flex; flex-direction: column; opacity: 0; visibility: hidden; width: 240px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-top: 8px; font-family: 'Pretendard Variable', 'Pretendard', sans-serif; }
   .dropdown-menu::before { content: ''; position: absolute; top: -12px; left: 0; right: 0; height: 12px; background: transparent; }
   .nav-item:hover .dropdown-menu, .nav-item:focus-within .dropdown-menu { opacity: 1; visibility: visible; }
-  .dropdown-menu a { padding: 10px 20px; font-size: 13.5px; color: #2a2822; transition: color 0.2s, background 0.2s; text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-decoration: none; display:block; }
+  /* flex로 두어야 이름이 길 때 이름만 줄고 "완결" 배지는 항상 보입니다.
+     (block + ellipsis 였을 땐 배지가 먼저 잘려나갔습니다) */
+  .dropdown-menu a { padding: 10px 20px; font-size: 13.5px; color: #2a2822; transition: color 0.2s, background 0.2s; text-align: left; text-decoration: none; display:flex; align-items:center; gap:7px; }
+  .dropdown-menu a .cat-name { flex:1; min-width:0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .dropdown-menu a:hover, .dropdown-menu a:focus { color: #080808; background: rgba(8,8,8,0.06); }
+  /* 완결 시리즈 표시 — 기간을 정해놓고 끝낸 기획이라 "새 글이 없는 게 정상"임을 알립니다 */
+  .cat-done { flex-shrink:0; font-size: 10.5px; line-height:1; letter-spacing:0.02em; color: #8f8b82; border: 1px solid rgba(8,8,8,0.18); border-radius: 999px; padding: 3px 7px; }
+  .dropdown-sep { height:1px; background: rgba(8,8,8,0.12); margin: 9px 20px; }
   /* 사이트를 벗어나 새 탭으로 열리는 링크에만 새창 아이콘 (교보/yes24/클래스유 등) */
   .dropdown-menu a[target="_blank"]::after { content: ''; display: inline-block; width: 11px; height: 11px; margin-left: 6px; vertical-align: -1px; opacity: 0.65;
     background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232a2822' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='7' y1='17' x2='17' y2='7'/%3E%3Cpolyline points='7 7 17 7 17 17'/%3E%3C/svg%3E") no-repeat center / contain; }
@@ -49,6 +56,9 @@
   .mobile-submenu { padding: 2px 0 14px 2px; display: flex; flex-direction: column; gap: 2px; }
   .mobile-submenu a { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 16px; color: #8f8b82; text-decoration: none; word-break: keep-all; padding: 11px 0; touch-action: manipulation; }
   .mobile-submenu a:hover { color: #f5f3ee; }
+  /* 모바일 메뉴는 어두운 배경이라 배지 색을 따로 잡습니다 */
+  .mobile-submenu .cat-done { display:inline-block; margin-left:8px; font-size:10.5px; line-height:1; letter-spacing:0.02em; color:#8f8b82; border:1px solid rgba(245,243,238,0.22); border-radius:999px; padding:3px 7px; vertical-align:2px; }
+  .mobile-sep { height:1px; background: rgba(245,243,238,0.14); margin: 10px 0 4px; }
   .mobile-submenu a[target="_blank"]::after { content: ''; display: inline-block; width: 12px; height: 12px; margin-left: 7px; vertical-align: -1px; opacity: 0.8;
     background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238f8b82' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='7' y1='17' x2='17' y2='7'/%3E%3Cpolyline points='7 7 17 7 17 17'/%3E%3C/svg%3E") no-repeat center / contain; }
   /* CTA는 YC의 Apply처럼 메뉴 맨 아래에 고정 */
@@ -63,21 +73,23 @@
       <div class="nav-item">
         <button type="button">Startup</button>
         <div class="dropdown-menu">
-          <a href="/log.html?cat=%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8">스타트업 인사이트</a>
-          <a href="/log.html?cat=%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%AF%B8%EA%B5%AD%EC%A7%84%EC%B6%9C%EC%9D%84%20%EB%AC%BB%EB%8B%A4">대한민국 스타트업 미국진출을 묻다</a>
-          <a href="/log.html?cat=%EC%BD%94%EC%B9%98S">코치S</a>
+          <a href="/log.html?cat=%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8"><span class="cat-name">스타트업 인사이트</span></a>
+          <div class="dropdown-sep"></div>
+          <a href="/log.html?cat=%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%AF%B8%EA%B5%AD%EC%A7%84%EC%B6%9C%EC%9D%84%20%EB%AC%BB%EB%8B%A4"><span class="cat-name">대한민국 스타트업 미국진출을 묻다</span><span class="cat-done">완결</span></a>
+          <a href="/log.html?cat=%EC%BD%94%EC%B9%98S"><span class="cat-name">코치S</span><span class="cat-done">완결</span></a>
         </div>
       </div>
       <div class="nav-item">
         <button type="button">FieldPlay</button>
         <div class="dropdown-menu">
-          <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9D%BC%EC%83%81">기획일상</a>
-          <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">기획자의 프레임웍</a>
-          <a href="/log.html?cat=%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC">잉크드인대 기획학과</a>
-          <a href="/log.html?cat=Be%20the%20PO">Be the PO</a>
-          <a href="/log.html?cat=PO%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">PO의 프레임웍</a>
-          <a href="/log.html?cat=UX%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">UX의 언어들</a>
-          <a href="/log.html?cat=AI%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">AI의 언어들</a>
+          <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9D%BC%EC%83%81"><span class="cat-name">기획일상</span></a>
+          <a href="/log.html?cat=UX%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4"><span class="cat-name">UX의 언어들</span></a>
+          <a href="/log.html?cat=Be%20the%20PO"><span class="cat-name">Be the PO</span></a>
+          <div class="dropdown-sep"></div>
+          <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D"><span class="cat-name">기획자의 프레임웍</span><span class="cat-done">완결</span></a>
+          <a href="/log.html?cat=PO%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D"><span class="cat-name">PO의 프레임웍</span><span class="cat-done">완결</span></a>
+          <a href="/log.html?cat=AI%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4"><span class="cat-name">AI의 언어들</span><span class="cat-done">완결</span></a>
+          <a href="/log.html?cat=%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC"><span class="cat-name">잉크드인대 기획학과</span><span class="cat-done">완결</span></a>
         </div>
       </div>
     </div>
@@ -89,16 +101,19 @@
         <div class="nav-item">
           <button type="button">Life</button>
           <div class="dropdown-menu">
-            <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EB%9D%BC%EC%9D%B4%ED%94%84">심플리파이어 라이프</a>
-            <a href="/log.html?cat=%ED%86%A0%ED%81%AC%EC%84%B8%EC%85%98">토크세션</a>
+            <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EB%9D%BC%EC%9D%B4%ED%94%84"><span class="cat-name">심플리파이어 라이프</span></a>
+            <a href="/log.html?cat=%ED%86%A0%ED%81%AC%EC%84%B8%EC%85%98"><span class="cat-name">토크세션</span></a>
           </div>
         </div>
         <div class="nav-item">
+          <!-- TODO(강연페이지): /speaking/ 배포와 동시에 이 메뉴를 "Work with"로 바꾸고
+               맨 위에 <a href="/speaking/">강연 · 워크숍</a> + 구분선을 넣습니다.
+               지금 넣으면 없는 페이지로 연결돼 404가 납니다. 기획_강연페이지_PRD.md 11장 참고 -->
           <button type="button">Book & Class</button>
           <div class="dropdown-menu">
-            <a href="https://www.yes24.com/product/goods/147079674" target="_blank" rel="noopener">기획자의 질문법</a>
-            <a href="https://www.yes24.com/product/goods/193444437" target="_blank" rel="noopener">UX의 언어들</a>
-            <a href="https://www.classu.co.kr/new/class/1019442" target="_blank" rel="noopener">유니콘의 리더십</a>
+            <a href="https://www.yes24.com/product/goods/147079674" target="_blank" rel="noopener"><span class="cat-name">기획자의 질문법</span></a>
+            <a href="https://www.yes24.com/product/goods/193444437" target="_blank" rel="noopener"><span class="cat-name">UX의 언어들</span></a>
+            <a href="https://www.classu.co.kr/new/class/1019442" target="_blank" rel="noopener"><span class="cat-name">유니콘의 리더십</span></a>
           </div>
         </div>
       </div>
@@ -120,28 +135,30 @@
     <details class="mobile-details"><summary class="mobile-summary">Startup</summary>
       <div class="mobile-submenu">
         <a href="/log.html?cat=%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8">스타트업 인사이트</a>
-        <a href="/log.html?cat=%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%AF%B8%EA%B5%AD%EC%A7%84%EC%B6%9C%EC%9D%84%20%EB%AC%BB%EB%8B%A4">대한민국 스타트업 미국진출을 묻다</a>
-        <a href="/log.html?cat=%EC%BD%94%EC%B9%98S">코치S</a>
+        <div class="mobile-sep"></div>
+        <a href="/log.html?cat=%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%AF%B8%EA%B5%AD%EC%A7%84%EC%B6%9C%EC%9D%84%20%EB%AC%BB%EB%8B%A4">대한민국 스타트업 미국진출을 묻다<span class="cat-done">완결</span></a>
+        <a href="/log.html?cat=%EC%BD%94%EC%B9%98S">코치S<span class="cat-done">완결</span></a>
       </div>
     </details>
     <details class="mobile-details"><summary class="mobile-summary">FieldPlay</summary>
       <div class="mobile-submenu">
         <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9D%BC%EC%83%81">기획일상</a>
-        <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">기획자의 프레임웍</a>
-        <a href="/log.html?cat=%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC">잉크드인대 기획학과</a>
-        <a href="/log.html?cat=Be%20the%20PO">Be the PO</a>
-        <a href="/log.html?cat=PO%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">PO의 프레임웍</a>
         <a href="/log.html?cat=UX%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">UX의 언어들</a>
-        <a href="/log.html?cat=AI%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">AI의 언어들</a>
+        <a href="/log.html?cat=Be%20the%20PO">Be the PO</a>
+        <div class="mobile-sep"></div>
+        <a href="/log.html?cat=%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">기획자의 프레임웍<span class="cat-done">완결</span></a>
+        <a href="/log.html?cat=PO%EC%9D%98%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D">PO의 프레임웍<span class="cat-done">완결</span></a>
+        <a href="/log.html?cat=AI%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4">AI의 언어들<span class="cat-done">완결</span></a>
+        <a href="/log.html?cat=%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC">잉크드인대 기획학과<span class="cat-done">완결</span></a>
       </div>
     </details>
     <details class="mobile-details"><summary class="mobile-summary">Life</summary>
       <div class="mobile-submenu">
         <a href="/log.html?cat=%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EB%9D%BC%EC%9D%B4%ED%94%84">심플리파이어 라이프</a>
-        <a href="/log.html?cat=%EC%9D%B4%EB%A0%A5%EC%84%9C%EC%97%90%20%EC%93%B0%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%B2%AB%EC%A7%81%EC%9E%A5%20%EC%9D%B4%EC%95%BC%EA%B8%B0">이력서에 쓰지 않는 첫직장 이야기</a>
         <a href="/log.html?cat=%ED%86%A0%ED%81%AC%EC%84%B8%EC%85%98">토크세션</a>
       </div>
     </details>
+    <!-- TODO(강연페이지): /speaking/ 배포와 동시에 "Work with"로 변경 + 강연 항목 추가 -->
     <details class="mobile-details"><summary class="mobile-summary">Book & Class</summary>
       <div class="mobile-submenu">
         <a href="https://www.yes24.com/product/goods/147079674" target="_blank" rel="noopener">기획자의 질문법</a>
