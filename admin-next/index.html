@@ -6,6 +6,13 @@
   <meta name="robots" content="noindex" />
   <title>글쓰기 (Sveltia 테스트) - Simplifier</title>
   <link rel="icon" href="data:," />
+  <script>
+    // Sveltia는 스크립트를 읽는 즉시 스스로 초기화하면서 화면을 점유합니다.
+    // 그러면 그 뒤에 오는 우리 스크립트(커스텀 버튼 등록)가 실행될 기회를
+    // 잃어버립니다. 그래서 자동 초기화를 꺼두고, 아래에서 버튼을 먼저 등록한
+    // 다음 CMS.init()을 직접 호출합니다. (공식 문서의 CMS_MANUAL_INIT 방식)
+    window.CMS_MANUAL_INIT = true;
+  </script>
   <style>
     /* 지금 보고 있는 게 테스트 화면이라는 걸 잊지 않도록 하는 표시.
        pointer-events:none 이라 실제 조작을 가로막지 않습니다. */
@@ -145,6 +152,9 @@
     });
 
     CMS.registerWidget("aio-copy-assist", AioCopyControl, AioCopyPreview);
+
+    // 버튼 등록이 끝난 뒤에 CMS를 띄웁니다(위 CMS_MANUAL_INIT과 한 쌍).
+    CMS.init();
   </script>
   <div id="sandbox-badge">테스트 화면 · cms-test 브랜치 · 실제 사이트 영향 없음</div>
 </body>
