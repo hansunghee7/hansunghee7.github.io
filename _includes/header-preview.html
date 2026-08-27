@@ -177,6 +177,14 @@
 
 <script>
 (function(){
+  // 데스크톱 드롭다운은 버튼을 클릭해도 이동할 링크가 없는데, 클릭하면 버튼에
+  // 포커스가 남아 :focus-within이 계속 열린 상태를 유지했다. 그 상태에서 다른
+  // 메뉴에 마우스를 올리면 두 드롭다운이 동시에 열려 겹쳐 보이는 버그가 있었다.
+  // 클릭 시 포커스를 즉시 해제해 :hover에만 반응하도록 정리한다.
+  document.querySelectorAll('.nav-item > button').forEach(function(btn){
+    btn.addEventListener('click', function(){ btn.blur(); });
+  });
+
   var burger = document.getElementById('nav-burger');
   var menu = document.getElementById('mobile-menu');
   if(!burger || !menu) return;
