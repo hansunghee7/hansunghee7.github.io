@@ -2,8 +2,1469 @@
   "topics": [
     {
       "topic": "회의록 자동화",
-      "searched_at": "2026-08-27T08:12:31.625595+00:00",
-      "results": []
+      "searched_at": "2026-08-27T08:37:59.856939+00:00",
+      "results": [
+        {
+          "source": "google_news",
+          "title": "보안코딩검증 자동화, 年 3000시간 단축 - 머니투데이",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1OLWg1U1piTHpKbUxIcmpodXE2QUxYYU96SkRiYndIU1hDWnNfclBldTBCZnp1cjVlQzkwSC1FVFhJWWVqNU5aX0c5T0ZScF9Ud3p6QXJzNEZXZm5ib0tMOGx4SThseGvSAWxBVV95cUxOYWlxSTFPQWFUVVBJNndvcl9kYTF2dVUyNlRoVGE1d3F3d3V4R0hHUXhsakFOaC1tcDNvODVVb1F0ZDg1U3pFQXVnTXg4eWk4NHVWTThyODZHZGFtWnBVazFURjl2WUppS3MzdTY?oc=5",
+          "date": "Tue, 07 Apr 2026 07:00:00 GMT",
+          "channel": "머니투데이",
+          "matchedQuery": "회의록 자동화 시간 단축",
+          "hasNumberSignal": true
+        },
+        {
+          "source": "google_news",
+          "title": "[CES 2024] \"월 4.9시간 단축\" 삼성SDS, '생성형 AI' 솔루션으로 업무 부담 확 줄인다",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9PS0pSMmUySnJWLTB6c29SVm9XTlNyQkdObTFBZnlWb092RUVDakVCdWN0a1pRRjVpTjItdmNwQUQxdnZGT2hVR1Q5UjAxS0RBdVJwdUlIcy1ROVh1UnZzd1pn?oc=5",
+          "date": "Thu, 11 Jan 2024 08:00:00 GMT",
+          "channel": "더구루",
+          "matchedQuery": "회의록 자동화 시간 단축",
+          "hasNumberSignal": true
+        },
+        {
+          "source": "google_news",
+          "title": "회의록부터 데이터 분석까지 AI로…구미 기업 ‘업무 혁신’ 속도",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTFB2MnNmWjVBTVF3TXFrZmlBeEJrek9Mc1FHTmRfY2t0OUJOajNJRWpIenc0R1JESVkwcldzaHlOVWRzMkx5Q1VsSVg1ZUFPamhkRVY0NHNPN1BjTlZnOUkweXVVTzQzLTk1ZUEzOWd4dw?oc=5",
+          "date": "Sun, 09 Aug 2026 07:00:00 GMT",
+          "channel": "kyongbuk.co.kr",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "AI 회의록 - 그래놀라 AI 무료 특별 혜택 2026",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFB6M2hVQ0RmREpMcUw1OEtIbzNnd3lLVE1sUHM4dktfcERPSk1KTEVhYXpWN2VJWG1iaXg2R194NHFPRzk0dUczd2lMWQ?oc=5",
+          "date": "Wed, 12 Aug 2026 07:00:00 GMT",
+          "channel": "브런치",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "NH농협은행, AI회의록·AI개발 허브 동시 도입",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBZQTdSNjIzTjVTNkpxNkx5RUNZSFcwWjFEeXFiT2VWMHpxWkR2UUFGeUxWbm1rMFRRSGNDNmJ5NjY5WFZyMk5JV3BzajV0Y2lzbWR4WjdsRGt3dVZGTldsRUllMHJ3alB6cXpJ0gFvQVVfeXFMTWZGOFVrbEcwczFYRGMzQzM4NTY5eFN0YTFyM3BnRml2MklseHhfMk1OYWxGZFFTXzRLSEV1dG9qQzZIcjBLQTVWdWFJVjBNMGtCNFRvTmFGU1FiRnVSYnoxVjBRYzRVU095LS0yWFRn?oc=5",
+          "date": "Tue, 05 May 2026 07:00:00 GMT",
+          "channel": "한국보험신문",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "NH농협은행, 은행권 최초 AI회의록 도입…음성인식 등 기반",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1OUkpmbkl4Q2ZNQmsyenl0ZFdpT3dZRXY3Z1A1XzdlaWlnUFc0VzJVUk5hMDFGeTJzX1ZlWUdFeFkyZ0t6aDFNRHg2eXlEUHFfRzlZS0N6eGtIVWfSAWBBVV95cUxQSVZvYl9PMGpfVHNDUGJrZTlTdUN5SmF1bUZRNUQzWUozZHBWRGw1emhXbUtuMDhtNWdXSTZyUHQzZFRIUUhLLTlRYXQyMDRfYVBnTFdvWU1yOTdXS21RYm8?oc=5",
+          "date": "Mon, 04 May 2026 07:00:00 GMT",
+          "channel": "연합뉴스",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "NH농협은행 은행권 최초 'AI회의록' 도입, \"인공지능 전환 선도은행 도약\"",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1qdnA0MS1LRjhWY3JnNTFuT3k2blV4dmZPNkl4ZkVELXlqQ0tRdEc0REtlajFQT2pvYmtqVTJMYkZCbENTZF96VFdjT2cwNV9sWEZSeElBUm5TZVZDVEFwZGZid25TNHViSFdBRU9YaDR0UmM?oc=5",
+          "date": "Mon, 04 May 2026 07:00:00 GMT",
+          "channel": "비즈니스포스트",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "농협은행, 은행권 첫 STT·LLM 기반 AI 회의록 도입",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1URUVKZ2tONnlvWUxGTm5nbEFjUEI1RGJKRG1kbklQakNwZjJld1NmV2w3aWptOVcyeklQc05IdjBtV2FRUG1fZmRIZjRaRWtERmdkclJpenBjS2FoT0JwN3d6REs?oc=5",
+          "date": "Mon, 04 May 2026 07:00:00 GMT",
+          "channel": "서울경제TV",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "[네이버클라우드x공공AX]공공기관도 보안 해결한 'AI 회의록 시대' 연다",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE5HX2ZVQlB6RHlvUHdGSFhkSUhmd2IzQVR3Q3VwWTN3aEV0Wlk2bFB5NUFQeWlNMUN3cjF2ZG1MOTJ2d3NoTGlhUzIzdEs3QQ?oc=5",
+          "date": "Wed, 17 Dec 2025 08:00:00 GMT",
+          "channel": "전자신문",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "프로텐, 회의록 자동작성 AI 에이전트 ‘ProMiNote v2.0’ 출시…기록 자산화·보안성 강화",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1SRHRsaDFJaHRzXzdtOE9JX292OU9RdFhnSS0tMUhYalprRnJndTUxZ0wzYXlad200M1hacEVISFZsRmZ6M1ZIRm8wR18xcHBjTzltLTdGZ0N2S0FwMEt0Tl9iLU11bXhi?oc=5",
+          "date": "Tue, 12 May 2026 07:00:00 GMT",
+          "channel": "아이티데일리",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "농협은행, NH AI회의록 도입…\"디지털 경험 혁신\"",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBIVzZKMDZhWW01RXRaRWVFNHhwSG8tUlpSWHdIVVhaRFBGekZncW1uRWd0UWFvc1lEOGViRG01ZHBscVdjUTBWeURFOFpMR00yRndIYXlqTVo5NElKQVAyYURiTFVUeEd6eFZF?oc=5",
+          "date": "Mon, 04 May 2026 07:00:00 GMT",
+          "channel": "파이낸셜신문",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "NH농협은행, 은행권 최초 STT·LLM 기반 「NH AI회의록」도입… 업무 혁신 가속화",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1NcDFPVEtKTnJYdkl4d2tvLVFLaVNKNmc5SS1OVUw1eGxtZ1ZQZXIyaWV0VUlWQzNCRmIzRVlvZ1lCbjVDTXZpODFURkFnc2VaTlg4UXpJbjlYdw?oc=5",
+          "date": "Mon, 04 May 2026 07:00:00 GMT",
+          "channel": "한국경제",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "[현장] 공공 AI 박람회 가보니… 업무 자동화·AI 에이전트 업무 전반으로 확산 확인",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9uaDh1MThUVlB4cjJxN1Q4UWFuWTYwWHJrXzJIbU5xZldXU1dsX2hDZFJQaUJoSWJnZkpZUUlJOWlHeEdlRllOTWFMRFdtVW9kUFE1Q2VuNmIwYnBvbHlB?oc=5",
+          "date": "Wed, 24 Jun 2026 07:00:00 GMT",
+          "channel": "스마트투데이",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "NH농협은행, 은행권 최초 STT·LLM 기반 ‘NH AI회의록’ 도입 “업무 혁신 가속화”",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5QdlA5TDRRaHZhYV9ublNNLXJkSzducUxHcGVSb25DcFNUbFJRX1dNZzZsS0EtVHQwUmpGNzJCVFA0djkwNEE0U1c0YmlndmVvYmVpOHprRTVyQ3lfZzlEcmVUSmw4QkFlYTM4?oc=5",
+          "date": "Mon, 04 May 2026 07:00:00 GMT",
+          "channel": "마일드경제",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "NH농협은행, 은행권 최초 STT·LLM 기반 'AI회의록' 도입",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE1ZblFtcHppLU1kdHBlTjdNTlZYNnEtZUNTX0VNWk93UEJpTFJDNXFDN3Btb3FZZWNPSDFCdTJtX2hTQjYxS3FkQmExeTh0RmJPTE10SHZpQ0hGclZrazlXLWVxdm5hNjlvMUFXOW5MU3B0UQ?oc=5",
+          "date": "Mon, 04 May 2026 07:00:00 GMT",
+          "channel": "디스커버리뉴스(DISCOVERYNEWS)",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "NH농협은행, ‘AI 회의록’ 도입…음성인식·LLM 결합으로 업무 혁신 가속",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE16ZGdqeHBwVk9xMHJVeFZwTkFXYXRSYk1jTWR5dGxUMGlWWlRKQ1FvUEl5UHgtMkFTSElBdTU5QzZudzUtNjEySGZtSzJZRjRNQmJjaFo0anRhbDhuZXUyR0ZDaHlCWTA?oc=5",
+          "date": "Mon, 04 May 2026 07:00:00 GMT",
+          "channel": "투데이e코노믹",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "구글 워크스페이스, 제미나이 통합…AI 기반 업무 자동화 강화",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE8zNDVYYmlyMllxMEJHOG9wUTZEeEpDdHdvQzgxaDBKaWZNZF9RZ3Q5bzM5VjhWNmVuenVPaGhURE0xV2RfYTMzNGFaRkhkdDdIMDFLMnhCNmtjakVkR19QVDN0QVIxamg1c2gzTm9LOW1aUEk?oc=5",
+          "date": "Thu, 19 Mar 2026 07:00:00 GMT",
+          "channel": "디지털투데이",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "회의록부터 메일 정리까지…노션, AI 에이전트로 생산성 혁명",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE8xTXFDdmkzeENIWnRaeUlhRkU5dTgwYjBMblROQmZOWkZQdzFrYUY2YXhVSFNGMEN1eDRfN2M4T0gxWUtZUE1UeVRQNXBUTkFBdGVWdGN0TEY4dDd3YTMzWmJ3X2RONVQ3aWljb0RINEY5ZUk?oc=5",
+          "date": "Mon, 05 Jan 2026 08:00:00 GMT",
+          "channel": "디지털투데이",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "KT, 산업 현장 맞춤형 ‘AI 솔루션’ 호평",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9Kd3d6c0FXVnRWQmtnVWlGcjFIc01BdzBoazNaanNoUGVXQURJTU5IMm1YLXVKZGkxWjBYX2lKS0cwSUliN2tvNWJmcWcwRGZGLUVwbTBNQUhUZXd1cUlpWk5MbEJWMWVPeEE?oc=5",
+          "date": "Thu, 13 Aug 2026 07:00:00 GMT",
+          "channel": "hidomin.com",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "“AI가 회의내용 정리, 메일도 써줘요”… ‘회의록 서비스’ 시장 떴다",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1RTjBUcl9iQy05enZST2YzX1BWQ3U2ZFYyaW1vemdraWxwWnpGdTh4UHNRb0ZFRkg1RHBjeUNTNkp4d3pSS3BHbnY3dnRrc05kUEpBSGFsNzVHUENidWRhaHJvVlRWX3JpWkFla3d1cjhkMkFhYWfSAWZBVV95cUxPT2pudmJ4ODRLTVNXWDRRcnJObFo1bVZHMVN1ZWQzS2dRNEtFZnFxTkxqbTFzTlFCamtIS1hPSzY3VkRqNG4tTVFVY20tdzBtZldnc0dnRzhQa0VNdU1Mc3J0alFUUEE?oc=5",
+          "date": "Wed, 01 Apr 2026 07:00:00 GMT",
+          "channel": "동아일보",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "KT, 대구경북 제조현장 찾아 AI 전환 돕는다",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5LYXBBa1l5RDY1X2FZRXdGTzhiaUtiem5QeUZ0M3ExdDU1VC1yYXhYX1F6NThtY3pTSWJEaXhJU2MzMUVGR2ZBVjFpREZnLWJMRjJaM0Y3elZWZw?oc=5",
+          "date": "Wed, 12 Aug 2026 07:48:00 GMT",
+          "channel": "kbmaeil.com",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "2025 무료 AI 추천 TOP5 : 이렇게 활용하세요",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1oM2dRLThPX0ZBYWF0UENzZXRJWk9NSEpLeTlaa1p6WjQ5dkFCdlllU0VTbnlJNDJ6Ni1rUHIwMVVzLWI1NEV0NkY5RlRaOWQyNEE?oc=5",
+          "date": "Fri, 14 Nov 2025 08:00:00 GMT",
+          "channel": "브런치",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "AI 회의록 가장 많이 쓰는 업종은 ‘IT·AI 기업’… 직장인 회의 많은 요일은 화요일",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBIVl9SYVJVWjV3c2ZhSmg4WnJzbFJpZWRvNGh6cTdnVUlQeTUtZGR5eThvRE82cVdTT2dzQzNjMzVpNm42eEg3bDZJQ1BCQldpY3JzYTBOc04tbHZHTGt0andfcHhNdm9M0gFsQVVfeXFMTW9YY3ZUUWkycHdyc3k1WUotNWdGY2hkQ2FsZ3hqaVExUXhiazNDYlRwak1KUnlqLXV3aV9LUkFZTUZMZlBrT2FnMWtrYTBLOUlRa1JRYWVJQnltYVZoS251UFQ4NDRjT0wxRDdo?oc=5",
+          "date": "Fri, 13 Mar 2026 07:00:00 GMT",
+          "channel": "스타트업엔(StartupN)",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "유비컨텐츠, AI 시대 맞춤 전자서명 플랫폼으로 도약",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE9TWjBLMjV4WlZJU0IzU3VuT2RHcDh1bThjWG9aVmJ6eWxFUzZDVVlKa2tRRHd6cjItSXhyaWVRd1EzX3IyNDFOWnc2cDVfQQ?oc=5",
+          "date": "Fri, 29 May 2026 07:00:00 GMT",
+          "channel": "전자신문",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "[LGDxtory] ③ 실시간 통번역부터 자동 회의록까지 LG디스플레이의 DX, 회의 환경을 혁신하다",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMi0AJBVV95cUxQMng0QjFrSHFFeE1Cbmtzay1vT2ljMS1fdWRndHNlM2dPRlU4MVpTWmJNVVNSOXprb21raDZFdXNLMWtlbVNsaFRCVXZUV3VXZlVQak55WmE3em0wRVhXbWNMd2FHbUtvdVFOVl9QZVNIWU9BVUdXSmJkTGF0Z0l4OTZWVWxoVzBaazJaMHpRclBJT1dOYlBCMXJTa3lXTlNzR05aQXRMeTVHbVNRdnQxam9xU2ZSWmZtVEZVMkY1U0tLY3RuS2dfTWJ6cWNTNm5KSTRqTm5UYmcyZzRXaTB1ZFpLRk1DTmJ1dm53dEtjQXZTSkNLMGhLcVJ3SGtxSjFpYlJ5WXZXWkt1ZE1XNkVsMkdCN2dHR3U1WUo3TF9ZZVdITzlOM1VsUGx4WElCVFp1NUR4RzZnanIwdW5PRnhFbW0teTRBemIyQW5aMWpiTGY?oc=5",
+          "date": "Fri, 20 Jun 2025 07:00:00 GMT",
+          "channel": "LG Display Newsroom",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "KT, 대구경북 제조기업 대상 '찾아가는 AX 세미나' 성료…맞춤형 AI 에이전트 도입 등 혁신 방안 제시",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE1yVnNqS1hZWjdKMHItR2tFeHpXSUxzSlk4RXA0TGJiNUh3X2o2ZTIyY0w4RXRYLWxBSzA1TFBxNXM4Zy00MnlEWl9ZZVNFdw?oc=5",
+          "date": "Wed, 12 Aug 2026 07:00:00 GMT",
+          "channel": "전자신문",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "[AI 생활혁명] “회의록 쓰는 사람 사라진다”…목에 거는 AI가 직장인의 업무 방식을 바꾼다",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBXaU4ybGk0ZFdhOW5aZXZfbXlUWWp2eVlEc0dIcjlqbTNHVGk4MUxZcUFuT2NyQmRvMEt5UlRVRHlZSDJoNXhxa1YtZVJnTV9saW81aDh0QUJRRTBhMzRYRDdPeTNLaFN1SnBV0gFvQVVfeXFMT0hHMXJoLTV5WWR4ZzFabjU2cFlnQWdydUptSjZuTG8xQ2NoLUdiU2VRMXYtNUVuRVJkbmU3SzJIaWxxVTZNdUtoX1VUR1A0cTRWNjh0alU4bjVBZ2V5RU9UQlQ3enNiV3JKaGFHeFI4?oc=5",
+          "date": "Sun, 14 Jun 2026 07:00:00 GMT",
+          "channel": "AI라이프경제",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "1시간 회의가 '5분' 만에 회의록으로…AI자동회의록 서비스 개시",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFA3em16N2g1TkU0YWdXWXhuWUhGbkJFVlZQVmJzczVScm0wWnE5SmRDc0FPa3BXdzBuQmV4bm1nRE51Ynk5ZTdfa2dqRVZLeFdvMmJYcXBPUWNpX3PSAWBBVV95cUxNS08zdVVLcm1oa1ltblZKc09WMmhFVnMxMzgzV0VMejVRQXY1bDZVNjQybWNOWUg2SDVBWUJaZlFvZjZLS1RudXNoREpYLTRLdjluU2tPMWdEZUZaaDBic0I?oc=5",
+          "date": "Thu, 21 Mar 2024 07:00:00 GMT",
+          "channel": "연합뉴스",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "\"회의록·메일, AI로 뚝딱\" 삼성SDS, 초자동화 지원…MS보다 우위 자신",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1sOUlWQWpFbDRyNkVDQllQaEMzaGh6Tk12cWpRZ2RrNDU4dEtYM2NiWC1tZ2paWEpabUFRbVFWNTVvSW9JTmd0MTg2V3hwSzRySXdqUU5Wd3AtZGNSSktPSGdR?oc=5",
+          "date": "Thu, 02 May 2024 07:00:00 GMT",
+          "channel": "더구루",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "“코딩 없이 AI 에이전트 제작” KT, 국산 AX 플랫폼 ‘에이전트 빌더’ 공개",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5jLXdTNWNhNkxiUGhSVU52Z2VjSnduTElqU0FJMDVweGpMbzMwb0Z0Um1lNFd2cUVIellaVDJ2UHNlT19CTDlZTldKZXVkbzdiWWhzNnh4QWFROE04b3JzTFlxU2xsMnJ2R2FDWTYzalVTRkU?oc=5",
+          "date": "Thu, 05 Mar 2026 08:00:00 GMT",
+          "channel": "대한경제",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "프로텐, ProLLMOps ‘에이전틱 AI’ 기반 워크플로우 자동화…구축 생산성 강화",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE16MjBKUEZub0YzTXBObmd2VWpuci16cHJKT0Mzc0Vfdi1LeVVvSk5zajBpd3Nnay1PYkNoM0t6VDRtMjM3Q0E1UTBWLUZ0NHE3ZnJPUUVvdjU2TDhKcXlRcVhOT3Y2TG8?oc=5",
+          "date": "Wed, 21 Jan 2026 08:00:00 GMT",
+          "channel": "아이티데일리",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "아이티센그룹, 자체 개발 업무 AI 비서 ‘세니 3.0’ 전사 도입",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9Ib3dEYVZuZ1FlU0luakpWWTRmdnp6MXpLS1JYN29SM3g5b1d4RVIyb0VaM2xFQmUxWUJCZm5fNmt0M2RCMkMzejQ1S0dyNTVoNnNiWERISU52RG4zNW9HNWx2cENsMG42dEdjQy1keGTSAXRBVV95cUxQc09IclhBeG9aa29GUkhmSGdMM0JXMUpFWThVaGpkMVBDU2VXYmJTd0M3QnVJNDZkaWJLLVoxSnhYSEN5bEFFb0VJMU1EeExYcnQ2d1JKdjRJWkprUW1KdXJoeHdFcy1ERTFwOGRWQTBsd0xiLQ?oc=5",
+          "date": "Mon, 08 Jun 2026 07:00:00 GMT",
+          "channel": "IT조선",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "AI 회의록 작성- 말을 요약하지 말고 진심을 요약하래요",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPLW0wS2dUU0pOWERNYWtJYXBxV21JbU04UnI4RG5PWjdPZWcxNVl2dDA4WUtad1ZzZlAtZzdpbFBUd0pBY0lGTXhtVDM3eUYwTjV3T0FEQjZTMGU0a0VCUENyZmJUeW9ROUZtbnR4dGRmYUVnOXVaZzNRZnlwam9aUDI2UUhKdEc1NUNyc284cw?oc=5",
+          "date": "Wed, 23 Jul 2025 07:00:00 GMT",
+          "channel": "네이버 프리미엄콘텐츠",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "맥 사용자 위한 챗GPT '레코드 모드' 도입…회의록도 AI가 작성",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9Nb2tTWTVrZnJGazhrZ0dGREJyRldMR1ZaODNpYXhDYTZiZUcxOGFvai1xWnFsWS1FWnJlU25xYUNWQmptV1Y0Z1JYTUlsTU9NSVJuUDBlNlgxc1RoQk5FdUxmWHpaNHVvVFhKc0xIOEZjUlE?oc=5",
+          "date": "Thu, 17 Jul 2025 07:00:00 GMT",
+          "channel": "디지털투데이",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "하나카드, '트래블로그'에 24시간 챗봇 도입…회의록·보고서 초안도 자동 작성",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5zc3Z2Mm9iZnp1QVoxcjZRLTdudWhmcG9iRGZzcUh1SkFoNDZtbm5lVFFWOVk0U2ZXTHBxaC1ZcWNhZVhrbjZaNmpNaXppLVc2R2p6V09NNk1Jdw?oc=5",
+          "date": "Thu, 21 Aug 2025 07:00:00 GMT",
+          "channel": "한국경제",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "빅테크, GPT-5 본격 도입…개발툴·업무 자동화 서비스 접목",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1ENnFfM2F4enFzRnk0RWhLVXVXX21RR2p6MXBQRmNHd19jOWEwUUcwQWR4TkxrODU4SXZDblNMM2xpYXdQcVJIOHdpZmhPbTBGVXl5a3RvV1RjUlpsVXVOVTBGX0JpVG1vaDZWVWIwS1ZpZzA?oc=5",
+          "date": "Fri, 22 Aug 2025 07:00:00 GMT",
+          "channel": "시사저널e",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "SK텔레콤, AI 기반 ‘회의록 자동 작성 서비스’ 외부 확장…하반기 금융·제조사로 확대",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9GZUV4MjZnRlpweWlCV0FwRU5OVEozQmxldk5CSDNQSGJOWmphaDd4Zk1HX1RwR0d6dkhtT2xHUEdqcFRJMG5rdWZWOEwwOHdlamZZQzQzbVJWWXlENjQ2Rk5TVFoxa1pTS0pV0gFvQVVfeXFMUHZyY1QyclVfN0E4Q2RLSEY2c0NIY1YxY3Z1SE5XdWJOMFU3YjB2ZUFlcHI3aXQ3VFhrdnBwUUFvSjRuYjdHQmFSRE9JbHpuVHQ3T1RuQlgxajVfaFplSDdodV9vSlhFZWpQZG0xVkRr?oc=5",
+          "date": "Sat, 14 Jun 2025 07:00:00 GMT",
+          "channel": "AI라이프경제",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "[르포] \"80분 걸린 일이 불과 10분\"…삼성SDS의 AI 에이전트 활용법",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE0xRzJjZzc3VEJPNDB0LUYxOXlrSGtCQV85TEJKSXdpeGVnRkpNbjRzQUxscEljaDhxb0Z3bWpGSlJFc3VnU3FBQ2xzVDQ4YTB2elFrdzh4TzZwZGhNY1A1dmFhV2M2RFM2eWh6b3Rzeno?oc=5",
+          "date": "Thu, 11 Jun 2026 07:00:00 GMT",
+          "channel": "시장경제신문",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "데이터스트림즈, 'DMTS 디지털미디어테크쇼'서 LLM 기반 지능형 업무 자동화 기술 공개",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE53Y19ZS2w5UGVUNkZxZUlFeTJoU005bi1TREowSUxHOGRGVmFDOVJ1SHlTQjBYek9OT201TTFJZ2FCTFlzd0V2eVZvRnc3dw?oc=5",
+          "date": "Thu, 06 Nov 2025 08:00:00 GMT",
+          "channel": "전자신문",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "[MWC26] KT, 노코드 기반 'AI 에이전트 빌더' 공개…“산업 AX 확산 기대”",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE8tVVRJNE1VREVPOVVvMlRFMGdJVUlrem5OLVBKUndBMVQwUGVxN3hxQ09FZFYwaTJ5TUFRYUNIc1dVNkl5RGRtbDFaYnRaUQ?oc=5",
+          "date": "Wed, 04 Mar 2026 08:00:00 GMT",
+          "channel": "전자신문",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "회의록이 업무를 움직인다…구글 문서(Google Docs) 기반 AI 기록 시스템 실전 활용법 공개",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE96aG1ydXlmSHBvYzl2b0Q3c3dXRWhabGxWWjJZVmxJT3U4eE91ZTItMEwzcmsxdUNVc3BGbkdvbVNsM1otWWF4TDRB?oc=5",
+          "date": "Thu, 16 Jul 2026 10:45:26 GMT",
+          "channel": "뉴스N연합",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "위레이저, AI 회의록 서비스 ‘회의록(hoirock)’ 정식 런칭",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE9BX2tSMUhxVmg2VGF2cmh1cmNTYlVOZFdpbWFQODltazhoSUdfbW10QjR6OG5KbVBsQ0ZkMWIzdkthZWlqbFJYcA?oc=5",
+          "date": "Fri, 13 Feb 2026 08:00:00 GMT",
+          "channel": "케이벤치",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "사이버한국외대, ‘대한민국 AI혁신대상’ 수상",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE15amJwQ3p4WjFWbkdwcmVTZ0UtWExEeVdoZzVybERUT0RMd29CajJhbF9rYkNhNlZCZE5wUkJaU1F1R0JJc19EODUyblB0eVo2ZUtzaXQ5RVRjWmhZYnA2bXVIbHl4VGp1ZlFLV0xRU2lWUkHSAXdBVV95cUxQdzczcmRENEJZS0REWmQ2RUxqa3pJQU9VWDZXamQ4eE81NDRXSWJ4Y0k1WWZWbDFJV0RKa1FRUnNiYmVldDE4ZlVJRFdORFEzR1U4S1FsYjFIWFVwNkkxVzFTWTFyUWw2RzgtRW9jbFVHYzZNR2N6OA?oc=5",
+          "date": "Tue, 19 May 2026 07:00:00 GMT",
+          "channel": "뉴스프리존",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "[IT썰] 구글 미트, AI가 화상회의록 써준다",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1CcHJXX2pvNW1YcTFrdmpyUVFqSjQwQ2VTQkEtRE1SZUd1b3FuLUZPMG5hbnI4VWd3U2dHUGV3WFl5NkE0V3Z0aXNEaWVaTUR5ajdLTEk1SWZRNHM1QjJ2Wk1JQzVObEJfaURrXw?oc=5",
+          "date": "Wed, 28 Aug 2024 07:00:00 GMT",
+          "channel": "유니콘팩토리",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "수출입은행, AI 업무환경 구축…기업금융 심사 자동화 추진",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE4zT1Y4eDM3MFQ0MWlRbWh2bnNYYTEtcWJaUm5MSGl0eEN2aXVaTXN5TlduZUtGU3VFanItSXIwV2JHelA3Wm5scVFVVmw2aUlGX1RpdmZyOVJIVFh2RUx2dGpSWUQzbTF3dnp2RGk4MA?oc=5",
+          "date": "Thu, 09 Jul 2026 07:00:00 GMT",
+          "channel": "이코노미사이언스",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "“1시간 분량 회의도 AI가 5분 만에”… 정부, 자동회의록 작성 서비스 시범 운영",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9VVWVHY2NqQ3ZkNDRfOXl4b1FYWEZWbGU3RFhuTHNab3dxOFlnTEhLTlJRNUZmaFp5Rlp3RDNMVXdob0FaS1lid2Y5QVVheHY2ZUxpMjZ2Ync3UHZPdEh6VGJuNGxTZ2M?oc=5",
+          "date": "Thu, 21 Mar 2024 07:00:00 GMT",
+          "channel": "디지털데일리",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "AI 회의록 자동작성 '콜라보'…1년만에 2만건 넘게 처리",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE44Z3hiT096amhKQUVSY0x3a0xKVkpXSXlSWnFCVERhVzVGeVNtYnAxcVlwWTBocDkwZTRfTnJXQzRZNGlvOUtaRzNMWWZKYWRWMkpOb2ZQVTVjWk1iWV81c9IBeEFVX3lxTFB1QWJGNVNZMGZ0bDNsWkhqM2pWZXFiUVN5OEhtNm5EbW8weWpyMmlIbS1RY2ZwSXM2SjdISjlsb1JfMmQ3QXBiek1ENFdBZVVwN3QtNU9nTjY4UndWOF9MYnZRSmo4aGJfVlZxWW53cjFQMzRGdDgtOQ?oc=5",
+          "date": "Tue, 06 Aug 2024 07:00:00 GMT",
+          "channel": "뉴시스",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "AI 블루투스 이어폰 비아임 렉닷2 회의록 자동 생성하는 방법",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBUYzlteXVralRCZnBsQ1d3QnZDUUJ2dkZJeTVkVWprOWNPVG9zcmM4QVpObERiQ19EaEF1NE1aXzB0bVk4UG52NjluLV9KUUQ4N24tbS15cDVJN0plM0FWclFpM1g?oc=5",
+          "date": "Sun, 26 Jul 2026 07:00:00 GMT",
+          "channel": "보드나라",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "AI로 데이터 분석…회의록·메일 작성, 삼성SDS '기업 초자동화' 확산 나선다",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOeWk0dmhleGJwU1haY3dzcjkzZ2dUdm81cmV0Q3hYY1gtQkI1TkhHQy1zN0h3Y2c3ODJHLWlUZWNQSUs3YUVrLUNBdnBXbjc0RW1UY2g5NlJuRE53MlhPcDByZG9yQldvU1FEMjlKTHpOa0YtNUROUy1nLVN1Qk5qcHRXM2R5T0k?oc=5",
+          "date": "Mon, 01 Jul 2024 07:00:00 GMT",
+          "channel": "모바일한경",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "[MWC 2026] 마우스로 'AI 비서' 뚝딱… KT, '에이전트 빌더' 공개",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE00STdrTGNYRTM1OHY2TnJBc2l6MDVCM1E3dmlvZUFrZ0J3QlQxODA1R3BsYnNfTER2VVptZUMtY0hocGI3VFNwWGhwWGwxVGRwTU8zVXA5UjVMRFdUaGxSQmMwdHlJcE9MVDNnWUpOTlBSUkk5?oc=5",
+          "date": "Wed, 04 Mar 2026 08:00:00 GMT",
+          "channel": "파이낸셜포스트",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "화상회의 '리모트미팅', 챗GPT로 회의록 자동 요약해준다",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE94MDBsZEJSalcwUDd2ckZRVEZLN0VWelZ4UnZVaE1oTWxRWVlFdXpITXFSWmp2WWdnWXJWMFVBMWRnYVFRSGU0aExoNXk3UQ?oc=5",
+          "date": "Mon, 24 Apr 2023 07:00:00 GMT",
+          "channel": "전자신문",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "“회의록 작성부터 실시간 번역까지”…삼성SDS, 생성형 AI 선봬",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTFA5UEQ3YzM5UEJ1UWhKeW4tdTRqYTNQX3JjTjJlTE9hT2NIYmJ4NmJjNGdDLUFBTDFUMGdOOVBYcFh1bXRtV1FZLVdmRHd3d1A3QURNeGduVUljSDJZX2xsWU4tbmxVR1IwRUpV?oc=5",
+          "date": "Thu, 02 May 2024 07:00:00 GMT",
+          "channel": "서울경제TV",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "AI 업무 위임 전략표 공개: 단순 반복 업무? 맡겨!",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE0tSmRHTmpESEtKRFVJVW5Ha194ZGtmZ3JfV2I3Q0tzcWdtbWpPdERHNzVkUkIzMHBqemk4cGhGakZ2R1pLdEFBMUVjOA?oc=5",
+          "date": "Tue, 20 May 2025 07:00:00 GMT",
+          "channel": "브런치",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "KT, MWC 2026서 '노코드 기반' 에이전트 빌더 공개",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBoMlc2TVVqZy1DOHlmUmRka1Q3cFdyQmVESGFnclJ3cEhQNmlyZjZBYmN4M0xCLWtOam9adWJhRWpXNlJsblJQWVItOVRFekZsS3hhV21zdzdiOUM1UzI0TDVSc19Fdm8zMWc?oc=5",
+          "date": "Wed, 04 Mar 2026 08:00:00 GMT",
+          "channel": "월요신문",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "\"비개발자도 AI 에이전트 만든다\" KT, 노코드 기반 '에이전트 빌더' 공개[MWC 2026]",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5tQldZVWZkWUhBS19IVGVUUkM1QzdyaW9wZW5zUHdSd1h4U1JiOW9aclZ1V1hoUDNralZ5OUwwT0dONlZrM1pabVVVSUxWVFFaQUdJ?oc=5",
+          "date": "Wed, 04 Mar 2026 08:00:00 GMT",
+          "channel": "네이트",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "[스타트업] \"상담은 쌓이는데, 결과는 왜 없을까?\" 정주헌 팀제로코드 대표",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE85NUpfWkNBWS14ZWw4RlBnUVYzMjh6ZFpZRTlXeXYtNVZqMVF3WnV3Y0JJQjkycEFMbmIzQnk0MWxoQjV2Y1d4ZmhTcTNSb2w3ZFotYjVmVnFEdGRmZWdydEphRQ?oc=5",
+          "date": "Mon, 04 Aug 2025 07:00:00 GMT",
+          "channel": "프라임경제",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "'리모트미팅' 화상회의, 챗GPT로 회의록 자동 요약",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5ZM1JhYzVVaUk5dVFWWVVoNVlNN0x2WjNza2M2YVNtVkNwZjJfUWZQYk1JQmFESWJvVWZuQnZMVmotOHVxTlZNTXo0ZklYbkRFQnJiVmJR?oc=5",
+          "date": "Mon, 24 Apr 2023 07:00:00 GMT",
+          "channel": "지디넷코리아",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "업무 효율 100배 올려주는 AI 툴 7가지 추천",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1MQUxKM2VDcmhrMC1aZkQwUm5YRUVJYTBPLWxmMHFQckZTeDNOTjhoR0xqR3I5bnJHNmE4alhiNTcwVS1FcHBaazJVc0tMVzFD?oc=5",
+          "date": "Fri, 09 May 2025 07:00:00 GMT",
+          "channel": "브런치",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "네이버 클로바노트, 하이퍼클로바 AI로 회의록 자동 요약해준다",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBUVkJxZERzcmVnVGVQOE43UGVMWXJ3T1Z4OWl1WmpueThtN0Y1blMzei1pTS1ENzhhY29ITVRRRWRxVkFhckpGblpEenNFWVA3eHI5Q0ZwLTgzRG_SAWBBVV95cUxQWmctX3NjaHNNb3IwZmt6aHNqeXd1S0JoRFA4SF9oMTNBUnpXb2U2RVdZS0ZBeTF6eFJVVUNjc3BRRlNwRExCMVZkRXVlcm9pSEloZE5FYU42d09CTmpSUXc?oc=5",
+          "date": "Thu, 11 Aug 2022 07:00:00 GMT",
+          "channel": "연합뉴스",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "구글 미트, AI 자동 회의록 작성 기능 출시",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5YeEdiZG5fTDdUZTVLcUN0UlR0bFdSZlVpQS1PU1NrZDFwTGhYdzRxMDhUTWw1NlYwV01La2VwRTJTbHo0aU8yUElWWGhIeHVGNnVucFJvWXhSSDlsalE?oc=5",
+          "date": "Wed, 28 Aug 2024 07:00:00 GMT",
+          "channel": "AI 매터스",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "＂공무원 업무, AI가 바꾼다＂…인사혁신처, ′인공지능 업무 활용 안내서′ 배포",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1WelJDWl80QkNjSjhWQmR4TkJCUXIybC0yY3gxLV9Td2pPRGFCbFFTdFpOX2ZDRHpOZEF2aGdFXzFvQW10bmttOWpJeGpoak53MUE0NnVRaTlhNTBBQnfSAVZBVV95cUxNNDl3b1dCY1NfSTdycHhVUVpyV2NEekZiOGM1QklxTTdmY3h1ZlRXTEo0d1ZsQ29yemRxMkdOV1N0QUI0V3dlT05YbUI5cVRReG5rRUU5UQ?oc=5",
+          "date": "Thu, 20 Mar 2025 07:00:00 GMT",
+          "channel": "피앤피뉴스",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "MCP로 확장하는 AI",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiQ0FVX3lxTE1FeGNpaXk4V1hYTjB2Q0NBLWlKd3hxVUFzZldkWTZZck4yM2ZvNV9pZmt1REJrM3BVZFJsZERnOEpMcjQ?oc=5",
+          "date": "Wed, 23 Apr 2025 07:00:00 GMT",
+          "channel": "브런치",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "구글 Meet \"자동 회의록\", AI Pro 구독자 회의 중 받아쓰기 AI가 대신한다",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE0tbGh1aFgwY0p4R1hkTmlqN0tHVXcwQmdpajd6TkhnUWtxeDE0UEdmeUs0MEJmOEZYNWltZ1hORmlRR3N6UFNSdVE0a0hTeGozRUZTMU9HcFlHNEZaMUNfSnJfU3ZZcHdJeWlkbDBiVlI?oc=5",
+          "date": "Tue, 30 Jun 2026 07:00:00 GMT",
+          "channel": "디지털포커스",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "카카오 보이스톡, 통화 ‘요약·녹음’ 탑재…AI 회의록 시대 연다",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9ObTFGdDV4MGRXM2JEZUd6QzZTenVtb0JMMTI4MlZxeTNVM0w0ZWZ6aHV4Z3pYRng4eTZOZjNJbnpxc3BoUUdicGVXd3VjNHJ4V3pOUzk5cWlPWU93S0xYSjNvcHF3cEV1Q1E?oc=5",
+          "date": "Mon, 22 Sep 2025 07:00:00 GMT",
+          "channel": "kmjournal.net",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "제미나이 스파크 업무 자동화 프롬프트, 보고서부터 고객관리까지",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFA2bmR6eG5MejN6MGlRQ1FHVGFFSUZXT3dTYlFhRHZWaUxJODZ1VENoMjl3N2VwVXdUdmJnaXdVdzB1aC1oQm0tY0ZYbw?oc=5",
+          "date": "Tue, 04 Aug 2026 07:00:00 GMT",
+          "channel": "티스토리",
+          "matchedQuery": "회의록 자동화",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "인천가톨릭대·인천시청자미디어센터, 기업 맞춤형 '산단업' 교육 전폭 확대",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5YYVp2b1A3cEFwTkYtdEdTSUtnbUFuNXFvdW94WGk3WVc5bWhVdnNTeUxfS1E2ZHJsbEF5VTJaYVlyU0UtNWRUZXBKekU1cG1pMkZ6QmRTbkxSUDRoU2tRbU1pUWhFd1BjaTZDVzBfYw?oc=5",
+          "date": "Thu, 28 May 2026 07:00:00 GMT",
+          "channel": "스마트경제",
+          "matchedQuery": "회의록 자동화 후기",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "보안 문제 없이 AI로 회의록 정리…하이퍼노트, 美 YC서 투자유치",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9DV3Q1YTd1aG1pRjJ6Wk5ob0paaTB5Zm94YXNZc0laeE1JWlI3RUpIU25ReXhBOWJqVzdTUVVTRERqSGpfZWpHLWstMWxTU1NhNVN5RlNRcjdqcTNfdmpiUnljT1c0MU9XTkxJZg?oc=5",
+          "date": "Tue, 29 Jul 2025 07:00:00 GMT",
+          "channel": "유니콘팩토리",
+          "matchedQuery": "회의록 자동화 후기",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "ChatGPT Work로 아이디어를 더 빠르게 시장에 선보이는 Stampli",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9kdnZJNEhydDdtQno4RTNOV0g3ZDJwVkNicTJDM0Yyd1pPUEx0OVJ1XzRLWk0wakdVSzdSY3BPNTBCQXctMkNNdzFEVnF4TDNs?oc=5",
+          "date": "Thu, 20 Aug 2026 07:00:00 GMT",
+          "channel": "OpenAI",
+          "matchedQuery": "회의록 자동화 시간 단축",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "세종사이버대 경영학과, ‘AI 업무 생산성 혁신 사례 공모전’ 개최",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1HTGpkdzNMSE1aMG5OWTQ1djdvT0Y2ZEM3dUpCSXIzTkxqbmduc3BsRVJzU2NFanZjTms0R2NkekRTRE5LdFNmLUZ1NDI0SU42NDRUd3J3aW04aEE?oc=5",
+          "date": "Thu, 20 Aug 2026 00:00:00 GMT",
+          "channel": "에너지경제신문",
+          "matchedQuery": "회의록 자동화 시간 단축",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "세종사이버대 경영학과, ‘AI 업무 생산성 혁신 사례 공모전’ 개최",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBHbjRpelJVczFsUFZqTm1GX043OXR6MEQ5ZlVIeVdNSG5rTHFfLWxhRFlhYlpMWkZ4alJKV1FnRzljYzF6R2JRQzdrSWVXTXRtS0d2ZTBuNGU1SGtCUC1VZTN5N2l6Xy1CWWI2aFFBVXdpSm_SAXdBVV95cUxQeWVjWERYQU1wdkRWNlJRaURkRUhCQ3pJVmtMWlZKMFN1RTZMaHdkSkN5cEtLMXFxd2xaVm44M3dKUzQtVGFYSG5LX0wxTVd4Z3JFcFBOQzNFTmhEMWFuTlhhekdKTkV0ZDJZVzB6V2VFWUhrc3ZiWQ?oc=5",
+          "date": "Fri, 21 Aug 2026 00:40:00 GMT",
+          "channel": "핀포인트뉴스",
+          "matchedQuery": "회의록 자동화 시간 단축",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "수출입은행, AI 여신심사 시스템 구축…심사 시간 단축",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9TZ2oxUjhDTDRGSEZUb3JxRnI0TzNuRzR2VHVOeHg0YzhVcllDTExkU0ljX0lpLUZEdjVvWXFQX1VkY1JFbWNPbVNMNEU3ZkV1d0QxWDFlQ01GTGxE?oc=5",
+          "date": "Thu, 09 Jul 2026 07:00:00 GMT",
+          "channel": "뉴스핌",
+          "matchedQuery": "회의록 자동화 시간 단축",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "한국수출입은행·NH농협은행, AI 기반 업무 고도화 나선다",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1TZnAxelBjOXFlMW9OOEY5d3JjLVc5U0FRb3VjUEtoRVAtazB2RXhrT09icVhFUmtMNU9TNGNiNmt6dkxtWFBJZVd3UF9vRmkzWll6cnExOVhjSzBrS2JhX2Y1RFRuQQ?oc=5",
+          "date": "Thu, 09 Jul 2026 07:00:00 GMT",
+          "channel": "열린뉴스통신",
+          "matchedQuery": "회의록 자동화 시간 단축",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "[단독] 공무원 징계 회의록 AI가 쓴다…인사행정 특화 LLM 개발도 착수",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBTdEpXNWFwa1BlSjZIOTFqa09jRExwbXJ2M0xsUmxtM2kyU1NVU21GOHlrbjJFSFpkb213cGtrZGIyR1ZrWEJXS240MDdyWTFjMFE?oc=5",
+          "date": "Wed, 01 Jul 2026 07:00:00 GMT",
+          "channel": "서울경제",
+          "matchedQuery": "회의록 자동화 시간 단축",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "“AI 비서가 내 스케줄까지”…일상을 바꾼 ‘초개인화’ 기술",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9LTVpNOFZ3Vkh5cUEzVFVJOUNPVGMyQmlYQW8zVFJxMDZhblcwX1NRc0h5R3dkczZGZU1YazJ0RTJhMVdBa2FkSGZPUmFSTGVoYTNXVmlwN27SAVRBVV95cUxQM2JmbUVINUx6SmNJN3c5bk0tY3VXZDFKM0lCem13Q0dNUFh3d0x1NjV6VUJQekpiX1hvUHFoOHN2eVJxS2ItUnJCUk00VWcxN0Nqa0I?oc=5",
+          "date": "Thu, 16 Apr 2026 07:00:00 GMT",
+          "channel": "세계일보",
+          "matchedQuery": "회의록 자동화 시간 단축",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "경기도교육청, AI 기반 디지털플랫폼 'G-ONE' 본격 가동...행정 자동화·학부모 편의 양대 축",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE12VTBFQld4Qjh5R2R3LUhtWGRpY1NxMEp4QUdkZHd1YUJyVUllOFJWVmRsZnNHYUd6bl9UNndFSzNVdW93cGh2TlpUYlZsaWNkWE4tRFJ6Z1FJWVB4TktZV0hpNFhvUQ?oc=5",
+          "date": "Fri, 27 Feb 2026 08:00:00 GMT",
+          "channel": "교육을 비추다",
+          "matchedQuery": "회의록 자동화 시간 단축",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "[일정] 5월 ICT 행사 쏟아진다...AI 에이전트·AX·클라우드·보안까지 총망라",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE5pNXdUUUZzdzd3eS1qQWVqMkEtY015TUJES2xsZkFZVm5HOF9vRDhaQ210U3d0SE5Sc3RyTWxwMUZsSFRGU2NPUHlad2pmZw?oc=5",
+          "date": "Mon, 27 Apr 2026 07:00:00 GMT",
+          "channel": "전자신문",
+          "matchedQuery": "회의록 자동화 시간 단축",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "삼표그룹, 구글 생성형 AI ‘Gemini’ 전사 도입…\"스마트워크 시대 본격 개막\"",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBUXzBnMVdQOGJEa1RtdHVvUlh6WVRBT3JZUFlJejZRYWdmTzZXNkVXOXJlX2ZwMkFlRDNFTUloODJLU0U2N2E3WnFqT0gxcndtc0hXTEhmNDZGVTVfbTcwMGtBZ2dxWUpYNW9ZSA?oc=5",
+          "date": "Wed, 17 Sep 2025 07:00:00 GMT",
+          "channel": "이코노미톡뉴스",
+          "matchedQuery": "회의록 자동화 시간 단축",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "회의 녹음, AI가 후속 업무까지 정리",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1NSmVNeWlqcTJWZkg1NEowOVJpdkczYnB1eHljOFhuZzNSRmN0NHRzci12NjRXbk9yUGtUUWROWmxQZ0NYWWFlUll3S0dENGplTktTaE1ERjBWUDFscnBXWTRNU2E5ZGc0bFE?oc=5",
+          "date": "Wed, 12 Aug 2026 22:30:00 GMT",
+          "channel": "지티티코리아",
+          "matchedQuery": "회의록 자동화 시간 단축",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "[현장] \"AI 도입해도 왜 업무 시간 안 줄까\"…AWS, 통합형 AI '아마존 퀵' 공개",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE8tUHlmRVotZTd4bk1ZTktJYUlvNDZuRmlTb2pEZkNhVXBXS3VTQmJSS3pwUF9FTmNudU1NS3V6dVowS0R6RDJQWk54M1FEeTRlQVZVZkpB?oc=5",
+          "date": "Wed, 12 Aug 2026 07:00:00 GMT",
+          "channel": "지디넷코리아",
+          "matchedQuery": "회의록 자동화 시간 단축",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "\"자는 시간 2시간 빨라졌다\" 1430건 국가 R&D 예산심의에 특화AI가 도움",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE96R3FWM1F2UW1QUmJWVllJeUJMTVk1Y05IdGtPbVNNZUx1d0lvNHpmYXlrOGQxZkhPYlJZdFNod05DZWJ5dVhkUTFmOFVkVE9BU1VObg?oc=5",
+          "date": "Thu, 14 May 2026 07:00:00 GMT",
+          "channel": "DongA Science",
+          "matchedQuery": "회의록 자동화 시간 단축",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "세종사이버대 경영학과 'AI 업무 생산성 혁신 사례 공모전' 개최",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE03VG95bHNHeGJIQk8xN3lHejY4NGpZVE5JODhfSXB4MUdoMnd2aEJEVGFYRFY1MGdaNVZETF9ldlRYeUNvZkk0dDdUSXdzMzVMaVo5UEdFZFgxeTA3Z0U1elVSNllHdXZXZHhqRg?oc=5",
+          "date": "Thu, 20 Aug 2026 02:05:55 GMT",
+          "channel": "베리타스알파",
+          "matchedQuery": "회의록 자동화 시간 단축",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "한국 대기업 4곳이 증명한 마이크로소프트 AI 실력",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9ucHd6YVlZVlYyRjduNFJqemMtODRvWllpWW0zb3BkQkhQRDZ5RTlmS1hDc3JEYzdXeHgzZm1jMzk4LUJDNHFlU0Q3MWFzWlpWdGdNOXNGUDY5SzlQZFpiMWVtMHVHUVdJ?oc=5",
+          "date": "Tue, 23 Sep 2025 07:00:00 GMT",
+          "channel": "더에이아이",
+          "matchedQuery": "회의록 자동화 시간 단축",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "송파구, 새해부터 AI 비서 본격 도입…업무시간 단축·행정 효율↑",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9KN2hSVENFSWRfMWtOUW5TeG9CZWtmNGNac18ySV9rZVlVUkdaMXotUFdhLU5wYlBPTG1sal9rTjJHc054V3FGa0lrNGxrRWR0X2t5Q0lB?oc=5",
+          "date": "Sun, 11 Jan 2026 08:00:00 GMT",
+          "channel": "헤럴드경제",
+          "matchedQuery": "회의록 자동화 시간 단축",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "SKT, 그룹 전 계열사에 '에이닷 비즈' 도입…8만 임직원 AI 업무혁신",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1mR2ZTU1dIYWlBbUNKRnc0VUFZNk1kWlZ0eGZMRFdnVFN1WFRUV29OSTZ4Y0U1VTR2UE81TlBrQ1FkRWt6UF9lTG44a3hsMkM2aEdicWpGdWhfRU9wVWFNYVhQZzBOQQ?oc=5",
+          "date": "Mon, 29 Sep 2025 07:00:00 GMT",
+          "channel": "디일렉",
+          "matchedQuery": "회의록 자동화 시간 단축",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "매달 6시간 걸리던 간호사 근무표가 5분만에 뚝딱!",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9QMUExUktOUmV1ZXNOMXk4QWc0dm1YUGtRMjlvbkNhUFlybnJUMHlwMTNnYWpSVEFHRDFSbWlXUjU0OGZfRWJrQ0ZMUWxkZnhpTGE5MUh4bDg1TmNHcnNBUE1pUlEzRlFWaTFsQVhn?oc=5",
+          "date": "Wed, 22 Jan 2025 08:00:00 GMT",
+          "channel": "메드월드뉴스",
+          "matchedQuery": "회의록 자동화 시간 단축",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "“1시간 소요 업무 3분 만에 완료---‘나비서’, 내 손안의 AI 업무 비서”",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5uMTVaamh0d2pXQnZ2NmZkcDREOF9XSzNEVnNITVFRMThRSEVRVXlzVTJkWFNOQURkaWljVXlfc1hRSTFmQURrbE5qVDVUeFRvSnNGenJDcUtySmNCTllSOGNYekNGSGNP0gFsQVVfeXFMTnA3OFZvUThLQW5pV0w0eDZHc0plaWFmUFpoMUk0Tm1OZHVid29HR1ZtaXYwa1pFVWNMTWpLbllkZThxdi1feFNwd1ZVNjdtN1k0Umg5THg4LUJYMVBoS0w1RlNhd3kxWVFuUTgt?oc=5",
+          "date": "Tue, 15 Jul 2025 07:00:00 GMT",
+          "channel": "하이테크정보",
+          "matchedQuery": "회의록 자동화 시간 단축",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "AXMOS 컨소시엄, 서울창조경제혁신센터와 'AX 실행' MOU 체결… 소상공인•스타트업•제조기업 AI 전환 가속",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1Da1pLVG4wR0E5QjBobWxYZUFXOXVNYTVIUjZoWXJUby1LM3RmWXRack9zUnNzZmRrMXViX0FIS21tMUlkdEppMUwwc1lUM3piZTRtdW13?oc=5",
+          "date": "Tue, 14 Jul 2026 07:00:00 GMT",
+          "channel": "지디넷코리아",
+          "matchedQuery": "회의록 자동화 시간 단축",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "AI팀의 기업맞춤AI로 업무 효율 최대 10배 향상",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1zZFlTX0N1UmtUWFRzNHM4Q0pYV09KMHNLLXhNUVZCbi02ZldPLXFsTHlDS2N0MVBaYzNES3ZfQUh4NmFZeXU1WGgzbjBoa1Z4Ry12enZQVU0tQ3V6Y2RRd2lxSVBMQUVi?oc=5",
+          "date": "Thu, 10 Apr 2025 07:00:00 GMT",
+          "channel": "공감신문",
+          "matchedQuery": "회의록 자동화 시간 단축",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "[직업혁명 (53)] 모션·코파일럿·감마 등 쏟아지는 AI 툴, 업무 혁신 이끈다",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5keHgwU0pFMXlTcV9IU2NhanZHZW5XZXg1eUt0ZVdMdzlOT3VOazFLY1hqcGFxMWhxVlN3WFpUeW9OUGFwVkh3OUJzeUxvWU5QbkxpQ1hVYm1BaFQ2VGc?oc=5",
+          "date": "Sat, 12 Jul 2025 07:00:00 GMT",
+          "channel": "뉴스투데이",
+          "matchedQuery": "회의록 자동화 시간 단축",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "LG디스플레이, 자체개발 AI비서 '하이디' 도입 … 비용 줄이고 업무효율 10% 쑥",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBSVWcwbWNmQTJvTU1KcEsyeEhDc0dCbktuT3psUDVhOUhpTzlpSVR6WXZCRFdPMDQwbWJUdC1nLW1wSkVuYUU2UjJEclhaNmljcGdnUU9wWlJwYUpTQ3FF?oc=5",
+          "date": "Mon, 23 Mar 2026 07:00:00 GMT",
+          "channel": "매일경제",
+          "matchedQuery": "회의록 자동화 시간 단축",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "삼성SDS, 생성형 AI 서비스 '패브릭스', '브리티 코파일럿' 출시",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE0zSXBHM2RSUklFVjNqblE3bEY5T1RQbEZXbVEzckd4OXFjX0QxWFhQSjJnZV92UUhJV09hXzAxRmZ1bXFacC02OUZxZGNKZw?oc=5",
+          "date": "Thu, 02 May 2024 07:00:00 GMT",
+          "channel": "전자신문",
+          "matchedQuery": "회의록 자동화 시간 단축",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "삼성SDS, 생성AI로 직원 업무 효율 높인다",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9YSUJJU2NYS0JJRWNQd2pNTHZoLXBZVFZmZWJEM2FlUXJVZ0YtTzJic19ITHB2U01zTXVFeHZCYnp3TFo4cFJZUzlzUWtrNnU5QU5PMV93?oc=5",
+          "date": "Thu, 11 Jan 2024 08:00:00 GMT",
+          "channel": "지디넷코리아",
+          "matchedQuery": "회의록 자동화 시간 단축",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "KT, AI로 보훈 행정 혁신...국가보훈부와 AX 협력 추진",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5ZcFllc0xSWUtibDgwSE11cFVJTjRKWmxiX3FQWlI4c1ZraGhELXNvaFFKWFBoWURncEM3NFJsOS1aRVJ1RTM2UXJjLXpicW1LeFpMVS1Zc2FkdGNlRmJMT3hpZ0h2RG9WTGRPd1ZIbjdtZ2vSAXdBVV95cUxOMlBUS01qekRpSkQwdHQ3UXVtU0V2YTBYMWd3dTQ3elhsdmFsYjAzX2NDdlhieDdaUC11ckJ0SVVYQUwtWkNnS0JyLTNRMlFXd0doQWp6al9NZUpCVlFEQm4wTTdTVFhLaXh3MDlPWDIxZ2ZjaWlsWQ?oc=5",
+          "date": "Tue, 25 Feb 2025 08:00:00 GMT",
+          "channel": "인사이트코리아",
+          "matchedQuery": "회의록 자동화 시간 단축",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "[CES 2024]삼성SDS, 기업 업무 지원 생성형 AI 솔루션 '패브릭스' 공개",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE5oYk5LbUp2OW9KemhQRDVNUTByYmZOVmg0WEtxaWRRWDZjaHdCSGwzVFRBZEo3ejFFQzFzSTRwYm45T2s5VXExSU9fYXhFUQ?oc=5",
+          "date": "Thu, 11 Jan 2024 08:00:00 GMT",
+          "channel": "전자신문",
+          "matchedQuery": "회의록 자동화 시간 단축",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "라이앤캐처스, AI 에이전트 적용 협업툴 ‘팀업’ 출시",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9HQ3dneVZDSnhQVTExVnBDZGNueUppUVBEbEZKemYxTHZSRHg3S1BwTVdNUmgxYkpZV3VWRFNMUnpEYmFRekNCeVJkUHNjSlZ4bWN3N0pHSjVwMzloQU9YV2tiZGxPMzVLOEhYS9IBcEFVX3lxTFBoX2Fpa2ZtaENiTXBZOHYzbmhjSWdEUTI2LU0yT01jN1FDYmlZRldsQ0JwYmhRTTlnbkNkZF9DS3JXMFRWNUFGNk16RWR3aU1vSXNvYVRsZnF2SjVFWlFsVVBDQ0pzU201a3lLVDBxdHY?oc=5",
+          "date": "Wed, 16 Apr 2025 07:00:00 GMT",
+          "channel": "이넷뉴스",
+          "matchedQuery": "회의록 자동화 시간 단축",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "“주 3일 근무 도입” 괜히 삼성이 아니네…그 뒤엔 이런 ‘반전’이",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9HeWtSZXFPdmtWY0JoZWFVcUpFQjZ1aE9BZU01bHUta2Q5NUl4WktJS1Z0dXlKMS1lVzRPeWJ3NTl5LUZQSXFXVFcxUWhieUQxMzNXaGRRSUNaYV9HWjNrX0JocnBJTFVFa2ZqaEdmRVF2WUd6SnpLOA?oc=5",
+          "date": "Thu, 06 Jun 2024 11:27:39 GMT",
+          "channel": "이데일리TV",
+          "matchedQuery": "회의록 자동화 시간 단축",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "보도자료 초안 자동 생성 sLLM ‘보도시AI’",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE10RzU2cTVJZ1hMM2tjZGJOTFpLb2FFTFBQQUkyMk1rTXZJTUZ5dC03dHgtSGNHTDA5OTNFTVk1WnN0V09pMGI0aGJCcw?oc=5",
+          "date": "Sun, 30 Jun 2024 07:00:00 GMT",
+          "channel": "브런치",
+          "matchedQuery": "회의록 자동화 시간 단축",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "파주시, 재직자 대상 인공지능(AI) 실무교육 마무리… 업무 자동화 역량 높여 > 뉴스",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9POWlKeXlSWUdZenNJZURZaG9QTTFUZXdvMlhNNlZwVFBYZ2tMUzBnWHRDRVRaMVZ0MUZaRllGamRLOEUyOUo4aVFNSlJkNXFYcmN1UDZYanF3S3JVd2JPYktwREN3akZ6N1c5U1lEV2E?oc=5",
+          "date": "Mon, 24 Aug 2026 11:09:00 GMT",
+          "channel": "더코리아",
+          "matchedQuery": "회의록 자동화 효율",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "국산 AI칩-LLM 통합…KT, 단일 서버 ‘소버린AI 어플라이언스’ 공개",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9zeUdMdUFxSHg0NGFCVGF5OC14Mm9IWWYwQlJmbEU3OVJoS0hwOURYa2c1TDRvSjcxa2wzQ0dEWmhMNFgyRVdWODJRTGJ1ZTFmTV9nUm1hNUw3UkZYVndmX2JFZVFaRVo5UHhJbQ?oc=5",
+          "date": "Wed, 19 Aug 2026 06:40:00 GMT",
+          "channel": "IT비즈뉴스",
+          "matchedQuery": "회의록 자동화 효율",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "MS, 국내 기업 ‘AI 에이전트’ 도입 사례 공개",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9TYm9uTGtibGprUFNxVFFaNFJ2dE1CLUdzSjRrVENGY2xpczBYalFLVXpTWjluTW45aWJidmcxa1NNSnNHRm0wbkNpeEhmUEx1OS01bjhMaEVESWljMjZ3Y2hkLURTZE14b3ZxUw?oc=5",
+          "date": "Thu, 25 Sep 2025 07:00:00 GMT",
+          "channel": "데이터넷",
+          "matchedQuery": "회의록 자동화 효율",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "[AIF2025] “SKT, 한국어 특화 LLM ‘A.X’로 주권형 AI 선도”",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE53LWpJUjY5NzRIYWszb1FNQVVoYVAzSEJjUE9DdENtaFBLbUNvX0kyaHNVZlpQU01LNFlVU19JWHRkU3FnQUFpaW5kWGxQeEp3R25NQ2ZnS01zLWZFZHlWQnVYbDhxbUg2S2dpdUFVX0ZGQdIBdkFVX3lxTE9KYUliZlRiMU91RDV4aEJib2hhdmVNMFhaUWlxckdBdHlQa2U5eHNhTmdqaFZNOHBDUDB6NlctTURxQkxVQVdDYjd3SktmbmtJN2NqODR6WVFVcktXeS1UOHAyX1otN054LWJyVUZlNXlZQTBDQWc?oc=5",
+          "date": "Thu, 18 Sep 2025 07:00:00 GMT",
+          "channel": "시사저널e",
+          "matchedQuery": "회의록 자동화 효율",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "LG디스플레이, 업계 첫 'AI 어시 도입' 선언",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTFB4RE5udHNFM3pVYWp2V0ZFVjlvUVh0YVUtWGo4TklXNUtwSjJCTmJJdGlyLUdQZFVTOU9xMEFCYjdoVWVhWjA5WEtEbXlDeU9MdGZvbnFfVTZ5WDBEWkEzUGlSdnBTSWI4Z05ZOXJB?oc=5",
+          "date": "Mon, 21 Apr 2025 07:00:00 GMT",
+          "channel": "뉴스후플러스",
+          "matchedQuery": "회의록 자동화 효율",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "SK AX, 'AI 운영관리'로 금융 IT 미래 연다…SBI저축은행 전면 적용",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE90MVVSNEFRMW1QUmM0Yzd5dzc5aEdJR3RNajFtWUxLTHBxR3BndDBxTkxRNDV5b2JXY1RkVEFDT25HUnV0bXloMDVXYm5yUTVGWEFPUU1R?oc=5",
+          "date": "Tue, 05 Aug 2025 07:00:00 GMT",
+          "channel": "지디넷코리아",
+          "matchedQuery": "회의록 자동화 효율",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "산업 뒤흔든 'AICC' 업무 효율·고객 편의성 모두 잡는다",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1VVEgwSWZCTk9qX3BNeTQ2aVBoZnhFMHgxQWxEV2F3cUxmMGlVSDY5LVdRa2tHTlNLdDduLVlBQzlLajFraEsydElUSFlianJrNVVxMTdNQ0xFcnpTOXRMdkdHdw?oc=5",
+          "date": "Tue, 02 Sep 2025 07:00:00 GMT",
+          "channel": "프라임경제",
+          "matchedQuery": "회의록 자동화 효율",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "SK AX, SBI저축은행 IT 유지보수 본격화",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5XUGI4X195N1dJb29LQW80UGRwbVhVc3FtMkk0Tnp0ZEpLX2poVk0tOTRjNFF0T19TdjVEWjNVbnFtMkNBX2hwRXZxSnZmTDZVbDh3UWs0Y2xQcU5saWR4dUZ2UDFlQm81NGotdw?oc=5",
+          "date": "Tue, 05 Aug 2025 07:00:00 GMT",
+          "channel": "이코노미톡뉴스",
+          "matchedQuery": "회의록 자동화 효율",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "\"회의 끝까지 따라간다\"…줌, AI로 협업 환경 '전면 개편'",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9OWDNTVlBoY0VNZkx5S0ZZclkyc09wSEFnSGZPRThHUktzMG9JMzdwNk9KMFNtMEhMYklOTEZLdDZIZnJsZm1ZSThIaUVpRUdkdy05R2t3?oc=5",
+          "date": "Tue, 17 Jun 2025 07:00:00 GMT",
+          "channel": "지디넷코리아",
+          "matchedQuery": "회의록 자동화 효율",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "SK AX, 금융권 IT운영관리 혁신에 속도…\"생성형 AI 기반 ‘AX형 운영관리’로 금융 IT유지보수 시장 선도\"",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE8xc3N2ejJEM0UxY3VsUTlmVHZCN0tsOWZSUW4yX2pfa0I3Vk1uS0VSYWlHenZTN3FwdEFhNHF5NV91Y0RldXY4Smc5U0JUNGZXcGtxWGZOSEdBVjl2TS12S1ZlT1BaSnBLeEcwLQ?oc=5",
+          "date": "Tue, 05 Aug 2025 07:00:00 GMT",
+          "channel": "이코노미톡뉴스",
+          "matchedQuery": "회의록 자동화 효율",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "AI 비서로 일터 자동화? MS Copilot이 답이다",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5RYURjVDBkTk9jM2dnbVhaTHZkNWFFdXRySFYzNFJaM2hoVG9tNjdrYXhvS2RIUEtqRUdKQ1lZa0FPMk5GRFcxSTFPd0RxbVdHLXgydjZ0QnZkQ1RhLXNlTnRYZVNoQlhoUTJGS0pkTnc?oc=5",
+          "date": "Thu, 24 Apr 2025 07:00:00 GMT",
+          "channel": "디지털포커스",
+          "matchedQuery": "회의록 자동화 효율",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "日, 재활현장 AI 활용 '개인→조직시스템으로'",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTFA0NTVBcG1EZ01lYWFKM0tXSnlNdkE2VjVfWmZuRTR3dlptRkdJci0tQmlCZFlpam15R2JfTDJNQkQyZWgxRGJMcm91MVBMV3lwMVJkVXk0SnRfRlB6enpES1djdHFSZmR4SHFz?oc=5",
+          "date": "Mon, 24 Aug 2026 20:30:00 GMT",
+          "channel": "재활뉴스",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "코딩 없이 'AI 에이전트' 뚝딱…KT '에이전트 빌더' 발표",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5RWndSRnpwRUY5ZGNOZ1hZbDhqd2dFeGctcV9xVk40NWh6T1k5M1JPN2J2ZHE2M0JPSFJUeVZUUXh4RkVZUGlzQXlqd3o4TDE3ZUw0TXRMZGhyMUtFZXRzeWhkaG9TUQ?oc=5",
+          "date": "Wed, 04 Mar 2026 08:00:00 GMT",
+          "channel": "디일렉",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "[AI 활용 선두주자 에스토니아] ③ “탈세 탐지부터 의회 회의록 작성까지 AI 활용…20년 이상 구축한 디지털 정부가 최대 강점” - 조선비즈",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNWFRNRFBIRUJNNUpIYUhZc3lUVGN0UDViZ2w4S2tuTTd5Um8zVjZ1dVFBSFNGODVmWEttVHZ4TFloRDhqYUdFMFV6VzRNTUQtMWZnQ2t0OWk4bVB5MDF0U3ZDRWVTU3RVUkVBb19pS1YwRnlQczJZanNIWkk2cjROTHJzcEJmMzhqZ3F2c1o1TndhUzJLUElaS3VJby0zQdIBsgFBVV95cUxQaVhBd2tObWZNTmdCanhBcW0zcE5rWVBYZjdxS054MmpZUHh1ZWthaUhaUllCeTd5V3EzcHRjNXJNNjZBZGpEcHVybmY4YW5UNjZTTmpNQllHSC1UV241VDFZSU00WHNnZ1VVMlgtNFhkMlJsM1BBeFNDQWU1Z3lYT3RRbmRPQ3NjYldmU0txd0VFMWNuZndNRVVFV1dxVkNGTG1ETHA0X2lhZGFTWUp1ZDZB?oc=5",
+          "date": "Mon, 19 Jan 2026 08:00:00 GMT",
+          "channel": "Chosunbiz",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "\"개발만 AI 쓰는 시대 끝났다\"…스타트업, 일하는 방식 바꾸는 AX 경쟁 본격화",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5CcXFRQVNqRDVMM21Yd1NOa0xXakRqakgwRFNYTW5aa1EyVy16cUpfb1dqRlE2SDFPUnZ3SGpDQTdxQnBQUWJDRktudl9oOUlOYlViZlBR?oc=5",
+          "date": "Fri, 02 Jan 2026 08:00:00 GMT",
+          "channel": "지디넷코리아",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "경기도, 지방정부 최초 ‘소버린 AI’ 행정 도입...문서작성·회의록 요약·법규분석까지 지원",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5HNi1jY2hwVGxaLURQekRDYXk1WDlXOC1oTUlKbDNRMmlpVkt4R195eURRbEU3NlJwd1BkeUpaMWtrNkJwWWc4NFVLbC1OT1hHUVktNTRObXZkYTViU1BGVXFXNElWVXlZbHNJ?oc=5",
+          "date": "Tue, 04 Nov 2025 08:00:00 GMT",
+          "channel": "the-biz.co.kr",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "경남도 국정감사, 생중계·영상회의록 없어 “알권리 침해”",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE50bkIzY1NRSU1TMGpMYldKc0o5bm0wSzhlZGFwNWNBXzBYMUh3MVZMdnVhX0hzWGtGR1h3QzBGaHdxRUp2SEdMMnN4SzRIVmZBdVN3OXA2eGNUUlc5SnVJU0JoWFJWbE8z?oc=5",
+          "date": "Wed, 29 Oct 2025 07:00:00 GMT",
+          "channel": "경남도민일보",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "코난테크놀로지, '에이전트 RAG' 상용화…온디바이스 회의록도 연내 공개",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE95WUtTa0xJdGJ3ZnNabHdZWHpvVFdid2NkT1VRWGEtS1NUMGt4R3VpczlTQWZHQUhpT2lQVXJoZ2RqZXF2MWxFeUo5X3hpUQ?oc=5",
+          "date": "Sat, 17 Jan 2026 08:00:00 GMT",
+          "channel": "전자신문",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "엘솔루-고려대 SLP Lab, 고성능 한국어 화자인증 및 식별 시스템 개발",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE1QbUo4ZS1HOHBtMXFZUHRNdDNEWXBJV21DdFNaU3BmS0lIZnhYWWItcnNWYkdjWGc1TFBnbmlOajN2ZC1hZnVGS1ZIQ09yUQ?oc=5",
+          "date": "Tue, 08 Oct 2024 07:00:00 GMT",
+          "channel": "전자신문",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "마인즈랩, 서울시 ‘인공지능 영상 회의록 솔루션’ 구축...비대면 영상회의 진행에 효율성 극대화",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBSOXNfTm9DR1BUWFVneTByOEhOMnRmcFBUaWlYQkJDOVVfb3ZpMmtMNHNUdTlJajV0MXg5MjRoT3pUbXRhR3BpSVIwMmh0ZW8wVlBDWThxZXpyLWV0SFAtWldNWXdPWEE?oc=5",
+          "date": "Wed, 29 Sep 2021 07:00:00 GMT",
+          "channel": "인공지능신문",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "\"수개월 걸리던 업무, 한달로\"…공직 사회에 부는 'AI 혁신'",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFA0T2pNa0F2SHFFRGctOHRGN1R4TGZyR1JhRFlJVlMwNS1Zbkx0VDRWM2dCNU5taVJwb2ozUlhEdTEtOXhITlR4QmN3OVFfbmdBemdpS3pqSTZIdw?oc=5",
+          "date": "Thu, 20 Mar 2025 07:00:00 GMT",
+          "channel": "한국경제",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "㈜팀벨 바로노트 음성회의록 시스템, 의정부시청 6개 회의장 납품",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBQekpOVU5xX2JoSHk4bFdiX0pzeXNzbFhHeERNeEkzQjVaQlNYU1UtX0NLVmRZa1ZWNkZNSTVBY0dYV01wcVhFOEtlZkJpa0lEMl9FbThOdjJYbzgyRG5qYVZ5UEtLTk3SAWtBVV95cUxQMVlZcDJxNHlUWlI2dnZfaWtLcXJzSFdjUkJoTF9uekU2eUVnRC1XVEJOVDgtR0k1RDRGcGY5emJnMTdMaXVWdjZvUGlkM19FZFFhZE91VlNTcFU4cHpSRzJxb0lGWnF4a2tSbw?oc=5",
+          "date": "Mon, 26 Jun 2023 07:00:00 GMT",
+          "channel": "이투뉴스",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "팀벨, 헌법재판소 ‘지능형 헌법재판시스템 사업’ 참여…음성 자동속기 시스템 구축",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE56cHdFdmRxUkdBQlNWbGY4WEdXLVM0Q2lVT3FqSV90WERteFZOdjRKNnBnYUxvN2FtMk5LVGZjbXdmZnJ5S1FoNXd4ZFpwTkw4VnhkeFhuS2dBZy1wcExZel93SERURzFHYzRUdjJsRFXSAXRBVV95cUxOa1d6ZjUyRTMtN2E4Wk8zVTBYYktjSlJDb0cwSUVUQlplSmU5eE5GY1J1XzFXYzI5c0xvU081OVpRQlpkc0tibDFxb044R1QxcGF3UVdvX1NJRVNlRWVhOHFwczh5eEtsYlRuRVNnV19hQ1lEMw?oc=5",
+          "date": "Wed, 14 Aug 2024 07:00:00 GMT",
+          "channel": "IT조선",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "KT, 대구경북 제조업체 AI전환 돕는다…찾아가는 릴레이 세미나 성황",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE83MDhoaWpiREk1RWg5SVFiTnBYa0pvV1A1ZHFHcDdpWm5nWXhlaGxienRab1BQalB1MV9ySGZVU0t6Rmc4Vkg3Q3hZbEU2LWlLQS1FcXUwU29zMFdpU3MzMUpkUzJ6bF9jTThv?oc=5",
+          "date": "Thu, 13 Aug 2026 06:59:21 GMT",
+          "channel": "영남일보",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "마인즈랩, 제주도청에 ‘인공지능 회의록 음성인식 자동 기록 시스템' 구축",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5HYTJzeGhENnJENkdUcXB3czM3VW9IWUh4SU9ZaE10MlVod2lhZ005cEFqdTBDUGh0dzl1djhHOF9ucmFZSy1CbWtCR1QwLWRxeFJXVEtsVGI2QXg0emVmbUppOXEyU2c?oc=5",
+          "date": "Wed, 29 Dec 2021 08:00:00 GMT",
+          "channel": "인공지능신문",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "엠클라우드브리지, 코파일럿 & AI 에이전트 활용 AI 업무 자동화 통합 플랫폼 발표",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE9Zei04OXlWeVpFcFJDenRhYjJ3MDU1N1V5WEVjOG51UXUyQjZRQk1ERHNWRmN4c2ZPWFRwMmpqU0lYVjNROWxacXI2VXZrQQ?oc=5",
+          "date": "Thu, 09 Apr 2026 07:00:00 GMT",
+          "channel": "전자신문",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "SK AX, SBI저축은행 AX 파트너로 IT운영 혁신 본격화",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE9mSWJxdW5vaUp3XzdIZWMyT2MxVzNQeTZXYlhkTV9Ody1EeGxZMDdTT3JSbXh2eVBoQ3NpRzZuSmYxTFFocy1wRUFNWE1MZw?oc=5",
+          "date": "Tue, 05 Aug 2025 07:00:00 GMT",
+          "channel": "전자신문",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "소규모주택정비법 개정안, 국회 본회의 통과",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBIWU9CVkRmbGtnWmlmTTJmd1V6VHBxWTUxNXV6NFE4ajVFYnBFM2hhZ0hvc1U3TlU4bU1mMnVDQ05BUHNGVzJSMEpscmdic3Zfb2gwQ3JrRmM0WDNuT2hoY0JSanFoSlha?oc=5",
+          "date": "Wed, 06 Aug 2025 07:00:00 GMT",
+          "channel": "한국주택경제신문",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "[AI픽] AI 직원이 출근했다…SK하이닉스 'HR 혁명'",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE0zYk90WUpCOTl5TXlVSlM0eWN4RHBNWTVJcjZ4ZUFmRVA2dG1VMVUtb3g5V09Vak1mSm9wY1Y5bjBYRVozSUJHVHQ0Uk94YmNOSEhZZVhQelkxVzDSAWBBVV95cUxPb0FlWEhPX1p0dTc4RUhZSU9ia1hmSWVqQ3Zld3hrVzhwbGdQc1NYNGRDc3ZXaWQtcmE1eWhxV2ptRS1yaXJWUmpqSUpxREozT29UZGhwUjlzSjExU3lhNTQ?oc=5",
+          "date": "Tue, 12 May 2026 07:00:00 GMT",
+          "channel": "연합뉴스",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "OpenClaw는 무엇을 할 수 있을까요? 실제 사용자의 10가지 활용 사례를 통해 자세히 살펴보겠습니다.",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE8wRGd3NERKcjdfV2MyMS1pejlacWszemdyZTV5WmljZFUyRmxXWXJFazBKaXJrR3R0M09LUEJKNl9rYThGSTVuUGh3TE9FQWJLdGR2UW1zNEM3SDFYUEVsNlgzSkl2VGxXOGtOYkJsTXQ1d3Q1Q0ZGR1hnR0ZJY2s?oc=5",
+          "date": "Mon, 23 Feb 2026 08:03:00 GMT",
+          "channel": "PANews",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "에프엔유신용정보, 솔루게이트와 'AI기반 TA 분석시스템'의 공동 사업...\"AICC 시스템의 진화!\"",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFAyb0pYUTRwX0pXdjhSblNCTDFUQktveVRva1FiQmVTQ2xkRGZRMW9DR2lZVlVjOERSWDBaaWlRbWNpZ3VuUnVGUEdHMWhjWldyQnVRWU9ZRXFVb0FtcUJUa2xNWm1WMWM?oc=5",
+          "date": "Wed, 10 Jul 2024 07:00:00 GMT",
+          "channel": "인공지능신문",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "국회 회의록·의안 정보, 공공데이터포털에서 찾아본다",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9raXVGYnpSUGdlQk9DQ2FfdzdCVm8zVFA1QWxRWHhHSFRsZ19tTWNVOHlFSFljbEJCbUFpUkVVZzdvcy1IQjRjSzJkYmc0WWx4UHFPLXhfQzhDem_SAWBBVV95cUxNcGdGTTd6ejVZektJQ1hZMEUzWm51azBsMGtGNXJISmxwQlR1ajNETU13bFFOWFp6ZnJrZUhzdDlqTW5UUTM5cWdBUTA3V2RNME1DR1hIdEhMaXh1SHktOWU?oc=5",
+          "date": "Tue, 09 May 2023 07:00:00 GMT",
+          "channel": "연합뉴스",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "[국감2025] 영풍 석포제련소 또 ‘국감 도마’…“중앙정부 결단으로 폐쇄해야”",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5GSTB2b0VsUWFsQldFX3Bra3NtM0NGaVdXTXZOWThWSXpJVUpFaEFYSzJMaS1vV3A1c295VlV0d3pMVktBSVVYSkc5YUZOT2RDVFltdnJIMmFtbGN0c0ZQbnVpX0RNRWZ1RW1mWDR4dS1zR0XSAXdBVV95cUxQbWJ5TUVsbjVrN0tsMG1OVWFLT2RmYzV5Yk55dnRocU1xdnZkNzdVb3JhWXZaS25sRDBGdUR6ZHRLU1hrazEwTmJoRnhKVjVKTWttQWo1djdMelY1bWhORlZMVjYwSkNNNElnUkV3ZjNYbXdfU1hNUQ?oc=5",
+          "date": "Tue, 14 Oct 2025 07:00:00 GMT",
+          "channel": "스트레이트뉴스",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "마인즈랩, 국내 최초 이동형 '음성인식 AI 회의록' 제품 출시",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBPM2VHM2hZdVNSUVdLRk9NRkx5cmtPZmxTdjZJMjNySHFVN1FPc3pWM3o4dnVnTFJyOWxldTROV19OUUVrX3lobmtoNEpvQW9CSnRoQ09QaTRQekVNendOby15NEFnUGs?oc=5",
+          "date": "Mon, 30 Nov 2020 08:00:00 GMT",
+          "channel": "인공지능신문",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "SK AX, SBI저축은행 AX 파트너로 IT운영 혁신 본격화",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1wRE14bFVfZUloY0U5MTFSMlFieXN2elNvdkdwTkNtT2N3NEk4eThESVhXWldMT0QwWWx5ZGxuMGgwMDB3OS1Dcmc1N2M1eHpENVFsdEoyZkRwcmV3M0hhaW1POFBMZ2hnR2NQV3VrUQ?oc=5",
+          "date": "Tue, 05 Aug 2025 07:00:00 GMT",
+          "channel": "이코리아",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "9·7대책 후속법 국회 통과… 도시정비법은 다음 본회의서",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE8tNDRBM2VpV2FHckdOU1lKbThUSGNrS1ZsSmtfNWtiS2x6dTJBNkJqZ0J3N3FnTURMLTRKems1WFE1OTllWmpNWm5aTHoxM1l3UDN0TTJ4UC1CLTVrVlVsNE5zRUY3QmNP?oc=5",
+          "date": "Mon, 24 Aug 2026 00:27:35 GMT",
+          "channel": "한국주택경제신문",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "원라인에이아이, 금융권 AX 선도…IBK투자증권 '생성형 AI 내재화' 사업 수주",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBpdXZPbjFwaEdISHcwdVp4TlhMeXRZYkJ4alRLUVF3Y0RvSVllY3AxdS05N0p0eU9HcFpNQXdxN1FNRHlpT29zWHdQWXVmQQ?oc=5",
+          "date": "Tue, 14 Apr 2026 07:00:00 GMT",
+          "channel": "전자신문",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "마인즈랩, 경상남도에 다접속 무선마이크 활용 'AI 회의록' 제공",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9mOWVqQnhKSzVLZVJ3VEN3SG9BUEg1bXlBZlZURzdNQmZvZzhHX0xsbXY1RGxLcWNlSi1IMzFZX3FnckxEMFRyMkE5U2NmcjZ0ZUhOVmhR?oc=5",
+          "date": "Mon, 26 Oct 2020 07:00:00 GMT",
+          "channel": "지디넷코리아",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "Claude 활용법 1편: Cowork",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE5UZnNTZzlpdzJVb1dPREMxckRHbEF5SDJ4Z0hyNEx2c0VlbTBZbGNFaDFyME1fTE1nYmtJX0lvT3VzSmxoWnNVYmp3?oc=5",
+          "date": "Tue, 03 Feb 2026 08:00:00 GMT",
+          "channel": "브런치",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "[카드] 마인즈랩, 제주도청에 '회의록 음성인식 자동기록 시스템' 납품",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5vSVAtNUluSTdJUDd2WGp4cHdPekpPbGxHc3pHQWpiaHduYkVKc1NVUWY4SDJYN18zLXlnT2VfbnZQX0NhbWx0VWp2Y1djX2gtOHBEVkNmeF9lZk1oeWdOTHFOcw?oc=5",
+          "date": "Thu, 30 Dec 2021 08:00:00 GMT",
+          "channel": "프라임경제",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "예산 삭감하더니...치매안심센터, 필수 인력 부족 ‘고착화’",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE95UWVSdERZY2VFdmlSWnlnWE8zT2I2TE5KQ1h2bmtDYWtxZHFyMFEzYlhyd1RINXNMZFB3cDh1Vm5FeXVkZ3hlNHBRakg4X0djYldSQ1VfMUdLNVc3SXB2Z0lhb0ZNSlZieWhOaWdtcU54QQ?oc=5",
+          "date": "Mon, 24 Mar 2025 07:00:00 GMT",
+          "channel": "디멘시아뉴스",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "삼성전자와 TSMC의 생성형 AI 활용 업무혁신 경쟁",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFByNklzYnM5cGhZU0MzQXJJMFJQbnpEdGVRSU1yZXZOZmR1T0tQUGI5aTdiRTIwNmFfV2lNdFFpdXQ2SjZGOFFIeFNKNVE?oc=5",
+          "date": "Wed, 08 Jan 2025 08:00:00 GMT",
+          "channel": "브런치",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "마인즈랩, 경상남도청에 이동형 AI 회의록 시스템 구축",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9Rc0R1MHU4UVY2NTJSalY1d1RNSHpZbGtuZXVOc2k1Z0h5MVBfM1pJcWJiMjgyVi1peWJZcnZJTEdEdVU4R05Wb2JSYUwxNjVUQ05V?oc=5",
+          "date": "Mon, 26 Oct 2020 07:00:00 GMT",
+          "channel": "네이트",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "'동물 보호소' 간판 단 펫숍…민간동물보호시설 신고제 취지 무색",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9GclVqODkwQ3l5RkJXQVBGZVFxZ3dXckN1OEZmY05GV3dIY0p1dDUyU3d0NnFPNUs4V01kRnBaNWxvTU11b3lyZ2NRejByZ3hSN09ZZXU2VmdJUdIBX0FVX3lxTE9pdHpERWh0OW4xZVQ5NHUteEw2cGp6VVBPNWd0UmRDSTNVXzNna3NaMC1yd2lITDYwVzVOSDZsYlhsUGxTREFwNGJRSk1zSWtPT3FlM1I2ZGdaREFxT180?oc=5",
+          "date": "Wed, 29 Oct 2025 07:00:00 GMT",
+          "channel": "뉴스1",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "[2025 문화계 국정감사 ②] 문화재의 사적 이용과 훼손, 도마 위에 오르다",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9mNVR0TWk0WGRkRTJjTzBISktReFRiOEp2bVRBU21LVExyeDE0R3V0N2R0VTlUTXhEYWhsWnZKZUlqbFJ3U3BHQXpqWWMxbkdGZnlIUEVheV9TVkpBblJnTkFid0YtNzTSAWtBVV95cUxPWkhyTTZjUThMQ19PNWpBc0pWb0dUTmVtcXYxSHVlc1ZYQWlSMnhxYjcyaW9ZMmJNelJQdHZPUFhZZzdoUlN6ZWNMcjVtekhsQTlCSXVPYmZ3N1RaYWJDdkRGeDVaRVdOanQ4SQ?oc=5",
+          "date": "Mon, 20 Oct 2025 07:00:00 GMT",
+          "channel": "핸드메이커",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "‘12·29여객기참사 피해구제 및 지원 등을 위한 특별법안’ 국회 통과",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBsZllOT3BOX1BTMkFFdFpXdzdJakRFYW5GUVRIczNyLWVoVXY4N0dUMEZYSk02ZVkyaU5kdmt1ZHJoVElDWVFmQi1taTlvbTNpNnlPUzVFaFV0dTlJMm9fYjBYSGdnOHVQelJPTEd3?oc=5",
+          "date": "Thu, 17 Apr 2025 07:00:00 GMT",
+          "channel": "통일경제뉴스",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "국회, '열린국회정보포털' 오픈…의회정보 한곳에 모아 제공",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE1oTzl4a0FBa2g4REh1X21KQU5oeXktUTZfYU1lRnVoRlpXMkpwcmlUUHY3VjB0ZncxVEF3ZHpkTThDdkRYTWZxakNyUGV3dw?oc=5",
+          "date": "Sun, 16 Feb 2020 08:00:00 GMT",
+          "channel": "전자신문",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "국감서, STS AD 관련 \"포스코 독점기업\" 문제 제기",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE56Qk9hMWROeWJXYXhfbTV6LUtLeFNwWTh2YWJfOVhwM2JDblgzTW1ScDFhZ09ZMzBRQlFaYzQwa3FTbXZuczdlVXNWV2NSMlgzUUdJV0M3RXlrWW5mejgxbUhZZGRkeDdSODNoUURjck0?oc=5",
+          "date": "Thu, 08 Oct 2020 07:00:00 GMT",
+          "channel": "스틸데일리",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        },
+        {
+          "source": "google_news",
+          "title": "김의겸, 국감서 ‘19금 사진’ 노출…배현진 “모자이크라도…”",
+          "description": "",
+          "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFB2SDF4MzhsNXBzaEQ0c3Jza2pDcHhOVEFNMER5MjdoR0FWOHpoX1BTQzlMUzUxSWs2VWJ1Nnd1MVo0SXFZUi0xcWZnYXhIb2pGUVJBTA?oc=5",
+          "date": "Fri, 15 Oct 2021 07:00:00 GMT",
+          "channel": "헤럴드경제",
+          "matchedQuery": "회의록 자동화 사례",
+          "hasNumberSignal": false
+        }
+      ]
     }
   ]
 }
