@@ -8,6 +8,21 @@
 var REPO = "hansunghee7/hansunghee7.github.io";
 var DATA_PATH = "assets/data/sns-insight.json";
 
+// 팝업에서 "최근 수집 기록"으로 보여주는 로그. 최신이 앞에 오게 쌓고
+// LOG_MAX개까지만 남긴다 -- 성공/실패 여부를 확인할 방법이 지금까지
+// 전혀 없었어서(에러도 조용히 무시했음) 추가함.
+var LOG_KEY = "recentLog";
+var LOG_MAX = 15;
+
+function pushLog(entry) {
+  chrome.storage.local.get([LOG_KEY], function (res) {
+    var log = res[LOG_KEY] || [];
+    log.unshift(entry);
+    if (log.length > LOG_MAX) log = log.slice(0, LOG_MAX);
+    chrome.storage.local.set({ recentLog: log });
+  });
+}
+
 chrome.runtime.onMessage.addListener(function (msg) {
   if (msg && msg.type === "SNS_CAPTURE") {
     handleCapture(msg);
@@ -24,6 +39,7 @@ function handleCapture(capture) {
   chrome.storage.local.get(["githubToken"], function (res) {
     if (!res.githubToken) {
       queuePending(capture);
+      pushLog({ platform: capture.platform, count: capture.count, capturedAt: capture.capturedAt, status: "pending" });
       return;
     }
     commitCapture(res.githubToken, capture, 0);
@@ -109,13 +125,24 @@ function commitCapture(token, capture, retryCount) {
       });
     })
     .then(function (putRes) {
-      if (putRes.status === 409 && retryCount < 3) {
-        // 그 사이 다른 커밋이 먼저 들어간 경우 -- sha를 다시 받아서 재시도
-        setTimeout(function () { commitCapture(token, capture, retryCount + 1); }, 800 + Math.random() * 800);
+      if (putRes.status === 409) {
+        if (retryCount < 3) {
+          // 그 사이 다른 커밋이 먼저 들어간 경우 -- sha를 다시 받아서 재시도
+          setTimeout(function () { commitCapture(token, capture, retryCount + 1); }, 800 + Math.random() * 800);
+        } else {
+          pushLog({ platform: capture.platform, count: capture.count, capturedAt: capture.capturedAt, status: "error", note: "충돌 재시도 초과" });
+        }
+        return;
+      }
+      if (putRes.ok) {
+        pushLog({ platform: capture.platform, count: capture.count, capturedAt: capture.capturedAt, status: "success" });
+      } else {
+        pushLog({ platform: capture.platform, count: capture.count, capturedAt: capture.capturedAt, status: "error", note: "HTTP " + putRes.status });
       }
     })
-    .catch(function () {
-      // 네트워크 오류 등은 조용히 무시(다음 방문 때 다시 시도됨). 개인용
-      // 도구라 실패를 알림으로 띄우기보다 다음 기회에 자연히 재시도되게 둠.
+    .catch(function (e) {
+      // 실패해도 다음 방문 때 자연히 재시도되니 알림은 안 띄우지만,
+      // 팝업의 "최근 기록"에는 남겨서 나중에 확인할 수 있게 한다.
+      pushLog({ platform: capture.platform, count: capture.count, capturedAt: capture.capturedAt, status: "error", note: String((e && e.message) || e) });
     });
 }

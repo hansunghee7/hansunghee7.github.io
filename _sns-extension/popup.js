@@ -8,9 +8,60 @@ var AUTH_URL = "https://simplifier-cms-auth.simon-8be.workers.dev/auth";
 var statusBox = document.getElementById("statusBox");
 var loginBtn = document.getElementById("loginBtn");
 var logoutBtn = document.getElementById("logoutBtn");
+var logList = document.getElementById("logList");
+
+var PLATFORM_LABELS = {
+  linkedin: "LinkedIn",
+  facebook: "Facebook",
+  instagram: "Instagram",
+  threads: "Threads",
+  naver_blog: "네이버블로그",
+  brunch: "브런치",
+  remember: "리멤버 커넥트",
+  rocketpunch: "로켓펀치",
+};
+
+var STATUS_MARK = { success: "✓", error: "✕", pending: "…" };
+
+function escapeHtml(s) {
+  return (s == null ? "" : String(s)).replace(/[&<>"']/g, function (c) {
+    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+  });
+}
+
+function formatTime(iso) {
+  try {
+    var d = new Date(iso);
+    var pad = function (n) { return String(n).padStart(2, "0"); };
+    return pad(d.getMonth() + 1) + "/" + pad(d.getDate()) + " " + pad(d.getHours()) + ":" + pad(d.getMinutes());
+  } catch (e) {
+    return "";
+  }
+}
+
+function renderLog(log) {
+  if (!log || !log.length) {
+    logList.innerHTML = '<div class="log-empty">아직 기록 없음 — 프로필 페이지를 열면 여기 쌓입니다</div>';
+    return;
+  }
+  logList.innerHTML = log.map(function (e) {
+    var label = PLATFORM_LABELS[e.platform] || e.platform;
+    var mark = STATUS_MARK[e.status] || "?";
+    var noteHtml = e.status === "error" && e.note ? '<span class="note">(' + escapeHtml(e.note) + ")</span>" : "";
+    return (
+      '<div class="log-item">' +
+      '<span class="mark ' + e.status + '">' + mark + "</span>" +
+      '<span class="plat">' + escapeHtml(label) + "</span>" +
+      '<span class="cnt">' + (e.count != null ? e.count.toLocaleString() + "명" : "") + "</span>" +
+      noteHtml +
+      '<span class="time">' + formatTime(e.capturedAt) + "</span>" +
+      "</div>"
+    );
+  }).join("");
+}
 
 function render() {
-  chrome.storage.local.get(["githubToken", "pendingCaptures"], function (res) {
+  chrome.storage.local.get(["githubToken", "pendingCaptures", "recentLog"], function (res) {
     if (res.githubToken) {
       statusBox.className = "status ok";
       statusBox.textContent = "GitHub 연결됨 — 자동 기록 작동 중";
@@ -25,8 +76,17 @@ function render() {
       loginBtn.style.display = "block";
       logoutBtn.style.display = "none";
     }
+    renderLog(res.recentLog);
   });
 }
+
+// 다른 탭에서 새로 캡처가 기록되면(recentLog 갱신) 팝업이 열려 있는 동안에도
+// 바로 반영되게 -- 팝업을 닫았다 여는 수고 없이 확인할 수 있다.
+chrome.storage.onChanged.addListener(function (changes, area) {
+  if (area === "local" && changes.recentLog) {
+    renderLog(changes.recentLog.newValue);
+  }
+});
 
 function handleMessage(e) {
   if (typeof e.data !== "string") return;

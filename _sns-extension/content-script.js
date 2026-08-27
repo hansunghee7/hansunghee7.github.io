@@ -69,6 +69,7 @@
     var count = tryExtract();
     if (count !== null) {
       clearInterval(timer);
+      console.log("[SNS 인사이트]", rule.key, "감지:", count, "-> 기록 전송");
       chrome.runtime.sendMessage({
         type: "SNS_CAPTURE",
         platform: rule.key,
@@ -78,6 +79,7 @@
       });
     } else if (attempts >= MAX_ATTEMPTS) {
       clearInterval(timer);
+      console.log("[SNS 인사이트]", rule.key, "패턴을 못 찾음 (" + MAX_ATTEMPTS + "초 시도) -- 팔로워 수 문구가 바뀌었을 수 있음");
     }
   }, 1000);
 })();
