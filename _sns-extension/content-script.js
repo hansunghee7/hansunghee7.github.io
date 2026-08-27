@@ -83,3 +83,43 @@
     }
   }, 1000);
 })();
+
+// ── 자동 채우기 파일럿 (Threads) ──────────────────────────────
+// 멀티 퍼블리싱에서 "확장으로 채우기"를 누르면 이 탭이 URL 해시에
+// #sfill=... 을 달고 열린다. 여기서 그 해시를 읽어 입력창에 텍스트를
+// 채워주기만 하고, 게시 버튼은 절대 대신 누르지 않는다 -- 이미 검수한
+// 글이라도, 마지막 제출은 사람이 직접 확인하고 눌러야 사고가 나도
+// 되돌릴 수 있다.
+//
+// Threads의 실제 새 게시물 작성 화면을 직접 보고 만든 게 아니라 첫
+// 시도라, 입력창을 못 찾거나 엉뚱한 곳에 채워지면 알려주면 고칠 수 있다.
+(function () {
+  var m = location.hash.match(/[#&]sfill=([^&]+)/);
+  if (!m) return;
+  var text = decodeURIComponent(m[1]);
+
+  var attempts = 0;
+  var MAX_ATTEMPTS = 60; // "새 게시물 작성"을 사람이 직접 열 시간까지 감안해 30초까지 기다림
+
+  var timer = setInterval(function () {
+    attempts++;
+    // 화면에 떠 있는 contenteditable 중 실제로 보이는(화면에 렌더된) 첫
+    // 번째를 입력창으로 본다 -- Threads 새 게시물 창은 보통 이 방식이다.
+    var box = [].slice.call(document.querySelectorAll('[contenteditable="true"]')).filter(function (el) {
+      var rect = el.getBoundingClientRect();
+      return rect.width > 0 && rect.height > 0;
+    })[0];
+
+    if (box) {
+      clearInterval(timer);
+      box.focus();
+      // execCommand로 넣어야 React 등이 실제 입력으로 인식한다
+      // (innerText/textContent 직접 대입은 눈에는 보여도 내부 상태에 반영이 안 될 수 있음).
+      document.execCommand("insertText", false, text);
+      console.log("[SNS 인사이트] Threads 입력창에 텍스트를 채웠습니다 -- 내용 확인 후 직접 게시해주세요.");
+    } else if (attempts >= MAX_ATTEMPTS) {
+      clearInterval(timer);
+      console.log("[SNS 인사이트] 입력창을 못 찾았습니다. '새 게시물 작성' 화면을 먼저 열어야 할 수 있습니다.");
+    }
+  }, 500);
+})();
