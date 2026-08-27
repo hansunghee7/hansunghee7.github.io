@@ -18,6 +18,7 @@
     "https://blog.naver.com/*",
     "https://connect.rememberapp.co.kr/*",
     "https://www.rocketpunch.com/*",
+    "https://brunch.co.kr/*",
     "https://api.github.com/*",
     "https://simplifier-cms-auth.simon-8be.workers.dev/*"
   ],
@@ -32,12 +33,14 @@
         "https://www.instagram.com/simplifier_seoul/*",
         "https://www.threads.com/*",
         "https://www.threads.net/*",
-        "https://blog.naver.com/simplifiers*",
+        "https://blog.naver.com/*",
         "https://connect.rememberapp.co.kr/profile/1582110*",
-        "https://www.rocketpunch.com/@simplfier*"
+        "https://www.rocketpunch.com/@simplfier*",
+        "https://brunch.co.kr/@simplifier*"
       ],
       "js": ["content-script.js"],
-      "run_at": "document_idle"
+      "run_at": "document_idle",
+      "all_frames": true
     }
   ],
   "action": {

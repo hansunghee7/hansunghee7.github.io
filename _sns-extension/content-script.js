@@ -13,12 +13,19 @@
     { test: /facebook\.com/, key: "facebook", keywords: ["팔로워", "친구", "followers", "friends"] },
     { test: /instagram\.com/, key: "instagram", keywords: ["followers", "팔로워"] },
     { test: /threads\.(com|net)/, key: "threads", keywords: ["followers", "팔로워"] },
-    { test: /blog\.naver\.com/, key: "naver_blog", keywords: ["이웃", "서로이웃"] },
+    // 네이버 블로그는 manifest의 매치 패턴을 도메인 전체로 넓혀뒀다(구형 블로그가
+    // 프레임 안에 실제 화면을 넣는 구조라 all_frames로 안쪽 프레임도 봐야 해서).
+    // 그 대신 다른 사람 블로그를 구경할 때 잘못 기록되지 않도록 URL에
+    // "simplifiers"가 있을 때만 동작하게 hrefContains로 한 번 더 좁힌다.
+    { test: /blog\.naver\.com/, key: "naver_blog", keywords: ["블로그 이웃", "서로이웃", "이웃"], hrefContains: "simplifiers" },
     { test: /rememberapp\.co\.kr/, key: "remember", keywords: ["팔로워"] },
     { test: /rocketpunch\.com/, key: "rocketpunch", keywords: ["팔로워"] },
+    { test: /brunch\.co\.kr/, key: "brunch", keywords: ["팔로워"] },
   ];
 
-  var rule = PLATFORM_RULES.filter(function (r) { return r.test.test(location.hostname); })[0];
+  var rule = PLATFORM_RULES.filter(function (r) {
+    return r.test.test(location.hostname) && (!r.hrefContains || location.href.indexOf(r.hrefContains) !== -1);
+  })[0];
   if (!rule) return;
 
   var NUMBER = "([\\d][\\d,\\.]*)\\s*(천|만|K|k|M|m)?";
