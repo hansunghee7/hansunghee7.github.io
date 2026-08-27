@@ -179,16 +179,7 @@
       writeLinks: [{ label: "LinkedIn", url: "https://www.linkedin.com/in/simplifier" }],
     },
     {
-      // autoFill: 파일럿 기능. "확장으로 채우기"를 누르면 Facebook 새 탭을
-      // 열면서 URL 해시에 본문을 실어 보내고, _sns-extension의
-      // content-script가 그 해시를 읽어 입력창에 채워준다(게시 버튼은
-      // 안 누름 -- 사람이 마지막으로 확인하고 직접 눌러야 함). 처음엔
-      // Threads로 시작했다가, Threads는 500자 제한이라 긴 글은 여러
-      // 개로 쪼개 올려야 해서 "한 박스에 통째로 채우기"와 안 맞아
-      // Facebook으로 바꿈(63,206자라 사실상 무제한, 쪼갤 필요 없음).
-      // 아직 Facebook 실제 새 게시물 화면으로 검증 못 해본 첫 시도라,
-      // 안 되면 알려주면 고칠 수 있음.
-      key: "facebook", label: "Facebook", limit: 63206, layout: "narrow", autoFill: true,
+      key: "facebook", label: "Facebook", limit: 63206, layout: "narrow",
       source: function (fm) { return (fm.channel_variants && (fm.channel_variants.linkedin_threads || fm.channel_variants.manual_copy_block)); },
       aiInstruction: "친근하고 개인적인 톤으로, 이모지를 적절히 섞어서 편하게 다듬어줘. 너무 길지 않게, 읽기 편한 호흡으로 문단을 나눠줘.",
       writeLinks: [{ label: "Facebook", url: "https://www.facebook.com/simplifier.seoul" }],
@@ -471,19 +462,11 @@
       })
       .join("");
 
-    // autoFill 채널(현재 Threads만, 파일럿) -- 새 탭을 열면서 본문을 URL
-    // 해시로 실어 보내고, 크롬 확장이 입력창에 채워준다. 게시 버튼은
-    // 일부러 안 누르게 해뒀다 -- 사람이 마지막으로 한 번 보고 직접
-    // 눌러야 사고가 나도 되돌릴 수 있다.
-    var fillBtnHtml = ch.autoFill
-      ? '<button type="button" class="btn fill-btn" title="크롬 확장이 입력창에 자동으로 채워줍니다. 게시 버튼은 직접 확인하고 눌러주세요.">🧩 확장으로 채우기</button>'
-      : "";
-
-    // 버튼 줄(새 글쓰기 열기 / 확장으로 채우기 / AI 요청 복사 / 제목 복사 / 본문 복사)을
-    // 한 줄에 쭉 나란히, 위·아래에 똑같이 둡니다 — 본문이 길어서 스크롤한
+    // 버튼 줄(새 글쓰기 열기 / AI 요청 복사 / 제목 복사 / 본문 복사)을 한
+    // 줄에 쭉 나란히, 위·아래에 똑같이 둡니다 — 본문이 길어서 스크롤한
     // 상태에서도 다시 위로 안 올라가고 바로 아래 버튼으로 복사할 수
     // 있게. 버튼이 폭보다 많아지면 줄바꿈 대신 가로 스크롤로 처리.
-    var actionsRowHtml = '<div class="row actions-row">' + writeLinksHtml + fillBtnHtml + aiBtnHtml + copyBtnsHtml + "</div>";
+    var actionsRowHtml = '<div class="row actions-row">' + writeLinksHtml + aiBtnHtml + copyBtnsHtml + "</div>";
 
     els.panel.innerHTML =
       '<div class="panel-head"><h3>' + escapeHtml(ch.label) + "</h3>" +
@@ -501,7 +484,6 @@
     var copyBtns = els.panel.querySelectorAll(".copy-btn");
     var titleBtns = els.panel.querySelectorAll(".title-btn");
     var aiBtns = els.panel.querySelectorAll(".ai-btn");
-    var fillBtns = els.panel.querySelectorAll(".fill-btn");
 
     fitActiveTextareaHeight();
 
@@ -530,17 +512,6 @@
         copyText(titleField ? titleField.value : currentTitle, function (ok) {
           flashBtn(btn, ok, "제목 복사");
         });
-      });
-    });
-
-    fillBtns.forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        var url = ch.writeLinks[0].url;
-        var sep = url.indexOf("#") === -1 ? "#" : "&";
-        window.open(url + sep + "sfill=" + encodeURIComponent(textarea.value), "_blank");
-        var original = btn.textContent;
-        btn.textContent = "새 탭 열림 — 확인해주세요";
-        setTimeout(function () { btn.textContent = original; }, 2500);
       });
     });
 
