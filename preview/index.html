@@ -185,7 +185,12 @@ layout: null
 
   .hero-wrapper { position: sticky; top: var(--nav-height); z-index: 5; height: calc(100vh - var(--nav-height)); height: calc(100dvh - var(--nav-height)); background: #080808; }
   .hero { height: 100%; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; }
-  #hero-fade { will-change: opacity; width: 100%; }
+  /* 스테이징 테스트(좁은 범위): 레이아웃(sticky/높이/간격/화살표)은 그대로 두고
+     opacity 계산 방식만 바꾼다. 스크롤마다 매 프레임 값을 새로 계산해 강제로
+     쓰는 대신, 경계를 넘을 때 클래스 하나만 토글하고 실제 애니메이션은
+     CSS transition에 맡긴다(컴포지터 처리, 메인 스레드 부담 없음). */
+  #hero-fade { will-change: opacity; width: 100%; opacity: 1; transition: opacity 0.4s ease; }
+  #hero-fade.hero-faded { opacity: 0; }
   /* body 기본색(#f5f3ee, 크림빛)이 아니라 완전한 흰색으로 선명하게 */
   .hero h1 { font-family: 'Boska', 'Source Serif 4', serif; font-weight: 200; font-size: clamp(42px, 7.3vw, 79px); line-height: 1.2; max-width: 1060px; margin: 0 auto 6px; color: #ffffff; }
   .hero h1 .accent { font-style: italic; }
@@ -203,7 +208,8 @@ layout: null
 
   .proven-wrap { position: sticky; top: var(--nav-height); z-index: 10; height: calc(100vh - var(--nav-height)); height: calc(100dvh - var(--nav-height)); background: #080808; }
   .proven-section { height: 100%; display:flex; flex-direction:column; align-items:center; justify-content:center; }
-  #proven-fade { will-change: opacity; width: 100%; }
+  #proven-fade { will-change: opacity; width: 100%; opacity: 1; transition: opacity 0.4s ease; }
+  #proven-fade.proven-faded { opacity: 0; }
 
   .reveal-grid { display:grid; grid-template-columns:repeat(5, 1fr); gap:36px 24px; width:min(1200px, 92vw); margin: 0 auto 60px; align-items: stretch; justify-items: center; }
   .reveal-grid .gitem { position:relative; display:flex; align-items:center; justify-content:center; width:100%; height: var(--final-grid-logo-height); text-decoration:none; cursor:pointer; opacity: 0; transform: translateY(18px); transition: opacity 1s ease, transform 1s ease; }
@@ -257,7 +263,8 @@ layout: null
     .reveal-stats .rs-row { gap: 28px 36px; }
   }
 
-  .story-section { position: relative; z-index: 40; background: #080808; color: #f5f3ee; padding: 60px 0 80px 0; opacity: 0; }
+  .story-section { position: relative; z-index: 40; background: #080808; color: #f5f3ee; padding: 60px 0 80px 0; opacity: 0; transition: opacity 0.6s ease; }
+  .story-section.story-shown { opacity: 1; }
   .story-label { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; color: #8f8b82; text-transform: uppercase; text-align: center; margin-bottom: 24px; }
 
   .story-essay, .story-gallery, .story-testimonials { pointer-events: auto; }
@@ -904,17 +911,24 @@ layout: null
   var provenFade = document.getElementById('proven-fade');
   var provenWrap = document.getElementById('proven-wrap');
 
+  // 값이 바뀔 때만(경계를 넘는 순간 딱 한 번) DOM에 쓰고, 실제 페이드는 CSS
+  // transition에 맡긴다. 매 프레임 style.opacity를 새 숫자로 강제 대입하던
+  // 기존 방식이 모바일에서 스크롤을 못 따라가 끊겨 보인다는 지적을 반영.
+  var heroFaded = false;
   function syncHeroFade() {
     var scrolled = window.scrollY;
     var vh = window.innerHeight;
-    var heroFadeDist = vh * 0.5;
-    var heroOpacity = Math.max(0, 1 - (scrolled / heroFadeDist));
-    if (heroFade) heroFade.style.opacity = heroOpacity;
-    if (heroWrapper) heroWrapper.style.pointerEvents = (heroOpacity <= 0) ? 'none' : 'auto';
+    var shouldFade = scrolled > vh * 0.35;
+    if (shouldFade === heroFaded) return;
+    heroFaded = shouldFade;
+    if (heroFade) heroFade.classList.toggle('hero-faded', shouldFade);
+    if (heroWrapper) heroWrapper.style.pointerEvents = shouldFade ? 'none' : 'auto';
   }
 
   var storySection = document.getElementById('story-section');
   var navHeight = 68;
+  var provenFaded = false;
+  var storyShown = false;
   function syncProvenFade() {
     if (!storySection) return;
     var vh = window.innerHeight;
@@ -922,13 +936,18 @@ layout: null
     var coverableRange = vh - navHeight;
     var covered = Math.min(1, Math.max(0, (vh - storyTop) / coverableRange));
 
-    var provenT = Math.min(1, Math.max(0, covered / CONFIG.provenFadeEnd));
-    var storyT = Math.min(1, Math.max(0, covered / CONFIG.storyFadeEnd));
+    var shouldFadeProven = covered > CONFIG.provenFadeEnd;
+    if (shouldFadeProven !== provenFaded) {
+      provenFaded = shouldFadeProven;
+      if (provenFade) provenFade.classList.toggle('proven-faded', shouldFadeProven);
+      if (provenWrap) provenWrap.style.pointerEvents = shouldFadeProven ? 'none' : 'auto';
+    }
 
-    var provenOpacity = 1 - provenT;
-    if (provenFade) provenFade.style.opacity = provenOpacity;
-    if (provenWrap) provenWrap.style.pointerEvents = (provenOpacity <= 0) ? 'none' : 'auto';
-    storySection.style.opacity = storyT;
+    var shouldShowStory = covered > 0;
+    if (shouldShowStory !== storyShown) {
+      storyShown = shouldShowStory;
+      storySection.classList.toggle('story-shown', shouldShowStory);
+    }
   }
 
   function syncAll(){ syncHeroFade(); syncProvenFade(); }
