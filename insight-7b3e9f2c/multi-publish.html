@@ -154,6 +154,7 @@
           <a class="btn" id="downloadImgBtn" download>🖼 이미지 다운로드</a>
           <a class="btn" id="openPostBtn" target="_blank" rel="noopener">📰 실제 글 보기</a>
           <a class="btn" id="openCmsBtn" target="_blank" rel="noopener">✏️ CMS에서 열기</a>
+          <label class="btn backlink-toggle"><input type="checkbox" id="backlinkToggle" checked> 🔗 원문 링크 포함</label>
         </div>
       </div>
     </div>
@@ -245,6 +246,7 @@
     downloadImgBtn: document.getElementById("downloadImgBtn"),
     openPostBtn: document.getElementById("openPostBtn"),
     openCmsBtn: document.getElementById("openCmsBtn"),
+    backlinkToggle: document.getElementById("backlinkToggle"),
     tabs: document.getElementById("channelTabs"),
     panel: document.getElementById("channelPanel"),
   };
@@ -256,6 +258,31 @@
   var activeChannelIdx = 0;
   var currentTitle = "";
   var currentBody = "";
+  var currentPost = null;
+  // 원문 백링크 -- SNS/브런치 등에 재발행할 때 simplifier.co.kr 원문으로
+  // 돌아오는 링크를 자동으로 붙여줍니다(체크 해제하면 뺄 수 있음). 백링크가
+  // 쌓여야 검색엔진·AI가 이 사이트를 더 신뢰할 수 있는 원출처로 봅니다.
+  var includeBacklink = true;
+
+  function backlinkSuffix(post) {
+    return post ? "\n\n원문: https://simplifier.co.kr" + post.url : "";
+  }
+
+  // channelState의 각 텍스트에 백링크를 붙이거나 뗍니다. 화면을 다시
+  // 그리는 건 호출하는 쪽 책임입니다(새 글을 고를 때와 체크박스를 바꿀 때
+  // 렌더링 타이밍이 달라서, 여기서 렌더링까지 하면 이중 렌더/누락이 생김).
+  function applyBacklinkToggle() {
+    if (!currentPost) return;
+    var suffix = backlinkSuffix(currentPost);
+    channelState.forEach(function (s) {
+      var hasIt = s.text.indexOf(suffix) !== -1;
+      if (includeBacklink && !hasIt) {
+        s.text += suffix;
+      } else if (!includeBacklink && hasIt) {
+        s.text = s.text.split(suffix).join("");
+      }
+    });
+  }
 
   function setStatus(html) {
     els.status.innerHTML = html;
@@ -365,6 +392,7 @@
 
     currentTitle = fm.title || post.title;
     currentBody = body;
+    currentPost = post;
     channelState = CHANNELS.map(function (ch) {
       // CMS에서 채널별로 따로 써둔 텍스트(channel_variants)가 있으면 그걸
       // 쓰고, 없으면(이 기능 이전에 쓴 글은 대부분 비어 있음) 글의 실제
@@ -380,11 +408,21 @@
       return { ch: ch, text: text };
     });
     activeChannelIdx = 0;
+    applyBacklinkToggle();
 
     renderTabs();
     renderPanel();
 
     els.selected.classList.add("show");
+  }
+
+  if (els.backlinkToggle) {
+    els.backlinkToggle.checked = includeBacklink;
+    els.backlinkToggle.addEventListener("change", function () {
+      includeBacklink = els.backlinkToggle.checked;
+      applyBacklinkToggle();
+      renderPanel();
+    });
   }
 
   // 탭 UI: SNS 이름이 상단에 나란히 있고, 고른 탭 하나만 그 채널의
