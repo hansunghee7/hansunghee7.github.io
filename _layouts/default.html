@@ -407,10 +407,12 @@
 {% else %}
     <style>
       /* 브런치 벤치마킹: GNB를 fixed로 항상 띄워두고, 그 밑단에 얇은 읽기
-         진행바를 붙인다. 커버(어두운 사진) 위에서도, 스크롤 후 흰 본문
-         위에서도 무난하게 읽히도록 blur는 유지하되, 배경은 위쪽은 짙고
-         아래로 갈수록 투명해지는 그라데이션으로 처리했다 -- 균일한 색
-         블록이 아니라 아래 경계가 본문 색과 자연스럽게 녹아들도록. */
+         진행바를 붙인다. 배경은 위쪽은 짙고 아래로 갈수록 투명해지는
+         그라데이션 -- 균일한 색 블록이 아니라 아래 경계가 본문 색과
+         자연스럽게 녹아들도록.
+         (blur는 뺐다: backdrop-filter는 색이 투명해져도 68px 박스
+         가장자리에서 "블러 있음 -> 없음"이 뚝 끊겨, 흰 배경 위에서는
+         그 경계가 오히려 뿌연 회색 띠처럼 도드라져 보였다.) */
       .log-nav {
         position: fixed;
         top: 0; left: 0; right: 0;
@@ -420,8 +422,6 @@
         gap: 12px;
         z-index: 100;
         background: linear-gradient(to bottom, rgba(8,8,8,0.75) 0%, rgba(8,8,8,0.45) 55%, rgba(8,8,8,0) 100%);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
       }
       .log-nav-logo { padding: 20px 0; margin: -20px 0; }
       .log-nav-logo img { height: 22px; display: block; opacity: 0.9; transition: opacity 0.2s; }
