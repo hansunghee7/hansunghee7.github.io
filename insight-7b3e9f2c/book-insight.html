@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>북인사이트 - Simplifier</title>
+
+<!-- 이 페이지는 검색에 노출되면 안 됩니다.
+     robots.txt에 Disallow를 쓰면 오히려 주소가 공개되므로, 여기서 noindex만 겁니다.
+     sitemap.xml에도 넣지 마세요. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+
+<style>
+  :root{
+    --bg:#ffffff; --ink:#121210; --muted:#6e6a62; --dim:#403d37;
+    --line:#c8c6bf; --line-soft:rgba(20,20,15,0.07);
+    --card:#ffffff; --good:#1f7a4f; --warn:#a3690f; --bad:#b8402a;
+    --gutter:16px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'Pretendard Variable','Pretendard',-apple-system,sans-serif;
+    -webkit-font-smoothing:antialiased; word-break:keep-all;
+  }
+  .wrap{max-width:1100px; margin:0 auto; padding:0 var(--gutter) 60px;}
+  header{padding:28px 0 18px; border-bottom:1px solid var(--line-soft); margin-bottom:24px;}
+  h1{font-size:20px; font-weight:600; margin:0 0 6px;}
+  .sub{font-size:12.5px; color:var(--muted);}
+
+  /* ---- admin shell: 사이드바 ----
+     insight-7b3e9f2c/index.html, multi-publish.html, write.html, sns-insight.html 과
+     동일한 블록입니다. 메뉴를 바꾸면 다른 파일에도 똑같이 반영해야 합니다
+     (Jekyll include가 아니라 순수 정적 HTML이라 공유가 안 됩니다). */
+  #adminShellNav{position:fixed; top:0; left:0; bottom:0; width:180px; padding:24px 14px; background:#f7f6f2; border-right:1px solid var(--line-soft); overflow-y:auto; z-index:100;}
+  #adminShellNav .shell-title{font-size:12px; font-weight:600; color:var(--muted); letter-spacing:0.05em; text-transform:uppercase; margin:0 0 16px; padding:0 10px;}
+  #adminShellNav a{display:block; padding:9px 10px; margin-bottom:2px; border-radius:6px; color:var(--dim); text-decoration:none; font-size:14px;}
+  #adminShellNav a:hover{background:var(--line-soft);}
+  #adminShellNav a.active{background:var(--ink); color:#fff;}
+  body.has-shell-nav{padding-left:180px;}
+  @media (max-width:760px){
+    #adminShellNav{position:static; width:auto; display:flex; gap:4px; overflow-x:auto; border-right:none; border-bottom:1px solid var(--line-soft); padding:10px 12px;}
+    #adminShellNav .shell-title{display:none;}
+    #adminShellNav a{white-space:nowrap; margin-bottom:0;}
+    body.has-shell-nav{padding-left:0;}
+  }
+
+  .book-section{margin-bottom:40px;}
+  .book-section h2{font-size:16px; font-weight:600; margin:0 0 3px;}
+  .book-section .book-meta{font-size:12px; color:var(--muted); margin-bottom:14px;}
+  .book-section .book-meta a{color:var(--dim);}
+
+  .tiles{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px;}
+  .tile{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px 16px 14px;}
+  .tile .label{font-size:12px; color:var(--muted); margin-bottom:8px; line-height:1.4;}
+  .tile .latest{display:flex; align-items:baseline; gap:7px;}
+  .tile .val{font-weight:500; font-size:26px; line-height:1; letter-spacing:-0.01em;}
+  .tile .val .unit{font-size:13px; color:var(--dim); margin-left:2px;}
+  .tile .delta{font-size:12px; font-weight:600;}
+  .tile .delta.up{color:var(--good);}
+  .tile .delta.down{color:var(--bad);}
+  .tile .asof{font-size:10.5px; color:var(--muted); margin:6px 0 8px;}
+  .tile svg{width:100%; height:44px; display:block;}
+  .tile .empty{font-size:12px; color:var(--muted); padding:10px 0;}
+  .tile .note{font-size:10.5px; color:var(--muted); margin-top:6px;}
+
+  .setup-note{background:#f7f6f2; border-radius:10px; padding:16px 18px; font-size:12.5px; color:var(--dim); line-height:1.7; margin-bottom:24px;}
+  .setup-note code{background:#eeece5; padding:1px 5px; border-radius:4px; font-size:11.5px;}
+  .setup-note a{color:var(--dim);}
+
+  .loading, .err{font-size:13px; color:var(--muted); padding:20px 0;}
+  .err{color:var(--bad);}
+</style>
+</head>
+<body class="has-shell-nav">
+<nav id="adminShellNav">
+  <div class="shell-title">Simplifier Studio</div>
+  <a href="/insight-7b3e9f2c/">사이트 인사이트</a>
+  <a href="/insight-7b3e9f2c/sns-insight.html">SNS 인사이트</a>
+  <a href="/insight-7b3e9f2c/book-insight.html" class="active">북인사이트</a>
+  <a href="/insight-7b3e9f2c/multi-publish.html">멀티 퍼블리싱</a>
+  <a href="/insight-7b3e9f2c/write.html">글쓰기</a>
+</nav>
+
+<div class="wrap">
+  <header>
+    <h1>북인사이트</h1>
+    <div class="sub">출간한 책들의 서점 베스트셀러 순위·판매지수 추이입니다. 순위는 낮을수록(1위에 가까울수록) 좋습니다.</div>
+  </header>
+
+  <div class="setup-note">
+    <strong>데이터는 매일 새벽 06:41(KST)에 자동 갱신됩니다.</strong>
+    「UX의 언어들」은 <a href="https://cinaeng.github.io/ux-book-tracker/" target="_blank" rel="noopener noreferrer">별도 트래커</a>가
+    수집한 결과를 그대로 가져와 보여줍니다. 「기획자의 질문법」은 이 저장소가
+    직접 예스24·알라딘·교보문고·리디북스를 수집합니다. 지금 당장 갱신하려면
+    GitHub Actions에서 <code>Fetch book insight</code> 워크플로를 수동 실행하세요.
+  </div>
+
+  <section class="book-section" id="uxBookSection">
+    <h2>UX의 언어들</h2>
+    <div class="book-meta">한성희·신행철 저 · 파지트 · <a href="https://cinaeng.github.io/ux-book-tracker/" target="_blank" rel="noopener noreferrer">전체 히스토리 보기 ↗</a></div>
+    <div id="uxBookTiles" class="tiles"><div class="loading">데이터 불러오는 중…</div></div>
+  </section>
+
+  <section class="book-section" id="questionBookSection">
+    <h2>기획자의 질문법</h2>
+    <div class="book-meta">한성희 저 · 파지트 · 2025-06-13 출간</div>
+    <div id="questionBookTiles" class="tiles"><div class="loading">데이터 불러오는 중…</div></div>
+  </section>
+</div>
+
+<script>
+(function () {
+  function escapeHtml(s) {
+    return (s == null ? "" : String(s)).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  /* series: [{date, value}] (value는 null 가능, 렌더 전에 걸러짐).
+     invert=true면 "낮을수록 좋음"(순위)인 지표 -- 선을 뒤집어서 좋아질수록
+     위로 올라가는 것처럼 보이게 그린다. */
+  function sparkline(series, invert) {
+    var w = 200, h = 44, pad = 4;
+    var values = series.map(function (e) { return e.value; });
+    var min = Math.min.apply(null, values);
+    var max = Math.max.apply(null, values);
+    var range = max - min || 1;
+
+    var points = series.map(function (e, i) {
+      var x = series.length === 1 ? w / 2 : pad + (i / (series.length - 1)) * (w - pad * 2);
+      var normalized = invert ? (max - e.value) : (e.value - min);
+      var y = h - pad - (normalized / range) * (h - pad * 2);
+      return x.toFixed(1) + "," + y.toFixed(1);
+    });
+
+    var path = "M" + points.join(" L");
+    var last = points[points.length - 1].split(",");
+
+    return (
+      '<svg viewBox="0 0 ' + w + " " + h + '" preserveAspectRatio="none">' +
+      '<path d="' + path + '" fill="none" stroke="#121210" stroke-width="2" vector-effect="non-scaling-stroke"/>' +
+      '<circle cx="' + last[0] + '" cy="' + last[1] + '" r="3" fill="#121210"/>' +
+      "</svg>"
+    );
+  }
+
+  /* metric = { label, unit, higherIsBetter, note }
+     series = [{date, value}] (null 값은 이미 걸러서 넘김) */
+  function tile(metric, series) {
+    var clean = series.filter(function (e) { return e.value != null; });
+    var label = '<div class="label">' + escapeHtml(metric.label) + "</div>";
+
+    if (!clean.length) {
+      return '<div class="tile">' + label + '<div class="empty">권외 · 데이터 없음</div></div>';
+    }
+
+    var latest = clean[clean.length - 1];
+    var prev = clean.length > 1 ? clean[clean.length - 2] : null;
+    var delta = prev ? latest.value - prev.value : null;
+    var deltaHtml = "";
+    if (delta) {
+      var isGood = metric.higherIsBetter ? delta > 0 : delta < 0;
+      deltaHtml =
+        '<span class="delta ' + (isGood ? "up" : "down") + '">' +
+        (delta > 0 ? "▲" : "▼") + Math.abs(delta) +
+        "</span>";
+    }
+
+    var valDisplay = typeof latest.value === "number" && metric.unit === "위"
+      ? latest.value.toLocaleString()
+      : latest.value.toLocaleString();
+
+    return (
+      '<div class="tile">' + label +
+      '<div class="latest"><span class="val">' + valDisplay +
+      (metric.unit ? '<span class="unit">' + escapeHtml(metric.unit) + "</span>" : "") +
+      "</span>" + deltaHtml + "</div>" +
+      '<div class="asof">' + escapeHtml(latest.date) + " 기준 · " + clean.length + "개 기록</div>" +
+      sparkline(clean, !metric.higherIsBetter) +
+      (metric.note ? '<div class="note">' + escapeHtml(metric.note) + "</div>" : "") +
+      "</div>"
+    );
+  }
+
+  function staticTile(label, valueText, note) {
+    return (
+      '<div class="tile"><div class="label">' + escapeHtml(label) + '</div>' +
+      '<div class="latest"><span class="val">' + escapeHtml(valueText) + "</span></div>" +
+      (note ? '<div class="note">' + escapeHtml(note) + "</div>" : "") +
+      "</div>"
+    );
+  }
+
+  /* ── UX의 언어들 (cinaeng/ux-book-tracker 미러) ── */
+  fetch("/assets/data/ux-book-history.json?t=" + Date.now(), { cache: "no-store" })
+    .then(function (r) { if (!r.ok) throw { notYet: r.status === 404 }; return r.json(); })
+    .then(renderUxBook)
+    .catch(function (e) { renderError("uxBookTiles", e); });
+
+  function renderUxBook(records) {
+    if (!Array.isArray(records) || !records.length) { renderError("uxBookTiles", { notYet: true }); return; }
+
+    var dated = records.map(function (r) { return { date: (r.ts || "").slice(0, 10), r: r }; });
+
+    var metrics = [
+      { key: "mkt", label: "예스24 마케팅/세일즈", unit: "위", higherIsBetter: false, get: function (r) { return r.yes24 && r.yes24.mkt_rank; } },
+      { key: "ad", label: "예스24 광고/홍보/PR", unit: "위", higherIsBetter: false, get: function (r) { return r.yes24 && r.yes24.ad_rank; } },
+      { key: "web", label: "예스24 웹사이트", unit: "위", higherIsBetter: false, get: function (r) { return r.yes24 && r.yes24.web_rank; } },
+      { key: "uxui", label: "예스24 UX/UI", unit: "위", higherIsBetter: false, get: function (r) { return r.yes24 && r.yes24.uxui_rank; } },
+      { key: "design", label: "예스24 디자인", unit: "위", higherIsBetter: false, get: function (r) { return r.yes24 && r.yes24.design_rank; } },
+      { key: "econ", label: "예스24 경제경영 종합", unit: "위", higherIsBetter: false, get: function (r) { return r.yes24 && r.yes24.econ_rank; } },
+      { key: "sales_index", label: "예스24 판매지수", unit: "", higherIsBetter: true, get: function (r) { return r.yes24 && r.yes24.sales_index; } },
+      { key: "reviews", label: "예스24 리뷰 수", unit: "건", higherIsBetter: true, get: function (r) { return r.yes24 && r.yes24.reviews; } },
+      { key: "aladin_sp", label: "알라딘 세일즈포인트", unit: "", higherIsBetter: true, get: function (r) { return r.aladin && r.aladin.sales_point; } },
+      { key: "kyobo_badge", label: "교보문고 온라인 주간", unit: "위", higherIsBetter: false, get: function (r) { return r.kyobo_meta && r.kyobo_meta.badge_rank; } },
+    ];
+
+    var html = metrics.map(function (m) {
+      var series = dated.map(function (d) { return { date: d.date, value: m.get(d.r) }; });
+      return tile(m, series);
+    }).join("");
+
+    document.getElementById("uxBookTiles").innerHTML = html;
+  }
+
+  /* ── 기획자의 질문법 (자체 수집) ── */
+  fetch("/assets/data/book-insight.json?t=" + Date.now(), { cache: "no-store" })
+    .then(function (r) { if (!r.ok) throw { notYet: r.status === 404 }; return r.json(); })
+    .then(renderQuestionBook)
+    .catch(function (e) { renderError("questionBookTiles", e); });
+
+  function renderQuestionBook(data) {
+    var history = (data && data.history) || [];
+    if (!history.length) { renderError("questionBookTiles", { notYet: true }); return; }
+
+    var metrics = [
+      { key: "y24cat", label: "예스24 기획/정보/시간관리", unit: "위", higherIsBetter: false, get: function (r) { return r.yes24 && r.yes24.category_rank; } },
+      { key: "y24si", label: "예스24 판매지수", unit: "", higherIsBetter: true, get: function (r) { return r.yes24 && r.yes24.sales_index; } },
+      { key: "y24rv", label: "예스24 리뷰 수", unit: "건", higherIsBetter: true, get: function (r) { return r.yes24 && r.yes24.reviews; } },
+      { key: "alsp", label: "알라딘 세일즈포인트", unit: "", higherIsBetter: true, get: function (r) { return r.aladin && r.aladin.sales_point; } },
+      { key: "alplan", label: "알라딘 기획", unit: "위", higherIsBetter: false, get: function (r) { return r.aladin && r.aladin.planning_rank; } },
+      { key: "alinfo", label: "알라딘 정보관리", unit: "위", higherIsBetter: false, get: function (r) { return r.aladin && r.aladin.info_mgmt_rank; } },
+      { key: "kybadge", label: "교보문고 주간베스트(자기계발)", unit: "위", higherIsBetter: false, get: function (r) { return r.kyobo && r.kyobo.badge_rank; } },
+      { key: "kycat", label: "교보문고 기획력", unit: "위", higherIsBetter: false, get: function (r) { return r.kyobo && r.kyobo.category_rank; } },
+    ];
+
+    var html = metrics.map(function (m) {
+      var series = history.map(function (r) { return { date: r.date, value: m.get(r) }; });
+      return tile(m, series);
+    }).join("");
+
+    var latest = history[history.length - 1];
+    var ridi = latest && latest.ridibooks;
+    if (ridi) {
+      html += staticTile(
+        "리디북스 (참고)",
+        ridi.rating ? ridi.rating.toFixed(1) + "점" : "평가 없음",
+        "평가 " + (ridi.rating_count || 0) + "명 · 베스트셀러 순위 없음(전자책 전용 플랫폼)"
+      );
+    }
+
+    document.getElementById("questionBookTiles").innerHTML = html;
+  }
+
+  function renderError(elId, e) {
+    var el = document.getElementById(elId);
+    if (e && e.notYet) {
+      el.innerHTML = '<div class="empty">아직 수집 전입니다. GitHub Actions에서 <code>Fetch book insight</code> 워크플로가 한 번 돌면 채워집니다 (매일 06:41 자동 실행).</div>';
+    } else {
+      el.innerHTML = '<div class="err">불러오기 실패했습니다: ' + escapeHtml(String(e && e.message || e)) + "</div>";
+    }
+  }
+})();
+</script>
+</body>
+</html>

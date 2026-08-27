@@ -1,0 +1,71 @@
+name: Fetch book insight
+
+# 북인사이트(insight-7b3e9f2c/book-insight.html)가 읽는 데이터 2개를 매일
+# 한 번씩 갱신한다.
+#
+#   1. 「UX의 언어들」 -- cinaeng/ux-book-tracker가 이미 매일 새벽 4시(KST)에
+#      수집해둔 결과를 그대로 미러링만 한다 (재스크래핑 안 함).
+#   2. 「기획자의 질문법」 -- 이 저장소에서 직접 예스24·알라딘·교보문고·
+#      리디북스를 수집한다 (scripts/fetch_book_insight.py, Playwright 필요).
+#
+# 두 스텝을 각각 독립적으로 커밋한다 -- 2번이 스크래핑 중 타임아웃/사이트
+# 구조 변경으로 실패해도, 이미 끝난 1번의 미러링 커밋은 살아남아야 한다.
+
+on:
+  schedule:
+    - cron: "41 21 * * *"  # 매일 06:41 KST — cinaeng 쪽 04:00 KST 수집 이후 & 기존 :13/:27과도 안 겹치게 분산
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-book-insight
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Mirror UX의 언어들 history
+        run: python scripts/mirror_ux_book.py
+
+      - name: Commit UX 미러 if any
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/data/ux-book-history.json
+          if git diff --cached --quiet; then
+            echo "no changes to commit"
+          else
+            git commit -m "chore: UX의 언어들 순위 미러링 [skip ci]"
+            git push
+          fi
+
+      - name: Install Playwright
+        run: |
+          pip install playwright
+          playwright install --with-deps chromium
+
+      - name: Fetch 기획자의 질문법 rankings
+        run: python scripts/fetch_book_insight.py
+
+      - name: Commit 기획자의 질문법 snapshot if any
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/data/book-insight.json
+          if git diff --cached --quiet; then
+            echo "no changes to commit"
+          else
+            git commit -m "chore: 기획자의 질문법 순위 자동 수집 [skip ci]"
+            git push
+          fi
