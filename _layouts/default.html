@@ -118,15 +118,18 @@
         .index-mode .cover-bottom-left { text-align: left; position: relative; }
         .index-mode .cover-title { font-family: 'Noto Serif KR', serif; font-size: 32px; font-weight: 200; margin: 0; line-height: 1.2; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
 
-        /* 브런치와 동일한 방식: 커버를 position:sticky로 화면 상단에 고정해두고,
-           바로 아래 본문(.article-body, 불투명 흰 배경 + z-index 높음)이 정상적인
-           문서 흐름으로 스크롤해 올라오면서 커버 위를 자연스럽게 덮습니다.
+        /* 브런치처럼 커버를 position:sticky로 화면 상단에 고정해두고, 바로 아래
+           본문(.article-body, 불투명 흰 배경 + z-index 높음)이 정상적인 문서
+           흐름으로 스크롤해 올라오면서 커버 위를 자연스럽게 덮습니다.
            (예전엔 스크롤 이벤트로 매 프레임 height/opacity를 JS로 재계산했는데,
            모바일에서 스크롤 이벤트가 프레임마다 고르게 안 들어와 "가속페달을
            밟았다 뗐다" 하는 것처럼 뚝뚝 끊겨 보였다. sticky는 브라우저 컴포지터가
-           처리해 이런 끊김이 없다.) */
+           처리해 이런 끊김이 없다.)
+           타이틀이 스크롤에 맞춰 살짝 접히는 효과는 브런치엔 없지만 별도로
+           요청받아 추가함 -- 아래 스크립트에서 transform/opacity만 rAF로
+           갱신하므로 sticky의 매끄러움은 그대로 유지된다. */
         .cover-wrap.post-mode { position: sticky; top: 0; z-index: 1; height: 100vh; padding: 40px; overflow: hidden; }
-        .post-mode .cover-bottom-left { position: absolute; bottom: 120px; left: 40px; padding-right: 80px; text-align: left; }
+        .post-mode .cover-bottom-left { position: absolute; bottom: 120px; left: 40px; padding-right: 80px; text-align: left; transform-origin: left bottom; will-change: transform, opacity; }
         .post-mode .cover-title { font-family: 'Noto Serif KR', serif; font-size: 42px; font-weight: 200; margin: 0; line-height: 1.35; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
         .post-mode .cover-sub { font-size: 14px; font-weight: 300; opacity: 0.8; font-style: italic; margin-top: 16px; text-shadow: 0 1px 5px rgba(0,0,0,0.5); }
 
@@ -481,7 +484,35 @@
     document.addEventListener("DOMContentLoaded", function() {
         // 포스트 커버는 CSS position:sticky(위 .cover-wrap.post-mode)로 화면
         // 상단에 고정되고, 아래 본문이 스크롤에 따라 자연스럽게 덮습니다.
-        // 브라우저 컴포지터가 처리하는 영역이라 여기 JS는 관여하지 않습니다.
+        //
+        // 타이틀은 그 위에서 스크롤에 맞춰 살짝 접히듯 축소+페이드되는데,
+        // 이번엔 height처럼 레이아웃을 다시 계산해야 하는 속성 대신
+        // transform/opacity(합성 단계에서만 처리되는 속성)만 쓰고,
+        // scroll 이벤트마다 바로 그리지 않고 requestAnimationFrame으로
+        // 한 프레임에 한 번만 그리도록 묶어서(rAF 쓰로틀) 끊김을 없앴다.
+        const coverWrap = document.getElementById('coverWrap');
+        const coverTitleBox = document.getElementById('coverTitleBox');
+
+        if (coverWrap && coverWrap.classList.contains('post-mode') && coverTitleBox) {
+            const foldRange = window.innerHeight * 0.65;
+            let ticking = false;
+
+            function applyFold() {
+                const progress = Math.min(1, Math.max(0, window.scrollY / foldRange));
+                coverTitleBox.style.transform = 'scale(' + (1 - progress * 0.18) + ')';
+                coverTitleBox.style.opacity = 1 - progress;
+                ticking = false;
+            }
+
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    requestAnimationFrame(applyFold);
+                    ticking = true;
+                }
+            }, { passive: true });
+
+            applyFold();
+        }
 
         if (articleBody) {
             const coverImg = articleBody.querySelector('img[alt="대표 이미지"]');
