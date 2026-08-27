@@ -93,6 +93,8 @@
   .panel-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; flex-wrap:wrap; gap:8px;}
   .panel-head h3{margin:0; font-size:15px; font-weight:600;}
   .panel-head .badge{font-size:11px; font-weight:500; color:var(--muted); text-transform:uppercase; letter-spacing:0.04em;}
+  .write-links-row{margin-bottom:16px;}
+  .write-links-row .write-link{background:#f7f6f2;}
   #channelPanel .title-field{width:100%; font-family:inherit; padding:10px 2px; border:none; border-bottom:1px solid var(--line-soft); margin-bottom:14px; color:var(--ink); background:transparent;}
   #channelPanel .title-field:focus{outline:none; border-bottom-color:var(--ink);}
   /* wide: 실제 화면처럼 제목이 큼직하게. narrow: 실제 서비스엔 제목칸이
@@ -172,6 +174,7 @@
       key: "linkedin", label: "LinkedIn", limit: 3000, layout: "narrow",
       source: function (fm) { return (fm.channel_variants && (fm.channel_variants.linkedin_threads || fm.channel_variants.manual_copy_block)); },
       aiInstruction: "전문적이고 통찰력 있는 톤으로, 문단 사이 줄바꿈을 넉넉히 넣어 가독성 좋게, 3000자 이내로 다듬어줘. 마지막 줄에 관련 해시태그 3~5개를 붙여줘.",
+      writeLinks: [{ label: "LinkedIn", url: "https://www.linkedin.com/in/simplifier" }],
     },
     {
       // 같은 LinkedIn이라도 일반 포스트(제목 없이 좁은 폭)와 뉴스레터/아티클
@@ -180,21 +183,25 @@
       key: "linkedin_newsletter", label: "LinkedIn 뉴스레터", limit: null, layout: "wide",
       source: function (fm) { return fm.channel_variants && fm.channel_variants.manual_copy_block; },
       aiInstruction: null,
+      writeLinks: [{ label: "LinkedIn 뉴스레터", url: "https://www.linkedin.com/article/new/" }],
     },
     {
       key: "threads", label: "Threads", limit: 500, layout: "narrow",
       source: function (fm) { return (fm.channel_variants && (fm.channel_variants.linkedin_threads || fm.channel_variants.manual_copy_block)); },
       aiInstruction: "짧고 캐주얼한 말투로, 500자 이내로 핵심만 압축해줘. 첫 문장이 스크롤을 멈추게 할 만큼 강렬해야 해. 해시태그는 1~2개만.",
+      writeLinks: [{ label: "Threads", url: "https://www.threads.com/?hl=ko" }],
     },
     {
       key: "facebook", label: "Facebook", limit: 63206, layout: "narrow",
       source: function (fm) { return (fm.channel_variants && (fm.channel_variants.linkedin_threads || fm.channel_variants.manual_copy_block)); },
       aiInstruction: "친근하고 개인적인 톤으로, 이모지를 적절히 섞어서 편하게 다듬어줘. 너무 길지 않게, 읽기 편한 호흡으로 문단을 나눠줘.",
+      writeLinks: [{ label: "Facebook", url: "https://www.facebook.com/simplifier.seoul" }],
     },
     {
       key: "instagram", label: "Instagram", limit: 2200, layout: "narrow",
       source: function (fm) { return (fm.channel_variants && (fm.channel_variants.instagram_caption || fm.channel_variants.linkedin_threads || fm.channel_variants.manual_copy_block)); },
       aiInstruction: "감성적인 캡션 스타일로, 문장을 짧게 끊어서 다듬어줘. 마지막 줄에 관련 해시태그 10~15개를 붙여줘.",
+      writeLinks: [{ label: "Instagram", url: "https://www.instagram.com/simplifier_seoul/" }],
     },
     {
       // 브런치·네이버블로그는 실제로 제목칸이 따로 있는 넓은 장문 에디터라서
@@ -204,16 +211,22 @@
       key: "manual", label: "브런치 · 네이버블로그", limit: null, layout: "wide",
       source: function (fm) { return fm.channel_variants && fm.channel_variants.manual_copy_block; },
       aiInstruction: null,
+      writeLinks: [
+        { label: "브런치", url: "https://brunch.co.kr/@simplifier" },
+        { label: "네이버블로그", url: "https://blog.naver.com/simplifiers?Redirect=Write&" },
+      ],
     },
     {
       key: "remember", label: "리멤버 커넥트", limit: 1500, layout: "narrow",
       source: function (fm) { return fm.channel_variants && fm.channel_variants.manual_copy_block; },
       aiInstruction: "커리어/인사이트 커뮤니티에 어울리는 담백한 톤으로, 제목 없이 첫 문장에서 바로 훅을 만들어서 1500자 이내로 압축해줘.",
+      writeLinks: [{ label: "리멤버 커넥트", url: "https://connect.rememberapp.co.kr/profile/1582110/posts" }],
     },
     {
       key: "rocketpunch", label: "로켓펀치", limit: 2000, layout: "narrow",
       source: function (fm) { return fm.channel_variants && fm.channel_variants.manual_copy_block; },
       aiInstruction: "스타트업 종사자들이 보는 커리어 피드에 어울리는 톤으로, 제목 없이 2000자 이내로 압축해줘.",
+      writeLinks: [{ label: "로켓펀치", url: "https://www.rocketpunch.com/@simplfier/post" }],
     },
   ];
 
@@ -430,10 +443,21 @@
         '<button type="button" class="btn primary copy-btn">본문 복사</button>'
       : '<button type="button" class="btn primary copy-btn">복사</button>';
 
+    // 실제 SNS 쓰기 화면은 대부분 iframe으로 못 엽니다(LinkedIn/Threads/
+    // Facebook/Instagram/브런치/로켓펀치는 보안 정책으로 다른 사이트에서
+    // iframe에 넣는 걸 아예 차단함). 그래서 새 탭으로 열어, 옆 창으로
+    // 끌어놓고 왼쪽에서 복사한 걸 오른쪽에 붙여넣는 식으로 씁니다.
+    var writeLinksHtml = (ch.writeLinks || [])
+      .map(function (w) {
+        return '<a class="btn write-link" href="' + escapeHtml(w.url) + '" target="_blank" rel="noopener">🔗 ' + escapeHtml(w.label) + " 새 글쓰기 열기</a>";
+      })
+      .join("");
+
     els.panel.innerHTML =
       '<div class="panel-head"><h3>' + escapeHtml(ch.label) + "</h3>" +
       (ch.limit ? '<span class="badge">권장 ' + ch.limit + "자 이내</span>" : "") +
       "</div>" +
+      '<div class="row write-links-row">' + writeLinksHtml + "</div>" +
       titleFieldHtml +
       '<textarea placeholder="' + escapeHtml(placeholder) + '">' + escapeHtml(state.text) + "</textarea>" +
       '<div class="charcount">0자</div>' +
