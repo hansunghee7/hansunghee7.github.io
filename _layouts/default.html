@@ -137,7 +137,9 @@
         .article-body { max-width: 1100px; width: 100%; min-width: 0; box-sizing: border-box; margin: 0 auto; padding: 40px 20px 40px; background-color: #fff; position: relative; }
         /* 본문 시트는 화면 전체 폭(흰 배경)이고, 글은 그 안의 700px 중앙 컬럼에 들어갑니다.
            max-width로 폭을 잡으면 시트 자체가 좁아져 커버 위에 뜬 박스처럼 보입니다. */
-        .post-mode + .article-body { box-sizing: border-box; width: 100%; max-width: none; padding-left: max(16px, calc((100% - 700px) / 2)); padding-right: max(16px, calc((100% - 700px) / 2)); padding-top: 60px; padding-bottom: 0 !important; z-index: 2; }
+        /* padding-top: 84px -- 위 .log-nav가 이제 fixed(항상 떠 있음)라
+           본문이 그 밑에서 가려지지 않도록 nav 높이(68px)+여백만큼 띄운다. */
+        .post-mode + .article-body { box-sizing: border-box; width: 100%; max-width: none; padding-left: max(16px, calc((100% - 700px) / 2)); padding-right: max(16px, calc((100% - 700px) / 2)); padding-top: 84px; padding-bottom: 0 !important; z-index: 2; }
         .article-body p { font-size: 15px; font-weight: 300; line-height: 2; letter-spacing: 0.8px; margin-bottom: 30px; }
         @media (max-width: 600px) {
             .article-body p { font-size: 17px; letter-spacing: 0.3px; }
@@ -260,6 +262,8 @@
         }
 
         body.is-swipe-mode .cover-wrap.post-mode { display: none !important; }
+
+        body.is-swipe-mode .log-nav-progress { display: none !important; }
 
         body.is-swipe-mode .log-nav {
             display: flex !important;
@@ -402,15 +406,21 @@
     {% include header.html %}
 {% else %}
     <style>
+      /* 브런치 벤치마킹: GNB를 fixed로 항상 띄워두고, 그 밑단에 얇은 읽기
+         진행바를 붙인다. 커버(어두운 사진) 위에서도, 스크롤 후 흰 본문
+         위에서도 무난하게 읽히도록 반투명 + blur로 처리 -- 스크롤 위치에
+         따라 배경을 갈아끼우는 대신 한 가지 톤으로 통일해 더 단순하다. */
       .log-nav {
-        position: absolute;
+        position: fixed;
         top: 0; left: 0; right: 0;
         height: 68px;
         display: flex; align-items: center; justify-content: center;
         padding: 0 32px;
         gap: 12px;
         z-index: 100;
-        background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 100%);
+        background: rgba(8,8,8,0.55);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
       }
       .log-nav-logo { padding: 20px 0; margin: -20px 0; }
       .log-nav-logo img { height: 22px; display: block; opacity: 0.9; transition: opacity 0.2s; }
@@ -432,13 +442,18 @@
         background-color: #f5f3ee;
         color: #080808;
       }
+
+      /* 읽기 진행바: width 대신 scaleX(transform)로 갱신 -- 매 스크롤마다
+         레이아웃을 다시 계산하지 않고 컴포지터 단계에서만 처리된다. */
+      .log-nav-progress { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; overflow: hidden; }
+      .log-nav-progress-bar { height: 100%; width: 100%; background: #f5f3ee; transform: scaleX(0); transform-origin: left center; will-change: transform; }
     </style>
-    
+
     <header class="log-nav" id="mainLogNav">
       <a href="/" class="log-nav-logo">
         <img src="/log_assets/images/logo_white.png" alt="Simplifier">
       </a>
-      
+
       {% if page.category %}
       <a href="/log.html?cat={{ page.category | url_encode }}" class="log-nav-category">
         {{ page.category }}
@@ -448,6 +463,8 @@
       <span class="swipe-header-title" id="swipeHeaderTitle" style="display:none;">
         {{ page.title }}
       </span>
+
+      <div class="log-nav-progress"><div class="log-nav-progress-bar" id="readProgressBar"></div></div>
     </header>
 {% endif %}
 
@@ -485,33 +502,42 @@
         // 포스트 커버는 CSS position:sticky(위 .cover-wrap.post-mode)로 화면
         // 상단에 고정되고, 아래 본문이 스크롤에 따라 자연스럽게 덮습니다.
         //
-        // 타이틀은 그 위에서 스크롤에 맞춰 살짝 접히듯 축소+페이드되는데,
-        // 이번엔 height처럼 레이아웃을 다시 계산해야 하는 속성 대신
+        // 타이틀은 그 위에서 스크롤에 맞춰 살짝 접히듯 축소+페이드되고,
+        // 상단 고정 GNB 밑단의 읽기 진행바(브런치 벤치마킹)도 같이 채워진다.
+        // 이번엔 height/width처럼 레이아웃을 다시 계산해야 하는 속성 대신
         // transform/opacity(합성 단계에서만 처리되는 속성)만 쓰고,
         // scroll 이벤트마다 바로 그리지 않고 requestAnimationFrame으로
         // 한 프레임에 한 번만 그리도록 묶어서(rAF 쓰로틀) 끊김을 없앴다.
         const coverWrap = document.getElementById('coverWrap');
         const coverTitleBox = document.getElementById('coverTitleBox');
+        const readProgressBar = document.getElementById('readProgressBar');
 
         if (coverWrap && coverWrap.classList.contains('post-mode') && coverTitleBox) {
             const foldRange = window.innerHeight * 0.65;
             let ticking = false;
 
-            function applyFold() {
-                const progress = Math.min(1, Math.max(0, window.scrollY / foldRange));
-                coverTitleBox.style.transform = 'scale(' + (1 - progress * 0.18) + ')';
-                coverTitleBox.style.opacity = 1 - progress;
+            function applyScrollEffects() {
+                const foldProgress = Math.min(1, Math.max(0, window.scrollY / foldRange));
+                coverTitleBox.style.transform = 'scale(' + (1 - foldProgress * 0.18) + ')';
+                coverTitleBox.style.opacity = 1 - foldProgress;
+
+                if (readProgressBar) {
+                    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+                    const readProgress = scrollable > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollable)) : 0;
+                    readProgressBar.style.transform = 'scaleX(' + readProgress + ')';
+                }
+
                 ticking = false;
             }
 
             window.addEventListener('scroll', function() {
                 if (!ticking) {
-                    requestAnimationFrame(applyFold);
+                    requestAnimationFrame(applyScrollEffects);
                     ticking = true;
                 }
             }, { passive: true });
 
-            applyFold();
+            applyScrollEffects();
         }
 
         if (articleBody) {
