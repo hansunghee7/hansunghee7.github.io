@@ -188,12 +188,11 @@ layout: null
        경계에서 히어로를 통째로 페이드아웃 → "멈춰 있다 갑자기 증발"하는 느낌.
      - 변경: 히어로도 페이지와 함께 자연스럽게 스크롤되어 올라간다(브라우저 네이티브
        스크롤 = 어떤 기기에서도 가장 매끄러움). JS 스크롤 계산은 완전히 제거. */
-  /* v5: height:100dvh + flex 중앙정렬은 sticky로 한 화면 꽉 채워 고정하던 시절의
-     흔적이다. 지금은 일반 흐름이라 뷰포트가 콘텐츠보다 크면 그 차이만큼(측정해보니
-     아래쪽에만 약 380px) 죽은 여백이 그대로 남아 Proven과의 간격이 벌어져 보였다.
-     콘텐츠 높이 + 패딩으로 바꿔 실제 필요한 만큼만 차지하도록 정리. */
-  .hero-wrapper { position: relative; z-index: 5; background: #080808; padding: 180px 0 120px; }
-  .hero { display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; }
+  /* v6: 첫 화면엔 히어로 메시지만 보여야 한다는 요청으로 한 화면 꽉 채우는
+     높이를 되돌림(v5에서 height:100dvh를 걷어냈던 것과 반대 방향). 대신
+     Proven 이하 섹션 간격은 전체적으로 더 넉넉하게 벌렸다(아래 참고). */
+  .hero-wrapper { position: relative; z-index: 5; height: calc(100vh - var(--nav-height)); height: calc(100dvh - var(--nav-height)); background: #080808; }
+  .hero { height: 100%; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; }
   #hero-fade { width: 100%; }
 
   /* 첫 진입 연출: 문구가 아래에서 살짝 떠오르며 나타난다(1회성, 컴포지터 처리) */
@@ -217,7 +216,6 @@ layout: null
   @media (max-width:760px){
     .hero h1 .br-m { display: inline; }
     .hero h1 .br-d { display: none; }
-    .hero-wrapper { padding: 120px 0 64px; }
   }
   .hero-footnote { max-width: 480px; margin: 48px auto 0; text-align:left; }
   .hero-footnote .q { font-weight:300; font-size: 15px; line-height:1.9; color:#8f8b82; letter-spacing:-0.01em; }
@@ -229,7 +227,7 @@ layout: null
   /* 히어로가 sticky로 화면 높이만큼 고정되어 있을 땐 120px가 적당했지만,
      이제 히어로 자체가 flex 중앙정렬로 이미 여백을 머금고 있어 두 여백이
      겹쳐 간격이 과하게 벌어졌다. 64px로 줄임. */
-  .proven-section { padding: 64px 0 60px; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .proven-section { padding: 84px 0 76px; display:flex; flex-direction:column; align-items:center; justify-content:center; }
   #proven-fade { width: 100%; }
 
   .reveal-grid { display:grid; grid-template-columns:repeat(5, 1fr); gap:36px 24px; width:min(1200px, 92vw); margin: 0 auto 60px; align-items: stretch; justify-items: center; }
@@ -257,8 +255,8 @@ layout: null
   .proven-label { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; color: #8f8b82; text-transform: uppercase; text-align: center; margin: 0 auto 36px; max-width: min(1200px, 92vw); }
   
   @media (max-width:760px){
-    /* 모바일 여백은 데스크톱(64px/60px)보다 좁게 */
-    .proven-section { padding: 48px 0 36px; }
+    /* 모바일 여백은 데스크톱(84px/76px)보다 좁게 */
+    .proven-section { padding: 64px 0 48px; }
     /* 92vw로 자체 폭을 잡던 것을 공통 16px 거터에 맞춥니다(좌우 16px씩 = 32px). */
     .proven-label { margin-bottom: 32px; max-width: calc(100% - 32px); }
     .reveal-grid { grid-template-columns: repeat(3, 1fr); gap:26px 12px; margin-bottom: 72px; width: calc(100% - 32px); }
@@ -285,8 +283,8 @@ layout: null
   .story-essay p.intro-p::first-letter { font-family: 'Boska', serif; font-weight: 300; font-size: 5.2rem; float: left; line-height: 0.78; padding-right: 18px; padding-top: 6px; color: #f5f3ee; }
   @media (max-width:700px){
     .story-essay p.intro-p::first-letter { font-size: 3.6rem; padding-right: 12px; padding-top: 4px; }
-    /* 섹션 내부 하위 블록 간 여백(같은 배경색 안에서 이어지는 요소들) 기준값: 72px */
-    .story-essay { margin-bottom: 72px; }
+    /* 섹션 내부 하위 블록 간 여백(같은 배경색 안에서 이어지는 요소들) 기준값: 96px */
+    .story-essay { margin-bottom: 90px; }
   }
 
   .story-gallery { width: min(1200px, 94vw); margin: 0 auto 140px auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
@@ -301,7 +299,7 @@ layout: null
   @media (max-width:700px){ .gallery-overlay span { font-size: 11px; } }
 
   @media (max-width:760px){
-    .story-gallery { grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 72px; }
+    .story-gallery { grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 90px; }
     .story-gallery .gallery-item:nth-child(4), .story-gallery .gallery-item:nth-child(5) { display: none; }
   }
 
@@ -461,8 +459,8 @@ layout: null
     .faq-wrap { padding-left: 16px; padding-right: 16px; }
     /* Story 섹션 -> SIMPLIFIER LOG: 다른 섹션으로 넘어가는 지점 (90px) */
     .yc-sections .yc-title:first-of-type { margin-top: 0; }
-    /* SIMPLIFIER LOG 하위 콘텐츠 -> BOOK & CLASS: 같은 섹션 안의 하위 블록 (74px) */
-    .yc-sections .yc-title:not(:first-of-type) { margin-top: 82px; }
+    /* SIMPLIFIER LOG 하위 콘텐츠 -> BOOK & CLASS: 같은 섹션 안의 하위 블록 */
+    .yc-sections .yc-title:not(:first-of-type) { margin-top: 104px; }
     /* FAQ -> Contact: 다른 섹션으로 넘어가는 지점 (.cta-section 쪽 padding-top(56px)과 합쳐 106px.
        .cta-section 기본 정의가 이 블록보다 뒤에 있어 여기선 안 먹혀 아래 별도 규칙으로 둠) */
     .faq-section { padding-top: 46px; padding-bottom: 50px; }
@@ -480,23 +478,23 @@ layout: null
     .faq-question { font-size: 17px; }
   }
 
-  /* PC 섹션 간격 통일(130px).
+  /* PC 섹션 간격 통일(170px).
      기존에는 섹션 패딩 + 마지막 인용문 여백 + 제목 여백이 겹쳐 60~204px로 들쭉날쭉했습니다.
      간격을 .yc-title 위쪽 한 곳에서만 만들고, 겹쳐 더해지던 패딩은 0으로 정리합니다.
-     값을 바꿀 때는 아래 130px 세 곳만 함께 수정하면 됩니다. */
+     값을 바꿀 때는 아래 170px 세 곳만 함께 수정하면 됩니다. */
   @media (min-width: 761px) {
-    .story-essay { margin-bottom: 130px; }
-    .story-gallery { margin-bottom: 130px; }
+    .story-essay { margin-bottom: 170px; }
+    .story-gallery { margin-bottom: 170px; }
     .story-testimonials .quote-block:last-child { margin-bottom: 0; }
     .story-section { padding-bottom: 0; }
     .yc-sections { padding-top: 0; padding-bottom: 0; }
     .faq-section { padding-top: 0; }
-    .yc-title { margin-top: 130px; }
+    .yc-title { margin-top: 170px; }
   }
 
   .cta-section { position: relative; z-index: 40; background: #080808; padding: 100px 0 0; }
   @media (max-width: 760px) { .cta-section { padding-top: 56px; } }
-  .cta-content { text-align:center; margin-bottom: 140px; }
+  .cta-content { text-align:center; margin-bottom: 180px; }
   .cta-content h2 {
     font-family:'Boska','Source Serif 4',serif;
     font-weight:300;
@@ -517,16 +515,16 @@ layout: null
   .cta-button { display:inline-block; background:#f5f3ee; color:#080808; font-family:'Boska',serif; font-style:italic; font-weight:400; font-size:18px; padding:16px 44px; border-radius:999px; transition: background .2s, color .2s, transform .2s; border:none; cursor:pointer; }
   .cta-button:hover { background:#080808; color:#f5f3ee; box-shadow: inset 0 0 0 1px #f5f3ee; }
 
-  .new-bottom-gallery-section { padding: 0 24px 80px; }
+  .new-bottom-gallery-section { padding: 0 24px 110px; }
 
   /* 아래 두 값은 .cta-content / .new-bottom-gallery-section 기본 정의보다
      뒤에 있어야 적용됩니다(우선순위 동일 → 나중 규칙 우선).
-     CONTACT → 굿즈 = 섹션 내부 72px, 굿즈 → 푸터 = 섹션 사이 96px */
+     CONTACT → 굿즈 = 섹션 내부 90px, 굿즈 → 푸터 = 섹션 사이 120px */
   @media (max-width: 760px) {
-    .cta-content { margin-bottom: 72px; }
+    .cta-content { margin-bottom: 90px; }
     /* 좌우는 공통 16px 거터로 통일(기본값 24px). 이 블록은 위 기본 정의보다
        뒤에 있어야 단축 지정 padding에 덮이지 않습니다. */
-    .new-bottom-gallery-section { padding-bottom: 96px; padding-left: 16px; padding-right: 16px; }
+    .new-bottom-gallery-section { padding-bottom: 120px; padding-left: 16px; padding-right: 16px; }
   }
   .new-bottom-gallery { max-width: 1360px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
   .new-gallery-item {
