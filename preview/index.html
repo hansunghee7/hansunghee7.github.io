@@ -438,26 +438,32 @@ layout: null
     .book-dots { display: flex; }
   }
 
-  /* 모바일 섹션 간격 원칙: 서로 다른 섹션(주제가 바뀌는 지점)은 90px,
-     같은 섹션 안에서 이어지는 하위 블록은 74px. (2026-08-26: 기존 80px/64px 기준에서 전 구간 +10px)
+  /* 모바일 섹션 간격 원칙: 서로 다른 섹션(주제가 바뀌는 지점)은 96px,
+     같은 섹션 안에서 이어지는 하위 블록은 72px.
+     (2026-08-28: 실측해보니 40~130px까지 들쭉날쭉했던 걸 이 두 값으로 재정리)
      .story-section / .yc-sections / .yc-title 기본 정의보다 뒤에 있어야 적용됩니다(우선순위 동일). */
   @media (max-width: 760px) {
     /* 좌우 거터는 YC 모바일과 동일한 16px(YC는 main에 px-4).
        .story-section의 padding 단축 지정이 .wrap의 좌우 32px를 덮어써서
-       스토리 본문과 인용문이 화면 끝에 붙어 있었습니다. */
-    .story-section { padding-bottom: 62px; padding-left: 16px; padding-right: 16px; }
+       스토리 본문과 인용문이 화면 끝에 붙어 있었습니다.
+       padding-bottom이 Story -> SIMPLIFIER LOG 전환 간격(96px) 전부를 만듭니다. */
+    .story-section { padding-bottom: 96px; padding-left: 16px; padding-right: 16px; }
     /* 갤러리는 94vw로 자체 폭을 잡아 위 패딩을 무시하므로 같은 거터에 맞춥니다. */
     .story-gallery { width: 100%; }
     /* .yc-sections도 padding 단축 지정이 .wrap의 좌우값을 덮어써서
-       LOG 제목/카드와 BOOK & CLASS가 화면 끝에 붙어 있었습니다. */
-    .yc-sections { padding-top: 0; padding-left: 16px; padding-right: 16px; }
+       LOG 제목/카드와 BOOK & CLASS가 화면 끝에 붙어 있었습니다.
+       padding-bottom(26px)은 BOOK & CLASS -> FAQ 전환 간격(96px)의 일부이고,
+       나머지는 스와이프 점 인디케이터 높이(~24px) + faq-section의 padding-top(46px)입니다. */
+    .yc-sections { padding-top: 0; padding-bottom: 26px; padding-left: 16px; padding-right: 16px; }
     .faq-wrap { padding-left: 16px; padding-right: 16px; }
-    /* Story 섹션 -> SIMPLIFIER LOG: 다른 섹션으로 넘어가는 지점 (90px) */
+    /* Story -> SIMPLIFIER LOG 간격은 위 .story-section의 padding-bottom이 전부 만듭니다.
+       margin-top은 0으로 둬서 겹쳐 더해지지 않게 합니다. */
     .yc-sections .yc-title:first-of-type { margin-top: 0; }
-    /* SIMPLIFIER LOG 하위 콘텐츠 -> BOOK & CLASS: 같은 섹션 안의 하위 블록 (74px) */
-    .yc-sections .yc-title:not(:first-of-type) { margin-top: 82px; }
-    /* FAQ -> Contact: 다른 섹션으로 넘어가는 지점 (.cta-section 쪽 padding-top(56px)과 합쳐 106px.
-       .cta-section 기본 정의가 이 블록보다 뒤에 있어 여기선 안 먹혀 아래 별도 규칙으로 둠) */
+    /* SIMPLIFIER LOG 하위 콘텐츠 -> BOOK & CLASS: 같은 섹션 안의 하위 블록 (72px) */
+    .yc-sections .yc-title:not(:first-of-type) { margin-top: 72px; }
+    /* faq-section의 padding-bottom(50px)은 FAQ 내부(마지막 답변 아래) 여백이라
+       다음 섹션과의 외부 간격에는 더해지지 않습니다 -- FAQ -> Contact 간격은
+       아래 .cta-section의 padding-top(96px)이 전부 만듭니다. */
     .faq-section { padding-top: 46px; padding-bottom: 50px; }
     /* FAQ 제목의 인라인 margin-top:0 을 CSS로 옮긴 것 (모바일 간격 유지) */
     .faq-section .yc-title { margin-top: 0; }
@@ -476,7 +482,9 @@ layout: null
   /* PC 섹션 간격 통일(130px).
      기존에는 섹션 패딩 + 마지막 인용문 여백 + 제목 여백이 겹쳐 60~204px로 들쭉날쭉했습니다.
      간격을 .yc-title 위쪽 한 곳에서만 만들고, 겹쳐 더해지던 패딩은 0으로 정리합니다.
-     값을 바꿀 때는 아래 130px 세 곳만 함께 수정하면 됩니다. */
+     (2026-08-28: FAQ -> Contact 100px, Contact -> 굿즈 140px로 어긋나 있던 것도 130px로 맞춤 --
+     아래 .cta-section padding-top / .cta-content margin-bottom 참고)
+     값을 바꿀 때는 아래 130px 다섯 곳(이 블록 안 세 곳 + cta-section/cta-content)을 함께 수정하면 됩니다. */
   @media (min-width: 761px) {
     .story-essay { margin-bottom: 130px; }
     .story-gallery { margin-bottom: 130px; }
@@ -487,9 +495,11 @@ layout: null
     .yc-title { margin-top: 130px; }
   }
 
-  .cta-section { position: relative; z-index: 40; background: #080808; padding: 100px 0 0; }
-  @media (max-width: 760px) { .cta-section { padding-top: 56px; } }
-  .cta-content { text-align:center; margin-bottom: 140px; }
+  /* padding-top이 FAQ -> Contact 간격(PC 130px / 모바일 96px)을 만듭니다. */
+  .cta-section { position: relative; z-index: 40; background: #080808; padding: 130px 0 0; }
+  @media (max-width: 760px) { .cta-section { padding-top: 96px; } }
+  /* margin-bottom이 Contact -> 굿즈 갤러리 간격(130px, PC 섹션 리듬과 통일)을 만듭니다. */
+  .cta-content { text-align:center; margin-bottom: 130px; }
   .cta-content h2 {
     font-family:'Boska','Source Serif 4',serif;
     font-weight:300;
