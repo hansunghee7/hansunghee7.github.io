@@ -173,10 +173,12 @@
     var delta = prev ? latest.value - prev.value : null;
     var deltaHtml = "";
     if (delta) {
+      /* 화살표는 숫자의 증감이 아니라 "좋아졌는지"를 가리킨다 -- 순위처럼
+         낮을수록 좋은 지표는 숫자가 줄어도 개선이니 ▲(초록)으로 보여준다. */
       var isGood = metric.higherIsBetter ? delta > 0 : delta < 0;
       deltaHtml =
         '<span class="delta ' + (isGood ? "up" : "down") + '">' +
-        (delta > 0 ? "▲" : "▼") + Math.abs(delta) +
+        (isGood ? "▲" : "▼") + Math.abs(delta) +
         "</span>";
     }
 
