@@ -70,7 +70,13 @@
           "https://simplifier.co.kr/",
           "https://www.linkedin.com/in/simplifier/",
           "https://brunch.co.kr/@simplifier",
-          "https://blog.naver.com/simplifiers"
+          "https://blog.naver.com/simplifiers",
+          "https://www.facebook.com/simplifier.seoul",
+          "https://www.instagram.com/simplifier_seoul/",
+          "https://connect.rememberapp.co.kr/profile/1582110/posts",
+          "https://www.rocketpunch.com/@simplfier/post",
+          "https://product.kyobobook.co.kr/detail/S000216681258",
+          "https://product.kyobobook.co.kr/detail/S000220493173"
         ]
       },
       "publisher": {
@@ -187,6 +193,16 @@
             0% { background-position: 200% 0; }
             100% { background-position: -200% 0; }
         }
+        /* 같은 카테고리 다른 글로 이어주는 내부 링크. SEO/AI 크롤러에 "이 글들이
+           서로 연결된 시리즈"라는 신호를 주고, 재방문(체류)에도 도움이 된다. */
+        .related-posts { max-width: 700px; margin: 20px auto 60px; padding: 40px 0 0; border-top: 1px solid #eaeaea; }
+        .related-posts-title { font-family: 'Pretendard Variable', 'Noto Sans KR', sans-serif; font-size: 13px; font-weight: 600; color: #8f8b82; letter-spacing: 0.06em; margin: 0 0 18px; }
+        .related-posts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+        @media (max-width: 560px) { .related-posts-grid { grid-template-columns: 1fr; } }
+        .related-post-card { display: flex; align-items: center; gap: 12px; background: #fff; border: 1px solid #f0f0f0; border-radius: 8px; overflow: hidden; text-decoration: none !important; color: inherit; transition: box-shadow 0.2s ease, transform 0.2s ease; }
+        .related-post-card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.08); transform: translateY(-1px); }
+        .related-post-card img { width: 72px; height: 72px; margin: 0 !important; object-fit: cover; flex: none; border-radius: 0 !important; }
+        .related-post-card span { font-family: 'Pretendard Variable', 'Noto Sans KR', sans-serif; font-size: 13.5px; font-weight: 500; line-height: 1.5; padding: 8px 14px 8px 0; }
         .lightbox-overlay { position: fixed; inset: 0; background: rgba(8,8,8,0.92); display: none; align-items: center; justify-content: center; z-index: 9999; padding: 40px; cursor: zoom-out; }
         .lightbox-overlay.active { display: flex; }
         .lightbox-overlay img { max-width: 100%; max-height: 100%; width: auto !important; height: auto !important; object-fit: contain; margin: 0 !important; border-radius: 0; cursor: default; }
@@ -494,6 +510,34 @@
 
 <div class="article-body" id="articleBody">
     {{ content }}
+{% if page.category %}
+    <div class="related-posts" id="relatedPosts"></div>
+    <script>
+    (function(){
+        var CAT = {{ page.category | jsonify }};
+        var CUR = decodeURIComponent({{ page.url | jsonify }});
+        fetch('/assets/data/posts.json').then(function(r){ return r.json(); }).then(function(posts){
+            var related = posts.filter(function(p){
+                return p.category === CAT && decodeURIComponent(p.url) !== CUR;
+            });
+            if (!related.length) return;
+            related.sort(function(){ return Math.random() - 0.5; });
+            related = related.slice(0, 4);
+            function esc(s){
+                return (s || '').replace(/[&<>"']/g, function(c){
+                    return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
+                });
+            }
+            var html = '<h3 class="related-posts-title">같은 카테고리의 다른 글</h3><div class="related-posts-grid">';
+            related.forEach(function(p){
+                html += '<a class="related-post-card" href="' + p.url + '"><img src="' + p.image + '" alt="" loading="lazy"><span>' + esc(p.title) + '</span></a>';
+            });
+            html += '</div>';
+            document.getElementById('relatedPosts').innerHTML = html;
+        }).catch(function(){});
+    })();
+    </script>
+{% endif %}
 </div>
 
 {% if page.url == '/' or page.url == '/log.html' or page.is_index %}
