@@ -9,9 +9,16 @@ name: Fetch GA4 analytics
 #   GA4_PROPERTY_ID           GA4 속성 숫자 ID (측정ID G-XXXX와 다름)
 # 두 값 모두 대화로 주고받지 말고 이 화면에 사장님이 직접 붙여넣을 것.
 
+# GitHub의 예약 실행(cron)은 "최선 노력" 방식이라 부하가 높으면 지연이 아니라
+# 아예 건너뛰기도 한다(공식 커뮤니티 확인 -- 실제로 이 저장소에서 이틀 연속
+# 자동 실행이 안 됐음). 그래서 이중 안전장치: cron 하루 3번(최근 30일
+# 스냅샷을 통째로 다시 쓰므로 여러 번 돌아도 안전) + 로컬 PC 작업 스케줄러의
+# workflow_dispatch 직접 호출(Documents\SimplifierSNSBot\trigger-github-workflows.ps1).
 on:
   schedule:
-    - cron: "13 21 * * *"  # 매일 06:13 KST (정각은 GitHub 스케줄러가 혼잡해 지연/누락되기 쉬워 13분 뒤로 이동)
+    - cron: "13 21 * * *"  # 06:13 KST (정각은 혼잡해 지연/누락되기 쉬워 분산)
+    - cron: "17 1 * * *"   # 10:17 KST
+    - cron: "29 7 * * *"   # 16:29 KST
   workflow_dispatch: {}
 
 permissions:
@@ -51,5 +58,12 @@ jobs:
             echo "no changes to commit"
           else
             git commit -m "chore: refresh GA4 analytics snapshot [skip ci]"
-            git push
+            # 다른 워크플로(북인사이트 등)와 동시에 푸시하면 non-fast-forward로
+            # 거절될 수 있어(실제 발생) rebase 후 재시도한다.
+            n=0
+            until git push; do
+              n=$((n+1))
+              if [ $n -ge 3 ]; then echo "push 3회 실패"; exit 1; fi
+              git pull --rebase origin main
+            done
           fi
