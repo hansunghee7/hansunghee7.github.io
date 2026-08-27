@@ -57,6 +57,8 @@
   .tiles{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px;}
   .tile{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px 16px 14px;}
   .tile .label{font-size:12px; color:var(--muted); margin-bottom:8px; line-height:1.4;}
+  .tile .label a{color:inherit; text-decoration:none;}
+  .tile .label a:hover{color:var(--ink); text-decoration:underline;}
   .tile .latest{display:flex; align-items:baseline; gap:7px;}
   .tile .val{font-weight:500; font-size:26px; line-height:1; letter-spacing:-0.01em;}
   .tile .val .unit{font-size:13px; color:var(--dim); margin-left:2px;}
@@ -149,11 +151,17 @@
     );
   }
 
-  /* metric = { label, unit, higherIsBetter, note }
+  /* href가 있으면 타이틀을 그 출처 페이지로 새 창 링크로 만든다. */
+  function labelHtml(text, href) {
+    if (!href) return escapeHtml(text);
+    return '<a href="' + escapeHtml(href) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(text) + " ↗</a>";
+  }
+
+  /* metric = { label, unit, higherIsBetter, note, href }
      series = [{date, value}] (null 값은 이미 걸러서 넘김) */
   function tile(metric, series) {
     var clean = series.filter(function (e) { return e.value != null; });
-    var label = '<div class="label">' + escapeHtml(metric.label) + "</div>";
+    var label = '<div class="label">' + labelHtml(metric.label, metric.href) + "</div>";
 
     if (!clean.length) {
       return '<div class="tile">' + label + '<div class="empty">권외 · 데이터 없음</div></div>';
@@ -187,9 +195,9 @@
     );
   }
 
-  function staticTile(label, valueText, note) {
+  function staticTile(label, valueText, note, href) {
     return (
-      '<div class="tile"><div class="label">' + escapeHtml(label) + '</div>' +
+      '<div class="tile"><div class="label">' + labelHtml(label, href) + '</div>' +
       '<div class="latest"><span class="val">' + escapeHtml(valueText) + "</span></div>" +
       (note ? '<div class="note">' + escapeHtml(note) + "</div>" : "") +
       "</div>"
@@ -207,17 +215,22 @@
 
     var dated = records.map(function (r) { return { date: (r.ts || "").slice(0, 10), r: r }; });
 
+    var Y24_GOODS = "https://www.yes24.com/product/goods/193444437";
+    var Y24_BEST = function (cat) { return "https://www.yes24.com/product/category/bestseller?categoryNumber=" + cat + "&pageNumber=1&pageSize=100"; };
+    var ALADIN_PRODUCT = "https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=397807838";
+    var KYOBO_PRODUCT = "https://product.kyobobook.co.kr/detail/S000220493173";
+
     var metrics = [
-      { key: "mkt", label: "예스24 마케팅/세일즈", unit: "위", higherIsBetter: false, get: function (r) { return r.yes24 && r.yes24.mkt_rank; } },
-      { key: "ad", label: "예스24 광고/홍보/PR", unit: "위", higherIsBetter: false, get: function (r) { return r.yes24 && r.yes24.ad_rank; } },
-      { key: "web", label: "예스24 웹사이트", unit: "위", higherIsBetter: false, get: function (r) { return r.yes24 && r.yes24.web_rank; } },
-      { key: "uxui", label: "예스24 UX/UI", unit: "위", higherIsBetter: false, get: function (r) { return r.yes24 && r.yes24.uxui_rank; } },
-      { key: "design", label: "예스24 디자인", unit: "위", higherIsBetter: false, get: function (r) { return r.yes24 && r.yes24.design_rank; } },
-      { key: "econ", label: "예스24 경제경영 종합", unit: "위", higherIsBetter: false, get: function (r) { return r.yes24 && r.yes24.econ_rank; } },
-      { key: "sales_index", label: "예스24 판매지수", unit: "", higherIsBetter: true, get: function (r) { return r.yes24 && r.yes24.sales_index; } },
-      { key: "reviews", label: "예스24 리뷰 수", unit: "건", higherIsBetter: true, get: function (r) { return r.yes24 && r.yes24.reviews; } },
-      { key: "aladin_sp", label: "알라딘 세일즈포인트", unit: "", higherIsBetter: true, get: function (r) { return r.aladin && r.aladin.sales_point; } },
-      { key: "kyobo_badge", label: "교보문고 온라인 주간", unit: "위", higherIsBetter: false, get: function (r) { return r.kyobo_meta && r.kyobo_meta.badge_rank; } },
+      { key: "mkt", label: "예스24 마케팅/세일즈", unit: "위", higherIsBetter: false, href: Y24_BEST("001001025009"), get: function (r) { return r.yes24 && r.yes24.mkt_rank; } },
+      { key: "ad", label: "예스24 광고/홍보/PR", unit: "위", higherIsBetter: false, href: Y24_BEST("001001025009006"), get: function (r) { return r.yes24 && r.yes24.ad_rank; } },
+      { key: "web", label: "예스24 웹사이트", unit: "위", higherIsBetter: false, href: Y24_BEST("001001003020"), get: function (r) { return r.yes24 && r.yes24.web_rank; } },
+      { key: "uxui", label: "예스24 UX/UI", unit: "위", higherIsBetter: false, href: Y24_BEST("001001003020004"), get: function (r) { return r.yes24 && r.yes24.uxui_rank; } },
+      { key: "design", label: "예스24 디자인", unit: "위", higherIsBetter: false, href: Y24_BEST("001001007003004"), get: function (r) { return r.yes24 && r.yes24.design_rank; } },
+      { key: "econ", label: "예스24 경제경영 종합", unit: "위", higherIsBetter: false, href: Y24_BEST("001001025"), get: function (r) { return r.yes24 && r.yes24.econ_rank; } },
+      { key: "sales_index", label: "예스24 판매지수", unit: "", higherIsBetter: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.sales_index; } },
+      { key: "reviews", label: "예스24 리뷰 수", unit: "건", higherIsBetter: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.reviews; } },
+      { key: "kyobo_badge", label: "교보문고 온라인 주간", unit: "위", higherIsBetter: false, href: KYOBO_PRODUCT, get: function (r) { return r.kyobo_meta && r.kyobo_meta.badge_rank; } },
+      { key: "aladin_sp", label: "알라딘 세일즈포인트", unit: "", higherIsBetter: true, href: ALADIN_PRODUCT, get: function (r) { return r.aladin && r.aladin.sales_point; } },
     ];
 
     var html = metrics.map(function (m) {
@@ -238,15 +251,22 @@
     var history = (data && data.history) || [];
     if (!history.length) { renderError("questionBookTiles", { notYet: true }); return; }
 
+    var Y24_GOODS = "https://www.yes24.com/product/goods/147079674";
+    var Y24_BEST = "https://www.yes24.com/product/category/bestseller?categoryNumber=001001026003&pageNumber=1&pageSize=100";
+    var ALADIN_PRODUCT = "https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=364986311";
+    var ALADIN_BEST = function (cid) { return "https://www.aladin.co.kr/shop/common/wbest.aspx?BranchType=1&CID=" + cid + "&BestType=Bestseller&cnt=100&SortOrder=1&page=1"; };
+    var KYOBO_PRODUCT = "https://product.kyobobook.co.kr/detail/S000216681258";
+    var KYOBO_CAT = "https://store.kyobobook.co.kr/category/domestic/150503/best";
+
     var metrics = [
-      { key: "y24cat", label: "예스24 기획/정보/시간관리", unit: "위", higherIsBetter: false, get: function (r) { return r.yes24 && r.yes24.category_rank; } },
-      { key: "y24si", label: "예스24 판매지수", unit: "", higherIsBetter: true, get: function (r) { return r.yes24 && r.yes24.sales_index; } },
-      { key: "y24rv", label: "예스24 리뷰 수", unit: "건", higherIsBetter: true, get: function (r) { return r.yes24 && r.yes24.reviews; } },
-      { key: "alsp", label: "알라딘 세일즈포인트", unit: "", higherIsBetter: true, get: function (r) { return r.aladin && r.aladin.sales_point; } },
-      { key: "alplan", label: "알라딘 기획", unit: "위", higherIsBetter: false, get: function (r) { return r.aladin && r.aladin.planning_rank; } },
-      { key: "alinfo", label: "알라딘 정보관리", unit: "위", higherIsBetter: false, get: function (r) { return r.aladin && r.aladin.info_mgmt_rank; } },
-      { key: "kybadge", label: "교보문고 주간베스트(자기계발)", unit: "위", higherIsBetter: false, get: function (r) { return r.kyobo && r.kyobo.badge_rank; } },
-      { key: "kycat", label: "교보문고 기획력", unit: "위", higherIsBetter: false, get: function (r) { return r.kyobo && r.kyobo.category_rank; } },
+      { key: "y24cat", label: "예스24 기획/정보/시간관리", unit: "위", higherIsBetter: false, href: Y24_BEST, get: function (r) { return r.yes24 && r.yes24.category_rank; } },
+      { key: "y24si", label: "예스24 판매지수", unit: "", higherIsBetter: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.sales_index; } },
+      { key: "y24rv", label: "예스24 리뷰 수", unit: "건", higherIsBetter: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.reviews; } },
+      { key: "kybadge", label: "교보문고 주간베스트(자기계발)", unit: "위", higherIsBetter: false, href: KYOBO_PRODUCT, get: function (r) { return r.kyobo && r.kyobo.badge_rank; } },
+      { key: "kycat", label: "교보문고 기획력", unit: "위", higherIsBetter: false, href: KYOBO_CAT, get: function (r) { return r.kyobo && r.kyobo.category_rank; } },
+      { key: "alsp", label: "알라딘 세일즈포인트", unit: "", higherIsBetter: true, href: ALADIN_PRODUCT, get: function (r) { return r.aladin && r.aladin.sales_point; } },
+      { key: "alplan", label: "알라딘 기획", unit: "위", higherIsBetter: false, href: ALADIN_BEST("70229"), get: function (r) { return r.aladin && r.aladin.planning_rank; } },
+      { key: "alinfo", label: "알라딘 정보관리", unit: "위", higherIsBetter: false, href: ALADIN_BEST("70222"), get: function (r) { return r.aladin && r.aladin.info_mgmt_rank; } },
     ];
 
     var html = metrics.map(function (m) {
@@ -260,7 +280,8 @@
       html += staticTile(
         "리디북스 (참고)",
         ridi.rating ? ridi.rating.toFixed(1) + "점" : "평가 없음",
-        "평가 " + (ridi.rating_count || 0) + "명 · 베스트셀러 순위 없음(전자책 전용 플랫폼)"
+        "평가 " + (ridi.rating_count || 0) + "명 · 베스트셀러 순위 없음(전자책 전용 플랫폼)",
+        "https://ridibooks.com/books/2234005394"
       );
     }
 
