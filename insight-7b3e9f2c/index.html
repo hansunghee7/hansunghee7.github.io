@@ -1080,7 +1080,7 @@
   renderTrust();
   renderAnalytics();
   renderIntegrations();
-  document.getElementById('refreshBtn').addEventListener('click', load);
+  document.getElementById('refreshBtn').addEventListener('click', function(){ load(); renderAnalytics(); });
   load();
 })();
 </script>
