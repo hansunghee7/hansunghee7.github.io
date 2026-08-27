@@ -1,7 +1,7 @@
 """
 뉴스레터 주제 후보를 모으는 리서치 봇.
 
-목적: 한 주제 키워드를 넣으면, 그 주제와 관련된 블로그/뉴스/유튜브 결과를
+목적: 한 주제 키워드를 넣으면, 그 주제와 관련된 뉴스/유튜브 결과를
 제목·요약·링크만 모아서 보여준다 (본문 스크래핑 없음 -- 저작권 안전).
 최종 선별은 사람이 한다 -- 이 스크립트는 후보를 넓게 모아주는 역할까지만 한다.
 
@@ -11,9 +11,13 @@
 hasNumberSignal=true로 표시해 우선순위를 매긴다. 이건 참고용 신호일 뿐이고,
 실제로 진짜 성과 수치인지는 사람이 링크를 열어 확인해야 한다.
 
-필요한 API 키 (모두 무료 티어로 충분, 없는 건 건너뛴다):
-  NAVER_CLIENT_ID / NAVER_CLIENT_SECRET  -- 네이버 개발자센터에서 발급
-  YOUTUBE_API_KEY                        -- Google Cloud Console에서 발급 (없으면 유튜브는 건너뜀)
+뉴스는 구글 뉴스 검색 RSS를 쓴다 -- API 키도, 회원가입도 필요 없다. (원래
+네이버 검색 API를 썼는데, 네이버가 이걸 별도 유료 클라우드 플랫폼으로
+이전시켜서 비개발자가 쓰기엔 가입 절차가 너무 무거워졌다. 구글 뉴스 RSS로
+교체함.)
+
+필요한 API 키 (선택, 없으면 유튜브만 건너뛴다):
+  YOUTUBE_API_KEY  -- Google Cloud Console에서 발급 (무료 할당량으로 충분)
 
 사용법:
   python scripts/research_newsletter_topics.py "회의록 자동화"
@@ -21,13 +25,14 @@ hasNumberSignal=true로 표시해 우선순위를 매긴다. 이건 참고용 �
 결과는 assets/data/newsletter_research.json에 주제별로 쌓인다(같은 주제로
 다시 돌리면 그 주제 항목만 갱신). Simplifier Studio의 "뉴스레터 리서치" 탭이
 이 파일을 그대로 읽어서 보여준다 -- 그래서 실행 후에는 이 파일을 커밋해야
-탭에 반영된다. 비밀키(NAVER_*, YOUTUBE_API_KEY)는 이 파일에 들어가지
-않는다 -- 결과로 나온 제목·요약·링크만 저장되므로 공개 저장소에 남겨도 안전하다.
+탭에 반영된다. 비밀키(YOUTUBE_API_KEY)는 이 파일에 들어가지 않는다 --
+결과로 나온 제목·요약·링크만 저장되므로 공개 저장소에 남겨도 안전하다.
 """
 import json
 import os
 import re
 import sys
+import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from html import unescape
 
@@ -59,43 +64,48 @@ def has_number_signal(*texts):
     return bool(NUMBER_SIGNAL_RE.search(combined))
 
 
-def fetch_naver(topic, kind):
-    """kind: 'blog' 또는 'news'. 키 없으면 조용히 빈 목록을 돌려준다."""
-    client_id = os.environ.get("NAVER_CLIENT_ID")
-    client_secret = os.environ.get("NAVER_CLIENT_SECRET")
-    if not client_id or not client_secret:
-        return []
-
+def fetch_google_news(topic):
+    """구글 뉴스 검색 RSS. API 키도 회원가입도 필요 없다 -- URL 하나로 바로
+    결과를 준다. 실패해도(네트워크 문제 등) 조용히 빈 목록을 돌려준다."""
     results = []
     seen_links = set()
     for suffix in [""] + RESULT_ORIENTED_SUFFIXES:
         query = f"{topic} {suffix}".strip()
-        resp = requests.get(
-            f"https://openapi.naver.com/v1/search/{kind}.json",
-            params={"query": query, "display": 10, "sort": "sim"},
-            headers={
-                "X-Naver-Client-Id": client_id,
-                "X-Naver-Client-Secret": client_secret,
-            },
-            timeout=10,
-        )
+        try:
+            resp = requests.get(
+                "https://news.google.com/rss/search",
+                params={"q": query, "hl": "ko", "gl": "KR", "ceid": "KR:ko"},
+                timeout=10,
+            )
+        except requests.RequestException:
+            continue
         if resp.status_code != 200:
             continue
-        for item in resp.json().get("items", []):
-            link = item.get("link", "")
+        try:
+            root = ET.fromstring(resp.content)
+        except ET.ParseError:
+            continue
+        for item in root.findall(".//item"):
+            link = (item.findtext("link") or "").strip()
             if not link or link in seen_links:
                 continue
             seen_links.add(link)
-            title = strip_tags(item.get("title"))
-            desc = strip_tags(item.get("description"))
+            title = (item.findtext("title") or "").strip()
+            source_el = item.find("source")
+            source_name = strip_tags(source_el.text) if source_el is not None and source_el.text else ""
+            # 구글 뉴스는 제목 끝에 "- 언론사명"을 덧붙여 준다. channel로 따로
+            # 보여줄 것이므로 제목에서는 중복을 떼어낸다.
+            if source_name and title.endswith(f" - {source_name}"):
+                title = title[: -(len(source_name) + 3)].strip()
             results.append({
-                "source": f"naver_{kind}",
+                "source": "google_news",
                 "title": title,
-                "description": desc,
+                "description": "",
                 "link": link,
-                "date": item.get("pubDate") or item.get("postdate", ""),
+                "date": (item.findtext("pubDate") or "").strip(),
+                "channel": source_name,
                 "matchedQuery": query,
-                "hasNumberSignal": has_number_signal(title, desc),
+                "hasNumberSignal": has_number_signal(title),
             })
     return results
 
@@ -147,8 +157,7 @@ def fetch_youtube(topic):
 
 def research(topic):
     rows = []
-    rows += fetch_naver(topic, "blog")
-    rows += fetch_naver(topic, "news")
+    rows += fetch_google_news(topic)
     rows += fetch_youtube(topic)
     # 숫자 신호가 있는 것부터 보이도록 정렬 (완전 제외는 하지 않음 -- 사람이 최종 판단)
     rows.sort(key=lambda r: not r["hasNumberSignal"])
@@ -183,7 +192,7 @@ def print_report(topic, rows):
     signal_count = sum(1 for r in rows if r["hasNumberSignal"])
     print(f"\n=== '{topic}' 리서치 결과: {len(rows)}건 (숫자 신호 있음 {signal_count}건) ===\n")
     if not rows:
-        print("검색 결과가 없습니다. NAVER_CLIENT_ID/SECRET, YOUTUBE_API_KEY 환경변수가 설정됐는지 확인하세요.")
+        print("검색 결과가 없습니다. 네트워크 문제이거나 정말 결과가 없을 수 있습니다. 유튜브까지 보려면 YOUTUBE_API_KEY 환경변수를 설정하세요.")
         return
     for r in rows:
         mark = "★" if r["hasNumberSignal"] else " "
