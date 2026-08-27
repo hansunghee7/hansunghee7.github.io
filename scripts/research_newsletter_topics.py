@@ -18,9 +18,11 @@ hasNumberSignal=true로 표시해 우선순위를 매긴다. 이건 참고용 �
 사용법:
   python scripts/research_newsletter_topics.py "회의록 자동화"
 
-출력은 커밋되는 공개 저장소에 남기지 않는다 (초안 검색 결과일 뿐이라
-공개할 이유가 없음) -- newsletter_research/ 아래 로컬 파일로만 저장되고
-.gitignore에 등록돼 있다.
+결과는 assets/data/newsletter_research.json에 주제별로 쌓인다(같은 주제로
+다시 돌리면 그 주제 항목만 갱신). Simplifier Studio의 "뉴스레터 리서치" 탭이
+이 파일을 그대로 읽어서 보여준다 -- 그래서 실행 후에는 이 파일을 커밋해야
+탭에 반영된다. 비밀키(NAVER_*, YOUTUBE_API_KEY)는 이 파일에 들어가지
+않는다 -- 결과로 나온 제목·요약·링크만 저장되므로 공개 저장소에 남겨도 안전하다.
 """
 import json
 import os
@@ -31,7 +33,7 @@ from html import unescape
 
 import requests
 
-OUT_DIR = "newsletter_research"
+OUT_PATH = "assets/data/newsletter_research.json"
 
 # 검색어에 붙여서 "사용법"보다 "결과가 있는 사례"가 걸리도록 유도한다.
 RESULT_ORIENTED_SUFFIXES = ["후기", "시간 단축", "효율", "사례", "절감"]
@@ -153,8 +155,28 @@ def research(topic):
     return rows
 
 
-def slugify(topic):
-    return re.sub(r"[^0-9a-zA-Z가-힣]+", "-", topic).strip("-")
+def load_existing(path):
+    try:
+        with open(path, encoding="utf-8") as f:
+            data = json.load(f)
+        if isinstance(data, dict) and isinstance(data.get("topics"), list):
+            return data
+    except (FileNotFoundError, json.JSONDecodeError):
+        pass
+    return {"topics": []}
+
+
+def upsert_topic(data, topic, rows):
+    """같은 주제로 다시 실행하면 그 주제 항목만 최신 결과로 교체한다.
+    나머지 주제(지난주 이전) 기록은 그대로 남아 탭에서 계속 보인다."""
+    entry = {
+        "topic": topic,
+        "searched_at": datetime.now(timezone.utc).isoformat(),
+        "results": rows,
+    }
+    data["topics"] = [t for t in data["topics"] if t.get("topic") != topic]
+    data["topics"].insert(0, entry)
+    return data
 
 
 def print_report(topic, rows):
@@ -180,15 +202,13 @@ def main():
     rows = research(topic)
     print_report(topic, rows)
 
-    os.makedirs(OUT_DIR, exist_ok=True)
-    out_path = os.path.join(OUT_DIR, f"{slugify(topic)}.json")
-    with open(out_path, "w", encoding="utf-8") as f:
-        json.dump({
-            "topic": topic,
-            "searched_at": datetime.now(timezone.utc).isoformat(),
-            "results": rows,
-        }, f, ensure_ascii=False, indent=2)
-    print(f"저장됨: {out_path} (이 폴더는 gitignore 처리되어 공개 저장소엔 안 올라갑니다)")
+    os.makedirs(os.path.dirname(OUT_PATH), exist_ok=True)
+    data = load_existing(OUT_PATH)
+    data = upsert_topic(data, topic, rows)
+    with open(OUT_PATH, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+    print(f"저장됨: {OUT_PATH}")
+    print('이 파일을 커밋해야 Simplifier Studio의 "뉴스레터 리서치" 탭에 반영됩니다.')
 
 
 if __name__ == "__main__":
