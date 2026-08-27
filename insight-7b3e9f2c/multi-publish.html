@@ -98,7 +98,6 @@
   /* wide: 실제 화면처럼 제목이 큼직하게. narrow: 실제 서비스엔 제목칸이
      없으니, "복사용으로 같이 보여주는 제목"이라는 걸 알 수 있게 작고 옅게. */
   #channelPanel.layout-wide .title-field{font-size:20px; font-weight:700;}
-  #channelPanel.layout-narrow .title-field{font-size:13.5px; font-weight:500; color:var(--muted); padding:8px 2px; margin-bottom:10px;}
   #channelPanel textarea{width:100%; resize:vertical; padding:16px; border:1px solid var(--line-soft); border-radius:8px; color:var(--ink);}
   #channelPanel textarea::placeholder{color:var(--muted);}
 
@@ -171,7 +170,7 @@
   var CHANNELS = [
     {
       key: "linkedin", label: "LinkedIn", limit: 3000, layout: "narrow",
-      source: function (fm) { return fm.channel_variants && fm.channel_variants.linkedin_threads; },
+      source: function (fm) { return (fm.channel_variants && (fm.channel_variants.linkedin_threads || fm.channel_variants.manual_copy_block)); },
       aiInstruction: "전문적이고 통찰력 있는 톤으로, 문단 사이 줄바꿈을 넉넉히 넣어 가독성 좋게, 3000자 이내로 다듬어줘. 마지막 줄에 관련 해시태그 3~5개를 붙여줘.",
     },
     {
@@ -184,17 +183,17 @@
     },
     {
       key: "threads", label: "Threads", limit: 500, layout: "narrow",
-      source: function (fm) { return fm.channel_variants && fm.channel_variants.linkedin_threads; },
+      source: function (fm) { return (fm.channel_variants && (fm.channel_variants.linkedin_threads || fm.channel_variants.manual_copy_block)); },
       aiInstruction: "짧고 캐주얼한 말투로, 500자 이내로 핵심만 압축해줘. 첫 문장이 스크롤을 멈추게 할 만큼 강렬해야 해. 해시태그는 1~2개만.",
     },
     {
-      key: "facebook", label: "Facebook (개인 프로필)", limit: 63206, layout: "narrow",
-      source: function (fm) { return fm.channel_variants && fm.channel_variants.linkedin_threads; },
+      key: "facebook", label: "Facebook", limit: 63206, layout: "narrow",
+      source: function (fm) { return (fm.channel_variants && (fm.channel_variants.linkedin_threads || fm.channel_variants.manual_copy_block)); },
       aiInstruction: "친근하고 개인적인 톤으로, 이모지를 적절히 섞어서 편하게 다듬어줘. 너무 길지 않게, 읽기 편한 호흡으로 문단을 나눠줘.",
     },
     {
       key: "instagram", label: "Instagram", limit: 2200, layout: "narrow",
-      source: function (fm) { return (fm.channel_variants && (fm.channel_variants.instagram_caption || fm.channel_variants.linkedin_threads)); },
+      source: function (fm) { return (fm.channel_variants && (fm.channel_variants.instagram_caption || fm.channel_variants.linkedin_threads || fm.channel_variants.manual_copy_block)); },
       aiInstruction: "감성적인 캡션 스타일로, 문장을 짧게 끊어서 다듬어줘. 마지막 줄에 관련 해시태그 10~15개를 붙여줘.",
     },
     {
@@ -350,7 +349,13 @@
     currentTitle = fm.title || post.title;
     currentBody = body;
     channelState = CHANNELS.map(function (ch) {
-      return { ch: ch, text: (ch.source(fm) || "").toString().trim() };
+      var bodyText = (ch.source(fm) || "").toString().trim();
+      // narrow 채널(LinkedIn/Threads/Facebook/Instagram/리멤버/로켓펀치)은
+      // 실제 서비스에 제목칸이 따로 없어서, 제목을 본문 맨 앞줄에 합쳐서
+      // 하나의 글로 보여줍니다. wide(브런치·네이버블로그, LinkedIn 뉴스레터)는
+      // 실제로 제목칸이 따로 있으니 본문만 둡니다(제목은 별도 입력칸에).
+      var text = ch.layout === "narrow" ? (currentTitle + "\n\n" + bodyText).trim() : bodyText;
+      return { ch: ch, text: text };
     });
     activeChannelIdx = 0;
 
@@ -411,11 +416,19 @@
       ? '<button type="button" class="btn ai-btn">🤖 AI 요청 복사</button>'
       : "";
 
-    // 실제 서비스에 제목칸이 없는 narrow 채널도, 편의상 제목을 이미
-    // 채워서 보여줍니다(복사 버튼을 눌러야만 보이는 대신 바로 보고
-    // 바로 복사할 수 있게). wide는 실제 화면처럼 큼직하게, narrow는
-    // 작고 옅게 — "이 채널엔 원래 제목칸이 없다"는 느낌은 유지합니다.
-    var titleFieldHtml = '<input type="text" class="title-field" value="' + escapeHtml(currentTitle) + '">';
+    // wide(브런치·네이버블로그, LinkedIn 뉴스레터)는 실제로 제목칸이 따로
+    // 있는 화면이라 제목을 별도 입력칸으로 보여줍니다. narrow(LinkedIn/
+    // Threads/Facebook/Instagram/리멤버/로켓펀치)는 실제 서비스에 제목칸
+    // 자체가 없어서, 제목이 이미 본문 첫 줄에 합쳐진 채로 들어갑니다
+    // (state.text가 showPost에서 그렇게 만들어짐) — 그래서 복사 버튼도
+    // 하나만 둡니다.
+    var titleFieldHtml = isWide
+      ? '<input type="text" class="title-field" value="' + escapeHtml(currentTitle) + '">'
+      : "";
+    var copyBtnsHtml = isWide
+      ? '<button type="button" class="btn title-btn">제목 복사</button>' +
+        '<button type="button" class="btn primary copy-btn">본문 복사</button>'
+      : '<button type="button" class="btn primary copy-btn">복사</button>';
 
     els.panel.innerHTML =
       '<div class="panel-head"><h3>' + escapeHtml(ch.label) + "</h3>" +
@@ -424,11 +437,7 @@
       titleFieldHtml +
       '<textarea placeholder="' + escapeHtml(placeholder) + '">' + escapeHtml(state.text) + "</textarea>" +
       '<div class="charcount">0자</div>' +
-      '<div class="row">' +
-        aiBtnHtml +
-        '<button type="button" class="btn title-btn">제목 복사</button>' +
-        '<button type="button" class="btn primary copy-btn">본문 복사</button>' +
-      "</div>";
+      '<div class="row">' + aiBtnHtml + copyBtnsHtml + "</div>";
 
     var textarea = els.panel.querySelector("textarea");
     var titleField = els.panel.querySelector(".title-field");
@@ -450,17 +459,20 @@
       updateCount();
     });
 
+    var copyBtnLabel = isWide ? "본문 복사" : "복사";
     copyBtn.addEventListener("click", function () {
       copyText(textarea.value, function (ok) {
-        flashBtn(copyBtn, ok, "본문 복사");
+        flashBtn(copyBtn, ok, copyBtnLabel);
       });
     });
 
-    titleBtn.addEventListener("click", function () {
-      copyText(titleField ? titleField.value : currentTitle, function (ok) {
-        flashBtn(titleBtn, ok, "제목 복사");
+    if (titleBtn) {
+      titleBtn.addEventListener("click", function () {
+        copyText(titleField ? titleField.value : currentTitle, function (ok) {
+          flashBtn(titleBtn, ok, "제목 복사");
+        });
       });
-    });
+    }
 
     if (aiBtn) {
       aiBtn.addEventListener("click", function () {
