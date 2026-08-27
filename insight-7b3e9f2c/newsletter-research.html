@@ -90,10 +90,14 @@
   </header>
 
   <div class="setup-note">
-    <strong>새 주제를 추가하려면</strong> 터미널에서
-    <code>python scripts/research_newsletter_topics.py "주제 키워드"</code>를
-    실행한 뒤, 바뀐 <code>assets/data/newsletter_research.json</code>을
-    커밋·푸시하면 이 탭에 반영됩니다.
+    <strong>새 주제를 추가하려면</strong>
+    <a href="https://github.com/hansunghee7/hansunghee7.github.io/actions/workflows/research-newsletter.yml" target="_blank" rel="noopener">GitHub Actions의 "Research newsletter topic" 워크플로</a>를
+    열어 <strong>Run workflow</strong> 버튼을 누르고 주제 키워드를 입력하면 됩니다
+    (터미널 필요 없음). 실행이 끝나면 결과가 자동 커밋되고, 이 탭을 새로고침하면 보입니다.
+    처음 한 번은 저장소 Secrets에 <code>NAVER_CLIENT_ID</code>·<code>NAVER_CLIENT_SECRET</code>
+    (필수, <a href="https://developers.naver.com" target="_blank" rel="noopener">네이버 개발자센터</a>에서 발급)을 등록해야 합니다.
+    터미널이 더 편하면 <code>python scripts/research_newsletter_topics.py "주제 키워드"</code>를
+    직접 실행하고 커밋·푸시해도 동일하게 반영됩니다.
   </div>
 
   <div id="content"><div class="loading">불러오는 중…</div></div>

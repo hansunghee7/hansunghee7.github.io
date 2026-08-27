@@ -1,0 +1,60 @@
+name: Research newsletter topic
+
+# 뉴스레터 주제 리서치 봇을 브라우저에서 버튼 하나로 돌린다. 터미널 필요 없음.
+# GitHub Actions 탭 → 이 워크플로 선택 → "Run workflow" → 주제 입력 → 실행.
+# 결과는 assets/data/newsletter_research.json에 커밋되고, Simplifier Studio의
+# "뉴스레터 리서치" 탭이 그 파일을 읽어서 보여준다.
+#
+# 필요한 저장소 Secrets (Settings → Secrets and variables → Actions):
+#   NAVER_CLIENT_ID / NAVER_CLIENT_SECRET  네이버 개발자센터에서 발급 (필수)
+#   YOUTUBE_API_KEY                        Google Cloud Console에서 발급 (선택, 없으면 유튜브만 건너뜀)
+# 값은 대화로 주고받지 말고 이 화면에 사장님이 직접 붙여넣을 것.
+
+on:
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: "리서치할 주제 키워드 (예: 회의록 자동화)"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: research-newsletter
+  cancel-in-progress: false
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run research bot
+        env:
+          NAVER_CLIENT_ID: ${{ secrets.NAVER_CLIENT_ID }}
+          NAVER_CLIENT_SECRET: ${{ secrets.NAVER_CLIENT_SECRET }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: python scripts/research_newsletter_topics.py "${{ inputs.topic }}"
+
+      - name: Commit changes if any
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/data/newsletter_research.json
+          if git diff --cached --quiet; then
+            echo "no changes to commit"
+          else
+            git commit -m "chore: 뉴스레터 리서치 - ${{ inputs.topic }} [skip ci]"
+            git push
+          fi
