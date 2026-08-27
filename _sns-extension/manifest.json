@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "Simplifier SNS 인사이트 수집기",
+  "version": "1.0.0",
+  "description": "심플리파이어 개인 SNS 프로필을 방문할 때 팔로워 수를 자동으로 읽어 Simplifier Studio에 기록합니다.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://www.linkedin.com/*",
+    "https://www.facebook.com/*",
+    "https://www.instagram.com/*",
+    "https://www.threads.com/*",
+    "https://www.threads.net/*",
+    "https://blog.naver.com/*",
+    "https://connect.rememberapp.co.kr/*",
+    "https://www.rocketpunch.com/*",
+    "https://api.github.com/*",
+    "https://simplifier-cms-auth.simon-8be.workers.dev/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.linkedin.com/in/simplifier*",
+        "https://www.facebook.com/simplifier.seoul*",
+        "https://www.instagram.com/simplifier_seoul/*",
+        "https://www.threads.com/*",
+        "https://www.threads.net/*",
+        "https://blog.naver.com/simplifiers*",
+        "https://connect.rememberapp.co.kr/profile/1582110*",
+        "https://www.rocketpunch.com/@simplfier*"
+      ],
+      "js": ["content-script.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icons/icon48.png"
+  }
+}

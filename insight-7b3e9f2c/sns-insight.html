@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SNS 인사이트 - Simplifier</title>
+
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+
+<style>
+  :root{
+    --bg:#ffffff; --ink:#121210; --muted:#6e6a62; --dim:#403d37;
+    --line:#c8c6bf; --line-soft:rgba(20,20,15,0.07);
+    --card:#ffffff; --good:#1f7a4f; --warn:#a3690f; --bad:#b8402a;
+    --gutter:16px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'Pretendard Variable','Pretendard',-apple-system,sans-serif;
+    -webkit-font-smoothing:antialiased; word-break:keep-all;
+  }
+  .wrap{max-width:1100px; margin:0 auto; padding:0 var(--gutter) 60px;}
+  header{padding:28px 0 18px; border-bottom:1px solid var(--line-soft); margin-bottom:24px;}
+  h1{font-size:20px; font-weight:600; margin:0 0 6px;}
+  .sub{font-size:12.5px; color:var(--muted);}
+
+  /* ---- admin shell: 사이드바 ----
+     insight-7b3e9f2c/index.html, multi-publish.html, write.html 과 동일한
+     블록입니다. 메뉴를 바꾸면 다른 파일에도 똑같이 반영해야 합니다
+     (Jekyll include가 아니라 순수 정적 HTML이라 공유가 안 됩니다). */
+  #adminShellNav{position:fixed; top:0; left:0; bottom:0; width:180px; padding:24px 14px; background:#f7f6f2; border-right:1px solid var(--line-soft); overflow-y:auto; z-index:100;}
+  #adminShellNav .shell-title{font-size:12px; font-weight:600; color:var(--muted); letter-spacing:0.05em; text-transform:uppercase; margin:0 0 16px; padding:0 10px;}
+  #adminShellNav a{display:block; padding:9px 10px; margin-bottom:2px; border-radius:6px; color:var(--dim); text-decoration:none; font-size:14px;}
+  #adminShellNav a:hover{background:var(--line-soft);}
+  #adminShellNav a.active{background:var(--ink); color:#fff;}
+  body.has-shell-nav{padding-left:180px;}
+  @media (max-width:760px){
+    #adminShellNav{position:static; width:auto; display:flex; gap:4px; overflow-x:auto; border-right:none; border-bottom:1px solid var(--line-soft); padding:10px 12px;}
+    #adminShellNav .shell-title{display:none;}
+    #adminShellNav a{white-space:nowrap; margin-bottom:0;}
+    body.has-shell-nav{padding-left:0;}
+  }
+
+  #grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:16px;}
+  .platform-card{border:1px solid var(--line-soft); border-radius:10px; padding:18px;}
+  .platform-card h3{margin:0 0 4px; font-size:14px; font-weight:600;}
+  .platform-card .source-badge{font-size:10.5px; font-weight:500; color:var(--muted); text-transform:uppercase; letter-spacing:0.03em;}
+  .platform-card .latest{display:flex; align-items:baseline; gap:8px; margin:10px 0 6px;}
+  .platform-card .latest .count{font-size:30px; font-weight:700;}
+  .platform-card .latest .delta{font-size:13px; font-weight:600;}
+  .platform-card .latest .delta.up{color:var(--good);}
+  .platform-card .latest .delta.down{color:var(--bad);}
+  .platform-card .latest .unit{font-size:12px; color:var(--muted);}
+  .platform-card .asof{font-size:11px; color:var(--muted); margin-bottom:10px;}
+  .platform-card svg{width:100%; height:56px; display:block;}
+  .platform-card .empty{font-size:12px; color:var(--muted); padding:20px 0; text-align:center;}
+  .platform-card .secondary-stat{font-size:11.5px; color:var(--muted); margin-top:8px;}
+
+  .loading, .err{font-size:13px; color:var(--muted); padding:20px 0;}
+  .err{color:var(--bad);}
+
+  .setup-note{background:#f7f6f2; border-radius:10px; padding:16px 18px; font-size:12.5px; color:var(--dim); line-height:1.7; margin-bottom:24px;}
+  .setup-note code{background:#eeece5; padding:1px 5px; border-radius:4px; font-size:11.5px;}
+</style>
+</head>
+<body class="has-shell-nav">
+<nav id="adminShellNav">
+  <div class="shell-title">Simplifier Studio</div>
+  <a href="/insight-7b3e9f2c/">사이트 인사이트</a>
+  <a href="/insight-7b3e9f2c/sns-insight.html" class="active">SNS 인사이트</a>
+  <a href="/insight-7b3e9f2c/multi-publish.html">멀티 퍼블리싱</a>
+  <a href="/insight-7b3e9f2c/write.html">글쓰기</a>
+</nav>
+
+<div class="wrap">
+  <header>
+    <h1>SNS 인사이트</h1>
+    <div class="sub">각 SNS 프로필의 팔로워 수 추이입니다. 브런치는 자동 수집되고, 나머지는 크롬 확장으로 프로필을 방문할 때마다 기록됩니다.</div>
+  </header>
+
+  <div class="setup-note">
+    <strong>기록이 안 보이나요?</strong> 브런치를 제외한 채널은 <code>_sns-extension</code>
+    크롬 확장을 설치하고 GitHub 연결까지 해야 기록이 쌓입니다. 그 뒤로는
+    멀티 퍼블리싱에서 각 SNS "새 글쓰기 열기"로 방문할 때마다 자동 기록됩니다.
+  </div>
+
+  <div id="statusArea"></div>
+  <div id="grid"></div>
+</div>
+
+<script>
+(function () {
+  var DATA_URL = "/assets/data/sns-insight.json";
+
+  var PLATFORMS = [
+    { key: "linkedin", label: "LinkedIn", source: "크롬 확장" },
+    { key: "facebook", label: "Facebook", source: "크롬 확장" },
+    { key: "instagram", label: "Instagram", source: "크롬 확장" },
+    { key: "threads", label: "Threads", source: "크롬 확장" },
+    { key: "brunch", label: "브런치", source: "자동", secondaryKey: "brunch_articles", secondaryLabel: "발행 글" },
+    { key: "naver_blog", label: "네이버블로그", source: "크롬 확장" },
+    { key: "remember", label: "리멤버 커넥트", source: "크롬 확장" },
+    { key: "rocketpunch", label: "로켓펀치", source: "크롬 확장" },
+  ];
+
+  var els = { status: document.getElementById("statusArea"), grid: document.getElementById("grid") };
+
+  fetch(DATA_URL)
+    .then(function (r) { return r.ok ? r.json() : {}; })
+    .then(function (data) {
+      render(data || {});
+    })
+    .catch(function (e) {
+      els.status.innerHTML = '<div class="err">데이터를 못 불러왔습니다: ' + escapeHtml(String(e)) + "</div>";
+    });
+
+  function render(data) {
+    els.grid.innerHTML = PLATFORMS.map(function (p) { return buildCard(p, data); }).join("");
+  }
+
+  function buildCard(p, data) {
+    var series = data[p.key] || [];
+    if (!series.length) {
+      return (
+        '<div class="platform-card"><h3>' + escapeHtml(p.label) + '</h3>' +
+        '<span class="source-badge">' + escapeHtml(p.source) + "</span>" +
+        '<div class="empty">아직 기록된 데이터가 없습니다</div></div>'
+      );
+    }
+
+    var latest = series[series.length - 1];
+    var prev = series.length > 1 ? series[series.length - 2] : null;
+    var delta = prev ? latest.count - prev.count : null;
+    var deltaHtml = "";
+    if (delta !== null && delta !== 0) {
+      deltaHtml = '<span class="delta ' + (delta > 0 ? "up" : "down") + '">' + (delta > 0 ? "▲" : "▼") + Math.abs(delta) + "</span>";
+    }
+
+    var secondaryHtml = "";
+    if (p.secondaryKey && data[p.secondaryKey] && data[p.secondaryKey].length) {
+      var secSeries = data[p.secondaryKey];
+      var secLatest = secSeries[secSeries.length - 1];
+      secondaryHtml = '<div class="secondary-stat">' + escapeHtml(p.secondaryLabel) + " " + secLatest.count.toLocaleString() + "</div>";
+    }
+
+    return (
+      '<div class="platform-card">' +
+      "<h3>" + escapeHtml(p.label) + "</h3>" +
+      '<span class="source-badge">' + escapeHtml(p.source) + "</span>" +
+      '<div class="latest"><span class="count">' + latest.count.toLocaleString() + "</span>" + deltaHtml + '<span class="unit">명</span></div>' +
+      '<div class="asof">' + escapeHtml(latest.date) + " 기준 · " + series.length + "개 기록</div>" +
+      sparkline(series) +
+      secondaryHtml +
+      "</div>"
+    );
+  }
+
+  function sparkline(series) {
+    var w = 260, h = 56, pad = 4;
+    var counts = series.map(function (e) { return e.count; });
+    var min = Math.min.apply(null, counts);
+    var max = Math.max.apply(null, counts);
+    var range = max - min || 1;
+
+    var points = series.map(function (e, i) {
+      var x = series.length === 1 ? w / 2 : pad + (i / (series.length - 1)) * (w - pad * 2);
+      var y = h - pad - ((e.count - min) / range) * (h - pad * 2);
+      return x.toFixed(1) + "," + y.toFixed(1);
+    });
+
+    var path = "M" + points.join(" L");
+    var lastPoint = points[points.length - 1].split(",");
+
+    return (
+      '<svg viewBox="0 0 ' + w + " " + h + '" preserveAspectRatio="none">' +
+      '<path d="' + path + '" fill="none" stroke="#121210" stroke-width="2" vector-effect="non-scaling-stroke"/>' +
+      '<circle cx="' + lastPoint[0] + '" cy="' + lastPoint[1] + '" r="3" fill="#121210"/>' +
+      "</svg>"
+    );
+  }
+
+  function escapeHtml(s) {
+    return (s || "").toString().replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+})();
+</script>
+</body>
+</html>
