@@ -11,7 +11,7 @@ name: Fetch GA4 analytics
 
 on:
   schedule:
-    - cron: "0 21 * * *"  # 매일 06:00 KST
+    - cron: "13 21 * * *"  # 매일 06:13 KST (정각은 GitHub 스케줄러가 혼잡해 지연/누락되기 쉬워 13분 뒤로 이동)
   workflow_dispatch: {}
 
 permissions:
