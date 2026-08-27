@@ -408,8 +408,9 @@
     <style>
       /* 브런치 벤치마킹: GNB를 fixed로 항상 띄워두고, 그 밑단에 얇은 읽기
          진행바를 붙인다. 커버(어두운 사진) 위에서도, 스크롤 후 흰 본문
-         위에서도 무난하게 읽히도록 반투명 + blur로 처리 -- 스크롤 위치에
-         따라 배경을 갈아끼우는 대신 한 가지 톤으로 통일해 더 단순하다. */
+         위에서도 무난하게 읽히도록 blur는 유지하되, 배경은 위쪽은 짙고
+         아래로 갈수록 투명해지는 그라데이션으로 처리했다 -- 균일한 색
+         블록이 아니라 아래 경계가 본문 색과 자연스럽게 녹아들도록. */
       .log-nav {
         position: fixed;
         top: 0; left: 0; right: 0;
@@ -418,7 +419,7 @@
         padding: 0 32px;
         gap: 12px;
         z-index: 100;
-        background: rgba(8,8,8,0.55);
+        background: linear-gradient(to bottom, rgba(8,8,8,0.75) 0%, rgba(8,8,8,0.45) 55%, rgba(8,8,8,0) 100%);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
       }
