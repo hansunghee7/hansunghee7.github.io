@@ -137,9 +137,12 @@
         .article-body { max-width: 1100px; width: 100%; min-width: 0; box-sizing: border-box; margin: 0 auto; padding: 40px 20px 40px; background-color: #fff; position: relative; }
         /* 본문 시트는 화면 전체 폭(흰 배경)이고, 글은 그 안의 700px 중앙 컬럼에 들어갑니다.
            max-width로 폭을 잡으면 시트 자체가 좁아져 커버 위에 뜬 박스처럼 보입니다. */
-        /* padding-top: 84px -- 위 .log-nav가 이제 fixed(항상 떠 있음)라
-           본문이 그 밑에서 가려지지 않도록 nav 높이(68px)+여백만큼 띄운다. */
-        .post-mode + .article-body { box-sizing: border-box; width: 100%; max-width: none; padding-left: max(16px, calc((100% - 700px) / 2)); padding-right: max(16px, calc((100% - 700px) / 2)); padding-top: 84px; padding-bottom: 0 !important; z-index: 2; }
+        /* padding-top: 72px -- 위 .log-nav가 fixed(항상 떠 있음, 높이 68px)라
+           본문이 그 밑에 가려지지 않을 최소한의 여백(4px)만 남긴다.
+           (처음엔 84px로 넉넉히 잡았는데 상단 여백이 너무 벌어져 보인다는
+           피드백을 받아 줄임 -- GNB는 아래로 갈수록 투명해지는 그라데이션이라
+           바짝 붙여도 실제로 안 가려 보인다.) */
+        .post-mode + .article-body { box-sizing: border-box; width: 100%; max-width: none; padding-left: max(16px, calc((100% - 700px) / 2)); padding-right: max(16px, calc((100% - 700px) / 2)); padding-top: 72px; padding-bottom: 0 !important; z-index: 2; }
         .article-body p { font-size: 15px; font-weight: 300; line-height: 2; letter-spacing: 0.8px; margin-bottom: 30px; }
         @media (max-width: 600px) {
             .article-body p { font-size: 17px; letter-spacing: 0.3px; }
