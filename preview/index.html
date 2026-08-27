@@ -185,7 +185,12 @@ layout: null
 
   .hero-wrapper { position: sticky; top: var(--nav-height); z-index: 5; height: calc(100vh - var(--nav-height)); height: calc(100dvh - var(--nav-height)); background: #080808; }
   .hero { height: 100%; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; }
-  #hero-fade { will-change: opacity; width: 100%; }
+  /* 스테이징 테스트: 스크롤할 때마다 매 프레임 opacity 값을 새로 계산해 강제로
+     대입하던 방식(모바일에서 계산이 스크롤을 못 따라가 끊겨 보인다는 피드백)을
+     걷어내고, 한 지점을 지나면 클래스 하나만 토글해 CSS 트랜지션이 알아서
+     부드럽게 처리하도록 바꿨다. DOM에 매 프레임 쓰지 않아 훨씬 가볍다. */
+  #hero-fade { will-change: opacity; width: 100%; opacity: 1; transition: opacity 0.4s ease; }
+  #hero-fade.hero-faded { opacity: 0; }
   /* body 기본색(#f5f3ee, 크림빛)이 아니라 완전한 흰색으로 선명하게 */
   .hero h1 { font-family: 'Boska', 'Source Serif 4', serif; font-weight: 200; font-size: clamp(42px, 7.3vw, 79px); line-height: 1.2; max-width: 1060px; margin: 0 auto 6px; color: #ffffff; }
   .hero h1 .accent { font-style: italic; }
@@ -890,13 +895,19 @@ layout: null
   var heroWrapper = document.getElementById('hero-wrapper');
   var provenWrap = document.getElementById('proven-wrap');
 
+  // 스테이징 테스트: 스크롤 위치를 매 프레임 읽는 것 자체는 저렴하지만, 그 값으로
+  // opacity를 매번 새로 계산해 DOM에 쓰는 게 비용이 크다(스타일 재계산 유발).
+  // 값이 바뀔 때만(경계를 넘을 때 딱 한 번) 클래스를 토글하고, 실제 페이드는
+  // CSS transition에 맡긴다 -- 컴포지터에서 처리돼 메인 스레드 부담이 없다.
+  var heroFaded = false;
   function syncHeroFade() {
     var scrolled = window.scrollY;
     var vh = window.innerHeight;
-    var heroFadeDist = vh * 0.5;
-    var heroOpacity = Math.max(0, 1 - (scrolled / heroFadeDist));
-    if (heroFade) heroFade.style.opacity = heroOpacity;
-    if (heroWrapper) heroWrapper.style.pointerEvents = (heroOpacity <= 0) ? 'none' : 'auto';
+    var shouldFade = scrolled > vh * 0.35;
+    if (shouldFade === heroFaded) return;
+    heroFaded = shouldFade;
+    if (heroFade) heroFade.classList.toggle('hero-faded', shouldFade);
+    if (heroWrapper) heroWrapper.style.pointerEvents = shouldFade ? 'none' : 'auto';
   }
 
   // 스테이징 테스트: Proven/Story는 더 이상 sticky+스크롤연동 페이드로 고정되지 않으므로
