@@ -1,0 +1,67 @@
+---
+layout: default
+title: "스타트업 인사이트 — Simplifier"
+---
+<style>
+  /* 이 페이지 전용 다크 테마 오버라이드. log.html의 카드 스타일을 그대로
+     재사용합니다(디자인 일관성) -- 다만 이 페이지는 이미 한 카테고리로
+     걸러진 결과라 .card-item을 항상 보이게(display:flex) 둡니다. log.html은
+     탭으로 필터링하느라 기본 display:none에서 JS가 보여주는 방식입니다. */
+  body { background-color: #080808 !important; color: #f5f3ee !important; }
+  .article-body { max-width: 1200px !important; margin: 0 auto; padding: 40px 32px !important; background-color: #080808 !important; }
+  @media (max-width: 760px) {
+    .article-body { padding: 24px 16px !important; }
+  }
+
+  .pillar-hero { max-width: 800px; margin: 0 0 48px; }
+  .pillar-kicker { font-family: 'Pretendard Variable', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #8f8b82; margin-bottom: 12px; }
+  .pillar-hero h1 { font-family: 'Boska', 'Source Serif 4', serif; font-weight: 300; font-size: clamp(28px, 5vw, 42px); margin: 0 0 20px; color: #fff; }
+  .pillar-hero p { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-size: 16px; line-height: 1.9; color: #c9c8c2; font-weight: 300; word-break: keep-all; }
+
+  .card-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 20px; }
+  @media (max-width: 1024px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 768px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .card-grid { grid-template-columns: repeat(1, 1fr); } }
+
+  .card-item { display: flex !important; background: #111 !important; border: 1px solid rgba(245,243,238,0.08) !important; border-radius: 12px; overflow: hidden; transition: transform 0.3s ease, border-color 0.3s ease !important; text-decoration: none !important; color: inherit; flex-direction: column; }
+  .card-item:hover { border-color: rgba(245,243,238,0.25) !important; transform: translateY(-4px); }
+  .card-item:hover .card-thumb { transform: scale(1.05); }
+  .card-thumb-wrap { width: 100%; aspect-ratio: 1.9 / 1; overflow: hidden; position: relative; border-bottom: 1px solid rgba(245,243,238,0.05); background-color: #14140f; }
+  .card-thumb { width: 100%; height: 100%; background-size: cover; background-position: center; transition: transform 0.4s ease; }
+  .card-content { padding: 12px; display: flex; flex-direction: column; justify-content: flex-start; flex-grow: 1; }
+  .card-meta { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 4px; }
+  .card-category { font-size: 11.5px; color: #8f8b82 !important; font-weight: 500; margin: 0 !important; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-family: 'Pretendard Variable', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; }
+  .card-title { font-family: 'Pretendard Variable', sans-serif; font-size: 15.5px; font-weight: 500; color: #f5f3ee !important; line-height: 1.45; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .card-date { font-size: 11px; color: #736f67 !important; margin: 0 !important; flex-shrink: 0; font-weight: 300; font-family: 'Pretendard Variable', sans-serif; }
+
+  .pillar-empty { color: #8f8b82; font-family: 'Pretendard Variable', sans-serif; font-size: 14px; padding: 40px 0; }
+</style>
+
+{% assign pillar = site.data.pillars["스타트업-인사이트"] %}
+<div class="article-body">
+  <div class="pillar-hero">
+    <div class="pillar-kicker">Simplifier Log · Topic</div>
+    <h1>{{ pillar.category }}</h1>
+    <p>{{ pillar.intro }}</p>
+  </div>
+
+  {% assign topic_posts = site.data.posts | where: "category", pillar.category %}
+  {% if topic_posts and topic_posts.size > 0 %}
+  <div class="card-grid">
+    {% for p in topic_posts %}
+    <a href="{{ p.url }}" class="card-item">
+      <div class="card-thumb-wrap"><div class="card-thumb" style="background-image: url('{{ p.image }}');"></div></div>
+      <div class="card-content">
+        <div class="card-meta">
+          <div class="card-category">{{ p.category }}</div>
+          <div class="card-date">{{ p.date }}</div>
+        </div>
+        <h3 class="card-title">{{ p.title }}</h3>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="pillar-empty">이 카테고리에 아직 글이 없습니다.</div>
+  {% endif %}
+</div>

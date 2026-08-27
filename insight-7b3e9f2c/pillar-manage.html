@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>필러 관리 - Simplifier</title>
+
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+
+<style>
+  :root{
+    --bg:#ffffff; --ink:#121210; --muted:#6e6a62; --dim:#403d37;
+    --line:#c8c6bf; --line-soft:rgba(20,20,15,0.07);
+    --card:#ffffff; --good:#1f7a4f; --warn:#a3690f; --bad:#b8402a;
+    --gutter:16px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'Pretendard Variable','Pretendard',-apple-system,sans-serif;
+    -webkit-font-smoothing:antialiased; word-break:keep-all;
+  }
+  .wrap{max-width:1100px; margin:0 auto; padding:0 var(--gutter) 60px;}
+  header{padding:28px 0 18px; border-bottom:1px solid var(--line-soft); margin-bottom:24px;}
+  h1{font-size:20px; font-weight:600; margin:0 0 6px;}
+  .sub{font-size:12.5px; color:var(--muted); line-height:1.6;}
+
+  #adminShellNav{position:fixed; top:0; left:0; bottom:0; width:180px; padding:24px 14px; background:#f7f6f2; border-right:1px solid var(--line-soft); overflow-y:auto; z-index:100;}
+  #adminShellNav .shell-title{font-size:12px; font-weight:600; color:var(--muted); letter-spacing:0.05em; text-transform:uppercase; margin:0 0 16px; padding:0 10px;}
+  #adminShellNav a{display:block; padding:9px 10px; margin-bottom:2px; border-radius:6px; color:var(--dim); text-decoration:none; font-size:14px;}
+  #adminShellNav a:hover{background:var(--line-soft);}
+  #adminShellNav a.active{background:var(--ink); color:#fff;}
+  body.has-shell-nav{padding-left:180px;}
+  @media (max-width:760px){
+    #adminShellNav{position:static; width:auto; display:flex; gap:4px; overflow-x:auto; border-right:none; border-bottom:1px solid var(--line-soft); padding:10px 12px;}
+    #adminShellNav .shell-title{display:none;}
+    #adminShellNav a{white-space:nowrap; margin-bottom:0;}
+    body.has-shell-nav{padding-left:0;}
+  }
+
+  .setup-note{background:#f7f6f2; border-radius:10px; padding:16px 18px; font-size:12.5px; color:var(--dim); line-height:1.7; margin-bottom:24px;}
+  .setup-note code{background:#eeece5; padding:1px 5px; border-radius:4px; font-size:11.5px;}
+
+  table{width:100%; border-collapse:collapse; font-size:13.5px;}
+  thead th{text-align:left; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.04em; font-weight:600; padding:0 12px 10px; border-bottom:1px solid var(--line);}
+  tbody td{padding:12px; border-bottom:1px solid var(--line-soft); vertical-align:middle;}
+  tbody tr:last-child td{border-bottom:none;}
+  .cat-name{font-weight:600;}
+  .count{color:var(--muted); font-variant-numeric:tabular-nums;}
+  .status{display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:600; padding:3px 10px; border-radius:999px;}
+  .status.live{background:rgba(31,122,79,0.1); color:var(--good);}
+  .status.staging{background:rgba(163,105,15,0.1); color:var(--warn);}
+  .status.none{background:var(--line-soft); color:var(--muted);}
+  .links a{color:var(--dim); text-decoration:none; font-size:12.5px; margin-right:12px;}
+  .links a:hover{color:var(--ink); text-decoration:underline;}
+  .loading, .err{font-size:13px; color:var(--muted); padding:20px 0;}
+  .err{color:var(--bad);}
+</style>
+</head>
+<body class="has-shell-nav">
+<nav id="adminShellNav">
+  <div class="shell-title">Simplifier Studio</div>
+  <a href="/insight-7b3e9f2c/">사이트 인사이트</a>
+  <a href="/insight-7b3e9f2c/sns-insight.html">SNS 인사이트</a>
+  <a href="/insight-7b3e9f2c/book-insight.html">북인사이트</a>
+  <a href="/insight-7b3e9f2c/newsletter-research.html">뉴스레터 리서치</a>
+  <a href="/insight-7b3e9f2c/pillar-manage.html" class="active">필러 관리</a>
+  <a href="/insight-7b3e9f2c/multi-publish.html">멀티 퍼블리싱</a>
+  <a href="/insight-7b3e9f2c/write.html">글쓰기</a>
+</nav>
+
+<div class="wrap">
+  <header>
+    <h1>필러 관리</h1>
+    <div class="sub">카테고리별 필러(주제 소개) 페이지 현황판입니다. 소개 문단은 <code>/admin/</code>(글쓰기 CMS)의 "카테고리 소개(필러)" 항목에서 직접 쓰고 고칩니다 — 여기서는 편집하지 않습니다.</div>
+  </header>
+
+  <div class="setup-note">
+    <strong>지금 상태:</strong> 뼈대만 만든 단계라, 실제 필러 페이지는 "스타트업 인사이트" 1개만 <code>/preview/topics/</code>에 샘플로 있습니다(운영 반영 전). 새 카테고리를 만들 때마다 아래 표의 <code>PILLAR_STATUS</code> 목록에 코드로 한 줄씩 추가해줘야 합니다 — 카테고리 수가 늘어나면 자동으로 스캔하도록 바꾸는 게 좋습니다.
+  </div>
+
+  <div id="content"><div class="loading">불러오는 중…</div></div>
+</div>
+
+<script>
+(function () {
+  var POSTS_URL = "/assets/data/posts.json";
+
+  // 필러 페이지가 만들어진 카테고리만 여기 등록합니다. status: "staging"(미리보기만)
+  // 또는 "live"(운영 반영). url은 그 페이지 주소.
+  var PILLAR_STATUS = {
+    "스타트업 인사이트": { status: "staging", url: "/preview/topics/스타트업-인사이트.html" }
+  };
+
+  var content = document.getElementById("content");
+
+  fetch(POSTS_URL)
+    .then(function (r) { return r.json(); })
+    .then(function (posts) { render(posts); })
+    .catch(function (e) {
+      content.innerHTML = '<div class="err">데이터를 못 불러왔습니다: ' + escapeHtml(String(e)) + "</div>";
+    });
+
+  function render(posts) {
+    var counts = {};
+    posts.forEach(function (p) {
+      var cat = p.category || "(분류 없음)";
+      counts[cat] = (counts[cat] || 0) + 1;
+    });
+    var cats = Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a]; });
+
+    var rows = cats.map(function (cat) {
+      var pillar = PILLAR_STATUS[cat];
+      var statusHtml = pillar
+        ? '<span class="status ' + pillar.status + '">' + (pillar.status === "live" ? "운영 반영됨" : "스테이징") + "</span>"
+        : '<span class="status none">아직 없음</span>';
+      var linksHtml = pillar
+        ? '<span class="links"><a href="' + pillar.url + '" target="_blank" rel="noopener">페이지 보기 ↗</a></span>'
+        : "";
+      return (
+        "<tr>" +
+        '<td class="cat-name">' + escapeHtml(cat) + "</td>" +
+        '<td class="count">' + counts[cat] + "건</td>" +
+        "<td>" + statusHtml + "</td>" +
+        "<td>" + linksHtml + "</td>" +
+        "</tr>"
+      );
+    }).join("");
+
+    content.innerHTML =
+      "<table><thead><tr>" +
+      "<th>카테고리</th><th>글 수</th><th>필러 페이지</th><th></th>" +
+      "</tr></thead><tbody>" + rows + "</tbody></table>";
+  }
+
+  function escapeHtml(s) {
+    return (s || "").toString().replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+})();
+</script>
+</body>
+</html>
