@@ -48,7 +48,9 @@
 
   #grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:16px;}
   .platform-card{border:1px solid var(--line-soft); border-radius:10px; padding:18px;}
-  .platform-card h3{margin:0 0 4px; font-size:14px; font-weight:600;}
+  .platform-card h3{margin:0 0 4px; font-size:14px; font-weight:600; display:flex; align-items:center; gap:6px;}
+  .platform-card .shortcut-link{font-size:12px; font-weight:600; color:var(--muted); text-decoration:none; border:1px solid var(--line-soft); border-radius:5px; width:18px; height:18px; display:inline-flex; align-items:center; justify-content:center; line-height:1;}
+  .platform-card .shortcut-link:hover{color:var(--ink); border-color:var(--ink);}
   .platform-card .source-badge{font-size:10.5px; font-weight:500; color:var(--muted); text-transform:uppercase; letter-spacing:0.03em;}
   .platform-card .latest{display:flex; align-items:baseline; gap:8px; margin:10px 0 6px;}
   .platform-card .latest .count{font-size:30px; font-weight:700;}
@@ -73,6 +75,7 @@
   <div class="shell-title">Simplifier Studio</div>
   <a href="/insight-7b3e9f2c/">사이트 인사이트</a>
   <a href="/insight-7b3e9f2c/sns-insight.html" class="active">SNS 인사이트</a>
+  <a href="/insight-7b3e9f2c/book-insight.html">북인사이트</a>
   <a href="/insight-7b3e9f2c/multi-publish.html">멀티 퍼블리싱</a>
   <a href="/insight-7b3e9f2c/write.html">글쓰기</a>
 </nav>
@@ -98,14 +101,14 @@
   var DATA_URL = "/assets/data/sns-insight.json";
 
   var PLATFORMS = [
-    { key: "linkedin", label: "LinkedIn", source: "크롬 확장" },
-    { key: "facebook", label: "Facebook", source: "크롬 확장" },
-    { key: "instagram", label: "Instagram", source: "크롬 확장" },
-    { key: "threads", label: "Threads", source: "크롬 확장" },
-    { key: "brunch", label: "브런치", source: "자동", secondaryKey: "brunch_articles", secondaryLabel: "발행 글" },
-    { key: "naver_blog", label: "네이버블로그", source: "크롬 확장" },
-    { key: "remember", label: "리멤버 커넥트", source: "크롬 확장" },
-    { key: "rocketpunch", label: "로켓펀치", source: "크롬 확장" },
+    { key: "linkedin", label: "LinkedIn", source: "크롬 확장", url: "https://www.linkedin.com/in/simplifier" },
+    { key: "facebook", label: "Facebook", source: "크롬 확장", url: "https://www.facebook.com/simplifier.seoul" },
+    { key: "instagram", label: "Instagram", source: "크롬 확장", url: "https://www.instagram.com/simplifier_seoul/" },
+    { key: "threads", label: "Threads", source: "크롬 확장", url: "https://www.threads.com/?hl=ko" },
+    { key: "brunch", label: "브런치", source: "자동", secondaryKey: "brunch_articles", secondaryLabel: "발행 글", url: "https://brunch.co.kr/@simplifier" },
+    { key: "naver_blog", label: "네이버블로그", source: "크롬 확장", url: "https://blog.naver.com/simplifiers" },
+    { key: "remember", label: "리멤버 커넥트", source: "크롬 확장", url: "https://connect.rememberapp.co.kr/profile/1582110/posts" },
+    { key: "rocketpunch", label: "로켓펀치", source: "크롬 확장", url: "https://www.rocketpunch.com/@simplfier/post" },
   ];
 
   var els = { status: document.getElementById("statusArea"), grid: document.getElementById("grid") };
@@ -123,11 +126,18 @@
     els.grid.innerHTML = PLATFORMS.map(function (p) { return buildCard(p, data); }).join("");
   }
 
+  function headerHtml(p) {
+    var link = p.url
+      ? '<a class="shortcut-link" href="' + escapeHtml(p.url) + '" target="_blank" rel="noopener" title="' + escapeHtml(p.label) + ' 바로가기">↗</a>'
+      : "";
+    return '<h3>' + escapeHtml(p.label) + link + "</h3>";
+  }
+
   function buildCard(p, data) {
     var series = data[p.key] || [];
     if (!series.length) {
       return (
-        '<div class="platform-card"><h3>' + escapeHtml(p.label) + '</h3>' +
+        '<div class="platform-card">' + headerHtml(p) +
         '<span class="source-badge">' + escapeHtml(p.source) + "</span>" +
         '<div class="empty">아직 기록된 데이터가 없습니다</div></div>'
       );
@@ -149,8 +159,7 @@
     }
 
     return (
-      '<div class="platform-card">' +
-      "<h3>" + escapeHtml(p.label) + "</h3>" +
+      '<div class="platform-card">' + headerHtml(p) +
       '<span class="source-badge">' + escapeHtml(p.source) + "</span>" +
       '<div class="latest"><span class="count">' + latest.count.toLocaleString() + "</span>" + deltaHtml + '<span class="unit">명</span></div>' +
       '<div class="asof">' + escapeHtml(latest.date) + " 기준 · " + series.length + "개 기록</div>" +
