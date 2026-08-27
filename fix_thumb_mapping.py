@@ -10,6 +10,18 @@ def pure_text(t):
     return re.sub(r'[^가-힣a-zA-Z0-9]', '', t)
 
 
+def _term_set(frontmatter):
+    """keywords/about front matter를 소문자 term 집합으로. 연관글 유사도 계산용."""
+    terms = set()
+    for field in ('keywords', 'about'):
+        raw = frontmatter.get(field) or ''
+        for t in str(raw).split(','):
+            t = t.strip().lower()
+            if t:
+                terms.add(t)
+    return terms
+
+
 images = os.listdir('log_assets/images')
 cover_by_id = defaultdict(list)   # id -> [(title_part, filename)]
 cover_by_pure = defaultdict(list)  # pure_text(title) -> [filename]
@@ -207,9 +219,42 @@ for fname in md_files:
         'date': date_string,
         'url': url,
         'image': image,
+        '_terms': _term_set(frontmatter),
     })
 
 posts.sort(key=lambda p: p['id'])
+
+# --- 연관글: "같은 카테고리 + 랜덤" 대신 keywords/about 겹침으로 실제
+# 주제가 가까운 글을 고른다. 두 필드 다 SEO 작업 때 글마다 고유하게
+# 채워둔 값이라 이미 신뢰할 수 있는 신호다. 겹치는 키워드가 없으면
+# 같은 카테고리로 채워 넣어 빈 추천을 막는다. */
+def _jaccard(a, b):
+    if not a or not b:
+        return 0.0
+    inter = len(a & b)
+    union = len(a | b)
+    return inter / union if union else 0.0
+
+
+for p in posts:
+    scored = []
+    for q in posts:
+        if q['id'] == p['id']:
+            continue
+        score = _jaccard(p['_terms'], q['_terms'])
+        if p['category'] and q['category'] == p['category']:
+            score += 0.05  # 동점일 때 같은 카테고리를 살짝 우대
+        scored.append((score, q['id']))
+    scored.sort(key=lambda x: (-x[0], x[1]))
+    related = [qid for score, qid in scored if score > 0][:4]
+    if len(related) < 4:
+        fallback = [q['id'] for q in posts
+                    if q['category'] == p['category'] and q['id'] != p['id'] and q['id'] not in related]
+        related += fallback[:4 - len(related)]
+    p['related'] = related
+
+for p in posts:
+    del p['_terms']
 
 os.makedirs(os.path.dirname(OUT_PATH), exist_ok=True)
 with open(OUT_PATH, 'w', encoding='utf-8') as f:

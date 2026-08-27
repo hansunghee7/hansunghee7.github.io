@@ -533,21 +533,25 @@
     <div class="related-posts" id="relatedPosts"></div>
     <script>
     (function(){
-        var CAT = {{ page.category | jsonify }};
+        // 예전엔 "같은 카테고리 + 랜덤 4개"였는데, 카테고리가 넓으면 실제로는
+        // 안 비슷한 글도 섞여 나와 연관도가 약했다. 지금은 fix_thumb_mapping.py가
+        // 글마다 고유하게 채운 keywords/about 겹침으로 posts.json에 미리 계산해둔
+        // related(id 배열)를 그대로 쓴다 -- 겹치는 키워드가 없을 때만 같은
+        // 카테고리로 보충되므로 항상 그보다는 연관도가 높다.
         var CUR = decodeURIComponent({{ page.url | jsonify }});
         fetch('/assets/data/posts.json').then(function(r){ return r.json(); }).then(function(posts){
-            var related = posts.filter(function(p){
-                return p.category === CAT && decodeURIComponent(p.url) !== CUR;
-            });
+            var current = posts.find(function(p){ return decodeURIComponent(p.url) === CUR; });
+            if (!current || !current.related || !current.related.length) return;
+            var byId = {};
+            posts.forEach(function(p){ byId[p.id] = p; });
+            var related = current.related.map(function(id){ return byId[id]; }).filter(Boolean);
             if (!related.length) return;
-            related.sort(function(){ return Math.random() - 0.5; });
-            related = related.slice(0, 4);
             function esc(s){
                 return (s || '').replace(/[&<>"']/g, function(c){
                     return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
                 });
             }
-            var html = '<h3 class="related-posts-title">같은 카테고리의 다른 글</h3><div class="related-posts-grid">';
+            var html = '<h3 class="related-posts-title">이 글과 비슷한 글</h3><div class="related-posts-grid">';
             related.forEach(function(p){
                 var meta = esc(p.category) + (p.date ? ' · ' + esc(p.date) : '');
                 html += '<a class="related-post-card" href="' + esc(p.url) + '">'
