@@ -106,8 +106,8 @@
   #channelPanel[data-key="threads"] textarea{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; font-size:15px; line-height:1.4;}
   #channelPanel[data-key="facebook"] textarea{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; font-size:15px; line-height:1.55;}
   #channelPanel[data-key="instagram"] textarea{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; font-size:14px; line-height:1.4;}
-  #channelPanel[data-key="manual"] textarea{font-family:"Noto Serif KR","Nanum Myeongjo",serif; font-size:17px; line-height:1.85; letter-spacing:-0.01em;}
-  #channelPanel[data-key="manual"] .title-field{font-family:"Noto Serif KR","Nanum Myeongjo",serif;}
+  #channelPanel[data-key="brunch"] textarea, #channelPanel[data-key="naver_blog"] textarea{font-family:"Noto Serif KR","Nanum Myeongjo",serif; font-size:17px; line-height:1.85; letter-spacing:-0.01em;}
+  #channelPanel[data-key="brunch"] .title-field, #channelPanel[data-key="naver_blog"] .title-field{font-family:"Noto Serif KR","Nanum Myeongjo",serif;}
   #channelPanel[data-key="linkedin_newsletter"] textarea{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; font-size:16.5px; line-height:1.7;}
   #channelPanel .charcount{font-size:11.5px; color:var(--muted); text-align:right; margin-top:6px;}
   #channelPanel .charcount.over{color:var(--bad); font-weight:600;}
@@ -179,21 +179,6 @@
       writeLinks: [{ label: "LinkedIn", url: "https://www.linkedin.com/in/simplifier" }],
     },
     {
-      // 같은 LinkedIn이라도 일반 포스트(제목 없이 좁은 폭)와 뉴스레터/아티클
-      // (제목+커버이미지 있는 넓은 장문 에디터)은 화면이 완전히 다릅니다
-      // (사용자 스크린샷 확인). 그래서 따로 탭을 둡니다.
-      key: "linkedin_newsletter", label: "LinkedIn 뉴스레터", limit: null, layout: "wide",
-      source: function (fm) { return fm.channel_variants && fm.channel_variants.manual_copy_block; },
-      aiInstruction: null,
-      writeLinks: [{ label: "LinkedIn 뉴스레터", url: "https://www.linkedin.com/article/new/" }],
-    },
-    {
-      key: "threads", label: "Threads", limit: 500, layout: "narrow",
-      source: function (fm) { return (fm.channel_variants && (fm.channel_variants.linkedin_threads || fm.channel_variants.manual_copy_block)); },
-      aiInstruction: "짧고 캐주얼한 말투로, 500자 이내로 핵심만 압축해줘. 첫 문장이 스크롤을 멈추게 할 만큼 강렬해야 해. 해시태그는 1~2개만.",
-      writeLinks: [{ label: "Threads", url: "https://www.threads.com/?hl=ko" }],
-    },
-    {
       key: "facebook", label: "Facebook", limit: 63206, layout: "narrow",
       source: function (fm) { return (fm.channel_variants && (fm.channel_variants.linkedin_threads || fm.channel_variants.manual_copy_block)); },
       aiInstruction: "친근하고 개인적인 톤으로, 이모지를 적절히 섞어서 편하게 다듬어줘. 너무 길지 않게, 읽기 편한 호흡으로 문단을 나눠줘.",
@@ -206,19 +191,6 @@
       writeLinks: [{ label: "Instagram", url: "https://www.instagram.com/simplifier_seoul/" }],
     },
     {
-      // 브런치·네이버블로그는 실제로 제목칸이 따로 있는 넓은 장문 에디터라서
-      // 이 둘만 wide로 묶습니다. 리멤버·로켓펀치는 실제 화면을 보면(사용자
-      // 스크린샷 확인) 제목 없이 좁은 폭에 글자수 제한이 있는 피드형 글쓰기
-      // 창이라 LinkedIn/Facebook과 같은 narrow로 따로 뺍니다.
-      key: "manual", label: "브런치 · 네이버블로그", limit: null, layout: "wide",
-      source: function (fm) { return fm.channel_variants && fm.channel_variants.manual_copy_block; },
-      aiInstruction: null,
-      writeLinks: [
-        { label: "브런치", url: "https://brunch.co.kr/@simplifier" },
-        { label: "네이버블로그", url: "https://blog.naver.com/simplifiers?Redirect=Write&" },
-      ],
-    },
-    {
       key: "remember", label: "리멤버 커넥트", limit: 1500, layout: "narrow",
       source: function (fm) { return fm.channel_variants && fm.channel_variants.manual_copy_block; },
       aiInstruction: "커리어/인사이트 커뮤니티에 어울리는 담백한 톤으로, 제목 없이 첫 문장에서 바로 훅을 만들어서 1500자 이내로 압축해줘.",
@@ -229,6 +201,36 @@
       source: function (fm) { return fm.channel_variants && fm.channel_variants.manual_copy_block; },
       aiInstruction: "스타트업 종사자들이 보는 커리어 피드에 어울리는 톤으로, 제목 없이 2000자 이내로 압축해줘.",
       writeLinks: [{ label: "로켓펀치", url: "https://www.rocketpunch.com/@simplfier/post" }],
+    },
+    {
+      key: "threads", label: "Threads", limit: 500, layout: "narrow",
+      source: function (fm) { return (fm.channel_variants && (fm.channel_variants.linkedin_threads || fm.channel_variants.manual_copy_block)); },
+      aiInstruction: "짧고 캐주얼한 말투로, 500자 이내로 핵심만 압축해줘. 첫 문장이 스크롤을 멈추게 할 만큼 강렬해야 해. 해시태그는 1~2개만.",
+      writeLinks: [{ label: "Threads", url: "https://www.threads.com/?hl=ko" }],
+    },
+    {
+      // 브런치·네이버블로그는 실제로 제목칸이 따로 있는 넓은 장문 에디터라서
+      // wide 레이아웃을 씁니다. 예전엔 탭 하나에 링크 두 개로 묶어뒀는데,
+      // 플랫폼마다 글을 조금씩 다르게 다듬을 수 있게 탭을 분리했습니다.
+      key: "brunch", label: "브런치", limit: null, layout: "wide",
+      source: function (fm) { return fm.channel_variants && fm.channel_variants.manual_copy_block; },
+      aiInstruction: null,
+      writeLinks: [{ label: "브런치", url: "https://brunch.co.kr/@simplifier" }],
+    },
+    {
+      key: "naver_blog", label: "네이버블로그", limit: null, layout: "wide",
+      source: function (fm) { return fm.channel_variants && fm.channel_variants.manual_copy_block; },
+      aiInstruction: null,
+      writeLinks: [{ label: "네이버블로그", url: "https://blog.naver.com/simplifiers?Redirect=Write&" }],
+    },
+    {
+      // 같은 LinkedIn이라도 일반 포스트(제목 없이 좁은 폭)와 뉴스레터/아티클
+      // (제목+커버이미지 있는 넓은 장문 에디터)은 화면이 완전히 다릅니다
+      // (사용자 스크린샷 확인). 그래서 따로 탭을 둡니다.
+      key: "linkedin_newsletter", label: "LinkedIn 뉴스레터", limit: null, layout: "wide",
+      source: function (fm) { return fm.channel_variants && fm.channel_variants.manual_copy_block; },
+      aiInstruction: null,
+      writeLinks: [{ label: "LinkedIn 뉴스레터", url: "https://www.linkedin.com/article/new/" }],
     },
   ];
 
