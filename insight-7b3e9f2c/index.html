@@ -240,6 +240,7 @@
   <h1>사이트 인사이트 <button type="button" class="h2note-q" aria-label="설명 보기">?<span class="h2note-text">이 사이트가 하는 일은 <b>코칭 계약과 강연 섭외로 이어질 문의를 받는 것</b>입니다. 그래서 맨 위가 문의(전환)이고, 글은 그 문의를 뒷받침하는 근거 자산으로 아래에 둡니다.</span></button></h1>
   <div class="metaline">
     <button class="refresh" id="refreshBtn">↻ 새로고침</button>
+    <span id="lastRefresh"></span>
     <span id="dataAsOf">데이터 불러오는 중…</span>
     <span>· 검색 비노출(noindex) 페이지</span>
   </div>
@@ -437,6 +438,10 @@
     return d.getFullYear()+'.'+String(d.getMonth()+1).padStart(2,'0')+'.'+String(d.getDate()).padStart(2,'0');
   }
   function daysBetween(a,b){ return Math.floor((a-b)/86400000); }
+  function stampRefresh(){
+    document.getElementById('lastRefresh').textContent =
+      '· 마지막 새로고침 ' + new Date().toLocaleTimeString('ko-KR', {hour:'2-digit', minute:'2-digit'});
+  }
   function el(tag, cls, txt){ var e=document.createElement(tag); if(cls)e.className=cls; if(txt!=null)e.textContent=txt; return e; }
 
   function renderIntegrations(){
@@ -1080,8 +1085,9 @@
   renderTrust();
   renderAnalytics();
   renderIntegrations();
-  document.getElementById('refreshBtn').addEventListener('click', function(){ load(); renderAnalytics(); });
+  document.getElementById('refreshBtn').addEventListener('click', function(){ load(); renderAnalytics(); stampRefresh(); });
   load();
+  stampRefresh();
 })();
 </script>
 </body>
