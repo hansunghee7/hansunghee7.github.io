@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-27T22:55:25.290531+00:00",
+  "updated_at": "2026-08-27T23:01:50.423910+00:00",
   "range": "last_30_days",
   "totals": {
     "sessions": 44,
@@ -66,12 +66,12 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 183,
+    "section_view_proven": 184,
     "section_view_voices": 134,
     "section_view_book_class": 81,
     "section_view_faq": 73,
     "faq_open": 14,
-    "read_complete": 104
+    "read_complete": 105
   },
   "contact_funnel": {
     "contact_open": 15,
