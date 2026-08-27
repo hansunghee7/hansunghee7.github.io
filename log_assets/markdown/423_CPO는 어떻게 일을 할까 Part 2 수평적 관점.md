@@ -76,7 +76,7 @@ CPO가 되었을 때 단일 스쿼드를 관리하던 PM/PO 때와는 수준이 
   <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
 </div>
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/424_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part%201%20%EC%88%98%EC%A7%81%EC%A0%81%20%EA%B4%80%EC%A0%90.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">CPO는 어떻게 일을 할까? Part 1. 수직적 관점</span></a>
-  <a href="/log_assets/markdown/422_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part%203%20%ED%9D%90%EB%A6%84%EC%9D%98%20%EA%B2%B0%ED%95%A9.html" class="cat-nav-item cat-nav-right"><span class="nav-title">CPO는 어떻게 일을 할까? Part 3. 흐름의 결합</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/422_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part%203%20%ED%9D%90%EB%A6%84%EC%9D%98%20%EA%B2%B0%ED%95%A9.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">CPO는 어떻게 일을 할까? Part 3. 흐름의 결합</span></a>
+  <a href="/log_assets/markdown/424_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part%201%20%EC%88%98%EC%A7%81%EC%A0%81%20%EA%B4%80%EC%A0%90.html" class="cat-nav-item cat-nav-right"><span class="nav-title">CPO는 어떻게 일을 할까? Part 1. 수직적 관점</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

@@ -102,7 +102,7 @@ EO Planet은 시작한지 얼마 안되었지만 큰 기업 인재들이...가 4
   <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
 </div>
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/477_%EA%B8%80%EC%93%B0%EA%B8%B0%EB%8A%94%20%27%EC%9E%98%27%20%EB%B3%B4%EB%8B%A4%20%27%EC%9E%90%EC%A3%BC%27%EA%B0%80%20%EB%8D%94%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">글쓰기는 '잘' 보다 '자주'가 더 중요한 이유</span></a>
-  <a href="/log_assets/markdown/472_%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%EC%97%90%EB%8A%94%20%EC%96%B4%EB%96%A4%20%EA%B8%80%EC%9D%84%20%EC%8D%A8%EC%95%BC%ED%95%A0%EA%B9%8C.html" class="cat-nav-item cat-nav-right"><span class="nav-title">링크드인에는 어떤 글을 써야할까?</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/472_%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%EC%97%90%EB%8A%94%20%EC%96%B4%EB%96%A4%20%EA%B8%80%EC%9D%84%20%EC%8D%A8%EC%95%BC%ED%95%A0%EA%B9%8C.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">링크드인에는 어떤 글을 써야할까?</span></a>
+  <a href="/log_assets/markdown/477_%EA%B8%80%EC%93%B0%EA%B8%B0%EB%8A%94%20%27%EC%9E%98%27%20%EB%B3%B4%EB%8B%A4%20%27%EC%9E%90%EC%A3%BC%27%EA%B0%80%20%EB%8D%94%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="cat-nav-item cat-nav-right"><span class="nav-title">글쓰기는 '잘' 보다 '자주'가 더 중요한 이유</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

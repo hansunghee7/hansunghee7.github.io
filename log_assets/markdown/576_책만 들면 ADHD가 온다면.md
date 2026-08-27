@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
 </div>
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/580_%EA%B0%9C%EC%9D%B8%EC%82%AC%EC%97%85%20%EC%8B%9C%EC%9E%91%20%EC%A0%84%20%ED%95%B4%EC%95%BC%20%ED%95%A0%205%EA%B0%80%EC%A7%80%20%EC%A7%88%EB%AC%B8%EC%9D%80.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">개인사업 시작 전 해야 할 5가지 질문은?</span></a>
-  <a href="/log_assets/markdown/575_%EA%B0%9C%EC%9D%B8%EC%82%AC%EC%97%85%EC%9E%90%EA%B0%80%20%EB%90%98%EB%A9%B4%20%EC%A2%8B%EC%9D%80%20%EC%A0%90%EC%9D%80%20%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80%EC%9A%94.html" class="cat-nav-item cat-nav-right"><span class="nav-title">개인사업자가 되면 좋은 점은 무엇인가요?</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/575_%EA%B0%9C%EC%9D%B8%EC%82%AC%EC%97%85%EC%9E%90%EA%B0%80%20%EB%90%98%EB%A9%B4%20%EC%A2%8B%EC%9D%80%20%EC%A0%90%EC%9D%80%20%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80%EC%9A%94.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">개인사업자가 되면 좋은 점은 무엇인가요?</span></a>
+  <a href="/log_assets/markdown/580_%EA%B0%9C%EC%9D%B8%EC%82%AC%EC%97%85%20%EC%8B%9C%EC%9E%91%20%EC%A0%84%20%ED%95%B4%EC%95%BC%20%ED%95%A0%205%EA%B0%80%EC%A7%80%20%EC%A7%88%EB%AC%B8%EC%9D%80.html" class="cat-nav-item cat-nav-right"><span class="nav-title">개인사업 시작 전 해야 할 5가지 질문은?</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->

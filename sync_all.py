@@ -53,6 +53,23 @@ def build_cta_html(cat):
         '</div>\n'
     )
 
+def date_sort_key(frontmatter, fname):
+    # front matter의 date는 YAML이 상황에 따라 datetime.date / datetime.datetime
+    # (타임존 포함, 예: 615번처럼 'date: 2026-08-26T16:27:00Z') / 문자열로 각각
+    # 다르게 파싱해준다. 이 타입들은 서로 직접 비교하면 TypeError가 나므로,
+    # 전부 'YYYY-MM-DD' 문자열로 정규화해 비교한다(ISO 형식이라 문자열
+    # 정렬이 곧 날짜 정렬과 같다). date가 없거나 못 읽으면 그 글은 정렬
+    # 맨 끝(desc 기준 가장 과거)으로 보내고, 같은 날짜끼리는 파일명으로
+    # 안정적인 순서를 보장한다.
+    raw = frontmatter.get("date")
+    date_str = ""
+    if hasattr(raw, "isoformat"):
+        date_str = raw.isoformat()[:10]
+    elif isinstance(raw, str) and len(raw) >= 10:
+        date_str = raw[:10]
+    return (date_str or "0000-00-00", fname)
+
+
 def extract_ep_num(filename, title):
     # '예고편'은 가장 첫 번째(0화)로 간주
     if '예고편' in filename or '예고편' in title:
@@ -105,6 +122,7 @@ if os.path.exists(MARKDOWN_DIR):
                 'title': title,
                 'category': cat,
                 'ep_num': ep_num,
+                'date_key': date_sort_key(frontmatter, fname),
                 'filepath': filepath
             }
 
@@ -121,10 +139,18 @@ if os.path.exists(MARKDOWN_DIR):
             # 웹툰형: 예고편(0) -> 1화 -> 2화 순 오름차순 정렬 (회차 역전은 없음)
             posts.sort(key=lambda x: (x['ep_num'], x['fname']))
         else:
-            # 일반 블로그형: CATEGORY_SORT_MODE를 따라 오래된 글부터(asc) 또는
-            # 최신글부터(desc) 정렬. 파일명 ID가 3자리로 고정돼 있어 문자열
-            # 정렬이 곧 숫자(=발행 순서) 정렬과 같다.
-            posts.sort(key=lambda x: x['fname'], reverse=not ascending)
+            # 일반 블로그형: CATEGORY_SORT_MODE를 따라 실제 date 필드 기준으로
+            # 오래된 글부터(asc) 또는 최신글부터(desc) 정렬한다.
+            #
+            # 파일명 ID로 정렬하던 예전 방식은 틀렸다 -- 브런치에서 한 번에
+            # 이관된 레거시 글들은 ID가 낮을수록 오히려 실제 날짜가 최신인
+            # 경우가 카테고리마다 일관되게 나타난다(이관 스크립트가 최신순으로
+            # 읽어들이며 번호를 매긴 것으로 보임). 반면 이관 이후 새로 추가된
+            # 글은 ID가 클수록 최신이라, ID는 카테고리 안에서조차 방향이
+            # 뒤집힐 수 있는 신호였다. log.html 카드 목록도 이미 date_key
+            # 기준으로 정렬하므로, 여기서도 같은 기준을 써야 목록 순서와
+            # 이전글/다음글이 같은 방향을 가리킨다.
+            posts.sort(key=lambda x: x['date_key'], reverse=not ascending)
 
         for i, p in enumerate(posts):
             # posts는 이미 이 카테고리가 실제로 보여지는 순서(asc=오래된 글부터,

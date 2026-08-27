@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
 </div>
 <div class="category-nav-wrap">
-  <a href="/log_assets/markdown/229_%EC%84%B8%EC%83%81%EC%9D%84%20%EB%B0%94%EA%BE%BC%20%EC%8B%A4%ED%97%98%20%27OKR%27%EC%9D%98%203%EA%B0%80%EC%A7%80%20%EB%A7%88%EB%B2%95.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">세상을 바꾼 실험 'OKR'의 3가지 마법</span></a>
-  <a href="/log_assets/markdown/244_470%EB%AA%85%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%ED%88%B4%20%27%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EB%AA%A8%EB%8D%B8%20%EC%BA%94%EB%B2%84%EC%8A%A4%27.html" class="cat-nav-item cat-nav-right"><span class="nav-title">470명이 만든 비즈니스 툴 '비즈니스 모델 캔버스'</span><span class="cat-nav-label">다음글 ❯</span></a>
+  <a href="/log_assets/markdown/244_470%EB%AA%85%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%ED%88%B4%20%27%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EB%AA%A8%EB%8D%B8%20%EC%BA%94%EB%B2%84%EC%8A%A4%27.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">470명이 만든 비즈니스 툴 '비즈니스 모델 캔버스'</span></a>
+  <a href="/log_assets/markdown/229_%EC%84%B8%EC%83%81%EC%9D%84%20%EB%B0%94%EA%BE%BC%20%EC%8B%A4%ED%97%98%20%27OKR%27%EC%9D%98%203%EA%B0%80%EC%A7%80%20%EB%A7%88%EB%B2%95.html" class="cat-nav-item cat-nav-right"><span class="nav-title">세상을 바꾼 실험 'OKR'의 3가지 마법</span><span class="cat-nav-label">다음글 ❯</span></a>
 </div>
 <!-- CATEGORY_NAV_END -->
