@@ -158,6 +158,19 @@
             .article-body .img-gallery img { width: 100% !important; height: auto !important; }
         }
         .article-body img { cursor: zoom-in; }
+        /* 이미지가 로드되기 전, 흰 배경(#fff) 위라 빈 공간이 그냥 하얗게 보이던 문제.
+           로드 전까지는 스켈레톤 그라데이션을 보여주고, 로드가 끝나면 JS가 img-loaded를
+           붙여 애니메이션을 끈다(투명 PNG가 있을 수 있어 배경을 완전히 없애야 함). */
+        .article-body img:not(.img-loaded) {
+            background: linear-gradient(100deg, #eee 30%, #f5f5f5 50%, #eee 70%);
+            background-size: 200% 100%;
+            animation: img-skeleton 1.4s ease-in-out infinite;
+        }
+        .article-body img.img-loaded { animation: none; background: none; }
+        @keyframes img-skeleton {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
         .lightbox-overlay { position: fixed; inset: 0; background: rgba(8,8,8,0.92); display: none; align-items: center; justify-content: center; z-index: 9999; padding: 40px; cursor: zoom-out; }
         .lightbox-overlay.active { display: flex; }
         .lightbox-overlay img { max-width: 100%; max-height: 100%; width: auto !important; height: auto !important; object-fit: contain; margin: 0 !important; border-radius: 0; cursor: default; }
@@ -459,7 +472,9 @@
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         // 포스트 커버: 스크롤에 따라 커버 높이를 줄이고 제목을 페이드아웃시킵니다.
-        // 커버가 1.8배 속도로 접히면서 그 아래 본문이 따라 올라오는 연출입니다.
+        // 커버가 1.3배 속도로 접히면서 그 아래 본문이 따라 올라오는 연출입니다.
+        // (기존 1.8배 + 30% 지점에서 완전히 사라지던 값은 모바일 플릭 한 번에
+        //  제목이 다 지나가버려 "읽을 새도 없다"는 피드백을 받아 완만하게 조정)
         const coverWrap = document.getElementById('coverWrap');
         const coverTitleBox = document.getElementById('coverTitleBox');
 
@@ -470,8 +485,8 @@
             window.addEventListener('scroll', function() {
                 const scrolled = window.scrollY;
                 if (scrolled <= initialHeight) {
-                    const newHeight = Math.max(minHeight, initialHeight - scrolled * 1.8);
-                    const opacity = Math.max(0, 1 - (scrolled / (initialHeight * 0.3)));
+                    const newHeight = Math.max(minHeight, initialHeight - scrolled * 1.3);
+                    const opacity = Math.max(0, 1 - (scrolled / (initialHeight * 0.55)));
 
                     coverWrap.style.height = newHeight + 'px';
                     if (coverTitleBox) coverTitleBox.style.opacity = opacity;
@@ -482,6 +497,13 @@
         if (articleBody) {
             const coverImg = articleBody.querySelector('img[alt="대표 이미지"]');
             if (coverImg) coverImg.classList.add('hidden-element');
+
+            // 본문 이미지 스켈레톤: 로드 완료(또는 실패) 시 애니메이션을 끈다.
+            articleBody.querySelectorAll('img').forEach(function(img){
+                function markLoaded(){ img.classList.add('img-loaded'); }
+                if (img.complete && img.naturalWidth > 0) { markLoaded(); }
+                else { img.addEventListener('load', markLoaded); img.addEventListener('error', markLoaded); }
+            });
 
             const h1s = articleBody.querySelectorAll('h1');
             if(h1s.length > 0) h1s[0].classList.add('hidden-element');
