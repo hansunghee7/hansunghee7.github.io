@@ -460,22 +460,30 @@
       })
       .join("");
 
+    // 버튼 줄(새 글쓰기 열기 / AI 요청 복사 / 제목 복사 / 본문 복사)을
+    // 위·아래에 똑같이 둡니다 — 본문이 길어서 스크롤한 상태에서도 다시
+    // 위로 안 올라가고 바로 아래 버튼으로 복사할 수 있게.
+    var writeLinksRowHtml = '<div class="row write-links-row">' + writeLinksHtml + "</div>";
+    var actionsRowHtml = '<div class="row">' + aiBtnHtml + copyBtnsHtml + "</div>";
+
     els.panel.innerHTML =
       '<div class="panel-head"><h3>' + escapeHtml(ch.label) + "</h3>" +
       (ch.limit ? '<span class="badge">권장 ' + ch.limit + "자 이내</span>" : "") +
       "</div>" +
-      '<div class="row write-links-row">' + writeLinksHtml + "</div>" +
+      writeLinksRowHtml +
+      actionsRowHtml +
       titleFieldHtml +
       '<textarea placeholder="' + escapeHtml(placeholder) + '">' + escapeHtml(state.text) + "</textarea>" +
       '<div class="charcount">0자</div>' +
-      '<div class="row">' + aiBtnHtml + copyBtnsHtml + "</div>";
+      actionsRowHtml +
+      writeLinksRowHtml;
 
     var textarea = els.panel.querySelector("textarea");
     var titleField = els.panel.querySelector(".title-field");
     var count = els.panel.querySelector(".charcount");
-    var copyBtn = els.panel.querySelector(".copy-btn");
-    var titleBtn = els.panel.querySelector(".title-btn");
-    var aiBtn = els.panel.querySelector(".ai-btn");
+    var copyBtns = els.panel.querySelectorAll(".copy-btn");
+    var titleBtns = els.panel.querySelectorAll(".title-btn");
+    var aiBtns = els.panel.querySelectorAll(".ai-btn");
 
     fitActiveTextareaHeight();
 
@@ -491,28 +499,30 @@
     });
 
     var copyBtnLabel = isWide ? "본문 복사" : "복사";
-    copyBtn.addEventListener("click", function () {
-      copyText(textarea.value, function (ok) {
-        flashBtn(copyBtn, ok, copyBtnLabel);
+    copyBtns.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        copyText(textarea.value, function (ok) {
+          flashBtn(btn, ok, copyBtnLabel);
+        });
       });
     });
 
-    if (titleBtn) {
-      titleBtn.addEventListener("click", function () {
+    titleBtns.forEach(function (btn) {
+      btn.addEventListener("click", function () {
         copyText(titleField ? titleField.value : currentTitle, function (ok) {
-          flashBtn(titleBtn, ok, "제목 복사");
+          flashBtn(btn, ok, "제목 복사");
         });
       });
-    }
+    });
 
-    if (aiBtn) {
-      aiBtn.addEventListener("click", function () {
+    aiBtns.forEach(function (btn) {
+      btn.addEventListener("click", function () {
         var prompt = buildAiPrompt(ch, currentTitle, currentBody);
         copyText(prompt, function (ok) {
-          flashBtn(aiBtn, ok, "🤖 AI 요청 복사");
+          flashBtn(btn, ok, "🤖 AI 요청 복사");
         });
       });
-    }
+    });
   }
 
   function flashBtn(btn, ok, restoreLabel) {
