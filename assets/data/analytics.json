@@ -1,26 +1,33 @@
 {
-  "updated_at": "2026-08-26T23:57:05.122694+00:00",
+  "updated_at": "2026-08-27T22:55:25.290531+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 19,
-    "activeUsers": 13,
-    "newUsers": 10,
-    "returningUsers": 3
+    "sessions": 44,
+    "activeUsers": 26,
+    "newUsers": 24,
+    "returningUsers": 2
   },
   "daily": [
     {
       "date": "2026-08-26",
       "sessions": 12,
       "activeUsers": 7,
-      "newUsers": 5,
-      "returningUsers": 2
+      "newUsers": 7,
+      "returningUsers": 0
     },
     {
       "date": "2026-08-27",
-      "sessions": 7,
-      "activeUsers": 7,
-      "newUsers": 5,
-      "returningUsers": 2
+      "sessions": 30,
+      "activeUsers": 20,
+      "newUsers": 16,
+      "returningUsers": 4
+    },
+    {
+      "date": "2026-08-28",
+      "sessions": 4,
+      "activeUsers": 4,
+      "newUsers": 1,
+      "returningUsers": 3
     }
   ],
   "daily_leads": [
@@ -30,36 +37,44 @@
     }
   ],
   "landing_types": {
-    "home": 28,
-    "log_home": 4,
-    "individual_post": 0,
-    "other": 0
+    "home": 51,
+    "log_home": 5,
+    "individual_post": 14,
+    "other": 8
   },
   "top_sources": [
     {
-      "source": "(not set)",
-      "sessions": 12
+      "source": "(direct)",
+      "sessions": 30
     },
     {
-      "source": "(direct)",
-      "sessions": 11
+      "source": "(not set)",
+      "sessions": 26
     },
     {
       "source": "searchadvisor.naver.com",
-      "sessions": 3
+      "sessions": 7
+    },
+    {
+      "source": "google",
+      "sessions": 4
+    },
+    {
+      "source": "linkedin.com",
+      "sessions": 1
     }
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 77,
-    "section_view_voices": 63,
-    "section_view_book_class": 38,
-    "section_view_faq": 33,
-    "faq_open": 3,
-    "read_complete": 23
+    "section_view_proven": 183,
+    "section_view_voices": 134,
+    "section_view_book_class": 81,
+    "section_view_faq": 73,
+    "faq_open": 14,
+    "read_complete": 104
   },
   "contact_funnel": {
-    "contact_open": 10,
+    "contact_open": 15,
     "generate_lead": 1,
     "contact_error": 2
   },
@@ -70,25 +85,151 @@
       "count": 1
     }
   ],
-  "top_landing_posts": [],
+  "top_landing_posts": [
+    {
+      "path": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
+      "title": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
+      "sessions": 2
+    },
+    {
+      "path": "/log_assets/markdown/005_할루시네이션 사회.html",
+      "title": "/log_assets/markdown/005_할루시네이션 사회.html",
+      "sessions": 1
+    },
+    {
+      "path": "/log_assets/markdown/009_PM의 고수는 감정을 어떻게 다룰까.html",
+      "title": "/log_assets/markdown/009_PM의 고수는 감정을 어떻게 다룰까.html",
+      "sessions": 1
+    },
+    {
+      "path": "/log_assets/markdown/130_왜 한국 스타트업은 미국 진출을 꿈꾸는가.html",
+      "title": "/log_assets/markdown/130_왜 한국 스타트업은 미국 진출을 꿈꾸는가.html",
+      "sessions": 1
+    },
+    {
+      "path": "/log_assets/markdown/300_뛰어난 PO는 데이터를 어떻게 볼까.html",
+      "title": "/log_assets/markdown/300_뛰어난 PO는 데이터를 어떻게 볼까.html",
+      "sessions": 1
+    },
+    {
+      "path": "/log_assets/markdown/346_코치S 14화 콜드브루 장사.html",
+      "title": "/log_assets/markdown/346_코치S 14화 콜드브루 장사.html",
+      "sessions": 1
+    },
+    {
+      "path": "/log_assets/markdown/474_기획의 시작은 문제의 인식부터.html",
+      "title": "/log_assets/markdown/474_기획의 시작은 문제의 인식부터.html",
+      "sessions": 1
+    },
+    {
+      "path": "/log_assets/markdown/492_IT 서비스를 잘 만드는 회사의 7가지 특징.html",
+      "title": "/log_assets/markdown/492_IT 서비스를 잘 만드는 회사의 7가지 특징.html",
+      "sessions": 1
+    },
+    {
+      "path": "/log_assets/markdown/498_사업가는.html",
+      "title": "/log_assets/markdown/498_사업가는.html",
+      "sessions": 1
+    },
+    {
+      "path": "/log_assets/markdown/547_PO가 정확히 뭔가요.html",
+      "title": "/log_assets/markdown/547_PO가 정확히 뭔가요.html",
+      "sessions": 1
+    },
+    {
+      "path": "/log_assets/markdown/578_프로덕트 회사의 야근 전략.html",
+      "title": "/log_assets/markdown/578_프로덕트 회사의 야근 전략.html",
+      "sessions": 1
+    },
+    {
+      "path": "/log_assets/markdown/583_큰 기업 인재들이 스타트업에서 고전을 하는 이유는.html",
+      "title": "/log_assets/markdown/583_큰 기업 인재들이 스타트업에서 고전을 하는 이유는.html",
+      "sessions": 1
+    },
+    {
+      "path": "/log_assets/markdown/586_CPO는 어떤 역할을 하는 사람인가요.html",
+      "title": "/log_assets/markdown/586_CPO는 어떤 역할을 하는 사람인가요.html",
+      "sessions": 1
+    }
+  ],
   "top_viewed_posts": [
+    {
+      "path": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
+      "title": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
+      "uniqueViews": 5,
+      "views": 33
+    },
+    {
+      "path": "/log_assets/markdown/130_왜 한국 스타트업은 미국 진출을 꿈꾸는가.html",
+      "title": "/log_assets/markdown/130_왜 한국 스타트업은 미국 진출을 꿈꾸는가.html",
+      "uniqueViews": 4,
+      "views": 7
+    },
+    {
+      "path": "/log_assets/markdown/003_회의실에서 목소리가 큰 사람이 가장 위험할 수 있다.html",
+      "title": "/log_assets/markdown/003_회의실에서 목소리가 큰 사람이 가장 위험할 수 있다.html",
+      "uniqueViews": 3,
+      "views": 9
+    },
+    {
+      "path": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
+      "title": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
+      "uniqueViews": 2,
+      "views": 3
+    },
     {
       "path": "/log_assets/markdown/005_할루시네이션 사회.html",
       "title": "/log_assets/markdown/005_할루시네이션 사회.html",
       "uniqueViews": 2,
+      "views": 17
+    },
+    {
+      "path": "/log_assets/markdown/009_PM의 고수는 감정을 어떻게 다룰까.html",
+      "title": "/log_assets/markdown/009_PM의 고수는 감정을 어떻게 다룰까.html",
+      "uniqueViews": 2,
       "views": 7
+    },
+    {
+      "path": "/log_assets/markdown/263_우선순위 설정의 프레임워크 'RICE'.html",
+      "title": "/log_assets/markdown/263_우선순위 설정의 프레임워크 'RICE'.html",
+      "uniqueViews": 2,
+      "views": 2
+    },
+    {
+      "path": "/log_assets/markdown/306_뛰어난 PO는 어떤 자질이 다를까.html",
+      "title": "/log_assets/markdown/306_뛰어난 PO는 어떤 자질이 다를까.html",
+      "uniqueViews": 2,
+      "views": 5
+    },
+    {
+      "path": "/log_assets/markdown/346_코치S 14화 콜드브루 장사.html",
+      "title": "/log_assets/markdown/346_코치S 14화 콜드브루 장사.html",
+      "uniqueViews": 2,
+      "views": 4
+    },
+    {
+      "path": "/log_assets/markdown/371_뛰어난 PM일수록 비관적인 이유는.html",
+      "title": "/log_assets/markdown/371_뛰어난 PM일수록 비관적인 이유는.html",
+      "uniqueViews": 2,
+      "views": 3
+    },
+    {
+      "path": "/log_assets/markdown/401_코치S 1화 '문제해결사'.html",
+      "title": "/log_assets/markdown/401_코치S 1화 '문제해결사'.html",
+      "uniqueViews": 2,
+      "views": 3
     },
     {
       "path": "/log_assets/markdown/611_당신의 서비스가 말을 한다면.html",
       "title": "/log_assets/markdown/611_당신의 서비스가 말을 한다면.html",
       "uniqueViews": 2,
-      "views": 4
+      "views": 8
     },
     {
-      "path": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
-      "title": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
+      "path": "/log_assets/markdown/612_줄서서 먹는 가게의 사장은 뭐가 다를까.html",
+      "title": "/log_assets/markdown/612_줄서서 먹는 가게의 사장은 뭐가 다를까.html",
       "uniqueViews": 2,
-      "views": 6
+      "views": 3
     },
     {
       "path": "/log_assets/markdown/001_",
@@ -97,68 +238,8 @@
       "views": 1
     },
     {
-      "path": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
-      "title": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
-      "uniqueViews": 1,
-      "views": 2
-    },
-    {
-      "path": "/log_assets/markdown/003_회의실에서 목소리가 큰 사람이 가장 위험할 수 있다.html",
-      "title": "/log_assets/markdown/003_회의실에서 목소리가 큰 사람이 가장 위험할 수 있다.html",
-      "uniqueViews": 1,
-      "views": 4
-    },
-    {
-      "path": "/log_assets/markdown/006_자정이 가까워지도록 AI 얘기를 원 없이 나눴어요.html",
-      "title": "/log_assets/markdown/006_자정이 가까워지도록 AI 얘기를 원 없이 나눴어요.html",
-      "uniqueViews": 1,
-      "views": 1
-    },
-    {
-      "path": "/log_assets/markdown/010_우리는 대화를 했을까.html",
-      "title": "/log_assets/markdown/010_우리는 대화를 했을까.html",
-      "uniqueViews": 1,
-      "views": 1
-    },
-    {
-      "path": "/log_assets/markdown/241_1인 기업 어떻게 창업해야 할까요.html",
-      "title": "/log_assets/markdown/241_1인 기업 어떻게 창업해야 할까요.html",
-      "uniqueViews": 1,
-      "views": 1
-    },
-    {
-      "path": "/log_assets/markdown/256_애자일의 심장 ‘스프린트’.html",
-      "title": "/log_assets/markdown/256_애자일의 심장 ‘스프린트’.html",
-      "uniqueViews": 1,
-      "views": 1
-    },
-    {
-      "path": "/log_assets/markdown/267_애자일이란.html",
-      "title": "/log_assets/markdown/267_애자일이란.html",
-      "uniqueViews": 1,
-      "views": 0
-    },
-    {
-      "path": "/log_assets/markdown/338_코치S 18화 풀기 어려운 문제.html",
-      "title": "/log_assets/markdown/338_코치S 18화 풀기 어려운 문제.html",
-      "uniqueViews": 1,
-      "views": 2
-    },
-    {
-      "path": "/log_assets/markdown/344_코치S 15화 장사로 배우는 유입율과 전환율.html",
-      "title": "/log_assets/markdown/344_코치S 15화 장사로 배우는 유입율과 전환율.html",
-      "uniqueViews": 1,
-      "views": 1
-    },
-    {
-      "path": "/log_assets/markdown/346_코치S 14화 콜드브루 장사.html",
-      "title": "/log_assets/markdown/346_코치S 14화 콜드브루 장사.html",
-      "uniqueViews": 1,
-      "views": 1
-    },
-    {
-      "path": "/log_assets/markdown/349_코치S 13화 두개의 모자.html",
-      "title": "/log_assets/markdown/349_코치S 13화 두개의 모자.html",
+      "path": "/log_assets/markdown/004_굿바이 히가시노.html",
+      "title": "/log_assets/markdown/004_굿바이 히가시노.html",
       "uniqueViews": 1,
       "views": 1
     }
