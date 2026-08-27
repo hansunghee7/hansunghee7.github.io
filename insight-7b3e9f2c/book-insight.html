@@ -99,7 +99,7 @@
     <strong>데이터는 매일 새벽 06:41(KST)에 자동 갱신됩니다.</strong>
     「UX의 언어들」은 <a href="https://cinaeng.github.io/ux-book-tracker/" target="_blank" rel="noopener noreferrer">별도 트래커</a>가
     수집한 결과를 그대로 가져와 보여줍니다. 「기획자의 질문법」은 이 저장소가
-    직접 예스24·알라딘·교보문고·리디북스를 수집합니다. 지금 당장 갱신하려면
+    직접 예스24·알라딘·교보문고·리디북스·밀리의서재를 수집합니다. 지금 당장 갱신하려면
     GitHub Actions에서 <code>Fetch book insight</code> 워크플로를 수동 실행하세요.
   </div>
 
@@ -291,6 +291,7 @@
       { key: "alsp", label: "알라딘 세일즈포인트", unit: "", higherIsBetter: true, href: ALADIN_PRODUCT, get: function (r) { return r.aladin && r.aladin.sales_point; } },
       { key: "alplan", label: "알라딘 기획", unit: "위", higherIsBetter: false, href: ALADIN_BEST("70229"), get: function (r) { return r.aladin && r.aladin.planning_rank; } },
       { key: "alinfo", label: "알라딘 정보관리", unit: "위", higherIsBetter: false, href: ALADIN_BEST("70222"), get: function (r) { return r.aladin && r.aladin.info_mgmt_rank; } },
+      { key: "millie", label: "밀리의서재 자기계발>기획 인기순", unit: "위", higherIsBetter: false, href: "https://www.millie.co.kr/v3/search/3depth/1298/?parentSeq=1287&nav_hidden=y", get: function (r) { return r.millie && r.millie.category_rank; } },
     ];
 
     var html = metrics.map(function (m) {

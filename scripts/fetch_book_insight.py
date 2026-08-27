@@ -1,17 +1,28 @@
 """
 「기획자의 질문법」(한성희 저, 파지트, 2025-06-13) 베스트셀러 순위·판매지수를
-예스24·알라딘·교보문고·리디북스에서 매일 수집해 assets/data/book-insight.json에
-날짜별로 쌓는다.
+예스24·알라딘·교보문고·리디북스·밀리의서재에서 매일 수집해
+assets/data/book-insight.json에 날짜별로 쌓는다.
 
 cinaeng/ux-book-tracker(다른 책 「UX의 언어들」용, Node.js+Playwright)와 같은
 원리지만, 이 저장소는 지금까지 100% Python이라 Node를 새로 들이지 않고
 Playwright의 Python 바인딩으로 옮겨왔다 -- 같은 브라우저 엔진, 같은 API라
 기능 차이는 없다.
 
-소스 4개(예스24/알라딘/교보문고/리디북스)를 각각 독립적으로 try/except로
-감싼다 -- 하나가 사이트 구조 변경으로 깨져도(가장 취약한 건 교보문고 --
-Next.js 클라이언트 렌더링) 나머지는 그날 값을 정상적으로 남겨야 하기
-때문이다.
+소스 5개(예스24/알라딘/교보문고/리디북스/밀리의서재)를 각각 독립적으로
+try/except로 감싼다 -- 하나가 사이트 구조 변경으로 깨져도(가장 취약한 건
+교보문고 -- Next.js 클라이언트 렌더링) 나머지는 그날 값을 정상적으로
+남겨야 하기 때문이다.
+
+리디북스: 카테고리 베스트셀러 페이지(주간/월간)를 직접 확인한 결과, 이 책은
+순위 차트(1~11위, _rdt_idx 마커로 확인 가능)에는 없고 그 아래 순위 없는
+"관련 도서" 목록에만 텍스트로 등장한다 -- 즉 실제 순위가 없다. 그래서
+평점/리뷰만 참고용으로 수집한다 (collect_ridi 참고).
+
+밀리의서재: 검색은 로그인이 필요해 자동화 대상이 아니지만, 카테고리
+브라우즈 페이지(자기계발 > 기획, "인기 순" 정렬)는 로그인 없이 접근되고
+이 책도 그 목록에 있다. "더보기" 버튼으로 계속 불러오는 무한 스크롤형
+목록이라 페이지네이션 URL이 없어, Playwright로 버튼을 눌러가며 이 책이
+나타날 때까지 로드한 뒤 등장 순서를 rank로 쓴다 (collect_millie 참고).
 
 카테고리 번호는 각 서점 사이트를 직접 뒤져서 확인한 값이다:
   예스24  001001026003     = 국내도서 > 자기계발 > 기획/정보/시간관리
@@ -59,6 +70,9 @@ KYOBO_CODE = "S000216681258"
 KYOBO_CATEGORY_PATH = "150503"  # 자기계발 > 비즈니스능력계발 > 기획력
 
 RIDI_ID = "2234005394"
+
+MILLIE_CATEGORY_URL = "https://www.millie.co.kr/v3/search/3depth/1298/?parentSeq=1287&nav_hidden=y"  # 자기계발 > 기획, 인기 순
+MILLIE_BOOK_TITLE = "기획자의 질문법"
 
 # ── 「UX의 언어들」 보조 수집 (cinaeng/ux-book-tracker가 안 보는 카테고리만) ──
 UX_ALADIN_ITEM_ID = "397807838"
@@ -327,6 +341,57 @@ def collect_ridi(browser):
 
 
 # ────────────────────────────────────────────────────────────
+# 밀리의서재 -- 검색은 로그인 필요라 자동화 대상이 아니지만, 카테고리
+# 브라우즈 페이지(자기계발 > 기획, 인기 순)는 로그인 없이 볼 수 있고
+# 이 책도 그 목록에 있다. 페이지네이션 URL이 없는 "더보기" 무한 스크롤이라
+# 책이 나타날 때까지 버튼을 눌러가며 로드한 뒤, 등장 순서를 rank로 쓴다.
+
+def millie_find_rank(page):
+    return page.evaluate(
+        """(title) => {
+            const links = [...document.querySelectorAll('a[href^="/v4/book/"]')];
+            const target = links.find(a => a.textContent.includes(title));
+            if (!target) return null;
+            const href = target.getAttribute('href');
+            const ids = [];
+            links.forEach(a => {
+                const h = a.getAttribute('href');
+                if (ids[ids.length - 1] !== h) ids.push(h);
+            });
+            const pos = ids.indexOf(href);
+            return pos === -1 ? null : pos + 1;
+        }""",
+        MILLIE_BOOK_TITLE,
+    )
+
+
+def collect_millie(browser):
+    out = {"category_rank": None}
+    page = browser.new_page(user_agent=UA, locale="ko-KR")
+    try:
+        page.goto(MILLIE_CATEGORY_URL, wait_until="domcontentloaded", timeout=60000)
+        page.wait_for_selector('a[href^="/v4/book/"]', timeout=20000)
+
+        # "더보기"를 눌러도 안 나오면 목록이 끝났거나(권외) 최대 시도 횟수를 채운 것.
+        for _ in range(15):
+            if millie_find_rank(page) is not None:
+                break
+            more = page.query_selector("button:has-text('더보기')")
+            if not more:
+                break
+            more.click()
+            page.wait_for_timeout(1200)
+
+        out["category_rank"] = millie_find_rank(page)
+        log("밀리의서재 자기계발>기획 인기순:", out["category_rank"] or "권외")
+    except Exception as e:
+        log("!! 밀리의서재 수집 실패:", e)
+    finally:
+        page.close()
+    return out
+
+
+# ────────────────────────────────────────────────────────────
 # 「UX의 언어들」 보조 지표 -- 메인 트래커(cinaeng)가 안 보는 카테고리만.
 # 예스24는 이 책 항목이 없어 대상이 아니고, 알라딘/교보 각각 하나씩만 추가한다.
 
@@ -390,11 +455,12 @@ def main():
             aladin.update(collect_aladin_categories(browser))
             kyobo = collect_kyobo(browser)
             ridi = collect_ridi(browser)
+            millie = collect_millie(browser)
             ux_extra = collect_ux_extra(browser)
         finally:
             browser.close()
 
-    record = {"date": today, "yes24": yes24, "aladin": aladin, "kyobo": kyobo, "ridibooks": ridi}
+    record = {"date": today, "yes24": yes24, "aladin": aladin, "kyobo": kyobo, "ridibooks": ridi, "millie": millie}
     save_ux_extra(ux_extra, today)
 
     data = {"book": BOOK, "history": []}
