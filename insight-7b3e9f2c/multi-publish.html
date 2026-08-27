@@ -93,8 +93,6 @@
   .panel-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; flex-wrap:wrap; gap:8px;}
   .panel-head h3{margin:0; font-size:15px; font-weight:600;}
   .panel-head .badge{font-size:11px; font-weight:500; color:var(--muted); text-transform:uppercase; letter-spacing:0.04em;}
-  .write-links-row{margin-bottom:16px;}
-  .write-links-row .write-link{background:#f7f6f2;}
   #channelPanel .title-field{width:100%; font-family:inherit; padding:10px 2px; border:none; border-bottom:1px solid var(--line-soft); margin-bottom:14px; color:var(--ink); background:transparent;}
   #channelPanel .title-field:focus{outline:none; border-bottom-color:var(--ink);}
   /* wide: 실제 화면처럼 제목이 큼직하게. narrow: 실제 서비스엔 제목칸이
@@ -113,8 +111,9 @@
   #channelPanel[data-key="linkedin_newsletter"] textarea{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; font-size:16.5px; line-height:1.7;}
   #channelPanel .charcount{font-size:11.5px; color:var(--muted); text-align:right; margin-top:6px;}
   #channelPanel .charcount.over{color:var(--bad); font-weight:600;}
-  #channelPanel .row{display:flex; gap:8px; flex-wrap:wrap; margin-top:14px;}
-  #channelPanel .row .btn{padding:9px 16px; font-size:13px;}
+  #channelPanel .row{display:flex; gap:8px; flex-wrap:nowrap; overflow-x:auto; margin-top:14px; margin-bottom:14px; padding-bottom:2px;}
+  #channelPanel .row .btn{padding:9px 16px; font-size:13px; flex:0 0 auto; white-space:nowrap;}
+  #channelPanel .row .write-link{background:#f7f6f2;}
 
   .empty-hint{font-size:12px; color:var(--muted); padding:20px; text-align:center; border:1px dashed var(--line); border-radius:8px;}
   .loading, .err{font-size:13px; color:var(--muted); padding:20px 0;}
@@ -460,23 +459,21 @@
       })
       .join("");
 
-    // 버튼 줄(새 글쓰기 열기 / AI 요청 복사 / 제목 복사 / 본문 복사)을
-    // 위·아래에 똑같이 둡니다 — 본문이 길어서 스크롤한 상태에서도 다시
-    // 위로 안 올라가고 바로 아래 버튼으로 복사할 수 있게.
-    var writeLinksRowHtml = '<div class="row write-links-row">' + writeLinksHtml + "</div>";
-    var actionsRowHtml = '<div class="row">' + aiBtnHtml + copyBtnsHtml + "</div>";
+    // 버튼 줄(새 글쓰기 열기 / AI 요청 복사 / 제목 복사 / 본문 복사)을 한
+    // 줄에 쭉 나란히, 위·아래에 똑같이 둡니다 — 본문이 길어서 스크롤한
+    // 상태에서도 다시 위로 안 올라가고 바로 아래 버튼으로 복사할 수
+    // 있게. 버튼이 폭보다 많아지면 줄바꿈 대신 가로 스크롤로 처리.
+    var actionsRowHtml = '<div class="row actions-row">' + writeLinksHtml + aiBtnHtml + copyBtnsHtml + "</div>";
 
     els.panel.innerHTML =
       '<div class="panel-head"><h3>' + escapeHtml(ch.label) + "</h3>" +
       (ch.limit ? '<span class="badge">권장 ' + ch.limit + "자 이내</span>" : "") +
       "</div>" +
-      writeLinksRowHtml +
       actionsRowHtml +
       titleFieldHtml +
       '<textarea placeholder="' + escapeHtml(placeholder) + '">' + escapeHtml(state.text) + "</textarea>" +
       '<div class="charcount">0자</div>' +
-      actionsRowHtml +
-      writeLinksRowHtml;
+      actionsRowHtml;
 
     var textarea = els.panel.querySelector("textarea");
     var titleField = els.panel.querySelector(".title-field");
