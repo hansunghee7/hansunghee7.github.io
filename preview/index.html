@@ -196,17 +196,14 @@ layout: null
   @keyframes hero-enter { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
   .hero h1 { animation: hero-enter 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
   .hero-footnote { animation: hero-enter 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both; }
-  /* scroll-cue는 translateX(-50%)로 중앙 정렬 중이라 transform을 건드리면 틀어진다.
-     opacity만 페이드인. */
-  @keyframes cue-enter { from { opacity: 0; } to { opacity: 1; } }
-  .scroll-cue { animation: cue-enter 0.9s ease 0.5s both; }
 
   /* 스크롤 퇴장 연출은 CSS 스크롤 타임라인(animation-timeline: view())으로
      한 번 시도했으나, 아직 브라우저별로 구현이 불안정해서(화살표가 사라지거나
      엉뚱한 위치로 튀는 현상) 걷어냈다. 히어로는 그냥 자연 스크롤로 사라진다
-     -- 그 자체로 충분히 매끄럽고, 어떤 브라우저에서도 동일하게 동작한다. */
+     -- 그 자체로 충분히 매끄럽고, 어떤 브라우저에서도 동일하게 동작한다.
+     화살표 자체도 같은 이유로 버그가 반복돼 아예 뺐다(장식용이라 없어도 무방). */
   @media (prefers-reduced-motion: reduce) {
-    .hero h1, .hero-footnote, .scroll-cue, #hero-fade { animation: none !important; }
+    .hero h1, .hero-footnote, #hero-fade { animation: none !important; }
   }
   /* body 기본색(#f5f3ee, 크림빛)이 아니라 완전한 흰색으로 선명하게 */
   .hero h1 { font-family: 'Boska', 'Source Serif 4', serif; font-weight: 200; font-size: clamp(42px, 7.3vw, 79px); line-height: 1.2; max-width: 1060px; margin: 0 auto 6px; color: #ffffff; }
@@ -220,8 +217,6 @@ layout: null
   .hero-footnote { max-width: 480px; margin: 48px auto 0; text-align:left; }
   .hero-footnote .q { font-weight:300; font-size: 15px; line-height:1.9; color:#8f8b82; letter-spacing:-0.01em; }
   .hero-footnote .who { display:block; margin-top: 10px; text-align:right; font-weight:300; font-style:italic; font-size:14px; color:#8f8b82; }
-  .scroll-cue { position:absolute; left:50%; bottom:40px; transform:translateX(-50%); display: flex; justify-content: center; width: 40px; }
-  .scroll-cue .chev { display:block; width:9px; height:9px; border-right:1px solid #8f8b82; border-bottom:1px solid #8f8b82; transform: rotate(45deg); }
 
   /* 스테이징 테스트: Proven/Story가 고정된 채 투명도만 바뀌던 sticky+크로스페이드를 걷어내고
      일반 스크롤 흐름 + 개별 요소 reveal(위쪽 아래 reveal-grid/gallery/quote와 동일한 방식)로 통일 */
@@ -562,7 +557,6 @@ layout: null
     <div id="hero-fade">
       <h1>Simplifier turns<br class="br-m"> complexity<br class="br-d"> <span class="into-word">into</span><br class="br-m"> <span class="accent">explosive growth.</span></h1>
       <p class="hero-footnote"><span class="q">"폭발적 성장은 갑작스럽게 오는 것이 아닙니다. 단순화해온 모든 것이 마침내 위로 향할 곳밖에 남지 않은 순간에 찾아옵니다."</span><span class="who">— 한성희</span></p>
-      <div class="scroll-cue"><span class="chev"></span></div>
     </div>
   </section>
 </div>
