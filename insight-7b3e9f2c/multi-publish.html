@@ -179,7 +179,16 @@
       writeLinks: [{ label: "LinkedIn", url: "https://www.linkedin.com/in/simplifier" }],
     },
     {
-      key: "facebook", label: "Facebook", limit: 63206, layout: "narrow",
+      // autoFill: 파일럿 기능. "확장으로 채우기"를 누르면 Facebook 새 탭을
+      // 열면서 URL 해시에 본문을 실어 보내고, _sns-extension의
+      // content-script가 그 해시를 읽어 입력창에 채워준다(게시 버튼은
+      // 안 누름 -- 사람이 마지막으로 확인하고 직접 눌러야 함). 처음엔
+      // Threads로 시작했다가, Threads는 500자 제한이라 긴 글은 여러
+      // 개로 쪼개 올려야 해서 "한 박스에 통째로 채우기"와 안 맞아
+      // Facebook으로 바꿈(63,206자라 사실상 무제한, 쪼갤 필요 없음).
+      // 아직 Facebook 실제 새 게시물 화면으로 검증 못 해본 첫 시도라,
+      // 안 되면 알려주면 고칠 수 있음.
+      key: "facebook", label: "Facebook", limit: 63206, layout: "narrow", autoFill: true,
       source: function (fm) { return (fm.channel_variants && (fm.channel_variants.linkedin_threads || fm.channel_variants.manual_copy_block)); },
       aiInstruction: "친근하고 개인적인 톤으로, 이모지를 적절히 섞어서 편하게 다듬어줘. 너무 길지 않게, 읽기 편한 호흡으로 문단을 나눠줘.",
       writeLinks: [{ label: "Facebook", url: "https://www.facebook.com/simplifier.seoul" }],
@@ -203,13 +212,7 @@
       writeLinks: [{ label: "로켓펀치", url: "https://www.rocketpunch.com/@simplfier/post" }],
     },
     {
-      // autoFill: 파일럿 기능. "확장으로 채우기"를 누르면 Threads 새 탭을
-      // 열면서 URL 해시에 본문을 실어 보내고, _sns-extension의
-      // content-script가 그 해시를 읽어 입력창에 채워준다(게시 버튼은
-      // 안 누름 -- 사람이 마지막으로 확인하고 직접 눌러야 함). 아직
-      // Threads 실제 화면으로 검증 못 해본 첫 시도라, 안 되면 알려주면
-      // 고칠 수 있음.
-      key: "threads", label: "Threads", limit: 500, layout: "narrow", autoFill: true,
+      key: "threads", label: "Threads", limit: 500, layout: "narrow",
       source: function (fm) { return (fm.channel_variants && (fm.channel_variants.linkedin_threads || fm.channel_variants.manual_copy_block)); },
       aiInstruction: "짧고 캐주얼한 말투로, 500자 이내로 핵심만 압축해줘. 첫 문장이 스크롤을 멈추게 할 만큼 강렬해야 해. 해시태그는 1~2개만.",
       writeLinks: [{ label: "Threads", url: "https://www.threads.com/?hl=ko" }],
