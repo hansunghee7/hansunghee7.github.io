@@ -44,12 +44,18 @@ import os
 import re
 import sys
 import urllib.request
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 from playwright.sync_api import sync_playwright
 
 OUT_PATH = "assets/data/book-insight.json"
 UX_OUT_PATH = "assets/data/ux-book-extra.json"
+
+# "오늘 날짜"는 KST 기준으로 계산해야 한다. UTC로 계산하면 00:00~09:00 KST에
+# 도는 실행(예: 06:41 cron, 08:30 PC 트리거)이 전부 "어제"로 잡혀서, 그날의
+# 진짜 어제 기록을 오늘 스크랩 값으로 덮어써버린다 (실제로 이 버그로
+# 2026-08-27 기록이 2026-08-28 아침 실행 값에 덮어써짐 -- 확인됨).
+KST = timezone(timedelta(hours=9))
 
 BOOK = {
     "title": "기획자의 질문법",
@@ -444,7 +450,7 @@ def upsert(history, today, record):
 
 def main():
     print("=== 기획자의 질문법 순위 수집 ===")
-    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    today = datetime.now(KST).strftime("%Y-%m-%d")
 
     yes24 = collect_yes24()
     aladin = collect_aladin_product()
