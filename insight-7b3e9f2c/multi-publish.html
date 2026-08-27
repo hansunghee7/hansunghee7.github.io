@@ -363,7 +363,12 @@
     currentTitle = fm.title || post.title;
     currentBody = body;
     channelState = CHANNELS.map(function (ch) {
-      var bodyText = (ch.source(fm) || "").toString().trim();
+      // CMS에서 채널별로 따로 써둔 텍스트(channel_variants)가 있으면 그걸
+      // 쓰고, 없으면(이 기능 이전에 쓴 글은 대부분 비어 있음) 글의 실제
+      // 본문 전체(body)로 대체합니다 -- manual_copy_block도 결국 이
+      // 글을 쓸 때만 채워지는 CMS 필드라 그것만으론 항상 채워진다고 보장이
+      // 안 되고, body는 모든 글에 예외 없이 있습니다.
+      var bodyText = ((ch.source(fm) || "").toString().trim()) || body;
       // narrow 채널(LinkedIn/Threads/Facebook/Instagram/리멤버/로켓펀치)은
       // 실제 서비스에 제목칸이 따로 없어서, 제목을 본문 맨 앞줄에 합쳐서
       // 하나의 글로 보여줍니다. wide(브런치·네이버블로그, LinkedIn 뉴스레터)는
