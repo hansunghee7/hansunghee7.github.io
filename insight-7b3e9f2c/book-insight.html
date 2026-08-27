@@ -205,21 +205,33 @@
     );
   }
 
-  /* ── UX의 언어들 (cinaeng/ux-book-tracker 미러) ── */
-  fetch("/assets/data/ux-book-history.json?t=" + Date.now(), { cache: "no-store" })
-    .then(function (r) { if (!r.ok) throw { notYet: r.status === 404 }; return r.json(); })
-    .then(renderUxBook)
+  /* ── UX의 언어들 (cinaeng/ux-book-tracker 미러 + 우리 쪽 보조 지표) ──
+     보조 지표(ux-book-extra.json)는 cinaeng 트래커가 안 보는 카테고리라
+     이 저장소가 직접 수집한다. 그 파일이 아직 없거나 실패해도(catch로
+     빈 이력 처리) 메인 미러 지표는 정상적으로 떠야 한다. */
+  Promise.all([
+    fetch("/assets/data/ux-book-history.json?t=" + Date.now(), { cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw { notYet: r.status === 404 }; return r.json(); }),
+    fetch("/assets/data/ux-book-extra.json?t=" + Date.now(), { cache: "no-store" })
+      .then(function (r) { return r.ok ? r.json() : { history: [] }; })
+      .catch(function () { return { history: [] }; }),
+  ])
+    .then(function (results) { renderUxBook(results[0], results[1].history || []); })
     .catch(function (e) { renderError("uxBookTiles", e); });
 
-  function renderUxBook(records) {
+  function renderUxBook(records, extraRecords) {
     if (!Array.isArray(records) || !records.length) { renderError("uxBookTiles", { notYet: true }); return; }
 
     var dated = records.map(function (r) { return { date: (r.ts || "").slice(0, 10), r: r }; });
+    var extraDated = Array.isArray(extraRecords) ? extraRecords : [];
 
     var Y24_GOODS = "https://www.yes24.com/product/goods/193444437";
     var Y24_BEST = function (cat) { return "https://www.yes24.com/product/category/bestseller?categoryNumber=" + cat + "&pageNumber=1&pageSize=100"; };
     var ALADIN_PRODUCT = "https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=397807838";
+    var ALADIN_BEST = function (cid) { return "https://www.aladin.co.kr/shop/common/wbest.aspx?BranchType=1&CID=" + cid + "&BestType=Bestseller&cnt=100&SortOrder=1&page=1"; };
     var KYOBO_PRODUCT = "https://product.kyobobook.co.kr/detail/S000220493173";
+    var KYOBO_UXUI = "https://store.kyobobook.co.kr/category/domestic/331902/best";
+    var KYOBO_STRATEGY = "https://store.kyobobook.co.kr/category/domestic/130701/best";
 
     var metrics = [
       { key: "mkt", label: "예스24 마케팅/세일즈", unit: "위", higherIsBetter: false, href: Y24_BEST("001001025009"), get: function (r) { return r.yes24 && r.yes24.mkt_rank; } },
@@ -231,11 +243,18 @@
       { key: "sales_index", label: "예스24 판매지수", unit: "", higherIsBetter: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.sales_index; } },
       { key: "reviews", label: "예스24 리뷰 수", unit: "건", higherIsBetter: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.reviews; } },
       { key: "kyobo_badge", label: "교보문고 온라인 주간", unit: "위", higherIsBetter: false, href: KYOBO_PRODUCT, get: function (r) { return r.kyobo_meta && r.kyobo_meta.badge_rank; } },
+      { key: "kyobo_uxui", label: "교보문고 UX/UI", unit: "위", higherIsBetter: false, href: KYOBO_UXUI, get: function (r) { return r.kyobo_online && r.kyobo_online.uxui_cat; } },
+      { key: "kyobo_strategy", label: "교보문고 경영전략일반", unit: "위", higherIsBetter: false, href: KYOBO_STRATEGY, source: "extra", get: function (e) { return e.kyobo_strategy_rank; } },
       { key: "aladin_sp", label: "알라딘 세일즈포인트", unit: "", higherIsBetter: true, href: ALADIN_PRODUCT, get: function (r) { return r.aladin && r.aladin.sales_point; } },
+      { key: "aladin_design", label: "알라딘 디자인이야기", unit: "위", higherIsBetter: false, href: ALADIN_BEST("51089"), get: function (r) { return r.aladin && r.aladin.design_rank; } },
+      { key: "aladin_brand", label: "알라딘 마케팅/브랜드", unit: "위", higherIsBetter: false, href: ALADIN_BEST("1632"), get: function (r) { return r.aladin && r.aladin.brand_rank; } },
+      { key: "aladin_ad", label: "알라딘 광고/홍보/PR", unit: "위", higherIsBetter: false, href: ALADIN_BEST("268"), source: "extra", get: function (e) { return e.aladin_ad_rank; } },
     ];
 
     var html = metrics.map(function (m) {
-      var series = dated.map(function (d) { return { date: d.date, value: m.get(d.r) }; });
+      var series = m.source === "extra"
+        ? extraDated.map(function (e) { return { date: e.date, value: m.get(e) }; })
+        : dated.map(function (d) { return { date: d.date, value: m.get(d.r) }; });
       return tile(m, series);
     }).join("");
 
@@ -254,6 +273,7 @@
 
     var Y24_GOODS = "https://www.yes24.com/product/goods/147079674";
     var Y24_BEST = "https://www.yes24.com/product/category/bestseller?categoryNumber=001001026003&pageNumber=1&pageSize=100";
+    var Y24_BEST2 = "https://www.yes24.com/product/category/bestseller?categoryNumber=001001025001004&pageNumber=1&pageSize=100";
     var ALADIN_PRODUCT = "https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=364986311";
     var ALADIN_BEST = function (cid) { return "https://www.aladin.co.kr/shop/common/wbest.aspx?BranchType=1&CID=" + cid + "&BestType=Bestseller&cnt=100&SortOrder=1&page=1"; };
     var KYOBO_PRODUCT = "https://product.kyobobook.co.kr/detail/S000216681258";
@@ -261,6 +281,7 @@
 
     var metrics = [
       { key: "y24cat", label: "예스24 기획/정보/시간관리", unit: "위", higherIsBetter: false, href: Y24_BEST, get: function (r) { return r.yes24 && r.yes24.category_rank; } },
+      { key: "y24cat2", label: "예스24 CEO/비즈니스맨 기획/정보/시간관리", unit: "위", higherIsBetter: false, href: Y24_BEST2, get: function (r) { return r.yes24 && r.yes24.category2_rank; } },
       { key: "y24si", label: "예스24 판매지수", unit: "", higherIsBetter: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.sales_index; } },
       { key: "y24rv", label: "예스24 리뷰 수", unit: "건", higherIsBetter: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.reviews; } },
       { key: "kybadge", label: "교보문고 주간베스트(자기계발)", unit: "위", higherIsBetter: false, href: KYOBO_PRODUCT, get: function (r) { return r.kyobo && r.kyobo.badge_rank; } },

@@ -14,10 +14,19 @@ Next.js 클라이언트 렌더링) 나머지는 그날 값을 정상적으로 �
 때문이다.
 
 카테고리 번호는 각 서점 사이트를 직접 뒤져서 확인한 값이다:
-  예스24  001001026003 = 국내도서 > 자기계발 > 기획/정보/시간관리
-  알라딘  CID 70229    = 자기계발 > 기획/보고 > 기획
-  알라딘  CID 70222    = 자기계발 > 시간관리/정보관리 > 정보관리
-  교보문고 150503       = 자기계발 > 비즈니스능력계발 > 기획력
+  예스24  001001026003     = 국내도서 > 자기계발 > 기획/정보/시간관리
+  예스24  001001025001004  = 국내도서 > 경제경영 > CEO/비즈니스맨 > 기획/정보/시간관리
+  알라딘  CID 70229        = 자기계발 > 기획/보고 > 기획
+  알라딘  CID 70222        = 자기계발 > 시간관리/정보관리 > 정보관리
+  교보문고 150503           = 자기계발 > 비즈니스능력계발 > 기획력
+
+이 스크립트는 「기획자의 질문법」이 메인이지만, 같은 Playwright 브라우저를
+띄운 김에 「UX의 언어들」의 보조 지표도 몇 개 더 수집해서
+assets/data/ux-book-extra.json에 남긴다. cinaeng/ux-book-tracker(그 책의
+메인 트래커)가 커버하지 않는 카테고리들이라 -- 책 저자가 직접 확인해준
+실제 진열 카테고리(알라딘 광고/홍보/PR, 교보 경영전략일반)라서 메인
+미러링과는 별도로 이렇게 보충한다. 메인 트래커를 건드리거나 대체하는
+게 아니라, 그게 안 보는 부분만 우리가 따로 본다.
 """
 import json
 import os
@@ -29,6 +38,7 @@ from datetime import datetime, timezone
 from playwright.sync_api import sync_playwright
 
 OUT_PATH = "assets/data/book-insight.json"
+UX_OUT_PATH = "assets/data/ux-book-extra.json"
 
 BOOK = {
     "title": "기획자의 질문법",
@@ -38,7 +48,8 @@ BOOK = {
 }
 
 YES24_GOODS_ID = "147079674"
-YES24_CATEGORY = "001001026003"  # 국내도서 > 자기계발 > 기획/정보/시간관리
+YES24_CATEGORY = "001001026003"   # 국내도서 > 자기계발 > 기획/정보/시간관리
+YES24_CATEGORY2 = "001001025001004"  # 국내도서 > 경제경영 > CEO/비즈니스맨 > 기획/정보/시간관리
 
 ALADIN_ITEM_ID = "364986311"
 ALADIN_CID_PLANNING = "70229"  # 자기계발 > 기획/보고 > 기획
@@ -48,6 +59,12 @@ KYOBO_CODE = "S000216681258"
 KYOBO_CATEGORY_PATH = "150503"  # 자기계발 > 비즈니스능력계발 > 기획력
 
 RIDI_ID = "2234005394"
+
+# ── 「UX의 언어들」 보조 수집 (cinaeng/ux-book-tracker가 안 보는 카테고리만) ──
+UX_ALADIN_ITEM_ID = "397807838"
+UX_ALADIN_CID_AD = "268"       # 경제경영 > 마케팅/세일즈 > 광고/홍보/PR
+UX_KYOBO_CODE = "S000220493173"
+UX_KYOBO_CID_STRATEGY = "130701"  # 경제/경영 > 경영전략 > 경영전략일반
 
 UA = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -92,25 +109,31 @@ def yes24_rank_in_list(html, target_id):
     return None
 
 
-def yes24_category_rank(category_number, max_pages=3):
+def yes24_category_rank(category_number, goods_id=YES24_GOODS_ID, max_pages=3):
     for page_no in range(1, max_pages + 1):
         url = (
             f"https://www.yes24.com/product/category/bestseller"
             f"?categoryNumber={category_number}&pageNumber={page_no}&pageSize=100"
         )
-        rank = yes24_rank_in_list(get_html(url), YES24_GOODS_ID)
+        rank = yes24_rank_in_list(get_html(url), goods_id)
         if rank:
             return rank
     return None
 
 
 def collect_yes24():
-    out = {"category_rank": None, "sales_index": None, "reviews": 0, "rating": None}
+    out = {"category_rank": None, "category2_rank": None, "sales_index": None, "reviews": 0, "rating": None}
     try:
         out["category_rank"] = yes24_category_rank(YES24_CATEGORY)
         log("예스24 기획/정보/시간관리:", out["category_rank"] or "권외")
     except Exception as e:
         log("!! 예스24 카테고리 수집 실패:", e)
+
+    try:
+        out["category2_rank"] = yes24_category_rank(YES24_CATEGORY2)
+        log("예스24 CEO/비즈니스맨 기획/정보/시간관리:", out["category2_rank"] or "권외")
+    except Exception as e:
+        log("!! 예스24 카테고리2 수집 실패:", e)
 
     try:
         text = html_to_text(get_html(f"https://www.yes24.com/product/goods/{YES24_GOODS_ID}"))
@@ -159,14 +182,14 @@ def collect_aladin_product():
     return out
 
 
-def aladin_rank_on_page(page, cid, page_no):
+def aladin_rank_on_page(page, cid, page_no, item_id=ALADIN_ITEM_ID):
     url = (
         f"https://www.aladin.co.kr/shop/common/wbest.aspx"
         f"?BranchType=1&CID={cid}&BestType=Bestseller&cnt=100&SortOrder=1&page={page_no}"
     )
     page.goto(url, wait_until="domcontentloaded", timeout=60000)
     try:
-        page.wait_for_selector(f'a[href*="ItemId={ALADIN_ITEM_ID}"]', timeout=8000)
+        page.wait_for_selector(f'a[href*="ItemId={item_id}"]', timeout=8000)
     except Exception:
         return None  # 이 페이지엔 없음
 
@@ -185,13 +208,13 @@ def aladin_rank_on_page(page, cid, page_no):
             }
             return null;
         }""",
-        ALADIN_ITEM_ID,
+        item_id,
     )
 
 
-def aladin_category_rank(page, cid, max_pages=1):
+def aladin_category_rank(page, cid, item_id=ALADIN_ITEM_ID, max_pages=1):
     for p in range(1, max_pages + 1):
-        rank = aladin_rank_on_page(page, cid, p)
+        rank = aladin_rank_on_page(page, cid, p, item_id)
         if rank is not None:
             return rank
     return None
@@ -215,7 +238,7 @@ def collect_aladin_categories(browser):
 # ────────────────────────────────────────────────────────────
 # 교보문고 -- Next.js 클라이언트 렌더링이라 Playwright 필수
 
-def kyobo_pos_in_list(page, url):
+def kyobo_pos_in_list(page, url, code=KYOBO_CODE):
     page.goto(url, wait_until="domcontentloaded", timeout=60000)
     try:
         page.wait_for_selector('a[href*="/detail/S"]', timeout=20000)
@@ -233,7 +256,7 @@ def kyobo_pos_in_list(page, url):
             const i = ids.indexOf(code);
             return i === -1 ? null : i + 1;
         }""",
-        KYOBO_CODE,
+        code,
     )
 
 
@@ -304,6 +327,45 @@ def collect_ridi(browser):
 
 
 # ────────────────────────────────────────────────────────────
+# 「UX의 언어들」 보조 지표 -- 메인 트래커(cinaeng)가 안 보는 카테고리만.
+# 예스24는 이 책 항목이 없어 대상이 아니고, 알라딘/교보 각각 하나씩만 추가한다.
+
+def collect_ux_extra(browser):
+    out = {"aladin_ad_rank": None, "kyobo_strategy_rank": None}
+    page = browser.new_page(user_agent=UA, locale="ko-KR")
+    try:
+        out["aladin_ad_rank"] = aladin_category_rank(page, UX_ALADIN_CID_AD, UX_ALADIN_ITEM_ID)
+        log("UX의 언어들 · 알라딘 광고/홍보/PR:", out["aladin_ad_rank"] or "권외")
+    except Exception as e:
+        log("!! UX의 언어들 알라딘 보조 수집 실패:", e)
+
+    try:
+        out["kyobo_strategy_rank"] = kyobo_pos_in_list(
+            page, f"https://store.kyobobook.co.kr/category/domestic/{UX_KYOBO_CID_STRATEGY}/best", UX_KYOBO_CODE
+        )
+        log("UX의 언어들 · 교보 경영전략일반:", out["kyobo_strategy_rank"] or "권외")
+    except Exception as e:
+        log("!! UX의 언어들 교보 보조 수집 실패:", e)
+    finally:
+        page.close()
+    return out
+
+
+def save_ux_extra(record, today):
+    data = {"history": []}
+    if os.path.exists(UX_OUT_PATH):
+        with open(UX_OUT_PATH, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    data.setdefault("history", [])
+    upsert(data["history"], today, dict(record, date=today))
+    data["updated_at"] = datetime.now(timezone.utc).isoformat()
+
+    os.makedirs(os.path.dirname(UX_OUT_PATH), exist_ok=True)
+    with open(UX_OUT_PATH, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+
+
+# ────────────────────────────────────────────────────────────
 
 def upsert(history, today, record):
     """같은 날짜 레코드가 있으면 덮어쓴다 (재실행 대비, idempotent)."""
@@ -328,10 +390,12 @@ def main():
             aladin.update(collect_aladin_categories(browser))
             kyobo = collect_kyobo(browser)
             ridi = collect_ridi(browser)
+            ux_extra = collect_ux_extra(browser)
         finally:
             browser.close()
 
     record = {"date": today, "yes24": yes24, "aladin": aladin, "kyobo": kyobo, "ridibooks": ridi}
+    save_ux_extra(ux_extra, today)
 
     data = {"book": BOOK, "history": []}
     if os.path.exists(OUT_PATH):

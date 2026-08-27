@@ -7,6 +7,8 @@ name: Fetch book insight
 #      수집해둔 결과를 그대로 미러링만 한다 (재스크래핑 안 함).
 #   2. 「기획자의 질문법」 -- 이 저장소에서 직접 예스24·알라딘·교보문고·
 #      리디북스를 수집한다 (scripts/fetch_book_insight.py, Playwright 필요).
+#      같은 스크립트가 「UX의 언어들」의 보조 지표(cinaeng 쪽이 안 보는
+#      카테고리 몇 개)도 같이 수집해 ux-book-extra.json에 남긴다.
 #
 # 두 스텝을 각각 독립적으로 커밋한다 -- 2번이 스크래핑 중 타임아웃/사이트
 # 구조 변경으로 실패해도, 이미 끝난 1번의 미러링 커밋은 살아남아야 한다.
@@ -55,17 +57,17 @@ jobs:
           pip install playwright
           playwright install --with-deps chromium
 
-      - name: Fetch 기획자의 질문법 rankings
+      - name: Fetch 기획자의 질문법 rankings (+ UX의 언어들 보조 지표)
         run: python scripts/fetch_book_insight.py
 
       - name: Commit 기획자의 질문법 snapshot if any
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add assets/data/book-insight.json
+          git add assets/data/book-insight.json assets/data/ux-book-extra.json
           if git diff --cached --quiet; then
             echo "no changes to commit"
           else
-            git commit -m "chore: 기획자의 질문법 순위 자동 수집 [skip ci]"
+            git commit -m "chore: 기획자의 질문법 순위 + UX의 언어들 보조 지표 자동 수집 [skip ci]"
             git push
           fi

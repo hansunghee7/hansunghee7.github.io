@@ -10,6 +10,7 @@
       "date": "2026-08-27",
       "yes24": {
         "category_rank": 119,
+        "category2_rank": 25,
         "sales_index": 630,
         "reviews": 3,
         "rating": 10.0
@@ -33,5 +34,5 @@
       }
     }
   ],
-  "updated_at": "2026-08-27T01:13:43.807730+00:00"
+  "updated_at": "2026-08-27T07:55:35.863962+00:00"
 }
