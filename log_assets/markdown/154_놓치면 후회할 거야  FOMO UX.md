@@ -7,6 +7,10 @@ date_string: 'May 1. 2025'
 date: 2025-05-01
 keywords: 'FOMO UX, 희소성 마케팅, 사회적 증거'
 about: '행동 심리 UX, 전환 설계'
+prev_url: "/log_assets/markdown/147_%EC%95%B1%20%EC%84%B1%EB%8A%A5%EA%B3%BC%20UX%EC%B5%9C%EC%A0%81%ED%99%94%EA%B0%80%20%EB%A7%A4%EC%B6%9C%EC%9D%84%20%EC%A2%8C%EC%9A%B0%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html"
+prev_title: "앱 성능과 UX최적화가 매출을 좌우하는 이유"
+next_url: "/log_assets/markdown/161_%ED%9B%84%EA%B4%91%ED%9A%A8%EA%B3%BC%28Halo%20Effect%29%2C%20UX%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%98%20%EC%B2%AB%EC%9D%B8%EC%83%81.html"
+next_title: "후광효과(Halo Effect), UX 디자인의 첫인상"
 ---
 
 "대박 난 상품이 품절 되기 전에 어서 구매하세요!"
@@ -45,13 +49,3 @@ FOMO는 본래 SNS 시대에 생겨난 사회 현상을 설명하는 개념이�
 
 당신의 서비스에도 사용자가 놓치고 싶지 않을 가치가 있나요? 그렇다면 FOMO의 힘을 빌려보는 것은 어떨까요? 단, 사용자의 신뢰를 잃지 않는 선에서 균형을 잡는 것이 중요합니다. FOMO는 불안이 아닌, 기대와 설렘을 주는 방향으로 쓰일 때 비로소 빛을 발하니까요.
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/147_%EC%95%B1%20%EC%84%B1%EB%8A%A5%EA%B3%BC%20UX%EC%B5%9C%EC%A0%81%ED%99%94%EA%B0%80%20%EB%A7%A4%EC%B6%9C%EC%9D%84%20%EC%A2%8C%EC%9A%B0%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">앱 성능과 UX최적화가 매출을 좌우하는 이유</span></a>
-  <a href="/log_assets/markdown/161_%ED%9B%84%EA%B4%91%ED%9A%A8%EA%B3%BC%28Halo%20Effect%29%2C%20UX%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%98%20%EC%B2%AB%EC%9D%B8%EC%83%81.html" class="cat-nav-item cat-nav-right"><span class="nav-title">후광효과(Halo Effect), UX 디자인의 첫인상</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

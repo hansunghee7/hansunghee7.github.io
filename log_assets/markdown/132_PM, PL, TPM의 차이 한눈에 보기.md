@@ -7,6 +7,10 @@ date_string: 'May 23. 2025'
 date: 2025-05-23
 keywords: 'PM PL TPM 차이, 프로젝트 리더십 역할, 테크니컬 프로그램 매니저'
 about: '프로젝트 관리, 팀 리더십 역할'
+prev_url: "/log_assets/markdown/146_%EB%A6%B0%EA%B3%BC%20%EC%95%A0%EC%9E%90%EC%9D%BC%2C%20%EC%9A%B0%EB%A6%AC%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%97%94%20%EC%96%B4%EB%96%A4%20%EA%B1%B8%20%ED%95%B4%EC%95%BC%ED%95%A0%EA%B9%8C.html"
+prev_title: "린과 애자일, 우리 프로젝트엔 어떤 걸 해야할까?"
+next_url: "/log_assets/markdown/124_DevOps%2C%20%EA%B0%9C%EB%B0%9C%EA%B3%BC%20%EC%9A%B4%EC%98%81%EC%9D%98%20%EA%B2%BD%EA%B3%84%EB%A5%BC%20%ED%97%88%EB%AC%BC%EB%8B%A4.html"
+next_title: "DevOps, 개발과 운영의 경계를 허물다"
 ---
 
 프로젝트 성공을 위해 다양한 역할이 필요합니다. PM, PL, TPM은 IT 업계에서 흔히 볼 수 있는 리더십 포지션이지만, 그 차이를 명확히 이해하는 사람은 많지 않습니다. 각 역할의 주요 책임과 중점 영역을 살펴보겠습니다.
@@ -72,13 +76,3 @@ TPM은 기술적 복잡성을 풀어내고, 여러 팀을 조율합니다.
 뛰어난 PM, PL, TPM은 어떤 질문을 할지 궁금하다면?
 
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/146_%EB%A6%B0%EA%B3%BC%20%EC%95%A0%EC%9E%90%EC%9D%BC%2C%20%EC%9A%B0%EB%A6%AC%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%97%94%20%EC%96%B4%EB%96%A4%20%EA%B1%B8%20%ED%95%B4%EC%95%BC%ED%95%A0%EA%B9%8C.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">린과 애자일, 우리 프로젝트엔 어떤 걸 해야할까?</span></a>
-  <a href="/log_assets/markdown/124_DevOps%2C%20%EA%B0%9C%EB%B0%9C%EA%B3%BC%20%EC%9A%B4%EC%98%81%EC%9D%98%20%EA%B2%BD%EA%B3%84%EB%A5%BC%20%ED%97%88%EB%AC%BC%EB%8B%A4.html" class="cat-nav-item cat-nav-right"><span class="nav-title">DevOps, 개발과 운영의 경계를 허물다</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

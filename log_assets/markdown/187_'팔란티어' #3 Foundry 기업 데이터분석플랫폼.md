@@ -7,6 +7,10 @@ date_string: 'Mar 30. 2025'
 date: 2025-03-30
 keywords: '팔란티어 Foundry, 기업 데이터 통합, 온톨로지 분석'
 about: '데이터 플랫폼, 엔터프라이즈 AI'
+prev_url: "/log_assets/markdown/186_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%20%ED%99%95%EB%B3%B4%20%EC%A0%84%EB%9E%B5%20%27%EC%8A%A4%ED%8A%B8%EB%9D%BC%EC%9D%B4%ED%94%84%27.html"
+prev_title: "스타트업의 초기 고객 확보 전략 '스트라이프'"
+next_url: "/log_assets/markdown/188_%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%EB%A6%AC%EB%8D%94%EA%B0%80%20%EA%BC%AD%20%EA%B0%80%EC%A0%B8%EC%95%BC%20%ED%95%A0%20%EA%B2%83%EC%9D%80.html"
+next_title: "프로덕트리더가 꼭 가져야 할 것은?"
 ---
 
 4차 산업혁명 시대, 데이터는 기업 경쟁력의 핵심 요소로 부상했습니다. 하지만 많은 기업이 여전히 데이터 활용에 어려움을 겪고 있는데요. 부서별로 흩어진 데이터, 레거시 시스템과의 호환성 문제, 보안과 규제 이슈까지... 데이터 통합과 분석에는 복잡한 난제들이 도사리고 있습니다.
@@ -59,13 +63,3 @@ Foundry는 도입 기업들의 혁신을 catalyze하며 빠르게 입소문을 �
 
 다음 편은 고담과 파운드리의 배포를 관리하는 'Apollo에 대해서입니다. 팔란티어의 배포 관리는 무엇이 다를지 함께 알아보죠.
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/186_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%20%ED%99%95%EB%B3%B4%20%EC%A0%84%EB%9E%B5%20%27%EC%8A%A4%ED%8A%B8%EB%9D%BC%EC%9D%B4%ED%94%84%27.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">스타트업의 초기 고객 확보 전략 '스트라이프'</span></a>
-  <a href="/log_assets/markdown/188_%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%EB%A6%AC%EB%8D%94%EA%B0%80%20%EA%BC%AD%20%EA%B0%80%EC%A0%B8%EC%95%BC%20%ED%95%A0%20%EA%B2%83%EC%9D%80.html" class="cat-nav-item cat-nav-right"><span class="nav-title">프로덕트리더가 꼭 가져야 할 것은?</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

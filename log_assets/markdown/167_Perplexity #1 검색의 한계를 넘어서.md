@@ -7,6 +7,10 @@ date_string: 'Apr 20. 2025'
 date: 2025-04-20
 keywords: 'RAG 아키텍처, 검색엔진 한계, Perplexity 사례분석'
 about: 'AI 검색, RAG'
+prev_url: "/log_assets/markdown/164_%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%20%EC%82%AC%EB%A1%80%EB%A1%9C%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%ED%95%B5%EC%8B%AC%20%EC%A7%80%ED%91%9C%20%EC%84%A4%EC%A0%95%EB%B2%95.html"
+prev_title: "넷플릭스 사례로 배우는 스타트업 핵심 지표 설정법"
+next_url: "/log_assets/markdown/165_Perplexity%20%232%20%EA%B2%80%EC%83%89%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%EA%B5%AC%EC%A1%B0%20%EC%84%A4%EA%B3%84.html"
+next_title: "Perplexity #2 검색 시스템의 구조 설계"
 ---
 
 안녕하세요, 스타트업 성공코치 한성희입니다. 오늘부터 5주간 '검색의 재정의'를 이끌고 있는 Perplexity AI의 기술을 심층 분석하는 시리즈를 시작합니다.
@@ -95,13 +99,3 @@ Perplexity의 접근법은 다양한 비즈니스 영역에서 응용될 수 있
 
 다음 편에서는 Perplexity의 핵심 기술 아키텍처를 자세히 분석하겠습니다. BM25와 같은 전통적인 검색 알고리즘부터 벡터 검색, RAG 구현 방식까지 실전적인 관점에서 살펴보겠습니다.
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/164_%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%20%EC%82%AC%EB%A1%80%EB%A1%9C%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%ED%95%B5%EC%8B%AC%20%EC%A7%80%ED%91%9C%20%EC%84%A4%EC%A0%95%EB%B2%95.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">넷플릭스 사례로 배우는 스타트업 핵심 지표 설정법</span></a>
-  <a href="/log_assets/markdown/165_Perplexity%20%232%20%EA%B2%80%EC%83%89%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%EA%B5%AC%EC%A1%B0%20%EC%84%A4%EA%B3%84.html" class="cat-nav-item cat-nav-right"><span class="nav-title">Perplexity #2 검색 시스템의 구조 설계</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

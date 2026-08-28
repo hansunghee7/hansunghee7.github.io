@@ -7,6 +7,10 @@ date_string: 'Feb 6. 2025'
 date: 2025-02-06
 keywords: '엄지 친화적 디자인, 모바일 UX 설계, 썸존 UI'
 about: '모바일 UX, 인터랙션 디자인'
+prev_url: "/log_assets/markdown/234_%EC%B1%97GPT%EA%B0%80%20%EC%89%BD%EB%8B%A4%EA%B3%A0%20%EB%8A%90%EA%BB%B4%EC%A7%80%EB%8A%94%20UX%EC%9D%98%20%EB%B9%84%EB%B0%80.html"
+prev_title: "챗GPT가 쉽다고 느껴지는 UX의 비밀"
+next_url: "/log_assets/markdown/249_%27%EC%A2%8B%EC%95%84%EC%9A%94%27%EA%B0%80%20%EB%A7%8C%EB%93%A0%20%EC%9E%91%EC%A7%80%EB%A7%8C%20%EA%B0%95%EB%A0%A5%ED%95%9C%20UX%EC%9D%98%20%ED%98%81%EB%AA%85.html"
+next_title: "'좋아요'가 만든 작지만 강력한 UX의 혁명"
 ---
 
 스마트폰을 들고 화면을 바라보세요. 엄지손가락이 어디까지 닿을 수 있나요?
@@ -45,13 +49,3 @@ about: '모바일 UX, 인터랙션 디자인'
 
 지금 이 순간에도 수많은 엄지손가락들이 스마트폰 위를 춤추고 있습니다. 그들의 리듬에 맞추는 것, 이것이 바로 엄지 친화적 디자인의 핵심이죠. 엄지손가락이 행복한 디자인, 바로 우리가 추구해야 할 사용자 중심의 UX디자인입니다.
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/234_%EC%B1%97GPT%EA%B0%80%20%EC%89%BD%EB%8B%A4%EA%B3%A0%20%EB%8A%90%EA%BB%B4%EC%A7%80%EB%8A%94%20UX%EC%9D%98%20%EB%B9%84%EB%B0%80.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">챗GPT가 쉽다고 느껴지는 UX의 비밀</span></a>
-  <a href="/log_assets/markdown/249_%27%EC%A2%8B%EC%95%84%EC%9A%94%27%EA%B0%80%20%EB%A7%8C%EB%93%A0%20%EC%9E%91%EC%A7%80%EB%A7%8C%20%EA%B0%95%EB%A0%A5%ED%95%9C%20UX%EC%9D%98%20%ED%98%81%EB%AA%85.html" class="cat-nav-item cat-nav-right"><span class="nav-title">'좋아요'가 만든 작지만 강력한 UX의 혁명</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

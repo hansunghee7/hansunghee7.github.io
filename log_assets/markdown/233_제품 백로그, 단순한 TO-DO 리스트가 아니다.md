@@ -7,6 +7,10 @@ date_string: 'Feb 14. 2025'
 date: 2025-02-14
 keywords: '제품 백로그 관리, 백로그 우선순위 전략, 애자일 스쿼드 운영'
 about: '제품 백로그, 애자일 프로덕트 관리'
+prev_url: "/log_assets/markdown/240_%EB%8D%B0%EC%9D%BC%EB%A6%AC%20%EC%8A%A4%ED%81%AC%EB%9F%BC%EC%9D%B4%20%ED%95%84%EC%88%98%EC%9D%BC%EA%B9%8C.html"
+prev_title: "데일리 스크럼이 필수일까?"
+next_url: "/log_assets/markdown/226_%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%20%EB%A6%AC%EB%B7%B0%27%2C%20%EC%A4%80%EB%B9%84%EB%8A%94%20%EB%8D%9C%ED%95%98%EA%B3%A0%20%EC%86%94%EC%A7%81%ED%95%A8%EC%9D%80%20%EB%8D%94%ED%95%98%EA%B8%B0.html"
+next_title: "스프린트 리뷰, 준비는 덜하고 솔직함은 더하기"
 ---
 
 많은 IT 회사의 PO들은 제품 백로그 관리에 아래와 같은 어려움을 겪고 있었다.
@@ -67,13 +71,3 @@ PO라면 이렇게 해보자.
 
 제품 백로그는 일반적인 할일이 아닌 프로젝트의 성공을 이끄는 전략적 도구다. PO가 이를 잘 활용한다면, 제품의 성공 가능성은 크게 높아질 것이다.
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/240_%EB%8D%B0%EC%9D%BC%EB%A6%AC%20%EC%8A%A4%ED%81%AC%EB%9F%BC%EC%9D%B4%20%ED%95%84%EC%88%98%EC%9D%BC%EA%B9%8C.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">데일리 스크럼이 필수일까?</span></a>
-  <a href="/log_assets/markdown/226_%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%20%EB%A6%AC%EB%B7%B0%27%2C%20%EC%A4%80%EB%B9%84%EB%8A%94%20%EB%8D%9C%ED%95%98%EA%B3%A0%20%EC%86%94%EC%A7%81%ED%95%A8%EC%9D%80%20%EB%8D%94%ED%95%98%EA%B8%B0.html" class="cat-nav-item cat-nav-right"><span class="nav-title">스프린트 리뷰, 준비는 덜하고 솔직함은 더하기</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

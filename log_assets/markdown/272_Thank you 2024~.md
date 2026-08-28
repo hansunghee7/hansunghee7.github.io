@@ -7,6 +7,10 @@ date_string: 'Dec 31. 2024'
 date: 2024-12-31
 keywords: '2024년 회고, 스타트업 액셀러레이팅, 코칭 성과'
 about: '심플리파이어, 연말 회고'
+prev_url: "/log_assets/markdown/271_2025%EB%85%84%EC%9D%98%20%EB%82%B4%EA%B0%80%202015%EB%85%84%EC%9D%98%20%EB%82%98%EC%97%90%EA%B2%8C.html"
+prev_title: "2025년의 내가... 2015년의 나에게..."
+next_url: "/log_assets/markdown/274_ENTJ%20%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EB%8A%94%20%EC%98%A4%EA%B2%9C2%28%EC%8A%A4%ED%8F%AC%EC%97%86%EC%9D%8C%29.html"
+next_title: "ENTJ 코치가 보는 오겜2(스포없음)"
 ---
 
 감사한 일들이 많은 한해였다.   
@@ -29,13 +33,3 @@ about: '심플리파이어, 연말 회고'
 
 함께 행복한 2025년을 만들어 봐요 ;-)
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/271_2025%EB%85%84%EC%9D%98%20%EB%82%B4%EA%B0%80%202015%EB%85%84%EC%9D%98%20%EB%82%98%EC%97%90%EA%B2%8C.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">2025년의 내가... 2015년의 나에게...</span></a>
-  <a href="/log_assets/markdown/274_ENTJ%20%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EB%8A%94%20%EC%98%A4%EA%B2%9C2%28%EC%8A%A4%ED%8F%AC%EC%97%86%EC%9D%8C%29.html" class="cat-nav-item cat-nav-right"><span class="nav-title">ENTJ 코치가 보는 오겜2(스포없음)</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

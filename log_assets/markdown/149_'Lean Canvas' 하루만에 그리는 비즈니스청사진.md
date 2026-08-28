@@ -7,6 +7,10 @@ date_string: 'May 6. 2025'
 date: 2025-05-06
 keywords: '린 캔버스, 비즈니스 모델 캔버스, 스타트업 문제 정의'
 about: '비즈니스 모델링, 스타트업 기획'
+prev_url: "/log_assets/markdown/156_%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%9D%BC%EB%A9%B4%20%EA%BC%AD%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%20LTVCAC%EC%9D%98%20%EC%A7%84%EC%A7%9C%20%EC%9D%98%EB%AF%B8.html"
+prev_title: "기획자라면 꼭 알아야 할 LTV/CAC의 진짜 의미"
+next_url: "/log_assets/markdown/142_%27%EC%BD%94%ED%98%B8%ED%8A%B8%20%EB%B6%84%EC%84%9D%27%20%ED%8F%89%EA%B7%A0%EC%9D%98%20%ED%95%A8%EC%A0%95%EC%97%90%EC%84%9C%20%EB%B2%97%EC%96%B4%EB%82%98%EB%8A%94%20%EB%B2%95.html"
+next_title: "'코호트 분석' 평균의 함정에서 벗어나는 법"
 ---
 
 비즈니스 모델을 구상하는 방법은 크게 두 가지다. 하나는 100페이지짜리 사업계획서를 작성하는 것, 다른 하나는 한 장의 Lean Canvas를 그리는 것이다. 2010년, 애시 모리아(Ash Maurya)는 후자를 선택했다.
@@ -41,13 +45,3 @@ Business Model Canvas와 Lean Canvas의 선택은 비즈니스의 성장 단계�
 
 100페이지 사업계획서가 아니라, 한 장의 Lean Canvas만으로도 복잡한 비즈니스 모델을 한눈에 파악하고 빠르게 실행할 수 있다. 이것이 불확실성의 시대에 스타트업이 생존하고 성장하는 방법이다.
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/156_%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%9D%BC%EB%A9%B4%20%EA%BC%AD%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%20LTVCAC%EC%9D%98%20%EC%A7%84%EC%A7%9C%20%EC%9D%98%EB%AF%B8.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">기획자라면 꼭 알아야 할 LTV/CAC의 진짜 의미</span></a>
-  <a href="/log_assets/markdown/142_%27%EC%BD%94%ED%98%B8%ED%8A%B8%20%EB%B6%84%EC%84%9D%27%20%ED%8F%89%EA%B7%A0%EC%9D%98%20%ED%95%A8%EC%A0%95%EC%97%90%EC%84%9C%20%EB%B2%97%EC%96%B4%EB%82%98%EB%8A%94%20%EB%B2%95.html" class="cat-nav-item cat-nav-right"><span class="nav-title">'코호트 분석' 평균의 함정에서 벗어나는 법</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

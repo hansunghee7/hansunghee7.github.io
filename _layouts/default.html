@@ -200,40 +200,8 @@
             100% { background-position: -200% 0; }
         }
         /* 같은 카테고리 다른 글로 이어주는 내부 링크. SEO/AI 크롤러에 "이 글들이
-           서로 연결된 시리즈"라는 신호를 주고, 재방문(체류)에도 도움이 된다. */
-        /* border-top을 따로 안 그리는 이유: 바로 위 이전글/다음글 블록도
-           자기 위쪽에 구분선을 갖고 있어서, 여기에도 border-top을 넣으면
-           20px 간격을 두고 가는 선이 두 번 그어져 의도한 구획이 아니라
-           깨진 것처럼 보였다(모바일 실측 확인). 대신 위쪽 여백만 넉넉히
-           줘서 "함께 읽으면 좋은 글" 레이블 자체가 구획 역할을 하게 한다. */
-        .related-posts { max-width: 700px; margin: 48px auto 60px; padding: 0; }
-        .related-posts-title { font-family: 'Pretendard Variable', 'Noto Sans KR', sans-serif; font-size: 13px; font-weight: 600; color: #8f8b82; letter-spacing: 0.06em; margin: 0 0 18px; }
-        .related-posts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px 24px; }
-        @media (max-width: 560px) { .related-posts-grid { grid-template-columns: 1fr; } }
-        /* 브런치의 "추천글" 카드(이미지 16:9 + 제목 + 메타 한 줄)를 벤치마킹.
-           위의 .article-body img 공통 규칙(본문 이미지용 -- 88% 폭, zoom-in
-           커서, 로드 전 스켈레톤 쉬머, :not(.img-loaded) 포함 명시도 0,2,1)이
-           여기까지 그대로 상속돼 사진이 찌그러지고 영원히 반짝이던 게
-           원래 문제였다. .related-posts를 한 겹 더 앞에 붙여 명시도를
-           0,3,1로 올려 확실히 이기게 하고, 카드 전용 스타일을 새로 입힌다. */
-        .related-post-card { display: block; text-decoration: none; color: inherit; }
-        .article-body .related-posts .related-post-card img {
-            width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover;
-            display: block; margin: 0; border-radius: 10px; cursor: pointer;
-            background-color: #f0efe9; min-height: 0; animation: none;
-            transition: transform 0.35s ease;
-        }
-        .related-post-card:hover img { transform: scale(1.04); }
-        .related-post-card-meta {
-            display: block; margin: 12px 0 4px; font-size: 12px; color: #a19c92;
-            font-family: 'Pretendard Variable', 'Noto Sans KR', sans-serif;
-        }
-        .related-post-card-title {
-            font-family: 'Pretendard Variable', 'Noto Sans KR', sans-serif;
-            display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
-            overflow: hidden; font-size: 15px; font-weight: 400; line-height: 1.5;
-            color: #2b2b2b; letter-spacing: -0.2px;
-        }
+           서로 연결된 시리즈"라는 신호를 주고, 재방문(체류)에도 도움이 된다.
+           CSS/HTML/JS는 _includes/related_posts.html로 옮김. */
         .lightbox-overlay { position: fixed; inset: 0; background: rgba(8,8,8,0.92); display: none; align-items: center; justify-content: center; z-index: 9999; padding: 40px; cursor: zoom-out; }
         .lightbox-overlay.active { display: flex; }
         .lightbox-overlay img { max-width: 100%; max-height: 100%; width: auto !important; height: auto !important; object-fit: contain; margin: 0 !important; border-radius: 0; cursor: default; }
@@ -250,39 +218,8 @@
             .lightbox-close { top: 10px; right: 12px; }
             .lightbox-close svg { width: 22px; height: 22px; }
         }
-        @media (max-width:480px){
-            .category-nav-wrap { padding: 18px 20px !important; }
-        }
-
-        /* 포스트 하단 문의 CTA -- 배너가 아니라 에세이가 자연스럽게 끝나는 한 줄 + 조용한 버튼 하나 */
-        .post-cta { text-align: center; padding: 8px 20px 44px; margin-top: 68px; }
-        .post-cta-line { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-weight: 300; font-style: italic; font-size: 15.5px; color: #767672; margin: 0 0 20px; line-height: 1.7; }
-        .post-cta-btn { display: inline-block; background: #080808; color: #f5f3ee; font-family: 'Boska', serif; font-style: italic; font-weight: 400; font-size: 15.5px; padding: 13px 36px; border-radius: 999px; text-decoration: none !important; border: none; cursor: pointer; transition: background 0.2s, color 0.2s, box-shadow 0.2s; }
-        .post-cta-btn:hover { background: #f5f3ee; color: #080808; box-shadow: inset 0 0 0 1px #080808; }
-
-        .category-nav-wrap {
-            margin-top: var(--nav-margin-top) !important;
-            margin-bottom: var(--nav-margin-bottom) !important;
-            padding: 18px 40px;            
-            border-top: 1px solid #eaeaea; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            font-family: 'Pretendard Variable', 'Noto Sans KR', sans-serif; 
-            font-size: 14px; 
-            gap: 30px; 
-            width: 100vw;
-            position: relative;
-            left: 50%;
-            transform: translateX(-50%);
-            box-sizing: border-box; 
-        }
-        .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #888; transition: color 0.2s; max-width: 45%; padding: 18px 0; margin: -18px 0; }
-        .cat-nav-item:hover { color: #111; }
-        .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
-        .cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
-        .nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-        .cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
+        /* 포스트 하단 문의 CTA, 이전글/다음글 CSS는 각각
+           _includes/post_cta.html, _includes/post_nav.html로 옮김. */
 
         .card-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 20px; }
         @media (max-width: 1024px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
@@ -541,43 +478,9 @@
 
 <div class="article-body" id="articleBody">
     {{ content }}
-{% if page.category %}
-    <div class="related-posts" id="relatedPosts"></div>
-    <script>
-    (function(){
-        // 예전엔 "같은 카테고리 + 랜덤 4개"였는데, 카테고리가 넓으면 실제로는
-        // 안 비슷한 글도 섞여 나와 연관도가 약했다. 지금은 fix_thumb_mapping.py가
-        // 글마다 고유하게 채운 keywords/about 겹침으로 posts.json에 미리 계산해둔
-        // related(id 배열)를 그대로 쓴다 -- 겹치는 키워드가 없을 때만 같은
-        // 카테고리로 보충되므로 항상 그보다는 연관도가 높다.
-        var CUR = decodeURIComponent({{ page.url | jsonify }});
-        fetch('/assets/data/posts.json').then(function(r){ return r.json(); }).then(function(posts){
-            var current = posts.find(function(p){ return decodeURIComponent(p.url) === CUR; });
-            if (!current || !current.related || !current.related.length) return;
-            var byId = {};
-            posts.forEach(function(p){ byId[p.id] = p; });
-            var related = current.related.map(function(id){ return byId[id]; }).filter(Boolean);
-            if (!related.length) return;
-            function esc(s){
-                return (s || '').replace(/[&<>"']/g, function(c){
-                    return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
-                });
-            }
-            var html = '<h3 class="related-posts-title">함께 읽으면 좋은 글</h3><div class="related-posts-grid">';
-            related.forEach(function(p){
-                var meta = esc(p.category) + (p.date ? ' · ' + esc(p.date) : '');
-                html += '<a class="related-post-card" href="' + esc(p.url) + '">'
-                      + '<img src="' + esc(p.image) + '" alt="" loading="lazy">'
-                      + '<span class="related-post-card-meta">' + meta + '</span>'
-                      + '<span class="related-post-card-title">' + esc(p.title) + '</span>'
-                      + '</a>';
-            });
-            html += '</div>';
-            document.getElementById('relatedPosts').innerHTML = html;
-        }).catch(function(){});
-    })();
-    </script>
-{% endif %}
+    {% include post_cta.html %}
+    {% include post_nav.html %}
+    {% include related_posts.html %}
 </div>
 
 {% if page.url == '/' or page.url == '/log.html' or page.is_index %}

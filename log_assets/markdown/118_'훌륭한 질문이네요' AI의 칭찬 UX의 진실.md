@@ -7,6 +7,10 @@ date_string: 'Jun 5. 2025'
 date: 2025-06-05
 keywords: 'AI 칭찬 패러독스, AI 챗봇 UX, AI 신뢰 설계'
 about: 'AI UX, 대화형 인터페이스'
+prev_url: "/log_assets/markdown/110_%EA%B7%B8%EB%A6%AC%EB%93%9C%20%EC%8B%9C%EC%8A%A4%ED%85%9C%2C%20%EA%B5%AC%EA%B8%80%20%EC%95%A0%ED%94%8C%EC%9D%B4%20%EC%82%AC%EB%9E%91%ED%95%9C%20%EA%B2%A9%EC%9E%90%20%EA%B5%AC%EC%A1%B0.html"
+prev_title: "그리드 시스템, 구글 애플이 사랑한 격자 구조"
+next_url: "/log_assets/markdown/125_%ED%9E%88%ED%8A%B8%EB%A7%B5%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%ED%96%89%EB%8F%99%EC%9D%84%20%EC%83%89%EC%9C%BC%EB%A1%9C%20%EC%9D%BD%EB%8A%94%20%EB%B2%95.html"
+next_title: "히트맵, 사용자 행동을 색으로 읽는 법"
 ---
 
 "훌륭한 아이디어네요!", "멋진 질문입니다."
@@ -53,13 +57,3 @@ AI의 칭찬은 때론 따뜻하지만, 그 이면에는 기업의 책임 회피
 
 참고자료 : [The AI Praise Paradox](https://feelthebern.substack.com/p/the-ai-praise-paradox?r=5a1cza&utm_campaign=post&utm_medium=web&triedRedirect=true)
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/110_%EA%B7%B8%EB%A6%AC%EB%93%9C%20%EC%8B%9C%EC%8A%A4%ED%85%9C%2C%20%EA%B5%AC%EA%B8%80%20%EC%95%A0%ED%94%8C%EC%9D%B4%20%EC%82%AC%EB%9E%91%ED%95%9C%20%EA%B2%A9%EC%9E%90%20%EA%B5%AC%EC%A1%B0.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">그리드 시스템, 구글 애플이 사랑한 격자 구조</span></a>
-  <a href="/log_assets/markdown/125_%ED%9E%88%ED%8A%B8%EB%A7%B5%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%ED%96%89%EB%8F%99%EC%9D%84%20%EC%83%89%EC%9C%BC%EB%A1%9C%20%EC%9D%BD%EB%8A%94%20%EB%B2%95.html" class="cat-nav-item cat-nav-right"><span class="nav-title">히트맵, 사용자 행동을 색으로 읽는 법</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

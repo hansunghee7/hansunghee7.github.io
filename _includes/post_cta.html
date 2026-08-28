@@ -1,0 +1,33 @@
+{%- comment -%}
+포스트 하단 문의 CTA(코칭문의/강연문의).
+
+예전엔 sync_all.py의 build_cta_html()이 카테고리명만 다르고 내용은
+100% 같은 이 HTML을 마크다운 594개 파일 본문에 직접 찍어 넣었다.
+그런데 이 분기는 page.category 하나로 완전히 결정되는 로직이라, 굳이
+파일마다 결과물을 중복해서 저장할 이유가 없다 -- 여기서 그 판단을
+그대로 Liquid로 옮겨서 매 포스트 렌더링 시점에 계산한다.
+
+주의: EPISODIC_CATS/SPEAKING_CATS 목록은 sync_all.py에도 그대로
+있다(이전글/다음글 라벨 "이전 화"/"다음 화" 판단에 씀). 카테고리를
+추가/변경할 땐 두 곳 다 고쳐야 한다.
+{%- endcomment -%}
+{% unless page.category == "코치S" or page.category == "잉크드인대 기획학과" %}
+<style>
+    /* 포스트 하단 문의 CTA -- 배너가 아니라 에세이가 자연스럽게 끝나는 한 줄 + 조용한 버튼 하나 */
+    .post-cta { text-align: center; padding: 8px 20px 44px; margin-top: 68px; }
+    .post-cta-line { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-weight: 300; font-style: italic; font-size: 15.5px; color: #767672; margin: 0 0 20px; line-height: 1.7; }
+    .post-cta-btn { display: inline-block; background: #080808; color: #f5f3ee; font-family: 'Boska', serif; font-style: italic; font-weight: 400; font-size: 15.5px; padding: 13px 36px; border-radius: 999px; text-decoration: none !important; border: none; cursor: pointer; transition: background 0.2s, color 0.2s, box-shadow 0.2s; }
+    .post-cta-btn:hover { background: #f5f3ee; color: #080808; box-shadow: inset 0 0 0 1px #080808; }
+</style>
+{% if page.category == "토크세션" %}
+<div class="post-cta">
+  <p class="post-cta-line">이런 이야기를 강연으로 더 듣고 싶으시다면</p>
+  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="speaking">강연 문의</button>
+</div>
+{% else %}
+<div class="post-cta">
+  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
+  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
+</div>
+{% endif %}
+{% endunless %}

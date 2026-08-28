@@ -7,6 +7,10 @@ date_string: 'Jun 23. 2025'
 date: 2025-06-23
 keywords: '가격 정책 전략, 가치기반 프라이싱, SaaS 요금제 설계'
 about: '프라이싱 전략, SaaS 비즈니스모델'
+prev_url: "/log_assets/markdown/092_%EB%93%9C%EB%A1%AD%EB%B0%95%EC%8A%A4%EA%B0%80%203900%ED%8D%BC%EC%84%BC%ED%8A%B8%20%EC%84%B1%EC%9E%A5%ED%95%9C%20%ED%95%98%EB%82%98%EC%9D%98%20%EB%B9%84%EB%B0%80.html"
+prev_title: "드롭박스가 3900% 성장한 하나의 비밀"
+next_url: "/log_assets/markdown/106_2%EC%B2%9C%EB%A7%8C%EC%9B%90%EC%9C%BC%EB%A1%9C%2010%EC%96%B5%EC%9B%90%20%EB%A7%A4%EC%B6%9C%EC%9D%84%2C%20%EC%95%88%ED%8B%B0%EB%A9%94%ED%83%88%EC%9D%98%20%EB%B0%94%EC%9D%B4%EB%9F%B4%EC%A0%84%EB%9E%B5.html"
+next_title: "2천만원으로 10억원 매출을, 안티메탈의 바이럴전략"
 ---
 
 "제품은 좋은데 왜 매출이 늘지 않을까요?"
@@ -45,13 +49,3 @@ about: '프라이싱 전략, SaaS 비즈니스모델'
 
 프라이싱과 패키징은 스타트업 성장의 핵심입니다. 여러분의 제품이 창출하는 진짜 가치를 고객이 기꺼이 지불하게 만드는 구조를 실험하고 개선하세요. 이것이 바로 차별화와 수익성의 시작점입니다.
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/092_%EB%93%9C%EB%A1%AD%EB%B0%95%EC%8A%A4%EA%B0%80%203900%ED%8D%BC%EC%84%BC%ED%8A%B8%20%EC%84%B1%EC%9E%A5%ED%95%9C%20%ED%95%98%EB%82%98%EC%9D%98%20%EB%B9%84%EB%B0%80.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">드롭박스가 3900% 성장한 하나의 비밀</span></a>
-  <a href="/log_assets/markdown/106_2%EC%B2%9C%EB%A7%8C%EC%9B%90%EC%9C%BC%EB%A1%9C%2010%EC%96%B5%EC%9B%90%20%EB%A7%A4%EC%B6%9C%EC%9D%84%2C%20%EC%95%88%ED%8B%B0%EB%A9%94%ED%83%88%EC%9D%98%20%EB%B0%94%EC%9D%B4%EB%9F%B4%EC%A0%84%EB%9E%B5.html" class="cat-nav-item cat-nav-right"><span class="nav-title">2천만원으로 10억원 매출을, 안티메탈의 바이럴전략</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

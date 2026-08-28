@@ -7,6 +7,8 @@ date_string: 'Jul 2. 2025'
 date: 2025-07-02
 keywords: 'Transformer 병목현상, FlashAttention, AI 모델 학습 최적화'
 about: 'Transformer 아키텍처, AI 모델 학습 효율화'
+prev_url: "/log_assets/markdown/096_%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EA%B2%BD%EC%9F%81%EB%A0%A5%EC%97%90%20%EC%A0%80%EC%A0%84%EB%A0%A5%20NPU%EA%B0%80%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html"
+prev_title: "비즈니스 경쟁력에 저전력 NPU가 중요한 이유"
 ---
 
 GPT, BERT와 같은 최신 AI 모델의 중심인 Transformer 아키텍처는 놀라운 성능을 제공하지만, 학습 과정에서 여러 병목 현상에 직면합니다. 이러한 병목을 해결하는 것은 AI 개발의 속도와 비용 효율성을 크게 향상시키는 핵심 요소입니다.
@@ -43,13 +45,3 @@ Transformer의 주요 병목 현상은 크게 네 가지로 나타납니다.
 
 이러한 최적화 기법들은 동일한 하드웨어로 2-10배 빠른 학습을 가능하게 하며, 이는 AI 개발의 비용과 시간을 크게 절감합니다. 비즈니스 관점에서 이러한 기술에 투자하는 것은 AI 개발 비용을 낮추고 더 빠른 혁신 주기를 가능하게 하는 전략적 결정이 될 것입니다.
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/096_%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EA%B2%BD%EC%9F%81%EB%A0%A5%EC%97%90%20%EC%A0%80%EC%A0%84%EB%A0%A5%20NPU%EA%B0%80%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">비즈니스 경쟁력에 저전력 NPU가 중요한 이유</span></a>
-  <div></div>
-</div>
-<!-- CATEGORY_NAV_END -->

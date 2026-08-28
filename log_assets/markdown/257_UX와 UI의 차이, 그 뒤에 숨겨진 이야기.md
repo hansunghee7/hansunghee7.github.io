@@ -7,6 +7,8 @@ date_string: 'Jan 23. 2025'
 date: 2025-01-23
 keywords: 'UX UI 차이, UX 디자인 역사, UI 디자인 원칙'
 about: 'UX 디자인, UI 디자인'
+prev_url: "/log_assets/markdown/249_%27%EC%A2%8B%EC%95%84%EC%9A%94%27%EA%B0%80%20%EB%A7%8C%EB%93%A0%20%EC%9E%91%EC%A7%80%EB%A7%8C%20%EA%B0%95%EB%A0%A5%ED%95%9C%20UX%EC%9D%98%20%ED%98%81%EB%AA%85.html"
+prev_title: "'좋아요'가 만든 작지만 강력한 UX의 혁명"
 ---
 
 UX와 UI라는 용어는 디지털 시대에 자주 등장하지만, 많은 사람들이 그 차이를 혼동하곤 합니다. 오늘은 UX와 UI의 탄생 배경부터 차이점, 그리고 실무에서의 활용까지 깊이 있게 살펴보겠습니다.
@@ -43,13 +45,3 @@ UX와 UI 디자인의 핵심은 사용자입니다. 끊임없이 사용자의 �
 
 기획자와 디자이너들이 UX와 UI에 대한 심도깊은 연구를 통해 우리들의 삶을 더 나아지게 만들기를 기대합니다. :-)
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/249_%27%EC%A2%8B%EC%95%84%EC%9A%94%27%EA%B0%80%20%EB%A7%8C%EB%93%A0%20%EC%9E%91%EC%A7%80%EB%A7%8C%20%EA%B0%95%EB%A0%A5%ED%95%9C%20UX%EC%9D%98%20%ED%98%81%EB%AA%85.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">'좋아요'가 만든 작지만 강력한 UX의 혁명</span></a>
-  <div></div>
-</div>
-<!-- CATEGORY_NAV_END -->

@@ -7,6 +7,8 @@ date_string: 'Aug 15. 2025'
 date: 2025-08-15
 keywords: '애자일 HR, 상시 피드백 평가, 역량 기반 채용'
 about: '애자일 조직, HR 전략'
+prev_url: "/log_assets/markdown/057_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20vs%20%EB%8C%80%EA%B8%B0%EC%97%85%20%EC%95%A0%EC%9E%90%EC%9D%BC%2C%20%EA%B7%9C%EB%AA%A8%EB%B3%84%20%EC%A0%81%EC%9A%A9%20%EC%A0%84%EB%9E%B5.html"
+prev_title: "스타트업 vs 대기업 애자일, 규모별 적용 전략"
 ---
 
 서울 여의도의 한 IT기업 HR팀장 박차장은 고민이 깊었다. 개발팀은 애자일로 2주마다 성과를 내는데, 인사평가는 여전히 1년에 한 번이었다. "조직과 과제는 계속 바뀌는데 1년 전 목표로 평가한다고?" 팀장들의 불만이 계속 쌓였다. 더 큰 문제는 채용이었다. "React 개발자 5년 경력"이라고 올려도 정작 필요한 건 "프론트엔드 잘하고 팀워크 좋은 사람"이었다.
@@ -39,13 +41,3 @@ Google은 연간 성과평가를 완전히 폐지한 것이 아니라, 기존 �
 
 Product Owner로서 우리가 제품의 사용자 경험을 개선하듯, 조직의 "직원 경험"도 함께 개선해나갈 때 진정한 애자일 조직이 완성된다. 애자일 HR의 본질은 프로세스를 사람에게 맞추는 것이지, 사람을 프로세스에 끼워맞추는 게 아니다.
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/057_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20vs%20%EB%8C%80%EA%B8%B0%EC%97%85%20%EC%95%A0%EC%9E%90%EC%9D%BC%2C%20%EA%B7%9C%EB%AA%A8%EB%B3%84%20%EC%A0%81%EC%9A%A9%20%EC%A0%84%EB%9E%B5.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">스타트업 vs 대기업 애자일, 규모별 적용 전략</span></a>
-  <div></div>
-</div>
-<!-- CATEGORY_NAV_END -->

@@ -7,6 +7,10 @@ date_string: 'Apr 4. 2025'
 date: 2025-04-04
 keywords: '애자일 워터폴 비교, 하이브리드 방법론, 프로젝트 관리 방법론'
 about: '프로젝트 관리, 애자일 방법론'
+prev_url: "/log_assets/markdown/189_%EC%B9%B8%EB%B0%98%2C%20%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%98%20Just%20In%20Time.html"
+prev_title: "칸반, 애자일의 Just In Time"
+next_url: "/log_assets/markdown/175_%27%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%8A%A4%ED%86%A0%EB%A6%AC%27%20%EA%B8%B0%EB%8A%A5%EC%9D%B4%20%EC%95%84%EB%8B%8C%20%EA%B0%80%EC%B9%98%EB%A5%BC%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B9%84%EB%B0%80%20%EB%AC%B4%EA%B8%B0.html"
+next_title: "'사용자 스토리' 기능이 아닌 가치를 만드는 비밀 무기"
 ---
 
 한 IT 회사의 PO(제품 책임자)는 새 프로젝트를 시작하며 고민에 빠졌습니다.
@@ -73,13 +77,3 @@ about: '프로젝트 관리, 애자일 방법론'
 
 어떤 방법론이 옳고 그르다는 절대적인 기준은 없습니다. 중요한 것은 프로젝트와 팀에 맞는 방식을 선택하고, 필요에 따라 유연하게 조정하는 것입니다. 기획자로서 두 방법론의 장단점을 이해하고 상황에 맞게 적용한다면, 프로젝트의 성공 가능성을 높일 수 있을 것입니다.
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/189_%EC%B9%B8%EB%B0%98%2C%20%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%98%20Just%20In%20Time.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">칸반, 애자일의 Just In Time</span></a>
-  <a href="/log_assets/markdown/175_%27%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%8A%A4%ED%86%A0%EB%A6%AC%27%20%EA%B8%B0%EB%8A%A5%EC%9D%B4%20%EC%95%84%EB%8B%8C%20%EA%B0%80%EC%B9%98%EB%A5%BC%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B9%84%EB%B0%80%20%EB%AC%B4%EA%B8%B0.html" class="cat-nav-item cat-nav-right"><span class="nav-title">'사용자 스토리' 기능이 아닌 가치를 만드는 비밀 무기</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

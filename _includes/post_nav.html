@@ -1,0 +1,58 @@
+{%- comment -%}
+이전글/다음글(연재 웹툰은 "이전 화"/"다음 화") 내비게이션.
+
+예전엔 sync_all.py가 이전글/다음글 URL·제목을 계산해서 완성된 HTML을
+마크다운 본문(CATEGORY_NAV_START/END 마커 사이)에 직접 써넣었다.
+지금은 sync_all.py가 prev_url/prev_title/next_url/next_title 네 값만
+front matter에 써두고, 실제 렌더링(라벨 분기 포함)은 여기서 한다 --
+본문에는 아무 것도 안 남는다.
+
+주의: 아래 카테고리 목록은 sync_all.py의 EPISODIC_CATS와 그대로
+일치해야 한다. 카테고리를 추가/변경할 땐 두 곳 다 고칠 것.
+{%- endcomment -%}
+{% if page.category %}
+<style>
+    .category-nav-wrap {
+        margin-top: var(--nav-margin-top) !important;
+        margin-bottom: var(--nav-margin-bottom) !important;
+        padding: 18px 40px;
+        border-top: 1px solid #eaeaea;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: 'Pretendard Variable', 'Noto Sans KR', sans-serif;
+        font-size: 14px;
+        gap: 30px;
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        box-sizing: border-box;
+    }
+    @media (max-width:480px){
+        .category-nav-wrap { padding: 18px 20px !important; }
+    }
+    .cat-nav-item { display: flex; align-items: center; gap: 10px; text-decoration: none !important; color: #888; transition: color 0.2s; max-width: 45%; padding: 18px 0; margin: -18px 0; }
+    .cat-nav-item:hover { color: #111; }
+    .cat-nav-item:hover .nav-title { color: #111; text-decoration: underline; }
+    .cat-nav-label { font-size: 13px; color: #999; white-space: nowrap; font-weight: 300; }
+    .nav-title { font-weight: 400; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .cat-nav-right { margin-left: auto; justify-content: flex-end; text-align: right; }
+</style>
+{% assign is_episodic = false %}
+{% if page.category == "코치S" or page.category == "잉크드인대 기획학과" %}{% assign is_episodic = true %}{% endif %}
+{% assign prev_label = "이전글" %}{% assign next_label = "다음글" %}
+{% if is_episodic %}{% assign prev_label = "이전 화" %}{% assign next_label = "다음 화" %}{% endif %}
+<div class="category-nav-wrap">
+  {% if page.prev_url %}
+  <a href="{{ page.prev_url }}" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ {{ prev_label }}</span><span class="nav-title">{{ page.prev_title | escape }}</span></a>
+  {% else %}
+  <div></div>
+  {% endif %}
+  {% if page.next_url %}
+  <a href="{{ page.next_url }}" class="cat-nav-item cat-nav-right"><span class="nav-title">{{ page.next_title | escape }}</span><span class="cat-nav-label">{{ next_label }} ❯</span></a>
+  {% else %}
+  <div></div>
+  {% endif %}
+</div>
+{% endif %}

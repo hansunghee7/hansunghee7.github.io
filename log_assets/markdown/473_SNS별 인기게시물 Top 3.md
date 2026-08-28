@@ -7,6 +7,10 @@ date_string: 'Feb 14. 2024'
 date: 2024-02-14
 keywords: 'SNS 채널별 콘텐츠 전략, 멀티퍼블리싱, 인기 게시물 분석'
 about: '콘텐츠 마케팅, SNS 운영'
+prev_url: "/log_assets/markdown/472_%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%EC%97%90%EB%8A%94%20%EC%96%B4%EB%96%A4%20%EA%B8%80%EC%9D%84%20%EC%8D%A8%EC%95%BC%ED%95%A0%EA%B9%8C.html"
+prev_title: "링크드인에는 어떤 글을 써야할까?"
+next_url: "/log_assets/markdown/477_%EA%B8%80%EC%93%B0%EA%B8%B0%EB%8A%94%20%27%EC%9E%98%27%20%EB%B3%B4%EB%8B%A4%20%27%EC%9E%90%EC%A3%BC%27%EA%B0%80%20%EB%8D%94%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html"
+next_title: "글쓰기는 '잘' 보다 '자주'가 더 중요한 이유"
 ---
 
 선배분들을 벤치마킹을 해서 멀티퍼블리싱을 하고 있는데, 최근 테스트 채널까지 늘면서 육체적 피로도가 높아졌습니다. 그래서 몇 개 정리를 할까 둘러보다보니, 열손가락 깨물어 안아픈 손가락이 없다고 멈출 수 있는 SNS가 없네요. ㅜ.ㅜ (누구 좋은 방법을 아시는 분 있으면 조언 부탁드립니다.)
@@ -73,13 +77,3 @@ about: '콘텐츠 마케팅, SNS 운영'
 
 EO Planet은 시작한지 얼마 안되었지만 큰 기업 인재들이...가 4.1k 조회수를 얻었고, 일반게시물도 양호하게 조회되고 있다.
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/472_%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%EC%97%90%EB%8A%94%20%EC%96%B4%EB%96%A4%20%EA%B8%80%EC%9D%84%20%EC%8D%A8%EC%95%BC%ED%95%A0%EA%B9%8C.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">링크드인에는 어떤 글을 써야할까?</span></a>
-  <a href="/log_assets/markdown/477_%EA%B8%80%EC%93%B0%EA%B8%B0%EB%8A%94%20%27%EC%9E%98%27%20%EB%B3%B4%EB%8B%A4%20%27%EC%9E%90%EC%A3%BC%27%EA%B0%80%20%EB%8D%94%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html" class="cat-nav-item cat-nav-right"><span class="nav-title">글쓰기는 '잘' 보다 '자주'가 더 중요한 이유</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

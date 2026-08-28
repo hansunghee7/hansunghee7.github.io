@@ -7,6 +7,8 @@ date_string: 'Jan 14. 2025'
 date: 2025-01-14
 keywords: 'RICE 프레임워크, 우선순위 설정, 백로그 우선순위'
 about: '기획 프레임워크, 제품 우선순위 관리'
+next_url: "/log_assets/markdown/259_%EA%B3%A0%EA%B0%9D%EC%9D%84%20%EC%A0%95%EC%9D%98%ED%95%98%EB%8A%94%20%EB%B2%95%20%27%ED%8E%98%EB%A5%B4%EC%86%8C%EB%82%98%27.html"
+next_title: "고객을 정의하는 법 '페르소나'"
 ---
 
 제품 아이디어 백로그의 우선순위를 정하는 일은 기획자에게 매우 중요하면서 어려운 일입니다. 이때 RICE 프레임워크를 활용하면 보다 객관적이고 효과적으로 의사결정을 내릴 수 있습니다.
@@ -43,13 +45,3 @@ Effort는 아이디어 실현에 필요한 시간, 인력, 예산 등을 가늠�
 
 기획자의 프레임웍은 기획자들이 활용할 수 있는 프레임웍들을 연재하는 콘텐츠입니다. 다뤘으면 하는 콘텐츠가 있으면 댓글로 남겨주세요.  :-)
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <div></div>
-  <a href="/log_assets/markdown/259_%EA%B3%A0%EA%B0%9D%EC%9D%84%20%EC%A0%95%EC%9D%98%ED%95%98%EB%8A%94%20%EB%B2%95%20%27%ED%8E%98%EB%A5%B4%EC%86%8C%EB%82%98%27.html" class="cat-nav-item cat-nav-right"><span class="nav-title">고객을 정의하는 법 '페르소나'</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

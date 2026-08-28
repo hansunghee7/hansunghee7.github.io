@@ -7,6 +7,10 @@ date_string: 'Jun 10. 2025'
 date: 2025-06-10
 keywords: '포터의 5 Forces, 산업구조 분석, 경쟁전략 프레임워크'
 about: '전략 프레임워크, 산업 분석'
+prev_url: "/log_assets/markdown/120_UX%205%20Planes%2C%20%EA%B2%BD%ED%97%98%20%EC%84%A4%EA%B3%84%EC%9D%98%20%EC%A7%80%EB%8F%84.html"
+prev_title: "UX 5 Planes, 경험 설계의 지도"
+next_url: "/log_assets/markdown/104_%EA%B0%80%EC%B9%98%EC%82%AC%EC%8A%AC%20%EB%B6%84%EC%84%9D%2C%20%EB%8F%88%EC%9D%B4%20%EB%A7%8C%EB%93%A4%EC%96%B4%EC%A7%80%EB%8A%94%20%EC%A7%80%EC%A0%90%EC%9D%84%20%EC%B0%BE%EB%8A%94%20%EB%B2%95.html"
+next_title: "가치사슬 분석, 돈이 만들어지는 지점을 찾는 법"
 ---
 
 1979년, 미국 기업들은 절망에 빠져 있었다. 일본 기업들의 맹공격으로 주요 산업이 뒤흔들리고 있었다. 기존의 SWOT 분석처럼 내부만 바라보는 전략으로는 한계가 명확했다. 이때 하버드대 마이클 포터가 혁신적인 아이디어를 제안했다.
@@ -38,13 +42,3 @@ about: '전략 프레임워크, 산업 분석'
 **경쟁에서 이기는 서비스를 만드는 질문이 궁금하다면...**
 
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/120_UX%205%20Planes%2C%20%EA%B2%BD%ED%97%98%20%EC%84%A4%EA%B3%84%EC%9D%98%20%EC%A7%80%EB%8F%84.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">UX 5 Planes, 경험 설계의 지도</span></a>
-  <a href="/log_assets/markdown/104_%EA%B0%80%EC%B9%98%EC%82%AC%EC%8A%AC%20%EB%B6%84%EC%84%9D%2C%20%EB%8F%88%EC%9D%B4%20%EB%A7%8C%EB%93%A4%EC%96%B4%EC%A7%80%EB%8A%94%20%EC%A7%80%EC%A0%90%EC%9D%84%20%EC%B0%BE%EB%8A%94%20%EB%B2%95.html" class="cat-nav-item cat-nav-right"><span class="nav-title">가치사슬 분석, 돈이 만들어지는 지점을 찾는 법</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

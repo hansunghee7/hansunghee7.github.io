@@ -7,6 +7,10 @@ date_string: 'Jul 14. 2024'
 date: 2024-07-14
 keywords: '브랜드 로고 디자인, 스타트업 브랜딩, 디자이너 협업'
 about: '브랜드 디자인, 로고'
+prev_url: "/log_assets/markdown/355_%EC%8B%9C%EB%93%9C%20%EC%95%84%EC%9D%B4%ED%85%9C%EA%B3%BC%20%EB%A9%94%ED%83%80%EC%9D%B8%EC%A7%80.html"
+prev_title: "시드 아이템과 메타인지"
+next_url: "/log_assets/markdown/360_%EB%8F%88%EA%B3%BC%20%ED%96%89%EB%B3%B5.html"
+next_title: "돈과 행복"
 ---
 
 **#Simplifier #Branding "로고"**
@@ -39,13 +43,3 @@ about: '브랜드 디자인, 로고'
 
 ![스크린샷 2024-07-14 오전 9.13.20.png](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/qgaegiicbeSq_5rWuxqRZl9D-Uk.png)
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/355_%EC%8B%9C%EB%93%9C%20%EC%95%84%EC%9D%B4%ED%85%9C%EA%B3%BC%20%EB%A9%94%ED%83%80%EC%9D%B8%EC%A7%80.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">시드 아이템과 메타인지</span></a>
-  <a href="/log_assets/markdown/360_%EB%8F%88%EA%B3%BC%20%ED%96%89%EB%B3%B5.html" class="cat-nav-item cat-nav-right"><span class="nav-title">돈과 행복</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

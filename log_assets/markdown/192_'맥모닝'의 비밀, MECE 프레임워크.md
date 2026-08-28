@@ -7,6 +7,10 @@ date_string: 'Mar 25. 2025'
 date: 2025-03-25
 keywords: 'MECE 프레임워크, 맥모닝 사례, 문제 구조화'
 about: '기획 프레임워크, 비즈니스 분석'
+prev_url: "/log_assets/markdown/200_%EC%82%AC%EC%9A%A9%EC%9E%90%EB%A5%BC%20%EC%A4%91%EB%8F%85%EC%8B%9C%ED%82%A4%EB%8A%94%204%EB%8B%A8%EA%B3%84%20%EB%A7%88%EB%B2%95%20%27Hooked%20%EB%AA%A8%EB%8D%B8%27.html"
+prev_title: "사용자를 중독시키는 4단계 마법 'Hooked 모델'"
+next_url: "/log_assets/markdown/185_%EC%82%AC%EA%B3%A0%EC%9D%98%20%EC%A7%80%EB%8F%84%EB%A5%BC%20%EA%B7%B8%EB%A6%AC%EB%8A%94%20%EB%B2%95%20%27%EB%A1%9C%EC%A7%81%20%ED%8A%B8%EB%A6%AC%27.html"
+next_title: "사고의 지도를 그리는 법 '로직 트리'"
 ---
 
 2006년 맥도날드는 한 가지 고민에 빠져 있었다. 매출이 정체된 이유를 찾기 위해 글로벌 컨설팅 회사 맥킨지의 MECE(미씨) 프레임워크를 활용했다. 분석 결과, 맥도날드는 점심과 저녁 메뉴만 판매하고 있었고, 아침 시간대의 매출이 빠져 있다는 사실을 깨달았다. 바로 '맥모닝'의 시작이었다. 이 결정 하나로 맥도날드는 아침 시장을 공략해 큰 성공을 거두었다.
@@ -43,13 +47,3 @@ MECE를 정복하는 핵심은 이 두 가지 원칙을 익히는 것이다.
 
 MECE, 기획자에겐 그 자체로 마법 지팡이와도 같은 도구다. 상호 배타적이고 전체를 포괄하는 사고의 힘. 이것이야말로 기획의 비법이 아닐까한다.
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/200_%EC%82%AC%EC%9A%A9%EC%9E%90%EB%A5%BC%20%EC%A4%91%EB%8F%85%EC%8B%9C%ED%82%A4%EB%8A%94%204%EB%8B%A8%EA%B3%84%20%EB%A7%88%EB%B2%95%20%27Hooked%20%EB%AA%A8%EB%8D%B8%27.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">사용자를 중독시키는 4단계 마법 'Hooked 모델'</span></a>
-  <a href="/log_assets/markdown/185_%EC%82%AC%EA%B3%A0%EC%9D%98%20%EC%A7%80%EB%8F%84%EB%A5%BC%20%EA%B7%B8%EB%A6%AC%EB%8A%94%20%EB%B2%95%20%27%EB%A1%9C%EC%A7%81%20%ED%8A%B8%EB%A6%AC%27.html" class="cat-nav-item cat-nav-right"><span class="nav-title">사고의 지도를 그리는 법 '로직 트리'</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

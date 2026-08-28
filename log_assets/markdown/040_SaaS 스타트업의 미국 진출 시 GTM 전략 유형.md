@@ -7,6 +7,10 @@ date_string: 'Aug 31. 2025'
 date: 2025-08-31
 keywords: 'SaaS GTM 전략, 프로덕트주도성장, 미국 세일즈 전략'
 about: '미국 진출, GTM 전략'
+prev_url: "/log_assets/markdown/048_%EB%AF%B8%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%EC%99%9C%20%EB%8B%A4%20%27%EB%AF%B8%EC%85%98%27%EB%B6%80%ED%84%B0%20%EB%A7%90%ED%95%A0%EA%B9%8C.html"
+prev_title: "미국 스타트업은 왜 다 '미션'부터 말할까"
+next_url: "/log_assets/markdown/037_%EC%8B%A4%EB%A6%AC%EC%BD%98%EB%B0%B8%EB%A6%AC%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%98%20%EA%B8%B0%EC%A4%80.html"
+next_title: "실리콘밸리 디자인의 기준"
 ---
 
 GTM(Go-To-Market) 전략이란 제품을 시장에 들고 나가는 접근 방식을 말합니다. SaaS 스타트업의 미국 진출에서는 일반적으로 네 가지 GTM 전략을 활용합니다.
@@ -40,13 +44,3 @@ GTM 전략은 시간에 따라 진화합니다. 초기에는 PLG로 사용자를
 결국 우리 고객과 거래규모에 최적화된 전략을 선정하는 것이 핵심입니다. 처음엔 하나에 집중하되, 성장 단계에 따라 전략 포트폴리오를 늘려나간다면 성공적인 마켓 진출을 이룰 수 있을 것입니다.
 
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/048_%EB%AF%B8%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%EC%99%9C%20%EB%8B%A4%20%27%EB%AF%B8%EC%85%98%27%EB%B6%80%ED%84%B0%20%EB%A7%90%ED%95%A0%EA%B9%8C.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">미국 스타트업은 왜 다 '미션'부터 말할까</span></a>
-  <a href="/log_assets/markdown/037_%EC%8B%A4%EB%A6%AC%EC%BD%98%EB%B0%B8%EB%A6%AC%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%98%20%EA%B8%B0%EC%A4%80.html" class="cat-nav-item cat-nav-right"><span class="nav-title">실리콘밸리 디자인의 기준</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

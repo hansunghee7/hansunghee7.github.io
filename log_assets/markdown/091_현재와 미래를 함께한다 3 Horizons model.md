@@ -7,6 +7,8 @@ date_string: 'Jul 1. 2025'
 date: 2025-07-01
 keywords: '3 Horizons 모델, 혁신 포트폴리오 전략, 신사업 자원배분'
 about: '혁신 전략 프레임워크, 신사업 포트폴리오 관리'
+prev_url: "/log_assets/markdown/097_MIT%20%EC%B0%BD%EC%97%85%EC%A0%84%EB%9E%B5%20%EB%82%98%EC%B9%A8%EB%B0%98%2C%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%B4%20%EA%B8%B8%EC%9D%84%20%EC%9E%83%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EB%B2%95.html"
+prev_title: "MIT 창업전략 나침반, 스타트업이 길을 잃지 않는 법"
 ---
 
 1990년대 후반, 많은 대기업이 한 가지 딜레마에 빠져 있었다. 단기 실적에만 집중하다가 신생 기업에 시장을 빼앗기거나, 미래 성장 동력을 놓치는 사례가 속출했다. 맥킨지 컨설턴트들은 이 문제를 해결하기 위해 '현재를 지키면서 미래를 준비하는' 균형 잡힌 성장 전략을 고안했다. 바로 '3 Horizons 모델'이다.
@@ -39,13 +41,3 @@ about: '혁신 전략 프레임워크, 신사업 포트폴리오 관리'
 
 3 Horizons 모델은 단기 성과와 장기 혁신 사이의 균형을 잡아주는 전략적 프레임워크다. 단기 이익에만 집착하지 않고, 미래를 위한 실험과 투자를 병행할 때 조직은 지속적으로 성장할 수 있다. 이 프레임워크는 '지금'과 '미래'를 잇는 가장 실용적인 혁신 관리 도구다.
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/097_MIT%20%EC%B0%BD%EC%97%85%EC%A0%84%EB%9E%B5%20%EB%82%98%EC%B9%A8%EB%B0%98%2C%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%B4%20%EA%B8%B8%EC%9D%84%20%EC%9E%83%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EB%B2%95.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">MIT 창업전략 나침반, 스타트업이 길을 잃지 않는 법</span></a>
-  <div></div>
-</div>
-<!-- CATEGORY_NAV_END -->

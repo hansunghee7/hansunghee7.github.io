@@ -7,6 +7,10 @@ date_string: 'Mar 18. 2025'
 date: 2025-03-18
 keywords: 'Hooked 모델, 사용자 습관 형성, 프로덕트 중독 설계'
 about: '행동 설계, 프로덕트 심리학, UX 심리학'
+prev_url: "/log_assets/markdown/208_SWOT%20%EB%B9%84%EC%A7%80%EB%8B%88%EC%8A%A4%EC%9D%98%204%EC%B0%A8%EC%9B%90%20%EB%B6%84%EC%84%9D%EB%B2%95.html"
+prev_title: "SWOT 비지니스의 4차원 분석법"
+next_url: "/log_assets/markdown/192_%27%EB%A7%A5%EB%AA%A8%EB%8B%9D%27%EC%9D%98%20%EB%B9%84%EB%B0%80%2C%20MECE%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC.html"
+next_title: "'맥모닝'의 비밀, MECE 프레임워크"
 ---
 
 "오늘도 무의식적으로 스마트폰을 집어 들었다." 이런 경험, 누구나 한 번쯤 있을 것이다.
@@ -43,13 +47,3 @@ about: '행동 설계, 프로덕트 심리학, UX 심리학'
 
 니르 이얄의 이 모델은 단순한 마케팅 전략을 넘어, 우리의 일상 행동을 설명하는 강력한 렌즈가 되었다. 습관 형성 제품은 기존 마케팅보다 비용 효율적이고 강력한 사용자 충성도를 만들어낸다. 다만 이러한 강력한 도구는 윤리적 책임과 함께 사용되어야 한다. 궁극적으로 훅 모델의 목적은 사용자의 삶을 개선하는 습관을 형성하는 것이어야 한다.
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/208_SWOT%20%EB%B9%84%EC%A7%80%EB%8B%88%EC%8A%A4%EC%9D%98%204%EC%B0%A8%EC%9B%90%20%EB%B6%84%EC%84%9D%EB%B2%95.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">SWOT 비지니스의 4차원 분석법</span></a>
-  <a href="/log_assets/markdown/192_%27%EB%A7%A5%EB%AA%A8%EB%8B%9D%27%EC%9D%98%20%EB%B9%84%EB%B0%80%2C%20MECE%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC.html" class="cat-nav-item cat-nav-right"><span class="nav-title">'맥모닝'의 비밀, MECE 프레임워크</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

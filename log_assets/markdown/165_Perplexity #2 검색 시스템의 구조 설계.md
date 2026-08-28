@@ -7,6 +7,10 @@ date_string: 'Apr 20. 2025'
 date: 2025-04-20
 keywords: '하이브리드 검색 설계, BM25 벡터 검색, 리랭커 구현'
 about: '검색 시스템, AI 아키텍처'
+prev_url: "/log_assets/markdown/167_Perplexity%20%231%20%EA%B2%80%EC%83%89%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EB%84%98%EC%96%B4%EC%84%9C.html"
+prev_title: "Perplexity #1 검색의 한계를 넘어서"
+next_url: "/log_assets/markdown/172_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%B0%BD%EC%97%85%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%ED%95%98%EB%82%98%EC%9A%94.html"
+next_title: "스타트업 창업은 어떻게 하나요?"
 ---
 
 안녕하세요, 스타트업 성공코치 한성희입니다. 지난 시간에는 Perplexity AI의 핵심 기술 아키텍처를 살펴보았습니다. 오늘은 그 중에서도 검색 시스템의 구조, 특히 BM25와 벡터 검색을 결합한 하이브리드 설계에 대해 실제 구현 방법을 중심으로 자세히 알아보겠습니다.
@@ -95,13 +99,3 @@ Perplexity AI의 검색 시스템은 전통적인 키워드 기반 검색과 최
 
 다음 편에서는 이러한 검색 결과를 바탕으로 자연스럽고 정확한 답변을 생성하는 RAG(Retrieval-Augmented Generation) 시스템의 구조를 자세히 살펴보겠습니다. :-)
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/167_Perplexity%20%231%20%EA%B2%80%EC%83%89%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EB%84%98%EC%96%B4%EC%84%9C.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">Perplexity #1 검색의 한계를 넘어서</span></a>
-  <a href="/log_assets/markdown/172_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%B0%BD%EC%97%85%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%ED%95%98%EB%82%98%EC%9A%94.html" class="cat-nav-item cat-nav-right"><span class="nav-title">스타트업 창업은 어떻게 하나요?</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

@@ -7,6 +7,10 @@ date_string: 'Jan 27. 2025'
 date: 2025-01-27
 keywords: 'Figma PLG전략, 제품주도성장, 바이럴 루프 설계'
 about: '스타트업, 제품 주도 성장'
+prev_url: "/log_assets/markdown/250_%EC%B4%88%EA%B3%A0%EC%9C%A8%EC%9D%98%20AI%EB%A1%9C%20%EC%8B%9C%EC%9E%A5%EC%9D%84%20%ED%9D%94%EB%93%A4%EB%8B%A4%20DeepSeek.html"
+prev_title: "초고율의 AI로 시장을 흔들다. DeepSeek"
+next_url: "/log_assets/markdown/254_MIT%20%EC%B2%9C%EC%9E%AC%EB%93%A4%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EC%B9%9C%ED%99%98%EA%B2%BD%20%EC%95%94%EB%AA%A8%EB%8B%88%EC%95%84%20%EC%97%B0%EB%A3%8C%20%27%EC%95%84%EB%AA%A8%EC%A7%80%27.html"
+next_title: "MIT 천재들이 만든 친환경 암모니아 연료 '아모지'"
 ---
 
 안녕하세요, 스타트업 코치 한성희입니다. 오늘은 많은 스타트업들이 고민하는 '효율적인 고객 획득 전략'에 대해 이야기해보려 합니다.
@@ -55,13 +59,3 @@ Figma의 제품 주도 성장 전략은 다음과 같은 단계로 진행되었�
 
 다음 글에서는 또 다른 혁신적인 스타트업의 성장 사례를 다루도록 하겠습니다. 여러분의 제품은 어떤 성장 전략을 가지고 있나요?
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/250_%EC%B4%88%EA%B3%A0%EC%9C%A8%EC%9D%98%20AI%EB%A1%9C%20%EC%8B%9C%EC%9E%A5%EC%9D%84%20%ED%9D%94%EB%93%A4%EB%8B%A4%20DeepSeek.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">초고율의 AI로 시장을 흔들다. DeepSeek</span></a>
-  <a href="/log_assets/markdown/254_MIT%20%EC%B2%9C%EC%9E%AC%EB%93%A4%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EC%B9%9C%ED%99%98%EA%B2%BD%20%EC%95%94%EB%AA%A8%EB%8B%88%EC%95%84%20%EC%97%B0%EB%A3%8C%20%27%EC%95%84%EB%AA%A8%EC%A7%80%27.html" class="cat-nav-item cat-nav-right"><span class="nav-title">MIT 천재들이 만든 친환경 암모니아 연료 '아모지'</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

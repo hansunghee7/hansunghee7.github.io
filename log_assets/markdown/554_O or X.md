@@ -7,6 +7,10 @@ date_string: 'Nov 19. 2023'
 date: 2023-11-19
 keywords: '이분법적 사고, 제3의 대안, 토론 태도'
 about: '의사결정, 커뮤니케이션'
+prev_url: "/log_assets/markdown/552_%EC%82%AC%EC%9A%A9%EC%9E%90%EB%A5%BC%20%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%99%94%ED%95%98%EC%84%B8%EC%9A%94.html"
+prev_title: "사용자를 데이터화하세요."
+next_url: "/log_assets/markdown/555_%EC%A7%80%EB%82%98%EA%B3%A0%20%EB%B3%B4%EB%8B%88.html"
+next_title: "지나고 보니..."
 ---
 
 인생도 기획도 O나 X로 풀려하지 마라
@@ -21,13 +25,3 @@ about: '의사결정, 커뮤니케이션'
 
 2004년 1월에 작성한 글입니다.
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/552_%EC%82%AC%EC%9A%A9%EC%9E%90%EB%A5%BC%20%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%99%94%ED%95%98%EC%84%B8%EC%9A%94.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">사용자를 데이터화하세요.</span></a>
-  <a href="/log_assets/markdown/555_%EC%A7%80%EB%82%98%EA%B3%A0%20%EB%B3%B4%EB%8B%88.html" class="cat-nav-item cat-nav-right"><span class="nav-title">지나고 보니...</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

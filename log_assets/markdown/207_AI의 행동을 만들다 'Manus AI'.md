@@ -7,6 +7,10 @@ date_string: 'Mar 11. 2025'
 date: 2025-03-11
 keywords: 'Manus AI, 자율 AI 에이전트, 멀티 에이전트 아키텍처'
 about: 'AI 에이전트, AI 스타트업'
+prev_url: "/log_assets/markdown/206_%ED%8F%89%EB%B2%94%EC%9D%84%20%EA%B1%B0%EB%B6%80%ED%95%9C%EB%8B%A4%20%27%ED%97%A4%EB%8D%94%EC%9C%85%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%27.html"
+prev_title: "평범을 거부한다. 헤더윅 스튜디오"
+next_url: "/log_assets/markdown/209_%EC%8B%A4%ED%8C%A8%EC%97%90%EC%84%9C%20%EB%8D%B0%EC%B9%B4%EC%BD%98%EC%9C%BC%EB%A1%9C%20%27Notion%27%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EC%8B%9C%EC%9E%A5%EC%A7%84%EC%B6%9C%EC%A0%84%EB%9E%B5.html"
+next_title: "실패에서 데카콘으로 'Notion'의 초기 시장진출전략"
 ---
 
 "AI가 당신의 이메일을 정리하고, 부동산을 조사하고, 투자까지 한다면?"
@@ -55,13 +59,3 @@ Manus의 등장으로 AI 에이전트 시장의 판도를 바꿀 가능성이 �
 
 90년대생 중국 청년들이 만든 이 혁신적인 기술이 AI의 미래를 어떻게 재정의할지, 그 여정이 이제 막 시작되었다.
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/206_%ED%8F%89%EB%B2%94%EC%9D%84%20%EA%B1%B0%EB%B6%80%ED%95%9C%EB%8B%A4%20%27%ED%97%A4%EB%8D%94%EC%9C%85%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%27.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">평범을 거부한다. 헤더윅 스튜디오</span></a>
-  <a href="/log_assets/markdown/209_%EC%8B%A4%ED%8C%A8%EC%97%90%EC%84%9C%20%EB%8D%B0%EC%B9%B4%EC%BD%98%EC%9C%BC%EB%A1%9C%20%27Notion%27%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EC%8B%9C%EC%9E%A5%EC%A7%84%EC%B6%9C%EC%A0%84%EB%9E%B5.html" class="cat-nav-item cat-nav-right"><span class="nav-title">실패에서 데카콘으로 'Notion'의 초기 시장진출전략</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

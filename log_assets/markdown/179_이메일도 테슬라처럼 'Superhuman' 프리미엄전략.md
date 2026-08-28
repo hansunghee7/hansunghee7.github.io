@@ -7,6 +7,10 @@ date_string: 'Apr 7. 2025'
 date: 2025-04-07
 keywords: 'Superhuman 사례, 프리미엄 가격 전략, 타겟 고객 설정'
 about: '스타트업 마케팅 전략, 프로덕트 포지셔닝'
+prev_url: "/log_assets/markdown/174_%EC%9D%B8%EC%9D%B4%20%EB%B0%B0%EA%B8%B8%20%EB%95%8C%EA%B9%8C%EC%A7%80.html"
+prev_title: "인이 배길 때까지..."
+next_url: "/log_assets/markdown/180_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%20%234%20Apollo%20%ED%98%81%EC%8B%A0%EC%9D%98%20%EB%B0%B0%ED%8F%AC%20%ED%94%8C%EB%9E%AB%ED%8F%BC.html"
+next_title: "'팔란티어' #4 Apollo 혁신의 배포 플랫폼"
 ---
 
 오늘은 이메일이라는 오래된 시장에 프리미엄 솔루션으로 성공적으로 진입한 Superhuman의 전략을 분석해보겠습니다.
@@ -63,13 +67,3 @@ Superhuman의 시장 진출 전략에서 스타트업들이 배울 수 있는 �
 
 Superhuman의 사례는 기존 시장에서도 명확한 타겟팅과 차별화된 가치 제안을 통해 성공적으로 진입할 수 있음을 보여줍니다. 여러분의 스타트업도 이러한 전략을 응용하여 효과적인 시장 진출 계획을 수립해보시기 바랍니다.
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/174_%EC%9D%B8%EC%9D%B4%20%EB%B0%B0%EA%B8%B8%20%EB%95%8C%EA%B9%8C%EC%A7%80.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">인이 배길 때까지...</span></a>
-  <a href="/log_assets/markdown/180_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%20%234%20Apollo%20%ED%98%81%EC%8B%A0%EC%9D%98%20%EB%B0%B0%ED%8F%AC%20%ED%94%8C%EB%9E%AB%ED%8F%BC.html" class="cat-nav-item cat-nav-right"><span class="nav-title">'팔란티어' #4 Apollo 혁신의 배포 플랫폼</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

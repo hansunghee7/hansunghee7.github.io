@@ -7,6 +7,10 @@ date_string: 'Mar 28. 2025'
 date: 2025-03-28
 keywords: '칸반 보드, 애자일 워크플로우, WIP 제한'
 about: '애자일 방법론, 프로젝트 관리'
+prev_url: "/log_assets/markdown/197_%EC%8A%A4%ED%81%AC%EB%9F%BC%20%EB%A7%88%EC%8A%A4%ED%84%B0%20vs%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%A7%A4%EB%8B%88%EC%A0%80%27%20%EC%B0%A8%EC%9D%B4%EB%8A%94.html"
+prev_title: "스크럼 마스터 vs 프로젝트 매니저 차이는?"
+next_url: "/log_assets/markdown/182_%EC%95%A0%EC%9E%90%EC%9D%BC%20vs%20%EC%9B%8C%ED%84%B0%ED%8F%B4%2C%20PO%EA%B0%80%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%20%EB%AA%A8%EB%93%A0%20%EA%B2%83.html"
+next_title: "애자일 vs 워터폴, PO가 알아야 할 모든 것"
 ---
 
 안녕하세요, 애자일을 사랑하는 여러분! 오늘은 애자일과 DevOps의 핵심 프레임워크 중 하나인 '칸반'에 대해 이야기를 나누고자 합니다.
@@ -41,13 +45,3 @@ about: '애자일 방법론, 프로젝트 관리'
 
 지금까지 칸반의 기본 개념과 장점들을 살펴봤는데요. 칸반은 팀에게 직관적이고 신속한 워크플로우를 제공합니다. 함께 애자일의 컨베이어벨트, 칸반을 적용해보시죠.
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/197_%EC%8A%A4%ED%81%AC%EB%9F%BC%20%EB%A7%88%EC%8A%A4%ED%84%B0%20vs%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%A7%A4%EB%8B%88%EC%A0%80%27%20%EC%B0%A8%EC%9D%B4%EB%8A%94.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">스크럼 마스터 vs 프로젝트 매니저 차이는?</span></a>
-  <a href="/log_assets/markdown/182_%EC%95%A0%EC%9E%90%EC%9D%BC%20vs%20%EC%9B%8C%ED%84%B0%ED%8F%B4%2C%20PO%EA%B0%80%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%20%EB%AA%A8%EB%93%A0%20%EA%B2%83.html" class="cat-nav-item cat-nav-right"><span class="nav-title">애자일 vs 워터폴, PO가 알아야 할 모든 것</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

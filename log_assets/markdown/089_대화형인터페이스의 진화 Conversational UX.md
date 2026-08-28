@@ -7,6 +7,10 @@ date_string: 'Jul 3. 2025'
 date: 2025-07-03
 keywords: '대화형 UX, 챗봇 인터페이스 설계, AI 대화 UX 원칙'
 about: 'Conversational UX, AI 인터페이스 디자인'
+prev_url: "/log_assets/markdown/083_UX%EB%8F%84%20%EB%B8%8C%EB%9E%9C%EB%94%A9%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%EA%B2%BD%ED%97%98%EC%9D%B4%20%EB%B8%8C%EB%9E%9C%EB%93%9C%20%EC%B6%A9%EC%84%B1%EB%8F%84%EB%A5%BC%20%EB%A7%8C%EB%93%A0%EB%8B%A4.html"
+prev_title: "UX도 브랜딩, 사용자 경험이 브랜드 충성도를 만든다"
+next_url: "/log_assets/markdown/095_%EC%98%A8%EB%B3%B4%EB%94%A9%2C%20%EB%B0%B0%EC%97%90%20%EC%98%A4%EB%A5%B4%EB%8B%A4%27%EC%97%90%EC%84%9C%20%EC%8B%9C%EC%9E%91%EB%90%9C%20UX%EC%9D%98%20%EC%B2%AB%EC%9D%B8%EC%83%81%20%EB%A7%88%EB%B2%95.html"
+next_title: "온보딩, 배에 오르다에서 시작된 UX의 첫인상 마법"
 ---
 
 "안녕하세요! 무엇을 도와드릴까요?"
@@ -39,13 +43,3 @@ about: 'Conversational UX, AI 인터페이스 디자인'
 
 대화형 UX는 '사람과 기술이 만나는 방식'을 근본적으로 바꾸는 패러다임입니다. 기술이 아무리 진화해도, 결국 중요한 것은 '사람과 연결되는 설계'임을 잊지 마세요.
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/083_UX%EB%8F%84%20%EB%B8%8C%EB%9E%9C%EB%94%A9%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%EA%B2%BD%ED%97%98%EC%9D%B4%20%EB%B8%8C%EB%9E%9C%EB%93%9C%20%EC%B6%A9%EC%84%B1%EB%8F%84%EB%A5%BC%20%EB%A7%8C%EB%93%A0%EB%8B%A4.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">UX도 브랜딩, 사용자 경험이 브랜드 충성도를 만든다</span></a>
-  <a href="/log_assets/markdown/095_%EC%98%A8%EB%B3%B4%EB%94%A9%2C%20%EB%B0%B0%EC%97%90%20%EC%98%A4%EB%A5%B4%EB%8B%A4%27%EC%97%90%EC%84%9C%20%EC%8B%9C%EC%9E%91%EB%90%9C%20UX%EC%9D%98%20%EC%B2%AB%EC%9D%B8%EC%83%81%20%EB%A7%88%EB%B2%95.html" class="cat-nav-item cat-nav-right"><span class="nav-title">온보딩, 배에 오르다에서 시작된 UX의 첫인상 마법</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

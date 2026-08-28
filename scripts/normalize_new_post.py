@@ -3,21 +3,24 @@ CMS(Decap CMS)로 새로 커밋된 log_assets/markdown/*.md 파일을 기존 글
 형태로 맞춰주는 스크립트.
 
 CMS는 제목/카테고리/날짜/본문만 채운 "날것" 파일을 커밋한다. 여기서 채워야
-하는 것 세 가지:
+하는 것 두 가지:
   1. 파일명 앞자리 3자리 순번 (001_, 002_, ... 화별 정렬 등 여러 스크립트의
      전제 조건이라 반드시 있어야 함)
   2. date_string ("Aug 12. 2026" 형식) -- date 필드에서 자동 파생
-  3. CATEGORY_NAV_START/END 마커 -- 없으면 sync_all.py가 이전글/다음글을
-     채워 넣을 자리 자체가 없어서 아무 것도 하지 않는다.
 
 (예전엔 CAT_LINK_SCRIPT 블록도 여기서 넣었다 -- 커버 위 카테고리 알약을
 누르면 /log.html?cat=...로 이동하게 하는 스크립트였는데, 그 알약 자체가
 GNB를 새로 만들면서 진짜 <a href> 링크(.log-nav-category)로 대체돼
 ".cover-category-pill"이라는 타겟이 사라졌다. 그 뒤로 이 스크립트는
 querySelector가 항상 null을 반환해 아무 일도 안 하는 채로 글마다 20줄씩
-찍히고 있었다 -- 594개 파일에서 일괄 제거했고, 이제 새 글에도 안 넣는다.)
+찍히고 있었다 -- 594개 파일에서 일괄 제거했고, 이제 새 글에도 안 넣는다.
 
-핵심 안전장치: 이미 이 세 가지가 갖춰진 파일은 "단 1바이트도" 건드리지
+CATEGORY_NAV_START/END 마커도 마찬가지 이유로 더 이상 안 넣는다 --
+예전엔 sync_all.py가 이 마커 사이에 이전글/다음글 HTML을 직접 써넣었는데,
+지금은 prev_url/prev_title/next_url/next_title을 front matter에만 쓰고
+렌더링은 _includes/post_nav.html이 담당해서 본문에 아무 것도 안 남는다.)
+
+핵심 안전장치: 이미 이 두 가지가 갖춰진 파일은 "단 1바이트도" 건드리지
 않는다. YAML을 파싱해서 다시 dump하는 방식은 따옴표 스타일이 달라져
 필요 없는 전체 재작성을 일으키므로 쓰지 않는다 -- front matter/본문 원문
 문자열에 필요한 삽입만 하고, 그 외에는 원본 텍스트를 그대로 이어붙인다.
@@ -32,8 +35,6 @@ MD_DIR = "log_assets/markdown"
 IMAGES_DIR = "log_assets/images"
 ID_RE = re.compile(r"^(\d{3})_")
 INVALID_FILENAME_CHARS = re.compile(r'[\\/:*?"<>|]')
-
-CATEGORY_NAV_PLACEHOLDER = "<!-- CATEGORY_NAV_START -->\n<!-- CATEGORY_NAV_END -->"
 
 MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
@@ -92,11 +93,6 @@ def process_one(path, used_ids):
             else:
                 new_fm_text = new_fm_text.rstrip("\n") + "\n" + line + "\n"
             changed = True
-
-    # 2) CATEGORY_NAV 마커 삽입 -- sync_all.py가 나중에 내용을 채움
-    if "CATEGORY_NAV_START" not in new_body:
-        new_body = new_body.rstrip("\n") + "\n\n" + CATEGORY_NAV_PLACEHOLDER + "\n"
-        changed = True
 
     fname = os.path.basename(path)
     target_fname = fname

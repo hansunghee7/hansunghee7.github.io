@@ -7,6 +7,10 @@ date_string: 'Jun 9. 2025'
 date: 2025-06-09
 keywords: 'Cursor AI 성장전략, AI 코딩 도구, 스타트업 창업 스토리'
 about: 'AI 스타트업, 제품 성장 전략'
+prev_url: "/log_assets/markdown/106_2%EC%B2%9C%EB%A7%8C%EC%9B%90%EC%9C%BC%EB%A1%9C%2010%EC%96%B5%EC%9B%90%20%EB%A7%A4%EC%B6%9C%EC%9D%84%2C%20%EC%95%88%ED%8B%B0%EB%A9%94%ED%83%88%EC%9D%98%20%EB%B0%94%EC%9D%B4%EB%9F%B4%EC%A0%84%EB%9E%B5.html"
+prev_title: "2천만원으로 10억원 매출을, 안티메탈의 바이럴전략"
+next_url: "/log_assets/markdown/121_%EC%9E%91%EA%B2%8C%20%EC%8B%9C%EC%9E%91%ED%95%B4%20%ED%81%AC%EA%B2%8C%20%ED%84%B0%ED%8A%B8%EB%A6%AC%EB%8A%94%20Slack%EC%9D%98%20%EC%B4%88%EA%B8%B0%EB%A7%88%EC%BC%80%ED%8C%85%EC%A0%84%EB%9E%B5.html"
+next_title: "작게 시작해 크게 터트리는 Slack의 초기마케팅전략"
 ---
 
 2022년 MIT에서 만난 20대 청년 4명이 어떻게 2년 만에 한화 약 3조원의 가치를 가진 AI 기업을 만들었을까요? 바로 AI 코딩 도구 Cursor AI의 놀라운 성장 스토리입니다.
@@ -41,13 +45,3 @@ Cursor AI의 성공은 AI를 경쟁 상대나 대체재가 아닌, 함께 일하
 
 여러분의 스타트업도 Cursor AI처럼 사용자의 진짜 문제를 해결하는 혁신을 만들어내시기 바랍니다. AI 시대, 여러분은 어떤 협력자 전략을 준비하고 계신가요?
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/106_2%EC%B2%9C%EB%A7%8C%EC%9B%90%EC%9C%BC%EB%A1%9C%2010%EC%96%B5%EC%9B%90%20%EB%A7%A4%EC%B6%9C%EC%9D%84%2C%20%EC%95%88%ED%8B%B0%EB%A9%94%ED%83%88%EC%9D%98%20%EB%B0%94%EC%9D%B4%EB%9F%B4%EC%A0%84%EB%9E%B5.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">2천만원으로 10억원 매출을, 안티메탈의 바이럴전략</span></a>
-  <a href="/log_assets/markdown/121_%EC%9E%91%EA%B2%8C%20%EC%8B%9C%EC%9E%91%ED%95%B4%20%ED%81%AC%EA%B2%8C%20%ED%84%B0%ED%8A%B8%EB%A6%AC%EB%8A%94%20Slack%EC%9D%98%20%EC%B4%88%EA%B8%B0%EB%A7%88%EC%BC%80%ED%8C%85%EC%A0%84%EB%9E%B5.html" class="cat-nav-item cat-nav-right"><span class="nav-title">작게 시작해 크게 터트리는 Slack의 초기마케팅전략</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

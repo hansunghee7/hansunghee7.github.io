@@ -7,6 +7,10 @@ date_string: 'Feb 20. 2025'
 date: 2025-02-20
 keywords: '구글 UX 철학, 미니멀 디자인, 심플한 인터페이스'
 about: 'UX 디자인, 프로덕트 심플리시티'
+prev_url: "/log_assets/markdown/219_%EC%8B%A4%EB%A6%AC%EC%BD%98%EB%B0%B8%EB%A6%AC%20%EC%8A%B9%EC%9E%90%EB%93%A4%EC%9D%B4%20%EC%93%B0%EB%8A%94%20%27%EC%BD%9C%ED%88%AC%EC%95%A1%EC%85%98%28CTA%29%27.html"
+prev_title: "실리콘밸리 승자들이 쓰는 '콜투액션(CTA)'"
+next_url: "/log_assets/markdown/234_%EC%B1%97GPT%EA%B0%80%20%EC%89%BD%EB%8B%A4%EA%B3%A0%20%EB%8A%90%EA%BB%B4%EC%A7%80%EB%8A%94%20UX%EC%9D%98%20%EB%B9%84%EB%B0%80.html"
+next_title: "챗GPT가 쉽다고 느껴지는 UX의 비밀"
 ---
 
 1998년 스탠포드 대학원생이었던 래리 페이지와 세르게이 브린은 하얀 배경에 검색창 하나만 둔 심플한 페이지를 만들었다. 당시 포털들이 화려한 배너와 뉴스로 채워진 것과는 정반대였다. 이 단순함이 구글을 세계 최고의 기업으로 만든 시작점이 되었다.
@@ -55,13 +59,3 @@ Material Design을 통해 모든 서비스에 일관된 시각 언어를 적용�
 
 여러분도 담당한 서비스가 사용자를 위해 단순화 되었는지 한번 체크해보길 바란다.
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/219_%EC%8B%A4%EB%A6%AC%EC%BD%98%EB%B0%B8%EB%A6%AC%20%EC%8A%B9%EC%9E%90%EB%93%A4%EC%9D%B4%20%EC%93%B0%EB%8A%94%20%27%EC%BD%9C%ED%88%AC%EC%95%A1%EC%85%98%28CTA%29%27.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">실리콘밸리 승자들이 쓰는 '콜투액션(CTA)'</span></a>
-  <a href="/log_assets/markdown/234_%EC%B1%97GPT%EA%B0%80%20%EC%89%BD%EB%8B%A4%EA%B3%A0%20%EB%8A%90%EA%BB%B4%EC%A7%80%EB%8A%94%20UX%EC%9D%98%20%EB%B9%84%EB%B0%80.html" class="cat-nav-item cat-nav-right"><span class="nav-title">챗GPT가 쉽다고 느껴지는 UX의 비밀</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

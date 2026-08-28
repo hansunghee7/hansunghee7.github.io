@@ -7,6 +7,10 @@ date_string: 'Dec 8. 2024'
 date: 2024-12-08
 keywords: '정치 전략 기획, 정권 운영 전략, 기획자의 시선'
 about: '정치기획, 전략 경영, 시사 단상'
+prev_url: "/log_assets/markdown/275_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%EA%B0%80%20%EB%B0%9B%EC%9D%80%20%EC%97%B0%EB%A7%90%20%EC%84%A0%EB%AC%BC.html"
+prev_title: "심플리파이어가 받은 연말 선물"
+next_url: "/log_assets/markdown/285_%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%97%90%20%ED%8F%AC%EC%BB%A4%EC%8A%A4%ED%95%98%EC%84%B8%EC%9A%94.html"
+next_title: "비즈니스에 포커스하세요."
 ---
 
 중·고등학교 시절 정치 수업에서 배운 것 중 이해하기 어려웠던 부분이 있었다. 바로 "정당의 제1목표는 정권 획득이다"라는 설명이다. 직관적으로는 맞는 말이다. 정당이 목표를 실현하려면 정권을 잡아야 하기 때문이다. 하지만 이 표현만 놓고 보면 마치 정권을 획득하는 것이 전부인 것처럼 오해할 수 있다.
@@ -25,13 +29,3 @@ about: '정치기획, 전략 경영, 시사 단상'
 
  정당의 목표에 대한 설명이 교과서에서도 이렇게 바뀌어야 하지 않을까? 단순히 "정권 획득"이라고만 적혀 있다면, 우리는 계속해서 과거의 정치를 반복할지도 모른다. 획득, 유지, 연속 획득의 선순환을 만드는 것이야말로 진짜 정당의 목표가 아닐까?
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/275_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%EA%B0%80%20%EB%B0%9B%EC%9D%80%20%EC%97%B0%EB%A7%90%20%EC%84%A0%EB%AC%BC.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">심플리파이어가 받은 연말 선물</span></a>
-  <a href="/log_assets/markdown/285_%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%97%90%20%ED%8F%AC%EC%BB%A4%EC%8A%A4%ED%95%98%EC%84%B8%EC%9A%94.html" class="cat-nav-item cat-nav-right"><span class="nav-title">비즈니스에 포커스하세요.</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

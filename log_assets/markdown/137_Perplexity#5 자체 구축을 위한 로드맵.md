@@ -7,6 +7,10 @@ date_string: 'May 18. 2025'
 date: 2025-05-18
 keywords: 'RAG 시스템 구축, 벡터 데이터베이스, AI 검색엔진 로드맵'
 about: 'RAG, AI 검색 기술, 스타트업 기술 구축'
+prev_url: "/log_assets/markdown/136_%EB%82%B4%EA%B0%80%20%EA%B2%AA%EB%8A%94%20%EB%B6%88%ED%8E%B8%ED%95%A8%EC%9D%B4%20%EC%82%AC%EC%97%85%20%EC%95%84%EC%9D%B4%ED%85%9C%EC%9D%B4%EB%8B%A4%2C%20%27%EB%94%94%EC%8A%A4%EC%BD%94%EB%93%9C%27.html"
+prev_title: "내가 겪는 불편함이 사업 아이템이다, '디스코드'"
+next_url: "/log_assets/markdown/143_%EC%97%90%EC%96%B4%EB%A7%A4%ED%8A%B8%EC%97%90%EC%84%9C%20%EC%8B%9C%EC%9E%91%EB%90%9C%2C%20%EC%97%90%EC%96%B4%EB%B9%84%EC%95%A4%EB%B9%84%EC%9D%98%20%EB%AC%B4%EC%9E%90%EB%B3%B8%20%EC%B0%BD%EC%97%85%20%EC%A0%84%EB%9E%B5.html"
+next_title: "에어매트에서 시작된, 에어비앤비의 무자본 창업 전략"
 ---
 
 Perplexity AI 기술 해부 시리즈의 마지막 시간입니다. 지금까지 Perplexity의 철학, 핵심 기술 아키텍처, BM25와 벡터 검색의 하이브리드 설계, RAG 시스템, 그리고 대화형 UX에 대해 알아보았습니다.
@@ -57,13 +61,3 @@ Perplexity AI 기술 해부 시리즈의 마지막 시간입니다. 지금까지
 
 인공지능 기술의 민주화가 가속화되는 지금, 작은 팀의 도전과 혁신이 그 어느 때보다 의미 있는 시대라 생각합니다. Perplexity에서 영감을 얻어 세상에 임팩트를 만들어낼 여러분의 프로젝트를 응원하겠습니다!
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/136_%EB%82%B4%EA%B0%80%20%EA%B2%AA%EB%8A%94%20%EB%B6%88%ED%8E%B8%ED%95%A8%EC%9D%B4%20%EC%82%AC%EC%97%85%20%EC%95%84%EC%9D%B4%ED%85%9C%EC%9D%B4%EB%8B%A4%2C%20%27%EB%94%94%EC%8A%A4%EC%BD%94%EB%93%9C%27.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">내가 겪는 불편함이 사업 아이템이다, '디스코드'</span></a>
-  <a href="/log_assets/markdown/143_%EC%97%90%EC%96%B4%EB%A7%A4%ED%8A%B8%EC%97%90%EC%84%9C%20%EC%8B%9C%EC%9E%91%EB%90%9C%2C%20%EC%97%90%EC%96%B4%EB%B9%84%EC%95%A4%EB%B9%84%EC%9D%98%20%EB%AC%B4%EC%9E%90%EB%B3%B8%20%EC%B0%BD%EC%97%85%20%EC%A0%84%EB%9E%B5.html" class="cat-nav-item cat-nav-right"><span class="nav-title">에어매트에서 시작된, 에어비앤비의 무자본 창업 전략</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

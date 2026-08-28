@@ -7,6 +7,10 @@ date_string: 'Jul 17. 2025'
 date: 2025-07-17
 keywords: '생성형 AI 디자인, AI 디자인 툴, Figma AI 플러그인'
 about: 'AI 디자인, UX 디자인'
+prev_url: "/log_assets/markdown/069_Predictive%20UX%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%EC%9D%98%20%EB%8B%A4%EC%9D%8C%20%ED%96%89%EB%8F%99%EC%9D%80.html"
+prev_title: "Predictive UX, 사용자의 다음 행동은?"
+next_url: "/log_assets/markdown/083_UX%EB%8F%84%20%EB%B8%8C%EB%9E%9C%EB%94%A9%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%EA%B2%BD%ED%97%98%EC%9D%B4%20%EB%B8%8C%EB%9E%9C%EB%93%9C%20%EC%B6%A9%EC%84%B1%EB%8F%84%EB%A5%BC%20%EB%A7%8C%EB%93%A0%EB%8B%A4.html"
+next_title: "UX도 브랜딩, 사용자 경험이 브랜드 충성도를 만든다"
 ---
 
 "이제 몇 분 만에 수십 개의 디자인 시안을 만들 수 있어요!"
@@ -43,13 +47,3 @@ AI-Assisted Design의 가장 큰 장점은 아이디어 발상 속도의 혁신�
 
 AI-Assisted Design은 디자이너의 창의성을 확장하고 업무 효율을 높이는 강력한 도구입니다. 하지만 AI는 어디까지나 '어시스턴트'이며, 최종 결정과 창의적 방향성은 여전히 인간 디자이너의 몫입니다.
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/069_Predictive%20UX%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%EC%9D%98%20%EB%8B%A4%EC%9D%8C%20%ED%96%89%EB%8F%99%EC%9D%80.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">Predictive UX, 사용자의 다음 행동은?</span></a>
-  <a href="/log_assets/markdown/083_UX%EB%8F%84%20%EB%B8%8C%EB%9E%9C%EB%94%A9%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%EA%B2%BD%ED%97%98%EC%9D%B4%20%EB%B8%8C%EB%9E%9C%EB%93%9C%20%EC%B6%A9%EC%84%B1%EB%8F%84%EB%A5%BC%20%EB%A7%8C%EB%93%A0%EB%8B%A4.html" class="cat-nav-item cat-nav-right"><span class="nav-title">UX도 브랜딩, 사용자 경험이 브랜드 충성도를 만든다</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

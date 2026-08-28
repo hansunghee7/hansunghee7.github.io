@@ -7,6 +7,10 @@ date_string: 'Apr 11. 2024'
 date: 2024-04-11
 keywords: '사업목표 수립, OKR 목표설정, 투자유치 지표'
 about: 'CPO, 사업전략, 목표관리'
+prev_url: "/log_assets/markdown/408_%ED%95%9C%EC%BD%94%EC%B9%98%EC%9D%98%20%27%EC%95%A0%EC%9E%90%EC%9D%BC%20%EC%99%9C%20%ED%95%98%EA%B2%8C%20%EB%90%98%EC%97%88%EC%9D%84%EA%B9%8C%27.html"
+prev_title: "한코치의 '애자일 왜 하게 되었을까' - Part.3 애자일의 성공 포인트"
+next_url: "/log_assets/markdown/419_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part%2012%20%EC%83%9D%EC%82%B0%EA%B5%AC%EC%A1%B0.html"
+next_title: "CPO는 어떻게 일을 할까? Part 1.2 생산구조"
 ---
 
 1\.
@@ -35,13 +39,3 @@ about: 'CPO, 사업전략, 목표관리'
 
  경영진 회의를 통해 5개의 목표를 고객유치와 밀접하게 연관된 2개의 목표로 줄이고, OKR 목표로 세웠다. 덕분에 고객사는 OKR에 있는 실행아이템이 워킹하고 전체 직원들이 목표에 집중해서 일하면서 연말에 목표로 하던 수치를 달성할 수 있었다.
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/408_%ED%95%9C%EC%BD%94%EC%B9%98%EC%9D%98%20%27%EC%95%A0%EC%9E%90%EC%9D%BC%20%EC%99%9C%20%ED%95%98%EA%B2%8C%20%EB%90%98%EC%97%88%EC%9D%84%EA%B9%8C%27.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">한코치의 '애자일 왜 하게 되었을까' - Part.3 애자일의 성공 포인트</span></a>
-  <a href="/log_assets/markdown/419_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part%2012%20%EC%83%9D%EC%82%B0%EA%B5%AC%EC%A1%B0.html" class="cat-nav-item cat-nav-right"><span class="nav-title">CPO는 어떻게 일을 할까? Part 1.2 생산구조</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

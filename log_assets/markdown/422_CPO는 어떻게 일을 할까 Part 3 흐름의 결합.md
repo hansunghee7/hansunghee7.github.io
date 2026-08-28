@@ -7,6 +7,10 @@ date_string: 'Apr 8. 2024'
 date: 2024-04-08
 keywords: 'CPO 업무 체계, 수직 수평 업무흐름 결합, 프로덕트 조직 설계'
 about: 'CPO, 프로덕트 조직, 스타트업 성장단계'
+prev_url: "/log_assets/markdown/419_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part%2012%20%EC%83%9D%EC%82%B0%EA%B5%AC%EC%A1%B0.html"
+prev_title: "CPO는 어떻게 일을 할까? Part 1.2 생산구조"
+next_url: "/log_assets/markdown/423_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part%202%20%EC%88%98%ED%8F%89%EC%A0%81%20%EA%B4%80%EC%A0%90.html"
+next_title: "CPO는 어떻게 일을 할까? Part 2. 수평적 관점"
 ---
 
 프로덕트 쪽은 일반론이 적용되기 어려운 영역이라고 생각을 했다. seed, 시리즈 A, B, C에 따라 일하는 방식이 다르고, B2C / B2B / 투사이드마켓 / SI 등의 회사의 제공서비스 형태에 따라 생산체계나 철학이 달라지기 때문이다.
@@ -33,13 +37,3 @@ about: 'CPO, 프로덕트 조직, 스타트업 성장단계'
 
  여러분들의 회사의 수직적 흐름과 수평적 흐름의 위치는 어디쯤에 있는 것 같나요? 어려움이 있다면 댓글에 남겨주세요. :-)
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/419_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part%2012%20%EC%83%9D%EC%82%B0%EA%B5%AC%EC%A1%B0.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">CPO는 어떻게 일을 할까? Part 1.2 생산구조</span></a>
-  <a href="/log_assets/markdown/423_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part%202%20%EC%88%98%ED%8F%89%EC%A0%81%20%EA%B4%80%EC%A0%90.html" class="cat-nav-item cat-nav-right"><span class="nav-title">CPO는 어떻게 일을 할까? Part 2. 수평적 관점</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

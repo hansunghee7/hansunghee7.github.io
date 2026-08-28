@@ -7,6 +7,10 @@ date_string: 'Oct 6. 2024'
 date: 2024-10-06
 keywords: '흑백요리사 리더십 분석, ENTJ 리더십, 조직 리더 유형'
 about: '리더십, 조직 관찰기'
+prev_url: "/log_assets/markdown/313_%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90%20TV%ED%94%8C%EB%9F%AC%EC%8A%A4%20%EC%9D%B4%EC%95%BC%EA%B8%B0.html"
+prev_title: "삼성전자 TV플러스 이야기"
+next_url: "/log_assets/markdown/320_%EB%82%B4%EA%B0%80%20%EC%95%94%EA%B8%B0%EB%A5%BC%20%EC%9E%98%ED%95%98%EA%B2%8C%20%EB%90%9C%20%EC%82%AC%EC%97%B0.html"
+next_title: "내가 암기를 잘하게 된 사연"
 ---
 
 1\.
@@ -43,13 +47,3 @@ about: '리더십, 조직 관찰기'
 
 ps. 그런데 이거 직업병 맞죠?;;;
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/313_%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90%20TV%ED%94%8C%EB%9F%AC%EC%8A%A4%20%EC%9D%B4%EC%95%BC%EA%B8%B0.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">삼성전자 TV플러스 이야기</span></a>
-  <a href="/log_assets/markdown/320_%EB%82%B4%EA%B0%80%20%EC%95%94%EA%B8%B0%EB%A5%BC%20%EC%9E%98%ED%95%98%EA%B2%8C%20%EB%90%9C%20%EC%82%AC%EC%97%B0.html" class="cat-nav-item cat-nav-right"><span class="nav-title">내가 암기를 잘하게 된 사연</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

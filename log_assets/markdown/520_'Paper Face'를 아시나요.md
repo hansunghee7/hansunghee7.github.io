@@ -7,6 +7,10 @@ date_string: 'Dec 25. 2023'
 date: 2023-12-25
 keywords: '크리스마스 에피소드, 대학시절 추억, 페이퍼페이스'
 about: '개인 에세이, 추억, 사진 놀이'
+prev_url: "/log_assets/markdown/515_%EB%A0%88%EC%96%B4%ED%85%9C%20%EC%84%A0%EB%AC%BC%EC%9D%84%20%EB%B0%9B%EC%95%98%EC%8A%B5%EB%8B%88%EB%8B%A4.html"
+prev_title: "레어템 선물을 받았습니다."
+next_url: "/log_assets/markdown/524_%EA%B8%80%EC%9D%84%20%EB%A7%A4%EC%9D%BC%20%EC%93%B0%EB%8B%A4%EB%B3%B4%EB%8B%88.html"
+next_title: "글을 매일 쓰다보니..."
 ---
 
 '크리스마스 특집' 재미로 보는 추억의 사진들;;;
@@ -43,13 +47,3 @@ about: '개인 에세이, 추억, 사진 놀이'
 
 ps. 생각해 보니 이 작업으로 잡지취재도 하고 TV 출연도 했었네요. :-)
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/515_%EB%A0%88%EC%96%B4%ED%85%9C%20%EC%84%A0%EB%AC%BC%EC%9D%84%20%EB%B0%9B%EC%95%98%EC%8A%B5%EB%8B%88%EB%8B%A4.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">레어템 선물을 받았습니다.</span></a>
-  <a href="/log_assets/markdown/524_%EA%B8%80%EC%9D%84%20%EB%A7%A4%EC%9D%BC%20%EC%93%B0%EB%8B%A4%EB%B3%B4%EB%8B%88.html" class="cat-nav-item cat-nav-right"><span class="nav-title">글을 매일 쓰다보니...</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

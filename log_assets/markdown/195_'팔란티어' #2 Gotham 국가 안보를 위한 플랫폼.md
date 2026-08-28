@@ -7,6 +7,10 @@ date_string: 'Mar 23. 2025'
 date: 2025-03-23
 keywords: '팔란티어 고담, 국가안보 데이터 플랫폼, 실시간 위협 탐지'
 about: '팔란티어, 데이터 분석, 국가안보'
+prev_url: "/log_assets/markdown/193_AI%EB%A1%9C%20UI%EA%B0%9C%EB%B0%9C%20%EC%86%8D%EB%8F%84%EB%A5%BC%2010%EB%B0%B0%EB%A1%9C%20%EB%A7%8C%EB%93%A4%EB%8B%A4%20%27V0%27.html"
+prev_title: "AI로 UI개발 속도를 10배로 만들다. V0"
+next_url: "/log_assets/markdown/196_%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%EA%B0%80%20%EC%83%9D%EA%B0%81%EB%B3%B4%EB%8B%A4%20%EC%84%B1%EC%9E%A5%ED%95%98%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%9D%B4%EC%9C%A0%EB%8A%94%20%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C%EC%9A%94.html"
+next_title: "프로덕트가 생각보다 성장하지 않는 이유는 무엇일까요?"
 ---
 
 현대 사회에서 데이터는 새로운 자원이자 무기입니다. 특히 국가 안보 분야에서 방대한 데이터를 신속 정확하게 분석하는 역량은 국가 경쟁력의 핵심으로 부상했습니다. 이런 맥락에서 팔란티어의 Gotham 플랫폼은 정부 기관과 군을 위한 최적의 데이터 통합 및 분석 솔루션으로 주목받고 있습니다.
@@ -59,13 +63,3 @@ Gotham과 같은 강력한 감시 플랫폼이 안보 역량 강화에 기여한
 
 다음 편에서는 팔란티어의 기업용 플랫폼인 Foundry의 활용 사례를 살펴보겠습니다. Gotham과는 또 다른 방식으로 비즈니스 가치를 창출하는 Foundry의 역량, 함께 파헤쳐 보시죠.
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/193_AI%EB%A1%9C%20UI%EA%B0%9C%EB%B0%9C%20%EC%86%8D%EB%8F%84%EB%A5%BC%2010%EB%B0%B0%EB%A1%9C%20%EB%A7%8C%EB%93%A4%EB%8B%A4%20%27V0%27.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">AI로 UI개발 속도를 10배로 만들다. V0</span></a>
-  <a href="/log_assets/markdown/196_%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%EA%B0%80%20%EC%83%9D%EA%B0%81%EB%B3%B4%EB%8B%A4%20%EC%84%B1%EC%9E%A5%ED%95%98%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%9D%B4%EC%9C%A0%EB%8A%94%20%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C%EC%9A%94.html" class="cat-nav-item cat-nav-right"><span class="nav-title">프로덕트가 생각보다 성장하지 않는 이유는 무엇일까요?</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

@@ -7,6 +7,10 @@ date_string: 'Apr 6. 2025'
 date: 2025-04-06
 keywords: '팔란티어 Apollo, CI/CD 자동화, 블루그린 배포'
 about: '데이터 플랫폼, 소프트웨어 배포 전략'
+prev_url: "/log_assets/markdown/179_%EC%9D%B4%EB%A9%94%EC%9D%BC%EB%8F%84%20%ED%85%8C%EC%8A%AC%EB%9D%BC%EC%B2%98%EB%9F%BC%20%27Superhuman%27%20%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%EC%A0%84%EB%9E%B5.html"
+prev_title: "이메일도 테슬라처럼 'Superhuman' 프리미엄전략"
+next_url: "/log_assets/markdown/186_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%20%ED%99%95%EB%B3%B4%20%EC%A0%84%EB%9E%B5%20%27%EC%8A%A4%ED%8A%B8%EB%9D%BC%EC%9D%B4%ED%94%84%27.html"
+next_title: "스타트업의 초기 고객 확보 전략 '스트라이프'"
 ---
 
 Gotham과 Foundry가 팔란티어의 데이터 분석 역량을 보여준다면, Apollo는 그 혁신을 지속 가능케 하는 숨은 동력입니다.
@@ -57,13 +61,3 @@ Apollo는 인류를 달에 보낸 아폴로 계획을 연상케 합니다. 불�
 
 이제 Apollo까지 다뤄 팔란티어 제품군 소개를 마칩니다. 데이터 통합, 분석, 시각화, 협업, 배포까지 그들의 기술과 비전을 샅샅이 살펴봤는데요. 이 모든 게 우리에겐 어떤 의미가 있을지, 한국에선 어떻게 적용될 수 있을지 궁금하지 않으신가요? 바로 다음 편에서 팔란티어 혁신 모델의 한국 적용을 상상해 보겠습니다. '한국형 팔란티어'는 가능할까요? 함께 생각 나눠 보시죠!
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/179_%EC%9D%B4%EB%A9%94%EC%9D%BC%EB%8F%84%20%ED%85%8C%EC%8A%AC%EB%9D%BC%EC%B2%98%EB%9F%BC%20%27Superhuman%27%20%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%EC%A0%84%EB%9E%B5.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">이메일도 테슬라처럼 'Superhuman' 프리미엄전략</span></a>
-  <a href="/log_assets/markdown/186_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%20%ED%99%95%EB%B3%B4%20%EC%A0%84%EB%9E%B5%20%27%EC%8A%A4%ED%8A%B8%EB%9D%BC%EC%9D%B4%ED%94%84%27.html" class="cat-nav-item cat-nav-right"><span class="nav-title">스타트업의 초기 고객 확보 전략 '스트라이프'</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->

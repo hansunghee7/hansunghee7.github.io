@@ -7,6 +7,10 @@ date_string: 'Oct 13. 2024'
 date: 2024-10-13
 keywords: '흑백요리사 에드워드 리, 기획자 관점 분석, 스토리텔링 기획'
 about: '콘텐츠 리뷰, 기획력 사례분석, K콘텐츠'
+prev_url: "/log_assets/markdown/311_%EC%96%B4%EB%96%A4%20%EC%A7%81%EC%9E%A5%EC%9D%84%20%EA%B3%A8%EB%9D%BC%EC%95%BC%20%ED%95%A0%EA%B9%8C%EC%9A%94.html"
+prev_title: "어떤 직장을 골라야 할까요?"
+next_url: "/log_assets/markdown/327_%EC%9A%94%EA%B8%B0%EC%9A%94%EC%9D%98%20%EB%B6%80%ED%99%9C%EC%9D%84%20%EA%B8%B0%EB%8C%80%ED%95%98%EB%A9%B0.html"
+next_title: "요기요의 부활을 기대하며..."
 ---
 
 흑백요리사가 11, 12화의 주인공은 단연 에드워드 리였다. 왜 우리는 그에게 몰입했을까 기획자의 관점에서 보자.
@@ -35,13 +39,3 @@ about: '콘텐츠 리뷰, 기획력 사례분석, K콘텐츠'
 
 나는 내 자리에서 더욱 많은 한국의 스타트업들이 세상에 빛을 발하도록 노력하고 싶다. K 화이팅~!!!
 
-<!-- CATEGORY_NAV_START -->
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-<div class="category-nav-wrap">
-  <a href="/log_assets/markdown/311_%EC%96%B4%EB%96%A4%20%EC%A7%81%EC%9E%A5%EC%9D%84%20%EA%B3%A8%EB%9D%BC%EC%95%BC%20%ED%95%A0%EA%B9%8C%EC%9A%94.html" class="cat-nav-item cat-nav-left"><span class="cat-nav-label">❮ 이전글</span><span class="nav-title">어떤 직장을 골라야 할까요?</span></a>
-  <a href="/log_assets/markdown/327_%EC%9A%94%EA%B8%B0%EC%9A%94%EC%9D%98%20%EB%B6%80%ED%99%9C%EC%9D%84%20%EA%B8%B0%EB%8C%80%ED%95%98%EB%A9%B0.html" class="cat-nav-item cat-nav-right"><span class="nav-title">요기요의 부활을 기대하며...</span><span class="cat-nav-label">다음글 ❯</span></a>
-</div>
-<!-- CATEGORY_NAV_END -->
