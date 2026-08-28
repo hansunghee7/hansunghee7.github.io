@@ -156,10 +156,23 @@ collections:
                 widget: "string"
                 hint: "글 front matter의 category 값과 정확히 똑같이 입력해야 매칭됩니다(예: 스타트업 인사이트)."
 
+              - name: "status"
+                label: "연재 상태"
+                widget: "select"
+                options: ["연재중", "완결"]
+                default: "연재중"
+                hint: "완결 시리즈는 필러 페이지 제목 옆에 뱃지로 표시돼, 새 글이 안 올라와도 방문자가 오해하지 않습니다."
+
               - name: "intro"
-                label: "소개 문단"
+                label: "소개 문단 (짧게)"
                 widget: "text"
-                hint: "이 시리즈가 왜 있는지, 무엇을 다루는지 300~500자 정도로. 필러 페이지 맨 위에 그대로 노출됩니다."
+                hint: "필러 페이지 맨 위에 항상 보이는 짧은 소개입니다. 2~3문장 정도로 — 길면 독자가 지루해합니다."
+
+              - name: "intro_extended"
+                label: "소개 문단 (자세히, 접혀서 노출)"
+                widget: "text"
+                required: false
+                hint: "\"더 보기\"를 눌러야 펼쳐지는 상세 설명입니다. 화면엔 접혀 있어도 검색엔진/AI는 그대로 읽으므로, SEO/AEO를 위해 500자 이상 자세히 써도 괜찮습니다(독자 경험을 해치지 않음)."
 
               - name: "published"
                 label: "공개 여부"

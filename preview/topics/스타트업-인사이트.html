@@ -10,6 +10,12 @@ title: "스타트업 인사이트 — Simplifier"
 {% assign pillar = site.data.pillars.pillars | where: "category", "스타트업 인사이트" | first %}
 {% assign topic_posts = site.data.posts | where: "category", pillar.category %}
 {% assign canonical_url = "https://simplifier.co.kr" | append: page.url %}
+{% comment %} JSON-LD description은 스니펫 길이 제한이 없어서, 화면엔 접혀 있는
+   자세한 설명(intro_extended)까지 합쳐 AI/검색엔진이 더 많은 맥락을 읽게 한다. {% endcomment %}
+{% assign schema_description = pillar.intro %}
+{% if pillar.intro_extended %}
+  {% assign schema_description = pillar.intro | append: " " | append: pillar.intro_extended %}
+{% endif %}
 
 <title>{{ page.title }}</title>
 <meta name="description" content="{{ pillar.intro | strip_newlines | truncate: 155 | escape }}">
@@ -28,7 +34,7 @@ title: "스타트업 인사이트 — Simplifier"
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "name": {{ pillar.category | jsonify }},
-  "description": {{ pillar.intro | strip_newlines | jsonify }},
+  "description": {{ schema_description | strip_newlines | jsonify }},
   "url": "{{ canonical_url }}",
   "isPartOf": { "@type": "WebSite", "name": "Simplifier", "url": "https://simplifier.co.kr/" },
   "about": { "@type": "Person", "name": "한성희", "alternateName": "Han Sunghee", "sameAs": "https://simplifier.co.kr/" },
@@ -80,8 +86,22 @@ title: "스타트업 인사이트 — Simplifier"
   /* ---- 소개: 헤더 바로 아래, 같은 배경으로 이어짐 ---- */
   .pillar-hero{ max-width:760px; padding:56px 0 40px; }
   .pillar-kicker{ font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:#8f8b82; margin-bottom:14px; }
-  .pillar-hero h1{ font-family:'Boska','Source Serif 4',serif; font-weight:300; font-size:clamp(28px,5vw,42px); margin:0 0 20px; color:#fff; }
+  .pillar-title-row{ display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin:0 0 20px; }
+  .pillar-hero h1{ font-family:'Boska','Source Serif 4',serif; font-weight:300; font-size:clamp(28px,5vw,42px); margin:0; color:#fff; }
+  .pillar-status{ flex:none; font-size:12px; font-weight:500; color:#8f8b82; border:1px solid rgba(245,243,238,0.16); border-radius:999px; padding:4px 12px; }
+  .pillar-status.done{ color:#c9c8c2; border-color:rgba(245,243,238,0.28); }
   .pillar-hero p{ font-family:'Source Serif 4','Noto Serif KR',serif; font-size:16px; line-height:1.9; color:#c9c8c2; font-weight:300; }
+
+  /* ---- "더 보기": 접혀 있어도 HTML엔 그대로 있어 검색엔진/AI는 다 읽음.
+     독자에게는 짧은 소개만 먼저 보여주고, 원하는 사람만 펼쳐서 더 읽게
+     해서 SEO/AEO(길게, 구체적으로)와 가독성(짧게)을 동시에 만족시킨다. */
+  .pillar-more{ margin-top:4px; }
+  .pillar-more summary{ cursor:pointer; list-style:none; font-size:13.5px; color:#8f8b82; display:inline-flex; align-items:center; gap:6px; }
+  .pillar-more summary::-webkit-details-marker{ display:none; }
+  .pillar-more summary::after{ content:'▾'; font-size:11px; transition:transform .15s; }
+  .pillar-more[open] summary::after{ transform:rotate(180deg); }
+  .pillar-more summary:hover{ color:#f5f3ee; }
+  .pillar-more .pillar-more-body{ font-family:'Source Serif 4','Noto Serif KR',serif; font-size:15px; line-height:1.9; color:#a19d94; font-weight:300; margin-top:14px; }
 
   /* ---- 카드 그리드: log.html과 같은 카드 스타일 재사용 ---- */
   .card-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; padding-bottom:60px; }
@@ -121,9 +141,20 @@ title: "스타트업 인사이트 — Simplifier"
   </header>
 
   <div class="pillar-hero">
-    <div class="pillar-kicker">Simplifier Log · Topic</div>
-    <h1>{{ pillar.category }}</h1>
+    <div class="pillar-kicker">Simplifier Log</div>
+    <div class="pillar-title-row">
+      <h1>{{ pillar.category }}</h1>
+      {% if pillar.status %}
+      <span class="pillar-status{% if pillar.status == '완결' %} done{% endif %}">{{ pillar.status }}</span>
+      {% endif %}
+    </div>
     <p>{{ pillar.intro }}</p>
+    {% if pillar.intro_extended %}
+    <details class="pillar-more">
+      <summary>이 시리즈에 대해 더 보기</summary>
+      <p class="pillar-more-body">{{ pillar.intro_extended }}</p>
+    </details>
+    {% endif %}
   </div>
 
   {% if topic_posts and topic_posts.size > 0 %}
