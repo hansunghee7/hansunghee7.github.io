@@ -83,20 +83,24 @@ title: "스타트업 인사이트 — Simplifier"
   .topic-nav a:hover{ color:#f5f3ee; }
   .topic-nav a.active{ background:#f5f3ee; color:#080808; font-weight:600; }
 
-  /* ---- 소개: 헤더 바로 아래, 같은 배경으로 이어짐 ---- */
-  .pillar-hero{ max-width:760px; padding:56px 0 40px; }
-  .pillar-kicker{ font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:#8f8b82; margin-bottom:14px; }
-  .pillar-title-row{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin:0 0 16px; }
+  /* ---- 소개: 헤더 바로 아래, 같은 배경으로 이어짐 ----
+     제목 영역이 "행 하나짜리 요소"를 계속 쌓아 두 줄 이상 늘어나 보이는 걸
+     막기 위해, 상단 킥커 라벨은 뺐고(상단 nav의 활성 카테고리가 이미 같은
+     역할을 함), 인트로 문단과 "더보기" 토글은 한 줄(행)로 붙여둔다. */
+  .pillar-hero{ max-width:760px; padding:48px 0 40px; }
+  .pillar-title-row{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin:0 0 10px; }
   .pillar-hero h1{ font-family:'Boska','Source Serif 4',serif; font-weight:300; font-size:clamp(28px,5vw,42px); margin:0; color:#fff; line-height:1.15; }
   .pillar-status{ flex:none; font-size:12px; font-weight:500; color:#8f8b82; border:1px solid rgba(245,243,238,0.16); border-radius:999px; padding:4px 12px; }
   .pillar-status.done{ color:#c9c8c2; border-color:rgba(245,243,238,0.28); }
   .pillar-hero p{ font-family:'Source Serif 4','Noto Serif KR',serif; font-size:16px; line-height:1.7; color:#c9c8c2; font-weight:300; margin:0; }
+  .pillar-intro-row{ display:flex; align-items:baseline; flex-wrap:wrap; column-gap:10px; row-gap:2px; }
+  .pillar-intro-row p{ flex:1 1 auto; min-width:0; }
 
   /* ---- "더 보기": <details>는 열려있든 닫혀있든 검색엔진/AI가 그대로
      읽는다(구글이 공식적으로 확인한 방식) -- 그래서 JS로 나중에 불러오는
      진짜 모달 대신, 이 details를 CSS만으로 화면 중앙에 뜨는 카드처럼
      보이게 만든다. 내용은 처음부터 HTML에 있고, 위치만 CSS로 옮긴다. */
-  .pillar-more{ margin-top:16px; }
+  .pillar-more{ flex:none; }
   .pillar-more summary{ cursor:pointer; list-style:none; font-size:13.5px; color:#8f8b82; display:inline-flex; align-items:center; gap:6px; position:relative; }
   .pillar-more summary::-webkit-details-marker{ display:none; }
   .pillar-more summary::after{ content:'▾'; font-size:11px; transition:transform .15s; }
@@ -162,20 +166,21 @@ title: "스타트업 인사이트 — Simplifier"
   </header>
 
   <div class="pillar-hero">
-    <div class="pillar-kicker">Simplifier Log</div>
     <div class="pillar-title-row">
       <h1>{{ pillar.category }}</h1>
       {% if pillar.status %}
       <span class="pillar-status{% if pillar.status == '완결' %} done{% endif %}">{{ pillar.status }}</span>
       {% endif %}
     </div>
-    <p>{{ pillar.intro }}</p>
-    {% if pillar.intro_extended %}
-    <details class="pillar-more">
-      <summary>이 시리즈에 대해 더 보기</summary>
-      <p class="pillar-more-body">{{ pillar.intro_extended }}</p>
-    </details>
-    {% endif %}
+    <div class="pillar-intro-row">
+      <p>{{ pillar.intro }}</p>
+      {% if pillar.intro_extended %}
+      <details class="pillar-more">
+        <summary>더보기</summary>
+        <p class="pillar-more-body">{{ pillar.intro_extended }}</p>
+      </details>
+      {% endif %}
+    </div>
   </div>
 
   {% if topic_posts and topic_posts.size > 0 %}
