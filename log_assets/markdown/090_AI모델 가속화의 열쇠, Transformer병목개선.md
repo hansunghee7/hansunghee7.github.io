@@ -13,7 +13,7 @@ prev_title: "비즈니스 경쟁력에 저전력 NPU가 중요한 이유"
 
 GPT, BERT와 같은 최신 AI 모델의 중심인 Transformer 아키텍처는 놀라운 성능을 제공하지만, 학습 과정에서 여러 병목 현상에 직면합니다. 이러한 병목을 해결하는 것은 AI 개발의 속도와 비용 효율성을 크게 향상시키는 핵심 요소입니다.
 
-<img width="1280" height="698" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/vXFJmpA_z9iUj4SPyvTeY3hON5I.png" alt="BERT 인코더와 GPT 디코더 구조를 비교한 Transformer 아키텍처 다이어그램">
+<img width="1280" height="698" loading="lazy" src="/log_assets/images/090_AI모델 가속화의 열쇠, Transformer병목개선_img_1.jpg" alt="BERT 인코더와 GPT 디코더 구조를 비교한 Transformer 아키텍처 다이어그램">
 
 Transformer의 주요 병목 현상은 크게 네 가지로 나타납니다.
 
@@ -31,13 +31,13 @@ Transformer의 주요 병목 현상은 크게 네 가지로 나타납니다.
 
 이러한 병목을 해결하기 위한 혁신적 방법들이 개발되었습니다. FlashAttention은 GPU 메모리 계층 간 데이터 이동을 최소화해 긴 시퀀스 처리 속도를 최대 7배 향상시킵니다. Sparse Attention(Longformer, Reformer 등)은 중요한 관계만 계산해 연산량을 크게 줄입니다. 분산 학습에서는 파이프라인 병렬화와 텐서 병렬화가 메모리와 연산 효율을 높입니다.
 
-<img width="1280" height="523" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/-Ivbw9WzvCtnqnB-QB8Qwd1owno.png" alt="GPU 메모리 계층 구조와 FlashAttention 연산 흐름, PyTorch 대비 속도 개선을 보여주는 그래프">
+<img width="1280" height="523" loading="lazy" src="/log_assets/images/090_AI모델 가속화의 열쇠, Transformer병목개선_img_2.jpg" alt="GPU 메모리 계층 구조와 FlashAttention 연산 흐름, PyTorch 대비 속도 개선을 보여주는 그래프">
 
 ## 연산 효율화 기법
 
 연산 효율화 측면에서 Mixed Precision Training은 저정밀도 연산(FP16, BF16)을 적용해 메모리 사용량을 절반으로 줄이고 속도를 2배 이상 높입니다. NVIDIA GPU의 2:4 sparsity 활용은 FFN 연산을 2배 가량 가속화합니다. 또한 적절한 학습률 스케줄링과 Transformer 특화 초기화 기법은 학습 시간을 30-50% 단축할 수 있습니다.
 
-<img width="1201" height="401" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/JJKI-X6dQw-9SrRCNsrn9MhCz4k.png" alt="학습 레이어부터 FP16·FP32 혼합 정밀도 연산, GPU 가속까지 이어지는 흐름도">
+<img width="1201" height="401" loading="lazy" src="/log_assets/images/090_AI모델 가속화의 열쇠, Transformer병목개선_img_3.jpg" alt="학습 레이어부터 FP16·FP32 혼합 정밀도 연산, GPU 가속까지 이어지는 흐름도">
 
 ## 실제 적용 사례
 

@@ -17,7 +17,7 @@ next_title: "'결제하기' 버튼 하나로 매출을 높이는 UX"
 
 바로 이 질문이 UX 디자인의 시작점입니다. 특히 첫 화면은 사용자가 서비스의 가치를 판단하는 결정적 순간인데요. 그 순간을 사로잡기 위해 디자이너들이 심리학의 힘을 빌리곤 합니다. 이번 글에서는 첫인상의 마법, 그 뒤에 숨은 심리학적 비밀을 파헤쳐 보겠습니다.
 
-<img width="1280" height="669" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/ygad1LhJizNGr-ogBj1ipy42xwE.png" alt="후광 효과 개념을 정의한 레드톤 슬라이드">
+<img width="1280" height="669" loading="lazy" src="/log_assets/images/161_후광효과(Halo Effect), UX 디자인의 첫인상_img_1.jpg" alt="후광 효과 개념을 정의한 레드톤 슬라이드">
 
 ## 후광 효과란 무엇인가
 
@@ -27,7 +27,7 @@ next_title: "'결제하기' 버튼 하나로 매출을 높이는 UX"
 
 이 법칙을 가장 극적으로 보여준 건 바로 애플입니다. 그들은 아이폰 개봉 경험부터 홈 화면의 직관적인 아이콘 배열까지, 모든 접점에서 최상의 첫인상을 연출하죠. 사용자가 제품을 처음 켜는 순간 "이건 특별한 물건이야"라는 확신을 심어주는 거예요. 사소해 보이는 디테일이 브랜드 전체에 대한 호감으로 이어지는 거죠.
 
-<img width="1280" height="853" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/GQ_Q50m8Owb46qcnUp4r-gqUNLE.jpg" alt="아이폰 언박싱 구성품과 하트 모양 손짓">
+<img width="1280" height="853" loading="lazy" src="/log_assets/images/161_후광효과(Halo Effect), UX 디자인의 첫인상_img_2.jpg" alt="아이폰 언박싱 구성품과 하트 모양 손짓">
 
 ## 첫 화면에 후광 효과 적용하는 법
 
@@ -39,7 +39,7 @@ next_title: "'결제하기' 버튼 하나로 매출을 높이는 UX"
 
 마지막으로 심리학적 프레이밍인데요. 이는 정보의 구조와 순서를 의도적으로 배열하는 기술이에요. 메뉴는 7개 내외로 묶어 인지 부담을 줄이고, 마지막엔 할인 쿠폰 팝업 같은 프로모션으로 끝맺음을 하는 거죠. 첫 경험의 절정과 끝이 기억에 오래 남는다는 '피크-엔드 법칙'을 활용한 것입니다.
 
-<img width="1200" height="900" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/Eu9qEgQ_JV6R5CSj49aLKhLLq7I.jpg" alt="후광 효과를 설명한 9컷 스케치노트">
+<img width="1200" height="900" loading="lazy" src="/log_assets/images/161_후광효과(Halo Effect), UX 디자인의 첫인상_img_3.jpg" alt="후광 효과를 설명한 9컷 스케치노트">
 
 ## 후광 효과의 함정과 주의점
 

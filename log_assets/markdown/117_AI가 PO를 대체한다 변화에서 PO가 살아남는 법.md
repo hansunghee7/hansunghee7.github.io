@@ -37,7 +37,7 @@ MIT 연구진이 1,000명 이상의 과학자를 대상으로 조사한 결과�
 
 Cursor는 개발자 워크플로에 AI를 직접 통합하여 코드 문맥을 이해하는 특화형 어시스턴트로 진화하고 있습니다.  Sauce AI는 다양한 피드백을 자동 분석해 제품 기획에 필요한 인사이트를 제공하며, Perplexity Pro는 빠른 시장 조사와 전략 시나리오 생성에 활용되고 있습니다.
 
-<img width="1280" height="720" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/u9ASogyPGCWQ2q9haOQqzHQr6TM.png" alt="AI를 활용한 PM 업무 5가지 활용 사례를 정리한 인포그래픽">
+<img width="1280" height="720" loading="lazy" src="/log_assets/images/117_AI가 PO를 대체한다 변화에서 PO가 살아남는 법_img_1.jpg" alt="AI를 활용한 PM 업무 5가지 활용 사례를 정리한 인포그래픽">
 
 ## 살아남는 PO의 실전 AI 활용 전략
 
@@ -63,7 +63,7 @@ AI는 패턴 인식과 데이터 요약에 뛰어납니다. 대량의 정보를 
 
 스토리텔링, 감정적 공감, 고객과의 직접적인 소통, 복잡한 이해관계자 관리 등은 AI가 대체할 수 없는 영역입니다. 이러한 인간 고유의 능력을 계발하고 강화하는 것이 PM의 진정한 경쟁력입니다.
 
-<img width="1280" height="1600" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/xxmrAmOUZ7wpjxTob7x1hwN6_E8.png" alt="제품과 AI 영역이 겹치는 AI 프로덕트 매니지먼트 개념도">
+<img width="1280" height="1600" loading="lazy" src="/log_assets/images/117_AI가 PO를 대체한다 변화에서 PO가 살아남는 법_img_2.jpg" alt="제품과 AI 영역이 겹치는 AI 프로덕트 매니지먼트 개념도">
 
 ## AI 시대, PO 생존의 진짜 조건
 
@@ -71,7 +71,7 @@ AI가 제품관리자를 완전히 대체한다는 주장은 과장입니다. �
 
 AI의 강점과 한계를 명확히 이해하고, 인간만의 감성과 통찰력을 더할 때 진정한 경쟁력이 생깁니다. 제품관리자의 미래는 'AI 전문가'가 되는 것이 아니라 'AI와 효과적으로 협업하는 사람'이 되는 것입니다.
 
-<img width="1280" height="689" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/NPBlHHsGSIqzmgiGRXwqGypUEUg.jpg" alt="PM·엔지니어·디자이너 협업 구조가 PM과 AI의 협업으로 진화하는 모습을 표현한 그림">
+<img width="1280" height="689" loading="lazy" src="/log_assets/images/117_AI가 PO를 대체한다 변화에서 PO가 살아남는 법_img_3.jpg" alt="PM·엔지니어·디자이너 협업 구조가 PM과 AI의 협업으로 진화하는 모습을 표현한 그림">
 
 혼란스러운 시대이지만, 이는 동시에 기회의 시대이기도 합니다. AI라는 새로운 팀 동료와 함께 더 나은 제품을 만들고, 더 가치 있는 문제를 해결할 수 있는 PO로 진화해 나가시기 바랍니다.
 

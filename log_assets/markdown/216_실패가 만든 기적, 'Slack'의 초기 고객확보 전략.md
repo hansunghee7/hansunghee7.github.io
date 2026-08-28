@@ -17,7 +17,7 @@ next_title: "스타트업 성공의 역설"
 
 Slack의 창업은 역설적이게도 실패한 게임 프로젝트에서 시작되었습니다. 스튜어트 버터필드와 그의 팀은 'Glitch'라는 게임을 개발하는 과정에서 내부 커뮤니케이션 도구로 Slack을 만들었습니다. 게임은 실패했지만, 이 부산물이 세계적인 기업으로 성장했죠. 2013년 8월, "Searchable Log of All Communication and Knowledge"의 약자인 'Slack'이라는 이름으로 베타 서비스를 시작했고, 출시 단 하루 만에 8,000명의 사용자를 확보하는 놀라운 성과를 이루었습니다.
 
-<img width="600" height="400" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/zBEj6xZ-ZpGYsNS7Tp7Uj2BYnEM.jpg" alt="뉴욕증권거래소 앞에 선 스튜어트 버터필드와 슬랙 로고 배너">
+<img width="600" height="400" loading="lazy" src="/log_assets/images/216_실패가 만든 기적, 'Slack'의 초기 고객확보 전략_img_1.jpg" alt="뉴욕증권거래소 앞에 선 스튜어트 버터필드와 슬랙 로고 배너">
 
 Slack의 초기 고객 확보 전략은 몇 가지 핵심 요소로 나눌 수 있습니다.
 
@@ -45,7 +45,7 @@ Slack은 기본 기능을 무료로 제공하여 진입 장벽을 낮추면서�
 
 Slack은 통합 파트너 웹사이트로부터 추천 트래픽을 확보하고, "Slack과 통합"이라는 키워드로 검색 시 노출되도록 하는 전략적 SEO 접근법을 취했습니다. 또한 Twitter 등 소셜 미디어를 활용한 입소문 마케팅으로 유기적 트래픽을 웹사이트로 유도했습니다.
 
-<img width="1024" height="793" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/Bgb0uQElrn77Ab3MCFBSGqFzCBk.png" alt="슬랙 페이스북 페이지의 다양한 홍보 게시물 모음">
+<img width="1024" height="793" loading="lazy" src="/log_assets/images/216_실패가 만든 기적, 'Slack'의 초기 고객확보 전략_img_2.jpg" alt="슬랙 페이스북 페이지의 다양한 홍보 게시물 모음">
 
 Slack의 사례에서 스타트업들이 배울 수 있는 교훈은 다양합니다. 때로는 주력 제품이 아닌 부산물에서 더 큰 기회가 올 수 있으며, "이메일 죽이기"처럼 강력한 메시지 구축이 중요합니다. 또한 한 명의 사용자가 여러 명을 데려오는 네트워크 효과를 설계하고, 사용자가 더 많이 사용할수록 빠져나가기 어려워지는 제품 생태계를 구축하는 것이 초기 성장을 가속화합니다. 마지막으로, 초기 사용자들의 의견을 적극 수렴하고 빠르게 제품에 반영하는 피드백 루프를 활성화하는 것이 중요합니다.
 

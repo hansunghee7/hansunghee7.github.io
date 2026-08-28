@@ -35,13 +35,13 @@ next_title: "스프린트 리뷰, 준비는 덜하고 솔직함은 더하기"
 
 이것이 바로 제품 백로그가 중요한 이유다.
 
-<img width="500" height="320" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/TZ5IRphUja5hyzGl55orvB8iS4w.jpg" alt="프로젝트 백로그에서 스프린트 백로그로 이어지는 흐름도">
+<img width="500" height="320" loading="lazy" src="/log_assets/images/233_제품 백로그, 단순한 TO-DO 리스트가 아니다_img_1.jpg" alt="프로젝트 백로그에서 스프린트 백로그로 이어지는 흐름도">
 
 ## 레스토랑 주방장처럼, 전략적으로 관리하기
 
 제품 백로그는 단순한 작업 목록이 아니다. 마치 레스토랑 주방장이 식재료 주문서를 관리하는 것과 같다. 단순히 필요한 재료를 나열하는 게 아니라, 계절성, 고객 선호도, 비용, 보관 기간을 고려해 우선순위를 정하고 주문 시기를 조절한다. 제품 백로그도 이와 같이 전략적으로 관리해야 한다.
 
-<img width="577" height="492" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/fW0DXQCjML_aubkkNN2kJYo1gnE.jpg" alt="백로그 항목의 추정·재우선순위·삭제 작업을 보여주는 도식">
+<img width="577" height="492" loading="lazy" src="/log_assets/images/233_제품 백로그, 단순한 TO-DO 리스트가 아니다_img_2.jpg" alt="백로그 항목의 추정·재우선순위·삭제 작업을 보여주는 도식">
 
 ## 성공적인 백로그 관리의 3원칙
 

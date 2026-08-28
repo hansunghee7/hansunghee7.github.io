@@ -27,7 +27,7 @@ PM은 제품/프로젝트의 전반을 이끄는 지휘자예요.
 
 일정 관리, 우선순위 조정, 이해관계자와의 소통이 PM의 핵심 역량이에요.
 
-<img width="720" height="540" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/lOd8MDF1nvp8oWjxT310ofo2Cj0.png" alt="프로젝트 매니저와 프로젝트 리더의 역할 차이를 비교한 슬라이드">
+<img width="720" height="540" loading="lazy" src="/log_assets/images/132_PM, PL, TPM의 차이 한눈에 보기_img_1.jpg" alt="프로젝트 매니저와 프로젝트 리더의 역할 차이를 비교한 슬라이드">
 
 ## PL - 실행을 이끄는 실무 리더
 
@@ -41,7 +41,7 @@ PL은 PM을 도와 실제 팀을 리드하는 실무 책임자입니다.
 
 실무 역량과 리더십을 겸비해야 하는 만능 플레이어랍니다.
 
-<img width="1024" height="576" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/0IxkqSTw78Mc5zf-yZrhmHD-bXc.png" alt="프로젝트 리더에게 필요한 6가지 핵심 역량을 나타낸 톱니바퀴 다이어그램">
+<img width="1024" height="576" loading="lazy" src="/log_assets/images/132_PM, PL, TPM의 차이 한눈에 보기_img_2.jpg" alt="프로젝트 리더에게 필요한 6가지 핵심 역량을 나타낸 톱니바퀴 다이어그램">
 
 ## TPM - 복잡한 기술을 조율하는 해결사
 
@@ -55,7 +55,7 @@ PM이 "왜 만드느냐(Why)"에 집중한다면, TPM은 "어떻게 만드느냐
 
 기술적 배경지식을 바탕으로 내부 개발팀을 조율하고, 리스크를 관리하죠.
 
-<img width="1280" height="881" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/4LdPI8JT6fAv0cxT44M8_YnGoDY.png" alt="테크니컬 프로젝트 매니저의 역할과 프로젝트 단계를 설명한 인포그래픽">
+<img width="1280" height="881" loading="lazy" src="/log_assets/images/132_PM, PL, TPM의 차이 한눈에 보기_img_3.jpg" alt="테크니컬 프로젝트 매니저의 역할과 프로젝트 단계를 설명한 인포그래픽">
 
 ## 세 역할이 만드는 시너지
 

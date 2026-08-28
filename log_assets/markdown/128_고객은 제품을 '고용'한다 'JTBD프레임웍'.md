@@ -23,7 +23,7 @@ JTBD의 철학은 단순하지만 혁신적이다. 고객은 제품 자체가 �
 
 가장 유명한 사례는 맥도날드의 밀크셰이크 프로젝트다. 맥도날드는 밀크셰이크 판매량을 늘리기 위해 고객 페르소나별로 피드백을 받아 제품을 개선했지만, 매출에는 변화가 없었다. 크리스텐슨 교수팀이 실제 고객을 관찰한 결과, 놀라운 사실을 발견했다. 아침 출근길 운전자들이 '지루한 출근길을 달래고, 한 손으로 오래 먹을 수 있는 간식'으로 밀크셰이크를 '고용'하고 있었던 것이다. 이 JTBD에 맞춰 제품을 개선하자 실제로 매출이 증가했다.
 
-<img width="1280" height="720" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/_wAzo_Izfm8L6ifl_hJelmOJcZg.jpg" alt="맥도날드 바닐라 밀크셰이크 제품 이미지">
+<img width="1280" height="720" loading="lazy" src="/log_assets/images/128_고객은 제품을 '고용'한다 'JTBD프레임웍'_img_1.jpg" alt="맥도날드 바닐라 밀크셰이크 제품 이미지">
 
 ## JTBD를 실전에 적용하는 절차
 
@@ -33,7 +33,7 @@ JTBD 프레임워크를 실전에 적용하려면 다음과 같은 절차가 효
 
 JTBD는 기능적 니즈뿐만 아니라 정서적, 사회적 차원의 니즈까지 포괄한다. 예를 들어, 스타벅스 커피를 구매하는 JTBD는 단순히 '카페인 섭취'가 아니라 '사회적 신분 표현', '휴식과 여유 확보', '생산적인 작업 공간 확보' 등 복합적인 의미를 갖는다.
 
-<img width="800" height="526" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/xGZbPWoHDmpQ9csWNT-IAlvyDnw.jpg" alt="JTBD 프레임워크를 적용하는 10단계 절차 인포그래픽">
+<img width="800" height="526" loading="lazy" src="/log_assets/images/128_고객은 제품을 '고용'한다 'JTBD프레임웍'_img_2.jpg" alt="JTBD 프레임워크를 적용하는 10단계 절차 인포그래픽">
 
 ## 기획자가 던져야 할 JTBD 질문들
 

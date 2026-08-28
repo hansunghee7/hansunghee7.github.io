@@ -17,7 +17,7 @@ next_title: "작게 시작해 크게 터트리는 Slack의 초기마케팅전략
 
 마이클 트루엘, 수알레 아시프, 아르비드 룬네마크, 아만 생거. 이 네 명의 MIT 학생들은 프로그래밍 과정에서 기존 AI 도구들의 한계를 직접 경험했습니다. GitHub Copilot 같은 기존 AI 코딩 어시스턴트들은 단순한 자동완성에 머물러 있었고, 맥락을 제대로 이해하지 못해 개발자와의 협업이 어색했죠.
 
-<img width="500" height="625" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/MG_-4JsFVzW7PL-tR7hanl9HFwI.png" alt="커서 AI의 투자 유치와 매출 성장 타임라인, 창업자 4인의 모습">
+<img width="500" height="625" loading="lazy" src="/log_assets/images/113_'커서 AI'의 AI 협력자 전략_img_1.jpg" alt="커서 AI의 투자 유치와 매출 성장 타임라인, 창업자 4인의 모습">
 
 ## AI를 협력 파트너로 만들다
 
@@ -27,7 +27,7 @@ next_title: "작게 시작해 크게 터트리는 Slack의 초기마케팅전략
 
 이 전략의 결과는 놀라웠습니다. 2023년 800만 달러 시드 투자부터 시작해 2025년 기업가치 25억 달러를 달성하며 실리콘밸리 역사상 가장 빠른 성장을 기록했습니다. 특히 대기업이 아닌 36만 명의 개인 개발자들로부터 시작된 성장이라는 점이 인상적입니다.
 
-<img width="500" height="625" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/Xg7NTojgTovqJp_XOIoGG18HeZE.jpg" alt="커서가 SaaS 역사상 가장 빠르게 매출 1억 달러를 달성한 성장 곡선 비교 그래프">
+<img width="500" height="625" loading="lazy" src="/log_assets/images/113_'커서 AI'의 AI 협력자 전략_img_2.jpg" alt="커서가 SaaS 역사상 가장 빠르게 매출 1억 달러를 달성한 성장 곡선 비교 그래프">
 
 ## Cursor AI 성공에서 배우는 핵심 교훈
 

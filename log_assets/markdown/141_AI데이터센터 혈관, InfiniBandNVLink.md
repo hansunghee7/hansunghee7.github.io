@@ -19,13 +19,13 @@ AI 기술이 폭발적으로 성장하면서 데이터센터의 네트워크 인
 
 먼저 NVLink는 NVIDIA GPU만을 위한 전용 연결 기술이에요. 마치 GPU들이 바로 옆자리에 앉아 있는 것처럼 직접적이고 빠른 소통이 가능하죠. 최신 H100 GPU에서는 무려 900GB/s의 엄청난 대역폭을 자랑합니다. 게다가 NVLink로 연결된 GPU들은 메모리를 공유할 수 있어서 데이터를 복사하는 낭비도 줄일 수 있어요. 여기에 NVSwitch라는 혁신적인 스위치까지 더해지면서 멀티캐스트나 그래디언트 집계 같은 고급 기능까지 지원하게 됐죠.
 
-<img width="1280" height="424" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/j_T2fVQEOoGU_nC5C43VWxxUk8g.jpg" alt="NVLink로 연결된 H100 GPU 2개 구성과 4개 구성을 비교한 이미지">
+<img width="1280" height="424" loading="lazy" src="/log_assets/images/141_AI데이터센터 혈관, InfiniBandNVLink_img_1.jpg" alt="NVLink로 연결된 H100 GPU 2개 구성과 4개 구성을 비교한 이미지">
 
 ## InfiniBand - 노드를 잇는 광역 네트워크
 
 반면에 InfiniBand는 다양한 서버 노드를 하나로 묶어주는 광역 네트워크에요. RDMA라는 기술을 써서 원격 서버의 메모리에 직접 접근할 수 있게 해주죠. 최신 사양으로는 400Gbps, 숫자로는 50GB/s의 대역폭을 제공합니다. NVLink보다는 느리지만 훨씬 먼 거리를 커버할 수 있어요. 무엇보다 개방형 표준이라 여러 제조사의 장비를 조합해서 쓸 수 있다는 게 큰 장점이에요.
 
-<img width="800" height="408" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/bQBNvXwl0vE79u2HZ4CrAIHN4NA.jpg" alt="InfiniBand의 대역폭, 확장성, 지연시간 등 핵심 특징을 정리한 인포그래픽">
+<img width="800" height="408" loading="lazy" src="/log_assets/images/141_AI데이터센터 혈관, InfiniBandNVLink_img_2.jpg" alt="InfiniBand의 대역폭, 확장성, 지연시간 등 핵심 특징을 정리한 인포그래픽">
 
 ## 실전 데이터센터의 하이브리드 구성
 
@@ -37,7 +37,7 @@ AI 기술이 폭발적으로 성장하면서 데이터센터의 네트워크 인
 
 더 흥미로운 건 이 둘의 장점만 뽑아 결합한 융합 기술들이 등장하고 있다는 거예요. 엔비디아의 Spectrum-X 같은 차세대 네트워킹 플랫폼이 대표적인데, NVLink 수준의 성능과 이더넷 수준의 유연성을 동시에 제공한다고 해요. 덕분에 OpenAI의 야심찬 스타게이트 프로젝트에서도 채택되었다고 하네요.
 
-<img width="1024" height="523" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/auP2pbcG4_PsLUUkELaAYKjK3P4.png" alt="NVIDIA Spectrum-X 네트워킹 플랫폼의 서버 클러스터 구조와 성능 향상을 나타낸 다이어그램">
+<img width="1024" height="523" loading="lazy" src="/log_assets/images/141_AI데이터센터 혈관, InfiniBandNVLink_img_3.jpg" alt="NVIDIA Spectrum-X 네트워킹 플랫폼의 서버 클러스터 구조와 성능 향상을 나타낸 다이어그램">
 
 이처럼 NVLink와 InfiniBand는 AI 데이터센터의 동맥과 정맥 같은 존재예요. 서로 다른 방식으로 데이터의 흐름을 최적화하면서 거대한 AI 모델의 학습을 돕고 있죠. 앞으로는 작업의 특성에 맞게 이 둘을 전략적으로 배치하고 오케스트레이션 하는 것이 데이터센터 설계의 핵심 과제가 될 것 같아요. 더불어 둘의 융합을 통해 더욱 혁신적인 네트워크 기술이 탄생할 것으로 기대됩니다.
 

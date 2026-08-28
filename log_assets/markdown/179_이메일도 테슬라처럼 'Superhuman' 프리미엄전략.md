@@ -19,7 +19,7 @@ next_title: "'팔란티어' #4 Apollo 혁신의 배포 플랫폼"
 
 이 의문에 대한 답을 찾아낸 Superhuman은 2014년 Rahul Vohra가 설립한 이메일 클라이언트로, 기존 무료 서비스에 익숙한 시장에 과감히 프리미엄 전략으로 진입해 성공을 거두었습니다.
 
-<img width="1280" height="631" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/JCGlKQvmX4hvT9adCC9YGVQ2csc.jpg" alt="슈퍼휴먼 사무실 로고 앞에 선 창업팀 사진">
+<img width="1280" height="631" loading="lazy" src="/log_assets/images/179_이메일도 테슬라처럼 'Superhuman' 프리미엄전략_img_1.jpg" alt="슈퍼휴먼 사무실 로고 앞에 선 창업팀 사진">
 
 Superhuman의 시장 진출 전략은 다음과 같은 핵심 요소로 구성되었습니다:
 
@@ -39,7 +39,7 @@ Superhuman의 시장 진출 전략은 다음과 같은 핵심 요소로 구성�
 
 일곱째, AI 기술을 활용한 지속적 혁신입니다. Superhuman은 AI를 활용해 이메일 요약, 답변 초안 작성 등 혁신적인 기능을 지속적으로 추가했습니다. 이를 통해 사용자들이 매주 최대 4시간을 절약할 수 있게 하며 subscription 가치를 강화했습니다.
 
-<img width="1280" height="720" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/XmCfqj_5TmGDjv2IkDQfMFBao2o.png" alt="슈퍼휴먼의 스니펫 기능 편집 화면">
+<img width="1280" height="720" loading="lazy" src="/log_assets/images/179_이메일도 테슬라처럼 'Superhuman' 프리미엄전략_img_2.jpg" alt="슈퍼휴먼의 스니펫 기능 편집 화면">
 
 ## 전략이 만든 성과
 
@@ -63,7 +63,7 @@ Superhuman의 시장 진출 전략에서 스타트업들이 배울 수 있는 �
 
 지속적인 기술 혁신: AI와 같은 첨단 기술을 활용해 지속적인 가치 향상을 추구하라
 
-<img width="1201" height="627" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/D7D7Vpb9FZURJToA6T0GEpbEwvc.jpg" alt="슈퍼휴먼의 빠른 이메일 경험을 소개하는 랜딩 화면">
+<img width="1201" height="627" loading="lazy" src="/log_assets/images/179_이메일도 테슬라처럼 'Superhuman' 프리미엄전략_img_3.jpg" alt="슈퍼휴먼의 빠른 이메일 경험을 소개하는 랜딩 화면">
 
 Superhuman의 사례는 기존 시장에서도 명확한 타겟팅과 차별화된 가치 제안을 통해 성공적으로 진입할 수 있음을 보여줍니다. 여러분의 스타트업도 이러한 전략을 응용하여 효과적인 시장 진출 계획을 수립해보시기 바랍니다.
 

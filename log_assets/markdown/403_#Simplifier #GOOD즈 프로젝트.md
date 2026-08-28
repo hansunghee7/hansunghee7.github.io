@@ -30,8 +30,8 @@ next_title: "'커넥팅 X 잉크드인' 북토크 이야기"
  모닝커피를 위한 잔으로도 잘 어울리네요. 모두 즐거운 주말 되시기 바랍니다. :-)
 
 <div class="img-gallery">
-  <img width="1280" height="2275" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/3KfdtTXo9KXMqvmU_HGlfz-mlZM" alt="">
-  <img width="1280" height="2275" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/ysuBoHMSVkb9FuijrMn1PxOsGog" alt="">
-  <img width="1280" height="720" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/8jasA-ssidyxGRJzo4geJasesUs" alt="">
+  <img width="1280" height="2275" loading="lazy" src="/log_assets/images/403_#Simplifier #GOOD즈 프로젝트_img_1.webp" alt="">
+  <img width="1280" height="2275" loading="lazy" src="/log_assets/images/403_#Simplifier #GOOD즈 프로젝트_img_2.webp" alt="">
+  <img width="1280" height="720" loading="lazy" src="/log_assets/images/403_#Simplifier #GOOD즈 프로젝트_img_3.webp" alt="">
 </div>
 

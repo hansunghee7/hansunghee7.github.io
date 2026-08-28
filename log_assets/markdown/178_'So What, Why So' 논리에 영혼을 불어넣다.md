@@ -23,13 +23,13 @@ next_title: "'퍼널 분석' 디지털 시대의 사용자 최적화 핵심 기�
 
 'Why So(왜 그런가?)'는 도출된 결론의 타당성을 검증하는 질문이다. 이는 "왜 그렇게 생각하는가?", "그 결론을 뒷받침하는 근거는 무엇인가?"를 묻는 것이다. 아마존은 고객 경험 개선 프로젝트에서 'Why So' 질문을 통해 문제의 근본 원인을 파악하고, 해결책의 논리적 근거를 명확히 한다.
 
-<img width="700" height="487" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/srUtsIvsaKGVivcsAxUPxsD38VI" alt="맥킨지식 문제 해결 프로세스와 So What, Why So 질문을 나타낸 도식">
+<img width="700" height="487" loading="lazy" src="/log_assets/images/178_'So What, Why So' 논리에 영혼을 불어넣다_img_1.jpg" alt="맥킨지식 문제 해결 프로세스와 So What, Why So 질문을 나타낸 도식">
 
 이 두 질문은 마치 태극과 같이 상호 보완적이다. 'So What'이 분석의 핵심을 추출한다면, 'Why So'는 그 타당성을 검증한다. 이 과정을 통해 단순한 정보가 아닌, 의미 있고 활용 가능한 인사이트로 변모한다.
 
 글로벌 회사들도 이 프레임워크를 활용한다. 시장 조사 데이터를 분석할 때 'So What'으로 핵심 인사이트를 도출하고, 'Why So'로 그 인사이트의 신뢰성을 검토한다. 예를 들어, "스마트폰 사용자들이 배터리 수명에 불만을 표시한다"는 데이터에서 "배터리 기술에 투자해야 한다"라는 인사이트를 도출하고, 이를 "경쟁사 대비 배터리 성능이 15% 낮다"라는 근거로 뒷받침한다.
 
-<img width="876" height="234" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/PyxhCpNjZd2w_oQsxJqJlZCawIA" alt="So What, Why So 논리 구조를 예시로 보여주는 한국어 다이어그램">
+<img width="876" height="234" loading="lazy" src="/log_assets/images/178_'So What, Why So' 논리에 영혼을 불어넣다_img_2.jpg" alt="So What, Why So 논리 구조를 예시로 보여주는 한국어 다이어그램">
 
 ## 실전에서 적용하는 법
 

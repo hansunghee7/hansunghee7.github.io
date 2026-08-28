@@ -23,7 +23,7 @@ next_title: "2천만원으로 10억원 매출을, 안티메탈의 바이럴전�
 
 해결책은 과감했습니다. 사용자 수가 아닌 '공간(Space)' 단위로 과금하는 모델로 완전히 전환한 것입니다. 고객이 사용하는 가상 공간의 개수에 따라 요금을 부과하는 방식으로, 이는 단순한 가격 변경이 아니라 완전히 새로운 가치 제안이었습니다.
 
-<img width="1280" height="743" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/yG4PBGR1xfaQ_URnQvkOtHvLMgc.png" alt="웰로의 공간 단위 요금제, Small Medium Large 플랜">
+<img width="1280" height="743" loading="lazy" src="/log_assets/images/098_가격정책의 혁신으로 돌파구를 찾다 Welo_img_1.png" alt="웰로의 공간 단위 요금제, Small Medium Large 플랜">
 
 웰로는 일부 고객을 대상으로 파일럿 테스트를 진행하며 시장 반응을 확인했고, '학습 루프'를 내장해서 지속적으로 개선할 수 있는 체계를 만들었습니다.
 
@@ -33,7 +33,7 @@ next_title: "2천만원으로 10억원 매출을, 안티메탈의 바이럴전�
 
 다른 기업들도 유사한 성공을 거두었습니다. Adobe는 구독제로 전환하여 2,200만 유료 구독자를 확보했고, SAP는 사용량 기반 요금제로 ARR 성장을 달성했습니다.
 
-<img width="1114" height="310" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/qiOLKKnHgPG96Qw0gTprg32bzEo.png" alt="Adobe SAP Zoho Splunk의 프라이싱 전략 비교표">
+<img width="1114" height="310" loading="lazy" src="/log_assets/images/098_가격정책의 혁신으로 돌파구를 찾다 Welo_img_2.png" alt="Adobe SAP Zoho Splunk의 프라이싱 전략 비교표">
 
 ## 웰로의 성공에서 배우는 핵심 전략
 

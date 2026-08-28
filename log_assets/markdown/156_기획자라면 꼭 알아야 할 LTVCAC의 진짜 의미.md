@@ -15,7 +15,7 @@ next_title: "'Lean Canvas' 하루만에 그리는 비즈니스청사진"
 
 고객을 유치하는 데 1만 원이 들고, 그 고객이 평생 우리 회사에 100만 원의 가치를 준다면? 망설일 이유가 없다. 이처럼 LTV(고객 생애 가치)와 CAC(고객 획득 비용)의 비교는 비즈니스의 본질을 꿰뚫는 프레임워크다.
 
-<img width="1280" height="731" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/hwsJdh702JsHHJqZnuy-1ao_z1M.jpg" alt="LTV를 CAC로 나눠 계산하는 LTV:CAC 비율 공식과 계산 예시">
+<img width="1280" height="731" loading="lazy" src="/log_assets/images/156_기획자라면 꼭 알아야 할 LTVCAC의 진짜 의미_img_1.jpg" alt="LTV를 CAC로 나눠 계산하는 LTV:CAC 비율 공식과 계산 예시">
 
 ## LTV/CAC의 탄생 배경 - SaaS 산업과 함께
 
@@ -29,7 +29,7 @@ LTV와 CAC는 SaaS 산업의 성장과 함께 주목받기 시작했다. 수익�
 
 LTV와 CAC는 이제 기업과 투자자들의 필수 언어가 되었다. 스타트업의 피칭에서도 이 두 단어는 빠지지 않는다. 펀딩의 설득력은 LTV/CAC 비율로 결정된다 해도 과언이 아니다.
 
-<img width="1280" height="731" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/SiYaf5G6kM13DDVFRLxO9TWibY0.jpg" alt="CAC:LTV 비율을 개선하는 7가지 방법을 정리한 원형 다이어그램">
+<img width="1280" height="731" loading="lazy" src="/log_assets/images/156_기획자라면 꼭 알아야 할 LTVCAC의 진짜 의미_img_2.jpg" alt="CAC:LTV 비율을 개선하는 7가지 방법을 정리한 원형 다이어그램">
 
 ## 기획자를 위한 LTV/CAC 활용법
 

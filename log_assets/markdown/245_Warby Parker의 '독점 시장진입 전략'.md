@@ -24,8 +24,8 @@ next_title: "커머스 AI의 게임체인저, 인핸스"
 당시 미국의 안경 시장은 이탈리아의 럭소티카(Luxottica)가 장악하고 있었습니다. 80%에 달하는 시장 점유율을 보유한 이 기업은 레이밴, 오클리와 같은 유명 브랜드부터 렌즈크래프터스 같은 소매점까지 모두 소유하고 있었죠. 그리고 이런 독점은 터무니없이 비싼 안경 가격으로 이어졌습니다.
 
 <div class="img-gallery">
-  <img width="850" height="439" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/O41gPNXellZWd56OhC4KObFwvC4.png" alt="럭소티카 산하 명품 안경 브랜드 로고 모음">
-  <img width="600" height="353" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/84IIPbcbby8DWOXq6OlZY24y3iw.jpeg" alt="럭소티카의 대형 전시 부스 내부 모습">
+  <img width="850" height="439" loading="lazy" src="/log_assets/images/245_Warby Parker의 '독점 시장진입 전략'_img_1.jpg" alt="럭소티카 산하 명품 안경 브랜드 로고 모음">
+  <img width="600" height="353" loading="lazy" src="/log_assets/images/245_Warby Parker의 '독점 시장진입 전략'_img_2.jpg" alt="럭소티카의 대형 전시 부스 내부 모습">
 </div>
 
 ## Warby Parker의 독점 시장진입 전략
@@ -43,8 +43,8 @@ Warby Parker의 전략은 다음과 같습니다.
 이런 전략들은 큰 성공을 거두었고, Warby Parker는 설립 10년 만에 기업가치 30억 달러를 달성했습니다.
 
 <div class="img-gallery">
-  <img width="1280" height="720" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/qrwEPH6vqiGszjcEEcotkQ4XJUM.jpg" alt="워비파커 공동창업자들의 인터뷰 장면">
-  <img width="1280" height="669" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/u8LvyHYXOZtTM6X6emPszRyP-do.png" alt="워비파커 홈 트라이온 안경 모양 선택 화면">
+  <img width="1280" height="720" loading="lazy" src="/log_assets/images/245_Warby Parker의 '독점 시장진입 전략'_img_3.jpg" alt="워비파커 공동창업자들의 인터뷰 장면">
+  <img width="1280" height="669" loading="lazy" src="/log_assets/images/245_Warby Parker의 '독점 시장진입 전략'_img_4.jpg" alt="워비파커 홈 트라이온 안경 모양 선택 화면">
 </div>
 
 ## 스타트업이 배워야 할 교훈
