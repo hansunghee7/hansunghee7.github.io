@@ -143,16 +143,22 @@
         .article-body { max-width: 1100px; width: 100%; min-width: 0; box-sizing: border-box; margin: 0 auto; padding: 40px 20px 40px; background-color: #fff; position: relative; }
         /* 본문 시트는 화면 전체 폭(흰 배경)이고, 글은 그 안의 700px 중앙 컬럼에 들어갑니다.
            max-width로 폭을 잡으면 시트 자체가 좁아져 커버 위에 뜬 박스처럼 보입니다. */
-        /* padding-top: 72px -- 위 .log-nav가 fixed(항상 떠 있음, 높이 68px)라
-           본문이 그 밑에 가려지지 않을 최소한의 여백(4px)만 남긴다.
-           (처음엔 84px로 넉넉히 잡았는데 상단 여백이 너무 벌어져 보인다는
-           피드백을 받아 줄임 -- GNB는 아래로 갈수록 투명해지는 그라데이션이라
-           바짝 붙여도 실제로 안 가려 보인다.) */
-        .post-mode + .article-body { box-sizing: border-box; width: 100%; max-width: none; padding-left: max(16px, calc((100% - 700px) / 2)); padding-right: max(16px, calc((100% - 700px) / 2)); padding-top: 72px; padding-bottom: 0 !important; z-index: 2; }
+        /* padding-top: 40px -- 위 .log-nav(fixed, 높이 68px)의 그라데이션은
+           68px 지점에서 이미 완전 투명이라, 그 아래로는 실제로 가려질 일이
+           없다. 그래서 GNB 높이만큼 맞출 필요 없이 커버 이미지 뒤에서 본문이
+           올라올 때 첫 줄이 살짝 스치는 정도(30px 안쪽)만 감수하고 여백을
+           확 줄였다. (72px로도 여전히 위 여백이 너무 넓다는 피드백을 받아
+           재조정 -- 처음엔 84px였다.) */
+        .post-mode + .article-body { box-sizing: border-box; width: 100%; max-width: none; padding-left: max(16px, calc((100% - 700px) / 2)); padding-right: max(16px, calc((100% - 700px) / 2)); padding-top: 40px; padding-bottom: 0 !important; z-index: 2; }
         .article-body p { font-size: 15px; font-weight: 300; line-height: 2; letter-spacing: 0.8px; margin-bottom: 30px; }
         @media (max-width: 600px) {
             .article-body p { font-size: 17px; letter-spacing: 0.3px; }
         }
+        /* 문단 사이 소제목(h2/h3)이 브라우저 기본 마진(위아래 동일, 0.83em)을
+           그대로 써서 위/아래 여백이 똑같아 "이 소제목이 위 문단 소속인지
+           아래 문단 소속인지" 구분이 안 됐다. 위는 넉넉히, 아래는 좁게
+           비대칭으로 줘서 소제목이 자기 아래 문단에 붙어 보이게 한다. */
+        .article-body h2, .article-body h3, .article-body h4 { margin: 64px 0 18px; }
         .article-body img { width: 88%; height: auto; margin: 40px auto; display: block; border-radius: 0; }
         .article-body hr { border: 0; border-top: 1px solid #eaeaea; margin: 60px 0; }
         .article-body .img-gallery {
