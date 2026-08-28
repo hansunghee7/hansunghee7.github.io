@@ -13,21 +13,33 @@
 {%- endcomment -%}
 {% unless page.category == "코치S" or page.category == "잉크드인대 기획학과" %}
 <style>
-    /* 포스트 하단 문의 CTA -- 배너가 아니라 에세이가 자연스럽게 끝나는 한 줄 + 조용한 버튼 하나 */
+    /* 포스트 하단 문의 CTA -- 배너가 아니라 에세이가 자연스럽게 끝나는 한 줄 + 조용한 버튼 하나.
+       검색으로 글 하나만 보고 이탈하는 방문자는 이 사람이 누군지 알 길이 없었다(홈의 ORIGIN/
+       PROVEN은 여기선 안 보임) -- 짧은 저자소개를 CTA 위에 붙여서 그 자리에서 신뢰를 만든다. */
     .post-cta { text-align: center; padding: 8px 20px 44px; margin-top: 68px; }
+    .post-author { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 24px; text-decoration: none !important; }
+    .post-author-photo { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; flex-shrink: 0; filter: grayscale(1); }
+    .post-author-text { text-align: left; }
+    .post-author-name { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-weight: 600; font-size: 14.5px; color: #2a2822; margin-bottom: 2px; }
+    .post-author-desc { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-weight: 300; font-size: 12.5px; color: #8f8b82; line-height: 1.5; }
     .post-cta-line { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-weight: 300; font-style: italic; font-size: 15.5px; color: #767672; margin: 0 0 20px; line-height: 1.7; }
     .post-cta-btn { display: inline-block; background: #080808; color: #f5f3ee; font-family: 'Boska', serif; font-style: italic; font-weight: 400; font-size: 15.5px; padding: 13px 36px; border-radius: 999px; text-decoration: none !important; border: none; cursor: pointer; transition: background 0.2s, color 0.2s, box-shadow 0.2s; }
     .post-cta-btn:hover { background: #f5f3ee; color: #080808; box-shadow: inset 0 0 0 1px #080808; }
 </style>
-{% if page.category == "토크세션" %}
 <div class="post-cta">
+  <a href="/" class="post-author">
+    <img src="/assets/ceo-portrait-og.jpg" alt="한성희" class="post-author-photo">
+    <div class="post-author-text">
+      <div class="post-author-name">한성희</div>
+      <div class="post-author-desc">네이버·삼성전자·요기요·빗썸을 거친 스타트업 그로스 코치<br>《기획자의 질문법》 저자</div>
+    </div>
+  </a>
+{% if page.category == "토크세션" %}
   <p class="post-cta-line">이런 이야기를 강연으로 더 듣고 싶으시다면</p>
   <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="speaking">강연 문의</button>
-</div>
 {% else %}
-<div class="post-cta">
   <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
   <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
 {% endif %}
+</div>
 {% endunless %}
