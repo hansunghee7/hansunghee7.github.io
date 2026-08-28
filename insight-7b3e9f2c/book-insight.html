@@ -34,7 +34,7 @@
   .wrap{max-width:1400px; margin:0 auto; padding:0 var(--gutter) 60px;}
   @media (min-width:761px){ :root{ --gutter:32px; } }
 
-  .books-columns{display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:start;}
+  .books-columns{display:grid; grid-template-columns:1fr 1fr; column-gap:32px; row-gap:22px; align-items:start;}
   @media (max-width:900px){ .books-columns{grid-template-columns:1fr;} }
   header{padding:28px 0 18px; border-bottom:1px solid var(--line-soft); margin-bottom:24px;}
   h1{font-family:'Noto Serif KR',serif; font-weight:400; font-size:30px; letter-spacing:-0.01em; margin:0 0 8px;}
@@ -70,13 +70,9 @@
     body.has-shell-nav{padding-left:0;}
   }
 
-  .book-section{margin-bottom:40px;}
-  .book-section h2{font-size:16px; font-weight:600; margin:0 0 3px;}
-  .book-section .book-meta{font-size:12px; color:var(--muted); margin-bottom:14px;}
-  .book-section .book-meta a{color:var(--dim);}
+  .book-col-head h2{font-size:16px; font-weight:600; margin:0 0 3px;}
+  .book-col-head .book-meta{font-size:12px; color:var(--muted);}
 
-  .source-group{margin-bottom:22px;}
-  .source-group:last-child{margin-bottom:0;}
   .source-header{display:flex; align-items:center; gap:8px; margin-bottom:10px; font-size:13px; font-weight:600; color:var(--dim);}
   .source-header img{height:16px; width:auto; display:block;}
 
@@ -84,13 +80,6 @@
   .tile{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px 16px 14px;}
   .tile.is-empty{opacity:0.45;}
 
-  .more-toggle{
-    background:none; border:none; color:var(--muted); cursor:pointer;
-    font-size:11.5px; font-family:inherit; padding:8px 0 0; text-align:left;
-  }
-  .more-toggle:hover{color:var(--ink);}
-  .more-tiles{margin-top:12px;}
-  .more-tiles[hidden]{display:none;}
   .tile .label{font-size:12px; color:var(--muted); margin-bottom:8px; line-height:1.4;}
   .tile .label a{color:inherit; text-decoration:none;}
   .tile .label a:hover{color:var(--ink); text-decoration:underline;}
@@ -142,18 +131,8 @@
     GitHub Actions에서 <code>Fetch book insight</code> 워크플로를 수동 실행하세요.
   </div>
 
-  <div class="books-columns">
-  <section class="book-section" id="uxBookSection">
-    <h2>UX의 언어들</h2>
-    <div class="book-meta">한성희·신행철 저 · 파지트</div>
-    <div id="uxBookTiles"><div class="loading">데이터 불러오는 중…</div></div>
-  </section>
-
-  <section class="book-section" id="questionBookSection">
-    <h2>기획자의 질문법</h2>
-    <div class="book-meta">한성희 저 · 파지트 · 2025-06-13 출간</div>
-    <div id="questionBookTiles"><div class="loading">데이터 불러오는 중…</div></div>
-  </section>
+  <div class="books-columns" id="bookGrid">
+    <div class="loading" style="grid-column:1 / -1">데이터 불러오는 중…</div>
   </div>
 </div>
 
@@ -257,14 +236,10 @@
     );
   }
 
-  /* 서점별로 묶어서 보여준다 -- 로고 반영, 각 서점의 대표 지표(판매지수/
-     세일즈포인트 등, metric.headline===true)를 그 서점 그룹에서 항상
-     보이게 두고, 나머지 카테고리들은 기본은 접어뒀다가 "더보기"를 눌러야
-     펼쳐지게 한다. 두 책을 좌우로 나란히 봤을 때도 한 화면에 다 들어오게
-     하려는 것 -- 카테고리 세부는 매일 볼 게 아니라 가끔 들여다보는
-     정보라, 접어둬도 정보 손실은 없다. metrics 배열 순서가 곧 "더보기"를
-     펼쳤을 때 나열되는 순서(상위->하위 카테고리)다. */
-  var groupSeq = 0;
+  /* 서점별로 묶어서 보여준다 -- 로고 반영, 카테고리는 전부 펼쳐서 보여준다.
+     metrics 배열 순서가 곧 화면에 나열되는 순서(대표 지표 -> 상위 카테고리
+     -> 하위 카테고리)다. g.customBodyHtml이 있으면(리디북스처럼 순위
+     지표가 아닌 경우) metrics 대신 그걸 그대로 쓴다. */
   function tileFor(m, history) {
     var series = history.map(function (r) { return { date: r.date, value: m.get(r) }; });
     var note = m.noteGet ? m.noteGet(history[history.length - 1]) : null;
@@ -272,40 +247,55 @@
   }
 
   function sourceGroupHtml(g, history) {
-    var headline = g.metrics.filter(function (m) { return m.headline; });
-    var rest = g.metrics.filter(function (m) { return !m.headline; });
-    var id = "srcgrp" + (++groupSeq);
-
-    var headlineHtml = headline.map(function (m) { return tileFor(m, history); }).join("");
-    var restHtml = rest.map(function (m) { return tileFor(m, history); }).join("");
-
-    var toggleHtml = rest.length
-      ? '<button type="button" class="more-toggle" data-target="' + id + '">카테고리 ' + rest.length + "개 더보기 ▾</button>"
-      : "";
-
+    var bodyHtml = g.customBodyHtml != null
+      ? g.customBodyHtml
+      : g.metrics.map(function (m) { return tileFor(m, history); }).join("");
     return (
       '<div class="source-group">' +
       '<div class="source-header"><img src="' + escapeHtml(g.logo) + '" alt="" onerror="this.style.display=\'none\'">' +
       escapeHtml(g.label) + "</div>" +
-      '<div class="tiles">' + headlineHtml + "</div>" +
-      toggleHtml +
-      (rest.length ? '<div class="tiles more-tiles" id="' + id + '" hidden>' + restHtml + "</div>" : "") +
+      '<div class="tiles">' + bodyHtml + "</div>" +
       "</div>"
     );
   }
 
-  document.addEventListener("click", function (e) {
-    var btn = e.target.closest(".more-toggle");
-    if (!btn) return;
-    var panel = document.getElementById(btn.getAttribute("data-target"));
-    if (!panel) return;
-    var open = panel.hasAttribute("hidden");
-    if (open) { panel.removeAttribute("hidden"); btn.textContent = btn.textContent.replace("▾", "▴").replace("더보기", "접기"); }
-    else { panel.setAttribute("hidden", ""); btn.textContent = btn.textContent.replace("▴", "▾").replace("접기", "더보기"); }
-  });
+  /* 두 책을 좌우로 나란히 두되, 같은 서점끼리 같은 줄에서 시작하게
+     맞춘다 -- 책마다 카테고리 개수가 달라서 그냥 위아래로만 쌓으면
+     예스24/교보문고/알라딘 구간이 책마다 다른 높이에서 시작해 비교하기
+     어려웠다. #bookGrid를 2열 grid로 두고, 서점 하나당 왼쪽 칸(UX책)과
+     오른쪽 칸(질문법책)을 한 쌍으로 순서대로 넣으면, grid가 자동으로
+     같은 서점을 같은 줄에 정렬해준다 -- 한쪽 책에 없는 서점(예: UX책엔
+     밀리의서재가 없음)은 빈 칸으로 채워 줄이 안 밀리게 한다. */
+  var STORE_ORDER = ["yes24", "kyobo", "aladin", "millie", "ridibooks"];
 
-  function renderGroups(elId, groups, history) {
-    document.getElementById(elId).innerHTML = groups.map(function (g) { return sourceGroupHtml(g, history); }).join("");
+  function findGroup(groups, key) {
+    return (groups || []).filter(function (g) { return g.key === key; })[0] || null;
+  }
+
+  function errorHtml(result) {
+    if (result.notYet) {
+      return '<div class="empty">아직 수집 전입니다. GitHub Actions에서 <code>Fetch book insight</code> 워크플로가 한 번 돌면 채워집니다 (매일 06:41 자동 실행).</div>';
+    }
+    return '<div class="err">불러오기 실패했습니다' + (result.message ? ": " + escapeHtml(result.message) : "") + "</div>";
+  }
+
+  function renderBookGrid(ux, q) {
+    var html =
+      '<div class="book-col-head"><h2>UX의 언어들</h2><div class="book-meta">한성희·신행철 저 · 파지트</div></div>' +
+      '<div class="book-col-head"><h2>기획자의 질문법</h2><div class="book-meta">한성희 저 · 파지트 · 2025-06-13 출간</div></div>';
+
+    STORE_ORDER.forEach(function (key) {
+      var ug = findGroup(ux.groups, key);
+      var qg = findGroup(q.groups, key);
+      if (!ug && !qg) return;
+      html += ug ? sourceGroupHtml(ug, ux.history) : "<div></div>";
+      html += qg ? sourceGroupHtml(qg, q.history) : "<div></div>";
+    });
+
+    if (!ux.groups) html += errorHtml(ux) + "<div></div>";
+    if (!q.groups) html += "<div></div>" + errorHtml(q);
+
+    document.getElementById("bookGrid").innerHTML = html;
   }
 
   function stampRefresh() {
@@ -333,8 +323,9 @@
   }
 
   function load() {
-    return Promise.all([loadUxBook(), loadQuestionBook()]).then(function (results) {
-      return results.every(Boolean);
+    return Promise.all([loadUxBookGroups(), loadQuestionBookGroups()]).then(function (results) {
+      renderBookGrid(results[0], results[1]);
+      return results[0].ok && results[1].ok;
     });
   }
 
@@ -355,17 +346,20 @@
      (이 저장소가 직접 예스24·알라딘·교보문고 스크래핑)으로 통일했다.
      예전 히스토리는 assets/data/ux-book-insight.json으로 마이그레이션해서
      그대로 이어붙였다. */
-  function loadUxBook() {
+  function loadUxBookGroups() {
     return fetch("/assets/data/ux-book-insight.json?t=" + Date.now(), { cache: "no-store" })
       .then(function (r) { if (!r.ok) throw { notYet: r.status === 404 }; return r.json(); })
-      .then(function (data) { renderUxBook(data); return true; })
-      .catch(function (e) { renderError("uxBookTiles", e); return !!(e && e.notYet); });
+      .then(function (data) {
+        var history = (data && data.history) || [];
+        if (!history.length) return { ok: true, notYet: true, groups: null, history: null };
+        return { ok: true, groups: buildUxGroups(history), history: history };
+      })
+      .catch(function (e) {
+        return { ok: !!(e && e.notYet), notYet: !!(e && e.notYet), groups: null, history: null, message: e && e.notYet ? "" : String((e && e.message) || e) };
+      });
   }
 
-  function renderUxBook(data) {
-    var history = (data && data.history) || [];
-    if (!history.length) { renderError("uxBookTiles", { notYet: true }); return; }
-
+  function buildUxGroups(history) {
     var Y24_GOODS = "https://www.yes24.com/product/goods/193444437";
     var Y24_BEST = function (cat) { return "https://www.yes24.com/product/category/bestseller?categoryNumber=" + cat + "&pageNumber=1&pageSize=100"; };
     var ALADIN_PRODUCT = "https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=397807838";
@@ -374,18 +368,17 @@
     var KYOBO_UXUI = "https://store.kyobobook.co.kr/category/domestic/331902/best";
     var KYOBO_STRATEGY = "https://store.kyobobook.co.kr/category/domestic/130701/best";
 
-    // 각 서점 그룹의 대표 지표(headline: true)는 항상 보이고, 나머지
-    // 카테고리는 "더보기"로 접어둔다. 카테고리는 상위(넓은 카테고리)->
-    // 하위(좁은 카테고리) 순으로 나열한다. 예스24는 카테고리 코드 앞자리가
-    // 상위 카테고리를 그대로 물려받는 구조라 실제 트리를 확인해 순서를
-    // 정했다: 경제경영종합 > 마케팅/세일즈 > 광고/홍보/PR (한 갈래),
-    // 웹사이트 > UX/UI (다른 갈래), 디자인(독립 갈래).
+    // 대표 지표(판매지수/세일즈포인트/주간베스트)를 맨 앞에 두고, 그 뒤로
+    // 카테고리를 상위(넓은 카테고리)->하위(좁은 카테고리) 순으로 나열한다.
+    // 예스24는 카테고리 코드 앞자리가 상위 카테고리를 그대로 물려받는
+    // 구조라 실제 트리를 확인해 순서를 정했다: 경제경영종합 > 마케팅/세일즈
+    // > 광고/홍보/PR (한 갈래), 웹사이트 > UX/UI (다른 갈래), 디자인(독립 갈래).
     // 서점 순서는 예스24 -> 교보문고 -> 알라딘.
     var groups = [
       {
         key: "yes24", label: "예스24", logo: "/assets/logos/yes24.png",
         metrics: [
-          { key: "sales_index", label: "판매지수", unit: "", higherIsBetter: true, headline: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.sales_index; } },
+          { key: "sales_index", label: "판매지수", unit: "", higherIsBetter: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.sales_index; } },
           { key: "reviews", label: "리뷰 수", unit: "건", higherIsBetter: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.reviews; } },
           { key: "econ", label: "경제경영 종합", unit: "위", higherIsBetter: false, href: Y24_BEST("001001025"), get: function (r) { return r.yes24 && r.yes24.econ_rank; } },
           { key: "mkt", label: "마케팅/세일즈", unit: "위", higherIsBetter: false, href: Y24_BEST("001001025009"), get: function (r) { return r.yes24 && r.yes24.mkt_rank; } },
@@ -401,7 +394,7 @@
           // 라벨을 "온라인 주간"으로 고정해뒀었는데, 실제 배지 카테고리명은
           // 책마다 다르다(이 책은 "경제/경영"). 이름을 지어내는 대신 스크래핑
           // 시점에 실제로 읽은 카테고리명을 note로 그대로 보여준다.
-          { key: "kyobo_badge", label: "주간베스트", unit: "위", higherIsBetter: false, headline: true, href: KYOBO_PRODUCT,
+          { key: "kyobo_badge", label: "주간베스트", unit: "위", higherIsBetter: false, href: KYOBO_PRODUCT,
             get: function (r) { return r.kyobo && r.kyobo.badge_rank; },
             noteGet: function (r) { return r.kyobo && r.kyobo.badge_category ? "카테고리: " + r.kyobo.badge_category : null; } },
           { key: "kyobo_strategy", label: "경영전략일반", unit: "위", higherIsBetter: false, href: KYOBO_STRATEGY, get: function (r) { return r.kyobo && r.kyobo.strategy_rank; } },
@@ -411,7 +404,7 @@
       {
         key: "aladin", label: "알라딘", logo: "/assets/logos/aladin.jpg",
         metrics: [
-          { key: "aladin_sp", label: "세일즈포인트", unit: "", higherIsBetter: true, headline: true, href: ALADIN_PRODUCT, get: function (r) { return r.aladin && r.aladin.sales_point; } },
+          { key: "aladin_sp", label: "세일즈포인트", unit: "", higherIsBetter: true, href: ALADIN_PRODUCT, get: function (r) { return r.aladin && r.aladin.sales_point; } },
           { key: "aladin_brand", label: "마케팅/브랜드", unit: "위", higherIsBetter: false, href: ALADIN_BEST("1632"), get: function (r) { return r.aladin && r.aladin.brand_rank; } },
           { key: "aladin_ad", label: "광고/홍보/PR", unit: "위", higherIsBetter: false, href: ALADIN_BEST("268"), get: function (r) { return r.aladin && r.aladin.ad_rank; } },
           { key: "aladin_design", label: "디자인이야기", unit: "위", higherIsBetter: false, href: ALADIN_BEST("51089"), get: function (r) { return r.aladin && r.aladin.design_rank; } },
@@ -419,21 +412,24 @@
       },
     ];
 
-    renderGroups("uxBookTiles", groups, history);
+    return groups;
   }
 
   /* ── 기획자의 질문법 (자체 수집) ── */
-  function loadQuestionBook() {
+  function loadQuestionBookGroups() {
     return fetch("/assets/data/book-insight.json?t=" + Date.now(), { cache: "no-store" })
       .then(function (r) { if (!r.ok) throw { notYet: r.status === 404 }; return r.json(); })
-      .then(function (data) { renderQuestionBook(data); return true; })
-      .catch(function (e) { renderError("questionBookTiles", e); return !!(e && e.notYet); });
+      .then(function (data) {
+        var history = (data && data.history) || [];
+        if (!history.length) return { ok: true, notYet: true, groups: null, history: null };
+        return { ok: true, groups: buildQuestionGroups(history), history: history };
+      })
+      .catch(function (e) {
+        return { ok: !!(e && e.notYet), notYet: !!(e && e.notYet), groups: null, history: null, message: e && e.notYet ? "" : String((e && e.message) || e) };
+      });
   }
 
-  function renderQuestionBook(data) {
-    var history = (data && data.history) || [];
-    if (!history.length) { renderError("questionBookTiles", { notYet: true }); return; }
-
+  function buildQuestionGroups(history) {
     var Y24_GOODS = "https://www.yes24.com/product/goods/147079674";
     var Y24_BEST = "https://www.yes24.com/product/category/bestseller?categoryNumber=001001026003&pageNumber=1&pageSize=100";
     var Y24_BEST2 = "https://www.yes24.com/product/category/bestseller?categoryNumber=001001025001004&pageNumber=1&pageSize=100";
@@ -447,7 +443,7 @@
       {
         key: "yes24", label: "예스24", logo: "/assets/logos/yes24.png",
         metrics: [
-          { key: "y24si", label: "판매지수", unit: "", higherIsBetter: true, headline: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.sales_index; } },
+          { key: "y24si", label: "판매지수", unit: "", higherIsBetter: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.sales_index; } },
           { key: "y24rv", label: "리뷰 수", unit: "건", higherIsBetter: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.reviews; } },
           { key: "y24cat", label: "기획/정보/시간관리", unit: "위", higherIsBetter: false, href: Y24_BEST, get: function (r) { return r.yes24 && r.yes24.category_rank; } },
           { key: "y24cat2", label: "CEO/비즈니스맨 기획/정보/시간관리", unit: "위", higherIsBetter: false, href: Y24_BEST2, get: function (r) { return r.yes24 && r.yes24.category2_rank; } },
@@ -459,7 +455,7 @@
           // "온라인 주간"으로 라벨을 고정해뒀었는데, 실제 배지 카테고리명은
           // 책마다 다르다(이 책은 "자기계발"). 이름을 지어내는 대신 스크래핑
           // 시점에 실제로 읽은 카테고리명을 note로 그대로 보여준다.
-          { key: "kybadge", label: "주간베스트", unit: "위", higherIsBetter: false, headline: true, href: KYOBO_PRODUCT,
+          { key: "kybadge", label: "주간베스트", unit: "위", higherIsBetter: false, href: KYOBO_PRODUCT,
             get: function (r) { return r.kyobo && r.kyobo.badge_rank; },
             noteGet: function (r) { return r.kyobo && r.kyobo.badge_category ? "카테고리: " + r.kyobo.badge_category : null; } },
           { key: "kycat", label: "기획력", unit: "위", higherIsBetter: false, href: KYOBO_CAT, get: function (r) { return r.kyobo && r.kyobo.category_rank; } },
@@ -468,7 +464,7 @@
       {
         key: "aladin", label: "알라딘", logo: "/assets/logos/aladin.jpg",
         metrics: [
-          { key: "alsp", label: "세일즈포인트", unit: "", higherIsBetter: true, headline: true, href: ALADIN_PRODUCT, get: function (r) { return r.aladin && r.aladin.sales_point; } },
+          { key: "alsp", label: "세일즈포인트", unit: "", higherIsBetter: true, href: ALADIN_PRODUCT, get: function (r) { return r.aladin && r.aladin.sales_point; } },
           { key: "alplan", label: "기획", unit: "위", higherIsBetter: false, href: ALADIN_BEST("70229"), get: function (r) { return r.aladin && r.aladin.planning_rank; } },
           { key: "alinfo", label: "정보관리", unit: "위", higherIsBetter: false, href: ALADIN_BEST("70222"), get: function (r) { return r.aladin && r.aladin.info_mgmt_rank; } },
         ],
@@ -476,40 +472,28 @@
       {
         key: "millie", label: "밀리의서재", logo: "/assets/logos/millie.png",
         metrics: [
-          { key: "millie", label: "자기계발>기획 인기순", unit: "위", higherIsBetter: false, headline: true, href: "https://www.millie.co.kr/v3/search/3depth/1298/?parentSeq=1287&nav_hidden=y", get: function (r) { return r.millie && r.millie.category_rank; } },
+          { key: "millie", label: "자기계발>기획 인기순", unit: "위", higherIsBetter: false, href: "https://www.millie.co.kr/v3/search/3depth/1298/?parentSeq=1287&nav_hidden=y", get: function (r) { return r.millie && r.millie.category_rank; } },
         ],
       },
     ];
 
-    renderGroups("questionBookTiles", groups, history);
-
-    // 리디북스는 순위 자체가 없는 참고용 정적 지표라, 스파크라인 있는
-    // 다른 그룹과 다르게 별도로 붙인다.
+    // 리디북스는 순위 자체가 없는 참고용 정적 지표라, 스파크라인이 있는
+    // 다른 그룹과 다르게 customBodyHtml로 직접 넣는다.
     var latest = history[history.length - 1];
     var ridi = latest && latest.ridibooks;
     if (ridi) {
-      var ridiGroupHtml =
-        '<div class="source-group">' +
-        '<div class="source-header"><img src="/assets/logos/ridi.png" alt="" onerror="this.style.display=\'none\'">리디북스</div>' +
-        '<div class="tiles">' +
-        staticTile(
+      groups.push({
+        key: "ridibooks", label: "리디북스", logo: "/assets/logos/ridi.png",
+        customBodyHtml: staticTile(
           "참고",
           ridi.rating ? ridi.rating.toFixed(1) + "점" : "평가 없음",
           "평가 " + (ridi.rating_count || 0) + "명 · 베스트셀러 순위 없음(전자책 전용 플랫폼)",
           "https://ridibooks.com/books/2234005394"
-        ) +
-        "</div></div>";
-      document.getElementById("questionBookTiles").insertAdjacentHTML("beforeend", ridiGroupHtml);
+        ),
+      });
     }
-  }
 
-  function renderError(elId, e) {
-    var el = document.getElementById(elId);
-    if (e && e.notYet) {
-      el.innerHTML = '<div class="empty">아직 수집 전입니다. GitHub Actions에서 <code>Fetch book insight</code> 워크플로가 한 번 돌면 채워집니다 (매일 06:41 자동 실행).</div>';
-    } else {
-      el.innerHTML = '<div class="err">불러오기 실패했습니다: ' + escapeHtml(String(e && e.message || e)) + "</div>";
-    }
+    return groups;
   }
 })();
 </script>
