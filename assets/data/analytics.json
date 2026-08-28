@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-08-28T12:46:01.956851+00:00",
+  "updated_at": "2026-08-28T19:31:00.657616+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 69,
-    "activeUsers": 31,
-    "newUsers": 30,
+    "sessions": 71,
+    "activeUsers": 32,
+    "newUsers": 31,
     "returningUsers": 1
   },
   "daily": [
@@ -24,10 +24,17 @@
     },
     {
       "date": "2026-08-28",
-      "sessions": 26,
-      "activeUsers": 8,
-      "newUsers": 4,
+      "sessions": 27,
+      "activeUsers": 9,
+      "newUsers": 5,
       "returningUsers": 4
+    },
+    {
+      "date": "2026-08-29",
+      "sessions": 1,
+      "activeUsers": 1,
+      "newUsers": 0,
+      "returningUsers": 1
     }
   ],
   "daily_leads": [
@@ -41,9 +48,9 @@
     }
   ],
   "landing_types": {
-    "home": 54,
+    "home": 59,
     "log_home": 6,
-    "individual_post": 21,
+    "individual_post": 23,
     "other": 9
   },
   "top_sources": [
@@ -53,7 +60,7 @@
     },
     {
       "source": "(not set)",
-      "sessions": 17
+      "sessions": 20
     },
     {
       "source": "searchadvisor.naver.com",
@@ -68,6 +75,10 @@
       "sessions": 2
     },
     {
+      "source": "brunch.co.kr",
+      "sessions": 1
+    },
+    {
       "source": "linkedin.com",
       "sessions": 1
     },
@@ -79,14 +90,14 @@
   "ai_referrals": [],
   "engagement_events": {
     "section_view_proven": 225,
-    "section_view_voices": 165,
-    "section_view_book_class": 100,
-    "section_view_faq": 89,
+    "section_view_voices": 166,
+    "section_view_book_class": 101,
+    "section_view_faq": 90,
     "faq_open": 16,
-    "read_complete": 175
+    "read_complete": 178
   },
   "contact_funnel": {
-    "contact_open": 24,
+    "contact_open": 25,
     "generate_lead": 3,
     "contact_error": 3
   },
@@ -139,6 +150,16 @@
       "sessions": 1
     },
     {
+      "path": "/log_assets/markdown/240_데일리 스크럼이 필수일까.html",
+      "title": "/log_assets/markdown/240_데일리 스크럼이 필수일까.html",
+      "sessions": 1
+    },
+    {
+      "path": "/log_assets/markdown/260_애자일 매니페스토란.html",
+      "title": "/log_assets/markdown/260_애자일 매니페스토란.html",
+      "sessions": 1
+    },
+    {
       "path": "/log_assets/markdown/267_애자일이란.html",
       "title": "/log_assets/markdown/267_애자일이란.html",
       "sessions": 1
@@ -166,16 +187,6 @@
     {
       "path": "/log_assets/markdown/594_회사사이트 있으시죠.html",
       "title": "/log_assets/markdown/594_회사사이트 있으시죠.html",
-      "sessions": 1
-    },
-    {
-      "path": "/log_assets/markdown/607_C레벨이라는 리더는 어떻게 일해야 하나요.html",
-      "title": "/log_assets/markdown/607_C레벨이라는 리더는 어떻게 일해야 하나요.html",
-      "sessions": 1
-    },
-    {
-      "path": "/log_assets/markdown/614_코치S 17화 두둥~ 한교수의 등장.html",
-      "title": "/log_assets/markdown/614_코치S 17화 두둥~ 한교수의 등장.html",
       "sessions": 1
     }
   ],
