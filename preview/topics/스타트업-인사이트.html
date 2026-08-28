@@ -7,7 +7,7 @@ title: "스타트업 인사이트 — Simplifier"
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-{% assign pillar = site.data.pillars["스타트업-인사이트"] %}
+{% assign pillar = site.data.pillars.pillars | where: "category", "스타트업 인사이트" | first %}
 {% assign topic_posts = site.data.posts | where: "category", pillar.category %}
 {% assign canonical_url = "https://simplifier.co.kr" | append: page.url %}
 
