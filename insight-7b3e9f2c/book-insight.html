@@ -391,14 +391,18 @@
 
   /* 각 타일에 반복해서 찍던 "OO 기준" 날짜를 페이지 상단 한 곳으로
      모은다 -- 어차피 하루 한 번 수집이라 거의 모든 타일이 같은 날짜다. */
+  /* 날짜만 보이면 하루 4번 자동 갱신 중 어느 시점 기록인지 구분이 안 되므로,
+     JSON에 이미 있는 updated_at(수집 시각)을 시각까지 보여준다(다른 Studio
+     페이지와 동일한 정밀도). history의 date는 날짜만 있어서(하루 단위 기록)
+     여기 쓰기엔 부족하다. */
   function stampDataAsOf(results) {
-    var dates = results.map(function (r) {
-      var h = r && r.history;
-      return h && h.length ? h[h.length - 1].date : null;
-    }).filter(Boolean);
+    var updates = results.map(function (r) { return r && r.updatedAt ? new Date(r.updatedAt) : null; }).filter(Boolean);
     var el = document.getElementById("dataAsOf");
-    if (!dates.length) { el.textContent = ""; return; }
-    el.textContent = "· 데이터 기준 " + dates.sort().pop();
+    if (!updates.length) { el.textContent = ""; return; }
+    var latest = updates.reduce(function (a, b) { return b > a ? b : a; });
+    var y = latest.getFullYear(), m = String(latest.getMonth() + 1).padStart(2, "0"), d = String(latest.getDate()).padStart(2, "0");
+    var time = latest.toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit" });
+    el.textContent = "· 데이터 기준 " + y + "-" + m + "-" + d + " " + time;
   }
 
   function load() {
@@ -432,7 +436,7 @@
       .then(function (data) {
         var history = (data && data.history) || [];
         if (!history.length) return { ok: true, notYet: true, groups: null, history: null };
-        return { ok: true, groups: buildUxGroups(history), history: history };
+        return { ok: true, groups: buildUxGroups(history), history: history, updatedAt: data.updated_at };
       })
       .catch(function (e) {
         return { ok: !!(e && e.notYet), notYet: !!(e && e.notYet), groups: null, history: null, message: e && e.notYet ? "" : String((e && e.message) || e) };
@@ -505,7 +509,7 @@
       .then(function (data) {
         var history = (data && data.history) || [];
         if (!history.length) return { ok: true, notYet: true, groups: null, history: null };
-        return { ok: true, groups: buildQuestionGroups(history), history: history };
+        return { ok: true, groups: buildQuestionGroups(history), history: history, updatedAt: data.updated_at };
       })
       .catch(function (e) {
         return { ok: !!(e && e.notYet), notYet: !!(e && e.notYet), groups: null, history: null, message: e && e.notYet ? "" : String((e && e.message) || e) };
