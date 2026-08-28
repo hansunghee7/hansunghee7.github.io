@@ -69,7 +69,9 @@
   .answer strong{font-weight:600;}
   .answer code{background:#f0efe9; padding:1px 5px; border-radius:4px; font-size:0.92em;}
 
-  .answer.err{color:var(--bad);}
+  .answer.err{color:var(--bad); display:flex; flex-direction:column; align-items:flex-start; gap:10px;}
+  .retry-btn{background:none; border:1px solid rgba(184,64,42,0.4); color:var(--bad); border-radius:999px; padding:7px 16px; font-size:12.5px; font-family:inherit; cursor:pointer; transition:background-color .15s;}
+  .retry-btn:hover{background:rgba(184,64,42,0.08);}
 
   .thinking{display:inline-flex; gap:4px; padding:4px 0;}
   .thinking span{width:6px; height:6px; border-radius:50%; background:var(--muted); animation:thinking-bounce 1.2s infinite ease-in-out;}
@@ -255,9 +257,19 @@
     el.scrollIntoView({ behavior: "smooth", block: "end" });
   }
 
-  function renderError(el, message) {
+  function renderErrorWithRetry(el, rawMessage, onRetry) {
+    console.error("AI에게 물어보기 오류:", rawMessage);
     el.className = "answer err";
-    el.textContent = "오류: " + message;
+    el.innerHTML = "";
+    const text = document.createElement("div");
+    text.textContent = "답변을 만드는 중 문제가 생겼습니다. 잠시 후 다시 시도해주세요.";
+    el.appendChild(text);
+    const retryBtn = document.createElement("button");
+    retryBtn.type = "button";
+    retryBtn.className = "retry-btn";
+    retryBtn.textContent = "다시 시도";
+    retryBtn.addEventListener("click", () => onRetry());
+    el.appendChild(retryBtn);
   }
 
   // 네트워크로 도착하는 덩어리(문장 단위)를 그대로 찍지 않고, 큐에 쌓아뒀다가
@@ -320,12 +332,19 @@
   async function ask(question) {
     showThread();
     addUserRow(question);
-    btn.disabled = true;
     const answerEl = addAnswerRow();
+    await fetchAnswer(question, answerEl);
+  }
+
+  async function fetchAnswer(question, answerEl) {
+    btn.disabled = true;
+    answerEl.className = "answer";
+    answerEl.innerHTML = '<div class="thinking"><span></span><span></span><span></span></div>';
 
     let sources = null;
     let started = false;
     const typewriter = createTypewriter(answerEl);
+    const retry = () => fetchAnswer(question, answerEl);
 
     try {
       const res = await fetch(WORKER_URL, {
@@ -339,7 +358,7 @@
 
       if (!res.ok || !res.body) {
         const data = await res.json().catch(() => ({}));
-        renderError(answerEl, data.error || res.status);
+        renderErrorWithRetry(answerEl, data.error || res.status, retry);
         return;
       }
 
@@ -381,7 +400,7 @@
             typewriter.push(payload.text);
           } else if (eventType === "error") {
             typewriter.stop();
-            renderError(answerEl, payload.error);
+            renderErrorWithRetry(answerEl, payload.error, retry);
             return;
           }
         }
@@ -392,7 +411,7 @@
       finalizeAnswer(answerEl, finalText, sources);
     } catch (err) {
       typewriter.stop();
-      renderError(answerEl, "연결 오류 — " + err.message);
+      renderErrorWithRetry(answerEl, "연결 오류 — " + err.message, retry);
       setupNote.style.display = "block";
     } finally {
       btn.disabled = false;
