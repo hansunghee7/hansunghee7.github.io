@@ -28,10 +28,18 @@
   }
   .wrap{max-width:1100px; margin:0 auto; padding:0 var(--gutter) 60px;}
   @media (min-width:761px){ :root{ --gutter:32px; } }
-  header{padding:28px 0 18px; border-bottom:1px solid var(--line-soft); margin-bottom:24px;}
-  h1{font-family:'Noto Serif KR',serif; font-weight:400; font-size:30px; letter-spacing:-0.01em; margin:0 0 8px;}
+  /* 제목·새로고침 버튼·데이터 기준 날짜를 한 줄에 몰아서 세로 공간을
+     아낀다 -- 설치 안내 같은 한 번만 알면 되는 정보는 제목 옆 ⓘ 아이콘
+     hover 툴팁으로 뺐다(북 인사이트와 동일한 패턴). */
+  header{display:flex; align-items:center; flex-wrap:wrap; gap:14px; padding:28px 0 18px; border-bottom:1px solid var(--line-soft); margin-bottom:24px;}
+  h1{font-family:'Noto Serif KR',serif; font-weight:400; font-size:30px; letter-spacing:-0.01em; margin:0; display:inline-flex; align-items:baseline; gap:8px;}
   @media (min-width:761px){ h1{font-size:36px;} }
-  .sub{font-size:12.5px; color:var(--muted); line-height:1.6;}
+  h1 .info-dot{font-size:15px;}
+  .meta-text{color:var(--muted); font-size:12.5px;}
+  /* 날짜/기록수 같은 부가정보는 항상 보여주지 않고 이 점 아이콘에 마우스를
+     올렸을 때만 툴팁으로 보여준다 -- 숫자와 그래프만 항상 보이게 해서
+     세로 공간을 아낀다. */
+  .info-dot{margin-left:auto; font-size:11px; color:var(--muted); cursor:help; flex-shrink:0;}
 
   /* ---- admin shell: 사이드바 ----
      insight-7b3e9f2c/index.html, multi-publish.html, write.html 과 동일한
@@ -52,6 +60,7 @@
 
   #grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:16px;}
   .platform-card{border:1px solid var(--line-soft); border-radius:10px; padding:18px;}
+  .platform-card.is-empty{opacity:0.45;}
   .platform-card.total-card{grid-column:1 / -1; background:#f7f6f2; border-color:var(--line);}
   .platform-card.total-card .count{font-size:38px;}
   .platform-card h3{margin:0 0 4px; font-size:14px; font-weight:600; display:flex; align-items:center; gap:6px;}
@@ -64,7 +73,6 @@
   .platform-card .latest .delta.up{color:var(--good);}
   .platform-card .latest .delta.down{color:var(--bad);}
   .platform-card .latest .unit{font-size:12px; color:var(--muted);}
-  .platform-card .asof{font-size:11px; color:var(--muted); margin-bottom:10px;}
   .platform-card svg{width:100%; height:56px; display:block;}
   .platform-card .empty{font-size:12px; color:var(--muted); padding:20px 0; text-align:center;}
   .platform-card .secondary-stat{font-size:11.5px; color:var(--muted); margin-top:8px;}
@@ -72,10 +80,6 @@
   .loading, .err{font-size:13px; color:var(--muted); padding:20px 0;}
   .err{color:var(--bad);}
 
-  .setup-note{background:#f7f6f2; border-radius:10px; padding:16px 18px; font-size:12.5px; color:var(--dim); line-height:1.7; margin-bottom:24px;}
-  .setup-note code{background:#eeece5; padding:1px 5px; border-radius:4px; font-size:11.5px;}
-
-  .metaline{color:var(--muted); font-size:12.5px; display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center; margin-top:10px;}
   .refresh{
     background:none; border:1px solid var(--line); color:var(--dim); cursor:pointer;
     border-radius:999px; padding:7px 15px; font-size:12.5px; font-family:inherit;
@@ -103,22 +107,10 @@
 
 <div class="wrap">
   <header>
-    <h1>SNS 인사이트</h1>
-    <div class="sub">각 SNS 프로필의 팔로워 수 추이입니다. 오늘자 기록이 이미 있으면 그대로 보여주고, 없을 때만 새로고침이 크롬 확장에 전체 수집을 요청합니다(8개 중 아무 SNS나 직접 방문해도 동일하게 수집됩니다).</div>
-    <div class="metaline">
-      <button class="refresh" id="refreshBtn"><span class="refresh-icon">↻</span> <span class="refresh-label">새로고침</span></button>
-      <span id="lastRefresh"></span>
-    </div>
+    <h1>SNS 인사이트<span class="info-dot" id="titleInfo" title="각 SNS 프로필의 팔로워 수 추이입니다. 오늘자 기록이 이미 있으면 그대로 보여주고, 없을 때만 새로고침이 크롬 확장에 전체 수집을 요청합니다(8개 중 아무 SNS나 직접 방문해도 동일하게 수집됩니다). 기록이 안 보이면 _sns-extension 크롬 확장을 설치하고 GitHub 연결까지 해야 합니다. 수집·커밋에 몇십 초 걸리니 방금 요청한 값은 조금 있다 다시 새로고침해야 보입니다.">ⓘ</span></h1>
+    <button class="refresh" id="refreshBtn"><span class="refresh-icon">↻</span> <span class="refresh-label">새로고침</span></button>
+    <span id="lastRefresh" class="meta-text"></span>
   </header>
-
-  <div class="setup-note">
-    <strong>기록이 안 보이나요?</strong> <code>_sns-extension</code>
-    크롬 확장을 설치하고 GitHub 연결까지 해야 기록이 쌓입니다. 그 뒤로는
-    오늘자 기록이 없을 때 위 새로고침을 누르거나 8개 SNS 중 아무 곳이나
-    직접 방문하면 자동으로 나머지까지 한 바퀴 수집됩니다. 다만 수집·커밋에
-    몇십 초 걸리니, 방금 요청한 값은 조금 있다 다시 새로고침해야 보입니다.
-    (오늘자 기록이 이미 있으면 새로고침은 그냥 화면만 다시 불러옵니다.)
-  </div>
 
   <div id="statusArea"></div>
   <div id="grid"><div class="loading">불러오는 중…</div></div>
@@ -265,8 +257,9 @@
     return (
       '<div class="platform-card total-card"><h3>전체 합계</h3>' +
       '<span class="source-badge">' + channelCount + "개 채널 합산</span>" +
-      '<div class="latest"><span class="count">' + totalNow.toLocaleString() + "</span>" + deltaHtml + '<span class="unit">명</span></div>' +
-      '<div class="asof">' + totalSeries.length + "개 날짜 기록</div>" +
+      '<div class="latest"><span class="count">' + totalNow.toLocaleString() + "</span>" + deltaHtml + '<span class="unit">명</span>' +
+      '<span class="info-dot" title="' + escapeHtml(totalSeries.length + "개 날짜 기록") + '">ⓘ</span>' +
+      "</div>" +
       (totalSeries.length ? sparkline(totalSeries, 900) : "") +
       "</div>"
     );
@@ -304,7 +297,7 @@
     var series = data[p.key] || [];
     if (!series.length) {
       return (
-        '<div class="platform-card">' + headerHtml(p) +
+        '<div class="platform-card is-empty">' + headerHtml(p) +
         '<span class="source-badge">' + escapeHtml(p.source) + "</span>" +
         '<div class="empty">아직 기록된 데이터가 없습니다</div></div>'
       );
@@ -325,11 +318,14 @@
       secondaryHtml = '<div class="secondary-stat">' + escapeHtml(p.secondaryLabel) + " " + secLatest.count.toLocaleString() + "</div>";
     }
 
+    var infoTitle = latest.date + " 기준 · " + series.length + "개 기록";
+
     return (
       '<div class="platform-card">' + headerHtml(p) +
       '<span class="source-badge">' + escapeHtml(p.source) + "</span>" +
-      '<div class="latest"><span class="count">' + latest.count.toLocaleString() + "</span>" + deltaHtml + '<span class="unit">명</span></div>' +
-      '<div class="asof">' + escapeHtml(latest.date) + " 기준 · " + series.length + "개 기록</div>" +
+      '<div class="latest"><span class="count">' + latest.count.toLocaleString() + "</span>" + deltaHtml + '<span class="unit">명</span>' +
+      '<span class="info-dot" title="' + escapeHtml(infoTitle) + '">ⓘ</span>' +
+      "</div>" +
       sparkline(series) +
       secondaryHtml +
       "</div>"
