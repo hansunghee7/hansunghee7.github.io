@@ -76,7 +76,18 @@ function getSortMode(cat) {
     return categoryDefaults[cat] || 'desc'; 
 } 
 
-const urlParams = new URLSearchParams(window.location.search); const catParam = urlParams.get('cat'); if (catParam) { const targetBtn = Array.from(filterBtns).find(b => b.getAttribute('data-filter') === catParam); if (targetBtn) { filterBtns.forEach(b => b.classList.remove('active')); targetBtn.classList.add('active'); currentFilter = catParam; } } 
+const urlParams = new URLSearchParams(window.location.search); const catParam = urlParams.get('cat');
+/* ?cat= 필터 링크는 각 카테고리의 진짜 주소인 필러 페이지(/log/*.html)가
+   생기기 전 방식이다. 사이트 내부 링크는 이미 다 필러 페이지로 바뀌었지만,
+   예전에 검색엔진이 색인해둔 ?cat= 주소나 남아있는 외부/북마크 링크로
+   들어오는 경우, 같은 내용이 두 주소에 걸쳐 있는 것처럼 보여 검색 신뢰도가
+   갈린다. 대응하는 필러 페이지가 있으면 그쪽으로 바로 보낸다. */
+var pillarUrlByCategory = {
+  {% for p in site.data.pillars.pillars %}{{ p.category | jsonify }}: {{ p.pillar_url | jsonify }}{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+};
+if (catParam && pillarUrlByCategory[catParam]) { window.location.replace(pillarUrlByCategory[catParam]); return; }
+if (catParam) { const targetBtn = Array.from(filterBtns).find(b => b.getAttribute('data-filter') === catParam); if (targetBtn) { filterBtns.forEach(b => b.classList.remove('active')); targetBtn.classList.add('active'); currentFilter = catParam; } }
 
 let sortMode = getSortMode(currentFilter); 
 
