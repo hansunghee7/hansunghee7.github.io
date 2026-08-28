@@ -12,75 +12,12 @@
 <!-- Studio 메뉴 타이틀(h1)은 명조체 큰 제목으로 통일합니다. -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<link rel="stylesheet" href="/insight-7b3e9f2c/studio.css">
 
 <style>
-  :root{
-    --bg:#ffffff; --ink:#121210; --muted:#6e6a62; --dim:#403d37;
-    --line:#c8c6bf; --line-soft:rgba(20,20,15,0.07);
-    --card:#ffffff; --good:#1f7a4f; --warn:#a3690f; --bad:#b8402a;
-    --gutter:16px;
-  }
-  *{box-sizing:border-box;}
-  body{
-    margin:0; background:var(--bg); color:var(--ink);
-    font-family:'Pretendard Variable','Pretendard',-apple-system,sans-serif;
-    -webkit-font-smoothing:antialiased; word-break:keep-all;
-  }
-  .wrap{max-width:1100px; margin:0 auto; padding:0 var(--gutter) 60px;}
-  @media (min-width:761px){ :root{ --gutter:32px; } }
-  /* 제목·새로고침 버튼·데이터 기준 날짜를 한 줄에 몰아서 세로 공간을
-     아낀다 -- 설치 안내 같은 한 번만 알면 되는 정보는 제목 옆 ⓘ 아이콘
-     hover 툴팁으로 뺐다(북 인사이트와 동일한 패턴). */
-  header{display:flex; align-items:center; flex-wrap:wrap; gap:14px; padding:28px 0 18px; border-bottom:1px solid var(--line-soft); margin-bottom:24px;}
-  h1{font-family:'Noto Serif KR',serif; font-weight:400; font-size:30px; letter-spacing:-0.01em; margin:0; display:inline-flex; align-items:baseline; gap:8px;}
-  @media (min-width:761px){ h1{font-size:36px;} }
-  h1 .info-dot{font-size:15px;}
-  .meta-text{color:var(--muted); font-size:12.5px;}
-  /* 날짜/기록수 같은 부가정보는 이 ⓘ 버튼 뒤에 숨겨둔다. 라벨(카드 제목)
-     바로 옆에 붙여서 "이게 뭔지" 알려주는 요소끼리 모아두고, 숫자 줄은
-     방해 없이 크게 본다 -- 북 인사이트·사이트 인사이트와 동일한 배치
-     원칙(라벨에 항상 붙여서, 줄 끝으로 밀어두지 않음). 마우스를 올리면
-     (데스크톱) 또는 탭하면(터치기기 -- hover가 없어서 aria-pressed를 켜서
-     같은 CSS로 띄운다) 말풍선이 뜬다. */
-  .info-dot{
-    display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;
-    width:14px; height:14px; border:none; background:none; color:var(--muted);
-    font-size:13px; font-family:inherit; line-height:1; cursor:pointer; padding:0;
-    position:relative;
-  }
-  .info-dot:hover, .info-dot[aria-pressed="true"]{color:var(--ink);}
-  .info-text{
-    position:absolute; left:0; top:calc(100% + 8px);
-    width:max-content; max-width:min(360px, 90vw); text-align:left;
-    background:var(--ink); color:#fff; font-size:11.5px; font-weight:400;
-    line-height:1.5; white-space:normal;
-    padding:8px 11px; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.18);
-    opacity:0; visibility:hidden; pointer-events:none;
-    transform:translateY(-4px);
-    transition:opacity .15s, transform .15s, visibility .15s;
-    z-index:30;
-  }
-  .info-dot:hover .info-text, .info-dot[aria-pressed="true"] .info-text{
-    opacity:1; visibility:visible; transform:translateY(0); pointer-events:auto;
-  }
+  /* 이 페이지 카드 안 ⓘ는 studio.css 기본값(420px)보다 좁게 쓴다. */
+  .info-text{max-width:min(360px, 90vw);}
   #titleInfo .info-text{max-width:min(480px, 90vw);}
-
-  /* ---- admin shell: 사이드바 ----
-     insight-7b3e9f2c/index.html, multi-publish.html, write.html 과 동일한
-     블록입니다. 메뉴를 바꾸면 다른 파일에도 똑같이 반영해야 합니다
-     (Jekyll include가 아니라 순수 정적 HTML이라 공유가 안 됩니다). */
-  #adminShellNav{position:fixed; top:0; left:0; bottom:0; width:180px; padding:24px 14px; background:#f7f6f2; border-right:1px solid var(--line-soft); overflow-y:auto; z-index:100;}
-  #adminShellNav .shell-title{font-size:12px; font-weight:600; color:var(--muted); letter-spacing:0.05em; text-transform:uppercase; margin:0 0 16px; padding:0 10px;}
-  #adminShellNav a{display:block; padding:9px 10px; margin-bottom:2px; border-radius:6px; color:var(--dim); text-decoration:none; font-size:14px;}
-  #adminShellNav a:hover{background:var(--line-soft);}
-  #adminShellNav a.active{background:var(--ink); color:#fff;}
-  body.has-shell-nav{padding-left:180px;}
-  @media (max-width:760px){
-    #adminShellNav{position:static; width:auto; display:flex; gap:4px; overflow-x:auto; border-right:none; border-bottom:1px solid var(--line-soft); padding:10px 12px;}
-    #adminShellNav .shell-title{display:none;}
-    #adminShellNav a{white-space:nowrap; margin-bottom:0;}
-    body.has-shell-nav{padding-left:0;}
-  }
 
   #grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:16px;}
   .platform-card{border:1px solid var(--line-soft); border-radius:10px; padding:18px;}
@@ -103,33 +40,10 @@
 
   .loading, .err{font-size:13px; color:var(--muted); padding:20px 0;}
   .err{color:var(--bad);}
-
-  .refresh{
-    background:none; border:1px solid var(--line); color:var(--dim); cursor:pointer;
-    border-radius:999px; padding:7px 15px; font-size:12.5px; font-family:inherit;
-    transition:background-color .2s,border-color .2s,color .2s;
-  }
-  .refresh:hover:not(:disabled){background:var(--ink); border-color:var(--ink); color:#fff;}
-  .refresh:disabled{cursor:default; opacity:0.75;}
-  .refresh.is-success{border-color:var(--good); color:var(--good);}
-  .refresh.is-error{border-color:var(--bad); color:var(--bad);}
-  .refresh.is-loading .refresh-icon{display:inline-block; animation:refresh-spin .7s linear infinite;}
-  @keyframes refresh-spin{ to{ transform:rotate(360deg); } }
 </style>
 </head>
 <body class="has-shell-nav">
-<nav id="adminShellNav">
-  <div class="shell-title">Simplifier Studio</div>
-  <a href="/insight-7b3e9f2c/">사이트 인사이트</a>
-  <a href="/insight-7b3e9f2c/sns-insight.html" class="active">SNS 인사이트</a>
-  <a href="/insight-7b3e9f2c/book-insight.html">북 인사이트</a>
-  <a href="/insight-7b3e9f2c/write.html">글쓰기</a>
-  <a href="/insight-7b3e9f2c/multi-publish.html">멀티 퍼블리싱</a>
-  <a href="/insight-7b3e9f2c/shorts-studio.html">숏폼 스튜디오</a>
-  <a href="/insight-7b3e9f2c/newsletter-research.html">뉴스레터 리서치</a>
-  <a href="/insight-7b3e9f2c/pillar-manage.html">필러 관리</a>
-  <a href="/insight-7b3e9f2c/ask.html">Simplifier와의 대화</a>
-</nav>
+<nav id="adminShellNav"></nav>
 
 <div class="wrap">
   <header>
@@ -180,18 +94,6 @@
       " " + d.toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit" });
   }
 
-  /* ⓘ는 마우스를 올리면(:hover) 말풍선이 뜬다(CSS만으로 처리). 터치기기는
-     hover가 없으므로, 탭하면 aria-pressed를 켜서 같은 CSS 규칙으로 말풍선을
-     띄우고 다시 탭하거나 다른 곳을 탭하면 닫는다. */
-  document.addEventListener("click", function (e) {
-    var btn = e.target.closest ? e.target.closest(".info-dot") : null;
-    var wasOpen = btn && btn.getAttribute("aria-pressed") === "true";
-    document.querySelectorAll('.info-dot[aria-pressed="true"]').forEach(function (o) { o.setAttribute("aria-pressed", "false"); });
-    if (!btn) return;
-    e.preventDefault();
-    btn.setAttribute("aria-pressed", wasOpen ? "false" : "true");
-  });
-
   function kstToday() {
     return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Seoul" }).format(new Date());
   }
@@ -205,25 +107,6 @@
       var series = data[p.key] || [];
       return series.length > 0 && series[series.length - 1].date === today;
     });
-  }
-
-  function setRefreshState(btn, state) {
-    btn.classList.remove("is-loading", "is-success", "is-error");
-    var icon = btn.querySelector(".refresh-icon");
-    var label = btn.querySelector(".refresh-label");
-    if (state === "loading") {
-      btn.disabled = true; btn.classList.add("is-loading");
-      icon.textContent = "↻"; label.textContent = "불러오는 중…";
-    } else if (state === "success") {
-      btn.disabled = false; btn.classList.add("is-success");
-      icon.textContent = "✓"; label.textContent = "완료";
-    } else if (state === "error") {
-      btn.disabled = false; btn.classList.add("is-error");
-      icon.textContent = "✕"; label.textContent = "실패";
-    } else {
-      btn.disabled = false;
-      icon.textContent = "↻"; label.textContent = "새로고침";
-    }
   }
 
   function load() {
@@ -243,14 +126,14 @@
 
   document.getElementById("refreshBtn").addEventListener("click", function () {
     var btn = this;
-    setRefreshState(btn, "loading");
+    Studio.setRefreshState(btn, "loading");
     load().then(function (ok) {
       stampRefresh(lastData);
       if (ok && isFresh(lastData)) {
         // 이미 오늘자 기록이 다 있으면, 굳이 크롬 확장에 8개 전체 수집을
         // 또 요청하지 않는다 -- 방금 불러온 값을 다시 보여주는 걸로 끝낸다.
-        setRefreshState(btn, "success");
-        setTimeout(function () { setRefreshState(btn, "idle"); }, 1600);
+        Studio.setRefreshState(btn, "success");
+        setTimeout(function () { Studio.setRefreshState(btn, "idle"); }, 1600);
         return;
       }
       // 오늘자 기록이 없는 플랫폼이 있을 때만 크롬 확장(설치돼 있으면)에
@@ -258,8 +141,8 @@
       // 걸리는 별도 과정이라, 방금 요청한 새 값은 조금 있다 다시
       // 새로고침해야 보인다.
       window.dispatchEvent(new CustomEvent("simplifier-sns-force-refresh"));
-      setRefreshState(btn, ok ? "success" : "error");
-      setTimeout(function () { setRefreshState(btn, "idle"); }, 1600);
+      Studio.setRefreshState(btn, ok ? "success" : "error");
+      setTimeout(function () { Studio.setRefreshState(btn, "idle"); }, 1600);
     });
   });
   load().then(function () { stampRefresh(lastData); });
@@ -407,5 +290,6 @@
   }
 })();
 </script>
+<script src="/insight-7b3e9f2c/studio.js"></script>
 </body>
 </html>
