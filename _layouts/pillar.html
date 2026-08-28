@@ -185,7 +185,8 @@
         {% if cat == pillar.category %}
           <a href="{{ page.url }}" class="active">{{ cat }}</a>
         {% else %}
-          <a href="/log.html?cat={{ cat | url_encode }}">{{ cat }}</a>
+          {% assign other_hub = site.data.pillars.pillars | where: "category", cat | first %}
+          <a href="{% if other_hub.pillar_url %}{{ other_hub.pillar_url }}{% else %}/log.html?cat={{ cat | url_encode }}{% endif %}">{{ cat }}</a>
         {% endif %}
       {% endfor %}
     </nav>
