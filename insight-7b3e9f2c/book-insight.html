@@ -211,14 +211,19 @@
   /* metric = { label, unit, higherIsBetter, note, href, headline }
      series = [{date, value}] (null 값은 이미 걸러서 넘김)
      noteOverride: 데이터에서 즉석으로 뽑아낸 note가 있으면 metric.note
-     대신 이걸 쓴다 (예: 교보 배지의 실제 카테고리명).
+     대신 이걸 쓴다.
+     labelOverride: 라벨 자체를 데이터로 바꿔야 할 때 쓴다(예: 교보 "주간베스트"는
+     실제로는 "주간베스트 경제/경영"처럼 카테고리가 항상 같이 보여야 하는데,
+     ⓘ 툴팁 안에 카테고리를 숨겨놨더니 실제 서점 페이지 표기와 달라 보인다는
+     피드백을 받아 라벨 자체에 다시 포함시켰다).
      날짜/기록수/note는 항상 보여주지 않고 ⓘ 아이콘에 마우스를 올렸을 때만
      보이는 툴팁으로 묶는다 -- 숫자와 그래프(추세는 핵심 정보라 항상 유지)만
      남기고 세로 공간을 아낀다. */
-  function tile(metric, series, noteOverride, w) {
+  function tile(metric, series, noteOverride, w, labelOverride) {
     var clean = series.filter(function (e) { return e.value != null; });
     var cardClass = "tile" + (metric.headline ? " tile-headline" : "");
-    var labelText = '<span class="label-text" title="' + escapeHtml(metric.label) + '">' + labelHtml(metric.label, metric.href) + "</span>";
+    var labelStr = labelOverride || metric.label;
+    var labelText = '<span class="label-text" title="' + escapeHtml(labelStr) + '">' + labelHtml(labelStr, metric.href) + "</span>";
 
     if (!clean.length) {
       // 오늘은 순위 밖이어도 내일 다시 잡힐 수 있으니, 카드를 아예 없애거나
@@ -276,8 +281,10 @@
      지표가 아닌 경우) metrics 대신 그걸 그대로 쓴다. */
   function tileFor(m, history, w) {
     var series = history.map(function (r) { return { date: r.date, value: m.get(r) }; });
-    var note = m.noteGet ? m.noteGet(history[history.length - 1]) : null;
-    return tile(m, series, note, w);
+    var latest = history[history.length - 1];
+    var note = m.noteGet ? m.noteGet(latest) : null;
+    var labelOverride = m.labelGet ? m.labelGet(latest) : null;
+    return tile(m, series, note, w, labelOverride);
   }
 
   function sourceGroupHtml(g, history) {
@@ -466,10 +473,13 @@
         metrics: [
           // 라벨을 "온라인 주간"으로 고정해뒀었는데, 실제 배지 카테고리명은
           // 책마다 다르다(이 책은 "경제/경영"). 이름을 지어내는 대신 스크래핑
-          // 시점에 실제로 읽은 카테고리명을 note로 그대로 보여준다.
+          // 시점에 실제로 읽은 카테고리명을 라벨에 그대로 붙인다 -- 교보문고
+          // 실제 책 페이지도 "주간베스트 경제/경영 764위"처럼 카테고리를 항상
+          // 같이 보여주므로, 카테고리를 ⓘ 툴팁 뒤에 숨기면 실제 표기와 달라
+          // 보인다는 피드백을 반영했다.
           { key: "kyobo_badge", label: "주간베스트", unit: "위", higherIsBetter: false, headline: true, href: KYOBO_PRODUCT,
             get: function (r) { return r.kyobo && r.kyobo.badge_rank; },
-            noteGet: function (r) { return r.kyobo && r.kyobo.badge_category ? "카테고리: " + r.kyobo.badge_category : null; } },
+            labelGet: function (r) { return r.kyobo && r.kyobo.badge_category ? "주간베스트 " + r.kyobo.badge_category : null; } },
           { key: "kyobo_strategy", label: "경영전략일반", unit: "위", higherIsBetter: false, href: KYOBO_STRATEGY, get: function (r) { return r.kyobo && r.kyobo.strategy_rank; } },
           { key: "kyobo_uxui", label: "UX/UI", unit: "위", higherIsBetter: false, href: KYOBO_UXUI, get: function (r) { return r.kyobo && r.kyobo.uxui_cat; } },
         ],
@@ -527,10 +537,13 @@
         metrics: [
           // "온라인 주간"으로 라벨을 고정해뒀었는데, 실제 배지 카테고리명은
           // 책마다 다르다(이 책은 "자기계발"). 이름을 지어내는 대신 스크래핑
-          // 시점에 실제로 읽은 카테고리명을 note로 그대로 보여준다.
+          // 시점에 실제로 읽은 카테고리명을 라벨에 그대로 붙인다 -- 교보문고
+          // 실제 책 페이지도 "주간베스트 자기계발 746위"처럼 카테고리를 항상
+          // 같이 보여주므로, 카테고리를 ⓘ 툴팁 뒤에 숨기면 실제 표기와 달라
+          // 보인다는 피드백을 반영했다.
           { key: "kybadge", label: "주간베스트", unit: "위", higherIsBetter: false, headline: true, href: KYOBO_PRODUCT,
             get: function (r) { return r.kyobo && r.kyobo.badge_rank; },
-            noteGet: function (r) { return r.kyobo && r.kyobo.badge_category ? "카테고리: " + r.kyobo.badge_category : null; } },
+            labelGet: function (r) { return r.kyobo && r.kyobo.badge_category ? "주간베스트 " + r.kyobo.badge_category : null; } },
           { key: "kycat", label: "기획력", unit: "위", higherIsBetter: false, href: KYOBO_CAT, get: function (r) { return r.kyobo && r.kyobo.category_rank; } },
         ],
       },
