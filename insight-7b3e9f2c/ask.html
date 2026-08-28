@@ -244,6 +244,42 @@
     el.textContent = "오류: " + message;
   }
 
+  // 네트워크로 도착하는 덩어리(문장 단위)를 그대로 찍지 않고, 큐에 쌓아뒀다가
+  // 일정한 속도로 한 글자씩 풀어서 보여준다 -- 실제 클로드/챗GPT가 하는 방식.
+  function createTypewriter(el) {
+    let pending = "";
+    let revealed = "";
+    let streamEnded = false;
+    let timer = null;
+    let resolveDone;
+    const done = new Promise((resolve) => { resolveDone = resolve; });
+
+    function tick() {
+      if (pending.length > 0) {
+        // 쌓인 게 많으면 조금씩 빨리, 거의 다 풀렸으면 한 글자씩 -- 자연스러운 타이핑 느낌.
+        const step = Math.max(1, Math.ceil(pending.length / 20));
+        revealed += pending.slice(0, step);
+        pending = pending.slice(step);
+        renderStreamingText(el, revealed);
+      } else if (streamEnded) {
+        clearInterval(timer);
+        timer = null;
+        resolveDone(revealed);
+      }
+    }
+    timer = setInterval(tick, 16);
+
+    return {
+      push(text) { pending += text; },
+      end() { streamEnded = true; },
+      stop() {
+        if (timer) { clearInterval(timer); timer = null; }
+        resolveDone(revealed + pending);
+      },
+      done,
+    };
+  }
+
   function autoGrow() {
     input.style.height = "auto";
     input.style.height = Math.min(input.scrollHeight, 160) + "px";
@@ -272,8 +308,8 @@
     const answerEl = addAnswerRow();
 
     let sources = null;
-    let buffer = "";
     let started = false;
+    const typewriter = createTypewriter(answerEl);
 
     try {
       const res = await fetch(WORKER_URL, {
@@ -326,17 +362,20 @@
               started = true;
               answerEl.innerHTML = "";
             }
-            buffer += payload.text;
-            renderStreamingText(answerEl, buffer);
+            typewriter.push(payload.text);
           } else if (eventType === "error") {
+            typewriter.stop();
             renderError(answerEl, payload.error);
             return;
           }
         }
       }
 
-      finalizeAnswer(answerEl, buffer, sources);
+      typewriter.end();
+      const finalText = await typewriter.done;
+      finalizeAnswer(answerEl, finalText, sources);
     } catch (err) {
+      typewriter.stop();
       renderError(answerEl, "연결 오류 — " + err.message);
       setupNote.style.display = "block";
     } finally {
