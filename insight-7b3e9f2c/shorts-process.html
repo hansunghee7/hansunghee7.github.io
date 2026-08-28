@@ -62,13 +62,14 @@
 <div class="wrap">
   <header>
     <h1>숏폼 공정 정본</h1>
-    <span class="meta-text">shorts-lab/PROCESS.md · 자동 생성 2026-08-28 23:29 · 원본이 바뀌면 파이프라인 재실행 시 갱신됩니다</span>
+    <span class="meta-text">shorts-lab/PROCESS.md · 자동 생성 2026-08-28 23:34 · 원본이 바뀌면 파이프라인 재실행 시 갱신됩니다</span>
   </header>
-  <nav class="doc-nav"><a href="/insight-7b3e9f2c/shorts-process.html" class="current">숏폼 공정 정본</a><a href="/insight-7b3e9f2c/shorts-visual-grammar.html">숏폼 연출 사전</a><a href="/insight-7b3e9f2c/shorts-roles.html">숏폼 제작진 역할</a></nav>
+  <nav class="doc-nav"><a href="/insight-7b3e9f2c/shorts-playbook.html">숏폼 파일럿 실행 매뉴얼</a><a href="/insight-7b3e9f2c/shorts-process.html" class="current">숏폼 공정 정본</a><a href="/insight-7b3e9f2c/shorts-visual-grammar.html">숏폼 연출 사전</a><a href="/insight-7b3e9f2c/shorts-roles.html">숏폼 제작진 역할</a></nav>
   <article class="doc">
 <blockquote>
 <p>씬을 "어떻게 역동적으로, 정보 있게" 만들지의 정본은 <a href="shorts-visual-grammar.html">VISUAL_GRAMMAR.md</a>(연출 사전) — 씬 플랜 작성·검증 시 항상 같이 참조.
-공정을 "누가·어떤 관점에서" 수행할지의 정본은 <a href="shorts-roles.html">PRODUCTION_ROLES.md</a>(제작진 역할 문서) — 게이트별 참여 역할과 결정 방식.</p>
+공정을 "누가·어떤 관점에서" 수행할지의 정본은 <a href="shorts-roles.html">PRODUCTION_ROLES.md</a>(제작진 역할 문서) — 게이트별 참여 역할과 결정 방식.
+<strong>"지금 뭘 해야 하지?"는 이 세 문서가 아니라 <a href="shorts-playbook.html">PILOT_PLAYBOOK.md</a>를 본다</strong> — 이 문서들은 Claude가 내부적으로 참조하는 엔진 설계도, PILOT_PLAYBOOK.md는 사용자가 실제로 반복하는 7단계 루프 실행 매뉴얼.</p>
 </blockquote>
 <h2>미션</h2>
 <p>벤치마크 채널을 흉내 내는 게 아니라, <strong>왜 그 포맷이 작동하는지 원리부터 검증</strong>하고 가장 효과적인 AI 숏폼 생성 공정을 처음부터 만든다. 제로투원 접근 — 대본 구조, 음성, 비주얼, 합성 각 단계를 근본부터 검증하고, 검증된 것만 공정에 편입한다.</p>
@@ -81,7 +82,8 @@
 </ol>
 <h2>저장소 구조 (기가팩토리 레이아웃)</h2>
 <pre><code>shorts-lab/
-├── PROCESS.md                  ← 이 문서 (공정 정본)
+├── PILOT_PLAYBOOK.md           ← 실행 매뉴얼 (&quot;지금 뭘 해야 하지?&quot; — 7단계 루프)
+├── PROCESS.md                  ← 이 문서 (공정 정본, 엔진 설계도)
 ├── VISUAL_GRAMMAR.md           ← 연출 사전 (역동성 정의·기법, 인포그래픽 9종, 수치 라이브러리)
 ├── PRODUCTION_ROLES.md         ← 제작진 역할 문서 (게이트별 참여 역할·결정 방식, 향후 멀티 에이전트 자동화 경로)
 ├── pipeline/                   ← 공정 코드 — 에피소드 독립적, 전 채널 공용
@@ -246,6 +248,9 @@ python pipeline/build_studio_site.py        # 심플리파이어 스튜디오용
 </li>
 <li>
 <p><strong>2026-08-28</strong>: <strong>정본 문서 3종을 스튜디오 대시보드에 바로가기로 추가.</strong> 사용자가 "정본문서를 쉽게 찾아볼 수 있게 스튜디오에도 넣어달라"고 요청. <code>build_studio_page.py</code>(아티팩트용)·<code>build_studio_site.py</code>(심플리파이어 사이트용) 둘 다 헤더 아래에 PROCESS.md·VISUAL_GRAMMAR.md·PRODUCTION_ROLES.md로 가는 GitHub 링크 카드를 추가. 두 페이지 재생성 후 아티팩트 재발행(<code>48034cd8-...</code>)과 사이트 저장소 커밋·푸시(<code>b9a565a1</code>) 완료.</p>
+</li>
+<li>
+<p><strong>2026-08-28</strong>: <strong>정본 문서 3종을 심플리파이어 스튜디오 안에서 읽을 수 있는 페이지로 렌더링.</strong> 사용자가 "숏폼 스튜디오 안에서 문서를 보고 싶고, 사이트엔 가독성 스타일 가이드가 있다"고 요청 — 조사해보니 <code>insight-7b3e9f2c/STYLE_GUIDE.md</code>가 그 문서였고(필수 head·nav·script 구조, ⓘ 설명 버튼, 새로고침 상태머신, 과거 사고 기록), 긴 마크다운 문서를 보여주는 기존 패턴은 없어서(<code>.answer</code>는 대화 답변용, marked.js 브라우저 렌더) 이번에 처음 만듦. <code>pipeline/build_docs_pages.py</code> 신설 — Python <code>markdown</code> 라이브러리로 PROCESS.md·VISUAL_GRAMMAR.md·PRODUCTION_ROLES.md를 변환, 문서 간 상대링크를 형제 HTML 페이지로 재작성, 표는 가로 스크롤 래퍼로 감싸 <code>shorts-process.html</code>·<code>shorts-visual-grammar.html</code>·<code>shorts-roles.html</code>로 출력(사이트 저장소 <code>insight-7b3e9f2c/</code>에 직접 씀). STYLE_GUIDE.md 5번 규칙대로 <code>:root</code>/헤더/사이드바 CSS는 studio.css 그대로 쓰고 <code>.doc</code>/<code>.doc-nav</code>/<code>.table-wrap</code>만 새로 추가, 문서 3개 서로 넘나드는 pill 네비게이션도 붙임. <code>python scripts/check_studio_style.py</code>로 검증(FAIL 0건), 로컬 정적 서버로 데스크톱·모바일(375px) 사이드바 동작까지 직접 확인. 스튜디오 대시보드(아티팩트·사이트 양쪽)의 "docs" 링크를 GitHub 원문 대신 이 내부 페이지로 전환. STYLE_GUIDE.md에도 이 <code>.doc</code> 패턴을 향후 재사용 규칙으로 기록.</p>
 </li>
 </ul>
 <h2>열린 질문 / 다음 단계</h2>
