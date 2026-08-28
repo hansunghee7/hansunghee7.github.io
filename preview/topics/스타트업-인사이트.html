@@ -1,56 +1,131 @@
 ---
-layout: default
+layout: null
 title: "스타트업 인사이트 — Simplifier"
-is_index: true
 ---
-<style>
-  /* is_index: true를 안 주면 default.html이 이 페이지를 "개별 글"로 보고
-     화면 전체(100vh)를 덮는 sticky 커버 히어로를 씌운다(post-mode) --
-     log.html이 이 값으로 그 히어로를 작게 만드는 것과 같은 이유로 여기도
-     필요하다. 빠뜨렸더니 상단에 커버만 꽉 차 보이던 버그였다. */
-  /* 이 페이지 전용 다크 테마 오버라이드. log.html의 카드 스타일을 그대로
-     재사용합니다(디자인 일관성) -- 다만 이 페이지는 이미 한 카테고리로
-     걸러진 결과라 .card-item을 항상 보이게(display:flex) 둡니다. log.html은
-     탭으로 필터링하느라 기본 display:none에서 JS가 보여주는 방식입니다. */
-  body { background-color: #080808 !important; color: #f5f3ee !important; }
-  .article-body { max-width: 1200px !important; margin: 0 auto; padding: 40px 32px !important; background-color: #080808 !important; }
-  @media (max-width: 760px) {
-    .article-body { padding: 24px 16px !important; }
-  }
-
-  .pillar-hero { max-width: 800px; margin: 0 0 48px; }
-  .pillar-kicker { font-family: 'Pretendard Variable', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #8f8b82; margin-bottom: 12px; }
-  .pillar-hero h1 { font-family: 'Boska', 'Source Serif 4', serif; font-weight: 300; font-size: clamp(28px, 5vw, 42px); margin: 0 0 20px; color: #fff; }
-  .pillar-hero p { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-size: 16px; line-height: 1.9; color: #c9c8c2; font-weight: 300; word-break: keep-all; }
-
-  .card-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 20px; }
-  @media (max-width: 1024px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
-  @media (max-width: 768px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 480px) { .card-grid { grid-template-columns: repeat(1, 1fr); } }
-
-  .card-item { display: flex !important; background: #111 !important; border: 1px solid rgba(245,243,238,0.08) !important; border-radius: 12px; overflow: hidden; transition: transform 0.3s ease, border-color 0.3s ease !important; text-decoration: none !important; color: inherit; flex-direction: column; }
-  .card-item:hover { border-color: rgba(245,243,238,0.25) !important; transform: translateY(-4px); }
-  .card-item:hover .card-thumb { transform: scale(1.05); }
-  .card-thumb-wrap { width: 100%; aspect-ratio: 1.9 / 1; overflow: hidden; position: relative; border-bottom: 1px solid rgba(245,243,238,0.05); background-color: #14140f; }
-  .card-thumb { width: 100%; height: 100%; background-size: cover; background-position: center; transition: transform 0.4s ease; }
-  .card-content { padding: 12px; display: flex; flex-direction: column; justify-content: flex-start; flex-grow: 1; }
-  .card-meta { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 4px; }
-  .card-category { font-size: 11.5px; color: #8f8b82 !important; font-weight: 500; margin: 0 !important; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-family: 'Pretendard Variable', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; }
-  .card-title { font-family: 'Pretendard Variable', sans-serif; font-size: 15.5px; font-weight: 500; color: #f5f3ee !important; line-height: 1.45; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-  .card-date { font-size: 11px; color: #736f67 !important; margin: 0 !important; flex-shrink: 0; font-weight: 300; font-family: 'Pretendard Variable', sans-serif; }
-
-  .pillar-empty { color: #8f8b82; font-family: 'Pretendard Variable', sans-serif; font-size: 14px; padding: 40px 0; }
-</style>
-
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 {% assign pillar = site.data.pillars["스타트업-인사이트"] %}
-<div class="article-body">
+{% assign topic_posts = site.data.posts | where: "category", pillar.category %}
+{% assign canonical_url = "https://simplifier.co.kr" | append: page.url %}
+
+<title>{{ page.title }}</title>
+<meta name="description" content="{{ pillar.intro | strip_newlines | truncate: 155 | escape }}">
+<link rel="canonical" href="{{ canonical_url }}">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Simplifier">
+<meta property="og:title" content="{{ pillar.category | escape }} — Simplifier">
+<meta property="og:description" content="{{ pillar.intro | strip_newlines | truncate: 155 | escape }}">
+<meta property="og:url" content="{{ canonical_url }}">
+<meta property="og:image" content="https://simplifier.co.kr/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": {{ pillar.category | jsonify }},
+  "description": {{ pillar.intro | strip_newlines | jsonify }},
+  "url": "{{ canonical_url }}",
+  "isPartOf": { "@type": "WebSite", "name": "Simplifier", "url": "https://simplifier.co.kr/" },
+  "about": { "@type": "Person", "name": "한성희", "alternateName": "Han Sunghee", "sameAs": "https://simplifier.co.kr/" },
+  "mainEntity": {
+    "@type": "ItemList",
+    "numberOfItems": {{ topic_posts.size }},
+    "itemListElement": [
+      {% for p in topic_posts %}
+      { "@type": "ListItem", "position": {{ forloop.index }}, "url": "https://simplifier.co.kr{{ p.url }}", "name": {{ p.title | jsonify }} }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ]
+  }
+}
+</script>
+
+<link href="https://api.fontshare.com/v2/css?f[]=boska@300,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@300&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+
+<style>
+  /* 이 페이지는 default.html 레이아웃을 안 씁니다(layout: null) -- 그 레이아웃은
+     "홈/로그목록" 아니면 "개별 글 + 풀스크린 커버 히어로" 둘 중 하나만
+     염두에 둔 구조라, 이 페이지 같은 "가벼운 주제 허브"엔 안 맞았습니다
+     (전체 GNB, 화면을 뒤덮는 sticky 커버, 제목 구간과 본문 구간의 배경
+     분리 — 전부 이 페이지엔 불필요했음). 그래서 로고+카테고리 전환만 있는
+     최소 헤더를 새로 만들고, 제목부터 카드까지 배경색을 하나로 통일했습니다. */
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:#080808; color:#f5f3ee;
+    font-family:'Pretendard Variable','Pretendard',-apple-system,sans-serif;
+    -webkit-font-smoothing:antialiased; word-break:keep-all;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1200px; margin:0 auto; padding:0 32px;}
+  @media (max-width:760px){ .wrap{padding:0 16px;} }
+
+  /* ---- 최소 헤더: 로고(좌) + 카테고리 전환(그 옆) ---- */
+  .topic-header{ display:flex; align-items:center; gap:28px; padding:22px 0; border-bottom:1px solid rgba(245,243,238,0.08); }
+  .topic-logo{ flex:none; display:block; }
+  .topic-logo img{ height:20px; width:auto; display:block; }
+  .topic-nav{ display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+  .topic-nav::-webkit-scrollbar{display:none;}
+  .topic-nav a{ flex:none; padding:7px 14px; border-radius:999px; font-size:13px; color:#8f8b82; text-decoration:none; white-space:nowrap; transition:color .2s, background .2s; }
+  .topic-nav a:hover{ color:#f5f3ee; }
+  .topic-nav a.active{ background:#f5f3ee; color:#080808; font-weight:600; }
+
+  /* ---- 소개: 헤더 바로 아래, 같은 배경으로 이어짐 ---- */
+  .pillar-hero{ max-width:760px; padding:56px 0 40px; }
+  .pillar-kicker{ font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:#8f8b82; margin-bottom:14px; }
+  .pillar-hero h1{ font-family:'Boska','Source Serif 4',serif; font-weight:300; font-size:clamp(28px,5vw,42px); margin:0 0 20px; color:#fff; }
+  .pillar-hero p{ font-family:'Source Serif 4','Noto Serif KR',serif; font-size:16px; line-height:1.9; color:#c9c8c2; font-weight:300; }
+
+  /* ---- 카드 그리드: log.html과 같은 카드 스타일 재사용 ---- */
+  .card-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; padding-bottom:60px; }
+  @media (max-width:1024px){ .card-grid{grid-template-columns:repeat(3,1fr);} }
+  @media (max-width:768px){ .card-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:480px){ .card-grid{grid-template-columns:repeat(1,1fr);} }
+
+  .card-item{ display:flex; background:#111; border:1px solid rgba(245,243,238,0.08); border-radius:12px; overflow:hidden; transition:transform .3s ease, border-color .3s ease; text-decoration:none; color:inherit; flex-direction:column; }
+  .card-item:hover{ border-color:rgba(245,243,238,0.25); transform:translateY(-4px); }
+  .card-item:hover .card-thumb{ transform:scale(1.05); }
+  .card-thumb-wrap{ width:100%; aspect-ratio:1.9/1; overflow:hidden; position:relative; border-bottom:1px solid rgba(245,243,238,0.05); background-color:#14140f; }
+  .card-thumb{ width:100%; height:100%; background-size:cover; background-position:center; transition:transform .4s ease; }
+  .card-content{ padding:12px; display:flex; flex-direction:column; justify-content:flex-start; flex-grow:1; }
+  .card-meta{ display:flex; align-items:baseline; justify-content:space-between; gap:10px; margin-bottom:4px; }
+  .card-category{ font-size:11.5px; color:#8f8b82; font-weight:500; margin:0; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-transform:uppercase; letter-spacing:0.05em; }
+  .card-title{ font-size:15.5px; font-weight:500; color:#f5f3ee; line-height:1.45; margin:0; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .card-date{ font-size:11px; color:#736f67; margin:0; flex-shrink:0; font-weight:300; }
+
+  .pillar-empty{ color:#8f8b82; font-size:14px; padding:40px 0 60px; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="topic-header">
+    <a class="topic-logo" href="/"><img src="/log_assets/images/logo_white.png" alt="Simplifier"></a>
+    <nav class="topic-nav">
+      {% assign all_categories = site.data.posts | map: "category" | uniq %}
+      {% for cat in all_categories %}
+        {% if cat == pillar.category %}
+          <a href="{{ page.url }}" class="active">{{ cat }}</a>
+        {% else %}
+          <a href="/log.html?cat={{ cat | url_encode }}">{{ cat }}</a>
+        {% endif %}
+      {% endfor %}
+    </nav>
+  </header>
+
   <div class="pillar-hero">
     <div class="pillar-kicker">Simplifier Log · Topic</div>
     <h1>{{ pillar.category }}</h1>
     <p>{{ pillar.intro }}</p>
   </div>
 
-  {% assign topic_posts = site.data.posts | where: "category", pillar.category %}
   {% if topic_posts and topic_posts.size > 0 %}
   <div class="card-grid">
     {% for p in topic_posts %}
@@ -70,3 +145,6 @@ is_index: true
   <div class="pillar-empty">이 카테고리에 아직 글이 없습니다.</div>
   {% endif %}
 </div>
+
+</body>
+</html>
