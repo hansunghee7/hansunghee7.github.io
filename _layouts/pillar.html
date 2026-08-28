@@ -118,7 +118,7 @@
     content:''; position:fixed; inset:0; background:rgba(0,0,0,0.65);
     backdrop-filter:blur(2px); z-index:99;
   }
-  .pillar-more-body{ font-family:'Source Serif 4','Noto Serif KR',serif; font-size:16px; line-height:2.05; color:#a19d94; font-weight:300; }
+  .pillar-more-body{ font-family:'Source Serif 4','Noto Serif KR',serif; font-size:14.5px; line-height:2.05; color:#a19d94; font-weight:300; }
   .pillar-more-body p{ margin:0 0 1.15em; }
   .pillar-more-body p:last-child{ margin-bottom:0; }
   .pillar-more[open] .pillar-more-body{
@@ -136,14 +136,14 @@
      (본문 노출 여부와는 무관 -- 이미 항상 HTML에 있는 내용을 닫는
      동작일 뿐이라 크롤러 인덱싱에는 영향 없음). */
   .pillar-more-close{
-    position:absolute; top:16px; right:16px; width:32px; height:32px;
+    position:absolute; top:14px; right:16px; width:36px; height:36px;
     display:flex; align-items:center; justify-content:center;
-    background:transparent; border:1px solid rgba(245,243,238,0.16); border-radius:50%;
-    color:#8f8b82; font-size:14px; line-height:1; cursor:pointer;
+    background:transparent; border:none;
+    color:#8f8b82; font-size:22px; line-height:1; cursor:pointer;
     font-family:'Pretendard Variable','Pretendard',-apple-system,sans-serif;
-    transition:border-color .2s, color .2s;
+    transition:color .2s;
   }
-  .pillar-more-close:hover{ border-color:rgba(245,243,238,0.4); color:#f5f3ee; }
+  .pillar-more-close:hover{ color:#f5f3ee; }
 
   /* ---- 카드 그리드: log.html과 같은 카드 스타일 재사용 ---- */
   .card-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; padding-bottom:60px; }
