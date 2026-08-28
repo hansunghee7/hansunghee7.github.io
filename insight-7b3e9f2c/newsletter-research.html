@@ -28,11 +28,40 @@
   }
   .wrap{max-width:1100px; margin:0 auto; padding:0 var(--gutter) 60px;}
   @media (min-width:761px){ :root{ --gutter:32px; } }
-  header{padding:28px 0 18px; border-bottom:1px solid var(--line-soft); margin-bottom:24px;}
-  h1{font-family:'Noto Serif KR',serif; font-weight:400; font-size:30px; letter-spacing:-0.01em; margin:0 0 8px;}
+  /* 제목·새로고침 버튼을 한 줄에 몰아서 세로 공간을 아낀다 -- 한 번만
+     알면 되는 설명(주제 추가 방법 등)은 제목 옆 ⓘ 아이콘 hover/탭 툴팁으로
+     뺐다(다른 Studio 페이지와 동일한 패턴). */
+  header{display:flex; align-items:center; flex-wrap:wrap; gap:14px; padding:28px 0 18px; border-bottom:1px solid var(--line-soft); margin-bottom:24px;}
+  h1{font-family:'Noto Serif KR',serif; font-weight:400; font-size:30px; letter-spacing:-0.01em; margin:0; display:inline-flex; align-items:baseline; gap:8px;}
   @media (min-width:761px){ h1{font-size:36px;} }
-  .sub{font-size:12.5px; color:var(--muted); line-height:1.6;}
-  .metaline{color:var(--muted); font-size:12.5px; display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center; margin-top:10px;}
+  h1 .info-dot{font-size:15px;}
+  .meta-text{color:var(--muted); font-size:12.5px;}
+  .info-dot{
+    display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;
+    width:14px; height:14px; border:none; background:none; color:var(--muted);
+    font-size:13px; font-family:inherit; line-height:1; cursor:pointer; padding:0;
+    position:relative;
+  }
+  .info-dot:hover, .info-dot[aria-pressed="true"]{color:var(--ink);}
+  .info-text{
+    position:absolute; left:0; top:calc(100% + 8px);
+    width:max-content; max-width:min(360px, 90vw); text-align:left;
+    background:var(--ink); color:#fff; font-size:11.5px; font-weight:400;
+    line-height:1.5; white-space:normal;
+    padding:8px 11px; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.18);
+    opacity:0; visibility:hidden; pointer-events:none;
+    transform:translateY(-4px);
+    transition:opacity .15s, transform .15s, visibility .15s;
+    z-index:30;
+  }
+  .info-dot:hover .info-text, .info-dot[aria-pressed="true"] .info-text{
+    opacity:1; visibility:visible; transform:translateY(0); pointer-events:auto;
+  }
+  #titleInfo .info-text{max-width:min(420px, 90vw);}
+  /* 안내 문구 안에 실제 클릭 가능한 링크(GitHub Actions·Google Cloud Console)가
+     있어서, 순수 텍스트만 되는 title 속성 대신 이 ⓘ 말풍선(HTML 허용)에
+     그대로 옮겼다 -- 링크가 죽지 않게. */
+  .info-text a{color:#fff; text-decoration:underline;}
   .refresh{
     background:none; border:1px solid var(--line); color:var(--dim); cursor:pointer;
     border-radius:999px; padding:7px 15px; font-size:12.5px; font-family:'Pretendard Variable','Pretendard',-apple-system,sans-serif;
@@ -98,29 +127,19 @@
   <a href="/insight-7b3e9f2c/multi-publish.html">멀티 퍼블리싱</a>
   <a href="/insight-7b3e9f2c/newsletter-research.html" class="active">뉴스레터 리서치</a>
   <a href="/insight-7b3e9f2c/pillar-manage.html">필러 관리</a>
+  <a href="/insight-7b3e9f2c/ask.html">AI에게 물어보기</a>
 </nav>
 
 <div class="wrap">
   <header>
-    <h1>뉴스레터 리서치</h1>
-    <div class="sub">주제 키워드로 모은 후보 링크입니다. ★ 표시는 제목·요약에 구체적인 결과 수치(%, 시간 단축 등)가 있을 가능성이 높다는 신호이고, 실제 여부는 링크를 열어 직접 확인하세요.</div>
-    <div class="metaline">
-      <button class="refresh" id="refreshBtn"><span class="refresh-icon">↻</span> <span class="refresh-label">새로고침</span></button>
-      <span id="lastRefresh"></span>
-    </div>
+    <h1>뉴스레터 리서치<button type="button" class="info-dot" id="titleInfo" aria-label="설명 보기">ⓘ<span class="info-text" id="titleInfoText">
+      주제 키워드로 모은 후보 링크입니다. ★ 표시는 제목·요약에 구체적인 결과 수치(%, 시간 단축 등)가 있을 가능성이 높다는 신호이고, 실제 여부는 링크를 열어 직접 확인하세요.
+      새 주제를 추가하려면 <a href="https://github.com/hansunghee7/hansunghee7.github.io/actions/workflows/research-newsletter.yml" target="_blank" rel="noopener">GitHub Actions의 "Research newsletter topic" 워크플로</a>를 열어 Run workflow 버튼을 누르고 주제 키워드를 입력하면 됩니다(터미널·가입·API 키 필요 없음 — 구글 뉴스 검색으로 바로 모읍니다). 실행이 끝나면 결과가 자동 커밋되고, 새로고침을 누르면 보입니다.
+      유튜브 결과까지 보려면(선택) 저장소 Secrets에 YOUTUBE_API_KEY(<a href="https://console.cloud.google.com/" target="_blank" rel="noopener">Google Cloud Console</a>에서 무료 발급)를 등록하세요. 터미널이 더 편하면 scripts/research_newsletter_topics.py를 직접 실행하고 커밋·푸시해도 동일하게 반영됩니다.
+    </span></button></h1>
+    <button class="refresh" id="refreshBtn"><span class="refresh-icon">↻</span> <span class="refresh-label">새로고침</span></button>
+    <span id="lastRefresh" class="meta-text"></span>
   </header>
-
-  <div class="setup-note">
-    <strong>새 주제를 추가하려면</strong>
-    <a href="https://github.com/hansunghee7/hansunghee7.github.io/actions/workflows/research-newsletter.yml" target="_blank" rel="noopener">GitHub Actions의 "Research newsletter topic" 워크플로</a>를
-    열어 <strong>Run workflow</strong> 버튼을 누르고 주제 키워드를 입력하면 됩니다
-    (터미널 필요 없음, 가입·API 키도 필요 없음 — 뉴스는 구글 뉴스 검색으로 바로 모읍니다).
-    실행이 끝나면 결과가 자동 커밋되고, 위 새로고침 버튼을 누르면 보입니다.
-    유튜브 결과까지 보려면(선택) 저장소 Secrets에 <code>YOUTUBE_API_KEY</code>
-    (<a href="https://console.cloud.google.com/" target="_blank" rel="noopener">Google Cloud Console</a>에서 무료 발급)를 등록하세요.
-    터미널이 더 편하면 <code>python scripts/research_newsletter_topics.py "주제 키워드"</code>를
-    직접 실행하고 커밋·푸시해도 동일하게 반영됩니다.
-  </div>
 
   <div id="content"><div class="loading">불러오는 중…</div></div>
 </div>
@@ -131,6 +150,18 @@
   var SOURCE_LABEL = { google_news: "뉴스", youtube: "유튜브" };
 
   var content = document.getElementById("content");
+
+  /* ⓘ는 마우스를 올리면(:hover) 말풍선이 뜬다(CSS만으로 처리). 터치기기는
+     hover가 없으므로, 탭하면 aria-pressed를 켜서 같은 CSS 규칙으로 말풍선을
+     띄우고 다시 탭하거나 다른 곳을 탭하면 닫는다. */
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest ? e.target.closest(".info-dot") : null;
+    var wasOpen = btn && btn.getAttribute("aria-pressed") === "true";
+    document.querySelectorAll('.info-dot[aria-pressed="true"]').forEach(function (o) { o.setAttribute("aria-pressed", "false"); });
+    if (!btn) return;
+    e.preventDefault();
+    btn.setAttribute("aria-pressed", wasOpen ? "false" : "true");
+  });
 
   function stampRefresh() {
     document.getElementById("lastRefresh").textContent =

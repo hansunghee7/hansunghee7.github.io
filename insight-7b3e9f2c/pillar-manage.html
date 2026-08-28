@@ -28,11 +28,36 @@
   }
   .wrap{max-width:1100px; margin:0 auto; padding:0 var(--gutter) 60px;}
   @media (min-width:761px){ :root{ --gutter:32px; } }
-  header{padding:28px 0 18px; border-bottom:1px solid var(--line-soft); margin-bottom:24px;}
-  h1{font-family:'Noto Serif KR',serif; font-weight:400; font-size:30px; letter-spacing:-0.01em; margin:0 0 8px;}
+  /* 제목·새로고침 버튼·데이터 기준을 한 줄에 몰아서 세로 공간을 아낀다 --
+     한 번만 알면 되는 정보는 제목 옆 ⓘ 아이콘 hover/탭 툴팁으로 뺐다
+     (북 인사이트·SNS 인사이트·사이트 인사이트와 동일한 패턴 -- ⓘ는 항상
+     그것이 설명하는 텍스트 바로 옆에 붙이고, 줄 끝으로 밀어두지 않는다). */
+  header{display:flex; align-items:center; flex-wrap:wrap; gap:14px; padding:28px 0 18px; border-bottom:1px solid var(--line-soft); margin-bottom:24px;}
+  h1{font-family:'Noto Serif KR',serif; font-weight:400; font-size:30px; letter-spacing:-0.01em; margin:0; display:inline-flex; align-items:baseline; gap:8px;}
   @media (min-width:761px){ h1{font-size:36px;} }
-  .sub{font-size:12.5px; color:var(--muted); line-height:1.6;}
-  .metaline{color:var(--muted); font-size:12.5px; display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center; margin-top:10px;}
+  h1 .info-dot{font-size:15px;}
+  .meta-text{color:var(--muted); font-size:12.5px;}
+  .info-dot{
+    display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;
+    width:14px; height:14px; border:none; background:none; color:var(--muted);
+    font-size:13px; font-family:inherit; line-height:1; cursor:pointer; padding:0;
+    position:relative;
+  }
+  .info-dot:hover, .info-dot[aria-pressed="true"]{color:var(--ink);}
+  .info-text{
+    position:absolute; left:0; top:calc(100% + 8px);
+    width:max-content; max-width:min(480px, 90vw); text-align:left;
+    background:var(--ink); color:#fff; font-size:11.5px; font-weight:400;
+    line-height:1.5; white-space:normal;
+    padding:8px 11px; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.18);
+    opacity:0; visibility:hidden; pointer-events:none;
+    transform:translateY(-4px);
+    transition:opacity .15s, transform .15s, visibility .15s;
+    z-index:30;
+  }
+  .info-dot:hover .info-text, .info-dot[aria-pressed="true"] .info-text{
+    opacity:1; visibility:visible; transform:translateY(0); pointer-events:auto;
+  }
   .refresh{
     background:none; border:1px solid var(--line); color:var(--dim); cursor:pointer;
     border-radius:999px; padding:7px 15px; font-size:12.5px; font-family:'Pretendard Variable','Pretendard',-apple-system,sans-serif;
@@ -58,8 +83,9 @@
     body.has-shell-nav{padding-left:0;}
   }
 
-  .setup-note{background:#f7f6f2; border-radius:10px; padding:16px 18px; font-size:12.5px; color:var(--dim); line-height:1.7; margin-bottom:24px;}
-  .setup-note code{background:#eeece5; padding:1px 5px; border-radius:4px; font-size:11.5px;}
+  .edit-line{font-size:12.5px; color:var(--muted); margin-bottom:16px;}
+  .edit-line a{color:var(--dim);}
+  .edit-line a:hover{color:var(--ink);}
 
   table{width:100%; border-collapse:collapse; font-size:13.5px;}
   thead th{text-align:left; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.04em; font-weight:600; padding:0 12px 10px; border-bottom:1px solid var(--line);}
@@ -67,6 +93,9 @@
   tbody tr:last-child td{border-bottom:none;}
   .cat-name{font-weight:600;}
   .count{color:var(--muted); font-variant-numeric:tabular-nums;}
+  .intro-cell{max-width:280px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--dim);}
+  .intro-cell.empty{color:var(--muted); opacity:0.6;}
+  .sort-badge{font-size:11.5px; color:var(--muted); white-space:nowrap;}
   .status{display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:600; padding:3px 10px; border-radius:999px;}
   .status.live{background:rgba(31,122,79,0.1); color:var(--good);}
   .status.staging{background:rgba(163,105,15,0.1); color:var(--warn);}
@@ -87,21 +116,17 @@
   <a href="/insight-7b3e9f2c/multi-publish.html">멀티 퍼블리싱</a>
   <a href="/insight-7b3e9f2c/newsletter-research.html">뉴스레터 리서치</a>
   <a href="/insight-7b3e9f2c/pillar-manage.html" class="active">필러 관리</a>
+  <a href="/insight-7b3e9f2c/ask.html">AI에게 물어보기</a>
 </nav>
 
 <div class="wrap">
   <header>
-    <h1>필러 관리</h1>
-    <div class="sub">카테고리별 필러(주제 소개) 페이지 현황판입니다. 소개 문단은 <code>/admin/</code>(글쓰기 CMS)의 "카테고리 소개(필러)" 항목에서 직접 쓰고 고칩니다 — 여기서는 편집하지 않습니다.</div>
-    <div class="metaline">
-      <button class="refresh" id="refreshBtn"><span class="refresh-icon">↻</span> <span class="refresh-label">새로고침</span></button>
-      <span id="lastRefresh"></span>
-    </div>
+    <h1>필러 관리<button type="button" class="info-dot" id="titleInfo" aria-label="설명 보기">ⓘ<span class="info-text" id="titleInfoText"></span></button></h1>
+    <button class="refresh" id="refreshBtn"><span class="refresh-icon">↻</span> <span class="refresh-label">새로고침</span></button>
+    <span id="dataAsOf" class="meta-text"></span>
   </header>
 
-  <div class="setup-note">
-    <strong>지금 상태:</strong> 12개 카테고리 전부 <code>/log/</code>에 운영 반영되었습니다(사이트맵 등록, log.html 카테고리 버튼 링크, 개별 글 하단 "이 시리즈 전체 보기" 역링크까지 완료). 전부 <code>_layouts/pillar.html</code> 레이아웃 하나를 공유하므로, 새 카테고리가 생기면 <code>log/&lt;카테고리&gt;.html</code>에 <code>layout: pillar</code> + <code>pillar_category</code> front matter만 있는 파일 하나 추가하고, <code>_data/pillars.yml</code>에 <code>pillar_url</code>을 채우면 됩니다(CMS에서 가능). 아래 표의 <code>PILLAR_STATUS</code> 목록도 그때 한 줄 추가해줘야 합니다 — 카테고리 수가 늘어나면 자동으로 스캔하도록 바꾸는 게 좋습니다.
-  </div>
+  <div class="edit-line">소개 한 줄·정렬 기본값은 <code>_data/pillars.yml</code> 기준입니다. 고치려면 → <a href="/insight-7b3e9f2c/write.html#/collections/pillars/entries/pillars" target="_blank" rel="noopener">CMS에서 편집 ↗</a></div>
 
   <div id="content"><div class="loading">불러오는 중…</div></div>
 </div>
@@ -109,30 +134,33 @@
 <script>
 (function () {
   var POSTS_URL = "/assets/data/posts.json";
-
-  // 필러 페이지가 만들어진 카테고리만 여기 등록합니다. status: "staging"(미리보기만)
-  // 또는 "live"(운영 반영). url은 그 페이지 주소.
-  var PILLAR_STATUS = {
-    "스타트업 인사이트": { status: "live", url: "/log/스타트업-인사이트.html" },
-    "UX의 언어들": { status: "live", url: "/log/UX의-언어들.html" },
-    "심플리파이어 라이프": { status: "live", url: "/log/심플리파이어-라이프.html" },
-    "기획일상": { status: "live", url: "/log/기획일상.html" },
-    "토크세션": { status: "live", url: "/log/토크세션.html" },
-    "Be the PO": { status: "live", url: "/log/Be-the-PO.html" },
-    "대한민국 스타트업 미국진출을 묻다": { status: "live", url: "/log/대한민국-스타트업-미국진출을-묻다.html" },
-    "PO의 프레임웍": { status: "live", url: "/log/PO의-프레임웍.html" },
-    "AI의 언어들": { status: "live", url: "/log/AI의-언어들.html" },
-    "기획자의 프레임웍": { status: "live", url: "/log/기획자의-프레임웍.html" },
-    "코치S": { status: "live", url: "/log/코치S.html" },
-    "잉크드인대 기획학과": { status: "live", url: "/log/잉크드인대-기획학과.html" }
-  };
+  // _data/pillars.yml은 Jekyll 데이터 파일이라 이 페이지(순수 정적 HTML)가
+  // 직접 못 읽는다 -- multi-publish.html이 글 원문(.md)을 읽을 때 쓰는 것과
+  // 같은 방식으로, GitHub의 raw 파일을 그대로 가져와 가볍게 파싱한다.
+  var PILLARS_RAW_URL = "https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main/_data/pillars.yml";
 
   var content = document.getElementById("content");
 
+  var TITLE_INFO_BASE =
+    "카테고리별 필러(주제 소개) 페이지 현황판입니다. 소개 한 줄·정렬 기본값(최신순/오래된순)은 " +
+    "_data/pillars.yml 기준으로 보여주며, 실제 편집은 CMS에서 합니다(여기서는 편집하지 않습니다).";
+
   function stampRefresh() {
-    document.getElementById("lastRefresh").textContent =
-      "· 마지막 새로고침 " + new Date().toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit" });
+    var time = new Date().toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit" });
+    document.getElementById("titleInfoText").textContent = TITLE_INFO_BASE + " 마지막 새로고침: " + time + ".";
   }
+
+  /* ⓘ는 마우스를 올리면(:hover) 말풍선이 뜬다(CSS만으로 처리). 터치기기는
+     hover가 없으므로, 탭하면 aria-pressed를 켜서 같은 CSS 규칙으로 말풍선을
+     띄우고 다시 탭하거나 다른 곳을 탭하면 닫는다. */
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest ? e.target.closest(".info-dot") : null;
+    var wasOpen = btn && btn.getAttribute("aria-pressed") === "true";
+    document.querySelectorAll('.info-dot[aria-pressed="true"]').forEach(function (o) { o.setAttribute("aria-pressed", "false"); });
+    if (!btn) return;
+    e.preventDefault();
+    btn.setAttribute("aria-pressed", wasOpen ? "false" : "true");
+  });
 
   function setRefreshState(btn, state) {
     btn.classList.remove("is-loading", "is-success", "is-error");
@@ -155,9 +183,17 @@
 
   function load() {
     content.innerHTML = '<div class="loading">불러오는 중…</div>';
-    return fetch(POSTS_URL + "?t=" + Date.now(), { cache: "no-store" })
-      .then(function (r) { return r.json(); })
-      .then(function (posts) { render(posts); return true; })
+    return Promise.all([
+      fetch(POSTS_URL + "?t=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.json(); }),
+      fetch(PILLARS_RAW_URL + "?t=" + Date.now(), { cache: "no-store" })
+        .then(function (r) { return r.ok ? r.text() : ""; })
+        .then(parsePillarsYaml)
+        .catch(function () { return []; }),
+    ])
+      .then(function (results) {
+        render(results[0], results[1]);
+        return true;
+      })
       .catch(function (e) {
         content.innerHTML = '<div class="err">데이터를 못 불러왔습니다: ' + escapeHtml(String(e)) + "</div>";
         return false;
@@ -175,27 +211,43 @@
   });
   load().then(function () { stampRefresh(); });
 
-  function render(posts) {
+  function render(posts, pillars) {
     var counts = {};
     posts.forEach(function (p) {
       var cat = p.category || "(분류 없음)";
       counts[cat] = (counts[cat] || 0) + 1;
     });
+
+    var pillarByCategory = {};
+    pillars.forEach(function (p) { pillarByCategory[p.category] = p; });
+
     var cats = Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a]; });
+    var liveCount = pillars.filter(function (p) { return p.published; }).length;
+    document.getElementById("dataAsOf").textContent = "· 필러 " + liveCount + "개 운영중 · 카테고리 " + cats.length + "개";
 
     var rows = cats.map(function (cat) {
-      var pillar = PILLAR_STATUS[cat];
-      var statusHtml = pillar
-        ? '<span class="status ' + pillar.status + '">' + (pillar.status === "live" ? "운영 반영됨" : "스테이징") + "</span>"
-        : '<span class="status none">아직 없음</span>';
-      var linksHtml = pillar
-        ? '<span class="links"><a href="' + pillar.url + '" target="_blank" rel="noopener">페이지 보기 ↗</a></span>'
+      var pillar = pillarByCategory[cat];
+      var statusHtml = pillar && pillar.published
+        ? '<span class="status live">운영 반영됨</span>'
+        : pillar
+          ? '<span class="status staging">스테이징</span>'
+          : '<span class="status none">아직 없음</span>';
+      var linksHtml = pillar && pillar.pillar_url
+        ? '<span class="links"><a href="' + escapeHtml(pillar.pillar_url) + '" target="_blank" rel="noopener">페이지 보기 ↗</a></span>'
         : "";
+      var introHtml = pillar && pillar.intro
+        ? '<span class="intro-cell" title="' + escapeHtml(pillar.intro) + '">' + escapeHtml(pillar.intro) + "</span>"
+        : '<span class="intro-cell empty">—</span>';
+      var sortHtml = pillar
+        ? '<span class="sort-badge">' + (pillar.sort_order === "asc" ? "오래된순" : "최신순") + "</span>"
+        : '<span class="sort-badge">—</span>';
       return (
         "<tr>" +
         '<td class="cat-name">' + escapeHtml(cat) + "</td>" +
         '<td class="count">' + counts[cat] + "건</td>" +
         "<td>" + statusHtml + "</td>" +
+        "<td>" + introHtml + "</td>" +
+        "<td>" + sortHtml + "</td>" +
         "<td>" + linksHtml + "</td>" +
         "</tr>"
       );
@@ -203,8 +255,45 @@
 
     content.innerHTML =
       "<table><thead><tr>" +
-      "<th>카테고리</th><th>글 수</th><th>필러 페이지</th><th></th>" +
+      "<th>카테고리</th><th>글 수</th><th>필러 페이지</th><th>소개 한 줄</th><th>정렬 기본값</th><th></th>" +
       "</tr></thead><tbody>" + rows + "</tbody></table>";
+  }
+
+  /* _data/pillars.yml 전용 파서 -- "pillars:" 아래 "  - category: ..."로
+     시작하는 항목 하나씩, 그 아래 "    key: value" 줄들을 읽는다. 이
+     파일은 CMS(list 위젯)가 항상 이 두 단계 들여쓰기 구조로만 쓰므로,
+     범용 YAML 파서 대신 이 스키마 전용으로 가볍게 짰다(multi-publish.html의
+     front matter 파서와 같은 접근). intro_extended처럼 긴 값도 CMS가
+     한 줄 큰따옴표 문자열로 저장해서 블록 스칼라 처리는 필요 없다. */
+  function parsePillarsYaml(raw) {
+    var lines = (raw || "").split("\n");
+    var entries = [];
+    var current = null;
+    lines.forEach(function (line) {
+      var head = line.match(/^  - category:\s*(.*)$/);
+      if (head) {
+        current = { category: unquoteYaml(head[1]) };
+        entries.push(current);
+        return;
+      }
+      if (!current) return;
+      var kv = line.match(/^    ([a-z_]+):\s*(.*)$/);
+      if (!kv) return;
+      var key = kv[1], val = kv[2];
+      current[key] = val === "true" ? true : val === "false" ? false : unquoteYaml(val);
+    });
+    return entries;
+  }
+
+  function unquoteYaml(v) {
+    v = (v || "").trim();
+    if (v.length >= 2 && v[0] === '"' && v[v.length - 1] === '"') {
+      return v.slice(1, -1).replace(/\\"/g, '"');
+    }
+    if (v.length >= 2 && v[0] === "'" && v[v.length - 1] === "'") {
+      return v.slice(1, -1).replace(/''/g, "'");
+    }
+    return v;
   }
 
   function escapeHtml(s) {

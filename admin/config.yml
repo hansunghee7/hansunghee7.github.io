@@ -174,6 +174,15 @@ collections:
                 required: false
                 hint: "\"더 보기\"를 눌러야 펼쳐지는 상세 설명입니다. 화면엔 접혀 있어도 검색엔진/AI는 그대로 읽으므로, SEO/AEO를 위해 500자 이상 자세히 써도 괜찮습니다(독자 경험을 해치지 않음)."
 
+              - name: "sort_order"
+                label: "글 정렬 기본값"
+                widget: "select"
+                options:
+                  - { label: "최신순", value: "desc" }
+                  - { label: "오래된순", value: "asc" }
+                default: "desc"
+                hint: "필러 페이지를 처음 열었을 때 어느 순서로 보여줄지입니다. 방문자가 페이지 안에서 직접 반대로 바꿀 수도 있습니다."
+
               - name: "published"
                 label: "공개 여부"
                 widget: "boolean"
