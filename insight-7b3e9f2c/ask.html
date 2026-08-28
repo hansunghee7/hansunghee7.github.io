@@ -87,6 +87,14 @@
   a.source-chip:hover{background:var(--line-soft); border-color:var(--line); color:var(--ink);}
   a.source-chip:hover svg{color:var(--ink);}
 
+  .feedback{margin-top:12px; display:flex; align-items:center; gap:6px;}
+  .fb-btn{background:none; border:1px solid var(--line-soft); border-radius:8px; width:30px; height:30px; font-size:14px; cursor:pointer; transition:background-color .15s, border-color .15s; line-height:1;}
+  .fb-btn:hover:not(:disabled){background:var(--line-soft); border-color:var(--line);}
+  .fb-btn:disabled{cursor:default; opacity:0.45;}
+  .fb-btn.chosen{opacity:1; border-color:var(--ink); background:#f7f6f2;}
+  .fb-thanks{font-size:12px; color:var(--muted); opacity:0; transition:opacity .2s;}
+  .fb-thanks.show{opacity:1;}
+
   /* ---- 입력창 ---- */
   .composer{position:sticky; bottom:0; background:var(--bg); padding:14px 0 22px;}
   .composer-box{display:flex; align-items:flex-end; gap:8px; border:1px solid var(--line); border-radius:16px; padding:8px 8px 8px 16px; transition:border-color .15s;}
@@ -231,7 +239,47 @@
   const ICON_ARTICLE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>';
   const ICON_BOOK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>';
 
-  function finalizeAnswer(el, text, sources) {
+  function renderFeedback(el, logId) {
+    if (!logId) return; // 기록이 실패했으면 평가할 대상이 없어서 버튼도 안 보여준다
+    const box = document.createElement("div");
+    box.className = "feedback";
+    const up = document.createElement("button");
+    up.type = "button";
+    up.className = "fb-btn";
+    up.textContent = "👍";
+    const down = document.createElement("button");
+    down.type = "button";
+    down.className = "fb-btn";
+    down.textContent = "👎";
+    const thanks = document.createElement("span");
+    thanks.className = "fb-thanks";
+    thanks.textContent = "감사합니다";
+
+    async function send(rating, chosenBtn) {
+      up.disabled = true;
+      down.disabled = true;
+      chosenBtn.classList.add("chosen");
+      thanks.classList.add("show");
+      try {
+        await fetch(WORKER_URL + "/feedback", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "X-Ask-Secret": ASK_SHARED_SECRET },
+          body: JSON.stringify({ id: logId, rating }),
+        });
+      } catch (e) {
+        // 평가 전송 실패는 조용히 넘어간다 -- 답변 자체엔 지장 없음
+      }
+    }
+    up.addEventListener("click", () => send("up", up));
+    down.addEventListener("click", () => send("down", down));
+
+    box.appendChild(up);
+    box.appendChild(down);
+    box.appendChild(thanks);
+    el.appendChild(box);
+  }
+
+  function finalizeAnswer(el, text, sources, logId) {
     const clean = stripInlineCitation(text);
     el.innerHTML = window.marked ? marked.parse(clean) : clean;
     if (sources && sources.length) {
@@ -254,6 +302,7 @@
       });
       el.appendChild(box);
     }
+    renderFeedback(el, logId);
     el.scrollIntoView({ behavior: "smooth", block: "end" });
   }
 
@@ -342,6 +391,7 @@
     answerEl.innerHTML = '<div class="thinking"><span></span><span></span><span></span></div>';
 
     let sources = null;
+    let logId = null;
     let started = false;
     const typewriter = createTypewriter(answerEl);
     const retry = () => fetchAnswer(question, answerEl);
@@ -398,6 +448,8 @@
               answerEl.innerHTML = "";
             }
             typewriter.push(payload.text);
+          } else if (eventType === "log_id") {
+            logId = payload.id;
           } else if (eventType === "error") {
             typewriter.stop();
             renderErrorWithRetry(answerEl, payload.error, retry);
@@ -408,7 +460,7 @@
 
       typewriter.end();
       const finalText = await typewriter.done;
-      finalizeAnswer(answerEl, finalText, sources);
+      finalizeAnswer(answerEl, finalText, sources, logId);
     } catch (err) {
       typewriter.stop();
       renderErrorWithRetry(answerEl, "연결 오류 — " + err.message, retry);
