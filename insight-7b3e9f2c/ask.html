@@ -180,6 +180,12 @@
   // 이 주소를 우연히 발견한 봇이 함부로 두드리지 못하게 막는 정도입니다.
   const ASK_SHARED_SECRET = "mSoMs0NZ28KYk7dEFd8hchvyND2A2NC5";
 
+  // 이전 질문/답변을 여기 쌓아뒀다가 다음 질문 보낼 때 같이 넘긴다 --
+  // 새로고침하면 사라지는 세션 한정 기억이고, 최근 5턴(10개)만 유지해서
+  // 프롬프트가 한도 없이 길어지는 걸 막는다.
+  let conversationHistory = [];
+  const MAX_HISTORY_ENTRIES = 10;
+
   const thread = document.getElementById("thread");
   const emptyState = document.getElementById("emptyState");
   const form = document.getElementById("askForm");
@@ -198,6 +204,7 @@
     thread.innerHTML = "";
     thread.classList.remove("active");
     emptyState.style.display = "flex";
+    conversationHistory = [];
     input.value = "";
     autoGrow();
     input.focus();
@@ -426,7 +433,7 @@
           "Content-Type": "application/json",
           "X-Ask-Secret": ASK_SHARED_SECRET,
         },
-        body: JSON.stringify({ question }),
+        body: JSON.stringify({ question, history: conversationHistory }),
       });
 
       if (!res.ok || !res.body) {
@@ -484,6 +491,12 @@
       typewriter.end();
       const finalText = await typewriter.done;
       finalizeAnswer(answerEl, finalText, sources, logId);
+
+      conversationHistory.push({ role: "user", content: question });
+      conversationHistory.push({ role: "model", content: finalText });
+      if (conversationHistory.length > MAX_HISTORY_ENTRIES) {
+        conversationHistory = conversationHistory.slice(-MAX_HISTORY_ENTRIES);
+      }
     } catch (err) {
       typewriter.stop();
       renderErrorWithRetry(answerEl, "연결 오류 — " + err.message, retry);
