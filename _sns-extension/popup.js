@@ -67,7 +67,14 @@ function render() {
       statusBox.textContent = "GitHub 연결됨 — 자동 기록 작동 중";
       loginBtn.style.display = "none";
       logoutBtn.style.display = "block";
+      // 401(인증 실패)이 반복될 때, 저장된 토큰이 실제로 어떤 값인지
+      // (진짜 GitHub 토큰인지, 빈 값/이상한 값인지) 확인하기 위한 디버그
+      // 표시. 토큰 전체는 절대 노출하지 않고 앞 8자만 보여준다.
+      var t = res.githubToken;
+      document.getElementById("tokenDebug").textContent =
+        "토큰: " + t.slice(0, 8) + "… (" + t.length + "자)";
     } else {
+      document.getElementById("tokenDebug").textContent = "";
       var pendingNote = res.pendingCaptures && res.pendingCaptures.length
         ? " (" + res.pendingCaptures.length + "건 대기 중)"
         : "";
@@ -93,7 +100,12 @@ function handleMessage(e) {
 
   if (e.data === "authorizing:github") {
     // 팝업이 보낸 최초 핸드셰이크 신호 -- 그대로 되돌려 보내 확인해줍니다.
-    if (authWindow) authWindow.postMessage("authorizing:github", "*");
+    // GitHub 로그인 페이지 자체가 Cross-Origin-Opener-Policy를 걸어놔서,
+    // 팝업이 github.com을 거쳐 갔다 오면 이 postMessage가 브라우저 정책으로
+    // 막힐 수 있다(chrome://extensions 오류 탭에 경고로 뜸). 그래도 최종
+    // 토큰은 팝업->이 창 방향의 메시지로 별도 전달되어 로그인은 정상
+    // 완료되므로, 이 신호는 실패해도 조용히 무시한다.
+    try { if (authWindow) authWindow.postMessage("authorizing:github", "*"); } catch (err) { /* ignore */ }
     return;
   }
 
