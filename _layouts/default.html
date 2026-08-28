@@ -195,7 +195,12 @@
         }
         /* 같은 카테고리 다른 글로 이어주는 내부 링크. SEO/AI 크롤러에 "이 글들이
            서로 연결된 시리즈"라는 신호를 주고, 재방문(체류)에도 도움이 된다. */
-        .related-posts { max-width: 700px; margin: 20px auto 60px; padding: 40px 0 0; border-top: 1px solid #eaeaea; }
+        /* border-top을 따로 안 그리는 이유: 바로 위 이전글/다음글 블록도
+           자기 위쪽에 구분선을 갖고 있어서, 여기에도 border-top을 넣으면
+           20px 간격을 두고 가는 선이 두 번 그어져 의도한 구획이 아니라
+           깨진 것처럼 보였다(모바일 실측 확인). 대신 위쪽 여백만 넉넉히
+           줘서 "함께 읽으면 좋은 글" 레이블 자체가 구획 역할을 하게 한다. */
+        .related-posts { max-width: 700px; margin: 48px auto 60px; padding: 0; }
         .related-posts-title { font-family: 'Pretendard Variable', 'Noto Sans KR', sans-serif; font-size: 13px; font-weight: 600; color: #8f8b82; letter-spacing: 0.06em; margin: 0 0 18px; }
         .related-posts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px 24px; }
         @media (max-width: 560px) { .related-posts-grid { grid-template-columns: 1fr; } }
@@ -218,6 +223,7 @@
             font-family: 'Pretendard Variable', 'Noto Sans KR', sans-serif;
         }
         .related-post-card-title {
+            font-family: 'Pretendard Variable', 'Noto Sans KR', sans-serif;
             display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
             overflow: hidden; font-size: 15px; font-weight: 400; line-height: 1.5;
             color: #2b2b2b; letter-spacing: -0.2px;
