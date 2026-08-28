@@ -29,12 +29,20 @@ chrome.runtime.onMessage.addListener(function (msg) {
   }
 });
 
-// ── SNS 인사이트 페이지 방문 시 전체 수집 한 바퀴 ──────────────
+// ── 8개 SNS 전체 수집 한 바퀴 ──────────────────────────────────
 // 가족 공유 PC라 특정 시각에 PC가 켜져 있다는 보장이 없어서(실제로
 // Windows 예약 작업이 한 번도 자동 실행 안 됐던 걸 확인함), 정해진 시각
-// 예약 대신 "대시보드를 확인하러 들어오는 순간"에 8개 프로필을 백그라운드
+// 예약 대신 "사용자가 SNS를 신경 쓰는 순간"에 8개 프로필을 백그라운드
 // 탭(화면에 안 보이는 새 탭)으로 조용히 열었다가 자동으로 닫으면서
-// 갱신한다. 페이지를 여러 번 열어도 매번 8개를 다 열진 않게 쿨다운을 둔다.
+// 갱신한다. 이 신호는 세 군데서 온다:
+//   1) SNS 인사이트 대시보드 페이지를 열 때 (dashboard-trigger.js)
+//   2) 그 페이지에서 새로고침 버튼을 누를 때 -- 이건 사용자가 명시적으로
+//      "지금 다시 확인해줘"라고 요청한 것이므로 쿨다운을 건너뛴다(force).
+//   3) 8개 플랫폼 중 아무 한 곳이라도 직접 방문할 때 (content-script.js)
+//      -- 하나만 봐도 나머지도 같이 도니, 굳이 대시보드까지 안 들어가도
+//      자연스러운 SNS 사용만으로 데이터가 쌓인다.
+// 페이지를 여러 번 열어도 매번 8개를 다 열진 않게 쿨다운을 둔다(강제
+// 새로고침 제외).
 var DASHBOARD_PLATFORMS = [
   "https://www.linkedin.com/in/simplifier",
   "https://www.facebook.com/simplifier.seoul",
@@ -45,19 +53,19 @@ var DASHBOARD_PLATFORMS = [
   "https://connect.rememberapp.co.kr/profile/1582110/posts",
   "https://www.rocketpunch.com/@simplfier/post",
 ];
-var ROUND_COOLDOWN_MS = 20 * 60 * 1000; // 20분 이내 재방문은 다시 안 돈다
+var ROUND_COOLDOWN_MS = 20 * 60 * 1000; // 20분 이내 재방문은 다시 안 돈다(강제 새로고침 제외)
 var TAB_CLOSE_DELAY_MS = 22000; // content-script가 최대 20초까지 찾으니 여유 두고 닫음
 
 chrome.runtime.onMessage.addListener(function (msg) {
-  if (msg && msg.type === "SNS_INSIGHT_OPENED") {
-    maybeRunFullRound();
+  if (msg && msg.type === "SNS_COLLECT_REQUEST") {
+    maybeRunFullRound(!!msg.force);
   }
 });
 
-function maybeRunFullRound() {
+function maybeRunFullRound(force) {
   chrome.storage.local.get(["lastFullRoundAt"], function (res) {
     var last = res.lastFullRoundAt || 0;
-    if (Date.now() - last < ROUND_COOLDOWN_MS) return;
+    if (!force && Date.now() - last < ROUND_COOLDOWN_MS) return;
     chrome.storage.local.set({ lastFullRoundAt: Date.now() });
 
     DASHBOARD_PLATFORMS.forEach(function (url) {

@@ -28,6 +28,12 @@
   })[0];
   if (!rule) return;
 
+  // 8곳 중 아무 한 곳이라도 들어오면, 이 페이지만 잡고 끝내지 않고
+  // 나머지 7곳도 백그라운드로 같이 돈다(20분 쿨다운은 background가 관리) --
+  // 굳이 SNS 인사이트 대시보드까지 들어가지 않아도 평소 SNS 쓰는 것만으로
+  // 전체 데이터가 자연스럽게 쌓이게 하기 위함.
+  chrome.runtime.sendMessage({ type: "SNS_COLLECT_REQUEST" });
+
   var NUMBER = "([\\d][\\d,\\.]*)\\s*(천|만|K|k|M|m)?";
 
   function parseAbbrevNumber(numStr, suffix) {
