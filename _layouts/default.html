@@ -455,7 +455,8 @@
       </a>
 
       {% if page.category %}
-      <a href="/log.html?cat={{ page.category | url_encode }}" class="log-nav-category">
+      {% assign pillar_hub = site.data.pillars.pillars | where: "category", page.category | first %}
+      <a href="{% if pillar_hub.pillar_url %}{{ pillar_hub.pillar_url }}{% else %}/log.html?cat={{ page.category | url_encode }}{% endif %}" class="log-nav-category">
         {{ page.category }}
       </a>
       {% endif %}
