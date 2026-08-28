@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>숏폼 공정 정본 - Simplifier</title>
+
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<link rel="stylesheet" href="/insight-7b3e9f2c/studio.css">
+
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  .wrap{max-width:760px;}
+  .doc-nav{display:flex; gap:8px; flex-wrap:wrap; margin:0 0 28px;}
+  .doc-nav a{
+    font-size:12.5px; color:var(--dim); text-decoration:none;
+    border:1px solid var(--line); border-radius:20px; padding:5px 13px;
+  }
+  .doc-nav a:hover{background:var(--line-soft);}
+  .doc-nav a.current{background:var(--ink); color:#fff; border-color:var(--ink);}
+
+  .doc{font-size:15px; line-height:1.75; color:var(--dim);}
+  .doc > *:first-child{margin-top:0;}
+  .doc h2{
+    font-family:'Pretendard Variable',sans-serif; font-size:21px; font-weight:700;
+    color:var(--ink); margin:40px 0 14px; padding-top:22px; border-top:1px solid var(--line-soft);
+  }
+  .doc h2:first-of-type{margin-top:0; padding-top:0; border-top:none;}
+  .doc h3{font-size:16.5px; font-weight:700; color:var(--ink); margin:28px 0 10px;}
+  .doc h4{font-size:14px; font-weight:700; color:var(--dim); margin:20px 0 8px;}
+  .doc p{margin:0 0 14px;}
+  .doc ul, .doc ol{margin:0 0 14px; padding-left:22px;}
+  .doc li{margin-bottom:6px;}
+  .doc li > ul, .doc li > ol{margin-top:6px;}
+  .doc strong{color:var(--ink); font-weight:700;}
+  .doc a{color:var(--ink); text-decoration:underline; text-decoration-color:var(--line); text-underline-offset:2px;}
+  .doc a:hover{text-decoration-color:var(--ink);}
+  .doc code{
+    font-family:'IBM Plex Mono',ui-monospace,monospace; font-size:12.5px;
+    background:var(--line-soft); padding:1px 6px; border-radius:4px; color:var(--dim);
+  }
+  .doc pre{background:var(--line-soft); padding:14px 16px; border-radius:8px; overflow-x:auto; font-size:12.5px; line-height:1.6;}
+  .doc pre code{background:none; padding:0;}
+  .doc blockquote{
+    margin:0 0 20px; padding:12px 18px; border-left:3px solid var(--line);
+    background:var(--line-soft); border-radius:0 8px 8px 0; color:var(--dim); font-size:14px;
+  }
+  .doc hr{border:none; border-top:1px solid var(--line-soft); margin:32px 0;}
+  .doc .table-wrap{overflow-x:auto; margin:0 0 20px; border:1px solid var(--line-soft); border-radius:8px;}
+  .doc table{border-collapse:collapse; width:100%; font-size:13px;}
+  .doc th, .doc td{padding:9px 12px; border-bottom:1px solid var(--line-soft); text-align:left; vertical-align:top;}
+  .doc th{background:#f7f6f2; font-weight:700; color:var(--ink); white-space:nowrap;}
+  .doc tr:last-child td{border-bottom:none;}
+</style>
+</head>
+<body class="has-shell-nav">
+<nav id="adminShellNav"></nav>
+<div class="wrap">
+  <header>
+    <h1>숏폼 공정 정본</h1>
+    <span class="meta-text">shorts-lab/PROCESS.md · 자동 생성 2026-08-28 23:29 · 원본이 바뀌면 파이프라인 재실행 시 갱신됩니다</span>
+  </header>
+  <nav class="doc-nav"><a href="/insight-7b3e9f2c/shorts-process.html" class="current">숏폼 공정 정본</a><a href="/insight-7b3e9f2c/shorts-visual-grammar.html">숏폼 연출 사전</a><a href="/insight-7b3e9f2c/shorts-roles.html">숏폼 제작진 역할</a></nav>
+  <article class="doc">
+<blockquote>
+<p>씬을 "어떻게 역동적으로, 정보 있게" 만들지의 정본은 <a href="shorts-visual-grammar.html">VISUAL_GRAMMAR.md</a>(연출 사전) — 씬 플랜 작성·검증 시 항상 같이 참조.
+공정을 "누가·어떤 관점에서" 수행할지의 정본은 <a href="shorts-roles.html">PRODUCTION_ROLES.md</a>(제작진 역할 문서) — 게이트별 참여 역할과 결정 방식.</p>
+</blockquote>
+<h2>미션</h2>
+<p>벤치마크 채널을 흉내 내는 게 아니라, <strong>왜 그 포맷이 작동하는지 원리부터 검증</strong>하고 가장 효과적인 AI 숏폼 생성 공정을 처음부터 만든다. 제로투원 접근 — 대본 구조, 음성, 비주얼, 합성 각 단계를 근본부터 검증하고, 검증된 것만 공정에 편입한다.</p>
+<h2>운영 원칙</h2>
+<ol>
+<li><strong>외부 정보·비판은 수용도 무시도 하지 않는다.</strong> 다른 AI/커뮤니티/기사의 주장은 항상 독립 검증(검색·계산·실제 테스트) 후 채택을 결정한다. 근거 없는 확신에 흔들리지 않되, 알맹이가 있으면 프레이밍이 과장됐어도 반영한다.</li>
+<li><strong>유료보다 무료·저비용 경로를 먼저 검증한다.</strong> 안 될 때만 유료로 넘어가고, 판단 근거를 결정 로그에 남긴다.</li>
+<li><strong>모든 주요 결정과 이유를 결정 로그에 기록한다.</strong></li>
+<li><strong>이 문서는 매 세션 최신 상태로 갱신한다.</strong></li>
+</ol>
+<h2>저장소 구조 (기가팩토리 레이아웃)</h2>
+<pre><code>shorts-lab/
+├── PROCESS.md                  ← 이 문서 (공정 정본)
+├── VISUAL_GRAMMAR.md           ← 연출 사전 (역동성 정의·기법, 인포그래픽 9종, 수치 라이브러리)
+├── PRODUCTION_ROLES.md         ← 제작진 역할 문서 (게이트별 참여 역할·결정 방식, 향후 멀티 에이전트 자동화 경로)
+├── pipeline/                   ← 공정 코드 — 에피소드 독립적, 전 채널 공용
+│   ├── new_episode.py          ← 새 에피소드 스캐폴더 (금형)
+│   ├── align_and_build.py      ← 정렬+합성 본체 (episode.json 매니페스트 기반)
+│   ├── build_short.py          ← 카드/일러스트 렌더링
+│   ├── build_from_audio.py     ← 오디오 정제·자르기
+│   ├── illustrations.py        ← 섹션별 라인아트
+│   └── build_scene_plan_page.py← 씬 플랜 아티팩트 생성
+├── templates/episode/          ← 에피소드 템플릿 (episode.json + CHECKLIST.md)
+└── channels/
+    └── mysterious-apt/         ← 채널: 신기한 아파트사전
+        ├── channel.json        ← 채널 아이덴티티 (콘텐츠 엔진, 톤, 보이스, 스타일, 제약)
+        ├── voice-audition/     ← 보이스 선정 실험 산출물
+        └── episodes/
+            └── ep01-corridor-door/
+                ├── episode.json    ← 매니페스트: 경로+게이트 상태 (단일 진실 소스)
+                ├── CHECKLIST.md    ← 게이트별 통과 조건
+                ├── 01-script/      ← 대본 (script.json)
+                ├── 02-voice/       ← 녹음 원본
+                ├── 03-align/       ← Whisper 캐시·정제 오디오·타이밍
+                ├── 04-scenes/      ← 씬 플랜 + clips/ (생성 클립)
+                ├── 05-assemble/    ← 합성 결과 (run별 폴더)
+                └── 06-publish/     ← 최종본 + 제목/설명/태그
+</code></pre>
+<p><strong>설계 의도</strong>: 콘텐츠(channels/)와 공정(pipeline/)의 분리. 공정 개선은 전 에피소드에 즉시 적용되고, 에피소드 데이터는 공정이 바뀌어도 그대로 재사용된다(캐시 재사용으로 재실행 비용 최소화). <code>episode.json</code>이 각 에피소드의 단일 진실 소스 — 코드가 이 매니페스트만 읽으므로 폴더 구조가 코드에 하드코딩되지 않는다.</p>
+<h2>공정 흐름 (게이트 + 배치 원칙)</h2>
+<pre><code>G0 소재 → G1 대본 → G2 음성 → G3 정렬 → G4 씬 → G5 합성 → G6 발행
+</code></pre>
+<ul>
+<li>게이트별 통과 조건은 <code>templates/episode/CHECKLIST.md</code> (에피소드마다 복사됨).</li>
+<li><strong>배치 원칙</strong>: 규모가 생기면 에피소드 단위가 아니라 <strong>공정 단위로 묶어서 처리</strong>한다 — 소재 10개 검증 → 대본 10개 → 음성 10개 몰아 녹음 → … 같은 작업의 컨텍스트 전환 비용이 사라지는 것이 물량 공정의 핵심 (업계 배치 워크플로우 관행과 일치).</li>
+</ul>
+<h2>표준 명령</h2>
+<pre><code class="language-bash"># 새 에피소드 생성
+python pipeline/new_episode.py mysterious-apt ep02-&lt;slug&gt;
+
+# 정렬+합성 (02-voice에 녹음이 들어온 뒤)
+python pipeline/align_and_build.py channels/mysterious-apt/episodes/&lt;ep&gt;
+
+# 씬 플랜 페이지 생성 (04-scenes/scene_plan.json 작성 후)
+python pipeline/build_scene_plan_page.py channels/mysterious-apt/episodes/&lt;ep&gt;
+
+# 씬 프롬프트 기계 검증 (생성 전 필수 — &quot;씬 프롬프트 합격 조건&quot; 절 참고)
+python pipeline/validate_scene_plan.py channels/mysterious-apt/episodes/&lt;ep&gt;
+
+# 스튜디오 현황판 갱신 (episode.json 상태 변경 후)
+python pipeline/build_studio_page.py        # 아티팩트용 studio.html
+python pipeline/build_studio_site.py        # 심플리파이어 스튜디오용 (사이트 저장소에 생성 → 커밋·푸시)
+</code></pre>
+<p><strong>스튜디오 현황판</strong>: 모든 episode.json을 스캔해 채널별 에피소드와 7게이트 진행 상태를 한 페이지로 렌더링. 두 가지 출력 — ① 아티팩트(studio.html), ② 심플리파이어 스튜디오 메뉴(simplifier.co.kr/insight-7b3e9f2c/shorts-studio.html, 사이트의 다른 스튜디오 페이지들과 같은 디자인). 관리 데이터는 매니페스트가 유일한 원본이고 현황판은 뷰일 뿐 — 별도 상태를 갖지 않아 어긋날 수 없다.</p>
+<h2>오디오 처리 방침</h2>
+<ul>
+<li><strong>Veo 3.1은 영상 생성 시 오디오(48kHz, 대사·환경음·효과음)를 함께 만든다.</strong> 프롬프트에 오디오 지시가 없으면 무엇이 나올지 통제 불가.</li>
+<li>모든 씬 프롬프트에 <strong>환경음/효과음 명시 + "No dialogue, no voice, no music" 고정 문구</strong> 필수 — 우리는 별도 녹음한 한국어 나레이션을 쓰므로, Veo가 자체적으로 대사/음성을 넣으면 충돌한다.</li>
+<li><strong>클립의 생성 오디오는 나레이션보다 훨씬 작은 볼륨으로 배경에 믹스</strong>한다 (합성 파이프라인 TODO — 클립 수신 후 구현).</li>
+</ul>
+<h2>자막(캡션) 스펙 — 확정 (실측 데이터 + 화면 재확인 기반)</h2>
+<p>레퍼런스 숏츠 실제 SRT 자막(DownSub 추출, 98개 큐) 통계 + 모바일 뷰포트로 화면 재검증. 인포그래픽 라벨과는 별개 레이어.
+- <strong>위치</strong>: 화면 세로 기준 약 65~70% 지점(중하단, 하단에 가까움). <strong>주의</strong>: 데스크톱 브라우저 패널이 낮으면 세로 영상 하단이 잘려서 안 보일 수 있고, 그 상태에서 유튜브 자체 CC UI(페이지 상단, 영상 프레임 바깥)를 실제 자막으로 착각하기 쉽다 — 반드시 모바일 뷰포트(resize_window preset mobile)나 전체화면으로 세로 프레임 전체를 확인할 것.
+- <strong>스타일</strong>: 흰색 굵은 글씨 + 그림자/외곽선(경우에 따라 반투명 검은 배경도 관찰됨)
+- <strong>큐 길이</strong>: 평균 1.86초, 전부 3초 미만(1.2~2.76초 범위) — 문장이 안 끝나도 시간 되면 무조건 다음 캡션으로 전환
+- <strong>캡션당 글자 수</strong>: 평균 14.4자(공백 제외), 4~17자 범위 — 한국어 약 5~7어절
+- <strong>캡션 사이 간격</strong>: 0초 — 끊김없이 바로 다음 캡션으로 이어짐(97/97 = 100%)
+- <strong>표시 속도</strong>: 초당 약 7.9자(여유있게 읽히는 속도, 지나치게 빠르지 않음)
+- <strong>청크 단위</strong>: 문장 전체가 아니라 위 수치(14자/1.86초) 기준으로 자름 — Whisper 단어별 타임스탬프(align_and_build.py에서 이미 확보)를 시간·글자 수 기준으로 묶어 구간 생성
+- 구현 시점: 클립 합성(오디오+영상 결합) 단계, 씬 생성 프롬프트에는 영향 없음(화면 내 텍스트 생성 금지 원칙 유지)
+- <strong>레퍼런스 자막 사용 원칙</strong>: 추출한 자막은 구조 분석(길이·타이밍·패턴)에만 쓰고, 문장 자체를 우리 대본에 그대로 옮기거나 짜깁기하지 않는다.</p>
+<h2>인포그래픽 씬별 적용 — ep01 완료 (19/45 씬)</h2>
+<p>scene_plan.json 각 씬에 <code>overlay</code> 필드(type/text/note) 추가, 씬 플랜 페이지에 빨간 칩으로 표시. 밀도는 레퍼런스처럼 매 씬이 아니라 용어 등장·강조 비트에만(19/45 ≈ 42%). ep01은 point_tag·hero_text 위주(EPS·TPS·기계실 등 용어, "콘크리트 무덤"·"심장" 등 강조구), dimension_label은 킬러 넘버 부재로 1곳(B1~옥상)만. 프롬프트(Veo 전달용)에는 넣지 않음 — 화면 내 텍스트 생성 금지 원칙 유지, 합성 단계 후반 작업 가이드로만 사용.</p>
+<h2>영상 생성: 초 단위 정확도 리서치 결론</h2>
+<p>Veo/Kling/Runway/Pika/Luma API 전수 조사 — <strong>임의의 정확한 초 단위 생성을 지원하는 모델은 현재 없음</strong>(전부 4/6/8/10초 등 고정 프리셋, API도 "목표치일 뿐 보장 아님"). 유료/API 여부와 무관한 업계 공통 한계로 확정. 대응: 실사용 길이보다 크거나 같은 최소 프리셋으로 요청, 결과 길이 무관하게 합성 단계에서 클립 0초부터 실사용 길이만큼 ffmpeg로 자르는 것으로 자동화 원칙 확정(배속·구간판단 없음). Veo Fast(8초 고정)·Omni 1.1 Flash(모션 부족) 기각 후 Lite/Quality 테스트 예정.</p>
+<h2>인포그래픽 스펙 — 3종 (재분석 기반, 후반 합성 대상)</h2>
+<ul>
+<li><strong>치수/측정 라벨</strong>: 빨간 화살표·선 + 빨간 굵은 숫자+단위(예: "10m"). 고정 위치가 아니라 실제로 측정하는 대상 옆에 동적으로 붙는다(카메라가 움직이면 라벨도 그 위치를 따라감).</li>
+<li><strong>포인트 태그</strong>: 빨간 알약형 배지 + 지시선으로 특정 구조물/장소 이름을 짚어준다.</li>
+<li><strong>히어로 텍스트</strong>: 흰색 대형 입체 글자가 장면 안에 실제로 서 있는 것처럼 렌더링(연도·핵심 키워드 하나). 일반 대사 자막 자리를 대체하는 강조 비트로 보임.</li>
+<li>화면의 역동성 일부는 이 인포그래픽 요소들이 등장하는 애니메이션(팝인·확대·그려짐) 자체에서도 나온다 — 컷 밀도·장면 내 액션에 이은 세 번째 요인.</li>
+<li>ep01은 킬러 넘버가 없어 치수/측정 라벨 활용도가 낮음 — EPS/TPS 같은 용어는 포인트 태그로, 차기 에피소드는 G0 게이트에서 확보한 스케일 숫자를 치수 라벨로 적극 활용.</li>
+</ul>
+<h2>씬 프롬프트 합격 조건 (G4 게이트 — 생성 전 필수 통과)</h2>
+<p>시행착오를 줄이기 위해, 크레딧을 써서 실제로 생성해보기 <em>전에</em> 아래 조건을 전수 점검한다. 기계적으로 검증 가능한 항목은 <code>pipeline/validate_scene_plan.py</code>가 자동 검사하고(사람이 놓치기 쉬운 반복 패턴을 100% 잡아냄), 논리적 일관성은 사람(또는 나)이 최종 판단한다. 이 리스트 자체가 지금까지의 모든 실측·리서치·실패 사례(Omni 모션 부족, 다중 컷 불안정, 부정어 프롬프트 부작용 등)를 조건으로 압축한 것.</p>
+<p><strong>A. 카메라</strong>
+- A1. <code>camera</code>가 언급되면 근처에 명확한 동작 동사(push-in/orbit/rise/pan/swoop/pull back 등)가 있다.
+- A2. 카메라가 "도착 후 정지"로만 끝나지 않는다 — 정지로 끝나려면 반드시 장면 내 지속 액션이 동반된다.
+- A3. 카메라 근처에 slow/calm/quiet류 속도-완화 수식어가 없다(smooth=흔들림 없음은 허용).</p>
+<p><strong>B. 장면 내 콘텐츠 액션</strong>
+- B1. 화면 묘사부에 -ing형 지속 동작 동사가 최소 1개 있다(정적 명사 나열 금지).
+- B2. 그 액션 동사 근처에 soft/gently/quiet/calm/faint/muted류 수식어가 없다(단, 스타일 선언절의 "soft archviz style"은 스타일 모드명이라 예외).
+- B3. 액션이 한 번(one-shot)으로 끝나지 않고 지속/반복임을 나타내는 단어(steadily/continuously/rapidly/in sequence 등)가 있다.</p>
+<p><strong>C. 길이·컷 규칙</strong>
+- C1. <code>veo_duration</code>이 4 또는 6(허용 프리셋)이다.
+- C2. 1프롬프트 = 1컷 — "cut to" 같은 다중 컷 지시가 없다(cutaway/cross-section 같은 스타일어는 예외).
+- C3. 실사용 길이(end-start)가 <code>veo_duration</code> 이하이고, 5.5초를 넘지 않는다.</p>
+<p><strong>D. 부정어·화면 텍스트</strong>
+- D1. 고정 문구("No dialogue, no voice, no music.") 외에 "no X" 형태의 화면 콘텐츠 부정 표현이 없다.
+- D2. text/number/label/sign이 언급된다면 "blank/unmarked" 등 화면 내 텍스트 생성 금지 원칙에 맞게 서술됐다.</p>
+<p><strong>E. 스타일 키워드 배치</strong>
+- E1. 프롬프트가 "Clean 3D architectural..." 또는 "Monochrome white clay..."로 시작한다(모델이 앞부분에 가중치를 두는 특성 활용).</p>
+<p><strong>F. 사운드</strong>
+- F1. "Ambient sound:" 절이 있다.
+- F2. "No dialogue, no voice, no music." 고정 문구가 있다.
+- F3. (사운드 절 안에서는 soft/quiet/faint 허용 — 나레이션을 방해하지 않는 배경음이 목적이므로 시각적 역동성 규칙과 무관.)</p>
+<p><strong>G. 오버레이 논리 일관성 (사람 판단)</strong>
+- G1. overlay가 있으면 text/note가 프롬프트 속 시공간과 실제로 맞는다(예: 카메라가 도달하지 않은 곳을 표시하지 않음 — 씬33/34에서 실제로 걸린 문제).
+- G2. overlay 밀도가 적절하다 — 매 씬이 아니라 용어 등장·강조 비트에만.</p>
+<p><strong>H. 레퍼런스 대조</strong>
+- H1. 컷 길이가 레퍼런스 실측(2~3초/컷) 대비 크게 벗어나지 않는다(우리 목표 3~5초대).
+- H2. 기각된 스타일(실사/2D 블루프린트/UE5 네온 등) 키워드가 재등장하지 않는다.</p>
+<p><strong>실행</strong>: <code>python pipeline/validate_scene_plan.py channels/&lt;channel&gt;/episodes/&lt;ep&gt;</code> — A3/B2/C1-C3/D1/E1/F1-F2를 자동 검사해 <code>04-scenes/validation_report.txt</code>에 위반 씬만 기록(재생성 가능한 산출물이라 git 추적 제외). A1/A2/B1/B3는 휴리스틱으로 후보만 표시. G/H는 스크립트가 못 잡으므로 생성 전 마지막에 사람이 훑는다.</p>
+<h2>검증된 기술적 제약 (재사용할 것)</h2>
+<ul>
+<li><strong>Veo 3.1은 1회 생성당 최대 8초</strong> (4/6/8초 프리셋만). 씬 실사용 길이는 항상 8초 이하로 설계.</li>
+<li><strong>1프롬프트 = 1컷.</strong> "세 개의 빠른 컷" 같은 다중 컷 지시는 불안정 — 씬을 분리한다.</li>
+<li><strong>부정어 프롬프트("no legible text") 금지</strong> — 모델이 언급된 개념에 주의를 기울여 역효과. 긍정 서술("blank placard")로 대체.</li>
+<li><strong>화면 내 텍스트/숫자는 영상 생성에 요청하지 않는다</strong> — AI 영상의 텍스트 렌더링은 신뢰 불가. 라벨·숫자·인포그래픽은 후반 합성으로.</li>
+<li><strong>Whisper word-timestamp는 실제 발화 끝보다 일찍 찍힌다</strong> — 전역 +0.35초 보정.</li>
+<li><strong>전역 배율 정렬은 오차가 누적된다</strong> — difflib 문자 단위 로컬 정렬 사용 (일치율 95%+ 확인).</li>
+<li><strong>TTS/녹음 음성은 문장별 음량 편차가 있다</strong> — dynaudnorm+loudnorm 정규화 필수.</li>
+</ul>
+<h2>툴 선택 결정 로그</h2>
+<ul>
+<li><strong>2026-08-28</strong>: CapCut 무료 TTS 검토 → 이름 있는 캐릭터 보이스 전부 Pro 전용 확인, 기각.</li>
+<li><strong>2026-08-28</strong>: Typecast 무료 캐릭터 티어로 나레이션 확정 (비상업 한정, 공개 API 없어 브라우저 녹음 우회). 벤치마크 채널의 실제 보이스는 Typecast '필재'(유료)로 특정됨 — 커뮤니티 교차 검증, 단 "SSFM 3.0" 등 일부 주장은 미확인.</li>
+<li><strong>2026-08-28</strong>: Google Flow(Veo)를 영상 생성 툴로 채택 — 무료 크레딧(1회성 100 + 일일 50) + 벤치마크 채널이 실제 쓰는 툴.</li>
+<li><strong>2026-08-28</strong>: 외부 AI 피드백 검증 사례 — 3개 주장 중 2개(8초 한계, 다중 컷 불안정)는 타당해 반영, 1개(부정어=확실한 할루시네이션)는 과장이지만 방향은 맞아 반영. "이전 대화에서 경고했다"는 프레이밍은 날조로 판정.</li>
+<li><strong>2026-08-28</strong>: <strong>Omni 1.1 Flash 실측 후 기각, Veo 3.1 Fast로 복귀.</strong> 씬01을 Omni로 생성해 직접 확인한 결과 카메라 이동·먼지입자 등 지속 액션이 프롬프트대로 거의 안 나옴("너무 잔잔함") — 길이 프리셋은 정확해도 모션 퀄리티가 부족해 기각. 대안: Veo Fast로 항상 8초 생성하고, 합성 단계에서 setpts 배속으로 실사용 길이만큼 압축 재생(자르지 않음 → 모션 아크 보존 + 자동화 유지 + 배속 자체가 역동성 강화). 45개 씬 veo_duration 전부 8로 원복.</li>
+<li><strong>2026-08-28</strong>: <strong>캡션 위치 재확인 — 이전 "정정"이 오류였음.</strong> 사용자가 화면 재확인을 요청, 데스크톱 브라우저 패널이 낮아 세로 영상 하단이 잘려 안 보이는 상태에서 유튜브 자체 CC UI(페이지 상단, 영상 프레임 바깥)를 실제 자막으로 오인했던 것으로 확인. 모바일 뷰포트로 전체 프레임 재확인 결과 실제 대사 자막은 화면 세로 65~70%(중하단)이 맞음 — 원래 분석이 맞았고 중간의 "정정"이 틀렸음. 인포그래픽도 3종(치수라벨/포인트태그/히어로텍스트)으로 재분류, 화면 역동성의 세 번째 요인(인포그래픽 팝인 애니메이션)도 확인. 교훈: 세로 영상 분석 시 반드시 모바일 뷰포트나 전체화면으로 볼 것 — 데스크톱 축소 뷰는 프레임 하단이 잘려 오분석을 유발한다.</li>
+<li><strong>2026-08-28</strong>: <strong>영상 생성 모델을 Veo 3.1 Fast → Omni 1.1 Flash로 전환.</strong> "자동편집을 최대한 목표로 간다"는 방향에서, Fast의 항상-8초-고정이 문제로 지목됨(필요 길이만큼만 받아야 트리밍/판단 없이 그대로 이어붙이는 자동화가 성립). Omni 1.1 Flash는 4/6/8/10초 프리셋을 실제로 지킴을 리서치로 확인(크레딧 4초=15/6초=20/8초=25/10초=30) → 45개 씬의 veo_duration을 실사용 길이 기준 4초(40개)/6초(5개)로 재계산. 리스크: 다른 모델이라 스타일 차이 가능 — 씬 01(Veo Fast로 이미 검증됨)과 비교 검증 후 나머지 진행 권고.</li>
+<li><strong>2026-08-28</strong>: <strong>문장 길이 규칙 확정</strong> — "호흡이 빠르다"는 지적에 실측 대조(우리 나레이션 초당 7.08자 vs 레퍼런스 캡션 표시속도 초당 7.9자, 거의 동일) → 재녹음 불필요로 판정, 원인은 말속도가 아니라 대본이 긴 복문을 문단 하나에 3~4개 이어붙인 구조였던 것. channel.json에 sentence_rule 추가(한 문장=한 절, 마침표 연속 3개 이상 금지), CHECKLIST.md G1 게이트에 반영해 차기 에피소드부터 대본 작성 단계에서 원천 차단.</li>
+<li><strong>2026-08-28</strong>: 26개 씬 프롬프트에 환경음/효과음 지시 + "No dialogue, no voice, no music" 추가 (Veo 3.1이 오디오를 자체 생성한다는 사실 확인 후).</li>
+<li><strong>2026-08-28</strong>: <strong>레퍼런스 숏츠 2편 교차 검증(사용자 관찰 "카메라가 매우 역동적" 확인차)</strong> — 실제로는 카메라가 아니라 ① 컷 밀도(2~3초/컷, 우리 평균 5.5초의 절반)와 ② 장면 내 피사체 액션(항상 뭔가 움직임/맥동)이 역동성의 정체였음. 추가로 대본의 비유를 문자 그대로 과장해서 그리는 패턴, 핵심 스케일 숫자를 3D 입체 텍스트로 장면에 박는 패턴 확인(단 이번 대본엔 해당 숫자 없어 미적용, 차기 에피소드 G0 게이트에 반영). 26개 프롬프트에 지속적 모션 요소(빛 스침, 먼지, 맥동하는 배관, 순차 점등) 추가. 편집 단계 펀치인으로 컷 밀도 2배 올리는 후반 기법은 파이프라인 TODO로 등록.</li>
+<li><strong>2026-08-28</strong>: <strong>비주얼 스타일 확정 (실캡처 근거)</strong> — 사용자가 벤치마크 채널 실제 화면 5장 제공. 정체는 "3D 건축 디오라마 모형" 2모드: ① 분석 = 하얀 클레이 매싱 모델 + 항공/아이소메트릭 + 빨간 치수선(후반 합성), ② 감성 = 부드러운 자연광 archviz 렌더. 카메라는 smooth/slow — 속도감은 컷 전환에서 나옴. 시행착오 기록: 실사 다큐(공포톤, 기각) → UE5 네온(차가움, 기각) → 2D 블루프린트 제안(외부 AI, 근거 부족으로 기각) → 실캡처로 확정. 교훈: 스타일 지정은 텍스트 리서치보다 실제 레퍼런스 화면 확보가 우선.</li>
+<li><strong>2026-08-28</strong>: 씬 01 실사(Realistic 4K documentary) 프롬프트로 첫 생성 → 벤치마크 톤과 불일치 확인. 리서치 결과 신비한 건축사전의 비주얼 정체는 실사가 아니라 <strong>3D 건축 시각화 그래픽</strong>(단면 cutaway, 미니어처 디오라마, 인포그래픽형 눈뽕) — 26개 프롬프트를 "Stylized 3D architectural visualization + Unreal Engine 5 render + cutaway/diorama" 공식으로 전면 재작성. 중요 스타일 키워드는 프롬프트 맨 앞 배치(모델이 앞부분에 가중치).</li>
+<li><strong>2026-08-28</strong>: git 저장소 초기화 (재생성 가능한 빌드 산출물은 .gitignore). 스튜디오 현황판을 서버/앱이 아닌 "매니페스트 스캔 → 정적 페이지 생성" 방식으로 구현 — 관리 도구가 별도 상태를 갖지 않게 하기 위함.</li>
+<li><strong>2026-08-28</strong>: 저장소를 채널/에피소드/공정단계 구조로 재편. episode.json 매니페스트 도입, 파이프라인 코드가 매니페스트만 읽도록 리팩터링. 리팩터링 후 ep01 재빌드로 검증 완료(캐시 재사용 정상).</li>
+<li><strong>2026-08-28</strong>: <code>pipeline/build_studio_site.py</code>가 사이트(hansunghee7.github.io) 쪽 Studio 공용 CSS/JS 리팩토링(<code>studio.css</code>/<code>studio.js</code>) 이전 템플릿을 그대로 쓰고 있어, 재생성할 때마다 죽은 <code>title=</code> 툴팁·중복 CSS·하드코딩 nav가 되살아나는 문제 확인. 생성기를 studio.css <code>&lt;link&gt;</code>/studio.js <code>&lt;script&gt;</code> + ⓘ 버튼 패턴으로 맞춰 재작성 — 이제 재생성해도 사이트 최신 마크업과 일치. 재생성 결과를 기존 커밋본과 diff로 대조해 타임스탬프 한 줄 외 동일함을 확인 후 shorts-lab에 커밋(<code>32b9681</code>).</li>
+<li><strong>2026-08-28</strong>: <strong>45개 씬 프롬프트 냉정 검증 — 인포그래픽/카메라 이동/장면 내 역동성 3기준.</strong> 사용자 요청으로 전수 재검토, 3건 결함 발견해 수정: ① <strong>씬19</strong> — 카메라가 "settling overhead"(도착 후 정지)뿐, 장면 내 액션도 전무 → Omni에서 "너무 잔잔함"으로 기각됐던 것과 동일 패턴으로 판정, 프롬프트를 카메라 하강+빛줄기 스침 액션 추가로 재작성. ② <strong>씬33/34</strong> — 씬33의 <code>dimension_label</code> 오버레이가 "B1~옥상" 전체 구간을 표시한다고 되어 있었으나, 프롬프트상 카메라는 지하~저층까지만 상승(옥상 도달은 씬34) → 논리 불일치. 라벨을 구간별로 분리(씬33="B1 ~"·하단부터 그려지는 중, 씬34="~ 옥상"·완성)해 카메라 진행과 동기화. ③ <strong>씬16</strong> — 오버레이 노트가 "기계실 입구/전경"으로 돼 있었으나 실제 프롬프트는 씬15에서 이어지는 기존 진입 후 내부 샷(입구가 아님) → 노트를 "이미 진입한 내부 샷"으로 정정. 나머지 약 15개 씬은 카메라 이동 동사가 없어도 장면 내 콘텐츠 액션(배관 맥동·연기·벽 팽창 등)으로 역동성을 확보하고 있어 결함 아님으로 판정(설계 원칙상 역동성은 카메라·컨텐츠 액션·인포그래픽 팝인 3원천 중 하나만 있어도 충분). 씬 플랜 페이지 재생성·아티팩트 재발행 완료.</li>
+<li>
+<p><strong>2026-08-28</strong>: <strong>45개 씬 프롬프트 언어 패턴 전면 재작성 — 위 검증이 놓친 더 근본적인 문제 발견.</strong> 사용자가 "씬19만이 아니라 씬1부터 문제, 인포그래픽에 수치가 전혀 없고 화면표현도 잔잔할 것 같다"고 재지적. grep으로 실측한 결과 soft/gently/quiet/calm/faint/muted류 수식어가 45개 프롬프트에 36회 등장 — 이전 검증은 "액션 동사가 존재하는가"만 이진 판정해서, 액션이 있어도 저 수식어들이 매번 그 액션을 죽이고 있는 패턴(예: "sweeping <strong>gently</strong>", "<strong>calm</strong> precise camera", "<strong>faint</strong> hum")을 못 잡았음. Veo 같은 모델은 형용사를 문자 그대로 반영하므로 액션 동사 옆에 부드러움 수식어를 붙이면 결과적으로 정적인 영상이 나올 가능성이 높음 — Omni 테스트에서 이미 확인된 실패 패턴과 근본적으로 같은 함정. <strong>45개 프롬프트 전체 재작성</strong>: 카메라는 smooth(흔들림 없음) 원칙은 유지하되 "slow/calm/quiet" 등 속도·정서 수식어 제거, 장면 내 액션은 decisively/rapidly/steadily/visibly 등 명확한 부사로 전환. channel.json visual_style·scene_plan.json style_note에 이 원칙을 명문화해 향후 에피소드에서 재발 방지. <strong>인포그래픽 수치 부재 문제</strong>도 별도로 대응 — 리서치(<a href="https://m.cafe.daum.net/anhyoujunhoom/COr9/129" target="_blank" rel="noopener">EPS/TPS 설비 규격</a>, <a href="https://www.koit.co.kr/news/articleView.html?idxno=78315" target="_blank" rel="noopener">TPS실 최소면적 규정</a>)로 실제 규정·업계 관행 수치를 확인해 씬22에 "단면 300~500×1000mm"(설비 샤프트 표준 단면), 씬28에 "TPS 최소 1.12㎡"(초고속정보통신 특등급 기준 규정 인용) dimension_label 오버레이 신설 — 대본 자체에 킬러 넘버가 없다는 기존 한계를 인포그래픽 리서치로 보완한 첫 사례. 씬 플랜 페이지 재생성·아티팩트 재발행 완료.</p>
+</li>
+<li>
+<p><strong>2026-08-28</strong>: <strong>"씬 프롬프트 합격 조건" 체크리스트 확정 + 기계 검증기(<code>pipeline/validate_scene_plan.py</code>) 신설.</strong> 매번 사람이 수동으로 45개를 훑다 결함을 놓치는 패턴이 반복(씬19/33/34/16 → soft 수식어 36회 → 씬8 다중 컷까지 3라운드째 발견)되자, 사용자가 "시행착오를 줄이도록 조건을 먼저 리스트업하고 검증해달라"고 요청. A(카메라)~H(레퍼런스 대조) 8개 카테고리·20개 조건으로 정리해 PROCESS.md에 명문화하고, 기계적으로 검증 가능한 항목(A3/B2/C1-C3/D1/E1/F1-F2)은 정규식 기반 스크립트로 자동화. 최초 실행에서 24건 발견됐으나 그중 19건은 검증기 자체의 오탐(스타일 선언절 "soft archviz style"의 soft를 액션 수식어로 오인, "slowing"을 "slow"로 오매칭)으로 판명 — 검증기를 스타일절 제외 + 단어경계 매칭으로 수정 후 재실행하니 진짜 결함 5건만 남음: 씬1/2/5의 "no camera shake"(부정어 원칙 위반, "steady"로 긍정 전환), 씬8의 "then a hard cut to"(1프롬프트=1컷 위반 — 두 다이오라마 컷 대신 카메라 whip-pan 1동작으로 재작성), 씬44의 "slow orbit"(속도 수식어 잔존, "continuous orbit"으로 수정). 전부 수정 후 재검증 0건 확인. 오버레이 19건 논리 일관성(G1)·금지 스타일 키워드 재등장 여부(H2)도 수동 재점검해 이상 없음 확인. 이 검증기는 사용자가 구상한 "생성 에이전트 뒤에 검증 에이전트를 두는" 파이프라인 비전의 첫 실체화 — CHECKLIST.md G4 게이트에 실행 의무화로 편입.</p>
+</li>
+<li>
+<p><strong>2026-08-28</strong>: <strong><code>VISUAL_GRAMMAR.md</code>(연출 사전) 신설.</strong> "인포그래픽·역동성 조건이 하나도 정의 안 됐다"는 지적에서 출발 — 역동성의 정의를 사용자와 대화로 합의(짧은 시간 안에 상태가 눈에 띄게 바뀌는 것, 강/중/약 3등급, 약 등급은 단독 불인정, ①카메라·②장면내변화·③편집리듬·④인포그래픽모션 4원천 중 2개 이상 확보가 씬 합격 기준), 영화·VFX·건축시각화 리서치로 카메라/편집/애니메이션 원리 기법 사전을 만들고, 인포그래픽도 기존 3종(치수라벨·포인트태그·히어로텍스트)에서 4종 추가(경로화살표·분해주석·비교게이지·상태카운터) 총 7종으로 확장해 "매 씬 최소 1개" 목표를 실현 가능하게 함. 아파트 설비 관련 실측 수치 12건(전기실 변압 22.9kV→380/220V, EPS/TPS 트레이 폭 300mm/150mm, 온돌 배관 최대 60m, 정전 후 2~4시간 단수, 급기가압 원리 등)을 온라인 리서치로 확보해 수치 라이브러리로 등재 — 앞으로 수치형 오버레이는 이 라이브러리에서만 인용. 다음 단계는 이 사전 기준으로 ep01 45개 씬의 오버레이를 전면 재배정하고 검증기에 "역동성 2원천" 규칙을 추가하는 것.</p>
+</li>
+<li>
+<p><strong>2026-08-28</strong>: <strong>벤치마크 2차 프레임 재검증 — 인천대교편(132.5초, <a href="https://www.youtube.com/shorts/zonQQ_1fMkk" target="_blank" rel="noopener">원본</a>).</strong> VISUAL_GRAMMAR.md 완성 직후 사용자 요청으로 실제 벤치마크와 대조 검증. 브라우저에서 <code>video.currentTime</code>을 직접 seek해 프레임 단위 캡처. 핵심 발견 3가지가 기존 규칙을 뒤집음: ① <strong>"항상 3D 디오라마"는 과잉 일반화</strong> — 실존 랜드마크는 실제 드론/항공 촬영본이 메인이고 3D CG는 안 보이는 부분(수중구조·물리원리)에만 씀. ② <strong>"컷 밀도 2~3초"도 부분 관찰이었음</strong> — 설명·비유 구간은 같은 샷이 9~14초까지 유지됨(컷은 정보량이 아니라 이해에 필요한 시간에 맞춰 늘어남). ③ <strong>오버레이 밀도는 균등 분산이 아니라 오프닝에 몰아줌</strong> — 시작 3~9초에 치수라벨 6~8개가 동시다발로 쏟아지고 이후 설명부는 오히려 오버레이 없이 길게 감. 그 외 신규 기법 5개 발견: 메타포 리터럴 합성(비유 대상을 실제 3D로 소환), 물리적 간극 시각화(부정 서술을 시각 증거로 대체), 꺾이는 힘/충격 벡터 화살표, 동심원 파동 이펙트, 카탈로그형 배열 샷. VISUAL_GRAMMAR.md §0(스타일 소스 선택 원칙 신설)·§1.3(컷 밀도 예외 조항 추가)·§2-E(서술 보강 기법 신설)·§3.3(오프닝 플러드 원칙 추가)·§7(프레임 재검증 로그 신설)에 전부 반영.</p>
+</li>
+<li>
+<p><strong>2026-08-28</strong>: <strong>벤치마크 3차 프레임 재검증 — 남한산성편(115.9초, <a href="https://www.youtube.com/shorts/t2Dgbt8NIns" target="_blank" rel="noopener">원본</a>) + 거장 감독·VFX 기법 리서치.</strong> 사용자가 두 번째 검증 영상과 함께 "유명 감독·CG 감독 기법도 리서치해서 추가"를 요청. 신규 발견 7개: ① 인간 손 클로즈업(광각 디오라마에 감정적 스케일 전환 추가), ② 지형 위 기하 오버레이(경사도 %), ③ 지도 핀+점선 스타일 경로 표시, ④ 지상→지하 전환 직전 "드릴 포인트 예고선", ⑤ 여러 지점을 점선으로 연결하는 네트워크 노드 다이어그램, ⑥ 나열형(census) 정보의 다중 동시 노출("매 씬 1개" 원칙의 명시적 예외 — 우물 7곳이 각각 다른 숫자로 동시 표시됨), ⑦ 실제 역사 문헌("세종실록 지리지") 인용으로 신뢰성 확보. 인포그래픽 타입을 7종→9종으로 확장(⑧지형기하오버레이, ⑨네트워크다이어그램). 거장 기법 리서치로 §2-F 신설 — 구로사와 아키라(날씨 요소·와이프전환·망원압축), 오슨 웰스(딥포커스), 웨스 앤더슨/큐브릭(대칭 프레이밍), 특수효과 전통의 강제원근법(forced perspective — 카메라 궤도 계산으로 미니어처 착시 유지), Zach King류 오브젝트 리터럴 소환 등 6개 기법을 우리 채널 적용 가능성과 함께 정리. §7을 §7.1(인천대교편)·§7.2(남한산성편) 하위섹션으로 재구성해 검증 로그가 영상별로 누적되는 구조로 정착.</p>
+</li>
+<li>
+<p><strong>2026-08-28</strong>: <strong>벤치마크 4차 프레임 재검증 — 서울 역타공법편(105.6초, <a href="https://www.youtube.com/shorts/oC1E1lDiknw" target="_blank" rel="noopener">원본</a>) + 전환 연속성·CG전문가 관점 분석.</strong> 아파트/건축 소재로 우리 채널과 가장 근접한 영상. 사용자가 이번엔 "컷과 컷이 어떻게 이어지는지"와 "인포그래픽/CG 전문가 관점" 분석을 명시적으로 요청하고 "전부 씬 합격 기준에 넣어야 한다"고 지시 — 그 결과 <strong>VISUAL_GRAMMAR.md에 §1.4(신설)를 만들어 카탈로그성 기법 나열이 아니라 실제 체크 가능한 합격 기준으로 승격</strong>: ① 인접 씬이 같은 장소·피사체를 다룰 때는 카메라/모드 전환만으로 연결(임의 점프 금지) — 벤치마크는 47초 넘게 같은 굴착 현장을 유지하며 항공뷰→단면→구조→통합뷰로만 전환, ② 클라이맥스 부근에 분리해서 보여준 요소를 하나로 합치는 "통합 마스터샷" 배치(§7.3 t=90~102, 지상+지하 구조가 한 프레임에 공존), ③~⑦ 오버레이 렌더링 품질(대비 배경 필수, 강조색 빨강 통일, 힘/에너지는 글로우 볼륨으로, 군중 속 대상은 외곽선 하이라이트, 핵심 개념명은 영어 표기 옵션). ①·②는 씬 작성 단계(G4) 사람 판단, ③~⑦은 오버레이 렌더링 단계(G5) 사람 판단으로 역할을 분리해 템플릿·ep01 CHECKLIST.md 양쪽에 반영. §3.2 flow_path 타입에 글로우 변형 추가.</p>
+</li>
+<li>
+<p><strong>2026-08-28</strong>: <strong>벤치마크 5차 정밀 재검증 — 인천대교편 재방문(§7.4), 대사-화면 동기화 &amp; 스토리 비트 페이싱.</strong> 사용자가 "감독·CG·컷편집·인포그래픽 외에 다른 접근 축이 있냐"고 질문 → 대사-화면 동기화, 스토리 비트 페이싱 두 축을 제안해 합의 후 진행(대사 속도조절은 TTS 실연 문제라 우선순위 낮음으로 보류). 0.5~1초 간격 정밀 재검증 결과: ① 숫자형 펀치라인 리빌은 발화되는 정확한 프레임에 완성되거나 발화 직전 1초 미만 예열 — 대사보다 늦게 뜨지 않음(t=100 "238.5m"이 "주탑 높이가 238." 발화 중 정확히 완성). ② 경로형 오버레이는 대상 단어 발화 시점에 이미 완전히 그려져 있음(t=97 "뱃길"). ③ 배경 스케일 정보(다리 총 길이 등)는 특정 단어에 안 묶이고 여러 라인에 걸쳐 느슨히 유지 — 오버레이가 "배경정보"인지 "펀치라인"인지에 따라 동기화 강도가 다름. ④ 클라이맥스 직전(범퍼 메타포 전) 앞서 나온 수치들을 빠르게 재소환하는 "요약 몽타주" 구간 발견. <strong>기존 규칙 정정</strong>: §1.4-6 "강조색 빨강 통일"이 과잉 일반화였음을 확인 — 뱃길(수로) 경로는 청록(cyan)으로 표시됨, "카테고리별 고유색 유지"로 정정. VISUAL_GRAMMAR.md §1.5 신설(대사-화면 동기화 3개 + 스토리 비트 페이싱 2개, G1/G4/G5 세 게이트에 걸침), §1.4-6 정정, §7.4 로그 추가.</p>
+</li>
+<li>
+<p><strong>2026-08-28</strong>: <strong><code>PRODUCTION_ROLES.md</code>(제작진 역할 문서) 신설.</strong> 사용자가 "영화·CF 제작처럼 역할을 나눠서 크리틱·총괄연출·QA가 협업하는 방식으로 공정을 체계화·자동화할 수 있을까"를 제안. 실시간 Discord 봇 방식(인프라 비용 큼)과 멀티 에이전트 워크플로우 방식(기존 도구로 가능)을 비교해 후자를 권장했고, 우선 "체계화(문서화)"부터 진행하기로 함. 기존 G0~G6 게이트가 이미 역할 구조와 거의 1:1로 겹친다는 걸 확인해 9개 역할(PD·리서처·작가·촬영감독·VFX슈퍼바이저·편집감독·사운드디자이너·크리틱·최종QA)로 매핑. 사용자가 "한 프로세스당 1명일 필요 없이 여러 명이 동시에 논의해서 결정할 수 있다"고 명시 — G4(씬 게이트)를 촬영감독·VFX슈퍼바이저·리서처·편집감독·크리틱 5인이 동시 회의하는 구조로 설계(리서치→프롬프트 초안→오버레이 배정→전환 검토→크리틱 반박→합의 루프). 크리틱은 특정 게이트 소속이 아니라 전 게이트 상시 개입이며 <code>validate_scene_plan.py</code>가 이미 G4 크리틱의 기계화 선례임을 명문화. 향후 실제 멀티 에이전트로 자동화하는 경로(리서처·촬영감독·VFX슈퍼바이저=병렬 에이전트, 크리틱=검증 에이전트, PD=조정 에이전트)도 §3에 기록해뒀지만, 사용자가 명시적으로 "워크플로우로 돌려줘"라고 하기 전까지는 세션 내 역할극 기준 문서로만 사용.</p>
+</li>
+<li>
+<p><strong>2026-08-28</strong>: <strong>정본 문서 3종을 스튜디오 대시보드에 바로가기로 추가.</strong> 사용자가 "정본문서를 쉽게 찾아볼 수 있게 스튜디오에도 넣어달라"고 요청. <code>build_studio_page.py</code>(아티팩트용)·<code>build_studio_site.py</code>(심플리파이어 사이트용) 둘 다 헤더 아래에 PROCESS.md·VISUAL_GRAMMAR.md·PRODUCTION_ROLES.md로 가는 GitHub 링크 카드를 추가. 두 페이지 재생성 후 아티팩트 재발행(<code>48034cd8-...</code>)과 사이트 저장소 커밋·푸시(<code>b9a565a1</code>) 완료.</p>
+</li>
+</ul>
+<h2>열린 질문 / 다음 단계</h2>
+<ul>
+<li>[ ] ep01: 26개 씬 클립 생성 (Google Flow, 무료 크레딧) → <code>04-scenes/clips/</code>에 씬 번호로 저장</li>
+<li>[ ] 후반 펀치인으로 컷 밀도 2배 올리는 편집 기법을 align_and_build/합성 파이프라인에 구현 (비용 0원으로 컷 리듬을 벤치마크 수준으로)</li>
+<li>[ ] 차기 에피소드 G0 게이트: 스케일 숫자(비교 이미지로 변환 가능한) 필수 확보 — 3D 입체 텍스트로 장면에 직접 넣는 것까지 시도</li>
+<li>[ ] 클립의 Veo 생성 오디오를 추출해 나레이션 아래 낮은 볼륨으로 믹스하는 기능을 합성 파이프라인에 구현</li>
+<li>[ ] 단어 단위 타임스탬프 기반 짧은 구 자막 burn-in 구현 (위 자막 스펙대로)</li>
+<li>[ ] 클립 합성 파이프라인 (클립 트리밍 → 오디오 타이밍 맞춤 → concat) — align_and_build의 이미지 합성을 클립 합성으로 확장</li>
+<li>[ ] 인포그래픽/숫자/라벨 오버레이 후반 합성 설계 (EPS/TPS 등)</li>
+<li>[ ] 음성 자동화 — Typecast 공개 API 부재로 수동 캡처가 병목</li>
+<li>[ ] ep01 완성본 업로드 → 반응 확인 → 공정 투자 우선순위 재조정</li>
+<li>[ ] GitHub 비공개 저장소 생성(사용자, github.com/new에서 'shorts-lab') 후 원격 연결·푸시</li>
+</ul>
+  </article>
+</div>
+<script src="/insight-7b3e9f2c/studio.js"></script>
+</body>
+</html>

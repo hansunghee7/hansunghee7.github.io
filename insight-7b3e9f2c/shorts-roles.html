@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>숏폼 제작진 역할 - Simplifier</title>
+
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<link rel="stylesheet" href="/insight-7b3e9f2c/studio.css">
+
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  .wrap{max-width:760px;}
+  .doc-nav{display:flex; gap:8px; flex-wrap:wrap; margin:0 0 28px;}
+  .doc-nav a{
+    font-size:12.5px; color:var(--dim); text-decoration:none;
+    border:1px solid var(--line); border-radius:20px; padding:5px 13px;
+  }
+  .doc-nav a:hover{background:var(--line-soft);}
+  .doc-nav a.current{background:var(--ink); color:#fff; border-color:var(--ink);}
+
+  .doc{font-size:15px; line-height:1.75; color:var(--dim);}
+  .doc > *:first-child{margin-top:0;}
+  .doc h2{
+    font-family:'Pretendard Variable',sans-serif; font-size:21px; font-weight:700;
+    color:var(--ink); margin:40px 0 14px; padding-top:22px; border-top:1px solid var(--line-soft);
+  }
+  .doc h2:first-of-type{margin-top:0; padding-top:0; border-top:none;}
+  .doc h3{font-size:16.5px; font-weight:700; color:var(--ink); margin:28px 0 10px;}
+  .doc h4{font-size:14px; font-weight:700; color:var(--dim); margin:20px 0 8px;}
+  .doc p{margin:0 0 14px;}
+  .doc ul, .doc ol{margin:0 0 14px; padding-left:22px;}
+  .doc li{margin-bottom:6px;}
+  .doc li > ul, .doc li > ol{margin-top:6px;}
+  .doc strong{color:var(--ink); font-weight:700;}
+  .doc a{color:var(--ink); text-decoration:underline; text-decoration-color:var(--line); text-underline-offset:2px;}
+  .doc a:hover{text-decoration-color:var(--ink);}
+  .doc code{
+    font-family:'IBM Plex Mono',ui-monospace,monospace; font-size:12.5px;
+    background:var(--line-soft); padding:1px 6px; border-radius:4px; color:var(--dim);
+  }
+  .doc pre{background:var(--line-soft); padding:14px 16px; border-radius:8px; overflow-x:auto; font-size:12.5px; line-height:1.6;}
+  .doc pre code{background:none; padding:0;}
+  .doc blockquote{
+    margin:0 0 20px; padding:12px 18px; border-left:3px solid var(--line);
+    background:var(--line-soft); border-radius:0 8px 8px 0; color:var(--dim); font-size:14px;
+  }
+  .doc hr{border:none; border-top:1px solid var(--line-soft); margin:32px 0;}
+  .doc .table-wrap{overflow-x:auto; margin:0 0 20px; border:1px solid var(--line-soft); border-radius:8px;}
+  .doc table{border-collapse:collapse; width:100%; font-size:13px;}
+  .doc th, .doc td{padding:9px 12px; border-bottom:1px solid var(--line-soft); text-align:left; vertical-align:top;}
+  .doc th{background:#f7f6f2; font-weight:700; color:var(--ink); white-space:nowrap;}
+  .doc tr:last-child td{border-bottom:none;}
+</style>
+</head>
+<body class="has-shell-nav">
+<nav id="adminShellNav"></nav>
+<div class="wrap">
+  <header>
+    <h1>숏폼 제작진 역할</h1>
+    <span class="meta-text">shorts-lab/PRODUCTION_ROLES.md · 자동 생성 2026-08-28 23:29 · 원본이 바뀌면 파이프라인 재실행 시 갱신됩니다</span>
+  </header>
+  <nav class="doc-nav"><a href="/insight-7b3e9f2c/shorts-process.html">숏폼 공정 정본</a><a href="/insight-7b3e9f2c/shorts-visual-grammar.html">숏폼 연출 사전</a><a href="/insight-7b3e9f2c/shorts-roles.html" class="current">숏폼 제작진 역할</a></nav>
+  <article class="doc">
+<blockquote>
+<p>우리 공정(G0~G6, <a href="shorts-process.html">PROCESS.md</a>)을 실제 영화·CF 제작진처럼 역할로 나눈 문서. <strong>한 게이트에 역할 하나가 아니라, 여러 역할이 동시에 논의해서 결정한다.</strong> 지금은 내(Claude)가 세션 안에서 역할을 바꿔가며 이 문서 기준으로 검토하고, 나중에 실제 멀티 에이전트로 자동화할 때는 이 문서가 각 에이전트의 페르소나·권한 정의가 된다(§3).</p>
+</blockquote>
+<hr />
+<h2>0. 역할 로스터</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>역할</th>
+<th>실제 직군 유비</th>
+<th>핵심 책임</th>
+<th>권위 문서</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>총괄 프로듀서(PD)</strong></td>
+<td>프로듀서</td>
+<td>컨셉 승인, 채널 정체성 수호, 역할 간 이견 최종 조정</td>
+<td>channel.json, PROCESS.md 미션·운영 원칙</td>
+</tr>
+<tr>
+<td><strong>리서처</strong></td>
+<td>다큐 리서처</td>
+<td>실제 수치·전문용어·역사자료 확보, 출처 기록</td>
+<td>VISUAL_GRAMMAR.md §4 수치 라이브러리</td>
+</tr>
+<tr>
+<td><strong>시나리오 작가</strong></td>
+<td>작가</td>
+<td>대본 초안, 훅·반전 구조, 문장 리듬</td>
+<td>channel.json script_structure·sentence_rule</td>
+</tr>
+<tr>
+<td><strong>촬영감독(DP)</strong></td>
+<td>Director of Photography</td>
+<td>카메라 무빙·씬 내 역동성 프롬프트</td>
+<td>VISUAL_GRAMMAR.md §1.1~1.3, §2-A~C, §2-F</td>
+</tr>
+<tr>
+<td><strong>VFX/그래픽 슈퍼바이저</strong></td>
+<td>VFX Supervisor</td>
+<td>오버레이 타입 배정·렌더링 스펙</td>
+<td>VISUAL_GRAMMAR.md §1.4-3~7, §3</td>
+</tr>
+<tr>
+<td><strong>편집감독</strong></td>
+<td>Editor</td>
+<td>컷 리듬·전환 연속성·통합 마스터샷 배치</td>
+<td>VISUAL_GRAMMAR.md §1.3-4, §1.4-1·2, §2-B</td>
+</tr>
+<tr>
+<td><strong>사운드 디자이너</strong></td>
+<td>Sound Designer</td>
+<td>환경음·나레이션 믹스, 정렬(Whisper) 정확도</td>
+<td>PROCESS.md 오디오 처리 방침</td>
+</tr>
+<tr>
+<td><strong>크리틱(비평가)</strong></td>
+<td>Script/Dailies Critic</td>
+<td>매 게이트 사후 검증, 반박 제기 — 특정 게이트 소속이 아니라 전 게이트 상시 개입</td>
+<td><code>pipeline/validate_scene_plan.py</code> + 문서 전 절</td>
+</tr>
+<tr>
+<td><strong>최종 QA</strong></td>
+<td>프로듀서/배급</td>
+<td>발행 직전 전체 재점검, 발행 보류 결정권</td>
+<td><code>CHECKLIST.md</code> 전체</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>1. 게이트별 참여 역할과 결정 방식</h2>
+<h3>G0 · 소재</h3>
+<ul>
+<li><strong>참여</strong>: PD, 리서처</li>
+<li><strong>진행</strong>: 리서처가 후보 소재의 반직관 포인트·킬러넘버 가능성을 리서치 → PD가 훅 문장 승인</li>
+<li><strong>결정권</strong>: PD</li>
+</ul>
+<h3>G1 · 대본</h3>
+<ul>
+<li><strong>참여</strong>: 작가, 크리틱, PD</li>
+<li><strong>진행</strong>: 작가 초안 → 크리틱이 sentence_rule·훅 공식·질문답 체인을 검증 → 이견 시 작가-크리틱 논의 → PD 최종 승인</li>
+<li><strong>결정권</strong>: 이견이 안 좁혀지면 PD</li>
+</ul>
+<h3>G2 · 음성 / G3 · 정렬</h3>
+<ul>
+<li><strong>참여</strong>: 사운드 디자이너</li>
+<li><strong>진행</strong>: 단독 진행(정렬 정확도 95% 미달 등 이상 시 PD 보고)</li>
+<li><strong>결정권</strong>: 사운드 디자이너 (이상 시 PD 에스컬레이션)</li>
+</ul>
+<h3>G4 · 씬 — 가장 다인 협업 게이트, 5인 동시 회의</h3>
+<ul>
+<li><strong>참여</strong>: 촬영감독, VFX 슈퍼바이저, 리서처, 편집감독, 크리틱</li>
+<li><strong>진행</strong>:
+  1. 리서처가 씬 주제별 실제 용어·수치 제공 (VISUAL_GRAMMAR.md §4)
+  2. 촬영감독이 카메라·액션 프롬프트 초안 작성 (§1.1~1.3)
+  3. VFX 슈퍼바이저가 오버레이 타입 배정 (§3)
+  4. 편집감독이 전환 연속성·마스터샷 위치를 검토 (§1.4-1·2, §1.5-4·5)
+  5. 크리틱이 기계검증(<code>validate_scene_plan.py</code>) + 사람 검증(§1.4·§1.5)으로 전체를 반박
+  6. 반박이 있으면 해당 역할이 수정 → 크리틱 재검증 → 전원 합의 시 통과</li>
+<li><strong>결정권</strong>: 크리틱의 기계검증 반박은 0건이 될 때까지 거부권을 가진다. 논리적 판단(오버레이-프롬프트 일치성 등 사람 판단 영역)에서 역할 간 의견이 갈리면 PD가 조정.</li>
+</ul>
+<h3>G5 · 합성</h3>
+<ul>
+<li><strong>참여</strong>: 편집감독, VFX 슈퍼바이저, 사운드 디자이너, 크리틱</li>
+<li><strong>진행</strong>: 컷 타이밍(편집감독)·오버레이 렌더링(VFX 슈퍼바이저)·오디오 믹스(사운드 디자이너)를 각자 산출 → 크리틱이 대사-화면 동기화(§1.5-1~3)를 검증</li>
+<li><strong>결정권</strong>: 크리틱 반박 시 해당 역할이 재작업</li>
+</ul>
+<h3>G6 · 발행</h3>
+<ul>
+<li><strong>참여</strong>: PD, 최종 QA</li>
+<li><strong>진행</strong>: 최종 QA가 <code>CHECKLIST.md</code> 전체를 재점검 → PD가 발행 승인</li>
+<li><strong>결정권</strong>: 최종 QA가 발견한 미비점은 발행 보류 사유 — PD도 우회 불가</li>
+</ul>
+<hr />
+<h2>2. 크로스-게이트 원칙</h2>
+<ul>
+<li><strong>크리틱은 특정 게이트 소속이 아니라 전 게이트에 상시 개입한다.</strong> <code>validate_scene_plan.py</code>가 이미 G4 크리틱 역할의 기계화 선례(2026-08-28 신설) — 앞으로 다른 게이트에도 기계화 가능한 검증이 있으면 같은 방식으로 스크립트화한다.</li>
+<li><strong>PD는 이견 조정자이지 실무자가 아니다.</strong> 매 결정에 관여하지 않고, 역할 간 논쟁이 합의에 이르지 못할 때만 개입한다.</li>
+<li><strong>역할은 인원이 아니라 관점이다.</strong> 한 세션(Claude)이 여러 역할을 순차적으로 맡아도 되고, 실제 사람이 겸임해도 되고, 나중엔 멀티 에이전트로 동시에 띄워도 된다. 이 문서의 목적은 "누가"가 아니라 "어떤 관점에서 무엇을 반드시 점검하는가"를 고정하는 것이다.</li>
+<li><strong>씬 하나를 두고 역할끼리 부딪히는 게 정상이다.</strong> 예: 촬영감독은 극적인 카메라 무빙을 원하는데 VFX 슈퍼바이저는 오버레이가 가려진다고 반대 — 이런 충돌은 숨기지 않고 명시적으로 기록하고, PD가 조정한 근거를 PROCESS.md 결정 로그에 남긴다.</li>
+</ul>
+<hr />
+<h2>3. 향후 자동화 경로</h2>
+<p>이 문서의 역할 구조는 Claude Code의 멀티 에이전트 Workflow에 1:1로 매핑 가능하다 — 사용자가 "워크플로우로 돌려줘"라고 명시하면, 위 역할들을 실제 병렬/순차 에이전트로 구현해 G4·G5의 다인 회의를 자동화한다:</p>
+<ul>
+<li>리서처·촬영감독·VFX 슈퍼바이저 = 병렬 에이전트(서로 다른 관점에서 동시 작업)</li>
+<li>크리틱 = 검증 단계 에이전트(위 결과물을 받아 반박, 기계검증과 병행)</li>
+<li>PD = 합성/조정 에이전트(충돌 시 최종 판단)</li>
+</ul>
+<p>그 전까지는 이 문서를 세션 내 역할극(Claude가 역할을 바꿔가며 검토)의 기준으로 쓴다 — 예: "지금부터 크리틱 역할로 씬22를 봐줘" 같은 요청에 이 문서의 크리틱 정의(§0, §1)를 따른다.</p>
+  </article>
+</div>
+<script src="/insight-7b3e9f2c/studio.js"></script>
+</body>
+</html>

@@ -98,9 +98,37 @@ Studio.setRefreshState(btn, "loading");  // -> "success" / "error" -> setTimeout
 - 모바일 폭(375px)에서 사이드바가 가로 스크롤 바로 정상 축소되는지
 - 콘솔/네트워크 에러 없이 로드되는지
 
-## 외부에서 생성되는 페이지 (예: shorts-studio.html)
+## 외부에서 생성되는 페이지 (예: shorts-studio.html, shorts-process.html 등)
 
-`shorts-studio.html`은 이 저장소 밖 `shorts-lab/pipeline/build_studio_site.py`가
-매번 새로 써서 덮어씁니다. 이 페이지를 직접 손으로 고쳐도 다음 파이프라인 실행
-때 되돌아갑니다 — **생성기 스크립트 쪽을 고쳐야 영구적으로 반영됩니다.** 이런
-페이지를 발견하면 생성기 코드에도 이 문서의 규칙이 반영돼 있는지 확인하세요.
+`shorts-studio.html`과 `shorts-process.html`·`shorts-visual-grammar.html`·
+`shorts-roles.html`은 이 저장소 밖 `shorts-lab/pipeline/build_studio_site.py`·
+`build_docs_pages.py`가 매번 새로 써서 덮어씁니다. 이 페이지들을 직접 손으로
+고쳐도 다음 파이프라인 실행 때 되돌아갑니다 — **생성기 스크립트 쪽을 고쳐야
+영구적으로 반영됩니다.** 이런 페이지를 발견하면 생성기 코드에도 이 문서의
+규칙이 반영돼 있는지 확인하세요.
+
+## 긴 마크다운 문서를 페이지로 렌더링할 때 — `.doc` 패턴
+
+`shorts-process.html` 등 3개 문서 페이지에서 처음 쓰인 패턴(2026-08-28). 표·코드·
+인용구가 있는 긴 참조 문서(설계 정본 같은)를 site 안에서 읽기 좋게 보여줄 때
+이 패턴을 따릅니다 — `.answer`(ask.html, marked.js로 렌더된 대화형 답변)와는
+용도가 다릅니다.
+
+- 본문 컨테이너에 `.doc` 클래스, `.wrap{max-width:760px}`로 좁혀 가독성 확보(72ch 안팎).
+- `<article class="doc">` 안에 마크다운을 그대로 변환해 넣습니다 — Python
+  `markdown` 라이브러리(`extensions=["tables","fenced_code","sane_lists"]`)로
+  변환 후, 표는 `<div class="table-wrap">`로 감싸 가로 스크롤을 확보합니다
+  (`insight-7b3e9f2c/`는 Jekyll 밖이라 서버사이드에서 미리 렌더해 정적 HTML로
+  내보내야 함 — 브라우저에서 marked.js로 즉석 렌더하는 `.answer`와의 차이).
+- 문서 자체의 `# 제목(H1)`은 페이지에서 잘라내고, 페이지 공통 `<header><h1>`에
+  넣습니다(중복 H1 방지) — 생성기가 소스 첫 줄이 `# `로 시작하면 제거합니다.
+- 문서 간 상대링크(`[VISUAL_GRAMMAR.md](VISUAL_GRAMMAR.md)` 같은)는 변환 전에
+  정규식으로 형제 HTML 페이지 경로로 바꿔칩니다 — 그대로 두면 죽은 링크가 됩니다.
+- 헤더 아래 같은 묶음의 다른 문서로 바로 이동하는 `.doc-nav` pill 링크 줄을
+  둡니다(현재 문서는 `.current`로 강조).
+- 새 CSS 선택자(`.doc`, `.doc-nav`, `.table-wrap` 등)만 추가하고, `:root`/body/
+  header/`#adminShellNav`는 이 문서 규칙 5번대로 studio.css를 그대로 씁니다.
+
+정본 문서 3개를 실제로 보려면: [숏폼 공정 정본](/insight-7b3e9f2c/shorts-process.html),
+[숏폼 연출 사전](/insight-7b3e9f2c/shorts-visual-grammar.html),
+[숏폼 제작진 역할](/insight-7b3e9f2c/shorts-roles.html).
