@@ -115,14 +115,14 @@
     <a href="https://github.com/hansunghee7/hansunghee7.github.io/actions/workflows/research-newsletter.yml" target="_blank" rel="noopener">GitHub Actions의 "Research newsletter topic" 워크플로</a>를
     열어 <strong>Run workflow</strong> 버튼을 누르고 주제 키워드를 입력하면 됩니다
     (터미널 필요 없음, 가입·API 키도 필요 없음 — 뉴스는 구글 뉴스 검색으로 바로 모읍니다).
-    실행이 끝나면 결과가 자동 커밋되고, 이 탭을 새로고침하면 보입니다.
+    실행이 끝나면 결과가 자동 커밋되고, 위 새로고침 버튼을 누르면 보입니다.
     유튜브 결과까지 보려면(선택) 저장소 Secrets에 <code>YOUTUBE_API_KEY</code>
     (<a href="https://console.cloud.google.com/" target="_blank" rel="noopener">Google Cloud Console</a>에서 무료 발급)를 등록하세요.
     터미널이 더 편하면 <code>python scripts/research_newsletter_topics.py "주제 키워드"</code>를
     직접 실행하고 커밋·푸시해도 동일하게 반영됩니다.
   </div>
 
-  <div id="content"><div class="loading">↻ 위 새로고침 버튼을 눌러 불러오세요</div></div>
+  <div id="content"><div class="loading">불러오는 중…</div></div>
 </div>
 
 <script>
@@ -176,6 +176,7 @@
       setTimeout(function () { setRefreshState(btn, "idle"); }, 1600);
     });
   });
+  load().then(function () { stampRefresh(); });
 
   function render(topics) {
     if (!topics.length) {

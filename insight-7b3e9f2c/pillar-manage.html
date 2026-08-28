@@ -103,7 +103,7 @@
     <strong>지금 상태:</strong> 12개 카테고리 전부 <code>/log/</code>에 운영 반영되었습니다(사이트맵 등록, log.html 카테고리 버튼 링크, 개별 글 하단 "이 시리즈 전체 보기" 역링크까지 완료). 전부 <code>_layouts/pillar.html</code> 레이아웃 하나를 공유하므로, 새 카테고리가 생기면 <code>log/&lt;카테고리&gt;.html</code>에 <code>layout: pillar</code> + <code>pillar_category</code> front matter만 있는 파일 하나 추가하고, <code>_data/pillars.yml</code>에 <code>pillar_url</code>을 채우면 됩니다(CMS에서 가능). 아래 표의 <code>PILLAR_STATUS</code> 목록도 그때 한 줄 추가해줘야 합니다 — 카테고리 수가 늘어나면 자동으로 스캔하도록 바꾸는 게 좋습니다.
   </div>
 
-  <div id="content"><div class="loading">↻ 위 새로고침 버튼을 눌러 불러오세요</div></div>
+  <div id="content"><div class="loading">불러오는 중…</div></div>
 </div>
 
 <script>
@@ -173,6 +173,7 @@
       setTimeout(function () { setRefreshState(btn, "idle"); }, 1600);
     });
   });
+  load().then(function () { stampRefresh(); });
 
   function render(posts) {
     var counts = {};
