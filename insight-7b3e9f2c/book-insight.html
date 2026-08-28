@@ -29,8 +29,13 @@
     font-family:'Pretendard Variable','Pretendard',-apple-system,sans-serif;
     -webkit-font-smoothing:antialiased; word-break:keep-all;
   }
-  .wrap{max-width:1100px; margin:0 auto; padding:0 var(--gutter) 60px;}
+  /* 다른 Studio 페이지보다 넓게 잡는다 -- 두 책을 좌우로 나란히 놓고
+     비교하려면 1100px로는 컬럼 하나가 너무 좁아진다. */
+  .wrap{max-width:1400px; margin:0 auto; padding:0 var(--gutter) 60px;}
   @media (min-width:761px){ :root{ --gutter:32px; } }
+
+  .books-columns{display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:start;}
+  @media (max-width:900px){ .books-columns{grid-template-columns:1fr;} }
   header{padding:28px 0 18px; border-bottom:1px solid var(--line-soft); margin-bottom:24px;}
   h1{font-family:'Noto Serif KR',serif; font-weight:400; font-size:30px; letter-spacing:-0.01em; margin:0 0 8px;}
   @media (min-width:761px){ h1{font-size:36px;} }
@@ -78,6 +83,14 @@
   .tiles{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px;}
   .tile{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px 16px 14px;}
   .tile.is-empty{opacity:0.45;}
+
+  .more-toggle{
+    background:none; border:none; color:var(--muted); cursor:pointer;
+    font-size:11.5px; font-family:inherit; padding:8px 0 0; text-align:left;
+  }
+  .more-toggle:hover{color:var(--ink);}
+  .more-tiles{margin-top:12px;}
+  .more-tiles[hidden]{display:none;}
   .tile .label{font-size:12px; color:var(--muted); margin-bottom:8px; line-height:1.4;}
   .tile .label a{color:inherit; text-decoration:none;}
   .tile .label a:hover{color:var(--ink); text-decoration:underline;}
@@ -129,6 +142,7 @@
     GitHub Actions에서 <code>Fetch book insight</code> 워크플로를 수동 실행하세요.
   </div>
 
+  <div class="books-columns">
   <section class="book-section" id="uxBookSection">
     <h2>UX의 언어들</h2>
     <div class="book-meta">한성희·신행철 저 · 파지트</div>
@@ -140,6 +154,7 @@
     <div class="book-meta">한성희 저 · 파지트 · 2025-06-13 출간</div>
     <div id="questionBookTiles"><div class="loading">데이터 불러오는 중…</div></div>
   </section>
+  </div>
 </div>
 
 <script>
@@ -185,8 +200,10 @@
   }
 
   /* metric = { label, unit, higherIsBetter, note, href }
-     series = [{date, value}] (null 값은 이미 걸러서 넘김) */
-  function tile(metric, series) {
+     series = [{date, value}] (null 값은 이미 걸러서 넘김)
+     noteOverride: 데이터에서 즉석으로 뽑아낸 note가 있으면 metric.note
+     대신 이걸 쓴다 (예: 교보 배지의 실제 카테고리명). */
+  function tile(metric, series, noteOverride) {
     var clean = series.filter(function (e) { return e.value != null; });
     var label = '<div class="label">' + labelHtml(metric.label, metric.href) + "</div>";
 
@@ -223,7 +240,10 @@
       "</span>" + deltaHtml + "</div>" +
       '<div class="asof">' + escapeHtml(latest.date) + " 기준 · " + clean.length + "개 기록</div>" +
       sparkline(clean, !metric.higherIsBetter) +
-      (metric.note ? '<div class="note">' + escapeHtml(metric.note) + "</div>" : "") +
+      (function () {
+        var note = noteOverride != null ? noteOverride : metric.note;
+        return note ? '<div class="note">' + escapeHtml(note) + "</div>" : "";
+      })() +
       "</div>"
     );
   }
@@ -238,22 +258,51 @@
   }
 
   /* 서점별로 묶어서 보여준다 -- 로고 반영, 각 서점의 대표 지표(판매지수/
-     세일즈포인트 등)를 그 서점 그룹 맨 앞에, 나머지는 카테고리 상위->하위
-     순으로 나열한다. groups: [{ key, label, logo, metrics }]. metrics
-     배열 자체의 순서가 곧 화면에 나열되는 순서다. */
+     세일즈포인트 등, metric.headline===true)를 그 서점 그룹에서 항상
+     보이게 두고, 나머지 카테고리들은 기본은 접어뒀다가 "더보기"를 눌러야
+     펼쳐지게 한다. 두 책을 좌우로 나란히 봤을 때도 한 화면에 다 들어오게
+     하려는 것 -- 카테고리 세부는 매일 볼 게 아니라 가끔 들여다보는
+     정보라, 접어둬도 정보 손실은 없다. metrics 배열 순서가 곧 "더보기"를
+     펼쳤을 때 나열되는 순서(상위->하위 카테고리)다. */
+  var groupSeq = 0;
+  function tileFor(m, history) {
+    var series = history.map(function (r) { return { date: r.date, value: m.get(r) }; });
+    var note = m.noteGet ? m.noteGet(history[history.length - 1]) : null;
+    return tile(m, series, note);
+  }
+
   function sourceGroupHtml(g, history) {
-    var tilesHtml = g.metrics.map(function (m) {
-      var series = history.map(function (r) { return { date: r.date, value: m.get(r) }; });
-      return tile(m, series);
-    }).join("");
+    var headline = g.metrics.filter(function (m) { return m.headline; });
+    var rest = g.metrics.filter(function (m) { return !m.headline; });
+    var id = "srcgrp" + (++groupSeq);
+
+    var headlineHtml = headline.map(function (m) { return tileFor(m, history); }).join("");
+    var restHtml = rest.map(function (m) { return tileFor(m, history); }).join("");
+
+    var toggleHtml = rest.length
+      ? '<button type="button" class="more-toggle" data-target="' + id + '">카테고리 ' + rest.length + "개 더보기 ▾</button>"
+      : "";
+
     return (
       '<div class="source-group">' +
       '<div class="source-header"><img src="' + escapeHtml(g.logo) + '" alt="" onerror="this.style.display=\'none\'">' +
       escapeHtml(g.label) + "</div>" +
-      '<div class="tiles">' + tilesHtml + "</div>" +
+      '<div class="tiles">' + headlineHtml + "</div>" +
+      toggleHtml +
+      (rest.length ? '<div class="tiles more-tiles" id="' + id + '" hidden>' + restHtml + "</div>" : "") +
       "</div>"
     );
   }
+
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest(".more-toggle");
+    if (!btn) return;
+    var panel = document.getElementById(btn.getAttribute("data-target"));
+    if (!panel) return;
+    var open = panel.hasAttribute("hidden");
+    if (open) { panel.removeAttribute("hidden"); btn.textContent = btn.textContent.replace("▾", "▴").replace("더보기", "접기"); }
+    else { panel.setAttribute("hidden", ""); btn.textContent = btn.textContent.replace("▴", "▾").replace("접기", "더보기"); }
+  });
 
   function renderGroups(elId, groups, history) {
     document.getElementById(elId).innerHTML = groups.map(function (g) { return sourceGroupHtml(g, history); }).join("");
@@ -325,17 +374,18 @@
     var KYOBO_UXUI = "https://store.kyobobook.co.kr/category/domestic/331902/best";
     var KYOBO_STRATEGY = "https://store.kyobobook.co.kr/category/domestic/130701/best";
 
-    // 각 서점 그룹의 첫 항목은 그 서점의 대표 지표(판매지수/세일즈포인트/
-    // 온라인 주간 배지)이고, 그다음은 카테고리 순위를 상위(넓은 카테고리)
-    // -> 하위(좁은 카테고리) 순으로 나열한다. 예스24는 카테고리 코드
-    // 앞자리가 상위 카테고리를 그대로 물려받는 구조라 실제 트리를 확인해
-    // 순서를 정했다: 경제경영종합 > 마케팅/세일즈 > 광고/홍보/PR (한 갈래),
+    // 각 서점 그룹의 대표 지표(headline: true)는 항상 보이고, 나머지
+    // 카테고리는 "더보기"로 접어둔다. 카테고리는 상위(넓은 카테고리)->
+    // 하위(좁은 카테고리) 순으로 나열한다. 예스24는 카테고리 코드 앞자리가
+    // 상위 카테고리를 그대로 물려받는 구조라 실제 트리를 확인해 순서를
+    // 정했다: 경제경영종합 > 마케팅/세일즈 > 광고/홍보/PR (한 갈래),
     // 웹사이트 > UX/UI (다른 갈래), 디자인(독립 갈래).
+    // 서점 순서는 예스24 -> 교보문고 -> 알라딘.
     var groups = [
       {
         key: "yes24", label: "예스24", logo: "/assets/logos/yes24.png",
         metrics: [
-          { key: "sales_index", label: "판매지수", unit: "", higherIsBetter: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.sales_index; } },
+          { key: "sales_index", label: "판매지수", unit: "", higherIsBetter: true, headline: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.sales_index; } },
           { key: "reviews", label: "리뷰 수", unit: "건", higherIsBetter: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.reviews; } },
           { key: "econ", label: "경제경영 종합", unit: "위", higherIsBetter: false, href: Y24_BEST("001001025"), get: function (r) { return r.yes24 && r.yes24.econ_rank; } },
           { key: "mkt", label: "마케팅/세일즈", unit: "위", higherIsBetter: false, href: Y24_BEST("001001025009"), get: function (r) { return r.yes24 && r.yes24.mkt_rank; } },
@@ -346,20 +396,25 @@
         ],
       },
       {
-        key: "aladin", label: "알라딘", logo: "/assets/logos/aladin.jpg",
+        key: "kyobo", label: "교보문고", logo: "/assets/logos/kyobo.png",
         metrics: [
-          { key: "aladin_sp", label: "세일즈포인트", unit: "", higherIsBetter: true, href: ALADIN_PRODUCT, get: function (r) { return r.aladin && r.aladin.sales_point; } },
-          { key: "aladin_brand", label: "마케팅/브랜드", unit: "위", higherIsBetter: false, href: ALADIN_BEST("1632"), get: function (r) { return r.aladin && r.aladin.brand_rank; } },
-          { key: "aladin_ad", label: "광고/홍보/PR", unit: "위", higherIsBetter: false, href: ALADIN_BEST("268"), get: function (r) { return r.aladin && r.aladin.ad_rank; } },
-          { key: "aladin_design", label: "디자인이야기", unit: "위", higherIsBetter: false, href: ALADIN_BEST("51089"), get: function (r) { return r.aladin && r.aladin.design_rank; } },
+          // 라벨을 "온라인 주간"으로 고정해뒀었는데, 실제 배지 카테고리명은
+          // 책마다 다르다(이 책은 "경제/경영"). 이름을 지어내는 대신 스크래핑
+          // 시점에 실제로 읽은 카테고리명을 note로 그대로 보여준다.
+          { key: "kyobo_badge", label: "주간베스트", unit: "위", higherIsBetter: false, headline: true, href: KYOBO_PRODUCT,
+            get: function (r) { return r.kyobo && r.kyobo.badge_rank; },
+            noteGet: function (r) { return r.kyobo && r.kyobo.badge_category ? "카테고리: " + r.kyobo.badge_category : null; } },
+          { key: "kyobo_strategy", label: "경영전략일반", unit: "위", higherIsBetter: false, href: KYOBO_STRATEGY, get: function (r) { return r.kyobo && r.kyobo.strategy_rank; } },
+          { key: "kyobo_uxui", label: "UX/UI", unit: "위", higherIsBetter: false, href: KYOBO_UXUI, get: function (r) { return r.kyobo && r.kyobo.uxui_cat; } },
         ],
       },
       {
-        key: "kyobo", label: "교보문고", logo: "/assets/logos/kyobo.png",
+        key: "aladin", label: "알라딘", logo: "/assets/logos/aladin.jpg",
         metrics: [
-          { key: "kyobo_badge", label: "온라인 주간", unit: "위", higherIsBetter: false, href: KYOBO_PRODUCT, get: function (r) { return r.kyobo && r.kyobo.badge_rank; } },
-          { key: "kyobo_strategy", label: "경영전략일반", unit: "위", higherIsBetter: false, href: KYOBO_STRATEGY, get: function (r) { return r.kyobo && r.kyobo.strategy_rank; } },
-          { key: "kyobo_uxui", label: "UX/UI", unit: "위", higherIsBetter: false, href: KYOBO_UXUI, get: function (r) { return r.kyobo && r.kyobo.uxui_cat; } },
+          { key: "aladin_sp", label: "세일즈포인트", unit: "", higherIsBetter: true, headline: true, href: ALADIN_PRODUCT, get: function (r) { return r.aladin && r.aladin.sales_point; } },
+          { key: "aladin_brand", label: "마케팅/브랜드", unit: "위", higherIsBetter: false, href: ALADIN_BEST("1632"), get: function (r) { return r.aladin && r.aladin.brand_rank; } },
+          { key: "aladin_ad", label: "광고/홍보/PR", unit: "위", higherIsBetter: false, href: ALADIN_BEST("268"), get: function (r) { return r.aladin && r.aladin.ad_rank; } },
+          { key: "aladin_design", label: "디자인이야기", unit: "위", higherIsBetter: false, href: ALADIN_BEST("51089"), get: function (r) { return r.aladin && r.aladin.design_rank; } },
         ],
       },
     ];
@@ -387,35 +442,41 @@
     var KYOBO_PRODUCT = "https://product.kyobobook.co.kr/detail/S000216681258";
     var KYOBO_CAT = "https://store.kyobobook.co.kr/category/domestic/150503/best";
 
+    // 서점 순서는 예스24 -> 교보문고 -> 알라딘 -> 밀리의서재.
     var groups = [
       {
         key: "yes24", label: "예스24", logo: "/assets/logos/yes24.png",
         metrics: [
-          { key: "y24si", label: "판매지수", unit: "", higherIsBetter: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.sales_index; } },
+          { key: "y24si", label: "판매지수", unit: "", higherIsBetter: true, headline: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.sales_index; } },
           { key: "y24rv", label: "리뷰 수", unit: "건", higherIsBetter: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.reviews; } },
           { key: "y24cat", label: "기획/정보/시간관리", unit: "위", higherIsBetter: false, href: Y24_BEST, get: function (r) { return r.yes24 && r.yes24.category_rank; } },
           { key: "y24cat2", label: "CEO/비즈니스맨 기획/정보/시간관리", unit: "위", higherIsBetter: false, href: Y24_BEST2, get: function (r) { return r.yes24 && r.yes24.category2_rank; } },
         ],
       },
       {
+        key: "kyobo", label: "교보문고", logo: "/assets/logos/kyobo.png",
+        metrics: [
+          // "온라인 주간"으로 라벨을 고정해뒀었는데, 실제 배지 카테고리명은
+          // 책마다 다르다(이 책은 "자기계발"). 이름을 지어내는 대신 스크래핑
+          // 시점에 실제로 읽은 카테고리명을 note로 그대로 보여준다.
+          { key: "kybadge", label: "주간베스트", unit: "위", higherIsBetter: false, headline: true, href: KYOBO_PRODUCT,
+            get: function (r) { return r.kyobo && r.kyobo.badge_rank; },
+            noteGet: function (r) { return r.kyobo && r.kyobo.badge_category ? "카테고리: " + r.kyobo.badge_category : null; } },
+          { key: "kycat", label: "기획력", unit: "위", higherIsBetter: false, href: KYOBO_CAT, get: function (r) { return r.kyobo && r.kyobo.category_rank; } },
+        ],
+      },
+      {
         key: "aladin", label: "알라딘", logo: "/assets/logos/aladin.jpg",
         metrics: [
-          { key: "alsp", label: "세일즈포인트", unit: "", higherIsBetter: true, href: ALADIN_PRODUCT, get: function (r) { return r.aladin && r.aladin.sales_point; } },
+          { key: "alsp", label: "세일즈포인트", unit: "", higherIsBetter: true, headline: true, href: ALADIN_PRODUCT, get: function (r) { return r.aladin && r.aladin.sales_point; } },
           { key: "alplan", label: "기획", unit: "위", higherIsBetter: false, href: ALADIN_BEST("70229"), get: function (r) { return r.aladin && r.aladin.planning_rank; } },
           { key: "alinfo", label: "정보관리", unit: "위", higherIsBetter: false, href: ALADIN_BEST("70222"), get: function (r) { return r.aladin && r.aladin.info_mgmt_rank; } },
         ],
       },
       {
-        key: "kyobo", label: "교보문고", logo: "/assets/logos/kyobo.png",
-        metrics: [
-          { key: "kybadge", label: "주간베스트(자기계발)", unit: "위", higherIsBetter: false, href: KYOBO_PRODUCT, get: function (r) { return r.kyobo && r.kyobo.badge_rank; } },
-          { key: "kycat", label: "기획력", unit: "위", higherIsBetter: false, href: KYOBO_CAT, get: function (r) { return r.kyobo && r.kyobo.category_rank; } },
-        ],
-      },
-      {
         key: "millie", label: "밀리의서재", logo: "/assets/logos/millie.png",
         metrics: [
-          { key: "millie", label: "자기계발>기획 인기순", unit: "위", higherIsBetter: false, href: "https://www.millie.co.kr/v3/search/3depth/1298/?parentSeq=1287&nav_hidden=y", get: function (r) { return r.millie && r.millie.category_rank; } },
+          { key: "millie", label: "자기계발>기획 인기순", unit: "위", higherIsBetter: false, headline: true, href: "https://www.millie.co.kr/v3/search/3depth/1298/?parentSeq=1287&nav_hidden=y", get: function (r) { return r.millie && r.millie.category_rank; } },
         ],
       },
     ];

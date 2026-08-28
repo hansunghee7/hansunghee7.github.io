@@ -291,10 +291,12 @@ def collect_kyobo_categories(browser, code, category_map):
 
 
 def collect_kyobo_product(browser, code, want_reviews=True):
-    """상품 페이지의 "주간베스트 N위" 배지 + (선택) 리뷰/평점.
+    """상품 페이지의 "주간베스트 [카테고리명] N위" 배지 + (선택) 리뷰/평점.
     배지 카테고리명(자기계발/경제·경영 등)은 책마다 다르고 언제든 바뀔 수
-    있어서, 이름은 무시하고 숫자만 읽는다."""
-    out = {"badge_rank": None, "reviews": 0, "rating": None}
+    있다 -- 예전엔 숫자만 읽고 이름은 화면에 하드코딩해서 UX의 언어들이
+    "경제/경영"인데 화면엔 엉뚱한 이름이 뜨는 문제가 있었다. 이제 카테고리
+    이름 자체를 같이 읽어서 badge_category로 남긴다."""
+    out = {"badge_rank": None, "badge_category": None, "reviews": 0, "rating": None}
     page = browser.new_page(user_agent=UA, locale="ko-KR")
     try:
         page.goto(f"https://product.kyobobook.co.kr/detail/{code}", wait_until="domcontentloaded", timeout=60000)
@@ -306,9 +308,12 @@ def collect_kyobo_product(browser, code, want_reviews=True):
                 pass
         text = page.evaluate("() => document.body.innerText")
 
-        badge = re.search(r"주간베스트\s*[^\d]{0,12}?(\d[\d,]*)\s*위", text)
+        badge = re.search(r"주간베스트\s*([^\d]{0,12}?)(\d[\d,]*)\s*위", text)
         if badge:
-            out["badge_rank"] = int(badge.group(1).replace(",", ""))
+            out["badge_rank"] = int(badge.group(2).replace(",", ""))
+            category = badge.group(1).strip()
+            if category:
+                out["badge_category"] = category
 
         if want_reviews:
             rv = re.search(r"리뷰\s*\(\s*(\d+)\s*\)", text) or re.search(r"리뷰\s+(\d+)\b", text)
