@@ -20,6 +20,23 @@ def _terms(raw):
     return out
 
 
+_MONTHS = {m: i + 1 for i, m in enumerate(
+    ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])}
+
+
+def _date_sort_key(date_string):
+    """'Aug 12. 2026' -> '20260812'. 필러 페이지(log/*.html)가 카테고리별
+    최신순/오래된순 정렬에 쓴다 -- date_string은 요일이 섞여 있거나
+    형식이 미묘히 달라질 수 있어 그대로 정렬하면 알파벳순이 되어버린다.
+    형식이 안 맞으면 빈 문자열(정렬 시 맨 앞으로 밀림, 예외로 죽지 않음)."""
+    m = re.match(r'^([A-Za-z]{3})\s+(\d{1,2})\.\s*(\d{4})$', (date_string or '').strip())
+    if not m or m.group(1) not in _MONTHS:
+        return ''
+    mon, day, year = m.group(1), int(m.group(2)), int(m.group(3))
+    return '{:04d}{:02d}{:02d}'.format(year, _MONTHS[mon], day)
+
+
 images = os.listdir('log_assets/images')
 cover_by_id = defaultdict(list)   # id -> [(title_part, filename)]
 cover_by_pure = defaultdict(list)  # pure_text(title) -> [filename]
@@ -215,6 +232,7 @@ for fname in md_files:
         'title': title,
         'category': category,
         'date': date_string,
+        'date_sort': _date_sort_key(date_string),
         'url': url,
         'image': image,
         '_kw': _terms(frontmatter.get('keywords')),
@@ -300,6 +318,16 @@ with open(OUT_PATH, 'w', encoding='utf-8') as f:
     json.dump(posts, f, ensure_ascii=False, indent=0)
 
 print('wrote', len(posts), 'posts to', OUT_PATH)
+
+# --- 필러 페이지(log/*.html, _layouts/pillar.html)가 site.data.posts로
+# 읽는 Jekyll _data 사본. 예전엔 이 파일이 수동 스냅샷이라 새 글이
+# 발행돼도 필러 페이지엔 반영이 안 되는 문제가 있었다 -- assets/data/
+# posts.json과 완전히 같은 내용을 그대로 다시 써서 항상 동기화되게 한다.
+DATA_OUT_PATH = '_data/posts.json'
+with open(DATA_OUT_PATH, 'w', encoding='utf-8') as f:
+    json.dump(posts, f, ensure_ascii=False, indent=0)
+
+print('wrote', len(posts), 'posts to', DATA_OUT_PATH)
 
 # expose mapping for the homepage-widget patch step
 with open('.mapping_debug.json', 'w', encoding='utf-8') as f:

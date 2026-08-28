@@ -6,7 +6,11 @@ name: Publish log pipeline
 #   2. 커버 이미지 파일명의 특수문자 제거
 #   3. 이전글/다음글 링크 재계산 (sync_all.py)
 #   4. log.html 카드 그리드에 새 글 카드 추가
-#   5. 썸네일 매핑·posts.json 갱신
+#   5. 썸네일 매핑·posts.json(assets/data/, _data/ 둘 다) 갱신
+#      -- _data/posts.json은 필러 페이지(log/*.html)가 Jekyll
+#      site.data.posts로 읽는 사본. assets/data/posts.json과 완전히
+#      같은 내용으로 매번 다시 써서, 새 글이 필러 페이지에도 자동으로
+#      반영되게 한다(예전엔 수동 스냅샷이라 새 글이 안 잡혔음).
 #   6. sitemap.xml 동기화
 # 을 실행하고, 바뀐 파일이 있으면 같은 브랜치에 커밋해서 되돌려 놓습니다.
 # 기존 글은 절대 건드리지 않도록 각 스크립트가 변경 없는 파일엔 손을 대지
@@ -90,7 +94,7 @@ jobs:
             # log_assets/images도 포함해야 합니다 -- sanitize_cover_images.py가
             # 이미지 파일 이름을 바꾸는데, 이걸 빼면 front matter만 새 이름으로
             # 커밋되고 실제 파일 이름은 옛날 그대로라 링크가 깨집니다.
-            git add log_assets/markdown log_assets/images log.html assets/data/posts.json sitemap.xml
+            git add log_assets/markdown log_assets/images log.html assets/data/posts.json _data/posts.json sitemap.xml
 
             if git diff --cached --quiet; then
               echo "커밋할 변경 없음"
