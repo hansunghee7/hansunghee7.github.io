@@ -317,6 +317,15 @@ function pillarSortToggle(mode, btn){
     active.scrollIntoView({ behavior: 'instant', block: 'nearest', inline: 'center' });
   }
 })();
+
+// "더보기" 모달(<details class="pillar-more">)은 X 버튼을 눌러야만
+// 닫혔다 -- <details>는 <dialog>와 달리 Esc를 기본으로 처리하지 않아서,
+// 열려있을 때 Esc를 누르면 직접 닫아준다.
+document.addEventListener('keydown', function(e){
+  if (e.key !== 'Escape') return;
+  var open = document.querySelector('.pillar-more[open]');
+  if (open) open.removeAttribute('open');
+});
 </script>
 </body>
 </html>
