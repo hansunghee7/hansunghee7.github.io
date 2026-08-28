@@ -15,67 +15,9 @@
 <!-- 브런치·네이버블로그 같은 장문 플랫폼은 세리프 계열의 넉넉한 본문 서체를 씁니다. -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<link rel="stylesheet" href="/insight-7b3e9f2c/studio.css">
 
 <style>
-  :root{
-    --bg:#ffffff; --ink:#121210; --muted:#6e6a62; --dim:#403d37;
-    --line:#c8c6bf; --line-soft:rgba(20,20,15,0.07);
-    --card:#ffffff; --good:#1f7a4f; --warn:#a3690f; --bad:#b8402a;
-    --gutter:16px;
-  }
-  *{box-sizing:border-box;}
-  body{
-    margin:0; background:var(--bg); color:var(--ink);
-    font-family:'Pretendard Variable','Pretendard',-apple-system,sans-serif;
-    -webkit-font-smoothing:antialiased; word-break:keep-all;
-  }
-  .wrap{max-width:1100px; margin:0 auto; padding:0 var(--gutter) 60px;}
-  @media (min-width:761px){ :root{ --gutter:32px; } }
-  /* 한 번만 알면 되는 설명은 제목 옆 ⓘ 아이콘 hover/탭 툴팁으로 뺐다
-     (다른 Studio 페이지와 동일한 패턴). */
-  header{padding:28px 0 18px; border-bottom:1px solid var(--line-soft); margin-bottom:24px;}
-  h1{font-family:'Noto Serif KR',serif; font-weight:400; font-size:30px; letter-spacing:-0.01em; margin:0; display:inline-flex; align-items:baseline; gap:8px;}
-  @media (min-width:761px){ h1{font-size:36px;} }
-  h1 .info-dot{font-size:15px;}
-  .info-dot{
-    display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;
-    width:14px; height:14px; border:none; background:none; color:var(--muted);
-    font-size:13px; font-family:inherit; line-height:1; cursor:pointer; padding:0;
-    position:relative;
-  }
-  .info-dot:hover, .info-dot[aria-pressed="true"]{color:var(--ink);}
-  .info-text{
-    position:absolute; left:0; top:calc(100% + 8px);
-    width:max-content; max-width:min(480px, 90vw); text-align:left;
-    background:var(--ink); color:#fff; font-size:11.5px; font-weight:400;
-    line-height:1.5; white-space:normal;
-    padding:8px 11px; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.18);
-    opacity:0; visibility:hidden; pointer-events:none;
-    transform:translateY(-4px);
-    transition:opacity .15s, transform .15s, visibility .15s;
-    z-index:30;
-  }
-  .info-dot:hover .info-text, .info-dot[aria-pressed="true"] .info-text{
-    opacity:1; visibility:visible; transform:translateY(0); pointer-events:auto;
-  }
-
-  /* ---- admin shell: 사이드바 ----
-     insight-7b3e9f2c/index.html 과 동일한 블록입니다. 메뉴를 바꾸면
-     그 파일에도 똑같이 반영해야 합니다(Jekyll include가 아니라
-     순수 정적 HTML이라 공유가 안 됩니다). */
-  #adminShellNav{position:fixed; top:0; left:0; bottom:0; width:180px; padding:24px 14px; background:#f7f6f2; border-right:1px solid var(--line-soft); overflow-y:auto; z-index:100;}
-  #adminShellNav .shell-title{font-size:12px; font-weight:600; color:var(--muted); letter-spacing:0.05em; text-transform:uppercase; margin:0 0 16px; padding:0 10px;}
-  #adminShellNav a{display:block; padding:9px 10px; margin-bottom:2px; border-radius:6px; color:var(--dim); text-decoration:none; font-size:14px;}
-  #adminShellNav a:hover{background:var(--line-soft);}
-  #adminShellNav a.active{background:var(--ink); color:#fff;}
-  body.has-shell-nav{padding-left:180px;}
-  @media (max-width:760px){
-    #adminShellNav{position:static; width:auto; display:flex; gap:4px; overflow-x:auto; border-right:none; border-bottom:1px solid var(--line-soft); padding:10px 12px;}
-    #adminShellNav .shell-title{display:none;}
-    #adminShellNav a{white-space:nowrap; margin-bottom:0;}
-    body.has-shell-nav{padding-left:0;}
-  }
-
   /* ---- 글 선택 ---- */
   #postPicker{position:relative; margin-bottom:28px;}
   #postSearch{width:100%; padding:11px 14px; font-size:14px; border:1px solid var(--line); border-radius:8px; font-family:inherit;}
@@ -146,18 +88,7 @@
 </style>
 </head>
 <body class="has-shell-nav">
-<nav id="adminShellNav">
-  <div class="shell-title">Simplifier Studio</div>
-  <a href="/insight-7b3e9f2c/">사이트 인사이트</a>
-  <a href="/insight-7b3e9f2c/sns-insight.html">SNS 인사이트</a>
-  <a href="/insight-7b3e9f2c/book-insight.html">북 인사이트</a>
-  <a href="/insight-7b3e9f2c/write.html">글쓰기</a>
-  <a href="/insight-7b3e9f2c/multi-publish.html" class="active">멀티 퍼블리싱</a>
-  <a href="/insight-7b3e9f2c/shorts-studio.html">숏폼 스튜디오</a>
-  <a href="/insight-7b3e9f2c/newsletter-research.html">뉴스레터 리서치</a>
-  <a href="/insight-7b3e9f2c/pillar-manage.html">필러 관리</a>
-  <a href="/insight-7b3e9f2c/ask.html">Simplifier와의 대화</a>
-</nav>
+<nav id="adminShellNav"></nav>
 
 <div class="wrap">
   <header>
@@ -195,18 +126,6 @@
 (function () {
   var POSTS_JSON = "/assets/data/posts.json";
   var RAW_BASE = "https://raw.githubusercontent.com/hansunghee7/hansunghee7.github.io/main";
-
-  /* ⓘ는 마우스를 올리면(:hover) 말풍선이 뜬다(CSS만으로 처리). 터치기기는
-     hover가 없으므로, 탭하면 aria-pressed를 켜서 같은 CSS 규칙으로 말풍선을
-     띄우고 다시 탭하거나 다른 곳을 탭하면 닫는다. */
-  document.addEventListener("click", function (e) {
-    var btn = e.target.closest ? e.target.closest(".info-dot") : null;
-    var wasOpen = btn && btn.getAttribute("aria-pressed") === "true";
-    document.querySelectorAll('.info-dot[aria-pressed="true"]').forEach(function (o) { o.setAttribute("aria-pressed", "false"); });
-    if (!btn) return;
-    e.preventDefault();
-    btn.setAttribute("aria-pressed", wasOpen ? "false" : "true");
-  });
 
   // layout: 실제 그 서비스의 쓰기 화면 생김새를 흉내냅니다.
   // "narrow" = 제목 없이 본문만, 좁은 폭 (LinkedIn/Facebook 포스트, Threads, Instagram 캡션)
@@ -751,5 +670,6 @@
   }
 })();
 </script>
+<script src="/insight-7b3e9f2c/studio.js"></script>
 </body>
 </html>
