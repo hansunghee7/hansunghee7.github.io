@@ -22,7 +22,10 @@ layout: null
   /* 실제 글 본문 스타일과 동일 -- 톤 비교를 위해 마지막 문단을 재현 */
   .fake-p { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-weight: 300; font-size: 17px; line-height: 1.85; color: #333; margin: 0 0 12px; word-break: keep-all; }
 
-  .post-cta { text-align: center; padding: 8px 20px 44px; margin-top: 40px; }
+  /* 처음 버전은 40px로 너무 붙어 있었다. "본문은 끝났고 여기부터는 다른 구역"이라는
+     느낌을 주려면 여백이 확실해야 한다는 지적 -- 오늘 홈에서 이미 정한 "다른 섹션 전환"
+     기준값(96px)을 그대로 재사용해 근거 있는 간격으로 맞췄다. */
+  .post-cta { text-align: center; padding: 8px 20px 44px; margin-top: 96px; }
   .post-cta-line { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-weight: 300; font-style: italic; font-size: 15.5px; color: #767672; margin: 0 0 20px; line-height: 1.7; }
   .post-cta-btn { display: inline-block; background: #080808; color: #f5f3ee; font-family: 'Boska', serif; font-style: italic; font-weight: 400; font-size: 15.5px; padding: 13px 36px; border-radius: 999px; text-decoration: none !important; border: none; cursor: pointer; }
 
