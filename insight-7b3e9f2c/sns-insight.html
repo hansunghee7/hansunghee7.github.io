@@ -52,6 +52,8 @@
 
   #grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:16px;}
   .platform-card{border:1px solid var(--line-soft); border-radius:10px; padding:18px;}
+  .platform-card.total-card{grid-column:1 / -1; background:#f7f6f2; border-color:var(--line);}
+  .platform-card.total-card .count{font-size:38px;}
   .platform-card h3{margin:0 0 4px; font-size:14px; font-weight:600; display:flex; align-items:center; gap:6px;}
   .platform-card .shortcut-link{font-size:12px; font-weight:600; color:var(--muted); text-decoration:none; border:1px solid var(--line-soft); border-radius:5px; width:18px; height:18px; display:inline-flex; align-items:center; justify-content:center; line-height:1;}
   .platform-card .shortcut-link:hover{color:var(--ink); border-color:var(--ink);}
@@ -219,7 +221,37 @@
   stampRefresh();
 
   function render(data) {
-    els.grid.innerHTML = PLATFORMS.map(function (p) { return buildCard(p, data); }).join("");
+    els.grid.innerHTML = buildTotalCard(data) + PLATFORMS.map(function (p) { return buildCard(p, data); }).join("");
+  }
+
+  /* 8개 채널의 최신 팔로워 수를 다 더한 합계 카드. 날짜가 채널마다
+     조금씩 어긋날 수 있어(수집 실패 등) 날짜별로 정확히 맞춰 더하는 대신,
+     각 채널의 "가장 최근 기록"을 그대로 합산한다 -- 개별 카드의 델타
+     계산 방식과 동일한 기준. */
+  function buildTotalCard(data) {
+    var totalNow = 0, totalPrev = 0, channelCount = 0;
+    PLATFORMS.forEach(function (p) {
+      var series = data[p.key] || [];
+      if (!series.length) return;
+      channelCount++;
+      var latest = series[series.length - 1];
+      var prev = series.length > 1 ? series[series.length - 2] : latest;
+      totalNow += latest.count;
+      totalPrev += prev.count;
+    });
+    if (!channelCount) return "";
+
+    var delta = totalNow - totalPrev;
+    var deltaHtml = delta !== 0
+      ? '<span class="delta ' + (delta > 0 ? "up" : "down") + '">' + (delta > 0 ? "▲" : "▼") + Math.abs(delta) + "</span>"
+      : "";
+
+    return (
+      '<div class="platform-card total-card"><h3>전체 합계</h3>' +
+      '<span class="source-badge">' + channelCount + "개 채널 합산</span>" +
+      '<div class="latest"><span class="count">' + totalNow.toLocaleString() + "</span>" + deltaHtml + '<span class="unit">명</span></div>' +
+      "</div>"
+    );
   }
 
   function headerHtml(p) {
