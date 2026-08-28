@@ -267,7 +267,7 @@
       '<span class="source-badge">' + channelCount + "개 채널 합산</span>" +
       '<div class="latest"><span class="count">' + totalNow.toLocaleString() + "</span>" + deltaHtml + '<span class="unit">명</span></div>' +
       '<div class="asof">' + totalSeries.length + "개 날짜 기록</div>" +
-      (totalSeries.length ? sparkline(totalSeries) : "") +
+      (totalSeries.length ? sparkline(totalSeries, 900) : "") +
       "</div>"
     );
   }
@@ -336,8 +336,15 @@
     );
   }
 
-  function sparkline(series) {
-    var w = 260, h = 56, pad = 4;
+  function sparkline(series, w) {
+    // viewBox 너비(w)는 실제 렌더링될 카드 너비에 가깝게 맞춰야 한다 --
+    // preserveAspectRatio="none"으로 가로/세로를 따로 늘리는데, viewBox가
+    // 실제 너비보다 훨씬 좁으면(예: 전체 합계 카드처럼 카드 전체 폭을 쓰는
+    // 경우) 가로로만 심하게 늘어나면서 원형 점(circle)이 계란처럼 찌그러져
+    // 보인다. 기본값(260)은 일반 카드 폭 기준이고, 더 넓은 카드는 호출부에서
+    // 실제 폭에 맞는 값을 넘긴다.
+    w = w || 260;
+    var h = 56, pad = 4;
     var counts = series.map(function (e) { return e.count; });
     var min = Math.min.apply(null, counts);
     var max = Math.max.apply(null, counts);
