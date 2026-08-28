@@ -44,9 +44,9 @@
   .refresh{
     background:none; border:1px solid var(--line); color:var(--dim); cursor:pointer;
     border-radius:999px; padding:7px 15px; font-size:12.5px; font-family:inherit;
-    transition:border-color .2s,color .2s;
+    transition:background-color .2s,border-color .2s,color .2s;
   }
-  .refresh:hover{border-color:rgba(20,20,15,0.4); color:var(--ink);}
+  .refresh:hover:not(:disabled){background:var(--ink); border-color:var(--ink); color:#fff;}
   .refresh:disabled{cursor:default; opacity:0.75;}
   .refresh.is-success{border-color:var(--good); color:var(--good);}
   .refresh.is-error{border-color:var(--bad); color:var(--bad);}
