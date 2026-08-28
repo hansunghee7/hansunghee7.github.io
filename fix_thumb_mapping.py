@@ -1,5 +1,6 @@
 import os
 import re
+import math
 import urllib.parse
 import yaml
 import json
@@ -12,9 +13,9 @@ def pure_text(t):
 
 def _terms(raw):
     out = set()
-    for t in str(raw or '').split(','):
-        t = t.strip().lower()
-        if t:
+    for t in re.split(r'[,\s]+', str(raw or '').lower()):
+        t = t.strip()
+        if len(t) >= 2:
             out.add(t)
     return out
 
@@ -223,17 +224,39 @@ for fname in md_files:
 posts.sort(key=lambda p: p['id'])
 
 # --- 연관글: "같은 카테고리 + 랜덤" 대신 keywords/about 겹침으로 실제
-# 주제가 가까운 글을 고른다. keywords 0.7 : about 0.3으로 가중치를 둔다
+# 주제가 가까운 글을 고른다. keywords 0.6 : about 0.4로 가중치를 둔다
 # -- about은 "코치S 웹툰, 스타트업 코칭 사례"처럼 같은 시리즈/카테고리
 # 안에서 거의 동일한 문구를 재사용해 그 자체로는 변별력이 약하고, keywords가
 # 글마다 훨씬 구체적이고 고유해서 실제 겹침 여부의 신호로 더 믿을 만하다.
-# 겹치는 키워드가 없으면 같은 카테고리로 채워 넣어 빈 추천을 막는다.
-def _jaccard(a, b):
+#
+# 태그를 문구 단위가 아니라 단어 단위로 쪼개면서(예: "스타트업 헤일메리"가
+# "스타트업"과 "헤일메리"로 분리) "스타트업", "전략", "코칭"처럼 이 블로그
+# 특성상 절반 가까운 글에 등장하는 범용 단어 하나만 겹쳐도 무관한 글이
+# score>0으로 매칭되는 문제가 실측으로 확인됐다(603개 중 126개가
+# "스타트업" 포함). 그래서 단순 Jaccard가 아니라 IDF 가중치를 곱한
+# 가중 Jaccard를 쓴다 -- 여러 글에 흔한 단어는 겹쳐도 점수 기여가 작고,
+# 희귀하고 구체적인 단어가 겹칠 때만 점수가 크게 오른다.
+def _idf_weighted_jaccard(a, b, idf):
     if not a or not b:
         return 0.0
-    inter = len(a & b)
-    union = len(a | b)
-    return inter / union if union else 0.0
+    inter = a & b
+    union = a | b
+    if not union:
+        return 0.0
+    inter_w = sum(idf.get(t, 0.0) for t in inter)
+    union_w = sum(idf.get(t, 0.0) for t in union)
+    return inter_w / union_w if union_w else 0.0
+
+
+_term_doc_count = defaultdict(int)
+for p in posts:
+    for t in (p['_kw'] | p['_about']):
+        _term_doc_count[t] += 1
+_n_posts = len(posts)
+_idf = {
+    t: math.log((_n_posts + 1) / (c + 1)) + 1
+    for t, c in _term_doc_count.items()
+}
 
 
 def _similarity(p, q):
@@ -243,7 +266,10 @@ def _similarity(p, q):
     # 있어(직접 확인함) 0.7/0.3까지는 가지 않았다. 최적 비율은 데이터
     # 없이는 확정할 수 없는 영역이라, 위에서 붙인 클릭 추적이 쌓이면
     # 그 결과로 다시 조정할 것.
-    return 0.6 * _jaccard(p['_kw'], q['_kw']) + 0.4 * _jaccard(p['_about'], q['_about'])
+    return (
+        0.6 * _idf_weighted_jaccard(p['_kw'], q['_kw'], _idf)
+        + 0.4 * _idf_weighted_jaccard(p['_about'], q['_about'], _idf)
+    )
 
 
 for p in posts:
