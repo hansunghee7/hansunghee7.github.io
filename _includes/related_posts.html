@@ -9,6 +9,36 @@ related(id 배열)를 그대로 쓴다 -- 겹치는 키워드가 없을 때만 �
 카테고리로 보충되므로 항상 그보다는 연관도가 높다.
 {%- endcomment -%}
 {% if page.category %}
+{%- comment -%}
+"이 시리즈 전체 보기" -- 필러(카테고리 허브) 페이지가 실제로 만들어진
+카테고리만 표시한다. 아래 "함께 읽으면 좋은 글"과 달리 JS로 나중에
+채우지 않고 처음부터 정적 HTML로 내보낸다 -- 이 링크는 카테고리
+허브로 이어지는 핵심 내부링크라, JS를 안 돌리는 크롤러에도 그대로
+보여야 의미가 있다.
+{%- endcomment -%}
+{% assign pillar_hub = site.data.pillars.pillars | where: "category", page.category | first %}
+{% if pillar_hub.pillar_url %}
+<style>
+    .series-hub-link {
+        display: flex; align-items: center; justify-content: space-between; gap: 12px;
+        max-width: 700px; margin: 48px auto 0; padding: 16px 20px;
+        border: 1px solid rgba(20,20,15,0.1); border-radius: 12px;
+        text-decoration: none; color: inherit; transition: border-color 0.2s;
+        font-family: 'Pretendard Variable', 'Noto Sans KR', sans-serif;
+    }
+    .series-hub-link:hover { border-color: rgba(20,20,15,0.28); }
+    .series-hub-link-label { font-size: 12px; color: #8f8b82; margin-bottom: 4px; }
+    .series-hub-link-title { font-size: 15px; font-weight: 500; }
+    .series-hub-link-arrow { font-size: 18px; color: #8f8b82; flex-shrink: 0; }
+</style>
+<a class="series-hub-link" href="{{ pillar_hub.pillar_url }}">
+    <span>
+        <span class="series-hub-link-label" style="display:block;">이 시리즈 전체 보기</span>
+        <span class="series-hub-link-title">{{ page.category }}</span>
+    </span>
+    <span class="series-hub-link-arrow">→</span>
+</a>
+{% endif %}
 <style>
     /* border-top을 따로 안 그리는 이유: 바로 위 이전글/다음글 블록도
        자기 위쪽에 구분선을 갖고 있어서, 여기에도 border-top을 넣으면

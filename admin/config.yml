@@ -179,3 +179,9 @@ collections:
                 widget: "boolean"
                 default: false
                 hint: "켜기 전까지는 필러 페이지가 안 만들어진 것으로 취급합니다(Simplifier Studio 필러 관리 화면 기준)."
+
+              - name: "pillar_url"
+                label: "필러 페이지 주소 (실제로 만들어진 경우만)"
+                widget: "string"
+                required: false
+                hint: "예: /log/스타트업-인사이트.html — 이 값이 있어야 이 카테고리 개별 글 하단에 \"이 시리즈 전체 보기\" 링크가 뜹니다. 페이지가 아직 없으면 비워두세요."
