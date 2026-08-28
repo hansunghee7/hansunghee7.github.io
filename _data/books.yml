@@ -72,6 +72,8 @@ books:
           - "다시 시작한다면 무엇을 다르게 할까?"
     testimonial: "이용자의 니즈를 파악하고 서비스의 방향성을 정할 때도 이 책에서 말하는 질문들이 굉장히 유용하게 사용될 수 있다. 질문이 단순히 문제를 해결하는 도구가 아니라, 나 자신을 돌아보고 성찰하게 만드는 과정이라는 것도 인상 깊었다."
     testimonial_source: "한 독자 (사회복지사)"
+    flank_right_text: "네이버, 삼성전자, 요기요, 빗썸 — 실무자부터 C레벨까지. 25년간 현장에서 검증한 질문들입니다."
+    flank_right_source: "저자 한성희"
     stats:
       - value: "2쇄"
         label: "출간 3개월 만에 돌입"
@@ -125,8 +127,10 @@ books:
           - "Conversational UX — 대화하듯 자연스러운 인터페이스"
           - "Predictive UX — 사용자보다 한 발 먼저 움직이는 설계"
           - "Clean UI — 덜어낼수록 명확해지는 화면"
-    testimonial: ""
-    testimonial_source: ""
+    testimonial: "기획자의 눈으로 20년, 행동설계를 다루며 쌓은 UX의 언어를 나눕니다."
+    testimonial_source: "저자 한성희"
+    flank_right_text: "무신사 디자인헤드로 일하며 본 UX를, 디자이너의 눈으로 함께 썼습니다."
+    flank_right_source: "공저자 신행철"
     stats:
       - value: "공저"
         label: "기획자(한성희) × 디자이너(신행철), 두 시선"
