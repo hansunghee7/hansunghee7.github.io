@@ -70,8 +70,14 @@
   .book-section .book-meta{font-size:12px; color:var(--muted); margin-bottom:14px;}
   .book-section .book-meta a{color:var(--dim);}
 
+  .source-group{margin-bottom:22px;}
+  .source-group:last-child{margin-bottom:0;}
+  .source-header{display:flex; align-items:center; gap:8px; margin-bottom:10px; font-size:13px; font-weight:600; color:var(--dim);}
+  .source-header img{height:16px; width:auto; display:block;}
+
   .tiles{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px;}
   .tile{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px 16px 14px;}
+  .tile.is-empty{opacity:0.45;}
   .tile .label{font-size:12px; color:var(--muted); margin-bottom:8px; line-height:1.4;}
   .tile .label a{color:inherit; text-decoration:none;}
   .tile .label a:hover{color:var(--ink); text-decoration:underline;}
@@ -126,13 +132,13 @@
   <section class="book-section" id="uxBookSection">
     <h2>UX의 언어들</h2>
     <div class="book-meta">한성희·신행철 저 · 파지트</div>
-    <div id="uxBookTiles" class="tiles"><div class="loading">데이터 불러오는 중…</div></div>
+    <div id="uxBookTiles"><div class="loading">데이터 불러오는 중…</div></div>
   </section>
 
   <section class="book-section" id="questionBookSection">
     <h2>기획자의 질문법</h2>
     <div class="book-meta">한성희 저 · 파지트 · 2025-06-13 출간</div>
-    <div id="questionBookTiles" class="tiles"><div class="loading">데이터 불러오는 중…</div></div>
+    <div id="questionBookTiles"><div class="loading">데이터 불러오는 중…</div></div>
   </section>
 </div>
 
@@ -185,7 +191,11 @@
     var label = '<div class="label">' + labelHtml(metric.label, metric.href) + "</div>";
 
     if (!clean.length) {
-      return '<div class="tile">' + label + '<div class="empty">권외 · 데이터 없음</div></div>';
+      // 오늘은 순위 밖이어도 내일 다시 잡힐 수 있으니, 카드를 아예 없애거나
+      // 요약 줄로 접지 않고 자리는 그대로 두되 흐리게(딤드)만 한다 --
+      // 카드가 나타났다 사라졌다 하면 레이아웃이 들쭉날쭉해서 오히려
+      // 스캔하기 불편해진다.
+      return '<div class="tile is-empty">' + label + '<div class="empty">권외 · 데이터 없음</div></div>';
     }
 
     var latest = clean[clean.length - 1];
@@ -225,6 +235,28 @@
       (note ? '<div class="note">' + escapeHtml(note) + "</div>" : "") +
       "</div>"
     );
+  }
+
+  /* 서점별로 묶어서 보여준다 -- 로고 반영, 각 서점의 대표 지표(판매지수/
+     세일즈포인트 등)를 그 서점 그룹 맨 앞에, 나머지는 카테고리 상위->하위
+     순으로 나열한다. groups: [{ key, label, logo, metrics }]. metrics
+     배열 자체의 순서가 곧 화면에 나열되는 순서다. */
+  function sourceGroupHtml(g, history) {
+    var tilesHtml = g.metrics.map(function (m) {
+      var series = history.map(function (r) { return { date: r.date, value: m.get(r) }; });
+      return tile(m, series);
+    }).join("");
+    return (
+      '<div class="source-group">' +
+      '<div class="source-header"><img src="' + escapeHtml(g.logo) + '" alt="" onerror="this.style.display=\'none\'">' +
+      escapeHtml(g.label) + "</div>" +
+      '<div class="tiles">' + tilesHtml + "</div>" +
+      "</div>"
+    );
+  }
+
+  function renderGroups(elId, groups, history) {
+    document.getElementById(elId).innerHTML = groups.map(function (g) { return sourceGroupHtml(g, history); }).join("");
   }
 
   function stampRefresh() {
@@ -293,30 +325,46 @@
     var KYOBO_UXUI = "https://store.kyobobook.co.kr/category/domestic/331902/best";
     var KYOBO_STRATEGY = "https://store.kyobobook.co.kr/category/domestic/130701/best";
 
-    var metrics = [
-      { key: "mkt", label: "예스24 마케팅/세일즈", unit: "위", higherIsBetter: false, href: Y24_BEST("001001025009"), get: function (r) { return r.yes24 && r.yes24.mkt_rank; } },
-      { key: "ad", label: "예스24 광고/홍보/PR", unit: "위", higherIsBetter: false, href: Y24_BEST("001001025009006"), get: function (r) { return r.yes24 && r.yes24.ad_rank; } },
-      { key: "web", label: "예스24 웹사이트", unit: "위", higherIsBetter: false, href: Y24_BEST("001001003020"), get: function (r) { return r.yes24 && r.yes24.web_rank; } },
-      { key: "uxui", label: "예스24 UX/UI", unit: "위", higherIsBetter: false, href: Y24_BEST("001001003020004"), get: function (r) { return r.yes24 && r.yes24.uxui_rank; } },
-      { key: "design", label: "예스24 디자인", unit: "위", higherIsBetter: false, href: Y24_BEST("001001007003004"), get: function (r) { return r.yes24 && r.yes24.design_rank; } },
-      { key: "econ", label: "예스24 경제경영 종합", unit: "위", higherIsBetter: false, href: Y24_BEST("001001025"), get: function (r) { return r.yes24 && r.yes24.econ_rank; } },
-      { key: "sales_index", label: "예스24 판매지수", unit: "", higherIsBetter: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.sales_index; } },
-      { key: "reviews", label: "예스24 리뷰 수", unit: "건", higherIsBetter: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.reviews; } },
-      { key: "kyobo_badge", label: "교보문고 온라인 주간", unit: "위", higherIsBetter: false, href: KYOBO_PRODUCT, get: function (r) { return r.kyobo && r.kyobo.badge_rank; } },
-      { key: "kyobo_uxui", label: "교보문고 UX/UI", unit: "위", higherIsBetter: false, href: KYOBO_UXUI, get: function (r) { return r.kyobo && r.kyobo.uxui_cat; } },
-      { key: "kyobo_strategy", label: "교보문고 경영전략일반", unit: "위", higherIsBetter: false, href: KYOBO_STRATEGY, get: function (r) { return r.kyobo && r.kyobo.strategy_rank; } },
-      { key: "aladin_sp", label: "알라딘 세일즈포인트", unit: "", higherIsBetter: true, href: ALADIN_PRODUCT, get: function (r) { return r.aladin && r.aladin.sales_point; } },
-      { key: "aladin_design", label: "알라딘 디자인이야기", unit: "위", higherIsBetter: false, href: ALADIN_BEST("51089"), get: function (r) { return r.aladin && r.aladin.design_rank; } },
-      { key: "aladin_brand", label: "알라딘 마케팅/브랜드", unit: "위", higherIsBetter: false, href: ALADIN_BEST("1632"), get: function (r) { return r.aladin && r.aladin.brand_rank; } },
-      { key: "aladin_ad", label: "알라딘 광고/홍보/PR", unit: "위", higherIsBetter: false, href: ALADIN_BEST("268"), get: function (r) { return r.aladin && r.aladin.ad_rank; } },
+    // 각 서점 그룹의 첫 항목은 그 서점의 대표 지표(판매지수/세일즈포인트/
+    // 온라인 주간 배지)이고, 그다음은 카테고리 순위를 상위(넓은 카테고리)
+    // -> 하위(좁은 카테고리) 순으로 나열한다. 예스24는 카테고리 코드
+    // 앞자리가 상위 카테고리를 그대로 물려받는 구조라 실제 트리를 확인해
+    // 순서를 정했다: 경제경영종합 > 마케팅/세일즈 > 광고/홍보/PR (한 갈래),
+    // 웹사이트 > UX/UI (다른 갈래), 디자인(독립 갈래).
+    var groups = [
+      {
+        key: "yes24", label: "예스24", logo: "/assets/logos/yes24.png",
+        metrics: [
+          { key: "sales_index", label: "판매지수", unit: "", higherIsBetter: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.sales_index; } },
+          { key: "reviews", label: "리뷰 수", unit: "건", higherIsBetter: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.reviews; } },
+          { key: "econ", label: "경제경영 종합", unit: "위", higherIsBetter: false, href: Y24_BEST("001001025"), get: function (r) { return r.yes24 && r.yes24.econ_rank; } },
+          { key: "mkt", label: "마케팅/세일즈", unit: "위", higherIsBetter: false, href: Y24_BEST("001001025009"), get: function (r) { return r.yes24 && r.yes24.mkt_rank; } },
+          { key: "ad", label: "광고/홍보/PR", unit: "위", higherIsBetter: false, href: Y24_BEST("001001025009006"), get: function (r) { return r.yes24 && r.yes24.ad_rank; } },
+          { key: "web", label: "웹사이트", unit: "위", higherIsBetter: false, href: Y24_BEST("001001003020"), get: function (r) { return r.yes24 && r.yes24.web_rank; } },
+          { key: "uxui", label: "UX/UI", unit: "위", higherIsBetter: false, href: Y24_BEST("001001003020004"), get: function (r) { return r.yes24 && r.yes24.uxui_rank; } },
+          { key: "design", label: "디자인", unit: "위", higherIsBetter: false, href: Y24_BEST("001001007003004"), get: function (r) { return r.yes24 && r.yes24.design_rank; } },
+        ],
+      },
+      {
+        key: "aladin", label: "알라딘", logo: "/assets/logos/aladin.jpg",
+        metrics: [
+          { key: "aladin_sp", label: "세일즈포인트", unit: "", higherIsBetter: true, href: ALADIN_PRODUCT, get: function (r) { return r.aladin && r.aladin.sales_point; } },
+          { key: "aladin_brand", label: "마케팅/브랜드", unit: "위", higherIsBetter: false, href: ALADIN_BEST("1632"), get: function (r) { return r.aladin && r.aladin.brand_rank; } },
+          { key: "aladin_ad", label: "광고/홍보/PR", unit: "위", higherIsBetter: false, href: ALADIN_BEST("268"), get: function (r) { return r.aladin && r.aladin.ad_rank; } },
+          { key: "aladin_design", label: "디자인이야기", unit: "위", higherIsBetter: false, href: ALADIN_BEST("51089"), get: function (r) { return r.aladin && r.aladin.design_rank; } },
+        ],
+      },
+      {
+        key: "kyobo", label: "교보문고", logo: "/assets/logos/kyobo.png",
+        metrics: [
+          { key: "kyobo_badge", label: "온라인 주간", unit: "위", higherIsBetter: false, href: KYOBO_PRODUCT, get: function (r) { return r.kyobo && r.kyobo.badge_rank; } },
+          { key: "kyobo_strategy", label: "경영전략일반", unit: "위", higherIsBetter: false, href: KYOBO_STRATEGY, get: function (r) { return r.kyobo && r.kyobo.strategy_rank; } },
+          { key: "kyobo_uxui", label: "UX/UI", unit: "위", higherIsBetter: false, href: KYOBO_UXUI, get: function (r) { return r.kyobo && r.kyobo.uxui_cat; } },
+        ],
+      },
     ];
 
-    var html = metrics.map(function (m) {
-      var series = history.map(function (r) { return { date: r.date, value: m.get(r) }; });
-      return tile(m, series);
-    }).join("");
-
-    document.getElementById("uxBookTiles").innerHTML = html;
+    renderGroups("uxBookTiles", groups, history);
   }
 
   /* ── 기획자의 질문법 (자체 수집) ── */
@@ -339,36 +387,59 @@
     var KYOBO_PRODUCT = "https://product.kyobobook.co.kr/detail/S000216681258";
     var KYOBO_CAT = "https://store.kyobobook.co.kr/category/domestic/150503/best";
 
-    var metrics = [
-      { key: "y24cat", label: "예스24 기획/정보/시간관리", unit: "위", higherIsBetter: false, href: Y24_BEST, get: function (r) { return r.yes24 && r.yes24.category_rank; } },
-      { key: "y24cat2", label: "예스24 CEO/비즈니스맨 기획/정보/시간관리", unit: "위", higherIsBetter: false, href: Y24_BEST2, get: function (r) { return r.yes24 && r.yes24.category2_rank; } },
-      { key: "y24si", label: "예스24 판매지수", unit: "", higherIsBetter: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.sales_index; } },
-      { key: "y24rv", label: "예스24 리뷰 수", unit: "건", higherIsBetter: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.reviews; } },
-      { key: "kybadge", label: "교보문고 주간베스트(자기계발)", unit: "위", higherIsBetter: false, href: KYOBO_PRODUCT, get: function (r) { return r.kyobo && r.kyobo.badge_rank; } },
-      { key: "kycat", label: "교보문고 기획력", unit: "위", higherIsBetter: false, href: KYOBO_CAT, get: function (r) { return r.kyobo && r.kyobo.category_rank; } },
-      { key: "alsp", label: "알라딘 세일즈포인트", unit: "", higherIsBetter: true, href: ALADIN_PRODUCT, get: function (r) { return r.aladin && r.aladin.sales_point; } },
-      { key: "alplan", label: "알라딘 기획", unit: "위", higherIsBetter: false, href: ALADIN_BEST("70229"), get: function (r) { return r.aladin && r.aladin.planning_rank; } },
-      { key: "alinfo", label: "알라딘 정보관리", unit: "위", higherIsBetter: false, href: ALADIN_BEST("70222"), get: function (r) { return r.aladin && r.aladin.info_mgmt_rank; } },
-      { key: "millie", label: "밀리의서재 자기계발>기획 인기순", unit: "위", higherIsBetter: false, href: "https://www.millie.co.kr/v3/search/3depth/1298/?parentSeq=1287&nav_hidden=y", get: function (r) { return r.millie && r.millie.category_rank; } },
+    var groups = [
+      {
+        key: "yes24", label: "예스24", logo: "/assets/logos/yes24.png",
+        metrics: [
+          { key: "y24si", label: "판매지수", unit: "", higherIsBetter: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.sales_index; } },
+          { key: "y24rv", label: "리뷰 수", unit: "건", higherIsBetter: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.reviews; } },
+          { key: "y24cat", label: "기획/정보/시간관리", unit: "위", higherIsBetter: false, href: Y24_BEST, get: function (r) { return r.yes24 && r.yes24.category_rank; } },
+          { key: "y24cat2", label: "CEO/비즈니스맨 기획/정보/시간관리", unit: "위", higherIsBetter: false, href: Y24_BEST2, get: function (r) { return r.yes24 && r.yes24.category2_rank; } },
+        ],
+      },
+      {
+        key: "aladin", label: "알라딘", logo: "/assets/logos/aladin.jpg",
+        metrics: [
+          { key: "alsp", label: "세일즈포인트", unit: "", higherIsBetter: true, href: ALADIN_PRODUCT, get: function (r) { return r.aladin && r.aladin.sales_point; } },
+          { key: "alplan", label: "기획", unit: "위", higherIsBetter: false, href: ALADIN_BEST("70229"), get: function (r) { return r.aladin && r.aladin.planning_rank; } },
+          { key: "alinfo", label: "정보관리", unit: "위", higherIsBetter: false, href: ALADIN_BEST("70222"), get: function (r) { return r.aladin && r.aladin.info_mgmt_rank; } },
+        ],
+      },
+      {
+        key: "kyobo", label: "교보문고", logo: "/assets/logos/kyobo.png",
+        metrics: [
+          { key: "kybadge", label: "주간베스트(자기계발)", unit: "위", higherIsBetter: false, href: KYOBO_PRODUCT, get: function (r) { return r.kyobo && r.kyobo.badge_rank; } },
+          { key: "kycat", label: "기획력", unit: "위", higherIsBetter: false, href: KYOBO_CAT, get: function (r) { return r.kyobo && r.kyobo.category_rank; } },
+        ],
+      },
+      {
+        key: "millie", label: "밀리의서재", logo: "/assets/logos/millie.png",
+        metrics: [
+          { key: "millie", label: "자기계발>기획 인기순", unit: "위", higherIsBetter: false, href: "https://www.millie.co.kr/v3/search/3depth/1298/?parentSeq=1287&nav_hidden=y", get: function (r) { return r.millie && r.millie.category_rank; } },
+        ],
+      },
     ];
 
-    var html = metrics.map(function (m) {
-      var series = history.map(function (r) { return { date: r.date, value: m.get(r) }; });
-      return tile(m, series);
-    }).join("");
+    renderGroups("questionBookTiles", groups, history);
 
+    // 리디북스는 순위 자체가 없는 참고용 정적 지표라, 스파크라인 있는
+    // 다른 그룹과 다르게 별도로 붙인다.
     var latest = history[history.length - 1];
     var ridi = latest && latest.ridibooks;
     if (ridi) {
-      html += staticTile(
-        "리디북스 (참고)",
-        ridi.rating ? ridi.rating.toFixed(1) + "점" : "평가 없음",
-        "평가 " + (ridi.rating_count || 0) + "명 · 베스트셀러 순위 없음(전자책 전용 플랫폼)",
-        "https://ridibooks.com/books/2234005394"
-      );
+      var ridiGroupHtml =
+        '<div class="source-group">' +
+        '<div class="source-header"><img src="/assets/logos/ridi.png" alt="" onerror="this.style.display=\'none\'">리디북스</div>' +
+        '<div class="tiles">' +
+        staticTile(
+          "참고",
+          ridi.rating ? ridi.rating.toFixed(1) + "점" : "평가 없음",
+          "평가 " + (ridi.rating_count || 0) + "명 · 베스트셀러 순위 없음(전자책 전용 플랫폼)",
+          "https://ridibooks.com/books/2234005394"
+        ) +
+        "</div></div>";
+      document.getElementById("questionBookTiles").insertAdjacentHTML("beforeend", ridiGroupHtml);
     }
-
-    document.getElementById("questionBookTiles").innerHTML = html;
   }
 
   function renderError(elId, e) {
