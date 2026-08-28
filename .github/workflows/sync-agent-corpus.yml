@@ -1,0 +1,49 @@
+name: Sync agent corpus
+
+# 글이 새로 올라오거나 수정되면 Supabase(simplifier-agent 콘텐츠 창고)에
+# 자동 반영한다. 내용이 안 바뀐 글은 건너뛰므로(content_hash 비교) 여러
+# 번 돌아도 안전하고 비용도 거의 안 든다.
+#
+# 필요한 저장소 Secrets (Settings -> Secrets and variables -> Actions):
+#   SUPABASE_URL           simplifier-agent Supabase 프로젝트 URL
+#   SUPABASE_SERVICE_KEY   그 프로젝트의 service_role(관리자) 키
+#   VOYAGE_API_KEY         Voyage AI API 키
+# 세 값 모두 대화로 주고받지 말고 이 화면에 사장님이 직접 붙여넣을 것.
+#
+# push 트리거가 놓칠 경우를 대비해(GA4 워크플로와 같은 이유로) 매일 한 번
+# 백업 삼아 더 돈다 -- 어차피 바뀐 것만 처리하니 비용 부담 없음.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "log_assets/markdown/**"
+  schedule:
+    - cron: "41 20 * * *"  # 05:41 KST
+  workflow_dispatch: {}
+
+concurrency:
+  group: sync-agent-corpus
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install voyageai supabase
+
+      - name: Sync corpus
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          VOYAGE_API_KEY: ${{ secrets.VOYAGE_API_KEY }}
+        run: python scripts/sync_agent_corpus.py
