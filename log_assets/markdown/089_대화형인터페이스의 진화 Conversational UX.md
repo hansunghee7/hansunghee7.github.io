@@ -19,13 +19,13 @@ next_title: "온보딩, 배에 오르다에서 시작된 UX의 첫인상 마법"
 
 1966년, MIT의 조셉 바이젠바움이 만든 'ELIZA'는 컴퓨터가 사람과 자연스럽게 대화할 수 있을까라는 호기심에서 시작됐습니다. ELIZA는 심리치료사를 흉내 내며 사용자의 말을 되묻는 방식으로, 당시로선 혁신적인 '대화형 인터페이스'였습니다. 오늘날 ChatGPT와 같은 초거대 언어모델의 등장으로 대화형 UX는 사람과 AI가 '진짜 대화'하듯 상호작용하는 시대를 열고 있습니다.
 
-![환자와 대화하는 초기 챗봇 ELIZA의 터미널 화면을 담은 레트로 컴퓨터 일러스트](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/mor_xc3z6Xufwuh1x1yYPg0YSDY.png)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/mor_xc3z6Xufwuh1x1yYPg0YSDY.png" alt="환자와 대화하는 초기 챗봇 ELIZA의 터미널 화면을 담은 레트로 컴퓨터 일러스트">
 
 ## 빅테크의 대화형 AI 경쟁
 
 마이크로소프트는 Bing, Teams, Copilot 등에 ChatGPT 기반의 대화형 AI를 도입해, 사용자가 정보 탐색, 문서 작성, 일정 관리 등을 자연어로 처리할 수 있게 했습니다. 구글은 Dialogflow와 Gemini 기반의 대화형 에이전트를 통해 텍스트, 음성, 이미지 등 멀티모달 대화를 지원합니다. 노션, 슬랙, 줌 등 협업툴들도 대화형 에이전트가 추천, 자동화, 문서 생성 등 복합적 업무를 지원하도록 진화하고 있습니다.
 
-![구글홈부터 Dialogflow, 구글 클라우드 앱까지 이어지는 대화형 에이전트 아키텍처 다이어그램](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/pvGeBrDTNaLelaAkD_JJtST6O3s.png)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/pvGeBrDTNaLelaAkD_JJtST6O3s.png" alt="구글홈부터 Dialogflow, 구글 클라우드 앱까지 이어지는 대화형 에이전트 아키텍처 다이어그램">
 
 ## 대화형 UX의 이점
 
@@ -35,7 +35,7 @@ next_title: "온보딩, 배에 오르다에서 시작된 UX의 첫인상 마법"
 
 실제 업무에서는 다양한 분야에서 활용되고 있습니다. 현대카드는 챗봇을 통해 카드 결제, 한도 조회 등을 자연어로 처리하고, 서울시 120 다산콜센터는 민원 분류와 복지 안내를 대화형으로 응답합니다. 마이크로소프트 Copilot, 노션 AI 등은 문서 요약, 일정 관리 등을 대화형으로 지원합니다.
 
-![기술, 비즈니스 니즈, 심리학을 축으로 한 대화형 AI UX 3요소 설명 그래픽](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/Dc5MGj6vXaGYsmfhFXRGh1fX_Pw.png)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/Dc5MGj6vXaGYsmfhFXRGh1fX_Pw.png" alt="기술, 비즈니스 니즈, 심리학을 축으로 한 대화형 AI UX 3요소 설명 그래픽">
 
 ## 잘 설계된 대화형 UX의 원칙
 

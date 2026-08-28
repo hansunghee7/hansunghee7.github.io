@@ -19,7 +19,7 @@ AI 기술이 급속도로 발전하면서 방대한 데이터를 빠르게 처�
 
 HBM은 사실 갑자기 튀어나온 신기술이 아닙니다. 2000년대 후반 AMD가 고성능 GPU용 메모리 솔루션을 고민하면서 HBM 개발에 착수했고, 비슷한 시기 SK하이닉스도 TSV(Through Silicon Via) 기술에 주목하며 HBM 연구에 뛰어들었죠. 두 회사의 협력으로 2013년 HBM이 JEDEC 표준으로 제정되었고, 2015년 AMD의 Fiji GPU와 함께 상용화되기 시작했습니다.
 
-![HBM과 GDDR5의 패키지 구조 및 버스 폭, 클럭, 대역폭 스펙 비교표](//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/VmdAoBcNuFXNpSKgF4HDf6IqfM0.webp)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/VmdAoBcNuFXNpSKgF4HDf6IqfM0.webp" alt="HBM과 GDDR5의 패키지 구조 및 버스 폭, 클럭, 대역폭 스펙 비교표">
 
 ## AI 학습과 HBM이 만나는 이유
 
@@ -27,13 +27,13 @@ HBM은 사실 갑자기 튀어나온 신기술이 아닙니다. 2000년대 후�
 
 또 하나 HBM의 장점은 GPU와 아주 가까이 붙어 있다는 겁니다. 데이터가 연산 장치 코앞에 있으니 입출력 병목 현상이 확 줄어들죠. 여기에 공간 효율성까지 뛰어나 고성능 AI 가속기를 설계하는 데 안성맞춤입니다. 실제로 NVIDIA A100이나 H100 같은 최신 AI GPU는 HBM2를 대거 탑재하고 있습니다.
 
-![GPU 옆에 HBM DRAM이 인터포저로 연결된 3D 적층 패키지 구조도](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/dYIhCLRJX3Uo1O3PLNazqBdBFps.png)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/dYIhCLRJX3Uo1O3PLNazqBdBFps.png" alt="GPU 옆에 HBM DRAM이 인터포저로 연결된 3D 적층 패키지 구조도">
 
 ## HBM의 기술적 과제와 최신 동향
 
 물론 HBM이 만능은 아닙니다. DRAM 칩을 쌓아 올리는 3D 공정이 기술적으로 아주 까다롭거든요. 10층 이상 쌓으려면 열 문제도 만만치 않고요. 수율 때문에 생산 비용도 만만찮습니다. 그래도 이런 어려움 속에서 SK하이닉스는 12단 HBM3를 양산하는가 하면, 16단 HBM3E 샘플까지 내놓았죠. 경쟁사 삼성전자와 마이크론 역시 HBM4 개발에 박차를 가하고 있다고 합니다.
 
-![GPU와 HBM-PIM 8개가 배치된 칩 구조와 TSV로 적층된 PIM-DRAM 다이 확대도](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/yzcqAbswg4LtHBvzFJas5B8WL4Q.jpg)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/yzcqAbswg4LtHBvzFJas5B8WL4Q.jpg" alt="GPU와 HBM-PIM 8개가 배치된 칩 구조와 TSV로 적층된 PIM-DRAM 다이 확대도">
 
 앞으로도 HBM은 AI 학습을 이끄는 핵심 메모리로 자리매김할 것 같습니다. 애초에 고대역, 저지연, 고효율을 요구하는 AI 워크로드에 맞춰 진화해왔으니까요. 물론 기술적 도전 과제도 만만치 않습니다. 수율 안정화, 전력 효율 개선, 맞춤형 설계 대응 같은 숙제를 풀어나가야 하죠. 그래도 HBM은 지금의 AI 시대를 연 일등공신임이 분명합니다.
 

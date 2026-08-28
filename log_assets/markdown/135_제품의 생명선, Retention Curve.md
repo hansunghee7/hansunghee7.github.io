@@ -17,13 +17,13 @@ next_title: "고객은 제품을 '고용'한다 'JTBD프레임웍'"
 
 리텐션 커브는 특정 기간(보통 일, 주, 월 단위)에 서비스를 시작한 사용자 집단(코호트)이 시간이 지남에 따라 얼마나 서비스에 남아있는지 보여주는 그래프다. 가로축은 시간(1일, 7일, 30일 등), 세로축은 사용자 잔존율(%)을 나타낸다. 이 커브는 제품의 '건강도'와 성장 가능성을 한눈에 진단할 수 있게 해준다.
 
-![초기 이탈, 완만한 감소, 평탄화 구간을 표시한 리텐션 커브 그래프](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/7Pgc7PeeAp2EAKbHo_MTYr3f6jo.jpg)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/7Pgc7PeeAp2EAKbHo_MTYr3f6jo.jpg" alt="초기 이탈, 완만한 감소, 평탄화 구간을 표시한 리텐션 커브 그래프">
 
 ## 리텐션 커브의 세 가지 패턴
 
 리텐션 커브는 대개 세 가지 패턴으로 나타난다. 첫째, '빠른 하락 후 소멸'형은 사용자들이 빠르게 이탈하고 결국 거의 남지 않는 패턴으로, 제품-시장 적합성(PMF)에 실패한 경우다. 둘째, '빠른 하락 후 평탄화'형은 초기 이탈 후 일정 비율의 사용자가 장기간 남는 패턴으로, 핵심 사용자층을 확보한 상태다. 셋째, '완만한 하락 후 평탄화'형은 초기 이탈이 적고 높은 비율의 사용자가 유지되는 패턴으로, 강력한 PMF를 달성한 상태를 의미한다.
 
-![평탄형, 스마일형, 하락형 세 가지 리텐션 커브 패턴을 비교한 그래프](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/0lXQLmjh8BOSZCO3m2Nj_zB19oo.png)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/0lXQLmjh8BOSZCO3m2Nj_zB19oo.png" alt="평탄형, 스마일형, 하락형 세 가지 리텐션 커브 패턴을 비교한 그래프">
 
 ## 슬랙과 넷플릭스의 활용 사례
 
@@ -31,7 +31,7 @@ next_title: "고객은 제품을 '고용'한다 'JTBD프레임웍'"
 
 넷플릭스도 리텐션 커브를 통해 사용자가 첫 30일 내에 최소 15시간 이상 콘텐츠를 시청할 때 장기 구독자로 전환될 확률이 높다는 사실을 발견했다. 이를 바탕으로 개인화된 추천 알고리즘을 강화하고, 신규 가입자의 빠른 콘텐츠 몰입을 유도하는 전략을 구사했다.
 
-![블루에이프런, 헬로프레시, 넷플릭스 등 기업별 고객 리텐션 비교 그래프](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/fH6DssEbsJS8sk3WMzInh2mGKj0.png)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/fH6DssEbsJS8sk3WMzInh2mGKj0.png" alt="블루에이프런, 헬로프레시, 넷플릭스 등 기업별 고객 리텐션 비교 그래프">
 
 ## 기획자를 위한 실전 적용법
 

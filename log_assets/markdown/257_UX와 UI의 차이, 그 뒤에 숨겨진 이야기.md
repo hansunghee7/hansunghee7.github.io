@@ -21,13 +21,13 @@ UX는 1950년대로 거슬러 올라갑니다. 당시 산업디자인 개척자 
 
 UI의 역사는 컴퓨터 기술의 발전과 궤를 같이합니다. 1970년대 제록스 PARC에서 개발된 그래픽 사용자 인터페이스(GUI)는 오늘날 UI 디자인의 기반이 되었고, 1980년대 애플의 매킨토시가 이를 대중화하면서 UI 디자인의 중요성이 본격적으로 주목받기 시작했죠. 기술과 그래픽의 융합으로 사용자와의 상호작용이 한층 직관적이고 매력적으로 변모했습니다.
 
-![1984년 애플 매킨토시의 그래픽 사용자 인터페이스 화면](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/BqwTloNOdTIXMgaticgyCFoMdNI.jpg)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/BqwTloNOdTIXMgaticgyCFoMdNI.jpg" alt="1984년 애플 매킨토시의 그래픽 사용자 인터페이스 화면">
 
 ## UX와 UI, 무엇이 다른가
 
 UX는 사용자가 제품이나 서비스를 사용하면서 느끼는 전반적인 경험을 다룹니다. 사용성, 접근성, 감성적인 만족감까지 포괄하는 넓은 개념이죠. 반면 UI는 사용자가 제품과 상호작용하는 시각적이고 물리적인 요소에 집중합니다. 화면의 레이아웃, 색상 조합, 아이콘과 같은 디자인이 바로 UI 디자이너의 손길에서 나옵니다. 두 개념은 서로 다르지만, 궁극적으로 하나의 목표를 향해 협력합니다. 사용자에게 긍정적인 경험을 제공하는 것이죠.
 
-![UX와 UI 요소를 좌우 뇌 이미지로 구분한 개념도](//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/ZtXmqfkGzJkv2DDlHA1B3AJEZfU)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/ZtXmqfkGzJkv2DDlHA1B3AJEZfU" alt="UX와 UI 요소를 좌우 뇌 이미지로 구분한 개념도">
 
 ## 애플과 구글의 UX/UI 전략
 
@@ -39,7 +39,7 @@ UX는 사용자가 제품이나 서비스를 사용하면서 느끼는 전반적
 
 앞으로 UX와 UI는 AR, VR과 같은 첨단 기술과 결합하며 더욱 혁신적인 방향으로 발전할 것입니다. 그러나 기술이 아무리 발전하더라도, 사용자의 니즈를 파악하고 공감하며 문제를 해결하려는 자세는 변하지 않을 것입니다.
 
-![AR 글래스로 길안내와 정보를 보여주는 UX 예시 이미지](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/zQLXckml6AqWUZX77-cZEgT0DfA.jpg)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/zQLXckml6AqWUZX77-cZEgT0DfA.jpg" alt="AR 글래스로 길안내와 정보를 보여주는 UX 예시 이미지">
 
 UX와 UI 디자인의 핵심은 사용자입니다. 끊임없이 사용자의 경험을 관찰하고 분석하며 개선해 나가는 것이 성공의 열쇠죠. 우리 모두 제품의 사용자 또는 메이커인 만큼, UX와 UI가 일상에 미치는 영향을 돌아보는 것도 의미 있을 것입니다.
 

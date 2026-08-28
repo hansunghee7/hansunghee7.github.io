@@ -19,7 +19,7 @@ next_title: "Dropbox의 무료에서 유료로의 전환 비법"
 
 많은 창업자들이 "많은 채널에서 활동해야 더 많은 고객을 만날 수 있다"고 생각하지만, 실제로는 정반대입니다. Slack의 초기 마케팅 전략이 이를 잘 보여줍니다.
 
-![슬랙 로고 앞에서 생각에 잠긴 스튜어트 버터필드 창업자의 모습](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/pBMZNJmVndgGroEkVvJPoUQiu6E.jpg)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/pBMZNJmVndgGroEkVvJPoUQiu6E.jpg" alt="슬랙 로고 앞에서 생각에 잠긴 스튜어트 버터필드 창업자의 모습">
 
 2013년, 협업툴 시장은 이미 Microsoft Teams, Skype for Business 등 거대 기업들이 점유하고 있었습니다. 후발주자인 Slack이 어떻게 이 시장에서 성공할 수 있었을까요?
 
@@ -35,7 +35,7 @@ Slack은 대규모 광고나 무분별한 채널 확장 대신, 세 가지 핵�
 
 이러한 전략으로 Slack은 출시 첫 해에 50만 명의 일일 활성 사용자를 확보했고, 현재는 전 세계 수천만 명이 사용하는 플랫폼으로 성장했습니다.
 
-![2013년부터 2016년까지 슬랙 사용자 수가 400만 명으로 성장한 그래프](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/BIGdeaceC9Lxa_Banpz7b15ze9U.jpg)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/BIGdeaceC9Lxa_Banpz7b15ze9U.jpg" alt="2013년부터 2016년까지 슬랙 사용자 수가 400만 명으로 성장한 그래프">
 
 ## 초기 마케팅 채널 설정, 5단계 실전 가이드
 

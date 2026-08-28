@@ -33,7 +33,7 @@ next_title: "챗GPT가 쉽다고 느껴지는 UX의 비밀"
 
 Material Design을 통해 모든 서비스에 일관된 시각 언어를 적용한다.
 
-![구글 머티리얼 디자인 공식 페이지의 Informative, Focused, Expressive 3대 원칙 소개 화면](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/gIXrPeVLbIJp420kBgJJPAr02ro.png)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/gIXrPeVLbIJp420kBgJJPAr02ro.png" alt="구글 머티리얼 디자인 공식 페이지의 Informative, Focused, Expressive 3대 원칙 소개 화면">
 
 ## 심플함이 만든 실제 성과
 

@@ -17,7 +17,7 @@ next_title: "470명이 만든 비즈니스 툴 '비즈니스 모델 캔버스'"
 
 창의적인 아이디어 발상을 위해 SCAMPER 기법만큼 강력한 도구도 드물다. 1950년대 광고계 거장 알렉스 오스본이 개발한 체크리스트에서 출발해 1971년 지금의 모습으로 정립된 이 기법은, 7가지 키워드로 사고의 영역을 체계화하여 구체적인 아이디어 도출을 이끌어낸다.
 
-![SCAMPER 기법을 고안한 알렉스 오스본이 전화 통화하는 흑백 사진](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/dRpv39W6ETAbAgogcEjxfFjuQRw.jpg)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/dRpv39W6ETAbAgogcEjxfFjuQRw.jpg" alt="SCAMPER 기법을 고안한 알렉스 오스본이 전화 통화하는 흑백 사진">
 
 ## SCAMPER의 7가지 키워드
 
@@ -39,7 +39,7 @@ SCAMPER의 7가지 키워드를 하나씩 살펴보자.
 
 **Rearrange(재배치)**는 구성이나 순서를 바꾸는 것이다. 화장품 용기 바닥에 병뚜껑을 붙인다거나, 자동차 운전석 위치를 바꾼다거나 하는 식이다.
 
-![오레오 과자로 SCAMPER 7가지 기법을 설명하는 예시 도표](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/DxaQXv4FQIR5ek5Zc6_a8lNVnYM.jpg)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/DxaQXv4FQIR5ek5Zc6_a8lNVnYM.jpg" alt="오레오 과자로 SCAMPER 7가지 기법을 설명하는 예시 도표">
 
 ## IT 기업들의 SCAMPER 활용 사례
 

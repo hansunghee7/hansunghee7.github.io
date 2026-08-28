@@ -15,19 +15,19 @@ next_title: "ZeRO, 메모리최적화로 AI 비즈니스의 한계를 넓히다"
 
 AI 모델 개발이 비즈니스 핵심 경쟁력으로 자리잡으면서, 효율적인 AI 학습 인프라 선택은 기업 성패를 좌우하는 중요한 결정이 되었습니다. AWS Trainium, Google TPU, Azure H100은 각각 다른 강점을 가진 주요 클라우드 AI 솔루션입니다.
 
-![AWS Trainium AI 학습 전용 칩](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/ybkFhJXojwFS_UG2R4608TMScr4.png)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/ybkFhJXojwFS_UG2R4608TMScr4.png" alt="AWS Trainium AI 학습 전용 칩">
 
 ## AWS Trainium - 가성비와 확장성의 균형
 
 AWS Trainium은 아마존의 AI 학습 전용 칩으로, 칩당 시간당 $1.34 수준으로 NVIDIA GPU 대비 저렴하며 SageMaker와의 통합이 뛰어납니다. AWS 서비스를 주력으로 사용하고 비용과 확장성 균형을 찾는 기업에 적합합니다.
 
-![구글 TPU v5e 보드를 들고 있는 모습](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/p6TPsmaX8OKRDl9xKrF-we6nxm8.jpg)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/p6TPsmaX8OKRDl9xKrF-we6nxm8.jpg" alt="구글 TPU v5e 보드를 들고 있는 모습">
 
 ## Google TPU - 최고의 비용 효율성
 
 Google TPU v5e는 가장 비용 효율적인 옵션으로, 칩당 시간당 $1.20, 1B 토큰 학습 비용 약 $8,000으로 최저 수준입니다. H100 대비 5배 낮은 전력 소비와 50,000+ 칩 규모의 대규모 학습 검증 사례가 있어, 비용 최적화가 우선이거나 대규모 언어 모델 개발 스타트업에 이상적입니다.
 
-![Azure 데이터센터의 H100 서버랙 통로](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/ow9RZ9ZNHwvqtvJgG_VonBHmlBY.png)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/ow9RZ9ZNHwvqtvJgG_VonBHmlBY.png" alt="Azure 데이터센터의 H100 서버랙 통로">
 
 ## Azure H100 - 최고 성능과 호환성
 

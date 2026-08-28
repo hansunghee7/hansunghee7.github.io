@@ -21,7 +21,7 @@ next_title: "실패에서 데카콘으로 'Notion'의 초기 시장진출전략"
 
 이 혁신적인 AI의 배후에는 두 명의 젊은 창업자가 있다. '나비효과'라는 의미의 '후데샤오잉'을 창업한 90년대생 샤오훙과 17세의 나이에 인터넷 브라우저 '매머드'를 개발한 천재 개발자 지이차오다. 두 사람의 비전과 기술력이 만나 Manus AI가 탄생했다.
 
-![매너스AI 창업자가 소개하는 소개 영상 화면](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/QH_2DfJcZ187gfaw02dM8j1_Yks.jpg)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/QH_2DfJcZ187gfaw02dM8j1_Yks.jpg" alt="매너스AI 창업자가 소개하는 소개 영상 화면">
 
 ## 두뇌가 아닌 '손'이 되다
 
@@ -39,7 +39,7 @@ next_title: "실패에서 데카콘으로 'Notion'의 초기 시장진출전략"
 
 이 구조는 GAIA 벤치마크에서 OpenAI를 포함한 기존 최고 성능의 AI를 능가하는 결과를 보였다. 특히 복잡한 문제 해결과 실전 작업 수행 능력에서 압도적인 우위를 보였다.
 
-![매너스AI가 OpenAI를 능가한 GAIA 벤치마크 결과 그래프](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/zCI5RswjVVMrpXxmyTMHaEQUP70.png)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/zCI5RswjVVMrpXxmyTMHaEQUP70.png" alt="매너스AI가 OpenAI를 능가한 GAIA 벤치마크 결과 그래프">
 
 ## 기획자에게 주는 세 가지 인사이트
 

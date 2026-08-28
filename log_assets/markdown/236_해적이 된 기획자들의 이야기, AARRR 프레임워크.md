@@ -21,7 +21,7 @@ next_title: "세상을 바꾼 실험 'OKR'의 3가지 마법"
 
 2007년 6월, 실리콘밸리의 투자자 데이브 맥클루어는 한 가지 고민에 빠져있었다. 수많은 스타트업이 제품을 만들었지만, 성장의 지표를 체계적으로 추적하지 못하고 있었다. 그는 이를 해결하기 위해 'Product Marketing for Pirates: AARRR'을 발표했다.
 
-![AARRR 성장 퍼널을 단계별로 표현한 도식](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/roIE95XjHlxV3n2Zwia0b3a0tsU.jpg)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/roIE95XjHlxV3n2Zwia0b3a0tsU.jpg" alt="AARRR 성장 퍼널을 단계별로 표현한 도식">
 
 ## 왜 하필 '해적'이었을까
 
@@ -33,7 +33,7 @@ next_title: "세상을 바꾼 실험 'OKR'의 3가지 마법"
 
 스포티파이도 마찬가지다. 첫 로그인 시 취향 분석으로 맞춤 플레이리스트를 제공하고, 지속적인 음악 추천으로 사용자를 붙잡았다. 프리미엄 구독 모델로 수익을 만들고, 플레이리스트 공유 기능으로 입소문을 타게 했다.
 
-![AARRR 단계별 전환 규모를 보여주는 손그림 퍼널](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/t94YO2hv9YPWYbmeEjwf6kxN97U.jpg)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/t94YO2hv9YPWYbmeEjwf6kxN97U.jpg" alt="AARRR 단계별 전환 규모를 보여주는 손그림 퍼널">
 
 ## 기획자를 위한 AARRR 실천법
 
@@ -45,7 +45,7 @@ next_title: "세상을 바꾼 실험 'OKR'의 3가지 마법"
 
 3. A/B 테스트를 실행한다. 가설을 세우고 실험하며 개선점을 찾아간다.
 
-![AARRR 단계별 성장 동력과 측정 지표를 정리한 표](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/4xqOSbddt0J3fudvYKnxMdFh-0A.jpg)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/4xqOSbddt0J3fudvYKnxMdFh-0A.jpg" alt="AARRR 단계별 성장 동력과 측정 지표를 정리한 표">
 
 지금 당신의 서비스는 어떤 항로에 있을까? AARRR 프레임워크로 성장의 항로를 찾아보자.
 

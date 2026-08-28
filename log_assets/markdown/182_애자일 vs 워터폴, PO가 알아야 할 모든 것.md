@@ -27,7 +27,7 @@ next_title: "'사용자 스토리' 기능이 아닌 가치를 만드는 비밀 �
 
 반면 애자일은 빠른 변화에 대응하기 위해 짧은 주기의 스프린트를 반복하며 점진적으로 개선해 나가는 방식입니다. 고객 피드백을 수시로 반영하고 우선순위에 따라 유연하게 조정할 수 있죠. 협업과 소통을 중시하기에 작은 팀에서도 효과적이에요. 다만 장기적 계획이나 예산 예측은 상대적으로 어려울 수 있습니다.
 
-![애자일과 워터폴 프로세스를 손그림으로 비교한 도식](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/zTZS1BRicxXN71PXXsaTkrUiO6Q.jpg)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/zTZS1BRicxXN71PXXsaTkrUiO6Q.jpg" alt="애자일과 워터폴 프로세스를 손그림으로 비교한 도식">
 
 어떤 방식을 선택해야 할지는 프로젝트의 특성과 조직 상황에 따라 적합한 방법론이 달라집니다.
 
@@ -61,7 +61,7 @@ next_title: "'사용자 스토리' 기능이 아닌 가치를 만드는 비밀 �
 
 많은 성공적인 기업들은 두 방식의 장점을 결합한 하이브리드 접근법을 사용합니다. 글로벌 커머스기업은 초기 계획 단계에서 워터폴 방식으로 큰 그림을 그리고, 실제 개발 과정에서는 애자일 방식을 도입하여 유연성을 확보합니다. 글로벌 전자회사는 하드웨어 개발에는 워터폴을, 소프트웨어 개발에는 애자일을 적용하는 하이브리드 전략을 활용합니다.
 
-![리서치부터 배포와 유지보수까지 이어지는 워터폴 프로세스 흐름도](//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/fDnNvNWcINw4rnYtmtU4ITgqpZQ)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/fDnNvNWcINw4rnYtmtU4ITgqpZQ" alt="리서치부터 배포와 유지보수까지 이어지는 워터폴 프로세스 흐름도">
 
 ## 기획자를 위한 실천 팁
 

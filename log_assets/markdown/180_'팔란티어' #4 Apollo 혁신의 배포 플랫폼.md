@@ -23,13 +23,13 @@ Gotham과 Foundry가 팔란티어의 데이터 분석 역량을 보여준다면,
 
 Apollo는 모든 환경에 유연한 배포 관리 기능을 제공합니다. 사내 온프레미스 시스템부터 AWS, Azure 같은 퍼블릭 클라우드까지 단일 창구에서 관리할 수 있죠. 환경이 제각각이어도 Apollo로 표준화된 프로세스를 적용할 수 있습니다. 개발 생애주기 전반에 일관된 정책과 절차를 적용하고, 중앙 집중식 모니터링으로 이상 징후도 실시간 포착합니다. Apollo는 최종 단의 기기인 엣지 디바이스에서의 자율 배포도 지원합니다. 클라우드 연결이 불안정해도 엣지 노드가 규칙에 따라 자체 업데이트를 수행하는 식이죠.
 
-![아폴로가 다양한 클라우드와 엣지 환경을 연결하는 구조도](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/y_ecDU6wp6hCTmCQ8eFBGxyg_7U.jpg)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/y_ecDU6wp6hCTmCQ8eFBGxyg_7U.jpg" alt="아폴로가 다양한 클라우드와 엣지 환경을 연결하는 구조도">
 
 ## 안전한 배포로 규제 요건 준수
 
 금융, 국방처럼 보안과 규제가 엄격한 곳일수록 Apollo의 강점은 두드러집니다. Apollo는 최고 수준의 보안 인증을 획득했습니다. 정부 클라우드 보안 인증 FedRAMP부터 군사 분야의 IL5, IL6 등급까지 충족하죠. 까다로운 고객들의 신뢰를 얻는 비결입니다. 규제 요건을 만족하는 배포 제어 기능도 갖췄습니다. 소프트웨어 변경 시 승인 절차와 감사 추적용 로깅이 대표적이에요. 업데이트 중 규정 위반을 방지하는 셈이죠.
 
-![아폴로 허브의 개발-릴리스-프로덕션 배포 파이프라인 다이어그램](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/fIbHue2IVy9QBmvim2u168FpX6A.png)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/fIbHue2IVy9QBmvim2u168FpX6A.png" alt="아폴로 허브의 개발-릴리스-프로덕션 배포 파이프라인 다이어그램">
 
 ## 자동화로 민첩성과 안정성 동시 확보
 
@@ -39,7 +39,7 @@ Apollo는 블루-그린 배포, 카나리아 릴리스 같은 안전한 배포 �
 
 이처럼 Apollo는 팔란티어 제품의 지속적 혁신과 안정적 서비스를 뒷받침하는 핵심입니다. 고성능 데이터 분석은 물론, 고객의 까다로운 요건까지 만족시키죠.
 
-![소스와 타겟 아폴로 허브 간 데이터 전송 구조도](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/nyFD-mFyy9TBficP7BrL5x4v7I0.png)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/nyFD-mFyy9TBficP7BrL5x4v7I0.png" alt="소스와 타겟 아폴로 허브 간 데이터 전송 구조도">
 
 ## 배포 혁신이 가져올 변화들
 
@@ -49,7 +49,7 @@ Apollo는 블루-그린 배포, 카나리아 릴리스 같은 안전한 배포 �
 
 물론 하루아침에 변화가 오진 않을 겁니다. 기술 기반과 함께 조직문화, 데이터 리터러시 제고 등 근본적 체질 개선이 병행돼야 하니까요. 하지만 그 변화의 중심에는 Apollo가 있을 것입니다. 팔란티어는 Apollo로 기업들이 데이터 혁신을 진정 체감하고 전면 활용하는 미래를 앞당기고 있습니다.
 
-![빌드 시스템에서 아폴로 허브로 이어지는 배포 관리 구조도](//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/y393b2pxqDUMsmDMlneFQeGmgs8)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/y393b2pxqDUMsmDMlneFQeGmgs8" alt="빌드 시스템에서 아폴로 허브로 이어지는 배포 관리 구조도">
 
 ## 아폴로의 미래
 
@@ -57,7 +57,7 @@ Apollo는 인류를 달에 보낸 아폴로 계획을 연상케 합니다. 불�
 
 소프트웨어로 세상을 바꾸려는 모든 기업에 Apollo가 묻습니다. 우리는 얼마나 빠르고 안정적으로 혁신할 수 있나? 그 혁신을 뒷받침할 배포 역량을 갖추고 있나? Apollo는 기술뿐 아니라 조직문화, 거버넌스 차원의 통찰도 줍니다. 배포야말로 디지털 혁신의 숨은 열쇠임을 일깨우죠.
 
-![팔란티어 엔지니어가 아폴로 아키텍처를 설명하는 영상 화면](//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/gWFQokKO5zLxzq06ZxwZtFffJvU)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/gWFQokKO5zLxzq06ZxwZtFffJvU" alt="팔란티어 엔지니어가 아폴로 아키텍처를 설명하는 영상 화면">
 
 이제 Apollo까지 다뤄 팔란티어 제품군 소개를 마칩니다. 데이터 통합, 분석, 시각화, 협업, 배포까지 그들의 기술과 비전을 샅샅이 살펴봤는데요. 이 모든 게 우리에겐 어떤 의미가 있을지, 한국에선 어떻게 적용될 수 있을지 궁금하지 않으신가요? 바로 다음 편에서 팔란티어 혁신 모델의 한국 적용을 상상해 보겠습니다. '한국형 팔란티어'는 가능할까요? 함께 생각 나눠 보시죠!
 

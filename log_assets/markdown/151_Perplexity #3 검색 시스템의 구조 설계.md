@@ -19,7 +19,7 @@ RAG는 Retrieval-Augmented Generation의 약자로, 방대한 외부 지식 베�
 
 퍼플렉시티는 RAG를 통해 방대한 인터넷 자료들로부터 실시간으로 지식을 탐색하고, 이를 바탕으로 사용자 질의에 대한 정교한 답변을 생성해냅니다. 마치 엄청난 지식을 갖춘 전문가와 대화를 나누는 듯한 경험을 제공하죠.
 
-![사용자 질의가 LLM과 검색 시스템을 거쳐 문서에서 답을 찾는 RAG 구조 흐름도](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/bMDdKxBhNG2jflc6qGbYBYh3zFw.png)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/bMDdKxBhNG2jflc6qGbYBYh3zFw.png" alt="사용자 질의가 LLM과 검색 시스템을 거쳐 문서에서 답을 찾는 RAG 구조 흐름도">
 
 그럼 퍼플렉시티 RAG 파이프라인의 핵심 컴포넌트들을 하나씩 살펴보겠습니다.
 
@@ -51,7 +51,7 @@ Chunk들을 잘 검색하기 위해선 벡터 표현(embedding)으로 변환해 
 
 퍼플렉시티의 RAG는 단순한 QA를 넘어, 대화의 흐름을 이어가는 인터페이스로 구현됩니다. 이는 FastAPI 등의 프레임워크를 통해 구현되며, 웹과 모바일 등 다양한 클라이언트에서 활용 가능하도록 설계되어 있습니다.
 
-![클라이언트 질의부터 벡터 데이터베이스 검색, LLM 응답 생성까지의 RAG 아키텍처 구조도](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/x0FoQgDxDnenobnZ3vbxW-A0Shc.png)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/x0FoQgDxDnenobnZ3vbxW-A0Shc.png" alt="클라이언트 질의부터 벡터 데이터베이스 검색, LLM 응답 생성까지의 RAG 아키텍처 구조도">
 
 이처럼 퍼플렉시티의 RAG 시스템은 방대한 지식을 효과적으로 검색하고, 이를 토대로 고품질의 응답을 생성하는 정교한 파이프라인이라 할 수 있습니다. 검색 기술, 언어 모델, 프롬프트 엔지니어링 등이 절묘하게 결합된 결과물이죠.
 

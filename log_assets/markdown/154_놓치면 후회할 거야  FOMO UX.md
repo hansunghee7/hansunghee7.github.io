@@ -27,7 +27,7 @@ FOMO는 본래 SNS 시대에 생겨난 사회 현상을 설명하는 개념이�
 
 아마존, 에어비앤비, 틴더 같은 글로벌 서비스들이 FOMO를 적극 활용하는 이유도 바로 여기에 있습니다. 사용자의 결정을 재촉하는 다양한 UX 패턴으로 바로 행동으로 이어지게 만드는 거죠. 이들의 전략을 살펴보면 FOMO 디자인의 본질을 파악할 수 있습니다.
 
-![호텔 예약 페이지에 뜬 '2개 객실만 남음' 긴급성 넛지 팝업](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/Lfa8rZ6IE0A9uKhojQ59ISDt5Ag.png)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/Lfa8rZ6IE0A9uKhojQ59ISDt5Ag.png" alt="호텔 예약 페이지에 뜬 &#x27;2개 객실만 남음&#x27; 긴급성 넛지 팝업">
 
 ## FOMO 디자인의 세 가지 축 - 실시간성, 희소성, 사회적 증거
 
@@ -39,7 +39,7 @@ FOMO는 본래 SNS 시대에 생겨난 사회 현상을 설명하는 개념이�
 
 이렇게 실시간성, 희소성, 사회적 증거라는 세 가지 축을 중심으로, FOMO 디자인은 사용자의 즉각적인 행동을 이끌어냅니다. 망설임을 최소화하고, 서비스의 가치를 부각시켜 몰입도를 높이는 거죠.
 
-![한정 특가, 독점 접근, 사회적 증거 등 FOMO를 유발하는 5가지 UX 기법 정리](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/36WXyMZS6cah9gsJEPUwtrdnd2o.png)
+<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/36WXyMZS6cah9gsJEPUwtrdnd2o.png" alt="한정 특가, 독점 접근, 사회적 증거 등 FOMO를 유발하는 5가지 UX 기법 정리">
 
 ## FOMO UX, 주의해야 할 함정
 

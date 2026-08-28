@@ -22,27 +22,27 @@ next_title: "글을 매일 쓰다보니..."
 크리스마스 즐겁게 보내시라고;;; 그때 그 시절 저희끼리 '미치갱이'라고 부르며 찍었던 사진들을 공개하니 재미로 한번 보세요. ㅎㅎ
 
 <div class="img-gallery">
-  <img src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/HAZO6jUs6UXzn2kpfmGst2vZjzc.jpg" alt="h030604001621_59120439.jpg">
-  <img src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/gjauS-QBqYnbs83NDz8Pipjde4Q.jpg" alt="h030604001621_58091133.jpg">
-  <img src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/_pDjHCJE4k2A3wiEtgs5jVw9Bjo.jpg" alt="h030604001621_07050502.jpg">
+  <img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/HAZO6jUs6UXzn2kpfmGst2vZjzc.jpg" alt="h030604001621_59120439.jpg">
+  <img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/gjauS-QBqYnbs83NDz8Pipjde4Q.jpg" alt="h030604001621_58091133.jpg">
+  <img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/_pDjHCJE4k2A3wiEtgs5jVw9Bjo.jpg" alt="h030604001621_07050502.jpg">
 </div>
 
 <div class="img-gallery">
-  <img src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/DdLDvtPDipTa7UzeGbIM529_UjU.jpg" alt="h030604001621_46070721.jpg">
-  <img src="//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/c6MC-d3PSKCCVig6686ycZNAR_4.jpeg" alt="h030604001621_34092518.jpeg">
-  <img src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/gf18dLLG1PpyvDSDXWksWA2e8Gc.jpg" alt="h030604001266_56020537.jpg">
+  <img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/DdLDvtPDipTa7UzeGbIM529_UjU.jpg" alt="h030604001621_46070721.jpg">
+  <img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/c6MC-d3PSKCCVig6686ycZNAR_4.jpeg" alt="h030604001621_34092518.jpeg">
+  <img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/gf18dLLG1PpyvDSDXWksWA2e8Gc.jpg" alt="h030604001266_56020537.jpg">
 </div>
 
 <div class="img-gallery">
-  <img src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/Zv4feqfkbcZOFJa9jmtp92XjzXc.jpg" alt="h030604001621_48100629.jpg">
-  <img src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/A_kaHuH1BQb5LRWIeO3QlLBxS34.jpg" alt="h030604001621_03010452.jpg">
-  <img src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/Ulz3eQeldAKJx-3_pkvq7roWOzY.jpg" alt="h030604001621_18100515.jpg">
+  <img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/Zv4feqfkbcZOFJa9jmtp92XjzXc.jpg" alt="h030604001621_48100629.jpg">
+  <img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/A_kaHuH1BQb5LRWIeO3QlLBxS34.jpg" alt="h030604001621_03010452.jpg">
+  <img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/Ulz3eQeldAKJx-3_pkvq7roWOzY.jpg" alt="h030604001621_18100515.jpg">
 </div>
 
 <div class="img-gallery">
-  <img src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/nAM_IEHMTyW2wkZ9KjL_pcanatw.jpg" alt="ssam.jpg">
-  <img src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/N8d3SVkwyL9DBRE2JdHifHpjNng.jpg" alt="h030604001621_42042037.jpg">
-  <img src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/U789gdzm79kcPOeT189Fhba6m-I.jpg" alt="h030604001621_54121850.jpg">
+  <img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/nAM_IEHMTyW2wkZ9KjL_pcanatw.jpg" alt="ssam.jpg">
+  <img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/N8d3SVkwyL9DBRE2JdHifHpjNng.jpg" alt="h030604001621_42042037.jpg">
+  <img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/U789gdzm79kcPOeT189Fhba6m-I.jpg" alt="h030604001621_54121850.jpg">
 </div>
 
 ps. 생각해 보니 이 작업으로 잡지취재도 하고 TV 출연도 했었네요. :-)
