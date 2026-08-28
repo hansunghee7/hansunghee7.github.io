@@ -12,6 +12,18 @@
     <!-- 이 사이트가 원본임을 명시 (중복 콘텐츠 방지) -->
     <link rel="canonical" href="https://simplifier.co.kr{{ page.url }}">
 
+    {%- comment -%}
+      포스트 페이지의 커버 사진(화면 전체를 덮는 히어로 이미지)은 LCP(가장 큰
+      콘텐츠풀 요소)인데, CSS background-image로만 걸려 있어서 브라우저가
+      CSS를 다 읽어야 이 이미지를 발견한다. preload로 미리 알려주면 파싱을
+      기다리지 않고 바로 다운로드를 시작해 체감 로딩이 빨라진다.
+      로그 목록/홈(index-mode)에는 이 커버가 없어서 제외한다.
+    {%- endcomment -%}
+    {%- unless page.url == '/' or page.url == '/log.html' or page.is_index -%}
+      {%- assign hero_img = page.image | default: '/log_assets/images/logo_white.png' -%}
+      <link rel="preload" as="image" href="{{ hero_img }}">
+    {%- endunless -%}
+
     <!-- Open Graph -->
     <meta property="og:type" content="article">
     <meta property="og:title" content="{{ page.title }}">
