@@ -51,9 +51,13 @@
   /* ---- 대화 스레드 ---- */
   #thread{display:none; flex-direction:column; gap:28px; padding:24px 0 20px; flex:1; overflow-y:auto;}
   #thread.active{display:flex;}
-  .row{display:flex;}
+  .row{display:flex; animation:row-in .25s ease;}
   .row.q{justify-content:flex-end;}
   .row.a{justify-content:flex-start;}
+  @keyframes row-in{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
+
+  .cursor{display:inline-block; width:2px; height:1em; background:var(--ink); vertical-align:text-bottom; margin-left:2px; animation:cursor-blink 0.9s step-end infinite;}
+  @keyframes cursor-blink{0%,50%{opacity:1;} 50.01%,100%{opacity:0;}}
 
   .bubble.q{background:var(--ink); color:#fff; border-radius:16px 16px 4px 16px; padding:11px 16px; font-size:14.5px; line-height:1.6; max-width:80%; white-space:pre-wrap;}
 
@@ -213,7 +217,12 @@
     return answer;
   }
 
-  function renderAnswer(el, text, sources) {
+  function renderStreamingText(el, text) {
+    const clean = stripInlineCitation(text);
+    el.innerHTML = (window.marked ? marked.parse(clean) : clean) + '<span class="cursor"></span>';
+  }
+
+  function finalizeAnswer(el, text, sources) {
     const clean = stripInlineCitation(text);
     el.innerHTML = window.marked ? marked.parse(clean) : clean;
     if (sources && sources.length) {
@@ -262,6 +271,10 @@
     btn.disabled = true;
     const answerEl = addAnswerRow();
 
+    let sources = null;
+    let buffer = "";
+    let started = false;
+
     try {
       const res = await fetch(WORKER_URL, {
         method: "POST",
@@ -271,13 +284,58 @@
         },
         body: JSON.stringify({ question }),
       });
-      const data = await res.json();
 
-      if (!res.ok) {
+      if (!res.ok || !res.body) {
+        const data = await res.json().catch(() => ({}));
         renderError(answerEl, data.error || res.status);
-      } else {
-        renderAnswer(answerEl, data.answer, data.sources);
+        return;
       }
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let raw = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        raw += decoder.decode(value, { stream: true });
+
+        const events = raw.split("\n\n");
+        raw = events.pop();
+
+        for (const block of events) {
+          let eventType = "message";
+          let dataStr = "";
+          for (const line of block.split("\n")) {
+            if (line.startsWith("event:")) eventType = line.slice(6).trim();
+            else if (line.startsWith("data:")) dataStr += line.slice(5).trim();
+          }
+          if (!dataStr) continue;
+
+          let payload;
+          try {
+            payload = JSON.parse(dataStr);
+          } catch (e) {
+            continue;
+          }
+
+          if (eventType === "sources") {
+            sources = payload.sources;
+          } else if (eventType === "chunk") {
+            if (!started) {
+              started = true;
+              answerEl.innerHTML = "";
+            }
+            buffer += payload.text;
+            renderStreamingText(answerEl, buffer);
+          } else if (eventType === "error") {
+            renderError(answerEl, payload.error);
+            return;
+          }
+        }
+      }
+
+      finalizeAnswer(answerEl, buffer, sources);
     } catch (err) {
       renderError(answerEl, "연결 오류 — " + err.message);
       setupNote.style.display = "block";
