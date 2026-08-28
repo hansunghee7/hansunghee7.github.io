@@ -34,15 +34,16 @@ chrome.runtime.onMessage.addListener(function (msg) {
 // Windows 예약 작업이 한 번도 자동 실행 안 됐던 걸 확인함), 정해진 시각
 // 예약 대신 "사용자가 SNS를 신경 쓰는 순간"에 8개 프로필을 백그라운드
 // 탭(화면에 안 보이는 새 탭)으로 조용히 열었다가 자동으로 닫으면서
-// 갱신한다. 이 신호는 세 군데서 온다:
-//   1) SNS 인사이트 대시보드 페이지를 열 때 (dashboard-trigger.js)
-//   2) 그 페이지에서 새로고침 버튼을 누를 때 -- 이건 사용자가 명시적으로
-//      "지금 다시 확인해줘"라고 요청한 것이므로 쿨다운을 건너뛴다(force).
-//   3) 8개 플랫폼 중 아무 한 곳이라도 직접 방문할 때 (content-script.js)
+// 갱신한다. 이 신호는 두 군데서 온다:
+//   1) SNS 인사이트 페이지에서 새로고침 버튼을 누를 때 -- 사용자가 명시적으로
+//      "지금 다시 확인해줘"라고 요청한 것이므로 하루 제한을 건너뛴다(force).
+//   2) 8개 플랫폼 중 아무 한 곳이라도 직접 방문할 때 (content-script.js)
 //      -- 하나만 봐도 나머지도 같이 도니, 굳이 대시보드까지 안 들어가도
 //      자연스러운 SNS 사용만으로 데이터가 쌓인다.
-// 페이지를 여러 번 열어도 매번 8개를 다 열진 않게 쿨다운을 둔다(강제
-// 새로고침 제외).
+// 매번 들어갈 때마다(하루에도 여러 번) 8개를 전부 다시 도는 게 과하다는
+// 피드백으로, 쿨다운(20분)이 아니라 "오늘(KST) 하루 한 번"으로 바꿨다 --
+// 오늘 이미 한 번 돌았으면 자연 방문으로는 다시 안 돌고, 새로고침을
+// 명시적으로 누르면(force) 그날 몇 번째든 항상 돈다.
 var DASHBOARD_PLATFORMS = [
   "https://www.linkedin.com/in/simplifier",
   "https://www.facebook.com/simplifier.seoul",
@@ -53,8 +54,11 @@ var DASHBOARD_PLATFORMS = [
   "https://connect.rememberapp.co.kr/profile/1582110/posts",
   "https://www.rocketpunch.com/@simplfier/post",
 ];
-var ROUND_COOLDOWN_MS = 20 * 60 * 1000; // 20분 이내 재방문은 다시 안 돈다(강제 새로고침 제외)
 var TAB_CLOSE_DELAY_MS = 22000; // content-script가 최대 20초까지 찾으니 여유 두고 닫음
+
+function kstDateStr() {
+  return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Seoul" }).format(new Date());
+}
 
 chrome.runtime.onMessage.addListener(function (msg) {
   if (msg && msg.type === "SNS_COLLECT_REQUEST") {
@@ -64,14 +68,13 @@ chrome.runtime.onMessage.addListener(function (msg) {
 });
 
 function maybeRunFullRound(force) {
-  chrome.storage.local.get(["lastFullRoundAt"], function (res) {
-    var last = res.lastFullRoundAt || 0;
-    var elapsedMin = Math.round((Date.now() - last) / 60000);
-    if (!force && Date.now() - last < ROUND_COOLDOWN_MS) {
-      console.log("[SNS 인사이트] 쿨다운 중이라 건너뜀 (마지막 라운드 " + elapsedMin + "분 전)");
+  chrome.storage.local.get(["lastFullRoundDate"], function (res) {
+    var today = kstDateStr();
+    if (!force && res.lastFullRoundDate === today) {
+      console.log("[SNS 인사이트] 오늘(" + today + ") 이미 한 바퀴 돌아서 건너뜀");
       return;
     }
-    chrome.storage.local.set({ lastFullRoundAt: Date.now() });
+    chrome.storage.local.set({ lastFullRoundDate: today });
     console.log("[SNS 인사이트] 전체 수집 라운드 시작 -- 8개 탭을 백그라운드로 엽니다");
 
     DASHBOARD_PLATFORMS.forEach(function (url) {
