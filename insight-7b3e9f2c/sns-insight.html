@@ -96,7 +96,7 @@
 <div class="wrap">
   <header>
     <h1>SNS 인사이트</h1>
-    <div class="sub">각 SNS 프로필의 팔로워 수 추이입니다. 크롬 확장으로 프로필을 방문할 때마다 기록됩니다.</div>
+    <div class="sub">각 SNS 프로필의 팔로워 수 추이입니다. 이 페이지를 열면 크롬 확장이 8개 프로필을 백그라운드로 한 바퀴 돌며 최신 값을 기록합니다(20분 이내 재방문은 건너뜀).</div>
     <div class="metaline">
       <button class="refresh" id="refreshBtn">↻ 새로고침</button>
       <span id="lastRefresh"></span>
@@ -106,7 +106,8 @@
   <div class="setup-note">
     <strong>기록이 안 보이나요?</strong> <code>_sns-extension</code>
     크롬 확장을 설치하고 GitHub 연결까지 해야 기록이 쌓입니다. 그 뒤로는
-    멀티 퍼블리싱에서 각 SNS "새 글쓰기 열기"로 방문할 때마다 자동 기록됩니다.
+    이 페이지를 열 때마다 자동으로 한 바퀴 수집되고, 각 SNS 프로필을
+    직접 방문할 때도 그때그때 기록됩니다.
   </div>
 
   <div id="statusArea"></div>
