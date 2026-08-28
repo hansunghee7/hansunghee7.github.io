@@ -10,16 +10,13 @@ def pure_text(t):
     return re.sub(r'[^가-힣a-zA-Z0-9]', '', t)
 
 
-def _term_set(frontmatter):
-    """keywords/about front matter를 소문자 term 집합으로. 연관글 유사도 계산용."""
-    terms = set()
-    for field in ('keywords', 'about'):
-        raw = frontmatter.get(field) or ''
-        for t in str(raw).split(','):
-            t = t.strip().lower()
-            if t:
-                terms.add(t)
-    return terms
+def _terms(raw):
+    out = set()
+    for t in str(raw or '').split(','):
+        t = t.strip().lower()
+        if t:
+            out.add(t)
+    return out
 
 
 images = os.listdir('log_assets/images')
@@ -219,15 +216,18 @@ for fname in md_files:
         'date': date_string,
         'url': url,
         'image': image,
-        '_terms': _term_set(frontmatter),
+        '_kw': _terms(frontmatter.get('keywords')),
+        '_about': _terms(frontmatter.get('about')),
     })
 
 posts.sort(key=lambda p: p['id'])
 
 # --- 연관글: "같은 카테고리 + 랜덤" 대신 keywords/about 겹침으로 실제
-# 주제가 가까운 글을 고른다. 두 필드 다 SEO 작업 때 글마다 고유하게
-# 채워둔 값이라 이미 신뢰할 수 있는 신호다. 겹치는 키워드가 없으면
-# 같은 카테고리로 채워 넣어 빈 추천을 막는다. */
+# 주제가 가까운 글을 고른다. keywords 0.7 : about 0.3으로 가중치를 둔다
+# -- about은 "코치S 웹툰, 스타트업 코칭 사례"처럼 같은 시리즈/카테고리
+# 안에서 거의 동일한 문구를 재사용해 그 자체로는 변별력이 약하고, keywords가
+# 글마다 훨씬 구체적이고 고유해서 실제 겹침 여부의 신호로 더 믿을 만하다.
+# 겹치는 키워드가 없으면 같은 카테고리로 채워 넣어 빈 추천을 막는다.
 def _jaccard(a, b):
     if not a or not b:
         return 0.0
@@ -236,25 +236,41 @@ def _jaccard(a, b):
     return inter / union if union else 0.0
 
 
+def _similarity(p, q):
+    # 0.6/0.4로 keywords를 조금 더 신뢰하되(about은 시리즈 안에서 거의
+    # 동일 문구가 반복돼 변별력이 약함), 지나치게 keywords 쪽으로 쏠리면
+    # 짧은 키워드 목록에서 흔한 단어 하나만 겹쳐도 점수가 튀는 역효과가
+    # 있어(직접 확인함) 0.7/0.3까지는 가지 않았다. 최적 비율은 데이터
+    # 없이는 확정할 수 없는 영역이라, 위에서 붙인 클릭 추적이 쌓이면
+    # 그 결과로 다시 조정할 것.
+    return 0.6 * _jaccard(p['_kw'], q['_kw']) + 0.4 * _jaccard(p['_about'], q['_about'])
+
+
+posts_by_id = {p['id']: p for p in posts}
+
 for p in posts:
     scored = []
     for q in posts:
         if q['id'] == p['id']:
             continue
-        score = _jaccard(p['_terms'], q['_terms'])
+        score = _similarity(p, q)
         if p['category'] and q['category'] == p['category']:
             score += 0.05  # 동점일 때 같은 카테고리를 살짝 우대
         scored.append((score, q['id']))
     scored.sort(key=lambda x: (-x[0], x[1]))
     related = [qid for score, qid in scored if score > 0][:4]
     if len(related) < 4:
-        fallback = [q['id'] for q in posts
-                    if q['category'] == p['category'] and q['id'] != p['id'] and q['id'] not in related]
+        # 겹치는 키워드가 부족해 4개를 못 채우면, 0점짜리 중에서도 이미
+        # 점수순으로 정렬된 scored에서 같은 카테고리인 것부터 채운다
+        # (예전엔 파일 순서 그대로라 사실상 무작위 채움과 다를 게 없었다).
+        fallback = [qid for score, qid in scored
+                    if qid not in related and posts_by_id[qid]['category'] == p['category']]
         related += fallback[:4 - len(related)]
     p['related'] = related
 
 for p in posts:
-    del p['_terms']
+    del p['_kw']
+    del p['_about']
 
 os.makedirs(os.path.dirname(OUT_PATH), exist_ok=True)
 with open(OUT_PATH, 'w', encoding='utf-8') as f:

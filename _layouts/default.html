@@ -551,7 +551,7 @@
                     return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
                 });
             }
-            var html = '<h3 class="related-posts-title">이 글과 비슷한 글</h3><div class="related-posts-grid">';
+            var html = '<h3 class="related-posts-title">함께 읽으면 좋은 글</h3><div class="related-posts-grid">';
             related.forEach(function(p){
                 var meta = esc(p.category) + (p.date ? ' · ' + esc(p.date) : '');
                 html += '<a class="related-post-card" href="' + esc(p.url) + '">'

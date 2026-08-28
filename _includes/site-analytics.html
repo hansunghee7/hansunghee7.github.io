@@ -159,6 +159,42 @@
     } catch(err){}
   }, true);
 
+  /* 글 하단의 "이 글과 비슷한 글" 추천이 실제로 클릭되는지, 같은 자리의
+     이전글/다음글·코칭 CTA(별도로 이미 contact_open 잡힘)와 비교해서 얼마나
+     쓰이는지 보려고 붙임. keywords/about 유사도 추천의 정확도를 사람 눈
+     검수 대신 실제 클릭 데이터로 검증하기 위한 목적. */
+  document.addEventListener('click', function(e){
+    var card = e.target && e.target.closest ? e.target.closest('.related-post-card') : null;
+    if (card) {
+      try {
+        var grid = card.closest('.related-posts-grid');
+        var position = grid ? Array.prototype.indexOf.call(grid.children, card) : -1;
+        var titleEl = card.querySelector('.related-post-card-title');
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'related_post_click', {
+            to_path: card.getAttribute('href') || '',
+            to_title: titleEl ? titleEl.textContent.trim().slice(0, 80) : '',
+            position: position,
+            page_path: location.pathname
+          });
+        }
+      } catch(err){}
+      return;
+    }
+    var navItem = e.target && e.target.closest ? e.target.closest('.cat-nav-item') : null;
+    if (navItem) {
+      try {
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'category_nav_click', {
+            direction: navItem.classList.contains('cat-nav-left') ? 'prev' : 'next',
+            to_path: navItem.getAttribute('href') || '',
+            page_path: location.pathname
+          });
+        }
+      } catch(err){}
+    }
+  }, true);
+
   /* 글을 끝까지 읽었는가. 본문이 있는 페이지에서만 동작합니다. */
   ready(function(){
     var article = document.querySelector('.post-mode + .article-body');

@@ -8,9 +8,9 @@
 "image": "/log_assets/images/001_1.%20%EB%8B%B9%EC%8B%A0%EC%9D%B4%20%EC%98%A4%EB%8A%98%20%EB%88%84%EB%A5%B8%20%EC%B2%AB%20%EB%B2%88%EC%A7%B8%20%EB%B2%84%ED%8A%BC_cover.jpg",
 "related": [
 161,
-219,
 140,
-205
+205,
+200
 ]
 },
 {
@@ -38,7 +38,7 @@
 10,
 247,
 456,
-557
+15
 ]
 },
 {
@@ -92,9 +92,9 @@
 "image": "/log_assets/images/007_%EA%B3%B5%EC%A0%80%EA%B0%80%20%EC%A2%8B%EC%9D%80%20%EC%9D%B4%EC%9C%A0_cover.jpg",
 "related": [
 14,
-24,
 2,
-4
+4,
+24
 ]
 },
 {
@@ -120,9 +120,9 @@
 "image": "/log_assets/images/009_PM%EC%9D%98%20%EA%B3%A0%EC%88%98%EB%8A%94%20%EA%B0%90%EC%A0%95%EC%9D%84%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EB%8B%A4%EB%A3%B0%EA%B9%8C_cover.jpg",
 "related": [
 406,
-458,
 510,
-539
+539,
+458
 ]
 },
 {
@@ -189,8 +189,8 @@
 "url": "/log_assets/markdown/014_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%2C%20%EC%8A%A4%ED%85%8C%EB%94%94%EC%85%80%EB%9F%AC%EA%B0%80%20%EB%90%98%EB%8B%A4.html",
 "image": "/log_assets/images/014_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%2C%20%EC%8A%A4%ED%85%8C%EB%94%94%EC%85%80%EB%9F%AC%EA%B0%80%20%EB%90%98%EB%8B%A4._cover.jpg",
 "related": [
-24,
 7,
+24,
 100,
 2
 ]
@@ -203,10 +203,10 @@
 "url": "/log_assets/markdown/015_%EC%BB%A4%EB%A6%AC%EC%96%B4%EA%B0%80%20%EA%BC%AC%EC%9D%B4%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html",
 "image": "/log_assets/images/015_%EC%BB%A4%EB%A6%AC%EC%96%B4%EA%B0%80%20%EA%BC%AC%EC%9D%B4%EB%8A%94%20%EC%9D%B4%EC%9C%A0_cover.jpg",
 "related": [
+398,
 3,
 10,
-247,
-398
+247
 ]
 },
 {
@@ -218,9 +218,9 @@
 "image": "/log_assets/images/016_%EB%82%B4%EA%B0%80%20%EC%9C%A4%EC%A3%BC%EB%AA%A8%EB%A5%BC%20%EC%9D%91%EC%9B%90%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0_cover.jpg",
 "related": [
 145,
-463,
-538,
-31
+31,
+49,
+56
 ]
 },
 {
@@ -231,10 +231,10 @@
 "url": "/log_assets/markdown/017_%EC%9A%94%EC%8B%9C%EA%B0%80%20%EB%A7%8C%EB%93%A0%20%20%27%EA%B7%BC%EC%84%B1%EC%9D%98%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC%27.html",
 "image": "/log_assets/images/017_%EC%9A%94%EC%8B%9C%EA%B0%80%20%EB%A7%8C%EB%93%A0%20%20%EA%B7%BC%EC%84%B1%EC%9D%98%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC_cover.jpg",
 "related": [
-463,
-538,
 31,
-49
+49,
+56,
+266
 ]
 },
 {
@@ -316,9 +316,9 @@
 "image": "/log_assets/images/024_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%EC%9D%B4%202%EC%87%84%EC%97%90%20%EB%93%A4%EC%96%B4%EA%B0%91%EB%8B%88%EB%8B%A4._cover.jpg",
 "related": [
 14,
-7,
 2,
-4
+4,
+7
 ]
 },
 {
@@ -414,9 +414,9 @@
 "image": "/log_assets/images/031_%EC%B9%B4%EB%8D%94%EA%B0%80%EB%93%A0%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC_cover.jpg",
 "related": [
 49,
-577,
 145,
-463
+577,
+46
 ]
 },
 {
@@ -568,9 +568,9 @@
 "image": "/log_assets/images/042_%EB%82%B4%EA%B0%80%20%EA%B3%B5%EB%B6%80%EB%A5%BC%20%EC%9E%98%ED%95%98%EA%B2%8C%20%EB%90%9C%20%EC%82%AC%EC%97%B0_cover.jpg",
 "related": [
 320,
-489,
 145,
-336
+336,
+489
 ]
 },
 {
@@ -595,10 +595,10 @@
 "url": "/log_assets/markdown/044_AI%20%EC%8B%9C%EB%8C%80%20%EA%B8%B0%ED%9A%8D%EC%9E%90%2C%20%EB%94%94%EC%9E%90%EC%9D%B4%EB%84%88%2C%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EB%90%A0%EA%B9%8C.html",
 "image": "/log_assets/images/044_AI%20%EC%8B%9C%EB%8C%80%20%EA%B8%B0%ED%9A%8D%EC%9E%90%2C%20%EB%94%94%EC%9E%90%EC%9D%B4%EB%84%88%2C%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EB%90%A0%EA%B9%8C_cover.jpg",
 "related": [
-139,
 3,
 5,
-10
+10,
+12
 ]
 },
 {
@@ -623,10 +623,10 @@
 "url": "/log_assets/markdown/046_%ED%9B%84%EB%B0%B0%EA%B0%80%20%EC%84%A0%EB%B0%B0%EA%B0%80%20%EB%90%98%EB%8B%A4.html",
 "image": "/log_assets/images/046_%ED%9B%84%EB%B0%B0%EA%B0%80%20%EC%84%A0%EB%B0%B0%EA%B0%80%20%EB%90%98%EB%8B%A4._cover.jpg",
 "related": [
-369,
-504,
 31,
-49
+49,
+181,
+369
 ]
 },
 {
@@ -638,9 +638,9 @@
 "image": "/log_assets/images/047_%EC%8B%9C%EB%A6%AC%EC%A6%88B%20%EC%9D%B4%ED%9B%84%2C%20%EC%99%9C%20%EB%8D%94%20%EC%96%B4%EB%A0%A4%EC%9B%8C%EC%A7%88%EA%B9%8C_cover.jpg",
 "related": [
 38,
-78,
 288,
-523
+523,
+604
 ]
 },
 {
@@ -665,10 +665,10 @@
 "url": "/log_assets/markdown/049_%EA%B0%9C%EA%B5%AC%EB%A6%AC%EA%B0%80%20%EC%9A%B0%EB%AC%BC%20%EB%B0%96%EC%9D%84%20%EB%82%98%EC%98%AC%20%EB%95%8C.html",
 "image": "/log_assets/images/049_%EA%B0%9C%EA%B5%AC%EB%A6%AC%EA%B0%80%20%EC%9A%B0%EB%AC%BC%20%EB%B0%96%EC%9D%84%20%EB%82%98%EC%98%AC%20%EB%95%8C_cover.jpg",
 "related": [
-463,
 31,
-266,
-421
+145,
+577,
+463
 ]
 },
 {
@@ -708,9 +708,9 @@
 "image": "/log_assets/images/052_%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%20%EC%A0%84%EB%AC%B8%20%EC%BD%94%EC%B9%98%EA%B0%80%20C%EB%A0%88%EB%B2%A8%20%EC%BD%94%EC%B9%AD%EA%B9%8C%EC%A7%80%20%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0%EB%8A%94_cover.jpg",
 "related": [
 41,
-581,
 419,
-422
+422,
+564
 ]
 },
 {
@@ -735,10 +735,10 @@
 "url": "/log_assets/markdown/054_%EC%84%B1%EA%B3%B5%EA%B8%B0%EC%97%85%EC%9D%98%20%EA%B3%B5%ED%86%B5%ED%8C%A8%ED%84%B4%2C%20%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%ED%9A%A8%EA%B3%BC%EC%99%80%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%9D%98%EC%82%AC%EA%B2%B0%EC%A0%95.html",
 "image": "/log_assets/images/054_%EC%84%B1%EA%B3%B5%EA%B8%B0%EC%97%85%EC%9D%98%20%EA%B3%B5%ED%86%B5%ED%8C%A8%ED%84%B4%2C%20%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%ED%9A%A8%EA%B3%BC%EC%99%80%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%9D%98%EC%82%AC%EA%B2%B0%EC%A0%95_cover.jpg",
 "related": [
-67,
 216,
-222,
-60
+186,
+209,
+222
 ]
 },
 {
@@ -764,9 +764,9 @@
 "image": "/log_assets/images/056_%EB%B2%84%ED%82%B7%EB%A6%AC%EC%8A%A4%ED%8A%B8%EB%A5%BC%20%EC%9D%B4%EB%A3%A8%EB%8A%94%20%EB%B2%95_cover.jpg",
 "related": [
 336,
-463,
-538,
-31
+31,
+49,
+266
 ]
 },
 {
@@ -819,10 +819,10 @@
 "url": "/log_assets/markdown/060_%ED%8B%B1%ED%86%A1%EC%9D%98%20%EC%A4%91%EB%8F%85%EC%84%B1%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%2C%20%EC%9D%BC%EC%82%AC%EC%9A%A9%EC%8B%9C%EA%B0%84%2058%EB%B6%84%EC%9D%98%20%EC%9D%B4%EC%9C%A0.html",
 "image": "/log_assets/images/060_%ED%8B%B1%ED%86%A1%EC%9D%98%20%EC%A4%91%EB%8F%85%EC%84%B1%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%2C%20%EC%9D%BC%EC%82%AC%EC%9A%A9%EC%8B%9C%EA%B0%84%2058%EB%B6%84%EC%9D%98%20%EC%9D%B4%EC%9C%A0_cover.jpg",
 "related": [
-54,
 67,
 121,
-129
+129,
+150
 ]
 },
 {
@@ -847,10 +847,10 @@
 "url": "/log_assets/markdown/062_%EA%B8%B0%ED%9A%8D%2C%20%EC%95%84%EB%AC%B4%EB%82%98%20%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%A7%80%EB%A7%8C%2C%20%EC%95%84%EB%AC%B4%EB%82%98%20%ED%95%A0%20%EC%88%98%20%EC%97%86%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html",
 "image": "/log_assets/images/062_%EA%B8%B0%ED%9A%8D%2C%20%EC%95%84%EB%AC%B4%EB%82%98%20%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%A7%80%EB%A7%8C%2C%20%EC%95%84%EB%AC%B4%EB%82%98%20%ED%95%A0%20%EC%88%98%20%EC%97%86%EB%8A%94%20%EC%9D%B4%EC%9C%A0_cover.jpg",
 "related": [
-504,
 31,
 46,
-49
+49,
+181
 ]
 },
 {
@@ -891,8 +891,8 @@
 "related": [
 281,
 188,
-529,
-384
+384,
+407
 ]
 },
 {
@@ -905,8 +905,8 @@
 "related": [
 345,
 604,
-370,
-363
+363,
+368
 ]
 },
 {
@@ -917,10 +917,10 @@
 "url": "/log_assets/markdown/067_%EC%9A%B0%EB%B2%84%EC%9D%98%20%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%20%ED%9A%A8%EA%B3%BC%EC%99%80%20%EC%96%91%EB%A9%B4%20%EC%8B%9C%EC%9E%A5%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EC%A0%84%EB%9E%B5.html",
 "image": "/log_assets/images/067_%EC%9A%B0%EB%B2%84%EC%9D%98%20%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%20%ED%9A%A8%EA%B3%BC%EC%99%80%20%EC%96%91%EB%A9%B4%20%EC%8B%9C%EC%9E%A5%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EC%A0%84%EB%9E%B5_cover.jpg",
 "related": [
-54,
 60,
 121,
-129
+129,
+150
 ]
 },
 {
@@ -960,9 +960,9 @@
 "image": "/log_assets/images/070_%ED%8C%80%2050%EB%AA%85%EC%9D%84%20%EB%84%98%EC%96%B4%EC%84%9C%EB%A9%B4%EC%84%9C%20%EC%86%8D%EB%8F%84%EA%B0%80%20%EB%8A%90%EB%A0%A4%EC%A7%84%20%EC%9D%B4%EC%9C%A0_cover.jpg",
 "related": [
 59,
-578,
 529,
-586
+586,
+11
 ]
 },
 {
@@ -973,10 +973,10 @@
 "url": "/log_assets/markdown/071_%EA%B8%B0%EB%B0%9C%ED%95%9C%20%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%EB%B3%B4%EB%8B%A8%20%EA%B3%A0%EA%B0%9D%20%EB%B0%98%EC%9D%91%EC%9D%84%20%EC%B6%9C%EB%B0%9C%EC%A0%90%EC%9C%BC%EB%A1%9C.html",
 "image": "/log_assets/images/071_%EA%B8%B0%EB%B0%9C%ED%95%9C%20%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%EB%B3%B4%EB%8B%A8%20%EA%B3%A0%EA%B0%9D%20%EB%B0%98%EC%9D%91%EC%9D%84%20%EC%B6%9C%EB%B0%9C%EC%A0%90%EC%9C%BC%EB%A1%9C..._cover.jpg",
 "related": [
-603,
 391,
 11,
-28
+28,
+29
 ]
 },
 {
@@ -1015,8 +1015,8 @@
 "url": "/log_assets/markdown/074_%EB%AA%A9%ED%91%9C%EC%9D%98%20%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%EA%B0%80%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html",
 "image": "/log_assets/images/074_%EB%AA%A9%ED%91%9C%EC%9D%98%20%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%EA%B0%80%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0_cover.jpg",
 "related": [
-87,
 81,
+87,
 123,
 387
 ]
@@ -1057,10 +1057,10 @@
 "url": "/log_assets/markdown/077_%EC%9C%84%EA%B8%B0%EB%A5%BC%20%EA%B8%B0%ED%9A%8C%EB%A1%9C%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EA%B8%B0%ED%9A%8D.html",
 "image": "/log_assets/images/077_%EC%9C%84%EA%B8%B0%EB%A5%BC%20%EA%B8%B0%ED%9A%8C%EB%A1%9C%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EA%B8%B0%ED%9A%8D_cover.jpg",
 "related": [
-220,
 11,
 28,
-29
+29,
+30
 ]
 },
 {
@@ -1071,10 +1071,10 @@
 "url": "/log_assets/markdown/078_%EC%8B%9C%EB%A6%AC%EC%A6%88B%EC%9D%98%20%EB%8D%B0%EC%8A%A4%EB%B0%B8%EB%A6%AC.html",
 "image": "/log_assets/images/078_%EC%8B%9C%EB%A6%AC%EC%A6%88B%EC%9D%98%20%EB%8D%B0%EC%8A%A4%EB%B0%B8%EB%A6%AC_cover.jpg",
 "related": [
-47,
 11,
 28,
-29
+29,
+30
 ]
 },
 {
@@ -1113,8 +1113,8 @@
 "url": "/log_assets/markdown/081_%EA%B8%B0%ED%9A%8D%EC%9D%B4%EB%9E%80.html",
 "image": "/log_assets/images/081_%EA%B8%B0%ED%9A%8D%EC%9D%B4%EB%9E%80..._cover.jpg",
 "related": [
-87,
 74,
+87,
 116,
 123
 ]
@@ -1127,9 +1127,9 @@
 "url": "/log_assets/markdown/082_%EB%AA%85%EB%A0%B9%ED%95%98%EC%A7%80%20%EC%95%8A%EA%B3%A0%20%EC%9D%B4%EB%81%88%EB%8B%A4%2C%20%EC%95%A0%EC%9E%90%EC%9D%BC%20%EB%A6%AC%EB%8D%94%EC%8B%AD%EC%9D%98%20%EC%A7%84%EC%A7%9C%20%ED%9E%98.html",
 "image": "/log_assets/images/082_%EB%AA%85%EB%A0%B9%ED%95%98%EC%A7%80%20%EC%95%8A%EA%B3%A0%20%EC%9D%B4%EB%81%88%EB%8B%A4%2C%20%EC%95%A0%EC%9E%90%EC%9D%BC%20%EB%A6%AC%EB%8D%94%EC%8B%AD%EC%9D%98%20%EC%A7%84%EC%A7%9C%20%ED%9E%98_cover.jpg",
 "related": [
-204,
 159,
 587,
+204,
 3
 ]
 },
@@ -1225,10 +1225,10 @@
 "url": "/log_assets/markdown/089_%EB%8C%80%ED%99%94%ED%98%95%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%EC%9D%98%20%EC%A7%84%ED%99%94%20Conversational%20UX.html",
 "image": "/log_assets/images/089_%EB%8C%80%ED%99%94%ED%98%95%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%EC%9D%98%20%EC%A7%84%ED%99%94%20Conversational%20UX_cover.jpg",
 "related": [
-234,
 1,
 8,
-34
+34,
+45
 ]
 },
 {
@@ -1309,10 +1309,10 @@
 "url": "/log_assets/markdown/095_%EC%98%A8%EB%B3%B4%EB%94%A9%2C%20%EB%B0%B0%EC%97%90%20%EC%98%A4%EB%A5%B4%EB%8B%A4%27%EC%97%90%EC%84%9C%20%EC%8B%9C%EC%9E%91%EB%90%9C%20UX%EC%9D%98%20%EC%B2%AB%EC%9D%B8%EC%83%81%20%EB%A7%88%EB%B2%95.html",
 "image": "/log_assets/images/095_%EC%98%A8%EB%B3%B4%EB%94%A9%2C%20%EB%B0%B0%EC%97%90%20%EC%98%A4%EB%A5%B4%EB%8B%A4%EC%97%90%EC%84%9C%20%EC%8B%9C%EC%9E%91%EB%90%9C%20UX%EC%9D%98%20%EC%B2%AB%EC%9D%B8%EC%83%81%20%EB%A7%88%EB%B2%95_cover.jpg",
 "related": [
-273,
 1,
 8,
-34
+34,
+45
 ]
 },
 {
@@ -1365,10 +1365,10 @@
 "url": "/log_assets/markdown/099_%EB%AF%B8%EA%B5%AD%EC%9D%98%20SaaS%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%EC%9D%84%20%ED%99%95%EB%B3%B4%ED%95%A0%EA%B9%8C.html",
 "image": "/log_assets/images/099_%EB%AF%B8%EA%B5%AD%EC%9D%98%20SaaS%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%EC%9D%84%20%ED%99%95%EB%B3%B4%ED%95%A0%EA%B9%8C_cover.jpg",
 "related": [
-130,
 186,
 23,
-26
+26,
+32
 ]
 },
 {
@@ -1379,10 +1379,10 @@
 "url": "/log_assets/markdown/100_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%20%EB%A6%AC%EB%B7%B0%EB%A5%BC%20%EC%9D%BD%EA%B3%A0%20%EA%B0%90%EB%8F%99%EC%9D%84%20%E3%85%9C%E3%85%9C.html",
 "image": "/log_assets/images/100_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%20%EB%A6%AC%EB%B7%B0%EB%A5%BC%20%EC%9D%BD%EA%B3%A0%20%EA%B0%90%EB%8F%99%EC%9D%84%20%E3%85%9C.%E3%85%9C_cover.jpg",
 "related": [
-474,
 108,
 123,
-404
+404,
+474
 ]
 },
 {
@@ -1449,10 +1449,10 @@
 "url": "/log_assets/markdown/106_2%EC%B2%9C%EB%A7%8C%EC%9B%90%EC%9C%BC%EB%A1%9C%2010%EC%96%B5%EC%9B%90%20%EB%A7%A4%EC%B6%9C%EC%9D%84%2C%20%EC%95%88%ED%8B%B0%EB%A9%94%ED%83%88%EC%9D%98%20%EB%B0%94%EC%9D%B4%EB%9F%B4%EC%A0%84%EB%9E%B5.html",
 "image": "/log_assets/images/106_2%EC%B2%9C%EB%A7%8C%EC%9B%90%EC%9C%BC%EB%A1%9C%2010%EC%96%B5%EC%9B%90%20%EB%A7%A4%EC%B6%9C%EC%9D%84%2C%20%EC%95%88%ED%8B%B0%EB%A9%94%ED%83%88%EC%9D%98%20%EB%B0%94%EC%9D%B4%EB%9F%B4%EC%A0%84%EB%9E%B5_cover.jpg",
 "related": [
-216,
 11,
 28,
-29
+29,
+30
 ]
 },
 {
@@ -1464,8 +1464,8 @@
 "image": "/log_assets/images/107_YC%20%EC%A1%B8%EC%97%85%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EB%93%A4%EC%9D%98%20%EA%B3%B5%ED%86%B5%EB%90%9C%20%EC%84%B1%EC%9E%A5%20%EA%B3%B5%EC%8B%9D_cover.jpg",
 "related": [
 23,
-172,
 294,
+172,
 26
 ]
 },
@@ -1478,9 +1478,9 @@
 "image": "/log_assets/images/108_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%9527Qs%EC%9D%98%20%EB%B9%84%EB%B0%80_cover.jpg",
 "related": [
 123,
-474,
 100,
-404
+404,
+474
 ]
 },
 {
@@ -1494,7 +1494,7 @@
 300,
 101,
 226,
-54
+142
 ]
 },
 {
@@ -1548,9 +1548,9 @@
 "image": "/log_assets/images/113_%EC%BB%A4%EC%84%9C%20AI%EC%9D%98%20AI%20%ED%98%91%EB%A0%A5%EC%9E%90%20%EC%A0%84%EB%9E%B5_cover.jpg",
 "related": [
 207,
-210,
 214,
-220
+220,
+224
 ]
 },
 {
@@ -1590,9 +1590,9 @@
 "image": "/log_assets/images/116_%EA%B8%B0%ED%9A%8D%EC%9D%B4%20%EC%82%AC%EB%9E%8C%EC%9D%84%20%EC%9B%80%EC%A7%81%EC%9D%B4%EB%8A%94%20%EC%9D%BC%EC%9D%B8%20%EC%9D%B4%EC%9C%A0_cover.jpg",
 "related": [
 10,
-81,
-350,
-439
+439,
+554,
+557
 ]
 },
 {
@@ -1659,10 +1659,10 @@
 "url": "/log_assets/markdown/121_%EC%9E%91%EA%B2%8C%20%EC%8B%9C%EC%9E%91%ED%95%B4%20%ED%81%AC%EA%B2%8C%20%ED%84%B0%ED%8A%B8%EB%A6%AC%EB%8A%94%20Slack%EC%9D%98%20%EC%B4%88%EA%B8%B0%EB%A7%88%EC%BC%80%ED%8C%85%EC%A0%84%EB%9E%B5.html",
 "image": "/log_assets/images/121_%EC%9E%91%EA%B2%8C%20%EC%8B%9C%EC%9E%91%ED%95%B4%20%ED%81%AC%EA%B2%8C%20%ED%84%B0%ED%8A%B8%EB%A6%AC%EB%8A%94%20Slack%EC%9D%98%20%EC%B4%88%EA%B8%B0%EB%A7%88%EC%BC%80%ED%8C%85%EC%A0%84%EB%9E%B5_cover.jpg",
 "related": [
-54,
 60,
 67,
-129
+129,
+150
 ]
 },
 {
@@ -1688,9 +1688,9 @@
 "image": "/log_assets/images/123_%EA%B8%B0%ED%9A%8D%EC%9D%80%20%EC%96%B4%EB%96%A0%ED%95%9C%20%EC%A7%88%EB%AC%B8%EB%93%A4%EB%A1%9C%20%EC%9D%B4%EB%A3%A8%EC%96%B4%EC%A7%88%EA%B9%8C_cover.jpg",
 "related": [
 108,
-87,
-474,
-74
+100,
+404,
+474
 ]
 },
 {
@@ -1716,9 +1716,9 @@
 "image": "/log_assets/images/125_%ED%9E%88%ED%8A%B8%EB%A7%B5%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%ED%96%89%EB%8F%99%EC%9D%84%20%EC%83%89%EC%9C%BC%EB%A1%9C%20%EC%9D%BD%EB%8A%94%20%EB%B2%95_cover.jpg",
 "related": [
 133,
-60,
 1,
-8
+8,
+34
 ]
 },
 {
@@ -1772,9 +1772,9 @@
 "image": "/log_assets/images/129_Dropbox%EC%9D%98%20%EB%AC%B4%EB%A3%8C%EC%97%90%EC%84%9C%20%EC%9C%A0%EB%A3%8C%EB%A1%9C%EC%9D%98%20%EC%A0%84%ED%99%98%20%EB%B9%84%EB%B2%95_cover.jpg",
 "related": [
 150,
-54,
 60,
-67
+67,
+72
 ]
 },
 {
@@ -1827,10 +1827,10 @@
 "url": "/log_assets/markdown/133_Drop-off%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B0%80%20%EB%96%A0%EB%82%98%EB%8A%94%20%EC%88%9C%EA%B0%84%EC%9D%84%20%ED%8F%AC%EC%B0%A9%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95.html",
 "image": "/log_assets/images/133_Drop-off%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B0%80%20%EB%96%A0%EB%82%98%EB%8A%94%20%EC%88%9C%EA%B0%84%EC%9D%84%20%ED%8F%AC%EC%B0%A9%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95_cover.jpg",
 "related": [
-171,
-219,
 125,
-169
+169,
+219,
+171
 ]
 },
 {
@@ -1914,7 +1914,7 @@
 379,
 547,
 586,
-44
+592
 ]
 },
 {
@@ -1925,10 +1925,10 @@
 "url": "/log_assets/markdown/140_%EC%96%B4%ED%8F%AC%EB%8D%98%EC%8A%A4%20%EC%9D%B4%20%EB%B2%84%ED%8A%BC%2C%20%EC%99%9C%20%EB%88%84%EB%A5%B4%EA%B3%A0%20%EC%8B%B6%EC%9D%84%EA%B9%8C%20%EA%B7%B8%20%EB%B9%84%EB%B0%80.html",
 "image": "/log_assets/images/140_%EC%96%B4%ED%8F%AC%EB%8D%98%EC%8A%A4%20%EC%9D%B4%20%EB%B2%84%ED%8A%BC%2C%20%EC%99%9C%20%EB%88%84%EB%A5%B4%EA%B3%A0%20%EC%8B%B6%EC%9D%84%EA%B9%8C%20%EA%B7%B8%20%EB%B9%84%EB%B0%80_cover.jpg",
 "related": [
-1,
-161,
 64,
-69
+69,
+76,
+83
 ]
 },
 {
@@ -1997,8 +1997,8 @@
 "related": [
 31,
 49,
-16,
-577
+577,
+16
 ]
 },
 {
@@ -2009,10 +2009,10 @@
 "url": "/log_assets/markdown/146_%EB%A6%B0%EA%B3%BC%20%EC%95%A0%EC%9E%90%EC%9D%BC%2C%20%EC%9A%B0%EB%A6%AC%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%97%94%20%EC%96%B4%EB%96%A4%20%EA%B1%B8%20%ED%95%B4%EC%95%BC%ED%95%A0%EA%B9%8C.html",
 "image": "/log_assets/images/146_%EB%A6%B0%EA%B3%BC%20%EC%95%A0%EC%9E%90%EC%9D%BC%2C%20%EC%9A%B0%EB%A6%AC%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%97%94%20%EC%96%B4%EB%96%A4%20%EA%B1%B8%20%ED%95%B4%EC%95%BC%ED%95%A0%EA%B9%8C_cover.jpg",
 "related": [
-182,
-189,
 132,
-160
+160,
+182,
+189
 ]
 },
 {
@@ -2066,9 +2066,9 @@
 "image": "/log_assets/images/150_Slack%EC%9D%98%20%EC%9C%A0%EB%A3%8C%EC%A0%84%ED%99%98%EC%9D%98%20%EB%A7%A4%EC%A7%81%20%EB%AA%A8%EB%A8%BC%ED%8A%B8_cover.jpg",
 "related": [
 129,
-54,
 60,
-67
+67,
+121
 ]
 },
 {
@@ -2107,10 +2107,10 @@
 "url": "/log_assets/markdown/153_%EB%82%AD%EB%B9%84%EB%8A%94%20%EC%A4%84%EC%9D%B4%EA%B3%A0%20%EA%B0%80%EC%B9%98%EB%8A%94%20%EB%86%92%EC%9D%B4%EB%8A%94%20%27%EB%A6%B0%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B4%80%EB%A6%AC%27.html",
 "image": "/log_assets/images/153_%EB%82%AD%EB%B9%84%EB%8A%94%20%EC%A4%84%EC%9D%B4%EA%B3%A0%20%EA%B0%80%EC%B9%98%EB%8A%94%20%EB%86%92%EC%9D%B4%EB%8A%94%20%EB%A6%B0%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B4%80%EB%A6%AC_cover.jpg",
 "related": [
-182,
 50,
 57,
-63
+63,
+75
 ]
 },
 {
@@ -2135,10 +2135,10 @@
 "url": "/log_assets/markdown/155_AI%20%EC%9D%B8%ED%94%84%EB%9D%BC%20%EB%B9%84%EC%9A%A9%20%EC%A0%88%EA%B0%90%EC%9D%98%20%EB%B9%84%EB%B0%80%2C%20%ED%9D%AC%EC%86%8C%20%EC%97%B0%EC%82%B0%EA%B3%BC%20%EA%B0%80%EC%A7%80%EC%B9%98%EA%B8%B0.html",
 "image": "/log_assets/images/155_AI%20%EC%9D%B8%ED%94%84%EB%9D%BC%20%EB%B9%84%EC%9A%A9%20%EC%A0%88%EA%B0%90%EC%9D%98%20%EB%B9%84%EB%B0%80%2C%20%ED%9D%AC%EC%86%8C%20%EC%97%B0%EC%82%B0%EA%B3%BC%20%EA%B0%80%EC%A7%80%EC%B9%98%EA%B8%B0_cover.jpg",
 "related": [
-162,
 90,
 96,
-103
+103,
+111
 ]
 },
 {
@@ -2164,9 +2164,9 @@
 "image": "/log_assets/images/157_%EC%8B%9C%EA%B0%81%EC%A0%81%20%EC%86%8C%ED%86%B5%EC%9D%98%20%EB%8C%80%ED%91%9C%EC%A3%BC%EC%9E%90%2C%20%ED%95%80%ED%84%B0%EB%A0%88%EC%8A%A4%ED%8A%B8%EC%9D%98%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B8%B0%EB%B0%98%20%EC%84%B1%EC%9E%A5_cover.jpg",
 "related": [
 54,
-230,
-69,
-109
+109,
+163,
+255
 ]
 },
 {
@@ -2192,9 +2192,9 @@
 "image": "/log_assets/images/159_%EC%A7%84%EC%A0%95%ED%95%9C%20%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%20%EB%A6%AC%EB%8D%94%EC%8B%AD%EC%9D%B4%EB%9E%80_cover.jpg",
 "related": [
 82,
-581,
 196,
-426
+426,
+581
 ]
 },
 {
@@ -2222,7 +2222,7 @@
 1,
 140,
 205,
-516
+200
 ]
 },
 {
@@ -2234,9 +2234,9 @@
 "image": "/log_assets/images/162_AI%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%EC%88%A8%EC%9D%80%20%EC%98%81%EC%9B%85%2C%20FP16%2C%20BF16%2C%20FP8_cover.jpg",
 "related": [
 148,
-155,
 90,
-96
+96,
+103
 ]
 },
 {
@@ -2250,7 +2250,7 @@
 54,
 109,
 157,
-230
+255
 ]
 },
 {
@@ -2317,10 +2317,10 @@
 "url": "/log_assets/markdown/168_%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%98%20%EC%B8%A1%EC%A0%95%20%27%EC%97%90%EC%8A%A4%ED%8B%B0%EB%A9%94%EC%9D%B4%EC%85%98%27%EA%B3%BC%20%27%EC%8A%A4%ED%86%A0%EB%A6%AC%ED%8F%AC%EC%9D%B8%ED%8A%B8%27.html",
 "image": "/log_assets/images/168_%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%98%20%EC%B8%A1%EC%A0%95%20%EC%97%90%EC%8A%A4%ED%8B%B0%EB%A9%94%EC%9D%B4%EC%85%98%EA%B3%BC%20%EC%8A%A4%ED%86%A0%EB%A6%AC%ED%8F%AC%EC%9D%B8%ED%8A%B8_cover.jpg",
 "related": [
-212,
-146,
 175,
-182
+182,
+189,
+212
 ]
 },
 {
@@ -2331,10 +2331,10 @@
 "url": "/log_assets/markdown/169_%27%EA%B2%B0%EC%A0%9C%ED%95%98%EA%B8%B0%27%20%EB%B2%84%ED%8A%BC%20%ED%95%98%EB%82%98%EB%A1%9C%20%EB%A7%A4%EC%B6%9C%EC%9D%84%20%EB%86%92%EC%9D%B4%EB%8A%94%20UX.html",
 "image": "/log_assets/images/169_%EA%B2%B0%EC%A0%9C%ED%95%98%EA%B8%B0%20%EB%B2%84%ED%8A%BC%20%ED%95%98%EB%82%98%EB%A1%9C%20%EB%A7%A4%EC%B6%9C%EC%9D%84%20%EB%86%92%EC%9D%B4%EB%8A%94%20UX_cover.jpg",
 "related": [
-219,
 133,
-171,
-1
+219,
+1,
+8
 ]
 },
 {
@@ -2359,10 +2359,10 @@
 "url": "/log_assets/markdown/171_%27%ED%8D%BC%EB%84%90%20%EB%B6%84%EC%84%9D%27%20%EB%94%94%EC%A7%80%ED%84%B8%20%EC%8B%9C%EB%8C%80%EC%9D%98%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%B5%9C%EC%A0%81%ED%99%94%20%ED%95%B5%EC%8B%AC%20%EA%B8%B0%EC%88%A0.html",
 "image": "/log_assets/images/171_%ED%8D%BC%EB%84%90%20%EB%B6%84%EC%84%9D%20%EB%94%94%EC%A7%80%ED%84%B8%20%EC%8B%9C%EB%8C%80%EC%9D%98%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%B5%9C%EC%A0%81%ED%99%94%20%ED%95%B5%EC%8B%AC%20%EA%B8%B0%EC%88%A0_cover.jpg",
 "related": [
-133,
 236,
-219,
-54
+60,
+67,
+121
 ]
 },
 {
@@ -2389,8 +2389,8 @@
 "related": [
 180,
 187,
-195,
-202
+11,
+28
 ]
 },
 {
@@ -2403,8 +2403,8 @@
 "related": [
 237,
 458,
-581,
-386
+386,
+492
 ]
 },
 {
@@ -2415,10 +2415,10 @@
 "url": "/log_assets/markdown/175_%27%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%8A%A4%ED%86%A0%EB%A6%AC%27%20%EA%B8%B0%EB%8A%A5%EC%9D%B4%20%EC%95%84%EB%8B%8C%20%EA%B0%80%EC%B9%98%EB%A5%BC%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B9%84%EB%B0%80%20%EB%AC%B4%EA%B8%B0.html",
 "image": "/log_assets/images/175_%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%8A%A4%ED%86%A0%EB%A6%AC%20%EA%B8%B0%EB%8A%A5%EC%9D%B4%20%EC%95%84%EB%8B%8C%20%EA%B0%80%EC%B9%98%EB%A5%BC%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B9%84%EB%B0%80%20%EB%AC%B4%EA%B8%B0_cover.jpg",
 "related": [
-146,
 168,
 182,
-189
+189,
+212
 ]
 },
 {
@@ -2443,8 +2443,8 @@
 "url": "/log_assets/markdown/177_AI%20%EC%B9%A9%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%ED%95%B5%EC%8B%AC%2C%20FLOPS%EC%99%80%20TOPS%20%EA%B7%B8%EB%A6%AC%EA%B3%A0.html",
 "image": "/log_assets/images/177_AI%20%EC%B9%A9%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%ED%95%B5%EC%8B%AC%2C%20FLOPS%EC%99%80%20TOPS%20%EA%B7%B8%EB%A6%AC%EA%B3%A0.._cover.jpg",
 "related": [
-184,
 170,
+184,
 191,
 199
 ]
@@ -2499,10 +2499,10 @@
 "url": "/log_assets/markdown/181_%EC%B4%88%EA%B3%A0%EC%86%8D%20%EC%97%98%EB%A6%AC%EB%B2%A0%EC%9D%B4%ED%84%B0%EB%A5%BC%20%EC%98%AC%EB%9D%BC%ED%83%80%EB%8A%94%20%EB%B2%95.html",
 "image": "/log_assets/images/181_%EC%B4%88%EA%B3%A0%EC%86%8D%20%EC%97%98%EB%A6%AC%EB%B2%A0%EC%9D%B4%ED%84%B0%EB%A5%BC%20%EC%98%AC%EB%9D%BC%ED%83%80%EB%8A%94%20%EB%B2%95_cover.jpg",
 "related": [
-504,
 31,
 46,
-49
+49,
+369
 ]
 },
 {
@@ -2513,10 +2513,10 @@
 "url": "/log_assets/markdown/182_%EC%95%A0%EC%9E%90%EC%9D%BC%20vs%20%EC%9B%8C%ED%84%B0%ED%8F%B4%2C%20PO%EA%B0%80%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%20%EB%AA%A8%EB%93%A0%20%EA%B2%83.html",
 "image": "/log_assets/images/182_%EC%95%A0%EC%9E%90%EC%9D%BC%20vs%20%EC%9B%8C%ED%84%B0%ED%8F%B4%2C%20PO%EA%B0%80%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%20%EB%AA%A8%EB%93%A0%20%EA%B2%83_cover.jpg",
 "related": [
-146,
 189,
 132,
-153
+146,
+160
 ]
 },
 {
@@ -2541,9 +2541,9 @@
 "url": "/log_assets/markdown/184_AI%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%EC%97%B4%EC%87%A0%2C%20HBM%EC%9D%80%20%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C.html",
 "image": "/log_assets/images/184_AI%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%EC%97%B4%EC%87%A0%2C%20HBM%EC%9D%80%20%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C_cover.jpg",
 "related": [
-177,
 191,
 170,
+177,
 199
 ]
 },
@@ -2569,10 +2569,10 @@
 "url": "/log_assets/markdown/186_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%20%ED%99%95%EB%B3%B4%20%EC%A0%84%EB%9E%B5%20%27%EC%8A%A4%ED%8A%B8%EB%9D%BC%EC%9D%B4%ED%94%84%27.html",
 "image": "/log_assets/images/186_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%20%ED%99%95%EB%B3%B4%20%EC%A0%84%EB%9E%B5%20%EC%8A%A4%ED%8A%B8%EB%9D%BC%EC%9D%B4%ED%94%84_cover.jpg",
 "related": [
-222,
 54,
 209,
-216
+216,
+222
 ]
 },
 {
@@ -2597,10 +2597,10 @@
 "url": "/log_assets/markdown/188_%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%EB%A6%AC%EB%8D%94%EA%B0%80%20%EA%BC%AD%20%EA%B0%80%EC%A0%B8%EC%95%BC%20%ED%95%A0%20%EA%B2%83%EC%9D%80.html",
 "image": "/log_assets/images/188_%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%EB%A6%AC%EB%8D%94%EA%B0%80%20%EA%BC%AD%20%EA%B0%80%EC%A0%B8%EC%95%BC%20%ED%95%A0%20%EA%B2%83%EC%9D%80_cover.jpg",
 "related": [
+529,
+414,
 384,
-407,
-425,
-529
+407
 ]
 },
 {
@@ -2611,9 +2611,9 @@
 "url": "/log_assets/markdown/189_%EC%B9%B8%EB%B0%98%2C%20%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%98%20Just%20In%20Time.html",
 "image": "/log_assets/images/189_%EC%B9%B8%EB%B0%98%2C%20%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%98%20Just%20In%20Time_cover.jpg",
 "related": [
-146,
 182,
 132,
+146,
 160
 ]
 },
@@ -2640,9 +2640,9 @@
 "image": "/log_assets/images/191_AI%ED%95%98%EB%93%9C%EC%9B%A8%EC%96%B4%2C%20GPU%EC%99%80%20NPU%20%EA%B7%B8%EB%A6%AC%EA%B3%A0%20FPGA%EC%9D%98%20%EC%B0%A8%EC%9D%B4%EC%A0%90_cover.jpg",
 "related": [
 184,
-134,
 170,
-177
+177,
+134
 ]
 },
 {
@@ -2696,9 +2696,9 @@
 "image": "/log_assets/images/195_%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%202%20Gotham%20%EA%B5%AD%EA%B0%80%20%EC%95%88%EB%B3%B4%EB%A5%BC%20%EC%9C%84%ED%95%9C%20%ED%94%8C%EB%9E%AB%ED%8F%BC_cover.jpg",
 "related": [
 202,
-173,
 109,
-142
+142,
+300
 ]
 },
 {
@@ -2767,7 +2767,7 @@
 "related": [
 1,
 161,
-140,
+205,
 516
 ]
 },
@@ -2794,9 +2794,9 @@
 "image": "/log_assets/images/202_%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%201%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%86%B5%ED%95%A9%EA%B3%BC%20%EB%B6%84%EC%84%9D%EC%9D%98%20%EC%83%88%EB%A1%9C%EC%9A%B4%20%ED%8C%A8%EB%9F%AC%EB%8B%A4%EC%9E%84_cover.jpg",
 "related": [
 195,
-173,
 109,
-142
+142,
+300
 ]
 },
 {
@@ -2824,7 +2824,7 @@
 82,
 197,
 256,
-412
+587
 ]
 },
 {
@@ -2837,7 +2837,7 @@
 "related": [
 1,
 161,
-140,
+200,
 516
 ]
 },
@@ -2891,10 +2891,10 @@
 "url": "/log_assets/markdown/209_%EC%8B%A4%ED%8C%A8%EC%97%90%EC%84%9C%20%EB%8D%B0%EC%B9%B4%EC%BD%98%EC%9C%BC%EB%A1%9C%20%27Notion%27%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EC%8B%9C%EC%9E%A5%EC%A7%84%EC%B6%9C%EC%A0%84%EB%9E%B5.html",
 "image": "/log_assets/images/209_%EC%8B%A4%ED%8C%A8%EC%97%90%EC%84%9C%20%EB%8D%B0%EC%B9%B4%EC%BD%98%EC%9C%BC%EB%A1%9C%20Notion%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EC%8B%9C%EC%9E%A5%EC%A7%84%EC%B6%9C%EC%A0%84%EB%9E%B5_cover.jpg",
 "related": [
-222,
 54,
 186,
-216
+216,
+222
 ]
 },
 {
@@ -2919,8 +2919,8 @@
 "url": "/log_assets/markdown/211_AI%20%EC%8B%9C%EB%8C%80%20%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%20%EC%A0%84%ED%99%98%2C%20%EC%A0%84%ED%86%B5%EC%A0%81%20%ED%8C%A8%EB%9F%AC%EB%8B%A4%EC%9E%84%EC%9D%98%20%EC%A2%85%EB%A7%90.html",
 "image": "/log_assets/images/211_AI%20%EC%8B%9C%EB%8C%80%20%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%20%EC%A0%84%ED%99%98%2C%20%EC%A0%84%ED%86%B5%EC%A0%81%20%ED%8C%A8%EB%9F%AC%EB%8B%A4%EC%9E%84%EC%9D%98%20%EC%A2%85%EB%A7%90_cover.jpg",
 "related": [
-397,
 358,
+397,
 232,
 395
 ]
@@ -2933,10 +2933,10 @@
 "url": "/log_assets/markdown/212_%ED%8C%80%EC%9D%98%20%ED%95%98%EB%AA%A8%EB%8B%88%EB%A5%BC%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B9%84%EB%B2%95%2C%20%27%EC%95%A0%EC%9E%90%EC%9D%BC%EB%AF%B8%ED%8C%85%27.html",
 "image": "/log_assets/images/212_%ED%8C%80%EC%9D%98%20%ED%95%98%EB%AA%A8%EB%8B%88%EB%A5%BC%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B9%84%EB%B2%95%2C%20%EC%95%A0%EC%9E%90%EC%9D%BC%EB%AF%B8%ED%8C%85_cover.jpg",
 "related": [
+160,
 168,
-267,
-146,
-160
+175,
+182
 ]
 },
 {
@@ -2990,9 +2990,9 @@
 "image": "/log_assets/images/216_%EC%8B%A4%ED%8C%A8%EA%B0%80%20%EB%A7%8C%EB%93%A0%20%EA%B8%B0%EC%A0%81%2C%20Slack%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%ED%99%95%EB%B3%B4%20%EC%A0%84%EB%9E%B5_cover.jpg",
 "related": [
 54,
-222,
-67,
-106
+186,
+209,
+222
 ]
 },
 {
@@ -3017,10 +3017,10 @@
 "url": "/log_assets/markdown/218_%27%ED%9A%8C%EA%B3%A0%27%2C%20%ED%8C%80%EC%9D%98%20%EC%84%B1%EC%9E%A5%EC%9D%84%20%EC%9D%B4%EB%81%84%EB%8A%94%20%EB%B9%84%EA%B2%B0.html",
 "image": "/log_assets/images/218_%ED%9A%8C%EA%B3%A0%2C%20%ED%8C%80%EC%9D%98%20%EC%84%B1%EC%9E%A5%EC%9D%84%20%EC%9D%B4%EB%81%84%EB%8A%94%20%EB%B9%84%EA%B2%B0_cover.jpg",
 "related": [
-146,
 168,
 175,
-182
+182,
+189
 ]
 },
 {
@@ -3031,10 +3031,10 @@
 "url": "/log_assets/markdown/219_%EC%8B%A4%EB%A6%AC%EC%BD%98%EB%B0%B8%EB%A6%AC%20%EC%8A%B9%EC%9E%90%EB%93%A4%EC%9D%B4%20%EC%93%B0%EB%8A%94%20%27%EC%BD%9C%ED%88%AC%EC%95%A1%EC%85%98%28CTA%29%27.html",
 "image": "/log_assets/images/219_%EC%8B%A4%EB%A6%AC%EC%BD%98%EB%B0%B8%EB%A6%AC%20%EC%8A%B9%EC%9E%90%EB%93%A4%EC%9D%B4%20%EC%93%B0%EB%8A%94%20%EC%BD%9C%ED%88%AC%EC%95%A1%EC%85%98CTA_cover.jpg",
 "related": [
-1,
 133,
 169,
-213
+213,
+171
 ]
 },
 {
@@ -3045,10 +3045,10 @@
 "url": "/log_assets/markdown/220_%EC%B1%97GPT%EB%A5%BC%20%EB%9B%B0%EC%96%B4%EB%84%98%EB%8B%A4%EB%A8%B8%EC%8A%A4%ED%81%AC%EC%9D%98%20%EC%95%BC%EC%8B%AC%EC%9E%91%20%27%EA%B7%B8%EB%A1%9D3%27.html",
 "image": "/log_assets/images/220_%EC%B1%97GPT%EB%A5%BC%20%EB%9B%B0%EC%96%B4%EB%84%98%EB%8B%A4...%EB%A8%B8%EC%8A%A4%ED%81%AC%EC%9D%98%20%EC%95%BC%EC%8B%AC%EC%9E%91%20%EA%B7%B8%EB%A1%9D3_cover.jpg",
 "related": [
-77,
 113,
 207,
-214
+214,
+224
 ]
 },
 {
@@ -3185,10 +3185,10 @@
 "url": "/log_assets/markdown/230_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%84%B1%EA%B3%B5%EC%9D%80%20%27%EC%88%AB%EC%9E%90%27%EC%97%90%20%EC%88%A8%EC%96%B4%EC%9E%88%EB%8B%A4.html",
 "image": "/log_assets/images/230_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%84%B1%EA%B3%B5%EC%9D%80%20%EC%88%AB%EC%9E%90%EC%97%90%20%EC%88%A8%EC%96%B4%EC%9E%88%EB%8B%A4_cover.jpg",
 "related": [
-54,
-157,
-109,
-163
+11,
+28,
+29,
+30
 ]
 },
 {
@@ -3213,9 +3213,9 @@
 "url": "/log_assets/markdown/232_%EC%A7%84%EC%A7%9C%20PMF%EB%A5%BC%20%EC%9C%84%ED%95%9C%20%EA%B3%A0%EA%B0%9D%20%EC%9D%B4%ED%95%B4.html",
 "image": "/log_assets/images/232_%EC%A7%84%EC%A7%9C%20PMF%EB%A5%BC%20%EC%9C%84%ED%95%9C%20%EA%B3%A0%EA%B0%9D%20%EC%9D%B4%ED%95%B4_cover.jpg",
 "related": [
-397,
 211,
 358,
+397,
 395
 ]
 },
@@ -3241,10 +3241,10 @@
 "url": "/log_assets/markdown/234_%EC%B1%97GPT%EA%B0%80%20%EC%89%BD%EB%8B%A4%EA%B3%A0%20%EB%8A%90%EA%BB%B4%EC%A7%80%EB%8A%94%20UX%EC%9D%98%20%EB%B9%84%EB%B0%80.html",
 "image": "/log_assets/images/234_%EC%B1%97GPT%EA%B0%80%20%EC%89%BD%EB%8B%A4%EA%B3%A0%20%EB%8A%90%EA%BB%B4%EC%A7%80%EB%8A%94%20UX%EC%9D%98%20%EB%B9%84%EB%B0%80_cover.jpg",
 "related": [
-89,
 1,
 8,
-34
+34,
+45
 ]
 },
 {
@@ -3285,8 +3285,8 @@
 "related": [
 174,
 458,
-581,
-386
+386,
+492
 ]
 },
 {
@@ -3325,10 +3325,10 @@
 "url": "/log_assets/markdown/240_%EB%8D%B0%EC%9D%BC%EB%A6%AC%20%EC%8A%A4%ED%81%AC%EB%9F%BC%EC%9D%B4%20%ED%95%84%EC%88%98%EC%9D%BC%EA%B9%8C.html",
 "image": "/log_assets/images/240_%EB%8D%B0%EC%9D%BC%EB%A6%AC%20%EC%8A%A4%ED%81%AC%EB%9F%BC%EC%9D%B4%20%ED%95%84%EC%88%98%EC%9D%BC%EA%B9%8C_cover.jpg",
 "related": [
-146,
 168,
 175,
-182
+182,
+189
 ]
 },
 {
@@ -3340,9 +3340,9 @@
 "image": "/log_assets/images/241_1%EC%9D%B8%20%EA%B8%B0%EC%97%85%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%B0%BD%EC%97%85%ED%95%B4%EC%95%BC%20%ED%95%A0%EA%B9%8C%EC%9A%94_cover.jpg",
 "related": [
 463,
-49,
 583,
-615
+2,
+4
 ]
 },
 {
@@ -3353,10 +3353,10 @@
 "url": "/log_assets/markdown/242_%EC%97%84%EC%A7%80%EA%B0%80%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%84%20%EC%A7%80%EB%B0%B0%ED%95%9C%EB%8B%A4%20ThumbFriendly%20UX.html",
 "image": "/log_assets/images/242_%EC%97%84%EC%A7%80%EA%B0%80%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%84%20%EC%A7%80%EB%B0%B0%ED%95%9C%EB%8B%A4%20ThumbFriendly%20UX_cover.jpg",
 "related": [
-140,
 190,
 198,
-1
+1,
+8
 ]
 },
 {
@@ -3495,8 +3495,8 @@
 "related": [
 363,
 553,
-158,
-194
+322,
+461
 ]
 },
 {
@@ -3621,8 +3621,8 @@
 "related": [
 472,
 399,
-341,
-385
+410,
+341
 ]
 },
 {
@@ -3689,10 +3689,10 @@
 "url": "/log_assets/markdown/266_%EA%B2%B0%ED%95%8D%EC%9D%98%20%EC%9D%B8%EC%8B%9D%EC%97%90%EC%84%9C%20%EB%B0%9C%EC%A0%84%EC%9D%B4%20%EC%8B%9C%EC%9E%91%EB%90%9C%EB%8B%A4.html",
 "image": "/log_assets/images/266_%EA%B2%B0%ED%95%8D%EC%9D%98%20%EC%9D%B8%EC%8B%9D%EC%97%90%EC%84%9C%20%EB%B0%9C%EC%A0%84%EC%9D%B4%20%EC%8B%9C%EC%9E%91%EB%90%9C%EB%8B%A4._cover.jpg",
 "related": [
-49,
-543,
 421,
-560
+543,
+560,
+31
 ]
 },
 {
@@ -3703,10 +3703,10 @@
 "url": "/log_assets/markdown/267_%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%B4%EB%9E%80.html",
 "image": "/log_assets/images/267_%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%B4%EB%9E%80_cover.jpg",
 "related": [
-212,
+226,
+260,
 146,
-160,
-168
+256
 ]
 },
 {
@@ -3747,8 +3747,8 @@
 "related": [
 484,
 428,
-30,
-39
+39,
+84
 ]
 },
 {
@@ -3802,9 +3802,9 @@
 "image": "/log_assets/images/274_ENTJ%20%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EB%8A%94%20%EC%98%A4%EA%B2%9C2%EC%8A%A4%ED%8F%AC%EC%97%86%EC%9D%8C_cover.jpg",
 "related": [
 286,
-309,
 2,
-4
+4,
+7
 ]
 },
 {
@@ -3857,10 +3857,10 @@
 "url": "/log_assets/markdown/278_AI%20%EC%8B%9C%EB%8C%80%2C%20%EC%99%9C%20%EA%B8%B0%ED%9A%8D%EC%9D%B4%20%EB%8D%94%20%EC%A4%91%EC%9A%94%ED%95%A0%EA%B9%8C.html",
 "image": "/log_assets/images/278_AI%20%EC%8B%9C%EB%8C%80%2C%20%EC%99%9C%20%EA%B8%B0%ED%9A%8D%EC%9D%B4%20%EB%8D%94%20%EC%A4%91%EC%9A%94%ED%95%A0%EA%B9%8C_cover.jpg",
 "related": [
-347,
 398,
-402,
-405
+469,
+486,
+536
 ]
 },
 {
@@ -3902,7 +3902,7 @@
 248,
 65,
 547,
-188
+50
 ]
 },
 {
@@ -3969,10 +3969,10 @@
 "url": "/log_assets/markdown/286_ENTJ%EC%BD%94%EC%B9%98%EC%9D%98%20%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%20%ED%8A%B8%EB%A0%81%ED%81%AC%20%EA%B0%90%EC%83%81.html",
 "image": "/log_assets/images/286_ENTJ%EC%BD%94%EC%B9%98%EC%9D%98%20%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%20%ED%8A%B8%EB%A0%81%ED%81%AC%20%EA%B0%90%EC%83%81_cover.jpg",
 "related": [
-309,
 274,
 2,
-4
+4,
+7
 ]
 },
 {
@@ -3986,7 +3986,7 @@
 138,
 375,
 571,
-354
+292
 ]
 },
 {
@@ -4013,8 +4013,8 @@
 "related": [
 534,
 416,
-463,
-538
+31,
+49
 ]
 },
 {
@@ -4025,10 +4025,10 @@
 "url": "/log_assets/markdown/290_%EC%A0%84%EB%AC%B8%EA%B0%95%EC%82%AC%EB%93%A4%EC%9D%80%20%EC%A4%80%EB%B9%84%EC%97%90%20%EC%96%BC%EB%A7%88%EC%9D%98%20%EC%8B%9C%EA%B0%84%EC%9D%84%20%EC%93%B8%EA%B9%8C%EC%9A%94.html",
 "image": "/log_assets/images/290_%EC%A0%84%EB%AC%B8%EA%B0%95%EC%82%AC%EB%93%A4%EC%9D%80%20%EC%A4%80%EB%B9%84%EC%97%90%20%EC%96%BC%EB%A7%88%EC%9D%98%20%EC%8B%9C%EA%B0%84%EC%9D%84%20%EC%93%B8%EA%B9%8C%EC%9A%94_cover.jpg",
 "related": [
-507,
-472,
 482,
-513
+507,
+513,
+431
 ]
 },
 {
@@ -4054,9 +4054,9 @@
 "image": "/log_assets/images/292_%EC%A0%95%EC%A3%BC%EC%98%81%ED%9A%8C%EC%9E%A5%EB%8B%98%20%ED%9B%84%EB%B0%B0%EB%93%A4%EC%9D%84%20%EB%A7%8C%EB%82%98%EA%B3%A0%20%EC%99%94%EC%8A%B5%EB%8B%88%EB%8B%A4._cover.jpg",
 "related": [
 288,
-272,
 293,
-294
+375,
+272
 ]
 },
 {
@@ -4082,8 +4082,8 @@
 "image": "/log_assets/images/294_%EB%82%9C%EA%B0%81%EB%B2%88%ED%98%B8%201%EB%B2%88_cover.jpg",
 "related": [
 264,
-272,
 550,
+272,
 603
 ]
 },
@@ -4095,10 +4095,10 @@
 "url": "/log_assets/markdown/295_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%EA%B0%80%20%EB%82%B4%20%EC%82%B6%EC%9D%84%20%EB%B0%94%EA%BE%BC%20%EC%9D%B4%EC%9C%A0.html",
 "image": "/log_assets/images/295_%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%EA%B0%80%20%EB%82%B4%20%EC%82%B6%EC%9D%84%20%EB%B0%94%EA%BE%BC%20%EC%9D%B4%EC%9C%A0_cover.jpg",
 "related": [
-463,
-538,
 31,
-42
+42,
+49,
+56
 ]
 },
 {
@@ -4109,10 +4109,10 @@
 "url": "/log_assets/markdown/296_%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EA%B3%A0%EC%88%98%EA%B0%80%20%EB%90%98%EB%A9%B4%20%EB%AC%B4%EC%97%87%EC%9D%B4%20%EB%8B%AC%EB%9D%BC%EC%A7%88%EA%B9%8C%EC%9A%94.html",
 "image": "/log_assets/images/296_%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EA%B3%A0%EC%88%98%EA%B0%80%20%EB%90%98%EB%A9%B4%20%EB%AC%B4%EC%97%87%EC%9D%B4%20%EB%8B%AC%EB%9D%BC%EC%A7%88%EA%B9%8C%EC%9A%94_cover.jpg",
 "related": [
-474,
 100,
 108,
-123
+123,
+291
 ]
 },
 {
@@ -4167,8 +4167,8 @@
 "related": [
 109,
 255,
-54,
-142
+142,
+552
 ]
 },
 {
@@ -4221,10 +4221,10 @@
 "url": "/log_assets/markdown/304_%EB%82%B4%20%EC%BB%A4%EB%A6%AC%EC%96%B4%EC%9D%98%20%EB%B9%84%EB%B0%80.html",
 "image": "/log_assets/images/304_%EB%82%B4%20%EC%BB%A4%EB%A6%AC%EC%96%B4%EC%9D%98%20%EB%B9%84%EB%B0%80_cover.jpg",
 "related": [
-504,
 31,
 46,
-49
+49,
+181
 ]
 },
 {
@@ -4252,7 +4252,7 @@
 27,
 383,
 315,
-188
+12
 ]
 },
 {
@@ -4277,10 +4277,10 @@
 "url": "/log_assets/markdown/309_ENTJ%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EB%8A%94%20%27%EC%9D%B4%ED%86%A0%EB%A1%9D%20%EC%B9%9C%EB%B0%80%ED%95%9C%20%EB%B0%B0%EC%8B%A0%EC%9E%90%27.html",
 "image": "/log_assets/images/309_ENTJ%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EB%8A%94%20%EC%9D%B4%ED%86%A0%EB%A1%9D%20%EC%B9%9C%EB%B0%80%ED%95%9C%20%EB%B0%B0%EC%8B%A0%EC%9E%90_cover.jpg",
 "related": [
-286,
-274,
 430,
-450
+450,
+16,
+25
 ]
 },
 {
@@ -4305,10 +4305,10 @@
 "url": "/log_assets/markdown/311_%EC%96%B4%EB%96%A4%20%EC%A7%81%EC%9E%A5%EC%9D%84%20%EA%B3%A8%EB%9D%BC%EC%95%BC%20%ED%95%A0%EA%B9%8C%EC%9A%94.html",
 "image": "/log_assets/images/311_%EC%96%B4%EB%96%A4%20%EC%A7%81%EC%9E%A5%EC%9D%84%20%EA%B3%A8%EB%9D%BC%EC%95%BC%20%ED%95%A0%EA%B9%8C%EC%9A%94_cover.jpg",
 "related": [
-398,
 435,
 554,
-15
+3,
+5
 ]
 },
 {
@@ -4417,9 +4417,9 @@
 "url": "/log_assets/markdown/321_%EC%96%B4%EB%96%A4%20%ED%9A%8C%EC%82%AC%2C%20%EC%96%B4%EB%96%A4%20%EB%95%8C%EA%B0%80%20%EA%B0%80%EC%9E%A5%20%EC%A6%90%EA%B1%B0%EC%9B%A0%EB%82%98%EC%9A%94.html",
 "image": "/log_assets/images/321_%EC%96%B4%EB%96%A4%20%ED%9A%8C%EC%82%AC%2C%20%EC%96%B4%EB%96%A4%20%EB%95%8C%EA%B0%80%20%EA%B0%80%EC%9E%A5%20%EC%A6%90%EA%B1%B0%EC%9B%A0%EB%82%98%EC%9A%94_cover.jpg",
 "related": [
-364,
 336,
 351,
+364,
 548
 ]
 },
@@ -4529,10 +4529,10 @@
 "url": "/log_assets/markdown/330_%EB%84%88%EB%8F%84%20%EB%82%98%EC%B2%98%EB%9F%BC%20%EB%85%B8%EB%A0%A5%ED%95%98%EB%A9%B4%20%EC%84%B1%EA%B3%B5%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%96%B4.html",
 "image": "/log_assets/images/330_%EB%84%88%EB%8F%84%20%EB%82%98%EC%B2%98%EB%9F%BC%20%EB%85%B8%EB%A0%A5%ED%95%98%EB%A9%B4%20%EC%84%B1%EA%B3%B5%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%96%B4_cover.jpg",
 "related": [
-463,
-538,
 31,
-49
+49,
+56,
+266
 ]
 },
 {
@@ -4543,10 +4543,10 @@
 "url": "/log_assets/markdown/331_%EC%96%B4%EB%96%A4%20%EC%BD%94%ED%8C%8C%EC%9A%B4%EB%8D%94%EB%A5%BC%20%EC%B0%BE%EC%95%84%EC%95%BC%20%ED%95%A0%EA%B9%8C.html",
 "image": "/log_assets/images/331_%EC%96%B4%EB%96%A4%20%EC%BD%94%ED%8C%8C%EC%9A%B4%EB%8D%94%EB%A5%BC%20%EC%B0%BE%EC%95%84%EC%95%BC%20%ED%95%A0%EA%B9%8C_cover.jpg",
 "related": [
-569,
 2,
 4,
-7
+7,
+14
 ]
 },
 {
@@ -4558,9 +4558,9 @@
 "image": "/log_assets/images/336_%ED%95%9C%EC%BD%94%EC%B9%98%EB%8B%98%EC%9D%98%2030%EB%8C%80%EB%8A%94%20%EC%96%B4%EB%95%A0%EB%82%98%EC%9A%94_cover.jpg",
 "related": [
 56,
-364,
 42,
-145
+145,
+320
 ]
 },
 {
@@ -4642,9 +4642,9 @@
 "image": "/log_assets/images/344_%EC%BD%94%EC%B9%98S%2015%ED%99%94%20%EC%9E%A5%EC%82%AC%EB%A1%9C%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20%EC%9C%A0%EC%9E%85%EC%9C%A8%EA%B3%BC%20%EC%A0%84%ED%99%98%EC%9C%A8_cover.jpg",
 "related": [
 346,
-374,
-382,
-401
+613,
+614,
+349
 ]
 },
 {
@@ -4670,9 +4670,9 @@
 "image": "/log_assets/images/346_%EC%BD%94%EC%B9%98S%2014%ED%99%94%20%EC%BD%9C%EB%93%9C%EB%B8%8C%EB%A3%A8%20%EC%9E%A5%EC%82%AC_cover.jpg",
 "related": [
 344,
-374,
-382,
-401
+613,
+614,
+349
 ]
 },
 {
@@ -4683,10 +4683,10 @@
 "url": "/log_assets/markdown/347_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EB%A0%88%EB%B2%A8.html",
 "image": "/log_assets/images/347_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EB%A0%88%EB%B2%A8_cover.jpg",
 "related": [
-278,
 402,
 405,
-531
+531,
+345
 ]
 },
 {
@@ -4711,8 +4711,8 @@
 "url": "/log_assets/markdown/349_%EC%BD%94%EC%B9%98S%2013%ED%99%94%20%EB%91%90%EA%B0%9C%EC%9D%98%20%EB%AA%A8%EC%9E%90.html",
 "image": "/log_assets/images/349_%EC%BD%94%EC%B9%98S%2013%ED%99%94%20%EB%91%90%EA%B0%9C%EC%9D%98%20%EB%AA%A8%EC%9E%90_cover.jpg",
 "related": [
-354,
 352,
+354,
 344,
 346
 ]
@@ -4739,9 +4739,9 @@
 "url": "/log_assets/markdown/351_%EB%8B%B9%EC%8B%A0%EC%9D%98%20%EC%A7%81%EC%97%85%EC%97%90%20%EA%B0%80%EC%9E%A5%20%ED%81%B0%20%EC%98%81%ED%96%A5%EC%9D%84%20%EB%81%BC%EC%B9%9C%20%EC%82%AC%EB%9E%8C%EC%9D%80%20%EB%88%84%EA%B5%AC%EC%9D%B8%EA%B0%80%EC%9A%94.html",
 "image": "/log_assets/images/351_%EB%8B%B9%EC%8B%A0%EC%9D%98%20%EC%A7%81%EC%97%85%EC%97%90%20%EA%B0%80%EC%9E%A5%20%ED%81%B0%20%EC%98%81%ED%96%A5%EC%9D%84%20%EB%81%BC%EC%B9%9C%20%EC%82%AC%EB%9E%8C%EC%9D%80%20%EB%88%84%EA%B5%AC%EC%9D%B8%EA%B0%80%EC%9A%94_cover.jpg",
 "related": [
-364,
 321,
 336,
+364,
 548
 ]
 },
@@ -4755,8 +4755,8 @@
 "related": [
 354,
 349,
-458,
-571
+571,
+287
 ]
 },
 {
@@ -4767,10 +4767,10 @@
 "url": "/log_assets/markdown/353_%EB%AC%B4%EC%96%B8%EA%B0%80%EB%A5%BC%20%EC%9E%98%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95.html",
 "image": "/log_assets/images/353_%EB%AC%B4%EC%96%B8%EA%B0%80%EB%A5%BC%20%EC%9E%98%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95_cover.jpg",
 "related": [
-42,
 369,
 2,
-4
+4,
+7
 ]
 },
 {
@@ -4837,8 +4837,8 @@
 "url": "/log_assets/markdown/358_%EC%8B%A4%EC%A0%9C%EB%A1%9C%20%EC%82%B6%EC%9D%84%20%EA%B0%9C%EC%84%A0%EC%8B%9C%EC%BC%9C%EB%9D%BC.html",
 "image": "/log_assets/images/358_%EC%8B%A4%EC%A0%9C%EB%A1%9C%20%EC%82%B6%EC%9D%84%20%EA%B0%9C%EC%84%A0%EC%8B%9C%EC%BC%9C%EB%9D%BC_cover.jpg",
 "related": [
-397,
 211,
+397,
 232,
 395
 ]
@@ -4895,8 +4895,8 @@
 "related": [
 252,
 553,
-158,
-194
+322,
+461
 ]
 },
 {
@@ -4937,8 +4937,8 @@
 "related": [
 406,
 500,
-62,
-3
+3,
+5
 ]
 },
 {
@@ -4977,10 +4977,10 @@
 "url": "/log_assets/markdown/369_%EC%9D%BC%EC%9D%84%20%EC%A0%9C%EB%8C%80%EB%A1%9C%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20%EB%B2%95.html",
 "image": "/log_assets/images/369_%EC%9D%BC%EC%9D%84%20%EC%A0%9C%EB%8C%80%EB%A1%9C%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20%EB%B2%95_cover.jpg",
 "related": [
-46,
-504,
 31,
-49
+46,
+49,
+181
 ]
 },
 {
@@ -5117,9 +5117,9 @@
 "url": "/log_assets/markdown/380_%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EC%84%9D%EC%84%B8%EA%B3%B5%EC%82%AC%EC%9D%B8%20%EC%9D%B4%EC%9C%A0%EB%8A%94.html",
 "image": "/log_assets/images/380_%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EC%84%9D%EC%84%B8%EA%B3%B5%EC%82%AC%EC%9D%B8%20%EC%9D%B4%EC%9C%A0%EB%8A%94_cover.jpg",
 "related": [
-375,
 513,
 590,
+375,
 386
 ]
 },
@@ -5131,10 +5131,10 @@
 "url": "/log_assets/markdown/381_A%EA%B8%89%20%EC%9D%B8%EC%9E%AC%EB%A5%BC%20%EC%B0%BE%EB%8A%94%20%EB%B0%A9%EB%B2%95.html",
 "image": "/log_assets/images/381_A%EA%B8%89%20%EC%9D%B8%EC%9E%AC%EB%A5%BC%20%EC%B0%BE%EB%8A%94%20%EB%B0%A9%EB%B2%95_cover.jpg",
 "related": [
-504,
 31,
 46,
-49
+49,
+181
 ]
 },
 {
@@ -5216,9 +5216,9 @@
 "image": "/log_assets/images/389_%EC%BD%94%EC%B9%98S%203%ED%99%94%20%EB%AA%A9%ED%91%9C%EB%8A%94%20%EB%AA%87%20%EA%B0%9C_cover.jpg",
 "related": [
 394,
-401,
 74,
-344
+344,
+346
 ]
 },
 {
@@ -5314,9 +5314,9 @@
 "image": "/log_assets/images/396_%EC%BD%94%EC%B9%98S%202%ED%99%94%20%EB%84%88%EB%AC%B4%20%EC%97%86%EA%B1%B0%EB%82%98%2C%20%EB%84%88%EB%AC%B4%20%EB%A7%8E%EA%B1%B0%EB%82%98_cover.jpg",
 "related": [
 387,
-401,
 344,
-346
+346,
+349
 ]
 },
 {
@@ -5327,9 +5327,9 @@
 "url": "/log_assets/markdown/395_%EC%B9%B4%EB%8B%88%EB%B0%9C%EB%9D%BC%EC%9D%B4%EC%A0%9C%EC%9D%B4%EC%85%98%EC%9D%84%20%EC%95%84%EC%8B%9C%EB%82%98%EC%9A%94.html",
 "image": "/log_assets/images/397_%EC%B9%B4%EB%8B%88%EB%B0%9C%EB%9D%BC%EC%9D%B4%EC%A0%9C%EC%9D%B4%EC%85%98%EC%9D%84%20%EC%95%84%EC%8B%9C%EB%82%98%EC%9A%94_cover.jpg",
 "related": [
-397,
 211,
 358,
+397,
 232
 ]
 },
@@ -5356,9 +5356,9 @@
 "image": "/log_assets/images/399_%EB%82%98%EC%9D%98%20%EB%B8%8C%EB%9E%9C%EB%94%A9%EC%9D%80_cover.jpg",
 "related": [
 470,
+507,
 211,
-358,
-486
+358
 ]
 },
 {
@@ -5370,9 +5370,9 @@
 "image": "/log_assets/images/400_%EB%8B%A4%EC%9D%8C%20%EC%A7%81%EC%9E%A5%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%84%A0%ED%83%9D%ED%95%A0%EA%B9%8C%EC%9A%94_cover.jpg",
 "related": [
 278,
-435,
 469,
-486
+486,
+536
 ]
 },
 {
@@ -5384,9 +5384,9 @@
 "image": "/log_assets/images/401_%EB%82%B4%EA%B0%80%20%EC%9A%94%EC%A6%98%20%EC%A3%BC%EB%AA%A9%ED%95%98%EB%8A%94%20%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%ED%9E%88%EC%96%B4%EB%A1%9C%204%EC%9B%94%ED%98%B8_cover.jpg",
 "related": [
 431,
-507,
 261,
-434
+434,
+507
 ]
 },
 {
@@ -5412,9 +5412,9 @@
 "image": "/log_assets/images/403_%EC%BD%94%EC%B9%98S%201%ED%99%94%20%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0%EC%82%AC_cover.jpg",
 "related": [
 365,
-344,
-346,
-374
+374,
+382,
+344
 ]
 },
 {
@@ -5425,10 +5425,10 @@
 "url": "/log_assets/markdown/402_%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EB%90%A0%20%EC%88%98%20%EC%9E%88%EC%9D%84%EA%B9%8C%EC%9A%94.html",
 "image": "/log_assets/images/404_%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EB%90%A0%20%EC%88%98%20%EC%9E%88%EC%9D%84%EA%B9%8C%EC%9A%94_cover.jpg",
 "related": [
-278,
 347,
 405,
-531
+531,
+3
 ]
 },
 {
@@ -5453,10 +5453,10 @@
 "url": "/log_assets/markdown/404_%EA%B8%B0%ED%9A%8D%20%EC%96%B4%EB%94%94%EC%84%9C%EB%B6%80%ED%84%B0%20%EC%8B%9C%EC%9E%91%ED%95%B4%EC%95%BC%20%ED%95%A0%EA%B9%8C%EC%9A%94.html",
 "image": "/log_assets/images/406_%EA%B8%B0%ED%9A%8D%20%EC%96%B4%EB%94%94%EC%84%9C%EB%B6%80%ED%84%B0%20%EC%8B%9C%EC%9E%91%ED%95%B4%EC%95%BC%20%ED%95%A0%EA%B9%8C%EC%9A%94_cover.jpg",
 "related": [
-474,
 540,
 100,
-108
+108,
+123
 ]
 },
 {
@@ -5467,10 +5467,10 @@
 "url": "/log_assets/markdown/405_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EA%B8%B8%EC%9D%84%20%EC%84%A0%ED%83%9D%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html",
 "image": "/log_assets/images/407_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EA%B8%B8%EC%9D%84%20%EC%84%A0%ED%83%9D%ED%95%9C%20%EC%9D%B4%EC%9C%A0_cover.jpg",
 "related": [
-278,
 347,
 402,
-531
+531,
+3
 ]
 },
 {
@@ -5484,7 +5484,7 @@
 366,
 510,
 539,
-62
+9
 ]
 },
 {
@@ -5523,10 +5523,10 @@
 "url": "/log_assets/markdown/409_%EB%B9%84%ED%9A%A8%EC%9C%A8%EC%A0%81%EC%9C%BC%EB%A1%9C%20%EB%B8%8C%EB%9E%9C%EB%94%A9%20%EA%B8%B0%ED%9A%8D%ED%95%98%EA%B8%B0.html",
 "image": "/log_assets/images/411_%EB%B9%84%ED%9A%A8%EC%9C%A8%EC%A0%81%EC%9C%BC%EB%A1%9C%20%EB%B8%8C%EB%9E%9C%EB%94%A9%20%EA%B8%B0%ED%9A%8D%ED%95%98%EA%B8%B0_cover.jpg",
 "related": [
-463,
-538,
 31,
-49
+49,
+56,
+266
 ]
 },
 {
@@ -5539,8 +5539,8 @@
 "related": [
 433,
 601,
-42,
-145
+261,
+472
 ]
 },
 {
@@ -5593,10 +5593,10 @@
 "url": "/log_assets/markdown/414_CPO%EA%B0%80%20%EB%90%98%EB%A0%A4%EB%A9%B4%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%ED%95%B4%EC%95%BC%20%ED%95%A0%EA%B9%8C%EC%9A%94.html",
 "image": "/log_assets/images/416_CPO%EA%B0%80%20%EB%90%98%EB%A0%A4%EB%A9%B4%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%ED%95%B4%EC%95%BC%20%ED%95%A0%EA%B9%8C%EC%9A%94_cover.jpg",
 "related": [
+529,
 384,
 407,
-425,
-529
+188
 ]
 },
 {
@@ -5607,10 +5607,10 @@
 "url": "/log_assets/markdown/415_%EC%82%AC%EC%97%85%EA%B0%80%EB%8F%84%20%EA%B0%9C%EC%9D%B8%EB%8F%84%20%EC%89%BD%EA%B2%8C%20%EC%9D%B4%ED%95%B4%ED%95%A0%20%EC%88%98%20%EC%9E%88%EB%8A%94%20%EA%B8%B0%ED%9A%8D%EB%B0%A9%EB%B2%95%EB%A1%A0.html",
 "image": "/log_assets/images/417_%EC%82%AC%EC%97%85%EA%B0%80%EB%8F%84%20%EA%B0%9C%EC%9D%B8%EB%8F%84%20%EC%89%BD%EA%B2%8C%20%EC%9D%B4%ED%95%B4%ED%95%A0%20%EC%88%98%20%EC%9E%88%EB%8A%94%20%EA%B8%B0%ED%9A%8D%EB%B0%A9%EB%B2%95%EB%A1%A0_cover.jpg",
 "related": [
-474,
 100,
 108,
-123
+123,
+404
 ]
 },
 {
@@ -5623,8 +5623,8 @@
 "related": [
 534,
 289,
-463,
-538
+31,
+49
 ]
 },
 {
@@ -5677,10 +5677,10 @@
 "url": "/log_assets/markdown/421_%EA%B0%80%EB%81%94%EC%9D%80%20%EB%8A%90%EB%A6%B0%20%EC%82%AC%EB%9E%8C%EC%9D%B4%20%EB%8D%94%20%EB%B9%A8%EB%A6%AC%20%EA%B0%80%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html",
 "image": "/log_assets/images/423_%EA%B0%80%EB%81%94%EC%9D%80%20%EB%8A%90%EB%A6%B0%20%EC%82%AC%EB%9E%8C%EC%9D%B4%20%EB%8D%94%20%EB%B9%A8%EB%A6%AC%20%EA%B0%80%EB%8A%94%20%EC%9D%B4%EC%9C%A0_cover.jpg",
 "related": [
-49,
 266,
 4,
-560
+560,
+31
 ]
 },
 {
@@ -5749,8 +5749,8 @@
 "related": [
 159,
 301,
-581,
-196
+196,
+581
 ]
 },
 {
@@ -5819,8 +5819,8 @@
 "related": [
 507,
 399,
-392,
-432
+501,
+392
 ]
 },
 {
@@ -5831,10 +5831,10 @@
 "url": "/log_assets/markdown/432_%EC%95%84%EB%8B%88%20%EC%A0%9C%EA%B0%80%20%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%EC%9D%B8%ED%94%8C%EB%A3%A8%EC%96%B8%EC%84%9C%EB%9D%BC%EB%8B%88%EC%9A%94.html",
 "image": "/log_assets/images/434_%EC%95%84%EB%8B%88%20%EC%A0%9C%EA%B0%80%20%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%EC%9D%B8%ED%94%8C%EB%A3%A8%EC%96%B8%EC%84%9C%EB%9D%BC%EB%8B%88%EC%9A%94_cover.jpg",
 "related": [
-431,
 501,
-507,
-261
+431,
+261,
+399
 ]
 },
 {
@@ -5847,8 +5847,8 @@
 "related": [
 601,
 410,
-463,
-538
+31,
+49
 ]
 },
 {
@@ -5859,8 +5859,8 @@
 "url": "/log_assets/markdown/434_%EC%84%B1%EB%8D%95%EC%9D%B4%20%EB%90%98%EC%97%88%EC%8A%B5%EB%8B%88%EB%8B%A4~.html",
 "image": "/log_assets/images/436_%EC%84%B1%EB%8D%95%EC%9D%B4%20%EB%90%98%EC%97%88%EC%8A%B5%EB%8B%88%EB%8B%A4~%21_cover.jpg",
 "related": [
-507,
 399,
+507,
 431,
 2
 ]
@@ -5873,10 +5873,10 @@
 "url": "/log_assets/markdown/435_%EC%BB%A4%EB%A6%AC%EC%96%B4%20%EA%B8%B0%ED%9A%8D%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%ED%95%A0%EA%B9%8C%EC%9A%94.html",
 "image": "/log_assets/images/437_%EC%BB%A4%EB%A6%AC%EC%96%B4%20%EA%B8%B0%ED%9A%8D%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%ED%95%A0%EA%B9%8C%EC%9A%94_cover.jpg",
 "related": [
-398,
-15,
 311,
-3
+3,
+5,
+10
 ]
 },
 {
@@ -5901,10 +5901,10 @@
 "url": "/log_assets/markdown/437_%EB%82%B4%EA%B0%80%20%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%EB%A1%9C%20%EC%82%AC%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html",
 "image": "/log_assets/images/439_%EB%82%B4%EA%B0%80%20%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%EB%A1%9C%20%EC%82%AC%EB%8A%94%20%EC%9D%B4%EC%9C%A0_cover.jpg",
 "related": [
-113,
 298,
-307,
-595
+595,
+113,
+307
 ]
 },
 {
@@ -5985,10 +5985,10 @@
 "url": "/log_assets/markdown/443_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%81%8C%EC%96%B4%EB%8B%B9%EA%B9%80%EC%9D%98%20%EC%9B%90%EB%A6%AC%ED%8E%B8.html",
 "image": "/log_assets/images/445_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%81%8C%EC%96%B4%EB%8B%B9%EA%B9%80%EC%9D%98%20%EC%9B%90%EB%A6%AC%ED%8E%B8_cover.jpg",
 "related": [
-463,
-538,
 31,
-49
+49,
+56,
+266
 ]
 },
 {
@@ -6013,10 +6013,10 @@
 "url": "/log_assets/markdown/447_%EB%82%B4%20%EC%BB%A4%EB%A6%AC%EC%96%B4%EC%9D%98%20%EC%A0%90%EB%93%A4%EC%9D%84%20%EC%84%A0%EC%9C%BC%EB%A1%9C%20%EC%9E%87%EA%B3%A0%20%EC%8B%B6%EB%8B%A4%EB%A9%B4%E2%80%A6.html",
 "image": "/log_assets/images/449_%EB%82%B4%20%EC%BB%A4%EB%A6%AC%EC%96%B4%EC%9D%98%20%EC%A0%90%EB%93%A4%EC%9D%84%20%EC%84%A0%EC%9C%BC%EB%A1%9C%20%EC%9E%87%EA%B3%A0%20%EC%8B%B6%EB%8B%A4%EB%A9%B4%E2%80%A6_cover.jpg",
 "related": [
-266,
-543,
 551,
-537
+537,
+546,
+524
 ]
 },
 {
@@ -6055,10 +6055,10 @@
 "url": "/log_assets/markdown/452_%EB%82%B4%EA%B0%80%20%EA%B1%B0%EC%A0%88%EC%9D%84%20%EB%8C%80%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95.html",
 "image": "/log_assets/images/454_%EB%82%B4%EA%B0%80%20%EA%B1%B0%EC%A0%88%EC%9D%84%20%EB%8C%80%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95_cover.jpg",
 "related": [
-463,
-538,
 31,
-49
+49,
+56,
+266
 ]
 },
 {
@@ -6069,10 +6069,10 @@
 "url": "/log_assets/markdown/453_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%205%ED%99%94%20%27%27%ED%83%80%EC%9D%B4%EC%8A%A8%20%EC%84%A0%EB%B0%B0%EB%A5%BC%20%EB%8F%84%EC%99%80%EC%A3%BC%EC%84%B8%EC%9A%94.html",
 "image": "/log_assets/images/455_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC%205%ED%99%94%20%ED%83%80%EC%9D%B4%EC%8A%A8%20%EC%84%A0%EB%B0%B0%EB%A5%BC%20%EB%8F%84%EC%99%80%EC%A3%BC%EC%84%B8%EC%9A%94_cover.jpg",
 "related": [
-460,
 467,
 471,
-475
+475,
+460
 ]
 },
 {
@@ -6128,7 +6128,7 @@
 557,
 174,
 237,
-581
+386
 ]
 },
 {
@@ -6155,8 +6155,8 @@
 "related": [
 453,
 446,
-440,
-467
+467,
+471
 ]
 },
 {
@@ -6182,9 +6182,9 @@
 "image": "/log_assets/images/465_%EA%B2%BD%EB%A1%9C%EC%9D%98%20%EC%9E%AC%ED%83%90%EC%83%89_cover.jpg",
 "related": [
 49,
-538,
 31,
-56
+56,
+266
 ]
 },
 {
@@ -6198,7 +6198,7 @@
 471,
 475,
 453,
-446
+478
 ]
 },
 {
@@ -6224,9 +6224,9 @@
 "image": "/log_assets/images/472_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%ED%9E%88%EC%96%B4%EB%A1%9C%20%EB%90%98%EA%B8%B0%ED%8E%B8_cover.jpg",
 "related": [
 397,
+507,
 486,
-501,
-507
+501
 ]
 },
 {
@@ -6240,7 +6240,7 @@
 467,
 475,
 453,
-446
+478
 ]
 },
 {
@@ -6253,8 +6253,8 @@
 "related": [
 261,
 385,
-507,
-482
+410,
+507
 ]
 },
 {
@@ -6279,10 +6279,10 @@
 "url": "/log_assets/markdown/474_%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EC%8B%9C%EC%9E%91%EC%9D%80%20%EB%AC%B8%EC%A0%9C%EC%9D%98%20%EC%9D%B8%EC%8B%9D%EB%B6%80%ED%84%B0.html",
 "image": "/log_assets/images/476_%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EC%8B%9C%EC%9E%91%EC%9D%80%20%EB%AC%B8%EC%A0%9C%EC%9D%98%20%EC%9D%B8%EC%8B%9D%EB%B6%80%ED%84%B0_cover.jpg",
 "related": [
-404,
-540,
 100,
-108
+108,
+123,
+404
 ]
 },
 {
@@ -6295,8 +6295,8 @@
 "related": [
 467,
 471,
-453,
-478
+478,
+453
 ]
 },
 {
@@ -6321,10 +6321,10 @@
 "url": "/log_assets/markdown/477_%EA%B8%80%EC%93%B0%EA%B8%B0%EB%8A%94%20%27%EC%9E%98%27%20%EB%B3%B4%EB%8B%A4%20%27%EC%9E%90%EC%A3%BC%27%EA%B0%80%20%EB%8D%94%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html",
 "image": "/log_assets/images/479_%EA%B8%80%EC%93%B0%EA%B8%B0%EB%8A%94%20%EC%9E%98%20%EB%B3%B4%EB%8B%A4%20%EC%9E%90%EC%A3%BC%EA%B0%80%20%EB%8D%94%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0_cover.jpg",
 "related": [
-485,
-506,
 528,
-565
+565,
+341,
+410
 ]
 },
 {
@@ -6349,10 +6349,10 @@
 "url": "/log_assets/markdown/479_%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A5%BC%20%EC%9E%A1%EA%B8%B0%20%EC%9D%B4%EC%A0%84%EC%97%90%20%EC%82%AC%EB%9E%8C%EC%9D%84%20%EC%9E%A1%EC%95%84%EB%9D%BC.html",
 "image": "/log_assets/images/481_%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A5%BC%20%EC%9E%A1%EA%B8%B0%20%EC%9D%B4%EC%A0%84%EC%97%90%20%EC%82%AC%EB%9E%8C%EC%9D%84%20%EC%9E%A1%EC%95%84%EB%9D%BC_cover.jpg",
 "related": [
-474,
 100,
 108,
-123
+123,
+404
 ]
 },
 {
@@ -6392,9 +6392,9 @@
 "image": "/log_assets/images/484_%EC%84%B8%EC%83%81%EC%97%90%20%EC%97%86%EB%8D%98%20%EC%9D%BC%EC%9D%84%20%ED%95%98%EC%8B%9C%EB%84%A4%EC%9A%94._cover.jpg",
 "related": [
 507,
-472,
 513,
-290
+290,
+431
 ]
 },
 {
@@ -6433,10 +6433,10 @@
 "url": "/log_assets/markdown/485_%EA%B8%80%EC%9D%84%20%EC%93%B0%EB%A9%B4%20%EC%9D%B4%EB%A3%A8%EC%96%B4%EC%A7%80%EB%8A%94%20%EC%9B%90%EB%A6%AC%20aka%20%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%EC%82%B0%ED%96%89.html",
 "image": "/log_assets/images/487_%EA%B8%80%EC%9D%84%20%EC%93%B0%EB%A9%B4%20%EC%9D%B4%EB%A3%A8%EC%96%B4%EC%A7%80%EB%8A%94%20%EC%9B%90%EB%A6%AC%20aka.%20%ED%8A%B8%EB%A0%88%EB%B0%94%EB%A6%AC%20%EC%82%B0%ED%96%89_cover.jpg",
 "related": [
-477,
 506,
 524,
-488
+488,
+2
 ]
 },
 {
@@ -6447,10 +6447,10 @@
 "url": "/log_assets/markdown/486_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EC%9B%90%ED%95%98%EB%8A%94%20%EA%B2%83%EC%9D%84%20%EC%9D%B4%EB%A3%A8%EB%8A%94%20%EB%B9%84%EB%B0%80.html",
 "image": "/log_assets/images/488_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EC%9B%90%ED%95%98%EB%8A%94%20%EA%B2%83%EC%9D%84%20%EC%9D%B4%EB%A3%A8%EB%8A%94%20%EB%B9%84%EB%B0%80_cover.jpg",
 "related": [
-397,
-470,
 278,
-398
+397,
+398,
+469
 ]
 },
 {
@@ -6475,10 +6475,10 @@
 "url": "/log_assets/markdown/488_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EA%B8%80%EC%93%B0%EA%B8%B0%EC%9D%98%20%EC%8B%9C%ED%81%AC%EB%A6%BF.html",
 "image": "/log_assets/images/490_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EA%B8%80%EC%93%B0%EA%B8%B0%EC%9D%98%20%EC%8B%9C%ED%81%AC%EB%A6%BF_cover.jpg",
 "related": [
-463,
-538,
 31,
-49
+49,
+56,
+266
 ]
 },
 {
@@ -6534,7 +6534,7 @@
 174,
 237,
 458,
-581
+386
 ]
 },
 {
@@ -6601,10 +6601,10 @@
 "url": "/log_assets/markdown/497_%EC%9D%B8%EA%B8%B0%20%EC%9E%88%EB%8A%94%20%ED%8F%89%EB%A1%A0%EA%B0%80%EC%9D%B4%EA%B8%B0%EB%B3%B4%EB%8B%A4%EB%8A%94%20%EC%B6%A9%EC%8B%A4%ED%95%9C%20%EA%B0%90%EB%8F%85%EC%9D%B4%20%EB%90%98%EA%B8%B0%EB%A5%BC.html",
 "image": "/log_assets/images/499_%EC%9D%B8%EA%B8%B0%20%EC%9E%88%EB%8A%94%20%ED%8F%89%EB%A1%A0%EA%B0%80%EC%9D%B4%EA%B8%B0%EB%B3%B4%EB%8B%A4%EB%8A%94%20%EC%B6%A9%EC%8B%A4%ED%95%9C%20%EA%B0%90%EB%8F%85%EC%9D%B4%20%EB%90%98%EA%B8%B0%EB%A5%BC..._cover.jpg",
 "related": [
-479,
 517,
 518,
-588
+588,
+492
 ]
 },
 {
@@ -6643,10 +6643,10 @@
 "url": "/log_assets/markdown/500_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%8F%85%EC%84%9C%EC%9D%98%20%EC%A0%84%EB%9E%B5%ED%8E%B8.html",
 "image": "/log_assets/images/502_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%8F%85%EC%84%9C%EC%9D%98%20%EC%A0%84%EB%9E%B5%ED%8E%B8_cover.jpg",
 "related": [
-463,
-538,
 31,
-49
+49,
+56,
+266
 ]
 },
 {
@@ -6716,7 +6716,7 @@
 368,
 396,
 409,
-370
+363
 ]
 },
 {
@@ -6727,10 +6727,10 @@
 "url": "/log_assets/markdown/506_%EC%97%90%EC%96%B4%ED%94%8C%EB%A0%88%EC%9D%B8%EB%AA%A8%EB%93%9C%20%EA%B8%80%EC%93%B0%EA%B8%B0.html",
 "image": "/log_assets/images/508_%EC%97%90%EC%96%B4%ED%94%8C%EB%A0%88%EC%9D%B8%EB%AA%A8%EB%93%9C%20%EA%B8%80%EC%93%B0%EA%B8%B0_cover.jpg",
 "related": [
-477,
 485,
 524,
-488
+488,
+2
 ]
 },
 {
@@ -6742,9 +6742,9 @@
 "image": "/log_assets/images/509_%EB%82%B4%EA%B0%80%20%EA%B3%A8%ED%94%84%EB%B3%B4%EB%8B%A4%20%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%EC%9D%84%20%EC%A2%8B%EC%95%84%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0_cover.jpg",
 "related": [
 431,
-399,
-434,
-472
+397,
+470,
+399
 ]
 },
 {
@@ -6825,10 +6825,10 @@
 "url": "/log_assets/markdown/513_2024%20%EC%83%88%ED%95%B4%20%EC%9D%B8%EC%82%AC%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.html",
 "image": "/log_assets/images/515_2024%20%EC%83%88%ED%95%B4%20%EC%9D%B8%EC%82%AC%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4._cover.jpg",
 "related": [
-507,
 380,
-472,
-482
+482,
+507,
+590
 ]
 },
 {
@@ -6839,10 +6839,10 @@
 "url": "/log_assets/markdown/514_2023%EB%85%84%EC%9D%84%20%EB%A7%88%EB%AC%B4%EB%A6%AC%ED%95%98%EB%A9%B0%E2%80%A6.html",
 "image": "/log_assets/images/516_2023%EB%85%84%EC%9D%84%20%EB%A7%88%EB%AC%B4%EB%A6%AC%ED%95%98%EB%A9%B0%E2%80%A6_cover.jpg",
 "related": [
-272,
 325,
 2,
-4
+4,
+7
 ]
 },
 {
@@ -6869,8 +6869,8 @@
 "related": [
 1,
 161,
-140,
-200
+200,
+205
 ]
 },
 {
@@ -6881,10 +6881,10 @@
 "url": "/log_assets/markdown/517_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%B0%A9%ED%96%A5%EA%B3%BC%20%ED%9D%90%EB%A6%84%ED%8E%B8.html",
 "image": "/log_assets/images/519_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%B0%A9%ED%96%A5%EA%B3%BC%20%ED%9D%90%EB%A6%84%ED%8E%B8_cover.jpg",
 "related": [
-479,
 497,
 518,
-588
+588,
+492
 ]
 },
 {
@@ -6895,10 +6895,10 @@
 "url": "/log_assets/markdown/518_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EA%B3%A0%EA%B0%9D%EB%B9%99%EC%9D%98%ED%8E%B8.html",
 "image": "/log_assets/images/520_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EA%B3%A0%EA%B0%9D%EB%B9%99%EC%9D%98%ED%8E%B8_cover.jpg",
 "related": [
-479,
 497,
 517,
-588
+588,
+492
 ]
 },
 {
@@ -6923,8 +6923,8 @@
 "url": "/log_assets/markdown/520_%27Paper%20Face%27%EB%A5%BC%20%EC%95%84%EC%8B%9C%EB%82%98%EC%9A%94.html",
 "image": "/log_assets/images/522_Paper%20Face%EB%A5%BC%20%EC%95%84%EC%8B%9C%EB%82%98%EC%9A%94_cover.jpg",
 "related": [
-489,
 42,
+489,
 524,
 527
 ]
@@ -6951,10 +6951,10 @@
 "url": "/log_assets/markdown/522_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20AI%EB%8A%94%20%EA%B1%B0%EB%93%A4%20%EB%BF%90%ED%8E%B8.html",
 "image": "/log_assets/images/524_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20AI%EB%8A%94%20%EA%B1%B0%EB%93%A4%20%EB%BF%90%ED%8E%B8_cover.jpg",
 "related": [
-397,
 5,
 211,
-358
+358,
+397
 ]
 },
 {
@@ -6979,10 +6979,10 @@
 "url": "/log_assets/markdown/524_%EA%B8%80%EC%9D%84%20%EB%A7%A4%EC%9D%BC%20%EC%93%B0%EB%8B%A4%EB%B3%B4%EB%8B%88.html",
 "image": "/log_assets/images/526_%EA%B8%80%EC%9D%84%20%EB%A7%A4%EC%9D%BC%20%EC%93%B0%EB%8B%A4%EB%B3%B4%EB%8B%88..._cover.jpg",
 "related": [
-489,
 42,
-477,
-485
+485,
+489,
+506
 ]
 },
 {
@@ -6993,10 +6993,10 @@
 "url": "/log_assets/markdown/525_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EC%82%AC%EA%B3%A0%ED%9B%88%EB%A0%A8%ED%8E%B8.html",
 "image": "/log_assets/images/527_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EC%82%AC%EA%B3%A0%ED%9B%88%EB%A0%A8%ED%8E%B8_cover.jpg",
 "related": [
-463,
-538,
 31,
-49
+49,
+56,
+266
 ]
 },
 {
@@ -7021,8 +7021,8 @@
 "url": "/log_assets/markdown/527_%EC%84%9C%EC%9A%B8%EC%9D%98%20%EB%B4%84%20%EA%B7%B8%EC%A6%88%EC%9D%8C%EC%97%90.html",
 "image": "/log_assets/images/529_%EC%84%9C%EC%9A%B8%EC%9D%98%20%EB%B4%84%20%EA%B7%B8%EC%A6%88%EC%9D%8C%EC%97%90_cover.jpg",
 "related": [
-489,
 42,
+489,
 520,
 524
 ]
@@ -7077,10 +7077,10 @@
 "url": "/log_assets/markdown/531_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%90%98%EA%B8%B0%ED%8E%B8.html",
 "image": "/log_assets/images/533_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%90%98%EA%B8%B0%ED%8E%B8_cover.jpg",
 "related": [
-278,
 347,
 402,
-405
+405,
+3
 ]
 },
 {
@@ -7105,10 +7105,10 @@
 "url": "/log_assets/markdown/533_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%B9%8C%EB%93%9C%EC%97%85%ED%8E%B8.html",
 "image": "/log_assets/images/535_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%B9%8C%EB%93%9C%EC%97%85%ED%8E%B8_cover.jpg",
 "related": [
-504,
 31,
 46,
-49
+49,
+181
 ]
 },
 {
@@ -7121,8 +7121,8 @@
 "related": [
 289,
 416,
-463,
-538
+31,
+49
 ]
 },
 {
@@ -7175,10 +7175,10 @@
 "url": "/log_assets/markdown/538_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%A7%88%EC%9D%B8%EB%93%9C%EA%B4%80%EB%A6%AC%ED%8E%B8.html",
 "image": "/log_assets/images/540_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%A7%88%EC%9D%B8%EB%93%9C%EA%B4%80%EB%A6%AC%ED%8E%B8_cover.jpg",
 "related": [
-463,
 31,
 49,
-56
+56,
+266
 ]
 },
 {
@@ -7203,10 +7203,10 @@
 "url": "/log_assets/markdown/540_%EA%B8%B0%ED%9A%8D%20%3D%20%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%20%EC%82%AC%EB%9E%91.html",
 "image": "/log_assets/images/542_%EA%B8%B0%ED%9A%8D%20%3D%20%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%20%EC%82%AC%EB%9E%91_cover.jpg",
 "related": [
-474,
 404,
-81,
-100
+100,
+108,
+123
 ]
 },
 {
@@ -7246,9 +7246,9 @@
 "image": "/log_assets/images/545_%EB%8A%98%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20%EC%9E%90%EC%84%B8_cover.jpg",
 "related": [
 266,
-463,
-538,
-31
+31,
+49,
+56
 ]
 },
 {
@@ -7259,10 +7259,10 @@
 "url": "/log_assets/markdown/544_%EC%A0%80%ED%9D%AC%20%EB%8C%80%ED%91%9C%EB%8B%98%EC%9D%B4%20%EC%BB%A8%EC%84%A4%ED%8C%85%20%EA%B0%99%EC%9D%80%20%EA%B1%B8%20%EC%8B%AB%EC%96%B4%ED%95%98%EC%84%B8%EC%9A%94.html",
 "image": "/log_assets/images/546_%EC%A0%80%ED%9D%AC%20%EB%8C%80%ED%91%9C%EB%8B%98%EC%9D%B4%20%EC%BB%A8%EC%84%A4%ED%8C%85%20%EA%B0%99%EC%9D%80%20%EA%B1%B8%20%EC%8B%AB%EC%96%B4%ED%95%98%EC%84%B8%EC%9A%94._cover.jpg",
 "related": [
-138,
 2,
 4,
-7
+7,
+14
 ]
 },
 {
@@ -7289,8 +7289,8 @@
 "related": [
 562,
 524,
-266,
-447
+447,
+551
 ]
 },
 {
@@ -7315,10 +7315,10 @@
 "url": "/log_assets/markdown/548_%EB%82%98%EB%8A%94%20%EC%9A%B4%EC%9D%B4%20%EC%A2%8B%EB%8B%A4.html",
 "image": "/log_assets/images/550_%EB%82%98%EB%8A%94%20%EC%9A%B4%EC%9D%B4%20%EC%A2%8B%EB%8B%A4_cover.jpg",
 "related": [
-364,
 321,
 336,
-351
+351,
+364
 ]
 },
 {
@@ -7330,8 +7330,8 @@
 "image": "/log_assets/images/552_%ED%95%AB%ED%94%8C%EC%97%90%EC%84%9C%20%EC%9D%BC%ED%95%98%EB%8A%94%20%EC%A7%81%EC%97%85_cover.jpg",
 "related": [
 264,
-271,
 294,
+271,
 603
 ]
 },
@@ -7343,10 +7343,10 @@
 "url": "/log_assets/markdown/551_%EB%82%A8%EB%93%A4%EC%9D%80%20%EB%8B%A4%20%ED%96%89%EB%B3%B5%ED%95%9C%20%EA%B1%B0%20%EA%B0%99%EC%95%84%EC%9A%94.html",
 "image": "/log_assets/images/553_%EB%82%A8%EB%93%A4%EC%9D%80%20%EB%8B%A4%20%ED%96%89%EB%B3%B5%ED%95%9C%20%EA%B1%B0%20%EA%B0%99%EC%95%84%EC%9A%94._cover.jpg",
 "related": [
-266,
 447,
-543,
-145
+546,
+524,
+3
 ]
 },
 {
@@ -7374,7 +7374,7 @@
 252,
 363,
 576,
-474
+158
 ]
 },
 {
@@ -7428,9 +7428,9 @@
 "image": "/log_assets/images/559_%ED%86%A0%EB%A1%A0%EC%9D%B4%EB%9E%80..._cover.jpg",
 "related": [
 458,
-3,
 10,
-116
+116,
+554
 ]
 },
 {
@@ -7469,10 +7469,10 @@
 "url": "/log_assets/markdown/560_%ED%95%98%EB%A3%A8%ED%95%98%EB%A3%A8%EB%A5%BC%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EC%82%AC%EB%9E%8C%EB%93%A4.html",
 "image": "/log_assets/images/562_%ED%95%98%EB%A3%A8%ED%95%98%EB%A3%A8%EB%A5%BC%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EC%82%AC%EB%9E%8C%EB%93%A4_cover.jpg",
 "related": [
-49,
 266,
 421,
-42
+42,
+145
 ]
 },
 {
@@ -7483,10 +7483,10 @@
 "url": "/log_assets/markdown/561_%EC%84%9C%EC%84%9C%ED%9E%88%20%EA%B0%80%EB%9D%BC.html",
 "image": "/log_assets/images/563_%EC%84%9C%EC%84%9C%ED%9E%88%20%EA%B0%80%EB%9D%BC_cover.jpg",
 "related": [
-596,
 550,
 3,
-5
+5,
+10
 ]
 },
 {
@@ -7595,10 +7595,10 @@
 "url": "/log_assets/markdown/569_%EB%8F%84%EB%8C%80%EC%B2%B4%20%EB%8B%B9%EC%8B%A0%EC%9D%80%20%ED%95%9C%20%EA%B2%8C%20%EB%AD%90%EA%B0%80%20%EC%9E%88%EB%82%98%EC%9A%94.html",
 "image": "/log_assets/images/571_%EB%8F%84%EB%8C%80%EC%B2%B4%20%EB%8B%B9%EC%8B%A0%EC%9D%80%20%ED%95%9C%20%EA%B2%8C%20%EB%AD%90%EA%B0%80%20%EC%9E%88%EB%82%98%EC%9A%94_cover.jpg",
 "related": [
-331,
 2,
 4,
-7
+7,
+14
 ]
 },
 {
@@ -7624,8 +7624,8 @@
 "image": "/log_assets/images/573_%EC%88%98%EB%B0%95%EB%B0%94%20%EB%85%BC%EC%9F%81_cover.jpg",
 "related": [
 287,
-354,
 352,
+354,
 2
 ]
 },
@@ -7710,7 +7710,7 @@
 31,
 49,
 145,
-463
+46
 ]
 },
 {
@@ -7721,10 +7721,10 @@
 "url": "/log_assets/markdown/578_%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%20%ED%9A%8C%EC%82%AC%EC%9D%98%20%EC%95%BC%EA%B7%BC%20%EC%A0%84%EB%9E%B5.html",
 "image": "/log_assets/images/580_%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%20%ED%9A%8C%EC%82%AC%EC%9D%98%20%EC%95%BC%EA%B7%BC%20%EC%A0%84%EB%9E%B5_cover.jpg",
 "related": [
-70,
 301,
-529,
-270
+270,
+11,
+28
 ]
 },
 {
@@ -7777,10 +7777,10 @@
 "url": "/log_assets/markdown/582_%EC%A0%80%EB%8A%94%20%EC%9B%90%EC%98%A8%EC%9B%90%20%EB%8C%80%EC%8B%A0%20%ED%8B%B0%ED%83%80%EC%9E%84%EC%9D%84%20%ED%95%B4%EC%9A%94.html",
 "image": "/log_assets/images/584_%EC%A0%80%EB%8A%94%20%EC%9B%90%EC%98%A8%EC%9B%90%20%EB%8C%80%EC%8B%A0%20%ED%8B%B0%ED%83%80%EC%9E%84%EC%9D%84%20%ED%95%B4%EC%9A%94_cover.jpg",
 "related": [
+606,
 159,
-458,
-581,
-196
+196,
+426
 ]
 },
 {
@@ -7791,10 +7791,10 @@
 "url": "/log_assets/markdown/583_%ED%81%B0%20%EA%B8%B0%EC%97%85%20%EC%9D%B8%EC%9E%AC%EB%93%A4%EC%9D%B4%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%97%90%EC%84%9C%20%EA%B3%A0%EC%A0%84%EC%9D%84%20%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0%EB%8A%94.html",
 "image": "/log_assets/images/585_%ED%81%B0%20%EA%B8%B0%EC%97%85%20%EC%9D%B8%EC%9E%AC%EB%93%A4%EC%9D%B4%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%97%90%EC%84%9C%20%EA%B3%A0%EC%A0%84%EC%9D%84%20%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0%EB%8A%94_cover.jpg",
 "related": [
-615,
+241,
 463,
-49,
-241
+11,
+28
 ]
 },
 {
@@ -7861,10 +7861,10 @@
 "url": "/log_assets/markdown/588_%EC%A2%8B%EC%9D%80%20%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%8A%94.html",
 "image": "/log_assets/images/590_%EC%A2%8B%EC%9D%80%20%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%8A%94_cover.jpg",
 "related": [
-479,
 497,
 517,
-518
+518,
+492
 ]
 },
 {
@@ -7974,9 +7974,9 @@
 "image": "/log_assets/images/598_%EC%95%BC%EA%B7%BC%EC%9D%84%20%ED%95%98%EC%A7%80%20%EB%A7%90%EC%9E%90_cover.jpg",
 "related": [
 225,
-561,
-550,
-3
+3,
+5,
+10
 ]
 },
 {
@@ -8001,10 +8001,10 @@
 "url": "/log_assets/markdown/598_%EB%8B%B9%EC%8B%A0%EC%9D%80%20%EC%9D%BC%EC%9D%84%20%ED%95%98%EB%82%98%EC%9A%94%20%EA%B8%B0%ED%9A%8D%EC%9D%84%20%ED%95%98%EB%82%98%EC%9A%94.html",
 "image": "/log_assets/images/600_%EB%8B%B9%EC%8B%A0%EC%9D%80%20%EC%9D%BC%EC%9D%84%20%ED%95%98%EB%82%98%EC%9A%94%20%EA%B8%B0%ED%9A%8D%EC%9D%84%20%ED%95%98%EB%82%98%EC%9A%94_cover.jpg",
 "related": [
-474,
 100,
 108,
-123
+123,
+404
 ]
 },
 {
@@ -8045,8 +8045,8 @@
 "related": [
 433,
 410,
-463,
-504
+504,
+31
 ]
 },
 {
@@ -8057,10 +8057,10 @@
 "url": "/log_assets/markdown/602_%EA%B2%BD%ED%97%98%EC%97%90%EC%84%9C%20%EB%B0%B0%EC%9A%B4%20%EB%AA%87%20%EA%B0%80%EC%A7%80%20%EA%B5%90%ED%9B%88.html",
 "image": "/log_assets/images/604_%EA%B2%BD%ED%97%98%EC%97%90%EC%84%9C%20%EB%B0%B0%EC%9A%B4%20%EB%AA%87%20%EA%B0%80%EC%A7%80%20%EA%B5%90%ED%9B%88_cover.jpg",
 "related": [
-397,
 211,
 358,
-368
+368,
+397
 ]
 },
 {
@@ -8074,7 +8074,7 @@
 264,
 294,
 550,
-71
+2
 ]
 },
 {
@@ -8113,10 +8113,10 @@
 "url": "/log_assets/markdown/606_C%EB%A0%88%EB%B2%A8%EC%9D%98%20%EA%B8%B0%EC%88%A0%20%27%EC%82%AC%EA%B3%BC%27.html",
 "image": "/log_assets/images/608_C%EB%A0%88%EB%B2%A8%EC%9D%98%20%EA%B8%B0%EC%88%A0%20%EC%82%AC%EA%B3%BC_cover.jpg",
 "related": [
+582,
 372,
 572,
-393,
-582
+393
 ]
 },
 {
@@ -8127,10 +8127,10 @@
 "url": "/log_assets/markdown/607_C%EB%A0%88%EB%B2%A8%EC%9D%B4%EB%9D%BC%EB%8A%94%20%EB%A6%AC%EB%8D%94%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%ED%95%B4%EC%95%BC%20%ED%95%98%EB%82%98%EC%9A%94.html",
 "image": "/log_assets/images/609_C%EB%A0%88%EB%B2%A8%EC%9D%B4%EB%9D%BC%EB%8A%94%20%EB%A6%AC%EB%8D%94%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%ED%95%B4%EC%95%BC%20%ED%95%98%EB%82%98%EC%9A%94_cover.jpg",
 "related": [
+589,
 159,
 372,
-581,
-589
+196
 ]
 },
 {
@@ -8186,7 +8186,7 @@
 614,
 344,
 346,
-374
+349
 ]
 },
 {
@@ -8200,7 +8200,7 @@
 613,
 344,
 346,
-374
+349
 ]
 },
 {
@@ -8211,10 +8211,10 @@
 "url": "/log_assets/markdown/615_%EB%82%B4%20%EC%9D%B8%EC%83%9D%EC%9D%98%20%EB%8F%9B%2C%20%EB%82%B4%EA%B0%80%20%EC%9E%A1%EA%B3%A0%20%EC%9E%88%EB%82%98.html",
 "image": "/log_assets/images/vidar-nordli-mathisen-BsXNwkm04y4-unsplash.jpg",
 "related": [
-159,
-581,
-196,
-426
+49,
+463,
+11,
+28
 ]
 }
 ]
