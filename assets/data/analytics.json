@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-08-28T19:31:00.657616+00:00",
+  "updated_at": "2026-08-28T20:00:36.559402+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 71,
-    "activeUsers": 32,
-    "newUsers": 31,
+    "sessions": 72,
+    "activeUsers": 33,
+    "newUsers": 32,
     "returningUsers": 1
   },
   "daily": [
@@ -31,9 +31,9 @@
     },
     {
       "date": "2026-08-29",
-      "sessions": 1,
-      "activeUsers": 1,
-      "newUsers": 0,
+      "sessions": 2,
+      "activeUsers": 2,
+      "newUsers": 1,
       "returningUsers": 1
     }
   ],
@@ -48,7 +48,7 @@
     }
   ],
   "landing_types": {
-    "home": 59,
+    "home": 61,
     "log_home": 6,
     "individual_post": 23,
     "other": 9
@@ -56,7 +56,7 @@
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 45
+      "sessions": 46
     },
     {
       "source": "(not set)",
@@ -92,7 +92,7 @@
     "section_view_proven": 225,
     "section_view_voices": 166,
     "section_view_book_class": 101,
-    "section_view_faq": 90,
+    "section_view_faq": 91,
     "faq_open": 16,
     "read_complete": 178
   },
@@ -201,7 +201,7 @@
       "path": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
       "title": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
       "uniqueViews": 5,
-      "views": 54
+      "views": 55
     },
     {
       "path": "/log_assets/markdown/003_회의실에서 목소리가 큰 사람이 가장 위험할 수 있다.html",
