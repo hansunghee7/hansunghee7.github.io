@@ -33,14 +33,40 @@
   @media (min-width:761px){ :root{ --gutter:32px; } }
 
   /* ---- header ----
-     insight-7b3e9f2c/ 내 모든 페이지(write.html 제외)와 동일한 header/h1/.sub/
-     .metaline/.refresh 규칙입니다. Studio 전체 타이틀·새로고침 UX를 통일하기
-     위한 공용 규격이라, 바꾸면 다른 파일에도 똑같이 반영해야 합니다. */
-  header{padding:28px 0 18px; border-bottom:1px solid var(--line-soft); margin-bottom:24px;}
-  h1{font-family:'Noto Serif KR',serif; font-weight:400; font-size:30px; letter-spacing:-0.01em; margin:0 0 8px;}
+     제목·새로고침 버튼·핵심 요약을 한 줄에 몰아서 세로 공간을 아낀다 --
+     이 사이트의 존재 이유·검색 비노출 안내처럼 한 번만 알면 되는 정보는
+     제목 옆 ⓘ 아이콘 hover/탭 툴팁으로 뺐다(북 인사이트·SNS 인사이트와
+     동일한 배치 원칙 -- ⓘ는 항상 그것이 설명하는 텍스트 바로 옆에 붙이고,
+     줄 끝으로 밀어두지 않는다). */
+  header{display:flex; align-items:center; flex-wrap:wrap; gap:14px; padding:28px 0 18px; border-bottom:1px solid var(--line-soft); margin-bottom:24px;}
+  h1{font-family:'Noto Serif KR',serif; font-weight:400; font-size:30px; letter-spacing:-0.01em; margin:0; display:inline-flex; align-items:baseline; gap:8px;}
   @media (min-width:761px){ h1{font-size:36px;} }
-  .sub{font-size:12.5px; color:var(--muted); line-height:1.6;}
-  .metaline{color:var(--muted); font-size:12.5px; display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center; margin-top:10px;}
+  h1 .info-dot{font-size:15px;}
+  .meta-text{color:var(--muted); font-size:12.5px;}
+  /* ⓘ 버튼 + 말풍선 -- 북 인사이트·SNS 인사이트와 동일한 컴포넌트(공유
+     include가 없어 파일마다 복사). 섹션 설명에 쓰는 아래 .h2note-q(?)와는
+     별개로, 헤더의 "한 번만 알면 되는 정보"용이다. */
+  .info-dot{
+    display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;
+    width:14px; height:14px; border:none; background:none; color:var(--muted);
+    font-size:13px; font-family:inherit; line-height:1; cursor:pointer; padding:0;
+    position:relative;
+  }
+  .info-dot:hover, .info-dot[aria-pressed="true"]{color:var(--ink);}
+  .info-text{
+    position:absolute; left:0; top:calc(100% + 8px);
+    width:max-content; max-width:min(480px, 90vw); text-align:left;
+    background:var(--ink); color:#fff; font-size:11.5px; font-weight:400;
+    line-height:1.5; white-space:normal;
+    padding:8px 11px; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.18);
+    opacity:0; visibility:hidden; pointer-events:none;
+    transform:translateY(-4px);
+    transition:opacity .15s, transform .15s, visibility .15s;
+    z-index:30;
+  }
+  .info-dot:hover .info-text, .info-dot[aria-pressed="true"] .info-text{
+    opacity:1; visibility:visible; transform:translateY(0); pointer-events:auto;
+  }
   .refresh{
     background:none; border:1px solid var(--line); color:var(--dim); cursor:pointer;
     border-radius:999px; padding:7px 15px; font-size:12.5px; font-family:inherit;
@@ -247,14 +273,9 @@
 <div class="wrap">
 
 <header>
-  <h1>사이트 인사이트</h1>
-  <div class="sub">이 사이트가 하는 일은 <b>코칭 계약과 강연 섭외로 이어질 문의를 받는 것</b>입니다. 그래서 맨 위가 문의(전환)이고, 글은 그 문의를 뒷받침하는 근거 자산으로 아래에 둡니다.</div>
-  <div class="metaline">
-    <button class="refresh" id="refreshBtn"><span class="refresh-icon">↻</span> <span class="refresh-label">새로고침</span></button>
-    <span id="lastRefresh"></span>
-    <span id="dataAsOf">데이터 불러오는 중…</span>
-    <span>· 검색 비노출(noindex) 페이지</span>
-  </div>
+  <h1>사이트 인사이트<button type="button" class="info-dot" id="titleInfo" aria-label="설명 보기">ⓘ<span class="info-text" id="titleInfoText"></span></button></h1>
+  <button class="refresh" id="refreshBtn"><span class="refresh-icon">↻</span> <span class="refresh-label">새로고침</span></button>
+  <span id="dataAsOf" class="meta-text">데이터 불러오는 중…</span>
 </header>
 
 <section>
@@ -449,9 +470,18 @@
     return d.getFullYear()+'.'+String(d.getMonth()+1).padStart(2,'0')+'.'+String(d.getDate()).padStart(2,'0');
   }
   function daysBetween(a,b){ return Math.floor((a-b)/86400000); }
+
+  /* 이 사이트의 존재 이유·검색 비노출 안내처럼 한 번만 알면 되는 정보를
+     제목 옆 ⓘ 툴팁에 몰아둔다. 매 새로고침마다 바뀌는 "마지막 새로고침"
+     시각만 뒤에 이어붙인다. */
+  var TITLE_INFO_BASE =
+    '이 사이트가 하는 일은 코칭 계약과 강연 섭외로 이어질 문의를 받는 것입니다. ' +
+    '그래서 맨 위가 문의(전환)이고, 글은 그 문의를 뒷받침하는 근거 자산으로 아래에 둡니다. ' +
+    '검색 비노출(noindex) 페이지입니다.';
+
   function stampRefresh(){
-    document.getElementById('lastRefresh').textContent =
-      '· 마지막 새로고침 ' + new Date().toLocaleTimeString('ko-KR', {hour:'2-digit', minute:'2-digit'});
+    var time = new Date().toLocaleTimeString('ko-KR', {hour:'2-digit', minute:'2-digit'});
+    document.getElementById('titleInfoText').textContent = TITLE_INFO_BASE + ' 마지막 새로고침: ' + time + '.';
   }
 
   /* 새로고침 버튼 상태 표시 -- 눌러도 반영됐는지 알 길이 없다는 피드백을 받아
@@ -1099,15 +1129,17 @@
     });
   }
 
-  /* "?"는 마우스를 올리면(:hover) 말풍선이 뜹니다(CSS만으로 처리).
-     터치기기는 hover가 없으므로, 탭하면 aria-pressed를 켜서 같은 CSS 규칙으로
-     말풍선을 띄우고 다시 탭하거나 다른 곳을 탭하면 닫습니다.
+  /* "?"(섹션 설명)와 "ⓘ"(헤더 요약)는 마우스를 올리면(:hover) 말풍선이
+     뜹니다(CSS만으로 처리). 터치기기는 hover가 없으므로, 탭하면
+     aria-pressed를 켜서 같은 CSS 규칙으로 말풍선을 띄우고 다시 탭하거나
+     다른 곳을 탭하면 닫습니다. 둘을 같은 핸들러로 묶어서 하나를 열면
+     나머지는 다 닫히게 합니다(동시에 여러 개가 떠 있지 않도록).
      접이식 섹션(summary 안 h2)에 버튼이 들어있으므로, 클릭이 summary로 번져
      섹션이 통째로 열고닫히지 않도록 반드시 막습니다. */
   document.addEventListener('click', function(e){
-    var q = e.target.closest ? e.target.closest('.h2note-q') : null;
+    var q = e.target.closest ? e.target.closest('.h2note-q, .info-dot') : null;
     var wasOpen = q && q.getAttribute('aria-pressed') === 'true';
-    document.querySelectorAll('.h2note-q[aria-pressed="true"]').forEach(function(o){ o.setAttribute('aria-pressed','false'); });
+    document.querySelectorAll('.h2note-q[aria-pressed="true"], .info-dot[aria-pressed="true"]').forEach(function(o){ o.setAttribute('aria-pressed','false'); });
     if(!q) return;
     e.preventDefault();
     e.stopPropagation();
