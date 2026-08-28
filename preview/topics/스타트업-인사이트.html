@@ -1,8 +1,13 @@
 ---
 layout: default
 title: "스타트업 인사이트 — Simplifier"
+is_index: true
 ---
 <style>
+  /* is_index: true를 안 주면 default.html이 이 페이지를 "개별 글"로 보고
+     화면 전체(100vh)를 덮는 sticky 커버 히어로를 씌운다(post-mode) --
+     log.html이 이 값으로 그 히어로를 작게 만드는 것과 같은 이유로 여기도
+     필요하다. 빠뜨렸더니 상단에 커버만 꽉 차 보이던 버그였다. */
   /* 이 페이지 전용 다크 테마 오버라이드. log.html의 카드 스타일을 그대로
      재사용합니다(디자인 일관성) -- 다만 이 페이지는 이미 한 카테고리로
      걸러진 결과라 .card-item을 항상 보이게(display:flex) 둡니다. log.html은
