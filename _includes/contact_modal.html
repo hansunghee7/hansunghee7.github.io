@@ -29,6 +29,9 @@
   .cf-type[aria-checked="true"] b, .cf-type[aria-checked="true"] span { color: #080808; }
   .cf-error { color: #ff6b6b; font-size: 13px; margin-top: -16px; margin-bottom: 24px; display: none; text-align: left; }
   .cf-error.show { display: block; }
+  .cf-required { color: #ff6b6b; margin-left: 2px; }
+  .form-group input.cf-invalid, .form-group textarea.cf-invalid { border-color: #ff6b6b; }
+  .cf-types.cf-invalid { outline: 1px solid #ff6b6b; outline-offset: 6px; border-radius: 6px; }
   
   #cf-submit { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #f5f3ee; color: #080808; font-weight: 600; font-size: 15px; padding: 14px 28px; border: none; border-radius: 6px; cursor: pointer; transition: opacity 0.2s; margin-top: 12px; }
   #cf-submit:disabled { opacity: 0.5; cursor: not-allowed; }
@@ -51,7 +54,7 @@
     <p class="modal-desc">코칭, 강연, 협업 제안 등 어떤 말씀이든 편하게 남겨주세요.</p>
     <form id="contact-form" novalidate>
       <div class="form-group">
-        <label>어떤 일로 연락 주셨나요?</label>
+        <label>어떤 일로 연락 주셨나요? <span class="cf-required">*</span></label>
         <div class="cf-types" role="radiogroup" aria-label="문의 유형">
           <button type="button" class="cf-type" data-type="coaching" role="radio" aria-checked="false">
             <b>스타트업 코칭</b><span>PMF 이후 성장·프로덕트·조직</span>
@@ -69,15 +72,15 @@
         <input type="text" id="cf-org" name="org" placeholder="예: OO그룹 인재개발원 / OO에이전시">
       </div>
       <div class="form-group">
-        <label for="cf-phone">회신받으실 전화번호를 알려주세요</label>
+        <label for="cf-phone">회신받으실 전화번호를 알려주세요 <span class="cf-required">*</span></label>
         <input type="tel" id="cf-phone" name="phone" required placeholder="010-1234-5678">
       </div>
       <div class="form-group">
-        <label for="cf-email">회신받으실 이메일 주소를 알려주세요</label>
+        <label for="cf-email">회신받으실 이메일 주소를 알려주세요 <span class="cf-required">*</span></label>
         <input type="email" id="cf-email" name="email" required>
       </div>
       <div class="form-group">
-        <label for="cf-message">전달하고 싶은 내용을 남겨주세요</label>
+        <label for="cf-message">전달하고 싶은 내용을 남겨주세요 <span class="cf-required">*</span></label>
         <textarea id="cf-message" name="message" required rows="5"></textarea>
       </div>
       <p id="cf-error" class="cf-error">빠짐없이 입력해주세요.</p>
@@ -156,10 +159,12 @@
     /* 기관명은 섭외 건에서만 실제로 쓸모가 있어 그때만 보여줍니다. */
     if (orgGroup) orgGroup.hidden = (selectedType !== 'speaking');
   }
+  var typesGroup = document.querySelector('.cf-types');
   typeBtns.forEach(function (b) {
     b.addEventListener('click', function () {
       selectType(b.dataset.type);
       if (errorMsg) errorMsg.classList.remove('show');
+      if (typesGroup) typesGroup.classList.remove('cf-invalid');
     });
   });
 
@@ -189,15 +194,64 @@
   closeEls.forEach(function (el) { el.addEventListener('click', closeModal); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && overlay.classList.contains('show')) closeModal(); });
 
+  /* ── 검증 ────────────────────────────────────────────────────
+     예전엔 "비어있는지"만 봤어서 이메일/전화번호에 아무 글자나 넣어도
+     그대로 통과했다. 실제 형식까지 확인한다. novalidate가 폼에 걸려있어
+     브라우저 기본 검증은 애초에 안 도니, 여기서 직접 해야 한다. */
+  function isValidEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+  function isValidPhone(v) {
+    if (!/^[0-9+\-\s()]+$/.test(v)) return false;
+    var digits = v.replace(/[^0-9]/g, '');
+    // 010-1234-5678(11자리)부터 +82 10-1234-5678 같은 국가번호 포함 표기(12~13자리)까지 허용
+    return digits.length >= 9 && digits.length <= 13;
+  }
+
+  var phoneEl = document.getElementById('cf-phone');
+  var emailEl = document.getElementById('cf-email');
+  var messageEl = document.getElementById('cf-message');
+
+  /* 에러가 뜬 채로 방치되지 않도록, 문제였던 입력을 고치기 시작하면 바로 지운다
+     (문의 유형 버튼은 이미 클릭 시 지우고 있었는데 텍스트 입력엔 없어서 비대칭이었다). */
+  [phoneEl, emailEl, messageEl].forEach(function (el) {
+    el.addEventListener('input', function () {
+      el.classList.remove('cf-invalid');
+      errorMsg.classList.remove('show');
+    });
+  });
+
   if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       errorMsg.classList.remove('show');
+      [phoneEl, emailEl, messageEl].forEach(function (el) { el.classList.remove('cf-invalid'); });
+      if (typesGroup) typesGroup.classList.remove('cf-invalid');
 
-      var data = { phone: form.phone.value.trim(), email: form.email.value.trim(), message: form.message.value.trim() };
-      if (!data.phone || !data.email || !data.message || !selectedType) {
-        errorMsg.textContent = !selectedType ? '어떤 일로 연락 주셨는지 먼저 골라주세요.' : '빠짐없이 입력해주세요.';
+      var data = { phone: phoneEl.value.trim(), email: emailEl.value.trim(), message: messageEl.value.trim() };
+
+      /* 어디가 문제인지 메시지만으론 잘 안 보였다(에러 문구는 폼 맨 아래에 뜨는데
+         문의 유형 버튼은 맨 위에 있음). 문제 필드를 직접 하이라이트하고
+         스크롤+포커스까지 옮겨서 눈에 바로 띄게 한다. */
+      var invalidEl = null, invalidMsg = '';
+      if (!selectedType) {
+        invalidEl = typesGroup;
+        invalidMsg = '어떤 일로 연락 주셨는지 먼저 골라주세요.';
+      } else if (!data.phone || !isValidPhone(data.phone)) {
+        invalidEl = phoneEl;
+        invalidMsg = data.phone ? '전화번호 형식을 다시 확인해주세요.' : '전화번호를 입력해주세요.';
+      } else if (!data.email || !isValidEmail(data.email)) {
+        invalidEl = emailEl;
+        invalidMsg = data.email ? '이메일 형식을 다시 확인해주세요.' : '이메일을 입력해주세요.';
+      } else if (!data.message) {
+        invalidEl = messageEl;
+        invalidMsg = '전달하실 내용을 입력해주세요.';
+      }
+
+      if (invalidEl) {
+        invalidEl.classList.add('cf-invalid');
+        errorMsg.textContent = invalidMsg;
         errorMsg.classList.add('show');
+        invalidEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (typeof invalidEl.focus === 'function') invalidEl.focus({ preventScroll: true });
         return;
       }
 
