@@ -87,7 +87,11 @@
   .tile.tile-headline{background:#f7f6f2; border-color:var(--ink);}
   .tile.tile-headline .val{font-size:29px;}
 
-  .tile .label{font-size:12px; color:var(--muted); margin-bottom:6px; line-height:1.4; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  /* 라벨 줄에 "이게 뭔지" 알려주는 요소(외부링크·ⓘ)를 다 몰아두고,
+     숫자·그래프 줄은 방해 없이 크게 본다 -- ⓘ가 숫자 줄 끝에 멀리 떨어져
+     있으면 뭘 설명하는지 헷갈린다는 피드백을 반영. */
+  .tile .label{display:flex; align-items:center; gap:4px; font-size:12px; color:var(--muted); margin-bottom:6px; line-height:1.4;}
+  .tile .label-text{overflow:hidden; text-overflow:ellipsis; white-space:nowrap; min-width:0;}
   .tile .label a{color:inherit; text-decoration:none;}
   .tile .label a:hover{color:var(--ink); text-decoration:underline;}
   .tile .latest{display:flex; align-items:baseline; gap:7px;}
@@ -96,10 +100,33 @@
   .tile .delta{font-size:12px; font-weight:600;}
   .tile .delta.up{color:var(--good);}
   .tile .delta.down{color:var(--bad);}
-  /* 날짜/기록수/배지 카테고리명 같은 부가정보는 항상 보여주지 않고,
-     이 점 아이콘에 마우스를 올렸을 때만 툴팁으로 보여준다 -- 핵심
-     숫자와 그래프만 항상 보이게 해서 세로 공간을 아낀다. */
-  .info-dot{margin-left:auto; font-size:11px; color:var(--muted); cursor:help; flex-shrink:0;}
+  /* 날짜/기록수/배지 카테고리명 같은 부가정보는 이 ⓘ 버튼 뒤에 숨겨둔다.
+     마우스를 올리면(데스크톱) 또는 탭하면(터치기기 -- hover가 없어서
+     aria-pressed를 켜서 같은 CSS로 띄운다) 말풍선이 뜬다. 처음엔 순수
+     텍스트 title 속성을 썼는데 클릭/탭에 전혀 반응하지 않아서 실제
+     버튼+말풍선으로 바꿨다. */
+  .info-dot{
+    display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;
+    width:14px; height:14px; border:none; background:none; color:var(--muted);
+    font-size:13px; font-family:inherit; line-height:1; cursor:pointer; padding:0;
+    position:relative;
+  }
+  .info-dot:hover, .info-dot[aria-pressed="true"]{color:var(--ink);}
+  .info-text{
+    position:absolute; left:0; top:calc(100% + 8px);
+    width:max-content; max-width:200px; text-align:left;
+    background:var(--ink); color:#fff; font-size:11.5px; font-weight:400;
+    line-height:1.5; white-space:normal;
+    padding:8px 11px; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.18);
+    opacity:0; visibility:hidden; pointer-events:none;
+    transform:translateY(-4px);
+    transition:opacity .15s, transform .15s, visibility .15s;
+    z-index:30;
+  }
+  .info-dot:hover .info-text, .info-dot[aria-pressed="true"] .info-text{
+    opacity:1; visibility:visible; transform:translateY(0); pointer-events:auto;
+  }
+  #titleInfo .info-text{max-width:320px;}
   .tile svg{width:100%; height:40px; display:block; margin-top:6px;}
   .tile .empty{font-size:12px; color:var(--muted); padding:10px 0;}
 
@@ -121,7 +148,7 @@
 
 <div class="wrap">
   <header>
-    <h1>북 인사이트<span class="info-dot" id="titleInfo">ⓘ</span></h1>
+    <h1>북 인사이트<button type="button" class="info-dot" id="titleInfo" aria-label="설명 보기">ⓘ<span class="info-text" id="titleInfoText"></span></button></h1>
     <button class="refresh" id="refreshBtn"><span class="refresh-icon">↻</span> <span class="refresh-label">새로고침</span></button>
     <span id="dataAsOf" class="meta-text"></span>
   </header>
@@ -190,14 +217,14 @@
   function tile(metric, series, noteOverride, w) {
     var clean = series.filter(function (e) { return e.value != null; });
     var cardClass = "tile" + (metric.headline ? " tile-headline" : "");
-    var label = '<div class="label" title="' + escapeHtml(metric.label) + '">' + labelHtml(metric.label, metric.href) + "</div>";
+    var labelText = '<span class="label-text" title="' + escapeHtml(metric.label) + '">' + labelHtml(metric.label, metric.href) + "</span>";
 
     if (!clean.length) {
       // 오늘은 순위 밖이어도 내일 다시 잡힐 수 있으니, 카드를 아예 없애거나
       // 요약 줄로 접지 않고 자리는 그대로 두되 흐리게(딤드)만 한다 --
       // 카드가 나타났다 사라졌다 하면 레이아웃이 들쭉날쭉해서 오히려
       // 스캔하기 불편해진다.
-      return '<div class="' + cardClass + ' is-empty">' + label + '<div class="empty">권외 · 데이터 없음</div></div>';
+      return '<div class="' + cardClass + ' is-empty"><div class="label">' + labelText + '</div><div class="empty">권외 · 데이터 없음</div></div>';
     }
 
     var latest = clean[clean.length - 1];
@@ -217,13 +244,13 @@
     var valDisplay = latest.value.toLocaleString();
     var note = noteOverride != null ? noteOverride : metric.note;
     var infoTitle = latest.date + " 기준 · " + clean.length + "개 기록" + (note ? " · " + note : "");
+    var infoDot = '<button type="button" class="info-dot" aria-label="설명 보기">ⓘ<span class="info-text">' + escapeHtml(infoTitle) + "</span></button>";
 
     return (
-      '<div class="' + cardClass + '">' + label +
+      '<div class="' + cardClass + '"><div class="label">' + labelText + infoDot + "</div>" +
       '<div class="latest"><span class="val">' + valDisplay +
       (metric.unit ? '<span class="unit">' + escapeHtml(metric.unit) + "</span>" : "") +
       "</span>" + deltaHtml +
-      '<span class="info-dot" title="' + escapeHtml(infoTitle) + '">ⓘ</span>' +
       "</div>" +
       sparkline(clean, !metric.higherIsBetter, w) +
       "</div>"
@@ -233,11 +260,12 @@
   /* isEmpty: 값이 없을 때(예: 리디북스 "평가 없음") 다른 빈 카드와 같은
      방식(딤드)으로 표시한다. */
   function staticTile(label, valueText, note, href, isEmpty) {
+    var labelText = '<span class="label-text" title="' + escapeHtml(label) + '">' + labelHtml(label, href) + "</span>";
+    var infoDot = note ? '<button type="button" class="info-dot" aria-label="설명 보기">ⓘ<span class="info-text">' + escapeHtml(note) + "</span></button>" : "";
     return (
-      '<div class="tile' + (isEmpty ? " is-empty" : "") + '"><div class="label" title="' + escapeHtml(label) + '">' + labelHtml(label, href) + '</div>' +
-      '<div class="latest"><span class="val">' + escapeHtml(valueText) + "</span>" +
-      (note ? '<span class="info-dot" title="' + escapeHtml(note) + '">ⓘ</span>' : "") +
-      "</div></div>"
+      '<div class="tile' + (isEmpty ? " is-empty" : "") + '"><div class="label">' + labelText + infoDot + "</div>" +
+      '<div class="latest"><span class="val">' + escapeHtml(valueText) + "</span></div>" +
+      "</div>"
     );
   }
 
@@ -319,8 +347,20 @@
 
   function stampRefresh() {
     var time = new Date().toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit" });
-    document.getElementById("titleInfo").title = TITLE_INFO_BASE + " 마지막 새로고침: " + time + ".";
+    document.getElementById("titleInfoText").textContent = TITLE_INFO_BASE + " 마지막 새로고침: " + time + ".";
   }
+
+  /* ⓘ는 마우스를 올리면(:hover) 말풍선이 뜬다(CSS만으로 처리). 터치기기는
+     hover가 없으므로, 탭하면 aria-pressed를 켜서 같은 CSS 규칙으로 말풍선을
+     띄우고 다시 탭하거나 다른 곳을 탭하면 닫는다. */
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest ? e.target.closest(".info-dot") : null;
+    var wasOpen = btn && btn.getAttribute("aria-pressed") === "true";
+    document.querySelectorAll('.info-dot[aria-pressed="true"]').forEach(function (o) { o.setAttribute("aria-pressed", "false"); });
+    if (!btn) return;
+    e.preventDefault();
+    btn.setAttribute("aria-pressed", wasOpen ? "false" : "true");
+  });
 
   function setRefreshState(btn, state) {
     btn.classList.remove("is-loading", "is-success", "is-error");
