@@ -35,6 +35,13 @@ layout: null
   .post-author-mini-name { font-family: 'Pretendard Variable', sans-serif; font-size: 13px; font-weight: 500; color: #767672; }
 
   /* 버전 B: James Clear 스타일 -- 사진/카드 없이, 기존 문구에 이름만 자연스럽게 녹임 */
+
+  /* 버전 C: Editors' Letter / 신문 칼럼 바이라인 스타일 -- 두 레퍼런스 다 "사진 +
+     절제된 이름 표기"뿐, 이력 문단이 없었다. 사이트에 이미 있는 Boska 이탤릭
+     악센트체(히어로 "explosive growth.", 버튼 등)를 그대로 가져와 서명처럼 처리. */
+  .post-author-sig { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-bottom: 26px; text-decoration: none !important; }
+  .post-author-sig-photo { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; filter: grayscale(1); }
+  .post-author-sig-name { font-family: 'Boska', 'Source Serif 4', serif; font-style: italic; font-weight: 400; font-size: 21px; color: #2a2822; }
 </style>
 </head>
 <body>
@@ -59,6 +66,20 @@ layout: null
   <p class="fake-p">내 배의 돛, 내가 꼭 잡고 있나. 혹시 남 탓만 하며 놓고 있지는 않나.</p>
   <div class="post-cta">
     <p class="post-cta-line">비슷한 고민을 하고 계신다면, 한성희와 이야기 나눠볼까요?</p>
+    <button type="button" class="post-cta-btn">코칭 문의</button>
+  </div>
+</div>
+
+<div class="compare-label">버전 C — Editors' Letter / 칼럼 바이라인 스타일 (사진 + 서명체 이름)</div>
+<div class="article-sheet">
+  <p class="fake-p">수많은 스타트업을 코칭하면서도 느낀다. 인생도 사업도 모두 바람이 거칠게 부는 바다와 같다.</p>
+  <p class="fake-p">내 배의 돛, 내가 꼭 잡고 있나. 혹시 남 탓만 하며 놓고 있지는 않나.</p>
+  <div class="post-cta">
+    <a href="/" class="post-author-sig">
+      <img src="/assets/ceo-portrait-og.jpg" alt="한성희" class="post-author-sig-photo">
+      <span class="post-author-sig-name">한성희</span>
+    </a>
+    <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
     <button type="button" class="post-cta-btn">코칭 문의</button>
   </div>
 </div>
