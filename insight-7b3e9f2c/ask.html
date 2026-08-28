@@ -77,9 +77,13 @@
   .thinking span:nth-child(3){animation-delay:.3s;}
   @keyframes thinking-bounce{0%,80%,100%{opacity:.3; transform:translateY(0);} 40%{opacity:1; transform:translateY(-3px);}}
 
-  .sources{margin-top:12px; display:flex; flex-wrap:wrap; gap:6px;}
-  .source-chip{display:inline-flex; align-items:center; gap:5px; background:#f7f6f2; border:1px solid var(--line-soft); color:var(--muted); border-radius:999px; padding:4px 11px; font-size:11.5px;}
-  .source-chip .tag{color:var(--dim); font-weight:600;}
+  .sources{margin-top:14px; display:flex; flex-wrap:wrap; gap:7px;}
+  .source-chip{display:inline-flex; align-items:center; gap:6px; background:#f7f6f2; border:1px solid var(--line-soft); color:var(--dim); border-radius:999px; padding:5px 12px 5px 9px; font-size:12px; text-decoration:none; max-width:220px;}
+  .source-chip .title{overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  .source-chip svg{width:13px; height:13px; flex-shrink:0; color:var(--muted);}
+  a.source-chip{cursor:pointer; transition:background-color .15s, border-color .15s;}
+  a.source-chip:hover{background:var(--line-soft); border-color:var(--line); color:var(--ink);}
+  a.source-chip:hover svg{color:var(--ink);}
 
   /* ---- 입력창 ---- */
   .composer{position:sticky; bottom:0; background:var(--bg); padding:14px 0 22px;}
@@ -222,6 +226,9 @@
     el.innerHTML = (window.marked ? marked.parse(clean) : clean) + '<span class="cursor"></span>';
   }
 
+  const ICON_ARTICLE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>';
+  const ICON_BOOK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>';
+
   function finalizeAnswer(el, text, sources) {
     const clean = stripInlineCitation(text);
     el.innerHTML = window.marked ? marked.parse(clean) : clean;
@@ -229,9 +236,18 @@
       const box = document.createElement("div");
       box.className = "sources";
       sources.forEach((s) => {
-        const chip = document.createElement("span");
+        // 클릭 가능한 링크로 원문을 새 탭에 열어준다 -- 책은 공개 페이지가
+        // 없어서 링크 없이 아이콘만 붙인 칩으로 둔다.
+        const chip = document.createElement(s.source_url ? "a" : "span");
         chip.className = "source-chip";
-        chip.innerHTML = '<span class="tag">' + (s.source_type === "book" ? "책" : "글") + "</span>" + s.title;
+        if (s.source_url) {
+          chip.href = s.source_url;
+          chip.target = "_blank";
+          chip.rel = "noopener";
+        }
+        chip.innerHTML =
+          (s.source_type === "book" ? ICON_BOOK : ICON_ARTICLE) +
+          '<span class="title">' + s.title + "</span>";
         box.appendChild(chip);
       });
       el.appendChild(box);

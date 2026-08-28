@@ -21,6 +21,7 @@ import os
 import re
 import sys
 from pathlib import Path
+from urllib.parse import quote
 
 sys.stdout.reconfigure(encoding="utf-8")
 sys.stderr.reconfigure(encoding="utf-8")
@@ -74,7 +75,7 @@ def parse_blog_article(path: Path):
     return {
         "source_type": "blog",
         "title": meta.get("title", path.stem),
-        "source_url": None,
+        "source_url": f"https://simplifier.co.kr/log_assets/markdown/{quote(path.stem + '.html')}",
         "body": body,
         "content_hash": content_hash(body),
         "metadata": {"category": meta.get("category"), "date": meta.get("date")},
