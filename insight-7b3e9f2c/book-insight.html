@@ -37,10 +37,12 @@
   .books-columns{display:grid; grid-template-columns:1fr 1fr; column-gap:32px; row-gap:22px; align-items:start;}
   @media (max-width:900px){ .books-columns{grid-template-columns:1fr;} }
   header{padding:28px 0 18px; border-bottom:1px solid var(--line-soft); margin-bottom:24px;}
-  h1{font-family:'Noto Serif KR',serif; font-weight:400; font-size:30px; letter-spacing:-0.01em; margin:0 0 8px;}
+  h1{font-family:'Noto Serif KR',serif; font-weight:400; font-size:30px; letter-spacing:-0.01em; margin:0; display:inline-flex; align-items:baseline; gap:8px;}
   @media (min-width:761px){ h1{font-size:36px;} }
-  .sub{font-size:12.5px; color:var(--muted); line-height:1.6;}
-  .metaline{color:var(--muted); font-size:12.5px; display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center; margin-top:10px;}
+  /* 순위 방향·데이터 수집 방식 설명은 한 번 알면 되는 정보라, 제목 옆
+     ⓘ 아이콘에 몰아넣고 hover했을 때만 보여준다(타일의 info-dot과 같은 패턴). */
+  h1 .info-dot{font-size:15px;}
+  .metaline{color:var(--muted); font-size:12.5px; display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center; margin-top:12px;}
   .refresh{
     background:none; border:1px solid var(--line); color:var(--dim); cursor:pointer;
     border-radius:999px; padding:7px 15px; font-size:12.5px; font-family:'Pretendard Variable','Pretendard',-apple-system,sans-serif;
@@ -100,10 +102,6 @@
   .tile svg{width:100%; height:40px; display:block; margin-top:6px;}
   .tile .empty{font-size:12px; color:var(--muted); padding:10px 0;}
 
-  .setup-note{background:#f7f6f2; border-radius:10px; padding:16px 18px; font-size:12.5px; color:var(--dim); line-height:1.7; margin-bottom:24px;}
-  .setup-note code{background:#eeece5; padding:1px 5px; border-radius:4px; font-size:11.5px;}
-  .setup-note a{color:var(--dim);}
-
   .loading, .err{font-size:13px; color:var(--muted); padding:20px 0;}
   .err{color:var(--bad);}
 </style>
@@ -122,8 +120,7 @@
 
 <div class="wrap">
   <header>
-    <h1>북 인사이트</h1>
-    <div class="sub">출간한 책들의 서점 베스트셀러 순위·판매지수 추이입니다. 순위는 낮을수록(1위에 가까울수록) 좋습니다.</div>
+    <h1>북 인사이트<span class="info-dot" title="출간한 책들의 서점 베스트셀러 순위·판매지수 추이입니다. 순위는 낮을수록(1위에 가까울수록) 좋습니다. 두 책 모두 이 저장소가 직접 예스24·알라딘·교보문고를 수집합니다(기획자의 질문법은 리디북스·밀리의서재도 추가). 지금 당장 갱신하려면 GitHub Actions에서 Fetch book insight 워크플로를 수동 실행하세요.">ⓘ</span></h1>
     <div class="metaline">
       <button class="refresh" id="refreshBtn"><span class="refresh-icon">↻</span> <span class="refresh-label">새로고침</span></button>
       <span id="dataAsOf"></span>
@@ -131,12 +128,6 @@
       <span>· 하루 4번(05:02·06:41·11:23·17:37 KST) 자동 갱신</span>
     </div>
   </header>
-
-  <div class="setup-note">
-    두 책 모두 이 저장소가 직접 예스24·알라딘·교보문고를 수집합니다
-    (「기획자의 질문법」은 리디북스·밀리의서재도 추가). 지금 당장 갱신하려면
-    GitHub Actions에서 <code>Fetch book insight</code> 워크플로를 수동 실행하세요.
-  </div>
 
   <div class="books-columns" id="bookGrid">
     <div class="loading" style="grid-column:1 / -1">데이터 불러오는 중…</div>
