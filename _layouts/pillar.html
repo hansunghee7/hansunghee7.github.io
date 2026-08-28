@@ -21,7 +21,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {% assign pillar = site.data.pillars.pillars | where: "category", page.pillar_category | first %}
-{% assign topic_posts = site.data.posts | where: "category", pillar.category %}
+{% comment %} 카테고리별 기본 정렬(최신순/오래된순)은 log.html의
+   categoryDefaults와 맞춘다 -- 프레임웍/웹툰처럼 순서대로 읽어야
+   하는 시리즈는 오래된순(asc), 나머지는 최신순(desc, 기본값)이다.
+   date 필드("Aug 12. 2026")는 문자열이라 그대로 sort하면 알파벳
+   순이 되어버려서, posts.json에 미리 계산해둔 date_sort(YYYYMMDD)로
+   정렬한다. {% endcomment %}
+{% assign topic_posts = site.data.posts | where: "category", pillar.category | sort: "date_sort" %}
+{% unless pillar.sort_order == "asc" %}
+  {% assign topic_posts = topic_posts | reverse %}
+{% endunless %}
 {% assign canonical_url = "https://simplifier.co.kr" | append: page.url %}
 {% comment %} JSON-LD description은 스니펫 길이 제한이 없어서, 화면엔 접혀 있는
    자세한 설명(intro_extended)까지 합쳐 AI/검색엔진이 더 많은 맥락을 읽게 한다.
