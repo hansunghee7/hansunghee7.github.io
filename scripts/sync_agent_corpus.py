@@ -71,6 +71,12 @@ def parse_blog_article(path: Path):
         if ":" in line:
             key, _, value = line.partition(":")
             meta[key.strip()] = value.strip().strip("'\"")
+
+    # CMS의 "공개 여부" 토글이 꺼진(초안) 글은 창고에 넣지 않는다 --
+    # 기본값은 true(공개)이고, 명시적으로 false일 때만 제외한다.
+    if meta.get("published", "true").lower() == "false":
+        return None
+
     body = clean_html_body(body)
     return {
         "source_type": "blog",
@@ -106,7 +112,26 @@ def chunk_text(text: str, size: int = CHUNK_SIZE, overlap: int = CHUNK_OVERLAP):
 def collect_documents():
     if not BLOG_DIR.exists():
         sys.exit(f"블로그 글 폴더를 못 찾음 - {BLOG_DIR}")
-    return [parse_blog_article(p) for p in sorted(BLOG_DIR.glob("*.md"))]
+    docs = [parse_blog_article(p) for p in sorted(BLOG_DIR.glob("*.md"))]
+    return [d for d in docs if d is not None]  # 비공개(초안) 글은 parse_blog_article이 None을 반환
+
+
+def cleanup_unpublished(current_titles, supabase_client):
+    """비공개로 전환됐거나 파일 자체가 없어진 글은 창고에서도 지운다."""
+    existing = (
+        supabase_client.table("content_chunks")
+        .select("title")
+        .eq("source_type", "blog")
+        .execute()
+    )
+    existing_titles = {row["title"] for row in existing.data}
+    stale = existing_titles - current_titles
+    for title in stale:
+        supabase_client.table("content_chunks").delete().eq(
+            "source_type", "blog"
+        ).eq("title", title).execute()
+    if stale:
+        print(f"비공개 전환/삭제된 글 {len(stale)}개 정리함")
 
 
 def filter_changed_docs(docs, supabase_client):
@@ -218,6 +243,8 @@ def main():
 
     docs = collect_documents()
     print(f"전체 블로그 문서: {len(docs)}개")
+
+    cleanup_unpublished({d["title"] for d in docs}, supabase_client)
 
     changed = filter_changed_docs(docs, supabase_client)
     if not changed:
