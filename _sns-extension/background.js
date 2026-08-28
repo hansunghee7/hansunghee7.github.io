@@ -29,6 +29,48 @@ chrome.runtime.onMessage.addListener(function (msg) {
   }
 });
 
+// ── SNS 인사이트 페이지 방문 시 전체 수집 한 바퀴 ──────────────
+// 가족 공유 PC라 특정 시각에 PC가 켜져 있다는 보장이 없어서(실제로
+// Windows 예약 작업이 한 번도 자동 실행 안 됐던 걸 확인함), 정해진 시각
+// 예약 대신 "대시보드를 확인하러 들어오는 순간"에 8개 프로필을 백그라운드
+// 탭(화면에 안 보이는 새 탭)으로 조용히 열었다가 자동으로 닫으면서
+// 갱신한다. 페이지를 여러 번 열어도 매번 8개를 다 열진 않게 쿨다운을 둔다.
+var DASHBOARD_PLATFORMS = [
+  "https://www.linkedin.com/in/simplifier",
+  "https://www.facebook.com/simplifier.seoul",
+  "https://www.instagram.com/simplifier_seoul/",
+  "https://www.threads.com/?hl=ko",
+  "https://blog.naver.com/simplifiers",
+  "https://brunch.co.kr/@simplifier",
+  "https://connect.rememberapp.co.kr/profile/1582110/posts",
+  "https://www.rocketpunch.com/@simplfier/post",
+];
+var ROUND_COOLDOWN_MS = 20 * 60 * 1000; // 20분 이내 재방문은 다시 안 돈다
+var TAB_CLOSE_DELAY_MS = 22000; // content-script가 최대 20초까지 찾으니 여유 두고 닫음
+
+chrome.runtime.onMessage.addListener(function (msg) {
+  if (msg && msg.type === "SNS_INSIGHT_OPENED") {
+    maybeRunFullRound();
+  }
+});
+
+function maybeRunFullRound() {
+  chrome.storage.local.get(["lastFullRoundAt"], function (res) {
+    var last = res.lastFullRoundAt || 0;
+    if (Date.now() - last < ROUND_COOLDOWN_MS) return;
+    chrome.storage.local.set({ lastFullRoundAt: Date.now() });
+
+    DASHBOARD_PLATFORMS.forEach(function (url) {
+      chrome.tabs.create({ url: url, active: false }, function (tab) {
+        if (!tab) return;
+        setTimeout(function () {
+          chrome.tabs.remove(tab.id, function () { void chrome.runtime.lastError; });
+        }, TAB_CLOSE_DELAY_MS);
+      });
+    });
+  });
+}
+
 function todayStr() {
   var d = new Date();
   var pad = function (n) { return String(n).padStart(2, "0"); };

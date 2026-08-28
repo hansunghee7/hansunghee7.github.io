@@ -8,7 +8,7 @@
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
-  "permissions": ["storage"],
+  "permissions": ["storage", "tabs"],
   "host_permissions": [
     "https://www.linkedin.com/*",
     "https://www.facebook.com/*",
@@ -20,7 +20,8 @@
     "https://www.rocketpunch.com/*",
     "https://brunch.co.kr/*",
     "https://api.github.com/*",
-    "https://simplifier-cms-auth.simon-8be.workers.dev/*"
+    "https://simplifier-cms-auth.simon-8be.workers.dev/*",
+    "https://simplifier.co.kr/*"
   ],
   "background": {
     "service_worker": "background.js"
@@ -41,6 +42,11 @@
       "js": ["content-script.js"],
       "run_at": "document_idle",
       "all_frames": true
+    },
+    {
+      "matches": ["https://simplifier.co.kr/insight-7b3e9f2c/sns-insight.html*"],
+      "js": ["dashboard-trigger.js"],
+      "run_at": "document_idle"
     }
   ],
   "action": {
