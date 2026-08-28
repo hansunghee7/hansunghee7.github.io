@@ -18,7 +18,9 @@
        PROVEN은 여기선 안 보임) -- 짧은 저자소개를 CTA 위에 붙여서 그 자리에서 신뢰를 만든다. */
     .post-cta { text-align: center; padding: 8px 20px 44px; margin-top: 68px; }
     .post-author { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 24px; text-decoration: none !important; }
-    .post-author-photo { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; flex-shrink: 0; filter: grayscale(1); }
+    /* .article-body img가 width:88%로 이미 걸려있어(specificity 0,1,1) 순수 클래스 선택자(0,1,0)로는
+       못 이긴다. .post-cta로 한 번 더 감싸 확실히 이기게 한다. */
+    .post-cta .post-author-photo { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; flex-shrink: 0; filter: grayscale(1); margin: 0; }
     .post-author-text { text-align: left; }
     .post-author-name { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-weight: 600; font-size: 14.5px; color: #2a2822; margin-bottom: 2px; }
     .post-author-desc { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-weight: 300; font-size: 12.5px; color: #8f8b82; line-height: 1.5; }
