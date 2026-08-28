@@ -5,6 +5,7 @@
   .modal-bg { position: absolute; inset: 0; background: rgba(8,8,8,0.85); backdrop-filter: blur(8px); }
   .modal-content { position: relative; background: #080808; border: 1px solid rgba(245,243,238,0.15); padding: 48px; border-radius: 12px; width: 100%; max-width: 600px; max-height: 90vh; overflow-y: auto; transform: translateY(20px); transition: transform 0.3s; font-family: 'Pretendard Variable', sans-serif;}
   #contact-modal-overlay.show .modal-content { transform: translateY(0); }
+  .modal-content:focus { outline: none; }
   .modal-close { position: absolute; top: 24px; right: 24px; background: none; border: none; color: #8f8b82; cursor: pointer; padding: 8px; transition: color 0.2s; }
   .modal-close:hover { color: #f5f3ee; }
   
@@ -43,7 +44,7 @@
 
 <div id="contact-modal-overlay">
   <div class="modal-bg" data-close-modal></div>
-  <div class="modal-content">
+  <div class="modal-content" tabindex="-1">
     <button type="button" data-close-modal aria-label="닫기" class="modal-close">
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true">
         <path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -69,15 +70,15 @@
       </div>
       <div class="form-group" id="cf-org-group" hidden>
         <label for="cf-org">기관 · 회사명 <span class="cf-optional">(선택)</span></label>
-        <input type="text" id="cf-org" name="org" placeholder="예: OO그룹 인재개발원 / OO에이전시">
+        <input type="text" id="cf-org" name="org" autocomplete="organization" placeholder="예: OO그룹 인재개발원 / OO에이전시">
       </div>
       <div class="form-group">
-        <label for="cf-phone">회신받으실 전화번호를 알려주세요 <span class="cf-required">*</span></label>
-        <input type="tel" id="cf-phone" name="phone" required placeholder="010-1234-5678">
+        <label for="cf-phone">회신받으실 전화번호 <span class="cf-optional">(선택, 남겨주시면 더 빠르게 연락드려요)</span></label>
+        <input type="tel" id="cf-phone" name="phone" autocomplete="tel" placeholder="010-1234-5678">
       </div>
       <div class="form-group">
         <label for="cf-email">회신받으실 이메일 주소를 알려주세요 <span class="cf-required">*</span></label>
-        <input type="email" id="cf-email" name="email" required>
+        <input type="email" id="cf-email" name="email" autocomplete="email" required>
       </div>
       <div class="form-group">
         <label for="cf-message">전달하고 싶은 내용을 남겨주세요 <span class="cf-required">*</span></label>
@@ -173,8 +174,12 @@
     track('contact_open', 'opened');
     overlay.classList.add('show');
     document.body.style.overflow = 'hidden';
-    var first = document.getElementById('cf-phone');
-    if (first) first.focus();
+    /* 예전엔 전화번호(4번째 필드)에 바로 포커스를 줘서, 모바일에서 모달이 뜨자마자
+       키보드가 튀어오르고 문의유형도 안 고른 채로 커서가 가 있었다. 모달 컨테이너
+       자체로 포커스를 옮겨 키보드는 건드리지 않으면서 스크린리더/키보드 사용자는
+       모달 안에 들어오게 한다. */
+    var modalContent = document.querySelector('.modal-content');
+    if (modalContent) modalContent.focus();
   }
 
   function closeModal() {
@@ -235,9 +240,10 @@
       if (!selectedType) {
         invalidEl = typesGroup;
         invalidMsg = '어떤 일로 연락 주셨는지 먼저 골라주세요.';
-      } else if (!data.phone || !isValidPhone(data.phone)) {
+      } else if (data.phone && !isValidPhone(data.phone)) {
+        // 전화번호는 선택 항목이라 비어있으면 통과시키되, 뭔가 입력했다면 형식은 맞아야 한다.
         invalidEl = phoneEl;
-        invalidMsg = data.phone ? '전화번호 형식을 다시 확인해주세요.' : '전화번호를 입력해주세요.';
+        invalidMsg = '전화번호 형식을 다시 확인해주세요.';
       } else if (!data.email || !isValidEmail(data.email)) {
         invalidEl = emailEl;
         invalidMsg = data.email ? '이메일 형식을 다시 확인해주세요.' : '이메일을 입력해주세요.';
