@@ -32,6 +32,15 @@
   {% assign topic_posts = topic_posts | reverse %}
 {% endunless %}
 {% assign canonical_url = "https://simplifier.co.kr" | append: page.url %}
+{% comment %} og:image는 지금까지 12개 페이지 전부 같은 사이트 공용 이미지라
+   SNS에 공유해도 어느 카테고리인지 구분이 안 됐다. 카테고리 전용
+   디자인 이미지를 새로 만드는 건 이 레이아웃만으로는 할 수 없어서,
+   대신 이 카테고리에서 가장 위(현재 정렬 기준 1번)에 오는 글의
+   커버 이미지를 그대로 쓴다 -- 적어도 카테고리마다 달라짐. {% endcomment %}
+{% assign og_image = "https://simplifier.co.kr/assets/og-image.png" %}
+{% if topic_posts.first.image %}
+  {% assign og_image = "https://simplifier.co.kr" | append: topic_posts.first.image %}
+{% endif %}
 {% comment %} JSON-LD description은 스니펫 길이 제한이 없어서, 화면엔 접혀 있는
    자세한 설명(intro_extended)까지 합쳐 AI/검색엔진이 더 많은 맥락을 읽게 한다.
    intro_extended 안의 문단 구분자(|||, 아래 "더 보기" 카드에서 문단을
@@ -50,7 +59,7 @@
 <meta property="og:title" content="{{ pillar.category | escape }} — Simplifier">
 <meta property="og:description" content="{{ pillar.intro | strip_newlines | truncate: 155 | escape }}">
 <meta property="og:url" content="{{ canonical_url }}">
-<meta property="og:image" content="https://simplifier.co.kr/assets/og-image.png">
+<meta property="og:image" content="{{ og_image }}">
 <meta name="twitter:card" content="summary_large_image">
 
 <script type="application/ld+json">
