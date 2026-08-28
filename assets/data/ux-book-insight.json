@@ -1,0 +1,1143 @@
+{
+  "book": {
+    "title": "UX의 언어들",
+    "author": "한성희·신행철",
+    "publisher": "파지트"
+  },
+  "history": [
+    {
+      "date": "2026-07-13",
+      "yes24": {
+        "mkt_rank": 9,
+        "ad_rank": null,
+        "web_rank": 1,
+        "uxui_rank": 1,
+        "design_rank": null,
+        "econ_rank": 111,
+        "sales_index": 1830,
+        "reviews": 0
+      },
+      "aladin": {
+        "sales_point": null,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": 618,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-07-14",
+      "yes24": {
+        "mkt_rank": 6,
+        "ad_rank": null,
+        "web_rank": 1,
+        "uxui_rank": 1,
+        "design_rank": null,
+        "econ_rank": 90,
+        "sales_index": 2250,
+        "reviews": 2
+      },
+      "aladin": {
+        "sales_point": null,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": 508,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-07-15",
+      "yes24": {
+        "mkt_rank": 5,
+        "ad_rank": 1,
+        "web_rank": 1,
+        "uxui_rank": 1,
+        "design_rank": 1,
+        "econ_rank": 76,
+        "sales_index": 2430,
+        "reviews": 2
+      },
+      "aladin": {
+        "sales_point": 110,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": 388,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-07-16",
+      "yes24": {
+        "mkt_rank": 2,
+        "ad_rank": 1,
+        "web_rank": 1,
+        "uxui_rank": 1,
+        "design_rank": 1,
+        "econ_rank": 50,
+        "sales_index": 3702,
+        "reviews": 5
+      },
+      "aladin": {
+        "sales_point": 110,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": 387,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-07-17",
+      "yes24": {
+        "mkt_rank": 2,
+        "ad_rank": 1,
+        "web_rank": 1,
+        "uxui_rank": 1,
+        "design_rank": 1,
+        "econ_rank": 47,
+        "sales_index": 3888,
+        "reviews": 5
+      },
+      "aladin": {
+        "sales_point": 80,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": 390,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-07-18",
+      "yes24": {
+        "mkt_rank": 3,
+        "ad_rank": 1,
+        "web_rank": 1,
+        "uxui_rank": 1,
+        "design_rank": 1,
+        "econ_rank": 57,
+        "sales_index": 3789,
+        "reviews": 6
+      },
+      "aladin": {
+        "sales_point": 260,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": 379,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-07-19",
+      "yes24": {
+        "mkt_rank": 3,
+        "ad_rank": 1,
+        "web_rank": 1,
+        "uxui_rank": 1,
+        "design_rank": 1,
+        "econ_rank": 56,
+        "sales_index": 3771,
+        "reviews": 7
+      },
+      "aladin": {
+        "sales_point": 260,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": 431,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-07-20",
+      "yes24": {
+        "mkt_rank": 3,
+        "ad_rank": 1,
+        "web_rank": 1,
+        "uxui_rank": 1,
+        "design_rank": 1,
+        "econ_rank": 60,
+        "sales_index": 3681,
+        "reviews": 7
+      },
+      "aladin": {
+        "sales_point": 260,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": 436,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-07-21",
+      "yes24": {
+        "mkt_rank": 3,
+        "ad_rank": 1,
+        "web_rank": 1,
+        "uxui_rank": 1,
+        "design_rank": 1,
+        "econ_rank": 63,
+        "sales_index": 3735,
+        "reviews": 10
+      },
+      "aladin": {
+        "sales_point": 230,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": 355,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-07-22",
+      "yes24": {
+        "mkt_rank": 2,
+        "ad_rank": 1,
+        "web_rank": 1,
+        "uxui_rank": 1,
+        "design_rank": 1,
+        "econ_rank": 66,
+        "sales_index": 3681,
+        "reviews": 11
+      },
+      "aladin": {
+        "sales_point": 310,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": 350,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-07-23",
+      "yes24": {
+        "mkt_rank": 14,
+        "ad_rank": 3,
+        "web_rank": 1,
+        "uxui_rank": 1,
+        "design_rank": 4,
+        "econ_rank": 229,
+        "sales_index": 3327,
+        "reviews": 12
+      },
+      "aladin": {
+        "sales_point": 260,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": 349,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-07-24",
+      "yes24": {
+        "mkt_rank": 16,
+        "ad_rank": 3,
+        "web_rank": 1,
+        "uxui_rank": 1,
+        "design_rank": 3,
+        "econ_rank": 236,
+        "sales_index": 3615,
+        "reviews": 12
+      },
+      "aladin": {
+        "sales_point": 240,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": 426,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-07-25",
+      "yes24": {
+        "mkt_rank": 20,
+        "ad_rank": 3,
+        "web_rank": 1,
+        "uxui_rank": 1,
+        "design_rank": 3,
+        "econ_rank": 238,
+        "sales_index": 3741,
+        "reviews": 12
+      },
+      "aladin": {
+        "sales_point": 300,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": 387,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-07-26",
+      "yes24": {
+        "mkt_rank": 12,
+        "ad_rank": 2,
+        "web_rank": 1,
+        "uxui_rank": 1,
+        "design_rank": 1,
+        "econ_rank": 190,
+        "sales_index": 3861,
+        "reviews": 12
+      },
+      "aladin": {
+        "sales_point": 270,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": 338,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-07-27",
+      "yes24": {
+        "mkt_rank": 10,
+        "ad_rank": 2,
+        "web_rank": 1,
+        "uxui_rank": 1,
+        "design_rank": 1,
+        "econ_rank": 140,
+        "sales_index": 4101,
+        "reviews": 12
+      },
+      "aladin": {
+        "sales_point": 230,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": 345,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-07-28",
+      "yes24": {
+        "mkt_rank": 10,
+        "ad_rank": 2,
+        "web_rank": 1,
+        "uxui_rank": 1,
+        "design_rank": 1,
+        "econ_rank": 161,
+        "sales_index": 4107,
+        "reviews": 12
+      },
+      "aladin": {
+        "sales_point": 230,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": 510,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-07-29",
+      "yes24": {
+        "mkt_rank": 9,
+        "ad_rank": 2,
+        "web_rank": 1,
+        "uxui_rank": 1,
+        "design_rank": 2,
+        "econ_rank": 144,
+        "sales_index": 4287,
+        "reviews": 12
+      },
+      "aladin": {
+        "sales_point": 320,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": 590,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-07-30",
+      "yes24": {
+        "mkt_rank": 8,
+        "ad_rank": 2,
+        "web_rank": 1,
+        "uxui_rank": 1,
+        "design_rank": 2,
+        "econ_rank": 145,
+        "sales_index": 4269,
+        "reviews": 12
+      },
+      "aladin": {
+        "sales_point": 320,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": 574,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-07-31",
+      "yes24": {
+        "mkt_rank": 17,
+        "ad_rank": 2,
+        "web_rank": 2,
+        "uxui_rank": 1,
+        "design_rank": 2,
+        "econ_rank": 206,
+        "sales_index": 4161,
+        "reviews": 12
+      },
+      "aladin": {
+        "sales_point": 290,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": 424,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-08-01",
+      "yes24": {
+        "mkt_rank": 25,
+        "ad_rank": 3,
+        "web_rank": 2,
+        "uxui_rank": 1,
+        "design_rank": 3,
+        "econ_rank": 266,
+        "sales_index": 4167,
+        "reviews": 12
+      },
+      "aladin": {
+        "sales_point": 210,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": 374,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-08-02",
+      "yes24": {
+        "mkt_rank": 32,
+        "ad_rank": 4,
+        "web_rank": 2,
+        "uxui_rank": 1,
+        "design_rank": 5,
+        "econ_rank": null,
+        "sales_index": 4251,
+        "reviews": 13
+      },
+      "aladin": {
+        "sales_point": 200,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": 333,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-08-03",
+      "yes24": {
+        "mkt_rank": 35,
+        "ad_rank": 3,
+        "web_rank": 2,
+        "uxui_rank": 1,
+        "design_rank": 4,
+        "econ_rank": null,
+        "sales_index": 4419,
+        "reviews": 13
+      },
+      "aladin": {
+        "sales_point": 200,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": 334,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-08-04",
+      "yes24": {
+        "mkt_rank": 44,
+        "ad_rank": 3,
+        "web_rank": 4,
+        "uxui_rank": 2,
+        "design_rank": 5,
+        "econ_rank": null,
+        "sales_index": 4401,
+        "reviews": 15
+      },
+      "aladin": {
+        "sales_point": 200,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": 308,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-08-05",
+      "yes24": {
+        "mkt_rank": 38,
+        "ad_rank": 3,
+        "web_rank": 2,
+        "uxui_rank": 1,
+        "design_rank": 5,
+        "econ_rank": null,
+        "sales_index": 4407,
+        "reviews": 17
+      },
+      "aladin": {
+        "sales_point": 190,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": 319,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-08-06",
+      "yes24": {
+        "mkt_rank": 34,
+        "ad_rank": 3,
+        "web_rank": 2,
+        "uxui_rank": 1,
+        "design_rank": 3,
+        "econ_rank": null,
+        "sales_index": 4467,
+        "reviews": 17
+      },
+      "aladin": {
+        "sales_point": 170,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": 362,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-08-07",
+      "yes24": {
+        "mkt_rank": 29,
+        "ad_rank": 3,
+        "web_rank": 1,
+        "uxui_rank": 1,
+        "design_rank": 1,
+        "econ_rank": 284,
+        "sales_index": 4527,
+        "reviews": 17
+      },
+      "aladin": {
+        "sales_point": 160,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": 459,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-08-08",
+      "yes24": {
+        "mkt_rank": 28,
+        "ad_rank": 2,
+        "web_rank": 1,
+        "uxui_rank": 1,
+        "design_rank": 2,
+        "econ_rank": 274,
+        "sales_index": 4569,
+        "reviews": 22
+      },
+      "aladin": {
+        "sales_point": 160,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": 721,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-08-09",
+      "yes24": {
+        "mkt_rank": 31,
+        "ad_rank": 4,
+        "web_rank": 1,
+        "uxui_rank": 1,
+        "design_rank": 2,
+        "econ_rank": null,
+        "sales_index": 4353,
+        "reviews": 24
+      },
+      "aladin": {
+        "sales_point": 160,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": 721,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-08-10",
+      "yes24": {
+        "mkt_rank": 64,
+        "ad_rank": 5,
+        "web_rank": 4,
+        "uxui_rank": 1,
+        "design_rank": 7,
+        "econ_rank": null,
+        "sales_index": 4191,
+        "reviews": 24
+      },
+      "aladin": {
+        "sales_point": 160,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": null,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-08-11",
+      "yes24": {
+        "mkt_rank": 60,
+        "ad_rank": 5,
+        "web_rank": 7,
+        "uxui_rank": 2,
+        "design_rank": 7,
+        "econ_rank": null,
+        "sales_index": 3726,
+        "reviews": 24
+      },
+      "aladin": {
+        "sales_point": 160,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": null,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-08-12",
+      "yes24": {
+        "mkt_rank": 77,
+        "ad_rank": 7,
+        "web_rank": 12,
+        "uxui_rank": 5,
+        "design_rank": 13,
+        "econ_rank": null,
+        "sales_index": 3678,
+        "reviews": 26
+      },
+      "aladin": {
+        "sales_point": null,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": null,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-08-13",
+      "yes24": {
+        "mkt_rank": 52,
+        "ad_rank": 5,
+        "web_rank": 7,
+        "uxui_rank": 2,
+        "design_rank": 11,
+        "econ_rank": null,
+        "sales_index": 3630,
+        "reviews": 26
+      },
+      "aladin": {
+        "sales_point": 150,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": null,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-08-14",
+      "yes24": {
+        "mkt_rank": 72,
+        "ad_rank": 5,
+        "web_rank": 14,
+        "uxui_rank": 7,
+        "design_rank": 15,
+        "econ_rank": null,
+        "sales_index": 3462,
+        "reviews": 26
+      },
+      "aladin": {
+        "sales_point": 150,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": null,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-08-15",
+      "yes24": {
+        "mkt_rank": 102,
+        "ad_rank": 6,
+        "web_rank": 20,
+        "uxui_rank": 13,
+        "design_rank": 22,
+        "econ_rank": null,
+        "sales_index": 3414,
+        "reviews": 26
+      },
+      "aladin": {
+        "sales_point": 195,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": null,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-08-16",
+      "yes24": {
+        "mkt_rank": null,
+        "ad_rank": null,
+        "web_rank": null,
+        "uxui_rank": null,
+        "design_rank": null,
+        "econ_rank": null,
+        "sales_index": null,
+        "reviews": 0
+      },
+      "aladin": {
+        "sales_point": 210,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": null,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-08-17",
+      "yes24": {
+        "mkt_rank": 65,
+        "ad_rank": 4,
+        "web_rank": 13,
+        "uxui_rank": 6,
+        "design_rank": 17,
+        "econ_rank": null,
+        "sales_index": 2664,
+        "reviews": 26
+      },
+      "aladin": {
+        "sales_point": 310,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": null,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-08-18",
+      "yes24": {
+        "mkt_rank": 49,
+        "ad_rank": 2,
+        "web_rank": 7,
+        "uxui_rank": 3,
+        "design_rank": 8,
+        "econ_rank": null,
+        "sales_index": 2634,
+        "reviews": 26
+      },
+      "aladin": {
+        "sales_point": 255,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": null,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-08-19",
+      "yes24": {
+        "mkt_rank": 40,
+        "ad_rank": 2,
+        "web_rank": 3,
+        "uxui_rank": 2,
+        "design_rank": 7,
+        "econ_rank": null,
+        "sales_index": 2694,
+        "reviews": 26
+      },
+      "aladin": {
+        "sales_point": 185,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": null,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-08-20",
+      "yes24": {
+        "mkt_rank": 71,
+        "ad_rank": 9,
+        "web_rank": 9,
+        "uxui_rank": 5,
+        "design_rank": 15,
+        "econ_rank": null,
+        "sales_index": 2658,
+        "reviews": 26
+      },
+      "aladin": {
+        "sales_point": 210,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": null,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-08-21",
+      "yes24": {
+        "mkt_rank": 52,
+        "ad_rank": 6,
+        "web_rank": 4,
+        "uxui_rank": 1,
+        "design_rank": 12,
+        "econ_rank": null,
+        "sales_index": 2640,
+        "reviews": 26
+      },
+      "aladin": {
+        "sales_point": 310,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": null,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-08-22",
+      "yes24": {
+        "mkt_rank": 57,
+        "ad_rank": 7,
+        "web_rank": 8,
+        "uxui_rank": 3,
+        "design_rank": 10,
+        "econ_rank": null,
+        "sales_index": 2622,
+        "reviews": 26
+      },
+      "aladin": {
+        "sales_point": 255,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": null,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-08-23",
+      "yes24": {
+        "mkt_rank": 18,
+        "ad_rank": 1,
+        "web_rank": 2,
+        "uxui_rank": 1,
+        "design_rank": 2,
+        "econ_rank": 247,
+        "sales_index": 2952,
+        "reviews": 26
+      },
+      "aladin": {
+        "sales_point": 255,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": null,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-08-24",
+      "yes24": {
+        "mkt_rank": 18,
+        "ad_rank": 2,
+        "web_rank": 2,
+        "uxui_rank": 1,
+        "design_rank": 2,
+        "econ_rank": 252,
+        "sales_index": 2814,
+        "reviews": 26
+      },
+      "aladin": {
+        "sales_point": 235,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": null,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-08-25",
+      "yes24": {
+        "mkt_rank": 20,
+        "ad_rank": 3,
+        "web_rank": 2,
+        "uxui_rank": 1,
+        "design_rank": 2,
+        "econ_rank": 262,
+        "sales_index": 2766,
+        "reviews": 26
+      },
+      "aladin": {
+        "sales_point": 230,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": null,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-08-26",
+      "yes24": {
+        "mkt_rank": 22,
+        "ad_rank": 2,
+        "web_rank": 2,
+        "uxui_rank": 1,
+        "design_rank": 3,
+        "econ_rank": 296,
+        "sales_index": 2688,
+        "reviews": 26
+      },
+      "aladin": {
+        "sales_point": 200,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "badge_rank": null,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-08-27",
+      "yes24": {
+        "mkt_rank": 20,
+        "ad_rank": 1,
+        "web_rank": 2,
+        "uxui_rank": 1,
+        "design_rank": 3,
+        "econ_rank": 261,
+        "sales_index": 2808,
+        "reviews": 26
+      },
+      "aladin": {
+        "sales_point": 380,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": 15
+      },
+      "kyobo": {
+        "badge_rank": 942,
+        "uxui_cat": null,
+        "strategy_rank": null
+      }
+    },
+    {
+      "date": "2026-08-28",
+      "yes24": {
+        "mkt_rank": 22,
+        "ad_rank": 2,
+        "web_rank": 3,
+        "uxui_rank": 1,
+        "design_rank": 4,
+        "econ_rank": 297,
+        "sales_index": 2751,
+        "reviews": 26,
+        "rating": 10.0
+      },
+      "aladin": {
+        "sales_point": 320,
+        "reviews": 9,
+        "rating": 9.6,
+        "design_rank": 36,
+        "brand_rank": null,
+        "ad_rank": 15
+      },
+      "kyobo": {
+        "uxui_cat": null,
+        "strategy_rank": null,
+        "badge_rank": 764,
+        "reviews": 0,
+        "rating": null
+      }
+    }
+  ],
+  "updated_at": "2026-08-28T03:44:46.207383+00:00"
+}

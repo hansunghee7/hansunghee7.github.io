@@ -53,19 +53,19 @@
         "info_mgmt_rank": null
       },
       "kyobo": {
-        "badge_rank": 746,
         "category_rank": 7,
-        "reviews": 5,
-        "rating": 10.0
+        "badge_rank": 746,
+        "reviews": 0,
+        "rating": null
       },
       "ridibooks": {
         "rating_count": 0,
         "rating": 0.0
       },
       "millie": {
-        "category_rank": 44
+        "category_rank": 46
       }
     }
   ],
-  "updated_at": "2026-08-28T00:23:04.789662+00:00"
+  "updated_at": "2026-08-28T03:44:09.029460+00:00"
 }

@@ -118,15 +118,14 @@
   </header>
 
   <div class="setup-note">
-    「UX의 언어들」은 <a href="https://cinaeng.github.io/ux-book-tracker/" target="_blank" rel="noopener noreferrer">별도 트래커</a>가
-    수집한 결과를 그대로 가져와 보여줍니다. 「기획자의 질문법」은 이 저장소가
-    직접 예스24·알라딘·교보문고·리디북스·밀리의서재를 수집합니다. 지금 당장 갱신하려면
+    두 책 모두 이 저장소가 직접 예스24·알라딘·교보문고를 수집합니다
+    (「기획자의 질문법」은 리디북스·밀리의서재도 추가). 지금 당장 갱신하려면
     GitHub Actions에서 <code>Fetch book insight</code> 워크플로를 수동 실행하세요.
   </div>
 
   <section class="book-section" id="uxBookSection">
     <h2>UX의 언어들</h2>
-    <div class="book-meta">한성희·신행철 저 · 파지트 · <a href="https://cinaeng.github.io/ux-book-tracker/" target="_blank" rel="noopener noreferrer">전체 히스토리 보기 ↗</a></div>
+    <div class="book-meta">한성희·신행철 저 · 파지트</div>
     <div id="uxBookTiles" class="tiles"><div class="loading">데이터 불러오는 중…</div></div>
   </section>
 
@@ -270,27 +269,22 @@
   load();
   stampRefresh();
 
-  /* ── UX의 언어들 (cinaeng/ux-book-tracker 미러 + 우리 쪽 보조 지표) ──
-     보조 지표(ux-book-extra.json)는 cinaeng 트래커가 안 보는 카테고리라
-     이 저장소가 직접 수집한다. 그 파일이 아직 없거나 실패해도(catch로
-     빈 이력 처리) 메인 미러 지표는 정상적으로 떠야 한다. */
+  /* ── UX의 언어들 (자체 수집 -- 기획자의 질문법과 동일한 방식) ──
+     예전엔 cinaeng/ux-book-tracker(외부 저장소)를 미러링만 했는데, 그쪽
+     스키마 변경에 이 페이지가 휘둘리는 걸 없애려고 다른 책과 같은 방식
+     (이 저장소가 직접 예스24·알라딘·교보문고 스크래핑)으로 통일했다.
+     예전 히스토리는 assets/data/ux-book-insight.json으로 마이그레이션해서
+     그대로 이어붙였다. */
   function loadUxBook() {
-    return Promise.all([
-      fetch("/assets/data/ux-book-history.json?t=" + Date.now(), { cache: "no-store" })
-        .then(function (r) { if (!r.ok) throw { notYet: r.status === 404 }; return r.json(); }),
-      fetch("/assets/data/ux-book-extra.json?t=" + Date.now(), { cache: "no-store" })
-        .then(function (r) { return r.ok ? r.json() : { history: [] }; })
-        .catch(function () { return { history: [] }; }),
-    ])
-      .then(function (results) { renderUxBook(results[0], results[1].history || []); return true; })
+    return fetch("/assets/data/ux-book-insight.json?t=" + Date.now(), { cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw { notYet: r.status === 404 }; return r.json(); })
+      .then(function (data) { renderUxBook(data); return true; })
       .catch(function (e) { renderError("uxBookTiles", e); return !!(e && e.notYet); });
   }
 
-  function renderUxBook(records, extraRecords) {
-    if (!Array.isArray(records) || !records.length) { renderError("uxBookTiles", { notYet: true }); return; }
-
-    var dated = records.map(function (r) { return { date: (r.ts || "").slice(0, 10), r: r }; });
-    var extraDated = Array.isArray(extraRecords) ? extraRecords : [];
+  function renderUxBook(data) {
+    var history = (data && data.history) || [];
+    if (!history.length) { renderError("uxBookTiles", { notYet: true }); return; }
 
     var Y24_GOODS = "https://www.yes24.com/product/goods/193444437";
     var Y24_BEST = function (cat) { return "https://www.yes24.com/product/category/bestseller?categoryNumber=" + cat + "&pageNumber=1&pageSize=100"; };
@@ -309,19 +303,17 @@
       { key: "econ", label: "예스24 경제경영 종합", unit: "위", higherIsBetter: false, href: Y24_BEST("001001025"), get: function (r) { return r.yes24 && r.yes24.econ_rank; } },
       { key: "sales_index", label: "예스24 판매지수", unit: "", higherIsBetter: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.sales_index; } },
       { key: "reviews", label: "예스24 리뷰 수", unit: "건", higherIsBetter: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.reviews; } },
-      { key: "kyobo_badge", label: "교보문고 온라인 주간", unit: "위", higherIsBetter: false, href: KYOBO_PRODUCT, get: function (r) { return r.kyobo_meta && r.kyobo_meta.badge_rank; } },
-      { key: "kyobo_uxui", label: "교보문고 UX/UI", unit: "위", higherIsBetter: false, href: KYOBO_UXUI, get: function (r) { return r.kyobo_online && r.kyobo_online.uxui_cat; } },
-      { key: "kyobo_strategy", label: "교보문고 경영전략일반", unit: "위", higherIsBetter: false, href: KYOBO_STRATEGY, source: "extra", get: function (e) { return e.kyobo_strategy_rank; } },
+      { key: "kyobo_badge", label: "교보문고 온라인 주간", unit: "위", higherIsBetter: false, href: KYOBO_PRODUCT, get: function (r) { return r.kyobo && r.kyobo.badge_rank; } },
+      { key: "kyobo_uxui", label: "교보문고 UX/UI", unit: "위", higherIsBetter: false, href: KYOBO_UXUI, get: function (r) { return r.kyobo && r.kyobo.uxui_cat; } },
+      { key: "kyobo_strategy", label: "교보문고 경영전략일반", unit: "위", higherIsBetter: false, href: KYOBO_STRATEGY, get: function (r) { return r.kyobo && r.kyobo.strategy_rank; } },
       { key: "aladin_sp", label: "알라딘 세일즈포인트", unit: "", higherIsBetter: true, href: ALADIN_PRODUCT, get: function (r) { return r.aladin && r.aladin.sales_point; } },
       { key: "aladin_design", label: "알라딘 디자인이야기", unit: "위", higherIsBetter: false, href: ALADIN_BEST("51089"), get: function (r) { return r.aladin && r.aladin.design_rank; } },
       { key: "aladin_brand", label: "알라딘 마케팅/브랜드", unit: "위", higherIsBetter: false, href: ALADIN_BEST("1632"), get: function (r) { return r.aladin && r.aladin.brand_rank; } },
-      { key: "aladin_ad", label: "알라딘 광고/홍보/PR", unit: "위", higherIsBetter: false, href: ALADIN_BEST("268"), source: "extra", get: function (e) { return e.aladin_ad_rank; } },
+      { key: "aladin_ad", label: "알라딘 광고/홍보/PR", unit: "위", higherIsBetter: false, href: ALADIN_BEST("268"), get: function (r) { return r.aladin && r.aladin.ad_rank; } },
     ];
 
     var html = metrics.map(function (m) {
-      var series = m.source === "extra"
-        ? extraDated.map(function (e) { return { date: e.date, value: m.get(e) }; })
-        : dated.map(function (d) { return { date: d.date, value: m.get(d.r) }; });
+      var series = history.map(function (r) { return { date: r.date, value: m.get(r) }; });
       return tile(m, series);
     }).join("");
 
