@@ -252,7 +252,7 @@
   <div class="metaline">
     <button class="refresh" id="refreshBtn"><span class="refresh-icon">↻</span> <span class="refresh-label">새로고침</span></button>
     <span id="lastRefresh"></span>
-    <span id="dataAsOf">데이터 불러오는 중…</span>
+    <span id="dataAsOf">↻ 새로고침을 눌러 불러오세요</span>
     <span>· 검색 비노출(noindex) 페이지</span>
   </div>
 </header>
@@ -275,7 +275,7 @@
 <details class="dsec">
   <summary><span class="dsec-grip" aria-hidden="true">⠿</span><h2>유입 상세 — 방문자 · 재방문 · GEO/AEO 효과</h2></summary>
   <div class="dsec-body">
-  <p class="h2note" id="analyticsNote">GA4 데이터를 불러오는 중…</p>
+  <p class="h2note" id="analyticsNote">↻ 위 새로고침 버튼을 눌러 GA4 데이터를 불러오세요</p>
   <div class="tiles" id="analyticsTiles"></div>
   <p class="h2note" style="margin-top:20px">트래픽 소스 <button type="button" class="h2note-q" aria-label="설명 보기">?<span class="h2note-text">최근 30일 트래픽 소스 상위. AI 엔진(ChatGPT·Perplexity·Gemini 등)에서 온 세션은 따로 표시합니다 — GEO/AEO가 실제 유입으로 이어지는지 보는 지표입니다.</span></button></p>
   <div class="tablebox" id="sourceTable"></div>
@@ -1118,7 +1118,6 @@
   renderConversion();
   renderFunnel();
   renderTrust();
-  renderAnalytics();
   renderIntegrations();
   document.getElementById('refreshBtn').addEventListener('click', function(){
     var btn = this;
@@ -1129,8 +1128,6 @@
       setTimeout(function(){ setRefreshState(btn, 'idle'); }, 1600);
     });
   });
-  load();
-  stampRefresh();
 })();
 </script>
 </body>

@@ -126,13 +126,13 @@
   <section class="book-section" id="uxBookSection">
     <h2>UX의 언어들</h2>
     <div class="book-meta">한성희·신행철 저 · 파지트</div>
-    <div id="uxBookTiles" class="tiles"><div class="loading">데이터 불러오는 중…</div></div>
+    <div id="uxBookTiles" class="tiles"><div class="loading">↻ 위 새로고침 버튼을 눌러 불러오세요</div></div>
   </section>
 
   <section class="book-section" id="questionBookSection">
     <h2>기획자의 질문법</h2>
     <div class="book-meta">한성희 저 · 파지트 · 2025-06-13 출간</div>
-    <div id="questionBookTiles" class="tiles"><div class="loading">데이터 불러오는 중…</div></div>
+    <div id="questionBookTiles" class="tiles"><div class="loading">↻ 위 새로고침 버튼을 눌러 불러오세요</div></div>
   </section>
 </div>
 
@@ -266,8 +266,6 @@
       setTimeout(function () { setRefreshState(btn, "idle"); }, 1600);
     });
   });
-  load();
-  stampRefresh();
 
   /* ── UX의 언어들 (자체 수집 -- 기획자의 질문법과 동일한 방식) ──
      예전엔 cinaeng/ux-book-tracker(외부 저장소)를 미러링만 했는데, 그쪽
