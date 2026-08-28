@@ -246,27 +246,24 @@ def _similarity(p, q):
     return 0.6 * _jaccard(p['_kw'], q['_kw']) + 0.4 * _jaccard(p['_about'], q['_about'])
 
 
-posts_by_id = {p['id']: p for p in posts}
-
 for p in posts:
     scored = []
     for q in posts:
         if q['id'] == p['id']:
             continue
-        score = _similarity(p, q)
-        if p['category'] and q['category'] == p['category']:
-            score += 0.05  # 동점일 때 같은 카테고리를 살짝 우대
-        scored.append((score, q['id']))
+        raw = _similarity(p, q)
+        if raw <= 0:
+            continue  # 키워드/about 겹침이 전혀 없으면 애초에 후보에도 안 넣는다.
+        # 카테고리 보너스는 "진짜 겹치는 글들" 사이의 동점 정렬에만 쓴다.
+        # 예전엔 이 보너스가 raw=0인 같은 카테고리 글도 score>0으로 만들어
+        # 버려서, 011번("스타트업 헤일메리")에 키워드가 전혀 안 겹치는
+        # "넷플릭스 추천 알고리즘" 글이 그냥 같은 카테고리라는 이유만으로
+        # 추천되는 사고가 실제로 있었다. 겹침이 진짜 없으면 4개를 못
+        # 채우더라도 그냥 적게 보여주는 쪽을 택한다.
+        boosted = raw + (0.05 if p['category'] and q['category'] == p['category'] else 0)
+        scored.append((boosted, q['id']))
     scored.sort(key=lambda x: (-x[0], x[1]))
-    related = [qid for score, qid in scored if score > 0][:4]
-    if len(related) < 4:
-        # 겹치는 키워드가 부족해 4개를 못 채우면, 0점짜리 중에서도 이미
-        # 점수순으로 정렬된 scored에서 같은 카테고리인 것부터 채운다
-        # (예전엔 파일 순서 그대로라 사실상 무작위 채움과 다를 게 없었다).
-        fallback = [qid for score, qid in scored
-                    if qid not in related and posts_by_id[qid]['category'] == p['category']]
-        related += fallback[:4 - len(related)]
-    p['related'] = related
+    p['related'] = [qid for _, qid in scored][:4]
 
 for p in posts:
     del p['_kw']

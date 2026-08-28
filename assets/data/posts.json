@@ -21,10 +21,7 @@
 "url": "/log_assets/markdown/002_%EC%98%A4%EB%94%94%EC%84%B8%EC%9D%B4%2C%20%EB%A7%A4%EC%9A%B0%20%EC%82%AC%EC%A0%81%EC%9D%B8%20%EA%B4%80%EB%9E%8C%ED%8F%89.html",
 "image": "/log_assets/images/002_%EC%98%A4%EB%94%94%EC%84%B8%EC%9D%B4%2C%20%EB%A7%A4%EC%9A%B0%20%EC%82%AC%EC%A0%81%EC%9D%B8%20%EA%B4%80%EB%9E%8C%ED%8F%89_cover.jpg",
 "related": [
-11,
-4,
-7,
-14
+11
 ]
 },
 {
@@ -50,9 +47,7 @@
 "image": "/log_assets/images/004_%EA%B5%BF%EB%B0%94%EC%9D%B4%20%ED%9E%88%EA%B0%80%EC%8B%9C%EB%85%B8_cover.jpg",
 "related": [
 421,
-429,
-2,
-7
+429
 ]
 },
 {
@@ -63,10 +58,7 @@
 "url": "/log_assets/markdown/005_%ED%95%A0%EB%A3%A8%EC%8B%9C%EB%84%A4%EC%9D%B4%EC%85%98%20%EC%82%AC%ED%9A%8C.html",
 "image": "/log_assets/images/005_%ED%95%A0%EB%A3%A8%EC%8B%9C%EB%84%A4%EC%9D%B4%EC%85%98%20%EC%82%AC%ED%9A%8C_cover.jpg",
 "related": [
-522,
-3,
-10,
-12
+522
 ]
 },
 {
@@ -76,12 +68,7 @@
 "date": "Jul 15. 2026",
 "url": "/log_assets/markdown/006_%EC%9E%90%EC%A0%95%EC%9D%B4%20%EA%B0%80%EA%B9%8C%EC%9B%8C%EC%A7%80%EB%8F%84%EB%A1%9D%20AI%20%EC%96%98%EA%B8%B0%EB%A5%BC%20%EC%9B%90%20%EC%97%86%EC%9D%B4%20%EB%82%98%EB%88%B4%EC%96%B4%EC%9A%94.html",
 "image": "/log_assets/images/006_%EC%9E%90%EC%A0%95%EC%9D%B4%20%EA%B0%80%EA%B9%8C%EC%9B%8C%EC%A7%80%EB%8F%84%EB%A1%9D%20AI%20%EC%96%98%EA%B8%B0%EB%A5%BC%20%EC%9B%90%20%EC%97%86%EC%9D%B4%20%EB%82%98%EB%88%B4%EC%96%B4%EC%9A%94._cover.jpg",
-"related": [
-158,
-166,
-194,
-223
-]
+"related": []
 },
 {
 "id": 7,
@@ -91,10 +78,7 @@
 "url": "/log_assets/markdown/007_%EA%B3%B5%EC%A0%80%EA%B0%80%20%EC%A2%8B%EC%9D%80%20%EC%9D%B4%EC%9C%A0.html",
 "image": "/log_assets/images/007_%EA%B3%B5%EC%A0%80%EA%B0%80%20%EC%A2%8B%EC%9D%80%20%EC%9D%B4%EC%9C%A0_cover.jpg",
 "related": [
-14,
-2,
-4,
-24
+14
 ]
 },
 {
@@ -104,12 +88,7 @@
 "date": "Jul 8. 2026",
 "url": "/log_assets/markdown/008_%EB%91%90%EB%B2%88%EC%A7%B8%20%EC%B1%85%20%27UX%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4%27%EC%9D%84%20%EC%B6%9C%EA%B0%84%ED%96%88%EC%8A%B5%EB%8B%88%EB%8B%A4.html",
 "image": "/log_assets/images/008_%EB%91%90%EB%B2%88%EC%A7%B8%20%EC%B1%85%20UX%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4%EC%9D%84%20%EC%B6%9C%EA%B0%84%ED%96%88%EC%8A%B5%EB%8B%88%EB%8B%A4._cover.jpg",
-"related": [
-1,
-34,
-45,
-51
-]
+"related": []
 },
 {
 "id": 9,
@@ -147,10 +126,7 @@
 "url": "/log_assets/markdown/011_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%ED%97%A4%EC%9D%BC%EB%A9%94%EB%A6%AC.html",
 "image": "/log_assets/images/011_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%ED%97%A4%EC%9D%BC%EB%A9%94%EB%A6%AC_cover.jpg",
 "related": [
-2,
-28,
-29,
-30
+2
 ]
 },
 {
@@ -174,12 +150,7 @@
 "date": "Mar 2. 2026",
 "url": "/log_assets/markdown/013_%EC%9D%BC%EC%A3%BC%EC%9D%BC%EC%97%90%20%EB%A9%B0%EC%B9%A0%EB%A7%8C%20%EC%9D%BC%ED%95%98%EA%B3%A0%20%EC%8B%B6%EC%96%B4%EC%9A%94.html",
 "image": "/log_assets/images/013_%EC%9D%BC%EC%A3%BC%EC%9D%BC%EC%97%90%20%EB%A9%B0%EC%B9%A0%EB%A7%8C%20%EC%9D%BC%ED%95%98%EA%B3%A0%20%EC%8B%B6%EC%96%B4%EC%9A%94._cover.jpg",
-"related": [
-3,
-5,
-10,
-12
-]
+"related": []
 },
 {
 "id": 14,
@@ -191,8 +162,7 @@
 "related": [
 7,
 24,
-100,
-2
+100
 ]
 },
 {
@@ -247,8 +217,7 @@
 "related": [
 20,
 546,
-562,
-3
+562
 ]
 },
 {
@@ -260,9 +229,7 @@
 "image": "/log_assets/images/020_%EC%A1%B0%EC%9A%A9%ED%95%84%EC%9D%98%20%EC%9C%84%EB%8C%80%ED%95%9C%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC_cover.jpg",
 "related": [
 19,
-304,
-3,
-5
+304
 ]
 },
 {
@@ -272,12 +239,7 @@
 "date": "Oct 6. 2025",
 "url": "/log_assets/markdown/021_%EB%B0%B1%ED%98%84%EC%A7%84%EC%9D%B4%20%EB%A7%90%ED%95%98%EB%8A%94%20%EC%9D%B8%EC%83%9D%EC%9D%98%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC.html",
 "image": "/log_assets/images/021_%EB%B0%B1%ED%98%84%EC%A7%84%EC%9D%B4%20%EB%A7%90%ED%95%98%EB%8A%94%20%EC%9D%B8%EC%83%9D%EC%9D%98%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC_cover.jpg",
-"related": [
-3,
-5,
-10,
-12
-]
+"related": []
 },
 {
 "id": 22,
@@ -288,9 +250,7 @@
 "image": "/log_assets/images/022_%EC%86%90%ED%9D%A5%EB%AF%BC%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EB%A6%AC%EB%8D%94%EC%8B%AD%EC%9D%98%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC_cover.jpg",
 "related": [
 608,
-302,
-3,
-5
+302
 ]
 },
 {
@@ -315,10 +275,7 @@
 "url": "/log_assets/markdown/024_%27%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%27%EC%9D%B4%202%EC%87%84%EC%97%90%20%EB%93%A4%EC%96%B4%EA%B0%91%EB%8B%88%EB%8B%A4.html",
 "image": "/log_assets/images/024_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%EC%9D%B4%202%EC%87%84%EC%97%90%20%EB%93%A4%EC%96%B4%EA%B0%91%EB%8B%88%EB%8B%A4._cover.jpg",
 "related": [
-14,
-2,
-4,
-7
+14
 ]
 },
 {
@@ -331,8 +288,7 @@
 "related": [
 16,
 314,
-309,
-3
+309
 ]
 },
 {
@@ -359,8 +315,7 @@
 "related": [
 383,
 306,
-12,
-9
+12
 ]
 },
 {
@@ -370,12 +325,7 @@
 "date": "Sep 18. 2025",
 "url": "/log_assets/markdown/028_%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%EA%B0%80%20%EB%8B%B9%EC%8B%A0%EC%9D%98%20%EB%A7%88%EC%9D%8C%EC%9D%84%20%EC%9D%BD%EB%8A%94%20%EB%B0%A9%EB%B2%95.html",
 "image": "/log_assets/images/028_%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%EA%B0%80%20%EB%8B%B9%EC%8B%A0%EC%9D%98%20%EB%A7%88%EC%9D%8C%EC%9D%84%20%EC%9D%BD%EB%8A%94%20%EB%B0%A9%EB%B2%95_cover.jpg",
-"related": [
-11,
-29,
-30,
-33
-]
+"related": []
 },
 {
 "id": 29,
@@ -384,12 +334,7 @@
 "date": "Sep 17. 2025",
 "url": "/log_assets/markdown/029_%ED%99%95%EC%9E%A5%EC%9D%B4%20%EB%B6%88%EA%B0%80%EB%8A%A5%ED%95%9C%20%EC%9D%BC%EC%9D%84%20%ED%95%98%EC%84%B8%EC%9A%94.html",
 "image": "/log_assets/images/029_%ED%99%95%EC%9E%A5%EC%9D%B4%20%EB%B6%88%EA%B0%80%EB%8A%A5%ED%95%9C%20%EC%9D%BC%EC%9D%84%20%ED%95%98%EC%84%B8%EC%9A%94_cover.jpg",
-"related": [
-11,
-28,
-30,
-33
-]
+"related": []
 },
 {
 "id": 30,
@@ -401,8 +346,7 @@
 "related": [
 280,
 270,
-484,
-11
+484
 ]
 },
 {
@@ -441,10 +385,7 @@
 "url": "/log_assets/markdown/033_%EC%97%90%EC%96%B4%EB%B9%84%EC%95%A4%EB%B9%84%EC%9D%98%20%EB%B6%80%ED%8A%B8%EC%8A%A4%ED%8A%B8%EB%9E%98%ED%95%91.html",
 "image": "/log_assets/images/033_%EC%97%90%EC%96%B4%EB%B9%84%EC%95%A4%EB%B9%84%EC%9D%98%20%EB%B6%80%ED%8A%B8%EC%8A%A4%ED%8A%B8%EB%9E%98%ED%95%91_cover.jpg",
 "related": [
-143,
-11,
-28,
-29
+143
 ]
 },
 {
@@ -471,8 +412,7 @@
 "related": [
 43,
 307,
-342,
-11
+342
 ]
 },
 {
@@ -483,10 +423,7 @@
 "url": "/log_assets/markdown/036_%EC%8A%A4%ED%8F%AC%ED%8B%B0%ED%8C%8C%EC%9D%B4%20%EB%AA%A8%EB%8D%B8%EC%9D%98%20%EC%A7%84%EC%8B%A4%2C%20%EC%99%9C%20%EB%A7%8E%EC%9D%80%20%EA%B8%B0%EC%97%85%EC%9D%B4%20%EC%8B%A4%ED%8C%A8%ED%96%88%EC%9D%84%EA%B9%8C.html",
 "image": "/log_assets/images/036_%EC%8A%A4%ED%8F%AC%ED%8B%B0%ED%8C%8C%EC%9D%B4%20%EB%AA%A8%EB%8D%B8%EC%9D%98%20%EC%A7%84%EC%8B%A4%2C%20%EC%99%9C%20%EB%A7%8E%EC%9D%80%20%EA%B8%B0%EC%97%85%EC%9D%B4%20%EC%8B%A4%ED%8C%A8%ED%96%88%EC%9D%84%EA%B9%8C_cover.jpg",
 "related": [
-82,
-11,
-28,
-29
+82
 ]
 },
 {
@@ -594,12 +531,7 @@
 "date": "Aug 22. 2025",
 "url": "/log_assets/markdown/044_AI%20%EC%8B%9C%EB%8C%80%20%EA%B8%B0%ED%9A%8D%EC%9E%90%2C%20%EB%94%94%EC%9E%90%EC%9D%B4%EB%84%88%2C%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EB%90%A0%EA%B9%8C.html",
 "image": "/log_assets/images/044_AI%20%EC%8B%9C%EB%8C%80%20%EA%B8%B0%ED%9A%8D%EC%9E%90%2C%20%EB%94%94%EC%9E%90%EC%9D%B4%EB%84%88%2C%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EB%90%A0%EA%B9%8C_cover.jpg",
-"related": [
-3,
-5,
-10,
-12
-]
+"related": []
 },
 {
 "id": 45,
@@ -681,8 +613,7 @@
 "related": [
 57,
 197,
-281,
-63
+281
 ]
 },
 {
@@ -721,10 +652,7 @@
 "url": "/log_assets/markdown/053_%EC%8B%9C%EB%A6%AC%EC%A6%88B%20%EC%A4%80%EB%B9%84%20%EC%A4%91%20%EB%B0%9C%EA%B2%AC%ED%95%98%EB%8A%94%20%EC%88%A8%EA%B2%A8%EC%A7%84%20%EC%84%B1%EC%9E%A5%20%EC%A0%95%EC%B2%B4%20%EC%9A%94%EC%9D%B8%EB%93%A4.html",
 "image": "/log_assets/images/053_%EC%8B%9C%EB%A6%AC%EC%A6%88B%20%EC%A4%80%EB%B9%84%20%EC%A4%91%20%EB%B0%9C%EA%B2%AC%ED%95%98%EB%8A%94%20%EC%88%A8%EA%B2%A8%EC%A7%84%20%EC%84%B1%EC%9E%A5%20%EC%A0%95%EC%B2%B4%20%EC%9A%94%EC%9D%B8%EB%93%A4_cover.jpg",
 "related": [
-345,
-11,
-28,
-29
+345
 ]
 },
 {
@@ -806,9 +734,7 @@
 "image": "/log_assets/images/059_CEO%EA%B0%80%20%EB%AA%A8%EB%93%A0%20%EA%B1%B8%20%EA%B2%B0%EC%A0%95%ED%95%98%EB%A0%A4%20%ED%95%A0%20%EB%95%8C%20%EC%98%A4%EB%8A%94%20%EC%84%B1%EC%9E%A5%EC%9D%98%20%ED%95%9C%EA%B3%84_cover.jpg",
 "related": [
 70,
-586,
-11,
-28
+586
 ]
 },
 {
@@ -861,10 +787,7 @@
 "url": "/log_assets/markdown/063_%EB%A0%88%EA%B1%B0%EC%8B%9C%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EA%B3%BC%20%EC%95%A0%EC%9E%90%EC%9D%BC%2C%20%EA%B8%B0%EC%88%A0%EB%B6%80%EC%B1%84%20%ED%95%B4%EA%B2%B0%20%EC%A0%84%EB%9E%B5.html",
 "image": "/log_assets/images/063_%EB%A0%88%EA%B1%B0%EC%8B%9C%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EA%B3%BC%20%EC%95%A0%EC%9E%90%EC%9D%BC%2C%20%EA%B8%B0%EC%88%A0%EB%B6%80%EC%B1%84%20%ED%95%B4%EA%B2%B0%20%EC%A0%84%EB%9E%B5_cover.jpg",
 "related": [
-88,
-50,
-57,
-75
+88
 ]
 },
 {
@@ -961,8 +884,7 @@
 "related": [
 59,
 529,
-586,
-11
+586
 ]
 },
 {
@@ -973,10 +895,7 @@
 "url": "/log_assets/markdown/071_%EA%B8%B0%EB%B0%9C%ED%95%9C%20%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%EB%B3%B4%EB%8B%A8%20%EA%B3%A0%EA%B0%9D%20%EB%B0%98%EC%9D%91%EC%9D%84%20%EC%B6%9C%EB%B0%9C%EC%A0%90%EC%9C%BC%EB%A1%9C.html",
 "image": "/log_assets/images/071_%EA%B8%B0%EB%B0%9C%ED%95%9C%20%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%EB%B3%B4%EB%8B%A8%20%EA%B3%A0%EA%B0%9D%20%EB%B0%98%EC%9D%91%EC%9D%84%20%EC%B6%9C%EB%B0%9C%EC%A0%90%EC%9C%BC%EB%A1%9C..._cover.jpg",
 "related": [
-391,
-11,
-28,
-29
+391
 ]
 },
 {
@@ -987,10 +906,7 @@
 "url": "/log_assets/markdown/072_%EC%8A%A4%ED%8F%AC%ED%8B%B0%ED%8C%8C%EC%9D%B4%EC%9D%98%20%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%20%EB%A7%88%EB%B2%95%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%EA%B2%BD%ED%97%98%EC%9D%84%20%ED%86%B5%ED%95%9C%20%EC%A0%84%ED%99%98.html",
 "image": "/log_assets/images/072_%EC%8A%A4%ED%8F%AC%ED%8B%B0%ED%8C%8C%EC%9D%B4%EC%9D%98%20%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%20%EB%A7%88%EB%B2%95%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%EA%B2%BD%ED%97%98%EC%9D%84%20%ED%86%B5%ED%95%9C%20%EC%A0%84%ED%99%98_cover.jpg",
 "related": [
-129,
-11,
-28,
-29
+129
 ]
 },
 {
@@ -1028,12 +944,7 @@
 "date": "Jul 18. 2025",
 "url": "/log_assets/markdown/075_%EC%95%A0%EC%9E%90%EC%9D%BC%20%EC%BD%94%EC%B9%AD%2C%20%EC%A0%80%ED%95%AD%ED%95%98%EB%8A%94%20%ED%8C%80%EC%9B%90%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%84%A4%EB%93%9D%ED%95%A0%EA%B9%8C.html",
 "image": "/log_assets/images/075_%EC%95%A0%EC%9E%90%EC%9D%BC%20%EC%BD%94%EC%B9%AD%2C%20%EC%A0%80%ED%95%AD%ED%95%98%EB%8A%94%20%ED%8C%80%EC%9B%90%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%84%A4%EB%93%9D%ED%95%A0%EA%B9%8C_cover.jpg",
-"related": [
-50,
-57,
-63,
-82
-]
+"related": []
 },
 {
 "id": 76,
@@ -1056,12 +967,7 @@
 "date": "Jul 16. 2025",
 "url": "/log_assets/markdown/077_%EC%9C%84%EA%B8%B0%EB%A5%BC%20%EA%B8%B0%ED%9A%8C%EB%A1%9C%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EA%B8%B0%ED%9A%8D.html",
 "image": "/log_assets/images/077_%EC%9C%84%EA%B8%B0%EB%A5%BC%20%EA%B8%B0%ED%9A%8C%EB%A1%9C%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EA%B8%B0%ED%9A%8D_cover.jpg",
-"related": [
-11,
-28,
-29,
-30
-]
+"related": []
 },
 {
 "id": 78,
@@ -1070,12 +976,7 @@
 "date": "Jul 15. 2025",
 "url": "/log_assets/markdown/078_%EC%8B%9C%EB%A6%AC%EC%A6%88B%EC%9D%98%20%EB%8D%B0%EC%8A%A4%EB%B0%B8%EB%A6%AC.html",
 "image": "/log_assets/images/078_%EC%8B%9C%EB%A6%AC%EC%A6%88B%EC%9D%98%20%EB%8D%B0%EC%8A%A4%EB%B0%B8%EB%A6%AC_cover.jpg",
-"related": [
-11,
-28,
-29,
-30
-]
+"related": []
 },
 {
 "id": 79,
@@ -1183,10 +1084,7 @@
 "url": "/log_assets/markdown/086_%ED%95%9C%EA%B5%AD%20SaaS%EC%9D%98%20%EB%AF%B8%EA%B5%AD%20%EC%A7%84%EC%B6%9C%20%EC%8B%A4%ED%8C%A8%20%EC%9B%90%EC%9D%B8%20%EB%B6%84%EC%84%9D.html",
 "image": "/log_assets/images/086_%ED%95%9C%EA%B5%AD%20SaaS%EC%9D%98%20%EB%AF%B8%EA%B5%AD%20%EC%A7%84%EC%B6%9C%20%EC%8B%A4%ED%8C%A8%20%EC%9B%90%EC%9D%B8%20%EB%B6%84%EC%84%9D_cover.jpg",
 "related": [
-115,
-23,
-26,
-32
+115
 ]
 },
 {
@@ -1199,8 +1097,7 @@
 "related": [
 74,
 81,
-123,
-3
+123
 ]
 },
 {
@@ -1213,8 +1110,7 @@
 "related": [
 63,
 263,
-407,
-50
+407
 ]
 },
 {
@@ -1224,12 +1120,7 @@
 "date": "Jul 3. 2025",
 "url": "/log_assets/markdown/089_%EB%8C%80%ED%99%94%ED%98%95%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%EC%9D%98%20%EC%A7%84%ED%99%94%20Conversational%20UX.html",
 "image": "/log_assets/images/089_%EB%8C%80%ED%99%94%ED%98%95%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%EC%9D%98%20%EC%A7%84%ED%99%94%20Conversational%20UX_cover.jpg",
-"related": [
-1,
-8,
-34,
-45
-]
+"related": []
 },
 {
 "id": 90,
@@ -1238,12 +1129,7 @@
 "date": "Jul 2. 2025",
 "url": "/log_assets/markdown/090_AI%EB%AA%A8%EB%8D%B8%20%EA%B0%80%EC%86%8D%ED%99%94%EC%9D%98%20%EC%97%B4%EC%87%A0%2C%20Transformer%EB%B3%91%EB%AA%A9%EA%B0%9C%EC%84%A0.html",
 "image": "/log_assets/images/090_AI%EB%AA%A8%EB%8D%B8%20%EA%B0%80%EC%86%8D%ED%99%94%EC%9D%98%20%EC%97%B4%EC%87%A0%2C%20Transformer%EB%B3%91%EB%AA%A9%EA%B0%9C%EC%84%A0_cover.jpg",
-"related": [
-96,
-103,
-111,
-119
-]
+"related": []
 },
 {
 "id": 91,
@@ -1252,12 +1138,7 @@
 "date": "Jul 1. 2025",
 "url": "/log_assets/markdown/091_%ED%98%84%EC%9E%AC%EC%99%80%20%EB%AF%B8%EB%9E%98%EB%A5%BC%20%ED%95%A8%EA%BB%98%ED%95%9C%EB%8B%A4%203%20Horizons%20model.html",
 "image": "/log_assets/images/091_%ED%98%84%EC%9E%AC%EC%99%80%20%EB%AF%B8%EB%9E%98%EB%A5%BC%20%ED%95%A8%EA%BB%98%ED%95%9C%EB%8B%A4%203%20Horizons%20model_cover.jpg",
-"related": [
-97,
-104,
-112,
-120
-]
+"related": []
 },
 {
 "id": 92,
@@ -1266,12 +1147,7 @@
 "date": "Jun 30. 2025",
 "url": "/log_assets/markdown/092_%EB%93%9C%EB%A1%AD%EB%B0%95%EC%8A%A4%EA%B0%80%203900%ED%8D%BC%EC%84%BC%ED%8A%B8%20%EC%84%B1%EC%9E%A5%ED%95%9C%20%ED%95%98%EB%82%98%EC%9D%98%20%EB%B9%84%EB%B0%80.html",
 "image": "/log_assets/images/092_%EB%93%9C%EB%A1%AD%EB%B0%95%EC%8A%A4%EA%B0%80%203900%20%EC%84%B1%EC%9E%A5%ED%95%9C%20%ED%95%98%EB%82%98%EC%9D%98%20%EB%B9%84%EB%B0%80_cover.jpg",
-"related": [
-11,
-28,
-29,
-30
-]
+"related": []
 },
 {
 "id": 93,
@@ -1282,9 +1158,7 @@
 "image": "/log_assets/images/093_%EB%AF%B8%EA%B5%AD%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EB%A5%BC%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%A0%95%EC%9D%98%ED%95%98%EB%8A%94%EA%B0%80_cover.jpg",
 "related": [
 45,
-83,
-23,
-26
+83
 ]
 },
 {
@@ -1295,10 +1169,7 @@
 "url": "/log_assets/markdown/094_%EC%9A%B0%EB%A6%AC%20%ED%8C%80%EC%9D%80%20%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%BC%EA%B9%8C%2C%20%EC%8A%A4%ED%81%AC%EB%9F%BC%EC%9D%BC%EA%B9%8C%20%ED%97%B7%EA%B0%88%EB%A6%AC%EB%8A%94%20%EA%B0%9C%EB%85%90.html",
 "image": "/log_assets/images/094_%EC%9A%B0%EB%A6%AC%20%ED%8C%80%EC%9D%80%20%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%BC%EA%B9%8C%2C%20%EC%8A%A4%ED%81%AC%EB%9F%BC%EC%9D%BC%EA%B9%8C%20%ED%97%B7%EA%B0%88%EB%A6%AC%EB%8A%94%20%EA%B0%9C%EB%85%90_cover.jpg",
 "related": [
-256,
-50,
-57,
-63
+256
 ]
 },
 {
@@ -1308,12 +1179,7 @@
 "date": "Jun 26. 2025",
 "url": "/log_assets/markdown/095_%EC%98%A8%EB%B3%B4%EB%94%A9%2C%20%EB%B0%B0%EC%97%90%20%EC%98%A4%EB%A5%B4%EB%8B%A4%27%EC%97%90%EC%84%9C%20%EC%8B%9C%EC%9E%91%EB%90%9C%20UX%EC%9D%98%20%EC%B2%AB%EC%9D%B8%EC%83%81%20%EB%A7%88%EB%B2%95.html",
 "image": "/log_assets/images/095_%EC%98%A8%EB%B3%B4%EB%94%A9%2C%20%EB%B0%B0%EC%97%90%20%EC%98%A4%EB%A5%B4%EB%8B%A4%EC%97%90%EC%84%9C%20%EC%8B%9C%EC%9E%91%EB%90%9C%20UX%EC%9D%98%20%EC%B2%AB%EC%9D%B8%EC%83%81%20%EB%A7%88%EB%B2%95_cover.jpg",
-"related": [
-1,
-8,
-34,
-45
-]
+"related": []
 },
 {
 "id": 96,
@@ -1322,12 +1188,7 @@
 "date": "Jun 25. 2025",
 "url": "/log_assets/markdown/096_%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EA%B2%BD%EC%9F%81%EB%A0%A5%EC%97%90%20%EC%A0%80%EC%A0%84%EB%A0%A5%20NPU%EA%B0%80%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html",
 "image": "/log_assets/images/096_%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EA%B2%BD%EC%9F%81%EB%A0%A5%EC%97%90%20%EC%A0%80%EC%A0%84%EB%A0%A5%20NPU%EA%B0%80%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0_cover.jpg",
-"related": [
-90,
-103,
-111,
-119
-]
+"related": []
 },
 {
 "id": 97,
@@ -1336,12 +1197,7 @@
 "date": "Jun 24. 2025",
 "url": "/log_assets/markdown/097_MIT%20%EC%B0%BD%EC%97%85%EC%A0%84%EB%9E%B5%20%EB%82%98%EC%B9%A8%EB%B0%98%2C%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%B4%20%EA%B8%B8%EC%9D%84%20%EC%9E%83%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EB%B2%95.html",
 "image": "/log_assets/images/097_MIT%20%EC%B0%BD%EC%97%85%EC%A0%84%EB%9E%B5%20%EB%82%98%EC%B9%A8%EB%B0%98%2C%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%B4%20%EA%B8%B8%EC%9D%84%20%EC%9E%83%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EB%B2%95_cover.jpg",
-"related": [
-91,
-104,
-112,
-120
-]
+"related": []
 },
 {
 "id": 98,
@@ -1351,10 +1207,7 @@
 "url": "/log_assets/markdown/098_%EA%B0%80%EA%B2%A9%EC%A0%95%EC%B1%85%EC%9D%98%20%ED%98%81%EC%8B%A0%EC%9C%BC%EB%A1%9C%20%EB%8F%8C%ED%8C%8C%EA%B5%AC%EB%A5%BC%20%EC%B0%BE%EB%8B%A4%20Welo.html",
 "image": "/log_assets/images/098_%EA%B0%80%EA%B2%A9%EC%A0%95%EC%B1%85%EC%9D%98%20%ED%98%81%EC%8B%A0%EC%9C%BC%EB%A1%9C%20%EB%8F%8C%ED%8C%8C%EA%B5%AC%EB%A5%BC%20%EC%B0%BE%EB%8B%A4.%20Welo_cover.jpg",
 "related": [
-61,
-11,
-28,
-29
+61
 ]
 },
 {
@@ -1365,10 +1218,7 @@
 "url": "/log_assets/markdown/099_%EB%AF%B8%EA%B5%AD%EC%9D%98%20SaaS%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%EC%9D%84%20%ED%99%95%EB%B3%B4%ED%95%A0%EA%B9%8C.html",
 "image": "/log_assets/images/099_%EB%AF%B8%EA%B5%AD%EC%9D%98%20SaaS%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%EC%9D%84%20%ED%99%95%EB%B3%B4%ED%95%A0%EA%B9%8C_cover.jpg",
 "related": [
-186,
-23,
-26,
-32
+186
 ]
 },
 {
@@ -1409,8 +1259,7 @@
 "related": [
 110,
 257,
-41,
-1
+41
 ]
 },
 {
@@ -1435,10 +1284,7 @@
 "url": "/log_assets/markdown/104_%EA%B0%80%EC%B9%98%EC%82%AC%EC%8A%AC%20%EB%B6%84%EC%84%9D%2C%20%EB%8F%88%EC%9D%B4%20%EB%A7%8C%EB%93%A4%EC%96%B4%EC%A7%80%EB%8A%94%20%EC%A7%80%EC%A0%90%EC%9D%84%20%EC%B0%BE%EB%8A%94%20%EB%B2%95.html",
 "image": "/log_assets/images/104_%EA%B0%80%EC%B9%98%EC%82%AC%EC%8A%AC%20%EB%B6%84%EC%84%9D%2C%20%EB%8F%88%EC%9D%B4%20%EB%A7%8C%EB%93%A4%EC%96%B4%EC%A7%80%EB%8A%94%20%EC%A7%80%EC%A0%90%EC%9D%84%20%EC%B0%BE%EB%8A%94%20%EB%B2%95_cover.jpg",
 "related": [
-208,
-91,
-97,
-112
+208
 ]
 },
 {
@@ -1448,12 +1294,7 @@
 "date": "Jun 16. 2025",
 "url": "/log_assets/markdown/106_2%EC%B2%9C%EB%A7%8C%EC%9B%90%EC%9C%BC%EB%A1%9C%2010%EC%96%B5%EC%9B%90%20%EB%A7%A4%EC%B6%9C%EC%9D%84%2C%20%EC%95%88%ED%8B%B0%EB%A9%94%ED%83%88%EC%9D%98%20%EB%B0%94%EC%9D%B4%EB%9F%B4%EC%A0%84%EB%9E%B5.html",
 "image": "/log_assets/images/106_2%EC%B2%9C%EB%A7%8C%EC%9B%90%EC%9C%BC%EB%A1%9C%2010%EC%96%B5%EC%9B%90%20%EB%A7%A4%EC%B6%9C%EC%9D%84%2C%20%EC%95%88%ED%8B%B0%EB%A9%94%ED%83%88%EC%9D%98%20%EB%B0%94%EC%9D%B4%EB%9F%B4%EC%A0%84%EB%9E%B5_cover.jpg",
-"related": [
-11,
-28,
-29,
-30
-]
+"related": []
 },
 {
 "id": 107,
@@ -1465,8 +1306,7 @@
 "related": [
 23,
 294,
-172,
-26
+172
 ]
 },
 {
@@ -1506,9 +1346,7 @@
 "image": "/log_assets/images/110_%EA%B7%B8%EB%A6%AC%EB%93%9C%20%EC%8B%9C%EC%8A%A4%ED%85%9C%2C%20%EA%B5%AC%EA%B8%80%20%EC%95%A0%ED%94%8C%EC%9D%B4%20%EC%82%AC%EB%9E%91%ED%95%9C%20%EA%B2%A9%EC%9E%90%20%EA%B5%AC%EC%A1%B0_cover.jpg",
 "related": [
 102,
-257,
-1,
-8
+257
 ]
 },
 {
@@ -1532,12 +1370,7 @@
 "date": "Jun 10. 2025",
 "url": "/log_assets/markdown/112_%27%ED%8F%AC%ED%84%B0%EC%9D%98%205%20Forces%27%20%EC%A0%84%EC%9F%81%ED%84%B0%EB%A5%BC%20%EB%B6%84%EC%84%9D%ED%95%98%EB%8A%94%20%EB%B2%95.html",
 "image": "/log_assets/images/112_%ED%8F%AC%ED%84%B0%EC%9D%98%205%20Forces%20%EC%A0%84%EC%9F%81%ED%84%B0%EB%A5%BC%20%EB%B6%84%EC%84%9D%ED%95%98%EB%8A%94%20%EB%B2%95_cover.jpg",
-"related": [
-91,
-97,
-104,
-120
-]
+"related": []
 },
 {
 "id": 113,
@@ -1560,12 +1393,7 @@
 "date": "Jun 8. 2025",
 "url": "/log_assets/markdown/114_%EC%B1%85%EC%9D%84%20%EC%93%B0%EB%A9%B4%EC%84%9C%20%EB%8A%90%EB%82%80%20%EA%B2%83%EB%93%A4.html",
 "image": "/log_assets/images/114_%EC%B1%85%EC%9D%84%20%EC%93%B0%EB%A9%B4%EC%84%9C%20%EB%8A%90%EB%82%80%20%EA%B2%83%EB%93%A4..._cover.jpg",
-"related": [
-3,
-5,
-10,
-12
-]
+"related": []
 },
 {
 "id": 115,
@@ -1575,10 +1403,7 @@
 "url": "/log_assets/markdown/115_%EB%AF%B8%EA%B5%AD%20%EC%86%8C%EB%B9%84%EC%9E%90%EB%8A%94%20%EC%A7%84%EC%A7%9C%20%27%EB%8B%AC%EB%9D%BC%27.html",
 "image": "/log_assets/images/115_%EB%AF%B8%EA%B5%AD%20%EC%86%8C%EB%B9%84%EC%9E%90%EB%8A%94%20%EC%A7%84%EC%A7%9C%20%EB%8B%AC%EB%9D%BC_cover.jpg",
 "related": [
-86,
-23,
-26,
-32
+86
 ]
 },
 {
@@ -1604,9 +1429,7 @@
 "image": "/log_assets/images/117_AI%EA%B0%80%20PO%EB%A5%BC%20%EB%8C%80%EC%B2%B4%ED%95%9C%EB%8B%A4%20%EB%B3%80%ED%99%94%EC%97%90%EC%84%9C%20PO%EA%B0%80%20%EC%82%B4%EC%95%84%EB%82%A8%EB%8A%94%20%EB%B2%95_cover.jpg",
 "related": [
 277,
-558,
-50,
-57
+558
 ]
 },
 {
@@ -1616,12 +1439,7 @@
 "date": "Jun 5. 2025",
 "url": "/log_assets/markdown/118_%27%ED%9B%8C%EB%A5%AD%ED%95%9C%20%EC%A7%88%EB%AC%B8%EC%9D%B4%EB%84%A4%EC%9A%94%27%20AI%EC%9D%98%20%EC%B9%AD%EC%B0%AC%20UX%EC%9D%98%20%EC%A7%84%EC%8B%A4.html",
 "image": "/log_assets/images/118_%ED%9B%8C%EB%A5%AD%ED%95%9C%20%EC%A7%88%EB%AC%B8%EC%9D%B4%EB%84%A4%EC%9A%94%21%20AI%EC%9D%98%20%EC%B9%AD%EC%B0%AC%20UX%EC%9D%98%20%EC%A7%84%EC%8B%A4_cover.jpg",
-"related": [
-1,
-8,
-34,
-45
-]
+"related": []
 },
 {
 "id": 119,
@@ -1644,12 +1462,7 @@
 "date": "Jun 3. 2025",
 "url": "/log_assets/markdown/120_UX%205%20Planes%2C%20%EA%B2%BD%ED%97%98%20%EC%84%A4%EA%B3%84%EC%9D%98%20%EC%A7%80%EB%8F%84.html",
 "image": "/log_assets/images/120_UX%205%20Planes%2C%20%EA%B2%BD%ED%97%98%20%EC%84%A4%EA%B3%84%EC%9D%98%20%EC%A7%80%EB%8F%84_cover.jpg",
-"related": [
-91,
-97,
-104,
-112
-]
+"related": []
 },
 {
 "id": 121,
@@ -1672,12 +1485,7 @@
 "date": "Jun 1. 2025",
 "url": "/log_assets/markdown/122_%EB%AF%B8%EA%B5%AD%20%EC%A7%84%EC%B6%9C%EC%9D%80%20%EB%88%84%EA%B5%AC%EC%97%90%EA%B2%8C%20%ED%95%84%EC%9A%94%ED%95%9C%20%EC%A0%84%EB%9E%B5%EC%9D%B8%EA%B0%80.html",
 "image": "/log_assets/images/122_%EB%AF%B8%EA%B5%AD%20%EC%A7%84%EC%B6%9C%EC%9D%80%20%EB%88%84%EA%B5%AC%EC%97%90%EA%B2%8C%20%ED%95%84%EC%9A%94%ED%95%9C%20%EC%A0%84%EB%9E%B5%EC%9D%B8%EA%B0%80_cover.jpg",
-"related": [
-23,
-26,
-32,
-37
-]
+"related": []
 },
 {
 "id": 123,
@@ -1700,12 +1508,7 @@
 "date": "May 30. 2025",
 "url": "/log_assets/markdown/124_DevOps%2C%20%EA%B0%9C%EB%B0%9C%EA%B3%BC%20%EC%9A%B4%EC%98%81%EC%9D%98%20%EA%B2%BD%EA%B3%84%EB%A5%BC%20%ED%97%88%EB%AC%BC%EB%8B%A4.html",
 "image": "/log_assets/images/124_DevOps%2C%20%EA%B0%9C%EB%B0%9C%EA%B3%BC%20%EC%9A%B4%EC%98%81%EC%9D%98%20%EA%B2%BD%EA%B3%84%EB%A5%BC%20%ED%97%88%EB%AC%BC%EB%8B%A4_cover.jpg",
-"related": [
-50,
-57,
-63,
-75
-]
+"related": []
 },
 {
 "id": 125,
@@ -1715,10 +1518,7 @@
 "url": "/log_assets/markdown/125_%ED%9E%88%ED%8A%B8%EB%A7%B5%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%ED%96%89%EB%8F%99%EC%9D%84%20%EC%83%89%EC%9C%BC%EB%A1%9C%20%EC%9D%BD%EB%8A%94%20%EB%B2%95.html",
 "image": "/log_assets/images/125_%ED%9E%88%ED%8A%B8%EB%A7%B5%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%ED%96%89%EB%8F%99%EC%9D%84%20%EC%83%89%EC%9C%BC%EB%A1%9C%20%EC%9D%BD%EB%8A%94%20%EB%B2%95_cover.jpg",
 "related": [
-133,
-1,
-8,
-34
+133
 ]
 },
 {
@@ -1841,10 +1641,7 @@
 "url": "/log_assets/markdown/134_AI%20%EB%AA%A8%EB%8D%B8%EC%9D%98%20%ED%95%99%EC%83%9D%EA%B3%BC%20%EC%A1%B8%EC%97%85%EC%83%9D%2C%20%ED%95%99%EC%8A%B5%EA%B3%BC%20%EC%B6%94%EB%A1%A0%EC%9D%98%20%EC%B0%A8%EC%9D%B4%EC%A0%90.html",
 "image": "/log_assets/images/134_AI%20%EB%AA%A8%EB%8D%B8%EC%9D%98%20%ED%95%99%EC%83%9D%EA%B3%BC%20%EC%A1%B8%EC%97%85%EC%83%9D%2C%20%ED%95%99%EC%8A%B5%EA%B3%BC%20%EC%B6%94%EB%A1%A0%EC%9D%98%20%EC%B0%A8%EC%9D%B4%EC%A0%90_cover.jpg",
 "related": [
-191,
-90,
-96,
-103
+191
 ]
 },
 {
@@ -1856,9 +1653,7 @@
 "image": "/log_assets/images/135_%EC%A0%9C%ED%92%88%EC%9D%98%20%EC%83%9D%EB%AA%85%EC%84%A0%2C%20Retention%20Curve_cover.jpg",
 "related": [
 142,
-487,
-91,
-97
+487
 ]
 },
 {
@@ -1868,12 +1663,7 @@
 "date": "May 19. 2025",
 "url": "/log_assets/markdown/136_%EB%82%B4%EA%B0%80%20%EA%B2%AA%EB%8A%94%20%EB%B6%88%ED%8E%B8%ED%95%A8%EC%9D%B4%20%EC%82%AC%EC%97%85%20%EC%95%84%EC%9D%B4%ED%85%9C%EC%9D%B4%EB%8B%A4%2C%20%27%EB%94%94%EC%8A%A4%EC%BD%94%EB%93%9C%27.html",
 "image": "/log_assets/images/136_%EB%82%B4%EA%B0%80%20%EA%B2%AA%EB%8A%94%20%EB%B6%88%ED%8E%B8%ED%95%A8%EC%9D%B4%20%EC%82%AC%EC%97%85%20%EC%95%84%EC%9D%B4%ED%85%9C%EC%9D%B4%EB%8B%A4%2C%20%EB%94%94%EC%8A%A4%EC%BD%94%EB%93%9C_cover.jpg",
-"related": [
-11,
-28,
-29,
-30
-]
+"related": []
 },
 {
 "id": 137,
@@ -1883,10 +1673,7 @@
 "url": "/log_assets/markdown/137_Perplexity%235%20%EC%9E%90%EC%B2%B4%20%EA%B5%AC%EC%B6%95%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EB%A1%9C%EB%93%9C%EB%A7%B5.html",
 "image": "/log_assets/images/137_Perplexity5%20%EC%9E%90%EC%B2%B4%20%EA%B5%AC%EC%B6%95%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EB%A1%9C%EB%93%9C%EB%A7%B5_cover.jpg",
 "related": [
-167,
-11,
-28,
-29
+167
 ]
 },
 {
@@ -1967,10 +1754,7 @@
 "url": "/log_assets/markdown/143_%EC%97%90%EC%96%B4%EB%A7%A4%ED%8A%B8%EC%97%90%EC%84%9C%20%EC%8B%9C%EC%9E%91%EB%90%9C%2C%20%EC%97%90%EC%96%B4%EB%B9%84%EC%95%A4%EB%B9%84%EC%9D%98%20%EB%AC%B4%EC%9E%90%EB%B3%B8%20%EC%B0%BD%EC%97%85%20%EC%A0%84%EB%9E%B5.html",
 "image": "/log_assets/images/143_%EC%97%90%EC%96%B4%EB%A7%A4%ED%8A%B8%EC%97%90%EC%84%9C%20%EC%8B%9C%EC%9E%91%EB%90%9C%2C%20%EC%97%90%EC%96%B4%EB%B9%84%EC%95%A4%EB%B9%84%EC%9D%98%20%EB%AC%B4%EC%9E%90%EB%B3%B8%20%EC%B0%BD%EC%97%85%20%EC%A0%84%EB%9E%B5_cover.jpg",
 "related": [
-33,
-11,
-28,
-29
+33
 ]
 },
 {
@@ -1980,12 +1764,7 @@
 "date": "May 11. 2025",
 "url": "/log_assets/markdown/144_Perplexity%234%20%EB%8C%80%ED%99%94%ED%98%95%20UX%20%EA%B5%AC%EC%A1%B0%EC%99%80%20%EC%BF%BC%EB%A6%AC%20%EB%B6%84%EA%B8%B0.html",
 "image": "/log_assets/images/144_Perplexity4%20%EB%8C%80%ED%99%94%ED%98%95%20UX%20%EA%B5%AC%EC%A1%B0%EC%99%80%20%EC%BF%BC%EB%A6%AC%20%EB%B6%84%EA%B8%B0_cover.jpg",
-"related": [
-11,
-28,
-29,
-30
-]
+"related": []
 },
 {
 "id": 145,
@@ -2022,12 +1801,7 @@
 "date": "May 8. 2025",
 "url": "/log_assets/markdown/147_%EC%95%B1%20%EC%84%B1%EB%8A%A5%EA%B3%BC%20UX%EC%B5%9C%EC%A0%81%ED%99%94%EA%B0%80%20%EB%A7%A4%EC%B6%9C%EC%9D%84%20%EC%A2%8C%EC%9A%B0%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html",
 "image": "/log_assets/images/147_%EC%95%B1%20%EC%84%B1%EB%8A%A5%EA%B3%BC%20UX%EC%B5%9C%EC%A0%81%ED%99%94%EA%B0%80%20%EB%A7%A4%EC%B6%9C%EC%9D%84%20%EC%A2%8C%EC%9A%B0%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0_cover.jpg",
-"related": [
-1,
-8,
-34,
-45
-]
+"related": []
 },
 {
 "id": 148,
@@ -2038,9 +1812,7 @@
 "image": "/log_assets/images/148_AI%EB%AA%A8%EB%8D%B8%20%ED%95%99%EC%8A%B5%EC%97%90%20%EB%82%A0%EA%B0%9C%EB%A5%BC%20%EB%8B%AC%EC%9E%90%21%20%ED%98%BC%ED%95%A9%20%EC%A0%95%EB%B0%80%EB%8F%84%EC%9D%98%20%EB%A7%88%EB%B2%95_cover.jpg",
 "related": [
 162,
-199,
-90,
-96
+199
 ]
 },
 {
@@ -2051,10 +1823,7 @@
 "url": "/log_assets/markdown/149_%27Lean%20Canvas%27%20%ED%95%98%EB%A3%A8%EB%A7%8C%EC%97%90%20%EA%B7%B8%EB%A6%AC%EB%8A%94%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%B2%AD%EC%82%AC%EC%A7%84.html",
 "image": "/log_assets/images/149_Lean%20Canvas%20%ED%95%98%EB%A3%A8%EB%A7%8C%EC%97%90%20%EA%B7%B8%EB%A6%AC%EB%8A%94%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%B2%AD%EC%82%AC%EC%A7%84_cover.jpg",
 "related": [
-244,
-91,
-97,
-104
+244
 ]
 },
 {
@@ -2079,10 +1848,7 @@
 "url": "/log_assets/markdown/151_Perplexity%20%233%20%EA%B2%80%EC%83%89%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%EA%B5%AC%EC%A1%B0%20%EC%84%A4%EA%B3%84.html",
 "image": "/log_assets/images/151_Perplexity%203%20%EA%B2%80%EC%83%89%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%EA%B5%AC%EC%A1%B0%20%EC%84%A4%EA%B3%84_cover.jpg",
 "related": [
-165,
-11,
-28,
-29
+165
 ]
 },
 {
@@ -2093,10 +1859,7 @@
 "url": "/log_assets/markdown/152_%EC%9E%90%EC%82%B4%EC%B9%B4%ED%8E%98%20%EC%9A%B4%EC%98%81%EC%9E%90%EB%A5%BC%20%EB%A7%8C%EB%82%98%EB%8B%A4.html",
 "image": "/log_assets/images/152_%EC%9E%90%EC%82%B4%EC%B9%B4%ED%8E%98%20%EC%9A%B4%EC%98%81%EC%9E%90%EB%A5%BC%20%EB%A7%8C%EB%82%98%EB%8B%A4._cover.jpg",
 "related": [
-461,
-2,
-4,
-7
+461
 ]
 },
 {
@@ -2106,12 +1869,7 @@
 "date": "May 2. 2025",
 "url": "/log_assets/markdown/153_%EB%82%AD%EB%B9%84%EB%8A%94%20%EC%A4%84%EC%9D%B4%EA%B3%A0%20%EA%B0%80%EC%B9%98%EB%8A%94%20%EB%86%92%EC%9D%B4%EB%8A%94%20%27%EB%A6%B0%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B4%80%EB%A6%AC%27.html",
 "image": "/log_assets/images/153_%EB%82%AD%EB%B9%84%EB%8A%94%20%EC%A4%84%EC%9D%B4%EA%B3%A0%20%EA%B0%80%EC%B9%98%EB%8A%94%20%EB%86%92%EC%9D%B4%EB%8A%94%20%EB%A6%B0%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B4%80%EB%A6%AC_cover.jpg",
-"related": [
-50,
-57,
-63,
-75
-]
+"related": []
 },
 {
 "id": 154,
@@ -2120,12 +1878,7 @@
 "date": "May 1. 2025",
 "url": "/log_assets/markdown/154_%EB%86%93%EC%B9%98%EB%A9%B4%20%ED%9B%84%ED%9A%8C%ED%95%A0%20%EA%B1%B0%EC%95%BC%20%20FOMO%20UX.html",
 "image": "/log_assets/images/154_%EB%86%93%EC%B9%98%EB%A9%B4%20%ED%9B%84%ED%9A%8C%ED%95%A0%20%EA%B1%B0%EC%95%BC%21%20%20FOMO%20UX_cover.jpg",
-"related": [
-1,
-8,
-34,
-45
-]
+"related": []
 },
 {
 "id": 155,
@@ -2134,12 +1887,7 @@
 "date": "Apr 30. 2025",
 "url": "/log_assets/markdown/155_AI%20%EC%9D%B8%ED%94%84%EB%9D%BC%20%EB%B9%84%EC%9A%A9%20%EC%A0%88%EA%B0%90%EC%9D%98%20%EB%B9%84%EB%B0%80%2C%20%ED%9D%AC%EC%86%8C%20%EC%97%B0%EC%82%B0%EA%B3%BC%20%EA%B0%80%EC%A7%80%EC%B9%98%EA%B8%B0.html",
 "image": "/log_assets/images/155_AI%20%EC%9D%B8%ED%94%84%EB%9D%BC%20%EB%B9%84%EC%9A%A9%20%EC%A0%88%EA%B0%90%EC%9D%98%20%EB%B9%84%EB%B0%80%2C%20%ED%9D%AC%EC%86%8C%20%EC%97%B0%EC%82%B0%EA%B3%BC%20%EA%B0%80%EC%A7%80%EC%B9%98%EA%B8%B0_cover.jpg",
-"related": [
-90,
-96,
-103,
-111
-]
+"related": []
 },
 {
 "id": 156,
@@ -2148,12 +1896,7 @@
 "date": "Apr 29. 2025",
 "url": "/log_assets/markdown/156_%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%9D%BC%EB%A9%B4%20%EA%BC%AD%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%20LTVCAC%EC%9D%98%20%EC%A7%84%EC%A7%9C%20%EC%9D%98%EB%AF%B8.html",
 "image": "/log_assets/images/156_%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%9D%BC%EB%A9%B4%20%EA%BC%AD%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%20LTVCAC%EC%9D%98%EC%A7%84%EC%A7%9C%20%EC%9D%98%EB%AF%B8_cover.jpg",
-"related": [
-91,
-97,
-104,
-112
-]
+"related": []
 },
 {
 "id": 157,
@@ -2233,10 +1976,7 @@
 "url": "/log_assets/markdown/162_AI%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%EC%88%A8%EC%9D%80%20%EC%98%81%EC%9B%85%2C%20FP16%2C%20BF16%2C%20FP8.html",
 "image": "/log_assets/images/162_AI%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%EC%88%A8%EC%9D%80%20%EC%98%81%EC%9B%85%2C%20FP16%2C%20BF16%2C%20FP8_cover.jpg",
 "related": [
-148,
-90,
-96,
-103
+148
 ]
 },
 {
@@ -2260,12 +2000,7 @@
 "date": "Apr 21. 2025",
 "url": "/log_assets/markdown/164_%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%20%EC%82%AC%EB%A1%80%EB%A1%9C%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%ED%95%B5%EC%8B%AC%20%EC%A7%80%ED%91%9C%20%EC%84%A4%EC%A0%95%EB%B2%95.html",
 "image": "/log_assets/images/164_%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%20%EC%82%AC%EB%A1%80%EB%A1%9C%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%ED%95%B5%EC%8B%AC%20%EC%A7%80%ED%91%9C%20%EC%84%A4%EC%A0%95%EB%B2%95_cover.jpg",
-"related": [
-11,
-28,
-29,
-30
-]
+"related": []
 },
 {
 "id": 165,
@@ -2275,10 +2010,7 @@
 "url": "/log_assets/markdown/165_Perplexity%20%232%20%EA%B2%80%EC%83%89%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%EA%B5%AC%EC%A1%B0%20%EC%84%A4%EA%B3%84.html",
 "image": "/log_assets/images/165_Perplexity%202%20%EA%B2%80%EC%83%89%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%EA%B5%AC%EC%A1%B0%20%EC%84%A4%EA%B3%84_cover.jpg",
 "related": [
-151,
-11,
-28,
-29
+151
 ]
 },
 {
@@ -2303,10 +2035,7 @@
 "url": "/log_assets/markdown/167_Perplexity%20%231%20%EA%B2%80%EC%83%89%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EB%84%98%EC%96%B4%EC%84%9C.html",
 "image": "/log_assets/images/167_Perplexity%201%20%EA%B2%80%EC%83%89%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EB%84%98%EC%96%B4%EC%84%9C_cover.jpg",
 "related": [
-137,
-11,
-28,
-29
+137
 ]
 },
 {
@@ -2332,9 +2061,7 @@
 "image": "/log_assets/images/169_%EA%B2%B0%EC%A0%9C%ED%95%98%EA%B8%B0%20%EB%B2%84%ED%8A%BC%20%ED%95%98%EB%82%98%EB%A1%9C%20%EB%A7%A4%EC%B6%9C%EC%9D%84%20%EB%86%92%EC%9D%B4%EB%8A%94%20UX_cover.jpg",
 "related": [
 133,
-219,
-1,
-8
+219
 ]
 },
 {
@@ -2374,9 +2101,7 @@
 "image": "/log_assets/images/172_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%B0%BD%EC%97%85%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%ED%95%98%EB%82%98%EC%9A%94_cover.jpg",
 "related": [
 386,
-107,
-11,
-28
+107
 ]
 },
 {
@@ -2388,9 +2113,7 @@
 "image": "/log_assets/images/173_%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%205%20%ED%95%9C%EA%B5%AD%ED%98%95%20%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%20%EA%B0%80%EB%8A%A5%ED%95%A0%EA%B9%8C_cover.jpg",
 "related": [
 180,
-187,
-11,
-28
+187
 ]
 },
 {
@@ -2470,12 +2193,7 @@
 "date": "Apr 7. 2025",
 "url": "/log_assets/markdown/179_%EC%9D%B4%EB%A9%94%EC%9D%BC%EB%8F%84%20%ED%85%8C%EC%8A%AC%EB%9D%BC%EC%B2%98%EB%9F%BC%20%27Superhuman%27%20%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%EC%A0%84%EB%9E%B5.html",
 "image": "/log_assets/images/179_%EC%9D%B4%EB%A9%94%EC%9D%BC%EB%8F%84%20%ED%85%8C%EC%8A%AC%EB%9D%BC%EC%B2%98%EB%9F%BC%20Superhuman%20%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%EC%A0%84%EB%9E%B5_cover.jpg",
-"related": [
-11,
-28,
-29,
-30
-]
+"related": []
 },
 {
 "id": 180,
@@ -2486,9 +2204,7 @@
 "image": "/log_assets/images/180_%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%204%20Apollo%20%ED%98%81%EC%8B%A0%EC%9D%98%20%EB%B0%B0%ED%8F%AC%20%ED%94%8C%EB%9E%AB%ED%8F%BC_cover.jpg",
 "related": [
 173,
-187,
-11,
-28
+187
 ]
 },
 {
@@ -2584,9 +2300,7 @@
 "image": "/log_assets/images/187_%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%203%20Foundry%20%EA%B8%B0%EC%97%85%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B6%84%EC%84%9D%ED%94%8C%EB%9E%AB%ED%8F%BC_cover.jpg",
 "related": [
 173,
-180,
-11,
-28
+180
 ]
 },
 {
@@ -2666,12 +2380,7 @@
 "date": "Mar 24. 2025",
 "url": "/log_assets/markdown/193_AI%EB%A1%9C%20UI%EA%B0%9C%EB%B0%9C%20%EC%86%8D%EB%8F%84%EB%A5%BC%2010%EB%B0%B0%EB%A1%9C%20%EB%A7%8C%EB%93%A4%EB%8B%A4%20%27V0%27.html",
 "image": "/log_assets/images/193_AI%EB%A1%9C%20UI%EA%B0%9C%EB%B0%9C%20%EC%86%8D%EB%8F%84%EB%A5%BC%2010%EB%B0%B0%EB%A1%9C%20%EB%A7%8C%EB%93%A4%EB%8B%A4.%20V0_cover.jpg",
-"related": [
-11,
-28,
-29,
-30
-]
+"related": []
 },
 {
 "id": 194,
@@ -2778,12 +2487,7 @@
 "date": "Mar 17. 2025",
 "url": "/log_assets/markdown/201_3%EC%96%B5%EC%9D%B4%20%ED%99%80%EB%A6%AD%ED%95%98%EB%8A%94%20%27%EB%A6%B4%EC%88%8F%27%EC%9D%98%20%ED%8B%88%EC%83%88%EC%8B%9C%EC%9E%A5%20%EA%B3%B5%EB%9E%B5%20%EC%A0%84%EB%9E%B5.html",
 "image": "/log_assets/images/201_3%EC%96%B5%EC%9D%B4%20%ED%99%80%EB%A6%AD%ED%95%98%EB%8A%94%20%EB%A6%B4%EC%88%8F%EC%9D%98%20%ED%8B%88%EC%83%88%EC%8B%9C%EC%9E%A5%20%EA%B3%B5%EB%9E%B5%20%EC%A0%84%EB%9E%B5_cover.jpg",
-"related": [
-11,
-28,
-29,
-30
-]
+"related": []
 },
 {
 "id": 202,
@@ -2807,10 +2511,7 @@
 "url": "/log_assets/markdown/203_%EC%84%B1%EC%9E%A5%EC%9D%98%20%EA%B0%80%EC%9E%A5%20%ED%81%B0%20%EB%B9%84%EB%B0%80%20%EC%A7%80%EB%A3%A8%ED%95%A8.html",
 "image": "/log_assets/images/203_%EC%84%B1%EC%9E%A5%EC%9D%98%20%EA%B0%80%EC%9E%A5%20%ED%81%B0%20%EB%B9%84%EB%B0%80...%20%EC%A7%80%EB%A3%A8%ED%95%A8_cover.jpg",
 "related": [
-196,
-3,
-5,
-10
+196
 ]
 },
 {
@@ -2848,12 +2549,7 @@
 "date": "Mar 12. 2025",
 "url": "/log_assets/markdown/206_%ED%8F%89%EB%B2%94%EC%9D%84%20%EA%B1%B0%EB%B6%80%ED%95%9C%EB%8B%A4%20%27%ED%97%A4%EB%8D%94%EC%9C%85%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%27.html",
 "image": "/log_assets/images/206_%ED%8F%89%EB%B2%94%EC%9D%84%20%EA%B1%B0%EB%B6%80%ED%95%9C%EB%8B%A4.%20%ED%97%A4%EB%8D%94%EC%9C%85%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4_cover.jpg",
-"related": [
-11,
-28,
-29,
-30
-]
+"related": []
 },
 {
 "id": 207,
@@ -2877,10 +2573,7 @@
 "url": "/log_assets/markdown/208_SWOT%20%EB%B9%84%EC%A7%80%EB%8B%88%EC%8A%A4%EC%9D%98%204%EC%B0%A8%EC%9B%90%20%EB%B6%84%EC%84%9D%EB%B2%95.html",
 "image": "/log_assets/images/208_SWOT%20%EB%B9%84%EC%A7%80%EB%8B%88%EC%8A%A4%EC%9D%98%204%EC%B0%A8%EC%9B%90%20%EB%B6%84%EC%84%9D%EB%B2%95_cover.jpg",
 "related": [
-104,
-91,
-97,
-112
+104
 ]
 },
 {
@@ -2905,10 +2598,7 @@
 "url": "/log_assets/markdown/210_%EC%BD%94%EB%93%9C%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EA%B9%A8%EB%8A%94%20AI%20%ED%98%81%EC%8B%A0%2C%20Cursor%20AI.html",
 "image": "/log_assets/images/210_%EC%BD%94%EB%93%9C%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EA%B9%A8%EB%8A%94%20AI%20%ED%98%81%EC%8B%A0%2C%20Cursor%20AI_cover.jpg",
 "related": [
-113,
-11,
-28,
-29
+113
 ]
 },
 {
@@ -2947,10 +2637,7 @@
 "url": "/log_assets/markdown/213_%EC%BD%98%ED%85%90%EC%B8%A0%EB%A5%BC%20%EB%A7%9B%EC%9E%88%EA%B2%8C%20%ED%95%98%EB%8A%94%20UX%20%EB%A0%88%EC%9D%B4%EC%96%B4%20%EC%BC%80%EC%9D%B4%ED%81%AC%20%ED%8C%A8%ED%84%B4.html",
 "image": "/log_assets/images/213_%EC%BD%98%ED%85%90%EC%B8%A0%EB%A5%BC%20%EB%A7%9B%EC%9E%88%EA%B2%8C%20%ED%95%98%EB%8A%94%20UX%20%EB%A0%88%EC%9D%B4%EC%96%B4%20%EC%BC%80%EC%9D%B4%ED%81%AC%20%ED%8C%A8%ED%84%B4_cover.jpg",
 "related": [
-219,
-1,
-8,
-34
+219
 ]
 },
 {
@@ -3115,10 +2802,7 @@
 "url": "/log_assets/markdown/225_%EC%83%9D%EC%82%B0%EC%84%B1%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%ED%95%A8%EC%A0%95.html",
 "image": "/log_assets/images/225_%EC%83%9D%EC%82%B0%EC%84%B1%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%ED%95%A8%EC%A0%95_cover.jpg",
 "related": [
-596,
-3,
-5,
-10
+596
 ]
 },
 {
@@ -3156,12 +2840,7 @@
 "date": "Feb 19. 2025",
 "url": "/log_assets/markdown/228_1000%ED%8D%BC%EC%84%BC%ED%8A%B8%EC%9D%98%20%EC%84%B1%EC%9E%A5%20%27%EC%95%B1%EB%9F%AC%EB%B9%88%27%EC%9D%98%20%EC%88%A8%EA%B2%A8%EC%A7%84%20%EC%84%B1%EA%B3%B5%EA%B3%B5%EC%8B%9D.html",
 "image": "/log_assets/images/228_1000%EC%9D%98%20%EC%84%B1%EC%9E%A5%20%EC%95%B1%EB%9F%AC%EB%B9%88%EC%9D%98%20%EC%88%A8%EA%B2%A8%EC%A7%84%20%EC%84%B1%EA%B3%B5%EA%B3%B5%EC%8B%9D_cover.jpg",
-"related": [
-11,
-28,
-29,
-30
-]
+"related": []
 },
 {
 "id": 229,
@@ -3184,12 +2863,7 @@
 "date": "Feb 17. 2025",
 "url": "/log_assets/markdown/230_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%84%B1%EA%B3%B5%EC%9D%80%20%27%EC%88%AB%EC%9E%90%27%EC%97%90%20%EC%88%A8%EC%96%B4%EC%9E%88%EB%8B%A4.html",
 "image": "/log_assets/images/230_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%84%B1%EA%B3%B5%EC%9D%80%20%EC%88%AB%EC%9E%90%EC%97%90%20%EC%88%A8%EC%96%B4%EC%9E%88%EB%8B%A4_cover.jpg",
-"related": [
-11,
-28,
-29,
-30
-]
+"related": []
 },
 {
 "id": 231,
@@ -3200,9 +2874,7 @@
 "image": "/log_assets/images/231_%EA%B2%8C%EC%9E%84%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%97%90%EC%84%9C%20AI%20%EC%98%81%EC%83%81%20%ED%98%81%EC%8B%A0%EA%B0%80%EB%A1%9C%2C%20%EC%8B%9C%EB%82%98%EB%AA%AC%EC%9D%98%20%EB%8F%84%EC%A0%84_cover.jpg",
 "related": [
 238,
-23,
-11,
-28
+23
 ]
 },
 {
@@ -3226,12 +2898,7 @@
 "date": "Feb 14. 2025",
 "url": "/log_assets/markdown/233_%EC%A0%9C%ED%92%88%20%EB%B0%B1%EB%A1%9C%EA%B7%B8%2C%20%EB%8B%A8%EC%88%9C%ED%95%9C%20TO-DO%20%EB%A6%AC%EC%8A%A4%ED%8A%B8%EA%B0%80%20%EC%95%84%EB%8B%88%EB%8B%A4.html",
 "image": "/log_assets/images/233_%EC%A0%9C%ED%92%88%20%EB%B0%B1%EB%A1%9C%EA%B7%B8%2C%20%EB%8B%A8%EC%88%9C%ED%95%9C%20TO-DO%20%EB%A6%AC%EC%8A%A4%ED%8A%B8%EA%B0%80%20%EC%95%84%EB%8B%88%EB%8B%A4_cover.jpg",
-"related": [
-50,
-57,
-63,
-75
-]
+"related": []
 },
 {
 "id": 234,
@@ -3240,12 +2907,7 @@
 "date": "Feb 13. 2025",
 "url": "/log_assets/markdown/234_%EC%B1%97GPT%EA%B0%80%20%EC%89%BD%EB%8B%A4%EA%B3%A0%20%EB%8A%90%EA%BB%B4%EC%A7%80%EB%8A%94%20UX%EC%9D%98%20%EB%B9%84%EB%B0%80.html",
 "image": "/log_assets/images/234_%EC%B1%97GPT%EA%B0%80%20%EC%89%BD%EB%8B%A4%EA%B3%A0%20%EB%8A%90%EA%BB%B4%EC%A7%80%EB%8A%94%20UX%EC%9D%98%20%EB%B9%84%EB%B0%80_cover.jpg",
-"related": [
-1,
-8,
-34,
-45
-]
+"related": []
 },
 {
 "id": 235,
@@ -3254,12 +2916,7 @@
 "date": "Feb 12. 2025",
 "url": "/log_assets/markdown/235_%E7%BE%8E%20%EA%B5%AD%EB%B0%A9%EB%B6%80%EC%9D%98%20%EC%84%A0%ED%83%9D%20%EB%B9%85%EB%B2%A0%EC%96%B4AI.html",
 "image": "/log_assets/images/235_%E7%BE%8E%20%EA%B5%AD%EB%B0%A9%EB%B6%80%EC%9D%98%20%EC%84%A0%ED%83%9D%20%EB%B9%85%EB%B2%A0%EC%96%B4AI_cover.jpg",
-"related": [
-11,
-28,
-29,
-30
-]
+"related": []
 },
 {
 "id": 236,
@@ -3269,10 +2926,7 @@
 "url": "/log_assets/markdown/236_%ED%95%B4%EC%A0%81%EC%9D%B4%20%EB%90%9C%20%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%93%A4%EC%9D%98%20%EC%9D%B4%EC%95%BC%EA%B8%B0%2C%20AARRR%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC.html",
 "image": "/log_assets/images/236_%ED%95%B4%EC%A0%81%EC%9D%B4%20%EB%90%9C%20%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%93%A4%EC%9D%98%20%EC%9D%B4%EC%95%BC%EA%B8%B0%2C%20AARRR%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC_cover.jpg",
 "related": [
-171,
-91,
-97,
-104
+171
 ]
 },
 {
@@ -3298,9 +2952,7 @@
 "image": "/log_assets/images/238_%EC%82%BC%EC%84%B1%20%EC%82%AC%EB%82%B4%EB%B2%A4%EC%B2%98%EA%B0%80%20%EB%82%B3%EC%9D%80%20%EC%BB%A4%EB%A8%B8%EC%8A%A4AI%EC%9D%98%20%ED%98%81%EC%8B%A0%2C%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%EB%9E%A9_cover.jpg",
 "related": [
 231,
-23,
-11,
-28
+23
 ]
 },
 {
@@ -3311,10 +2963,7 @@
 "url": "/log_assets/markdown/239_%EC%BD%9C%EB%93%9C%EB%A9%94%EC%9D%BC%EC%9D%B4%20%EC%8B%A4%ED%8C%A8%ED%95%98%EB%8A%94%20%EC%A7%84%EC%A7%9C%20%EC%9D%B4%EC%9C%A0.html",
 "image": "/log_assets/images/239_%EC%BD%9C%EB%93%9C%EB%A9%94%EC%9D%BC%EC%9D%B4%20%EC%8B%A4%ED%8C%A8%ED%95%98%EB%8A%94%20%EC%A7%84%EC%A7%9C%20%EC%9D%B4%EC%9C%A0_cover.jpg",
 "related": [
-73,
-3,
-5,
-10
+73
 ]
 },
 {
@@ -3340,9 +2989,7 @@
 "image": "/log_assets/images/241_1%EC%9D%B8%20%EA%B8%B0%EC%97%85%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%B0%BD%EC%97%85%ED%95%B4%EC%95%BC%20%ED%95%A0%EA%B9%8C%EC%9A%94_cover.jpg",
 "related": [
 463,
-583,
-2,
-4
+583
 ]
 },
 {
@@ -3354,9 +3001,7 @@
 "image": "/log_assets/images/242_%EC%97%84%EC%A7%80%EA%B0%80%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%84%20%EC%A7%80%EB%B0%B0%ED%95%9C%EB%8B%A4%20ThumbFriendly%20UX_cover.jpg",
 "related": [
 190,
-198,
-1,
-8
+198
 ]
 },
 {
@@ -3367,10 +3012,7 @@
 "url": "/log_assets/markdown/243_%EC%98%A4%ED%94%88AI%20%EC%83%98%20%EC%95%8C%ED%8A%B8%EB%A8%BC%EC%9D%B4%20%EC%84%A0%ED%83%9D%ED%95%9C%20%EC%9B%90%EC%9E%90%EB%A0%A5%EC%9D%98%20%EB%AF%B8%EB%9E%98%2C%20%EC%98%A4%ED%81%B4%EB%A1%9C.html",
 "image": "/log_assets/images/243_%EC%98%A4%ED%94%88AI%20%EC%83%98%20%EC%95%8C%ED%8A%B8%EB%A8%BC%EC%9D%B4%20%EC%84%A0%ED%83%9D%ED%95%9C%20%EC%9B%90%EC%9E%90%EB%A0%A5%EC%9D%98%20%EB%AF%B8%EB%9E%98%2C%20%EC%98%A4%ED%81%B4%EB%A1%9C_cover.jpg",
 "related": [
-254,
-11,
-28,
-29
+254
 ]
 },
 {
@@ -3396,9 +3038,7 @@
 "image": "/log_assets/images/245_Warby%20Parker%EC%9D%98%20%EB%8F%85%EC%A0%90%20%EC%8B%9C%EC%9E%A5%EC%A7%84%EC%9E%85%20%EC%A0%84%EB%9E%B5_cover.jpg",
 "related": [
 253,
-288,
-11,
-28
+288
 ]
 },
 {
@@ -3508,9 +3148,7 @@
 "image": "/log_assets/images/253_%EB%A7%88%EC%BC%80%ED%8C%85%20%EC%97%86%EC%9D%B4%2020%EC%A1%B0%EC%9B%90%20%EA%B0%80%EC%B9%98%EB%A5%BC%20%EB%A7%8C%EB%93%A0%20Figma%20PLG%EC%A0%84%EB%9E%B5_cover.jpg",
 "related": [
 245,
-288,
-11,
-28
+288
 ]
 },
 {
@@ -3521,10 +3159,7 @@
 "url": "/log_assets/markdown/254_MIT%20%EC%B2%9C%EC%9E%AC%EB%93%A4%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EC%B9%9C%ED%99%98%EA%B2%BD%20%EC%95%94%EB%AA%A8%EB%8B%88%EC%95%84%20%EC%97%B0%EB%A3%8C%20%27%EC%95%84%EB%AA%A8%EC%A7%80%27.html",
 "image": "/log_assets/images/254_MIT%20%EC%B2%9C%EC%9E%AC%EB%93%A4%EC%9D%B4%20%EB%A7%8C%EB%93%A0%20%EC%B9%9C%ED%99%98%EA%B2%BD%20%EC%95%94%EB%AA%A8%EB%8B%88%EC%95%84%20%EC%97%B0%EB%A3%8C%20%EC%95%84%EB%AA%A8%EC%A7%80_cover.jpg",
 "related": [
-243,
-11,
-28,
-29
+243
 ]
 },
 {
@@ -3576,12 +3211,7 @@
 "date": "Jan 22. 2025",
 "url": "/log_assets/markdown/258_%EB%B9%88%EB%9D%BC%EB%8D%B4%EC%9D%84%20%EC%B6%94%EC%A0%81%ED%95%9C%20AI%EC%9D%98%20%ED%9E%98%2C%20%EC%8B%9C%EA%B0%80%EC%B4%9D%EC%95%A1%20100%EC%A1%B0%20%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4.html",
 "image": "/log_assets/images/258_%EB%B9%88%EB%9D%BC%EB%8D%B4%EC%9D%84%20%EC%B6%94%EC%A0%81%ED%95%9C%20AI%EC%9D%98%20%ED%9E%98%2C%20%EC%8B%9C%EA%B0%80%EC%B4%9D%EC%95%A1%20100%EC%A1%B0%20%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4_cover.jpg",
-"related": [
-11,
-28,
-29,
-30
-]
+"related": []
 },
 {
 "id": 259,
@@ -3674,12 +3304,7 @@
 "date": "Jan 12. 2025",
 "url": "/log_assets/markdown/265_AI%20%EC%8B%9C%EB%8C%80%EC%97%90%20%EC%96%B4%EB%96%A4%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EA%B0%80%20%EB%90%98%EB%A9%B4%20%EC%A2%8B%EC%9D%84%EA%B9%8C%EC%9A%94.html",
 "image": "/log_assets/images/265_AI%20%EC%8B%9C%EB%8C%80%EC%97%90%20%EC%96%B4%EB%96%A4%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EA%B0%80%20%EB%90%98%EB%A9%B4%20%EC%A2%8B%EC%9D%84%EA%B9%8C%EC%9A%94_cover.jpg",
-"related": [
-2,
-4,
-7,
-14
-]
+"related": []
 },
 {
 "id": 266,
@@ -3717,10 +3342,7 @@
 "url": "/log_assets/markdown/268_%EA%B8%B0%EC%88%A0%EA%B3%BC%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A1%9C%20%EC%96%91%EC%8B%9D%EC%9D%84%20%ED%98%81%EC%8B%A0%ED%95%9C%EB%8B%A4%20%ED%83%80%EC%9D%B4%EB%93%9C%ED%92%80.html",
 "image": "/log_assets/images/268_%EA%B8%B0%EC%88%A0%EA%B3%BC%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A1%9C%20%EC%96%91%EC%8B%9D%EC%9D%84%20%ED%98%81%EC%8B%A0%ED%95%9C%EB%8B%A4.%20%ED%83%80%EC%9D%B4%EB%93%9C%ED%92%80_cover.jpg",
 "related": [
-269,
-11,
-28,
-29
+269
 ]
 },
 {
@@ -3801,10 +3423,7 @@
 "url": "/log_assets/markdown/274_ENTJ%20%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EB%8A%94%20%EC%98%A4%EA%B2%9C2%28%EC%8A%A4%ED%8F%AC%EC%97%86%EC%9D%8C%29.html",
 "image": "/log_assets/images/274_ENTJ%20%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EB%8A%94%20%EC%98%A4%EA%B2%9C2%EC%8A%A4%ED%8F%AC%EC%97%86%EC%9D%8C_cover.jpg",
 "related": [
-286,
-2,
-4,
-7
+286
 ]
 },
 {
@@ -3844,9 +3463,7 @@
 "image": "/log_assets/images/277_PO%EC%9D%98%20%EC%84%B1%EC%9E%A5%EC%9D%84%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EC%9D%BC_cover.jpg",
 "related": [
 117,
-558,
-9,
-27
+558
 ]
 },
 {
@@ -3912,12 +3529,7 @@
 "date": "Dec 9. 2024",
 "url": "/log_assets/markdown/282_%EB%82%98%EC%99%80%20%EC%95%88%EB%A7%9E%EB%8A%94%20%EC%83%81%EC%82%AC%EB%A5%BC%20%EB%A7%8C%EB%82%AC%EC%9D%84%20%EB%95%8C%EB%8A%94.html",
 "image": "/log_assets/images/282_%EB%82%98%EC%99%80%20%EC%95%88%EB%A7%9E%EB%8A%94%20%EC%83%81%EC%82%AC%EB%A5%BC%20%EB%A7%8C%EB%82%AC%EC%9D%84%20%EB%95%8C%EB%8A%94_cover.jpg",
-"related": [
-3,
-5,
-10,
-12
-]
+"related": []
 },
 {
 "id": 283,
@@ -3926,12 +3538,7 @@
 "date": "Dec 8. 2024",
 "url": "/log_assets/markdown/283_ENTJ%EC%BD%94%EC%B9%98%EC%9D%98%20%EC%A0%95%EA%B6%8C%20%EA%B8%B0%ED%9A%8D.html",
 "image": "/log_assets/images/283_ENTJ%EC%BD%94%EC%B9%98%EC%9D%98%20%EC%A0%95%EA%B6%8C%20%EA%B8%B0%ED%9A%8D_cover.jpg",
-"related": [
-2,
-4,
-7,
-14
-]
+"related": []
 },
 {
 "id": 284,
@@ -3969,10 +3576,7 @@
 "url": "/log_assets/markdown/286_ENTJ%EC%BD%94%EC%B9%98%EC%9D%98%20%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%20%ED%8A%B8%EB%A0%81%ED%81%AC%20%EA%B0%90%EC%83%81.html",
 "image": "/log_assets/images/286_ENTJ%EC%BD%94%EC%B9%98%EC%9D%98%20%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4%20%ED%8A%B8%EB%A0%81%ED%81%AC%20%EA%B0%90%EC%83%81_cover.jpg",
 "related": [
-274,
-2,
-4,
-7
+274
 ]
 },
 {
@@ -4040,9 +3644,7 @@
 "image": "/log_assets/images/291_%EB%82%B4%20%EA%B8%B0%ED%9A%8D%EC%84%9C%EB%8A%94%20%EC%99%9C%20%EA%B9%8C%EC%9D%BC%EA%B9%8C_cover.jpg",
 "related": [
 525,
-296,
-3,
-5
+296
 ]
 },
 {
@@ -4138,9 +3740,7 @@
 "image": "/log_assets/images/298_%EB%9B%B0%EC%96%B4%EB%82%9C%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EB%8C%80%ED%91%9C%EB%8A%94%20%EB%AC%B4%EC%97%87%EC%9D%B4%20%EB%8B%A4%EB%A5%BC%EA%B9%8C_cover.jpg",
 "related": [
 307,
-437,
-11,
-28
+437
 ]
 },
 {
@@ -4152,9 +3752,7 @@
 "image": "/log_assets/images/299_%EC%B5%9C%EA%B3%A0%EC%9D%98%20%EA%B8%B0%ED%9A%8D%EA%B3%BC%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%B4%20%EA%B0%99%EC%9D%80%20%EC%9D%B4%EC%9C%A0_cover.jpg",
 "related": [
 62,
-427,
-11,
-28
+427
 ]
 },
 {
@@ -4181,8 +3779,7 @@
 "related": [
 426,
 578,
-270,
-11
+270
 ]
 },
 {
@@ -4292,9 +3889,7 @@
 "image": "/log_assets/images/310_%EC%B0%A9%EC%8B%9C%EC%97%90%20%EB%B9%A0%EC%A7%80%EC%A7%80%20%EC%95%8A%EA%B8%B0_cover.jpg",
 "related": [
 181,
-483,
-3,
-5
+483
 ]
 },
 {
@@ -4306,9 +3901,7 @@
 "image": "/log_assets/images/311_%EC%96%B4%EB%96%A4%20%EC%A7%81%EC%9E%A5%EC%9D%84%20%EA%B3%A8%EB%9D%BC%EC%95%BC%20%ED%95%A0%EA%B9%8C%EC%9A%94_cover.jpg",
 "related": [
 435,
-554,
-3,
-5
+554
 ]
 },
 {
@@ -4318,12 +3911,7 @@
 "date": "Oct 16. 2024",
 "url": "/log_assets/markdown/312_%EC%A7%81%EA%B4%80%EB%A0%A5%EC%9D%84%20%EA%B0%80%EC%A7%80%EB%A9%B4%20%EC%96%B4%EB%A0%A4%EC%9A%B4%20%EC%A0%90.html",
 "image": "/log_assets/images/312_%EC%A7%81%EA%B4%80%EB%A0%A5%EC%9D%84%20%EA%B0%80%EC%A7%80%EB%A9%B4%20%EC%96%B4%EB%A0%A4%EC%9A%B4%20%EC%A0%90_cover.jpg",
-"related": [
-2,
-4,
-7,
-14
-]
+"related": []
 },
 {
 "id": 313,
@@ -4332,12 +3920,7 @@
 "date": "Oct 14. 2024",
 "url": "/log_assets/markdown/313_%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90%20TV%ED%94%8C%EB%9F%AC%EC%8A%A4%20%EC%9D%B4%EC%95%BC%EA%B8%B0.html",
 "image": "/log_assets/images/313_%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90%20TV%ED%94%8C%EB%9F%AC%EC%8A%A4%20%EC%9D%B4%EC%95%BC%EA%B8%B0_cover.jpg",
-"related": [
-2,
-4,
-7,
-14
-]
+"related": []
 },
 {
 "id": 314,
@@ -4349,8 +3932,7 @@
 "related": [
 16,
 25,
-309,
-3
+309
 ]
 },
 {
@@ -4363,8 +3945,7 @@
 "related": [
 306,
 188,
-267,
-9
+267
 ]
 },
 {
@@ -4389,10 +3970,7 @@
 "url": "/log_assets/markdown/318_%EC%84%B1%EA%B3%B5%EC%A0%81%EC%9D%B8%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EC%95%84%EC%9D%B4%ED%85%9C%EC%9D%84%20%EC%B0%BE%EB%8A%94%20%EB%B2%95.html",
 "image": "/log_assets/images/318_%EC%84%B1%EA%B3%B5%EC%A0%81%EC%9D%B8%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EC%95%84%EC%9D%B4%ED%85%9C%EC%9D%84%20%EC%B0%BE%EB%8A%94%20%EB%B2%95_cover.jpg",
 "related": [
-612,
-11,
-28,
-29
+612
 ]
 },
 {
@@ -4444,12 +4022,7 @@
 "date": "Sep 28. 2024",
 "url": "/log_assets/markdown/323_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EC%A0%95%EB%8B%B5%EC%9D%80%20%EB%A7%A4%EC%9D%BC%EB%A7%A4%EC%9D%BC%EC%9D%B4%20%EB%8B%A4%EB%A5%B4%EB%8B%A4.html",
 "image": "/log_assets/images/323_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EC%A0%95%EB%8B%B5%EC%9D%80%20%EB%A7%A4%EC%9D%BC%EB%A7%A4%EC%9D%BC%EC%9D%B4%20%EB%8B%A4%EB%A5%B4%EB%8B%A4._cover.jpg",
-"related": [
-11,
-28,
-29,
-30
-]
+"related": []
 },
 {
 "id": 324,
@@ -4473,10 +4046,7 @@
 "url": "/log_assets/markdown/325_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%84%B1%EA%B3%B5%EC%9D%80%20%EC%A0%9C%EB%A1%9C%EB%B2%A0%EC%9D%B4%EC%8A%A4%20%EC%94%BD%ED%82%B9%EC%97%90%EC%84%9C.html",
 "image": "/log_assets/images/325_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%84%B1%EA%B3%B5%EC%9D%80%20%EC%A0%9C%EB%A1%9C%EB%B2%A0%EC%9D%B4%EC%8A%A4%20%EC%94%BD%ED%82%B9%EC%97%90%EC%84%9C..._cover.jpg",
 "related": [
-514,
-11,
-28,
-29
+514
 ]
 },
 {
@@ -4487,10 +4057,7 @@
 "url": "/log_assets/markdown/327_%EC%9A%94%EA%B8%B0%EC%9A%94%EC%9D%98%20%EB%B6%80%ED%99%9C%EC%9D%84%20%EA%B8%B0%EB%8C%80%ED%95%98%EB%A9%B0.html",
 "image": "/log_assets/images/327_%EC%9A%94%EA%B8%B0%EC%9A%94%EC%9D%98%20%EB%B6%80%ED%99%9C%EC%9D%84%20%EA%B8%B0%EB%8C%80%ED%95%98%EB%A9%B0..._cover.jpg",
 "related": [
-67,
-3,
-5,
-10
+67
 ]
 },
 {
@@ -4514,12 +4081,7 @@
 "date": "Sep 18. 2024",
 "url": "/log_assets/markdown/329_%EB%8B%B9%EC%8B%A0%EC%9D%98%20%EC%84%B1%EA%B3%B5%EC%9D%80%20%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80%EC%9A%94.html",
 "image": "/log_assets/images/329_%EB%8B%B9%EC%8B%A0%EC%9D%98%20%EC%84%B1%EA%B3%B5%EC%9D%80%20%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80%EC%9A%94_cover.jpg",
-"related": [
-2,
-4,
-7,
-14
-]
+"related": []
 },
 {
 "id": 330,
@@ -4542,12 +4104,7 @@
 "date": "Sep 15. 2024",
 "url": "/log_assets/markdown/331_%EC%96%B4%EB%96%A4%20%EC%BD%94%ED%8C%8C%EC%9A%B4%EB%8D%94%EB%A5%BC%20%EC%B0%BE%EC%95%84%EC%95%BC%20%ED%95%A0%EA%B9%8C.html",
 "image": "/log_assets/images/331_%EC%96%B4%EB%96%A4%20%EC%BD%94%ED%8C%8C%EC%9A%B4%EB%8D%94%EB%A5%BC%20%EC%B0%BE%EC%95%84%EC%95%BC%20%ED%95%A0%EA%B9%8C_cover.jpg",
-"related": [
-2,
-4,
-7,
-14
-]
+"related": []
 },
 {
 "id": 336,
@@ -4571,10 +4128,7 @@
 "url": "/log_assets/markdown/337_%EB%82%B4%EA%B0%80%20%EC%83%88%EB%A1%9C%EC%9A%B4%20%EA%B2%83%EC%9D%84%20%EA%B3%84%EC%86%8D%20%EB%8F%84%EC%A0%84%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html",
 "image": "/log_assets/images/337_%EB%82%B4%EA%B0%80%20%EC%83%88%EB%A1%9C%EC%9A%B4%20%EA%B2%83%EC%9D%84%20%EA%B3%84%EC%86%8D%20%EB%8F%84%EC%A0%84%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0_cover.jpg",
 "related": [
-555,
-2,
-4,
-7
+555
 ]
 },
 {
@@ -4584,12 +4138,7 @@
 "date": "Aug 31. 2024",
 "url": "/log_assets/markdown/339_%EB%8B%A8%EC%88%9C%ED%99%94%EA%B0%80%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html",
 "image": "/log_assets/images/339_%EB%8B%A8%EC%88%9C%ED%99%94%EA%B0%80%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0_cover.jpg",
-"related": [
-3,
-5,
-10,
-12
-]
+"related": []
 },
 {
 "id": 340,
@@ -4629,8 +4178,7 @@
 "related": [
 35,
 43,
-307,
-2
+307
 ]
 },
 {
@@ -4643,8 +4191,7 @@
 "related": [
 346,
 613,
-614,
-349
+614
 ]
 },
 {
@@ -4671,8 +4218,7 @@
 "related": [
 344,
 613,
-614,
-349
+614
 ]
 },
 {
@@ -4696,12 +4242,7 @@
 "date": "Aug 1. 2024",
 "url": "/log_assets/markdown/348_%EC%BD%94%EC%9D%B8%EC%9C%BC%EB%A1%9C%20%EB%8F%88%EC%9D%84%20%EB%B2%84%EB%8A%94%20%EA%B0%80%EC%9E%A5%20%ED%99%95%EC%8B%A4%ED%95%9C%20%EB%B0%A9%EB%B2%95.html",
 "image": "/log_assets/images/348_%EC%BD%94%EC%9D%B8%EC%9C%BC%EB%A1%9C%20%EB%8F%88%EC%9D%84%20%EB%B2%84%EB%8A%94%20%EA%B0%80%EC%9E%A5%20%ED%99%95%EC%8B%A4%ED%95%9C%20%EB%B0%A9%EB%B2%95_cover.jpg",
-"related": [
-2,
-4,
-7,
-14
-]
+"related": []
 },
 {
 "id": 349,
@@ -4712,9 +4253,7 @@
 "image": "/log_assets/images/349_%EC%BD%94%EC%B9%98S%2013%ED%99%94%20%EB%91%90%EA%B0%9C%EC%9D%98%20%EB%AA%A8%EC%9E%90_cover.jpg",
 "related": [
 352,
-354,
-344,
-346
+354
 ]
 },
 {
@@ -4726,9 +4265,7 @@
 "image": "/log_assets/images/350_%EA%B8%B0%ED%9A%8D%EC%9E%90%EA%B0%80%20%EC%96%B4%EB%A0%A4%EC%9A%B4%20%EC%9D%B4%EC%9C%A0_cover.jpg",
 "related": [
 116,
-460,
-3,
-5
+460
 ]
 },
 {
@@ -4767,10 +4304,7 @@
 "url": "/log_assets/markdown/353_%EB%AC%B4%EC%96%B8%EA%B0%80%EB%A5%BC%20%EC%9E%98%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95.html",
 "image": "/log_assets/images/353_%EB%AC%B4%EC%96%B8%EA%B0%80%EB%A5%BC%20%EC%9E%98%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95_cover.jpg",
 "related": [
-369,
-2,
-4,
-7
+369
 ]
 },
 {
@@ -4794,12 +4328,7 @@
 "date": "Jul 15. 2024",
 "url": "/log_assets/markdown/355_%EC%8B%9C%EB%93%9C%20%EC%95%84%EC%9D%B4%ED%85%9C%EA%B3%BC%20%EB%A9%94%ED%83%80%EC%9D%B8%EC%A7%80.html",
 "image": "/log_assets/images/355_%EC%8B%9C%EB%93%9C%20%EC%95%84%EC%9D%B4%ED%85%9C%EA%B3%BC%20%EB%A9%94%ED%83%80%EC%9D%B8%EC%A7%80_cover.jpg",
-"related": [
-2,
-4,
-7,
-14
-]
+"related": []
 },
 {
 "id": 356,
@@ -4809,10 +4338,7 @@
 "url": "/log_assets/markdown/356_logo%20branding.html",
 "image": "/log_assets/images/356_logo%20branding_cover.jpg",
 "related": [
-563,
-2,
-4,
-7
+563
 ]
 },
 {
@@ -4822,12 +4348,7 @@
 "date": "Jul 13. 2024",
 "url": "/log_assets/markdown/357_%EC%B2%AB%20%EB%8C%80%ED%95%99%EA%B5%90%20%EA%B0%95%EC%9D%98.html",
 "image": "/log_assets/images/357_%EC%B2%AB%20%EB%8C%80%ED%95%99%EA%B5%90%20%EA%B0%95%EC%9D%98_cover.jpg",
-"related": [
-6,
-158,
-166,
-194
-]
+"related": []
 },
 {
 "id": 358,
@@ -4865,10 +4386,7 @@
 "url": "/log_assets/markdown/360_%EB%8F%88%EA%B3%BC%20%ED%96%89%EB%B3%B5.html",
 "image": "/log_assets/images/360_%EB%8F%88%EA%B3%BC%20%ED%96%89%EB%B3%B5_cover.jpg",
 "related": [
-600,
-2,
-4,
-7
+600
 ]
 },
 {
@@ -4936,9 +4454,7 @@
 "image": "/log_assets/images/366_%EC%B1%85%EC%9D%84%20%EB%82%98%EC%9D%98%20%EB%AC%B4%EA%B8%B0%EB%A1%9C%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B2%95_cover.jpg",
 "related": [
 406,
-500,
-3,
-5
+500
 ]
 },
 {
@@ -5034,9 +4550,7 @@
 "image": "/log_assets/images/373_%EC%99%9C%20%EA%B7%B8%EB%A0%87%EA%B2%8C%20%EC%97%B4%EC%8B%AC%ED%9E%88%20%ED%95%98%EC%84%B8%EC%9A%94_cover.jpg",
 "related": [
 52,
-581,
-2,
-4
+581
 ]
 },
 {
@@ -5188,9 +4702,7 @@
 "image": "/log_assets/images/387_1%EC%9D%B8%20%EA%B8%B0%EC%97%85%EA%B0%80%EB%93%A4%EC%9D%B4%20%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%EC%9D%84%20%EC%9E%98%ED%95%98%EA%B8%B0%20%EC%9C%84%ED%95%B4%20%ED%95%B4%EC%95%BC%20%ED%95%A0%20%EC%A7%88%EB%AC%B8_cover.jpg",
 "related": [
 472,
-261,
-2,
-4
+261
 ]
 },
 {
@@ -5216,9 +4728,7 @@
 "image": "/log_assets/images/389_%EC%BD%94%EC%B9%98S%203%ED%99%94%20%EB%AA%A9%ED%91%9C%EB%8A%94%20%EB%AA%87%20%EA%B0%9C_cover.jpg",
 "related": [
 394,
-74,
-344,
-346
+74
 ]
 },
 {
@@ -5256,12 +4766,7 @@
 "date": "May 11. 2024",
 "url": "/log_assets/markdown/390_%EC%8A%A4%EB%83%85%EC%83%B7%EC%9D%B4%20%EC%95%84%EB%8B%8C%20%EC%8A%A4%ED%86%A0%EB%A6%AC%EB%A5%BC.html",
 "image": "/log_assets/images/392_%EC%8A%A4%EB%83%85%EC%83%B7%EC%9D%B4%20%EC%95%84%EB%8B%8C%20%EC%8A%A4%ED%86%A0%EB%A6%AC%EB%A5%BC..._cover.jpg",
-"related": [
-3,
-5,
-10,
-12
-]
+"related": []
 },
 {
 "id": 391,
@@ -5313,10 +4818,7 @@
 "url": "/log_assets/markdown/394_%EC%BD%94%EC%B9%98S%202%ED%99%94%20%27%EB%84%88%EB%AC%B4%20%EC%97%86%EA%B1%B0%EB%82%98%2C%20%EB%84%88%EB%AC%B4%20%EB%A7%8E%EA%B1%B0%EB%82%98%27.html",
 "image": "/log_assets/images/396_%EC%BD%94%EC%B9%98S%202%ED%99%94%20%EB%84%88%EB%AC%B4%20%EC%97%86%EA%B1%B0%EB%82%98%2C%20%EB%84%88%EB%AC%B4%20%EB%A7%8E%EA%B1%B0%EB%82%98_cover.jpg",
 "related": [
-387,
-344,
-346,
-349
+387
 ]
 },
 {
@@ -5399,8 +4901,7 @@
 "related": [
 273,
 480,
-611,
-3
+611
 ]
 },
 {
@@ -5413,8 +4914,7 @@
 "related": [
 365,
 374,
-382,
-344
+382
 ]
 },
 {
@@ -5427,8 +4927,7 @@
 "related": [
 347,
 405,
-531,
-3
+531
 ]
 },
 {
@@ -5438,12 +4937,7 @@
 "date": "Apr 27. 2024",
 "url": "/log_assets/markdown/403_%23Simplifier%20%23GOOD%EC%A6%88%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8.html",
 "image": "/log_assets/images/405_Simplifier%20GOOD%EC%A6%88%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_cover.jpg",
-"related": [
-2,
-4,
-7,
-14
-]
+"related": []
 },
 {
 "id": 404,
@@ -5469,8 +4963,7 @@
 "related": [
 347,
 402,
-531,
-3
+531
 ]
 },
 {
@@ -5804,9 +5297,7 @@
 "image": "/log_assets/images/432_%EB%85%B8%EC%95%88%EA%B3%BC%20%EB%82%98_cover.jpg",
 "related": [
 309,
-450,
-2,
-4
+450
 ]
 },
 {
@@ -5861,8 +5352,7 @@
 "related": [
 399,
 507,
-431,
-2
+431
 ]
 },
 {
@@ -5873,10 +5363,7 @@
 "url": "/log_assets/markdown/435_%EC%BB%A4%EB%A6%AC%EC%96%B4%20%EA%B8%B0%ED%9A%8D%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%ED%95%A0%EA%B9%8C%EC%9A%94.html",
 "image": "/log_assets/images/437_%EC%BB%A4%EB%A6%AC%EC%96%B4%20%EA%B8%B0%ED%9A%8D%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%ED%95%A0%EA%B9%8C%EC%9A%94_cover.jpg",
 "related": [
-311,
-3,
-5,
-10
+311
 ]
 },
 {
@@ -5888,9 +5375,7 @@
 "image": "/log_assets/images/438_%EB%82%B4%EA%B0%80%20SNS%EC%97%90%20%ED%99%8D%EB%B3%B4%EA%B8%80%EC%9D%84%20%EC%93%B0%EB%8A%94%20%EB%B9%84%EB%B2%95_cover.jpg",
 "related": [
 55,
-473,
-3,
-5
+473
 ]
 },
 {
@@ -5914,12 +5399,7 @@
 "date": "Mar 21. 2024",
 "url": "/log_assets/markdown/438_%EC%95%84%EB%B9%A4%20%EB%84%88%EB%AC%B4%20%EC%B2%A0%ED%95%99%EC%A0%81%EC%9D%B8%20%EA%B8%80%EB%A7%8C%20%EC%98%AC%EB%A6%AC%EC%9E%96%EC%95%84.html",
 "image": "/log_assets/images/440_%EC%95%84%EB%B9%A4%20%EB%84%88%EB%AC%B4%20%EC%B2%A0%ED%95%99%EC%A0%81%EC%9D%B8%20%EA%B8%80%EB%A7%8C%20%EC%98%AC%EB%A6%AC%EC%9E%96%EC%95%84_cover.jpg",
-"related": [
-2,
-4,
-7,
-14
-]
+"related": []
 },
 {
 "id": 439,
@@ -5929,10 +5409,7 @@
 "url": "/log_assets/markdown/439_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EB%AF%B8%EC%85%98%EC%9D%80.html",
 "image": "/log_assets/images/441_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EB%AF%B8%EC%85%98%EC%9D%80_cover.jpg",
 "related": [
-116,
-3,
-5,
-10
+116
 ]
 },
 {
@@ -5943,10 +5420,7 @@
 "url": "/log_assets/markdown/440_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC7%ED%99%94%204%EA%B0%9C%EA%B5%AD%EC%96%B4%20%EB%8A%A5%EB%A0%A5%EC%9E%90%2C%20%EC%A1%B0%EC%A1%B0%EC%9D%98%20%EB%93%B1%EC%9E%A5.html",
 "image": "/log_assets/images/442_%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80%20%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC7%ED%99%94%204%EA%B0%9C%EA%B5%AD%EC%96%B4%20%EB%8A%A5%EB%A0%A5%EC%9E%90%2C%20%EC%A1%B0%EC%A1%B0%EC%9D%98%20%EB%93%B1%EC%9E%A5_cover.jpg",
 "related": [
-446,
-453,
-460,
-467
+446
 ]
 },
 {
@@ -5970,12 +5444,7 @@
 "date": "Mar 17. 2024",
 "url": "/log_assets/markdown/442_%EC%84%B8%EA%B3%84%EC%97%90%EC%84%9C%20%EA%B0%80%EC%9E%A5%20%EC%9A%B0%EC%9A%B8%ED%95%9C%20%EB%82%98%EB%9D%BC%EB%A5%BC%20%EB%B0%94%EA%BE%B8%EB%8A%94%20%EB%B9%84%EB%B0%80.html",
 "image": "/log_assets/images/444_%EC%84%B8%EA%B3%84%EC%97%90%EC%84%9C%20%EA%B0%80%EC%9E%A5%20%EC%9A%B0%EC%9A%B8%ED%95%9C%20%EB%82%98%EB%9D%BC%EB%A5%BC%20%EB%B0%94%EA%BE%B8%EB%8A%94%20%EB%B9%84%EB%B0%80_cover.jpg",
-"related": [
-3,
-5,
-10,
-12
-]
+"related": []
 },
 {
 "id": 443,
@@ -6029,8 +5498,7 @@
 "related": [
 574,
 575,
-580,
-2
+580
 ]
 },
 {
@@ -6082,12 +5550,7 @@
 "date": "Mar 4. 2024",
 "url": "/log_assets/markdown/454_%EA%B8%B0%EB%A1%9D%EB%B3%B4%EB%8B%A4%20%EA%B8%B0%EC%96%B5%EC%9D%B4%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%88%9C%EA%B0%84.html",
 "image": "/log_assets/images/456_%EA%B8%B0%EB%A1%9D%EB%B3%B4%EB%8B%A4%20%EA%B8%B0%EC%96%B5%EC%9D%B4%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%88%9C%EA%B0%84_cover.jpg",
-"related": [
-3,
-5,
-10,
-12
-]
+"related": []
 },
 {
 "id": 456,
@@ -6110,12 +5573,7 @@
 "date": "Mar 1. 2024",
 "url": "/log_assets/markdown/457_%EC%84%B1%EA%B3%B5%EC%A0%81%EC%9D%B8%20VC%EB%93%A4%EC%9D%B4%20%EC%9C%A0%EB%8B%88%EC%BD%98%EC%9D%B4%20%EB%90%A0%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%84%20%EC%B0%BE%EB%8A%94%20%EB%B2%95.html",
 "image": "/log_assets/images/459_%EC%84%B1%EA%B3%B5%EC%A0%81%EC%9D%B8%20VC%EB%93%A4%EC%9D%B4%20%EC%9C%A0%EB%8B%88%EC%BD%98%EC%9D%B4%20%EB%90%A0%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%84%20%EC%B0%BE%EB%8A%94%20%EB%B2%95_cover.jpg",
-"related": [
-11,
-28,
-29,
-30
-]
+"related": []
 },
 {
 "id": 458,
@@ -6138,12 +5596,7 @@
 "date": "Feb 29. 2024",
 "url": "/log_assets/markdown/459_%EC%8B%9C%EB%8C%80%EC%98%88%EC%96%B8.html",
 "image": "/log_assets/images/461_%EC%8B%9C%EB%8C%80%EC%98%88%EC%96%B8_cover.jpg",
-"related": [
-2,
-4,
-7,
-14
-]
+"related": []
 },
 {
 "id": 460,
@@ -6266,9 +5719,7 @@
 "image": "/log_assets/images/475_SNS%EB%B3%84%20%EC%9D%B8%EA%B8%B0%EA%B2%8C%EC%8B%9C%EB%AC%BC%20Top%203_cover.jpg",
 "related": [
 55,
-436,
-2,
-4
+436
 ]
 },
 {
@@ -6306,12 +5757,7 @@
 "date": "Feb 12. 2024",
 "url": "/log_assets/markdown/476_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%27%EC%82%AC%EC%A0%84%EC%A4%80%EB%B9%84%EC%9D%98%20%EC%A0%84%EB%9E%B5%ED%8E%B8%27.html",
 "image": "/log_assets/images/478_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EC%82%AC%EC%A0%84%EC%A4%80%EB%B9%84%EC%9D%98%20%EC%A0%84%EB%9E%B5%ED%8E%B8_cover.jpg",
-"related": [
-3,
-5,
-10,
-12
-]
+"related": []
 },
 {
 "id": 477,
@@ -6337,8 +5783,7 @@
 "related": [
 475,
 467,
-471,
-440
+471
 ]
 },
 {
@@ -6364,9 +5809,7 @@
 "image": "/log_assets/images/482_%EC%95%84%EC%9D%B4%EB%94%94%EC%96%BC%20%EC%9C%A0%EC%A0%80%20%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4_cover.jpg",
 "related": [
 273,
-400,
-3,
-5
+400
 ]
 },
 {
@@ -6376,12 +5819,7 @@
 "date": "Feb 8. 2024",
 "url": "/log_assets/markdown/481_%EB%82%B4%EA%B0%80%20GS%EC%97%90%EC%84%9C%20%EA%B0%95%EC%9D%98%EB%A5%BC%20%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html",
 "image": "/log_assets/images/483_%EB%82%B4%EA%B0%80%20GS%EC%97%90%EC%84%9C%20%EA%B0%95%EC%9D%98%EB%A5%BC%20%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0_cover.jpg",
-"related": [
-6,
-158,
-166,
-194
-]
+"related": []
 },
 {
 "id": 482,
@@ -6406,9 +5844,7 @@
 "image": "/log_assets/images/485_%EB%AA%85%EB%9E%91%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20IT%20%EB%AA%85%EC%96%B8_cover.jpg",
 "related": [
 181,
-310,
-3,
-5
+310
 ]
 },
 {
@@ -6421,8 +5857,7 @@
 "related": [
 270,
 30,
-280,
-3
+280
 ]
 },
 {
@@ -6435,8 +5870,7 @@
 "related": [
 506,
 524,
-488,
-2
+488
 ]
 },
 {
@@ -6516,12 +5950,7 @@
 "date": "Jan 27. 2024",
 "url": "/log_assets/markdown/491_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%A9%B4%EC%A0%91%EA%B4%80%EC%9D%98%20%EC%A0%84%EB%9E%B5%ED%8E%B8.html",
 "image": "/log_assets/images/493_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%A9%B4%EC%A0%91%EA%B4%80%EC%9D%98%20%EC%A0%84%EB%9E%B5%ED%8E%B8_cover.jpg",
-"related": [
-3,
-5,
-10,
-12
-]
+"related": []
 },
 {
 "id": 492,
@@ -6546,9 +5975,7 @@
 "image": "/log_assets/images/495_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%ED%94%84%EB%A0%88%EC%A0%A0%ED%85%8C%EC%9D%B4%EC%85%98%20%EB%A9%98%ED%83%88%EA%B4%80%EB%A6%AC%ED%8E%B8_cover.jpg",
 "related": [
 494,
-495,
-3,
-5
+495
 ]
 },
 {
@@ -6560,9 +5987,7 @@
 "image": "/log_assets/images/496_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%ED%94%84%EB%A0%88%EC%A0%A0%ED%85%8C%EC%9D%B4%EC%85%98%20%EC%8A%A4%ED%86%A0%EB%A6%AC%ED%8E%B8_cover.jpg",
 "related": [
 493,
-495,
-3,
-5
+495
 ]
 },
 {
@@ -6574,9 +5999,7 @@
 "image": "/log_assets/images/497_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%ED%94%84%EB%A0%88%EC%A0%A0%ED%85%8C%EC%9D%B4%EC%85%98%EC%9D%98%20%EB%B9%84%EB%B0%80%ED%8E%B8_cover.jpg",
 "related": [
 493,
-494,
-3,
-5
+494
 ]
 },
 {
@@ -6615,10 +6038,7 @@
 "url": "/log_assets/markdown/498_%EC%82%AC%EC%97%85%EA%B0%80%EB%8A%94.html",
 "image": "/log_assets/images/500_%EC%82%AC%EC%97%85%EA%B0%80%EB%8A%94..._cover.jpg",
 "related": [
-386,
-2,
-4,
-7
+386
 ]
 },
 {
@@ -6628,12 +6048,7 @@
 "date": "Jan 18. 2024",
 "url": "/log_assets/markdown/499_%EB%82%B4%EA%B0%80%20%EB%B8%94%EB%A1%9C%EA%B1%B0%EC%99%80%20%EB%A7%81%ED%81%AC%EB%93%9C%E4%BA%BA%EC%9D%84%20%EC%9D%91%EC%9B%90%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html",
 "image": "/log_assets/images/501_%EB%82%B4%EA%B0%80%20%EB%B8%94%EB%A1%9C%EA%B1%B0%EC%99%80%20%EB%A7%81%ED%81%AC%EB%93%9C%E4%BA%BA%EC%9D%84%20%EC%9D%91%EC%9B%90%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0_cover.jpg",
-"related": [
-2,
-4,
-7,
-14
-]
+"related": []
 },
 {
 "id": 500,
@@ -6684,12 +6099,7 @@
 "date": "Jan 13. 2024",
 "url": "/log_assets/markdown/503_%EC%8B%B1%EA%B0%80%ED%8F%AC%EB%A5%B4%20%EC%97%AC%ED%96%89%EC%9D%98%20%EB%B9%84%EB%B0%80.html",
 "image": "/log_assets/images/505_%EC%8B%B1%EA%B0%80%ED%8F%AC%EB%A5%B4%20%EC%97%AC%ED%96%89%EC%9D%98%20%EB%B9%84%EB%B0%80_cover.jpg",
-"related": [
-2,
-4,
-7,
-14
-]
+"related": []
 },
 {
 "id": 504,
@@ -6729,8 +6139,7 @@
 "related": [
 485,
 524,
-488,
-2
+488
 ]
 },
 {
@@ -6754,12 +6163,7 @@
 "date": "Jan 7. 2024",
 "url": "/log_assets/markdown/508_%EC%8B%B1%EA%B0%80%ED%8F%AC%EB%A5%B4%20%EA%B0%80%EC%A1%B1%EC%97%AC%ED%96%89%EA%B8%B0%ED%9A%8D%20%EB%B0%9C%ED%91%9C.html",
 "image": "/log_assets/images/510_%EC%8B%B1%EA%B0%80%ED%8F%AC%EB%A5%B4%20%EA%B0%80%EC%A1%B1%EC%97%AC%ED%96%89%EA%B8%B0%ED%9A%8D%20%EB%B0%9C%ED%91%9C_cover.jpg",
-"related": [
-2,
-4,
-7,
-14
-]
+"related": []
 },
 {
 "id": 509,
@@ -6769,10 +6173,7 @@
 "url": "/log_assets/markdown/509_%EB%8B%A4%EC%96%91%ED%95%9C%20%EB%B0%98%EC%9D%91%EB%93%A4.html",
 "image": "/log_assets/images/511_%EB%8B%A4%EC%96%91%ED%95%9C%20%EB%B0%98%EC%9D%91%EB%93%A4_cover.jpg",
 "related": [
-560,
-2,
-4,
-7
+560
 ]
 },
 {
@@ -6796,12 +6197,7 @@
 "date": "Jan 4. 2024",
 "url": "/log_assets/markdown/511_%27%EC%A2%8B%EC%95%84%EC%9A%94%27%EC%9D%98%20%EC%9D%98%EB%AF%B8.html",
 "image": "/log_assets/images/513_%EC%A2%8B%EC%95%84%EC%9A%94%EC%9D%98%20%EC%9D%98%EB%AF%B8_cover.jpg",
-"related": [
-2,
-4,
-7,
-14
-]
+"related": []
 },
 {
 "id": 512,
@@ -6810,12 +6206,7 @@
 "date": "Jan 2. 2024",
 "url": "/log_assets/markdown/512_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%ED%88%AC%EB%AA%85%EB%AA%A8%EC%9E%90%20%EB%81%9D%ED%8C%90%EC%99%95%ED%8E%B8.html",
 "image": "/log_assets/images/514_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%ED%88%AC%EB%AA%85%EB%AA%A8%EC%9E%90%20%EB%81%9D%ED%8C%90%EC%99%95%ED%8E%B8_cover.jpg",
-"related": [
-3,
-5,
-10,
-12
-]
+"related": []
 },
 {
 "id": 513,
@@ -6839,10 +6230,7 @@
 "url": "/log_assets/markdown/514_2023%EB%85%84%EC%9D%84%20%EB%A7%88%EB%AC%B4%EB%A6%AC%ED%95%98%EB%A9%B0%E2%80%A6.html",
 "image": "/log_assets/images/516_2023%EB%85%84%EC%9D%84%20%EB%A7%88%EB%AC%B4%EB%A6%AC%ED%95%98%EB%A9%B0%E2%80%A6_cover.jpg",
 "related": [
-325,
-2,
-4,
-7
+325
 ]
 },
 {
@@ -6852,12 +6240,7 @@
 "date": "Dec 30. 2023",
 "url": "/log_assets/markdown/515_%EB%A0%88%EC%96%B4%ED%85%9C%20%EC%84%A0%EB%AC%BC%EC%9D%84%20%EB%B0%9B%EC%95%98%EC%8A%B5%EB%8B%88%EB%8B%A4.html",
 "image": "/log_assets/images/517_%EB%A0%88%EC%96%B4%ED%85%9C%20%EC%84%A0%EB%AC%BC%EC%9D%84%20%EB%B0%9B%EC%95%98%EC%8A%B5%EB%8B%88%EB%8B%A4._cover.jpg",
-"related": [
-2,
-4,
-7,
-14
-]
+"related": []
 },
 {
 "id": 516,
@@ -6910,9 +6293,7 @@
 "image": "/log_assets/images/521_%EB%82%B4%EA%B0%80%20%EA%B7%B8%EB%A1%9C%EC%9A%B0%EC%95%A4%EB%B2%A0%ED%84%B0%EC%97%90%EC%84%9C%20%EA%B0%95%EC%9D%98%EB%A5%BC%20%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0_cover.jpg",
 "related": [
 223,
-290,
-6,
-158
+290
 ]
 },
 {
@@ -6937,10 +6318,7 @@
 "url": "/log_assets/markdown/521_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%ED%9A%8C%EC%9D%98%EC%9D%98%20%EC%A0%84%EB%9E%B5%ED%8E%B8.html",
 "image": "/log_assets/images/523_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%ED%9A%8C%EC%9D%98%EC%9D%98%20%EC%A0%84%EB%9E%B5%ED%8E%B8_cover.jpg",
 "related": [
-240,
-3,
-5,
-10
+240
 ]
 },
 {
@@ -7079,8 +6457,7 @@
 "related": [
 347,
 402,
-405,
-3
+405
 ]
 },
 {
@@ -7090,12 +6467,7 @@
 "date": "Dec 13. 2023",
 "url": "/log_assets/markdown/532_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EC%9D%98%EC%8B%9D%20%EC%9E%88%EB%8A%94%20%ED%94%84%EB%A1%9C%ED%8E%B8.html",
 "image": "/log_assets/images/534_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EC%9D%98%EC%8B%9D%20%EC%9E%88%EB%8A%94%20%ED%94%84%EB%A1%9C%ED%8E%B8_cover.jpg",
-"related": [
-3,
-5,
-10,
-12
-]
+"related": []
 },
 {
 "id": 533,
@@ -7133,10 +6505,7 @@
 "url": "/log_assets/markdown/535_%EC%95%BD%EC%86%8D%EA%B3%BC%20%EC%82%AC%EB%AA%85%EC%9D%98%20%EA%B8%B0%ED%9A%8D.html",
 "image": "/log_assets/images/537_%EC%95%BD%EC%86%8D%EA%B3%BC%20%EC%82%AC%EB%AA%85%EC%9D%98%20%EA%B8%B0%ED%9A%8D_cover.jpg",
 "related": [
-215,
-3,
-5,
-10
+215
 ]
 },
 {
@@ -7162,9 +6531,7 @@
 "image": "/log_assets/images/539_%EC%96%B5%EC%9A%B8%ED%95%A0%EC%88%98%EB%A1%9D%20%EB%8D%94%20%EC%97%B4%EC%8B%AC%ED%9E%88%20%EC%82%B4%EC%95%84%EC%95%BC%20%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0_cover.jpg",
 "related": [
 447,
-555,
-2,
-4
+555
 ]
 },
 {
@@ -7191,8 +6558,7 @@
 "related": [
 406,
 510,
-9,
-3
+9
 ]
 },
 {
@@ -7217,10 +6583,7 @@
 "url": "/log_assets/markdown/541_%EC%A0%84%ED%98%84%EB%AC%B4%20%EC%95%84%EB%82%98%EC%99%80%20%EC%9E%A1%EC%A7%80%EC%82%AC%EC%A7%84%20%EC%B0%8D%EC%9D%80%20%EC%8D%B0%202.html",
 "image": "/log_assets/images/543_%EC%A0%84%ED%98%84%EB%AC%B4%20%EC%95%84%EB%82%98%EC%99%80%20%EC%9E%A1%EC%A7%80%EC%82%AC%EC%A7%84%20%EC%B0%8D%EC%9D%80%20%EC%8D%B0%202_cover.jpg",
 "related": [
-542,
-2,
-4,
-7
+542
 ]
 },
 {
@@ -7231,10 +6594,7 @@
 "url": "/log_assets/markdown/542_%EC%A0%84%ED%98%84%EB%AC%B4%20%EC%95%84%EB%82%98%EC%99%80%20%EC%9E%A1%EC%A7%80%EC%82%AC%EC%A7%84%20%EC%B0%8D%EC%9D%80%20%EC%8D%B0%201.html",
 "image": "/log_assets/images/544_%EC%A0%84%ED%98%84%EB%AC%B4%20%EC%95%84%EB%82%98%EC%99%80%20%EC%9E%A1%EC%A7%80%EC%82%AC%EC%A7%84%20%EC%B0%8D%EC%9D%80%20%EC%8D%B0%201_cover.jpg",
 "related": [
-541,
-2,
-4,
-7
+541
 ]
 },
 {
@@ -7258,12 +6618,7 @@
 "date": "Nov 30. 2023",
 "url": "/log_assets/markdown/544_%EC%A0%80%ED%9D%AC%20%EB%8C%80%ED%91%9C%EB%8B%98%EC%9D%B4%20%EC%BB%A8%EC%84%A4%ED%8C%85%20%EA%B0%99%EC%9D%80%20%EA%B1%B8%20%EC%8B%AB%EC%96%B4%ED%95%98%EC%84%B8%EC%9A%94.html",
 "image": "/log_assets/images/546_%EC%A0%80%ED%9D%AC%20%EB%8C%80%ED%91%9C%EB%8B%98%EC%9D%B4%20%EC%BB%A8%EC%84%A4%ED%8C%85%20%EA%B0%99%EC%9D%80%20%EA%B1%B8%20%EC%8B%AB%EC%96%B4%ED%95%98%EC%84%B8%EC%9A%94._cover.jpg",
-"related": [
-2,
-4,
-7,
-14
-]
+"related": []
 },
 {
 "id": 545,
@@ -7272,12 +6627,7 @@
 "date": "Nov 29. 2023",
 "url": "/log_assets/markdown/545_%EA%B4%80%EB%A7%9D%EA%B3%BC%20%EC%9D%91%EC%9B%90%EC%82%AC%EC%9D%B4%20%EA%B7%B8%20%EC%96%B4%EB%94%94%EC%AF%A4%EC%97%90%EC%84%9C.html",
 "image": "/log_assets/images/547_%EA%B4%80%EB%A7%9D%EA%B3%BC%20%EC%9D%91%EC%9B%90%EC%82%AC%EC%9D%B4%20%EA%B7%B8%20%EC%96%B4%EB%94%94%EC%AF%A4%EC%97%90%EC%84%9C..._cover.jpg",
-"related": [
-2,
-4,
-7,
-14
-]
+"related": []
 },
 {
 "id": 546,
@@ -7345,8 +6695,7 @@
 "related": [
 447,
 546,
-524,
-3
+524
 ]
 },
 {
@@ -7400,9 +6749,7 @@
 "image": "/log_assets/images/557_%EC%A7%80%EB%82%98%EA%B3%A0%20%EB%B3%B4%EB%8B%88..._cover.jpg",
 "related": [
 337,
-537,
-3,
-5
+537
 ]
 },
 {
@@ -7454,12 +6801,7 @@
 "date": "Nov 14. 2023",
 "url": "/log_assets/markdown/559_%ED%9A%8C%EC%82%AC%20%EC%9D%B4%EC%A0%84%20%EC%95%88%EB%82%B4.html",
 "image": "/log_assets/images/561_%ED%9A%8C%EC%82%AC%20%EC%9D%B4%EC%A0%84%20%EC%95%88%EB%82%B4_cover.jpg",
-"related": [
-2,
-4,
-7,
-14
-]
+"related": []
 },
 {
 "id": 560,
@@ -7483,10 +6825,7 @@
 "url": "/log_assets/markdown/561_%EC%84%9C%EC%84%9C%ED%9E%88%20%EA%B0%80%EB%9D%BC.html",
 "image": "/log_assets/images/563_%EC%84%9C%EC%84%9C%ED%9E%88%20%EA%B0%80%EB%9D%BC_cover.jpg",
 "related": [
-550,
-3,
-5,
-10
+550
 ]
 },
 {
@@ -7498,9 +6837,7 @@
 "image": "/log_assets/images/564_%EC%A7%81%EC%97%85%EB%B3%91_cover.jpg",
 "related": [
 546,
-19,
-2,
-4
+19
 ]
 },
 {
@@ -7552,12 +6889,7 @@
 "date": "Nov 7. 2023",
 "url": "/log_assets/markdown/566_%EB%8C%80%ED%91%9C%EC%9D%98%20%EC%9D%B4%EB%A6%84%EC%9D%84%20%EB%B9%A8%EA%B0%84%EC%83%89%EC%9C%BC%EB%A1%9C%20%EC%93%B0%EC%A7%84%20%EB%A7%88%EC%84%B8%EC%9A%94.html",
 "image": "/log_assets/images/568_%EB%8C%80%ED%91%9C%EC%9D%98%20%EC%9D%B4%EB%A6%84%EC%9D%84%20%EB%B9%A8%EA%B0%84%EC%83%89%EC%9C%BC%EB%A1%9C%20%EC%93%B0%EC%A7%84%20%EB%A7%88%EC%84%B8%EC%9A%94._cover.jpg",
-"related": [
-11,
-28,
-29,
-30
-]
+"related": []
 },
 {
 "id": 567,
@@ -7594,12 +6926,7 @@
 "date": "Nov 2. 2023",
 "url": "/log_assets/markdown/569_%EB%8F%84%EB%8C%80%EC%B2%B4%20%EB%8B%B9%EC%8B%A0%EC%9D%80%20%ED%95%9C%20%EA%B2%8C%20%EB%AD%90%EA%B0%80%20%EC%9E%88%EB%82%98%EC%9A%94.html",
 "image": "/log_assets/images/571_%EB%8F%84%EB%8C%80%EC%B2%B4%20%EB%8B%B9%EC%8B%A0%EC%9D%80%20%ED%95%9C%20%EA%B2%8C%20%EB%AD%90%EA%B0%80%20%EC%9E%88%EB%82%98%EC%9A%94_cover.jpg",
-"related": [
-2,
-4,
-7,
-14
-]
+"related": []
 },
 {
 "id": 570,
@@ -7608,12 +6935,7 @@
 "date": "Nov 1. 2023",
 "url": "/log_assets/markdown/570_%EB%8C%80%EA%B8%B0%EC%97%85%20DT%EB%A5%BC%20%EC%9C%84%ED%95%9C%205%EA%B0%80%EC%A7%80%20%EC%A0%9C%EC%95%88.html",
 "image": "/log_assets/images/572_%EB%8C%80%EA%B8%B0%EC%97%85%20DT%EB%A5%BC%20%EC%9C%84%ED%95%9C%205%EA%B0%80%EC%A7%80%20%EC%A0%9C%EC%95%88_cover.jpg",
-"related": [
-2,
-4,
-7,
-14
-]
+"related": []
 },
 {
 "id": 571,
@@ -7625,8 +6947,7 @@
 "related": [
 287,
 352,
-354,
-2
+354
 ]
 },
 {
@@ -7637,10 +6958,7 @@
 "url": "/log_assets/markdown/572_C%EB%A0%88%EB%B2%A8%EC%9D%98%20%EA%B8%B0%EC%88%A0%20%27%EA%B2%BD%EC%B2%AD%27.html",
 "image": "/log_assets/images/574_C%EB%A0%88%EB%B2%A8%EC%9D%98%20%EA%B8%B0%EC%88%A0%20%EA%B2%BD%EC%B2%AD_cover.jpg",
 "related": [
-606,
-11,
-28,
-29
+606
 ]
 },
 {
@@ -7650,12 +6968,7 @@
 "date": "Oct 28. 2023",
 "url": "/log_assets/markdown/573_%EC%82%AC%EA%B8%B0%EC%9D%98%20%EC%A0%91%EA%B7%BC%EB%B2%95.html",
 "image": "/log_assets/images/575_%EC%82%AC%EA%B8%B0%EC%9D%98%20%EC%A0%91%EA%B7%BC%EB%B2%95_cover.jpg",
-"related": [
-2,
-4,
-7,
-14
-]
+"related": []
 },
 {
 "id": 574,
@@ -7667,8 +6980,7 @@
 "related": [
 449,
 575,
-580,
-2
+580
 ]
 },
 {
@@ -7681,8 +6993,7 @@
 "related": [
 449,
 574,
-580,
-2
+580
 ]
 },
 {
@@ -7722,9 +7033,7 @@
 "image": "/log_assets/images/580_%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%20%ED%9A%8C%EC%82%AC%EC%9D%98%20%EC%95%BC%EA%B7%BC%20%EC%A0%84%EB%9E%B5_cover.jpg",
 "related": [
 301,
-270,
-11,
-28
+270
 ]
 },
 {
@@ -7792,9 +7101,7 @@
 "image": "/log_assets/images/585_%ED%81%B0%20%EA%B8%B0%EC%97%85%20%EC%9D%B8%EC%9E%AC%EB%93%A4%EC%9D%B4%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%97%90%EC%84%9C%20%EA%B3%A0%EC%A0%84%EC%9D%84%20%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0%EB%8A%94_cover.jpg",
 "related": [
 241,
-463,
-11,
-28
+463
 ]
 },
 {
@@ -7875,10 +7182,7 @@
 "url": "/log_assets/markdown/589_%EB%8C%80%ED%91%9C%EA%B0%80%20%EB%82%B4%20%EC%A1%B0%EC%A7%81%EC%9B%90%EC%9D%B4%EB%9D%BC%EB%A9%B4.html",
 "image": "/log_assets/images/591_%EB%8C%80%ED%91%9C%EA%B0%80%20%EB%82%B4%20%EC%A1%B0%EC%A7%81%EC%9B%90%EC%9D%B4%EB%9D%BC%EB%A9%B4_cover.jpg",
 "related": [
-607,
-11,
-28,
-29
+607
 ]
 },
 {
@@ -7930,12 +7234,7 @@
 "date": "Oct 9. 2023",
 "url": "/log_assets/markdown/593_%EB%BD%91%ED%9E%88%EB%8A%94%20%EC%9D%B4%EB%A0%A5%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B2%95.html",
 "image": "/log_assets/images/595_%EB%BD%91%ED%9E%88%EB%8A%94%20%EC%9D%B4%EB%A0%A5%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B2%95_cover.jpg",
-"related": [
-3,
-5,
-10,
-12
-]
+"related": []
 },
 {
 "id": 594,
@@ -7944,12 +7243,7 @@
 "date": "Oct 8. 2023",
 "url": "/log_assets/markdown/594_%ED%9A%8C%EC%82%AC%EC%82%AC%EC%9D%B4%ED%8A%B8%20%EC%9E%88%EC%9C%BC%EC%8B%9C%EC%A3%A0.html",
 "image": "/log_assets/images/596_%ED%9A%8C%EC%82%AC%EC%82%AC%EC%9D%B4%ED%8A%B8%20%EC%9E%88%EC%9C%BC%EC%8B%9C%EC%A3%A0_cover.jpg",
-"related": [
-2,
-4,
-7,
-14
-]
+"related": []
 },
 {
 "id": 595,
@@ -7959,10 +7253,7 @@
 "url": "/log_assets/markdown/595_%EB%AC%B4%EC%8A%A8%20%EC%9E%90%EC%8B%A0%EA%B0%90%EC%9C%BC%EB%A1%9C%20%EA%B0%9C%EC%9D%B8%EC%82%AC%EC%97%85%EC%9D%84%20%EC%8B%9C%EC%9E%91%ED%96%88%EB%82%98%EC%9A%94.html",
 "image": "/log_assets/images/597_%EB%AC%B4%EC%8A%A8%20%EC%9E%90%EC%8B%A0%EA%B0%90%EC%9C%BC%EB%A1%9C%20%EA%B0%9C%EC%9D%B8%EC%82%AC%EC%97%85%EC%9D%84%20%EC%8B%9C%EC%9E%91%ED%96%88%EB%82%98%EC%9A%94_cover.jpg",
 "related": [
-437,
-2,
-4,
-7
+437
 ]
 },
 {
@@ -7973,10 +7264,7 @@
 "url": "/log_assets/markdown/596_%EC%95%BC%EA%B7%BC%EC%9D%84%20%ED%95%98%EC%A7%80%20%EB%A7%90%EC%9E%90.html",
 "image": "/log_assets/images/598_%EC%95%BC%EA%B7%BC%EC%9D%84%20%ED%95%98%EC%A7%80%20%EB%A7%90%EC%9E%90_cover.jpg",
 "related": [
-225,
-3,
-5,
-10
+225
 ]
 },
 {
@@ -7987,10 +7275,7 @@
 "url": "/log_assets/markdown/597_%EC%96%B4%EC%A0%9C%EB%8A%94%20%EA%B8%B0%EB%B6%84%EC%9D%B4%20%EB%84%88%EB%AC%B4%20%EC%A2%8B%EC%95%84%20%EA%B3%BC%EC%9D%8C%EC%9D%84%20%ED%96%88%EC%96%B4%EC%9A%94.html",
 "image": "/log_assets/images/599_%EC%96%B4%EC%A0%9C%EB%8A%94%20%EA%B8%B0%EB%B6%84%EC%9D%B4%20%EB%84%88%EB%AC%B4%20%EC%A2%8B%EC%95%84%20%EA%B3%BC%EC%9D%8C%EC%9D%84%20%ED%96%88%EC%96%B4%EC%9A%94._cover.jpg",
 "related": [
-590,
-2,
-4,
-7
+590
 ]
 },
 {
@@ -8015,10 +7300,7 @@
 "url": "/log_assets/markdown/599_%EB%8B%B9%EC%8B%A0%EC%9D%B4%20%EB%AA%85%EB%9E%91%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%98%80%EB%8B%A4%EA%B3%A0%EC%9A%94.html",
 "image": "/log_assets/images/601_%EB%8B%B9%EC%8B%A0%EC%9D%B4%20%EB%AA%85%EB%9E%91%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%98%80%EB%8B%A4%EA%B3%A0%EC%9A%94_cover.jpg",
 "related": [
-392,
-2,
-4,
-7
+392
 ]
 },
 {
@@ -8029,10 +7311,7 @@
 "url": "/log_assets/markdown/600_%EB%82%98%EB%8A%94%20%EC%84%A0%EB%B0%B0%EC%9D%BC%EA%B9%8C%EC%9A%94%20%EA%BC%B0%EB%8C%80%EC%9D%BC%EA%B9%8C%EC%9A%94.html",
 "image": "/log_assets/images/602_%EB%82%98%EB%8A%94%20%EC%84%A0%EB%B0%B0%EC%9D%BC%EA%B9%8C%EC%9A%94%20%EA%BC%B0%EB%8C%80%EC%9D%BC%EA%B9%8C%EC%9A%94_cover.jpg",
 "related": [
-360,
-2,
-4,
-7
+360
 ]
 },
 {
@@ -8073,8 +7352,7 @@
 "related": [
 264,
 294,
-550,
-2
+550
 ]
 },
 {
@@ -8155,10 +7433,7 @@
 "url": "/log_assets/markdown/611_%EB%8B%B9%EC%8B%A0%EC%9D%98%20%EC%84%9C%EB%B9%84%EC%8A%A4%EA%B0%80%20%EB%A7%90%EC%9D%84%20%ED%95%9C%EB%8B%A4%EB%A9%B4.html",
 "image": "https://img1.kakaocdn.net/thumb/R1920x0.fjpg/?fname=http://t1.kakaocdn.net/brunch/service/user/5lk/image/D9QCnXpe9bRmEMCcfIKd5j50q9I.jpg",
 "related": [
-400,
-1,
-8,
-34
+400
 ]
 },
 {
@@ -8170,9 +7445,7 @@
 "image": "https://img1.kakaocdn.net/thumb/R1920x0.fjpg/?fname=http://t1.kakaocdn.net/brunch/service/user/5lk/image/HRTV3j6zqcMYE7URMiKjHAeyTLk.jpg",
 "related": [
 318,
-221,
-11,
-28
+221
 ]
 },
 {
@@ -8185,8 +7458,7 @@
 "related": [
 614,
 344,
-346,
-349
+346
 ]
 },
 {
@@ -8199,8 +7471,7 @@
 "related": [
 613,
 344,
-346,
-349
+346
 ]
 },
 {
@@ -8212,9 +7483,7 @@
 "image": "/log_assets/images/vidar-nordli-mathisen-BsXNwkm04y4-unsplash.jpg",
 "related": [
 49,
-463,
-11,
-28
+463
 ]
 }
 ]
