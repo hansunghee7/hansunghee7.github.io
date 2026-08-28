@@ -54,6 +54,18 @@ layout: null
   }
   .post-author-col-name { font-family: 'Pretendard Variable', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.06em; color: #2a2822; margin-bottom: 4px; }
   .post-author-col-meta { font-family: 'Pretendard Variable', sans-serif; font-weight: 300; font-size: 11.5px; color: #8f8b82; line-height: 1.6; }
+
+  /* 버전 E: "어깨가 본문에 걸친" 블리드 스타일. D는 페이드 방향이 반대였다(아래쪽이
+     사라져서 어깨가 없어짐) -- 위쪽(머리)을 배경에 녹이고 아래쪽(어깨)은 선명하게
+     남겨서 인물이 페이지에서 떠오르는 것처럼. 본문과의 간격도 확 좁혀서 카드처럼
+     뚝 끊기지 않고 같은 페이지에서 이어지는 느낌을 준다. */
+  .post-cta.post-cta-bleed { margin-top: 0; padding-top: 0; }
+  .post-author-bleed { display: flex; flex-direction: column; align-items: center; margin-top: -12px; margin-bottom: 6px; }
+  .post-author-bleed-photo {
+    width: 132px; height: 165px; object-fit: cover; object-position: top center; filter: grayscale(1);
+    -webkit-mask-image: linear-gradient(to top, #000 45%, transparent 92%);
+    mask-image: linear-gradient(to top, #000 45%, transparent 92%);
+  }
 </style>
 </head>
 <body>
@@ -103,6 +115,21 @@ layout: null
   <div class="post-cta">
     <a href="/" class="post-author-col">
       <img src="/assets/ceo-portrait-og.jpg" alt="한성희" class="post-author-col-photo">
+      <span class="post-author-col-name">한성희</span>
+      <span class="post-author-col-meta">스타트업 그로스 코치 · 심플리파이어</span>
+    </a>
+    <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
+    <button type="button" class="post-cta-btn">코칭 문의</button>
+  </div>
+</div>
+
+<div class="compare-label">버전 E — 어깨가 본문에 걸친 블리드 스타일 (머리 쪽이 배경에 녹아듦)</div>
+<div class="article-sheet">
+  <p class="fake-p">수많은 스타트업을 코칭하면서도 느낀다. 인생도 사업도 모두 바람이 거칠게 부는 바다와 같다.</p>
+  <p class="fake-p">내 배의 돛, 내가 꼭 잡고 있나. 혹시 남 탓만 하며 놓고 있지는 않나.</p>
+  <div class="post-cta post-cta-bleed">
+    <a href="/" class="post-author-bleed">
+      <img src="/assets/ceo-portrait-og.jpg" alt="한성희" class="post-author-bleed-photo">
       <span class="post-author-col-name">한성희</span>
       <span class="post-author-col-meta">스타트업 그로스 코치 · 심플리파이어</span>
     </a>
