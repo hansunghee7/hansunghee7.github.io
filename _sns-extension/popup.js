@@ -60,8 +60,22 @@ function renderLog(log) {
   }).join("");
 }
 
+// SNS 인사이트 페이지가 "오늘자 기록이 있는지"로 새로고침 동작 여부를
+// 정하는 것과 같은 기준을 여기서도 보여준다 -- background.js가 실제로
+// 언제 마지막으로 전체 수집 라운드를 돌렸는지(lastFullRoundDate)를
+// 그대로 읽어서 "오늘 수집 완료/아직 안 됨"으로 표시한다.
+function kstToday() {
+  return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Seoul" }).format(new Date());
+}
+
 function render() {
-  chrome.storage.local.get(["githubToken", "pendingCaptures", "recentLog"], function (res) {
+  chrome.storage.local.get(["githubToken", "pendingCaptures", "recentLog", "lastFullRoundDate"], function (res) {
+    var roundEl = document.getElementById("roundStatus");
+    if (res.lastFullRoundDate === kstToday()) {
+      roundEl.textContent = "오늘 전체 수집 완료 (" + res.lastFullRoundDate + ")";
+    } else {
+      roundEl.textContent = "오늘 아직 전체 수집 안 됨" + (res.lastFullRoundDate ? " (마지막: " + res.lastFullRoundDate + ")" : "");
+    }
     if (res.githubToken) {
       statusBox.className = "status ok";
       statusBox.textContent = "GitHub 연결됨 — 자동 기록 작동 중";

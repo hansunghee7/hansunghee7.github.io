@@ -102,7 +102,7 @@
 <div class="wrap">
   <header>
     <h1>SNS 인사이트</h1>
-    <div class="sub">각 SNS 프로필의 팔로워 수 추이입니다. 크롬 확장이 설치돼 있으면, 위 새로고침을 누르거나 8개 중 아무 SNS나 직접 방문할 때 나머지까지 백그라운드로 한 바퀴 돌며 기록합니다.</div>
+    <div class="sub">각 SNS 프로필의 팔로워 수 추이입니다. 오늘자 기록이 이미 있으면 그대로 보여주고, 없을 때만 새로고침이 크롬 확장에 전체 수집을 요청합니다(8개 중 아무 SNS나 직접 방문해도 동일하게 수집됩니다).</div>
     <div class="metaline">
       <button class="refresh" id="refreshBtn"><span class="refresh-icon">↻</span> <span class="refresh-label">새로고침</span></button>
       <span id="lastRefresh"></span>
@@ -112,13 +112,14 @@
   <div class="setup-note">
     <strong>기록이 안 보이나요?</strong> <code>_sns-extension</code>
     크롬 확장을 설치하고 GitHub 연결까지 해야 기록이 쌓입니다. 그 뒤로는
-    위 새로고침을 누르거나 8개 SNS 중 아무 곳이나 직접 방문할 때 자동으로
-    나머지까지 한 바퀴 수집됩니다. 다만 수집·커밋에 몇십 초 걸리니, 방금
-    요청한 값은 조금 있다 다시 새로고침해야 보입니다.
+    오늘자 기록이 없을 때 위 새로고침을 누르거나 8개 SNS 중 아무 곳이나
+    직접 방문하면 자동으로 나머지까지 한 바퀴 수집됩니다. 다만 수집·커밋에
+    몇십 초 걸리니, 방금 요청한 값은 조금 있다 다시 새로고침해야 보입니다.
+    (오늘자 기록이 이미 있으면 새로고침은 그냥 화면만 다시 불러옵니다.)
   </div>
 
   <div id="statusArea"></div>
-  <div id="grid"><div class="loading">↻ 위 새로고침 버튼을 눌러 불러오세요</div></div>
+  <div id="grid"><div class="loading">불러오는 중…</div></div>
 </div>
 
 <script>
@@ -137,10 +138,26 @@
   ];
 
   var els = { status: document.getElementById("statusArea"), grid: document.getElementById("grid") };
+  var lastData = {};
 
   function stampRefresh() {
     document.getElementById("lastRefresh").textContent =
       "· 마지막 새로고침 " + new Date().toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit" });
+  }
+
+  function kstToday() {
+    return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Seoul" }).format(new Date());
+  }
+
+  // 8개 전부 오늘(KST)자 기록이 이미 있으면 "오늘은 더 수집할 필요 없음"으로
+  // 본다 -- 확장의 background.js가 하루 한 번만 도는 것과 같은 기준을
+  // 페이지 쪽에서도 데이터로 판단한다(확장 storage는 페이지에서 직접 못 읽음).
+  function isFresh(data) {
+    var today = kstToday();
+    return PLATFORMS.every(function (p) {
+      var series = data[p.key] || [];
+      return series.length > 0 && series[series.length - 1].date === today;
+    });
   }
 
   function setRefreshState(btn, state) {
@@ -167,7 +184,8 @@
     return fetch(DATA_URL + "?t=" + Date.now(), { cache: "no-store" })
       .then(function (r) { return r.ok ? r.json() : {}; })
       .then(function (data) {
-        render(data || {});
+        lastData = data || {};
+        render(lastData);
         return true;
       })
       .catch(function (e) {
@@ -178,20 +196,27 @@
 
   document.getElementById("refreshBtn").addEventListener("click", function () {
     var btn = this;
-    // 크롬 확장(설치돼 있으면)에게 지금 8개 SNS를 다시 한 바퀴 돌아달라고
-    // 요청한다. 확장의 content-script(dashboard-trigger.js)가 이 이벤트를
-    // 받아서 background로 전달한다 -- 수집·커밋은 몇 초~몇십 초 걸리는
-    // 별도 과정이라, 아래 load()가 지금 당장 보여주는 건 "요청 시점까지
-    // 이미 저장돼 있던" 값이고, 방금 요청한 새 값은 조금 있다 다시
-    // 새로고침해야 보인다.
-    window.dispatchEvent(new CustomEvent("simplifier-sns-force-refresh"));
     setRefreshState(btn, "loading");
     load().then(function (ok) {
       stampRefresh();
+      if (ok && isFresh(lastData)) {
+        // 이미 오늘자 기록이 다 있으면, 굳이 크롬 확장에 8개 전체 수집을
+        // 또 요청하지 않는다 -- 방금 불러온 값을 다시 보여주는 걸로 끝낸다.
+        setRefreshState(btn, "success");
+        setTimeout(function () { setRefreshState(btn, "idle"); }, 1600);
+        return;
+      }
+      // 오늘자 기록이 없는 플랫폼이 있을 때만 크롬 확장(설치돼 있으면)에
+      // 8개 SNS를 다시 한 바퀴 돌아달라고 요청한다. 수집·커밋은 몇 초~몇십 초
+      // 걸리는 별도 과정이라, 방금 요청한 새 값은 조금 있다 다시
+      // 새로고침해야 보인다.
+      window.dispatchEvent(new CustomEvent("simplifier-sns-force-refresh"));
       setRefreshState(btn, ok ? "success" : "error");
       setTimeout(function () { setRefreshState(btn, "idle"); }, 1600);
     });
   });
+  load();
+  stampRefresh();
 
   function render(data) {
     els.grid.innerHTML = PLATFORMS.map(function (p) { return buildCard(p, data); }).join("");
