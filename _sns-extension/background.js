@@ -95,6 +95,19 @@ function todayStr() {
   return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
 }
 
+// 8개 SNS가 거의 동시에 캡처되면(전체 수집 라운드 등) 다들 같은 파일
+// (sns-insight.json)에 동시에 쓰려고 해서 GitHub이 sha 충돌(409)로
+// 거절하는 경우가 잦았다. 재시도만으로는 8개가 한꺼번에 몰릴 때 부족해서,
+// 애초에 동시에 안 쓰도록 커밋을 이 큐에 넣어 하나 끝나야 다음이
+// 시작되게 직렬화한다.
+var commitQueue = Promise.resolve();
+function enqueueCommit(token, capture) {
+  commitQueue = commitQueue.then(function () {
+    return commitCapture(token, capture, 0);
+  });
+  return commitQueue;
+}
+
 function handleCapture(capture) {
   console.log("[SNS 인사이트] 캡처 수신:", capture.platform, capture.count);
   chrome.storage.local.get(["githubToken"], function (res) {
@@ -103,7 +116,7 @@ function handleCapture(capture) {
       pushLog({ platform: capture.platform, count: capture.count, capturedAt: capture.capturedAt, status: "pending" });
       return;
     }
-    commitCapture(res.githubToken, capture, 0);
+    enqueueCommit(res.githubToken, capture);
   });
 }
 
@@ -122,7 +135,7 @@ function flushPending() {
     var pending = res.pendingCaptures;
     chrome.storage.local.set({ pendingCaptures: [] });
     pending.forEach(function (capture) {
-      commitCapture(res.githubToken, capture, 0);
+      enqueueCommit(res.githubToken, capture);
     });
   });
 }
@@ -140,7 +153,7 @@ function ghHeaders(token) {
 function commitCapture(token, capture, retryCount) {
   var url = "https://api.github.com/repos/" + REPO + "/contents/" + DATA_PATH;
 
-  fetch(url, { headers: ghHeaders(token) })
+  return fetch(url, { headers: ghHeaders(token) })
     .then(function (r) {
       if (r.status === 404) return { notFound: true };
       if (!r.ok) {
@@ -195,11 +208,18 @@ function commitCapture(token, capture, retryCount) {
     .then(function (putRes) {
       if (putRes.status === 409) {
         if (retryCount < 3) {
-          // 그 사이 다른 커밋이 먼저 들어간 경우 -- sha를 다시 받아서 재시도
-          setTimeout(function () { commitCapture(token, capture, retryCount + 1); }, 800 + Math.random() * 800);
-        } else {
-          pushLog({ platform: capture.platform, count: capture.count, capturedAt: capture.capturedAt, status: "error", note: "충돌 재시도 초과" });
+          // 그 사이 다른 커밋이 먼저 들어간 경우 -- sha를 다시 받아서 재시도.
+          // 큐(enqueueCommit)가 우리 자신의 8개끼리는 이미 순서를 보장해주므로,
+          // 이 경로는 외부 요인(예: 그 사이 GitHub Actions가 같은 파일에 커밋)으로
+          // 인한 드문 충돌을 위한 안전망이다. Promise를 반환해야 큐가 재시도
+          // 완료까지 기다리고 다음 커밋을 시작한다.
+          return new Promise(function (resolve) {
+            setTimeout(resolve, 800 + Math.random() * 800);
+          }).then(function () {
+            return commitCapture(token, capture, retryCount + 1);
+          });
         }
+        pushLog({ platform: capture.platform, count: capture.count, capturedAt: capture.capturedAt, status: "error", note: "충돌 재시도 초과" });
         return;
       }
       if (putRes.ok) {
