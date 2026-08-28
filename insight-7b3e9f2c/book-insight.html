@@ -36,13 +36,14 @@
 
   .books-columns{display:grid; grid-template-columns:1fr 1fr; column-gap:32px; row-gap:22px; align-items:start;}
   @media (max-width:900px){ .books-columns{grid-template-columns:1fr;} }
-  header{padding:28px 0 18px; border-bottom:1px solid var(--line-soft); margin-bottom:24px;}
+  /* 제목·새로고침 버튼·데이터 기준 날짜를 한 줄에 몰아서 세로 공간을
+     아낀다 -- 마지막 새로고침 시각·자동 갱신 주기 같은 한 번만 알면
+     되는 정보는 제목 옆 ⓘ 아이콘 hover 툴팁으로 뺐다. */
+  header{display:flex; align-items:center; flex-wrap:wrap; gap:14px; padding:28px 0 18px; border-bottom:1px solid var(--line-soft); margin-bottom:24px;}
   h1{font-family:'Noto Serif KR',serif; font-weight:400; font-size:30px; letter-spacing:-0.01em; margin:0; display:inline-flex; align-items:baseline; gap:8px;}
   @media (min-width:761px){ h1{font-size:36px;} }
-  /* 순위 방향·데이터 수집 방식 설명은 한 번 알면 되는 정보라, 제목 옆
-     ⓘ 아이콘에 몰아넣고 hover했을 때만 보여준다(타일의 info-dot과 같은 패턴). */
   h1 .info-dot{font-size:15px;}
-  .metaline{color:var(--muted); font-size:12.5px; display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center; margin-top:12px;}
+  .meta-text{color:var(--muted); font-size:12.5px;}
   .refresh{
     background:none; border:1px solid var(--line); color:var(--dim); cursor:pointer;
     border-radius:999px; padding:7px 15px; font-size:12.5px; font-family:'Pretendard Variable','Pretendard',-apple-system,sans-serif;
@@ -72,8 +73,8 @@
     body.has-shell-nav{padding-left:0;}
   }
 
-  .book-col-head h2{font-size:16px; font-weight:600; margin:0 0 3px;}
-  .book-col-head .book-meta{font-size:12px; color:var(--muted);}
+  .book-col-head h2{font-size:16px; font-weight:600; margin:0; display:flex; align-items:baseline; flex-wrap:wrap; gap:8px;}
+  .book-col-head .book-meta{font-size:12px; font-weight:400; color:var(--muted);}
 
   .source-header{display:flex; align-items:center; gap:8px; margin-bottom:10px; font-size:13px; font-weight:600; color:var(--dim);}
   .source-header img{height:16px; width:auto; display:block;}
@@ -120,13 +121,9 @@
 
 <div class="wrap">
   <header>
-    <h1>북 인사이트<span class="info-dot" title="출간한 책들의 서점 베스트셀러 순위·판매지수 추이입니다. 순위는 낮을수록(1위에 가까울수록) 좋습니다. 두 책 모두 이 저장소가 직접 예스24·알라딘·교보문고를 수집합니다(기획자의 질문법은 리디북스·밀리의서재도 추가). 지금 당장 갱신하려면 GitHub Actions에서 Fetch book insight 워크플로를 수동 실행하세요.">ⓘ</span></h1>
-    <div class="metaline">
-      <button class="refresh" id="refreshBtn"><span class="refresh-icon">↻</span> <span class="refresh-label">새로고침</span></button>
-      <span id="dataAsOf"></span>
-      <span id="lastRefresh"></span>
-      <span>· 하루 4번(05:02·06:41·11:23·17:37 KST) 자동 갱신</span>
-    </div>
+    <h1>북 인사이트<span class="info-dot" id="titleInfo">ⓘ</span></h1>
+    <button class="refresh" id="refreshBtn"><span class="refresh-icon">↻</span> <span class="refresh-label">새로고침</span></button>
+    <span id="dataAsOf" class="meta-text"></span>
   </header>
 
   <div class="books-columns" id="bookGrid">
@@ -144,9 +141,16 @@
 
   /* series: [{date, value}] (value는 null 가능, 렌더 전에 걸러짐).
      invert=true면 "낮을수록 좋음"(순위)인 지표 -- 선을 뒤집어서 좋아질수록
-     위로 올라가는 것처럼 보이게 그린다. */
-  function sparkline(series, invert) {
-    var w = 200, h = 44, pad = 4;
+     위로 올라가는 것처럼 보이게 그린다.
+     w: 내부 viewBox 가로폭(기본 200) -- 그리드에 카드가 1~3개만 있는
+     그룹은 auto-fit이 남는 칸을 collapse시켜 카드가 실제로 훨씬 넓게
+     렌더링된다. viewBox가 실제 폭보다 훨씬 좁으면 preserveAspectRatio="none"이
+     가로로만 비균등하게 늘려서 끝점 원이 타원으로 찌그러지므로, 카드가
+     넓어질 걸 아는 경우(그룹 안 카드 수가 적을 때) 호출부에서 더 넓은
+     값을 넘긴다. */
+  function sparkline(series, invert, w) {
+    w = w || 200;
+    var h = 44, pad = 4;
     var values = series.map(function (e) { return e.value; });
     var min = Math.min.apply(null, values);
     var max = Math.max.apply(null, values);
@@ -183,7 +187,7 @@
      날짜/기록수/note는 항상 보여주지 않고 ⓘ 아이콘에 마우스를 올렸을 때만
      보이는 툴팁으로 묶는다 -- 숫자와 그래프(추세는 핵심 정보라 항상 유지)만
      남기고 세로 공간을 아낀다. */
-  function tile(metric, series, noteOverride) {
+  function tile(metric, series, noteOverride, w) {
     var clean = series.filter(function (e) { return e.value != null; });
     var cardClass = "tile" + (metric.headline ? " tile-headline" : "");
     var label = '<div class="label" title="' + escapeHtml(metric.label) + '">' + labelHtml(metric.label, metric.href) + "</div>";
@@ -221,17 +225,19 @@
       "</span>" + deltaHtml +
       '<span class="info-dot" title="' + escapeHtml(infoTitle) + '">ⓘ</span>' +
       "</div>" +
-      sparkline(clean, !metric.higherIsBetter) +
+      sparkline(clean, !metric.higherIsBetter, w) +
       "</div>"
     );
   }
 
-  function staticTile(label, valueText, note, href) {
+  /* isEmpty: 값이 없을 때(예: 리디북스 "평가 없음") 다른 빈 카드와 같은
+     방식(딤드)으로 표시한다. */
+  function staticTile(label, valueText, note, href, isEmpty) {
     return (
-      '<div class="tile"><div class="label">' + labelHtml(label, href) + '</div>' +
-      '<div class="latest"><span class="val">' + escapeHtml(valueText) + "</span></div>" +
-      (note ? '<div class="note">' + escapeHtml(note) + "</div>" : "") +
-      "</div>"
+      '<div class="tile' + (isEmpty ? " is-empty" : "") + '"><div class="label" title="' + escapeHtml(label) + '">' + labelHtml(label, href) + '</div>' +
+      '<div class="latest"><span class="val">' + escapeHtml(valueText) + "</span>" +
+      (note ? '<span class="info-dot" title="' + escapeHtml(note) + '">ⓘ</span>' : "") +
+      "</div></div>"
     );
   }
 
@@ -239,16 +245,21 @@
      metrics 배열 순서가 곧 화면에 나열되는 순서(대표 지표 -> 상위 카테고리
      -> 하위 카테고리)다. g.customBodyHtml이 있으면(리디북스처럼 순위
      지표가 아닌 경우) metrics 대신 그걸 그대로 쓴다. */
-  function tileFor(m, history) {
+  function tileFor(m, history, w) {
     var series = history.map(function (r) { return { date: r.date, value: m.get(r) }; });
     var note = m.noteGet ? m.noteGet(history[history.length - 1]) : null;
-    return tile(m, series, note);
+    return tile(m, series, note, w);
   }
 
   function sourceGroupHtml(g, history) {
+    // 그룹 안 카드 수가 4개보다 적으면 auto-fit이 남는 칸을 collapse시켜
+    // 카드가 그만큼 더 넓게 렌더링된다(밀리의서재처럼 카드가 1개뿐인
+    // 그룹은 줄 전체 폭을 혼자 차지). 스파크라인 viewBox를 그 폭에 맞게
+    // 넓혀줘야 끝점 원이 옆으로 늘어져 보이지 않는다.
+    var w = g.metrics && g.metrics.length && g.metrics.length < 4 ? Math.round(660 / g.metrics.length) : 200;
     var bodyHtml = g.customBodyHtml != null
       ? g.customBodyHtml
-      : g.metrics.map(function (m) { return tileFor(m, history); }).join("");
+      : g.metrics.map(function (m) { return tileFor(m, history, w); }).join("");
     return (
       '<div class="source-group">' +
       '<div class="source-header"><img src="' + escapeHtml(g.logo) + '" alt="" onerror="this.style.display=\'none\'">' +
@@ -280,8 +291,8 @@
 
   function renderBookGrid(ux, q) {
     var html =
-      '<div class="book-col-head"><h2>UX의 언어들</h2><div class="book-meta">한성희·신행철 저 · 파지트</div></div>' +
-      '<div class="book-col-head"><h2>기획자의 질문법</h2><div class="book-meta">한성희 저 · 파지트 · 2025-06-13 출간</div></div>';
+      '<div class="book-col-head"><h2>UX의 언어들 <span class="book-meta">한성희·신행철 저 · 파지트</span></h2></div>' +
+      '<div class="book-col-head"><h2>기획자의 질문법 <span class="book-meta">한성희 저 · 파지트 · 2025-06-13 출간</span></h2></div>';
 
     STORE_ORDER.forEach(function (key) {
       var ug = findGroup(ux.groups, key);
@@ -297,9 +308,18 @@
     document.getElementById("bookGrid").innerHTML = html;
   }
 
+  /* 순위 방향·데이터 수집 방식·자동 갱신 주기 같은 설명은 한 번 알면
+     되는 정보라 제목 옆 ⓘ 아이콘 hover 툴팁에 몰아둔다. 여기에 매 새로고침마다
+     바뀌는 "마지막 새로고침" 시각만 이어붙인다. */
+  var TITLE_INFO_BASE =
+    "출간한 책들의 서점 베스트셀러 순위·판매지수 추이입니다. 순위는 낮을수록(1위에 가까울수록) 좋습니다. " +
+    "두 책 모두 이 저장소가 직접 예스24·알라딘·교보문고를 수집합니다(기획자의 질문법은 리디북스·밀리의서재도 추가). " +
+    "하루 4번(05:02·06:41·11:23·17:37 KST) 자동 갱신되며, 지금 당장 갱신하려면 새로고침 버튼을 누르거나 " +
+    "GitHub Actions에서 Fetch book insight 워크플로를 수동 실행하세요.";
+
   function stampRefresh() {
-    document.getElementById("lastRefresh").textContent =
-      "· 마지막 새로고침 " + new Date().toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit" });
+    var time = new Date().toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit" });
+    document.getElementById("titleInfo").title = TITLE_INFO_BASE + " 마지막 새로고침: " + time + ".";
   }
 
   function setRefreshState(btn, state) {
@@ -500,7 +520,8 @@
           "참고",
           ridi.rating ? ridi.rating.toFixed(1) + "점" : "평가 없음",
           "평가 " + (ridi.rating_count || 0) + "명 · 베스트셀러 순위 없음(전자책 전용 플랫폼)",
-          "https://ridibooks.com/books/2234005394"
+          "https://ridibooks.com/books/2234005394",
+          !ridi.rating
         ),
       });
     }
