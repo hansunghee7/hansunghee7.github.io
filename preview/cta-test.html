@@ -1,0 +1,81 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[STAGING] 포스트 하단 CTA 비교</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=boska@200,300,400,500,600,700,201,301,401&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200;0,8..60,300;0,8..60,400;1,8..60,200;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #f0f0ee; font-family: 'Pretendard Variable', sans-serif; }
+  .compare-label { max-width: 700px; margin: 0 auto; padding: 40px 20px 0; font-family: 'Pretendard Variable', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #8f8b82; }
+  .article-sheet { max-width: 700px; margin: 16px auto 48px; background: #fff; padding: 40px 20px 0; box-shadow: 0 2px 20px rgba(0,0,0,0.06); border-radius: 8px; overflow: hidden; }
+
+  /* 실제 글 본문 스타일과 동일 -- 톤 비교를 위해 마지막 문단을 재현 */
+  .fake-p { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-weight: 300; font-size: 17px; line-height: 1.85; color: #333; margin: 0 0 12px; word-break: keep-all; }
+
+  .post-cta { text-align: center; padding: 8px 20px 44px; margin-top: 40px; }
+  .post-cta-line { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-weight: 300; font-style: italic; font-size: 15.5px; color: #767672; margin: 0 0 20px; line-height: 1.7; }
+  .post-cta-btn { display: inline-block; background: #080808; color: #f5f3ee; font-family: 'Boska', serif; font-style: italic; font-weight: 400; font-size: 15.5px; padding: 13px 36px; border-radius: 999px; text-decoration: none !important; border: none; cursor: pointer; }
+
+  /* 버전 A: Julian Shapiro 스타일 -- 아주 작은 원형 사진 + 이름만, 홈 후기 아바타(28px)와 동일 크기 */
+  .post-author-mini { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 22px; text-decoration: none !important; }
+  .post-author-mini-photo { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; filter: grayscale(1); }
+  .post-author-mini-name { font-family: 'Pretendard Variable', sans-serif; font-size: 13px; font-weight: 500; color: #767672; }
+
+  /* 버전 B: James Clear 스타일 -- 사진/카드 없이, 기존 문구에 이름만 자연스럽게 녹임 */
+</style>
+</head>
+<body>
+
+<div class="compare-label">버전 A — Julian Shapiro 스타일 (작은 사진 + 이름)</div>
+<div class="article-sheet">
+  <p class="fake-p">수많은 스타트업을 코칭하면서도 느낀다. 인생도 사업도 모두 바람이 거칠게 부는 바다와 같다.</p>
+  <p class="fake-p">내 배의 돛, 내가 꼭 잡고 있나. 혹시 남 탓만 하며 놓고 있지는 않나.</p>
+  <div class="post-cta">
+    <a href="/" class="post-author-mini">
+      <img src="/assets/ceo-portrait-og.jpg" alt="한성희" class="post-author-mini-photo">
+      <span class="post-author-mini-name">한성희</span>
+    </a>
+    <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
+    <button type="button" class="post-cta-btn">코칭 문의</button>
+  </div>
+</div>
+
+<div class="compare-label">버전 B — James Clear 스타일 (사진 없이 문구에 이름만)</div>
+<div class="article-sheet">
+  <p class="fake-p">수많은 스타트업을 코칭하면서도 느낀다. 인생도 사업도 모두 바람이 거칠게 부는 바다와 같다.</p>
+  <p class="fake-p">내 배의 돛, 내가 꼭 잡고 있나. 혹시 남 탓만 하며 놓고 있지는 않나.</p>
+  <div class="post-cta">
+    <p class="post-cta-line">비슷한 고민을 하고 계신다면, 한성희와 이야기 나눠볼까요?</p>
+    <button type="button" class="post-cta-btn">코칭 문의</button>
+  </div>
+</div>
+
+<div class="compare-label">참고 — 오늘 반영했다 되돌린 버전 (52px 사진 + 2줄 이력)</div>
+<div class="article-sheet">
+  <p class="fake-p">수많은 스타트업을 코칭하면서도 느낀다. 인생도 사업도 모두 바람이 거칠게 부는 바다와 같다.</p>
+  <p class="fake-p">내 배의 돛, 내가 꼭 잡고 있나. 혹시 남 탓만 하며 놓고 있지는 않나.</p>
+  <div class="post-cta">
+    <a href="/" style="display:inline-flex;align-items:center;gap:12px;margin-bottom:24px;text-decoration:none;">
+      <img src="/assets/ceo-portrait-og.jpg" alt="한성희" style="width:52px;height:52px;border-radius:50%;object-fit:cover;filter:grayscale(1);">
+      <span style="text-align:left;">
+        <span style="display:block;font-family:'Pretendard Variable',sans-serif;font-weight:600;font-size:14.5px;color:#2a2822;margin-bottom:2px;">한성희</span>
+        <span style="display:block;font-family:'Pretendard Variable',sans-serif;font-weight:300;font-size:12.5px;color:#8f8b82;line-height:1.5;">네이버·삼성전자·요기요·빗썸을 거친 스타트업 그로스 코치<br>《기획자의 질문법》 저자</span>
+      </span>
+    </a>
+    <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
+    <button type="button" class="post-cta-btn">코칭 문의</button>
+  </div>
+</div>
+
+</body>
+</html>
