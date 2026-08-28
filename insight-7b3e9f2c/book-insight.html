@@ -31,7 +31,7 @@
   }
   /* 다른 Studio 페이지보다 넓게 잡는다 -- 두 책을 좌우로 나란히 놓고
      비교하려면 1100px로는 컬럼 하나가 너무 좁아진다. */
-  .wrap{max-width:1400px; margin:0 auto; padding:0 var(--gutter) 60px;}
+  .wrap{max-width:1600px; margin:0 auto; padding:0 var(--gutter) 60px;}
   @media (min-width:761px){ :root{ --gutter:32px; } }
 
   .books-columns{display:grid; grid-template-columns:1fr 1fr; column-gap:32px; row-gap:22px; align-items:start;}
@@ -76,11 +76,15 @@
   .source-header{display:flex; align-items:center; gap:8px; margin-bottom:10px; font-size:13px; font-weight:600; color:var(--dim);}
   .source-header img{height:16px; width:auto; display:block;}
 
-  .tiles{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px;}
-  .tile{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px 16px 14px;}
+  .tiles{display:grid; grid-template-columns:repeat(auto-fit,minmax(148px,1fr)); gap:10px;}
+  .tile{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px 14px 12px; min-width:0;}
   .tile.is-empty{opacity:0.45;}
+  /* 대표 지표(판매지수/세일즈포인트/주간베스트)는 배경을 살짝 얹어서
+     같은 서점의 다른 카테고리 카드들 사이에서 한눈에 띄게 한다. */
+  .tile.tile-headline{background:#f7f6f2; border-color:var(--ink);}
+  .tile.tile-headline .val{font-size:29px;}
 
-  .tile .label{font-size:12px; color:var(--muted); margin-bottom:8px; line-height:1.4;}
+  .tile .label{font-size:12px; color:var(--muted); margin-bottom:6px; line-height:1.4; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
   .tile .label a{color:inherit; text-decoration:none;}
   .tile .label a:hover{color:var(--ink); text-decoration:underline;}
   .tile .latest{display:flex; align-items:baseline; gap:7px;}
@@ -89,10 +93,12 @@
   .tile .delta{font-size:12px; font-weight:600;}
   .tile .delta.up{color:var(--good);}
   .tile .delta.down{color:var(--bad);}
-  .tile .asof{font-size:10.5px; color:var(--muted); margin:6px 0 8px;}
-  .tile svg{width:100%; height:44px; display:block;}
+  /* 날짜/기록수/배지 카테고리명 같은 부가정보는 항상 보여주지 않고,
+     이 점 아이콘에 마우스를 올렸을 때만 툴팁으로 보여준다 -- 핵심
+     숫자와 그래프만 항상 보이게 해서 세로 공간을 아낀다. */
+  .info-dot{margin-left:auto; font-size:11px; color:var(--muted); cursor:help; flex-shrink:0;}
+  .tile svg{width:100%; height:40px; display:block; margin-top:6px;}
   .tile .empty{font-size:12px; color:var(--muted); padding:10px 0;}
-  .tile .note{font-size:10.5px; color:var(--muted); margin-top:6px;}
 
   .setup-note{background:#f7f6f2; border-radius:10px; padding:16px 18px; font-size:12.5px; color:var(--dim); line-height:1.7; margin-bottom:24px;}
   .setup-note code{background:#eeece5; padding:1px 5px; border-radius:4px; font-size:11.5px;}
@@ -120,6 +126,7 @@
     <div class="sub">출간한 책들의 서점 베스트셀러 순위·판매지수 추이입니다. 순위는 낮을수록(1위에 가까울수록) 좋습니다.</div>
     <div class="metaline">
       <button class="refresh" id="refreshBtn"><span class="refresh-icon">↻</span> <span class="refresh-label">새로고침</span></button>
+      <span id="dataAsOf"></span>
       <span id="lastRefresh"></span>
       <span>· 하루 4번(05:02·06:41·11:23·17:37 KST) 자동 갱신</span>
     </div>
@@ -178,20 +185,24 @@
     return '<a href="' + escapeHtml(href) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(text) + " ↗</a>";
   }
 
-  /* metric = { label, unit, higherIsBetter, note, href }
+  /* metric = { label, unit, higherIsBetter, note, href, headline }
      series = [{date, value}] (null 값은 이미 걸러서 넘김)
      noteOverride: 데이터에서 즉석으로 뽑아낸 note가 있으면 metric.note
-     대신 이걸 쓴다 (예: 교보 배지의 실제 카테고리명). */
+     대신 이걸 쓴다 (예: 교보 배지의 실제 카테고리명).
+     날짜/기록수/note는 항상 보여주지 않고 ⓘ 아이콘에 마우스를 올렸을 때만
+     보이는 툴팁으로 묶는다 -- 숫자와 그래프(추세는 핵심 정보라 항상 유지)만
+     남기고 세로 공간을 아낀다. */
   function tile(metric, series, noteOverride) {
     var clean = series.filter(function (e) { return e.value != null; });
-    var label = '<div class="label">' + labelHtml(metric.label, metric.href) + "</div>";
+    var cardClass = "tile" + (metric.headline ? " tile-headline" : "");
+    var label = '<div class="label" title="' + escapeHtml(metric.label) + '">' + labelHtml(metric.label, metric.href) + "</div>";
 
     if (!clean.length) {
       // 오늘은 순위 밖이어도 내일 다시 잡힐 수 있으니, 카드를 아예 없애거나
       // 요약 줄로 접지 않고 자리는 그대로 두되 흐리게(딤드)만 한다 --
       // 카드가 나타났다 사라졌다 하면 레이아웃이 들쭉날쭉해서 오히려
       // 스캔하기 불편해진다.
-      return '<div class="tile is-empty">' + label + '<div class="empty">권외 · 데이터 없음</div></div>';
+      return '<div class="' + cardClass + ' is-empty">' + label + '<div class="empty">권외 · 데이터 없음</div></div>';
     }
 
     var latest = clean[clean.length - 1];
@@ -208,21 +219,18 @@
         "</span>";
     }
 
-    var valDisplay = typeof latest.value === "number" && metric.unit === "위"
-      ? latest.value.toLocaleString()
-      : latest.value.toLocaleString();
+    var valDisplay = latest.value.toLocaleString();
+    var note = noteOverride != null ? noteOverride : metric.note;
+    var infoTitle = latest.date + " 기준 · " + clean.length + "개 기록" + (note ? " · " + note : "");
 
     return (
-      '<div class="tile">' + label +
+      '<div class="' + cardClass + '">' + label +
       '<div class="latest"><span class="val">' + valDisplay +
       (metric.unit ? '<span class="unit">' + escapeHtml(metric.unit) + "</span>" : "") +
-      "</span>" + deltaHtml + "</div>" +
-      '<div class="asof">' + escapeHtml(latest.date) + " 기준 · " + clean.length + "개 기록</div>" +
+      "</span>" + deltaHtml +
+      '<span class="info-dot" title="' + escapeHtml(infoTitle) + '">ⓘ</span>' +
+      "</div>" +
       sparkline(clean, !metric.higherIsBetter) +
-      (function () {
-        var note = noteOverride != null ? noteOverride : metric.note;
-        return note ? '<div class="note">' + escapeHtml(note) + "</div>" : "";
-      })() +
       "</div>"
     );
   }
@@ -322,9 +330,22 @@
     }
   }
 
+  /* 각 타일에 반복해서 찍던 "OO 기준" 날짜를 페이지 상단 한 곳으로
+     모은다 -- 어차피 하루 한 번 수집이라 거의 모든 타일이 같은 날짜다. */
+  function stampDataAsOf(results) {
+    var dates = results.map(function (r) {
+      var h = r && r.history;
+      return h && h.length ? h[h.length - 1].date : null;
+    }).filter(Boolean);
+    var el = document.getElementById("dataAsOf");
+    if (!dates.length) { el.textContent = ""; return; }
+    el.textContent = "· 데이터 기준 " + dates.sort().pop();
+  }
+
   function load() {
     return Promise.all([loadUxBookGroups(), loadQuestionBookGroups()]).then(function (results) {
       renderBookGrid(results[0], results[1]);
+      stampDataAsOf(results);
       return results[0].ok && results[1].ok;
     });
   }
@@ -378,7 +399,7 @@
       {
         key: "yes24", label: "예스24", logo: "/assets/logos/yes24.png",
         metrics: [
-          { key: "sales_index", label: "판매지수", unit: "", higherIsBetter: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.sales_index; } },
+          { key: "sales_index", label: "판매지수", unit: "", higherIsBetter: true, headline: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.sales_index; } },
           { key: "reviews", label: "리뷰 수", unit: "건", higherIsBetter: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.reviews; } },
           { key: "econ", label: "경제경영 종합", unit: "위", higherIsBetter: false, href: Y24_BEST("001001025"), get: function (r) { return r.yes24 && r.yes24.econ_rank; } },
           { key: "mkt", label: "마케팅/세일즈", unit: "위", higherIsBetter: false, href: Y24_BEST("001001025009"), get: function (r) { return r.yes24 && r.yes24.mkt_rank; } },
@@ -394,7 +415,7 @@
           // 라벨을 "온라인 주간"으로 고정해뒀었는데, 실제 배지 카테고리명은
           // 책마다 다르다(이 책은 "경제/경영"). 이름을 지어내는 대신 스크래핑
           // 시점에 실제로 읽은 카테고리명을 note로 그대로 보여준다.
-          { key: "kyobo_badge", label: "주간베스트", unit: "위", higherIsBetter: false, href: KYOBO_PRODUCT,
+          { key: "kyobo_badge", label: "주간베스트", unit: "위", higherIsBetter: false, headline: true, href: KYOBO_PRODUCT,
             get: function (r) { return r.kyobo && r.kyobo.badge_rank; },
             noteGet: function (r) { return r.kyobo && r.kyobo.badge_category ? "카테고리: " + r.kyobo.badge_category : null; } },
           { key: "kyobo_strategy", label: "경영전략일반", unit: "위", higherIsBetter: false, href: KYOBO_STRATEGY, get: function (r) { return r.kyobo && r.kyobo.strategy_rank; } },
@@ -404,7 +425,7 @@
       {
         key: "aladin", label: "알라딘", logo: "/assets/logos/aladin.jpg",
         metrics: [
-          { key: "aladin_sp", label: "세일즈포인트", unit: "", higherIsBetter: true, href: ALADIN_PRODUCT, get: function (r) { return r.aladin && r.aladin.sales_point; } },
+          { key: "aladin_sp", label: "세일즈포인트", unit: "", higherIsBetter: true, headline: true, href: ALADIN_PRODUCT, get: function (r) { return r.aladin && r.aladin.sales_point; } },
           { key: "aladin_brand", label: "마케팅/브랜드", unit: "위", higherIsBetter: false, href: ALADIN_BEST("1632"), get: function (r) { return r.aladin && r.aladin.brand_rank; } },
           { key: "aladin_ad", label: "광고/홍보/PR", unit: "위", higherIsBetter: false, href: ALADIN_BEST("268"), get: function (r) { return r.aladin && r.aladin.ad_rank; } },
           { key: "aladin_design", label: "디자인이야기", unit: "위", higherIsBetter: false, href: ALADIN_BEST("51089"), get: function (r) { return r.aladin && r.aladin.design_rank; } },
@@ -443,7 +464,7 @@
       {
         key: "yes24", label: "예스24", logo: "/assets/logos/yes24.png",
         metrics: [
-          { key: "y24si", label: "판매지수", unit: "", higherIsBetter: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.sales_index; } },
+          { key: "y24si", label: "판매지수", unit: "", higherIsBetter: true, headline: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.sales_index; } },
           { key: "y24rv", label: "리뷰 수", unit: "건", higherIsBetter: true, href: Y24_GOODS, get: function (r) { return r.yes24 && r.yes24.reviews; } },
           { key: "y24cat", label: "기획/정보/시간관리", unit: "위", higherIsBetter: false, href: Y24_BEST, get: function (r) { return r.yes24 && r.yes24.category_rank; } },
           { key: "y24cat2", label: "CEO/비즈니스맨 기획/정보/시간관리", unit: "위", higherIsBetter: false, href: Y24_BEST2, get: function (r) { return r.yes24 && r.yes24.category2_rank; } },
@@ -455,7 +476,7 @@
           // "온라인 주간"으로 라벨을 고정해뒀었는데, 실제 배지 카테고리명은
           // 책마다 다르다(이 책은 "자기계발"). 이름을 지어내는 대신 스크래핑
           // 시점에 실제로 읽은 카테고리명을 note로 그대로 보여준다.
-          { key: "kybadge", label: "주간베스트", unit: "위", higherIsBetter: false, href: KYOBO_PRODUCT,
+          { key: "kybadge", label: "주간베스트", unit: "위", higherIsBetter: false, headline: true, href: KYOBO_PRODUCT,
             get: function (r) { return r.kyobo && r.kyobo.badge_rank; },
             noteGet: function (r) { return r.kyobo && r.kyobo.badge_category ? "카테고리: " + r.kyobo.badge_category : null; } },
           { key: "kycat", label: "기획력", unit: "위", higherIsBetter: false, href: KYOBO_CAT, get: function (r) { return r.kyobo && r.kyobo.category_rank; } },
@@ -464,7 +485,7 @@
       {
         key: "aladin", label: "알라딘", logo: "/assets/logos/aladin.jpg",
         metrics: [
-          { key: "alsp", label: "세일즈포인트", unit: "", higherIsBetter: true, href: ALADIN_PRODUCT, get: function (r) { return r.aladin && r.aladin.sales_point; } },
+          { key: "alsp", label: "세일즈포인트", unit: "", higherIsBetter: true, headline: true, href: ALADIN_PRODUCT, get: function (r) { return r.aladin && r.aladin.sales_point; } },
           { key: "alplan", label: "기획", unit: "위", higherIsBetter: false, href: ALADIN_BEST("70229"), get: function (r) { return r.aladin && r.aladin.planning_rank; } },
           { key: "alinfo", label: "정보관리", unit: "위", higherIsBetter: false, href: ALADIN_BEST("70222"), get: function (r) { return r.aladin && r.aladin.info_mgmt_rank; } },
         ],
