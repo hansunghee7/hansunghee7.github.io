@@ -12,7 +12,8 @@
 <meta name="referrer" content="no-referrer">
 
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
-<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=boska@200,300,400,500,600,700&display=swap">
+<!-- Studio 메뉴 타이틀(h1)은 명조체 큰 제목으로 통일합니다. -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
 
 <style>
@@ -31,15 +32,15 @@
   .wrap{max-width:1100px; margin:0 auto; padding:0 var(--gutter);}
   @media (min-width:761px){ :root{ --gutter:32px; } }
 
-  /* ---- header ---- */
-  header{
-    padding:48px 0 28px; border-bottom:1px solid var(--line);
-    display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center;
-    column-gap:24px; row-gap:10px;
-  }
-  h1{font-family:'Boska','Source Serif 4',serif; font-weight:300; font-size:clamp(28px,5vw,42px); margin:0; line-height:1.2;}
-  .sub{color:var(--dim); font-size:14px; line-height:1.7; margin:0;}
-  .metaline{color:var(--muted); font-size:12.5px; display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center; min-width:0;}
+  /* ---- header ----
+     insight-7b3e9f2c/ 내 모든 페이지(write.html 제외)와 동일한 header/h1/.sub/
+     .metaline/.refresh 규칙입니다. Studio 전체 타이틀·새로고침 UX를 통일하기
+     위한 공용 규격이라, 바꾸면 다른 파일에도 똑같이 반영해야 합니다. */
+  header{padding:28px 0 18px; border-bottom:1px solid var(--line-soft); margin-bottom:24px;}
+  h1{font-family:'Noto Serif KR',serif; font-weight:400; font-size:30px; letter-spacing:-0.01em; margin:0 0 8px;}
+  @media (min-width:761px){ h1{font-size:36px;} }
+  .sub{font-size:12.5px; color:var(--muted); line-height:1.6;}
+  .metaline{color:var(--muted); font-size:12.5px; display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center; margin-top:10px;}
   .refresh{
     background:none; border:1px solid var(--line); color:var(--dim); cursor:pointer;
     border-radius:999px; padding:7px 15px; font-size:12.5px; font-family:inherit;
@@ -232,7 +233,7 @@
   <div class="shell-title">Simplifier Studio</div>
   <a href="/insight-7b3e9f2c/" class="active">사이트 인사이트</a>
   <a href="/insight-7b3e9f2c/sns-insight.html">SNS 인사이트</a>
-  <a href="/insight-7b3e9f2c/book-insight.html">북인사이트</a>
+  <a href="/insight-7b3e9f2c/book-insight.html">북 인사이트</a>
   <a href="/insight-7b3e9f2c/newsletter-research.html">뉴스레터 리서치</a>
   <a href="/insight-7b3e9f2c/pillar-manage.html">필러 관리</a>
   <a href="/insight-7b3e9f2c/multi-publish.html">멀티 퍼블리싱</a>
@@ -241,7 +242,8 @@
 <div class="wrap">
 
 <header>
-  <h1>사이트 인사이트 <button type="button" class="h2note-q" aria-label="설명 보기">?<span class="h2note-text">이 사이트가 하는 일은 <b>코칭 계약과 강연 섭외로 이어질 문의를 받는 것</b>입니다. 그래서 맨 위가 문의(전환)이고, 글은 그 문의를 뒷받침하는 근거 자산으로 아래에 둡니다.</span></button></h1>
+  <h1>사이트 인사이트</h1>
+  <div class="sub">이 사이트가 하는 일은 <b>코칭 계약과 강연 섭외로 이어질 문의를 받는 것</b>입니다. 그래서 맨 위가 문의(전환)이고, 글은 그 문의를 뒷받침하는 근거 자산으로 아래에 둡니다.</div>
   <div class="metaline">
     <button class="refresh" id="refreshBtn">↻ 새로고침</button>
     <span id="lastRefresh"></span>

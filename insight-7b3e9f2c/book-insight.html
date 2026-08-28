@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>북인사이트 - Simplifier</title>
+<title>북 인사이트 - Simplifier</title>
 
 <!-- 이 페이지는 검색에 노출되면 안 됩니다.
      robots.txt에 Disallow를 쓰면 오히려 주소가 공개되므로, 여기서 noindex만 겁니다.
@@ -12,6 +12,8 @@
 <meta name="referrer" content="no-referrer">
 
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<!-- Studio 메뉴 타이틀(h1)은 명조체 큰 제목으로 통일합니다. -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
 
 <style>
@@ -29,8 +31,16 @@
   }
   .wrap{max-width:1100px; margin:0 auto; padding:0 var(--gutter) 60px;}
   header{padding:28px 0 18px; border-bottom:1px solid var(--line-soft); margin-bottom:24px;}
-  h1{font-size:20px; font-weight:600; margin:0 0 6px;}
-  .sub{font-size:12.5px; color:var(--muted);}
+  h1{font-family:'Noto Serif KR',serif; font-weight:400; font-size:30px; letter-spacing:-0.01em; margin:0 0 8px;}
+  @media (min-width:761px){ h1{font-size:36px;} }
+  .sub{font-size:12.5px; color:var(--muted); line-height:1.6;}
+  .metaline{color:var(--muted); font-size:12.5px; display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center; margin-top:10px;}
+  .refresh{
+    background:none; border:1px solid var(--line); color:var(--dim); cursor:pointer;
+    border-radius:999px; padding:7px 15px; font-size:12.5px; font-family:'Pretendard Variable','Pretendard',-apple-system,sans-serif;
+    transition:border-color .2s,color .2s;
+  }
+  .refresh:hover{border-color:rgba(20,20,15,0.4); color:var(--ink);}
 
   /* ---- admin shell: 사이드바 ----
      insight-7b3e9f2c/index.html, multi-publish.html, write.html, sns-insight.html 과
@@ -83,7 +93,7 @@
   <div class="shell-title">Simplifier Studio</div>
   <a href="/insight-7b3e9f2c/">사이트 인사이트</a>
   <a href="/insight-7b3e9f2c/sns-insight.html">SNS 인사이트</a>
-  <a href="/insight-7b3e9f2c/book-insight.html" class="active">북인사이트</a>
+  <a href="/insight-7b3e9f2c/book-insight.html" class="active">북 인사이트</a>
   <a href="/insight-7b3e9f2c/newsletter-research.html">뉴스레터 리서치</a>
   <a href="/insight-7b3e9f2c/pillar-manage.html">필러 관리</a>
   <a href="/insight-7b3e9f2c/multi-publish.html">멀티 퍼블리싱</a>
@@ -92,12 +102,16 @@
 
 <div class="wrap">
   <header>
-    <h1>북인사이트</h1>
+    <h1>북 인사이트</h1>
     <div class="sub">출간한 책들의 서점 베스트셀러 순위·판매지수 추이입니다. 순위는 낮을수록(1위에 가까울수록) 좋습니다.</div>
+    <div class="metaline">
+      <button class="refresh" id="refreshBtn">↻ 새로고침</button>
+      <span id="lastRefresh"></span>
+      <span>· 매일 새벽 06:41(KST) 자동 갱신</span>
+    </div>
   </header>
 
   <div class="setup-note">
-    <strong>데이터는 매일 새벽 06:41(KST)에 자동 갱신됩니다.</strong>
     「UX의 언어들」은 <a href="https://cinaeng.github.io/ux-book-tracker/" target="_blank" rel="noopener noreferrer">별도 트래커</a>가
     수집한 결과를 그대로 가져와 보여줍니다. 「기획자의 질문법」은 이 저장소가
     직접 예스24·알라딘·교보문고·리디북스·밀리의서재를 수집합니다. 지금 당장 갱신하려면
@@ -208,19 +222,35 @@
     );
   }
 
+  function stampRefresh() {
+    document.getElementById("lastRefresh").textContent =
+      "· 마지막 새로고침 " + new Date().toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit" });
+  }
+
+  function load() {
+    loadUxBook();
+    loadQuestionBook();
+  }
+
+  document.getElementById("refreshBtn").addEventListener("click", function () { load(); stampRefresh(); });
+  load();
+  stampRefresh();
+
   /* ── UX의 언어들 (cinaeng/ux-book-tracker 미러 + 우리 쪽 보조 지표) ──
      보조 지표(ux-book-extra.json)는 cinaeng 트래커가 안 보는 카테고리라
      이 저장소가 직접 수집한다. 그 파일이 아직 없거나 실패해도(catch로
      빈 이력 처리) 메인 미러 지표는 정상적으로 떠야 한다. */
-  Promise.all([
-    fetch("/assets/data/ux-book-history.json?t=" + Date.now(), { cache: "no-store" })
-      .then(function (r) { if (!r.ok) throw { notYet: r.status === 404 }; return r.json(); }),
-    fetch("/assets/data/ux-book-extra.json?t=" + Date.now(), { cache: "no-store" })
-      .then(function (r) { return r.ok ? r.json() : { history: [] }; })
-      .catch(function () { return { history: [] }; }),
-  ])
-    .then(function (results) { renderUxBook(results[0], results[1].history || []); })
-    .catch(function (e) { renderError("uxBookTiles", e); });
+  function loadUxBook() {
+    Promise.all([
+      fetch("/assets/data/ux-book-history.json?t=" + Date.now(), { cache: "no-store" })
+        .then(function (r) { if (!r.ok) throw { notYet: r.status === 404 }; return r.json(); }),
+      fetch("/assets/data/ux-book-extra.json?t=" + Date.now(), { cache: "no-store" })
+        .then(function (r) { return r.ok ? r.json() : { history: [] }; })
+        .catch(function () { return { history: [] }; }),
+    ])
+      .then(function (results) { renderUxBook(results[0], results[1].history || []); })
+      .catch(function (e) { renderError("uxBookTiles", e); });
+  }
 
   function renderUxBook(records, extraRecords) {
     if (!Array.isArray(records) || !records.length) { renderError("uxBookTiles", { notYet: true }); return; }
@@ -265,10 +295,12 @@
   }
 
   /* ── 기획자의 질문법 (자체 수집) ── */
-  fetch("/assets/data/book-insight.json?t=" + Date.now(), { cache: "no-store" })
-    .then(function (r) { if (!r.ok) throw { notYet: r.status === 404 }; return r.json(); })
-    .then(renderQuestionBook)
-    .catch(function (e) { renderError("questionBookTiles", e); });
+  function loadQuestionBook() {
+    fetch("/assets/data/book-insight.json?t=" + Date.now(), { cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw { notYet: r.status === 404 }; return r.json(); })
+      .then(renderQuestionBook)
+      .catch(function (e) { renderError("questionBookTiles", e); });
+  }
 
   function renderQuestionBook(data) {
     var history = (data && data.history) || [];
