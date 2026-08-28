@@ -93,14 +93,13 @@ title: "스타트업 인사이트 — Simplifier"
   .pillar-status{ flex:none; font-size:12px; font-weight:500; color:#8f8b82; border:1px solid rgba(245,243,238,0.16); border-radius:999px; padding:4px 12px; }
   .pillar-status.done{ color:#c9c8c2; border-color:rgba(245,243,238,0.28); }
   .pillar-hero p{ font-family:'Source Serif 4','Noto Serif KR',serif; font-size:16px; line-height:1.7; color:#c9c8c2; font-weight:300; margin:0; }
-  .pillar-intro-row{ display:flex; align-items:baseline; flex-wrap:wrap; column-gap:10px; row-gap:2px; }
-  .pillar-intro-row p{ flex:1 1 auto; min-width:0; }
+  .pillar-intro-row p{ display:inline; margin:0; }
 
   /* ---- "더 보기": <details>는 열려있든 닫혀있든 검색엔진/AI가 그대로
      읽는다(구글이 공식적으로 확인한 방식) -- 그래서 JS로 나중에 불러오는
      진짜 모달 대신, 이 details를 CSS만으로 화면 중앙에 뜨는 카드처럼
      보이게 만든다. 내용은 처음부터 HTML에 있고, 위치만 CSS로 옮긴다. */
-  .pillar-more{ flex:none; }
+  .pillar-more{ display:inline-block; margin-left:8px; vertical-align:baseline; }
   .pillar-more summary{ cursor:pointer; list-style:none; font-size:13.5px; color:#8f8b82; display:inline-flex; align-items:center; gap:6px; position:relative; }
   .pillar-more summary::-webkit-details-marker{ display:none; }
   .pillar-more summary::after{ content:'▾'; font-size:11px; transition:transform .15s; }
