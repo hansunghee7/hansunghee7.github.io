@@ -12,25 +12,79 @@
 <!-- Studio 메뉴 타이틀(h1)은 명조체 큰 제목으로 통일합니다. -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
 <style>
   :root{
     --bg:#ffffff; --ink:#121210; --muted:#6e6a62; --dim:#403d37;
     --line:#c8c6bf; --line-soft:rgba(20,20,15,0.07);
+    --bad:#b8402a;
     --gutter:16px;
   }
   *{box-sizing:border-box;}
+  html, body{height:100%;}
   body{
     margin:0; background:var(--bg); color:var(--ink);
     font-family:'Pretendard Variable','Pretendard',-apple-system,sans-serif;
     -webkit-font-smoothing:antialiased; word-break:keep-all;
+    display:flex; flex-direction:column;
   }
-  .wrap{max-width:760px; margin:0 auto; padding:0 var(--gutter) 60px;}
+  .wrap{max-width:760px; margin:0 auto; padding:0 var(--gutter); width:100%; flex:1; display:flex; flex-direction:column; min-height:0;}
   @media (min-width:761px){ :root{ --gutter:32px; } }
-  header{padding:28px 0 18px; border-bottom:1px solid var(--line-soft); margin-bottom:24px;}
-  h1{font-family:'Noto Serif KR',serif; font-weight:400; font-size:30px; letter-spacing:-0.01em; margin:0 0 8px;}
-  @media (min-width:761px){ h1{font-size:36px;} }
+
+  header{padding:28px 0 18px; border-bottom:1px solid var(--line-soft); display:flex; align-items:flex-end; justify-content:space-between; gap:16px;}
+  .heading h1{font-family:'Noto Serif KR',serif; font-weight:400; font-size:30px; letter-spacing:-0.01em; margin:0 0 8px;}
+  @media (min-width:761px){ .heading h1{font-size:36px;} }
   .sub{font-size:12.5px; color:var(--muted); line-height:1.6;}
+  .new-chat{background:none; border:1px solid var(--line); color:var(--dim); border-radius:999px; padding:8px 16px; font-size:12.5px; font-family:inherit; cursor:pointer; white-space:nowrap; transition:background-color .15s, border-color .15s;}
+  .new-chat:hover{background:var(--ink); border-color:var(--ink); color:#fff;}
+
+  .setup-note{background:#f7f6f2; border-radius:10px; padding:16px 18px; font-size:12.5px; color:var(--dim); line-height:1.7; margin:20px 0;}
+
+  /* ---- 빈 화면(첫 방문) ---- */
+  #emptyState{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:40px 0; gap:20px;}
+  #emptyState .hint{font-size:13.5px; color:var(--muted); max-width:420px; line-height:1.7;}
+  .suggestions{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; max-width:520px;}
+  .suggestion-chip{background:#f7f6f2; border:1px solid var(--line-soft); color:var(--dim); border-radius:999px; padding:9px 16px; font-size:13px; font-family:inherit; cursor:pointer; text-align:left; transition:background-color .15s, border-color .15s;}
+  .suggestion-chip:hover{background:var(--line-soft); border-color:var(--line);}
+
+  /* ---- 대화 스레드 ---- */
+  #thread{display:none; flex-direction:column; gap:28px; padding:24px 0 20px; flex:1; overflow-y:auto;}
+  #thread.active{display:flex;}
+  .row{display:flex;}
+  .row.q{justify-content:flex-end;}
+  .row.a{justify-content:flex-start;}
+
+  .bubble.q{background:var(--ink); color:#fff; border-radius:16px 16px 4px 16px; padding:11px 16px; font-size:14.5px; line-height:1.6; max-width:80%; white-space:pre-wrap;}
+
+  .answer{max-width:100%; font-size:15px; line-height:1.75;}
+  .answer p{margin:0 0 12px;}
+  .answer p:last-child{margin-bottom:0;}
+  .answer ul, .answer ol{margin:0 0 12px; padding-left:22px;}
+  .answer li{margin-bottom:4px;}
+  .answer strong{font-weight:600;}
+  .answer code{background:#f0efe9; padding:1px 5px; border-radius:4px; font-size:0.92em;}
+
+  .answer.err{color:var(--bad);}
+
+  .thinking{display:inline-flex; gap:4px; padding:4px 0;}
+  .thinking span{width:6px; height:6px; border-radius:50%; background:var(--muted); animation:thinking-bounce 1.2s infinite ease-in-out;}
+  .thinking span:nth-child(2){animation-delay:.15s;}
+  .thinking span:nth-child(3){animation-delay:.3s;}
+  @keyframes thinking-bounce{0%,80%,100%{opacity:.3; transform:translateY(0);} 40%{opacity:1; transform:translateY(-3px);}}
+
+  .sources{margin-top:12px; display:flex; flex-wrap:wrap; gap:6px;}
+  .source-chip{display:inline-flex; align-items:center; gap:5px; background:#f7f6f2; border:1px solid var(--line-soft); color:var(--muted); border-radius:999px; padding:4px 11px; font-size:11.5px;}
+  .source-chip .tag{color:var(--dim); font-weight:600;}
+
+  /* ---- 입력창 ---- */
+  .composer{position:sticky; bottom:0; background:var(--bg); padding:14px 0 22px;}
+  .composer-box{display:flex; align-items:flex-end; gap:8px; border:1px solid var(--line); border-radius:16px; padding:8px 8px 8px 16px; transition:border-color .15s;}
+  .composer-box:focus-within{border-color:var(--ink);}
+  textarea{flex:1; border:none; outline:none; resize:none; font-family:inherit; font-size:14.5px; line-height:1.5; max-height:160px; padding:6px 0; background:transparent;}
+  .send-btn{background:var(--ink); color:#fff; border:none; border-radius:12px; width:38px; height:38px; flex-shrink:0; cursor:pointer; display:flex; align-items:center; justify-content:center;}
+  .send-btn:disabled{opacity:0.35; cursor:default;}
+  .send-btn svg{width:16px; height:16px;}
 
   #adminShellNav{position:fixed; top:0; left:0; bottom:0; width:180px; padding:24px 14px; background:#f7f6f2; border-right:1px solid var(--line-soft); overflow-y:auto; z-index:100;}
   #adminShellNav .shell-title{font-size:12px; font-weight:600; color:var(--muted); letter-spacing:0.05em; text-transform:uppercase; margin:0 0 16px; padding:0 10px;}
@@ -43,23 +97,9 @@
     #adminShellNav .shell-title{display:none;}
     #adminShellNav a{white-space:nowrap; margin-bottom:0;}
     body.has-shell-nav{padding-left:0;}
+    .wrap{height:calc(100vh - 56px);}
   }
-
-  .setup-note{background:#f7f6f2; border-radius:10px; padding:16px 18px; font-size:12.5px; color:var(--dim); line-height:1.7; margin-bottom:24px;}
-
-  #thread{display:flex; flex-direction:column; gap:18px; margin-bottom:24px;}
-  .msg{padding:14px 16px; border-radius:12px; font-size:14.5px; line-height:1.7; white-space:pre-wrap;}
-  .msg.q{background:#f7f6f2; font-weight:500;}
-  .msg.a{border:1px solid var(--line-soft);}
-  .msg.err{border:1px solid rgba(184,64,42,0.3); color:#b8402a; background:rgba(184,64,42,0.05);}
-  .sources{margin-top:10px; padding-top:10px; border-top:1px solid var(--line-soft); font-size:12px; color:var(--muted);}
-  .sources span{display:inline-block; margin:2px 8px 2px 0;}
-
-  form{display:flex; gap:8px; position:sticky; bottom:0; background:var(--bg); padding:12px 0;}
-  input[type=text]{flex:1; padding:12px 14px; border:1px solid var(--line); border-radius:10px; font-size:14.5px; font-family:inherit;}
-  input[type=text]:focus{outline:none; border-color:var(--ink);}
-  button{background:var(--ink); color:#fff; border:none; border-radius:10px; padding:12px 20px; font-size:14.5px; font-family:inherit; cursor:pointer;}
-  button:disabled{opacity:0.5; cursor:default;}
+  @media (min-width:761px){ .wrap{height:100vh;} }
 </style>
 </head>
 <body class="has-shell-nav">
@@ -77,20 +117,38 @@
 
 <div class="wrap">
   <header>
-    <h1>AI에게 물어보기</h1>
-    <div class="sub">테스트용 에이전트입니다. 그동안 쓰신 글과 책 내용을 근거로만 답변합니다 — 근거가 없으면 지어내지 않고 "찾지 못했다"고 답합니다.</div>
+    <div class="heading">
+      <h1>AI에게 물어보기</h1>
+      <div class="sub">그동안 쓰신 글과 책 내용을 근거로만 답변하는 테스트 에이전트</div>
+    </div>
+    <button type="button" class="new-chat" id="newChatBtn">새 대화</button>
   </header>
 
   <div class="setup-note" id="setupNote" style="display:none">
     아직 연결 설정이 안 됐습니다. 이 파일 맨 아래 <code>WORKER_URL</code> 값을 실제 Cloudflare Worker 주소로 바꿔주세요.
   </div>
 
+  <div id="emptyState">
+    <div class="hint">근거가 없으면 지어내지 않고 "찾지 못했다"고 답합니다. 아래에서 골라보시거나 직접 질문해보세요.</div>
+    <div class="suggestions">
+      <button type="button" class="suggestion-chip">우선순위 정할 때 쓰는 프레임워크 알려줘</button>
+      <button type="button" class="suggestion-chip">좋은 PO의 조건이 뭐야?</button>
+      <button type="button" class="suggestion-chip">리텐션을 높이는 방법 알려줘</button>
+    </div>
+  </div>
+
   <div id="thread"></div>
 
-  <form id="askForm">
-    <input type="text" id="questionInput" placeholder="예: 우선순위 정할 때 쓰는 프레임워크 알려줘" autocomplete="off">
-    <button type="submit" id="askBtn">물어보기</button>
-  </form>
+  <div class="composer">
+    <form id="askForm">
+      <div class="composer-box">
+        <textarea id="questionInput" rows="1" placeholder="무엇이든 물어보세요" autocomplete="off"></textarea>
+        <button type="submit" class="send-btn" id="askBtn" aria-label="전송">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
 
 <script>
@@ -104,33 +162,105 @@
   const ASK_SHARED_SECRET = "mSoMs0NZ28KYk7dEFd8hchvyND2A2NC5";
 
   const thread = document.getElementById("thread");
+  const emptyState = document.getElementById("emptyState");
   const form = document.getElementById("askForm");
   const input = document.getElementById("questionInput");
   const btn = document.getElementById("askBtn");
   const setupNote = document.getElementById("setupNote");
+  const newChatBtn = document.getElementById("newChatBtn");
 
-  if (WORKER_URL.includes("simplifier-ask.simon-8be")) {
-    // 기본값 그대로면(아직 안 바꿨으면) 안내만 보여주고 실제 호출은 시도해본다.
+  // 답변 끝에 모델이 스스로 붙이는 "(blog - ..., book - ...)" 인용을 떼어낸다 --
+  // 아래에서 출처를 칩으로 따로, 더 깔끔하게 보여주기 때문에 중복이 된다.
+  function stripInlineCitation(text) {
+    return text.replace(/\n*\([^()]*(?:blog|book)\s*-[^()]*\)\s*$/i, "").trim();
   }
 
-  function addMessage(role, text) {
-    const div = document.createElement("div");
-    div.className = "msg " + role;
-    div.textContent = text;
-    thread.appendChild(div);
-    div.scrollIntoView({ behavior: "smooth", block: "end" });
-    return div;
-  }
-
-  form.addEventListener("submit", async function (e) {
-    e.preventDefault();
-    const question = input.value.trim();
-    if (!question) return;
-
-    addMessage("q", question);
+  function resetToEmpty() {
+    thread.innerHTML = "";
+    thread.classList.remove("active");
+    emptyState.style.display = "flex";
     input.value = "";
+    autoGrow();
+    input.focus();
+  }
+
+  function showThread() {
+    emptyState.style.display = "none";
+    thread.classList.add("active");
+  }
+
+  function addUserRow(text) {
+    const row = document.createElement("div");
+    row.className = "row q";
+    const bubble = document.createElement("div");
+    bubble.className = "bubble q";
+    bubble.textContent = text;
+    row.appendChild(bubble);
+    thread.appendChild(row);
+    row.scrollIntoView({ behavior: "smooth", block: "end" });
+    return row;
+  }
+
+  function addAnswerRow() {
+    const row = document.createElement("div");
+    row.className = "row a";
+    const answer = document.createElement("div");
+    answer.className = "answer";
+    answer.innerHTML = '<div class="thinking"><span></span><span></span><span></span></div>';
+    row.appendChild(answer);
+    thread.appendChild(row);
+    row.scrollIntoView({ behavior: "smooth", block: "end" });
+    return answer;
+  }
+
+  function renderAnswer(el, text, sources) {
+    const clean = stripInlineCitation(text);
+    el.innerHTML = window.marked ? marked.parse(clean) : clean;
+    if (sources && sources.length) {
+      const box = document.createElement("div");
+      box.className = "sources";
+      sources.forEach((s) => {
+        const chip = document.createElement("span");
+        chip.className = "source-chip";
+        chip.innerHTML = '<span class="tag">' + (s.source_type === "book" ? "책" : "글") + "</span>" + s.title;
+        box.appendChild(chip);
+      });
+      el.appendChild(box);
+    }
+    el.scrollIntoView({ behavior: "smooth", block: "end" });
+  }
+
+  function renderError(el, message) {
+    el.className = "answer err";
+    el.textContent = "오류: " + message;
+  }
+
+  function autoGrow() {
+    input.style.height = "auto";
+    input.style.height = Math.min(input.scrollHeight, 160) + "px";
+  }
+  input.addEventListener("input", autoGrow);
+  input.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      form.requestSubmit();
+    }
+  });
+
+  document.querySelectorAll(".suggestion-chip").forEach((chip) => {
+    chip.addEventListener("click", function () {
+      input.value = chip.textContent;
+      form.requestSubmit();
+    });
+  });
+
+  newChatBtn.addEventListener("click", resetToEmpty);
+
+  async function ask(question) {
+    showThread();
+    addUserRow(question);
     btn.disabled = true;
-    const loadingEl = addMessage("a", "생각하는 중...");
+    const answerEl = addAnswerRow();
 
     try {
       const res = await fetch(WORKER_URL, {
@@ -144,24 +274,26 @@
       const data = await res.json();
 
       if (!res.ok) {
-        loadingEl.className = "msg err";
-        loadingEl.textContent = "오류: " + (data.error || res.status);
+        renderError(answerEl, data.error || res.status);
       } else {
-        loadingEl.textContent = data.answer;
-        if (data.sources && data.sources.length) {
-          const src = document.createElement("div");
-          src.className = "sources";
-          src.textContent = "참고: " + data.sources.map((s) => s.title).join(", ");
-          loadingEl.appendChild(src);
-        }
+        renderAnswer(answerEl, data.answer, data.sources);
       }
     } catch (err) {
-      loadingEl.className = "msg err";
-      loadingEl.textContent = "연결 오류: " + err.message;
+      renderError(answerEl, "연결 오류 — " + err.message);
       setupNote.style.display = "block";
     } finally {
       btn.disabled = false;
+      input.focus();
     }
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const question = input.value.trim();
+    if (!question) return;
+    input.value = "";
+    autoGrow();
+    ask(question);
   });
 </script>
 </body>
