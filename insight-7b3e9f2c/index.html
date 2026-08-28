@@ -47,6 +47,11 @@
     transition:border-color .2s,color .2s;
   }
   .refresh:hover{border-color:rgba(20,20,15,0.4); color:var(--ink);}
+  .refresh:disabled{cursor:default; opacity:0.75;}
+  .refresh.is-success{border-color:var(--good); color:var(--good);}
+  .refresh.is-error{border-color:var(--bad); color:var(--bad);}
+  .refresh.is-loading .refresh-icon{display:inline-block; animation:refresh-spin .7s linear infinite;}
+  @keyframes refresh-spin{ to{ transform:rotate(360deg); } }
 
   section{padding:38px 0; border-bottom:1px solid var(--line-soft);}
   section:last-of-type{border-bottom:none;}
@@ -245,7 +250,7 @@
   <h1>사이트 인사이트</h1>
   <div class="sub">이 사이트가 하는 일은 <b>코칭 계약과 강연 섭외로 이어질 문의를 받는 것</b>입니다. 그래서 맨 위가 문의(전환)이고, 글은 그 문의를 뒷받침하는 근거 자산으로 아래에 둡니다.</div>
   <div class="metaline">
-    <button class="refresh" id="refreshBtn">↻ 새로고침</button>
+    <button class="refresh" id="refreshBtn"><span class="refresh-icon">↻</span> <span class="refresh-label">새로고침</span></button>
     <span id="lastRefresh"></span>
     <span id="dataAsOf">데이터 불러오는 중…</span>
     <span>· 검색 비노출(noindex) 페이지</span>
@@ -447,6 +452,27 @@
   function stampRefresh(){
     document.getElementById('lastRefresh').textContent =
       '· 마지막 새로고침 ' + new Date().toLocaleTimeString('ko-KR', {hour:'2-digit', minute:'2-digit'});
+  }
+
+  /* 새로고침 버튼 상태 표시 -- 눌러도 반영됐는지 알 길이 없다는 피드백을 받아
+     추가함. loading(스피너+비활성) -> success/error(1.6초 flash) -> idle 순으로 돈다. */
+  function setRefreshState(btn, state){
+    btn.classList.remove('is-loading','is-success','is-error');
+    var icon = btn.querySelector('.refresh-icon');
+    var label = btn.querySelector('.refresh-label');
+    if(state === 'loading'){
+      btn.disabled = true; btn.classList.add('is-loading');
+      icon.textContent = '↻'; label.textContent = '불러오는 중…';
+    } else if(state === 'success'){
+      btn.disabled = false; btn.classList.add('is-success');
+      icon.textContent = '✓'; label.textContent = '완료';
+    } else if(state === 'error'){
+      btn.disabled = false; btn.classList.add('is-error');
+      icon.textContent = '✕'; label.textContent = '실패';
+    } else {
+      btn.disabled = false;
+      icon.textContent = '↻'; label.textContent = '새로고침';
+    }
   }
   function el(tag, cls, txt){ var e=document.createElement(tag); if(cls)e.className=cls; if(txt!=null)e.textContent=txt; return e; }
 
@@ -740,7 +766,7 @@
   }
 
   function renderAnalytics(){
-    fetch('/assets/data/analytics.json?t=' + Date.now(), { cache:'no-store' })
+    return fetch('/assets/data/analytics.json?t=' + Date.now(), { cache:'no-store' })
       .then(function(r){ if(!r.ok) throw { notYet: r.status===404 }; return r.json(); })
       .then(function(d){
         /* 파이프라인 실패 경보 -- GitHub Actions가 하루 4번(cron-job.org 외부 트리거 1번 포함) 돌아야 하는데,
@@ -800,6 +826,7 @@
           var lab = ENGAGEMENT_LABELS[key];
           eBox.appendChild(tile(lab[0], (ev[key]||0).toLocaleString(), '회', lab[1]));
         });
+        return true;
       })
       .catch(function(e){
         var note = document.getElementById('analyticsNote');
@@ -816,6 +843,7 @@
         document.getElementById('leadPostsTable').textContent='';
         document.getElementById('topLandingTable').textContent='';
         document.getElementById('topViewedTable').textContent='';
+        return !!(e && e.notYet);
       });
   }
 
@@ -964,13 +992,14 @@
 
   function load(){
     document.getElementById('dataAsOf').textContent = '데이터 불러오는 중…';
-    fetch('/assets/data/posts.json?t=' + Date.now(), { cache:'no-store' })
+    return fetch('/assets/data/posts.json?t=' + Date.now(), { cache:'no-store' })
       .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
-      .then(function(d){ render(Array.isArray(d) ? d : (d.posts||[])); })
+      .then(function(d){ render(Array.isArray(d) ? d : (d.posts||[])); return true; })
       .catch(function(e){
         document.getElementById('dataAsOf').textContent = '불러오기 실패';
         var k = document.getElementById('kpis'); k.textContent='';
         k.appendChild(el('div','err','글 데이터를 불러오지 못했습니다 ('+e.message+'). /assets/data/posts.json 이 있는지 확인하세요.'));
+        return false;
       });
   }
 
@@ -1091,7 +1120,15 @@
   renderTrust();
   renderAnalytics();
   renderIntegrations();
-  document.getElementById('refreshBtn').addEventListener('click', function(){ load(); renderAnalytics(); stampRefresh(); });
+  document.getElementById('refreshBtn').addEventListener('click', function(){
+    var btn = this;
+    setRefreshState(btn, 'loading');
+    Promise.all([load(), renderAnalytics()]).then(function(results){
+      stampRefresh();
+      setRefreshState(btn, results.every(Boolean) ? 'success' : 'error');
+      setTimeout(function(){ setRefreshState(btn, 'idle'); }, 1600);
+    });
+  });
   load();
   stampRefresh();
 })();
