@@ -21,7 +21,7 @@ Gotham의 핵심 강점은 데이터 통합 기술에 있습니다. 정부 각 �
 
 이를 통해 기존에는 파편화되어 있던 정보들이 Gotham 안에서는 하나의 커다란 퍼즐을 이루게 됩니다. 테러 조직의 자금줄, 불법 무기 거래 루트 등 안보 위협의 실체가 데이터 속에서 가시화되기 시작하는 순간입니다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/DzwaDePzsbZLeDwo1s-7I8TUnb0.png" alt="의사결정 옵션과 산업 데이터 계층을 표현한 아이소메트릭 다이어그램">
+<img width="1280" height="904" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/DzwaDePzsbZLeDwo1s-7I8TUnb0.png" alt="의사결정 옵션과 산업 데이터 계층을 표현한 아이소메트릭 다이어그램">
 
 ## 실시간 스트리밍 분석과 AI 기술의 접목
 
@@ -29,7 +29,7 @@ Gotham이 빛을 발하는 또 다른 영역은 실시간 데이터 처리입니
 
 여기서 Gotham의 실시간 스트리밍 분석 기술이 등장합니다. 데이터가 발생하는 즉시 Gotham의 분석 파이프라인을 통과하며 잠재적 이상 징후가 포착되는 구조죠. 동시에 Gotham에 내장된 AI 엔진이 방대한 데이터에서 패턴과 추세를 감지해냅니다. 단순한 규칙 기반 분석을 넘어, 기계학습과 딥러닝 알고리즘이 숨겨진 관계와 흐름을 읽어내는 것입니다. 덕분에 테러 조직의 공격 징후, 사이버 위협의 전조 등을 실시간으로 포착하고 선제적 대응이 가능해집니다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/1-XDTJWQTBM6EbM-r7rkrpu2W1Q.png" alt="도넛 차트와 타임라인 그래프로 구성된 고담 운영 대시보드 화면">
+<img width="1280" height="682" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/1-XDTJWQTBM6EbM-r7rkrpu2W1Q.png" alt="도넛 차트와 타임라인 그래프로 구성된 고담 운영 대시보드 화면">
 
 ## 직관적 시각화와 협업 중심의 UX
 
@@ -39,7 +39,7 @@ Gotham이 빛을 발하는 또 다른 영역은 실시간 데이터 처리입니
 
 여기에 부서 간 실시간 협업을 가능케 하는 기능도 빼놓을 수 없습니다. Gotham 내에서 정보를 공유하고 토론하는 것은 물론, 외부 이해관계자들과의 소통도 플랫폼 기반으로 이뤄집니다. 이는 공조가 생명인 안보 분야에서 특히 강점으로 작용합니다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/hJuHkLHe-Q07vEoM3SAdDy4q2SM.png" alt="미국 대사관 위협 상황과 대응 계획을 지도로 보여주는 고담 화면">
+<img width="1024" height="578" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/hJuHkLHe-Q07vEoM3SAdDy4q2SM.png" alt="미국 대사관 위협 상황과 대응 계획을 지도로 보여주는 고담 화면">
 
 ## 국방 및 정보 기관과의 협력 사례
 
@@ -47,7 +47,7 @@ Gotham이 빛을 발하는 또 다른 영역은 실시간 데이터 처리입니
 
 이스라엘의 사례도 주목할 만합니다. 팔란티어는 이스라엘 정부와 긴밀히 협력해 테러 위협을 조기 감지하고 요격하는 시스템을 구축했습니다. 불과 수 분 내로 잠재적 공격 징후를 포착해 대응하는 Gotham의 역량은, 상시 테러 위협에 시달리는 이스라엘에게 최적의 방패가 되어주고 있습니다[2].
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/SX4LrRHkf7m3DyfLg9p2n2TFZa0.png" alt="탱크와 헬기를 네트워크로 연결한 &#x27;소프트웨어 어드밴티지&#x27; 이미지">
+<img width="1280" height="685" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/SX4LrRHkf7m3DyfLg9p2n2TFZa0.png" alt="탱크와 헬기를 네트워크로 연결한 &#x27;소프트웨어 어드밴티지&#x27; 이미지">
 
 ## 프라이버시와 윤리적 과제
 
@@ -55,7 +55,7 @@ Gotham과 같은 강력한 감시 플랫폼이 안보 역량 강화에 기여한
 
 팔란티어가 이런 공익과 사익의 균형을 어떻게 맞춰갈지, 앞으로도 지켜볼 대목입니다. 기술의 양면성을 인정하고 사회적 책임을 다하는 자세가 요구되는 시점이기도 합니다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/ttgrFhivXoxiMuNiKz7ls19ReNk.jpg" alt="프라이버시 영향평가에 대한 팔란티어의 대응 문서 표지">
+<img width="1280" height="667" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/ttgrFhivXoxiMuNiKz7ls19ReNk.jpg" alt="프라이버시 영향평가에 대한 팔란티어의 대응 문서 표지">
 
 팔란티어의 Gotham은 데이터 기반 국가 안보 솔루션의 현주소를 보여주는 사례라 할 수 있겠습니다. 통합, 분석, 협업이라는 현대 기술 트렌드를 안보 분야에 빠르게 접목해, 새로운 패러다임을 만들어 가고 있죠.
 

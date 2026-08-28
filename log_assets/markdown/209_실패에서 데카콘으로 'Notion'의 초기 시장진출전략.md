@@ -19,19 +19,19 @@ next_title: "코드의 한계를 깨는 AI 혁신, Cursor AI"
 
 Notion의 여정은 많은 스타트업들이 경험하는 실패와 극복의 과정을 보여줍니다. 2013년 이반 자오와 그의 팀이 설립한 Notion은 처음부터 성공한 것이 아니었습니다. 첫 제품은 노코드 툴로, 사람들이 쉽게 웹과 앱을 만들 수 있도록 설계되었지만 시장에서 큰 반향을 일으키지 못했습니다. 창업자 이반 자오는 "우리가 세상에 전하고 싶은 것에 너무 집중했다"라고 반성하며 실제 시장 니즈를 제대로 파악하지 못했음을 인정했습니다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/0Zs_zkzd-Xvj0uqA6ZUCewEwShk.jpg" alt="노션 창업 멤버들의 인물 사진 세 컷">
+<img width="1280" height="646" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/0Zs_zkzd-Xvj0uqA6ZUCewEwShk.jpg" alt="노션 창업 멤버들의 인물 사진 세 컷">
 
 ## 파산 직전, 벼랑 끝의 결단
 
 게다가 기술적 문제와 자금 부족으로 인해 팀원 4명을 해고하고 실리콘밸리를 떠나야 할 정도로 회사는 파산 직전에 놓였습니다. 그러나 이 위기 속에서 Notion은 과감한 결정을 내립니다. 기존 제품을 완전히 버리고 사람들이 여러 생산성 툴에 지친다는 인사이트를 바탕으로 하나의 워크스페이스에서 모든 작업을 할 수 있는 새로운 도구를 개발하기로 한 것입니다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/AjiBkb7SdQaUZbslBGSgmf5qf8M.png" alt="노션 로고 위에 조명이 비추는 Notion is Here 그래픽">
+<img width="960" height="540" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/AjiBkb7SdQaUZbslBGSgmf5qf8M.png" alt="노션 로고 위에 조명이 비추는 Notion is Here 그래픽">
 
 ## 교토의 부엌 테이블에서 다시 쓴 제품
 
 일본 교토로 이사한 창업자들은 부엌 테이블에서 속옷 차림으로 코딩하며 제품 개발에 몰두했습니다. 그들은 제품 디자인에 집착하며 사용자 인터페이스와 플로우를 반복적으로 수정하며 사용자 경험을 극대화했습니다. 이 노력의 결실로 2016년에 재출시된 Notion은 블록 기반 시스템과 직관적인 UI를 통해 사용자들이 코딩 없이도 자신만의 작업 공간을 구성할 수 있게 했습니다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/avWcoIHtQOf95J-YcczGJS7f6Qs.jpg" alt="노션의 콘텐츠 전략 올인원 템플릿 화면">
+<img width="1280" height="746" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/avWcoIHtQOf95J-YcczGJS7f6Qs.jpg" alt="노션의 콘텐츠 전략 올인원 템플릿 화면">
 
 ## 일곱 가지 시장 진출 전략
 
@@ -66,8 +66,8 @@ Notion은 다양한 언어 지원과 현지화된 콘텐츠를 통해 글로벌 
 2020년 원격 근무가 확산되면서 Notion은 이 변화에 빠르게 대응했습니다. 원격 팀을 위한 템플릿과 가이드를 제공하고, 협업 기능을 강화하여 팬데믹 상황에서 급증한 원격 작업 수요를 효과적으로 포착했습니다.
 
 <div class="img-gallery">
-  <img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/cewuSp9WmJlVD9Fi6mpk-PqYYZw.jpg" alt="빈백 소파에서 대화 나누는 노션 사무실 풍경">
-  <img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/s0nmOAt6u64pIHbi8FvKlf7aK_g.jpg" alt="목재 책상이 늘어선 노션 사무실 전경">
+  <img width="560" height="315" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/cewuSp9WmJlVD9Fi6mpk-PqYYZw.jpg" alt="빈백 소파에서 대화 나누는 노션 사무실 풍경">
+  <img width="559" height="373" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/s0nmOAt6u64pIHbi8FvKlf7aK_g.jpg" alt="목재 책상이 늘어선 노션 사무실 전경">
 </div>
 
 ## 데카콘이 되기까지

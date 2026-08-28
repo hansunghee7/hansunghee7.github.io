@@ -19,25 +19,25 @@ next_title: "Slack의 유료전환의 매직 모먼트"
 
 먼저 대화 이력을 어떻게 관리할 것인가의 문제입니다. 크게 기억(Stateful) 구조와 Stateless 구조로 나눌 수 있는데요. 퍼플렉시티는 기본적으로 기억 구조를 채택하고 있습니다. 사용자와의 대화 내용을 세션 단위로 저장해 이전 맥락을 파악하고, 연속적인 질의에 응답할 수 있게 하는 거죠. 이는 개인화된 맞춤형 경험과 대화 흐름 유지에 최적화된 방식입니다. 반면 개인정보 보호나 단순 질의응답에 특화된 시나리오라면 Stateless 구조를 택할 수도 있겠죠. 각 입력을 독립적 이벤트로 처리하는 방식인데, 구현은 단순하지만 맥락을 반영하기 어렵다는 단점이 있습니다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/IZTKLproT_F5GRZmy9J0pfY65X8.png" alt="Stateless와 Stateful 서비스 구조를 피라미드 도식으로 비교한 그림">
+<img width="1280" height="870" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/IZTKLproT_F5GRZmy9J0pfY65X8.png" alt="Stateless와 Stateful 서비스 구조를 피라미드 도식으로 비교한 그림">
 
 ### 쿼리 리라이팅과 요약의 적용 시점
 
 사용자의 자연어 입력을 그대로 언어 모델에 던지기엔 품질 저하의 위험이 있습니다. 그래서 퍼플렉시티는 두 가지 전처리 과정을 거칩니다. 하나는 쿼리 리라이팅으로, 사용자 입력을 언어 모델이 이해하기 좋은 형태로 변환하는 작업입니다. 입력 직후, 검색이나 언어 모델에 전달하기 전에 수행되죠. 또 하나는 쿼리 요약인데요. 길고 복잡해진 대화 흐름에서, 그간의 맥락을 압축해 언어 모델에 함께 제공하는 역할을 합니다. 대화 중간중간, 언어 모델 호출 직전에 적용하면 컨텍스트를 효율적으로 전달할 수 있습니다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/533ST6--Wi1V1K742kXk9O6Uf-o.jpg" alt="질의응답 파이프라인에서 쿼리 리라이팅을 적용한 구조를 비교한 논문 다이어그램">
+<img width="1200" height="630" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/533ST6--Wi1V1K742kXk9O6Uf-o.jpg" alt="질의응답 파이프라인에서 쿼리 리라이팅을 적용한 구조를 비교한 논문 다이어그램">
 
 ### 답변 UI 설계의 핵심 요소
 
 언어 모델의 출력을 가공 없이 내보내는 것은 좋은 사용자 경험이 아닙니다. 퍼플렉시티는 답변의 구조와 디자인에도 많은 공을 들입니다. 가장 중요한 건 원출처 표시입니다. 응답 내 각 정보 블록마다 출처(URL, 문서명 등)를 명시해 신뢰도와 투명성을 확보하는 거죠. 사용자는 원본을 직접 확인할 수 있게 됩니다. 두 번째로 응답 내 하이라이트 구조도 눈여겨볼 만합니다. 핵심 문장, 키워드, 인용구 등을 시각적으로 강조해 계층화하는 것인데요. 먼저 중요 정보를 파악하고 싶은 사용자의 니즈를 반영한 디자인이라 할 수 있겠네요. 마지막으로 Follow-up Suggestion도 퍼플렉시티만의 특징입니다. 답변을 제시한 후, 대화를 이어나갈 만한 관련 질문이나 탐색 옵션을 함께 제안하는 거죠. 언어 모델이 이런 연관 질의를 자동으로 생성해 제시함으로써, 대화의 흐름을 자연스럽게 이어갈 수 있게 돕습니다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/DnBQFtxcTpGs6a2tS27pUx9ZenA.png" alt="구직 관련 질문에 대한 Related 추천 질문 목록 UI">
+<img width="855" height="431" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/DnBQFtxcTpGs6a2tS27pUx9ZenA.png" alt="구직 관련 질문에 대한 Related 추천 질문 목록 UI">
 
 ### 실시간성을 위한 응답 스트리밍
 
 웹 프론트엔드와 언어 모델 API를 연결할 때, 단순히 응답 전체를 한 번에 받아오는 것은 사용자 경험 면에서 좋지 않습니다. 퍼플렉시티는 실시간 응답 스트리밍 기법을 적용해 이를 개선합니다. 보통 서버 전송 이벤트(SSE)나 웹소켓을 활용해 언어 모델의 출력을 토큰 또는 문장 단위로 나눠 전송하는데요. 프론트엔드는 이를 받아 점진적으로 UI에 반영하게 됩니다. 스켈레톤 UI나 로딩 인디케이터 등을 활용하면 자연스러운 응답 생성 과정을 연출할 수 있죠. 사용자 입장에선 마치 AI가 실시간으로 타이핑하며 대화에 응답하는 느낌을 받게 됩니다. 단순히 완성된 응답이 툭 떨어지는 것과는 사뭇 다른 경험이라고 볼 수 있겠네요.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/374LlWSqZG57D2uVZa4c4M_NA8I.png" alt="스토리지와 스트리밍 데이터 API, 스트리밍 클라이언트 간 연결 구조를 나타낸 손그림 다이어그램">
+<img width="1103" height="465" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/374LlWSqZG57D2uVZa4c4M_NA8I.png" alt="스토리지와 스트리밍 데이터 API, 스트리밍 클라이언트 간 연결 구조를 나타낸 손그림 다이어그램">
 
 퍼플렉시티의 대화형 UX와 쿼리 분기 로직은 사용자와 AI의 상호작용을 한 차원 높이는 역할을 합니다. 기억 구조로 맥락을 유지하고, 쿼리 리라이팅과 요약으로 언어 모델 입력을 최적화하며, 구조화되고 투명한 응답 디자인으로 신뢰를 확보하는 거죠. 여기에 실시간 스트리밍으로 자연스러운 대화 흐름까지 구현해낸다면, 이는 단순한 챗봇을 넘어 진정한 의미의 AI 어시스턴트에 가까워질 것입니다.
 

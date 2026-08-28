@@ -23,7 +23,7 @@ Foundry의 가장 큰 강점은 역시 데이터 통합 능력입니다. ERP, CR
 
 여기서 팔란티어만의 독자적인 무기, '온톨로지(Ontology)'가 빛을 발합니다. 온톨로지는 데이터 요소 간의 관계와 위계를 정의하는 일종의 데이터 지도인데요. 단순히 데이터를 수집하는 차원을 넘어, 맥락과 의미를 부여하는 것이죠. 같은 '애플'이라는 단어라도 문맥에 따라 기업으로 이해할지, 과일로 이해할지 구분하는 식입니다. 이렇게 온톨로지로 무장한 데이터는 분석의 정확도와 활용도를 비약적으로 높여줍니다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/NGTYmaeu_o7OqenysJYKx9LuECw" alt="팔란티어 파운드리의 온톨로지 계층 구조를 보여주는 3D 다이어그램">
+<img width="1280" height="715" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/NGTYmaeu_o7OqenysJYKx9LuECw" alt="팔란티어 파운드리의 온톨로지 계층 구조를 보여주는 3D 다이어그램">
 
 ## 실시간 스트리밍과 예측의 결합
 
@@ -31,7 +31,7 @@ Foundry의 또 다른 강점은 실시간 데이터 처리입니다. 센서, IoT
 
 여기에 AI와 머신러닝의 힘을 보태면 놀라운 일이 일어납니다. 방대한 과거 데이터에서 패턴과 인사이트를 학습한 예측 모델이, 실시간으로 흘러들어오는 데이터와 결합하는 것이죠. 그 결과 기계 고장을 사전에 예측하고, 고객 이탈을 미리 감지하는 등 선제적 의사결정이 가능해집니다. Foundry의 실시간 분석과 예측 분석이 합작하여 비즈니스 전반에 걸쳐 놀라운 혁신을 일으키고 있습니다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/rDx6Mk_vaa9CLuG46gjM6yMd4Fk.50" alt="파운드리 리소스 관리 콘솔의 컴퓨트 사용량 및 스토리지 현황 대시보드">
+<img width="1280" height="602" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/rDx6Mk_vaa9CLuG46gjM6yMd4Fk.50" alt="파운드리 리소스 관리 콘솔의 컴퓨트 사용량 및 스토리지 현황 대시보드">
 
 ## 직관적인 UX, 협업이 쉬워진다
 
@@ -39,7 +39,7 @@ Foundry의 또 다른 강점은 실시간 데이터 처리입니다. 센서, IoT
 
 협업 기능도 돋보입니다. 同一한 데이터와 Workspace를 공유하며, 서로의 작업 내용에 실시간으로 커멘트를 남길 수 있습니다. 마치 구글 드라이브에서 문서를 협업하듯 말이죠. "리포트 어떻게 됐어요?", "데이터 업데이트 됐나요?" 같은 피곤한 확인 작업도 Foundry에선 필요 없습니다. 덕분에 부서 간 소통은 물 흐르듯 자연스러워지고, 협업의 효율은 비약적으로 향상됩니다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/nrFFp7qiOLVkRzeGzerODPcguxk" alt="폐암 코호트 환자 데이터를 인구통계별로 분석한 파운드리 대시보드 화면">
+<img width="1280" height="720" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/nrFFp7qiOLVkRzeGzerODPcguxk" alt="폐암 코호트 환자 데이터를 인구통계별로 분석한 파운드리 대시보드 화면">
 
 ## Foundry의 놀라운 활약들
 
@@ -47,13 +47,13 @@ Foundry는 도입 기업들의 혁신을 catalyze하며 빠르게 입소문을 �
 
 이처럼 Foundry는 도메인 전문성과 결합해 각 산업 분야에서 눈부신 성과를 만들어내고 있습니다. 단순히 데이터를 관리하는 차원을 넘어, 비즈니스 혁신의 실질적인 Enabler로 자리매김한 것이죠.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/yGiDJFA-CPyRpGBv9adHxf9Xj5g.jpg" alt="다양한 커넥터부터 클라우드, 데이터 통합, 분석 산출물까지 이어지는 파운드리 아키텍처 도식">
+<img width="1280" height="1148" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/yGiDJFA-CPyRpGBv9adHxf9Xj5g.jpg" alt="다양한 커넥터부터 클라우드, 데이터 통합, 분석 산출물까지 이어지는 파운드리 아키텍처 도식">
 
 ## Foundry의 미래
 
 앞으로 Foundry를 통해 더 놀라운 변화의 물결이 일 것으로 기대됩니다. 우선 그동안 데이터 활용에서 소외되었던 중소기업들의 디지털 전환이 가속화 될 것입니다. Fortune 500대 기업들의 전유물이던 빅데이터와 AI의 혜택을, 이제 Foundry를 통해 중소기업들도 누릴 수 있게 된 것이죠.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/y8Cy9v6wyBaMqVpvsGtetZXxRc0.jpg" alt="파운드리 위에 다수의 애플리케이션이 연결되는 구조를 표현한 슬라이드">
+<img width="1280" height="720" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/y8Cy9v6wyBaMqVpvsGtetZXxRc0.jpg" alt="파운드리 위에 다수의 애플리케이션이 연결되는 구조를 표현한 슬라이드">
 
 나아가 산업 간 데이터 유통도 더욱 활발해질 것으로 보입니다. 기업들이 Foundry라는 공통 플랫폼에서 데이터를 공유하고 협력하게 되면서, 산업 간 경계가 무너지고 새로운 융합 비즈니스의 기회도 열릴 것입니다.
 

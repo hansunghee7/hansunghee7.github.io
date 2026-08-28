@@ -21,17 +21,17 @@ next_title: "브레드크럼, 길을 잃지 않는 디지털 나침반"
 
 1975년, 칙센트미하이는 예술가들이 작품에 몰두할 때 먹는 것도, 자는 것도 잊은 채 작업에만 집중하는 현상을 연구했습니다. 그는 이런 상태에서 사람들이 최고의 행복감과 성취감을 느낀다는 것을 발견했습니다. 흥미로운 건, 이 개념이 40년이 지난 지금 실리콘밸리의 가장 핫한 UX 전략이 되었다는 점입니다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/LR3Mk_ccshOf5VRhhE2jwhjzGHo.png" alt="몰입 이론을 설명하는 심리학자 미하이 칙센트미하이 강연 장면">
+<img width="600" height="305" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/LR3Mk_ccshOf5VRhhE2jwhjzGHo.png" alt="몰입 이론을 설명하는 심리학자 미하이 칙센트미하이 강연 장면">
 
 ## 제품들은 어떻게 몰입을 설계하는가
 
 구글의 Gmail 팀은 'Undo Send' 기능을 만들 때 Flow State 원칙을 적용했습니다. 이메일을 보낸 직후 5초간 취소할 수 있는 이 기능은 사용자가 이메일 작성 흐름을 깨지 않으면서도 실수를 바로잡을 수 있게 해 작성 시간을 23% 단축시켰습니다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/Go4dzkVJGdqKde3KSkiRFvym3Tw.jpg" alt="지메일의 발송 취소 기능 설정 화면">
+<img width="610" height="350" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/Go4dzkVJGdqKde3KSkiRFvym3Tw.jpg" alt="지메일의 발송 취소 기능 설정 화면">
 
 스포티파이의 'DJ' 기능은 AI가 사용자 취향을 분석해 끊김 없이 음악을 이어가며, 중간중간 DJ 멘트까지 삽입합니다. 사용자는 플레이리스트 고민 없이 음악에만 집중할 수 있어 평균 재생 시간이 31% 늘었습니다. 듀오링고는 언어 학습을 게임처럼 디자인해 연속 학습 일수, 경험치, 리그 시스템으로 일일 활성 사용자 1,500만 명을 달성했습니다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/ZmlWAxWHgtHVatEndtH-MImUVAI.jpg" alt="스포티파이 DJ 모드 기능 소개 화면">
+<img width="600" height="337" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/ZmlWAxWHgtHVatEndtH-MImUVAI.jpg" alt="스포티파이 DJ 모드 기능 소개 화면">
 
 ## 몰입을 만드는 세 가지 조건
 

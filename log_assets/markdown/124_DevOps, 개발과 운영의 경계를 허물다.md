@@ -15,7 +15,7 @@ next_title: "AI가 PO를 대체한다? 변화에서 PO가 살아남는 법"
 
 DevOps는 개발(Development)과 운영(Operations)의 합성어입니다. 단순한 용어 결합이 아니라, 개발자와 운영자가 한 팀이 되어 소프트웨어를 더 빠르고 안정적으로 제공하기 위한 문화와 철학, 그리고 실천 방법을 의미합니다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/FuBCaRdu0xUbtFP2ydZdwctIsjA.jpg" alt="개발과 운영을 잇는 무한대 루프 형태의 데브옵스 6가지 핵심 역할 다이어그램">
+<img width="1280" height="670" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/FuBCaRdu0xUbtFP2ydZdwctIsjA.jpg" alt="개발과 운영을 잇는 무한대 루프 형태의 데브옵스 6가지 핵심 역할 다이어그램">
 
 전통적으로 개발팀과 운영팀은 각자의 영역에서 분리되어 일했습니다. 개발팀은 새로운 기능을 만드는 데 집중하고, 운영팀은 시스템의 안정성을 유지하는 데 초점을 맞췄습니다. 하지만 이러한 분리는 소프트웨어 출시 과정에서 병목 현상과 지연을 야기했습니다.
 
@@ -53,7 +53,7 @@ CI/CD, 이슈 트래킹, 모니터링 등 DevOps 도구를 익히고, 기획 단
 
 DevOps 환경에서는 빠른 배포만큼 빠른 장애 대응도 중요합니다. 기획자는 장애 발생 시 신속한 의사결정을 통해 롤백이나 핫픽스를 지원해야 합니다. 또한 장애를 단순한 실패가 아닌 학습의 기회로 바라보는 문화를 조성해야 합니다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/5VRdVIXXRlhUqjtrbdBIOf7UWU4.jpg" alt="개발과 운영 전 단계에 테스트가 포함됨을 보여주는 데브옵스 손그림 다이어그램">
+<img width="1280" height="780" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/5VRdVIXXRlhUqjtrbdBIOf7UWU4.jpg" alt="개발과 운영 전 단계에 테스트가 포함됨을 보여주는 데브옵스 손그림 다이어그램">
 
 DevOps는 개발과 운영의 경계를 허무는 문화입니다. 기술적 자동화도 중요하지만, 더 중요한 것은 협업과 소통, 그리고 지속적인 개선을 추구하는 마인드셋입니다. 기획자 역시 DevOps 마인드셋으로, 변화에 빠르게 대응하고, 협업과 자동화를 실천할 때 비로소 진정한 애자일 조직이 됩니다.
 

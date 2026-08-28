@@ -15,7 +15,7 @@ next_title: "마케팅 없이 20조원 가치를 만든 Figma PLG전략"
 
 중국의 한 헤지펀드가 야심차게 선보인 AI 스타트업 DeepSeek이 글로벌 무대에서 새로운 바람을 일으키고 있다. 창업한 지 1년도 채 되지 않았지만, 독보적인 기술력과 파격적인 행보로 업계의 주목을 한 몸에 받고 있는 것이다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/tn1lyGVJK92OjgYmuDWKOi5FkpI.jpg" alt="딥시크 공식 홈페이지 메인 화면">
+<img width="1280" height="615" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/tn1lyGVJK92OjgYmuDWKOi5FkpI.jpg" alt="딥시크 공식 홈페이지 메인 화면">
 
 ## DeepSeek의 효율성과 오픈소스 전략
 
@@ -23,7 +23,7 @@ DeepSeek은 창업 초기부터 '높은 효율성'과 '오픈소스'라는 투 �
 
 여기에 그치지 않고, DeepSeek은 OpenAI 수준의 성능을 최대 50배 저렴한 비용으로 제공하겠다는 파격 행보를 보이고 있다. 상용 AI를 대중화하겠다는 원대한 포부를 실현하기 위한 전략인 것이다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/gZi-IxkOWy_Q8h1P3ZlkmS-o9Lc.jpeg" alt="딥시크-V3와 주요 AI 모델의 성능·가격 비교 그래프">
+<img width="1280" height="678" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/gZi-IxkOWy_Q8h1P3ZlkmS-o9Lc.jpeg" alt="딥시크-V3와 주요 AI 모델의 성능·가격 비교 그래프">
 
 ## 스타트업이 배울 수 있는 통찰
 

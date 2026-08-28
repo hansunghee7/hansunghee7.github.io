@@ -27,7 +27,7 @@ Lean Canvas는 9개의 핵심 블록으로 구성된다: 문제, 고객 세그�
 
 우버는 초기에 Lean Canvas를 통해 '택시를 잡기 힘들다'는 문제에 집중했다. 그들의 솔루션은 단순했다: "스마트폰으로 쉽게 차량을 호출한다." 에어비앤비 역시 '여행객의 저렴한 숙소 부족'이라는 문제를 정의하고, '남는 방을 공유'하는 솔루션을 Lean Canvas로 도출해 실험을 거듭했다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/92NZxCS63oGpVnWL5gvgrBCjmK4.jpg" alt="우버 런던 승객용 린 캔버스에 문제, 솔루션, 핵심 지표 등을 작성한 예시">
+<img width="960" height="540" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/92NZxCS63oGpVnWL5gvgrBCjmK4.jpg" alt="우버 런던 승객용 린 캔버스에 문제, 솔루션, 핵심 지표 등을 작성한 예시">
 
 ## Lean Canvas의 강점 - 속도와 반복
 
@@ -37,7 +37,7 @@ Lean Canvas의 가장 큰 장점은 속도다. 팀원들과 20분 내외로 각�
 
 Business Model Canvas와 Lean Canvas의 선택은 비즈니스의 성장 단계에 따라 달라질 수 있다. 창업 초기나 새로운 사업 영역을 탐색할 때는 문제 해결과 빠른 실험에 초점을 맞춘 Lean Canvas가 적합하다. 반면, 비즈니스가 안정화 단계에 접어들면 다양한 이해관계자와 자원 관리에 강점을 가진 Business Model Canvas가 더 유용할 수 있다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/EnrsQGR4Ryv6-sctq6-z3PXj_4k.png" alt="에어비앤비의 린 캔버스 9개 블록을 색상별로 구분해 작성한 분석 예시">
+<img width="1280" height="806" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/EnrsQGR4Ryv6-sctq6-z3PXj_4k.png" alt="에어비앤비의 린 캔버스 9개 블록을 색상별로 구분해 작성한 분석 예시">
 
 ## 기획자를 위한 실전 활용 원칙
 

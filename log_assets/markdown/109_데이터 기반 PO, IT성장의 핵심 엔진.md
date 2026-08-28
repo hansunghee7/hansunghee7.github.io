@@ -27,7 +27,7 @@ next_title: "스프린트 주기 어떻게 결정할 것인가?"
 
 영국의 한 온라인 리테일러는 고객 세분화 분석(RFM)을 통해 기존 시장의 포화 상태와 고객 이탈 문제를 정확히 진단했습니다. 이 분석 결과를 바탕으로 새로운 성장 시장을 발굴하고, 각 지역별 특성에 맞는 진입 전략을 수립할 수 있었습니다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/1zYSLs9zHAOPaaKUtbK65tMF1nc.png" alt="Recency Frequency Monetary로 구성된 RFM 분석 다이어그램">
+<img width="510" height="317" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/1zYSLs9zHAOPaaKUtbK65tMF1nc.png" alt="Recency Frequency Monetary로 구성된 RFM 분석 다이어그램">
 
 ## 예측 모델과 A/B 테스트로 성과 확인하기
 
@@ -37,7 +37,7 @@ next_title: "스프린트 주기 어떻게 결정할 것인가?"
 
 스포티파이는 사용자의 청취 데이터를 분석하여 개인화된 플레이리스트인 'Discover Weekly'를 개발했습니다. 이를 통해 사용자 참여도와 리텐션을 크게 향상시켰습니다. 아마존 역시 구매 이력과 행동 데이터를 종합 분석하여 개인화된 추천 시스템을 구축하고, 전환율과 고객 충성도를 지속적으로 높이고 있습니다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/UW625kN4ibGzYkB3Pk7a95IFZpM.jpg" alt="스포티파이의 개인화 플레이리스트 Discover Weekly 화면">
+<img width="600" height="464" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/UW625kN4ibGzYkB3Pk7a95IFZpM.jpg" alt="스포티파이의 개인화 플레이리스트 Discover Weekly 화면">
 
 ## 데이터 기반 PO를 위한 핵심 전략
 

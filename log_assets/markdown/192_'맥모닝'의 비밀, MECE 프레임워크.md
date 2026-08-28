@@ -25,7 +25,7 @@ MECE를 정복하는 핵심은 이 두 가지 원칙을 익히는 것이다.
 
 둘째, 그렇게 나눈 요소들이 전체 문제를 빠짐없이 포괄해야 한다. 퍼즐을 완성하듯 부분을 조합하면 온전한 그림이 나와야 한다는 의미다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/38X5DpC3ewiLIaKA5EHRHefTFYs" alt="상호 배타성과 전체 포괄성 개념을 원과 사각형으로 설명한 MECE 원칙 다이어그램">
+<img width="1280" height="800" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/38X5DpC3ewiLIaKA5EHRHefTFYs" alt="상호 배타성과 전체 포괄성 개념을 원과 사각형으로 설명한 MECE 원칙 다이어그램">
 
 ## 기획자를 위한 MECE 활용법 다섯 가지
 
@@ -41,7 +41,7 @@ MECE를 정복하는 핵심은 이 두 가지 원칙을 익히는 것이다.
 
 5. 기획서의 목차를 구성하고 각 섹션의 내용을 정리할 때 상호 배타적이고 전체를 포괄하는 MECE 원칙을 적용하면 읽는 이에게 명쾌한 인상을 남길 수 있다. 또한 프레젠테이션 시 청중의 관심을 끌고 메시지를 효과적으로 전달하기 위해 스토리라인을 MECE하게 구조화하는 것도 좋은 방법이다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/v_bJbJdMNAkNWaMMTNTYAttXyRk" alt="문제 정의부터 분해, 분류, 분석, 개선까지 5단계로 정리한 MECE 프레임워크 실행 절차도">
+<img width="1280" height="625" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/v_bJbJdMNAkNWaMMTNTYAttXyRk" alt="문제 정의부터 분해, 분류, 분석, 개선까지 5단계로 정리한 MECE 프레임워크 실행 절차도">
 
 기획이라는 건, 결국 문제를 얼마나 명쾌하게 정의하고 창의적으로 해결하느냐의 문제다. 이 고난도 퍼즐을 단숨에 풀어내는 스킬. 그것이 바로 MECE다. 복잡하고 어지러운 문제가 눈앞에 닥쳤을 때, MECE의 렌즈를 통해 세상을 바라보자. 혼돈 속에서 질서를, 악몽 같은 문제에서 꿈의 해답을 발견할 수 있을 것이다.
 

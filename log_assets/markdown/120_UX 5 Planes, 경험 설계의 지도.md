@@ -29,7 +29,7 @@ next_title: "'포터의 5 Forces' 전쟁터를 분석하는 법"
 
 마지막 층인 '표면(Surface)'은 시각적 완성 단계로, 비주얼 디자인, UI 시안, 프로토타입이 탄생한다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/8codnZLVPVM5DQWEaYoNSsPbm_k.png" alt="전략·범위·구조·뼈대·표면 다섯 단계로 쌓인 UX 5 Planes 모델 도식">
+<img width="1280" height="907" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/8codnZLVPVM5DQWEaYoNSsPbm_k.png" alt="전략·범위·구조·뼈대·표면 다섯 단계로 쌓인 UX 5 Planes 모델 도식">
 
 ## 구글, 에어비앤비가 실전에 적용하는 법
 
@@ -37,7 +37,7 @@ next_title: "'포터의 5 Forces' 전쟁터를 분석하는 법"
 
 에어비앤비는 사용자 여정 맵과 페르소나 정의를 전략 단계에서 진행하고, 각 단계별 산출물을 명확히 문서화하여 디자이너, 개발자, 기획자 간의 협업을 극대화한다. 국내 IT기업인 네이버와 카카오도 서비스 기획 시 5 Planes 모델을 도입해 각 단계별 산출물을 명확히 구분하고, 단계별 리뷰 및 피드백 과정을 체계화하여 품질을 높이고 있다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/lQsYFynZAsa77aVDYk2q8Fb0hdg.png" alt="UX 리서치부터 비주얼 디자인까지 여덟 직무가 다섯 단계에 걸치는 범위를 나타낸 차트">
+<img width="1280" height="720" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/lQsYFynZAsa77aVDYk2q8Fb0hdg.png" alt="UX 리서치부터 비주얼 디자인까지 여덟 직무가 다섯 단계에 걸치는 범위를 나타낸 차트">
 
 ## 기획자를 위한 실전 적용 원칙
 

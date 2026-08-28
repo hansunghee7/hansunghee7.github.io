@@ -27,7 +27,7 @@ next_title: "어포던스: \"이 버튼, 왜 누르고 싶을까?\" 그 비밀"
 
 넷플릭스는 드롭오프 분석을 통해 회원가입 과정에서 사용자들이 이탈하는 주요 지점을 발견했습니다. 특히 신용카드 정보 입력 단계에서 높은 드롭오프율을 보이자, 이를 해결하기 위해 '첫 달 무료' 메시지 강조와 함께 폼 입력 과정을 간소화했습니다. 결과적으로 회원가입 완료율이 크게 상승했습니다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/Zsc5M0kcLyWqfJPin04NJxiLeAI.png" alt="단계별 이탈률을 보여주는 퍼널 분석 차트, 시작페이지부터 전환까지">
+<img width="1024" height="614" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/Zsc5M0kcLyWqfJPin04NJxiLeAI.png" alt="단계별 이탈률을 보여주는 퍼널 분석 차트, 시작페이지부터 전환까지">
 
 ## 드롭오프 분석의 핵심 이점
 
@@ -49,7 +49,7 @@ next_title: "어포던스: \"이 버튼, 왜 누르고 싶을까?\" 그 비밀"
 
 개선 전후의 드롭오프 데이터를 비교함으로써, 변경사항이 실제로 효과가 있었는지 객관적으로 평가할 수 있습니다. 이는 데이터 기반 의사결정의 핵심입니다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/7NoO0v7QH6AA9CjwRid2LpdE4f4.png" alt="상품 조회부터 구매까지 단계별 전환율을 나타낸 퍼널 차트">
+<img width="621" height="450" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/7NoO0v7QH6AA9CjwRid2LpdE4f4.png" alt="상품 조회부터 구매까지 단계별 전환율을 나타낸 퍼널 차트">
 
 ## 실무 적용을 위한 5단계 프로세스
 
@@ -85,7 +85,7 @@ next_title: "어포던스: \"이 버튼, 왜 누르고 싶을까?\" 그 비밀"
 
 발견된 문제점을 해결할 수 있는 개선안을 도출하고, A/B 테스트를 통해 효과를 검증합니다. 효과가 입증된 변경사항만 정식으로 적용합니다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/DyjlTCKB6xZ13oVv_yhi1S78v4c.png" alt="드롭오프의 실제 원인을 나열한 슬라이드, 가입 루프와 UI 문제 등">
+<img width="1280" height="853" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/DyjlTCKB6xZ13oVv_yhi1S78v4c.png" alt="드롭오프의 실제 원인을 나열한 슬라이드, 가입 루프와 UI 문제 등">
 
 ## 분석 시 피해야 할 함정들
 

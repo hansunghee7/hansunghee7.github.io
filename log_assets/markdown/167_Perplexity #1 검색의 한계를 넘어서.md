@@ -25,7 +25,7 @@ next_title: "Perplexity #2 검색 시스템의 구조 설계"
 
 셋째, 정보 과부하의 문제입니다. 검색 결과로 수백만 개의 링크가 제공되지만, 정작 사용자는 첫 페이지의 몇 개 링크만 확인합니다. 정보의 홍수 속에서 사용자는 여전히 갈증을 느끼고 있습니다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/oJSRAog0AIQl4aN20nHWSZRLfTU.png" alt="구글 로고 위에 붙은 퍼플렉시티 포스트잇 이미지">
+<img width="1280" height="720" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/oJSRAog0AIQl4aN20nHWSZRLfTU.png" alt="구글 로고 위에 붙은 퍼플렉시티 포스트잇 이미지">
 
 ### **생성형 AI 시대의 새로운 정보 탐색 기준**
 
@@ -35,7 +35,7 @@ ChatGPT의 등장으로 사람들은 정보를 얻는 새로운 방식을 경험
 
 이러한 상황에서 등장한 것이 바로 Perplexity AI입니다. Perplexity는 검색 엔진의 최신 정보 접근성과 생성형 AI의 자연어 이해 및 답변 생성 능력을 결합해 "Real-time, trustworthy, cited answers"라는 비전을 실현하고자 합니다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/a3DRN0AoZlFZsNW41DzcLJv0gO0.jpg" alt="퍼플렉시티 공동 창업자 세 명의 단체 사진">
+<img width="800" height="418" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/a3DRN0AoZlFZsNW41DzcLJv0gO0.jpg" alt="퍼플렉시티 공동 창업자 세 명의 단체 사진">
 
 ### **Perplexity의 탄생 배경과 철학**
 
@@ -51,7 +51,7 @@ Perplexity의 철학은 다음 세 가지로 요약됩니다:
 
 이 철학을 기술적으로 구현하기 위해 Perplexity는 RAG(Retrieval-Augmented Generation) 아키텍처를 채택했습니다. 이는 검색(Retrieval)과 생성(Generation)을 결합한 접근법으로, 웹에서 실시간으로 정보를 검색하고 이를 바탕으로 AI가 응답을 생성하는 방식입니다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/Si92b-5e_E_4W0hlMcz4B-_0xd8.png" alt="RAG 2.0 개선된 검색 기법을 소개하는 타이틀 이미지">
+<img width="1200" height="630" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/Si92b-5e_E_4W0hlMcz4B-_0xd8.png" alt="RAG 2.0 개선된 검색 기법을 소개하는 타이틀 이미지">
 
 ### **RAG: 검색과 생성의 결합**
 
@@ -83,7 +83,7 @@ Perplexity는 기술적 혁신뿐만 아니라 사용자 경험(UX) 측면에서
 
 이러한 대화형 인터페이스는 검색을 '질의응답'에서 '대화'로 발전시켰습니다. 사용자는 마치 지식이 풍부한 전문가와 대화하는 듯한 경험을 하게 됩니다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/TI5I2mg7JvgJp_gKg8W6cJkSsA8.jpg" alt="구글플레이 스토어의 퍼플렉시티 앱 소개 페이지">
+<img width="1280" height="640" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/TI5I2mg7JvgJp_gKg8W6cJkSsA8.jpg" alt="구글플레이 스토어의 퍼플렉시티 앱 소개 페이지">
 
 ### **실제 비즈니스 적용 가능성**
 

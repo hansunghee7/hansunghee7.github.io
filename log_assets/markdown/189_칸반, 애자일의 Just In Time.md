@@ -17,13 +17,13 @@ next_title: "애자일 vs 워터폴, PO가 알아야 할 모든 것"
 
 칸반은 Toyota에서 시작된 JIT(Just-In-Time) 생산 방식에 뿌리를 두고 있어요. 마치 슈퍼마켓에서 상품을 적시에 진열하듯, 칸반은 필요할 때 정확한 양의 작업이 이뤄지도록 흐름을 관리합니다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/qXZy77MqeJTqzoKqcH7Byubq_YA" alt="도요타 생산 현장에서 칸반이 부품 제작과 회수 흐름을 지시하는 과정 도식">
+<img width="647" height="376" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/qXZy77MqeJTqzoKqcH7Byubq_YA" alt="도요타 생산 현장에서 칸반이 부품 제작과 회수 흐름을 지시하는 과정 도식">
 
 ## 핵심 원리 - 시각화와 WIP 제한
 
 칸반의 핵심은 바로 '시각화'입니다. 모든 작업은 카드 형태로 칸반 보드에 표시되죠. 덕분에 진행 상황이 투명하게 공유되고, 병목 지점도 빠르게 발견할 수 있습니다. 또한 WIP(Work In Progress) 제한을 둬서 한 번에 처리하는 작업량을 최적화합니다. 이는 멀티태스킹을 줄이고 업무에 집중할 수 있게 해주죠.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/S8MmeCGNy_41bfcM8bMUezQO3O8.jpg" alt="백로그부터 완료까지 열로 구분된 칸반 보드 예시 화면">
+<img width="600" height="496" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/S8MmeCGNy_41bfcM8bMUezQO3O8.jpg" alt="백로그부터 완료까지 열로 구분된 칸반 보드 예시 화면">
 
 ## 지속적 개선을 위한 지표 관리
 
@@ -37,7 +37,7 @@ next_title: "애자일 vs 워터폴, PO가 알아야 할 모든 것"
 
 스크럼과는 달리 칸반은 고정된 주기나 역할이 없어요. 대신 계획의 유연성과 지속적 흐름에 초점을 맞춥니다. 물론 둘의 장점을 결합한 스크럼반(Scrumban)이라는 접근법도 있죠.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/QgbvAwb9cojJ0OttjotdN6DVock.webp" alt="스프린트 순환 구조의 스크럼과 열 흐름 방식의 칸반을 비교한 인포그래픽">
+<img width="1280" height="719" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/QgbvAwb9cojJ0OttjotdN6DVock.webp" alt="스프린트 순환 구조의 스크럼과 열 흐름 방식의 칸반을 비교한 인포그래픽">
 
 ## 도입 전략 - 칠판에서 Jira까지
 

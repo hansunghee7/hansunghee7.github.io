@@ -17,19 +17,19 @@ next_title: "'좋아요'가 만든 작지만 강력한 UX의 혁명"
 
 오늘날 모바일 UX 디자인의 핵심 화두는 바로 이 '엄지 영역'에 집중되어 있습니다. 한 손으로 스마트폰을 쥐고 엄지손가락만으로 모든 기능을 조작할 수 있어야 한다는 것, 이것이 바로 '엄지 친화적 디자인(Thumb Friendly UX)'의 본질입니다. 스티브 잡스가 아이폰을 발표하며 "엄지손가락이 닿는 모든 것이 바로 사용자의 경험"이라고 말한 것도 같은 맥락이죠.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/5qTjzFzDot47sephqVWRf0Af1WM.jpg" alt="스마트폰 파지 방식별 비율을 보여주는 통계 그래픽">
+<img width="670" height="370" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/5qTjzFzDot47sephqVWRf0Af1WM.jpg" alt="스마트폰 파지 방식별 비율을 보여주는 통계 그래픽">
 
 ## 엄지 범위 지도로 보는 3가지 영역
 
 디자이너들은 엄지손가락의 움직임을 연구하며 '엄지 범위 지도'라는 개념을 만들었습니다. 스마트폰 화면을 세 영역으로 나누는 건데요. 가운데 하단의 '편안한 영역'은 엄지가 가장 쉽게 닿을 수 있는 곳입니다. 자주 쓰는 버튼이나 중요한 기능은 여기에 배치해야겠죠. 그 다음이 '노력 영역'입니다. 엄지를 좀 뻗어야 닿을 수 있는 곳으로, 보조적인 기능을 두기에 적당합니다. 마지막으로 '불편한 영역'은 화면 상단 모서리 부분인데요. 엄지로 닿기 힘든 곳이라 자주 쓰는 기능을 여기 두면 사용성이 크게 떨어집니다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/eFizDZc8vPWNm26iE2ahc8Ci5zI.jpg" alt="엄지가 닿기 쉬운 정도를 색으로 구분한 화면 영역 지도">
+<img width="1100" height="772" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/eFizDZc8vPWNm26iE2ahc8Ci5zI.jpg" alt="엄지가 닿기 쉬운 정도를 색으로 구분한 화면 영역 지도">
 
 ## 스포티파이와 우버의 적용 사례
 
 많은 기업들이 엄지 친화적 디자인을 앱에 적극 반영하고 있습니다. 음악 스트리밍 서비스 스포티파이는 핵심 기능인 검색, 라이브러리, 재생 버튼을 하단에 배치해 엄지로 쉽게 조작할 수 있게 했죠. 우버도 '콜택시' 버튼을 앱의 중앙 하단에 크게 두어, 한 손으로도 편하게 차를 부를 수 있도록 디자인했습니다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/RzNh0MAmkKqr0iC1nrq2NGDGJhY.png" alt="스포티파이 앱의 하단 내비게이션과 재생 화면">
+<img width="1280" height="720" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/RzNh0MAmkKqr0iC1nrq2NGDGJhY.png" alt="스포티파이 앱의 하단 내비게이션과 재생 화면">
 
 ## 사용자 경험과 매출을 잡는 이점
 
@@ -39,7 +39,7 @@ next_title: "'좋아요'가 만든 작지만 강력한 UX의 혁명"
 
 실무에서 엄지 친화적 디자인을 구현할 때는 다음 사항을 꼭 체크하세요. 우선 주요 메뉴와 버튼은 화면 하단 중앙에 배치하는 게 기본입니다. 이때 버튼 크기는 엄지로 터치하기 편한 사이즈로 만들어야 해요. 탭, 스와이프, 드래그 같은 제스처도 적극 활용하세요. 엄지 움직임에 최적화된 조작 방식이거든요.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/3Xyrek0kL26v7R8alD8HV3Y44zw.png" alt="우버 앱의 목적지 선택과 차량 호출 화면 4종">
+<img width="1280" height="666" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/3Xyrek0kL26v7R8alD8HV3Y44zw.png" alt="우버 앱의 목적지 선택과 차량 호출 화면 4종">
 
 ## 주의해야 할 함정들
 

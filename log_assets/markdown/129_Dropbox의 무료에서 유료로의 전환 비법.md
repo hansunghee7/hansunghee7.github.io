@@ -31,7 +31,7 @@ Dropbox의 성공 비결은 '바이럴 루프(Viral Loop)'와 '자연스러운 �
 
 넷째, 바이럴 효과를 극대화했습니다. 친구 초대 시 용량을 늘려주는 시스템은 사용자들이 자발적으로 Dropbox를 홍보하게 만들었습니다. "이거 진짜 편해, 너도 써봐"라는 추천은 어떤 광고보다 효과적이었습니다.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/CUGku0yXQE9QMO97NZm8OJipHuk.jpg" alt="친구 초대 시 저장공간을 늘려주는 드롭박스 추천 페이지 화면">
+<img width="1200" height="700" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/CUGku0yXQE9QMO97NZm8OJipHuk.jpg" alt="친구 초대 시 저장공간을 늘려주는 드롭박스 추천 페이지 화면">
 
 ## 스타트업이 적용할 수 있는 실전 전환 전략
 
@@ -51,7 +51,7 @@ Dropbox의 성공 비결은 '바이럴 루프(Viral Loop)'와 '자연스러운 �
 
 지속적으로 실험하고 개선하세요 A/B 테스트를 통해 가격, 기능 제한, 결제 유도 메시지, 온보딩 플로우 등 다양한 요소를 실험해 전환율이 가장 높은 방식을 찾아내세요.
 
-<img loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/R0B2eLH0V0i-PLPvCWWRyyoQS5Q.jpg" alt="획득-유지-성장 단계와 바이럴 루프를 보여주는 퍼널 다이어그램">
+<img width="1280" height="720" loading="lazy" src="//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/R0B2eLH0V0i-PLPvCWWRyyoQS5Q.jpg" alt="획득-유지-성장 단계와 바이럴 루프를 보여주는 퍼널 다이어그램">
 
 무료에서 유료로의 전환은 단순히 기능을 제한하거나 가격을 올리는 것으로 해결되지 않습니다. 사용자가 서비스의 핵심 가치를 경험하고, '유료로 전환할 이유'를 명확히 느끼게 하는 것이 핵심입니다.
 
