@@ -117,6 +117,8 @@
     backdrop-filter:blur(2px); z-index:99;
   }
   .pillar-more-body{ font-family:'Source Serif 4','Noto Serif KR',serif; font-size:16px; line-height:2.05; color:#a19d94; font-weight:300; }
+  .pillar-more-body p{ margin:0 0 1.15em; }
+  .pillar-more-body p:last-child{ margin-bottom:0; }
   .pillar-more[open] .pillar-more-body{
     position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
     width:calc(100% - 48px); max-width:640px; max-height:80vh; overflow-y:auto;
@@ -124,7 +126,22 @@
     padding:56px 52px; box-shadow:0 24px 60px rgba(0,0,0,0.5); z-index:100;
     color:#c9c8c2;
   }
-  @media (max-width:600px){ .pillar-more[open] .pillar-more-body{ padding:40px 28px; } }
+  @media (max-width:600px){ .pillar-more[open] .pillar-more-body{ padding:52px 24px 32px; } }
+  /* 카드 안에 별도로 넣은 X 닫기 버튼. 원래 summary 자체도 열렸을 때
+     ✕로 바뀌어 닫는 역할을 하지만, 카드 밖(인트로 줄)에 있어 눈에
+     잘 안 띈다는 피드백에 따라 카드 우상단에 명확한 닫기 버튼을 추가.
+     details를 코드로 닫는 표준 방법이 없어 여기만 최소한의 JS를 씀
+     (본문 노출 여부와는 무관 -- 이미 항상 HTML에 있는 내용을 닫는
+     동작일 뿐이라 크롤러 인덱싱에는 영향 없음). */
+  .pillar-more-close{
+    position:absolute; top:16px; right:16px; width:32px; height:32px;
+    display:flex; align-items:center; justify-content:center;
+    background:transparent; border:1px solid rgba(245,243,238,0.16); border-radius:50%;
+    color:#8f8b82; font-size:14px; line-height:1; cursor:pointer;
+    font-family:'Pretendard Variable','Pretendard',-apple-system,sans-serif;
+    transition:border-color .2s, color .2s;
+  }
+  .pillar-more-close:hover{ border-color:rgba(245,243,238,0.4); color:#f5f3ee; }
 
   /* ---- 카드 그리드: log.html과 같은 카드 스타일 재사용 ---- */
   .card-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; padding-bottom:60px; }
@@ -175,7 +192,11 @@
       {% if pillar.intro_extended %}
       <details class="pillar-more">
         <summary>더보기</summary>
-        <p class="pillar-more-body">{{ pillar.intro_extended }}</p>
+        <div class="pillar-more-body">
+          <button type="button" class="pillar-more-close" onclick="this.closest('details').removeAttribute('open')" aria-label="닫기">✕</button>
+          {% assign pillar_paragraphs = pillar.intro_extended | split: "\n\n" %}
+          {% for para in pillar_paragraphs %}<p>{{ para | strip }}</p>{% endfor %}
+        </div>
       </details>
       {% endif %}
     </div>
