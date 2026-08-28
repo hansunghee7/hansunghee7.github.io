@@ -12,7 +12,7 @@
 ## 이 폴더가 Jekyll 밖에 있다는 것
 
 `insight-7b3e9f2c/` 안 파일들은 front matter가 없는 순수 정적 HTML입니다 — Jekyll
-빌드 대상이 아니라서 `{% include %}`를 못 씁니다. 그래서 여러 페이지가 공유하는
+빌드 대상이 아니라서 {% raw %}`{% include %}`{% endraw %}를 못 씁니다. 그래서 여러 페이지가 공유하는
 것은 `<link>`/`<script>`로 불러 쓰는 실제 파일(`studio.css`, `studio.js`) 두 개뿐이고,
 그 밖의 공유는 전부 이 문서 같은 "사람(과 AI)이 읽고 맞추는" 규칙입니다.
 
