@@ -100,7 +100,7 @@
   </header>
 
   <div class="setup-note">
-    <strong>지금 상태:</strong> 뼈대만 만든 단계라, 실제 필러 페이지는 "스타트업 인사이트" 1개만 <code>/preview/log/</code>에 샘플로 있습니다(운영 반영 전). 새 카테고리를 만들 때마다 아래 표의 <code>PILLAR_STATUS</code> 목록에 코드로 한 줄씩 추가해줘야 합니다 — 카테고리 수가 늘어나면 자동으로 스캔하도록 바꾸는 게 좋습니다.
+    <strong>지금 상태:</strong> "스타트업 인사이트" 1개만 <code>/log/</code>에 운영 반영되었습니다(사이트맵 등록 완료, log.html 카테고리 버튼에서 링크 연결됨). 나머지 11개는 <code>_data/pillars.yml</code>에 소개 문구는 준비돼 있지만 페이지 자체는 아직 없습니다. 새 카테고리를 만들 때마다 아래 표의 <code>PILLAR_STATUS</code> 목록에 코드로 한 줄씩 추가해줘야 합니다 — 카테고리 수가 늘어나면 자동으로 스캔하도록 바꾸는 게 좋습니다.
   </div>
 
   <div id="content"><div class="loading">불러오는 중…</div></div>
@@ -113,7 +113,7 @@
   // 필러 페이지가 만들어진 카테고리만 여기 등록합니다. status: "staging"(미리보기만)
   // 또는 "live"(운영 반영). url은 그 페이지 주소.
   var PILLAR_STATUS = {
-    "스타트업 인사이트": { status: "staging", url: "/preview/log/스타트업-인사이트.html" }
+    "스타트업 인사이트": { status: "live", url: "/log/스타트업-인사이트.html" }
   };
 
   var content = document.getElementById("content");
