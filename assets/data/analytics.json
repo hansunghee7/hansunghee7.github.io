@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-08-28T00:16:25.980057+00:00",
+  "updated_at": "2026-08-28T05:21:07.141232+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 44,
-    "activeUsers": 26,
+    "sessions": 56,
+    "activeUsers": 28,
     "newUsers": 24,
-    "returningUsers": 2
+    "returningUsers": 4
   },
   "daily": [
     {
@@ -24,36 +24,40 @@
     },
     {
       "date": "2026-08-28",
-      "sessions": 4,
-      "activeUsers": 4,
+      "sessions": 16,
+      "activeUsers": 6,
       "newUsers": 1,
-      "returningUsers": 3
+      "returningUsers": 5
     }
   ],
   "daily_leads": [
     {
       "date": "2026-08-26",
       "count": 1
+    },
+    {
+      "date": "2026-08-28",
+      "count": 2
     }
   ],
   "landing_types": {
-    "home": 51,
-    "log_home": 5,
-    "individual_post": 14,
+    "home": 61,
+    "log_home": 6,
+    "individual_post": 22,
     "other": 8
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 30
+      "sessions": 37
     },
     {
       "source": "(not set)",
-      "sessions": 26
+      "sessions": 34
     },
     {
       "source": "searchadvisor.naver.com",
-      "sessions": 7
+      "sessions": 9
     },
     {
       "source": "google",
@@ -66,19 +70,24 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 185,
-    "section_view_voices": 135,
-    "section_view_book_class": 82,
-    "section_view_faq": 74,
-    "faq_open": 14,
-    "read_complete": 105
+    "section_view_proven": 206,
+    "section_view_voices": 154,
+    "section_view_book_class": 96,
+    "section_view_faq": 85,
+    "faq_open": 15,
+    "read_complete": 148
   },
   "contact_funnel": {
-    "contact_open": 15,
-    "generate_lead": 1,
-    "contact_error": 2
+    "contact_open": 24,
+    "generate_lead": 3,
+    "contact_error": 3
   },
   "leads_by_post": [
+    {
+      "path": "/",
+      "title": "홈",
+      "count": 2
+    },
     {
       "path": "/log.html",
       "title": "로그 목록",
@@ -87,18 +96,28 @@
   ],
   "top_landing_posts": [
     {
+      "path": "/log_assets/markdown/009_PM의 고수는 감정을 어떻게 다룰까.html",
+      "title": "/log_assets/markdown/009_PM의 고수는 감정을 어떻게 다룰까.html",
+      "sessions": 3
+    },
+    {
       "path": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
       "title": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
+      "sessions": 3
+    },
+    {
+      "path": "/log_assets/markdown/122_미국 진출은 누구에게 필요한 전략인가.html",
+      "title": "/log_assets/markdown/122_미국 진출은 누구에게 필요한 전략인가.html",
+      "sessions": 2
+    },
+    {
+      "path": "/log_assets/markdown/592_프로덕트팀의 생산속도 향상을 위한 9가지 전략.html",
+      "title": "/log_assets/markdown/592_프로덕트팀의 생산속도 향상을 위한 9가지 전략.html",
       "sessions": 2
     },
     {
       "path": "/log_assets/markdown/005_할루시네이션 사회.html",
       "title": "/log_assets/markdown/005_할루시네이션 사회.html",
-      "sessions": 1
-    },
-    {
-      "path": "/log_assets/markdown/009_PM의 고수는 감정을 어떻게 다룰까.html",
-      "title": "/log_assets/markdown/009_PM의 고수는 감정을 어떻게 다룰까.html",
       "sessions": 1
     },
     {
@@ -154,22 +173,28 @@
   ],
   "top_viewed_posts": [
     {
+      "path": "/log_assets/markdown/130_왜 한국 스타트업은 미국 진출을 꿈꾸는가.html",
+      "title": "/log_assets/markdown/130_왜 한국 스타트업은 미국 진출을 꿈꾸는가.html",
+      "uniqueViews": 5,
+      "views": 14
+    },
+    {
       "path": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
       "title": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
       "uniqueViews": 5,
-      "views": 33
-    },
-    {
-      "path": "/log_assets/markdown/130_왜 한국 스타트업은 미국 진출을 꿈꾸는가.html",
-      "title": "/log_assets/markdown/130_왜 한국 스타트업은 미국 진출을 꿈꾸는가.html",
-      "uniqueViews": 4,
-      "views": 7
+      "views": 43
     },
     {
       "path": "/log_assets/markdown/003_회의실에서 목소리가 큰 사람이 가장 위험할 수 있다.html",
       "title": "/log_assets/markdown/003_회의실에서 목소리가 큰 사람이 가장 위험할 수 있다.html",
       "uniqueViews": 3,
-      "views": 9
+      "views": 15
+    },
+    {
+      "path": "/log_assets/markdown/009_PM의 고수는 감정을 어떻게 다룰까.html",
+      "title": "/log_assets/markdown/009_PM의 고수는 감정을 어떻게 다룰까.html",
+      "uniqueViews": 3,
+      "views": 10
     },
     {
       "path": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
@@ -184,10 +209,10 @@
       "views": 17
     },
     {
-      "path": "/log_assets/markdown/009_PM의 고수는 감정을 어떻게 다룰까.html",
-      "title": "/log_assets/markdown/009_PM의 고수는 감정을 어떻게 다룰까.html",
+      "path": "/log_assets/markdown/259_고객을 정의하는 법 '페르소나'.html",
+      "title": "/log_assets/markdown/259_고객을 정의하는 법 '페르소나'.html",
       "uniqueViews": 2,
-      "views": 7
+      "views": 2
     },
     {
       "path": "/log_assets/markdown/263_우선순위 설정의 프레임워크 'RICE'.html",
@@ -199,7 +224,7 @@
       "path": "/log_assets/markdown/306_뛰어난 PO는 어떤 자질이 다를까.html",
       "title": "/log_assets/markdown/306_뛰어난 PO는 어떤 자질이 다를까.html",
       "uniqueViews": 2,
-      "views": 5
+      "views": 6
     },
     {
       "path": "/log_assets/markdown/346_코치S 14화 콜드브루 장사.html",
@@ -229,19 +254,13 @@
       "path": "/log_assets/markdown/612_줄서서 먹는 가게의 사장은 뭐가 다를까.html",
       "title": "/log_assets/markdown/612_줄서서 먹는 가게의 사장은 뭐가 다를까.html",
       "uniqueViews": 2,
-      "views": 3
+      "views": 4
     },
     {
-      "path": "/log_assets/markdown/001_",
-      "title": "/log_assets/markdown/001_",
-      "uniqueViews": 1,
-      "views": 1
-    },
-    {
-      "path": "/log_assets/markdown/004_굿바이 히가시노.html",
-      "title": "/log_assets/markdown/004_굿바이 히가시노.html",
-      "uniqueViews": 1,
-      "views": 1
+      "path": "/log_assets/markdown/613_코치S 16화 시드아이템 찾기.html",
+      "title": "/log_assets/markdown/613_코치S 16화 시드아이템 찾기.html",
+      "uniqueViews": 2,
+      "views": 2
     }
   ]
 }
