@@ -814,6 +814,10 @@
         note.className = 'h2note' + staleClass;
         note.textContent = stalePrefix + '최근 30일 · ' + (updated ? fmt(updated) + ' 갱신' : '');
 
+        /* 헤더 새로고침 옆 "데이터 기준"은 다른 Studio 페이지와 동일하게
+           이 페이지의 자동 수집 파이프라인(GA4) 기준 최신 날짜를 보여준다. */
+        document.getElementById('dataAsOf').textContent = updated ? '· 데이터 기준 ' + fmt(updated) : '';
+
         renderKpiTrends(d);
         renderKpiDetails(d);
         renderLeadPosts(d);
@@ -866,6 +870,7 @@
         } else {
           note.textContent = '불러오기 실패했습니다.';
         }
+        document.getElementById('dataAsOf').textContent = e && e.notYet ? '· 데이터 수집 전' : '· 데이터 불러오기 실패';
         document.getElementById('analyticsTiles').textContent='';
         document.getElementById('sourceTable').textContent='';
         document.getElementById('engagementTiles').textContent='';
@@ -895,9 +900,6 @@
     });
     var dated = rows.filter(function(r){ return r.d; });
     dated.sort(function(a,b){ return b.d - a.d; });
-
-    document.getElementById('dataAsOf').textContent =
-      '글 ' + posts.length.toLocaleString() + '건 · 최신 발행 ' + fmt(dated.length?dated[0].d:null);
 
     /* ---- KPI ---- */
     var thisYear = today.getFullYear();
@@ -1021,12 +1023,10 @@
   }
 
   function load(){
-    document.getElementById('dataAsOf').textContent = '데이터 불러오는 중…';
     return fetch('/assets/data/posts.json?t=' + Date.now(), { cache:'no-store' })
       .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
       .then(function(d){ render(Array.isArray(d) ? d : (d.posts||[])); return true; })
       .catch(function(e){
-        document.getElementById('dataAsOf').textContent = '불러오기 실패';
         var k = document.getElementById('kpis'); k.textContent='';
         k.appendChild(el('div','err','글 데이터를 불러오지 못했습니다 ('+e.message+'). /assets/data/posts.json 이 있는지 확인하세요.'));
         return false;
