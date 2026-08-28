@@ -132,7 +132,14 @@ function commitCapture(token, capture, retryCount) {
   fetch(url, { headers: ghHeaders(token) })
     .then(function (r) {
       if (r.status === 404) return { notFound: true };
-      if (!r.ok) throw new Error("GET 실패: " + r.status);
+      if (!r.ok) {
+        // 상태 코드만으로는 왜 거부됐는지(토큰 자체가 무효인지, 스코프
+        // 부족인지 등) 알 수 없어서, GitHub이 응답 본문에 같이 주는
+        // "message" 필드까지 읽어서 로그에 남긴다.
+        return r.json().catch(function () { return {}; }).then(function (body) {
+          throw new Error("GET 실패: " + r.status + (body && body.message ? " - " + body.message : ""));
+        });
+      }
       return r.json();
     })
     .then(function (fileRes) {
@@ -186,9 +193,12 @@ function commitCapture(token, capture, retryCount) {
       }
       if (putRes.ok) {
         pushLog({ platform: capture.platform, count: capture.count, capturedAt: capture.capturedAt, status: "success" });
-      } else {
-        pushLog({ platform: capture.platform, count: capture.count, capturedAt: capture.capturedAt, status: "error", note: "HTTP " + putRes.status });
+        return;
       }
+      return putRes.json().catch(function () { return {}; }).then(function (body) {
+        var note = "HTTP " + putRes.status + (body && body.message ? " - " + body.message : "");
+        pushLog({ platform: capture.platform, count: capture.count, capturedAt: capture.capturedAt, status: "error", note: note });
+      });
     })
     .catch(function (e) {
       // 실패해도 다음 방문 때 자연히 재시도되니 알림은 안 띄우지만,
