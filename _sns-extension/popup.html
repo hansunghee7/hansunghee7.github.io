@@ -12,6 +12,12 @@
   button{ width:100%; padding:9px; font-size:13px; border-radius:6px; border:1px solid #c8c6bf; background:#121210; color:#fff; cursor:pointer; margin-bottom:8px; }
   button.secondary{ background:#fff; color:#121210; }
   .hint{ color:#6e6a62; font-size:11.5px; line-height:1.5; }
+  .divider{ display:flex; align-items:center; gap:8px; margin:4px 0 10px; color:#a5a299; font-size:11px; }
+  .divider::before, .divider::after{ content:''; flex:1; height:1px; background:#eeece5; }
+  #patInput{ width:100%; box-sizing:border-box; padding:8px 10px; font-size:12.5px; border:1px solid #c8c6bf; border-radius:6px; margin-bottom:8px; font-family:inherit; }
+  #patStatus{ font-size:11px; margin:-4px 0 8px; }
+  #patStatus.ok{ color:#1f7a4f; }
+  #patStatus.warn{ color:#b8402a; }
   ul{ margin:8px 0; padding-left:18px; font-size:12px; color:#403d37; }
 
   .log-heading{ font-size:11.5px; font-weight:600; color:#403d37; margin:14px 0 6px; }
@@ -34,6 +40,18 @@
   <div id="tokenDebug" class="hint" style="margin:-6px 0 12px;"></div>
   <button id="loginBtn">GitHub 연결</button>
   <button id="logoutBtn" class="secondary" style="display:none;">연결 해제</button>
+
+  <div class="divider">또는</div>
+  <input type="password" id="patInput" placeholder="GitHub 토큰 붙여넣기 (ghp_... 또는 github_pat_...)" autocomplete="off">
+  <div id="patStatus"></div>
+  <button id="patSaveBtn" class="secondary">토큰 저장</button>
+  <div class="hint" style="margin-top:-4px;">
+    위 GitHub 연결 버튼이 계속 안 되면 이쪽을 쓰세요.
+    <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">여기서 발급</a>
+    — Repository access는 이 저장소 하나만, Permissions는 Contents를
+    Read and write로 설정하면 됩니다.
+  </div>
+
   <div class="hint">
     LinkedIn / Facebook / Instagram / Threads / 네이버블로그 / 브런치 / 리멤버 / 로켓펀치
     프로필을 열면 팔로워 수를 자동으로 읽어 기록합니다. 결과는
