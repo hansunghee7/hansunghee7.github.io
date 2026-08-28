@@ -560,7 +560,7 @@
         ],
       },
       {
-        key: "millie", label: "밀리의서재", logo: "/assets/logos/millie.png",
+        key: "millie", label: "밀리의서재", logo: "/assets/logos/millie.jpg",
         metrics: [
           { key: "millie", label: "자기계발>기획 인기순", unit: "위", higherIsBetter: false, href: "https://www.millie.co.kr/v3/search/3depth/1298/?parentSeq=1287&nav_hidden=y", get: function (r) { return r.millie && r.millie.category_rank; } },
         ],
@@ -573,7 +573,7 @@
     var ridi = latest && latest.ridibooks;
     if (ridi) {
       groups.push({
-        key: "ridibooks", label: "리디북스", logo: "/assets/logos/ridi.png",
+        key: "ridibooks", label: "리디북스", logo: "/assets/logos/ridi.jpg",
         customBodyHtml: staticTile(
           "참고",
           ridi.rating ? ridi.rating.toFixed(1) + "점" : "평가 없음",
