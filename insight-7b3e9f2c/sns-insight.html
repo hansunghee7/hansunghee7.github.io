@@ -142,9 +142,24 @@
   var els = { status: document.getElementById("statusArea"), grid: document.getElementById("grid") };
   var lastData = {};
 
-  function stampRefresh() {
-    document.getElementById("lastRefresh").textContent =
-      "· 마지막 새로고침 " + new Date().toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit" });
+  // "마지막 새로고침"을 클릭 시각(지금)으로 찍으면, 실제로는 하루 한 번만
+  // 수집되는데 누를 때마다 시각이 바뀌어서 "방금 또 새로 모았나?"로
+  // 오해하게 된다. 그래서 클릭 시각이 아니라 데이터 자체에 찍힌 가장 최근
+  // capturedAt(실제로 언제 수집됐는지)을 보여준다 -- 여러 번 눌러도 실제로
+  // 새 수집이 없었으면 이 시각은 그대로다.
+  function stampRefresh(data) {
+    var latest = null;
+    PLATFORMS.forEach(function (p) {
+      var series = data[p.key] || [];
+      if (!series.length) return;
+      var c = series[series.length - 1].capturedAt;
+      if (c && (!latest || c > latest)) latest = c;
+    });
+    var el = document.getElementById("lastRefresh");
+    if (!latest) { el.textContent = ""; return; }
+    var d = new Date(latest);
+    el.textContent = "· 데이터 기준 " + d.toLocaleDateString("ko-KR", { month: "2-digit", day: "2-digit" }) +
+      " " + d.toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit" });
   }
 
   function kstToday() {
@@ -200,7 +215,7 @@
     var btn = this;
     setRefreshState(btn, "loading");
     load().then(function (ok) {
-      stampRefresh();
+      stampRefresh(lastData);
       if (ok && isFresh(lastData)) {
         // 이미 오늘자 기록이 다 있으면, 굳이 크롬 확장에 8개 전체 수집을
         // 또 요청하지 않는다 -- 방금 불러온 값을 다시 보여주는 걸로 끝낸다.
@@ -217,8 +232,7 @@
       setTimeout(function () { setRefreshState(btn, "idle"); }, 1600);
     });
   });
-  load();
-  stampRefresh();
+  load().then(function () { stampRefresh(lastData); });
 
   function render(data) {
     els.grid.innerHTML = buildTotalCard(data) + PLATFORMS.map(function (p) { return buildCard(p, data); }).join("");
@@ -246,12 +260,37 @@
       ? '<span class="delta ' + (delta > 0 ? "up" : "down") + '">' + (delta > 0 ? "▲" : "▼") + Math.abs(delta) + "</span>"
       : "";
 
+    var totalSeries = buildTotalSeries(data);
+
     return (
       '<div class="platform-card total-card"><h3>전체 합계</h3>' +
       '<span class="source-badge">' + channelCount + "개 채널 합산</span>" +
       '<div class="latest"><span class="count">' + totalNow.toLocaleString() + "</span>" + deltaHtml + '<span class="unit">명</span></div>' +
+      '<div class="asof">' + totalSeries.length + "개 날짜 기록</div>" +
+      (totalSeries.length ? sparkline(totalSeries) : "") +
       "</div>"
     );
+  }
+
+  /* 채널마다 캡처된 날짜가 조금씩 어긋날 수 있어서(수집 실패 등), 날짜별로
+     "그 채널이 그때까지 알려진 마지막 값"을 이월(forward-fill)해서 더한다
+     -- 한 채널이 하루 빠졌다고 합계가 뚝 떨어지는 것처럼 보이지 않게. */
+  function buildTotalSeries(data) {
+    var dateSet = {};
+    PLATFORMS.forEach(function (p) {
+      (data[p.key] || []).forEach(function (e) { dateSet[e.date] = true; });
+    });
+    var dates = Object.keys(dateSet).sort();
+    var lastKnown = {};
+    return dates.map(function (date) {
+      var total = 0;
+      PLATFORMS.forEach(function (p) {
+        var entry = (data[p.key] || []).filter(function (e) { return e.date === date; })[0];
+        if (entry) lastKnown[p.key] = entry.count;
+        if (lastKnown[p.key] != null) total += lastKnown[p.key];
+      });
+      return { date: date, count: total };
+    });
   }
 
   function headerHtml(p) {
