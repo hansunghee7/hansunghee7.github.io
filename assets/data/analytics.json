@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-08-28T05:21:07.141232+00:00",
+  "updated_at": "2026-08-28T12:46:01.956851+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 56,
-    "activeUsers": 28,
-    "newUsers": 24,
-    "returningUsers": 4
+    "sessions": 69,
+    "activeUsers": 31,
+    "newUsers": 30,
+    "returningUsers": 1
   },
   "daily": [
     {
@@ -17,17 +17,17 @@
     },
     {
       "date": "2026-08-27",
-      "sessions": 30,
-      "activeUsers": 20,
-      "newUsers": 16,
-      "returningUsers": 4
+      "sessions": 31,
+      "activeUsers": 21,
+      "newUsers": 19,
+      "returningUsers": 2
     },
     {
       "date": "2026-08-28",
-      "sessions": 16,
-      "activeUsers": 6,
-      "newUsers": 1,
-      "returningUsers": 5
+      "sessions": 26,
+      "activeUsers": 8,
+      "newUsers": 4,
+      "returningUsers": 4
     }
   ],
   "daily_leads": [
@@ -41,41 +41,49 @@
     }
   ],
   "landing_types": {
-    "home": 61,
+    "home": 54,
     "log_home": 6,
-    "individual_post": 22,
-    "other": 8
+    "individual_post": 21,
+    "other": 9
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 37
+      "sessions": 45
     },
     {
       "source": "(not set)",
-      "sessions": 34
+      "sessions": 17
     },
     {
       "source": "searchadvisor.naver.com",
-      "sessions": 9
+      "sessions": 13
     },
     {
       "source": "google",
       "sessions": 4
     },
     {
+      "source": "l.facebook.com",
+      "sessions": 2
+    },
+    {
       "source": "linkedin.com",
+      "sessions": 1
+    },
+    {
+      "source": "naver",
       "sessions": 1
     }
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 206,
-    "section_view_voices": 154,
-    "section_view_book_class": 96,
-    "section_view_faq": 85,
-    "faq_open": 15,
-    "read_complete": 148
+    "section_view_proven": 225,
+    "section_view_voices": 165,
+    "section_view_book_class": 100,
+    "section_view_faq": 89,
+    "faq_open": 16,
+    "read_complete": 175
   },
   "contact_funnel": {
     "contact_open": 24,
@@ -116,6 +124,11 @@
       "sessions": 2
     },
     {
+      "path": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
+      "title": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
+      "sessions": 1
+    },
+    {
       "path": "/log_assets/markdown/005_할루시네이션 사회.html",
       "title": "/log_assets/markdown/005_할루시네이션 사회.html",
       "sessions": 1
@@ -123,6 +136,16 @@
     {
       "path": "/log_assets/markdown/130_왜 한국 스타트업은 미국 진출을 꿈꾸는가.html",
       "title": "/log_assets/markdown/130_왜 한국 스타트업은 미국 진출을 꿈꾸는가.html",
+      "sessions": 1
+    },
+    {
+      "path": "/log_assets/markdown/267_애자일이란.html",
+      "title": "/log_assets/markdown/267_애자일이란.html",
+      "sessions": 1
+    },
+    {
+      "path": "/log_assets/markdown/298_뛰어난 스타트업 대표는 무엇이 다를까.html",
+      "title": "/log_assets/markdown/298_뛰어난 스타트업 대표는 무엇이 다를까.html",
       "sessions": 1
     },
     {
@@ -131,43 +154,28 @@
       "sessions": 1
     },
     {
-      "path": "/log_assets/markdown/346_코치S 14화 콜드브루 장사.html",
-      "title": "/log_assets/markdown/346_코치S 14화 콜드브루 장사.html",
-      "sessions": 1
-    },
-    {
-      "path": "/log_assets/markdown/474_기획의 시작은 문제의 인식부터.html",
-      "title": "/log_assets/markdown/474_기획의 시작은 문제의 인식부터.html",
-      "sessions": 1
-    },
-    {
       "path": "/log_assets/markdown/492_IT 서비스를 잘 만드는 회사의 7가지 특징.html",
       "title": "/log_assets/markdown/492_IT 서비스를 잘 만드는 회사의 7가지 특징.html",
       "sessions": 1
     },
     {
-      "path": "/log_assets/markdown/498_사업가는.html",
-      "title": "/log_assets/markdown/498_사업가는.html",
+      "path": "/log_assets/markdown/548_나는 운이 좋다.html",
+      "title": "/log_assets/markdown/548_나는 운이 좋다.html",
       "sessions": 1
     },
     {
-      "path": "/log_assets/markdown/547_PO가 정확히 뭔가요.html",
-      "title": "/log_assets/markdown/547_PO가 정확히 뭔가요.html",
+      "path": "/log_assets/markdown/594_회사사이트 있으시죠.html",
+      "title": "/log_assets/markdown/594_회사사이트 있으시죠.html",
       "sessions": 1
     },
     {
-      "path": "/log_assets/markdown/578_프로덕트 회사의 야근 전략.html",
-      "title": "/log_assets/markdown/578_프로덕트 회사의 야근 전략.html",
+      "path": "/log_assets/markdown/607_C레벨이라는 리더는 어떻게 일해야 하나요.html",
+      "title": "/log_assets/markdown/607_C레벨이라는 리더는 어떻게 일해야 하나요.html",
       "sessions": 1
     },
     {
-      "path": "/log_assets/markdown/583_큰 기업 인재들이 스타트업에서 고전을 하는 이유는.html",
-      "title": "/log_assets/markdown/583_큰 기업 인재들이 스타트업에서 고전을 하는 이유는.html",
-      "sessions": 1
-    },
-    {
-      "path": "/log_assets/markdown/586_CPO는 어떤 역할을 하는 사람인가요.html",
-      "title": "/log_assets/markdown/586_CPO는 어떤 역할을 하는 사람인가요.html",
+      "path": "/log_assets/markdown/614_코치S 17화 두둥~ 한교수의 등장.html",
+      "title": "/log_assets/markdown/614_코치S 17화 두둥~ 한교수의 등장.html",
       "sessions": 1
     }
   ],
@@ -176,37 +184,43 @@
       "path": "/log_assets/markdown/130_왜 한국 스타트업은 미국 진출을 꿈꾸는가.html",
       "title": "/log_assets/markdown/130_왜 한국 스타트업은 미국 진출을 꿈꾸는가.html",
       "uniqueViews": 5,
-      "views": 14
+      "views": 15
     },
     {
       "path": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
       "title": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
       "uniqueViews": 5,
-      "views": 43
+      "views": 54
     },
     {
       "path": "/log_assets/markdown/003_회의실에서 목소리가 큰 사람이 가장 위험할 수 있다.html",
       "title": "/log_assets/markdown/003_회의실에서 목소리가 큰 사람이 가장 위험할 수 있다.html",
       "uniqueViews": 3,
-      "views": 15
+      "views": 16
     },
     {
       "path": "/log_assets/markdown/009_PM의 고수는 감정을 어떻게 다룰까.html",
       "title": "/log_assets/markdown/009_PM의 고수는 감정을 어떻게 다룰까.html",
       "uniqueViews": 3,
-      "views": 10
+      "views": 11
     },
     {
       "path": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
       "title": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
       "uniqueViews": 2,
-      "views": 3
+      "views": 8
     },
     {
       "path": "/log_assets/markdown/005_할루시네이션 사회.html",
       "title": "/log_assets/markdown/005_할루시네이션 사회.html",
       "uniqueViews": 2,
       "views": 17
+    },
+    {
+      "path": "/log_assets/markdown/122_미국 진출은 누구에게 필요한 전략인가.html",
+      "title": "/log_assets/markdown/122_미국 진출은 누구에게 필요한 전략인가.html",
+      "uniqueViews": 2,
+      "views": 5
     },
     {
       "path": "/log_assets/markdown/259_고객을 정의하는 법 '페르소나'.html",
@@ -221,16 +235,22 @@
       "views": 2
     },
     {
+      "path": "/log_assets/markdown/300_뛰어난 PO는 데이터를 어떻게 볼까.html",
+      "title": "/log_assets/markdown/300_뛰어난 PO는 데이터를 어떻게 볼까.html",
+      "uniqueViews": 2,
+      "views": 5
+    },
+    {
       "path": "/log_assets/markdown/306_뛰어난 PO는 어떤 자질이 다를까.html",
       "title": "/log_assets/markdown/306_뛰어난 PO는 어떤 자질이 다를까.html",
       "uniqueViews": 2,
-      "views": 6
+      "views": 7
     },
     {
       "path": "/log_assets/markdown/346_코치S 14화 콜드브루 장사.html",
       "title": "/log_assets/markdown/346_코치S 14화 콜드브루 장사.html",
       "uniqueViews": 2,
-      "views": 4
+      "views": 6
     },
     {
       "path": "/log_assets/markdown/371_뛰어난 PM일수록 비관적인 이유는.html",
@@ -248,19 +268,7 @@
       "path": "/log_assets/markdown/611_당신의 서비스가 말을 한다면.html",
       "title": "/log_assets/markdown/611_당신의 서비스가 말을 한다면.html",
       "uniqueViews": 2,
-      "views": 8
-    },
-    {
-      "path": "/log_assets/markdown/612_줄서서 먹는 가게의 사장은 뭐가 다를까.html",
-      "title": "/log_assets/markdown/612_줄서서 먹는 가게의 사장은 뭐가 다를까.html",
-      "uniqueViews": 2,
-      "views": 4
-    },
-    {
-      "path": "/log_assets/markdown/613_코치S 16화 시드아이템 찾기.html",
-      "title": "/log_assets/markdown/613_코치S 16화 시드아이템 찾기.html",
-      "uniqueViews": 2,
-      "views": 2
+      "views": 9
     }
   ]
 }
