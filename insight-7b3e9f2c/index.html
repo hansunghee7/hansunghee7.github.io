@@ -813,8 +813,12 @@
         note.textContent = stalePrefix + '최근 30일 · ' + (updated ? fmt(updated) + ' 갱신' : '');
 
         /* 헤더 새로고침 옆 "데이터 기준"은 다른 Studio 페이지와 동일하게
-           이 페이지의 자동 수집 파이프라인(GA4) 기준 최신 날짜를 보여준다. */
-        document.getElementById('dataAsOf').textContent = updated ? '· 데이터 기준 ' + fmt(updated) : '';
+           이 페이지의 자동 수집 파이프라인(GA4) 기준 최신 시각을 보여준다.
+           GA4는 하루 4번 자동 갱신되므로, 날짜만 보이면 그날의 어느 시점
+           기록인지 구분이 안 된다 -- SNS 인사이트처럼 시각까지 같이 보여준다. */
+        document.getElementById('dataAsOf').textContent = updated
+          ? '· 데이터 기준 ' + fmt(updated) + ' ' + updated.toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' })
+          : '';
 
         renderKpiTrends(d);
         renderKpiDetails(d);
