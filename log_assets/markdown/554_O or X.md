@@ -9,29 +9,6 @@ keywords: '이분법적 사고, 제3의 대안, 토론 태도'
 about: '의사결정, 커뮤니케이션'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('기획일상');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 인생도 기획도 O나 X로 풀려하지 마라
 
 특히 다른 사람과 토론할 때 OX로 얘기하기보다는

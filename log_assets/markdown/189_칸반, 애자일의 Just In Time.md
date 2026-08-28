@@ -9,29 +9,6 @@ keywords: '칸반 보드, 애자일 워크플로우, WIP 제한'
 about: '애자일 방법론, 프로젝트 관리'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('PO의 프레임웍');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 안녕하세요, 애자일을 사랑하는 여러분! 오늘은 애자일과 DevOps의 핵심 프레임워크 중 하나인 '칸반'에 대해 이야기를 나누고자 합니다.
 
 칸반은 Toyota에서 시작된 JIT(Just-In-Time) 생산 방식에 뿌리를 두고 있어요. 마치 슈퍼마켓에서 상품을 적시에 진열하듯, 칸반은 필요할 때 정확한 양의 작업이 이뤄지도록 흐름을 관리합니다.

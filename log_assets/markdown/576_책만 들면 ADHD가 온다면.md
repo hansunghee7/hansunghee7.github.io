@@ -9,29 +9,6 @@ keywords: '독서 습관 만들기, 숏츠형 독서법, 트레바리 독서모�
 about: '독서 습관, 자기계발 루틴'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('심플리파이어 라이프');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 동료의 추천으로 트레바리의 SF소설 클럽을 시작하며, 저에게 독서 ADHD가 있다는 걸 알게 되었습니다.
 
 독후감을 쓰기 위해 이제 책 좀 읽어볼까 하다 보면 어느새 제 손에는 휴대폰이, 제 눈은 유튜브를 보고 있더군요. 정말 트레바리가 유료가 아니었으면 클럽 완주를 포기했을 것 같습니다.

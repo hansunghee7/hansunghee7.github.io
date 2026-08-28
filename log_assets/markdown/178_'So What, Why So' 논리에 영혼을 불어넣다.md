@@ -9,29 +9,6 @@ keywords: 'So What Why So, 논리적 사고 프레임워크, 맥킨지 컨설팅
 about: '논리적 사고, 기획 프레임워크'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('기획자의 프레임웍');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 맥킨지와 같은 글로벌 컨설팅 회사에서 탄생한 'So What, Why So' 프레임워크는 얼핏 간단해 보이지만, 논리적 사고의 핵심을 짚어내는 강력한 도구다. 이는 단순한 질문이 아니라 복잡한 정보를 명확한 인사이트로 변환하는 마법의 문구와도 같다.
 
 ## So What, 핵심 메시지를 추출하는 질문

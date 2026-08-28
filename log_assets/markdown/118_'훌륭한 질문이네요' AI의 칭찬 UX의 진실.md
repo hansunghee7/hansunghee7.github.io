@@ -9,29 +9,6 @@ keywords: 'AI 칭찬 패러독스, AI 챗봇 UX, AI 신뢰 설계'
 about: 'AI UX, 대화형 인터페이스'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('UX의 언어들');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 "훌륭한 아이디어네요!", "멋진 질문입니다."
 
 AI와 대화할 때 이런 칭찬을 들어본 적이 있나요? 처음에는 기분 좋지만, 시간이 지날수록 뭔가 이상하다는 생각이 듭니다. 정말 내 질문이 훌륭한 걸까요, 아니면 AI가 그냥 하는 말일까요?

@@ -9,29 +9,6 @@ keywords: '애자일 HR, 상시 피드백 평가, 역량 기반 채용'
 about: '애자일 조직, HR 전략'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('PO의 프레임웍');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 서울 여의도의 한 IT기업 HR팀장 박차장은 고민이 깊었다. 개발팀은 애자일로 2주마다 성과를 내는데, 인사평가는 여전히 1년에 한 번이었다. "조직과 과제는 계속 바뀌는데 1년 전 목표로 평가한다고?" 팀장들의 불만이 계속 쌓였다. 더 큰 문제는 채용이었다. "React 개발자 5년 경력"이라고 올려도 정작 필요한 건 "프론트엔드 잘하고 팀워크 좋은 사람"이었다.
 
 ## 애자일 HR이란 무엇인가

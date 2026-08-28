@@ -9,29 +9,6 @@ keywords: '후광 효과, 첫 화면 설계, UX 심리학'
 about: 'UX 심리학, 온보딩 디자인'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('UX의 언어들');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 "당신의 서비스를 처음 접한 사용자, 과연 어떤 생각을 할까요?"
 
 바로 이 질문이 UX 디자인의 시작점입니다. 특히 첫 화면은 사용자가 서비스의 가치를 판단하는 결정적 순간인데요. 그 순간을 사로잡기 위해 디자이너들이 심리학의 힘을 빌리곤 합니다. 이번 글에서는 첫인상의 마법, 그 뒤에 숨은 심리학적 비밀을 파헤쳐 보겠습니다.

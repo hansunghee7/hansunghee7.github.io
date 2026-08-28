@@ -9,29 +9,6 @@ keywords: '흑백요리사 리더십 분석, ENTJ 리더십, 조직 리더 유�
 about: '리더십, 조직 관찰기'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('심플리파이어 라이프');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 1\.
 
 최현석셰프는 '냉장고를 부탁해'에서 소금을 뿌리는 장난기 있는 모습으로 기억했다. 그러나 흑백요리사를 통해 시청자에게 기억되기 위한 철저히 전략적인 행동으로 판단하게 되었다.

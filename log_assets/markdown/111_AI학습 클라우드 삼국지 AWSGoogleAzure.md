@@ -9,29 +9,6 @@ keywords: 'AI 학습 인프라 비교, AWS Trainium vs TPU, 클라우드 GPU 선
 about: 'AI 인프라, 클라우드 컴퓨팅'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('AI의 언어들');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 AI 모델 개발이 비즈니스 핵심 경쟁력으로 자리잡으면서, 효율적인 AI 학습 인프라 선택은 기업 성패를 좌우하는 중요한 결정이 되었습니다. AWS Trainium, Google TPU, Azure H100은 각각 다른 강점을 가진 주요 클라우드 AI 솔루션입니다.
 
 ![AWS Trainium AI 학습 전용 칩](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/ybkFhJXojwFS_UG2R4608TMScr4.png)

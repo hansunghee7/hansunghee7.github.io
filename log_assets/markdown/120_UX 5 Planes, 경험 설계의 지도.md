@@ -9,29 +9,6 @@ keywords: 'UX 5 Planes 모델, 제시 제임스 개럿, 경험 설계 프레임�
 about: 'UX 설계 프레임워크, 정보 구조'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('기획자의 프레임웍');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 2002년, 웹사이트와 앱이 점점 복잡해지면서 한 가지 문제가 대두되고 있었다. 사용자 경험을 어떻게 체계적으로 설계할 것인가? 제시 제임스 개럿(Jesse James Garrett)은 이 문제에 대한 명쾌한 답을 제시했다. 바로 'UX 5 Planes 모델'이다.
 
 이 모델은 사용자 경험을 다섯 개의 층(Plane)으로 나누어 체계적으로 접근하는 프레임워크다. 마치 건물을 짓듯 아래에서 위로, 추상적인 단계에서 구체적인 단계로 차례차례 쌓아 올라간다. 각 층은 서로 유기적으로 연결되어 있으며, 하위 층의 결정이 상위 층에 영향을 미친다.

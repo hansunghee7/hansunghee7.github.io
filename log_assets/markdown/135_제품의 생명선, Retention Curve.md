@@ -9,29 +9,6 @@ keywords: '리텐션 커브, 코호트 리텐션 분석, PMF 진단'
 about: '사용자 리텐션, 프로덕트 그로스'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('기획자의 프레임웍');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 사용자를 얻는 것보다 더 중요한 것은 사용자를 유지하는 것이다. 실리콘밸리의 성공한 스타트업들이 공통적으로 주목하는 '리텐션 커브(Retention Curve)'는 이런 철학에서 탄생했다. 이 프레임워크는 단순히 숫자로만 보이던 사용자 유지율을 시각적인 이야기로 전환한다.
 
 리텐션 커브는 특정 기간(보통 일, 주, 월 단위)에 서비스를 시작한 사용자 집단(코호트)이 시간이 지남에 따라 얼마나 서비스에 남아있는지 보여주는 그래프다. 가로축은 시간(1일, 7일, 30일 등), 세로축은 사용자 잔존율(%)을 나타낸다. 이 커브는 제품의 '건강도'와 성장 가능성을 한눈에 진단할 수 있게 해준다.

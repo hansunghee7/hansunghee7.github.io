@@ -9,29 +9,6 @@ keywords: 'RAG 아키텍처, 검색엔진 한계, Perplexity 사례분석'
 about: 'AI 검색, RAG'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('스타트업 인사이트');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 안녕하세요, 스타트업 성공코치 한성희입니다. 오늘부터 5주간 '검색의 재정의'를 이끌고 있는 Perplexity AI의 기술을 심층 분석하는 시리즈를 시작합니다.
 
 ### **기존 검색 엔진의 구조적 한계**

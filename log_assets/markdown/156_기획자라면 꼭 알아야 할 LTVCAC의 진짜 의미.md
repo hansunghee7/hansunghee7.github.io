@@ -9,29 +9,6 @@ keywords: 'LTV CAC 비율, 고객 생애 가치, 유닛 이코노믹스'
 about: '그로스 지표, 투자 유치 전략'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('기획자의 프레임웍');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 고객을 유치하는 데 1만 원이 들고, 그 고객이 평생 우리 회사에 100만 원의 가치를 준다면? 망설일 이유가 없다. 이처럼 LTV(고객 생애 가치)와 CAC(고객 획득 비용)의 비교는 비즈니스의 본질을 꿰뚫는 프레임워크다.
 
 ![LTV를 CAC로 나눠 계산하는 LTV:CAC 비율 공식과 계산 예시](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/hwsJdh702JsHHJqZnuy-1ao_z1M.jpg)

@@ -9,29 +9,6 @@ keywords: 'Hooked 모델, 사용자 습관 형성, 프로덕트 중독 설계'
 about: '행동 설계, 프로덕트 심리학, UX 심리학'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('기획자의 프레임웍');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 "오늘도 무의식적으로 스마트폰을 집어 들었다." 이런 경험, 누구나 한 번쯤 있을 것이다.
 
 2014년, 니르 이얄(Nir Eyal)은 이러한 현상을 설명하는 'Hooked(훅) 모델'을 제시했다. 그는 페이스북, 인스타그램 같은 서비스가 어떻게 우리 일상의 일부가 되었는지 분석하며, 습관을 형성하는 제품 디자인의 원리를 네 단계로 정리했다.

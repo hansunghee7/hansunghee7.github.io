@@ -9,29 +9,6 @@ keywords: 'RAG 파이프라인, 하이브리드 검색, 벡터 임베딩'
 about: '검색 시스템, AI 아키텍처'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('스타트업 인사이트');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 지금까지 Perplexity AI의 배경과 철학, 전체 아키텍처, 그리고 BM25와 벡터 검색의 하이브리드 설계에 대해 살펴보았습니다. 3부에서는 Perplexity의 핵심 기술인 RAG시스템을 완전히 해부해보겠습니다.
 
 RAG는 Retrieval-Augmented Generation의 약자로, 방대한 외부 지식 베이스에서 정보를 검색(Retrieval)해 언어모델의 생성(Generation) 과정에 활용하는 구조를 말합니다.

@@ -9,29 +9,6 @@ keywords: '대화형 AI UX, 쿼리 리라이팅, 응답 스트리밍'
 about: 'AI 프로덕트 UX, 챗봇 설계'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('스타트업 인사이트');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 퍼플렉시티의 놀라운 대화형 AI 경험 뒤에는 정교한 UX 설계와 쿼리 분기 전략이 자리 잡고 있습니다. 단순한 질의-응답을 넘어 마치 인간과 대화를 나누는 듯한 자연스러운 상호작용을 구현하기 위한 일련의 기술들을 살펴보겠습니다.
 
 ### 대화 세션 관리: 기억 vs Stateless 구조

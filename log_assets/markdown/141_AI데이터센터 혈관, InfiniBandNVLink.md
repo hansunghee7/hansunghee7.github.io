@@ -9,29 +9,6 @@ keywords: 'AI 데이터센터, GPU 네트워킹, NVLink InfiniBand'
 about: 'AI 인프라, 반도체 네트워크 기술'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('AI의 언어들');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 AI 기술이 폭발적으로 성장하면서 데이터센터의 네트워크 인프라도 급격한 변화를 겪고 있습니다. 특히 대규모 AI 모델을 학습시키려면 GPU 간의 초고속 데이터 전송이 필수적인데요. 여기서 두 가지 핵심 기술이 바로 NVLink와 InfiniBand입니다. 이 둘은 서로 다른 영역에서 최적의 성능을 발휘하는 상호보완적인 관계라고 할 수 있어요.
 
 ## NVLink - GPU 간 직접 연결

@@ -9,29 +9,6 @@ keywords: 'Tensor Cores, 행렬곱셈 가속, GPU 연산 최적화'
 about: 'AI 하드웨어, GPU 연산'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('AI의 언어들');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 AI 기술이 날로 발전하면서 딥러닝 모델의 규모도 엄청나게 커지고 있습니다. 수천억 개의 파라미터를 학습시키려면 어마어마한 연산량이 필요한데요. 그 중심에는 바로 '행렬 곱셈(Matrix Multiplication)'이 자리잡고 있습니다. 행렬 곱셈이 AI 성능을 좌우한다고 해도 과언이 아닐 정도로 중요한 역할을 하고 있죠.
 
 ![3x2 행렬과 2x3 행렬의 곱셈 연산 과정 도식](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/X3qSKucWLT6XWy99gHoTv-SnRLM.jpg)

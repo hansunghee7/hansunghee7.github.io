@@ -9,29 +9,6 @@ keywords: 'GPU NPU FPGA 비교, AI 반도체 가속기, AI 학습과 추론'
 about: 'AI 하드웨어, 반도체 기술'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('AI의 언어들');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 요즘 AI 하드웨어 시장을 보면 GPU, NPU, FPGA가 치열하게 경쟁하고 있습니다. 어떤 가속기를 쓰느냐에 따라 AI 모델의 성능이 크게 달라지기 때문이라고 합니다. 학습(Training)용과 추론(Inference)용도 하드웨어 종류에 따라 성능이 크게 달라진다고 합니다. 이번 글에서는 AI 하드웨어가속기들의 차이점과 용도에 대해 쉽게 정리해보려고 합니다.
 
 ## 학습과 추론처리의 차이

@@ -9,29 +9,6 @@ keywords: 'RICE 프레임워크, 우선순위 설정, 백로그 우선순위'
 about: '기획 프레임워크, 제품 우선순위 관리'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('기획자의 프레임웍');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 제품 아이디어 백로그의 우선순위를 정하는 일은 기획자에게 매우 중요하면서 어려운 일입니다. 이때 RICE 프레임워크를 활용하면 보다 객관적이고 효과적으로 의사결정을 내릴 수 있습니다.
 
 ## RICE란 무엇인가

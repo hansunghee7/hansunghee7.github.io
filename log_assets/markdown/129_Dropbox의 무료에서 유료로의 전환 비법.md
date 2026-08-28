@@ -9,29 +9,6 @@ keywords: '프리미엄 전환 전략, 바이럴 루프, Dropbox 그로스전략
 about: '그로스 전략, 프리미엄 비즈니스 모델'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('스타트업 인사이트');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 안녕하세요, 스타트업 성공코치 한성희입니다. 오늘은 프리미엄(Freemium) 모델을 운영하는 스타트업이라면 누구나 고민하는 '무료 사용자를 어떻게 유료로 전환시킬 것인가'에 대한 전략을 Dropbox의 성공 사례를 통해 살펴보겠습니다.
 
 프리미엄 모델의 딜레마는 명확합니다. 무료로 너무 많은 가치를 주면 사용자들이 유료로 전환할 이유가 없고, 너무 적게 주면 서비스의 매력을 느끼지 못합니다. 이 절묘한 균형을 어떻게 맞출 수 있을까요?

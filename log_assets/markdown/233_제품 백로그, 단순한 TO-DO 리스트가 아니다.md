@@ -9,29 +9,6 @@ keywords: '제품 백로그 관리, 백로그 우선순위 전략, 애자일 스
 about: '제품 백로그, 애자일 프로덕트 관리'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('PO의 프레임웍');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 많은 IT 회사의 PO들은 제품 백로그 관리에 아래와 같은 어려움을 겪고 있었다.
 
 **"팀원들과 이해관계자들의 요구사항이 너무 다양해요."**

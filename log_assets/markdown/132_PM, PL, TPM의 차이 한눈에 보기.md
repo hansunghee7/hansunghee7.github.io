@@ -9,29 +9,6 @@ keywords: 'PM PL TPM 차이, 프로젝트 리더십 역할, 테크니컬 프로�
 about: '프로젝트 관리, 팀 리더십 역할'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('PO의 프레임웍');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 프로젝트 성공을 위해 다양한 역할이 필요합니다. PM, PL, TPM은 IT 업계에서 흔히 볼 수 있는 리더십 포지션이지만, 그 차이를 명확히 이해하는 사람은 많지 않습니다. 각 역할의 주요 책임과 중점 영역을 살펴보겠습니다.
 
 ## PM - 제품의 방향을 설계하는 지휘자

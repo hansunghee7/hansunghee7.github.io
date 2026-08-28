@@ -9,29 +9,6 @@ keywords: '플로우 스테이트, 몰입 설계, 게이미피케이션 UX'
 about: 'UX, 몰입 디자인'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('UX의 언어들');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 "아니, 벌써 3시간이나 지났어?"
 
 넷플릭스를 보다가, 게임을 하다가 시간 가는 줄 모르고 깜짝 놀란 경험이 있을 겁니다. 바로 이 상태를 심리학자 미하이 칙센트미하이는 'Flow State(몰입 상태)'라고 명명했습니다.

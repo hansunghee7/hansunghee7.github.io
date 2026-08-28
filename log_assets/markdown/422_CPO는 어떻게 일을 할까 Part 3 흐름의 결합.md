@@ -9,29 +9,6 @@ keywords: 'CPO 업무 체계, 수직 수평 업무흐름 결합, 프로덕트 �
 about: 'CPO, 프로덕트 조직, 스타트업 성장단계'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('스타트업 인사이트');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 프로덕트 쪽은 일반론이 적용되기 어려운 영역이라고 생각을 했다. seed, 시리즈 A, B, C에 따라 일하는 방식이 다르고, B2C / B2B / 투사이드마켓 / SI 등의 회사의 제공서비스 형태에 따라 생산체계나 철학이 달라지기 때문이다.
 
  그래서 나도 고객향 온라인 프로덕트 중심의 네이버에서 오랜 경험을 쌓고, 배달주문고객과 레스토랑사장님 고객이 둘 다 중요한 투사이드마켓 서비스 그리고 조직 성숙단계로는 시리즈 A단계쯤에 있는 요기요에 CPO역할로 갔을 때는 커리어 상 가장 큰 어려움을 겪었던 것 같다.

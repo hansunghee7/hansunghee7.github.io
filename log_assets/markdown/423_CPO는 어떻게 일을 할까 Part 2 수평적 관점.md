@@ -9,29 +9,6 @@ keywords: 'CPO 협업 프로토콜, 유관부서 백로그 관리, 프로덕트 
 about: 'CPO, 프로덕트 조직운영, 협업 프로세스'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('스타트업 인사이트');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 CPO가 되었을 때 단일 스쿼드를 관리하던 PM/PO 때와는 수준이 다른 다양한 난감한 일들이 생긴다. 그중 가장 어려워하는 점은 Part 1의 '복수의 스쿼드가 효과적으로 돌아가는 생산 조직 체계를 구성하는 것'과 이번 Part2의 '프로덕트 조직과 유관 부서 간의 과제 인입 프로토콜을 만드는 것'이다.
 
  CPO가 되면 Part 1의 경영진 회의에서 결정된 프로덕트 로드맵 과제 외에 CEO를 비롯하여 여러 부서에서 업무요청이 들어온다. 이 것을 효과적으로 관리하지 않으면, 스프린트가 망가지던가 유관부서와의 사이가 망가지던가 둘 중의 하나의 결과로 귀결이 된다.

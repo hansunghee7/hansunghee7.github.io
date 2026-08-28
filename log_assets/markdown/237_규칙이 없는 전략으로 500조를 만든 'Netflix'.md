@@ -9,29 +9,6 @@ keywords: '넷플릭스 조직문화, 자유와 책임 원칙, 인재밀도 전�
 about: '조직문화, 스타트업 인사관리'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('스타트업 인사이트');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 안녕하세요, 스타트업 성공코치 한성희입니다. 오늘은 많은 스타트업 창업자들이 궁금해하는 '조직 성장 전략'에 대해 이야기해보려 합니다.
 
 "규칙이 없는 회사가 가능할까요? 모든 직원에게 무제한 휴가를 준다면 어떻게 될까요?"

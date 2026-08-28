@@ -9,29 +9,6 @@ keywords: 'Notion 성장전략, 초기 시장진출전략, 얼리어답터 확�
 about: '스타트업 그로스, 프로덕트 마켓핏'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('스타트업 인사이트');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 안녕하세요, 스타트업 성공 코치 한성희입니다. 오늘은 생산성 도구 시장에 혁명을 일으킨 Notion의 시장 진출 전략에 대해 살펴보겠습니다.
 
 ## 실패로 시작된 여정

@@ -9,29 +9,6 @@ keywords: '가격 정책 전략, 가치기반 프라이싱, SaaS 요금제 설�
 about: '프라이싱 전략, SaaS 비즈니스모델'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('스타트업 인사이트');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 "제품은 좋은데 왜 매출이 늘지 않을까요?"
 
 4년 차 협업 툴 스타트업 웰로(Welo.space)도 같은 고민을 했습니다. 제품의 품질은 괜찮았지만 성장이 정체되고, 기존 사용자 기반 요금제로는 차별화가 어려웠죠.

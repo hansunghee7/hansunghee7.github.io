@@ -9,29 +9,6 @@ keywords: '생성형 AI 디자인, AI 디자인 툴, Figma AI 플러그인'
 about: 'AI 디자인, UX 디자인'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('UX의 언어들');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 "이제 몇 분 만에 수십 개의 디자인 시안을 만들 수 있어요!"
 
 2023년 Midjourney, Stable Diffusion, ChatGPT 등 생성형 AI가 디자인 업계에 등장하면서 들려오는 감탄사입니다. AI-Assisted Design은 단순히 도구를 바꾸는 것을 넘어, 디자인 사고와 프로세스 자체를 혁신하고 있습니다.

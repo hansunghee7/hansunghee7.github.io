@@ -9,29 +9,6 @@ keywords: 'AARRR 프레임워크, 그로스 퍼널 분석, 스타트업 성장�
 about: '그로스 프레임워크, 데이터 기반 성장 전략'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('기획자의 프레임웍');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 # **"Arrr!"**
 
 이 함성은 해적들의 상징적인 외침이다. 그리고 놀랍게도 이는 현대 IT 기획의 강력한 도구가 된 프레임워크의 이름이기도 하다.

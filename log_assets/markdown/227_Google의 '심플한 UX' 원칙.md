@@ -9,29 +9,6 @@ keywords: '구글 UX 철학, 미니멀 디자인, 심플한 인터페이스'
 about: 'UX 디자인, 프로덕트 심플리시티'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('UX의 언어들');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 1998년 스탠포드 대학원생이었던 래리 페이지와 세르게이 브린은 하얀 배경에 검색창 하나만 둔 심플한 페이지를 만들었다. 당시 포털들이 화려한 배너와 뉴스로 채워진 것과는 정반대였다. 이 단순함이 구글을 세계 최고의 기업으로 만든 시작점이 되었다.
 
 구글의 UX 철학은 명확하다. '불필요한 것을 제거하면 필요한 것이 빛난다.' 메인 페이지의 검색창, Gmail의 깔끔한 인터페이스, 크롬 브라우저의 미니멀한 디자인이 이를 증명한다. 이러한 단순함은 여러 이점을 가져왔다. 사용자가 기억하고 처리해야 할 정보가 줄어들었고, 단순한 인터페이스로 실수 가능성이 감소했다. 또한 새로운 사용자도 쉽게 적응할 수 있는 빠른 학습 곡선을 제공했다.

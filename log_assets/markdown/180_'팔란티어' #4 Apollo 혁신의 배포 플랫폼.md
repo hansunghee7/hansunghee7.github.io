@@ -9,29 +9,6 @@ keywords: '팔란티어 Apollo, CI/CD 자동화, 블루그린 배포'
 about: '데이터 플랫폼, 소프트웨어 배포 전략'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('스타트업 인사이트');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 Gotham과 Foundry가 팔란티어의 데이터 분석 역량을 보여준다면, Apollo는 그 혁신을 지속 가능케 하는 숨은 동력입니다.
 
 팔란티어 플랫폼은 계속 진화합니다. 새 기능이 추가되고, 보안 패치가 적용되며, 사용자 피드백을 반영한 개선이 이뤄집니다. 빠른 기술 발전 속에서 신속한 업데이트는 필수가 되었죠.

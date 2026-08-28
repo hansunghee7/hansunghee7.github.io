@@ -9,29 +9,6 @@ keywords: '3 Horizons 모델, 혁신 포트폴리오 전략, 신사업 자원배
 about: '혁신 전략 프레임워크, 신사업 포트폴리오 관리'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('기획자의 프레임웍');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 1990년대 후반, 많은 대기업이 한 가지 딜레마에 빠져 있었다. 단기 실적에만 집중하다가 신생 기업에 시장을 빼앗기거나, 미래 성장 동력을 놓치는 사례가 속출했다. 맥킨지 컨설턴트들은 이 문제를 해결하기 위해 '현재를 지키면서 미래를 준비하는' 균형 잡힌 성장 전략을 고안했다. 바로 '3 Horizons 모델'이다.
 
 ## 3 Horizons 모델이란

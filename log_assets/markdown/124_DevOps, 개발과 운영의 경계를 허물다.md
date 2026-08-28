@@ -9,29 +9,6 @@ keywords: 'DevOps 문화, CI/CD 파이프라인, 개발 운영 협업'
 about: 'DevOps, 소프트웨어 개발 문화'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('PO의 프레임웍');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 DevOps는 개발(Development)과 운영(Operations)의 합성어입니다. 단순한 용어 결합이 아니라, 개발자와 운영자가 한 팀이 되어 소프트웨어를 더 빠르고 안정적으로 제공하기 위한 문화와 철학, 그리고 실천 방법을 의미합니다.
 
 ![개발과 운영을 잇는 무한대 루프 형태의 데브옵스 6가지 핵심 역할 다이어그램](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/FuBCaRdu0xUbtFP2ydZdwctIsjA.jpg)

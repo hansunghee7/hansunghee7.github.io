@@ -9,29 +9,6 @@ keywords: 'JTBD 프레임워크, 고객 니즈 분석, 밀크셰이크 마케팅
 about: '기획 프레임워크, 고객 중심 사고'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('기획자의 프레임웍');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 하버드 경영대학원의 클레이튼 크리스텐슨 교수가 제시한 간단한 통찰이 비즈니스 세계를 뒤흔들었다. "사람들은 1/4인치 드릴을 원하는 것이 아니라, 1/4인치 구멍이 필요한 것이다." 이 한 문장이 JTBD(Job To Be Done) 프레임워크의 핵심을 담고 있다.
 
 ## JTBD의 핵심 철학 - 제품이 아닌 '일'을 고용한다

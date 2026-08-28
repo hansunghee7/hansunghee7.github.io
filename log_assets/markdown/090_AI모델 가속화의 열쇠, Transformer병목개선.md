@@ -9,29 +9,6 @@ keywords: 'Transformer 병목현상, FlashAttention, AI 모델 학습 최적화'
 about: 'Transformer 아키텍처, AI 모델 학습 효율화'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('AI의 언어들');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 GPT, BERT와 같은 최신 AI 모델의 중심인 Transformer 아키텍처는 놀라운 성능을 제공하지만, 학습 과정에서 여러 병목 현상에 직면합니다. 이러한 병목을 해결하는 것은 AI 개발의 속도와 비용 효율성을 크게 향상시키는 핵심 요소입니다.
 
 ![BERT 인코더와 GPT 디코더 구조를 비교한 Transformer 아키텍처 다이어그램](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/vXFJmpA_z9iUj4SPyvTeY3hON5I.png)

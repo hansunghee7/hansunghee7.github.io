@@ -9,29 +9,6 @@ keywords: '정치 전략 기획, 정권 운영 전략, 기획자의 시선'
 about: '정치기획, 전략 경영, 시사 단상'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('심플리파이어 라이프');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 중·고등학교 시절 정치 수업에서 배운 것 중 이해하기 어려웠던 부분이 있었다. 바로 "정당의 제1목표는 정권 획득이다"라는 설명이다. 직관적으로는 맞는 말이다. 정당이 목표를 실현하려면 정권을 잡아야 하기 때문이다. 하지만 이 표현만 놓고 보면 마치 정권을 획득하는 것이 전부인 것처럼 오해할 수 있다.
 
  그러나 기획의 관점에서 보자면 단순한 "정권 획득"이 아니라, 정권 획득 이후의 지속 가능성과 운영 방식에 더 큰 목표가 있어야 한다. 이에 대해 몇 가지 구체적인 가이드를 제안해 보고자 한다.

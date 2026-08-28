@@ -9,29 +9,6 @@ keywords: '넷플릭스 트렁크 리뷰, 서현진 공유, 드라마 감상'
 about: '드라마 리뷰, 넷플릭스 콘텐츠'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('심플리파이어 라이프');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 서현진... 배역 때문인지 고개를 숙이면 척추뼈가 고대로 보일 정도로 살을 너무 뺌. 사막여우 같아 보이기도 해골 같아 보이기도;;; 그런데 공유랑 서로 보며 웃을 때... 같이 웃음이 지어지는 게 타고난 로코퀸임.
 
 공유... 누구 말대로 얼굴은 나이를 속이지 못하나, 나이를 먹어도 간지는 죽지 않네. 허름한 티셔츠와 청바지에 뜯어진 슬리퍼를 신어도 멋짐. 남자인 나도 새 슬리퍼 하나 주고 싶더라.

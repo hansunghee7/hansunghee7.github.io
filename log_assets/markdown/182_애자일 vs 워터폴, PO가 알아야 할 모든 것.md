@@ -9,29 +9,6 @@ keywords: '애자일 워터폴 비교, 하이브리드 방법론, 프로젝트 �
 about: '프로젝트 관리, 애자일 방법론'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('PO의 프레임웍');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 한 IT 회사의 PO(제품 책임자)는 새 프로젝트를 시작하며 고민에 빠졌습니다.
 
 "프로젝트 방법론으로 애자일을 써야 할까, 워터폴을 써야 할까?"

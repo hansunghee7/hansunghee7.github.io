@@ -9,29 +9,6 @@ keywords: 'Cursor AI, AI 코딩 도구, 개발자 생산성'
 about: 'AI 코딩툴, 개발자 도구 스타트업'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('스타트업 인사이트');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 한 논문이 개발자 팀의 시선을 사로잡았다. 2020년, OpenAI의 스케일링 법칙 논문이었다. 그들은 깨달았다. AI가 프로그래밍의 패러다임을 완전히 바꿀 것이라는 사실을.
 
 GitHub Copilot의 등장과 GPT-4의 초기 버전을 경험하며 이 예감은 확신으로 바뀌었다. 특히 GPT-4의 능력은 예상을 뛰어넘었다. 이제 기존 코드 에디터와는 완전히 다른 새로운 프로그래밍 환경이 필요했다.

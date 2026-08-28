@@ -9,29 +9,6 @@ keywords: 'DeepSeek 오픈소스 전략, 저비용 AI 모델, 중국 AI 스타�
 about: 'AI 스타트업, 오픈소스 전략'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('스타트업 인사이트');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 중국의 한 헤지펀드가 야심차게 선보인 AI 스타트업 DeepSeek이 글로벌 무대에서 새로운 바람을 일으키고 있다. 창업한 지 1년도 채 되지 않았지만, 독보적인 기술력과 파격적인 행보로 업계의 주목을 한 몸에 받고 있는 것이다.
 
 ![딥시크 공식 홈페이지 메인 화면](//img1.kakaocdn.net/thumb/R1280x0.fjpg/?fname=https://t1.daumcdn.net/brunch/service/user/5lk/image/tn1lyGVJK92OjgYmuDWKOi5FkpI.jpg)

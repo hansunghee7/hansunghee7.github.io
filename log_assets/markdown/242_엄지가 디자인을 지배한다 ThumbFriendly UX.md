@@ -9,29 +9,6 @@ keywords: '엄지 친화적 디자인, 모바일 UX 설계, 썸존 UI'
 about: '모바일 UX, 인터랙션 디자인'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('UX의 언어들');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 스마트폰을 들고 화면을 바라보세요. 엄지손가락이 어디까지 닿을 수 있나요?
 
 오늘날 모바일 UX 디자인의 핵심 화두는 바로 이 '엄지 영역'에 집중되어 있습니다. 한 손으로 스마트폰을 쥐고 엄지손가락만으로 모든 기능을 조작할 수 있어야 한다는 것, 이것이 바로 '엄지 친화적 디자인(Thumb Friendly UX)'의 본질입니다. 스티브 잡스가 아이폰을 발표하며 "엄지손가락이 닿는 모든 것이 바로 사용자의 경험"이라고 말한 것도 같은 맥락이죠.

@@ -9,29 +9,6 @@ keywords: 'Superhuman 사례, 프리미엄 가격 전략, 타겟 고객 설정'
 about: '스타트업 마케팅 전략, 프로덕트 포지셔닝'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('스타트업 인사이트');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 오늘은 이메일이라는 오래된 시장에 프리미엄 솔루션으로 성공적으로 진입한 Superhuman의 전략을 분석해보겠습니다.
 
 "누가 이메일에 월 30달러를 지불할까요?"

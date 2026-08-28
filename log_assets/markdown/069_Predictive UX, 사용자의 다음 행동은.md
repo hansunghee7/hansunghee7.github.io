@@ -9,29 +9,6 @@ keywords: 'Predictive UX, 사용자 행동 예측, 개인화 추천 시스템'
 about: 'UX 디자인, 데이터 기반 개인화'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('UX의 언어들');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 "사용자가 원하는 것을 사용자보다 먼저 알 수 있다면?"
 
 이제는 공상과학 영화의 이야기가 아닙니다. 아마존이 주문 전에 미리 상품을 배송지 근처로 옮겨두고, 넷플릭스가 시청 패턴을 분석해 다음에 볼 영화를 추천하는 것처럼, Predictive UX는 이미 우리 생활 속에 깊숙이 들어와 있습니다.

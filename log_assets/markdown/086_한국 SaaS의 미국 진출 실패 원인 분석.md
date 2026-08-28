@@ -9,29 +9,6 @@ keywords: '한국 SaaS 미국진출 실패, 미국 시장 현지화, 미국 진�
 about: '미국 시장 진출, SaaS 현지화 전략'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('대한민국 스타트업 미국진출을 묻다');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 "한국에서 성공했으니 미국에서도 될 거야." 이렇게 생각하며 미국에 진출했다가 쓴맛을 본 한국 SaaS 스타트업들이 적지 않습니다. 수많은 사례를 분석해보니 흥미롭게도 몇 가지 패턴이 반복되고 있었습니다.
 
 ## 현지 고객 이해 부족

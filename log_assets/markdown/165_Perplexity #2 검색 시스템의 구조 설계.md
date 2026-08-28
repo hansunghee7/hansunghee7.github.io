@@ -9,29 +9,6 @@ keywords: '하이브리드 검색 설계, BM25 벡터 검색, 리랭커 구현'
 about: '검색 시스템, AI 아키텍처'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('스타트업 인사이트');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 안녕하세요, 스타트업 성공코치 한성희입니다. 지난 시간에는 Perplexity AI의 핵심 기술 아키텍처를 살펴보았습니다. 오늘은 그 중에서도 검색 시스템의 구조, 특히 BM25와 벡터 검색을 결합한 하이브리드 설계에 대해 실제 구현 방법을 중심으로 자세히 알아보겠습니다.
 
 ### **하이브리드 검색의 필요성**

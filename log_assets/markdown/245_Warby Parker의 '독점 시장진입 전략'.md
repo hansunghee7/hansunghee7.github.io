@@ -9,29 +9,6 @@ keywords: 'Warby Parker 사례, 독점시장 진입전략, D2C 브랜드 전략'
 about: '스타트업, 시장 진입 전략'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('스타트업 인사이트');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 제가 다양한 스타트업들을 만나면서 겪는 주요 문제들을 글로벌 기업들은 어떻게 해결하였는지 연재를 해보려고 합니다. 이번 주제는 스타트업들이 겪고 있는 가장 큰 고민거리 중 하나인 '시장 진입 전략'입니다.
 
 ---

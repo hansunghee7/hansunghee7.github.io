@@ -9,29 +9,6 @@ keywords: 'SaaS GTM 전략, 프로덕트주도성장, 미국 세일즈 전략'
 about: '미국 진출, GTM 전략'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('대한민국 스타트업 미국진출을 묻다');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 GTM(Go-To-Market) 전략이란 제품을 시장에 들고 나가는 접근 방식을 말합니다. SaaS 스타트업의 미국 진출에서는 일반적으로 네 가지 GTM 전략을 활용합니다.
 
 ## 네 가지 GTM 전략

@@ -9,29 +9,6 @@ keywords: 'MECE 프레임워크, 맥모닝 사례, 문제 구조화'
 about: '기획 프레임워크, 비즈니스 분석'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('기획자의 프레임웍');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 2006년 맥도날드는 한 가지 고민에 빠져 있었다. 매출이 정체된 이유를 찾기 위해 글로벌 컨설팅 회사 맥킨지의 MECE(미씨) 프레임워크를 활용했다. 분석 결과, 맥도날드는 점심과 저녁 메뉴만 판매하고 있었고, 아침 시간대의 매출이 빠져 있다는 사실을 깨달았다. 바로 '맥모닝'의 시작이었다. 이 결정 하나로 맥도날드는 아침 시장을 공략해 큰 성공을 거두었다.
 
 ## MECE란 무엇인가 - 두 가지 원칙

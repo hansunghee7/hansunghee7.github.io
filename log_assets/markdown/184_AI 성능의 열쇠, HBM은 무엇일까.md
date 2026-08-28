@@ -9,29 +9,6 @@ keywords: 'HBM 메모리, AI 반도체, 고대역폭메모리'
 about: 'AI 하드웨어, 반도체 기술'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('AI의 언어들');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 AI 기술이 급속도로 발전하면서 방대한 데이터를 빠르게 처리할 수 있는 고성능 메모리의 중요성이 부각되고 있습니다. 특히 HBM(High Bandwidth Memory)은 기존 DRAM의 한계를 뛰어넘는 혁신적인 기술로 주목받고 있죠. 그런데 HBM이 정확히 뭐길래 AI 학습에 그렇게 필수적일까요? 오늘은 HBM의 탄생 배경부터 최신 동향, 그리고 AI 학습에서의 역할까지 살펴보도록 하겠습니다.
 
 ## HBM의 탄생 배경

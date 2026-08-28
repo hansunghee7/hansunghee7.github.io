@@ -9,29 +9,6 @@ keywords: '흑백요리사 에드워드 리, 기획자 관점 분석, 스토리�
 about: '콘텐츠 리뷰, 기획력 사례분석, K콘텐츠'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('기획일상');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 흑백요리사가 11, 12화의 주인공은 단연 에드워드 리였다. 왜 우리는 그에게 몰입했을까 기획자의 관점에서 보자.
 
 ---

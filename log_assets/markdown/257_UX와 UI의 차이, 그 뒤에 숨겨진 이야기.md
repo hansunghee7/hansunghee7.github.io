@@ -9,29 +9,6 @@ keywords: 'UX UI 차이, UX 디자인 역사, UI 디자인 원칙'
 about: 'UX 디자인, UI 디자인'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('UX의 언어들');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 UX와 UI라는 용어는 디지털 시대에 자주 등장하지만, 많은 사람들이 그 차이를 혼동하곤 합니다. 오늘은 UX와 UI의 탄생 배경부터 차이점, 그리고 실무에서의 활용까지 깊이 있게 살펴보겠습니다.
 
 ## UX의 탄생 - 도널드 노먼과 사용자 경험

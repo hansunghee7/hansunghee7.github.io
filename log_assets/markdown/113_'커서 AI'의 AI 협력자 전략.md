@@ -9,29 +9,6 @@ keywords: 'Cursor AI 성장전략, AI 코딩 도구, 스타트업 창업 스토�
 about: 'AI 스타트업, 제품 성장 전략'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('스타트업 인사이트');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 2022년 MIT에서 만난 20대 청년 4명이 어떻게 2년 만에 한화 약 3조원의 가치를 가진 AI 기업을 만들었을까요? 바로 AI 코딩 도구 Cursor AI의 놀라운 성장 스토리입니다.
 
 마이클 트루엘, 수알레 아시프, 아르비드 룬네마크, 아만 생거. 이 네 명의 MIT 학생들은 프로그래밍 과정에서 기존 AI 도구들의 한계를 직접 경험했습니다. GitHub Copilot 같은 기존 AI 코딩 어시스턴트들은 단순한 자동완성에 머물러 있었고, 맥락을 제대로 이해하지 못해 개발자와의 협업이 어색했죠.

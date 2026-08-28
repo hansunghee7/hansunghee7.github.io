@@ -9,29 +9,6 @@ keywords: 'Slack 초기 마케팅, 채널 집중 전략, 스타트업 그로스 
 about: '스타트업 마케팅, 그로스 전략'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('스타트업 인사이트');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 안녕하세요, 스타트업 성공코치 한성희입니다. 오늘은 제한된 자원으로 최대 효과를 내야 하는 초기 스타트업의 마케팅 채널 설정법에 대해 이야기해보겠습니다.
 
 "10개 채널에 예산을 분산하는 것과 2개 채널에 집중하는 것, 어느 쪽이 더 효과적일까요?"

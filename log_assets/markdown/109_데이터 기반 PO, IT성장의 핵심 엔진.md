@@ -9,29 +9,6 @@ keywords: '데이터 기반 의사결정, PO 데이터 역량, AB테스트 코�
 about: '프로덕트 오너, 데이터 분석'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('PO의 프레임웍');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 한 글로벌 IT 기업의 제품 책임자(PO)는 어려운 상황에 직면했습니다. 시장 성장이 둔화되고 있었고, 경쟁사들은 빠르게 시장 점유율을 확대하고 있었습니다. 이때 그는 데이터에서 답을 찾았습니다.
 
 "우리가 놓치고 있는 것은 무엇일까?"

@@ -9,29 +9,6 @@ keywords: 'RAG 시스템 구축, 벡터 데이터베이스, AI 검색엔진 로�
 about: 'RAG, AI 검색 기술, 스타트업 기술 구축'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('스타트업 인사이트');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 Perplexity AI 기술 해부 시리즈의 마지막 시간입니다. 지금까지 Perplexity의 철학, 핵심 기술 아키텍처, BM25와 벡터 검색의 하이브리드 설계, RAG 시스템, 그리고 대화형 UX에 대해 알아보았습니다.
 
 이번 글에서는 중소규모 팀이나 스타트업이 실제로 Perplexity 스타일의 서비스를 구축할 수 있는 단계별 로드맵을 제시해보겠습니다.

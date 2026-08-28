@@ -9,29 +9,6 @@ keywords: '2024년 회고, 스타트업 액셀러레이팅, 코칭 성과'
 about: '심플리파이어, 연말 회고'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('심플리파이어 라이프');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 감사한 일들이 많은 한해였다.   
   
 작년 11월 링크드인, 페이스북, 네이버블로그, 브런치에 매일 글쓰기를 시작하며 내 글을 읽어주는 전체 팔로워가 2만명을 훌쩍 넘었다.   

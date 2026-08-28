@@ -9,29 +9,6 @@ keywords: '챗GPT UX 설계, 대화형 인터페이스 디자인, 맞춤형 UX'
 about: '대화형 UX, AI 프로덕트 디자인'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('UX의 언어들');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 여러분 모두 챗GPT를 사용해보신 적 있을 겁니다. 그 신기한 경험, 마치 영화 속 AI와 대화하는 듯한 느낌. 챗GPT에게 느끼는 이 경험은 단순히 뛰어난 대화 능력에만 있는 것이 아닙니다. 오늘은 챗GPT의 단순한 인터페이스 뒤에 숨겨진 UX설계의 비밀을 알아보도록 하겠습니다.
 
 ---

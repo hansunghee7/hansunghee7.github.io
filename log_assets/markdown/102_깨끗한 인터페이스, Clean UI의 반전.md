@@ -9,29 +9,6 @@ keywords: 'Clean UI, 미니멀 인터페이스, UX 디자인 원칙'
 about: 'UI 디자인, 인터페이스 트렌드'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('UX의 언어들');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 "깔끔한 화면이 최고지!"
 
 누구나 한 번쯤 생각해본 말일 겁니다. 하지만 'Clean UI'가 단순히 보기 좋은 화면 그 이상이라는 사실, 알고 계셨나요? 깨끗한 인터페이스 뒤에 숨겨진 진짜 비밀을 파헤쳐보겠습니다.

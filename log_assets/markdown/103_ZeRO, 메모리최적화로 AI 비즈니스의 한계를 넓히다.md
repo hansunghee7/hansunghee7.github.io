@@ -9,29 +9,6 @@ keywords: 'ZeRO 메모리 최적화, AI 모델 학습 비용, GPU 효율화'
 about: 'AI 인프라, 딥러닝 기술'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('AI의 언어들');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 AI 모델이 점점 거대해지면서 기업들은 메모리 한계라는 도전에 직면하고 있습니다. 마이크로소프트 DeepSpeed 팀이 개발한 Zero Redundancy Optimizer(ZeRO)는 메모리 병목 현상을 혁신적으로 해결하여, 더 많은 기업이 대형 AI 모델 개발에 참여할 수 있는 가능성을 넓혔습니다.
 
 ![ZeRO 적용 전후 GPU별 메모리 사용량 비교 다이어그램](//img1.kakaocdn.net/thumb/R1280x0.fpng/?fname=http://t1.daumcdn.net/brunch/service/user/5lk/image/ND3OOHIfUgpQwYSYlv1_0W9zYf8.png)

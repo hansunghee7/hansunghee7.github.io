@@ -9,29 +9,6 @@ keywords: '서비스기획자 PM PO 차이, 프로덕트 매니저 역할, 직�
 about: 'PM, 프로덕트 오너, 직무 정의'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('기획일상');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 올해 초, 큰 기업으로부터 ‘PM 리더십’ 강의 의뢰가 들어왔고, 전 2일 차 강의를 맡게 되었습니다. 해당 기업에 건설부문이 있기도 하여 강의 전 그 회사에서의 PM의 역할이 Product Manager인지? Project Manager인지? Product Owner인지? 문의를 했으나 담당자에게 정확히 모르겠다는 피드백을 받았습니다.
 
  아니나 다를까 1일 차에 PO를 위한 서비스 데이터 분석 강의가 있었는데, 수강생들이 자기들은 PO가 아니라 PM이라 해당 강의내용이 적합하지 않다는 피드백이 있었다고 강의담당자에게 의견을 전달받았습니다.

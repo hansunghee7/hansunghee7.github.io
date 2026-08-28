@@ -9,29 +9,6 @@ keywords: '사업목표 수립, OKR 목표설정, 투자유치 지표'
 about: 'CPO, 사업전략, 목표관리'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('스타트업 인사이트');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 1\.
 
  나는 결과적으로 임원이 되고, 대표까지 되었지만, 사실 이런 직위가 나의 목표는 아니었다. 기획자가 된 후 서비스가 실패해 동료들이 떠나가는 것이 정말 싫어서, 서비스를 성공시키는 기획자가 되는 걸 목표로 잡았다.

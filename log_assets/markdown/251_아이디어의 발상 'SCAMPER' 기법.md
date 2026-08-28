@@ -9,29 +9,6 @@ keywords: 'SCAMPER 기법, 아이디어 발상법, 브레인스토밍 프레임�
 about: '기획 프레임워크, 창의적 발상법'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('기획자의 프레임웍');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 기획자의 가장 핵심적인 업무는 문제를 효과적으로 해결하는 것이다. 그 해결 아이디어를 그냥 맨땅에 헤딩하며 찾기 보다는 프레임을 활용하면 보다 창의적이고 효과적으로 찾을 수 있다. 내가 광고를 전공하면서 배웠던 프레임웍으로 남들과 다른 접근을 하는데 큰 도움을 받았기에 소개해보고자 한다.
 
 창의적인 아이디어 발상을 위해 SCAMPER 기법만큼 강력한 도구도 드물다. 1950년대 광고계 거장 알렉스 오스본이 개발한 체크리스트에서 출발해 1971년 지금의 모습으로 정립된 이 기법은, 7가지 키워드로 사고의 영역을 체계화하여 구체적인 아이디어 도출을 이끌어낸다.

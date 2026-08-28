@@ -9,29 +9,6 @@ keywords: '대화형 UX, 챗봇 인터페이스 설계, AI 대화 UX 원칙'
 about: 'Conversational UX, AI 인터페이스 디자인'
 ---
 
-<!-- CAT_LINK_SCRIPT_START -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const catPill = document.querySelector('.cover-category-pill');
-    if(catPill) {
-        catPill.style.cursor = 'pointer';
-        catPill.style.transition = 'all 0.2s ease';
-        catPill.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#f5f3ee';
-            this.style.color = '#080808';
-        });
-        catPill.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = 'transparent';
-            this.style.color = '#f5f3ee';
-        });
-        catPill.addEventListener('click', function() {
-            window.location.href = '/log.html?cat=' + encodeURIComponent('UX의 언어들');
-        });
-    }
-});
-</script>
-<!-- CAT_LINK_SCRIPT_END -->
-
 "안녕하세요! 무엇을 도와드릴까요?"
 
 이제 우리는 기계가 아닌 사람과 대화하는 것처럼 자연스럽게 AI와 소통합니다. 단순한 챗봇을 넘어 진짜 대화처럼 느껴지는 'Conversational UX'의 세계로 들어가 보겠습니다.
