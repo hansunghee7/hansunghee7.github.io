@@ -24,10 +24,12 @@
 {% assign topic_posts = site.data.posts | where: "category", pillar.category %}
 {% assign canonical_url = "https://simplifier.co.kr" | append: page.url %}
 {% comment %} JSON-LD description은 스니펫 길이 제한이 없어서, 화면엔 접혀 있는
-   자세한 설명(intro_extended)까지 합쳐 AI/검색엔진이 더 많은 맥락을 읽게 한다. {% endcomment %}
+   자세한 설명(intro_extended)까지 합쳐 AI/검색엔진이 더 많은 맥락을 읽게 한다.
+   intro_extended 안의 문단 구분자(|||, 아래 "더 보기" 카드에서 문단을
+   나눌 때도 씀)는 여기선 그냥 공백으로 풀어서 자연스러운 한 문단 설명으로 만든다. {% endcomment %}
 {% assign schema_description = pillar.intro %}
 {% if pillar.intro_extended %}
-  {% assign schema_description = pillar.intro | append: " " | append: pillar.intro_extended %}
+  {% assign schema_description = pillar.intro | append: " " | append: pillar.intro_extended | replace: "|||", " " %}
 {% endif %}
 
 <title>{{ page.title }}</title>
@@ -194,7 +196,11 @@
         <summary>더보기</summary>
         <div class="pillar-more-body">
           <button type="button" class="pillar-more-close" onclick="this.closest('details').removeAttribute('open')" aria-label="닫기">✕</button>
-          {% assign pillar_paragraphs = pillar.intro_extended | split: "\n\n" %}
+          {% comment %} Liquid의 문자열 리터럴은 "\n"을 실제 줄바꿈으로 안 바꿔준다
+             (YAML과 다름) -- 그래서 처음에 split: "\n\n"으로 썼을 때 전혀 안
+             갈라지고 한 덩어리로 남는 버그가 있었다. 대신 _data/pillars.yml
+             쪽에서 문단 구분자를 순수 텍스트 "|||"로 써서 이 모호함을 없앴다. {% endcomment %}
+          {% assign pillar_paragraphs = pillar.intro_extended | split: "|||" %}
           {% for para in pillar_paragraphs %}<p>{{ para | strip }}</p>{% endfor %}
         </div>
       </details>
