@@ -58,6 +58,7 @@ var TAB_CLOSE_DELAY_MS = 22000; // content-script가 최대 20초까지 찾으�
 
 chrome.runtime.onMessage.addListener(function (msg) {
   if (msg && msg.type === "SNS_COLLECT_REQUEST") {
+    console.log("[SNS 인사이트] SNS_COLLECT_REQUEST 수신 (force=" + !!msg.force + ")");
     maybeRunFullRound(!!msg.force);
   }
 });
@@ -65,12 +66,21 @@ chrome.runtime.onMessage.addListener(function (msg) {
 function maybeRunFullRound(force) {
   chrome.storage.local.get(["lastFullRoundAt"], function (res) {
     var last = res.lastFullRoundAt || 0;
-    if (!force && Date.now() - last < ROUND_COOLDOWN_MS) return;
+    var elapsedMin = Math.round((Date.now() - last) / 60000);
+    if (!force && Date.now() - last < ROUND_COOLDOWN_MS) {
+      console.log("[SNS 인사이트] 쿨다운 중이라 건너뜀 (마지막 라운드 " + elapsedMin + "분 전)");
+      return;
+    }
     chrome.storage.local.set({ lastFullRoundAt: Date.now() });
+    console.log("[SNS 인사이트] 전체 수집 라운드 시작 -- 8개 탭을 백그라운드로 엽니다");
 
     DASHBOARD_PLATFORMS.forEach(function (url) {
       chrome.tabs.create({ url: url, active: false }, function (tab) {
-        if (!tab) return;
+        if (chrome.runtime.lastError || !tab) {
+          console.log("[SNS 인사이트] 탭 생성 실패:", url, chrome.runtime.lastError && chrome.runtime.lastError.message);
+          return;
+        }
+        console.log("[SNS 인사이트] 탭 열림:", url, "(tabId " + tab.id + ")");
         setTimeout(function () {
           chrome.tabs.remove(tab.id, function () { void chrome.runtime.lastError; });
         }, TAB_CLOSE_DELAY_MS);
@@ -86,6 +96,7 @@ function todayStr() {
 }
 
 function handleCapture(capture) {
+  console.log("[SNS 인사이트] 캡처 수신:", capture.platform, capture.count);
   chrome.storage.local.get(["githubToken"], function (res) {
     if (!res.githubToken) {
       queuePending(capture);

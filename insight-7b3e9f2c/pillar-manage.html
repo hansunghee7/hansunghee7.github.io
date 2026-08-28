@@ -100,7 +100,7 @@
   </header>
 
   <div class="setup-note">
-    <strong>지금 상태:</strong> "스타트업 인사이트" 1개만 <code>/log/</code>에 운영 반영되었습니다(사이트맵 등록 완료, log.html 카테고리 버튼에서 링크 연결됨). 나머지 11개는 <code>_data/pillars.yml</code>에 소개 문구는 준비돼 있지만 페이지 자체는 아직 없습니다. 새 카테고리를 만들 때마다 아래 표의 <code>PILLAR_STATUS</code> 목록에 코드로 한 줄씩 추가해줘야 합니다 — 카테고리 수가 늘어나면 자동으로 스캔하도록 바꾸는 게 좋습니다.
+    <strong>지금 상태:</strong> 12개 카테고리 전부 <code>/log/</code>에 운영 반영되었습니다(사이트맵 등록, log.html 카테고리 버튼 링크, 개별 글 하단 "이 시리즈 전체 보기" 역링크까지 완료). 전부 <code>_layouts/pillar.html</code> 레이아웃 하나를 공유하므로, 새 카테고리가 생기면 <code>log/&lt;카테고리&gt;.html</code>에 <code>layout: pillar</code> + <code>pillar_category</code> front matter만 있는 파일 하나 추가하고, <code>_data/pillars.yml</code>에 <code>pillar_url</code>을 채우면 됩니다(CMS에서 가능). 아래 표의 <code>PILLAR_STATUS</code> 목록도 그때 한 줄 추가해줘야 합니다 — 카테고리 수가 늘어나면 자동으로 스캔하도록 바꾸는 게 좋습니다.
   </div>
 
   <div id="content"><div class="loading">불러오는 중…</div></div>
@@ -113,7 +113,18 @@
   // 필러 페이지가 만들어진 카테고리만 여기 등록합니다. status: "staging"(미리보기만)
   // 또는 "live"(운영 반영). url은 그 페이지 주소.
   var PILLAR_STATUS = {
-    "스타트업 인사이트": { status: "live", url: "/log/스타트업-인사이트.html" }
+    "스타트업 인사이트": { status: "live", url: "/log/스타트업-인사이트.html" },
+    "UX의 언어들": { status: "live", url: "/log/UX의-언어들.html" },
+    "심플리파이어 라이프": { status: "live", url: "/log/심플리파이어-라이프.html" },
+    "기획일상": { status: "live", url: "/log/기획일상.html" },
+    "토크세션": { status: "live", url: "/log/토크세션.html" },
+    "Be the PO": { status: "live", url: "/log/Be-the-PO.html" },
+    "대한민국 스타트업 미국진출을 묻다": { status: "live", url: "/log/대한민국-스타트업-미국진출을-묻다.html" },
+    "PO의 프레임웍": { status: "live", url: "/log/PO의-프레임웍.html" },
+    "AI의 언어들": { status: "live", url: "/log/AI의-언어들.html" },
+    "기획자의 프레임웍": { status: "live", url: "/log/기획자의-프레임웍.html" },
+    "코치S": { status: "live", url: "/log/코치S.html" },
+    "잉크드인대 기획학과": { status: "live", url: "/log/잉크드인대-기획학과.html" }
   };
 
   var content = document.getElementById("content");
