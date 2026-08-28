@@ -95,11 +95,26 @@
   .topic-header{ display:flex; align-items:center; gap:28px; padding:22px 0; border-bottom:1px solid rgba(245,243,238,0.08); }
   .topic-logo{ flex:none; display:block; }
   .topic-logo img{ height:20px; width:auto; display:block; }
-  .topic-nav{ display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+  /* PC에서는 스크롤바가 안 보이는 데다 트랙패드/터치 없이는 가로
+     스크롤할 방법을 못 찾겠다는 피드백 -- 넘치는 카테고리로 가는
+     방법을 화면에 뚜렷하게 보이는 화살표 버튼으로 항상 제공한다
+     (모바일은 스와이프가 이미 자연스러워서 화면 밖으로 뺌). */
+  .topic-nav-wrap{ position:relative; flex:1 1 auto; min-width:0; display:flex; align-items:center; gap:6px; }
+  .topic-nav{ display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch; scroll-behavior:smooth; }
   .topic-nav::-webkit-scrollbar{display:none;}
   .topic-nav a{ flex:none; padding:7px 14px; border-radius:999px; font-size:13px; color:#8f8b82; text-decoration:none; white-space:nowrap; transition:color .2s, background .2s; }
   .topic-nav a:hover{ color:#f5f3ee; }
   .topic-nav a.active{ background:#f5f3ee; color:#080808; font-weight:600; }
+  .topic-nav-arrow{
+    flex:none; width:26px; height:26px; border-radius:50%;
+    border:1px solid rgba(245,243,238,0.16); background:transparent;
+    color:#8f8b82; font-size:15px; line-height:1; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Pretendard Variable','Pretendard',-apple-system,sans-serif;
+    transition:border-color .2s, color .2s;
+  }
+  .topic-nav-arrow:hover{ border-color:rgba(245,243,238,0.4); color:#f5f3ee; }
+  @media (max-width:640px){ .topic-nav-arrow{ display:none; } }
 
   /* ---- 소개: 헤더 바로 아래, 같은 배경으로 이어짐 ---- */
   .pillar-hero{ max-width:760px; padding:48px 0 40px; }
@@ -179,17 +194,21 @@
 <div class="wrap">
   <header class="topic-header">
     <a class="topic-logo" href="/"><img src="/log_assets/images/logo_white.png" alt="Simplifier"></a>
-    <nav class="topic-nav">
-      {% assign all_categories = site.data.posts | map: "category" | uniq %}
-      {% for cat in all_categories %}
-        {% if cat == pillar.category %}
-          <a href="{{ page.url }}" class="active">{{ cat }}</a>
-        {% else %}
-          {% assign other_hub = site.data.pillars.pillars | where: "category", cat | first %}
-          <a href="{% if other_hub.pillar_url %}{{ other_hub.pillar_url }}{% else %}/log.html?cat={{ cat | url_encode }}{% endif %}">{{ cat }}</a>
-        {% endif %}
-      {% endfor %}
-    </nav>
+    <div class="topic-nav-wrap">
+      <button type="button" class="topic-nav-arrow topic-nav-arrow-left" aria-label="이전 카테고리" onclick="document.getElementById('topicNav').scrollBy({left:-200,behavior:'smooth'})">‹</button>
+      <nav class="topic-nav" id="topicNav">
+        {% assign all_categories = site.data.posts | map: "category" | uniq %}
+        {% for cat in all_categories %}
+          {% if cat == pillar.category %}
+            <a href="{{ page.url }}" class="active">{{ cat }}</a>
+          {% else %}
+            {% assign other_hub = site.data.pillars.pillars | where: "category", cat | first %}
+            <a href="{% if other_hub.pillar_url %}{{ other_hub.pillar_url }}{% else %}/log.html?cat={{ cat | url_encode }}{% endif %}">{{ cat }}</a>
+          {% endif %}
+        {% endfor %}
+      </nav>
+      <button type="button" class="topic-nav-arrow topic-nav-arrow-right" aria-label="다음 카테고리" onclick="document.getElementById('topicNav').scrollBy({left:200,behavior:'smooth'})">›</button>
+    </div>
   </header>
 
   <div class="pillar-hero">
