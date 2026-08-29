@@ -29,7 +29,7 @@ chrome.runtime.onMessage.addListener(function (msg) {
   }
 });
 
-// ── 8개 SNS 전체 수집 한 바퀴 ──────────────────────────────────
+// ── 로그인이 필요한 SNS 전체 수집 한 바퀴 ──────────────────────
 // 가족 공유 PC라 특정 시각에 PC가 켜져 있다는 보장이 없어서(실제로
 // Windows 예약 작업이 한 번도 자동 실행 안 됐던 걸 확인함), 정해진 시각
 // 예약 대신 "사용자가 SNS를 신경 쓰는 순간"에 8개 프로필을 백그라운드
@@ -44,17 +44,27 @@ chrome.runtime.onMessage.addListener(function (msg) {
 // 피드백으로, 쿨다운(20분)이 아니라 "오늘(KST) 하루 한 번"으로 바꿨다 --
 // 오늘 이미 한 번 돌았으면 자연 방문으로는 다시 안 돌고, 새로고침을
 // 명시적으로 누르면(force) 그날 몇 번째든 항상 돈다.
+//
+// 2026-08-30: 브런치·네이버블로그·로켓펀치 3개는 로그인 없이 공개 페이지에서
+// 숫자가 보이므로 서버(GitHub Actions + Playwright, scripts/fetch_sns_public.py)가
+// 매일 새벽 자동 수집하도록 옮겼다. 그래서 이 목록에서 뺐다 -- 브라우저가
+// 여는 탭이 8개에서 5개로 줄고, 그 3개는 PC를 안 켜도 기록이 쌓인다.
+// 여기 남은 5개는 전부 로그인해야만 숫자가 보여 서버에서 못 읽는 채널이다.
 var DASHBOARD_PLATFORMS = [
   "https://www.linkedin.com/in/simplifier",
   "https://www.facebook.com/simplifier.seoul",
   "https://www.instagram.com/simplifier_seoul/",
   "https://www.threads.com/?hl=ko",
-  "https://blog.naver.com/simplifiers",
-  "https://brunch.co.kr/@simplifier",
   "https://connect.rememberapp.co.kr/profile/1582110/posts",
-  "https://www.rocketpunch.com/@simplfier/post",
 ];
 var TAB_CLOSE_DELAY_MS = 22000; // content-script가 최대 20초까지 찾으니 여유 두고 닫음
+
+// 한 라운드가 도는 동안 들어오는 추가 요청을 무시하는 창. 라운드가 연
+// 탭들도 각각 content-script를 실행해 SNS_COLLECT_REQUEST를 다시 보내고,
+// 새로고침 버튼(force)은 하루 제한을 건너뛰기 때문에, 이 가드가 없으면
+// 라운드가 겹쳐 탭이 두 배로 열린다(2026-08-30 실제 발생 -- 자연 방문으로
+// 한 바퀴 돈 뒤 새로고침을 눌러 16개가 열림).
+var ROUND_LOCK_MS = 90000;
 
 function kstDateStr() {
   return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Seoul" }).format(new Date());
@@ -68,26 +78,64 @@ chrome.runtime.onMessage.addListener(function (msg) {
 });
 
 function maybeRunFullRound(force) {
-  chrome.storage.local.get(["lastFullRoundDate"], function (res) {
+  chrome.storage.local.get(["lastFullRoundDate", "roundStartedAt"], function (res) {
     var today = kstDateStr();
+    var now = Date.now();
+
+    // 라운드 중복 방지 -- force든 아니든 무조건 먼저 본다. 새로고침 버튼은
+    // "하루 한 번" 제한만 건너뛰는 것이지, 이미 도는 중인 라운드를 하나 더
+    // 겹쳐 돌라는 뜻이 아니다.
+    if (res.roundStartedAt && now - res.roundStartedAt < ROUND_LOCK_MS) {
+      console.log("[SNS 인사이트] 방금 시작한 라운드가 아직 도는 중이라 건너뜀");
+      return;
+    }
     if (!force && res.lastFullRoundDate === today) {
       console.log("[SNS 인사이트] 오늘(" + today + ") 이미 한 바퀴 돌아서 건너뜀");
       return;
     }
-    chrome.storage.local.set({ lastFullRoundDate: today });
-    console.log("[SNS 인사이트] 전체 수집 라운드 시작 -- 8개 탭을 백그라운드로 엽니다");
 
-    DASHBOARD_PLATFORMS.forEach(function (url) {
-      chrome.tabs.create({ url: url, active: false }, function (tab) {
-        if (chrome.runtime.lastError || !tab) {
-          console.log("[SNS 인사이트] 탭 생성 실패:", url, chrome.runtime.lastError && chrome.runtime.lastError.message);
+    chrome.storage.local.set({ lastFullRoundDate: today, roundStartedAt: now });
+    console.log(
+      "[SNS 인사이트] 전체 수집 라운드 시작 -- " +
+        DASHBOARD_PLATFORMS.length +
+        "개를 최소화된 별도 창에서 조용히 엽니다"
+    );
+
+    // 사용자가 쓰던 창에 탭이 우수수 끼어드는 게 방해된다는 피드백(2026-08-30)으로,
+    // 포커스 없는 최소화 창을 따로 만들어 거기서 열고 통째로 닫는다.
+    // 작업 표시줄에 창 하나가 잠깐 생겼다 사라지는 정도로 존재감이 줄어든다.
+    chrome.windows.create(
+      { url: DASHBOARD_PLATFORMS, focused: false, state: "minimized" },
+      function (win) {
+        if (chrome.runtime.lastError || !win) {
+          console.log(
+            "[SNS 인사이트] 수집 창 생성 실패, 개별 백그라운드 탭으로 대체:",
+            chrome.runtime.lastError && chrome.runtime.lastError.message
+          );
+          openAsBackgroundTabs();
           return;
         }
-        console.log("[SNS 인사이트] 탭 열림:", url, "(tabId " + tab.id + ")");
+        console.log("[SNS 인사이트] 수집 창 열림 (windowId " + win.id + ")");
         setTimeout(function () {
-          chrome.tabs.remove(tab.id, function () { void chrome.runtime.lastError; });
+          chrome.windows.remove(win.id, function () { void chrome.runtime.lastError; });
         }, TAB_CLOSE_DELAY_MS);
-      });
+      }
+    );
+  });
+}
+
+// 최소화 창을 못 만드는 환경(예: 창 상태 제한)을 위한 대비책 -- 예전처럼
+// 현재 창에 비활성 탭으로 열고 각각 닫는다.
+function openAsBackgroundTabs() {
+  DASHBOARD_PLATFORMS.forEach(function (url) {
+    chrome.tabs.create({ url: url, active: false }, function (tab) {
+      if (chrome.runtime.lastError || !tab) {
+        console.log("[SNS 인사이트] 탭 생성 실패:", url, chrome.runtime.lastError && chrome.runtime.lastError.message);
+        return;
+      }
+      setTimeout(function () {
+        chrome.tabs.remove(tab.id, function () { void chrome.runtime.lastError; });
+      }, TAB_CLOSE_DELAY_MS);
     });
   });
 }
