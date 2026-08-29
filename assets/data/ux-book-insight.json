@@ -1168,7 +1168,37 @@
         "reviews": 0,
         "rating": null
       }
+    },
+    {
+      "date": "2026-08-30",
+      "yes24": {
+        "mkt_rank": 77,
+        "ad_rank": 7,
+        "web_rank": 23,
+        "uxui_rank": 9,
+        "design_rank": 20,
+        "econ_rank": null,
+        "sales_index": 2553,
+        "reviews": 26,
+        "rating": 10.0
+      },
+      "aladin": {
+        "sales_point": 295,
+        "reviews": 9,
+        "rating": 9.6,
+        "design_rank": 34,
+        "brand_rank": null,
+        "ad_rank": 14
+      },
+      "kyobo": {
+        "uxui_cat": null,
+        "strategy_rank": null,
+        "badge_rank": 634,
+        "badge_category": "경제/경영",
+        "reviews": 0,
+        "rating": null
+      }
     }
   ],
-  "updated_at": "2026-08-29T14:01:49.407919+00:00"
+  "updated_at": "2026-08-29T20:05:35.091125+00:00"
 }
