@@ -19,6 +19,14 @@
 {% include site-analytics.html %}
 {% include width-tokens.html %}
 
+<!-- 고객 후기(.story-testimonials)는 화면에는 그대로 두되 JSON-LD의 "review" 배열로는
+     넣지 않습니다. 2026-08-29 서치콘솔이 "aggregateRating 없는 리뷰가 여러 개"를 심각한
+     오류로 통보한 건이 그 결과였습니다. 해법이 aggregateRating 추가가 아닌 이유:
+     ① 고객들이 별점을 준 적이 없어 평점 숫자를 지어내야 하고,
+     ② 자사 사이트에 올린 자사 후기(self-serving review)는 LocalBusiness/Organization
+        계열(ProfessionalService 포함)에서 애초에 별점 리치결과 대상이 아닙니다.
+     지어낸 평점은 수동 조치(manual action) 위험까지 있어 마크업만 제거했습니다.
+     후기 자체는 사람과 AI 검색엔진이 읽는 본문에 그대로 남아 있습니다. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -67,23 +75,6 @@
       "https://product.kyobobook.co.kr/detail/S000220493173"
     ]
   },
-  "review": [
-    {
-      "@type": "Review",
-      "reviewBody": "플레잉코칭을 시작한 후 혼란스럽던 제품팀이 몰라보게 안정화됐습니다. 덕분에 저는 대표로서 사업에 집중할 수 있었고, 제품 UX 개선으로 사용성이 향상되면서 1년 만에 매출이 3배 이상 성장하게 되었습니다.",
-      "author": { "@type": "Person", "name": "이커머스사 대표" }
-    },
-    {
-      "@type": "Review",
-      "reviewBody": "심플리파이어의 석세스 매트릭스를 도입한 후, 성과 지향의 가설검증 체계를 내재화할 수 있었습니다. 덕분에 이제는 실행 결과까지 예측할 수 있게 되었고, 이를 기반으로 빠른 성장을 만들어낼 수 있었습니다.",
-      "author": { "@type": "Person", "name": "스타트업 대표" }
-    },
-    {
-      "@type": "Review",
-      "reviewBody": "회사 전략의 변화로, 리더들이 큰 혼란을 겪고 있던 시기였습니다. 코치님 강연을 통해 이 혼란이 왜 생기는지, 그리고 이걸 위기가 아니라 '지형변화'로 받아들이고 본인의 리더십 기회로 만들어야 한다는 걸 알게 됐습니다. 시기적으로 꼭 필요했던 강연이었습니다.",
-      "author": { "@type": "Person", "name": "기업 HR Leader" }
-    }
-  ],
   "makesOffer": [
     {
       "@type": "Offer",
