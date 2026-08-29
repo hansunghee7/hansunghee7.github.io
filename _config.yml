@@ -1,0 +1,19 @@
+# 이 저장소는 지금까지 _config.yml이 없어서 Jekyll이 모든 기본값으로 동작했습니다.
+# 그 기본값 중 jekyll-optional-front-matter(GitHub Pages gem에 내장) 때문에,
+# front matter가 없는 .md 파일도 전부 "페이지"로 취급되어 kramdown/Liquid/
+# jekyll-relative-links 등 전체 렌더링 파이프라인을 그대로 통과합니다.
+#
+# 사고 경위 (2026-08-29): docs/UX_GUIDE.md를 추가한 뒤 GitHub Pages 빌드가
+# "Build with Jekyll" 단계에서 계속 실패해, 그 뒤로 올라온 모든 커밋이 1시간
+# 넘게 배포되지 못했습니다(Jekyll은 매번 저장소 전체를 다시 빌드하므로, 한 번
+# 깨진 파일이 트리에 남아있으면 그 뒤 어떤 커밋을 올려도 계속 실패합니다).
+# 정확한 실패 지점은 Actions 로그가 비공개(로그인 필요)라 원문 에러 메시지까지는
+# 못 봤지만, 실패가 시작된 커밋에서 유일하게 늘어난 게 이 파일들이라 원인으로
+# 지목하고 제외합니다. 아래 파일들은 사람(과 AI)이 읽는 내부 문서일 뿐 실제
+# 서비스 페이지가 아니므로, 사이트에 포함될 필요도 없습니다.
+exclude:
+  - docs/
+  - CLAUDE.md
+  - insight-7b3e9f2c/STYLE_GUIDE.md
+  - admin-legacy/README.md
+  - _sns-extension/README.md
