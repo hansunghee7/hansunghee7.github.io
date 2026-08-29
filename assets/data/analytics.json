@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-08-29T13:17:34.268945+00:00",
+  "updated_at": "2026-08-29T20:00:37.694712+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 85,
-    "activeUsers": 40,
-    "newUsers": 40,
+    "sessions": 90,
+    "activeUsers": 41,
+    "newUsers": 41,
     "returningUsers": 0
   },
   "daily": [
@@ -31,10 +31,17 @@
     },
     {
       "date": "2026-08-29",
-      "sessions": 17,
+      "sessions": 19,
       "activeUsers": 11,
       "newUsers": 8,
       "returningUsers": 3
+    },
+    {
+      "date": "2026-08-30",
+      "sessions": 3,
+      "activeUsers": 2,
+      "newUsers": 1,
+      "returningUsers": 1
     }
   ],
   "daily_leads": [
@@ -48,23 +55,23 @@
     }
   ],
   "landing_types": {
-    "home": 62,
-    "log_home": 6,
+    "home": 69,
+    "log_home": 7,
     "individual_post": 14,
     "other": 11
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 57
+      "sessions": 62
+    },
+    {
+      "source": "(not set)",
+      "sessions": 14
     },
     {
       "source": "searchadvisor.naver.com",
       "sessions": 12
-    },
-    {
-      "source": "(not set)",
-      "sessions": 11
     },
     {
       "source": "l.facebook.com",
@@ -89,12 +96,12 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 248,
-    "section_view_voices": 179,
-    "section_view_book_class": 109,
-    "section_view_faq": 98,
+    "section_view_proven": 250,
+    "section_view_voices": 181,
+    "section_view_book_class": 112,
+    "section_view_faq": 101,
     "faq_open": 18,
-    "read_complete": 183
+    "read_complete": 184
   },
   "contact_funnel": {
     "contact_open": 27,
@@ -261,5 +268,66 @@
       "uniqueViews": 2,
       "views": 4
     }
-  ]
+  ],
+  "desktop_screen_resolutions": {
+    "range": "last_90_days",
+    "total_desktop_sessions": 75,
+    "by_resolution": [
+      {
+        "resolution": "2560x1440",
+        "width": 2560,
+        "sessions": 36
+      },
+      {
+        "resolution": "0x0",
+        "width": 0,
+        "sessions": 17
+      },
+      {
+        "resolution": "1536x960",
+        "width": 1536,
+        "sessions": 5
+      },
+      {
+        "resolution": "1920x1080",
+        "width": 1920,
+        "sessions": 5
+      },
+      {
+        "resolution": "3840x1080",
+        "width": 3840,
+        "sessions": 3
+      },
+      {
+        "resolution": "800x600",
+        "width": 800,
+        "sessions": 3
+      },
+      {
+        "resolution": "1728x1117",
+        "width": 1728,
+        "sessions": 2
+      },
+      {
+        "resolution": "1512x982",
+        "width": 1512,
+        "sessions": 1
+      },
+      {
+        "resolution": "1710x1107",
+        "width": 1710,
+        "sessions": 1
+      },
+      {
+        "resolution": "2048x1152",
+        "width": 2048,
+        "sessions": 1
+      },
+      {
+        "resolution": "375x667",
+        "width": 375,
+        "sessions": 1
+      }
+    ]
+  }
 }
