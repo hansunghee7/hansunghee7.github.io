@@ -18,7 +18,7 @@ name: Fetch book insight
 # 날짜별 upsert라 여러 번 돌아도 안전) + cron-job.org 외부 트리거(새벽 5시대).
 on:
   schedule:
-    - cron: "41 21 * * *"  # 06:41 KST
+    - cron: "3 20 * * *"   # 05:03 KST (새벽 수집 순번 3 -- Playwright 스크래핑이라 3~4분 소요)
     - cron: "23 2 * * *"   # 11:23 KST
     - cron: "37 8 * * *"   # 17:37 KST
   workflow_dispatch: {}
