@@ -12,6 +12,10 @@ KPI가 "리드 가능성 높은 예비고객의 최초·재방문"이라, 여기
   - _includes/site-analytics.html에 이미 심어둔 관여 신호 이벤트
     (section_view_*, faq_open, read_complete) 발생 횟수
   - 개별 글의 순수 조회 랭킹(유니크 방문자·총 조회수) -- 랜딩(첫 착지) 여부와 무관
+  - 데스크톱 방문자의 화면 해상도 분포 -- 페이지 컨테이너 폭(.wrap max-width)을
+    감으로 정하지 않고 실측 근거로 판단하기 위함(2026-08-30 너비 정책 논의에서
+    추가). screenResolution은 모니터 자체 해상도지 브라우저 창 폭이 아니라서
+    상한 참고용으로만 쓸 것 -- 창을 풀스크린으로 안 쓰면 실제 가용 폭은 더 좁다.
 
 인증 정보(서비스 계정 키)는 절대 이 저장소나 대화에 남기지 않는다 -- GitHub
 Actions Secrets에서 환경변수로만 주입받는다. 로컬에서 테스트할 때도 같은
@@ -308,6 +312,44 @@ def fetch_sources(client, property_id):
     return top[:15], ai_hits
 
 
+def fetch_screen_resolutions(client, property_id):
+    """데스크톱 방문자의 실제 화면 해상도 분포. 30일 트래픽이 워낙 적어(이 글을
+    쓰는 시점 세션 85건) 노이즈를 줄이려 90일 창을 쓴다 -- 그래도 표본이
+    작을 수 있으니 절대적 결정이 아니라 참고선으로만 쓸 것. 모바일/태블릿은
+    화면 폭 정책(.wrap max-width)과 무관해 데스크톱만 필터링한다."""
+    resp = run_report(
+        client, property_id,
+        date_ranges=[DateRange(start_date="90daysAgo", end_date="today")],
+        dimensions=[Dimension(name="screenResolution")],
+        metrics=[Metric(name="sessions")],
+        dimension_filter=FilterExpression(
+            filter=Filter(
+                field_name="deviceCategory",
+                string_filter=Filter.StringFilter(value="desktop"),
+            )
+        ),
+        limit=100,
+    )
+    rows = []
+    for r in resp.rows:
+        resolution = r.dimension_values[0].value or ""
+        sessions = int(r.metric_values[0].value)
+        width = 0
+        if "x" in resolution:
+            try:
+                width = int(resolution.split("x")[0])
+            except ValueError:
+                width = 0
+        rows.append({"resolution": resolution, "width": width, "sessions": sessions})
+    rows.sort(key=lambda x: -x["sessions"])
+    total = sum(r["sessions"] for r in rows)
+    return {
+        "range": "last_90_days",
+        "total_desktop_sessions": total,
+        "by_resolution": rows[:20],
+    }
+
+
 def fetch_engagement_events(client, property_id):
     resp = run_report(
         client, property_id,
@@ -347,6 +389,7 @@ def main():
         "leads_by_post": fetch_leads_by_landing_page(client, property_id, title_map),
         "top_landing_posts": fetch_top_landing_posts(client, property_id, title_map),
         "top_viewed_posts": fetch_post_pageviews(client, property_id, title_map),
+        "desktop_screen_resolutions": fetch_screen_resolutions(client, property_id),
     }
 
     os.makedirs(os.path.dirname(OUT_PATH), exist_ok=True)
