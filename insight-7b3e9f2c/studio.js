@@ -8,18 +8,23 @@
 
   // href는 location.pathname과 정확히 비교해서 현재 페이지를 찾는다
   // (사이트 인사이트만 "/insight-7b3e9f2c/"처럼 슬래시로 끝남).
+  // 2026-08-30 순서 개편: 이전엔 만든 순서대로 쌓여서 참조 문서(시스템
+  // 구조·UX 가이드)가 인사이트 3형제 사이에 끼어 있었다. 이제 사용
+  // 목적·빈도 순으로 묶는다 -- 매일 보는 인사이트(모니터링) → 일할 때
+  // 여는 제작 도구(글쓰기→퍼블리싱이 실제 작업 순서) → 대화 → 가끔
+  // 찾는 참조 문서. group이 바뀌는 지점마다 사이드바에 소제목이 붙는다.
   var STUDIO_NAV = [
-    { href: "/insight-7b3e9f2c/", label: "사이트 인사이트" },
-    { href: "/insight-7b3e9f2c/system-map.html", label: "시스템 구조" },
-    { href: "/insight-7b3e9f2c/style-guide.html", label: "통합 UX 가이드" },
-    { href: "/insight-7b3e9f2c/sns-insight.html", label: "SNS 인사이트" },
-    { href: "/insight-7b3e9f2c/book-insight.html", label: "북 인사이트" },
-    { href: "/insight-7b3e9f2c/write.html", label: "글쓰기" },
-    { href: "/insight-7b3e9f2c/multi-publish.html", label: "멀티 퍼블리싱" },
-    { href: "/insight-7b3e9f2c/shorts-studio.html", label: "숏폼 스튜디오" },
-    { href: "/insight-7b3e9f2c/newsletter-research.html", label: "뉴스레터 리서치" },
-    { href: "/insight-7b3e9f2c/pillar-manage.html", label: "필러 관리" },
-    { href: "/insight-7b3e9f2c/ask.html", label: "Simplifier와의 대화" },
+    { href: "/insight-7b3e9f2c/", label: "사이트 인사이트", group: "인사이트" },
+    { href: "/insight-7b3e9f2c/sns-insight.html", label: "SNS 인사이트", group: "인사이트" },
+    { href: "/insight-7b3e9f2c/book-insight.html", label: "북 인사이트", group: "인사이트" },
+    { href: "/insight-7b3e9f2c/write.html", label: "글쓰기", group: "제작" },
+    { href: "/insight-7b3e9f2c/multi-publish.html", label: "멀티 퍼블리싱", group: "제작" },
+    { href: "/insight-7b3e9f2c/shorts-studio.html", label: "숏폼 스튜디오", group: "제작" },
+    { href: "/insight-7b3e9f2c/newsletter-research.html", label: "뉴스레터 리서치", group: "제작" },
+    { href: "/insight-7b3e9f2c/pillar-manage.html", label: "필러 관리", group: "제작" },
+    { href: "/insight-7b3e9f2c/ask.html", label: "Simplifier와의 대화", group: "대화" },
+    { href: "/insight-7b3e9f2c/system-map.html", label: "시스템 구조", group: "참조" },
+    { href: "/insight-7b3e9f2c/style-guide.html", label: "통합 UX 가이드", group: "참조" },
   ];
 
   function escapeHtmlAttr(s) {
@@ -32,9 +37,15 @@
     var nav = document.getElementById("adminShellNav");
     if (!nav) return;
     var here = location.pathname;
+    var prevGroup = null;
     var linksHtml = STUDIO_NAV.map(function (item) {
       var active = item.href === here;
-      return '<a href="' + escapeHtmlAttr(item.href) + '"' + (active ? ' class="active"' : "") + ">" + escapeHtmlAttr(item.label) + "</a>";
+      var head = "";
+      if (item.group && item.group !== prevGroup) {
+        head = '<div class="shell-group">' + escapeHtmlAttr(item.group) + "</div>";
+        prevGroup = item.group;
+      }
+      return head + '<a href="' + escapeHtmlAttr(item.href) + '"' + (active ? ' class="active"' : "") + ">" + escapeHtmlAttr(item.label) + "</a>";
     }).join("");
     // 모바일에서만 보이는 햄버거 버튼 + 펼침 목록. 데스크톱은 CSS가 버튼을
     // 숨기고 .shell-links를 원래처럼 세로로 그냥 보여준다(별도 처리 없음).

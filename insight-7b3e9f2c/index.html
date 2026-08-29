@@ -208,6 +208,8 @@
   <div class="tablebox" id="sourceTable"></div>
   <p class="h2note" style="margin-top:20px">관여 신호 <button type="button" class="h2note-q" aria-label="설명 보기">?<span class="h2note-text">관여 신호 — 방문자가 신뢰 구간(로고월·후기·FAQ)까지 도달했는지, 글을 완독했는지. 아직 코칭·강연 서비스 페이지가 없어 "진지한 검토자"를 행동으로 가늠합니다.</span></button></p>
   <div class="tiles" id="engagementTiles"></div>
+  <p class="h2note" style="margin-top:20px">데스크톱 화면 해상도 <button type="button" class="h2note-q" aria-label="설명 보기">?<span class="h2note-text">최근 90일 데스크톱 방문자의 모니터 해상도 분포 — 페이지 폭 정책(표준형 1200px)이 실제 방문자 화면과 잘 맞는지 보는 참고선입니다. 모니터 해상도이지 브라우저 창 폭은 아니므로(창을 작게 쓰는 사람도 있음) 상한 참고용으로만 보세요.</span></button></p>
+  <div class="tablebox" id="screenResTable"></div>
   </div>
 </details>
 
@@ -684,6 +686,40 @@
     box.appendChild(table);
   }
 
+  /* 데스크톱 화면 해상도 분포 -- 너비 정책(표준형 1200px)의 실측 참고선.
+     2026-08-30 수집 시작이라 그 전 스냅샷에는 키 자체가 없다 -- 그 경우
+     에러가 아니라 "다음 수집 때 채워짐"으로 안내한다. */
+  function renderScreenRes(d){
+    var box = document.getElementById('screenResTable'); box.textContent='';
+    var sr = d.desktop_screen_resolutions;
+    if(!sr || !(sr.by_resolution||[]).length){
+      box.appendChild(el('div','note','아직 수집 전입니다 — 2026-08-30 추가된 지표라 다음 자동 수집 때부터 채워집니다.'));
+      return;
+    }
+    var total = sr.total_desktop_sessions || 0;
+    var wide = 0;
+    sr.by_resolution.forEach(function(r){ if(r.width >= 1280) wide += r.sessions; });
+    var summary = el('div','note',
+      '데스크톱 세션 ' + total.toLocaleString() + '건 중 폭 1280px 이상 화면이 '
+      + (total ? Math.round(wide/total*100) : 0) + '% — 표준형(1200px) 컨테이너가 잘리지 않고 표시되는 비율입니다.');
+    summary.style.padding = '10px 14px 0';
+    box.appendChild(summary);
+    var table = el('table');
+    var thead = el('thead'), htr = el('tr');
+    ['해상도','세션','비중'].forEach(function(h){ htr.appendChild(el('th',null,h)); });
+    thead.appendChild(htr); table.appendChild(thead);
+    var tb = el('tbody');
+    sr.by_resolution.slice(0,10).forEach(function(r){
+      var tr = el('tr');
+      tr.appendChild(el('td',null,r.resolution));
+      tr.appendChild(el('td','num',(r.sessions||0).toLocaleString()));
+      tr.appendChild(el('td','num',total ? Math.round(r.sessions/total*100)+'%' : '—'));
+      tb.appendChild(tr);
+    });
+    table.appendChild(tb);
+    box.appendChild(table);
+  }
+
   function renderAnalytics(){
     return fetch('/assets/data/analytics.json?t=' + Date.now(), { cache:'no-store' })
       .then(function(r){ if(!r.ok) throw { notYet: r.status===404 }; return r.json(); })
@@ -716,6 +752,7 @@
         renderLeadPosts(d);
         renderTopLanding(d);
         renderTopViewed(d);
+        renderScreenRes(d);
 
         /* 신규/재방문 총합은 위 ①의 최초방문·재방문 카드가 이미 보여주므로 여기서 반복하지 않습니다.
            여긴 트렌드 카드가 못 보여주는 것만: 세션(방문 횟수, 사람 수와 다름)과 방문자 총합. */
@@ -771,6 +808,7 @@
         document.getElementById('leadPostsTable').textContent='';
         document.getElementById('topLandingTable').textContent='';
         document.getElementById('topViewedTable').textContent='';
+        document.getElementById('screenResTable').textContent='';
         return !!(e && e.notYet);
       });
   }

@@ -92,6 +92,10 @@ h1 .info-dot{font-size:15px;}
 #adminShellNav{position:fixed; top:0; left:0; bottom:0; width:180px; padding:24px 14px; background:#f7f6f2; border-right:1px solid var(--line-soft); overflow-y:auto; z-index:100;}
 #adminShellNav .shell-title{font-size:12px; font-weight:600; color:var(--muted); letter-spacing:0.05em; text-transform:uppercase; margin:0 0 16px; padding:0 10px;}
 #adminShellNav .shell-burger{display:none;}
+/* 메뉴 그룹 소제목(인사이트/제작/대화/참조) -- studio.js STUDIO_NAV의
+   group 값이 바뀌는 지점마다 하나씩 붙는다(2026-08-30 순서 개편). */
+#adminShellNav .shell-group{font-size:10.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin:18px 0 5px; padding:0 10px;}
+#adminShellNav .shell-links .shell-group:first-child{margin-top:0;}
 #adminShellNav a{display:block; padding:9px 10px; margin-bottom:2px; border-radius:6px; color:var(--dim); text-decoration:none; font-size:14px;}
 #adminShellNav a:hover{background:var(--line-soft);}
 #adminShellNav a.active{background:var(--ink); color:#fff;}
@@ -126,6 +130,8 @@ body.has-shell-nav{padding-left:180px;}
     padding:4px 14px 10px; box-shadow:0 10px 24px rgba(20,20,15,0.10);
   }
   #adminShellNav .shell-links.open{display:flex;}
+  #adminShellNav .shell-group{margin:14px 0 2px; padding:0 2px;}
+  #adminShellNav .shell-links .shell-group:first-child{margin-top:8px;}
   #adminShellNav a{padding:13px 2px; margin-bottom:0; border-radius:0; border-bottom:1px solid var(--line-soft); font-size:15px;}
   #adminShellNav a:last-child{border-bottom:none;}
   #adminShellNav a:hover{background:none;}
