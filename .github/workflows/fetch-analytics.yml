@@ -16,7 +16,7 @@ name: Fetch GA4 analytics
 # workflow_dispatch 직접 호출(Documents\SimplifierSNSBot\trigger-github-workflows.ps1).
 on:
   schedule:
-    - cron: "13 21 * * *"  # 06:13 KST (정각은 혼잡해 지연/누락되기 쉬워 분산)
+    - cron: "47 19 * * *"  # 04:47 KST (정각은 혼잡해 지연/누락되기 쉬워 분산) -- 새벽 수집 순번 2
     - cron: "17 1 * * *"   # 10:17 KST
     - cron: "29 7 * * *"   # 16:29 KST
   workflow_dispatch: {}

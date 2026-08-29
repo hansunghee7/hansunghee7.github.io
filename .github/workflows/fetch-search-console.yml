@@ -14,7 +14,7 @@ name: Fetch Search Console
 # 하루치 놓쳐도 다음 실행이 90일 창을 통째로 다시 쓰므로 공백이 안 생긴다.
 on:
   schedule:
-    - cron: "37 22 * * *"  # 07:37 KST (정각 혼잡 회피로 분 분산)
+    - cron: "19 20 * * *"  # 05:19 KST (정각 혼잡 회피로 분 분산) -- 새벽 수집 순번 4
   workflow_dispatch: {}
 
 permissions:

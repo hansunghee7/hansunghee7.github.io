@@ -18,7 +18,7 @@ on:
     paths:
       - "log_assets/markdown/**"
   schedule:
-    - cron: "41 20 * * *"  # 05:41 KST
+    - cron: "29 19 * * *"  # 04:29 KST (모닝 브리핑 06:00 이전에 끝내는 새벽 수집 순번 1)
   workflow_dispatch: {}
 
 concurrency:
