@@ -23,7 +23,7 @@
      컬럼 하나가 너무 좁아진다. 표·스파크라인 밀도가 실사용성을 좌우하는
      이 페이지에만 데이터형을 쓴다 -- 새 메뉴를 만들 때 이 예외를 근거로
      또 예외를 늘리지 말 것. */
-  .wrap{max-width:var(--width-data);}
+  .wrap{max-width:var(--width-data, 1600px);}
 
   .books-columns{display:grid; grid-template-columns:1fr 1fr; column-gap:32px; row-gap:22px; align-items:start;}
   @media (max-width:900px){ .books-columns{grid-template-columns:1fr;} }

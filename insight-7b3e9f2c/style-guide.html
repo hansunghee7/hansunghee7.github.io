@@ -23,10 +23,10 @@
      ul/ol/.lede)만 가독성을 위해 읽기 폭(--width-prose)으로 좁힌다 --
      표(.table-wrap)는 컨테이너 전체 폭을 그대로 쓴다. "페이지 전체가
      다른 폭"이 아니라 "텍스트만 예외"로 범위를 좁힌 것. */
-  .wrap{ max-width:var(--width-content); }
+  .wrap{ max-width:var(--width-content, 1200px); }
   .doc{ font-size:15px; line-height:1.75; color:var(--dim); }
   .doc > h2, .doc > h3, .doc > p, .doc > ul, .doc > ol, .doc > .lede{
-    max-width:var(--width-prose); margin-left:0; margin-right:auto;
+    max-width:var(--width-prose, 720px); margin-left:0; margin-right:auto;
   }
   .doc h2{ font-family:'Noto Serif KR',serif; font-weight:400; font-size:22px; color:var(--ink); margin:56px 0 6px; }
   .doc h2:first-child{ margin-top:0; }
