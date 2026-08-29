@@ -1,0 +1,53 @@
+name: Site health check
+
+# 라이브 사이트가 실제로 정상인지 주기적으로 확인한다. 여기서 잡으려는 사고
+# 두 가지 실제 사례:
+#   1) 2026-08-29 - Jekyll 빌드 실패로 홈페이지 자체가 옛날 버전에 멈춤
+#   2) 2026-08-29 - 블로그 이미지 자산 정리 중 브랜드 로고(logo_white.png,
+#      character_black.png)가 격리되면서 페이지는 뜨는데 로고만 깨짐.
+#      "정리 후 라이브 사이트 확인 절차 부재"가 회고에서 나온 재발방지 항목.
+# 그래서 홈페이지 응답 코드뿐 아니라, 페이지 안에서 실제로 쓰는 핵심 자산
+# URL들도 같이 200인지 확인한다. 실패하면 이 워크플로 자체가 빨간 X가 되고
+# GitHub가 기본 이메일 알림을 보낸다.
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch: {}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: 홈페이지 응답 + 핵심 문자열 확인
+        run: |
+          status=$(curl -s -o /tmp/home.html -w '%{http_code}' -L --max-time 15 https://simplifier.co.kr/)
+          echo "홈페이지 응답 코드: $status"
+          if [ "$status" != "200" ]; then
+            echo "::error::홈페이지가 200이 아닙니다 ($status) -- 빌드 실패 또는 배포 중단 가능성"
+            exit 1
+          fi
+          if ! grep -q "Simplifier" /tmp/home.html; then
+            echo "::error::홈페이지 내용에 'Simplifier' 문자열이 없습니다 -- 옛날 캐시이거나 빌드가 깨졌을 수 있습니다"
+            exit 1
+          fi
+
+      - name: 핵심 브랜드 자산 확인 (로고 등)
+        run: |
+          fail=0
+          for path in \
+            "/log_assets/images/logo_white.png" \
+            "/log_assets/images/character_black.png" \
+          ; do
+            url="https://simplifier.co.kr${path}"
+            status=$(curl -s -o /dev/null -w '%{http_code}' -L --max-time 15 "$url")
+            echo "$url -> $status"
+            if [ "$status" != "200" ]; then
+              echo "::error::$url 이 200이 아닙니다 ($status)"
+              fail=1
+            fi
+          done
+          if [ "$fail" = "1" ]; then
+            exit 1
+          fi

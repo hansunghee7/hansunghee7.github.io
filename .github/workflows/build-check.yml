@@ -1,0 +1,47 @@
+name: Build check
+
+# GitHub Pages 자체 빌드(Build with Jekyll)는 실패해도 로그가 비공개라
+# 원인을 바로 못 봄 -- 2026-08-29에 그것 때문에 1시간 넘게 배포가
+# 멈췄던 걸 뒤늦게 알았다. 이 워크플로는 main에 push될 때마다 GitHub
+# Pages와 똑같은 gem 구성(Gemfile의 github-pages gem)으로 미리 빌드해서,
+# 실패하면 Actions 탭에 몇 분 안에 빨간 X로 바로 보이게 한다.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+concurrency:
+  group: build-check
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      LANG: C.UTF-8
+      LC_ALL: C.UTF-8
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby (GitHub Pages와 동일한 gem 구성)
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+
+      - name: Build with Jekyll (GitHub Pages와 같은 방식)
+        run: |
+          JEKYLL_ENV=production bundle exec jekyll build --strict_front_matter -d /tmp/_site_check
+
+      - name: 빌드 결과 요약
+        if: always()
+        run: |
+          if [ -f /tmp/_site_check/index.html ]; then
+            count=$(find /tmp/_site_check -name "*.html" | wc -l)
+            echo "빌드 성공 -- HTML 파일 ${count}개 생성됨"
+          else
+            echo "빌드 실패 또는 index.html이 생성되지 않음"
+          fi
