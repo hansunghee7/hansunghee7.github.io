@@ -2,17 +2,23 @@ name: Build check
 
 # GitHub Pages 자체 빌드(Build with Jekyll)는 실패해도 로그가 비공개라
 # 원인을 바로 못 봄 -- 2026-08-29에 그것 때문에 1시간 넘게 배포가
-# 멈췄던 걸 뒤늦게 알았다. 이 워크플로는 main에 push될 때마다 GitHub
-# Pages와 똑같은 gem 구성(Gemfile의 github-pages gem)으로 미리 빌드해서,
-# 실패하면 Actions 탭에 몇 분 안에 빨간 X로 바로 보이게 한다.
+# 멈췄던 걸 뒤늦게 알았다. 이 워크플로는 GitHub Pages와 똑같은 gem 구성
+# (Gemfile의 github-pages gem)으로 미리 빌드해서, 실패하면 Actions 탭에
+# 몇 분 안에 빨간 X로 바로 보이게 한다.
+#
+# pull_request 트리거는 커밋 교통정리(PR + 자동병합) 도입분(2026-08-29):
+# main 브랜치 보호 룰셋이 이 워크플로의 build 잡을 필수 검사로 요구하므로,
+# PR이 열리면 여기서 미리 빌드가 돌고 통과해야만 자동 병합된다.
 
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch: {}
 
 concurrency:
-  group: build-check
+  group: build-check-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
