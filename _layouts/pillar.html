@@ -83,6 +83,8 @@
 }
 </script>
 
+{% include width-tokens.html %}
+
 <link href="https://api.fontshare.com/v2/css?f[]=boska@300,400&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@300&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
@@ -97,7 +99,7 @@
     -webkit-font-smoothing:antialiased; word-break:keep-all;
   }
   a{color:inherit;}
-  .wrap{max-width:1200px; margin:0 auto; padding:0 32px;}
+  .wrap{max-width:var(--width-content); margin:0 auto; padding:0 32px;}
   @media (max-width:760px){ .wrap{padding:0 16px;} }
 
   /* ---- 최소 헤더: 로고(좌) + 카테고리 전환(그 옆) ---- */
@@ -304,6 +306,8 @@
   <div class="pillar-empty">이 카테고리에 아직 글이 없습니다.</div>
   {% endif %}
 </div>
+
+{% include footer.html %}
 
 <script>
 function pillarSortToggle(mode, btn){

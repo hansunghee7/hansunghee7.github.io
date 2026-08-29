@@ -114,7 +114,11 @@ Studio.setRefreshState(btn, "loading");  // -> "success" / "error" -> setTimeout
 이 패턴을 따릅니다 — `.answer`(ask.html, marked.js로 렌더된 대화형 답변)와는
 용도가 다릅니다.
 
-- 본문 컨테이너에 `.doc` 클래스, `.wrap{max-width:760px}`로 좁혀 가독성 확보(72ch 안팎).
+- 본문 컨테이너에 `.doc` 클래스. `.wrap`은 다른 메뉴와 같은 표준형
+  (`--width-content`, 2026-08-30부터)을 쓰고, 실제로 읽는 러닝 텍스트
+  (`.doc > h2/h3/h4/p/ul/ol/blockquote`)만 읽기 폭(`--width-prose`, 72ch
+  안팎)으로 좁힌다 — `margin-left:0; margin-right:auto`로 왼쪽 정렬 유지.
+  `.table-wrap`은 컨테이너 전체 폭을 그대로 써서 넓은 표가 덜 스크롤되게 한다.
 - `<article class="doc">` 안에 마크다운을 그대로 변환해 넣습니다 — Python
   `markdown` 라이브러리(`extensions=["tables","fenced_code","sane_lists"]`)로
   변환 후, 표는 `<div class="table-wrap">`로 감싸 가로 스크롤을 확보합니다

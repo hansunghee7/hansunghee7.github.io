@@ -17,6 +17,18 @@
   --line:#c8c6bf; --line-soft:rgba(20,20,15,0.07);
   --card:#ffffff; --good:#1f7a4f; --warn:#a3690f; --bad:#b8402a;
   --gutter:16px;
+  /* 너비 3단 스케일(2026-08-30) -- 표준 모니터 하나를 가정한 고정 px 대신
+     뷰포트에 맞춰 유동적으로 줄어드는 min()/clamp()를 쓴다. 실제 방문자
+     화면 폭을 몰라도(또는 다양해도) 항상 안전하게 맞기 때문에, "표준
+     해상도가 뭐냐"는 논쟁 자체를 없앤다. 페이지별 override는 반드시 이
+     변수를 참조할 것 -- 숫자를 새로 하드코딩하지 않는다.
+       --width-prose:   읽기형. 문서·긴 텍스트·대화형 UI.
+       --width-content: 표준형. 대시보드 기본값(대부분의 메뉴).
+       --width-data:    데이터형. book-insight.html 전용 예외 -- 표·
+                         스파크라인이 화면을 지배할 때만, 실사용성 근거로. */
+  --width-prose: clamp(320px, 92vw, 720px);
+  --width-content: min(1200px, 92vw);
+  --width-data: min(1600px, 96vw);
 }
 *{box-sizing:border-box;}
 body{
@@ -24,7 +36,7 @@ body{
   font-family:'Pretendard Variable','Pretendard',-apple-system,sans-serif;
   -webkit-font-smoothing:antialiased; word-break:keep-all;
 }
-.wrap{max-width:1100px; margin:0 auto; padding:0 var(--gutter) 60px;}
+.wrap{max-width:var(--width-content); margin:0 auto; padding:0 var(--gutter) 60px;}
 @media (min-width:761px){ :root{ --gutter:32px; } }
 
 /* ---- 헤더: 제목 + ⓘ + 새로고침 + 데이터 요약을 한 줄에 ---- */

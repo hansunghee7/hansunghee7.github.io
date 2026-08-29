@@ -1,0 +1,22 @@
+<!-- 페이지 컨테이너 너비 3단 스케일(2026-08-30). 레이아웃마다(default/pillar/
+     book/home-body) .wrap류 max-width를 각자 하드코딩해오다 보니 표준형 값
+     (1200px)이 파일 4곳에 따로 박혀 있었다 -- 여기 한 곳만 고치면 전체에
+     반영되도록 모았다(insight-7b3e9f2c/studio.css의 --width-* 토큰과 같은
+     이름·같은 개념. 두 화면이 같은 px를 강제로 맞추는 게 아니라 "고르는
+     규칙"만 공유한다).
+
+     표준 모니터 폭을 고정 숫자로 못박지 않고 min()/clamp()로 유동적으로
+     줄어들게 한 것도 studio.css와 동일한 이유 -- 실제 방문자 화면 폭은
+     계속 달라지므로, 특정 해상도를 가정한 값보다 뷰포트에 맞춰 스스로
+     줄어드는 폭이 더 안전하다.
+       --width-prose:   읽기형. 블로그 본문·에세이·인용·후기 등 단일 컬럼 텍스트.
+       --width-content: 표준형. nav·footer·카드 그리드 등 기본값(대부분의 화면).
+       --width-data:    데이터형. 아직 홈페이지엔 해당 사례 없음(스튜디오
+                         book-insight.html 전용) -- 정의만 맞춰 놓는다. -->
+<style>
+:root{
+  --width-prose: clamp(320px, 92vw, 720px);
+  --width-content: min(1200px, 92vw);
+  --width-data: min(1600px, 96vw);
+}
+</style>

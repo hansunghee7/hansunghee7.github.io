@@ -17,6 +17,7 @@
 <meta name="theme-color" content="#080808">
 
 {% include site-analytics.html %}
+{% include width-tokens.html %}
 
 <script type="application/ld+json">
 {
@@ -189,7 +190,7 @@
   body { background: #080808; color: #f5f3ee; font-family: 'Boska', 'Source Serif 4', 'Noto Serif KR', serif; margin:0; overflow-x: hidden; }
   ::selection { background: #f5f3ee; color: #080808; }
   a { color: inherit; text-decoration: none; }
-  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+  .wrap { max-width: var(--width-content); margin: 0 auto; padding: 0 32px; }
   /* 모바일 좌우 거터는 전 섹션 16px로 통일합니다(YC 모바일 실측값: main에 px-4).
      헤더 nav는 예외로 32px를 유지합니다 -- YC도 내비게이션은 본문보다 넓게 잡습니다. */
   @media (max-width:760px){ .wrap{ padding: 0 16px; } }
@@ -293,7 +294,7 @@
     .story-essay { margin-bottom: 72px; }
   }
 
-  .story-gallery { width: min(1200px, 94vw); margin: 0 auto 140px auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+  .story-gallery { width: var(--width-content); margin: 0 auto 140px auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
   .story-gallery .gallery-item { position: relative; display: block; width: 100%; aspect-ratio: 1 / 1; border-radius: 6px; overflow: hidden; background: #181818; opacity: 0; transform: translateY(18px); transition: opacity 1s ease, transform 1s ease; cursor: pointer; }
   .story-gallery .gallery-item.show { opacity: 1; transform: translateY(0); }
   .story-gallery .gallery-item img { width: 100%; height: 100%; object-fit: cover; filter: saturate(1.2) brightness(1.03) contrast(1.05); transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.5s ease; }
@@ -345,7 +346,7 @@
     margin: 60px 0 32px;
   }
 
-  .yc-knowledge-grid { display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 32px; max-width: 1200px; margin: 0 auto; align-items: stretch; }
+  .yc-knowledge-grid { display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 32px; max-width: var(--width-content); margin: 0 auto; align-items: stretch; }
   .k-col { display: flex; flex-direction: column; gap: 24px; }
   .k-col-right { justify-content: space-between; }
 
@@ -379,7 +380,7 @@
      아래 상품 카드(책·강의)는 표지 이미지가 있지만 강연은 없으므로 글 중심으로 둡니다.
      코칭 페이지가 생기면 이 줄에 카드를 하나 더 넣습니다. */
   .service-card { display:block; border:1px solid rgba(245,243,238,0.16); border-radius:12px;
-                  padding:34px 32px; margin: 0 auto 20px; max-width:1200px; text-decoration:none;
+                  padding:34px 32px; margin: 0 auto 20px; max-width:var(--width-content); text-decoration:none;
                   transition: border-color .2s, background .2s; }
   .service-card:hover { border-color: rgba(245,243,238,0.45); background: rgba(245,243,238,0.03); }
   .service-eyebrow { font-family:'Pretendard Variable',sans-serif; font-size:11.5px; font-weight:500;
@@ -397,7 +398,7 @@
     .service-card h3 { font-size:20px; }
   }
 
-  .yc-overlay-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto; }
+  .yc-overlay-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: var(--width-content); margin: 0 auto; }
   .overlay-card { position: relative; height: 380px; border-radius: 12px; overflow: hidden; cursor: pointer; text-decoration: none; display: block; }
   .overlay-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
   .overlay-card:hover img { transform: scale(1.05); }
@@ -553,7 +554,10 @@
        뒤에 있어야 단축 지정 padding에 덮이지 않습니다. */
     .new-bottom-gallery-section { padding-bottom: 96px; padding-left: 16px; padding-right: 16px; }
   }
-  .new-bottom-gallery { max-width: 1360px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  /* 1360px 고정값(근거 불명)을 표준형(--width-content)으로 스냅했다(2026-08-30
+     너비 정책) -- 바로 위 스토리 이미지 갤러리(.story-gallery)와 같은
+     "5열 정사각형 그리드" 패턴인데 이 값만 달랐던 게 우연한 불일치였다. */
+  .new-bottom-gallery { max-width: var(--width-content); margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
   .new-gallery-item {
     width: 100%; aspect-ratio: 1 / 1; border-radius: 12px; overflow: hidden; background: #181818;
   }

@@ -17,10 +17,17 @@
 <style>
   /* STYLE_GUIDE.md의 .doc 패턴 -- 표·코드가 있는 긴 참조 문서를 읽기 좋게.
      :root/body/header/#adminShellNav는 studio.css 그대로 쓰고, 여기서는
-     .doc 안에서만 쓰는 선택자만 추가합니다. 이 페이지가 다른 메뉴(대시보드형)와
-     폭·밀도가 다르게 보이는 건 의도된 것입니다 -- 아래 "3. 스튜디오" 장 참고. */
-  .wrap{ max-width:760px; }
+     .doc 안에서만 쓰는 선택자만 추가합니다. */
+  /* 2026-08-30 정책 개정 -- 컨테이너(.wrap)는 다른 메뉴와 똑같이 표준형
+     (--width-content)이 기본이다. 그 대신 실제로 읽는 러닝 텍스트(h2/h3/p/
+     ul/ol/.lede)만 가독성을 위해 읽기 폭(--width-prose)으로 좁힌다 --
+     표(.table-wrap)는 컨테이너 전체 폭을 그대로 쓴다. "페이지 전체가
+     다른 폭"이 아니라 "텍스트만 예외"로 범위를 좁힌 것. */
+  .wrap{ max-width:var(--width-content); }
   .doc{ font-size:15px; line-height:1.75; color:var(--dim); }
+  .doc > h2, .doc > h3, .doc > p, .doc > ul, .doc > ol, .doc > .lede{
+    max-width:var(--width-prose); margin-left:0; margin-right:auto;
+  }
   .doc h2{ font-family:'Noto Serif KR',serif; font-weight:400; font-size:22px; color:var(--ink); margin:56px 0 6px; }
   .doc h2:first-child{ margin-top:0; }
   .doc h3{ font-size:15.5px; font-weight:700; color:var(--ink); margin:28px 0 10px; }

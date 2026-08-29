@@ -4,7 +4,7 @@
   header.nav { position: sticky; top:0; z-index: 1000; background: rgba(8,8,8,0.85); backdrop-filter: blur(10px); }
   /* 로고와 우측 액션이 모두 position:absolute라 모바일에선 흐름상 내용이 없어집니다.
      min-height가 없으면 헤더가 padding 높이(36px)로 쪼그라들어 로고가 상단에 붙습니다. */
-  .nav-inner { position:relative; display:flex; align-items:center; justify-content:center; padding: 16px 32px; max-width:1200px; margin:0 auto; gap: 240px; min-height: var(--nav-height); box-sizing: border-box; }
+  .nav-inner { position:relative; display:flex; align-items:center; justify-content:center; padding: 16px 32px; max-width:var(--width-content); margin:0 auto; gap: 240px; min-height: var(--nav-height); box-sizing: border-box; }
   .nav-logo { height: 26px; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); transition: opacity .2s ease; }
   /* YC처럼 모바일 메뉴가 열리면 가운데 로고는 숨기고 닫기(X)만 남깁니다 */
   body.nav-menu-open .nav-logo { opacity: 0; pointer-events: none; }

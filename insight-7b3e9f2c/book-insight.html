@@ -18,9 +18,12 @@
 <link rel="stylesheet" href="/insight-7b3e9f2c/studio.css">
 
 <style>
-  /* 다른 Studio 페이지보다 넓게 잡는다 -- 두 책을 좌우로 나란히 놓고
-     비교하려면 1100px로는 컬럼 하나가 너무 좁아진다. */
-  .wrap{max-width:1600px;}
+  /* 너비 3단 스케일(studio.css --width-*)의 유일한 예외(2026-08-30 확정) --
+     두 책을 좌우로 나란히 놓고 비교하려면 표준형(--width-content)으로는
+     컬럼 하나가 너무 좁아진다. 표·스파크라인 밀도가 실사용성을 좌우하는
+     이 페이지에만 데이터형을 쓴다 -- 새 메뉴를 만들 때 이 예외를 근거로
+     또 예외를 늘리지 말 것. */
+  .wrap{max-width:var(--width-data);}
 
   .books-columns{display:grid; grid-template-columns:1fr 1fr; column-gap:32px; row-gap:22px; align-items:start;}
   @media (max-width:900px){ .books-columns{grid-template-columns:1fr;} }

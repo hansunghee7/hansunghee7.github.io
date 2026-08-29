@@ -7,7 +7,7 @@
 <style>
   :root { --nav-height: 68px; }
   header.nav { position: sticky; top:0; z-index: 1000; background: rgba(8,8,8,0.85); backdrop-filter: blur(10px); }
-  .nav-inner { position:relative; display:flex; align-items:center; justify-content:center; padding: 16px 32px; max-width:1200px; margin:0 auto; gap: 240px; min-height: var(--nav-height); box-sizing: border-box; }
+  .nav-inner { position:relative; display:flex; align-items:center; justify-content:center; padding: 16px 32px; max-width:var(--width-content); margin:0 auto; gap: 240px; min-height: var(--nav-height); box-sizing: border-box; }
   .nav-logo { height: 26px; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); transition: opacity .2s ease; }
   body.nav-menu-open .nav-logo { opacity: 0; pointer-events: none; }
   .nav-logo img { height: 100%; width:auto; display:block; }

@@ -14,7 +14,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-  .wrap{max-width:760px;}
+  /* 2026-08-30 정책 개정 -- 컨테이너는 표준형이 기본, 러닝 텍스트만
+     읽기 폭으로 좁힌다(style-guide.html과 동일 패턴). */
+  .wrap{max-width:var(--width-content);}
+  .doc > h2, .doc > h3, .doc > h4, .doc > p, .doc > ul, .doc > ol, .doc > blockquote{
+    max-width:var(--width-prose); margin-left:0; margin-right:auto;
+  }
   .doc-nav{display:flex; gap:8px; flex-wrap:wrap; margin:0 0 28px;}
   .doc-nav a{
     font-size:12.5px; color:var(--dim); text-decoration:none;
