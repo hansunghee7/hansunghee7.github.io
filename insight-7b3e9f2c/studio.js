@@ -15,6 +15,7 @@
   // 찾는 참조 문서. group이 바뀌는 지점마다 사이드바에 소제목이 붙는다.
   var STUDIO_NAV = [
     { href: "/insight-7b3e9f2c/", label: "사이트 인사이트", group: "인사이트" },
+    { href: "/insight-7b3e9f2c/search-insight.html", label: "검색·UX 품질", group: "인사이트" },
     { href: "/insight-7b3e9f2c/sns-insight.html", label: "SNS 인사이트", group: "인사이트" },
     { href: "/insight-7b3e9f2c/book-insight.html", label: "북 인사이트", group: "인사이트" },
     { href: "/insight-7b3e9f2c/write.html", label: "글쓰기", group: "제작" },

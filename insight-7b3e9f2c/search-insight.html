@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>검색·UX 품질 - Simplifier</title>
+
+<!-- 이 페이지는 검색에 노출되면 안 됩니다.
+     robots.txt에 Disallow를 쓰면 오히려 주소가 공개되므로, 여기서 noindex만 겁니다.
+     sitemap.xml에도 넣지 마세요. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<!-- Studio 메뉴 타이틀(h1)은 명조체 큰 제목으로 통일합니다. -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<link rel="stylesheet" href="/insight-7b3e9f2c/studio.css">
+
+<style>
+  /* 페이지 고유 스타일만 선언합니다 -- 디자인 토큰·헤더·ⓘ·새로고침·사이드바는
+     studio.css가 제공(STYLE_GUIDE.md 체크리스트 5번). */
+  section{padding:38px 0; border-bottom:1px solid var(--line-soft);}
+  section:last-of-type{border-bottom:none;}
+  /* 설명 문단 없이 h2 + ⓘ만 두는 구조라, 제목이 만들던 여백을 h2의
+     margin-bottom(16px)으로 직접 확보합니다 -- 제목과 카드가 바짝 붙었던
+     과거 사고(STYLE_GUIDE.md) 재발 방지. */
+  h2{font-size:17px; font-weight:700; letter-spacing:-0.01em; color:var(--ink); margin:0 0 16px; display:flex; align-items:center; gap:7px;}
+  h2 .sub{font-size:12px; font-weight:400; color:var(--muted); letter-spacing:0;}
+
+  /* ---- 숫자 타일 (사이트 인사이트의 .tiles 패턴) ---- */
+  .tiles{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px;}
+  .tile{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:18px 18px 16px;}
+  .tile .label{font-size:12px; color:var(--muted); margin-bottom:9px; line-height:1.4;}
+  .tile .val{font-weight:500; font-size:32px; line-height:1; letter-spacing:-0.01em;}
+  .tile .val .unit{font-size:15px; color:var(--dim); margin-left:3px;}
+  .tile .foot{font-size:11.5px; color:var(--muted); margin-top:9px; line-height:1.5;}
+  .tile .mini-bars{display:flex; align-items:flex-end; gap:1.5px; height:40px; margin-top:12px;}
+  .tile .mini-bars .b{flex:1; max-width:22px; background:linear-gradient(180deg,#a5a299,#6e6a62); border-radius:1px; min-height:1px;}
+  .tile.is-alert .val{color:var(--bad);}
+
+  /* ---- 일별 노출·클릭 겹침 막대 -- 클릭은 항상 노출의 부분집합이라
+     같은 눈금 위에 겹쳐 그립니다(연한 막대=노출, 진한 막대=그중 클릭). ---- */
+  .chartbox{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:20px 16px 14px; overflow-x:auto;}
+  .bars{display:flex; align-items:flex-end; justify-content:flex-start; gap:2px; height:150px;}
+  .bar{flex:1 1 0; max-width:26px; min-width:3px; position:relative; height:100%;}
+  .bar .imp{position:absolute; bottom:0; left:0; right:0; background:#d8d5cd; border-radius:2px 2px 0 0; min-height:1px;}
+  .bar .clk{position:absolute; bottom:0; left:0; right:0; background:#403d37; border-radius:2px 2px 0 0;}
+  .bar:hover .imp{background:#c5c2b9;}
+  .chart-caption{display:flex; justify-content:space-between; gap:12px; font-size:11px; color:var(--muted); margin-top:8px; border-top:1px solid var(--line-soft); padding-top:7px;}
+  .legend{display:flex; gap:16px; align-items:center; font-size:11.5px; color:var(--muted);}
+  .legend i{display:inline-block; width:10px; height:10px; border-radius:2px; margin-right:5px; vertical-align:-1px;}
+  .legend .li-imp i{background:#d8d5cd;}
+  .legend .li-clk i{background:#403d37;}
+
+  /* ---- 표 (사이트 인사이트의 .tablebox 패턴) ---- */
+  .tablebox{overflow-x:auto; border:1px solid var(--line); border-radius:10px; background:var(--card);}
+  table{border-collapse:collapse; width:100%; min-width:520px; font-size:13px;}
+  th,td{padding:11px 14px; text-align:left; border-bottom:1px solid var(--line-soft); white-space:nowrap;}
+  th{color:var(--muted); font-weight:500; font-size:11.5px; letter-spacing:0.05em; text-transform:uppercase;}
+  tr:last-child td{border-bottom:none;}
+  td.num{text-align:right; font-variant-numeric:tabular-nums;}
+  td a{color:var(--dim); text-decoration:none;}
+  td a:hover{color:var(--ink); text-decoration:underline;}
+  .cell-main{max-width:380px; overflow:hidden; text-overflow:ellipsis;}
+
+  /* 순위 4~15위 = 이미 구글이 알아본 검색어라 리라이트 효과가 가장 큰 구간.
+     행 전체에 옅은 주황 배경 + 배지로 표시합니다. */
+  tr.rw td{background:rgba(163,105,15,0.07);}
+  .rw-badge{display:inline-block; font-size:10.5px; color:var(--warn); border:1px solid rgba(163,105,15,0.35); border-radius:999px; padding:2px 8px; margin-left:8px; vertical-align:1px;}
+
+  .note{font-size:12.5px; color:var(--muted); line-height:1.85; margin:0 0 14px;}
+  .note b{color:var(--dim); font-weight:500;}
+  .empty-note{font-size:13px; color:var(--muted); padding:18px; border:1px dashed var(--line); border-radius:10px; background:var(--card);}
+  footer{padding:30px 0 60px; color:var(--muted); font-size:11.5px; line-height:1.8;}
+</style>
+</head>
+<body class="has-shell-nav">
+<nav id="adminShellNav"></nav>
+<div class="wrap">
+
+<header>
+  <h1>검색·UX 품질<button type="button" class="info-dot" aria-label="설명 보기">ⓘ<span class="info-text">사람들이 구글에서 우리를 어떻게 찾아오는지(서치콘솔)와, 와서 어디서 막히는지(Microsoft Clarity)를 한 화면에 둔 페이지입니다. 두 데이터 모두 GitHub Actions가 매일 자동으로 가져와 정적 JSON으로 저장하고, 이 페이지는 그 파일을 읽기만 합니다. 서치콘솔 측정은 2026-08-26 시작이라 당분간 숫자가 아주 작습니다 — 추세보다 "리라이트 후보" 검색어 발굴 용도로 보세요.</span></button></h1>
+  <button class="refresh" id="refreshBtn"><span class="refresh-icon">↻</span> <span class="refresh-label">새로고침</span></button>
+  <span id="dataAsOf" class="meta-text">데이터 불러오는 중…</span>
+</header>
+
+<section>
+  <h2>검색 성과 — 최근 28일 <button type="button" class="info-dot" aria-label="설명 보기">ⓘ<span class="info-text">구글 서치콘솔 집계입니다. 서치콘솔 측정은 2026-08-26 시작이라 그 이전 검색 성과는 소급해서 볼 수 없고, 데이터 자체도 약 2일 지연되어 들어옵니다(오늘 검색된 건 모레쯤 보임). 그래서 당분간은 28일 합계와 90일 합계가 거의 같습니다. 평균 순위는 노출된 검색어들의 평균 게재순위(1에 가까울수록 상위)입니다.</span></button></h2>
+  <div id="scTiles" class="tiles"></div>
+</section>
+
+<section>
+  <h2>일별 노출·클릭 추이 <button type="button" class="info-dot" aria-label="설명 보기">ⓘ<span class="info-text">최근 90일 일별 추이. 연한 막대가 노출, 그 안의 진한 막대가 실제 클릭입니다(클릭은 항상 노출의 일부라 같은 눈금에 겹쳐 그림). 막대에 마우스를 올리면 날짜별 수치가 보입니다. 서치콘솔 데이터는 약 2일 지연이라 최근 1~2일은 아직 비어 있는 게 정상입니다.</span></button></h2>
+  <div id="dailyChart"></div>
+</section>
+
+<section>
+  <h2>상위 검색어 <span class="sub">최근 90일</span> <button type="button" class="info-dot" aria-label="설명 보기">ⓘ<span class="info-text">노출이 발생한 검색어 순위입니다. 평균 순위 4~15위 검색어는 "리라이트 후보"로 표시합니다 — 구글이 이미 관련 있다고 판단했지만 1페이지 상단엔 못 든 구간이라, 해당 글을 그 검색어에 맞춰 보강(리라이트)했을 때 순위 상승 여지가 가장 큽니다. 1~3위는 이미 잘 되고 있고, 16위 밖은 리라이트만으로 끌어올리기 어렵습니다.</span></button></h2>
+  <div id="queryTable"></div>
+</section>
+
+<section>
+  <h2>상위 페이지 <span class="sub">최근 90일</span> <button type="button" class="info-dot" aria-label="설명 보기">ⓘ<span class="info-text">구글 검색 결과에 노출된 페이지 순위입니다. 주소는 읽기 쉽게 디코딩해서 표시하고, 클릭하면 실제 페이지가 새 탭으로 열립니다.</span></button></h2>
+  <div id="pageTable"></div>
+</section>
+
+<section>
+  <h2>UX 품질 — 사용자 마찰 신호 <button type="button" class="info-dot" aria-label="설명 보기">ⓘ<span class="info-text">Microsoft Clarity가 실제 방문자 행동에서 잡아낸 마찰 신호입니다. 분노 클릭=같은 자리를 빠르게 연타(반응 없는 UI에 화남), 죽은 클릭=클릭했는데 아무 일도 안 일어남, 빠른 이탈=페이지에 들어왔다가 곧바로 되돌아감, 스크립트 에러=페이지 안 자바스크립트 오류. 숫자는 해당 신호가 잡힌 페이지뷰 수(subTotal)이고, 카드 아래 작은 막대는 일별 추이입니다. 0이면 좋은 상태입니다.</span></button></h2>
+  <p class="note" id="uxContext"></p>
+  <div id="uxTiles" class="tiles"></div>
+</section>
+
+<section>
+  <h2>사용자가 막히는 페이지 <button type="button" class="info-dot" aria-label="설명 보기">ⓘ<span class="info-text">최근 수집일 기준, 죽은 클릭이나 분노 클릭이 실제로 발생한(subTotal&gt;0) 페이지만 추린 목록입니다. 여기 뜬 페이지는 Clarity 레코딩에서 해당 세션을 직접 돌려보고 어떤 요소가 클릭을 삼키는지 확인하세요.</span></button></h2>
+  <div id="frictionTable"></div>
+</section>
+
+<footer>
+  Simplifier 내부용 대시보드 · 검색엔진 비노출(noindex) · 서치콘솔·Clarity 데이터는 GitHub Actions가 매일 자동 갱신합니다.
+</footer>
+
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  var SC_URL = '/assets/data/search-console.json';
+  var CL_URL = '/assets/data/clarity.json';
+  var MEASURE_START = '2026-08-26'; // 서치콘솔·Clarity 모두 이 무렵 연동 시작
+
+  /* Clarity 마찰 신호 4종. key는 clarity.json metrics의 키 그대로. */
+  var UX_METRICS = [
+    { key:'RageClickCount',   label:'분노 클릭',     foot:'같은 자리를 빠르게 연타' },
+    { key:'DeadClickCount',   label:'죽은 클릭',     foot:'클릭해도 아무 반응 없음' },
+    { key:'QuickbackClick',   label:'빠른 이탈',     foot:'들어왔다가 곧바로 되돌아감' },
+    { key:'ScriptErrorCount', label:'스크립트 에러', foot:'페이지 안 JS 오류 발생' }
+  ];
+
+  var state = { sc:null, cl:null };
+
+  function el(tag, cls, txt){ var e=document.createElement(tag); if(cls)e.className=cls; if(txt!=null)e.textContent=txt; return e; }
+  function fmtInt(n){ return (n||0).toLocaleString(); }
+  function fmtCtr(ctr){ return ((ctr||0)*100).toFixed(1).replace(/\.0$/,'') + '%'; }
+  function fmtPos(pos, impressions){
+    if(!impressions || !pos) return '—'; // 노출이 없으면 순위도 없음
+    return pos.toFixed(1);
+  }
+  function fmtStamp(iso){
+    if(!iso) return null;
+    var d = new Date(iso);
+    if(isNaN(d)) return null;
+    return d.toLocaleDateString('ko-KR',{month:'2-digit',day:'2-digit'}) + ' '
+      + d.toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});
+  }
+
+  /* URL을 사람이 읽게: 도메인 떼고, 퍼센트 인코딩 풀고, 블로그 글 경로는
+     "글 · 제목"으로 줄입니다. 디코딩 실패(잘못된 인코딩)해도 원문을 보여줍니다. */
+  function prettyUrl(u){
+    var path = u;
+    try{ path = new URL(u).pathname; }catch(e){}
+    try{ path = decodeURIComponent(path); }catch(e){}
+    if(path === '/' || path === '') return '홈';
+    var m = /^\/log_assets\/markdown\/(.+?)(?:\.html)?$/.exec(path);
+    if(m) return '글 · ' + m[1].replace(/^\d+_/,'');
+    return path;
+  }
+
+  /* ---- ① 검색 성과 요약 카드 ---- */
+  function renderScTiles(d){
+    var box = document.getElementById('scTiles'); box.textContent='';
+    if(!d){ box.appendChild(el('div','empty-note','서치콘솔 데이터를 아직 불러오지 못했습니다 — 수집 워크플로가 한 번 돌면 채워집니다.')); return; }
+    var t28 = d.totals_28d || {}, t90 = d.totals_90d || {};
+    var rows = [
+      { label:'노출',     val:fmtInt(t28.impressions), unit:'회', foot:'90일 누적 ' + fmtInt(t90.impressions) + '회' },
+      { label:'클릭',     val:fmtInt(t28.clicks),      unit:'회', foot:'90일 누적 ' + fmtInt(t90.clicks) + '회' },
+      { label:'CTR',      val:fmtCtr(t28.ctr),         unit:'',   foot:'90일 ' + fmtCtr(t90.ctr) },
+      { label:'평균 순위', val:fmtPos(t28.position, t28.impressions), unit:'위', foot:'90일 ' + fmtPos(t90.position, t90.impressions) + '위' }
+    ];
+    rows.forEach(function(r){
+      var t = el('div','tile');
+      t.appendChild(el('div','label', r.label));
+      var v = el('div','val'); v.textContent = r.val;
+      if(r.unit && r.val !== '—'){ v.appendChild(el('span','unit', r.unit)); }
+      t.appendChild(v);
+      t.appendChild(el('div','foot', r.foot));
+      box.appendChild(t);
+    });
+  }
+
+  /* ---- ② 일별 노출·클릭 겹침 막대 ---- */
+  function renderDaily(d){
+    var box = document.getElementById('dailyChart'); box.textContent='';
+    var daily = (d && d.daily_90d) || [];
+    var withData = daily.filter(function(r){ return (r.impressions||0) > 0 || (r.clicks||0) > 0; });
+    if(!withData.length){
+      box.appendChild(el('div','empty-note','아직 노출 기록이 없습니다 — 서치콘솔 측정은 ' + MEASURE_START + ' 시작이고 데이터가 약 2일 지연되어 들어오니, 검색 노출이 생기면 자동으로 채워집니다.'));
+      return;
+    }
+    var chart = el('div','chartbox');
+    var bars = el('div','bars');
+    var max = Math.max.apply(null, daily.map(function(r){ return r.impressions||0; })) || 1;
+    daily.forEach(function(r){
+      var b = el('div','bar');
+      // 사이트 인사이트 KPI 미니바와 같은 방식의 호버 수치(브라우저 기본 툴팁).
+      // 날짜·수치는 아래 caption과 표에도 있어 보조 통로입니다.
+      b.title = r.date + ' · 노출 ' + fmtInt(r.impressions) + ' · 클릭 ' + fmtInt(r.clicks);
+      var imp = el('div','imp'); imp.style.height = Math.round((r.impressions||0)/max*100) + '%';
+      var clk = el('div','clk'); clk.style.height = Math.round((r.clicks||0)/max*100) + '%';
+      b.appendChild(imp); b.appendChild(clk);
+      bars.appendChild(b);
+    });
+    chart.appendChild(bars);
+    var cap = el('div','chart-caption');
+    cap.appendChild(el('span', null, daily[0].date + ' ~ ' + daily[daily.length-1].date + ' · ' + daily.length + '일'));
+    var legend = el('span','legend');
+    var li1 = el('span','li-imp'); li1.appendChild(el('i')); li1.appendChild(document.createTextNode('노출'));
+    var li2 = el('span','li-clk'); li2.appendChild(el('i')); li2.appendChild(document.createTextNode('클릭'));
+    legend.appendChild(li1); legend.appendChild(li2);
+    cap.appendChild(legend);
+    chart.appendChild(cap);
+    box.appendChild(chart);
+  }
+
+  /* ---- ③ 상위 검색어 (4~15위 리라이트 후보 강조) ---- */
+  function renderQueries(d){
+    var box = document.getElementById('queryTable'); box.textContent='';
+    var rows = (d && d.top_queries_90d) || [];
+    if(!rows.length){
+      box.appendChild(el('div','empty-note','아직 노출된 검색어가 없습니다 — 검색 노출이 쌓이면 자동으로 채워집니다.'));
+      return;
+    }
+    var wrap = el('div','tablebox');
+    var table = el('table');
+    var thead = el('thead'), htr = el('tr');
+    ['검색어','노출','클릭','CTR','평균 순위'].forEach(function(h){ htr.appendChild(el('th',null,h)); });
+    thead.appendChild(htr); table.appendChild(thead);
+    var tb = el('tbody');
+    rows.forEach(function(r){
+      var isRw = (r.impressions||0) > 0 && r.position >= 4 && r.position <= 15;
+      var tr = el('tr', isRw ? 'rw' : null);
+      var q = el('td','cell-main', r.query);
+      if(isRw) q.appendChild(el('span','rw-badge','리라이트 후보'));
+      tr.appendChild(q);
+      tr.appendChild(el('td','num', fmtInt(r.impressions)));
+      tr.appendChild(el('td','num', fmtInt(r.clicks)));
+      tr.appendChild(el('td','num', fmtCtr(r.ctr)));
+      tr.appendChild(el('td','num', fmtPos(r.position, r.impressions)));
+      tb.appendChild(tr);
+    });
+    table.appendChild(tb);
+    wrap.appendChild(table);
+    box.appendChild(wrap);
+  }
+
+  /* ---- ④ 상위 페이지 (URL 디코딩 표시) ---- */
+  function renderPages(d){
+    var box = document.getElementById('pageTable'); box.textContent='';
+    var rows = (d && d.top_pages_90d) || [];
+    if(!rows.length){
+      box.appendChild(el('div','empty-note','아직 검색에 노출된 페이지가 없습니다 — 검색 노출이 쌓이면 자동으로 채워집니다.'));
+      return;
+    }
+    var wrap = el('div','tablebox');
+    var table = el('table');
+    var thead = el('thead'), htr = el('tr');
+    ['페이지','노출','클릭','CTR','평균 순위'].forEach(function(h){ htr.appendChild(el('th',null,h)); });
+    thead.appendChild(htr); table.appendChild(thead);
+    var tb = el('tbody');
+    rows.forEach(function(r){
+      var tr = el('tr');
+      var td = el('td','cell-main');
+      var a = el('a', null, prettyUrl(r.page));
+      a.href = r.page; a.target = '_blank'; a.rel = 'noopener noreferrer';
+      td.appendChild(a);
+      tr.appendChild(td);
+      tr.appendChild(el('td','num', fmtInt(r.impressions)));
+      tr.appendChild(el('td','num', fmtInt(r.clicks)));
+      tr.appendChild(el('td','num', fmtCtr(r.ctr)));
+      tr.appendChild(el('td','num', fmtPos(r.position, r.impressions)));
+      tb.appendChild(tr);
+    });
+    table.appendChild(tb);
+    wrap.appendChild(table);
+    box.appendChild(wrap);
+  }
+
+  /* clarity history 한 날짜에서 metrics[key][0]의 필드를 안전하게 꺼냅니다. */
+  function metricOf(day, key){
+    var arr = day && day.metrics && day.metrics[key];
+    return (arr && arr[0]) || {};
+  }
+
+  /* ---- ⑤ UX 품질 카드 + 일별 미니 추이 ---- */
+  function renderUx(d){
+    var box = document.getElementById('uxTiles'); box.textContent='';
+    var ctx = document.getElementById('uxContext'); ctx.textContent='';
+    var history = (d && d.history) || [];
+    if(!history.length){
+      box.appendChild(el('div','empty-note','아직 Clarity 데이터가 없습니다 — 수집 워크플로가 한 번 돌면 채워집니다.'));
+      return;
+    }
+    var latest = history[history.length-1];
+    var traffic = metricOf(latest,'Traffic');
+    var scroll = metricOf(latest,'ScrollDepth');
+    var engage = metricOf(latest,'EngagementTime');
+    var ctxParts = [latest.date + ' 기준', '세션 ' + fmtInt(traffic.totalSessionCount) + '건'];
+    if(traffic.totalBotSessionCount) ctxParts.push('그중 봇 ' + fmtInt(traffic.totalBotSessionCount) + '건');
+    if(traffic.distinctUserCount) ctxParts.push('방문자 ' + fmtInt(traffic.distinctUserCount) + '명');
+    if(scroll.averageScrollDepth != null) ctxParts.push('평균 스크롤 ' + Math.round(scroll.averageScrollDepth) + '%');
+    if(engage.totalTime) ctxParts.push('총 체류 ' + Math.round(engage.totalTime/60) + '분(활성 ' + Math.round((engage.activeTime||0)/60) + '분)');
+    ctx.textContent = ctxParts.join(' · ');
+
+    UX_METRICS.forEach(function(m){
+      var cur = metricOf(latest, m.key);
+      var val = cur.subTotal || 0;
+      var t = el('div','tile' + (val > 0 ? ' is-alert' : ''));
+      t.appendChild(el('div','label', m.label));
+      var v = el('div','val'); v.textContent = fmtInt(val);
+      v.appendChild(el('span','unit','건'));
+      t.appendChild(v);
+
+      var bars = el('div','mini-bars');
+      var series = history.map(function(day){ return { date:day.date, n: metricOf(day, m.key).subTotal || 0 }; });
+      var max = Math.max.apply(null, series.map(function(r){ return r.n; })) || 1;
+      series.forEach(function(r){
+        var b = el('div','b');
+        b.title = r.date + ' · ' + r.n + '건';
+        b.style.height = Math.max(1, Math.round(r.n/max*40)) + 'px';
+        bars.appendChild(b);
+      });
+      t.appendChild(bars);
+
+      var footText = m.foot;
+      if(val > 0 && cur.sessionsWithMetricPercentage != null){
+        footText = '세션의 ' + cur.sessionsWithMetricPercentage.toFixed(1).replace(/\.0$/,'') + '%에서 발생 · ' + m.foot;
+      } else if(val === 0){
+        footText = '발생 없음 · ' + m.foot;
+      }
+      t.appendChild(el('div','foot', footText));
+      box.appendChild(t);
+    });
+  }
+
+  /* ---- ⑥ 사용자가 막히는 페이지 (죽은클릭·분노클릭 subTotal>0인 URL) ---- */
+  function renderFriction(d){
+    var box = document.getElementById('frictionTable'); box.textContent='';
+    var byUrl = (d && d.latest_by_url) || {};
+    /* 같은 페이지가 쿼리스트링 등만 다른 URL 변형으로 여러 줄 잡히므로,
+       디코딩한 경로(prettyUrl) 기준으로 합산합니다. */
+    var merged = {}; // prettyUrl -> {href, dead, rage}
+    [['DeadClickCount','dead'],['RageClickCount','rage']].forEach(function(pair){
+      (byUrl[pair[0]] || []).forEach(function(r){
+        if(!(r.subTotal > 0) || !r.Url) return;
+        var key = prettyUrl(r.Url);
+        var m = merged[key] || (merged[key] = { href:r.Url, dead:0, rage:0 });
+        m[pair[1]] += r.subTotal;
+      });
+    });
+    var keys = Object.keys(merged);
+    if(!keys.length){
+      box.appendChild(el('div','empty-note','최근 수집일 기준으로 죽은 클릭·분노 클릭이 발생한 페이지가 없습니다 — 좋은 상태입니다.'));
+      return;
+    }
+    keys.sort(function(a,b){ return (merged[b].dead + merged[b].rage) - (merged[a].dead + merged[a].rage); });
+    var wrap = el('div','tablebox');
+    var table = el('table');
+    var thead = el('thead'), htr = el('tr');
+    ['페이지','죽은 클릭','분노 클릭'].forEach(function(h){ htr.appendChild(el('th',null,h)); });
+    thead.appendChild(htr); table.appendChild(thead);
+    var tb = el('tbody');
+    keys.slice(0,10).forEach(function(k){
+      var tr = el('tr');
+      var td = el('td','cell-main');
+      var a = el('a', null, k);
+      a.href = merged[k].href; a.target = '_blank'; a.rel = 'noopener noreferrer';
+      td.appendChild(a);
+      tr.appendChild(td);
+      tr.appendChild(el('td','num', fmtInt(merged[k].dead)));
+      tr.appendChild(el('td','num', fmtInt(merged[k].rage)));
+      tb.appendChild(tr);
+    });
+    table.appendChild(tb);
+    wrap.appendChild(table);
+    box.appendChild(wrap);
+  }
+
+  /* 두 파일의 갱신 시각을 나란히 -- 파이프라인이 따로라 어긋날 수 있어서
+     하나로 뭉뚱그리지 않고 각각 보여줍니다. */
+  function stampDataAsOf(){
+    var parts = [];
+    var sc = state.sc && fmtStamp(state.sc.updated_at);
+    var cl = state.cl && fmtStamp(state.cl.updated_at);
+    if(sc) parts.push('서치콘솔 ' + sc);
+    if(cl) parts.push('Clarity ' + cl);
+    document.getElementById('dataAsOf').textContent =
+      parts.length ? '· 데이터 기준 ' + parts.join(' · ') : '· 데이터 수집 전';
+  }
+
+  function fetchJson(url){
+    return fetch(url + '?t=' + Date.now(), { cache:'no-store' })
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .catch(function(){ return null; });
+  }
+
+  /* 한쪽 파일이 아직 없어도(404) 다른 쪽은 정상 렌더 -- 실패는 각 섹션의
+     빈 상태 문구로 흡수합니다. */
+  function load(){
+    return Promise.all([fetchJson(SC_URL), fetchJson(CL_URL)]).then(function(res){
+      state.sc = res[0];
+      state.cl = res[1];
+      renderScTiles(state.sc);
+      renderDaily(state.sc);
+      renderQueries(state.sc);
+      renderPages(state.sc);
+      renderUx(state.cl);
+      renderFriction(state.cl);
+      stampDataAsOf();
+      return !!(state.sc || state.cl);
+    });
+  }
+
+  document.getElementById('refreshBtn').addEventListener('click', function(){
+    var btn = this;
+    Studio.setRefreshState(btn, 'loading');
+    load().then(function(ok){
+      Studio.setRefreshState(btn, ok ? 'success' : 'error');
+      setTimeout(function(){ Studio.setRefreshState(btn, 'idle'); }, 1600);
+    });
+  });
+
+  load();
+})();
+</script>
+<script src="/insight-7b3e9f2c/studio.js"></script>
+</body>
+</html>
