@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-08-29T07:52:23.741628+00:00",
+  "updated_at": "2026-08-29T13:17:34.268945+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 80,
-    "activeUsers": 36,
-    "newUsers": 35,
-    "returningUsers": 1
+    "sessions": 85,
+    "activeUsers": 40,
+    "newUsers": 40,
+    "returningUsers": 0
   },
   "daily": [
     {
@@ -26,15 +26,15 @@
       "date": "2026-08-28",
       "sessions": 27,
       "activeUsers": 9,
-      "newUsers": 5,
-      "returningUsers": 4
+      "newUsers": 6,
+      "returningUsers": 3
     },
     {
       "date": "2026-08-29",
-      "sessions": 10,
-      "activeUsers": 6,
-      "newUsers": 4,
-      "returningUsers": 2
+      "sessions": 17,
+      "activeUsers": 11,
+      "newUsers": 8,
+      "returningUsers": 3
     }
   ],
   "daily_leads": [
@@ -48,38 +48,38 @@
     }
   ],
   "landing_types": {
-    "home": 73,
+    "home": 62,
     "log_home": 6,
-    "individual_post": 23,
-    "other": 9
+    "individual_post": 14,
+    "other": 11
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 51
-    },
-    {
-      "source": "(not set)",
-      "sessions": 27
+      "sessions": 57
     },
     {
       "source": "searchadvisor.naver.com",
-      "sessions": 13
+      "sessions": 12
+    },
+    {
+      "source": "(not set)",
+      "sessions": 11
     },
     {
       "source": "l.facebook.com",
-      "sessions": 5
+      "sessions": 7
     },
     {
       "source": "google",
       "sessions": 4
     },
     {
-      "source": "brunch.co.kr",
-      "sessions": 1
+      "source": "linkedin.com",
+      "sessions": 2
     },
     {
-      "source": "linkedin.com",
+      "source": "brunch.co.kr",
       "sessions": 1
     },
     {
@@ -89,12 +89,12 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 241,
-    "section_view_voices": 176,
-    "section_view_book_class": 106,
-    "section_view_faq": 95,
-    "faq_open": 16,
-    "read_complete": 180
+    "section_view_proven": 248,
+    "section_view_voices": 179,
+    "section_view_book_class": 109,
+    "section_view_faq": 98,
+    "faq_open": 18,
+    "read_complete": 183
   },
   "contact_funnel": {
     "contact_open": 27,
@@ -105,33 +105,33 @@
     {
       "path": "/",
       "title": "홈",
-      "count": 2
+      "count": 1
     },
     {
       "path": "/log.html",
       "title": "로그 목록",
       "count": 1
+    },
+    {
+      "path": "/log_assets/markdown/300_뛰어난 PO는 데이터를 어떻게 볼까.html",
+      "title": "/log_assets/markdown/300_뛰어난 PO는 데이터를 어떻게 볼까.html",
+      "count": 1
     }
   ],
   "top_landing_posts": [
-    {
-      "path": "/log_assets/markdown/009_PM의 고수는 감정을 어떻게 다룰까.html",
-      "title": "/log_assets/markdown/009_PM의 고수는 감정을 어떻게 다룰까.html",
-      "sessions": 3
-    },
     {
       "path": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
       "title": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
       "sessions": 3
     },
     {
-      "path": "/log_assets/markdown/122_미국 진출은 누구에게 필요한 전략인가.html",
-      "title": "/log_assets/markdown/122_미국 진출은 누구에게 필요한 전략인가.html",
+      "path": "/log_assets/markdown/009_PM의 고수는 감정을 어떻게 다룰까.html",
+      "title": "/log_assets/markdown/009_PM의 고수는 감정을 어떻게 다룰까.html",
       "sessions": 2
     },
     {
-      "path": "/log_assets/markdown/592_프로덕트팀의 생산속도 향상을 위한 9가지 전략.html",
-      "title": "/log_assets/markdown/592_프로덕트팀의 생산속도 향상을 위한 9가지 전략.html",
+      "path": "/log_assets/markdown/300_뛰어난 PO는 데이터를 어떻게 볼까.html",
+      "title": "/log_assets/markdown/300_뛰어난 PO는 데이터를 어떻게 볼까.html",
       "sessions": 2
     },
     {
@@ -145,18 +145,8 @@
       "sessions": 1
     },
     {
-      "path": "/log_assets/markdown/130_왜 한국 스타트업은 미국 진출을 꿈꾸는가.html",
-      "title": "/log_assets/markdown/130_왜 한국 스타트업은 미국 진출을 꿈꾸는가.html",
-      "sessions": 1
-    },
-    {
-      "path": "/log_assets/markdown/240_데일리 스크럼이 필수일까.html",
-      "title": "/log_assets/markdown/240_데일리 스크럼이 필수일까.html",
-      "sessions": 1
-    },
-    {
-      "path": "/log_assets/markdown/260_애자일 매니페스토란.html",
-      "title": "/log_assets/markdown/260_애자일 매니페스토란.html",
+      "path": "/log_assets/markdown/122_미국 진출은 누구에게 필요한 전략인가.html",
+      "title": "/log_assets/markdown/122_미국 진출은 누구에게 필요한 전략인가.html",
       "sessions": 1
     },
     {
@@ -165,28 +155,18 @@
       "sessions": 1
     },
     {
-      "path": "/log_assets/markdown/298_뛰어난 스타트업 대표는 무엇이 다를까.html",
-      "title": "/log_assets/markdown/298_뛰어난 스타트업 대표는 무엇이 다를까.html",
-      "sessions": 1
-    },
-    {
-      "path": "/log_assets/markdown/300_뛰어난 PO는 데이터를 어떻게 볼까.html",
-      "title": "/log_assets/markdown/300_뛰어난 PO는 데이터를 어떻게 볼까.html",
-      "sessions": 1
-    },
-    {
       "path": "/log_assets/markdown/492_IT 서비스를 잘 만드는 회사의 7가지 특징.html",
       "title": "/log_assets/markdown/492_IT 서비스를 잘 만드는 회사의 7가지 특징.html",
       "sessions": 1
     },
     {
-      "path": "/log_assets/markdown/548_나는 운이 좋다.html",
-      "title": "/log_assets/markdown/548_나는 운이 좋다.html",
+      "path": "/log_assets/markdown/592_프로덕트팀의 생산속도 향상을 위한 9가지 전략.html",
+      "title": "/log_assets/markdown/592_프로덕트팀의 생산속도 향상을 위한 9가지 전략.html",
       "sessions": 1
     },
     {
-      "path": "/log_assets/markdown/594_회사사이트 있으시죠.html",
-      "title": "/log_assets/markdown/594_회사사이트 있으시죠.html",
+      "path": "/log_assets/markdown/614_코치S 17화 두둥~ 한교수의 등장.html",
+      "title": "/log_assets/markdown/614_코치S 17화 두둥~ 한교수의 등장.html",
       "sessions": 1
     }
   ],
@@ -195,7 +175,7 @@
       "path": "/log_assets/markdown/130_왜 한국 스타트업은 미국 진출을 꿈꾸는가.html",
       "title": "/log_assets/markdown/130_왜 한국 스타트업은 미국 진출을 꿈꾸는가.html",
       "uniqueViews": 5,
-      "views": 15
+      "views": 16
     },
     {
       "path": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
@@ -279,7 +259,7 @@
       "path": "/log_assets/markdown/401_코치S 1화 '문제해결사'.html",
       "title": "/log_assets/markdown/401_코치S 1화 '문제해결사'.html",
       "uniqueViews": 2,
-      "views": 3
+      "views": 4
     }
   ]
 }
