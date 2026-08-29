@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-08-29T03:09:15.925282+00:00",
+  "updated_at": "2026-08-29T07:52:23.741628+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 75,
-    "activeUsers": 35,
-    "newUsers": 34,
+    "sessions": 80,
+    "activeUsers": 36,
+    "newUsers": 35,
     "returningUsers": 1
   },
   "daily": [
@@ -31,9 +31,9 @@
     },
     {
       "date": "2026-08-29",
-      "sessions": 5,
-      "activeUsers": 5,
-      "newUsers": 3,
+      "sessions": 10,
+      "activeUsers": 6,
+      "newUsers": 4,
       "returningUsers": 2
     }
   ],
@@ -48,7 +48,7 @@
     }
   ],
   "landing_types": {
-    "home": 65,
+    "home": 73,
     "log_home": 6,
     "individual_post": 23,
     "other": 9
@@ -56,23 +56,23 @@
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 49
+      "sessions": 51
     },
     {
       "source": "(not set)",
-      "sessions": 23
+      "sessions": 27
     },
     {
       "source": "searchadvisor.naver.com",
       "sessions": 13
     },
     {
-      "source": "google",
-      "sessions": 4
+      "source": "l.facebook.com",
+      "sessions": 5
     },
     {
-      "source": "l.facebook.com",
-      "sessions": 3
+      "source": "google",
+      "sessions": 4
     },
     {
       "source": "brunch.co.kr",
@@ -89,15 +89,15 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 231,
-    "section_view_voices": 169,
-    "section_view_book_class": 103,
-    "section_view_faq": 92,
+    "section_view_proven": 241,
+    "section_view_voices": 176,
+    "section_view_book_class": 106,
+    "section_view_faq": 95,
     "faq_open": 16,
-    "read_complete": 179
+    "read_complete": 180
   },
   "contact_funnel": {
-    "contact_open": 26,
+    "contact_open": 27,
     "generate_lead": 3,
     "contact_error": 3
   },
@@ -234,6 +234,12 @@
       "views": 5
     },
     {
+      "path": "/log_assets/markdown/199_AI시대 슈퍼컴퓨터가 필요한 이유.html",
+      "title": "/log_assets/markdown/199_AI시대 슈퍼컴퓨터가 필요한 이유.html",
+      "uniqueViews": 2,
+      "views": 5
+    },
+    {
       "path": "/log_assets/markdown/259_고객을 정의하는 법 '페르소나'.html",
       "title": "/log_assets/markdown/259_고객을 정의하는 법 '페르소나'.html",
       "uniqueViews": 2,
@@ -274,12 +280,6 @@
       "title": "/log_assets/markdown/401_코치S 1화 '문제해결사'.html",
       "uniqueViews": 2,
       "views": 3
-    },
-    {
-      "path": "/log_assets/markdown/611_당신의 서비스가 말을 한다면.html",
-      "title": "/log_assets/markdown/611_당신의 서비스가 말을 한다면.html",
-      "uniqueViews": 2,
-      "views": 9
     }
   ]
 }
