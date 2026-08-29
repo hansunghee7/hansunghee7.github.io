@@ -26,6 +26,8 @@
   .dropdown-menu a { padding: 10px 20px; font-size: 13.5px; color: #2a2822; transition: color 0.2s, background 0.2s; text-align: left; text-decoration: none; display:flex; align-items:center; gap:7px; }
   .dropdown-menu a .cat-name { flex:1; min-width:0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .dropdown-menu a:hover, .dropdown-menu a:focus { color: #080808; background: rgba(8,8,8,0.06); }
+  /* About 드롭다운의 첫 항목(프로필)만 굵게 -- 나머지(책·클래스)와 성격이 달라 구분 */
+  .dropdown-menu a.primary .cat-name { font-weight: 600; }
   /* 완결 시리즈 표시 — 기간을 정해놓고 끝낸 기획이라 "새 글이 없는 게 정상"임을 알립니다 */
   .cat-done { flex-shrink:0; font-size: 10.5px; line-height:1; letter-spacing:0.02em; color: #8f8b82; border: 1px solid rgba(8,8,8,0.18); border-radius: 999px; padding: 3px 7px; }
   .dropdown-sep { height:1px; background: rgba(8,8,8,0.12); margin: 9px 20px; }
@@ -56,6 +58,7 @@
   .mobile-submenu { padding: 2px 0 14px 2px; display: flex; flex-direction: column; gap: 2px; }
   .mobile-submenu a { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 16px; color: #8f8b82; text-decoration: none; word-break: keep-all; padding: 11px 0; touch-action: manipulation; }
   .mobile-submenu a:hover { color: #f5f3ee; }
+  .mobile-submenu a.primary { color: #f5f3ee; font-weight: 500; }
   /* 모바일 메뉴는 어두운 배경이라 배지 색을 따로 잡습니다 */
   .mobile-submenu .cat-done { display:inline-block; margin-left:8px; font-size:10.5px; line-height:1; letter-spacing:0.02em; color:#8f8b82; border:1px solid rgba(245,243,238,0.22); border-radius:999px; padding:3px 7px; vertical-align:2px; }
   .mobile-sep { height:1px; background: rgba(245,243,238,0.14); margin: 10px 0 4px; }
@@ -106,13 +109,14 @@
           </div>
         </div>
         <div class="nav-item">
-          <!-- 보류: /speaking/ 페이지 디자인을 다시 잡는 중이라 노출하지 않습니다.
-               재개할 때 이 메뉴를 "Work with"로 바꾸고 맨 위에
-               <a href="/speaking/">강연 · 워크숍</a> + 구분선을 넣으면 됩니다. -->
-          <button type="button">Book & Class</button>
+          <!-- Book & Class 흡수. 첫 항목이 About 페이지, 아래는 기존 책/클래스 3종.
+               유니콘의 리더십은 아직 온사이트 페이지가 없어 외부 링크 유지. -->
+          <button type="button">About</button>
           <div class="dropdown-menu">
-            <a href="https://www.yes24.com/product/goods/147079674" target="_blank" rel="noopener"><span class="cat-name">기획자의 질문법</span></a>
-            <a href="https://www.yes24.com/product/goods/193444437" target="_blank" rel="noopener"><span class="cat-name">UX의 언어들</span></a>
+            <a href="/about/" class="primary"><span class="cat-name">심플리파이어 소개</span></a>
+            <div class="dropdown-sep"></div>
+            <a href="/book/기획자의-질문법.html"><span class="cat-name">기획자의 질문법</span></a>
+            <a href="/book/UX의-언어들.html"><span class="cat-name">UX의 언어들</span></a>
             <a href="https://www.classu.co.kr/new/class/1019442" target="_blank" rel="noopener"><span class="cat-name">유니콘의 리더십</span></a>
           </div>
         </div>
@@ -158,11 +162,12 @@
         <a href="/log/토크세션.html">토크세션</a>
       </div>
     </details>
-    <!-- 보류: /speaking/ 노출 중단. 재개 시 "Work with"로 변경 + 강연 항목 추가 -->
-    <details class="mobile-details"><summary class="mobile-summary">Book & Class</summary>
+    <details class="mobile-details"><summary class="mobile-summary">About</summary>
       <div class="mobile-submenu">
-        <a href="https://www.yes24.com/product/goods/147079674" target="_blank" rel="noopener">기획자의 질문법</a>
-        <a href="https://www.yes24.com/product/goods/193444437" target="_blank" rel="noopener">UX의 언어들</a>
+        <a href="/about/" class="primary">심플리파이어 소개</a>
+        <div class="mobile-sep"></div>
+        <a href="/book/기획자의-질문법.html">기획자의 질문법</a>
+        <a href="/book/UX의-언어들.html">UX의 언어들</a>
         <a href="https://www.classu.co.kr/new/class/1019442" target="_blank" rel="noopener">유니콘의 리더십</a>
       </div>
     </details>
