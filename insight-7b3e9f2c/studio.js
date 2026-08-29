@@ -32,12 +32,38 @@
     var nav = document.getElementById("adminShellNav");
     if (!nav) return;
     var here = location.pathname;
+    var linksHtml = STUDIO_NAV.map(function (item) {
+      var active = item.href === here;
+      return '<a href="' + escapeHtmlAttr(item.href) + '"' + (active ? ' class="active"' : "") + ">" + escapeHtmlAttr(item.label) + "</a>";
+    }).join("");
+    // 모바일에서만 보이는 햄버거 버튼 + 펼침 목록. 데스크톱은 CSS가 버튼을
+    // 숨기고 .shell-links를 원래처럼 세로로 그냥 보여준다(별도 처리 없음).
     nav.innerHTML =
       '<div class="shell-title">Simplifier Studio</div>' +
-      STUDIO_NAV.map(function (item) {
-        var active = item.href === here;
-        return '<a href="' + escapeHtmlAttr(item.href) + '"' + (active ? ' class="active"' : "") + ">" + escapeHtmlAttr(item.label) + "</a>";
-      }).join("");
+      '<button type="button" class="shell-burger" id="shellBurger" aria-label="메뉴 열기" aria-expanded="false" aria-controls="shellLinks"><span></span><span></span><span></span></button>' +
+      '<div class="shell-links" id="shellLinks">' + linksHtml + "</div>";
+
+    var burger = document.getElementById("shellBurger");
+    var links = document.getElementById("shellLinks");
+    if (!burger || !links) return;
+
+    function setOpen(open) {
+      links.classList.toggle("open", open);
+      burger.classList.toggle("open", open);
+      burger.setAttribute("aria-expanded", open ? "true" : "false");
+      burger.setAttribute("aria-label", open ? "메뉴 닫기" : "메뉴 열기");
+    }
+    burger.addEventListener("click", function (e) {
+      e.stopPropagation();
+      setOpen(!links.classList.contains("open"));
+    });
+    // 링크 목록 바깥을 탭하면 닫는다(같은 페이지 안에서 다시 탭할 수 있으므로
+    // 링크 클릭 자체는 페이지 이동으로 자연스럽게 닫힘 처리됨).
+    document.addEventListener("click", function (e) {
+      if (!links.classList.contains("open")) return;
+      if (nav.contains(e.target)) return;
+      setOpen(false);
+    });
   }
 
   /* ⓘ(및 사이트 인사이트에서만 쓰는 "?" 섹션 설명 .h2note-q)는 마우스를
