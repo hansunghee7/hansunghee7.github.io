@@ -331,6 +331,7 @@ def fetch_screen_resolutions(client, property_id):
         limit=100,
     )
     rows = []
+    invalid_sessions = 0
     for r in resp.rows:
         resolution = r.dimension_values[0].value or ""
         sessions = int(r.metric_values[0].value)
@@ -340,12 +341,20 @@ def fetch_screen_resolutions(client, property_id):
                 width = int(resolution.split("x")[0])
             except ValueError:
                 width = 0
+        # "0x0"은 화면 크기가 아니라 "측정 불가" -- 헤드리스 브라우저·크롤러가
+        # 이렇게 보고한다(2026-08-30 첫 수집에서 데스크톱 세션의 23%가 이것이었다).
+        # 분모에 넣으면 "넓은 화면 비율"이 실제보다 낮게 나와 폭 정책을 잘못
+        # 판단하게 되므로 집계에서 빼고, 몇 건이었는지는 따로 기록해 남긴다.
+        if width <= 0:
+            invalid_sessions += sessions
+            continue
         rows.append({"resolution": resolution, "width": width, "sessions": sessions})
     rows.sort(key=lambda x: -x["sessions"])
     total = sum(r["sessions"] for r in rows)
     return {
         "range": "last_90_days",
         "total_desktop_sessions": total,
+        "excluded_invalid_sessions": invalid_sessions,
         "by_resolution": rows[:20],
     }
 

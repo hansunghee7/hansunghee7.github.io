@@ -682,7 +682,10 @@
 
   /* 데스크톱 화면 해상도 분포 -- 너비 정책(표준형 1200px)의 실측 참고선.
      2026-08-30 수집 시작이라 그 전 스냅샷에는 키 자체가 없다 -- 그 경우
-     에러가 아니라 "다음 수집 때 채워짐"으로 안내한다. */
+     에러가 아니라 "다음 수집 때 채워짐"으로 안내한다.
+     "0x0"(헤드리스 브라우저·크롤러가 보고하는 값)은 화면 크기가 아니라
+     측정 불가라서 집계에서 뺀다 -- 수집 스크립트가 이미 거르지만, 그 전에
+     저장된 스냅샷에는 남아 있어서 여기서도 방어적으로 한 번 더 거른다. */
   function renderScreenRes(d){
     var box = document.getElementById('screenResTable'); box.textContent='';
     var sr = d.desktop_screen_resolutions;
@@ -690,12 +693,20 @@
       box.appendChild(el('div','note','아직 수집 전입니다 — 2026-08-30 추가된 지표라 다음 자동 수집 때부터 채워집니다.'));
       return;
     }
-    var total = sr.total_desktop_sessions || 0;
+    var valid = (sr.by_resolution||[]).filter(function(r){ return r.width > 0; });
+    var dropped = (sr.by_resolution||[]).reduce(function(s,r){ return s + (r.width > 0 ? 0 : (r.sessions||0)); }, 0)
+      + (sr.excluded_invalid_sessions || 0);
+    var total = valid.reduce(function(s,r){ return s + (r.sessions||0); }, 0);
+    if(!total){
+      box.appendChild(el('div','note','유효한 해상도 기록이 아직 없습니다.'));
+      return;
+    }
     var wide = 0;
-    sr.by_resolution.forEach(function(r){ if(r.width >= 1280) wide += r.sessions; });
+    valid.forEach(function(r){ if(r.width >= 1280) wide += r.sessions; });
     var summary = el('div','note',
       '데스크톱 세션 ' + total.toLocaleString() + '건 중 폭 1280px 이상 화면이 '
-      + (total ? Math.round(wide/total*100) : 0) + '% — 표준형(1200px) 컨테이너가 잘리지 않고 표시되는 비율입니다.');
+      + Math.round(wide/total*100) + '% — 표준형(1200px) 컨테이너가 잘리지 않고 표시되는 비율입니다.'
+      + (dropped ? ' (해상도를 보고하지 않은 세션 ' + dropped.toLocaleString() + '건은 크롤러로 보고 제외했습니다.)' : ''));
     summary.style.padding = '10px 14px 0';
     box.appendChild(summary);
     var table = el('table');
@@ -703,7 +714,7 @@
     ['해상도','세션','비중'].forEach(function(h){ htr.appendChild(el('th',null,h)); });
     thead.appendChild(htr); table.appendChild(thead);
     var tb = el('tbody');
-    sr.by_resolution.slice(0,10).forEach(function(r){
+    valid.slice(0,10).forEach(function(r){
       var tr = el('tr');
       tr.appendChild(el('td',null,r.resolution));
       tr.appendChild(el('td','num',(r.sessions||0).toLocaleString()));
