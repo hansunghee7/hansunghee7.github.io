@@ -145,3 +145,28 @@ body.has-shell-nav{padding-left:180px;}
 
 .loading, .err{font-size:13px; color:var(--muted); padding:20px 0;}
 .err{color:var(--bad);}
+
+/* ---- 인사이트 카드 공통(2026-08-30) -- 사이트/검색·UX/북/SNS 인사이트가
+   같은 카드를 페이지마다 복붙하다 테두리·숫자 굵기·크기가 제각각 어긋나서
+   여기로 승격했다. 페이지는 페이지 고유 변형만 자기 <style>에 선언한다.
+     표준: 흰 카드 + --line 테두리 + radius 10 / 숫자 32px·굵기 500 /
+           단위 15px --dim / 델타 12px·600(상승 --good, 하락 --bad)
+     .tile-sm: 컴팩트 변형(북 인사이트처럼 타일이 수십 개인 고밀도 화면 전용)
+     .tile-accent: 강조 변형(합계·대표 지표 -- #f7f6f2 배경)
+   그래프는 데이터 성격으로 고른다: 누적 추이(팔로워·판매지수)=라인
+   스파크라인(stroke는 --ink 값), 일별 발생량(방문·노출)=막대(mini-bars). ---- */
+.tiles{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px;}
+.tile{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:18px 18px 16px; min-width:0;}
+.tile .label{font-size:12px; color:var(--muted); margin-bottom:9px; line-height:1.4;}
+.tile .val{font-weight:500; font-size:32px; line-height:1; letter-spacing:-0.01em;}
+.tile .val .unit{font-size:15px; color:var(--dim); margin-left:3px;}
+.tile .foot{font-size:11.5px; color:var(--muted); margin-top:9px; line-height:1.5;}
+.tile .delta{font-size:12px; font-weight:600;}
+.tile .delta.up{color:var(--good);}
+.tile .delta.down{color:var(--bad);}
+.tile.is-empty{opacity:0.45;}
+.tile.tile-accent{background:#f7f6f2;}
+.tile.tile-sm{padding:12px 14px;}
+.tile.tile-sm .val{font-size:26px;}
+.tile.tile-sm .val .unit{font-size:13px;}
+.tile.tile-sm .label{margin-bottom:6px;}

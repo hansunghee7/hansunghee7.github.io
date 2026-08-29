@@ -28,13 +28,8 @@
   h2{font-size:17px; font-weight:700; letter-spacing:-0.01em; color:var(--ink); margin:0 0 16px; display:flex; align-items:center; gap:7px;}
   h2 .sub{font-size:12px; font-weight:400; color:var(--muted); letter-spacing:0;}
 
-  /* ---- 숫자 타일 (사이트 인사이트의 .tiles 패턴) ---- */
-  .tiles{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px;}
-  .tile{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:18px 18px 16px;}
-  .tile .label{font-size:12px; color:var(--muted); margin-bottom:9px; line-height:1.4;}
-  .tile .val{font-weight:500; font-size:32px; line-height:1; letter-spacing:-0.01em;}
-  .tile .val .unit{font-size:15px; color:var(--dim); margin-left:3px;}
-  .tile .foot{font-size:11.5px; color:var(--muted); margin-top:9px; line-height:1.5;}
+  /* ---- 숫자 타일: 기본형은 studio.css의 .tile 표준(2026-08-30 승격),
+     여기엔 이 페이지 고유 요소(미니 막대·경보 색)만 둔다 ---- */
   .tile .mini-bars{display:flex; align-items:flex-end; gap:1.5px; height:40px; margin-top:12px;}
   .tile .mini-bars .b{flex:1; max-width:22px; background:linear-gradient(180deg,#a5a299,#6e6a62); border-radius:1px; min-height:1px;}
   .tile.is-alert .val{color:var(--bad);}

@@ -19,27 +19,22 @@
   .info-text{max-width:min(360px, 90vw);}
   #titleInfo .info-text{max-width:min(480px, 90vw);}
 
-  #grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:16px;}
-  .platform-card{border:1px solid var(--line-soft); border-radius:10px; padding:18px;}
-  .platform-card.is-empty{opacity:0.45;}
-  .platform-card.total-card{grid-column:1 / -1; background:#f7f6f2; border-color:var(--line);}
-  .platform-card.total-card .count{font-size:38px;}
+  /* 카드 기본형(테두리·radius·숫자 굵기 500·크기 32px·델타 12px)은
+     studio.css의 .tile 표준을 그대로 쓴다(2026-08-30 통일 -- 이전엔 이
+     페이지만 --line-soft 연한 테두리 + 700 굵은 숫자라 톤이 달랐다).
+     아래는 이 페이지 고유 변형만: 플랫폼 카드는 스파크라인이 있어 더
+     넓고(260px), 플랫폼명 h3·바로가기 링크·출처 배지가 추가된다. */
+  #grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:12px;}
+  .platform-card.total-card{grid-column:1 / -1;}
+  .platform-card.total-card .val{font-size:38px;}
   .platform-card h3{margin:0 0 4px; font-size:14px; font-weight:600; display:flex; align-items:center; gap:6px;}
   .platform-card .shortcut-link{font-size:12px; font-weight:600; color:var(--muted); text-decoration:none; border:1px solid var(--line-soft); border-radius:5px; width:18px; height:18px; display:inline-flex; align-items:center; justify-content:center; line-height:1;}
   .platform-card .shortcut-link:hover{color:var(--ink); border-color:var(--ink);}
   .platform-card .source-badge{font-size:10.5px; font-weight:500; color:var(--muted); text-transform:uppercase; letter-spacing:0.03em;}
   .platform-card .latest{display:flex; align-items:baseline; gap:8px; margin:10px 0 6px;}
-  .platform-card .latest .count{font-size:30px; font-weight:700;}
-  .platform-card .latest .delta{font-size:13px; font-weight:600;}
-  .platform-card .latest .delta.up{color:var(--good);}
-  .platform-card .latest .delta.down{color:var(--bad);}
-  .platform-card .latest .unit{font-size:12px; color:var(--muted);}
   .platform-card svg{width:100%; height:56px; display:block;}
   .platform-card .empty{font-size:12px; color:var(--muted); padding:20px 0; text-align:center;}
   .platform-card .secondary-stat{font-size:11.5px; color:var(--muted); margin-top:8px;}
-
-  .loading, .err{font-size:13px; color:var(--muted); padding:20px 0;}
-  .err{color:var(--bad);}
 </style>
 </head>
 <body class="has-shell-nav">
@@ -178,9 +173,9 @@
     var infoDot = '<button type="button" class="info-dot" aria-label="설명 보기">ⓘ<span class="info-text">' + escapeHtml(totalSeries.length + "개 날짜 기록") + "</span></button>";
 
     return (
-      '<div class="platform-card total-card"><h3>전체 합계' + infoDot + "</h3>" +
+      '<div class="tile tile-accent platform-card total-card"><h3>전체 합계' + infoDot + "</h3>" +
       '<span class="source-badge">' + channelCount + "개 채널 합산</span>" +
-      '<div class="latest"><span class="count">' + totalNow.toLocaleString() + "</span>" + deltaHtml + '<span class="unit">명</span></div>' +
+      '<div class="latest"><span class="val">' + totalNow.toLocaleString() + '<span class="unit">명</span></span>' + deltaHtml + "</div>" +
       (totalSeries.length ? sparkline(totalSeries, 900) : "") +
       "</div>"
     );
@@ -218,7 +213,7 @@
     var series = data[p.key] || [];
     if (!series.length) {
       return (
-        '<div class="platform-card is-empty">' + headerHtml(p) +
+        '<div class="tile platform-card is-empty">' + headerHtml(p) +
         '<span class="source-badge">' + escapeHtml(p.source) + "</span>" +
         '<div class="empty">아직 기록된 데이터가 없습니다</div></div>'
       );
@@ -243,9 +238,9 @@
     var infoDot = '<button type="button" class="info-dot" aria-label="설명 보기">ⓘ<span class="info-text">' + escapeHtml(infoTitle) + "</span></button>";
 
     return (
-      '<div class="platform-card">' + headerHtml(p, infoDot) +
+      '<div class="tile platform-card">' + headerHtml(p, infoDot) +
       '<span class="source-badge">' + escapeHtml(p.source) + "</span>" +
-      '<div class="latest"><span class="count">' + latest.count.toLocaleString() + "</span>" + deltaHtml + '<span class="unit">명</span></div>' +
+      '<div class="latest"><span class="val">' + latest.count.toLocaleString() + '<span class="unit">명</span></span>' + deltaHtml + "</div>" +
       sparkline(series) +
       secondaryHtml +
       "</div>"
