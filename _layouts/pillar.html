@@ -159,7 +159,10 @@
   .pillar-more summary::after{ content:'▾'; font-size:11px; transition:transform .15s; }
   .pillar-more summary:hover{ color:#fff; background:rgba(245,243,238,0.16); border-color:rgba(245,243,238,0.5); }
 
-  .pillar-more[open] summary{ position:relative; z-index:101; color:#f5f3ee; }
+  /* summary가 z-index:101로 backdrop(99)/모달카드(100)보다 위에 떠서
+     "더보기 ✕" 버튼이 모달 앞에 겹쳐 보이던 버그. summary는 모달이 열려있는
+     동안 backdrop에 자연스럽게 가려져야 한다(닫기는 카드 안 X 버튼/Esc가 담당). */
+  .pillar-more[open] summary{ color:#f5f3ee; }
   .pillar-more[open] summary::after{ content:'✕'; transform:none; }
 
   .pillar-more[open]::before{
