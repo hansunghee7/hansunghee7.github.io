@@ -1,5 +1,10 @@
 # 심플리파이어 통합 UX 가이드
 
+> 이 문서를 사람이 읽기 좋게 렌더링한 화면: Simplifier Studio →
+> [통합 UX 가이드](/insight-7b3e9f2c/style-guide.html)(`insight-7b3e9f2c/style-guide.html`).
+> 내용을 고칠 땐 이 마크다운과 그 HTML을 함께 업데이트하세요 — 자동 동기화
+> 파이프라인은 없습니다.
+
 이 저장소는 성격이 다른 두 화면을 동시에 갖고 있습니다 — **고객과 만나는 공개
 홈페이지**(simplifier.co.kr, 검색엔진 노출이 목적)와 **관리자 전용 심플리파이어
 스튜디오**(`insight-7b3e9f2c/`, `noindex`로 숨긴 내부 도구). 지금까지 두 화면은
