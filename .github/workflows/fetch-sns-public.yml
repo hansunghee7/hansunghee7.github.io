@@ -1,0 +1,64 @@
+name: Fetch SNS public
+
+# 로그인 없이 공개 페이지에서 숫자가 보이는 SNS 3개(브런치·네이버 블로그·
+# 로켓펀치)를 매일 자동 수집한다. 나머지 5개(링크드인·페이스북·인스타그램·
+# 스레드·리멤버)는 로그인 벽 때문에 서버에서 못 읽으므로 계속 크롬 확장
+# (_sns-extension/)이 담당한다 -- 자세한 이유는 scripts/fetch_sns_public.py
+# 상단 주석 참고.
+#
+# 새벽 수집 순번 0 (04:11 KST) -- 모닝 브리핑(06:00)까지 여유를 두고 가장
+# 먼저 돈다. 정각을 피하고 분을 분산하는 건 GitHub 예약 작업이 혼잡 시
+# 지연·누락되기 쉬워서다(다른 수집 워크플로와 같은 방침).
+# 저녁 재시도 한 번 -- 아침에 실패해도 그날 기록이 통째로 비지 않게.
+on:
+  schedule:
+    - cron: "11 19 * * *"  # 04:11 KST
+    - cron: "43 11 * * *"  # 20:43 KST (아침 실행 실패 대비 재시도)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-sns-public
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Playwright
+        run: |
+          pip install playwright
+          playwright install --with-deps chromium
+
+      - name: Fetch SNS follower counts (공개 페이지 3종)
+        run: python scripts/fetch_sns_public.py
+
+      - name: Commit if any changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/data/sns-insight.json
+          if git diff --cached --quiet; then
+            echo "no changes to commit"
+          else
+            git commit -m "chore: SNS 공개 채널 자동 수집 [skip ci]"
+            # 같은 시각에 다른 워크플로가 먼저 푸시하면 non-fast-forward로
+            # 거절된다. rebase 후 재시도한다(다른 수집 워크플로와 동일).
+            n=0
+            until git push; do
+              n=$((n+1))
+              if [ $n -ge 3 ]; then echo "push 3회 실패"; exit 1; fi
+              git pull --rebase origin main
+            done
+          fi
