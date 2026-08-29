@@ -17,3 +17,10 @@ exclude:
   - insight-7b3e9f2c/STYLE_GUIDE.md
   - admin-legacy/README.md
   - _sns-extension/README.md
+  # build-check.yml(CI)에서 gem이 저장소 안 vendor/에 설치되는데, Jekyll이
+  # 이 폴더까지 빌드하려다 실패한 사고(2026-08-29, build-check 3연속 실패)의
+  # 재발 방지. Gemfile 두 개는 빌드 결과물(라이브 사이트)에 배포될 필요가
+  # 없어서 함께 제외.
+  - vendor/
+  - Gemfile
+  - Gemfile.lock
