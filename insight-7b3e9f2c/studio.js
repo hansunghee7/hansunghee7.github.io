@@ -11,6 +11,7 @@
   var STUDIO_NAV = [
     { href: "/insight-7b3e9f2c/", label: "사이트 인사이트" },
     { href: "/insight-7b3e9f2c/system-map.html", label: "시스템 구조" },
+    { href: "/insight-7b3e9f2c/style-guide.html", label: "스타일 가이드" },
     { href: "/insight-7b3e9f2c/sns-insight.html", label: "SNS 인사이트" },
     { href: "/insight-7b3e9f2c/book-insight.html", label: "북 인사이트" },
     { href: "/insight-7b3e9f2c/write.html", label: "글쓰기" },

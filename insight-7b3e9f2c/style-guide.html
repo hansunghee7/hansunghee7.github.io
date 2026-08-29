@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>스타일 가이드 - Simplifier</title>
+
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<!-- Studio 메뉴 타이틀(h1)은 명조체 큰 제목으로 통일합니다. -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<link rel="stylesheet" href="/insight-7b3e9f2c/studio.css">
+
+<style>
+  /* STYLE_GUIDE.md의 .doc 패턴 -- 표·코드가 있는 긴 참조 문서를 읽기 좋게.
+     :root/body/header/#adminShellNav는 studio.css 그대로 쓰고, 여기서는
+     .doc 안에서만 쓰는 선택자만 추가합니다. */
+  .wrap{ max-width:760px; }
+  .doc{ font-size:15px; line-height:1.75; color:var(--dim); }
+  .doc h2{ font-family:'Noto Serif KR',serif; font-weight:400; font-size:22px; color:var(--ink); margin:52px 0 6px; }
+  .doc h2:first-child{ margin-top:0; }
+  .doc h3{ font-size:15.5px; font-weight:700; color:var(--ink); margin:28px 0 10px; }
+  .doc p{ margin:0 0 14px; }
+  .doc ul, .doc ol{ margin:0 0 14px; padding-left:22px; }
+  .doc li{ margin-bottom:6px; }
+  .doc li b, .doc p b{ color:var(--ink); font-weight:700; }
+  .doc code{ font-family:ui-monospace,'SFMono-Regular',Menlo,monospace; font-size:0.88em; background:#f7f6f2; padding:1.5px 5px; border-radius:4px; color:var(--dim); }
+  .doc .lede{ font-size:15.5px; color:var(--dim); border-left:2px solid var(--line); padding-left:14px; margin-bottom:36px; }
+
+  .table-wrap{ overflow-x:auto; margin:0 0 14px; -webkit-overflow-scrolling:touch; }
+  .doc table{ width:100%; border-collapse:collapse; font-size:13.5px; }
+  .doc th{ text-align:left; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.04em; color:var(--muted); padding:0 12px 8px 0; border-bottom:1px solid var(--line); white-space:nowrap; }
+  .doc td{ padding:10px 12px 10px 0; border-bottom:1px solid var(--line-soft); vertical-align:top; }
+  .doc td:last-child, .doc th:last-child{ padding-right:0; }
+
+  /* 색상칩 */
+  .swatch{ display:inline-block; width:14px; height:14px; border-radius:4px; border:1px solid var(--line-soft); vertical-align:-2px; margin-right:8px; }
+  .swatch-row{ display:flex; align-items:center; gap:0; font-family:ui-monospace,'SFMono-Regular',Menlo,monospace; font-size:12.5px; }
+
+  /* 컴포넌트 미리보기 -- 실제 사이트 색(다크)을 그대로 써서 눈으로 바로 비교되게 함 */
+  .preview{ background:#080808; border-radius:10px; padding:28px 24px; margin:14px 0 20px; display:flex; flex-wrap:wrap; gap:16px; align-items:center; }
+  .preview.tight{ padding:20px 24px; gap:10px; }
+  .px-btn{ display:inline-block; background:#f5f3ee; color:#080808; font-family:'Boska','Source Serif 4',serif; font-style:italic; font-weight:400; font-size:15px; padding:12px 30px; border-radius:999px; border:none; }
+  .px-btn-outline{ display:inline-block; background:#080808; color:#f5f3ee; font-family:'Boska','Source Serif 4',serif; font-style:italic; font-weight:400; font-size:14px; padding:11px 26px; border-radius:999px; border:1px solid #f5f3ee; }
+  .px-tag{ display:inline-block; background:#f5f3ee; color:#080808; font-family:'Pretendard Variable',sans-serif; font-size:11px; font-weight:600; padding:4px 8px; border-radius:4px; }
+  .px-badge{ display:inline-flex; align-items:center; font-family:'Pretendard Variable',sans-serif; font-size:12px; font-weight:500; color:#8f8b82; border:1px solid rgba(245,243,238,0.16); border-radius:999px; padding:4px 12px; }
+  .px-h1{ font-family:'Boska','Source Serif 4',serif; font-weight:200; font-size:32px; color:#ffffff; margin:0; }
+  .px-body{ font-family:'Source Serif 4','Noto Serif KR',serif; font-weight:300; font-size:15px; color:#c9c8c2; margin:0; max-width:360px; line-height:1.8; }
+  .px-label{ font-family:'Pretendard Variable',sans-serif; font-size:11px; color:#8f8b82; text-transform:uppercase; letter-spacing:0.1em; margin:0; }
+
+  .rhythm-bar{ display:flex; align-items:flex-end; gap:6px; margin:14px 0 6px; }
+  .rhythm-bar .seg{ background:var(--ink); border-radius:3px 3px 0 0; width:64px; display:flex; align-items:flex-start; justify-content:center; color:#fff; font-size:11px; font-family:ui-monospace,monospace; padding-top:4px; }
+
+  .incident{ border-left:3px solid var(--bad); background:#fdf4f1; padding:12px 14px; border-radius:0 8px 8px 0; margin-bottom:12px; font-size:13.5px; line-height:1.7; }
+  .incident b{ color:var(--bad); }
+</style>
+</head>
+<body class="has-shell-nav">
+<nav id="adminShellNav"></nav>
+
+<div class="wrap">
+  <header>
+    <h1>스타일 가이드<button type="button" class="info-dot" id="titleInfo" aria-label="설명 보기">ⓘ<span class="info-text">simplifier.co.kr 공개 페이지(홈페이지·블로그 글·필러 페이지·about·speaking)에 적용되는 색·타이포·간격 규칙입니다. Simplifier Studio(이 내부 도구 자체)의 UI 규칙은 별도 문서(저장소의 insight-7b3e9f2c/STYLE_GUIDE.md)를 따릅니다 — 서로 다른 디자인 시스템입니다.</span></button></h1>
+    <span class="meta-text">2026-08-29 정리 · 코드에서 실제 쓰이는 값 기준</span>
+  </header>
+
+  <article class="doc">
+    <p class="lede">코드에 흩어져 있던 색·폰트·간격 규칙을 한 곳에 모았습니다. 새 페이지나 섹션을 만들 때 값을 새로 정하지 말고 여기서 가져다 쓰세요. 여기 없는 값이 필요하면 이 문서를 먼저 업데이트한 다음 코드에 반영하는 순서를 권합니다.</p>
+
+    <h2>색상</h2>
+    <p>전 페이지가 딥블랙 배경 위에 크림 텍스트를 쓰는 다크 톤 하나로 통일돼 있습니다. 밝은 배경의 별도 팔레트는 없습니다.</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>칩</th><th>이름</th><th>값</th><th>용도</th></tr>
+        <tr><td><span class="swatch" style="background:#080808"></span></td><td>딥블랙</td><td><code>#080808</code></td><td>전 페이지 배경</td></tr>
+        <tr><td><span class="swatch" style="background:#f5f3ee;border-color:#ccc"></span></td><td>크림 화이트</td><td><code>#f5f3ee</code></td><td>기본 텍스트, 버튼 배경(반전), 태그 배경(반전)</td></tr>
+        <tr><td><span class="swatch" style="background:#ffffff;border-color:#ccc"></span></td><td>순백</td><td><code>#ffffff</code></td><td>히어로 h1 / CTA 큰 헤딩 등 극소수 강조 전용 — 일반 본문엔 안 씀</td></tr>
+        <tr><td><span class="swatch" style="background:#8f8b82"></span></td><td>보조 텍스트</td><td><code>#8f8b82</code></td><td>라벨, 캡션, 메타 정보(작성일·카테고리 등)</td></tr>
+        <tr><td><span class="swatch" style="background:#c9c8c2"></span></td><td>본문(세리프)</td><td><code>#c9c8c2</code></td><td>에세이·인용문 단락 본문</td></tr>
+        <tr><td><span class="swatch" style="background:#181818"></span></td><td>이미지 플레이스홀더</td><td><code>#181818</code></td><td>이미지 로딩 전 배경</td></tr>
+        <tr><td>—</td><td>보더/구분선</td><td><code>rgba(245,243,238, 0.05~0.35)</code></td><td>투명도로 위계 조절 — 진할수록 강조되는 경계선</td></tr>
+      </table>
+    </div>
+
+    <h2>타이포그래피</h2>
+    <p>세 폰트를 역할별로 고정해서 씁니다. 섞어 쓰지 않는 게 원칙입니다.</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>역할</th><th>폰트</th><th>어디에</th></tr>
+        <tr><td>디스플레이</td><td><code>'Boska', serif</code> (weight 200/300 위주)</td><td>헤드라인, 버튼 텍스트</td></tr>
+        <tr><td>세리프 본문</td><td><code>'Source Serif 4', 'Noto Serif KR', serif</code></td><td>에세이, 인용문, 서술형 CTA 문구</td></tr>
+        <tr><td>UI 산세리프</td><td><code>'Pretendard Variable', sans-serif</code></td><td>태그, 라벨, 카드 메타, 네비게이션, 폼</td></tr>
+      </table>
+    </div>
+    <div class="preview">
+      <div><p class="px-label">디스플레이 · Boska</p><p class="px-h1">explosive growth.</p></div>
+    </div>
+    <div class="preview tight">
+      <p class="px-body">"폭발적 성장은 갑작스럽게 오는 것이 아닙니다. 단순화해온 모든 것이 마침내 위로 향할 곳밖에 남지 않은 순간에 찾아옵니다." — 세리프 본문</p>
+    </div>
+
+    <div class="incident"><b>실제로 있었던 사고</b> — Fontshare에서 Boska를 로드할 때 이탤릭 스타일을 따로 요청하지 않으면(<code>font-style:italic</code>을 줘도) 업라이트로 렌더링됩니다. 이탤릭이 필요하면 요청 weight를 <code>기본weight + 1</code>로 걸어야 합니다(200→201, 300→301, 400→401 — Fontshare 자체 규칙). 히어로 강조 텍스트가 기울어지지 않고 그대로 나온 실제 버그였습니다(2026-08-26).</div>
+
+    <h2>간격 리듬</h2>
+    <p>섹션 사이 여백을 임의로 정하지 않고 아래 값으로 통일합니다. 실측(<code>getBoundingClientRect</code>)으로 여러 번 재조정해서 지금 값에 정착했습니다.</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>구간</th><th>PC (min-width:761px)</th><th>모바일 (max-width:760px)</th></tr>
+        <tr><td>서로 다른 섹션 사이 (주제가 바뀌는 지점)</td><td><code>130px</code></td><td><code>96px</code></td></tr>
+        <tr><td>같은 섹션 안 하위 블록 사이</td><td><code>130px</code> (통일)</td><td><code>72px</code></td></tr>
+        <tr><td>좌우 거터</td><td><code>32px</code></td><td><code>16px</code> (헤더 nav만 예외로 32px 유지)</td></tr>
+      </table>
+    </div>
+
+    <h2>브레이크포인트</h2>
+    <p>모바일↔데스크톱을 가르는 기준은 <code>760px / 761px</code> 하나로 고정입니다. 그 외 <code>480 / 600 / 640 / 700 / 820 / 860 / 960px</code> 같은 값은 개별 컴포넌트가 자기 콘텐츠 폭에 맞춰 쓰는 보조 기준이라 강제 규칙은 아닙니다.</p>
+
+    <h2>컴포넌트</h2>
+
+    <h3>버튼</h3>
+    <div class="preview">
+      <button class="px-btn">Contact</button>
+      <button class="px-btn-outline">강연 문의</button>
+    </div>
+    <p>필(pill) 형태(<code>border-radius:999px</code>), Boska 이탤릭. 배경/글자색을 hover 시 서로 반전시키는 게 기본 동작입니다. 채운 버전(주요 CTA)과 아웃라인 버전(보조 CTA) 두 종류만 씁니다.</p>
+
+    <h3>태그 · 배지</h3>
+    <div class="preview tight">
+      <span class="px-tag">스타트업 인사이트</span>
+      <span class="px-badge">완결</span>
+    </div>
+    <p>카테고리 태그는 크림 배경에 검정 글씨(색 반전), <code>Pretendard</code> 11px 600. 상태 배지("완결" 등)는 반대로 배경 없이 옅은 보더만 두른 pill입니다 — 태그보다 존재감을 낮춰서 부제 취급되게 합니다.</p>
+
+    <h2>새 페이지·섹션을 만들 때 체크리스트</h2>
+    <ol>
+      <li>색은 위 팔레트에서만 고른다 — 새 hex 값을 추가하지 않는다.</li>
+      <li>헤드라인은 Boska, 서술형 문장은 세리프, 태그·라벨·버튼 같은 기능적 UI 텍스트는 Pretendard — 세 폰트를 역할대로만 쓴다.</li>
+      <li>Boska를 이탤릭으로 쓰면 <code>weight+1</code> 로드를 잊지 않는다(위 사고 사례 참고).</li>
+      <li>섹션 간격은 130 / 96 / 72px 리듬을 따르고, 좌우 거터는 32 / 16px을 쓴다 — 새 값을 눈대중으로 정하지 않는다.</li>
+      <li><code>index.html</code>처럼 스테이징과 짝을 이루는 페이지는 반드시 공유 include로 뽑아서 중복 편집을 막는다(<code>_includes/home-body.html</code> 사례). 반대로 about·speaking처럼 짝이 없는 단독 <code>layout: null</code> 페이지는, 톤(색·폰트)만 같으면 충분하고 값 자체를 억지로 공통 파일로 뽑지 않는다 — 실제로 비교해보면 페이지마다 여백·크기가 의도적으로 다르게 튜닝돼 있어서, 억지로 합치면 불필요한 추상화만 늘어난다.</li>
+      <li>새 시각 컴포넌트(카드·배지 등)를 만들기 전에 위 컴포넌트 목록에 재사용할 게 있는지 먼저 확인한다.</li>
+    </ol>
+
+    <h2>재사용 가능한 공유 파일</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>파일</th><th>용도</th></tr>
+        <tr><td><code>_includes/home-body.html</code></td><td>홈페이지 전체(헤드 메타 이후 전부) — index.html과 preview/index.html이 공용</td></tr>
+        <tr><td><code>_includes/post_cta.html</code></td><td>블로그 글 하단 CTA, 카테고리별로 문구 분기</td></tr>
+        <tr><td><code>_includes/header.html</code> / <code>header-preview.html</code></td><td>상단 네비게이션 (실서버/스테이징용 분리)</td></tr>
+        <tr><td><code>_includes/footer.html</code>, <code>contact_modal.html</code></td><td>푸터, 문의 폼 모달</td></tr>
+        <tr><td><code>_layouts/default.html</code></td><td>블로그 글 레이아웃</td></tr>
+        <tr><td><code>_layouts/pillar.html</code></td><td>카테고리 허브(필러) 페이지 레이아웃</td></tr>
+        <tr><td><code>_layouts/book.html</code></td><td>도서 소개 페이지 레이아웃</td></tr>
+      </table>
+    </div>
+
+    <h2>실제로 있었던 사고 (재발 방지용 기록)</h2>
+    <div class="incident"><b>Boska 이탤릭 업라이트 렌더링</b> — 위 타이포그래피 항목 참고. Fontshare weight+1을 안 걸면 기울어지지 않음.</div>
+    <div class="incident"><b>카드 태그가 세로로 찌그러짐</b> — 카테고리 태그를 <code>flex</code> 컨테이너 안에 넣으면서 <code>flex-shrink:0</code>과 <code>white-space:nowrap</code>을 안 줬더니, 옆의 다른 요소에 밀려 태그 폭이 26px까지 줄어들고 글자가 세로로 줄바꿈됐습니다. flex 안에 텍스트 라벨을 넣을 땐 항상 이 두 속성을 같이 준다(2026-08-29).</div>
+    <div class="incident"><b>모달 트리거가 모달 앞에 떠 보임</b> — <code>&lt;details&gt;</code>를 CSS 모달로 쓸 때, 열려 있는 동안 <code>summary</code>의 <code>z-index</code>가 backdrop/모달카드보다 높으면 트리거 버튼이 모달 위에 떠 보입니다. 열려 있는 동안 summary는 backdrop에 자연스럽게 가려지게 두고, 닫기는 모달 안의 별도 버튼/Esc가 담당하게 한다(2026-08-29).</div>
+  </article>
+</div>
+
+<script src="/insight-7b3e9f2c/studio.js"></script>
+</body>
+</html>
