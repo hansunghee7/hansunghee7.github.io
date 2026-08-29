@@ -124,26 +124,48 @@ def collect_brunch(browser):
         page.close()
 
 
-def collect_naver_blog(browser):
-    """네이버 블로그 이웃 수 (https://blog.naver.com/simplifiers).
+NAVER_KEYWORDS = ["블로그 이웃", "서로이웃", "이웃", "구독자"]
 
-    네이버 블로그는 본문이 iframe(#mainFrame) 안에 들어있는 구조라,
-    최상위 페이지만 읽으면 숫자를 못 찾는다. iframe 안까지 들어가 본다.
+
+def collect_naver_blog(browser):
+    """네이버 블로그 이웃 수.
+
+    PC판(blog.naver.com)은 본문이 iframe(#mainFrame) 안에 들어있고 그 안이
+    늦게 채워져서, 처음 시도에서 숫자를 못 읽고 건너뛰었다(2026-08-30 실제
+    실행 로그 확인). 그래서 iframe이 아예 없는 모바일판을 먼저 보고,
+    실패하면 PC판 + iframe 대기로 넘어간다.
     """
+    # 1순위: 모바일판 -- iframe 없이 프로필 영역에 이웃 수가 바로 있다.
+    page = browser.new_page(user_agent=UA, locale="ko-KR")
+    try:
+        page.goto("https://m.blog.naver.com/simplifiers", timeout=45000)
+        page.wait_for_load_state("networkidle", timeout=20000)
+        n = first_count_near(page, NAVER_KEYWORDS)
+        if n is not None:
+            return n
+    except Exception as e:
+        log(f"    (네이버 모바일판 실패, PC판으로 재시도 — {type(e).__name__})")
+    finally:
+        page.close()
+
+    # 2순위: PC판 -- iframe이 실제로 채워질 때까지 기다린 뒤 프레임까지 뒤진다.
     page = browser.new_page(user_agent=UA, locale="ko-KR")
     try:
         page.goto("https://blog.naver.com/simplifiers", timeout=45000)
-        page.wait_for_load_state("domcontentloaded")
-        kws = ["블로그 이웃", "서로이웃", "이웃", "구독자"]
+        try:
+            page.wait_for_load_state("networkidle", timeout=20000)
+        except Exception:
+            pass
+        page.wait_for_timeout(3000)  # iframe 내부 렌더 여유
 
-        n = first_count_near(page, kws)
+        n = first_count_near(page, NAVER_KEYWORDS)
         if n is not None:
             return n
 
         for frame in page.frames:
             if frame == page.main_frame:
                 continue
-            for kw in kws:
+            for kw in NAVER_KEYWORDS:
                 try:
                     loc = frame.locator(f"text={kw}").first
                     if loc.count() == 0:
