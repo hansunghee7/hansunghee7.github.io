@@ -1,0 +1,63 @@
+name: Fetch Search Console
+
+# 서치콘솔 Search Analytics API에서 검색 성과(노출·클릭·CTR·순위, 상위
+# 검색어/페이지)를 매일 가져와 assets/data/search-console.json에 커밋한다.
+# 비공개 대시보드(insight-7b3e9f2c/)가 이 파일을 읽어서 화면에 그린다.
+#
+# 인증은 GA4 수집과 같은 서비스 계정을 재사용한다:
+#   GA4_SERVICE_ACCOUNT_JSON  (이미 등록돼 있음 -- 새 Secret 불필요)
+# 대신 사장님이 서치콘솔 "설정 > 사용자 및 권한"에 이 서비스 계정 이메일을
+# 사용자로 추가해야 작동한다 (2026-08-30 안내 완료).
+#
+# 서치콘솔 데이터는 약 2일 지연되므로 하루 1번이면 충분하다. cron이
+# 최선 노력 방식이라 누락될 수 있는 건 fetch-analytics.yml과 같은 사정 --
+# 하루치 놓쳐도 다음 실행이 90일 창을 통째로 다시 쓰므로 공백이 안 생긴다.
+on:
+  schedule:
+    - cron: "37 22 * * *"  # 07:37 KST (정각 혼잡 회피로 분 분산)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-search-console
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install google-api-python-client google-auth
+
+      - name: Fetch Search Console report
+        env:
+          GA4_SERVICE_ACCOUNT_JSON: ${{ secrets.GA4_SERVICE_ACCOUNT_JSON }}
+        run: python scripts/fetch_gsc.py
+
+      - name: Commit changes if any
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/data/search-console.json
+          if git diff --cached --quiet; then
+            echo "no changes to commit"
+          else
+            git commit -m "chore: refresh Search Console snapshot [skip ci]"
+            # 다른 워크플로와 동시 푸시 시 non-fast-forward 거절 대비 재시도
+            n=0
+            until git push; do
+              n=$((n+1))
+              if [ $n -ge 3 ]; then echo "push 3회 실패"; exit 1; fi
+              git pull --rebase origin main
+            done
+          fi

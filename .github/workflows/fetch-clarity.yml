@@ -1,0 +1,61 @@
+name: Fetch Clarity
+
+# MS 클래리티 Data Export API에서 UX 품질 지표(분노 클릭, 죽은 클릭,
+# 스크립트 에러 등)를 매일 가져와 assets/data/clarity.json에 "누적"한다.
+# 비공개 대시보드(insight-7b3e9f2c/)가 이 파일을 읽어서 화면에 그린다.
+#
+# 필요한 저장소 Secret (Settings → Secrets and variables → Actions):
+#   CLARITY_API_TOKEN  클래리티 설정 > Data Export에서 발급한 API 토큰.
+#                      값은 대화로 주고받지 말고 사장님이 직접 붙여넣을 것.
+#
+# 이 API는 최근 1~3일 데이터만 주므로, 매일 하루치를 받아 history에 쌓는
+# 방식이다 -- 하루 수집이 빠지면 그 날짜는 영구 공백이 된다. 그래서 cron을
+# 하루 2번 걸어둔다(스크립트가 같은 날짜는 덮어쓰므로 중복 실행 안전).
+# 하루 호출 한도가 10회인데 실행 1번에 3회를 쓰니 2번 돌아도 한도 안이다.
+on:
+  schedule:
+    - cron: "53 22 * * *"  # 07:53 KST
+    - cron: "11 10 * * *"  # 19:11 KST (아침 실행 누락 대비 재시도)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-clarity
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch Clarity report
+        env:
+          CLARITY_API_TOKEN: ${{ secrets.CLARITY_API_TOKEN }}
+        run: python scripts/fetch_clarity.py
+
+      - name: Commit changes if any
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/data/clarity.json
+          if git diff --cached --quiet; then
+            echo "no changes to commit"
+          else
+            git commit -m "chore: refresh Clarity snapshot [skip ci]"
+            # 다른 워크플로와 동시 푸시 시 non-fast-forward 거절 대비 재시도
+            n=0
+            until git push; do
+              n=$((n+1))
+              if [ $n -ge 3 ]; then echo "push 3회 실패"; exit 1; fi
+              git pull --rebase origin main
+            done
+          fi
