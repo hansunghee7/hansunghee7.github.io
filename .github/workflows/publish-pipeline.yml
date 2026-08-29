@@ -4,7 +4,7 @@ name: Publish log pipeline
 # 직접 고치면) 여기서 자동으로:
 #   1. 새 글에 순번/date_string/카테고리 링크 스크립트/이전글-다음글 자리 채우기
 #   2. 커버 이미지 파일명의 특수문자 제거
-#   3. 이전글/다음글 링크 재계산 (sync_all.py)
+#   3. 이전글/다음글 링크 재계산 (scripts/sync_all.py)
 #   4. log.html 카드 그리드에 새 글 카드 추가
 #   5. 썸네일 매핑·posts.json(assets/data/, _data/ 둘 다) 갱신
 #      -- _data/posts.json은 필러 페이지(log/*.html)가 Jekyll
@@ -85,9 +85,9 @@ jobs:
 
             python scripts/normalize_new_post.py
             python scripts/sanitize_cover_images.py
-            python sync_all.py
+            python scripts/sync_all.py
             python scripts/add_new_log_cards.py
-            python fix_thumb_mapping.py
+            python scripts/fix_thumb_mapping.py
             # posts.json이 갱신된 뒤에 돌아야 발행 목록을 기준으로 맞출 수 있습니다.
             python scripts/sync_sitemap_and_drafts.py
 
