@@ -147,20 +147,18 @@
      읽는다(구글이 공식적으로 확인한 방식) -- 그래서 JS로 나중에 불러오는
      진짜 모달 대신, 이 details를 CSS만으로 화면 중앙에 뜨는 카드처럼
      보이게 만든다. 내용은 처음부터 HTML에 있고, 위치만 CSS로 옮긴다. */
-  /* summary를 본문에 묻히는 옅은 회색 텍스트가 아니라 테두리·배경이
-     있는 알약(pill) 버튼으로 만든다 -- "이 안에 더 읽을 게 있다"는
-     신호가 문장 끝에 파묻혀서 잘 안 보인다는 피드백을 반영. */
+  /* 알약(pill) 버튼 대신 밑줄 있는 텍스트 링크로 전환 -- "버튼처럼 보이지
+     않게" 요청 반영. 화살표는 남겨서 펼쳐지는 요소라는 신호는 유지. */
   .pillar-more{ display:inline-block; margin-left:8px; vertical-align:baseline; }
   .pillar-more summary{
-    cursor:pointer; list-style:none; font-size:13px; font-weight:600; color:#e8e6df;
-    display:inline-flex; align-items:center; gap:6px; position:relative;
-    padding:6px 14px; border:1px solid rgba(245,243,238,0.32); border-radius:999px;
-    background:rgba(245,243,238,0.08);
-    transition:background-color .15s, border-color .15s, color .15s;
+    cursor:pointer; list-style:none; font-size:13px; font-weight:600; color:#c9c8c2;
+    display:inline-flex; align-items:center; gap:4px; position:relative;
+    text-decoration:underline; text-decoration-color:rgba(245,243,238,0.35); text-underline-offset:3px;
+    transition:color .15s;
   }
   .pillar-more summary::-webkit-details-marker{ display:none; }
   .pillar-more summary::after{ content:'▾'; font-size:11px; transition:transform .15s; }
-  .pillar-more summary:hover{ color:#fff; background:rgba(245,243,238,0.16); border-color:rgba(245,243,238,0.5); }
+  .pillar-more summary:hover{ color:#fff; text-decoration-color:rgba(245,243,238,0.6); }
 
   /* summary가 z-index:101로 backdrop(99)/모달카드(100)보다 위에 떠서
      "더보기 ✕" 버튼이 모달 앞에 겹쳐 보이던 버그. summary는 모달이 열려있는
