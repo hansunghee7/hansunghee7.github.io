@@ -101,7 +101,12 @@
   @media (max-width:760px){ .wrap{padding:0 16px;} }
 
   /* ---- 최소 헤더: 로고(좌) + 카테고리 전환(그 옆) ---- */
-  .topic-header{ display:flex; align-items:center; gap:28px; padding:22px 0; border-bottom:1px solid rgba(245,243,238,0.08); }
+  /* 카테고리 전환 nav를 스크롤해도 상단에 고정 -- 스와이프로 다른
+     필러로 넘어가는 대신, 본문을 읽다가도 한 손으로 바로 카테고리를
+     바꿀 수 있게 하는 더 안전한 대안(가로 스크롤 topic-nav와의 제스처
+     충돌, 오조작 위험이 없음). 배경이 페이지 전체와 같은 단색(#080808)
+     이라 sticky 상태에서도 이질감 없이 이어짐. */
+  .topic-header{ display:flex; align-items:center; gap:28px; padding:22px 0; border-bottom:1px solid rgba(245,243,238,0.08); position:sticky; top:0; z-index:50; background:#080808; }
   .topic-logo{ flex:none; display:block; }
   .topic-logo img{ height:20px; width:auto; display:block; }
   /* PC에서는 스크롤바가 안 보이는 데다 트랙패드/터치 없이는 가로
