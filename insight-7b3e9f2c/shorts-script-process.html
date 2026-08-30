@@ -65,7 +65,7 @@
 <div class="wrap">
   <header>
     <h1>숏폼 대본 공정</h1>
-    <span class="meta-text">shorts-lab/SCRIPT_PROCESS.md · 자동 생성 2026-08-30 06:17 · 원본이 바뀌면 파이프라인 재실행 시 갱신됩니다</span>
+    <span class="meta-text">shorts-lab/SCRIPT_PROCESS.md · 자동 생성 2026-08-30 06:28 · 원본이 바뀌면 파이프라인 재실행 시 갱신됩니다</span>
   </header>
   <nav class="doc-nav"><a href="/insight-7b3e9f2c/shorts-playbook.html">숏폼 파일럿 실행 매뉴얼</a><a href="/insight-7b3e9f2c/shorts-process.html">숏폼 공정 정본</a><a href="/insight-7b3e9f2c/shorts-script-process.html" class="current">숏폼 대본 공정</a><a href="/insight-7b3e9f2c/shorts-visual-grammar.html">숏폼 연출 사전</a><a href="/insight-7b3e9f2c/shorts-roles.html">숏폼 제작진 역할</a></nav>
   <article class="doc">
@@ -233,33 +233,37 @@
 </table></div>
 <p><code>episode.json</code>의 <code>g0_topic</code> <code>g1_script</code>를 <code>done</code>으로 바꾸고 현황판을 갱신한다.</p>
 <hr />
-<h2>관용구 사전 — 감정은 감탄사가 아니라 관용구로</h2>
+<h2>우리 채널 시그니처 표현 사전 — 벤치마크를 그대로 베끼지 않는다</h2>
 <p><code>channel.json</code>의 "감정 강요 금지('충격!' 금지)" 규칙은 <strong>시청자에게 감정을 지시하는
 감탄사</strong>를 막는 것이지, <strong>상황 자체를 생생하게 묘사하는 구어체 관용구</strong>를 막는 게
-아니다. 후자는 벤치마크(신비한 건축사전)에서 실제로 쓰이고, 오히려 권장한다.</p>
+아니다 — 후자는 오히려 권장한다.</p>
+<p><strong>단, 2026-08-30 사고 기록</strong>: 벤치마크(신비한 건축사전)의 "완전 환장할 노릇이었습니다",
+"그래서 발상을 뒤집습니다"식 기승전결 템플릿을 처음엔 "그냥 흔한 관용구"로 오판해서
+여기에 반영했었다. 실제로는 <strong>나무위키에 그 채널 고유 유행어로 등재</strong>돼 있고
+성대모사·패러디 소재로 쓰일 정도로 브랜드 자산화된 표현이었다 — 확인 없이 넘겨짚은
+실수. 이런 표현을 그대로 쓰면 "차별화된 채널"이 아니라 "패러디 계정"으로 보일 위험이
+있다.</p>
+<p><strong>그래서 원칙을 이렇게 바꾼다</strong>: 벤치마크가 쓰는 "구조/역할"(예: 난관을 한 문장으로
+압축하는 시그니처 표현)은 참고해도 되지만, <strong>그 자리를 채우는 실제 문장은 반드시 우리
+채널 고유의 새 표현으로 만든다.</strong> 새로 표현을 넣기 전엔 <code>CHECKLIST.md</code> G1의 동시대성
+체크(밈 중복 확인)를 거친다.</p>
 <div class="table-wrap"><table>
 <thead>
 <tr>
-<th>관용구</th>
-<th>관찰 출처</th>
-<th>비고</th>
+<th>우리 채널 시그니처 표현</th>
+<th>역할</th>
+<th>확정일</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>"완전 환장할 노릇이었습니다"</td>
-<td>벤치마크 실제 나레이션 (2026-08-30 사장님 관찰)</td>
-<td>상황의 답답함/곤란함을 구어체로</td>
-</tr>
-<tr>
-<td>"기술자들이 발상을 아예 뒤집습니다"</td>
-<td>상동</td>
-<td>반전 지점에서 관점 전환을 강조</td>
+<td>(논의 중 — 다음 세션에서 확정)</td>
+<td>난관 압축 시그니처</td>
+<td>—</td>
 </tr>
 </tbody>
 </table></div>
-<p>새 표현을 벤치마크에서 발견하면 이 표에 계속 추가한다. 이 문서(그리고 <code>channel.json</code>
-tone 필드)가 이런 관용구 목록의 정본이다.</p>
+<p>확정되는 대로 이 표에 채우고, <code>channel.json</code> tone 필드에도 반영한다.</p>
 <h2>열린 항목</h2>
 <ul>
 <li><strong>블록 길이와 Veo 프리셋 불일치.</strong> <code>channel.json</code>의 <code>block_rule</code>은 4초/6초 기준인데
