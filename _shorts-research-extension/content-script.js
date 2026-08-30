@@ -56,7 +56,12 @@
   var MIN_RESEARCH_MS = 45000; // 딥리서치는 최소 이 정도는 걸리니, 그 전엔 끝났다고 오판하지 않는다
   var MAX_WAIT_MS = 25 * 60 * 1000; // 25분 넘으면 포기하고 타임아웃 보고
   var PLAN_WAIT_MS = 90000; // 계획 확인 버튼이 뜨는지 이만큼 기다려본다 (안 뜨면 계획 단계 없다고 판단)
-  var PLAN_APPROVE_TIMEOUT_MS = 20 * 60 * 1000; // 팝업에서 사용자가 승인/취소할 때까지 최대로 기다리는 시간
+
+  // 이번 실행에서 계획이 나왔다면 그 원문을 담아둔다 -- 사람이 승인하지
+  // 않고 자동으로 진행하지만(무인 파이프라인 목표상 사람이 없을 수 있음),
+  // 계획 내용은 완료/실패 결과에 실어 GitHub 이슈에 남긴다 -- 뭘 조사했는지
+  // 나중에라도 확인할 수 있게.
+  var runPlanText = null;
 
   function log() {
     var args = Array.prototype.slice.call(arguments);
@@ -144,6 +149,7 @@
 
   function submitBrief(brief) {
     runMisses = {};
+    runPlanText = null;
     return waitFor(function () { return findFirst(SELECTORS.input); }, 15000, 500).then(function (input) {
       // 딥리서치 모드 전환 -- 못 찾아도 실패시키지 않는다. 일반 모드로라도
       // 제출하는 게 아무것도 안 하는 것보다 낫고, 로그로 남겨서 나중에
@@ -163,7 +169,7 @@
     }).then(function (submitBtn) {
       submitBtn.click();
       log("제출 완료, 계획 제시 여부 확인 중");
-      return waitForPlanThenApproval();
+      return waitForPlanThenAutoApprove();
     }).then(function () {
       log("실제 조사 시작됨, 응답 대기 시작");
       return waitForCompletion();
@@ -171,18 +177,19 @@
   }
 
   // 딥리서치는 보통 (1) "이런 계획으로 조사할게요, 진행할까요?"를 먼저
-  // 보여주고 (2) 사용자가 승인해야 (3) 진짜 조사가 시작된다. 이 단계가
-  // 있는지 PLAN_WAIT_MS만큼 지켜보고, 있으면 팝업(background.js 경유)에
-  // 계획 원문을 보내 사람이 직접 승인/취소하게 한다. 없으면(질문이 짧아서
-  // 계획 단계 자체가 없거나 선택자가 안 맞는 경우) 조용히 다음 단계로
-  // 넘어간다 -- 계획 단계를 강제하지 않는다.
-  function waitForPlanThenApproval() {
+  // 보여주고 (2) 승인해야 (3) 진짜 조사가 시작된다. 예전엔 이 단계에서
+  // 사람이 팝업으로 승인/취소하게 했지만, 무인 파이프라인(사장님 없이도
+  // 대기열이 스스로 돌아가는 것)이 목표가 되면서 사람 개입 지점을 없앴다
+  // -- 계획이 뜨면 즉시 자동 승인한다. 대신 계획 원문은 결과에 실어
+  // GitHub 이슈에 남긴다 (runPlanText). 계획 단계 자체가 없으면(질문이
+  // 짧거나 선택자가 안 맞는 경우) 조용히 다음 단계로 넘어간다.
+  function waitForPlanThenAutoApprove() {
     var button = findByText(SELECTORS.planConfirmButton.candidateTags, SELECTORS.planConfirmButton.textPattern);
-    if (button) return requestApprovalFor(button);
+    if (button) return autoApprovePlan(button);
 
     return waitFor(function () {
       return findByText(SELECTORS.planConfirmButton.candidateTags, SELECTORS.planConfirmButton.textPattern);
-    }, PLAN_WAIT_MS, 1000).then(requestApprovalFor, function () {
+    }, PLAN_WAIT_MS, 1000).then(autoApprovePlan, function () {
       log("계획 확인 단계 없음(또는 못 찾음) -- 바로 조사가 시작된 것으로 보고 진행합니다.");
       return null;
     });
@@ -198,34 +205,10 @@
     return text.trim();
   }
 
-  function requestApprovalFor(button) {
-    var planText = extractPlanText(button);
-    log("계획 제시 감지됨, 승인 대기 -- 팝업에서 확인해주세요.");
-
-    return new Promise(function (resolve, reject) {
-      var timeoutTimer = setTimeout(function () {
-        chrome.runtime.onMessage.removeListener(onMsg);
-        reject(new Error("계획 승인 대기 시간 초과 (" + Math.round(PLAN_APPROVE_TIMEOUT_MS / 60000) + "분) -- 팝업에서 응답이 없었습니다."));
-      }, PLAN_APPROVE_TIMEOUT_MS);
-
-      function onMsg(msg) {
-        if (!msg) return;
-        if (msg.type === "CONFIRM_PLAN") {
-          clearTimeout(timeoutTimer);
-          chrome.runtime.onMessage.removeListener(onMsg);
-          button.click();
-          log("계획 승인됨, 클릭함");
-          resolve();
-        } else if (msg.type === "CANCEL_PLAN") {
-          clearTimeout(timeoutTimer);
-          chrome.runtime.onMessage.removeListener(onMsg);
-          reject(new Error("사용자가 계획을 취소함"));
-        }
-      }
-      chrome.runtime.onMessage.addListener(onMsg);
-
-      chrome.runtime.sendMessage({ type: "RESEARCH_PLAN_READY", planText: planText });
-    });
+  function autoApprovePlan(button) {
+    runPlanText = extractPlanText(button);
+    log("계획 제시 감지됨, 자동 승인 진행");
+    button.click();
   }
 
   // DOM 변화가 STABLE_MS 이상 없으면 응답이 끝난 것으로 본다. 폴링 대신
@@ -299,16 +282,12 @@
         chrome.runtime.sendMessage({
           type: "RESEARCH_COMPLETE",
           result: resultText,
+          planText: runPlanText,
           copiedToClipboard: copied,
           misses: Object.keys(runMisses),
         });
       })
       .catch(function (err) {
-        if (err.message === "사용자가 계획을 취소함") {
-          log("사용자가 계획을 취소함");
-          chrome.runtime.sendMessage({ type: "RESEARCH_CANCELLED" });
-          return;
-        }
         log("❌ 실패:", err.message);
         chrome.runtime.sendMessage({ type: "RESEARCH_ERROR", message: err.message, misses: Object.keys(runMisses) });
       });

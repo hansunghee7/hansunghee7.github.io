@@ -5,10 +5,6 @@ var resultBox = document.getElementById("resultBox");
 var resultText = document.getElementById("resultText");
 var copyBtn = document.getElementById("copyBtn");
 var logList = document.getElementById("logList");
-var planBox = document.getElementById("planBox");
-var planText = document.getElementById("planText");
-var approveBtn = document.getElementById("approveBtn");
-var cancelBtn = document.getElementById("cancelBtn");
 var selectorWarningBox = document.getElementById("selectorWarningBox");
 var selectorWarningText = document.getElementById("selectorWarningText");
 var dismissWarningBtn = document.getElementById("dismissWarningBtn");
@@ -52,9 +48,10 @@ function renderLog(log) {
       : '<span class="mark error">✗ 실패</span>';
     var when = e.finishedAt ? new Date(e.finishedAt).toLocaleTimeString("ko-KR") : "";
     var note = e.status === "error" ? '<div class="hint">' + escapeHtml(e.note || "") + "</div>" : "";
+    var tag = e.source === "queue" ? '<span class="tag">대기열</span>' : "";
     return (
       '<div class="log-item">' +
-      '<div class="brief">' + escapeHtml(e.briefSnippet || "") + (e.briefSnippet && e.briefSnippet.length >= 80 ? "…" : "") + "</div>" +
+      '<div class="brief">' + escapeHtml(e.briefSnippet || "") + (e.briefSnippet && e.briefSnippet.length >= 80 ? "…" : "") + tag + "</div>" +
       '<div class="meta">' + mark + "<span>" + when + "</span></div>" +
       note +
       "</div>"
@@ -69,23 +66,14 @@ function escapeHtml(s) {
 }
 
 function refreshFromStorage() {
-  chrome.storage.local.get(["researchLog", "activeResearch", "pendingPlan", "selectorWarning"], function (res) {
+  chrome.storage.local.get(["researchLog", "activeResearch", "selectorWarning"], function (res) {
     renderLog(res.researchLog);
     renderSelectorWarning(res.selectorWarning);
 
-    if (res.pendingPlan) {
-      startBtn.disabled = true;
-      resultBox.style.display = "none";
-      planBox.style.display = "block";
-      planText.value = res.pendingPlan.planText || "(계획 내용을 가져오지 못했습니다 — 탭을 직접 확인해보세요)";
-      setStatus("running", "계획 확인 필요 — 위 내용을 읽고 승인/취소하세요");
-      return;
-    }
-    planBox.style.display = "none";
-
     if (res.activeResearch) {
       startBtn.disabled = true;
-      setStatus("running", "진행 중 — " + elapsedLabel(res.activeResearch.startedAt) + " (보통 5~20분)");
+      var fromQueue = res.activeResearch.queueItemId ? " (대기열)" : "";
+      setStatus("running", "진행 중" + fromQueue + " — " + elapsedLabel(res.activeResearch.startedAt) + " (보통 5~20분)");
     } else if (res.researchLog && res.researchLog.length && res.researchLog[0].status === "cancelled") {
       startBtn.disabled = false;
       setStatus("cancelled", "취소됨");
@@ -113,19 +101,7 @@ startBtn.addEventListener("click", function () {
   chrome.runtime.sendMessage({ type: "START_RESEARCH", brief: brief });
   startBtn.disabled = true;
   resultBox.style.display = "none";
-  planBox.style.display = "none";
   setStatus("running", "시작함 — gemini.google.com을 여는 중");
-});
-
-approveBtn.addEventListener("click", function () {
-  chrome.runtime.sendMessage({ type: "APPROVE_PLAN" });
-  planBox.style.display = "none";
-  setStatus("running", "승인함 — 실제 조사를 시작하는 중");
-});
-
-cancelBtn.addEventListener("click", function () {
-  chrome.runtime.sendMessage({ type: "CANCEL_PLAN" });
-  planBox.style.display = "none";
 });
 
 dismissWarningBtn.addEventListener("click", function () {
@@ -144,7 +120,7 @@ copyBtn.addEventListener("click", function () {
 setInterval(refreshFromStorage, 5000);
 
 chrome.storage.onChanged.addListener(function (changes) {
-  if (changes.researchLog || changes.activeResearch || changes.pendingPlan || changes.selectorWarning) refreshFromStorage();
+  if (changes.researchLog || changes.activeResearch || changes.selectorWarning) refreshFromStorage();
 });
 
 // ── GitHub 연결 (선택) ──────────────────────────────────────────
@@ -160,7 +136,7 @@ var patSaveBtn = document.getElementById("patSaveBtn");
 function renderGithubStatus(token) {
   if (token) {
     githubStatus.style.display = "block";
-    githubStatus.textContent = "GitHub 연결됨 — 완료 시 이슈로도 자동 등록됩니다";
+    githubStatus.textContent = "GitHub 연결됨 — 이슈 자동 등록 + 대기열 자동 처리 작동 중";
   } else {
     githubStatus.style.display = "none";
   }
