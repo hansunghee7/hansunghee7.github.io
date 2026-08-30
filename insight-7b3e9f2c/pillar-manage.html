@@ -274,9 +274,9 @@
     }).join("");
 
     content.innerHTML =
-      "<table><thead><tr>" +
+      "<div class=\"tablebox\"><table><thead><tr>" +
       "<th>카테고리</th><th>글 수</th><th>필러 페이지</th><th>소개 한 줄</th><th>정렬 기본값</th><th></th>" +
-      "</tr></thead><tbody>" + rows + "</tbody></table>";
+      "</tr></thead><tbody>" + rows + "</tbody></table></div>";
   }
 
   function buildDetailBodyHtml(pillar) {
