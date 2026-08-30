@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-08-30T06:38:45.213297+00:00",
+  "updated_at": "2026-08-30T13:06:11.772137+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 101,
-    "activeUsers": 49,
-    "newUsers": 49,
-    "returningUsers": 0
+    "sessions": 112,
+    "activeUsers": 59,
+    "newUsers": 58,
+    "returningUsers": 1
   },
   "daily": [
     {
@@ -38,10 +38,10 @@
     },
     {
       "date": "2026-08-30",
-      "sessions": 14,
-      "activeUsers": 10,
-      "newUsers": 9,
-      "returningUsers": 1
+      "sessions": 25,
+      "activeUsers": 20,
+      "newUsers": 18,
+      "returningUsers": 2
     }
   ],
   "daily_leads": [
@@ -55,19 +55,19 @@
     }
   ],
   "landing_types": {
-    "home": 78,
+    "home": 88,
     "log_home": 7,
     "individual_post": 14,
-    "other": 16
+    "other": 19
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 72
+      "sessions": 83
     },
     {
       "source": "(not set)",
-      "sessions": 18
+      "sessions": 21
     },
     {
       "source": "searchadvisor.naver.com",
@@ -100,10 +100,10 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 253,
-    "section_view_voices": 184,
-    "section_view_book_class": 114,
-    "section_view_faq": 103,
+    "section_view_proven": 269,
+    "section_view_voices": 194,
+    "section_view_book_class": 118,
+    "section_view_faq": 107,
     "faq_open": 18,
     "read_complete": 184
   },
@@ -275,7 +275,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 66,
+    "total_desktop_sessions": 73,
     "excluded_invalid_sessions": 17,
     "by_resolution": [
       {
@@ -286,7 +286,7 @@
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 9
+        "sessions": 13
       },
       {
         "resolution": "1920x1080",
@@ -304,9 +304,19 @@
         "sessions": 4
       },
       {
+        "resolution": "1680x1050",
+        "width": 1680,
+        "sessions": 2
+      },
+      {
         "resolution": "1728x1117",
         "width": 1728,
         "sessions": 2
+      },
+      {
+        "resolution": "1024x1024",
+        "width": 1024,
+        "sessions": 1
       },
       {
         "resolution": "1512x982",
