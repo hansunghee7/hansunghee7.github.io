@@ -7,6 +7,15 @@
 일관성에 어떤 영향을 주는지"를 먼저 판단하고 규칙으로 만들어 정본 문서에
 남기는 것이 이 스레드의 방식.
 
+**2026-08-30 범위 확정(사장님 직접 지시)**: About 페이지/저자소개 콘텐츠는
+CMO 마야 스레드로, **이 스레드(튜터명 "시안")는 홈페이지+스튜디오의 UX
+전체**를 맡는다. 같은 날 `simplifier-studio.md`가 갖고 있던 **UX/거버넌스
+영역**(STYLE_GUIDE.md 정본 관리, ⓘ info-dot 패턴, studio.css/js 공용
+인프라, `.doc` 문서형 패턴)도 이 스레드로 흡수됐다 — 두 스레드가 사실상
+같은 일(스튜디오 UX 표준)을 각자 이름으로 하고 있었기 때문. `simplifier-studio.md`는
+**저장소 위생**(이미지·시크릿·GitHub Actions 감사) 전담으로 범위가 좁혀졌으니,
+그쪽 일은 그 파일을 계속 정본으로 본다.
+
 정본 문서 두 개가 이 스레드의 산출물이 모이는 곳:
 - [docs/UX_GUIDE.md](../docs/UX_GUIDE.md) — 양쪽 화면 공통 정본
 - [insight-7b3e9f2c/STYLE_GUIDE.md](../insight-7b3e9f2c/STYLE_GUIDE.md) — 스튜디오 세부 정본
@@ -92,7 +101,10 @@
   추적해보니 **이 컨테이너의 헤드리스 Chromium이 `<details open=false>`를 실제
   브라우저와 다르게(접힘 없이 그대로 펼친 채) 렌더링하는 테스트 환경 한계**로
   보여 확정 버그로 보고하지 않음 — 근거가 불확실한 채로 사실처럼 기록하지 않기
-  위해 의도적으로 보류. 실제 모바일 기기로 재확인이 필요하면 그때 다시 볼 것.
+  위해 의도적으로 보류. **후속: 2026-08-30 재조사에서 이 216px이 실제로는
+  `.info-text`의 닫힌 상태 넘침이었음을 확인(아래 "스튜디오 모바일 가로 스크롤"
+  참고) — 테스트 환경 한계가 아니라 진짜 버그였다.** 첫 판단이 틀렸던 사례로
+  남겨둔다.
 
 **다른 롤 파일 10개 전수 검토 (2026-08-30, 클라우드 세션 인수인계 확인)**
 - `roles-notes` 브랜치의 나머지 롤 파일(site-repo-ops/simplifier-studio/
@@ -108,6 +120,7 @@
   본 세션에서 셋 다 어긋난 곳은 없었음), "공개 사이트에도 ⓘ 패턴 필요한 지점"
   검토(범위가 커서 사장님 확인 필요), `about-books-cta.md`의 GNB 재설계/CTA
   A~F 결정(그 스레드 고유 영역, 사용자 승인 대기 중인 사안).
+  **(2026-08-30 갱신: 위 첫 항목은 이제 이 스레드 소관이 됨 — ①절 참고.)**
 
 **GNB "About" 무단 승격 사고 대응 (2026-08-30, 클라우드 세션)**
 - 사장님이 "PC와 모바일 GNB가 다르다"고 요청해 점검하던 중 발견: `about-books-cta`
@@ -126,6 +139,13 @@
   앞으로 어떤 스레드든 **사장님의 명시적 승인 문구 없이는 스테이징→라이브
   승격을 하지 않는다**는 규칙을 세워야 한다(어느 정본 문서에 박을지는 아직
   미정 — 다음에 이 스레드가 열리면 site-repo-ops 스레드와 상의해 결정할 것).
+- **후속(같은 날)**: `noindex`·`sitemap.xml`·`llms.txt`는 그대로 둬 "색인은 되는데
+  메뉴엔 없는" 어중간한 상태가 남았던 걸 사장님이 "그것도 봐달라"고 요청해 PR
+  [#10](https://github.com/hansunghee7/hansunghee7.github.io/pull/10)으로 같은
+  건의 범위 전체(about noindex 복원, 저서 페이지 2종 `preview:true` 복원,
+  sitemap/llms.txt 제거, GNB 책 링크 예스24 원복)를 완전히 원복했다. 자세한
+  경위는 [about-books-cta.md](about-books-cta.md)와 `roles/README.md`의 사고
+  기록 참고.
 
 **스레드 범위 재확인 (2026-08-30, 사장님 직접 지시)**
 About 페이지/저자소개 콘텐츠는 CMO 마야 스레드가 챙기기로 함 — `about-books-cta.md`
@@ -158,6 +178,28 @@ About 페이지/저자소개 콘텐츠는 CMO 마야 스레드가 챙기기로 �
   찾을 수 있다 — search-insight.html의 TABLE, index.html의
   `#recentTable` 오탐이 실제로 여기 걸렸었다.
 
+**simplifier-studio 스레드의 UX/거버넌스 영역 흡수 (2026-08-30)**
+`roles/README.md`에 `ux-lead`와 `simplifier-studio`가 스튜디오 UX 영역에서
+겹친다고 스스로 적어뒀던 걸 사장님이 보고 "그거 정리해라"고 지시. `simplifier-studio.md`
+②절에서 아래를 이 스레드의 정본 결정사항으로 옮겨왔다(원문은 그 파일에 계속 남아있음,
+중복 삭제하지 않음 — 히스토리 보존):
+- **studio.css/studio.js 공용화**: 스튜디오 페이지들이 `:root` 토큰·헤더·
+  `#adminShellNav`·ⓘ 버튼·새로고침 버튼 CSS/JS를 각자 인라인으로 복붙하던 걸
+  공용 파일 두 개로 통합. 새 메뉴는 `studio.js`의 `STUDIO_NAV` 배열 한 곳만 고치면 됨.
+- **ⓘ info-dot 패턴 확정, `title=` 네이티브 툴팁 전면 금지** — 클릭/탭에 반응 안
+  하는 죽은 버그가 2회 발견(book/sns-insight 초기 버전, 외부 shorts-lab 파이프라인)
+  돼서 확정. 배치 원칙: 설명 대상 바로 옆에, 구석으로 밀지 않음.
+- **거버넌스 3종 세트**: `insight-7b3e9f2c/STYLE_GUIDE.md`(정본, 사고 기록 포함) +
+  `scripts/check_studio_style.py`(FAIL=자동판정/WARN=사람판단) + `CLAUDE.md` 연결.
+- **외부 생성 페이지도 root-cause 수정**: `shorts-studio.html`을 매번 새로 쓰는
+  `shorts-lab/pipeline/build_studio_site.py`(별도 저장소) 자체를 studio.css/js
+  패턴에 맞게 재작성.
+- **`.doc` 패턴**: 대시보드형(1100~1600px, 데이터 밀도)과 문서형(760px 안팎,
+  가독성 우선)이 공존 — 폭이 다르게 보이는 건 버그 아니고 의도.
+- `simplifier-studio.md`가 갖고 있던 "저장소 전체 감사"(고아 이미지, git 히스토리
+  시크릿, GitHub Actions 상태 등)는 **UX가 아니라 저장소 위생**이라 흡수하지
+  않았다 — 그 스레드가 계속 정본.
+
 ## ③ 진행 중이거나 남아있는 작업
 - [ ] **`shorts-lab` 생성기 정리 (선택, 우선순위 낮음)** — `build_docs_pages.py`가 아직
   옛 너비 규칙을 쓴다. 다만 위 `.wrap:has(> .doc)` 특이도 장치로 **화면은 이미 안전**하므로
@@ -166,6 +208,11 @@ About 페이지/저자소개 콘텐츠는 CMO 마야 스레드가 챙기기로 �
 - [ ] **GA4 해상도 데이터 축적 관찰** — 90일 창이라 표본이 더 쌓이면 재확인. 지금 표본
   (유효 58건)은 참고선 수준이고, `2560x1440`이 62%로 압도적인데 관리자 본인 방문이
   섞였을 가능성이 있어 해석에 주의.
+- [ ] **`STYLE_GUIDE.md`/`docs/UX_GUIDE.md`/`style-guide.html` 3중 동기화**
+  (simplifier-studio에서 이관) — 자동 동기화가 없어 스튜디오 규칙을 크게 바꿀 때마다
+  세 곳 다 확인·갱신해야 어긋나지 않는다. 이번 세션엔 셋 다 어긋난 곳 없음 확인.
+- [ ] **공개 사이트에도 ⓘ 패턴이 필요한 지점 검토** (simplifier-studio에서 이관) —
+  범위가 커서 사장님 확인 후 착수.
 - [x] **`title=` 죽은 툴팁 4건 — 2026-08-30(클라우드 세션) 판단 완료.**
   `book-insight.html` x2, `pillar-manage.html`은 `.label-text`/`.intro-cell`에
   `overflow:hidden; text-overflow:ellipsis`가 걸려 있고 title 내용이 화면에 이미
@@ -188,9 +235,12 @@ About 페이지/저자소개 콘텐츠는 CMO 마야 스레드가 챙기기로 �
 2. GA4 해상도 표본이 충분히 쌓이면(수백 건대) 분포를 다시 보고, 표준형 1200px이 여전히
    타당한지 재확인. **GA4 조회는 인증정보가 있는 PC 세션에서만 가능** — 클라우드
    세션은 `scripts/fetch_ga4.py` 실행 자체가 안 됨(2026-08-30 확인).
-3. PR #8(ⓘ 오버플로 수정) 머지 확인. 새 ⓘ 변형(`.info-text`/`.h2note-text` 외)을
-   추가할 일이 생기면 `positionInfoText()`가 처리하게 맞추고 직접 새 로직을 만들지 않는다.
+3. 새 ⓘ 변형(`.info-text`/`.h2note-text` 외)을 추가할 일이 생기면
+   `positionInfoText()`/`positionAllInfoDots()`가 처리하게 맞추고 직접 새 로직을
+   만들지 않는다.
 4. 공개 사이트에 ⓘ 패턴이 필요한 지점이 있는지 (아직 미결) — 다음에 이 스레드가
    열리면 범위부터 사장님과 정하고 착수.
-5. 이 스레드가 다시 열리면 이 파일과 두 정본 문서(UX_GUIDE.md, STYLE_GUIDE.md)부터 읽으면
+5. GNB(내비게이션 구조/라벨)와 About 콘텐츠 결정의 경계를 사장님께 확인 —
+   About 콘텐츠는 마야, GNB 구조 자체는 이 스레드 소관이 맞는지.
+6. 이 스레드가 다시 열리면 이 파일과 두 정본 문서(UX_GUIDE.md, STYLE_GUIDE.md)부터 읽으면
    된다 — 대화 전체를 다시 볼 필요 없다.
