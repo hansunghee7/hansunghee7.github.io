@@ -74,7 +74,7 @@
 
   <div class="stats">
     <div class="stat"><div class="n">7</div><div class="l">GitHub Actions 자동화 워크플로</div></div>
-    <div class="stat"><div class="n">19</div><div class="l">연결된 외부 서비스</div></div>
+    <div class="stat"><div class="n">20</div><div class="l">연결된 외부 서비스</div></div>
     <div class="stat"><div class="n">9</div><div class="l">참조 없는 죽은 파일 — 삭제 완료</div></div>
     <div class="stat"><div class="n">587</div><div class="l">log.html 한 페이지에 박제된 글 수</div></div>
   </div>
@@ -201,13 +201,13 @@
       <div class="log-item"><span class="dot done"></span><div><b>배포 후 — 라이브 감시 2경로</b> · site-health-check(10분마다, 홈+로고 자산 200 확인)와 UptimeRobot(외부 SaaS, 5분마다 — GitHub 자체 장애 때도 살아있는 독립 감시자).
         <span class="files">.github/workflows/site-health-check.yml · uptimerobot.com (모니터 2개)</span>
       </div></div>
-      <div class="log-item"><span class="dot done"></span><div><b>매일 아침 — 모닝 브리핑</b> (07시경, claude.ai Routine) · 클로드 세션이 자동으로 열려 빌드·사이트·워크플로·데이터 신선도를 점검하고 스튜디오 핵심 지표(방문·도서·SNS)를 요약해 푸시+이메일로 보고. 권한 경계: 진단과 수정안(별도 브랜치)까지만 — main 반영은 사람이 승인.</div></div>
+      <div class="log-item"><span class="dot done"></span><div><b>매일 아침 — 모닝 브리핑</b> (06:00 KST, claude.ai Routine) · 클로드 세션이 자동으로 열려 빌드·사이트·워크플로·데이터 신선도를 점검하고 스튜디오 핵심 지표(방문·도서·SNS)를 요약해 <b>클로드 코드 대화창과 이메일 양쪽으로</b> 보고(Gmail 커넥터). 권한 경계: 진단과 수정안(별도 브랜치)까지만 — main 반영은 사람이 승인.</div></div>
     </div>
   </section>
 
   <!-- ===== 외부 연동 ===== -->
   <section class="sec">
-    <h2>연결된 외부 서비스 17개</h2>
+    <h2>연결된 외부 서비스 20개</h2>
     <p class="sec-note">위 다이어그램에 다 담기지 않는 폰트 CDN까지 포함한 전체 목록입니다.</p>
 
     <div class="tbl">
@@ -224,7 +224,8 @@
 
       <div class="tbl-group">감시 · 자동 점검</div>
       <div class="tbl-row"><div class="svc">UptimeRobot</div><div class="role">외부 가동 감시 — 홈·로고 5분 주기, GitHub와 독립</div><div class="where">(외부 SaaS, 저장소 밖)</div></div>
-      <div class="tbl-row"><div class="svc">claude.ai Routine · 모닝 브리핑</div><div class="role">매일 아침 자동 점검 세션 + 지표 브리핑</div><div class="where">(claude.ai, 저장소 밖)</div></div>
+      <div class="tbl-row"><div class="svc">claude.ai Routine · 모닝 브리핑</div><div class="role">매일 06:00 KST 자동 점검 세션 + 지표 브리핑</div><div class="where">(claude.ai, 저장소 밖)</div></div>
+      <div class="tbl-row"><div class="svc">Gmail 커넥터</div><div class="role">모닝 브리핑 본문을 메일로 발송 (브리핑 세션이 직접 호출)</div><div class="where">(claude.ai 커넥터, 저장소 밖)</div></div>
 
       <div class="tbl-group">AI · 검색</div>
       <div class="tbl-row"><div class="svc">Cloudflare Worker · simplifier-ask</div><div class="role">방문자 질문에 답하는 RAG 챗봇</div><div class="where">insight-7b3e9f2c/ask.html</div></div>
