@@ -38,7 +38,7 @@
 | [about-books-cta.md](about-books-cta.md) | About/저서 페이지, GNB 재설계, 포스트 CTA — **GNB 재설계·About 콘텐츠 둘 다 cmo-marketing이 정리해서 진행(2026-08-30 확정)**. 포스트 하단 CTA(작가 카드)는 이 스레드가 사장님과 직접 버전 A~J까지 진행 중 | 실무(코드) |
 | [multi-publish-sns-insight.md](multi-publish-sns-insight.md) | 멀티 퍼블리싱(CMS→채널별 발행 보조) + SNS 인사이트(팔로워 추이 수집) | 실무(코드) |
 | [claude-code-ops.md](claude-code-ops.md) | 클로드 코드 사용법 메타 상담 — 여러 기기/프로젝트 병행 운영 | 메타 |
-| 숏감독 (파일 아직 없음) | `shorts-lab` 파이프라인 등 숏폼 제작 인프라 전담(2026-08-30 신설, 사장님 지시) — 다음에 그 스레드가 열리면 스스로 `roles/숏감독.md`를 만들 것 | 실무(코드) |
+| 숏감독 (파일 아직 없음) | `shorts-lab` 파이프라인 등 숏폼 제작 인프라 전담(2026-08-30 신설, 사장님 지시) — 다음에 그 스레드가 열리면 스스로 `roles/숏감독.md`를 만들 것. 이관 직후 유일했던 대기 항목(생성기 너비 규칙 정리)은 `ux-lead`가 같은 날 먼저 완료함(아래 🟢 참고) | 실무(코드) |
 
 **겹치는 경계 요약** (자세한 사정은 각 파일 ①절 참고):
 - 콘텐츠 **전략**(cmo-marketing) vs **제작**(homepage-growth-ux) — 허브/필러 페이지는
@@ -137,8 +137,10 @@ PR #16로 스튜디오 모바일 오버플로를 고쳤다고 검증까지 마�
 ## 🟢 각 스레드가 자체적으로 진행 (사장님 액션 불필요)
 
 - `ai-cto-tutor`: 2026-08-31 06:00 첫 모닝브리핑 도착 확인, GA4 백업 트리거
-  cron-job.org 이전. **참고: GA4 조회(`scripts/fetch_ga4.py`)는 인증정보가 있는
-  PC 세션에서만 가능 — 클라우드 세션은 실행 자체가 안 됨(2026-08-30 확인).**
+  cron-job.org 이전(cron-job.org 계정 신설은 사장님 몫, 연동 자체는 클라우드도 가능).
+  **정정(2026-08-30 같은 날 ux-lead 재확인): "GA4 조회는 PC 전용"이라고 여기 적혀
+  있던 건 틀렸다 — `fetch-analytics.yml`을 `workflow_dispatch`로 실행시키고
+  `assets/data/analytics.json`을 읽으면 클라우드 세션도 된다. 로컬 자격증명 불필요.**
 - `simplifier-qa-agent`: `qa_feedback` 👎 로그 리뷰, 골든 테스트셋 구축
 - `site-engineering`: `system-map.html`에 `_config.yml`/`build-check.yml`/
   `site-health-check.yml` 반영 여부 확인
@@ -148,8 +150,11 @@ PR #16로 스튜디오 모바일 오버플로를 고쳤다고 검증까지 마�
 - `multi-publish-sns-insight`: 2026-09-27경 네이버블로그 수집 안정성·추세 요약
   추가 여부 재검토 예정(사용자와 합의됨)
 - `claude-code-ops`: simplifier-agent GitHub 비공개 저장소 push 상태 확인
-- `숏감독`(신규): `shorts-lab` 생성기가 옛 너비 규칙을 쓰는 문제 — 화면 자체는
-  `ux-lead`가 만든 `.wrap:has(> .doc)` 특이도 장치로 이미 안전하니 급하지 않음.
+- ✅ (완료) `shorts-lab` 생성기 정리 — "숏감독" 스레드로 이관됐었으나, 사장님이
+  같은 날 대화창에서 `ux-lead`에게 직접 재지시해 그쪽이 착수 전 이 표를 못 보고
+  진행·완료함(`shorts-lab@de6099a` + PR #33, 2026-08-30). **숏감독 스레드가
+  처음 열리면 이 항목은 이미 끝난 걸로 보고 넘어갈 것** — `.wrap{max-width:760px}`
+  죽은 규칙 제거 + 정본 문서 5개 재생성.
 - ✅ (완료) 스튜디오 ⓘ 말풍선 뷰포트 오버플로 버그 — `cmo-marketing`이 작업
   칩(`task_cf685175`)으로만 등록해뒀던 걸 `ux-lead`가 전수 검토 중 발견해
   직접 수정(PR #8 → 검증 결함 발견 후 진짜 수정 PR #21, 2026-08-30)
