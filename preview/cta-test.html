@@ -113,6 +113,18 @@ layout: null
   .post-card-photo { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; filter: grayscale(1); margin-bottom: 10px; display: inline-block; }
   .post-card-name { font-family: 'Pretendard Variable', sans-serif; font-weight: 600; font-size: 13.5px; color: #2a2822; margin: 0 0 2px; }
   .post-card-role { font-family: 'Pretendard Variable', sans-serif; font-weight: 400; font-size: 12px; color: #8f8b82; margin: 0; }
+
+  /* 버전 H(2026-08-30, 진단 3건 반영) -- ①클로징을 가운데 정렬에서 본문과 같은
+     왼쪽 정렬로(편지가 실제로 사인하는 느낌 vs 디자인 소품처럼 보이는 차이),
+     ②사진 밑 "심플리파이어 · 스타트업 그로스 코치" 역할 캡션 제거(사인에
+     이미 이름이 있는데 또 명함처럼 반복하면 상업적으로 읽힘 -- 단, 이름
+     자체는 첫 방문자 식별을 위해 남김, 사장님 원 가설도 "이름 밑 역할"만
+     지적함), ③"여기까지 읽어주셔서 감사합니다"(한국 블로그 최다빈출 상투어)
+     를 코치다운 짧은 말로 교체. 사진 자체의 격차(전문 촬영 vs 스냅샷)는
+     레이아웃으로 못 고치는 별개 문제라 이번엔 그대로 둠. */
+  .post-closing-h { text-align: left; }
+  .post-closing-h .post-closing-line { margin: 0 0 4px; }
+  .post-closing-h .post-closing-sig { margin: 10px 0 0; }
 </style>
 </head>
 <body>
@@ -253,6 +265,32 @@ layout: null
     </a>
     <p class="post-card-name">한성희</p>
     <p class="post-card-role">심플리파이어 · 스타트업 그로스 코치</p>
+    <ul class="post-sign-off-links" style="margin-top:14px;">
+      <li><a href="/book/기획자의-질문법.html">기획자의 질문법</a></li>
+      <li><a href="/book/UX의-언어들.html">UX의 언어들</a></li>
+      <li><button type="button" class="open-contact-modal" data-contact-type="speaking">강연 신청</button></li>
+      <li><button type="button" class="open-contact-modal" data-contact-type="coaching">코칭 상담 신청</button></li>
+    </ul>
+  </div>
+</div>
+
+<div class="compare-label">버전 H(진단 반영) — 클로징 왼쪽 정렬 · 역할 캡션 삭제 · 상투어 교체</div>
+<div class="article-sheet">
+  <p class="fake-p">수많은 스타트업을 코칭하면서도 느낀다. 인생도 사업도 모두 바람이 거칠게 부는 바다와 같다.</p>
+  <p class="fake-p">내 배의 돛, 내가 꼭 잡고 있나. 혹시 남 탓만 하며 놓고 있지는 않나.</p>
+
+  <div class="post-closing post-closing-h">
+    <p class="post-closing-line">응원합니다,</p>
+    <img src="/assets/signature.png" alt="한성희 서명" class="post-closing-sig">
+  </div>
+
+  <hr class="post-cta-divider">
+
+  <div class="post-card">
+    <a href="/about/">
+      <img src="/assets/ceo-portrait-og.jpg" alt="한성희" class="post-card-photo">
+    </a>
+    <p class="post-card-name">한성희</p>
     <ul class="post-sign-off-links" style="margin-top:14px;">
       <li><a href="/book/기획자의-질문법.html">기획자의 질문법</a></li>
       <li><a href="/book/UX의-언어들.html">UX의 언어들</a></li>
