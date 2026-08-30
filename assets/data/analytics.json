@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-08-30T13:06:11.772137+00:00",
+  "updated_at": "2026-08-30T20:00:39.296877+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 112,
-    "activeUsers": 59,
-    "newUsers": 58,
-    "returningUsers": 1
+    "sessions": 114,
+    "activeUsers": 61,
+    "newUsers": 59,
+    "returningUsers": 2
   },
   "daily": [
     {
@@ -38,10 +38,10 @@
     },
     {
       "date": "2026-08-30",
-      "sessions": 25,
-      "activeUsers": 20,
-      "newUsers": 18,
-      "returningUsers": 2
+      "sessions": 27,
+      "activeUsers": 22,
+      "newUsers": 19,
+      "returningUsers": 3
     }
   ],
   "daily_leads": [
@@ -55,23 +55,23 @@
     }
   ],
   "landing_types": {
-    "home": 88,
+    "home": 79,
     "log_home": 7,
     "individual_post": 14,
-    "other": 19
+    "other": 21
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 83
-    },
-    {
-      "source": "(not set)",
-      "sessions": 21
+      "sessions": 84
     },
     {
       "source": "searchadvisor.naver.com",
       "sessions": 12
+    },
+    {
+      "source": "(not set)",
+      "sessions": 10
     },
     {
       "source": "l.facebook.com",
@@ -100,10 +100,10 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 269,
-    "section_view_voices": 194,
-    "section_view_book_class": 118,
-    "section_view_faq": 107,
+    "section_view_proven": 272,
+    "section_view_voices": 197,
+    "section_view_book_class": 119,
+    "section_view_faq": 108,
     "faq_open": 18,
     "read_complete": 184
   },
@@ -275,7 +275,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 73,
+    "total_desktop_sessions": 74,
     "excluded_invalid_sessions": 17,
     "by_resolution": [
       {
@@ -286,7 +286,7 @@
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 13
+        "sessions": 14
       },
       {
         "resolution": "1920x1080",
