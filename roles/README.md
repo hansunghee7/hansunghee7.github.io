@@ -1,0 +1,121 @@
+# roles/ — 스레드별 인수인계 인덱스
+
+여러 Local/Cloud 클로드 세션이 각자 역할을 맡아 이 저장소를 동시에 다룬다.
+`/export` 대신 각 스레드가 스스로 요약을 `roles/<파일명>.md`로 이 브랜치
+(`roles-notes`, main과 분리돼 라이브 사이트에 영향 없음)에 커밋하는 방식으로
+인수인계한다. 새 세션이 어떤 역할을 맡든 여기서 먼저 전체 현황을 훑고,
+해당 파일로 들어가면 된다.
+
+> 마지막 통합 정리: 2026-08-30 (cmo-marketing 스레드가 11개 파일 전수 확인, 거의
+> 동시에 ux-lead 스레드도 독립적으로 10개 파일을 전수 검토함 — 두 결과를 이
+> 문서에 합침).
+> 스레드가 스스로 파일을 갱신하면 이 표도 같이 갱신할 것 — 안 그러면 이 문서도
+> 곧 낡는다.
+
+## 스레드 목록과 경계
+
+| 파일 | 역할 | 성격 |
+|---|---|---|
+| [cmo-marketing.md](cmo-marketing.md) | CMO 겸 마케팅 튜터 — 측정 인프라(GA4/서치콘솔/Clarity), 진단, 검색/AEO 전략, 콘텐츠 신디케이션 정책 | 전략·상담 |
+| [homepage-growth-ux.md](homepage-growth-ux.md) | 공개 홈페이지 SEO/GEO/AEO 콘텐츠 제작 + 프론트 성능 | 실무(코드) |
+| [ux-lead.md](ux-lead.md) | 공개 사이트+스튜디오 UX 총괄 — 너비 정책, 인사이트 카드/그래프 표준, 스튜디오 사이드바 | 표준 수립 |
+| [ai-cto-tutor.md](ai-cto-tutor.md) | AI CTO 학습 튜터 + 엔지니어링 체계(배포 안전망, 커밋 교통정리, 모닝브리핑, 자동화) | 전략·인프라 |
+| [site-repo-ops.md](site-repo-ops.md) | 저장소 운영(노트북) — 배포 사고 대응, 이미지/템플릿 감사, git 충돌 조율 | 실무(운영) |
+| [site-engineering.md](site-engineering.md) | 저장소 실무 엔지니어링 — 홈페이지/스튜디오 코드, 인프라 정리 | 실무(코드) |
+| [simplifier-studio.md](simplifier-studio.md) | 스튜디오(`insight-7b3e9f2c/`) UX/거버넌스 + 저장소 위생 | 표준 수립 |
+| [simplifier-qa-agent.md](simplifier-qa-agent.md) | RAG 에이전트 "Simplifier Q&A" + `prd-draft` 스킬 | 실무(코드) |
+| [about-books-cta.md](about-books-cta.md) | About/저서 페이지, GNB 재설계, 포스트 CTA | 실무(코드) |
+| [multi-publish-sns-insight.md](multi-publish-sns-insight.md) | 멀티 퍼블리싱(CMS→채널별 발행 보조) + SNS 인사이트(팔로워 추이 수집) | 실무(코드) |
+| [claude-code-ops.md](claude-code-ops.md) | 클로드 코드 사용법 메타 상담 — 여러 기기/프로젝트 병행 운영 | 메타 |
+
+**겹치는 경계 요약** (자세한 사정은 각 파일 ①절 참고):
+- 콘텐츠 **전략**(cmo-marketing) vs **제작**(homepage-growth-ux) — 허브/필러 페이지는
+  homepage-growth-ux가 실착수, cmo-marketing은 승인 전 중복 착수 금지.
+- **UX 표준 수립**(ux-lead, simplifier-studio) vs **실제 코드 구현**(site-engineering,
+  about-books-cta, homepage-growth-ux) — 표준은 앞의 둘이 정본 문서에 정리하고,
+  뒤의 셋이 실제 페이지에 적용.
+- **인프라/배포 체계**(ai-cto-tutor) vs **저장소 운영 실무**(site-repo-ops) — 안전망·
+  자동화 설계는 ai-cto-tutor, 개별 사고 대응·감사는 site-repo-ops.
+
+## 🔴 사장님 결정 대기 (2026-08-30 기준)
+
+| 스레드 | 대기 항목 |
+|---|---|
+| about-books-cta | GNB 재설계안(Life→Essay, Book&Class→About 흡수) 재승인 여부 — 아래 사고로 완전히 원복된 상태에서 다시 논의 시작 |
+| cmo-marketing | 발행정책 전환(사이트 먼저 → 며칠 뒤 SNS 재발행) — "OK" 한마디로 확정 |
+| homepage-growth-ux | "스타트업 전략" 필러 PRD 승인 여부 + 열린 질문 3개(고아페이지 재평가 기준·"미국진출" 카테고리 포함 여부·테마별 인용문 담당) |
+| about-books-cta | 포스트 하단 CTA 버전 A~F(`cta-test.html`) 중 최종 선택 |
+| simplifier-studio | 격리 이미지 69개(`log_assets/images_quarantine_2026-08-29/`) 최종 삭제 여부 |
+| site-repo-ops | `log.html` 무한 스크롤(전체 펼치면 약 49,000px) 개선 착수 여부 |
+| simplifier-qa-agent | `shorts-lab/LAUNCH_PRD.md`의 확인 필요 항목(RICE 점수 정식화 등) |
+
+### ⚠️ 사고 기록 (해결됨): GNB "About" 무단 승격 (2026-08-29 밤~2026-08-30)
+
+About/저서 GNB 재설계는 `header-preview.html` + `/preview/`로 완전히 격리해
+사장님 승인 전엔 라이브에 안 닿게 설계돼 있었다. 그런데 **다른 세션(커밋
+`6941bbcd`)이 이 승인 대기 상태를 확인하지 않고 "Book & Class"→About 흡수
+부분만 라이브 `header.html`에 직접 반영**했다 — 격리 사본이 있다는 사실 자체는
+뒤 세션의 판단을 막지 못했다. 결과: About 링크가 승인 없이 약 14시간 노출.
+사장님이 직접 발견(PC/모바일이 다르게 보인다고 보고) → ux-lead 스레드가 GNB
+노출만 1차 원복(PR #9)했으나 `noindex`·`sitemap.xml`·`llms.txt`는 그대로 둬
+"색인은 되는데 메뉴엔 없는" 어중간한 상태가 남았고, 사장님이 "그것도 봐달라"고
+요청해 **PR #10로 같은 건의 범위 전체를 완전히 원복**했다: `about/index.html`
+noindex 복원, 두 저서 페이지 `preview:true` 복원, sitemap/llms.txt에서 제거,
+GNB의 책 링크도 예스24 외부 링크로 원복. 지금은 검색·사이트맵·GNB·llms.txt
+어디에도 안 걸리는 완전히 일관된 "보류" 상태 — 페이지 파일과 `/preview/`는
+남아있으니 향후 승인 시 플래그만 되돌리면 재승격 가능하다.
+
+**이 사고에서 나온 규칙(아래 "공통 규칙"에도 반영)**: 스테이징/미리보기 격리
+사본을 만들어뒀다는 것 자체는 안전장치가 아니다. 사장님의 명시적 승인 없이는
+어떤 세션도 라이브 파일에 반영하지 않는다.
+
+## 🟡 스레드 간 대조 필요하다고 각자 적어뒀던 것 — 해소 상태
+
+- **너비 토큰 체계** — `site-engineering`·`about-books-cta` 둘 다 "겹치는지 대조
+  필요"라고 남겨뒀으나, `ux-lead`가 8/30에 `--width-prose/content/data` 3단
+  체계로 통합 완료, `docs/UX_GUIDE.md`가 정본. **해소됨.**
+- **`main-protect` 룰셋 Disabled** — `site-repo-ops`는 "소관 불명확"이라 적어뒀으나,
+  `ai-cto-tutor`가 원인(봇 워크플로가 fine-grained PAT로 커밋하게 전환돼야 Active
+  전환 가능)을 이미 파악 중. **ai-cto-tutor 소관으로 정리.**
+
+## 🟢 각 스레드가 자체적으로 진행 (사장님 액션 불필요)
+
+- `ai-cto-tutor`: 2026-08-31 06:00 첫 모닝브리핑 도착 확인, GA4 백업 트리거
+  cron-job.org 이전. **참고: GA4 조회(`scripts/fetch_ga4.py`)는 인증정보가 있는
+  PC 세션에서만 가능 — 클라우드 세션은 실행 자체가 안 됨(2026-08-30 확인).**
+- `simplifier-qa-agent`: `qa_feedback` 👎 로그 리뷰, 골든 테스트셋 구축
+- `site-engineering`: `system-map.html`에 `_config.yml`/`build-check.yml`/
+  `site-health-check.yml` 반영 여부 확인
+- `simplifier-studio`: `STYLE_GUIDE.md`/`docs/UX_GUIDE.md`/`style-guide.html`
+  세 문서 동기화 유지
+- `multi-publish-sns-insight`: 2026-09-27경 네이버블로그 수집 안정성·추세 요약
+  추가 여부 재검토 예정(사용자와 합의됨)
+- `claude-code-ops`: simplifier-agent GitHub 비공개 저장소 push 상태 확인
+- ✅ (완료) 스튜디오 ⓘ 말풍선 뷰포트 오버플로 버그 — `cmo-marketing`이 작업
+  칩(`task_cf685175`)으로만 등록해뒀던 걸 `ux-lead`가 전수 검토 중 발견해
+  직접 수정(PR #8, 2026-08-30)
+
+## 공통 규칙 (모든 스레드가 지켜야 함, 정본은 `CLAUDE.md`)
+
+- **스테이징/미리보기 격리 사본은 그 자체로 안전장치가 아니다** (2026-08-29~30
+  GNB 무단 승격 사고에서 확립, 위 참고) — `/preview/`나 `-preview.html` 같은
+  사본을 만들어뒀어도, 사장님의 명시적 승인 없이는 어떤 세션도 그 내용을
+  라이브 파일에 반영하지 않는다. "격리해뒀으니 안전하다"고 판단하지 말 것 —
+  반영 여부는 반드시 승인 확인 후.
+- **main 직접 push 금지** (2026-08-29 도입) — 작업 브랜치 + PR + auto-merge
+  (build-check 통과 조건). 예외: 사장님 본인 직접 커밋, github-actions 자동화 커밋.
+- `git fetch origin <A> <B>` 형태로 브랜치 여러 개 나열해서 받지 말 것 — 하나라도
+  없으면 전체가 조용히 실패.
+- 이미지 자산 정리는 `scripts/find_orphan_images.py`로만, 절대 즉시 삭제하지 않고
+  격리(quarantine)만.
+- 인프라를 바꾸면 같은 세션에서 `insight-7b3e9f2c/system-map.html`도 갱신.
+- 스튜디오 파일 작업 후 `python scripts/check_studio_style.py` 실행 필수.
+
+## 이 문서를 다시 열게 되면
+
+1. 위 "🔴 사장님 결정 대기" 표부터 확인 — 대부분의 스레드가 사장님 응답 대기 상태라
+   병목이 여기 몰려 있을 가능성이 높다.
+2. 자기 스레드 파일(`roles/<이름>.md`)을 열어 ②~④절부터 읽는다 — 대화 전체를
+   다시 볼 필요 없음.
+3. 다른 스레드 파일을 고쳤다면(특히 결정 대기 항목이 해소됐다면) 이 인덱스도
+   같이 갱신한다.
