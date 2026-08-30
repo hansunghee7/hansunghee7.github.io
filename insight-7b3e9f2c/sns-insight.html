@@ -204,7 +204,7 @@
 
   function headerHtml(p, infoDot) {
     var link = p.url
-      ? '<a class="shortcut-link" href="' + escapeHtml(p.url) + '" target="_blank" rel="noopener" title="' + escapeHtml(p.label) + ' 바로가기">↗</a>'
+      ? '<a class="shortcut-link" href="' + escapeHtml(p.url) + '" target="_blank" rel="noopener" title="' + escapeHtml(p.label) + ' 바로가기" aria-label="' + escapeHtml(p.label) + ' 바로가기">↗</a>'
       : "";
     return '<h3>' + escapeHtml(p.label) + link + (infoDot || "") + "</h3>";
   }
