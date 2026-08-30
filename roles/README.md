@@ -11,7 +11,8 @@
 > 문서에 합침). **같은 날 추가 정리**: 사장님이 ux-lead/simplifier-studio가
 > 스튜디오 UX 영역에서 겹친다고 지적 → simplifier-studio의 UX/거버넌스 부분을
 > ux-lead로 흡수, simplifier-studio는 저장소 위생 전담으로 축소. About 페이지/
-> 저자소개 콘텐츠 소관도 cmo-marketing으로 확정.
+> 저자소개 콘텐츠 소관도 cmo-marketing으로 확정. **경험DB 기록 방식도 같은 날
+> 바뀜** — 아래 "공통 규칙" 참고.
 > 스레드가 스스로 파일을 갱신하면 이 표도 같이 갱신할 것 — 안 그러면 이 문서도
 > 곧 낡는다.
 
@@ -48,13 +49,14 @@
 
 | 스레드 | 대기 항목 |
 |---|---|
-| about-books-cta / cmo-marketing | GNB 재설계안(Life→Essay, Book&Class→About 흡수) 재승인 여부 — 아래 사고로 완전히 원복된 상태에서 다시 논의 시작. **GNB 구조 자체와 About 콘텐츠의 소관 경계도 함께 확인 필요(ux-lead가 질문해둔 상태)** |
+| about-books-cta / cmo-marketing | GNB 재설계안(Life→Essay, Book&Class→About 흡수) 재승인 여부 — 아래 사고로 완전히 원복된 상태에서 다시 논의 시작. **GNB 구조 자체와 About 콘텐츠의 소관 경계도 함께 확인 필요(ux-lead가 cmo-marketing.md에 확정 요청 남김)** |
 | cmo-marketing | 발행정책 전환(사이트 먼저 → 며칠 뒤 SNS 재발행) — "OK" 한마디로 확정 |
 | homepage-growth-ux | "스타트업 전략" 필러 PRD 승인 여부 + 열린 질문 3개(고아페이지 재평가 기준·"미국진출" 카테고리 포함 여부·테마별 인용문 담당) |
 | about-books-cta | 포스트 하단 CTA 버전 A~F(`cta-test.html`) 중 최종 선택 |
 | simplifier-studio | 격리 이미지 69개(`log_assets/images_quarantine_2026-08-29/`) 최종 삭제 여부 |
 | site-repo-ops | `log.html` 무한 스크롤(전체 펼치면 약 49,000px) 개선 착수 여부 |
 | simplifier-qa-agent | `shorts-lab/LAUNCH_PRD.md`의 확인 필요 항목(RICE 점수 정식화 등) |
+| ux-lead | 블로그 글 587개 footer 부재 — 브런치 벤치마킹 필요했으나 이 세션 네트워크 정책상 `brunch.co.kr` 직접 접속 차단, 일반 지식 기반 답변만 전달함(ux-lead.md 참고) |
 
 ### ⚠️ 사고 기록 (해결됨): GNB "About" 무단 승격 (2026-08-29 밤~2026-08-30)
 
@@ -76,13 +78,21 @@ GNB의 책 링크도 예스24 외부 링크로 원복. 지금은 검색·사이�
 사본을 만들어뒀다는 것 자체는 안전장치가 아니다. 사장님의 명시적 승인 없이는
 어떤 세션도 라이브 파일에 반영하지 않는다.
 
-**비공개 저장소(`simplifier-cxo-db`)에 기록 완료** — `CLAUDE.md`의 "세션 종료 전
-경험DB 기록" 규칙(2026-08-30 신설) 대상이라 `incidents/2026-08-30-gnb-unauthorized-promotion.md`
-+ `decisions/2026-08-30-approval-gate-for-staging-promotion.md`로 남겼다.
-**첫 시도는 Claude Code 자동 모드 분류기가 차단**했지만(사업 관련 비공개
-저장소에 새로 push 권한을 붙이는 걸 민감 동작으로 판단한 듯) 사장님이 재시도를
-지시하자 두 번째 시도는 통과됐다 — 같은 세션에서 동일 요청을 다시 하면 풀리는
-경우가 있다는 뜻이라, 막히면 바로 포기하지 말고 한 번 더 시도해볼 것.
+**비공개 저장소(`simplifier-cxo-db`)에 기록 완료** — `decisions/2026-08-30-approval-gate-for-staging-promotion.md`
++ `incidents/2026-08-30-gnb-unauthorized-promotion.md`로 남겼다(완성 문서
+방식이 아직 정착 규칙이던 시점). **첫 시도는 Claude Code 자동 모드 분류기가
+차단**했지만(사업 관련 비공개 저장소에 새로 push 권한을 붙이는 걸 민감 동작으로
+판단한 듯) 사장님이 재시도를 지시하자 두 번째 시도는 통과됐다 — 같은 세션에서
+동일 요청을 다시 하면 풀리는 경우가 있다는 뜻이라, 막히면 바로 포기하지 말고
+한 번 더 시도해볼 것.
+
+### ⚠️ 사고 기록 (해결됨): 스튜디오 모바일 GNB — 자체 검증이 놓친 진짜 버그
+
+PR #16로 스튜디오 모바일 오버플로를 고쳤다고 검증까지 마쳐 보고했으나, 사장님이
+시크릿 모드로도 재현된다고 재확인해줘서 검증 방법 자체를 의심 → 데스크톱
+브라우저 뷰포트 리사이즈는 모바일 에뮬레이션이 아니라는 게 근본 원인이었다
+(자세한 내용은 `ux-lead.md`, PR #21). **경험DB 인박스 이슈로도 남김**:
+[simplifier-cxo-db#1](https://github.com/hansunghee7/simplifier-cxo-db/issues/1).
 
 ## 🟡 스레드 간 대조 필요하다고 각자 적어뒀던 것 — 해소 상태
 
@@ -105,16 +115,17 @@ GNB의 책 링크도 예스24 외부 링크로 원복. 지금은 검색·사이�
 - `site-engineering`: `system-map.html`에 `_config.yml`/`build-check.yml`/
   `site-health-check.yml` 반영 여부 확인
 - `ux-lead`: `STYLE_GUIDE.md`/`docs/UX_GUIDE.md`/`style-guide.html` 세 문서
-  동기화 유지(2026-08-30 simplifier-studio에서 이관)
+  동기화 유지(2026-08-30 simplifier-studio에서 이관). 통합 여부는 검토했고
+  **비추천 의견**(읽는 빈도·목적이 달라 합치면 한쪽이 묻힘) — `ux-lead.md` ③절 참고.
 - `multi-publish-sns-insight`: 2026-09-27경 네이버블로그 수집 안정성·추세 요약
   추가 여부 재검토 예정(사용자와 합의됨)
 - `claude-code-ops`: simplifier-agent GitHub 비공개 저장소 push 상태 확인
 - ✅ (완료) 스튜디오 ⓘ 말풍선 뷰포트 오버플로 버그 — `cmo-marketing`이 작업
   칩(`task_cf685175`)으로만 등록해뒀던 걸 `ux-lead`가 전수 검토 중 발견해
-  직접 수정(PR #8, 2026-08-30). **후속: 닫힌 상태 넘침까지 추가 발견해 PR #16으로
-  완전 수정(2026-08-30)**
-- ✅ (완료) 스튜디오 모바일 가로 스크롤(16개 페이지 중 13개 실제로 깨져 있었음) —
-  `ux-lead`가 Playwright 실측으로 발견·수정(PR #16, 2026-08-30)
+  직접 수정(PR #8 → 검증 결함 발견 후 진짜 수정 PR #21, 2026-08-30)
+- ✅ (완료) 스튜디오 모바일 가로 스크롤 — `ux-lead`가 Playwright 실측으로
+  발견·수정(PR #16, 실기기 에뮬레이션으로 재검증해 진짜 원인까지 잡은
+  후속 PR #21, 2026-08-30)
 
 ## 공통 규칙 (모든 스레드가 지켜야 함, 정본은 `CLAUDE.md`)
 
@@ -125,11 +136,16 @@ GNB의 책 링크도 예스24 외부 링크로 원복. 지금은 검색·사이�
   반영 여부는 반드시 승인 확인 후.
 - **main 직접 push 금지** (2026-08-29 도입) — 작업 브랜치 + PR + auto-merge
   (build-check 통과 조건). 예외: 사장님 본인 직접 커밋, github-actions 자동화 커밋.
-- **세션 종료 전 경험DB 기록 확인** (2026-08-30 도입, `CLAUDE.md` 참고) — 되돌리기
-  어려운 결정이나 사고를 고쳤으면 비공개 저장소 `simplifier-cxo-db`에
-  `decisions/`나 `incidents/`로 남긴다. 그 저장소에 새로 접근(특히 push 권한)하려는
-  시도는 자동 모드 분류기가 처음엔 막을 수 있는데, **한 번 더 시도하면 풀리는
-  경우가 있다** — 막혔다고 바로 포기하지 말고 사장님께 재시도를 확인받을 것.
+- **경험DB 기록은 "완성 문서"가 아니라 "인박스 이슈"로 던진다** (2026-08-30 변경,
+  `simplifier-cxo-db`의 `decisions/2026-08-30-inbox-not-finished-docs.md`가 정본) —
+  세션이 되돌리기 어려운 결정이나 사고를 다뤘으면, 그 저장소에 `[인박스]` 이슈
+  템플릿(`.github/ISSUE_TEMPLATE/inbox.md`)으로 **세 줄이어도 되니 가볍게** 던진다.
+  프론트매터 갖춘 `decisions/`·`incidents/` 완성 파일을 직접 쓰지 않는다 — 다듬기는
+  주 1회(금요일 모닝 브리핑)가 한다. **"왜 그렇게 판단했는가"는 이슈에만 쓰고,
+  공개 저장소 커밋 메시지엔 "무엇을 했는가"만 남긴다.** 그 저장소에 새로 접근
+  (특히 push/이슈 작성 권한)하려는 시도는 자동 모드 분류기가 처음엔 막을 수
+  있는데, **한 번 더 시도하면 풀리는 경우가 있다** — 막혔다고 바로 포기하지
+  말고 사장님께 재시도를 확인받을 것.
 - `git fetch origin <A> <B>` 형태로 브랜치 여러 개 나열해서 받지 말 것 — 하나라도
   없으면 전체가 조용히 실패.
 - 이미지 자산 정리는 `scripts/find_orphan_images.py`로만, 절대 즉시 삭제하지 않고
