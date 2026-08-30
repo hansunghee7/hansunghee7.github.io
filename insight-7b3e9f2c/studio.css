@@ -89,6 +89,9 @@ h1 .info-dot{font-size:15px;}
 .info-dot:hover .info-text, .info-dot[aria-pressed="true"] .info-text{
   opacity:1; visibility:visible; transform:translateY(0); pointer-events:auto;
 }
+/* 뷰포트 오른쪽 밖으로 나갈 때 studio.js(positionInfoText)가 붙이는 클래스 --
+   왼쪽 대신 오른쪽 기준으로 펼쳐서 화면 안에 들어오게 한다. */
+.info-text.info-text--right{ left:auto; right:0; }
 
 /* ---- 새로고침 버튼: loading -> success/error(1.6초) -> idle ---- */
 .refresh{

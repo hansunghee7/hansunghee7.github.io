@@ -87,7 +87,38 @@
      버튼은 innerHTML로 다시 그려질 수 있어서, 버튼 자체가 아니라
      document에 위임). */
   var TOGGLE_SELECTOR = ".info-dot, .h2note-q";
+  /* 화면 오른쪽 끝 근처의 ⓘ는 기본 앵커(left:0)로 말풍선을 펼치면 뷰포트
+     밖으로 나가 가로 스크롤이 생긴다(좁은 창에서 실측 확인). visibility
+     로만 감춰져 있어도(display:none이 아니라서) getBoundingClientRect로
+     열기 전에 크기를 미리 잴 수 있으므로, 열릴 때마다 넘칠지 계산해서
+     넘치면 오른쪽 기준(.info-text--right)으로 뒤집는다. */
+  function positionInfoText(btn) {
+    if (!btn) return;
+    var text = btn.querySelector(".info-text");
+    if (text) {
+      text.classList.remove("info-text--right");
+      var rect = text.getBoundingClientRect();
+      if (rect.right > window.innerWidth - 8) {
+        text.classList.add("info-text--right");
+      }
+      return;
+    }
+    // .h2note-text(사이트 인사이트)는 가운데 정렬 말풍선이라 좌/우 넘치는
+    // 만큼만 옆으로 밀어준다(--tt-shift, CSS의 translateX 계산에 반영).
+    var note = btn.querySelector(".h2note-text");
+    if (!note) return;
+    note.style.setProperty("--tt-shift", "0px");
+    var noteRect = note.getBoundingClientRect();
+    var overflowRight = noteRect.right - (window.innerWidth - 8);
+    var overflowLeft = 8 - noteRect.left;
+    if (overflowRight > 0) note.style.setProperty("--tt-shift", (-overflowRight) + "px");
+    else if (overflowLeft > 0) note.style.setProperty("--tt-shift", overflowLeft + "px");
+  }
   function bindInfoDots() {
+    document.addEventListener("mouseover", function (e) {
+      var btn = e.target.closest ? e.target.closest(TOGGLE_SELECTOR) : null;
+      if (btn) positionInfoText(btn);
+    });
     document.addEventListener("click", function (e) {
       var btn = e.target.closest ? e.target.closest(TOGGLE_SELECTOR) : null;
       var wasOpen = btn && btn.getAttribute("aria-pressed") === "true";
@@ -95,6 +126,7 @@
       if (!btn) return;
       e.preventDefault();
       e.stopPropagation();
+      if (!wasOpen) positionInfoText(btn);
       btn.setAttribute("aria-pressed", wasOpen ? "false" : "true");
     });
   }
