@@ -76,6 +76,39 @@
 - **GitHub Pages는 CSS를 약 10분 캐시**한다. 배포 직후엔 "서버는 새것, 내 화면은 옛것"
   시차가 늘 생기므로 **확인은 항상 Ctrl+F5**로. 이걸 몰라 "적용이 안 됐다"고 세 번 반복 확인함.
 
+**ⓘ 말풍선 뷰포트 오른쪽 넘침 수정 (2026-08-30, 클라우드 세션)**
+- `roles/cmo-marketing.md`가 "스튜디오 ⓘ 툴팁 가로 오버플로 버그(좁은 창에서 화면
+  밖으로 나가 가로 스크롤 발생)"를 작업 칩(`task_cf685175`)으로만 등록해두고
+  미착수 상태였던 걸 다른 스레드 롤 파일 10개를 전수 검토하며 발견 — STYLE_GUIDE.md의
+  ⓘ 패턴 소유자가 이 스레드라 직접 고침(PR [#8](https://github.com/hansunghee7/hansunghee7.github.io/pull/8)).
+- 원인: `.info-text`가 항상 `left:0` 기준 오른쪽으로만 펼쳐지고, 뷰포트 오른쪽
+  경계를 감지하는 로직이 아예 없었음. `studio.js`에 `positionInfoText()`를 추가해
+  열리기 직전 `getBoundingClientRect()`로 넘칠지 계산하고, 넘치면
+  `.info-text--right`(왼쪽→오른쪽 앵커 전환)로 뒤집게 함. 사이트 인사이트 전용
+  변형 `.h2note-text`(가운데 정렬)도 같은 함수가 `--tt-shift` CSS 변수로 좌우
+  밀어내는 방식으로 같이 처리하도록 확장.
+- 헤드리스 브라우저(380px 뷰포트)로 실제 넘침 해소 확인(`scrollWidth==clientWidth`).
+  단, 조사 중 `index.html`에서 별개로 의심되는 216px 오버플로를 발견했으나, 원인을
+  추적해보니 **이 컨테이너의 헤드리스 Chromium이 `<details open=false>`를 실제
+  브라우저와 다르게(접힘 없이 그대로 펼친 채) 렌더링하는 테스트 환경 한계**로
+  보여 확정 버그로 보고하지 않음 — 근거가 불확실한 채로 사실처럼 기록하지 않기
+  위해 의도적으로 보류. 실제 모바일 기기로 재확인이 필요하면 그때 다시 볼 것.
+
+**다른 롤 파일 10개 전수 검토 (2026-08-30, 클라우드 세션 인수인계 확인)**
+- `roles-notes` 브랜치의 나머지 롤 파일(site-repo-ops/simplifier-studio/
+  homepage-growth-ux/multi-publish-sns-insight/simplifier-qa-agent/site-engineering/
+  about-books-cta/cmo-marketing/ai-cto-tutor/claude-code-ops)을 전부 읽고 이
+  스레드가 챙길 교차 참조를 확인함.
+- **`about-books-cta.md`의 열린 질문에 답**: "너비 토큰 3단 스케일이 site-engineering
+  스레드의 `--width-prose/content/data` 체계와 같은 작업인지 대조 안 됨" — **같은
+  작업 맞음**, 위 "너비 정책(2026-08-30 확정)"이 그 구현이다. 두 스레드가 서로 다른
+  이름으로 부르던 같은 산출물이었던 것으로 확인, 별도 재작업 불필요.
+- **ux-lead 소관이 아니라고 판단하고 손대지 않은 것**: `simplifier-studio.md`의
+  "STYLE_GUIDE.md/UX_GUIDE.md/style-guide.html 3중 동기화" 이슈(구조적 결정 필요,
+  본 세션에서 셋 다 어긋난 곳은 없었음), "공개 사이트에도 ⓘ 패턴 필요한 지점"
+  검토(범위가 커서 사장님 확인 필요), `about-books-cta.md`의 GNB 재설계/CTA
+  A~F 결정(그 스레드 고유 영역, 사용자 승인 대기 중인 사안).
+
 ## ③ 진행 중이거나 남아있는 작업
 - [ ] **`shorts-lab` 생성기 정리 (선택, 우선순위 낮음)** — `build_docs_pages.py`가 아직
   옛 너비 규칙을 쓴다. 다만 위 `.wrap:has(> .doc)` 특이도 장치로 **화면은 이미 안전**하므로
@@ -104,6 +137,11 @@
 1. 새 스튜디오 페이지나 홈페이지 화면을 만들 때 **위 3분류 중 어디에 속하는지 먼저 판정**하고
    토큰을 참조한다. 숫자를 새로 하드코딩하지 않는다.
 2. GA4 해상도 표본이 충분히 쌓이면(수백 건대) 분포를 다시 보고, 표준형 1200px이 여전히
-   타당한지 재확인.
-3. 이 스레드가 다시 열리면 이 파일과 두 정본 문서(UX_GUIDE.md, STYLE_GUIDE.md)부터 읽으면
+   타당한지 재확인. **GA4 조회는 인증정보가 있는 PC 세션에서만 가능** — 클라우드
+   세션은 `scripts/fetch_ga4.py` 실행 자체가 안 됨(2026-08-30 확인).
+3. PR #8(ⓘ 오버플로 수정) 머지 확인. 새 ⓘ 변형(`.info-text`/`.h2note-text` 외)을
+   추가할 일이 생기면 `positionInfoText()`가 처리하게 맞추고 직접 새 로직을 만들지 않는다.
+4. 공개 사이트에 ⓘ 패턴이 필요한 지점이 있는지 (아직 미결) — 다음에 이 스레드가
+   열리면 범위부터 사장님과 정하고 착수.
+5. 이 스레드가 다시 열리면 이 파일과 두 정본 문서(UX_GUIDE.md, STYLE_GUIDE.md)부터 읽으면
    된다 — 대화 전체를 다시 볼 필요 없다.
