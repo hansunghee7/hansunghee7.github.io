@@ -26,6 +26,7 @@
     { href: "/insight-7b3e9f2c/ask.html", label: "Simplifier와의 대화", group: "대화" },
     { href: "/insight-7b3e9f2c/system-map.html", label: "시스템 구조", group: "참조" },
     { href: "/insight-7b3e9f2c/style-guide.html", label: "통합 UX 가이드", group: "참조" },
+    { href: "/insight-7b3e9f2c/brand-guide.html", label: "브랜드 가이드", group: "참조" },
   ];
 
   function escapeHtmlAttr(s) {
