@@ -35,6 +35,13 @@ Justin Welsh 뉴스레터 CTA와 대조 리뷰해서 확정했다. 결정 기록
   href가 실제로는 아무 데도 안 가는 상태(JS가 클릭을 가로채 preventDefault)
   라 시맨틱하게도 버튼이 맞다. About 페이지가 정식 공개되면 이 버튼을
   다시 `<a href="/about/">`로 되돌리는 걸 검토할 것.
+- (2026-08-30 수정) 책 링크도 같은 문제였다 -- `/book/*.html`이
+  `preview: true`(header-preview.html 사용, noindex)로 GNB 무단 승격
+  사고 이후 계속 보류 상태인 걸 놓치고 온사이트 경로로 걸어놨다. About과
+  달리 책은 대체할 모달이 없으니, 온사이트 페이지가 정식 공개되기 전까지는
+  header.html의 "Book & Class" 폴백과 동일한 예스24 외부 링크로 건다
+  (`target="_blank" rel="noopener"`, 사이트 이탈 링크 공통 규칙).
+  온사이트 북 페이지가 공개되면 다시 내부 경로로 되돌릴 것.
 
 사진: /assets/ceo-portrait-og.jpg(2026-08-30 전문 촬영본으로 교체).
 서명: /assets/signature.png(2026-08-30 재촬영, 가로로 더 넓은 흘림체).
@@ -70,8 +77,8 @@ Justin Welsh 뉴스레터 CTA와 대조 리뷰해서 확정했다. 결정 기록
     </button>
     <p class="post-card-tagline">다음 성장은, 여기서 시작됩니다.</p>
     <ul class="post-cta-links">
-      <li><a href="/book/기획자의-질문법.html">기획자의 질문법</a></li>
-      <li><a href="/book/UX의-언어들.html">UX의 언어들</a></li>
+      <li><a href="https://www.yes24.com/product/goods/147079674" target="_blank" rel="noopener">기획자의 질문법</a></li>
+      <li><a href="https://www.yes24.com/product/goods/193444437" target="_blank" rel="noopener">UX의 언어들</a></li>
       <li><button type="button" class="open-contact-modal">1:1 문의하기</button></li>
     </ul>
   </div>
