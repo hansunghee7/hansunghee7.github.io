@@ -61,8 +61,11 @@
      "데이터 기준 오늘"만 보고 오늘 값으로 오해하는 사고를 막기 위함
      (2026-08-30: 경제경영 종합이 당일 null인데 어제 값 295위 ▲2가
      오늘 값처럼 보고돼 브리핑 요약까지 틀린 사고). */
-  .tile.is-stale{opacity:0.62;}
-  .tile .stale-badge{margin-left:6px; font-size:11px; color:var(--warn); white-space:nowrap; vertical-align:2px;}
+  .tile.is-stale{opacity:0.7;}
+  /* 딤 처리만으로는 "덜 중요한 카드"로 읽힌다 -- 왜 옅은지를 글로 같이 말해야
+     한다(2026-08-30 사장님 피드백: "2등 올랐는데 왜 옅게 보이는지 모르겠다").
+     날짜만 적은 배지로는 부족하고, "오늘 수집 안 됨"이라는 사유가 먼저 온다. */
+  .tile .stale-note{margin-top:4px; font-size:11px; line-height:1.45; color:var(--warn);}
 </style>
 </head>
 <body class="has-shell-nav">
@@ -181,16 +184,19 @@
       (staleNote ? " · " + staleNote : "") + (note ? " · " + note : "");
     var infoDot = '<button type="button" class="info-dot" aria-label="설명 보기">ⓘ<span class="info-text">' + escapeHtml(infoTitle) + "</span></button>";
 
-    var staleBadge = isStale
-      ? '<span class="stale-badge">' + escapeHtml(latest.date.slice(5).replace("-", "/")) + " 값</span>"
-      : "";
+    var staleLine = "";
+    if (isStale) {
+      var md = latest.date.split("-");
+      staleLine = '<div class="stale-note">오늘 수집 안 됨 · ' +
+        escapeHtml(Number(md[1]) + "/" + Number(md[2])) + " 값과 그 직전 변화</div>";
+    }
 
     return (
       '<div class="' + cardClass + (isStale ? " is-stale" : "") + '"><div class="label">' + labelText + infoDot + "</div>" +
       '<div class="latest"><span class="val">' + valDisplay +
       (metric.unit ? '<span class="unit">' + escapeHtml(metric.unit) + "</span>" : "") +
-      "</span>" + deltaHtml + staleBadge +
-      "</div>" +
+      "</span>" + deltaHtml +
+      "</div>" + staleLine +
       sparkline(clean, !metric.higherIsBetter, w) +
       "</div>"
     );
