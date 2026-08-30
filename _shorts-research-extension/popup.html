@@ -39,6 +39,14 @@
   .log-item .meta .mark.success{ color:#1f7a4f; }
   .log-item .meta .mark.error{ color:#b8402a; }
   .log-item .meta .mark.cancelled{ color:#6e6a62; }
+
+  .divider{ display:flex; align-items:center; gap:8px; margin:12px 0 10px; color:#a5a299; font-size:11px; }
+  .divider::before, .divider::after{ content:''; flex:1; height:1px; background:#eeece5; }
+  #patInput{ width:100%; box-sizing:border-box; padding:8px 10px; font-size:12.5px; border:1px solid #c8c6bf; border-radius:6px; margin-bottom:8px; font-family:inherit; }
+  #patStatus{ font-size:11px; margin:-4px 0 8px; }
+  #patStatus.ok{ color:#1f7a4f; }
+  #patStatus.warn{ color:#b8402a; }
+  #githubStatus{ font-size:11.5px; color:#1f7a4f; margin:-4px 0 10px; }
 </style>
 </head>
 <body>
@@ -74,6 +82,20 @@
     시작되고, 승인 후엔 보통 5~20분 걸립니다. 끝나면 알림이 뜹니다. 자동
     클립보드 복사가 브라우저 정책으로 안 될 수 있어서, 실패해도 여기서 수동으로
     복사할 수 있게 남겨둡니다.
+  </div>
+
+  <div class="divider">GitHub 연결 (선택)</div>
+  <div id="githubStatus" style="display:none;"></div>
+  <input type="password" id="patInput" placeholder="GitHub 토큰 붙여넣기 (ghp_... 또는 github_pat_...)" autocomplete="off">
+  <div id="patStatus"></div>
+  <button id="patSaveBtn" class="secondary">토큰 저장</button>
+  <div class="hint" style="margin-top:-4px;">
+    연결하면 완료될 때 결과가 이 저장소에 GitHub 이슈로도 자동 등록되어,
+    탐(클로드)이 나중에 정기적으로 확인해 처리할 수 있습니다. 연결 안 해도
+    지금처럼 클립보드/팝업으로는 계속 받을 수 있습니다.
+    <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">여기서 발급</a>
+    — Repository access는 이 저장소 하나만, Permissions는 Issues를
+    Read and write로 설정하면 됩니다.
   </div>
 
   <div class="log-heading">최근 실행 기록</div>

@@ -147,4 +147,63 @@ chrome.storage.onChanged.addListener(function (changes) {
   if (changes.researchLog || changes.activeResearch || changes.pendingPlan || changes.selectorWarning) refreshFromStorage();
 });
 
+// ── GitHub 연결 (선택) ──────────────────────────────────────────
+// _sns-extension의 PAT 붙여넣기 방식을 그대로 재사용한다 -- OAuth 팝업보다
+// 훨씬 안정적으로 동작하는 걸 이미 확인했기 때문. 저장 전에 이 저장소에
+// 쓸 수 있는 토큰인지 먼저 확인해서, 잘못된 토큰을 넣고도 몰랐다가
+// 나중에야 알게 되는 상황을 막는다.
+var githubStatus = document.getElementById("githubStatus");
+var patInput = document.getElementById("patInput");
+var patStatus = document.getElementById("patStatus");
+var patSaveBtn = document.getElementById("patSaveBtn");
+
+function renderGithubStatus(token) {
+  if (token) {
+    githubStatus.style.display = "block";
+    githubStatus.textContent = "GitHub 연결됨 — 완료 시 이슈로도 자동 등록됩니다";
+  } else {
+    githubStatus.style.display = "none";
+  }
+}
+
+patSaveBtn.addEventListener("click", function () {
+  var value = patInput.value.trim();
+  if (!value) {
+    patStatus.className = "warn";
+    patStatus.textContent = "토큰을 입력해주세요.";
+    return;
+  }
+  patStatus.className = "";
+  patStatus.textContent = "확인 중...";
+  patSaveBtn.disabled = true;
+
+  fetch("https://api.github.com/repos/hansunghee7/hansunghee7.github.io", {
+    headers: { Authorization: "token " + value, Accept: "application/vnd.github+json" },
+  })
+    .then(function (r) {
+      patSaveBtn.disabled = false;
+      if (!r.ok) {
+        return r.json().catch(function () { return {}; }).then(function (body) {
+          patStatus.className = "warn";
+          patStatus.textContent = "저장 안 됨 — " + r.status + (body && body.message ? " " + body.message : "") + ". 토큰과 저장소 접근 권한을 확인해주세요.";
+        });
+      }
+      chrome.storage.local.set({ githubToken: value }, function () {
+        patInput.value = "";
+        patStatus.className = "ok";
+        patStatus.textContent = "확인됨 — 저장했습니다.";
+        renderGithubStatus(value);
+      });
+    })
+    .catch(function (e) {
+      patSaveBtn.disabled = false;
+      patStatus.className = "warn";
+      patStatus.textContent = "확인 실패 — " + String((e && e.message) || e);
+    });
+});
+
+chrome.storage.local.get(["githubToken"], function (res) {
+  renderGithubStatus(res.githubToken);
+});
+
 refreshFromStorage();

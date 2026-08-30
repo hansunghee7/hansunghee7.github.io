@@ -23,6 +23,44 @@ function pushLog(entry) {
   });
 }
 
+// 결과를 GitHub 이슈로도 남긴다(토큰이 저장돼 있을 때만) -- 클립보드/팝업은
+// 이 확장을 켜둔 브라우저를 벗어나면 사라지지만, 이슈는 저장소에 남아서
+// 탐(클로드)이 나중에 정기적으로 확인해 처리할 수 있는 착지점이 된다.
+// 실패해도 기존 클립보드/팝업 결과 흐름을 막지 않는다 -- 완전히 부가적인
+// 경로다.
+var REPO = "hansunghee7/hansunghee7.github.io";
+
+function openResearchIssue(brief, resultText) {
+  chrome.storage.local.get(["githubToken"], function (res) {
+    if (!res.githubToken) return; // 미연결이면 조용히 건너뜀 -- README 참고
+    var title = "[리서치 완료] " + brief.slice(0, 60) + (brief.length > 60 ? "…" : "");
+    var body =
+      "## 브리프\n\n" + brief + "\n\n## 결과\n\n" + resultText +
+      "\n\n---\n_숏폼 리서치 자동화 확장이 자동으로 등록함 (" + new Date().toISOString() + ")_";
+
+    fetch("https://api.github.com/repos/" + REPO + "/issues", {
+      method: "POST",
+      headers: {
+        Authorization: "token " + res.githubToken,
+        Accept: "application/vnd.github+json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ title: title, body: body }),
+    })
+      .then(function (r) {
+        if (!r.ok) {
+          return r.json().catch(function () { return {}; }).then(function (b) {
+            console.log("[숏폼 리서치] GitHub 이슈 등록 실패:", r.status, b && b.message);
+          });
+        }
+        console.log("[숏폼 리서치] GitHub 이슈 등록 완료");
+      })
+      .catch(function (e) {
+        console.log("[숏폼 리서치] GitHub 이슈 등록 실패:", e.message);
+      });
+  });
+}
+
 function notify(title, message) {
   chrome.notifications.create({
     type: "basic",
@@ -190,6 +228,7 @@ chrome.runtime.onMessage.addListener(function (msg) {
         copiedToClipboard: msg.copiedToClipboard,
       });
       updateSelectorMissStreak(msg.misses);
+      openResearchIssue(active ? active.brief : "", msg.result);
       notify(
         "숏폼 리서치 완료",
         msg.copiedToClipboard
