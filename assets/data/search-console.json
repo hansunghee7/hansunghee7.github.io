@@ -1,18 +1,18 @@
 {
-  "updated_at": "2026-08-29T15:53:13.276831+00:00",
+  "updated_at": "2026-08-30T01:25:18.159035+00:00",
   "site_url": "https://simplifier.co.kr/",
   "data_delay_note": "서치콘솔 데이터는 약 2일 지연 -- end_date는 이틀 전",
   "totals_28d": {
-    "clicks": 2,
-    "impressions": 9,
-    "ctr": 0.2222,
-    "position": 4.2
+    "clicks": 3,
+    "impressions": 28,
+    "ctr": 0.1071,
+    "position": 6.9
   },
   "totals_90d": {
-    "clicks": 2,
-    "impressions": 9,
-    "ctr": 0.2222,
-    "position": 4.2
+    "clicks": 3,
+    "impressions": 28,
+    "ctr": 0.1071,
+    "position": 6.9
   },
   "daily_90d": [
     {
@@ -28,6 +28,13 @@
       "impressions": 9,
       "ctr": 0.2222,
       "position": 4.2
+    },
+    {
+      "date": "2026-08-27",
+      "clicks": 1,
+      "impressions": 19,
+      "ctr": 0.0526,
+      "position": 8.1
     }
   ],
   "top_queries_90d": [
@@ -39,6 +46,20 @@
       "position": 2
     },
     {
+      "query": "5forces",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "query": "pl pm 차이",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 11
+    },
+    {
       "query": "심플리파이어",
       "clicks": 1,
       "impressions": 1,
@@ -46,14 +67,35 @@
       "position": 1
     },
     {
-      "query": "pl pm 차이",
+      "query": "분산 학습",
       "clicks": 0,
       "impressions": 1,
       "ctr": 0,
       "position": 11
+    },
+    {
+      "query": "코파운더 뜻",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 12
     }
   ],
   "top_pages_90d": [
+    {
+      "page": "https://simplifier.co.kr/log_assets/markdown/177_AI%20%EC%B9%A9%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%ED%95%B5%EC%8B%AC%2C%20FLOPS%EC%99%80%20TOPS%20%EA%B7%B8%EB%A6%AC%EA%B3%A0.html",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 6.4
+    },
+    {
+      "page": "https://simplifier.co.kr/log_assets/markdown/132_PM%2C%20PL%2C%20TPM%EC%9D%98%20%EC%B0%A8%EC%9D%B4%20%ED%95%9C%EB%88%88%EC%97%90%20%EB%B3%B4%EA%B8%B0.html",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 8.2
+    },
     {
       "page": "https://simplifier.co.kr/",
       "clicks": 2,
@@ -62,11 +104,39 @@
       "position": 1.7
     },
     {
+      "page": "https://simplifier.co.kr/log_assets/markdown/112_%27%ED%8F%AC%ED%84%B0%EC%9D%98%205%20Forces%27%20%EC%A0%84%EC%9F%81%ED%84%B0%EB%A5%BC%20%EB%B6%84%EC%84%9D%ED%95%98%EB%8A%94%20%EB%B2%95.html",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "page": "https://simplifier.co.kr/log_assets/markdown/127_%EB%B6%84%EC%82%B0%20%ED%95%99%EC%8A%B5%2C%20AI%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EA%B2%BD%EC%9F%81%EB%A0%A5%EC%9D%84%20%EC%A2%8C%EC%9A%B0%ED%95%98%EB%8A%94%20%ED%95%B5%EC%8B%AC%20%EA%B8%B0%EC%88%A0.html",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 11
+    },
+    {
       "page": "https://simplifier.co.kr/log_assets/markdown/208_SWOT%20%EB%B9%84%EC%A7%80%EB%8B%88%EC%8A%A4%EC%9D%98%204%EC%B0%A8%EC%9B%90%20%EB%B6%84%EC%84%9D%EB%B2%95.html",
       "clicks": 0,
       "impressions": 2,
       "ctr": 0,
       "position": 5.5
+    },
+    {
+      "page": "https://simplifier.co.kr/log_assets/markdown/492_IT%20%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A5%BC%20%EC%9E%98%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%ED%9A%8C%EC%82%AC%EC%9D%98%207%EA%B0%80%EC%A7%80%20%ED%8A%B9%EC%A7%95.html",
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 5
+    },
+    {
+      "page": "https://simplifier.co.kr/log_assets/markdown/008_%EB%91%90%EB%B2%88%EC%A7%B8%20%EC%B1%85%20%27UX%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%93%A4%27%EC%9D%84%20%EC%B6%9C%EA%B0%84%ED%96%88%EC%8A%B5%EB%8B%88%EB%8B%A4.html",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 5
     },
     {
       "page": "https://simplifier.co.kr/log_assets/markdown/017_%EC%9A%94%EC%8B%9C%EA%B0%80%20%EB%A7%8C%EB%93%A0%20%20%27%EA%B7%BC%EC%84%B1%EC%9D%98%20%EC%8A%A4%EB%85%B8%EC%9A%B0%EB%B3%BC%27.html",
@@ -83,11 +153,25 @@
       "position": 2
     },
     {
-      "page": "https://simplifier.co.kr/log_assets/markdown/132_PM%2C%20PL%2C%20TPM%EC%9D%98%20%EC%B0%A8%EC%9D%B4%20%ED%95%9C%EB%88%88%EC%97%90%20%EB%B3%B4%EA%B8%B0.html",
+      "page": "https://simplifier.co.kr/log_assets/markdown/079_%EC%99%9C%20%EA%B5%AC%EA%B8%80%EC%9D%80%2020%ED%8D%BC%EC%84%BC%ED%8A%B8%20%EC%8B%9C%EA%B0%84%EC%9D%84%20%ED%97%88%EC%9A%A9%ED%95%A0%EA%B9%8C.html",
       "clicks": 0,
       "impressions": 1,
       "ctr": 0,
-      "position": 11
+      "position": 10
+    },
+    {
+      "page": "https://simplifier.co.kr/log_assets/markdown/086_%ED%95%9C%EA%B5%AD%20SaaS%EC%9D%98%20%EB%AF%B8%EA%B5%AD%20%EC%A7%84%EC%B6%9C%20%EC%8B%A4%ED%8C%A8%20%EC%9B%90%EC%9D%B8%20%EB%B6%84%EC%84%9D.html",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "page": "https://simplifier.co.kr/log_assets/markdown/107_YC%20%EC%A1%B8%EC%97%85%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EB%93%A4%EC%9D%98%20%EA%B3%B5%ED%86%B5%EB%90%9C%20%EC%84%B1%EC%9E%A5%20%EA%B3%B5%EC%8B%9D.html",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 7
     },
     {
       "page": "https://simplifier.co.kr/log_assets/markdown/133_Drop-off%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B0%80%20%EB%96%A0%EB%82%98%EB%8A%94%20%EC%88%9C%EA%B0%84%EC%9D%84%20%ED%8F%AC%EC%B0%A9%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95.html",
@@ -95,38 +179,59 @@
       "impressions": 1,
       "ctr": 0,
       "position": 2
+    },
+    {
+      "page": "https://simplifier.co.kr/log_assets/markdown/331_%EC%96%B4%EB%96%A4%20%EC%BD%94%ED%8C%8C%EC%9A%B4%EB%8D%94%EB%A5%BC%20%EC%B0%BE%EC%95%84%EC%95%BC%20%ED%95%A0%EA%B9%8C.html",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 12
+    },
+    {
+      "page": "https://simplifier.co.kr/log_assets/markdown/390_%EC%8A%A4%EB%83%85%EC%83%B7%EC%9D%B4%20%EC%95%84%EB%8B%8C%20%EC%8A%A4%ED%86%A0%EB%A6%AC%EB%A5%BC.html",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 11
     }
   ],
   "by_device_90d": [
     {
       "device": "DESKTOP",
-      "clicks": 1,
-      "impressions": 6,
-      "ctr": 0.1667,
-      "position": 4.5
+      "clicks": 2,
+      "impressions": 20,
+      "ctr": 0.1,
+      "position": 6.3
     },
     {
       "device": "MOBILE",
       "clicks": 0,
-      "impressions": 2,
+      "impressions": 6,
       "ctr": 0,
-      "position": 4.5
+      "position": 8.7
     },
     {
       "device": "TABLET",
       "clicks": 1,
-      "impressions": 1,
-      "ctr": 1,
-      "position": 2
+      "impressions": 2,
+      "ctr": 0.5,
+      "position": 6.5
     }
   ],
   "by_country_90d": [
     {
       "country": "kor",
-      "clicks": 2,
-      "impressions": 9,
-      "ctr": 0.2222,
-      "position": 4.2
+      "clicks": 3,
+      "impressions": 27,
+      "ctr": 0.1111,
+      "position": 6.9
+    },
+    {
+      "country": "hkg",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 5
     }
   ]
 }
