@@ -92,28 +92,53 @@
      밖으로 나가 가로 스크롤이 생긴다(좁은 창에서 실측 확인). visibility
      로만 감춰져 있어도(display:none이 아니라서) getBoundingClientRect로
      열기 전에 크기를 미리 잴 수 있으므로, 열릴 때마다 넘칠지 계산해서
-     넘치면 오른쪽 기준(.info-text--right)으로 뒤집는다. */
+     넘치면 오른쪽 기준(.info-text--right)으로 뒤집는다.
+
+     기준을 window.innerWidth가 아니라 document.documentElement.clientWidth로
+     잡는다 -- 실제 모바일 기기(Pixel 5 에뮬레이션으로 재현, 2026-08-30)에서는
+     페이지에 이미 넘친 콘텐츠가 있으면 innerWidth 자체가 그 콘텐츠 폭에 맞춰
+     같이 늘어나 버려서(예: 실제 화면은 393px인데 innerWidth가 454px로 보고됨),
+     "넘쳤는지" 판정 기준 자체가 넘친 값을 따라가는 순환 오류가 생겨 이 함수가
+     있으나 마나였다. clientWidth는 뷰포트 meta 태그 기준 실제 화면 폭을 그대로
+     유지하므로 이 문제가 없다. 이 착시 때문에 헤드리스 데스크톱 브라우저
+     (뷰포트 크기만 좁힌 것, isMobile 에뮬레이션 아님)로는 재현이 안 됐었다. */
   function positionInfoText(btn) {
     if (!btn) return;
+    var viewportWidth = document.documentElement.clientWidth;
     var text = btn.querySelector(".info-text");
     if (text) {
       text.classList.remove("info-text--right");
       var rect = text.getBoundingClientRect();
-      if (rect.right > window.innerWidth - 8) {
+      if (rect.right > viewportWidth - 8) {
         text.classList.add("info-text--right");
       }
       return;
     }
     // .h2note-text(사이트 인사이트)는 가운데 정렬 말풍선이라 좌/우 넘치는
     // 만큼만 옆으로 밀어준다(--tt-shift, CSS의 translateX 계산에 반영).
+    //
+    // --tt-shift는 transform(translateX)에 실려 있고 .h2note-text는
+    // transform에 transition(.15s)이 걸려 있다. 예전 코드는 "0px로 리셋 →
+    // 즉시 getBoundingClientRect() 측정"이었는데, 이미 shift가 걸린 상태에서
+    // 두 번째로 호출되면(MutationObserver가 데이터 로딩 후 재렌더링마다
+    // positionAllInfoDots()를 다시 돌림) 리셋이 transition을 발동시켜서
+    // "0px로 완전히 돌아가기 전, 전환 중인" 위치를 측정해버린다 -- 실제
+    // 필요한 보정량의 절반 정도만 계산돼 여전히 화면 밖으로 넘치는 채로
+    // 남는 버그가 있었다(2026-08-30, Pixel 5 에뮬레이션으로 재현). 리셋 없이
+    // 현재 shift를 대수적으로 빼서 "원래(0px) 위치"를 역산하면 transition을
+    // 아예 건드리지 않아 몇 번을 다시 계산해도 항상 정확하다.
     var note = btn.querySelector(".h2note-text");
     if (!note) return;
-    note.style.setProperty("--tt-shift", "0px");
+    var currentShift = parseFloat(note.style.getPropertyValue("--tt-shift")) || 0;
     var noteRect = note.getBoundingClientRect();
-    var overflowRight = noteRect.right - (window.innerWidth - 8);
-    var overflowLeft = 8 - noteRect.left;
-    if (overflowRight > 0) note.style.setProperty("--tt-shift", (-overflowRight) + "px");
-    else if (overflowLeft > 0) note.style.setProperty("--tt-shift", overflowLeft + "px");
+    var naturalRight = noteRect.right - currentShift;
+    var naturalLeft = noteRect.left - currentShift;
+    var overflowRight = naturalRight - (viewportWidth - 8);
+    var overflowLeft = 8 - naturalLeft;
+    var nextShift = 0;
+    if (overflowRight > 0) nextShift = -overflowRight;
+    else if (overflowLeft > 0) nextShift = overflowLeft;
+    note.style.setProperty("--tt-shift", nextShift + "px");
   }
   /* 열릴 때만 계산하던 걸로는 부족했다 -- .info-text는 닫혀 있어도
      visibility:hidden일 뿐 position:absolute라서, 기본 앵커(left:0)가

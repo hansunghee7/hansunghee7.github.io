@@ -43,6 +43,16 @@ body{
    정상적인 줄바꿈 지점이 있으면 그걸 우선하고, 없을 때만 토큰 중간에서
    끊는다 -- word-break:break-all과 달리 짧은 코드는 그대로 둔다. */
 code, pre{ overflow-wrap:anywhere; }
+
+/* ---- 표(.tablebox 패턴) -- index.html/search-insight.html이 각자 인라인으로
+   복붙해오던 걸 공용화(2026-08-30). 열이 많은 표는 컨테이너보다 넓어질 수
+   있는데, 그 폭을 페이지 전체가 아니라 이 박스 안에서만 가로 스크롤로
+   해소한다. pillar-manage.html처럼 표를 감싸지 않고 그냥 넣은 페이지는
+   모바일에서 몇 px씩 페이지 전체가 밀리는 진짜 버그였다(Pixel 5 에뮬레이션
+   실측 확인) -- 새로 표를 넣을 땐 반드시 `.tablebox`로 감쌀 것. */
+.tablebox{overflow-x:auto; border:1px solid var(--line); border-radius:10px; background:var(--card);}
+.tablebox table{border-collapse:collapse; width:100%; min-width:520px; font-size:13px;}
+
 .wrap{max-width:var(--width-content); margin:0 auto; padding:0 var(--gutter) 60px;}
 @media (min-width:761px){ :root{ --gutter:32px; } }
 
