@@ -63,6 +63,16 @@
     console.log.apply(console, [LOG_PREFIX].concat(args));
   }
 
+  // 선택자를 못 찾아도 지금까지는 콘솔 경고만 남기고 "일반 모드로라도
+  // 계속 진행"했다 -- 기능은 안 죽지만, 딥리서치 대신 일반 채팅으로
+  // 조용히 제출되는 것도 모르고 지나갈 수 있다. 이번 실행에서 어떤
+  // 선택자가 fallback을 탔는지 모아뒀다가 완료/실패 메시지에 실어
+  // background로 보낸다 -- background가 연속 발생 여부를 판단한다.
+  var runMisses = {};
+  function recordMiss(kind) {
+    runMisses[kind] = true;
+  }
+
   function findFirst(selectors) {
     for (var i = 0; i < selectors.length; i++) {
       var el = document.querySelector(selectors[i]);
@@ -133,6 +143,7 @@
   }
 
   function submitBrief(brief) {
+    runMisses = {};
     return waitFor(function () { return findFirst(SELECTORS.input); }, 15000, 500).then(function (input) {
       // 딥리서치 모드 전환 -- 못 찾아도 실패시키지 않는다. 일반 모드로라도
       // 제출하는 게 아무것도 안 하는 것보다 낫고, 로그로 남겨서 나중에
@@ -143,6 +154,7 @@
         log("딥리서치 모드 전환 클릭함");
       } else {
         log("⚠️ 딥리서치 모드 전환 버튼을 못 찾음 -- 일반 모드로 제출됩니다. 결과를 확인 후 SELECTORS.deepResearchToggle을 실제 화면 기준으로 고쳐주세요.");
+        recordMiss("deepResearchToggle");
       }
 
       insertText(input, brief);
@@ -224,7 +236,12 @@
     return new Promise(function (resolve, reject) {
       var startedAt = Date.now();
       var lastChangeAt = Date.now();
-      var target = findFirst(SELECTORS.responseContainer) || document.body;
+      var target = findFirst(SELECTORS.responseContainer);
+      if (!target) {
+        log("⚠️ 응답 영역 선택자를 못 찾음 -- document.body 전체를 관찰합니다. SELECTORS.responseContainer 확인 필요.");
+        recordMiss("responseContainer");
+        target = document.body;
+      }
 
       var observer = new MutationObserver(function () {
         lastChangeAt = Date.now();
@@ -283,6 +300,7 @@
           type: "RESEARCH_COMPLETE",
           result: resultText,
           copiedToClipboard: copied,
+          misses: Object.keys(runMisses),
         });
       })
       .catch(function (err) {
@@ -292,7 +310,7 @@
           return;
         }
         log("❌ 실패:", err.message);
-        chrome.runtime.sendMessage({ type: "RESEARCH_ERROR", message: err.message });
+        chrome.runtime.sendMessage({ type: "RESEARCH_ERROR", message: err.message, misses: Object.keys(runMisses) });
       });
 
     sendResponse({ received: true });

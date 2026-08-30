@@ -20,6 +20,8 @@
   .hint{ color:#6e6a62; font-size:11.5px; line-height:1.5; }
   #resultBox{ display:none; margin-top:8px; }
   #resultText{ width:100%; box-sizing:border-box; min-height:80px; font-size:11.5px; padding:8px; border:1px solid #c8c6bf; border-radius:6px; font-family:inherit; }
+  #selectorWarningBox{ display:none; margin-bottom:12px; padding:10px 12px; border:1px solid #e3c98a; border-radius:8px; background:#fbf1e6; color:#a3690f; font-size:12px; line-height:1.5; }
+  #selectorWarningBox button{ margin:8px 0 0; padding:6px; font-size:12px; }
   #planBox{ display:none; margin-bottom:8px; padding:10px 12px; border:1px solid #e3c98a; border-radius:8px; background:#fbf1e6; }
   #planBox .plan-heading{ font-size:12px; font-weight:600; color:#a3690f; margin-bottom:6px; }
   #planText{ width:100%; box-sizing:border-box; min-height:100px; font-size:11.5px; padding:8px; border:1px solid #c8c6bf; border-radius:6px; font-family:inherit; margin-bottom:8px; }
@@ -36,11 +38,17 @@
   .log-item .meta{ display:flex; justify-content:space-between; color:#6e6a62; font-size:10.5px; margin-top:2px; }
   .log-item .meta .mark.success{ color:#1f7a4f; }
   .log-item .meta .mark.error{ color:#b8402a; }
+  .log-item .meta .mark.cancelled{ color:#6e6a62; }
 </style>
 </head>
 <body>
   <h1>숏폼 리서치 자동화</h1>
   <p class="sub">브리프를 붙여넣으면 제미나이 딥리서치로 넘기고, 끝나면 결과를 가져옵니다.</p>
+
+  <div id="selectorWarningBox">
+    <span id="selectorWarningText"></span>
+    <button id="dismissWarningBtn" class="secondary">확인함</button>
+  </div>
 
   <textarea id="briefInput" placeholder="딥리서치에 넘길 브리프를 붙여넣으세요"></textarea>
   <button id="startBtn">리서치 시작</button>

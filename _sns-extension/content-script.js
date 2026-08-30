@@ -87,6 +87,10 @@
     } else if (attempts >= MAX_ATTEMPTS) {
       clearInterval(timer);
       console.log("[SNS 인사이트]", rule.key, "패턴을 못 찾음 (" + MAX_ATTEMPTS + "초 시도) -- 팔로워 수 문구가 바뀌었을 수 있음");
+      // 이전엔 여기서 콘솔 로그만 남기고 끝났다 -- background/popup은 이
+      // 페이지가 실패했는지 전혀 알 방법이 없었다(조용한 실패). 실패도
+      // 명시적으로 알려서 연속 실패 시 팝업에서 경고할 수 있게 한다.
+      chrome.runtime.sendMessage({ type: "SNS_COLLECT_FAILED", platform: rule.key, url: location.href });
     }
   }, 1000);
 })();

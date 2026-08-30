@@ -9,6 +9,25 @@ var planBox = document.getElementById("planBox");
 var planText = document.getElementById("planText");
 var approveBtn = document.getElementById("approveBtn");
 var cancelBtn = document.getElementById("cancelBtn");
+var selectorWarningBox = document.getElementById("selectorWarningBox");
+var selectorWarningText = document.getElementById("selectorWarningText");
+var dismissWarningBtn = document.getElementById("dismissWarningBtn");
+
+var MISS_KIND_LABELS = {
+  deepResearchToggle: "딥리서치 모드 전환 버튼",
+  responseContainer: "응답 영역",
+};
+
+function renderSelectorWarning(warning) {
+  if (!warning) {
+    selectorWarningBox.style.display = "none";
+    return;
+  }
+  var label = MISS_KIND_LABELS[warning.kind] || warning.kind;
+  selectorWarningText.textContent =
+    label + "을(를) " + warning.streak + "번 연속 못 찾았습니다 — 화면 구조가 바뀌었을 수 있어요. 콘솔 로그로 확인해주세요.";
+  selectorWarningBox.style.display = "block";
+}
 
 function setStatus(kind, text) {
   statusBox.className = "status " + kind;
@@ -29,7 +48,7 @@ function renderLog(log) {
     var mark = e.status === "success"
       ? '<span class="mark success">✓ 완료</span>'
       : e.status === "cancelled"
-      ? '<span class="mark">– 취소됨</span>'
+      ? '<span class="mark cancelled">– 취소됨</span>'
       : '<span class="mark error">✗ 실패</span>';
     var when = e.finishedAt ? new Date(e.finishedAt).toLocaleTimeString("ko-KR") : "";
     var note = e.status === "error" ? '<div class="hint">' + escapeHtml(e.note || "") + "</div>" : "";
@@ -50,8 +69,9 @@ function escapeHtml(s) {
 }
 
 function refreshFromStorage() {
-  chrome.storage.local.get(["researchLog", "activeResearch", "pendingPlan"], function (res) {
+  chrome.storage.local.get(["researchLog", "activeResearch", "pendingPlan", "selectorWarning"], function (res) {
     renderLog(res.researchLog);
+    renderSelectorWarning(res.selectorWarning);
 
     if (res.pendingPlan) {
       startBtn.disabled = true;
@@ -108,6 +128,11 @@ cancelBtn.addEventListener("click", function () {
   planBox.style.display = "none";
 });
 
+dismissWarningBtn.addEventListener("click", function () {
+  chrome.runtime.sendMessage({ type: "DISMISS_SELECTOR_WARNING" });
+  selectorWarningBox.style.display = "none";
+});
+
 copyBtn.addEventListener("click", function () {
   navigator.clipboard.writeText(resultText.value).then(function () {
     copyBtn.textContent = "복사됨";
@@ -119,7 +144,7 @@ copyBtn.addEventListener("click", function () {
 setInterval(refreshFromStorage, 5000);
 
 chrome.storage.onChanged.addListener(function (changes) {
-  if (changes.researchLog || changes.activeResearch || changes.pendingPlan) refreshFromStorage();
+  if (changes.researchLog || changes.activeResearch || changes.pendingPlan || changes.selectorWarning) refreshFromStorage();
 });
 
 refreshFromStorage();
