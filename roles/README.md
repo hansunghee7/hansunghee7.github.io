@@ -8,7 +8,10 @@
 
 > 마지막 통합 정리: 2026-08-30 (cmo-marketing 스레드가 11개 파일 전수 확인, 거의
 > 동시에 ux-lead 스레드도 독립적으로 10개 파일을 전수 검토함 — 두 결과를 이
-> 문서에 합침).
+> 문서에 합침). **같은 날 추가 정리**: 사장님이 ux-lead/simplifier-studio가
+> 스튜디오 UX 영역에서 겹친다고 지적 → simplifier-studio의 UX/거버넌스 부분을
+> ux-lead로 흡수, simplifier-studio는 저장소 위생 전담으로 축소. About 페이지/
+> 저자소개 콘텐츠 소관도 cmo-marketing으로 확정.
 > 스레드가 스스로 파일을 갱신하면 이 표도 같이 갱신할 것 — 안 그러면 이 문서도
 > 곧 낡는다.
 
@@ -16,32 +19,36 @@
 
 | 파일 | 역할 | 성격 |
 |---|---|---|
-| [cmo-marketing.md](cmo-marketing.md) | CMO 겸 마케팅 튜터 — 측정 인프라(GA4/서치콘솔/Clarity), 진단, 검색/AEO 전략, 콘텐츠 신디케이션 정책 | 전략·상담 |
+| [cmo-marketing.md](cmo-marketing.md) | CMO 겸 마케팅 튜터 — 측정 인프라(GA4/서치콘솔/Clarity), 진단, 검색/AEO 전략, 콘텐츠 신디케이션 정책. **2026-08-30부터 About 페이지/저자소개 콘텐츠 소관도 포함** | 전략·상담 |
 | [homepage-growth-ux.md](homepage-growth-ux.md) | 공개 홈페이지 SEO/GEO/AEO 콘텐츠 제작 + 프론트 성능 | 실무(코드) |
-| [ux-lead.md](ux-lead.md) | 공개 사이트+스튜디오 UX 총괄 — 너비 정책, 인사이트 카드/그래프 표준, 스튜디오 사이드바 | 표준 수립 |
+| [ux-lead.md](ux-lead.md) | **공개 사이트+스튜디오 UX 총괄**(튜터명 "시안") — 너비 정책, 인사이트 카드/그래프 표준, 스튜디오 사이드바, 스튜디오 UX 거버넌스(STYLE_GUIDE.md/ⓘ 패턴/studio.css·js, 2026-08-30 simplifier-studio에서 이관) | 표준 수립 |
 | [ai-cto-tutor.md](ai-cto-tutor.md) | AI CTO 학습 튜터 + 엔지니어링 체계(배포 안전망, 커밋 교통정리, 모닝브리핑, 자동화) | 전략·인프라 |
 | [site-repo-ops.md](site-repo-ops.md) | 저장소 운영(노트북) — 배포 사고 대응, 이미지/템플릿 감사, git 충돌 조율 | 실무(운영) |
 | [site-engineering.md](site-engineering.md) | 저장소 실무 엔지니어링 — 홈페이지/스튜디오 코드, 인프라 정리 | 실무(코드) |
-| [simplifier-studio.md](simplifier-studio.md) | 스튜디오(`insight-7b3e9f2c/`) UX/거버넌스 + 저장소 위생 | 표준 수립 |
+| [simplifier-studio.md](simplifier-studio.md) | **스튜디오 저장소 위생 전담**(이미지·시크릿·GitHub Actions 감사) — UX/거버넌스는 2026-08-30 ux-lead로 이관 | 실무(운영) |
 | [simplifier-qa-agent.md](simplifier-qa-agent.md) | RAG 에이전트 "Simplifier Q&A" + `prd-draft` 스킬 | 실무(코드) |
-| [about-books-cta.md](about-books-cta.md) | About/저서 페이지, GNB 재설계, 포스트 CTA | 실무(코드) |
+| [about-books-cta.md](about-books-cta.md) | About/저서 페이지, GNB 재설계, 포스트 CTA — **About 콘텐츠 승인/방향은 cmo-marketing 소관(2026-08-30 확정), GNB 구조 자체는 ux-lead와 경계 확인 중** | 실무(코드) |
 | [multi-publish-sns-insight.md](multi-publish-sns-insight.md) | 멀티 퍼블리싱(CMS→채널별 발행 보조) + SNS 인사이트(팔로워 추이 수집) | 실무(코드) |
 | [claude-code-ops.md](claude-code-ops.md) | 클로드 코드 사용법 메타 상담 — 여러 기기/프로젝트 병행 운영 | 메타 |
 
 **겹치는 경계 요약** (자세한 사정은 각 파일 ①절 참고):
 - 콘텐츠 **전략**(cmo-marketing) vs **제작**(homepage-growth-ux) — 허브/필러 페이지는
   homepage-growth-ux가 실착수, cmo-marketing은 승인 전 중복 착수 금지.
-- **UX 표준 수립**(ux-lead, simplifier-studio) vs **실제 코드 구현**(site-engineering,
-  about-books-cta, homepage-growth-ux) — 표준은 앞의 둘이 정본 문서에 정리하고,
-  뒤의 셋이 실제 페이지에 적용.
+- **UX 표준 수립**(ux-lead) vs **실제 코드 구현**(site-engineering, about-books-cta,
+  homepage-growth-ux) — 표준은 ux-lead가 정본 문서(UX_GUIDE.md/STYLE_GUIDE.md)에
+  정리하고, 뒤의 셋이 실제 페이지에 적용. (2026-08-30 이전엔 simplifier-studio도
+  UX 표준 수립 쪽이었으나 ux-lead로 통합됨 — 겹침 해소.)
 - **인프라/배포 체계**(ai-cto-tutor) vs **저장소 운영 실무**(site-repo-ops) — 안전망·
   자동화 설계는 ai-cto-tutor, 개별 사고 대응·감사는 site-repo-ops.
+- **About/저자소개 콘텐츠**(cmo-marketing) vs **GNB 구조 자체**(ux-lead) — 2026-08-30
+  사장님이 About 소관을 cmo-marketing으로 정했으나, GNB 재설계처럼 About과
+  내비게이션이 얽힌 사안의 경계는 아직 확정 안 됨(about-books-cta.md ③절 참고).
 
 ## 🔴 사장님 결정 대기 (2026-08-30 기준)
 
 | 스레드 | 대기 항목 |
 |---|---|
-| about-books-cta | GNB 재설계안(Life→Essay, Book&Class→About 흡수) 재승인 여부 — 아래 사고로 완전히 원복된 상태에서 다시 논의 시작 |
+| about-books-cta / cmo-marketing | GNB 재설계안(Life→Essay, Book&Class→About 흡수) 재승인 여부 — 아래 사고로 완전히 원복된 상태에서 다시 논의 시작. **GNB 구조 자체와 About 콘텐츠의 소관 경계도 함께 확인 필요(ux-lead가 질문해둔 상태)** |
 | cmo-marketing | 발행정책 전환(사이트 먼저 → 며칠 뒤 SNS 재발행) — "OK" 한마디로 확정 |
 | homepage-growth-ux | "스타트업 전략" 필러 PRD 승인 여부 + 열린 질문 3개(고아페이지 재평가 기준·"미국진출" 카테고리 포함 여부·테마별 인용문 담당) |
 | about-books-cta | 포스트 하단 CTA 버전 A~F(`cta-test.html`) 중 최종 선택 |
@@ -69,6 +76,12 @@ GNB의 책 링크도 예스24 외부 링크로 원복. 지금은 검색·사이�
 사본을 만들어뒀다는 것 자체는 안전장치가 아니다. 사장님의 명시적 승인 없이는
 어떤 세션도 라이브 파일에 반영하지 않는다.
 
+**아직 비공개 저장소(`simplifier-cxo-db`)에 기록 안 됨** — `CLAUDE.md`의 "세션
+종료 전 경험DB 기록" 규칙(2026-08-30 신설) 대상인 사고+결정인데, ux-lead 세션이
+저장소 접근을 시도했으나 **Claude Code 자동 모드 분류기가 차단**(사업 관련
+비공개 저장소에 새로 push 권한을 붙이는 것이라 민감 동작으로 판단된 것으로
+보임). 사장님이 직접 권한을 승인하거나, 다른 방식(로컬 세션 등)으로 기록해야 함.
+
 ## 🟡 스레드 간 대조 필요하다고 각자 적어뒀던 것 — 해소 상태
 
 - **너비 토큰 체계** — `site-engineering`·`about-books-cta` 둘 다 "겹치는지 대조
@@ -77,6 +90,9 @@ GNB의 책 링크도 예스24 외부 링크로 원복. 지금은 검색·사이�
 - **`main-protect` 룰셋 Disabled** — `site-repo-ops`는 "소관 불명확"이라 적어뒀으나,
   `ai-cto-tutor`가 원인(봇 워크플로가 fine-grained PAT로 커밋하게 전환돼야 Active
   전환 가능)을 이미 파악 중. **ai-cto-tutor 소관으로 정리.**
+- **ux-lead ↔ simplifier-studio 스튜디오 UX 영역 중복** — 둘 다 STYLE_GUIDE.md/
+  UX_GUIDE.md 동기화를 사실상 같이 보고 있던 것을 사장님이 지적, ux-lead로
+  통합. **해소됨(2026-08-30).**
 
 ## 🟢 각 스레드가 자체적으로 진행 (사장님 액션 불필요)
 
@@ -86,14 +102,17 @@ GNB의 책 링크도 예스24 외부 링크로 원복. 지금은 검색·사이�
 - `simplifier-qa-agent`: `qa_feedback` 👎 로그 리뷰, 골든 테스트셋 구축
 - `site-engineering`: `system-map.html`에 `_config.yml`/`build-check.yml`/
   `site-health-check.yml` 반영 여부 확인
-- `simplifier-studio`: `STYLE_GUIDE.md`/`docs/UX_GUIDE.md`/`style-guide.html`
-  세 문서 동기화 유지
+- `ux-lead`: `STYLE_GUIDE.md`/`docs/UX_GUIDE.md`/`style-guide.html` 세 문서
+  동기화 유지(2026-08-30 simplifier-studio에서 이관)
 - `multi-publish-sns-insight`: 2026-09-27경 네이버블로그 수집 안정성·추세 요약
   추가 여부 재검토 예정(사용자와 합의됨)
 - `claude-code-ops`: simplifier-agent GitHub 비공개 저장소 push 상태 확인
 - ✅ (완료) 스튜디오 ⓘ 말풍선 뷰포트 오버플로 버그 — `cmo-marketing`이 작업
   칩(`task_cf685175`)으로만 등록해뒀던 걸 `ux-lead`가 전수 검토 중 발견해
-  직접 수정(PR #8, 2026-08-30)
+  직접 수정(PR #8, 2026-08-30). **후속: 닫힌 상태 넘침까지 추가 발견해 PR #16으로
+  완전 수정(2026-08-30)**
+- ✅ (완료) 스튜디오 모바일 가로 스크롤(16개 페이지 중 13개 실제로 깨져 있었음) —
+  `ux-lead`가 Playwright 실측으로 발견·수정(PR #16, 2026-08-30)
 
 ## 공통 규칙 (모든 스레드가 지켜야 함, 정본은 `CLAUDE.md`)
 
@@ -104,6 +123,11 @@ GNB의 책 링크도 예스24 외부 링크로 원복. 지금은 검색·사이�
   반영 여부는 반드시 승인 확인 후.
 - **main 직접 push 금지** (2026-08-29 도입) — 작업 브랜치 + PR + auto-merge
   (build-check 통과 조건). 예외: 사장님 본인 직접 커밋, github-actions 자동화 커밋.
+- **세션 종료 전 경험DB 기록 확인** (2026-08-30 도입, `CLAUDE.md` 참고) — 되돌리기
+  어려운 결정이나 사고를 고쳤으면 비공개 저장소 `simplifier-cxo-db`에
+  `decisions/`나 `incidents/`로 남긴다. 단, 그 저장소에 새로 접근(특히 push
+  권한)하려는 시도는 자동 모드 분류기가 차단할 수 있음 — 막히면 사장님께
+  직접 승인을 구할 것.
 - `git fetch origin <A> <B>` 형태로 브랜치 여러 개 나열해서 받지 말 것 — 하나라도
   없으면 전체가 조용히 실패.
 - 이미지 자산 정리는 `scripts/find_orphan_images.py`로만, 절대 즉시 삭제하지 않고
