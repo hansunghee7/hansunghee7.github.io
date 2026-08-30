@@ -4,7 +4,6 @@
 
 ## 핵심 페이지
 - [홈페이지](https://simplifier.co.kr/): 서비스 소개, 프로그램, FAQ, 문의
-- [프로필](https://simplifier.co.kr/about/): 한성희 경력, 강연 주제, 저서·미디어
 - [사이트맵](https://simplifier.co.kr/sitemap.xml)
 
 ## 제공 서비스
@@ -12,8 +11,8 @@
 - 기업 임원 강연 및 리더십 워크샵: 신임 팀장, 승진자, 임직원 대상 리더십·시간관리·프로젝트관리 강연 및 워크샵
 
 ## 저서
-- [기획자의 질문법](https://simplifier.co.kr/book/기획자의-질문법.html): 27가지 질문 프레임워크, 파지트, 2025
-- [UX의 언어들](https://simplifier.co.kr/book/UX의-언어들.html): 한성희·신행철 공저, 파지트, 2026
+- [기획자의 질문법](https://product.kyobobook.co.kr/detail/S000216681258)
+- [UX의 언어들](https://product.kyobobook.co.kr/detail/S000220493173)
 
 ## 블로그 카테고리
 - [스타트업 인사이트](https://simplifier.co.kr/log/스타트업-인사이트.html)
