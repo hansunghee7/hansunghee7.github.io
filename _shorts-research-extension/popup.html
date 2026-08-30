@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>숏폼 리서치 자동화</title>
+<style>
+  body{ width:320px; margin:0; padding:16px; font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif; font-size:13px; color:#121210; }
+  h1{ font-size:14px; margin:0 0 4px; }
+  .sub{ font-size:11.5px; color:#6e6a62; margin:0 0 12px; }
+  textarea{ width:100%; box-sizing:border-box; min-height:90px; padding:8px 10px; font-size:12.5px; border:1px solid #c8c6bf; border-radius:6px; margin-bottom:8px; font-family:inherit; resize:vertical; }
+  button{ width:100%; padding:9px; font-size:13px; border-radius:6px; border:1px solid #c8c6bf; background:#121210; color:#fff; cursor:pointer; margin-bottom:8px; }
+  button:disabled{ opacity:0.5; cursor:default; }
+  button.secondary{ background:#fff; color:#121210; }
+  .status{ padding:10px 12px; border-radius:8px; margin-bottom:12px; font-size:12.5px; line-height:1.5; }
+  .status.idle{ background:#f2f0eb; color:#6e6a62; }
+  .status.running{ background:#fbf1e6; color:#a3690f; }
+  .status.ok{ background:#eaf5ef; color:#1f7a4f; }
+  .status.error{ background:#fbe9e6; color:#b8402a; }
+  .hint{ color:#6e6a62; font-size:11.5px; line-height:1.5; }
+  #resultBox{ display:none; margin-top:8px; }
+  #resultText{ width:100%; box-sizing:border-box; min-height:80px; font-size:11.5px; padding:8px; border:1px solid #c8c6bf; border-radius:6px; font-family:inherit; }
+
+  .log-heading{ font-size:11.5px; font-weight:600; color:#403d37; margin:14px 0 6px; }
+  .log-empty{ font-size:11.5px; color:#6e6a62; }
+  .log-item{ padding:6px 0; border-bottom:1px solid #eeece5; font-size:11.5px; }
+  .log-item:last-child{ border-bottom:none; }
+  .log-item .brief{ color:#403d37; }
+  .log-item .meta{ display:flex; justify-content:space-between; color:#6e6a62; font-size:10.5px; margin-top:2px; }
+  .log-item .meta .mark.success{ color:#1f7a4f; }
+  .log-item .meta .mark.error{ color:#b8402a; }
+</style>
+</head>
+<body>
+  <h1>숏폼 리서치 자동화</h1>
+  <p class="sub">브리프를 붙여넣으면 제미나이 딥리서치로 넘기고, 끝나면 결과를 가져옵니다.</p>
+
+  <textarea id="briefInput" placeholder="딥리서치에 넘길 브리프를 붙여넣으세요"></textarea>
+  <button id="startBtn">리서치 시작</button>
+
+  <div id="statusBox" class="status idle">대기 중</div>
+
+  <div id="resultBox">
+    <textarea id="resultText" readonly></textarea>
+    <button id="copyBtn" class="secondary">결과 다시 복사</button>
+  </div>
+
+  <div class="hint">
+    창을 화면 뒤에서 조용히 엽니다. 보통 5~20분 걸리고, 끝나면 알림이 뜹니다.
+    자동 클립보드 복사가 브라우저 정책으로 안 될 수 있어서, 실패해도 여기서
+    수동으로 복사할 수 있게 남겨둡니다.
+  </div>
+
+  <div class="log-heading">최근 실행 기록</div>
+  <div id="logList"><div class="log-empty">아직 기록 없음</div></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
