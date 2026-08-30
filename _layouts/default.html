@@ -608,7 +608,9 @@
             });
 
             // 본문 이미지 클릭 시 원본 크기로 팝업(라이트박스). 여러 장이면 이전/다음 이동, 닫기(X) 버튼 제공
-            const lightboxImgs = Array.from(articleBody.querySelectorAll('img')).filter(im => im.alt !== '대표 이미지');
+            // .post-cta-block(post_cta.html) 안의 사진은 본문 이미지가 아니라 About
+            // 링크라서 라이트박스 대상에서 제외한다(2026-08-30).
+            const lightboxImgs = Array.from(articleBody.querySelectorAll('img')).filter(im => im.alt !== '대표 이미지' && !im.closest('.post-cta-block'));
             if (lightboxImgs.length > 0) {
                 const lightbox = document.createElement('div');
                 lightbox.className = 'lightbox-overlay';
