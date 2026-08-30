@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-08-30T04:16:58.831170+00:00",
+  "updated_at": "2026-08-30T06:38:45.213297+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 94,
-    "activeUsers": 43,
-    "newUsers": 43,
+    "sessions": 101,
+    "activeUsers": 49,
+    "newUsers": 49,
     "returningUsers": 0
   },
   "daily": [
@@ -38,9 +38,9 @@
     },
     {
       "date": "2026-08-30",
-      "sessions": 7,
-      "activeUsers": 4,
-      "newUsers": 3,
+      "sessions": 14,
+      "activeUsers": 10,
+      "newUsers": 9,
       "returningUsers": 1
     }
   ],
@@ -55,19 +55,19 @@
     }
   ],
   "landing_types": {
-    "home": 73,
+    "home": 78,
     "log_home": 7,
     "individual_post": 14,
-    "other": 11
+    "other": 16
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 66
+      "sessions": 72
     },
     {
       "source": "(not set)",
-      "sessions": 15
+      "sessions": 18
     },
     {
       "source": "searchadvisor.naver.com",
@@ -84,6 +84,10 @@
     {
       "source": "linkedin.com",
       "sessions": 2
+    },
+    {
+      "source": "bing",
+      "sessions": 1
     },
     {
       "source": "brunch.co.kr",
@@ -271,7 +275,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 59,
+    "total_desktop_sessions": 66,
     "excluded_invalid_sessions": 17,
     "by_resolution": [
       {
@@ -280,24 +284,24 @@
         "sessions": 36
       },
       {
+        "resolution": "800x600",
+        "width": 800,
+        "sessions": 9
+      },
+      {
+        "resolution": "1920x1080",
+        "width": 1920,
+        "sessions": 6
+      },
+      {
         "resolution": "1536x960",
         "width": 1536,
         "sessions": 5
       },
       {
-        "resolution": "1920x1080",
-        "width": 1920,
-        "sessions": 5
-      },
-      {
-        "resolution": "800x600",
-        "width": 800,
-        "sessions": 4
-      },
-      {
         "resolution": "3840x1080",
         "width": 3840,
-        "sessions": 3
+        "sessions": 4
       },
       {
         "resolution": "1728x1117",
