@@ -12,7 +12,10 @@
 > 스튜디오 UX 영역에서 겹친다고 지적 → simplifier-studio의 UX/거버넌스 부분을
 > ux-lead로 흡수, simplifier-studio는 저장소 위생 전담으로 축소. About 페이지/
 > 저자소개 콘텐츠 소관도 cmo-marketing으로 확정. **경험DB 기록 방식도 같은 날
-> 바뀜** — 아래 "공통 규칙" 참고.
+> 바뀜** — 아래 "공통 규칙" 참고. **세 번째 정리(같은 날, 사장님 직접 지시)**:
+> GNB 구조/라벨과 About 콘텐츠의 경계는 cmo-marketing(마야) 스레드가 자체적으로
+> 정리해서 진행하기로 확정 — ux-lead는 더 이상 안 챙김. `shorts-lab` 파이프라인
+> 정리는 "숏감독" 스레드(신규)로 이관.
 > 스레드가 스스로 파일을 갱신하면 이 표도 같이 갱신할 것 — 안 그러면 이 문서도
 > 곧 낡는다.
 
@@ -20,7 +23,7 @@
 
 | 파일 | 역할 | 성격 |
 |---|---|---|
-| [cmo-marketing.md](cmo-marketing.md) | CMO 겸 마케팅 튜터 — 측정 인프라(GA4/서치콘솔/Clarity), 진단, 검색/AEO 전략, 콘텐츠 신디케이션 정책. **2026-08-30부터 About 페이지/저자소개 콘텐츠 소관도 포함** | 전략·상담 |
+| [cmo-marketing.md](cmo-marketing.md) | CMO 겸 마케팅 튜터 — 측정 인프라(GA4/서치콘솔/Clarity), 진단, 검색/AEO 전략, 콘텐츠 신디케이션 정책. **2026-08-30부터 About 페이지/저자소개 콘텐츠 소관 + GNB 재설계 전체(구조 포함) 소관도 포함** | 전략·상담 |
 | [homepage-growth-ux.md](homepage-growth-ux.md) | 공개 홈페이지 SEO/GEO/AEO 콘텐츠 제작 + 프론트 성능 | 실무(코드) |
 | [ux-lead.md](ux-lead.md) | **공개 사이트+스튜디오 UX 총괄**(튜터명 "시안") — 너비 정책, 인사이트 카드/그래프 표준, 스튜디오 사이드바, 스튜디오 UX 거버넌스(STYLE_GUIDE.md/ⓘ 패턴/studio.css·js, 2026-08-30 simplifier-studio에서 이관) | 표준 수립 |
 | [ai-cto-tutor.md](ai-cto-tutor.md) | AI CTO 학습 튜터 + 엔지니어링 체계(배포 안전망, 커밋 교통정리, 모닝브리핑, 자동화) | 전략·인프라 |
@@ -28,9 +31,10 @@
 | [site-engineering.md](site-engineering.md) | 저장소 실무 엔지니어링 — 홈페이지/스튜디오 코드, 인프라 정리 | 실무(코드) |
 | [simplifier-studio.md](simplifier-studio.md) | **스튜디오 저장소 위생 전담**(이미지·시크릿·GitHub Actions 감사) — UX/거버넌스는 2026-08-30 ux-lead로 이관 | 실무(운영) |
 | [simplifier-qa-agent.md](simplifier-qa-agent.md) | RAG 에이전트 "Simplifier Q&A" + `prd-draft` 스킬 | 실무(코드) |
-| [about-books-cta.md](about-books-cta.md) | About/저서 페이지, GNB 재설계, 포스트 CTA — **About 콘텐츠 승인/방향은 cmo-marketing 소관(2026-08-30 확정), GNB 구조 자체는 ux-lead와 경계 확인 중** | 실무(코드) |
+| [about-books-cta.md](about-books-cta.md) | About/저서 페이지, GNB 재설계, 포스트 CTA — **GNB 재설계·About 콘텐츠 둘 다 cmo-marketing이 정리해서 진행(2026-08-30 확정)** | 실무(코드) |
 | [multi-publish-sns-insight.md](multi-publish-sns-insight.md) | 멀티 퍼블리싱(CMS→채널별 발행 보조) + SNS 인사이트(팔로워 추이 수집) | 실무(코드) |
 | [claude-code-ops.md](claude-code-ops.md) | 클로드 코드 사용법 메타 상담 — 여러 기기/프로젝트 병행 운영 | 메타 |
+| 숏감독 (파일 아직 없음) | `shorts-lab` 파이프라인 등 숏폼 제작 인프라 전담(2026-08-30 신설, 사장님 지시) — 다음에 그 스레드가 열리면 스스로 `roles/숏감독.md`를 만들 것 | 실무(코드) |
 
 **겹치는 경계 요약** (자세한 사정은 각 파일 ①절 참고):
 - 콘텐츠 **전략**(cmo-marketing) vs **제작**(homepage-growth-ux) — 허브/필러 페이지는
@@ -41,22 +45,25 @@
   UX 표준 수립 쪽이었으나 ux-lead로 통합됨 — 겹침 해소.)
 - **인프라/배포 체계**(ai-cto-tutor) vs **저장소 운영 실무**(site-repo-ops) — 안전망·
   자동화 설계는 ai-cto-tutor, 개별 사고 대응·감사는 site-repo-ops.
-- **About/저자소개 콘텐츠**(cmo-marketing) vs **GNB 구조 자체**(ux-lead) — 2026-08-30
-  사장님이 About 소관을 cmo-marketing으로 정했으나, GNB 재설계처럼 About과
-  내비게이션이 얽힌 사안의 경계는 아직 확정 안 됨(about-books-cta.md ③절 참고).
+- **About/GNB** — 2026-08-30 사장님이 "마야가 최대한 정리해서 진행"이라고 확정.
+  ux-lead가 제안했던 "콘텐츠=마야/구조=ux-lead" 분리안은 채택되지 않았고, GNB
+  재설계 전체를 cmo-marketing이 담당한다. ux-lead는 결과가 나오면 UX 표준
+  문서(UX_GUIDE.md)에 반영하는 역할만 한다.
 
 ## 🔴 사장님 결정 대기 (2026-08-30 기준)
 
 | 스레드 | 대기 항목 |
 |---|---|
-| about-books-cta / cmo-marketing | GNB 재설계안(Life→Essay, Book&Class→About 흡수) 재승인 여부 — 아래 사고로 완전히 원복된 상태에서 다시 논의 시작. **GNB 구조 자체와 About 콘텐츠의 소관 경계도 함께 확인 필요(ux-lead가 cmo-marketing.md에 확정 요청 남김)** |
+| cmo-marketing / about-books-cta | GNB 재설계안(Life→Essay, Book&Class→About 흡수) 재승인 여부 — 완전히 원복된 상태에서 다시 논의 시작. 경계 문제는 해소됐으니(마야가 전담) 콘텐츠·구조 재승인만 남음 |
 | cmo-marketing | 발행정책 전환(사이트 먼저 → 며칠 뒤 SNS 재발행) — "OK" 한마디로 확정 |
 | homepage-growth-ux | "스타트업 전략" 필러 PRD 승인 여부 + 열린 질문 3개(고아페이지 재평가 기준·"미국진출" 카테고리 포함 여부·테마별 인용문 담당) |
 | about-books-cta | 포스트 하단 CTA 버전 A~F(`cta-test.html`) 중 최종 선택 |
 | simplifier-studio | 격리 이미지 69개(`log_assets/images_quarantine_2026-08-29/`) 최종 삭제 여부 |
 | site-repo-ops | `log.html` 무한 스크롤(전체 펼치면 약 49,000px) 개선 착수 여부 |
 | simplifier-qa-agent | `shorts-lab/LAUNCH_PRD.md`의 확인 필요 항목(RICE 점수 정식화 등) |
-| ux-lead | 블로그 글 587개 footer 부재 — 브런치 벤치마킹 필요했으나 이 세션 네트워크 정책상 `brunch.co.kr` 직접 접속 차단, 일반 지식 기반 답변만 전달함(ux-lead.md 참고) |
+| ux-lead | 블로그 글 587개 footer 부재 — 브런치 벤치마킹 필요한데 `brunch.co.kr`이 이
+  환경 네트워크 정책상 차단돼 있었음. 사장님이 환경 설정에서 허용 목록에
+  추가하는 방법을 안내받은 상태, 다음 세션에서 재시도 예정 |
 
 ### ⚠️ 사고 기록 (해결됨): GNB "About" 무단 승격 (2026-08-29 밤~2026-08-30)
 
@@ -93,6 +100,9 @@ PR #16로 스튜디오 모바일 오버플로를 고쳤다고 검증까지 마�
 브라우저 뷰포트 리사이즈는 모바일 에뮬레이션이 아니라는 게 근본 원인이었다
 (자세한 내용은 `ux-lead.md`, PR #21). **경험DB 인박스 이슈로도 남김**:
 [simplifier-cxo-db#1](https://github.com/hansunghee7/simplifier-cxo-db/issues/1).
+**후속**: 새로 추가된 `brand-guide.html`(마야 스레드 신설)에서 모바일 메뉴에
+새 항목이 안 보인다는 재확인 요청이 있었으나, 재검증 결과 정상 — 사장님도 재확인
+완료.
 
 ## 🟡 스레드 간 대조 필요하다고 각자 적어뒀던 것 — 해소 상태
 
@@ -105,6 +115,9 @@ PR #16로 스튜디오 모바일 오버플로를 고쳤다고 검증까지 마�
 - **ux-lead ↔ simplifier-studio 스튜디오 UX 영역 중복** — 둘 다 STYLE_GUIDE.md/
   UX_GUIDE.md 동기화를 사실상 같이 보고 있던 것을 사장님이 지적, ux-lead로
   통합. **해소됨(2026-08-30).**
+- **About 콘텐츠 vs GNB 구조 경계** — ux-lead가 분리안(콘텐츠=마야/구조=ux-lead)을
+  제안했으나, 사장님이 "마야가 최대한 정리해서 진행"으로 확정 — 분리하지 않고
+  cmo-marketing이 전담. **해소됨(2026-08-30).**
 
 ## 🟢 각 스레드가 자체적으로 진행 (사장님 액션 불필요)
 
@@ -120,6 +133,8 @@ PR #16로 스튜디오 모바일 오버플로를 고쳤다고 검증까지 마�
 - `multi-publish-sns-insight`: 2026-09-27경 네이버블로그 수집 안정성·추세 요약
   추가 여부 재검토 예정(사용자와 합의됨)
 - `claude-code-ops`: simplifier-agent GitHub 비공개 저장소 push 상태 확인
+- `숏감독`(신규): `shorts-lab` 생성기가 옛 너비 규칙을 쓰는 문제 — 화면 자체는
+  `ux-lead`가 만든 `.wrap:has(> .doc)` 특이도 장치로 이미 안전하니 급하지 않음.
 - ✅ (완료) 스튜디오 ⓘ 말풍선 뷰포트 오버플로 버그 — `cmo-marketing`이 작업
   칩(`task_cf685175`)으로만 등록해뒀던 걸 `ux-lead`가 전수 검토 중 발견해
   직접 수정(PR #8 → 검증 결함 발견 후 진짜 수정 PR #21, 2026-08-30)
