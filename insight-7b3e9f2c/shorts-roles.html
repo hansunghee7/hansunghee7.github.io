@@ -14,9 +14,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-  /* 너비는 studio.css가 .doc 패턴 규칙으로 처리한다(2026-08-30) --
-     이 페이지는 shorts-lab 파이프라인이 덮어쓰므로 여기 선언해도
-     날아간다. 공용 CSS 쪽이 특이도로 이기게 해둬서 그래도 유지된다. */
+  /* .wrap 너비는 studio.css의 .wrap:has(> .doc) 규칙(--width-content 표준형)이
+     이미 정한다 -- 여기서 다시 선언하지 않는다. 예전엔 .wrap{max-width:760px}를
+     여기 뒀었는데, studio.css 쪽 3단 너비 토큰 정책(2026-08-30)이 생긴 뒤로는
+     특이도로 늘 졌었다(죽은 규칙). */
   .doc-nav{display:flex; gap:8px; flex-wrap:wrap; margin:0 0 28px;}
   .doc-nav a{
     font-size:12.5px; color:var(--dim); text-decoration:none;
@@ -64,9 +65,9 @@
 <div class="wrap">
   <header>
     <h1>숏폼 제작진 역할</h1>
-    <span class="meta-text">shorts-lab/PRODUCTION_ROLES.md · 자동 생성 2026-08-28 23:34 · 원본이 바뀌면 파이프라인 재실행 시 갱신됩니다</span>
+    <span class="meta-text">shorts-lab/PRODUCTION_ROLES.md · 자동 생성 2026-08-30 04:19 · 원본이 바뀌면 파이프라인 재실행 시 갱신됩니다</span>
   </header>
-  <nav class="doc-nav"><a href="/insight-7b3e9f2c/shorts-playbook.html">숏폼 파일럿 실행 매뉴얼</a><a href="/insight-7b3e9f2c/shorts-process.html">숏폼 공정 정본</a><a href="/insight-7b3e9f2c/shorts-visual-grammar.html">숏폼 연출 사전</a><a href="/insight-7b3e9f2c/shorts-roles.html" class="current">숏폼 제작진 역할</a></nav>
+  <nav class="doc-nav"><a href="/insight-7b3e9f2c/shorts-playbook.html">숏폼 파일럿 실행 매뉴얼</a><a href="/insight-7b3e9f2c/shorts-process.html">숏폼 공정 정본</a><a href="/insight-7b3e9f2c/shorts-script-process.html">숏폼 대본 공정</a><a href="/insight-7b3e9f2c/shorts-visual-grammar.html">숏폼 연출 사전</a><a href="/insight-7b3e9f2c/shorts-roles.html" class="current">숏폼 제작진 역할</a></nav>
   <article class="doc">
 <blockquote>
 <p>우리 공정(G0~G6, <a href="shorts-process.html">PROCESS.md</a>)을 실제 영화·CF 제작진처럼 역할로 나눈 문서. <strong>한 게이트에 역할 하나가 아니라, 여러 역할이 동시에 논의해서 결정한다.</strong> 지금은 내(Claude)가 세션 안에서 역할을 바꿔가며 이 문서 기준으로 검토하고, 나중에 실제 멀티 에이전트로 자동화할 때는 이 문서가 각 에이전트의 페르소나·권한 정의가 된다(§3).</p>
