@@ -49,9 +49,10 @@ function renderLog(log) {
     var when = e.finishedAt ? new Date(e.finishedAt).toLocaleTimeString("ko-KR") : "";
     var note = e.status === "error" ? '<div class="hint">' + escapeHtml(e.note || "") + "</div>" : "";
     var tag = e.source === "queue" ? '<span class="tag">대기열</span>' : "";
+    var suspectTag = e.suspectShallow ? '<span class="tag suspect">⚠️ 짧게 끝남</span>' : "";
     return (
       '<div class="log-item">' +
-      '<div class="brief">' + escapeHtml(e.briefSnippet || "") + (e.briefSnippet && e.briefSnippet.length >= 80 ? "…" : "") + tag + "</div>" +
+      '<div class="brief">' + escapeHtml(e.briefSnippet || "") + (e.briefSnippet && e.briefSnippet.length >= 80 ? "…" : "") + tag + suspectTag + "</div>" +
       '<div class="meta">' + mark + "<span>" + when + "</span></div>" +
       note +
       "</div>"

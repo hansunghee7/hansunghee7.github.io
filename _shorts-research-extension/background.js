@@ -30,12 +30,24 @@ function pushLog(entry) {
 // 경로다.
 var REPO = "hansunghee7/hansunghee7.github.io";
 
-function openResearchIssue(brief, planText, resultText) {
+// 진짜 딥리서치는 웹을 여러 개 뒤져 종합하느라 보통 5~20분 걸린다. "+"
+// 버튼이나 메뉴 항목을 못 찾아 일반 채팅으로 조용히 새는 경우, 몇 분 만에
+// "완료"돼버려서 겉보기엔 정상 성공처럼 보인다(실제로 한 번 발생: 2분
+// 24초 만에 끝난 이슈 #59). 사람이 매번 소요 시간을 눈으로 확인하지
+// 않아도 되도록, 짧게 끝나면 이슈/기록에 자동으로 의심 표시를 남긴다 --
+// 이것만으로 확정 진단은 아니라서, 그래도 "성공"으로는 기록한다.
+var DEEP_RESEARCH_SUSPECT_MS = 4 * 60 * 1000;
+
+function openResearchIssue(brief, planText, resultText, elapsedMs) {
   chrome.storage.local.get(["githubToken"], function (res) {
     if (!res.githubToken) return; // 미연결이면 조용히 건너뜀 -- README 참고
     var title = "[리서치 완료] " + brief.slice(0, 60) + (brief.length > 60 ? "…" : "");
+    var suspectNote = elapsedMs < DEEP_RESEARCH_SUSPECT_MS
+      ? "\n\n⚠️ **" + Math.round(elapsedMs / 1000) + "초 만에 끝남 — 딥리서치 대신 일반 채팅으로 처리됐을 가능성이 있습니다.** 내용을 확인해보세요.\n"
+      : "";
     var body =
       "## 브리프\n\n" + brief +
+      suspectNote +
       (planText ? "\n\n## 제미나이가 제시한 계획 (자동 승인됨)\n\n" + planText : "") +
       "\n\n## 결과\n\n" + resultText +
       "\n\n---\n_숏폼 리서치 자동화 확장이 자동으로 등록함 (" + new Date().toISOString() + ")_";
@@ -318,23 +330,28 @@ chrome.runtime.onMessage.addListener(function (msg) {
   if (msg && msg.type === "RESEARCH_COMPLETE") {
     chrome.storage.local.get(["activeResearch"], function (res) {
       var active = res.activeResearch;
+      var finishedAt = Date.now();
+      var elapsedMs = active ? finishedAt - active.startedAt : DEEP_RESEARCH_SUSPECT_MS;
+      var suspect = elapsedMs < DEEP_RESEARCH_SUSPECT_MS;
       pushLog({
         briefSnippet: active ? active.brief.slice(0, 80) : "",
         startedAt: active ? active.startedAt : Date.now(),
-        finishedAt: Date.now(),
+        finishedAt: finishedAt,
         status: "success",
         result: msg.result,
         copiedToClipboard: msg.copiedToClipboard,
         source: active && active.queueItemId ? "queue" : "manual",
+        suspectShallow: suspect,
       });
       updateSelectorMissStreak(msg.misses);
-      openResearchIssue(active ? active.brief : "", msg.planText, msg.result);
-      if (active && active.queueItemId) updateQueueItemStatus(active.queueItemId, "done");
+      openResearchIssue(active ? active.brief : "", msg.planText, msg.result, elapsedMs);
+      if (active && active.queueItemId) updateQueueItemStatus(active.queueItemId, "done", suspect ? "짧게 끝남(딥리서치 의심)" : null);
       notify(
-        "숏폼 리서치 완료",
-        msg.copiedToClipboard
-          ? "결과가 클립보드에 복사됐습니다. 바로 붙여넣으세요."
-          : "결과가 준비됐습니다. 확장 팝업에서 확인 후 복사하세요."
+        suspect ? "숏폼 리서치 완료 — 짧게 끝남 (의심)" : "숏폼 리서치 완료",
+        (msg.copiedToClipboard
+          ? "결과가 클립보드에 복사됐습니다. "
+          : "결과가 준비됐습니다. 확장 팝업에서 확인 후 복사하세요. ") +
+          (suspect ? "딥리서치 대신 일반 채팅으로 처리됐을 수 있어요 — 내용을 확인해보세요." : "")
       );
       if (active && active.tabId) {
         setTimeout(function () {
