@@ -5,6 +5,10 @@ var resultBox = document.getElementById("resultBox");
 var resultText = document.getElementById("resultText");
 var copyBtn = document.getElementById("copyBtn");
 var logList = document.getElementById("logList");
+var planBox = document.getElementById("planBox");
+var planText = document.getElementById("planText");
+var approveBtn = document.getElementById("approveBtn");
+var cancelBtn = document.getElementById("cancelBtn");
 
 function setStatus(kind, text) {
   statusBox.className = "status " + kind;
@@ -22,7 +26,11 @@ function renderLog(log) {
     return;
   }
   logList.innerHTML = log.map(function (e) {
-    var mark = e.status === "success" ? '<span class="mark success">✓ 완료</span>' : '<span class="mark error">✗ 실패</span>';
+    var mark = e.status === "success"
+      ? '<span class="mark success">✓ 완료</span>'
+      : e.status === "cancelled"
+      ? '<span class="mark">– 취소됨</span>'
+      : '<span class="mark error">✗ 실패</span>';
     var when = e.finishedAt ? new Date(e.finishedAt).toLocaleTimeString("ko-KR") : "";
     var note = e.status === "error" ? '<div class="hint">' + escapeHtml(e.note || "") + "</div>" : "";
     return (
@@ -42,12 +50,25 @@ function escapeHtml(s) {
 }
 
 function refreshFromStorage() {
-  chrome.storage.local.get(["researchLog", "activeResearch"], function (res) {
+  chrome.storage.local.get(["researchLog", "activeResearch", "pendingPlan"], function (res) {
     renderLog(res.researchLog);
+
+    if (res.pendingPlan) {
+      startBtn.disabled = true;
+      resultBox.style.display = "none";
+      planBox.style.display = "block";
+      planText.value = res.pendingPlan.planText || "(계획 내용을 가져오지 못했습니다 — 탭을 직접 확인해보세요)";
+      setStatus("running", "계획 확인 필요 — 위 내용을 읽고 승인/취소하세요");
+      return;
+    }
+    planBox.style.display = "none";
 
     if (res.activeResearch) {
       startBtn.disabled = true;
       setStatus("running", "진행 중 — " + elapsedLabel(res.activeResearch.startedAt) + " (보통 5~20분)");
+    } else if (res.researchLog && res.researchLog.length && res.researchLog[0].status === "cancelled") {
+      startBtn.disabled = false;
+      setStatus("cancelled", "취소됨");
     } else if (res.researchLog && res.researchLog.length && res.researchLog[0].status === "success") {
       startBtn.disabled = false;
       setStatus("ok", "완료");
@@ -72,7 +93,19 @@ startBtn.addEventListener("click", function () {
   chrome.runtime.sendMessage({ type: "START_RESEARCH", brief: brief });
   startBtn.disabled = true;
   resultBox.style.display = "none";
+  planBox.style.display = "none";
   setStatus("running", "시작함 — gemini.google.com을 여는 중");
+});
+
+approveBtn.addEventListener("click", function () {
+  chrome.runtime.sendMessage({ type: "APPROVE_PLAN" });
+  planBox.style.display = "none";
+  setStatus("running", "승인함 — 실제 조사를 시작하는 중");
+});
+
+cancelBtn.addEventListener("click", function () {
+  chrome.runtime.sendMessage({ type: "CANCEL_PLAN" });
+  planBox.style.display = "none";
 });
 
 copyBtn.addEventListener("click", function () {
@@ -86,7 +119,7 @@ copyBtn.addEventListener("click", function () {
 setInterval(refreshFromStorage, 5000);
 
 chrome.storage.onChanged.addListener(function (changes) {
-  if (changes.researchLog || changes.activeResearch) refreshFromStorage();
+  if (changes.researchLog || changes.activeResearch || changes.pendingPlan) refreshFromStorage();
 });
 
 refreshFromStorage();

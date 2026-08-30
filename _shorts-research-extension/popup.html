@@ -16,9 +16,17 @@
   .status.running{ background:#fbf1e6; color:#a3690f; }
   .status.ok{ background:#eaf5ef; color:#1f7a4f; }
   .status.error{ background:#fbe9e6; color:#b8402a; }
+  .status.cancelled{ background:#f2f0eb; color:#6e6a62; }
   .hint{ color:#6e6a62; font-size:11.5px; line-height:1.5; }
   #resultBox{ display:none; margin-top:8px; }
   #resultText{ width:100%; box-sizing:border-box; min-height:80px; font-size:11.5px; padding:8px; border:1px solid #c8c6bf; border-radius:6px; font-family:inherit; }
+  #planBox{ display:none; margin-bottom:8px; padding:10px 12px; border:1px solid #e3c98a; border-radius:8px; background:#fbf1e6; }
+  #planBox .plan-heading{ font-size:12px; font-weight:600; color:#a3690f; margin-bottom:6px; }
+  #planText{ width:100%; box-sizing:border-box; min-height:100px; font-size:11.5px; padding:8px; border:1px solid #c8c6bf; border-radius:6px; font-family:inherit; margin-bottom:8px; }
+  .plan-actions{ display:flex; gap:8px; }
+  .plan-actions button{ margin-bottom:0; }
+  #approveBtn{ background:#1f7a4f; border-color:#1f7a4f; }
+  #cancelBtn{ background:#fff; color:#b8402a; border-color:#e0b3a8; }
 
   .log-heading{ font-size:11.5px; font-weight:600; color:#403d37; margin:14px 0 6px; }
   .log-empty{ font-size:11.5px; color:#6e6a62; }
@@ -39,15 +47,25 @@
 
   <div id="statusBox" class="status idle">대기 중</div>
 
+  <div id="planBox">
+    <div class="plan-heading">제미나이가 조사 계획을 제시했습니다 — 확인 후 승인하세요</div>
+    <textarea id="planText" readonly></textarea>
+    <div class="plan-actions">
+      <button id="approveBtn">승인하고 진행</button>
+      <button id="cancelBtn" class="secondary">취소</button>
+    </div>
+  </div>
+
   <div id="resultBox">
     <textarea id="resultText" readonly></textarea>
     <button id="copyBtn" class="secondary">결과 다시 복사</button>
   </div>
 
   <div class="hint">
-    창을 화면 뒤에서 조용히 엽니다. 보통 5~20분 걸리고, 끝나면 알림이 뜹니다.
-    자동 클립보드 복사가 브라우저 정책으로 안 될 수 있어서, 실패해도 여기서
-    수동으로 복사할 수 있게 남겨둡니다.
+    창을 화면 뒤에서 조용히 엽니다. 계획이 나오면 팝업에서 승인해야 실제 조사가
+    시작되고, 승인 후엔 보통 5~20분 걸립니다. 끝나면 알림이 뜹니다. 자동
+    클립보드 복사가 브라우저 정책으로 안 될 수 있어서, 실패해도 여기서 수동으로
+    복사할 수 있게 남겨둡니다.
   </div>
 
   <div class="log-heading">최근 실행 기록</div>

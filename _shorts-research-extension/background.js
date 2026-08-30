@@ -91,6 +91,57 @@ chrome.runtime.onMessage.addListener(function (msg) {
     startResearch(msg.brief);
   }
 
+  // 딥리서치가 조사 계획을 제시하고 승인을 기다리는 단계. 탭은 그대로 두고,
+  // 팝업에 "계획 확인 필요" 상태를 띄운다 -- 사람이 직접 계획을 읽고
+  // 승인/취소를 결정해야 하므로 여기서 자동으로 진행시키지 않는다.
+  if (msg && msg.type === "RESEARCH_PLAN_READY") {
+    chrome.storage.local.get(["activeResearch"], function (res) {
+      var active = res.activeResearch;
+      chrome.storage.local.set({
+        pendingPlan: {
+          tabId: active ? active.tabId : null,
+          planText: msg.planText,
+          readyAt: Date.now(),
+        },
+      });
+      notify("숏폼 리서치 — 계획 확인 필요", "제미나이가 조사 계획을 제시했습니다. 확장 팝업에서 확인 후 승인/취소하세요.");
+    });
+  }
+
+  if (msg && msg.type === "APPROVE_PLAN") {
+    chrome.storage.local.get(["pendingPlan"], function (res) {
+      if (!res.pendingPlan || !res.pendingPlan.tabId) return;
+      chrome.tabs.sendMessage(res.pendingPlan.tabId, { type: "CONFIRM_PLAN" }, function () { void chrome.runtime.lastError; });
+      chrome.storage.local.remove("pendingPlan");
+    });
+  }
+
+  if (msg && msg.type === "CANCEL_PLAN") {
+    chrome.storage.local.get(["pendingPlan", "activeResearch"], function (res) {
+      if (res.pendingPlan && res.pendingPlan.tabId) {
+        chrome.tabs.sendMessage(res.pendingPlan.tabId, { type: "CANCEL_PLAN" }, function () { void chrome.runtime.lastError; });
+      }
+      chrome.storage.local.remove("pendingPlan");
+    });
+  }
+
+  if (msg && msg.type === "RESEARCH_CANCELLED") {
+    chrome.storage.local.get(["activeResearch"], function (res) {
+      var active = res.activeResearch;
+      pushLog({
+        briefSnippet: active ? active.brief.slice(0, 80) : "",
+        startedAt: active ? active.startedAt : Date.now(),
+        finishedAt: Date.now(),
+        status: "cancelled",
+      });
+      if (active && active.tabId) {
+        chrome.tabs.remove(active.tabId, function () { void chrome.runtime.lastError; });
+      }
+      chrome.storage.local.remove("activeResearch");
+      chrome.storage.local.remove("pendingPlan");
+    });
+  }
+
   if (msg && msg.type === "RESEARCH_COMPLETE") {
     chrome.storage.local.get(["activeResearch"], function (res) {
       var active = res.activeResearch;
@@ -114,6 +165,7 @@ chrome.runtime.onMessage.addListener(function (msg) {
         }, CLOSE_DELAY_ON_SUCCESS_MS);
       }
       chrome.storage.local.remove("activeResearch");
+      chrome.storage.local.remove("pendingPlan");
     });
   }
 
@@ -129,6 +181,7 @@ chrome.runtime.onMessage.addListener(function (msg) {
       });
       notify("숏폼 리서치 실패", msg.message + " — 창을 열어둔 채로 두었으니 직접 확인해보세요.");
       chrome.storage.local.remove("activeResearch");
+      chrome.storage.local.remove("pendingPlan");
       // 실패 시엔 탭을 안 닫는다 (파일 상단 설명 참고).
     });
   }
