@@ -32,16 +32,21 @@ layout: null
   .frame.desktop .post-body p { font-size: 17px; letter-spacing: 0.3px; }
   .post-body img.cover { width: 100%; height: auto; display: block; margin: 0 0 24px; }
 
-  /* ↓ 여기부터 버전 J(승인 대기) -- preview/cta-test.html과 동일 마크업 */
+  /* ↓ 여기부터 버전 J(승인 대기) -- preview/cta-test.html과 동일 마크업.
+     주의: 아래 <p> 셀렉터들은 반드시 "p.클래스" 형태로 태그+클래스를
+     같이 줘야 한다 -- 클래스 하나짜리 셀렉터(.post-closing-line 등,
+     명시도 0,1,0)는 위 .post-body p(명시도 0,1,1)에 캐스케이드상
+     밀려서 margin:0 0 30px가 그대로 새어 들어온다(2026-08-30 실제로
+     이 버그로 슬로건-CTA 간격이 과하게 벌어짐, 스크린샷으로 발견). */
   .post-closing { text-align: left; margin: 0; }
-  .post-closing-line { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-weight: 300; font-style: italic; font-size: 15.5px; color: #4a4740; margin: 0 0 4px; line-height: 1.7; }
+  p.post-closing-line { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-weight: 300; font-style: italic; font-size: 15.5px; color: #4a4740; margin: 0 0 4px; line-height: 1.7; }
   .post-closing-sig { display: block; height: 46px; width: auto; margin: 10px 0 0; }
   .post-cta-gap-56 { margin-top: 56px; }
   .post-cta-divider { border: 0; border-top: 1px solid #efece4; margin: 28px 0; }
   .post-card { text-align: center; padding-bottom: 40px; }
   .post-card-photo { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; filter: grayscale(1); margin-bottom: 10px; display: inline-block; }
-  .post-card-tagline { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-weight: 300; font-style: italic; font-size: 14.5px; color: #4a4740; margin: 0; }
-  .post-cta-links { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 0; margin: 14px 0 0; padding: 0; font-family: 'Pretendard Variable', sans-serif; font-size: 13px; color: #8f8b82; }
+  p.post-card-tagline { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-weight: 300; font-style: italic; font-size: 14.5px; color: #4a4740; margin: 0 0 8px; }
+  .post-cta-links { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 0; margin: 0; padding: 0; font-family: 'Pretendard Variable', sans-serif; font-size: 13px; color: #8f8b82; }
   .post-cta-links li { display: flex; align-items: center; }
   .post-cta-links li:not(:last-child)::after { content: '·'; margin: 0 10px; color: #d8d5cc; }
   .post-cta-links a, .post-cta-links button { font: inherit; color: #4a4740; text-decoration: none; background: none; border: none; padding: 0; cursor: pointer; }
@@ -71,7 +76,7 @@ layout: null
           <ul class="post-cta-links">
             <li><a href="/book/기획자의-질문법.html">기획자의 질문법</a></li>
             <li><a href="/book/UX의-언어들.html">UX의 언어들</a></li>
-            <li><button type="button" class="open-contact-modal">문의하기</button></li>
+            <li><button type="button" class="open-contact-modal">1:1 문의하기</button></li>
           </ul>
         </div>
       </div>
@@ -97,7 +102,7 @@ layout: null
           <ul class="post-cta-links">
             <li><a href="/book/기획자의-질문법.html">기획자의 질문법</a></li>
             <li><a href="/book/UX의-언어들.html">UX의 언어들</a></li>
-            <li><button type="button" class="open-contact-modal">문의하기</button></li>
+            <li><button type="button" class="open-contact-modal">1:1 문의하기</button></li>
           </ul>
         </div>
       </div>
