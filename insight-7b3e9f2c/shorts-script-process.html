@@ -65,7 +65,7 @@
 <div class="wrap">
   <header>
     <h1>숏폼 대본 공정</h1>
-    <span class="meta-text">shorts-lab/SCRIPT_PROCESS.md · 자동 생성 2026-08-30 06:28 · 원본이 바뀌면 파이프라인 재실행 시 갱신됩니다</span>
+    <span class="meta-text">shorts-lab/SCRIPT_PROCESS.md · 자동 생성 2026-08-30 06:58 · 원본이 바뀌면 파이프라인 재실행 시 갱신됩니다</span>
   </header>
   <nav class="doc-nav"><a href="/insight-7b3e9f2c/shorts-playbook.html">숏폼 파일럿 실행 매뉴얼</a><a href="/insight-7b3e9f2c/shorts-process.html">숏폼 공정 정본</a><a href="/insight-7b3e9f2c/shorts-script-process.html" class="current">숏폼 대본 공정</a><a href="/insight-7b3e9f2c/shorts-visual-grammar.html">숏폼 연출 사전</a><a href="/insight-7b3e9f2c/shorts-roles.html">숏폼 제작진 역할</a></nav>
   <article class="doc">
@@ -215,15 +215,15 @@
 <tbody>
 <tr>
 <td><code>narration.txt</code></td>
-<td><strong>타입캐스트 붙여넣기용.</strong> 번호·주석 없이 블록 사이 빈 줄만</td>
+<td><strong>타입캐스트 붙여넣기용.</strong> 번호·주석 없이, 문단(빈 줄)은 아래 규칙대로</td>
 </tr>
 <tr>
 <td><code>narration_blocks.txt</code></td>
-<td>블록번호 · 섹션 · 자수 · 예상초. 녹음 대조와 씬 설계용</td>
+<td>블록번호 · 섹션 · 자수 · 예상초. 녹음 대조와 씬 설계용 — script.json 블록 그대로, narration.txt처럼 합치지 않는다</td>
 </tr>
 <tr>
 <td><code>script.json</code></td>
-<td>구조화 데이터. 파이프라인이 읽는다</td>
+<td>구조화 데이터. 파이프라인이 읽는다 — 블록은 4초/6초 단위 그대로 유지(씬 설계용)</td>
 </tr>
 <tr>
 <td><code>sources.md</code></td>
@@ -231,6 +231,19 @@
 </tr>
 </tbody>
 </table></div>
+<p><strong><code>narration.txt</code>의 문단 구분은 <code>script.json</code> 블록과 1:1이 아니다</strong> (2026-08-30 발견).
+타입캐스트는 빈 줄마다 숨을 쉬므로, <code>script.json</code>의 4초/6초 블록 경계마다 그대로
+빈 줄을 넣으면 뚝뚝 끊겨 읽힌다. <strong>"보기 좋은 대본"이 아니라 "필재가 맛나게 읽는
+대본"이 기준</strong>이다.</p>
+<ul>
+<li>같은 흐름 안에서 이어지는 설명 블록들은 빈 줄 없이 한 문단으로 합친다.</li>
+<li>문단을 나누는 자리는 <strong>실제 서사 전환점</strong>(반전 시작, 새 질문 던지기)뿐이다.</li>
+<li>"원인은 법 조항 하나입니다."처럼 그 자체로 강조·전환 역할을 하는 짧은 단독
+  문장은 앞뒤로 빈 줄을 둬서 확실히 쉬게 한다.</li>
+<li><code>script.json</code>/<code>narration_blocks.txt</code>의 블록 단위는 씬 설계(G4)를 위해 그대로
+  유지한다 — 정렬(G3)은 어차피 Whisper로 실제 녹음을 텍스트와 맞춰보는 것이라,
+  <code>narration.txt</code>를 문단으로 합쳐도 이후 공정에 지장 없다.</li>
+</ul>
 <p><code>episode.json</code>의 <code>g0_topic</code> <code>g1_script</code>를 <code>done</code>으로 바꾸고 현황판을 갱신한다.</p>
 <hr />
 <h2>우리 채널 시그니처 표현 사전 — 벤치마크를 그대로 베끼지 않는다</h2>
