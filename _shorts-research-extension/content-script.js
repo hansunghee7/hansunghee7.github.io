@@ -1,16 +1,21 @@
 // gemini.google.com에서 브리프를 입력하고, 딥리서치 모드로 제출한 뒤,
 // 응답이 끝날 때까지 기다렸다가 결과를 가로챈다.
 //
-// ⚠️ 이 파일에서 가장 불확실한 부분은 SELECTORS다. 이 세션은 로그인된
-// gemini.google.com 화면을 직접 본 적이 없어서(콘솔 접근 불가), 아래
-// 선택자는 "일반적으로 이런 구조일 것이다"라는 추정이다. 실제로 안 맞으면
-// 콘솔에 "[숏폼 리서치]"로 시작하는 로그가 어디서 못 찾았는지 알려준다 --
-// 그 로그를 보고 실제 요소를 찾아 이 파일의 SELECTORS만 고치면 된다.
+// ⚠️ 이 파일에서 가장 불확실한 부분은 SELECTORS다. 실제 화면을 보고
+// 확인된 부분(2026-08-30, 사장님 직접 확인)도 있고, 여전히 추정인
+// 부분도 있다. 실제로 안 맞으면 콘솔에 "[숏폼 리서치]"로 시작하는
+// 로그가 어디서 못 찾았는지 알려준다 -- 그 로그를 보고 실제 요소를
+// 찾아 이 파일의 SELECTORS만 고치면 된다.
+//
+// ✅ 확인됨: 딥리서치 모드는 "딥 리서치" 글자가 화면에 바로 안 보이고,
+// 입력창 영역의 "+" 버튼을 먼저 눌러야 그 메뉴 안에 나타난다(2단계).
 //
 // 검증하는 법 (F12 콘솔에 붙여넣기):
 //   document.querySelector('[contenteditable="true"]')       // 입력창
 //   [...document.querySelectorAll('button')].find(b => /전송|보내기|send/i.test(b.getAttribute('aria-label')||''))  // 전송 버튼
-//   [...document.querySelectorAll('[role="menuitemradio"], button, div')].find(b => /딥\s*리서치|deep research/i.test(b.textContent||''))  // 모드 전환
+//   [...document.querySelectorAll('button')].find(b => (b.textContent||'').trim()==='+')  // "+" 버튼
+//   // 위 "+"를 실제로 클릭한 다음에 아래를 실행해야 메뉴가 열려있어 잡힌다:
+//   [...document.querySelectorAll('[role="menuitemradio"], [role="menuitem"], button, li, span')].find(b => /딥\s*리서치|deep research/i.test(b.textContent||''))  // 딥 리서치 메뉴 항목
 
 (function () {
   var LOG_PREFIX = "[숏폼 리서치]";
@@ -24,11 +29,17 @@
       'div.ql-editor[contenteditable="true"]',
       'div[contenteditable="true"]',
     ],
-    // 딥리서치 모드 진입점 -- "도구" 메뉴 안에 있을 수도, 입력창 옆 칩일
-    // 수도 있다. 텍스트로 찾으므로 어디 있든 웬만하면 잡힌다.
+    // 딥리서치 모드는 "딥 리서치"라는 글자가 화면에 바로 보이지 않는다 --
+    // 입력창 영역의 "+" 버튼을 먼저 눌러야 그 안에 딥 리서치를 포함한
+    // 도구 메뉴가 펼쳐진다(실제 화면 확인함, 2026-08-30). 그래서 2단계로
+    // 찾는다: (1) "+" 버튼 클릭 (2) 펼쳐진 메뉴에서 "딥 리서치" 항목 클릭.
     deepResearchToggle: {
-      textPattern: /딥\s*리서치|deep\s*research/i,
-      candidateTags: ["button", "div[role=\"menuitemradio\"]", "div[role=\"menuitem\"]", "span"],
+      plusButton: {
+        exactTextPattern: /^\+$/,
+        ariaPattern: /도구|추가|tools|add|plus/i,
+      },
+      menuItemPattern: /딥\s*리서치|deep\s*research/i,
+      menuItemTags: ["div[role=\"menuitemradio\"]", "div[role=\"menuitem\"]", "button", "li", "span"],
     },
     submitButton: {
       ariaPattern: /전송|보내기|submit|send/i,
@@ -108,6 +119,42 @@
     return document.querySelector(SELECTORS.submitButton.fallback);
   }
 
+  function findPlusButton() {
+    var buttons = document.querySelectorAll("button");
+    for (var i = 0; i < buttons.length; i++) {
+      var b = buttons[i];
+      var text = (b.textContent || "").trim();
+      var label = b.getAttribute("aria-label") || "";
+      if (SELECTORS.deepResearchToggle.plusButton.exactTextPattern.test(text)) return b;
+      if (SELECTORS.deepResearchToggle.plusButton.ariaPattern.test(label)) return b;
+    }
+    return null;
+  }
+
+  // "+" 버튼을 눌러 도구 메뉴를 펼친 뒤, 그 안에서 "딥 리서치" 항목을 찾아
+  // 클릭한다. 실패해도 submitBrief 자체는 계속 진행한다 -- 딥리서치 없이
+  // 일반 채팅으로라도 제출되는 게 아무것도 안 하는 것보다 낫고, 놓친
+  // 지점은 recordMiss로 남겨서 팝업 경고로 드러나게 한다.
+  function enableDeepResearch() {
+    var plusBtn = findPlusButton();
+    if (!plusBtn) {
+      log("⚠️ '+' 버튼을 못 찾음 -- 딥리서치 모드 전환 없이 일반 모드로 진행합니다.");
+      recordMiss("deepResearchToggle");
+      return Promise.resolve();
+    }
+    plusBtn.click();
+    log("'+' 버튼 클릭함, 딥 리서치 메뉴 항목 대기 중");
+    return waitFor(function () {
+      return findByText(SELECTORS.deepResearchToggle.menuItemTags, SELECTORS.deepResearchToggle.menuItemPattern);
+    }, 5000, 300).then(function (menuItem) {
+      menuItem.click();
+      log("딥리서치 모드 전환 클릭함");
+    }, function () {
+      log("⚠️ '+' 메뉴는 열렸지만 '딥 리서치' 항목을 못 찾음 -- 일반 모드로 진행합니다. SELECTORS.deepResearchToggle.menuItemPattern 확인 필요.");
+      recordMiss("deepResearchToggle");
+    });
+  }
+
   // contenteditable div에 텍스트를 넣는다. React 기반 앱은 textContent를
   // 직접 바꾸는 것만으론 내부 상태가 안 바뀌는 경우가 많아서(입력 이벤트를
   // 안 받았다고 인식), execCommand로 "실제 타이핑처럼" 넣고 input 이벤트도
@@ -150,21 +197,12 @@
   function submitBrief(brief) {
     runMisses = {};
     runPlanText = null;
+    var inputEl;
     return waitFor(function () { return findFirst(SELECTORS.input); }, 15000, 500).then(function (input) {
-      // 딥리서치 모드 전환 -- 못 찾아도 실패시키지 않는다. 일반 모드로라도
-      // 제출하는 게 아무것도 안 하는 것보다 낫고, 로그로 남겨서 나중에
-      // 선택자를 고칠 근거를 남긴다.
-      var toggle = findByText(SELECTORS.deepResearchToggle.candidateTags, SELECTORS.deepResearchToggle.textPattern);
-      if (toggle) {
-        toggle.click();
-        log("딥리서치 모드 전환 클릭함");
-      } else {
-        log("⚠️ 딥리서치 모드 전환 버튼을 못 찾음 -- 일반 모드로 제출됩니다. 결과를 확인 후 SELECTORS.deepResearchToggle을 실제 화면 기준으로 고쳐주세요.");
-        recordMiss("deepResearchToggle");
-      }
-
-      insertText(input, brief);
-
+      inputEl = input;
+      return enableDeepResearch();
+    }).then(function () {
+      insertText(inputEl, brief);
       return waitFor(findSubmitButton, 5000, 300);
     }).then(function (submitBtn) {
       submitBtn.click();
