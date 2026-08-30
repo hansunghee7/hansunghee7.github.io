@@ -65,7 +65,7 @@
 <div class="wrap">
   <header>
     <h1>숏폼 공정 정본</h1>
-    <span class="meta-text">shorts-lab/PROCESS.md · 자동 생성 2026-08-30 11:15 · 원본이 바뀌면 파이프라인 재실행 시 갱신됩니다</span>
+    <span class="meta-text">shorts-lab/PROCESS.md · 자동 생성 2026-08-30 11:27 · 원본이 바뀌면 파이프라인 재실행 시 갱신됩니다</span>
   </header>
   <nav class="doc-nav"><a href="/insight-7b3e9f2c/shorts-playbook.html">숏폼 파일럿 실행 매뉴얼</a><a href="/insight-7b3e9f2c/shorts-process.html" class="current">숏폼 공정 정본</a><a href="/insight-7b3e9f2c/shorts-script-process.html">숏폼 대본 공정</a><a href="/insight-7b3e9f2c/shorts-visual-grammar.html">숏폼 연출 사전</a><a href="/insight-7b3e9f2c/shorts-roles.html">숏폼 제작진 역할</a></nav>
   <article class="doc">
@@ -92,6 +92,10 @@
    대부분의 결함은 Veo 8초 모션에서 흡수된다 — 블록03의 빨간 빛기둥이 건물 밖에 섰던 것도
    영상에서는 오히려 나아 보였다.</li>
 <li><strong>이 문서는 매 세션 최신 상태로 갱신한다.</strong></li>
+<li><strong>긴 작업(에이전트 위임 등)을 시작할 때는 예상 소요시간·완료 예정 시각을 먼저 말한다
+   (2026-08-30, 사장님 요청).</strong> 사장님이 그동안 다른 일을 볼 수 있어야 하기 때문 —
+   과거 비슷한 규모 작업의 실제 소요시간을 근거로 추정치를 댄다("비슷한 작업이 지난번
+   30분 걸렸으니 이번도 비슷할 것" 식). 추정 없이 "진행 중입니다"만 말하지 않는다.</li>
 </ol>
 <h2>저장소 구조 (기가팩토리 레이아웃)</h2>
 <pre><code>shorts-lab/
@@ -210,7 +214,44 @@ python pipeline/build_studio_site.py        # 심플리파이어 스튜디오용
 <li>화면의 역동성 일부는 이 인포그래픽 요소들이 등장하는 애니메이션(팝인·확대·그려짐) 자체에서도 나온다 — 컷 밀도·장면 내 액션에 이은 세 번째 요인.</li>
 <li>ep01은 킬러 넘버가 없어 치수/측정 라벨 활용도가 낮음 — EPS/TPS 같은 용어는 포인트 태그로, 차기 에피소드는 G0 게이트에서 확보한 스케일 숫자를 치수 라벨로 적극 활용.</li>
 </ul>
-<h2>씬 프롬프트 합격 조건 (G4 게이트 — 생성 전 필수 통과)</h2>
+<h2>⚠️ G4 파이프라인 — 이미지 선생성이 필수다 (2026-08-30 확정)</h2>
+<p><strong>Flow에 텍스트 프롬프트를 바로 넣어 영상을 뽑는 방식(아래 절이 원래 전제하던
+방식, ep01 및 이 세션에서 ep03에 처음 썼던 방식)은 쓰지 않는다.</strong> 실제로
+ep01이 이 방식으로 영상이 "들쑥날쑥"하게 나와 G4에서 멈췄고, ep02에서 <strong>나노
+바나나 프로(Gemini Gem)로 정지 이미지를 먼저 만들고 그 이미지를 Flow의
+"Frames to Video"에 넣는 방식</strong>으로 바꾸자 원하는 결과가 나오기 시작했다 —
+사장님이 채널의 기본 파이프라인으로 확정.</p>
+<p><strong>G4는 이제 산출물이 세 개다.</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>파일</th>
+<th>용도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>templates/GEM_SCENE_IMAGE.md</code></td>
+<td>젬(Gem) 지침 — 스타일·오버레이·글자 규칙, 한 번만 설정</td>
+</tr>
+<tr>
+<td><code>04-scenes/image_prompts.md</code></td>
+<td>씬별 정지 이미지 프롬프트(한글, 젬에 붙여넣기용). 🆕(새 생성)/🔗(앞 클립 프레임 체이닝) 표시</td>
+</tr>
+<tr>
+<td><code>04-scenes/video_prompts.md</code></td>
+<td>씬별 Flow 모션 프롬프트(한글). 이미지를 첫 프레임으로 붙여 넣고 카메라·동작만 지시</td>
+</tr>
+</tbody>
+</table></div>
+<p>아래 "씬 프롬프트 합격 조건"(A~H)과 <code>validate_scene_plan.py</code>는 <strong>영어 Veo
+직접생성 프롬프트(<code>scene_plan.json</code>)를 검증하려고 만든 것</strong>이라 이 파이프라인엔
+그대로 안 맞는다 — 씬 개수·전환연속성·오버레이 밀도·서사 배치 같은 <strong>원칙</strong>은
+그대로 적용하되, 언어 규칙(영어 프롬프트 형식 검사)은 <code>GEM_SCENE_IMAGE.md</code>의
+"하지 말 것" 절과 ep02 image_prompts.md·video_prompts.md의 "검증된 문장 틀"이
+대신한다. <code>scene_plan.json</code>/<code>validate_scene_plan.py</code>는 과거 시도의 기록으로
+남겨두되, 새 에피소드의 정본 산출물이 아니다.</p>
+<h2>씬 프롬프트 합격 조건 (G4 게이트 — 생성 전 필수 통과, 참고용·영어 Veo 직접생성 시절 기준)</h2>
 <p>시행착오를 줄이기 위해, 크레딧을 써서 실제로 생성해보기 <em>전에</em> 아래 조건을 전수 점검한다. 기계적으로 검증 가능한 항목은 <code>pipeline/validate_scene_plan.py</code>가 자동 검사하고(사람이 놓치기 쉬운 반복 패턴을 100% 잡아냄), 논리적 일관성은 사람(또는 나)이 최종 판단한다. 이 리스트 자체가 지금까지의 모든 실측·리서치·실패 사례(Omni 모션 부족, 다중 컷 불안정, 부정어 프롬프트 부작용 등)를 조건으로 압축한 것.</p>
 <p><strong>A. 카메라</strong>
 - A1. <code>camera</code>가 언급되면 근처에 명확한 동작 동사(push-in/orbit/rise/pan/swoop/pull back 등)가 있다.
