@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>브랜드 가이드 - Simplifier</title>
+
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<!-- Studio 메뉴 타이틀(h1)은 명조체 큰 제목으로 통일합니다. -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=boska@200,201,300,301,400,401&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;1,8..60,300&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<link rel="stylesheet" href="/insight-7b3e9f2c/studio.css">
+
+<style>
+  /* STYLE_GUIDE.md의 .doc 패턴 -- style-guide.html(통합 UX 가이드)과 동일 구조.
+     :root/body/header/#adminShellNav는 studio.css 그대로 쓰고, 여기서는
+     .doc 안에서만 쓰는 선택자만 추가합니다. 색상/타이포/간격의 정본은
+     여전히 docs/UX_GUIDE.md(→style-guide.html)입니다 -- 여기서 다시
+     선언하지 않고, 이 페이지는 "브랜드 보이스 + 에셋 카탈로그"만 담당합니다. */
+  .doc{ font-size:15px; line-height:1.75; color:var(--dim); }
+  .doc h2{ font-family:'Noto Serif KR',serif; font-weight:400; font-size:22px; color:var(--ink); margin:56px 0 6px; }
+  .doc h2:first-child{ margin-top:0; }
+  .doc h3{ font-size:15.5px; font-weight:700; color:var(--ink); margin:28px 0 10px; }
+  .doc p{ margin:0 0 14px; }
+  .doc ul, .doc ol{ margin:0 0 14px; padding-left:22px; }
+  .doc li{ margin-bottom:6px; }
+  .doc li b, .doc p b{ color:var(--ink); font-weight:700; }
+  .doc code{ font-family:ui-monospace,'SFMono-Regular',Menlo,monospace; font-size:0.88em; background:#f7f6f2; padding:1.5px 5px; border-radius:4px; color:var(--dim); }
+  .doc .lede{ font-size:15.5px; color:var(--dim); border-left:2px solid var(--line); padding-left:14px; margin-bottom:16px; }
+
+  .table-wrap{ overflow-x:auto; margin:0 0 14px; -webkit-overflow-scrolling:touch; }
+  .doc table{ width:100%; border-collapse:collapse; font-size:13.5px; }
+  .doc th{ text-align:left; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.04em; color:var(--muted); padding:0 12px 8px 0; border-bottom:1px solid var(--line); white-space:nowrap; }
+  .doc td{ padding:10px 12px 10px 0; border-bottom:1px solid var(--line-soft); vertical-align:top; }
+  .doc td:last-child, .doc th:last-child{ padding-right:0; }
+
+  .toc{ display:flex; flex-direction:column; gap:2px; margin:0 0 32px; padding:14px 16px; background:#f7f6f2; border-radius:10px; font-size:13px; }
+  .toc a{ color:var(--dim); text-decoration:none; padding:3px 0; }
+  .toc a:hover{ color:var(--ink); }
+
+  /* 에셋 카드 -- 로고/사진/서명을 실제 배경색 위에서 눈으로 바로 확인 */
+  .asset-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:14px; margin:14px 0 20px; }
+  .asset-card{ border:1px solid var(--line-soft); border-radius:10px; overflow:hidden; }
+  .asset-card .swatch-bg{ height:100px; display:flex; align-items:center; justify-content:center; padding:14px; }
+  .asset-card .swatch-bg.dark{ background:#080808; }
+  .asset-card .swatch-bg.light{ background:#f5f3ee; }
+  .asset-card .swatch-bg.white{ background:#ffffff; }
+  .asset-card .swatch-bg img{ max-height:56px; max-width:90%; object-fit:contain; }
+  .asset-card .swatch-bg img.round{ max-height:72px; border-radius:50%; }
+  .asset-card .cap{ padding:9px 12px; font-size:12px; color:var(--muted); border-top:1px solid var(--line-soft); }
+  .asset-card .cap code{ display:block; margin-top:3px; font-size:11px; word-break:break-all; }
+
+  .preview{ background:#080808; border-radius:10px; padding:28px 24px; margin:14px 0 20px; }
+  .preview.cream{ background:#f5f3ee; }
+  .slogan-en{ font-family:'Boska','Source Serif 4',serif; font-weight:200; font-size:26px; color:#ffffff; margin:0 0 10px; }
+  .slogan-ko{ font-family:'Source Serif 4','Noto Serif KR',serif; font-weight:300; font-style:italic; font-size:15px; color:#c9c8c2; margin:0; max-width:520px; line-height:1.8; }
+
+  .diff-list{ display:flex; flex-direction:column; gap:8px; margin:0 0 14px; }
+  .diff-item{ display:flex; gap:10px; align-items:flex-start; padding:10px 12px; border:1px solid var(--line-soft); border-radius:8px; font-size:13.5px; line-height:1.65; }
+  .diff-item .dot{ flex-shrink:0; width:8px; height:8px; border-radius:50%; margin-top:6px; }
+  .diff-item .dot.keep{ background:var(--good); }
+  .diff-item .dot.avoid{ background:var(--bad); }
+  .diff-item .dot.todo{ background:var(--warn); }
+
+  .incident{ border-left:3px solid var(--bad); background:#fdf4f1; padding:12px 14px; border-radius:0 8px 8px 0; margin-bottom:12px; font-size:13.5px; line-height:1.7; }
+  .incident b{ color:var(--bad); }
+</style>
+</head>
+<body class="has-shell-nav">
+<nav id="adminShellNav"></nav>
+
+<div class="wrap">
+  <header>
+    <h1>브랜드 가이드<button type="button" class="info-dot" id="titleInfo" aria-label="설명 보기">ⓘ<span class="info-text">슬로건·카피·CTA를 새로 만들 때마다 매번 처음부터 톤을 정하지 않도록, 이미 승인된 브랜드 언어와 로고·사진 에셋을 한곳에 모아둔 참조 문서입니다. 색상·타이포·간격 같은 화면 규칙의 정본은 여전히 <a href="/insight-7b3e9f2c/style-guide.html">통합 UX 가이드</a>이고, 이 페이지는 "무슨 말을 어떤 어휘로 할지"와 "어떤 에셋 파일을 쓸지"만 담당합니다.</span></button></h1>
+    <span class="meta-text">2026-08-30 신설 · CMO 마야 스레드</span>
+  </header>
+
+  <article class="doc">
+    <p class="lede">새 슬로건 문구나 CTA 카피를 지을 때마다 매번 새로 지어내면 톤이 흔들립니다. 이미 승인된 브랜드 언어(홈 히어로 문구)와 실제 존재하는 로고·사진 에셋의 파일 경로·사용 조건을 먼저 확인하고, 그 안에서 재조합하는 것을 기본으로 합니다. 이 문서는 처음부터 완결된 규칙집으로 쓰려고 만든 게 아니라, 실제 카피/에셋 결정이 나올 때마다 늘려가는 문서입니다(통합 UX 가이드·시스템 구조가 그렇게 자란 것과 같은 방식).</p>
+
+    <nav class="toc">
+      <a href="#voice">1. 슬로건 · 브랜드 보이스</a>
+      <a href="#assets">2. 로고 · 사진 · 서명 에셋</a>
+      <a href="#copy">3. 카피 원칙 (하지 말 것 / 할 것)</a>
+      <a href="#todo">4. 정리 후보</a>
+    </nav>
+
+    <h2 id="voice">1. 슬로건 · 브랜드 보이스</h2>
+    <p>홈페이지 히어로에 이미 쓰이고 있는(=사장님이 이미 승인한) 유일한 공식 슬로건입니다. 새 카피를 지을 때 여기 나온 어휘("단순함", "성장", "폭발적")부터 재사용을 시도하고, 완전히 새로운 표현은 그다음입니다.</p>
+    <div class="preview">
+      <p class="slogan-en">Simplifier turns complexity<br>into explosive growth.</p>
+      <p class="slogan-ko">"폭발적 성장은 갑작스럽게 오는 것이 아닙니다. 단순화해온 모든 것이 마침내 위로 향할 곳밖에 남지 않은 순간에 찾아옵니다." — 한성희</p>
+    </div>
+    <p><b>브랜드 표기</b>(정본은 <a href="/insight-7b3e9f2c/style-guide.html#common">통합 UX 가이드 1.5절</a>) — 로고·타이틀·메타데이터는 영문 <code>Simplifier</code>, 본문 서술은 한글 <b>심플리파이어</b>. 대표 개인명은 한글 본문 <b>한성희</b>, 영문/저자 표기 <code>Han Sunghee</code>.</p>
+    <p><b>흔히 쓰는 모티프</b> — 코칭·성장을 "항해/파도"에 빗대는 은유가 블로그 글에서 자주 등장합니다(예: "내 배의 돛, 내가 꼭 잡고 있나"). 다만 <b>이건 관찰된 패턴이지 확정된 브랜드 자산이 아닙니다</b> — 모든 글이 이 은유를 쓰는 건 아니므로, CTA 카피에 억지로 끼워 넣지 않습니다. 실제로 2026-08-30 포스트 CTA 작업에서 이 은유를 카피에 썼다가(그 포스트 예시 본문에만 맞는 표현이라) 범용 카피로는 부적절하다고 판단해 히어로 슬로건 어휘로 교체한 사례가 있습니다 — 아래 3장 참고.</p>
+
+    <h2 id="assets">2. 로고 · 사진 · 서명 에셋</h2>
+    <p>실제로 저장소에 있고 지금 쓸 수 있는 에셋만 담았습니다. 배경색에 맞는 버전을 고르세요 — 다크 배경에 다크용 로고를 쓰면 안 보입니다.</p>
+
+    <h3>로고 · 캐릭터</h3>
+    <div class="asset-grid">
+      <div class="asset-card">
+        <div class="swatch-bg dark"><img src="/log_assets/images/logo_white.png" alt="Simplifier 흰색 로고"></div>
+        <div class="cap">다크 배경용<code>log_assets/images/logo_white.png</code></div>
+      </div>
+      <div class="asset-card">
+        <div class="swatch-bg light"><img src="/log_assets/images/logo_black.png" alt="Simplifier 검정 로고"></div>
+        <div class="cap">라이트 배경용(모닝 브리핑 메일에 실사용 중)<code>log_assets/images/logo_black.png</code></div>
+      </div>
+      <div class="asset-card">
+        <div class="swatch-bg light"><img src="/log_assets/images/character_black.png" alt="Simplifier 캐릭터"></div>
+        <div class="cap">JSON-LD·장식용 캐릭터<code>log_assets/images/character_black.png</code></div>
+      </div>
+    </div>
+    <p class="h2-note" style="font-size:12px;color:var(--muted);margin:-8px 0 14px;">문서·브리핑형 페이지에서 로고는 헤더(제목 줄) 우측 끝에, <code>alt="Simplifier"</code> 필수 — 자세한 배치 규칙은 통합 UX 가이드 1.5절.</p>
+
+    <h3>대표 사진</h3>
+    <div class="asset-grid">
+      <div class="asset-card">
+        <div class="swatch-bg light"><img src="/assets/ceo-portrait.avif" alt="한성희 프로필 사진" class="round"></div>
+        <div class="cap">About 페이지 JSON-LD·본문용, 고해상도<code>assets/ceo-portrait.avif</code></div>
+      </div>
+      <div class="asset-card">
+        <div class="swatch-bg light"><img src="/assets/ceo-portrait-og.jpg" alt="한성희 프로필 사진(OG용)" class="round"></div>
+        <div class="cap">소셜 공유 카드(OG)·포스트 CTA 등 작게 쓸 때<code>assets/ceo-portrait-og.jpg</code></div>
+      </div>
+      <div class="asset-card">
+        <div class="swatch-bg white"><img src="/assets/signature.png" alt="한성희 서명" style="max-height:44px;"></div>
+        <div class="cap">실제 손글씨 사인, 투명 배경(2026-08-30 신규)<code>assets/signature.png</code></div>
+      </div>
+    </div>
+    <p><b>⚠️ 지금 있는 대표 사진은 스냅샷 수준입니다.</b> 저스틴 웰시류 개인 브랜드 뉴스레터와 비교했을 때 격차가 가장 큰 지점이 레이아웃이 아니라 사진 자체였습니다(2026-08-30 포스트 CTA 작업에서 확인) — 전문 프로필 촬영을 새로 하게 되면 위 두 파일을 교체하고 이 카드도 갱신하세요.</p>
+
+    <h2 id="copy">3. 카피 원칙 (하지 말 것 / 할 것)</h2>
+    <p>2026-08-30 포스트 하단 CTA를 실제로 여러 버전 만들면서 확인한 원칙입니다. 다음에 슬로건·CTA·소개 문구를 지을 때 아래부터 확인하세요.</p>
+    <div class="diff-list">
+      <div class="diff-item"><span class="dot avoid"></span><div><b>상투어 금지</b> — "여기까지 읽어주셔서 감사합니다" 같은 한국 블로그 최다빈출 마무리 문구는 톤을 갑자기 격식체로 꺾고 개성을 지웁니다.</div></div>
+      <div class="diff-item"><span class="dot avoid"></span><div><b>명함식 캡션 지양</b> — 사인이나 이름 옆에 "심플리파이어 · 스타트업 그로스 코치" 같은 직함을 또 붙이면 편지가 아니라 명함처럼 읽힙니다. 이름/사인이 이미 신원을 밝혔다면 직함을 반복하지 않습니다.</div></div>
+      <div class="diff-item"><span class="dot avoid"></span><div><b>외부 소셜로 보내는 CTA 지양</b> — "다른 곳에서도 팔로우하세요" 류는 팔로워를 늘리는 목적이라 심플리파이어의 목표(코칭계약·강연문의)와 안 맞습니다. 링크는 전부 문의·관심 전환(코칭/강연 문의, 저서, About)으로만 구성합니다.</div></div>
+      <div class="diff-item"><span class="dot keep"></span><div><b>새 카피보다 승인된 브랜드 언어 재사용 우선</b> — 위 1장 슬로건 어휘에서 먼저 조합해보고, 그래도 안 맞으면 새로 씁니다. 사장님이 이미 확인한 언어라 톤이 어긋날 위험이 적습니다.</div></div>
+      <div class="diff-item"><span class="dot keep"></span><div><b>클로징(인사+사인)은 왼쪽 정렬, CTA 카드(프로필+메뉴)는 가운데 정렬 가능</b> — 편지의 사인은 본문과 같은 정렬이어야 "진짜 사인"처럼 읽힙니다. 매번 반복되는 CTA 카드는 독립된 컴포넌트라 가운데 정렬해도 어색하지 않습니다.</div></div>
+    </div>
+
+    <h2 id="todo">4. 정리 후보</h2>
+    <p>지금 당장 바꾸자는 제안이 아니라 나중에 참고할 기록입니다.</p>
+    <ul>
+      <li><b>대표 사진 재촬영</b> — 위 2장 참고. 우선순위는 사장님 판단.</li>
+      <li><b>통합 UX 가이드의 로고 설명이 한 군데 낡음</b> — <code>style-guide.html</code> 1.5절이 "logo_black.png는 라이브 참조가 없다"고 적혀 있는데, 지금은 모닝 브리핑 메일 템플릿에서 실사용 중입니다(2026-08-30 #15). 이 페이지 소유가 아니라 직접 고치지 않고 기록만 남깁니다 — ux-lead/site-engineering 스레드가 다음에 그 문서를 만질 때 참고.</li>
+      <li><b>파트너/고객사 로고, 후기, 강연 사진 등은 이 문서에 안 담았습니다</b> — 그건 브랜드 정체성 에셋이 아니라 홈페이지 특정 섹션(로고 그리드·후기·강연 갤러리) 전용 콘텐츠 이미지라 카탈로그 성격이 다릅니다. 필요해지면 별도 절로 추가.</li>
+    </ul>
+  </article>
+</div>
+
+<script src="/insight-7b3e9f2c/studio.js"></script>
+</body>
+</html>
