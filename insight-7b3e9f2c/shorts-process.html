@@ -65,7 +65,7 @@
 <div class="wrap">
   <header>
     <h1>숏폼 공정 정본</h1>
-    <span class="meta-text">shorts-lab/PROCESS.md · 자동 생성 2026-08-30 08:46 · 원본이 바뀌면 파이프라인 재실행 시 갱신됩니다</span>
+    <span class="meta-text">shorts-lab/PROCESS.md · 자동 생성 2026-08-30 09:36 · 원본이 바뀌면 파이프라인 재실행 시 갱신됩니다</span>
   </header>
   <nav class="doc-nav"><a href="/insight-7b3e9f2c/shorts-playbook.html">숏폼 파일럿 실행 매뉴얼</a><a href="/insight-7b3e9f2c/shorts-process.html" class="current">숏폼 공정 정본</a><a href="/insight-7b3e9f2c/shorts-script-process.html">숏폼 대본 공정</a><a href="/insight-7b3e9f2c/shorts-visual-grammar.html">숏폼 연출 사전</a><a href="/insight-7b3e9f2c/shorts-roles.html">숏폼 제작진 역할</a></nav>
   <article class="doc">
@@ -123,6 +123,30 @@
                 └── 06-publish/     ← 최종본 + 제목/설명/태그
 </code></pre>
 <p><strong>설계 의도</strong>: 콘텐츠(channels/)와 공정(pipeline/)의 분리. 공정 개선은 전 에피소드에 즉시 적용되고, 에피소드 데이터는 공정이 바뀌어도 그대로 재사용된다(캐시 재사용으로 재실행 비용 최소화). <code>episode.json</code>이 각 에피소드의 단일 진실 소스 — 코드가 이 매니페스트만 읽으므로 폴더 구조가 코드에 하드코딩되지 않는다.</p>
+<h3>미디어 파일 보관 정책 (2026-08-30 도입)</h3>
+<p><strong>대용량 미디어 원본(음성 녹음·정렬 오디오·씬 이미지·씬 클립·합성 영상)은 git에
+커밋하지 않는다.</strong> Google Drive의 채널 폴더(에피소드별 하위 폴더)에만 보관하고,
+<code>episode.json</code>의 <code>artifacts.drive_folder</code>에 그 폴더 링크를 기록한다 — 새 세션이
+episode.json만 보고 미디어 위치를 찾을 수 있어야 한다는 원칙(공개 저장소 CLAUDE.md와
+동일한 논리)을 여기도 그대로 적용한 것이다.</p>
+<p><strong>왜</strong>: GitHub는 개별 파일 50MB에서 경고, 100MB에서 차단한다. 2026-08-30 시점
+<code>.git</code> 전체가 17MB, 가장 큰 파일이 3.5MB로 아직 여유가 있었지만, G4(씬 클립)·G5(합성본)
+단계부터는 파일 하나가 수십MB씩 나올 수 있어 순식간에 부담이 된다 — 문제가 실제로
+터지길 기다리지 않고 미리 구조를 잡았다.</p>
+<p><strong>적용 범위</strong>: <code>.gitignore</code>에 <code>02-voice/*.weba</code>·<code>03-align/*.m4a</code>·<code>04-scenes/images/</code>·
+<code>04-scenes/clips/</code>·<code>06-publish/*.mp4</code> 패턴 등록. <code>01-script/</code>(대본·출처 텍스트)와
+<code>04-scenes/scene_plan.json</code>처럼 작은 구조화 데이터는 계속 git이 정본이다 — 텍스트
+기록과 대용량 바이너리를 분리하는 것이지, 전부 Drive로 미는 게 아니다.</p>
+<p><strong>예외</strong>: ep01·ep02의 옛 음성·이미지 파일(총 ~9MB)은 이미 git에 커밋돼 있고, 지금
+빼내려면 git 히스토리 재작성(다른 기기 클론과 어긋나는 위험)이 필요해 배보다 배꼽이
+크다고 판단해 그대로 뒀다 — 사소한 사고 비용은 감수하고, 앞으로 생기는 파일부터
+새 정책을 적용한다.</p>
+<p><strong>한계</strong>: 사장님이 Drive에 올린 파일을 내가 받아 git에 저장하는 방향(다운로드)은
+계속 잘 되지만, 이미 git/로컬에 있는 대용량 바이너리를 내가 Drive로 올리는 방향
+(업로드)은 파일을 통째로 base64로 인코딩해 API 호출에 실어야 해서 MB 단위 파일에서는
+비현실적이다(파일 하나가 토큰 수십만~백만 단위). 그래서 이 정책은 <strong>앞으로 생기는
+파일</strong>에만 적용되고, 이미 git에 들어간 옛 파일을 소급 이전하려면 사람이 직접
+GitHub에서 받아 Drive에 재업로드해야 한다.</p>
 <h2>공정 흐름 (게이트 + 배치 원칙)</h2>
 <pre><code>G0 소재 → G1 대본 → G2 음성 → G3 정렬 → G4 씬 → G5 합성 → G6 발행
 </code></pre>
