@@ -135,6 +135,21 @@ layout: null
         대신 브랜드 톤의 한 줄로. 카피는 초안이라 확정 아님. */
   .post-cta-gap { margin-top: 96px; }
   .post-card-tagline { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-weight: 300; font-style: italic; font-size: 14.5px; color: #4a4740; margin: 0; }
+
+  /* 버전 J(2026-08-30, 추가 피드백 3건) --
+     1. 96px는 "다른 섹션 전환" 기준값을 그대로 갖다 썼는데 실제로 보니 너무 멀었다.
+        같은 사람이 쓴 글이 계속 이어지는 맥락이라 완전한 섹션 전환은 아니므로,
+        본문 문단 사이 간격(48px 근처, .fake-p line-height 기준 체감)의 1.2배
+        정도인 56px로 축소.
+     2. 카피 두 곳 다 홈 히어로 문구("Simplifier turns complexity into explosive
+        growth." / "폭발적 성장은... 단순화해온 모든 것이 마침내 위로 향할 곳밖에
+        남지 않은 순간에 찾아옵니다.")에서 어휘를 그대로 가져옴 -- 새로 지어내지
+        않고 이미 승인된 브랜드 언어를 재사용.
+     3. 메뉴 4개가 좁은 화면에서 2줄로 끊기던 문제 -- 책 2종은 그대로 두고
+        강연/코칭 문의를 하나로 합침. 헤더 nav·홈 히어로가 이미 쓰는 방식(타입
+        지정 없는 범용 "Contact" 버튼, 모달 안에서 유형 선택)과 동일한 패턴이라
+        새 UI를 만들지 않음. */
+  .post-cta-gap-56 { margin-top: 56px; }
 </style>
 </head>
 <body>
@@ -332,6 +347,31 @@ layout: null
       <li><a href="/book/UX의-언어들.html">UX의 언어들</a></li>
       <li><button type="button" class="open-contact-modal" data-contact-type="speaking">강연 신청</button></li>
       <li><button type="button" class="open-contact-modal" data-contact-type="coaching">코칭 상담 신청</button></li>
+    </ul>
+  </div>
+</div>
+
+<div class="compare-label">버전 J(추가 피드백 반영) — 간격 56px · 슬로건 어휘로 카피 교체 · 메뉴 3개(문의 통합)</div>
+<div class="article-sheet">
+  <p class="fake-p">수많은 스타트업을 코칭하면서도 느낀다. 인생도 사업도 모두 바람이 거칠게 부는 바다와 같다.</p>
+  <p class="fake-p">내 배의 돛, 내가 꼭 잡고 있나. 혹시 남 탓만 하며 놓고 있지는 않나.</p>
+
+  <div class="post-closing post-closing-h post-cta-gap-56">
+    <p class="post-closing-line">함께 성장하겠습니다,</p>
+    <img src="/assets/signature.png" alt="한성희 서명" class="post-closing-sig">
+  </div>
+
+  <hr class="post-cta-divider">
+
+  <div class="post-card">
+    <a href="/about/">
+      <img src="/assets/ceo-portrait-og.jpg" alt="한성희" class="post-card-photo">
+    </a>
+    <p class="post-card-tagline">단순함이, 폭발적 성장이 됩니다.</p>
+    <ul class="post-sign-off-links" style="margin-top:14px;">
+      <li><a href="/book/기획자의-질문법.html">기획자의 질문법</a></li>
+      <li><a href="/book/UX의-언어들.html">UX의 언어들</a></li>
+      <li><button type="button" class="open-contact-modal">문의하기</button></li>
     </ul>
   </div>
 </div>
