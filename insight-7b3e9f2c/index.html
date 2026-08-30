@@ -41,7 +41,7 @@
   .h2note-q:hover, .h2note-q[aria-pressed="true"]{border-color:var(--dim); color:var(--ink);}
   .h2note-text{
     position:absolute; left:50%; bottom:calc(100% + 9px);
-    transform:translateX(-50%) translateY(4px);
+    transform:translateX(calc(-50% + var(--tt-shift, 0px))) translateY(4px);
     width:max-content; max-width:min(260px,60vw); text-align:left;
     background:var(--ink); color:#fff; font-size:12px; font-weight:400;
     line-height:1.55; letter-spacing:normal; text-transform:none; white-space:normal;
@@ -50,12 +50,16 @@
     transition:opacity .15s, transform .15s, visibility .15s;
     z-index:30;
   }
+  /* 화면 밖으로 넘치면 studio.js가 --tt-shift로 옆으로 밀어주는데, 그 경우
+     말풍선이 더 이상 버튼 정중앙이 아니라서 화살표(::after)만 원래 자리
+     (버튼 바로 아래, --tt-shift의 반대 방향)에 남겨 계속 버튼을 가리키게 한다. */
   .h2note-text::after{
-    content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%);
+    content:''; position:absolute; top:100%; left:50%;
+    transform:translateX(calc(-50% - var(--tt-shift, 0px)));
     border:5px solid transparent; border-top-color:var(--ink);
   }
   .h2note-q:hover .h2note-text, .h2note-q[aria-pressed="true"] .h2note-text{
-    opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); pointer-events:auto;
+    opacity:1; visibility:visible; transform:translateX(calc(-50% + var(--tt-shift, 0px))) translateY(0); pointer-events:auto;
   }
 
   /* ---- 접이식 상세 섹션 -- ①(핵심 KPI)만 매일 펼쳐 보고, 나머지는 필요할 때
