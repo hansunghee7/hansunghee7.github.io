@@ -186,7 +186,14 @@
      헤더 nav는 예외로 32px를 유지합니다 -- YC도 내비게이션은 본문보다 넓게 잡습니다. */
   @media (max-width:760px){ .wrap{ padding: 0 16px; } }
 
-  .hero-wrapper { position: sticky; top: var(--nav-height); z-index: 5; height: calc(100vh - var(--nav-height)); height: calc(100dvh - var(--nav-height)); background: #080808; }
+  /* dvh(동적 뷰포트 높이)는 모바일 브라우저 주소창이 접혔다 펼쳐질 때마다
+     실시간으로 값이 바뀐다. 이 박스는 position:sticky라 스크롤을 지나온
+     뒤에도 문서 안에서 자기 높이만큼 자리를 계속 차지하는데, 스크롤 중
+     dvh가 커지면 이 박스가 갑자기 커지면서 뒤에 있는 Proven/Origin 등
+     전체가 그만큼 아래로 밀린다 -- "화면이 움찔하며 떨어진다"는 제보의
+     원인. svh(주소창이 항상 떠 있다고 가정하는 값)로 바꾸면 스크롤 중
+     절대 안 바뀌어서 이 문제가 없어진다. */
+  .hero-wrapper { position: sticky; top: var(--nav-height); z-index: 5; height: calc(100vh - var(--nav-height)); height: calc(100svh - var(--nav-height)); background: #080808; }
   .hero { height: 100%; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; }
   /* 스테이징 테스트(좁은 범위): 레이아웃(sticky/높이/간격/화살표)은 그대로 두고
      opacity 계산 방식만 바꾼다. 스크롤마다 매 프레임 값을 새로 계산해 강제로
