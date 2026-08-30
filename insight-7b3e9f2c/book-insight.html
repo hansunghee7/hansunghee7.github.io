@@ -56,6 +56,13 @@
   #titleInfo .info-text{max-width:min(480px, 90vw);}
   .tile svg{width:100%; height:40px; display:block; margin-top:6px;}
   .tile .empty{font-size:12px; color:var(--muted); padding:10px 0;}
+  /* 당일 수집이 빠져 어제(이전) 값을 그대로 보여주는 카드. 숫자와 추세선은
+     정보라 살리되, 옅게 처리하고 언제 값인지 배지로 명시한다 -- 헤더의
+     "데이터 기준 오늘"만 보고 오늘 값으로 오해하는 사고를 막기 위함
+     (2026-08-30: 경제경영 종합이 당일 null인데 어제 값 295위 ▲2가
+     오늘 값처럼 보고돼 브리핑 요약까지 틀린 사고). */
+  .tile.is-stale{opacity:0.62;}
+  .tile .stale-badge{margin-left:6px; font-size:11px; color:var(--warn); white-space:nowrap; vertical-align:2px;}
 </style>
 </head>
 <body class="has-shell-nav">
@@ -150,6 +157,12 @@
     var latest = clean[clean.length - 1];
     var prev = clean.length > 1 ? clean[clean.length - 2] : null;
     var delta = prev ? latest.value - prev.value : null;
+
+    /* 이 카드가 "오늘 값"인지 판정한다. 원본 series의 마지막 기록(=오늘 수집분)에
+       값이 없으면 clean의 마지막은 어제 이전 값이고, 그렇다는 걸 알리지 않으면
+       페이지 헤더의 "데이터 기준 오늘"과 합쳐져 거짓말이 된다. */
+    var lastRaw = series.length ? series[series.length - 1] : null;
+    var isStale = !!(lastRaw && lastRaw.date !== latest.date);
     var deltaHtml = "";
     if (delta) {
       /* 화살표는 숫자의 증감이 아니라 "좋아졌는지"를 가리킨다 -- 순위처럼
@@ -163,14 +176,20 @@
 
     var valDisplay = latest.value.toLocaleString();
     var note = noteOverride != null ? noteOverride : metric.note;
-    var infoTitle = latest.date + " 기준 · " + clean.length + "개 기록" + (note ? " · " + note : "");
+    var staleNote = isStale ? "오늘(" + lastRaw.date + ") 수집분에 이 항목이 없어 " + latest.date + " 값을 표시함" : "";
+    var infoTitle = latest.date + " 기준 · " + clean.length + "개 기록" +
+      (staleNote ? " · " + staleNote : "") + (note ? " · " + note : "");
     var infoDot = '<button type="button" class="info-dot" aria-label="설명 보기">ⓘ<span class="info-text">' + escapeHtml(infoTitle) + "</span></button>";
 
+    var staleBadge = isStale
+      ? '<span class="stale-badge">' + escapeHtml(latest.date.slice(5).replace("-", "/")) + " 값</span>"
+      : "";
+
     return (
-      '<div class="' + cardClass + '"><div class="label">' + labelText + infoDot + "</div>" +
+      '<div class="' + cardClass + (isStale ? " is-stale" : "") + '"><div class="label">' + labelText + infoDot + "</div>" +
       '<div class="latest"><span class="val">' + valDisplay +
       (metric.unit ? '<span class="unit">' + escapeHtml(metric.unit) + "</span>" : "") +
-      "</span>" + deltaHtml +
+      "</span>" + deltaHtml + staleBadge +
       "</div>" +
       sparkline(clean, !metric.higherIsBetter, w) +
       "</div>"
