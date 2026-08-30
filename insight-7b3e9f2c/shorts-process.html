@@ -65,7 +65,7 @@
 <div class="wrap">
   <header>
     <h1>숏폼 공정 정본</h1>
-    <span class="meta-text">shorts-lab/PROCESS.md · 자동 생성 2026-08-30 10:16 · 원본이 바뀌면 파이프라인 재실행 시 갱신됩니다</span>
+    <span class="meta-text">shorts-lab/PROCESS.md · 자동 생성 2026-08-30 11:15 · 원본이 바뀌면 파이프라인 재실행 시 갱신됩니다</span>
   </header>
   <nav class="doc-nav"><a href="/insight-7b3e9f2c/shorts-playbook.html">숏폼 파일럿 실행 매뉴얼</a><a href="/insight-7b3e9f2c/shorts-process.html" class="current">숏폼 공정 정본</a><a href="/insight-7b3e9f2c/shorts-script-process.html">숏폼 대본 공정</a><a href="/insight-7b3e9f2c/shorts-visual-grammar.html">숏폼 연출 사전</a><a href="/insight-7b3e9f2c/shorts-roles.html">숏폼 제작진 역할</a></nav>
   <article class="doc">
@@ -240,6 +240,28 @@ python pipeline/build_studio_site.py        # 심플리파이어 스튜디오용
 - H1. 컷 길이가 레퍼런스 실측(2~3초/컷) 대비 크게 벗어나지 않는다(우리 목표 3~5초대).
 - H2. 기각된 스타일(실사/2D 블루프린트/UE5 네온 등) 키워드가 재등장하지 않는다.</p>
 <p><strong>실행</strong>: <code>python pipeline/validate_scene_plan.py channels/&lt;channel&gt;/episodes/&lt;ep&gt;</code> — A3/B2/C1-C3/D1/E1/F1-F2를 자동 검사해 <code>04-scenes/validation_report.txt</code>에 위반 씬만 기록(재생성 가능한 산출물이라 git 추적 제외). A1/A2/B1/B3는 휴리스틱으로 후보만 표시. G/H는 스크립트가 못 잡으므로 생성 전 마지막에 사람이 훑는다.</p>
+<h2>씬 개수 = 생성 비용 — 씬 통합 기법 (2026-08-30, ep03에서 확립)</h2>
+<p><strong>SCRIPT_PROCESS.md 열린 항목("블록 길이와 Veo 프리셋 불일치")의 답이 여기다.</strong>
+씬 하나 = Flow(Veo) 생성 1회 = 크레딧 1회 소모(Omni 1.1 Flash 기준 4초=15,
+6초=20, 8초=25, 10초=30). <strong>씬을 촘촘히 쪼갤수록 리듬은 좋아지지만 생성
+횟수·크레딧·오조작 재생성 리스크가 그만큼 는다.</strong> ep01(45씬)은 이 비용 때문에
+G4에서 몇 주째 멈춰 있고, ep03도 처음엔 대본 문장 단위로 34씬을 짰다가(예상
+530크레딧) 사장님이 "ep01·ep02로 이미 크레딧 절반을 썼다"고 지적해 17씬으로
+다시 묶었다(예상 320크레딧, 약 40% 절감). <strong>ep02(15씬, 완주해서 실제 발행까지
+됨)가 가장 현실적인 벤치마크다</strong> — 씬 수를 정할 때 "대본 문장 개수"가 아니라
+"ep02가 몇 개로 완주했는가"를 먼저 본다.</p>
+<p><strong>통합 기법</strong>: 인접한 여러 대본 문장을 하나의 연속 샷(one continuous take)으로
+묶어 프롬프트 하나를 쓴다. 단, <code>"cut to"</code>처럼 한 프롬프트 안에 여러 컷을
+섞으면 안 되는 규칙(C2)은 그대로다 — 통합은 "여러 컷을 이어붙이기"가 아니라
+"애초에 하나의 끊기지 않는 카메라 동선/설명 구간으로 다시 쓰기"다. §1.3 예외4
+(설명·비유 비트는 9~14초까지 한 샷을 유지해도 됨)가 근거다.</p>
+<p><strong>실사용 시간이 생성 길이(4·6초)를 넘으면</strong>: 그 초과분은 추가 생성 없이
+<strong>합성(G5) 단계에서 클립의 마지막 프레임을 정지·연장</strong>해서 채운다(비용 0).
+씬 플랜의 각 씬에 <code>g5_note</code> 필드로 "실사용 N초 — M초 생성 후 마지막 프레임을
+X초 연장 홀드"라고 명시해, G5 담당(사람이든 AI든)이 다시 계산할 필요 없게 한다.</p>
+<p><strong>씬 수를 정할 때 우선순위</strong>: 시그니처 표현·전환 비트·클라이맥스 마스터샷처럼
+채널 정체성이 걸린 짧은 펀치 컷(예: "환장할 노릇입니다")은 통합 대상에서
+제외하고 독립 씬으로 남긴다 — 비용 절감이 브랜드 임팩트를 깎아먹으면 본말전도다.</p>
 <h2>검증된 기술적 제약 (재사용할 것)</h2>
 <ul>
 <li><strong>Veo 3.1은 1회 생성당 최대 8초</strong> (4/6/8초 프리셋만). 씬 실사용 길이는 항상 8초 이하로 설계.</li>

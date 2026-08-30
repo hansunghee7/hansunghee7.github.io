@@ -65,7 +65,7 @@
 <div class="wrap">
   <header>
     <h1>숏폼 대본 공정</h1>
-    <span class="meta-text">shorts-lab/SCRIPT_PROCESS.md · 자동 생성 2026-08-30 10:16 · 원본이 바뀌면 파이프라인 재실행 시 갱신됩니다</span>
+    <span class="meta-text">shorts-lab/SCRIPT_PROCESS.md · 자동 생성 2026-08-30 11:15 · 원본이 바뀌면 파이프라인 재실행 시 갱신됩니다</span>
   </header>
   <nav class="doc-nav"><a href="/insight-7b3e9f2c/shorts-playbook.html">숏폼 파일럿 실행 매뉴얼</a><a href="/insight-7b3e9f2c/shorts-process.html">숏폼 공정 정본</a><a href="/insight-7b3e9f2c/shorts-script-process.html" class="current">숏폼 대본 공정</a><a href="/insight-7b3e9f2c/shorts-visual-grammar.html">숏폼 연출 사전</a><a href="/insight-7b3e9f2c/shorts-roles.html">숏폼 제작진 역할</a></nav>
   <article class="doc">
@@ -401,10 +401,11 @@ episodes/&lt;에피소드&gt;/01-script/narration.txt</code> 형태의 링크를
 <p>새 표현을 발견/확정하면 이 표에 계속 추가한다.</p>
 <h2>열린 항목</h2>
 <ul>
-<li><strong>블록 길이와 Veo 프리셋 불일치.</strong> <code>channel.json</code>의 <code>block_rule</code>은 4초/6초 기준인데
-  ep02 블록은 평균 8.4초(최소 2.3 · 최대 10.4)다. 멀티샷(8초 1회 생성 = 3컷)으로
-  옮기면서 생긴 어긋남이다. G4 씬 스펙 단계에서 정할 것 — 대본을 8초 격자로
-  다시 끊을지, 블록마다 생성 횟수를 다르게 가져갈지.</li>
+<li>~~<strong>블록 길이와 Veo 프리셋 불일치.</strong>~~ — <strong>2026-08-30 해소.</strong> 답은 "대본을
+  Veo 격자에 맞추는" 쪽이 아니라 <strong>"씬을 대본 문장 단위로 짜지 않고 통합해서
+  생성 비용 자체를 낮추는"</strong> 쪽이었다. <code>PROCESS.md</code>의 "씬 개수 = 생성 비용 —
+  씬 통합 기법" 절 참고 — G1(대본) 블록은 자막·정렬용 그대로 두고, G4(씬)
+  단계에서 별도로 묶는다.</li>
 </ul>
   </article>
 </div>
