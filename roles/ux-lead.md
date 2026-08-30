@@ -127,6 +127,37 @@
   승격을 하지 않는다**는 규칙을 세워야 한다(어느 정본 문서에 박을지는 아직
   미정 — 다음에 이 스레드가 열리면 site-repo-ops 스레드와 상의해 결정할 것).
 
+**스레드 범위 재확인 (2026-08-30, 사장님 직접 지시)**
+About 페이지/저자소개 콘텐츠는 CMO 마야 스레드가 챙기기로 함 — `about-books-cta.md`
+소관이던 About 관련 결정(재승인 등)은 그쪽으로. 이 스레드(시안)는 **홈페이지 +
+스튜디오의 UX**로 범위를 명시적으로 좁힘. GNB 자체(내비게이션 구조/라벨)가 About
+콘텐츠 결정과 어떻게 나뉘는지는 아직 확정 안 됨 — 사장님께 물어본 상태.
+
+**스튜디오 모바일 가로 스크롤(깨짐) 수정 (2026-08-30, 클라우드 세션)**
+- 사장님이 "스튜디오 화면 및 GNB가 모바일에서 깨진다"고 요청, Playwright로
+  16개 페이지 전부 375~390px 실측 → **13개 페이지가 실제로 페이지 전체 가로
+  스크롤이 생기는 상태**였음을 확인(PR [#16](https://github.com/hansunghee7/hansunghee7.github.io/pull/16)).
+- **원인 1 (거의 전 페이지)**: ⓘ 말풍선(`.info-text`)이 `position:absolute` +
+  기본 왼쪽 앵커라서, 닫혀 있어도(`visibility:hidden`이지 `display:none`이
+  아님) 뷰포트 밖으로 나간 채 `scrollWidth`를 늘리고 있었다. PR #8의
+  `positionInfoText()`는 **여는 시점에만** 계산해서 "연 상태"의 넘침만 막았지,
+  열어보기도 전인 기본(닫힌) 상태의 넘침은 못 잡았다 — 방문자가 아무것도
+  안 눌러도 이미 깨져 있었다는 뜻. `studio.js`에 로드 시점 + resize +
+  `MutationObserver`(데이터 fetch 후 카드 재렌더링 대응) 시점에도 전체 ⓘ를
+  미리 계산하는 `positionAllInfoDots()`를 추가해 해결.
+- **원인 2 (`.doc` 문서형 페이지)**: 인라인 코드(파일명·경로)나 공백 없이
+  붙은 링크 여러 개(`A.md·B.md·C.md`)가 줄바꿈 지점이 없어 그대로 넘쳤다.
+  `studio.css`에 `code`/`pre`와 `.doc` 본문 블록에 `overflow-wrap:anywhere` 추가.
+- `#adminShellNav`(스튜디오 자체 GNB, 햄버거 전환)는 코드 검토 + 실제
+  클릭 테스트로 **이미 정상 동작**함을 확인 — 오탐 아님.
+- **디버깅 교훈**: `getBoundingClientRect().right > viewport width`만으로
+  "이 요소가 페이지를 깨뜨린다"고 단정하면 안 된다 — `overflow-x:auto`
+  컨테이너(`.tablebox`) 안에 있는 요소는 자기 경계 밖으로 나가 있어도
+  부모가 흡수해서 실제 페이지 스크롤엔 기여하지 않는다(false positive).
+  진짜 원인은 조상 체인에 `overflow`가 걸린 게 하나도 없는 요소만 봐야
+  찾을 수 있다 — search-insight.html의 TABLE, index.html의
+  `#recentTable` 오탐이 실제로 여기 걸렸었다.
+
 ## ③ 진행 중이거나 남아있는 작업
 - [ ] **`shorts-lab` 생성기 정리 (선택, 우선순위 낮음)** — `build_docs_pages.py`가 아직
   옛 너비 규칙을 쓴다. 다만 위 `.wrap:has(> .doc)` 특이도 장치로 **화면은 이미 안전**하므로
