@@ -114,6 +114,16 @@
     if (overflowRight > 0) note.style.setProperty("--tt-shift", (-overflowRight) + "px");
     else if (overflowLeft > 0) note.style.setProperty("--tt-shift", overflowLeft + "px");
   }
+  /* 열릴 때만 계산하던 걸로는 부족했다 -- .info-text는 닫혀 있어도
+     visibility:hidden일 뿐 position:absolute라서, 기본 앵커(left:0)가
+     뷰포트 오른쪽 밖으로 나가면 한 번도 안 열어봐도 그 페이지 자체가
+     가로 스크롤이 생긴다(2026-08-30 모바일 375px 실측 -- 거의 모든
+     인사이트 페이지에서 클릭 전부터 이미 발생 중이었음). 그래서 로드
+     시점과, 데이터 fetch 후 카드가 새로 그려지는 시점(=DOM 변경) 모두에
+     대해 전체 ⓘ를 미리 계산해둔다. */
+  function positionAllInfoDots() {
+    document.querySelectorAll(TOGGLE_SELECTOR).forEach(positionInfoText);
+  }
   function bindInfoDots() {
     document.addEventListener("mouseover", function (e) {
       var btn = e.target.closest ? e.target.closest(TOGGLE_SELECTOR) : null;
@@ -129,6 +139,15 @@
       if (!wasOpen) positionInfoText(btn);
       btn.setAttribute("aria-pressed", wasOpen ? "false" : "true");
     });
+
+    positionAllInfoDots();
+    var reposRaf = null;
+    function schedulePositionAll() {
+      if (reposRaf) return;
+      reposRaf = requestAnimationFrame(function () { reposRaf = null; positionAllInfoDots(); });
+    }
+    window.addEventListener("resize", schedulePositionAll);
+    new MutationObserver(schedulePositionAll).observe(document.body, { childList: true, subtree: true });
   }
 
   /* 새로고침 버튼 상태 표시 -- 눌러도 반영됐는지 알 길이 없다는 피드백을 받아

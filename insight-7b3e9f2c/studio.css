@@ -36,6 +36,13 @@ body{
   font-family:'Pretendard Variable','Pretendard',-apple-system,sans-serif;
   -webkit-font-smoothing:antialiased; word-break:keep-all;
 }
+/* 인라인 코드(파일명·경로·명령어)는 공백 없는 긴 토큰이라 word-break:keep-all
+   (한글 전용)의 보호를 못 받는다 -- 375px 모바일 실측에서 style-guide.html·
+   shorts-process.html 등 .doc 문서형 페이지가 이것 때문에 페이지 전체가
+   가로로 밀리는 걸 확인했다(2026-08-30). overflow-wrap:anywhere는 공백 등
+   정상적인 줄바꿈 지점이 있으면 그걸 우선하고, 없을 때만 토큰 중간에서
+   끊는다 -- word-break:break-all과 달리 짧은 코드는 그대로 둔다. */
+code, pre{ overflow-wrap:anywhere; }
 .wrap{max-width:var(--width-content); margin:0 auto; padding:0 var(--gutter) 60px;}
 @media (min-width:761px){ :root{ --gutter:32px; } }
 
@@ -54,6 +61,11 @@ body{
 .doc > p, .doc > ul, .doc > ol,
 .doc > blockquote, .doc > .lede{
   max-width:var(--width-prose); margin-left:0; margin-right:auto;
+  /* 링크 여러 개가 구분자(·) 하나로 붙어 있으면(예: "A.md·B.md·C.md") 그
+     사이엔 공백이 없어 줄바꿈 지점 자체가 없다 -- code,pre의 overflow-wrap
+     만으론 못 잡는 사례를 375px 실측(shorts-playbook.html)에서 확인해서
+     본문 블록 전체에도 걸어둔다. */
+  overflow-wrap:anywhere;
 }
 
 /* ---- 헤더: 제목 + ⓘ + 새로고침 + 데이터 요약을 한 줄에 ---- */
