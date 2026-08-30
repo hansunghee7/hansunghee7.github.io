@@ -18,13 +18,13 @@
   1. 레이아웃은 전부 <table>. flex/grid는 메일 클라이언트에서 안 먹습니다.
   2. 스타일은 전부 인라인 style=. <style> 블록은 지워지는 클라이언트가 있습니다.
   3. 웹폰트는 로드되지 않습니다. font-family에 반드시 시스템 폴백을 남길 것.
-  4. 이미지는 data: URI가 차단됩니다. 반드시 공개 URL로:
-       https://simplifier.co.kr/log_assets/images/logo_black.png
-     (흰 배경용 검은 로고입니다. logo_white.png는 흰색이라 안 보입니다.)
-     ⚠️ URL 끝의 ?v=1을 지우지 마세요. 2026-08-30에 배포 2분 뒤 메일을 보냈다가
-     Gmail 이미지 프록시가 그때의 404를 캐시해버려, 파일이 정상 배포된 뒤에도
-     계속 로고가 안 뜬 사고가 있었습니다. 쿼리 파라미터가 프록시 캐시 키를
-     바꿔줍니다. 로고 파일을 교체하면 v 숫자를 올리세요.
+  4. 로고는 src="cid:logo" 그대로 두세요. 발송 스크립트(비공개 저장소의
+     scripts/send_brief.py)가 assets/logo.png를 메일 안에 직접 붙이고
+     Content-ID를 <logo>로 맞춥니다.
+     ⚠️ 원격 URL(https://simplifier.co.kr/...)로 바꾸지 마세요. 2026-08-30에
+     그 방식으로 3회 연속 실패했습니다 -- 브라우저에선 뜨는데 Gmail 이미지
+     프록시가 못 가져왔고, 원인이 프록시 안이라 이쪽에서 관측할 수 없었습니다.
+     첨부 방식은 원격 서버·프록시·캐시가 관여하지 않아 실패할 지점이 없습니다.
   5. 폭은 620px 고정 + max-width:100%. 숫자 타일은 4열이 아니라 2×2 —
      메일에서는 미디어 쿼리를 믿을 수 없어서입니다.
   6. rgba() 대신 hex를 씁니다.
@@ -44,7 +44,7 @@
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
     <tr>
       <td valign="middle" style="font-family:'Noto Serif KR','Nanum Myeongjo',Georgia,serif;font-weight:400;font-size:30px;letter-spacing:-0.01em;color:#121210;">모닝 브리핑</td>
-      <td valign="middle" align="right"><img src="https://simplifier.co.kr/log_assets/images/logo_black.png?v=1" alt="Simplifier" width="78" style="height:22px;width:78px;display:block;border:0;"></td>
+      <td valign="middle" align="right"><img src="cid:logo" alt="Simplifier" width="78" style="height:22px;width:78px;display:block;border:0;"></td>
     </tr>
   </table>
   <div style="color:#6e6a62;font-size:12.5px;padding-top:8px;">{{오늘 날짜와 시각}} &middot; 데이터 기준: GA4 최근 30일(오늘 05:00 수집) &middot; 서치콘솔·클래리티 오늘 10:25 &middot; SNS 8/29</div>
