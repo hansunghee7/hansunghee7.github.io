@@ -1,37 +1,69 @@
 {%- comment -%}
-포스트 하단 문의 CTA(코칭문의/강연문의).
+포스트 하단 CTA. 2026-08-30 신규 디자인으로 교체 -- 클로징(인사+실제
+손글씨 서명)과 CTA 카드(프로필 사진+태그라인+링크 3개)를 구분선으로
+분리한 구조. preview/cta-test.html(버전 A~J)에서 여러 안을 비교하고
+Justin Welsh 뉴스레터 CTA와 대조 리뷰해서 확정했다. 결정 기록:
 
-예전엔 sync_all.py의 build_cta_html()이 카테고리명만 다르고 내용은
-100% 같은 이 HTML을 마크다운 594개 파일 본문에 직접 찍어 넣었다.
-그런데 이 분기는 page.category 하나로 완전히 결정되는 로직이라, 굳이
-파일마다 결과물을 중복해서 저장할 이유가 없다 -- 여기서 그 판단을
-그대로 Liquid로 옮겨서 매 포스트 렌더링 시점에 계산한다.
+- 클로징은 본문과 같은 왼쪽 정렬(가운데 정렬이면 사인이 디자인 소품처럼
+  보임), CTA 카드는 가운데 정렬(반복되는 컴포넌트라 어색하지 않음).
+- 카드 사진 밑 문구는 브랜드 슬로건(홈 히어로 "...성장은 시작됩니다")
+  어휘를 재사용해 "여기서"로 아래 링크를 가리키게 만들었다 -- Justin
+  Welsh의 "FIND ME ELSEWHERE"처럼 기능하면서 브랜드 카피이기도 함.
+- 링크는 책 2종 + "1:1 문의하기"(유형 지정 없는 범용 모달, 헤더 nav의
+  Contact 버튼과 같은 패턴) 3개 -- 강연/코칭을 따로 안내하지 않고 모달
+  안에서 고르게 해서 카테고리 분기 로직을 없앴다(과거엔 토크세션만
+  "강연 문의"로 분기했으나 지금은 불필요).
+- <p>/<img> 셀렉터는 전부 "태그.클래스" 형태로 태그+클래스를 같이 준다
+  -- 이 조각이 실제로 삽입되는 .article-body에 이미 `.article-body p
+  {margin:0 0 30px}`, `.article-body img{width:88%;border-radius:0;
+  cursor:zoom-in}` 규칙이 있어서, 클래스 하나짜리 셀렉터(명시도 0,1,0)로
+  쓰면 그 규칙들(명시도 0,1,1)에 캐스케이드상 밀려 마진이 새고 사진이
+  원형 대신 사각형 88% 폭으로 깨진다(실제로 겪은 버그, 재발 방지).
+- `.post-cta-block`으로 전체를 감싼 이유: _layouts/default.html이
+  `.article-body` 안의 모든 `<img>`(alt="대표 이미지" 제외)에 클릭 시
+  라이트박스를 여는 핸들러를 전역으로 붙인다. 이 CTA의 사진은 About
+  링크이지 본문 이미지가 아니므로, default.html의 라이트박스 대상
+  선택 로직에서 `.post-cta-block` 안쪽을 명시적으로 제외시켰다 --
+  거기도 같이 확인할 것. 같은 이유로 `.article-body img:not(.img-loaded)
+  {min-height:240px; 회색 스켈레톤 애니메이션}` 규칙도 로드 전 잠깐
+  큰 회색 블록이 깜빡이게 만들어서, 아래에서 `.post-cta-block img`만
+  별도로 꺼둔다.
 
-주의: EPISODIC_CATS/SPEAKING_CATS 목록은 sync_all.py에도 그대로
-있다(이전글/다음글 라벨 "이전 화"/"다음 화" 판단에 씀). 카테고리를
-추가/변경할 땐 두 곳 다 고쳐야 한다.
-
-(2026-08-28: 사진+2줄 이력을 붙인 저자소개 버전을 시도했다가 반려됨.
-/preview/cta-test.html 에서 대안 두 개를 비교 중 -- 결정되기 전까지는
-원래의 CTA만 있는 버전으로 되돌려둔다.)
+사진: /assets/ceo-portrait-og.jpg(2026-08-30 전문 촬영본으로 교체).
+서명: /assets/signature.png(2026-08-30 재촬영, 가로로 더 넓은 흘림체).
 {%- endcomment -%}
 {% unless page.category == "코치S" or page.category == "잉크드인대 기획학과" %}
 <style>
-    /* 포스트 하단 문의 CTA -- 배너가 아니라 에세이가 자연스럽게 끝나는 한 줄 + 조용한 버튼 하나 */
-    .post-cta { text-align: center; padding: 8px 20px 44px; margin-top: 68px; }
-    .post-cta-line { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-weight: 300; font-style: italic; font-size: 15.5px; color: #767672; margin: 0 0 20px; line-height: 1.7; }
-    .post-cta-btn { display: inline-block; background: #080808; color: #f5f3ee; font-family: 'Boska', serif; font-style: italic; font-weight: 400; font-size: 15.5px; padding: 13px 36px; border-radius: 999px; text-decoration: none !important; border: none; cursor: pointer; transition: background 0.2s, color 0.2s, box-shadow 0.2s; }
-    .post-cta-btn:hover { background: #f5f3ee; color: #080808; box-shadow: inset 0 0 0 1px #080808; }
+  .post-closing { text-align: left; margin: 56px 0 0; }
+  p.post-closing-line { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-weight: 300; font-style: italic; font-size: 15.5px; color: #4a4740; margin: 0 0 4px; line-height: 1.7; }
+  img.post-closing-sig { display: block; height: 46px; width: auto; margin: 10px 0 0; }
+  .post-cta-divider { border: 0; border-top: 1px solid #efece4; margin: 28px 0; }
+  .post-card { text-align: center; padding-bottom: 40px; }
+  img.post-card-photo { width: 76px; height: 76px; border-radius: 50%; object-fit: cover; filter: grayscale(1); margin-bottom: 10px; margin-top: 0; display: inline-block; cursor: pointer; }
+  p.post-card-tagline { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-weight: 300; font-style: italic; font-size: 14.5px; color: #4a4740; margin: 0 0 8px; }
+  .post-cta-links { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 0; margin: 0; padding: 0; font-family: 'Pretendard Variable', sans-serif; font-size: 13px; color: #8f8b82; }
+  .post-cta-links li { display: flex; align-items: center; }
+  .post-cta-links li:not(:last-child)::after { content: '·'; margin: 0 10px; color: #d8d5cc; }
+  .post-cta-links a, .post-cta-links button { font: inherit; color: #4a4740; text-decoration: none; background: none; border: none; padding: 0; cursor: pointer; }
+  .post-cta-block img:not(.img-loaded) { min-height: 0; background: none; animation: none; }
 </style>
-{% if page.category == "토크세션" %}
-<div class="post-cta">
-  <p class="post-cta-line">이런 이야기를 강연으로 더 듣고 싶으시다면</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="speaking">강연 문의</button>
+
+<div class="post-cta-block">
+  <div class="post-closing">
+    <p class="post-closing-line">그 다음 걸음을, 함께</p>
+    <img src="/assets/signature.png" alt="한성희 서명" class="post-closing-sig">
+  </div>
+
+  <hr class="post-cta-divider">
+
+  <div class="post-card">
+    <a href="/about/"><img src="/assets/ceo-portrait-og.jpg" alt="한성희" class="post-card-photo"></a>
+    <p class="post-card-tagline">다음 성장은, 여기서 시작됩니다.</p>
+    <ul class="post-cta-links">
+      <li><a href="/book/기획자의-질문법.html">기획자의 질문법</a></li>
+      <li><a href="/book/UX의-언어들.html">UX의 언어들</a></li>
+      <li><button type="button" class="open-contact-modal">1:1 문의하기</button></li>
+    </ul>
+  </div>
 </div>
-{% else %}
-<div class="post-cta">
-  <p class="post-cta-line">비슷한 고민을 하고 계신다면, 이야기 나눠볼까요?</p>
-  <button type="button" class="post-cta-btn open-contact-modal" data-contact-type="coaching">코칭 문의</button>
-</div>
-{% endif %}
 {% endunless %}
