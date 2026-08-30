@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Simplifier 숏폼 리서치 자동화",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "숏폼 대본 브리프를 제미나이 딥리서치에 넣고, 완료되면 결과를 클립보드로 가져옵니다.",
   "icons": {
     "16": "icons/icon16.png",

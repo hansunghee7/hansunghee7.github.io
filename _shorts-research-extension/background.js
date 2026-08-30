@@ -179,6 +179,48 @@ chrome.runtime.onInstalled.addListener(function () {
   chrome.alarms.create(QUEUE_ALARM, { periodInMinutes: QUEUE_CHECK_PERIOD_MIN });
 });
 
+// ── 워치독 ──────────────────────────────────────────────────────
+// content-script.js 안에는 이미 "25분 넘으면 타임아웃"이라는 로직이
+// 있지만, 그건 최소화된 창 안의 자바스크립트가 실제로 계속 돌고 있을
+// 때만 동작한다. 크롬이 메모리 절약을 위해 안 쓰는 백그라운드 탭을
+// 정지(discard)시키면 그 안의 타이머·감시 로직이 통째로 멈춰버려서,
+// "타임아웃되면 실패 처리한다"는 로직 자체가 실행이 안 될 수 있다 --
+// 관측할 수 없는 구간(그 탭 안에서 실제로 무슨 일이 있었는지)이라, 원인을
+// 캐기보다 그 구간에 의존하지 않는 별도 감시자를 둔다. background.js는
+// 항상 살아서 알람을 받으므로, 여기서 독립적으로 "너무 오래 걸리면
+// 강제로 정리"한다 -- 특히 대기열은 activeResearch가 안 지워지면 다음
+// 항목으로 영영 못 넘어가므로 이게 없으면 무인 파이프라인 전체가 멈춘다.
+var WATCHDOG_ALARM = "researchWatchdog";
+var WATCHDOG_PERIOD_MIN = 5;
+var STUCK_THRESHOLD_MS = 30 * 60 * 1000; // content-script 자체 타임아웃(25분)보다 여유를 둠
+
+chrome.alarms.create(WATCHDOG_ALARM, { periodInMinutes: WATCHDOG_PERIOD_MIN });
+chrome.runtime.onInstalled.addListener(function () {
+  chrome.alarms.create(WATCHDOG_ALARM, { periodInMinutes: WATCHDOG_PERIOD_MIN });
+});
+
+function checkWatchdog() {
+  chrome.storage.local.get(["activeResearch"], function (res) {
+    var active = res.activeResearch;
+    if (!active || Date.now() - active.startedAt < STUCK_THRESHOLD_MS) return;
+
+    console.log("[숏폼 리서치] 워치독: " + Math.round(STUCK_THRESHOLD_MS / 60000) + "분 넘게 응답 없음 -- 강제 정리");
+    pushLog({
+      briefSnippet: active.brief.slice(0, 80),
+      startedAt: active.startedAt,
+      finishedAt: Date.now(),
+      status: "error",
+      note: "워치독: " + Math.round(STUCK_THRESHOLD_MS / 60000) + "분 넘게 응답이 없어 중단 처리함 (탭이 멈췄거나 크롬이 백그라운드 탭을 정지시켰을 수 있음)",
+      source: active.queueItemId ? "queue" : "manual",
+    });
+    if (active.queueItemId) updateQueueItemStatus(active.queueItemId, "error", "워치독 타임아웃");
+    notify("숏폼 리서치 — 응답 없음", "실행이 멈춘 것 같아 정리했습니다. 대기열이 있으면 다음 항목으로 이어서 진행합니다.");
+    chrome.storage.local.remove("activeResearch");
+    // 탭 자체는 안 닫는다 -- 화면에 뭐가 남아있는지 확인이 필요할 수 있어서
+    // (파일 상단 "실패 시 탭을 안 닫는다" 정책과 동일).
+  });
+}
+
 function fetchQueue(token) {
   return fetch("https://api.github.com/repos/" + REPO + "/contents/" + QUEUE_PATH, {
     headers: { Authorization: "token " + token, Accept: "application/vnd.github+json" },
@@ -265,6 +307,7 @@ function checkQueueAndStart() {
 
 chrome.alarms.onAlarm.addListener(function (alarm) {
   if (alarm.name === QUEUE_ALARM) checkQueueAndStart();
+  if (alarm.name === WATCHDOG_ALARM) checkWatchdog();
 });
 
 chrome.runtime.onMessage.addListener(function (msg) {
