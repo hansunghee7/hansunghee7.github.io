@@ -22,13 +22,7 @@
   #resultText{ width:100%; box-sizing:border-box; min-height:80px; font-size:11.5px; padding:8px; border:1px solid #c8c6bf; border-radius:6px; font-family:inherit; }
   #selectorWarningBox{ display:none; margin-bottom:12px; padding:10px 12px; border:1px solid #e3c98a; border-radius:8px; background:#fbf1e6; color:#a3690f; font-size:12px; line-height:1.5; }
   #selectorWarningBox button{ margin:8px 0 0; padding:6px; font-size:12px; }
-  #planBox{ display:none; margin-bottom:8px; padding:10px 12px; border:1px solid #e3c98a; border-radius:8px; background:#fbf1e6; }
-  #planBox .plan-heading{ font-size:12px; font-weight:600; color:#a3690f; margin-bottom:6px; }
-  #planText{ width:100%; box-sizing:border-box; min-height:100px; font-size:11.5px; padding:8px; border:1px solid #c8c6bf; border-radius:6px; font-family:inherit; margin-bottom:8px; }
-  .plan-actions{ display:flex; gap:8px; }
-  .plan-actions button{ margin-bottom:0; }
-  #approveBtn{ background:#1f7a4f; border-color:#1f7a4f; }
-  #cancelBtn{ background:#fff; color:#b8402a; border-color:#e0b3a8; }
+  .tag{ display:inline-block; font-size:10px; padding:1px 6px; border-radius:10px; background:#f2f0eb; color:#6e6a62; margin-left:6px; vertical-align:middle; }
 
   .log-heading{ font-size:11.5px; font-weight:600; color:#403d37; margin:14px 0 6px; }
   .log-empty{ font-size:11.5px; color:#6e6a62; }
@@ -63,38 +57,31 @@
 
   <div id="statusBox" class="status idle">대기 중</div>
 
-  <div id="planBox">
-    <div class="plan-heading">제미나이가 조사 계획을 제시했습니다 — 확인 후 승인하세요</div>
-    <textarea id="planText" readonly></textarea>
-    <div class="plan-actions">
-      <button id="approveBtn">승인하고 진행</button>
-      <button id="cancelBtn" class="secondary">취소</button>
-    </div>
-  </div>
-
   <div id="resultBox">
     <textarea id="resultText" readonly></textarea>
     <button id="copyBtn" class="secondary">결과 다시 복사</button>
   </div>
 
   <div class="hint">
-    창을 화면 뒤에서 조용히 엽니다. 계획이 나오면 팝업에서 승인해야 실제 조사가
-    시작되고, 승인 후엔 보통 5~20분 걸립니다. 끝나면 알림이 뜹니다. 자동
-    클립보드 복사가 브라우저 정책으로 안 될 수 있어서, 실패해도 여기서 수동으로
-    복사할 수 있게 남겨둡니다.
+    창을 화면 뒤에서 조용히 엽니다. 제미나이가 조사 계획을 제시하면 자동으로
+    승인하고 진행합니다(사람 확인 없음 — 계획 원문은 GitHub 이슈에 남습니다).
+    보통 5~20분 걸리고, 끝나면 알림이 뜹니다. 자동 클립보드 복사가 브라우저
+    정책으로 안 될 수 있어서, 실패해도 여기서 수동으로 복사할 수 있게 남겨둡니다.
   </div>
 
-  <div class="divider">GitHub 연결 (선택)</div>
+  <div class="divider">GitHub 연결 (대기열·자동 등록에 필요)</div>
   <div id="githubStatus" style="display:none;"></div>
   <input type="password" id="patInput" placeholder="GitHub 토큰 붙여넣기 (ghp_... 또는 github_pat_...)" autocomplete="off">
   <div id="patStatus"></div>
   <button id="patSaveBtn" class="secondary">토큰 저장</button>
   <div class="hint" style="margin-top:-4px;">
-    연결하면 완료될 때 결과가 이 저장소에 GitHub 이슈로도 자동 등록되어,
-    탐(클로드)이 나중에 정기적으로 확인해 처리할 수 있습니다. 연결 안 해도
-    지금처럼 클립보드/팝업으로는 계속 받을 수 있습니다.
+    연결하면: (1) 완료 시 결과가 이 저장소에 GitHub 이슈로 자동 등록되고,
+    (2) <code>_shorts-research-extension/queue.json</code>에 추가해둔 대기열
+    항목을 10분마다 확인해 팝업을 안 열어도 자동으로 처리합니다(단, 크롬은
+    켜져 있어야 합니다). 연결 안 해도 지금처럼 수동 실행 + 클립보드는 계속
+    동작합니다.
     <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">여기서 발급</a>
-    — Repository access는 이 저장소 하나만, Permissions는 Issues를
+    — Repository access는 이 저장소 하나만, Permissions는 Issues와 Contents를
     Read and write로 설정하면 됩니다.
   </div>
 

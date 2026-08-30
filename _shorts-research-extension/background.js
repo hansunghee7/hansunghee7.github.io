@@ -30,12 +30,14 @@ function pushLog(entry) {
 // 경로다.
 var REPO = "hansunghee7/hansunghee7.github.io";
 
-function openResearchIssue(brief, resultText) {
+function openResearchIssue(brief, planText, resultText) {
   chrome.storage.local.get(["githubToken"], function (res) {
     if (!res.githubToken) return; // 미연결이면 조용히 건너뜀 -- README 참고
     var title = "[리서치 완료] " + brief.slice(0, 60) + (brief.length > 60 ? "…" : "");
     var body =
-      "## 브리프\n\n" + brief + "\n\n## 결과\n\n" + resultText +
+      "## 브리프\n\n" + brief +
+      (planText ? "\n\n## 제미나이가 제시한 계획 (자동 승인됨)\n\n" + planText : "") +
+      "\n\n## 결과\n\n" + resultText +
       "\n\n---\n_숏폼 리서치 자동화 확장이 자동으로 등록함 (" + new Date().toISOString() + ")_";
 
     fetch("https://api.github.com/repos/" + REPO + "/issues", {
@@ -130,7 +132,7 @@ function sendInjectBriefWithRetry(tabId, brief, attempt) {
   });
 }
 
-function startResearch(brief) {
+function startResearch(brief, queueItemId) {
   var startedAt = Date.now();
   chrome.windows.create(
     { url: "https://gemini.google.com/app", focused: false, state: "minimized" },
@@ -143,10 +145,13 @@ function startResearch(brief) {
           note: "창 생성 실패: " + (chrome.runtime.lastError && chrome.runtime.lastError.message),
         });
         notify("숏폼 리서치 실패", "gemini.google.com 창을 열지 못했습니다.");
+        if (queueItemId) updateQueueItemStatus(queueItemId, "error", "창 생성 실패");
         return;
       }
       var tabId = win.tabs[0].id;
-      chrome.storage.local.set({ activeResearch: { tabId: tabId, brief: brief, startedAt: startedAt } });
+      chrome.storage.local.set({
+        activeResearch: { tabId: tabId, brief: brief, startedAt: startedAt, queueItemId: queueItemId || null },
+      });
 
       chrome.tabs.onUpdated.addListener(function listener(updatedTabId, info) {
         if (updatedTabId !== tabId || info.status !== "complete") return;
@@ -160,60 +165,111 @@ function startResearch(brief) {
   );
 }
 
+// ── 리서치 대기열 (무인 파이프라인) ────────────────────────────
+// 사장님이 팝업을 열지 않아도, 이 저장소의 queue.json에 "pending" 항목을
+// 추가해두면 알아서 하나씩 처리한다. chrome.alarms는 크롬이 켜져 있는 한
+// (팝업/탭이 안 떠 있어도) 주기적으로 서비스 워커를 깨워주므로, 이 방식이
+// 성립한다 -- 단, 크롬 자체는 실행 중이어야 한다(README 참고).
+var QUEUE_PATH = "_shorts-research-extension/queue.json";
+var QUEUE_ALARM = "checkResearchQueue";
+var QUEUE_CHECK_PERIOD_MIN = 10;
+
+chrome.alarms.create(QUEUE_ALARM, { periodInMinutes: QUEUE_CHECK_PERIOD_MIN });
+chrome.runtime.onInstalled.addListener(function () {
+  chrome.alarms.create(QUEUE_ALARM, { periodInMinutes: QUEUE_CHECK_PERIOD_MIN });
+});
+
+function fetchQueue(token) {
+  return fetch("https://api.github.com/repos/" + REPO + "/contents/" + QUEUE_PATH, {
+    headers: { Authorization: "token " + token, Accept: "application/vnd.github+json" },
+  }).then(function (r) {
+    if (!r.ok) throw new Error("큐 조회 실패: HTTP " + r.status);
+    return r.json();
+  }).then(function (fileRes) {
+    var items;
+    try {
+      items = JSON.parse(decodeURIComponent(escape(atob(fileRes.content.replace(/\n/g, "")))));
+    } catch (e) {
+      items = [];
+    }
+    return { items: items, sha: fileRes.sha };
+  });
+}
+
+function writeQueue(token, items, sha, message) {
+  return fetch("https://api.github.com/repos/" + REPO + "/contents/" + QUEUE_PATH, {
+    method: "PUT",
+    headers: {
+      Authorization: "token " + token,
+      Accept: "application/vnd.github+json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      message: message + " [skip ci]",
+      content: btoa(unescape(encodeURIComponent(JSON.stringify(items, null, 2) + "\n"))),
+      sha: sha,
+    }),
+  });
+}
+
+// 대기열 항목 하나의 상태를 바꾼다. 사람이 그 사이 queue.json을 손으로
+// 고쳤을 수도 있어서(항목 추가 등) sha 충돌(409) 시 한 번만 재조회 후
+// 재시도한다 -- _sns-extension만큼 몰릴 일이 없어서(한 번에 하나씩만
+// 처리) 간단한 재시도로 충분하다.
+function updateQueueItemStatus(queueItemId, status, note, retried) {
+  chrome.storage.local.get(["githubToken"], function (res) {
+    if (!res.githubToken) return;
+    fetchQueue(res.githubToken).then(function (q) {
+      var item = q.items.filter(function (i) { return i.id === queueItemId; })[0];
+      if (!item) return;
+      item.status = status;
+      item.finishedAt = new Date().toISOString();
+      if (note) item.note = note;
+      return writeQueue(res.githubToken, q.items, q.sha, "chore: 리서치 대기열 갱신 (" + queueItemId + " -> " + status + ")");
+    }).then(function (putRes) {
+      if (putRes && putRes.status === 409 && !retried) {
+        updateQueueItemStatus(queueItemId, status, note, true);
+        return;
+      }
+      if (putRes && !putRes.ok) console.log("[숏폼 리서치] 큐 갱신 실패:", putRes.status);
+    }).catch(function (e) {
+      console.log("[숏폼 리서치] 큐 갱신 실패:", e.message);
+    });
+  });
+}
+
+function checkQueueAndStart() {
+  chrome.storage.local.get(["githubToken", "activeResearch"], function (res) {
+    if (!res.githubToken) return; // 큐도 GitHub 연결이 있어야 동작 (README 참고)
+    if (res.activeResearch) return; // 이미 하나 도는 중이면 겹치지 않게 건너뜀
+
+    fetchQueue(res.githubToken).then(function (q) {
+      var pending = q.items.filter(function (i) { return i.status === "pending"; })[0];
+      if (!pending) return;
+
+      pending.status = "in_progress";
+      pending.startedAt = new Date().toISOString();
+      return writeQueue(res.githubToken, q.items, q.sha, "chore: 리서치 대기열 시작 (" + pending.id + ")").then(function (putRes) {
+        if (!putRes.ok) {
+          console.log("[숏폼 리서치] 큐 항목 점유 실패(다른 곳에서 먼저 처리했을 수 있음):", putRes.status);
+          return;
+        }
+        console.log("[숏폼 리서치] 대기열에서 실행:", pending.id);
+        startResearch(pending.brief, pending.id);
+      });
+    }).catch(function (e) {
+      console.log("[숏폼 리서치] 큐 확인 실패:", e.message);
+    });
+  });
+}
+
+chrome.alarms.onAlarm.addListener(function (alarm) {
+  if (alarm.name === QUEUE_ALARM) checkQueueAndStart();
+});
+
 chrome.runtime.onMessage.addListener(function (msg) {
   if (msg && msg.type === "START_RESEARCH") {
     startResearch(msg.brief);
-  }
-
-  // 딥리서치가 조사 계획을 제시하고 승인을 기다리는 단계. 탭은 그대로 두고,
-  // 팝업에 "계획 확인 필요" 상태를 띄운다 -- 사람이 직접 계획을 읽고
-  // 승인/취소를 결정해야 하므로 여기서 자동으로 진행시키지 않는다.
-  if (msg && msg.type === "RESEARCH_PLAN_READY") {
-    chrome.storage.local.get(["activeResearch"], function (res) {
-      var active = res.activeResearch;
-      chrome.storage.local.set({
-        pendingPlan: {
-          tabId: active ? active.tabId : null,
-          planText: msg.planText,
-          readyAt: Date.now(),
-        },
-      });
-      notify("숏폼 리서치 — 계획 확인 필요", "제미나이가 조사 계획을 제시했습니다. 확장 팝업에서 확인 후 승인/취소하세요.");
-    });
-  }
-
-  if (msg && msg.type === "APPROVE_PLAN") {
-    chrome.storage.local.get(["pendingPlan"], function (res) {
-      if (!res.pendingPlan || !res.pendingPlan.tabId) return;
-      chrome.tabs.sendMessage(res.pendingPlan.tabId, { type: "CONFIRM_PLAN" }, function () { void chrome.runtime.lastError; });
-      chrome.storage.local.remove("pendingPlan");
-    });
-  }
-
-  if (msg && msg.type === "CANCEL_PLAN") {
-    chrome.storage.local.get(["pendingPlan", "activeResearch"], function (res) {
-      if (res.pendingPlan && res.pendingPlan.tabId) {
-        chrome.tabs.sendMessage(res.pendingPlan.tabId, { type: "CANCEL_PLAN" }, function () { void chrome.runtime.lastError; });
-      }
-      chrome.storage.local.remove("pendingPlan");
-    });
-  }
-
-  if (msg && msg.type === "RESEARCH_CANCELLED") {
-    chrome.storage.local.get(["activeResearch"], function (res) {
-      var active = res.activeResearch;
-      pushLog({
-        briefSnippet: active ? active.brief.slice(0, 80) : "",
-        startedAt: active ? active.startedAt : Date.now(),
-        finishedAt: Date.now(),
-        status: "cancelled",
-      });
-      if (active && active.tabId) {
-        chrome.tabs.remove(active.tabId, function () { void chrome.runtime.lastError; });
-      }
-      chrome.storage.local.remove("activeResearch");
-      chrome.storage.local.remove("pendingPlan");
-    });
   }
 
   if (msg && msg.type === "RESEARCH_COMPLETE") {
@@ -226,9 +282,11 @@ chrome.runtime.onMessage.addListener(function (msg) {
         status: "success",
         result: msg.result,
         copiedToClipboard: msg.copiedToClipboard,
+        source: active && active.queueItemId ? "queue" : "manual",
       });
       updateSelectorMissStreak(msg.misses);
-      openResearchIssue(active ? active.brief : "", msg.result);
+      openResearchIssue(active ? active.brief : "", msg.planText, msg.result);
+      if (active && active.queueItemId) updateQueueItemStatus(active.queueItemId, "done");
       notify(
         "숏폼 리서치 완료",
         msg.copiedToClipboard
@@ -241,7 +299,6 @@ chrome.runtime.onMessage.addListener(function (msg) {
         }, CLOSE_DELAY_ON_SUCCESS_MS);
       }
       chrome.storage.local.remove("activeResearch");
-      chrome.storage.local.remove("pendingPlan");
     });
   }
 
@@ -254,11 +311,12 @@ chrome.runtime.onMessage.addListener(function (msg) {
         finishedAt: Date.now(),
         status: "error",
         note: msg.message,
+        source: active && active.queueItemId ? "queue" : "manual",
       });
       updateSelectorMissStreak(msg.misses);
+      if (active && active.queueItemId) updateQueueItemStatus(active.queueItemId, "error", msg.message);
       notify("숏폼 리서치 실패", msg.message + " — 창을 열어둔 채로 두었으니 직접 확인해보세요.");
       chrome.storage.local.remove("activeResearch");
-      chrome.storage.local.remove("pendingPlan");
       // 실패 시엔 탭을 안 닫는다 (파일 상단 설명 참고).
     });
   }
