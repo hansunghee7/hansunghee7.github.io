@@ -23,9 +23,71 @@ function pushLog(entry) {
   });
 }
 
+// 선택자가 깨져도 지금까지는 콘솔 로그만 남고 아무도 모르는 채로
+// 지나갔다(조용한 실패). 같은 플랫폼이 MISS_WARN_THRESHOLD번 연속으로
+// 실패하면(우연한 1회 로딩 지연과 구분하기 위해 1회가 아니라 연속 실패로
+// 판단) 팝업에 경고를 띄우고 알림을 보낸다. 성공하면 그 플랫폼의 연속
+// 실패 카운트는 바로 0으로 되돌린다.
+var MISS_WARN_THRESHOLD = 2;
+
+function notify(title, message) {
+  chrome.notifications.create({
+    type: "basic",
+    iconUrl: "icons/icon128.png",
+    title: title,
+    message: message,
+  });
+}
+
+function updateMissStreak(platform, missed) {
+  chrome.storage.local.get(["selectorMissStreak", "selectorWarning"], function (res) {
+    var streak = res.selectorMissStreak || {};
+    streak[platform] = missed ? (streak[platform] || 0) + 1 : 0;
+    chrome.storage.local.set({ selectorMissStreak: streak });
+
+    if (missed && streak[platform] === MISS_WARN_THRESHOLD) {
+      var warning = { platform: platform, streak: streak[platform], since: Date.now() };
+      chrome.storage.local.set({ selectorWarning: warning });
+      notify(
+        "SNS 인사이트 — 선택자 확인 필요",
+        (PLATFORM_LABELS[platform] || platform) + " 팔로워 수를 " + streak[platform] + "번 연속 못 찾았습니다. 페이지 구조가 바뀌었을 수 있어요."
+      );
+    } else if (!missed && res.selectorWarning && res.selectorWarning.platform === platform) {
+      // 실패했던 플랫폼이 다시 성공하면 별도 확인 없이도 경고를 스스로 내린다.
+      chrome.storage.local.remove("selectorWarning");
+    }
+  });
+}
+
+var PLATFORM_LABELS = {
+  linkedin: "LinkedIn",
+  facebook: "Facebook",
+  instagram: "Instagram",
+  threads: "Threads",
+  naver_blog: "네이버블로그",
+  brunch: "브런치",
+  remember: "리멤버 커넥트",
+  rocketpunch: "로켓펀치",
+};
+
 chrome.runtime.onMessage.addListener(function (msg) {
   if (msg && msg.type === "SNS_CAPTURE") {
     handleCapture(msg);
+    updateMissStreak(msg.platform, false);
+  }
+
+  if (msg && msg.type === "SNS_COLLECT_FAILED") {
+    pushLog({ platform: msg.platform, count: null, capturedAt: new Date().toISOString(), status: "miss" });
+    updateMissStreak(msg.platform, true);
+  }
+
+  if (msg && msg.type === "DISMISS_SELECTOR_WARNING") {
+    chrome.storage.local.get(["selectorMissStreak", "selectorWarning"], function (res) {
+      var streak = res.selectorMissStreak || {};
+      if (res.selectorWarning) streak[res.selectorWarning.platform] = 0;
+      chrome.storage.local.set({ selectorMissStreak: streak });
+      chrome.storage.local.remove("selectorWarning");
+    });
   }
 });
 

@@ -21,7 +21,7 @@ var PLATFORM_LABELS = {
   rocketpunch: "로켓펀치",
 };
 
-var STATUS_MARK = { success: "✓", error: "✕", pending: "…" };
+var STATUS_MARK = { success: "✓", error: "✕", pending: "…", miss: "△" };
 
 function escapeHtml(s) {
   return (s == null ? "" : String(s)).replace(/[&<>"']/g, function (c) {
@@ -47,7 +47,11 @@ function renderLog(log) {
   logList.innerHTML = log.map(function (e) {
     var label = PLATFORM_LABELS[e.platform] || e.platform;
     var mark = STATUS_MARK[e.status] || "?";
-    var noteHtml = e.status === "error" && e.note ? '<span class="note">(' + escapeHtml(e.note) + ")</span>" : "";
+    var noteHtml = e.status === "error" && e.note
+      ? '<span class="note">(' + escapeHtml(e.note) + ")</span>"
+      : e.status === "miss"
+      ? '<span class="note">(문구를 못 찾음)</span>'
+      : "";
     return (
       '<div class="log-item">' +
       '<span class="mark ' + e.status + '">' + mark + "</span>" +
@@ -68,8 +72,23 @@ function kstToday() {
   return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Seoul" }).format(new Date());
 }
 
+function renderSelectorWarning(warning) {
+  var box = document.getElementById("selectorWarningBox");
+  if (!warning) {
+    box.style.display = "none";
+    return;
+  }
+  var label = PLATFORM_LABELS[warning.platform] || warning.platform;
+  document.getElementById("selectorWarningText").textContent =
+    label + " 팔로워 수를 " + warning.streak + "번 연속 못 찾았습니다 — 페이지 구조가 바뀌었을 수 있어요. 직접 열어서 확인해주세요.";
+  box.style.display = "block";
+}
+
 function render() {
-  chrome.storage.local.get(["githubToken", "pendingCaptures", "recentLog", "lastFullRoundDate"], function (res) {
+  chrome.storage.local.get(
+    ["githubToken", "pendingCaptures", "recentLog", "lastFullRoundDate", "selectorWarning"],
+    function (res) {
+    renderSelectorWarning(res.selectorWarning);
     var roundEl = document.getElementById("roundStatus");
     if (res.lastFullRoundDate === kstToday()) {
       roundEl.textContent = "오늘 전체 수집 완료 (" + res.lastFullRoundDate + ")";
@@ -107,6 +126,14 @@ chrome.storage.onChanged.addListener(function (changes, area) {
   if (area === "local" && changes.recentLog) {
     renderLog(changes.recentLog.newValue);
   }
+  if (area === "local" && "selectorWarning" in changes) {
+    renderSelectorWarning(changes.selectorWarning.newValue);
+  }
+});
+
+document.getElementById("dismissWarningBtn").addEventListener("click", function () {
+  chrome.runtime.sendMessage({ type: "DISMISS_SELECTOR_WARNING" });
+  document.getElementById("selectorWarningBox").style.display = "none";
 });
 
 function handleMessage(e) {

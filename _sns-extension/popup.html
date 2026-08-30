@@ -9,6 +9,8 @@
   .status{ padding:10px 12px; border-radius:8px; margin-bottom:12px; font-size:12.5px; line-height:1.5; }
   .status.ok{ background:#eaf5ef; color:#1f7a4f; }
   .status.warn{ background:#fbf1e6; color:#a3690f; }
+  #selectorWarningBox{ display:none; padding:10px 12px; border:1px solid #e3c98a; border-radius:8px; background:#fbf1e6; color:#a3690f; font-size:12px; line-height:1.5; margin-bottom:12px; }
+  #selectorWarningBox button{ margin:8px 0 0; padding:6px; font-size:12px; }
   button{ width:100%; padding:9px; font-size:13px; border-radius:6px; border:1px solid #c8c6bf; background:#121210; color:#fff; cursor:pointer; margin-bottom:8px; }
   button.secondary{ background:#fff; color:#121210; }
   .hint{ color:#6e6a62; font-size:11.5px; line-height:1.5; }
@@ -28,6 +30,7 @@
   .log-item .mark.success{ color:#1f7a4f; }
   .log-item .mark.error{ color:#b8402a; }
   .log-item .mark.pending{ color:#a3690f; }
+  .log-item .mark.miss{ color:#a3690f; }
   .log-item .plat{ font-weight:600; }
   .log-item .cnt{ color:#403d37; }
   .log-item .time{ margin-left:auto; color:#6e6a62; font-size:11px; flex-shrink:0; }
@@ -36,6 +39,10 @@
 </head>
 <body>
   <h1>Simplifier SNS 인사이트</h1>
+  <div id="selectorWarningBox">
+    <span id="selectorWarningText"></span>
+    <button id="dismissWarningBtn" class="secondary">확인함</button>
+  </div>
   <div id="statusBox" class="status warn">확인 중...</div>
   <div id="tokenDebug" class="hint" style="margin:-6px 0 12px;"></div>
   <div id="roundStatus" class="hint" style="margin:-6px 0 12px;"></div>

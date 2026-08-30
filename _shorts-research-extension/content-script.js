@@ -41,15 +41,36 @@
       '.response-container',
       "main",
     ],
+    // 딥리서치는 보통 "이런 계획으로 조사할게요, 진행할까요?" 확인 버튼을
+    // 먼저 띄우고, 사용자가 승인해야 진짜 조사가 시작된다. 이것도 실제 화면을
+    // 못 본 채 추정한 값이라 이름이 다를 수 있다 -- 못 찾으면 로그로 남기고
+    // 계획 단계 없이 바로 완료 감지로 넘어간다(질문이 짧아서 계획 단계가
+    // 아예 없는 경우와 구분이 안 되지만, 안전한 쪽으로 fallback).
+    planConfirmButton: {
+      textPattern: /계획대로|리서치\s*시작|조사\s*시작|research\s*plan|start\s*research|진행할까요|시작할까요|승인/i,
+      candidateTags: ["button", "div[role=\"button\"]", "div[role=\"menuitem\"]"],
+    },
   };
 
   var STABLE_MS = 12000; // 이만큼 DOM 변화가 없으면 "응답 끝났다"고 본다
   var MIN_RESEARCH_MS = 45000; // 딥리서치는 최소 이 정도는 걸리니, 그 전엔 끝났다고 오판하지 않는다
   var MAX_WAIT_MS = 25 * 60 * 1000; // 25분 넘으면 포기하고 타임아웃 보고
+  var PLAN_WAIT_MS = 90000; // 계획 확인 버튼이 뜨는지 이만큼 기다려본다 (안 뜨면 계획 단계 없다고 판단)
+  var PLAN_APPROVE_TIMEOUT_MS = 20 * 60 * 1000; // 팝업에서 사용자가 승인/취소할 때까지 최대로 기다리는 시간
 
   function log() {
     var args = Array.prototype.slice.call(arguments);
     console.log.apply(console, [LOG_PREFIX].concat(args));
+  }
+
+  // 선택자를 못 찾아도 지금까지는 콘솔 경고만 남기고 "일반 모드로라도
+  // 계속 진행"했다 -- 기능은 안 죽지만, 딥리서치 대신 일반 채팅으로
+  // 조용히 제출되는 것도 모르고 지나갈 수 있다. 이번 실행에서 어떤
+  // 선택자가 fallback을 탔는지 모아뒀다가 완료/실패 메시지에 실어
+  // background로 보낸다 -- background가 연속 발생 여부를 판단한다.
+  var runMisses = {};
+  function recordMiss(kind) {
+    runMisses[kind] = true;
   }
 
   function findFirst(selectors) {
@@ -122,6 +143,7 @@
   }
 
   function submitBrief(brief) {
+    runMisses = {};
     return waitFor(function () { return findFirst(SELECTORS.input); }, 15000, 500).then(function (input) {
       // 딥리서치 모드 전환 -- 못 찾아도 실패시키지 않는다. 일반 모드로라도
       // 제출하는 게 아무것도 안 하는 것보다 낫고, 로그로 남겨서 나중에
@@ -132,6 +154,7 @@
         log("딥리서치 모드 전환 클릭함");
       } else {
         log("⚠️ 딥리서치 모드 전환 버튼을 못 찾음 -- 일반 모드로 제출됩니다. 결과를 확인 후 SELECTORS.deepResearchToggle을 실제 화면 기준으로 고쳐주세요.");
+        recordMiss("deepResearchToggle");
       }
 
       insertText(input, brief);
@@ -139,8 +162,69 @@
       return waitFor(findSubmitButton, 5000, 300);
     }).then(function (submitBtn) {
       submitBtn.click();
-      log("제출 완료, 응답 대기 시작");
+      log("제출 완료, 계획 제시 여부 확인 중");
+      return waitForPlanThenApproval();
+    }).then(function () {
+      log("실제 조사 시작됨, 응답 대기 시작");
       return waitForCompletion();
+    });
+  }
+
+  // 딥리서치는 보통 (1) "이런 계획으로 조사할게요, 진행할까요?"를 먼저
+  // 보여주고 (2) 사용자가 승인해야 (3) 진짜 조사가 시작된다. 이 단계가
+  // 있는지 PLAN_WAIT_MS만큼 지켜보고, 있으면 팝업(background.js 경유)에
+  // 계획 원문을 보내 사람이 직접 승인/취소하게 한다. 없으면(질문이 짧아서
+  // 계획 단계 자체가 없거나 선택자가 안 맞는 경우) 조용히 다음 단계로
+  // 넘어간다 -- 계획 단계를 강제하지 않는다.
+  function waitForPlanThenApproval() {
+    var button = findByText(SELECTORS.planConfirmButton.candidateTags, SELECTORS.planConfirmButton.textPattern);
+    if (button) return requestApprovalFor(button);
+
+    return waitFor(function () {
+      return findByText(SELECTORS.planConfirmButton.candidateTags, SELECTORS.planConfirmButton.textPattern);
+    }, PLAN_WAIT_MS, 1000).then(requestApprovalFor, function () {
+      log("계획 확인 단계 없음(또는 못 찾음) -- 바로 조사가 시작된 것으로 보고 진행합니다.");
+      return null;
+    });
+  }
+
+  function extractPlanText(button) {
+    var block = button.closest('[data-response-index], .response-container, article, section') || null;
+    var text = block ? (block.innerText || "") : "";
+    if (!text || text.length < 20) {
+      var fallback = findFirst(SELECTORS.responseContainer) || document.body;
+      text = (fallback.innerText || "").slice(-4000);
+    }
+    return text.trim();
+  }
+
+  function requestApprovalFor(button) {
+    var planText = extractPlanText(button);
+    log("계획 제시 감지됨, 승인 대기 -- 팝업에서 확인해주세요.");
+
+    return new Promise(function (resolve, reject) {
+      var timeoutTimer = setTimeout(function () {
+        chrome.runtime.onMessage.removeListener(onMsg);
+        reject(new Error("계획 승인 대기 시간 초과 (" + Math.round(PLAN_APPROVE_TIMEOUT_MS / 60000) + "분) -- 팝업에서 응답이 없었습니다."));
+      }, PLAN_APPROVE_TIMEOUT_MS);
+
+      function onMsg(msg) {
+        if (!msg) return;
+        if (msg.type === "CONFIRM_PLAN") {
+          clearTimeout(timeoutTimer);
+          chrome.runtime.onMessage.removeListener(onMsg);
+          button.click();
+          log("계획 승인됨, 클릭함");
+          resolve();
+        } else if (msg.type === "CANCEL_PLAN") {
+          clearTimeout(timeoutTimer);
+          chrome.runtime.onMessage.removeListener(onMsg);
+          reject(new Error("사용자가 계획을 취소함"));
+        }
+      }
+      chrome.runtime.onMessage.addListener(onMsg);
+
+      chrome.runtime.sendMessage({ type: "RESEARCH_PLAN_READY", planText: planText });
     });
   }
 
@@ -152,7 +236,12 @@
     return new Promise(function (resolve, reject) {
       var startedAt = Date.now();
       var lastChangeAt = Date.now();
-      var target = findFirst(SELECTORS.responseContainer) || document.body;
+      var target = findFirst(SELECTORS.responseContainer);
+      if (!target) {
+        log("⚠️ 응답 영역 선택자를 못 찾음 -- document.body 전체를 관찰합니다. SELECTORS.responseContainer 확인 필요.");
+        recordMiss("responseContainer");
+        target = document.body;
+      }
 
       var observer = new MutationObserver(function () {
         lastChangeAt = Date.now();
@@ -211,11 +300,17 @@
           type: "RESEARCH_COMPLETE",
           result: resultText,
           copiedToClipboard: copied,
+          misses: Object.keys(runMisses),
         });
       })
       .catch(function (err) {
+        if (err.message === "사용자가 계획을 취소함") {
+          log("사용자가 계획을 취소함");
+          chrome.runtime.sendMessage({ type: "RESEARCH_CANCELLED" });
+          return;
+        }
         log("❌ 실패:", err.message);
-        chrome.runtime.sendMessage({ type: "RESEARCH_ERROR", message: err.message });
+        chrome.runtime.sendMessage({ type: "RESEARCH_ERROR", message: err.message, misses: Object.keys(runMisses) });
       });
 
     sendResponse({ received: true });

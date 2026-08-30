@@ -32,6 +32,42 @@ function notify(title, message) {
   });
 }
 
+// content-script는 딥리서치 전환 버튼이나 응답 영역 선택자를 못 찾아도
+// 조용히 fallback을 타고 계속 진행한다(README 참고) -- 기능은 안 죽지만
+// 딥리서치 대신 일반 채팅으로 제출되는 것 같은 문제를 아무도 모른 채
+// 지나갈 수 있다. 같은 종류가 MISS_WARN_THRESHOLD회 연속이면 팝업에
+// 경고를 띄운다. "계획 확인 단계 없음"은 원래 짧은 요청이면 자연스럽게
+// 발생하는 정상 케이스라 여기 포함하지 않는다.
+var MISS_WARN_THRESHOLD = 2;
+var MISS_KIND_LABELS = {
+  deepResearchToggle: "딥리서치 모드 전환 버튼",
+  responseContainer: "응답 영역",
+};
+
+function updateSelectorMissStreak(misses) {
+  var missSet = {};
+  (misses || []).forEach(function (k) { missSet[k] = true; });
+
+  chrome.storage.local.get(["selectorMissStreak", "selectorWarning"], function (res) {
+    var streak = res.selectorMissStreak || {};
+    Object.keys(MISS_KIND_LABELS).forEach(function (kind) {
+      var missed = !!missSet[kind];
+      streak[kind] = missed ? (streak[kind] || 0) + 1 : 0;
+
+      if (missed && streak[kind] === MISS_WARN_THRESHOLD) {
+        chrome.storage.local.set({ selectorWarning: { kind: kind, streak: streak[kind], since: Date.now() } });
+        notify(
+          "숏폼 리서치 — 선택자 확인 필요",
+          MISS_KIND_LABELS[kind] + "을(를) " + streak[kind] + "번 연속 못 찾았습니다. 화면 구조가 바뀌었을 수 있어요."
+        );
+      } else if (!missed && res.selectorWarning && res.selectorWarning.kind === kind) {
+        chrome.storage.local.remove("selectorWarning");
+      }
+    });
+    chrome.storage.local.set({ selectorMissStreak: streak });
+  });
+}
+
 // content-script가 로드 직후 리스너 등록을 마치기 전에 메시지를 보내면
 // "Receiving end does not exist" 에러가 난다. Gemini는 SPA라 탭 status가
 // "complete"여도 앱 렌더링이 덜 끝났을 수 있어서, 실패 시 잠깐 쉬었다가
@@ -91,6 +127,57 @@ chrome.runtime.onMessage.addListener(function (msg) {
     startResearch(msg.brief);
   }
 
+  // 딥리서치가 조사 계획을 제시하고 승인을 기다리는 단계. 탭은 그대로 두고,
+  // 팝업에 "계획 확인 필요" 상태를 띄운다 -- 사람이 직접 계획을 읽고
+  // 승인/취소를 결정해야 하므로 여기서 자동으로 진행시키지 않는다.
+  if (msg && msg.type === "RESEARCH_PLAN_READY") {
+    chrome.storage.local.get(["activeResearch"], function (res) {
+      var active = res.activeResearch;
+      chrome.storage.local.set({
+        pendingPlan: {
+          tabId: active ? active.tabId : null,
+          planText: msg.planText,
+          readyAt: Date.now(),
+        },
+      });
+      notify("숏폼 리서치 — 계획 확인 필요", "제미나이가 조사 계획을 제시했습니다. 확장 팝업에서 확인 후 승인/취소하세요.");
+    });
+  }
+
+  if (msg && msg.type === "APPROVE_PLAN") {
+    chrome.storage.local.get(["pendingPlan"], function (res) {
+      if (!res.pendingPlan || !res.pendingPlan.tabId) return;
+      chrome.tabs.sendMessage(res.pendingPlan.tabId, { type: "CONFIRM_PLAN" }, function () { void chrome.runtime.lastError; });
+      chrome.storage.local.remove("pendingPlan");
+    });
+  }
+
+  if (msg && msg.type === "CANCEL_PLAN") {
+    chrome.storage.local.get(["pendingPlan", "activeResearch"], function (res) {
+      if (res.pendingPlan && res.pendingPlan.tabId) {
+        chrome.tabs.sendMessage(res.pendingPlan.tabId, { type: "CANCEL_PLAN" }, function () { void chrome.runtime.lastError; });
+      }
+      chrome.storage.local.remove("pendingPlan");
+    });
+  }
+
+  if (msg && msg.type === "RESEARCH_CANCELLED") {
+    chrome.storage.local.get(["activeResearch"], function (res) {
+      var active = res.activeResearch;
+      pushLog({
+        briefSnippet: active ? active.brief.slice(0, 80) : "",
+        startedAt: active ? active.startedAt : Date.now(),
+        finishedAt: Date.now(),
+        status: "cancelled",
+      });
+      if (active && active.tabId) {
+        chrome.tabs.remove(active.tabId, function () { void chrome.runtime.lastError; });
+      }
+      chrome.storage.local.remove("activeResearch");
+      chrome.storage.local.remove("pendingPlan");
+    });
+  }
+
   if (msg && msg.type === "RESEARCH_COMPLETE") {
     chrome.storage.local.get(["activeResearch"], function (res) {
       var active = res.activeResearch;
@@ -102,6 +189,7 @@ chrome.runtime.onMessage.addListener(function (msg) {
         result: msg.result,
         copiedToClipboard: msg.copiedToClipboard,
       });
+      updateSelectorMissStreak(msg.misses);
       notify(
         "숏폼 리서치 완료",
         msg.copiedToClipboard
@@ -114,6 +202,7 @@ chrome.runtime.onMessage.addListener(function (msg) {
         }, CLOSE_DELAY_ON_SUCCESS_MS);
       }
       chrome.storage.local.remove("activeResearch");
+      chrome.storage.local.remove("pendingPlan");
     });
   }
 
@@ -127,9 +216,20 @@ chrome.runtime.onMessage.addListener(function (msg) {
         status: "error",
         note: msg.message,
       });
+      updateSelectorMissStreak(msg.misses);
       notify("숏폼 리서치 실패", msg.message + " — 창을 열어둔 채로 두었으니 직접 확인해보세요.");
       chrome.storage.local.remove("activeResearch");
+      chrome.storage.local.remove("pendingPlan");
       // 실패 시엔 탭을 안 닫는다 (파일 상단 설명 참고).
+    });
+  }
+
+  if (msg && msg.type === "DISMISS_SELECTOR_WARNING") {
+    chrome.storage.local.get(["selectorMissStreak", "selectorWarning"], function (res) {
+      var streak = res.selectorMissStreak || {};
+      if (res.selectorWarning) streak[res.selectorWarning.kind] = 0;
+      chrome.storage.local.set({ selectorMissStreak: streak });
+      chrome.storage.local.remove("selectorWarning");
     });
   }
 });
