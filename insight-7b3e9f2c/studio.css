@@ -74,15 +74,23 @@ code, pre{ overflow-wrap:anywhere; }
 .wrap:has(> .doc){max-width:var(--width-content);}
 .doc > h2, .doc > h3, .doc > h4,
 .doc > p, .doc > ul, .doc > ol,
-.doc > blockquote, .doc > .lede{
+.doc > blockquote, .doc > .lede, .doc > .table-wrap{
   /* 2026-08-31: margin-left:0(컨테이너 왼쪽에 붙임) -> margin:0 auto(가운데
      정렬)로 변경. ask.html처럼 컨테이너 자체가 읽기폭인 텍스트 전용 페이지는
      항상 화면 중앙에 떠 있는데, 표준형 컨테이너 안에서 텍스트만 좁힌 .doc
      페이지들은 왼쪽에 붙어 있어서 "어떤 메뉴는 가운데, 어떤 메뉴는 왼쪽"으로
-     보였다(사장님 실사용 관찰). 표·이미지는 여전히 컨테이너 전체 폭을 그대로
-     쓰므로, 좁은 텍스트만 같은 중심축으로 가운데 정렬하면 폭이 다른 요소끼리도
-     같은 축을 공유하는 모양이 된다(에디토리얼 사이트의 "breakout" 레이아웃과
-     동일한 원리 -- 좁은 본문과 넓은 표/이미지가 같은 중심을 공유).
+     보였다(사장님 실사용 관찰). 좁은 텍스트만 같은 중심축으로 가운데 정렬하면
+     폭이 다른 요소끼리도 같은 축을 공유하는 모양이 된다(에디토리얼 사이트의
+     "breakout" 레이아웃과 동일한 원리).
+     .table-wrap도 같이 넣은 이유: style-guide.html처럼 셀 안에 완결된 문장이
+     들어가는 "설명형" 표는 숫자·짧은 값을 나란히 비교하는 진짜 데이터 표가
+     아니라 사실상 산문이라, 넓게 펼치면 셀 한 줄이 너무 길어져 본문과 같은
+     가독성 문제가 생긴다(사장님 관찰, 2026-08-31). 그래서 표도 본문과 같은
+     읽기 트랙으로 좁히고, 셀 안 문장은 줄바꿈되게 둔다(.doc td에 nowrap 없음).
+     여러 칼럼을 나란히 비교해야 하는 진짜 데이터 표는 .doc 패턴이 아니라
+     book-insight.html처럼 컨테이너 자체를 데이터형(--width-data)으로 쓰는
+     별도 페이지 유형이라 이 규칙과 무관하다. 이미지·카드 그리드(asset-grid
+     등)는 여전히 컨테이너 전체 폭 그대로 breakout 트랙에 남는다.
      margin-left/right에만 !important를 건다 -- 각 .doc 페이지가 자기 인라인
      <style>에서 이 선택자와 똑같은 특이도로 세로 여백(margin-top/bottom)을
      따로 지정하는데, margin 단축 속성으로 쓰면(예: margin:40px 0 14px)
