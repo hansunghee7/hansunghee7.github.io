@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-08-31T15:16:05.405288+00:00",
+  "updated_at": "2026-08-31T20:00:48.816090+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 120,
-    "activeUsers": 66,
-    "newUsers": 64,
-    "returningUsers": 2
+    "sessions": 122,
+    "activeUsers": 68,
+    "newUsers": 65,
+    "returningUsers": 3
   },
   "daily": [
     {
@@ -45,9 +45,16 @@
     },
     {
       "date": "2026-08-31",
-      "sessions": 6,
-      "activeUsers": 5,
+      "sessions": 7,
+      "activeUsers": 6,
       "newUsers": 5,
+      "returningUsers": 1
+    },
+    {
+      "date": "2026-09-01",
+      "sessions": 1,
+      "activeUsers": 1,
+      "newUsers": 1,
       "returningUsers": 0
     }
   ],
@@ -62,7 +69,7 @@
     }
   ],
   "landing_types": {
-    "home": 85,
+    "home": 87,
     "log_home": 7,
     "individual_post": 16,
     "other": 21
@@ -70,11 +77,11 @@
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 89
+      "sessions": 90
     },
     {
       "source": "(not set)",
-      "sessions": 12
+      "sessions": 13
     },
     {
       "source": "searchadvisor.naver.com",
@@ -292,7 +299,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 77,
+    "total_desktop_sessions": 78,
     "excluded_invalid_sessions": 18,
     "by_resolution": [
       {
@@ -303,7 +310,7 @@
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 16
+        "sessions": 17
       },
       {
         "resolution": "1920x1080",
