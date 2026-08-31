@@ -37,6 +37,15 @@
   .toc a{ color:var(--dim); text-decoration:none; padding:3px 0; }
   .toc a:hover{ color:var(--ink); }
 
+  /* 2026-08-31: TOC·diff 리스트·프리뷰·인시던트 박스는 세로 1컬럼이라 표·카드
+     그리드처럼 넓어야 할 이유가 없다 -- 컨테이너 전체 폭을 그대로 쓰면 옆의
+     본문 글(가운데 정렬)과 좌우 폭이 안 맞아 계단처럼 어긋나 보인다(brand-guide.html
+     에서 실사용 관찰, 같은 원인이라 여기도 동일 적용). 본문과 같은 읽기 트랙으로
+     좁혀서 같은 중심축에 맞춘다. */
+  .doc > .toc, .doc > .diff-list, .doc > .preview, .doc > .incident{
+    max-width:var(--width-prose); margin-left:auto; margin-right:auto;
+  }
+
   .swatch{ display:inline-block; width:14px; height:14px; border-radius:4px; border:1px solid var(--line-soft); vertical-align:-2px; margin-right:8px; }
 
   .preview{ background:#080808; border-radius:10px; padding:28px 24px; margin:14px 0 20px; display:flex; flex-wrap:wrap; gap:16px; align-items:center; }
