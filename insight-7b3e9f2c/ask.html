@@ -60,6 +60,7 @@
   .answer code{background:#f0efe9; padding:1px 5px; border-radius:4px; font-size:0.92em;}
 
   .answer.err{color:var(--bad); display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;}
+  .err-detail{font-size:11.5px; color:var(--muted); margin-top:4px; word-break:break-all;}
   .retry-btn{background:none; border:1px solid rgba(184,64,42,0.4); color:var(--bad); border-radius:999px; padding:4px 12px; font-size:11.5px; font-family:inherit; cursor:pointer; flex-shrink:0; transition:background-color .15s;}
   .retry-btn:hover{background:rgba(184,64,42,0.08);}
 
@@ -94,6 +95,7 @@
   .send-btn{background:var(--ink); color:#fff; border:none; border-radius:12px; width:38px; height:38px; flex-shrink:0; cursor:pointer; display:flex; align-items:center; justify-content:center;}
   .send-btn:disabled{opacity:0.35; cursor:default;}
   .send-btn svg{width:16px; height:16px;}
+  .cooldown-note{font-size:11.5px; color:var(--muted); text-align:right; padding:6px 4px 0;}
 
   /* 이 페이지는 채팅 화면이라 .wrap이 뷰포트 높이를 꽉 채워야 한다
      (studio.css의 사이드바 모바일 축소 규칙과는 별개로 이 페이지만 필요). */
@@ -136,6 +138,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
         </button>
       </div>
+      <div class="cooldown-note" id="cooldownNote" style="display:none"></div>
     </form>
   </div>
 </div>
@@ -156,6 +159,11 @@
   let conversationHistory = [];
   const MAX_HISTORY_ENTRIES = 10;
 
+  // Voyage AI 무료 티어가 분당 3회(요청당 20초 간격)로 막혀 있다 -- 결제
+  // 수단을 등록하지 않기로 했으므로, 대신 다음 질문 전송 버튼을 그만큼
+  // 붙잡아둬서 애초에 한도에 안 부딪히게 한다 (2026-08-31).
+  const MIN_REQUEST_INTERVAL_MS = 21000;
+
   const thread = document.getElementById("thread");
   const emptyState = document.getElementById("emptyState");
   const form = document.getElementById("askForm");
@@ -163,6 +171,7 @@
   const btn = document.getElementById("askBtn");
   const setupNote = document.getElementById("setupNote");
   const newChatBtn = document.getElementById("newChatBtn");
+  const cooldownNote = document.getElementById("cooldownNote");
 
   // 답변 끝에 모델이 스스로 붙이는 "(blog - ..., book - ...)" 인용을 떼어낸다 --
   // 아래에서 출처를 칩으로 따로, 더 깔끔하게 보여주기 때문에 중복이 된다.
@@ -306,18 +315,45 @@
     el.scrollIntoView({ behavior: "smooth", block: "end" });
   }
 
+  // Worker가 보내는 rawMessage 안에 실패한 단계(Voyage/Supabase 등)가 이미
+  // 문자열로 찍혀 있어서, 그걸 근거로 어느 단계였는지만 짧게 구분해준다 --
+  // 콘솔을 안 열어도 화면에서 바로 원인을 좁힐 수 있게 하기 위함
+  // (2026-08-31, "에러가 계속 나는데 원인 파악이 안 된다"는 문의로 추가됨).
+  function categorizeError(rawMessage) {
+    const msg = String(rawMessage);
+    if (msg.includes("Voyage 오류")) return "임베딩(Voyage AI) 단계";
+    if (msg.includes("Supabase 오류")) return "검색 DB(Supabase) 단계";
+    if (msg.includes("User location is not supported")) return "Gemini 지역 차단";
+    if (msg.includes("Gemini") || msg.includes("candidates")) return "답변 생성(Gemini) 단계";
+    return "원인 미분류";
+  }
+
   function renderErrorWithRetry(el, rawMessage, onRetry) {
     console.error("Simplifier Q&A 오류:", rawMessage);
     el.className = "answer err";
     el.innerHTML = "";
+
+    const msgBox = document.createElement("div");
     const text = document.createElement("div");
     text.textContent = "답변을 만드는 중 문제가 생겼습니다. 잠시 후 다시 시도해주세요.";
-    el.appendChild(text);
+    msgBox.appendChild(text);
+
+    const detail = document.createElement("div");
+    detail.className = "err-detail";
+    detail.textContent = categorizeError(rawMessage) + " · " + String(rawMessage).slice(0, 200);
+    msgBox.appendChild(detail);
+
+    el.appendChild(msgBox);
+
     const retryBtn = document.createElement("button");
     retryBtn.type = "button";
     retryBtn.className = "retry-btn";
     retryBtn.textContent = "다시 시도";
-    retryBtn.addEventListener("click", () => onRetry());
+    // 쿨다운 중에는 버튼이 disabled라 클릭 자체가 안 먹지만, 만약을
+    // 대비해 한 번 더 확인한다.
+    retryBtn.addEventListener("click", () => {
+      if (!btn.disabled) onRetry();
+    });
     el.appendChild(retryBtn);
   }
 
@@ -378,6 +414,34 @@
 
   newChatBtn.addEventListener("click", resetToEmpty);
 
+  let cooldownTimer = null;
+
+  // 질문이 끝난 시점(requestStartedAt)부터 21초가 안 지났으면 그만큼
+  // 더 버튼을 막아두고, 몇 초 남았는지 보여준다.
+  function applyCooldown(remainingMs) {
+    if (remainingMs <= 0) {
+      btn.disabled = false;
+      input.focus();
+      return;
+    }
+    let remaining = Math.ceil(remainingMs / 1000);
+    cooldownNote.style.display = "block";
+    cooldownNote.textContent = `다음 질문까지 ${remaining}초 (Voyage AI 무료 요청 한도 보호)`;
+    if (cooldownTimer) clearInterval(cooldownTimer);
+    cooldownTimer = setInterval(() => {
+      remaining -= 1;
+      if (remaining <= 0) {
+        clearInterval(cooldownTimer);
+        cooldownTimer = null;
+        cooldownNote.style.display = "none";
+        btn.disabled = false;
+        input.focus();
+      } else {
+        cooldownNote.textContent = `다음 질문까지 ${remaining}초 (Voyage AI 무료 요청 한도 보호)`;
+      }
+    }, 1000);
+  }
+
   async function ask(question) {
     showThread();
     addUserRow(question);
@@ -386,6 +450,7 @@
   }
 
   async function fetchAnswer(question, answerEl) {
+    const requestStartedAt = Date.now();
     btn.disabled = true;
     answerEl.className = "answer";
     answerEl.innerHTML = '<div class="thinking"><span></span><span></span><span></span></div>';
@@ -472,13 +537,16 @@
       renderErrorWithRetry(answerEl, "연결 오류 — " + err.message, retry);
       setupNote.style.display = "block";
     } finally {
-      btn.disabled = false;
-      input.focus();
+      const elapsed = Date.now() - requestStartedAt;
+      applyCooldown(MIN_REQUEST_INTERVAL_MS - elapsed);
     }
   }
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
+    // Enter로 제출하면 disabled 버튼도 우회되므로, 쿨다운 중인지 여기서
+    // 한 번 더 확인해서 막는다.
+    if (btn.disabled) return;
     const question = input.value.trim();
     if (!question) return;
     input.value = "";

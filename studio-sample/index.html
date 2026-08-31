@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simplifier Studio 샘플</title>
+
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<link rel="stylesheet" href="/insight-7b3e9f2c/studio.css">
+
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400&display=swap" rel="stylesheet">
+
+<style>
+  .doc{font-size:15px; line-height:1.75; color:var(--dim);}
+  .doc > *:first-child{margin-top:0;}
+  .doc .lede{font-size:15.5px; color:var(--dim); border-left:2px solid var(--line); padding-left:14px; margin-bottom:28px;}
+  .doc p{margin:0 0 14px;}
+
+  .card-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:28px 0 8px;}
+  @media (max-width:900px){ .card-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:640px){ .card-grid{grid-template-columns:1fr;} }
+  .sample-card{
+    display:block; border:1px solid var(--line-soft); border-radius:10px; padding:20px 22px;
+    text-decoration:none; background:#fff; transition:border-color .15s;
+  }
+  .sample-card:hover{border-color:var(--dim);}
+  .sample-card .k{font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em;}
+  .sample-card .t{
+    font-family:'Noto Serif KR',serif; font-weight:400; font-size:19px; color:var(--ink);
+    margin:6px 0 8px;
+  }
+  .sample-card .d{font-size:13px; color:var(--dim); line-height:1.6;}
+
+  .note{font-size:12.5px; color:var(--muted); line-height:1.85; margin:32px 0 0; padding-top:20px; border-top:1px solid var(--line-soft);}
+</style>
+</head>
+<body class="has-shell-nav">
+<nav id="adminShellNav"></nav>
+<div class="wrap">
+  <header>
+    <h1>Simplifier Studio 샘플</h1>
+    <span class="meta-text">심플리파이어가 Claude Code로 자사에 직접 만든 운영 시스템 예시 · 실제 화면</span>
+  </header>
+
+  <article class="doc">
+    <p class="lede">아래 세 화면은 저희가 심플리파이어를 실제로 운영하며 AI로 직접 만든 내부 시스템의
+    일부입니다 — 가상의 목업이 아니라 지금 이 순간 실제로 쓰고 있는 화면 그대로를 보여드립니다.
+    "AI를 잘 씁니다"라는 말 대신, 실제로 그렇게 회사를 운영하고 있다는 증거로 봐주세요.</p>
+
+    <div class="card-grid">
+      <a class="sample-card" href="/studio-sample/ux-guide.html">
+        <div class="k">Design System</div>
+        <div class="t">통합 UX 가이드</div>
+        <div class="d">성격이 다른 공개 홈페이지와 관리자 화면을 한 문서에서 관리하는
+        타이포그래피·색상·간격 규칙과 컴포넌트 정본.</div>
+      </a>
+      <a class="sample-card" href="/studio-sample/brand-guide.html">
+        <div class="k">Brand</div>
+        <div class="t">브랜드 가이드</div>
+        <div class="d">승인된 슬로건·카피 원칙과 로고·사진·서명 에셋 카탈로그 —
+        매번 새로 지어내지 않고 재사용하기 위한 참조 문서.</div>
+      </a>
+      <a class="sample-card" href="/studio-sample/morning-briefing.html">
+        <div class="k">Automation</div>
+        <div class="t">모닝 브리핑 샘플</div>
+        <div class="d">매일 06:00 KST 자동으로 발송되는 실제 브리핑 메일 — 방문 지표·검색
+        유입·도서 순위·시스템 상태를 매일 아침 요약해 받습니다.</div>
+      </a>
+    </div>
+
+    <p class="note">이 페이지들은 심플리파이어 내부 스튜디오 화면을 그대로 옮긴 것이라
+    검색엔진에는 노출되지 않습니다. 링크는 저희가 직접 안내해 드린 분들만 열람하시면 됩니다.</p>
+  </article>
+</div>
+<script src="/studio-sample/sample-nav.js"></script>
+</body>
+</html>

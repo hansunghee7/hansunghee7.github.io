@@ -81,8 +81,8 @@ TEMPLATE = """<!DOCTYPE html>
 <nav id="adminShellNav"></nav>
 <div class="wrap">
   <header>
-    <h1>멀티 LLM 협업 규약</h1>
-    <span class="meta-text">.claude/skills/multi-llm-handoff/SKILL.md · 자동 생성 __STAMP__ · 정본(SKILL.md)을 고쳤으면 scripts/build_llm_protocol_page.py 재실행</span>
+    <h1>멀티 LLM 협업 규약<button type="button" class="info-dot" aria-label="설명 보기">ⓘ<span class="info-text">정본은 <code>.claude/skills/multi-llm-handoff/SKILL.md</code>입니다. 이 페이지는 그 파일에서 스크립트가 자동 생성한 사본이라 직접 고치면 다음 실행 때 되돌아갑니다 — 정본을 고쳤으면 <code>scripts/build_llm_protocol_page.py</code>를 재실행해 페이지를 갱신한 뒤 같이 커밋하세요.</span></button></h1>
+    <span class="meta-text">자동 생성 __STAMP__</span>
   </header>
   <article class="doc">
 __BODY__
