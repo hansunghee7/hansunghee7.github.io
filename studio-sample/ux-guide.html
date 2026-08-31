@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>통합 UX 가이드 - Simplifier Studio 샘플</title>
+
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<link rel="stylesheet" href="/insight-7b3e9f2c/studio.css">
+
+<style>
+  .doc{ font-size:15px; line-height:1.75; color:var(--dim); }
+  .doc h2{ font-family:'Noto Serif KR',serif; font-weight:400; font-size:22px; color:var(--ink); margin:56px 0 6px; }
+  .doc h2:first-child{ margin-top:0; }
+  .doc h3{ font-size:15.5px; font-weight:700; color:var(--ink); margin:28px 0 10px; }
+  .doc .h2-note{ font-size:12px; color:var(--muted); margin:0 0 16px; }
+  .doc p{ margin:0 0 14px; }
+  .doc ul, .doc ol{ margin:0 0 14px; padding-left:22px; }
+  .doc li{ margin-bottom:6px; }
+  .doc li b, .doc p b{ color:var(--ink); font-weight:700; }
+  .doc code{ font-family:ui-monospace,'SFMono-Regular',Menlo,monospace; font-size:0.88em; background:#f7f6f2; padding:1.5px 5px; border-radius:4px; color:var(--dim); }
+  .doc .lede{ font-size:15.5px; color:var(--dim); border-left:2px solid var(--line); padding-left:14px; margin-bottom:16px; }
+  .doc .lede + .lede{ margin-top:-4px; }
+
+  .table-wrap{ overflow-x:auto; margin:0 0 14px; -webkit-overflow-scrolling:touch; }
+  .doc table{ width:100%; border-collapse:collapse; font-size:13.5px; }
+  .doc th{ text-align:left; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.04em; color:var(--muted); padding:0 12px 8px 0; border-bottom:1px solid var(--line); white-space:nowrap; }
+  .doc td{ padding:10px 12px 10px 0; border-bottom:1px solid var(--line-soft); vertical-align:top; }
+  .doc td:last-child, .doc th:last-child{ padding-right:0; }
+
+  .toc{ display:flex; flex-direction:column; gap:2px; margin:0 0 32px; padding:14px 16px; background:#f7f6f2; border-radius:10px; font-size:13px; }
+  .toc a{ color:var(--dim); text-decoration:none; padding:3px 0; }
+  .toc a:hover{ color:var(--ink); }
+
+  .swatch{ display:inline-block; width:14px; height:14px; border-radius:4px; border:1px solid var(--line-soft); vertical-align:-2px; margin-right:8px; }
+
+  .preview{ background:#080808; border-radius:10px; padding:28px 24px; margin:14px 0 20px; display:flex; flex-wrap:wrap; gap:16px; align-items:center; }
+  .preview.tight{ padding:20px 24px; gap:10px; }
+  .preview.cream{ background:#f5f3ee; }
+  .px-btn{ display:inline-block; background:#f5f3ee; color:#080808; font-family:'Boska','Source Serif 4',serif; font-style:italic; font-weight:400; font-size:15px; padding:12px 30px; border-radius:999px; border:none; }
+  .px-btn-outline{ display:inline-block; background:#080808; color:#f5f3ee; font-family:'Boska','Source Serif 4',serif; font-style:italic; font-weight:400; font-size:14px; padding:11px 26px; border-radius:999px; border:1px solid #f5f3ee; }
+  .px-tag{ display:inline-block; background:#f5f3ee; color:#080808; font-family:'Pretendard Variable',sans-serif; font-size:11px; font-weight:600; padding:4px 8px; border-radius:4px; }
+  .px-badge{ display:inline-flex; align-items:center; font-family:'Pretendard Variable',sans-serif; font-size:12px; font-weight:500; color:#8f8b82; border:1px solid rgba(245,243,238,0.16); border-radius:999px; padding:4px 12px; }
+  .px-h1{ font-family:'Boska','Source Serif 4',serif; font-weight:200; font-size:32px; color:#ffffff; margin:0; }
+  .px-body{ font-family:'Source Serif 4','Noto Serif KR',serif; font-weight:300; font-size:15px; color:#c9c8c2; margin:0; max-width:360px; line-height:1.8; }
+  .px-label{ font-family:'Pretendard Variable',sans-serif; font-size:11px; color:#8f8b82; text-transform:uppercase; letter-spacing:0.1em; margin:0; }
+
+  .incident{ border-left:3px solid var(--bad); background:#fdf4f1; padding:12px 14px; border-radius:0 8px 8px 0; margin-bottom:12px; font-size:13.5px; line-height:1.7; }
+  .incident b{ color:var(--bad); }
+
+  .pattern-compare{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:14px 0 20px; }
+  .pattern-card{ border:1px solid var(--line-soft); border-radius:10px; overflow:hidden; }
+  .pattern-card .mock{ height:90px; background:#fff; padding:10px; display:flex; flex-direction:column; gap:6px; }
+  .pattern-card .mock .bar{ height:8px; border-radius:3px; background:var(--line-soft); }
+  .pattern-card.dash .mock{ display:grid; grid-template-columns:1fr 1fr; gap:6px; align-content:start; }
+  .pattern-card.dash .mock .bar{ height:26px; }
+  .pattern-card.docp .mock .bar{ width:70%; }
+  .pattern-card .cap{ padding:8px 12px; font-size:12px; color:var(--muted); border-top:1px solid var(--line-soft); }
+  @media (max-width:600px){ .pattern-compare{ grid-template-columns:1fr; } }
+
+  .diff-list{ display:flex; flex-direction:column; gap:8px; margin:0 0 14px; }
+  .diff-item{ display:flex; gap:10px; align-items:flex-start; padding:10px 12px; border:1px solid var(--line-soft); border-radius:8px; font-size:13.5px; line-height:1.65; }
+  .diff-item .dot{ flex-shrink:0; width:8px; height:8px; border-radius:50%; margin-top:6px; }
+  .diff-item .dot.keep{ background:var(--good); }
+  .diff-item .dot.todo{ background:var(--warn); }
+</style>
+</head>
+<body class="has-shell-nav">
+<nav id="adminShellNav"></nav>
+
+<div class="wrap">
+  <header>
+    <h1>통합 UX 가이드<button type="button" class="info-dot" id="titleInfo" aria-label="설명 보기">ⓘ<span class="info-text">고객이 만나는 공개 홈페이지(simplifier.co.kr)와 관리자 전용 Simplifier Studio(이 화면 자체), 성격이 다른 두 화면을 한 문서에서 관리합니다. 정본 마크다운은 저장소의 docs/UX_GUIDE.md — 이 페이지는 그걸 사람이 읽기 좋게 렌더링한 것입니다. 스튜디오만의 세부 구현 규칙은 별도 정본(insight-7b3e9f2c/STYLE_GUIDE.md)을 따로 봅니다.</span></button></h1>
+    <span class="meta-text">2026-08-29 통합 · docs/UX_GUIDE.md 기준</span>
+  </header>
+
+  <article class="doc">
+    <p class="lede">이 저장소는 성격이 다른 두 화면을 동시에 갖고 있습니다 — 고객과 만나는 공개 홈페이지와, 관리자 전용 심플리파이어 스튜디오. "통합"이 색상까지 똑같이 맞춘다는 뜻은 아닙니다. 목적이 다른 화면은 다르게 생기는 게 맞습니다. 대신 (1) 목적과 무관하게 지켜야 할 공통 원칙, (2) 각 화면의 실제 규칙, (3) 의도적 차이와 아직 정리 안 된 차이를 구분해서 기록합니다.</p>
+
+    <nav class="toc">
+      <a href="#common">1. 공통 원칙 — 양쪽 다 지킬 것</a>
+      <a href="#public">2. 공개 홈페이지 — 실제 규칙</a>
+      <a href="#studio">3. 심플리파이어 스튜디오 — 요약</a>
+      <a href="#diff">4. 의도적 차이 vs 아직 정리 안 된 차이</a>
+      <a href="#todo">5. 정리 후보</a>
+      <a href="#incidents">6. 실제로 있었던 사고</a>
+    </nav>
+
+    <h2 id="common">1. 공통 원칙 — 양쪽 다 지킬 것</h2>
+    <p>새 페이지나 컴포넌트를 어느 쪽에 만들든 아래는 지킵니다.</p>
+
+    <h3>1.1 타이포그래피 페어링: 제목=세리프, 본문/UI=Pretendard</h3>
+    <p><b>제목류</b> — 공개 사이트는 <code>'Noto Serif KR'</code>(로그 글 커버) 또는 <code>'Boska','Source Serif 4'</code>(about·book·pillar·home), 스튜디오는 <code>'Noto Serif KR'</code>. 표기는 달라도 "제목은 명조/세리프" 원칙은 동일합니다.<br>
+    <b>본문/UI</b> — 공개 사이트는 <code>'Noto Sans KR'</code>(글 본문) 또는 <code>'Pretendard Variable'</code>(nav·카드·UI), 스튜디오는 전부 <code>'Pretendard Variable'</code>. 새 화면을 만들 때도 이 조합을 유지하고, 완전히 다른 서체군(고딕 단독, 손글씨체)을 새로 들이지 않습니다.</p>
+
+    <h3>1.2 점진적 정보 노출 (Progressive disclosure)</h3>
+    <p>핵심 정보는 항상 보이게, 부가 설명·재고성 정보는 숨겨뒀다 필요할 때만 보여줍니다. 구현 방식은 화면마다 다르고 <b>다르게 두는 것이 맞습니다</b>: 공개 사이트는 <code>&lt;details&gt;</code>/<code>&lt;summary&gt;</code>(필러 페이지 "더보기", book.html 목차, 모바일 GNB 아코디언 — 검색엔진 크롤러는 닫혀 있어도 읽습니다), 스튜디오는 ⓘ info-dot 버튼(hover/탭 토글). 메커니즘은 다르지만 배치 원칙은 공통입니다 — <b>그 정보가 설명하는 대상 바로 옆/아래에 둔다</b>, 링크 끝이나 화면 구석으로 밀어두지 않습니다.</p>
+
+    <h3>1.3 고정 테마 — 사용자 다크모드 대응 없음</h3>
+    <p>두 화면 다 <code>prefers-color-scheme</code>을 쓰지 않습니다. 대신 페이지 유형별로 테마를 고정합니다(공개: 대부분 다크 <code>#080808</code>+<code>#f5f3ee</code>, book.html만 예외적으로 라이트 크림 톤 / 스튜디오: 전체 라이트 고정). 도입하려면 두 화면 전체에 영향을 주는 별도 논의가 필요합니다.</p>
+
+    <h3>1.4 접근성 기본선</h3>
+    <p>장식용 이미지(연관글 썸네일 등)는 <code>alt=""</code>, 의미 있는 이미지는 실제 설명 텍스트 — 빈 값도 아니고 원본 CDN URL 토큰이나 파일명을 그대로 넣는 것도 안 됩니다(2026-08-29 블로그 본문 3개 글에서 실제로 발견해 수정한 사고 — 아래 6장 참고). 아이콘 전용 버튼(닫기, 이전/다음, 메뉴 열기, ⓘ 등)에는 <code>aria-label</code> 필수입니다.</p>
+
+    <h3>1.5 브랜드 표기</h3>
+    <p>로고·타이틀·메타데이터는 영문 <b>"Simplifier"</b>, 본문 서술은 한글 <b>"심플리파이어"</b>. 대표 개인명은 한글 본문 "한성희", 영문/저자 표기 "Han Sunghee"로 통일합니다.</p>
+    <p><b>로고 이미지는 배경에 맞는 버전을 씁니다</b> — 다크 배경엔 <code>log_assets/images/logo_white.png</code>, 라이트 배경엔 검정 로고(<code>logo_black.png</code>). <b>문서·브리핑형 페이지의 로고 배치는 헤더(제목 줄) 우측 끝</b> — 제목과 같은 행에 두고 날짜·메타 텍스트는 아래 행으로 분리합니다. 메타와 한 줄에 섞으면 화면 폭에 따라 로고가 애매한 위치로 밀립니다(2026-08-30 모닝 브리핑 미리보기에서 실제 발생해 수정). 로고엔 <code>alt="Simplifier"</code> 필수. 공개 사이트 GNB 로고는 좌측(홈 링크 관례)이라 이 규칙과 다른 게 맞습니다 — 문서형에만 적용.</p>
+
+    <h3>1.6 노출 범위를 먼저 정하고 시작한다</h3>
+    <p>새 페이지를 만들기 전에 "고객이 검색해서 찾아와야 하는가, 관리자만 봐야 하는가"부터 정합니다. 공개 성격이면 sitemap.xml 포함·JSON-LD/OG 메타 채움·검색엔진 노출 극대화가 원칙, 관리자 전용이면 <code>noindex,nofollow,noarchive</code> + <code>no-referrer</code> + 공개 nav 노출 금지 + 주소 자체를 유일한 자물쇠로 씁니다(스튜디오가 지금 이 방식).</p>
+
+    <h2 id="public">2. 공개 홈페이지 — 실제 규칙</h2>
+    <p>공개 사이트엔 공유 <code>:root</code> 디자인 토큰 파일이 없습니다 — 스타일은 각 레이아웃/include의 인라인 <code>&lt;style&gt;</code>에 있고, 레이아웃마다 거의 독립된 팔레트·타이포 세트를 씁니다. 아래는 두 파트로 나눠 정리했습니다: <b>2.1 홈페이지</b>(index.html/home-body.html, 오늘 실측한 상세값 + 미리보기)와 <b>2.2 그 외 레이아웃</b>(블로그 글·필러·book.html 등, 코드에서 확인한 값 요약).</p>
+
+    <h3>2.1 홈페이지(index.html) 디자인 시스템</h3>
+    <p>홈페이지는 딥블랙 배경 위에 크림 텍스트를 쓰는 다크 톤 하나로 통일돼 있습니다(예외는 아래 2.2의 book.html — 유일하게 밝은 크림 톤).</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>칩</th><th>이름</th><th>값</th><th>용도</th></tr>
+        <tr><td><span class="swatch" style="background:#080808"></span></td><td>딥블랙</td><td><code>#080808</code></td><td>홈페이지 배경</td></tr>
+        <tr><td><span class="swatch" style="background:#f5f3ee;border-color:#ccc"></span></td><td>크림 화이트</td><td><code>#f5f3ee</code></td><td>기본 텍스트, 버튼 배경(반전), 태그 배경(반전)</td></tr>
+        <tr><td><span class="swatch" style="background:#ffffff;border-color:#ccc"></span></td><td>순백</td><td><code>#ffffff</code></td><td>히어로 h1 / CTA 큰 헤딩 등 극소수 강조 전용 — 일반 본문엔 안 씀</td></tr>
+        <tr><td><span class="swatch" style="background:#8f8b82"></span></td><td>보조 텍스트</td><td><code>#8f8b82</code></td><td>라벨, 캡션, 메타 정보(작성일·카테고리 등)</td></tr>
+        <tr><td><span class="swatch" style="background:#c9c8c2"></span></td><td>본문(세리프)</td><td><code>#c9c8c2</code></td><td>에세이·인용문 단락 본문</td></tr>
+        <tr><td><span class="swatch" style="background:#181818"></span></td><td>이미지 플레이스홀더</td><td><code>#181818</code></td><td>이미지 로딩 전 배경</td></tr>
+        <tr><td>—</td><td>보더/구분선</td><td><code>rgba(245,243,238, 0.05~0.35)</code></td><td>투명도로 위계 조절</td></tr>
+      </table>
+    </div>
+
+    <p><b>타이포그래피</b> — 세 폰트를 역할별로 고정합니다. 아래는 홈페이지의 히어로·에세이·CTA 기준이고, 실제 <b>블로그 글 본문</b>은 <code>Noto Sans KR</code>(산세리프)을 씁니다 — 홈페이지의 세리프 에세이체와는 다른 값이니 혼동하지 마세요(2.2 참고).</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>역할</th><th>폰트</th><th>어디에</th></tr>
+        <tr><td>디스플레이</td><td><code>'Boska', serif</code> (weight 200/300 위주)</td><td>헤드라인, 버튼 텍스트</td></tr>
+        <tr><td>세리프 본문</td><td><code>'Source Serif 4', 'Noto Serif KR', serif</code></td><td>에세이, 인용문, 서술형 CTA 문구 (홈페이지 한정)</td></tr>
+        <tr><td>UI 산세리프</td><td><code>'Pretendard Variable', sans-serif</code></td><td>태그, 라벨, 카드 메타, 네비게이션, 폼</td></tr>
+      </table>
+    </div>
+    <div class="preview">
+      <div><p class="px-label">디스플레이 · Boska</p><p class="px-h1">explosive growth.</p></div>
+    </div>
+    <div class="preview tight">
+      <p class="px-body">"폭발적 성장은 갑작스럽게 오는 것이 아닙니다. 단순화해온 모든 것이 마침내 위로 향할 곳밖에 남지 않은 순간에 찾아옵니다." — 세리프 본문</p>
+    </div>
+
+    <div class="incident"><b>실제로 있었던 사고</b> — Fontshare에서 Boska를 로드할 때 이탤릭 스타일을 따로 요청하지 않으면(<code>font-style:italic</code>을 줘도) 업라이트로 렌더링됩니다. 이탤릭이 필요하면 요청 weight를 <code>기본weight + 1</code>로 걸어야 합니다(200→201, 300→301, 400→401 — Fontshare 자체 규칙). 히어로 강조 텍스트가 기울어지지 않고 그대로 나온 실제 버그였습니다(2026-08-26).</div>
+
+    <p><b>간격 리듬</b> — 섹션 사이 여백을 임의로 정하지 않고 아래 값으로 통일합니다. 실측(<code>getBoundingClientRect</code>)으로 여러 번 재조정해서 지금 값에 정착했습니다.</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>구간</th><th>PC (min-width:761px)</th><th>모바일 (max-width:760px)</th></tr>
+        <tr><td>서로 다른 섹션 사이 (주제가 바뀌는 지점)</td><td><code>130px</code></td><td><code>96px</code></td></tr>
+        <tr><td>같은 섹션 안 하위 블록 사이</td><td><code>130px</code> (통일)</td><td><code>72px</code></td></tr>
+        <tr><td>좌우 거터</td><td><code>32px</code></td><td><code>16px</code> (헤더 nav만 예외로 32px 유지)</td></tr>
+      </table>
+    </div>
+    <p><b>브레이크포인트</b> — 모바일↔데스크톱을 가르는 기준은 <code>760px / 761px</code> 하나로 고정입니다. 그 외 <code>480 / 600 / 640 / 700 / 820 / 860 / 960px</code> 같은 값은 개별 컴포넌트가 자기 콘텐츠 폭에 맞춰 쓰는 보조 기준이라 강제 규칙은 아닙니다.</p>
+
+    <h3>컴포넌트</h3>
+    <p><b>버튼</b> — 필(pill) 형태(<code>border-radius:999px</code>), Boska 이탤릭. hover 시 배경/글자색을 서로 반전. 채운 버전(주요 CTA)과 아웃라인 버전(보조 CTA) 두 종류만 씁니다.</p>
+    <div class="preview">
+      <button class="px-btn">Contact</button>
+      <button class="px-btn-outline">강연 문의</button>
+    </div>
+    <p><b>태그 · 배지</b> — 카테고리 태그는 크림 배경에 검정 글씨(색 반전), <code>Pretendard</code> 11px 600. 상태 배지("완결" 등)는 반대로 배경 없이 옅은 보더만 두른 pill — 태그보다 존재감을 낮춰 부제 취급되게 합니다.</p>
+    <div class="preview tight">
+      <span class="px-tag">스타트업 인사이트</span>
+      <span class="px-badge">완결</span>
+    </div>
+
+    <h3>홈페이지 새 페이지·섹션을 만들 때 체크리스트</h3>
+    <ol>
+      <li>색은 위 팔레트에서만 고른다 — 새 hex 값을 추가하지 않는다.</li>
+      <li>헤드라인은 Boska, 서술형 문장은 세리프, 태그·라벨·버튼 같은 기능적 UI 텍스트는 Pretendard.</li>
+      <li>Boska를 이탤릭으로 쓰면 <code>weight+1</code> 로드를 잊지 않는다.</li>
+      <li>섹션 간격은 130 / 96 / 72px 리듬, 좌우 거터는 32 / 16px.</li>
+      <li><code>index.html</code>처럼 스테이징과 짝을 이루는 페이지는 반드시 공유 include로 뽑는다(<code>_includes/home-body.html</code> 사례). 반대로 about·speaking처럼 짝이 없는 단독 <code>layout: null</code> 페이지는 톤(색·폰트)만 같으면 충분하고, 값 자체를 억지로 공통 파일로 뽑지 않는다 — 실제로 비교해보면 페이지마다 여백·크기가 의도적으로 다르게 튜닝돼 있어서, 억지로 합치면 불필요한 추상화만 늘어난다.</li>
+      <li>새 시각 컴포넌트를 만들기 전에 위 컴포넌트 목록에 재사용할 게 있는지 먼저 확인한다.</li>
+    </ol>
+
+    <h3>재사용 가능한 공유 파일 (홈페이지)</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>파일</th><th>용도</th></tr>
+        <tr><td><code>_includes/home-body.html</code></td><td>홈페이지 전체(헤드 메타 이후 전부) — index.html과 preview/index.html이 공용</td></tr>
+        <tr><td><code>_includes/post_cta.html</code></td><td>블로그 글 하단 CTA, 카테고리별로 문구 분기</td></tr>
+        <tr><td><code>_includes/header.html</code> / <code>header-preview.html</code></td><td>상단 네비게이션 (실서버/스테이징용 분리)</td></tr>
+        <tr><td><code>_includes/footer.html</code>, <code>contact_modal.html</code></td><td>푸터, 문의 폼 모달</td></tr>
+      </table>
+    </div>
+
+    <h3>2.2 그 외 레이아웃 — 표면별 실제 규칙</h3>
+    <p>블로그 글·필러·book.html 등은 각자 다른 팔레트/토큰을 씁니다. 코드에서 직접 확인한 값입니다.</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>레이아웃/컴포넌트</th><th>배경/텍스트</th><th>비고</th></tr>
+        <tr><td><code>_layouts/default.html</code> (로그 글)</td><td>본문 <code>#fff</code>/<code>#333</code>, 헤더 스크림 <code>#080808</code></td><td><code>--nav-margin-top/bottom</code>만 CSS 변수화</td></tr>
+        <tr><td><code>header.html</code>, <code>footer.html</code>, <code>contact_modal.html</code></td><td>다크 <code>#080808</code> bg, <code>#f5f3ee</code>(웜 오프화이트) fg</td><td>전역 GNB·푸터·모달 공통</td></tr>
+        <tr><td><code>_layouts/pillar.html</code> (카테고리 허브)</td><td><code>#080808</code>/<code>#f5f3ee</code>, 카드 <code>#111</code></td><td>다크, GNB 없이 로고+카테고리 pill만</td></tr>
+        <tr><td><code>_layouts/book.html</code> (책 상세)</td><td><code>--bg:#f5f3ee; --card:#fff; --ink:#171410; --muted:#79736a</code></td><td><b>유일하게 밝은 크림 톤</b>(jamesclear.com 벤치마킹), 로컬 스코프 토큰</td></tr>
+        <tr><td><code>home-body.html</code> (홈)</td><td><code>#080808</code>/<code>#f5f3ee</code></td><td><code>--logo-max-height</code> 등 <code>clamp()</code> 반응형 변수</td></tr>
+      </table>
+    </div>
+    <p><b>Border-radius</b>: 버튼/필 <code>999px</code>(pill), 카드 <code>8~12px</code>, 모달 <code>12px</code>, 프로필 이미지 <code>50%</code>(원형). <b>그림자</b>: <code>0 10px 30px rgba(0,0,0,.3)</code>(드롭다운/토스트), <code>0 24px 60px rgba(0,0,0,.5)</code>(더보기 모달).</p>
+    <p><b>폰트 로드</b>(default.html): <code>Noto Sans KR</code>, <code>Noto Serif KR</code>, <code>Pretendard Variable</code>(CDN), <code>Boska</code>(Fontshare), <code>Source Serif 4</code>. 인용/강조 문구엔 <code>'Source Serif 4','Noto Serif KR',serif</code> 이탤릭을 자주 씁니다.</p>
+    <p><b>레이아웃 구조</b>: <code>default.html</code>의 <code>.cover-wrap</code>은 <code>index-mode</code>(22vh 배너)와 <code>post-mode</code>(100vh sticky 히어로) 두 모드로 분기. GNB는 글 페이지 전용 <code>.log-nav</code>(68px, 그라데이션 스크림)와 홈/목록 전용 <code>header.html</code>(sticky, 드롭다운) 두 종류. <b>브레이크포인트</b>: <code>1024px</code>(카드 3열) → <code>860px</code>(nav 버거 전환) → <code>768px</code>(카드 2열) → <code>700/760px</code>(패딩 축소) → <code>600/560/480px</code>(카드 1열, 모바일 세부조정).</p>
+    <p><b>공통 컴포넌트</b>: <code>header.html</code>(데스크톱 드롭다운 GNB + 모바일 <code>&lt;details&gt;</code> 아코디언, "Contact" pill), <code>contact_modal.html</code>(다크 모달, 문의유형 3버튼 + Formspree 연동, GA4/Clarity 이벤트 트래킹 내장), <code>post_cta.html</code>/<code>post_nav.html</code>/<code>related_posts.html</code>(글 하단 카테고리별 CTA·이전/다음글·연관글 카드), <code>.card-item</code>/<code>.card-grid</code>(로그 목록·pillar 공용 카드, 4→3→2→1열 반응형).</p>
+    <p><b>정보 노출 패턴</b>: ⓘ 버튼은 없음(전체 0건) — 대신 <code>&lt;details&gt;</code> 접기/펼치기, 완결 시리즈는 <code>.cat-done</code> pill 배지, 이미지 로딩 중엔 shimmer 스켈레톤. <b>내비게이션 구조</b>: GNB 카테고리 — Startup(스타트업 인사이트 / 대한민국 스타트업 미국진출을 묻다·완결 / 코치S·완결) · FieldPlay(기획일상, UX의 언어들, Be the PO / 기획자의 프레임웍·PO의 프레임웍·AI의 언어들·잉크드인대 기획학과·완결) · Life(심플리파이어 라이프, 토크세션) · About(소개, 책 2종, 외부 클래스 링크). 각 카테고리는 <code>_data/pillars.yml</code> 기반 필러 허브로 연결됩니다.</p>
+    <p><b>브랜드 노출</b>: 로고 이미지(<code>logo_white.png</code>, <code>alt="Simplifier"</code>)가 GNB·푸터·커버 전반에 반복. 텍스트는 <code>&lt;title&gt;</code>("... - Simplifier"), 푸터 저작권(<code>© 2022 Simplifier</code>), JSON-LD(<code>publisher.name: "Simplifier"</code>, <code>alternateName: "심플리파이어"</code>)에 일관 사용됩니다.</p>
+
+    <h2 id="studio">3. 심플리파이어 스튜디오 — 요약</h2>
+    <p class="h2-note">세부 규칙의 정본은 <code>insight-7b3e9f2c/STYLE_GUIDE.md</code>입니다. 새 스튜디오 페이지를 만들거나 고칠 땐 그 문서를 먼저 읽으세요 — 여기는 공개 사이트와 대조하기 위한 요약만 남깁니다.</p>
+    <p>공유 <code>studio.css</code>/<code>studio.js</code> 한 쌍으로 디자인 토큰·nav·ⓘ 버튼·새로고침 버튼 동작을 전부 통일합니다(공개 사이트와 가장 크게 다른 지점 — 공개 사이트는 레이아웃마다 스타일이 따로 있는 반면 스튜디오는 파일 하나만 고치면 전체에 반영됩니다). 라이트 고정 테마이고, <code>python scripts/check_studio_style.py</code>로 구조적 규칙 위반을 기계적으로 점검합니다.</p>
+
+    <p><b>스튜디오 안에도 화면 밀도가 다른 두 하위 패턴이 있습니다.</b> 같은 studio.css/js를 쓰지만 목적이 달라 레이아웃 폭과 정보 밀도가 다르게 보입니다 — <b>지금 이 페이지가 "사이트 인사이트"나 "시스템 구조"와 다르게 생긴 이유가 바로 이겁니다. 버그가 아니라 이 두 번째 패턴입니다.</b></p>
+
+    <div class="pattern-compare">
+      <div class="pattern-card dash">
+        <div class="mock"><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
+        <div class="cap"><b>대시보드형</b> — 사이트 인사이트, SNS/북 인사이트, 시스템 구조, 필러 관리 등. <code>.wrap</code> 1100~1600px, 표·타일·스파크라인으로 데이터 밀도 우선.</div>
+      </div>
+      <div class="pattern-card docp">
+        <div class="mock"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
+        <div class="cap"><b>문서형(.doc 패턴)</b> — 이 페이지(통합 UX 가이드), 숏폼 공정 정본·연출 사전·제작진 역할·파일럿 매뉴얼. <code>.wrap</code> 760px로 좁혀 가독성 우선, 문서 원문을 그대로 렌더.</div>
+      </div>
+    </div>
+    <p>두 번째 패턴의 구현 규칙(마크다운 렌더 방식, 상대링크 재작성, H1 중복 방지 등)은 STYLE_GUIDE.md의 ".doc 패턴" 절이 정본입니다.</p>
+
+    <h2 id="diff">4. 의도적 차이 vs 아직 정리 안 된 차이</h2>
+    <p><b>의도적 차이 (그대로 둘 것)</b></p>
+    <div class="diff-list">
+      <div class="diff-item"><span class="dot keep"></span><div><b>색상 팔레트</b> — 공개 사이트는 브랜드 감성(다크+웜톤 오프화이트, book만 크림 라이트), 스튜디오는 기능적 라이트(데이터 가독성 우선). 목적이 다른 화면이라 억지로 하나로 맞추지 않습니다.</div></div>
+      <div class="diff-item"><span class="dot keep"></span><div><b>정보 노출 메커니즘</b> — 공개는 <code>&lt;details&gt;</code>(SEO 친화적), 스튜디오는 ⓘ 버튼(비공개 도구라 SEO 고려 불필요).</div></div>
+      <div class="diff-item"><span class="dot keep"></span><div><b>노출 정책</b> — 공개는 검색엔진에 최대한 노출, 스튜디오는 검색엔진에서 완전히 숨김.</div></div>
+    </div>
+    <p><b>아직 정리 안 된 차이 (의도했다기보다 그때그때 만들다 보니 이렇게 됨)</b></p>
+    <div class="diff-list">
+      <div class="diff-item"><span class="dot todo"></span><div>스튜디오는 공유 CSS 파일(<code>studio.css</code>) 하나로 통합돼 있는데, 공개 사이트는 레이아웃마다(<code>default</code>/<code>pillar</code>/<code>book</code>/<code>home-body</code>) 인라인 <code>&lt;style&gt;</code>이 따로 있고 공유 <code>:root</code> 토큰 파일이 없습니다. 색상 하나를 바꾸려면 여러 파일을 각각 찾아 고쳐야 합니다.</div></div>
+    </div>
+
+    <h2 id="todo">5. 정리 후보</h2>
+    <p>지금 당장 바꾸자는 제안이 아니라, 나중에 필요해지면 참고할 수 있도록 남겨두는 기록입니다.</p>
+    <ul>
+      <li><b>공개 사이트 공유 디자인 토큰 파일화</b> — <code>_includes/design-tokens.html</code> 같은 걸 만들어 다크 팔레트와 book.html의 크림 팔레트를 변수로 뽑아 각 레이아웃이 include 해서 쓰게 하면, 스튜디오처럼 한 곳만 고쳐도 전체에 반영됩니다. 다만 Jekyll <code>{% include %}</code>로 CSS 변수를 주입하는 방식과 캐싱/빌드 영향을 먼저 검토해야 합니다 — 결정하지 않고 후보로만 남깁니다.</li>
+      <li><b>공개 사이트에도 ⓘ 패턴이 필요한 지점이 있는지 점검</b> — book.html의 긴 설명이나 pillar 페이지의 통계 수치처럼 <code>&lt;details&gt;</code>로 펼치기엔 과하고 짧은 보조 설명이면 충분한 자리가 있는지. 현재는 필요성이 확인된 사례가 없어 미룹니다.</li>
+    </ul>
+
+    <h2 id="incidents">6. 실제로 있었던 사고 (재발 방지용 기록)</h2>
+    <div class="incident"><b>Boska 이탤릭 업라이트 렌더링</b> — 2장 타이포그래피 항목 참고. Fontshare weight+1을 안 걸면 기울어지지 않습니다.</div>
+    <div class="incident"><b>카드 태그가 세로로 찌그러짐</b> — 카테고리 태그를 <code>flex</code> 컨테이너 안에 넣으면서 <code>flex-shrink:0</code>과 <code>white-space:nowrap</code>을 안 줬더니, 옆의 다른 요소에 밀려 태그 폭이 26px까지 줄어들고 글자가 세로로 줄바꿈됐습니다. flex 안에 텍스트 라벨을 넣을 땐 항상 이 두 속성을 같이 준다(2026-08-29).</div>
+    <div class="incident"><b>모달 트리거가 모달 앞에 떠 보임</b> — <code>&lt;details&gt;</code>를 CSS 모달로 쓸 때, 열려 있는 동안 <code>summary</code>의 <code>z-index</code>가 backdrop/모달카드보다 높으면 트리거 버튼이 모달 위에 떠 보입니다. 열려 있는 동안 summary는 backdrop에 자연스럽게 가려지게 두고, 닫기는 모달 안의 별도 버튼/Esc가 담당하게 한다(2026-08-29).</div>
+    <div class="incident"><b>이미지 alt에 깨진 URL 토큰</b> — 블로그 본문 이미지를 로컬라이즈하는 과정에서 alt 텍스트에 원본 CDN URL 토큰이 그대로 남은 글이 3개 발견됐습니다. 이미지 처리 스크립트를 만들거나 고칠 때 alt 필드를 반드시 사람이 읽을 설명으로 채워야 합니다(2026-08-29).</div>
+  </article>
+</div>
+
+<script src="/studio-sample/sample-nav.js"></script>
+</body>
+</html>
