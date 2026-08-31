@@ -1232,33 +1232,33 @@
     {
       "date": "2026-09-01",
       "yes24": {
-        "mkt_rank": 75,
-        "ad_rank": 6,
-        "web_rank": 22,
-        "uxui_rank": 8,
-        "design_rank": 22,
+        "mkt_rank": 62,
+        "ad_rank": 4,
+        "web_rank": 13,
+        "uxui_rank": 6,
+        "design_rank": 14,
         "econ_rank": null,
-        "sales_index": 2595,
+        "sales_index": 2667,
         "reviews": 26,
         "rating": 10.0
       },
       "aladin": {
-        "sales_point": 355,
-        "reviews": 9,
-        "rating": 9.6,
-        "design_rank": 18,
+        "sales_point": null,
+        "reviews": 0,
+        "rating": null,
+        "design_rank": null,
         "brand_rank": null,
-        "ad_rank": 9
+        "ad_rank": null
       },
       "kyobo": {
         "uxui_cat": null,
         "strategy_rank": null,
-        "badge_rank": 640,
+        "badge_rank": 806,
         "badge_category": "경제/경영",
         "reviews": 0,
         "rating": null
       }
     }
   ],
-  "updated_at": "2026-08-31T16:23:39.571672+00:00"
+  "updated_at": "2026-08-31T20:06:01.768708+00:00"
 }

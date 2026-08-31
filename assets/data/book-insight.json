@@ -170,14 +170,14 @@
         "rating": 10.0
       },
       "aladin": {
-        "sales_point": 737,
-        "reviews": 2,
-        "rating": 10.0,
+        "sales_point": null,
+        "reviews": 0,
+        "rating": null,
         "planning_rank": null,
         "info_mgmt_rank": null
       },
       "kyobo": {
-        "category_rank": 8,
+        "category_rank": 9,
         "badge_rank": 754,
         "badge_category": "자기계발",
         "reviews": 0,
@@ -188,9 +188,9 @@
         "rating": 0.0
       },
       "millie": {
-        "category_rank": 39
+        "category_rank": null
       }
     }
   ],
-  "updated_at": "2026-08-31T16:22:16.903577+00:00"
+  "updated_at": "2026-08-31T20:04:13.310684+00:00"
 }
