@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-08-30T22:06:31.020853+00:00",
+  "updated_at": "2026-08-31T07:01:55.995091+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 114,
-    "activeUsers": 61,
-    "newUsers": 59,
+    "sessions": 117,
+    "activeUsers": 64,
+    "newUsers": 62,
     "returningUsers": 2
   },
   "daily": [
@@ -42,6 +42,13 @@
       "activeUsers": 22,
       "newUsers": 19,
       "returningUsers": 3
+    },
+    {
+      "date": "2026-08-31",
+      "sessions": 3,
+      "activeUsers": 3,
+      "newUsers": 3,
+      "returningUsers": 0
     }
   ],
   "daily_leads": [
@@ -55,15 +62,15 @@
     }
   ],
   "landing_types": {
-    "home": 79,
+    "home": 80,
     "log_home": 7,
-    "individual_post": 14,
+    "individual_post": 16,
     "other": 21
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 84
+      "sessions": 86
     },
     {
       "source": "searchadvisor.naver.com",
@@ -79,7 +86,7 @@
     },
     {
       "source": "google",
-      "sessions": 4
+      "sessions": 5
     },
     {
       "source": "linkedin.com",
@@ -161,8 +168,18 @@
       "sessions": 1
     },
     {
+      "path": "/log_assets/markdown/185_사고의 지도를 그리는 법 '로직 트리'.html",
+      "title": "/log_assets/markdown/185_사고의 지도를 그리는 법 '로직 트리'.html",
+      "sessions": 1
+    },
+    {
       "path": "/log_assets/markdown/267_애자일이란.html",
       "title": "/log_assets/markdown/267_애자일이란.html",
+      "sessions": 1
+    },
+    {
+      "path": "/log_assets/markdown/481_내가 GS에서 강의를 하는 이유.html",
+      "title": "/log_assets/markdown/481_내가 GS에서 강의를 하는 이유.html",
       "sessions": 1
     },
     {
@@ -276,7 +293,7 @@
   "desktop_screen_resolutions": {
     "range": "last_90_days",
     "total_desktop_sessions": 74,
-    "excluded_invalid_sessions": 17,
+    "excluded_invalid_sessions": 18,
     "by_resolution": [
       {
         "resolution": "2560x1440",
