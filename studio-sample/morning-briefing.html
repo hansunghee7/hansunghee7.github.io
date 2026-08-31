@@ -17,16 +17,23 @@
   .doc{font-size:15px; line-height:1.75; color:var(--dim);}
   .doc .lede{font-size:15.5px; color:var(--dim); border-left:2px solid var(--line); padding-left:14px; margin-bottom:28px;}
   .mail-frame{
-    border:1px solid var(--line-soft); border-radius:12px; overflow:hidden; background:#fff;
+    border:1px solid var(--line-soft); border-radius:12px; background:#fff;
     box-shadow:0 10px 30px rgba(0,0,0,0.06);
   }
   .mail-chrome{
     display:flex; align-items:center; gap:8px; padding:12px 16px; background:#f7f6f2;
     border-bottom:1px solid var(--line-soft); font-size:12.5px; color:var(--muted);
+    border-radius:12px 12px 0 0;
   }
   .mail-chrome .dots{display:flex; gap:5px;}
   .mail-chrome .dots span{width:9px; height:9px; border-radius:50%; background:var(--line);}
-  .mail-body{padding:0;}
+  /* 메일 본문은 이메일 클라이언트용 고정폭(620px) 표 그대로라 좁은 화면에서는
+     안 줄어든다(메일 자체 규칙 -- docs/브리핑_메일_템플릿.html 참고, 미디어
+     쿼리를 못 믿는 메일 클라이언트 대응). .mail-frame에 overflow:hidden을 걸면
+     화면보다 넓은 부분(로고 포함, 우측)이 그냥 잘려서 안 보이므로, 대신 이
+     박스 안에서만 가로 스크롤이 생기게 한다 -- 잘리지 않고 옆으로 넘겨서 볼
+     수 있다. */
+  .mail-body{padding:0; overflow-x:auto; border-radius:0 0 12px 12px;}
   .note{font-size:12.5px; color:var(--muted); line-height:1.85; margin:28px 0 0; padding-top:20px; border-top:1px solid var(--line-soft);}
 </style>
 </head>
