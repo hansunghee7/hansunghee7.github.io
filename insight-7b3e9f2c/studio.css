@@ -26,7 +26,12 @@
        --width-content: 표준형. 대시보드 기본값(대부분의 메뉴).
        --width-data:    데이터형. book-insight.html 전용 예외 -- 표·
                          스파크라인이 화면을 지배할 때만, 실사용성 근거로. */
-  --width-prose: clamp(320px, 92vw, 720px);
+  --width-prose: clamp(320px, 92vw, 45rem); /* 45rem = 720px(기본 16px 루트 기준),
+    사용자가 브라우저 기본 글자 크기를 키워도 같은 비율로 커진다(px는 안 그럼).
+    ch 대신 rem을 쓰는 이유: 아래 .doc 패턴처럼 이 값을 h2/h3/h4/p 등 서로 다른
+    font-size를 가진 여러 선택자에 각각 적용하는 구조라, ch를 쓰면 요소마다
+    실제 폭(px)이 자기 글자 크기만큼 달라져(h2가 p보다 넓어짐) 오히려 세로
+    정렬이 어긋난다. rem은 루트 기준이라 모든 선택자가 항상 같은 폭을 갖는다. */
   --width-content: min(1200px, 92vw);
   --width-data: min(1600px, 96vw);
 }
@@ -70,7 +75,21 @@ code, pre{ overflow-wrap:anywhere; }
 .doc > h2, .doc > h3, .doc > h4,
 .doc > p, .doc > ul, .doc > ol,
 .doc > blockquote, .doc > .lede{
-  max-width:var(--width-prose); margin-left:0; margin-right:auto;
+  /* 2026-08-31: margin-left:0(컨테이너 왼쪽에 붙임) -> margin:0 auto(가운데
+     정렬)로 변경. ask.html처럼 컨테이너 자체가 읽기폭인 텍스트 전용 페이지는
+     항상 화면 중앙에 떠 있는데, 표준형 컨테이너 안에서 텍스트만 좁힌 .doc
+     페이지들은 왼쪽에 붙어 있어서 "어떤 메뉴는 가운데, 어떤 메뉴는 왼쪽"으로
+     보였다(사장님 실사용 관찰). 표·이미지는 여전히 컨테이너 전체 폭을 그대로
+     쓰므로, 좁은 텍스트만 같은 중심축으로 가운데 정렬하면 폭이 다른 요소끼리도
+     같은 축을 공유하는 모양이 된다(에디토리얼 사이트의 "breakout" 레이아웃과
+     동일한 원리 -- 좁은 본문과 넓은 표/이미지가 같은 중심을 공유).
+     margin-left/right에만 !important를 건다 -- 각 .doc 페이지가 자기 인라인
+     <style>에서 이 선택자와 똑같은 특이도로 세로 여백(margin-top/bottom)을
+     따로 지정하는데, margin 단축 속성으로 쓰면(예: margin:40px 0 14px)
+     left/right가 0으로 같이 딸려와 이 규칙을 덮어써버린다(실측 확인,
+     2026-08-31). top/bottom은 페이지마다 그대로 다르게 둬야 하므로 여기
+     margin-left/right 두 속성만 좁혀서 override한다. */
+  max-width:var(--width-prose); margin-left:auto !important; margin-right:auto !important;
   /* 링크 여러 개가 구분자(·) 하나로 붙어 있으면(예: "A.md·B.md·C.md") 그
      사이엔 공백이 없어 줄바꿈 지점 자체가 없다 -- code,pre의 overflow-wrap
      만으론 못 잡는 사례를 375px 실측(shorts-playbook.html)에서 확인해서

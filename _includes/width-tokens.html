@@ -12,10 +12,14 @@
        --width-prose:   읽기형. 블로그 본문·에세이·인용·후기 등 단일 컬럼 텍스트.
        --width-content: 표준형. nav·footer·카드 그리드 등 기본값(대부분의 화면).
        --width-data:    데이터형. 아직 홈페이지엔 해당 사례 없음(스튜디오
-                         book-insight.html 전용) -- 정의만 맞춰 놓는다. -->
+                         book-insight.html 전용) -- 정의만 맞춰 놓는다.
+
+     --width-prose의 최대값은 45rem(=720px, 기본 16px 루트 기준) -- px 대신
+     rem을 쓰면 사용자가 브라우저 기본 글자 크기를 키웠을 때 읽기 폭도 같은
+     비율로 커진다(insight-7b3e9f2c/studio.css와 2026-08-31 동일하게 정리). -->
 <style>
 :root{
-  --width-prose: clamp(320px, 92vw, 720px);
+  --width-prose: clamp(320px, 92vw, 45rem);
   --width-content: min(1200px, 92vw);
   --width-data: min(1600px, 96vw);
 }
