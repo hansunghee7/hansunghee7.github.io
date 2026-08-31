@@ -79,7 +79,6 @@ layout: null
 }
 </script>
 
-{% include width-tokens.html %}
 <style>
   * { box-sizing: border-box; }
   body { margin:0; background:#080808; color:#f5f3ee;
@@ -88,7 +87,7 @@ layout: null
   a { color: inherit; text-decoration: none; }
   ::selection { background:#f5f3ee; color:#080808; }
 
-  .wrap { max-width: var(--width-content); margin: 0 auto; padding: 0 32px; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
   @media (max-width:760px){ .wrap { padding: 0 16px; } }
 
   /* 세로 여백은 longhand로. padding 단축 지정은 .wrap의 좌우 거터를 지웁니다. */
