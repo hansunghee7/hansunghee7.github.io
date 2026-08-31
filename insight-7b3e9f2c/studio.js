@@ -28,6 +28,7 @@
     { href: "/insight-7b3e9f2c/style-guide.html", label: "통합 UX 가이드", group: "참조" },
     { href: "/insight-7b3e9f2c/brand-guide.html", label: "브랜드 가이드", group: "참조" },
     { href: "/insight-7b3e9f2c/llm-protocol.html", label: "멀티 LLM 규약", group: "참조" },
+    { href: "/insight-7b3e9f2c/thread-protocol.html", label: "스레드 협업 규약", group: "참조" },
   ];
 
   function escapeHtmlAttr(s) {
