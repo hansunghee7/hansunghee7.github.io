@@ -120,12 +120,12 @@
   </div>
 
   <div id="emptyState">
-    <div class="hint">근거가 없으면 지어내지 않고 "찾지 못했다"고 답합니다. 아래에서 골라보시거나 직접 질문해보세요.</div>
     <div class="suggestions">
-      <button type="button" class="suggestion-chip">우선순위 정할 때 쓰는 프레임워크 알려줘</button>
-      <button type="button" class="suggestion-chip">좋은 PO의 조건이 뭐야?</button>
-      <button type="button" class="suggestion-chip">리텐션을 높이는 방법 알려줘</button>
+      <button type="button" class="suggestion-chip">빠르게 C레벨이 되는 방법은</button>
+      <button type="button" class="suggestion-chip">좋은 PO가 되는 법은</button>
+      <button type="button" class="suggestion-chip">커리어를 성공적으로 만드는 법은</button>
     </div>
+    <div class="hint">근거가 없으면 지어내지 않고 "찾지 못했다"고 답합니다. 위에서 질문을 골라보거나 직접 질문해보세요.</div>
   </div>
 
   <div id="thread"></div>
@@ -134,7 +134,7 @@
     <form id="askForm">
       <div class="composer-box">
         <textarea id="questionInput" rows="1" placeholder="무엇이든 물어보세요" autocomplete="off"></textarea>
-        <button type="submit" class="send-btn" id="askBtn" aria-label="전송">
+        <button type="submit" class="send-btn" id="askBtn" aria-label="전송" disabled>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
         </button>
       </div>
@@ -173,6 +173,14 @@
   const newChatBtn = document.getElementById("newChatBtn");
   const cooldownNote = document.getElementById("cooldownNote");
 
+  // 전송 버튼은 (a) 입력창이 비어있거나 (b) 요청 중/쿨다운 중이면 눌러도
+  // 소용없으니 딤드해서 비활성화해둔다. 두 조건을 한 곳에서 합쳐서 판단한다.
+  let busy = false;
+  function syncSendBtn() {
+    btn.disabled = busy || !input.value.trim();
+  }
+  input.addEventListener("input", syncSendBtn);
+
   // 답변 끝에 모델이 스스로 붙이는 "(blog - ..., book - ...)" 인용을 떼어낸다 --
   // 아래에서 출처를 칩으로 따로, 더 깔끔하게 보여주기 때문에 중복이 된다.
   function stripInlineCitation(text) {
@@ -186,6 +194,7 @@
     conversationHistory = [];
     input.value = "";
     autoGrow();
+    syncSendBtn();
     input.focus();
   }
 
@@ -408,6 +417,7 @@
   document.querySelectorAll(".suggestion-chip").forEach((chip) => {
     chip.addEventListener("click", function () {
       input.value = chip.textContent;
+      syncSendBtn();
       form.requestSubmit();
     });
   });
@@ -420,7 +430,8 @@
   // 더 버튼을 막아두고, 몇 초 남았는지 보여준다.
   function applyCooldown(remainingMs) {
     if (remainingMs <= 0) {
-      btn.disabled = false;
+      busy = false;
+      syncSendBtn();
       input.focus();
       return;
     }
@@ -434,7 +445,8 @@
         clearInterval(cooldownTimer);
         cooldownTimer = null;
         cooldownNote.style.display = "none";
-        btn.disabled = false;
+        busy = false;
+        syncSendBtn();
         input.focus();
       } else {
         cooldownNote.textContent = `다음 질문까지 ${remaining}초 (Voyage AI 무료 요청 한도 보호)`;
@@ -451,7 +463,8 @@
 
   async function fetchAnswer(question, answerEl) {
     const requestStartedAt = Date.now();
-    btn.disabled = true;
+    busy = true;
+    syncSendBtn();
     answerEl.className = "answer";
     answerEl.innerHTML = '<div class="thinking"><span></span><span></span><span></span></div>';
 
