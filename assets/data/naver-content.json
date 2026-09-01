@@ -1,7 +1,7 @@
 {
   "posts": {},
   "clips": {},
-  "updated_at": "2026-09-01T05:17:38.138Z",
+  "updated_at": "2026-09-01T05:17:46.442Z",
   "channels": {
     "naver_clip": {
       "history": [
@@ -13,6 +13,16 @@
         }
       ],
       "url": "https://clip.naver.com/@simkihanapt?tab=all&filter=all"
+    },
+    "content_instagram": {
+      "history": [
+        {
+          "date": "2026-09-01",
+          "followers": 8,
+          "content_count": 1
+        }
+      ],
+      "url": "https://www.instagram.com/sinkihanapt/"
     }
   }
 }
