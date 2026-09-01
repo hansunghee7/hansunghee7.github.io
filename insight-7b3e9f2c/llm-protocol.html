@@ -54,7 +54,7 @@
 <div class="wrap">
   <header>
     <h1>멀티 LLM 협업 규약<button type="button" class="info-dot" aria-label="설명 보기">ⓘ<span class="info-text">정본은 <code>.claude/skills/multi-llm-handoff/SKILL.md</code>입니다. 이 페이지는 그 파일에서 스크립트가 자동 생성한 사본이라 직접 고치면 다음 실행 때 되돌아갑니다 — 정본을 고쳤으면 <code>scripts/build_llm_protocol_page.py</code>를 재실행해 페이지를 갱신한 뒤 같이 커밋하세요.</span></button></h1>
-    <span class="meta-text">자동 생성 2026-08-31 10:20</span>
+    <span class="meta-text">자동 생성 2026-09-01 12:13</span>
   </header>
   <article class="doc">
 <blockquote>
@@ -71,6 +71,14 @@
 <li><strong>외부 LLM(제미나이 등)</strong> — 대량 문서 분석, 웹 딥리서치, 시장 조사,
   기획·명세 초안. 저장소에 손대지 않는 읽기·합성 작업만.</li>
 <li>도구는 <strong>2~3개 이내</strong> 유지. 같은 일을 하는 도구를 하나 더 들이지 않는다.</li>
+<li><strong>클로드 코드 세션은 내장 웹검색(WebSearch 등)을 딥리서치 용도로 직접 쓰지
+  않는다.</strong> 토큰 소모가 크고, 정확도 검증이 되는 조사 절차(발주 고정 문구 +
+  출처 확인)를 안 거치게 된다. 조사가 필요하면 아래 "발주 고정 문구"로
+  프롬프트를 만들어 <strong>사장님께 전달하고, 사장님이 외부 딥리서치 도구에서
+  실행한 결과를 반입받는다.</strong> 예외: 특정 URL 하나의 내용 확인처럼 조사가
+  아닌 조회(사실 하나 확인)는 평소처럼 직접 해도 된다 — 경계는 "여러 출처를
+  종합 판단해야 하는가"다(2026-09-01 도입, 근거: 세션이 딥리서치를 직접
+  반복 실행해 토큰을 소모한 사례).</li>
 </ul>
 <h2>5원칙</h2>
 <ol>

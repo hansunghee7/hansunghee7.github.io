@@ -12,12 +12,15 @@ assets/data/sns-insight.json에 수집하고 있다(회사 계정 "심플리파�
 파일도 따로 둔다.
 
 ## 게시글 목록은 어떻게 얻는가
-네이버 블로그가 제공하는 공개 RSS(rss.blog.naver.com/{blogId}.xml)로 최근
-게시글의 제목·링크·게시일을 받는다 -- 로그인 없이 접근 가능한 공식 기능이라
-스크래핑보다 안전하고 안정적이다. 조회수는 RSS에 없어서, 각 게시글 페이지를
-직접 열어(모바일판) fetch_sns_public.py와 동일한 "키워드 주변 텍스트"
-방식으로 읽는다 -- 그 스크립트가 이미 blog.naver.com 상대로 검증한 방식을
-그대로 재사용한다(parse_count/first_count_near 로직 동일).
+처음엔 네이버 블로그 공개 RSS(rss.blog.naver.com/{blogId}.xml)를 썼는데,
+실제로 돌려보니 게시글이 분명히 있는데도 0개로 나왔다(2026-09-01 확인) --
+RSS는 블로그 주인이 "관리 > 기본설정 > RSS 발행"을 켜야만 채워지고, 새로
+만든 블로그는 기본이 꺼짐이라 항상 비어 있었다. 그래서 RSS 대신 모바일판
+블로그 홈(m.blog.naver.com/{blogId})을 직접 읽어서 게시글 링크·제목을
+뽑는다 -- PC판은 본문이 iframe(#mainFrame) 안에 있어(fetch_sns_public.py가
+이미 겪은 문제) 모바일판이 더 간단하고 안정적이다. 조회수는 이 목록에
+없어서, 각 게시글 페이지를 직접 열어(모바일판) fetch_sns_public.py와 동일한
+"키워드 주변 텍스트" 방식으로 읽는다(parse_count/first_count_near 로직 동일).
 
 ## 네이버 클립은 근거가 약하다 -- 첫 실행 결과를 보고 다듬을 것
 네이버 클립은 공식 API도, 참고할 만한 공개 문서도 마땅치 않다. 크리에이터
@@ -37,8 +40,6 @@ import json
 import os
 import re
 import sys
-import urllib.request
-import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta, timezone
 
 from playwright.sync_api import sync_playwright
@@ -83,7 +84,11 @@ def parse_count(text):
         n = int(num.replace(",", ""))
     except ValueError:
         return None
-    if n <= 0 or n > 100_000_000:
+    # fetch_sns_public.py는 팔로워 수 맥락이라 0을 "선택자가 엉뚱한 걸
+    # 읽었다"는 신호로 버리지만, 여긴 콘텐츠 조회수라 갓 올린 글/클립은
+    # 진짜 0이 정상값이다(2026-09-01: 실제로 클립 하나가 0회였음). 그래서
+    # 0은 허용하고, 음수·비현실적으로 큰 값만 버린다.
+    if n < 0 or n > 100_000_000:
         return None
     return n
 
@@ -119,22 +124,64 @@ def upsert(history, today, entry):
     history.sort(key=lambda e: e.get("date", ""))
 
 
-def list_recent_blog_posts(limit):
-    url = f"https://rss.blog.naver.com/{BLOG_ID}.xml"
-    req = urllib.request.Request(url, headers={"User-Agent": UA})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        raw = r.read()
-    root = ET.fromstring(raw)
+def list_recent_blog_posts(browser, limit):
+    """모바일판 블로그 홈에서 게시글 링크·제목을 직접 읽는다(RSS 대신 --
+    이유는 모듈 docstring 참고)."""
+    page = browser.new_page(user_agent=UA, locale="ko-KR")
     posts = []
-    for item in root.iter("item"):
-        link = (item.findtext("link") or "").strip()
-        title = (item.findtext("title") or "").strip()
-        pub_date = (item.findtext("pubDate") or "").strip()
-        m = re.search(r"/(\d+)/?$", link)
-        if not m:
-            continue
-        posts.append({"logNo": m.group(1), "title": title, "url": link, "pubDate": pub_date})
-    return posts[:limit]
+    try:
+        page.goto(f"https://m.blog.naver.com/{BLOG_ID}", timeout=45000)
+        # "네트워크가 잠잠해질 때까지"(networkidle)는 분석 스크립트가 계속
+        # 폴링하는 요즘 사이트에서는 거의 항상 타임아웃까지 그냥 흘러가버려
+        # 신호가 안 된다(2026-09-01 실측: RSS→모바일 페이지로 바꿔도 여전히
+        # 0건). 실제 콘텐츠가 떴다는 더 직접적인 증거(이미지 등장)를 기다린다.
+        try:
+            page.wait_for_selector("img", timeout=15000)
+        except Exception:
+            pass
+        page.wait_for_timeout(1500)
+        # 링크가 경로형(/{blogId}/{logNo})인지 쿼리스트링형
+        # (PostView.naver?blogId=...&logNo=...)인지 몰라서(2026-09-01: 경로형만
+        # 가정했다가 0건) blogId가 href 어디에 있든 일단 후보로 잡고,
+        # logNo는 두 형식 다 시도해서 뽑는다.
+        links = page.locator(f"a[href*='{BLOG_ID}']")
+        seen = set()
+        for i in range(links.count()):
+            if len(posts) >= limit:
+                break
+            try:
+                href = links.nth(i).get_attribute("href") or ""
+                m = re.search(rf"{BLOG_ID}/(\d+)", href) or re.search(r"[?&]logNo=(\d+)", href)
+                if not m:
+                    continue
+                log_no = m.group(1)
+                if log_no in seen:
+                    continue
+                title = links.nth(i).inner_text(timeout=3000).strip()
+                if not title:
+                    continue
+                seen.add(log_no)
+                url = href if href.startswith("http") else f"https://blog.naver.com/{BLOG_ID}/{log_no}"
+                posts.append({"logNo": log_no, "title": title, "url": url, "pubDate": ""})
+            except Exception:
+                continue
+        if not posts:
+            # 또 0건이면 다음엔 바로 원인을 보게, 실제로 뭐가 있었는지
+            # 진단 로그를 남긴다(전체 <a> 개수·href 샘플 몇 개).
+            all_links = page.locator("a")
+            n = all_links.count()
+            samples = []
+            for i in range(min(n, 5)):
+                try:
+                    samples.append((all_links.nth(i).get_attribute("href") or "")[:80])
+                except Exception:
+                    pass
+            log(f"  진단: 전체 링크 {n}개, href 샘플 {samples}")
+    except Exception as e:
+        log(f"블로그 홈 접근 실패 — {type(e).__name__}: {e}")
+    finally:
+        page.close()
+    return posts
 
 
 def collect_post_views(browser, log_no):
@@ -143,42 +190,79 @@ def collect_post_views(browser, log_no):
     try:
         page.goto(f"https://m.blog.naver.com/{BLOG_ID}/{log_no}", timeout=45000)
         try:
-            page.wait_for_load_state("networkidle", timeout=20000)
+            page.wait_for_selector("img", timeout=15000)
         except Exception:
             pass
-        return first_count_near(page, ["조회수", "조회"])
+        page.wait_for_timeout(1000)
+        n = first_count_near(page, ["조회수", "조회"])
+        if n is None:
+            # "조회" 키워드 근처에서도 못 찾았다는 뜻 -- 다음엔 바로 보게
+            # 화면에 실제로 뭐가 있는지 앞부분을 남긴다.
+            try:
+                snippet = page.inner_text("body")[:200].replace("\n", " ")
+            except Exception:
+                snippet = "(본문 읽기 실패)"
+            log(f"    조회수 진단({log_no}): {snippet}")
+        return n
     finally:
         page.close()
 
 
 def collect_recent_clips(browser, limit):
-    """클립 크리에이터 프로필 페이지에서 최근 클립 목록(링크·조회수 추정)을
-    읽는다. DOM 구조를 사전 검증 못 해서 느슨한 방식으로 짰다 -- 첫 실행
-    로그를 보고 필요하면 고친다."""
+    """클립 크리에이터 프로필 페이지에서 최근 클립 목록(링크·조회수)을
+    읽는다. 처음엔 href에 '/clip/'이 들어있을 거라 짐작하고 짰는데 실제로는
+    0건이었다(2026-09-01 확인, 실제 링크 패턴은 못 알아냄) -- 링크 패턴을
+    아예 안 가정하고, "썸네일(이미지)을 감싸는 링크"라는 더 일반적인 구조로
+    카드를 찾는다. 조회수는 프로필 목록 화면에 이미 보여서(각 클립 클릭 없이)
+    같은 카드의 텍스트에서 바로 읽는다."""
     page = browser.new_page(user_agent=UA, locale="ko-KR")
     clips = []
     try:
         page.goto(f"https://clip.naver.com/@{CLIP_HANDLE}", timeout=45000)
+        # networkidle 대신 실제 콘텐츠(이미지) 등장을 기다린다 -- 이유는
+        # list_recent_blog_posts 쪽 주석 참고(2026-09-01, 둘 다 같은 증상).
         try:
-            page.wait_for_load_state("networkidle", timeout=20000)
+            page.wait_for_selector("img", timeout=15000)
         except Exception:
             pass
         page.wait_for_timeout(2000)
-        cards = page.locator("a[href*='/clip/']")
+        cards = page.locator("a:has(img)")
         count = min(cards.count(), limit)
+        seen = set()
         for i in range(count):
             card = cards.nth(i)
             try:
                 href = card.get_attribute("href") or ""
-                m = re.search(r"/clip/(\w+)", href)
-                if not m:
+                if not href:
                     continue
-                clip_id = m.group(1)
+                # href 형식을 모르니 마지막 경로 조각을 느슨하게 다듬어
+                # id로 쓴다 -- 정확한 스킴보다 "매일 같은 클립이 같은 키로
+                # 잡히는지"가 중요하다.
+                tail = href.rstrip("/").split("/")[-1] or href
+                clip_id = re.sub(r"[^a-zA-Z0-9_-]", "_", tail)[:40]
+                if not clip_id or clip_id in seen:
+                    continue
+                seen.add(clip_id)
                 text = card.inner_text(timeout=4000)
                 n = parse_count(text)
                 clips.append({"id": clip_id, "url": href, "raw_text": text[:80], "views": n})
             except Exception:
                 continue
+        if not clips:
+            # a:has(img)도 0건이면 클립 카드가 <a>가 아닌 다른 요소(div
+            # 클릭 핸들러, 배경이미지 등)일 가능성이 크다 -- 다음엔 바로
+            # 보게 진단 로그(전체 a 태그 href 샘플 + 배경이미지 요소 수).
+            n_img = page.locator("img").count()
+            n_a = page.locator("a").count()
+            n_bg = page.locator("[style*='background-image']").count()
+            a_hrefs = []
+            all_a = page.locator("a")
+            for i in range(min(all_a.count(), 8)):
+                try:
+                    a_hrefs.append((all_a.nth(i).get_attribute("href") or "")[:60])
+                except Exception:
+                    pass
+            log(f"  진단: img {n_img}개, a {n_a}개, background-image {n_bg}개, a href 샘플 {a_hrefs}")
     except Exception as e:
         log(f"  클립 목록 수집 실패 — {type(e).__name__}: {e}")
     finally:
@@ -203,7 +287,7 @@ def main():
         try:
             # ── 블로그 ──
             try:
-                posts = list_recent_blog_posts(MAX_POSTS)
+                posts = list_recent_blog_posts(browser, MAX_POSTS)
                 log(f"블로그: 최근 게시글 {len(posts)}개 확인")
             except Exception as e:
                 posts = []
