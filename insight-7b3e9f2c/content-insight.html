@@ -400,12 +400,17 @@
     var donors = ids.filter(function (id) { return items[id].thumbnail && items[id].title; });
     ids.forEach(function (id) {
       var v = items[id];
-      if (v.thumbnail || !v.title) return;
-      var donor = donors.map(function (d) { return items[d]; }).filter(function (d) {
+      if (!v.title) return;
+      var donor = donors.filter(function (d) { return d !== id; }).map(function (d) { return items[d]; }).filter(function (d) {
         var donorTitle = firstLine(d.title);
         return donorTitle.length >= 6 && v.title.indexOf(donorTitle) !== -1;
       })[0];
-      if (donor) v.thumbnail = donor.thumbnail;
+      if (!donor) return;
+      if (!v.thumbnail) v.thumbnail = donor.thumbnail;
+      // 썸네일은 이미 있어도(예: 틱톡이 나중에 재수집으로 자기 썸네일을
+      // 구했을 때) 게시일은 여전히 못 얻으므로("최신순" 정렬용 폴백,
+      // 2026-09-01) 이건 항상 시도한다.
+      if (!v.published_at && donor.published_at) v.published_at = donor.published_at;
     });
   }
 
@@ -439,6 +444,7 @@
       var donor = candidates[0];
       if (!v.title && donor.title) v.title = donor.title;
       if (!v.thumbnail && donor.thumbnail) v.thumbnail = donor.thumbnail;
+      if (!v.published_at && donor.published_at) v.published_at = donor.published_at;
     });
   }
 
