@@ -18,6 +18,7 @@
     { href: "/insight-7b3e9f2c/search-insight.html", label: "검색·UX 품질", group: "인사이트" },
     { href: "/insight-7b3e9f2c/sns-insight.html", label: "SNS 인사이트", group: "인사이트" },
     { href: "/insight-7b3e9f2c/book-insight.html", label: "북 인사이트", group: "인사이트" },
+    { href: "/insight-7b3e9f2c/content-insight.html", label: "콘텐츠 인사이트", group: "인사이트" },
     { href: "/insight-7b3e9f2c/write.html", label: "글쓰기", group: "제작" },
     { href: "/insight-7b3e9f2c/multi-publish.html", label: "멀티 퍼블리싱", group: "제작" },
     { href: "/insight-7b3e9f2c/shorts-studio.html", label: "숏폼 스튜디오", group: "제작" },
