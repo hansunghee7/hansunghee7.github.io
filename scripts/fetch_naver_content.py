@@ -40,6 +40,17 @@ RSS는 블로그 주인이 "관리 > 기본설정 > RSS 발행"을 켜야만 채
 읽어옴)과 모순되고, 국내 프록시 도입은 비용·복잡도가 느는 결정이라 실제
 차단 증거 없이는 가지 않는다(규모 최적화 원칙).
 
+**실제로는 셋 다 아니었다.** 사장님이 개발자도구 Network 탭을 직접 캡처해서
+보내주신 덕에 진짜 주소를 확인했다(2026-09-01): `clip.naver.com`이나
+`apis.naver.com`이 아니라 **`creatorhub-api.naver.com`** 도메인이었다 --
+그래서 딥리서치의 "apis.naver.com" 추정도, 이 스크립트의 "naver.com 포함
+여부" 네트워크 필터도 둘 다 못 잡았다. 실제 호출:
+`GET https://creatorhub-api.naver.com/api/v7.0/feed/contents?recType=CLIP_PC&recId={"targetProfileId":"<handle>","open":true,"tab":"all"}&count=N&playback=false`
+-- 이제 이 엔드포인트를 Playwright 없이 직접 호출한다(더 빠르고 단순함).
+응답 JSON의 정확한 필드 스키마는 아직 실측 전이라, `find_clip_like_objects`
+로 모양만 보고 찾고 실패하면 원본 구조를 로그로 남겨 다음 실행에서 바로
+스키마를 확정할 수 있게 한다.
+
 ## 설계 원칙 (다른 fetch_*.py와 동일)
 - 게시물 하나가 실패해도 나머지는 계속 진행한다(항목별 try/except).
 - 날짜는 KST 기준(자정 근처 실행이 "어제"로 잘못 잡히는 사고 재발 방지).
@@ -49,6 +60,10 @@ import json
 import os
 import re
 import sys
+import urllib.error
+import urllib.parse
+import urllib.request
+import uuid
 from datetime import datetime, timedelta, timezone
 
 from playwright.sync_api import sync_playwright
@@ -273,13 +288,59 @@ def clips_from_next_data(html):
     return found
 
 
+CREATORHUB_CONTENTS_URL = "https://creatorhub-api.naver.com/api/v7.0/feed/contents"
+
+
+def fetch_clips_via_creatorhub_api(handle, count):
+    """실제 브라우저 Network 탭에서 확인한 진짜 엔드포인트를 직접 호출한다
+    (2026-09-01, 사장님이 캡처해준 요청 기준). Playwright 없이 되므로 더
+    빠르고 단순하다. 응답 스키마는 아직 실측 전이라 find_clip_like_objects로
+    모양만 보고 찾는다."""
+    rec_id = json.dumps({"targetProfileId": handle, "open": True, "tab": "all"}, separators=(",", ":"))
+    params = {
+        "recType": "CLIP_PC",
+        "recId": rec_id,
+        "count": str(count),
+        "playback": "false",
+        "sessionId": str(uuid.uuid4()),
+    }
+    url = CREATORHUB_CONTENTS_URL + "?" + urllib.parse.urlencode(params)
+    req = urllib.request.Request(url, headers={
+        "User-Agent": UA,
+        "Referer": "https://clip.naver.com/",
+        "Accept": "application/json",
+    })
+    try:
+        with urllib.request.urlopen(req, timeout=20) as r:
+            return json.loads(r.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        raise RuntimeError(f"creatorhub API {e.code}: {e.read().decode('utf-8', errors='replace')[:300]}") from e
+
+
 def collect_recent_clips(browser, limit):
     """클립 크리에이터 프로필 페이지에서 최근 클립 목록(id·제목·조회수)을
-    읽는다. 3단계로 시도한다(순서대로, 되는 데서 멈춤):
-      1) __NEXT_DATA__ SSR 데이터 파싱
+    읽는다. 4단계로 시도한다(순서대로, 되는 데서 멈춤):
+      0) creatorhub-api.naver.com 실제 엔드포인트 직접 호출(가장 빠르고 확실)
+      1) __NEXT_DATA__ SSR 데이터 파싱(0번 실패 시 대비)
       2) 페이지 로드 중 오간 JSON 네트워크 응답 가로채기
       3) 예전 방식(이미지 감싸는 링크 카드) -- href="#"라 id만 임시로 잡음
-    셋 다 실패하면 원인 파악용 진단 로그를 남긴다."""
+    넷 다 실패하면 원인 파악용 진단 로그를 남긴다."""
+    try:
+        raw = fetch_clips_via_creatorhub_api(CLIP_HANDLE, limit)
+        found = []
+        find_clip_like_objects(raw, found)
+        if found:
+            clips = [normalize_clip_obj(c) for c in found[:limit]]
+            log(f"  클립: creatorhub API에서 {len(clips)}개 찾음")
+            return clips
+        # 응답은 왔는데 예상한 모양(조회수류+제목/id류 키)이 하나도 안
+        # 걸렸다는 뜻 -- 다음엔 바로 실제 스키마를 보게 원본을 남긴다.
+        log(f"  클립: creatorhub API 응답 받았지만 매칭 실패, 원본(600자): "
+            f"{json.dumps(raw, ensure_ascii=False)[:600]}")
+    except Exception as e:
+        log(f"  클립: creatorhub API 호출 실패 — {type(e).__name__}: {e}")
+
+    # 0번이 실패했을 때만 브라우저를 띄운다(1~3번 대비책).
     page = browser.new_page(user_agent=UA, locale="ko-KR")
     network_found = []
 
