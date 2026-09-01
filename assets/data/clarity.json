@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-01T00:02:38.595192+00:00",
+  "updated_at": "2026-09-01T00:39:59.952489+00:00",
   "note": "history는 매일 지난 24시간 집계를 누적한 것. latest_*는 최근 3일 창.",
   "history": [
     {
@@ -1391,18 +1391,18 @@
         "Url": "https://simplifier.co.kr/?cb=reverify"
       },
       {
-        "totalSessionCount": 1,
-        "totalBotSessionCount": 0,
-        "distinctUserCount": 1,
-        "pagesPerSessionPercentage": 1,
-        "Url": "https://simplifier.co.kr/log_assets/markdown/185_%EC%82%AC%EA%B3%A0%EC%9D%98%20%EC%A7%80%EB%8F%84%EB%A5%BC%20%EA%B7%B8%EB%A6%AC%EB%8A%94%20%EB%B2%95%20%27%EB%A1%9C%EC%A7%81%20%ED%8A%B8%EB%A6%AC%27.html"
-      },
-      {
         "totalSessionCount": 0,
         "totalBotSessionCount": 1,
         "distinctUserCount": 1,
         "pagesPerSessionPercentage": 1,
         "Url": "https://simplifier.co.kr/?cb=verifylogcard"
+      },
+      {
+        "totalSessionCount": 1,
+        "totalBotSessionCount": 0,
+        "distinctUserCount": 1,
+        "pagesPerSessionPercentage": 1,
+        "Url": "https://simplifier.co.kr/log_assets/markdown/185_%EC%82%AC%EA%B3%A0%EC%9D%98%20%EC%A7%80%EB%8F%84%EB%A5%BC%20%EA%B7%B8%EB%A6%AC%EB%8A%94%20%EB%B2%95%20%27%EB%A1%9C%EC%A7%81%20%ED%8A%B8%EB%A6%AC%27.html"
       },
       {
         "totalSessionCount": 0,
