@@ -1,8 +1,13 @@
 name: Fetch Naver content
 
-# "신기한 아파트사전" 채널의 네이버 블로그 게시물·네이버 클립 조회수를
-# 매일 수집해 assets/data/naver-content.json에 커밋한다. 비공개 대시보드
+# "신기한 아파트사전" 채널의 네이버 블로그 게시물 조회수를 매일 수집해
+# assets/data/naver-content.json에 커밋한다. 비공개 대시보드
 # (insight-7b3e9f2c/content-insight.html)가 이 파일을 읽어서 화면에 그린다.
+#
+# 네이버 클립은 여기서 안 다룬다 -- 로그인 세션을 요구하는 API라 이
+# 워크플로(로그인 없는 헤드리스 브라우저)로는 못 읽는다(2026-09-01 확인).
+# 대신 _sns-extension(사장님이 실제 로그인해 쓰는 크롬 확장)이 클립 채널
+# 요약 수치를 같은 파일의 clip_channel 키에 직접 커밋한다.
 #
 # 로그인 없이 보이는 공개 데이터라 Secret이 따로 필요 없다(fetch_sns_public.py
 # 와 같은 방식 -- Playwright로 공개 페이지 직접 읽기).
@@ -42,7 +47,7 @@ jobs:
           pip install playwright
           playwright install --with-deps chromium
 
-      - name: Fetch Naver blog/clip content insight
+      - name: Fetch Naver blog content insight
         run: python scripts/fetch_naver_content.py
 
       - name: Commit if any changes
@@ -53,7 +58,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "no changes to commit"
           else
-            git commit -m "chore: 네이버 블로그·클립 콘텐츠 자동 수집 [skip ci]"
+            git commit -m "chore: 네이버 블로그 콘텐츠 자동 수집 [skip ci]"
             # 같은 시각에 다른 워크플로가 먼저 푸시하면 non-fast-forward로
             # 거절된다. rebase 후 재시도한다(다른 수집 워크플로와 동일).
             n=0

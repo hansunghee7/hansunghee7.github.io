@@ -36,6 +36,7 @@
 
   /* 채널 요약은 studio.css .tile.tile-accent 표준을 그대로 쓴다(다른
      인사이트 페이지와 통일, 2026-08-30 규칙). */
+  .channel-card{margin-bottom:14px;}
   .channel-card .foot{margin-top:10px;}
   .channel-card svg{width:100%; height:44px; display:block; margin-top:10px;}
 
@@ -84,6 +85,7 @@
   <div id="channelArea"><div class="loading">데이터 불러오는 중…</div></div>
   <div id="videoArea"></div>
   <div id="blogArea"></div>
+  <div id="channelSummaryArea"></div>
   <div id="clipArea"></div>
 </div>
 
@@ -93,13 +95,33 @@
   var CHANNEL_URL = "https://www.youtube.com/@sinkihanapt";
   var NAVER_DATA_URL = "/assets/data/naver-content.json";
   var BLOG_URL = "https://blog.naver.com/sinkihanapt";
-  var CLIP_URL = "https://clip.naver.com/@simkihanapt";
+
+  // 유튜브·네이버 블로그를 뺀 나머지 채널은 전부 로그인 세션이 있어야
+  // 보이는 화면(또는 봇 차단이 심한 사이트)이라 서버 자동화로는 못 읽는다
+  // (네이버 클립 API가 "Session not found"로 거절한 걸 실측 확인,
+  // scripts/fetch_naver_content.py 참고). 대신 사장님이 실제 로그인해
+  // 쓰는 크롬 확장(_sns-extension)이 각 채널 페이지를 방문할 때 팔로워 등
+  // 채널 요약 수치만 읽어 기록한다 -- 게시물별 개별 성과는 플랫폼마다
+  // 화면이 달라 공수가 커서 보류(2026-09-01).
+  var CHANNEL_META = {
+    naver_clip: { label: "네이버 클립", url: "https://clip.naver.com/@simkihanapt" },
+    content_instagram: { label: "인스타그램", url: "https://www.instagram.com/sinkihanapt/" },
+    content_threads: { label: "스레드", url: "https://www.threads.com/@sinkihanapt" },
+    content_facebook: { label: "페이스북", url: "https://www.facebook.com/profile.php?id=61593748241305" },
+    content_tiktok: { label: "틱톡", url: "https://www.tiktok.com/@sinkihanapt" },
+    content_x: { label: "X", url: "https://x.com/sinkihanapt" },
+  };
 
   var TITLE_INFO_BASE =
     "\"신기한 아파트사전\" 채널의 콘텐츠 성과입니다 — 유튜브 숏츠(채널 지표 + 영상별 조회수·좋아요·댓글), " +
-    "네이버 블로그(게시글별 조회수), 네이버 클립(조회수)을 모읍니다. " +
+    "네이버 블로그(게시글별 조회수)는 GitHub Actions가 자동 수집합니다. " +
+    "네이버 클립·인스타그램·스레드·페이스북·틱톡·X는 로그인 세션이 있어야 하는 화면이라 " +
+    "자동화가 안 돼, 사장님이 실제 로그인한 크롬 확장(_sns-extension)이 각 채널 페이지를 " +
+    "방문할 때 팔로워 등 채널 요약 수치만 기록합니다(콘텐츠가 아직 적어 게시물별 개별 " +
+    "조회수 수집은 보류). 아래 \"다른 채널\" 카드는 실제로 값이 잘 잡히는 채널일수록 " +
+    "위에 오도록 자동 정렬됩니다. " +
     "유튜브 숏츠 판정은 영상 길이 3분(180초) 이하 기준입니다. " +
-    "하루 2번(유튜브 05:37·19:37, 네이버 05:43·19:43 KST) 자동 갱신되며, 지금 당장 갱신하려면 " +
+    "하루 2번(유튜브 05:37·19:37, 네이버 블로그 05:43·19:43 KST) 자동 갱신되며, 지금 당장 갱신하려면 " +
     "새로고침 버튼을 누르거나 GitHub Actions에서 해당 워크플로를 수동 실행하세요.";
 
   function escapeHtml(s) {
@@ -296,6 +318,63 @@
       '<div class="tiles">' + ids.map(function (id) { return blogPostTileHtml(posts[id]); }).join("") + "</div>";
   }
 
+  // 채널 요약(네이버 클립·인스타·스레드·페이스북·틱톡·X)은 전부 같은
+  // 모양(팔로워 중심, 필드 몇 개 더)이라 플랫폼마다 렌더 함수를 새로
+  // 만들지 않고 하나로 처리한다.
+  function channelTileHtml(meta, channel) {
+    var history = channel.history || [];
+    var latest = history[history.length - 1];
+    var prev = history.length > 1 ? history[history.length - 2] : null;
+    var delta = prev && latest.followers != null && prev.followers != null ? latest.followers - prev.followers : null;
+
+    var foot = [];
+    if (latest.following != null) foot.push("팔로잉 " + latest.following.toLocaleString());
+    if (latest.content_count != null) foot.push("콘텐츠 " + latest.content_count.toLocaleString() + "개");
+    if (latest.likes != null) foot.push("좋아요 " + latest.likes.toLocaleString());
+
+    var followerSeries = history.filter(function (e) { return e.followers != null; });
+
+    return (
+      '<div class="tile tile-accent channel-card">' +
+      '<div class="label">' + escapeHtml(meta.label) +
+      ' <a class="shortcut-link" href="' + escapeHtml(meta.url) + '" target="_blank" rel="noopener noreferrer" aria-label="' + escapeHtml(meta.label) + ' 바로가기">↗</a></div>' +
+      (latest.followers != null
+        ? '<div class="latest"><span class="val">' + latest.followers.toLocaleString() + '<span class="unit">명 팔로워</span></span>' + deltaHtml(delta) + "</div>"
+        : '<div class="latest"><span class="val" style="font-size:15px;color:var(--muted)">수집 대기</span></div>') +
+      (foot.length ? '<div class="foot">' + escapeHtml(foot.join(" · ")) + "</div>" : "") +
+      (followerSeries.length > 1 ? sparkline(followerSeries, function (e) { return e.followers; }, 240, 40) : "") +
+      "</div>"
+    );
+  }
+
+  // "지표가 잘 나오는 순" -- 손으로 순서를 정하면 실제 수집 결과와
+  // 어긋날 수 있어(오늘 스레드 스코핑 버그처럼) 채워진 필드 수·기록
+  // 일수를 기준으로 실측 데이터가 스스로 순서를 정하게 한다.
+  function channelFieldScore(entry) {
+    return ["followers", "following", "content_count", "likes"].filter(function (k) { return entry[k] != null; }).length;
+  }
+
+  function renderChannelSummary(data) {
+    var channels = data.channels || {};
+    var el = document.getElementById("channelSummaryArea");
+    var keys = Object.keys(CHANNEL_META).filter(function (key) {
+      return channels[key] && (channels[key].history || []).length;
+    });
+    if (!keys.length) { el.innerHTML = ""; return; }
+
+    keys.sort(function (a, b) {
+      var ha = channels[a].history, hb = channels[b].history;
+      var scoreDiff = channelFieldScore(hb[hb.length - 1]) - channelFieldScore(ha[ha.length - 1]);
+      return scoreDiff !== 0 ? scoreDiff : hb.length - ha.length;
+    });
+
+    el.innerHTML =
+      '<div class="source-header">다른 채널 (신기한 아파트사전)</div>' +
+      '<div class="tiles">' + keys.map(function (key) {
+        return channelTileHtml(CHANNEL_META[key], channels[key]);
+      }).join("") + "</div>";
+  }
+
   function renderClips(data) {
     var clips = data.clips || {};
     var el = document.getElementById("clipArea");
@@ -309,7 +388,7 @@
     ids.sort(function (a, b) { return latestViews(clips[b]) - latestViews(clips[a]); });
 
     el.innerHTML =
-      '<div class="source-header">네이버 클립 <a class="shortcut-link" href="' + escapeHtml(CLIP_URL) + '" target="_blank" rel="noopener noreferrer" aria-label="클립 바로가기">↗</a></div>' +
+      '<div class="source-header">클립 개별 성과</div>' +
       '<div class="video-grid">' + ids.map(function (id) {
         var c = clips[id];
         c.id = id;
@@ -351,6 +430,7 @@
         renderChannel(lastData);
         renderVideos(lastData);
         renderBlogPosts(lastNaverData);
+        renderChannelSummary(lastNaverData);
         renderClips(lastNaverData);
         stampDataAsOf([lastData, lastNaverData]);
         return true;
