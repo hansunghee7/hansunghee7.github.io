@@ -405,6 +405,39 @@
     });
   }
 
+  // 우리가 각 콘텐츠를 처음 발견해 기록한 날짜(history[0].date)는 실측해보니
+  // 실제 게시일과 달라도(유튜브는 8/30 게시, 첫 기록은 9/1) 플랫폼 사이에는
+  // 거의 항상 일치한다 -- 화목일에 여러 콘텐츠를 한 배치로 동시 발행하는
+  // 운영 방식이라, 자동화가 그 배치를 처음 발견한 날은 플랫폼과 무관하게
+  // 같기 때문. 제목·썸네일을 텍스트 근거 없이(빈 alt 등) 아예 못 읽은
+  // 항목은, 같은 날 처음 잡힌 유튜브 영상이 정확히 하나뿐일 때만 그 유튜브의
+  // 제목·썸네일을 대신 쓴다(2026-09-01, "앞으로 같을 확률이 매우 높다"는
+  // 판단으로 도입 -- 후보가 둘 이상인 날은 틀리게 짝지을 위험이 있어
+  // 아무것도 안 채운다).
+  function firstCaptureDate(entry) {
+    var h = entry.history || [];
+    return h.length ? h[0].date : null;
+  }
+
+  function borrowFromYoutubeBySameDay(items, ids, youtubeData) {
+    var videos = youtubeData.videos || {};
+    var byDate = {};
+    Object.keys(videos).forEach(function (vid) {
+      var d = firstCaptureDate(videos[vid]);
+      if (!d) return;
+      (byDate[d] = byDate[d] || []).push(videos[vid]);
+    });
+    ids.forEach(function (id) {
+      var v = items[id];
+      if (v.title && v.thumbnail) return;
+      var candidates = byDate[firstCaptureDate(v)] || [];
+      if (candidates.length !== 1) return;
+      var donor = candidates[0];
+      if (!v.title && donor.title) v.title = donor.title;
+      if (!v.thumbnail && donor.thumbnail) v.thumbnail = donor.thumbnail;
+    });
+  }
+
   function renderContent(youtubeData, naverData) {
     var items = Object.assign({}, youtubeData.videos || {}, naverData.clips || {});
     var el = document.getElementById("clipArea");
@@ -413,6 +446,7 @@
     });
     if (!ids.length) { el.innerHTML = ""; return; }
     borrowThumbnails(items, ids);
+    borrowFromYoutubeBySameDay(items, ids, youtubeData);
 
     if (sortMode === "views") {
       ids.sort(function (a, b) { return latestViews(items[b]) - latestViews(items[a]); });
