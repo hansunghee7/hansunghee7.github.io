@@ -12,8 +12,10 @@ name: Fetch GA4 analytics
 # GitHub의 예약 실행(cron)은 "최선 노력" 방식이라 부하가 높으면 지연이 아니라
 # 아예 건너뛰기도 한다(공식 커뮤니티 확인 -- 실제로 이 저장소에서 이틀 연속
 # 자동 실행이 안 됐음). 그래서 이중 안전장치: cron 하루 3번(최근 30일
-# 스냅샷을 통째로 다시 쓰므로 여러 번 돌아도 안전) + 로컬 PC 작업 스케줄러의
-# workflow_dispatch 직접 호출(Documents\SimplifierSNSBot\trigger-github-workflows.ps1).
+# 스냅샷을 통째로 다시 쓰므로 여러 번 돌아도 안전) + cron-job.org 외부 트리거
+# (매일 05:45 KST, workflow_dispatch). 예전엔 로컬 PC 작업 스케줄러가 이
+# 역할을 했는데, PC가 꺼져 있으면 같이 멈추는 데다 실제로 2026-08-28 이후
+# 조용히 중단돼 있었던 게 뒤늦게 발견돼(2026-09-01) cron-job.org로 이전했다.
 on:
   schedule:
     - cron: "47 19 * * *"  # 04:47 KST (정각은 혼잡해 지연/누락되기 쉬워 분산) -- 새벽 수집 순번 2
