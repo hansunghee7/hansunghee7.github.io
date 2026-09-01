@@ -157,9 +157,9 @@
   }
 
   var TITLE_INFO_BASE =
-    "\"신기한 아파트사전\" 채널의 콘텐츠 성과입니다. 위 \"채널\" 카드 7개(유튜브·네이버 클립·" +
-    "인스타그램·스레드·페이스북·틱톡·X)는 실제로 값이 잘 잡히는 채널일수록 위에 오도록 자동 " +
-    "정렬됩니다. 아래 \"콘텐츠 개별 성과\"는 유튜브 숏츠·인스타 릴스·틱톡 영상의 개별 조회수를 " +
+    "\"신기한 아파트사전\" 채널의 콘텐츠 성과입니다. 위 \"신기한 아파트사전 채널\" 카드 7개" +
+    "(유튜브·네이버 클립·인스타그램·스레드·페이스북·틱톡·X)는 구독자·팔로워가 많은 순으로 자동 " +
+    "정렬됩니다(아직 값을 못 구한 채널은 맨 뒤). 아래 \"콘텐츠 개별 성과\"는 유튜브 숏츠·인스타 릴스·틱톡 영상의 개별 조회수를 " +
     "모아 최신순/인기순으로 보여줍니다(유튜브 숏츠 판정은 영상 길이 3분 이하 기준). " +
     "유튜브·네이버 블로그(게시글별 조회수)는 GitHub Actions가 하루 2번(05:37·19:37, " +
     "05:43·19:43 KST) 자동 수집합니다 — 로그인 없이 보이는 공개 페이지라서 서버가 읽을 수 " +
@@ -335,13 +335,6 @@
     );
   }
 
-  // "지표가 잘 나오는 순" -- 손으로 순서를 정하면 실제 수집 결과와
-  // 어긋날 수 있어(오늘 스레드 스코핑 버그처럼) 채워진 필드 수·기록
-  // 일수를 기준으로 실측 데이터가 스스로 순서를 정하게 한다.
-  function channelFieldScore(entry) {
-    return ["followers", "total_views", "following", "content_count", "likes"].filter(function (k) { return entry[k] != null; }).length;
-  }
-
   // 유튜브 채널(data.channel, {subscribers,total_views,video_count})을
   // 나머지 채널과 같은 모양({followers,total_views,content_count})으로
   // 바꿔서 같은 렌더 함수·같은 정렬 로직을 그대로 쓴다.
@@ -366,14 +359,19 @@
     });
     if (!keys.length) { el.innerHTML = ""; return; }
 
+    // 구독자·팔로워 많은 순 -- 값을 아직 못 구한 채널(수집 대기)은 맨
+    // 뒤로 보낸다(2026-09-01, "구독자 또는 팔로워 많은 순" 요청).
     keys.sort(function (a, b) {
       var ha = channels[a].history, hb = channels[b].history;
-      var scoreDiff = channelFieldScore(hb[hb.length - 1]) - channelFieldScore(ha[ha.length - 1]);
-      return scoreDiff !== 0 ? scoreDiff : hb.length - ha.length;
+      var fa = ha[ha.length - 1].followers, fb = hb[hb.length - 1].followers;
+      if (fa == null && fb == null) return 0;
+      if (fa == null) return 1;
+      if (fb == null) return -1;
+      return fb - fa;
     });
 
     el.innerHTML =
-      '<div class="source-header">채널 (신기한 아파트사전)</div>' +
+      '<div class="source-header">신기한 아파트사전 채널</div>' +
       '<div class="tiles">' + keys.map(function (key) {
         return channelTileHtml(CHANNEL_META[key], channels[key]);
       }).join("") + "</div>";
