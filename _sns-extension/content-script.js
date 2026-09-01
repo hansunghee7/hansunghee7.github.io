@@ -186,12 +186,16 @@
       if (!thumb && document.hidden) {
         try { a.scrollIntoView({ block: "center" }); } catch (e) { /* ignore */ }
       }
+      // 캡션이 보통 썸네일 img의 alt에 들어있지만, 가끔(2026-09-01 실측,
+      // 인스타 릴스 1건) alt가 비어 있는 항목이 있다 -- 그럴 땐 링크 자체의
+      // aria-label·title 속성에 같은 캡션이 들어있는 경우가 많아 대신 쓴다.
+      var titleText = (thumb && thumb.alt) || a.getAttribute("aria-label") || a.getAttribute("title") || null;
       items.push({
         id: id,
         views: views,
         url: href.indexOf("http") === 0 ? href : location.origin + href,
         thumbnail: thumb ? thumb.url : null,
-        title: thumb && thumb.alt ? thumb.alt : null,
+        title: titleText,
       });
     });
     return items;
