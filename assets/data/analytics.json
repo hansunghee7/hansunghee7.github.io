@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-01T20:00:54.600244+00:00",
+  "updated_at": "2026-09-01T20:45:31.313446+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 124,
-    "activeUsers": 70,
+    "sessions": 125,
+    "activeUsers": 71,
     "newUsers": 70,
-    "returningUsers": 0
+    "returningUsers": 1
   },
   "daily": [
     {
@@ -56,6 +56,13 @@
       "activeUsers": 3,
       "newUsers": 3,
       "returningUsers": 0
+    },
+    {
+      "date": "2026-09-02",
+      "sessions": 1,
+      "activeUsers": 1,
+      "newUsers": 0,
+      "returningUsers": 1
     }
   ],
   "daily_leads": [
@@ -69,7 +76,7 @@
     }
   ],
   "landing_types": {
-    "home": 76,
+    "home": 77,
     "log_home": 7,
     "individual_post": 16,
     "other": 25
@@ -97,7 +104,7 @@
     },
     {
       "source": "(not set)",
-      "sessions": 1
+      "sessions": 2
     },
     {
       "source": "bing",
@@ -299,7 +306,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 78,
+    "total_desktop_sessions": 79,
     "excluded_invalid_sessions": 18,
     "by_resolution": [
       {
@@ -310,7 +317,7 @@
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 17
+        "sessions": 18
       },
       {
         "resolution": "1920x1080",
