@@ -92,6 +92,11 @@ chrome.runtime.onMessage.addListener(function (msg) {
     updateMissStreak(msg.platform, false);
   }
 
+  if (msg && msg.type === "CONTENT_LIST_CAPTURE") {
+    handleContentListCapture(msg);
+    updateMissStreak(msg.platform, false);
+  }
+
   if (msg && msg.type === "DISMISS_SELECTOR_WARNING") {
     chrome.storage.local.get(["selectorMissStreak", "selectorWarning"], function (res) {
       var streak = res.selectorMissStreak || {};
@@ -252,20 +257,23 @@ function queuePending(capture) {
   });
 }
 
-// ── "신기한 아파트사전" 콘텐츠 채널 요약(팔로워 등 여러 값) ──────
+// ── "신기한 아파트사전" 콘텐츠 파일(assets/data/naver-content.json)
+// 쓰기 ────────────────────────────────────────────────────────
 // sns-insight.json(팔로워 수 시계열, "심플리파이어" 회사 계정용)과는
-// 다른 파일(assets/data/naver-content.json, "신기한 아파트사전" 개인
-// 콘텐츠 채널용)에 쓰므로, commitQueue/pendingCaptures와 완전히 분리된
-// 큐·저장소 키를 쓴다. 네이버 클립·인스타·스레드·페이스북·틱톡·X를
-// 전부 이 하나의 함수로 처리한다(플랫폼마다 함수를 새로 만들지 않고
-// capture.platform을 그대로 JSON의 channels 키로 쓴다) -- 2026-09-01,
-// 여러 플랫폼을 한 번에 추가하면서 반복 코드를 피하려고 일반화했다.
+// 다른 파일에 쓰므로 commitQueue/pendingCaptures와 완전히 분리된
+// 큐·저장소 키를 쓴다. 여기에 두 종류의 캡처가 들어온다:
+//   1) 채널 요약(팔로워 등 값 몇 개) -- CHANNEL_SUMMARY_CAPTURE
+//   2) 콘텐츠 리스트(릴스·영상별 조회수 여러 개) -- CONTENT_LIST_CAPTURE
+// 둘 다 "파일을 GET → 수정 → PUT"이라는 같은 뼈대를 쓰므로
+// commitToContentFile 하나로 공통 처리하고, 실제로 data를 어떻게
+// 바꾸는지만 각자(applyFn)로 넘긴다 -- 2026-09-01, 콘텐츠 리스트 캡처를
+// 추가하면서 채널 요약 커밋 함수와 중복되지 않게 일반화했다.
 var CONTENT_DATA_PATH = "assets/data/naver-content.json";
 var contentCommitQueue = Promise.resolve();
 
-function enqueueContentCommit(token, capture) {
+function enqueueContentCommit(token, commitFn, capture) {
   contentCommitQueue = contentCommitQueue.then(function () {
-    return commitChannelSummaryCapture(token, capture, 0);
+    return commitFn(token, capture, 0);
   });
   return contentCommitQueue;
 }
@@ -278,25 +286,39 @@ function handleChannelSummaryCapture(capture) {
   console.log("[SNS 인사이트] 채널 요약 캡처 수신:", capture.platform, capture.fields);
   chrome.storage.local.get(["githubToken"], function (res) {
     if (!res.githubToken) {
-      queuePendingContent(capture);
+      queuePendingContent("channel_summary", capture);
       pushLog({ platform: capture.platform, count: primaryCount(capture), capturedAt: capture.capturedAt, status: "pending" });
       return;
     }
-    enqueueContentCommit(res.githubToken, capture);
+    enqueueContentCommit(res.githubToken, commitChannelSummaryCapture, capture);
   });
 }
 
-function queuePendingContent(capture) {
+function handleContentListCapture(capture) {
+  console.log("[SNS 인사이트] 콘텐츠 리스트 캡처 수신:", capture.platform, capture.items.length + "개");
+  chrome.storage.local.get(["githubToken"], function (res) {
+    if (!res.githubToken) {
+      queuePendingContent("content_list", capture);
+      pushLog({ platform: capture.platform, count: capture.items.length, capturedAt: capture.capturedAt, status: "pending" });
+      return;
+    }
+    enqueueContentCommit(res.githubToken, commitContentListCapture, capture);
+  });
+}
+
+function queuePendingContent(kind, capture) {
   chrome.storage.local.get(["pendingContentCaptures"], function (res) {
     var pending = res.pendingContentCaptures || [];
-    pending.push(capture);
+    pending.push({ kind: kind, capture: capture });
     chrome.storage.local.set({ pendingContentCaptures: pending });
   });
 }
 
-function commitChannelSummaryCapture(token, capture, retryCount) {
+// GET → applyFn(data)로 수정 → PUT의 공통 뼈대. applyFn은 data를 직접
+// 바꾸고(posts/clips/channels는 이미 채워져 있음이 보장됨), logMeta는
+// 커밋 메시지와 pushLog에 남길 로그 항목을 준다.
+function commitToContentFile(token, applyFn, logMeta, retryCount) {
   var url = "https://api.github.com/repos/" + REPO + "/contents/" + CONTENT_DATA_PATH;
-  var count = primaryCount(capture);
 
   return fetch(url, { headers: ghHeaders(token) })
     .then(function (r) {
@@ -322,29 +344,14 @@ function commitChannelSummaryCapture(token, capture, retryCount) {
       data.posts = data.posts || {};
       data.clips = data.clips || {};
       data.channels = data.channels || {};
-      var channel = data.channels[capture.platform] = data.channels[capture.platform] || { history: [] };
-      channel.url = capture.url;
 
-      var day = todayStr();
-      var entry = Object.assign({ date: day }, capture.fields);
-
-      var history = channel.history;
-      var todayEntry = history.filter(function (e) { return e.date === day; })[0];
-      if (todayEntry) {
-        Object.assign(todayEntry, entry);
-      } else {
-        history.push(entry);
-      }
-      history.sort(function (a, b) { return a.date < b.date ? -1 : 1; });
+      applyFn(data);
       data.updated_at = new Date().toISOString();
 
       var newContentStr = JSON.stringify(data, null, 2);
       var b64 = btoa(unescape(encodeURIComponent(newContentStr)));
 
-      var body = {
-        message: "chore: " + capture.platform + " 채널 요약 자동 기록 (" + day + ") [skip ci]",
-        content: b64,
-      };
+      var body = { message: logMeta.commitMessage, content: b64 };
       if (sha) body.sha = sha;
 
       return fetch(url, {
@@ -359,24 +366,75 @@ function commitChannelSummaryCapture(token, capture, retryCount) {
           return new Promise(function (resolve) {
             setTimeout(resolve, 800 + Math.random() * 800);
           }).then(function () {
-            return commitChannelSummaryCapture(token, capture, retryCount + 1);
+            return commitToContentFile(token, applyFn, logMeta, retryCount + 1);
           });
         }
-        pushLog({ platform: capture.platform, count: count, capturedAt: capture.capturedAt, status: "error", note: "충돌 재시도 초과" });
+        pushLog(Object.assign({}, logMeta.logEntry, { status: "error", note: "충돌 재시도 초과" }));
         return;
       }
       if (putRes.ok) {
-        pushLog({ platform: capture.platform, count: count, capturedAt: capture.capturedAt, status: "success" });
+        pushLog(Object.assign({}, logMeta.logEntry, { status: "success" }));
         return;
       }
       return putRes.json().catch(function () { return {}; }).then(function (body) {
         var note = "HTTP " + putRes.status + (body && body.message ? " - " + body.message : "");
-        pushLog({ platform: capture.platform, count: count, capturedAt: capture.capturedAt, status: "error", note: note });
+        pushLog(Object.assign({}, logMeta.logEntry, { status: "error", note: note }));
       });
     })
     .catch(function (e) {
-      pushLog({ platform: capture.platform, count: count, capturedAt: capture.capturedAt, status: "error", note: String((e && e.message) || e) });
+      pushLog(Object.assign({}, logMeta.logEntry, { status: "error", note: String((e && e.message) || e) }));
     });
+}
+
+function commitChannelSummaryCapture(token, capture, retryCount) {
+  var day = todayStr();
+  return commitToContentFile(token, function (data) {
+    var channel = data.channels[capture.platform] = data.channels[capture.platform] || { history: [] };
+    channel.url = capture.url;
+
+    var entry = Object.assign({ date: day }, capture.fields);
+    var history = channel.history;
+    var todayEntry = history.filter(function (e) { return e.date === day; })[0];
+    if (todayEntry) {
+      Object.assign(todayEntry, entry);
+    } else {
+      history.push(entry);
+    }
+    history.sort(function (a, b) { return a.date < b.date ? -1 : 1; });
+  }, {
+    commitMessage: "chore: " + capture.platform + " 채널 요약 자동 기록 (" + day + ") [skip ci]",
+    logEntry: { platform: capture.platform, count: primaryCount(capture), capturedAt: capture.capturedAt },
+  }, retryCount);
+}
+
+// 릴스·영상 등 콘텐츠 리스트(id·조회수·URL 여러 개)를 data.clips에
+// 기록한다. 플랫폼이 섞여도 id가 겹치지 않도록 "platform_id" 형태로
+// 키를 만든다. content-insight.html의 기존 videoCardHtml/renderClips가
+// 이 모양(history/url/views)을 이미 그대로 그릴 수 있어 페이지 쪽은
+// 안 고쳐도 된다.
+function commitContentListCapture(token, capture, retryCount) {
+  var day = todayStr();
+  return commitToContentFile(token, function (data) {
+    capture.items.forEach(function (item) {
+      var id = capture.platform + "_" + item.id;
+      var entry = data.clips[id] = data.clips[id] || { history: [] };
+      entry.url = item.url;
+      entry.platform = capture.platform;
+
+      var dayEntry = { date: day, views: item.views };
+      var history = entry.history;
+      var todayEntry = history.filter(function (e) { return e.date === day; })[0];
+      if (todayEntry) {
+        Object.assign(todayEntry, dayEntry);
+      } else {
+        history.push(dayEntry);
+      }
+      history.sort(function (a, b) { return a.date < b.date ? -1 : 1; });
+    });
+  }, {
+    commitMessage: "chore: " + capture.platform + " 콘텐츠 " + capture.items.length + "개 자동 기록 (" + day + ") [skip ci]",
+    logEntry: { platform: capture.platform, count: capture.items.length, capturedAt: capture.capturedAt },
+  }, retryCount);
 }
 
 // popup에서 로그인 성공 직후 호출 -- 쌓여있던 캡처를 한꺼번에 반영.
@@ -393,8 +451,9 @@ function flushPending() {
     if (res.pendingContentCaptures && res.pendingContentCaptures.length) {
       var pendingContent = res.pendingContentCaptures;
       chrome.storage.local.set({ pendingContentCaptures: [] });
-      pendingContent.forEach(function (capture) {
-        enqueueContentCommit(res.githubToken, capture);
+      pendingContent.forEach(function (entry) {
+        var commitFn = entry.kind === "content_list" ? commitContentListCapture : commitChannelSummaryCapture;
+        enqueueContentCommit(res.githubToken, commitFn, entry.capture);
       });
     }
   });
