@@ -196,8 +196,18 @@ def main():
                     v = data["videos"].setdefault(vid, {"history": []})
                     v["title"] = snippet.get("title")
                     v["published_at"] = snippet.get("publishedAt")
+                    # 화질 순(높은 해상도 먼저)으로 가장 좋은 걸 쓴다 --
+                    # medium(320x180)은 세로형 카드에서 가로로 크롭해 보여주면
+                    # 실제 표시 해상도가 낮아 흐릿해 보인다는 피드백을 받아
+                    # (2026-09-01) 더 큰 해상도부터 시도하도록 올림. 없는
+                    # 키는 .get()이 조용히 None을 줘서 다음 순위로 넘어간다.
                     thumbs = snippet.get("thumbnails", {})
-                    v["thumbnail"] = (thumbs.get("medium") or thumbs.get("default") or {}).get("url")
+                    best_thumb = (
+                        thumbs.get("maxres") or thumbs.get("standard") or
+                        thumbs.get("high") or thumbs.get("medium") or
+                        thumbs.get("default") or {}
+                    )
+                    v["thumbnail"] = best_thumb.get("url")
                     v["duration_seconds"] = duration
                     try:
                         entry = {
