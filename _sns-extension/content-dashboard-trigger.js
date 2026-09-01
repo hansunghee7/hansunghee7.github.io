@@ -8,6 +8,17 @@
 // 대신 열었다 닫아주는 방식으로 "최대한 실시간에 가깝게" 만든다).
 (function () {
   window.addEventListener("simplifier-content-force-refresh", function () {
-    chrome.runtime.sendMessage({ type: "CONTENT_COLLECT_REQUEST", force: true });
+    // 확장을 chrome://extensions에서 새로고침한 직후, 이미 열려 있던
+    // 탭의 content-script는 예전 연결을 그대로 문 채로 남아 "고아"
+    // 상태가 된다 -- 이때 chrome.runtime 자체가 없어져 sendMessage가
+    // 예외를 던진다(2026-09-01 실제 발생 확인: "Cannot read properties
+    // of undefined (reading 'sendMessage')"). 탭을 새로고침하면 바로
+    // 없어지는 일시적 상태라 조용히 무시한다 -- 사용자가 굳이 에러
+    // 팝업을 볼 필요는 없다.
+    try {
+      chrome.runtime.sendMessage({ type: "CONTENT_COLLECT_REQUEST", force: true });
+    } catch (e) {
+      console.log("[SNS 인사이트] 확장 연결 끊김(탭을 새로고침하면 복구됩니다):", e);
+    }
   });
 })();

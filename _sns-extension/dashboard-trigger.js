@@ -11,6 +11,15 @@
 // 스튜디오 메뉴 이동과 무관한 실제 SNS 사용이라 그대로 둔다.)
 (function () {
   window.addEventListener("simplifier-sns-force-refresh", function () {
-    chrome.runtime.sendMessage({ type: "SNS_COLLECT_REQUEST", force: true });
+    // 확장을 새로고침한 직후, 이미 열려 있던 탭의 content-script는 예전
+    // 연결을 그대로 문 채로 남아 "고아" 상태가 된다 -- chrome.runtime
+    // 자체가 없어져 sendMessage가 예외를 던진다(2026-09-01,
+    // content-dashboard-trigger.js에서 실제 발생 확인해 여기도 동일하게
+    // 방어). 탭을 새로고침하면 바로 없어지는 일시적 상태다.
+    try {
+      chrome.runtime.sendMessage({ type: "SNS_COLLECT_REQUEST", force: true });
+    } catch (e) {
+      console.log("[SNS 인사이트] 확장 연결 끊김(탭을 새로고침하면 복구됩니다):", e);
+    }
   });
 })();
