@@ -37,14 +37,21 @@
     // 전부 "실제 로그인한 브라우저로 화면에 보이는 값 읽기" 방식을 쓴다.
     { test: /clip\.naver\.com/, key: "naver_clip", hrefContains: "simkihanapt", multi: true,
       fields: { followers: ["팔로워"], following: ["팔로잉"], content_count: ["콘텐츠"] } },
+    // 인스타 릴스·틱톡은 프로필/그리드 화면에 게시물별 조회수가 진짜
+    // 링크(href)와 함께 텍스트로 그대로 보여서(2026-09-01, 사장님이
+    // 릴스 화면 캡처로 확인해주심), 클립과 달리 개별 성과도 같이
+    // 읽는다(listHrefPattern, CONTENT_LIST_CAPTURE) -- 채널 요약(multi)
+    // 캡처와 같은 페이지 방문에서 별도로 함께 돈다.
     { test: /instagram\.com/, key: "content_instagram", hrefContains: "sinkihanapt", multi: true,
-      fields: { followers: ["followers", "팔로워"], content_count: ["posts", "게시물"] } },
+      fields: { followers: ["followers", "팔로워"], content_count: ["posts", "게시물"] },
+      listHrefPattern: /\/reel\/([^/?#]+)/ },
     { test: /threads\.(com|net)/, key: "content_threads", hrefContains: "sinkihanapt", multi: true,
       fields: { followers: ["followers", "팔로워"] } },
     { test: /facebook\.com/, key: "content_facebook", hrefContains: "61593748241305", multi: true,
       fields: { followers: ["팔로워", "팔로우", "followers"] } },
     { test: /tiktok\.com/, key: "content_tiktok", hrefContains: "sinkihanapt", multi: true,
-      fields: { followers: ["Followers", "팔로워"], following: ["Following", "팔로잉"], likes: ["Likes", "좋아요"] } },
+      fields: { followers: ["Followers", "팔로워"], following: ["Following", "팔로잉"], likes: ["Likes", "좋아요"] },
+      listHrefPattern: /\/video\/(\d+)/ },
     // x.com은 도메인이 짧아 unanchored 정규식을 쓰면 다른 도메인의
     // 일부(예: netflix.com)에도 우연히 걸릴 수 있어 앵커를 건다.
     { test: /(^|\.)x\.com$/, key: "content_x", hrefContains: "sinkihanapt", multi: true,
@@ -117,6 +124,35 @@
     return foundAny ? result : null;
   }
 
+  // 릴스·영상처럼 여러 개가 그리드로 보이는 콘텐츠는 href(진짜 링크)로
+  // 항목을 구분하고, 그 링크 안에 같이 보이는 숫자(조회수)를 읽는다.
+  // 팔로워처럼 "라벨 + 숫자"가 아니라 숫자 하나만 덩그러니 있는 경우가
+  // 많아 키워드 없이 첫 숫자를 그대로 쓴다.
+  function collectListItems(hrefPattern) {
+    var anchors = Array.prototype.slice.call(document.querySelectorAll("a[href]"));
+    var seen = {};
+    var items = [];
+    anchors.forEach(function (a) {
+      var href = a.getAttribute("href") || "";
+      var m = hrefPattern.exec(href);
+      if (!m) return;
+      var id = m[1];
+      if (seen[id]) return;
+      var text = (a.innerText || "").trim();
+      var numMatch = new RegExp(NUMBER).exec(text);
+      if (!numMatch) return;
+      var views = parseAbbrevNumber(numMatch[1], numMatch[2]);
+      if (views == null) return;
+      seen[id] = true;
+      items.push({
+        id: id,
+        views: views,
+        url: href.indexOf("http") === 0 ? href : location.origin + href,
+      });
+    });
+    return items;
+  }
+
   if (rule.multi) {
     var fieldNames = Object.keys(rule.fields);
     var multiAttempts = 0;
@@ -142,6 +178,35 @@
         chrome.runtime.sendMessage({ type: "SNS_COLLECT_FAILED", platform: rule.key, url: location.href });
       }
     }, 1000);
+  }
+
+  if (rule.listHrefPattern) {
+    var listAttempts = 0;
+    var LIST_MAX_ATTEMPTS = 15;
+
+    var listTimer = setInterval(function () {
+      listAttempts++;
+      var items = collectListItems(rule.listHrefPattern);
+      if (items.length || listAttempts >= LIST_MAX_ATTEMPTS) {
+        clearInterval(listTimer);
+        if (items.length) {
+          console.log("[SNS 인사이트]", rule.key, "콘텐츠 리스트", items.length, "개 찾음 -> 기록 전송");
+          chrome.runtime.sendMessage({
+            type: "CONTENT_LIST_CAPTURE",
+            platform: rule.key,
+            items: items,
+            capturedAt: new Date().toISOString(),
+          });
+        } else {
+          console.log("[SNS 인사이트]", rule.key, "콘텐츠 리스트 못 찾음 (" + LIST_MAX_ATTEMPTS + "초 시도)");
+        }
+      }
+    }, 1000);
+  }
+
+  if (rule.multi || rule.listHrefPattern) {
+    // 둘 다 채널 콘텐츠 전용 흐름이라, 아래 회사 계정용 단일값 추출로는
+    // 안 내려간다.
     return;
   }
 
