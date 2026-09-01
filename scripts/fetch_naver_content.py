@@ -22,14 +22,23 @@ RSS는 블로그 주인이 "관리 > 기본설정 > RSS 발행"을 켜야만 채
 없어서, 각 게시글 페이지를 직접 열어(모바일판) fetch_sns_public.py와 동일한
 "키워드 주변 텍스트" 방식으로 읽는다(parse_count/first_count_near 로직 동일).
 
-## 네이버 클립은 근거가 약하다 -- 첫 실행 결과를 보고 다듬을 것
-네이버 클립은 공식 API도, 참고할 만한 공개 문서도 마땅치 않다. 크리에이터
-프로필 페이지의 실제 DOM을 이 저장소 작업 환경에서 미리 열어볼 수가 없어서
-(네이버 도메인이 이 세션 네트워크 정책에 막혀 있음), 가장 가능성 높은 방식
-(클립 링크가 포함된 카드마다 텍스트에서 숫자를 뽑는 느슨한 방식)으로 짜고
-GitHub Actions(네트워크 제약 없음)에서 실제로 돌려본 뒤 로그를 보고 고치는
-순서로 간다 -- 이 저장소의 다른 수집 스크립트들도 처음엔 이렇게 시작해서
-다듬었다(예: fetch_youtube.py의 숏츠 길이 기준·썸네일 해상도).
+## 네이버 클립 -- 3단계 시도 (2026-09-01, 딥리서치 반입 후 재작성)
+처음엔 클립 카드의 href를 읽는 방식으로 짰는데 실제로는 전부 href="#"였다
+(자바스크립트 클릭 핸들러로 이동을 처리하는 SPA 구조). 외부 딥리서치
+결과(사장님 반입, `multi-llm-handoff` 규약)를 받아 검토했는데, 정확한 JSON
+경로나 엔드포인트 이름은 출처 없는 추정이라 그대로 믿지 않고(규약 3원칙),
+"이런 구조일 가능성이 있다"는 방향성만 취해 값의 **모양**으로 찾는 방식으로
+짰다:
+  1. 페이지 HTML의 `__NEXT_DATA__` 스크립트(Next.js SSR 하이드레이션
+     데이터)에서 clipId/readCount류 키를 가진 객체를 재귀로 찾는다.
+  2. 없으면 페이지 로드 중 오간 JSON 네트워크 응답 중에서 같은 방식으로 찾는다.
+  3. 그래도 없으면 예전 방식(이미지 감싸는 링크)으로 마지막 시도.
+세 방식 다 실패하면 다음에 바로 보게 진단 로그를 남긴다.
+
+딥리서치가 제안한 "해외 IP·헤드리스 브라우저 차단" 가설은 **채택하지
+않았다** -- 실측(GitHub Actions에서 블로그 페이지 본문을 정상적으로 전부
+읽어옴)과 모순되고, 국내 프록시 도입은 비용·복잡도가 느는 결정이라 실제
+차단 증거 없이는 가지 않는다(규모 최적화 원칙).
 
 ## 설계 원칙 (다른 fetch_*.py와 동일)
 - 게시물 하나가 실패해도 나머지는 계속 진행한다(항목별 try/except).
@@ -208,61 +217,132 @@ def collect_post_views(browser, log_no):
         page.close()
 
 
+def find_clip_like_objects(obj, out, depth=0):
+    """중첩 JSON 안에서 클립처럼 생긴 dict를 재귀로 찾는다. 정확한 스키마
+    경로(딥리서치가 제시한 값들)는 출처 없는 추정이라 믿지 않고, 값의
+    모양(조회수류 키 + 제목/id류 키가 같이 있는지)으로 판별한다."""
+    if depth > 10 or obj is None:
+        return
+    if isinstance(obj, dict):
+        keys = set(obj.keys())
+        has_view = bool(keys & {"readCount", "viewCount", "playCount", "views"})
+        has_title_or_id = bool(keys & {"title", "clipTitle", "clipId", "id", "videoId"})
+        if has_view and has_title_or_id:
+            out.append(obj)
+            return  # 이 dict 안쪽까지 더 파고들 필요는 없다
+        for v in obj.values():
+            find_clip_like_objects(v, out, depth + 1)
+    elif isinstance(obj, list):
+        for item in obj:
+            find_clip_like_objects(item, out, depth + 1)
+
+
+def normalize_clip_obj(obj):
+    """후보 키 이름 중 실제로 있는 걸 골라 통일된 형태로 만든다."""
+    def pick(keys):
+        for k in keys:
+            if obj.get(k) is not None:
+                return obj[k]
+        return None
+
+    return {
+        "id": str(pick(["clipId", "id", "videoId"]) or ""),
+        "title": pick(["title", "clipTitle"]),
+        "views": pick(["readCount", "viewCount", "playCount", "views"]),
+        "likes": pick(["likeCount", "likes"]),
+        "published_at": pick(["registerTime", "createdTime", "regDate"]),
+        # 정확한 URL 필드명도 출처 없는 추정이라 여러 후보를 시도한다 --
+        # 못 찾으면 None(호출부가 채널 프로필 URL로 대체).
+        "url": pick(["url", "link", "shareUrl", "permalink"]),
+    }
+
+
+def clips_from_next_data(html):
+    """__NEXT_DATA__(Next.js SSR 하이드레이션 스크립트)에 클립 목록이
+    들어있는지 시도한다. 이 스크립트 태그 자체가 없거나 구조가 다르면
+    조용히 빈 리스트."""
+    m = re.search(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', html, re.DOTALL)
+    if not m:
+        return []
+    try:
+        data = json.loads(m.group(1))
+    except Exception:
+        return []
+    found = []
+    find_clip_like_objects(data, found)
+    return found
+
+
 def collect_recent_clips(browser, limit):
-    """클립 크리에이터 프로필 페이지에서 최근 클립 목록(링크·조회수)을
-    읽는다. 처음엔 href에 '/clip/'이 들어있을 거라 짐작하고 짰는데 실제로는
-    0건이었다(2026-09-01 확인, 실제 링크 패턴은 못 알아냄) -- 링크 패턴을
-    아예 안 가정하고, "썸네일(이미지)을 감싸는 링크"라는 더 일반적인 구조로
-    카드를 찾는다. 조회수는 프로필 목록 화면에 이미 보여서(각 클립 클릭 없이)
-    같은 카드의 텍스트에서 바로 읽는다."""
+    """클립 크리에이터 프로필 페이지에서 최근 클립 목록(id·제목·조회수)을
+    읽는다. 3단계로 시도한다(순서대로, 되는 데서 멈춤):
+      1) __NEXT_DATA__ SSR 데이터 파싱
+      2) 페이지 로드 중 오간 JSON 네트워크 응답 가로채기
+      3) 예전 방식(이미지 감싸는 링크 카드) -- href="#"라 id만 임시로 잡음
+    셋 다 실패하면 원인 파악용 진단 로그를 남긴다."""
     page = browser.new_page(user_agent=UA, locale="ko-KR")
+    network_found = []
+
+    def handle_response(response):
+        try:
+            if "json" not in (response.headers.get("content-type") or ""):
+                return
+            if "naver.com" not in response.url:
+                return
+            data = response.json()
+        except Exception:
+            return
+        find_clip_like_objects(data, network_found)
+
+    page.on("response", handle_response)
+
     clips = []
     try:
         page.goto(f"https://clip.naver.com/@{CLIP_HANDLE}", timeout=45000)
-        # networkidle 대신 실제 콘텐츠(이미지) 등장을 기다린다 -- 이유는
-        # list_recent_blog_posts 쪽 주석 참고(2026-09-01, 둘 다 같은 증상).
         try:
             page.wait_for_selector("img", timeout=15000)
         except Exception:
             pass
-        page.wait_for_timeout(2000)
-        cards = page.locator("a:has(img)")
-        count = min(cards.count(), limit)
-        seen = set()
-        for i in range(count):
-            card = cards.nth(i)
-            try:
-                href = card.get_attribute("href") or ""
-                if not href:
+        page.wait_for_timeout(2500)
+
+        via_next_data = clips_from_next_data(page.content())
+        if via_next_data:
+            clips = [normalize_clip_obj(c) for c in via_next_data[:limit]]
+            log(f"  클립: __NEXT_DATA__에서 {len(clips)}개 찾음")
+        elif network_found:
+            clips = [normalize_clip_obj(c) for c in network_found[:limit]]
+            log(f"  클립: 네트워크 응답에서 {len(clips)}개 찾음")
+        else:
+            cards = page.locator("a:has(img)")
+            count = min(cards.count(), limit)
+            seen = set()
+            for i in range(count):
+                card = cards.nth(i)
+                try:
+                    href = card.get_attribute("href") or ""
+                    if not href:
+                        continue
+                    tail = href.rstrip("/").split("/")[-1] or href
+                    clip_id = re.sub(r"[^a-zA-Z0-9_-]", "_", tail)[:40]
+                    if not clip_id or clip_id in seen:
+                        continue
+                    seen.add(clip_id)
+                    text = card.inner_text(timeout=4000)
+                    clips.append({
+                        "id": clip_id, "title": None, "url": href,
+                        "views": parse_count(text), "likes": None, "published_at": None,
+                    })
+                except Exception:
                     continue
-                # href 형식을 모르니 마지막 경로 조각을 느슨하게 다듬어
-                # id로 쓴다 -- 정확한 스킴보다 "매일 같은 클립이 같은 키로
-                # 잡히는지"가 중요하다.
-                tail = href.rstrip("/").split("/")[-1] or href
-                clip_id = re.sub(r"[^a-zA-Z0-9_-]", "_", tail)[:40]
-                if not clip_id or clip_id in seen:
-                    continue
-                seen.add(clip_id)
-                text = card.inner_text(timeout=4000)
-                n = parse_count(text)
-                clips.append({"id": clip_id, "url": href, "raw_text": text[:80], "views": n})
-            except Exception:
-                continue
+            if clips:
+                log(f"  클립: DOM 카드 방식으로 {len(clips)}개 찾음(fallback)")
+
         if not clips:
-            # a:has(img)도 0건이면 클립 카드가 <a>가 아닌 다른 요소(div
-            # 클릭 핸들러, 배경이미지 등)일 가능성이 크다 -- 다음엔 바로
-            # 보게 진단 로그(전체 a 태그 href 샘플 + 배경이미지 요소 수).
             n_img = page.locator("img").count()
             n_a = page.locator("a").count()
-            n_bg = page.locator("[style*='background-image']").count()
-            a_hrefs = []
-            all_a = page.locator("a")
-            for i in range(min(all_a.count(), 8)):
-                try:
-                    a_hrefs.append((all_a.nth(i).get_attribute("href") or "")[:60])
-                except Exception:
-                    pass
-            log(f"  진단: img {n_img}개, a {n_a}개, background-image {n_bg}개, a href 샘플 {a_hrefs}")
+            has_next_data = bool(re.search(r'id="__NEXT_DATA__"', page.content()))
+            log(f"  진단: img {n_img}개, a {n_a}개, __NEXT_DATA__ 존재={has_next_data}, "
+                f"네트워크 캡처 {len(network_found)}건")
     except Exception as e:
         log(f"  클립 목록 수집 실패 — {type(e).__name__}: {e}")
     finally:
@@ -314,17 +394,23 @@ def main():
             clips = collect_recent_clips(browser, MAX_CLIPS)
             clip_ok = 0
             for c in clips:
-                if c.get("views") is None:
+                if not c.get("id") or c.get("views") is None:
                     continue
                 clip_ok += 1
-                clip_url = c["url"]
+                clip_url = c.get("url") or f"https://clip.naver.com/@{CLIP_HANDLE}"
                 if clip_url.startswith("/"):
                     clip_url = "https://clip.naver.com" + clip_url
                 c_entry = data["clips"].setdefault(c["id"], {"history": []})
                 c_entry["url"] = clip_url
-                upsert(c_entry["history"], today, {"date": today, "views": c["views"]})
-            log(f"클립: {clip_ok}/{len(clips)}개 조회수 갱신"
-                + (f" (참고: 원문 예시 '{clips[0]['raw_text']}')" if clips else ""))
+                if c.get("title"):
+                    c_entry["title"] = c["title"]
+                if c.get("published_at"):
+                    c_entry["published_at"] = c["published_at"]
+                entry = {"date": today, "views": c["views"]}
+                if c.get("likes") is not None:
+                    entry["likes"] = c["likes"]
+                upsert(c_entry["history"], today, entry)
+            log(f"클립: {clip_ok}/{len(clips)}개 조회수 갱신")
         finally:
             browser.close()
 
