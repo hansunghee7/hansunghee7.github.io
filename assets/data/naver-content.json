@@ -1,5 +1,18 @@
 {
   "posts": {},
   "clips": {},
-  "updated_at": "2026-09-01T03:51:41.709997Z"
+  "updated_at": "2026-09-01T05:17:38.138Z",
+  "channels": {
+    "naver_clip": {
+      "history": [
+        {
+          "date": "2026-09-01",
+          "followers": 177,
+          "following": 279,
+          "content_count": 1
+        }
+      ],
+      "url": "https://clip.naver.com/@simkihanapt?tab=all&filter=all"
+    }
+  }
 }
