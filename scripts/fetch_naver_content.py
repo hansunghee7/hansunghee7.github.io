@@ -359,7 +359,8 @@ def collect_recent_clips(browser, limit):
 
     clips = []
     try:
-        page.goto(f"https://clip.naver.com/@{CLIP_HANDLE}", timeout=45000)
+        resp = page.goto(f"https://clip.naver.com/@{CLIP_HANDLE}", timeout=45000)
+        nav_status = resp.status if resp else None
         try:
             page.wait_for_selector("img", timeout=15000)
         except Exception:
@@ -402,8 +403,11 @@ def collect_recent_clips(browser, limit):
             n_img = page.locator("img").count()
             n_a = page.locator("a").count()
             has_next_data = bool(re.search(r'id="__NEXT_DATA__"', page.content()))
-            log(f"  진단: img {n_img}개, a {n_a}개, __NEXT_DATA__ 존재={has_next_data}, "
-                f"네트워크 캡처 {len(network_found)}건")
+            title = page.title()
+            body_snippet = re.sub(r"\s+", " ", page.inner_text("body"))[:200]
+            log(f"  진단: nav상태={nav_status}, 최종URL={page.url}, 제목={title!r}, "
+                f"img {n_img}개, a {n_a}개, __NEXT_DATA__ 존재={has_next_data}, "
+                f"네트워크 캡처 {len(network_found)}건, 본문(200자)={body_snippet!r}")
     except Exception as e:
         log(f"  클립 목록 수집 실패 — {type(e).__name__}: {e}")
     finally:
