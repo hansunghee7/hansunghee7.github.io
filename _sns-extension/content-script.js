@@ -1,7 +1,7 @@
-// 각 SNS 프로필 페이지를 열 때, 화면에 보이는 텍스트에서 팔로워 수를
+// 각 SNS 프로필 페이지를 열 때, 화면에 보이는 텍스트에서 팔로워 수 등을
 // 찾아 background로 보냅니다. class명 같은 화면 구조가 아니라 "팔로워
 // 890"처럼 사람이 읽는 글자 패턴으로 찾기 때문에, 사이트가 화면을
-// 리뉴얼해도 눈에 팔로워 수가 보이는 한 웬만하면 계속 동작합니다.
+// 리뉴얼해도 눈에 숫자가 보이는 한 웬만하면 계속 동작합니다.
 //
 // 다만 이 방식은 처음 시도라 사이트별로 실제 문구/순서가 제 예상과
 // 다를 수 있습니다. 안 잡히는 사이트가 있으면 그 페이지에서 실제로
@@ -9,26 +9,46 @@
 
 (function () {
   var PLATFORM_RULES = [
+    // ── "심플리파이어" 회사 계정(값 1개, SNS_CAPTURE) ──────────────
     { test: /linkedin\.com/, key: "linkedin", keywords: ["팔로워", "followers"] },
-    { test: /facebook\.com/, key: "facebook", keywords: ["팔로워", "친구", "followers", "friends"] },
-    { test: /instagram\.com/, key: "instagram", keywords: ["followers", "팔로워"] },
-    { test: /threads\.(com|net)/, key: "threads", keywords: ["followers", "팔로워"] },
+    { test: /facebook\.com/, key: "facebook", keywords: ["팔로워", "친구", "followers", "friends"], hrefContains: "simplifier.seoul" },
+    { test: /instagram\.com/, key: "instagram", keywords: ["followers", "팔로워"], hrefContains: "simplifier_seoul" },
+    // 2026-09-01: 이 규칙에 hrefContains가 없어서 "신기한 아파트사전" 스레드를
+    // 방문했을 때도 회사 스레드로 잘못 잡혀(팔로워 1로) sns-insight.json에
+    // 오염된 값이 들어간 사고가 있었다. manifest 매치 패턴도 같이 좁혔다.
+    { test: /threads\.(com|net)/, key: "threads", keywords: ["followers", "팔로워"], hrefContains: "simplifier_seoul" },
     // 네이버 블로그는 manifest의 매치 패턴을 도메인 전체로 넓혀뒀다(구형 블로그가
     // 프레임 안에 실제 화면을 넣는 구조라 all_frames로 안쪽 프레임도 봐야 해서).
     // 그 대신 다른 사람 블로그를 구경할 때 잘못 기록되지 않도록 URL에
     // "simplifiers"가 있을 때만 동작하게 hrefContains로 한 번 더 좁힌다.
     { test: /blog\.naver\.com/, key: "naver_blog", keywords: ["블로그 이웃", "서로이웃", "이웃"], hrefContains: "simplifiers" },
-    // 네이버 클립은 "심플리파이어"가 아니라 다른 채널(신기한 아파트사전,
-    // content-insight.html)용이라 별도 흐름(NAVER_CLIP_CHANNEL_MULTI)으로
-    // 처리한다 -- 팔로워 하나가 아니라 팔로워·팔로잉·콘텐츠 수 3개를 같이
-    // 읽어야 해서, 아래 tryExtract()가 아니라 별도 함수(tryExtractClipChannel)를
-    // 쓴다. 클립별 개별 조회수는 API가 로그인 세션을 요구해 서버 자동화로는
-    // 못 읽는다는 걸 확인했고(scripts/fetch_naver_content.py 참고), 실제로
-    // 클립이 1개뿐이라 지금은 채널 요약 수치만 읽는다(2026-09-01).
-    { test: /clip\.naver\.com/, key: "naver_clip_channel", hrefContains: "simkihanapt", multi: true },
     { test: /rememberapp\.co\.kr/, key: "remember", keywords: ["팔로워"] },
     { test: /rocketpunch\.com/, key: "rocketpunch", keywords: ["팔로워"] },
     { test: /brunch\.co\.kr/, key: "brunch", keywords: ["팔로워"] },
+
+    // ── "신기한 아파트사전" 콘텐츠 채널 요약(값 여러 개, multi,
+    // CHANNEL_SUMMARY_CAPTURE) ──────────────────────────────────
+    // 회사 계정과 완전히 다른 채널이라 결과를 다른 파일
+    // (assets/data/naver-content.json의 channels)에 쓴다. 게시물별
+    // 개별 성과(조회수 등)는 플랫폼마다 화면이 다 달라 공수가 커서
+    // 보류하고, 지금은 프로필에 보이는 채널 요약 수치만 읽는다
+    // (2026-09-01). 클립이 로그인 세션을 요구하는 비공개 API라 서버
+    // 자동화로 못 읽는다는 걸 확인한 것과 같은 이유로, 나머지 플랫폼도
+    // 전부 "실제 로그인한 브라우저로 화면에 보이는 값 읽기" 방식을 쓴다.
+    { test: /clip\.naver\.com/, key: "naver_clip", hrefContains: "simkihanapt", multi: true,
+      fields: { followers: ["팔로워"], following: ["팔로잉"], content_count: ["콘텐츠"] } },
+    { test: /instagram\.com/, key: "content_instagram", hrefContains: "sinkihanapt", multi: true,
+      fields: { followers: ["followers", "팔로워"], content_count: ["posts", "게시물"] } },
+    { test: /threads\.(com|net)/, key: "content_threads", hrefContains: "sinkihanapt", multi: true,
+      fields: { followers: ["followers", "팔로워"] } },
+    { test: /facebook\.com/, key: "content_facebook", hrefContains: "61593748241305", multi: true,
+      fields: { followers: ["팔로워", "팔로우", "followers"] } },
+    { test: /tiktok\.com/, key: "content_tiktok", hrefContains: "sinkihanapt", multi: true,
+      fields: { followers: ["Followers", "팔로워"], following: ["Following", "팔로잉"], likes: ["Likes", "좋아요"] } },
+    // x.com은 도메인이 짧아 unanchored 정규식을 쓰면 다른 도메인의
+    // 일부(예: netflix.com)에도 우연히 걸릴 수 있어 앵커를 건다.
+    { test: /(^|\.)x\.com$/, key: "content_x", hrefContains: "sinkihanapt", multi: true,
+      fields: { followers: ["Followers", "followers"], following: ["Following", "following"] } },
   ];
 
   var rule = PLATFORM_RULES.filter(function (r) {
@@ -36,13 +56,13 @@
   })[0];
   if (!rule) return;
 
-  // 8곳 중 아무 한 곳이라도 들어오면, 이 페이지만 잡고 끝내지 않고
-  // 나머지 7곳도 백그라운드로 같이 돈다(오늘 이미 돌았으면 background가
+  // 회사 계정 8곳 중 아무 한 곳이라도 들어오면, 이 페이지만 잡고 끝내지
+  // 않고 나머지도 백그라운드로 같이 돈다(오늘 이미 돌았으면 background가
   // 건너뜀 -- 하루 한 번이면 충분) -- 굳이 SNS 인사이트 대시보드까지
   // 들어가지 않아도 평소 SNS 쓰는 것만으로 전체 데이터가 자연스럽게
-  // 쌓이게 하기 위함. 네이버 클립(신기한 아파트사전, 다른 채널)은 이
-  // "심플리파이어" 회사 계정 라운드와 무관하므로 건너뛴다.
-  if (rule.key !== "naver_clip_channel") {
+  // 쌓이게 하기 위함. "신기한 아파트사전" 콘텐츠 채널(multi: true인
+  // 규칙 전부)은 이 회사 계정 라운드와 무관하므로 건너뛴다.
+  if (!rule.multi) {
     chrome.runtime.sendMessage({ type: "SNS_COLLECT_REQUEST" });
   }
 
@@ -79,44 +99,46 @@
     return null;
   }
 
-  // 네이버 클립 채널 요약(팔로워·팔로잉·콘텐츠 수 3개를 한 번에)은 값
-  // 하나만 찾는 tryExtract()로는 안 되어 별도 루프를 돈다.
-  if (rule.multi && rule.key === "naver_clip_channel") {
-    var CLIP_FIELDS = { followers: "팔로워", following: "팔로잉", contentCount: "콘텐츠" };
+  // 채널 요약(팔로워·팔로잉·콘텐츠 수 등 여러 값)은 값 하나만 찾는
+  // tryExtract()로는 안 되어, 필드별로 키워드 후보를 돌며 전부 찾는다.
+  function tryExtractMulti(fields) {
+    var text = document.body ? document.body.innerText : "";
+    var result = {};
+    var foundAny = false;
+    Object.keys(fields).forEach(function (field) {
+      var keywords = fields[field];
+      var n = null;
+      for (var i = 0; i < keywords.length && n === null; i++) {
+        n = findCount(text, keywords[i]);
+      }
+      result[field] = n;
+      if (n !== null) foundAny = true;
+    });
+    return foundAny ? result : null;
+  }
 
-    function tryExtractClipChannel() {
-      var text = document.body ? document.body.innerText : "";
-      var result = {};
-      var foundAny = false;
-      Object.keys(CLIP_FIELDS).forEach(function (field) {
-        var n = findCount(text, CLIP_FIELDS[field]);
-        result[field] = n;
-        if (n !== null) foundAny = true;
-      });
-      return foundAny ? result : null;
-    }
+  if (rule.multi) {
+    var fieldNames = Object.keys(rule.fields);
+    var multiAttempts = 0;
+    var MULTI_MAX_ATTEMPTS = 20; // SPA가 데이터를 다 불러올 때까지 최대 20초 기다림
 
-    var clipAttempts = 0;
-    var CLIP_MAX_ATTEMPTS = 20;
-
-    var clipTimer = setInterval(function () {
-      clipAttempts++;
-      var result = tryExtractClipChannel();
-      var allFound = result && result.followers !== null && result.following !== null && result.contentCount !== null;
-      if (allFound || (result && clipAttempts >= CLIP_MAX_ATTEMPTS)) {
-        clearInterval(clipTimer);
-        console.log("[SNS 인사이트] naver_clip_channel 감지:", result, "-> 기록 전송");
+    var multiTimer = setInterval(function () {
+      multiAttempts++;
+      var result = tryExtractMulti(rule.fields);
+      var allFound = result && fieldNames.every(function (f) { return result[f] !== null; });
+      if (allFound || (result && multiAttempts >= MULTI_MAX_ATTEMPTS)) {
+        clearInterval(multiTimer);
+        console.log("[SNS 인사이트]", rule.key, "감지:", result, "-> 기록 전송");
         chrome.runtime.sendMessage({
-          type: "NAVER_CLIP_CHANNEL_CAPTURE",
-          followers: result.followers,
-          following: result.following,
-          contentCount: result.contentCount,
+          type: "CHANNEL_SUMMARY_CAPTURE",
+          platform: rule.key,
+          fields: result,
           url: location.href,
           capturedAt: new Date().toISOString(),
         });
-      } else if (!result && clipAttempts >= CLIP_MAX_ATTEMPTS) {
-        clearInterval(clipTimer);
-        console.log("[SNS 인사이트] naver_clip_channel 패턴을 못 찾음 (" + CLIP_MAX_ATTEMPTS + "초 시도)");
+      } else if (!result && multiAttempts >= MULTI_MAX_ATTEMPTS) {
+        clearInterval(multiTimer);
+        console.log("[SNS 인사이트]", rule.key, "패턴을 못 찾음 (" + MULTI_MAX_ATTEMPTS + "초 시도)");
         chrome.runtime.sendMessage({ type: "SNS_COLLECT_FAILED", platform: rule.key, url: location.href });
       }
     }, 1000);
