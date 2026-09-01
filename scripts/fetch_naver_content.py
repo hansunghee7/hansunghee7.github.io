@@ -140,14 +140,18 @@ def list_recent_blog_posts(browser, limit):
         except Exception:
             pass
         page.wait_for_timeout(1500)
-        links = page.locator(f"a[href*='/{BLOG_ID}/']")
+        # 링크가 경로형(/{blogId}/{logNo})인지 쿼리스트링형
+        # (PostView.naver?blogId=...&logNo=...)인지 몰라서(2026-09-01: 경로형만
+        # 가정했다가 0건) blogId가 href 어디에 있든 일단 후보로 잡고,
+        # logNo는 두 형식 다 시도해서 뽑는다.
+        links = page.locator(f"a[href*='{BLOG_ID}']")
         seen = set()
         for i in range(links.count()):
             if len(posts) >= limit:
                 break
             try:
                 href = links.nth(i).get_attribute("href") or ""
-                m = re.search(rf"/{BLOG_ID}/(\d+)", href)
+                m = re.search(rf"{BLOG_ID}/(\d+)", href) or re.search(r"[?&]logNo=(\d+)", href)
                 if not m:
                     continue
                 log_no = m.group(1)
@@ -161,6 +165,18 @@ def list_recent_blog_posts(browser, limit):
                 posts.append({"logNo": log_no, "title": title, "url": url, "pubDate": ""})
             except Exception:
                 continue
+        if not posts:
+            # 또 0건이면 다음엔 바로 원인을 보게, 실제로 뭐가 있었는지
+            # 진단 로그를 남긴다(전체 <a> 개수·href 샘플 몇 개).
+            all_links = page.locator("a")
+            n = all_links.count()
+            samples = []
+            for i in range(min(n, 5)):
+                try:
+                    samples.append((all_links.nth(i).get_attribute("href") or "")[:80])
+                except Exception:
+                    pass
+            log(f"  진단: 전체 링크 {n}개, href 샘플 {samples}")
     except Exception as e:
         log(f"블로그 홈 접근 실패 — {type(e).__name__}: {e}")
     finally:
@@ -223,6 +239,12 @@ def collect_recent_clips(browser, limit):
                 clips.append({"id": clip_id, "url": href, "raw_text": text[:80], "views": n})
             except Exception:
                 continue
+        if not clips:
+            # a:has(img)도 0건이면 클립 카드가 <a>가 아닌 다른 요소(div
+            # 클릭 핸들러 등)일 가능성이 크다 -- 다음엔 바로 보게 진단 로그.
+            n_img = page.locator("img").count()
+            n_a = page.locator("a").count()
+            log(f"  진단: img {n_img}개, a {n_a}개 (카드가 <a> 태그가 아닐 수 있음)")
     except Exception as e:
         log(f"  클립 목록 수집 실패 — {type(e).__name__}: {e}")
     finally:
