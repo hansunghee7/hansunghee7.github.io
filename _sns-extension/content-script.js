@@ -18,6 +18,14 @@
     // 그 대신 다른 사람 블로그를 구경할 때 잘못 기록되지 않도록 URL에
     // "simplifiers"가 있을 때만 동작하게 hrefContains로 한 번 더 좁힌다.
     { test: /blog\.naver\.com/, key: "naver_blog", keywords: ["블로그 이웃", "서로이웃", "이웃"], hrefContains: "simplifiers" },
+    // 네이버 클립은 "심플리파이어"가 아니라 다른 채널(신기한 아파트사전,
+    // content-insight.html)용이라 별도 흐름(NAVER_CLIP_CHANNEL_MULTI)으로
+    // 처리한다 -- 팔로워 하나가 아니라 팔로워·팔로잉·콘텐츠 수 3개를 같이
+    // 읽어야 해서, 아래 tryExtract()가 아니라 별도 함수(tryExtractClipChannel)를
+    // 쓴다. 클립별 개별 조회수는 API가 로그인 세션을 요구해 서버 자동화로는
+    // 못 읽는다는 걸 확인했고(scripts/fetch_naver_content.py 참고), 실제로
+    // 클립이 1개뿐이라 지금은 채널 요약 수치만 읽는다(2026-09-01).
+    { test: /clip\.naver\.com/, key: "naver_clip_channel", hrefContains: "simkihanapt", multi: true },
     { test: /rememberapp\.co\.kr/, key: "remember", keywords: ["팔로워"] },
     { test: /rocketpunch\.com/, key: "rocketpunch", keywords: ["팔로워"] },
     { test: /brunch\.co\.kr/, key: "brunch", keywords: ["팔로워"] },
@@ -32,8 +40,11 @@
   // 나머지 7곳도 백그라운드로 같이 돈다(오늘 이미 돌았으면 background가
   // 건너뜀 -- 하루 한 번이면 충분) -- 굳이 SNS 인사이트 대시보드까지
   // 들어가지 않아도 평소 SNS 쓰는 것만으로 전체 데이터가 자연스럽게
-  // 쌓이게 하기 위함.
-  chrome.runtime.sendMessage({ type: "SNS_COLLECT_REQUEST" });
+  // 쌓이게 하기 위함. 네이버 클립(신기한 아파트사전, 다른 채널)은 이
+  // "심플리파이어" 회사 계정 라운드와 무관하므로 건너뛴다.
+  if (rule.key !== "naver_clip_channel") {
+    chrome.runtime.sendMessage({ type: "SNS_COLLECT_REQUEST" });
+  }
 
   var NUMBER = "([\\d][\\d,\\.]*)\\s*(천|만|K|k|M|m)?";
 
@@ -66,6 +77,50 @@
       if (count !== null && count >= 0) return count;
     }
     return null;
+  }
+
+  // 네이버 클립 채널 요약(팔로워·팔로잉·콘텐츠 수 3개를 한 번에)은 값
+  // 하나만 찾는 tryExtract()로는 안 되어 별도 루프를 돈다.
+  if (rule.multi && rule.key === "naver_clip_channel") {
+    var CLIP_FIELDS = { followers: "팔로워", following: "팔로잉", contentCount: "콘텐츠" };
+
+    function tryExtractClipChannel() {
+      var text = document.body ? document.body.innerText : "";
+      var result = {};
+      var foundAny = false;
+      Object.keys(CLIP_FIELDS).forEach(function (field) {
+        var n = findCount(text, CLIP_FIELDS[field]);
+        result[field] = n;
+        if (n !== null) foundAny = true;
+      });
+      return foundAny ? result : null;
+    }
+
+    var clipAttempts = 0;
+    var CLIP_MAX_ATTEMPTS = 20;
+
+    var clipTimer = setInterval(function () {
+      clipAttempts++;
+      var result = tryExtractClipChannel();
+      var allFound = result && result.followers !== null && result.following !== null && result.contentCount !== null;
+      if (allFound || (result && clipAttempts >= CLIP_MAX_ATTEMPTS)) {
+        clearInterval(clipTimer);
+        console.log("[SNS 인사이트] naver_clip_channel 감지:", result, "-> 기록 전송");
+        chrome.runtime.sendMessage({
+          type: "NAVER_CLIP_CHANNEL_CAPTURE",
+          followers: result.followers,
+          following: result.following,
+          contentCount: result.contentCount,
+          url: location.href,
+          capturedAt: new Date().toISOString(),
+        });
+      } else if (!result && clipAttempts >= CLIP_MAX_ATTEMPTS) {
+        clearInterval(clipTimer);
+        console.log("[SNS 인사이트] naver_clip_channel 패턴을 못 찾음 (" + CLIP_MAX_ATTEMPTS + "초 시도)");
+        chrome.runtime.sendMessage({ type: "SNS_COLLECT_FAILED", platform: rule.key, url: location.href });
+      }
+    }, 1000);
+    return;
   }
 
   var attempts = 0;

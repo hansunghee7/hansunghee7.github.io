@@ -19,6 +19,7 @@ var PLATFORM_LABELS = {
   brunch: "브런치",
   remember: "리멤버 커넥트",
   rocketpunch: "로켓펀치",
+  naver_clip_channel: "네이버클립(신기한 아파트사전)",
 };
 
 var STATUS_MARK = { success: "✓", error: "✕", pending: "…", miss: "△" };

@@ -68,6 +68,7 @@ var PLATFORM_LABELS = {
   brunch: "브런치",
   remember: "리멤버 커넥트",
   rocketpunch: "로켓펀치",
+  naver_clip_channel: "네이버클립(신기한 아파트사전)",
 };
 
 chrome.runtime.onMessage.addListener(function (msg) {
@@ -79,6 +80,11 @@ chrome.runtime.onMessage.addListener(function (msg) {
   if (msg && msg.type === "SNS_COLLECT_FAILED") {
     pushLog({ platform: msg.platform, count: null, capturedAt: new Date().toISOString(), status: "miss" });
     updateMissStreak(msg.platform, true);
+  }
+
+  if (msg && msg.type === "NAVER_CLIP_CHANNEL_CAPTURE") {
+    handleClipChannelCapture(msg);
+    updateMissStreak("naver_clip_channel", false);
   }
 
   if (msg && msg.type === "DISMISS_SELECTOR_WARNING") {
@@ -241,15 +247,143 @@ function queuePending(capture) {
   });
 }
 
+// ── 네이버 클립 채널 요약(팔로워·팔로잉·콘텐츠 수) ──────────────
+// sns-insight.json(팔로워 수 시계열, 회사 계정용)과는 다른 파일
+// (assets/data/naver-content.json, "신기한 아파트사전" 개인 콘텐츠 채널용)에
+// 쓰므로, commitQueue/pendingCaptures와 완전히 분리된 큐·저장소 키를 쓴다.
+var CLIP_DATA_PATH = "assets/data/naver-content.json";
+var clipCommitQueue = Promise.resolve();
+
+function enqueueClipCommit(token, capture) {
+  clipCommitQueue = clipCommitQueue.then(function () {
+    return commitClipChannelCapture(token, capture, 0);
+  });
+  return clipCommitQueue;
+}
+
+function handleClipChannelCapture(capture) {
+  console.log("[SNS 인사이트] 클립 채널 캡처 수신:", capture.followers, capture.following, capture.contentCount);
+  chrome.storage.local.get(["githubToken"], function (res) {
+    if (!res.githubToken) {
+      queuePendingClip(capture);
+      pushLog({ platform: "naver_clip_channel", count: capture.followers, capturedAt: capture.capturedAt, status: "pending" });
+      return;
+    }
+    enqueueClipCommit(res.githubToken, capture);
+  });
+}
+
+function queuePendingClip(capture) {
+  chrome.storage.local.get(["pendingClipCaptures"], function (res) {
+    var pending = res.pendingClipCaptures || [];
+    pending.push(capture);
+    chrome.storage.local.set({ pendingClipCaptures: pending });
+  });
+}
+
+function commitClipChannelCapture(token, capture, retryCount) {
+  var url = "https://api.github.com/repos/" + REPO + "/contents/" + CLIP_DATA_PATH;
+
+  return fetch(url, { headers: ghHeaders(token) })
+    .then(function (r) {
+      if (r.status === 404) return { notFound: true };
+      if (!r.ok) {
+        return r.json().catch(function () { return {}; }).then(function (body) {
+          throw new Error("GET 실패: " + r.status + (body && body.message ? " - " + body.message : ""));
+        });
+      }
+      return r.json();
+    })
+    .then(function (fileRes) {
+      var data = {};
+      var sha = null;
+      if (!fileRes.notFound) {
+        sha = fileRes.sha;
+        try {
+          data = JSON.parse(decodeURIComponent(escape(atob(fileRes.content.replace(/\n/g, "")))));
+        } catch (e) {
+          data = {};
+        }
+      }
+      data.posts = data.posts || {};
+      data.clips = data.clips || {};
+      data.clip_channel = data.clip_channel || { handle: "simkihanapt", history: [] };
+
+      var day = todayStr();
+      var entry = { date: day };
+      if (capture.followers != null) entry.followers = capture.followers;
+      if (capture.following != null) entry.following = capture.following;
+      if (capture.contentCount != null) entry.content_count = capture.contentCount;
+
+      var history = data.clip_channel.history;
+      var todayEntry = history.filter(function (e) { return e.date === day; })[0];
+      if (todayEntry) {
+        Object.assign(todayEntry, entry);
+      } else {
+        history.push(entry);
+      }
+      history.sort(function (a, b) { return a.date < b.date ? -1 : 1; });
+      data.updated_at = new Date().toISOString();
+
+      var newContentStr = JSON.stringify(data, null, 2);
+      var b64 = btoa(unescape(encodeURIComponent(newContentStr)));
+
+      var body = {
+        message: "chore: 네이버 클립 채널 요약 자동 기록 (" + day + ") [skip ci]",
+        content: b64,
+      };
+      if (sha) body.sha = sha;
+
+      return fetch(url, {
+        method: "PUT",
+        headers: Object.assign({ "Content-Type": "application/json" }, ghHeaders(token)),
+        body: JSON.stringify(body),
+      });
+    })
+    .then(function (putRes) {
+      if (putRes.status === 409) {
+        if (retryCount < 3) {
+          return new Promise(function (resolve) {
+            setTimeout(resolve, 800 + Math.random() * 800);
+          }).then(function () {
+            return commitClipChannelCapture(token, capture, retryCount + 1);
+          });
+        }
+        pushLog({ platform: "naver_clip_channel", count: capture.followers, capturedAt: capture.capturedAt, status: "error", note: "충돌 재시도 초과" });
+        return;
+      }
+      if (putRes.ok) {
+        pushLog({ platform: "naver_clip_channel", count: capture.followers, capturedAt: capture.capturedAt, status: "success" });
+        return;
+      }
+      return putRes.json().catch(function () { return {}; }).then(function (body) {
+        var note = "HTTP " + putRes.status + (body && body.message ? " - " + body.message : "");
+        pushLog({ platform: "naver_clip_channel", count: capture.followers, capturedAt: capture.capturedAt, status: "error", note: note });
+      });
+    })
+    .catch(function (e) {
+      pushLog({ platform: "naver_clip_channel", count: capture.followers, capturedAt: capture.capturedAt, status: "error", note: String((e && e.message) || e) });
+    });
+}
+
 // popup에서 로그인 성공 직후 호출 -- 쌓여있던 캡처를 한꺼번에 반영.
 function flushPending() {
-  chrome.storage.local.get(["githubToken", "pendingCaptures"], function (res) {
-    if (!res.githubToken || !res.pendingCaptures || !res.pendingCaptures.length) return;
-    var pending = res.pendingCaptures;
-    chrome.storage.local.set({ pendingCaptures: [] });
-    pending.forEach(function (capture) {
-      enqueueCommit(res.githubToken, capture);
-    });
+  chrome.storage.local.get(["githubToken", "pendingCaptures", "pendingClipCaptures"], function (res) {
+    if (!res.githubToken) return;
+    if (res.pendingCaptures && res.pendingCaptures.length) {
+      var pending = res.pendingCaptures;
+      chrome.storage.local.set({ pendingCaptures: [] });
+      pending.forEach(function (capture) {
+        enqueueCommit(res.githubToken, capture);
+      });
+    }
+    if (res.pendingClipCaptures && res.pendingClipCaptures.length) {
+      var pendingClip = res.pendingClipCaptures;
+      chrome.storage.local.set({ pendingClipCaptures: [] });
+      pendingClip.forEach(function (capture) {
+        enqueueClipCommit(res.githubToken, capture);
+      });
+    }
   });
 }
 chrome.runtime.onMessage.addListener(function (msg) {

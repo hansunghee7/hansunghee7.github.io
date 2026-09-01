@@ -36,6 +36,7 @@
 
   /* 채널 요약은 studio.css .tile.tile-accent 표준을 그대로 쓴다(다른
      인사이트 페이지와 통일, 2026-08-30 규칙). */
+  .channel-card{margin-bottom:14px;}
   .channel-card .foot{margin-top:10px;}
   .channel-card svg{width:100%; height:44px; display:block; margin-top:10px;}
 
@@ -97,9 +98,12 @@
 
   var TITLE_INFO_BASE =
     "\"신기한 아파트사전\" 채널의 콘텐츠 성과입니다 — 유튜브 숏츠(채널 지표 + 영상별 조회수·좋아요·댓글), " +
-    "네이버 블로그(게시글별 조회수), 네이버 클립(조회수)을 모읍니다. " +
+    "네이버 블로그(게시글별 조회수)는 GitHub Actions가 자동 수집합니다. " +
+    "네이버 클립은 로그인 세션이 있어야 하는 API라 자동화가 안 돼, 사장님이 실제 로그인한 " +
+    "크롬 확장(_sns-extension)이 채널 페이지를 방문할 때 팔로워·팔로잉·콘텐츠 수만 기록합니다 " +
+    "(클립이 1개뿐이라 개별 조회수 수집은 보류). " +
     "유튜브 숏츠 판정은 영상 길이 3분(180초) 이하 기준입니다. " +
-    "하루 2번(유튜브 05:37·19:37, 네이버 05:43·19:43 KST) 자동 갱신되며, 지금 당장 갱신하려면 " +
+    "하루 2번(유튜브 05:37·19:37, 네이버 블로그 05:43·19:43 KST) 자동 갱신되며, 지금 당장 갱신하려면 " +
     "새로고침 버튼을 누르거나 GitHub Actions에서 해당 워크플로를 수동 실행하세요.";
 
   function escapeHtml(s) {
@@ -296,25 +300,65 @@
       '<div class="tiles">' + ids.map(function (id) { return blogPostTileHtml(posts[id]); }).join("") + "</div>";
   }
 
+  // 클립별 개별 조회수는 API가 로그인 세션을 요구해 서버 자동화로는 못
+  // 읽는다(scripts/fetch_naver_content.py 참고). 대신 사장님이 실제
+  // 로그인해 쓰는 크롬 확장(_sns-extension)이 클립 채널 페이지를 방문할
+  // 때마다 팔로워·팔로잉·콘텐츠 수만 읽어 채널 요약으로 기록한다
+  // (2026-09-01, 클립이 1개뿐이라 개별 성과 수집은 보류 -- 클립이 여러 개
+  // 쌓이면 다시 검토).
+  function renderClipChannel(data) {
+    var ch = data.clip_channel || {};
+    var history = ch.history || [];
+    if (!history.length) return "";
+
+    var latest = history[history.length - 1];
+    var prev = history.length > 1 ? history[history.length - 2] : null;
+    var delta = prev && latest.followers != null && prev.followers != null ? latest.followers - prev.followers : null;
+
+    var foot = [];
+    if (latest.following != null) foot.push("팔로잉 " + latest.following.toLocaleString());
+    if (latest.content_count != null) foot.push("콘텐츠 " + latest.content_count.toLocaleString() + "개");
+
+    var followerSeries = history.filter(function (e) { return e.followers != null; });
+
+    return (
+      '<div class="tile tile-accent channel-card">' +
+      '<div class="label">신기한 아파트사전 클립' +
+      ' <a class="shortcut-link" href="' + escapeHtml(CLIP_URL) + '" target="_blank" rel="noopener noreferrer" aria-label="클립 채널 바로가기">↗</a></div>' +
+      (latest.followers != null
+        ? '<div class="latest"><span class="val">' + latest.followers.toLocaleString() + '<span class="unit">명 팔로워</span></span>' + deltaHtml(delta) + "</div>"
+        : "") +
+      (foot.length ? '<div class="foot">' + escapeHtml(foot.join(" · ")) + "</div>" : "") +
+      (followerSeries.length > 1 ? sparkline(followerSeries, function (e) { return e.followers; }, 900) : "") +
+      "</div>"
+    );
+  }
+
   function renderClips(data) {
     var clips = data.clips || {};
     var el = document.getElementById("clipArea");
+    var channelHtml = renderClipChannel(data);
     var ids = Object.keys(clips).filter(function (id) {
       return (clips[id].history || []).some(function (e) { return e.views != null; });
     });
-    if (!ids.length) { el.innerHTML = ""; return; }
+
+    if (!channelHtml && !ids.length) { el.innerHTML = ""; return; }
 
     // 클립은 게시일을 안 모으므로(수집 근거가 약해 우선 조회수만) 조회수
     // 내림차순으로 보여준다.
     ids.sort(function (a, b) { return latestViews(clips[b]) - latestViews(clips[a]); });
 
+    var gridHtml = ids.length
+      ? '<div class="video-grid">' + ids.map(function (id) {
+          var c = clips[id];
+          c.id = id;
+          return videoCardHtml(c);
+        }).join("") + "</div>"
+      : "";
+
     el.innerHTML =
       '<div class="source-header">네이버 클립 <a class="shortcut-link" href="' + escapeHtml(CLIP_URL) + '" target="_blank" rel="noopener noreferrer" aria-label="클립 바로가기">↗</a></div>' +
-      '<div class="video-grid">' + ids.map(function (id) {
-        var c = clips[id];
-        c.id = id;
-        return videoCardHtml(c);
-      }).join("") + "</div>";
+      channelHtml + gridHtml;
   }
 
   // 소스가 두 개(유튜브·네이버)라 각자 updated_at을 갖는다 -- 더 최근

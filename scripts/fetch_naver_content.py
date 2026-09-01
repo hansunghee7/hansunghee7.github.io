@@ -1,7 +1,7 @@
 """
-"신기한 아파트사전" 채널의 네이버 블로그·네이버 클립 게시물별 조회수를
-매일 수집해 assets/data/naver-content.json에 쌓는다. 유튜브(fetch_youtube.py)와
-같은 목적(채널이 아니라 콘텐츠 단위 성과)이지만, 네이버 쪽엔 공식 조회수 API가
+"신기한 아파트사전" 채널의 네이버 블로그 게시물별 조회수를 매일 수집해
+assets/data/naver-content.json에 쌓는다. 유튜브(fetch_youtube.py)와 같은
+목적(채널이 아니라 콘텐츠 단위 성과)이지만, 네이버 쪽엔 공식 조회수 API가
 없어서 fetch_sns_public.py와 같은 방식(Playwright로 공개 페이지 직접 읽기)을 쓴다.
 
 ## 왜 블로그 "이웃수"는 여기서 안 다루는가
@@ -22,34 +22,18 @@ RSS는 블로그 주인이 "관리 > 기본설정 > RSS 발행"을 켜야만 채
 없어서, 각 게시글 페이지를 직접 열어(모바일판) fetch_sns_public.py와 동일한
 "키워드 주변 텍스트" 방식으로 읽는다(parse_count/first_count_near 로직 동일).
 
-## 네이버 클립 -- 3단계 시도 (2026-09-01, 딥리서치 반입 후 재작성)
-처음엔 클립 카드의 href를 읽는 방식으로 짰는데 실제로는 전부 href="#"였다
-(자바스크립트 클릭 핸들러로 이동을 처리하는 SPA 구조). 외부 딥리서치
-결과(사장님 반입, `multi-llm-handoff` 규약)를 받아 검토했는데, 정확한 JSON
-경로나 엔드포인트 이름은 출처 없는 추정이라 그대로 믿지 않고(규약 3원칙),
-"이런 구조일 가능성이 있다"는 방향성만 취해 값의 **모양**으로 찾는 방식으로
-짰다:
-  1. 페이지 HTML의 `__NEXT_DATA__` 스크립트(Next.js SSR 하이드레이션
-     데이터)에서 clipId/readCount류 키를 가진 객체를 재귀로 찾는다.
-  2. 없으면 페이지 로드 중 오간 JSON 네트워크 응답 중에서 같은 방식으로 찾는다.
-  3. 그래도 없으면 예전 방식(이미지 감싸는 링크)으로 마지막 시도.
-세 방식 다 실패하면 다음에 바로 보게 진단 로그를 남긴다.
-
-딥리서치가 제안한 "해외 IP·헤드리스 브라우저 차단" 가설은 **채택하지
-않았다** -- 실측(GitHub Actions에서 블로그 페이지 본문을 정상적으로 전부
-읽어옴)과 모순되고, 국내 프록시 도입은 비용·복잡도가 느는 결정이라 실제
-차단 증거 없이는 가지 않는다(규모 최적화 원칙).
-
-**실제로는 셋 다 아니었다.** 사장님이 개발자도구 Network 탭을 직접 캡처해서
-보내주신 덕에 진짜 주소를 확인했다(2026-09-01): `clip.naver.com`이나
-`apis.naver.com`이 아니라 **`creatorhub-api.naver.com`** 도메인이었다 --
-그래서 딥리서치의 "apis.naver.com" 추정도, 이 스크립트의 "naver.com 포함
-여부" 네트워크 필터도 둘 다 못 잡았다. 실제 호출:
-`GET https://creatorhub-api.naver.com/api/v7.0/feed/contents?recType=CLIP_PC&recId={"targetProfileId":"<handle>","open":true,"tab":"all"}&count=N&playback=false`
--- 이제 이 엔드포인트를 Playwright 없이 직접 호출한다(더 빠르고 단순함).
-응답 JSON의 정확한 필드 스키마는 아직 실측 전이라, `find_clip_like_objects`
-로 모양만 보고 찾고 실패하면 원본 구조를 로그로 남겨 다음 실행에서 바로
-스키마를 확정할 수 있게 한다.
+## 네이버 클립은 왜 여기서 안 다루는가 (2026-09-01)
+서버(GitHub Actions, 로그인 없는 헤드리스 브라우저)로 클립 데이터를
+읽으려는 시도를 여러 방식(DOM 카드, __NEXT_DATA__, 네트워크 캡처, 실제
+엔드포인트 `creatorhub-api.naver.com` 직접 호출)으로 했지만 전부 실패했다.
+근본 원인은 그 API가 진짜 로그인 세션에 묶인 sessionId를 요구한다는 것
+(`Session not found or expired`, 실측 확인) -- 로그인 없는 자동화로는
+원천적으로 못 뚫는다. 게다가 실측해보니 이 채널은 클립이 1개뿐이라 정교한
+수집기를 만들 실익도 작다. 그래서 클립은 **사장님이 실제로 로그인해 쓰는
+크롬 확장(`_sns-extension/`)**이 채널 요약 수치(팔로워·팔로잉·콘텐츠
+수)만 읽어 assets/data/naver-content.json의 `clip_channel`에 쌓는 걸로
+대체했다. 클립 개수가 늘어나면(승격 신호) 그때 클립별 개별 조회수 수집을
+다시 검토한다.
 
 ## 설계 원칙 (다른 fetch_*.py와 동일)
 - 게시물 하나가 실패해도 나머지는 계속 진행한다(항목별 try/except).
@@ -60,10 +44,6 @@ import json
 import os
 import re
 import sys
-import urllib.error
-import urllib.parse
-import urllib.request
-import uuid
 from datetime import datetime, timedelta, timezone
 
 from playwright.sync_api import sync_playwright
@@ -78,11 +58,8 @@ UA = (
 )
 
 BLOG_ID = "sinkihanapt"
-CLIP_HANDLE = "simkihanapt"  # clip.naver.com/@simkihanapt -- 블로그 핸들과 철자가
-                             # 다르지만 사장님이 알려준 실제 주소 그대로 쓴다.
 OUT_PATH = os.path.join("assets", "data", "naver-content.json")
 MAX_POSTS = 20
-MAX_CLIPS = 20
 
 
 def log(*a):
@@ -232,189 +209,6 @@ def collect_post_views(browser, log_no):
         page.close()
 
 
-def find_clip_like_objects(obj, out, depth=0):
-    """중첩 JSON 안에서 클립처럼 생긴 dict를 재귀로 찾는다. 정확한 스키마
-    경로(딥리서치가 제시한 값들)는 출처 없는 추정이라 믿지 않고, 값의
-    모양(조회수류 키 + 제목/id류 키가 같이 있는지)으로 판별한다."""
-    if depth > 10 or obj is None:
-        return
-    if isinstance(obj, dict):
-        keys = set(obj.keys())
-        has_view = bool(keys & {"readCount", "viewCount", "playCount", "views"})
-        has_title_or_id = bool(keys & {"title", "clipTitle", "clipId", "id", "videoId"})
-        if has_view and has_title_or_id:
-            out.append(obj)
-            return  # 이 dict 안쪽까지 더 파고들 필요는 없다
-        for v in obj.values():
-            find_clip_like_objects(v, out, depth + 1)
-    elif isinstance(obj, list):
-        for item in obj:
-            find_clip_like_objects(item, out, depth + 1)
-
-
-def normalize_clip_obj(obj):
-    """후보 키 이름 중 실제로 있는 걸 골라 통일된 형태로 만든다."""
-    def pick(keys):
-        for k in keys:
-            if obj.get(k) is not None:
-                return obj[k]
-        return None
-
-    return {
-        "id": str(pick(["clipId", "id", "videoId"]) or ""),
-        "title": pick(["title", "clipTitle"]),
-        "views": pick(["readCount", "viewCount", "playCount", "views"]),
-        "likes": pick(["likeCount", "likes"]),
-        "published_at": pick(["registerTime", "createdTime", "regDate"]),
-        # 정확한 URL 필드명도 출처 없는 추정이라 여러 후보를 시도한다 --
-        # 못 찾으면 None(호출부가 채널 프로필 URL로 대체).
-        "url": pick(["url", "link", "shareUrl", "permalink"]),
-    }
-
-
-def clips_from_next_data(html):
-    """__NEXT_DATA__(Next.js SSR 하이드레이션 스크립트)에 클립 목록이
-    들어있는지 시도한다. 이 스크립트 태그 자체가 없거나 구조가 다르면
-    조용히 빈 리스트."""
-    m = re.search(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', html, re.DOTALL)
-    if not m:
-        return []
-    try:
-        data = json.loads(m.group(1))
-    except Exception:
-        return []
-    found = []
-    find_clip_like_objects(data, found)
-    return found
-
-
-CREATORHUB_CONTENTS_URL = "https://creatorhub-api.naver.com/api/v7.0/feed/contents"
-
-
-def fetch_clips_via_creatorhub_api(handle, count):
-    """실제 브라우저 Network 탭에서 확인한 진짜 엔드포인트를 직접 호출한다
-    (2026-09-01, 사장님이 캡처해준 요청 기준). Playwright 없이 되므로 더
-    빠르고 단순하다. 응답 스키마는 아직 실측 전이라 find_clip_like_objects로
-    모양만 보고 찾는다."""
-    rec_id = json.dumps({"targetProfileId": handle, "open": True, "tab": "all"}, separators=(",", ":"))
-    params = {
-        "recType": "CLIP_PC",
-        "recId": rec_id,
-        "count": str(count),
-        "playback": "false",
-        "sessionId": str(uuid.uuid4()),
-    }
-    url = CREATORHUB_CONTENTS_URL + "?" + urllib.parse.urlencode(params)
-    req = urllib.request.Request(url, headers={
-        "User-Agent": UA,
-        "Referer": "https://clip.naver.com/",
-        "Accept": "application/json",
-    })
-    try:
-        with urllib.request.urlopen(req, timeout=20) as r:
-            return json.loads(r.read().decode("utf-8"))
-    except urllib.error.HTTPError as e:
-        raise RuntimeError(f"creatorhub API {e.code}: {e.read().decode('utf-8', errors='replace')[:300]}") from e
-
-
-def collect_recent_clips(browser, limit):
-    """클립 크리에이터 프로필 페이지에서 최근 클립 목록(id·제목·조회수)을
-    읽는다. 4단계로 시도한다(순서대로, 되는 데서 멈춤):
-      0) creatorhub-api.naver.com 실제 엔드포인트 직접 호출(가장 빠르고 확실)
-      1) __NEXT_DATA__ SSR 데이터 파싱(0번 실패 시 대비)
-      2) 페이지 로드 중 오간 JSON 네트워크 응답 가로채기
-      3) 예전 방식(이미지 감싸는 링크 카드) -- href="#"라 id만 임시로 잡음
-    넷 다 실패하면 원인 파악용 진단 로그를 남긴다."""
-    try:
-        raw = fetch_clips_via_creatorhub_api(CLIP_HANDLE, limit)
-        found = []
-        find_clip_like_objects(raw, found)
-        if found:
-            clips = [normalize_clip_obj(c) for c in found[:limit]]
-            log(f"  클립: creatorhub API에서 {len(clips)}개 찾음")
-            return clips
-        # 응답은 왔는데 예상한 모양(조회수류+제목/id류 키)이 하나도 안
-        # 걸렸다는 뜻 -- 다음엔 바로 실제 스키마를 보게 원본을 남긴다.
-        log(f"  클립: creatorhub API 응답 받았지만 매칭 실패, 원본(600자): "
-            f"{json.dumps(raw, ensure_ascii=False)[:600]}")
-    except Exception as e:
-        log(f"  클립: creatorhub API 호출 실패 — {type(e).__name__}: {e}")
-
-    # 0번이 실패했을 때만 브라우저를 띄운다(1~3번 대비책).
-    page = browser.new_page(user_agent=UA, locale="ko-KR")
-    network_found = []
-
-    def handle_response(response):
-        try:
-            if "json" not in (response.headers.get("content-type") or ""):
-                return
-            if "naver.com" not in response.url:
-                return
-            data = response.json()
-        except Exception:
-            return
-        find_clip_like_objects(data, network_found)
-
-    page.on("response", handle_response)
-
-    clips = []
-    try:
-        resp = page.goto(f"https://clip.naver.com/@{CLIP_HANDLE}", timeout=45000)
-        nav_status = resp.status if resp else None
-        try:
-            page.wait_for_selector("img", timeout=15000)
-        except Exception:
-            pass
-        page.wait_for_timeout(2500)
-
-        via_next_data = clips_from_next_data(page.content())
-        if via_next_data:
-            clips = [normalize_clip_obj(c) for c in via_next_data[:limit]]
-            log(f"  클립: __NEXT_DATA__에서 {len(clips)}개 찾음")
-        elif network_found:
-            clips = [normalize_clip_obj(c) for c in network_found[:limit]]
-            log(f"  클립: 네트워크 응답에서 {len(clips)}개 찾음")
-        else:
-            cards = page.locator("a:has(img)")
-            count = min(cards.count(), limit)
-            seen = set()
-            for i in range(count):
-                card = cards.nth(i)
-                try:
-                    href = card.get_attribute("href") or ""
-                    if not href:
-                        continue
-                    tail = href.rstrip("/").split("/")[-1] or href
-                    clip_id = re.sub(r"[^a-zA-Z0-9_-]", "_", tail)[:40]
-                    if not clip_id or clip_id in seen:
-                        continue
-                    seen.add(clip_id)
-                    text = card.inner_text(timeout=4000)
-                    clips.append({
-                        "id": clip_id, "title": None, "url": href,
-                        "views": parse_count(text), "likes": None, "published_at": None,
-                    })
-                except Exception:
-                    continue
-            if clips:
-                log(f"  클립: DOM 카드 방식으로 {len(clips)}개 찾음(fallback)")
-
-        if not clips:
-            n_img = page.locator("img").count()
-            n_a = page.locator("a").count()
-            has_next_data = bool(re.search(r'id="__NEXT_DATA__"', page.content()))
-            title = page.title()
-            body_snippet = re.sub(r"\s+", " ", page.inner_text("body"))[:200]
-            log(f"  진단: nav상태={nav_status}, 최종URL={page.url}, 제목={title!r}, "
-                f"img {n_img}개, a {n_a}개, __NEXT_DATA__ 존재={has_next_data}, "
-                f"네트워크 캡처 {len(network_found)}건, 본문(200자)={body_snippet!r}")
-    except Exception as e:
-        log(f"  클립 목록 수집 실패 — {type(e).__name__}: {e}")
-    finally:
-        page.close()
-    return clips
-
-
 def main():
     now = datetime.now(KST)
     today = now.strftime("%Y-%m-%d")
@@ -425,7 +219,6 @@ def main():
         with open(OUT_PATH, encoding="utf-8") as f:
             data = json.load(f)
     data.setdefault("posts", {})
-    data.setdefault("clips", {})
 
     with sync_playwright() as p:
         browser = p.chromium.launch()
@@ -454,28 +247,6 @@ def main():
                 p_entry["published_at"] = post["pubDate"]
                 upsert(p_entry["history"], today, {"date": today, "views": views})
             log(f"블로그: {blog_ok}/{len(posts)}개 조회수 갱신")
-
-            # ── 클립 ──
-            clips = collect_recent_clips(browser, MAX_CLIPS)
-            clip_ok = 0
-            for c in clips:
-                if not c.get("id") or c.get("views") is None:
-                    continue
-                clip_ok += 1
-                clip_url = c.get("url") or f"https://clip.naver.com/@{CLIP_HANDLE}"
-                if clip_url.startswith("/"):
-                    clip_url = "https://clip.naver.com" + clip_url
-                c_entry = data["clips"].setdefault(c["id"], {"history": []})
-                c_entry["url"] = clip_url
-                if c.get("title"):
-                    c_entry["title"] = c["title"]
-                if c.get("published_at"):
-                    c_entry["published_at"] = c["published_at"]
-                entry = {"date": today, "views": c["views"]}
-                if c.get("likes") is not None:
-                    entry["likes"] = c["likes"]
-                upsert(c_entry["history"], today, entry)
-            log(f"클립: {clip_ok}/{len(clips)}개 조회수 갱신")
         finally:
             browser.close()
 
