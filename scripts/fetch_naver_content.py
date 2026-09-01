@@ -131,10 +131,15 @@ def list_recent_blog_posts(browser, limit):
     posts = []
     try:
         page.goto(f"https://m.blog.naver.com/{BLOG_ID}", timeout=45000)
+        # "네트워크가 잠잠해질 때까지"(networkidle)는 분석 스크립트가 계속
+        # 폴링하는 요즘 사이트에서는 거의 항상 타임아웃까지 그냥 흘러가버려
+        # 신호가 안 된다(2026-09-01 실측: RSS→모바일 페이지로 바꿔도 여전히
+        # 0건). 실제 콘텐츠가 떴다는 더 직접적인 증거(이미지 등장)를 기다린다.
         try:
-            page.wait_for_load_state("networkidle", timeout=20000)
+            page.wait_for_selector("img", timeout=15000)
         except Exception:
             pass
+        page.wait_for_timeout(1500)
         links = page.locator(f"a[href*='/{BLOG_ID}/']")
         seen = set()
         for i in range(links.count()):
@@ -169,9 +174,10 @@ def collect_post_views(browser, log_no):
     try:
         page.goto(f"https://m.blog.naver.com/{BLOG_ID}/{log_no}", timeout=45000)
         try:
-            page.wait_for_load_state("networkidle", timeout=20000)
+            page.wait_for_selector("img", timeout=15000)
         except Exception:
             pass
+        page.wait_for_timeout(1000)
         return first_count_near(page, ["조회수", "조회"])
     finally:
         page.close()
@@ -188,8 +194,10 @@ def collect_recent_clips(browser, limit):
     clips = []
     try:
         page.goto(f"https://clip.naver.com/@{CLIP_HANDLE}", timeout=45000)
+        # networkidle 대신 실제 콘텐츠(이미지) 등장을 기다린다 -- 이유는
+        # list_recent_blog_posts 쪽 주석 참고(2026-09-01, 둘 다 같은 증상).
         try:
-            page.wait_for_load_state("networkidle", timeout=20000)
+            page.wait_for_selector("img", timeout=15000)
         except Exception:
             pass
         page.wait_for_timeout(2000)
