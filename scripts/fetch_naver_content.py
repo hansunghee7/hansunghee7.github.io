@@ -194,7 +194,16 @@ def collect_post_views(browser, log_no):
         except Exception:
             pass
         page.wait_for_timeout(1000)
-        return first_count_near(page, ["조회수", "조회"])
+        n = first_count_near(page, ["조회수", "조회"])
+        if n is None:
+            # "조회" 키워드 근처에서도 못 찾았다는 뜻 -- 다음엔 바로 보게
+            # 화면에 실제로 뭐가 있는지 앞부분을 남긴다.
+            try:
+                snippet = page.inner_text("body")[:200].replace("\n", " ")
+            except Exception:
+                snippet = "(본문 읽기 실패)"
+            log(f"    조회수 진단({log_no}): {snippet}")
+        return n
     finally:
         page.close()
 
@@ -241,10 +250,19 @@ def collect_recent_clips(browser, limit):
                 continue
         if not clips:
             # a:has(img)도 0건이면 클립 카드가 <a>가 아닌 다른 요소(div
-            # 클릭 핸들러 등)일 가능성이 크다 -- 다음엔 바로 보게 진단 로그.
+            # 클릭 핸들러, 배경이미지 등)일 가능성이 크다 -- 다음엔 바로
+            # 보게 진단 로그(전체 a 태그 href 샘플 + 배경이미지 요소 수).
             n_img = page.locator("img").count()
             n_a = page.locator("a").count()
-            log(f"  진단: img {n_img}개, a {n_a}개 (카드가 <a> 태그가 아닐 수 있음)")
+            n_bg = page.locator("[style*='background-image']").count()
+            a_hrefs = []
+            all_a = page.locator("a")
+            for i in range(min(all_a.count(), 8)):
+                try:
+                    a_hrefs.append((all_a.nth(i).get_attribute("href") or "")[:60])
+                except Exception:
+                    pass
+            log(f"  진단: img {n_img}개, a {n_a}개, background-image {n_bg}개, a href 샘플 {a_hrefs}")
     except Exception as e:
         log(f"  클립 목록 수집 실패 — {type(e).__name__}: {e}")
     finally:
