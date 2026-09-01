@@ -26,6 +26,14 @@
   .source-header .shortcut-link{font-size:12px; font-weight:600; color:var(--muted); text-decoration:none; border:1px solid var(--line-soft); border-radius:5px; width:18px; height:18px; display:inline-flex; align-items:center; justify-content:center; line-height:1;}
   .source-header .shortcut-link:hover{color:var(--ink); border-color:var(--ink);}
 
+  /* 정렬 전환(최신순/인기순) -- 섹션 헤더 오른쪽 끝에 붙인다. info-dot과
+     달리 "설명"이 아니라 그 자체가 조작 가능한 컨트롤이라 STYLE_GUIDE의
+     info-dot 배치 규칙(줄 끝에 밀어두지 않기)과는 무관하다. */
+  .sort-toggle{display:flex; gap:4px; margin-left:auto;}
+  .sort-btn{font-size:11.5px; font-weight:600; color:var(--muted); background:none; border:1px solid var(--line); border-radius:6px; padding:4px 10px; cursor:pointer;}
+  .sort-btn:hover{color:var(--ink); border-color:var(--ink);}
+  .sort-btn.is-active{background:var(--ink); color:#fff; border-color:var(--ink);}
+
   /* 채널 요약은 studio.css .tile.tile-accent 표준을 그대로 쓴다(다른
      인사이트 페이지와 통일, 2026-08-30 규칙). */
   .channel-card .foot{margin-top:10px;}
@@ -48,6 +56,7 @@
   .video-card .delta.up{color:var(--good);}
   .video-card .delta.down{color:var(--bad);}
   .video-card .secondary{font-size:11px; color:var(--muted); margin-top:5px;}
+  .video-card .top-comment{font-size:11px; color:var(--dim); margin-top:6px; font-style:italic; line-height:1.4; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
   .video-card .date-badge{font-size:10.5px; color:var(--muted); margin-top:6px;}
   .video-card svg{width:100%; height:26px; display:block; margin-top:7px;}
   .video-card.is-empty .body{color:var(--muted); font-size:12px; text-align:center; padding:24px 12px;}
@@ -153,6 +162,15 @@
     if (latest.likes != null) secondary.push("좋아요 " + latest.likes.toLocaleString());
     if (latest.comments != null) secondary.push("댓글 " + latest.comments.toLocaleString());
 
+    // 관련도순 1등 댓글만 짧게 보여준다 -- 카드가 수십 개인 화면에서
+    // 댓글 전체를 다 늘어놓으면 스캔하기 어려워지므로, "반응이 어떤지"
+    // 감을 잡는 용도로 한 줄만 쓴다. 전체는 영상 링크에서 직접 본다.
+    var topCommentHtml = "";
+    if (video.top_comments && video.top_comments.length) {
+      var top = video.top_comments[0];
+      topCommentHtml = '<div class="top-comment">"' + escapeHtml(top.text || "") + '" — ' + escapeHtml(top.author || "") + "</div>";
+    }
+
     var dateBadge = "";
     if (video.published_at) {
       var d = new Date(video.published_at);
@@ -168,10 +186,18 @@
       '<p class="title"><a href="' + escapeHtml(watchUrl) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(video.title || "(제목 없음)") + "</a></p>" +
       '<div class="latest"><span class="val">' + latest.views.toLocaleString() + '<span class="unit">회</span></span>' + deltaHtml(delta) + "</div>" +
       (secondary.length ? '<div class="secondary">' + escapeHtml(secondary.join(" · ")) + "</div>" : "") +
+      topCommentHtml +
       (clean.length > 1 ? sparkline(clean, function (e) { return e.views; }, 200, 40) : "") +
       dateBadge +
       "</div></div>"
     );
+  }
+
+  var sortMode = "recent"; // "recent" | "views"
+
+  function latestViews(v) {
+    var clean = (v.history || []).filter(function (e) { return e.views != null; });
+    return clean.length ? clean[clean.length - 1].views : -1;
   }
 
   function renderVideos(data) {
@@ -183,19 +209,37 @@
       return;
     }
 
-    // 최신 업로드가 먼저 보이게 게시일 내림차순 -- 크리에이터가 새 영상
-    // 성과를 가장 먼저 확인하고 싶어할 것이므로.
-    ids.sort(function (a, b) {
-      return (videos[b].published_at || "").localeCompare(videos[a].published_at || "");
-    });
+    if (sortMode === "views") {
+      // 조회수 내림차순 -- "뭐가 잘 됐는지" 바로 보고 싶을 때.
+      ids.sort(function (a, b) { return latestViews(videos[b]) - latestViews(videos[a]); });
+    } else {
+      // 기본값: 최신 업로드가 먼저 보이게 게시일 내림차순 -- 크리에이터가
+      // 새 영상 성과를 가장 먼저 확인하고 싶어할 것이므로.
+      ids.sort(function (a, b) {
+        return (videos[b].published_at || "").localeCompare(videos[a].published_at || "");
+      });
+    }
 
-    var html = '<div class="source-header">유튜브 숏츠 <a class="shortcut-link" href="' + escapeHtml(CHANNEL_URL + "/shorts") + '" target="_blank" rel="noopener noreferrer" aria-label="채널 숏츠 바로가기">↗</a></div>';
+    var html =
+      '<div class="source-header">유튜브 숏츠 <a class="shortcut-link" href="' + escapeHtml(CHANNEL_URL + "/shorts") + '" target="_blank" rel="noopener noreferrer" aria-label="채널 숏츠 바로가기">↗</a>' +
+      '<div class="sort-toggle" role="group" aria-label="정렬">' +
+      '<button type="button" class="sort-btn' + (sortMode === "recent" ? " is-active" : "") + '" data-sort="recent">최신순</button>' +
+      '<button type="button" class="sort-btn' + (sortMode === "views" ? " is-active" : "") + '" data-sort="views">인기순</button>' +
+      "</div></div>";
     html += '<div class="video-grid">' + ids.map(function (id) {
       var v = videos[id];
       v.id = id;
       return videoCardHtml(v);
     }).join("") + "</div>";
     el.innerHTML = html;
+
+    el.querySelectorAll(".sort-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (sortMode === btn.dataset.sort) return;
+        sortMode = btn.dataset.sort;
+        renderVideos(lastData);
+      });
+    });
   }
 
   function stampDataAsOf(data) {
@@ -212,13 +256,16 @@
     document.getElementById("titleInfoText").textContent = TITLE_INFO_BASE + " 마지막 새로고침: " + time + ".";
   }
 
+  var lastData = {};
+
   function load() {
     return fetch(DATA_URL + "?t=" + Date.now(), { cache: "no-store" })
       .then(function (r) { return r.ok ? r.json() : {}; })
       .then(function (data) {
-        renderChannel(data);
-        renderVideos(data);
-        stampDataAsOf(data);
+        lastData = data || {};
+        renderChannel(lastData);
+        renderVideos(lastData);
+        stampDataAsOf(lastData);
         return true;
       })
       .catch(function (e) {
