@@ -1,7 +1,7 @@
 {
   "posts": {},
   "clips": {},
-  "updated_at": "2026-09-01T05:17:46.442Z",
+  "updated_at": "2026-09-01T05:17:51.915Z",
   "channels": {
     "naver_clip": {
       "history": [
@@ -23,6 +23,15 @@
         }
       ],
       "url": "https://www.instagram.com/sinkihanapt/"
+    },
+    "content_threads": {
+      "history": [
+        {
+          "date": "2026-09-01",
+          "followers": 1
+        }
+      ],
+      "url": "https://www.threads.com/@sinkihanapt"
     }
   }
 }
