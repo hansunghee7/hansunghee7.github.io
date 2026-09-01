@@ -12,12 +12,15 @@ assets/data/sns-insight.json에 수집하고 있다(회사 계정 "심플리파�
 파일도 따로 둔다.
 
 ## 게시글 목록은 어떻게 얻는가
-네이버 블로그가 제공하는 공개 RSS(rss.blog.naver.com/{blogId}.xml)로 최근
-게시글의 제목·링크·게시일을 받는다 -- 로그인 없이 접근 가능한 공식 기능이라
-스크래핑보다 안전하고 안정적이다. 조회수는 RSS에 없어서, 각 게시글 페이지를
-직접 열어(모바일판) fetch_sns_public.py와 동일한 "키워드 주변 텍스트"
-방식으로 읽는다 -- 그 스크립트가 이미 blog.naver.com 상대로 검증한 방식을
-그대로 재사용한다(parse_count/first_count_near 로직 동일).
+처음엔 네이버 블로그 공개 RSS(rss.blog.naver.com/{blogId}.xml)를 썼는데,
+실제로 돌려보니 게시글이 분명히 있는데도 0개로 나왔다(2026-09-01 확인) --
+RSS는 블로그 주인이 "관리 > 기본설정 > RSS 발행"을 켜야만 채워지고, 새로
+만든 블로그는 기본이 꺼짐이라 항상 비어 있었다. 그래서 RSS 대신 모바일판
+블로그 홈(m.blog.naver.com/{blogId})을 직접 읽어서 게시글 링크·제목을
+뽑는다 -- PC판은 본문이 iframe(#mainFrame) 안에 있어(fetch_sns_public.py가
+이미 겪은 문제) 모바일판이 더 간단하고 안정적이다. 조회수는 이 목록에
+없어서, 각 게시글 페이지를 직접 열어(모바일판) fetch_sns_public.py와 동일한
+"키워드 주변 텍스트" 방식으로 읽는다(parse_count/first_count_near 로직 동일).
 
 ## 네이버 클립은 근거가 약하다 -- 첫 실행 결과를 보고 다듬을 것
 네이버 클립은 공식 API도, 참고할 만한 공개 문서도 마땅치 않다. 크리에이터
@@ -37,8 +40,6 @@ import json
 import os
 import re
 import sys
-import urllib.request
-import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta, timezone
 
 from playwright.sync_api import sync_playwright
@@ -119,22 +120,43 @@ def upsert(history, today, entry):
     history.sort(key=lambda e: e.get("date", ""))
 
 
-def list_recent_blog_posts(limit):
-    url = f"https://rss.blog.naver.com/{BLOG_ID}.xml"
-    req = urllib.request.Request(url, headers={"User-Agent": UA})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        raw = r.read()
-    root = ET.fromstring(raw)
+def list_recent_blog_posts(browser, limit):
+    """모바일판 블로그 홈에서 게시글 링크·제목을 직접 읽는다(RSS 대신 --
+    이유는 모듈 docstring 참고)."""
+    page = browser.new_page(user_agent=UA, locale="ko-KR")
     posts = []
-    for item in root.iter("item"):
-        link = (item.findtext("link") or "").strip()
-        title = (item.findtext("title") or "").strip()
-        pub_date = (item.findtext("pubDate") or "").strip()
-        m = re.search(r"/(\d+)/?$", link)
-        if not m:
-            continue
-        posts.append({"logNo": m.group(1), "title": title, "url": link, "pubDate": pub_date})
-    return posts[:limit]
+    try:
+        page.goto(f"https://m.blog.naver.com/{BLOG_ID}", timeout=45000)
+        try:
+            page.wait_for_load_state("networkidle", timeout=20000)
+        except Exception:
+            pass
+        links = page.locator(f"a[href*='/{BLOG_ID}/']")
+        seen = set()
+        for i in range(links.count()):
+            if len(posts) >= limit:
+                break
+            try:
+                href = links.nth(i).get_attribute("href") or ""
+                m = re.search(rf"/{BLOG_ID}/(\d+)", href)
+                if not m:
+                    continue
+                log_no = m.group(1)
+                if log_no in seen:
+                    continue
+                title = links.nth(i).inner_text(timeout=3000).strip()
+                if not title:
+                    continue
+                seen.add(log_no)
+                url = href if href.startswith("http") else f"https://blog.naver.com/{BLOG_ID}/{log_no}"
+                posts.append({"logNo": log_no, "title": title, "url": url, "pubDate": ""})
+            except Exception:
+                continue
+    except Exception as e:
+        log(f"블로그 홈 접근 실패 — {type(e).__name__}: {e}")
+    finally:
+        page.close()
+    return posts
 
 
 def collect_post_views(browser, log_no):
@@ -203,7 +225,7 @@ def main():
         try:
             # ── 블로그 ──
             try:
-                posts = list_recent_blog_posts(MAX_POSTS)
+                posts = list_recent_blog_posts(browser, MAX_POSTS)
                 log(f"블로그: 최근 게시글 {len(posts)}개 확인")
             except Exception as e:
                 posts = []
