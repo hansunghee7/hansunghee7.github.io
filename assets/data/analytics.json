@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-01T12:39:41.433188+00:00",
+  "updated_at": "2026-09-01T20:00:54.600244+00:00",
   "range": "last_30_days",
   "totals": {
     "sessions": 124,
     "activeUsers": 70,
-    "newUsers": 69,
-    "returningUsers": 1
+    "newUsers": 70,
+    "returningUsers": 0
   },
   "daily": [
     {
@@ -47,8 +47,8 @@
       "date": "2026-08-31",
       "sessions": 7,
       "activeUsers": 6,
-      "newUsers": 5,
-      "returningUsers": 1
+      "newUsers": 6,
+      "returningUsers": 0
     },
     {
       "date": "2026-09-01",
@@ -69,15 +69,15 @@
     }
   ],
   "landing_types": {
-    "home": 78,
+    "home": 76,
     "log_home": 7,
     "individual_post": 16,
-    "other": 24
+    "other": 25
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 92
+      "sessions": 93
     },
     {
       "source": "searchadvisor.naver.com",
@@ -92,12 +92,12 @@
       "sessions": 5
     },
     {
-      "source": "(not set)",
+      "source": "linkedin.com",
       "sessions": 3
     },
     {
-      "source": "linkedin.com",
-      "sessions": 3
+      "source": "(not set)",
+      "sessions": 1
     },
     {
       "source": "bing",
