@@ -129,13 +129,17 @@
   // 원본id"로 만든 키)로 출처를 되짚어 썸네일 위에 로고 배지를 붙인다
   // (2026-09-01, "어느 채널인지 식별돼야 한다"는 요청). id에 접두사가
   // 없으면 유튜브 원본 영상id 그대로다.
+  // 아이콘마다 실제 잉크가 몰린 위치가 24x24 뷰박스 중심과 어긋나
+  // (예: 틱톡 음표는 동그란 머리가 아래쪽에 몰려있음) 처음엔 배지 안에서
+  // 로고가 아래로 치우쳐 보였다(2026-09-01 실측). 시각적 무게중심이
+  // 가운데 오도록 각 path를 <g transform="translate(...)">로 보정.
   var PLATFORM_ICON = {
     youtube: '<svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>',
-    naver_clip: '<svg viewBox="0 0 24 24"><text x="12" y="17" text-anchor="middle" font-size="14" font-weight="700" fill="#fff" font-family="Arial,sans-serif">N</text></svg>',
+    naver_clip: '<svg viewBox="0 0 24 24"><text x="12" y="12" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" fill="#fff" font-family="Arial,sans-serif">N</text></svg>',
     content_instagram: '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>',
-    content_threads: '<svg viewBox="0 0 24 24"><text x="12" y="17" text-anchor="middle" font-size="15" font-weight="700" fill="#fff" font-family="Arial,sans-serif">@</text></svg>',
-    content_facebook: '<svg viewBox="0 0 24 24" fill="#fff"><path d="M13.5 21v-8.5H16l.5-3.5h-3V6.7c0-1 .3-1.7 1.7-1.7H16V1.8C15.7 1.8 14.7 1.7 13.6 1.7c-2.5 0-4.1 1.5-4.1 4.3V9H7v3.5h2.5V21h4z"/></svg>',
-    content_tiktok: '<svg viewBox="0 0 24 24" fill="#fff"><path d="M16.5 3c.3 2.4 1.8 4 4.2 4.2v3c-1.5 0-2.9-.5-4.2-1.4v6.7c0 3.6-2.9 6.5-6.5 6.5S3.5 19.1 3.5 15.5 6.4 9 10 9c.3 0 .6 0 .9.1v3.1c-.3-.1-.6-.1-.9-.1-1.9 0-3.4 1.5-3.4 3.4s1.5 3.4 3.4 3.4 3.5-1.5 3.5-3.4V3h3z"/></svg>',
+    content_threads: '<svg viewBox="0 0 24 24"><text x="12" y="12" text-anchor="middle" dominant-baseline="central" font-size="15" font-weight="700" fill="#fff" font-family="Arial,sans-serif">@</text></svg>',
+    content_facebook: '<svg viewBox="0 0 24 24" fill="#fff"><g transform="translate(0,-1.5)"><path d="M13.5 21v-8.5H16l.5-3.5h-3V6.7c0-1 .3-1.7 1.7-1.7H16V1.8C15.7 1.8 14.7 1.7 13.6 1.7c-2.5 0-4.1 1.5-4.1 4.3V9H7v3.5h2.5V21h4z"/></g></svg>',
+    content_tiktok: '<svg viewBox="0 0 24 24" fill="#fff"><g transform="translate(0,-1.5)"><path d="M16.5 3c.3 2.4 1.8 4 4.2 4.2v3c-1.5 0-2.9-.5-4.2-1.4v6.7c0 3.6-2.9 6.5-6.5 6.5S3.5 19.1 3.5 15.5 6.4 9 10 9c.3 0 .6 0 .9.1v3.1c-.3-.1-.6-.1-.9-.1-1.9 0-3.4 1.5-3.4 3.4s1.5 3.4 3.4 3.4 3.5-1.5 3.5-3.4V3h3z"/></g></svg>',
     content_x: '<svg viewBox="0 0 24 24" fill="#fff"><path d="M18.9 3H21l-6.6 7.5L22 21h-6.1l-4.8-6.3L5.5 21H3.4l7-8L2 3h6.2l4.4 5.8L18.9 3zM17.8 19.3h1.6L8.3 4.6H6.6l11.2 14.7z"/></svg>',
   };
 
@@ -451,8 +455,16 @@
     if (sortMode === "views") {
       ids.sort(function (a, b) { return latestViews(items[b]) - latestViews(items[a]); });
     } else {
+      // 인스타/틱톡은 실제 게시일을 안 모으므로 published_at이 항상 빈
+      // 문자열이라, 유튜브(진짜 게시일 있음)보다 무조건 "더 오래된 것"으로
+      // 밀려나는 문제가 있었다(2026-09-01 실측 -- 오늘 올라간 택배차가
+      // 8/30 게시된 물탱크 유튜브보다 뒤로 갔음). 게시일이 없으면 우리가
+      // 그 콘텐츠를 처음 발견해 기록한 날짜(history[0].date)로 대신
+      // 정렬한다 -- 실제 게시일보다는 부정확하지만, 빈 문자열(=가장 오래된
+      // 것으로 취급)보다는 훨씬 실제에 가깝다.
+      var sortKey = function (item) { return item.published_at || firstCaptureDate(item) || ""; };
       ids.sort(function (a, b) {
-        return (items[b].published_at || "").localeCompare(items[a].published_at || "");
+        return sortKey(items[b]).localeCompare(sortKey(items[a]));
       });
     }
 
