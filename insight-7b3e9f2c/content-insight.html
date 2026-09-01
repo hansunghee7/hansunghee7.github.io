@@ -39,6 +39,15 @@
   .channel-card .foot{margin-top:10px;}
   .channel-card svg{width:100%; height:44px; display:block; margin-top:10px;}
 
+  /* 네이버 블로그 게시글은 썸네일 없는 텍스트 카드라 book-insight.html과
+     같은 .tile/.tile-sm 표준 + label-text 말줄임 패턴을 그대로 쓴다. */
+  .tiles{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px;}
+  .tile .label{display:flex; align-items:center; gap:4px;}
+  .tile .label-text{overflow:hidden; text-overflow:ellipsis; white-space:nowrap; min-width:0;}
+  .tile .label a{color:inherit; text-decoration:none;}
+  .tile .label a:hover{color:var(--ink); text-decoration:underline;}
+  .tile svg{width:100%; height:36px; display:block; margin-top:8px;}
+
   /* 영상 카드는 .tile 표준과 다른 모양(썸네일이 있는 카드)이라 이 페이지
      고유로 선언한다 -- 숏츠는 세로(9:16) 포맷이라 썸네일도 세로로 둔다. */
   .video-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(168px,1fr)); gap:14px;}
@@ -74,18 +83,24 @@
 
   <div id="channelArea"><div class="loading">데이터 불러오는 중…</div></div>
   <div id="videoArea"></div>
+  <div id="blogArea"></div>
+  <div id="clipArea"></div>
 </div>
 
 <script>
 (function () {
   var DATA_URL = "/assets/data/youtube-insight.json";
   var CHANNEL_URL = "https://www.youtube.com/@sinkihanapt";
+  var NAVER_DATA_URL = "/assets/data/naver-content.json";
+  var BLOG_URL = "https://blog.naver.com/sinkihanapt";
+  var CLIP_URL = "https://clip.naver.com/@simkihanapt";
 
   var TITLE_INFO_BASE =
-    "유튜브 숏츠 채널(신기한 아파트사전)의 채널 지표와 영상별 조회수·좋아요·댓글 추이입니다. " +
-    "숏츠 판정은 영상 길이 3분(180초) 이하 기준이며, 최근 업로드 100개 중 숏츠만 추적합니다. " +
-    "하루 2번(05:37·19:37 KST) 자동 갱신되며, 지금 당장 갱신하려면 새로고침 버튼을 누르거나 " +
-    "GitHub Actions에서 Fetch YouTube shorts 워크플로를 수동 실행하세요.";
+    "\"신기한 아파트사전\" 채널의 콘텐츠 성과입니다 — 유튜브 숏츠(채널 지표 + 영상별 조회수·좋아요·댓글), " +
+    "네이버 블로그(게시글별 조회수), 네이버 클립(조회수)을 모읍니다. " +
+    "유튜브 숏츠 판정은 영상 길이 3분(180초) 이하 기준입니다. " +
+    "하루 2번(유튜브 05:37·19:37, 네이버 05:43·19:43 KST) 자동 갱신되며, 지금 당장 갱신하려면 " +
+    "새로고침 버튼을 누르거나 GitHub Actions에서 해당 워크플로를 수동 실행하세요.";
 
   function escapeHtml(s) {
     return (s == null ? "" : String(s)).replace(/[&<>"']/g, function (c) {
@@ -177,7 +192,9 @@
       dateBadge = '<div class="date-badge">' + d.toLocaleDateString("ko-KR", { month: "2-digit", day: "2-digit" }) + " 게시</div>";
     }
 
-    var watchUrl = "https://www.youtube.com/shorts/" + encodeURIComponent(video.id);
+    // video.url이 있으면(클립처럼 자체 링크가 있는 콘텐츠) 그걸 쓰고,
+    // 없으면(유튜브 숏츠) id로 시청 URL을 조립한다.
+    var watchUrl = video.url || ("https://www.youtube.com/shorts/" + encodeURIComponent(video.id));
     var thumb = '<div class="thumb-wrap">' + (video.thumbnail ? '<img class="thumb" src="' + escapeHtml(video.thumbnail) + '" alt="" loading="lazy">' : "") + "</div>";
 
     return (
@@ -242,12 +259,73 @@
     });
   }
 
-  function stampDataAsOf(data) {
+  function blogPostTileHtml(post) {
+    var history = (post.history || []).filter(function (e) { return e.views != null; });
+    if (!history.length) return "";
+
+    var latest = history[history.length - 1];
+    var prev = history.length > 1 ? history[history.length - 2] : null;
+    var delta = prev ? latest.views - prev.views : null;
+
+    var labelText =
+      '<span class="label-text" title="' + escapeHtml(post.title || "") + '">' +
+      '<a href="' + escapeHtml(post.url || "#") + '" target="_blank" rel="noopener noreferrer">' +
+      escapeHtml(post.title || "(제목 없음)") + " ↗</a></span>";
+
+    return (
+      '<div class="tile tile-sm"><div class="label">' + labelText + "</div>" +
+      '<div class="latest"><span class="val">' + latest.views.toLocaleString() + '<span class="unit">회</span></span>' + deltaHtml(delta) + "</div>" +
+      (history.length > 1 ? sparkline(history, function (e) { return e.views; }, 200, 36) : "") +
+      "</div>"
+    );
+  }
+
+  function renderBlogPosts(data) {
+    var posts = data.posts || {};
+    var el = document.getElementById("blogArea");
+    var ids = Object.keys(posts).filter(function (id) {
+      return (posts[id].history || []).some(function (e) { return e.views != null; });
+    });
+    if (!ids.length) { el.innerHTML = ""; return; }
+
+    // 게시일 내림차순(최신 글 먼저) -- 유튜브 섹션 기본 정렬과 동일한 기준.
+    ids.sort(function (a, b) { return (posts[b].published_at || "").localeCompare(posts[a].published_at || ""); });
+
+    el.innerHTML =
+      '<div class="source-header">네이버 블로그 <a class="shortcut-link" href="' + escapeHtml(BLOG_URL) + '" target="_blank" rel="noopener noreferrer" aria-label="블로그 바로가기">↗</a></div>' +
+      '<div class="tiles">' + ids.map(function (id) { return blogPostTileHtml(posts[id]); }).join("") + "</div>";
+  }
+
+  function renderClips(data) {
+    var clips = data.clips || {};
+    var el = document.getElementById("clipArea");
+    var ids = Object.keys(clips).filter(function (id) {
+      return (clips[id].history || []).some(function (e) { return e.views != null; });
+    });
+    if (!ids.length) { el.innerHTML = ""; return; }
+
+    // 클립은 게시일을 안 모으므로(수집 근거가 약해 우선 조회수만) 조회수
+    // 내림차순으로 보여준다.
+    ids.sort(function (a, b) { return latestViews(clips[b]) - latestViews(clips[a]); });
+
+    el.innerHTML =
+      '<div class="source-header">네이버 클립 <a class="shortcut-link" href="' + escapeHtml(CLIP_URL) + '" target="_blank" rel="noopener noreferrer" aria-label="클립 바로가기">↗</a></div>' +
+      '<div class="video-grid">' + ids.map(function (id) {
+        var c = clips[id];
+        c.id = id;
+        return videoCardHtml(c);
+      }).join("") + "</div>";
+  }
+
+  // 소스가 두 개(유튜브·네이버)라 각자 updated_at을 갖는다 -- 더 최근
+  // 시각을 대표값으로 보여준다(book-insight.html과 동일한 방식).
+  function stampDataAsOf(dataList) {
     var el = document.getElementById("dataAsOf");
-    if (!data.updated_at) { el.textContent = ""; return; }
-    var d = new Date(data.updated_at);
-    var y = d.getFullYear(), m = String(d.getMonth() + 1).padStart(2, "0"), day = String(d.getDate()).padStart(2, "0");
-    var time = d.toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit" });
+    var times = dataList.map(function (d) { return d && d.updated_at ? new Date(d.updated_at) : null; }).filter(Boolean);
+    if (!times.length) { el.textContent = ""; return; }
+    var latest = times.reduce(function (a, b) { return b > a ? b : a; });
+    var y = latest.getFullYear(), m = String(latest.getMonth() + 1).padStart(2, "0"), day = String(latest.getDate()).padStart(2, "0");
+    var time = latest.toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit" });
     el.textContent = "· 데이터 기준 " + y + "-" + m + "-" + day + " " + time;
   }
 
@@ -257,15 +335,24 @@
   }
 
   var lastData = {};
+  var lastNaverData = {};
+
+  function fetchJson(url) {
+    return fetch(url + "?t=" + Date.now(), { cache: "no-store" })
+      .then(function (r) { return r.ok ? r.json() : {}; })
+      .catch(function () { return {}; });
+  }
 
   function load() {
-    return fetch(DATA_URL + "?t=" + Date.now(), { cache: "no-store" })
-      .then(function (r) { return r.ok ? r.json() : {}; })
-      .then(function (data) {
-        lastData = data || {};
+    return Promise.all([fetchJson(DATA_URL), fetchJson(NAVER_DATA_URL)])
+      .then(function (results) {
+        lastData = results[0] || {};
+        lastNaverData = results[1] || {};
         renderChannel(lastData);
         renderVideos(lastData);
-        stampDataAsOf(lastData);
+        renderBlogPosts(lastNaverData);
+        renderClips(lastNaverData);
+        stampDataAsOf([lastData, lastNaverData]);
         return true;
       })
       .catch(function (e) {
