@@ -128,6 +128,37 @@
   // 항목을 구분하고, 그 링크 안에 같이 보이는 숫자(조회수)를 읽는다.
   // 팔로워처럼 "라벨 + 숫자"가 아니라 숫자 하나만 덩그러니 있는 경우가
   // 많아 키워드 없이 첫 숫자를 그대로 쓴다.
+  // 인스타·틱톡 둘 다 이미지를 지연 로딩(lazy-load)한다 -- <img src>가
+  // 처음엔 1x1 투명 gif 같은 자리표시자이고, 진짜 주소는 data-src류
+  // 속성이나 srcset에 먼저 들어가 있는 경우가 많다(2026-09-01, 실제
+  // 캡처해보니 틱톡은 자리표시자 data: URL이, 인스타는 <img> 자체가 아예
+  // 안 잡혀서 빈 값이 저장된 걸 확인). data-src류를 먼저 보고, 그래도
+  // 없으면 배경이미지(background-image: url(...))로 그리는 타일도 있어
+  // 그것까지 마지막으로 본다.
+  function extractImgUrl(container) {
+    var img = container.querySelector("img");
+    if (img) {
+      var attrs = ["data-src", "data-lazy-src", "data-original", "data-srcset", "srcset", "src"];
+      for (var i = 0; i < attrs.length; i++) {
+        var v = img.getAttribute(attrs[i]);
+        if (!v) continue;
+        if (attrs[i].indexOf("srcset") !== -1) v = v.split(",")[0].trim().split(/\s+/)[0];
+        if (v && v.indexOf("data:image") !== 0) {
+          return { url: v, alt: img.alt || null };
+        }
+      }
+    }
+    var candidates = Array.prototype.slice.call(container.querySelectorAll("*")).concat(container);
+    for (var j = 0; j < candidates.length; j++) {
+      var bg = getComputedStyle(candidates[j]).backgroundImage;
+      var bgMatch = /url\((['"]?)(.*?)\1\)/.exec(bg || "");
+      if (bgMatch && bgMatch[2] && bgMatch[2].indexOf("data:image") !== 0) {
+        return { url: bgMatch[2], alt: null };
+      }
+    }
+    return null;
+  }
+
   function collectListItems(hrefPattern) {
     var anchors = Array.prototype.slice.call(document.querySelectorAll("a[href]"));
     var seen = {};
@@ -144,16 +175,13 @@
       var views = parseAbbrevNumber(numMatch[1], numMatch[2]);
       if (views == null) return;
       seen[id] = true;
-      // 타일 안 썸네일 이미지도 같이 챙긴다 -- 안 그러면 카드가 빈 회색
-      // 박스로만 뜬다(2026-09-01, 실제 화면 보고 확인). alt 텍스트가 있으면
-      // 제목 대용으로도 쓴다(없으면 "제목 없음"으로 자연히 대체됨).
-      var img = a.querySelector("img");
+      var thumb = extractImgUrl(a);
       items.push({
         id: id,
         views: views,
         url: href.indexOf("http") === 0 ? href : location.origin + href,
-        thumbnail: img ? img.src : null,
-        title: img && img.alt ? img.alt : null,
+        thumbnail: thumb ? thumb.url : null,
+        title: thumb && thumb.alt ? thumb.alt : null,
       });
     });
     return items;
@@ -193,7 +221,12 @@
     var listTimer = setInterval(function () {
       listAttempts++;
       var items = collectListItems(rule.listHrefPattern);
-      if (items.length || listAttempts >= LIST_MAX_ATTEMPTS) {
+      // 조회수만 찾았다고 바로 끝내지 않는다 -- 썸네일이 지연 로딩이라
+      // 첫 시도엔 없다가 몇 초 뒤에 채워지는 경우가 많아서(2026-09-01
+      // 실측), 아직 썸네일 없는 항목이 있으면 시간이 남아있는 한 계속
+      // 재시도하고, 그래도 안 채워지면 시간 다 됐을 때 있는 그대로 보낸다.
+      var missingThumb = items.length && items.some(function (it) { return !it.thumbnail; });
+      if ((items.length && !missingThumb) || listAttempts >= LIST_MAX_ATTEMPTS) {
         clearInterval(listTimer);
         if (items.length) {
           console.log("[SNS 인사이트]", rule.key, "콘텐츠 리스트", items.length, "개 찾음 -> 기록 전송");
