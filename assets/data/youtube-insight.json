@@ -12,7 +12,21 @@
       "title": "아파트 옥상 물탱크가 전부 사라진 이유",
       "published_at": "2026-08-30T04:25:51Z",
       "thumbnail": "https://i.ytimg.com/vi/oTg0If5e-yk/maxresdefault.jpg",
-      "duration_seconds": 110
+      "duration_seconds": 110,
+      "top_comments": [
+        {
+          "author": "@sinkihanapt",
+          "text": "여러분 아파트에서 \"저건 대체 왜 저렇게 생겼지?\" 싶었던 것, 댓글로 남겨주세요.\n\n다음 편에서 해부합니다.",
+          "likes": 0,
+          "published_at": "2026-08-30T05:46:09Z"
+        },
+        {
+          "author": "@김승구-b2e",
+          "text": "제트펌프는 뭐냐 궁금하다😊대단하네\n모터가 힘이쎈거냐?",
+          "likes": 1,
+          "published_at": "2026-08-30T05:52:18Z"
+        }
+      ]
     }
   },
   "channel": {
@@ -28,5 +42,5 @@
     "title": "신기한 아파트사전",
     "id": "UCTbS2jSG1BvBl4c6EsVx7sA"
   },
-  "updated_at": "2026-09-01T01:39:24.688444Z"
+  "updated_at": "2026-09-01T01:48:15.919719Z"
 }
