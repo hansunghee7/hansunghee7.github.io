@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-01T06:14:51.211254+00:00",
+  "updated_at": "2026-09-01T12:39:41.433188+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 123,
-    "activeUsers": 69,
-    "newUsers": 66,
-    "returningUsers": 3
+    "sessions": 124,
+    "activeUsers": 70,
+    "newUsers": 69,
+    "returningUsers": 1
   },
   "daily": [
     {
@@ -40,8 +40,8 @@
       "date": "2026-08-30",
       "sessions": 27,
       "activeUsers": 22,
-      "newUsers": 19,
-      "returningUsers": 3
+      "newUsers": 21,
+      "returningUsers": 1
     },
     {
       "date": "2026-08-31",
@@ -52,9 +52,9 @@
     },
     {
       "date": "2026-09-01",
-      "sessions": 2,
-      "activeUsers": 2,
-      "newUsers": 2,
+      "sessions": 3,
+      "activeUsers": 3,
+      "newUsers": 3,
       "returningUsers": 0
     }
   ],
@@ -69,19 +69,15 @@
     }
   ],
   "landing_types": {
-    "home": 88,
+    "home": 78,
     "log_home": 7,
     "individual_post": 16,
-    "other": 21
+    "other": 24
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 90
-    },
-    {
-      "source": "(not set)",
-      "sessions": 13
+      "sessions": 92
     },
     {
       "source": "searchadvisor.naver.com",
@@ -94,6 +90,10 @@
     {
       "source": "google",
       "sessions": 5
+    },
+    {
+      "source": "(not set)",
+      "sessions": 3
     },
     {
       "source": "linkedin.com",
@@ -114,7 +114,7 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 273,
+    "section_view_proven": 274,
     "section_view_voices": 197,
     "section_view_book_class": 120,
     "section_view_faq": 109,
