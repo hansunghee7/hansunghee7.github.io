@@ -176,6 +176,16 @@
       if (views == null) return;
       seen[id] = true;
       var thumb = extractImgUrl(a);
+      // 화면 밖(스크롤 안 된 곳)에 있는 타일은 지연 로딩이 아예 안
+      // 트리거돼서 몇 초를 기다려도 썸네일이 안 채워진다(2026-09-01,
+      // 실측 -- 그리드 두 번째 항목이 계속 비었음). 이 페이지가 사용자
+      // 눈에 안 보이는 상태(백그라운드 라운드로 열렸을 때만 해당,
+      // document.hidden)일 때만 그 타일을 화면 안으로 스크롤해 로딩을
+      // 유도한다 -- 사용자가 직접 보고 있는 탭에서 화면이 제멋대로
+      // 튀는 걸 막기 위한 안전장치.
+      if (!thumb && document.hidden) {
+        try { a.scrollIntoView({ block: "center" }); } catch (e) { /* ignore */ }
+      }
       items.push({
         id: id,
         views: views,
