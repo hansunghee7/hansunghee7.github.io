@@ -1,0 +1,67 @@
+name: Fetch YouTube shorts
+
+# 유튜브 채널(@sinkihanapt, 신기한 아파트사전)의 숏츠 성과(조회수·좋아요·
+# 댓글, 영상 단위)와 채널 지표(구독자·총 조회수)를 매일 가져와
+# assets/data/youtube-insight.json에 커밋한다. 비공개 대시보드
+# (insight-7b3e9f2c/content-insight.html)가 이 파일을 읽어서 화면에 그린다.
+#
+# 필요한 저장소 Secret (Settings → Secrets and variables → Actions):
+#   YOUTUBE_API_KEY  Google Cloud Console에서 YouTube Data API v3를 활성화한
+#                    프로젝트의 API 키. 값은 대화로 주고받지 말고 이 화면에
+#                    사장님이 직접 붙여넣을 것.
+# 순수 공개 통계 조회라 OAuth·서비스 계정 불필요 -- API 키 하나로 충분하다.
+#
+# GitHub의 예약 실행(cron)은 "최선 노력" 방식이라 부하가 높으면 지연이 아니라
+# 아예 건너뛰기도 한다(다른 수집 워크플로에서 실제로 여러 번 확인된 문제,
+# 2026-09-01에 GA4·서치콘솔·클래리티는 cron-job.org 외부 트리거로 해결함).
+# 이 워크플로가 새벽 예약을 반복해서 놓치면 같은 방식(cron-job.org, 매일
+# 05:45 KST 전후)을 추가할 것 -- docs/클라우드_이사_가이드.md 3절 참고.
+on:
+  schedule:
+    - cron: "37 20 * * *"  # 05:37 KST -- 새벽 수집 순번 6 (다른 수집 워크플로 뒤)
+    - cron: "37 10 * * *"  # 19:37 KST (아침 실행 누락 대비 재시도)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-youtube
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch YouTube shorts insight
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: python scripts/fetch_youtube.py
+
+      - name: Commit if any changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/data/youtube-insight.json
+          if git diff --cached --quiet; then
+            echo "no changes to commit"
+          else
+            git commit -m "chore: 유튜브 숏츠 자동 수집 [skip ci]"
+            # 같은 시각에 다른 워크플로가 먼저 푸시하면 non-fast-forward로
+            # 거절된다. rebase 후 재시도한다(다른 수집 워크플로와 동일).
+            n=0
+            until git push; do
+              n=$((n+1))
+              if [ $n -ge 3 ]; then echo "push 3회 실패"; exit 1; fi
+              git pull --rebase origin main
+            done
+          fi
