@@ -28,8 +28,11 @@
   .platform-card.total-card{grid-column:1 / -1;}
   .platform-card.total-card .val{font-size:38px;}
   .platform-card h3{margin:0 0 4px; font-size:14px; font-weight:600; display:flex; align-items:center; gap:6px;}
-  .platform-card .shortcut-link{font-size:12px; font-weight:600; color:var(--muted); text-decoration:none; border:1px solid var(--line-soft); border-radius:5px; width:18px; height:18px; display:inline-flex; align-items:center; justify-content:center; line-height:1;}
-  .platform-card .shortcut-link:hover{color:var(--ink); border-color:var(--ink);}
+  /* 예전엔 화살표(↗) 아이콘만 별도 링크였다 -- 클릭 영역이 너무 작다는
+     지적(2026-09-01)으로, 타이틀 전체를 링크에 포함시킨다(UX_GUIDE.md
+     1.4 참고). */
+  .platform-card h3 a{color:inherit; text-decoration:none;}
+  .platform-card h3 a:hover{text-decoration:underline;}
   .platform-card .source-badge{font-size:10.5px; font-weight:500; color:var(--muted); text-transform:uppercase; letter-spacing:0.03em;}
   .platform-card .latest{display:flex; align-items:baseline; gap:8px; margin:10px 0 6px;}
   .platform-card svg{width:100%; height:56px; display:block;}
@@ -203,10 +206,10 @@
   }
 
   function headerHtml(p, infoDot) {
-    var link = p.url
-      ? '<a class="shortcut-link" href="' + escapeHtml(p.url) + '" target="_blank" rel="noopener" title="' + escapeHtml(p.label) + ' 바로가기" aria-label="' + escapeHtml(p.label) + ' 바로가기">↗</a>'
-      : "";
-    return '<h3>' + escapeHtml(p.label) + link + (infoDot || "") + "</h3>";
+    var titleHtml = p.url
+      ? '<a href="' + escapeHtml(p.url) + '" target="_blank" rel="noopener" title="' + escapeHtml(p.label) + ' 바로가기" aria-label="' + escapeHtml(p.label) + ' 바로가기">' + escapeHtml(p.label) + ' ↗</a>'
+      : escapeHtml(p.label);
+    return '<h3>' + titleHtml + (infoDot || "") + "</h3>";
   }
 
   function buildCard(p, data) {

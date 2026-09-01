@@ -135,13 +135,31 @@ var DASHBOARD_PLATFORMS = [
   "https://www.threads.com/?hl=ko",
   "https://connect.rememberapp.co.kr/profile/1582110/posts",
 ];
+
+// "신기한 아파트사전" 콘텐츠 채널 라운드 -- content-insight.html의
+// 새로고침 버튼이 "실시간처럼" 동작하길 바란다는 요청(2026-09-01)으로,
+// SNS 인사이트의 강제 새로고침과 같은 방식을 여기도 만든다. 유튜브·
+// 네이버 블로그는 GitHub Actions 크론이 담당해서(공개 페이지라 서버가
+// 읽을 수 있음) 여기 안 넣는다 -- 그 둘을 지금 당장 갱신하려면 공개
+// 페이지에 GitHub 토큰을 심어야 해서(위험) 여전히 크론 주기(하루 2번)를
+// 따른다.
+var CONTENT_ROUND_PLATFORMS = [
+  "https://clip.naver.com/@simkihanapt",
+  "https://www.instagram.com/sinkihanapt/reels/",
+  "https://www.threads.com/@sinkihanapt",
+  "https://www.facebook.com/profile.php?id=61593748241305",
+  "https://www.tiktok.com/@sinkihanapt",
+  "https://x.com/sinkihanapt",
+];
+
 var TAB_CLOSE_DELAY_MS = 22000; // content-script가 최대 20초까지 찾으니 여유 두고 닫음
 
 // 한 라운드가 도는 동안 들어오는 추가 요청을 무시하는 창. 라운드가 연
-// 탭들도 각각 content-script를 실행해 SNS_COLLECT_REQUEST를 다시 보내고,
+// 탭들도 각각 content-script를 실행해 *_COLLECT_REQUEST를 다시 보내고,
 // 새로고침 버튼(force)은 하루 제한을 건너뛰기 때문에, 이 가드가 없으면
 // 라운드가 겹쳐 탭이 두 배로 열린다(2026-08-30 실제 발생 -- 자연 방문으로
-// 한 바퀴 돈 뒤 새로고침을 눌러 16개가 열림).
+// 한 바퀴 돈 뒤 새로고침을 눌러 16개가 열림). 회사 SNS 라운드와 콘텐츠
+// 채널 라운드는 서로 다른 저장소 키를 써서 독립적으로 잠긴다.
 var ROUND_LOCK_MS = 90000;
 
 function kstDateStr() {
@@ -151,49 +169,57 @@ function kstDateStr() {
 chrome.runtime.onMessage.addListener(function (msg) {
   if (msg && msg.type === "SNS_COLLECT_REQUEST") {
     console.log("[SNS 인사이트] SNS_COLLECT_REQUEST 수신 (force=" + !!msg.force + ")");
-    maybeRunFullRound(!!msg.force);
+    maybeRunRound(DASHBOARD_PLATFORMS, "lastFullRoundDate", "roundStartedAt", !!msg.force, "전체 수집");
+  }
+  if (msg && msg.type === "CONTENT_COLLECT_REQUEST") {
+    console.log("[SNS 인사이트] CONTENT_COLLECT_REQUEST 수신 (force=" + !!msg.force + ")");
+    maybeRunRound(CONTENT_ROUND_PLATFORMS, "lastContentRoundDate", "contentRoundStartedAt", !!msg.force, "콘텐츠 채널");
   }
 });
 
-function maybeRunFullRound(force) {
-  chrome.storage.local.get(["lastFullRoundDate", "roundStartedAt"], function (res) {
+// 회사 SNS 라운드·콘텐츠 채널 라운드가 여는 URL 목록만 다르고 나머지
+// 로직(하루 한 번 제한, 중복 실행 방지, 최소화 창으로 조용히 열기)은
+// 완전히 같아서 하나로 합쳤다(2026-09-01, 콘텐츠 채널 라운드를 추가하며
+// 일반화).
+function maybeRunRound(platforms, dateKey, startedAtKey, force, label) {
+  var storageKeys = [dateKey, startedAtKey];
+  chrome.storage.local.get(storageKeys, function (res) {
     var today = kstDateStr();
     var now = Date.now();
 
     // 라운드 중복 방지 -- force든 아니든 무조건 먼저 본다. 새로고침 버튼은
     // "하루 한 번" 제한만 건너뛰는 것이지, 이미 도는 중인 라운드를 하나 더
     // 겹쳐 돌라는 뜻이 아니다.
-    if (res.roundStartedAt && now - res.roundStartedAt < ROUND_LOCK_MS) {
-      console.log("[SNS 인사이트] 방금 시작한 라운드가 아직 도는 중이라 건너뜀");
+    if (res[startedAtKey] && now - res[startedAtKey] < ROUND_LOCK_MS) {
+      console.log("[SNS 인사이트] " + label + " -- 방금 시작한 라운드가 아직 도는 중이라 건너뜀");
       return;
     }
-    if (!force && res.lastFullRoundDate === today) {
-      console.log("[SNS 인사이트] 오늘(" + today + ") 이미 한 바퀴 돌아서 건너뜀");
+    if (!force && res[dateKey] === today) {
+      console.log("[SNS 인사이트] " + label + " -- 오늘(" + today + ") 이미 한 바퀴 돌아서 건너뜀");
       return;
     }
 
-    chrome.storage.local.set({ lastFullRoundDate: today, roundStartedAt: now });
-    console.log(
-      "[SNS 인사이트] 전체 수집 라운드 시작 -- " +
-        DASHBOARD_PLATFORMS.length +
-        "개를 최소화된 별도 창에서 조용히 엽니다"
-    );
+    var toSet = {};
+    toSet[dateKey] = today;
+    toSet[startedAtKey] = now;
+    chrome.storage.local.set(toSet);
+    console.log("[SNS 인사이트] " + label + " 라운드 시작 -- " + platforms.length + "개를 최소화된 별도 창에서 조용히 엽니다");
 
     // 사용자가 쓰던 창에 탭이 우수수 끼어드는 게 방해된다는 피드백(2026-08-30)으로,
     // 포커스 없는 최소화 창을 따로 만들어 거기서 열고 통째로 닫는다.
     // 작업 표시줄에 창 하나가 잠깐 생겼다 사라지는 정도로 존재감이 줄어든다.
     chrome.windows.create(
-      { url: DASHBOARD_PLATFORMS, focused: false, state: "minimized" },
+      { url: platforms, focused: false, state: "minimized" },
       function (win) {
         if (chrome.runtime.lastError || !win) {
           console.log(
-            "[SNS 인사이트] 수집 창 생성 실패, 개별 백그라운드 탭으로 대체:",
+            "[SNS 인사이트] " + label + " -- 수집 창 생성 실패, 개별 백그라운드 탭으로 대체:",
             chrome.runtime.lastError && chrome.runtime.lastError.message
           );
-          openAsBackgroundTabs();
+          openAsBackgroundTabs(platforms);
           return;
         }
-        console.log("[SNS 인사이트] 수집 창 열림 (windowId " + win.id + ")");
+        console.log("[SNS 인사이트] " + label + " -- 수집 창 열림 (windowId " + win.id + ")");
         setTimeout(function () {
           chrome.windows.remove(win.id, function () { void chrome.runtime.lastError; });
         }, TAB_CLOSE_DELAY_MS);
@@ -204,8 +230,8 @@ function maybeRunFullRound(force) {
 
 // 최소화 창을 못 만드는 환경(예: 창 상태 제한)을 위한 대비책 -- 예전처럼
 // 현재 창에 비활성 탭으로 열고 각각 닫는다.
-function openAsBackgroundTabs() {
-  DASHBOARD_PLATFORMS.forEach(function (url) {
+function openAsBackgroundTabs(platforms) {
+  platforms.forEach(function (url) {
     chrome.tabs.create({ url: url, active: false }, function (tab) {
       if (chrome.runtime.lastError || !tab) {
         console.log("[SNS 인사이트] 탭 생성 실패:", url, chrome.runtime.lastError && chrome.runtime.lastError.message);
@@ -420,6 +446,8 @@ function commitContentListCapture(token, capture, retryCount) {
       var entry = data.clips[id] = data.clips[id] || { history: [] };
       entry.url = item.url;
       entry.platform = capture.platform;
+      if (item.thumbnail) entry.thumbnail = item.thumbnail;
+      if (item.title) entry.title = item.title;
 
       var dayEntry = { date: day, views: item.views };
       var history = entry.history;

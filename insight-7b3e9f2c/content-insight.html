@@ -23,8 +23,11 @@
   .info-text{max-width:min(360px, 90vw);}
 
   .source-header{display:flex; align-items:center; gap:8px; margin:28px 0 12px; font-size:14px; font-weight:600; color:var(--dim);}
-  .source-header .shortcut-link{font-size:12px; font-weight:600; color:var(--muted); text-decoration:none; border:1px solid var(--line-soft); border-radius:5px; width:18px; height:18px; display:inline-flex; align-items:center; justify-content:center; line-height:1;}
-  .source-header .shortcut-link:hover{color:var(--ink); border-color:var(--ink);}
+  /* 예전엔 화살표(↗) 아이콘만 별도 링크였다 -- 클릭 영역이 너무 작다는
+     지적(2026-09-01)으로, 타이틀 전체를 링크에 포함시킨다. 화살표는 그
+     안에 딸린 글자로만 남긴다(UX_GUIDE.md 1.4 참고). */
+  .source-header a{color:inherit; text-decoration:none;}
+  .source-header a:hover{text-decoration:underline;}
 
   /* 정렬 전환(최신순/인기순) -- 섹션 헤더 오른쪽 끝에 붙인다. info-dot과
      달리 "설명"이 아니라 그 자체가 조작 가능한 컨트롤이라 STYLE_GUIDE의
@@ -122,8 +125,11 @@
     "성과\"). 아래 \"다른 채널\" 카드는 실제로 값이 잘 잡히는 채널일수록 위에 오도록 " +
     "자동 정렬됩니다. " +
     "유튜브 숏츠 판정은 영상 길이 3분(180초) 이하 기준입니다. " +
-    "하루 2번(유튜브 05:37·19:37, 네이버 블로그 05:43·19:43 KST) 자동 갱신되며, 지금 당장 갱신하려면 " +
-    "새로고침 버튼을 누르거나 GitHub Actions에서 해당 워크플로를 수동 실행하세요.";
+    "유튜브·네이버 블로그는 하루 2번(05:37·19:37, 05:43·19:43 KST) 자동 갱신되며, 지금 당장 " +
+    "갱신하려면 GitHub Actions에서 해당 워크플로를 수동 실행하세요(공개 페이지라 여기서 직접 " +
+    "실행 버튼을 두진 않았습니다). 나머지 채널은 새로고침 버튼을 누르면 크롬 확장이 설치돼 " +
+    "있는 경우 각 채널 페이지를 실제로 열었다 닫으며 그 자리에서 다시 수집합니다(20여 초 " +
+    "걸리며, 끝나면 이 페이지가 자동으로 한 번 더 값을 불러옵니다).";
 
   function escapeHtml(s) {
     return (s == null ? "" : String(s)).replace(/[&<>"']/g, function (c) {
@@ -177,8 +183,8 @@
 
     el.innerHTML =
       '<div class="tile tile-accent channel-card">' +
-      '<div class="label">' + escapeHtml(ch.title || "유튜브 채널") +
-      ' <a class="shortcut-link" href="' + escapeHtml(CHANNEL_URL) + '" target="_blank" rel="noopener noreferrer" aria-label="채널 바로가기">↗</a></div>' +
+      '<div class="label"><a href="' + escapeHtml(CHANNEL_URL) + '" target="_blank" rel="noopener noreferrer" aria-label="채널 바로가기">' +
+      escapeHtml(ch.title || "유튜브 채널") + ' ↗</a></div>' +
       '<div class="latest"><span class="val">' + latest.subscribers.toLocaleString() + '<span class="unit">명 구독</span></span>' + deltaHtml(delta) + "</div>" +
       '<div class="foot">총 조회수 ' + latest.total_views.toLocaleString() + " · 영상 " + latest.video_count.toLocaleString() + "개</div>" +
       sparkline(history, function (e) { return e.subscribers; }, 900) +
@@ -261,7 +267,7 @@
     }
 
     var html =
-      '<div class="source-header">유튜브 숏츠 <a class="shortcut-link" href="' + escapeHtml(CHANNEL_URL + "/shorts") + '" target="_blank" rel="noopener noreferrer" aria-label="채널 숏츠 바로가기">↗</a>' +
+      '<div class="source-header"><a href="' + escapeHtml(CHANNEL_URL + "/shorts") + '" target="_blank" rel="noopener noreferrer" aria-label="채널 숏츠 바로가기">유튜브 숏츠 ↗</a>' +
       '<div class="sort-toggle" role="group" aria-label="정렬">' +
       '<button type="button" class="sort-btn' + (sortMode === "recent" ? " is-active" : "") + '" data-sort="recent">최신순</button>' +
       '<button type="button" class="sort-btn' + (sortMode === "views" ? " is-active" : "") + '" data-sort="views">인기순</button>' +
@@ -315,7 +321,7 @@
     ids.sort(function (a, b) { return (posts[b].published_at || "").localeCompare(posts[a].published_at || ""); });
 
     el.innerHTML =
-      '<div class="source-header">네이버 블로그 <a class="shortcut-link" href="' + escapeHtml(BLOG_URL) + '" target="_blank" rel="noopener noreferrer" aria-label="블로그 바로가기">↗</a></div>' +
+      '<div class="source-header"><a href="' + escapeHtml(BLOG_URL) + '" target="_blank" rel="noopener noreferrer" aria-label="블로그 바로가기">네이버 블로그 ↗</a></div>' +
       '<div class="tiles">' + ids.map(function (id) { return blogPostTileHtml(posts[id]); }).join("") + "</div>";
   }
 
@@ -337,8 +343,8 @@
 
     return (
       '<div class="tile tile-accent channel-card">' +
-      '<div class="label">' + escapeHtml(meta.label) +
-      ' <a class="shortcut-link" href="' + escapeHtml(meta.url) + '" target="_blank" rel="noopener noreferrer" aria-label="' + escapeHtml(meta.label) + ' 바로가기">↗</a></div>' +
+      '<div class="label"><a href="' + escapeHtml(meta.url) + '" target="_blank" rel="noopener noreferrer" aria-label="' + escapeHtml(meta.label) + ' 바로가기">' +
+      escapeHtml(meta.label) + ' ↗</a></div>' +
       (latest.followers != null
         ? '<div class="latest"><span class="val">' + latest.followers.toLocaleString() + '<span class="unit">명 팔로워</span></span>' + deltaHtml(delta) + "</div>"
         : '<div class="latest"><span class="val" style="font-size:15px;color:var(--muted)">수집 대기</span></div>') +
@@ -447,10 +453,24 @@
   document.getElementById("refreshBtn").addEventListener("click", function () {
     var btn = this;
     Studio.setRefreshState(btn, "loading");
+    // 크롬 확장(_sns-extension)이 설치돼 있으면, "신기한 아파트사전"
+    // 채널들(네이버 클립·인스타·스레드·페이스북·틱톡·X)을 백그라운드
+    // 창으로 실제로 열었다 닫으며 방금 값을 재수집하도록 요청한다
+    // (SNS 인사이트 페이지의 강제 새로고침과 같은 방식, 2026-09-01
+    // "새로고침하면 실시간 데이터를 가져왔으면 한다"는 요청에 대응).
+    // 확장이 없으면 이 이벤트는 그냥 무시된다(안전).
+    window.dispatchEvent(new CustomEvent("simplifier-content-force-refresh"));
     load().then(function (ok) {
       stampTitleInfo();
       Studio.setRefreshState(btn, ok ? "success" : "error");
       setTimeout(function () { Studio.setRefreshState(btn, "idle"); }, 1600);
+      // 확장이 각 페이지를 열었다 닫는 데 20여 초 걸린다
+      // (_sns-extension/background.js TAB_CLOSE_DELAY_MS) -- 그 뒤에 한 번
+      // 더 자동으로 불러와서, 새로고침을 두 번 누르지 않아도 방금 수집된
+      // 값이 보이게 한다.
+      setTimeout(function () {
+        load().then(function () { stampTitleInfo(); });
+      }, 24000);
     });
   });
   load().then(function () { stampTitleInfo(); });
