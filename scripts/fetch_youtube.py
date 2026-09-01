@@ -12,9 +12,12 @@ sns-insight.html·book-insight.html은 "채널/책 단위로 하루 한 값"인�
 history 배열을 갖는 한 겹 더 깊은 구조다.
 
 ## 무엇을 "숏츠"로 보는가
-YouTube API에 공식 isShort 필드가 없다. 영상 길이(duration) 61초 이하를
-숏츠로 본다 -- 느슨한 기준이라 61초를 살짝 넘는 롱폼 숏츠는 놓칠 수 있지만,
-API가 제공하는 값만으로 판별 가능한 가장 신뢰도 높은 근사치다.
+YouTube API에 공식 isShort 필드가 없다. 영상 길이(duration) 3분(180초)
+이하를 숏츠로 본다 -- 유튜브가 2024년 말부터 숏츠 최대 길이를 60초에서
+3분으로 늘렸기 때문이다(2026-09-01: 실제로 이 채널의 첫 영상이 옛 기준
+61초로는 숏츠로 안 잡혀서 확인 후 수정). 여전히 근사치라 3분을 살짝
+넘는 영상은 놓칠 수 있지만, API가 제공하는 값만으로 판별 가능한 가장
+신뢰도 높은 기준이다.
 
 ## 왜 최근 N개만 추적하는가
 채널의 모든 과거 영상을 매일 다시 조회하면 API 쿼터·JSON 크기가 계속
@@ -52,7 +55,7 @@ API_KEY = os.environ.get("YOUTUBE_API_KEY")
 CHANNEL_HANDLE = "sinkihanapt"  # 신기한 아파트사전. @ 없이.
 OUT_PATH = os.path.join("assets", "data", "youtube-insight.json")
 MAX_SCANNED_UPLOADS = 100
-MAX_SHORT_SECONDS = 61
+MAX_SHORT_SECONDS = 180
 
 API_BASE = "https://www.googleapis.com/youtube/v3"
 
