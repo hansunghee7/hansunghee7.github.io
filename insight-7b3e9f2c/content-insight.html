@@ -122,8 +122,11 @@
     "성과\"). 아래 \"다른 채널\" 카드는 실제로 값이 잘 잡히는 채널일수록 위에 오도록 " +
     "자동 정렬됩니다. " +
     "유튜브 숏츠 판정은 영상 길이 3분(180초) 이하 기준입니다. " +
-    "하루 2번(유튜브 05:37·19:37, 네이버 블로그 05:43·19:43 KST) 자동 갱신되며, 지금 당장 갱신하려면 " +
-    "새로고침 버튼을 누르거나 GitHub Actions에서 해당 워크플로를 수동 실행하세요.";
+    "유튜브·네이버 블로그는 하루 2번(05:37·19:37, 05:43·19:43 KST) 자동 갱신되며, 지금 당장 " +
+    "갱신하려면 GitHub Actions에서 해당 워크플로를 수동 실행하세요(공개 페이지라 여기서 직접 " +
+    "실행 버튼을 두진 않았습니다). 나머지 채널은 새로고침 버튼을 누르면 크롬 확장이 설치돼 " +
+    "있는 경우 각 채널 페이지를 실제로 열었다 닫으며 그 자리에서 다시 수집합니다(20여 초 " +
+    "걸리며, 끝나면 이 페이지가 자동으로 한 번 더 값을 불러옵니다).";
 
   function escapeHtml(s) {
     return (s == null ? "" : String(s)).replace(/[&<>"']/g, function (c) {
@@ -447,10 +450,24 @@
   document.getElementById("refreshBtn").addEventListener("click", function () {
     var btn = this;
     Studio.setRefreshState(btn, "loading");
+    // 크롬 확장(_sns-extension)이 설치돼 있으면, "신기한 아파트사전"
+    // 채널들(네이버 클립·인스타·스레드·페이스북·틱톡·X)을 백그라운드
+    // 창으로 실제로 열었다 닫으며 방금 값을 재수집하도록 요청한다
+    // (SNS 인사이트 페이지의 강제 새로고침과 같은 방식, 2026-09-01
+    // "새로고침하면 실시간 데이터를 가져왔으면 한다"는 요청에 대응).
+    // 확장이 없으면 이 이벤트는 그냥 무시된다(안전).
+    window.dispatchEvent(new CustomEvent("simplifier-content-force-refresh"));
     load().then(function (ok) {
       stampTitleInfo();
       Studio.setRefreshState(btn, ok ? "success" : "error");
       setTimeout(function () { Studio.setRefreshState(btn, "idle"); }, 1600);
+      // 확장이 각 페이지를 열었다 닫는 데 20여 초 걸린다
+      // (_sns-extension/background.js TAB_CLOSE_DELAY_MS) -- 그 뒤에 한 번
+      // 더 자동으로 불러와서, 새로고침을 두 번 누르지 않아도 방금 수집된
+      // 값이 보이게 한다.
+      setTimeout(function () {
+        load().then(function () { stampTitleInfo(); });
+      }, 24000);
     });
   });
   load().then(function () { stampTitleInfo(); });
