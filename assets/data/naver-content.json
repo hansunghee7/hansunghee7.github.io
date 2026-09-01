@@ -1,7 +1,18 @@
 {
   "posts": {},
-  "clips": {},
-  "updated_at": "2026-09-01T05:50:07.211Z",
+  "clips": {
+    "content_instagram_DctU56SM2r7": {
+      "history": [
+        {
+          "date": "2026-09-01",
+          "views": 11000
+        }
+      ],
+      "url": "https://www.instagram.com/sinkihanapt/reel/DctU56SM2r7/",
+      "platform": "content_instagram"
+    }
+  },
+  "updated_at": "2026-09-01T05:50:08.393Z",
   "channels": {
     "naver_clip": {
       "history": [
