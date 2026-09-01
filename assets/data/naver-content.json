@@ -1,7 +1,7 @@
 {
   "posts": {},
   "clips": {},
-  "updated_at": "2026-09-01T05:18:10.427Z",
+  "updated_at": "2026-09-01T05:18:15.158Z",
   "channels": {
     "naver_clip": {
       "history": [
@@ -52,6 +52,16 @@
         }
       ],
       "url": "https://www.tiktok.com/@sinkihanapt"
+    },
+    "content_x": {
+      "history": [
+        {
+          "date": "2026-09-01",
+          "followers": 0,
+          "following": 0
+        }
+      ],
+      "url": "https://x.com/sinkihanapt"
     }
   }
 }
