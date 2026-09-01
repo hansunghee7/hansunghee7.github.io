@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-01T20:45:31.313446+00:00",
+  "updated_at": "2026-09-01T22:05:28.298362+00:00",
   "range": "last_30_days",
   "totals": {
     "sessions": 125,
     "activeUsers": 71,
-    "newUsers": 70,
-    "returningUsers": 1
+    "newUsers": 71,
+    "returningUsers": 0
   },
   "daily": [
     {
@@ -61,8 +61,8 @@
       "date": "2026-09-02",
       "sessions": 1,
       "activeUsers": 1,
-      "newUsers": 0,
-      "returningUsers": 1
+      "newUsers": 1,
+      "returningUsers": 0
     }
   ],
   "daily_leads": [
@@ -76,7 +76,7 @@
     }
   ],
   "landing_types": {
-    "home": 77,
+    "home": 78,
     "log_home": 7,
     "individual_post": 16,
     "other": 25
@@ -84,7 +84,7 @@
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 93
+      "sessions": 94
     },
     {
       "source": "searchadvisor.naver.com",
