@@ -85,50 +85,48 @@
     <span id="dataAsOf" class="meta-text"></span>
   </header>
 
-  <div id="channelArea"><div class="loading">데이터 불러오는 중…</div></div>
-  <div id="videoArea"></div>
+  <div id="channelSummaryArea"><div class="loading">데이터 불러오는 중…</div></div>
   <div id="blogArea"></div>
-  <div id="channelSummaryArea"></div>
   <div id="clipArea"></div>
 </div>
 
 <script>
 (function () {
   var DATA_URL = "/assets/data/youtube-insight.json";
-  var CHANNEL_URL = "https://www.youtube.com/@sinkihanapt";
   var NAVER_DATA_URL = "/assets/data/naver-content.json";
   var BLOG_URL = "https://blog.naver.com/sinkihanapt";
 
-  // 유튜브·네이버 블로그를 뺀 나머지 채널은 전부 로그인 세션이 있어야
-  // 보이는 화면(또는 봇 차단이 심한 사이트)이라 서버 자동화로는 못 읽는다
-  // (네이버 클립 API가 "Session not found"로 거절한 걸 실측 확인,
-  // scripts/fetch_naver_content.py 참고). 대신 사장님이 실제 로그인해
-  // 쓰는 크롬 확장(_sns-extension)이 각 채널 페이지를 방문할 때 팔로워 등
-  // 채널 요약 수치만 읽어 기록한다 -- 게시물별 개별 성과는 플랫폼마다
-  // 화면이 달라 공수가 커서 보류(2026-09-01).
+  // 유튜브를 포함한 7개 채널을 전부 같은 레벨(카드 크기·정렬 방식)로
+  // 다룬다(2026-09-01, "최상단이 유튜브만 특별 취급되는 게 이상하다"는
+  // 지적으로 통합) -- 유튜브·네이버 블로그를 뺀 나머지는 로그인 세션이
+  // 있어야 보이는 화면(또는 봇 차단이 심한 사이트)이라 서버 자동화로는
+  // 못 읽는다(네이버 클립 API가 "Session not found"로 거절한 걸 실측
+  // 확인, scripts/fetch_naver_content.py 참고). 대신 사장님이 실제
+  // 로그인해 쓰는 크롬 확장(_sns-extension)이 각 채널 페이지를 방문할
+  // 때 팔로워 등 채널 요약 수치를 읽어 기록한다.
   var CHANNEL_META = {
-    naver_clip: { label: "네이버 클립", url: "https://clip.naver.com/@simkihanapt" },
-    content_instagram: { label: "인스타그램", url: "https://www.instagram.com/sinkihanapt/" },
-    content_threads: { label: "스레드", url: "https://www.threads.com/@sinkihanapt" },
-    content_facebook: { label: "페이스북", url: "https://www.facebook.com/profile.php?id=61593748241305" },
-    content_tiktok: { label: "틱톡", url: "https://www.tiktok.com/@sinkihanapt" },
-    content_x: { label: "X", url: "https://x.com/sinkihanapt" },
+    youtube: { label: "유튜브", url: "https://www.youtube.com/@sinkihanapt", unit: "명 구독" },
+    naver_clip: { label: "네이버 클립", url: "https://clip.naver.com/@simkihanapt", unit: "명 팔로워" },
+    content_instagram: { label: "인스타그램", url: "https://www.instagram.com/sinkihanapt/", unit: "명 팔로워" },
+    content_threads: { label: "스레드", url: "https://www.threads.com/@sinkihanapt", unit: "명 팔로워" },
+    content_facebook: { label: "페이스북", url: "https://www.facebook.com/profile.php?id=61593748241305", unit: "명 팔로워" },
+    content_tiktok: { label: "틱톡", url: "https://www.tiktok.com/@sinkihanapt", unit: "명 팔로워" },
+    content_x: { label: "X", url: "https://x.com/sinkihanapt", unit: "명 팔로워" },
   };
+  var CHANNEL_URL = CHANNEL_META.youtube.url;
 
   var TITLE_INFO_BASE =
-    "\"신기한 아파트사전\" 채널의 콘텐츠 성과입니다 — 유튜브 숏츠(채널 지표 + 영상별 조회수·좋아요·댓글), " +
-    "네이버 블로그(게시글별 조회수)는 GitHub Actions가 자동 수집합니다. " +
-    "네이버 클립·인스타그램·스레드·페이스북·틱톡·X는 로그인 세션이 있어야 하는 화면이라 " +
-    "자동화가 안 돼, 사장님이 실제 로그인한 크롬 확장(_sns-extension)이 각 채널 페이지를 " +
-    "방문할 때 팔로워 등 채널 요약 수치를 기록합니다. 인스타 릴스·틱톡은 그리드 화면에 " +
-    "게시물별 조회수도 텍스트로 보여서 개별 성과까지 같이 모읍니다(아래 \"콘텐츠 개별 " +
-    "성과\"). 아래 \"다른 채널\" 카드는 실제로 값이 잘 잡히는 채널일수록 위에 오도록 " +
-    "자동 정렬됩니다. " +
-    "유튜브 숏츠 판정은 영상 길이 3분(180초) 이하 기준입니다. " +
-    "유튜브·네이버 블로그는 하루 2번(05:37·19:37, 05:43·19:43 KST) 자동 갱신되며, 지금 당장 " +
-    "갱신하려면 GitHub Actions에서 해당 워크플로를 수동 실행하세요(공개 페이지라 여기서 직접 " +
-    "실행 버튼을 두진 않았습니다). 나머지 채널은 새로고침 버튼을 누르면 크롬 확장이 설치돼 " +
-    "있는 경우 각 채널 페이지를 실제로 열었다 닫으며 그 자리에서 다시 수집합니다(20여 초 " +
+    "\"신기한 아파트사전\" 채널의 콘텐츠 성과입니다. 위 \"채널\" 카드 7개(유튜브·네이버 클립·" +
+    "인스타그램·스레드·페이스북·틱톡·X)는 실제로 값이 잘 잡히는 채널일수록 위에 오도록 자동 " +
+    "정렬됩니다. 아래 \"콘텐츠 개별 성과\"는 유튜브 숏츠·인스타 릴스·틱톡 영상의 개별 조회수를 " +
+    "모아 최신순/인기순으로 보여줍니다(유튜브 숏츠 판정은 영상 길이 3분 이하 기준). " +
+    "유튜브·네이버 블로그(게시글별 조회수)는 GitHub Actions가 하루 2번(05:37·19:37, " +
+    "05:43·19:43 KST) 자동 수집합니다 — 로그인 없이 보이는 공개 페이지라서 서버가 읽을 수 " +
+    "있습니다. 지금 당장 갱신하려면 GitHub Actions에서 해당 워크플로를 수동 실행하세요(공개 " +
+    "페이지라 여기서 직접 실행 버튼을 두진 않았습니다). 나머지 채널(네이버 클립·인스타·스레드·" +
+    "페이스북·틱톡·X)은 로그인 세션이 있어야 하는 화면이라 자동화가 안 돼, 사장님이 실제 " +
+    "로그인한 크롬 확장(_sns-extension)이 대신 읽습니다 — 새로고침 버튼을 누르면 그 확장이 " +
+    "설치된 경우 각 채널 페이지를 실제로 열었다 닫으며 그 자리에서 다시 수집합니다(20여 초 " +
     "걸리며, 끝나면 이 페이지가 자동으로 한 번 더 값을 불러옵니다).";
 
   function escapeHtml(s) {
@@ -167,30 +165,6 @@
     return '<span class="delta ' + (delta > 0 ? "up" : "down") + '">' + (delta > 0 ? "▲" : "▼") + Math.abs(delta).toLocaleString() + "</span>";
   }
 
-  function renderChannel(data) {
-    var ch = data.channel || {};
-    var history = ch.history || [];
-    var el = document.getElementById("channelArea");
-
-    if (!history.length) {
-      el.innerHTML = '<div class="empty">아직 수집 전입니다. GitHub Actions에서 <code>Fetch YouTube shorts</code> 워크플로가 한 번 돌면 채워집니다 (매일 05:37 자동 실행).</div>';
-      return;
-    }
-
-    var latest = history[history.length - 1];
-    var prev = history.length > 1 ? history[history.length - 2] : null;
-    var delta = prev ? latest.subscribers - prev.subscribers : null;
-
-    el.innerHTML =
-      '<div class="tile tile-accent channel-card">' +
-      '<div class="label"><a href="' + escapeHtml(CHANNEL_URL) + '" target="_blank" rel="noopener noreferrer" aria-label="채널 바로가기">' +
-      escapeHtml(ch.title || "유튜브 채널") + ' ↗</a></div>' +
-      '<div class="latest"><span class="val">' + latest.subscribers.toLocaleString() + '<span class="unit">명 구독</span></span>' + deltaHtml(delta) + "</div>" +
-      '<div class="foot">총 조회수 ' + latest.total_views.toLocaleString() + " · 영상 " + latest.video_count.toLocaleString() + "개</div>" +
-      sparkline(history, function (e) { return e.subscribers; }, 900) +
-      "</div>";
-  }
-
   function videoCardHtml(video) {
     var history = video.history || [];
     var clean = history.filter(function (e) { return e.views != null; });
@@ -224,7 +198,13 @@
     // video.url이 있으면(클립처럼 자체 링크가 있는 콘텐츠) 그걸 쓰고,
     // 없으면(유튜브 숏츠) id로 시청 URL을 조립한다.
     var watchUrl = video.url || ("https://www.youtube.com/shorts/" + encodeURIComponent(video.id));
-    var thumb = '<div class="thumb-wrap">' + (video.thumbnail ? '<img class="thumb" src="' + escapeHtml(video.thumbnail) + '" alt="" loading="lazy">' : "") + "</div>";
+    // 일부 플랫폼(틱톡 등) CDN은 다른 사이트에서 직접 불러오는 걸
+    // 막는다(핫링크 차단) -- referrerpolicy로 우회를 시도해보고, 그래도
+    // 안 뜨면 깨진 이미지 아이콘 대신 조용히 숨겨서 빈 회색 박스만
+    // 남긴다(2026-09-01, 깨진 아이콘보다는 낫다는 판단).
+    var thumb = '<div class="thumb-wrap">' + (video.thumbnail
+      ? '<img class="thumb" src="' + escapeHtml(video.thumbnail) + '" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display=\'none\'">'
+      : "") + "</div>";
 
     return (
       '<div class="video-card">' + thumb +
@@ -244,48 +224,6 @@
   function latestViews(v) {
     var clean = (v.history || []).filter(function (e) { return e.views != null; });
     return clean.length ? clean[clean.length - 1].views : -1;
-  }
-
-  function renderVideos(data) {
-    var videos = data.videos || {};
-    var el = document.getElementById("videoArea");
-    var ids = Object.keys(videos);
-    if (!ids.length) {
-      el.innerHTML = "";
-      return;
-    }
-
-    if (sortMode === "views") {
-      // 조회수 내림차순 -- "뭐가 잘 됐는지" 바로 보고 싶을 때.
-      ids.sort(function (a, b) { return latestViews(videos[b]) - latestViews(videos[a]); });
-    } else {
-      // 기본값: 최신 업로드가 먼저 보이게 게시일 내림차순 -- 크리에이터가
-      // 새 영상 성과를 가장 먼저 확인하고 싶어할 것이므로.
-      ids.sort(function (a, b) {
-        return (videos[b].published_at || "").localeCompare(videos[a].published_at || "");
-      });
-    }
-
-    var html =
-      '<div class="source-header"><a href="' + escapeHtml(CHANNEL_URL + "/shorts") + '" target="_blank" rel="noopener noreferrer" aria-label="채널 숏츠 바로가기">유튜브 숏츠 ↗</a>' +
-      '<div class="sort-toggle" role="group" aria-label="정렬">' +
-      '<button type="button" class="sort-btn' + (sortMode === "recent" ? " is-active" : "") + '" data-sort="recent">최신순</button>' +
-      '<button type="button" class="sort-btn' + (sortMode === "views" ? " is-active" : "") + '" data-sort="views">인기순</button>' +
-      "</div></div>";
-    html += '<div class="video-grid">' + ids.map(function (id) {
-      var v = videos[id];
-      v.id = id;
-      return videoCardHtml(v);
-    }).join("") + "</div>";
-    el.innerHTML = html;
-
-    el.querySelectorAll(".sort-btn").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        if (sortMode === btn.dataset.sort) return;
-        sortMode = btn.dataset.sort;
-        renderVideos(lastData);
-      });
-    });
   }
 
   function blogPostTileHtml(post) {
@@ -325,9 +263,10 @@
       '<div class="tiles">' + ids.map(function (id) { return blogPostTileHtml(posts[id]); }).join("") + "</div>";
   }
 
-  // 채널 요약(네이버 클립·인스타·스레드·페이스북·틱톡·X)은 전부 같은
-  // 모양(팔로워 중심, 필드 몇 개 더)이라 플랫폼마다 렌더 함수를 새로
-  // 만들지 않고 하나로 처리한다.
+  // 채널 요약(유튜브·네이버 클립·인스타·스레드·페이스북·틱톡·X)은
+  // 전부 같은 모양(팔로워/구독자 중심, 필드 몇 개 더)이라 플랫폼마다
+  // 렌더 함수를 새로 만들지 않고 하나로 처리한다(2026-09-01, 유튜브도
+  // 이 카드 레벨로 통합).
   function channelTileHtml(meta, channel) {
     var history = channel.history || [];
     var latest = history[history.length - 1];
@@ -335,6 +274,7 @@
     var delta = prev && latest.followers != null && prev.followers != null ? latest.followers - prev.followers : null;
 
     var foot = [];
+    if (latest.total_views != null) foot.push("총 조회수 " + latest.total_views.toLocaleString());
     if (latest.following != null) foot.push("팔로잉 " + latest.following.toLocaleString());
     if (latest.content_count != null) foot.push("콘텐츠 " + latest.content_count.toLocaleString() + "개");
     if (latest.likes != null) foot.push("좋아요 " + latest.likes.toLocaleString());
@@ -346,7 +286,7 @@
       '<div class="label"><a href="' + escapeHtml(meta.url) + '" target="_blank" rel="noopener noreferrer" aria-label="' + escapeHtml(meta.label) + ' 바로가기">' +
       escapeHtml(meta.label) + ' ↗</a></div>' +
       (latest.followers != null
-        ? '<div class="latest"><span class="val">' + latest.followers.toLocaleString() + '<span class="unit">명 팔로워</span></span>' + deltaHtml(delta) + "</div>"
+        ? '<div class="latest"><span class="val">' + latest.followers.toLocaleString() + '<span class="unit">' + escapeHtml(meta.unit) + '</span></span>' + deltaHtml(delta) + "</div>"
         : '<div class="latest"><span class="val" style="font-size:15px;color:var(--muted)">수집 대기</span></div>') +
       (foot.length ? '<div class="foot">' + escapeHtml(foot.join(" · ")) + "</div>" : "") +
       (followerSeries.length > 1 ? sparkline(followerSeries, function (e) { return e.followers; }, 240, 40) : "") +
@@ -358,11 +298,27 @@
   // 어긋날 수 있어(오늘 스레드 스코핑 버그처럼) 채워진 필드 수·기록
   // 일수를 기준으로 실측 데이터가 스스로 순서를 정하게 한다.
   function channelFieldScore(entry) {
-    return ["followers", "following", "content_count", "likes"].filter(function (k) { return entry[k] != null; }).length;
+    return ["followers", "total_views", "following", "content_count", "likes"].filter(function (k) { return entry[k] != null; }).length;
   }
 
-  function renderChannelSummary(data) {
-    var channels = data.channels || {};
+  // 유튜브 채널(data.channel, {subscribers,total_views,video_count})을
+  // 나머지 채널과 같은 모양({followers,total_views,content_count})으로
+  // 바꿔서 같은 렌더 함수·같은 정렬 로직을 그대로 쓴다.
+  function youtubeAsChannelEntry(youtubeData) {
+    var history = (youtubeData.channel || {}).history || [];
+    return {
+      url: CHANNEL_URL,
+      history: history.map(function (e) {
+        return { date: e.date, followers: e.subscribers, total_views: e.total_views, content_count: e.video_count };
+      }),
+    };
+  }
+
+  function renderChannelSummary(youtubeData, naverData) {
+    var channels = Object.assign({}, naverData.channels || {});
+    if (((youtubeData.channel || {}).history || []).length) {
+      channels.youtube = youtubeAsChannelEntry(youtubeData);
+    }
     var el = document.getElementById("channelSummaryArea");
     var keys = Object.keys(CHANNEL_META).filter(function (key) {
       return channels[key] && (channels[key].history || []).length;
@@ -376,33 +332,54 @@
     });
 
     el.innerHTML =
-      '<div class="source-header">다른 채널 (신기한 아파트사전)</div>' +
+      '<div class="source-header">채널 (신기한 아파트사전)</div>' +
       '<div class="tiles">' + keys.map(function (key) {
         return channelTileHtml(CHANNEL_META[key], channels[key]);
       }).join("") + "</div>";
   }
 
-  // 네이버 클립뿐 아니라 인스타 릴스·틱톡 영상 개별 조회수도 여기
-  // 같이 쌓인다(2026-09-01, id를 "플랫폼_원본id"로 저장해 안 겹치게
-  // 함) -- 셋 다 게시일을 안 모으므로(수집 근거가 약해 우선 조회수만)
-  // 조회수 내림차순으로 보여준다.
-  function renderClips(data) {
-    var clips = data.clips || {};
+  // 유튜브 숏츠·인스타 릴스·틱톡 영상을 한 그리드에 같이 보여준다
+  // (2026-09-01, "유튜브 숏츠"와 "콘텐츠 개별 성과"를 같은 레벨로
+  // 합쳐달라는 요청으로 통합) -- id가 서로 안 겹치므로(유튜브는
+  // 원본 영상id, 나머지는 "플랫폼_원본id") 그냥 합치면 된다. 인스타/
+  // 틱톡은 게시일을 안 모으므로(수집 근거가 약해 우선 조회수만) 최신순
+  // 정렬에서는 자연히 맨 뒤로 밀린다.
+  function renderContent(youtubeData, naverData) {
+    var items = Object.assign({}, youtubeData.videos || {}, naverData.clips || {});
     var el = document.getElementById("clipArea");
-    var ids = Object.keys(clips).filter(function (id) {
-      return (clips[id].history || []).some(function (e) { return e.views != null; });
+    var ids = Object.keys(items).filter(function (id) {
+      return (items[id].history || []).some(function (e) { return e.views != null; });
     });
     if (!ids.length) { el.innerHTML = ""; return; }
 
-    ids.sort(function (a, b) { return latestViews(clips[b]) - latestViews(clips[a]); });
+    if (sortMode === "views") {
+      ids.sort(function (a, b) { return latestViews(items[b]) - latestViews(items[a]); });
+    } else {
+      ids.sort(function (a, b) {
+        return (items[b].published_at || "").localeCompare(items[a].published_at || "");
+      });
+    }
 
-    el.innerHTML =
-      '<div class="source-header">콘텐츠 개별 성과</div>' +
-      '<div class="video-grid">' + ids.map(function (id) {
-        var c = clips[id];
-        c.id = id;
-        return videoCardHtml(c);
-      }).join("") + "</div>";
+    var html =
+      '<div class="source-header">콘텐츠 개별 성과' +
+      '<div class="sort-toggle" role="group" aria-label="정렬">' +
+      '<button type="button" class="sort-btn' + (sortMode === "recent" ? " is-active" : "") + '" data-sort="recent">최신순</button>' +
+      '<button type="button" class="sort-btn' + (sortMode === "views" ? " is-active" : "") + '" data-sort="views">인기순</button>' +
+      "</div></div>";
+    html += '<div class="video-grid">' + ids.map(function (id) {
+      var v = items[id];
+      v.id = id;
+      return videoCardHtml(v);
+    }).join("") + "</div>";
+    el.innerHTML = html;
+
+    el.querySelectorAll(".sort-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (sortMode === btn.dataset.sort) return;
+        sortMode = btn.dataset.sort;
+        renderContent(lastData, lastNaverData);
+      });
+    });
   }
 
   // 소스가 두 개(유튜브·네이버)라 각자 updated_at을 갖는다 -- 더 최근
@@ -436,16 +413,14 @@
       .then(function (results) {
         lastData = results[0] || {};
         lastNaverData = results[1] || {};
-        renderChannel(lastData);
-        renderVideos(lastData);
+        renderChannelSummary(lastData, lastNaverData);
         renderBlogPosts(lastNaverData);
-        renderChannelSummary(lastNaverData);
-        renderClips(lastNaverData);
+        renderContent(lastData, lastNaverData);
         stampDataAsOf([lastData, lastNaverData]);
         return true;
       })
       .catch(function (e) {
-        document.getElementById("channelArea").innerHTML = '<div class="err">불러오기 실패했습니다: ' + escapeHtml(String(e)) + "</div>";
+        document.getElementById("channelSummaryArea").innerHTML = '<div class="err">불러오기 실패했습니다: ' + escapeHtml(String(e)) + "</div>";
         return false;
       });
   }
