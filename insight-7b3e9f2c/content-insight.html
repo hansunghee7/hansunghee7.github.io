@@ -56,8 +56,17 @@
      고유로 선언한다 -- 숏츠는 세로(9:16) 포맷이라 썸네일도 세로로 둔다. */
   .video-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(168px,1fr)); gap:14px;}
   .video-card{background:var(--card); border:1px solid var(--line); border-radius:10px; overflow:hidden; display:flex; flex-direction:column; min-width:0;}
-  .video-card .thumb-wrap{width:100%; aspect-ratio:9/16; background:var(--line-soft); overflow:hidden;}
+  .video-card .thumb-wrap{position:relative; width:100%; aspect-ratio:9/16; background:var(--line-soft); overflow:hidden;}
   .video-card .thumb{width:100%; height:100%; object-fit:cover; display:block;}
+  .video-card .platform-badge{position:absolute; top:6px; left:6px; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 1px 3px rgba(0,0,0,.35);}
+  .video-card .platform-badge svg{width:13px; height:13px; display:block;}
+  .platform-badge.pf-youtube{background:#FF0000;}
+  .platform-badge.pf-naver_clip{background:#03C75A;}
+  .platform-badge.pf-content_instagram{background:radial-gradient(circle at 30% 110%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);}
+  .platform-badge.pf-content_threads{background:#000;}
+  .platform-badge.pf-content_facebook{background:#1877F2;}
+  .platform-badge.pf-content_tiktok{background:#000;}
+  .platform-badge.pf-content_x{background:#000;}
   .video-card .body{padding:10px 12px 12px;}
   .video-card .title{font-size:12.5px; font-weight:600; line-height:1.4; margin:0 0 8px; color:var(--ink); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
   .video-card .title a{color:inherit; text-decoration:none;}
@@ -114,6 +123,34 @@
     content_x: { label: "X", url: "https://x.com/sinkihanapt", unit: "명 팔로워" },
   };
   var CHANNEL_URL = CHANNEL_META.youtube.url;
+
+  // 콘텐츠 개별 성과 카드가 여러 플랫폼을 한 그리드에 섞어 보여주므로,
+  // id 접두사(naver_clip_·content_instagram_ 등, 클립 수집 시 "플랫폼_
+  // 원본id"로 만든 키)로 출처를 되짚어 썸네일 위에 로고 배지를 붙인다
+  // (2026-09-01, "어느 채널인지 식별돼야 한다"는 요청). id에 접두사가
+  // 없으면 유튜브 원본 영상id 그대로다.
+  var PLATFORM_ICON = {
+    youtube: '<svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>',
+    naver_clip: '<svg viewBox="0 0 24 24"><text x="12" y="17" text-anchor="middle" font-size="14" font-weight="700" fill="#fff" font-family="Arial,sans-serif">N</text></svg>',
+    content_instagram: '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>',
+    content_threads: '<svg viewBox="0 0 24 24"><text x="12" y="17" text-anchor="middle" font-size="15" font-weight="700" fill="#fff" font-family="Arial,sans-serif">@</text></svg>',
+    content_facebook: '<svg viewBox="0 0 24 24" fill="#fff"><path d="M13.5 21v-8.5H16l.5-3.5h-3V6.7c0-1 .3-1.7 1.7-1.7H16V1.8C15.7 1.8 14.7 1.7 13.6 1.7c-2.5 0-4.1 1.5-4.1 4.3V9H7v3.5h2.5V21h4z"/></svg>',
+    content_tiktok: '<svg viewBox="0 0 24 24" fill="#fff"><path d="M16.5 3c.3 2.4 1.8 4 4.2 4.2v3c-1.5 0-2.9-.5-4.2-1.4v6.7c0 3.6-2.9 6.5-6.5 6.5S3.5 19.1 3.5 15.5 6.4 9 10 9c.3 0 .6 0 .9.1v3.1c-.3-.1-.6-.1-.9-.1-1.9 0-3.4 1.5-3.4 3.4s1.5 3.4 3.4 3.4 3.5-1.5 3.5-3.4V3h3z"/></svg>',
+    content_x: '<svg viewBox="0 0 24 24" fill="#fff"><path d="M18.9 3H21l-6.6 7.5L22 21h-6.1l-4.8-6.3L5.5 21H3.4l7-8L2 3h6.2l4.4 5.8L18.9 3zM17.8 19.3h1.6L8.3 4.6H6.6l11.2 14.7z"/></svg>',
+  };
+
+  function contentPlatformKey(id) {
+    var keys = Object.keys(CHANNEL_META);
+    for (var i = 0; i < keys.length; i++) {
+      if (keys[i] !== "youtube" && id.indexOf(keys[i] + "_") === 0) return keys[i];
+    }
+    return "youtube";
+  }
+
+  function platformBadgeHtml(id) {
+    var key = contentPlatformKey(id);
+    return '<span class="platform-badge pf-' + key + '" title="' + escapeHtml(CHANNEL_META[key].label) + '">' + PLATFORM_ICON[key] + "</span>";
+  }
 
   var TITLE_INFO_BASE =
     "\"신기한 아파트사전\" 채널의 콘텐츠 성과입니다. 위 \"채널\" 카드 7개(유튜브·네이버 클립·" +
@@ -204,7 +241,7 @@
     // 남긴다(2026-09-01, 깨진 아이콘보다는 낫다는 판단).
     var thumb = '<div class="thumb-wrap">' + (video.thumbnail
       ? '<img class="thumb" src="' + escapeHtml(video.thumbnail) + '" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display=\'none\'">'
-      : "") + "</div>";
+      : "") + platformBadgeHtml(video.id) + "</div>";
 
     return (
       '<div class="video-card">' + thumb +
