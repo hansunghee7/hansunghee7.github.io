@@ -84,7 +84,11 @@ def parse_count(text):
         n = int(num.replace(",", ""))
     except ValueError:
         return None
-    if n <= 0 or n > 100_000_000:
+    # fetch_sns_public.py는 팔로워 수 맥락이라 0을 "선택자가 엉뚱한 걸
+    # 읽었다"는 신호로 버리지만, 여긴 콘텐츠 조회수라 갓 올린 글/클립은
+    # 진짜 0이 정상값이다(2026-09-01: 실제로 클립 하나가 0회였음). 그래서
+    # 0은 허용하고, 음수·비현실적으로 큰 값만 버린다.
+    if n < 0 or n > 100_000_000:
         return None
     return n
 
@@ -174,9 +178,12 @@ def collect_post_views(browser, log_no):
 
 
 def collect_recent_clips(browser, limit):
-    """클립 크리에이터 프로필 페이지에서 최근 클립 목록(링크·조회수 추정)을
-    읽는다. DOM 구조를 사전 검증 못 해서 느슨한 방식으로 짰다 -- 첫 실행
-    로그를 보고 필요하면 고친다."""
+    """클립 크리에이터 프로필 페이지에서 최근 클립 목록(링크·조회수)을
+    읽는다. 처음엔 href에 '/clip/'이 들어있을 거라 짐작하고 짰는데 실제로는
+    0건이었다(2026-09-01 확인, 실제 링크 패턴은 못 알아냄) -- 링크 패턴을
+    아예 안 가정하고, "썸네일(이미지)을 감싸는 링크"라는 더 일반적인 구조로
+    카드를 찾는다. 조회수는 프로필 목록 화면에 이미 보여서(각 클립 클릭 없이)
+    같은 카드의 텍스트에서 바로 읽는다."""
     page = browser.new_page(user_agent=UA, locale="ko-KR")
     clips = []
     try:
@@ -186,16 +193,23 @@ def collect_recent_clips(browser, limit):
         except Exception:
             pass
         page.wait_for_timeout(2000)
-        cards = page.locator("a[href*='/clip/']")
+        cards = page.locator("a:has(img)")
         count = min(cards.count(), limit)
+        seen = set()
         for i in range(count):
             card = cards.nth(i)
             try:
                 href = card.get_attribute("href") or ""
-                m = re.search(r"/clip/(\w+)", href)
-                if not m:
+                if not href:
                     continue
-                clip_id = m.group(1)
+                # href 형식을 모르니 마지막 경로 조각을 느슨하게 다듬어
+                # id로 쓴다 -- 정확한 스킴보다 "매일 같은 클립이 같은 키로
+                # 잡히는지"가 중요하다.
+                tail = href.rstrip("/").split("/")[-1] or href
+                clip_id = re.sub(r"[^a-zA-Z0-9_-]", "_", tail)[:40]
+                if not clip_id or clip_id in seen:
+                    continue
+                seen.add(clip_id)
                 text = card.inner_text(timeout=4000)
                 n = parse_count(text)
                 clips.append({"id": clip_id, "url": href, "raw_text": text[:80], "views": n})
