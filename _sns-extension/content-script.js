@@ -144,10 +144,16 @@
       var views = parseAbbrevNumber(numMatch[1], numMatch[2]);
       if (views == null) return;
       seen[id] = true;
+      // 타일 안 썸네일 이미지도 같이 챙긴다 -- 안 그러면 카드가 빈 회색
+      // 박스로만 뜬다(2026-09-01, 실제 화면 보고 확인). alt 텍스트가 있으면
+      // 제목 대용으로도 쓴다(없으면 "제목 없음"으로 자연히 대체됨).
+      var img = a.querySelector("img");
       items.push({
         id: id,
         views: views,
         url: href.indexOf("http") === 0 ? href : location.origin + href,
+        thumbnail: img ? img.src : null,
+        title: img && img.alt ? img.alt : null,
       });
     });
     return items;

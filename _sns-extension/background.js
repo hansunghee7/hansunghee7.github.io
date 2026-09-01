@@ -420,6 +420,8 @@ function commitContentListCapture(token, capture, retryCount) {
       var entry = data.clips[id] = data.clips[id] || { history: [] };
       entry.url = item.url;
       entry.platform = capture.platform;
+      if (item.thumbnail) entry.thumbnail = item.thumbnail;
+      if (item.title) entry.title = item.title;
 
       var dayEntry = { date: day, views: item.views };
       var history = entry.history;
