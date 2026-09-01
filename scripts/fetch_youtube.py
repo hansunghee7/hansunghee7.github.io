@@ -128,6 +128,36 @@ def get_videos_details(video_ids):
     return details
 
 
+MAX_COMMENTS = 5
+
+
+def get_top_comments(video_id, limit=MAX_COMMENTS):
+    """관련도순 상위 댓글 몇 개의 실제 텍스트를 가져온다(개수는 이미
+    videos.statistics로 있으니, 여기선 "뭐라고 썼는지"만 본다). 댓글이
+    꺼져 있거나(403) 다른 이유로 실패해도 그 영상만 빈 목록으로 건너뛴다
+    -- 댓글 하나 실패로 전체 수집이 죽으면 안 된다."""
+    try:
+        data = api_get("commentThreads", {
+            "part": "snippet",
+            "videoId": video_id,
+            "maxResults": limit,
+            "order": "relevance",
+            "textFormat": "plainText",
+        })
+    except Exception:
+        return []
+    out = []
+    for item in data.get("items", []):
+        top = item.get("snippet", {}).get("topLevelComment", {}).get("snippet", {})
+        out.append({
+            "author": top.get("authorDisplayName"),
+            "text": top.get("textDisplay"),
+            "likes": top.get("likeCount"),
+            "published_at": top.get("publishedAt"),
+        })
+    return out
+
+
 def upsert(history, today, entry):
     """같은 날짜 기록이 이미 있으면 갱신, 없으면 추가 후 날짜순 정렬."""
     for i, e in enumerate(history):
@@ -209,6 +239,11 @@ def main():
                     )
                     v["thumbnail"] = best_thumb.get("url")
                     v["duration_seconds"] = duration
+                    # 댓글 개수는 이미 statistics로 있으니, 여기선 실제
+                    # 텍스트만 별도로 가져온다(0개면 호출 자체를 건너뛴다 --
+                    # API 쿼터 아낌).
+                    if int(vstats.get("commentCount") or 0) > 0:
+                        v["top_comments"] = get_top_comments(vid)
                     try:
                         entry = {
                             "date": today,
