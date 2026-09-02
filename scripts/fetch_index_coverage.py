@@ -22,6 +22,7 @@ Search Console 속성의 "전체" 권한 사용자면 되고, webmasters.readonl
 
 import json
 import os
+import socket
 import sys
 import time
 import urllib.parse
@@ -29,6 +30,8 @@ import urllib.request
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 
+import google_auth_httplib2
+import httplib2
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
@@ -37,8 +40,12 @@ OUT_PATH = "assets/data/index-coverage.json"
 SITEMAP_URL = "https://simplifier.co.kr/sitemap.xml"
 SITE_MARKER = "simplifier.co.kr"
 POST_PREFIX = "/log_assets/markdown/"
-# 분당 600회 한도 — 0.15초 간격이면 분당 400회로 여유 있음
+# 분당 600회 한도 — 0.15초 간격이면 분당 400회로 여유 있음. 실측(2026-09-02)으로는
+# 검사 한 건에 5~7초가 걸려 한도보다 응답 속도가 병목이다 (600개 ≈ 1시간).
 CALL_INTERVAL_SEC = 0.15
+# 첫 실행에서 httplib2 기본 타임아웃으로 read timeout이 나 100건에서 죽었다.
+# 검사 API는 느리므로 넉넉히 잡고, 어떤 예외든 그 URL만 실패로 남기고 계속 간다.
+HTTP_TIMEOUT_SEC = 120
 
 
 def get_service():
@@ -49,7 +56,9 @@ def get_service():
     creds = service_account.Credentials.from_service_account_info(
         info, scopes=["https://www.googleapis.com/auth/webmasters.readonly"]
     )
-    return build("searchconsole", "v1", credentials=creds, cache_discovery=False)
+    socket.setdefaulttimeout(HTTP_TIMEOUT_SEC)
+    http = google_auth_httplib2.AuthorizedHttp(creds, http=httplib2.Http(timeout=HTTP_TIMEOUT_SEC))
+    return build("searchconsole", "v1", http=http, cache_discovery=False)
 
 
 def find_site_url(service):
@@ -87,6 +96,11 @@ def inspect(service, site_url, url):
                 time.sleep(10 * (attempt + 1))
                 continue
             return {"error": f"HTTP {e.resp.status}"}
+        except Exception as e:  # 타임아웃·연결 끊김 등 — 전체를 죽이지 않는다
+            if attempt < 2:
+                time.sleep(10 * (attempt + 1))
+                continue
+            return {"error": f"{type(e).__name__}"}
     return {"error": "재시도 3회 실패"}
 
 
@@ -99,6 +113,9 @@ def main():
     results = []
     for i, url in enumerate(urls, 1):
         r = inspect(service, site_url, url)
+        if i % 100 == 0:
+            # 중간 저장 — 중간에 죽어도 그때까지의 판정은 남긴다
+            write_output(site_url, urls, results, partial=True)
         google_canonical = r.get("googleCanonical")
         results.append(
             {
@@ -114,13 +131,21 @@ def main():
             print(f"  {i}/{len(urls)}")
         time.sleep(CALL_INTERVAL_SEC)
 
-    def count_by(items, key):
-        out = {}
-        for it in items:
-            k = it.get(key) or "(없음)"
-            out[k] = out.get(k, 0) + 1
-        return dict(sorted(out.items(), key=lambda kv: -kv[1]))
+    data = write_output(site_url, urls, results, partial=False)
+    print(f"wrote {OUT_PATH}")
+    print("verdict:", data["summary"]["by_verdict"])
+    print("posts indexed:", data["posts_summary"]["indexed"], "/", data["posts_summary"]["total"])
 
+
+def count_by(items, key):
+    out = {}
+    for it in items:
+        k = it.get(key) or "(없음)"
+        out[k] = out.get(k, 0) + 1
+    return dict(sorted(out.items(), key=lambda kv: -kv[1]))
+
+
+def write_output(site_url, urls, results, partial):
     posts = [r for r in results if r["path"].startswith(POST_PREFIX)]
     not_indexed_posts = [
         {k: r[k] for k in ("path", "coverage_state", "last_crawl")}
@@ -136,7 +161,9 @@ def main():
     data = {
         "updated_at": datetime.now(timezone.utc).isoformat(),
         "site_url": site_url,
+        "partial": partial,
         "sitemap_url_count": len(urls),
+        "inspected_count": len(results),
         "summary": {
             "by_verdict": count_by(results, "verdict"),
             "by_coverage_state": count_by(results, "coverage_state"),
@@ -154,9 +181,7 @@ def main():
     os.makedirs(os.path.dirname(OUT_PATH), exist_ok=True)
     with open(OUT_PATH, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
-    print(f"wrote {OUT_PATH}")
-    print("verdict:", data["summary"]["by_verdict"])
-    print("posts indexed:", data["posts_summary"]["indexed"], "/", data["posts_summary"]["total"])
+    return data
 
 
 if __name__ == "__main__":
