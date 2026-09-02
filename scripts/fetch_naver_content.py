@@ -94,25 +94,17 @@ def parse_count(text):
     return n
 
 
-def first_count_near(page, keywords):
-    """키워드가 들어간 요소의 텍스트에서 숫자를 뽑는다 -- CSS 선택자를
-    박아두면 페이지가 조금만 바뀌어도 깨지므로 '키워드 주변 텍스트'로
-    느슨하게 찾는다(fetch_sns_public.py와 동일 함수)."""
-    for kw in keywords:
-        try:
-            loc = page.locator(f"text={kw}").first
-            if loc.count() == 0:
-                continue
-            for target in (loc, loc.locator("xpath=..")):
-                try:
-                    n = parse_count(target.inner_text(timeout=4000))
-                except Exception:
-                    n = None
-                if n is not None:
-                    return n
-        except Exception:
-            continue
-    return None
+def label_number(text, label):
+    """페이지 전체 텍스트에서 '라벨 바로 뒤(공백만 허용) 숫자'만 정확히
+    뽑는다. 처음엔 "라벨이 들어간 요소"를 느슨하게 찾는 locator 방식을
+    썼는데, "재생"은 지표 라벨("재생 1")과 재생 버튼 라벨을 겸해서
+    엉뚱한 요소(버튼)를 집어 매번 실패했다(2026-09-02 실측 -- 페이지
+    텍스트엔 "재생 1"이 그대로 있는데도 0/2). 요소 매칭 대신 텍스트
+    근접성(정규식)으로 찾으면 이 문제가 없다."""
+    m = re.search(re.escape(label) + r"\s*([\d,]{1,12})", text)
+    if not m:
+        return None
+    return parse_count(m.group(1))
 
 
 def upsert(history, today, entry):
@@ -201,16 +193,23 @@ def collect_post_views(browser, log_no):
         #     못 찾는다. 일반 글(사진/텍스트)이 섞일 수 있어 둘 다 시도한다.
         # (2) 그 "재생 N" 위젯 자체가 지연 로딩이다 -- 첫 로딩 직후엔 DOM에
         #     없다가, 스크롤로 화면에 실제로 보여야(이 저장소 다른
-        #     스크래퍼들과 같은 패턴) 나타난다(실측: 스크롤 전 진단엔 없고
-        #     스크롤 후 진단엔 "재생 1 좋아요 0"이 그대로 잡힘).
-        n = first_count_near(page, ["조회수", "재생"])
+        #     스크래퍼들과 같은 패턴) 나타난다.
+        def read_count():
+            text = page.inner_text("body")
+            for label in ("조회수", "재생"):
+                n = label_number(text, label)
+                if n is not None:
+                    return n
+            return None
+
+        n = read_count()
         if n is None:
             page.mouse.wheel(0, 20000)
             page.wait_for_timeout(1500)
-            n = first_count_near(page, ["조회수", "재생"])
+            n = read_count()
         if n is None:
-            # "조회" 키워드 근처에서도 못 찾았다는 뜻 -- 다음엔 바로 보게
-            # 화면에 실제로 뭐가 있는지 앞부분을 남긴다.
+            # 라벨 자체를 못 찾았다는 뜻 -- 다음엔 바로 보게 화면에
+            # 실제로 뭐가 있는지 앞부분을 남긴다.
             try:
                 snippet = page.inner_text("body")[:200].replace("\n", " ")
             except Exception:
