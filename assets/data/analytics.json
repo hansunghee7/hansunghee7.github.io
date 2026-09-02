@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-02T12:13:38.126378+00:00",
+  "updated_at": "2026-09-02T20:00:42.639047+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 127,
-    "activeUsers": 73,
-    "newUsers": 73,
+    "sessions": 129,
+    "activeUsers": 75,
+    "newUsers": 78,
     "returningUsers": 0
   },
   "daily": [
@@ -59,9 +59,16 @@
     },
     {
       "date": "2026-09-02",
-      "sessions": 3,
-      "activeUsers": 3,
-      "newUsers": 3,
+      "sessions": 4,
+      "activeUsers": 4,
+      "newUsers": 4,
+      "returningUsers": 0
+    },
+    {
+      "date": "2026-09-03",
+      "sessions": 1,
+      "activeUsers": 1,
+      "newUsers": 4,
       "returningUsers": 0
     }
   ],
@@ -76,15 +83,15 @@
     }
   ],
   "landing_types": {
-    "home": 81,
+    "home": 82,
     "log_home": 7,
-    "individual_post": 17,
+    "individual_post": 19,
     "other": 25
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 96
+      "sessions": 97
     },
     {
       "source": "searchadvisor.naver.com",
@@ -95,16 +102,20 @@
       "sessions": 7
     },
     {
+      "source": "(not set)",
+      "sessions": 5
+    },
+    {
       "source": "google",
       "sessions": 5
     },
     {
-      "source": "(not set)",
-      "sessions": 4
-    },
-    {
       "source": "linkedin.com",
       "sessions": 3
+    },
+    {
+      "source": "(data not available)",
+      "sessions": 1
     },
     {
       "source": "bing",
@@ -122,11 +133,11 @@
   "ai_referrals": [],
   "engagement_events": {
     "section_view_proven": 275,
-    "section_view_voices": 198,
+    "section_view_voices": 199,
     "section_view_book_class": 120,
     "section_view_faq": 110,
     "faq_open": 18,
-    "read_complete": 185
+    "read_complete": 186
   },
   "contact_funnel": {
     "contact_open": 27,
@@ -182,8 +193,18 @@
       "sessions": 1
     },
     {
+      "path": "/log_assets/markdown/012_누가 주인인가요.html",
+      "title": "/log_assets/markdown/012_누가 주인인가요.html",
+      "sessions": 1
+    },
+    {
       "path": "/log_assets/markdown/122_미국 진출은 누구에게 필요한 전략인가.html",
       "title": "/log_assets/markdown/122_미국 진출은 누구에게 필요한 전략인가.html",
+      "sessions": 1
+    },
+    {
+      "path": "/log_assets/markdown/154_놓치면 후회할 거야  FOMO UX.html",
+      "title": "/log_assets/markdown/154_놓치면 후회할 거야  FOMO UX.html",
       "sessions": 1
     },
     {
@@ -261,6 +282,12 @@
       "views": 17
     },
     {
+      "path": "/log_assets/markdown/012_누가 주인인가요.html",
+      "title": "/log_assets/markdown/012_누가 주인인가요.html",
+      "uniqueViews": 2,
+      "views": 5
+    },
+    {
       "path": "/log_assets/markdown/122_미국 진출은 누구에게 필요한 전략인가.html",
       "title": "/log_assets/markdown/122_미국 진출은 누구에게 필요한 전략인가.html",
       "uniqueViews": 2,
@@ -301,17 +328,11 @@
       "title": "/log_assets/markdown/346_코치S 14화 콜드브루 장사.html",
       "uniqueViews": 2,
       "views": 6
-    },
-    {
-      "path": "/log_assets/markdown/371_뛰어난 PM일수록 비관적인 이유는.html",
-      "title": "/log_assets/markdown/371_뛰어난 PM일수록 비관적인 이유는.html",
-      "uniqueViews": 2,
-      "views": 3
     }
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 81,
+    "total_desktop_sessions": 83,
     "excluded_invalid_sessions": 18,
     "by_resolution": [
       {
@@ -332,12 +353,17 @@
       {
         "resolution": "1536x960",
         "width": 1536,
-        "sessions": 5
+        "sessions": 6
       },
       {
         "resolution": "3840x1080",
         "width": 3840,
         "sessions": 5
+      },
+      {
+        "resolution": "1512x982",
+        "width": 1512,
+        "sessions": 2
       },
       {
         "resolution": "1680x1050",
@@ -357,11 +383,6 @@
       {
         "resolution": "1440x900",
         "width": 1440,
-        "sessions": 1
-      },
-      {
-        "resolution": "1512x982",
-        "width": 1512,
         "sessions": 1
       },
       {
