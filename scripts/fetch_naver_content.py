@@ -197,6 +197,15 @@ def collect_post_views(browser, log_no):
         page.wait_for_timeout(1000)
         n = first_count_near(page, ["조회수", "조회"])
         if n is None:
+            # 2026-09-02: 첫 시도에서 "조회" 텍스트가 DOM에 아예 없는 게
+            # 매번 재현됐다(0/2 지속). 이 저장소의 다른 스크래퍼들이 이미
+            # 겪은 "지연 로딩"(화면에 실제로 보여야 위젯이 뜬다) 패턴일
+            # 가능성이 있어, 본문 끝까지 스크롤해 하단 위젯 로딩을 유도한
+            # 뒤 한 번 더 시도한다. 그래도 없으면 정말 없는 것으로 본다.
+            page.mouse.wheel(0, 20000)
+            page.wait_for_timeout(1500)
+            n = first_count_near(page, ["조회수", "조회"])
+        if n is None:
             # "조회" 키워드 근처에서도 못 찾았다는 뜻 -- 다음엔 바로 보게
             # 화면에 실제로 뭐가 있는지 앞부분을 남긴다.
             try:
