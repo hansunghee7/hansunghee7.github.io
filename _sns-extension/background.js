@@ -360,30 +360,52 @@ function queuePendingContent(kind, capture) {
 // GET → applyFn(data)로 수정 → PUT의 공통 뼈대. applyFn은 data를 직접
 // 바꾸고(posts/clips/channels는 이미 채워져 있음이 보장됨), logMeta는
 // 커밋 메시지와 pushLog에 남길 로그 항목을 준다.
-function commitToContentFile(token, applyFn, logMeta, retryCount) {
+//
+// 큐(enqueueContentCommit)로 우리 자신의 8개끼리 순서는 보장했는데도,
+// 콘텐츠 채널 라운드(플랫폼 6개, 캡처 8개)에서 첫 번째(naver_clip)만
+// 성공하고 나머지 7개가 전부 "충돌 재시도 초과"로 실패하는 게 실제로
+// 재현됐다(2026-09-02). 원인은 GitHub Contents API의 읽기 지연 --
+// 직전 PUT이 성공한 직후에 곧바로 GET을 하면, 그 GET이 아직 그 PUT을
+// 반영 못 한 오래된 sha를 돌려줄 때가 있다. 그러면 다음 PUT은 그 오래된
+// sha로 시도하게 돼 매번 409가 난다(재시도도 다시 GET하니 똑같이 걸림).
+// 매번 새로 GET하는 대신, 방금 우리가 쓴 sha·내용을 메모리에 기억해뒀다가
+// 다음 커밋은 GET 없이 그걸 그대로 이어 쓴다. 실제로 외부에서(예: GitHub
+// Actions 새벽 수집) 파일이 바뀌어 캐시가 틀렸을 때만(PUT이 409) 캐시를
+// 버리고 새로 GET해서 재시도한다.
+var contentFileCache = null; // { sha, data }
+
+function commitToContentFile(token, applyFn, logMeta, retryCount, forceRefetch) {
   var url = "https://api.github.com/repos/" + REPO + "/contents/" + CONTENT_DATA_PATH;
 
-  return fetch(url, { headers: ghHeaders(token) })
-    .then(function (r) {
-      if (r.status === 404) return { notFound: true };
-      if (!r.ok) {
-        return r.json().catch(function () { return {}; }).then(function (body) {
-          throw new Error("GET 실패: " + r.status + (body && body.message ? " - " + body.message : ""));
+  var readPromise = contentFileCache && !forceRefetch
+    ? Promise.resolve({ sha: contentFileCache.sha, data: JSON.parse(JSON.stringify(contentFileCache.data)) })
+    : fetch(url, { headers: ghHeaders(token) })
+        .then(function (r) {
+          if (r.status === 404) return { notFound: true };
+          if (!r.ok) {
+            return r.json().catch(function () { return {}; }).then(function (body) {
+              throw new Error("GET 실패: " + r.status + (body && body.message ? " - " + body.message : ""));
+            });
+          }
+          return r.json();
+        })
+        .then(function (fileRes) {
+          var data = {};
+          var sha = null;
+          if (!fileRes.notFound) {
+            sha = fileRes.sha;
+            try {
+              data = JSON.parse(decodeURIComponent(escape(atob(fileRes.content.replace(/\n/g, "")))));
+            } catch (e) {
+              data = {};
+            }
+          }
+          return { sha: sha, data: data };
         });
-      }
-      return r.json();
-    })
-    .then(function (fileRes) {
-      var data = {};
-      var sha = null;
-      if (!fileRes.notFound) {
-        sha = fileRes.sha;
-        try {
-          data = JSON.parse(decodeURIComponent(escape(atob(fileRes.content.replace(/\n/g, "")))));
-        } catch (e) {
-          data = {};
-        }
-      }
+
+  return readPromise
+    .then(function (state) {
+      var data = state.data;
       data.posts = data.posts || {};
       data.clips = data.clips || {};
       data.channels = data.channels || {};
@@ -395,29 +417,33 @@ function commitToContentFile(token, applyFn, logMeta, retryCount) {
       var b64 = btoa(unescape(encodeURIComponent(newContentStr)));
 
       var body = { message: logMeta.commitMessage, content: b64 };
-      if (sha) body.sha = sha;
+      if (state.sha) body.sha = state.sha;
 
       return fetch(url, {
         method: "PUT",
         headers: Object.assign({ "Content-Type": "application/json" }, ghHeaders(token)),
         body: JSON.stringify(body),
-      });
+      }).then(function (putRes) { return { putRes: putRes, data: data }; });
     })
-    .then(function (putRes) {
+    .then(function (result) {
+      var putRes = result.putRes;
       if (putRes.status === 409) {
+        contentFileCache = null;
         if (retryCount < 3) {
           return new Promise(function (resolve) {
             setTimeout(resolve, 800 + Math.random() * 800);
           }).then(function () {
-            return commitToContentFile(token, applyFn, logMeta, retryCount + 1);
+            return commitToContentFile(token, applyFn, logMeta, retryCount + 1, true);
           });
         }
         pushLog(Object.assign({}, logMeta.logEntry, { status: "error", note: "충돌 재시도 초과" }));
         return;
       }
       if (putRes.ok) {
-        pushLog(Object.assign({}, logMeta.logEntry, { status: "success" }));
-        return;
+        return putRes.json().then(function (putBody) {
+          contentFileCache = { sha: putBody && putBody.content && putBody.content.sha, data: result.data };
+          pushLog(Object.assign({}, logMeta.logEntry, { status: "success" }));
+        });
       }
       return putRes.json().catch(function () { return {}; }).then(function (body) {
         var note = "HTTP " + putRes.status + (body && body.message ? " - " + body.message : "");
@@ -514,33 +540,45 @@ function ghHeaders(token) {
   };
 }
 
-function commitCapture(token, capture, retryCount) {
+// commitToContentFile과 같은 이유(GitHub Contents API의 PUT 직후 GET
+// 읽기 지연)로 같은 캐시 방식을 쓴다 -- 자세한 설명은 위 주석 참고.
+var snsFileCache = null; // { sha, data }
+
+function commitCapture(token, capture, retryCount, forceRefetch) {
   var url = "https://api.github.com/repos/" + REPO + "/contents/" + DATA_PATH;
 
-  return fetch(url, { headers: ghHeaders(token) })
-    .then(function (r) {
-      if (r.status === 404) return { notFound: true };
-      if (!r.ok) {
-        // 상태 코드만으로는 왜 거부됐는지(토큰 자체가 무효인지, 스코프
-        // 부족인지 등) 알 수 없어서, GitHub이 응답 본문에 같이 주는
-        // "message" 필드까지 읽어서 로그에 남긴다.
-        return r.json().catch(function () { return {}; }).then(function (body) {
-          throw new Error("GET 실패: " + r.status + (body && body.message ? " - " + body.message : ""));
+  var readPromise = snsFileCache && !forceRefetch
+    ? Promise.resolve({ sha: snsFileCache.sha, data: JSON.parse(JSON.stringify(snsFileCache.data)) })
+    : fetch(url, { headers: ghHeaders(token) })
+        .then(function (r) {
+          if (r.status === 404) return { notFound: true };
+          if (!r.ok) {
+            // 상태 코드만으로는 왜 거부됐는지(토큰 자체가 무효인지, 스코프
+            // 부족인지 등) 알 수 없어서, GitHub이 응답 본문에 같이 주는
+            // "message" 필드까지 읽어서 로그에 남긴다.
+            return r.json().catch(function () { return {}; }).then(function (body) {
+              throw new Error("GET 실패: " + r.status + (body && body.message ? " - " + body.message : ""));
+            });
+          }
+          return r.json();
+        })
+        .then(function (fileRes) {
+          var data = {};
+          var sha = null;
+          if (!fileRes.notFound) {
+            sha = fileRes.sha;
+            try {
+              data = JSON.parse(decodeURIComponent(escape(atob(fileRes.content.replace(/\n/g, "")))));
+            } catch (e) {
+              data = {};
+            }
+          }
+          return { sha: sha, data: data };
         });
-      }
-      return r.json();
-    })
-    .then(function (fileRes) {
-      var data = {};
-      var sha = null;
-      if (!fileRes.notFound) {
-        sha = fileRes.sha;
-        try {
-          data = JSON.parse(decodeURIComponent(escape(atob(fileRes.content.replace(/\n/g, "")))));
-        } catch (e) {
-          data = {};
-        }
-      }
+
+  return readPromise
+    .then(function (state) {
+      var data = state.data;
 
       if (!data[capture.platform]) data[capture.platform] = [];
       var day = todayStr();
@@ -561,34 +599,36 @@ function commitCapture(token, capture, retryCount) {
         message: "chore: SNS 인사이트 자동 기록 (" + capture.platform + " " + day + ") [skip ci]",
         content: b64,
       };
-      if (sha) body.sha = sha;
+      if (state.sha) body.sha = state.sha;
 
       return fetch(url, {
         method: "PUT",
         headers: Object.assign({ "Content-Type": "application/json" }, ghHeaders(token)),
         body: JSON.stringify(body),
-      });
+      }).then(function (putRes) { return { putRes: putRes, data: data }; });
     })
-    .then(function (putRes) {
+    .then(function (result) {
+      var putRes = result.putRes;
       if (putRes.status === 409) {
+        snsFileCache = null;
         if (retryCount < 3) {
-          // 그 사이 다른 커밋이 먼저 들어간 경우 -- sha를 다시 받아서 재시도.
-          // 큐(enqueueCommit)가 우리 자신의 8개끼리는 이미 순서를 보장해주므로,
-          // 이 경로는 외부 요인(예: 그 사이 GitHub Actions가 같은 파일에 커밋)으로
-          // 인한 드문 충돌을 위한 안전망이다. Promise를 반환해야 큐가 재시도
-          // 완료까지 기다리고 다음 커밋을 시작한다.
+          // 캐시가 없어서 새로 GET했는데도 409면(캐시 무효화 직후 재시도),
+          // 진짜 외부 요인(예: 그 사이 GitHub Actions가 같은 파일에 커밋)일
+          // 가능성이 크다.
           return new Promise(function (resolve) {
             setTimeout(resolve, 800 + Math.random() * 800);
           }).then(function () {
-            return commitCapture(token, capture, retryCount + 1);
+            return commitCapture(token, capture, retryCount + 1, true);
           });
         }
         pushLog({ platform: capture.platform, count: capture.count, capturedAt: capture.capturedAt, status: "error", note: "충돌 재시도 초과" });
         return;
       }
       if (putRes.ok) {
-        pushLog({ platform: capture.platform, count: capture.count, capturedAt: capture.capturedAt, status: "success" });
-        return;
+        return putRes.json().then(function (putBody) {
+          snsFileCache = { sha: putBody && putBody.content && putBody.content.sha, data: result.data };
+          pushLog({ platform: capture.platform, count: capture.count, capturedAt: capture.capturedAt, status: "success" });
+        });
       }
       return putRes.json().catch(function () { return {}; }).then(function (body) {
         var note = "HTTP " + putRes.status + (body && body.message ? " - " + body.message : "");
