@@ -151,7 +151,13 @@ def list_recent_blog_posts(browser, limit):
                 if log_no in seen:
                     continue
                 title = links.nth(i).inner_text(timeout=3000).strip()
-                if not title:
+                # 같은 글에 링크가 여러 개 걸려있을 때(썸네일 링크 +
+                # 실제 제목 링크) 썸네일이 먼저 잡히면, 그 안의 재생시간
+                # 배지 텍스트("영상 시간\n1:36")를 제목으로 잘못 저장했다
+                # (2026-09-02 실측). 그런 텍스트는 건너뛰고(seen에 안
+                # 넣고) 다음 후보 링크에서 다시 시도한다.
+                compact = re.sub(r"\s+", "", title)
+                if not title or re.fullmatch(r"(영상시간)?\d{1,2}:\d{2}", compact):
                     continue
                 seen.add(log_no)
                 url = href if href.startswith("http") else f"https://blog.naver.com/{BLOG_ID}/{log_no}"
