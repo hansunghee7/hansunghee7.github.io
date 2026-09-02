@@ -1,0 +1,31 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[STAGING] 심플리파이어에게 질문하기 폼</title>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #f0f0ee; font-family: 'Pretendard Variable', sans-serif; }
+  .compare-label { max-width: 700px; margin: 0 auto; padding: 40px 20px 0; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #8f8b82; }
+  .article-body { max-width: 700px; margin: 16px auto 48px; background: #fff; padding: 40px 20px 24px; box-shadow: 0 2px 20px rgba(0,0,0,0.06); border-radius: 8px; position: relative; }
+  .article-body p { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-weight: 300; font-size: 17px; line-height: 1.85; color: #333; margin: 0 0 30px; word-break: keep-all; }
+</style>
+</head>
+<body>
+<div class="compare-label">Staging · 글 본문 끝 + 질문 폼 (docs/질문하기_파이프라인.md 계단 1)</div>
+<div class="article-body">
+  <p>내 배의 돛, 내가 꼭 잡고 있나. 혹시 남 탓만 하며 놓고 있지는 않나.</p>
+  {% include question_form.html force=true %}
+</div>
+</body>
+</html>

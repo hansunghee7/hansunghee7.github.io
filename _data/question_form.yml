@@ -1,0 +1,15 @@
+# "심플리파이어에게 질문하기" 폼 설정 (_includes/question_form.html 이 읽음)
+# 정본 설계: docs/질문하기_파이프라인.md
+#
+# enabled: false 인 동안 폼은 어느 글에도 렌더링되지 않는다 (미리보기
+# preview/question-form.html 만 강제로 보여줌). true 로 바꾸는 순간 모든
+# 공개 글 하단에 폼이 나타나므로, 그 변경은 "노출 범위 변경"으로 취급해
+# 사장님 확인 후 별도 PR로 한다 (CLAUDE.md 노출 규칙).
+enabled: false
+
+# Supabase 대시보드 → Settings → API 에서 복사.
+# anon 키는 원래 브라우저에 공개되는 키다 — 안전은 키가 아니라 테이블의
+# 행 단위 보안 정책(supabase/questions.sql: anon은 삽입만)이 만든다.
+# service_role 키는 절대 여기 넣지 않는다.
+supabase_url: ""
+supabase_anon_key: ""

@@ -493,6 +493,8 @@
 
 <div class="article-body" id="articleBody">
     {{ content }}
+    {%- comment -%} 질문하기 폼: _data/question_form.yml 의 enabled 가 true 일 때만 그려진다 (docs/질문하기_파이프라인.md) {%- endcomment -%}
+    {% include question_form.html %}
     {% include post_cta.html %}
     {% include post_nav.html %}
     {% include related_posts.html %}
