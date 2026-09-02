@@ -232,9 +232,19 @@
     return answer;
   }
 
+  // 마크다운 표준(CommonMark)은 닫는 **가 문장부호 뒤·글자 앞에 오면 굵게로
+  // 인정하지 않는다 -- 영어는 뒤에 띄어쓰기가 오지만 한국어는 조사가 바로
+  // 붙어서(**'방향'**를, **Grit(…)**이) 별표가 그대로 보였다. marked에
+  // 넘기기 전에 **…** 쌍을 먼저 <strong>으로 바꿔 이 규칙을 우회한다
+  // (2026-09-02). 줄을 넘는 쌍은 건드리지 않는다.
+  function renderMarkdown(text) {
+    const boldFixed = text.replace(/\*\*([^*\n]+?)\*\*/g, "<strong>$1</strong>");
+    return window.marked ? marked.parse(boldFixed) : boldFixed;
+  }
+
   function renderStreamingText(el, text) {
     const clean = stripInlineCitation(text);
-    el.innerHTML = (window.marked ? marked.parse(clean) : clean) + '<span class="cursor"></span>';
+    el.innerHTML = renderMarkdown(clean) + '<span class="cursor"></span>';
   }
 
   const ICON_ARTICLE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>';
@@ -344,7 +354,7 @@
 
   function finalizeAnswer(el, text, sources, logId, followUps) {
     const clean = stripInlineCitation(text);
-    el.innerHTML = window.marked ? marked.parse(clean) : clean;
+    el.innerHTML = renderMarkdown(clean);
     const plainText = el.innerText; // 칩·버튼 붙기 전, 답변 본문만 복사용으로 떼어둔다
     if (sources && sources.length) {
       const box = document.createElement("div");
