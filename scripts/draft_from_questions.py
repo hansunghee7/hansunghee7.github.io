@@ -194,13 +194,21 @@ def run(*args: str, check: bool = True, capture: bool = False) -> str:
     return (r.stdout or "").strip() if capture else ""
 
 
-def open_pr(branch: str, path: Path, draft: dict, question: str, usage: dict) -> int:
+def open_pr(branch: str, path: Path, draft: dict, question: str, usage: dict, source: str = "visitor") -> int:
     n_ep = draft["body_markdown"].count(EPISODE_MARK)
     n_fact = draft["body_markdown"].count("[사실 확인 필요:")
-    body = f"""## 방문자 질문
+    if source == "pick":
+        head = "## 사장님이 픽한 질문 (후보 이슈에서 체크)"
+        note = "(회신할 사람 없음 — 발행만 하면 됩니다.)"
+        reply_item = ""
+    else:
+        head = "## 방문자 질문"
+        note = "(질문자 이메일은 접수함에만 있습니다 — 여기엔 적지 않습니다.)"
+        reply_item = "- [ ] 병합 후 질문자에게 링크 회신 (지금은 수동)\n"
+    body = f"""{head}
 > {question.strip()}
 
-(질문자 이메일은 접수함에만 있습니다 — 여기엔 적지 않습니다.)
+{note}
 
 ## 사장님 체크리스트 (이 PR 안에서 파일을 직접 고치세요)
 - [ ] `{EPISODE_MARK} ...]` 자리 {n_ep}곳에 실제 경험 채우기
@@ -208,8 +216,7 @@ def open_pr(branch: str, path: Path, draft: dict, question: str, usage: dict) ->
 - [ ] 제목·카테고리·키워드 확인
 - [ ] 대표 이미지(`image:`) 고르기 — 지금은 로고 폴백
 - [ ] 다 됐으면 `published: false` → `published: true` 로 바꾸고 **병합** → 기존 발행 파이프라인이 라이브로 올립니다
-- [ ] 병합 후 질문자에게 링크 회신 (지금은 수동)
-
+{reply_item}
 파일: `{path.relative_to(ROOT)}`
 모델: `{usage['model']}` · 토큰 입력 {usage['input']} / 캐시 읽기 {usage['cache_read']} / 캐시 쓰기 {usage['cache_write']} / 출력 {usage['output']}
 
@@ -244,7 +251,7 @@ def main() -> None:
     sb = create_client(os.environ["SUPABASE_URL"], os.environ["SUPABASE_SERVICE_KEY"])
 
     rows = (
-        sb.table("questions").select("id, question, page, attempts")
+        sb.table("questions").select("id, question, page, attempts, source")
         .eq("status", "대기").lt("attempts", MAX_ATTEMPTS)
         .order("created_at").limit(MAX_DRAFTS).execute().data
     )
@@ -280,7 +287,7 @@ def main() -> None:
             run("git", "add", str(path))
             run("git", "commit", "-q", "-m", f"draft: 질문 초안 — {draft['title']}")
             run("git", "push", "-q", "-u", "origin", branch, "--force-with-lease")
-            pr = open_pr(branch, path, draft, row["question"], usage)
+            pr = open_pr(branch, path, draft, row["question"], usage, row.get("source") or "visitor")
 
             sb.table("questions").update({
                 "status": "초안", "draft_branch": branch, "draft_pr": pr or None,

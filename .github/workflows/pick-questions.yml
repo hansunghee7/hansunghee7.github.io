@@ -1,0 +1,38 @@
+name: Pick questions
+
+# "질문 후보" 이슈(label: question-candidates)의 체크박스를 사장님이 켜면(이슈
+# 편집 이벤트), 체크된 줄을 접수함(Supabase questions)에 '대기'로 넣고 그 줄에
+# `✅ 접수됨`을 붙인다. 워크플로가 GITHUB_TOKEN 으로 본문을 고치는 것은 다시
+# 이 이벤트를 일으키지 않는다(GitHub 규칙) — 무한 반복 없음.
+# 정본 설계: docs/질문하기_파이프라인.md (단계 2, 계단 4)
+on:
+  issues:
+    types: [edited]
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: pick-questions-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  pick:
+    if: contains(github.event.issue.labels.*.name, 'question-candidates')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install supabase
+      - name: Insert picked questions
+        env:
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          PYTHONIOENCODING: utf-8
+        run: python scripts/pick_questions.py
