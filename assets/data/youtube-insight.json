@@ -10,8 +10,8 @@
         },
         {
           "date": "2026-09-02",
-          "views": 3035,
-          "likes": 19,
+          "views": 3275,
+          "likes": 22,
           "comments": 3
         }
       ],
@@ -44,9 +44,9 @@
       "history": [
         {
           "date": "2026-09-02",
-          "views": 1229,
-          "likes": 11,
-          "comments": 1
+          "views": 1648,
+          "likes": 17,
+          "comments": 2
         }
       ],
       "title": "주민 차는 들어가는데, 택배차는 못 들어갑니다",
@@ -59,6 +59,12 @@
           "text": "여러분 아파트에서 \"저건 대체 왜 저렇게 생겼지?\" 싶었던 것, 댓글로 남겨주세요.\n\n다음 편에서 해부합니다.",
           "likes": 0,
           "published_at": "2026-09-01T09:26:23Z"
+        },
+        {
+          "author": "@이혜경-e6q",
+          "text": "지하주차장 못들어가는 택배차들은 정문 앞에 쌓아놓고\n각자 찾아가라그래.",
+          "likes": 1,
+          "published_at": "2026-09-02T06:34:38Z"
         }
       ]
     }
@@ -74,13 +80,13 @@
       },
       {
         "date": "2026-09-02",
-        "subscribers": 13,
-        "total_views": 1824,
+        "subscribers": 14,
+        "total_views": 2998,
         "video_count": 2
       }
     ],
     "title": "신기한 아파트사전",
     "id": "UCTbS2jSG1BvBl4c6EsVx7sA"
   },
-  "updated_at": "2026-09-01T22:47:43.397670Z"
+  "updated_at": "2026-09-02T14:40:09.344300Z"
 }
