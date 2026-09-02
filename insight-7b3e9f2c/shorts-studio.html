@@ -60,10 +60,11 @@
 <div class="wrap">
   <header>
     <h1>숏폼 스튜디오<button type="button" class="info-dot" aria-label="설명 보기">ⓘ<span class="info-text">이 페이지는 로컬 shorts-lab 저장소의 episode.json에서 자동 생성된 스냅샷입니다. 갱신: python pipeline/build_studio_site.py 실행 후 사이트 저장소 커밋·푸시. 에피소드 상태 변경은 각 에피소드의 episode.json에서.</span></button></h1>
-    <span class="meta-text">· 데이터 기준 2026-09-01 09:53 · 채널 1개 · 에피소드 6개</span>
+    <span class="meta-text">· 데이터 기준 2026-09-02 13:53 · 채널 1개 · 에피소드 7개</span>
   </header>
   <nav class="docs">
     <a href="/insight-7b3e9f2c/shorts-playbook.html"><b>파일럿 실행 매뉴얼</b><span>지금 뭘 해야 하지? · 7단계 루프</span></a>
+    <a href="/insight-7b3e9f2c/shorts-automation.html"><b>자동화 로드맵</b><span>AUTOMATION_PIPELINE.md · 사람이 남는 자리·계단</span></a>
     <a href="/insight-7b3e9f2c/shorts-process.html"><b>숏폼 공정 정본</b><span>PROCESS.md · 게이트·결정 로그</span></a>
     <a href="/insight-7b3e9f2c/shorts-visual-grammar.html"><b>숏폼 연출 사전</b><span>VISUAL_GRAMMAR.md · 역동성·인포그래픽</span></a>
     <a href="/insight-7b3e9f2c/shorts-roles.html"><b>숏폼 제작진 역할</b><span>PRODUCTION_ROLES.md · 게이트별 역할</span></a>
@@ -72,7 +73,7 @@
   <section class="channel">
     <div class="ch-head">
       <h2>신기한 아파트사전</h2>
-      <span class="ch-meta">6개 에피소드 · 보이스 typecast · 영상 google-flow-omni-1.1-flash</span>
+      <span class="ch-meta">7개 에피소드 · 보이스 typecast · 영상 google-flow-omni-1.1-flash</span>
     </div>
     <p class="ch-concept">우리가 사는 아파트는 왜 이렇게 만들어졌을까? 보이지 않는 시스템을 해부하는 채널. 신기함이 아니라 '상식의 배신'이 핵심 자산.</p>
     <div class="episodes">
@@ -147,6 +148,18 @@
       </div>
       <div class="steps"><div class="step done"><span class="step-dot"></span><span class="step-label">소재</span></div><div class="step done"><span class="step-dot"></span><span class="step-label">대본</span></div><div class="step done"><span class="step-dot"></span><span class="step-label">음성</span></div><div class="step done"><span class="step-dot"></span><span class="step-label">정렬</span></div><div class="step todo"><span class="step-dot"></span><span class="step-label">씬</span></div><div class="step todo"><span class="step-dot"></span><span class="step-label">합성</span></div><div class="step todo"><span class="step-dot"></span><span class="step-label">발행</span></div></div>
       <p class="ep-notes">실측(무음제거 후) 90.50초 — 채널 목표(90~180초) 안엔 들지만 하한에 걸침, 그동안 기준으로 써온 100~160초보단 짧음. 사장님이 구두로 보고한 '1분 50초(110초)'와 실제 파일 실측(92.70초) 사이 18초 차이가 있어 다음 세션이 확인할 것(재녹음/재테이크 여부, 혹은 착오). '재도장 법정 수선주기(8년)'·'조기 재도장 시 필요 동의율의 정확한 조문번호'는 이 세션 환경에서 law.go.kr 등 원문 사이트가 프록시로 막혀 직접 대조 못해 대본에서 뺐음 — sources.md 보류 항목 참고, 사장님이 국가법령정보센터 직접 열람해 확정하면 반영 예정. 2026-09-01 사장님 지시로 narration.txt 빈 줄 2개 이상 연속 금지를 SCRIPT_PROCESS.md 6단계에 명문화. G3 정렬 실행 위해 이 세션 환경에 ffmpeg·faster-whisper·Pillow·edge-tts·imageio-ffmpeg 설치(세션 재시작 시 재설치 필요할 수 있음).</p>
+    </article>
+    <article class="episode">
+      <div class="ep-head">
+        <div>
+          <p class="ep-id">ep07-hotel-lounge</p>
+          <h3>요즘 아파트에 호텔 같은 라운지가 생기는 이유</h3>
+          <p class="ep-topic">호텔식 라운지·조식·게스트룸은 법적 의무 시설이 아니라 건설사의 순수 선택이며, 그 운영비 일부가 관리비로 전 세대에 균등 부담되는 구조</p>
+        </div>
+        <div class="ep-progress"><span class="pct">57%</span><span class="pct-label">씬 단계</span></div>
+      </div>
+      <div class="steps"><div class="step done"><span class="step-dot"></span><span class="step-label">소재</span></div><div class="step done"><span class="step-dot"></span><span class="step-label">대본</span></div><div class="step done"><span class="step-dot"></span><span class="step-label">음성</span></div><div class="step done"><span class="step-dot"></span><span class="step-label">정렬</span></div><div class="step todo"><span class="step-dot"></span><span class="step-label">씬</span></div><div class="step todo"><span class="step-dot"></span><span class="step-label">합성</span></div><div class="step todo"><span class="step-dot"></span><span class="step-label">발행</span></div></div>
+      <p class="ep-notes">음성 원본(02-voice/narration.weba)은 정책상 git 미포함 — 이 세션 로컬 클론에만 있음. G3 정렬 실행 위해 이 세션 환경에 ffmpeg·faster-whisper·edge-tts·Pillow 설치(세션 재시작 시 재설치 필요할 수 있음). 사장님이 건설사 협찬/광고 수익화를 검토 중이며, 이번 편은 편집 독립성(구독자 우선) 유지로 결정 — 비공개 사업판단이라 cxo-db 기록 권장.</p>
     </article></div>
   </section>
 </div>

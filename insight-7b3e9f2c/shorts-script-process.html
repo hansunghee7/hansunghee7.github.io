@@ -65,9 +65,9 @@
 <div class="wrap">
   <header>
     <h1>숏폼 대본 공정</h1>
-    <span class="meta-text">shorts-lab/SCRIPT_PROCESS.md · 자동 생성 2026-09-01 02:03 · 원본이 바뀌면 파이프라인 재실행 시 갱신됩니다</span>
+    <span class="meta-text">shorts-lab/SCRIPT_PROCESS.md · 자동 생성 2026-09-02 13:53 · 원본이 바뀌면 파이프라인 재실행 시 갱신됩니다</span>
   </header>
-  <nav class="doc-nav"><a href="/insight-7b3e9f2c/shorts-playbook.html">숏폼 파일럿 실행 매뉴얼</a><a href="/insight-7b3e9f2c/shorts-process.html">숏폼 공정 정본</a><a href="/insight-7b3e9f2c/shorts-script-process.html" class="current">숏폼 대본 공정</a><a href="/insight-7b3e9f2c/shorts-visual-grammar.html">숏폼 연출 사전</a><a href="/insight-7b3e9f2c/shorts-roles.html">숏폼 제작진 역할</a></nav>
+  <nav class="doc-nav"><a href="/insight-7b3e9f2c/shorts-playbook.html">숏폼 파일럿 실행 매뉴얼</a><a href="/insight-7b3e9f2c/shorts-automation.html">숏폼 자동화 로드맵</a><a href="/insight-7b3e9f2c/shorts-process.html">숏폼 공정 정본</a><a href="/insight-7b3e9f2c/shorts-script-process.html" class="current">숏폼 대본 공정</a><a href="/insight-7b3e9f2c/shorts-visual-grammar.html">숏폼 연출 사전</a><a href="/insight-7b3e9f2c/shorts-roles.html">숏폼 제작진 역할</a></nav>
   <article class="doc">
 <p>ep02에서 실제로 돌려 확정한 절차. 전체 공정은 <code>PROCESS.md</code>, 화면 문법은 <code>VISUAL_GRAMMAR.md</code>.</p>
 <h2>원칙</h2>
@@ -336,6 +336,14 @@ ep03).</strong> "펀치감을 올리자"는 식의 압축형 개정을 4.5단계
 요청). 타입캐스트 녹음 등 다음 작업을 바로 이어갈 수 있게, <code>narration.txt</code>가
 바뀔 때마다 <code>https://github.com/hansunghee7/shorts-lab/blob/main/channels/&lt;채널&gt;/
 episodes/&lt;에피소드&gt;/01-script/narration.txt</code> 형태의 링크를 답변에 포함한다.</p>
+<p><strong>대본 초안을 줄 때 영화 장르 제안을 함께 한다</strong> (2026-09-02, ep07에서 확립).
+소재의 반전 구조에 맞는 장르(예: "럭셔리 브랜드 필름 + 탐사보도 내레이션의
+대비")를 짧게 제안하고, <code>channel.json</code>의 기존 감성 모드/분석 모드에 어느
+프롬프트 키워드를 얹을지까지 구체적으로 붙인다 — 장르를 지정해주면 이미지·
+영상 생성 결과가 그 톤으로 훨씬 잘 나온다는 게 확인됨. 새 모드를 매번
+만들 필요는 없다, 기존 두 모드를 대본의 반전 지점(예: "문제는…")에 맞춰
+전환하는 타이밍만 제안해도 충분하다. G4 씬 설계(<code>04-scenes/image_prompts.md</code>)
+단계에서 이 제안을 그대로 반영한다.</p>
 <p><strong><code>narration.txt</code>의 문단 구분은 <code>script.json</code> 블록과 1:1이 아니다</strong> (2026-08-30 발견).
 타입캐스트는 빈 줄마다 숨을 쉬므로, <code>script.json</code>의 4초/6초 블록 경계마다 그대로
 빈 줄을 넣으면 뚝뚝 끊겨 읽힌다. <strong>"보기 좋은 대본"이 아니라 "필재가 맛나게 읽는
@@ -348,6 +356,9 @@ episodes/&lt;에피소드&gt;/01-script/narration.txt</code> 형태의 링크를
 <li><strong>빈 줄(엔터 2번)</strong> = 긴 호흡. <code>channel.json</code>의 <code>script_structure</code> 대분류
   (훅 / 문제 제시 / 반전1 / 반전2 / 반전3 / 엔딩)가 바뀌는 자리, 즉 에피소드
   전체에서 5~6번 정도만 나와야 한다. 그보다 자주 쓰면 뚝뚝 끊겨 들린다.</li>
+<li><strong>빈 줄은 절대 2개 이상 연달아 쓰지 않는다(엔터 3번 이상 금지)</strong> — 위 실측
+  결과가 이미 이걸 가리키고 있었는데 규칙으로 못박지 않았던 것. 2026-09-01
+  ep06에서 재확인(사장님 지시로 명문화).</li>
 <li><code>script.json</code>/<code>narration_blocks.txt</code>의 블록 단위는 씬 설계(G4)를 위해 그대로
   유지한다 — 정렬(G3)은 어차피 Whisper로 실제 녹음을 텍스트와 맞춰보는 것이라,
   <code>narration.txt</code>의 줄바꿈 방식이 이후 공정에 지장을 주지 않는다.</li>
@@ -413,11 +424,23 @@ episodes/&lt;에피소드&gt;/01-script/narration.txt</code> 형태의 링크를
 <p>새 표현을 발견/확정하면 이 표에 계속 추가한다.</p>
 <h2>열린 항목</h2>
 <ul>
-<li>~~<strong>블록 길이와 Veo 프리셋 불일치.</strong>~~ — <strong>2026-08-30 해소.</strong> 답은 "대본을
+<li>
+<p>~~<strong>블록 길이와 Veo 프리셋 불일치.</strong>~~ — <strong>2026-08-30 해소.</strong> 답은 "대본을
   Veo 격자에 맞추는" 쪽이 아니라 <strong>"씬을 대본 문장 단위로 짜지 않고 통합해서
   생성 비용 자체를 낮추는"</strong> 쪽이었다. <code>PROCESS.md</code>의 "씬 개수 = 생성 비용 —
   씬 통합 기법" 절 참고 — G1(대본) 블록은 자막·정렬용 그대로 두고, G4(씬)
-  단계에서 별도로 묶는다.</li>
+  단계에서 별도로 묶는다.</p>
+</li>
+<li>
+<p><strong>G4(씬 설계) 임시로 구글 시트 도구로 운영 중 (2026-09-01, 사장님 결정, 1~2주
+  시범).</strong> 대본이 나오면 씬 통합·이미지 생성 프롬프트·Veo 영상제어 프롬프트를
+  자동 생성하는 스프레드시트를 사장님이 직접 만들어 씀 — 범용 도구지만 오늘
+  막 만들어져 계속 고도화 중, 아직 저장소 파이프라인(<code>04-scenes/image_prompts.md</code>·
+  <code>video_prompts.md</code>)과의 관계는 미확정. <strong>숏감독(AI) 세션의 담당 범위는 당분간
+  G1(대본 감수·확정)·G2(음성 mp3화)·G3(정렬·자막)로 좁혀짐</strong> — G4(씬)·G5(조립)는
+  사장님이 Drive·PC·이 시트로 직접 진행. 다음 세션은 이 절이 갱신됐는지(범위
+  확정/시트 정착 여부) 먼저 확인할 것 — 안 갱신됐으면 이 범위 그대로 유지.</p>
+</li>
 </ul>
   </article>
 </div>
