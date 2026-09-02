@@ -17,11 +17,15 @@ create table if not exists public.questions (
   id           uuid primary key default gen_random_uuid(),
   created_at   timestamptz not null default now(),
   question     text not null check (char_length(question) between 5 and 2000),
-  email        text not null check (
-                 char_length(email) <= 254
-                 and email ~* '^[^@[:space:]]+@[^@[:space:]]+\.[^@[:space:]]+$'
+  -- 방문자 질문(visitor)은 이메일 필수, 사장님 픽(pick, 후보 이슈에서 체크)은 이메일 없음
+  source       text not null default 'visitor' check (source in ('visitor', 'pick')),
+  email        text check (
+                 email is null or (
+                   char_length(email) <= 254
+                   and email ~* '^[^@[:space:]]+@[^@[:space:]]+\.[^@[:space:]]+$'
+                 )
                ),
-  page         text check (char_length(page) <= 500),   -- 질문을 남긴 글의 경로
+  page         text check (char_length(page) <= 500),   -- 질문을 남긴 글의 경로 (픽은 issue#N)
   -- 상태 어휘는 쇼츠 파이프라인(시트 "상태" 열)과 맞춘다: 대기 → 처리중 → 초안 → 발행 / 반려
   status       text not null default '대기'
                check (status in ('대기', '처리중', '초안', '발행', '반려')),
@@ -38,13 +42,17 @@ create index if not exists questions_status_created_idx
 
 alter table public.questions enable row level security;
 
--- 공개 페이지(anon)는 삽입만. 허니팟이 비어 있고 상태가 기본값일 때만.
+-- 공개 페이지(anon)는 삽입만. 방문자 질문(이메일 있음)이고, 허니팟이 비어 있고,
+-- 상태가 기본값일 때만. 'pick'은 service_role(Actions)만 넣을 수 있다.
 drop policy if exists "anon insert only" on public.questions;
 create policy "anon insert only"
   on public.questions
   for insert
   to anon
-  with check (coalesce(website, '') = '' and status = '대기');
+  with check (
+    source = 'visitor' and email is not null
+    and coalesce(website, '') = '' and status = '대기'
+  );
 
 -- select/update/delete 정책은 일부러 만들지 않는다 → anon은 아무것도 못 읽는다.
 -- service_role은 RLS를 우회하므로 정책이 필요 없다.
