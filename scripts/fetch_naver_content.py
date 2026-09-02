@@ -159,6 +159,10 @@ def list_recent_blog_posts(browser, limit):
                 compact = re.sub(r"\s+", "", title)
                 if not title or re.fullmatch(r"(영상시간)?\d{1,2}:\d{2}", compact):
                     continue
+                # 이 링크는 제목 다음 줄에 본문 요약까지 같이 들어있어
+                # (실측: 제목+전체 요약이 한 덩어리), 표시·저장 모두 첫
+                # 줄(진짜 제목)만 있으면 충분하다.
+                title = title.split("\n", 1)[0].strip()
                 seen.add(log_no)
                 url = href if href.startswith("http") else f"https://blog.naver.com/{BLOG_ID}/{log_no}"
                 posts.append({"logNo": log_no, "title": title, "url": url, "pubDate": ""})
