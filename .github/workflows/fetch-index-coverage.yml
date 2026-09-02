@@ -1,0 +1,58 @@
+name: Fetch Index Coverage
+
+# 서치콘솔 URL 검사 API로 사이트맵 전체 URL의 구글 색인 여부를 확인해
+# assets/data/index-coverage.json에 커밋한다. 배경은 scripts/fetch_index_coverage.py
+# 머리말 참고 (2026-09-02: 글 587편에 90일 검색 노출 130회 → 색인 자체가
+# 안 된 건지 가르기 위해 도입).
+#
+# 인증은 fetch-search-console.yml과 같은 서비스 계정을 재사용한다 (새 Secret 없음).
+# URL 검사 API 한도가 하루 2,000회라 매일 돌릴 필요도 없고 돌려서도 안 된다 —
+# 주 1회(월요일 새벽) + 필요할 때 수동 실행.
+on:
+  schedule:
+    - cron: "37 20 * * 0"  # 월요일 05:37 KST
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-index-coverage
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install google-api-python-client google-auth
+
+      - name: Inspect sitemap URLs
+        env:
+          GA4_SERVICE_ACCOUNT_JSON: ${{ secrets.GA4_SERVICE_ACCOUNT_JSON }}
+        run: python scripts/fetch_index_coverage.py
+
+      - name: Commit changes if any
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/data/index-coverage.json
+          if git diff --cached --quiet; then
+            echo "no changes to commit"
+          else
+            git commit -m "chore: refresh index coverage snapshot [skip ci]"
+            n=0
+            until git push; do
+              n=$((n+1))
+              if [ $n -ge 3 ]; then echo "push 3회 실패"; exit 1; fi
+              git pull --rebase
+            done
+          fi
