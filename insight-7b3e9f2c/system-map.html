@@ -69,11 +69,11 @@
 <div class="wrap">
   <header>
     <h1>시스템 구조<button type="button" class="info-dot" id="titleInfo" aria-label="설명 보기">ⓘ<span class="info-text">홈페이지 저장소가 실제로 어떻게 돌아가는지(글쓰기 → 자동화 → 배포)와, 연결된 외부 서비스를 코드 기준으로 직접 확인해 정리한 페이지입니다. 실시간 데이터가 아니라 점검 시점의 스냅샷이라 새로고침 버튼은 없습니다 — 구조가 크게 바뀌면 이 페이지도 그때 다시 손봅니다.</span></button></h1>
-    <span class="meta-text">2026-08-29 점검 · 코드 직접 확인(grep 전수 검색 + 워크플로 원문 대조) · 같은 날 밤 감시망 구축분 반영 · 2026-09-02 워크플로 수 재집계(13) + 질문하기 파이프라인(클로드 API) 추가</span>
+    <span class="meta-text">2026-08-29 점검 · 코드 직접 확인(grep 전수 검색 + 워크플로 원문 대조) · 같은 날 밤 감시망 구축분 반영 · 2026-09-02 워크플로 수 재집계(14) + 질문하기 파이프라인(클로드 API) 추가</span>
   </header>
 
   <div class="stats">
-    <div class="stat"><div class="n">13</div><div class="l">GitHub Actions 자동화 워크플로</div></div>
+    <div class="stat"><div class="n">14</div><div class="l">GitHub Actions 자동화 워크플로</div></div>
     <div class="stat"><div class="n">21</div><div class="l">연결된 외부 서비스</div></div>
     <div class="stat"><div class="n">9</div><div class="l">참조 없는 죽은 파일 — 삭제 완료</div></div>
     <div class="stat"><div class="n">587</div><div class="l">log.html 한 페이지에 박제된 글 수</div></div>
@@ -85,7 +85,7 @@
     <p class="sec-note">Sveltia CMS로 글을 저장하는 순간부터 방문자 화면에 뜨기까지, 그리고 자동으로 갈라져 나가는 분석·도서순위·AI코퍼스 파이프라인, 방문자 질문에 답하는 RAG 챗봇, SNS 팔로워 수를 대신 기록하는 크롬 확장까지 한 장으로 봅니다.</p>
 
     <figure class="diagram-card">
-      <svg viewBox="0 0 1200 630" role="img" aria-label="사장님이 Sveltia CMS로, 크롬 확장이 SNS 팔로워 수 화면에서 각각 Cloudflare Worker(cms-auth)로 GitHub OAuth 로그인을 중계받아 GitHub 저장소에 커밋한다. 저장소에 push가 걸리면 GitHub Actions 13개 워크플로가 실행되어 log.html·posts.json·sitemap을 재생성해 다시 저장소에 커밋하고, 동시에 GA4·서치콘솔·네이버·Clarity 지표 수집, 예스24·알라딘·교보문고 도서 순위 스크래핑, Supabase 벡터DB 임베딩 동기화를 주기적으로 수행한다. 저장소는 GitHub Pages로 빌드되어 방문자에게 정적 HTML로 서빙되고, 방문자는 Cloudflare Worker(simplifier-ask)에 질문해 Supabase에서 근거를 검색한 답을 받는다.">
+      <svg viewBox="0 0 1200 630" role="img" aria-label="사장님이 Sveltia CMS로, 크롬 확장이 SNS 팔로워 수 화면에서 각각 Cloudflare Worker(cms-auth)로 GitHub OAuth 로그인을 중계받아 GitHub 저장소에 커밋한다. 저장소에 push가 걸리면 GitHub Actions 14개 워크플로가 실행되어 log.html·posts.json·sitemap을 재생성해 다시 저장소에 커밋하고, 동시에 GA4·서치콘솔·네이버·Clarity 지표 수집, 예스24·알라딘·교보문고 도서 순위 스크래핑, Supabase 벡터DB 임베딩 동기화를 주기적으로 수행한다. 저장소는 GitHub Pages로 빌드되어 방문자에게 정적 HTML로 서빙되고, 방문자는 Cloudflare Worker(simplifier-ask)에 질문해 Supabase에서 근거를 검색한 답을 받는다.">
         <defs>
           <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
             <path d="M0,0 L10,5 L0,10 z" fill="var(--dim)"></path>
@@ -165,7 +165,7 @@
 
         <rect class="node-box" x="410" y="340" width="220" height="60" rx="9"></rect>
         <text class="node-title" x="520" y="364" text-anchor="middle">GitHub Actions</text>
-        <text class="node-sub" x="520" y="381" text-anchor="middle">자동화 워크플로 13종</text>
+        <text class="node-sub" x="520" y="381" text-anchor="middle">자동화 워크플로 14종</text>
 
         <rect class="node-box" x="980" y="340" width="200" height="60" rx="9"></rect>
         <text class="node-title" x="1080" y="364" text-anchor="middle">Cloudflare Worker</text>
@@ -202,6 +202,9 @@
         <span class="files">.github/workflows/site-health-check.yml · uptimerobot.com (모니터 2개)</span>
       </div></div>
       <div class="log-item"><span class="dot done"></span><div><b>매일 아침 — 모닝 브리핑</b> (06:00 KST, claude.ai Routine) · 클로드 세션이 자동으로 열려 빌드·사이트·워크플로·데이터 신선도를 점검하고 스튜디오 핵심 지표(방문·도서·SNS)를 요약해 <b>클로드 코드 대화창과 이메일 양쪽으로</b> 보고(Gmail 커넥터). 권한 경계: 진단과 수정안(별도 브랜치)까지만 — main 반영은 사람이 승인.</div></div>
+      <div class="log-item"><span class="dot done"></span><div><b>주 1회 — 구글 색인 점검</b> (월요일 05:37 KST) · 서치콘솔 URL 검사 API로 사이트맵 전체 URL의 색인 여부를 확인해 저장. 2026-09-02 진단(글 587편에 90일 검색 노출 130회)에서 "색인이 안 된 것인지, 색인은 됐는데 순위가 없는 것인지"를 가르기 위해 추가. 워크플로 수 타일도 이때 실제 파일 수(13)로 바로잡음 — 이전 7은 2026-08-29 기준 값이 갱신 안 된 것.
+        <span class="files">.github/workflows/fetch-index-coverage.yml · scripts/fetch_index_coverage.py · assets/data/index-coverage.json</span>
+      </div></div>
     </div>
   </section>
 
@@ -256,7 +259,7 @@
     <p class="sec-note">이 구조를 처음 점검했을 때(2026-08-29) 나온 항목과 처리 결과입니다.</p>
 
     <div class="log-list">
-      <div class="log-item"><span class="dot done"></span><div><b>2026-09-02</b> — "심플리파이어에게 질문하기" 파이프라인 계단 1·2 부품 추가(접수함 SQL, 폼, 초안 워크플로). 폼은 <code>_data/question_form.yml</code>의 <code>enabled</code>가 켜지기 전까지 어느 글에도 보이지 않음. 워크플로 수는 실제 파일 기준 13개로 재집계(이 페이지의 7은 8-29 시점 값이었음). 정본: <code>docs/질문하기_파이프라인.md</code>.</div></div>
+      <div class="log-item"><span class="dot done"></span><div><b>2026-09-02</b> — "심플리파이어에게 질문하기" 파이프라인 계단 1·2 부품 추가(접수함 SQL, 폼, 초안 워크플로). 폼은 <code>_data/question_form.yml</code>의 <code>enabled</code>가 켜지기 전까지 어느 글에도 보이지 않음. 워크플로 수는 실제 파일 기준 14개로 재집계(이 페이지의 7은 8-29 시점 값이었음). 정본: <code>docs/질문하기_파이프라인.md</code>.</div></div>
       <div class="log-item"><span class="dot done"></span><div><b>완료</b> — 아무 워크플로에서도 참조되지 않는 죽은 파일 9개 삭제.
         <span class="files">build_card_index.py · deploy.py · run.py · smart_index.py · group_image_galleries.py · strip_og_remnants.py · styles.css · concept2.html · og_cache_v2.json</span>
       </div></div>
