@@ -459,11 +459,23 @@
     });
   }
 
+  // 막 올라간 콘텐츠는 플랫폼이 조회수를 아직 집계해 보여주기 전이라
+  // "0"이 그대로 캡처될 때가 있다(2026-09-02 실측 -- 틱톡·인스타 각
+  // 1건, 둘 다 관측치가 그 0 하나뿐이었음). 최종 조회수가 아니라 아직
+  // 안 채워진 값일 뿐이므로, 관측치가 그 0 하나뿐인 동안은 카드를 아예
+  // 안 보여주고 다음 수집에서 진짜 값이 잡히면 그때 보여준다.
+  function hasReliableViews(entry) {
+    var clean = (entry.history || []).filter(function (e) { return e.views != null; });
+    if (!clean.length) return false;
+    var latest = clean[clean.length - 1];
+    return !(latest.views === 0 && clean.length === 1);
+  }
+
   function renderContent(youtubeData, naverData) {
     var items = Object.assign({}, youtubeData.videos || {}, naverData.clips || {});
     var el = document.getElementById("clipArea");
     var ids = Object.keys(items).filter(function (id) {
-      return (items[id].history || []).some(function (e) { return e.views != null; });
+      return hasReliableViews(items[id]);
     });
     if (!ids.length) { el.innerHTML = ""; return; }
     borrowThumbnails(items, ids);

@@ -181,7 +181,24 @@ chrome.runtime.onMessage.addListener(function (msg) {
 // 로직(하루 한 번 제한, 중복 실행 방지, 최소화 창으로 조용히 열기)은
 // 완전히 같아서 하나로 합쳤다(2026-09-01, 콘텐츠 채널 라운드를 추가하며
 // 일반화).
+// chrome.storage.local.get으로 "이미 도는 중인지" 확인하고 나서야
+// chrome.storage.local.set으로 잠그기 때문에(둘 다 비동기), 그 짧은
+// 틈에 두 번째 요청이 끼어들면 둘 다 "안 도는 중"으로 읽어 라운드가
+// 겹쳐 도는 문제가 있었다(2026-09-02, 콘텐츠 채널 라운드에서 같은
+// 플랫폼이 다른 값으로 짧은 간격을 두고 두 번 기록되며 GitHub 커밋이
+// 충돌하는 걸로 발견). 스토리지 왕복 전에 메모리 플래그로 동기적으로
+// 먼저 잠가 그 틈을 없앤다 -- 서비스워커가 재시작돼 이 메모리가
+// 사라지는 드문 경우엔 아래 스토리지 기반 체크가 그대로 잡아준다.
+var roundLockMemory = {};
+
 function maybeRunRound(platforms, dateKey, startedAtKey, force, label) {
+  var nowSync = Date.now();
+  if (roundLockMemory[startedAtKey] && nowSync - roundLockMemory[startedAtKey] < ROUND_LOCK_MS) {
+    console.log("[SNS 인사이트] " + label + " -- 방금 시작한 라운드가 아직 도는 중이라 건너뜀(메모리 잠금)");
+    return;
+  }
+  roundLockMemory[startedAtKey] = nowSync;
+
   var storageKeys = [dateKey, startedAtKey];
   chrome.storage.local.get(storageKeys, function (res) {
     var today = kstDateStr();
