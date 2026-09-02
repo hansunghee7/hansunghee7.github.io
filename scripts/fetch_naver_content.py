@@ -94,25 +94,17 @@ def parse_count(text):
     return n
 
 
-def first_count_near(page, keywords):
-    """키워드가 들어간 요소의 텍스트에서 숫자를 뽑는다 -- CSS 선택자를
-    박아두면 페이지가 조금만 바뀌어도 깨지므로 '키워드 주변 텍스트'로
-    느슨하게 찾는다(fetch_sns_public.py와 동일 함수)."""
-    for kw in keywords:
-        try:
-            loc = page.locator(f"text={kw}").first
-            if loc.count() == 0:
-                continue
-            for target in (loc, loc.locator("xpath=..")):
-                try:
-                    n = parse_count(target.inner_text(timeout=4000))
-                except Exception:
-                    n = None
-                if n is not None:
-                    return n
-        except Exception:
-            continue
-    return None
+def label_number(text, label):
+    """페이지 전체 텍스트에서 '라벨 바로 뒤(공백만 허용) 숫자'만 정확히
+    뽑는다. 처음엔 "라벨이 들어간 요소"를 느슨하게 찾는 locator 방식을
+    썼는데, "재생"은 지표 라벨("재생 1")과 재생 버튼 라벨을 겸해서
+    엉뚱한 요소(버튼)를 집어 매번 실패했다(2026-09-02 실측 -- 페이지
+    텍스트엔 "재생 1"이 그대로 있는데도 0/2). 요소 매칭 대신 텍스트
+    근접성(정규식)으로 찾으면 이 문제가 없다."""
+    m = re.search(re.escape(label) + r"\s*([\d,]{1,12})", text)
+    if not m:
+        return None
+    return parse_count(m.group(1))
 
 
 def upsert(history, today, entry):
@@ -159,8 +151,18 @@ def list_recent_blog_posts(browser, limit):
                 if log_no in seen:
                     continue
                 title = links.nth(i).inner_text(timeout=3000).strip()
-                if not title:
+                # 같은 글에 링크가 여러 개 걸려있을 때(썸네일 링크 +
+                # 실제 제목 링크) 썸네일이 먼저 잡히면, 그 안의 재생시간
+                # 배지 텍스트("영상 시간\n1:36")를 제목으로 잘못 저장했다
+                # (2026-09-02 실측). 그런 텍스트는 건너뛰고(seen에 안
+                # 넣고) 다음 후보 링크에서 다시 시도한다.
+                compact = re.sub(r"\s+", "", title)
+                if not title or re.fullmatch(r"(영상시간)?\d{1,2}:\d{2}", compact):
                     continue
+                # 이 링크는 제목 다음 줄에 본문 요약까지 같이 들어있어
+                # (실측: 제목+전체 요약이 한 덩어리), 표시·저장 모두 첫
+                # 줄(진짜 제목)만 있으면 충분하다.
+                title = title.split("\n", 1)[0].strip()
                 seen.add(log_no)
                 url = href if href.startswith("http") else f"https://blog.naver.com/{BLOG_ID}/{log_no}"
                 posts.append({"logNo": log_no, "title": title, "url": url, "pubDate": ""})
@@ -195,10 +197,29 @@ def collect_post_views(browser, log_no):
         except Exception:
             pass
         page.wait_for_timeout(1000)
-        n = first_count_near(page, ["조회수", "조회"])
+        # 2026-09-02: 두 가지가 겹쳐서 계속 0/2였다.
+        # (1) 이 채널 게시글은 전부 "동영상" 포스트라 조회수 대신 영상
+        #     위젯의 "재생 N"(+"좋아요 N")을 쓴다 -- "조회수"만 찾아선
+        #     못 찾는다. 일반 글(사진/텍스트)이 섞일 수 있어 둘 다 시도한다.
+        # (2) 그 "재생 N" 위젯 자체가 지연 로딩이다 -- 첫 로딩 직후엔 DOM에
+        #     없다가, 스크롤로 화면에 실제로 보여야(이 저장소 다른
+        #     스크래퍼들과 같은 패턴) 나타난다.
+        def read_count():
+            text = page.inner_text("body")
+            for label in ("조회수", "재생"):
+                n = label_number(text, label)
+                if n is not None:
+                    return n
+            return None
+
+        n = read_count()
         if n is None:
-            # "조회" 키워드 근처에서도 못 찾았다는 뜻 -- 다음엔 바로 보게
-            # 화면에 실제로 뭐가 있는지 앞부분을 남긴다.
+            page.mouse.wheel(0, 20000)
+            page.wait_for_timeout(1500)
+            n = read_count()
+        if n is None:
+            # 라벨 자체를 못 찾았다는 뜻 -- 다음엔 바로 보게 화면에
+            # 실제로 뭐가 있는지 앞부분을 남긴다.
             try:
                 snippet = page.inner_text("body")[:200].replace("\n", " ")
             except Exception:
