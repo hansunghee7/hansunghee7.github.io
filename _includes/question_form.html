@@ -1,0 +1,92 @@
+{%- comment -%}
+"심플리파이어에게 질문하기" — 공개 글 하단 폼. 정본 설계: docs/질문하기_파이프라인.md
+
+- _data/question_form.yml 의 enabled 가 true 일 때만 그린다 (include.force 는
+  preview/question-form.html 미리보기 전용). 그래서 이 include 를 레이아웃에
+  넣어두는 것만으로는 아무 화면도 바뀌지 않는다 — 켜는 순간이 노출 변경.
+- 전송은 Supabase REST 에 anon 키로 직접 삽입한다. 워커·서버 없음. 안전은
+  테이블의 행 단위 보안(anon 은 삽입만)이 담당하고, 이메일은 저장소로 오지
+  않는다. 허니팟(website) 칸은 사람 눈에 안 보이며 값이 차면 DB 가 거절한다.
+- 셀렉터는 전부 "태그.클래스" 로 — 이 조각이 들어가는 .article-body 에
+  `.article-body p {margin:0 0 30px}` 같은 (0,1,1) 규칙이 있어서 클래스 하나
+  짜리 (0,1,0) 는 밀린다. post_cta.html 에서 실제로 겪은 버그의 재발 방지.
+- 디자인: 본문(흰 배경, 세리프 제목)과 같은 결. 버튼은 사이트 공통 pill(999px),
+  다크 `#080808` / 오프화이트 `#f5f3ee` (docs/UX_GUIDE.md §2).
+{%- endcomment -%}
+{%- assign qf = site.data.question_form -%}
+{%- if include.force or qf.enabled -%}
+<section class="ask-simplifier" id="askSimplifier"
+  data-url="{{ qf.supabase_url }}" data-key="{{ qf.supabase_anon_key }}">
+  <h2 class="ask-title">심플리파이어에게 질문하기</h2>
+  <p class="ask-lead">이 글을 읽고 떠오른 고민을 남겨 주세요. 질문에 답하는 글을 써서 이메일로 알려드립니다. 답변에는 며칠 걸리고, 모든 질문에 글을 쓰지는 못합니다.</p>
+  <form class="ask-form" id="askForm" novalidate>
+    <label class="ask-label" for="askQuestion">질문</label>
+    <textarea class="ask-input" id="askQuestion" name="question" rows="4" maxlength="2000" required
+      placeholder="예: 기획자 5년 차인데 CPO가 되려면 무엇부터 준비해야 할까요?"></textarea>
+    <label class="ask-label" for="askEmail">답을 받을 이메일</label>
+    <input class="ask-input" id="askEmail" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
+    <div class="ask-hp" aria-hidden="true"><label>website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+    <button class="ask-submit" id="askSubmit" type="submit">질문 보내기</button>
+    <p class="ask-msg" id="askMsg" role="status" aria-live="polite"></p>
+  </form>
+</section>
+<style>
+  section.ask-simplifier { margin: 72px 0 24px; padding: 40px 0 8px; border-top: 1px solid rgba(0,0,0,.12); }
+  section.ask-simplifier h2.ask-title { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-weight: 400; font-size: 24px; letter-spacing: -0.01em; margin: 0 0 12px; color: #171410; }
+  section.ask-simplifier p.ask-lead { font-family: 'Pretendard Variable', Pretendard, sans-serif; font-size: 14.5px; line-height: 1.7; letter-spacing: 0; color: #4a453c; margin: 0 0 22px; }
+  section.ask-simplifier label.ask-label { display: block; font-family: 'Pretendard Variable', Pretendard, sans-serif; font-size: 12.5px; font-weight: 600; letter-spacing: .04em; color: #79736a; margin: 0 0 6px; }
+  section.ask-simplifier textarea.ask-input, section.ask-simplifier input.ask-input { display: block; width: 100%; box-sizing: border-box; font-family: 'Pretendard Variable', Pretendard, sans-serif; font-size: 15px; line-height: 1.6; color: #171410; background: #faf9f6; border: 1px solid rgba(23,20,16,.18); border-radius: 10px; padding: 12px 14px; margin: 0 0 16px; outline: none; }
+  section.ask-simplifier textarea.ask-input:focus, section.ask-simplifier input.ask-input:focus { border-color: #171410; background: #fff; }
+  section.ask-simplifier div.ask-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  section.ask-simplifier button.ask-submit { font-family: 'Pretendard Variable', Pretendard, sans-serif; font-size: 14px; font-weight: 600; letter-spacing: .02em; color: #f5f3ee; background: #080808; border: 0; border-radius: 999px; padding: 12px 22px; cursor: pointer; }
+  section.ask-simplifier button.ask-submit:disabled { opacity: .55; cursor: default; }
+  section.ask-simplifier p.ask-msg { font-family: 'Pretendard Variable', Pretendard, sans-serif; font-size: 13.5px; line-height: 1.6; margin: 14px 0 0; color: #4a453c; min-height: 1.4em; }
+  section.ask-simplifier p.ask-msg.is-error { color: #b3261e; }
+  section.ask-simplifier p.ask-msg.is-ok { color: #171410; }
+</style>
+<script>
+(function initAskForm() {
+  var root = document.getElementById('askSimplifier');
+  var form = document.getElementById('askForm');
+  if (!root || !form) return;
+  var url = (root.getAttribute('data-url') || '').replace(/\/+$/, '');
+  var key = root.getAttribute('data-key') || '';
+  var btn = document.getElementById('askSubmit');
+  var msg = document.getElementById('askMsg');
+
+  function say(text, cls) { msg.textContent = text; msg.className = 'ask-msg' + (cls ? ' ' + cls : ''); }
+  function track(name) {
+    try { if (typeof window.gtag === 'function') window.gtag('event', name, { page_path: location.pathname, page_title: document.title }); } catch (e) {}
+    try { if (typeof window.clarity === 'function') window.clarity('set', 'ask_question', name); } catch (e) {}
+  }
+
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var q = form.question.value.trim();
+    var email = form.email.value.trim();
+    if (q.length < 5) { say('질문을 조금 더 적어 주세요.', 'is-error'); return; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { say('이메일 형식을 확인해 주세요.', 'is-error'); return; }
+    if (!url || !key) { say('아직 접수함이 연결되지 않았습니다(미리보기).', 'is-error'); return; }
+
+    btn.disabled = true; say('보내는 중…');
+    fetch(url + '/rest/v1/questions', {
+      method: 'POST',
+      headers: { 'apikey': key, 'Authorization': 'Bearer ' + key, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+      body: JSON.stringify({ question: q, email: email, page: location.pathname, website: form.website.value || '' })
+    }).then(function (r) {
+      if (r.status === 201) {
+        form.reset();
+        say('받았습니다. 글이 준비되면 이메일로 알려드릴게요.', 'is-ok');
+        track('ask_question');
+      } else {
+        say('전송에 실패했습니다. 잠시 후 다시 시도해 주세요.', 'is-error');
+        track('ask_question_error');
+      }
+    }).catch(function () {
+      say('전송에 실패했습니다. 잠시 후 다시 시도해 주세요.', 'is-error');
+      track('ask_question_error');
+    }).finally(function () { btn.disabled = false; });
+  });
+})();
+</script>
+{%- endif -%}
