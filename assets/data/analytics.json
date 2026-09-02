@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-01T22:05:28.298362+00:00",
+  "updated_at": "2026-09-02T05:49:10.492660+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 125,
-    "activeUsers": 71,
-    "newUsers": 71,
+    "sessions": 127,
+    "activeUsers": 73,
+    "newUsers": 73,
     "returningUsers": 0
   },
   "daily": [
@@ -59,9 +59,9 @@
     },
     {
       "date": "2026-09-02",
-      "sessions": 1,
-      "activeUsers": 1,
-      "newUsers": 1,
+      "sessions": 3,
+      "activeUsers": 3,
+      "newUsers": 3,
       "returningUsers": 0
     }
   ],
@@ -76,15 +76,15 @@
     }
   ],
   "landing_types": {
-    "home": 78,
+    "home": 81,
     "log_home": 7,
-    "individual_post": 16,
+    "individual_post": 17,
     "other": 25
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 94
+      "sessions": 96
     },
     {
       "source": "searchadvisor.naver.com",
@@ -99,12 +99,12 @@
       "sessions": 5
     },
     {
-      "source": "linkedin.com",
-      "sessions": 3
+      "source": "(not set)",
+      "sessions": 4
     },
     {
-      "source": "(not set)",
-      "sessions": 2
+      "source": "linkedin.com",
+      "sessions": 3
     },
     {
       "source": "bing",
@@ -121,12 +121,12 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 274,
-    "section_view_voices": 197,
+    "section_view_proven": 275,
+    "section_view_voices": 198,
     "section_view_book_class": 120,
-    "section_view_faq": 109,
+    "section_view_faq": 110,
     "faq_open": 18,
-    "read_complete": 184
+    "read_complete": 185
   },
   "contact_funnel": {
     "contact_open": 27,
@@ -174,6 +174,11 @@
     {
       "path": "/log_assets/markdown/005_할루시네이션 사회.html",
       "title": "/log_assets/markdown/005_할루시네이션 사회.html",
+      "sessions": 1
+    },
+    {
+      "path": "/log_assets/markdown/008_두번째 책 'UX의 언어들'을 출간했습니다.html",
+      "title": "/log_assets/markdown/008_두번째 책 'UX의 언어들'을 출간했습니다.html",
       "sessions": 1
     },
     {
@@ -238,6 +243,12 @@
       "views": 11
     },
     {
+      "path": "/log_assets/markdown/611_당신의 서비스가 말을 한다면.html",
+      "title": "/log_assets/markdown/611_당신의 서비스가 말을 한다면.html",
+      "uniqueViews": 3,
+      "views": 10
+    },
+    {
       "path": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
       "title": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
       "uniqueViews": 2,
@@ -296,17 +307,11 @@
       "title": "/log_assets/markdown/371_뛰어난 PM일수록 비관적인 이유는.html",
       "uniqueViews": 2,
       "views": 3
-    },
-    {
-      "path": "/log_assets/markdown/401_코치S 1화 '문제해결사'.html",
-      "title": "/log_assets/markdown/401_코치S 1화 '문제해결사'.html",
-      "uniqueViews": 2,
-      "views": 4
     }
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 79,
+    "total_desktop_sessions": 81,
     "excluded_invalid_sessions": 18,
     "by_resolution": [
       {
@@ -322,7 +327,7 @@
       {
         "resolution": "1920x1080",
         "width": 1920,
-        "sessions": 6
+        "sessions": 7
       },
       {
         "resolution": "1536x960",
@@ -347,6 +352,11 @@
       {
         "resolution": "1024x1024",
         "width": 1024,
+        "sessions": 1
+      },
+      {
+        "resolution": "1440x900",
+        "width": 1440,
         "sessions": 1
       },
       {
