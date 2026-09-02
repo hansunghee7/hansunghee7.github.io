@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-02T20:45:34.495066+00:00",
+  "updated_at": "2026-09-02T21:59:55.019261+00:00",
   "range": "last_30_days",
   "totals": {
     "sessions": 129,
     "activeUsers": 75,
-    "newUsers": 78,
+    "newUsers": 79,
     "returningUsers": 0
   },
   "daily": [
@@ -68,7 +68,7 @@
       "date": "2026-09-03",
       "sessions": 1,
       "activeUsers": 1,
-      "newUsers": 4,
+      "newUsers": 5,
       "returningUsers": 0
     }
   ],
@@ -102,11 +102,11 @@
       "sessions": 7
     },
     {
-      "source": "(not set)",
-      "sessions": 5
+      "source": "google",
+      "sessions": 6
     },
     {
-      "source": "google",
+      "source": "(not set)",
       "sessions": 5
     },
     {
