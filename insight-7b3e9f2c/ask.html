@@ -78,6 +78,11 @@
   a.source-chip:hover{background:var(--line-soft); border-color:var(--line); color:var(--ink);}
   a.source-chip:hover svg{color:var(--ink);}
 
+  /* 답변 아래 "다음에 물어볼 만한 질문" 칩 -- 첫 화면의 제안 칩과 같은 생김새를
+     쓰되 답변 흐름을 방해하지 않게 한 단계 작게. */
+  .followups{margin-top:14px; display:flex; flex-wrap:wrap; gap:6px;}
+  .followups .suggestion-chip{font-size:12.5px; padding:7px 13px;}
+
   .feedback{margin-top:12px; display:flex; align-items:center; gap:6px;}
   .fb-btn{background:none; border:1px solid var(--line-soft); border-radius:8px; width:30px; height:30px; font-size:14px; cursor:pointer; transition:background-color .15s, border-color .15s; line-height:1;}
   .fb-btn.copy-btn{width:auto; height:30px; padding:0 12px; font-size:12px; font-family:inherit; color:var(--dim);}
@@ -296,7 +301,48 @@
     el.appendChild(box);
   }
 
-  function finalizeAnswer(el, text, sources, logId) {
+  // 후속 질문 칩. 누르면 입력창에 채우고 바로 보낸다 -- 단, Voyage 쿨다운 중이면
+  // 채워두기만 하고 카운트다운이 끝나는 순간 보낸다(사용자가 그 사이 입력창을
+  // 고쳤으면 자동 전송하지 않는다).
+  let pendingAutoSend = null;
+  function renderFollowUps(el, questions) {
+    if (!questions || !questions.length) return;
+    const box = document.createElement("div");
+    box.className = "followups";
+    questions.forEach((q) => {
+      const chip = document.createElement("button");
+      chip.type = "button";
+      chip.className = "suggestion-chip";
+      chip.textContent = q;
+      chip.addEventListener("click", () => {
+        input.value = q;
+        autoGrow();
+        syncSendBtn();
+        if (busy) {
+          pendingAutoSend = q;
+          input.focus();
+        } else {
+          form.requestSubmit();
+        }
+      });
+      box.appendChild(chip);
+    });
+    el.appendChild(box);
+  }
+
+  function onCooldownEnd() {
+    busy = false;
+    syncSendBtn();
+    if (pendingAutoSend !== null && input.value.trim() === pendingAutoSend) {
+      pendingAutoSend = null;
+      form.requestSubmit();
+      return;
+    }
+    pendingAutoSend = null;
+    input.focus();
+  }
+
+  function finalizeAnswer(el, text, sources, logId, followUps) {
     const clean = stripInlineCitation(text);
     el.innerHTML = window.marked ? marked.parse(clean) : clean;
     const plainText = el.innerText; // 칩·버튼 붙기 전, 답변 본문만 복사용으로 떼어둔다
@@ -320,6 +366,7 @@
       });
       el.appendChild(box);
     }
+    renderFollowUps(el, followUps);
     renderActions(el, logId, plainText);
     el.scrollIntoView({ behavior: "smooth", block: "end" });
   }
@@ -430,9 +477,7 @@
   // 더 버튼을 막아두고, 몇 초 남았는지 보여준다.
   function applyCooldown(remainingMs) {
     if (remainingMs <= 0) {
-      busy = false;
-      syncSendBtn();
-      input.focus();
+      onCooldownEnd();
       return;
     }
     let remaining = Math.ceil(remainingMs / 1000);
@@ -445,9 +490,7 @@
         clearInterval(cooldownTimer);
         cooldownTimer = null;
         cooldownNote.style.display = "none";
-        busy = false;
-        syncSendBtn();
-        input.focus();
+        onCooldownEnd();
       } else {
         cooldownNote.textContent = `다음 질문까지 ${remaining}초 (Voyage AI 무료 요청 한도 보호)`;
       }
@@ -470,6 +513,7 @@
 
     let sources = null;
     let logId = null;
+    let followUps = null;
     let started = false;
     const typewriter = createTypewriter(answerEl);
     const retry = () => fetchAnswer(question, answerEl);
@@ -528,6 +572,8 @@
             typewriter.push(payload.text);
           } else if (eventType === "log_id") {
             logId = payload.id;
+          } else if (eventType === "followups") {
+            followUps = payload.questions;
           } else if (eventType === "error") {
             typewriter.stop();
             renderErrorWithRetry(answerEl, payload.error, retry);
@@ -538,7 +584,7 @@
 
       typewriter.end();
       const finalText = await typewriter.done;
-      finalizeAnswer(answerEl, finalText, sources, logId);
+      finalizeAnswer(answerEl, finalText, sources, logId, followUps);
 
       conversationHistory.push({ role: "user", content: question });
       conversationHistory.push({ role: "model", content: finalText });
