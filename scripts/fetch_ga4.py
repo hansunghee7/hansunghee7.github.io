@@ -312,6 +312,32 @@ def fetch_sources(client, property_id):
     return top[:15], ai_hits
 
 
+def fetch_utm_campaigns(client, property_id):
+    """UTM(source/medium/campaign)별 세션 수. docs/UTM_규칙.md 도입(2026-09-02) 이후
+    발급되는 태그가 있어야 값이 잡힌다 -- 그 전 트래픽은 전부 (not set)으로 뭉친다.
+    재유통(옛글 SNS 재배포)이 실제로 사이트 세션을 만드는지 채널별로 확인하는 용도."""
+    resp = run_report(
+        client, property_id,
+        date_ranges=[DateRange(start_date="30daysAgo", end_date="today")],
+        dimensions=[
+            Dimension(name="sessionSource"),
+            Dimension(name="sessionMedium"),
+            Dimension(name="sessionCampaignName"),
+        ],
+        metrics=[Metric(name="sessions")],
+        limit=50,
+    )
+    rows = []
+    for r in resp.rows:
+        source, medium, campaign = (v.value for v in r.dimension_values)
+        sessions = int(r.metric_values[0].value)
+        if medium == "(not set)" and campaign == "(not set)":
+            continue  # UTM 없는 일반 트래픽은 top_sources가 이미 다룸
+        rows.append({"source": source, "medium": medium, "campaign": campaign, "sessions": sessions})
+    rows.sort(key=lambda x: -x["sessions"])
+    return rows[:30]
+
+
 def fetch_screen_resolutions(client, property_id):
     """데스크톱 방문자의 실제 화면 해상도 분포. 30일 트래픽이 워낙 적어(이 글을
     쓰는 시점 세션 85건) 노이즈를 줄이려 90일 창을 쓴다 -- 그래도 표본이
@@ -392,6 +418,7 @@ def main():
         "daily_leads": fetch_daily_event(client, property_id, "generate_lead"),
         "landing_types": fetch_landing_types(client, property_id),
         "top_sources": top_sources,
+        "utm_campaigns": fetch_utm_campaigns(client, property_id),
         "ai_referrals": ai_referrals,
         "engagement_events": fetch_engagement_events(client, property_id),
         "contact_funnel": fetch_event_totals(client, property_id, ["contact_open", "generate_lead", "contact_error"]),
