@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Simplifier SNS 인사이트 수집기",
-  "version": "1.6.5",
+  "version": "1.6.6",
   "description": "심플리파이어 개인 SNS 프로필을 방문할 때 팔로워 수를 자동으로 읽어 Simplifier Studio에 기록합니다.",
   "icons": {
     "16": "icons/icon16.png",
