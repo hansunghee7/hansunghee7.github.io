@@ -65,13 +65,14 @@
 <div class="wrap">
   <header>
     <h1>숏폼 자동화 로드맵</h1>
-    <span class="meta-text">shorts-lab/AUTOMATION_PIPELINE.md · 자동 생성 2026-09-02 23:18 · 원본이 바뀌면 파이프라인 재실행 시 갱신됩니다</span>
+    <span class="meta-text">shorts-lab/AUTOMATION_PIPELINE.md · 자동 생성 2026-09-02 23:33 · 원본이 바뀌면 파이프라인 재실행 시 갱신됩니다</span>
   </header>
   <nav class="doc-nav"><a href="/insight-7b3e9f2c/shorts-playbook.html">숏폼 파일럿 실행 매뉴얼</a><a href="/insight-7b3e9f2c/shorts-automation.html" class="current">숏폼 자동화 로드맵</a><a href="/insight-7b3e9f2c/shorts-process.html">숏폼 공정 정본</a><a href="/insight-7b3e9f2c/shorts-script-process.html">숏폼 대본 공정</a><a href="/insight-7b3e9f2c/shorts-visual-grammar.html">숏폼 연출 사전</a><a href="/insight-7b3e9f2c/shorts-roles.html">숏폼 제작진 역할</a></nav>
   <article class="doc">
 <blockquote>
 <p>2026-09-02 사장님·숏감독 v1 합의 → 탐·노트·시안·마야 4개 크리틱
-(<code>hansunghee7.github.io/docs/reviews/automation-pipeline/</code>) 반영해 v3로 개정.
+(<code>hansunghee7.github.io/docs/reviews/automation-pipeline/</code>) 반영해 v3 → v4로 개정.
+v4는 v3 §9의 사장님 판단 2건이 확정되며 나온 개정(2026-09-03, §9 참고).
 지금 굴리는 손 루프는 <a href="shorts-playbook.html">PILOT_PLAYBOOK.md</a>, 이 문서는 <strong>그 루프를
 어디까지 자동으로 바꿀지와 사람이 남는 자리</strong>의 정본이다. 한 계단씩 올리며 이 문서를
 갱신한다. 엔진 규칙(대본·연출)은 바뀌지 않는다 — <a href="shorts-script-process.html">SCRIPT_PROCESS.md</a>,
@@ -106,12 +107,12 @@
 <tr>
 <td>shorts-lab 저장소</td>
 <td>스크립트·절차·검수 기준</td>
-<td><strong>도구함</strong> — 숏감독의 것</td>
+<td><strong>도구함</strong> — 숏감독의 것, <strong>비공개 유지</strong></td>
 </tr>
 <tr>
-<td>사장님 PC (4090) 또는 GitHub Actions</td>
+<td>GitHub Actions</td>
 <td>정렬·조립</td>
-<td><strong>일꾼</strong> — 위치는 §9 미정 항목 참고</td>
+<td><strong>일꾼</strong> — PC가 파이프라인에서 빠짐(§9 확정)</td>
 </tr>
 <tr>
 <td>우편함 (Apps Script 웹앱)</td>
@@ -129,7 +130,7 @@
 <li><strong>판단이 단순한 일은 API로, 창작은 하루 한 번 세션으로.</strong> 세션이 하루 종일 시트를
    지켜보는 구조는 만들지 않는다. <strong>정렬·조립처럼 판단이 0인 결정론적 스크립트도
    세션 안에서 돌리지 않는다</strong> — 지켜보는 데 토큰을 쓰는 건 ffmpeg를 토큰으로 사는
-   셈이다(위치는 §9).</li>
+   셈이다. GitHub Actions가 대신 돈다(§9).</li>
 <li><strong>사람은 두 군데 앞에 선다 — 돈이 나가기 직전, 밖으로 나가기 직전.</strong> 이미지는
    싸니까 기계가 마구 찍고, 영상은 비싸니까 사장님이 확정한 이미지로만 만든다.
    업로드는 실수가 공개되는 지점이라 사람이 본다. <strong>돈 나가는 비동기 단계(리서치·
@@ -186,7 +187,7 @@
 <td>3</td>
 <td>딥리서치</td>
 <td>주제 → 출처 달린 보고서</td>
-<td>자동(§9 3a/3b 참고)</td>
+<td>자동(§6 계단 3a/3b 참고)</td>
 <td><code>픽</code> 직후 발주, 즉시 <code>리서치중</code>(작업 ID 기록), 15분 폴링, 끝나면 드라이브에 구글 문서로 저장</td>
 <td><code>픽</code> → <code>리서치중</code> → <code>리서치완료</code></td>
 <td>실패 시 아침 세션이 웹검색으로 대체</td>
@@ -222,8 +223,8 @@
 <td>7</td>
 <td>정렬</td>
 <td>음성 + 대본 → 문장별 타이밍</td>
-<td>자동, <strong>위치는 §9 미정</strong></td>
-<td>Whisper로 정렬, 8초 초과 블록 확인. 세션이 아닌 결정론적 실행(원칙 2)</td>
+<td>자동(GitHub Actions)</td>
+<td>Whisper로 정렬, 8초 초과 블록 확인. 세션도 PC도 아닌 결정론적 실행(원칙 2, §9)</td>
 <td>—</td>
 <td>초과 블록 있으면 메일 알림</td>
 </tr>
@@ -285,8 +286,8 @@
 <td>14</td>
 <td>조립</td>
 <td>클립 + 나레이션 + 자막 → 초벌 영상 + 발행 재료</td>
-<td>자동, <strong>위치는 §9 미정</strong></td>
-<td><code>veo/</code>가 다 차면 ffmpeg로 이어붙임. 같은 자리에서 <code>final/epNN_publish.md</code>(제목 후보 3·설명·해시태그·고정 댓글) 생성 — 부모 글 UTM 링크는 §9 판단 후</td>
+<td>자동(GitHub Actions)</td>
+<td><code>veo/</code>가 다 차면 ffmpeg로 이어붙임. 같은 자리에서 <code>final/epNN_publish.md</code>(제목 후보 3·설명·해시태그·고정 댓글) 생성 — <strong>부모 글 UTM 링크는 넣지 않는다</strong>(§9 확정, 마야 의견 채택)</td>
 <td><code>영상중</code> → <code>조립</code></td>
 <td>—</td>
 </tr>
@@ -444,9 +445,9 @@
 </tr>
 <tr>
 <td>6</td>
-<td>정렬·조립 자동화(§9 판단 후) + 업스케일 자동 편입 + 성과 탭 반영 규칙(§5) 가동</td>
-<td>§9 판단, PC라면 절전 끄기</td>
-<td>성과가 후보 생성에 반영됨, 정렬·조립에 사람 개입 0</td>
+<td>정렬·조립 GitHub Actions 자동화(§9) + 업스케일 자동 편입 + 성과 탭 반영 규칙(§5) 가동</td>
+<td>준비 없음 — PC를 켤 필요가 없어짐</td>
+<td>성과가 후보 생성에 반영됨, 정렬·조립에 사람·PC 개입 0</td>
 </tr>
 </tbody>
 </table></div>
@@ -462,7 +463,7 @@
    단어를 채운다.</li>
 <li><strong>fal.ai 계정</strong>(계단 4에서). 가입 → API 키 복사 → 시트 메뉴 "API 키 등록"에.
    키는 채팅에 붙이지 않는다.</li>
-<li>§9 판단이 서면(정렬·조립 위치) 그에 맞는 준비(PC 절전 끄기 또는 없음)를 한다.</li>
+<li>정렬·조립은 GitHub Actions가 대신 하므로 PC 관련 준비는 없다(§9).</li>
 </ol>
 <h2>8. 편당 비용 (대략, 2026-09 시세)</h2>
 <div class="table-wrap"><table>
@@ -506,26 +507,32 @@
 </tr>
 </tbody>
 </table></div>
-<h2>9. 사장님 판단이 필요한 것 (v3에서 새로 정리, 임의로 정하지 않음)</h2>
-<p>리뷰 4개가 갈린 지점. 숏감독이 대신 고르지 않고 여기 옵션만 남긴다.</p>
+<h2>9. 사장님 확정 판단 (2026-09-03)</h2>
+<p>v3에서 옵션만 남겨뒀던 두 갈래 판단이 사장님 결정으로 확정됐다.</p>
 <ul>
-<li><strong>정렬(7번)·조립(14번)을 어디서 돌릴까.</strong></li>
-<li><strong>안 A (탐)</strong>: GitHub Actions. Apps Script가 상태 변화를 보고 <code>repository_dispatch</code>,
-    Actions가 Drive 파일을 서비스 계정으로 받아 처리. PC가 파이프라인에서 완전히
-    빠진다(매일 아침 <code>/remote-control</code> 고장 지점 제거). 조건: <code>shorts-lab</code>이 공개
-    저장소여야 무료 — 지금 비공개라면 분당 과금.</li>
-<li><strong>안 B (노트)</strong>: PC의 파이썬 스크립트(세션 아님, 윈도우 작업 스케줄러 10분마다
-    감시). <code>pipeline/</code>에 이미 정렬·조립 코드가 있어 감시 루프만 얹으면 됨. PC는
-    유지되지만 세션은 아니라 원칙 2는 지킨다.</li>
-<li>판단 기준: 매일 아침 PC를 켜는 습관을 없애고 싶은지, 아니면 이미 있는 PC 코드를
-    그대로 재사용하고 싶은지.</li>
-<li><strong>부모 글(홈페이지 옛글) UTM 링크를 14·16번에 지금 넣을까.</strong></li>
-<li><strong>찬성(시안)</strong>: 숏폼이 회사 KPI(홈페이지 방문)에 기여하는 유일한 통로. 지금
-    넣지 않으면 자동화가 잘될수록 회사와 무관한 채널만 커진다.</li>
-<li><strong>보류(마야)</strong>: "이 채널이 지금 회사와 어떤 관계로 보여도 되는지"는 마케팅
-    실행보다 위 단계의 결정이라, 그 판단이 서기 전엔 넣지 않는 게 안전.</li>
-<li>이 저장소는 공개라 판단 근거(수익화·채널 운영 방침)는 여기 적지 않는다.
-    비공개 저장소(<code>simplifier-cxo-db</code>)에서 판단하고 결과만 이 문서에 반영한다.</li>
+<li><strong>정렬(7번)·조립(14번) → GitHub Actions로, <code>shorts-lab</code>은 비공개 유지.</strong>
+  안 A(탐: Actions)를 채택했지만, v3에 적었던 "공개해야 무료"라는 전제가 틀렸다 —
+  바로잡는다. GitHub Actions는 <strong>비공개 저장소도 매달 무료 실행 시간을 준다</strong>
+  (개인 계정 기준 Linux 러너 2,000분/월). 정렬(Whisper, CPU)·조립(ffmpeg)은 편당
+  넉넉히 잡아도 각 5~10분, 합쳐서 15분 안팎으로 추정된다(탐 리뷰 근거). §2의
+  발행 목표(주 3편)로 계산해도 주 45분 = 월 195분 수준 — 무료 한도의 10%도 안
+  쓴다. <strong>그러니 <code>shorts-lab</code>을 공개로 바꿀 필요가 없다.</strong> Apps Script가 상태
+  변화를 보고 <code>repository_dispatch</code>로 Actions를 깨우고, Actions는 서비스 계정으로
+  Drive 파일을 받아 처리한다. 키·서비스 계정 정보는 GitHub Actions Secrets에
+  둔다(비공개 저장소라 이미 안전하지만, Secrets는 값 자체가 코드·로그에 노출되지
+  않는 구조라 공개 저장소였어도 키만은 안전했을 것 — 다만 프롬프트·검수 기준서
+  같은 노하우까지는 Secrets로 못 가리므로, 공개 안 하는 지금 선택이 더 낫다).
+  PC는 파이프라인에서 완전히 빠진다 — 매일 아침 <code>/remote-control</code> 절차 불필요.
+  <strong>신호가 오면 다시 본다</strong>: Actions 무료 한도(2,000분/월)에 근접하거나 러너
+  CPU로 정렬·조립이 각 10분을 넘기기 시작하면 그때 공개 전환 또는 다른 러너를
+  검토한다(§10에도 동일 신호).</li>
+<li><strong>부모 글(홈페이지 옛글) UTM 링크 → 지금 넣지 않는다(마야 의견 채택).</strong>
+  "이 채널이 지금 회사와 어떤 관계로 보여도 되는지"가 마케팅 실행보다 위 단계의
+  결정이라는 마야 판단을 그대로 받아들였다. 14·16번에 이 기능을 넣지 않는다
+  (§10 "지금 하지 않는다"에도 반영). 판단 근거(수익화·채널 운영 방침)는 이
+  저장소가 공개라 여기 적지 않는다 — 비공개 저장소 <code>simplifier-cxo-db</code>에 기록.
+  <strong>신호가 오면 다시 본다</strong>: 채널-회사 관계가 별도로 정리되면, 그때 14·16번에
+  UTM 링크를 다시 검토한다.</li>
 </ul>
 <h2>10. 지금 하지 말아야 할 것과 다음 단계 신호</h2>
 <p><strong>지금 하지 않는다</strong>: 로그인 있는 웹서비스, 별도 DB, 미니PC, 사람 확인 없는 완전
@@ -533,7 +540,9 @@
 이탈률 자동 수집 인프라(유튜브 Analytics API OAuth 등), 장르 가중치 회귀·클러스터링,
 발행 목표 미달 자동 재촉, 우편함에 OAuth 등 무거운 인증, 폴링 주기를 15분보다
 줄이기(Apps Script 트리거 하루 총량 제약), 딥리서치 결과를 Apps Script가 직접 대본
-까지 파싱(문서로 폴더에 두고 대본은 아침 세션이).</p>
+까지 파싱(문서로 폴더에 두고 대본은 아침 세션이), <strong><code>shorts-lab</code>을 공개로 전환</strong>
+(§9 확정 — 무료 한도 안에서 비공개로 충분), <strong>부모 글 UTM 링크</strong>(§9 확정 — 마야
+의견 채택, 채널-회사 관계 판단 전까지 보류).</p>
 <p><strong>신호가 오면 다시 판단한다</strong>:
 - 편집자 등 다른 사람이 접근해야 한다 → 웹서비스·권한
 - 에피소드 10편 초과, 채널 2개 초과 → 채널별 시트 분리, 인덱스
@@ -541,13 +550,13 @@
 - "체감 지속률" 3단 기입이 두 번 이상 연속 누락 → 최소한의 자동화(유튜브 Analytics
   API만) 검토
 - 검수 AI 일치율 90% 넘게 20장(반려 사유 일치 포함) → 이미지 확정에서 사람 빼기 검토
-- Actions 실행이 월 한도에 닿거나 러너 CPU로 합성이 10분 넘음(안 A 채택 시) → PC 또는
-  다른 러너 검토
+- Actions 실행이 월 한도(2,000분)에 근접하거나 러너 CPU로 정렬·조립이 각 10분 넘음
+  → 공개 전환 또는 다른 러너 검토(§9)
 - 같은 행을 두 번 처리한 사고 1회라도 발생 → compare-and-set·시도 횟수 열 즉시 점검
 - 트리거 실행 시간이 하루 60분 넘기 시작 → 폴링을 Cloudflare Worker cron으로 이전 검토
 - Apps Script 프로젝트 파일이 6개 넘음 → 로직을 시트 밖(shorts-lab)으로 이전 검토
-- UTM으로 잡힌 "숏폼 → 사이트" 세션이 월 100 넘음(§9 판단 후 켰다면) → 부모 글 착지
-  UX 손보기</p>
+- 채널-회사 관계가 정리돼 부모 글 UTM 링크를 켜게 되면(§9) → 그 뒤 UTM으로 잡힌
+  "숏폼 → 사이트" 세션이 월 100 넘음 → 부모 글 착지 UX 손보기</p>
 <h2>11. 남겨둔 것 (아직 정하지 않은 것, v2에서 이어짐)</h2>
 <ul>
 <li>영상 모델 — Kling·Wan·Veo 3씬 실험 후 결정.</li>
