@@ -13,6 +13,12 @@
           "views": 3275,
           "likes": 22,
           "comments": 3
+        },
+        {
+          "date": "2026-09-03",
+          "views": 3889,
+          "likes": 23,
+          "comments": 3
         }
       ],
       "title": "아파트 옥상 물탱크가 전부 사라진 이유",
@@ -47,6 +53,12 @@
           "views": 1648,
           "likes": 17,
           "comments": 2
+        },
+        {
+          "date": "2026-09-03",
+          "views": 2414,
+          "likes": 26,
+          "comments": 2
         }
       ],
       "title": "주민 차는 들어가는데, 택배차는 못 들어갑니다",
@@ -63,7 +75,7 @@
         {
           "author": "@이혜경-e6q",
           "text": "지하주차장 못들어가는 택배차들은 정문 앞에 쌓아놓고\n각자 찾아가라그래.",
-          "likes": 1,
+          "likes": 3,
           "published_at": "2026-09-02T06:34:38Z"
         }
       ]
@@ -83,10 +95,16 @@
         "subscribers": 14,
         "total_views": 2998,
         "video_count": 2
+      },
+      {
+        "date": "2026-09-03",
+        "subscribers": 15,
+        "total_views": 2998,
+        "video_count": 2
       }
     ],
     "title": "신기한 아파트사전",
     "id": "UCTbS2jSG1BvBl4c6EsVx7sA"
   },
-  "updated_at": "2026-09-02T14:40:09.344300Z"
+  "updated_at": "2026-09-02T22:48:45.693779Z"
 }
