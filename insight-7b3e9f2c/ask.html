@@ -103,7 +103,10 @@
   .suggestion-chip:hover{background:var(--line-soft); border-color:var(--line);}
 
   /* ---- 대화 스레드 ---- */
-  #thread{display:none; flex-direction:column; gap:28px; padding:24px 0 20px; flex:1; overflow-y:auto;}
+  /* 헤더 구분선과 첫 말풍선이 너무 붙어 답답해(잘린 듯) 보인다는 지적(2026-09-03) --
+     실제로 겹치거나 가려지는 버그는 아님(사장님 확인) -- 순수 여백 문제라
+     위쪽 여백을 24px→36px로 넓힌다. */
+  #thread{display:none; flex-direction:column; gap:28px; padding:36px 0 20px; flex:1; overflow-y:auto;}
   #thread.active{display:flex;}
   .row{display:flex; animation:row-in .25s ease;}
   .row.q{justify-content:flex-end;}
