@@ -55,7 +55,7 @@ create policy "anon insert only"
   );
 
 -- select/update/delete 정책은 일부러 만들지 않는다 → anon은 아무것도 못 읽는다.
--- service_role은 RLS를 우회하므로 정책이 필요 없다.
+-- service_role은 RLS를 우회하므로 "정책"은 필요 없다 — 단 아래 GRANT는 필요하다.
 
 -- RLS 정책은 "이미 있는 권한을 좁히는" 역할만 한다 — 권한 자체는 만들지
 -- 않는다. anon에게 이 테이블의 INSERT 권한을 명시적으로 주지 않으면 위
@@ -63,3 +63,19 @@ create policy "anon insert only"
 -- (2026-09-03 실측: GET 테스트에서 "GRANT SELECT ON public.questions TO
 -- anon" 힌트로 발견 — 여긴 SELECT를 안 주는 게 의도이므로 INSERT만 준다).
 grant insert on public.questions to anon;
+
+-- service_role(Actions)도 마찬가지다 — RLS를 우회한다는 것과 테이블 권한이
+-- 있다는 것은 별개. 이 프로젝트는 service_role에도 기본 권한이 없어서
+-- "Draft from questions" 워크플로가 42501로 5회 연속 실패했다(2026-09-04
+-- 실측, 힌트 "GRANT SELECT ON public.questions TO service_role").
+--   select: 대기 질문 읽기 (draft_from_questions.py)
+--   update: 상태 전이 대기→처리중→초안/반려 (draft_from_questions.py)
+--   insert: 사장님 픽 질문 넣기 (pick_questions.py, source='pick')
+-- delete는 어떤 스크립트도 안 쓰므로 주지 않는다.
+grant select, insert, update on public.questions to service_role;
+
+-- ✅ 체크리스트 — 이 저장소에 Supabase 테이블을 새로 만들 때(계단 5 뉴스레터 등):
+--   [ ] RLS 정책을 썼는가 → 그 정책이 걸리는 역할에 GRANT도 썼는가
+--   [ ] 그 테이블을 읽고 쓰는 스크립트마다 필요한 동사(select/insert/update)를
+--       역할별로 세었는가 (anon, service_role 각각)
+--   [ ] 대시보드 SQL Editor에서 실행 후, 실제 호출 1회로 42501이 안 나는지 확인했는가
