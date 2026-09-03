@@ -56,3 +56,10 @@ create policy "anon insert only"
 
 -- select/update/delete 정책은 일부러 만들지 않는다 → anon은 아무것도 못 읽는다.
 -- service_role은 RLS를 우회하므로 정책이 필요 없다.
+
+-- RLS 정책은 "이미 있는 권한을 좁히는" 역할만 한다 — 권한 자체는 만들지
+-- 않는다. anon에게 이 테이블의 INSERT 권한을 명시적으로 주지 않으면 위
+-- 정책이 있어도 "permission denied for table questions"(42501)로 막힌다
+-- (2026-09-03 실측: GET 테스트에서 "GRANT SELECT ON public.questions TO
+-- anon" 힌트로 발견 — 여긴 SELECT를 안 주는 게 의도이므로 INSERT만 준다).
+grant insert on public.questions to anon;
