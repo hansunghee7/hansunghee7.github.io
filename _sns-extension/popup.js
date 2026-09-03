@@ -53,7 +53,7 @@ function renderLog(log) {
   logList.innerHTML = log.map(function (e) {
     var label = PLATFORM_LABELS[e.platform] || e.platform;
     var mark = STATUS_MARK[e.status] || "?";
-    var noteHtml = e.status === "error" && e.note
+    var noteHtml = e.note
       ? '<span class="note">(' + escapeHtml(e.note) + ")</span>"
       : e.status === "miss"
       ? '<span class="note">(문구를 못 찾음)</span>'
@@ -62,7 +62,7 @@ function renderLog(log) {
       '<div class="log-item">' +
       '<span class="mark ' + e.status + '">' + mark + "</span>" +
       '<span class="plat">' + escapeHtml(label) + "</span>" +
-      '<span class="cnt">' + (e.count != null ? e.count.toLocaleString() + "명" : "") + "</span>" +
+      '<span class="cnt">' + (e.count != null ? e.count.toLocaleString() + (e.unit || "명") : "") + "</span>" +
       noteHtml +
       '<span class="time">' + formatTime(e.capturedAt) + "</span>" +
       "</div>"

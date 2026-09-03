@@ -174,6 +174,7 @@
     var anchors = Array.prototype.slice.call(document.querySelectorAll("a[href]"));
     var seen = {};
     var items = [];
+    var filteredCount = 0;
     anchors.forEach(function (a) {
       var href = a.getAttribute("href") || "";
       var m = hrefPattern.exec(href);
@@ -185,7 +186,10 @@
       // 조회수가 항상 0으로 잡히고 실제 발행 콘텐츠가 아니므로 건너뛴다.
       // class 뒤에 해시가 붙지만("...StyledLock3pt e4r3kg6") 첫 토큰
       // "private"는 안 바뀔 걸로 보고 그 토큰만 정확히 매칭한다(~=).
-      if (a.querySelector('svg[class~="private"]')) return;
+      // 걸러낸 개수는 팝업 로그에 남겨서(2026-09-03) 사장님이 굳이
+      // 개발자도구를 안 열어도 "몇 개 중 몇 개가 왜 빠졌는지" 눈으로
+      // 확인할 수 있게 한다.
+      if (a.querySelector('svg[class~="private"]')) { filteredCount++; return; }
       var text = (a.innerText || "").trim();
       var numMatch = new RegExp(NUMBER).exec(text);
       if (!numMatch) return;
@@ -215,6 +219,7 @@
         title: titleText,
       });
     });
+    items.filteredCount = filteredCount;
     return items;
   }
 
@@ -306,11 +311,12 @@
       if ((items.length && !missingThumb) || listAttempts >= LIST_MAX_ATTEMPTS) {
         clearInterval(listTimer);
         if (items.length) {
-          console.log("[SNS 인사이트]", rule.key, "콘텐츠 리스트", items.length, "개 찾음 -> 기록 전송");
+          console.log("[SNS 인사이트]", rule.key, "콘텐츠 리스트", items.length, "개 찾음 (비공개 제외", items.filteredCount || 0, "개) -> 기록 전송");
           chrome.runtime.sendMessage({
             type: "CONTENT_LIST_CAPTURE",
             platform: rule.key,
             items: items,
+            filteredCount: items.filteredCount || 0,
             capturedAt: new Date().toISOString(),
           });
         } else {
