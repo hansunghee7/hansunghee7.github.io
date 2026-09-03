@@ -1,0 +1,44 @@
+name: Sync ink status
+
+# 잉크 초안 PR(log_assets/markdown/*.md, question_id 프런트매터 있음)이
+# 열리거나 닫힐 때 접수함(Supabase questions) 상태를 옮긴다. LLM 호출 없음
+# -- 초안 작성(Max 세션)과 접수함 상태 기록을 분리한다.
+# 정본 설계: docs/질문하기_파이프라인.md
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    paths:
+      - "log_assets/markdown/**"
+
+permissions:
+  contents: read
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install supabase
+      - name: Determine changed files
+        run: |
+          git fetch --depth=1 origin ${{ github.event.pull_request.base.sha }}
+          git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} > /tmp/changed.txt
+          cat /tmp/changed.txt
+      - name: Sync
+        env:
+          PR_ACTION: ${{ github.event.action }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_MERGED: ${{ github.event.pull_request.merged }}
+          PR_HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          PYTHONIOENCODING: utf-8
+        run: |
+          export CHANGED_FILES="$(cat /tmp/changed.txt)"
+          python scripts/sync_ink_status.py
