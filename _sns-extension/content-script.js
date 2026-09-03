@@ -35,17 +35,19 @@
     // (2026-09-01). 클립이 로그인 세션을 요구하는 비공개 API라 서버
     // 자동화로 못 읽는다는 걸 확인한 것과 같은 이유로, 나머지 플랫폼도
     // 전부 "실제 로그인한 브라우저로 화면에 보이는 값 읽기" 방식을 쓴다.
-    // 2026-09-02: 클립이 2개로 늘고 실제 조회수 반응(374·269)이 보이기
-    // 시작해, 미뤄뒀던 개별 조회수도 시도한다. listHrefPattern은
-    // 인스타/틱톡과 같은 방식(카드 href에서 id 추출)인데, 클립 카드가
-    // 진짜 href를 쓰는지 href="#"인 SPA 클릭 핸들러인지 이 코드를 쓰는
-    // 시점엔 로그인해서 직접 확인하지 못했다 -- 안 잡히면(팝업 "최근
-    // 수집 기록"에 실패로 남거나 콘솔에 "콘텐츠 리스트 못 찾음") 데이터가
-    // 깨지는 게 아니라 그냥 조용히 0건이니, 그때 클립 카드 하나를
-    // 개발자도구로 열어 실제 href/속성이 어떻게 생겼는지 알려주면 된다.
+    // 2026-09-02~03: 클립이 2개로 늘고 실제 조회수 반응이 보이기 시작해
+    // 개별 조회수도 시도했다. 처음엔 인스타/틱톡과 같은 href 기반
+    // (listHrefPattern)으로 짰는데 실측(2026-09-03, 사장님이 개발자도구로
+    // 카드 하나를 직접 열어 확인)해보니 클립 카드는 `<a href>`가 아니라
+    // `<button aria-label="캡션">`이고, href 자체가 없어 0건으로 조용히
+    // 실패했다. 대신 카드 안에 조회수가 `<span>조회수</span><span>404</span>`
+    // 형태로 라벨+숫자 형제 span으로 정확히 있어서, 그 라벨 텍스트로
+    // 찾는 labelCapture 방식으로 바꿨다(collectLabeledCards). 진짜 링크가
+    // 없어 완벽한 고유 id가 없으므로 캡션(aria-label) 해시를 id로 쓴다 --
+    // 같은 캡션이면 매번 같은 id가 나와 upsert가 정상 동작한다.
     { test: /clip\.naver\.com/, key: "naver_clip", hrefContains: "simkihanapt", multi: true,
       fields: { followers: ["팔로워"], following: ["팔로잉"], content_count: ["콘텐츠"] },
-      listHrefPattern: /\/vod\/(?:play\/)?([\w-]+)/ },
+      labelCapture: "조회수" },
     // 인스타 릴스·틱톡은 프로필/그리드 화면에 게시물별 조회수가 진짜
     // 링크(href)와 함께 텍스트로 그대로 보여서(2026-09-01, 사장님이
     // 릴스 화면 캡처로 확인해주심), 클립과 달리 개별 성과도 같이
@@ -210,6 +212,52 @@
     return items;
   }
 
+  // 진짜 링크가 없는 카드(네이버 클립)에서 쓰는 안정적인 id 생성기 --
+  // 캡션 문자열이 같으면 항상 같은 값이 나오는 짧은 해시(djb2)다.
+  function hashString(s) {
+    var h = 5381;
+    for (var i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) | 0;
+    return (h >>> 0).toString(36);
+  }
+
+  // href 대신 "라벨 span + 숫자 span" 형제 구조로 콘텐츠 카드를 찾는다
+  // (네이버 클립 전용, 2026-09-03). 라벨 텍스트를 가진 span을 전부 찾고,
+  // 바로 다음 형제에서 숫자를 읽는다. 카드를 식별할 href가 없어 카드를
+  // 감싼 요소의 aria-label(캡션)을 대신 id 원본으로 쓴다.
+  function collectLabeledCards(labelText) {
+    var labelSpans = Array.prototype.slice.call(document.querySelectorAll("span")).filter(function (s) {
+      return (s.textContent || "").trim() === labelText;
+    });
+    var seen = {};
+    var items = [];
+    labelSpans.forEach(function (span) {
+      var numEl = span.nextElementSibling;
+      var text = numEl ? (numEl.textContent || "").trim() : "";
+      var numMatch = new RegExp(NUMBER).exec(text);
+      if (!numMatch) return;
+      var views = parseAbbrevNumber(numMatch[1], numMatch[2]);
+      if (views == null) return;
+      var card = span.closest("button[aria-label]") || span.closest("[aria-label]");
+      var caption = card ? (card.getAttribute("aria-label") || "").trim() : "";
+      if (!caption) return;
+      var id = hashString(caption);
+      if (seen[id]) return;
+      seen[id] = true;
+      var thumb = card ? extractImgUrl(card) : null;
+      if (!thumb && card && document.hidden) {
+        try { card.scrollIntoView({ block: "center" }); } catch (e) { /* ignore */ }
+      }
+      items.push({
+        id: id,
+        views: views,
+        url: location.href,
+        thumbnail: thumb ? thumb.url : null,
+        title: caption,
+      });
+    });
+    return items;
+  }
+
   if (rule.multi) {
     var fieldNames = Object.keys(rule.fields);
     var multiAttempts = 0;
@@ -266,8 +314,33 @@
     }, 1000);
   }
 
-  if (rule.multi || rule.listHrefPattern) {
-    // 둘 다 채널 콘텐츠 전용 흐름이라, 아래 회사 계정용 단일값 추출로는
+  if (rule.labelCapture) {
+    var labelAttempts = 0;
+    var LABEL_MAX_ATTEMPTS = 15;
+
+    var labelTimer = setInterval(function () {
+      labelAttempts++;
+      var items = collectLabeledCards(rule.labelCapture);
+      var missingThumb = items.length && items.some(function (it) { return !it.thumbnail; });
+      if ((items.length && !missingThumb) || labelAttempts >= LABEL_MAX_ATTEMPTS) {
+        clearInterval(labelTimer);
+        if (items.length) {
+          console.log("[SNS 인사이트]", rule.key, "콘텐츠 리스트", items.length, "개 찾음(라벨 방식) -> 기록 전송");
+          chrome.runtime.sendMessage({
+            type: "CONTENT_LIST_CAPTURE",
+            platform: rule.key,
+            items: items,
+            capturedAt: new Date().toISOString(),
+          });
+        } else {
+          console.log("[SNS 인사이트]", rule.key, "콘텐츠 리스트 못 찾음 -- 라벨 방식 (" + LABEL_MAX_ATTEMPTS + "초 시도)");
+        }
+      }
+    }, 1000);
+  }
+
+  if (rule.multi || rule.listHrefPattern || rule.labelCapture) {
+    // 전부 채널 콘텐츠 전용 흐름이라, 아래 회사 계정용 단일값 추출로는
     // 안 내려간다.
     return;
   }
