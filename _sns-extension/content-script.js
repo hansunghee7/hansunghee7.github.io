@@ -180,6 +180,12 @@
       if (!m) return;
       var id = m[1];
       if (seen[id]) return;
+      // 비공개/제한 공개 영상은 자물쇠 아이콘(<svg class="private ...">)이
+      // 같이 뜬다(2026-09-03 실측, 틱톡 -- 사장님이 실제 마크업 확인해주심).
+      // 조회수가 항상 0으로 잡히고 실제 발행 콘텐츠가 아니므로 건너뛴다.
+      // class 뒤에 해시가 붙지만("...StyledLock3pt e4r3kg6") 첫 토큰
+      // "private"는 안 바뀔 걸로 보고 그 토큰만 정확히 매칭한다(~=).
+      if (a.querySelector('svg[class~="private"]')) return;
       var text = (a.innerText || "").trim();
       var numMatch = new RegExp(NUMBER).exec(text);
       if (!numMatch) return;
