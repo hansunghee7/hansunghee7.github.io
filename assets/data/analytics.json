@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-02T21:59:55.019261+00:00",
+  "updated_at": "2026-09-03T05:47:01.839501+00:00",
   "range": "last_30_days",
   "totals": {
     "sessions": 129,
     "activeUsers": 75,
-    "newUsers": 79,
+    "newUsers": 83,
     "returningUsers": 0
   },
   "daily": [
@@ -68,7 +68,7 @@
       "date": "2026-09-03",
       "sessions": 1,
       "activeUsers": 1,
-      "newUsers": 5,
+      "newUsers": 9,
       "returningUsers": 0
     }
   ],
@@ -83,9 +83,9 @@
     }
   ],
   "landing_types": {
-    "home": 82,
+    "home": 80,
     "log_home": 7,
-    "individual_post": 19,
+    "individual_post": 18,
     "other": 25
   },
   "top_sources": [
@@ -106,12 +106,12 @@
       "sessions": 6
     },
     {
-      "source": "(not set)",
-      "sessions": 5
-    },
-    {
       "source": "linkedin.com",
       "sessions": 3
+    },
+    {
+      "source": "(not set)",
+      "sessions": 2
     },
     {
       "source": "(data not available)",
@@ -130,11 +130,67 @@
       "sessions": 1
     }
   ],
+  "utm_campaigns": [
+    {
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 97
+    },
+    {
+      "source": "searchadvisor.naver.com",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "sessions": 12
+    },
+    {
+      "source": "l.facebook.com",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "sessions": 7
+    },
+    {
+      "source": "google",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "sessions": 6
+    },
+    {
+      "source": "linkedin.com",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "sessions": 3
+    },
+    {
+      "source": "(data not available)",
+      "medium": "(data not available)",
+      "campaign": "(cross-network)",
+      "sessions": 1
+    },
+    {
+      "source": "bing",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "sessions": 1
+    },
+    {
+      "source": "brunch.co.kr",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "sessions": 1
+    },
+    {
+      "source": "naver",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "sessions": 1
+    }
+  ],
   "ai_referrals": [],
   "engagement_events": {
     "section_view_proven": 275,
     "section_view_voices": 199,
-    "section_view_book_class": 120,
+    "section_view_book_class": 121,
     "section_view_faq": 110,
     "faq_open": 18,
     "read_complete": 186
@@ -185,11 +241,6 @@
     {
       "path": "/log_assets/markdown/005_할루시네이션 사회.html",
       "title": "/log_assets/markdown/005_할루시네이션 사회.html",
-      "sessions": 1
-    },
-    {
-      "path": "/log_assets/markdown/008_두번째 책 'UX의 언어들'을 출간했습니다.html",
-      "title": "/log_assets/markdown/008_두번째 책 'UX의 언어들'을 출간했습니다.html",
       "sessions": 1
     },
     {
