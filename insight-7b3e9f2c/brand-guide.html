@@ -71,6 +71,14 @@
 
   .incident{ border-left:3px solid var(--bad); background:#fdf4f1; padding:12px 14px; border-radius:0 8px 8px 0; margin-bottom:12px; font-size:13.5px; line-height:1.7; }
   .incident b{ color:var(--bad); }
+
+  .doc-nav{display:flex; gap:8px; flex-wrap:wrap; margin:0 0 28px;}
+  .doc-nav a{
+    font-size:12.5px; font-weight:600; color:var(--dim); text-decoration:none;
+    padding:6px 12px; border:1px solid var(--line); border-radius:999px;
+  }
+  .doc-nav a:hover{background:var(--line-soft);}
+  .doc-nav a.current{background:var(--ink); color:#fff; border-color:var(--ink);}
 </style>
 </head>
 <body class="has-shell-nav">
@@ -81,6 +89,8 @@
     <h1>브랜드 가이드<button type="button" class="info-dot" id="titleInfo" aria-label="설명 보기">ⓘ<span class="info-text">슬로건·카피·CTA를 새로 만들 때마다 매번 처음부터 톤을 정하지 않도록, 이미 승인된 브랜드 언어와 로고·사진 에셋을 한곳에 모아둔 참조 문서입니다. 색상·타이포·간격 같은 화면 규칙의 정본은 여전히 <a href="/insight-7b3e9f2c/style-guide.html">통합 UX 가이드</a>이고, 이 페이지는 "무슨 말을 어떤 어휘로 할지"와 "어떤 에셋 파일을 쓸지"만 담당합니다.</span></button></h1>
     <span class="meta-text">2026-08-30 신설 · CMO 마야 스레드</span>
   </header>
+
+  <nav class="doc-nav"><a href="/insight-7b3e9f2c/brand-guide.html" class="current">브랜드 가이드 (서비스)</a><a href="/insight-7b3e9f2c/personal-brand-guide.html">퍼스널 브랜딩 가이드</a><a href="/insight-7b3e9f2c/sns-writing-guide.html">SNS 라이팅 가이드</a></nav>
 
   <article class="doc">
     <p class="lede">새 슬로건 문구나 CTA 카피를 지을 때마다 매번 새로 지어내면 톤이 흔들립니다. 이미 승인된 브랜드 언어(홈 히어로 문구)와 실제 존재하는 로고·사진 에셋의 파일 경로·사용 조건을 먼저 확인하고, 그 안에서 재조합하는 것을 기본으로 합니다. 이 문서는 처음부터 완결된 규칙집으로 쓰려고 만든 게 아니라, 실제 카피/에셋 결정이 나올 때마다 늘려가는 문서입니다(통합 UX 가이드·시스템 구조가 그렇게 자란 것과 같은 방식).</p>
@@ -165,6 +175,7 @@
       <li><b>profile-4.png(와이드 배너용) 실제 적용 여부</b> — About 히어로나 OG 소셜 공유 이미지로 쓸지 아직 결정 전.</li>
       <li><b>통합 UX 가이드의 로고 설명이 한 군데 낡음</b> — <code>style-guide.html</code> 1.5절이 "logo_black.png는 라이브 참조가 없다"고 적혀 있는데, 지금은 모닝 브리핑 메일 템플릿에서 실사용 중입니다(2026-08-30 #15). 이 페이지 소유가 아니라 직접 고치지 않고 기록만 남깁니다 — ux-lead/site-engineering 스레드가 다음에 그 문서를 만질 때 참고.</li>
       <li><b>파트너/고객사 로고, 후기, 강연 사진 등은 이 문서에 안 담았습니다</b> — 그건 브랜드 정체성 에셋이 아니라 홈페이지 특정 섹션(로고 그리드·후기·강연 갤러리) 전용 콘텐츠 이미지라 카탈로그 성격이 다릅니다. 필요해지면 별도 절로 추가.</li>
+      <li><b>포지셔닝·타깃·콘텐츠 필러는 이 페이지가 아니라 <code>docs/브랜딩_가이드.md</code>에 있습니다</b>(2026-09-03, 별도 마야 스레드) — 이 페이지는 "무슨 어휘·에셋을 쓸지"만 다루고, "누구에게 어떤 각도로 말할지"는 그 문서 소관으로 나눴습니다. 아직 이 페이지의 렌더링용 HTML은 없음 — 필요해지면 만들 것.</li>
     </ul>
   </article>
 </div>
