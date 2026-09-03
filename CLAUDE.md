@@ -114,6 +114,7 @@ S2(매출) 진입 — 그때 모델 등급 정책과 사용량 리포트 자동�
 | 창업자 질문 27문항 | `simplifier-cxo-db/questions/` · [렌더링](https://claude.ai/code/artifact/4acdbda1-8229-47c6-a309-a1e27c934480) | 2026-08-30 |
 | 단계 모델 (S0~S3) | `simplifier-cxo-db/standards/stage-model.md` | 2026-08-30 |
 | 표준 문서 골격 | `simplifier-cxo-db/standards/_TEMPLATE.md` | 2026-08-30 |
+| 잉크 프로젝트(질문→글→뉴스레터 자동화, 탐 담당) 설계 | [docs/질문하기_파이프라인.md](docs/질문하기_파이프라인.md) | 2026-09-03 |
 
 > 2026-08-30 사고: 승인된 메일 디자인·로고가 아티팩트에만 있다가 세션 기억이
 > 잘리며 유실, 사장님 기억으로 복원했습니다. 사람 기억에 의존하지 않는 것이
