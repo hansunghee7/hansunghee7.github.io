@@ -41,8 +41,22 @@
      만들지 않기로 함 (2026-09-03). 스타일은 왼쪽 메뉴(검은 알약 강조)와 달리 글자만:
      테두리·배경 없음, 현재 대화는 굵게, ✕는 올렸을 때만. */
   .rail{grid-column:1; grid-row:2; display:flex; flex-direction:column; min-height:0; padding:22px 16px 18px 0; border-right:1px solid var(--line-soft);}
-  .rail-new{background:none; border:none; color:var(--ink); font-family:inherit; font-size:13px; cursor:pointer; padding:0; text-align:left; margin-bottom:20px;}
+  .rail-head{display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:20px;}
+  .rail-new{background:none; border:none; color:var(--ink); font-family:inherit; font-size:13px; cursor:pointer; padding:0; text-align:left;}
   .rail-new:hover{text-decoration:underline; text-underline-offset:3px;}
+  /* 접기/펼치기 -- 글자만 있는 목록 칸에 맞춰 버튼도 아이콘 글자 하나. 데스크톱은 ‹/›,
+     모바일 서랍에서는 ✕ (CSS content로 바꿔 JS가 글자를 몰라도 되게). */
+  .rail-toggle{background:none; border:none; color:var(--muted); cursor:pointer; font-size:18px; line-height:1; padding:2px 6px; border-radius:6px; flex-shrink:0;}
+  .rail-toggle:hover{color:var(--ink); background:var(--line-soft);}
+  .rail-toggle .glyph::before{content:"‹";}
+  @media (min-width:761px){
+    /* 접힌 상태: 가는 띠에 › 버튼만 남고 대화 칸이 그만큼 넓어진다. 상태는 localStorage. */
+    .wrap.rail-collapsed{grid-template-columns:28px minmax(0,1fr); column-gap:28px;}
+    .wrap.rail-collapsed .rail{padding-right:0; border-right-color:transparent;}
+    .wrap.rail-collapsed .rail > :not(.rail-head), .wrap.rail-collapsed .rail-new{display:none;}
+    .wrap.rail-collapsed .rail-toggle{margin-left:-6px;}
+    .wrap.rail-collapsed .rail-toggle .glyph::before{content:"›";}
+  }
   .rail-label{display:flex; align-items:center; gap:4px; font-size:11px; letter-spacing:.06em; color:var(--muted); margin-bottom:6px;}
   .rail-list{display:flex; flex-direction:column; gap:1px; flex:1; min-height:0; overflow-y:auto;}
   .rail-item{display:flex; align-items:center; gap:4px; min-width:0;}
@@ -57,16 +71,19 @@
   .rail-clear:hover{color:var(--bad);}
 
   /* 모바일: 목록 칸은 숨기고 헤더의 "이전 대화" 버튼으로 펼친다 */
+  /* 모바일: 스튜디오 메뉴처럼 왼쪽에서 밀려 나오는 서랍. 상단 바(52px) 아래, 메뉴(z 200)보다 아래. */
   @media (max-width:760px){
     .wrap{display:flex; flex-direction:column;}
     .head-actions{display:flex;}
     header{flex-wrap:wrap;}
-    .rail{display:none; border-right:none; border-bottom:1px solid var(--line-soft); padding:14px 0 16px;}
-    .rail.open{display:flex;}
-    .rail-new{display:none;}
-    .rail-list{max-height:220px;}
+    .rail{position:fixed; top:52px; left:0; bottom:0; width:min(280px, 84vw); background:var(--bg); border-right:1px solid var(--line-soft); box-shadow:12px 0 32px rgba(0,0,0,0.08); padding:18px 16px 20px; z-index:150; transform:translateX(-102%); transition:transform .2s ease; display:flex;}
+    .rail.open{transform:none;}
+    .rail-toggle .glyph::before{content:"✕";}
     .rail-del{opacity:1;}
+    .rail-backdrop{position:fixed; inset:52px 0 0 0; background:rgba(0,0,0,0.22); z-index:140; opacity:0; pointer-events:none; transition:opacity .2s;}
+    .rail-backdrop.show{opacity:1; pointer-events:auto;}
   }
+  @media (min-width:761px){ .rail-backdrop{display:none;} }
 
   .setup-note{background:#f7f6f2; border-radius:10px; padding:16px 18px; font-size:12.5px; color:var(--dim); line-height:1.7; margin:20px 0;}
 
@@ -162,8 +179,12 @@
     </div>
   </header>
 
+  <div class="rail-backdrop" id="railBackdrop"></div>
   <aside class="rail" id="rail">
-    <button type="button" class="rail-new" id="railNewBtn">+ 새 대화</button>
+    <div class="rail-head">
+      <button type="button" class="rail-new" id="railNewBtn">+ 새 대화</button>
+      <button type="button" class="rail-toggle" id="railToggle" aria-label="이전 대화 접기/펼치기" aria-expanded="true"><span class="glyph"></span></button>
+    </div>
     <div class="rail-label">
       <span>이전 대화</span>
       <button type="button" class="info-dot" aria-label="설명 보기">ⓘ<span class="info-text">이 브라우저에만 저장됩니다. 다른 기기나 브라우저에서는 보이지 않고, 브라우저 데이터를 지우면 함께 사라집니다. 최근 30개까지 남깁니다.</span></button>
@@ -255,6 +276,11 @@
   const historyBtn = document.getElementById("historyBtn");
   const rail = document.getElementById("rail");
   const railNewBtn = document.getElementById("railNewBtn");
+  const railToggle = document.getElementById("railToggle");
+  const railBackdrop = document.getElementById("railBackdrop");
+  const wrap = document.querySelector(".wrap");
+  const RAIL_KEY = "simplifier-ask.rail.v1";
+  const mobileQuery = window.matchMedia("(max-width: 760px)");
   const historyList = document.getElementById("historyList");
   const historyClearBtn = document.getElementById("historyClearBtn");
 
@@ -377,20 +403,41 @@
     input.focus();
   }
 
-  // 모바일에서만 의미 있는 토글 -- 데스크톱은 CSS가 항상 보여준다
+  // 모바일 서랍 열기/닫기 -- 데스크톱에서는 의미 없음(접기는 아래 setRailCollapsed)
   function setHistoryOpen(open) {
     rail.classList.toggle("open", open);
+    railBackdrop.classList.toggle("show", open);
     historyBtn.setAttribute("aria-pressed", open ? "true" : "false");
-    // 목록이 숨겨진 채 로드되면 ⓘ 말풍선 위치 계산(studio.js positionAllInfoDots)이
-    // 폭 0으로 끝나 있어서, 펼친 뒤 말풍선이 오른쪽으로 넘친다(375px에서 408px).
-    // 목록을 다시 그리면 DOM 변경 감시가 위치 계산을 다시 돌린다.
+    // 서랍이 화면 밖에 있을 때는 ⓘ 말풍선 위치 계산(studio.js positionAllInfoDots)이
+    // 엉뚱한 좌표로 끝나 있어서, 연 뒤 목록을 다시 그려 DOM 변경 감시가 다시 계산하게 한다.
     if (open) renderHistory();
+  }
+
+  // 데스크톱 접기 -- 가는 띠에 › 만 남기고 대화 칸을 넓힌다. 브라우저가 기억.
+  function setRailCollapsed(collapsed) {
+    wrap.classList.toggle("rail-collapsed", collapsed);
+    railToggle.setAttribute("aria-expanded", collapsed ? "false" : "true");
+    try {
+      localStorage.setItem(RAIL_KEY, collapsed ? "closed" : "open");
+    } catch (e) {
+      /* 저장 불가 환경 */
+    }
   }
 
   historyBtn.addEventListener("click", () => {
     setHistoryOpen(!rail.classList.contains("open"));
   });
+  railBackdrop.addEventListener("click", () => setHistoryOpen(false));
+  railToggle.addEventListener("click", () => {
+    if (mobileQuery.matches) setHistoryOpen(false);
+    else setRailCollapsed(!wrap.classList.contains("rail-collapsed"));
+  });
   railNewBtn.addEventListener("click", resetToEmpty);
+  try {
+    if (localStorage.getItem(RAIL_KEY) === "closed") setRailCollapsed(true);
+  } catch (e) {
+    /* 저장 불가 환경 */
+  }
   renderHistory();
   historyClearBtn.addEventListener("click", () => {
     if (!confirm("저장된 대화를 모두 지울까요? 되돌릴 수 없습니다.")) return;
