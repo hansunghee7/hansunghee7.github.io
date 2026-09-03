@@ -164,10 +164,32 @@
   let conversationHistory = [];
   const MAX_HISTORY_ENTRIES = 10;
 
-  // Voyage AI 무료 티어가 분당 3회(요청당 20초 간격)로 막혀 있다 -- 결제
-  // 수단을 등록하지 않기로 했으므로, 대신 다음 질문 전송 버튼을 그만큼
-  // 붙잡아둬서 애초에 한도에 안 부딪히게 한다 (2026-08-31).
-  const MIN_REQUEST_INTERVAL_MS = 21000;
+  // Voyage AI 무료 티어가 분당 3회로 막혀 있다 -- 결제 수단을 등록하지 않기로
+  // 했으므로(2026-08-31, 2026-09-03 재확인), 전송 버튼을 붙잡아둬서 애초에
+  // 한도에 안 부딪히게 한다. 처음엔 "매 요청 21초 간격"으로 했는데, 거절
+  // 답변처럼 1초 만에 끝나는 질문 뒤에 19초를 멍하니 기다리게 돼서 "뒤에서
+  // 뭔가 도는 것 같다"는 오해를 낳았다(2026-09-03). 한도의 실제 모양대로
+  // "최근 60초 안에 3번"으로 세면 연달아 3번까지는 바로 물을 수 있고,
+  // 4번째만 기다린다. 방문자가 겹쳐 그래도 넘치면 워커가 429를 안내 문구로
+  // 바꿔 보내고 재시도 버튼이 뜬다.
+  const RATE_LIMIT_COUNT = 3;
+  const RATE_LIMIT_WINDOW_MS = 60000;
+  const RATE_LIMIT_MARGIN_MS = 1000;
+  const requestTimes = [];
+
+  function recordRequest() {
+    requestTimes.push(Date.now());
+  }
+
+  // 지금 바로 한 번 더 보낼 수 있으면 0, 아니면 기다려야 하는 ms.
+  function msUntilNextSlot() {
+    const now = Date.now();
+    while (requestTimes.length && now - requestTimes[0] >= RATE_LIMIT_WINDOW_MS) {
+      requestTimes.shift();
+    }
+    if (requestTimes.length < RATE_LIMIT_COUNT) return 0;
+    return requestTimes[0] + RATE_LIMIT_WINDOW_MS + RATE_LIMIT_MARGIN_MS - now;
+  }
 
   const thread = document.getElementById("thread");
   const emptyState = document.getElementById("emptyState");
@@ -483,8 +505,8 @@
 
   let cooldownTimer = null;
 
-  // 질문이 끝난 시점(requestStartedAt)부터 21초가 안 지났으면 그만큼
-  // 더 버튼을 막아두고, 몇 초 남았는지 보여준다.
+  // 최근 60초 안에 이미 3번 물었으면 가장 오래된 것이 60초를 넘길 때까지
+  // 버튼을 막아두고, 몇 초 남았는지 보여준다.
   function applyCooldown(remainingMs) {
     if (remainingMs <= 0) {
       onCooldownEnd();
@@ -492,7 +514,7 @@
     }
     let remaining = Math.ceil(remainingMs / 1000);
     cooldownNote.style.display = "block";
-    cooldownNote.textContent = `다음 질문까지 ${remaining}초 (Voyage AI 무료 요청 한도 보호)`;
+    cooldownNote.textContent = `다음 질문까지 ${remaining}초 (1분에 3번까지 받을 수 있어요)`;
     if (cooldownTimer) clearInterval(cooldownTimer);
     cooldownTimer = setInterval(() => {
       remaining -= 1;
@@ -502,7 +524,7 @@
         cooldownNote.style.display = "none";
         onCooldownEnd();
       } else {
-        cooldownNote.textContent = `다음 질문까지 ${remaining}초 (Voyage AI 무료 요청 한도 보호)`;
+        cooldownNote.textContent = `다음 질문까지 ${remaining}초 (1분에 3번까지 받을 수 있어요)`;
       }
     }, 1000);
   }
@@ -515,7 +537,7 @@
   }
 
   async function fetchAnswer(question, answerEl) {
-    const requestStartedAt = Date.now();
+    recordRequest();
     busy = true;
     syncSendBtn();
     answerEl.className = "answer";
@@ -606,8 +628,7 @@
       renderErrorWithRetry(answerEl, "연결 오류 — " + err.message, retry);
       setupNote.style.display = "block";
     } finally {
-      const elapsed = Date.now() - requestStartedAt;
-      applyCooldown(MIN_REQUEST_INTERVAL_MS - elapsed);
+      applyCooldown(msUntilNextSlot());
     }
   }
 
