@@ -28,6 +28,28 @@
   .sub{font-size:12.5px; color:var(--muted); line-height:1.6;}
   .new-chat{background:none; border:1px solid var(--line); color:var(--dim); border-radius:999px; padding:8px 16px; font-size:12.5px; font-family:inherit; cursor:pointer; white-space:nowrap; transition:background-color .15s, border-color .15s;}
   .new-chat:hover{background:var(--ink); border-color:var(--ink); color:#fff;}
+  .head-actions{display:flex; gap:8px; flex-shrink:0;}
+  .new-chat[aria-pressed="true"]{background:var(--ink); border-color:var(--ink); color:#fff;}
+  @media (max-width:480px){ header{flex-wrap:wrap;} }
+
+  /* 이전 대화 목록 -- 이 브라우저(localStorage)에만 저장된다. 서버 기록(qa_feedback)과는
+     별개이고, 로그인이 없어 "누구의 기록"이 성립하지 않으므로 서버 쪽 개인 기록은
+     만들지 않기로 함 (2026-09-03). */
+  .history{border-bottom:1px solid var(--line-soft); padding:14px 0 16px;}
+  .history-head{display:flex; align-items:center; gap:6px; font-size:12.5px; color:var(--muted); margin-bottom:8px;}
+  .history-head .spacer{flex:1;}
+  .history-clear{background:none; border:none; color:var(--muted); font-size:12px; font-family:inherit; cursor:pointer; padding:2px 4px; text-decoration:underline; text-underline-offset:2px;}
+  .history-clear:hover{color:var(--bad);}
+  .history-list{display:flex; flex-direction:column; gap:4px; max-height:260px; overflow-y:auto;}
+  .history-item{display:flex; align-items:center; gap:10px; border:1px solid var(--line-soft); border-radius:10px; padding:8px 8px 8px 12px; background:#fff;}
+  .history-item.current{border-color:var(--ink);}
+  .history-open{flex:1; min-width:0; background:none; border:none; text-align:left; font-family:inherit; cursor:pointer; padding:0; display:flex; align-items:baseline; gap:10px;}
+  .history-open .title{flex:1; min-width:0; font-size:13.5px; color:var(--ink); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .history-open .when{font-size:11.5px; color:var(--muted); flex-shrink:0;}
+  .history-open:hover .title{text-decoration:underline; text-underline-offset:2px;}
+  .history-del{background:none; border:none; color:var(--muted); font-size:14px; line-height:1; cursor:pointer; padding:4px 6px; border-radius:6px; flex-shrink:0;}
+  .history-del:hover{background:var(--line-soft); color:var(--bad);}
+  .history-empty{font-size:12.5px; color:var(--muted); padding:6px 0;}
 
   .setup-note{background:#f7f6f2; border-radius:10px; padding:16px 18px; font-size:12.5px; color:var(--dim); line-height:1.7; margin:20px 0;}
 
@@ -117,8 +139,21 @@
       <h1>Simplifier와의 대화</h1>
       <div class="sub">그동안 쓰신 글과 책 내용을 근거로만 답변하는 테스트 에이전트</div>
     </div>
-    <button type="button" class="new-chat" id="newChatBtn">새 대화</button>
+    <div class="head-actions">
+      <button type="button" class="new-chat" id="historyBtn" aria-pressed="false">이전 대화</button>
+      <button type="button" class="new-chat" id="newChatBtn">새 대화</button>
+    </div>
   </header>
+
+  <div class="history" id="historyPanel" style="display:none">
+    <div class="history-head">
+      <span>이전 대화</span>
+      <button type="button" class="info-dot" aria-label="설명 보기">ⓘ<span class="info-text">이 브라우저에만 저장됩니다. 다른 기기나 브라우저에서는 보이지 않고, 브라우저 데이터를 지우면 함께 사라집니다. 최근 30개까지 남깁니다.</span></button>
+      <span class="spacer"></span>
+      <button type="button" class="history-clear" id="historyClearBtn">모두 지우기</button>
+    </div>
+    <div class="history-list" id="historyList"></div>
+  </div>
 
   <div class="setup-note" id="setupNote" style="display:none">
     아직 연결 설정이 안 됐습니다. 이 파일 맨 아래 <code>WORKER_URL</code> 값을 실제 Cloudflare Worker 주소로 바꿔주세요.
@@ -198,6 +233,143 @@
   const btn = document.getElementById("askBtn");
   const setupNote = document.getElementById("setupNote");
   const newChatBtn = document.getElementById("newChatBtn");
+  const historyBtn = document.getElementById("historyBtn");
+  const historyPanel = document.getElementById("historyPanel");
+  const historyList = document.getElementById("historyList");
+  const historyClearBtn = document.getElementById("historyClearBtn");
+
+  // ---- 이전 대화 (localStorage) ----
+  // 서버는 이미 모든 질문·답변을 qa_feedback에 남기지만 화면에서 다시 볼 수 없었다.
+  // 사장님이 "내가 뭘 물었더라"를 볼 수 있게 이 브라우저에만 저장한다 (2026-09-03).
+  // localStorage는 시크릿 창·데이터 삭제·차단 설정에서 없거나 예외를 던지므로
+  // 읽기·쓰기 모두 감싸고, 없어도 페이지는 그대로 동작해야 한다.
+  const HISTORY_KEY = "simplifier-ask.conversations.v1";
+  const HISTORY_MAX = 30;
+  let currentConvId = null;
+
+  function loadConversations() {
+    try {
+      const raw = localStorage.getItem(HISTORY_KEY);
+      const data = raw ? JSON.parse(raw) : [];
+      return Array.isArray(data) ? data : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function storeConversations(list) {
+    try {
+      localStorage.setItem(HISTORY_KEY, JSON.stringify(list.slice(0, HISTORY_MAX)));
+    } catch (e) {
+      /* 저장 불가 환경 -- 조용히 넘어간다 */
+    }
+  }
+
+  function saveTurn(question, answer, sources, logId, followUps) {
+    const list = loadConversations();
+    const now = Date.now();
+    let conv = currentConvId ? list.find((c) => c.id === currentConvId) : null;
+    if (!conv) {
+      conv = { id: String(now), title: question.slice(0, 60), createdAt: now, updatedAt: now, turns: [] };
+      list.unshift(conv);
+      currentConvId = conv.id;
+    } else {
+      // 최근 것이 위로 오게
+      list.splice(list.indexOf(conv), 1);
+      list.unshift(conv);
+    }
+    conv.updatedAt = now;
+    conv.turns.push({ q: question, a: answer, sources: sources || [], logId: logId || null, followUps: followUps || [] });
+    storeConversations(list);
+    if (historyPanel.style.display !== "none") renderHistory();
+  }
+
+  function formatWhen(ts) {
+    const d = new Date(ts);
+    const today = new Date();
+    const sameDay = d.toDateString() === today.toDateString();
+    const hh = String(d.getHours()).padStart(2, "0");
+    const mm = String(d.getMinutes()).padStart(2, "0");
+    return sameDay ? `오늘 ${hh}:${mm}` : `${d.getMonth() + 1}/${d.getDate()} ${hh}:${mm}`;
+  }
+
+  function renderHistory() {
+    const list = loadConversations();
+    historyList.innerHTML = "";
+    historyClearBtn.style.display = list.length ? "" : "none";
+    if (!list.length) {
+      const empty = document.createElement("div");
+      empty.className = "history-empty";
+      empty.textContent = "저장된 대화가 없습니다. 질문을 하면 여기에 쌓입니다.";
+      historyList.appendChild(empty);
+      return;
+    }
+    list.forEach((conv) => {
+      const item = document.createElement("div");
+      item.className = "history-item" + (conv.id === currentConvId ? " current" : "");
+
+      const open = document.createElement("button");
+      open.type = "button";
+      open.className = "history-open";
+      open.innerHTML = '<span class="title"></span><span class="when"></span>';
+      open.querySelector(".title").textContent = conv.title;
+      open.querySelector(".when").textContent = `${formatWhen(conv.updatedAt)} · ${conv.turns.length}문답`;
+      open.addEventListener("click", () => openConversation(conv.id));
+
+      const del = document.createElement("button");
+      del.type = "button";
+      del.className = "history-del";
+      del.setAttribute("aria-label", "이 대화 삭제");
+      del.textContent = "✕";
+      del.addEventListener("click", () => {
+        storeConversations(loadConversations().filter((c) => c.id !== conv.id));
+        if (conv.id === currentConvId) currentConvId = null;
+        renderHistory();
+      });
+
+      item.appendChild(open);
+      item.appendChild(del);
+      historyList.appendChild(item);
+    });
+  }
+
+  function openConversation(id) {
+    const conv = loadConversations().find((c) => c.id === id);
+    if (!conv) return;
+    if (busy) return; // 답변 스트리밍 중에는 화면을 갈아엎지 않는다
+    thread.innerHTML = "";
+    conversationHistory = [];
+    currentConvId = conv.id;
+    showThread();
+    conv.turns.forEach((t) => {
+      addUserRow(t.q);
+      const el = addAnswerRow();
+      finalizeAnswer(el, t.a, t.sources, t.logId, t.followUps);
+      conversationHistory.push({ role: "user", content: t.q });
+      conversationHistory.push({ role: "model", content: t.a });
+    });
+    if (conversationHistory.length > MAX_HISTORY_ENTRIES) {
+      conversationHistory = conversationHistory.slice(-MAX_HISTORY_ENTRIES);
+    }
+    setHistoryOpen(false);
+    input.focus();
+  }
+
+  function setHistoryOpen(open) {
+    historyPanel.style.display = open ? "" : "none";
+    historyBtn.setAttribute("aria-pressed", open ? "true" : "false");
+    if (open) renderHistory();
+  }
+
+  historyBtn.addEventListener("click", () => {
+    setHistoryOpen(historyPanel.style.display === "none");
+  });
+  historyClearBtn.addEventListener("click", () => {
+    if (!confirm("저장된 대화를 모두 지울까요? 되돌릴 수 없습니다.")) return;
+    storeConversations([]);
+    currentConvId = null;
+    renderHistory();
+  });
   const cooldownNote = document.getElementById("cooldownNote");
 
   // 전송 버튼은 (a) 입력창이 비어있거나 (b) 요청 중/쿨다운 중이면 눌러도
@@ -219,6 +391,8 @@
     thread.classList.remove("active");
     emptyState.style.display = "flex";
     conversationHistory = [];
+    currentConvId = null;
+    setHistoryOpen(false);
     input.value = "";
     autoGrow();
     syncSendBtn();
@@ -623,6 +797,7 @@
       if (conversationHistory.length > MAX_HISTORY_ENTRIES) {
         conversationHistory = conversationHistory.slice(-MAX_HISTORY_ENTRIES);
       }
+      saveTurn(question, finalText, sources, logId, followUps);
     } catch (err) {
       typewriter.stop();
       renderErrorWithRetry(answerEl, "연결 오류 — " + err.message, retry);
