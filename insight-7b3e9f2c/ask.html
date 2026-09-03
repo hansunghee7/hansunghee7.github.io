@@ -20,7 +20,12 @@
   body{
     display:flex; flex-direction:column;
   }
-  .wrap{max-width:var(--width-prose, 720px); margin:0 auto; padding:0 var(--gutter); width:100%; flex:1; display:flex; flex-direction:column; min-height:0;}
+  /* 두 칸 배치: 왼쪽 200px 대화 목록 + 오른쪽 대화(읽기 폭 720px 유지). 클로드 앱처럼
+     "이전 대화가 옆에 항상 보이는" 모양이되, 스튜디오 왼쪽 메뉴와 겹쳐 보이지 않게
+     목록 칸은 배경 없이 가는 세로선 하나로만 구분한다 (사장님 지시, 2026-09-03). */
+  .wrap{max-width:960px; margin:0 auto; padding:0 var(--gutter); width:100%; flex:1; display:grid; grid-template-columns:200px minmax(0,1fr); grid-template-rows:auto minmax(0,1fr); column-gap:40px; min-height:0;}
+  header{grid-column:1 / -1;}
+  .main{grid-column:2; grid-row:2; display:flex; flex-direction:column; min-height:0;}
 
   header{padding:28px 0 18px; border-bottom:1px solid var(--line-soft); display:flex; align-items:flex-end; justify-content:space-between; gap:16px;}
   .heading h1{font-family:'Noto Serif KR',serif; font-weight:400; font-size:30px; letter-spacing:-0.01em; margin:0 0 8px;}
@@ -28,28 +33,40 @@
   .sub{font-size:12.5px; color:var(--muted); line-height:1.6;}
   .new-chat{background:none; border:1px solid var(--line); color:var(--dim); border-radius:999px; padding:8px 16px; font-size:12.5px; font-family:inherit; cursor:pointer; white-space:nowrap; transition:background-color .15s, border-color .15s;}
   .new-chat:hover{background:var(--ink); border-color:var(--ink); color:#fff;}
-  .head-actions{display:flex; gap:8px; flex-shrink:0;}
+  .head-actions{display:none; gap:8px; flex-shrink:0;}
   .new-chat[aria-pressed="true"]{background:var(--ink); border-color:var(--ink); color:#fff;}
-  @media (max-width:480px){ header{flex-wrap:wrap;} }
 
   /* 이전 대화 목록 -- 이 브라우저(localStorage)에만 저장된다. 서버 기록(qa_feedback)과는
      별개이고, 로그인이 없어 "누구의 기록"이 성립하지 않으므로 서버 쪽 개인 기록은
-     만들지 않기로 함 (2026-09-03). */
-  .history{border-bottom:1px solid var(--line-soft); padding:14px 0 16px;}
-  .history-head{display:flex; align-items:center; gap:6px; font-size:12.5px; color:var(--muted); margin-bottom:8px;}
-  .history-head .spacer{flex:1;}
-  .history-clear{background:none; border:none; color:var(--muted); font-size:12px; font-family:inherit; cursor:pointer; padding:2px 4px; text-decoration:underline; text-underline-offset:2px;}
-  .history-clear:hover{color:var(--bad);}
-  .history-list{display:flex; flex-direction:column; gap:4px; max-height:260px; overflow-y:auto;}
-  .history-item{display:flex; align-items:center; gap:10px; border:1px solid var(--line-soft); border-radius:10px; padding:8px 8px 8px 12px; background:#fff;}
-  .history-item.current{border-color:var(--ink);}
-  .history-open{flex:1; min-width:0; background:none; border:none; text-align:left; font-family:inherit; cursor:pointer; padding:0; display:flex; align-items:baseline; gap:10px;}
-  .history-open .title{flex:1; min-width:0; font-size:13.5px; color:var(--ink); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
-  .history-open .when{font-size:11.5px; color:var(--muted); flex-shrink:0;}
-  .history-open:hover .title{text-decoration:underline; text-underline-offset:2px;}
-  .history-del{background:none; border:none; color:var(--muted); font-size:14px; line-height:1; cursor:pointer; padding:4px 6px; border-radius:6px; flex-shrink:0;}
-  .history-del:hover{background:var(--line-soft); color:var(--bad);}
-  .history-empty{font-size:12.5px; color:var(--muted); padding:6px 0;}
+     만들지 않기로 함 (2026-09-03). 스타일은 왼쪽 메뉴(검은 알약 강조)와 달리 글자만:
+     테두리·배경 없음, 현재 대화는 굵게, ✕는 올렸을 때만. */
+  .rail{grid-column:1; grid-row:2; display:flex; flex-direction:column; min-height:0; padding:22px 16px 18px 0; border-right:1px solid var(--line-soft);}
+  .rail-new{background:none; border:none; color:var(--ink); font-family:inherit; font-size:13px; cursor:pointer; padding:0; text-align:left; margin-bottom:20px;}
+  .rail-new:hover{text-decoration:underline; text-underline-offset:3px;}
+  .rail-label{display:flex; align-items:center; gap:4px; font-size:11px; letter-spacing:.06em; color:var(--muted); margin-bottom:6px;}
+  .rail-list{display:flex; flex-direction:column; gap:1px; flex:1; min-height:0; overflow-y:auto;}
+  .rail-item{display:flex; align-items:center; gap:4px; min-width:0;}
+  .rail-open{flex:1; min-width:0; background:none; border:none; text-align:left; font-family:inherit; font-size:13px; line-height:1.5; color:var(--dim); cursor:pointer; padding:6px 0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .rail-item:hover .rail-open{color:var(--ink);}
+  .rail-item.current .rail-open{color:var(--ink); font-weight:600;}
+  .rail-del{background:none; border:none; color:var(--muted); font-size:12px; line-height:1; cursor:pointer; padding:4px; border-radius:4px; opacity:0; flex-shrink:0; transition:opacity .12s;}
+  .rail-item:hover .rail-del, .rail-del:focus{opacity:1;}
+  .rail-del:hover{color:var(--bad);}
+  .rail-empty{font-size:12.5px; color:var(--muted); line-height:1.6;}
+  .rail-clear{background:none; border:none; color:var(--muted); font-size:11.5px; font-family:inherit; cursor:pointer; padding:0; text-align:left; margin-top:14px;}
+  .rail-clear:hover{color:var(--bad);}
+
+  /* 모바일: 목록 칸은 숨기고 헤더의 "이전 대화" 버튼으로 펼친다 */
+  @media (max-width:760px){
+    .wrap{display:flex; flex-direction:column;}
+    .head-actions{display:flex;}
+    header{flex-wrap:wrap;}
+    .rail{display:none; border-right:none; border-bottom:1px solid var(--line-soft); padding:14px 0 16px;}
+    .rail.open{display:flex;}
+    .rail-new{display:none;}
+    .rail-list{max-height:220px;}
+    .rail-del{opacity:1;}
+  }
 
   .setup-note{background:#f7f6f2; border-radius:10px; padding:16px 18px; font-size:12.5px; color:var(--dim); line-height:1.7; margin:20px 0;}
 
@@ -145,16 +162,17 @@
     </div>
   </header>
 
-  <div class="history" id="historyPanel" style="display:none">
-    <div class="history-head">
+  <aside class="rail" id="rail">
+    <button type="button" class="rail-new" id="railNewBtn">+ 새 대화</button>
+    <div class="rail-label">
       <span>이전 대화</span>
       <button type="button" class="info-dot" aria-label="설명 보기">ⓘ<span class="info-text">이 브라우저에만 저장됩니다. 다른 기기나 브라우저에서는 보이지 않고, 브라우저 데이터를 지우면 함께 사라집니다. 최근 30개까지 남깁니다.</span></button>
-      <span class="spacer"></span>
-      <button type="button" class="history-clear" id="historyClearBtn">모두 지우기</button>
     </div>
-    <div class="history-list" id="historyList"></div>
-  </div>
+    <div class="rail-list" id="historyList"></div>
+    <button type="button" class="rail-clear" id="historyClearBtn">모두 지우기</button>
+  </aside>
 
+  <main class="main">
   <div class="setup-note" id="setupNote" style="display:none">
     아직 연결 설정이 안 됐습니다. 이 파일 맨 아래 <code>WORKER_URL</code> 값을 실제 Cloudflare Worker 주소로 바꿔주세요.
   </div>
@@ -181,6 +199,7 @@
       <div class="cooldown-note" id="cooldownNote" style="display:none"></div>
     </form>
   </div>
+  </main>
 </div>
 
 <script>
@@ -234,7 +253,8 @@
   const setupNote = document.getElementById("setupNote");
   const newChatBtn = document.getElementById("newChatBtn");
   const historyBtn = document.getElementById("historyBtn");
-  const historyPanel = document.getElementById("historyPanel");
+  const rail = document.getElementById("rail");
+  const railNewBtn = document.getElementById("railNewBtn");
   const historyList = document.getElementById("historyList");
   const historyClearBtn = document.getElementById("historyClearBtn");
 
@@ -281,7 +301,7 @@
     conv.updatedAt = now;
     conv.turns.push({ q: question, a: answer, sources: sources || [], logId: logId || null, followUps: followUps || [] });
     storeConversations(list);
-    if (historyPanel.style.display !== "none") renderHistory();
+    renderHistory();
   }
 
   function formatWhen(ts) {
@@ -299,29 +319,30 @@
     historyClearBtn.style.display = list.length ? "" : "none";
     if (!list.length) {
       const empty = document.createElement("div");
-      empty.className = "history-empty";
-      empty.textContent = "저장된 대화가 없습니다. 질문을 하면 여기에 쌓입니다.";
+      empty.className = "rail-empty";
+      empty.textContent = "아직 대화가 없습니다.";
       historyList.appendChild(empty);
       return;
     }
     list.forEach((conv) => {
       const item = document.createElement("div");
-      item.className = "history-item" + (conv.id === currentConvId ? " current" : "");
+      item.className = "rail-item" + (conv.id === currentConvId ? " current" : "");
 
       const open = document.createElement("button");
       open.type = "button";
-      open.className = "history-open";
-      open.innerHTML = '<span class="title"></span><span class="when"></span>';
-      open.querySelector(".title").textContent = conv.title;
-      open.querySelector(".when").textContent = `${formatWhen(conv.updatedAt)} · ${conv.turns.length}문답`;
+      open.className = "rail-open";
+      open.textContent = conv.title;
+      // 폭이 좁아 말줄임으로 잘리는 제목의 보조 툴팁 -- STYLE_GUIDE가 허용하는 유일한 title= 용도
+      open.title = `${conv.title} · ${formatWhen(conv.updatedAt)} · ${conv.turns.length}문답`;
       open.addEventListener("click", () => openConversation(conv.id));
 
       const del = document.createElement("button");
       del.type = "button";
-      del.className = "history-del";
+      del.className = "rail-del";
       del.setAttribute("aria-label", "이 대화 삭제");
       del.textContent = "✕";
-      del.addEventListener("click", () => {
+      del.addEventListener("click", (e) => {
+        e.stopPropagation();
         storeConversations(loadConversations().filter((c) => c.id !== conv.id));
         if (conv.id === currentConvId) currentConvId = null;
         renderHistory();
@@ -352,18 +373,25 @@
       conversationHistory = conversationHistory.slice(-MAX_HISTORY_ENTRIES);
     }
     setHistoryOpen(false);
+    renderHistory();
     input.focus();
   }
 
+  // 모바일에서만 의미 있는 토글 -- 데스크톱은 CSS가 항상 보여준다
   function setHistoryOpen(open) {
-    historyPanel.style.display = open ? "" : "none";
+    rail.classList.toggle("open", open);
     historyBtn.setAttribute("aria-pressed", open ? "true" : "false");
+    // 목록이 숨겨진 채 로드되면 ⓘ 말풍선 위치 계산(studio.js positionAllInfoDots)이
+    // 폭 0으로 끝나 있어서, 펼친 뒤 말풍선이 오른쪽으로 넘친다(375px에서 408px).
+    // 목록을 다시 그리면 DOM 변경 감시가 위치 계산을 다시 돌린다.
     if (open) renderHistory();
   }
 
   historyBtn.addEventListener("click", () => {
-    setHistoryOpen(historyPanel.style.display === "none");
+    setHistoryOpen(!rail.classList.contains("open"));
   });
+  railNewBtn.addEventListener("click", resetToEmpty);
+  renderHistory();
   historyClearBtn.addEventListener("click", () => {
     if (!confirm("저장된 대화를 모두 지울까요? 되돌릴 수 없습니다.")) return;
     storeConversations([]);
@@ -393,6 +421,7 @@
     conversationHistory = [];
     currentConvId = null;
     setHistoryOpen(false);
+    renderHistory();
     input.value = "";
     autoGrow();
     syncSendBtn();
