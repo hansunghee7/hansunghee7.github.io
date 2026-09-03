@@ -9,8 +9,8 @@
 
   var SAMPLE_NAV = [
     { href: "/studio-sample/", label: "소개" },
-    { href: "/studio-sample/ux-guide.html", label: "통합 UX 가이드" },
-    { href: "/studio-sample/brand-guide.html", label: "브랜드 가이드" },
+    { href: "/studio-sample/ux-guide-81d2dd.html", label: "통합 UX 가이드" },
+    { href: "/studio-sample/brand-guide-8c9e69.html", label: "브랜드 가이드" },
     { href: "/studio-sample/morning-briefing.html", label: "모닝 브리핑 샘플" },
   ];
 
