@@ -337,12 +337,19 @@ function handleChannelSummaryCapture(capture) {
   });
 }
 
+// 필터로 걸러진 개수가 있으면 팝업 로그에 그대로 문구로 남긴다(2026-09-03)
+// -- 전에는 이걸 몰라서 "왜 개수가 이상하지"를 매번 개발자도구로 확인해야
+// 했다. 0이면 안 붙여서(대부분의 경우) 로그를 안 어지럽힌다.
+function filteredNote(capture) {
+  return capture.filteredCount ? capture.filteredCount + "개 비공개 제외" : null;
+}
+
 function handleContentListCapture(capture) {
   console.log("[SNS 인사이트] 콘텐츠 리스트 캡처 수신:", capture.platform, capture.items.length + "개");
   chrome.storage.local.get(["githubToken"], function (res) {
     if (!res.githubToken) {
       queuePendingContent("content_list", capture);
-      pushLog({ platform: capture.platform, count: capture.items.length, capturedAt: capture.capturedAt, status: "pending" });
+      pushLog({ platform: capture.platform, count: capture.items.length, capturedAt: capture.capturedAt, status: "pending", note: filteredNote(capture), unit: "건" });
       return;
     }
     enqueueContentCommit(res.githubToken, commitContentListCapture, capture);
@@ -504,7 +511,7 @@ function commitContentListCapture(token, capture, retryCount) {
     });
   }, {
     commitMessage: "chore: " + capture.platform + " 콘텐츠 " + capture.items.length + "개 자동 기록 (" + day + ") [skip ci]",
-    logEntry: { platform: capture.platform, count: capture.items.length, capturedAt: capture.capturedAt },
+    logEntry: { platform: capture.platform, count: capture.items.length, capturedAt: capture.capturedAt, note: filteredNote(capture), unit: "건" },
   }, retryCount);
 }
 
