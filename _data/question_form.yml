@@ -7,9 +7,12 @@
 # 사장님 확인 후 별도 PR로 한다 (CLAUDE.md 노출 규칙).
 enabled: false
 
-# Supabase 대시보드 → Settings → API 에서 복사.
+# Supabase 대시보드 → Settings → API Keys → "Publishable key"(sb_publishable_...)를
+# 쓴다. 이 프로젝트는 "Legacy anon, service_role API keys" 탭의 JWT 키가
+# 서명 검증에서 거부됨(2026-09-03 실측: {"message":"Invalid API key"}) — 반드시
+# Publishable key만 쓴다.
 # anon 키는 원래 브라우저에 공개되는 키다 — 안전은 키가 아니라 테이블의
 # 행 단위 보안 정책(supabase/questions.sql: anon은 삽입만)이 만든다.
-# service_role 키는 절대 여기 넣지 않는다.
+# service_role/secret 키는 절대 여기 넣지 않는다.
 supabase_url: "https://lzdsppiovflgyuvszmfw.supabase.co"
-supabase_anon_key: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx6ZHNwcGlvdmZsZ3l1dnN6bWZ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc4NTUwMjcsImV4cCI6MjEwMzQzMTAyN30.PjGc5L6DltdoajEEwxIu_qj3xjy7fGETO2s661NM24c"
+supabase_anon_key: "sb_publishable_IZVaBQdJtwgQHY9TBuoSFw__EjJTfC_"
