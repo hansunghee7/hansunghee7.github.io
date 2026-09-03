@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simplifier와의 대화 - Simplifier</title>
+<title>Simplifier Dialogue - Simplifier</title>
 
 <meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="referrer" content="no-referrer">
@@ -170,8 +170,8 @@
 <div class="wrap">
   <header>
     <div class="heading">
-      <h1>Simplifier와의 대화</h1>
-      <div class="sub">그동안 쓰신 글과 책 내용을 근거로만 답변하는 테스트 에이전트</div>
+      <h1>Simplifier Dialogue</h1>
+      <div class="sub">심플리파이어의 책과 글이 만들어 낸 생각과 대화를 나누세요.</div>
     </div>
     <div class="head-actions">
       <button type="button" class="new-chat" id="historyBtn" aria-pressed="false">이전 대화</button>
@@ -199,12 +199,8 @@
   </div>
 
   <div id="emptyState">
-    <div class="suggestions">
-      <button type="button" class="suggestion-chip">빠르게 C레벨이 되는 방법은</button>
-      <button type="button" class="suggestion-chip">좋은 PO가 되는 법은</button>
-      <button type="button" class="suggestion-chip">커리어를 성공적으로 만드는 법은</button>
-    </div>
-    <div class="hint">근거가 없으면 지어내지 않고 "찾지 못했다"고 답합니다. 위에서 질문을 골라보거나 직접 질문해보세요.</div>
+    <div class="suggestions" id="suggestions"></div>
+    <div class="hint">모르는 건 모른다고 합니다. 그게 심플리파이어의 방식이니까요.</div>
   </div>
 
   <div id="thread"></div>
@@ -469,6 +465,7 @@
     currentConvId = null;
     setHistoryOpen(false);
     renderHistory();
+    renderSuggestions();
     input.value = "";
     autoGrow();
     syncSendBtn();
@@ -743,13 +740,53 @@
     }
   });
 
-  document.querySelectorAll(".suggestion-chip").forEach((chip) => {
-    chip.addEventListener("click", function () {
-      input.value = chip.textContent;
-      syncSendBtn();
-      form.requestSubmit();
+  // ---- 첫 화면 추천 질문: ask-questions.json(110여 개)에서 3개를 무작위로 ----
+  // 질문 풀은 코드 밖 JSON에 두어 코드 수정 없이 고칠 수 있게 했다. 전부 실제 글·책
+  // 주제라 답변DB에 근거가 있다 -- 첫 클릭에서 거절이 나오면 최악의 첫인상이라서.
+  // 파일을 못 읽으면 아래 세 개로 버틴다 (2026-09-03).
+  const SUGGESTIONS_URL = "/insight-7b3e9f2c/ask-questions.json";
+  const SUGGESTION_COUNT = 3;
+  const suggestionsEl = document.getElementById("suggestions");
+  let suggestionPool = ["빠르게 C레벨이 되는 방법은", "좋은 PO가 되는 법은", "커리어를 성공적으로 만드는 법은"];
+
+  function pickRandom(list, n) {
+    const copy = list.slice();
+    for (let i = copy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy.slice(0, n);
+  }
+
+  function renderSuggestions() {
+    suggestionsEl.innerHTML = "";
+    pickRandom(suggestionPool, SUGGESTION_COUNT).forEach((q) => {
+      const chip = document.createElement("button");
+      chip.type = "button";
+      chip.className = "suggestion-chip";
+      chip.textContent = q;
+      chip.addEventListener("click", function () {
+        input.value = q;
+        syncSendBtn();
+        form.requestSubmit();
+      });
+      suggestionsEl.appendChild(chip);
     });
-  });
+  }
+
+  renderSuggestions();
+  fetch(SUGGESTIONS_URL, { cache: "no-cache" })
+    .then((r) => (r.ok ? r.json() : null))
+    .then((data) => {
+      const qs = data && Array.isArray(data.questions) ? data.questions.filter((q) => typeof q === "string" && q.trim()) : [];
+      if (qs.length >= SUGGESTION_COUNT) {
+        suggestionPool = qs;
+        renderSuggestions();
+      }
+    })
+    .catch(() => {
+      /* 파일을 못 읽으면 기본 세 개 유지 */
+    });
 
   newChatBtn.addEventListener("click", resetToEmpty);
 

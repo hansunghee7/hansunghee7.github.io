@@ -24,7 +24,7 @@
     { href: "/insight-7b3e9f2c/shorts-studio.html", label: "숏폼 스튜디오", group: "제작" },
     { href: "/insight-7b3e9f2c/newsletter-research.html", label: "뉴스레터 리서치", group: "제작" },
     { href: "/insight-7b3e9f2c/pillar-manage.html", label: "필러 관리", group: "제작" },
-    { href: "/insight-7b3e9f2c/ask.html", label: "Simplifier와의 대화", group: "대화" },
+    { href: "/insight-7b3e9f2c/ask.html", label: "Simplifier Dialogue", group: "대화" },
     { href: "/insight-7b3e9f2c/system-map.html", label: "시스템 구조", group: "참조" },
     { href: "/insight-7b3e9f2c/style-guide.html", label: "통합 UX 가이드", group: "참조" },
     { href: "/insight-7b3e9f2c/brand-guide.html", label: "브랜드 가이드", group: "참조" },
