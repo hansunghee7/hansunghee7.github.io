@@ -66,11 +66,11 @@ grant insert on public.questions to anon;
 
 -- service_role(Actions)도 마찬가지다 — RLS를 우회한다는 것과 테이블 권한이
 -- 있다는 것은 별개. 이 프로젝트는 service_role에도 기본 권한이 없어서
--- "Draft from questions" 워크플로가 42501로 5회 연속 실패했다(2026-09-04
--- 실측, 힌트 "GRANT SELECT ON public.questions TO service_role").
---   select: 대기 질문 읽기 (draft_from_questions.py)
---   update: 상태 전이 대기→처리중→초안/반려 (draft_from_questions.py)
---   insert: 사장님 픽 질문 넣기 (pick_questions.py, source='pick')
+-- 초안 워크플로(클로드 API 경로, 2026-09-04 드랍)가 42501로 5회 연속
+-- 실패했다(실측 힌트 "GRANT SELECT ON public.questions TO service_role").
+--   select/update: 접수함을 읽고 상태를 바꾸는 쪽(초안 단계를 무엇으로
+--                  다시 만들든 Actions가 접수함을 만지면 필요)
+--   insert:        사장님 픽 질문 넣기 (pick_questions.py, source='pick')
 -- delete는 어떤 스크립트도 안 쓰므로 주지 않는다.
 grant select, insert, update on public.questions to service_role;
 
