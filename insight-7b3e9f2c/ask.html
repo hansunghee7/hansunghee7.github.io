@@ -103,14 +103,12 @@
   .suggestion-chip:hover{background:var(--line-soft); border-color:var(--line);}
 
   /* ---- 대화 스레드 ---- */
-  /* 헤더 구분선과 첫 말풍선 사이 여백(2026-09-03 지적) -- padding-top은 맨 처음
-     항목 앞에만 붙어서, 스크롤하면 그다음부터는 말풍선이 라인에 여백 없이
-     바로 붙어버린다(재지적, 2026-09-03). mask-image로 스크롤 컨테이너 위쪽
-     24px를 항상 페이드 처리해서, 스크롤 중에도 말풍선이 라인 바로 아래에서
-     서서히 가려지며 나타나게 한다 -- padding-top 36px는 첫 화면(스크롤 전)
-     여백용으로 유지. */
+  /* 헤더 구분선 밑 흰 여백 자체가 문제라는 최종 확인(2026-09-03) -- padding-top을
+     없애 말풍선이 라인 바로 아래에서 시작하게 하고, mask-image로 스크롤 컨테이너
+     위쪽 24px를 항상 페이드 처리해서 말풍선이 라인 바로 아래에서 부드럽게
+     가려지며 나타나게 한다(하드 크롭 대신). */
   #thread{
-    display:none; flex-direction:column; gap:28px; padding:36px 0 20px; flex:1; overflow-y:auto;
+    display:none; flex-direction:column; gap:28px; padding:0 0 20px; flex:1; overflow-y:auto;
     mask-image:linear-gradient(to bottom, transparent, black 24px);
     -webkit-mask-image:linear-gradient(to bottom, transparent, black 24px);
   }
