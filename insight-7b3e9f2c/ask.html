@@ -30,7 +30,6 @@
   header{padding:28px 0 18px; border-bottom:1px solid var(--line-soft); display:flex; align-items:flex-end; justify-content:space-between; gap:16px;}
   .heading h1{font-family:'Noto Serif KR',serif; font-weight:400; font-size:30px; letter-spacing:-0.01em; margin:0 0 8px;}
   @media (min-width:761px){ .heading h1{font-size:36px;} }
-  .sub{font-size:12.5px; color:var(--muted); line-height:1.6;}
   .new-chat{background:none; border:1px solid var(--line); color:var(--dim); border-radius:999px; padding:8px 16px; font-size:12.5px; font-family:inherit; cursor:pointer; white-space:nowrap; transition:background-color .15s, border-color .15s;}
   .new-chat:hover{background:var(--ink); border-color:var(--ink); color:#fff;}
   .head-actions{display:none; gap:8px; flex-shrink:0;}
@@ -78,14 +77,12 @@
     header{flex-wrap:wrap;}
     /* 답변을 읽을 때 상단이 계속 자리를 차지해 불편하다는 지적(2026-09-03) --
        #thread가 자체 스크롤 컨테이너라 header는 항상 화면에 고정으로 남는데,
-       스크롤을 시작하면 타이틀만 남기고 부제목·버튼 줄을 접어 공간을 돌려준다.
+       스크롤을 시작하면 타이틀만 남기고 버튼 줄을 접어 공간을 돌려준다.
        max-height+opacity로 접어서(display:none 대신) transition이 걸리게 한다. */
     header{transition:padding .2s ease;}
-    .heading .sub{overflow:hidden; max-height:40px; transition:opacity .2s ease, max-height .2s ease, margin-top .2s ease;}
     .head-actions{overflow:hidden; max-height:40px; transition:opacity .2s ease, max-height .2s ease;}
     header.compact{padding-top:14px; padding-bottom:12px;}
     header.compact .heading h1{margin-bottom:0;}
-    header.compact .heading .sub{opacity:0; max-height:0; margin-top:0; pointer-events:none;}
     header.compact .head-actions{opacity:0; max-height:0; pointer-events:none;}
     .rail{position:fixed; top:52px; left:0; bottom:0; width:min(280px, 84vw); background:var(--bg); border-right:1px solid var(--line-soft); box-shadow:12px 0 32px rgba(0,0,0,0.08); padding:18px 16px 20px; z-index:150; transform:translateX(-102%); transition:transform .2s ease; display:flex;}
     .rail.open{transform:none;}
@@ -182,7 +179,6 @@
   <header>
     <div class="heading">
       <h1>Simplifier Dialogue</h1>
-      <div class="sub">심플리파이어의 책과 글이 만들어 낸 생각과 대화를 나누세요.</div>
     </div>
     <div class="head-actions">
       <button type="button" class="new-chat" id="historyBtn" aria-pressed="false">이전 대화</button>
@@ -211,7 +207,7 @@
 
   <div id="emptyState">
     <div class="suggestions" id="suggestions"></div>
-    <div class="hint">모르는 건 모른다고 합니다. 그게 심플리파이어의 방식이니까요.</div>
+    <div class="hint">심플리파이어의 책과 글이 만들어 낸 생각과 대화를 나누세요.</div>
   </div>
 
   <div id="thread"></div>
