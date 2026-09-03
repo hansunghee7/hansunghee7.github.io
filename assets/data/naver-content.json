@@ -52,6 +52,10 @@
         {
           "date": "2026-09-02",
           "views": 445
+        },
+        {
+          "date": "2026-09-03",
+          "views": 445
         }
       ],
       "url": "https://www.tiktok.com/@sinkihanapt/video/7680209297023700245",
@@ -112,6 +116,10 @@
         {
           "date": "2026-09-02",
           "views": 0
+        },
+        {
+          "date": "2026-09-03",
+          "views": 0
         }
       ],
       "url": "https://www.tiktok.com/@sinkihanapt/video/7680573654341586196",
@@ -130,9 +138,19 @@
       "platform": "content_tiktok",
       "thumbnail": "https://image-sg.tiktok.com/tos-alisg-p-4863-sg/oQ0IfixGEFSxmLCAQ7NDAUYTvaf5emVu6GIfF6~tplv-tiktokx-origin.image?dr=14715&policy=eyJ2bSI6MywidWlkIjoiNjk2OTAyMTQ3MjA1MjgwNjY1NyJ9&x-orig-authkey=953b87ea9b474969e4eab20d5c7fa858d23f02a8&x-orig-expires=1788505200&x-orig-sign=XgHFzt3xOXWcLd020ZLylZCg660%3D&t=4d5b0474&ps=c6edb45e&shp=81f88b70&shcp=43f4a2f9&idc=my2",
       "title": "신기한 아파트사전 님이 신기한 아파트사전 님의 오리지널 사운드 - 신기한 아파트사전(으)로 만든 #CapCut 이 멋진 동영상을 CapCut으로 제작했습니다. 링크를 열어 시도해 보세요: capcut.com/tools/desktop-video-editor"
+    },
+    "content_tiktok_7680911209264057621": {
+      "history": [
+        {
+          "date": "2026-09-03",
+          "views": 0
+        }
+      ],
+      "url": "https://www.tiktok.com/@sinkihanapt/video/7680911209264057621",
+      "platform": "content_tiktok"
     }
   },
-  "updated_at": "2026-09-03T00:18:04.323Z",
+  "updated_at": "2026-09-03T00:18:09.877Z",
   "channels": {
     "naver_clip": {
       "history": [
