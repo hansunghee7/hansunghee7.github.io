@@ -1,0 +1,50 @@
+name: Fetch ink queue
+
+# "심플리파이어에게 질문하기" 접수함(Supabase questions)의 '대기' 질문을
+# _data/ink_queue/*.json으로 옮긴다(상태를 '처리중'으로 잡음). LLM 호출 없음.
+# 초안은 Max 세션(대화형 클로드 코드)이 이 폴더를 읽고 직접 쓴다(클로드 API
+# 종량 과금 경로는 2026-09-04 드랍). 정본 설계: docs/질문하기_파이프라인.md
+on:
+  schedule:
+    - cron: "17 */2 * * *"   # 2시간마다
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-ink-queue
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install supabase
+      - name: Fetch pending questions into queue
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          PYTHONIOENCODING: utf-8
+        run: python scripts/fetch_ink_queue.py
+      - name: Commit if any changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add _data/ink_queue/
+          if git diff --cached --quiet; then
+            echo "no changes to commit"
+          else
+            git commit -m "chore: 잉크 접수함 큐 갱신 [skip ci]"
+            n=0
+            until git push; do
+              n=$((n+1))
+              if [ $n -ge 3 ]; then echo "push 3회 실패"; exit 1; fi
+              git pull --rebase origin main
+            done
+          fi
