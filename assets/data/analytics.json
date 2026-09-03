@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-03T12:12:08.663377+00:00",
+  "updated_at": "2026-09-03T20:00:53.087350+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 130,
-    "activeUsers": 76,
-    "newUsers": 85,
+    "sessions": 133,
+    "activeUsers": 77,
+    "newUsers": 88,
     "returningUsers": 0
   },
   "daily": [
@@ -66,9 +66,9 @@
     },
     {
       "date": "2026-09-03",
-      "sessions": 2,
-      "activeUsers": 2,
-      "newUsers": 11,
+      "sessions": 5,
+      "activeUsers": 4,
+      "newUsers": 14,
       "returningUsers": 0
     }
   ],
@@ -83,15 +83,15 @@
     }
   ],
   "landing_types": {
-    "home": 81,
+    "home": 84,
     "log_home": 7,
-    "individual_post": 18,
+    "individual_post": 19,
     "other": 25
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 98
+      "sessions": 99
     },
     {
       "source": "searchadvisor.naver.com",
@@ -106,12 +106,12 @@
       "sessions": 6
     },
     {
-      "source": "linkedin.com",
-      "sessions": 3
+      "source": "(not set)",
+      "sessions": 4
     },
     {
-      "source": "(not set)",
-      "sessions": 2
+      "source": "linkedin.com",
+      "sessions": 3
     },
     {
       "source": "(data not available)",
@@ -135,7 +135,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 98
+      "sessions": 99
     },
     {
       "source": "searchadvisor.naver.com",
@@ -287,6 +287,11 @@
       "path": "/log_assets/markdown/614_코치S 17화 두둥~ 한교수의 등장.html",
       "title": "/log_assets/markdown/614_코치S 17화 두둥~ 한교수의 등장.html",
       "sessions": 1
+    },
+    {
+      "path": "/log_assets/markdown/616_면접에서 스펙보다 먼저 보는 것.html",
+      "title": "/log_assets/markdown/616_면접에서 스펙보다 먼저 보는 것.html",
+      "sessions": 1
     }
   ],
   "top_viewed_posts": [
@@ -383,7 +388,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 84,
+    "total_desktop_sessions": 88,
     "excluded_invalid_sessions": 18,
     "by_resolution": [
       {
@@ -394,12 +399,12 @@
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 19
+        "sessions": 20
       },
       {
         "resolution": "1920x1080",
         "width": 1920,
-        "sessions": 7
+        "sessions": 8
       },
       {
         "resolution": "1536x960",
@@ -432,8 +437,18 @@
         "sessions": 1
       },
       {
+        "resolution": "1281x720",
+        "width": 1281,
+        "sessions": 1
+      },
+      {
         "resolution": "1440x900",
         "width": 1440,
+        "sessions": 1
+      },
+      {
+        "resolution": "1536x864",
+        "width": 1536,
         "sessions": 1
       },
       {
