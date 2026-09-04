@@ -2,6 +2,9 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
   /* Pretendard Variable data URI 생략(레포 기록용 경량판) — 렌더링은 아티팩트에서 확인 */
+  /* UX_GUIDE#8ad6 (§1.3 고정 테마) — 뷰어의 다크모드를 따라가지 않는다.
+     Simplifier는 어디서도 prefers-color-scheme으로 자동 전환하지 않고
+     페이지 성격별 고정 테마를 씁니다. 이 문서형 페이지는 라이트로 고정. */
   :root{
     --bg:#EAE6DC;
     --surface:#F6F3EA;
@@ -16,38 +19,6 @@
     --bad:#8A4A3B;
     --good:#3F6E5F;
     --shadow: 0 1px 2px rgba(43,38,32,.06), 0 6px 20px rgba(43,38,32,.06);
-  }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --bg:#1D1B16;
-      --surface:#26231C;
-      --surface-2:#2E2A21;
-      --ink:#EDE7D8;
-      --ink-soft:#B5AC97;
-      --ink-faint:#8A8271;
-      --accent:#84B7A2;
-      --accent-soft:#31423B;
-      --accent-ink:#0F1512;
-      --rule:#3B362A;
-      --bad:#C77E6C;
-      --good:#84B7A2;
-      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 26px rgba(0,0,0,.35);
-    }
-  }
-  :root[data-theme="dark"]{
-    --bg:#1D1B16;
-    --surface:#26231C;
-    --surface-2:#2E2A21;
-    --ink:#EDE7D8;
-    --ink-soft:#B5AC97;
-    --ink-faint:#8A8271;
-    --accent:#84B7A2;
-    --accent-soft:#31423B;
-    --accent-ink:#0F1512;
-    --rule:#3B362A;
-    --bad:#C77E6C;
-    --good:#84B7A2;
-    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 26px rgba(0,0,0,.35);
   }
 
   *{ box-sizing:border-box; }
@@ -98,13 +69,13 @@
   .masthead-text{ padding-top: 2px; }
   .brandmark{
     flex: 0 0 auto;
-    font-family: 'Noto Serif KR', serif;
-    font-weight: 500;
-    font-style: italic;
-    font-size: 15px;
-    color: var(--ink-soft);
-    padding-top: 6px;
+    padding-top: 8px;
     white-space: nowrap;
+  }
+  .brandmark img{
+    height: 20px;
+    width: auto;
+    display: block;
   }
   .eyebrow{
     font-family:'IBM Plex Mono', monospace;
@@ -338,7 +309,7 @@
         <p class="subtitle">새김(saegim) v0.2 — 심플리파이어 스튜디오 참조문서 참조스코어 체계의 기반 설계</p>
       </div>
     </div>
-    <div class="brandmark">Simplifier</div>
+    <div class="brandmark"><img src="/log_assets/images/logo_black.png" alt="Simplifier"></div>
   </div>
   <p class="meta-line">docs/UX_GUIDE.md 기준 작성 · 타이포그래피 §1.1 · 정보 노출 §1.2 · 브랜드 표기 §1.5</p>
 
@@ -491,10 +462,19 @@
     <span class="idchip">UX_GUIDE#fa6f</span>(§1.1 타이포그래피 페어링)에 따라
     Pretendard Variable로, 기술적으로 깊은 원인 설명은
     <span class="idchip">UX_GUIDE#95e7</span>(§1.2 점진적 정보 노출)에 따라
-    한 번만 읽으면 되는 디테일로 접어뒀습니다. 헤더 우측의 브랜드 마크 배치는
-    <span class="idchip">UX_GUIDE#f12d</span>(§1.5 브랜드 표기, 문서형 페이지의
-    로고 배치 규칙)를 그대로 따랐습니다. 이 커밋 자체가 새김 인용 관행의 첫
-    실제 데이터입니다 — 아래 참조스코어 점검이 그 증거입니다.
+    한 번만 읽으면 되는 디테일로 접어뒀습니다. 헤더 우측의 브랜드 마크는
+    <span class="idchip">UX_GUIDE#f12d</span>(§1.5 브랜드 표기)에 따라 실제
+    로고 이미지(<code class="mono">logo_black.png</code>)를 씁니다. 이
+    커밋 자체가 새김 인용 관행의 첫 실제 데이터입니다 — 아래 참조스코어
+    점검이 그 증거입니다.
+    <br><br>
+    <b>1차본에서 놓친 것(사장님 지적, 2026-09-04)</b> — 첫 버전은
+    <code class="mono">prefers-color-scheme</code>로 다크모드를 자동
+    전환했는데, <span class="idchip">UX_GUIDE#8ad6</span>(§1.3 고정 테마)은
+    "두 화면 다 이 미디어쿼리를 쓰지 않는다"고 명시합니다. 브랜드 마크도
+    실제 로고 대신 텍스트로 흉내만 냈습니다. 이 버전에서 라이트 고정
+    테마로 바꾸고 실제 로고 이미지로 교체했습니다 — UX_GUIDE를
+    "참고했다"는 것과 "규칙을 지켰다"는 건 다르다는 걸 보여준 사례입니다.
   </div>
 
   <section>
