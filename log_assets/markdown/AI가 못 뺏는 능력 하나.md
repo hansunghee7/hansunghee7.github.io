@@ -6,7 +6,7 @@ image: https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?crop=entropy
 date: 2026-09-04T12:00:00+09:00
 keywords: AI 시대 커리어, 주니어 성장, 질문하는 능력, PO 준비, 기획자 커리어, 신입 기획자, AI 활용법
 about: 'AI가 좋아질수록 값어치가 오르는, 질문하는 능력'
-published: false
+published: true
 channel_variants:
   linkedin_threads: ''
   instagram_caption: ''
