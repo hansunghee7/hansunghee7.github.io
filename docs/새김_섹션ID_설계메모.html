@@ -451,7 +451,7 @@
     <div class="stats">
       <div class="stat"><div class="num">2</div><div class="label">문서 마이그레이션<br>(UX_GUIDE·WRITING_GUIDE)</div></div>
       <div class="stat"><div class="num">22</div><div class="label">절에 id 부여</div></div>
-      <div class="stat"><div class="num">1</div><div class="label">실제 버그 발견·수정</div></div>
+      <div class="stat"><div class="num">2</div><div class="label">실제 버그 발견·수정<br>(id 삽입 위치 · 본문 인용 미집계)</div></div>
       <div class="stat"><div class="num">0</div><div class="label">유실된 인용 이력<br>(전환 시점 인용 0건)</div></div>
     </div>
   </section>
@@ -500,20 +500,35 @@
   <section>
     <h2>점검 — 이 커밋으로 참조스코어가 실제로 올라가는가</h2>
     <p class="lead">
-      이 파일을 커밋하면서 커밋 메시지에 <code class="mono">UX_GUIDE#fa6f</code>·
-      <code class="mono">UX_GUIDE#95e7</code>·<code class="mono">UX_GUIDE#f12d</code>를
-      남겼습니다. 커밋 직후 <code class="mono">saegim.py report</code>를 돌려
-      세 절의 인용 카운트가 0 → 1로 오르는지 실측했습니다.
+      이 파일을 커밋하면서 커밋 메시지 <strong>본문</strong>에
+      <code class="mono">UX_GUIDE#fa6f</code>·<code class="mono">UX_GUIDE#95e7</code>·
+      <code class="mono">UX_GUIDE#f12d</code>를 남겼습니다. 커밋 직후
+      <code class="mono">saegim.py report</code>를 돌렸더니 —
+      <strong>세 절 모두 여전히 0</strong>이었습니다.
     </p>
+    <div class="callout warn">
+      <p>
+        <strong>점검하다가 세 번째 실제 버그를 잡았습니다.</strong>
+        <code class="mono">report</code>가 커밋 메시지의 <em>제목 줄(<code class="mono">%s</code>)만</em>
+        읽고 있었습니다. <code class="mono">Co-Authored-By:</code>처럼 본문에
+        트레일러로 인용을 남기는 게 자연스러운 자리인데, 정작 도구는
+        거기를 안 보고 있었던 겁니다 — 문서에 적어둔 관행("커밋 메시지에
+        남기세요")이 어디에 남기라는 건지 애매했던 게 원인. 전체 원문(
+        <code class="mono">%B</code>)을 읽도록 고치고 나서야 세 절 모두
+        0 → 1로 실제로 올랐습니다.
+      </p>
+    </div>
     <div class="diff">
       <div class="diff-line">§1.1 타이포그래피 페어링 (id fa6f)  <span class="tag">인용</span> 0 → 1</div>
       <div class="diff-line">§1.2 점진적 정보 노출 (id 95e7)     <span class="tag">인용</span> 0 → 1</div>
       <div class="diff-line">§1.5 브랜드 표기 (id f12d)          <span class="tag">인용</span> 0 → 1</div>
     </div>
     <p class="lead">
-      실제 리포트 원문은 <code class="mono">simplifier-saegim</code>의
-      <code class="mono">saegim.py report --doc docs/UX_GUIDE.md --tag UX_GUIDE</code>
-      출력이며, 커밋 해시와 함께 진행상황.md 인수인계에 남겼습니다.
+      제목 줄만 보는 도구였다면 "인용 관행을 지켰는데 스코어가 안 오른다"는
+      혼란이 나중에 실사용자(다른 에이전트)에게서 조용히 반복됐을 겁니다.
+      지금(실 데이터 0건 시점) 직접 커밋해서 검증했기 때문에 배포 전에
+      잡혔습니다 — "설계했으면 끝"이 아니라 "실제로 한 번 써보고 확인"이
+      왜 필요한지 보여주는 사례이기도 합니다.
     </p>
   </section>
 
