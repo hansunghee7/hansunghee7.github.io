@@ -1,0 +1,540 @@
+<title>새김 v0.2 설계 메모</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Pretendard Variable data URI 생략(레포 기록용 경량판) — 렌더링은 아티팩트에서 확인 */
+  :root{
+    --bg:#EAE6DC;
+    --surface:#F6F3EA;
+    --surface-2:#EFEADD;
+    --ink:#2B2620;
+    --ink-soft:#6B6355;
+    --ink-faint:#948C7B;
+    --accent:#3F6E5F;
+    --accent-soft:#DCE6DF;
+    --accent-ink:#F4F8F5;
+    --rule:#CFC5AF;
+    --bad:#8A4A3B;
+    --good:#3F6E5F;
+    --shadow: 0 1px 2px rgba(43,38,32,.06), 0 6px 20px rgba(43,38,32,.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#1D1B16;
+      --surface:#26231C;
+      --surface-2:#2E2A21;
+      --ink:#EDE7D8;
+      --ink-soft:#B5AC97;
+      --ink-faint:#8A8271;
+      --accent:#84B7A2;
+      --accent-soft:#31423B;
+      --accent-ink:#0F1512;
+      --rule:#3B362A;
+      --bad:#C77E6C;
+      --good:#84B7A2;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 26px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#1D1B16;
+    --surface:#26231C;
+    --surface-2:#2E2A21;
+    --ink:#EDE7D8;
+    --ink-soft:#B5AC97;
+    --ink-faint:#8A8271;
+    --accent:#84B7A2;
+    --accent-soft:#31423B;
+    --accent-ink:#0F1512;
+    --rule:#3B362A;
+    --bad:#C77E6C;
+    --good:#84B7A2;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 26px rgba(0,0,0,.35);
+  }
+
+  *{ box-sizing:border-box; }
+  body{ background:var(--bg); color:var(--ink); }
+
+  .page{
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 64px 28px 96px;
+    font-family: 'Pretendard Variable', 'Pretendard', 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  h1, h2, h3{
+    font-family: 'Noto Serif KR', serif;
+    text-wrap: balance;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  code, .mono{
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+
+  /* ---------- 헤더: 낙관/새김 인장 모티프 + 브랜드 마크(UX_GUIDE#f12d) ---------- */
+  .masthead{
+    display:flex;
+    align-items:flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 8px;
+  }
+  .masthead-left{ display:flex; align-items:flex-start; gap:24px; }
+  .seal{
+    flex: 0 0 auto;
+    width: 64px; height: 64px;
+    border-radius: 10px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Noto Serif KR', serif;
+    font-weight:700;
+    font-size: 26px;
+    box-shadow: var(--shadow), inset 0 0 0 2px rgba(0,0,0,.08);
+    transform: rotate(-3deg);
+  }
+  .masthead-text{ padding-top: 2px; }
+  .brandmark{
+    flex: 0 0 auto;
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink-soft);
+    padding-top: 6px;
+    white-space: nowrap;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 0 0 8px;
+  }
+  h1{
+    font-size: 30px;
+    font-weight: 700;
+    margin: 0 0 6px;
+    line-height:1.3;
+  }
+  .subtitle{
+    color: var(--ink-soft);
+    font-size: 15.5px;
+    margin: 0;
+  }
+  .meta-line{
+    font-size: 12.5px;
+    color: var(--ink-faint);
+    margin: 10px 0 0;
+  }
+
+  .meta-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap: 10px 18px;
+    margin: 22px 0 40px;
+    padding: 14px 16px;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+  }
+  .meta-row div{ display:flex; gap:6px; align-items:baseline; }
+  .meta-row b{ color: var(--ink); font-weight:600; }
+
+  section{ margin: 40px 0; }
+  section > h2{
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule);
+  }
+  p{ margin: 0 0 14px; color: var(--ink); }
+  p.lead{ color: var(--ink-soft); }
+  ul, ol{ margin: 0 0 14px; padding-left: 22px; }
+  li{ margin-bottom: 6px; }
+  strong{ font-weight:600; }
+
+  .callout{
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin: 18px 0;
+    font-size: 15px;
+  }
+  .callout p:last-child{ margin-bottom:0; }
+  .callout.warn{ border-left-color: var(--bad); }
+
+  /* ---------- 점진적 정보 노출 (UX_GUIDE#95e7) — 한 번 읽으면 되는 기술 디테일은 접어둔다 ---------- */
+  details.disclosure{
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    margin: 10px 0 0;
+    overflow: hidden;
+  }
+  details.disclosure > summary{
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    list-style: none;
+    display:flex;
+    align-items:center;
+    gap: 8px;
+  }
+  details.disclosure > summary::-webkit-details-marker{ display:none; }
+  details.disclosure > summary::before{
+    content: '▸';
+    color: var(--accent);
+    transition: transform .15s ease;
+  }
+  details.disclosure[open] > summary::before{ transform: rotate(90deg); }
+  details.disclosure .disclosure-body{
+    padding: 4px 16px 16px;
+    font-size: 14.5px;
+    color: var(--ink);
+    border-top: 1px solid var(--rule);
+  }
+  details.disclosure .disclosure-body p:last-child{ margin-bottom:0; }
+
+  /* ---------- 비교 표 ---------- */
+  .compare{
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 18px 0;
+    background: var(--surface);
+  }
+  .compare-row{ display:contents; }
+  .compare-row > div{
+    padding: 14px 16px;
+    border-top: 1px solid var(--rule);
+    font-size: 14.5px;
+  }
+  .compare-row:first-child > div{ border-top:none; }
+  .compare-row .key{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight: 500;
+    color: var(--ink-soft);
+    background: var(--surface-2);
+    display:flex; align-items:center;
+  }
+  .compare-row.winner .key{ color: var(--accent); }
+  .pill{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing:.04em;
+    padding: 2px 8px;
+    border-radius: 999px;
+    margin-left: 8px;
+    vertical-align: 1px;
+  }
+  .pill.good{ background: var(--accent-soft); color: var(--good); }
+  .pill.bad{ background: color-mix(in srgb, var(--bad) 18%, var(--surface)); color: var(--bad); }
+
+  /* ---------- 코드 diff ---------- */
+  .diff{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 13.5px;
+    line-height: 1.9;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+    margin: 18px 0;
+  }
+  .diff-line{ padding: 3px 16px; white-space: pre-wrap; word-break: break-word; }
+  .diff-line.del{ background: color-mix(in srgb, var(--bad) 12%, var(--surface)); color: var(--ink); }
+  .diff-line.add{ background: color-mix(in srgb, var(--good) 14%, var(--surface)); color: var(--ink); }
+  .diff-line .tag{ opacity:.55; margin-right: 8px; }
+
+  /* ---------- 통계 스트립 ---------- */
+  .stats{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin: 18px 0;
+  }
+  .stat{
+    background: var(--surface);
+    border:1px solid var(--rule);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .stat .num{
+    font-family:'Noto Serif KR', serif;
+    font-size: 26px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+  }
+  .stat .label{
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin-top: 2px;
+  }
+
+  .idchip{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 13px;
+    background: var(--accent-soft);
+    color: var(--good);
+    padding: 1px 7px;
+    border-radius: 5px;
+  }
+
+  a{ color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+
+  .refnote{
+    margin-top: 32px;
+    padding: 14px 16px;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .refnote b{ color: var(--ink); }
+  .refnote .idchip{ margin: 0 2px; }
+
+  .signoff{
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    color: var(--ink-faint);
+    font-size: 13.5px;
+    display:flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 520px){
+    .compare{ grid-template-columns: 92px 1fr; }
+    h1{ font-size: 25px; }
+    .masthead{ flex-direction: column; }
+    .brandmark{ padding-top:0; }
+  }
+</style>
+
+<div class="page">
+
+  <div class="masthead">
+    <div class="masthead-left">
+      <div class="seal">새</div>
+      <div class="masthead-text">
+        <p class="eyebrow">설계 메모 · 2026-09-04 · 탐</p>
+        <h1>절 인용 키를 번호에서 안정 id로</h1>
+        <p class="subtitle">새김(saegim) v0.2 — 심플리파이어 스튜디오 참조문서 참조스코어 체계의 기반 설계</p>
+      </div>
+    </div>
+    <div class="brandmark">Simplifier</div>
+  </div>
+  <p class="meta-line">docs/UX_GUIDE.md 기준 작성 · 타이포그래피 §1.1 · 정보 노출 §1.2 · 브랜드 표기 §1.5</p>
+
+  <div class="meta-row">
+    <div><b>결정</b> <code class="mono">§번호</code> → <code class="mono">#id</code></div>
+    <div><b>대상</b> UX_GUIDE.md, WRITING_GUIDE.md</div>
+    <div><b>PR</b> #242, #244</div>
+    <div><b>도구</b> simplifier-saegim v0.2</div>
+  </div>
+
+  <section>
+    <h2>왜 지금 이 결정이 필요했나</h2>
+    <p class="lead">
+      심플리파이어 스튜디오의 참조문서가 늘면서, 사장님이 "에이전트가 일할 때
+      참조문서를 정하고 그 섹션별로 참조스코어·랭킹을 매기는 체계"를 향후
+      사업 아이템으로 언급하셨습니다. 그 체계의 밑바닥에 놓일 건 결국
+      "이 절을 어떻게 유니크하게 가리킬 것인가"라는 키 설계입니다. 이미
+      한 문서(UX_GUIDE.md)에서 이 관행을 절 번호(<code class="mono">§1.8</code>)로
+      시험 운영 중이었는데, 그 방식을 여러 문서·여러 에이전트로 넓히기 전에
+      먼저 점검이 필요했습니다.
+    </p>
+  </section>
+
+  <section>
+    <h2>세 가지 후보</h2>
+    <div class="compare">
+      <div class="compare-row">
+        <div class="key">절 번호</div>
+        <div>
+          <span class="pill bad">포지셔널</span>
+          절이 추가·삭제되면 뒤 번호가 밀립니다. 예전 커밋에 남은
+          <code class="mono">§1.4</code> 인용이 편집 후엔 다른 절을 가리키게 됩니다 —
+          인용 이력이 조용히 오염됩니다.
+        </div>
+      </div>
+      <div class="compare-row">
+        <div class="key">절 제목</div>
+        <div>
+          <span class="pill bad">불안정</span>
+          리네이밍되면 똑같이 깨지고, 문서가 여러 개로 늘어나면 제목 중복도
+          막을 수 없습니다. 커밋 메시지에 넣기도 깁니다.
+        </div>
+      </div>
+      <div class="compare-row winner">
+        <div class="key">안정 id</div>
+        <div>
+          <span class="pill good">채택</span>
+          절이 처음 만들어질 때 한 번 부여되고, 그 절이 있는 한 절대 안
+          바뀝니다. 번호를 재배치하거나 제목을 다듬어도 과거 인용이 계속
+          올바른 절을 가리킵니다.
+        </div>
+      </div>
+    </div>
+    <p>
+      포지셔널 키를 서로게이트 키로 바꾸는 건 데이터베이스 설계의 기본
+      원칙입니다. "인용 이력을 자산으로 쌓는다"는 게 이 도구의 목적이라면,
+      그 자산이 편집 한 번에 깨지는 키 위에 쌓이면 안 됩니다.
+    </p>
+  </section>
+
+  <section>
+    <h2>실제로 이렇게 심었습니다</h2>
+    <p class="lead">
+      id는 헤딩 줄 끝에 HTML 주석으로 심습니다 — 렌더링엔 안 보이고, git diff엔
+      그대로 남습니다. 절 번호는 사람이 읽는 표시용으로 그대로 두었습니다.
+    </p>
+    <div class="diff">
+      <div class="diff-line del"><span class="tag">−</span>### 1.8 핵심 콘텐츠 영역은 상속받은 여백보다 우선한다 ⚠️상시</div>
+      <div class="diff-line add"><span class="tag">+</span>### 1.8 핵심 콘텐츠 영역은 상속받은 여백보다 우선한다 ⚠️상시 <!-- id: cc10 --></div>
+    </div>
+    <p>
+      이후 이 절을 근거로 뭔가 고쳤다면 커밋 메시지에
+      <span class="idchip">UX_GUIDE#cc10</span> 을 남깁니다. 번호가 아니라 id를
+      쓰는 이유는 위 비교표와 같습니다.
+    </p>
+  </section>
+
+  <section>
+    <h2>구현 중 실제로 버그를 하나 잡았습니다</h2>
+    <div class="callout warn">
+      <p>
+        <strong>헤딩 뒤에 빈 줄이 있으면, id 주석이 헤딩 줄이 아니라 다음 줄에
+        따로 떨어져 써지는 버그</strong>가 있었습니다. <code class="mono">migrate</code>를
+        재실행할 때마다 기존 id를 못 찾고 계속 새 id를 발급하는 사고로
+        이어질 뻔했고, 실측(직접 재실행해서 비교)으로 잡았습니다.
+      </p>
+    </div>
+    <details class="disclosure">
+      <summary>원인 자세히 보기 (한 번만 읽으면 되는 기술 디테일)</summary>
+      <div class="disclosure-body">
+        <p>
+          정규식의 <code class="mono">\s*$</code>가 MULTILINE 모드에서 줄바꿈까지
+          공백으로 보고 삼켜버린 게 원인입니다. 헤딩 바로 뒤에 빈 줄이 있으면
+          <code class="mono">\s*</code>가 그 개행까지 욕심껏 집어삼키고, 그 상태로
+          id 주석을 이어붙이면 헤딩 줄이 아니라 다음(빈) 줄에 따로 떨어져
+          써집니다. <code class="mono">[ \t]*$</code>로 고쳐 헤딩 매치가 항상
+          그 줄 안에서 끝나도록 수정했습니다.
+        </p>
+        <p>
+          만약 이 버그를 못 잡고 실제 인용 기록이 쌓인 뒤에 발견했다면, 그동안
+          쌓인 인용 데이터를 다시 사람이 매칭해야 했을 겁니다 — 지금(인용
+          0건 시점)에 잡아서 그 비용이 없습니다.
+        </p>
+      </div>
+    </details>
+  </section>
+
+  <section>
+    <h2>지금까지 한 일</h2>
+    <div class="stats">
+      <div class="stat"><div class="num">2</div><div class="label">문서 마이그레이션<br>(UX_GUIDE·WRITING_GUIDE)</div></div>
+      <div class="stat"><div class="num">22</div><div class="label">절에 id 부여</div></div>
+      <div class="stat"><div class="num">2</div><div class="label">실제 버그 발견·수정<br>(id 삽입 위치 · 본문 인용 미집계)</div></div>
+      <div class="stat"><div class="num">0</div><div class="label">유실된 인용 이력<br>(전환 시점 인용 0건)</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>일부러 안 한 것</h2>
+    <ul>
+      <li><strong>여러 문서·여러 에이전트를 가로지르는 통합 랭킹 대시보드</strong> —
+        지금은 문서 하나씩 <code class="mono">saegim.py report</code>를 따로 돌립니다.
+        어떤 문서들을 대상에 넣을지, 랭킹을 누가 보게 할지는 제품 스코프
+        판단이라 임의로 만들지 않았습니다.</li>
+      <li><strong>인용 관행 강제(커밋 훅 등)</strong> — 사람이 커밋 메시지에
+        직접 남겨야 합니다. 아직 실사용 검증 전이라 강제할 근거가 없습니다.</li>
+      <li><strong>WRITING_GUIDE.md에 자동 집계 연결</strong> — 170줄대라 임계값
+        (400줄)에 못 미치고 인용 기록도 0건이라, 지금은 <code class="mono">#id</code>
+        인용 관행만 심어두고 도구는 아직 안 붙였습니다.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>다음 결정은 사장님 몫입니다</h2>
+    <p>
+      id 체계 자체는 "여러 문서·여러 에이전트로 커져도 버티는가"를 기준으로
+      설계해서 지금 확정해도 된다고 판단했습니다. 다만 아래는 제품 스코프
+      판단이라 미뤘습니다 — 방향이 서면 다음 세션이 바로 착수할 수 있게
+      준비해두겠습니다.
+    </p>
+    <ul>
+      <li>스튜디오의 어떤 참조문서들부터 이 관행을 적용할지 (지금은 2개뿐)</li>
+      <li>참조스코어를 사장님만 볼지, 각 에이전트도 참고하게 열지</li>
+      <li>"새김"을 내부 도구로 계속 둘지, 이름 그대로 별도 상품 로드맵에 올릴지</li>
+    </ul>
+  </section>
+
+  <div class="refnote">
+    <b>이 메모 자체가 UX_GUIDE.md를 어떻게 참조했는지</b> — 본문 서체를
+    <span class="idchip">UX_GUIDE#fa6f</span>(§1.1 타이포그래피 페어링)에 따라
+    Pretendard Variable로, 기술적으로 깊은 원인 설명은
+    <span class="idchip">UX_GUIDE#95e7</span>(§1.2 점진적 정보 노출)에 따라
+    한 번만 읽으면 되는 디테일로 접어뒀습니다. 헤더 우측의 브랜드 마크 배치는
+    <span class="idchip">UX_GUIDE#f12d</span>(§1.5 브랜드 표기, 문서형 페이지의
+    로고 배치 규칙)를 그대로 따랐습니다. 이 커밋 자체가 새김 인용 관행의 첫
+    실제 데이터입니다 — 아래 참조스코어 점검이 그 증거입니다.
+  </div>
+
+  <section>
+    <h2>점검 — 이 커밋으로 참조스코어가 실제로 올라가는가</h2>
+    <p class="lead">
+      이 파일을 커밋하면서 커밋 메시지 <strong>본문</strong>에
+      <code class="mono">UX_GUIDE#fa6f</code>·<code class="mono">UX_GUIDE#95e7</code>·
+      <code class="mono">UX_GUIDE#f12d</code>를 남겼습니다. 커밋 직후
+      <code class="mono">saegim.py report</code>를 돌렸더니 —
+      <strong>세 절 모두 여전히 0</strong>이었습니다.
+    </p>
+    <div class="callout warn">
+      <p>
+        <strong>점검하다가 세 번째 실제 버그를 잡았습니다.</strong>
+        <code class="mono">report</code>가 커밋 메시지의 <em>제목 줄(<code class="mono">%s</code>)만</em>
+        읽고 있었습니다. <code class="mono">Co-Authored-By:</code>처럼 본문에
+        트레일러로 인용을 남기는 게 자연스러운 자리인데, 정작 도구는
+        거기를 안 보고 있었던 겁니다 — 문서에 적어둔 관행("커밋 메시지에
+        남기세요")이 어디에 남기라는 건지 애매했던 게 원인. 전체 원문(
+        <code class="mono">%B</code>)을 읽도록 고치고 나서야 세 절 모두
+        0 → 1로 실제로 올랐습니다.
+      </p>
+    </div>
+    <div class="diff">
+      <div class="diff-line">§1.1 타이포그래피 페어링 (id fa6f)  <span class="tag">인용</span> 0 → 1</div>
+      <div class="diff-line">§1.2 점진적 정보 노출 (id 95e7)     <span class="tag">인용</span> 0 → 1</div>
+      <div class="diff-line">§1.5 브랜드 표기 (id f12d)          <span class="tag">인용</span> 0 → 1</div>
+    </div>
+    <p class="lead">
+      제목 줄만 보는 도구였다면 "인용 관행을 지켰는데 스코어가 안 오른다"는
+      혼란이 나중에 실사용자(다른 에이전트)에게서 조용히 반복됐을 겁니다.
+      지금(실 데이터 0건 시점) 직접 커밋해서 검증했기 때문에 배포 전에
+      잡혔습니다 — "설계했으면 끝"이 아니라 "실제로 한 번 써보고 확인"이
+      왜 필요한지 보여주는 사례이기도 합니다.
+    </p>
+  </section>
+
+  <div class="signoff">
+    <span>기록: <a href="https://github.com/hansunghee7/simplifier-cxo-db/issues/26">simplifier-cxo-db #26</a> · <a href="https://github.com/hansunghee7/simplifier-saegim">simplifier-saegim</a></span>
+    <span>탐</span>
+  </div>
+
+</div>
