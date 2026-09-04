@@ -338,8 +338,8 @@
 "url": "/log_assets/markdown/024_%27%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%27%EC%9D%B4%202%EC%87%84%EC%97%90%20%EB%93%A4%EC%96%B4%EA%B0%91%EB%8B%88%EB%8B%A4.html",
 "image": "/log_assets/images/024_%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20%EC%A7%88%EB%AC%B8%EB%B2%95%EC%9D%B4%202%EC%87%84%EC%97%90%20%EB%93%A4%EC%96%B4%EA%B0%91%EB%8B%88%EB%8B%A4._cover.jpg",
 "related": [
-126,
 14,
+126,
 100,
 429
 ]
@@ -3011,7 +3011,7 @@
 577,
 225,
 602,
-196
+41
 ]
 },
 {
@@ -8346,8 +8346,8 @@
 "image": "/log_assets/images/585_%ED%81%B0%20%EA%B8%B0%EC%97%85%20%EC%9D%B8%EC%9E%AC%EB%93%A4%EC%9D%B4%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%97%90%EC%84%9C%20%EA%B3%A0%EC%A0%84%EC%9D%84%20%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0%EB%8A%94_cover.jpg",
 "related": [
 386,
-237,
 398,
+237,
 601
 ]
 },
@@ -8814,6 +8814,21 @@
 593,
 381,
 85
+]
+},
+{
+"id": 617,
+"title": "4년 차에 다시 물어야 할 질문",
+"category": "스타트업 인사이트",
+"date": "Sep 4. 2026",
+"date_sort": "20260904",
+"url": "/log_assets/markdown/617_4%EB%85%84%20%EC%B0%A8%EC%97%90%20%EB%8B%A4%EC%8B%9C%20%EB%AC%BC%EC%96%B4%EC%95%BC%20%ED%95%A0%20%EC%A7%88%EB%AC%B8.html",
+"image": "/log_assets/images/logo_white.png",
+"related": [
+258,
+318,
+172,
+345
 ]
 }
 ]
