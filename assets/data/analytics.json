@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-04T12:12:52.014088+00:00",
+  "updated_at": "2026-09-04T20:00:47.727342+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 139,
-    "activeUsers": 83,
-    "newUsers": 83,
+    "sessions": 140,
+    "activeUsers": 84,
+    "newUsers": 84,
     "returningUsers": 0
   },
   "daily": [
@@ -77,6 +77,13 @@
       "activeUsers": 6,
       "newUsers": 6,
       "returningUsers": 0
+    },
+    {
+      "date": "2026-09-05",
+      "sessions": 1,
+      "activeUsers": 1,
+      "newUsers": 1,
+      "returningUsers": 0
     }
   ],
   "daily_leads": [
@@ -90,9 +97,9 @@
     }
   ],
   "landing_types": {
-    "home": 87,
+    "home": 88,
     "log_home": 7,
-    "individual_post": 21,
+    "individual_post": 22,
     "other": 25
   },
   "top_sources": [
@@ -106,7 +113,7 @@
     },
     {
       "source": "google",
-      "sessions": 8
+      "sessions": 9
     },
     {
       "source": "l.facebook.com",
@@ -114,7 +121,7 @@
     },
     {
       "source": "(not set)",
-      "sessions": 3
+      "sessions": 4
     },
     {
       "source": "linkedin.com",
@@ -154,7 +161,7 @@
       "source": "google",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 8
+      "sessions": 9
     },
     {
       "source": "l.facebook.com",
@@ -195,12 +202,12 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 277,
-    "section_view_voices": 200,
+    "section_view_proven": 278,
+    "section_view_voices": 201,
     "section_view_book_class": 122,
     "section_view_faq": 111,
-    "faq_open": 22,
-    "read_complete": 187
+    "faq_open": 25,
+    "read_complete": 189
   },
   "contact_funnel": {
     "contact_open": 27,
@@ -276,6 +283,11 @@
       "sessions": 1
     },
     {
+      "path": "/log_assets/markdown/178_'So What, Why So' 논리에 영혼을 불어넣다.html",
+      "title": "/log_assets/markdown/178_'So What, Why So' 논리에 영혼을 불어넣다.html",
+      "sessions": 1
+    },
+    {
       "path": "/log_assets/markdown/267_애자일이란.html",
       "title": "/log_assets/markdown/267_애자일이란.html",
       "sessions": 1
@@ -293,11 +305,6 @@
     {
       "path": "/log_assets/markdown/592_프로덕트팀의 생산속도 향상을 위한 9가지 전략.html",
       "title": "/log_assets/markdown/592_프로덕트팀의 생산속도 향상을 위한 9가지 전략.html",
-      "sessions": 1
-    },
-    {
-      "path": "/log_assets/markdown/607_C레벨이라는 리더는 어떻게 일해야 하나요.html",
-      "title": "/log_assets/markdown/607_C레벨이라는 리더는 어떻게 일해야 하나요.html",
       "sessions": 1
     }
   ],
@@ -363,6 +370,12 @@
       "views": 5
     },
     {
+      "path": "/log_assets/markdown/178_'So What, Why So' 논리에 영혼을 불어넣다.html",
+      "title": "/log_assets/markdown/178_'So What, Why So' 논리에 영혼을 불어넣다.html",
+      "uniqueViews": 2,
+      "views": 2
+    },
+    {
       "path": "/log_assets/markdown/185_사고의 지도를 그리는 법 '로직 트리'.html",
       "title": "/log_assets/markdown/185_사고의 지도를 그리는 법 '로직 트리'.html",
       "uniqueViews": 2,
@@ -385,17 +398,11 @@
       "title": "/log_assets/markdown/263_우선순위 설정의 프레임워크 'RICE'.html",
       "uniqueViews": 2,
       "views": 2
-    },
-    {
-      "path": "/log_assets/markdown/300_뛰어난 PO는 데이터를 어떻게 볼까.html",
-      "title": "/log_assets/markdown/300_뛰어난 PO는 데이터를 어떻게 볼까.html",
-      "uniqueViews": 2,
-      "views": 5
     }
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 93,
+    "total_desktop_sessions": 94,
     "excluded_invalid_sessions": 18,
     "by_resolution": [
       {
@@ -424,6 +431,11 @@
         "sessions": 5
       },
       {
+        "resolution": "1440x900",
+        "width": 1440,
+        "sessions": 2
+      },
+      {
         "resolution": "1512x982",
         "width": 1512,
         "sessions": 2
@@ -446,11 +458,6 @@
       {
         "resolution": "1281x720",
         "width": 1281,
-        "sessions": 1
-      },
-      {
-        "resolution": "1440x900",
-        "width": 1440,
         "sessions": 1
       },
       {
