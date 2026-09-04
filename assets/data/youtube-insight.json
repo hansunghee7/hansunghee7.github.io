@@ -25,6 +25,12 @@
           "views": 4415,
           "likes": 25,
           "comments": 3
+        },
+        {
+          "date": "2026-09-05",
+          "views": 4413,
+          "likes": 25,
+          "comments": 3
         }
       ],
       "title": "아파트 옥상 물탱크가 전부 사라진 이유",
@@ -70,6 +76,12 @@
           "date": "2026-09-04",
           "views": 4062,
           "likes": 33,
+          "comments": 4
+        },
+        {
+          "date": "2026-09-05",
+          "views": 4549,
+          "likes": 35,
           "comments": 4
         }
       ],
@@ -117,6 +129,12 @@
           "views": 6,
           "likes": 0,
           "comments": 0
+        },
+        {
+          "date": "2026-09-05",
+          "views": 8,
+          "likes": 0,
+          "comments": 0
         }
       ],
       "title": "아파트 로비가 호텔처럼 변하고 있는 진짜 이유 #건축상식 #아파트",
@@ -151,10 +169,16 @@
         "subscribers": 15,
         "total_views": 3783,
         "video_count": 3
+      },
+      {
+        "date": "2026-09-05",
+        "subscribers": 15,
+        "total_views": 3783,
+        "video_count": 3
       }
     ],
     "title": "신기한 아파트사전",
     "id": "UCTbS2jSG1BvBl4c6EsVx7sA"
   },
-  "updated_at": "2026-09-04T14:31:19.012862Z"
+  "updated_at": "2026-09-04T22:30:08.773484Z"
 }
