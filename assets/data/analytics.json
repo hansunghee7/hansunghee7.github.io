@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-04T05:53:25.363666+00:00",
+  "updated_at": "2026-09-04T12:12:52.014088+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 133,
-    "activeUsers": 77,
-    "newUsers": 77,
+    "sessions": 139,
+    "activeUsers": 83,
+    "newUsers": 83,
     "returningUsers": 0
   },
   "daily": [
@@ -70,6 +70,13 @@
       "activeUsers": 4,
       "newUsers": 3,
       "returningUsers": 1
+    },
+    {
+      "date": "2026-09-04",
+      "sessions": 6,
+      "activeUsers": 6,
+      "newUsers": 6,
+      "returningUsers": 0
     }
   ],
   "daily_leads": [
@@ -83,35 +90,35 @@
     }
   ],
   "landing_types": {
-    "home": 82,
+    "home": 87,
     "log_home": 7,
-    "individual_post": 19,
+    "individual_post": 21,
     "other": 25
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 101
+      "sessions": 104
     },
     {
       "source": "searchadvisor.naver.com",
       "sessions": 12
     },
     {
+      "source": "google",
+      "sessions": 8
+    },
+    {
       "source": "l.facebook.com",
       "sessions": 7
     },
     {
-      "source": "google",
-      "sessions": 6
+      "source": "(not set)",
+      "sessions": 3
     },
     {
       "source": "linkedin.com",
       "sessions": 3
-    },
-    {
-      "source": "(not set)",
-      "sessions": 1
     },
     {
       "source": "bing",
@@ -119,6 +126,10 @@
     },
     {
       "source": "brunch.co.kr",
+      "sessions": 1
+    },
+    {
+      "source": "m.search.naver.com",
       "sessions": 1
     },
     {
@@ -131,7 +142,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 101
+      "sessions": 104
     },
     {
       "source": "searchadvisor.naver.com",
@@ -140,16 +151,16 @@
       "sessions": 12
     },
     {
+      "source": "google",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "sessions": 8
+    },
+    {
       "source": "l.facebook.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 7
-    },
-    {
-      "source": "google",
-      "medium": "organic",
-      "campaign": "(organic)",
-      "sessions": 6
     },
     {
       "source": "linkedin.com",
@@ -165,6 +176,12 @@
     },
     {
       "source": "brunch.co.kr",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "sessions": 1
+    },
+    {
+      "source": "m.search.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 1
@@ -178,12 +195,12 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 275,
-    "section_view_voices": 199,
-    "section_view_book_class": 121,
-    "section_view_faq": 110,
-    "faq_open": 18,
-    "read_complete": 186
+    "section_view_proven": 277,
+    "section_view_voices": 200,
+    "section_view_book_class": 122,
+    "section_view_faq": 111,
+    "faq_open": 22,
+    "read_complete": 187
   },
   "contact_funnel": {
     "contact_open": 27,
@@ -219,6 +236,11 @@
       "sessions": 2
     },
     {
+      "path": "/log_assets/markdown/185_사고의 지도를 그리는 법 '로직 트리'.html",
+      "title": "/log_assets/markdown/185_사고의 지도를 그리는 법 '로직 트리'.html",
+      "sessions": 2
+    },
+    {
       "path": "/log_assets/markdown/300_뛰어난 PO는 데이터를 어떻게 볼까.html",
       "title": "/log_assets/markdown/300_뛰어난 PO는 데이터를 어떻게 볼까.html",
       "sessions": 2
@@ -234,6 +256,11 @@
       "sessions": 1
     },
     {
+      "path": "/log_assets/markdown/006_자정이 가까워지도록 AI 얘기를 원 없이 나눴어요.html",
+      "title": "/log_assets/markdown/006_자정이 가까워지도록 AI 얘기를 원 없이 나눴어요.html",
+      "sessions": 1
+    },
+    {
       "path": "/log_assets/markdown/012_누가 주인인가요.html",
       "title": "/log_assets/markdown/012_누가 주인인가요.html",
       "sessions": 1
@@ -246,11 +273,6 @@
     {
       "path": "/log_assets/markdown/154_놓치면 후회할 거야  FOMO UX.html",
       "title": "/log_assets/markdown/154_놓치면 후회할 거야  FOMO UX.html",
-      "sessions": 1
-    },
-    {
-      "path": "/log_assets/markdown/185_사고의 지도를 그리는 법 '로직 트리'.html",
-      "title": "/log_assets/markdown/185_사고의 지도를 그리는 법 '로직 트리'.html",
       "sessions": 1
     },
     {
@@ -276,11 +298,6 @@
     {
       "path": "/log_assets/markdown/607_C레벨이라는 리더는 어떻게 일해야 하나요.html",
       "title": "/log_assets/markdown/607_C레벨이라는 리더는 어떻게 일해야 하나요.html",
-      "sessions": 1
-    },
-    {
-      "path": "/log_assets/markdown/614_코치S 17화 두둥~ 한교수의 등장.html",
-      "title": "/log_assets/markdown/614_코치S 17화 두둥~ 한교수의 등장.html",
       "sessions": 1
     }
   ],
@@ -328,6 +345,12 @@
       "views": 17
     },
     {
+      "path": "/log_assets/markdown/006_자정이 가까워지도록 AI 얘기를 원 없이 나눴어요.html",
+      "title": "/log_assets/markdown/006_자정이 가까워지도록 AI 얘기를 원 없이 나눴어요.html",
+      "uniqueViews": 2,
+      "views": 2
+    },
+    {
       "path": "/log_assets/markdown/012_누가 주인인가요.html",
       "title": "/log_assets/markdown/012_누가 주인인가요.html",
       "uniqueViews": 2,
@@ -338,6 +361,12 @@
       "title": "/log_assets/markdown/122_미국 진출은 누구에게 필요한 전략인가.html",
       "uniqueViews": 2,
       "views": 5
+    },
+    {
+      "path": "/log_assets/markdown/185_사고의 지도를 그리는 법 '로직 트리'.html",
+      "title": "/log_assets/markdown/185_사고의 지도를 그리는 법 '로직 트리'.html",
+      "uniqueViews": 2,
+      "views": 2
     },
     {
       "path": "/log_assets/markdown/199_AI시대 슈퍼컴퓨터가 필요한 이유.html",
@@ -362,23 +391,11 @@
       "title": "/log_assets/markdown/300_뛰어난 PO는 데이터를 어떻게 볼까.html",
       "uniqueViews": 2,
       "views": 5
-    },
-    {
-      "path": "/log_assets/markdown/306_뛰어난 PO는 어떤 자질이 다를까.html",
-      "title": "/log_assets/markdown/306_뛰어난 PO는 어떤 자질이 다를까.html",
-      "uniqueViews": 2,
-      "views": 7
-    },
-    {
-      "path": "/log_assets/markdown/346_코치S 14화 콜드브루 장사.html",
-      "title": "/log_assets/markdown/346_코치S 14화 콜드브루 장사.html",
-      "uniqueViews": 2,
-      "views": 6
     }
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 88,
+    "total_desktop_sessions": 93,
     "excluded_invalid_sessions": 18,
     "by_resolution": [
       {
@@ -389,7 +406,7 @@
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 20
+        "sessions": 23
       },
       {
         "resolution": "1920x1080",
@@ -447,8 +464,18 @@
         "sessions": 1
       },
       {
+        "resolution": "1920x1200",
+        "width": 1920,
+        "sessions": 1
+      },
+      {
         "resolution": "2048x1152",
         "width": 2048,
+        "sessions": 1
+      },
+      {
+        "resolution": "2056x1329",
+        "width": 2056,
         "sessions": 1
       },
       {
