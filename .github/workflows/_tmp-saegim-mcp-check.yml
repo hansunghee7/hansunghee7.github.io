@@ -85,5 +85,11 @@ jobs:
               .eq("doc", "UX_GUIDE").eq("section_id", test_id).execute().data
           )
           print(f"[OK] cite 왕복 확인: {test_id} 인용 {count}건")
+
+          # 5) 방금 남긴 테스트 인용은 정리한다 — 실사용 데이터를 흐리지 않기 위해
+          deleted = sb.table("guide_citations").delete().eq(
+              "doc", "UX_GUIDE"
+          ).eq("note", "MCP 서버 내부 베타 연결 테스트 (탐, GitHub Actions 대행 실행)").execute()
+          print(f"[OK] 테스트 인용 {len(deleted.data)}건 정리함")
           print("[DONE] 새김 MCP 백엔드(Supabase) 연결 검증 완료")
           PYEOF
