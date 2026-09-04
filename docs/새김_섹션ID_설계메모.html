@@ -44,15 +44,18 @@
     font-family: 'IBM Plex Mono', ui-monospace, monospace;
   }
 
-  /* ---------- 헤더: 낙관/새김 인장 모티프 + 브랜드 마크(UX_GUIDE#f12d) ---------- */
+  /* ---------- 헤더: 낙관/새김 인장 모티프 ----------
+     UX_GUIDE#f12d (§1.5 브랜드 표기, 2026-09-04 정정판) — 이 메모는
+     심플리파이어 영역 "내부" 문서라 홈페이지가 아니면 로고를 넣지
+     않는다. 물리적으로 claude.ai에 있어도 "독립 도달"(메일 등)이
+     아니라 업무용 내부 문서이기 때문. 1차 수정 때는 로고 이미지를
+     넣었다가(그때도 규칙 오독), 이번에 다시 뺐다. */
   .masthead{
     display:flex;
     align-items:flex-start;
-    justify-content: space-between;
     gap: 24px;
     margin-bottom: 8px;
   }
-  .masthead-left{ display:flex; align-items:flex-start; gap:24px; }
   .seal{
     flex: 0 0 auto;
     width: 64px; height: 64px;
@@ -67,16 +70,6 @@
     transform: rotate(-3deg);
   }
   .masthead-text{ padding-top: 2px; }
-  .brandmark{
-    flex: 0 0 auto;
-    padding-top: 8px;
-    white-space: nowrap;
-  }
-  .brandmark img{
-    height: 20px;
-    width: auto;
-    display: block;
-  }
   .eyebrow{
     font-family:'IBM Plex Mono', monospace;
     font-size: 12.5px;
@@ -293,23 +286,18 @@
   @media (max-width: 520px){
     .compare{ grid-template-columns: 92px 1fr; }
     h1{ font-size: 25px; }
-    .masthead{ flex-direction: column; }
-    .brandmark{ padding-top:0; }
   }
 </style>
 
 <div class="page">
 
   <div class="masthead">
-    <div class="masthead-left">
-      <div class="seal">새</div>
-      <div class="masthead-text">
-        <p class="eyebrow">설계 메모 · 2026-09-04 · 탐</p>
-        <h1>절 인용 키를 번호에서 안정 id로</h1>
-        <p class="subtitle">새김(saegim) v0.2 — 심플리파이어 스튜디오 참조문서 참조스코어 체계의 기반 설계</p>
-      </div>
+    <div class="seal">새</div>
+    <div class="masthead-text">
+      <p class="eyebrow">설계 메모 · 2026-09-04 · 탐</p>
+      <h1>절 인용 키를 번호에서 안정 id로</h1>
+      <p class="subtitle">새김(saegim) v0.2 — 심플리파이어 스튜디오 참조문서 참조스코어 체계의 기반 설계</p>
     </div>
-    <div class="brandmark"><img src="/log_assets/images/logo_black.png" alt="Simplifier"></div>
   </div>
   <p class="meta-line">docs/UX_GUIDE.md 기준 작성 · 타이포그래피 §1.1 · 정보 노출 §1.2 · 브랜드 표기 §1.5</p>
 
@@ -462,19 +450,24 @@
     <span class="idchip">UX_GUIDE#fa6f</span>(§1.1 타이포그래피 페어링)에 따라
     Pretendard Variable로, 기술적으로 깊은 원인 설명은
     <span class="idchip">UX_GUIDE#95e7</span>(§1.2 점진적 정보 노출)에 따라
-    한 번만 읽으면 되는 디테일로 접어뒀습니다. 헤더 우측의 브랜드 마크는
-    <span class="idchip">UX_GUIDE#f12d</span>(§1.5 브랜드 표기)에 따라 실제
-    로고 이미지(<code class="mono">logo_black.png</code>)를 씁니다. 이
-    커밋 자체가 새김 인용 관행의 첫 실제 데이터입니다 — 아래 참조스코어
-    점검이 그 증거입니다.
+    한 번만 읽으면 되는 디테일로 접어뒀습니다. 이 커밋 자체가 새김 인용
+    관행의 첫 실제 데이터입니다 — 아래 참조스코어 점검이 그 증거입니다.
     <br><br>
     <b>1차본에서 놓친 것(사장님 지적, 2026-09-04)</b> — 첫 버전은
     <code class="mono">prefers-color-scheme</code>로 다크모드를 자동
     전환했는데, <span class="idchip">UX_GUIDE#8ad6</span>(§1.3 고정 테마)은
-    "두 화면 다 이 미디어쿼리를 쓰지 않는다"고 명시합니다. 브랜드 마크도
-    실제 로고 대신 텍스트로 흉내만 냈습니다. 이 버전에서 라이트 고정
-    테마로 바꾸고 실제 로고 이미지로 교체했습니다 — UX_GUIDE를
-    "참고했다"는 것과 "규칙을 지켰다"는 건 다르다는 걸 보여준 사례입니다.
+    "두 화면 다 이 미디어쿼리를 쓰지 않는다"고 명시합니다. 라이트 고정
+    테마로 바꿨습니다.
+    <br><br>
+    <b>2차본에서도 놓친 것(사장님 지적, 2026-09-04)</b> — 1차 수정 때
+    브랜드 마크를 텍스트에서 실제 로고 이미지로 바꿨는데, 그 자체가
+    틀렸습니다. <span class="idchip">UX_GUIDE#f12d</span>(§1.5 브랜드
+    표기)를 다시 보면, 로고는 "독립적으로 도달하는 콘텐츠"(메일 등)에만
+    넣고 "심플리파이어 영역 내부 문서"는 홈이 아니면 뺍니다. 이 메모는
+    `claude.ai`에 있어도 성격상 후자라서, 로고를 아예 뺐습니다 —
+    §1.5 자체도 이 사례를 반영해 같은 세션에서 다시 썼습니다. UX_GUIDE를
+    "참고했다"는 것과 "규칙을 지켰다"는 건 다르고, 규칙 자체가 미비할
+    수도 있다는 걸 두 번 연속 보여준 셈입니다.
   </div>
 
   <section>
