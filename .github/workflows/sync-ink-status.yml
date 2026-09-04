@@ -28,7 +28,11 @@ jobs:
       - name: Determine changed files
         run: |
           git fetch --depth=1 origin ${{ github.event.pull_request.base.sha }}
-          git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} > /tmp/changed.txt
+          # -c core.quotePath=false: 한글 등 비ASCII 파일명을 git이 기본으로
+          # "log_ass\355..." 식 8진 이스케이프+따옴표로 감싸서 내보내는 걸 막는다.
+          # 안 붙이면 파일명이 그대로 안 나와 question_id 매칭이 항상 실패한다
+          # (2026-09-04 첫 실제 초안 PR에서 실측 -- "건너뜀"만 찍히고 조용히 넘어감).
+          git -c core.quotePath=false diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} > /tmp/changed.txt
           cat /tmp/changed.txt
       - name: Sync
         env:
