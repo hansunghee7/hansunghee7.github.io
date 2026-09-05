@@ -30,6 +30,13 @@ LinkedIn·Facebook·Instagram·Threads·리멤버 프로필을 열 때 팔로워
   SNS 인사이트 회사 계정 라운드(`DASHBOARD_PLATFORMS`)에 얹혀서 같이
   돌지만, 데이터는 sns-insight.json과 섞이지 않게 별도 파일에 쓴다.
   아직 이 데이터를 보여주는 화면은 없음(추후 필요하면 Studio에 추가).
+- **GitHub PAT를 확장에서 없앰(클로드 사용량 한정)**: 위 기록은 GitHub PAT를
+  확장에 붙여넣는 대신, Cloudflare Worker(`simplifier-claude-usage-writer`,
+  코드는 `worker.js`, 배포 절차는 `WORKER_DEPLOY.md`)를 통해서 씀. 진짜
+  GitHub 토큰은 Worker 환경변수 안에만 있고, 확장은 `APP_KEY`(새어나가도
+  이 파일 하나에만 쓸 수 있어 피해가 작음)만 코드에 들고 호출한다. 확장을
+  재설치하거나 새 프로필에 깔아도 이 항목은 토큰을 다시 안 넣어도 됨
+  (다른 SNS 항목들은 여전히 기존 PAT 붙여넣기 방식 — 전체 전환은 다음 단계).
 
 ## 2026-09-05 사고 — 조직 Chrome 정책으로 확장이 완전히 막힘 → 웹스토어 설치로 전환
 

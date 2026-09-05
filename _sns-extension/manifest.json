@@ -26,7 +26,8 @@
     "https://api.github.com/*",
     "https://simplifier-cms-auth.simon-8be.workers.dev/*",
     "https://simplifier.co.kr/*",
-    "https://claude.ai/*"
+    "https://claude.ai/*",
+    "https://simplifier-claude-usage-writer.simon-8be.workers.dev/*"
   ],
   "background": {
     "service_worker": "background.js"
