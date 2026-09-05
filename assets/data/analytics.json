@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-04T21:51:05.199439+00:00",
+  "updated_at": "2026-09-05T05:44:58.974894+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 140,
-    "activeUsers": 84,
-    "newUsers": 84,
+    "sessions": 141,
+    "activeUsers": 85,
+    "newUsers": 85,
     "returningUsers": 0
   },
   "daily": [
@@ -80,9 +80,9 @@
     },
     {
       "date": "2026-09-05",
-      "sessions": 1,
-      "activeUsers": 1,
-      "newUsers": 1,
+      "sessions": 2,
+      "activeUsers": 2,
+      "newUsers": 2,
       "returningUsers": 0
     }
   ],
@@ -97,15 +97,15 @@
     }
   ],
   "landing_types": {
-    "home": 88,
+    "home": 89,
     "log_home": 7,
-    "individual_post": 22,
+    "individual_post": 21,
     "other": 25
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 104
+      "sessions": 105
     },
     {
       "source": "searchadvisor.naver.com",
@@ -120,12 +120,12 @@
       "sessions": 7
     },
     {
-      "source": "(not set)",
-      "sessions": 4
-    },
-    {
       "source": "linkedin.com",
       "sessions": 3
+    },
+    {
+      "source": "(not set)",
+      "sessions": 2
     },
     {
       "source": "bing",
@@ -149,7 +149,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 104
+      "sessions": 105
     },
     {
       "source": "searchadvisor.naver.com",
@@ -263,11 +263,6 @@
       "sessions": 1
     },
     {
-      "path": "/log_assets/markdown/006_자정이 가까워지도록 AI 얘기를 원 없이 나눴어요.html",
-      "title": "/log_assets/markdown/006_자정이 가까워지도록 AI 얘기를 원 없이 나눴어요.html",
-      "sessions": 1
-    },
-    {
       "path": "/log_assets/markdown/012_누가 주인인가요.html",
       "title": "/log_assets/markdown/012_누가 주인인가요.html",
       "sessions": 1
@@ -305,6 +300,11 @@
     {
       "path": "/log_assets/markdown/592_프로덕트팀의 생산속도 향상을 위한 9가지 전략.html",
       "title": "/log_assets/markdown/592_프로덕트팀의 생산속도 향상을 위한 9가지 전략.html",
+      "sessions": 1
+    },
+    {
+      "path": "/log_assets/markdown/607_C레벨이라는 리더는 어떻게 일해야 하나요.html",
+      "title": "/log_assets/markdown/607_C레벨이라는 리더는 어떻게 일해야 하나요.html",
       "sessions": 1
     }
   ],
@@ -402,7 +402,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 94,
+    "total_desktop_sessions": 95,
     "excluded_invalid_sessions": 18,
     "by_resolution": [
       {
@@ -413,7 +413,7 @@
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 23
+        "sessions": 24
       },
       {
         "resolution": "1920x1080",
