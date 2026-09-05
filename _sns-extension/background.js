@@ -633,7 +633,7 @@ function commitClaudeUsageCapture(capture, retryCount, forceRefetch) {
       if (putRes.ok) {
         return putRes.json().then(function (putBody) {
           claudeUsageFileCache = { sha: putBody && putBody.sha, data: result.data };
-          pushLog({ platform: "claude_usage", count: capture.fields.session_5h, capturedAt: capture.capturedAt, status: "success" });
+          pushLog({ platform: "claude_usage", count: capture.fields.session_5h, capturedAt: capture.capturedAt, status: "success", unit: "%" });
         });
       }
       return putRes.text().then(function (t) {
