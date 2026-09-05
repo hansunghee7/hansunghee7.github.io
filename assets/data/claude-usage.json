@@ -2,22 +2,22 @@
   "session_5h": [
     {
       "date": "2026-09-05",
-      "pct": 26,
-      "capturedAt": "2026-09-05T08:58:11.917Z"
+      "pct": 32,
+      "capturedAt": "2026-09-05T09:23:12.123Z"
     }
   ],
   "weekly_all": [
     {
       "date": "2026-09-05",
-      "pct": 17,
-      "capturedAt": "2026-09-05T08:58:11.917Z"
+      "pct": 0,
+      "capturedAt": "2026-09-05T09:23:12.123Z"
     }
   ],
   "weekly_fable": [
     {
       "date": "2026-09-05",
-      "pct": 9,
-      "capturedAt": "2026-09-05T08:58:11.917Z"
+      "pct": 0,
+      "capturedAt": "2026-09-05T09:23:12.123Z"
     }
   ]
 }
