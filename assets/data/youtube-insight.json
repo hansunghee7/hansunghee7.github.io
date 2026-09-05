@@ -31,6 +31,12 @@
           "views": 4416,
           "likes": 25,
           "comments": 3
+        },
+        {
+          "date": "2026-09-06",
+          "views": 4417,
+          "likes": 25,
+          "comments": 3
         }
       ],
       "title": "아파트 옥상 물탱크가 전부 사라진 이유",
@@ -81,6 +87,12 @@
         {
           "date": "2026-09-05",
           "views": 5073,
+          "likes": 35,
+          "comments": 4
+        },
+        {
+          "date": "2026-09-06",
+          "views": 5078,
           "likes": 35,
           "comments": 4
         }
@@ -135,12 +147,32 @@
           "views": 10,
           "likes": 0,
           "comments": 0
+        },
+        {
+          "date": "2026-09-06",
+          "views": 10,
+          "likes": 0,
+          "comments": 0
         }
       ],
       "title": "아파트 로비가 호텔처럼 변하고 있는 진짜 이유 #건축상식 #아파트",
       "published_at": "2026-09-03T09:00:36Z",
       "thumbnail": "https://i.ytimg.com/vi/SrIFV2vJMMY/maxresdefault.jpg",
       "duration_seconds": 112
+    },
+    "Ai5fMn4teP0": {
+      "history": [
+        {
+          "date": "2026-09-06",
+          "views": 105,
+          "likes": 5,
+          "comments": 0
+        }
+      ],
+      "title": "지하주차장 천장에 달린 거대한 대포의 정체",
+      "published_at": "2026-09-05T21:00:39Z",
+      "thumbnail": "https://i.ytimg.com/vi/Ai5fMn4teP0/maxresdefault.jpg",
+      "duration_seconds": 91
     }
   },
   "channel": {
@@ -175,10 +207,16 @@
         "subscribers": 15,
         "total_views": 4413,
         "video_count": 3
+      },
+      {
+        "date": "2026-09-06",
+        "subscribers": 16,
+        "total_views": 4415,
+        "video_count": 4
       }
     ],
     "title": "신기한 아파트사전",
     "id": "UCTbS2jSG1BvBl4c6EsVx7sA"
   },
-  "updated_at": "2026-09-05T13:31:27.152879Z"
+  "updated_at": "2026-09-05T22:13:48.833508Z"
 }
