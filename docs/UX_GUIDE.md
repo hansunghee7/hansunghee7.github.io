@@ -4,6 +4,15 @@
 > [통합 UX 가이드](/insight-7b3e9f2c/style-guide.html)(`insight-7b3e9f2c/style-guide.html`).
 > 내용을 고칠 땐 이 마크다운과 그 HTML을 함께 업데이트하세요 — 자동 동기화
 > 파이프라인은 없습니다.
+>
+> **다른 저장소(예: shorts-lab)의 세션이 이 값을 참고할 때**: 이 저장소는
+> 공개라 `add_repo`·클론 없이 `raw.githubusercontent.com/hansunghee7/
+> hansunghee7.github.io/main/<경로>`로 필요한 파일만 바로 받을 수 있습니다.
+> 대부분은 이 문서·`insight-7b3e9f2c/STYLE_GUIDE.md`·`insight-7b3e9f2c/
+> studio.css` 세 개면 충분합니다(2026-09-05 실측: 세 파일 합쳐 58KB vs
+> 전체 클론 2,809개 파일 — 약 200배 차이). 다른 저장소 안에 이 값의 사본을
+> 미리 캐싱해두는 건 하지 않습니다 — 정본이 여기 하나뿐이어야 이 문서가
+> 바뀔 때 다른 저장소가 조용히 낡은 값을 쓰는 사고를 막습니다.
 
 이 저장소는 성격이 다른 두 화면을 동시에 갖고 있습니다 — **고객과 만나는 공개
 홈페이지**(simplifier.co.kr, 검색엔진 노출이 목적)와 **관리자 전용 심플리파이어
