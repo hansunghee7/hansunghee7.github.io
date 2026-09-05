@@ -226,7 +226,7 @@ function maybeRunRound(platforms, dateKey, startedAtKey, force, label) {
     // 포커스 없는 최소화 창을 따로 만들어 거기서 열고 통째로 닫는다.
     // 작업 표시줄에 창 하나가 잠깐 생겼다 사라지는 정도로 존재감이 줄어든다.
     chrome.windows.create(
-      { url: platforms, focused: false, state: "minimized" },
+      { url: platforms, focused: false, state: "minimized", width: 1440, height: 960 },
       function (win) {
         if (chrome.runtime.lastError || !win) {
           console.log(
