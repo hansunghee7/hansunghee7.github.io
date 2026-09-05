@@ -7,6 +7,30 @@ LinkedIn·Facebook·Instagram·Threads·리멤버 프로필을 열 때 팔로워
 팔로워 등 채널 요약 수치를 읽어 "콘텐츠 인사이트"(`content-insight.html`)
 에도 기록합니다(아래 2026-09-01 항목).
 
+## 2026-09-05 변경 — 리멤버·스레드 수집 버그 수정 + 클로드 사용량 수집 추가 (v1.6.8)
+
+- **리멤버 커넥트 수집 실패 수정**: 백그라운드 수집 창이 너비/높이 지정
+  없이 열려서, 리멤버 커넥트처럼 좁은 화면에서 프로필 카드 자체를 숨기는
+  반응형 사이트는 그 카드가 DOM에 아예 안 생겨 못 찾았다(사장님이 넓은
+  화면·좁은 화면 캡처 두 장을 비교해 발견). `background.js`의
+  `chrome.windows.create`에 `width: 1440, height: 960`을 명시해 해결.
+- **스레드(신기한 아파트사전) 수집 실패 수정**: `www.threads.com`이
+  `threads.com`(www 없는 주소)으로 리다이렉트되는데, manifest 매치
+  패턴이 `www.` 버전만 등록돼 있어 리다이렉트된 최종 주소에서 콘텐츠
+  스크립트가 아예 실행되지 않았다(DOM 문제가 아니라 코드가 안 돎).
+  `manifest.json`의 `host_permissions`·`content_scripts.matches`에
+  `threads.com`(www 없는) 패턴을 추가하고, 방문 URL도 리다이렉트 없는
+  주소로 바꿔 해결.
+- **클로드 사용량 수집 추가**: `claude.ai/code#settings/usage`로 이동하면
+  뜨는 "플랜 사용량 한도"(5시간·주간 전체모델·주간 Fable %)를 읽어
+  `assets/data/claude-usage.json`에 기록. 이 페이지는 라벨과 숫자 사이에
+  "32분 후 재설정" 같은 텍스트가 끼어 있어 기존 라벨 근접 매칭이 안
+  통해서, "현재 세션 → 전체 모델 → Fable" 고정 순서를 이용해 "N% 사용됨"
+  패턴을 순서대로 자리 배정하는 방식을 새로 씀(`tryExtractClaudeUsage`).
+  SNS 인사이트 회사 계정 라운드(`DASHBOARD_PLATFORMS`)에 얹혀서 같이
+  돌지만, 데이터는 sns-insight.json과 섞이지 않게 별도 파일에 쓴다.
+  아직 이 데이터를 보여주는 화면은 없음(추후 필요하면 Studio에 추가).
+
 ## 2026-09-05 사고 — 조직 Chrome 정책으로 확장이 완전히 막힘 → 웹스토어 설치로 전환
 
 `chrome://extensions`에서 이 확장의 "사용 안함" 토글 자체가 눌리지 않고
@@ -34,8 +58,7 @@ PAT(`sns-extension-2`)를 재발급(regenerate)해서 그대로 재사용했다(
 09-04 하루 만에 재발한 원인). 대신 fine-grained PAT(이 저장소 하나,
 Contents Read and write)를 만들어 팝업의 "GitHub 토큰 붙여넣기"로 저장한다.
 팝업 상단 "토큰:" 줄이 `github_p…`로 시작하면 정상, `gho_`면 다시 OAuth로
-덮어쓴 것이다. 다음 판(1.6.8)에서 OAuth 버튼 숨김 또는 경고 표시 예정 —
-웹스토어 검토 결과가 나온 뒤 묶어서 올린다.
+덮어쓴 것이다. OAuth 버튼 숨김 또는 경고 표시는 아직 미착수 — 다음 판에서.
 
 ## 2026-09-03 변경 — 팝업 로그에 "몇 개 걸러졌는지"도 표시 (v1.6.7)
 

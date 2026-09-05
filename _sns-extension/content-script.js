@@ -67,6 +67,15 @@
     // 일부(예: netflix.com)에도 우연히 걸릴 수 있어 앵커를 건다.
     { test: /(^|\.)x\.com$/, key: "content_x", hrefContains: "sinkihanapt", multi: true,
       fields: { followers: ["Followers", "followers"], following: ["Following", "following"] } },
+
+    // ── 클로드 사용량(값 3개, 순서 기반, CLAUDE_USAGE_CAPTURE) ──────
+    // 라벨("현재 세션" 등)과 숫자 사이에 "32분 후 재설정" 같은 텍스트가
+    // 끼어 있어 findCount의 라벨-숫자 근접 매칭(\D{0,6})이 안 먹는다
+    // (2026-09-05, 사장님이 실제 마크업으로 확인). 대신 이 페이지는
+    // "현재 세션 → 전체 모델 → Fable" 순서가 고정이라, "N% 사용됨" 패턴을
+    // 순서대로 주워서 자리로 대응시킨다(클래스가 의미 없는 유틸리티
+    // 클래스뿐이라 셀렉터보다 이쪽이 안전).
+    { test: /claude\.ai/, key: "claude_usage", hrefContains: "/code", claudeUsage: true },
   ];
 
   var rule = PLATFORM_RULES.filter(function (r) {
@@ -80,7 +89,7 @@
   // 들어가지 않아도 평소 SNS 쓰는 것만으로 전체 데이터가 자연스럽게
   // 쌓이게 하기 위함. "신기한 아파트사전" 콘텐츠 채널(multi: true인
   // 규칙 전부)은 이 회사 계정 라운드와 무관하므로 건너뛴다.
-  if (!rule.multi) {
+  if (!rule.multi && !rule.claudeUsage) {
     chrome.runtime.sendMessage({ type: "SNS_COLLECT_REQUEST" });
   }
 
@@ -133,6 +142,19 @@
       if (n !== null) foundAny = true;
     });
     return foundAny ? result : null;
+  }
+
+  // 클로드 사용량 설정 페이지("현재 세션" -> "전체 모델" -> "Fable" 순서
+  // 고정)는 라벨과 숫자가 멀리 떨어져 있어 위의 라벨 근접 매칭이 안 통해,
+  // "N% 사용됨" 패턴을 순서대로 모아 자리로 대응시킨다.
+  function tryExtractClaudeUsage() {
+    var text = document.body ? document.body.innerText : "";
+    var re = /(\d{1,3})%\s*사용됨/g;
+    var pct = [];
+    var m;
+    while ((m = re.exec(text)) !== null) pct.push(parseInt(m[1], 10));
+    if (pct.length < 3) return null;
+    return { session_5h: pct[0], weekly_all: pct[1], weekly_fable: pct[2] };
   }
 
   // 릴스·영상처럼 여러 개가 그리드로 보이는 콘텐츠는 href(진짜 링크)로
@@ -267,6 +289,33 @@
       });
     });
     return items;
+  }
+
+  if (rule.claudeUsage) {
+    var claudeAttempts = 0;
+    var CLAUDE_MAX_ATTEMPTS = 20;
+
+    var claudeTimer = setInterval(function () {
+      claudeAttempts++;
+      var result = tryExtractClaudeUsage();
+      if (result || claudeAttempts >= CLAUDE_MAX_ATTEMPTS) {
+        clearInterval(claudeTimer);
+        if (result) {
+          console.log("[SNS 인사이트]", rule.key, "감지:", result, "-> 기록 전송");
+          chrome.runtime.sendMessage({
+            type: "CLAUDE_USAGE_CAPTURE",
+            platform: rule.key,
+            fields: result,
+            url: location.href,
+            capturedAt: new Date().toISOString(),
+          });
+        } else {
+          console.log("[SNS 인사이트]", rule.key, "패턴을 못 찾음 (" + CLAUDE_MAX_ATTEMPTS + "초 시도)");
+          chrome.runtime.sendMessage({ type: "SNS_COLLECT_FAILED", platform: rule.key, url: location.href });
+        }
+      }
+    }, 1000);
+    return;
   }
 
   if (rule.multi) {

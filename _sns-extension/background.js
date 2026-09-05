@@ -74,6 +74,7 @@ var PLATFORM_LABELS = {
   content_facebook: "페이스북(신기한 아파트사전)",
   content_tiktok: "틱톡(신기한 아파트사전)",
   content_x: "X(신기한 아파트사전)",
+  claude_usage: "클로드 사용량",
 };
 
 chrome.runtime.onMessage.addListener(function (msg) {
@@ -89,6 +90,11 @@ chrome.runtime.onMessage.addListener(function (msg) {
 
   if (msg && msg.type === "CHANNEL_SUMMARY_CAPTURE") {
     handleChannelSummaryCapture(msg);
+    updateMissStreak(msg.platform, false);
+  }
+
+  if (msg && msg.type === "CLAUDE_USAGE_CAPTURE") {
+    handleClaudeUsageCapture(msg);
     updateMissStreak(msg.platform, false);
   }
 
@@ -134,6 +140,12 @@ var DASHBOARD_PLATFORMS = [
   "https://www.instagram.com/simplifier_seoul/",
   "https://www.threads.com/?hl=ko",
   "https://connect.rememberapp.co.kr/profile/1582110/posts",
+  // 2026-09-05: 클로드 사용량(5시간·주간 한도 %)도 같은 "최소화된 창에서
+  // 조용히 열고 닫기" 인프라를 그대로 재사용한다 -- SNS와 무관한 데이터지만
+  // 별도 라운드를 새로 만드는 것보다 이미 있는 걸 쓰는 게 더 싸다. 기록은
+  // assets/data/claude-usage.json으로 따로 쓴다(sns-insight.json과 안 섞임).
+  // 이 URL로 바로 이동하면 사용량 설정 모달이 자동으로 열린다(사장님 확인).
+  "https://claude.ai/code#settings/usage",
 ];
 
 // "신기한 아파트사전" 콘텐츠 채널 라운드 -- content-insight.html의
@@ -312,6 +324,7 @@ function queuePending(capture) {
 // 바꾸는지만 각자(applyFn)로 넘긴다 -- 2026-09-01, 콘텐츠 리스트 캡처를
 // 추가하면서 채널 요약 커밋 함수와 중복되지 않게 일반화했다.
 var CONTENT_DATA_PATH = "assets/data/naver-content.json";
+var CLAUDE_USAGE_DATA_PATH = "assets/data/claude-usage.json";
 var contentCommitQueue = Promise.resolve();
 
 function enqueueContentCommit(token, commitFn, capture) {
@@ -334,6 +347,21 @@ function handleChannelSummaryCapture(capture) {
       return;
     }
     enqueueContentCommit(res.githubToken, commitChannelSummaryCapture, capture);
+  });
+}
+
+// 클로드 사용량 -- SNS 데이터와 무관해 별도 파일(claude-usage.json)에
+// 쓰지만, 커밋 큐(enqueueContentCommit)는 commitFn을 인자로 받는 범용
+// 함수라 그대로 재사용한다(새 큐 변수를 안 만들어도 됨).
+function handleClaudeUsageCapture(capture) {
+  console.log("[SNS 인사이트] 클로드 사용량 캡처 수신:", capture.fields);
+  chrome.storage.local.get(["githubToken"], function (res) {
+    if (!res.githubToken) {
+      queuePendingContent("claude_usage", capture);
+      pushLog({ platform: "claude_usage", capturedAt: capture.capturedAt, status: "pending" });
+      return;
+    }
+    enqueueContentCommit(res.githubToken, commitClaudeUsageCapture, capture);
   });
 }
 
@@ -380,6 +408,7 @@ function queuePendingContent(kind, capture) {
 // Actions 새벽 수집) 파일이 바뀌어 캐시가 틀렸을 때만(PUT이 409) 캐시를
 // 버리고 새로 GET해서 재시도한다.
 var contentFileCache = null; // { sha, data }
+var claudeUsageFileCache = null; // { sha, data } -- claude-usage.json 전용, 위 캐시와 별개 파일
 
 function commitToContentFile(token, applyFn, logMeta, retryCount, forceRefetch) {
   var url = "https://api.github.com/repos/" + REPO + "/contents/" + CONTENT_DATA_PATH;
@@ -462,6 +491,104 @@ function commitToContentFile(token, applyFn, logMeta, retryCount, forceRefetch) 
     });
 }
 
+// 클로드 사용량 -- sns-insight.json과 같은 모양(플랫폼별 날짜 시계열)이라
+// 그 파일의 commitCapture를 흉내내지만, 대상 파일이 다르고 한 번에 값
+// 3개(session_5h/weekly_all/weekly_fable)를 같이 쓴다는 점이 달라 별도
+// 함수로 뒀다. commitToContentFile(naver-content.json 전용)과도 파일이
+// 달라 독립적인 GET/PUT·캐시(claudeUsageFileCache)를 쓴다.
+function commitClaudeUsageCapture(token, capture, retryCount, forceRefetch) {
+  var url = "https://api.github.com/repos/" + REPO + "/contents/" + CLAUDE_USAGE_DATA_PATH;
+
+  var readPromise = claudeUsageFileCache && !forceRefetch
+    ? Promise.resolve({ sha: claudeUsageFileCache.sha, data: JSON.parse(JSON.stringify(claudeUsageFileCache.data)) })
+    : fetch(url, { headers: ghHeaders(token) })
+        .then(function (r) {
+          if (r.status === 404) return { notFound: true };
+          if (!r.ok) {
+            return r.json().catch(function () { return {}; }).then(function (body) {
+              throw new Error("GET 실패: " + r.status + (body && body.message ? " - " + body.message : ""));
+            });
+          }
+          return r.json();
+        })
+        .then(function (fileRes) {
+          var data = {};
+          var sha = null;
+          if (!fileRes.notFound) {
+            sha = fileRes.sha;
+            try {
+              data = JSON.parse(decodeURIComponent(escape(atob(fileRes.content.replace(/\n/g, "")))));
+            } catch (e) {
+              data = {};
+            }
+          }
+          return { sha: sha, data: data };
+        });
+
+  return readPromise
+    .then(function (state) {
+      var data = state.data;
+      var day = todayStr();
+
+      ["session_5h", "weekly_all", "weekly_fable"].forEach(function (key) {
+        if (capture.fields[key] == null) return;
+        if (!data[key]) data[key] = [];
+        var series = data[key];
+        var todayEntry = series.filter(function (e) { return e.date === day; })[0];
+        if (todayEntry) {
+          todayEntry.pct = capture.fields[key];
+          todayEntry.capturedAt = capture.capturedAt;
+        } else {
+          series.push({ date: day, pct: capture.fields[key], capturedAt: capture.capturedAt });
+        }
+        series.sort(function (a, b) { return a.date < b.date ? -1 : 1; });
+      });
+
+      var newContentStr = JSON.stringify(data, null, 2);
+      var b64 = btoa(unescape(encodeURIComponent(newContentStr)));
+
+      var body = {
+        message: "chore: 클로드 사용량 자동 기록 (" + day + ") [skip ci]",
+        content: b64,
+      };
+      if (state.sha) body.sha = state.sha;
+
+      return fetch(url, {
+        method: "PUT",
+        headers: Object.assign({ "Content-Type": "application/json" }, ghHeaders(token)),
+        body: JSON.stringify(body),
+      }).then(function (putRes) { return { putRes: putRes, data: data }; });
+    })
+    .then(function (result) {
+      var putRes = result.putRes;
+      if (putRes.status === 409) {
+        claudeUsageFileCache = null;
+        if (retryCount < 3) {
+          return new Promise(function (resolve) {
+            setTimeout(resolve, 800 + Math.random() * 800);
+          }).then(function () {
+            return commitClaudeUsageCapture(token, capture, retryCount + 1, true);
+          });
+        }
+        pushLog({ platform: "claude_usage", capturedAt: capture.capturedAt, status: "error", note: "충돌 재시도 초과" });
+        return;
+      }
+      if (putRes.ok) {
+        return putRes.json().then(function (putBody) {
+          claudeUsageFileCache = { sha: putBody && putBody.content && putBody.content.sha, data: result.data };
+          pushLog({ platform: "claude_usage", count: capture.fields.session_5h, capturedAt: capture.capturedAt, status: "success" });
+        });
+      }
+      return putRes.json().catch(function () { return {}; }).then(function (body) {
+        var note = "HTTP " + putRes.status + (body && body.message ? " - " + body.message : "");
+        pushLog({ platform: "claude_usage", capturedAt: capture.capturedAt, status: "error", note: note });
+      });
+    })
+    .catch(function (e) {
+      pushLog({ platform: "claude_usage", capturedAt: capture.capturedAt, status: "error", note: String((e && e.message) || e) });
+    });
+}
+
 function commitChannelSummaryCapture(token, capture, retryCount) {
   var day = todayStr();
   return commitToContentFile(token, function (data) {
@@ -530,7 +657,9 @@ function flushPending() {
       var pendingContent = res.pendingContentCaptures;
       chrome.storage.local.set({ pendingContentCaptures: [] });
       pendingContent.forEach(function (entry) {
-        var commitFn = entry.kind === "content_list" ? commitContentListCapture : commitChannelSummaryCapture;
+        var commitFn = entry.kind === "content_list" ? commitContentListCapture
+          : entry.kind === "claude_usage" ? commitClaudeUsageCapture
+          : commitChannelSummaryCapture;
         enqueueContentCommit(res.githubToken, commitFn, entry.capture);
       });
     }
