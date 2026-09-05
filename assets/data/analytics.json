@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-05T05:44:58.974894+00:00",
+  "updated_at": "2026-09-05T11:20:56.417976+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 141,
-    "activeUsers": 85,
-    "newUsers": 85,
+    "sessions": 143,
+    "activeUsers": 87,
+    "newUsers": 87,
     "returningUsers": 0
   },
   "daily": [
@@ -80,9 +80,9 @@
     },
     {
       "date": "2026-09-05",
-      "sessions": 2,
-      "activeUsers": 2,
-      "newUsers": 2,
+      "sessions": 4,
+      "activeUsers": 4,
+      "newUsers": 4,
       "returningUsers": 0
     }
   ],
@@ -97,7 +97,7 @@
     }
   ],
   "landing_types": {
-    "home": 89,
+    "home": 91,
     "log_home": 7,
     "individual_post": 21,
     "other": 25
@@ -105,7 +105,7 @@
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 105
+      "sessions": 107
     },
     {
       "source": "searchadvisor.naver.com",
@@ -149,7 +149,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 105
+      "sessions": 107
     },
     {
       "source": "searchadvisor.naver.com",
@@ -402,7 +402,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 95,
+    "total_desktop_sessions": 96,
     "excluded_invalid_sessions": 18,
     "by_resolution": [
       {
@@ -452,6 +452,11 @@
       },
       {
         "resolution": "1024x1024",
+        "width": 1024,
+        "sessions": 1
+      },
+      {
+        "resolution": "1024x2160",
         "width": 1024,
         "sessions": 1
       },
