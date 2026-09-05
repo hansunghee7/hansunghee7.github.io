@@ -28,7 +28,7 @@
         },
         {
           "date": "2026-09-05",
-          "views": 4413,
+          "views": 4416,
           "likes": 25,
           "comments": 3
         }
@@ -80,7 +80,7 @@
         },
         {
           "date": "2026-09-05",
-          "views": 4549,
+          "views": 5073,
           "likes": 35,
           "comments": 4
         }
@@ -103,16 +103,16 @@
           "published_at": "2026-09-02T06:34:38Z"
         },
         {
-          "author": "@ubin1757",
-          "text": "잘못된게진짜많네요",
-          "likes": 0,
-          "published_at": "2026-09-03T00:13:16Z"
-        },
-        {
           "author": "@ejay0509",
           "text": "아파트는 철옹성이다 ㅡ군사요새같지 !  요새는 어플깔고 어플에 등록하고 들어오라고 한다 어이가 없지 !  ㅡㅡ시대에역행 하는 폐쇄적사고와 생활방식",
           "likes": 1,
           "published_at": "2026-09-02T22:57:28Z"
+        },
+        {
+          "author": "@ubin1757",
+          "text": "잘못된게진짜많네요",
+          "likes": 0,
+          "published_at": "2026-09-03T00:13:16Z"
         }
       ]
     },
@@ -132,7 +132,7 @@
         },
         {
           "date": "2026-09-05",
-          "views": 8,
+          "views": 10,
           "likes": 0,
           "comments": 0
         }
@@ -173,12 +173,12 @@
       {
         "date": "2026-09-05",
         "subscribers": 15,
-        "total_views": 3783,
+        "total_views": 4413,
         "video_count": 3
       }
     ],
     "title": "신기한 아파트사전",
     "id": "UCTbS2jSG1BvBl4c6EsVx7sA"
   },
-  "updated_at": "2026-09-04T22:30:08.773484Z"
+  "updated_at": "2026-09-05T13:31:27.152879Z"
 }
