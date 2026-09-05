@@ -22,6 +22,9 @@
   .usage-card svg{width:100%; height:56px; display:block;}
   .usage-card .empty{font-size:12px; color:var(--muted); padding:20px 0; text-align:center;}
   .usage-card .reset-note{font-size:11.5px; color:var(--muted); margin-top:8px;}
+  .kpi-badge{display:inline-block; font-size:11px; font-weight:600; padding:2px 8px; border-radius:999px; margin-top:8px;}
+  .kpi-badge.in-band{color:var(--good); background:rgba(31,122,79,0.1);}
+  .kpi-badge.out-band{color:var(--warn); background:rgba(163,105,15,0.1);}
 </style>
 </head>
 <body class="has-shell-nav">
@@ -29,7 +32,7 @@
 
 <div class="wrap">
   <header>
-    <h1>클로드 사용량<button type="button" class="info-dot" id="titleInfo" aria-label="설명 보기">ⓘ<span class="info-text">클로드 코드 사용량(claude.ai/code#settings/usage) 화면의 세 값을 크롬 확장이 PC가 켜져 있는 동안 30분마다 자동으로 읽어 기록합니다. 폰에서 이 페이지를 열면 PC가 마지막으로 캡처한 값을 볼 수 있습니다 — 실시간이 아니라 "최근 30분 이내" 값입니다. 새로고침은 PC의 확장에 지금 바로 다시 확인해달라고 요청합니다(PC가 켜져 있어야 동작).</span></button></h1>
+    <h1>클로드 사용량<button type="button" class="info-dot" id="titleInfo" aria-label="설명 보기">ⓘ<span class="info-text">클로드 코드 사용량(claude.ai/code#settings/usage) 화면의 세 값을 크롬 확장이 PC가 켜져 있는 동안 30분마다 자동으로 읽어 기록합니다. 폰에서 이 페이지를 열면 PC가 마지막으로 캡처한 값을 볼 수 있습니다 — 실시간이 아니라 "최근 30분 이내" 값입니다. 새로고침은 PC의 확장에 지금 바로 다시 확인해달라고 요청합니다(PC가 켜져 있어야 동작). 주간 한도(모든 모델) 카드의 배지는 2026-09-05 KPI 기준(주간 사용률 89~99%가 목표 구간)에 맞춰 표시합니다 — 현재 세션(5시간)은 작업 중 참고용이라 배지를 안 붙입니다.</span></button></h1>
     <button class="refresh" id="refreshBtn"><span class="refresh-icon">↻</span> <span class="refresh-label">새로고침</span></button>
     <span id="lastRefresh" class="meta-text"></span>
   </header>
@@ -44,7 +47,7 @@
 
   var SERIES = [
     { key: "session_5h", label: "현재 세션 (5시간)" },
-    { key: "weekly_all", label: "주간 한도 · 모든 모델" },
+    { key: "weekly_all", label: "주간 한도 · 모든 모델", kpiBand: [89, 99] },
     { key: "weekly_fable", label: "주간 한도 · Fable 전용" },
   ];
 
@@ -124,8 +127,24 @@
       '<div class="tile usage-card"><h3>' + escapeHtml(s.label) + infoDot + "</h3>" +
       '<div class="latest"><span class="val">' + latest.pct + '<span class="unit">%</span></span>' + deltaHtml + "</div>" +
       sparkline(series) +
+      kpiBadge(s, latest.pct) +
       "</div>"
     );
+  }
+
+  // 2026-09-05 사장님 지시: 탐의 KPI는 "종료 시점 주간 사용률 89~99%"다 --
+  // 핵심 과제 수행에 지장 없이 한도를 최대한 알뜰하게 쓰라는 뜻(89% 밑이면
+  // 아까운 여유를 남긴 것, 99% 위면 한도 초과 위험). 이 배지는 그 판정을
+  // 감이 아니라 실측 데이터로 매번 바로 보여주려는 것 -- kpiBand가 있는
+  // 시리즈(주간·모든 모델)에만 붙는다.
+  function kpiBadge(s, pct) {
+    if (!s.kpiBand) return "";
+    var min = s.kpiBand[0], max = s.kpiBand[1];
+    if (pct >= min && pct <= max) {
+      return '<span class="kpi-badge in-band">KPI 구간 안 (' + min + "~" + max + "%)</span>";
+    }
+    var note = pct < min ? "여유 많음 — 더 써도 됨" : "한도 초과 위험";
+    return '<span class="kpi-badge out-band">KPI 구간 밖 · ' + escapeHtml(note) + "</span>";
   }
 
   function sparkline(series, w) {
