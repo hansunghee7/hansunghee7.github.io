@@ -88,7 +88,7 @@
 <div class="wrap">
   <header>
     <h1>통합 UX 가이드<button type="button" class="info-dot" id="titleInfo" aria-label="설명 보기">ⓘ<span class="info-text">고객이 만나는 공개 홈페이지(simplifier.co.kr)와 관리자 전용 Simplifier Studio(이 화면 자체), 성격이 다른 두 화면을 한 문서에서 관리합니다. 정본 마크다운은 저장소의 docs/UX_GUIDE.md — 이 페이지는 그걸 사람이 읽기 좋게 렌더링한 것입니다. 스튜디오만의 세부 구현 규칙은 별도 정본(insight-7b3e9f2c/STYLE_GUIDE.md)을 따로 봅니다.</span></button></h1>
-    <span class="meta-text">2026-08-29 통합 · docs/UX_GUIDE.md 기준</span>
+    <span class="meta-text">2026-08-29 통합 · docs/UX_GUIDE.md 기준 · 최종 업데이트 <span id="uxGuideLastUpdated">확인 중</span><button type="button" class="info-dot" id="changelogInfo" aria-label="설명 보기">ⓘ<span class="info-text" id="changelogText">최근 변경 이력을 불러오는 중입니다.</span></button></span>
   </header>
 
   <article class="doc">
@@ -303,5 +303,85 @@
 </div>
 
 <script src="/insight-7b3e9f2c/studio.js"></script>
+<script>
+/* 헤더 "최종 업데이트" — docs/UX_GUIDE.md의 최근 커밋을 GitHub API에서
+   직접 읽어온다(빌드 단계 없음, pillar-manage.html과 같은 클라이언트
+   사이드 조회 패턴). 새김 MCP는 Supabase에서 데이터만 가져가고, 사람은
+   여기서 시각적으로 확인하는 구조를 맞추기 위한 것 — 2026-09-05. */
+(function () {
+  var REPO = "hansunghee7/hansunghee7.github.io";
+  var DOC_PATH = "docs/UX_GUIDE.md";
+  var CACHE_KEY = "uxGuideChangelog";
+  var CACHE_TTL_MS = 10 * 60 * 1000;
+  var dateEl = document.getElementById("uxGuideLastUpdated");
+  var listEl = document.getElementById("changelogText");
+
+  function escapeHtml(s) {
+    return s.replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  function render(commits) {
+    if (!commits || !commits.length) {
+      dateEl.textContent = "확인 불가";
+      listEl.textContent = "GitHub에서 커밋 이력을 가져오지 못했습니다.";
+      return;
+    }
+    dateEl.textContent = commits[0].date;
+    listEl.innerHTML = "<b>최근 변경 이력</b><br>" + commits.map(function (c) {
+      return escapeHtml(c.date) + " — " + escapeHtml(c.message) +
+        ' <span style="opacity:.6">(' + escapeHtml(c.sha) + ")</span>";
+    }).join("<br>");
+  }
+
+  function readCache() {
+    try {
+      var raw = sessionStorage.getItem(CACHE_KEY);
+      if (!raw) return null;
+      var parsed = JSON.parse(raw);
+      if (Date.now() - parsed.savedAt > CACHE_TTL_MS) return null;
+      return parsed.commits;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function writeCache(commits) {
+    try {
+      sessionStorage.setItem(CACHE_KEY, JSON.stringify({ savedAt: Date.now(), commits: commits }));
+    } catch (e) {}
+  }
+
+  var cached = readCache();
+  if (cached) {
+    render(cached);
+    return;
+  }
+
+  fetch("https://api.github.com/repos/" + REPO + "/commits?path=" + encodeURIComponent(DOC_PATH) + "&per_page=5", {
+    headers: { Accept: "application/vnd.github+json" }
+  })
+    .then(function (res) {
+      if (!res.ok) throw new Error("GitHub API " + res.status);
+      return res.json();
+    })
+    .then(function (data) {
+      var commits = data.map(function (c) {
+        return {
+          date: (c.commit.author.date || "").slice(0, 10),
+          message: c.commit.message.split("\n")[0],
+          sha: c.sha.slice(0, 7)
+        };
+      });
+      writeCache(commits);
+      render(commits);
+    })
+    .catch(function (err) {
+      dateEl.textContent = "확인 불가";
+      listEl.textContent = "GitHub API 호출 실패: " + err.message;
+    });
+})();
+</script>
 </body>
 </html>
