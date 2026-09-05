@@ -7,6 +7,34 @@ LinkedIn·Facebook·Instagram·Threads·리멤버 프로필을 열 때 팔로워
 팔로워 등 채널 요약 수치를 읽어 "콘텐츠 인사이트"(`content-insight.html`)
 에도 기록합니다(아래 2026-09-01 항목).
 
+## 2026-09-05 변경 — GitHub PAT를 확장에서 완전히 없앰 (v1.6.9)
+
+바로 아래 절(v1.6.8)에서 클로드 사용량 하나만 시범 삼아 Worker로 옮겼는데,
+"그럼 다른 SNS 항목은 재설치할 때마다 또 토큰을 넣어야 하냐"는 사장님
+피드백으로 **전부** 옮겼다. 이제 확장 어디에도 GitHub PAT를 붙여넣는 UI가
+없다 — 팝업의 "GitHub 연결"/"토큰 저장" 버튼과 `githubToken` 저장소 값,
+그리고 그걸 기다리던 `pendingCaptures` 큐를 통째로 뺐다.
+
+- **Worker를 범용 GitHub 쓰기 프록시로 확장**: `worker.js`가 이제
+  `claude-usage.json` 하나가 아니라 `sns-insight.json`·`naver-content.json`
+  까지 3개 파일(`ALLOWED_PATHS`)에 대해 `op: "get"`/`op: "put"` 두 창구만
+  제공한다. 병합 로직(오늘 날짜 항목 덮어쓸지 새로 넣을지 등)은 여전히
+  확장(`background.js`) 쪽에 그대로 두고, Worker는 "GitHub Contents API를
+  대신 GET/PUT 해주는 것"만 한다 — `APP_KEY`가 새어나가도 이 파일 3개
+  말고는(사이트 HTML/JS/CSS 등) 절대 못 건드린다.
+- **`background.js`**: `ghHeaders(token)`으로 직접 `api.github.com`을
+  부르던 모든 곳(`commitCapture`, `commitToContentFile`)을
+  `ghProxyGet`/`ghProxyPut`(Worker 호출)로 교체. `token` 매개변수와
+  `githubToken` 스토리지 의존을 전부 제거 — 이제 캡처는 토큰 유무와
+  무관하게 항상 바로 Worker로 간다.
+- **`popup.js`/`popup.html`**: GitHub 연결 버튼(OAuth)·토큰 붙여넣기 입력창을
+  전부 제거. 팝업은 이제 "최근 수집 기록"만 보여준다.
+- **`manifest.json`**: 더 이상 필요 없는 `api.github.com`·
+  `simplifier-cms-auth` host_permissions 제거.
+- 아래 "2026-09-04 운영 규칙"·"설치 방법"의 토큰 관련 안내는 이제
+  **과거 기록**이다(왜 OAuth 대신 PAT를 썼었는지의 맥락은 남겨두되, 지금은
+  둘 다 안 씀).
+
 ## 2026-09-05 변경 — 리멤버·스레드 수집 버그 수정 + 클로드 사용량 수집 추가 (v1.6.8)
 
 - **리멤버 커넥트 수집 실패 수정**: 백그라운드 수집 창이 너비/높이 지정
@@ -233,14 +261,12 @@ Actions)로는 원천적으로 못 읽는다는 것도 확인했습니다. 이 �
 1. 아래 웹스토어 링크로 이동:
    https://chromewebstore.google.com/detail/simplifier-sns-인사이트-수집기/gmfdfodolbkgeodkhehogmkdcbjbnhdb
 2. "Chrome에 추가" 버튼 클릭
-3. 브라우저 오른쪽 위 확장 아이콘 목록에서 "Simplifier SNS 인사이트" 아이콘 클릭
-4. **"GitHub 연결"(OAuth) 버튼은 누르지 않는다** — 대신 팝업의 "GitHub 토큰
-   붙여넣기" 칸에 fine-grained PAT를 붙여넣고 "토큰 저장" 클릭 (발급 방법은
-   위 "2026-09-04 운영 규칙" 참고)
 
-여기까지 하면 끝입니다. 이후로는 평소처럼 멀티 퍼블리싱에서 "새 글쓰기
-열기" 버튼으로 각 SNS를 방문할 때마다, 그 화면에 보이는 팔로워 수가
-자동으로 기록됩니다.
+**이걸로 끝입니다.** (2026-09-05부터) GitHub 토큰을 붙여넣는 단계 자체가
+없어졌습니다 — 확장이 Cloudflare Worker를 통해 기록하기 때문입니다(위
+"GitHub PAT를 확장에서 완전히 없앰" 항목 참고). 이후로는 평소처럼 멀티
+퍼블리싱에서 "새 글쓰기 열기" 버튼으로 각 SNS를 방문할 때마다, 그 화면에
+보이는 팔로워 수가 자동으로 기록됩니다.
 
 **압축해제(개발자 모드) 로드는 코드 수정 중 임시로 테스트할 때만 쓴다** —
 조직 Chrome 정책이 바뀌면 위 2026-09-05 사고처럼 다시 막힐 수 있다. 코드를

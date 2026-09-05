@@ -1,13 +1,9 @@
-// CMS(admin/index.html)가 GitHub 로그인할 때 쓰는 것과 똑같은 팝업창 +
-// postMessage 방식(Decap/Netlify CMS 표준 OAuth 핸드셰이크)을 그대로
-// 재사용합니다. 이미 배포되어 있는 simplifier-cms-auth 워커를 그대로
-// 쓰기 때문에, 새 GitHub OAuth 앱이나 새 워커를 만들 필요가 없습니다.
+// 2026-09-05: GitHub 연결/토큰 붙여넣기 UI를 없앴다. background.js가
+// GitHub PAT를 직접 안 들고 Cloudflare Worker(simplifier-claude-usage-writer)
+// 의 좁은 창구만 호출하는 방식으로 바뀌어서, 이 팝업에서 로그인·토큰
+// 입력을 받을 이유가 없어졌다 -- 자세한 이유는 worker.js·WORKER_DEPLOY.md
+// 참고. 이제 이 팝업은 "최근 수집 기록"을 보여주는 역할만 한다.
 
-var AUTH_URL = "https://simplifier-cms-auth.simon-8be.workers.dev/auth";
-
-var statusBox = document.getElementById("statusBox");
-var loginBtn = document.getElementById("loginBtn");
-var logoutBtn = document.getElementById("logoutBtn");
 var logList = document.getElementById("logList");
 
 var PLATFORM_LABELS = {
@@ -25,6 +21,7 @@ var PLATFORM_LABELS = {
   content_facebook: "페이스북(신기한 아파트사전)",
   content_tiktok: "틱톡(신기한 아파트사전)",
   content_x: "X(신기한 아파트사전)",
+  claude_usage: "클로드 사용량",
 };
 
 var STATUS_MARK = { success: "✓", error: "✕", pending: "…", miss: "△" };
@@ -92,38 +89,18 @@ function renderSelectorWarning(warning) {
 
 function render() {
   chrome.storage.local.get(
-    ["githubToken", "pendingCaptures", "recentLog", "lastFullRoundDate", "selectorWarning"],
+    ["recentLog", "lastFullRoundDate", "selectorWarning"],
     function (res) {
-    renderSelectorWarning(res.selectorWarning);
-    var roundEl = document.getElementById("roundStatus");
-    if (res.lastFullRoundDate === kstToday()) {
-      roundEl.textContent = "오늘 전체 수집 완료 (" + res.lastFullRoundDate + ")";
-    } else {
-      roundEl.textContent = "오늘 아직 전체 수집 안 됨" + (res.lastFullRoundDate ? " (마지막: " + res.lastFullRoundDate + ")" : "");
+      renderSelectorWarning(res.selectorWarning);
+      var roundEl = document.getElementById("roundStatus");
+      if (res.lastFullRoundDate === kstToday()) {
+        roundEl.textContent = "오늘 전체 수집 완료 (" + res.lastFullRoundDate + ")";
+      } else {
+        roundEl.textContent = "오늘 아직 전체 수집 안 됨" + (res.lastFullRoundDate ? " (마지막: " + res.lastFullRoundDate + ")" : "");
+      }
+      renderLog(res.recentLog);
     }
-    if (res.githubToken) {
-      statusBox.className = "status ok";
-      statusBox.textContent = "GitHub 연결됨 — 자동 기록 작동 중";
-      loginBtn.style.display = "none";
-      logoutBtn.style.display = "block";
-      // 401(인증 실패)이 반복될 때, 저장된 토큰이 실제로 어떤 값인지
-      // (진짜 GitHub 토큰인지, 빈 값/이상한 값인지) 확인하기 위한 디버그
-      // 표시. 토큰 전체는 절대 노출하지 않고 앞 8자만 보여준다.
-      var t = res.githubToken;
-      document.getElementById("tokenDebug").textContent =
-        "토큰: " + t.slice(0, 8) + "… (" + t.length + "자)";
-    } else {
-      document.getElementById("tokenDebug").textContent = "";
-      var pendingNote = res.pendingCaptures && res.pendingCaptures.length
-        ? " (" + res.pendingCaptures.length + "건 대기 중)"
-        : "";
-      statusBox.className = "status warn";
-      statusBox.textContent = "GitHub 연결 필요" + pendingNote;
-      loginBtn.style.display = "block";
-      logoutBtn.style.display = "none";
-    }
-    renderLog(res.recentLog);
-  });
+  );
 }
 
 // 다른 탭에서 새로 캡처가 기록되면(recentLog 갱신) 팝업이 열려 있는 동안에도
@@ -140,97 +117,6 @@ chrome.storage.onChanged.addListener(function (changes, area) {
 document.getElementById("dismissWarningBtn").addEventListener("click", function () {
   chrome.runtime.sendMessage({ type: "DISMISS_SELECTOR_WARNING" });
   document.getElementById("selectorWarningBox").style.display = "none";
-});
-
-function handleMessage(e) {
-  if (typeof e.data !== "string") return;
-
-  if (e.data === "authorizing:github") {
-    // 팝업이 보낸 최초 핸드셰이크 신호 -- 그대로 되돌려 보내 확인해줍니다.
-    // GitHub 로그인 페이지 자체가 Cross-Origin-Opener-Policy를 걸어놔서,
-    // 팝업이 github.com을 거쳐 갔다 오면 이 postMessage가 브라우저 정책으로
-    // 막힐 수 있다(chrome://extensions 오류 탭에 경고로 뜸). 그래도 최종
-    // 토큰은 팝업->이 창 방향의 메시지로 별도 전달되어 로그인은 정상
-    // 완료되므로, 이 신호는 실패해도 조용히 무시한다.
-    try { if (authWindow) authWindow.postMessage("authorizing:github", "*"); } catch (err) { /* ignore */ }
-    return;
-  }
-
-  if (e.data.indexOf("authorization:github:success:") === 0) {
-    var payload = JSON.parse(e.data.slice("authorization:github:success:".length));
-    chrome.storage.local.set({ githubToken: payload.token }, function () {
-      window.removeEventListener("message", handleMessage);
-      if (authWindow) authWindow.close();
-      chrome.runtime.sendMessage({ type: "FLUSH_PENDING" });
-      render();
-    });
-  } else if (e.data.indexOf("authorization:github:error:") === 0) {
-    window.removeEventListener("message", handleMessage);
-    statusBox.className = "status warn";
-    statusBox.textContent = "로그인 실패 — 다시 시도해주세요";
-  }
-}
-
-var authWindow = null;
-loginBtn.addEventListener("click", function () {
-  authWindow = window.open(AUTH_URL, "github-oauth", "width=600,height=700");
-  window.addEventListener("message", handleMessage);
-});
-
-logoutBtn.addEventListener("click", function () {
-  chrome.storage.local.remove(["githubToken"], render);
-});
-
-// ── 액세스 토큰 직접 입력 ──────────────────────────────────────
-// OAuth 팝업 방식은 GitHub 로그인 페이지 자체의 Cross-Origin-Opener-Policy
-// 때문에, 팝업이 github.com을 거쳐 갔다 오는 순간 원래 창과의 연결이
-// 구조적으로 끊겨버려 안정적으로 동작하지 않는 걸 확인했다(로그인은
-// 끝났는데 새 토큰이 이 창에 전달이 안 됨). Sveltia CMS도 같은 이유로
-// "액세스 토큰으로 로그인"을 별도 제공하는 것과 같은 이유로, 여기도
-// 토큰을 직접 붙여넣는 방식을 둔다 -- 팝업/postMessage 없이 그냥
-// chrome.storage에 저장하면 끝이라 훨씬 안정적이다.
-var patInput = document.getElementById("patInput");
-var patStatus = document.getElementById("patStatus");
-var patSaveBtn = document.getElementById("patSaveBtn");
-
-patSaveBtn.addEventListener("click", function () {
-  var value = patInput.value.trim();
-  if (!value) {
-    patStatus.className = "warn";
-    patStatus.textContent = "토큰을 입력해주세요.";
-    return;
-  }
-  patStatus.className = "";
-  patStatus.textContent = "확인 중...";
-  patSaveBtn.disabled = true;
-
-  // 저장하기 전에 실제로 이 저장소에 쓸 수 있는 토큰인지 먼저 확인한다 --
-  // 확인 없이 저장하면, 잘못된 토큰을 넣고도 몰랐다가 나중에 수집 실패
-  // 로그를 보고서야 알게 되는 지금과 같은 상황이 반복된다.
-  fetch("https://api.github.com/repos/hansunghee7/hansunghee7.github.io", {
-    headers: { Authorization: "token " + value, Accept: "application/vnd.github+json" },
-  })
-    .then(function (r) {
-      patSaveBtn.disabled = false;
-      if (!r.ok) {
-        return r.json().catch(function () { return {}; }).then(function (body) {
-          patStatus.className = "warn";
-          patStatus.textContent = "저장 안 됨 — " + r.status + (body && body.message ? " " + body.message : "") + ". 토큰과 저장소 접근 권한을 확인해주세요.";
-        });
-      }
-      chrome.storage.local.set({ githubToken: value }, function () {
-        patInput.value = "";
-        patStatus.className = "ok";
-        patStatus.textContent = "확인됨 — 저장했습니다.";
-        chrome.runtime.sendMessage({ type: "FLUSH_PENDING" });
-        render();
-      });
-    })
-    .catch(function (e) {
-      patSaveBtn.disabled = false;
-      patStatus.className = "warn";
-      patStatus.textContent = "확인 실패 — " + String((e && e.message) || e);
-    });
 });
 
 render();

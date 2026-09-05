@@ -2,11 +2,61 @@
 // assets/data/sns-insight.json 파일에 오늘 날짜로 기록합니다.
 // 같은 날 같은 플랫폼이 여러 번 잡히면 그날 값을 덮어씁니다(하루 1개).
 //
-// 로그인(GitHub 토큰) 전에 잡힌 값은 버리지 않고 pendingCaptures에
-// 쌓아두었다가, popup에서 로그인하면 그때 한꺼번에 반영합니다.
+// 2026-09-05: 확장이 GitHub PAT를 직접 안 들고, Cloudflare Worker
+// (simplifier-claude-usage-writer, 코드는 worker.js)의 좁은 창구(get/put,
+// 파일 3개로 한정)만 호출한다. 진짜 GitHub 토큰은 그 Worker 환경변수
+// 안에만 있고, 확장은 APP_KEY(새어나가도 이 파일 3개에만 쓸 수 있어
+// 피해가 작음)만 코드에 들고 있다 -- 확장을 새로 설치하거나 프로필을
+// 옮길 때마다 GitHub PAT를 다시 붙여넣어야 했던 문제를 없애기 위함.
+// 그래서 예전에 있던 "토큰 없으면 pendingCaptures에 쌓아뒀다 로그인하면
+// 반영" 로직은 더 이상 필요 없다 -- 항상 바로 쓸 수 있다.
 
 var REPO = "hansunghee7/hansunghee7.github.io";
 var DATA_PATH = "assets/data/sns-insight.json";
+var CONTENT_DATA_PATH = "assets/data/naver-content.json";
+var CLAUDE_USAGE_DATA_PATH = "assets/data/claude-usage.json";
+
+var SNS_WRITER_URL = "https://simplifier-claude-usage-writer.simon-8be.workers.dev";
+var SNS_WRITER_APP_KEY = "c670c01273e6b6bd4808ebccf7b5588743dbd09fa560e91d";
+
+function ghProxyGet(path) {
+  return fetch(SNS_WRITER_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ key: SNS_WRITER_APP_KEY, op: "get", path: path }),
+  }).then(function (r) {
+    if (!r.ok) {
+      return r.text().then(function (t) {
+        throw new Error("Worker GET 실패: " + r.status + " " + t);
+      });
+    }
+    return r.json();
+  });
+}
+
+function ghProxyPut(path, contentB64, sha, message) {
+  var payload = { key: SNS_WRITER_APP_KEY, op: "put", path: path, content: contentB64, message: message };
+  if (sha) payload.sha = sha;
+  return fetch(SNS_WRITER_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+}
+
+function decodeGhContent(fileRes) {
+  var data = {};
+  var sha = null;
+  if (!fileRes.notFound) {
+    sha = fileRes.sha;
+    try {
+      data = JSON.parse(decodeURIComponent(escape(atob(fileRes.content.replace(/\n/g, "")))));
+    } catch (e) {
+      data = {};
+    }
+  }
+  return { sha: sha, data: data };
+}
 
 // 팝업에서 "최근 수집 기록"으로 보여주는 로그. 최신이 앞에 오게 쌓고
 // LOG_MAX개까지만 남긴다 -- 성공/실패 여부를 확인할 방법이 지금까지
@@ -285,50 +335,104 @@ function todayStr() {
 // 애초에 동시에 안 쓰도록 커밋을 이 큐에 넣어 하나 끝나야 다음이
 // 시작되게 직렬화한다.
 var commitQueue = Promise.resolve();
-function enqueueCommit(token, capture) {
+function enqueueCommit(capture) {
   commitQueue = commitQueue.then(function () {
-    return commitCapture(token, capture, 0);
+    return commitCapture(capture, 0);
   });
   return commitQueue;
 }
 
 function handleCapture(capture) {
   console.log("[SNS 인사이트] 캡처 수신:", capture.platform, capture.count);
-  chrome.storage.local.get(["githubToken"], function (res) {
-    if (!res.githubToken) {
-      queuePending(capture);
-      pushLog({ platform: capture.platform, count: capture.count, capturedAt: capture.capturedAt, status: "pending" });
-      return;
-    }
-    enqueueCommit(res.githubToken, capture);
-  });
+  enqueueCommit(capture);
 }
 
-function queuePending(capture) {
-  chrome.storage.local.get(["pendingCaptures"], function (res) {
-    var pending = res.pendingCaptures || [];
-    pending.push(capture);
-    chrome.storage.local.set({ pendingCaptures: pending });
-  });
+// commitCapture와 같은 이유(Worker Contents API PUT 직후 GET 읽기 지연)로
+// 캐시를 쓴다 -- 매번 새로 GET하는 대신, 방금 우리가 쓴 sha·내용을
+// 메모리에 기억해뒀다가 다음 커밋은 GET 없이 그걸 그대로 이어 쓴다.
+// 실제로 외부에서(예: GitHub Actions 새벽 수집) 파일이 바뀌어 캐시가
+// 틀렸을 때만(PUT이 409) 캐시를 버리고 새로 GET해서 재시도한다.
+var snsFileCache = null; // { sha, data }
+
+function commitCapture(capture, retryCount, forceRefetch) {
+  var readPromise = snsFileCache && !forceRefetch
+    ? Promise.resolve({ sha: snsFileCache.sha, data: JSON.parse(JSON.stringify(snsFileCache.data)) })
+    : ghProxyGet(DATA_PATH).then(decodeGhContent);
+
+  return readPromise
+    .then(function (state) {
+      var data = state.data;
+
+      if (!data[capture.platform]) data[capture.platform] = [];
+      var day = todayStr();
+      var series = data[capture.platform];
+      var todayEntry = series.filter(function (e) { return e.date === day; })[0];
+      if (todayEntry) {
+        todayEntry.count = capture.count;
+        todayEntry.capturedAt = capture.capturedAt;
+      } else {
+        series.push({ date: day, count: capture.count, capturedAt: capture.capturedAt });
+      }
+      series.sort(function (a, b) { return a.date < b.date ? -1 : 1; });
+
+      var newContentStr = JSON.stringify(data, null, 2);
+      var b64 = btoa(unescape(encodeURIComponent(newContentStr)));
+      var message = "chore: SNS 인사이트 자동 기록 (" + capture.platform + " " + day + ") [skip ci]";
+
+      return ghProxyPut(DATA_PATH, b64, state.sha, message).then(function (putRes) {
+        return { putRes: putRes, data: data };
+      });
+    })
+    .then(function (result) {
+      var putRes = result.putRes;
+      if (putRes.status === 409) {
+        snsFileCache = null;
+        if (retryCount < 3) {
+          // 캐시가 없어서 새로 GET했는데도 409면(캐시 무효화 직후 재시도),
+          // 진짜 외부 요인(예: 그 사이 GitHub Actions가 같은 파일에 커밋)일
+          // 가능성이 크다.
+          return new Promise(function (resolve) {
+            setTimeout(resolve, 800 + Math.random() * 800);
+          }).then(function () {
+            return commitCapture(capture, retryCount + 1, true);
+          });
+        }
+        pushLog({ platform: capture.platform, count: capture.count, capturedAt: capture.capturedAt, status: "error", note: "충돌 재시도 초과" });
+        return;
+      }
+      if (putRes.ok) {
+        return putRes.json().then(function (putBody) {
+          snsFileCache = { sha: putBody && putBody.sha, data: result.data };
+          pushLog({ platform: capture.platform, count: capture.count, capturedAt: capture.capturedAt, status: "success" });
+        });
+      }
+      return putRes.text().then(function (t) {
+        pushLog({ platform: capture.platform, count: capture.count, capturedAt: capture.capturedAt, status: "error", note: "HTTP " + putRes.status + " " + t });
+      });
+    })
+    .catch(function (e) {
+      // 실패해도 다음 방문 때 자연히 재시도되니 알림은 안 띄우지만,
+      // 팝업의 "최근 기록"에는 남겨서 나중에 확인할 수 있게 한다.
+      pushLog({ platform: capture.platform, count: capture.count, capturedAt: capture.capturedAt, status: "error", note: String((e && e.message) || e) });
+    });
 }
 
 // ── "신기한 아파트사전" 콘텐츠 파일(assets/data/naver-content.json)
 // 쓰기 ────────────────────────────────────────────────────────
 // sns-insight.json(팔로워 수 시계열, "심플리파이어" 회사 계정용)과는
-// 다른 파일에 쓰므로 commitQueue/pendingCaptures와 완전히 분리된
-// 큐·저장소 키를 쓴다. 여기에 두 종류의 캡처가 들어온다:
+// 다른 파일에 쓰므로 commitQueue와 완전히 분리된 큐를 쓴다. 여기에 두
+// 종류의 캡처가 들어온다:
 //   1) 채널 요약(팔로워 등 값 몇 개) -- CHANNEL_SUMMARY_CAPTURE
 //   2) 콘텐츠 리스트(릴스·영상별 조회수 여러 개) -- CONTENT_LIST_CAPTURE
 // 둘 다 "파일을 GET → 수정 → PUT"이라는 같은 뼈대를 쓰므로
 // commitToContentFile 하나로 공통 처리하고, 실제로 data를 어떻게
 // 바꾸는지만 각자(applyFn)로 넘긴다 -- 2026-09-01, 콘텐츠 리스트 캡처를
 // 추가하면서 채널 요약 커밋 함수와 중복되지 않게 일반화했다.
-var CONTENT_DATA_PATH = "assets/data/naver-content.json";
 var contentCommitQueue = Promise.resolve();
 
-function enqueueContentCommit(token, commitFn, capture) {
+function enqueueContentCommit(commitFn, capture) {
   contentCommitQueue = contentCommitQueue.then(function () {
-    return commitFn(token, capture, 0);
+    return commitFn(capture, 0);
   });
   return contentCommitQueue;
 }
@@ -339,44 +443,7 @@ function primaryCount(capture) {
 
 function handleChannelSummaryCapture(capture) {
   console.log("[SNS 인사이트] 채널 요약 캡처 수신:", capture.platform, capture.fields);
-  chrome.storage.local.get(["githubToken"], function (res) {
-    if (!res.githubToken) {
-      queuePendingContent("channel_summary", capture);
-      pushLog({ platform: capture.platform, count: primaryCount(capture), capturedAt: capture.capturedAt, status: "pending" });
-      return;
-    }
-    enqueueContentCommit(res.githubToken, commitChannelSummaryCapture, capture);
-  });
-}
-
-// 클로드 사용량 -- 다른 캡처들과 달리 확장이 GitHub PAT를 직접 안 들고,
-// Cloudflare Worker(simplifier-claude-usage-writer, _sns-extension/worker.js)의
-// 좁은 창구만 호출한다(2026-09-05). 진짜 GitHub 토큰은 그 Worker 환경변수
-// 안에만 있고, 확장은 APP_KEY(새어나가도 이 파일 하나에만 쓸 수 있음)만
-// 들고 있다 -- 확장 재설치·프로필 이동마다 GitHub PAT를 다시 붙여넣는
-// 문제를 없애기 위함.
-var CLAUDE_USAGE_WORKER_URL = "https://simplifier-claude-usage-writer.simon-8be.workers.dev";
-var CLAUDE_USAGE_APP_KEY = "c670c01273e6b6bd4808ebccf7b5588743dbd09fa560e91d";
-
-function handleClaudeUsageCapture(capture) {
-  console.log("[SNS 인사이트] 클로드 사용량 캡처 수신:", capture.fields);
-  fetch(CLAUDE_USAGE_WORKER_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ key: CLAUDE_USAGE_APP_KEY, fields: capture.fields, capturedAt: capture.capturedAt }),
-  })
-    .then(function (res) {
-      if (res.ok) {
-        pushLog({ platform: "claude_usage", count: capture.fields.session_5h, capturedAt: capture.capturedAt, status: "success" });
-        return;
-      }
-      return res.text().then(function (t) {
-        pushLog({ platform: "claude_usage", capturedAt: capture.capturedAt, status: "error", note: "HTTP " + res.status + " " + t });
-      });
-    })
-    .catch(function (e) {
-      pushLog({ platform: "claude_usage", capturedAt: capture.capturedAt, status: "error", note: String((e && e.message) || e) });
-    });
+  enqueueContentCommit(commitChannelSummaryCapture, capture);
 }
 
 // 필터로 걸러진 개수가 있으면 팝업 로그에 그대로 문구로 남긴다(2026-09-03)
@@ -388,22 +455,7 @@ function filteredNote(capture) {
 
 function handleContentListCapture(capture) {
   console.log("[SNS 인사이트] 콘텐츠 리스트 캡처 수신:", capture.platform, capture.items.length + "개");
-  chrome.storage.local.get(["githubToken"], function (res) {
-    if (!res.githubToken) {
-      queuePendingContent("content_list", capture);
-      pushLog({ platform: capture.platform, count: capture.items.length, capturedAt: capture.capturedAt, status: "pending", note: filteredNote(capture), unit: "건" });
-      return;
-    }
-    enqueueContentCommit(res.githubToken, commitContentListCapture, capture);
-  });
-}
-
-function queuePendingContent(kind, capture) {
-  chrome.storage.local.get(["pendingContentCaptures"], function (res) {
-    var pending = res.pendingContentCaptures || [];
-    pending.push({ kind: kind, capture: capture });
-    chrome.storage.local.set({ pendingContentCaptures: pending });
-  });
+  enqueueContentCommit(commitContentListCapture, capture);
 }
 
 // GET → applyFn(data)로 수정 → PUT의 공통 뼈대. applyFn은 data를 직접
@@ -423,34 +475,10 @@ function queuePendingContent(kind, capture) {
 // 버리고 새로 GET해서 재시도한다.
 var contentFileCache = null; // { sha, data }
 
-function commitToContentFile(token, applyFn, logMeta, retryCount, forceRefetch) {
-  var url = "https://api.github.com/repos/" + REPO + "/contents/" + CONTENT_DATA_PATH;
-
+function commitToContentFile(applyFn, logMeta, retryCount, forceRefetch) {
   var readPromise = contentFileCache && !forceRefetch
     ? Promise.resolve({ sha: contentFileCache.sha, data: JSON.parse(JSON.stringify(contentFileCache.data)) })
-    : fetch(url, { headers: ghHeaders(token) })
-        .then(function (r) {
-          if (r.status === 404) return { notFound: true };
-          if (!r.ok) {
-            return r.json().catch(function () { return {}; }).then(function (body) {
-              throw new Error("GET 실패: " + r.status + (body && body.message ? " - " + body.message : ""));
-            });
-          }
-          return r.json();
-        })
-        .then(function (fileRes) {
-          var data = {};
-          var sha = null;
-          if (!fileRes.notFound) {
-            sha = fileRes.sha;
-            try {
-              data = JSON.parse(decodeURIComponent(escape(atob(fileRes.content.replace(/\n/g, "")))));
-            } catch (e) {
-              data = {};
-            }
-          }
-          return { sha: sha, data: data };
-        });
+    : ghProxyGet(CONTENT_DATA_PATH).then(decodeGhContent);
 
   return readPromise
     .then(function (state) {
@@ -465,14 +493,9 @@ function commitToContentFile(token, applyFn, logMeta, retryCount, forceRefetch) 
       var newContentStr = JSON.stringify(data, null, 2);
       var b64 = btoa(unescape(encodeURIComponent(newContentStr)));
 
-      var body = { message: logMeta.commitMessage, content: b64 };
-      if (state.sha) body.sha = state.sha;
-
-      return fetch(url, {
-        method: "PUT",
-        headers: Object.assign({ "Content-Type": "application/json" }, ghHeaders(token)),
-        body: JSON.stringify(body),
-      }).then(function (putRes) { return { putRes: putRes, data: data }; });
+      return ghProxyPut(CONTENT_DATA_PATH, b64, state.sha, logMeta.commitMessage).then(function (putRes) {
+        return { putRes: putRes, data: data };
+      });
     })
     .then(function (result) {
       var putRes = result.putRes;
@@ -482,7 +505,7 @@ function commitToContentFile(token, applyFn, logMeta, retryCount, forceRefetch) 
           return new Promise(function (resolve) {
             setTimeout(resolve, 800 + Math.random() * 800);
           }).then(function () {
-            return commitToContentFile(token, applyFn, logMeta, retryCount + 1, true);
+            return commitToContentFile(applyFn, logMeta, retryCount + 1, true);
           });
         }
         pushLog(Object.assign({}, logMeta.logEntry, { status: "error", note: "충돌 재시도 초과" }));
@@ -490,13 +513,12 @@ function commitToContentFile(token, applyFn, logMeta, retryCount, forceRefetch) 
       }
       if (putRes.ok) {
         return putRes.json().then(function (putBody) {
-          contentFileCache = { sha: putBody && putBody.content && putBody.content.sha, data: result.data };
+          contentFileCache = { sha: putBody && putBody.sha, data: result.data };
           pushLog(Object.assign({}, logMeta.logEntry, { status: "success" }));
         });
       }
-      return putRes.json().catch(function () { return {}; }).then(function (body) {
-        var note = "HTTP " + putRes.status + (body && body.message ? " - " + body.message : "");
-        pushLog(Object.assign({}, logMeta.logEntry, { status: "error", note: note }));
+      return putRes.text().then(function (t) {
+        pushLog(Object.assign({}, logMeta.logEntry, { status: "error", note: "HTTP " + putRes.status + " " + t }));
       });
     })
     .catch(function (e) {
@@ -504,9 +526,9 @@ function commitToContentFile(token, applyFn, logMeta, retryCount, forceRefetch) 
     });
 }
 
-function commitChannelSummaryCapture(token, capture, retryCount) {
+function commitChannelSummaryCapture(capture, retryCount) {
   var day = todayStr();
-  return commitToContentFile(token, function (data) {
+  return commitToContentFile(function (data) {
     var channel = data.channels[capture.platform] = data.channels[capture.platform] || { history: [] };
     channel.url = capture.url;
 
@@ -530,9 +552,9 @@ function commitChannelSummaryCapture(token, capture, retryCount) {
 // 키를 만든다. content-insight.html의 기존 videoCardHtml/renderClips가
 // 이 모양(history/url/views)을 이미 그대로 그릴 수 있어 페이지 쪽은
 // 안 고쳐도 된다.
-function commitContentListCapture(token, capture, retryCount) {
+function commitContentListCapture(capture, retryCount) {
   var day = todayStr();
-  return commitToContentFile(token, function (data) {
+  return commitToContentFile(function (data) {
     capture.items.forEach(function (item) {
       var id = capture.platform + "_" + item.id;
       var entry = data.clips[id] = data.clips[id] || { history: [] };
@@ -557,136 +579,73 @@ function commitContentListCapture(token, capture, retryCount) {
   }, retryCount);
 }
 
-// popup에서 로그인 성공 직후 호출 -- 쌓여있던 캡처를 한꺼번에 반영.
-function flushPending() {
-  chrome.storage.local.get(["githubToken", "pendingCaptures", "pendingContentCaptures"], function (res) {
-    if (!res.githubToken) return;
-    if (res.pendingCaptures && res.pendingCaptures.length) {
-      var pending = res.pendingCaptures;
-      chrome.storage.local.set({ pendingCaptures: [] });
-      pending.forEach(function (capture) {
-        enqueueCommit(res.githubToken, capture);
-      });
-    }
-    if (res.pendingContentCaptures && res.pendingContentCaptures.length) {
-      var pendingContent = res.pendingContentCaptures;
-      chrome.storage.local.set({ pendingContentCaptures: [] });
-      pendingContent.forEach(function (entry) {
-        var commitFn = entry.kind === "content_list" ? commitContentListCapture : commitChannelSummaryCapture;
-        enqueueContentCommit(res.githubToken, commitFn, entry.capture);
-      });
-    }
-  });
-}
-chrome.runtime.onMessage.addListener(function (msg) {
-  if (msg && msg.type === "FLUSH_PENDING") flushPending();
-});
+// 클로드 사용량 -- 위 두 파일과 같은 GET/PUT 뼈대를 쓰지만 대상 파일이
+// 다르고(claude-usage.json), 한 번에 값 3개(session_5h/weekly_all/
+// weekly_fable)를 같이 쓴다는 점이 달라 별도 함수로 뒀다.
+var claudeUsageFileCache = null; // { sha, data }
 
-function ghHeaders(token) {
-  return {
-    Authorization: "token " + token,
-    Accept: "application/vnd.github+json",
-  };
-}
-
-// commitToContentFile과 같은 이유(GitHub Contents API의 PUT 직후 GET
-// 읽기 지연)로 같은 캐시 방식을 쓴다 -- 자세한 설명은 위 주석 참고.
-var snsFileCache = null; // { sha, data }
-
-function commitCapture(token, capture, retryCount, forceRefetch) {
-  var url = "https://api.github.com/repos/" + REPO + "/contents/" + DATA_PATH;
-
-  var readPromise = snsFileCache && !forceRefetch
-    ? Promise.resolve({ sha: snsFileCache.sha, data: JSON.parse(JSON.stringify(snsFileCache.data)) })
-    : fetch(url, { headers: ghHeaders(token) })
-        .then(function (r) {
-          if (r.status === 404) return { notFound: true };
-          if (!r.ok) {
-            // 상태 코드만으로는 왜 거부됐는지(토큰 자체가 무효인지, 스코프
-            // 부족인지 등) 알 수 없어서, GitHub이 응답 본문에 같이 주는
-            // "message" 필드까지 읽어서 로그에 남긴다.
-            return r.json().catch(function () { return {}; }).then(function (body) {
-              throw new Error("GET 실패: " + r.status + (body && body.message ? " - " + body.message : ""));
-            });
-          }
-          return r.json();
-        })
-        .then(function (fileRes) {
-          var data = {};
-          var sha = null;
-          if (!fileRes.notFound) {
-            sha = fileRes.sha;
-            try {
-              data = JSON.parse(decodeURIComponent(escape(atob(fileRes.content.replace(/\n/g, "")))));
-            } catch (e) {
-              data = {};
-            }
-          }
-          return { sha: sha, data: data };
-        });
+function commitClaudeUsageCapture(capture, retryCount, forceRefetch) {
+  var readPromise = claudeUsageFileCache && !forceRefetch
+    ? Promise.resolve({ sha: claudeUsageFileCache.sha, data: JSON.parse(JSON.stringify(claudeUsageFileCache.data)) })
+    : ghProxyGet(CLAUDE_USAGE_DATA_PATH).then(decodeGhContent);
 
   return readPromise
     .then(function (state) {
       var data = state.data;
-
-      if (!data[capture.platform]) data[capture.platform] = [];
       var day = todayStr();
-      var series = data[capture.platform];
-      var todayEntry = series.filter(function (e) { return e.date === day; })[0];
-      if (todayEntry) {
-        todayEntry.count = capture.count;
-        todayEntry.capturedAt = capture.capturedAt;
-      } else {
-        series.push({ date: day, count: capture.count, capturedAt: capture.capturedAt });
-      }
-      series.sort(function (a, b) { return a.date < b.date ? -1 : 1; });
+
+      ["session_5h", "weekly_all", "weekly_fable"].forEach(function (key) {
+        if (capture.fields[key] == null) return;
+        if (!data[key]) data[key] = [];
+        var series = data[key];
+        var todayEntry = series.filter(function (e) { return e.date === day; })[0];
+        if (todayEntry) {
+          todayEntry.pct = capture.fields[key];
+          todayEntry.capturedAt = capture.capturedAt;
+        } else {
+          series.push({ date: day, pct: capture.fields[key], capturedAt: capture.capturedAt });
+        }
+        series.sort(function (a, b) { return a.date < b.date ? -1 : 1; });
+      });
 
       var newContentStr = JSON.stringify(data, null, 2);
       var b64 = btoa(unescape(encodeURIComponent(newContentStr)));
+      var message = "chore: 클로드 사용량 자동 기록 (" + day + ") [skip ci]";
 
-      var body = {
-        message: "chore: SNS 인사이트 자동 기록 (" + capture.platform + " " + day + ") [skip ci]",
-        content: b64,
-      };
-      if (state.sha) body.sha = state.sha;
-
-      return fetch(url, {
-        method: "PUT",
-        headers: Object.assign({ "Content-Type": "application/json" }, ghHeaders(token)),
-        body: JSON.stringify(body),
-      }).then(function (putRes) { return { putRes: putRes, data: data }; });
+      return ghProxyPut(CLAUDE_USAGE_DATA_PATH, b64, state.sha, message).then(function (putRes) {
+        return { putRes: putRes, data: data };
+      });
     })
     .then(function (result) {
       var putRes = result.putRes;
       if (putRes.status === 409) {
-        snsFileCache = null;
+        claudeUsageFileCache = null;
         if (retryCount < 3) {
-          // 캐시가 없어서 새로 GET했는데도 409면(캐시 무효화 직후 재시도),
-          // 진짜 외부 요인(예: 그 사이 GitHub Actions가 같은 파일에 커밋)일
-          // 가능성이 크다.
           return new Promise(function (resolve) {
             setTimeout(resolve, 800 + Math.random() * 800);
           }).then(function () {
-            return commitCapture(token, capture, retryCount + 1, true);
+            return commitClaudeUsageCapture(capture, retryCount + 1, true);
           });
         }
-        pushLog({ platform: capture.platform, count: capture.count, capturedAt: capture.capturedAt, status: "error", note: "충돌 재시도 초과" });
+        pushLog({ platform: "claude_usage", capturedAt: capture.capturedAt, status: "error", note: "충돌 재시도 초과" });
         return;
       }
       if (putRes.ok) {
         return putRes.json().then(function (putBody) {
-          snsFileCache = { sha: putBody && putBody.content && putBody.content.sha, data: result.data };
-          pushLog({ platform: capture.platform, count: capture.count, capturedAt: capture.capturedAt, status: "success" });
+          claudeUsageFileCache = { sha: putBody && putBody.sha, data: result.data };
+          pushLog({ platform: "claude_usage", count: capture.fields.session_5h, capturedAt: capture.capturedAt, status: "success" });
         });
       }
-      return putRes.json().catch(function () { return {}; }).then(function (body) {
-        var note = "HTTP " + putRes.status + (body && body.message ? " - " + body.message : "");
-        pushLog({ platform: capture.platform, count: capture.count, capturedAt: capture.capturedAt, status: "error", note: note });
+      return putRes.text().then(function (t) {
+        pushLog({ platform: "claude_usage", capturedAt: capture.capturedAt, status: "error", note: "HTTP " + putRes.status + " " + t });
       });
     })
     .catch(function (e) {
-      // 실패해도 다음 방문 때 자연히 재시도되니 알림은 안 띄우지만,
-      // 팝업의 "최근 기록"에는 남겨서 나중에 확인할 수 있게 한다.
-      pushLog({ platform: capture.platform, count: capture.count, capturedAt: capture.capturedAt, status: "error", note: String((e && e.message) || e) });
+      pushLog({ platform: "claude_usage", capturedAt: capture.capturedAt, status: "error", note: String((e && e.message) || e) });
     });
+}
+
+function handleClaudeUsageCapture(capture) {
+  console.log("[SNS 인사이트] 클로드 사용량 캡처 수신:", capture.fields);
+  commitClaudeUsageCapture(capture, 0);
 }

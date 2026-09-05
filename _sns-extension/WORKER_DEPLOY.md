@@ -1,9 +1,16 @@
-# 클로드 사용량 Worker 배포 가이드 (사장님이 할 일, 한 번만 하면 됨)
+# SNS 확장 GitHub 쓰기 Worker 배포 가이드 (사장님이 할 일)
 
 `worker.js`를 Cloudflare에 올려서, 확장이 GitHub PAT를 직접 안 들고도
-`assets/data/claude-usage.json`에 기록할 수 있게 만드는 절차입니다.
-CMS 로그인용 Worker(`simplifier-cms-auth`)와 같은 계정, 다른 이름으로
-하나 더 만듭니다 — 서로 안 건드립니다.
+SNS 데이터 3개 파일(`sns-insight.json`·`naver-content.json`·
+`claude-usage.json`)에 기록할 수 있게 만드는 절차입니다. CMS 로그인용
+Worker(`simplifier-cms-auth`)와 같은 계정, 다른 이름으로 하나 더 만듭니다
+— 서로 안 건드립니다.
+
+> **이미 클로드 사용량만 처리하는 버전을 배포했다면**: 1~4단계(토큰
+> 발급·Worker 생성·Secret 등록)는 다시 안 해도 됩니다. Cloudflare 그
+> Worker 화면에서 **"Edit code"** 열어 안의 코드를 이 저장소의 최신
+> `worker.js` 내용으로 통째로 교체하고 **Deploy**만 다시 누르면 됩니다
+> (파일 3개 허용 목록으로 넓어진 것 외엔 Secret 값 변경 없음).
 
 ## 1. GitHub 토큰 새로 만들기 (이 Worker 전용)
 
