@@ -237,7 +237,73 @@ chrome.runtime.onMessage.addListener(function (msg) {
     console.log("[SNS 인사이트] CONTENT_COLLECT_REQUEST 수신 (force=" + !!msg.force + ")");
     maybeRunRound(CONTENT_ROUND_PLATFORMS, "lastContentRoundDate", "contentRoundStartedAt", !!msg.force, "콘텐츠 채널");
   }
+  if (msg && msg.type === "CLAUDE_USAGE_COLLECT_REQUEST") {
+    console.log("[클로드 사용량] CLAUDE_USAGE_COLLECT_REQUEST 수신 (force=" + !!msg.force + ")");
+    runClaudeUsageRound(!!msg.force);
+  }
 });
+
+// ── 클로드 사용량 주기적 자동 캡처 (2026-09-05) ─────────────────
+// 위 두 라운드(전체 수집·콘텐츠 채널)는 "SNS 인사이트 페이지를 열고
+// 새로고침을 눌러야" 도는 수동 트리거다. 클로드 사용량은 성격이 다르다
+// -- 폰으로 작업하는 동안 PC가 그냥 켜져만 있어도 값이 계속 바뀌므로,
+// 누가 대시보드를 열어야만 갱신되면 "폰으로 확인하려는" 원래 목적을
+// 못 이룬다. 그래서 이것만 chrome.alarms로 사람 개입 없이 주기적으로
+// 돈다. chrome.alarms는 서비스 워커가 꺼졌다 깨어나도(MV3 특성) 브라우저가
+// 대신 시간을 기억했다가 깨워주므로, 별도 "살아있게 유지" 장치가 필요 없다.
+var CLAUDE_USAGE_ALARM = "claudeUsageCapture";
+var CLAUDE_USAGE_PERIOD_MIN = 30;
+
+function scheduleClaudeUsageAlarm() {
+  chrome.alarms.get(CLAUDE_USAGE_ALARM, function (existing) {
+    if (existing) return;
+    chrome.alarms.create(CLAUDE_USAGE_ALARM, { periodInMinutes: CLAUDE_USAGE_PERIOD_MIN, delayInMinutes: 1 });
+    console.log("[클로드 사용량] " + CLAUDE_USAGE_PERIOD_MIN + "분 주기 알람 등록");
+  });
+}
+// onInstalled(설치·업데이트 직후)와 onStartup(브라우저 재시작 직후) 둘 다
+// 걸어둔다 -- 둘 중 하나만 걸면 그 사이 알람이 지워지는 경우(예: 확장
+// 데이터 초기화)를 놓칠 수 있다. chrome.alarms.get으로 이미 있으면
+// 건너뛰므로 두 번 걸려도 중복 생성되지 않는다.
+chrome.runtime.onInstalled.addListener(scheduleClaudeUsageAlarm);
+chrome.runtime.onStartup.addListener(scheduleClaudeUsageAlarm);
+scheduleClaudeUsageAlarm();
+
+chrome.alarms.onAlarm.addListener(function (alarm) {
+  if (alarm.name === CLAUDE_USAGE_ALARM) {
+    console.log("[클로드 사용량] 주기 알람 발동 -- 캡처 라운드 시작");
+    runClaudeUsageRound(false);
+  }
+});
+
+// 다른 라운드처럼 최소화 창을 열었다 20여 초 뒤 닫는 것만 하고, "오늘 하루
+// 한 번" 제한은 없다(30분마다 최신값을 계속 갱신하는 게 목적이므로).
+// 대신 겹쳐 도는 것만 막는다 -- 알람 주기(30분)가 TAB_CLOSE_DELAY_MS(22초)
+// 보다 훨씬 길어 실제로 겹칠 일은 거의 없지만, 대시보드의 수동 새로고침
+// (force)이 알람 발동과 우연히 같은 순간 겹치는 경우를 위한 방어다.
+var claudeUsageRoundLock = 0;
+var CLAUDE_USAGE_ROUND_LOCK_MS = 60000;
+
+function runClaudeUsageRound(force) {
+  var now = Date.now();
+  if (!force && now - claudeUsageRoundLock < CLAUDE_USAGE_ROUND_LOCK_MS) {
+    console.log("[클로드 사용량] 방금 시작한 캡처가 아직 도는 중이라 건너뜀");
+    return;
+  }
+  claudeUsageRoundLock = now;
+  chrome.windows.create(
+    { url: ["https://claude.ai/code#settings/usage"], focused: false, state: "minimized", width: 1440, height: 960 },
+    function (win) {
+      if (chrome.runtime.lastError || !win) {
+        console.log("[클로드 사용량] 수집 창 생성 실패:", chrome.runtime.lastError && chrome.runtime.lastError.message);
+        return;
+      }
+      setTimeout(function () {
+        chrome.windows.remove(win.id, function () { void chrome.runtime.lastError; });
+      }, TAB_CLOSE_DELAY_MS);
+    }
+  );
+}
 
 // 회사 SNS 라운드·콘텐츠 채널 라운드가 여는 URL 목록만 다르고 나머지
 // 로직(하루 한 번 제한, 중복 실행 방지, 최소화 창으로 조용히 열기)은

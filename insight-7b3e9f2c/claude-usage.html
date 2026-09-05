@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>클로드 사용량 - Simplifier</title>
+
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<!-- Studio 메뉴 타이틀(h1)은 명조체 큰 제목으로 통일합니다. -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<link rel="stylesheet" href="/insight-7b3e9f2c/studio.css">
+
+<style>
+  #titleInfo .info-text{max-width:min(420px, 90vw);}
+  #grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:12px;}
+  .usage-card h3{margin:0 0 4px; font-size:14px; font-weight:600; display:flex; align-items:center; gap:6px;}
+  .usage-card .latest{display:flex; align-items:baseline; gap:8px; margin:10px 0 6px;}
+  .usage-card svg{width:100%; height:56px; display:block;}
+  .usage-card .empty{font-size:12px; color:var(--muted); padding:20px 0; text-align:center;}
+  .usage-card .reset-note{font-size:11.5px; color:var(--muted); margin-top:8px;}
+</style>
+</head>
+<body class="has-shell-nav">
+<nav id="adminShellNav"></nav>
+
+<div class="wrap">
+  <header>
+    <h1>클로드 사용량<button type="button" class="info-dot" id="titleInfo" aria-label="설명 보기">ⓘ<span class="info-text">클로드 코드 사용량(claude.ai/code#settings/usage) 화면의 세 값을 크롬 확장이 PC가 켜져 있는 동안 30분마다 자동으로 읽어 기록합니다. 폰에서 이 페이지를 열면 PC가 마지막으로 캡처한 값을 볼 수 있습니다 — 실시간이 아니라 "최근 30분 이내" 값입니다. 새로고침은 PC의 확장에 지금 바로 다시 확인해달라고 요청합니다(PC가 켜져 있어야 동작).</span></button></h1>
+    <button class="refresh" id="refreshBtn"><span class="refresh-icon">↻</span> <span class="refresh-label">새로고침</span></button>
+    <span id="lastRefresh" class="meta-text"></span>
+  </header>
+
+  <div id="statusArea"></div>
+  <div id="grid"><div class="loading">불러오는 중…</div></div>
+</div>
+
+<script>
+(function () {
+  var DATA_URL = "/assets/data/claude-usage.json";
+
+  var SERIES = [
+    { key: "session_5h", label: "현재 세션 (5시간)" },
+    { key: "weekly_all", label: "주간 한도 · 모든 모델" },
+    { key: "weekly_fable", label: "주간 한도 · Fable 전용" },
+  ];
+
+  var els = { status: document.getElementById("statusArea"), grid: document.getElementById("grid") };
+  var lastData = {};
+
+  function stampRefresh(data) {
+    var latest = null;
+    SERIES.forEach(function (s) {
+      var series = data[s.key] || [];
+      if (!series.length) return;
+      var c = series[series.length - 1].capturedAt;
+      if (c && (!latest || c > latest)) latest = c;
+    });
+    var el = document.getElementById("lastRefresh");
+    if (!latest) { el.textContent = ""; return; }
+    var d = new Date(latest);
+    el.textContent = "· 마지막 캡처 " + d.toLocaleDateString("ko-KR", { month: "2-digit", day: "2-digit" }) +
+      " " + d.toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit" });
+  }
+
+  function load() {
+    els.status.innerHTML = "";
+    return fetch(DATA_URL + "?t=" + Date.now(), { cache: "no-store" })
+      .then(function (r) { return r.ok ? r.json() : {}; })
+      .then(function (data) {
+        lastData = data || {};
+        render(lastData);
+        return true;
+      })
+      .catch(function (e) {
+        els.status.innerHTML = '<div class="err">데이터를 못 불러왔습니다: ' + escapeHtml(String(e)) + "</div>";
+        return false;
+      });
+  }
+
+  document.getElementById("refreshBtn").addEventListener("click", function () {
+    var btn = this;
+    Studio.setRefreshState(btn, "loading");
+    // PC의 크롬 확장에 "지금 바로 다시 확인" 요청 -- 캡처·커밋에 몇십 초
+    // 걸리니, 이 새로고침은 최신값을 "요청"만 하고 바로 안 보일 수 있다
+    // (SNS 인사이트 새로고침과 같은 구조).
+    window.dispatchEvent(new CustomEvent("simplifier-claude-usage-refresh"));
+    load().then(function (ok) {
+      stampRefresh(lastData);
+      Studio.setRefreshState(btn, ok ? "success" : "error");
+      setTimeout(function () { Studio.setRefreshState(btn, "idle"); }, 1600);
+    });
+  });
+  load().then(function () { stampRefresh(lastData); });
+
+  function render(data) {
+    els.grid.innerHTML = SERIES.map(function (s) { return buildCard(s, data); }).join("");
+  }
+
+  function buildCard(s, data) {
+    var series = data[s.key] || [];
+    if (!series.length) {
+      return (
+        '<div class="tile usage-card is-empty"><h3>' + escapeHtml(s.label) + "</h3>" +
+        '<div class="empty">아직 기록된 데이터가 없습니다</div></div>'
+      );
+    }
+
+    var latest = series[series.length - 1];
+    var prev = series.length > 1 ? series[series.length - 2] : null;
+    var delta = prev ? latest.pct - prev.pct : null;
+    var deltaHtml = "";
+    if (delta !== null && delta !== 0) {
+      deltaHtml = '<span class="delta ' + (delta > 0 ? "up" : "down") + '">' + (delta > 0 ? "▲" : "▼") + Math.abs(delta) + "</span>";
+    }
+
+    var infoTitle = latest.date + " 기준 · " + series.length + "개 기록";
+    var infoDot = '<button type="button" class="info-dot" aria-label="설명 보기">ⓘ<span class="info-text">' + escapeHtml(infoTitle) + "</span></button>";
+
+    return (
+      '<div class="tile usage-card"><h3>' + escapeHtml(s.label) + infoDot + "</h3>" +
+      '<div class="latest"><span class="val">' + latest.pct + '<span class="unit">%</span></span>' + deltaHtml + "</div>" +
+      sparkline(series) +
+      "</div>"
+    );
+  }
+
+  function sparkline(series, w) {
+    w = w || 260;
+    var h = 56, pad = 4;
+    var vals = series.map(function (e) { return e.pct; });
+    var min = Math.min.apply(null, vals);
+    var max = Math.max.apply(null, vals);
+    var range = max - min || 1;
+
+    var points = series.map(function (e, i) {
+      var x = series.length === 1 ? w / 2 : pad + (i / (series.length - 1)) * (w - pad * 2);
+      var y = h - pad - ((e.pct - min) / range) * (h - pad * 2);
+      return x.toFixed(1) + "," + y.toFixed(1);
+    });
+
+    var path = "M" + points.join(" L");
+    var lastPoint = points[points.length - 1].split(",");
+
+    return (
+      '<svg viewBox="0 0 ' + w + " " + h + '" preserveAspectRatio="none">' +
+      '<path d="' + path + '" fill="none" stroke="#121210" stroke-width="2" vector-effect="non-scaling-stroke"/>' +
+      '<circle cx="' + lastPoint[0] + '" cy="' + lastPoint[1] + '" r="3" fill="#121210"/>' +
+      "</svg>"
+    );
+  }
+
+  function escapeHtml(s) {
+    return (s || "").toString().replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+})();
+</script>
+<script src="/insight-7b3e9f2c/studio.js"></script>
+</body>
+</html>
