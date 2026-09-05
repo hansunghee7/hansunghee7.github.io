@@ -146,7 +146,7 @@ var DASHBOARD_PLATFORMS = [
 var CONTENT_ROUND_PLATFORMS = [
   "https://clip.naver.com/@simkihanapt",
   "https://www.instagram.com/sinkihanapt/reels/",
-  "https://www.threads.com/@sinkihanapt",
+  "https://threads.com/@sinkihanapt",
   "https://www.facebook.com/profile.php?id=61593748241305",
   "https://www.tiktok.com/@sinkihanapt",
   "https://x.com/sinkihanapt",
