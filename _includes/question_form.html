@@ -12,11 +12,16 @@
   짜리 (0,1,0) 는 밀린다. post_cta.html 에서 실제로 겪은 버그의 재발 방지.
 - 디자인: 본문(흰 배경, 세리프 제목)과 같은 결. 버튼은 사이트 공통 pill(999px),
   다크 `#080808` / 오프화이트 `#f5f3ee` (docs/UX_GUIDE.md §2).
+- `.ask-mark`("잉크" 워드마크, Source Serif 4 이탤릭)는 2026-09-06 확정된
+  프로젝트 브랜드 처리(docs/질문하기_파이프라인.md §12). `enabled`가 false인
+  동안은 어차피 안 그려지므로 노출 범위 변경이 아니다 — 폼을 실제로 켤 때
+  바로 쓰도록 미리 넣어둔 것.
 {%- endcomment -%}
 {%- assign qf = site.data.question_form -%}
 {%- if include.force or qf.enabled -%}
 <section class="ask-simplifier" id="askSimplifier"
   data-url="{{ qf.supabase_url }}" data-key="{{ qf.supabase_anon_key }}">
+  <p class="ask-mark">잉크</p>
   <h2 class="ask-title">심플리파이어에게 질문하기</h2>
   <p class="ask-lead">이 글을 읽고 떠오른 고민을 남겨 주세요. 질문에 답하는 글을 써서 이메일로 알려드립니다. 답변에는 며칠 걸리고, 모든 질문에 글을 쓰지는 못합니다.</p>
   <form class="ask-form" id="askForm" novalidate>
@@ -32,6 +37,7 @@
 </section>
 <style>
   section.ask-simplifier { margin: 72px 0 24px; padding: 40px 0 8px; border-top: 1px solid rgba(0,0,0,.12); }
+  section.ask-simplifier p.ask-mark { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-style: italic; font-weight: 300; font-size: 13.5px; color: #79736a; letter-spacing: .02em; margin: 0 0 8px; }
   section.ask-simplifier h2.ask-title { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-weight: 400; font-size: 24px; letter-spacing: -0.01em; margin: 0 0 12px; color: #171410; }
   section.ask-simplifier p.ask-lead { font-family: 'Pretendard Variable', Pretendard, sans-serif; font-size: 14.5px; line-height: 1.7; letter-spacing: 0; color: #4a453c; margin: 0 0 22px; }
   section.ask-simplifier label.ask-label { display: block; font-family: 'Pretendard Variable', Pretendard, sans-serif; font-size: 12.5px; font-weight: 600; letter-spacing: .04em; color: #79736a; margin: 0 0 6px; }
