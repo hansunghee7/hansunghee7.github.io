@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-06T05:56:59.630741+00:00",
+  "updated_at": "2026-09-06T11:42:50.307168+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 147,
-    "activeUsers": 91,
-    "newUsers": 90,
-    "returningUsers": 1
+    "sessions": 151,
+    "activeUsers": 92,
+    "newUsers": 92,
+    "returningUsers": 0
   },
   "daily": [
     {
@@ -87,10 +87,10 @@
     },
     {
       "date": "2026-09-06",
-      "sessions": 4,
-      "activeUsers": 4,
-      "newUsers": 3,
-      "returningUsers": 1
+      "sessions": 8,
+      "activeUsers": 5,
+      "newUsers": 5,
+      "returningUsers": 0
     }
   ],
   "daily_leads": [
@@ -104,15 +104,15 @@
     }
   ],
   "landing_types": {
-    "home": 95,
+    "home": 98,
     "log_home": 7,
-    "individual_post": 23,
+    "individual_post": 25,
     "other": 25
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 109
+      "sessions": 112
     },
     {
       "source": "searchadvisor.naver.com",
@@ -120,7 +120,7 @@
     },
     {
       "source": "google",
-      "sessions": 10
+      "sessions": 11
     },
     {
       "source": "l.facebook.com",
@@ -128,7 +128,7 @@
     },
     {
       "source": "(not set)",
-      "sessions": 4
+      "sessions": 5
     },
     {
       "source": "linkedin.com",
@@ -156,7 +156,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 109
+      "sessions": 112
     },
     {
       "source": "searchadvisor.naver.com",
@@ -168,7 +168,7 @@
       "source": "google",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 10
+      "sessions": 11
     },
     {
       "source": "l.facebook.com",
@@ -211,10 +211,10 @@
   "engagement_events": {
     "section_view_proven": 282,
     "section_view_voices": 205,
-    "section_view_book_class": 126,
-    "section_view_faq": 115,
+    "section_view_book_class": 127,
+    "section_view_faq": 116,
     "faq_open": 26,
-    "read_complete": 189
+    "read_complete": 191
   },
   "contact_funnel": {
     "contact_open": 27,
@@ -250,6 +250,11 @@
       "sessions": 2
     },
     {
+      "path": "/log_assets/markdown/178_'So What, Why So' 논리에 영혼을 불어넣다.html",
+      "title": "/log_assets/markdown/178_'So What, Why So' 논리에 영혼을 불어넣다.html",
+      "sessions": 2
+    },
+    {
       "path": "/log_assets/markdown/185_사고의 지도를 그리는 법 '로직 트리'.html",
       "title": "/log_assets/markdown/185_사고의 지도를 그리는 법 '로직 트리'.html",
       "sessions": 2
@@ -262,6 +267,11 @@
     {
       "path": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
       "title": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
+      "sessions": 1
+    },
+    {
+      "path": "/log_assets/markdown/003_회의실에서 목소리가 큰 사람이 가장 위험할 수 있다.html",
+      "title": "/log_assets/markdown/003_회의실에서 목소리가 큰 사람이 가장 위험할 수 있다.html",
       "sessions": 1
     },
     {
@@ -290,11 +300,6 @@
       "sessions": 1
     },
     {
-      "path": "/log_assets/markdown/178_'So What, Why So' 논리에 영혼을 불어넣다.html",
-      "title": "/log_assets/markdown/178_'So What, Why So' 논리에 영혼을 불어넣다.html",
-      "sessions": 1
-    },
-    {
       "path": "/log_assets/markdown/228_1000퍼센트의 성장 '앱러빈'의 숨겨진 성공공식.html",
       "title": "/log_assets/markdown/228_1000퍼센트의 성장 '앱러빈'의 숨겨진 성공공식.html",
       "sessions": 1
@@ -307,11 +312,6 @@
     {
       "path": "/log_assets/markdown/481_내가 GS에서 강의를 하는 이유.html",
       "title": "/log_assets/markdown/481_내가 GS에서 강의를 하는 이유.html",
-      "sessions": 1
-    },
-    {
-      "path": "/log_assets/markdown/492_IT 서비스를 잘 만드는 회사의 7가지 특징.html",
-      "title": "/log_assets/markdown/492_IT 서비스를 잘 만드는 회사의 7가지 특징.html",
       "sessions": 1
     }
   ],
@@ -331,14 +331,20 @@
     {
       "path": "/log_assets/markdown/003_회의실에서 목소리가 큰 사람이 가장 위험할 수 있다.html",
       "title": "/log_assets/markdown/003_회의실에서 목소리가 큰 사람이 가장 위험할 수 있다.html",
-      "uniqueViews": 3,
-      "views": 16
+      "uniqueViews": 4,
+      "views": 17
     },
     {
       "path": "/log_assets/markdown/009_PM의 고수는 감정을 어떻게 다룰까.html",
       "title": "/log_assets/markdown/009_PM의 고수는 감정을 어떻게 다룰까.html",
       "uniqueViews": 3,
       "views": 11
+    },
+    {
+      "path": "/log_assets/markdown/178_'So What, Why So' 논리에 영혼을 불어넣다.html",
+      "title": "/log_assets/markdown/178_'So What, Why So' 논리에 영혼을 불어넣다.html",
+      "uniqueViews": 3,
+      "views": 3
     },
     {
       "path": "/log_assets/markdown/611_당신의 서비스가 말을 한다면.html",
@@ -383,12 +389,6 @@
       "views": 5
     },
     {
-      "path": "/log_assets/markdown/178_'So What, Why So' 논리에 영혼을 불어넣다.html",
-      "title": "/log_assets/markdown/178_'So What, Why So' 논리에 영혼을 불어넣다.html",
-      "uniqueViews": 2,
-      "views": 2
-    },
-    {
       "path": "/log_assets/markdown/185_사고의 지도를 그리는 법 '로직 트리'.html",
       "title": "/log_assets/markdown/185_사고의 지도를 그리는 법 '로직 트리'.html",
       "uniqueViews": 2,
@@ -409,7 +409,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 99,
+    "total_desktop_sessions": 101,
     "excluded_invalid_sessions": 18,
     "by_resolution": [
       {
@@ -436,6 +436,11 @@
         "resolution": "3840x1080",
         "width": 3840,
         "sessions": 5
+      },
+      {
+        "resolution": "1470x956",
+        "width": 1470,
+        "sessions": 3
       },
       {
         "resolution": "1024x2160",
@@ -475,11 +480,6 @@
       {
         "resolution": "1281x720",
         "width": 1281,
-        "sessions": 1
-      },
-      {
-        "resolution": "1470x956",
-        "width": 1470,
         "sessions": 1
       },
       {
