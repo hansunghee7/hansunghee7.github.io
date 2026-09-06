@@ -7,10 +7,11 @@ date_string: 'Dec 31. 2024'
 date: 2024-12-31
 keywords: '2024년 회고, 스타트업 액셀러레이팅, 코칭 성과'
 about: '심플리파이어, 연말 회고'
-prev_url: "/log_assets/markdown/271_2025%EB%85%84%EC%9D%98%20%EB%82%B4%EA%B0%80%202015%EB%85%84%EC%9D%98%20%EB%82%98%EC%97%90%EA%B2%8C.html"
+prev_url: "/logs/271/"
 prev_title: "2025년의 내가... 2015년의 나에게..."
-next_url: "/log_assets/markdown/274_ENTJ%20%EC%BD%94%EC%B9%98%EA%B0%80%20%EB%B3%B4%EB%8A%94%20%EC%98%A4%EA%B2%9C2%28%EC%8A%A4%ED%8F%AC%EC%97%86%EC%9D%8C%29.html"
+next_url: "/logs/274/"
 next_title: "ENTJ 코치가 보는 오겜2(스포없음)"
+permalink: /logs/272/
 ---
 
 감사한 일들이 많은 한해였다.   

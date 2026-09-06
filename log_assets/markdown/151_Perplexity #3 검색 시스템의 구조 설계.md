@@ -7,10 +7,11 @@ date_string: 'May 4. 2025'
 date: 2025-05-04
 keywords: 'RAG 파이프라인, 하이브리드 검색, 벡터 임베딩'
 about: '검색 시스템, AI 아키텍처'
-prev_url: "/log_assets/markdown/150_Slack%EC%9D%98%20%EC%9C%A0%EB%A3%8C%EC%A0%84%ED%99%98%EC%9D%98%20%EB%A7%A4%EC%A7%81%20%EB%AA%A8%EB%A8%BC%ED%8A%B8.html"
+prev_url: "/logs/150/"
 prev_title: "Slack의 유료전환의 매직 모먼트"
-next_url: "/log_assets/markdown/157_%EC%8B%9C%EA%B0%81%EC%A0%81%20%EC%86%8C%ED%86%B5%EC%9D%98%20%EB%8C%80%ED%91%9C%EC%A3%BC%EC%9E%90%2C%20%ED%95%80%ED%84%B0%EB%A0%88%EC%8A%A4%ED%8A%B8%EC%9D%98%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B8%B0%EB%B0%98%20%EC%84%B1%EC%9E%A5.html"
+next_url: "/logs/157/"
 next_title: "시각적 소통의 대표주자, 핀터레스트의 데이터 기반 성장"
+permalink: /logs/151/
 ---
 
 지금까지 Perplexity AI의 배경과 철학, 전체 아키텍처, 그리고 BM25와 벡터 검색의 하이브리드 설계에 대해 살펴보았습니다. 3부에서는 Perplexity의 핵심 기술인 RAG시스템을 완전히 해부해보겠습니다.

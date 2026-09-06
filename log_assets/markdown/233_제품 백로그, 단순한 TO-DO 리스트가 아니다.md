@@ -7,10 +7,11 @@ date_string: 'Feb 14. 2025'
 date: 2025-02-14
 keywords: '제품 백로그 관리, 백로그 우선순위 전략, 애자일 스쿼드 운영'
 about: '제품 백로그, 애자일 프로덕트 관리'
-prev_url: "/log_assets/markdown/240_%EB%8D%B0%EC%9D%BC%EB%A6%AC%20%EC%8A%A4%ED%81%AC%EB%9F%BC%EC%9D%B4%20%ED%95%84%EC%88%98%EC%9D%BC%EA%B9%8C.html"
+prev_url: "/logs/240/"
 prev_title: "데일리 스크럼이 필수일까?"
-next_url: "/log_assets/markdown/226_%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%20%EB%A6%AC%EB%B7%B0%27%2C%20%EC%A4%80%EB%B9%84%EB%8A%94%20%EB%8D%9C%ED%95%98%EA%B3%A0%20%EC%86%94%EC%A7%81%ED%95%A8%EC%9D%80%20%EB%8D%94%ED%95%98%EA%B8%B0.html"
+next_url: "/logs/226/"
 next_title: "스프린트 리뷰, 준비는 덜하고 솔직함은 더하기"
+permalink: /logs/233/
 ---
 
 많은 IT 회사의 PO들은 제품 백로그 관리에 아래와 같은 어려움을 겪고 있었다.

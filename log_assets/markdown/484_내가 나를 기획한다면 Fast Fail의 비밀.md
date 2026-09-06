@@ -7,10 +7,11 @@ date_string: 'Feb 4. 2024'
 date: 2024-02-04
 keywords: 'Fast Fail 전략, 스타트업 실행력, 거절과 실패 경험'
 about: '스타트업 실행 전략, 리스크 감수'
-prev_url: "/log_assets/markdown/483_%EB%AA%85%EB%9E%91%EA%B8%B0%ED%9A%8D%EC%9E%90%EC%9D%98%20IT%20%EB%AA%85%EC%96%B8.html"
+prev_url: "/logs/483/"
 prev_title: "명랑기획자의 IT 명언"
-next_url: "/log_assets/markdown/486_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EC%9B%90%ED%95%98%EB%8A%94%20%EA%B2%83%EC%9D%84%20%EC%9D%B4%EB%A3%A8%EB%8A%94%20%EB%B9%84%EB%B0%80.html"
+next_url: "/logs/486/"
 next_title: "내가 나를 기획한다면? 원하는 것을 이루는 비밀"
+permalink: /logs/484/
 ---
 
 1\.

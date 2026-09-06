@@ -7,10 +7,11 @@ date_string: 'May 27. 2025'
 date: 2025-05-27
 keywords: 'JTBD 프레임워크, 고객 니즈 분석, 밀크셰이크 마케팅'
 about: '기획 프레임워크, 고객 중심 사고'
-prev_url: "/log_assets/markdown/135_%EC%A0%9C%ED%92%88%EC%9D%98%20%EC%83%9D%EB%AA%85%EC%84%A0%2C%20Retention%20Curve.html"
+prev_url: "/logs/135/"
 prev_title: "제품의 생명선, Retention Curve"
-next_url: "/log_assets/markdown/120_UX%205%20Planes%2C%20%EA%B2%BD%ED%97%98%20%EC%84%A4%EA%B3%84%EC%9D%98%20%EC%A7%80%EB%8F%84.html"
+next_url: "/logs/120/"
 next_title: "UX 5 Planes, 경험 설계의 지도"
+permalink: /logs/128/
 ---
 
 하버드 경영대학원의 클레이튼 크리스텐슨 교수가 제시한 간단한 통찰이 비즈니스 세계를 뒤흔들었다. "사람들은 1/4인치 드릴을 원하는 것이 아니라, 1/4인치 구멍이 필요한 것이다." 이 한 문장이 JTBD(Job To Be Done) 프레임워크의 핵심을 담고 있다.

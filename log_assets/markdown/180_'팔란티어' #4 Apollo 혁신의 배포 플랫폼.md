@@ -7,10 +7,11 @@ date_string: 'Apr 6. 2025'
 date: 2025-04-06
 keywords: '팔란티어 Apollo, CI/CD 자동화, 블루그린 배포'
 about: '데이터 플랫폼, 소프트웨어 배포 전략'
-prev_url: "/log_assets/markdown/179_%EC%9D%B4%EB%A9%94%EC%9D%BC%EB%8F%84%20%ED%85%8C%EC%8A%AC%EB%9D%BC%EC%B2%98%EB%9F%BC%20%27Superhuman%27%20%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84%EC%A0%84%EB%9E%B5.html"
+prev_url: "/logs/179/"
 prev_title: "이메일도 테슬라처럼 'Superhuman' 프리미엄전략"
-next_url: "/log_assets/markdown/186_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%20%ED%99%95%EB%B3%B4%20%EC%A0%84%EB%9E%B5%20%27%EC%8A%A4%ED%8A%B8%EB%9D%BC%EC%9D%B4%ED%94%84%27.html"
+next_url: "/logs/186/"
 next_title: "스타트업의 초기 고객 확보 전략 '스트라이프'"
+permalink: /logs/180/
 ---
 
 Gotham과 Foundry가 팔란티어의 데이터 분석 역량을 보여준다면, Apollo는 그 혁신을 지속 가능케 하는 숨은 동력입니다.

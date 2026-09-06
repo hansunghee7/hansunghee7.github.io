@@ -7,10 +7,11 @@ date_string: 'Feb 14. 2024'
 date: 2024-02-14
 keywords: 'SNS 채널별 콘텐츠 전략, 멀티퍼블리싱, 인기 게시물 분석'
 about: '콘텐츠 마케팅, SNS 운영'
-prev_url: "/log_assets/markdown/472_%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%EC%97%90%EB%8A%94%20%EC%96%B4%EB%96%A4%20%EA%B8%80%EC%9D%84%20%EC%8D%A8%EC%95%BC%ED%95%A0%EA%B9%8C.html"
+prev_url: "/logs/472/"
 prev_title: "링크드인에는 어떤 글을 써야할까?"
-next_url: "/log_assets/markdown/477_%EA%B8%80%EC%93%B0%EA%B8%B0%EB%8A%94%20%27%EC%9E%98%27%20%EB%B3%B4%EB%8B%A4%20%27%EC%9E%90%EC%A3%BC%27%EA%B0%80%20%EB%8D%94%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html"
+next_url: "/logs/477/"
 next_title: "글쓰기는 '잘' 보다 '자주'가 더 중요한 이유"
+permalink: /logs/473/
 ---
 
 선배분들을 벤치마킹을 해서 멀티퍼블리싱을 하고 있는데, 최근 테스트 채널까지 늘면서 육체적 피로도가 높아졌습니다. 그래서 몇 개 정리를 할까 둘러보다보니, 열손가락 깨물어 안아픈 손가락이 없다고 멈출 수 있는 SNS가 없네요. ㅜ.ㅜ (누구 좋은 방법을 아시는 분 있으면 조언 부탁드립니다.)

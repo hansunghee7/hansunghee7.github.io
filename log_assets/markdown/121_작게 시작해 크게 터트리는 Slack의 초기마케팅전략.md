@@ -7,10 +7,11 @@ date_string: 'Jun 2. 2025'
 date: 2025-06-02
 keywords: 'Slack 초기 마케팅, 채널 집중 전략, 스타트업 그로스 해킹'
 about: '스타트업 마케팅, 그로스 전략'
-prev_url: "/log_assets/markdown/113_%27%EC%BB%A4%EC%84%9C%20AI%27%EC%9D%98%20AI%20%ED%98%91%EB%A0%A5%EC%9E%90%20%EC%A0%84%EB%9E%B5.html"
+prev_url: "/logs/113/"
 prev_title: "'커서 AI'의 AI 협력자 전략"
-next_url: "/log_assets/markdown/129_Dropbox%EC%9D%98%20%EB%AC%B4%EB%A3%8C%EC%97%90%EC%84%9C%20%EC%9C%A0%EB%A3%8C%EB%A1%9C%EC%9D%98%20%EC%A0%84%ED%99%98%20%EB%B9%84%EB%B2%95.html"
+next_url: "/logs/129/"
 next_title: "Dropbox의 무료에서 유료로의 전환 비법"
+permalink: /logs/121/
 ---
 
 안녕하세요, 스타트업 성공코치 한성희입니다. 오늘은 제한된 자원으로 최대 효과를 내야 하는 초기 스타트업의 마케팅 채널 설정법에 대해 이야기해보겠습니다.

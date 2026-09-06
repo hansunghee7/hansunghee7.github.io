@@ -7,10 +7,11 @@ date_string: 'Jul 14. 2024'
 date: 2024-07-14
 keywords: '브랜드 로고 디자인, 스타트업 브랜딩, 디자이너 협업'
 about: '브랜드 디자인, 로고'
-prev_url: "/log_assets/markdown/355_%EC%8B%9C%EB%93%9C%20%EC%95%84%EC%9D%B4%ED%85%9C%EA%B3%BC%20%EB%A9%94%ED%83%80%EC%9D%B8%EC%A7%80.html"
+prev_url: "/logs/355/"
 prev_title: "시드 아이템과 메타인지"
-next_url: "/log_assets/markdown/360_%EB%8F%88%EA%B3%BC%20%ED%96%89%EB%B3%B5.html"
+next_url: "/logs/360/"
 next_title: "돈과 행복"
+permalink: /logs/356/
 ---
 
 **#Simplifier #Branding "로고"**

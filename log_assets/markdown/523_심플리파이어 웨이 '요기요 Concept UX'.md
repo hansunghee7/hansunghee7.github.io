@@ -7,10 +7,11 @@ date_string: 'Dec 22. 2023'
 date: 2023-12-22
 keywords: '컨셉 UX, 프로덕트 비전 설계, 요기요 콘셉트 영상'
 about: '프로덕트 전략, UX 프로토타이핑, CPO 업무'
-prev_url: "/log_assets/markdown/492_IT%20%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A5%BC%20%EC%9E%98%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%ED%9A%8C%EC%82%AC%EC%9D%98%207%EA%B0%80%EC%A7%80%20%ED%8A%B9%EC%A7%95.html"
+prev_url: "/logs/492/"
 prev_title: "IT 서비스를 잘 만드는 회사의 7가지 특징"
-next_url: "/log_assets/markdown/564_%EC%8B%AC%ED%94%8C%EB%A6%AC%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%9B%A8%EC%9D%B4%20%27%EB%94%94%EC%9E%90%EC%9D%B8%20%ED%98%91%EC%97%85%27.html"
+next_url: "/logs/564/"
 next_title: "심플리파이어 웨이 '디자인 협업'"
+permalink: /logs/523/
 ---
 
 저는 CPO로써 프로덕트 생산 체계가 자리를 잡고, 계획된 과제가 안정적으로 돌아가면, UX 조직과 함께 콘셉트카를 만들 듯이 프로덕트의 미래를 그려보는 작업을 합니다.

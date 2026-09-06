@@ -46,7 +46,9 @@ SITEMAP_LOC = re.compile(r"<loc>\s*(\S+?)\s*</loc>")
 # 헛경보가 잦은 검사는 사람이 무시하게 되고, 무시되는 검사는 없는 것보다
 # 나쁘다 -- 있다고 믿게 만들기 때문이다. 그래서 글 경로는 제외한다.
 # 여기서 잡아야 하는 건 "새 글"이 아니라 "숨겨뒀던 페이지를 여는 것"이다.
-ROUTINE_PUBLISH = re.compile(r"/log_assets/markdown/")
+# 2026-09-06부터 글의 진짜 주소가 /logs/<id>/라 그 패턴도 평상 업무로 인정한다
+# (옛 /log_assets/markdown/ 패턴은 과거 이력·리다이렉트 스텁용으로 남겨둠).
+ROUTINE_PUBLISH = re.compile(r"/log_assets/markdown/|/logs/\d+/")
 NAV_LINK = re.compile(r"<a\b[^>]*href=", re.I)
 
 

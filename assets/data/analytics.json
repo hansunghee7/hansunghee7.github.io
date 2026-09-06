@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-06T11:42:50.307168+00:00",
+  "updated_at": "2026-09-06T21:44:33.840925+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 151,
-    "activeUsers": 92,
-    "newUsers": 92,
+    "sessions": 152,
+    "activeUsers": 93,
+    "newUsers": 93,
     "returningUsers": 0
   },
   "daily": [
@@ -91,6 +91,13 @@
       "activeUsers": 5,
       "newUsers": 5,
       "returningUsers": 0
+    },
+    {
+      "date": "2026-09-07",
+      "sessions": 1,
+      "activeUsers": 1,
+      "newUsers": 1,
+      "returningUsers": 0
     }
   ],
   "daily_leads": [
@@ -104,9 +111,9 @@
     }
   ],
   "landing_types": {
-    "home": 98,
+    "home": 99,
     "log_home": 7,
-    "individual_post": 25,
+    "individual_post": 26,
     "other": 25
   },
   "top_sources": [
@@ -115,12 +122,12 @@
       "sessions": 112
     },
     {
-      "source": "searchadvisor.naver.com",
+      "source": "google",
       "sessions": 12
     },
     {
-      "source": "google",
-      "sessions": 11
+      "source": "searchadvisor.naver.com",
+      "sessions": 12
     },
     {
       "source": "l.facebook.com",
@@ -128,7 +135,7 @@
     },
     {
       "source": "(not set)",
-      "sessions": 5
+      "sessions": 6
     },
     {
       "source": "linkedin.com",
@@ -159,16 +166,16 @@
       "sessions": 112
     },
     {
+      "source": "google",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "sessions": 12
+    },
+    {
       "source": "searchadvisor.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 12
-    },
-    {
-      "source": "google",
-      "medium": "organic",
-      "campaign": "(organic)",
-      "sessions": 11
     },
     {
       "source": "l.facebook.com",
@@ -214,7 +221,7 @@
     "section_view_book_class": 127,
     "section_view_faq": 116,
     "faq_open": 26,
-    "read_complete": 191
+    "read_complete": 192
   },
   "contact_funnel": {
     "contact_open": 27,
@@ -300,6 +307,11 @@
       "sessions": 1
     },
     {
+      "path": "/log_assets/markdown/186_스타트업의 초기 고객 확보 전략 '스트라이프'.html",
+      "title": "/log_assets/markdown/186_스타트업의 초기 고객 확보 전략 '스트라이프'.html",
+      "sessions": 1
+    },
+    {
       "path": "/log_assets/markdown/228_1000퍼센트의 성장 '앱러빈'의 숨겨진 성공공식.html",
       "title": "/log_assets/markdown/228_1000퍼센트의 성장 '앱러빈'의 숨겨진 성공공식.html",
       "sessions": 1
@@ -307,11 +319,6 @@
     {
       "path": "/log_assets/markdown/267_애자일이란.html",
       "title": "/log_assets/markdown/267_애자일이란.html",
-      "sessions": 1
-    },
-    {
-      "path": "/log_assets/markdown/481_내가 GS에서 강의를 하는 이유.html",
-      "title": "/log_assets/markdown/481_내가 GS에서 강의를 하는 이유.html",
       "sessions": 1
     }
   ],
@@ -409,13 +416,13 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 101,
+    "total_desktop_sessions": 102,
     "excluded_invalid_sessions": 18,
     "by_resolution": [
       {
         "resolution": "2560x1440",
         "width": 2560,
-        "sessions": 36
+        "sessions": 37
       },
       {
         "resolution": "800x600",

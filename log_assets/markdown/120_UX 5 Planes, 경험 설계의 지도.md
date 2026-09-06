@@ -7,10 +7,11 @@ date_string: 'Jun 3. 2025'
 date: 2025-06-03
 keywords: 'UX 5 Planes 모델, 제시 제임스 개럿, 경험 설계 프레임워크'
 about: 'UX 설계 프레임워크, 정보 구조'
-prev_url: "/log_assets/markdown/128_%EA%B3%A0%EA%B0%9D%EC%9D%80%20%EC%A0%9C%ED%92%88%EC%9D%84%20%27%EA%B3%A0%EC%9A%A9%27%ED%95%9C%EB%8B%A4%20%27JTBD%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D%27.html"
+prev_url: "/logs/128/"
 prev_title: "고객은 제품을 '고용'한다 'JTBD프레임웍'"
-next_url: "/log_assets/markdown/112_%27%ED%8F%AC%ED%84%B0%EC%9D%98%205%20Forces%27%20%EC%A0%84%EC%9F%81%ED%84%B0%EB%A5%BC%20%EB%B6%84%EC%84%9D%ED%95%98%EB%8A%94%20%EB%B2%95.html"
+next_url: "/logs/112/"
 next_title: "'포터의 5 Forces' 전쟁터를 분석하는 법"
+permalink: /logs/120/
 ---
 
 2002년, 웹사이트와 앱이 점점 복잡해지면서 한 가지 문제가 대두되고 있었다. 사용자 경험을 어떻게 체계적으로 설계할 것인가? 제시 제임스 개럿(Jesse James Garrett)은 이 문제에 대한 명쾌한 답을 제시했다. 바로 'UX 5 Planes 모델'이다.

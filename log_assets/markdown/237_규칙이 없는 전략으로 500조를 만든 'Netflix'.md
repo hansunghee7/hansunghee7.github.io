@@ -7,10 +7,11 @@ date_string: 'Feb 10. 2025'
 date: 2025-02-10
 keywords: '넷플릭스 조직문화, 자유와 책임 원칙, 인재밀도 전략'
 about: '조직문화, 스타트업 인사관리'
-prev_url: "/log_assets/markdown/235_%E7%BE%8E%20%EA%B5%AD%EB%B0%A9%EB%B6%80%EC%9D%98%20%EC%84%A0%ED%83%9D%20%EB%B9%85%EB%B2%A0%EC%96%B4AI.html"
+prev_url: "/logs/235/"
 prev_title: "美 국방부의 선택 빅베어AI"
-next_url: "/log_assets/markdown/238_%EC%82%BC%EC%84%B1%20%EC%82%AC%EB%82%B4%EB%B2%A4%EC%B2%98%EA%B0%80%20%EB%82%B3%EC%9D%80%20%EC%BB%A4%EB%A8%B8%EC%8A%A4AI%EC%9D%98%20%ED%98%81%EC%8B%A0%2C%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%EB%9E%A9.html"
+next_url: "/logs/238/"
 next_title: "삼성 사내벤처가 낳은 커머스AI의 혁신, 스튜디오랩"
+permalink: /logs/237/
 ---
 
 안녕하세요, 스타트업 성공코치 한성희입니다. 오늘은 많은 스타트업 창업자들이 궁금해하는 '조직 성장 전략'에 대해 이야기해보려 합니다.

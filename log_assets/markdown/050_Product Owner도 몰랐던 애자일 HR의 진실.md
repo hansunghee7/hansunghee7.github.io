@@ -7,8 +7,9 @@ date_string: 'Aug 15. 2025'
 date: 2025-08-15
 keywords: '애자일 HR, 상시 피드백 평가, 역량 기반 채용'
 about: '애자일 조직, HR 전략'
-prev_url: "/log_assets/markdown/057_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20vs%20%EB%8C%80%EA%B8%B0%EC%97%85%20%EC%95%A0%EC%9E%90%EC%9D%BC%2C%20%EA%B7%9C%EB%AA%A8%EB%B3%84%20%EC%A0%81%EC%9A%A9%20%EC%A0%84%EB%9E%B5.html"
+prev_url: "/logs/57/"
 prev_title: "스타트업 vs 대기업 애자일, 규모별 적용 전략"
+permalink: /logs/50/
 ---
 
 서울 여의도의 한 IT기업 HR팀장 박차장은 고민이 깊었다. 개발팀은 애자일로 2주마다 성과를 내는데, 인사평가는 여전히 1년에 한 번이었다. "조직과 과제는 계속 바뀌는데 1년 전 목표로 평가한다고?" 팀장들의 불만이 계속 쌓였다. 더 큰 문제는 채용이었다. "React 개발자 5년 경력"이라고 올려도 정작 필요한 건 "프론트엔드 잘하고 팀워크 좋은 사람"이었다.

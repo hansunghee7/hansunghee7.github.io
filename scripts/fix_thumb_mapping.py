@@ -153,12 +153,19 @@ def resolve_image_url(base):
     return None
 
 
-# --- Patch log.html card thumbnails, matched by exact href base name ---
+# --- Patch log.html card thumbnails, matched by id (카드 href가 2026-09-06부터
+# /logs/<id>/ 형태라 base 파일명을 직접 못 얻으므로 id로 역참조한다) ---
 with open('log.html', encoding='utf-8') as f:
     content = f.read()
 
+base_by_id = {}
+for _fname in md_files:
+    _m = re.match(r'^(\d+)_', _fname)
+    if _m:
+        base_by_id[int(_m.group(1))] = _fname[:-3]
+
 card_re = re.compile(
-    r'<a href="/log_assets/markdown/([^"]+)\.html" class="card-item"([^>]*)>'
+    r'<a href="/logs/(\d+)/" class="card-item"([^>]*)>'
     r'<div class="card-thumb-wrap"><div class="card-thumb" style="background-image: url\(\'([^\']*)\'\);"></div></div>'
 )
 
@@ -169,17 +176,17 @@ mismatches = []
 
 def repl(m):
     global total, changed
-    encoded_base, attrs, old_url = m.group(1), m.group(2), m.group(3)
-    base = urllib.parse.unquote(encoded_base)
+    post_id, attrs, old_url = int(m.group(1)), m.group(2), m.group(3)
+    base = base_by_id.get(post_id)
     total += 1
-    new_url = resolve_image_url(base)
+    new_url = resolve_image_url(base) if base else None
     if not new_url:
-        mismatches.append(base)
+        mismatches.append(post_id)
         return m.group(0)
     if new_url != old_url:
         changed += 1
     return (
-        '<a href="/log_assets/markdown/' + encoded_base + '.html" class="card-item"' + attrs + '>'
+        '<a href="/logs/' + str(post_id) + '/" class="card-item"' + attrs + '>'
         '<div class="card-thumb-wrap"><div class="card-thumb" style="background-image: url(\'' + new_url + '\');"></div></div>'
     )
 
@@ -223,7 +230,9 @@ for fname in md_files:
     title = frontmatter.get('title', base)
     date_string = frontmatter.get('date_string', '')
 
-    url = '/log_assets/markdown/' + urllib.parse.quote(base) + '.html'
+    # 2026-09-06: 진짜 주소가 짧아짐(/logs/<id>/) -- 옛 긴 주소는
+    # scripts/generate_short_links.py가 그 자리에 리다이렉트 스텁을 심는다.
+    url = '/logs/{}/'.format(pid)
 
     image = resolve_image_url(base) or '/log_assets/images/logo_white.png'
 

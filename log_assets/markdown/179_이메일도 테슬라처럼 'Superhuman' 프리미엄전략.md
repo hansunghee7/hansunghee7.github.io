@@ -7,10 +7,11 @@ date_string: 'Apr 7. 2025'
 date: 2025-04-07
 keywords: 'Superhuman 사례, 프리미엄 가격 전략, 타겟 고객 설정'
 about: '스타트업 마케팅 전략, 프로덕트 포지셔닝'
-prev_url: "/log_assets/markdown/174_%EC%9D%B8%EC%9D%B4%20%EB%B0%B0%EA%B8%B8%20%EB%95%8C%EA%B9%8C%EC%A7%80.html"
+prev_url: "/logs/174/"
 prev_title: "인이 배길 때까지..."
-next_url: "/log_assets/markdown/180_%27%ED%8C%94%EB%9E%80%ED%8B%B0%EC%96%B4%27%20%234%20Apollo%20%ED%98%81%EC%8B%A0%EC%9D%98%20%EB%B0%B0%ED%8F%AC%20%ED%94%8C%EB%9E%AB%ED%8F%BC.html"
+next_url: "/logs/180/"
 next_title: "'팔란티어' #4 Apollo 혁신의 배포 플랫폼"
+permalink: /logs/179/
 ---
 
 오늘은 이메일이라는 오래된 시장에 프리미엄 솔루션으로 성공적으로 진입한 Superhuman의 전략을 분석해보겠습니다.
