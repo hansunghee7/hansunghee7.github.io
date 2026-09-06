@@ -9,14 +9,14 @@
 실제로 지켰는지 확인하세요.** 스크립트가 못 잡는 것(아래 "자동으로 못 잡는 것" 참고)은
 브라우저로 직접 확인해야 합니다.
 
-## 이 폴더가 Jekyll 밖에 있다는 것
+## 이 폴더가 Jekyll 밖에 있다는 것 <!-- id: 9545 -->
 
 `insight-7b3e9f2c/` 안 파일들은 front matter가 없는 순수 정적 HTML입니다 — Jekyll
 빌드 대상이 아니라서 {% raw %}`{% include %}`{% endraw %}를 못 씁니다. 그래서 여러 페이지가 공유하는
 것은 `<link>`/`<script>`로 불러 쓰는 실제 파일(`studio.css`, `studio.js`) 두 개뿐이고,
 그 밖의 공유는 전부 이 문서 같은 "사람(과 AI)이 읽고 맞추는" 규칙입니다.
 
-## 새 페이지를 만들 때 (필수 체크리스트)
+## 새 페이지를 만들 때 (필수 체크리스트) <!-- id: 3ca3 -->
 
 1. `<head>`에 아래 그대로 포함:
    ```html
@@ -41,7 +41,7 @@
    페이지 고유 값(예: `.wrap`의 max-width)만 studio.css `<link>` **다음에** 같은
    선택자로 다시 선언해서 덮어씁니다(일반 CSS 캐스케이드 순서 그대로).
 
-## 인사이트 카드·그래프 표준 (2026-08-30)
+## 인사이트 카드·그래프 표준 (2026-08-30) <!-- id: e55b -->
 
 숫자 카드는 **studio.css의 `.tile` 표준**을 씁니다 — 사이트/검색·UX/북/SNS
 인사이트가 각자 카드를 복붙하다 테두리 굵기(`--line` vs `--line-soft`),
@@ -63,7 +63,7 @@
 - **막대(mini-bars)**: 일별 발생량(방문, 노출, 클릭). 그라데이션
   `#a5a299→#6e6a62`, 강조 시리즈만 다른 색.
 
-## ⓘ 설명 버튼 (info-dot) 패턴
+## ⓘ 설명 버튼 (info-dot) 패턴 <!-- id: ea62 -->
 
 한 번만 알면 되는 설명(집계 방식, 갱신 주기, 용어 정의 등)은 화면에 상시 노출하지
 않고 이 버튼 뒤에 숨깁니다:
@@ -93,7 +93,7 @@
   좌우 밀어내는 방식으로 처리합니다. 새 ⓘ 변형을 추가할 때도 이 함수가
   처리하도록 맞추세요 — 직접 새 넘침 방지 로직을 만들지 않습니다.
 
-## 새로고침 버튼
+## 새로고침 버튼 <!-- id: 7cf2 -->
 
 버튼 안에 `.refresh-icon`/`.refresh-label` span을 두고, 상태 전환은 직접 만들지
 않고 공용 헬퍼를 씁니다:
@@ -102,7 +102,7 @@
 Studio.setRefreshState(btn, "loading");  // -> "success" / "error" -> setTimeout으로 "idle"
 ```
 
-## 과거에 실제로 있었던 사고 (재발 방지용 기록)
+## 과거에 실제로 있었던 사고 (재발 방지용 기록) <!-- id: 956a -->
 
 - **`title=` 죽은 툴팁**: book-insight/sns-insight의 초기 버전, 그리고 외부
   `shorts-lab` 파이프라인이 생성하는 `shorts-studio.html`에서 반복 발견. 원인은
@@ -125,7 +125,7 @@ Studio.setRefreshState(btn, "loading");  // -> "success" / "error" -> setTimeout
   브라우저로 실측해야만 보입니다 — 새 헤더를 만들거나 기존 설명 문단을 정리할
   때마다 제목 바로 아래 요소의 `getBoundingClientRect()` 간격을 확인하세요.
 
-## 자동으로 못 잡는 것 (브라우저로 직접 확인)
+## 자동으로 못 잡는 것 (브라우저로 직접 확인) <!-- id: 570a -->
 
 `check_studio_style.py`는 문자열 패턴만 봅니다. 아래는 반드시 미리보기 서버로
 띄워서 눈으로/`javascript_tool`로 확인해야 합니다:
@@ -135,7 +135,7 @@ Studio.setRefreshState(btn, "loading");  // -> "success" / "error" -> setTimeout
 - 모바일 폭(375px)에서 사이드바가 가로 스크롤 바로 정상 축소되는지
 - 콘솔/네트워크 에러 없이 로드되는지
 
-## 외부에서 생성되는 페이지 (예: shorts-studio.html, shorts-process.html 등)
+## 외부에서 생성되는 페이지 (예: shorts-studio.html, shorts-process.html 등) <!-- id: da67 -->
 
 `shorts-studio.html`과 `shorts-process.html`·`shorts-visual-grammar.html`·
 `shorts-roles.html`은 이 저장소 밖 `shorts-lab/pipeline/build_studio_site.py`·
@@ -144,7 +144,7 @@ Studio.setRefreshState(btn, "loading");  // -> "success" / "error" -> setTimeout
 영구적으로 반영됩니다.** 이런 페이지를 발견하면 생성기 코드에도 이 문서의
 규칙이 반영돼 있는지 확인하세요.
 
-## 긴 마크다운 문서를 페이지로 렌더링할 때 — `.doc` 패턴
+## 긴 마크다운 문서를 페이지로 렌더링할 때 — `.doc` 패턴 <!-- id: 0c21 -->
 
 `shorts-process.html` 등 3개 문서 페이지에서 처음 쓰인 패턴(2026-08-28). 표·코드·
 인용구가 있는 긴 참조 문서(설계 정본 같은)를 site 안에서 읽기 좋게 보여줄 때
