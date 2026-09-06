@@ -5,6 +5,12 @@ name: (1회성) 새김 guide_views 검증
 # — simplifier-saegim README의 2026-09-04 검증과 같은 패턴.
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - claude/hi-note-8v61js
+    paths:
+      - .github/workflows/_tmp-saegim-verify.yml
+      - scripts/_tmp_saegim_verify.py
 
 permissions:
   contents: read
