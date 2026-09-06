@@ -258,6 +258,9 @@
     <p class="sec-note">이 구조를 처음 점검했을 때(2026-08-29) 나온 항목과 처리 결과입니다.</p>
 
     <div class="log-list">
+      <div class="log-item"><span class="dot done"></span><div><b>2026-09-06</b> — 공유용 짧은 URL(<code>/logs/&lt;id&gt;/</code>) 도입(마야, 사장님 승인). 한글 제목이 그대로 들어가 길어지던 글 URL을 카카오톡 등으로 공유할 때 쓸 짧은 리다이렉트 페이지 587+2편 소급 생성 + <code>publish-pipeline.yml</code>에 <code>scripts/generate_short_links.py</code> 단계 추가(신규 글도 자동 생성). noindex + canonical(원본 긴 URL)로 sitemap·색인엔 영향 없음. 워크플로 파일 수는 그대로(기존 워크플로에 단계 추가일 뿐, 새 워크플로 아님).
+        <span class="files">scripts/generate_short_links.py · logs/&lt;id&gt;/index.html · .github/workflows/publish-pipeline.yml</span>
+      </div></div>
       <div class="log-item"><span class="dot done"></span><div><b>2026-09-04</b> — 질문하기(잉크) 파이프라인의 클로드 API 경로 드랍(사장님 결정: API 별도 과금 안 받음). <code>draft-from-questions.yml</code>·<code>propose-questions.yml</code>과 스크립트 2개 삭제, 외부 서비스 표에서 Anthropic Claude API 제거. 워크플로 14개·외부 서비스 20개로 재집계. 접수함·폼·<code>pick-questions.yml</code>은 유지. 초안 생성 대체 수단은 미결 — 정본 <code>docs/질문하기_파이프라인.md</code> 맨 위 상자.</div></div>
       <div class="log-item"><span class="dot done"></span><div><b>2026-09-02</b> — "심플리파이어에게 질문하기" 파이프라인 계단 1·2 부품 추가(접수함 SQL, 폼, 초안 워크플로). 폼은 <code>_data/question_form.yml</code>의 <code>enabled</code>가 켜지기 전까지 어느 글에도 보이지 않음. 같은 날 계단 4 부품(주 1회 "질문 후보" 이슈 제안 <code>propose-questions.yml</code>, 체크박스 픽 처리 <code>pick-questions.yml</code>)도 추가. 워크플로 수는 실제 파일 기준 16개로 재집계(이 페이지의 7은 8-29 시점 값이었음). 정본: <code>docs/질문하기_파이프라인.md</code>.</div></div>
       <div class="log-item"><span class="dot done"></span><div><b>완료</b> — 아무 워크플로에서도 참조되지 않는 죽은 파일 9개 삭제.

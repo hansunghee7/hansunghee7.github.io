@@ -90,11 +90,14 @@ jobs:
             python scripts/fix_thumb_mapping.py
             # posts.json이 갱신된 뒤에 돌아야 발행 목록을 기준으로 맞출 수 있습니다.
             python scripts/sync_sitemap_and_drafts.py
+            # 공유용 짧은 URL(/logs/<id>/) 페이지도 posts.json 최신 상태 기준으로
+            # 생성/갱신. sitemap.xml에는 안 넣는다 (스크립트 자체 안전장치 참고).
+            python scripts/generate_short_links.py
 
             # log_assets/images도 포함해야 합니다 -- sanitize_cover_images.py가
             # 이미지 파일 이름을 바꾸는데, 이걸 빼면 front matter만 새 이름으로
             # 커밋되고 실제 파일 이름은 옛날 그대로라 링크가 깨집니다.
-            git add log_assets/markdown log_assets/images log.html assets/data/posts.json _data/posts.json sitemap.xml
+            git add log_assets/markdown log_assets/images log.html assets/data/posts.json _data/posts.json sitemap.xml logs
 
             if git diff --cached --quiet; then
               echo "커밋할 변경 없음"
