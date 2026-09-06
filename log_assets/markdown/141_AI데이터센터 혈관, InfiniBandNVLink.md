@@ -7,10 +7,11 @@ date_string: 'May 14. 2025'
 date: 2025-05-14
 keywords: 'AI 데이터센터, GPU 네트워킹, NVLink InfiniBand'
 about: 'AI 인프라, 반도체 네트워크 기술'
-prev_url: "/log_assets/markdown/148_AI%EB%AA%A8%EB%8D%B8%20%ED%95%99%EC%8A%B5%EC%97%90%20%EB%82%A0%EA%B0%9C%EB%A5%BC%20%EB%8B%AC%EC%9E%90%20%ED%98%BC%ED%95%A9%20%EC%A0%95%EB%B0%80%EB%8F%84%EC%9D%98%20%EB%A7%88%EB%B2%95.html"
+prev_url: "/logs/148/"
 prev_title: "AI모델 학습에 날개를 달자! 혼합 정밀도의 마법"
-next_url: "/log_assets/markdown/134_AI%20%EB%AA%A8%EB%8D%B8%EC%9D%98%20%ED%95%99%EC%83%9D%EA%B3%BC%20%EC%A1%B8%EC%97%85%EC%83%9D%2C%20%ED%95%99%EC%8A%B5%EA%B3%BC%20%EC%B6%94%EB%A1%A0%EC%9D%98%20%EC%B0%A8%EC%9D%B4%EC%A0%90.html"
+next_url: "/logs/134/"
 next_title: "AI 모델의 학생과 졸업생, 학습과 추론의 차이점"
+permalink: /logs/141/
 ---
 
 AI 기술이 폭발적으로 성장하면서 데이터센터의 네트워크 인프라도 급격한 변화를 겪고 있습니다. 특히 대규모 AI 모델을 학습시키려면 GPU 간의 초고속 데이터 전송이 필수적인데요. 여기서 두 가지 핵심 기술이 바로 NVLink와 InfiniBand입니다. 이 둘은 서로 다른 영역에서 최적의 성능을 발휘하는 상호보완적인 관계라고 할 수 있어요.

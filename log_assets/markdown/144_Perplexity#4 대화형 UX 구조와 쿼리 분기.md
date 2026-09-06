@@ -7,10 +7,11 @@ date_string: 'May 11. 2025'
 date: 2025-05-11
 keywords: '대화형 AI UX, 쿼리 리라이팅, 응답 스트리밍'
 about: 'AI 프로덕트 UX, 챗봇 설계'
-prev_url: "/log_assets/markdown/143_%EC%97%90%EC%96%B4%EB%A7%A4%ED%8A%B8%EC%97%90%EC%84%9C%20%EC%8B%9C%EC%9E%91%EB%90%9C%2C%20%EC%97%90%EC%96%B4%EB%B9%84%EC%95%A4%EB%B9%84%EC%9D%98%20%EB%AC%B4%EC%9E%90%EB%B3%B8%20%EC%B0%BD%EC%97%85%20%EC%A0%84%EB%9E%B5.html"
+prev_url: "/logs/143/"
 prev_title: "에어매트에서 시작된, 에어비앤비의 무자본 창업 전략"
-next_url: "/log_assets/markdown/150_Slack%EC%9D%98%20%EC%9C%A0%EB%A3%8C%EC%A0%84%ED%99%98%EC%9D%98%20%EB%A7%A4%EC%A7%81%20%EB%AA%A8%EB%A8%BC%ED%8A%B8.html"
+next_url: "/logs/150/"
 next_title: "Slack의 유료전환의 매직 모먼트"
+permalink: /logs/144/
 ---
 
 퍼플렉시티의 놀라운 대화형 AI 경험 뒤에는 정교한 UX 설계와 쿼리 분기 전략이 자리 잡고 있습니다. 단순한 질의-응답을 넘어 마치 인간과 대화를 나누는 듯한 자연스러운 상호작용을 구현하기 위한 일련의 기술들을 살펴보겠습니다.

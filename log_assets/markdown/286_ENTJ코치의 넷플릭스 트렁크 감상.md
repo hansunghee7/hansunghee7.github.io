@@ -7,10 +7,11 @@ date_string: 'Dec 2. 2024'
 date: 2024-12-02
 keywords: '넷플릭스 트렁크 리뷰, 서현진 공유, 드라마 감상'
 about: '드라마 리뷰, 넷플릭스 콘텐츠'
-prev_url: "/log_assets/markdown/285_%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%97%90%20%ED%8F%AC%EC%BB%A4%EC%8A%A4%ED%95%98%EC%84%B8%EC%9A%94.html"
+prev_url: "/logs/285/"
 prev_title: "비즈니스에 포커스하세요."
-next_url: "/log_assets/markdown/287_%EB%82%98%EC%9D%98%20%EC%BD%94%EC%B9%AD%20%EC%97%AC%EC%A0%95.html"
+next_url: "/logs/287/"
 next_title: "나의 코칭 여정"
+permalink: /logs/286/
 ---
 
 서현진... 배역 때문인지 고개를 숙이면 척추뼈가 고대로 보일 정도로 살을 너무 뺌. 사막여우 같아 보이기도 해골 같아 보이기도;;; 그런데 공유랑 서로 보며 웃을 때... 같이 웃음이 지어지는 게 타고난 로코퀸임.

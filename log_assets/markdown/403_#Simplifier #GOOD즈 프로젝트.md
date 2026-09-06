@@ -7,10 +7,11 @@ date_string: 'Apr 27. 2024'
 date: 2024-04-27
 keywords: '심플리파이어 굿즈, 브랜드 상품 제작, 브랜딩 글래스'
 about: '심플리파이어 브랜드, 굿즈 마케팅'
-prev_url: "/log_assets/markdown/399_%EB%82%B4%EA%B0%80%20%EC%9A%94%EC%A6%98%20%EC%A3%BC%EB%AA%A9%ED%95%98%EB%8A%94%20%27%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%ED%9E%88%EC%96%B4%EB%A1%9C%27%204%EC%9B%94%ED%98%B8.html"
+prev_url: "/logs/399/"
 prev_title: "내가 요즘 주목하는 '링크드인 히어로' 4월호"
-next_url: "/log_assets/markdown/410_%27%EC%BB%A4%EB%84%A5%ED%8C%85%20X%20%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%27%20%EB%B6%81%ED%86%A0%ED%81%AC%20%EC%9D%B4%EC%95%BC%EA%B8%B0.html"
+next_url: "/logs/410/"
 next_title: "'커넥팅 X 잉크드인' 북토크 이야기"
+permalink: /logs/403/
 ---
 
 드디어 심플리파이어 브랜딩 글래스 제작이 완료되었습니다.

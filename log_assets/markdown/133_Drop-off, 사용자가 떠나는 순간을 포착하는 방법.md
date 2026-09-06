@@ -7,10 +7,11 @@ date_string: 'May 22. 2025'
 date: 2025-05-22
 keywords: '드롭오프 분석, 퍼널 분석, 이탈 지점 개선'
 about: 'UX 데이터 분석, 전환율 최적화'
-prev_url: "/log_assets/markdown/125_%ED%9E%88%ED%8A%B8%EB%A7%B5%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%ED%96%89%EB%8F%99%EC%9D%84%20%EC%83%89%EC%9C%BC%EB%A1%9C%20%EC%9D%BD%EB%8A%94%20%EB%B2%95.html"
+prev_url: "/logs/125/"
 prev_title: "히트맵, 사용자 행동을 색으로 읽는 법"
-next_url: "/log_assets/markdown/140_%EC%96%B4%ED%8F%AC%EB%8D%98%EC%8A%A4%20%EC%9D%B4%20%EB%B2%84%ED%8A%BC%2C%20%EC%99%9C%20%EB%88%84%EB%A5%B4%EA%B3%A0%20%EC%8B%B6%EC%9D%84%EA%B9%8C%20%EA%B7%B8%20%EB%B9%84%EB%B0%80.html"
+next_url: "/logs/140/"
 next_title: "어포던스: \"이 버튼, 왜 누르고 싶을까?\" 그 비밀"
+permalink: /logs/133/
 ---
 
 "장바구니에 담았는데 왜 구매는 안 할까?" "회원가입 폼에서 절반이 이탈하는 이유는 뭘까?" 디지털 서비스를 운영하는 모든 이들의 공통된 고민입니다. 이런 사용자 이탈 지점을 추적하고 분석하는 UX 용어가 바로 '드롭오프(Drop-off)'입니다.

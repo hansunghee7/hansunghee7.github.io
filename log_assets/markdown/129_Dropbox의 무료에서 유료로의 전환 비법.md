@@ -7,10 +7,11 @@ date_string: 'May 26. 2025'
 date: 2025-05-26
 keywords: '프리미엄 전환 전략, 바이럴 루프, Dropbox 그로스전략'
 about: '그로스 전략, 프리미엄 비즈니스 모델'
-prev_url: "/log_assets/markdown/121_%EC%9E%91%EA%B2%8C%20%EC%8B%9C%EC%9E%91%ED%95%B4%20%ED%81%AC%EA%B2%8C%20%ED%84%B0%ED%8A%B8%EB%A6%AC%EB%8A%94%20Slack%EC%9D%98%20%EC%B4%88%EA%B8%B0%EB%A7%88%EC%BC%80%ED%8C%85%EC%A0%84%EB%9E%B5.html"
+prev_url: "/logs/121/"
 prev_title: "작게 시작해 크게 터트리는 Slack의 초기마케팅전략"
-next_url: "/log_assets/markdown/131_%EC%99%9C%20%EC%96%B4%EB%A0%A4%EC%9A%B4%20%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%84%20%EB%A7%88%EB%8B%A4%ED%95%98%EC%A7%80%20%EC%95%8A%EC%95%98%EC%9D%84%EA%B9%8C.html"
+next_url: "/logs/131/"
 next_title: "왜 어려운 스타트업을 마다하지 않았을까?"
+permalink: /logs/129/
 ---
 
 안녕하세요, 스타트업 성공코치 한성희입니다. 오늘은 프리미엄(Freemium) 모델을 운영하는 스타트업이라면 누구나 고민하는 '무료 사용자를 어떻게 유료로 전환시킬 것인가'에 대한 전략을 Dropbox의 성공 사례를 통해 살펴보겠습니다.

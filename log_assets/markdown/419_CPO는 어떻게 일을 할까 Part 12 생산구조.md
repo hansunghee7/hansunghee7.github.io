@@ -7,10 +7,11 @@ date_string: 'Apr 11. 2024'
 date: 2024-04-11
 keywords: '스쿼드 조직 설계, 프로덕트 생산체계, CPO 코칭 사례'
 about: 'CPO, 프로덕트 조직, 스쿼드 운영'
-prev_url: "/log_assets/markdown/420_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part11%20%EC%82%AC%EC%97%85%EB%AA%A9%ED%91%9C%EC%88%98%EB%A6%BD.html"
+prev_url: "/logs/420/"
 prev_title: "CPO는 어떻게 일을 할까? Part1.1 사업목표수립"
-next_url: "/log_assets/markdown/422_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part%203%20%ED%9D%90%EB%A6%84%EC%9D%98%20%EA%B2%B0%ED%95%A9.html"
+next_url: "/logs/422/"
 next_title: "CPO는 어떻게 일을 할까? Part 3. 흐름의 결합"
+permalink: /logs/419/
 ---
 
 1\.

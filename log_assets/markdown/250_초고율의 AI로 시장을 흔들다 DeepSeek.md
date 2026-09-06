@@ -7,10 +7,11 @@ date_string: 'Jan 29. 2025'
 date: 2025-01-29
 keywords: 'DeepSeek 오픈소스 전략, 저비용 AI 모델, 중국 AI 스타트업'
 about: 'AI 스타트업, 오픈소스 전략'
-prev_url: "/log_assets/markdown/246_%EC%BB%A4%EB%A8%B8%EC%8A%A4%20AI%EC%9D%98%20%EA%B2%8C%EC%9E%84%EC%B2%B4%EC%9D%B8%EC%A0%80%2C%20%EC%9D%B8%ED%95%B8%EC%8A%A4.html"
+prev_url: "/logs/246/"
 prev_title: "커머스 AI의 게임체인저, 인핸스"
-next_url: "/log_assets/markdown/253_%EB%A7%88%EC%BC%80%ED%8C%85%20%EC%97%86%EC%9D%B4%2020%EC%A1%B0%EC%9B%90%20%EA%B0%80%EC%B9%98%EB%A5%BC%20%EB%A7%8C%EB%93%A0%20Figma%20PLG%EC%A0%84%EB%9E%B5.html"
+next_url: "/logs/253/"
 next_title: "마케팅 없이 20조원 가치를 만든 Figma PLG전략"
+permalink: /logs/250/
 ---
 
 중국의 한 헤지펀드가 야심차게 선보인 AI 스타트업 DeepSeek이 글로벌 무대에서 새로운 바람을 일으키고 있다. 창업한 지 1년도 채 되지 않았지만, 독보적인 기술력과 파격적인 행보로 업계의 주목을 한 몸에 받고 있는 것이다.

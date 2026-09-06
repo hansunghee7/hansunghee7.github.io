@@ -7,10 +7,11 @@ date_string: 'Apr 16. 2025'
 date: 2025-04-16
 keywords: 'Tensor Cores, 행렬곱셈 가속, GPU 연산 최적화'
 about: 'AI 하드웨어, GPU 연산'
-prev_url: "/log_assets/markdown/177_AI%20%EC%B9%A9%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%ED%95%B5%EC%8B%AC%2C%20FLOPS%EC%99%80%20TOPS%20%EA%B7%B8%EB%A6%AC%EA%B3%A0.html"
+prev_url: "/logs/177/"
 prev_title: "AI 칩 성능의 핵심, FLOPS와 TOPS 그리고.."
-next_url: "/log_assets/markdown/162_AI%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%EC%88%A8%EC%9D%80%20%EC%98%81%EC%9B%85%2C%20FP16%2C%20BF16%2C%20FP8.html"
+next_url: "/logs/162/"
 next_title: "AI 성능의 숨은 영웅, FP16, BF16, FP8"
+permalink: /logs/170/
 ---
 
 AI 기술이 날로 발전하면서 딥러닝 모델의 규모도 엄청나게 커지고 있습니다. 수천억 개의 파라미터를 학습시키려면 어마어마한 연산량이 필요한데요. 그 중심에는 바로 '행렬 곱셈(Matrix Multiplication)'이 자리잡고 있습니다. 행렬 곱셈이 AI 성능을 좌우한다고 해도 과언이 아닐 정도로 중요한 역할을 하고 있죠.

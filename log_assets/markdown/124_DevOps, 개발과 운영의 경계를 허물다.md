@@ -7,10 +7,11 @@ date_string: 'May 30. 2025'
 date: 2025-05-30
 keywords: 'DevOps 문화, CI/CD 파이프라인, 개발 운영 협업'
 about: 'DevOps, 소프트웨어 개발 문화'
-prev_url: "/log_assets/markdown/132_PM%2C%20PL%2C%20TPM%EC%9D%98%20%EC%B0%A8%EC%9D%B4%20%ED%95%9C%EB%88%88%EC%97%90%20%EB%B3%B4%EA%B8%B0.html"
+prev_url: "/logs/132/"
 prev_title: "PM, PL, TPM의 차이 한눈에 보기"
-next_url: "/log_assets/markdown/117_AI%EA%B0%80%20PO%EB%A5%BC%20%EB%8C%80%EC%B2%B4%ED%95%9C%EB%8B%A4%20%EB%B3%80%ED%99%94%EC%97%90%EC%84%9C%20PO%EA%B0%80%20%EC%82%B4%EC%95%84%EB%82%A8%EB%8A%94%20%EB%B2%95.html"
+next_url: "/logs/117/"
 next_title: "AI가 PO를 대체한다? 변화에서 PO가 살아남는 법"
+permalink: /logs/124/
 ---
 
 DevOps는 개발(Development)과 운영(Operations)의 합성어입니다. 단순한 용어 결합이 아니라, 개발자와 운영자가 한 팀이 되어 소프트웨어를 더 빠르고 안정적으로 제공하기 위한 문화와 철학, 그리고 실천 방법을 의미합니다.

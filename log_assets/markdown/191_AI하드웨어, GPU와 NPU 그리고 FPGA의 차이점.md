@@ -7,10 +7,11 @@ date_string: 'Mar 26. 2025'
 date: 2025-03-26
 keywords: 'GPU NPU FPGA 비교, AI 반도체 가속기, AI 학습과 추론'
 about: 'AI 하드웨어, 반도체 기술'
-prev_url: "/log_assets/markdown/199_AI%EC%8B%9C%EB%8C%80%20%EC%8A%88%ED%8D%BC%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B0%80%20%ED%95%84%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html"
+prev_url: "/logs/199/"
 prev_title: "AI시대 슈퍼컴퓨터가 필요한 이유"
-next_url: "/log_assets/markdown/184_AI%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%EC%97%B4%EC%87%A0%2C%20HBM%EC%9D%80%20%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C.html"
+next_url: "/logs/184/"
 next_title: "AI 성능의 열쇠, HBM은 무엇일까?"
+permalink: /logs/191/
 ---
 
 요즘 AI 하드웨어 시장을 보면 GPU, NPU, FPGA가 치열하게 경쟁하고 있습니다. 어떤 가속기를 쓰느냐에 따라 AI 모델의 성능이 크게 달라지기 때문이라고 합니다. 학습(Training)용과 추론(Inference)용도 하드웨어 종류에 따라 성능이 크게 달라진다고 합니다. 이번 글에서는 AI 하드웨어가속기들의 차이점과 용도에 대해 쉽게 정리해보려고 합니다.

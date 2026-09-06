@@ -7,10 +7,11 @@ date_string: 'May 5. 2025'
 date: 2025-05-05
 keywords: '프리미엄 전환 전략, 매직 모먼트, 유료화 KPI'
 about: '수익화 전략, 그로스 전략'
-prev_url: "/log_assets/markdown/144_Perplexity%234%20%EB%8C%80%ED%99%94%ED%98%95%20UX%20%EA%B5%AC%EC%A1%B0%EC%99%80%20%EC%BF%BC%EB%A6%AC%20%EB%B6%84%EA%B8%B0.html"
+prev_url: "/logs/144/"
 prev_title: "Perplexity#4 대화형 UX 구조와 쿼리 분기"
-next_url: "/log_assets/markdown/151_Perplexity%20%233%20%EA%B2%80%EC%83%89%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%EA%B5%AC%EC%A1%B0%20%EC%84%A4%EA%B3%84.html"
+next_url: "/logs/151/"
 next_title: "Perplexity #3 검색 시스템의 구조 설계"
+permalink: /logs/150/
 ---
 
 안녕하세요, 스타트업 코치 클로드입니다. 오늘은 많은 스타트업들이 고민하는 '무료 사용자를 어떻게 유료로 전환시킬 것인가'에 대한 전략을 실리콘밸리의 성공 사례인 Slack을 통해 살펴보겠습니다.

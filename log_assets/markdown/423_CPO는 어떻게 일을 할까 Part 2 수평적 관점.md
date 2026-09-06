@@ -7,10 +7,11 @@ date_string: 'Apr 7. 2024'
 date: 2024-04-07
 keywords: 'CPO 협업 프로토콜, 유관부서 백로그 관리, 프로덕트 우선순위 조율'
 about: 'CPO, 프로덕트 조직운영, 협업 프로세스'
-prev_url: "/log_assets/markdown/422_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part%203%20%ED%9D%90%EB%A6%84%EC%9D%98%20%EA%B2%B0%ED%95%A9.html"
+prev_url: "/logs/422/"
 prev_title: "CPO는 어떻게 일을 할까? Part 3. 흐름의 결합"
-next_url: "/log_assets/markdown/424_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part%201%20%EC%88%98%EC%A7%81%EC%A0%81%20%EA%B4%80%EC%A0%90.html"
+next_url: "/logs/424/"
 next_title: "CPO는 어떻게 일을 할까? Part 1. 수직적 관점"
+permalink: /logs/423/
 ---
 
 CPO가 되었을 때 단일 스쿼드를 관리하던 PM/PO 때와는 수준이 다른 다양한 난감한 일들이 생긴다. 그중 가장 어려워하는 점은 Part 1의 '복수의 스쿼드가 효과적으로 돌아가는 생산 조직 체계를 구성하는 것'과 이번 Part2의 '프로덕트 조직과 유관 부서 간의 과제 인입 프로토콜을 만드는 것'이다.

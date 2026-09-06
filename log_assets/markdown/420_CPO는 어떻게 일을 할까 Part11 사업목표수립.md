@@ -7,10 +7,11 @@ date_string: 'Apr 11. 2024'
 date: 2024-04-11
 keywords: '사업목표 수립, OKR 목표설정, 투자유치 지표'
 about: 'CPO, 사업전략, 목표관리'
-prev_url: "/log_assets/markdown/408_%ED%95%9C%EC%BD%94%EC%B9%98%EC%9D%98%20%27%EC%95%A0%EC%9E%90%EC%9D%BC%20%EC%99%9C%20%ED%95%98%EA%B2%8C%20%EB%90%98%EC%97%88%EC%9D%84%EA%B9%8C%27.html"
+prev_url: "/logs/408/"
 prev_title: "한코치의 '애자일 왜 하게 되었을까' - Part.3 애자일의 성공 포인트"
-next_url: "/log_assets/markdown/419_CPO%EB%8A%94%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%9D%BC%EC%9D%84%20%ED%95%A0%EA%B9%8C%20Part%2012%20%EC%83%9D%EC%82%B0%EA%B5%AC%EC%A1%B0.html"
+next_url: "/logs/419/"
 next_title: "CPO는 어떻게 일을 할까? Part 1.2 생산구조"
+permalink: /logs/420/
 ---
 
 1\.

@@ -187,16 +187,16 @@ if os.path.exists(MARKDOWN_DIR):
             orig_fm_text, orig_body = fm_text, body
 
             if prev_post:
-                prev_href = urllib.parse.quote(prev_post["html_name"])
-                fm_text = set_front_matter_field(fm_text, 'prev_url', f'/log_assets/markdown/{prev_href}')
+                prev_id = int(re.match(r'^(\d+)_', prev_post["fname"]).group(1))
+                fm_text = set_front_matter_field(fm_text, 'prev_url', f'/logs/{prev_id}/')
                 fm_text = set_front_matter_field(fm_text, 'prev_title', prev_post["title"])
             else:
                 fm_text = remove_front_matter_field(fm_text, 'prev_url')
                 fm_text = remove_front_matter_field(fm_text, 'prev_title')
 
             if next_post:
-                next_href = urllib.parse.quote(next_post["html_name"])
-                fm_text = set_front_matter_field(fm_text, 'next_url', f'/log_assets/markdown/{next_href}')
+                next_id = int(re.match(r'^(\d+)_', next_post["fname"]).group(1))
+                fm_text = set_front_matter_field(fm_text, 'next_url', f'/logs/{next_id}/')
                 fm_text = set_front_matter_field(fm_text, 'next_title', next_post["title"])
             else:
                 fm_text = remove_front_matter_field(fm_text, 'next_url')

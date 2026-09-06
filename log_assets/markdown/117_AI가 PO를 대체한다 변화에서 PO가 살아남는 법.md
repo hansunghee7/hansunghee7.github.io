@@ -7,10 +7,11 @@ date_string: 'Jun 6. 2025'
 date: 2025-06-06
 keywords: 'AI시대 PO 생존전략, AI와 협업하는 PM, AI 도구 활용법'
 about: 'AI와 제품관리, PO 커리어'
-prev_url: "/log_assets/markdown/124_DevOps%2C%20%EA%B0%9C%EB%B0%9C%EA%B3%BC%20%EC%9A%B4%EC%98%81%EC%9D%98%20%EA%B2%BD%EA%B3%84%EB%A5%BC%20%ED%97%88%EB%AC%BC%EB%8B%A4.html"
+prev_url: "/logs/124/"
 prev_title: "DevOps, 개발과 운영의 경계를 허물다"
-next_url: "/log_assets/markdown/109_%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B8%B0%EB%B0%98%20PO%2C%20IT%EC%84%B1%EC%9E%A5%EC%9D%98%20%ED%95%B5%EC%8B%AC%20%EC%97%94%EC%A7%84.html"
+next_url: "/logs/109/"
 next_title: "데이터 기반 PO, IT성장의 핵심 엔진"
+permalink: /logs/117/
 ---
 
 한 IT 회사의 제품 관리자(PM)는 최근 AI에 대한 고민이 깊었습니다.

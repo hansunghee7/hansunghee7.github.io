@@ -26,7 +26,7 @@ sitemap.xml과 log.html을 실제 발행 상태에 맞춰 정리합니다.
 
 안전장치
 --------
-- 손대는 sitemap 항목은 /log_assets/markdown/ 아래 글뿐입니다.
+- 손대는 sitemap 항목은 posts.json에 있는 글(현재는 /logs/<id>/)뿐입니다.
   홈, /log.html 같은 항목은 절대 건드리지 않습니다.
 - 바뀔 게 없으면 파일을 쓰지 않습니다(불필요한 커밋 방지).
 - 발행된 글을 지우는 경로는 없습니다. 지우는 대상은 초안뿐입니다.
@@ -58,7 +58,9 @@ def to_iso(date_text):
 
 
 def find_drafts():
-    """published: false 인 글의 슬러그(확장자 뺀 파일명) 목록."""
+    """published: false 인 글의 (슬러그, id) 목록. id는 글 주소가 /logs/<id>/로
+    바뀐 뒤(2026-09-06) sitemap·log.html에서 그 글을 찾는 유일한 단서라
+    슬러그와 함께 반환한다."""
     drafts = []
     if not os.path.isdir(MARKDOWN_DIR):
         return drafts
@@ -69,7 +71,9 @@ def find_drafts():
         with open(path, encoding="utf-8", errors="replace") as f:
             head = f.read(2000)
         if re.search(r"^published:\s*false\s*$", head, re.M | re.I):
-            drafts.append(name[:-3])
+            slug = name[:-3]
+            id_match = re.match(r"^(\d+)_", slug)
+            drafts.append((slug, str(int(id_match.group(1))) if id_match else None))
     return drafts
 
 
@@ -121,7 +125,9 @@ def drop_log_card(html, needle):
     i = html.find(needle)
     if i < 0:
         return html, False
-    start = html.rfind('<a href="/log_assets/markdown/', 0, i)
+    # 2026-09-06: 카드 href가 /logs/<id>/ 로 바뀌어 접두어를 특정 경로로
+    # 못 박을 수 없다 -- class="card-item"인 <a>의 시작만 찾는다.
+    start = html.rfind('<a href="', 0, i)
     end = html.find("</a>", i)
     if start < 0 or end < 0:
         return html, False
@@ -144,8 +150,14 @@ def main():
     removed_sitemap, removed_cards = [], []
 
     # 1) 초안이 sitemap / log.html에 남아 있으면 제거
-    for slug in drafts:
-        for needle in (urllib.parse.quote(slug), slug):
+    # 슬러그 기반 needle은 옛 긴 주소 시절 항목(리다이렉트 스텁 포함 가능성),
+    # id 기반 needle(/logs/<id>/)은 지금 발행 방식 항목을 잡는다 -- 어느 쪽
+    # 형태로 남아 있어도 지운다.
+    for slug, pid in drafts:
+        needles = [urllib.parse.quote(slug), slug]
+        if pid:
+            needles.append("/logs/{}/".format(pid))
+        for needle in needles:
             while True:
                 xml, hit = drop_sitemap_block(xml, needle)
                 if not hit:

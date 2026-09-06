@@ -7,10 +7,11 @@ date_string: 'May 1. 2025'
 date: 2025-05-01
 keywords: 'FOMO UX, 희소성 마케팅, 사회적 증거'
 about: '행동 심리 UX, 전환 설계'
-prev_url: "/log_assets/markdown/147_%EC%95%B1%20%EC%84%B1%EB%8A%A5%EA%B3%BC%20UX%EC%B5%9C%EC%A0%81%ED%99%94%EA%B0%80%20%EB%A7%A4%EC%B6%9C%EC%9D%84%20%EC%A2%8C%EC%9A%B0%ED%95%98%EB%8A%94%20%EC%9D%B4%EC%9C%A0.html"
+prev_url: "/logs/147/"
 prev_title: "앱 성능과 UX최적화가 매출을 좌우하는 이유"
-next_url: "/log_assets/markdown/161_%ED%9B%84%EA%B4%91%ED%9A%A8%EA%B3%BC%28Halo%20Effect%29%2C%20UX%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%98%20%EC%B2%AB%EC%9D%B8%EC%83%81.html"
+next_url: "/logs/161/"
 next_title: "후광효과(Halo Effect), UX 디자인의 첫인상"
+permalink: /logs/154/
 ---
 
 "대박 난 상품이 품절 되기 전에 어서 구매하세요!"

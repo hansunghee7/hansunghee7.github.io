@@ -7,10 +7,11 @@ date_string: 'Mar 9. 2025'
 date: 2025-03-09
 keywords: 'Cursor AI, AI 코딩 도구, 개발자 생산성'
 about: 'AI 코딩툴, 개발자 도구 스타트업'
-prev_url: "/log_assets/markdown/209_%EC%8B%A4%ED%8C%A8%EC%97%90%EC%84%9C%20%EB%8D%B0%EC%B9%B4%EC%BD%98%EC%9C%BC%EB%A1%9C%20%27Notion%27%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EC%8B%9C%EC%9E%A5%EC%A7%84%EC%B6%9C%EC%A0%84%EB%9E%B5.html"
+prev_url: "/logs/209/"
 prev_title: "실패에서 데카콘으로 'Notion'의 초기 시장진출전략"
-next_url: "/log_assets/markdown/214_30%EB%8B%AC%EB%9F%AC%EB%A1%9C%20%EB%A7%8C%EB%93%A0%20AI%20%ED%98%81%EB%AA%85%2C%20%27%ED%83%80%EC%9D%B4%EB%8B%88%20%EC%A0%9C%EB%A1%9C%27.html"
+next_url: "/logs/214/"
 next_title: "30달러로 만든 AI 혁명, '타이니 제로'"
+permalink: /logs/210/
 ---
 
 한 논문이 개발자 팀의 시선을 사로잡았다. 2020년, OpenAI의 스케일링 법칙 논문이었다. 그들은 깨달았다. AI가 프로그래밍의 패러다임을 완전히 바꿀 것이라는 사실을.

@@ -7,8 +7,9 @@ date_string: 'Jan 14. 2025'
 date: 2025-01-14
 keywords: 'RICE 프레임워크, 우선순위 설정, 백로그 우선순위'
 about: '기획 프레임워크, 제품 우선순위 관리'
-next_url: "/log_assets/markdown/259_%EA%B3%A0%EA%B0%9D%EC%9D%84%20%EC%A0%95%EC%9D%98%ED%95%98%EB%8A%94%20%EB%B2%95%20%27%ED%8E%98%EB%A5%B4%EC%86%8C%EB%82%98%27.html"
+next_url: "/logs/259/"
 next_title: "고객을 정의하는 법 '페르소나'"
+permalink: /logs/263/
 ---
 
 제품 아이디어 백로그의 우선순위를 정하는 일은 기획자에게 매우 중요하면서 어려운 일입니다. 이때 RICE 프레임워크를 활용하면 보다 객관적이고 효과적으로 의사결정을 내릴 수 있습니다.

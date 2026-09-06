@@ -7,10 +7,11 @@ date_string: 'Jun 18. 2025'
 date: 2025-06-18
 keywords: 'ZeRO 메모리 최적화, AI 모델 학습 비용, GPU 효율화'
 about: 'AI 인프라, 딥러닝 기술'
-prev_url: "/log_assets/markdown/111_AI%ED%95%99%EC%8A%B5%20%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C%20%EC%82%BC%EA%B5%AD%EC%A7%80%20AWSGoogleAzure.html"
+prev_url: "/logs/111/"
 prev_title: "AI학습 클라우드 삼국지 AWS/Google/Azure"
-next_url: "/log_assets/markdown/096_%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%20%EA%B2%BD%EC%9F%81%EB%A0%A5%EC%97%90%20%EC%A0%80%EC%A0%84%EB%A0%A5%20NPU%EA%B0%80%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html"
+next_url: "/logs/96/"
 next_title: "비즈니스 경쟁력에 저전력 NPU가 중요한 이유"
+permalink: /logs/103/
 ---
 
 AI 모델이 점점 거대해지면서 기업들은 메모리 한계라는 도전에 직면하고 있습니다. 마이크로소프트 DeepSpeed 팀이 개발한 Zero Redundancy Optimizer(ZeRO)는 메모리 병목 현상을 혁신적으로 해결하여, 더 많은 기업이 대형 AI 모델 개발에 참여할 수 있는 가능성을 넓혔습니다.
