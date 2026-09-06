@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-05T21:43:34.347523+00:00",
+  "updated_at": "2026-09-06T05:56:59.630741+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 143,
-    "activeUsers": 87,
-    "newUsers": 87,
-    "returningUsers": 0
+    "sessions": 147,
+    "activeUsers": 91,
+    "newUsers": 90,
+    "returningUsers": 1
   },
   "daily": [
     {
@@ -84,6 +84,13 @@
       "activeUsers": 4,
       "newUsers": 4,
       "returningUsers": 0
+    },
+    {
+      "date": "2026-09-06",
+      "sessions": 4,
+      "activeUsers": 4,
+      "newUsers": 3,
+      "returningUsers": 1
     }
   ],
   "daily_leads": [
@@ -97,15 +104,15 @@
     }
   ],
   "landing_types": {
-    "home": 91,
+    "home": 95,
     "log_home": 7,
-    "individual_post": 21,
+    "individual_post": 23,
     "other": 25
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 107
+      "sessions": 109
     },
     {
       "source": "searchadvisor.naver.com",
@@ -113,19 +120,19 @@
     },
     {
       "source": "google",
-      "sessions": 9
+      "sessions": 10
     },
     {
       "source": "l.facebook.com",
       "sessions": 7
     },
     {
-      "source": "linkedin.com",
-      "sessions": 3
+      "source": "(not set)",
+      "sessions": 4
     },
     {
-      "source": "(not set)",
-      "sessions": 2
+      "source": "linkedin.com",
+      "sessions": 3
     },
     {
       "source": "bing",
@@ -149,7 +156,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 107
+      "sessions": 109
     },
     {
       "source": "searchadvisor.naver.com",
@@ -161,7 +168,7 @@
       "source": "google",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 9
+      "sessions": 10
     },
     {
       "source": "l.facebook.com",
@@ -202,11 +209,11 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 278,
-    "section_view_voices": 201,
-    "section_view_book_class": 122,
-    "section_view_faq": 111,
-    "faq_open": 25,
+    "section_view_proven": 282,
+    "section_view_voices": 205,
+    "section_view_book_class": 126,
+    "section_view_faq": 115,
+    "faq_open": 26,
     "read_complete": 189
   },
   "contact_funnel": {
@@ -263,6 +270,11 @@
       "sessions": 1
     },
     {
+      "path": "/log_assets/markdown/007_공저가 좋은 이유.html",
+      "title": "/log_assets/markdown/007_공저가 좋은 이유.html",
+      "sessions": 1
+    },
+    {
       "path": "/log_assets/markdown/012_누가 주인인가요.html",
       "title": "/log_assets/markdown/012_누가 주인인가요.html",
       "sessions": 1
@@ -283,6 +295,11 @@
       "sessions": 1
     },
     {
+      "path": "/log_assets/markdown/228_1000퍼센트의 성장 '앱러빈'의 숨겨진 성공공식.html",
+      "title": "/log_assets/markdown/228_1000퍼센트의 성장 '앱러빈'의 숨겨진 성공공식.html",
+      "sessions": 1
+    },
+    {
       "path": "/log_assets/markdown/267_애자일이란.html",
       "title": "/log_assets/markdown/267_애자일이란.html",
       "sessions": 1
@@ -295,16 +312,6 @@
     {
       "path": "/log_assets/markdown/492_IT 서비스를 잘 만드는 회사의 7가지 특징.html",
       "title": "/log_assets/markdown/492_IT 서비스를 잘 만드는 회사의 7가지 특징.html",
-      "sessions": 1
-    },
-    {
-      "path": "/log_assets/markdown/592_프로덕트팀의 생산속도 향상을 위한 9가지 전략.html",
-      "title": "/log_assets/markdown/592_프로덕트팀의 생산속도 향상을 위한 9가지 전략.html",
-      "sessions": 1
-    },
-    {
-      "path": "/log_assets/markdown/607_C레벨이라는 리더는 어떻게 일해야 하나요.html",
-      "title": "/log_assets/markdown/607_C레벨이라는 리더는 어떻게 일해야 하나요.html",
       "sessions": 1
     }
   ],
@@ -338,6 +345,12 @@
       "title": "/log_assets/markdown/611_당신의 서비스가 말을 한다면.html",
       "uniqueViews": 3,
       "views": 10
+    },
+    {
+      "path": "/log_assets/markdown/612_줄서서 먹는 가게의 사장은 뭐가 다를까.html",
+      "title": "/log_assets/markdown/612_줄서서 먹는 가게의 사장은 뭐가 다를까.html",
+      "uniqueViews": 3,
+      "views": 6
     },
     {
       "path": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
@@ -392,17 +405,11 @@
       "title": "/log_assets/markdown/259_고객을 정의하는 법 '페르소나'.html",
       "uniqueViews": 2,
       "views": 2
-    },
-    {
-      "path": "/log_assets/markdown/263_우선순위 설정의 프레임워크 'RICE'.html",
-      "title": "/log_assets/markdown/263_우선순위 설정의 프레임워크 'RICE'.html",
-      "uniqueViews": 2,
-      "views": 2
     }
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 96,
+    "total_desktop_sessions": 99,
     "excluded_invalid_sessions": 18,
     "by_resolution": [
       {
@@ -431,6 +438,11 @@
         "sessions": 5
       },
       {
+        "resolution": "1024x2160",
+        "width": 1024,
+        "sessions": 2
+      },
+      {
         "resolution": "1440x900",
         "width": 1440,
         "sessions": 2
@@ -438,6 +450,11 @@
       {
         "resolution": "1512x982",
         "width": 1512,
+        "sessions": 2
+      },
+      {
+        "resolution": "1536x864",
+        "width": 1536,
         "sessions": 2
       },
       {
@@ -456,18 +473,13 @@
         "sessions": 1
       },
       {
-        "resolution": "1024x2160",
-        "width": 1024,
-        "sessions": 1
-      },
-      {
         "resolution": "1281x720",
         "width": 1281,
         "sessions": 1
       },
       {
-        "resolution": "1536x864",
-        "width": 1536,
+        "resolution": "1470x956",
+        "width": 1470,
         "sessions": 1
       },
       {
