@@ -247,7 +247,10 @@ PR #213). 공용 컴포넌트를 상속할 때는 padding·margin을 함께 점�
 - `contact_modal.html`: 다크 모달, 문의유형 3버튼(`.cf-type`) + 폼, Formspree
   연동, GA4/Clarity 이벤트 트래킹 내장.
 - `post_cta.html` / `post_nav.html` / `related_posts.html`: 글 하단 카테고리별
-  CTA, 이전/다음글, 연관글 카드(브런치 벤치마킹, 16:9 썸네일).
+  CTA, 이전/다음글, 연관글 카드(브런치 벤치마킹, 16:9 썸네일). `post_cta.html`의
+  공유 버튼(서명 줄 우측, `.share-control`)은 모바일은 `navigator.share` OS
+  공유 시트, 데스크톱은 링크 복사·링크드인 드롭다운으로 분기하며, 공유
+  링크는 `/logs/<id>/` 짧은 URL을 씀(2026-09-06).
 - `.card-item`/`.card-grid`: 로그 목록·pillar 페이지 공용 카드, 4→3→2→1열
   반응형.
 
