@@ -7,10 +7,11 @@ date_string: 'Mar 10. 2025'
 date: 2025-03-10
 keywords: 'Notion 성장전략, 초기 시장진출전략, 얼리어답터 확보'
 about: '스타트업 그로스, 프로덕트 마켓핏'
-prev_url: "/log_assets/markdown/207_AI%EC%9D%98%20%ED%96%89%EB%8F%99%EC%9D%84%20%EB%A7%8C%EB%93%A4%EB%8B%A4%20%27Manus%20AI%27.html"
+prev_url: "/logs/207/"
 prev_title: "AI의 행동을 만들다. Manus AI"
-next_url: "/log_assets/markdown/210_%EC%BD%94%EB%93%9C%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EA%B9%A8%EB%8A%94%20AI%20%ED%98%81%EC%8B%A0%2C%20Cursor%20AI.html"
+next_url: "/logs/210/"
 next_title: "코드의 한계를 깨는 AI 혁신, Cursor AI"
+permalink: /logs/209/
 ---
 
 안녕하세요, 스타트업 성공 코치 한성희입니다. 오늘은 생산성 도구 시장에 혁명을 일으킨 Notion의 시장 진출 전략에 대해 살펴보겠습니다.

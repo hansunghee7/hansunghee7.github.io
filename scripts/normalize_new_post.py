@@ -142,6 +142,7 @@ def process_one(path, used_ids):
 
     fname = os.path.basename(path)
     target_fname = fname
+    final_id = None
     if not ID_RE.match(fname):
         new_id = next_available_id(used_ids)
         title = fm.get("title", fname.rsplit(".", 1)[0])
@@ -151,6 +152,17 @@ def process_one(path, used_ids):
             target_fname = fname  # 충돌 시 이번 실행에서는 리네임 보류
         else:
             changed = True
+            final_id = new_id
+    else:
+        final_id = int(ID_RE.match(fname).group(1))
+
+    # 2026-09-06: 글의 진짜 주소를 짧게(/logs/<id>/) 만드는 마이그레이션.
+    # 번호가 이미 있는데 permalink가 없는 글(기존 590편 포함) 전부에 이번
+    # 실행에서 한 번에 채워진다 -- 이 함수가 모든 글에 매번 다시 돌기
+    # 때문에(멱등적) 별도 1회성 마이그레이션 스크립트 없이 이 한 줄로 충분.
+    if final_id is not None and not fm.get("permalink"):
+        new_fm_text = new_fm_text.rstrip("\n") + "\n" + f"permalink: /logs/{final_id}/\n"
+        changed = True
 
     # 3) 커버 이미지가 외부 URL이면 다운받아 로컬로 옮긴다
     image_url = fm.get("image")

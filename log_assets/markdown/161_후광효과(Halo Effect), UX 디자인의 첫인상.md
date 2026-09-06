@@ -7,10 +7,11 @@ date_string: 'Apr 24. 2025'
 date: 2025-04-24
 keywords: '후광 효과, 첫 화면 설계, UX 심리학'
 about: 'UX 심리학, 온보딩 디자인'
-prev_url: "/log_assets/markdown/154_%EB%86%93%EC%B9%98%EB%A9%B4%20%ED%9B%84%ED%9A%8C%ED%95%A0%20%EA%B1%B0%EC%95%BC%20%20FOMO%20UX.html"
+prev_url: "/logs/154/"
 prev_title: "놓치면 후회할 거야!  FOMO UX"
-next_url: "/log_assets/markdown/169_%27%EA%B2%B0%EC%A0%9C%ED%95%98%EA%B8%B0%27%20%EB%B2%84%ED%8A%BC%20%ED%95%98%EB%82%98%EB%A1%9C%20%EB%A7%A4%EC%B6%9C%EC%9D%84%20%EB%86%92%EC%9D%B4%EB%8A%94%20UX.html"
+next_url: "/logs/169/"
 next_title: "'결제하기' 버튼 하나로 매출을 높이는 UX"
+permalink: /logs/161/
 ---
 
 "당신의 서비스를 처음 접한 사용자, 과연 어떤 생각을 할까요?"

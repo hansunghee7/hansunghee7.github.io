@@ -23,7 +23,9 @@ import yaml
 MD_DIR = "log_assets/markdown"
 LOG_HTML = "log.html"
 
-EXISTING_HREF_RE = re.compile(r'<a href="/log_assets/markdown/([^"]+)\.html" class="card-item"')
+# 2026-09-06: 카드 href가 짧은 주소(/logs/<id>/)라 URL로는 "이미 카드가
+# 있는 글"을 구분 못 한다 -- 카드에 항상 있는 data-id로 대신 판별한다.
+EXISTING_ID_RE = re.compile(r'class="card-item"[^>]*\bdata-id="(\d+)"')
 GRID_OPEN_RE = re.compile(r'(<div class="card-grid" id="cardGrid">)')
 
 
@@ -46,9 +48,9 @@ def build_card(base, fm):
         date_str = date_val.strftime("%Y%m%d")
     elif isinstance(date_val, str) and len(date_val) >= 10:
         date_str = date_val[:10].replace("-", "")
-    post_id = re.match(r"^(\d+)_", base)
-    post_id = post_id.group(1) if post_id else "0"
-    href = "/log_assets/markdown/" + urllib.parse.quote(base) + ".html"
+    post_id_match = re.match(r"^(\d+)_", base)
+    post_id = str(int(post_id_match.group(1))) if post_id_match else "0"
+    href = "/logs/{}/".format(post_id)
     thumb = quote_if_local(fm.get("image"))
 
     return (
@@ -71,13 +73,14 @@ def process():
     with open(LOG_HTML, "r", encoding="utf-8") as fh:
         log_content = fh.read()
 
-    existing = {urllib.parse.unquote(h) for h in EXISTING_HREF_RE.findall(log_content)}
+    existing_ids = set(EXISTING_ID_RE.findall(log_content))
 
     new_cards = []
     md_files = sorted(glob.glob(os.path.join(MD_DIR, "*.md")))
     for path in md_files:
         base = os.path.splitext(os.path.basename(path))[0]
-        if base in existing:
+        id_match = re.match(r"^(\d+)_", base)
+        if id_match and str(int(id_match.group(1))) in existing_ids:
             continue
         with open(path, "r", encoding="utf-8", errors="ignore") as fh:
             raw = fh.read()

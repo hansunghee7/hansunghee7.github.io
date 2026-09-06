@@ -7,10 +7,11 @@ date_string: 'Jul 17. 2025'
 date: 2025-07-17
 keywords: '생성형 AI 디자인, AI 디자인 툴, Figma AI 플러그인'
 about: 'AI 디자인, UX 디자인'
-prev_url: "/log_assets/markdown/069_Predictive%20UX%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%EC%9D%98%20%EB%8B%A4%EC%9D%8C%20%ED%96%89%EB%8F%99%EC%9D%80.html"
+prev_url: "/logs/69/"
 prev_title: "Predictive UX, 사용자의 다음 행동은?"
-next_url: "/log_assets/markdown/083_UX%EB%8F%84%20%EB%B8%8C%EB%9E%9C%EB%94%A9%2C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%EA%B2%BD%ED%97%98%EC%9D%B4%20%EB%B8%8C%EB%9E%9C%EB%93%9C%20%EC%B6%A9%EC%84%B1%EB%8F%84%EB%A5%BC%20%EB%A7%8C%EB%93%A0%EB%8B%A4.html"
+next_url: "/logs/83/"
 next_title: "UX도 브랜딩, 사용자 경험이 브랜드 충성도를 만든다"
+permalink: /logs/76/
 ---
 
 "이제 몇 분 만에 수십 개의 디자인 시안을 만들 수 있어요!"

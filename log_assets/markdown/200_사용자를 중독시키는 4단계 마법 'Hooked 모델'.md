@@ -7,10 +7,11 @@ date_string: 'Mar 18. 2025'
 date: 2025-03-18
 keywords: 'Hooked 모델, 사용자 습관 형성, 프로덕트 중독 설계'
 about: '행동 설계, 프로덕트 심리학, UX 심리학'
-prev_url: "/log_assets/markdown/208_SWOT%20%EB%B9%84%EC%A7%80%EB%8B%88%EC%8A%A4%EC%9D%98%204%EC%B0%A8%EC%9B%90%20%EB%B6%84%EC%84%9D%EB%B2%95.html"
+prev_url: "/logs/208/"
 prev_title: "SWOT 비지니스의 4차원 분석법"
-next_url: "/log_assets/markdown/192_%27%EB%A7%A5%EB%AA%A8%EB%8B%9D%27%EC%9D%98%20%EB%B9%84%EB%B0%80%2C%20MECE%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC.html"
+next_url: "/logs/192/"
 next_title: "'맥모닝'의 비밀, MECE 프레임워크"
+permalink: /logs/200/
 ---
 
 "오늘도 무의식적으로 스마트폰을 집어 들었다." 이런 경험, 누구나 한 번쯤 있을 것이다.

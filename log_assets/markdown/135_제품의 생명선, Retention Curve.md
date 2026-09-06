@@ -7,10 +7,11 @@ date_string: 'May 20. 2025'
 date: 2025-05-20
 keywords: '리텐션 커브, 코호트 리텐션 분석, PMF 진단'
 about: '사용자 리텐션, 프로덕트 그로스'
-prev_url: "/log_assets/markdown/142_%27%EC%BD%94%ED%98%B8%ED%8A%B8%20%EB%B6%84%EC%84%9D%27%20%ED%8F%89%EA%B7%A0%EC%9D%98%20%ED%95%A8%EC%A0%95%EC%97%90%EC%84%9C%20%EB%B2%97%EC%96%B4%EB%82%98%EB%8A%94%20%EB%B2%95.html"
+prev_url: "/logs/142/"
 prev_title: "'코호트 분석' 평균의 함정에서 벗어나는 법"
-next_url: "/log_assets/markdown/128_%EA%B3%A0%EA%B0%9D%EC%9D%80%20%EC%A0%9C%ED%92%88%EC%9D%84%20%27%EA%B3%A0%EC%9A%A9%27%ED%95%9C%EB%8B%A4%20%27JTBD%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8D%27.html"
+next_url: "/logs/128/"
 next_title: "고객은 제품을 '고용'한다 'JTBD프레임웍'"
+permalink: /logs/135/
 ---
 
 사용자를 얻는 것보다 더 중요한 것은 사용자를 유지하는 것이다. 실리콘밸리의 성공한 스타트업들이 공통적으로 주목하는 '리텐션 커브(Retention Curve)'는 이런 철학에서 탄생했다. 이 프레임워크는 단순히 숫자로만 보이던 사용자 유지율을 시각적인 이야기로 전환한다.

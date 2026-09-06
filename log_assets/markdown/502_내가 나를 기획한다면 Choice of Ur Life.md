@@ -7,10 +7,11 @@ date_string: 'Jan 15. 2024'
 date: 2024-01-15
 keywords: '감정 선택, 마인드셋 전환, 삶을 대하는 태도'
 about: '마인드셋, 자기성찰'
-prev_url: "/log_assets/markdown/501_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EB%A7%81%ED%81%AC%EB%93%9C%EC%9D%B8%20%EC%83%9D%EC%A1%B4%EC%A0%84%EB%9E%B5%ED%8E%B8.html"
+prev_url: "/logs/501/"
 prev_title: "내가 나를 기획한다면? 링크드인 생존전략편"
-next_url: "/log_assets/markdown/504_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20%EC%BB%A4%EB%A6%AC%EC%96%B4%ED%95%B4%ED%82%B9%ED%8E%B8.html"
+next_url: "/logs/504/"
 next_title: "내가 나를 기획한다면? 커리어해킹편"
+permalink: /logs/502/
 ---
 
 브런치에 두 달을 매일 글을 올리자 구독자가 20명이 되었다.

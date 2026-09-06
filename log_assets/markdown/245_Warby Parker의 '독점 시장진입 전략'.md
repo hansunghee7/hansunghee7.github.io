@@ -7,10 +7,11 @@ date_string: 'Feb 3. 2025'
 date: 2025-02-03
 keywords: 'Warby Parker 사례, 독점시장 진입전략, D2C 브랜드 전략'
 about: '스타트업, 시장 진입 전략'
-prev_url: "/log_assets/markdown/243_%EC%98%A4%ED%94%88AI%20%EC%83%98%20%EC%95%8C%ED%8A%B8%EB%A8%BC%EC%9D%B4%20%EC%84%A0%ED%83%9D%ED%95%9C%20%EC%9B%90%EC%9E%90%EB%A0%A5%EC%9D%98%20%EB%AF%B8%EB%9E%98%2C%20%EC%98%A4%ED%81%B4%EB%A1%9C.html"
+prev_url: "/logs/243/"
 prev_title: "오픈AI 샘 알트먼이 선택한 원자력의 미래, 오클로"
-next_url: "/log_assets/markdown/246_%EC%BB%A4%EB%A8%B8%EC%8A%A4%20AI%EC%9D%98%20%EA%B2%8C%EC%9E%84%EC%B2%B4%EC%9D%B8%EC%A0%80%2C%20%EC%9D%B8%ED%95%B8%EC%8A%A4.html"
+next_url: "/logs/246/"
 next_title: "커머스 AI의 게임체인저, 인핸스"
+permalink: /logs/245/
 ---
 
 제가 다양한 스타트업들을 만나면서 겪는 주요 문제들을 글로벌 기업들은 어떻게 해결하였는지 연재를 해보려고 합니다. 이번 주제는 스타트업들이 겪고 있는 가장 큰 고민거리 중 하나인 '시장 진입 전략'입니다.

@@ -7,10 +7,11 @@ date_string: 'Mar 25. 2025'
 date: 2025-03-25
 keywords: 'MECE 프레임워크, 맥모닝 사례, 문제 구조화'
 about: '기획 프레임워크, 비즈니스 분석'
-prev_url: "/log_assets/markdown/200_%EC%82%AC%EC%9A%A9%EC%9E%90%EB%A5%BC%20%EC%A4%91%EB%8F%85%EC%8B%9C%ED%82%A4%EB%8A%94%204%EB%8B%A8%EA%B3%84%20%EB%A7%88%EB%B2%95%20%27Hooked%20%EB%AA%A8%EB%8D%B8%27.html"
+prev_url: "/logs/200/"
 prev_title: "사용자를 중독시키는 4단계 마법 'Hooked 모델'"
-next_url: "/log_assets/markdown/185_%EC%82%AC%EA%B3%A0%EC%9D%98%20%EC%A7%80%EB%8F%84%EB%A5%BC%20%EA%B7%B8%EB%A6%AC%EB%8A%94%20%EB%B2%95%20%27%EB%A1%9C%EC%A7%81%20%ED%8A%B8%EB%A6%AC%27.html"
+next_url: "/logs/185/"
 next_title: "사고의 지도를 그리는 법 '로직 트리'"
+permalink: /logs/192/
 ---
 
 2006년 맥도날드는 한 가지 고민에 빠져 있었다. 매출이 정체된 이유를 찾기 위해 글로벌 컨설팅 회사 맥킨지의 MECE(미씨) 프레임워크를 활용했다. 분석 결과, 맥도날드는 점심과 저녁 메뉴만 판매하고 있었고, 아침 시간대의 매출이 빠져 있다는 사실을 깨달았다. 바로 '맥모닝'의 시작이었다. 이 결정 하나로 맥도날드는 아침 시장을 공략해 큰 성공을 거두었다.

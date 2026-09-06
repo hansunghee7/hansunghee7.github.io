@@ -7,10 +7,11 @@ date_string: 'Jun 13. 2025'
 date: 2025-06-13
 keywords: '데이터 기반 의사결정, PO 데이터 역량, AB테스트 코호트분석'
 about: '프로덕트 오너, 데이터 분석'
-prev_url: "/log_assets/markdown/117_AI%EA%B0%80%20PO%EB%A5%BC%20%EB%8C%80%EC%B2%B4%ED%95%9C%EB%8B%A4%20%EB%B3%80%ED%99%94%EC%97%90%EC%84%9C%20PO%EA%B0%80%20%EC%82%B4%EC%95%84%EB%82%A8%EB%8A%94%20%EB%B2%95.html"
+prev_url: "/logs/117/"
 prev_title: "AI가 PO를 대체한다? 변화에서 PO가 살아남는 법"
-next_url: "/log_assets/markdown/101_%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%20%EC%A3%BC%EA%B8%B0%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EA%B2%B0%EC%A0%95%ED%95%A0%20%EA%B2%83%EC%9D%B8%EA%B0%80.html"
+next_url: "/logs/101/"
 next_title: "스프린트 주기 어떻게 결정할 것인가?"
+permalink: /logs/109/
 ---
 
 한 글로벌 IT 기업의 제품 책임자(PO)는 어려운 상황에 직면했습니다. 시장 성장이 둔화되고 있었고, 경쟁사들은 빠르게 시장 점유율을 확대하고 있었습니다. 이때 그는 데이터에서 답을 찾았습니다.

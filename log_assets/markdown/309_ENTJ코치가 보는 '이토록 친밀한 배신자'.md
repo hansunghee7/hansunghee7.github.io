@@ -7,10 +7,11 @@ date_string: 'Oct 19. 2024'
 date: 2024-10-19
 keywords: '이토록 친밀한 배신자, 드라마 리뷰, 한석규 연기'
 about: '드라마 감상, 콘텐츠 리뷰, 일상 에세이'
-prev_url: "/log_assets/markdown/302_%EC%BD%94%EC%B9%AD%EC%9D%B4%20%EB%B3%B4%EB%9E%8C%EC%B0%AC%20%EC%8B%9C%EA%B0%84.html"
+prev_url: "/logs/302/"
 prev_title: "코칭이 보람찬 시간"
-next_url: "/log_assets/markdown/312_%EC%A7%81%EA%B4%80%EB%A0%A5%EC%9D%84%20%EA%B0%80%EC%A7%80%EB%A9%B4%20%EC%96%B4%EB%A0%A4%EC%9A%B4%20%EC%A0%90.html"
+next_url: "/logs/312/"
 next_title: "직관력을 가지면 어려운 점"
+permalink: /logs/309/
 ---
 
 오랜만에 셋탑박스를 켜고 본방사수를 하는 드라마가 생겼다. '이토록 친밀한 배신자' ... 나는 왜 이 작품에 빠져들었을까?

@@ -39,6 +39,12 @@ from google.oauth2 import service_account
 
 OUT_PATH = "assets/data/analytics.json"
 
+# 2026-09-06부터 글의 진짜 주소가 /logs/<id>/ -- 옛 /log_assets/markdown/
+# 접두어는 마이그레이션 전 데이터(최근 30일 조회분엔 안 남지만 과거 이력
+# 참고용으로 남겨둠)에만 해당.
+def is_post_path(path):
+    return path.startswith("/log_assets/markdown/") or path.startswith("/logs/")
+
 # GA4 sessionSource로 잡히는 값 기준. 정확한 매칭이 아니라 부분 포함으로
 # 검사한다 -- 플랫폼마다 리퍼러 형식이 조금씩 다르기 때문 (예: 'chatgpt.com',
 # 'chat.openai.com' 둘 다 씀).
@@ -227,7 +233,7 @@ def fetch_top_landing_posts(client, property_id, title_map):
     rows = []
     for r in resp.rows:
         path = r.dimension_values[0].value or ""
-        if not path.startswith("/log_assets/markdown/"):
+        if not is_post_path(path):
             continue  # 개별 글만 -- 홈/로그목록/기타 비중은 landing_types에서 이미 다룬다
         sessions = int(r.metric_values[0].value)
         rows.append({"path": path, "title": title_map.get(path, path), "sessions": sessions})
@@ -250,7 +256,7 @@ def fetch_post_pageviews(client, property_id, title_map):
     rows = []
     for r in resp.rows:
         path = r.dimension_values[0].value or ""
-        if not path.startswith("/log_assets/markdown/"):
+        if not is_post_path(path):
             continue  # 개별 글만 -- 홈/로그목록/기타는 이 랭킹의 대상이 아니다
         unique = int(r.metric_values[0].value)
         views = int(r.metric_values[1].value)
@@ -283,7 +289,7 @@ def fetch_landing_types(client, property_id):
             buckets["home"] += sessions
         elif path.startswith("/log.html"):
             buckets["log_home"] += sessions
-        elif path.startswith("/log_assets/markdown/"):
+        elif is_post_path(path):
             buckets["individual_post"] += sessions
         else:
             buckets["other"] += sessions

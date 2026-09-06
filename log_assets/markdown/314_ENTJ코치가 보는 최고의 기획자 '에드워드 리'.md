@@ -7,10 +7,11 @@ date_string: 'Oct 13. 2024'
 date: 2024-10-13
 keywords: '흑백요리사 에드워드 리, 기획자 관점 분석, 스토리텔링 기획'
 about: '콘텐츠 리뷰, 기획력 사례분석, K콘텐츠'
-prev_url: "/log_assets/markdown/311_%EC%96%B4%EB%96%A4%20%EC%A7%81%EC%9E%A5%EC%9D%84%20%EA%B3%A8%EB%9D%BC%EC%95%BC%20%ED%95%A0%EA%B9%8C%EC%9A%94.html"
+prev_url: "/logs/311/"
 prev_title: "어떤 직장을 골라야 할까요?"
-next_url: "/log_assets/markdown/327_%EC%9A%94%EA%B8%B0%EC%9A%94%EC%9D%98%20%EB%B6%80%ED%99%9C%EC%9D%84%20%EA%B8%B0%EB%8C%80%ED%95%98%EB%A9%B0.html"
+next_url: "/logs/327/"
 next_title: "요기요의 부활을 기대하며..."
+permalink: /logs/314/
 ---
 
 흑백요리사가 11, 12화의 주인공은 단연 에드워드 리였다. 왜 우리는 그에게 몰입했을까 기획자의 관점에서 보자.

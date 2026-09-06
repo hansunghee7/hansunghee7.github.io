@@ -7,10 +7,11 @@ date_string: 'Dec 25. 2023'
 date: 2023-12-25
 keywords: '크리스마스 에피소드, 대학시절 추억, 페이퍼페이스'
 about: '개인 에세이, 추억, 사진 놀이'
-prev_url: "/log_assets/markdown/515_%EB%A0%88%EC%96%B4%ED%85%9C%20%EC%84%A0%EB%AC%BC%EC%9D%84%20%EB%B0%9B%EC%95%98%EC%8A%B5%EB%8B%88%EB%8B%A4.html"
+prev_url: "/logs/515/"
 prev_title: "레어템 선물을 받았습니다."
-next_url: "/log_assets/markdown/524_%EA%B8%80%EC%9D%84%20%EB%A7%A4%EC%9D%BC%20%EC%93%B0%EB%8B%A4%EB%B3%B4%EB%8B%88.html"
+next_url: "/logs/524/"
 next_title: "글을 매일 쓰다보니..."
+permalink: /logs/520/
 ---
 
 '크리스마스 특집' 재미로 보는 추억의 사진들;;;

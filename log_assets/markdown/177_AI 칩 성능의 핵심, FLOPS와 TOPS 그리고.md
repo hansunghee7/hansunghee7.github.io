@@ -7,10 +7,11 @@ date_string: 'Apr 9. 2025'
 date: 2025-04-09
 keywords: 'AI 반도체 성능, FLOPS TOPS 비교, HBM 메모리 대역폭'
 about: 'AI 반도체, AI 하드웨어'
-prev_url: "/log_assets/markdown/184_AI%20%EC%84%B1%EB%8A%A5%EC%9D%98%20%EC%97%B4%EC%87%A0%2C%20HBM%EC%9D%80%20%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C.html"
+prev_url: "/logs/184/"
 prev_title: "AI 성능의 열쇠, HBM은 무엇일까?"
-next_url: "/log_assets/markdown/170_AI%20%EC%84%B1%EB%8A%A5%EC%9D%84%20100%EB%B0%B0%20%EB%86%92%EC%9D%B4%EB%8A%94%20%EB%B9%84%EA%B2%B0%20TensorCores.html"
+next_url: "/logs/170/"
 next_title: "AI 성능을 100배 높이는 비결 TensorCores"
+permalink: /logs/177/
 ---
 
 AI 기술이 빠르게 발전하면서 AI 칩의 성능이 그 어느 때보다 중요해졌습니다. 그런데 AI 칩 성능을 결정짓는 요소가 뭔지 아시나요? 바로 FLOPS, TOPS, 그리고 메모리 대역폭인데요. 이 세 가지가 AI 모델의 학습 속도와 추론 능력을 좌우한다고 해요. 지금부터 하나씩 짚어보도록 할게요.

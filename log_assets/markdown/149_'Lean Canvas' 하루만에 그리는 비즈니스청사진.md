@@ -7,10 +7,11 @@ date_string: 'May 6. 2025'
 date: 2025-05-06
 keywords: '린 캔버스, 비즈니스 모델 캔버스, 스타트업 문제 정의'
 about: '비즈니스 모델링, 스타트업 기획'
-prev_url: "/log_assets/markdown/156_%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%9D%BC%EB%A9%B4%20%EA%BC%AD%20%EC%95%8C%EC%95%84%EC%95%BC%20%ED%95%A0%20LTVCAC%EC%9D%98%20%EC%A7%84%EC%A7%9C%20%EC%9D%98%EB%AF%B8.html"
+prev_url: "/logs/156/"
 prev_title: "기획자라면 꼭 알아야 할 LTV/CAC의 진짜 의미"
-next_url: "/log_assets/markdown/142_%27%EC%BD%94%ED%98%B8%ED%8A%B8%20%EB%B6%84%EC%84%9D%27%20%ED%8F%89%EA%B7%A0%EC%9D%98%20%ED%95%A8%EC%A0%95%EC%97%90%EC%84%9C%20%EB%B2%97%EC%96%B4%EB%82%98%EB%8A%94%20%EB%B2%95.html"
+next_url: "/logs/142/"
 next_title: "'코호트 분석' 평균의 함정에서 벗어나는 법"
+permalink: /logs/149/
 ---
 
 비즈니스 모델을 구상하는 방법은 크게 두 가지다. 하나는 100페이지짜리 사업계획서를 작성하는 것, 다른 하나는 한 장의 Lean Canvas를 그리는 것이다. 2010년, 애시 모리아(Ash Maurya)는 후자를 선택했다.

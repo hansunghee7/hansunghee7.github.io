@@ -1,36 +1,44 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-posts.json 기준으로 공유용 짧은 URL(/logs/<id>/) 정적 리다이렉트 페이지를 만든다.
+기존 글의 옛 긴 주소(log_assets/markdown/<제목>.html) 자리에, 진짜 주소가 된
+짧은 주소(/logs/<id>/)로 즉시 이동하는 정적 리다이렉트 페이지를 만든다.
 
-왜 필요한가
------------
-글 URL은 한글 제목이 그대로 퍼센트 인코딩되어 들어가(log_assets/markdown/
-<긴 제목>.html) 카카오톡 등으로 공유하면 링크가 비정상적으로 길어진다.
-/logs/<id>/ 는 그 글로 즉시 리다이렉트하는 순수 정적 페이지일 뿐, 원본 URL을
-대체하지 않는다 -- canonical과 sitemap.xml은 여전히 원본 긴 URL을 가리키므로
-검색엔진 색인·순위에는 영향이 없고, 공유용 링크만 짧아진다.
+왜 방향이 바뀌었나
+------------------
+2026-09-06 전에는 반대 방향이었다 -- /logs/<id>/ 가 리다이렉트 스텁, 긴
+주소가 진짜 페이지. 이제는 각 글의 Jekyll permalink가 /logs/<id>/로
+바뀌어(scripts/normalize_new_post.py) 그쪽이 진짜 페이지가 됐다. 옛 긴
+주소 자리에는 이 스크립트가 리다이렉트 스텁을 대신 채워, 이미 외부에
+뿌려진 링크·북마크·구글 캐시가 안 깨지게 한다(영구 안전망 -- 나중에
+"정리한다"고 지우지 않는다).
+
+새 글(마이그레이션 이후 처음 발행되는 글)은 옛 긴 주소 자체가 존재한 적이
+없으므로 스텁을 안 만든다. MIGRATION_CUTOFF_ID로 그 경계를 구분한다.
 
 안전장치
 --------
-- sitemap.xml에는 절대 넣지 않는다. noindex + canonical(원본 긴 URL)로
-  중복 콘텐츠 신호도 방지한다.
+- sitemap.xml에는 넣지 않는다(진짜 주소인 짧은 쪽만 sync_sitemap_and_drafts.py가
+  sitemap에 넣는다). noindex + canonical(짧은 URL)로 중복 콘텐츠 신호도
+  짧은 쪽으로 정리한다.
 - 카카오톡·페이스북 등 링크 미리보기 봇은 자바스크립트를 안 읽으므로,
-  각 페이지 자체에 원본과 동일한 og:title/og:image를 정적으로 넣어둔다
-  (그래야 리다이렉트만 있고 미리보기가 깨지는 사고를 피한다).
-- 내용이 같으면 파일을 다시 쓰지 않는다(불필요한 커밋 방지, 이 파이프라인의
-  다른 스크립트들과 같은 관례).
-- front matter가 없는 순수 정적 HTML이라 Jekyll이 템플릿 처리 없이 그대로
-  복사만 한다 -- 수백 편을 한꺼번에 만들어도 빌드 시간에 거의 영향이 없다.
+  정적 og:title/og:image를 그대로 유지해 미리보기가 깨지지 않게 한다.
+- 내용이 같으면 파일을 다시 쓰지 않는다(불필요한 커밋 방지).
 """
 
 import html
 import json
 import os
+import re
 
 BASE = "https://simplifier.co.kr"
 POSTS_JSON = "assets/data/posts.json"
-OUT_DIR = "logs"
+MD_DIR = "log_assets/markdown"
+
+# 2026-09-06 마이그레이션 시점의 마지막 글 id. 이 이하는 옛 긴 주소가 실제로
+# 존재했던 적이 있어 리다이렉트 스텁이 필요하고, 이 초과는 태어날 때부터
+# 짧은 주소만 썼으므로 스텁이 필요 없다.
+MIGRATION_CUTOFF_ID = 618
 
 PAGE_TEMPLATE = """<!doctype html>
 <html lang="ko">
@@ -39,18 +47,18 @@ PAGE_TEMPLATE = """<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title} - Simplifier</title>
 <meta name="robots" content="noindex">
-<link rel="canonical" href="{long_url}">
-<meta http-equiv="refresh" content="0; url={long_url}">
+<link rel="canonical" href="{short_url}">
+<meta http-equiv="refresh" content="0; url={short_url}">
 <meta property="og:type" content="article">
 <meta property="og:title" content="{title}">
 <meta property="og:image" content="{image}">
-<meta property="og:url" content="{long_url}">
+<meta property="og:url" content="{short_url}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{title}">
 <meta name="twitter:image" content="{image}">
 </head>
 <body>
-<p>이동 중입니다 — 자동으로 안 넘어가면 <a href="{long_url}">여기를 눌러주세요</a>.</p>
+<p>이동 중입니다 — 자동으로 안 넘어가면 <a href="{short_url}">여기를 눌러주세요</a>.</p>
 </body>
 </html>
 """
@@ -62,29 +70,45 @@ def absolute(path_or_url):
     return BASE + path_or_url
 
 
-def render(post):
-    title = html.escape(post["title"], quote=True)
-    long_url = html.escape(absolute(post["url"]), quote=True)
-    image = html.escape(absolute(post.get("image") or "/assets/og-image.png"), quote=True)
-    return PAGE_TEMPLATE.format(title=title, long_url=long_url, image=image)
+def render(title, short_url, image):
+    return PAGE_TEMPLATE.format(
+        title=html.escape(title, quote=True),
+        short_url=html.escape(absolute(short_url), quote=True),
+        image=html.escape(absolute(image or "/assets/og-image.png"), quote=True),
+    )
 
 
 def main():
     with open(POSTS_JSON, encoding="utf-8") as f:
         posts = json.load(f)
+    posts_by_id = {p["id"]: p for p in posts}
 
     written = 0
-    for post in posts:
-        pid = str(post["id"])
-        out_path = os.path.join(OUT_DIR, pid, "index.html")
-        content = render(post)
+    for fname in sorted(os.listdir(MD_DIR)):
+        if not fname.endswith(".md"):
+            continue
+        m = re.match(r"^(\d+)_", fname)
+        if not m:
+            continue
+        pid = int(m.group(1))
+        if pid > MIGRATION_CUTOFF_ID:
+            continue  # 새 글 -- 옛 긴 주소가 존재한 적이 없음
+        post = posts_by_id.get(pid)
+        if not post:
+            continue  # 초안 등 발행되지 않은 글
+
+        base = fname[:-3]
+        # 파일시스템 경로는 원래 Jekyll이 이 글을 빌드하던 그 자리 그대로다
+        # (유니코드 파일명 그대로 -- URL의 퍼센트 인코딩은 브라우저/서버가
+        # 전송할 때 하는 것이지 실제 파일명이 아니다).
+        out_path = os.path.join(MD_DIR, base + ".html")
+        content = render(post["title"], post["url"], post.get("image"))
 
         if os.path.exists(out_path):
             with open(out_path, encoding="utf-8") as f:
                 if f.read() == content:
                     continue
 
-        os.makedirs(os.path.dirname(out_path), exist_ok=True)
         with open(out_path, "w", encoding="utf-8") as f:
             f.write(content)
         written += 1

@@ -7,10 +7,11 @@ date_string: 'Apr 29. 2025'
 date: 2025-04-29
 keywords: 'LTV CAC 비율, 고객 생애 가치, 유닛 이코노믹스'
 about: '그로스 지표, 투자 유치 전략'
-prev_url: "/log_assets/markdown/163_%EA%B5%AC%EA%B8%80%EC%9D%B4%20%27AB%ED%85%8C%EC%8A%A4%ED%8A%B8%27%EB%A1%9C%202%EC%96%B5%20%EB%8B%AC%EB%9F%AC%EB%A5%BC%20%EC%B0%BD%EC%B6%9C%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95.html"
+prev_url: "/logs/163/"
 prev_title: "구글이 'AB테스트'로 2억 달러를 창출하는 방법"
-next_url: "/log_assets/markdown/149_%27Lean%20Canvas%27%20%ED%95%98%EB%A3%A8%EB%A7%8C%EC%97%90%20%EA%B7%B8%EB%A6%AC%EB%8A%94%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%B2%AD%EC%82%AC%EC%A7%84.html"
+next_url: "/logs/149/"
 next_title: "'Lean Canvas' 하루만에 그리는 비즈니스청사진"
+permalink: /logs/156/
 ---
 
 고객을 유치하는 데 1만 원이 들고, 그 고객이 평생 우리 회사에 100만 원의 가치를 준다면? 망설일 이유가 없다. 이처럼 LTV(고객 생애 가치)와 CAC(고객 획득 비용)의 비교는 비즈니스의 본질을 꿰뚫는 프레임워크다.

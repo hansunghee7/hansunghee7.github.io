@@ -7,10 +7,11 @@ date_string: 'Jul 25. 2025'
 date: 2025-07-25
 keywords: 'Predictive UX, 사용자 행동 예측, 개인화 추천 시스템'
 about: 'UX 디자인, 데이터 기반 개인화'
-prev_url: "/log_assets/markdown/064_%ED%99%94%EC%9E%A5%EC%8B%A4%EC%9D%98%20UX%2C%20%EA%B3%B5%ED%95%AD%EA%B3%BC%20%EA%B8%B0%EC%B0%A8%EC%97%AD%EC%9D%B4%20%EB%A7%90%ED%95%B4%EC%A3%BC%EB%8A%94%20%EA%B3%B5%EA%B0%84%20%EB%94%94%EC%9E%90%EC%9D%B8.html"
+prev_url: "/logs/64/"
 prev_title: "화장실의 UX, 공항과 기차역이 말해주는 공간 디자인"
-next_url: "/log_assets/markdown/076_%EC%96%B4%ED%94%84%EB%A1%9C%EC%B9%98%EB%A5%BC%20%EB%B0%94%EA%BE%B8%EB%8B%A4%20AI%20Assisted%20Design.html"
+next_url: "/logs/76/"
 next_title: "어프로치를 바꾸다 AI Assisted Design"
+permalink: /logs/69/
 ---
 
 "사용자가 원하는 것을 사용자보다 먼저 알 수 있다면?"

@@ -7,10 +7,11 @@ date_string: 'Feb 13. 2025'
 date: 2025-02-13
 keywords: '챗GPT UX 설계, 대화형 인터페이스 디자인, 맞춤형 UX'
 about: '대화형 UX, AI 프로덕트 디자인'
-prev_url: "/log_assets/markdown/227_Google%EC%9D%98%20%27%EC%8B%AC%ED%94%8C%ED%95%9C%20UX%27%20%EC%9B%90%EC%B9%99.html"
+prev_url: "/logs/227/"
 prev_title: "Google의 '심플한 UX' 원칙"
-next_url: "/log_assets/markdown/242_%EC%97%84%EC%A7%80%EA%B0%80%20%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%84%20%EC%A7%80%EB%B0%B0%ED%95%9C%EB%8B%A4%20ThumbFriendly%20UX.html"
+next_url: "/logs/242/"
 next_title: "엄지가 디자인을 지배한다 ThumbFriendly UX"
+permalink: /logs/234/
 ---
 
 여러분 모두 챗GPT를 사용해보신 적 있을 겁니다. 그 신기한 경험, 마치 영화 속 AI와 대화하는 듯한 느낌. 챗GPT에게 느끼는 이 경험은 단순히 뛰어난 대화 능력에만 있는 것이 아닙니다. 오늘은 챗GPT의 단순한 인터페이스 뒤에 숨겨진 UX설계의 비밀을 알아보도록 하겠습니다.

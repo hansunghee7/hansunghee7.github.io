@@ -7,10 +7,11 @@ date_string: 'Jun 23. 2025'
 date: 2025-06-23
 keywords: '가격 정책 전략, 가치기반 프라이싱, SaaS 요금제 설계'
 about: '프라이싱 전략, SaaS 비즈니스모델'
-prev_url: "/log_assets/markdown/092_%EB%93%9C%EB%A1%AD%EB%B0%95%EC%8A%A4%EA%B0%80%203900%ED%8D%BC%EC%84%BC%ED%8A%B8%20%EC%84%B1%EC%9E%A5%ED%95%9C%20%ED%95%98%EB%82%98%EC%9D%98%20%EB%B9%84%EB%B0%80.html"
+prev_url: "/logs/92/"
 prev_title: "드롭박스가 3900% 성장한 하나의 비밀"
-next_url: "/log_assets/markdown/106_2%EC%B2%9C%EB%A7%8C%EC%9B%90%EC%9C%BC%EB%A1%9C%2010%EC%96%B5%EC%9B%90%20%EB%A7%A4%EC%B6%9C%EC%9D%84%2C%20%EC%95%88%ED%8B%B0%EB%A9%94%ED%83%88%EC%9D%98%20%EB%B0%94%EC%9D%B4%EB%9F%B4%EC%A0%84%EB%9E%B5.html"
+next_url: "/logs/106/"
 next_title: "2천만원으로 10억원 매출을, 안티메탈의 바이럴전략"
+permalink: /logs/98/
 ---
 
 "제품은 좋은데 왜 매출이 늘지 않을까요?"

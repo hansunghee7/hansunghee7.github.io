@@ -7,10 +7,11 @@ date_string: 'Apr 8. 2025'
 date: 2025-04-08
 keywords: 'So What Why So, 논리적 사고 프레임워크, 맥킨지 컨설팅 기법'
 about: '논리적 사고, 기획 프레임워크'
-prev_url: "/log_assets/markdown/185_%EC%82%AC%EA%B3%A0%EC%9D%98%20%EC%A7%80%EB%8F%84%EB%A5%BC%20%EA%B7%B8%EB%A6%AC%EB%8A%94%20%EB%B2%95%20%27%EB%A1%9C%EC%A7%81%20%ED%8A%B8%EB%A6%AC%27.html"
+prev_url: "/logs/185/"
 prev_title: "사고의 지도를 그리는 법 '로직 트리'"
-next_url: "/log_assets/markdown/171_%27%ED%8D%BC%EB%84%90%20%EB%B6%84%EC%84%9D%27%20%EB%94%94%EC%A7%80%ED%84%B8%20%EC%8B%9C%EB%8C%80%EC%9D%98%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%B5%9C%EC%A0%81%ED%99%94%20%ED%95%B5%EC%8B%AC%20%EA%B8%B0%EC%88%A0.html"
+next_url: "/logs/171/"
 next_title: "'퍼널 분석' 디지털 시대의 사용자 최적화 핵심 기술"
+permalink: /logs/178/
 ---
 
 맥킨지와 같은 글로벌 컨설팅 회사에서 탄생한 'So What, Why So' 프레임워크는 얼핏 간단해 보이지만, 논리적 사고의 핵심을 짚어내는 강력한 도구다. 이는 단순한 질문이 아니라 복잡한 정보를 명확한 인사이트로 변환하는 마법의 문구와도 같다.

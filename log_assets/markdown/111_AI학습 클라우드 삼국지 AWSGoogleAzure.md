@@ -7,10 +7,11 @@ date_string: 'Jun 11. 2025'
 date: 2025-06-11
 keywords: 'AI 학습 인프라 비교, AWS Trainium vs TPU, 클라우드 GPU 선택'
 about: 'AI 인프라, 클라우드 컴퓨팅'
-prev_url: "/log_assets/markdown/119_%EC%84%B1%EA%B3%BC%EB%A5%BC%20%EC%A2%8C%EC%9A%B0%ED%95%98%EB%8A%94%2C%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EB%B3%91%EB%A0%AC%ED%99%94%20vs%20%EB%AA%A8%EB%8D%B8%20%EB%B3%91%EB%A0%AC%ED%99%94.html"
+prev_url: "/logs/119/"
 prev_title: "성과를 좌우하는, 데이터 병렬화 vs 모델 병렬화"
-next_url: "/log_assets/markdown/103_ZeRO%2C%20%EB%A9%94%EB%AA%A8%EB%A6%AC%EC%B5%9C%EC%A0%81%ED%99%94%EB%A1%9C%20AI%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%9D%98%20%ED%95%9C%EA%B3%84%EB%A5%BC%20%EB%84%93%ED%9E%88%EB%8B%A4.html"
+next_url: "/logs/103/"
 next_title: "ZeRO, 메모리최적화로 AI 비즈니스의 한계를 넓히다"
+permalink: /logs/111/
 ---
 
 AI 모델 개발이 비즈니스 핵심 경쟁력으로 자리잡으면서, 효율적인 AI 학습 인프라 선택은 기업 성패를 좌우하는 중요한 결정이 되었습니다. AWS Trainium, Google TPU, Azure H100은 각각 다른 강점을 가진 주요 클라우드 AI 솔루션입니다.

@@ -7,10 +7,11 @@ date_string: 'Apr 4. 2025'
 date: 2025-04-04
 keywords: '애자일 워터폴 비교, 하이브리드 방법론, 프로젝트 관리 방법론'
 about: '프로젝트 관리, 애자일 방법론'
-prev_url: "/log_assets/markdown/189_%EC%B9%B8%EB%B0%98%2C%20%EC%95%A0%EC%9E%90%EC%9D%BC%EC%9D%98%20Just%20In%20Time.html"
+prev_url: "/logs/189/"
 prev_title: "칸반, 애자일의 Just In Time"
-next_url: "/log_assets/markdown/175_%27%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%8A%A4%ED%86%A0%EB%A6%AC%27%20%EA%B8%B0%EB%8A%A5%EC%9D%B4%20%EC%95%84%EB%8B%8C%20%EA%B0%80%EC%B9%98%EB%A5%BC%20%EB%A7%8C%EB%93%9C%EB%8A%94%20%EB%B9%84%EB%B0%80%20%EB%AC%B4%EA%B8%B0.html"
+next_url: "/logs/175/"
 next_title: "'사용자 스토리' 기능이 아닌 가치를 만드는 비밀 무기"
+permalink: /logs/182/
 ---
 
 한 IT 회사의 PO(제품 책임자)는 새 프로젝트를 시작하며 고민에 빠졌습니다.

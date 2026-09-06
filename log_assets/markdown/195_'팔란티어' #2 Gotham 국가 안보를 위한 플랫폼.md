@@ -7,10 +7,11 @@ date_string: 'Mar 23. 2025'
 date: 2025-03-23
 keywords: '팔란티어 고담, 국가안보 데이터 플랫폼, 실시간 위협 탐지'
 about: '팔란티어, 데이터 분석, 국가안보'
-prev_url: "/log_assets/markdown/193_AI%EB%A1%9C%20UI%EA%B0%9C%EB%B0%9C%20%EC%86%8D%EB%8F%84%EB%A5%BC%2010%EB%B0%B0%EB%A1%9C%20%EB%A7%8C%EB%93%A4%EB%8B%A4%20%27V0%27.html"
+prev_url: "/logs/193/"
 prev_title: "AI로 UI개발 속도를 10배로 만들다. V0"
-next_url: "/log_assets/markdown/196_%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%EA%B0%80%20%EC%83%9D%EA%B0%81%EB%B3%B4%EB%8B%A4%20%EC%84%B1%EC%9E%A5%ED%95%98%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EC%9D%B4%EC%9C%A0%EB%8A%94%20%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C%EC%9A%94.html"
+next_url: "/logs/196/"
 next_title: "프로덕트가 생각보다 성장하지 않는 이유는 무엇일까요?"
+permalink: /logs/195/
 ---
 
 현대 사회에서 데이터는 새로운 자원이자 무기입니다. 특히 국가 안보 분야에서 방대한 데이터를 신속 정확하게 분석하는 역량은 국가 경쟁력의 핵심으로 부상했습니다. 이런 맥락에서 팔란티어의 Gotham 플랫폼은 정부 기관과 군을 위한 최적의 데이터 통합 및 분석 솔루션으로 주목받고 있습니다.

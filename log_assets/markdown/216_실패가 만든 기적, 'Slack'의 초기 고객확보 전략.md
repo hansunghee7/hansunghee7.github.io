@@ -7,10 +7,11 @@ date_string: 'Mar 3. 2025'
 date: 2025-03-03
 keywords: 'Slack 성장전략, 초기 고객확보, 네트워크 효과'
 about: '스타트업 그로스, B2B SaaS 마케팅'
-prev_url: "/log_assets/markdown/214_30%EB%8B%AC%EB%9F%AC%EB%A1%9C%20%EB%A7%8C%EB%93%A0%20AI%20%ED%98%81%EB%AA%85%2C%20%27%ED%83%80%EC%9D%B4%EB%8B%88%20%EC%A0%9C%EB%A1%9C%27.html"
+prev_url: "/logs/214/"
 prev_title: "30달러로 만든 AI 혁명, '타이니 제로'"
-next_url: "/log_assets/markdown/217_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%20%EC%84%B1%EA%B3%B5%EC%9D%98%20%EC%97%AD%EC%84%A4.html"
+next_url: "/logs/217/"
 next_title: "스타트업 성공의 역설"
+permalink: /logs/216/
 ---
 
 안녕하세요, 스타트업 성공코치 한성희입니다. 오늘은 업무용 메신저 시장을 단숨에 장악한 Slack의 놀라운 초기 고객 확보 전략에 대해 알아보겠습니다.

@@ -39,7 +39,8 @@ from googleapiclient.errors import HttpError
 OUT_PATH = "assets/data/index-coverage.json"
 SITEMAP_URL = "https://simplifier.co.kr/sitemap.xml"
 SITE_MARKER = "simplifier.co.kr"
-POST_PREFIX = "/log_assets/markdown/"
+# 2026-09-06부터 글의 진짜 주소가 /logs/<id>/ -- 옛 접두어는 과거 이력용.
+POST_PREFIXES = ("/log_assets/markdown/", "/logs/")
 # 분당 600회 한도 — 0.15초 간격이면 분당 400회로 여유 있음. 실측(2026-09-02)으로는
 # 검사 한 건에 5~7초가 걸려 한도보다 응답 속도가 병목이다 (600개 ≈ 1시간).
 CALL_INTERVAL_SEC = 0.15
@@ -146,7 +147,7 @@ def count_by(items, key):
 
 
 def write_output(site_url, urls, results, partial):
-    posts = [r for r in results if r["path"].startswith(POST_PREFIX)]
+    posts = [r for r in results if r["path"].startswith(POST_PREFIXES)]
     not_indexed_posts = [
         {k: r[k] for k in ("path", "coverage_state", "last_crawl")}
         for r in posts
