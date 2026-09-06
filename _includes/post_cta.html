@@ -45,12 +45,36 @@ Justin Welsh 뉴스레터 CTA와 대조 리뷰해서 확정했다. 결정 기록
 
 사진: /assets/ceo-portrait-og.jpg(2026-08-30 전문 촬영본으로 교체).
 서명: /assets/signature.png(2026-08-30 재촬영, 가로로 더 넓은 흘림체).
+
+- (2026-09-06 추가) 공유 버튼: 디자인 캔버스([아티팩트](https://claude.ai/code/artifact/457e8e94-8839-4d6f-a3b3-604934e653f4))에서
+  확정한 대로 서명 줄 오른쪽 끝에 배치(`.post-closing-row`). 모바일(Web
+  Share API `navigator.share` 지원)은 OS 기본 공유 시트를 그대로 띄우고,
+  없는 환경(대부분의 데스크톱)만 `.share-fallback` 드롭다운(링크 복사 +
+  링크드인)으로 폴백한다. 공유 링크는 `related_posts.html`과 같은 방식으로
+  `posts.json`을 fetch해 현재 글의 `id`를 찾아 `/logs/<id>/`(짧은 URL,
+  PR #282) 형태로 만든다 — 못 찾으면 현재 페이지 URL로 그대로 폴백.
 {%- endcomment -%}
 {% unless page.category == "코치S" or page.category == "잉크드인대 기획학과" %}
 <style>
-  .post-closing { text-align: left; margin: 56px 0 0; }
+  .post-closing-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 56px 0 0; }
+  .post-closing { text-align: left; }
   p.post-closing-line { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-weight: 300; font-style: italic; font-size: 15.5px; color: #4a4740; margin: 0 0 4px; line-height: 1.7; }
   img.post-closing-sig { display: block; height: 46px; width: auto; margin: 10px 0 0; }
+
+  .share-control { position: relative; flex-shrink: 0; }
+  .share-btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 22px 11px 18px; background: #fff; border: 1px solid #e3dfd3; border-radius: 999px; color: #4a4740; font: 500 14px 'Pretendard Variable', 'Noto Sans KR', sans-serif; cursor: pointer; transition: background .15s, border-color .15s; }
+  .share-btn:hover { background: #faf9f5; border-color: #d8d3c4; }
+  .share-btn svg { display: block; color: #4a4740; }
+  .share-fallback { position: absolute; top: calc(100% + 10px); right: 0; display: flex; gap: 8px; background: #fff; border: 1px solid #efece4; border-radius: 12px; padding: 10px; box-shadow: 0 10px 30px rgba(0,0,0,.3); white-space: nowrap; z-index: 5; }
+  .share-fallback[hidden] { display: none; }
+  .share-chip { display: inline-flex; align-items: center; gap: 7px; padding: 8px 16px; background: #faf9f5; border: 1px solid #efece4; border-radius: 999px; color: #4a4740; font: 500 13px 'Pretendard Variable', 'Noto Sans KR', sans-serif; cursor: pointer; transition: background .15s; }
+  .share-chip:hover { background: #f2efe6; }
+  .share-chip svg { display: block; }
+  .share-chip svg[hidden] { display: none; }
+  .chip-mono { display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; border-radius: 3px; background: #4a4740; color: #fff; font: 700 10px/16px 'Pretendard Variable', 'Noto Sans KR', sans-serif; }
+  .share-chip-copy.copied { background: #eef2ec; border-color: #d8e3d2; color: #3d5c37; }
+  .share-chip-copy.copied svg { color: #3d5c37; }
+
   .post-cta-divider { border: 0; border-top: 1px solid #efece4; margin: 28px 0; }
   .post-card { text-align: center; padding-bottom: 40px; }
   .post-card-photo-btn { background: none; border: none; padding: 0; margin: 0 0 10px; cursor: pointer; display: inline-block; }
@@ -64,9 +88,29 @@ Justin Welsh 뉴스레터 CTA와 대조 리뷰해서 확정했다. 결정 기록
 </style>
 
 <div class="post-cta-block">
-  <div class="post-closing">
-    <p class="post-closing-line">그 다음 걸음을, 함께</p>
-    <img src="/assets/signature.png" alt="한성희 서명" class="post-closing-sig">
+  <div class="post-closing-row">
+    <div class="post-closing">
+      <p class="post-closing-line">그 다음 걸음을, 함께</p>
+      <img src="/assets/signature.png" alt="한성희 서명" class="post-closing-sig">
+    </div>
+
+    <div class="share-control">
+      <button type="button" class="share-btn" aria-haspopup="true" aria-expanded="false" aria-label="이 글 공유하기">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"></path><path d="M7 8l5-5 5 5"></path><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"></path></svg>
+        <span>공유하기</span>
+      </button>
+      <div class="share-fallback" hidden>
+        <button type="button" class="share-chip share-chip-copy" aria-label="링크 복사하기">
+          <svg class="icon-copy" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6-6"></path><path d="M10 6l1-1a4 4 0 0 1 6 6l-1 1"></path><path d="M14 18l-1 1a4 4 0 0 1-6-6l1-1"></path></svg>
+          <svg class="icon-copied" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" hidden><path d="M20 6L9 17l-5-5"></path></svg>
+          <span class="share-chip-copy-label">링크 복사</span>
+        </button>
+        <button type="button" class="share-chip share-chip-linkedin" aria-label="링크드인에 공유">
+          <span class="chip-mono">in</span>
+          <span>링크드인</span>
+        </button>
+      </div>
+    </div>
   </div>
 
   <hr class="post-cta-divider">
@@ -83,4 +127,74 @@ Justin Welsh 뉴스레터 CTA와 대조 리뷰해서 확정했다. 결정 기록
     </ul>
   </div>
 </div>
+<script>
+(function(){
+  var btn = document.querySelector('.share-btn');
+  if (!btn) return;
+  var panel = document.querySelector('.share-fallback');
+  var copyBtn = document.querySelector('.share-chip-copy');
+  var copyLabel = copyBtn ? copyBtn.querySelector('.share-chip-copy-label') : null;
+  var iconCopy = copyBtn ? copyBtn.querySelector('.icon-copy') : null;
+  var iconCopied = copyBtn ? copyBtn.querySelector('.icon-copied') : null;
+  var linkedinBtn = document.querySelector('.share-chip-linkedin');
+
+  var CUR = decodeURIComponent({{ page.url | jsonify }});
+  var shareUrl = 'https://simplifier.co.kr' + CUR;
+
+  fetch('/assets/data/posts.json').then(function(r){ return r.json(); }).then(function(posts){
+    var current = posts.find(function(p){ return decodeURIComponent(p.url) === CUR; });
+    if (current) shareUrl = 'https://simplifier.co.kr/logs/' + current.id + '/';
+  }).catch(function(){});
+
+  function closePanel(){
+    if (!panel || panel.hidden) return;
+    panel.hidden = true;
+    btn.setAttribute('aria-expanded', 'false');
+  }
+
+  btn.addEventListener('click', function(){
+    if (navigator.share) {
+      navigator.share({ title: document.title, url: shareUrl }).catch(function(){});
+      return;
+    }
+    if (!panel) return;
+    var willOpen = panel.hidden;
+    panel.hidden = !willOpen;
+    btn.setAttribute('aria-expanded', String(willOpen));
+  });
+
+  document.addEventListener('click', function(e){
+    if (panel && !panel.hidden && !e.target.closest('.share-control')) closePanel();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') closePanel();
+  });
+
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function(){
+      if (!navigator.clipboard) return;
+      navigator.clipboard.writeText(shareUrl).then(function(){
+        copyBtn.classList.add('copied');
+        copyBtn.setAttribute('aria-label', '링크가 복사되었습니다');
+        if (copyLabel) copyLabel.textContent = '복사됨!';
+        if (iconCopy) iconCopy.hidden = true;
+        if (iconCopied) iconCopied.hidden = false;
+        setTimeout(function(){
+          copyBtn.classList.remove('copied');
+          copyBtn.setAttribute('aria-label', '링크 복사하기');
+          if (copyLabel) copyLabel.textContent = '링크 복사';
+          if (iconCopy) iconCopy.hidden = false;
+          if (iconCopied) iconCopied.hidden = true;
+        }, 1600);
+      }).catch(function(){});
+    });
+  }
+
+  if (linkedinBtn) {
+    linkedinBtn.addEventListener('click', function(){
+      window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(shareUrl), '_blank', 'noopener');
+    });
+  }
+})();
+</script>
 {% endunless %}
