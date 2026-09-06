@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-06T20:45:28.996985+00:00",
+  "updated_at": "2026-09-06T22:15:06.107636+00:00",
   "note": "history는 매일 지난 24시간 집계를 누적한 것. latest_*는 최근 3일 창.",
   "history": [
     {
@@ -2494,18 +2494,18 @@
         "Url": "https://simplifier.co.kr/log_assets/markdown/074_%EB%AA%A9%ED%91%9C%EC%9D%98%20%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%EA%B0%80%20%EC%A4%91%EC%9A%94%ED%95%9C%20%EC%9D%B4%EC%9C%A0.html"
       },
       {
-        "totalSessionCount": 0,
-        "totalBotSessionCount": 1,
-        "distinctUserCount": 1,
-        "pagesPerSessionPercentage": 1,
-        "Url": "https://simplifier.co.kr/log_assets/markdown/612_%EC%A4%84%EC%84%9C%EC%84%9C%20%EB%A8%B9%EB%8A%94%20%EA%B0%80%EA%B2%8C%EC%9D%98%20%EC%82%AC%EC%9E%A5%EC%9D%80%20%EB%AD%90%EA%B0%80%20%EB%8B%A4%EB%A5%BC%EA%B9%8C.html"
-      },
-      {
         "totalSessionCount": 1,
         "totalBotSessionCount": 0,
         "distinctUserCount": 1,
         "pagesPerSessionPercentage": 1,
         "Url": "https://simplifier.co.kr/log_assets/markdown/186_%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85%EC%9D%98%20%EC%B4%88%EA%B8%B0%20%EA%B3%A0%EA%B0%9D%20%ED%99%95%EB%B3%B4%20%EC%A0%84%EB%9E%B5%20%27%EC%8A%A4%ED%8A%B8%EB%9D%BC%EC%9D%B4%ED%94%84%27.html"
+      },
+      {
+        "totalSessionCount": 0,
+        "totalBotSessionCount": 1,
+        "distinctUserCount": 1,
+        "pagesPerSessionPercentage": 1,
+        "Url": "https://simplifier.co.kr/log_assets/markdown/612_%EC%A4%84%EC%84%9C%EC%84%9C%20%EB%A8%B9%EB%8A%94%20%EA%B0%80%EA%B2%8C%EC%9D%98%20%EC%82%AC%EC%9E%A5%EC%9D%80%20%EB%AD%90%EA%B0%80%20%EB%8B%A4%EB%A5%BC%EA%B9%8C.html"
       },
       {
         "totalSessionCount": 1,
@@ -2530,9 +2530,9 @@
       },
       {
         "totalSessionCount": 5,
-        "totalBotSessionCount": 4,
-        "distinctUserCount": 9,
-        "pagesPerSessionPercentage": 1.8888888888888888,
+        "totalBotSessionCount": 3,
+        "distinctUserCount": 8,
+        "pagesPerSessionPercentage": 2,
         "Url": "https://simplifier.co.kr/"
       },
       {
@@ -3013,9 +3013,9 @@
     "Traffic": [
       {
         "totalSessionCount": 7,
-        "totalBotSessionCount": 5,
-        "distinctUserCount": 11,
-        "pagesPerSessionPercentage": 1.3333333333333333,
+        "totalBotSessionCount": 4,
+        "distinctUserCount": 10,
+        "pagesPerSessionPercentage": 1.3636363636363635,
         "Source": ""
       },
       {
