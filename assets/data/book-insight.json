@@ -318,11 +318,11 @@
     {
       "date": "2026-09-06",
       "yes24": {
-        "category_rank": null,
-        "category2_rank": null,
-        "sales_index": null,
-        "reviews": 0,
-        "rating": null
+        "category_rank": 52,
+        "category2_rank": 9,
+        "sales_index": 804,
+        "reviews": 3,
+        "rating": 10.0
       },
       "aladin": {
         "sales_point": 737,
@@ -347,5 +347,5 @@
       }
     }
   ],
-  "updated_at": "2026-09-05T22:00:08.663775+00:00"
+  "updated_at": "2026-09-06T07:12:41.712773+00:00"
 }

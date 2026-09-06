@@ -1382,15 +1382,15 @@
     {
       "date": "2026-09-06",
       "yes24": {
-        "mkt_rank": null,
-        "ad_rank": null,
-        "web_rank": null,
-        "uxui_rank": null,
-        "design_rank": null,
+        "mkt_rank": 59,
+        "ad_rank": 3,
+        "web_rank": 13,
+        "uxui_rank": 5,
+        "design_rank": 20,
         "econ_rank": null,
-        "sales_index": null,
-        "reviews": 0,
-        "rating": null
+        "sales_index": 2475,
+        "reviews": 27,
+        "rating": 10.0
       },
       "aladin": {
         "sales_point": 365,
@@ -1410,5 +1410,5 @@
       }
     }
   ],
-  "updated_at": "2026-09-05T22:01:38.538374+00:00"
+  "updated_at": "2026-09-06T07:14:18.535151+00:00"
 }
