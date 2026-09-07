@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-06T21:44:33.840925+00:00",
+  "updated_at": "2026-09-07T06:05:55.518912+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 152,
-    "activeUsers": 93,
-    "newUsers": 93,
+    "sessions": 157,
+    "activeUsers": 96,
+    "newUsers": 96,
     "returningUsers": 0
   },
   "daily": [
@@ -89,15 +89,15 @@
       "date": "2026-09-06",
       "sessions": 8,
       "activeUsers": 5,
-      "newUsers": 5,
+      "newUsers": 6,
       "returningUsers": 0
     },
     {
       "date": "2026-09-07",
-      "sessions": 1,
-      "activeUsers": 1,
-      "newUsers": 1,
-      "returningUsers": 0
+      "sessions": 6,
+      "activeUsers": 5,
+      "newUsers": 3,
+      "returningUsers": 2
     }
   ],
   "daily_leads": [
@@ -111,7 +111,7 @@
     }
   ],
   "landing_types": {
-    "home": 99,
+    "home": 101,
     "log_home": 7,
     "individual_post": 26,
     "other": 25
@@ -119,7 +119,7 @@
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 112
+      "sessions": 117
     },
     {
       "source": "google",
@@ -135,7 +135,7 @@
     },
     {
       "source": "(not set)",
-      "sessions": 6
+      "sessions": 5
     },
     {
       "source": "linkedin.com",
@@ -163,7 +163,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 112
+      "sessions": 117
     },
     {
       "source": "google",
@@ -216,12 +216,12 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 282,
-    "section_view_voices": 205,
+    "section_view_proven": 284,
+    "section_view_voices": 206,
     "section_view_book_class": 127,
     "section_view_faq": 116,
     "faq_open": 26,
-    "read_complete": 192
+    "read_complete": 196
   },
   "contact_funnel": {
     "contact_open": 27,
@@ -287,11 +287,6 @@
       "sessions": 1
     },
     {
-      "path": "/log_assets/markdown/007_공저가 좋은 이유.html",
-      "title": "/log_assets/markdown/007_공저가 좋은 이유.html",
-      "sessions": 1
-    },
-    {
       "path": "/log_assets/markdown/012_누가 주인인가요.html",
       "title": "/log_assets/markdown/012_누가 주인인가요.html",
       "sessions": 1
@@ -319,6 +314,11 @@
     {
       "path": "/log_assets/markdown/267_애자일이란.html",
       "title": "/log_assets/markdown/267_애자일이란.html",
+      "sessions": 1
+    },
+    {
+      "path": "/log_assets/markdown/481_내가 GS에서 강의를 하는 이유.html",
+      "title": "/log_assets/markdown/481_내가 GS에서 강의를 하는 이유.html",
       "sessions": 1
     }
   ],
@@ -416,7 +416,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 102,
+    "total_desktop_sessions": 106,
     "excluded_invalid_sessions": 18,
     "by_resolution": [
       {
@@ -427,7 +427,7 @@
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 24
+        "sessions": 26
       },
       {
         "resolution": "1920x1080",
@@ -437,7 +437,7 @@
       {
         "resolution": "1536x960",
         "width": 1536,
-        "sessions": 6
+        "sessions": 7
       },
       {
         "resolution": "3840x1080",
@@ -447,6 +447,11 @@
       {
         "resolution": "1470x956",
         "width": 1470,
+        "sessions": 3
+      },
+      {
+        "resolution": "1536x864",
+        "width": 1536,
         "sessions": 3
       },
       {
@@ -462,11 +467,6 @@
       {
         "resolution": "1512x982",
         "width": 1512,
-        "sessions": 2
-      },
-      {
-        "resolution": "1536x864",
-        "width": 1536,
         "sessions": 2
       },
       {
