@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-07T20:45:35.337613+00:00",
+  "updated_at": "2026-09-07T22:16:50.053929+00:00",
   "range": "last_30_days",
   "totals": {
     "sessions": 160,
@@ -118,7 +118,7 @@
     }
   ],
   "landing_types": {
-    "home": 104,
+    "home": 105,
     "log_home": 7,
     "individual_post": 27,
     "other": 25
