@@ -300,6 +300,24 @@ GitHub에서는 누구나 읽을 수 있습니다(`_config.yml`의 exclude는 �
 기존 시스템**을 찾아서 멈추기 쉽습니다(2026-09-07 탐이 실제로 이렇게
 어김, simplifier-way 원칙4 참고).
 
+### UX_GUIDE.md 절을 근거로 고쳤으면, 커밋 메시지에 인용 태그를 남긴다
+
+각 절 제목 옆의 `<!-- id: xxxx -->`가 안정적인 인용 키입니다. 이 문서의
+특정 절을 근거로 코드·문구를 고쳤으면, 커밋 메시지 본문에 `UX_GUIDE#<id>`
+형태로 반드시 남기세요(예: `UX_GUIDE#8ad6`). 진행상황.md 같은 다른 문서에
+"UX_GUIDE#fa6f 적용"이라고 적는 것만으로는 안 됩니다. **집계 도구
+(`simplifier-saegim/saegim.py report`)는 git 커밋 메시지만 셉니다.**
+
+```bash
+python3 /path/to/simplifier-saegim/saegim.py report --repo . --doc docs/UX_GUIDE.md --tag UX_GUIDE
+```
+
+이걸로 절별 인용 수·휴면 절을 확인할 수 있습니다. 이 집계가 곧 "어떤 절이
+실제로 쓰이는 핵심이고 어떤 절이 안 쓰이는 휴면인지" 판단하는 유일한 실측
+신호입니다. 태그를 안 남기면 이 문서가 아무리 커져도 다이어트할 근거
+자체가 안 쌓입니다(2026-09-07 실측: 인용 총합 0, 15개 절 전부 휴면으로
+확인됨).
+
 ## Simplifier Studio (`insight-7b3e9f2c/`)
 
 `insight-7b3e9f2c/` 안의 어떤 파일이라도 새로 만들거나 고치기 전에,
