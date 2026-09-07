@@ -51,6 +51,12 @@ jobs:
           PR_BODY: ${{ github.event.pull_request.body }}
         run: python3 scripts/check_exposure_changes.py "origin/${{ github.base_ref }}"
 
+      # 2026-09-07 도입. 문서로만 적어둔 "긴 줄표 금지" 규칙이 반복해서
+      # 안 지켜져서, 기계 검사로 대체했다.
+      - name: 글쓰기 스타일 검사 (긴 줄표)
+        if: github.event_name == 'pull_request'
+        run: python3 scripts/check_writing_style.py "origin/${{ github.base_ref }}"
+
       - name: Set up Ruby (GitHub Pages와 동일한 gem 구성)
         uses: ruby/setup-ruby@v1
         with:
