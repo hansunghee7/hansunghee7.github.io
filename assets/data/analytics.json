@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-07T06:05:55.518912+00:00",
+  "updated_at": "2026-09-07T13:36:30.812756+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 157,
-    "activeUsers": 96,
-    "newUsers": 96,
+    "sessions": 159,
+    "activeUsers": 97,
+    "newUsers": 97,
     "returningUsers": 0
   },
   "daily": [
@@ -94,9 +94,9 @@
     },
     {
       "date": "2026-09-07",
-      "sessions": 6,
-      "activeUsers": 5,
-      "newUsers": 3,
+      "sessions": 8,
+      "activeUsers": 6,
+      "newUsers": 4,
       "returningUsers": 2
     }
   ],
@@ -111,15 +111,15 @@
     }
   ],
   "landing_types": {
-    "home": 101,
+    "home": 102,
     "log_home": 7,
-    "individual_post": 26,
+    "individual_post": 27,
     "other": 25
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 117
+      "sessions": 119
     },
     {
       "source": "google",
@@ -163,7 +163,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 117
+      "sessions": 119
     },
     {
       "source": "google",
@@ -416,7 +416,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 106,
+    "total_desktop_sessions": 107,
     "excluded_invalid_sessions": 18,
     "by_resolution": [
       {
@@ -430,14 +430,14 @@
         "sessions": 26
       },
       {
-        "resolution": "1920x1080",
-        "width": 1920,
+        "resolution": "1536x960",
+        "width": 1536,
         "sessions": 8
       },
       {
-        "resolution": "1536x960",
-        "width": 1536,
-        "sessions": 7
+        "resolution": "1920x1080",
+        "width": 1920,
+        "sessions": 8
       },
       {
         "resolution": "3840x1080",
