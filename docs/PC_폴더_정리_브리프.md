@@ -119,3 +119,30 @@
 Phase 2(실제 통합·정리)는 이 결과를 사장님이 보고 승인한 뒤, 그 내용을
 반영한 별도 브리프로 진행한다. PC에서 Phase 1을 마쳤으면 노트북에서도
 같은 브리프로 따로 한 번 더 실행한다 — 두 기기 결과가 같다는 보장이 없다.
+
+## Phase 2 부록: Known Folder 등록 값 로컬로 되돌리기 (2026-09-08 탐)
+
+배경: OneDrive 계정이 끊긴 뒤에도 문서·바탕 화면·사진 등록 값이
+`C:\Users\PC\OneDrive\...`를 가리켜 이중 저장이 생겼다. 탐색기 속성 → 위치 →
+기본값 복원은 "동일한 위치에 리디렉션할 수 없는 폴더" 오류로 실패(문서 등록
+값 3개가 같은 경로를 가리켜 충돌). 파일은 사장님이 탐색기로 먼저 옮긴 상태에서,
+아래를 Windows PowerShell(관리자 불필요)에 붙여넣고 Enter 두 번, 그 뒤 재시작.
+되돌리기: 실행 전 `reg export`로 만든 `D:\백업_20260908_UserShellFolders.reg`
+더블클릭.
+
+```powershell
+$usf = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders"
+$sf = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders"
+foreach ($k in "Personal","{24D89E24-2F19-4534-9DDE-6A6671FBB8FE}","{F42EE2D3-909F-4907-8871-4C22FC0BF756}") { Set-ItemProperty -Path $usf -Name $k -Value "%USERPROFILE%\Documents" -Type ExpandString }
+Set-ItemProperty -Path $usf -Name "Desktop" -Value "%USERPROFILE%\Desktop" -Type ExpandString
+foreach ($k in "My Pictures","{0DDD015D-B06C-45D5-8C4C-F59713854639}") { Set-ItemProperty -Path $usf -Name $k -Value "%USERPROFILE%\Pictures" -Type ExpandString }
+Set-ItemProperty -Path $sf -Name "Personal" -Value "C:\Users\PC\Documents" -Type String
+Set-ItemProperty -Path $sf -Name "Desktop" -Value "C:\Users\PC\Desktop" -Type String
+Set-ItemProperty -Path $sf -Name "My Pictures" -Value "C:\Users\PC\Pictures" -Type String
+Get-ItemProperty $usf | Select-Object Personal, Desktop, "My Pictures" | Format-List
+Write-Host "등록 값 변경 완료. PC를 다시 시작하세요." -ForegroundColor Green
+```
+
+확인: 재시작 후 탐색기 즐겨찾기 Documents → 속성 → 위치 탭이
+`C:\Users\PC\Documents`. 같은 등록 값을 진단만 하려면 위 두 키를
+`Get-ItemProperty ... | Format-List`로 읽으면 된다(Phase 1의 2번).
