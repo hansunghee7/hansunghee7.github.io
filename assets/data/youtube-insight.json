@@ -49,6 +49,12 @@
           "views": 4442,
           "likes": 25,
           "comments": 3
+        },
+        {
+          "date": "2026-09-09",
+          "views": 4444,
+          "likes": 25,
+          "comments": 3
         }
       ],
       "title": "아파트 옥상 물탱크가 전부 사라진 이유",
@@ -116,6 +122,12 @@
         },
         {
           "date": "2026-09-08",
+          "views": 5084,
+          "likes": 35,
+          "comments": 4
+        },
+        {
+          "date": "2026-09-09",
           "views": 5084,
           "likes": 35,
           "comments": 4
@@ -189,6 +201,12 @@
           "views": 14,
           "likes": 0,
           "comments": 0
+        },
+        {
+          "date": "2026-09-09",
+          "views": 14,
+          "likes": 0,
+          "comments": 0
         }
       ],
       "title": "아파트 로비가 호텔처럼 변하고 있는 진짜 이유 #건축상식 #아파트",
@@ -215,6 +233,12 @@
           "views": 957,
           "likes": 12,
           "comments": 1
+        },
+        {
+          "date": "2026-09-09",
+          "views": 958,
+          "likes": 12,
+          "comments": 1
         }
       ],
       "title": "지하주차장 천장에 달린 거대한 대포의 정체",
@@ -237,6 +261,12 @@
           "views": 1237,
           "likes": 16,
           "comments": 2
+        },
+        {
+          "date": "2026-09-09",
+          "views": 1266,
+          "likes": 16,
+          "comments": 3
         }
       ],
       "title": "아파트 계단실에 바람을 넣는 놀라운 이유",
@@ -245,16 +275,22 @@
       "duration_seconds": 116,
       "top_comments": [
         {
-          "author": "@InSaNam0603",
-          "text": "어쩐지 문 열면 바람 불더라",
+          "author": "@sinkihanapt",
+          "text": "우리가 매일 지나치는 아파트 계단실에도 화재를 막기 위한 이런 기술이 숨어 있습니다. 앞으로도 하나씩 풀어보겠습니다.",
           "likes": 0,
-          "published_at": "2026-09-08T11:44:51Z"
+          "published_at": "2026-09-08T16:28:08Z"
         },
         {
           "author": "@rjeyj593",
           "text": "소방안전1급 교육내용이네요",
-          "likes": 0,
+          "likes": 1,
           "published_at": "2026-09-08T09:47:51Z"
+        },
+        {
+          "author": "@InSaNam0603",
+          "text": "어쩐지 문 열면 바람 불더라",
+          "likes": 1,
+          "published_at": "2026-09-08T11:44:51Z"
         }
       ]
     }
@@ -309,10 +345,16 @@
         "subscribers": 17,
         "total_views": 4438,
         "video_count": 5
+      },
+      {
+        "date": "2026-09-09",
+        "subscribers": 19,
+        "total_views": 4439,
+        "video_count": 5
       }
     ],
     "title": "신기한 아파트사전",
     "id": "UCTbS2jSG1BvBl4c6EsVx7sA"
   },
-  "updated_at": "2026-09-08T14:44:50.837554Z"
+  "updated_at": "2026-09-08T22:56:28.176629Z"
 }
