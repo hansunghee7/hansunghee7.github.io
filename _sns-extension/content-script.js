@@ -147,6 +147,21 @@
   // 클로드 사용량 설정 페이지("현재 세션" -> "전체 모델" -> "Fable" 순서
   // 고정)는 라벨과 숫자가 멀리 떨어져 있어 위의 라벨 근접 매칭이 안 통해,
   // "N% 사용됨" 패턴을 순서대로 모아 자리로 대응시킨다.
+  // "문구를 못 찾음"으로 실패할 때, 왜 실패했는지 짐작할 단서를 같이
+  // 보낸다(2026-09-09, 틱톡 파서 원인 불명 사고 이후 추가). 특히
+  // document.hidden은 "화면이 최소화/백그라운드 탭 상태라 SPA가 데이터
+  // 로딩을 미뤘다"는 가설을, textSnippet은 "로그인벽·캡차 같은 다른
+  // 화면이 떠서 애초에 팔로워 문구 자체가 없었다"는 가설을 실측으로
+  // 구분해준다. 성공 시에는 안 보내 로그 용량을 늘리지 않는다.
+  function captureFailureDiagnostics() {
+    var text = document.body ? document.body.innerText : "";
+    return {
+      hidden: typeof document.hidden === "boolean" ? document.hidden : null,
+      title: document.title || null,
+      textSnippet: text.slice(0, 300),
+    };
+  }
+
   function tryExtractClaudeUsage() {
     var text = document.body ? document.body.innerText : "";
     var re = /(\d{1,3})%\s*사용됨/g;
@@ -311,7 +326,7 @@
           });
         } else {
           console.log("[SNS 인사이트]", rule.key, "패턴을 못 찾음 (" + CLAUDE_MAX_ATTEMPTS + "초 시도)");
-          chrome.runtime.sendMessage({ type: "SNS_COLLECT_FAILED", platform: rule.key, url: location.href });
+          chrome.runtime.sendMessage({ type: "SNS_COLLECT_FAILED", platform: rule.key, url: location.href, diagnostics: captureFailureDiagnostics() });
         }
       }
     }, 1000);
@@ -340,7 +355,7 @@
       } else if (!result && multiAttempts >= MULTI_MAX_ATTEMPTS) {
         clearInterval(multiTimer);
         console.log("[SNS 인사이트]", rule.key, "패턴을 못 찾음 (" + MULTI_MAX_ATTEMPTS + "초 시도)");
-        chrome.runtime.sendMessage({ type: "SNS_COLLECT_FAILED", platform: rule.key, url: location.href });
+        chrome.runtime.sendMessage({ type: "SNS_COLLECT_FAILED", platform: rule.key, url: location.href, diagnostics: captureFailureDiagnostics() });
       }
     }, 1000);
   }
@@ -428,7 +443,7 @@
       // 이전엔 여기서 콘솔 로그만 남기고 끝났다 -- background/popup은 이
       // 페이지가 실패했는지 전혀 알 방법이 없었다(조용한 실패). 실패도
       // 명시적으로 알려서 연속 실패 시 팝업에서 경고할 수 있게 한다.
-      chrome.runtime.sendMessage({ type: "SNS_COLLECT_FAILED", platform: rule.key, url: location.href });
+      chrome.runtime.sendMessage({ type: "SNS_COLLECT_FAILED", platform: rule.key, url: location.href, diagnostics: captureFailureDiagnostics() });
     }
   }, 1000);
 })();
