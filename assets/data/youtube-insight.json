@@ -46,7 +46,7 @@
         },
         {
           "date": "2026-09-08",
-          "views": 4438,
+          "views": 4442,
           "likes": 25,
           "comments": 3
         }
@@ -116,7 +116,7 @@
         },
         {
           "date": "2026-09-08",
-          "views": 5081,
+          "views": 5084,
           "likes": 35,
           "comments": 4
         }
@@ -186,7 +186,7 @@
         },
         {
           "date": "2026-09-08",
-          "views": 13,
+          "views": 14,
           "likes": 0,
           "comments": 0
         }
@@ -212,7 +212,7 @@
         },
         {
           "date": "2026-09-08",
-          "views": 950,
+          "views": 957,
           "likes": 12,
           "comments": 1
         }
@@ -227,6 +227,34 @@
           "text": "여러분 아파트 지하주차장에서 이 대포처럼 생긴 걸 본 적 있으신가요?\n\n평소엔 조용하지만 불이 나면 완전히 다른 일을 합니다. 궁금한 설비 있으면 댓글로 남겨주세요.",
           "likes": 0,
           "published_at": "2026-09-06T02:07:33Z"
+        }
+      ]
+    },
+    "oDgrkvIXTZ8": {
+      "history": [
+        {
+          "date": "2026-09-08",
+          "views": 1237,
+          "likes": 16,
+          "comments": 2
+        }
+      ],
+      "title": "아파트 계단실에 바람을 넣는 놀라운 이유",
+      "published_at": "2026-09-08T09:00:08Z",
+      "thumbnail": "https://i.ytimg.com/vi/oDgrkvIXTZ8/maxresdefault.jpg",
+      "duration_seconds": 116,
+      "top_comments": [
+        {
+          "author": "@InSaNam0603",
+          "text": "어쩐지 문 열면 바람 불더라",
+          "likes": 0,
+          "published_at": "2026-09-08T11:44:51Z"
+        },
+        {
+          "author": "@rjeyj593",
+          "text": "소방안전1급 교육내용이네요",
+          "likes": 0,
+          "published_at": "2026-09-08T09:47:51Z"
         }
       ]
     }
@@ -279,12 +307,12 @@
       {
         "date": "2026-09-08",
         "subscribers": 17,
-        "total_views": 4425,
-        "video_count": 1
+        "total_views": 4438,
+        "video_count": 5
       }
     ],
     "title": "신기한 아파트사전",
     "id": "UCTbS2jSG1BvBl4c6EsVx7sA"
   },
-  "updated_at": "2026-09-07T22:58:54.300922Z"
+  "updated_at": "2026-09-08T14:44:50.837554Z"
 }
