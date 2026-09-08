@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-08T12:14:17.873153+00:00",
+  "updated_at": "2026-09-08T20:00:48.124305+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 163,
-    "activeUsers": 100,
-    "newUsers": 101,
+    "sessions": 166,
+    "activeUsers": 102,
+    "newUsers": 102,
     "returningUsers": 0
   },
   "daily": [
@@ -101,10 +101,17 @@
     },
     {
       "date": "2026-09-08",
-      "sessions": 4,
+      "sessions": 5,
       "activeUsers": 3,
       "newUsers": 3,
       "returningUsers": 0
+    },
+    {
+      "date": "2026-09-09",
+      "sessions": 2,
+      "activeUsers": 2,
+      "newUsers": 1,
+      "returningUsers": 1
     }
   ],
   "daily_leads": [
@@ -118,19 +125,19 @@
     }
   ],
   "landing_types": {
-    "home": 106,
+    "home": 110,
     "log_home": 7,
-    "individual_post": 26,
+    "individual_post": 27,
     "other": 25
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 122
+      "sessions": 123
     },
     {
       "source": "google",
-      "sessions": 13
+      "sessions": 14
     },
     {
       "source": "searchadvisor.naver.com",
@@ -142,7 +149,7 @@
     },
     {
       "source": "(not set)",
-      "sessions": 3
+      "sessions": 6
     },
     {
       "source": "linkedin.com",
@@ -170,13 +177,13 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 122
+      "sessions": 123
     },
     {
       "source": "google",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 13
+      "sessions": 14
     },
     {
       "source": "searchadvisor.naver.com",
@@ -223,12 +230,12 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 285,
-    "section_view_voices": 207,
+    "section_view_proven": 287,
+    "section_view_voices": 208,
     "section_view_book_class": 129,
     "section_view_faq": 118,
     "faq_open": 26,
-    "read_complete": 196
+    "read_complete": 198
   },
   "contact_funnel": {
     "contact_open": 27,
@@ -423,7 +430,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 110,
+    "total_desktop_sessions": 112,
     "excluded_invalid_sessions": 18,
     "by_resolution": [
       {
@@ -437,13 +444,13 @@
         "sessions": 27
       },
       {
-        "resolution": "1536x960",
-        "width": 1536,
-        "sessions": 8
-      },
-      {
         "resolution": "1920x1080",
         "width": 1920,
+        "sessions": 9
+      },
+      {
+        "resolution": "1536x960",
+        "width": 1536,
         "sessions": 8
       },
       {
@@ -472,6 +479,11 @@
         "sessions": 2
       },
       {
+        "resolution": "1494x934",
+        "width": 1494,
+        "sessions": 2
+      },
+      {
         "resolution": "1512x982",
         "width": 1512,
         "sessions": 2
@@ -494,11 +506,6 @@
       {
         "resolution": "1281x720",
         "width": 1281,
-        "sessions": 1
-      },
-      {
-        "resolution": "1494x934",
-        "width": 1494,
         "sessions": 1
       },
       {
