@@ -216,7 +216,7 @@ S2(매출) 진입 — 그때 모델 등급 정책과 사용량 리포트 자동�
 | 공유 버튼 UX (블로그 글 하단, 서명 줄 우측) | `_includes/post_cta.html` `.share-control` | 구현 완료·병합 (PR #301, 2026-09-06) |
 | UX 가이드 인용 현황판 (절별 인용 스냅샷) | [아티팩트](https://claude.ai/code/artifact/3480b06f-87d5-47ca-98a2-aaafffb191dd) | 2026-09-07 실측 스냅샷, 갱신 필요 시 재실행 |
 | 새김 랜딩페이지 (디자인 캔버스, 헤드라인·CTA 반복 초안) | [아티팩트](https://claude.ai/code/artifact/6efea0c1-f80a-4909-a277-2e3cd5012dac) | 미확정 초안 — 크루·고객 피드백 대기 (2026-09-07, 마야). 위 "새김 소개페이지 시안"(탐, 42058292...)과는 별개 시도 — 헤드라인은 "브랜드의 기준, 팀 전체가 지킵니다"로 진행 중, 데모 영상 자리는 플레이스홀더. **주의**: 이 아티팩트를 크루·고객에게 보여주려면 사장님이 직접 공유(Share) 버튼을 눌러야 함(위 📢 전체 공지 참고) |
-| 새김 디자인 시스템 비교 (검증용, 30개 템플릿을 브랜드별 CSS로 스킨) | `simplifier-saegim/tools/design-compare/` · [아티팩트](https://claude.ai/code/artifact/3b0d82cc-d65d-4a21-9e6b-be9b15d782aa) | 진행 중 (2026-09-08, 시안) — 27개 브랜드(심플리파이어 Dark Cream/Cream White 포함, Google·Apple·shadcn·Intercom·Figma·Slack·Stripe·Notion·Spotify·Airbnb·Mailchimp·Reddit·Adobe·Salesforce·Grammarly·Amazon·Instagram·PayPal·eBay·Discord·TikTok·Dribbble·Wise·Duolingo·Product Hunt) 반영, 100개까지 5개씩 배치로 확장 중. 진행 기록은 `brands.json`(브랜드별 출처·확정 여부) 참고 |
+| 새김 디자인 시스템 비교 (검증용, 30개 템플릿을 브랜드별 CSS로 스킨) | `simplifier-saegim/tools/design-compare/` · [아티팩트](https://claude.ai/code/artifact/3b0d82cc-d65d-4a21-9e6b-be9b15d782aa) | 진행 중 (2026-09-08, 시안) — 32개 브랜드(심플리파이어 Dark Cream/Cream White 포함, Google·Apple·shadcn·Intercom·Figma·Slack·Stripe·Notion·Spotify·Airbnb·Mailchimp·Reddit·Adobe·Salesforce·Grammarly·Amazon·Instagram·PayPal·eBay·Discord·TikTok·Dribbble·Wise·Duolingo·Product Hunt·Klarna·Shopify·Coinbase·Monzo·Headspace) 반영, 100개까지 5개씩 배치로 확장 중. 진행 기록은 `brands.json`(브랜드별 출처·확정 여부) 참고 |
 
 > 2026-08-30 사고: 승인된 메일 디자인·로고가 아티팩트에만 있다가 세션 기억이
 > 잘리며 유실, 사장님 기억으로 복원했습니다. 사람 기억에 의존하지 않는 것이
