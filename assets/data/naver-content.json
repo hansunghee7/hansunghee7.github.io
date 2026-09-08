@@ -305,6 +305,10 @@
         {
           "date": "2026-09-08",
           "views": 207
+        },
+        {
+          "date": "2026-09-09",
+          "views": 291
         }
       ],
       "url": "https://clip.naver.com/@simkihanapt?tab=all&filter=all",
@@ -333,6 +337,10 @@
         {
           "date": "2026-09-08",
           "views": 1893
+        },
+        {
+          "date": "2026-09-09",
+          "views": 1896
         }
       ],
       "url": "https://clip.naver.com/@simkihanapt?tab=all&filter=all",
@@ -361,6 +369,10 @@
         {
           "date": "2026-09-08",
           "views": 1487
+        },
+        {
+          "date": "2026-09-09",
+          "views": 1582
         }
       ],
       "url": "https://clip.naver.com/@simkihanapt?tab=all&filter=all",
@@ -417,6 +429,10 @@
         {
           "date": "2026-09-08",
           "views": 20
+        },
+        {
+          "date": "2026-09-09",
+          "views": 25
         }
       ],
       "url": "https://clip.naver.com/@simkihanapt?tab=all&filter=all",
@@ -442,9 +458,21 @@
       "url": "https://www.instagram.com/sinkihanapt/reel/Dc7c1ujMQrZ/",
       "platform": "content_instagram",
       "thumbnail": "https://scontent-ssn1-1.cdninstagram.com/v/t51.82787-15/798393117_18096220856136475_6909303390477498074_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=101&ig_cache_key=Mzk3OTkwMTUzMzEyOTA4MzYwOTE4MDk2MjIwODUzMTM2NDc1.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjE2MjAuc2RyLnZpZGVvX2RlZmF1bHRfY292ZXJfZnJhbWUuQzMifQ%3D%3D&_nc_ohc=kqJ8toeHFwwQ7kNvwGpHCt2&_nc_oc=AdosJB4Z497mduaBh2vAP55RTqJfrPGrylF_e7DNOpdsKuQ4NfAoxZhlGypjABYBozo&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_gid=T0DsQ4O-Co9JHzkZwKWI3w&_nc_ss=7a22e&oh=00_AQJLeoncmeISnjinXUbeP_Au9EChUVSve2vsQaEi0vJC9w&oe=6AA57537"
+    },
+    "naver_clip_4ri61x": {
+      "history": [
+        {
+          "date": "2026-09-09",
+          "views": 1
+        }
+      ],
+      "url": "https://clip.naver.com/@simkihanapt?tab=all&filter=all",
+      "platform": "naver_clip",
+      "thumbnail": "https://clip-service-phinf.pstatic.net/MjAyNjA5MDhfMjgy/MDAxNzg4ODU4MDU0ODY5.NcSKSLk53onHUWj1qCbfwAsGByC1g5h6Sjd9jLdmpVQg.Zb4JuUsuX6f2CQDCfEHor6f2X0hnBaHboxiAZSuzBzAg.JPEG/Zv21wj27NL_01.jpg?type=w480",
+      "title": "\"아파트에 불이 나면 계단으로 대피합니다.\" 그런데 계단실에서는 연기를 빼내는 게 아니라, 오히려 계속 바람을 불어넣습니다. 왜 그럴까요? 계단실의 압력을 높여 연기가 들어오지 못하게 막는 제연설비 때문입니다. 문이 열리면 압력을 조절하고, 다시 닫히면 원래 압력으로 돌아갑니다. 매일 지나치는 계단실에 숨어 있는, 화재를 막는 보이지 않는 기술입니다. 우리가 사는 아파트의 보이지 않는 시스템을 해부합니다 - 신기한 아파트사전. #아파트 #제연설비 #계단실 #화재안전 #건축상식"
     }
   },
-  "updated_at": "2026-09-08T14:46:35.547531Z",
+  "updated_at": "2026-09-08T16:28:50.329Z",
   "channels": {
     "naver_clip": {
       "history": [
@@ -495,6 +523,12 @@
           "followers": 178,
           "following": 279,
           "content_count": 4
+        },
+        {
+          "date": "2026-09-09",
+          "followers": 178,
+          "following": 279,
+          "content_count": 5
         }
       ],
       "url": "https://clip.naver.com/@simkihanapt?tab=all&filter=all"
@@ -540,6 +574,11 @@
           "date": "2026-09-08",
           "followers": 51,
           "content_count": 4
+        },
+        {
+          "date": "2026-09-09",
+          "followers": 52,
+          "content_count": 4
         }
       ],
       "url": "https://www.instagram.com/sinkihanapt/reels/"
@@ -577,9 +616,13 @@
         {
           "date": "2026-09-08",
           "followers": 1
+        },
+        {
+          "date": "2026-09-09",
+          "followers": 1
         }
       ],
-      "url": "https://www.threads.com/@sinkihanapt"
+      "url": "https://www.threads.com/@sinkihanapt/media"
     },
     "content_facebook": {
       "history": [
@@ -614,9 +657,13 @@
         {
           "date": "2026-09-08",
           "followers": 44
+        },
+        {
+          "date": "2026-09-09",
+          "followers": 44
         }
       ],
-      "url": "https://www.facebook.com/profile.php?id=61593748241305"
+      "url": "https://www.facebook.com/profile.php?id=61593748241305&sk=reels_tab"
     },
     "content_tiktok": {
       "history": [
@@ -661,6 +708,12 @@
           "followers": 19,
           "following": 2,
           "likes": 19
+        },
+        {
+          "date": "2026-09-09",
+          "followers": 19,
+          "following": 2,
+          "likes": 19
         }
       ],
       "url": "https://www.tiktok.com/@sinkihanapt"
@@ -699,6 +752,11 @@
         },
         {
           "date": "2026-09-08",
+          "followers": 0,
+          "following": 0
+        },
+        {
+          "date": "2026-09-09",
           "followers": 0,
           "following": 0
         }

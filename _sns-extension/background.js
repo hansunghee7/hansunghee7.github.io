@@ -73,6 +73,19 @@ function pushLog(entry) {
   });
 }
 
+// content-script가 실패 원인 짐작용으로 보낸 diagnostics를 팝업 로그에
+// 바로 보이는 짧은 문구로 요약한다(2026-09-09, 틱톡 파서 원인 불명 사고
+// 이후 추가). "화면숨김"이면 SPA가 백그라운드 상태라 데이터 로딩을
+// 미뤘을 가능성, 그게 아닌데 실패했다면 title/textSnippet에 로그인벽·
+// 캡차 같은 흔적이 남아있을 수 있다(diagnostics 전체는 log 항목에 같이
+// 저장돼 있어 필요하면 storage에서 더 볼 수 있다).
+function failureNote(diagnostics) {
+  if (!diagnostics) return null;
+  var parts = [diagnostics.hidden ? "화면숨김" : "화면보임"];
+  if (diagnostics.title) parts.push(diagnostics.title.slice(0, 30));
+  return parts.join(" / ");
+}
+
 // 선택자가 깨져도 지금까지는 콘솔 로그만 남고 아무도 모르는 채로
 // 지나갔다(조용한 실패). 같은 플랫폼이 MISS_WARN_THRESHOLD번 연속으로
 // 실패하면(우연한 1회 로딩 지연과 구분하기 위해 1회가 아니라 연속 실패로
@@ -134,7 +147,14 @@ chrome.runtime.onMessage.addListener(function (msg) {
   }
 
   if (msg && msg.type === "SNS_COLLECT_FAILED") {
-    pushLog({ platform: msg.platform, count: null, capturedAt: new Date().toISOString(), status: "miss" });
+    pushLog({
+      platform: msg.platform,
+      count: null,
+      capturedAt: new Date().toISOString(),
+      status: "miss",
+      note: failureNote(msg.diagnostics),
+      diagnostics: msg.diagnostics || null,
+    });
     updateMissStreak(msg.platform, true);
   }
 
