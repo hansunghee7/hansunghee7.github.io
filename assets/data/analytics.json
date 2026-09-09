@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-08T22:02:38.746346+00:00",
+  "updated_at": "2026-09-09T05:58:22.408695+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 166,
-    "activeUsers": 102,
-    "newUsers": 102,
+    "sessions": 169,
+    "activeUsers": 105,
+    "newUsers": 105,
     "returningUsers": 0
   },
   "daily": [
@@ -108,9 +108,9 @@
     },
     {
       "date": "2026-09-09",
-      "sessions": 2,
-      "activeUsers": 2,
-      "newUsers": 1,
+      "sessions": 5,
+      "activeUsers": 5,
+      "newUsers": 4,
       "returningUsers": 1
     }
   ],
@@ -125,7 +125,7 @@
     }
   ],
   "landing_types": {
-    "home": 111,
+    "home": 116,
     "log_home": 7,
     "individual_post": 27,
     "other": 25
@@ -133,7 +133,7 @@
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 124
+      "sessions": 127
     },
     {
       "source": "google",
@@ -144,12 +144,12 @@
       "sessions": 12
     },
     {
-      "source": "l.facebook.com",
-      "sessions": 7
+      "source": "(not set)",
+      "sessions": 8
     },
     {
-      "source": "(not set)",
-      "sessions": 6
+      "source": "l.facebook.com",
+      "sessions": 7
     },
     {
       "source": "linkedin.com",
@@ -177,7 +177,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 124
+      "sessions": 127
     },
     {
       "source": "google",
@@ -230,7 +230,7 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 287,
+    "section_view_proven": 288,
     "section_view_voices": 208,
     "section_view_book_class": 129,
     "section_view_faq": 118,
@@ -430,7 +430,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 112,
+    "total_desktop_sessions": 113,
     "excluded_invalid_sessions": 18,
     "by_resolution": [
       {
@@ -441,7 +441,7 @@
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 27
+        "sessions": 28
       },
       {
         "resolution": "1920x1080",
