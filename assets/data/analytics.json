@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-09T05:58:22.408695+00:00",
+  "updated_at": "2026-09-09T12:25:35.193020+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 169,
-    "activeUsers": 105,
-    "newUsers": 105,
+    "sessions": 173,
+    "activeUsers": 107,
+    "newUsers": 107,
     "returningUsers": 0
   },
   "daily": [
@@ -108,9 +108,9 @@
     },
     {
       "date": "2026-09-09",
-      "sessions": 5,
-      "activeUsers": 5,
-      "newUsers": 4,
+      "sessions": 9,
+      "activeUsers": 7,
+      "newUsers": 6,
       "returningUsers": 1
     }
   ],
@@ -125,15 +125,15 @@
     }
   ],
   "landing_types": {
-    "home": 116,
+    "home": 119,
     "log_home": 7,
-    "individual_post": 27,
+    "individual_post": 28,
     "other": 25
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 127
+      "sessions": 130
     },
     {
       "source": "google",
@@ -145,7 +145,7 @@
     },
     {
       "source": "(not set)",
-      "sessions": 8
+      "sessions": 9
     },
     {
       "source": "l.facebook.com",
@@ -177,7 +177,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 127
+      "sessions": 130
     },
     {
       "source": "google",
@@ -230,9 +230,9 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 288,
-    "section_view_voices": 208,
-    "section_view_book_class": 129,
+    "section_view_proven": 289,
+    "section_view_voices": 209,
+    "section_view_book_class": 130,
     "section_view_faq": 118,
     "faq_open": 26,
     "read_complete": 198
@@ -430,7 +430,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 113,
+    "total_desktop_sessions": 114,
     "excluded_invalid_sessions": 18,
     "by_resolution": [
       {
@@ -446,7 +446,7 @@
       {
         "resolution": "1920x1080",
         "width": 1920,
-        "sessions": 9
+        "sessions": 10
       },
       {
         "resolution": "1536x960",
