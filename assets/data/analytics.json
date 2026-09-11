@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-10T21:55:51.732616+00:00",
+  "updated_at": "2026-09-11T05:57:33.549348+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 177,
-    "activeUsers": 111,
-    "newUsers": 112,
+    "sessions": 178,
+    "activeUsers": 112,
+    "newUsers": 113,
     "returningUsers": 0
   },
   "daily": [
@@ -119,6 +119,13 @@
       "activeUsers": 1,
       "newUsers": 1,
       "returningUsers": 0
+    },
+    {
+      "date": "2026-09-11",
+      "sessions": 1,
+      "activeUsers": 1,
+      "newUsers": 1,
+      "returningUsers": 0
     }
   ],
   "daily_leads": [
@@ -132,7 +139,7 @@
     }
   ],
   "landing_types": {
-    "home": 116,
+    "home": 117,
     "log_home": 7,
     "individual_post": 28,
     "other": 26
@@ -140,7 +147,7 @@
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 136
+      "sessions": 137
     },
     {
       "source": "google",
@@ -184,7 +191,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 136
+      "sessions": 137
     },
     {
       "source": "google",
@@ -437,7 +444,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 115,
+    "total_desktop_sessions": 116,
     "excluded_invalid_sessions": 18,
     "by_resolution": [
       {
@@ -448,7 +455,7 @@
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 28
+        "sessions": 29
       },
       {
         "resolution": "1920x1080",
