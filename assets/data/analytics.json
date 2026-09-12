@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-12T05:46:20.821340+00:00",
+  "updated_at": "2026-09-12T11:41:11.781558+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 178,
-    "activeUsers": 112,
-    "newUsers": 113,
+    "sessions": 179,
+    "activeUsers": 113,
+    "newUsers": 114,
     "returningUsers": 0
   },
   "daily": [
@@ -126,6 +126,13 @@
       "activeUsers": 1,
       "newUsers": 1,
       "returningUsers": 0
+    },
+    {
+      "date": "2026-09-12",
+      "sessions": 1,
+      "activeUsers": 1,
+      "newUsers": 1,
+      "returningUsers": 0
     }
   ],
   "daily_leads": [
@@ -139,15 +146,15 @@
     }
   ],
   "landing_types": {
-    "home": 117,
+    "home": 118,
     "log_home": 7,
-    "individual_post": 28,
+    "individual_post": 29,
     "other": 26
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 137
+      "sessions": 138
     },
     {
       "source": "google",
@@ -167,7 +174,7 @@
     },
     {
       "source": "(not set)",
-      "sessions": 1
+      "sessions": 2
     },
     {
       "source": "bing",
@@ -191,7 +198,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 137
+      "sessions": 138
     },
     {
       "source": "google",
@@ -249,7 +256,7 @@
     "section_view_book_class": 130,
     "section_view_faq": 118,
     "faq_open": 26,
-    "read_complete": 199
+    "read_complete": 200
   },
   "contact_funnel": {
     "contact_open": 27,
@@ -444,7 +451,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 116,
+    "total_desktop_sessions": 117,
     "excluded_invalid_sessions": 18,
     "by_resolution": [
       {
@@ -475,7 +482,7 @@
       {
         "resolution": "1470x956",
         "width": 1470,
-        "sessions": 3
+        "sessions": 4
       },
       {
         "resolution": "1536x864",
