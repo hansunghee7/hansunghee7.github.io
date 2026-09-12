@@ -73,6 +73,12 @@
           "views": 4455,
           "likes": 27,
           "comments": 3
+        },
+        {
+          "date": "2026-09-13",
+          "views": 4455,
+          "likes": 27,
+          "comments": 3
         }
       ],
       "title": "아파트 옥상 물탱크가 전부 사라진 이유",
@@ -165,6 +171,12 @@
         {
           "date": "2026-09-12",
           "views": 5094,
+          "likes": 34,
+          "comments": 4
+        },
+        {
+          "date": "2026-09-13",
+          "views": 5100,
           "likes": 34,
           "comments": 4
         }
@@ -261,6 +273,12 @@
           "views": 19,
           "likes": 0,
           "comments": 0
+        },
+        {
+          "date": "2026-09-13",
+          "views": 21,
+          "likes": 0,
+          "comments": 0
         }
       ],
       "title": "아파트 로비가 호텔처럼 변하고 있는 진짜 이유 #건축상식 #아파트",
@@ -311,6 +329,12 @@
           "views": 966,
           "likes": 12,
           "comments": 1
+        },
+        {
+          "date": "2026-09-13",
+          "views": 966,
+          "likes": 12,
+          "comments": 1
         }
       ],
       "title": "지하주차장 천장에 달린 거대한 대포의 정체",
@@ -357,6 +381,12 @@
           "views": 1293,
           "likes": 17,
           "comments": 3
+        },
+        {
+          "date": "2026-09-13",
+          "views": 1294,
+          "likes": 17,
+          "comments": 3
         }
       ],
       "title": "아파트 계단실에 바람을 넣는 놀라운 이유",
@@ -395,6 +425,12 @@
         {
           "date": "2026-09-12",
           "views": 308,
+          "likes": 4,
+          "comments": 0
+        },
+        {
+          "date": "2026-09-13",
+          "views": 334,
           "likes": 4,
           "comments": 0
         }
@@ -479,10 +515,16 @@
         "subscribers": 20,
         "total_views": 12085,
         "video_count": 6
+      },
+      {
+        "date": "2026-09-13",
+        "subscribers": 20,
+        "total_views": 12130,
+        "video_count": 6
       }
     ],
     "title": "신기한 아파트사전",
     "id": "UCTbS2jSG1BvBl4c6EsVx7sA"
   },
-  "updated_at": "2026-09-12T13:42:52.689750Z"
+  "updated_at": "2026-09-12T22:30:42.989101Z"
 }
