@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-13T14:16:53.589185+00:00",
+  "updated_at": "2026-09-13T20:45:26.327064+00:00",
   "note": "history는 매일 지난 24시간 집계를 누적한 것. latest_*는 최근 3일 창.",
   "history": [
     {
@@ -2661,9 +2661,9 @@
         "Traffic": [
           {
             "totalSessionCount": 3,
-            "totalBotSessionCount": 1,
-            "distinctUserCount": 4,
-            "pagesPerSessionPercentage": 1.25
+            "totalBotSessionCount": 2,
+            "distinctUserCount": 5,
+            "pagesPerSessionPercentage": 1
           }
         ],
         "EngagementTime": [
@@ -2738,15 +2738,11 @@
         ],
         "PopularPages": [
           {
-            "url": "https://simplifier.co.kr/logs/206/",
-            "visitsCount": 1
-          },
-          {
-            "url": "https://simplifier.co.kr/logs/23/",
-            "visitsCount": 1
-          },
-          {
             "url": "https://simplifier.co.kr/",
+            "visitsCount": 2
+          },
+          {
+            "url": "https://simplifier.co.kr/logs/206/",
             "visitsCount": 1
           },
           {
@@ -3022,8 +3018,8 @@
       },
       {
         "totalSessionCount": 2,
-        "totalBotSessionCount": 0,
-        "distinctUserCount": 2,
+        "totalBotSessionCount": 1,
+        "distinctUserCount": 3,
         "pagesPerSessionPercentage": 1,
         "Url": "https://simplifier.co.kr/"
       },
@@ -3033,13 +3029,6 @@
         "distinctUserCount": 1,
         "pagesPerSessionPercentage": 1,
         "Url": "https://simplifier.co.kr/log.html"
-      },
-      {
-        "totalSessionCount": 0,
-        "totalBotSessionCount": 1,
-        "distinctUserCount": 1,
-        "pagesPerSessionPercentage": 1,
-        "Url": "https://simplifier.co.kr/logs/339/"
       },
       {
         "totalSessionCount": 0,
@@ -3208,16 +3197,16 @@
     "Traffic": [
       {
         "totalSessionCount": 2,
-        "totalBotSessionCount": 1,
-        "distinctUserCount": 3,
-        "pagesPerSessionPercentage": 2.6666666666666665,
+        "totalBotSessionCount": 2,
+        "distinctUserCount": 4,
+        "pagesPerSessionPercentage": 2.25,
         "Source": ""
       },
       {
         "totalSessionCount": 3,
-        "totalBotSessionCount": 1,
-        "distinctUserCount": 4,
-        "pagesPerSessionPercentage": 1.5,
+        "totalBotSessionCount": 0,
+        "distinctUserCount": 3,
+        "pagesPerSessionPercentage": 1.6666666666666667,
         "Source": "simplifier.co.kr"
       }
     ],
