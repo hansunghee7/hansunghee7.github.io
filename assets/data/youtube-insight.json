@@ -76,7 +76,7 @@
         },
         {
           "date": "2026-09-13",
-          "views": 4455,
+          "views": 4454,
           "likes": 27,
           "comments": 3
         }
@@ -176,7 +176,7 @@
         },
         {
           "date": "2026-09-13",
-          "views": 5100,
+          "views": 5102,
           "likes": 34,
           "comments": 4
         }
@@ -276,7 +276,7 @@
         },
         {
           "date": "2026-09-13",
-          "views": 21,
+          "views": 23,
           "likes": 0,
           "comments": 0
         }
@@ -332,7 +332,7 @@
         },
         {
           "date": "2026-09-13",
-          "views": 966,
+          "views": 967,
           "likes": 12,
           "comments": 1
         }
@@ -430,7 +430,7 @@
         },
         {
           "date": "2026-09-13",
-          "views": 334,
+          "views": 363,
           "likes": 4,
           "comments": 0
         }
@@ -439,6 +439,28 @@
       "published_at": "2026-09-11T02:19:12Z",
       "thumbnail": "https://i.ytimg.com/vi/0AKCSuMaaDk/maxresdefault.jpg",
       "duration_seconds": 145
+    },
+    "4GTDNOyTyF0": {
+      "history": [
+        {
+          "date": "2026-09-13",
+          "views": 1342,
+          "likes": 13,
+          "comments": 1
+        }
+      ],
+      "title": "아파트 경사로를 만들었더니 주민들이 반대를 했습니다.",
+      "published_at": "2026-09-13T04:11:36Z",
+      "thumbnail": "https://i.ytimg.com/vi/4GTDNOyTyF0/maxresdefault.jpg",
+      "duration_seconds": 91,
+      "top_comments": [
+        {
+          "author": "@sinkihanapt",
+          "text": "\"여러분 아파트에서는 이동권과 사생활, 어느 쪽 손을 들어줄 것 같으세요?\n아파트에서 겪은 이웃 간 갈등 소재도 댓글로 남겨주세요. 다음 편에서 해부합니다.\"",
+          "likes": 0,
+          "published_at": "2026-09-13T04:25:35Z"
+        }
+      ]
     }
   },
   "channel": {
@@ -518,13 +540,13 @@
       },
       {
         "date": "2026-09-13",
-        "subscribers": 20,
-        "total_views": 12130,
-        "video_count": 6
+        "subscribers": 21,
+        "total_views": 12200,
+        "video_count": 7
       }
     ],
     "title": "신기한 아파트사전",
     "id": "UCTbS2jSG1BvBl4c6EsVx7sA"
   },
-  "updated_at": "2026-09-12T22:30:42.989101Z"
+  "updated_at": "2026-09-13T14:37:56.335668Z"
 }
