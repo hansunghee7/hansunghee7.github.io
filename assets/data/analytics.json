@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-13T06:08:15.144597+00:00",
+  "updated_at": "2026-09-13T12:47:48.922570+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 181,
-    "activeUsers": 115,
-    "newUsers": 116,
+    "sessions": 182,
+    "activeUsers": 116,
+    "newUsers": 117,
     "returningUsers": 0
   },
   "daily": [
@@ -136,9 +136,9 @@
     },
     {
       "date": "2026-09-13",
-      "sessions": 2,
-      "activeUsers": 2,
-      "newUsers": 2,
+      "sessions": 3,
+      "activeUsers": 3,
+      "newUsers": 3,
       "returningUsers": 0
     }
   ],
@@ -153,15 +153,15 @@
     }
   ],
   "landing_types": {
-    "home": 119,
+    "home": 118,
     "log_home": 7,
-    "individual_post": 30,
+    "individual_post": 31,
     "other": 26
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 140
+      "sessions": 141
     },
     {
       "source": "google",
@@ -181,7 +181,7 @@
     },
     {
       "source": "(not set)",
-      "sessions": 2
+      "sessions": 1
     },
     {
       "source": "bing",
@@ -205,7 +205,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 140
+      "sessions": 141
     },
     {
       "source": "google",
@@ -314,6 +314,16 @@
       "sessions": 2
     },
     {
+      "path": "/logs/178",
+      "title": "/logs/178",
+      "sessions": 2
+    },
+    {
+      "path": "/logs/206",
+      "title": "/logs/206",
+      "sessions": 2
+    },
+    {
       "path": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
       "title": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
       "sessions": 1
@@ -351,16 +361,6 @@
     {
       "path": "/log_assets/markdown/228_1000퍼센트의 성장 '앱러빈'의 숨겨진 성공공식.html",
       "title": "/log_assets/markdown/228_1000퍼센트의 성장 '앱러빈'의 숨겨진 성공공식.html",
-      "sessions": 1
-    },
-    {
-      "path": "/log_assets/markdown/267_애자일이란.html",
-      "title": "/log_assets/markdown/267_애자일이란.html",
-      "sessions": 1
-    },
-    {
-      "path": "/log_assets/markdown/481_내가 GS에서 강의를 하는 이유.html",
-      "title": "/log_assets/markdown/481_내가 GS에서 강의를 하는 이유.html",
       "sessions": 1
     }
   ],
@@ -458,13 +458,13 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 119,
+    "total_desktop_sessions": 120,
     "excluded_invalid_sessions": 18,
     "by_resolution": [
       {
         "resolution": "2560x1440",
         "width": 2560,
-        "sessions": 37
+        "sessions": 38
       },
       {
         "resolution": "800x600",
