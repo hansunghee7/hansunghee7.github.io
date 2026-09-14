@@ -1,0 +1,58 @@
+name: Verify live page (수동 전용)
+
+# 원격 클라우드 세션은 네트워크 정책상 simplifier.co.kr·*.run.app 같은 실제
+# 도메인에 직접 접속하지 못해(egress 차단) 배포 결과를 눈으로/계산된
+# 스타일로 확인할 수 없었다(2026-09-14, 여러 세션이 보고). GitHub Actions
+# 러너는 인터넷 제약이 없으므로, 여기서 대신 실제 브라우저(Playwright)로
+# 페이지를 열어 계산된 스타일·스크린샷을 로그에 그대로 찍는다. 세션은
+# get_job_logs로 그 로그를 읽으면 된다(스크린샷은 base64로 찍히므로,
+# 실제 이미지가 필요하면 로컬에서 디코드해 Read 도구로 본다).
+#
+# hansunghee7.github.io 전용이 아니다 -- url 입력값으로 아무 공개 주소나
+# (simplifier-saegim의 run.app 배포 주소 포함) 확인할 수 있다.
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: "확인할 실제 주소 (예: https://simplifier.co.kr/)"
+        required: true
+      selector:
+        description: "계산된 스타일·클립 스크린샷을 뽑을 CSS 셀렉터 (생략 가능)"
+        required: false
+      wait_ms:
+        description: "페이지 로드 후 추가로 기다릴 시간(ms)"
+        required: false
+        default: "1000"
+      no_screenshot:
+        description: "true면 스크린샷 없이 계산된 스타일/텍스트만 출력"
+        required: false
+        default: "false"
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Playwright
+        run: |
+          pip install playwright
+          playwright install --with-deps chromium
+
+      - name: Verify
+        env:
+          URL: ${{ inputs.url }}
+          SELECTOR: ${{ inputs.selector }}
+          WAIT_MS: ${{ inputs.wait_ms }}
+          NO_SCREENSHOT: ${{ inputs.no_screenshot }}
+        run: |
+          args=(--url "$URL" --wait-ms "${WAIT_MS:-1000}")
+          if [ -n "$SELECTOR" ]; then args+=(--selector "$SELECTOR"); fi
+          if [ "$NO_SCREENSHOT" = "true" ]; then args+=(--no-screenshot); fi
+          python3 scripts/verify_live_page.py "${args[@]}"
