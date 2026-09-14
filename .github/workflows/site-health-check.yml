@@ -13,7 +13,16 @@ name: Site health check
 on:
   schedule:
     - cron: "*/10 * * * *"
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      url:
+        description: "확인할 URL (비워두면 이 입력을 쓰는 점검은 건너뜀). simplifier.co.kr 뿐 아니라 simplifier-saegim의 Cloud Run 주소 등 다른 서비스 URL도 그대로 쓸 수 있음"
+        required: false
+        type: string
+      selector:
+        description: "확인할 CSS 셀렉터 (예: .article-body li > strong:first-child). 비워두면 응답 코드만 확인. 이 세션(클로드 코드) 컨테이너는 실제 사이트 도메인에 egress가 막혀 있어, 배포 후 HTML 구조 확인은 직접 fetch하는 대신 이 워크플로로 대신한다(2026-09-14 사장님 지시)"
+        required: false
+        type: string
 
 jobs:
   check:
@@ -51,3 +60,43 @@ jobs:
           if [ "$fail" = "1" ]; then
             exit 1
           fi
+
+  url-selector-check:
+    # url 입력이 있을 때만 도는 별도 잡. 위 check 잡(10분마다 자동 실행,
+    # 고정 홈페이지 점검)과는 무관 -- 수동 dispatch로 url을 넣었을 때만 돈다.
+    if: github.event_name == 'workflow_dispatch' && inputs.url != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: URL 응답 확인
+        env:
+          CHECK_URL: ${{ inputs.url }}
+        run: |
+          status=$(curl -s -o /tmp/page.html -w '%{http_code}' -L --max-time 15 "$CHECK_URL")
+          echo "응답 코드: $status"
+          if [ "$status" != "200" ]; then
+            echo "::error::$CHECK_URL 이 200이 아닙니다 ($status)"
+            exit 1
+          fi
+
+      - name: 셀렉터 확인 (입력했을 때만)
+        if: inputs.selector != ''
+        env:
+          CHECK_SELECTOR: ${{ inputs.selector }}
+        run: |
+          pip install --quiet beautifulsoup4
+          python3 - "$CHECK_SELECTOR" <<'PYEOF'
+          import sys
+          from bs4 import BeautifulSoup
+
+          selector = sys.argv[1]
+          with open("/tmp/page.html", encoding="utf-8") as f:
+              soup = BeautifulSoup(f.read(), "html.parser")
+          matches = soup.select(selector)
+          print(f"셀렉터 '{selector}' 매치 수: {len(matches)}")
+          if not matches:
+              print(f"::error::셀렉터 '{selector}'에 매치되는 요소가 없습니다")
+              sys.exit(1)
+          for m in matches[:5]:
+              print(str(m)[:300])
+          PYEOF
