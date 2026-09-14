@@ -188,6 +188,27 @@
 
     CMS.registerWidget("aio-copy-assist", AioCopyControl, AioCopyPreview);
 
+    // 미리보기 패널이 실제 사이트(_layouts/default.html의 .article-body)와
+    // 다르게 렌더링돼(기본 서체·줄간격·번호 목록 간격 없음) 사장님이 실제
+    // 노출 결과를 오해하는 일이 있었다(2026-09-14). 이 CSS는 그 화면과
+    // 최대한 비슷하게 보이도록 미리보기 iframe에만 적용한다.
+    // ⚠️ 유지보수 주의: _layouts/default.html의 .article-body 규칙(p/li/
+    // h2~h4/img/hr)을 손으로 옮겨 적은 것이라, 그쪽 값을 바꾸면 여기도
+    // 같이 바꿔야 한다. 자동으로 동기화되지 않는다(별도 CSS 파일로 뽑아
+    // 공유하는 방법도 있지만, 지금은 실제 라이브 레이아웃 파일을 건드리는
+    // 위험보다 이 정도 중복이 더 안전하다고 판단해 그대로 둔다).
+    CMS.registerPreviewStyle(
+      "@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500&display=swap');" +
+      "body { font-family: 'Noto Sans KR', sans-serif; color: #333; word-break: keep-all; }" +
+      "p { font-size: 17px; font-weight: 300; line-height: 2; letter-spacing: 0.3px; margin-bottom: 30px; }" +
+      "li { margin-bottom: 20px; }" +
+      "li:last-child { margin-bottom: 0; }" +
+      "h2, h3, h4 { margin: 64px 0 18px; }" +
+      "img { width: 88%; height: auto; margin: 40px auto; display: block; }" +
+      "hr { border: 0; border-top: 1px solid #eaeaea; margin: 60px 0; }",
+      { raw: true }
+    );
+
     // 버튼 등록이 끝난 뒤에 CMS를 띄웁니다(위 CMS_MANUAL_INIT과 한 쌍).
     CMS.init();
   </script>
