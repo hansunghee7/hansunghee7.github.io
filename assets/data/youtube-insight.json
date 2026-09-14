@@ -85,6 +85,12 @@
           "views": 4454,
           "likes": 27,
           "comments": 3
+        },
+        {
+          "date": "2026-09-15",
+          "views": 4458,
+          "likes": 27,
+          "comments": 3
         }
       ],
       "title": "아파트 옥상 물탱크가 전부 사라진 이유",
@@ -189,6 +195,12 @@
         {
           "date": "2026-09-14",
           "views": 5107,
+          "likes": 34,
+          "comments": 4
+        },
+        {
+          "date": "2026-09-15",
+          "views": 5112,
           "likes": 34,
           "comments": 4
         }
@@ -297,6 +309,12 @@
           "views": 23,
           "likes": 0,
           "comments": 0
+        },
+        {
+          "date": "2026-09-15",
+          "views": 23,
+          "likes": 0,
+          "comments": 0
         }
       ],
       "title": "아파트 로비가 호텔처럼 변하고 있는 진짜 이유 #건축상식 #아파트",
@@ -359,6 +377,12 @@
           "views": 967,
           "likes": 12,
           "comments": 1
+        },
+        {
+          "date": "2026-09-15",
+          "views": 968,
+          "likes": 12,
+          "comments": 1
         }
       ],
       "title": "지하주차장 천장에 달린 거대한 대포의 정체",
@@ -417,6 +441,12 @@
           "views": 1296,
           "likes": 17,
           "comments": 3
+        },
+        {
+          "date": "2026-09-15",
+          "views": 1299,
+          "likes": 17,
+          "comments": 3
         }
       ],
       "title": "아파트 계단실에 바람을 넣는 놀라운 이유",
@@ -469,6 +499,12 @@
           "views": 363,
           "likes": 4,
           "comments": 0
+        },
+        {
+          "date": "2026-09-15",
+          "views": 363,
+          "likes": 4,
+          "comments": 0
         }
       ],
       "title": "아파트 복도에 있는 이 문, 절대 그냥 열면 안 됩니다",
@@ -489,9 +525,15 @@
           "views": 1350,
           "likes": 13,
           "comments": 1
+        },
+        {
+          "date": "2026-09-15",
+          "views": 1350,
+          "likes": 13,
+          "comments": 1
         }
       ],
-      "title": "아파트 경사로를 만들었더니 주민들이 반대를 했습니다.",
+      "title": "아파트 경사로를 만들었더니 주민들이 반대를 했습니다. #아파트 #이슈 #근린시설 #부동산",
       "published_at": "2026-09-13T04:11:36Z",
       "thumbnail": "https://i.ytimg.com/vi/4GTDNOyTyF0/maxresdefault.jpg",
       "duration_seconds": 91,
@@ -591,10 +633,16 @@
         "subscribers": 21,
         "total_views": 12200,
         "video_count": 7
+      },
+      {
+        "date": "2026-09-15",
+        "subscribers": 22,
+        "total_views": 13559,
+        "video_count": 7
       }
     ],
     "title": "신기한 아파트사전",
     "id": "UCTbS2jSG1BvBl4c6EsVx7sA"
   },
-  "updated_at": "2026-09-13T22:34:53.956331Z"
+  "updated_at": "2026-09-14T16:30:00.111411Z"
 }
