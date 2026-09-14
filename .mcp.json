@@ -2,9 +2,9 @@
   "mcpServers": {
     "saegim": {
       "type": "http",
-      "url": "${SAEGIM_MCP_URL}/mcp",
+      "url": "${SAEGIM_MCP_URL}",
       "headers": {
-        "Authorization": "Bearer dogfood:${SAEGIM_DOGFOOD_SECRET}"
+        "Authorization": "Bearer ${SAEGIM_TENANT_ID}:${SAEGIM_TENANT_SECRET}"
       }
     }
   }
