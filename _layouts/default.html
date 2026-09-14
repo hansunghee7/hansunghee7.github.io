@@ -177,6 +177,17 @@
            CMS로 몇 번을 다시 저장해도 안 깨진다. */
         .article-body li { margin-bottom: 20px; }
         .article-body li:last-child { margin-bottom: 0; }
+        /* 번호 항목은 항상 "굵은 리드 문장 + 뒤이은 설명" 구조라(WRITING_GUIDE.md
+           §3-1), 리드 문장이 자기 줄에서 끊기고 설명이 아래 줄에서 시작하길
+           원했다. 마크다운에서 줄바꿈으로 시도했지만(Shift+Enter 등) 일반
+           개행은 렌더링에서 공백으로 뭉개지고, 강제로 살리려 해도 CMS가
+           저장할 때 없앤다(위 여백 문제와 같은 근본 원인). 그래서 리드
+           문장(항목 맨 앞 굵은 글씨)을 CSS로 통째로 블록 요소로 만들어
+           자동으로 줄이 바뀌게 한다 -- 마크다운은 한 문장으로 그냥 쓰면 된다.
+           카드 사이 빈 줄이 사라진 "촘촘한 목록"과 남아있는 "느슨한 목록"
+           둘 다 나올 수 있어(kramdown 실측) 두 경로 다 잡는다. */
+        .article-body li > strong:first-child,
+        .article-body li > p:first-child > strong:first-child { display: block; margin-bottom: 6px; }
         /* 문단 사이 소제목(h2/h3)이 브라우저 기본 마진(위아래 동일, 0.83em)을
            그대로 써서 위/아래 여백이 똑같아 "이 소제목이 위 문단 소속인지
            아래 문단 소속인지" 구분이 안 됐다. 위는 넉넉히, 아래는 좁게
