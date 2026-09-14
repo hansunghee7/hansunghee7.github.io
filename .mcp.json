@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "saegim": {
+      "type": "http",
+      "url": "${SAEGIM_MCP_URL}/mcp",
+      "headers": {
+        "Authorization": "Bearer dogfood:${SAEGIM_DOGFOOD_SECRET}"
+      }
+    }
+  }
+}
