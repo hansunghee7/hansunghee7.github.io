@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-14T20:45:31.580281+00:00",
+  "updated_at": "2026-09-14T22:45:41.064391+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 206,
+    "sessions": 207,
     "activeUsers": 130,
-    "newUsers": 132,
+    "newUsers": 133,
     "returningUsers": 0
   },
   "daily": [
@@ -145,7 +145,14 @@
       "date": "2026-09-14",
       "sessions": 24,
       "activeUsers": 16,
-      "newUsers": 15,
+      "newUsers": 16,
+      "returningUsers": 0
+    },
+    {
+      "date": "2026-09-15",
+      "sessions": 1,
+      "activeUsers": 1,
+      "newUsers": 0,
       "returningUsers": 1
     }
   ],
@@ -160,9 +167,9 @@
     }
   ],
   "landing_types": {
-    "home": 132,
+    "home": 134,
     "log_home": 7,
-    "individual_post": 47,
+    "individual_post": 48,
     "other": 26
   },
   "top_sources": [
@@ -175,12 +182,12 @@
       "sessions": 16
     },
     {
-      "source": "searchadvisor.naver.com",
+      "source": "(not set)",
       "sessions": 12
     },
     {
-      "source": "(not set)",
-      "sessions": 10
+      "source": "searchadvisor.naver.com",
+      "sessions": 12
     },
     {
       "source": "l.facebook.com",
@@ -309,7 +316,7 @@
     "section_view_voices": 213,
     "section_view_book_class": 132,
     "section_view_faq": 120,
-    "faq_open": 26,
+    "faq_open": 29,
     "read_complete": 208
   },
   "contact_funnel": {
@@ -416,7 +423,7 @@
       "path": "/logs/619/",
       "title": "AI가 우선순위까지 대신 정해줄 수 있을까",
       "uniqueViews": 10,
-      "views": 62
+      "views": 63
     },
     {
       "path": "/log_assets/markdown/130_왜 한국 스타트업은 미국 진출을 꿈꾸는가.html",
@@ -505,7 +512,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 140,
+    "total_desktop_sessions": 141,
     "excluded_invalid_sessions": 18,
     "by_resolution": [
       {
@@ -519,13 +526,13 @@
         "sessions": 31
       },
       {
-        "resolution": "1536x960",
-        "width": 1536,
-        "sessions": 17
-      },
-      {
         "resolution": "1920x1080",
         "width": 1920,
+        "sessions": 18
+      },
+      {
+        "resolution": "1536x960",
+        "width": 1536,
         "sessions": 17
       },
       {
