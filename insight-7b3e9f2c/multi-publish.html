@@ -317,7 +317,13 @@
     setStatus('<div class="loading">불러오는 중…</div>');
     els.selected.classList.remove("show");
 
-    var mdPath = decodeURIComponent(post.url).replace(/\.html$/, ".md");
+    // post.url은 2026-09-06 짧은 URL 마이그레이션 이후 "/logs/<id>/" 형태라
+    // 여기서 .md 경로를 못 뽑는다(예전엔 "/log_assets/markdown/<id>_<제목>.html"
+    // 이라 .replace(/\.html$/, ".md")로 됐지만, 지금 형식엔 .html이 없어서
+    // 그대로 통과되고 404가 난다). id·title로 실제 파일명을 직접 만든다 --
+    // 파일명 규칙은 scripts/normalize_new_post.py의 "%03d_제목.md"와 동일.
+    var fname = String(post.id).padStart(3, "0") + "_" + post.title + ".md";
+    var mdPath = "/log_assets/markdown/" + encodeURIComponent(fname);
     var rawUrl = RAW_BASE + mdPath;
 
     fetch(rawUrl)
