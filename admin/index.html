@@ -197,10 +197,15 @@
     // 같이 바꿔야 한다. 자동으로 동기화되지 않는다(별도 CSS 파일로 뽑아
     // 공유하는 방법도 있지만, 지금은 실제 라이브 레이아웃 파일을 건드리는
     // 위험보다 이 정도 중복이 더 안전하다고 판단해 그대로 둔다).
+    // ⚠️ 실측 사고(2026-09-14): 처음 옮겨 적을 때 모바일 전용 값(17px)을
+    // 데스크톱 기본값(15px)으로 착각해 넣어서, 사장님이 데스크톱에서 보는
+    // 글쓰기 화면 미리보기 글자가 실제 라이브보다 크게 나왔다. 아래는
+    // 데스크톱 기본값이다(라이브 CSS의 `@media (max-width: 600px)` 밖
+    // 값). 다시 옮길 때 이 breakpoint를 헷갈리지 말 것.
     CMS.registerPreviewStyle(
       "@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500&display=swap');" +
       "body { font-family: 'Noto Sans KR', sans-serif; color: #333; word-break: keep-all; }" +
-      "p { font-size: 17px; font-weight: 300; line-height: 2; letter-spacing: 0.3px; margin-bottom: 30px; }" +
+      "p { font-size: 15px; font-weight: 300; line-height: 2; letter-spacing: 0.8px; margin-bottom: 30px; }" +
       "li { margin-bottom: 20px; }" +
       "li:last-child { margin-bottom: 0; }" +
       "h2, h3, h4 { margin: 64px 0 18px; }" +
