@@ -469,11 +469,14 @@
       })
       .join("");
 
-    // 버튼 줄(새 글쓰기 열기 / AI 요청 복사 / 제목 복사 / 본문 복사)을 한
-    // 줄에 쭉 나란히, 위·아래에 똑같이 둡니다 — 본문이 길어서 스크롤한
-    // 상태에서도 다시 위로 안 올라가고 바로 아래 버튼으로 복사할 수
-    // 있게. 버튼이 폭보다 많아지면 줄바꿈 대신 가로 스크롤로 처리.
-    var actionsRowHtml = '<div class="row actions-row">' + writeLinksHtml + aiBtnHtml + copyBtnsHtml + "</div>";
+    // 버튼 줄(복사 / 새 글쓰기 열기 / AI 요청 복사)을 한 줄에 쭉 나란히,
+    // 위·아래에 똑같이 둡니다. 본문이 길어서 스크롤한 상태에서도 다시
+    // 위로 안 올라가고 바로 아래 버튼으로 복사할 수 있게. 버튼이 폭보다
+    // 많아지면 줄바꿈 대신 가로 스크롤로 처리. 순서는 실제 쓰는 동작
+    // 순서대로: 먼저 복사하고, 그 다음 SNS 새 글쓰기 화면을 열어
+    // 붙여넣는다(2026-09-14 사장님 지적, 새 글쓰기가 먼저 있으면
+    // 창을 열어놓고도 복사를 안 한 채 붙여넣기를 누르는 실수가 남).
+    var actionsRowHtml = '<div class="row actions-row">' + copyBtnsHtml + writeLinksHtml + aiBtnHtml + "</div>";
 
     els.panel.innerHTML =
       '<div class="panel-head"><h3>' + escapeHtml(ch.label) + "</h3>" +
