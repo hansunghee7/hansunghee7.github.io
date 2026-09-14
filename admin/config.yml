@@ -115,10 +115,10 @@ collections:
         widget: "object"
         collapsed: false
         required: false
-        hint: "비워두면 그 채널엔 이 글을 안 보냅니다."
+        hint: "비워두면 그 채널은 본문(블로그 글) 전체를 그대로 씁니다. Threads만 예외로, 짧은 글자수 제한(500자) 때문에 항상 별도 텍스트가 필요합니다."
         fields:
-          - name: "linkedin_threads"
-            label: "LinkedIn / Threads용 요약"
+          - name: "threads"
+            label: "Threads용 짧은 글 (500자 제한)"
             widget: "text"
             required: false
 
