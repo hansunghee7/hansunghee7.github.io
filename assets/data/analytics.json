@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-13T21:44:16.897343+00:00",
+  "updated_at": "2026-09-14T06:16:14.803532+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 182,
-    "activeUsers": 116,
-    "newUsers": 117,
+    "sessions": 190,
+    "activeUsers": 119,
+    "newUsers": 120,
     "returningUsers": 0
   },
   "daily": [
@@ -140,6 +140,13 @@
       "activeUsers": 3,
       "newUsers": 3,
       "returningUsers": 0
+    },
+    {
+      "date": "2026-09-14",
+      "sessions": 8,
+      "activeUsers": 5,
+      "newUsers": 3,
+      "returningUsers": 2
     }
   ],
   "daily_leads": [
@@ -153,19 +160,19 @@
     }
   ],
   "landing_types": {
-    "home": 118,
+    "home": 123,
     "log_home": 7,
-    "individual_post": 31,
+    "individual_post": 35,
     "other": 26
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 141
+      "sessions": 146
     },
     {
       "source": "google",
-      "sessions": 14
+      "sessions": 16
     },
     {
       "source": "searchadvisor.naver.com",
@@ -176,11 +183,15 @@
       "sessions": 7
     },
     {
+      "source": "(not set)",
+      "sessions": 5
+    },
+    {
       "source": "linkedin.com",
       "sessions": 3
     },
     {
-      "source": "(not set)",
+      "source": "(data not available)",
       "sessions": 1
     },
     {
@@ -205,13 +216,13 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 141
+      "sessions": 146
     },
     {
       "source": "google",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 14
+      "sessions": 16
     },
     {
       "source": "searchadvisor.naver.com",
@@ -230,6 +241,12 @@
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 3
+    },
+    {
+      "source": "(data not available)",
+      "medium": "(data not available)",
+      "campaign": "(cross-network)",
+      "sessions": 1
     },
     {
       "source": "bing",
@@ -258,12 +275,12 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 290,
-    "section_view_voices": 210,
-    "section_view_book_class": 130,
-    "section_view_faq": 118,
+    "section_view_proven": 292,
+    "section_view_voices": 212,
+    "section_view_book_class": 131,
+    "section_view_faq": 119,
     "faq_open": 26,
-    "read_complete": 201
+    "read_complete": 203
   },
   "contact_funnel": {
     "contact_open": 27,
@@ -291,6 +308,11 @@
     {
       "path": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
       "title": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
+      "sessions": 3
+    },
+    {
+      "path": "/logs/619",
+      "title": "/logs/619",
       "sessions": 3
     },
     {
@@ -356,11 +378,6 @@
     {
       "path": "/log_assets/markdown/186_스타트업의 초기 고객 확보 전략 '스트라이프'.html",
       "title": "/log_assets/markdown/186_스타트업의 초기 고객 확보 전략 '스트라이프'.html",
-      "sessions": 1
-    },
-    {
-      "path": "/log_assets/markdown/228_1000퍼센트의 성장 '앱러빈'의 숨겨진 성공공식.html",
-      "title": "/log_assets/markdown/228_1000퍼센트의 성장 '앱러빈'의 숨겨진 성공공식.html",
       "sessions": 1
     }
   ],
@@ -458,7 +475,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 120,
+    "total_desktop_sessions": 129,
     "excluded_invalid_sessions": 18,
     "by_resolution": [
       {
@@ -469,17 +486,17 @@
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 30
-      },
-      {
-        "resolution": "1920x1080",
-        "width": 1920,
-        "sessions": 11
+        "sessions": 31
       },
       {
         "resolution": "1536x960",
         "width": 1536,
-        "sessions": 8
+        "sessions": 12
+      },
+      {
+        "resolution": "1920x1080",
+        "width": 1920,
+        "sessions": 12
       },
       {
         "resolution": "3840x1080",
@@ -489,6 +506,11 @@
       {
         "resolution": "1470x956",
         "width": 1470,
+        "sessions": 4
+      },
+      {
+        "resolution": "1494x934",
+        "width": 1494,
         "sessions": 4
       },
       {
@@ -507,11 +529,6 @@
         "sessions": 2
       },
       {
-        "resolution": "1494x934",
-        "width": 1494,
-        "sessions": 2
-      },
-      {
         "resolution": "1512x982",
         "width": 1512,
         "sessions": 2
@@ -519,6 +536,11 @@
       {
         "resolution": "1680x1050",
         "width": 1680,
+        "sessions": 2
+      },
+      {
+        "resolution": "1707x1067",
+        "width": 1707,
         "sessions": 2
       },
       {
@@ -534,11 +556,6 @@
       {
         "resolution": "1281x720",
         "width": 1281,
-        "sessions": 1
-      },
-      {
-        "resolution": "1707x1067",
-        "width": 1707,
         "sessions": 1
       },
       {
