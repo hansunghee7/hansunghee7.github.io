@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-14T14:19:12.545781+00:00",
+  "updated_at": "2026-09-14T20:00:51.408690+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 204,
-    "activeUsers": 128,
-    "newUsers": 129,
+    "sessions": 206,
+    "activeUsers": 130,
+    "newUsers": 132,
     "returningUsers": 0
   },
   "daily": [
@@ -143,10 +143,10 @@
     },
     {
       "date": "2026-09-14",
-      "sessions": 22,
-      "activeUsers": 14,
-      "newUsers": 12,
-      "returningUsers": 2
+      "sessions": 24,
+      "activeUsers": 16,
+      "newUsers": 15,
+      "returningUsers": 1
     }
   ],
   "daily_leads": [
@@ -160,15 +160,15 @@
     }
   ],
   "landing_types": {
-    "home": 130,
+    "home": 132,
     "log_home": 7,
-    "individual_post": 46,
+    "individual_post": 47,
     "other": 26
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 153
+      "sessions": 154
     },
     {
       "source": "google",
@@ -191,11 +191,15 @@
       "sessions": 3
     },
     {
-      "source": "m.facebook.com",
+      "source": "maru-connect.webflow.io",
+      "sessions": 3
+    },
+    {
+      "source": "facebook.com",
       "sessions": 2
     },
     {
-      "source": "maru-connect.webflow.io",
+      "source": "m.facebook.com",
       "sessions": 2
     },
     {
@@ -208,10 +212,6 @@
     },
     {
       "source": "brunch.co.kr",
-      "sessions": 1
-    },
-    {
-      "source": "facebook.com",
       "sessions": 1
     },
     {
@@ -228,7 +228,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 153
+      "sessions": 154
     },
     {
       "source": "google",
@@ -255,13 +255,19 @@
       "sessions": 3
     },
     {
-      "source": "m.facebook.com",
+      "source": "maru-connect.webflow.io",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "sessions": 3
+    },
+    {
+      "source": "facebook.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 2
     },
     {
-      "source": "maru-connect.webflow.io",
+      "source": "m.facebook.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 2
@@ -280,12 +286,6 @@
     },
     {
       "source": "brunch.co.kr",
-      "medium": "referral",
-      "campaign": "(referral)",
-      "sessions": 1
-    },
-    {
-      "source": "facebook.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 1
@@ -338,7 +338,7 @@
     {
       "path": "/logs/619",
       "title": "/logs/619",
-      "sessions": 13
+      "sessions": 14
     },
     {
       "path": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
@@ -415,8 +415,8 @@
     {
       "path": "/logs/619/",
       "title": "AI가 우선순위까지 대신 정해줄 수 있을까",
-      "uniqueViews": 9,
-      "views": 61
+      "uniqueViews": 10,
+      "views": 62
     },
     {
       "path": "/log_assets/markdown/130_왜 한국 스타트업은 미국 진출을 꿈꾸는가.html",
