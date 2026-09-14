@@ -365,9 +365,14 @@
       // 안 되고, body는 모든 글에 예외 없이 있습니다.
       var bodyText = ((ch.source(fm) || "").toString().trim()) || body;
       // narrow 채널(LinkedIn/Threads/Facebook/Instagram/리멤버/로켓펀치)은
-      // 실제 서비스에 제목칸이 따로 없어서, 제목을 본문 맨 앞줄에 합쳐서
-      // 하나의 글로 보여줍니다. wide(브런치·네이버블로그, LinkedIn 뉴스레터)는
-      // 실제로 제목칸이 따로 있으니 본문만 둡니다(제목은 별도 입력칸에).
+      // 실제 서비스가 마크다운을 전혀 해석하지 않는 순수 평문 입력칸이라,
+      // body로 대체될 때 **강조** 같은 마크다운 기호가 그대로 노출됩니다
+      // (2026-09-14 사장님 스크린샷으로 확인). 붙여넣기 전에 기호만 제거합니다.
+      if (ch.layout === "narrow") bodyText = stripMarkdownForPlainText(bodyText);
+      // narrow 채널은 실제 서비스에 제목칸이 따로 없어서, 제목을 본문 맨
+      // 앞줄에 합쳐서 하나의 글로 보여줍니다. wide(브런치·네이버블로그,
+      // LinkedIn 뉴스레터)는 실제로 제목칸이 따로 있으니 본문만 둡니다
+      // (제목은 별도 입력칸에).
       var text = ch.layout === "narrow" ? (currentTitle + "\n\n" + bodyText).trim() : bodyText;
       return { ch: ch, text: text };
     });
@@ -559,6 +564,21 @@
     body = body.replace(/<!--\s*CAT_LINK_SCRIPT_START\s*-->[\s\S]*?<!--\s*CAT_LINK_SCRIPT_END\s*-->/, "");
     body = body.replace(/<!--\s*CATEGORY_NAV_START\s*-->[\s\S]*?<!--\s*CATEGORY_NAV_END\s*-->/, "");
     return body.trim();
+  }
+
+  // narrow 채널용: 마크다운 문법 기호만 제거하고 실제 텍스트는 남깁니다.
+  // 이 블로그 문체(WRITING_GUIDE.md)는 강조에 굵게(**)만 쓰고 기울임(*, _)은
+  // 쓰지 않아, 단일 별표·밑줄까지는 건드리지 않습니다 -- 한글 문장에서
+  // \w가 한글을 못 잡아 밑줄 낀 단어(예: "함수_이름_테스트")를 잘못 벗겨낼
+  // 위험이 더 크기 때문입니다.
+  function stripMarkdownForPlainText(text) {
+    return (text || "")
+      .replace(/```[\s\S]*?```/g, function (m) { return m.replace(/```/g, ""); })
+      .replace(/^#{1,6}\s+/gm, "")
+      .replace(/\*\*([^*]+)\*\*/g, "$1")
+      .replace(/__([^_]+)__/g, "$1")
+      .replace(/`([^`]+)`/g, "$1")
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, "$1 ($2)");
   }
 
   function copyText(text, cb) {
