@@ -364,11 +364,13 @@
       // 글을 쓸 때만 채워지는 CMS 필드라 그것만으론 항상 채워진다고 보장이
       // 안 되고, body는 모든 글에 예외 없이 있습니다.
       var bodyText = ((ch.source(fm) || "").toString().trim()) || body;
-      // narrow 채널(LinkedIn/Threads/Facebook/Instagram/리멤버/로켓펀치)은
-      // 실제 서비스가 마크다운을 전혀 해석하지 않는 순수 평문 입력칸이라,
-      // body로 대체될 때 **강조** 같은 마크다운 기호가 그대로 노출됩니다
-      // (2026-09-14 사장님 스크린샷으로 확인). 붙여넣기 전에 기호만 제거합니다.
-      if (ch.layout === "narrow") bodyText = stripMarkdownForPlainText(bodyText);
+      // narrow(LinkedIn/Threads/Facebook/Instagram/리멤버/로켓펀치)뿐 아니라
+      // wide 채널(브런치·네이버블로그·LinkedIn 뉴스레터)의 실제 에디터도
+      // 마크다운을 해석하지 않는다. body로 대체될 때 **강조** 같은
+      // 마크다운 기호가 그대로 노출된다(2026-09-14 사장님이 브런치·
+      // 로켓펀치 화면에서 직접 확인). 모든 채널에서 붙여넣기 전 기호만
+      // 제거한다.
+      bodyText = stripMarkdownForPlainText(bodyText);
       // narrow 채널은 실제 서비스에 제목칸이 따로 없어서, 제목을 본문 맨
       // 앞줄에 합쳐서 하나의 글로 보여줍니다. wide(브런치·네이버블로그,
       // LinkedIn 뉴스레터)는 실제로 제목칸이 따로 있으니 본문만 둡니다
