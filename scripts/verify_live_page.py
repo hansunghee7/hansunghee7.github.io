@@ -80,6 +80,7 @@ def main() -> int:
                 print("셀렉터를 못 찾았습니다(query_selector가 None)")
                 browser.close()
                 return 1
+            handle.scroll_into_view_if_needed()
             styles = handle.evaluate(
                 """(el, props) => {
                     const cs = getComputedStyle(el);
