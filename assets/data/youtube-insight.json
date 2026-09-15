@@ -491,16 +491,16 @@
           "published_at": "2026-09-08T16:28:08Z"
         },
         {
-          "author": "@rjeyj593",
-          "text": "소방안전1급 교육내용이네요",
-          "likes": 1,
-          "published_at": "2026-09-08T09:47:51Z"
-        },
-        {
           "author": "@InSaNam0603",
           "text": "어쩐지 문 열면 바람 불더라",
           "likes": 1,
           "published_at": "2026-09-08T11:44:51Z"
+        },
+        {
+          "author": "@rjeyj593",
+          "text": "소방안전1급 교육내용이네요",
+          "likes": 1,
+          "published_at": "2026-09-08T09:47:51Z"
         }
       ]
     },
@@ -570,7 +570,7 @@
         },
         {
           "date": "2026-09-16",
-          "views": 1392,
+          "views": 1396,
           "likes": 13,
           "comments": 1
         }
@@ -592,8 +592,8 @@
       "history": [
         {
           "date": "2026-09-16",
-          "views": 1399,
-          "likes": 17,
+          "views": 1410,
+          "likes": 18,
           "comments": 2
         }
       ],
@@ -713,12 +713,12 @@
       {
         "date": "2026-09-16",
         "subscribers": 25,
-        "total_views": 13575,
+        "total_views": 13631,
         "video_count": 8
       }
     ],
     "title": "신기한 아파트사전",
     "id": "UCTbS2jSG1BvBl4c6EsVx7sA"
   },
-  "updated_at": "2026-09-15T15:14:47.257832Z"
+  "updated_at": "2026-09-15T23:08:42.954944Z"
 }
