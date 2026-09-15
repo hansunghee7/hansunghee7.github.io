@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-15T12:46:59.022730+00:00",
+  "updated_at": "2026-09-15T20:00:49.346649+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 213,
-    "activeUsers": 136,
-    "newUsers": 137,
+    "sessions": 214,
+    "activeUsers": 137,
+    "newUsers": 138,
     "returningUsers": 0
   },
   "daily": [
@@ -150,9 +150,9 @@
     },
     {
       "date": "2026-09-15",
-      "sessions": 6,
-      "activeUsers": 6,
-      "newUsers": 5,
+      "sessions": 7,
+      "activeUsers": 7,
+      "newUsers": 6,
       "returningUsers": 1
     }
   ],
@@ -167,7 +167,7 @@
     }
   ],
   "landing_types": {
-    "home": 130,
+    "home": 132,
     "log_home": 7,
     "individual_post": 50,
     "other": 29
@@ -179,7 +179,7 @@
     },
     {
       "source": "google",
-      "sessions": 16
+      "sessions": 17
     },
     {
       "source": "searchadvisor.naver.com",
@@ -191,7 +191,7 @@
     },
     {
       "source": "(not set)",
-      "sessions": 4
+      "sessions": 5
     },
     {
       "source": "linkedin.com",
@@ -241,7 +241,7 @@
       "source": "google",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 16
+      "sessions": 17
     },
     {
       "source": "searchadvisor.naver.com",
@@ -312,8 +312,8 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 293,
-    "section_view_voices": 213,
+    "section_view_proven": 294,
+    "section_view_voices": 214,
     "section_view_book_class": 132,
     "section_view_faq": 120,
     "faq_open": 31,
@@ -512,7 +512,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 146,
+    "total_desktop_sessions": 147,
     "excluded_invalid_sessions": 18,
     "by_resolution": [
       {
@@ -581,6 +581,11 @@
         "sessions": 2
       },
       {
+        "resolution": "1710x1107",
+        "width": 1710,
+        "sessions": 2
+      },
+      {
         "resolution": "1728x1117",
         "width": 1728,
         "sessions": 2
@@ -593,11 +598,6 @@
       {
         "resolution": "1281x720",
         "width": 1281,
-        "sessions": 1
-      },
-      {
-        "resolution": "1710x1107",
-        "width": 1710,
         "sessions": 1
       },
       {
