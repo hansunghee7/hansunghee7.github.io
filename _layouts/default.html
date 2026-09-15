@@ -191,8 +191,19 @@
         /* 문단 사이 소제목(h2/h3)이 브라우저 기본 마진(위아래 동일, 0.83em)을
            그대로 써서 위/아래 여백이 똑같아 "이 소제목이 위 문단 소속인지
            아래 문단 소속인지" 구분이 안 됐다. 위는 넉넉히, 아래는 좁게
-           비대칭으로 줘서 소제목이 자기 아래 문단에 붙어 보이게 한다. */
-        .article-body h2, .article-body h3, .article-body h4 { margin: 64px 0 18px; }
+           비대칭으로 줘서 소제목이 자기 아래 문단에 붙어 보이게 한다.
+           글자 크기도 브라우저 기본값(h2 약 1.5em)을 그대로 써서 본문
+           15~17px 대비 소제목이 표지 제목만큼 커 보였다(2026-09-15 실측,
+           620번 CMS 미리보기에서 확인). 본문 크기에 비례하도록 명시했다. */
+        .article-body h2, .article-body h3, .article-body h4 { margin: 64px 0 18px; font-weight: 700; line-height: 1.5; }
+        .article-body h2 { font-size: 21px; }
+        .article-body h3 { font-size: 18px; }
+        .article-body h4 { font-size: 16px; }
+        @media (max-width: 600px) {
+            .article-body h2 { font-size: 22px; }
+            .article-body h3 { font-size: 19px; }
+            .article-body h4 { font-size: 17px; }
+        }
         .article-body img { width: 88%; height: auto; margin: 40px auto; display: block; border-radius: 0; }
         .article-body hr { border: 0; border-top: 1px solid #eaeaea; margin: 60px 0; }
         .article-body .img-gallery {
