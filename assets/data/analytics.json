@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-15T06:09:52.363617+00:00",
+  "updated_at": "2026-09-15T12:46:59.022730+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 210,
-    "activeUsers": 133,
-    "newUsers": 134,
+    "sessions": 213,
+    "activeUsers": 136,
+    "newUsers": 137,
     "returningUsers": 0
   },
   "daily": [
@@ -150,9 +150,9 @@
     },
     {
       "date": "2026-09-15",
-      "sessions": 3,
-      "activeUsers": 3,
-      "newUsers": 2,
+      "sessions": 6,
+      "activeUsers": 6,
+      "newUsers": 5,
       "returningUsers": 1
     }
   ],
@@ -167,15 +167,15 @@
     }
   ],
   "landing_types": {
-    "home": 128,
+    "home": 130,
     "log_home": 7,
-    "individual_post": 48,
+    "individual_post": 50,
     "other": 29
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 156
+      "sessions": 159
     },
     {
       "source": "google",
@@ -190,16 +190,16 @@
       "sessions": 7
     },
     {
+      "source": "(not set)",
+      "sessions": 4
+    },
+    {
       "source": "linkedin.com",
       "sessions": 4
     },
     {
       "source": "maru-connect.webflow.io",
       "sessions": 4
-    },
-    {
-      "source": "(not set)",
-      "sessions": 3
     },
     {
       "source": "m.facebook.com",
@@ -235,7 +235,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 156
+      "sessions": 159
     },
     {
       "source": "google",
@@ -317,7 +317,7 @@
     "section_view_book_class": 132,
     "section_view_faq": 120,
     "faq_open": 31,
-    "read_complete": 208
+    "read_complete": 209
   },
   "contact_funnel": {
     "contact_open": 27,
@@ -512,7 +512,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 143,
+    "total_desktop_sessions": 146,
     "excluded_invalid_sessions": 18,
     "by_resolution": [
       {
@@ -541,6 +541,11 @@
         "sessions": 5
       },
       {
+        "resolution": "1440x900",
+        "width": 1440,
+        "sessions": 4
+      },
+      {
         "resolution": "1470x956",
         "width": 1470,
         "sessions": 4
@@ -551,18 +556,13 @@
         "sessions": 4
       },
       {
-        "resolution": "1440x900",
-        "width": 1440,
-        "sessions": 3
+        "resolution": "1536x864",
+        "width": 1536,
+        "sessions": 4
       },
       {
         "resolution": "1512x982",
         "width": 1512,
-        "sessions": 3
-      },
-      {
-        "resolution": "1536x864",
-        "width": 1536,
         "sessions": 3
       },
       {
