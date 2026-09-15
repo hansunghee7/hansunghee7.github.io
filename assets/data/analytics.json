@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-14T22:45:41.064391+00:00",
+  "updated_at": "2026-09-15T06:09:52.363617+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 207,
-    "activeUsers": 130,
-    "newUsers": 133,
+    "sessions": 210,
+    "activeUsers": 133,
+    "newUsers": 134,
     "returningUsers": 0
   },
   "daily": [
@@ -143,16 +143,16 @@
     },
     {
       "date": "2026-09-14",
-      "sessions": 24,
-      "activeUsers": 16,
-      "newUsers": 16,
-      "returningUsers": 0
+      "sessions": 25,
+      "activeUsers": 17,
+      "newUsers": 15,
+      "returningUsers": 2
     },
     {
       "date": "2026-09-15",
-      "sessions": 1,
-      "activeUsers": 1,
-      "newUsers": 0,
+      "sessions": 3,
+      "activeUsers": 3,
+      "newUsers": 2,
       "returningUsers": 1
     }
   ],
@@ -167,23 +167,19 @@
     }
   ],
   "landing_types": {
-    "home": 134,
+    "home": 128,
     "log_home": 7,
     "individual_post": 48,
-    "other": 26
+    "other": 29
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 154
+      "sessions": 156
     },
     {
       "source": "google",
       "sessions": 16
-    },
-    {
-      "source": "(not set)",
-      "sessions": 12
     },
     {
       "source": "searchadvisor.naver.com",
@@ -195,10 +191,18 @@
     },
     {
       "source": "linkedin.com",
-      "sessions": 3
+      "sessions": 4
     },
     {
       "source": "maru-connect.webflow.io",
+      "sessions": 4
+    },
+    {
+      "source": "(not set)",
+      "sessions": 3
+    },
+    {
+      "source": "m.facebook.com",
       "sessions": 3
     },
     {
@@ -206,15 +210,11 @@
       "sessions": 2
     },
     {
-      "source": "m.facebook.com",
-      "sessions": 2
-    },
-    {
-      "source": "(data not available)",
+      "source": "bing",
       "sessions": 1
     },
     {
-      "source": "bing",
+      "source": "blog.naver.com",
       "sessions": 1
     },
     {
@@ -235,7 +235,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 154
+      "sessions": 156
     },
     {
       "source": "google",
@@ -259,10 +259,16 @@
       "source": "linkedin.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 3
+      "sessions": 4
     },
     {
       "source": "maru-connect.webflow.io",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "sessions": 4
+    },
+    {
+      "source": "m.facebook.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 3
@@ -274,21 +280,15 @@
       "sessions": 2
     },
     {
-      "source": "m.facebook.com",
-      "medium": "referral",
-      "campaign": "(referral)",
-      "sessions": 2
-    },
-    {
-      "source": "(data not available)",
-      "medium": "(data not available)",
-      "campaign": "(cross-network)",
-      "sessions": 1
-    },
-    {
       "source": "bing",
       "medium": "organic",
       "campaign": "(organic)",
+      "sessions": 1
+    },
+    {
+      "source": "blog.naver.com",
+      "medium": "referral",
+      "campaign": "(referral)",
       "sessions": 1
     },
     {
@@ -316,7 +316,7 @@
     "section_view_voices": 213,
     "section_view_book_class": 132,
     "section_view_faq": 120,
-    "faq_open": 29,
+    "faq_open": 31,
     "read_complete": 208
   },
   "contact_funnel": {
@@ -345,7 +345,7 @@
     {
       "path": "/logs/619",
       "title": "/logs/619",
-      "sessions": 14
+      "sessions": 16
     },
     {
       "path": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
@@ -422,8 +422,8 @@
     {
       "path": "/logs/619/",
       "title": "AI가 우선순위까지 대신 정해줄 수 있을까",
-      "uniqueViews": 10,
-      "views": 63
+      "uniqueViews": 12,
+      "views": 67
     },
     {
       "path": "/log_assets/markdown/130_왜 한국 스타트업은 미국 진출을 꿈꾸는가.html",
@@ -512,7 +512,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 141,
+    "total_desktop_sessions": 143,
     "excluded_invalid_sessions": 18,
     "by_resolution": [
       {
@@ -523,12 +523,12 @@
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 31
+        "sessions": 32
       },
       {
         "resolution": "1920x1080",
         "width": 1920,
-        "sessions": 18
+        "sessions": 19
       },
       {
         "resolution": "1536x960",
