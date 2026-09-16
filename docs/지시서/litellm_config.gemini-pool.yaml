@@ -25,3 +25,11 @@ router_settings:
   routing_strategy: simple-shuffle
   num_retries: 3
   cooldown_time: 60
+
+# 외부 유출 방지용 안전장치(2026-09-16, 사장님 지시). master_key 값 자체는
+# 여기 적지 않는다(공개 저장소) - 로컬에서만 환경변수로 채운다. 이 값이
+# 없으면 프록시가 아예 안 뜨거나 인증 없이 열리니, 실행 전에 반드시
+# LITELLM_MASTER_KEY를 설정할 것. 값을 아는 호출자만 Authorization: Bearer
+# <값> 헤더로 호출 가능해진다.
+general_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY

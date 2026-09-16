@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-16T06:00:05.085570+00:00",
+  "updated_at": "2026-09-16T12:42:41.286159+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 215,
-    "activeUsers": 138,
-    "newUsers": 139,
-    "returningUsers": 0
+    "sessions": 219,
+    "activeUsers": 142,
+    "newUsers": 141,
+    "returningUsers": 1
   },
   "daily": [
     {
@@ -150,17 +150,17 @@
     },
     {
       "date": "2026-09-15",
-      "sessions": 7,
-      "activeUsers": 7,
-      "newUsers": 6,
+      "sessions": 8,
+      "activeUsers": 8,
+      "newUsers": 7,
       "returningUsers": 1
     },
     {
       "date": "2026-09-16",
-      "sessions": 1,
-      "activeUsers": 1,
-      "newUsers": 1,
-      "returningUsers": 0
+      "sessions": 4,
+      "activeUsers": 4,
+      "newUsers": 2,
+      "returningUsers": 2
     }
   ],
   "daily_leads": [
@@ -174,15 +174,15 @@
     }
   ],
   "landing_types": {
-    "home": 133,
+    "home": 131,
     "log_home": 7,
-    "individual_post": 50,
+    "individual_post": 52,
     "other": 29
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 160
+      "sessions": 161
     },
     {
       "source": "google",
@@ -197,16 +197,16 @@
       "sessions": 7
     },
     {
-      "source": "(not set)",
-      "sessions": 5
-    },
-    {
       "source": "linkedin.com",
-      "sessions": 4
+      "sessions": 5
     },
     {
       "source": "maru-connect.webflow.io",
       "sessions": 4
+    },
+    {
+      "source": "(not set)",
+      "sessions": 3
     },
     {
       "source": "m.facebook.com",
@@ -242,7 +242,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 160
+      "sessions": 161
     },
     {
       "source": "google",
@@ -266,7 +266,7 @@
       "source": "linkedin.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 4
+      "sessions": 5
     },
     {
       "source": "maru-connect.webflow.io",
@@ -324,7 +324,7 @@
     "section_view_book_class": 132,
     "section_view_faq": 120,
     "faq_open": 31,
-    "read_complete": 209
+    "read_complete": 211
   },
   "contact_funnel": {
     "contact_open": 27,
@@ -352,7 +352,7 @@
     {
       "path": "/logs/619",
       "title": "/logs/619",
-      "sessions": 16
+      "sessions": 17
     },
     {
       "path": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
@@ -429,8 +429,8 @@
     {
       "path": "/logs/619/",
       "title": "AI가 우선순위까지 대신 정해줄 수 있을까",
-      "uniqueViews": 12,
-      "views": 67
+      "uniqueViews": 13,
+      "views": 68
     },
     {
       "path": "/log_assets/markdown/130_왜 한국 스타트업은 미국 진출을 꿈꾸는가.html",
@@ -519,7 +519,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 148,
+    "total_desktop_sessions": 150,
     "excluded_invalid_sessions": 18,
     "by_resolution": [
       {
@@ -563,14 +563,14 @@
         "sessions": 4
       },
       {
-        "resolution": "1536x864",
-        "width": 1536,
+        "resolution": "1512x982",
+        "width": 1512,
         "sessions": 4
       },
       {
-        "resolution": "1512x982",
-        "width": 1512,
-        "sessions": 3
+        "resolution": "1536x864",
+        "width": 1536,
+        "sessions": 4
       },
       {
         "resolution": "1024x2160",
