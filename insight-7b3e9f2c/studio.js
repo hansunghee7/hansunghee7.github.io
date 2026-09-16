@@ -20,6 +20,7 @@
     { href: "/insight-7b3e9f2c/book-insight.html", label: "북 인사이트", group: "인사이트" },
     { href: "/insight-7b3e9f2c/content-insight.html", label: "콘텐츠 인사이트", group: "인사이트" },
     { href: "/insight-7b3e9f2c/write.html", label: "글쓰기", group: "제작" },
+    { href: "/insight-7b3e9f2c/publish-calendar.html", label: "발행 캘린더", group: "제작" },
     { href: "/insight-7b3e9f2c/multi-publish.html", label: "멀티 퍼블리싱", group: "제작" },
     { href: "/insight-7b3e9f2c/shorts-studio.html", label: "숏폼 스튜디오", group: "제작" },
     { href: "/insight-7b3e9f2c/newsletter-research.html", label: "뉴스레터 리서치", group: "제작" },

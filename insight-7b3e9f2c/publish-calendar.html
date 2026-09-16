@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>발행 캘린더 - Simplifier</title>
+
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<!-- Studio 메뉴 타이틀(h1)은 명조체 큰 제목으로 통일합니다. -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<link rel="stylesheet" href="/insight-7b3e9f2c/studio.css">
+
+<style>
+  #titleInfo .info-text{max-width:min(440px, 90vw);}
+
+  .week-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+    gap:12px;
+    margin:20px 0 28px;
+  }
+  .day-card{
+    border:1px solid var(--line-soft);
+    border-radius:10px;
+    padding:16px 18px;
+    background:var(--card);
+  }
+  .day-card .dow{
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.04em;
+    color:var(--muted);
+    text-transform:uppercase;
+  }
+  .day-card .track{
+    font-size:15px;
+    font-weight:600;
+    margin-top:6px;
+  }
+  .day-card .theme{
+    font-size:12.5px;
+    color:var(--muted);
+    margin-top:4px;
+    line-height:1.5;
+  }
+  .day-card .badge{
+    display:inline-block;
+    font-size:10px;
+    font-weight:600;
+    border-radius:999px;
+    padding:1px 8px;
+    text-transform:uppercase;
+    letter-spacing:.02em;
+    margin-top:10px;
+  }
+  .badge.home{ color:#2C7748; border:1px solid #2C7748; }
+  .badge.sns{ color:#8A4A3B; border:1px solid #8A4A3B; }
+  .day-card.empty{ opacity:.5; }
+
+  h2.section-title{
+    font-size:14px;
+    font-weight:700;
+    color:var(--ink);
+    margin:0 0 4px;
+  }
+  p.section-note{
+    font-size:12.5px;
+    color:var(--muted);
+    margin:0 0 14px;
+    line-height:1.6;
+  }
+
+  .rrow{display:flex; gap:10px; padding:12px 0; border-top:1px solid var(--line-soft); align-items:baseline; flex-wrap:wrap;}
+  .rrow:first-child{border-top:none;}
+  .rrow .rdow{flex:none; width:34px; font-size:12px; font-weight:700; color:var(--muted);}
+  .rrow .rmain{flex:1 1 240px; min-width:0;}
+  .rrow .rtitle{font-size:13.5px; font-weight:500; text-decoration:none; color:var(--ink);}
+  .rrow .rtitle:hover{text-decoration:underline;}
+  .rrow .rmeta{font-size:11px; color:var(--muted); margin-top:3px;}
+  .rrow .match{
+    flex:none;
+    font-size:10px;
+    font-weight:600;
+    border-radius:999px;
+    padding:2px 9px;
+    text-transform:uppercase;
+    letter-spacing:.02em;
+  }
+  .match.on{ color:#2C7748; border:1px solid #2C7748; }
+  .match.off{ color:var(--muted); border:1px solid var(--line-soft); }
+
+  .loading, .err, .empty{font-size:13px; color:var(--muted); padding:16px 0;}
+  .err{color:var(--bad, #b3402f);}
+</style>
+</head>
+<body class="has-shell-nav">
+<nav id="adminShellNav"></nav>
+
+<div class="wrap">
+  <header>
+    <h1>발행 캘린더<button type="button" class="info-dot" id="titleInfo" aria-label="설명 보기">ⓘ<span class="info-text">
+      정본은 <code>docs/SNS_라이팅_가이드.md</code> §5(발행 요일 전략)입니다. 이 페이지는 그 표를 시각화한 것이라
+      요일·트랙을 바꾸려면 그 문서를 먼저 고치세요. 아래 "최근 발행 로그"는 <code>assets/data/posts.json</code>에서
+      홈페이지(블로그) 글만 자동으로 불러옵니다 — SNS 포스팅은 이 저장소에 기록되지 않아 자동 반영되지 않습니다.
+    </span></button></h1>
+  </header>
+
+  <h2 class="section-title">주간 템플릿</h2>
+  <p class="section-note">주 4회 발행(홈페이지 2회, SNS 2회). 같은 요일에 같은 주제 축을 고정해 트랙 자체가 브랜딩이 되게 합니다.</p>
+  <div class="week-grid">
+    <div class="day-card">
+      <div class="dow">화요일 오전</div>
+      <div class="track">홈페이지 · PM 인사이트</div>
+      <div class="theme">PM·프로덕트 실무 (카테고리: Be the PO)</div>
+      <span class="badge home">홈페이지</span>
+    </div>
+    <div class="day-card">
+      <div class="dow">화요일 오전/오후</div>
+      <div class="track">SNS · 정보성</div>
+      <div class="theme">유입용, 화요일 홈페이지 글로 링크(UTM)</div>
+      <span class="badge sns">SNS</span>
+    </div>
+    <div class="day-card">
+      <div class="dow">목요일 오전</div>
+      <div class="track">홈페이지 · 리더십/강연유입</div>
+      <div class="theme">리더십·조직 성장 (카테고리: 스타트업 인사이트)</div>
+      <span class="badge home">홈페이지</span>
+    </div>
+    <div class="day-card">
+      <div class="dow">토요일</div>
+      <div class="track">SNS · 경험담</div>
+      <div class="theme">참여용, 링크 없음, 캐주얼 톤</div>
+      <span class="badge sns">SNS</span>
+    </div>
+  </div>
+
+  <h2 class="section-title">최근 발행 로그 (홈페이지)</h2>
+  <p class="section-note">최근 발행된 홈페이지 글이 화/목 템플릿과 맞는지 확인합니다. SNS 포스팅 여부는 직접 확인하세요.</p>
+  <div id="log"><div class="loading">불러오는 중…</div></div>
+</div>
+
+<script src="/insight-7b3e9f2c/studio.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var POSTS_JSON = "/assets/data/posts.json";
+  var DOW_LABEL = ["일", "월", "화", "수", "목", "금", "토"];
+  var TRACK_BY_DOW = { 2: "Be the PO", 4: "스타트업 인사이트" };
+  var logEl = document.getElementById("log");
+
+  function escapeHtml(s) {
+    return (s || "").replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  function parseSortDate(dateSort) {
+    // "20260916" -> Date. date_sort가 없는 옛 글은 date 문자열("Sep 16. 2026")로 대신 파싱하지 않고 건너뛴다.
+    if (!dateSort || dateSort.length !== 8) return null;
+    var y = Number(dateSort.slice(0, 4));
+    var m = Number(dateSort.slice(4, 6));
+    var d = Number(dateSort.slice(6, 8));
+    return new Date(y, m - 1, d);
+  }
+
+  fetch(POSTS_JSON)
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      var rows = data
+        .map(function (p) {
+          var dt = parseSortDate(p.date_sort);
+          return dt ? { post: p, dt: dt } : null;
+        })
+        .filter(Boolean)
+        .sort(function (a, b) { return b.dt - a.dt; })
+        .slice(0, 12);
+
+      if (!rows.length) {
+        logEl.innerHTML = '<div class="empty">표시할 글이 없습니다.</div>';
+        return;
+      }
+
+      logEl.innerHTML = rows
+        .map(function (row) {
+          var dow = row.dt.getDay();
+          var expectedCategory = TRACK_BY_DOW[dow];
+          var isTemplateDay = dow === 2 || dow === 4;
+          var matches = isTemplateDay && row.post.category === expectedCategory;
+          var matchHtml = isTemplateDay
+            ? '<span class="match ' + (matches ? "on" : "off") + '">' + (matches ? "트랙 일치" : "트랙 다름") + "</span>"
+            : '<span class="match off">템플릿 외 요일</span>';
+          return (
+            '<div class="rrow">' +
+            '<div class="rdow">' + DOW_LABEL[dow] + "</div>" +
+            '<div class="rmain">' +
+            '<a class="rtitle" href="' + escapeHtml(row.post.url) + '" target="_blank" rel="noopener">' + escapeHtml(row.post.title) + "</a>" +
+            '<div class="rmeta">' + escapeHtml(row.post.date) + " · " + escapeHtml(row.post.category || "") + "</div>" +
+            "</div>" +
+            matchHtml +
+            "</div>"
+          );
+        })
+        .join("");
+    })
+    .catch(function (e) {
+      logEl.innerHTML = '<div class="err">글 목록을 못 불러왔습니다: ' + escapeHtml(String(e)) + "</div>";
+    });
+})();
+</script>
+</body>
+</html>
