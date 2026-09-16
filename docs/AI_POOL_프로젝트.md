@@ -39,12 +39,31 @@
 - **미확인**: 무료 티어 정확한 분당/일일 한도, Hermes가
   `router_settings.fallbacks` 구문을 지원하는지.
 
-## Phase 2 조사 (딥리서치 발주, 결과 대기)
+## Phase 2 조사 (딥리서치 반입 완료, 미채택 · 2026-09-16)
 
 - 의뢰서: [docs/AI_POOL_딥리서치_의뢰서.md](AI_POOL_딥리서치_의뢰서.md).
-  Hermes가 이미 지원하는 provider들(OpenRouter, Nous, Z.AI, Kimi,
-  MiniMax, Bedrock)의 공식 무료/저비용 티어 조건과 LiteLLM 멀티프로바이더
-  구성 모범 사례를 조사 요청. 결과는 반입 후 이 절에 요약.
+  결과 전문은 비공개 저장소
+  `simplifier-cxo-db/research/2026-09-16_AI_Pool_Phase2_멀티프로바이더_딥리서치.md`에
+  보관(공개 저장소에는 전문을 안 올림, multi-llm-handoff 규약 1원칙).
+- **채택하지 않음.** 이유 셋:
+  1. 보고서의 RPM/RPD/가격/컨텍스트 수치는 전부 출처 없이 정밀하게
+     제시됨. 이 세션은 `generativelanguage.googleapis.com`(제미나이) 외
+     다른 제공자 도메인이 전부 네트워크 차단이라 하나도 직접 검증 못 함.
+  2. 제안된 YAML에 원본 딥리서치의 인용 태그(`[span_NNN]`)가 단어
+     중간에 그대로 섞여 있어 실제로는 문법이 깨진 텍스트(예:
+     `mod[span_171]el_list:`). 정리 전엔 그대로 못 쓴다.
+  3. 제안 아키텍처(Redis 기반 usage-based-routing, PostgreSQL
+     spend_logs, Prometheus, 에이전트별 가상 키+예산)가 지금 규모에
+     과함(`multi-llm-handoff`의 "다중 LLM 병렬 파이프라인은 S1 규모에
+     과함" 원칙과 충돌). Phase 1(제미나이)조차 아직 실사용 검증 전인데
+     Phase 2 제공자를 더 늘리자는 순서도 이미 합의한 "Phase 1 검증 후
+     판단" 원칙과 어긋남.
+- **잘된 점**: 스크래핑·봇 탐지 회피 등 의뢰서에서 금지한 항목은 안
+  건드림.
+- **후보로만 기록**(실제 채택 시 사장님이 직접 콘솔에서 재확인 필수):
+  카드 등록 불필요·무료라고 주장된 Z.AI(GLM-4-Flash), Groq, Cerebras가
+  1순위 확인 후보. Phase 1이 실사용으로 검증되기 전까지는 착수하지
+  않는다.
 
 ## 다음 단계 후보 (착수 안 함, 신호 대기)
 
