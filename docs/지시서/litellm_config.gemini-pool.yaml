@@ -1,0 +1,27 @@
+# AI Pool 프로젝트 Phase 1 - 제미나이 단일 공용 풀 LiteLLM 설정
+#
+# 이 파일은 그대로 로컬 PC에 복사해서 쓴다. 실제 키 값은 여기 적지 않고
+# 환경변수(GEMINI_API_KEY_1/_2/_3)로만 참조한다 - 이 저장소는 공개이므로
+# 절대 값 자체를 커밋하지 않는다.
+#
+# 배경·설계 근거: docs/지시서/2026-09-16_로컬탐_헤르메스모델라우팅.md 0절,
+# docs/AI_POOL_프로젝트.md Phase 1.
+
+model_list:
+  - model_name: gemini-pool
+    litellm_params:
+      model: gemini/gemini-flash-lite-latest
+      api_key: os.environ/GEMINI_API_KEY_1
+  - model_name: gemini-pool
+    litellm_params:
+      model: gemini/gemini-flash-lite-latest
+      api_key: os.environ/GEMINI_API_KEY_2
+  - model_name: gemini-pool
+    litellm_params:
+      model: gemini/gemini-flash-lite-latest
+      api_key: os.environ/GEMINI_API_KEY_3
+
+router_settings:
+  routing_strategy: simple-shuffle
+  num_retries: 3
+  cooldown_time: 60
