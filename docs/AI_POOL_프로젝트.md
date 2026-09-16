@@ -39,6 +39,13 @@
 - **미확인**: 무료 티어 정확한 분당/일일 한도, Hermes가
   `router_settings.fallbacks` 구문을 지원하는지.
 
+## Phase 2 조사 (딥리서치 발주, 결과 대기)
+
+- 의뢰서: [docs/AI_POOL_딥리서치_의뢰서.md](AI_POOL_딥리서치_의뢰서.md).
+  Hermes가 이미 지원하는 provider들(OpenRouter, Nous, Z.AI, Kimi,
+  MiniMax, Bedrock)의 공식 무료/저비용 티어 조건과 LiteLLM 멀티프로바이더
+  구성 모범 사례를 조사 요청. 결과는 반입 후 이 절에 요약.
+
 ## 다음 단계 후보 (착수 안 함, 신호 대기)
 
 - 다른 외부 AI(예: 다른 제공자의 무료/저비용 API)를 같은 방식(공식 API,
