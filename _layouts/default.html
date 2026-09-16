@@ -11,6 +11,7 @@
 
     <!-- 이 사이트가 원본임을 명시 (중복 콘텐츠 방지) -->
     <link rel="canonical" href="https://simplifier.co.kr{{ page.url }}">
+    {% if page.noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
 
     {%- comment -%}
       포스트 페이지의 커버 사진(화면 전체를 덮는 히어로 이미지)은 LCP(가장 큰

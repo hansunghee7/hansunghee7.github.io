@@ -12,6 +12,7 @@ prev_title: "내가 요즘 주목하는 '링크드인 히어로' 4월호"
 next_url: "/logs/410/"
 next_title: "'커넥팅 X 잉크드인' 북토크 이야기"
 permalink: /logs/403/
+noindex: true
 ---
 
 드디어 심플리파이어 브랜딩 글래스 제작이 완료되었습니다.

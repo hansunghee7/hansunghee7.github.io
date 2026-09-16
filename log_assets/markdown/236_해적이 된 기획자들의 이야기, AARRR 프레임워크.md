@@ -12,6 +12,7 @@ prev_title: "470명이 만든 비즈니스 툴 '비즈니스 모델 캔버스'"
 next_url: "/logs/229/"
 next_title: "세상을 바꾼 실험 'OKR'의 3가지 마법"
 permalink: /logs/236/
+noindex: true
 ---
 
 ## **"Arrr!"**

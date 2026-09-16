@@ -12,6 +12,7 @@ prev_title: "2025년의 내가... 2015년의 나에게..."
 next_url: "/logs/274/"
 next_title: "ENTJ 코치가 보는 오겜2(스포없음)"
 permalink: /logs/272/
+noindex: true
 ---
 
 감사한 일들이 많은 한해였다.   

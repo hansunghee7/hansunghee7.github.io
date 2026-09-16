@@ -12,6 +12,7 @@ prev_title: "레어템 선물을 받았습니다."
 next_url: "/logs/524/"
 next_title: "글을 매일 쓰다보니..."
 permalink: /logs/520/
+noindex: true
 ---
 
 '크리스마스 특집' 재미로 보는 추억의 사진들;;;

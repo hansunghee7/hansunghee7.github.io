@@ -12,6 +12,7 @@ prev_title: "개인사업자가 되면 좋은 점은 무엇인가요?"
 next_url: "/logs/580/"
 next_title: "개인사업 시작 전 해야 할 5가지 질문은?"
 permalink: /logs/576/
+noindex: true
 ---
 
 동료의 추천으로 트레바리의 SF소설 클럽을 시작하며, 저에게 독서 ADHD가 있다는 걸 알게 되었습니다.

@@ -12,6 +12,7 @@ prev_title: "내가 나를 기획한다면? 링크드인 생존전략편"
 next_url: "/logs/504/"
 next_title: "내가 나를 기획한다면? 커리어해킹편"
 permalink: /logs/502/
+noindex: true
 ---
 
 브런치에 두 달을 매일 글을 올리자 구독자가 20명이 되었다.
