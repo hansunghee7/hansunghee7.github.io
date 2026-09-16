@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-16T12:42:41.286159+00:00",
+  "updated_at": "2026-09-16T20:00:49.869784+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 219,
+    "sessions": 220,
     "activeUsers": 142,
-    "newUsers": 141,
-    "returningUsers": 1
+    "newUsers": 142,
+    "returningUsers": 0
   },
   "daily": [
     {
@@ -157,10 +157,10 @@
     },
     {
       "date": "2026-09-16",
-      "sessions": 4,
+      "sessions": 5,
       "activeUsers": 4,
-      "newUsers": 2,
-      "returningUsers": 2
+      "newUsers": 3,
+      "returningUsers": 1
     }
   ],
   "daily_leads": [
@@ -174,9 +174,9 @@
     }
   ],
   "landing_types": {
-    "home": 131,
+    "home": 132,
     "log_home": 7,
-    "individual_post": 52,
+    "individual_post": 53,
     "other": 29
   },
   "top_sources": [
@@ -186,7 +186,7 @@
     },
     {
       "source": "google",
-      "sessions": 17
+      "sessions": 19
     },
     {
       "source": "searchadvisor.naver.com",
@@ -248,7 +248,7 @@
       "source": "google",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 17
+      "sessions": 19
     },
     {
       "source": "searchadvisor.naver.com",
@@ -519,7 +519,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 150,
+    "total_desktop_sessions": 152,
     "excluded_invalid_sessions": 18,
     "by_resolution": [
       {
@@ -535,7 +535,7 @@
       {
         "resolution": "1920x1080",
         "width": 1920,
-        "sessions": 19
+        "sessions": 20
       },
       {
         "resolution": "1536x960",
@@ -598,6 +598,11 @@
         "sessions": 2
       },
       {
+        "resolution": "2560x1080",
+        "width": 2560,
+        "sessions": 2
+      },
+      {
         "resolution": "1024x1024",
         "width": 1024,
         "sessions": 1
@@ -615,11 +620,6 @@
       {
         "resolution": "2048x1152",
         "width": 2048,
-        "sessions": 1
-      },
-      {
-        "resolution": "2056x1329",
-        "width": 2056,
         "sessions": 1
       }
     ]
