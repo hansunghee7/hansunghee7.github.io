@@ -138,7 +138,11 @@
     </div>
   </div>
 
-  <h2 class="section-title">최근 발행 로그 (홈페이지)</h2>
+  <h2 class="section-title">발행 계획</h2>
+  <p class="section-note">다음 화/목 슬롯에 무엇이 들어갈지입니다. <code>assets/data/publish_plan.json</code>을 고쳐서 갱신합니다. 자동 생성이 아니라 직접 채우는 목록입니다.</p>
+  <div id="plan"><div class="loading">불러오는 중…</div></div>
+
+  <h2 class="section-title" style="margin-top:28px;">최근 발행 로그 (홈페이지)</h2>
   <p class="section-note">최근 발행된 홈페이지 글이 화/목 템플릿과 맞는지 확인합니다. SNS 포스팅 여부는 직접 확인하세요.</p>
   <div id="log"><div class="loading">불러오는 중…</div></div>
 </div>
@@ -149,15 +153,49 @@
   "use strict";
 
   var POSTS_JSON = "/assets/data/posts.json";
+  var PLAN_JSON = "/assets/data/publish_plan.json";
   var DOW_LABEL = ["일", "월", "화", "수", "목", "금", "토"];
   var TRACK_BY_DOW = { 2: "Be the PO", 4: "스타트업 인사이트" };
   var logEl = document.getElementById("log");
+  var planEl = document.getElementById("plan");
 
   function escapeHtml(s) {
     return (s || "").replace(/[&<>"']/g, function (c) {
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
     });
   }
+
+  fetch(PLAN_JSON)
+    .then(function (r) { return r.json(); })
+    .then(function (items) {
+      if (!items || !items.length) {
+        planEl.innerHTML = '<div class="empty">등록된 계획이 없습니다.</div>';
+        return;
+      }
+      planEl.innerHTML = items
+        .map(function (item) {
+          var isReady = !!item.topic;
+          var titleHtml = item.topic
+            ? (item.url
+                ? '<a class="rtitle" href="' + escapeHtml(item.url) + '" target="_blank" rel="noopener">' + escapeHtml(item.topic) + "</a>"
+                : '<span class="rtitle">' + escapeHtml(item.topic) + "</span>")
+            : '<span class="rtitle" style="color:var(--muted); font-weight:400;">(주제 미정)</span>';
+          return (
+            '<div class="rrow">' +
+            '<div class="rdow">' + escapeHtml(item.dow) + "</div>" +
+            '<div class="rmain">' +
+            titleHtml +
+            '<div class="rmeta">' + escapeHtml(item.track) + (item.note ? " · " + escapeHtml(item.note) : "") + "</div>" +
+            "</div>" +
+            '<span class="match ' + (isReady ? "on" : "off") + '">' + escapeHtml(item.status || "") + "</span>" +
+            "</div>"
+          );
+        })
+        .join("");
+    })
+    .catch(function (e) {
+      planEl.innerHTML = '<div class="err">계획을 못 불러왔습니다: ' + escapeHtml(String(e)) + "</div>";
+    });
 
   function parseSortDate(dateSort) {
     // "20260916" -> Date. date_sort가 없는 옛 글은 date 문자열("Sep 16. 2026")로 대신 파싱하지 않고 건너뛴다.
