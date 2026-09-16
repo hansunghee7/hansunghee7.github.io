@@ -481,6 +481,45 @@
          레이아웃을 다시 계산하지 않고 컴포지터 단계에서만 처리된다. */
       .log-nav-progress { position: absolute; left: 0; right: 0; top: 0; height: 2px; overflow: hidden; }
       .log-nav-progress-bar { height: 100%; width: 100%; background: #f5f3ee; transform: scaleX(0); transform-origin: left center; will-change: transform; }
+
+      /* "대사로 보기": pillar.html의 .pillar-more와 같은 패턴(<details>는
+         열려있든 닫혀있든 검색엔진/AI가 그대로 읽는다는 이유로 채택한 것과
+         동일한 근거). 웹툰 페이지는 스와이프 모드에서 .article-body 아래
+         내용을 전부 display:none 처리하기 때문에(본문에 두면 안 보임),
+         이 토글은 .article-body 밖인 log-nav 헤더에 둔다. */
+      .dialogue-more { display: inline-flex; margin-left: 6px; vertical-align: middle; }
+      .dialogue-more summary {
+        cursor: pointer; list-style: none; width: 22px; height: 22px; border-radius: 50%;
+        display: inline-flex; align-items: center; justify-content: center;
+        background: rgba(255,255,255,0.12); color: #f5f3ee; font-size: 15px; line-height: 1;
+        transition: background .15s;
+      }
+      .dialogue-more summary::-webkit-details-marker { display: none; }
+      .dialogue-more summary:hover { background: rgba(255,255,255,0.24); }
+      .dialogue-more[open] summary { background: rgba(255,255,255,0.24); }
+      .dialogue-more[open]::before {
+        content: ''; position: fixed; inset: 0; background: rgba(0,0,0,0.65);
+        backdrop-filter: blur(2px); z-index: 199;
+      }
+      .dialogue-more-body { font-family: 'Pretendard Variable', 'Noto Sans KR', sans-serif; font-size: 14.5px; line-height: 1.9; color: #d8d5cd; font-weight: 300; }
+      .dialogue-more-body p { display: block; margin: 0 0 1em; }
+      .dialogue-more-body p:last-child { margin-bottom: 0; }
+      .dialogue-more[open] .dialogue-more-body {
+        position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%);
+        width: calc(100% - 48px); max-width: 520px; max-height: 78vh; overflow-y: auto;
+        background: #14140f; border: 1px solid rgba(245,243,238,0.14); border-radius: 20px;
+        padding: 52px 32px 32px; box-shadow: 0 24px 60px rgba(0,0,0,0.5); z-index: 200;
+      }
+      @media (max-width: 600px) { .dialogue-more[open] .dialogue-more-body { padding: 48px 20px 24px; } }
+      .dialogue-more-title { font-size: 15px; font-weight: 600; color: #f5f3ee; margin: 0 0 16px; }
+      .dialogue-more-close {
+        position: absolute; top: 12px; right: 14px; width: 34px; height: 34px;
+        display: flex; align-items: center; justify-content: center;
+        background: transparent; border: none; color: #8f8b82; font-size: 20px; line-height: 1; cursor: pointer;
+        font-family: 'Pretendard Variable', 'Pretendard', -apple-system, sans-serif;
+        transition: color .2s;
+      }
+      .dialogue-more-close:hover { color: #f5f3ee; }
     </style>
 
     <header class="log-nav" id="mainLogNav">
@@ -499,8 +538,30 @@
         {{ page.title }}
       </span>
 
+      {% if page.dialogue %}
+      <details class="dialogue-more">
+        <summary aria-label="대사로 보기">+</summary>
+        <div class="dialogue-more-body">
+          <button type="button" class="dialogue-more-close" onclick="this.closest('details').removeAttribute('open')" aria-label="닫기">✕</button>
+          <p class="dialogue-more-title">대사로 보기</p>
+          {% for line in page.dialogue %}<p>{{ line }}</p>{% endfor %}
+        </div>
+      </details>
+      {% endif %}
+
       <div class="log-nav-progress"><div class="log-nav-progress-bar" id="readProgressBar"></div></div>
     </header>
+    {% if page.dialogue %}
+    <script>
+      // pillar.html의 "더보기"와 같은 이유: details는 Esc를 기본 처리하지
+      // 않아서, 열려있을 때 Esc를 누르면 직접 닫아준다.
+      document.addEventListener('keydown', function (e) {
+        if (e.key !== 'Escape') return;
+        var open = document.querySelector('.dialogue-more[open]');
+        if (open) open.removeAttribute('open');
+      });
+    </script>
+    {% endif %}
 {% endif %}
 
 <meta id="isSwipeData" data-is-swipe="{{ page.is_swipe }}">
