@@ -1,0 +1,3 @@
+name: easy-task-router
+version: "1.0"
+description: Classifies simple lookup-style requests and nudges Hermes to delegate them to the low-cost gemini-pool subagent instead of handling them directly.
