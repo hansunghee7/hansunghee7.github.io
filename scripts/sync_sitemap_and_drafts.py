@@ -77,6 +77,31 @@ def find_drafts():
     return drafts
 
 
+def find_noindexed():
+    """noindex: true 인 글의 (슬러그, id) 목록.
+
+    noindex는 검색엔진 크롤링만 막는 메타 태그라(방문자 경험에는 영향 없음)
+    published: false(초안)와 달리 log.html 카드는 그대로 두지만, sitemap.xml에
+    남아 있으면 "이 글을 색인하지 마라"(robots meta)와 "이 글을 크롤링해라"
+    (sitemap)가 검색엔진에 모순된 신호를 준다. 그래서 sitemap에서만 뺀다.
+    (2026-09-17: 얇은 글 noindex 처리와 함께 도입)
+    """
+    pages = []
+    if not os.path.isdir(MARKDOWN_DIR):
+        return pages
+    for name in sorted(os.listdir(MARKDOWN_DIR)):
+        if not name.endswith(".md"):
+            continue
+        path = os.path.join(MARKDOWN_DIR, name)
+        with open(path, encoding="utf-8", errors="replace") as f:
+            head = f.read(4000)
+        if re.search(r"^noindex:\s*true\s*$", head, re.M | re.I):
+            slug = name[:-3]
+            id_match = re.match(r"^(\d+)_", slug)
+            pages.append((slug, str(int(id_match.group(1))) if id_match else None))
+    return pages
+
+
 def load_published():
     """posts.json 기준 발행 글: [(디코딩된 url, iso날짜, 원본 url)]"""
     with open(POSTS_JSON, encoding="utf-8") as f:
@@ -141,13 +166,16 @@ def main():
             return 0
 
     drafts = find_drafts()
+    noindexed = find_noindexed()
+    noindex_ids = {pid for _, pid in noindexed if pid}
+
     published = load_published()
 
     xml = open(SITEMAP, encoding="utf-8").read()
     html = open(LOG_HTML, encoding="utf-8", errors="replace").read()
     xml_before, html_before = xml, html
 
-    removed_sitemap, removed_cards = [], []
+    removed_sitemap, removed_cards, removed_noindex = [], [], []
 
     # 1) 초안이 sitemap / log.html에 남아 있으면 제거
     # 슬러그 기반 needle은 옛 긴 주소 시절 항목(리다이렉트 스텁 포함 가능성),
@@ -169,7 +197,21 @@ def main():
                     break
                 removed_cards.append(slug)
 
-    # 2) 발행됐는데 sitemap에 없는 글 추가
+    # 1b) noindex 처리된 글이 sitemap에 남아 있으면 제거.
+    # noindex는 방문자 경험에 영향 없는 크롤링 차단 메타 태그일 뿐이라
+    # log.html 카드(실제 사용자 노출)는 건드리지 않는다 -- sitemap만 정리한다.
+    for slug, pid in noindexed:
+        needles = [urllib.parse.quote(slug), slug]
+        if pid:
+            needles.append("/logs/{}/".format(pid))
+        for needle in needles:
+            while True:
+                xml, hit = drop_sitemap_block(xml, needle)
+                if not hit:
+                    break
+                removed_noindex.append(slug)
+
+    # 2) 발행됐는데 sitemap에 없는 글 추가 (noindex 글은 추가 대상에서 제외)
     have = set()
     for loc in re.findall(r"<loc>(.*?)</loc>", xml, re.S):
         have.add(urllib.parse.unquote(loc.strip()).replace(BASE, ""))
@@ -178,6 +220,9 @@ def main():
     blocks = []
     for decoded_url, iso, raw_url in published:
         if decoded_url in have:
+            continue
+        id_match = re.search(r"/logs/(\d+)/?", raw_url)
+        if id_match and id_match.group(1) in noindex_ids:
             continue
         if not iso:
             undated.append(decoded_url)
@@ -198,11 +243,13 @@ def main():
         open(LOG_HTML, "w", encoding="utf-8", newline="").write(html)
         changed = True
 
-    print("초안 {}건 / 발행 {}건".format(len(drafts), len(published)))
+    print("초안 {}건 / noindex {}건 / 발행 {}건".format(len(drafts), len(noindexed), len(published)))
     if removed_sitemap:
         print("sitemap에서 초안 제거: {}".format(sorted(set(removed_sitemap))))
     if removed_cards:
         print("log.html에서 초안 카드 제거: {}".format(sorted(set(removed_cards))))
+    if removed_noindex:
+        print("sitemap에서 noindex 글 제거: {}건".format(len(set(removed_noindex))))
     if added:
         print("sitemap에 새 글 추가: {}건".format(len(added)))
         for u in added[:20]:

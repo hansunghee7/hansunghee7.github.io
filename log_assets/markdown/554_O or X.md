@@ -12,6 +12,7 @@ prev_title: "사용자를 데이터화하세요."
 next_url: "/logs/555/"
 next_title: "지나고 보니..."
 permalink: /logs/554/
+noindex: true
 ---
 
 인생도 기획도 O나 X로 풀려하지 마라

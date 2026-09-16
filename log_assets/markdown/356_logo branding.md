@@ -12,6 +12,7 @@ prev_title: "시드 아이템과 메타인지"
 next_url: "/logs/360/"
 next_title: "돈과 행복"
 permalink: /logs/356/
+noindex: true
 ---
 
 **#Simplifier #Branding "로고"**

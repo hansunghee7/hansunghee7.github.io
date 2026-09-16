@@ -109,30 +109,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/5/</loc>
-    <lastmod>2026-07-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/6/</loc>
-    <lastmod>2026-07-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/7/</loc>
-    <lastmod>2026-07-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/8/</loc>
-    <lastmod>2026-07-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/9/</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -213,12 +189,6 @@
   <url>
     <loc>https://simplifier.co.kr/logs/23/</loc>
     <lastmod>2025-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/24/</loc>
-    <lastmod>2025-09-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -307,32 +277,14 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/39/</loc>
-    <lastmod>2025-09-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/40/</loc>
     <lastmod>2025-08-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/41/</loc>
-    <lastmod>2025-08-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/42/</loc>
     <lastmod>2025-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/43/</loc>
-    <lastmod>2025-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -445,12 +397,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/62/</loc>
-    <lastmod>2025-08-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/63/</loc>
     <lastmod>2025-08-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -499,26 +445,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/71/</loc>
-    <lastmod>2025-07-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/72/</loc>
-    <lastmod>2025-07-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/73/</loc>
     <lastmod>2025-07-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/74/</loc>
-    <lastmod>2025-07-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -531,12 +459,6 @@
   <url>
     <loc>https://simplifier.co.kr/logs/76/</loc>
     <lastmod>2025-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/77/</loc>
-    <lastmod>2025-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -559,12 +481,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/81/</loc>
-    <lastmod>2025-07-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/82/</loc>
     <lastmod>2025-07-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -577,26 +493,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/84/</loc>
-    <lastmod>2025-07-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/85/</loc>
-    <lastmod>2025-07-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/86/</loc>
     <lastmod>2025-07-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/87/</loc>
-    <lastmod>2025-07-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -673,12 +571,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/100/</loc>
-    <lastmod>2025-06-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/101/</loc>
     <lastmod>2025-06-20</lastmod>
     <changefreq>weekly</changefreq>
@@ -751,20 +643,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/114/</loc>
-    <lastmod>2025-06-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/115/</loc>
     <lastmod>2025-06-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/116/</loc>
-    <lastmod>2025-06-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -805,12 +685,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/123/</loc>
-    <lastmod>2025-05-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/124/</loc>
     <lastmod>2025-05-30</lastmod>
     <changefreq>weekly</changefreq>
@@ -819,12 +693,6 @@
   <url>
     <loc>https://simplifier.co.kr/logs/125/</loc>
     <lastmod>2025-05-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/126/</loc>
-    <lastmod>2025-05-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -849,12 +717,6 @@
   <url>
     <loc>https://simplifier.co.kr/logs/130/</loc>
     <lastmod>2025-05-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/131/</loc>
-    <lastmod>2025-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1015,12 +877,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/158/</loc>
-    <lastmod>2025-04-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/159/</loc>
     <lastmod>2025-04-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -1058,12 +914,6 @@
   </url>
   <url>
     <loc>https://simplifier.co.kr/logs/165/</loc>
-    <lastmod>2025-04-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/166/</loc>
     <lastmod>2025-04-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -1107,12 +957,6 @@
   <url>
     <loc>https://simplifier.co.kr/logs/173/</loc>
     <lastmod>2025-04-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/174/</loc>
-    <lastmod>2025-04-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1195,12 +1039,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/188/</loc>
-    <lastmod>2025-03-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/189/</loc>
     <lastmod>2025-03-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -1227,12 +1065,6 @@
   <url>
     <loc>https://simplifier.co.kr/logs/193/</loc>
     <lastmod>2025-03-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/194/</loc>
-    <lastmod>2025-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1280,12 +1112,6 @@
   </url>
   <url>
     <loc>https://simplifier.co.kr/logs/202/</loc>
-    <lastmod>2025-03-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/203/</loc>
     <lastmod>2025-03-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -1405,12 +1231,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/223/</loc>
-    <lastmod>2025-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/224/</loc>
     <lastmod>2025-02-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -1419,12 +1239,6 @@
   <url>
     <loc>https://simplifier.co.kr/logs/225/</loc>
     <lastmod>2025-02-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/226/</loc>
-    <lastmod>2025-02-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1483,12 +1297,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/236/</loc>
-    <lastmod>2025-02-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/237/</loc>
     <lastmod>2025-02-10</lastmod>
     <changefreq>weekly</changefreq>
@@ -1509,12 +1317,6 @@
   <url>
     <loc>https://simplifier.co.kr/logs/240/</loc>
     <lastmod>2025-02-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/241/</loc>
-    <lastmod>2025-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1579,12 +1381,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/252/</loc>
-    <lastmod>2025-01-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/253/</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -1593,12 +1389,6 @@
   <url>
     <loc>https://simplifier.co.kr/logs/254/</loc>
     <lastmod>2025-01-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/255/</loc>
-    <lastmod>2025-01-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1651,12 +1441,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/264/</loc>
-    <lastmod>2025-01-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/265/</loc>
     <lastmod>2025-01-12</lastmod>
     <changefreq>weekly</changefreq>
@@ -1681,68 +1465,14 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/269/</loc>
-    <lastmod>2025-01-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/270/</loc>
     <lastmod>2025-01-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/271/</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/272/</loc>
-    <lastmod>2024-12-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/273/</loc>
-    <lastmod>2024-12-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/274/</loc>
-    <lastmod>2024-12-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/275/</loc>
     <lastmod>2024-12-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/276/</loc>
-    <lastmod>2024-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/277/</loc>
-    <lastmod>2024-12-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/278/</loc>
-    <lastmod>2024-12-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/279/</loc>
-    <lastmod>2024-12-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1771,36 +1501,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/284/</loc>
-    <lastmod>2024-12-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/285/</loc>
-    <lastmod>2024-12-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/286/</loc>
-    <lastmod>2024-12-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/287/</loc>
-    <lastmod>2024-12-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/288/</loc>
-    <lastmod>2024-11-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/289/</loc>
     <lastmod>2024-11-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -1819,32 +1519,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/292/</loc>
-    <lastmod>2024-11-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/293/</loc>
     <lastmod>2024-11-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/294/</loc>
-    <lastmod>2024-11-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/295/</loc>
-    <lastmod>2024-11-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/296/</loc>
-    <lastmod>2024-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1855,38 +1531,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/298/</loc>
-    <lastmod>2024-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/299/</loc>
-    <lastmod>2024-11-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/300/</loc>
-    <lastmod>2024-11-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/301/</loc>
     <lastmod>2024-10-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/302/</loc>
-    <lastmod>2024-10-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/303/</loc>
-    <lastmod>2024-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1903,38 +1549,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/306/</loc>
-    <lastmod>2024-10-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/307/</loc>
-    <lastmod>2024-10-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/309/</loc>
     <lastmod>2024-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/310/</loc>
-    <lastmod>2024-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/311/</loc>
-    <lastmod>2024-10-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/312/</loc>
-    <lastmod>2024-10-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1981,24 +1597,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/322/</loc>
-    <lastmod>2024-09-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/323/</loc>
-    <lastmod>2024-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/324/</loc>
-    <lastmod>2024-09-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/325/</loc>
     <lastmod>2024-09-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -2011,50 +1609,14 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/328/</loc>
-    <lastmod>2024-09-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/329/</loc>
-    <lastmod>2024-09-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/330/</loc>
-    <lastmod>2024-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/331/</loc>
     <lastmod>2024-09-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/336/</loc>
-    <lastmod>2024-09-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/337/</loc>
-    <lastmod>2024-09-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/339/</loc>
     <lastmod>2024-08-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/340/</loc>
-    <lastmod>2024-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2089,12 +1651,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/347/</loc>
-    <lastmod>2024-08-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/348/</loc>
     <lastmod>2024-08-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -2125,38 +1681,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/353/</loc>
-    <lastmod>2024-07-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/354/</loc>
     <lastmod>2024-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/355/</loc>
-    <lastmod>2024-07-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/356/</loc>
-    <lastmod>2024-07-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/357/</loc>
-    <lastmod>2024-07-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/358/</loc>
-    <lastmod>2024-07-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2173,18 +1699,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/361/</loc>
-    <lastmod>2024-07-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/363/</loc>
-    <lastmod>2024-06-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/364/</loc>
     <lastmod>2024-06-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -2197,20 +1711,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/366/</loc>
-    <lastmod>2024-06-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/367/</loc>
     <lastmod>2024-06-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/368/</loc>
-    <lastmod>2024-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2227,18 +1729,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/371/</loc>
-    <lastmod>2024-06-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/372/</loc>
-    <lastmod>2024-06-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/373/</loc>
     <lastmod>2024-06-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -2247,12 +1737,6 @@
   <url>
     <loc>https://simplifier.co.kr/logs/374/</loc>
     <lastmod>2024-06-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/375/</loc>
-    <lastmod>2024-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2275,12 +1759,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/380/</loc>
-    <lastmod>2024-05-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/381/</loc>
     <lastmod>2024-05-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -2299,18 +1777,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/384/</loc>
-    <lastmod>2024-05-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/385/</loc>
-    <lastmod>2024-05-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/386/</loc>
     <lastmod>2024-05-15</lastmod>
     <changefreq>weekly</changefreq>
@@ -2323,18 +1789,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/388/</loc>
-    <lastmod>2024-05-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/389/</loc>
-    <lastmod>2024-05-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/390/</loc>
     <lastmod>2024-05-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -2343,12 +1797,6 @@
   <url>
     <loc>https://simplifier.co.kr/logs/391/</loc>
     <lastmod>2024-05-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/392/</loc>
-    <lastmod>2024-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2367,12 +1815,6 @@
   <url>
     <loc>https://simplifier.co.kr/logs/395/</loc>
     <lastmod>2024-05-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/396/</loc>
-    <lastmod>2024-05-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2413,12 +1855,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/403/</loc>
-    <lastmod>2024-04-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/404/</loc>
     <lastmod>2024-04-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -2427,18 +1863,6 @@
   <url>
     <loc>https://simplifier.co.kr/logs/405/</loc>
     <lastmod>2024-04-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/406/</loc>
-    <lastmod>2024-04-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/407/</loc>
-    <lastmod>2024-04-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2467,12 +1891,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/412/</loc>
-    <lastmod>2024-04-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/413/</loc>
     <lastmod>2024-04-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -2492,12 +1910,6 @@
   </url>
   <url>
     <loc>https://simplifier.co.kr/logs/416/</loc>
-    <lastmod>2024-04-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/417/</loc>
     <lastmod>2024-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -2545,12 +1957,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/426/</loc>
-    <lastmod>2024-04-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/427/</loc>
     <lastmod>2024-04-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -2563,26 +1969,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/429/</loc>
-    <lastmod>2024-03-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/430/</loc>
-    <lastmod>2024-03-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/431/</loc>
     <lastmod>2024-03-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/432/</loc>
-    <lastmod>2024-03-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2593,20 +1981,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/434/</loc>
-    <lastmod>2024-03-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/435/</loc>
     <lastmod>2024-03-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/436/</loc>
-    <lastmod>2024-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2617,26 +1993,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/438/</loc>
-    <lastmod>2024-03-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/439/</loc>
-    <lastmod>2024-03-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/440/</loc>
     <lastmod>2024-03-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/441/</loc>
-    <lastmod>2024-03-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2689,26 +2047,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/454/</loc>
-    <lastmod>2024-03-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/456/</loc>
     <lastmod>2024-03-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/457/</loc>
-    <lastmod>2024-03-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/458/</loc>
-    <lastmod>2024-02-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2725,26 +2065,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/461/</loc>
-    <lastmod>2024-02-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/463/</loc>
-    <lastmod>2024-02-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/467/</loc>
     <lastmod>2024-02-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/469/</loc>
-    <lastmod>2024-02-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2803,12 +2125,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/479/</loc>
-    <lastmod>2024-02-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/480/</loc>
     <lastmod>2024-02-10</lastmod>
     <changefreq>weekly</changefreq>
@@ -2821,25 +2137,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/482/</loc>
-    <lastmod>2024-02-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/483/</loc>
-    <lastmod>2024-02-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/484/</loc>
-    <lastmod>2024-02-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/485/</loc>
     <lastmod>2024-02-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -2847,18 +2145,6 @@
   <url>
     <loc>https://simplifier.co.kr/logs/486/</loc>
     <lastmod>2024-02-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/487/</loc>
-    <lastmod>2024-02-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/488/</loc>
-    <lastmod>2024-01-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2905,20 +2191,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/496/</loc>
-    <lastmod>2024-01-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/497/</loc>
     <lastmod>2024-01-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/498/</loc>
-    <lastmod>2024-01-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2941,12 +2215,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/502/</loc>
-    <lastmod>2024-01-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/503/</loc>
     <lastmod>2024-01-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -2965,12 +2233,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/506/</loc>
-    <lastmod>2024-01-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/507/</loc>
     <lastmod>2024-01-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -2979,24 +2241,6 @@
   <url>
     <loc>https://simplifier.co.kr/logs/508/</loc>
     <lastmod>2024-01-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/509/</loc>
-    <lastmod>2024-01-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/510/</loc>
-    <lastmod>2024-01-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/511/</loc>
-    <lastmod>2024-01-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -3019,20 +2263,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/515/</loc>
-    <lastmod>2023-12-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/516/</loc>
     <lastmod>2023-12-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/517/</loc>
-    <lastmod>2023-12-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -3049,12 +2281,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/520/</loc>
-    <lastmod>2023-12-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/521/</loc>
     <lastmod>2023-12-24</lastmod>
     <changefreq>weekly</changefreq>
@@ -3063,12 +2289,6 @@
   <url>
     <loc>https://simplifier.co.kr/logs/522/</loc>
     <lastmod>2023-12-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/523/</loc>
-    <lastmod>2023-12-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -3085,20 +2305,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/526/</loc>
-    <lastmod>2023-12-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/527/</loc>
     <lastmod>2023-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/528/</loc>
-    <lastmod>2023-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -3109,20 +2317,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/530/</loc>
-    <lastmod>2023-12-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/531/</loc>
     <lastmod>2023-12-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/532/</loc>
-    <lastmod>2023-12-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -3175,38 +2371,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/541/</loc>
-    <lastmod>2023-12-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/542/</loc>
     <lastmod>2023-12-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/543/</loc>
-    <lastmod>2023-12-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/544/</loc>
-    <lastmod>2023-11-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/545/</loc>
-    <lastmod>2023-11-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/546/</loc>
-    <lastmod>2023-11-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -3223,50 +2389,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/550/</loc>
-    <lastmod>2023-11-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/551/</loc>
     <lastmod>2023-11-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/552/</loc>
-    <lastmod>2023-11-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/553/</loc>
-    <lastmod>2023-11-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/554/</loc>
-    <lastmod>2023-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/555/</loc>
-    <lastmod>2023-11-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/556/</loc>
-    <lastmod>2023-11-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/557/</loc>
-    <lastmod>2023-11-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -3277,20 +2401,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/559/</loc>
-    <lastmod>2023-11-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/560/</loc>
     <lastmod>2023-11-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/561/</loc>
-    <lastmod>2023-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -3337,12 +2449,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/569/</loc>
-    <lastmod>2023-11-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/570/</loc>
     <lastmod>2023-11-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -3379,32 +2485,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/576/</loc>
-    <lastmod>2023-10-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/577/</loc>
-    <lastmod>2023-10-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/578/</loc>
     <lastmod>2023-10-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/579/</loc>
-    <lastmod>2023-10-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/580/</loc>
-    <lastmod>2023-10-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -3427,12 +2509,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/584/</loc>
-    <lastmod>2023-10-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/585/</loc>
     <lastmod>2023-10-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -3451,20 +2527,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/588/</loc>
-    <lastmod>2023-10-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/589/</loc>
     <lastmod>2023-10-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/590/</loc>
-    <lastmod>2023-10-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -3511,18 +2575,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simplifier.co.kr/logs/598/</loc>
-    <lastmod>2023-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/599/</loc>
-    <lastmod>2023-10-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://simplifier.co.kr/logs/600/</loc>
     <lastmod>2023-10-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -3531,12 +2583,6 @@
   <url>
     <loc>https://simplifier.co.kr/logs/601/</loc>
     <lastmod>2023-09-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simplifier.co.kr/logs/602/</loc>
-    <lastmod>2023-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
