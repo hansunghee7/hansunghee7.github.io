@@ -54,7 +54,7 @@
 <div class="wrap">
   <header>
     <h1>멀티 LLM 협업 규약<button type="button" class="info-dot" aria-label="설명 보기">ⓘ<span class="info-text">정본은 <code>.claude/skills/multi-llm-handoff/SKILL.md</code>입니다. 이 페이지는 그 파일에서 스크립트가 자동 생성한 사본이라 직접 고치면 다음 실행 때 되돌아갑니다 — 정본을 고쳤으면 <code>scripts/build_llm_protocol_page.py</code>를 재실행해 페이지를 갱신한 뒤 같이 커밋하세요.</span></button></h1>
-    <span class="meta-text">자동 생성 2026-09-09 02:08</span>
+    <span class="meta-text">자동 생성 2026-09-16 10:38</span>
   </header>
   <article class="doc">
 <blockquote>
@@ -129,7 +129,16 @@
 <li><strong>다중 LLM 병렬 교차검증 파이프라인 미도입</strong> — S1 규모에 과함.
   승격 신호: 외부 사용자 대상 산출물의 사실 오류가 실제 문제로 이어질 때.</li>
 <li><strong>계정 간 자동 라우팅·할당량 우회 금지(영구)</strong> — 약관 위반으로 계정 정지
-  위험. 크롬 확장 때 확정한 "무리한 우회는 하지 않는다" 원칙과 동일.</li>
+  위험. 크롬 확장 때 확정한 "무리한 우회는 하지 않는다" 원칙과 동일.
+  <strong>범위 명시(2026-09-16, 사장님 지시로 실험 전환 요청 후 재확인)</strong>: 이 금지는
+  세션 쿠키 추출·봇 탐지 회피·CAPTCHA 우회처럼 <strong>약관을 우회하는 기술</strong>에
+  대한 것이다. 사장님이 "회사 정책은 실험과제로 바꾸겠다"고 하셨지만, 이
+  기술 자체(탐지 회피 도구)는 클로드 코드가 만들지 않는 종류의 작업이라
+  회사 정책과 무관하게 유지된다. <strong>반대로 공식 Gemini API(무료 티어 포함,
+  API 키 기반 정상 인증)를 쓰는 건 이 금지에 안 걸린다.</strong> 계정 정지가 아니라
+  단순 요청 초과(429)로 실패하는 정상적인 사용법이기 때문. 헤르메스 모델
+  라우팅 실험(<code>docs/지시서/2026-09-16_로컬탐_헤르메스모델라우팅.md</code>)에서
+  이 경로로 진행 중.</li>
 </ul>
 <h2>발주 고정 문구 (외부 LLM에 요청할 때 끝에 붙임)</h2>
 <blockquote>
