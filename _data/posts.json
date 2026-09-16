@@ -7146,8 +7146,8 @@
 "image": "/log_assets/images/504_%EB%82%B4%EA%B0%80%20%EB%82%98%EB%A5%BC%20%EA%B8%B0%ED%9A%8D%ED%95%9C%EB%8B%A4%EB%A9%B4%20Choice%20of%20Ur%20Life_cover.jpg",
 "related": [
 276,
-450,
 534,
+450,
 85
 ]
 },
@@ -8904,6 +8904,21 @@
 350,
 139,
 383
+]
+},
+{
+"id": 626,
+"title": "신임 팀장이 된 후, 가장 먼저 챙겨야 할 것",
+"category": "Be the PO",
+"date": "Sep 17. 2026",
+"date_sort": "20260917",
+"url": "/logs/626/",
+"image": "/log_assets/images/626_%EC%8B%A0%EC%9E%84%20%ED%8C%80%EC%9E%A5%EC%9D%B4%20%EB%90%9C%20%ED%9B%84%2C%20%EA%B0%80%EC%9E%A5%20%EB%A8%BC%EC%A0%80%20%EC%B1%99%EA%B2%A8%EC%95%BC%20%ED%95%A0%20%EA%B2%83_cover.jpg",
+"related": [
+9,
+586,
+281,
+615
 ]
 }
 ]
