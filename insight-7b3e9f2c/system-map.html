@@ -69,11 +69,11 @@
 <div class="wrap">
   <header>
     <h1>시스템 구조<button type="button" class="info-dot" id="titleInfo" aria-label="설명 보기">ⓘ<span class="info-text">홈페이지 저장소가 실제로 어떻게 돌아가는지(글쓰기 → 자동화 → 배포)와, 연결된 외부 서비스를 코드 기준으로 직접 확인해 정리한 페이지입니다. 실시간 데이터가 아니라 점검 시점의 스냅샷이라 새로고침 버튼은 없습니다 — 구조가 크게 바뀌면 이 페이지도 그때 다시 손봅니다.</span></button></h1>
-    <span class="meta-text">2026-08-29 점검 · 코드 직접 확인(grep 전수 검색 + 워크플로 원문 대조) · 같은 날 밤 감시망 구축분 반영 · 2026-09-02 워크플로 수 재집계(16) + 질문하기 파이프라인(클로드 API) 추가 · 2026-09-04 클로드 API 경로 드랍(워크플로 14, 외부 서비스 20) · 2026-09-07 워크플로 수 재집계(16) — 잉크 큐 워크플로 2종 추가 + 공유 URL 설계 뒤집힘 반영</span>
+    <span class="meta-text">2026-08-29 점검 · 코드 직접 확인(grep 전수 검색 + 워크플로 원문 대조) · 같은 날 밤 감시망 구축분 반영 · 2026-09-02 워크플로 수 재집계(16) + 질문하기 파이프라인(클로드 API) 추가 · 2026-09-04 클로드 API 경로 드랍(워크플로 14, 외부 서비스 20) · 2026-09-07 워크플로 수 재집계(16) — 잉크 큐 워크플로 2종 추가 + 공유 URL 설계 뒤집힘 반영 · 2026-09-17 재검증, 워크플로 수 재집계(17) + 외부 서비스 표 연결 지점 3곳 수정</span>
   </header>
 
   <div class="stats">
-    <div class="stat"><div class="n">16</div><div class="l">GitHub Actions 자동화 워크플로</div></div>
+    <div class="stat"><div class="n">17</div><div class="l">GitHub Actions 자동화 워크플로</div></div>
     <div class="stat"><div class="n">20</div><div class="l">연결된 외부 서비스</div></div>
     <div class="stat"><div class="n">9</div><div class="l">참조 없는 죽은 파일 — 삭제 완료</div></div>
     <div class="stat"><div class="n">587</div><div class="l">log.html 한 페이지에 박제된 글 수</div></div>
@@ -85,7 +85,7 @@
     <p class="sec-note">Sveltia CMS로 글을 저장하는 순간부터 방문자 화면에 뜨기까지, 그리고 자동으로 갈라져 나가는 분석·도서순위·AI코퍼스 파이프라인, 방문자 질문에 답하는 RAG 챗봇, SNS 팔로워 수를 대신 기록하는 크롬 확장까지 한 장으로 봅니다.</p>
 
     <figure class="diagram-card">
-      <svg viewBox="0 0 1200 630" role="img" aria-label="사장님이 Sveltia CMS로, 크롬 확장이 SNS 팔로워 수 화면에서 각각 Cloudflare Worker(cms-auth)로 GitHub OAuth 로그인을 중계받아 GitHub 저장소에 커밋한다. 저장소에 push가 걸리면 GitHub Actions 16개 워크플로가 실행되어 log.html·posts.json·sitemap을 재생성해 다시 저장소에 커밋하고, 동시에 GA4·서치콘솔·네이버·Clarity 지표 수집, 예스24·알라딘·교보문고 도서 순위 스크래핑, Supabase 벡터DB 임베딩 동기화를 주기적으로 수행한다. 저장소는 GitHub Pages로 빌드되어 방문자에게 정적 HTML로 서빙되고, 방문자는 Cloudflare Worker(simplifier-ask)에 질문해 Supabase에서 근거를 검색한 답을 받는다.">
+      <svg viewBox="0 0 1200 630" role="img" aria-label="사장님이 Sveltia CMS로, 크롬 확장이 SNS 팔로워 수 화면에서 각각 Cloudflare Worker(cms-auth)로 GitHub OAuth 로그인을 중계받아 GitHub 저장소에 커밋한다. 저장소에 push가 걸리면 GitHub Actions 17개 워크플로가 실행되어 log.html·posts.json·sitemap을 재생성해 다시 저장소에 커밋하고, 동시에 GA4·서치콘솔·네이버·Clarity 지표 수집, 예스24·알라딘·교보문고 도서 순위 스크래핑, Supabase 벡터DB 임베딩 동기화를 주기적으로 수행한다. 저장소는 GitHub Pages로 빌드되어 방문자에게 정적 HTML로 서빙되고, 방문자는 Cloudflare Worker(simplifier-ask)에 질문해 Supabase에서 근거를 검색한 답을 받는다.">
         <defs>
           <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
             <path d="M0,0 L10,5 L0,10 z" fill="var(--dim)"></path>
@@ -111,25 +111,31 @@
         <g class="edge" marker-end="url(#arrow)"><line x1="915" y1="165" x2="1010" y2="165"></line></g>
         <text class="edge-label" x="962" y="153" text-anchor="middle">정적 HTML</text>
 
-        <!-- B <-> C -->
-        <g class="edge" marker-end="url(#arrow)"><line x1="505" y1="195" x2="505" y2="340"></line></g>
-        <text class="edge-label" x="440" y="270" text-anchor="middle">push 트리거</text>
-        <g class="edge auto" marker-end="url(#arrow-warn)"><line x1="535" y1="340" x2="535" y2="195"></line></g>
-        <text class="edge-label auto" x="613" y="262" text-anchor="middle">자동 재생성 커밋</text>
-        <text class="edge-label auto" x="613" y="275" text-anchor="middle">log.html·posts.json·sitemap</text>
+        <!-- B <-> C (두 선을 505/535에서 485/555로 벌리고, 라벨은 각 선 바로 옆에 end/start
+             정렬로 붙임 -- 이전엔 선 간격이 30px뿐이라 라벨을 440/613까지 멀리 밀어내
+             선과 라벨이 따로 떠 보였고, 가운데 정렬이라 긴 두 번째 줄이 선을 가로지르기도 했음.
+             end/start 정렬은 글자 수와 무관하게 선 반대쪽으로만 늘어나 겹칠 일이 없음) -->
+        <g class="edge" marker-end="url(#arrow)"><line x1="485" y1="195" x2="485" y2="340"></line></g>
+        <text class="edge-label" x="472" y="270" text-anchor="end">push 트리거</text>
+        <g class="edge auto" marker-end="url(#arrow-warn)"><line x1="555" y1="340" x2="555" y2="195"></line></g>
+        <text class="edge-label auto" x="568" y="262" text-anchor="start">자동 재생성 커밋</text>
+        <text class="edge-label auto" x="568" y="275" text-anchor="start">log.html·posts.json·sitemap</text>
 
-        <!-- C fan-out -->
+        <!-- C fan-out (세 갈래 모두 라벨을 자기 선의 반대쪽으로 end/start 정렬 -- 기존엔
+             가운데 정렬 라벨이 대각선 위치에 따라 선과 겹치는 지점이 있었음: 왼쪽·오른쪽
+             갈래는 y=470/483 두 지점에서 선의 x가 서로 달라 가운데 정렬로는 둘 다 피할 수
+             없었고, 가운데 갈래는 수직선이라 라벨이 선 위에 그대로 얹혀 있었음) -->
         <g class="edge" marker-end="url(#arrow)"><line x1="450" y1="400" x2="280" y2="530"></line></g>
-        <text class="edge-label" x="330" y="470" text-anchor="middle">지표 수집</text>
-        <text class="edge-label" x="330" y="483" text-anchor="middle">하루 3회 cron</text>
+        <text class="edge-label" x="325" y="470" text-anchor="end">지표 수집</text>
+        <text class="edge-label" x="325" y="483" text-anchor="end">하루 3회 cron</text>
 
         <g class="edge" marker-end="url(#arrow)"><line x1="520" y1="400" x2="520" y2="530"></line></g>
-        <text class="edge-label" x="520" y="470" text-anchor="middle">순위 스크래핑</text>
-        <text class="edge-label" x="520" y="483" text-anchor="middle">Playwright·하루3회</text>
+        <text class="edge-label" x="535" y="470" text-anchor="start">순위 스크래핑</text>
+        <text class="edge-label" x="535" y="483" text-anchor="start">Playwright·하루3회</text>
 
         <g class="edge" marker-end="url(#arrow)"><line x1="600" y1="400" x2="770" y2="530"></line></g>
-        <text class="edge-label" x="710" y="470" text-anchor="middle">임베딩 동기화</text>
-        <text class="edge-label" x="710" y="483" text-anchor="middle">Voyage AI</text>
+        <text class="edge-label" x="725" y="470" text-anchor="start">임베딩 동기화</text>
+        <text class="edge-label" x="725" y="483" text-anchor="start">Voyage AI</text>
 
         <!-- E <-> G, G -> H -->
         <g class="edge" marker-end="url(#arrow)" marker-start="url(#arrow)"><line x1="1080" y1="193" x2="1080" y2="340"></line></g>
@@ -165,7 +171,7 @@
 
         <rect class="node-box" x="410" y="340" width="220" height="60" rx="9"></rect>
         <text class="node-title" x="520" y="364" text-anchor="middle">GitHub Actions</text>
-        <text class="node-sub" x="520" y="381" text-anchor="middle">자동화 워크플로 16종</text>
+        <text class="node-sub" x="520" y="381" text-anchor="middle">자동화 워크플로 17종</text>
 
         <rect class="node-box" x="980" y="340" width="200" height="60" rx="9"></rect>
         <text class="node-title" x="1080" y="364" text-anchor="middle">Cloudflare Worker</text>
@@ -236,10 +242,10 @@
       <div class="tbl-row"><div class="svc">Voyage AI</div><div class="role">텍스트 임베딩 생성</div><div class="where">scripts/sync_agent_corpus.py</div></div>
 
       <div class="tbl-group">분석 · 검색엔진 등록</div>
-      <div class="tbl-row"><div class="svc">Google Analytics 4</div><div class="role">방문 데이터 수집 + Data API로 대시보드 재조회</div><div class="where">site-analytics.html · scripts/fetch_ga4.py</div></div>
-      <div class="tbl-row"><div class="svc">Google Search Console</div><div class="role">검색 노출 확인 (GA4 태그로 소유권 자동 인증)</div><div class="where">별도 연동 파일 없음</div></div>
-      <div class="tbl-row"><div class="svc">네이버 서치어드바이저</div><div class="role">네이버 검색 등록</div><div class="where">meta 태그, site-analytics.html</div></div>
-      <div class="tbl-row"><div class="svc">Microsoft Clarity</div><div class="role">히트맵 · 세션 리플레이</div><div class="where">site-analytics.html</div></div>
+      <div class="tbl-row"><div class="svc">Google Analytics 4</div><div class="role">방문 데이터 수집 + Data API로 대시보드 재조회</div><div class="where">_includes/site-analytics.html · scripts/fetch_ga4.py</div></div>
+      <div class="tbl-row"><div class="svc">Google Search Console</div><div class="role">검색 노출 확인 (GA4 태그로 소유권 자동 인증) + Search Analytics API로 대시보드 재조회</div><div class="where">.github/workflows/fetch-search-console.yml · scripts/fetch_gsc.py</div></div>
+      <div class="tbl-row"><div class="svc">네이버 서치어드바이저</div><div class="role">네이버 검색 등록</div><div class="where">meta 태그, _includes/site-analytics.html</div></div>
+      <div class="tbl-row"><div class="svc">Microsoft Clarity</div><div class="role">히트맵 · 세션 리플레이 + Data Export API로 대시보드 재조회</div><div class="where">_includes/site-analytics.html · scripts/fetch_clarity.py</div></div>
 
       <div class="tbl-group">콘텐츠 수집</div>
       <div class="tbl-row"><div class="svc">Formspree</div><div class="role">문의 폼 제출 수신 → 이메일 알림</div><div class="where">_includes/contact_modal.html</div></div>
@@ -258,6 +264,9 @@
     <p class="sec-note">이 구조를 처음 점검했을 때(2026-08-29) 나온 항목과 처리 결과입니다.</p>
 
     <div class="log-list">
+      <div class="log-item"><span class="dot done"></span><div><b>2026-09-17</b>: 재검증. 워크플로 파일 수를 <code>ls .github/workflows/*.yml</code>로 다시 세니 17개(2026-09-07 기록은 16). 2026-09-14 추가된 <code>verify-live-page.yml</code>(원격 세션의 egress 차단 우회용 수동 실행 워크플로, #472)이 반영 안 돼 있던 것이라, 통계 타일·다이어그램 노드·aria-label을 17로 수정. 외부 서비스 표는 연결 지점 파일 경로를 grep으로 재대조해 3곳 수정: GA4·네이버 서치어드바이저·Clarity 3행의 <code>site-analytics.html</code>을 실제 경로 <code>_includes/site-analytics.html</code>로, Google Search Console 행을 "별도 연동 파일 없음"에서 실제 자동 수집 경로(<code>fetch-search-console.yml</code>·<code>fetch_gsc.py</code>)로, Clarity 행에 히트맵 태그 외 <code>fetch_clarity.py</code> 재조회 경로를 추가. 그 외 16개 행은 grep으로 대조해 변경 없음 확인. 다이어그램은 정보 내용 변경 없이 레이아웃(간격·라벨 위치)만 정리.
+        <span class="files">insight-7b3e9f2c/system-map.html</span>
+      </div></div>
       <div class="log-item"><span class="dot done"></span><div><b>2026-09-07</b> — 잉크(질문하기) 파이프라인에 워크플로 2종 추가:
         <code>fetch-ink-queue.yml</code>(2시간마다, 접수함 '대기' 질문을 <code>_data/ink_queue/*.json</code>으로 옮겨 '처리중' 표시 — LLM 호출 없음, 초안은 대화형 클로드 코드 세션이 직접 씀)과
         <code>sync-ink-status.yml</code>(초안 PR 열림/닫힘에 맞춰 접수함 상태 동기화). 워크플로 수 14 → <b>16</b>으로 재집계(위 통계 타일·다이어그램 반영). 외부 서비스는 기존 Supabase 연동을 그대로 씀 — 표에 새 행 없음.
