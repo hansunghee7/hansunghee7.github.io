@@ -8,6 +8,16 @@
 있었는데도 2026-09-07에 이 규칙을 적은 문서 자체에서 여러 번 어겨졌다.
 사람(에이전트)이 매번 기억하는 대신, 기계가 커밋마다 확인한다.
 
+검사 범위(2026-09-16 축소, 사장님 지시)
+---------------------------------------
+이 규칙은 원래 방문자가 읽는 글(블로그 본문 등)의 AI 말투를 막기 위한
+것이다. 그런데 저장소 전체 .md/.html에 걸어두니 진행상황.md·지시서 같은
+내부 운영 문서 PR까지 막아서 내부 생산성에 방해가 됐다(2026-09-16, PR
+#571 사례). **`_config.yml`의 `exclude:` 목록(Jekyll이 실제로 사이트에
+안 올리는 내부 문서)에 속한 파일은 이 검사에서도 제외한다** — 그 목록이
+이미 "내부 문서 대 실제 서비스 페이지"를 구분해뒀으므로 별도 목록을
+새로 안 만들고 그대로 재사용한다.
+
 무엇을 잡나
 -----------
 긴 줄표 두 종류: em dash(—, U+2014), en dash(–, U+2013). 둘 다 사람이
@@ -32,6 +42,32 @@ CONTENT_EXT = (".md", ".html")
 
 # 이 스크립트 자신은 예시로 긴 줄표 문자를 담고 있어야 하니 제외한다.
 SELF_PATH = "scripts/check_writing_style.py"
+
+
+def excluded_prefixes(config_path="_config.yml"):
+    """_config.yml의 exclude: 목록을 그대로 읽어 경로 접두어 목록으로 쓴다."""
+    try:
+        text = open(config_path, encoding="utf-8").read()
+    except OSError:
+        return []
+    prefixes = []
+    in_exclude = False
+    for line in text.splitlines():
+        if line.strip() == "exclude:":
+            in_exclude = True
+            continue
+        if not in_exclude:
+            continue
+        m = re.match(r"^\s*-\s*(\S+)", line)
+        if m:
+            prefixes.append(m.group(1))
+        elif line.strip() and not line.strip().startswith("#"):
+            in_exclude = False
+    return prefixes
+
+
+def is_excluded(path, prefixes):
+    return any(path == p or path.startswith(p) for p in prefixes)
 
 
 def git(*args):
@@ -70,8 +106,11 @@ def added_lines(base, path, head="HEAD"):
 
 def find_violations(base, head="HEAD"):
     findings = []
+    prefixes = excluded_prefixes()
     for path in changed_files(base, head):
         if path == SELF_PATH or not path.endswith(CONTENT_EXT):
+            continue
+        if is_excluded(path, prefixes):
             continue
         for line_no, text in added_lines(base, path, head):
             if LONG_DASH.search(text):

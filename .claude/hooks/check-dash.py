@@ -4,6 +4,10 @@
 
 - 검사 범위: HEAD 대비 새로 추가·변경된 줄만 (CI의 check_writing_style.py와 같은 기준).
   기존에 있던 줄표(예: 옛 문서)는 건드리지 않는다.
+- 검사 대상 아님(2026-09-16 축소, 사장님 지시): `_config.yml`의 `exclude:` 목록에 속한
+  파일(진행상황.md, 지시서 등 Jekyll이 실제로 사이트에 안 올리는 내부 문서)은 이 훅도
+  건너뛴다. 방문자가 읽는 글(블로그 본문 등)의 AI 말투를 막으려는 규칙이지, 내부 운영
+  문서 작성 속도를 늦추려는 게 아니다. CI 쪽 check_writing_style.py와 같은 기준을 쓴다.
 - 예외: 인용 블록(`>`로 시작하는 줄), 코드 펜스(``` ~ ```) 안, 줄표 예시를 설명하는 줄
   ("줄표(—)"처럼 문자를 예시로 보여주는 줄만 규칙 설명으로 본다).
 - 검사기 오류·git 없음·대상 아님이면 항상 exit 0.
@@ -12,6 +16,26 @@ import json, re, subprocess, sys, difflib, os
 
 LONG_DASH = re.compile("[—–]")
 EXT = (".md", ".html")
+
+
+def excluded_prefixes(top):
+    try:
+        text = open(os.path.join(top, "_config.yml"), encoding="utf-8").read()
+    except OSError:
+        return []
+    prefixes, in_exclude = [], False
+    for line in text.splitlines():
+        if line.strip() == "exclude:":
+            in_exclude = True
+            continue
+        if not in_exclude:
+            continue
+        m = re.match(r"^\s*-\s*(\S+)", line)
+        if m:
+            prefixes.append(m.group(1))
+        elif line.strip() and not line.strip().startswith("#"):
+            in_exclude = False
+    return prefixes
 
 def head_lines(path):
     try:
@@ -53,6 +77,12 @@ if __name__ == "__main__":
         data = json.load(sys.stdin)
         path = (data.get("tool_input") or {}).get("file_path") or ""
         if not path.lower().endswith(EXT) or not os.path.isfile(path): sys.exit(0)
+        top = subprocess.run(["git","rev-parse","--show-toplevel"], cwd=os.path.dirname(path) or ".",
+                             capture_output=True, text=True).stdout.strip()
+        if top:
+            rel = os.path.relpath(path, top)
+            prefixes = excluded_prefixes(top)
+            if any(rel == p or rel.startswith(p) for p in prefixes): sys.exit(0)
         hits = offenders(path)
     except SystemExit: raise
     except Exception: sys.exit(0)
