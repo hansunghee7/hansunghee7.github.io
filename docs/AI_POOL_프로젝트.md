@@ -36,9 +36,11 @@
   (https://claude.ai/artifact/FM86igrvHaA6H5ztKM6g2G).
 - **현재 상태**: 서로 다른 구글 계정 3개(project 번호 `100742441770`,
   `1030756466986`, `911161170287`) 확보 완료(2026-09-16). 키 값은 로컬
-  탐 세션에만 전달, 클라우드 세션·저장소에는 값을 남기지 않는다 → 로컬
-  탐이 LiteLLM `model_list`에 등록하고 실제 chat completion 1건 성공을
-  DONE 기준으로 검증.
+  탐 세션에만 전달, 클라우드 세션·저장소에는 값을 남기지 않는다. 풀
+  구축(LiteLLM 설정 파일)은 클라우드 탐이 먼저 끝냈다:
+  `docs/지시서/litellm_config.gemini-pool.yaml`(값 없이 환경변수 참조만).
+  로컬 탐은 실제 키 값을 환경변수로 등록하고 프록시를 실행·검증하는
+  것만 남았다 → 실제 chat completion 1건 성공을 DONE 기준으로 확인.
 - **미확인**: 무료 티어 정확한 분당/일일 한도, Hermes가
   `router_settings.fallbacks` 구문을 지원하는지.
 
