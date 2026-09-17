@@ -80,7 +80,7 @@ if __name__ == "__main__":
         top = subprocess.run(["git","rev-parse","--show-toplevel"], cwd=os.path.dirname(path) or ".",
                              capture_output=True, text=True).stdout.strip()
         if top:
-            rel = os.path.relpath(path, top)
+            rel = os.path.relpath(path, top).replace(os.sep, "/")
             prefixes = excluded_prefixes(top)
             if any(rel == p or rel.startswith(p) for p in prefixes): sys.exit(0)
         hits = offenders(path)

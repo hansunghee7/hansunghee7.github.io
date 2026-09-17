@@ -26,3 +26,8 @@ exclude:
   - Gemfile.lock
   # 접수함 테이블 정의(SQL)는 사이트에 서빙될 필요가 없다 (docs/질문하기_파이프라인.md)
   - supabase/
+  # .claude/(스킬·훅·에이전트 설정)는 dotdir라 Jekyll 빌드에서는 이미
+  # 기본 제외되지만, check-dash.py 훅이 "외부 노출 문서" 판정 기준으로
+  # 이 exclude 목록을 그대로 읽어서 명시적으로 추가한다(2026-09-17,
+  # 내부 도구 설정 파일이 대시 금지 규칙에 잘못 걸린 사고 재발 방지).
+  - .claude/
