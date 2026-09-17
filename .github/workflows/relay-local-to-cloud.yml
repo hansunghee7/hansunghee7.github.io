@@ -1,0 +1,40 @@
+name: Relay local to cloud
+
+# docs/진행상황.md에 로컬 세션(탐/마야) 결과가 push되면, GitHub App 웹훅으로
+# Claude Routine("로컬→클라우드 릴레이 처리 (repository_dispatch 전용)")을
+# 곧바로 깨워 사람이 복붙하지 않고도 Cloud Claude가 바로 이어받게 한다.
+# (2026-09-17, 탐(로컬)) Claude 쪽 RemoteTrigger.create_webhook_trigger는
+# 브랜치/경로 필터를 지원하지 않아(붙이면 모든 브랜치의 모든 push마다
+# 깨어남) 필터링을 이 워크플로 쪽으로 옮겼다 -- main + docs/진행상황.md
+# 변경일 때만 repository_dispatch를 쏴서 Routine이 그 이벤트에만 반응하게
+# 좁힌 것. 새 GitHub 시크릿은 만들지 않고 Actions 기본 GITHUB_TOKEN만 쓴다.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/진행상황.md"
+
+permissions:
+  contents: write
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: repository_dispatch로 Cloud Routine 깨우기
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          status=$(curl -s -o /tmp/resp.json -w '%{http_code}' -X POST \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${{ github.repository }}/dispatches" \
+            -d '{"event_type":"relay-handoff","client_payload":{"sha":"${{ github.sha }}"}}')
+          echo "dispatch 응답 코드: $status"
+          cat /tmp/resp.json || true
+          if [ "$status" != "204" ]; then
+            echo "::error::repository_dispatch 실패 (HTTP $status) -- 위 응답 본문 참고"
+            exit 1
+          fi
