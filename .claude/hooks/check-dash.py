@@ -18,6 +18,19 @@ LONG_DASH = re.compile("[—–]")
 EXT = (".md", ".html")
 
 
+def is_target_repo(top):
+    """대상 파일이 실제로 hansunghee7.github.io 저장소(또는 그 워크트리) 소속인지 확인.
+    이 훅은 그 저장소 전용 정책(긴 대시 금지)이라, 세션이 다른 로컬 저장소(예: cxo-db
+    클론)의 파일을 고칠 때는 적용하면 안 된다. CLAUDE_PROJECT_DIR 비교 대신 origin
+    remote URL을 쓰는 이유: 같은 저장소의 다른 워크트리는 세션 시작 디렉토리와 경로가
+    달라도 정책이 그대로 적용돼야 하기 때문."""
+    try:
+        url = subprocess.run(["git", "-C", top, "remote", "get-url", "origin"],
+                             capture_output=True, text=True, timeout=5).stdout.strip()
+        return "hansunghee7.github.io" in url.lower()
+    except Exception:
+        return False
+
 def excluded_prefixes(top):
     try:
         text = open(os.path.join(top, "_config.yml"), encoding="utf-8").read()
@@ -80,6 +93,7 @@ if __name__ == "__main__":
         top = subprocess.run(["git","rev-parse","--show-toplevel"], cwd=os.path.dirname(path) or ".",
                              capture_output=True, text=True).stdout.strip()
         if top:
+            if not is_target_repo(top): sys.exit(0)
             rel = os.path.relpath(path, top).replace(os.sep, "/")
             prefixes = excluded_prefixes(top)
             if any(rel == p or rel.startswith(p) for p in prefixes): sys.exit(0)
