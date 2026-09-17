@@ -102,6 +102,31 @@ fallback·delegation 호출에도 쓰였다. **위 Phase 2 조사 절의 반려 
 4. 완료 후 이 문서에 새 절("Phase 2: 실사용", 날짜 포함)을 추가해서
    기록한다.
 
+## Phase 2: 실사용 (2026-09-17, Groq 완료 / Z.AI·Cerebras 보류)
+
+3개 후보를 딥리서치 수치를 안 믿고 공식 문서·가입 화면에서 직접
+확인했다.
+
+- **Groq — 채택, DONE=VERIFIED.** 공식 Billing FAQ 확인: Free 플랜은
+  카드 등록 불필요(카드는 Developer 티어로 "업그레이드"할 때만 필요).
+  사장님이 직접 가입(Google 로그인, 카드 화면 없었음 확인) → API 키
+  발급 → `litellm_config.gemini-pool.yaml`에 `groq-pool`
+  model_name으로 별도 풀 추가(Gemini와 rate limit·품질 프로필이 달라
+  분리, 원안 3번 판단 기준)`GROQ_API_KEY`를 로컬
+  `litellm-proxy/.env`에 등록(주의: 이 프록시는 Windows 시스템
+  환경변수가 아니라 이 로컬 `.env` 파일에서 값을 읽는다 — saegim 때와
+  다른 지점이라 처음에 잘못 안내했다 정정함) → 프록시 재시작 →
+  실제 `groq-pool` 모델로 chat completion 성공 확인(`GPT OSS 120B`,
+  "1+1은?" → "2" 정답).
+- **Z.AI(GLM-4.5-Flash/4.7-Flash) — 보류.** 공식 가격표에 "Free"로
+  명시돼 있고 채팅 로그인 화면(Google/이메일/GitHub)엔 카드 요구가
+  없었으나, 개발자 콘솔(API 키 발급 페이지) 자체는 이번 세션에서 직접
+  못 열어봐서 카드 요구 여부가 불확실[불확실, 다음에 확인 필요].
+- **Cerebras — 제외 권장.** "무료 티어"가 아니라 **"$5 무료 크레딧으로
+  시작하는 종량제(Developer 티어)"** 구조임을 공식 가격 페이지에서
+  확인. 크레딧 소진 후 자동 과금이라 이번 단계의 "무료·카드 불필요"
+  조건과 안 맞음[추정, 가입 화면에서 카드 요구 시점은 직접 확인 안 함].
+
 ## 다음 단계 후보 (착수 안 함, 신호 대기)
 
 - 헤르메스의 delegation/auxiliary 자리에 이 풀을 어떻게 연결할지는

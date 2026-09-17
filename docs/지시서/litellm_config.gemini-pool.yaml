@@ -20,6 +20,13 @@ model_list:
     litellm_params:
       model: gemini/gemini-flash-lite-latest
       api_key: os.environ/GEMINI_API_KEY_3
+  # AI Pool Phase 2 (2026-09-17) - Groq 무료 티어, 별도 풀로 분리.
+  # Gemini와 rate limit·품질 프로필이 달라 같은 model_name으로 섞지 않음
+  # (docs/AI_POOL_프로젝트.md "Phase 2 착수" 절 3번 판단 기준).
+  - model_name: groq-pool
+    litellm_params:
+      model: groq/openai/gpt-oss-120b
+      api_key: os.environ/GROQ_API_KEY
 
 router_settings:
   routing_strategy: simple-shuffle
