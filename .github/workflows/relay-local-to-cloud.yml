@@ -1,13 +1,21 @@
 name: Relay local to cloud
 
-# docs/진행상황.md에 로컬 세션(탐/마야) 결과가 push되면, GitHub App 웹훅으로
-# Claude Routine("로컬→클라우드 릴레이 처리 (repository_dispatch 전용)")을
-# 곧바로 깨워 사람이 복붙하지 않고도 Cloud Claude가 바로 이어받게 한다.
-# (2026-09-17, 탐(로컬)) Claude 쪽 RemoteTrigger.create_webhook_trigger는
-# 브랜치/경로 필터를 지원하지 않아(붙이면 모든 브랜치의 모든 push마다
-# 깨어남) 필터링을 이 워크플로 쪽으로 옮겼다 -- main + docs/진행상황.md
-# 변경일 때만 repository_dispatch를 쏴서 Routine이 그 이벤트에만 반응하게
-# 좁힌 것. 새 GitHub 시크릿은 만들지 않고 Actions 기본 GITHUB_TOKEN만 쓴다.
+# docs/진행상황.md에 로컬 세션(탐/마야) 결과가 push되면, Claude Routine
+# API 트리거(/fire)를 직접 호출해서 Cloud Claude Routine("로컬→클라우드
+# 릴레이 처리 (repository_dispatch 전용)", trig_01FuGfrmYB3zw2ToQXWknXct)을
+# 곧바로 깨운다. 사람이 복붙할 필요 없음.
+#
+# (2026-09-17, 탐(로컬)) 원래는 GitHub repository_dispatch로 이 Routine을
+# 깨우려 했으나, 공식 문서(code.claude.com/docs/en/routines) 확인 결과
+# Claude Routine의 GitHub 트리거는 Pull request/Release만 지원하고
+# repository_dispatch는 지원 대상이 아님을 확인(실측: dispatch는 204로
+# 성공했지만 Routine은 한 번도 안 깨어남). 대신 공식 지원되는 API
+# 트리거(/fire endpoint, CLAUDE_ROUTINE_TOKEN)로 전환 — 실측 완료:
+# /fire 호출 → HTTP 200 → 실제 Routine 세션 실행 → 진행상황.md 커밋까지
+# 확인함.
+#
+# 루프 가드(author.email == noreply@anthropic.com 커밋은 skip)는 실제
+# Routine 커밋으로 재검증 완료 — 그대로 유지.
 
 on:
   push:
@@ -16,7 +24,7 @@ on:
       - "docs/진행상황.md"
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   dispatch:
@@ -24,18 +32,25 @@ jobs:
     timeout-minutes: 2
     if: github.event.head_commit.author.email != 'noreply@anthropic.com'
     steps:
-      - name: repository_dispatch로 Cloud Routine 깨우기
+      - name: Claude Routine /fire API 호출
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ROUTINE_TOKEN: ${{ secrets.CLAUDE_ROUTINE_TOKEN }}
         run: |
+          echo '{"text":"docs/진행상황.md 변경, commit ${{ github.sha }}"}' > body.json
           status=$(curl -s -o /tmp/resp.json -w '%{http_code}' -X POST \
-            -H "Authorization: Bearer $GH_TOKEN" \
-            -H "Accept: application/vnd.github+json" \
-            "https://api.github.com/repos/${{ github.repository }}/dispatches" \
-            -d '{"event_type":"relay-handoff","client_payload":{"sha":"${{ github.sha }}"}}')
-          echo "dispatch 응답 코드: $status"
+            -H "Authorization: Bearer $ROUTINE_TOKEN" \
+            -H "anthropic-version: 2023-06-01" \
+            -H "anthropic-beta: experimental-cc-routine-2026-04-01" \
+            -H "Content-Type: application/json" \
+            "https://api.anthropic.com/v1/claude_code/routines/trig_01FuGfrmYB3zw2ToQXWknXct/fire" \
+            -d @body.json)
+          echo "/fire 응답 코드: $status"
           cat /tmp/resp.json || true
-          if [ "$status" != "204" ]; then
-            echo "::error::repository_dispatch 실패 (HTTP $status) -- 위 응답 본문 참고"
+          if [ "$status" != "200" ]; then
+            echo "::error::/fire 호출 실패 (HTTP $status) -- 위 응답 본문 참고"
+            exit 1
+          fi
+          if ! grep -q '"type":"routine_fire"' /tmp/resp.json || ! grep -q '"claude_code_session_id"' /tmp/resp.json; then
+            echo "::error::HTTP 200이지만 routine_fire 형식이 아님 -- 위 응답 본문 참고"
             exit 1
           fi
