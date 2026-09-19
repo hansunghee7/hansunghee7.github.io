@@ -295,6 +295,8 @@
     <h2 id="maintenance">7. 이 문서를 다이어트하는 방법 (2026-09-04 도입)</h2>
     <p>이 문서는 계속 커지고 있습니다. "많이 참조되는 절은 위로, 안 쓰이는 절은 정리"를 사람 기억이 아니라 커밋 기록으로 판단하는 절차입니다.</p>
     <p><b>인용 남기기</b> (2026-09-04 id 체계로 개정, 새김 v0.2) — 이 문서의 어떤 절을 근거로 실제 코드·문구를 고쳤다면, 그 커밋 메시지에 <code>UX_GUIDE#&lt;id&gt;</code>를 남기세요. <code>&lt;id&gt;</code>는 정본 마크다운의 절 제목 옆 <code>&lt;!-- id: xxxx --&gt;</code> 값입니다(예: <code>UX_GUIDE#cc10</code>). 절 번호가 아니라 id를 쓰는 이유는 절이 추가·삭제되면 번호가 밀려 예전 인용이 다른 절을 가리키게 되지만 id는 절이 있는 한 안 바뀌기 때문입니다. 그냥 읽기만 하고 안 썼으면 남길 필요 없습니다.</p>
+    <p><b>인용 위치와 집계</b> (CLAUDE.md에서 이전, 2026-09-19) — 인용은 반드시 <b>git 커밋 메시지 본문</b>에 <code>UX_GUIDE#&lt;id&gt;</code> 형태로 남기세요(예: <code>UX_GUIDE#8ad6</code>). 진행상황.md 같은 다른 문서에 "UX_GUIDE#fa6f 적용"이라고 적는 것만으로는 안 됩니다. 집계 도구(<code>simplifier-saegim/saegim.py report</code>)는 git 커밋 메시지만 셉니다. 태그를 안 남기면 이 문서가 아무리 커져도 다이어트할 근거 자체가 안 쌓입니다.</p>
+    <p><b>2026-09-19 실측</b> (main 커밋 메시지) — <code>CLAUDE#</code> 고유 id 11개·28회(최근 1주 15커밋), <code>UX_GUIDE#</code> 6개·20회, <code>WAY#</code> 4개·5회. 2026-09-10의 "채택률 0%"는 낡은 서술입니다. 단 <code>CLAUDE#a62c</code> 4회는 <code>docs/WRITING_GUIDE.md</code> §6의 id를 잘못 붙인 것이라 CLAUDE.md 절 기준으로는 10개·24회입니다.</p>
     <p><b>리뷰 트리거</b> — 아래 둘 중 하나에 걸리면, 이 문서를 열 이유가 있던 세션이 그 자리에서 정리까지 겸합니다(별도 세션을 만들지 않음). 집계는 <code>python3 saegim.py report --repo . --doc docs/UX_GUIDE.md --tag UX_GUIDE</code>(<code>simplifier-saegim</code> 저장소)로 확인:</p>
     <ul>
       <li>마지막 정리 이후 인용이 5건 이상 쌓였을 때</li>
