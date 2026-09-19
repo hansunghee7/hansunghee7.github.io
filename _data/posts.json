@@ -3731,7 +3731,7 @@
 178,
 192,
 259,
-185
+263
 ]
 },
 {
@@ -3850,8 +3850,8 @@
 "related": [
 192,
 185,
-120,
-263
+263,
+120
 ]
 },
 {
@@ -8795,10 +8795,10 @@
 "url": "/logs/615/",
 "image": "/log_assets/images/vidar-nordli-mathisen-BsXNwkm04y4-unsplash.jpg",
 "related": [
+626,
 298,
 413,
-607,
-159
+607
 ]
 },
 {
@@ -8915,10 +8915,25 @@
 "url": "/logs/626/",
 "image": "/log_assets/images/626_%EC%8B%A0%EC%9E%84%20%ED%8C%80%EC%9E%A5%EC%9D%B4%20%EB%90%9C%20%ED%9B%84%2C%20%EA%B0%80%EC%9E%A5%20%EB%A8%BC%EC%A0%80%20%EC%B1%99%EA%B2%A8%EC%95%BC%20%ED%95%A0%20%EA%B2%83_cover.jpg",
 "related": [
-9,
-586,
-281,
-615
+615,
+59,
+620,
+129
+]
+},
+{
+"id": 627,
+"title": "프로젝트가 지지부진한 건, 맡은 사람 탓일까",
+"category": "스타트업 인사이트",
+"date": "Sep 20. 2026",
+"date_sort": "20260920",
+"url": "/logs/627/",
+"image": "/log_assets/images/627_%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EA%B0%80%20%EC%A7%80%EC%A7%80%EB%B6%80%EC%A7%84%ED%95%9C%20%EA%B1%B4%2C%20%EB%A7%A1%EC%9D%80%20%EC%82%AC%EB%9E%8C%20%ED%83%93%EC%9D%BC%EA%B9%8C_cover.jpg",
+"related": [
+301,
+566,
+407,
+11
 ]
 }
 ]
