@@ -1,0 +1,145 @@
+name: Scheduled publish
+
+# 예약 발행. log_assets/markdown/*.md 중 front matter 가
+#   published: false  +  publish_at: 2026-09-24T10:00:00+09:00
+# 인 글은, publish_at 시각이 지난 뒤 이 워크플로가 처음 도는 때 published: true 로
+# 바뀌어 main 에 커밋된다. 사용법·안전장치·되돌리는 법: docs/예약_발행.md
+#
+# 정확한 시각이 아니라 "publish_at 이후 첫 실행"에 발행된다. GitHub 의 cron 은
+# 최선 노력 방식이라 부하가 높으면 수 분~수십 분 늦거나 한두 번 건너뛸 수 있다
+# (fetch-analytics.yml 주석의 이 저장소 실측과 같은 이야기). 그래서 15분 간격으로
+# 자주 돌리고, 스크립트가 멱등이라 여러 번 돌아도 안전하다.
+#
+# main 에 커밋한 뒤 publish-pipeline(순번·카드·posts.json·sitemap 갱신)을
+# 이어서 돌리는 방법: GITHUB_TOKEN 으로 한 push 는 다른 워크플로의 on: push 를
+# 발화시키지 않는다(GitHub 규칙). 예외가 workflow_dispatch 와 repository_dispatch
+# 이다(공식 문서: "events triggered by the GITHUB_TOKEN ... with the exception
+# of workflow_dispatch and repository_dispatch"). publish-pipeline.yml 에는
+# workflow_dispatch: {} 가 이미 있으므로, 이 워크플로가 push 뒤에
+# `gh workflow run publish-pipeline.yml --ref main` 을 호출한다. PAT 등 비밀값 불필요,
+# 필요한 것은 아래 permissions 의 actions: write 뿐이다.
+on:
+  schedule:
+    - cron: "7,22,37,52 * * * *"  # 15분 간격. 정각(0,15,30,45분)은 혼잡해 지연·누락되기 쉬워 비껴 잡음
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "true = 무엇을 바꿀지만 출력하고 커밋하지 않음 (기본 true). 수동 실제 발행은 false"
+        type: boolean
+        default: true
+      dir:
+        description: "검사할 글 폴더 (기본 log_assets/markdown). 테스트용 fixture 폴더를 줄 때만 바꿈"
+        type: string
+        default: "log_assets/markdown"
+      now:
+        description: "시뮬레이션용 현재 시각(ISO 8601, 예 2026-09-25T00:00:00+09:00). dry_run=true 일 때만 허용"
+        type: string
+        default: ""
+      test_chain:
+        description: "true = 발행은 건너뛰고 publish-pipeline 연쇄 호출(GITHUB_TOKEN dispatch)만 점검. 진단용, 평소엔 false"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write   # main 에 published 값 변경 커밋
+  actions: write    # publish-pipeline.yml 을 workflow_dispatch 로 호출
+
+concurrency:
+  group: scheduled-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONIOENCODING: utf-8
+      # 스케줄 실행은 inputs 가 비어 있으므로 dry_run=false 로 동작한다.
+      DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && 'true' || 'false' }}
+      TARGET_DIR: ${{ github.event_name == 'workflow_dispatch' && inputs.dir || 'log_assets/markdown' }}
+      SIM_NOW: ${{ github.event_name == 'workflow_dispatch' && inputs.now || '' }}
+      TEST_CHAIN: ${{ github.event_name == 'workflow_dispatch' && inputs.test_chain && 'true' || 'false' }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Publish due posts (retries on push races)
+        id: publish
+        if: env.TEST_CHAIN != 'true'
+        run: |
+          set -eo pipefail
+          echo "event=${GITHUB_EVENT_NAME} ref=${GITHUB_REF} dry_run=${DRY_RUN} dir=${TARGET_DIR} now=${SIM_NOW:-<실제 현재 시각>}"
+
+          ARGS=(--dir "$TARGET_DIR")
+          if [ "$DRY_RUN" = "true" ]; then ARGS+=(--dry-run); fi
+          if [ -n "$SIM_NOW" ]; then ARGS+=(--now "$SIM_NOW"); fi
+
+          # 실제 반영은 main 에서만. 작업 브랜치에서 dry_run=false 로 돌려 브랜치에
+          # 발행 커밋을 만드는 실수를 막는다.
+          if [ "$DRY_RUN" != "true" ] && [ "$GITHUB_REF" != "refs/heads/main" ]; then
+            echo "::error::실제 반영(dry_run=false)은 main 에서만 실행됩니다. 현재 ref=${GITHUB_REF}"
+            exit 1
+          fi
+
+          if [ "$DRY_RUN" = "true" ]; then
+            python scripts/scheduled_publish.py "${ARGS[@]}"
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # publish-pipeline.yml 과 같은 재시도 방식: push 가 거부되면(그 사이 다른
+          # 워크플로가 main 에 먼저 push) 변경을 버리고 origin/main 최신에서 스크립트를
+          # 처음부터 다시 돌린다. 스크립트가 멱등이라 몇 번을 돌려도 안전하다.
+          MAX_ATTEMPTS=5
+          for attempt in $(seq 1 "$MAX_ATTEMPTS"); do
+            echo "::group::시도 $attempt / $MAX_ATTEMPTS"
+            python scripts/scheduled_publish.py "${ARGS[@]}" | tee /tmp/sp.log
+
+            git add log_assets/markdown
+            if git diff --cached --quiet; then
+              echo "커밋할 변경 없음 (예약 시각이 지난 초안 없음)"
+              echo "pushed=false" >> "$GITHUB_OUTPUT"
+              echo "::endgroup::"
+              exit 0
+            fi
+
+            N=$(git diff --cached --name-only | wc -l)
+            git commit -q -m "chore: 예약 발행 ${N}건 (publish_at 경과) [skip ci]"
+
+            if git push; then
+              echo "성공 (시도 $attempt)"
+              echo "pushed=true" >> "$GITHUB_OUTPUT"
+              echo "::endgroup::"
+              exit 0
+            fi
+
+            echo "push 거부됨 -- 그 사이 다른 푸시가 먼저 들어온 것으로 보입니다."
+            if [ "$attempt" -eq "$MAX_ATTEMPTS" ]; then
+              echo "::error::${MAX_ATTEMPTS}번 시도 후에도 push 실패. 수동 확인이 필요합니다."
+              echo "::endgroup::"
+              exit 1
+            fi
+            git fetch origin main
+            git reset --hard origin/main
+            sleep "$(( (RANDOM % 6) ))"
+            echo "::endgroup::"
+          done
+
+      # GITHUB_TOKEN push 는 publish-pipeline 의 on: push 를 깨우지 못하므로
+      # workflow_dispatch 로 직접 깨운다(위 상단 주석 참고).
+      - name: Trigger publish-pipeline
+        if: steps.publish.outputs.pushed == 'true' || env.TEST_CHAIN == 'true'
+        run: |
+          gh workflow run publish-pipeline.yml --ref main
+          echo "publish-pipeline.yml 을 workflow_dispatch 로 호출함"
