@@ -5,6 +5,9 @@
 > 내용을 고칠 땐 이 마크다운과 그 HTML을 함께 업데이트하세요 — 자동 동기화
 > 파이프라인은 없습니다.
 >
+> **이 문서의 절을 근거로 코드·문구를 고쳤다면** 커밋 메시지에 `UX_GUIDE#<id>` 인용 태그를
+> 남깁니다. 규칙과 집계 방법은 [6절](#6-이-문서를-다이어트하는-방법-2026-09-04-도입).
+>
 > **다른 저장소(예: shorts-lab)의 세션이 이 값을 참고할 때**: 이 저장소는
 > 공개라 `add_repo`·클론 없이 `raw.githubusercontent.com/hansunghee7/
 > hansunghee7.github.io/main/<경로>`로 필요한 파일만 바로 받을 수 있습니다.
@@ -463,6 +466,23 @@ GNB·푸터·커버 전반에 반복. 텍스트는 `<title>`("... - Simplifier")
 남길 필요 없습니다. id가 없는 새 절을 추가했다면
 `python3 saegim.py migrate --repo . --doc docs/UX_GUIDE.md`
 (`simplifier-saegim` 저장소)를 한 번 돌려 id를 심으세요.
+
+**인용 위치와 집계 (CLAUDE.md에서 이전, 2026-09-19)**: 인용은 반드시 **git 커밋
+메시지 본문**에 `UX_GUIDE#<id>` 형태로 남기세요(예: `UX_GUIDE#8ad6`). 진행상황.md
+같은 다른 문서에 "UX_GUIDE#fa6f 적용"이라고 적는 것만으로는 안 됩니다.
+**집계 도구(`simplifier-saegim/saegim.py report`)는 git 커밋 메시지만 셉니다.**
+
+```bash
+python3 /path/to/simplifier-saegim/saegim.py report --repo . --doc docs/UX_GUIDE.md --tag UX_GUIDE
+```
+
+이걸로 절별 인용 수·휴면 절을 확인할 수 있습니다. 태그를 안 남기면 이 문서가
+아무리 커져도 다이어트할 근거 자체가 안 쌓입니다.
+
+**2026-09-19 실측 (main 커밋 메시지)**: `CLAUDE#` 고유 id 11개·28회(최근 1주
+15커밋), `UX_GUIDE#` 6개·20회, `WAY#` 4개·5회. 2026-09-10의 "채택률 0%"는 낡은
+서술입니다. 단 `CLAUDE#a62c` 4회는 `docs/WRITING_GUIDE.md` §6의 id를 잘못 붙인
+것이라 CLAUDE.md 절 기준으로는 10개·24회입니다.
 
 **리뷰 트리거** — 아래 둘 중 하나에 걸리면, 이 문서를 열 이유가 있던 세션이
 그 자리에서 정리까지 겸합니다(별도 세션을 만들지 않음). 집계는
