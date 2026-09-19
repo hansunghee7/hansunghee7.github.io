@@ -95,8 +95,8 @@ simplifier-way 원칙1과 같은 원칙을, 위험한 실험·자동화 한정�
 2. 읽는 것은 **자기 역할 노트 + 진행상황.md 상단 우선순위**뿐. UX_GUIDE·
    STYLE_GUIDE 같은 가이드는 그 화면을 실제로 만지는 시점에 읽습니다.
 3. 저장소는 오늘 쓸 것만 부착합니다 (cxo-db는 기록할 게 생겼을 때 요청).
-   **우편함 확인 (2026-09-19 도입)**: solar-bible 저장소가 붙어 있으면 `python mailbox/mailbox.py read <내 이름>`으로
-   안 읽은 메시지를 먼저 봅니다(로컬 세션은 시작 훅이 개수를 알려 주고, 클라우드 세션은 `add_repo`로
+   **우편함 확인 (2026-09-19 도입)**: solar-bible 저장소가 붙어 있으면 `python mailbox/mailbox.py read <내 이름> --recent 24`로
+   최근 24시간 메시지를 먼저 봅니다(다른 세션이 먼저 읽음 처리했어도 놓치지 않도록)(로컬 세션은 시작 훅이 개수를 알려 주고, 클라우드 세션은 `add_repo`로
    `hansunghee7/solar-bible`을 붙입니다). 다른 에이전트에게 알릴 일은 사장님께 복사·붙여넣기를 부탁하지 말고
    `mailbox.py send`로 보냅니다. 규칙: solar-bible `mailbox/README.md`.
 4. **첫 응답은 아래 형식 그대로**. 저녁 의식이 남긴 자기 페르소나의 최신
