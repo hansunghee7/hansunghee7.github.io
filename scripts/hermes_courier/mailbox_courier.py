@@ -263,6 +263,14 @@ def main():
     token = env.get('TELEGRAM_BOT_TOKEN', '')
     boss_chat = env.get('TELEGRAM_ALLOWED_USERS', '').split(',')[0].strip()
     agent_chat = env.get('TELEGRAM_AGENT_CHAT_ID', '').strip()
+    if not agent_chat:
+        # 그룹 id는 비밀이 아니다. .env는 헤르메스 도구로 못 고치므로(자격증명 보호),
+        # scripts 폴더의 courier_config.py(AGENT_CHAT_ID = "...")를 보조로 읽는다. 저장소에는 두지 않는다.
+        try:
+            import courier_config
+            agent_chat = str(getattr(courier_config, 'AGENT_CHAT_ID', '')).strip()
+        except ImportError:
+            pass
     if os.environ.get('COURIER_TEST_AGENT_CHAT'):
         agent_chat = os.environ['COURIER_TEST_AGENT_CHAT']   # 시험 전용(출력만 됨)
 
