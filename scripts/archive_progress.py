@@ -12,6 +12,7 @@
     python scripts/archive_progress.py                      # 드라이런(기본): 표만 출력
     python scripts/archive_progress.py --today 2026-09-19   # 기준일 지정
     python scripts/archive_progress.py --apply              # 실제로 옮김(무손실 검증 통과 시에만)
+    --keep-title SUBSTR / --move-title SUBSTR               # 제목으로 특정 절을 수동 유지/이동(정확히 1개 일치해야 함)
 
 라이브에 남기는 규칙(하나라도 해당하면 유지)
 --------------------------------------------
@@ -232,8 +233,19 @@ def find_reply(req, sections):
     return best[1] if best else None
 
 
-def decide(preamble, sections, today, keep_reports=False):
+def pick_by_title(sections, substr, label):
+    """제목에 substr가 든 절을 정확히 1개 찾는다. 0개나 2개 이상이면 오류로 종료한다."""
+    hits = [s for s in sections if substr in s.title]
+    if len(hits) != 1:
+        raise SystemExit(f"{label} '{substr}': 제목이 일치하는 절이 {len(hits)}개입니다(정확히 1개여야 함).")
+    return hits[0]
+
+
+def decide(preamble, sections, today, keep_reports=False, keep_titles=(), move_titles=()):
     cutoff = today - timedelta(days=1)
+    forced_move = set()
+    for t in move_titles:
+        forced_move.add(pick_by_title(sections, t, "--move-title").idx)
     # 페르소나별 최신 상태 절 (bare 이름은 같은 base의 변형이 있으면 제외)
     states = [s for s in sections if s.kind == "상태" and s.persona and s.date]
     variants_of = {}
@@ -265,8 +277,12 @@ def decide(preamble, sections, today, keep_reports=False):
         for key, s in reports.items():
             s.reason = f"②' {key} 최신 보고"
     notes = {"open_req": [], "closed_req": [], "ambiguous_req": [], "undated": [], "reports": reports}
+    for t in keep_titles:
+        s = pick_by_title(sections, t, "--keep-title")
+        if not s.reason:
+            s.reason = "⑥ 수동 유지"
     for s in sections:
-        if s.reason:
+        if s.reason or s.idx in forced_move:
             continue
         if s.kind == "공지" and not re.search(r"종료|완료", s.title):
             s.reason = "③ 공지"
@@ -381,7 +397,7 @@ def report(preamble, sections, latest, notes, live, moved, today, orig_lines):
         s = latest[key]
         p(f"| {key} | L{s.start_line} {s.title[:60]} | {s.date} |")
     p()
-    p("## '상태' 제목이 없는 페르소나의 최신 세션 보고 (기본은 이동, --keep-latest-report로 유지)")
+    p("## '상태' 제목이 없는 페르소나의 최신 세션 보고 (기본은 유지, --no-keep-latest-report로 이동)")
     p("| 페르소나 | 원본 줄 | 줄 수 | 날짜 | 제목 |")
     p("|---|---|---|---|---|")
     for key in sorted(notes["reports"]):
@@ -417,8 +433,12 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--dry-run", action="store_true", help="기본 동작(파일 안 씀)")
     ap.add_argument("--apply", action="store_true", help="실제로 옮김(무손실 검증 통과 시에만)")
-    ap.add_argument("--keep-latest-report", action="store_true",
-                    help="'상태' 제목이 없는 페르소나도 최신 세션 보고 1개를 유지(기본: 끔)")
+    ap.add_argument("--keep-latest-report", action=argparse.BooleanOptionalAction, default=True,
+                    help="'상태' 제목이 없는 페르소나도 최신 세션 보고 1개를 유지(기본: 켬, 끄려면 --no-keep-latest-report)")
+    ap.add_argument("--keep-title", action="append", default=[], metavar="SUBSTR",
+                    help="제목에 SUBSTR가 든 절(정확히 1개)을 라이브에 유지(날짜 없는 절 등). 반복 가능")
+    ap.add_argument("--move-title", action="append", default=[], metavar="SUBSTR",
+                    help="제목에 SUBSTR가 든 절(정확히 1개)을 규칙과 무관하게 아카이브로 이동. 반복 가능")
     ap.add_argument("--today", default=None, help="기준일 YYYY-MM-DD (기본: 오늘)")
     ap.add_argument("--live", default=str(LIVE), help="라이브 파일 경로")
     ap.add_argument("--archive-dir", default=str(ARCHIVE_DIR), help="아카이브 폴더 경로")
@@ -432,7 +452,8 @@ def main():
     text = live_path.read_bytes().decode("utf-8")
     orig_lines = split_lines(text)
     preamble, sections = parse(text)
-    latest, notes = decide(preamble, sections, today, args.keep_latest_report)
+    latest, notes = decide(preamble, sections, today, args.keep_latest_report,
+                           args.keep_title, args.move_title)
     live, moved, extras = build_output(preamble, sections)
 
     archive_added = []
