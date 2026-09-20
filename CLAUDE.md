@@ -175,4 +175,5 @@ CLAUDE.md 200줄 이하, 역할 노트 80줄 이하. 한 줄마다 "**이 줄을
 | 숏폼(대본 검토, 리서치 반영, 음성·자막) | 작업 시작 전 `add_repo`로 `hansunghee7/shorts-lab`을 부착한다(정본이 전부 거기 있다). "쇼츠랩"은 내부 코드네임이고 채널명·"심플리파이어 미디어"는 다크 런칭 중이라 이 저장소 밖 어디에도 노출하지 않는다(`shorts-lab/PUBLISHING.md`) <!-- id: a14c --> |
 | noindex 제거, preview 해제, sitemap·llms.txt·GNB 추가 | `exposure-change` 스킬. main 병합 즉시 라이브이므로 승인 없이 열지 않는다(`노출-승인` PR 태그) <!-- id: 028b --> |
 | 인프라 변경(워크플로, 외부 서비스 연동·해지, Routine) | 같은 세션에서 `insight-7b3e9f2c/system-map.html`(요약 타일, 외부 연동 표)도 갱신한다 <!-- id: c198 --> |
+| 주기 작업(헤르메스 크론, 예약 워크플로, 작업 스케줄러) 만들기·바꾸기, 보호 규칙·토큰·모델·인증 변경 | **지금 1회 실행해 성공 증거를 확인한 뒤** `scripts/ops/jobs.toml`(감시 대장)에 등록한다(등록 = 증거까지). 변경은 대장에서 영향받는 작업을 찾아 1회 실행. 상태판 `C:\work\_ops\STATUS.md`, 근거 [docs/주기작업_신뢰성_체계.md](docs/주기작업_신뢰성_체계.md) <!-- id: c7e4 --> |
 | 사이트 다운, build-check·site-health-check 실패 | `deploy-incident` 스킬 <!-- id: d920 --> |

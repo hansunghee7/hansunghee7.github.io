@@ -1,6 +1,6 @@
 # 주기 작업·서비스·PC 상태 대장 (watch.py가 읽는다). 새 주기 작업을 만들면 여기에 한 항목을 추가한다.
 # 등록 = 지금 1회 실행해 성공 증거를 확인한 뒤 이 대장에 적는 것까지(DONE=VERIFIED, 사장님 지시 2026-09-20).
-# kind: hermes_cron | gh_workflow | tcp | http | cmd | pc.  every_min: 점검 주기(분). 기본 15, gh_workflow·pc·cmd는 60.   severity = "warn"이면 죽어 있어도 🟡 주의로만 본다.
+# kind: hermes_cron | gh_workflow | tcp | http | cmd | pc.  every_min: 점검 주기(분). 기본 30, gh_workflow·cmd 360, pc 1440. fail_after: 연속 실패 몇 번째에 알릴지(기본 2, gh_workflow·pc·cmd는 1).   severity = "warn"이면 죽어 있어도 🟡 주의로만 본다.
 # period_min을 안 적은 gh_workflow는 최근 실행 간격의 중앙값으로 자동 계산한다.
 
 # ---------- 헤르메스 크론(신PC). "ok"는 AI 실행 종료일 뿐이라 결과물 확인(stuck_glob)을 함께 건다 ----------
@@ -124,6 +124,7 @@ kind = "gh_workflow"
 repo = "hansunghee7/hansunghee7.github.io"
 workflow = "Scheduled publish"
 name = "Scheduled publish(예약 발행)"
+every_min = 120  # 글 발행 시각에 직결되므로 2시간마다
 
 [[job]]
 id = "gh:site:Site health check"
@@ -212,7 +213,7 @@ kind = "cmd"
 cmd = ["python", 'C:\\work\\_ops\\gemini_ping.py']
 name = "제미나이 API(검증 키 살아 있음, 한도 소모 없음)"
 
-# ---------- PC 보안(60분 주기, 알림은 연속 2회 이상일 때) ----------
+# ---------- PC 보안(하루 1회, 1회 실패에 알림) ----------
 [[job]]
 id = "pc:disk"
 kind = "pc"

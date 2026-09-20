@@ -72,6 +72,11 @@ class WatchTest(unittest.TestCase):
         self.assertEqual(new["a"]["fails"], 1)
         self.assertEqual(alerts, [])
 
+    def test_fail_after_one_alerts_on_first_failure(self):
+        r = {"id": "d", "name": "D", "status": "fail", "detail": "x", "fail_after": 1}
+        _, alerts = w.merge_state({"d": {"status": "ok", "fails": 0}}, [r], T0)
+        self.assertEqual([k for k, _ in alerts], ["down"])
+
     def test_first_run_sends_no_per_item_alerts(self):
         _, a = w.merge_state({}, [{"id": "a", "name": "A", "status": "fail", "detail": "x"}], T0)
         self.assertEqual(a, [])

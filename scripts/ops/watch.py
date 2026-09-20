@@ -31,8 +31,13 @@ STATE_DIR = os.environ.get("OPS_STATE_DIR", r"C:\work\_ops")
 MAILBOX = os.environ.get("OPS_MAILBOX", r"C:\work\solar-bible\mailbox\mailbox.py")
 ANSI = re.compile(r"\x1b\[[0-9;]*m")
 ICON = {"ok": "🟢", "pending": "⚪", "warn": "🟡", "fail": "🔴"}
-# 점검마다 필요한 주기가 다르다: 서비스·헤르메스 15분, GitHub·PC 보안·명령 점검 60분. 항목별로 every_min으로 바꿀 수 있다.
-DEFAULT_EVERY = {"gh_workflow": 60, "pc": 60, "cmd": 60}
+# 점검 주기는 "탐지 지연을 얼마까지 허용하는가"로 정한다(주기 = 탐지 지연의 하한). 항목별로 every_min으로 바꿀 수 있다.
+#  - 에이전트가 일하다가 부딪히는 것(서비스, 헤르메스 크론, 기능 점검): 30분. 연속 2회 실패 때 알리므로 약 1시간 안에 안다.
+#  - GitHub 예약 작업, 명령 점검: 6시간(작업 주기가 하루~2시간이고 실패는 한 번에 확정되므로 1회 실패에 알림).
+#  - PC 보안 상태: 하루 1회(1회 실패에 알림).
+DEFAULT_EVERY = {"gh_workflow": 360, "pc": 1440, "cmd": 360}
+DEFAULT_FAIL_AFTER = {"gh_workflow": 1, "pc": 1, "cmd": 1}
+DEFAULT_TICK = 30
 
 
 def now():
@@ -227,7 +232,7 @@ def check_pc(job, at):
 
 def evaluate(jobs, at, prev=None):
     prev = prev or {}
-    due = {j["id"] for j in jobs if is_due(prev.get(j["id"]), j.get("every_min", DEFAULT_EVERY.get(j["kind"], 15)), at)}
+    due = {j["id"] for j in jobs if is_due(prev.get(j["id"]), j.get("every_min", DEFAULT_EVERY.get(j["kind"], DEFAULT_TICK)), at)}
     hermes = find_exe("hermes", [r"C:\Users\PC\AppData\Local\hermes\bin\hermes.exe"])
     crons = parse_hermes_cron(run([hermes, "cron", "list"])[1]) if any(j["kind"] == "hermes_cron" and j["id"] in due for j in jobs) else {}
     gh_runs = load_gh(sorted({(j["repo"], j["workflow"]) for j in jobs if j["kind"] == "gh_workflow" and j["id"] in due}))
@@ -244,7 +249,8 @@ def evaluate(jobs, at, prev=None):
             st, detail = "warn", f"점검 자체가 실패: {type(exc).__name__}: {str(exc)[:80]}"
         if st == "fail" and j.get("severity") == "warn":
             st = "warn"
-        results.append({"id": j["id"], "name": j["name"], "status": st, "detail": detail, "owner": j.get("owner", "탐"), "note": j.get("note", "")})
+        results.append({"id": j["id"], "name": j["name"], "status": st, "detail": detail, "owner": j.get("owner", "탐"), "note": j.get("note", ""),
+                        "fail_after": j.get("fail_after", DEFAULT_FAIL_AFTER.get(j["kind"], 2))})
     return results
 
 
@@ -262,9 +268,10 @@ def merge_state(prev, results, at):
         since = p.get("since") if p.get("status") == r["status"] else at.isoformat()
         new[r["id"]] = {**r, "fails": fails, "since": since, "checked": at.isoformat()}
         if prev:
-            if bad and fails == 2:
+            need = r.get("fail_after", 2)
+            if bad and fails == need:
                 alerts.append(("down", r))
-            elif p.get("status") == "fail" and not bad and p.get("fails", 0) >= 2:
+            elif p.get("status") == "fail" and not bad and p.get("fails", 0) >= p.get("fail_after", 2):
                 alerts.append(("up", r))
     return new, alerts
 
