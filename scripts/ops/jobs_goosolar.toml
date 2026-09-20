@@ -10,6 +10,13 @@ max_age_min = 45
 name = "예약 발행 보조 시계(구PC cron, kick_publish.py)"
 note = "2026-09-20 신PC 작업 스케줄러에서 구PC cron으로 이전. 구PC 자신의 kick.last 갱신 시각을 확인(신PC 대장의 watcher:goosolar가 구PC 전체를 밖에서 봄)"
 
+[[job]]
+id = "svc:hermes-agent"
+kind = "cmd"
+cmd = ["systemctl", "is-active", "hermes-agent"]
+name = "구솔라 텔레그램 봇(hermes-agent 서비스, /wol 신PC 켜기)"
+note = "2026-09-21 허용 사용자 제한·WoL 확인 응답 개편. 봇이 죽으면 신PC 켜기가 안 된다"
+
 # ---------- GitHub 예약 작업 ----------
 [[job]]
 id = "gh:site:Fetch Clarity"
