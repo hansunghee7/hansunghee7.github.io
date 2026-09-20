@@ -77,6 +77,17 @@ class WatchTest(unittest.TestCase):
         _, alerts = w.merge_state({"d": {"status": "ok", "fails": 0}}, [r], T0)
         self.assertEqual([k for k, _ in alerts], ["down"])
 
+    def test_file_age_checks_heartbeat_file(self):
+        import os
+        import tempfile
+        f = tempfile.NamedTemporaryFile(delete=False)
+        f.close()
+        at = datetime.fromtimestamp(os.path.getmtime(f.name) + 60 * 10, tz=KST)
+        self.assertEqual(w.check_file_age({"path": f.name, "max_age_min": 45}, at)[0], "ok")
+        at = datetime.fromtimestamp(os.path.getmtime(f.name) + 60 * 90, tz=KST)
+        self.assertEqual(w.check_file_age({"path": f.name, "max_age_min": 45}, at)[0], "fail")
+        self.assertEqual(w.check_file_age({"path": f.name + ".none", "max_age_min": 45}, at)[0], "fail")
+
     def test_first_run_sends_no_per_item_alerts(self):
         _, a = w.merge_state({}, [{"id": "a", "name": "A", "status": "fail", "detail": "x"}], T0)
         self.assertEqual(a, [])
