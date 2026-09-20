@@ -167,6 +167,7 @@ CLAUDE.md 200줄 이하, 역할 노트 80줄 이하. 한 줄마다 "**이 줄을
 |---|---|
 | 새 글(블로그·SNS), 발행 현황 | **`ink-desk` 스킬을 먼저 연다**(용도별 `ink-homepage`). 새 글 전 [퍼스널 브랜딩 가이드](docs/퍼스널_브랜딩_가이드.md)(화법)와 [WRITING_GUIDE](docs/WRITING_GUIDE.md). 사장님이 바로 읽는 문구(알림, 아티팩트 첫 화면)도 이 화법을 쓴다(헤르메스 보고서·사고 기록·지시서 같은 검증 문서는 제외) <!-- id: 7c3d --> |
 | UX·디자인·카피(공개 사이트, 스튜디오, **Claude 아티팩트 포함**) | `saegim`이 붙어 있으면 `lookup(doc="UX_GUIDE", query=...)` 먼저, 반영했으면 `cite(...)`. 안 붙어 있으면 [docs/UX_GUIDE.md](docs/UX_GUIDE.md). html·css를 읽으면 `.claude/rules/ux-guide.md`가 자동 로드된다. 아티팩트는 `artifact-design` 스킬 전에 UX_GUIDE부터 본다 <!-- id: 6039 --> |
+| 사장님께 드리는 보고·아티팩트·알림·파일 | **새김 `lookup`을 먼저**(사장님 지시 2026-09-20, 무조건), 반영했으면 `cite`. 아티팩트 발행, 파일 전달, 사장님 앞 우편은 조회 기록이 없으면 훅이 막는다. 새김이 끊겼으면 접속 불가를 사장님께 밝히고 UX_GUIDE.md를 직접 읽은 뒤 `.claude/saegim-outage` 파일을 만든다(훅 통과) <!-- id: b6d2 --> |
 | `insight-7b3e9f2c/` (스튜디오) | 파일을 읽으면 `.claude/rules/studio.md`가 로드된다. 끝내기 전 `python scripts/check_studio_style.py` FAIL 0. `shorts-studio.html`은 파이프라인이 덮어쓰니 `shorts-lab/pipeline/build_studio_site.py`를 고친다 <!-- id: 8f4e --> |
 | `log_assets/images/` 정리·삭제 | `image-cleanup` 스킬 <!-- id: d8e2 --> |
 | 숏폼(대본 검토, 리서치 반영, 음성·자막) | 작업 시작 전 `add_repo`로 `hansunghee7/shorts-lab`을 부착한다(정본이 전부 거기 있다). "쇼츠랩"은 내부 코드네임이고 채널명·"심플리파이어 미디어"는 다크 런칭 중이라 이 저장소 밖 어디에도 노출하지 않는다(`shorts-lab/PUBLISHING.md`) <!-- id: a14c --> |
