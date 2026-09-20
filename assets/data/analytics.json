@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-20T00:10:39.243767+00:00",
+  "updated_at": "2026-09-20T02:54:29.387313+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 236,
-    "activeUsers": 156,
-    "newUsers": 156,
+    "sessions": 238,
+    "activeUsers": 157,
+    "newUsers": 158,
     "returningUsers": 0
   },
   "daily": [
@@ -178,10 +178,10 @@
     },
     {
       "date": "2026-09-19",
-      "sessions": 2,
-      "activeUsers": 1,
-      "newUsers": 0,
-      "returningUsers": 1
+      "sessions": 3,
+      "activeUsers": 2,
+      "newUsers": 2,
+      "returningUsers": 0
     },
     {
       "date": "2026-09-20",
@@ -202,7 +202,7 @@
     }
   ],
   "landing_types": {
-    "home": 137,
+    "home": 139,
     "log_home": 7,
     "individual_post": 63,
     "other": 30
@@ -210,7 +210,7 @@
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 176
+      "sessions": 179
     },
     {
       "source": "google",
@@ -229,12 +229,12 @@
       "sessions": 5
     },
     {
-      "source": "(not set)",
+      "source": "maru-connect.webflow.io",
       "sessions": 4
     },
     {
-      "source": "maru-connect.webflow.io",
-      "sessions": 4
+      "source": "(not set)",
+      "sessions": 3
     },
     {
       "source": "m.facebook.com",
@@ -270,7 +270,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 176
+      "sessions": 179
     },
     {
       "source": "google",
@@ -547,7 +547,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 164,
+    "total_desktop_sessions": 166,
     "excluded_invalid_sessions": 21,
     "by_resolution": [
       {
@@ -558,7 +558,7 @@
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 36
+        "sessions": 37
       },
       {
         "resolution": "1920x1080",
@@ -601,13 +601,13 @@
         "sessions": 4
       },
       {
-        "resolution": "1024x2160",
-        "width": 1024,
-        "sessions": 2
-      },
-      {
         "resolution": "1280x800",
         "width": 1280,
+        "sessions": 3
+      },
+      {
+        "resolution": "1024x2160",
+        "width": 1024,
         "sessions": 2
       },
       {
