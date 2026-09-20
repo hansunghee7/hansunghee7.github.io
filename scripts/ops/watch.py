@@ -35,8 +35,8 @@ ICON = {"ok": "🟢", "pending": "⚪", "warn": "🟡", "fail": "🔴"}
 #  - 에이전트가 일하다가 부딪히는 것(서비스, 헤르메스 크론, 기능 점검): 30분. 연속 2회 실패 때 알리므로 약 1시간 안에 안다.
 #  - GitHub 예약 작업, 명령 점검: 6시간(작업 주기가 하루~2시간이고 실패는 한 번에 확정되므로 1회 실패에 알림).
 #  - PC 보안 상태: 하루 1회(1회 실패에 알림).
-DEFAULT_EVERY = {"gh_workflow": 360, "pc": 1440, "cmd": 360}
-DEFAULT_FAIL_AFTER = {"gh_workflow": 1, "pc": 1, "cmd": 1}
+DEFAULT_EVERY = {"gh_workflow": 360, "pc": 1440, "cmd": 360, "git_file_lines": 360, "git_file_age": 360}
+DEFAULT_FAIL_AFTER = {"gh_workflow": 1, "pc": 1, "cmd": 1, "git_file_lines": 1, "git_file_age": 1}
 DEFAULT_TICK = 30
 
 
@@ -198,6 +198,38 @@ def check_file_age(job, at):
     return ("ok" if age <= job["max_age_min"] else "fail"), f"마지막 갱신 {age:.0f}분 전"
 
 
+def git_fetch(repo, branch):
+    run(["git", "-C", repo, "fetch", "-q", "origin", branch], timeout=60)
+
+
+def check_git_file_lines(job, at):
+    """origin/<branch>의 파일 줄 수: 목표(warn_over) 초과는 주의, 상한(fail_over) 초과는 실패."""
+    branch = job.get("branch", "main")
+    git_fetch(job["repo"], branch)
+    code, out = run(["git", "-C", job["repo"], "show", f"origin/{branch}:{job['path']}"])
+    if code != 0:
+        return "warn", "줄 수를 읽지 못함"
+    n = len(out.splitlines())
+    if n > job["fail_over"]:
+        return "fail", f"{n}줄, 상한 {job['fail_over']}줄 초과"
+    if n > job["warn_over"]:
+        return "warn", f"{n}줄, 목표 {job['warn_over']}줄 초과: 폴리싱 필요"
+    return "ok", f"{n}줄(목표 {job['warn_over']}, 상한 {job['fail_over']})"
+
+
+def check_git_file_age(job, at):
+    """origin/<branch>에서 파일의 마지막 커밋이 max_age_days 안인가(정기 작업의 하트비트로 쓴다)."""
+    branch = job.get("branch", "main")
+    git_fetch(job["repo"], branch)
+    code, out = run(["git", "-C", job["repo"], "log", "-1", "--format=%ct", f"origin/{branch}", "--", job["path"]])
+    if code != 0 or not out.strip().isdigit():
+        return "warn", "마지막 커밋 시각을 읽지 못함"
+    age = (at.timestamp() - int(out.strip())) / 86400
+    if age > job["max_age_days"]:
+        return "fail", f"마지막 {age:.0f}일 전, 주기 {job['max_age_days']}일 초과"
+    return "ok", f"마지막 {age:.1f}일 전(주기 {job['max_age_days']}일)"
+
+
 def check_cmd(job, at):
     cmd = list(job["cmd"])
     if cmd[0] == "python":
@@ -253,7 +285,7 @@ def evaluate(jobs, at, prev=None):
         try:
             k = j["kind"]
             st, detail = (check_hermes(j, crons, at) if k == "hermes_cron" else check_gh(j, gh_runs, at) if k == "gh_workflow"
-                          else check_tcp(j, at) if k == "tcp" else check_http(j, at) if k == "http" else check_cmd(j, at) if k == "cmd" else check_file_age(j, at) if k == "file_age" else check_pc(j, at))
+                          else check_tcp(j, at) if k == "tcp" else check_http(j, at) if k == "http" else check_cmd(j, at) if k == "cmd" else check_file_age(j, at) if k == "file_age" else check_git_file_lines(j, at) if k == "git_file_lines" else check_git_file_age(j, at) if k == "git_file_age" else check_pc(j, at))
         except Exception as exc:
             st, detail = "warn", f"점검 자체가 실패: {type(exc).__name__}: {str(exc)[:80]}"
         if st == "fail" and j.get("severity") == "warn":

@@ -1,6 +1,6 @@
 # 주기 작업·서비스·PC 상태 대장 (watch.py가 읽는다). 새 주기 작업을 만들면 여기에 한 항목을 추가한다.
 # 등록 = 지금 1회 실행해 성공 증거를 확인한 뒤 이 대장에 적는 것까지(DONE=VERIFIED, 사장님 지시 2026-09-20).
-# kind: hermes_cron | gh_workflow | tcp | http | cmd | file_age | pc.  every_min: 점검 주기(분). 기본 30, gh_workflow·cmd 360, pc 1440. fail_after: 연속 실패 몇 번째에 알릴지(기본 2, gh_workflow·pc·cmd는 1).   severity = "warn"이면 죽어 있어도 🟡 주의로만 본다.
+# kind: hermes_cron | gh_workflow | tcp | http | cmd | file_age | git_file_lines | git_file_age | pc.  every_min: 점검 주기(분). 기본 30, gh_workflow·cmd 360, pc 1440. fail_after: 연속 실패 몇 번째에 알릴지(기본 2, gh_workflow·pc·cmd는 1).   severity = "warn"이면 죽어 있어도 🟡 주의로만 본다.
 # period_min을 안 적은 gh_workflow는 최근 실행 간격의 중앙값으로 자동 계산한다.
 
 # ---------- 헤르메스 크론(신PC). "ok"는 AI 실행 종료일 뿐이라 결과물 확인(stuck_glob)을 함께 건다 ----------
@@ -69,6 +69,25 @@ path = 'C:\work\_ops\kick.last'
 max_age_min = 45
 name = "예약 발행 보조 시계(kick_publish.py)"
 note = "GitHub 예약 실행 누락 시 대신 실행. kick.log에 기록"
+
+# ---------- 문서 위생: CLAUDE.md 상한 250줄(CI)과 격주 폴리싱이 실제로 도는지 ----------
+[[job]]
+id = "doc:claude-md-size"
+kind = "git_file_lines"
+repo = 'C:\work\hansunghee7.github.io'
+path = "CLAUDE.md"
+warn_over = 200
+fail_over = 250
+name = "CLAUDE.md 줄 수(목표 200, 상한 250)"
+
+[[job]]
+id = "doc:claude-md-polish"
+kind = "git_file_age"
+repo = 'C:\work\hansunghee7.github.io'
+path = "docs/폴리싱_기록.md"
+max_age_days = 14
+name = "CLAUDE.md 정기 폴리싱(격주, 기록 파일 수정일)"
+note = "폴리싱을 하면 docs/폴리싱_기록.md에 한 줄 추가하고 커밋해야 함"
 
 # ---------- GitHub 예약 작업 ----------
 [[job]]

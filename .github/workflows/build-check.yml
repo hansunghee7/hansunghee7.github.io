@@ -57,6 +57,11 @@ jobs:
         if: github.event_name == 'pull_request'
         run: python3 scripts/check_writing_style.py "origin/${{ github.base_ref }}"
 
+      # 2026-09-20 도입(사장님 결정): CLAUDE.md 상한 250줄. 목표 200줄은 격주 폴리싱(docs/폴리싱_기록.md)으로 지킨다.
+      - name: CLAUDE.md 줄 수 상한 검사
+        if: github.event_name == 'pull_request'
+        run: python3 scripts/check_claude_md_size.py
+
       - name: Set up Ruby (GitHub Pages와 동일한 gem 구성)
         uses: ruby/setup-ruby@v1
         with:

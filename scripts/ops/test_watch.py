@@ -88,6 +88,27 @@ class WatchTest(unittest.TestCase):
         self.assertEqual(w.check_file_age({"path": f.name, "max_age_min": 45}, at)[0], "fail")
         self.assertEqual(w.check_file_age({"path": f.name + ".none", "max_age_min": 45}, at)[0], "fail")
 
+    def test_git_checks_grade_lines_and_age(self):
+        import subprocess
+        import tempfile
+        d = tempfile.mkdtemp()
+        run = lambda *c: subprocess.run(["git", "-C", d, *c], capture_output=True, check=True)
+        run("init", "-q", "-b", "main")
+        run("config", "user.email", "t@t")
+        run("config", "user.name", "t")
+        open(d + "/F.md", "w").write("\n".join(["x"] * 210))
+        run("add", "F.md")
+        run("commit", "-q", "-m", "m")
+        run("update-ref", "refs/remotes/origin/main", "HEAD")
+        w.git_fetch = lambda repo, branch: None  # 원격 없이 시험
+        job = {"repo": d, "path": "F.md", "warn_over": 200, "fail_over": 250, "max_age_days": 14}
+        self.assertEqual(w.check_git_file_lines(job, T0)[0], "warn")
+        self.assertEqual(w.check_git_file_lines(dict(job, warn_over=300, fail_over=400), T0)[0], "ok")
+        self.assertEqual(w.check_git_file_lines(dict(job, warn_over=100, fail_over=200), T0)[0], "fail")
+        now = datetime.now(KST)
+        self.assertEqual(w.check_git_file_age(job, now)[0], "ok")
+        self.assertEqual(w.check_git_file_age(job, now + timedelta(days=20))[0], "fail")
+
     def test_first_run_sends_no_per_item_alerts(self):
         _, a = w.merge_state({}, [{"id": "a", "name": "A", "status": "fail", "detail": "x"}], T0)
         self.assertEqual(a, [])
