@@ -2,7 +2,7 @@
 layout: default
 title: "PM과 PL 차이는 뭘까요?"
 category: "Be the PO"
-image: 'https://images.unsplash.com/photo-1590402494587-44b71d7772f6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080'
+image: '/log_assets/images/629_PM과 PL 차이는 뭘까요_cover.jpg'
 date: 2026-09-20T11:36:00+09:00
 date_string: Sep 20. 2026
 keywords: PM PL 차이, PL PM 차이, PM PL, 프로젝트 매니저 프로젝트 리더 차이
@@ -13,6 +13,8 @@ channel_variants:
   instagram_caption: ''
   manual_copy_block: ''
 permalink: /logs/629/
+next_url: "/logs/625/"
+next_title: "주니어 PM은 왜 스스로 문제를 정의하지 못할까?"
 ---
 
 PM과 PL 차이는 뭘까요?

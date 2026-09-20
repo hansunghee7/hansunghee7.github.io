@@ -131,7 +131,7 @@
 371,
 510,
 406,
-539
+629
 ]
 },
 {
@@ -1943,10 +1943,10 @@
 "url": "/logs/132/",
 "image": "/log_assets/images/132_PM%2C%20PL%2C%20TPM%EC%9D%98%20%EC%B0%A8%EC%9D%B4%20%ED%95%9C%EB%88%88%EC%97%90%20%EB%B3%B4%EA%B8%B0_cover.jpg",
 "related": [
+629,
 139,
 197,
-371,
-182
+371
 ]
 },
 {
@@ -2049,9 +2049,9 @@
 "image": "/log_assets/images/139_%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8%20%EB%A7%A4%EB%8B%88%EC%A0%80%20vs%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%A7%A4%EB%8B%88%EC%A0%80%EC%9D%98%20%EC%B0%A8%EC%9D%B4%EB%8A%94_cover.jpg",
 "related": [
 132,
+629,
 605,
-547,
-586
+547
 ]
 },
 {
@@ -8934,6 +8934,21 @@
 566,
 407,
 11
+]
+},
+{
+"id": 629,
+"title": "PM과 PL 차이는 뭘까요?",
+"category": "Be the PO",
+"date": "Sep 20. 2026",
+"date_sort": "20260920",
+"url": "/logs/629/",
+"image": "/log_assets/images/629_PM%EA%B3%BC%20PL%20%EC%B0%A8%EC%9D%B4%EB%8A%94%20%EB%AD%98%EA%B9%8C%EC%9A%94_cover.jpg",
+"related": [
+132,
+139,
+371,
+197
 ]
 }
 ]
