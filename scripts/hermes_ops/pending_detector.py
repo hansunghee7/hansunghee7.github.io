@@ -29,6 +29,8 @@ from pathlib import Path
 REPO = Path(os.environ.get("DETECTOR_REPO", r"C:\work\solar-bible"))
 STATE = Path(os.environ.get("DETECTOR_STATE", r"C:\Users\PC\AppData\Local\hermes\pending_detector_state.json"))
 HERMES_CMD = [t.strip('"') for t in shlex.split(os.environ.get("DETECTOR_HERMES_CMD", "hermes"), posix=False)]
+START_GRACE = float(os.environ.get("DETECTOR_START_GRACE", "8"))   # 폴러 기동 실패를 기다리는 초
+WAKE_LOG = STATE.with_name("pending_detector_wake.log")
 LANES = {
     "tasks/pending": "dbec1e96eff3",        # solar-bible-tasks-poller (짧은 작업)
     "tasks/pending-long": "938439795638",   # solar-bible-long-poller (딥리서치 등 긴 작업)
@@ -53,14 +55,35 @@ def save_state(state):
 
 
 def wake(job_id):
-    """폴러를 깨운다. 성공이면 (True, ''), 실패면 (False, 사유)."""
+    """폴러를 깨운다. 기동만 확인하고 끝나길 기다리지 않는다. 성공이면 (True, ''), 실패면 (False, 사유).
+
+    `hermes cron run`은 폴러 실행이 끝날 때까지 붙잡고 있다(2026-09-20 실측: 처리할 지시서가 없을 때 26초,
+    지시서를 처리하는 동안은 60초 초과). 예전에는 60초를 기다리다 실패로 기록해 매분 재시도했고, 파일럿 3차
+    지시서가 폴러 정기 실행까지 9분 47초 밀렸다. 그래서 START_GRACE초 안에 오류로 끝나면 실패,
+    그때까지 돌고 있으면 기동된 것으로 보고 손을 뗀다(폴러는 떨어져 나와 계속 돈다).
+    """
+    flags = 0
+    if sys.platform == "win32":
+        flags = subprocess.DETACHED_PROCESS | subprocess.CREATE_NEW_PROCESS_GROUP
     try:
-        r = subprocess.run([*HERMES_CMD, "cron", "run", job_id], capture_output=True, text=True,
-                           encoding="utf-8", timeout=60)
-    except (OSError, subprocess.TimeoutExpired) as e:   # hermes를 못 찾거나 응답이 없는 경우
+        WAKE_LOG.parent.mkdir(parents=True, exist_ok=True)
+        with open(WAKE_LOG, "ab") as log:
+            log.write(f"\n--- {time.strftime('%Y-%m-%d %H:%M:%S')} cron run {job_id}\n".encode("utf-8"))
+            log.flush()
+            p = subprocess.Popen([*HERMES_CMD, "cron", "run", job_id], stdout=log, stderr=subprocess.STDOUT,
+                                 stdin=subprocess.DEVNULL, creationflags=flags)
+    except OSError as e:   # hermes를 못 찾는 경우
         return False, f"{type(e).__name__}: {e}"[:200]
-    if r.returncode != 0:
-        return False, ((r.stderr or r.stdout).strip()[:200] or f"종료 코드 {r.returncode}")
+    try:
+        rc = p.wait(timeout=START_GRACE)
+    except subprocess.TimeoutExpired:
+        return True, ""    # 아직 폴러가 도는 중 = 기동됨
+    if rc != 0:
+        try:
+            tail = WAKE_LOG.read_bytes()[-300:].decode("utf-8", "replace").strip()
+        except OSError:
+            tail = ""
+        return False, (tail[-200:] or f"종료 코드 {rc}")
     return True, ""
 
 

@@ -4,6 +4,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import time
 import unittest
 from pathlib import Path
 
@@ -37,15 +38,16 @@ class DetectorTest(unittest.TestCase):
         self.log = self.tmp / "hermes_calls.log"
         self.fake = self.tmp / "fakehermes.py"
         self.fake.write_text(
-            "import os, sys\n"
+            "import os, sys, time\n"
             "open(os.environ['FAKE_LOG'], 'a').write(' '.join(sys.argv[1:]) + '\\n')\n"
+            "time.sleep(float(os.environ.get('FAKE_SLEEP', '0')))\n"   # 폴러가 지시서를 처리하는 동안 붙잡고 있는 상황
             "sys.exit(int(os.environ.get('FAKE_RC', '0')))\n"
         )
 
     def tearDown(self):
         shutil.rmtree(self.tmp, ignore_errors=True)
 
-    def run_detector(self, rc="0", repo=None):
+    def run_detector(self, rc="0", repo=None, extra=None):
         env = dict(os.environ)
         env.update({
             "DETECTOR_REPO": str(repo or self.repo),
@@ -55,6 +57,7 @@ class DetectorTest(unittest.TestCase):
             "FAKE_RC": rc,
             "PYTHONIOENCODING": "utf-8",
         })
+        env.update(extra or {})
         r = subprocess.run([sys.executable, str(SCRIPT)], capture_output=True, text=True,
                            encoding="utf-8", env=env)
         return r.stdout.strip(), r.returncode
@@ -127,6 +130,19 @@ class DetectorTest(unittest.TestCase):
         self.assertEqual(rc, 0)
         self.assertIn("pending-long", out)
         self.assertEqual(self.calls(), ["cron run 938439795638"])   # 짧은 작업 폴러는 깨우지 않음
+
+    def test_9_slow_poller_does_not_block_or_fail(self):
+        # 2026-09-20 파일럿 3차 사고: 폴러가 지시서를 처리하는 동안 `cron run`이 붙잡고 있으면
+        # 예전 감지기는 60초 뒤 실패로 기록하고 매분 재시도했다. 이제는 기동만 확인하고 기록한다.
+        self.push_pending("a.md")
+        t = time.time()
+        out, rc = self.run_detector(extra={"FAKE_SLEEP": "6", "DETECTOR_START_GRACE": "1"})
+        self.assertLess(time.time() - t, 5.5)               # 6초 도는 폴러를 기다리지 않고 돌아옴
+        self.assertEqual(rc, 0)
+        self.assertIn("새 지시서 1건", out)
+        out2, rc2 = self.run_detector(extra={"FAKE_SLEEP": "6", "DETECTOR_START_GRACE": "1"})
+        self.assertEqual((out2, rc2), ("", 0))              # 기록됐으므로 다시 깨우지 않음
+        self.assertEqual(self.calls(), ["cron run dbec1e96eff3"])
 
     def test_8_lanes_wake_independently(self):
         self.push_pending("big.md", lane="pending-long")
