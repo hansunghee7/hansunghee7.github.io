@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-20T12:33:00.018591+00:00",
+  "updated_at": "2026-09-20T20:00:45.790659+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 246,
-    "activeUsers": 165,
-    "newUsers": 165,
+    "sessions": 248,
+    "activeUsers": 167,
+    "newUsers": 167,
     "returningUsers": 0
   },
   "daily": [
@@ -185,9 +185,9 @@
     },
     {
       "date": "2026-09-20",
-      "sessions": 11,
-      "activeUsers": 10,
-      "newUsers": 8,
+      "sessions": 13,
+      "activeUsers": 12,
+      "newUsers": 10,
       "returningUsers": 2
     }
   ],
@@ -202,15 +202,15 @@
     }
   ],
   "landing_types": {
-    "home": 148,
+    "home": 150,
     "log_home": 7,
-    "individual_post": 65,
+    "individual_post": 66,
     "other": 31
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 183
+      "sessions": 185
     },
     {
       "source": "google",
@@ -222,7 +222,7 @@
     },
     {
       "source": "(not set)",
-      "sessions": 8
+      "sessions": 9
     },
     {
       "source": "l.facebook.com",
@@ -270,7 +270,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 183
+      "sessions": 185
     },
     {
       "source": "google",
@@ -380,7 +380,7 @@
     {
       "path": "/logs/619",
       "title": "/logs/619",
-      "sessions": 17
+      "sessions": 18
     },
     {
       "path": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
@@ -457,8 +457,8 @@
     {
       "path": "/logs/619/",
       "title": "AI가 우선순위까지 대신 정해줄 수 있을까",
-      "uniqueViews": 13,
-      "views": 68
+      "uniqueViews": 14,
+      "views": 69
     },
     {
       "path": "/log_assets/markdown/130_왜 한국 스타트업은 미국 진출을 꿈꾸는가.html",
@@ -547,13 +547,13 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 173,
+    "total_desktop_sessions": 175,
     "excluded_invalid_sessions": 21,
     "by_resolution": [
       {
         "resolution": "2560x1440",
         "width": 2560,
-        "sessions": 40
+        "sessions": 41
       },
       {
         "resolution": "800x600",
@@ -606,6 +606,11 @@
         "sessions": 3
       },
       {
+        "resolution": "1024x1024",
+        "width": 1024,
+        "sessions": 2
+      },
+      {
         "resolution": "1024x2160",
         "width": 1024,
         "sessions": 2
@@ -639,11 +644,6 @@
         "resolution": "3072x1728",
         "width": 3072,
         "sessions": 2
-      },
-      {
-        "resolution": "1024x1024",
-        "width": 1024,
-        "sessions": 1
       },
       {
         "resolution": "1281x720",
