@@ -8,7 +8,8 @@
 log_assets/markdown/*.md 의 front matter 에서 아래 세 조건이 모두 맞는 글만
 `published: false` 를 `published: true` 로 바꾼다.
   1. published 가 false
-  2. publish_at 필드가 있다 (없으면 "컨펌 안 된 초안"이므로 절대 안 건드림)
+  2. publish_at 필드에 값이 있다 (줄이 없거나 값이 비어 있으면 "컨펌 안 된
+     초안"이므로 절대 안 건드림. CMS 에서 칸을 비워 저장해도 안전하다)
   3. 지금 시각 >= publish_at
 
 안전장치 (이 파일이 지키는 것)
@@ -19,6 +20,8 @@ log_assets/markdown/*.md 의 front matter 에서 아래 세 조건이 모두 맞
   (scripts/normalize_new_post.py 와 같은 원칙: 필요한 삽입만 정규식으로).
 * publish_at 줄은 지우지 않는다(기록용).
 * 멱등: published: true 가 된 글은 다음 실행에서 조건 1 에 안 걸려 대상 아님.
+* 값이 비어 있는 publish_at(`publish_at:`, `""`, `''`, `null`, `~`)은 "예약
+  없음"과 같다. 경고도 내지 않는다(CMS 가 빈 칸을 이렇게 저장해도 무해하도록).
 * publish_at 형식이 잘못된 글은 건너뛰고 경고만 남긴다(종료 코드 0).
   한 글의 오타가 다른 글의 발행을 막으면 안 되기 때문이다.
 * 시간대: 표기에 오프셋(+09:00, Z 등)이 있으면 그대로 따르고, 오프셋이 없으면
@@ -62,6 +65,15 @@ LINE_RE = re.compile(r"[^\r\n]*(?:\r\n|\n|\r)|[^\r\n]+")
 
 class BadFormat(Exception):
     pass
+
+
+def is_blank_value(raw):
+    """YAML 값이 '예약 없음'을 뜻하는 빈 값인가: 공백, "", '', null, ~, 주석만."""
+    val = raw.strip()
+    if val.startswith("#"):
+        return True
+    val = re.split(r"\s+#", val, maxsplit=1)[0].strip()
+    return val in ("", '""', "''", "~") or val.lower() == "null"
 
 
 def parse_publish_at(raw):
@@ -149,8 +161,9 @@ def process_text(text, now):
             at_lines.append((pos, stripped))
         pos += len(line)
 
-    # publish_at 없음 -> 컨펌 안 된 초안이거나 예약과 무관한 글. 절대 안 건드림.
-    if not at_lines:
+    # publish_at 없음(줄이 없거나 값이 비어 있음) -> 컨펌 안 된 초안이거나
+    # 예약과 무관한 글. 절대 안 건드림.
+    if all(is_blank_value(PUBLISH_AT_RE.match(l).group("val")) for _, l in at_lines):
         return text, "no_publish_at", ""
     if len(pub_lines) != 1 or len(at_lines) != 1:
         return text, "invalid", (
