@@ -28,6 +28,8 @@ from datetime import datetime, timedelta, timezone
 KST = timezone(timedelta(hours=9))
 HERE = os.path.dirname(os.path.abspath(__file__))
 STATE_DIR = os.environ.get("OPS_STATE_DIR", r"C:\work\_ops")
+JOBS_FILE = os.environ.get("OPS_JOBS", "jobs.toml")  # 기기마다 대장을 나눈다(신PC: jobs.toml, 구PC: jobs_goosolar.toml)
+HOST = os.environ.get("OPS_HOST", "신PC")  # 알림에 어느 기기의 감시인지 표시
 MAILBOX = os.environ.get("OPS_MAILBOX", r"C:\work\solar-bible\mailbox\mailbox.py")
 ANSI = re.compile(r"\x1b\[[0-9;]*m")
 ICON = {"ok": "🟢", "pending": "⚪", "warn": "🟡", "fail": "🔴"}
@@ -337,7 +339,7 @@ def send(title, body):
 def main():
     dry = "--dry-run" in sys.argv
     at = now()
-    jobs = tomllib.load(open(os.path.join(HERE, "jobs.toml"), "rb"))["job"]
+    jobs = tomllib.load(open(os.path.join(HERE, JOBS_FILE), "rb"))["job"]
     state_file = os.path.join(STATE_DIR, "state.json")
     prev = json.load(open(state_file, encoding="utf-8")) if os.path.exists(state_file) else {}
     results = evaluate(jobs, at, prev)
@@ -351,7 +353,7 @@ def main():
     bad = [r for r in state.values() if r["status"] == "fail"]
     if not prev:  # 첫 실행은 요약 1통
         body = f"감시를 시작했습니다. 지금 문제 {len(bad)}건:\n" + "\n".join(f"- {r['name']}: {r['detail']}" for r in bad[:12]) + "\n상태판: C:\\work\\_ops\\STATUS.md"
-        send("[감시] 시작: 지금 문제 %d건" % len(bad), body)
+        send("[감시·%s] 시작: 지금 문제 %d건" % (HOST, len(bad)), body)
     for kind, r in alerts:
         head = "🔴 멈춤" if kind == "down" else "🟢 복구"
         send(f"[감시] {head}: {r['name']}", f"{r['name']}: {r['detail']}\n(연속 점검 결과, 상태판 C:\\work\\_ops\\STATUS.md)")
