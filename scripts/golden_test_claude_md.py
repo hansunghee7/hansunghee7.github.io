@@ -23,7 +23,9 @@ import sys
 ROOT = os.environ.get("GOLDEN_ROOT") or os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 EXTERNAL = [r"C:\work\simplifier-cxo-db\standards\simplifier-way.md"]  # 있으면 REACH에 포함
 # 상태·역사 문서는 "규칙이 거기 있다"로 세지 않는다(우연히 문구가 걸려 통과하는 것을 막는다)
-REACH_EXCLUDE = re.compile(r"docs[\\/](진행상황|진행상황_아카이브|지시서|산출물_인덱스)")
+REACH_EXCLUDE = re.compile(
+    r"docs[\\/](진행상황|진행상황_아카이브|지시서|산출물_인덱스|CLAUDE_md_근거_이력|CLAUDE_md_구조최적화_Phase2_설계|claude_md_golden_test)"
+)
 
 
 def read(path):
@@ -145,6 +147,13 @@ FACTS = [
     ("X 공통 불변식", "A", r"20줄 한 장", "설명 형식"),
     ("X 공통 불변식", "A", r"인박스", "경험DB 인박스 기록"),
     ("X 공통 불변식", "A", r"Artifact|아티팩트", "읽을 문서는 링크/아티팩트로"),
+    ("X 공통 불변식", "A", r"카카오톡.{0,20}사용하지 않", "카카오톡 사용 중지(외부 발신 정책)"),
+    ("X 공통 불변식", "A", r"개시어 없이 세션을 닫더라도", "바이~ 없이 끝나는 세션도 산출물 회수·push"),
+    ("X 공통 불변식", "A", r"push까지", "push까지 마감"),
+    ("X 공통 불변식", "A", r"system-map\.html", "인프라 변경 시 시스템 구조 페이지 갱신"),
+    ("X 공통 불변식", "A", r"작업 완료를 보고하기 전에", "경험DB 기록 트리거 원문"),
+    ("X 공통 불변식", "A", r"CLAUDE#<id>", "커밋 인용 태그(새김 측정 데이터원)"),
+    ("X 공통 불변식", "A", r"위임 가능 여부부터 판단", "로컬 실행은 위임 가능 여부부터"),
     # 마야 실사 실패 케이스 A~F (ink 스킬 흐름)
     ("M-A 글 관련 요청 진입", "A", r"블로그·SNS 글 작업", "ink-desk 설명이 상시 로드에 있음"),
     ("M-B ink-desk 진입", "R", r"세션당 한 번, 가장 먼저 연다", "ink-desk 먼저 열기"),
@@ -179,6 +188,10 @@ def main():
         hit = re.search(rx, reach, re.S)
         results.append((scen, "N", "없어야 함: " + desc, hit is None, "" if hit is None else "발견: " + hit.group(0)[:60]))
 
+    # rule 구조 검사: .claude/rules/*.md는 모두 paths: 를 가져야 한다(없으면 상시 로드되어 절감이 사라짐)
+    for rp in sorted(glob.glob(os.path.join(ROOT, ".claude", "rules", "**", "*.md"), recursive=True)):
+        ok = has_paths(frontmatter(read(rp)))
+        results.append(("R rule 구조", "N", "paths 보유: " + os.path.basename(rp), ok, "" if ok else "paths 없음(상시 로드됨)"))
     by = {}
     for scen, lvl, desc, ok, note in results:
         by.setdefault(scen, []).append((lvl, desc, ok, note))
