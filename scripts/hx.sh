@@ -16,7 +16,7 @@
 set -euo pipefail
 
 HOST=shinpc
-SSH=(ssh -o BatchMode=yes -o ConnectTimeout=8 "$HOST")
+SSH=(ssh -o BatchMode=yes -o ConnectTimeout=8 -o ServerAliveInterval=30 -o ServerAliveCountMax=10 "$HOST")
 
 ps_run() { printf '%s\n' "$1" | "${SSH[@]}" powershell -NoProfile -NonInteractive -Command - ; }
 UTF8='[Console]::OutputEncoding=[Text.Encoding]::UTF8;'
