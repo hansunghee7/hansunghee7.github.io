@@ -69,7 +69,7 @@ collections:
         hint: "글 상단 배경과 로그 카드 썸네일에 같이 쓰입니다."
 
       - name: "date"
-        label: "노출용 발행일"
+        label: "발행일"
         widget: "datetime"
         # Sveltia에서는 time_format: false가 "type: date"와 완전히 같은 뜻이라
         # 시/분 선택 자체가 화면에서 사라졌습니다(문서에 명시됨). type을 직접
@@ -84,6 +84,25 @@ collections:
         # 이유: 해외 출장 중에 글을 써도 발행일이 한국 기준으로 일관되게 남습니다.
         input_timezone: "Asia/Seoul"
         hint: "글에 표시되는 날짜입니다. '예약 설정'을 켜면 이 시각이 곧 공개 시각이 됩니다(지나간 시각으로는 예약할 수 없습니다)."
+
+      - name: "published"
+        label: "공개 여부"
+        widget: "boolean"
+        default: true
+        hint: "꺼두면 숨김 상태로 저장되고 홈페이지 어디에도 노출되지 않습니다. 이미 나간 글도 여기서 끄면 숨길 수 있습니다. 노출 여부가 최상위 설정입니다."
+
+      # 예약 발행. scripts/scheduled_publish.py(.github/workflows/scheduled-publish.yml)가
+      # 이 스위치가 켜진 글만 봅니다. 스위치가 없거나 꺼진 글(비노출 글, 컨펌 전 초안)은
+      # 발행일이 어떻든 절대 자동 공개되지 않습니다. 공개 시각은 별도 칸 없이 위
+      # "발행일" 하나를 씁니다(docs/예약_발행.md). Sveltia에는 칸끼리 서로
+      # 잠그는 기능이 없어서(0.200/0.217 번들 확인), 충돌하는 조합은 봇이 규칙으로
+      # 정리합니다: 노출이 켜져 있으면 예약은 무시, 지나간 시각 예약은 공개 안 하고 경고.
+      - name: "scheduled"
+        label: "예약 설정"
+        widget: "boolean"
+        default: false
+        required: false
+        hint: "켜면 '발행일' 시각에 자동으로 공개됩니다. 반드시 '공개 여부'를 끄고 발행일을 앞으로의 시각으로 정한 뒤 저장하세요. 예약을 해제하려면 이 스위치를 끄면 됩니다(끄면 숨김 상태). 정확히 그 시각이 아니라 이후 첫 실행 때 공개되며 최대 2시간쯤 늦을 수 있습니다."
 
       - name: "date_string"
         label: "발행일 표시 텍스트"
@@ -104,25 +123,6 @@ collections:
         label: "AIO 주제어"
         widget: "string"
         required: false
-
-      - name: "published"
-        label: "공개 여부"
-        widget: "boolean"
-        default: true
-        hint: "꺼두면 숨김 상태로 저장되고 홈페이지 어디에도 노출되지 않습니다. 이미 나간 글도 여기서 끄면 숨길 수 있습니다. 노출 여부가 최상위 설정입니다."
-
-      # 예약 발행. scripts/scheduled_publish.py(.github/workflows/scheduled-publish.yml)가
-      # 이 스위치가 켜진 글만 봅니다. 스위치가 없거나 꺼진 글(비노출 글, 컨펌 전 초안)은
-      # 발행일이 어떻든 절대 자동 공개되지 않습니다. 공개 시각은 별도 칸 없이 위
-      # "노출용 발행일" 하나를 씁니다(docs/예약_발행.md). Sveltia에는 칸끼리 서로
-      # 잠그는 기능이 없어서(0.200/0.217 번들 확인), 충돌하는 조합은 봇이 규칙으로
-      # 정리합니다: 노출이 켜져 있으면 예약은 무시, 지나간 시각 예약은 공개 안 하고 경고.
-      - name: "scheduled"
-        label: "예약 설정"
-        widget: "boolean"
-        default: false
-        required: false
-        hint: "켜면 '노출용 발행일' 시각에 자동으로 공개됩니다. 반드시 '공개 여부'를 끄고 발행일을 앞으로의 시각으로 정한 뒤 저장하세요. 예약을 해제하려면 이 스위치를 끄면 됩니다(끄면 숨김 상태). 정확히 그 시각이 아니라 이후 첫 실행 때 공개되며 최대 2시간쯤 늦을 수 있습니다."
 
       - name: "channel_variants"
         label: "채널별 발행 텍스트 (선택)"

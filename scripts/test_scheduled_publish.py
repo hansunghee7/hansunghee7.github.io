@@ -5,7 +5,7 @@
 저장소의 log_assets/ 는 읽지도 쓰지도 않는다. 케이스마다 임시 폴더에 가짜 글을
 만들고, 스크립트를 실제로 돌린 뒤 전/후 front matter 를 출력한다.
 
-모델: 글이 공개되려면 published: false + scheduled: true + date(노출용 발행일)
+모델: 글이 공개되려면 published: false + scheduled: true + date(발행일)
 시각 경과, 이 세 가지가 모두 맞아야 한다. scheduled 가 없거나 false 인 글은
 (비노출 글, 컨펌 전 초안) date 가 과거든 미래든 절대 안 건드린다.
 """

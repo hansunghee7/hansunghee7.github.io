@@ -2,7 +2,7 @@ name: Scheduled publish
 
 # 예약 발행. log_assets/markdown/*.md 중 front matter 가
 #   published: false  +  scheduled: true  +  date: 2026-09-24T10:00:00+09:00
-# 인 글은, date(노출용 발행일) 시각이 지난 뒤 이 워크플로가 처음 도는 때
+# 인 글은, date(발행일) 시각이 지난 뒤 이 워크플로가 처음 도는 때
 # published: true 로 바뀌어 main 에 커밋된다. 사용법·안전장치·되돌리는 법: docs/예약_발행.md
 #
 # 정확한 시각이 아니라 "발행일 이후 첫 실행"에 발행된다. GitHub 의 cron 은
