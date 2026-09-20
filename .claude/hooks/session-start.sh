@@ -5,9 +5,10 @@
 # 조용히 실패해서, main이 34커밋 뒤처진 걸 한참 뒤에야 발견한 적이 있음.)
 set -uo pipefail
 
-cd "$CLAUDE_PROJECT_DIR" || exit 0
+cd "${CLAUDE_PROJECT_DIR:-.}" || exit 0
 
-if [ ! -d .git ]; then
+# git worktree에서는 .git이 디렉터리가 아니라 파일이다(마야는 전용 worktree에서 작업). -d가 아니라 -e로 본다.
+if [ ! -e .git ]; then
   exit 0
 fi
 
@@ -35,5 +36,8 @@ fi
 if [ "${ahead:-0}" -gt 0 ]; then
   echo "ℹ️ 이 브랜치에는 origin/$default_branch에 아직 없는 커밋이 ${ahead}개 있습니다."
 fi
+
+# 세션 의식은 스킬로 옮겨졌다(2026-09-20 구조 최적화). 스킬을 안 열고 진행하는 것을 막기 위해 매 세션 시작에 한 줄 상기시킨다.
+echo "📌 세션 의식: 첫 메시지가 '하이~'면 .claude/skills/session-start, '바이~'면 session-end 스킬을 먼저 연다. 인수인계 블록은 요약하지 말고 원문 그대로 출력한다."
 
 exit 0
