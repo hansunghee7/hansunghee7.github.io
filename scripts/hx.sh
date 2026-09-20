@@ -10,6 +10,7 @@
 #   hx.sh cron                 헤르메스 크론 목록
 #   hx.sh ls  <경로>           폴더 목록 (허용 경로만)
 #   hx.sh read <경로> [줄수]   파일 앞부분 읽기 (허용 경로만, 기본 200줄)
+#   hx.sh kick                 우편함 배달원을 지금 실행(우편을 폰/그룹으로 즉시 전달)
 #   hx.sh ask                  표준입력의 업무지시를 헤르메스에게 넘기고 답을 받는다
 #   hx.sh put <scripts\이름.py>  표준입력의 새 스크립트로 교체(백업+문법검사)
 set -euo pipefail
@@ -53,6 +54,10 @@ case "$cmd" in
     check_path "$1"
     n="${2:-200}"; [[ "$n" =~ ^[0-9]+$ ]] || { echo "줄수는 숫자" >&2; exit 2; }
     ps_run "${UTF8} Get-Content -LiteralPath '$1' -Encoding UTF8 -TotalCount $n" ;;
+  kick)
+    # 우편함 배달원을 지금 한 번 실행한다(폴링을 기다리지 않는 즉시 배달). 인자 없는 고정 명령이라 안전하다.
+    # 배달원은 상태 파일로 중복 발송을 막으므로 크론과 겹쳐 실행돼도 같은 우편을 두 번 보내지 않는다.
+    ps_run "${UTF8} python 'C:\Users\PC\AppData\Local\hermes\scripts\mailbox_courier.py'" ;;
   ask)
     # 업무지시는 따옴표 문제를 피하려고 base64로 실어 보내고, 신PC 임시 폴더에 파일로 내려 --query-file로 읽힌다.
     b64=$(base64 -w0)
@@ -71,5 +76,5 @@ case "$cmd" in
     [ -n "$b64" ] || { echo "표준입력이 비었음" >&2; exit 2; }
     ps_run "\$ErrorActionPreference='Stop'; ${UTF8} \$dst='$dst'; \$bytes=[Convert]::FromBase64String('$b64'); if (\$bytes.Length -gt 204800) { Write-Output 'REFUSED: over 200KB'; exit 1 }; \$tmp=Join-Path \$env:TEMP ('put_'+[guid]::NewGuid().ToString('N')+'.py'); [IO.File]::WriteAllBytes(\$tmp,\$bytes); python -m py_compile \$tmp; if (\$LASTEXITCODE -ne 0) { Remove-Item -LiteralPath \$tmp -ErrorAction SilentlyContinue; Write-Output 'REFUSED: syntax check failed, not replaced'; exit 1 }; \$bak=''; if (Test-Path -LiteralPath \$dst) { \$bak=\$dst+'.bak_'+(Get-Date -Format yyyyMMdd_HHmmss); Copy-Item -LiteralPath \$dst \$bak }; Move-Item -LiteralPath \$tmp \$dst -Force; Write-Output ('REPLACED: '+\$dst+' ('+\$bytes.Length+' bytes) backup: '+\$bak)" ;;
   *)
-    echo "사용: hx.sh {cron | ls <경로> | read <경로> [줄수] | ask < 업무지시 | put <scripts\\이름.py> < 새 파일}" >&2; exit 2 ;;
+    echo "사용: hx.sh {cron | kick | ls <경로> | read <경로> [줄수] | ask < 업무지시 | put <scripts\\이름.py> < 새 파일}" >&2; exit 2 ;;
 esac
