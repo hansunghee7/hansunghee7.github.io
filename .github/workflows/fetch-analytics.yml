@@ -36,6 +36,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # main 룰셋(필수 검사 build)은 관리자만 우회한다. 기본 GITHUB_TOKEN(봇)은 우회 목록에 못 넣어서
+          # 2026-09-17부터 push가 거절됐다. 관리자 권한의 저장소 한정 토큰으로 push한다(백로그 25).
+          token: ${{ secrets.PUSH_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
