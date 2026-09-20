@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-20T06:15:05.264840+00:00",
+  "updated_at": "2026-09-20T12:33:00.018591+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 241,
-    "activeUsers": 160,
-    "newUsers": 161,
+    "sessions": 246,
+    "activeUsers": 165,
+    "newUsers": 165,
     "returningUsers": 0
   },
   "daily": [
@@ -185,10 +185,10 @@
     },
     {
       "date": "2026-09-20",
-      "sessions": 6,
-      "activeUsers": 5,
-      "newUsers": 4,
-      "returningUsers": 1
+      "sessions": 11,
+      "activeUsers": 10,
+      "newUsers": 8,
+      "returningUsers": 2
     }
   ],
   "daily_leads": [
@@ -202,31 +202,31 @@
     }
   ],
   "landing_types": {
-    "home": 142,
+    "home": 148,
     "log_home": 7,
     "individual_post": 65,
-    "other": 30
+    "other": 31
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 181
+      "sessions": 183
     },
     {
       "source": "google",
-      "sessions": 20
+      "sessions": 21
     },
     {
       "source": "searchadvisor.naver.com",
       "sessions": 12
     },
     {
-      "source": "l.facebook.com",
-      "sessions": 7
+      "source": "(not set)",
+      "sessions": 8
     },
     {
-      "source": "(not set)",
-      "sessions": 5
+      "source": "l.facebook.com",
+      "sessions": 7
     },
     {
       "source": "linkedin.com",
@@ -245,6 +245,10 @@
       "sessions": 3
     },
     {
+      "source": "m.search.naver.com",
+      "sessions": 2
+    },
+    {
       "source": "bing",
       "sessions": 1
     },
@@ -254,10 +258,6 @@
     },
     {
       "source": "brunch.co.kr",
-      "sessions": 1
-    },
-    {
-      "source": "m.search.naver.com",
       "sessions": 1
     },
     {
@@ -270,13 +270,13 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 181
+      "sessions": 183
     },
     {
       "source": "google",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 20
+      "sessions": 21
     },
     {
       "source": "searchadvisor.naver.com",
@@ -315,6 +315,12 @@
       "sessions": 3
     },
     {
+      "source": "m.search.naver.com",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "sessions": 2
+    },
+    {
       "source": "bing",
       "medium": "organic",
       "campaign": "(organic)",
@@ -328,12 +334,6 @@
     },
     {
       "source": "brunch.co.kr",
-      "medium": "referral",
-      "campaign": "(referral)",
-      "sessions": 1
-    },
-    {
-      "source": "m.search.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 1
@@ -347,10 +347,10 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 295,
-    "section_view_voices": 215,
-    "section_view_book_class": 132,
-    "section_view_faq": 120,
+    "section_view_proven": 296,
+    "section_view_voices": 216,
+    "section_view_book_class": 133,
+    "section_view_faq": 121,
     "faq_open": 31,
     "read_complete": 211
   },
@@ -509,6 +509,12 @@
       "views": 8
     },
     {
+      "path": "/logs/625/",
+      "title": "주니어 PM은 왜 스스로 문제를 정의하지 못할까?",
+      "uniqueViews": 3,
+      "views": 2
+    },
+    {
       "path": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
       "title": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
       "uniqueViews": 2,
@@ -537,33 +543,27 @@
       "title": "/log_assets/markdown/122_미국 진출은 누구에게 필요한 전략인가.html",
       "uniqueViews": 2,
       "views": 5
-    },
-    {
-      "path": "/log_assets/markdown/185_사고의 지도를 그리는 법 '로직 트리'.html",
-      "title": "/log_assets/markdown/185_사고의 지도를 그리는 법 '로직 트리'.html",
-      "uniqueViews": 2,
-      "views": 2
     }
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 169,
+    "total_desktop_sessions": 173,
     "excluded_invalid_sessions": 21,
     "by_resolution": [
       {
         "resolution": "2560x1440",
         "width": 2560,
-        "sessions": 39
+        "sessions": 40
       },
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 37
+        "sessions": 38
       },
       {
         "resolution": "1920x1080",
         "width": 1920,
-        "sessions": 25
+        "sessions": 27
       },
       {
         "resolution": "1536x960",
