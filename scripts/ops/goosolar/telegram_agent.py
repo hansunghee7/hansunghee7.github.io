@@ -37,8 +37,11 @@ client = OpenAI(
 def get_best_model():
     try:
         available_models = [m.id for m in client.models.list().data]
-        safe_models = [m for m in available_models if "canopylabs" not in m and "orpheus" not in m]
-        preferred = ["llama-3.3-70b-versatile", "llama-3.1-8b-instant", "llama3-70b-8192", "llama3-8b-8192"]
+        # 대화용이 아닌 모델(음성, 프롬프트 가드, 세이프가드)은 뺀다. 2026-09-21: 예전 목록 순서 방식이 prompt-guard를 골라 대화가 깨질 수 있었다.
+        skip = ("orpheus", "whisper", "guard", "safeguard", "allam")
+        safe_models = [m for m in available_models if not any(x in m for x in skip)]
+        preferred = ["llama-3.3-70b-versatile", "openai/gpt-oss-120b", "openai/gpt-oss-20b", "qwen/qwen3.8-27b",
+                     "llama-3.1-8b-instant", "groq/compound-mini"]
         for candidate in preferred:
             if candidate in safe_models:
                 return candidate
@@ -159,7 +162,18 @@ def normalize(text):
     return text.replace(" ", "").lower()
 
 
-WAKE_WORDS = ("신pc켜", "신피시켜", "신pc부팅", "신피시부팅", "컴퓨터켜")
+# 대상 낱말(신pc/신피시) + 켜기 동사가 한 문장에 있으면 깨운다. 2026-09-21 아침 "신pc 전원 켜줘"가
+# 옛 봇의 붙어 있는 문구 일치("신pc 켜")에 안 걸려 AI 답변으로 빠진 사고의 수정. "꺼"는 켜기가 아니므로 제외.
+TARGET_WORDS = ("신pc", "신피시", "신컴")
+WAKE_VERBS = ("켜", "켤", "부팅", "깨워", "깨우", "기동")
+STATE_WORDS = ("켜져", "켜졌", "켜진", "켜있", "켜 있")  # "켜져 있어?"는 상태 질문이라 깨우지 않는다(정규화 전 글자로 검사)
+
+
+def wants_wake(text):
+    t = normalize(text)
+    if t.startswith("/") or any(w in t for w in STATE_WORDS):
+        return False
+    return (any(w in t for w in TARGET_WORDS) and any(v in t for v in WAKE_VERBS)) or "컴퓨터켜" in t
 
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -169,7 +183,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     log.info("메시지 수신 id=%s 글=%r", update.effective_user.id, user_text[:40])
 
     # 키워드 기반 즉시 WoL 실행 (AI 호출 없음). 띄어쓰기·대소문자는 무시한다.
-    if any(w in normalize(user_text) for w in WAKE_WORDS):
+    if wants_wake(user_text):
         await wake_and_report(update)
         return
 
