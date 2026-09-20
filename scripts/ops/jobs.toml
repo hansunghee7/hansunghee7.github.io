@@ -64,30 +64,10 @@ note = "첫 실행 전. 요일이 지시서(일 04:00)와 다르게 등록됨(�
 # ---------- 보조 시계(작업 스케줄러, 15분): GitHub가 예약 실행을 누락할 때 예약 발행을 대신 실행 ----------
 [[job]]
 id = "cron:publish-kick"
-kind = "file_age"
-path = 'C:\work\_ops\kick.last'
-max_age_min = 45
-name = "예약 발행 보조 시계(kick_publish.py)"
-note = "GitHub 예약 실행 누락 시 대신 실행. kick.log에 기록"
-
-# ---------- 문서 위생: CLAUDE.md 상한 250줄(CI)과 격주 폴리싱이 실제로 도는지 ----------
-[[job]]
-id = "doc:claude-md-size"
-kind = "git_file_lines"
-repo = 'C:\work\hansunghee7.github.io'
-path = "CLAUDE.md"
-warn_over = 200
-fail_over = 250
-name = "CLAUDE.md 줄 수(목표 200, 상한 250)"
-
-[[job]]
-id = "doc:claude-md-polish"
-kind = "git_file_age"
-repo = 'C:\work\hansunghee7.github.io'
-path = "docs/폴리싱_기록.md"
-max_age_days = 14
-name = "CLAUDE.md 정기 폴리싱(격주, 기록 파일 수정일)"
-note = "폴리싱을 하면 docs/폴리싱_기록.md에 한 줄 추가하고 커밋해야 함"
+kind = "cmd"
+cmd = ["python", 'C:\work\_ops\remote_file_age.py', "goosolar", "~/ops/kick.last", "45"]
+name = "예약 발행 보조 시계(구PC cron, kick_publish.py)"
+note = "2026-09-20 신PC 작업 스케줄러에서 구PC cron으로 이전. 구PC의 kick.last를 ssh로 확인. 접속 불가도 실패로 본다"
 
 # ---------- GitHub 예약 작업 ----------
 [[job]]
