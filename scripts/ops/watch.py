@@ -189,6 +189,15 @@ def check_http(job, at):
     return ("ok", f"HTTP {code}") if code == job.get("expect", 200) else ("fail", f"HTTP {code} (기대 {job.get('expect', 200)})")
 
 
+def check_file_age(job, at):
+    """파일이 max_age_min 안에 갱신됐는가(하트비트 파일용)."""
+    try:
+        age = (at.timestamp() - os.path.getmtime(job["path"])) / 60
+    except OSError:
+        return "fail", "파일이 없음"
+    return ("ok" if age <= job["max_age_min"] else "fail"), f"마지막 갱신 {age:.0f}분 전"
+
+
 def check_cmd(job, at):
     cmd = list(job["cmd"])
     if cmd[0] == "python":
@@ -244,7 +253,7 @@ def evaluate(jobs, at, prev=None):
         try:
             k = j["kind"]
             st, detail = (check_hermes(j, crons, at) if k == "hermes_cron" else check_gh(j, gh_runs, at) if k == "gh_workflow"
-                          else check_tcp(j, at) if k == "tcp" else check_http(j, at) if k == "http" else check_cmd(j, at) if k == "cmd" else check_pc(j, at))
+                          else check_tcp(j, at) if k == "tcp" else check_http(j, at) if k == "http" else check_cmd(j, at) if k == "cmd" else check_file_age(j, at) if k == "file_age" else check_pc(j, at))
         except Exception as exc:
             st, detail = "warn", f"점검 자체가 실패: {type(exc).__name__}: {str(exc)[:80]}"
         if st == "fail" and j.get("severity") == "warn":
