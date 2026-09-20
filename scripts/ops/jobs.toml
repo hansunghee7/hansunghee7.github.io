@@ -1,6 +1,6 @@
 # 주기 작업·서비스·PC 상태 대장 (watch.py가 읽는다). 새 주기 작업을 만들면 여기에 한 항목을 추가한다.
 # 등록 = 지금 1회 실행해 성공 증거를 확인한 뒤 이 대장에 적는 것까지(DONE=VERIFIED, 사장님 지시 2026-09-20).
-# kind: hermes_cron | gh_workflow | tcp | http | cmd | pc.  every_min: 점검 주기(분). 기본 30, gh_workflow·cmd 360, pc 1440. fail_after: 연속 실패 몇 번째에 알릴지(기본 2, gh_workflow·pc·cmd는 1).   severity = "warn"이면 죽어 있어도 🟡 주의로만 본다.
+# kind: hermes_cron | gh_workflow | tcp | http | cmd | file_age | pc.  every_min: 점검 주기(분). 기본 30, gh_workflow·cmd 360, pc 1440. fail_after: 연속 실패 몇 번째에 알릴지(기본 2, gh_workflow·pc·cmd는 1).   severity = "warn"이면 죽어 있어도 🟡 주의로만 본다.
 # period_min을 안 적은 gh_workflow는 최근 실행 간격의 중앙값으로 자동 계산한다.
 
 # ---------- 헤르메스 크론(신PC). "ok"는 AI 실행 종료일 뿐이라 결과물 확인(stuck_glob)을 함께 건다 ----------
@@ -60,6 +60,15 @@ kind = "hermes_cron"
 name = "model-roster-review"
 period_min = 10080
 note = "첫 실행 전. 요일이 지시서(일 04:00)와 다르게 등록됨(토 19:00), 사장님 확정 대기"
+
+# ---------- 보조 시계(작업 스케줄러, 15분): GitHub가 예약 실행을 누락할 때 예약 발행을 대신 실행 ----------
+[[job]]
+id = "cron:publish-kick"
+kind = "file_age"
+path = 'C:\work\_ops\kick.last'
+max_age_min = 45
+name = "예약 발행 보조 시계(kick_publish.py)"
+note = "GitHub 예약 실행 누락 시 대신 실행. kick.log에 기록"
 
 # ---------- GitHub 예약 작업 ----------
 [[job]]
