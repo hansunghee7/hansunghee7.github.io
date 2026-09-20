@@ -115,7 +115,8 @@ simplifier-way 원칙1과 같은 원칙을, 위험한 실험·자동화 한정�
    **우편함 확인 (2026-09-19 도입)**: solar-bible 저장소가 붙어 있으면 `python mailbox/mailbox.py read <내 이름> --recent 24`로
    최근 24시간 메시지를 먼저 봅니다(다른 세션이 먼저 읽음 처리했어도 놓치지 않도록)(로컬 세션은 시작 훅이 개수를 알려 주고, 클라우드 세션은 `add_repo`로
    `hansunghee7/solar-bible`을 붙입니다). 다른 에이전트에게 알릴 일은 사장님께 복사·붙여넣기를 부탁하지 말고
-   `mailbox.py send`로 보냅니다. 규칙: solar-bible `mailbox/README.md`.
+   `mailbox.py send`로 보냅니다. **`SendMessage`(세션 메시지)로 먼저 보냈어도 같은 내용을 우편함에 한 줄
+   남깁니다**(사장님 모니터링 그룹은 우편함만 비춥니다). 규칙: solar-bible `mailbox/README.md`.
 4. **첫 응답은 아래 형식 그대로**. 저녁 의식이 남긴 자기 페르소나의 최신
    인수인계 블록(`[페르소나] 상태` ~ `손대지 말 것`)을 진행상황.md에서 찾아
    **요약하지 말고 그대로 출력**하고, 그 아래에 `📢 전체 공지` 확인 결과와
