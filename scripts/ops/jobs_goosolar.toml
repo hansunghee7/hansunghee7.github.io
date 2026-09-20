@@ -1,0 +1,138 @@
+# 구PC(goosolar) 감시 대장 (2026-09-20). 신PC가 꺼져 있어도 GitHub 예약 작업과 외부 서비스 점검이 계속 돌게 나눈 것.
+# 신PC 로컬 자원(헤르메스, 제미나이 풀, PC 보안, 문서 위생)은 신PC 대장(jobs.toml)에 남는다.
+# 실행: 구PC cron 30분마다 OPS_JOBS=jobs_goosolar.toml OPS_HOST=구PC python3 watch.py
+
+[[job]]
+id = "cron:publish-kick"
+kind = "file_age"
+path = "/home/goosloar/ops/kick.last"
+max_age_min = 45
+name = "예약 발행 보조 시계(구PC cron, kick_publish.py)"
+note = "2026-09-20 신PC 작업 스케줄러에서 구PC cron으로 이전. 구PC 자신의 kick.last 갱신 시각을 확인(신PC 대장의 watcher:goosolar가 구PC 전체를 밖에서 봄)"
+
+# ---------- GitHub 예약 작업 ----------
+[[job]]
+id = "gh:site:Fetch Clarity"
+kind = "gh_workflow"
+repo = "hansunghee7/hansunghee7.github.io"
+workflow = "Fetch Clarity"
+name = "Fetch Clarity"
+
+[[job]]
+id = "gh:site:Fetch GA4 analytics"
+kind = "gh_workflow"
+repo = "hansunghee7/hansunghee7.github.io"
+workflow = "Fetch GA4 analytics"
+name = "Fetch GA4 analytics"
+
+[[job]]
+id = "gh:site:Fetch Naver content"
+kind = "gh_workflow"
+repo = "hansunghee7/hansunghee7.github.io"
+workflow = "Fetch Naver content"
+name = "Fetch Naver content"
+
+[[job]]
+id = "gh:site:Fetch SNS public"
+kind = "gh_workflow"
+repo = "hansunghee7/hansunghee7.github.io"
+workflow = "Fetch SNS public"
+name = "Fetch SNS public"
+
+[[job]]
+id = "gh:site:Fetch Search Console"
+kind = "gh_workflow"
+repo = "hansunghee7/hansunghee7.github.io"
+workflow = "Fetch Search Console"
+name = "Fetch Search Console"
+
+[[job]]
+id = "gh:site:Fetch YouTube shorts"
+kind = "gh_workflow"
+repo = "hansunghee7/hansunghee7.github.io"
+workflow = "Fetch YouTube shorts"
+name = "Fetch YouTube shorts"
+
+[[job]]
+id = "gh:site:Fetch book insight"
+kind = "gh_workflow"
+repo = "hansunghee7/hansunghee7.github.io"
+workflow = "Fetch book insight"
+name = "Fetch book insight"
+
+[[job]]
+id = "gh:site:Fetch ink queue"
+kind = "gh_workflow"
+repo = "hansunghee7/hansunghee7.github.io"
+workflow = "Fetch ink queue"
+name = "Fetch ink queue"
+
+[[job]]
+id = "gh:site:Scheduled publish"
+kind = "gh_workflow"
+repo = "hansunghee7/hansunghee7.github.io"
+workflow = "Scheduled publish"
+name = "Scheduled publish(예약 발행)"
+every_min = 120  # 글 발행 시각에 직결되므로 2시간마다
+
+[[job]]
+id = "gh:site:Site health check"
+kind = "gh_workflow"
+repo = "hansunghee7/hansunghee7.github.io"
+workflow = "Site health check"
+name = "Site health check"
+
+[[job]]
+id = "gh:site:Sync agent corpus"
+kind = "gh_workflow"
+repo = "hansunghee7/hansunghee7.github.io"
+workflow = "Sync agent corpus"
+name = "Sync agent corpus"
+
+[[job]]
+id = "gh:saegim:Reseed UX guides"
+kind = "gh_workflow"
+repo = "hansunghee7/simplifier-saegim"
+workflow = "Reseed UX guides (심플리파이어 scope)"
+name = "새김 UX 가이드 재시드"
+
+[[job]]
+id = "gh:saegim:Daily GCP usage"
+kind = "gh_workflow"
+repo = "hansunghee7/simplifier-saegim"
+workflow = "Daily GCP usage (새김 일일 사용량·비용)"
+name = "새김 일일 사용량·비용"
+period_min = 1440
+
+# ---------- 에이전트가 쓰는 서비스 ----------
+[[job]]
+id = "svc:saegim"
+kind = "http"
+url = "https://saegim-mcp-175301711490.asia-northeast3.run.app/"
+name = "새김 서버(홈)"
+
+# 기능 점검: 에이전트가 실제로 쓰는 것이 동작하는지(비밀값 없이 가능한 범위). 실제 질문·세션 유지 시험은 별도 추가 예정
+[[job]]
+id = "fn:saegim-mcp-endpoint"
+kind = "http"
+url = "https://saegim-mcp-175301711490.asia-northeast3.run.app/mcp"
+expect = 405
+name = "새김 MCP 엔드포인트(GET 405가 정상)"
+
+[[job]]
+id = "fn:saegim-mcp-auth"
+kind = "http"
+url = "https://saegim-mcp-175301711490.asia-northeast3.run.app/mcp"
+method = "POST"
+body = "{}"
+expect = 401
+name = "새김 MCP 인증(토큰 없는 POST 401이 정상)"
+
+[[job]]
+id = "fn:dialog-worker"
+kind = "http"
+url = "https://simplifier-ask.simon-8be.workers.dev/"
+expect = 405
+name = "심플리파이어 다이얼로그(워커 응답, 405가 정상)"
+note = "질문 실사용 점검은 무료 한도 때문에 하루 1회로 별도 추가 예정"
+
