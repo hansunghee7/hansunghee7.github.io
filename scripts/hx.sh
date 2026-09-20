@@ -59,6 +59,7 @@ case "$cmd" in
     [ -n "$b64" ] || { echo "표준입력이 비었음" >&2; exit 2; }
     ps_run "${UTF8} \$t=[Text.Encoding]::UTF8.GetString([Convert]::FromBase64String('$b64')); \$f=Join-Path \$env:TEMP ('hx_'+[guid]::NewGuid().ToString('N')+'.txt'); [IO.File]::WriteAllText(\$f,\$t,(New-Object Text.UTF8Encoding \$false)); try { hermes chat --query-file \$f --oneshot -Q } finally { Remove-Item -LiteralPath \$f -ErrorAction SilentlyContinue }" ;;
   put)
+    [ "${HX_MODE:-}" = lite ] && { echo "거부: lite 모드(hx_lite.sh)에서는 put(스크립트 교체)을 쓸 수 없음" >&2; exit 3; }
     # 스크립트 배포(사장님 허용 2026-09-20: 보안·되돌릴 수 없는 것 외의 스크립트 수정).
     # 안전장치: 대상은 헤르메스 scripts 폴더의 .py 한 개, 200KB 이하, 문법 검사를 통과해야만 교체,
     # 교체 전 자동 백업(<이름>.py.bak_<시각>). 그 밖의 쓰기는 이 래퍼로 못 한다.
