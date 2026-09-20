@@ -1,11 +1,11 @@
 name: Scheduled publish
 
 # 예약 발행. log_assets/markdown/*.md 중 front matter 가
-#   published: false  +  publish_at: 2026-09-24T10:00:00+09:00
-# 인 글은, publish_at 시각이 지난 뒤 이 워크플로가 처음 도는 때 published: true 로
-# 바뀌어 main 에 커밋된다. 사용법·안전장치·되돌리는 법: docs/예약_발행.md
+#   published: false  +  scheduled: true  +  date: 2026-09-24T10:00:00+09:00
+# 인 글은, date(노출용 발행일) 시각이 지난 뒤 이 워크플로가 처음 도는 때
+# published: true 로 바뀌어 main 에 커밋된다. 사용법·안전장치·되돌리는 법: docs/예약_발행.md
 #
-# 정확한 시각이 아니라 "publish_at 이후 첫 실행"에 발행된다. GitHub 의 cron 은
+# 정확한 시각이 아니라 "발행일 이후 첫 실행"에 발행된다. GitHub 의 cron 은
 # 최선 노력 방식이라 부하가 높으면 수 분~수십 분 늦거나 한두 번 건너뛸 수 있다
 # (fetch-analytics.yml 주석의 이 저장소 실측과 같은 이야기). 그래서 15분 간격으로
 # 자주 돌리고, 스크립트가 멱등이라 여러 번 돌아도 안전하다.
@@ -117,7 +117,7 @@ jobs:
             fi
 
             N=$(git diff --cached --name-only | wc -l)
-            git commit -q -m "chore: 예약 발행 ${N}건 (publish_at 경과) [skip ci]"
+            git commit -q -m "chore: 예약 발행 ${N}건 (발행일 경과) [skip ci]"
 
             if git push; then
               echo "성공 (시도 $attempt)"

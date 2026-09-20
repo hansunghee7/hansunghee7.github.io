@@ -1,16 +1,20 @@
 #!/usr/bin/env python3
-"""예약 발행: publish_at 시각이 지난 초안(published: false)을 공개로 바꾼다.
+"""예약 발행: 예약 스위치를 켠 초안(published: false)을 발행일 시각이 지나면 공개로 바꾼다.
 
 정본 문서: docs/예약_발행.md
 
 동작 요약
 ---------
-log_assets/markdown/*.md 의 front matter 에서 아래 세 조건이 모두 맞는 글만
+log_assets/markdown/*.md 의 front matter 에서 아래 네 조건이 모두 맞는 글만
 `published: false` 를 `published: true` 로 바꾼다.
-  1. published 가 false
-  2. publish_at 필드에 값이 있다 (줄이 없거나 값이 비어 있으면 "컨펌 안 된
-     초안"이므로 절대 안 건드림. CMS 에서 칸을 비워 저장해도 안전하다)
-  3. 지금 시각 >= publish_at
+  1. published 가 false  (예약 글은 예약 시각 전까지 노출이 꺼져 있다)
+  2. scheduled 가 true   (CMS 의 "예약 발행" 스위치. 없거나 false 면 예약이
+     아니므로 절대 안 건드림. 비노출 글과 컨펌 전 초안을 지키는 장치다)
+  3. date(발행일)가 날짜+시각 형식이다
+  4. 지금 시각 >= date
+
+노출 여부(published)와 예약(scheduled)은 별개다. 예약 스위치가 없는 글은
+published 가 false 여도 발행일이 과거든 미래든 영향이 없다.
 
 안전장치 (이 파일이 지키는 것)
 ------------------------------
@@ -18,12 +22,13 @@ log_assets/markdown/*.md 의 front matter 에서 아래 세 조건이 모두 맞
   (false -> true) 뿐이다. 본문, 다른 front matter 줄, 줄바꿈(CRLF/LF),
   BOM, 끝 개행 유무는 그대로다. YAML 을 파싱해 다시 쓰지 않는다
   (scripts/normalize_new_post.py 와 같은 원칙: 필요한 삽입만 정규식으로).
-* publish_at 줄은 지우지 않는다(기록용).
+* scheduled 줄은 지우지 않는다(기록용).
+* 지나간 시각으로 건 예약은 공개하지 않는다: 발행일이 그 글의 마지막 저장(git
+  커밋) 시각보다 앞이면 경고만 남기고 건너뛴다. git 기록이 없으면(임시 폴더
+  시험 등) 이 검사는 생략한다.
 * 멱등: published: true 가 된 글은 다음 실행에서 조건 1 에 안 걸려 대상 아님.
-* 값이 비어 있는 publish_at(`publish_at:`, `""`, `''`, `null`, `~`)은 "예약
-  없음"과 같다. 경고도 내지 않는다(CMS 가 빈 칸을 이렇게 저장해도 무해하도록).
-* publish_at 형식이 잘못된 글은 건너뛰고 경고만 남긴다(종료 코드 0).
-  한 글의 오타가 다른 글의 발행을 막으면 안 되기 때문이다.
+* 예약 스위치가 켜졌는데 date 형식이 잘못된 글은 건너뛰고 경고만 남긴다
+  (종료 코드 0). 한 글의 오타가 다른 글의 발행을 막으면 안 되기 때문이다.
 * 시간대: 표기에 오프셋(+09:00, Z 등)이 있으면 그대로 따르고, 오프셋이 없으면
   한국시간(Asia/Seoul, UTC+9)으로 해석한다. 서버(UTC)의 로컬 시각은 쓰지
   않는다. 한국은 서머타임이 없어 고정 +09:00 이 정확하다(tzdata 불필요).
@@ -44,6 +49,7 @@ GITHUB_OUTPUT 이 있으면 changed=<바뀐 글 수>, invalid=<형식 오류 수
 import argparse
 import os
 import re
+import subprocess
 import sys
 from datetime import datetime, timedelta, timezone
 
@@ -51,7 +57,8 @@ DEFAULT_DIR = "log_assets/markdown"
 KST = timezone(timedelta(hours=9), "KST")
 
 PUBLISHED_RE = re.compile(r"^published:[ \t]*(?P<val>[^\r\n]*?)[ \t]*$", re.I)
-PUBLISH_AT_RE = re.compile(r"^publish_at:[ \t]*(?P<val>[^\r\n]*?)[ \t]*$", re.I)
+SCHEDULED_RE = re.compile(r"^scheduled:[ \t]*(?P<val>[^\r\n]*?)[ \t]*$", re.I)
+DATE_RE = re.compile(r"^date:[ \t]*(?P<val>[^\r\n]*?)[ \t]*$", re.I)
 # 2026-09-24T10:00 / 2026-09-24 10:00:00 / ...T10:00:00.5 + 선택적 오프셋
 TS_RE = re.compile(
     r"^(?P<y>\d{4})-(?P<mo>\d{2})-(?P<d>\d{2})[T ](?P<h>\d{2}):(?P<mi>\d{2})"
@@ -67,17 +74,14 @@ class BadFormat(Exception):
     pass
 
 
-def is_blank_value(raw):
-    """YAML 값이 '예약 없음'을 뜻하는 빈 값인가: 공백, "", '', null, ~, 주석만."""
-    val = raw.strip()
-    if val.startswith("#"):
-        return True
-    val = re.split(r"\s+#", val, maxsplit=1)[0].strip()
-    return val in ("", '""', "''", "~") or val.lower() == "null"
+def is_true_value(raw):
+    """scheduled 값이 켜짐(true)인가. 따옴표와 줄 끝 주석은 허용, 그 외(false, 빈 값, null)는 꺼짐."""
+    val = re.split(r"\s+#", raw.strip(), maxsplit=1)[0].strip().strip("\"'").strip()
+    return val.lower() == "true"
 
 
 def parse_publish_at(raw):
-    """publish_at 문자열 -> timezone-aware datetime. 형식이 틀리면 BadFormat."""
+    """발행일(date) 문자열 -> timezone-aware datetime. 형식이 틀리면 BadFormat."""
     val = raw.strip()
     # YAML 따옴표('...' 또는 "...") 벗기기. 줄 끝 주석(" # ...")은 따옴표 밖일 때만.
     if len(val) >= 2 and val[0] in "\"'":
@@ -92,7 +96,7 @@ def parse_publish_at(raw):
     else:
         val = re.split(r"\s+#", val, maxsplit=1)[0].strip()
     if not val:
-        raise BadFormat("publish_at 값이 비어 있음")
+        raise BadFormat("발행일(date) 값이 비어 있음")
     m = TS_RE.match(val)
     if not m:
         raise BadFormat(
@@ -138,11 +142,34 @@ def split_front_matter(text):
     return None
 
 
-def process_text(text, now):
+def last_commit_time(path):
+    """그 글 파일을 마지막으로 저장(커밋)한 시각. git 기록이 없으면 None(검사 생략)."""
+    try:
+        r = subprocess.run(
+            ["git", "-C", os.path.dirname(os.path.abspath(path)), "log", "-1",
+             "--format=%cI", "--", os.path.basename(path)],
+            capture_output=True, encoding="utf-8", timeout=30,
+        )
+    except (OSError, subprocess.SubprocessError):
+        return None
+    out = r.stdout.strip()
+    if r.returncode != 0 or not out:
+        return None
+    try:
+        return datetime.fromisoformat(out)
+    except ValueError:
+        return None
+
+
+def process_text(text, now, saved_at=None):
     """(new_text, status, detail).
 
-    status: 'publish' | 'future' | 'no_publish_at' | 'already_public' |
-            'no_front_matter' | 'invalid' | 'skip'
+    saved_at: 그 글을 마지막으로 저장한 시각(없으면 None). 예약 시각이 저장 시각보다
+    앞이면 "지나간 시각으로 건 예약"이라 공개하지 않고 경고한다(규칙: 지나간
+    날짜·시간은 예약 불가).
+
+    status: 'publish' | 'future' | 'not_scheduled' | 'already_public' |
+            'no_front_matter' | 'invalid'
     """
     span = split_front_matter(text)
     if span is None:
@@ -151,24 +178,27 @@ def process_text(text, now):
     fm = text[fm_start:fm_end]
 
     pub_lines = []  # (줄 시작 위치(fm 기준), 줄 텍스트(개행 제외))
-    at_lines = []
+    sched_lines = []
+    date_lines = []
     pos = 0
     for line in LINE_RE.findall(fm):
         stripped = line.rstrip("\r\n")
         if PUBLISHED_RE.match(stripped):
             pub_lines.append((pos, stripped))
-        elif PUBLISH_AT_RE.match(stripped):
-            at_lines.append((pos, stripped))
+        elif SCHEDULED_RE.match(stripped):
+            sched_lines.append((pos, stripped))
+        elif DATE_RE.match(stripped):
+            date_lines.append((pos, stripped))
         pos += len(line)
 
-    # publish_at 없음(줄이 없거나 값이 비어 있음) -> 컨펌 안 된 초안이거나
-    # 예약과 무관한 글. 절대 안 건드림.
-    if all(is_blank_value(PUBLISH_AT_RE.match(l).group("val")) for _, l in at_lines):
-        return text, "no_publish_at", ""
-    if len(pub_lines) != 1 or len(at_lines) != 1:
+    # 예약 스위치가 없거나 true 가 아님 -> 비노출 글, 컨펌 전 초안, 예약과 무관한
+    # 글. published/date 가 어떻든 절대 안 건드림.
+    if not any(is_true_value(SCHEDULED_RE.match(l).group("val")) for _, l in sched_lines):
+        return text, "not_scheduled", ""
+    if len(pub_lines) != 1 or len(sched_lines) != 1 or len(date_lines) != 1:
         return text, "invalid", (
-            f"published 줄 {len(pub_lines)}개 / publish_at 줄 {len(at_lines)}개 "
-            "(각각 정확히 1개여야 함)"
+            f"published 줄 {len(pub_lines)}개 / scheduled 줄 {len(sched_lines)}개 / "
+            f"date 줄 {len(date_lines)}개 (각각 정확히 1개여야 함)"
         )
 
     pub_pos, pub_line = pub_lines[0]
@@ -179,12 +209,17 @@ def process_text(text, now):
         return text, "invalid", f"published 값이 true/false 가 아님: {pval!r}"
 
     try:
-        at = parse_publish_at(PUBLISH_AT_RE.match(at_lines[0][1]).group("val"))
+        at = parse_publish_at(DATE_RE.match(date_lines[0][1]).group("val"))
     except BadFormat as e:
         return text, "invalid", str(e)
 
     if now < at:
         return text, "future", at.isoformat()
+    if saved_at is not None and at <= saved_at:
+        return text, "invalid", (
+            f"예약 시각({at.isoformat()})이 마지막 저장 시각({saved_at.isoformat()})보다 앞이라 "
+            "예약으로 인정하지 않음(지나간 시각은 예약할 수 없음). 발행일을 미래 시각으로 고쳐 다시 저장하세요"
+        )
 
     # published: false 의 'false' 한 단어만 'true' 로. 줄 앞뒤 공백/개행은 그대로.
     line_start = fm_start + pub_pos
@@ -247,29 +282,32 @@ def main(argv=None):
             counts["invalid"] = counts.get("invalid", 0) + 1
             invalid.append((name, f"파일을 읽을 수 없음: {e}"))
             continue
-        new_text, status, detail = process_text(text, now)
+        # git 조회는 공개 직전 후보에만 필요하지만, 글이 수백 편이라 매번 부르면 느리므로
+        # 예약 스위치가 켜진 글일 때만 조회한다.
+        saved_at = last_commit_time(path) if re.search(r"^scheduled:[ \t]*[\"']?true", text, re.I | re.M) else None
+        new_text, status, detail = process_text(text, now, saved_at)
         counts[status] = counts.get(status, 0) + 1
         if status == "invalid":
             invalid.append((name, detail))
         elif status == "future":
-            print(f"  대기: {name} (publish_at={detail})")
+            print(f"  대기: {name} (발행일={detail})")
         elif status == "publish":
             changed.append(name)
             if args.dry_run:
-                print(f"  [DRY-RUN] 공개 예정: {name} (publish_at={detail})")
+                print(f"  [DRY-RUN] 공개 예정: {name} (발행일={detail})")
             else:
                 write_text(path, new_text)
-                print(f"  공개 처리: {name} (publish_at={detail})")
+                print(f"  공개 처리: {name} (발행일={detail})")
 
     for name, why in invalid:
         # GitHub Actions 로그에서 노란 경고로 보이게 ::warning:: 형식 사용
-        print(f"::warning file={args.dir}/{name}::publish_at 건너뜀: {why}")
+        print(f"::warning file={args.dir}/{name}::예약 발행 건너뜀: {why}")
 
     print("--- 요약 ---")
     print(f"공개 {'예정' if args.dry_run else '처리'}: {len(changed)}건")
     print(f"미래(대기): {counts.get('future', 0)}건")
     print(f"형식 오류로 건너뜀: {len(invalid)}건")
-    print(f"publish_at 없음(안 건드림): {counts.get('no_publish_at', 0)}건 / 이미 공개(publish_at 있음): {counts.get('already_public', 0)}건")
+    print(f"예약 아님(안 건드림): {counts.get('not_scheduled', 0)}건 / 이미 공개(예약 스위치 켜짐): {counts.get('already_public', 0)}건")
     if invalid:
         print("형식 오류 목록: " + ", ".join(n for n, _ in invalid))
 
