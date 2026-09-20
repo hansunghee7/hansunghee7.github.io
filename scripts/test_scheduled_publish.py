@@ -123,7 +123,7 @@ class ScheduledPublishTest(unittest.TestCase):
             "bad2.md": "2020-01-01",  # 날짜만: 모호하므로 거부
             "bad3.md": "2020-13-45T10:00:00+09:00",
             "bad4.md": '"2020-01-01T10:00:00+09:00',  # 따옴표 안 닫힘
-            "bad5.md": "",  # 빈 값
+            "bad5.md": "2020-01-01T25:00:00+09:00",  # 존재하지 않는 시각
         }
         for name, val in bad_cases.items():
             self.write(name, make_post("false", val))
@@ -196,6 +196,37 @@ class ScheduledPublishTest(unittest.TestCase):
         r = subprocess.run([sys.executable, SCRIPT, "--dir", self.dir, "--now", "2099-01-01T00:00:00+09:00"],
                            capture_output=True, encoding="utf-8", env=env)
         self.assertEqual(r.returncode, 2)
+
+    # CMS 에서 칸을 비워 저장한 경우: 빈 값은 "예약 없음". 안 건드리고 경고도 없다
+    def test11_blank_publish_at_is_no_schedule(self):
+        blanks = {
+            "b1.md": "",
+            "b2.md": '""',
+            "b3.md": "''",
+            "b4.md": "null",
+            "b5.md": "~",
+            "b6.md": "  # 사장님 미정",
+        }
+        for name, val in blanks.items():
+            self.write(name, make_post("false", val))
+        self.write("good.md", make_post("false", "2020-01-01T10:00:00+09:00"))
+        r = self.run_real()
+        print("\n=== 11 빈 publish_at ===")
+        print(r.stdout)
+        self.assertEqual(r.returncode, 0)
+        for name, val in blanks.items():
+            self.assertEqual(self.read(name), make_post("false", val), name)
+        self.assertNotIn("::warning", r.stdout)
+        self.assertIn("형식 오류로 건너뜀: 0건", r.stdout)
+        self.assertIn("publish_at 없음(안 건드림): 6건", r.stdout)
+        self.assertIn(b"published: true", self.read("good.md"))
+
+    # 형식이 틀린 값은 여전히 경고 대상(빈 값과 구분)
+    def test12_garbage_is_still_invalid_not_blank(self):
+        self.write("a.md", make_post("false", "미정"))
+        r = self.run_real()
+        self.assertIn("::warning file=", r.stdout)
+        self.assertIn("형식 오류로 건너뜀: 1건", r.stdout)
 
     # 따옴표 없는 값 + 줄 끝 주석
     def test10_unquoted_with_comment(self):

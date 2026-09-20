@@ -83,6 +83,21 @@ collections:
         # 사람이 헷갈림). 브라우저 로컬(local)이 아니라 Asia/Seoul로 고정한
         # 이유: 해외 출장 중에 글을 써도 발행일이 한국 기준으로 일관되게 남습니다.
         input_timezone: "Asia/Seoul"
+        hint: "글에 표시되는 날짜입니다. 이 칸은 예약이 아닙니다. 예약 공개는 바로 아래 '예약 공개 시각'을 쓰세요."
+
+      # 예약 공개. scripts/scheduled_publish.py(.github/workflows/scheduled-publish.yml)가
+      # 이 줄만 읽습니다. 발행일(date)과 분리한 이유: date만 미래로 두고 공개 여부를
+      # 끈 초안까지 자동 공개되는 사고를 막기 위해, 사장님이 예약 시각을 명시적으로
+      # 적은 글만 공개 대상이 됩니다(docs/예약_발행.md). 저장 형식은 date와 같은
+      # ISO 8601(+09:00)이라 스크립트가 그대로 읽습니다. 비워 저장해도 스크립트는
+      # 빈 값을 "예약 없음"으로 처리합니다(scripts/test_scheduled_publish.py test11).
+      - name: "publish_at"
+        label: "예약 공개 시각"
+        widget: "datetime"
+        type: "datetime-local"
+        input_timezone: "Asia/Seoul"
+        required: false
+        hint: "비워 두면 예약하지 않습니다. 시각을 넣고 '공개 여부'를 꺼 둔 채 저장하면 그 시각 이후 자동으로 공개됩니다. 정확히 그 시각이 아니라 이후 첫 실행 때 공개되며 최대 2시간쯤 늦을 수 있습니다."
 
       - name: "date_string"
         label: "발행일 표시 텍스트"
