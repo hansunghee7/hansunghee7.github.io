@@ -67,7 +67,7 @@ description: 홈페이지용(유입형) 블로그 글을 주제 후보부터 예
 - 읽을 곳: 조건 8개는 `docs/질문하기_파이프라인.md` 5-2절 단계 3, 선택 절차는 같은 문서 5-1절. `docs/후킹_가이드.md`가 생기면 그 문서가 정본이다.
 
 ## 4. 예약 등록과 발행 확인 (사장님을 부르지 않는다)
-- 마야 전용 worktree에서 `log_assets/markdown/<제목>.md`로 PR을 열고 auto-merge한다. 예약 시각은 슬롯표에서 확정된 날짜의 오전이다(`publish_at`, `docs/예약_발행.md`). 슬롯 날짜를 바꿔야 할 때만 사장님께 묻는다.
+- 마야 전용 worktree에서 `log_assets/markdown/<제목>.md`로 PR을 열고 auto-merge한다. 예약 시각은 슬롯표에서 확정된 날짜의 오전이다(글 설정에 `date: 예약시각`, `scheduled: true`, `published: false` 세 줄, `docs/예약_발행.md`. 예약 글의 date는 반드시 저장 시점보다 앞으로의 시각). 슬롯 날짜를 바꿔야 할 때만 사장님께 묻는다.
 - 예약 발행이 실측 검증되기 전에는 `published: false`로 병합해 두고 발행일 당일 세션이 `published: true`로 바꿔 발행한다. 발행 자동화가 멈춰 있으면 PR 안에서 스크립트 단계를 수동으로 실행한다.
 - 발행 뒤 라이브 URL 200, 목록 카드, `assets/data/posts.json`, `sitemap.xml`, 대표 이미지를 직접 확인한다. `publish_plan.json`의 해당 슬롯을 갱신한다. 발행 7일 뒤 실적을 적는다.
 - 산출물: 카드 `발행`, `실적`. 인수인계 "한 것"에 숫자(점수, 예약 시각과 실제 공개 시각)를 적는다.
