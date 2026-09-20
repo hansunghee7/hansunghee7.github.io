@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-16T22:21:56.189373+00:00",
+  "updated_at": "2026-09-20T00:10:39.243767+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 221,
-    "activeUsers": 143,
-    "newUsers": 143,
+    "sessions": 236,
+    "activeUsers": 156,
+    "newUsers": 156,
     "returningUsers": 0
   },
   "daily": [
@@ -159,15 +159,36 @@
       "date": "2026-09-16",
       "sessions": 5,
       "activeUsers": 4,
-      "newUsers": 3,
-      "returningUsers": 1
+      "newUsers": 4,
+      "returningUsers": 0
     },
     {
       "date": "2026-09-17",
-      "sessions": 1,
-      "activeUsers": 1,
-      "newUsers": 1,
+      "sessions": 4,
+      "activeUsers": 4,
+      "newUsers": 4,
       "returningUsers": 0
+    },
+    {
+      "date": "2026-09-18",
+      "sessions": 8,
+      "activeUsers": 8,
+      "newUsers": 8,
+      "returningUsers": 0
+    },
+    {
+      "date": "2026-09-19",
+      "sessions": 2,
+      "activeUsers": 1,
+      "newUsers": 0,
+      "returningUsers": 1
+    },
+    {
+      "date": "2026-09-20",
+      "sessions": 3,
+      "activeUsers": 2,
+      "newUsers": 1,
+      "returningUsers": 1
     }
   ],
   "daily_leads": [
@@ -181,19 +202,19 @@
     }
   ],
   "landing_types": {
-    "home": 132,
+    "home": 137,
     "log_home": 7,
-    "individual_post": 54,
-    "other": 29
+    "individual_post": 63,
+    "other": 30
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 162
+      "sessions": 176
     },
     {
       "source": "google",
-      "sessions": 19
+      "sessions": 20
     },
     {
       "source": "searchadvisor.naver.com",
@@ -208,12 +229,12 @@
       "sessions": 5
     },
     {
-      "source": "maru-connect.webflow.io",
+      "source": "(not set)",
       "sessions": 4
     },
     {
-      "source": "(not set)",
-      "sessions": 3
+      "source": "maru-connect.webflow.io",
+      "sessions": 4
     },
     {
       "source": "m.facebook.com",
@@ -249,13 +270,13 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 162
+      "sessions": 176
     },
     {
       "source": "google",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 19
+      "sessions": 20
     },
     {
       "source": "searchadvisor.naver.com",
@@ -326,8 +347,8 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 294,
-    "section_view_voices": 214,
+    "section_view_proven": 295,
+    "section_view_voices": 215,
     "section_view_book_class": 132,
     "section_view_faq": 120,
     "faq_open": 31,
@@ -367,6 +388,11 @@
       "sessions": 3
     },
     {
+      "path": "/logs/475",
+      "title": "/logs/475",
+      "sessions": 3
+    },
+    {
       "path": "/log_assets/markdown/009_PM의 고수는 감정을 어떻게 다룰까.html",
       "title": "/log_assets/markdown/009_PM의 고수는 감정을 어떻게 다룰까.html",
       "sessions": 2
@@ -397,6 +423,11 @@
       "sessions": 2
     },
     {
+      "path": "/logs/625",
+      "title": "/logs/625",
+      "sessions": 2
+    },
+    {
       "path": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
       "title": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
       "sessions": 1
@@ -419,16 +450,6 @@
     {
       "path": "/log_assets/markdown/122_미국 진출은 누구에게 필요한 전략인가.html",
       "title": "/log_assets/markdown/122_미국 진출은 누구에게 필요한 전략인가.html",
-      "sessions": 1
-    },
-    {
-      "path": "/log_assets/markdown/154_놓치면 후회할 거야  FOMO UX.html",
-      "title": "/log_assets/markdown/154_놓치면 후회할 거야  FOMO UX.html",
-      "sessions": 1
-    },
-    {
-      "path": "/log_assets/markdown/186_스타트업의 초기 고객 확보 전략 '스트라이프'.html",
-      "title": "/log_assets/markdown/186_스타트업의 초기 고객 확보 전략 '스트라이프'.html",
       "sessions": 1
     }
   ],
@@ -482,6 +503,12 @@
       "views": 6
     },
     {
+      "path": "/logs/475/",
+      "title": "1화 신학기 개강",
+      "uniqueViews": 3,
+      "views": 8
+    },
+    {
       "path": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
       "title": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
       "uniqueViews": 2,
@@ -516,33 +543,27 @@
       "title": "/log_assets/markdown/185_사고의 지도를 그리는 법 '로직 트리'.html",
       "uniqueViews": 2,
       "views": 2
-    },
-    {
-      "path": "/log_assets/markdown/199_AI시대 슈퍼컴퓨터가 필요한 이유.html",
-      "title": "/log_assets/markdown/199_AI시대 슈퍼컴퓨터가 필요한 이유.html",
-      "uniqueViews": 2,
-      "views": 5
     }
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 153,
-    "excluded_invalid_sessions": 19,
+    "total_desktop_sessions": 164,
+    "excluded_invalid_sessions": 21,
     "by_resolution": [
       {
         "resolution": "2560x1440",
         "width": 2560,
-        "sessions": 38
+        "sessions": 39
       },
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 33
+        "sessions": 36
       },
       {
         "resolution": "1920x1080",
         "width": 1920,
-        "sessions": 20
+        "sessions": 23
       },
       {
         "resolution": "1536x960",
@@ -585,6 +606,11 @@
         "sessions": 2
       },
       {
+        "resolution": "1280x800",
+        "width": 1280,
+        "sessions": 2
+      },
+      {
         "resolution": "1680x1050",
         "width": 1680,
         "sessions": 2
@@ -610,6 +636,11 @@
         "sessions": 2
       },
       {
+        "resolution": "3072x1728",
+        "width": 3072,
+        "sessions": 2
+      },
+      {
         "resolution": "1024x1024",
         "width": 1024,
         "sessions": 1
@@ -617,16 +648,6 @@
       {
         "resolution": "1281x720",
         "width": 1281,
-        "sessions": 1
-      },
-      {
-        "resolution": "1920x1200",
-        "width": 1920,
-        "sessions": 1
-      },
-      {
-        "resolution": "2048x1152",
-        "width": 2048,
         "sessions": 1
       }
     ]
