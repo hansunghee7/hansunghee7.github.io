@@ -22,6 +22,9 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          # main 룰셋(필수 검사 build)은 관리자만 우회한다. 관리자 권한의 저장소 한정 토큰으로 push한다(백로그 25).
+          token: ${{ secrets.PUSH_TOKEN }}
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
