@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-21T06:19:15.981059+00:00",
+  "updated_at": "2026-09-21T14:25:32.259004+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 250,
-    "activeUsers": 169,
-    "newUsers": 170,
-    "returningUsers": 0
+    "sessions": 257,
+    "activeUsers": 175,
+    "newUsers": 174,
+    "returningUsers": 1
   },
   "daily": [
     {
@@ -192,10 +192,10 @@
     },
     {
       "date": "2026-09-21",
-      "sessions": 2,
-      "activeUsers": 2,
-      "newUsers": 1,
-      "returningUsers": 1
+      "sessions": 9,
+      "activeUsers": 8,
+      "newUsers": 5,
+      "returningUsers": 3
     }
   ],
   "daily_leads": [
@@ -209,15 +209,15 @@
     }
   ],
   "landing_types": {
-    "home": 147,
+    "home": 154,
     "log_home": 7,
-    "individual_post": 68,
+    "individual_post": 70,
     "other": 30
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 186
+      "sessions": 190
     },
     {
       "source": "google",
@@ -226,6 +226,10 @@
     {
       "source": "searchadvisor.naver.com",
       "sessions": 12
+    },
+    {
+      "source": "(not set)",
+      "sessions": 7
     },
     {
       "source": "l.facebook.com",
@@ -238,10 +242,6 @@
     {
       "source": "maru-connect.webflow.io",
       "sessions": 4
-    },
-    {
-      "source": "(not set)",
-      "sessions": 3
     },
     {
       "source": "facebook.com",
@@ -258,6 +258,10 @@
     {
       "source": "m.search.naver.com",
       "sessions": 2
+    },
+    {
+      "source": "(data not available)",
+      "sessions": 1
     },
     {
       "source": "bing",
@@ -277,7 +281,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 186
+      "sessions": 190
     },
     {
       "source": "google",
@@ -332,6 +336,12 @@
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 2
+    },
+    {
+      "source": "(data not available)",
+      "medium": "(data not available)",
+      "campaign": "(cross-network)",
+      "sessions": 1
     },
     {
       "source": "bing",
@@ -354,7 +364,7 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 298,
+    "section_view_proven": 299,
     "section_view_voices": 217,
     "section_view_book_class": 134,
     "section_view_faq": 122,
@@ -392,6 +402,11 @@
     {
       "path": "/logs/475",
       "title": "/logs/475",
+      "sessions": 4
+    },
+    {
+      "path": "/logs/620",
+      "title": "/logs/620",
       "sessions": 4
     },
     {
@@ -435,11 +450,6 @@
       "sessions": 2
     },
     {
-      "path": "/logs/620",
-      "title": "/logs/620",
-      "sessions": 2
-    },
-    {
       "path": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
       "title": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
       "sessions": 1
@@ -466,6 +476,12 @@
       "title": "AI가 우선순위까지 대신 정해줄 수 있을까",
       "uniqueViews": 14,
       "views": 69
+    },
+    {
+      "path": "/logs/620/",
+      "title": "팀이 커질수록 대표만 모르는 것",
+      "uniqueViews": 7,
+      "views": 5
     },
     {
       "path": "/log_assets/markdown/130_왜 한국 스타트업은 미국 진출을 꿈꾸는가.html",
@@ -516,12 +532,6 @@
       "views": 9
     },
     {
-      "path": "/logs/620/",
-      "title": "팀이 커질수록 대표만 모르는 것",
-      "uniqueViews": 3,
-      "views": 3
-    },
-    {
       "path": "/logs/625/",
       "title": "주니어 PM은 왜 스스로 문제를 정의하지 못할까?",
       "uniqueViews": 3,
@@ -554,7 +564,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 177,
+    "total_desktop_sessions": 181,
     "excluded_invalid_sessions": 21,
     "by_resolution": [
       {
@@ -565,12 +575,12 @@
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 38
+        "sessions": 40
       },
       {
         "resolution": "1920x1080",
         "width": 1920,
-        "sessions": 27
+        "sessions": 28
       },
       {
         "resolution": "1536x960",
@@ -613,6 +623,11 @@
         "sessions": 3
       },
       {
+        "resolution": "1707x1067",
+        "width": 1707,
+        "sessions": 3
+      },
+      {
         "resolution": "1024x1024",
         "width": 1024,
         "sessions": 2
@@ -625,11 +640,6 @@
       {
         "resolution": "1680x1050",
         "width": 1680,
-        "sessions": 2
-      },
-      {
-        "resolution": "1707x1067",
-        "width": 1707,
         "sessions": 2
       },
       {
