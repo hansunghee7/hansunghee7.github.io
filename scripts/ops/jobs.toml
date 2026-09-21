@@ -122,3 +122,11 @@ path = 'C:\work\_ops\weekly\last-run.txt'
 max_age_min = 11520
 name = "주간 로컬 LLM 가공 2건(작업 스케줄러 simplifier-weekly-local, 월 09:00)"
 note = "2026-09-21 등록(백로그 44). 아카이브 후보와 변경 요약 초안을 만들고 둘 다 성공하면 last-run.txt 갱신. 8일 넘게 안 갱신되면 멈춤. 결과는 초안(판정 금지)"
+
+[[job]]
+id = "cron:backup-private"
+kind = "file_age"
+path = 'C:\work\_ops\backup\last-run.txt'
+max_age_min = 2160
+name = "비공개 저장소 2곳(경험DB, 새김) 일일 백업(작업 스케줄러 simplifier-backup-private, 매일 03:30)"
+note = "2026-09-22 등록. 두 저장소가 무료 요금제라 main 보호를 못 켜서 매일 통째로 복사(미러 + 번들, 이 PC와 구글 드라이브 G:). 저장소 하나라도 실패하면 last-run.txt를 갱신하지 않으므로 36시간 넘게 안 바뀌면 멈춤. 복원 시험은 backup_private_repos.py --restore-test"
