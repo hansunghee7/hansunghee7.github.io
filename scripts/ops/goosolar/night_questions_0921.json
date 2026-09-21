@@ -1,5 +1,5 @@
 {
-  "name": "night-research",
+  "name": "night-research-0921",
   "questions": [
     {"id": "C1", "group": "C. 신PC BIOS와 WoL (오늘 밤 WoL 시험이 실패할 때 필요)",
      "q": "Gigabyte B650M AORUS ELITE 메인보드의 BIOS에서 Wake on LAN(또는 PCIe 장치로 깨우기)과 ErP 설정이 어느 메뉴 경로에 있는지, 그리고 완전히 꺼진 상태(S5)에서 매직 패킷으로 켜지려면 어떤 값이어야 하는지. 공식 매뉴얼이나 Gigabyte 공식 페이지를 우선 열어 확인할 것."},

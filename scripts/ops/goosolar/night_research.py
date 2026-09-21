@@ -11,6 +11,8 @@
 신PC가 꺼져 있어도 구PC 혼자 끝까지 도는지(단독 가동)를 보려고 시작 때 신PC 응답 여부를 기록한다.
 사용: night_research.py <질문 JSON> [출력 폴더]   (기본 출력 ~/ops/research)
 max_tokens는 900이 상한이다(1800이면 413 request_too_large, 2026-09-21 실측). 토큰 한도(429)에 걸리면 남은 질문을 건너뛰고 어디까지 했는지 기록한 채 정상 종료한다.
+이어하기: 질문마다 결과를 data/<이름>/<id>.json에 저장한다. 다시 실행하면 이미 끝난 질문은 건너뛰고 남은 것만 한다
+(2026-09-21 사장님 지시: 밤에 토큰이 모자라 못 한 건은 다음날 00:00에 한 번 더 돌려 채운다). 보고서는 매번 전체를 다시 만든다.
 """
 import ipaddress
 import json
@@ -138,69 +140,96 @@ def ask(client, question, tries=3):
     raise RuntimeError("분당 한도·413 재시도 초과")
 
 
+def result_path(out_dir, name, qid):
+    return os.path.join(out_dir, "data", name, f"{qid}.json")
+
+
+def load_results(out_dir, name, spec):
+    got = {}
+    for item in spec["questions"]:
+        p = result_path(out_dir, name, item["id"])
+        if os.path.exists(p):
+            got[item["id"]] = json.load(open(p, encoding="utf-8"))
+    return got
+
+
+def build_report(spec, results, runs, name):
+    stat = {}
+    for r in results.values():
+        for row in r["rows"]:
+            stat[row[0]] = stat.get(row[0], 0) + 1
+    pending = [q["id"] for q in spec["questions"] if q["id"] not in results]
+    total = sum(r["tokens"] for r in results.values())
+    lines = [f"# 구PC 야간 수집 결과 ({name})", "",
+             f"- 질문 {len(spec['questions'])}개 중 {len(results)}개 완료" + (f", **남음 {', '.join(pending)}**" if pending else ", 전부 완료"),
+             f"- 사용 토큰 합계 약 {total:,} (모델 {MODEL})",
+             "- 인용 대조(코드가 URL을 내려받아 문자열 대조): " + (", ".join(f"{k} {v}" for k, v in sorted(stat.items())) or "대상 없음"),
+             "- **검증 단계 미실행**(제미나이 출처 대조 없음). 채택·판정은 하지 않았음. `일치`도 그 페이지에 그 문장이 있다는 뜻일 뿐 주장이 옳다는 뜻은 아님.",
+             "", "## 실행 기록", "", "| 시작 | 끝 | 신PC(시작 시) | 이번에 끝낸 질문 | 중단 사유 |", "|---|---|---|---|---|"]
+    for r in runs:
+        lines.append(f"| {r['started']} | {r['finished']} | {'켜져 있음' if r['shin_pc_up'] else '꺼져 있음(구PC 단독 가동)'} | {', '.join(r['done_ids']) or '-'} | {r['stop_reason'] or '-'} |")
+    lines.append("")
+    group = None
+    cell = lambda t: str(t).replace("|", "/").replace("\n", " ")[:220]
+    for item in spec["questions"]:
+        r = results.get(item["id"])
+        if not r:
+            continue
+        if item["group"] != group:
+            group = item["group"]
+            lines += [f"## {group}", ""]
+        lines += [f"### {item['id']}. {item['q'][:80]}", "", f"(토큰 {r['tokens']:,})", "",
+                  "| 대조 | 주장 | URL | 인용 | 비고 |", "|---|---|---|---|---|"]
+        for st, claim, url, quote, why in r["rows"]:
+            lines.append(f"| {st} | {cell(claim)} | {cell(url)} | {cell(quote)} | {why} |")
+        if not r["rows"]:
+            lines.append("| - | (형식에 맞는 줄이 없음) 원문 응답 앞부분 | - | " + cell(r["raw"][:200]) + " | - |")
+        lines.append("")
+    return "\n".join(lines)
+
+
 def main():
     if len(sys.argv) < 2:
         sys.exit(__doc__)
     spec = json.load(open(sys.argv[1], encoding="utf-8"))
+    name = spec.get("name", "research")
     out_dir = os.path.expanduser(sys.argv[2] if len(sys.argv) > 2 else "~/ops/research")
-    os.makedirs(out_dir, exist_ok=True)
+    os.makedirs(os.path.join(out_dir, "data", name), exist_ok=True)
     started = datetime.now(KST)
     shin_before = shin_pc_up()
     client = OpenAI(api_key=load_env(ENV_PATH)["GROQ_API_KEY"], base_url="https://api.groq.com/openai/v1")
 
-    total_tokens, done, skipped, stop_reason = 0, 0, [], ""
-    sections = {}
+    results = load_results(out_dir, name, spec)
+    done_ids, stop_reason = [], ""
     for item in spec["questions"]:
-        if stop_reason:
-            skipped.append(item["id"])
+        if item["id"] in results or stop_reason:
             continue
         try:
             text, tokens = ask(client, item["q"])
-        except RateLimitError:
-            stop_reason = "일일 토큰 한도(429)에 도달해 남은 질문을 건너뜀"
-            skipped.append(item["id"])
+        except RateLimitError as e:
+            stop_reason = "일일 토큰 한도(429): " + str(e)[:160]
             continue
         except Exception as e:
             stop_reason = f"오류로 중단: {type(e).__name__} {str(e)[:200]}"
-            skipped.append(item["id"])
             continue
-        total_tokens += tokens
-        done += 1
         rows = []
         for c in parse_claims(text):
             st, why = verify(c)
-            rows.append((st, c, why))
-        sections.setdefault(item["group"], []).append((item, rows, text, tokens))
+            rows.append([st, c["claim"], c["url"], c["quote"], why])
+        rec = {"id": item["id"], "tokens": tokens, "rows": rows, "raw": text, "at": datetime.now(KST).isoformat(timespec="seconds")}
+        json.dump(rec, open(result_path(out_dir, name, item["id"]), "w", encoding="utf-8"), ensure_ascii=False)
+        results[item["id"]] = rec
+        done_ids.append(item["id"])
 
-    finished = datetime.now(KST)
-    stat = {}
-    for grp in sections.values():
-        for _, rows, _, _ in grp:
-            for st, _, _ in rows:
-                stat[st] = stat.get(st, 0) + 1
-
-    date = started.strftime("%Y-%m-%d")
-    head = [
-        f"# 구PC 야간 수집 결과 ({date})", "",
-        f"- 실행: {started:%H:%M}~{finished:%H:%M} KST, 모델 {MODEL}, 사용 토큰 약 {total_tokens:,}",
-        f"- 질문 {len(spec['questions'])}개 중 {done}개 완료" + (f", 건너뜀 {', '.join(skipped)} ({stop_reason})" if skipped else ""),
-        f"- 신PC 상태(시작 시): {'켜져 있음' if shin_before else '꺼져 있음 → 구PC 단독 가동으로 끝까지 돌았음'}",
-        f"- 인용 대조(코드가 URL을 내려받아 문자열 대조): " + (", ".join(f"{k} {v}" for k, v in sorted(stat.items())) or "대상 없음"),
-        "- **검증 단계 미실행**(제미나이 출처 대조 없음). 채택·판정은 하지 않았음. `일치`도 그 페이지에 그 문장이 있다는 뜻일 뿐 주장이 옳다는 뜻은 아님.", ""]
-    for group, items in sections.items():
-        head += [f"## {group}", ""]
-        for item, rows, raw, tokens in items:
-            head += [f"### {item['id']}. {item['q'][:80]}", "", f"(토큰 {tokens:,})", "",
-                     "| 대조 | 주장 | URL | 인용 | 비고 |", "|---|---|---|---|---|"]
-            for st, c, why in rows:
-                cell = lambda s: s.replace("|", "/").replace("\n", " ")[:220]
-                head.append(f"| {st} | {cell(c['claim'])} | {cell(c['url'])} | {cell(c['quote'])} | {why} |")
-            if not rows:
-                head += ["| - | (형식에 맞는 줄이 없음) 원문 응답 앞부분 | - | " + raw[:200].replace("|", "/").replace("\n", " ") + " | - |"]
-            head.append("")
-    path = os.path.join(out_dir, f"{date}-{spec.get('name', 'research')}.md")
-    open(path, "w", encoding="utf-8").write("\n".join(head))
-    print(f"OK {path} 질문 {done}/{len(spec['questions'])} 토큰 {total_tokens} 대조 {stat}")
+    runs_path = os.path.join(out_dir, "data", name, "runs.json")
+    runs = json.load(open(runs_path, encoding="utf-8")) if os.path.exists(runs_path) else []
+    runs.append({"started": f"{started:%m-%d %H:%M}", "finished": f"{datetime.now(KST):%m-%d %H:%M}", "shin_pc_up": shin_before,
+                 "done_ids": done_ids, "stop_reason": stop_reason})
+    json.dump(runs, open(runs_path, "w", encoding="utf-8"), ensure_ascii=False)
+    path = os.path.join(out_dir, f"{name}.md")
+    open(path, "w", encoding="utf-8").write(build_report(spec, results, runs, name))
+    pending = [q["id"] for q in spec["questions"] if q["id"] not in results]
+    print(f"OK {path} 완료 {len(results)}/{len(spec['questions'])} 이번 {len(done_ids)}개 남음 {pending} {stop_reason}")
     return 0
 
 
