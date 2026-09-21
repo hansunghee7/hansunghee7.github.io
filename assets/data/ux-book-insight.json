@@ -1802,11 +1802,11 @@
     {
       "date": "2026-09-22",
       "yes24": {
-        "mkt_rank": 77,
-        "ad_rank": 3,
-        "web_rank": 20,
+        "mkt_rank": 80,
+        "ad_rank": 4,
+        "web_rank": 17,
         "uxui_rank": 11,
-        "design_rank": 28,
+        "design_rank": 22,
         "econ_rank": null,
         "sales_index": 2532,
         "reviews": 27,
@@ -1830,5 +1830,5 @@
       }
     }
   ],
-  "updated_at": "2026-09-21T15:20:33.834477+00:00"
+  "updated_at": "2026-09-21T20:05:30.723120+00:00"
 }
