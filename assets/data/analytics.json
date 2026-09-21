@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-20T21:52:31.572351+00:00",
+  "updated_at": "2026-09-21T06:19:15.981059+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 248,
-    "activeUsers": 167,
-    "newUsers": 167,
+    "sessions": 250,
+    "activeUsers": 169,
+    "newUsers": 170,
     "returningUsers": 0
   },
   "daily": [
@@ -185,10 +185,17 @@
     },
     {
       "date": "2026-09-20",
-      "sessions": 13,
-      "activeUsers": 12,
-      "newUsers": 10,
-      "returningUsers": 2
+      "sessions": 14,
+      "activeUsers": 13,
+      "newUsers": 12,
+      "returningUsers": 1
+    },
+    {
+      "date": "2026-09-21",
+      "sessions": 2,
+      "activeUsers": 2,
+      "newUsers": 1,
+      "returningUsers": 1
     }
   ],
   "daily_leads": [
@@ -202,15 +209,15 @@
     }
   ],
   "landing_types": {
-    "home": 150,
+    "home": 147,
     "log_home": 7,
-    "individual_post": 66,
-    "other": 31
+    "individual_post": 68,
+    "other": 30
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 185
+      "sessions": 186
     },
     {
       "source": "google",
@@ -219,10 +226,6 @@
     {
       "source": "searchadvisor.naver.com",
       "sessions": 12
-    },
-    {
-      "source": "(not set)",
-      "sessions": 9
     },
     {
       "source": "l.facebook.com",
@@ -237,6 +240,10 @@
       "sessions": 4
     },
     {
+      "source": "(not set)",
+      "sessions": 3
+    },
+    {
       "source": "facebook.com",
       "sessions": 3
     },
@@ -245,15 +252,15 @@
       "sessions": 3
     },
     {
+      "source": "blog.naver.com",
+      "sessions": 2
+    },
+    {
       "source": "m.search.naver.com",
       "sessions": 2
     },
     {
       "source": "bing",
-      "sessions": 1
-    },
-    {
-      "source": "blog.naver.com",
       "sessions": 1
     },
     {
@@ -270,7 +277,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 185
+      "sessions": 186
     },
     {
       "source": "google",
@@ -315,6 +322,12 @@
       "sessions": 3
     },
     {
+      "source": "blog.naver.com",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "sessions": 2
+    },
+    {
       "source": "m.search.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
@@ -324,12 +337,6 @@
       "source": "bing",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 1
-    },
-    {
-      "source": "blog.naver.com",
-      "medium": "referral",
-      "campaign": "(referral)",
       "sessions": 1
     },
     {
@@ -347,11 +354,11 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 296,
-    "section_view_voices": 216,
-    "section_view_book_class": 133,
-    "section_view_faq": 121,
-    "faq_open": 31,
+    "section_view_proven": 298,
+    "section_view_voices": 217,
+    "section_view_book_class": 134,
+    "section_view_faq": 122,
+    "faq_open": 33,
     "read_complete": 211
   },
   "contact_funnel": {
@@ -383,13 +390,18 @@
       "sessions": 18
     },
     {
+      "path": "/logs/475",
+      "title": "/logs/475",
+      "sessions": 4
+    },
+    {
       "path": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
       "title": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
       "sessions": 3
     },
     {
-      "path": "/logs/475",
-      "title": "/logs/475",
+      "path": "/logs/625",
+      "title": "/logs/625",
       "sessions": 3
     },
     {
@@ -425,11 +437,6 @@
     {
       "path": "/logs/620",
       "title": "/logs/620",
-      "sessions": 2
-    },
-    {
-      "path": "/logs/625",
-      "title": "/logs/625",
       "sessions": 2
     },
     {
@@ -506,13 +513,19 @@
       "path": "/logs/475/",
       "title": "1화 신학기 개강",
       "uniqueViews": 3,
-      "views": 8
+      "views": 9
+    },
+    {
+      "path": "/logs/620/",
+      "title": "팀이 커질수록 대표만 모르는 것",
+      "uniqueViews": 3,
+      "views": 3
     },
     {
       "path": "/logs/625/",
       "title": "주니어 PM은 왜 스스로 문제를 정의하지 못할까?",
       "uniqueViews": 3,
-      "views": 2
+      "views": 3
     },
     {
       "path": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
@@ -537,17 +550,11 @@
       "title": "/log_assets/markdown/012_누가 주인인가요.html",
       "uniqueViews": 2,
       "views": 5
-    },
-    {
-      "path": "/log_assets/markdown/122_미국 진출은 누구에게 필요한 전략인가.html",
-      "title": "/log_assets/markdown/122_미국 진출은 누구에게 필요한 전략인가.html",
-      "uniqueViews": 2,
-      "views": 5
     }
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 175,
+    "total_desktop_sessions": 177,
     "excluded_invalid_sessions": 21,
     "by_resolution": [
       {
@@ -569,6 +576,11 @@
         "resolution": "1536x960",
         "width": 1536,
         "sessions": 17
+      },
+      {
+        "resolution": "1536x864",
+        "width": 1536,
+        "sessions": 5
       },
       {
         "resolution": "3840x1080",
@@ -593,11 +605,6 @@
       {
         "resolution": "1512x982",
         "width": 1512,
-        "sessions": 4
-      },
-      {
-        "resolution": "1536x864",
-        "width": 1536,
         "sessions": 4
       },
       {
