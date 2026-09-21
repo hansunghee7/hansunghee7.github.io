@@ -115,6 +115,12 @@
           "views": 4481,
           "likes": 27,
           "comments": 3
+        },
+        {
+          "date": "2026-09-22",
+          "views": 4485,
+          "likes": 28,
+          "comments": 3
         }
       ],
       "title": "아파트 옥상 물탱크가 전부 사라진 이유",
@@ -249,6 +255,12 @@
         {
           "date": "2026-09-21",
           "views": 5134,
+          "likes": 34,
+          "comments": 4
+        },
+        {
+          "date": "2026-09-22",
+          "views": 5136,
           "likes": 34,
           "comments": 4
         }
@@ -387,6 +399,12 @@
           "views": 23,
           "likes": 0,
           "comments": 0
+        },
+        {
+          "date": "2026-09-22",
+          "views": 23,
+          "likes": 0,
+          "comments": 0
         }
       ],
       "title": "아파트 로비가 호텔처럼 변하고 있는 진짜 이유 #건축상식 #아파트",
@@ -479,6 +497,12 @@
           "views": 984,
           "likes": 12,
           "comments": 1
+        },
+        {
+          "date": "2026-09-22",
+          "views": 985,
+          "likes": 12,
+          "comments": 1
         }
       ],
       "title": "지하주차장 천장에 달린 거대한 대포의 정체",
@@ -567,6 +591,12 @@
           "views": 1304,
           "likes": 17,
           "comments": 3
+        },
+        {
+          "date": "2026-09-22",
+          "views": 1304,
+          "likes": 18,
+          "comments": 3
         }
       ],
       "title": "아파트 계단실에 바람을 넣는 놀라운 이유",
@@ -581,16 +611,16 @@
           "published_at": "2026-09-08T16:28:08Z"
         },
         {
-          "author": "@rjeyj593",
-          "text": "소방안전1급 교육내용이네요",
-          "likes": 1,
-          "published_at": "2026-09-08T09:47:51Z"
-        },
-        {
           "author": "@InSaNam0603",
           "text": "어쩐지 문 열면 바람 불더라",
           "likes": 1,
           "published_at": "2026-09-08T11:44:51Z"
+        },
+        {
+          "author": "@rjeyj593",
+          "text": "소방안전1급 교육내용이네요",
+          "likes": 1,
+          "published_at": "2026-09-08T09:47:51Z"
         }
       ]
     },
@@ -649,6 +679,12 @@
           "views": 370,
           "likes": 4,
           "comments": 0
+        },
+        {
+          "date": "2026-09-22",
+          "views": 370,
+          "likes": 5,
+          "comments": 0
         }
       ],
       "title": "아파트 복도에 있는 이 문, 절대 그냥 열면 안 됩니다",
@@ -699,6 +735,12 @@
           "views": 1554,
           "likes": 15,
           "comments": 1
+        },
+        {
+          "date": "2026-09-22",
+          "views": 1554,
+          "likes": 16,
+          "comments": 1
         }
       ],
       "title": "아파트 경사로를 만들었더니 주민들이 반대를 했습니다. #아파트 #이슈 #근린시설 #부동산",
@@ -739,6 +781,12 @@
           "views": 1622,
           "likes": 22,
           "comments": 2
+        },
+        {
+          "date": "2026-09-22",
+          "views": 1622,
+          "likes": 23,
+          "comments": 2
         }
       ],
       "title": "우리 집 창문을 열었는데 옆집 냄새가 들어오는 이유 #건축상식 #아파트 #건축 #건축물 #담배냄새",
@@ -773,6 +821,12 @@
           "views": 1368,
           "likes": 14,
           "comments": 1
+        },
+        {
+          "date": "2026-09-22",
+          "views": 1368,
+          "likes": 15,
+          "comments": 1
         }
       ],
       "title": "신축 아파트 색깔, 주민들이 정하는 게 아니었습니다  #건축물 #아파트 #아파트색상 #아파트사전 #건축 #상식",
@@ -800,6 +854,12 @@
           "date": "2026-09-21",
           "views": 1620,
           "likes": 14,
+          "comments": 0
+        },
+        {
+          "date": "2026-09-22",
+          "views": 1756,
+          "likes": 17,
           "comments": 0
         }
       ],
@@ -925,10 +985,16 @@
         "subscribers": 28,
         "total_views": 16823,
         "video_count": 10
+      },
+      {
+        "date": "2026-09-22",
+        "subscribers": 30,
+        "total_views": 18562,
+        "video_count": 10
       }
     ],
     "title": "신기한 아파트사전",
     "id": "UCTbS2jSG1BvBl4c6EsVx7sA"
   },
-  "updated_at": "2026-09-20T22:40:31.645568Z"
+  "updated_at": "2026-09-21T16:34:04.419028Z"
 }
