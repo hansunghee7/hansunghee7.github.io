@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-21T20:45:32.612528+00:00",
+  "updated_at": "2026-09-21T22:50:26.132856+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 268,
-    "activeUsers": 185,
-    "newUsers": 183,
-    "returningUsers": 2
+    "sessions": 274,
+    "activeUsers": 191,
+    "newUsers": 187,
+    "returningUsers": 4
   },
   "daily": [
     {
@@ -199,10 +199,10 @@
     },
     {
       "date": "2026-09-22",
-      "sessions": 11,
-      "activeUsers": 11,
-      "newUsers": 9,
-      "returningUsers": 2
+      "sessions": 17,
+      "activeUsers": 17,
+      "newUsers": 13,
+      "returningUsers": 4
     }
   ],
   "daily_leads": [
@@ -216,27 +216,27 @@
     }
   ],
   "landing_types": {
-    "home": 157,
+    "home": 160,
     "log_home": 7,
-    "individual_post": 79,
+    "individual_post": 83,
     "other": 30
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 199
+      "sessions": 203
     },
     {
       "source": "google",
       "sessions": 21
     },
     {
-      "source": "searchadvisor.naver.com",
+      "source": "(not set)",
       "sessions": 12
     },
     {
-      "source": "(not set)",
-      "sessions": 10
+      "source": "searchadvisor.naver.com",
+      "sessions": 12
     },
     {
       "source": "l.facebook.com",
@@ -288,7 +288,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 199
+      "sessions": 203
     },
     {
       "source": "google",
@@ -371,12 +371,12 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 299,
-    "section_view_voices": 218,
-    "section_view_book_class": 134,
-    "section_view_faq": 122,
+    "section_view_proven": 300,
+    "section_view_voices": 219,
+    "section_view_book_class": 135,
+    "section_view_faq": 123,
     "faq_open": 33,
-    "read_complete": 214
+    "read_complete": 217
   },
   "contact_funnel": {
     "contact_open": 29,
@@ -571,7 +571,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 192,
+    "total_desktop_sessions": 198,
     "excluded_invalid_sessions": 21,
     "by_resolution": [
       {
@@ -597,7 +597,7 @@
       {
         "resolution": "1600x1600",
         "width": 1600,
-        "sessions": 10
+        "sessions": 16
       },
       {
         "resolution": "1512x982",
