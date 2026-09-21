@@ -77,12 +77,6 @@ port = 11434
 name = "올라마(로컬 모델)"
 
 [[job]]
-id = "svc:open-webui"
-kind = "tcp"
-port = 3000
-name = "Open WebUI"
-
-[[job]]
 id = "fn:gemini-api"
 kind = "cmd"
 cmd = ["python", 'C:\\work\\_ops\\gemini_ping.py']
