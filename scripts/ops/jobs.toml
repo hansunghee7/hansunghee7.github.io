@@ -121,3 +121,10 @@ every_min = 30
 name = "구PC 감시(감시의 감시: 상태판이 90분 안에 갱신되는가)"
 note = "구PC가 꺼졌거나 감시가 멈추면 이 항목이 붉어짐. 신PC가 꺼져 있을 땐 못 알림"
 
+[[job]]
+id = "cron:weekly-local"
+kind = "file_age"
+path = 'C:\work\_ops\weekly\last-run.txt'
+max_age_min = 11520
+name = "주간 로컬 LLM 가공 2건(작업 스케줄러 simplifier-weekly-local, 월 09:00)"
+note = "2026-09-21 등록(백로그 44). 아카이브 후보와 변경 요약 초안을 만들고 둘 다 성공하면 last-run.txt 갱신. 8일 넘게 안 갱신되면 멈춤. 결과는 초안(판정 금지)"
