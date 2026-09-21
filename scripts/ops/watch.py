@@ -31,6 +31,8 @@ STATE_DIR = os.environ.get("OPS_STATE_DIR", r"C:\work\_ops")
 JOBS_FILE = os.environ.get("OPS_JOBS", "jobs.toml")  # 기기마다 대장을 나눈다(신PC: jobs.toml, 구PC: jobs_goosolar.toml)
 HOST = os.environ.get("OPS_HOST", "신PC")  # 알림에 어느 기기의 감시인지 표시
 MAILBOX = os.environ.get("OPS_MAILBOX", r"C:\work\solar-bible\mailbox\mailbox.py")
+# 사장님 폰으로 직접 알리는 스크립트(구PC의 tg_notify.py). 설정한 기기에서, 대장에 direct = true인 항목이 "멈춤"이 될 때만 쓴다(2026-09-21 사장님 승인: 신PC 응답 없음만)
+DIRECT_NOTIFY = os.environ.get("OPS_DIRECT_NOTIFY", "")
 ANSI = re.compile(r"\x1b\[[0-9;]*m")
 ICON = {"ok": "🟢", "pending": "⚪", "warn": "🟡", "fail": "🔴"}
 # 점검 주기는 "탐지 지연을 얼마까지 허용하는가"로 정한다(주기 = 탐지 지연의 하한). 항목별로 every_min으로 바꿀 수 있다.
@@ -168,11 +170,15 @@ def check_gh(job, gh_runs, at):
 
 
 def check_tcp(job, at):
-    try:
-        with socket.create_connection((job.get("host", "127.0.0.1"), job["port"]), timeout=3):
-            return "ok", "포트 응답"
-    except OSError as exc:
-        return "fail", f"연결 실패({type(exc).__name__})"
+    """port 하나, 또는 ports 목록 중 하나라도 응답하면 정상(윈도우가 ping을 막아 포트로 켜짐을 판단)."""
+    last = None
+    for port in job.get("ports") or [job["port"]]:
+        try:
+            with socket.create_connection((job.get("host", "127.0.0.1"), port), timeout=3):
+                return "ok", f"포트 {port} 응답"
+        except OSError as exc:
+            last = exc
+    return "fail", f"연결 실패({type(last).__name__})"
 
 
 def check_http(job, at):
@@ -292,7 +298,7 @@ def evaluate(jobs, at, prev=None):
             st, detail = "warn", f"점검 자체가 실패: {type(exc).__name__}: {str(exc)[:80]}"
         if st == "fail" and j.get("severity") == "warn":
             st = "warn"
-        results.append({"id": j["id"], "name": j["name"], "status": st, "detail": detail, "owner": j.get("owner", "탐"), "note": j.get("note", ""),
+        results.append({"id": j["id"], "name": j["name"], "status": st, "detail": detail, "owner": j.get("owner", "탐"), "note": j.get("note", ""), "direct": bool(j.get("direct")),
                         "fail_after": j.get("fail_after", DEFAULT_FAIL_AFTER.get(j["kind"], 2))})
     return results
 
@@ -336,6 +342,13 @@ def send(title, body):
     return run([sys.executable, MAILBOX, "send", "탐", title, "--from", "탐"], stdin=body)
 
 
+def direct_notify(title, body):
+    """설정된 기기에서만 사장님 폰으로 직접 알린다. 설정이 없으면 아무것도 하지 않는다."""
+    if not DIRECT_NOTIFY:
+        return None
+    return run([sys.executable, DIRECT_NOTIFY, title], stdin=body)
+
+
 def main():
     dry = "--dry-run" in sys.argv
     at = now()
@@ -357,6 +370,8 @@ def main():
     for kind, r in alerts:
         head = "🔴 멈춤" if kind == "down" else "🟢 복구"
         send(f"[감시] {head}: {r['name']}", f"{r['name']}: {r['detail']}\n(연속 점검 결과, 상태판 C:\\work\\_ops\\STATUS.md)")
+        if kind == "down" and r.get("direct"):  # 복구는 폰으로 보내지 않는다(결정할 일이 없는 알림은 폰 금지)
+            direct_notify(f"🔴 {r['name']}", f"{r['detail']}\n일부러 끄신 거면 무시하세요. 켜려면 이 봇에 /wol 을 보내세요.")
     print(f"점검 {len(state)}건, 문제 {len(bad)}건, 알림 {len(alerts)}건")
     return 0
 
