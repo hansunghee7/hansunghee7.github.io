@@ -118,7 +118,7 @@
         },
         {
           "date": "2026-09-22",
-          "views": 4485,
+          "views": 4488,
           "likes": 28,
           "comments": 3
         }
@@ -260,7 +260,7 @@
         },
         {
           "date": "2026-09-22",
-          "views": 5136,
+          "views": 5139,
           "likes": 34,
           "comments": 4
         }
@@ -402,7 +402,7 @@
         },
         {
           "date": "2026-09-22",
-          "views": 23,
+          "views": 26,
           "likes": 0,
           "comments": 0
         }
@@ -500,7 +500,7 @@
         },
         {
           "date": "2026-09-22",
-          "views": 985,
+          "views": 986,
           "likes": 12,
           "comments": 1
         }
@@ -594,7 +594,7 @@
         },
         {
           "date": "2026-09-22",
-          "views": 1304,
+          "views": 1305,
           "likes": 18,
           "comments": 3
         }
@@ -611,16 +611,16 @@
           "published_at": "2026-09-08T16:28:08Z"
         },
         {
-          "author": "@InSaNam0603",
-          "text": "어쩐지 문 열면 바람 불더라",
-          "likes": 1,
-          "published_at": "2026-09-08T11:44:51Z"
-        },
-        {
           "author": "@rjeyj593",
           "text": "소방안전1급 교육내용이네요",
           "likes": 1,
           "published_at": "2026-09-08T09:47:51Z"
+        },
+        {
+          "author": "@InSaNam0603",
+          "text": "어쩐지 문 열면 바람 불더라",
+          "likes": 1,
+          "published_at": "2026-09-08T11:44:51Z"
         }
       ]
     },
@@ -682,7 +682,7 @@
         },
         {
           "date": "2026-09-22",
-          "views": 370,
+          "views": 372,
           "likes": 5,
           "comments": 0
         }
@@ -738,7 +738,7 @@
         },
         {
           "date": "2026-09-22",
-          "views": 1554,
+          "views": 1555,
           "likes": 16,
           "comments": 1
         }
@@ -784,7 +784,7 @@
         },
         {
           "date": "2026-09-22",
-          "views": 1622,
+          "views": 1628,
           "likes": 23,
           "comments": 2
         }
@@ -824,7 +824,7 @@
         },
         {
           "date": "2026-09-22",
-          "views": 1368,
+          "views": 1371,
           "likes": 15,
           "comments": 1
         }
@@ -858,8 +858,8 @@
         },
         {
           "date": "2026-09-22",
-          "views": 1756,
-          "likes": 17,
+          "views": 1852,
+          "likes": 18,
           "comments": 0
         }
       ],
@@ -988,7 +988,7 @@
       },
       {
         "date": "2026-09-22",
-        "subscribers": 30,
+        "subscribers": 31,
         "total_views": 18562,
         "video_count": 10
       }
@@ -996,5 +996,5 @@
     "title": "신기한 아파트사전",
     "id": "UCTbS2jSG1BvBl4c6EsVx7sA"
   },
-  "updated_at": "2026-09-21T16:34:04.419028Z"
+  "updated_at": "2026-09-21T23:32:14.821920Z"
 }
