@@ -111,6 +111,27 @@ def ask(prompt, model=DEFAULT_MODEL):
     return last
 
 
+def poller_usage_today():
+    """헤르메스 폴러(탐 키의 여분 사용, 사장님 2026-09-22)의 오늘 gemini 실행 건수·토큰. usage_audit.jsonl에서 읽는다."""
+    path = Path("C:/Users/PC/AppData/Local/hermes/cron/usage_audit.jsonl")
+    n = tok = fail = 0
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    try:
+        lines = path.read_text(encoding="utf-8", errors="ignore").splitlines()
+    except OSError:
+        return "폴러 사용량: 감사 기록 없음"
+    for line in lines:
+        try:
+            j = json.loads(line)
+        except ValueError:
+            continue
+        if j.get("ts", "")[:10] == today and str(j.get("model", "")).startswith("gemini"):
+            n += 1
+            tok += j.get("total_tokens") or 0
+            fail += 1 if j.get("error") else 0
+    return f"폴러(헤르메스) 오늘 UTC gemini 실행 {n}건, 토큰 {tok:,}, 오류 {fail}건"
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("prompt", nargs="?")
@@ -121,6 +142,7 @@ def main():
     if a.status:
         print("사용 가능 키:", [(k["name"], k["fp"]) for k in load_keys()], "/ 제외(다이얼로그 추정):", sorted(dialog_fps()))
         print(json.dumps(read_counter().get(today_pt(), {}), ensure_ascii=False))
+        print(poller_usage_today())
         return
     if not a.prompt:
         ap.error("질문이 필요합니다")
