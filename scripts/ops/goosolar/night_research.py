@@ -30,8 +30,9 @@ from openai import APIStatusError, OpenAI, RateLimitError
 
 KST = timezone(timedelta(hours=9))
 MODEL = "groq/compound"
+PACE_S = 75  # 질문 사이 간격(초)
 ENV_PATH = os.path.expanduser("~/hermes-agent/.env")
-SHIN_PC = ("172.30.1.33", (22, 11434))
+SHIN_PC = ("100.67.79.19", (22, 11434))  # Tailscale 고정 주소(유선 DHCP 주소는 바뀐다, 2026-09-22 교정)
 
 SYSTEM = (
     "너는 근거 수집 도우미다. 웹 검색으로 페이지를 실제로 열어 확인한 내용만 쓴다. "
@@ -120,7 +121,15 @@ def verify(claim):
     return ("일치", "원문에 그대로 있음") if q in page else ("불일치", "원문에 이 인용이 없음(번역·요약이거나 지어냈을 수 있음)")
 
 
-def ask(client, question, tries=3):
+def retry_after(msg, default=65):
+    """429 메시지의 "try again in 8.7s"를 읽어 그 시간 + 여유. 분당 한도는 1분 창이라 최소 default초는 쉰다."""
+    m = re.search(r"try again in ([\d.]+)s", msg)
+    return max(default, float(m.group(1)) + 10) if m else default
+
+
+def ask(client, question, tries=5):
+    # 2026-09-22 원인: groq/compound는 내부에서 다른 모델(llama-4-scout, 분당 30,000토큰)로 검색 결과를 읽는다.
+    # 질문 하나가 14,000~20,000토큰을 써서 1분 안에 두 번 부르면 무조건 429. 예전엔 20/40/60초만 쉬고 3번에 포기했다.
     for i in range(tries):
         try:
             r = client.chat.completions.create(
@@ -131,7 +140,7 @@ def ask(client, question, tries=3):
             msg = str(e)
             if "per day" in msg or "TPD" in msg:
                 raise
-            time.sleep(20 * (i + 1))  # 분당 한도는 잠깐 쉬면 풀린다
+            time.sleep(retry_after(msg))
         except APIStatusError as e:
             # 413 request_too_large: compound가 내부에서 큰 페이지를 읽어 한 요청이 커질 때(같은 질문이 다시 하면 통과하기도 함)
             if e.status_code != 413:
@@ -200,7 +209,7 @@ def main():
     client = OpenAI(api_key=load_env(ENV_PATH)["GROQ_API_KEY"], base_url="https://api.groq.com/openai/v1")
 
     results = load_results(out_dir, name, spec)
-    done_ids, stop_reason = [], ""
+    done_ids, stop_reason, skipped, fail_msgs = [], "", [], []
     for item in spec["questions"]:
         if item["id"] in results or stop_reason:
             continue
@@ -210,7 +219,11 @@ def main():
             stop_reason = "일일 토큰 한도(429): " + str(e)[:160]
             continue
         except Exception as e:
-            stop_reason = f"오류로 중단: {type(e).__name__} {str(e)[:200]}"
+            # 한 질문의 실패가 나머지를 막지 않게 건너뛴다(다음 실행에서 이어하기). 같은 종류 오류가 연속 2번이면 중단.
+            skipped.append(item["id"])
+            fail_msgs.append(f"{item['id']} {type(e).__name__} {str(e)[:120]}")
+            if len(skipped) >= 2 and len(done_ids) == 0:
+                stop_reason = "질문 2개 연속 실패로 중단: " + " / ".join(fail_msgs)[:300]
             continue
         rows = []
         for c in parse_claims(text):
@@ -220,11 +233,12 @@ def main():
         json.dump(rec, open(result_path(out_dir, name, item["id"]), "w", encoding="utf-8"), ensure_ascii=False)
         results[item["id"]] = rec
         done_ids.append(item["id"])
+        time.sleep(PACE_S)  # 직전 질문의 토큰이 분당 창에서 빠지도록
 
     runs_path = os.path.join(out_dir, "data", name, "runs.json")
     runs = json.load(open(runs_path, encoding="utf-8")) if os.path.exists(runs_path) else []
     runs.append({"started": f"{started:%m-%d %H:%M}", "finished": f"{datetime.now(KST):%m-%d %H:%M}", "shin_pc_up": shin_before,
-                 "done_ids": done_ids, "stop_reason": stop_reason})
+                 "done_ids": done_ids, "skipped": skipped, "stop_reason": stop_reason})
     json.dump(runs, open(runs_path, "w", encoding="utf-8"), ensure_ascii=False)
     path = os.path.join(out_dir, f"{name}.md")
     open(path, "w", encoding="utf-8").write(build_report(spec, results, runs, name))
