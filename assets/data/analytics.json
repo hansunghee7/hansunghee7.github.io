@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-21T20:00:55.855650+00:00",
+  "updated_at": "2026-09-21T20:45:32.612528+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 265,
-    "activeUsers": 182,
-    "newUsers": 180,
+    "sessions": 268,
+    "activeUsers": 185,
+    "newUsers": 183,
     "returningUsers": 2
   },
   "daily": [
@@ -199,9 +199,9 @@
     },
     {
       "date": "2026-09-22",
-      "sessions": 8,
-      "activeUsers": 8,
-      "newUsers": 6,
+      "sessions": 11,
+      "activeUsers": 11,
+      "newUsers": 9,
       "returningUsers": 2
     }
   ],
@@ -216,15 +216,15 @@
     }
   ],
   "landing_types": {
-    "home": 156,
+    "home": 157,
     "log_home": 7,
-    "individual_post": 76,
+    "individual_post": 79,
     "other": 30
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 196
+      "sessions": 199
     },
     {
       "source": "google",
@@ -236,7 +236,7 @@
     },
     {
       "source": "(not set)",
-      "sessions": 9
+      "sessions": 10
     },
     {
       "source": "l.facebook.com",
@@ -288,7 +288,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 196
+      "sessions": 199
     },
     {
       "source": "google",
@@ -376,7 +376,7 @@
     "section_view_book_class": 134,
     "section_view_faq": 122,
     "faq_open": 33,
-    "read_complete": 213
+    "read_complete": 214
   },
   "contact_funnel": {
     "contact_open": 29,
@@ -571,7 +571,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 189,
+    "total_desktop_sessions": 192,
     "excluded_invalid_sessions": 21,
     "by_resolution": [
       {
@@ -597,7 +597,7 @@
       {
         "resolution": "1600x1600",
         "width": 1600,
-        "sessions": 7
+        "sessions": 10
       },
       {
         "resolution": "1512x982",
