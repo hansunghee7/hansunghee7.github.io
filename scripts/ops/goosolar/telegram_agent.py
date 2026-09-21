@@ -19,7 +19,7 @@ logging.getLogger("httpx").setLevel(logging.WARNING)  # 토큰이 든 URL이 로
 log = logging.getLogger("goosolar")
 
 SHIN_PC_MAC = "74:56:3C:7B:D6:51"
-SHIN_PC_IP = os.getenv("SHIN_PC_IP", "172.30.1.33")   # 공유기 유선 대역. 깨어남 확인에 쓴다
+SHIN_PC_IP = os.getenv("SHIN_PC_IP", "100.67.79.19")   # Tailscale 고정 주소(유선 주소는 DHCP로 바뀌어 .33이 틀어짐). 깨어남 확인에 쓴다
 SHIN_PC_PORTS = (22, 11434)                            # 윈도우가 ping을 막아 둬서 포트 응답으로 켜짐을 판단
 BROADCASTS = ("255.255.255.255", "172.30.1.255")
 WOL_PORTS = (9, 7)

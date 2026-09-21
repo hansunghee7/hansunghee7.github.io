@@ -17,6 +17,15 @@ cmd = ["systemctl", "is-active", "hermes-agent"]
 name = "구솔라 텔레그램 봇(hermes-agent 서비스, /wol 신PC 켜기)"
 note = "2026-09-21 허용 사용자 제한·WoL 확인 응답 개편. 봇이 죽으면 신PC 켜기가 안 된다"
 
+[[job]]
+id = "tcp:sinpc-up"
+kind = "tcp"
+host = "100.67.79.19"
+ports = [22, 11434]
+direct = true
+name = "신PC 응답(포트 22 또는 11434)"
+note = "주소는 Tailscale 고정 주소(공유기 유선 주소는 DHCP로 .33에서 .48로 바뀌어 못 씀). 2026-09-21 사장님 승인: 신PC가 응답 없을 때만 구PC가 사장님 폰(텔레그램)으로 직접 알림. 연속 2회(약 1시간) 실패 때 1번만, 복구 알림은 폰으로 안 보냄. 신PC 감시가 못 알리는 상황을 구PC가 대신 알린다"
+
 # ---------- GitHub 예약 작업 ----------
 [[job]]
 id = "gh:site:Fetch Clarity"

@@ -114,5 +114,21 @@ class WatchTest(unittest.TestCase):
         self.assertEqual(a, [])
 
 
+class DirectAlertTest(unittest.TestCase):
+    def test_check_tcp_any_port(self):
+        import socket
+        srv = socket.socket()
+        srv.bind(("127.0.0.1", 0))
+        srv.listen(1)
+        up = srv.getsockname()[1]
+        self.assertEqual(w.check_tcp({"host": "127.0.0.1", "ports": [1, up]}, T0)[0], "ok")
+        srv.close()
+        self.assertEqual(w.check_tcp({"host": "127.0.0.1", "ports": [1]}, T0)[0], "fail")
+
+    def test_direct_notify_off_by_default(self):
+        w.DIRECT_NOTIFY = ""
+        self.assertIsNone(w.direct_notify("t", "b"))
+
+
 if __name__ == "__main__":
     unittest.main()
