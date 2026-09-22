@@ -2037,7 +2037,7 @@
       "thumbnail": "https://scontent-ssn1-1.cdninstagram.com/v/t51.82787-15/791959725_18101406806136475_364886926689966404_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=105&ig_cache_key=Mzk5MTczMDc4MTExMjQxNjg3Nw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjcyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=fR4XXmPk30kQ7kNvwF0D4Oa&_nc_oc=AdoekXgy7ynhfOzeWKKBBd2QHjV3Z0ie029dPo48DGdBpiwmjvpKtyRY7V343UBo-F4&_nc_zt=23&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_gid=50MP_B8KeSj8YSyRR5t32A&_nc_ss=7b6a8&oh=00_AQKViU4czkyW5JSxs3t64ybb98sSoxB6dwJ1z59Iwmk3zQ&oe=6AB8DCC1"
     }
   },
-  "updated_at": "2026-09-22T23:03:33.060Z",
+  "updated_at": "2026-09-22T23:14:27.949Z",
   "channels": {
     "naver_clip": {
       "history": [
@@ -2160,6 +2160,12 @@
           "followers": 182,
           "following": 279,
           "content_count": 10
+        },
+        {
+          "date": "2026-09-23",
+          "followers": 182,
+          "following": 279,
+          "content_count": 11
         }
       ],
       "url": "https://clip.naver.com/@simkihanapt?tab=all&filter=all"
