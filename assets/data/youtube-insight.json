@@ -524,7 +524,7 @@
         },
         {
           "date": "2026-09-23",
-          "views": 986,
+          "views": 991,
           "likes": 12,
           "comments": 1
         }
@@ -641,16 +641,16 @@
           "published_at": "2026-09-08T16:28:08Z"
         },
         {
-          "author": "@rjeyj593",
-          "text": "소방안전1급 교육내용이네요",
-          "likes": 1,
-          "published_at": "2026-09-08T09:47:51Z"
-        },
-        {
           "author": "@InSaNam0603",
           "text": "어쩐지 문 열면 바람 불더라",
           "likes": 1,
           "published_at": "2026-09-08T11:44:51Z"
+        },
+        {
+          "author": "@rjeyj593",
+          "text": "소방안전1급 교육내용이네요",
+          "likes": 1,
+          "published_at": "2026-09-08T09:47:51Z"
         }
       ]
     },
@@ -780,7 +780,7 @@
         },
         {
           "date": "2026-09-23",
-          "views": 1556,
+          "views": 1555,
           "likes": 16,
           "comments": 1
         }
@@ -832,7 +832,7 @@
         },
         {
           "date": "2026-09-23",
-          "views": 1629,
+          "views": 1631,
           "likes": 23,
           "comments": 2
         }
@@ -918,7 +918,7 @@
         },
         {
           "date": "2026-09-23",
-          "views": 2004,
+          "views": 2013,
           "likes": 18,
           "comments": 0
         }
@@ -932,7 +932,7 @@
       "history": [
         {
           "date": "2026-09-23",
-          "views": 954,
+          "views": 1387,
           "likes": 17,
           "comments": 3
         }
@@ -945,19 +945,19 @@
         {
           "author": "@프로게이머-f2i",
           "text": "배송해주지마라",
-          "likes": 1,
+          "likes": 2,
           "published_at": "2026-09-22T11:33:19Z"
         },
         {
           "author": "@박수soo",
           "text": "택배 배달 일꾼들 막고..잘 먹고 사는지...",
-          "likes": 1,
+          "likes": 2,
           "published_at": "2026-09-22T13:00:11Z"
         },
         {
           "author": "@None논논휴흏",
           "text": "저100m  저만큼 일을못하니 비용이 오르니깐\n추가 비용을 일반인 우리한테 전가시키는것 같은데?",
-          "likes": 1,
+          "likes": 2,
           "published_at": "2026-09-22T12:07:38Z"
         }
       ]
@@ -1089,12 +1089,12 @@
       {
         "date": "2026-09-23",
         "subscribers": 31,
-        "total_views": 18818,
+        "total_views": 18847,
         "video_count": 11
       }
     ],
     "title": "신기한 아파트사전",
     "id": "UCTbS2jSG1BvBl4c6EsVx7sA"
   },
-  "updated_at": "2026-09-22T15:08:34.061265Z"
+  "updated_at": "2026-09-22T23:13:38.705128Z"
 }
