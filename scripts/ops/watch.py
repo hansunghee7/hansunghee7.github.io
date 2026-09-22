@@ -71,12 +71,17 @@ def parse_iso(s):
 
 
 def parse_hermes_cron(text):
-    """`hermes cron list` 출력 -> {이름: {last, last_status, next}}"""
-    jobs, cur = {}, None
+    """`hermes cron list` 출력 -> {이름: {id, last, last_status, next}}"""
+    jobs, cur, pending_id = {}, None, None
     for line in ANSI.sub("", text).splitlines():
+        m = re.match(r"\s*([0-9a-f]{8,40})\s+\[.*\]\s*$", line)
+        if m:
+            pending_id = m.group(1)
+            continue
         m = re.match(r"\s*Name:\s+(.*\S)", line)
         if m:
             cur = jobs.setdefault(m.group(1), {})
+            cur["id"] = pending_id
             continue
         if cur is None:
             continue
@@ -87,6 +92,29 @@ def parse_hermes_cron(text):
         if m:
             cur["next"] = parse_iso(m.group(1))
     return jobs
+
+
+def hermes_fail_reason(hermes, cron_id, max_lines=3):
+    """`hermes cron runs <id>`에서 가장 최근 실패 실행의 FAIL 줄을 최대 max_lines개 뽑는다.
+    실패해도(도구 없음, 시간 초과 등) 예외를 내지 않고 빈 문자열을 돌려준다 — 감시는 이 때문에 멈추면 안 된다."""
+    if not cron_id:
+        return ""
+    try:
+        _, out = run([hermes, "cron", "runs", cron_id], timeout=20)
+        block, in_failed = [], False
+        for line in ANSI.sub("", out).splitlines():
+            m = re.match(r"[0-9a-f]{16,40}\s+(\w+)\s+job=", line)
+            if m:
+                if in_failed:
+                    break  # 다음(더 이전) 실행 블록 시작 -> 가장 최근 실패 블록은 끝
+                in_failed = m.group(1) == "failed"
+                continue
+            if in_failed:
+                block.append(line)
+        fails = [ln.strip() for ln in block if ln.strip().startswith("FAIL ")]
+        return "; ".join(fails[:max_lines])
+    except Exception:
+        return ""
 
 
 def infer_period_min(run_times, default=1440):
@@ -118,7 +146,7 @@ def find_by_name(table, name):
 
 
 # ---------- 점검 ----------
-def check_hermes(job, crons, at):
+def check_hermes(job, crons, at, hermes=None):
     rec = find_by_name(crons, job["name"])
     if rec is None:
         return "fail", "헤르메스 크론 목록에 없음"
@@ -127,7 +155,9 @@ def check_hermes(job, crons, at):
         nxt = rec.get("next")
         return ("pending", f"첫 실행 전, 다음 {nxt:%m-%d %H:%M}") if nxt and nxt > at else ("fail", "실행 기록이 없음")
     if rec.get("last_status") not in ("ok", ""):
-        return "fail", f"마지막 실행 상태 {rec.get('last_status')}"
+        reason = hermes_fail_reason(hermes, rec.get("id"))  # 실제로 뭐가 실패했는지(예: "FAIL disk-C:-space free=14.6% < 15%")
+        detail = f"마지막 실행 상태 {rec.get('last_status')}"
+        return "fail", f"{detail}: {reason}" if reason else detail
     if (at - last).total_seconds() / 60 > 1.5 * period + 5:
         return "fail", f"마지막 실행 {last:%m-%d %H:%M}, 주기 {period:g}분보다 오래 안 돎"
     detail = f"마지막 실행 {last:%m-%d %H:%M} (ok는 AI 종료 의미일 뿐)"
@@ -292,7 +322,7 @@ def evaluate(jobs, at, prev=None):
             continue
         try:
             k = j["kind"]
-            st, detail = (check_hermes(j, crons, at) if k == "hermes_cron" else check_gh(j, gh_runs, at) if k == "gh_workflow"
+            st, detail = (check_hermes(j, crons, at, hermes) if k == "hermes_cron" else check_gh(j, gh_runs, at) if k == "gh_workflow"
                           else check_tcp(j, at) if k == "tcp" else check_http(j, at) if k == "http" else check_cmd(j, at) if k == "cmd" else check_file_age(j, at) if k == "file_age" else check_git_file_lines(j, at) if k == "git_file_lines" else check_git_file_age(j, at) if k == "git_file_age" else check_pc(j, at))
         except Exception as exc:
             st, detail = "warn", f"점검 자체가 실패: {type(exc).__name__}: {str(exc)[:80]}"
@@ -368,9 +398,10 @@ def main():
         body = f"감시를 시작했습니다. 지금 문제 {len(bad)}건:\n" + "\n".join(f"- {r['name']}: {r['detail']}" for r in bad[:12]) + "\n상태판: C:\\work\\_ops\\STATUS.md"
         send("[감시·%s] 시작: 지금 문제 %d건" % (HOST, len(bad)), body)
     for kind, r in alerts:
-        head = "🔴 멈춤" if kind == "down" else "🟢 복구"
-        send(f"[감시] {head}: {r['name']}", f"{r['name']}: {r['detail']}\n(연속 점검 결과, 상태판 C:\\work\\_ops\\STATUS.md)")
-        if kind == "down" and r.get("direct"):  # 복구는 폰으로 보내지 않는다(결정할 일이 없는 알림은 폰 금지)
+        if kind == "up":  # 정상 복구는 채널에 보내지 않는다(상태판이 이미 보여줌, 2026-09-22 사장님 지시 — 에이전트 요청 채널이 복구 알림에 묻혀 실제 요청이 안 보임)
+            continue
+        send(f"[감시] 🔴 멈춤: {r['name']}", f"{r['name']}: {r['detail']}\n(연속 점검 결과, 상태판 C:\\work\\_ops\\STATUS.md)")
+        if r.get("direct"):  # 폰(신솔라)은 direct=true인 항목만, 그리고 멈춤일 때만
             direct_notify(f"🔴 {r['name']}", f"{r['detail']}\n일부러 끄신 거면 무시하세요. 켜려면 이 봇에 /wol 을 보내세요.")
     print(f"점검 {len(state)}건, 문제 {len(bad)}건, 알림 {len(alerts)}건")
     return 0
