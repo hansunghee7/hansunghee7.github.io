@@ -755,8 +755,8 @@
         "category_rank": 125,
         "category2_rank": 18,
         "sales_index": 720,
-        "reviews": 6,
-        "rating": 9.0
+        "reviews": 3,
+        "rating": 10.0
       },
       "aladin": {
         "sales_point": 785,
@@ -777,9 +777,9 @@
         "rating": 0.0
       },
       "millie": {
-        "category_rank": 61
+        "category_rank": 60
       }
     }
   ],
-  "updated_at": "2026-09-21T23:05:52.131944+00:00"
+  "updated_at": "2026-09-22T07:48:23.651079+00:00"
 }

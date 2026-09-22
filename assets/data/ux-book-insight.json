@@ -1809,7 +1809,7 @@
         "design_rank": 22,
         "econ_rank": null,
         "sales_index": 2532,
-        "reviews": 27,
+        "reviews": 17,
         "rating": 10.0
       },
       "aladin": {
@@ -1830,5 +1830,5 @@
       }
     }
   ],
-  "updated_at": "2026-09-21T23:07:14.290568+00:00"
+  "updated_at": "2026-09-22T07:49:45.423501+00:00"
 }
