@@ -60,7 +60,11 @@ def process_one(repo, path, hermes_cmd, log):
     if not text.strip():
         log.append(f"[SKIP] {path.name}: 빈 파일")
         return False
-    p = run([*hermes_cmd, "chat", "-q", text, "-Q"], cwd=repo, timeout=1200)
+    # 2026-09-22 탐: 기본 모델(solar-pro4)이 한도에 걸리면 qwen 14B(컨텍스트 32K)까지 밀려
+    # 다단계 작업에서 응답이 깨지는 사고가 실측됨(백로그 30·31 처리 실패, 문서 미확정 텍스트로
+    # 끝남). gemini-fast(빠른 키 순환)로 고정해 그 페일오버 체인을 건너뛴다.
+    p = run([*hermes_cmd, "chat", "-q", text, "-Q", "--provider", "gemini-fast", "-m", "gemini-3.6-flash"],
+            cwd=repo, timeout=1200)
     out = (p.stdout or "").strip()
     if p.returncode != 0:
         log.append(f"[ERROR] {path.name}: hermes chat 실패(exit {p.returncode}): {(p.stderr or out)[:300]}")
