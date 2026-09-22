@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-21T22:50:26.132856+00:00",
+  "updated_at": "2026-09-22T06:12:27.419349+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 274,
-    "activeUsers": 191,
-    "newUsers": 187,
-    "returningUsers": 4
+    "sessions": 300,
+    "activeUsers": 216,
+    "newUsers": 213,
+    "returningUsers": 3
   },
   "daily": [
     {
@@ -194,15 +194,15 @@
       "date": "2026-09-21",
       "sessions": 9,
       "activeUsers": 8,
-      "newUsers": 5,
-      "returningUsers": 3
+      "newUsers": 7,
+      "returningUsers": 1
     },
     {
       "date": "2026-09-22",
-      "sessions": 17,
-      "activeUsers": 17,
-      "newUsers": 13,
-      "returningUsers": 4
+      "sessions": 43,
+      "activeUsers": 42,
+      "newUsers": 37,
+      "returningUsers": 5
     }
   ],
   "daily_leads": [
@@ -216,15 +216,15 @@
     }
   ],
   "landing_types": {
-    "home": 160,
+    "home": 164,
     "log_home": 7,
-    "individual_post": 83,
+    "individual_post": 110,
     "other": 30
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 203
+      "sessions": 226
     },
     {
       "source": "google",
@@ -232,7 +232,7 @@
     },
     {
       "source": "(not set)",
-      "sessions": 12
+      "sessions": 17
     },
     {
       "source": "searchadvisor.naver.com",
@@ -244,11 +244,15 @@
     },
     {
       "source": "linkedin.com",
-      "sessions": 5
+      "sessions": 6
     },
     {
       "source": "maru-connect.webflow.io",
-      "sessions": 4
+      "sessions": 6
+    },
+    {
+      "source": "blog.naver.com",
+      "sessions": 3
     },
     {
       "source": "facebook.com",
@@ -259,16 +263,12 @@
       "sessions": 3
     },
     {
-      "source": "blog.naver.com",
+      "source": "(data not available)",
       "sessions": 2
     },
     {
       "source": "m.search.naver.com",
       "sessions": 2
-    },
-    {
-      "source": "(data not available)",
-      "sessions": 1
     },
     {
       "source": "bing",
@@ -288,7 +288,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 203
+      "sessions": 226
     },
     {
       "source": "google",
@@ -312,13 +312,19 @@
       "source": "linkedin.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 5
+      "sessions": 6
     },
     {
       "source": "maru-connect.webflow.io",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 4
+      "sessions": 6
+    },
+    {
+      "source": "blog.naver.com",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "sessions": 3
     },
     {
       "source": "facebook.com",
@@ -333,9 +339,9 @@
       "sessions": 3
     },
     {
-      "source": "blog.naver.com",
-      "medium": "referral",
-      "campaign": "(referral)",
+      "source": "(data not available)",
+      "medium": "(data not available)",
+      "campaign": "(cross-network)",
       "sessions": 2
     },
     {
@@ -343,12 +349,6 @@
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 2
-    },
-    {
-      "source": "(data not available)",
-      "medium": "(data not available)",
-      "campaign": "(cross-network)",
-      "sessions": 1
     },
     {
       "source": "bing",
@@ -371,12 +371,12 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 300,
-    "section_view_voices": 219,
-    "section_view_book_class": 135,
-    "section_view_faq": 123,
-    "faq_open": 33,
-    "read_complete": 217
+    "section_view_proven": 304,
+    "section_view_voices": 224,
+    "section_view_book_class": 138,
+    "section_view_faq": 125,
+    "faq_open": 35,
+    "read_complete": 230
   },
   "contact_funnel": {
     "contact_open": 29,
@@ -407,18 +407,23 @@
       "sessions": 18
     },
     {
+      "path": "/logs/620",
+      "title": "/logs/620",
+      "sessions": 7
+    },
+    {
       "path": "/logs/475",
       "title": "/logs/475",
       "sessions": 4
     },
     {
-      "path": "/logs/620",
-      "title": "/logs/620",
-      "sessions": 4
-    },
-    {
       "path": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
       "title": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
+      "sessions": 3
+    },
+    {
+      "path": "/logs/206",
+      "title": "/logs/206",
       "sessions": 3
     },
     {
@@ -452,8 +457,8 @@
       "sessions": 2
     },
     {
-      "path": "/logs/206",
-      "title": "/logs/206",
+      "path": "/logs/34",
+      "title": "/logs/34",
       "sessions": 2
     },
     {
@@ -470,11 +475,6 @@
       "path": "/log_assets/markdown/003_회의실에서 목소리가 큰 사람이 가장 위험할 수 있다.html",
       "title": "/log_assets/markdown/003_회의실에서 목소리가 큰 사람이 가장 위험할 수 있다.html",
       "sessions": 1
-    },
-    {
-      "path": "/log_assets/markdown/005_할루시네이션 사회.html",
-      "title": "/log_assets/markdown/005_할루시네이션 사회.html",
-      "sessions": 1
     }
   ],
   "top_viewed_posts": [
@@ -488,7 +488,7 @@
       "path": "/logs/620/",
       "title": "팀이 커질수록 대표만 모르는 것",
       "uniqueViews": 7,
-      "views": 5
+      "views": 7
     },
     {
       "path": "/log_assets/markdown/130_왜 한국 스타트업은 미국 진출을 꿈꾸는가.html",
@@ -507,6 +507,12 @@
       "title": "/log_assets/markdown/003_회의실에서 목소리가 큰 사람이 가장 위험할 수 있다.html",
       "uniqueViews": 4,
       "views": 17
+    },
+    {
+      "path": "/logs/475/",
+      "title": "1화 신학기 개강",
+      "uniqueViews": 4,
+      "views": 10
     },
     {
       "path": "/log_assets/markdown/009_PM의 고수는 감정을 어떻게 다룰까.html",
@@ -533,10 +539,10 @@
       "views": 6
     },
     {
-      "path": "/logs/475/",
-      "title": "1화 신학기 개강",
+      "path": "/logs/206/",
+      "title": "평범을 거부한다. 헤더윅 스튜디오",
       "uniqueViews": 3,
-      "views": 9
+      "views": 3
     },
     {
       "path": "/logs/6/",
@@ -561,23 +567,17 @@
       "title": "/log_assets/markdown/005_할루시네이션 사회.html",
       "uniqueViews": 2,
       "views": 17
-    },
-    {
-      "path": "/log_assets/markdown/006_자정이 가까워지도록 AI 얘기를 원 없이 나눴어요.html",
-      "title": "/log_assets/markdown/006_자정이 가까워지도록 AI 얘기를 원 없이 나눴어요.html",
-      "uniqueViews": 2,
-      "views": 2
     }
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 198,
+    "total_desktop_sessions": 223,
     "excluded_invalid_sessions": 21,
     "by_resolution": [
       {
         "resolution": "2560x1440",
         "width": 2560,
-        "sessions": 41
+        "sessions": 43
       },
       {
         "resolution": "800x600",
@@ -585,19 +585,19 @@
         "sessions": 40
       },
       {
+        "resolution": "1600x1600",
+        "width": 1600,
+        "sessions": 38
+      },
+      {
         "resolution": "1920x1080",
         "width": 1920,
-        "sessions": 28
+        "sessions": 29
       },
       {
         "resolution": "1536x960",
         "width": 1536,
         "sessions": 17
-      },
-      {
-        "resolution": "1600x1600",
-        "width": 1600,
-        "sessions": 16
       },
       {
         "resolution": "1512x982",
