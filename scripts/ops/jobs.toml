@@ -8,7 +8,7 @@
 id = "hermes:solar-bible-tasks-poller"
 kind = "hermes_cron"
 name = "solar-bible-tasks-poller"
-period_min = 3
+period_min = 15  # 2026-09-22 탐: pending_detector가 1분마다 신호를 깨우므로 이 주기는 예비용. no-agent 스크립트(pending_poller_short.py)로 전환, 빈 실행은 0토큰
 stuck_glob = 'C:\work\solar-bible\tasks\pending\*.md'
 stuck_min = 12
 
@@ -16,7 +16,7 @@ stuck_min = 12
 id = "hermes:solar-bible-long-poller"
 kind = "hermes_cron"
 name = "solar-bible-long-poller"
-period_min = 3
+period_min = 15  # 2026-09-22 탐: 위와 동일, no-agent 스크립트(pending_poller_long.py)로 전환
 
 [[job]]
 id = "hermes:pending-detector"
