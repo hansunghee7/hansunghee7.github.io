@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-22T12:45:11.496319+00:00",
+  "updated_at": "2026-09-22T20:00:53.656102+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 303,
-    "activeUsers": 217,
-    "newUsers": 214,
-    "returningUsers": 3
+    "sessions": 305,
+    "activeUsers": 219,
+    "newUsers": 218,
+    "returningUsers": 1
   },
   "daily": [
     {
@@ -199,10 +199,10 @@
     },
     {
       "date": "2026-09-22",
-      "sessions": 46,
-      "activeUsers": 43,
-      "newUsers": 38,
-      "returningUsers": 5
+      "sessions": 48,
+      "activeUsers": 45,
+      "newUsers": 42,
+      "returningUsers": 3
     }
   ],
   "daily_leads": [
@@ -216,15 +216,15 @@
     }
   ],
   "landing_types": {
-    "home": 166,
+    "home": 169,
     "log_home": 7,
-    "individual_post": 111,
+    "individual_post": 113,
     "other": 30
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 226
+      "sessions": 228
     },
     {
       "source": "google",
@@ -232,7 +232,7 @@
     },
     {
       "source": "(not set)",
-      "sessions": 17
+      "sessions": 18
     },
     {
       "source": "searchadvisor.naver.com",
@@ -252,7 +252,7 @@
     },
     {
       "source": "(data not available)",
-      "sessions": 3
+      "sessions": 4
     },
     {
       "source": "blog.naver.com",
@@ -268,7 +268,7 @@
     },
     {
       "source": "m.search.naver.com",
-      "sessions": 2
+      "sessions": 3
     },
     {
       "source": "bing",
@@ -288,7 +288,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 226
+      "sessions": 228
     },
     {
       "source": "google",
@@ -324,7 +324,7 @@
       "source": "(data not available)",
       "medium": "(data not available)",
       "campaign": "(cross-network)",
-      "sessions": 3
+      "sessions": 4
     },
     {
       "source": "blog.naver.com",
@@ -348,7 +348,7 @@
       "source": "m.search.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 2
+      "sessions": 3
     },
     {
       "source": "bing",
@@ -376,7 +376,7 @@
     "section_view_book_class": 138,
     "section_view_faq": 125,
     "faq_open": 35,
-    "read_complete": 230
+    "read_complete": 234
   },
   "contact_funnel": {
     "contact_open": 29,
@@ -487,8 +487,8 @@
     {
       "path": "/logs/620/",
       "title": "팀이 커질수록 대표만 모르는 것",
-      "uniqueViews": 7,
-      "views": 7
+      "uniqueViews": 8,
+      "views": 8
     },
     {
       "path": "/log_assets/markdown/130_왜 한국 스타트업은 미국 진출을 꿈꾸는가.html",
@@ -539,6 +539,12 @@
       "views": 6
     },
     {
+      "path": "/logs/2/",
+      "title": "오디세이, 매우 사적인 관람평",
+      "uniqueViews": 3,
+      "views": 2
+    },
+    {
       "path": "/logs/206/",
       "title": "평범을 거부한다. 헤더윅 스튜디오",
       "uniqueViews": 3,
@@ -561,17 +567,11 @@
       "title": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
       "uniqueViews": 2,
       "views": 8
-    },
-    {
-      "path": "/log_assets/markdown/005_할루시네이션 사회.html",
-      "title": "/log_assets/markdown/005_할루시네이션 사회.html",
-      "uniqueViews": 2,
-      "views": 17
     }
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 226,
+    "total_desktop_sessions": 228,
     "excluded_invalid_sessions": 21,
     "by_resolution": [
       {
@@ -582,7 +582,7 @@
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 40
+        "sessions": 41
       },
       {
         "resolution": "1600x1600",
@@ -592,7 +592,7 @@
       {
         "resolution": "1920x1080",
         "width": 1920,
-        "sessions": 30
+        "sessions": 31
       },
       {
         "resolution": "1536x960",
