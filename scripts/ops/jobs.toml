@@ -41,7 +41,7 @@ id = "hermes:claude-md-polish-check"
 kind = "hermes_cron"
 name = "claude-md-polish-check"
 period_min = 1440  # 매일 08:00 KST, no-agent 스크립트(AI 판정 불필요, 기계적 git 날짜·태그 확인)
-note = "2026-09-23 등록(사장님 지시: 폴리싱 반영 누락 재발방지를 사람이 아니라 헤르메스가 확인). 폴리싱_기록.md 14일 초과 또는 [본문 반영 대기] 태그 7일 초과면 스크립트가 mailbox.py로 탐에게 알리고(정상이면 무출력) 헤르메스 크론 자체도 --deliver telegram이라 사장님 폰으로 실시간으로 간다(사장님 지적 2026-09-23: mailbox만으론 탐 세션이 안 살아있으면 아무도 못 봄, relay-watcher와 같은 방식으로 교정). 등록 전 hermes cron run으로 실행 증거 확인(job becee1dfed34, 2026-09-23 22:48 succeeded, 이후 deliver를 telegram으로 변경)"
+note = "2026-09-23 등록(사장님 지시: 폴리싱 반영 누락 재발방지를 사람이 아니라 헤르메스가 확인). 폴리싱_기록.md 14일 초과 또는 [본문 반영 대기] 태그 7일 초과면 스크립트가 mailbox.py로 탐에게 알리고(정상이면 무출력) 헤르메스 크론 자체도 --deliver bot-chat이라 사장님 폰(신솔라 개인 채팅방)으로 실시간으로 간다. 처음엔 --deliver telegram으로 했다가 사장님이 그건 '에이전트 요청'이라는 공용 릴레이 채널(메시지가 너무 많아 놓침)로 간다고 지적(2026-09-23)해 bot-chat(신PC 기본 프로필의 개인 봇 채팅, 신솔라)으로 교정. 등록 전 hermes cron run으로 실행 증거 확인(job becee1dfed34, 2026-09-23 22:48 succeeded)"
 
 [[job]]
 id = "hermes:health-check"
