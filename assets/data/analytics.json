@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-22T22:25:33.295214+00:00",
+  "updated_at": "2026-09-23T05:57:42.157162+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 306,
-    "activeUsers": 220,
-    "newUsers": 219,
+    "sessions": 308,
+    "activeUsers": 222,
+    "newUsers": 221,
     "returningUsers": 1
   },
   "daily": [
@@ -203,6 +203,13 @@
       "activeUsers": 46,
       "newUsers": 43,
       "returningUsers": 3
+    },
+    {
+      "date": "2026-09-23",
+      "sessions": 2,
+      "activeUsers": 2,
+      "newUsers": 2,
+      "returningUsers": 0
     }
   ],
   "daily_leads": [
@@ -218,7 +225,7 @@
   "landing_types": {
     "home": 169,
     "log_home": 7,
-    "individual_post": 114,
+    "individual_post": 116,
     "other": 30
   },
   "top_sources": [
@@ -247,12 +254,12 @@
       "sessions": 7
     },
     {
-      "source": "linkedin.com",
+      "source": "(data not available)",
       "sessions": 6
     },
     {
-      "source": "(data not available)",
-      "sessions": 4
+      "source": "linkedin.com",
+      "sessions": 6
     },
     {
       "source": "blog.naver.com",
@@ -315,16 +322,16 @@
       "sessions": 7
     },
     {
+      "source": "(data not available)",
+      "medium": "(data not available)",
+      "campaign": "(cross-network)",
+      "sessions": 6
+    },
+    {
       "source": "linkedin.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 6
-    },
-    {
-      "source": "(data not available)",
-      "medium": "(data not available)",
-      "campaign": "(cross-network)",
-      "sessions": 4
     },
     {
       "source": "blog.naver.com",
@@ -404,12 +411,12 @@
     {
       "path": "/logs/619",
       "title": "/logs/619",
-      "sessions": 18
+      "sessions": 19
     },
     {
       "path": "/logs/620",
       "title": "/logs/620",
-      "sessions": 7
+      "sessions": 8
     },
     {
       "path": "/logs/475",
@@ -481,14 +488,14 @@
     {
       "path": "/logs/619/",
       "title": "AI가 우선순위까지 대신 정해줄 수 있을까",
-      "uniqueViews": 14,
-      "views": 69
+      "uniqueViews": 15,
+      "views": 70
     },
     {
       "path": "/logs/620/",
       "title": "팀이 커질수록 대표만 모르는 것",
-      "uniqueViews": 8,
-      "views": 8
+      "uniqueViews": 9,
+      "views": 9
     },
     {
       "path": "/log_assets/markdown/130_왜 한국 스타트업은 미국 진출을 꿈꾸는가.html",
@@ -542,7 +549,7 @@
       "path": "/logs/2/",
       "title": "오디세이, 매우 사적인 관람평",
       "uniqueViews": 3,
-      "views": 2
+      "views": 3
     },
     {
       "path": "/logs/206/",
@@ -571,7 +578,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 229,
+    "total_desktop_sessions": 231,
     "excluded_invalid_sessions": 21,
     "by_resolution": [
       {
@@ -582,7 +589,7 @@
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 41
+        "sessions": 43
       },
       {
         "resolution": "1600x1600",
