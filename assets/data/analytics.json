@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-23T05:57:42.157162+00:00",
+  "updated_at": "2026-09-23T12:52:49.275199+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 308,
-    "activeUsers": 222,
-    "newUsers": 221,
-    "returningUsers": 1
+    "sessions": 313,
+    "activeUsers": 227,
+    "newUsers": 227,
+    "returningUsers": 0
   },
   "daily": [
     {
@@ -199,16 +199,16 @@
     },
     {
       "date": "2026-09-22",
-      "sessions": 49,
-      "activeUsers": 46,
-      "newUsers": 43,
-      "returningUsers": 3
+      "sessions": 53,
+      "activeUsers": 50,
+      "newUsers": 48,
+      "returningUsers": 2
     },
     {
       "date": "2026-09-23",
-      "sessions": 2,
-      "activeUsers": 2,
-      "newUsers": 2,
+      "sessions": 3,
+      "activeUsers": 3,
+      "newUsers": 3,
       "returningUsers": 0
     }
   ],
@@ -223,23 +223,19 @@
     }
   ],
   "landing_types": {
-    "home": 169,
+    "home": 155,
     "log_home": 7,
-    "individual_post": 116,
-    "other": 30
+    "individual_post": 120,
+    "other": 32
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 229
+      "sessions": 233
     },
     {
       "source": "google",
-      "sessions": 22
-    },
-    {
-      "source": "(not set)",
-      "sessions": 18
+      "sessions": 25
     },
     {
       "source": "searchadvisor.naver.com",
@@ -250,19 +246,23 @@
       "sessions": 7
     },
     {
+      "source": "linkedin.com",
+      "sessions": 7
+    },
+    {
       "source": "maru-connect.webflow.io",
       "sessions": 7
     },
     {
-      "source": "(data not available)",
-      "sessions": 6
-    },
-    {
-      "source": "linkedin.com",
-      "sessions": 6
+      "source": "(not set)",
+      "sessions": 4
     },
     {
       "source": "blog.naver.com",
+      "sessions": 4
+    },
+    {
+      "source": "(data not available)",
       "sessions": 3
     },
     {
@@ -295,13 +295,13 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 229
+      "sessions": 233
     },
     {
       "source": "google",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 22
+      "sessions": 25
     },
     {
       "source": "searchadvisor.naver.com",
@@ -316,27 +316,27 @@
       "sessions": 7
     },
     {
+      "source": "linkedin.com",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "sessions": 7
+    },
+    {
       "source": "maru-connect.webflow.io",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 7
     },
     {
-      "source": "(data not available)",
-      "medium": "(data not available)",
-      "campaign": "(cross-network)",
-      "sessions": 6
-    },
-    {
-      "source": "linkedin.com",
-      "medium": "referral",
-      "campaign": "(referral)",
-      "sessions": 6
-    },
-    {
       "source": "blog.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
+      "sessions": 4
+    },
+    {
+      "source": "(data not available)",
+      "medium": "(data not available)",
+      "campaign": "(cross-network)",
       "sessions": 3
     },
     {
@@ -378,8 +378,8 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 304,
-    "section_view_voices": 224,
+    "section_view_proven": 306,
+    "section_view_voices": 225,
     "section_view_book_class": 138,
     "section_view_faq": 125,
     "faq_open": 35,
@@ -416,7 +416,7 @@
     {
       "path": "/logs/620",
       "title": "/logs/620",
-      "sessions": 8
+      "sessions": 10
     },
     {
       "path": "/logs/475",
@@ -494,8 +494,8 @@
     {
       "path": "/logs/620/",
       "title": "팀이 커질수록 대표만 모르는 것",
-      "uniqueViews": 9,
-      "views": 9
+      "uniqueViews": 10,
+      "views": 10
     },
     {
       "path": "/log_assets/markdown/130_왜 한국 스타트업은 미국 진출을 꿈꾸는가.html",
@@ -578,7 +578,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 231,
+    "total_desktop_sessions": 234,
     "excluded_invalid_sessions": 21,
     "by_resolution": [
       {
@@ -594,7 +594,7 @@
       {
         "resolution": "1600x1600",
         "width": 1600,
-        "sessions": 39
+        "sessions": 42
       },
       {
         "resolution": "1920x1080",
