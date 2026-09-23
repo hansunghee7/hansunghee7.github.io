@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-23T12:52:49.275199+00:00",
+  "updated_at": "2026-09-23T20:00:49.155277+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 313,
-    "activeUsers": 227,
-    "newUsers": 227,
+    "sessions": 315,
+    "activeUsers": 229,
+    "newUsers": 229,
     "returningUsers": 0
   },
   "daily": [
@@ -206,9 +206,16 @@
     },
     {
       "date": "2026-09-23",
-      "sessions": 3,
-      "activeUsers": 3,
-      "newUsers": 3,
+      "sessions": 4,
+      "activeUsers": 4,
+      "newUsers": 4,
+      "returningUsers": 0
+    },
+    {
+      "date": "2026-09-24",
+      "sessions": 1,
+      "activeUsers": 1,
+      "newUsers": 1,
       "returningUsers": 0
     }
   ],
@@ -223,15 +230,15 @@
     }
   ],
   "landing_types": {
-    "home": 155,
+    "home": 157,
     "log_home": 7,
-    "individual_post": 120,
+    "individual_post": 121,
     "other": 32
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 233
+      "sessions": 234
     },
     {
       "source": "google",
@@ -255,7 +262,7 @@
     },
     {
       "source": "(not set)",
-      "sessions": 4
+      "sessions": 6
     },
     {
       "source": "blog.naver.com",
@@ -295,7 +302,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 233
+      "sessions": 234
     },
     {
       "source": "google",
@@ -378,10 +385,10 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 306,
-    "section_view_voices": 225,
-    "section_view_book_class": 138,
-    "section_view_faq": 125,
+    "section_view_proven": 307,
+    "section_view_voices": 227,
+    "section_view_book_class": 140,
+    "section_view_faq": 127,
     "faq_open": 35,
     "read_complete": 234
   },
@@ -464,6 +471,11 @@
       "sessions": 2
     },
     {
+      "path": "/logs/2",
+      "title": "/logs/2",
+      "sessions": 2
+    },
+    {
       "path": "/logs/34",
       "title": "/logs/34",
       "sessions": 2
@@ -476,11 +488,6 @@
     {
       "path": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
       "title": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
-      "sessions": 1
-    },
-    {
-      "path": "/log_assets/markdown/003_회의실에서 목소리가 큰 사람이 가장 위험할 수 있다.html",
-      "title": "/log_assets/markdown/003_회의실에서 목소리가 큰 사람이 가장 위험할 수 있다.html",
       "sessions": 1
     }
   ],
@@ -516,6 +523,12 @@
       "views": 17
     },
     {
+      "path": "/logs/2/",
+      "title": "오디세이, 매우 사적인 관람평",
+      "uniqueViews": 4,
+      "views": 4
+    },
+    {
       "path": "/logs/475/",
       "title": "1화 신학기 개강",
       "uniqueViews": 4,
@@ -544,12 +557,6 @@
       "title": "/log_assets/markdown/612_줄서서 먹는 가게의 사장은 뭐가 다를까.html",
       "uniqueViews": 3,
       "views": 6
-    },
-    {
-      "path": "/logs/2/",
-      "title": "오디세이, 매우 사적인 관람평",
-      "uniqueViews": 3,
-      "views": 3
     },
     {
       "path": "/logs/206/",
