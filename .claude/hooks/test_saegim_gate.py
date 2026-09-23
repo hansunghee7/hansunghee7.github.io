@@ -73,6 +73,29 @@ class GateTest(unittest.TestCase):
         ev = dict(ART, transcript_path="C:/does/not/exist.jsonl")
         self.assertEqual(gate.decide(ev, "")[0], 0)
 
+    def test_reading_ux_guide_md_is_gated(self):
+        ev = {"tool_name": "Read", "tool_input": {"file_path": "docs/UX_GUIDE.md"}}
+        self.assertEqual(self.run_gate(ev, []), 2)
+
+    def test_reading_ux_guide_md_after_lookup_passes(self):
+        ev = {"tool_name": "Read", "tool_input": {"file_path": "docs/UX_GUIDE.md"}}
+        self.assertEqual(self.run_gate(ev, [use("mcp__saegim__lookup", "t1"), result("t1")]), 0)
+
+    def test_reading_other_docs_is_not_gated(self):
+        ev = {"tool_name": "Read", "tool_input": {"file_path": "docs/진행상황.md"}}
+        self.assertEqual(self.run_gate(ev, []), 0)
+
+    def test_reading_ux_guide_md_backslash_path_is_gated(self):
+        ev = {"tool_name": "Read", "tool_input": {"file_path": "C:\\work\\hansunghee7.github.io\\docs\\UX_GUIDE.md"}}
+        self.assertEqual(self.run_gate(ev, []), 2)
+
+    def test_ux_guide_outage_marker_file_passes(self):
+        d = tempfile.mkdtemp()
+        os.makedirs(os.path.join(d, ".claude"))
+        open(os.path.join(d, ".claude", "saegim-outage"), "w").close()
+        ev = {"tool_name": "Read", "tool_input": {"file_path": "docs/UX_GUIDE.md"}}
+        self.assertEqual(self.run_gate(ev, [], project_dir=d), 0)
+
 
 if __name__ == "__main__":
     unittest.main()
