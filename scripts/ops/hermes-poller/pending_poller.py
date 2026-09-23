@@ -60,10 +60,11 @@ def process_one(repo, path, hermes_cmd, log):
     if not text.strip():
         log.append(f"[SKIP] {path.name}: 빈 파일")
         return False
-    # 2026-09-22 탐: 기본 모델(solar-pro4)이 한도에 걸리면 qwen 14B(컨텍스트 32K)까지 밀려
-    # 다단계 작업에서 응답이 깨지는 사고가 실측됨(백로그 30·31 처리 실패, 문서 미확정 텍스트로
-    # 끝남). gemini-fast(빠른 키 순환)로 고정해 그 페일오버 체인을 건너뛴다.
-    p = run([*hermes_cmd, "chat", "-q", text, "-Q", "--provider", "gemini-fast", "-m", "gemini-3.6-flash"],
+    # 2026-09-23 사장님 결정: 제미나이 키 소진 문제로 gemini-fast 고정을 걷어내고 기본
+    # 모델(solar-pro4, upstage)로 되돌린다. 네모트론은 실측(파일쓰기 시험에서 현재 시각을
+    # 00:00:00으로 지어냄)으로 정확성이 못 미더워 폴백 맨 뒤로 내렸다(config.yaml
+    # fallback_providers 순서 참고). solar-pro4가 한도에 걸리면 그 폴백 체인을 탄다.
+    p = run([*hermes_cmd, "chat", "-q", text, "-Q", "--provider", "upstage", "-m", "solar-pro4"],
             cwd=repo, timeout=1200)
     out = (p.stdout or "").strip()
     if p.returncode != 0:
