@@ -48,7 +48,7 @@ id = "hermes:check-customer-mcp-daily"
 kind = "hermes_cron"
 name = "check-customer-mcp-daily"
 period_min = 1440  # 매일 08:00 KST, no-agent 스크립트(AI 판정 불필요, 점검 계정으로 실제 MCP 경로 호출)
-note = "2026-09-24 등록(지투 요청, 새김 고도화 과제0: 외부 고객 1호 MCP 읽기 경로가 매일 살아있는지 점검 계정(jitu-check)으로 확인). scripts/check_customer_mcp_path_daily.py(simplifier-saegim)가 scripts/check_customer_mcp_path.py를 감싸 실패(인증 오류, 절 0개)일 때만 mailbox.py로 지투에게 알리고 exit 1, 정상이면 무출력. 등록 과정에서 실제로 두 가지를 발견해 고침: ① 부모(헤르메스) 프로세스 sys.executable이 헤르메스 번들 venv라 mcp 패키지에 pywintypes(pywin32)가 없어 import 단계에서 죽음 -- 시스템 python 절대경로로 고정 ② 그래도 헤르메스 프로세스의 PYTHONPATH가 자식에 상속돼 같은 문제가 재발 -- env에서 PYTHONPATH/PYTHONHOME을 지워서 해결. 등록 전 hermes cron run으로 실행 증거 확인(job e0bfd23d13d1, 2026-09-24 00:12 succeeded). 지투 카드(customers/ztosigma.md) 자동 반영은 범위 밖으로 남김(수동 판단 유지)."
+note = "2026-09-24 등록(지투 요청, 새김 고도화 과제0: 외부 고객 1호 MCP 읽기 경로가 매일 살아있는지 점검 계정(jitu-check)으로 확인). scripts/check_customer_mcp_path_daily.py(simplifier-saegim)가 scripts/check_customer_mcp_path.py를 감싸 실패(인증 오류, 절 0개)일 때만 mailbox.py로 지투에게 알리고 exit 1, 정상이면 무출력. 등록 과정에서 실제로 두 가지를 발견해 고침: ① 부모(헤르메스) 프로세스 sys.executable이 헤르메스 번들 venv라 mcp 패키지에 pywintypes(pywin32)가 없어 import 단계에서 죽음 -- 시스템 python 절대경로로 고정 ② 그래도 헤르메스 프로세스의 PYTHONPATH가 자식에 상속돼 같은 문제가 재발 -- env에서 PYTHONPATH/PYTHONHOME을 지워서 해결. 등록 전 hermes cron run으로 실행 증거 확인(job e0bfd23d13d1, 2026-09-24 00:12 succeeded). 지투 고객 카드(비공개 저장소) 자동 반영은 범위 밖으로 남김(수동 판단 유지)."
 
 [[job]]
 id = "hermes:health-check"
