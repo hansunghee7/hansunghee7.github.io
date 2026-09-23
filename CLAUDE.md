@@ -169,7 +169,7 @@ CLAUDE.md는 **상한 250줄**(CI가 초과 PR을 막음), **목표 200줄 이�
 | 하려는 일 | 여기서 시작 |
 |---|---|
 | 새 글(블로그·SNS), 발행 현황 | **`ink-desk` 스킬을 먼저 연다**(용도별 `ink-homepage`). 새 글 전 [퍼스널 브랜딩 가이드](docs/퍼스널_브랜딩_가이드.md)(화법)와 [WRITING_GUIDE](docs/WRITING_GUIDE.md). 사장님이 바로 읽는 문구(알림, 아티팩트 첫 화면)도 이 화법을 쓴다(헤르메스 보고서·사고 기록·지시서 같은 검증 문서는 제외) <!-- id: 7c3d --> |
-| UX·디자인·카피(공개 사이트, 스튜디오, **Claude 아티팩트 포함**) | `saegim`이 붙어 있으면 `lookup(doc="UX_GUIDE", query=...)` 먼저, 반영했으면 `cite(...)`. 안 붙어 있으면 [docs/UX_GUIDE.md](docs/UX_GUIDE.md). html·css를 읽으면 `.claude/rules/ux-guide.md`가 자동 로드된다. 아티팩트는 `artifact-design` 스킬 전에 UX_GUIDE부터 본다 <!-- id: 6039 --> |
+| UX·디자인·카피(공개 사이트, 스튜디오, **Claude 아티팩트 포함**) | **새김 MCP 실사용 필수**(2026-09-23 사장님 확정) — `lookup(doc="UX_GUIDE", query=...)` 먼저, 반영했으면 `cite(...)`. `docs/UX_GUIDE.md`를 로컬 파일로 직접 읽는 지름길은 훅(`saegim-gate.py`)이 막는다(새김 장애 시 `.claude/saegim-outage`로 통과, 사장님·지투에게 자동 통보). html·css를 읽으면 `.claude/rules/ux-guide.md`가 자동 로드된다. 아티팩트는 `artifact-design` 스킬 전에 UX_GUIDE부터 본다 <!-- id: 6039 --> |
 | 사장님께 드리는 보고·아티팩트·알림·파일 | **새김 `lookup`을 먼저**(사장님 지시 2026-09-20, 무조건), 반영했으면 `cite`. 아티팩트 발행, 파일 전달, 사장님 앞 우편은 조회 기록이 없으면 훅이 막는다. 새김이 끊겼으면 접속 불가를 사장님께 밝히고 UX_GUIDE.md를 직접 읽은 뒤 `.claude/saegim-outage` 파일을 만든다(훅 통과, **파일을 만든 세션이 새김이 복구되면 직접 지운다** — 방치되면 훅이 계속 안 걸린다). **모든 `cite`의 note는 `[페르소나명] ...`로 시작한다**(2026-09-23 사장님 반영, 이유: 페르소나별 실사용 여부를 나중에 집계하려면 구분자가 있어야 함) <!-- id: b6d2 --> |
 | `insight-7b3e9f2c/` (스튜디오) | 파일을 읽으면 `.claude/rules/studio.md`가 로드된다. 끝내기 전 `python scripts/check_studio_style.py` FAIL 0. `shorts-studio.html`은 파이프라인이 덮어쓰니 `shorts-lab/pipeline/build_studio_site.py`를 고친다 <!-- id: 8f4e --> |
 | `log_assets/images/` 정리·삭제 | `image-cleanup` 스킬 <!-- id: d8e2 --> |
