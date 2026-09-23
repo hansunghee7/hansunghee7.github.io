@@ -258,6 +258,30 @@
     </div>
   </section>
 
+  <!-- ===== 새김(saegim) MCP 도그푸딩 ===== -->
+  <section class="sec">
+    <h2>새김(saegim) MCP 도그푸딩 현황<button type="button" class="info-dot" aria-label="설명 보기">ⓘ<span class="info-text">이 타일 자체를 로컬 STYLE_GUIDE.md 대신 saegim MCP lookup 도구로 만들었습니다 -- "신규 기능을 만들 때 MCP를 실제로 참조하며 개발한다" 실험의 첫 사례입니다(지투 PO, 노트 개발, 2026-09-23). 실시간 집계가 아니라 점검 시점의 스냅샷입니다.</span></button></h2>
+    <p class="sec-note">같은 날, 외부 고객 1호(지투시그마) UX_GUIDE §7 절의 실제 파싱 버그를 로컬 파일이 아니라 MCP 경로로만 발견했습니다 -- "우리가 고객과 같은 경로로 겪어야 문제를 먼저 찾는다"는 도그푸딩의 전제가 처음 실증된 사례입니다.</p>
+
+    <div class="tiles">
+      <div class="tile">
+        <div class="label">오늘 발견·수정한 실사용 버그</div>
+        <div class="latest"><span class="val">2<span class="unit">건</span></span></div>
+        <div class="foot">§7 절 body 파싱 버그(P0), 개인 호출자 미기록(P1) -- 둘 다 당일 배포하고 실제 고객 경로로 재검증까지 마침</div>
+      </div>
+      <div class="tile">
+        <div class="label">공지 확인(새김 MCP 실사용 필수)</div>
+        <div class="latest"><span class="val">3<span class="unit">/9명</span></span></div>
+        <div class="foot">지투(작성)·탐·노트 확인, 나머지 대기 -- 이 숫자가 다음 점검 때의 실사용 지표</div>
+      </div>
+      <div class="tile tile-accent">
+        <div class="label">이 타일이 겪은 마찰</div>
+        <div class="latest"><span class="val">낮음</span></div>
+        <div class="foot">STYLE_GUIDE §3(.tile 표준)을 lookup 한 번으로 바로 찾음. 다만 이 페이지의 기존 상단 통계는 .tile이 아니라 페이지 자체 .stat 클래스라 -- 표준화 전 레거시로 남아있는 걸 이번에 발견</div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== 정리 이력 ===== -->
   <section class="sec">
     <h2>정리 이력</h2>

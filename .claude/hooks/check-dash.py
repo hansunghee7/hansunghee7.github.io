@@ -54,7 +54,7 @@ def head_lines(path):
     try:
         top = subprocess.run(["git","rev-parse","--show-toplevel"], cwd=os.path.dirname(path) or ".",
                              capture_output=True, text=True, check=True).stdout.strip()
-        rel = os.path.relpath(path, top)
+        rel = os.path.relpath(path, top).replace(os.sep, "/")
         out = subprocess.run(["git","-c","core.quotepath=false","show",f"HEAD:{rel}"], cwd=top,
                              capture_output=True, text=True)
         return out.stdout.splitlines() if out.returncode == 0 else []
