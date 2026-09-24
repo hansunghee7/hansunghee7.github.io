@@ -47,6 +47,7 @@ assets/data/sns_publish_queue.json (마야가 게시할 항목을 채워 둠, st
 | 로켓펀치 | 같은 확장 방식. 비공식 API는 조회용 | [rocketpunch-api](https://github.com/junhoyeo/rocketpunch-api) | 중간 | 없음 |
 | 리멤버 | 같은 확장 방식만 가능 | [리멤버 약관](https://page.rememberapp.co.kr/terms/career?locale=kr)이 매크로·봇을 명시 금지 | 높음 | 없음 |
 
+- **사장님 결정(2026-09-24)**: 브런치·로켓펀치·리멤버 모두 확장 방식으로 진행. 근거(사장님 말씀 요지): 매크로 금지는 대량 반복 어뷰징을 막는 조항이고, 우리 빈도는 사람 수준이라 위험이 낮다. **빈도 상한**: 예약 발행 기능이 있는 곳(브런치)은 확장이 주 1회 들어가 한 주치를 예약, 없는 곳(로켓펀치·리멤버)은 주 3회 직접 게시. 이 상한을 넘기는 설계는 다시 사장님 확인.
 - 메타 브라우저 자동화는 [계정 무결성 정책](https://transparency.meta.com/policies/community-standards/account-integrity/) 위반이라 페이스북 개인 프로필에는 확장 방식을 쓰지 않는다.
 - 네이버클립(핏 쪽): 공식 업로드 API 없음(핏 확인).
 
