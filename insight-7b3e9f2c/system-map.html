@@ -288,6 +288,7 @@
     <p class="sec-note">이 구조를 처음 점검했을 때(2026-08-29) 나온 항목과 처리 결과입니다.</p>
 
     <div class="log-list">
+      <div class="log-item"><span class="dot done"></span><div><b>2026-09-24</b>: <code>relay-local-to-cloud.yml</code>의 자동 트리거(진행상황.md push마다 클라우드 루틴 /fire)를 끄고 수동 실행만 남김. 9/18 이후 실제 릴레이 요청 0건, 9/20 이후 루틴 헛실행 52회, 일부는 Bash 승인 대기로 쌓임. 세션 간 전달은 우편함으로 대체됨. 워크플로 파일과 클라우드 루틴 자체는 남겨 둠(되돌리기 쉬움). 외부 연동 수 변화 없음.</div></div>
       <div class="log-item"><span class="dot done"></span><div><b>2026-09-19</b>: 예약 발행 워크플로 추가. 글 front matter에 <code>publish_at</code>(한국시간 ISO 8601)을 적어두면, <code>published: false</code>인 글 중 그 시각이 지난 것만 15분 간격 스케줄 실행이 <code>published: true</code>로 바꿔 main에 커밋합니다(<code>publish_at</code>이 없는 초안은 건드리지 않음, <code>dry_run</code> 기본값 true). 커밋 뒤 <code>publish-pipeline.yml</code>을 <code>workflow_dispatch</code>로 직접 호출해 카드·posts.json·sitemap 갱신이 이어집니다(GITHUB_TOKEN push는 <code>on: push</code>를 깨우지 못하지만 dispatch는 예외라 비밀값 불필요). 워크플로 수를 <code>ls .github/workflows/*.yml</code>로 다시 세니 18개 + 신규 1개 = 19개였고, 이전 17은 <code>relay-local-to-cloud.yml</code>이 집계에서 빠져 있던 값이라 통계 타일·다이어그램 노드·aria-label을 19로 수정. 외부 서비스는 추가 없음. 사용법: <code>docs/예약_발행.md</code>.
         <span class="files">.github/workflows/scheduled-publish.yml · scripts/scheduled_publish.py · scripts/test_scheduled_publish.py · docs/예약_발행.md</span>
       </div></div>
