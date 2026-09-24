@@ -36,7 +36,7 @@ BLOCK_MSG = (
 UX_GUIDE_BLOCK_MSG = (
     "UX가이드 원문 열람은 대표 승인이 필요합니다(사장님 지시 2026-09-24). 평소에는 새김 MCP로 보세요: "
     "mcp__saegim__lookup(doc=\"UX_GUIDE\", query=...) 또는 list_sections/get_section. "
-    "원문이 꼭 필요하면 사장님께 이유를 말씀드리고 승인을 받은 뒤 .claude/uxguide-approved 파일을 만들고, "
+    "원문이 꼭 필요하면 사장님께 이유를 말씀드리고 채팅으로 승인을 받은 뒤 세션이 직접 .claude/uxguide-approved 파일을 만들고(사장님께 파일 생성을 요청하지 말 것), "
     "다 읽으면 지우세요(새김 장애 표시 .claude/saegim-outage로는 통과되지 않습니다)."
 )
 
