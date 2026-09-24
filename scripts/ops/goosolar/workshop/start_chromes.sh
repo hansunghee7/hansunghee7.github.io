@@ -10,7 +10,7 @@ set -u
 W="$HOME/workshop"
 # 포트:프로필 폴더 (계정 대장은 profiles/ACCOUNTS.md, 저장소에는 올리지 않음)
 # 9227·9228은 SNS 수집·게시용(2026-09-24 추가, 크롬 확장 대체): 9227 심플리파이어 계정들, 9228 숏폼 채널 계정들
-PROFILES="9222:flow-free1 9223:acct3 9224:acct4 9225:acct5 9226:acct2 9227:sns-a 9228:sns-b"
+PROFILES="9222:flow-free1 9223:acct3 9224:acct4 9225:acct5 9226:acct2 9227:sns-a 9228:sns-b 9229:acct6"
 TOTAL=$(echo $PROFILES | wc -w)
 mkdir -p "$W/logs"
 # 재부팅 직후 @reboot 실행과 5분 주기 실행이 같은 순간에 겹쳐 같은 크롬을 두 번 켰다(2026-09-24 재부팅 시험).
