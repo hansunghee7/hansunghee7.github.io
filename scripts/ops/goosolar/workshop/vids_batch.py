@@ -73,22 +73,35 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("scenes"); ap.add_argument("outdir")
     ap.add_argument("--only", default=""); ap.add_argument("--timeout", type=int, default=600)
+    ap.add_argument("--ports", default="9222",
+                    help="쓸 계정 포트 순서(예: 9226,9222). AI 창에 한도 문구가 뜨면 다음 포트로 넘어가 같은 씬부터 이어 한다")
     a = ap.parse_args()
     scenes = json.loads(Path(a.scenes).read_text(encoding="utf-8"))
     if a.only:
         keep = set(a.only.split(",")); scenes = [s for s in scenes if s["name"] in keep]
     out = Path(a.outdir); out.mkdir(parents=True, exist_ok=True)
+    ports = [int(x) for x in a.ports.split(",")]
     with open(out / "batch_log.jsonl", "a", encoding="utf-8") as lf, sync_playwright() as p:
-        b = p.chromium.connect_over_cdp("http://127.0.0.1:9222")
-        pg = b.contexts[0].new_page()
-        for s in scenes:
-            if (out / f"{s['name']}.mp4").exists():
-                log(lf, {"scene": s["name"], "status": "skip"}); continue
-            rec = {"scene": s["name"], **one_scene(pg, s, out, a.timeout)}
-            log(lf, rec)
-            if rec["status"] != "ok":
+        for port in ports:
+            b = p.chromium.connect_over_cdp("http://127.0.0.1:%d" % port)
+            pg = b.contexts[0].new_page()
+            log(lf, {"port": port, "status": "account"})
+            switch = False
+            for s in scenes:
+                if (out / f"{s['name']}.mp4").exists():
+                    log(lf, {"scene": s["name"], "status": "skip"}); continue
+                try:
+                    rec = {"scene": s["name"], "port": port, **one_scene(pg, s, out, a.timeout)}
+                except Exception as e:
+                    rec = {"scene": s["name"], "port": port, "status": "STOP", "why": f"error: {str(e)[:150]}"}
+                log(lf, rec)
+                if rec["status"] != "ok":
+                    switch = "한도" in rec.get("why", "")
+                    break
+            pg.close()
+            if not switch:
                 break
-        pg.close()
+            log(lf, {"port": port, "status": "switch", "why": "limit, next account"})
     sizes = {}
     for f in sorted(out.glob("*.mp4")):
         sizes.setdefault(f.stat().st_size, []).append(f.name)
