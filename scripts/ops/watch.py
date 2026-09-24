@@ -297,8 +297,16 @@ def check_pc(job, at):
         out = ps("(Get-NetFirewallProfile | ForEach-Object { $_.Enabled }) -join ','")
         return ("ok" if out and "False" not in out else "fail"), f"방화벽 프로필 {out}"
     if what == "ports":
-        out = ps("(Get-NetTCPConnection -State Listen | Where-Object { $_.LocalAddress -in '0.0.0.0','::' } | Select-Object -ExpandProperty LocalPort | Sort-Object -Unique) -join ','")
-        ports = {int(p) for p in out.split(",") if p.strip().isdigit()}
+        # 윈도우 기본 RPC 서비스가 재부팅마다 49152 이상 번호를 새로 받아 🟡 오탐이 났다(2026-09-24,
+        # 49683 -> 49681, 탐 대장 B42). 그 범위의 윈도우 핵심 프로세스 포트만 비교에서 뺀다.
+        out = ps("(Get-NetTCPConnection -State Listen | Where-Object { $_.LocalAddress -in '0.0.0.0','::' } | ForEach-Object { \"$($_.LocalPort):$((Get-Process -Id $_.OwningProcess -ErrorAction SilentlyContinue).ProcessName)\" } | Sort-Object -Unique) -join ','")
+        sys_rpc = {"services", "lsass", "wininit", "svchost", "spoolsv"}
+        ports = set()
+        for item in out.split(","):
+            port, _, proc = item.strip().partition(":")
+            if not port.isdigit() or (int(port) >= 49152 and proc.lower() in sys_rpc):
+                continue
+            ports.add(int(port))
         base_file = os.path.join(STATE_DIR, "ports_baseline.json")
         if not os.path.exists(base_file):
             os.makedirs(STATE_DIR, exist_ok=True)

@@ -40,7 +40,9 @@ def find_stale_tags():
     text = PROGRESS.read_text(encoding="utf-8")
     problems = []
     for line in text.splitlines():
-        if TAG not in line:
+        # 공지 제목 줄만 본다. 본문에 "[본문 반영 대기] 태그 해제" 같은 설명이 있으면
+        # 날짜 없는 줄로 읽혀 오탐이 났다(2026-09-24, 탐 대장 N23).
+        if TAG not in line or not line.startswith("## "):
             continue
         m = re.search(r"(\d{4}-\d{2}-\d{2})\)\s*$", line)
         title = line.split("(확인:")[0].strip("# ").strip()

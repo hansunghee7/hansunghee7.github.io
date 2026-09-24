@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-23T22:27:46.282028+00:00",
+  "updated_at": "2026-09-24T06:10:07.676558+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 315,
-    "activeUsers": 229,
-    "newUsers": 229,
+    "sessions": 324,
+    "activeUsers": 237,
+    "newUsers": 237,
     "returningUsers": 0
   },
   "daily": [
@@ -213,10 +213,10 @@
     },
     {
       "date": "2026-09-24",
-      "sessions": 1,
-      "activeUsers": 1,
-      "newUsers": 1,
-      "returningUsers": 0
+      "sessions": 10,
+      "activeUsers": 10,
+      "newUsers": 9,
+      "returningUsers": 1
     }
   ],
   "daily_leads": [
@@ -230,15 +230,15 @@
     }
   ],
   "landing_types": {
-    "home": 157,
+    "home": 158,
     "log_home": 7,
-    "individual_post": 121,
+    "individual_post": 130,
     "other": 32
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 234
+      "sessions": 238
     },
     {
       "source": "google",
@@ -249,11 +249,15 @@
       "sessions": 12
     },
     {
-      "source": "l.facebook.com",
+      "source": "linkedin.com",
+      "sessions": 8
+    },
+    {
+      "source": "(not set)",
       "sessions": 7
     },
     {
-      "source": "linkedin.com",
+      "source": "l.facebook.com",
       "sessions": 7
     },
     {
@@ -261,28 +265,28 @@
       "sessions": 7
     },
     {
-      "source": "(not set)",
-      "sessions": 6
+      "source": "(data not available)",
+      "sessions": 4
     },
     {
       "source": "blog.naver.com",
       "sessions": 4
     },
     {
-      "source": "(data not available)",
-      "sessions": 3
+      "source": "m.facebook.com",
+      "sessions": 4
+    },
+    {
+      "source": "m.search.naver.com",
+      "sessions": 4
     },
     {
       "source": "facebook.com",
       "sessions": 3
     },
     {
-      "source": "m.facebook.com",
-      "sessions": 3
-    },
-    {
-      "source": "m.search.naver.com",
-      "sessions": 3
+      "source": "daum",
+      "sessions": 2
     },
     {
       "source": "bing",
@@ -291,10 +295,6 @@
     {
       "source": "brunch.co.kr",
       "sessions": 1
-    },
-    {
-      "source": "naver",
-      "sessions": 1
     }
   ],
   "utm_campaigns": [
@@ -302,7 +302,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 234
+      "sessions": 238
     },
     {
       "source": "google",
@@ -317,13 +317,13 @@
       "sessions": 12
     },
     {
-      "source": "l.facebook.com",
+      "source": "linkedin.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 7
+      "sessions": 8
     },
     {
-      "source": "linkedin.com",
+      "source": "l.facebook.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 7
@@ -335,16 +335,28 @@
       "sessions": 7
     },
     {
+      "source": "(data not available)",
+      "medium": "(data not available)",
+      "campaign": "(cross-network)",
+      "sessions": 4
+    },
+    {
       "source": "blog.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 4
     },
     {
-      "source": "(data not available)",
-      "medium": "(data not available)",
-      "campaign": "(cross-network)",
-      "sessions": 3
+      "source": "m.facebook.com",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "sessions": 4
+    },
+    {
+      "source": "m.search.naver.com",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "sessions": 4
     },
     {
       "source": "facebook.com",
@@ -353,16 +365,10 @@
       "sessions": 3
     },
     {
-      "source": "m.facebook.com",
-      "medium": "referral",
-      "campaign": "(referral)",
-      "sessions": 3
-    },
-    {
-      "source": "m.search.naver.com",
-      "medium": "referral",
-      "campaign": "(referral)",
-      "sessions": 3
+      "source": "daum",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "sessions": 2
     },
     {
       "source": "bing",
@@ -385,15 +391,15 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 307,
-    "section_view_voices": 227,
+    "section_view_proven": 308,
+    "section_view_voices": 228,
     "section_view_book_class": 140,
     "section_view_faq": 127,
     "faq_open": 35,
-    "read_complete": 234
+    "read_complete": 235
   },
   "contact_funnel": {
-    "contact_open": 29,
+    "contact_open": 30,
     "generate_lead": 3,
     "contact_error": 3
   },
@@ -423,7 +429,12 @@
     {
       "path": "/logs/620",
       "title": "/logs/620",
-      "sessions": 10
+      "sessions": 11
+    },
+    {
+      "path": "/logs/625",
+      "title": "/logs/625",
+      "sessions": 11
     },
     {
       "path": "/logs/475",
@@ -438,11 +449,6 @@
     {
       "path": "/logs/206",
       "title": "/logs/206",
-      "sessions": 3
-    },
-    {
-      "path": "/logs/625",
-      "title": "/logs/625",
       "sessions": 3
     },
     {
@@ -495,14 +501,20 @@
     {
       "path": "/logs/619/",
       "title": "AI가 우선순위까지 대신 정해줄 수 있을까",
-      "uniqueViews": 15,
-      "views": 70
+      "uniqueViews": 16,
+      "views": 71
     },
     {
       "path": "/logs/620/",
       "title": "팀이 커질수록 대표만 모르는 것",
-      "uniqueViews": 10,
-      "views": 10
+      "uniqueViews": 11,
+      "views": 11
+    },
+    {
+      "path": "/logs/625/",
+      "title": "주니어 PM은 왜 스스로 문제를 정의하지 못할까?",
+      "uniqueViews": 11,
+      "views": 11
     },
     {
       "path": "/log_assets/markdown/130_왜 한국 스타트업은 미국 진출을 꿈꾸는가.html",
@@ -571,12 +583,6 @@
       "views": 3
     },
     {
-      "path": "/logs/625/",
-      "title": "주니어 PM은 왜 스스로 문제를 정의하지 못할까?",
-      "uniqueViews": 3,
-      "views": 3
-    },
-    {
       "path": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
       "title": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
       "uniqueViews": 2,
@@ -585,7 +591,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 234,
+    "total_desktop_sessions": 235,
     "excluded_invalid_sessions": 21,
     "by_resolution": [
       {
