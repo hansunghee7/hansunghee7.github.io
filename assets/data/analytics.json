@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-09-24T20:00:51.759045+00:00",
+  "updated_at": "2026-09-24T20:45:32.541065+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 333,
+    "sessions": 334,
     "activeUsers": 244,
     "newUsers": 245,
     "returningUsers": 0
@@ -217,6 +217,13 @@
       "activeUsers": 17,
       "newUsers": 17,
       "returningUsers": 0
+    },
+    {
+      "date": "2026-09-25",
+      "sessions": 1,
+      "activeUsers": 0,
+      "newUsers": 0,
+      "returningUsers": 0
     }
   ],
   "daily_leads": [
@@ -230,7 +237,7 @@
     }
   ],
   "landing_types": {
-    "home": 163,
+    "home": 164,
     "log_home": 7,
     "individual_post": 137,
     "other": 32
@@ -245,12 +252,12 @@
       "sessions": 25
     },
     {
-      "source": "searchadvisor.naver.com",
+      "source": "(not set)",
       "sessions": 12
     },
     {
-      "source": "(not set)",
-      "sessions": 11
+      "source": "searchadvisor.naver.com",
+      "sessions": 12
     },
     {
       "source": "linkedin.com",
@@ -396,7 +403,7 @@
     "section_view_book_class": 140,
     "section_view_faq": 127,
     "faq_open": 35,
-    "read_complete": 237
+    "read_complete": 238
   },
   "contact_funnel": {
     "contact_open": 30,
