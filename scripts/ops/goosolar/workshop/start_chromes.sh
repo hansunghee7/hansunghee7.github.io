@@ -32,7 +32,9 @@ for pp in $PROFILES; do
   setsid nohup xvfb-run -a -s "-screen 0 1366x900x24" google-chrome \
     --user-data-dir="$W/profiles/$prof" --remote-debugging-port="$port" --remote-debugging-address=127.0.0.1 \
     --no-first-run --no-default-browser-check --lang=ko "$start_url" \
-    > "$W/logs/chrome-$prof.log" 2>&1 < /dev/null &
+    > "$W/logs/chrome-$prof.log" 2>&1 < /dev/null 9>&- &
+  # 9>&-: 잠금 파일(9번)을 크롬에 물려주지 않는다. 물려주면 크롬이 잠금을 계속 쥐어 이후 점검이 전부
+  # "이미 실행 중"으로 끝났다(2026-09-24 12:03~13:20 자동 복구가 사실상 멈춤, SNS 크롬 2개가 쥐고 있었음).
   echo "$(date '+%F %T') restarted $port ($prof)" >> "$W/logs/start_chromes.log"
   sleep 4
 done
