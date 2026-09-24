@@ -6,7 +6,7 @@
 1단계(이 파일): 계정 팔로워 수 + 숏폼 채널 게시물별 조회수. 결과를 JSON 한 줄씩 출력한다.
 인스타 릴스는 목록 타일에 마우스를 올려 좋아요·댓글까지 읽는다.
 
-사용: python sns_read.py > out/sns/<날짜>.jsonl   (틱톡은 자동 로그인이 막혀 크롬 확장이 계속 담당. 링크드인은 2026-09-24 휴대폰 승인으로 로그인됨)
+사용: python sns_read.py > out/sns/<날짜>.jsonl   (링크드인은 휴대폰 승인으로 로그인, 틱톡은 로그인 없이 공개 화면으로 읽음. 2026-09-24부터 크롬 확장 없이 전 채널)
 """
 import argparse, json, re, sys, time
 from playwright.sync_api import sync_playwright
@@ -25,6 +25,8 @@ TARGETS = [
     (9228, "content_threads", "https://www.threads.com/@sinkihanapt", ["followers", "팔로워"], None),
     (9228, "content_facebook", "https://www.facebook.com/profile.php?id=61593748241305", ["팔로워", "팔로우", "followers"], None),
     (9228, "naver_clip", "https://clip.naver.com/@simkihanapt", ["팔로워"], None),
+    # 틱톡은 자동 로그인이 막히지만 공개 화면은 로그인 없이 읽힌다(2026-09-24). 업로드는 AItoEarn이 한다.
+    (9228, "content_tiktok", "https://www.tiktok.com/@sinkihanapt", ["Followers", "팔로워"], None),
 ]
 
 
@@ -91,6 +93,18 @@ def naver_clip_items(pg):
     return out
 
 
+def tiktok_items(pg):
+    """틱톡 영상 목록: /video/<번호> 링크 타일의 숫자가 조회수(확장 listHrefPattern과 같은 규칙)."""
+    out, seen = [], set()
+    for a in pg.locator('a[href*="/video/"]').all():
+        m = re.search(r"/video/(\d+)", a.get_attribute("href") or "")
+        nm = re.search(NUMBER, (a.inner_text() or "").strip())
+        if m and nm and m.group(1) not in seen:
+            seen.add(m.group(1))
+            out.append({"id": m.group(1), "views": parse_abbrev(nm.group(1), nm.group(2))})
+    return out
+
+
 def post_detail(pg, url):
     """게시물 화면의 좋아요·댓글 수. 인스타: '좋아요 N개' / 'N likes', 댓글: '댓글 N개' / 'View all N comments'."""
     pg.goto(url, wait_until="domcontentloaded", timeout=45000); pg.wait_for_timeout(4000)
@@ -121,6 +135,10 @@ def main():
                     rec["items"] = list_items(pg, lp, url)
                 if key == "naver_clip":
                     rec["items"] = naver_clip_items(pg)
+                if key == "content_tiktok":
+                    rec["following"] = find_count(text, "Following") or find_count(text, "팔로잉")
+                    rec["likes"] = find_count(text, "Likes") or find_count(text, "좋아요")
+                    rec["items"] = tiktok_items(pg)
                 pg.close()
             except Exception as e:
                 rec["error"] = str(e)[:150]
