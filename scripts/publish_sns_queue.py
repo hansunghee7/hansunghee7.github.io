@@ -86,6 +86,15 @@ def register(item, api_key):
     except Exception as e:
         return False, f"이미지 업로드 실패: {type(e).__name__}: {e}"
     content = {k: v for k, v in item["content"].items() if k != "media_source"}
+    # AItoEarn은 페이스북·링크드인·인스타그램에서 title 칸을 쓰지 않고 body만
+    # 게시한다(yikart/aitoearn facebook-publish.provider.ts는 message=body,
+    # linkedin-publish.provider.ts는 commentary=body). 2026-09-24 인스타에 제목 없이
+    # 올라간 것을 사장님이 발견. 사장님이 직접 올리던 모양(첫 줄 제목, 빈 줄, 본문)에
+    # 맞춰 제목을 본문 첫 줄로 넣는다.
+    title = (content.get("title") or "").strip()
+    body = content.get("body") or ""
+    if title and not body.lstrip().startswith(title):
+        content["body"] = f"{title}\n\n{body}"
     body = json.dumps({
         "content": content,
         "publishAt": item["publishAt"],
