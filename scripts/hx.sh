@@ -18,7 +18,14 @@ set -euo pipefail
 HOST=shinpc
 SSH=(ssh -o BatchMode=yes -o ConnectTimeout=8 -o ServerAliveInterval=30 -o ServerAliveCountMax=10 "$HOST")
 
-ps_run() { printf '%s\n' "$1" | "${SSH[@]}" powershell -NoProfile -NonInteractive -Command - ; }
+# 신PC 자신에서 부르면 SSH로 자기 자신에게 접속하지 않고 바로 실행한다(2026-09-24, 탐 대장 N20:
+# 신PC 세션에는 `shinpc` 별칭이 없어 "Could not resolve hostname"으로 실패했음).
+# 호스트명을 공개 저장소에 쓰지 않으려고 헤르메스 폴더가 이 PC에 있는지로 판단한다.
+if [ -d "/c/Users/PC/AppData/Local/hermes/scripts" ] && [ "${HX_FORCE_SSH:-}" != 1 ]; then
+  ps_run() { printf '%s\n' "$1" | powershell.exe -NoProfile -NonInteractive -Command - ; }
+else
+  ps_run() { printf '%s\n' "$1" | "${SSH[@]}" powershell -NoProfile -NonInteractive -Command - ; }
+fi
 UTF8='[Console]::OutputEncoding=[Text.Encoding]::UTF8;'
 
 # 읽기 허용 경로: solar-bible 저장소, 헤르메스 scripts/logs/cron 폴더.
