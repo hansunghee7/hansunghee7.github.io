@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-24T12:49:54.680284+00:00",
+  "updated_at": "2026-09-24T20:00:51.759045+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 327,
-    "activeUsers": 238,
-    "newUsers": 238,
+    "sessions": 333,
+    "activeUsers": 244,
+    "newUsers": 245,
     "returningUsers": 0
   },
   "daily": [
@@ -213,10 +213,10 @@
     },
     {
       "date": "2026-09-24",
-      "sessions": 13,
-      "activeUsers": 11,
-      "newUsers": 10,
-      "returningUsers": 1
+      "sessions": 19,
+      "activeUsers": 17,
+      "newUsers": 17,
+      "returningUsers": 0
     }
   ],
   "daily_leads": [
@@ -230,15 +230,15 @@
     }
   ],
   "landing_types": {
-    "home": 161,
+    "home": 163,
     "log_home": 7,
-    "individual_post": 132,
+    "individual_post": 137,
     "other": 32
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 238
+      "sessions": 241
     },
     {
       "source": "google",
@@ -249,12 +249,12 @@
       "sessions": 12
     },
     {
-      "source": "linkedin.com",
-      "sessions": 10
+      "source": "(not set)",
+      "sessions": 11
     },
     {
-      "source": "(not set)",
-      "sessions": 9
+      "source": "linkedin.com",
+      "sessions": 10
     },
     {
       "source": "l.facebook.com",
@@ -269,20 +269,20 @@
       "sessions": 5
     },
     {
+      "source": "m.facebook.com",
+      "sessions": 5
+    },
+    {
       "source": "blog.naver.com",
       "sessions": 4
     },
     {
-      "source": "m.facebook.com",
+      "source": "facebook.com",
       "sessions": 4
     },
     {
       "source": "m.search.naver.com",
       "sessions": 4
-    },
-    {
-      "source": "facebook.com",
-      "sessions": 3
     },
     {
       "source": "daum",
@@ -302,7 +302,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 238
+      "sessions": 241
     },
     {
       "source": "google",
@@ -341,13 +341,19 @@
       "sessions": 5
     },
     {
+      "source": "m.facebook.com",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "sessions": 5
+    },
+    {
       "source": "blog.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 4
     },
     {
-      "source": "m.facebook.com",
+      "source": "facebook.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 4
@@ -357,12 +363,6 @@
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 4
-    },
-    {
-      "source": "facebook.com",
-      "medium": "referral",
-      "campaign": "(referral)",
-      "sessions": 3
     },
     {
       "source": "daum",
@@ -396,7 +396,7 @@
     "section_view_book_class": 140,
     "section_view_faq": 127,
     "faq_open": 35,
-    "read_complete": 236
+    "read_complete": 237
   },
   "contact_funnel": {
     "contact_open": 30,
@@ -429,7 +429,7 @@
     {
       "path": "/logs/625",
       "title": "/logs/625",
-      "sessions": 13
+      "sessions": 15
     },
     {
       "path": "/logs/620",
@@ -492,9 +492,9 @@
       "sessions": 2
     },
     {
-      "path": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
-      "title": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
-      "sessions": 1
+      "path": "/logs/628",
+      "title": "/logs/628",
+      "sessions": 2
     }
   ],
   "top_viewed_posts": [
@@ -507,8 +507,8 @@
     {
       "path": "/logs/625/",
       "title": "주니어 PM은 왜 스스로 문제를 정의하지 못할까?",
-      "uniqueViews": 12,
-      "views": 13
+      "uniqueViews": 14,
+      "views": 16
     },
     {
       "path": "/logs/620/",
@@ -591,7 +591,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 237,
+    "total_desktop_sessions": 240,
     "excluded_invalid_sessions": 21,
     "by_resolution": [
       {
@@ -602,7 +602,7 @@
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 43
+        "sessions": 44
       },
       {
         "resolution": "1600x1600",
@@ -612,7 +612,7 @@
       {
         "resolution": "1920x1080",
         "width": 1920,
-        "sessions": 31
+        "sessions": 32
       },
       {
         "resolution": "1536x960",
@@ -690,8 +690,8 @@
         "sessions": 2
       },
       {
-        "resolution": "2560x1080",
-        "width": 2560,
+        "resolution": "2000x2000",
+        "width": 2000,
         "sessions": 2
       }
     ]
