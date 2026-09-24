@@ -51,9 +51,17 @@ def log(f, rec):
     f.write(json.dumps(rec, ensure_ascii=False) + "\n"); f.flush()
 
 
+def agent_off(pg):
+    """새 계정·새 프로젝트는 프롬프트 칸이 에이전트(대화) 모드로 열리고 그때는 `설정 트리거`가 없다(2026-09-24 무료 계정)."""
+    ag = pg.get_by_role("button", name="에이전트", exact=True)
+    if ag.count() and ag.first.get_attribute("aria-pressed") == "true":
+        ag.first.click(); pg.wait_for_timeout(1200)
+
+
 def open_settings(pg):
     """설정 창이 보일 때까지 최대 3번 연다. 썸네일 미리보기(hover)가 떠 있으면 클릭이 먹히지 않아
     먼저 Esc와 빈 곳으로 마우스를 옮긴다(2026-09-24 씬03에서 창이 안 열린 사고)."""
+    agent_off(pg)
     radio = pg.get_by_role("radio", name="동영상")
     for _ in range(3):
         if radio.count() and radio.first.is_visible():
@@ -75,20 +83,24 @@ def pick(pg, name):
 
 
 def apply_settings(pg, a, dur):
+    """순서가 중요하다: 모델에 따라 해상도·길이 선택지가 달라진다(무료 계정 기본 Veo 3.1 Lite에는 360p·길이 칸이 없음, 2026-09-24).
+    그래서 종류·방식·비율 → 모델 → 해상도·길이·개수 순서로 고른다."""
     if not open_settings(pg):
         return False, "settings panel did not open", None
-    ok = all(pick(pg, n) for n in ("동영상", a.mode, a.ratio, a.res, f"{dur}초", "x1"))
-    model = pg.get_by_role("button", name="모델 제품군 선택").inner_text().strip()
+    ok = all(pick(pg, n) for n in ("동영상", a.mode, a.ratio))
+    mbtn = pg.get_by_role("button", name="모델 제품군 선택")
+    model = mbtn.inner_text().strip()
     if a.model not in model:
-        pg.get_by_role("button", name="모델 제품군 선택").click(); pg.wait_for_timeout(800)
-        pg.get_by_text(a.model, exact=True).first.click(); pg.wait_for_timeout(800)
+        mbtn.click(); pg.wait_for_timeout(800)
+        pg.get_by_role("menuitem", name=a.model, exact=True).click(); pg.wait_for_timeout(1000)
         open_settings(pg)
         model = pg.get_by_role("button", name="모델 제품군 선택").inner_text().strip()
+    ok = ok and all(pick(pg, n) for n in (a.res, f"{dur}초", "x1"))
     body = pg.locator("body").inner_text()
     m = re.search(r"(\d+)\s*크레딧", body)
     credits = int(m.group(1)) if m else None
     pg.keyboard.press("Escape"); pg.wait_for_timeout(400)
-    return ok and a.model in model, model, credits
+    return ok and a.model in model, model.splitlines()[0], credits
 
 
 def main():
@@ -98,15 +110,32 @@ def main():
     ap.add_argument("--ratio", default="9:16"); ap.add_argument("--mode", default="소재")
     ap.add_argument("--max-credits", type=int, default=30); ap.add_argument("--only", default="")
     ap.add_argument("--timeout", type=int, default=600)
+    ap.add_argument("--ports", default="9222",
+                    help="쓸 계정 포트 순서(예: 9224,9225,9222). 크레딧·한도로 막히면 다음 포트로 넘어가 같은 씬부터 이어 한다")
     a = ap.parse_args()
     scenes = json.loads(Path(a.scenes).read_text(encoding="utf-8"))
     if a.only:
         keep = set(a.only.split(",")); scenes = [s for s in scenes if s["name"] in keep]
     out = Path(a.outdir); out.mkdir(parents=True, exist_ok=True)
-    spent = 0
+    ports = [int(x) for x in a.ports.split(",")]
     with open(out / "batch_log.jsonl", "a", encoding="utf-8") as lf, sync_playwright() as p:
-        b = p.chromium.connect_over_cdp("http://127.0.0.1:9222")
-        pg = [x for c in b.contexts for x in c.pages if "flow.google.com/project" in x.url][0]
+      for port in ports:
+        spent = 0
+        b = p.chromium.connect_over_cdp("http://127.0.0.1:%d" % port)
+        cands = [x for c in b.contexts for x in c.pages if "flow.google.com/project" in x.url]
+        if not cands:
+            pg = b.contexts[0].pages[0] if b.contexts[0].pages else b.contexts[0].new_page()
+            pg.goto("https://labs.google/fx/tools/flow", wait_until="domcontentloaded", timeout=45000)
+            pg.wait_for_timeout(5000)
+            np_btn = pg.get_by_role("button", name="새 프로젝트", exact=False)
+            if np_btn.count():
+                np_btn.first.click(); pg.wait_for_timeout(6000)
+            if "flow.google.com/project" not in pg.url:
+                log(lf, {"port": port, "status": "STOP", "why": "no Flow project tab (사람이 프로젝트를 한 번 열어 둘 것)"}); continue
+        else:
+            pg = cands[0]
+        log(lf, {"port": port, "status": "account", "url": pg.url[-40:]})
+        switch = False
         for s in scenes:
             t0 = time.time(); name = s["name"]; dest = out / f"{name}.mp4"
             if dest.exists():
@@ -118,7 +147,7 @@ def main():
             if not ok:
                 log(lf, {"scene": name, "status": "STOP", "why": f"settings mismatch (model={model})"}); break
             if credits is None or spent + credits > a.max_credits:
-                log(lf, {"scene": name, "status": "STOP", "why": f"credit cap (spent {spent}, next {credits}, cap {a.max_credits})"}); break
+                log(lf, {"scene": name, "status": "STOP", "why": f"credit cap (spent {spent}, next {credits}, cap {a.max_credits})"}); switch = True; break
             before = media_ids(pg)
             base_lines = set(pg.locator("body").inner_text().splitlines())
             box = pg.locator("[contenteditable=true]").first
@@ -142,10 +171,16 @@ def main():
                 if hit:
                     why = f"stop words on page: {hit}"; break
             if not src:
-                log(lf, {"scene": name, "status": "STOP", "why": why or "timeout", "sec": round(time.time() - t0)}); break
+                log(lf, {"scene": name, "status": "STOP", "why": why or "timeout", "sec": round(time.time() - t0), "port": port})
+                switch = bool(why) and any(w in why for w in ("한도", "부족", "크레딧")); break
             r = pg.context.request.get(src); dest.write_bytes(r.body())
             log(lf, {"scene": name, "status": "ok", "bytes": dest.stat().st_size, "http": r.status,
-                     "sec": round(time.time() - t0), "credits": credits, "model": model})
+                     "sec": round(time.time() - t0), "credits": credits, "model": model, "port": port})
+        else:
+            break  # 모든 씬 끝
+        if not switch:
+            break  # 크레딧·한도 말고 다른 이유로 멈췄으면 사람·AI가 볼 차례
+        log(lf, {"port": port, "status": "switch", "why": "credit/limit, next account"})
     sizes = {}
     for f in sorted(out.glob("*.mp4")):
         sizes.setdefault(f.stat().st_size, []).append(f.name)
