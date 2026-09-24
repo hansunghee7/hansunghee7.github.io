@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-24T20:45:32.541065+00:00",
+  "updated_at": "2026-09-24T22:44:16.811993+00:00",
   "range": "last_30_days",
   "totals": {
     "sessions": 334,
     "activeUsers": 244,
-    "newUsers": 245,
+    "newUsers": 246,
     "returningUsers": 0
   },
   "daily": [
@@ -215,7 +215,7 @@
       "date": "2026-09-24",
       "sessions": 19,
       "activeUsers": 17,
-      "newUsers": 17,
+      "newUsers": 18,
       "returningUsers": 0
     },
     {
@@ -245,7 +245,7 @@
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 241
+      "sessions": 242
     },
     {
       "source": "google",
@@ -309,7 +309,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 241
+      "sessions": 242
     },
     {
       "source": "google",
@@ -398,10 +398,10 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 308,
-    "section_view_voices": 228,
-    "section_view_book_class": 140,
-    "section_view_faq": 127,
+    "section_view_proven": 309,
+    "section_view_voices": 229,
+    "section_view_book_class": 141,
+    "section_view_faq": 128,
     "faq_open": 35,
     "read_complete": 238
   },
