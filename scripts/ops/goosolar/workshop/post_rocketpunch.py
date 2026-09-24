@@ -49,9 +49,15 @@ def main():
         res["counter"] = m.group(0) if m else None
         res["editor_head"] = ed.first.inner_text()[:60]
         if a.post:
-            dlg = pg.get_by_role("dialog")
-            scope = dlg.last if dlg.count() else pg
-            scope.get_by_role("button", name=re.compile(r"^(글쓰기|Post)$")).last.click()
+            # 글쓰기 창은 role=dialog가 아니라 div.z_modal이다. 영어 화면에서는 창 안의 제출 버튼과
+            # 화면 위쪽 "Post" 버튼 이름이 같아, 페이지 전체에서 찾으면 창 뒤에 가려진 버튼을 눌러
+            # "intercepts pointer events"로 실패한다(2026-09-24 첫 실전). 편집기를 품은 창 안에서만 찾는다.
+            # 영어 화면의 창 안 제출 버튼 이름은 "Write Post"다(한국어 "글쓰기", 실측).
+            modal = pg.locator("div.z_modal").filter(has=ed.first)
+            scope = modal.last if modal.count() else pg
+            submit = scope.get_by_role("button", name=re.compile(r"^(글쓰기|Write Post|Post)$")).last
+            res["submit_scope"] = "modal" if modal.count() else "page"
+            submit.click(timeout=10000)
             try:
                 pg.get_by_text(re.compile(r"게시물이 등록되었습니다|has been posted|posted", re.I)).first.wait_for(timeout=20000); res["toast"] = True
             except Exception:
