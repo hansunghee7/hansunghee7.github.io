@@ -33,7 +33,7 @@
 | 2026-09-24 | 「우리 회사의 핵심가치, 아무도 안 볼 때 동작하나요?」(628번) | Facebook(Simplifier) | GitHub Actions `publish-sns.yml`(사람 개입 없음) | **등록 성공, 이미지 자동 업로드(N3 시험)** | 2026-09-26 09:00 KST 예약 | `flowId: 0adaa9d5-e661-4c2f-83e8-db00680bfec5`. 큐의 `media_source`(저장소 이미지 경로)를 스크립트가 uploadSign→PUT→confirm으로 올려 `assets.aitoearn.ai` URL 확보. 본문 전체+from 링크 |
 | 2026-09-24 | 9/25 예약 중복 의심 점검 | Facebook(Simplifier) | API 조회+캘린더 | **정리 완료** | - | 25일 페이스북 4건 중 살아있는 건 `3fefa4bd` 1건. `75cbf6ec`는 계정 재연결로 실패(-1, 게시 안 됨), `72fe23ba`·`3df4760f` 취소(9). 위 32행의 "최종 75cbf6ec"는 결과적으로 게시되지 않음 |
 | 2026-09-24 | 「우리 회사의 핵심가치…」(628번) | Facebook(Simplifier) | AItoEarn API DELETE | **예약 취소(사장님 지시)** | - | `0adaa9d5` 상태 9 확인. 인스타→페이스북 개인 프로필 자동 공유로 대체 |
-| 2026-09-24 | 「우리 회사의 핵심가치…」(628번) | Instagram(simplifier_seoul) → 계정 센터 자동 공유로 Facebook 한성희 개인 프로필 | GitHub Actions `publish-sns.yml` | 등록 성공(게시 결과 확인 대기) | 2026-09-24 19:30 KST | `flowId: dc1ea495`. 사장님이 인스타 "여러 프로필에 공유" 세 항목 켬(캡처 확인). N11 실측 |
+| 2026-09-24 | 「우리 회사의 핵심가치…」(628번) | Instagram(simplifier_seoul) → 계정 센터 자동 공유로 Facebook 한성희 개인 프로필 | GitHub Actions `publish-sns.yml` | **인스타 게시 성공, 페이스북 프로필 자동 공유는 실패** | 2026-09-24 19:30 KST | `flowId: dc1ea495`, 인스타 [DdqrHtKmHG8](https://www.instagram.com/p/DdqrHtKmHG8/) 19:30:12 게시(상태 1). 19:35·19:41·19:45 세 번 페이스북 프로필 확인, 맨 위는 3일 전 글 그대로 → API로 올린 인스타 글에는 "여러 프로필에 공유"가 걸리지 않는다고 판정(앱에서 직접 올린 글에만 적용되는 것으로 보임, 조사 결과와 일치). 사장님이 인스타 "여러 프로필에 공유" 세 항목 켬(캡처 확인). N11 실측 |
 | 2026-09-24 | 「토큰을 아끼려다 기술이 늘었다」(631번) | 로켓펀치(@simplfier) | Claude in Chrome(사장님 크롬, 확장 이식 전 실측) | **게시 완료(DONE=VERIFIED)** | 2026-09-24 19:00 KST 즉시 | 2,000자 제한이라 GPU 채점 에피소드 두 문단을 빼고 1,887자(사장님 컨펌). 프로필 게시물 목록 맨 위 "방금" 확인 |
 
 ## 다음 것
