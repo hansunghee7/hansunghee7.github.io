@@ -17,11 +17,18 @@ name: Relay local to cloud
 # 루프 가드(author.email == noreply@anthropic.com 커밋은 skip)는 실제
 # Routine 커밋으로 재검증 완료 — 그대로 유지.
 
+#
+# (2026-09-24, 탐) 자동 트리거 중지, 수동 실행만 남김. 9/18 이후 실제
+# 릴레이 요청(📥 탐(로컬) → 탐(클라우드))은 0건인데 9/20 이후 이 워크플로가
+# 루틴을 52번 깨웠고, 그 중 여러 건이 Bash 승인 대기로 사장님 화면에 쌓임.
+# 세션 간 전달은 우편함(solar-bible mailbox)으로 대체됨. 다시 켜려면 아래
+# push 블록의 주석을 풀면 된다.
 on:
-  push:
-    branches: [main]
-    paths:
-      - "docs/진행상황.md"
+  workflow_dispatch: {}
+  # push:
+  #   branches: [main]
+  #   paths:
+  #     - "docs/진행상황.md"
 
 permissions:
   contents: read
