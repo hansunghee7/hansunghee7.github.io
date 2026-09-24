@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-24T06:10:07.676558+00:00",
+  "updated_at": "2026-09-24T12:49:54.680284+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 324,
-    "activeUsers": 237,
-    "newUsers": 237,
+    "sessions": 327,
+    "activeUsers": 238,
+    "newUsers": 238,
     "returningUsers": 0
   },
   "daily": [
@@ -213,9 +213,9 @@
     },
     {
       "date": "2026-09-24",
-      "sessions": 10,
-      "activeUsers": 10,
-      "newUsers": 9,
+      "sessions": 13,
+      "activeUsers": 11,
+      "newUsers": 10,
       "returningUsers": 1
     }
   ],
@@ -230,9 +230,9 @@
     }
   ],
   "landing_types": {
-    "home": 158,
+    "home": 161,
     "log_home": 7,
-    "individual_post": 130,
+    "individual_post": 132,
     "other": 32
   },
   "top_sources": [
@@ -250,11 +250,11 @@
     },
     {
       "source": "linkedin.com",
-      "sessions": 8
+      "sessions": 10
     },
     {
       "source": "(not set)",
-      "sessions": 7
+      "sessions": 9
     },
     {
       "source": "l.facebook.com",
@@ -266,7 +266,7 @@
     },
     {
       "source": "(data not available)",
-      "sessions": 4
+      "sessions": 5
     },
     {
       "source": "blog.naver.com",
@@ -320,7 +320,7 @@
       "source": "linkedin.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 8
+      "sessions": 10
     },
     {
       "source": "l.facebook.com",
@@ -338,7 +338,7 @@
       "source": "(data not available)",
       "medium": "(data not available)",
       "campaign": "(cross-network)",
-      "sessions": 4
+      "sessions": 5
     },
     {
       "source": "blog.naver.com",
@@ -396,7 +396,7 @@
     "section_view_book_class": 140,
     "section_view_faq": 127,
     "faq_open": 35,
-    "read_complete": 235
+    "read_complete": 236
   },
   "contact_funnel": {
     "contact_open": 30,
@@ -427,13 +427,13 @@
       "sessions": 19
     },
     {
-      "path": "/logs/620",
-      "title": "/logs/620",
-      "sessions": 11
-    },
-    {
       "path": "/logs/625",
       "title": "/logs/625",
+      "sessions": 13
+    },
+    {
+      "path": "/logs/620",
+      "title": "/logs/620",
       "sessions": 11
     },
     {
@@ -505,14 +505,14 @@
       "views": 71
     },
     {
-      "path": "/logs/620/",
-      "title": "팀이 커질수록 대표만 모르는 것",
-      "uniqueViews": 11,
-      "views": 11
-    },
-    {
       "path": "/logs/625/",
       "title": "주니어 PM은 왜 스스로 문제를 정의하지 못할까?",
+      "uniqueViews": 12,
+      "views": 13
+    },
+    {
+      "path": "/logs/620/",
+      "title": "팀이 커질수록 대표만 모르는 것",
       "uniqueViews": 11,
       "views": 11
     },
@@ -591,7 +591,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 235,
+    "total_desktop_sessions": 237,
     "excluded_invalid_sessions": 21,
     "by_resolution": [
       {
@@ -655,6 +655,11 @@
         "sessions": 3
       },
       {
+        "resolution": "1463x915",
+        "width": 1463,
+        "sessions": 3
+      },
+      {
         "resolution": "1707x1067",
         "width": 1707,
         "sessions": 3
@@ -687,11 +692,6 @@
       {
         "resolution": "2560x1080",
         "width": 2560,
-        "sessions": 2
-      },
-      {
-        "resolution": "3072x1728",
-        "width": 3072,
         "sessions": 2
       }
     ]
