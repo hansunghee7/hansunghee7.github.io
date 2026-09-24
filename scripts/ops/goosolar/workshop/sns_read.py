@@ -6,7 +6,7 @@
 1단계(이 파일): 계정 팔로워 수 + 숏폼 채널 게시물별 조회수. 결과를 JSON 한 줄씩 출력한다.
 인스타 릴스는 목록 타일에 마우스를 올려 좋아요·댓글까지 읽는다.
 
-사용: python sns_read.py > out/sns/<날짜>.jsonl   (링크드인·틱톡은 자동 로그인이 막혀 크롬 확장이 계속 담당)
+사용: python sns_read.py > out/sns/<날짜>.jsonl   (틱톡은 자동 로그인이 막혀 크롬 확장이 계속 담당. 링크드인은 2026-09-24 휴대폰 승인으로 로그인됨)
 """
 import argparse, json, re, sys, time
 from playwright.sync_api import sync_playwright
@@ -15,6 +15,7 @@ NUMBER = r"([\d][\d,\.]*)\s*(천|만|K|k|M|m)?"
 
 # (포트, 키, 주소, 팔로워 키워드들, 목록 링크 패턴) -- 확장 background.js·content-script.js와 같은 값
 TARGETS = [
+    (9227, "linkedin", "https://www.linkedin.com/in/simplifier/", ["팔로워", "followers"], None),
     (9227, "facebook", "https://www.facebook.com/simplifier.seoul", ["팔로워", "친구", "followers", "friends"], None),
     (9227, "instagram", "https://www.instagram.com/simplifier_seoul/", ["followers", "팔로워"], None),
     (9227, "threads", "https://www.threads.com/@simplifier_seoul", ["followers", "팔로워"], None),
