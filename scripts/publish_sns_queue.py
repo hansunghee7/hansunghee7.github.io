@@ -17,7 +17,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 QUEUE_PATH = Path("assets/data/sns_publish_queue.json")
-API_URL = "https://aitoearn.ai/api/v2/channels/publish-flows"
+API_URL = "https://aitoearn.ai/api/v2/channels/publish/flows"
 UA = "simplifier-publisher/1.0 (+https://simplifier.co.kr)"
 
 
@@ -29,7 +29,7 @@ def register(item, api_key):
     body = json.dumps({
         "content": item["content"],
         "publishAt": item["publishAt"],
-        "items": [{"platform": item["platform"], "accountId": item["accountId"], "option": {}}],
+        "items": [{"platform": item["platform"], "accountId": item["accountId"], "option": item.get("option", {})}],
     }).encode("utf-8")
     req = urllib.request.Request(
         API_URL, body,
@@ -52,7 +52,7 @@ def register(item, api_key):
     if data.get("code") == 0:
         flow_id = (data.get("data") or {}).get("flowId") or (data.get("data") or {}).get("id")
         return True, flow_id
-    return False, f"code={data.get('code')} message={data.get('message')}"
+    return False, f"full={json.dumps(data, ensure_ascii=False)[:800]}"
 
 
 def main():
