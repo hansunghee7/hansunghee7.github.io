@@ -57,6 +57,12 @@ jobs:
         if: github.event_name == 'pull_request'
         run: python3 scripts/check_writing_style.py "origin/${{ github.base_ref }}"
 
+      # 2026-09-24 도입(사장님 지시: 고객 개인정보·내부 키는 각별히 막는다).
+      # 공개 저장소라 올라가면 이력에 남는다. 허용 목록 밖 이메일과 키 형태를 막는다.
+      - name: 개인정보·키 검사
+        if: github.event_name == 'pull_request'
+        run: python3 scripts/check_public_leaks.py "origin/${{ github.base_ref }}"
+
       # 2026-09-20 도입(사장님 결정): CLAUDE.md 상한 250줄. 목표 200줄은 격주 폴리싱(docs/폴리싱_기록.md)으로 지킨다.
       - name: CLAUDE.md 줄 수 상한 검사
         if: github.event_name == 'pull_request'
