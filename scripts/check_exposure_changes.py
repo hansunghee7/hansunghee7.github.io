@@ -56,6 +56,34 @@ def git(*args):
     return subprocess.run(["git", *args], capture_output=True, text=True).stdout
 
 
+ROBOTS_NOINDEX = re.compile(r"<meta[^>]+name=[\"']robots[\"'][^>]*noindex|^noindex:\s*true|^sitemap:\s*false", re.I | re.M)
+
+
+def still_noindexed(path, head="HEAD"):
+    """바뀐 뒤 파일에 검색 차단 표시가 남아 있는가(robots meta noindex, front matter noindex/sitemap:false)."""
+    return bool(ROBOTS_NOINDEX.search(git("show", f"{head}:{path}") or ""))
+
+
+def is_site_excluded(path, config_path="_config.yml"):
+    """_config.yml exclude 목록(사이트에 안 올라가는 내부 문서)에 속하는가. check_writing_style.py와 같은 기준."""
+    try:
+        text = open(config_path, encoding="utf-8").read()
+    except OSError:
+        return False
+    prefixes, in_ex = [], False
+    for line in text.splitlines():
+        if line.strip() == "exclude:":
+            in_ex = True
+            continue
+        if in_ex:
+            m = re.match(r"^\s*-\s*(\S+)", line)
+            if m:
+                prefixes.append(m.group(1))
+            elif line.strip() and not line.strip().startswith("#"):
+                in_ex = False
+    return any(path == pre or path.startswith(pre) for pre in prefixes)
+
+
 def changed_files(base, head="HEAD"):
     out = git("diff", "--name-only", f"{base}...{head}")
     return [f for f in out.splitlines() if f.strip()]
@@ -100,10 +128,13 @@ def find_exposure(base, head="HEAD"):
                 findings.append(("메뉴 노출", f"{path}에 링크 추가: {line.strip()[:90]}"))
 
         if path.endswith((".html", ".md")) and path != "sitemap.xml":
-            # noindex를 뗐다 = 검색에 열었다
+            # noindex를 뗐다 = 검색에 열었다.
+            # 단, 바뀐 뒤 파일에 검색 차단 표시(robots meta 또는 front matter)가 그대로 남아 있으면 오탐이다.
+            # 본문 설명문 속 "noindex" 단어가 지워진 것만으로 잡혀, 페이지를 안내문으로 줄인 PR이 막혔다
+            # (2026-09-24 UX가이드 비공개 이관 PR #1029). 사이트에 올라가지 않는 경로(_config.yml exclude)도 제외한다.
             if any(NOINDEX.search(l) for l in removed) and not any(
                 NOINDEX.search(l) for l in added
-            ):
+            ) and not still_noindexed(path, head) and not is_site_excluded(path):
                 findings.append(("검색 노출", f"{path}: noindex 제거"))
             # preview 플래그를 뗐다 = 정식 페이지로 승격했다
             if any(PREVIEW_FLAG.match(l.strip()) for l in removed) and not any(

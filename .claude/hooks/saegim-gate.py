@@ -7,11 +7,15 @@
 범위: 기계가 감지할 수 있는 곳만 막는다. 채팅 답변은 감지할 수 없어 규칙 문장과 주간 감사로 다룬다.
 통과 장치(새김이 끊겼을 때 보고 자체가 막히면 안 된다):
   - 이 세션에서 가장 최근의 새김 호출이 오류로 끝났으면 통과
-  - 파일 .claude/saegim-outage 가 있으면 통과(접속 불가를 사장님께 밝히고 UX_GUIDE.md를 직접 읽은 뒤 만든다).
+  - 파일 .claude/saegim-outage 가 있으면 통과(접속 불가를 사장님께 밝힌 뒤 만든다).
     삭제가 아니라 "잠금"이라 이 파일 자체는 막지 않되, 만들어질 때마다 PostToolUse 훅
     (saegim-outage-notify.py)이 지투에게 자동으로 우편을 보내 사후 감독한다(사장님 확정, 2026-09-23 --
     동기 승인은 지투 세션이 꺼져 있을 때 일을 무한정 멈출 위험이 있어, "즉시 통보"로 취지를 구현)
   - 환경변수 SAEGIM_GATE=off 이면 통과
+UX가이드 원문 읽기(2026-09-24 사장님 지시 "UX가이드 열람은 대표 승인, 그 외는 새김 MCP"): 원문은 비공개
+새김 저장소 docs/guides/UX_GUIDE.md로 옮겼다. 원문 파일을 읽는 것(Read 도구, 또는 셸 명령에 경로가 들어간 것)은
+새김 조회 여부·장애 여부와 상관없이 막고, 사장님이 대화에서 승인한 뒤 세션이 만드는 .claude/uxguide-approved
+파일이 있을 때만 통과한다(승인 자체는 기계가 확인할 수 없어 세션의 정직성에 맡기고, 다 읽으면 지운다).
 입력: stdin JSON(tool_name, tool_input, transcript_path). 막을 때 exit 2 + stderr(Claude가 읽고 조회 후 다시 시도).
 """
 import json
@@ -25,19 +29,20 @@ BOSS_MAIL = re.compile(r"mailbox\.py\s+send\s+사장님")
 BLOCK_MSG = (
     "사장님께 드리는 보고·아티팩트·알림은 새김 조회가 먼저입니다(사장님 지시 2026-09-20). "
     "mcp__saegim__lookup(doc=\"UX_GUIDE\", query=...)을 먼저 호출해 해당 절을 확인한 뒤 다시 시도하세요. "
-    "반영했으면 cite도 남깁니다. 새김이 끊겨 있으면 접속 불가를 사장님께 밝히고 docs/UX_GUIDE.md를 직접 읽은 뒤 "
-    ".claude/saegim-outage 파일을 만들면 통과합니다."
+    "반영했으면 cite도 남깁니다. 새김이 끊겨 있으면 접속 불가를 사장님께 밝힌 뒤 "
+    ".claude/saegim-outage 파일을 만들면 통과합니다(UX가이드 원문 열람은 별도로 대표 승인이 필요)."
 )
 
 UX_GUIDE_BLOCK_MSG = (
-    "docs/UX_GUIDE.md를 로컬 파일로 직접 읽기 전에 새김 MCP 조회가 먼저입니다(사장님 지시 2026-09-23, "
-    "UX가이드 지름길 잠금 -- \"불편해야지 개선합니다\"). mcp__saegim__lookup(doc=\"UX_GUIDE\", query=...) 또는 "
-    "list_sections/get_section을 먼저 호출하세요. 새김이 끊겨 있을 때만 .claude/saegim-outage 파일을 만들면 "
-    "통과됩니다 -- 이건 가벼운 우회가 아니라 사장님과 지투에게 즉시 통보되는 예외입니다. 만들 때 왜 필요한지를 "
-    "적어두고, 복구되면 직접 지우세요."
+    "UX가이드 원문 열람은 대표 승인이 필요합니다(사장님 지시 2026-09-24). 평소에는 새김 MCP로 보세요: "
+    "mcp__saegim__lookup(doc=\"UX_GUIDE\", query=...) 또는 list_sections/get_section. "
+    "원문이 꼭 필요하면 사장님께 이유를 말씀드리고 승인을 받은 뒤 .claude/uxguide-approved 파일을 만들고, "
+    "다 읽으면 지우세요(새김 장애 표시 .claude/saegim-outage로는 통과되지 않습니다)."
 )
 
-UX_GUIDE_PATH_RE = re.compile(r"(^|[/\\])docs[/\\]ux_guide\.md$", re.IGNORECASE)
+# 공개 저장소 안내문(docs/UX_GUIDE.md)과 비공개 원문(simplifier-saegim/docs/guides/UX_GUIDE.md) 모두
+UX_GUIDE_PATH_RE = re.compile(r"(^|[/\\])ux_guide\.md$", re.IGNORECASE)
+UX_GUIDE_CMD_RE = re.compile(r"guides[/\\]+ux_guide\.md", re.IGNORECASE)
 
 
 def is_boss_facing(tool, tinput):
@@ -53,10 +58,12 @@ def is_boss_facing(tool, tinput):
 
 
 def is_ux_guide_shortcut(tool, tinput):
-    if tool != "Read":
-        return False
-    path = (tinput.get("file_path") or "").replace("\\", "/")
-    return bool(UX_GUIDE_PATH_RE.search(path))
+    if tool == "Read":
+        path = (tinput.get("file_path") or "").replace("\\", "/")
+        return bool(UX_GUIDE_PATH_RE.search(path))
+    if tool in ("Bash", "PowerShell"):
+        return bool(UX_GUIDE_CMD_RE.search(tinput.get("command", "") or ""))
+    return False
 
 
 def scan(transcript_path):
@@ -89,10 +96,14 @@ def scan(transcript_path):
 def decide(event, project_dir):
     tool = event.get("tool_name", "")
     tinput = event.get("tool_input") or {}
+    if is_ux_guide_shortcut(tool, tinput):
+        if os.environ.get("SAEGIM_GATE") == "off":
+            return 0, ""
+        if project_dir and os.path.exists(os.path.join(project_dir, ".claude", "uxguide-approved")):
+            return 0, ""
+        return 2, UX_GUIDE_BLOCK_MSG
     if is_boss_facing(tool, tinput):
         msg = BLOCK_MSG
-    elif is_ux_guide_shortcut(tool, tinput):
-        msg = UX_GUIDE_BLOCK_MSG
     else:
         return 0, ""
     if os.environ.get("SAEGIM_GATE") == "off":

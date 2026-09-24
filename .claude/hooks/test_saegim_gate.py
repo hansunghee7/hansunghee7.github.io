@@ -77,25 +77,40 @@ class GateTest(unittest.TestCase):
         ev = {"tool_name": "Read", "tool_input": {"file_path": "docs/UX_GUIDE.md"}}
         self.assertEqual(self.run_gate(ev, []), 2)
 
-    def test_reading_ux_guide_md_after_lookup_passes(self):
+    def test_reading_ux_guide_md_after_lookup_is_still_gated(self):
+        # 2026-09-24: 원문 열람은 대표 승인. 새김 조회를 했어도 원문은 못 연다
         ev = {"tool_name": "Read", "tool_input": {"file_path": "docs/UX_GUIDE.md"}}
-        self.assertEqual(self.run_gate(ev, [use("mcp__saegim__lookup", "t1"), result("t1")]), 0)
+        self.assertEqual(self.run_gate(ev, [use("mcp__saegim__lookup", "t1"), result("t1")]), 2)
+
+    def test_reading_private_original_is_gated(self):
+        ev = {"tool_name": "Read", "tool_input": {"file_path": r"C:\work\simplifier-saegim\docs\guides\UX_GUIDE.md"}}
+        self.assertEqual(self.run_gate(ev, []), 2)
+
+    def test_shell_cat_of_private_original_is_gated(self):
+        ev = {"tool_name": "Bash", "tool_input": {"command": "cat /c/work/simplifier-saegim/docs/guides/UX_GUIDE.md"}}
+        self.assertEqual(self.run_gate(ev, []), 2)
 
     def test_reading_other_docs_is_not_gated(self):
         ev = {"tool_name": "Read", "tool_input": {"file_path": "docs/진행상황.md"}}
         self.assertEqual(self.run_gate(ev, []), 0)
 
     def test_reading_ux_guide_md_backslash_path_is_gated(self):
-        ev = {"tool_name": "Read", "tool_input": {"file_path": "C:\\work\\hansunghee7.github.io\\docs\\UX_GUIDE.md"}}
+        ev = {"tool_name": "Read", "tool_input": {"file_path": r"C:\work\hansunghee7.github.io\docs\UX_GUIDE.md"}}
         self.assertEqual(self.run_gate(ev, []), 2)
 
-    def test_ux_guide_outage_marker_file_passes(self):
+    def test_ux_guide_outage_marker_no_longer_passes(self):
         d = tempfile.mkdtemp()
         os.makedirs(os.path.join(d, ".claude"))
         open(os.path.join(d, ".claude", "saegim-outage"), "w").close()
         ev = {"tool_name": "Read", "tool_input": {"file_path": "docs/UX_GUIDE.md"}}
-        self.assertEqual(self.run_gate(ev, [], project_dir=d), 0)
+        self.assertEqual(self.run_gate(ev, [], project_dir=d), 2)
 
+    def test_ux_guide_boss_approval_marker_passes(self):
+        d = tempfile.mkdtemp()
+        os.makedirs(os.path.join(d, ".claude"))
+        open(os.path.join(d, ".claude", "uxguide-approved"), "w").close()
+        ev = {"tool_name": "Read", "tool_input": {"file_path": "docs/UX_GUIDE.md"}}
+        self.assertEqual(self.run_gate(ev, [], project_dir=d), 0)
 
 if __name__ == "__main__":
     unittest.main()
