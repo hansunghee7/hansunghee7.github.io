@@ -9,7 +9,9 @@
 set -u
 W="$HOME/workshop"
 # 포트:프로필 폴더 (계정 대장은 profiles/ACCOUNTS.md, 저장소에는 올리지 않음)
-PROFILES="9222:flow-free1 9223:acct3 9224:acct4 9225:acct5 9226:acct2"
+# 9227·9228은 SNS 수집·게시용(2026-09-24 추가, 크롬 확장 대체): 9227 심플리파이어 계정들, 9228 숏폼 채널 계정들
+PROFILES="9222:flow-free1 9223:acct3 9224:acct4 9225:acct5 9226:acct2 9227:sns-a 9228:sns-b"
+TOTAL=$(echo $PROFILES | wc -w)
 mkdir -p "$W/logs"
 # 재부팅 직후 @reboot 실행과 5분 주기 실행이 같은 순간에 겹쳐 같은 크롬을 두 번 켰다(2026-09-24 재부팅 시험).
 # 한 번에 하나만 돌게 잠근다. 이미 돌고 있으면 조용히 끝낸다.
@@ -25,11 +27,13 @@ for pp in $PROFILES; do
   pkill -f "user-data-dir=$W/profiles/$prof " 2>/dev/null
   pkill -f "user-data-dir=$W/profiles/$prof$" 2>/dev/null
   rm -f "$W/profiles/$prof/SingletonLock" "$W/profiles/$prof/SingletonSocket" "$W/profiles/$prof/SingletonCookie"
+  start_url=https://labs.google/fx/tools/flow
+  case "$prof" in sns-*) start_url=about:blank ;; esac
   setsid nohup xvfb-run -a -s "-screen 0 1366x900x24" google-chrome \
     --user-data-dir="$W/profiles/$prof" --remote-debugging-port="$port" --remote-debugging-address=127.0.0.1 \
-    --no-first-run --no-default-browser-check --lang=ko https://labs.google/fx/tools/flow \
+    --no-first-run --no-default-browser-check --lang=ko "$start_url" \
     > "$W/logs/chrome-$prof.log" 2>&1 < /dev/null &
   echo "$(date '+%F %T') restarted $port ($prof)" >> "$W/logs/start_chromes.log"
   sleep 4
 done
-echo "$(date '+%F %T') up_before=$up/5" > "$W/logs/chromes.last"
+echo "$(date '+%F %T') up_before=$up/$TOTAL" > "$W/logs/chromes.last"
