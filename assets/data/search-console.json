@@ -1,17 +1,17 @@
 {
-  "updated_at": "2026-09-24T15:16:55.907381+00:00",
+  "updated_at": "2026-09-24T20:45:32.417518+00:00",
   "site_url": "https://simplifier.co.kr/",
   "data_delay_note": "서치콘솔 데이터는 약 2일 지연 -- end_date는 이틀 전",
   "totals_28d": {
-    "clicks": 24,
-    "impressions": 1228,
-    "ctr": 0.0195,
+    "clicks": 25,
+    "impressions": 1270,
+    "ctr": 0.0197,
     "position": 8.4
   },
   "totals_90d": {
-    "clicks": 24,
-    "impressions": 1228,
-    "ctr": 0.0195,
+    "clicks": 25,
+    "impressions": 1270,
+    "ctr": 0.0197,
     "position": 8.4
   },
   "daily_90d": [
@@ -210,9 +210,23 @@
       "impressions": 60,
       "ctr": 0.0167,
       "position": 8
+    },
+    {
+      "date": "2026-09-22",
+      "clicks": 1,
+      "impressions": 42,
+      "ctr": 0.0238,
+      "position": 8.8
     }
   ],
   "top_queries_90d": [
+    {
+      "query": "pl pm 차이",
+      "clicks": 0,
+      "impressions": 47,
+      "ctr": 0,
+      "position": 6.4
+    },
     {
       "query": "5forces",
       "clicks": 0,
@@ -221,32 +235,25 @@
       "position": 9.3
     },
     {
-      "query": "pl pm 차이",
-      "clicks": 0,
-      "impressions": 42,
-      "ctr": 0,
-      "position": 6.9
-    },
-    {
       "query": "pm pl 차이",
       "clicks": 0,
-      "impressions": 36,
+      "impressions": 37,
       "ctr": 0,
-      "position": 6
+      "position": 6.1
     },
     {
       "query": "pm pl",
       "clicks": 0,
-      "impressions": 31,
+      "impressions": 33,
       "ctr": 0,
       "position": 10.8
     },
     {
       "query": "심플리파이어",
-      "clicks": 4,
-      "impressions": 30,
-      "ctr": 0.1333,
-      "position": 5.6
+      "clicks": 5,
+      "impressions": 31,
+      "ctr": 0.1613,
+      "position": 5.5
     },
     {
       "query": "simplifier",
@@ -256,11 +263,11 @@
       "position": 2.5
     },
     {
-      "query": "기획이란",
+      "query": "pl pm",
       "clicks": 0,
-      "impressions": 12,
+      "impressions": 11,
       "ctr": 0,
-      "position": 8.4
+      "position": 10.7
     },
     {
       "query": "so what why so",
@@ -268,13 +275,6 @@
       "impressions": 10,
       "ctr": 0.1,
       "position": 4.2
-    },
-    {
-      "query": "pl pm",
-      "clicks": 0,
-      "impressions": 10,
-      "ctr": 0,
-      "position": 10.8
     },
     {
       "query": "고객 확보",
@@ -424,18 +424,18 @@
       "position": 1
     },
     {
+      "query": "pl 역할",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 10.5
+    },
+    {
       "query": "pm vs pl",
       "clicks": 0,
       "impressions": 2,
       "ctr": 0,
       "position": 9
-    },
-    {
-      "query": "다모임 블로그",
-      "clicks": 0,
-      "impressions": 2,
-      "ctr": 0,
-      "position": 16.5
     },
     {
       "query": "so what so why",
@@ -480,13 +480,6 @@
       "position": 12
     },
     {
-      "query": "pl 역할",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 11
-    },
-    {
       "query": "pm 기획자 차이",
       "clicks": 0,
       "impressions": 1,
@@ -529,11 +522,25 @@
       "position": 29
     },
     {
+      "query": "team pl",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
       "query": "tpm pm",
       "clicks": 0,
       "impressions": 1,
       "ctr": 0,
       "position": 10
+    },
+    {
+      "query": "tpm vs pm",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
     },
     {
       "query": "ux의 언어들",
@@ -567,9 +574,9 @@
   "top_pages_90d": [
     {
       "page": "https://simplifier.co.kr/",
-      "clicks": 10,
-      "impressions": 96,
-      "ctr": 0.1042,
+      "clicks": 11,
+      "impressions": 97,
+      "ctr": 0.1134,
       "position": 3.9
     },
     {
@@ -596,9 +603,9 @@
     {
       "page": "https://simplifier.co.kr/log_assets/markdown/135_%EC%A0%9C%ED%92%88%EC%9D%98%20%EC%83%9D%EB%AA%85%EC%84%A0%2C%20Retention%20Curve.html",
       "clicks": 1,
-      "impressions": 25,
-      "ctr": 0.04,
-      "position": 6.7
+      "impressions": 28,
+      "ctr": 0.0357,
+      "position": 6.5
     },
     {
       "page": "https://simplifier.co.kr/log_assets/markdown/605_%ED%82%A4%EC%9B%8C%EB%93%9C%EB%A1%9C%20%EC%95%8C%EC%95%84%EB%B3%B4%EB%8A%94%20%EC%84%9C%EB%B9%84%EC%8A%A4%EA%B8%B0%ED%9A%8D%EC%9E%90%2C%20PM%2C%20PO%EC%9D%98%20%EC%B0%A8%EC%9D%B4.html",
@@ -631,9 +638,9 @@
     {
       "page": "https://simplifier.co.kr/log_assets/markdown/034_90%EC%B4%88%EC%9D%98%20%EA%B8%B0%EC%A0%81%2C%20%EB%A7%A5%EB%8F%84%EB%82%A0%EB%93%9C%20%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B8%8C%EC%8A%A4%EB%A3%A8%EC%9D%98%20UX.html",
       "clicks": 1,
-      "impressions": 11,
-      "ctr": 0.0909,
-      "position": 8.6
+      "impressions": 12,
+      "ctr": 0.0833,
+      "position": 8.2
     },
     {
       "page": "https://simplifier.co.kr/log/%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85-%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8.html",
@@ -779,33 +786,33 @@
   "by_device_90d": [
     {
       "device": "DESKTOP",
-      "clicks": 21,
-      "impressions": 866,
-      "ctr": 0.0242,
+      "clicks": 22,
+      "impressions": 900,
+      "ctr": 0.0244,
       "position": 7.7
     },
     {
       "device": "MOBILE",
       "clicks": 2,
-      "impressions": 348,
-      "ctr": 0.0057,
+      "impressions": 355,
+      "ctr": 0.0056,
       "position": 10.1
     },
     {
       "device": "TABLET",
       "clicks": 1,
-      "impressions": 14,
-      "ctr": 0.0714,
-      "position": 7.6
+      "impressions": 15,
+      "ctr": 0.0667,
+      "position": 7.2
     }
   ],
   "by_country_90d": [
     {
       "country": "kor",
-      "clicks": 24,
-      "impressions": 1085,
-      "ctr": 0.0221,
-      "position": 8.3
+      "clicks": 25,
+      "impressions": 1125,
+      "ctr": 0.0222,
+      "position": 8.4
     },
     {
       "country": "can",
