@@ -1,0 +1,19 @@
+[
+  {
+    "id": "2026-09-24-fb-631-test",
+    "post_ref": "631",
+    "platform": "facebook",
+    "accountId": "facebook_1276868818845114",
+    "content": {
+      "title": "토큰을 아끼려다 기술이 늘었다",
+      "body": "AI 사용량이 하루 만에 바닥나서, 일을 나누는 법을 배웠습니다 :)\n\n토큰을 아끼려고 이것저것 바꾸다 보니 오히려 기술이 늘었던 이야기를 새 글에 담았습니다.\n\n▶ https://simplifier.co.kr/logs/631/"
+    },
+    "publishAt": "2026-09-25T00:00:00.000Z",
+    "status": "pending",
+    "approved_by": "사장님",
+    "approved_quote": "예약 등록이면 리스크가 크지 않아 괜찬아요 예약등록 진행해주세요 (2026-09-24, 채팅)",
+    "flowId": null,
+    "registered_at": null,
+    "note": "워크플로 첫 실전 시험."
+  }
+]

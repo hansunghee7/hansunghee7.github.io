@@ -1,0 +1,65 @@
+name: Publish SNS queue (AItoEarn)
+
+# assets/data/sns_publish_queue.json에서 사장님이 채팅으로 이미 승인한
+# 항목(approved_by가 채워진 것)만 AItoEarn 발행 흐름 API로 등록한다. 실제
+# 게시는 AItoEarn 서버가 각 항목의 publishAt 시각에 맞춰 하므로, 이 워크플로는
+# 하루 몇 번만 돌아도 된다(fetch-analytics.yml과 같은 이유로 정각을 피해 분산).
+#
+# 필요한 저장소 Secret: AITOEARN_API_KEY (사장님이 aitoearn.ai 개발자 화면에서
+# 직접 발급, Settings → Secrets and variables → Actions에 붙여넣기).
+#
+# 왜 예약 시각에 사람이 직접 누르지 않고 이 워크플로가 대신 하나: 이 저장소의
+# GA4·SNS 공개 채널 수집(fetch-analytics.yml, fetch-sns-public.yml)과 같은
+# 이유다 — 시각을 맞춰야 하는 반복 작업은 사람이 매번 지켜보는 것보다
+# 정해진 시각에 도는 서버가 하는 편이 안전하고 확실하다. 승인은 사람(사장님)이
+# 채팅에서 하고, 그 승인이 큐 파일(approved_by)에 남아야만 이 워크플로가
+# 등록을 실행한다.
+on:
+  schedule:
+    - cron: "23 20 * * *"  # 05:23 KST
+    - cron: "23 8 * * *"   # 17:23 KST
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-sns
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PUSH_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Register pending SNS posts
+        env:
+          AITOEARN_API_KEY: ${{ secrets.AITOEARN_API_KEY }}
+        run: python scripts/publish_sns_queue.py
+
+      - name: Commit if any changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/data/sns_publish_queue.json
+          if git diff --cached --quiet; then
+            echo "no changes to commit"
+          else
+            git commit -m "chore: SNS 발행 큐 등록 결과 반영 [skip ci]"
+            n=0
+            until git push; do
+              n=$((n+1))
+              if [ $n -ge 3 ]; then echo "push 3회 실패"; exit 1; fi
+              git pull --rebase origin main
+            done
+          fi
