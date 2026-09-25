@@ -36,7 +36,7 @@ def smi():
     code, out = run(["nvidia-smi", "--query-gpu=name,driver_version", "--format=csv,noheader"], 30)
     name, drv = [x.strip() for x in out.strip().splitlines()[0].split(",")]
     _, full = run(["nvidia-smi"], 30)
-    m = re.search(r"CUDA Version:\s*([\d.]+)", full)
+    m = re.search(r"CUDA (?:UMD )?Version:\s*([\d.]+)", full)  # 616.xx부터 "CUDA UMD Version"
     return {"gpu": name, "driver": drv, "cuda": m.group(1) if m else "?"}
 
 
@@ -49,10 +49,11 @@ def check_compute():
 
 
 def check_nvenc():
+    # -pix_fmt yuv420p: av1_nvenc는 RGB 입력이면 "No capable devices"로 실패한다(9/26 실측, 드라이버 616.92)
     res = {}
     for enc in ("h264_nvenc", "hevc_nvenc", "av1_nvenc"):
         rc, out = run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-f", "lavfi", "-i", "testsrc=duration=1:size=1280x720:rate=30",
-                       "-c:v", enc, "-f", "null", "-"], 120)
+                       "-pix_fmt", "yuv420p", "-c:v", enc, "-f", "null", "-"], 120)
         m = re.search(r"Required: ([\d.]+) Found: ([\d.]+)", out)
         res[enc] = "ok" if rc == 0 else (f"불가(API 필요 {m.group(1)}, 드라이버 제공 {m.group(2)})" if m else (out.strip().splitlines() or [f"exit {rc}"])[0][:120])
     return all(v == "ok" for v in res.values()), res
