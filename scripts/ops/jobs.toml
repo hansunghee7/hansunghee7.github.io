@@ -58,6 +58,13 @@ period_min = 360  # 09:30·15:30·21:30 KST, no-agent(scripts/ops/check_saegim_i
 note = "2026-09-25 탐 등록(백로그 41 합성 감시). 지투 점검 계정으로 list_sections → 300초 유휴 → 같은 세션 재조회. 실패 시 탐에게 우편. 등록 전 hermes cron run 성공(첫 조회 2.1초, 300초 뒤 재조회 2.1초)"
 
 [[job]]
+id = "hermes:gpu-driver-check"
+kind = "hermes_cron"
+name = "gpu-driver-check"
+period_min = 60  # no-agent(scripts/ops/gpu_check.py 사본). 드라이버 버전이 기록값과 같으면 즉시 조용히 끝남
+note = "2026-09-25 탐 등록(핏→탐 이관, 사장님 지시). 드라이버가 바뀌면 ① tts-env CUDA+행렬곱 ② nvenc 3종 실제 인코딩(기록만) ③ 우리 목소리 1문장 생성. 실패 시 사장님 --ask 우편(텔레그램). 등록 전 1회 실행: 계산 61ms·음성 3.7초 통과, nvenc는 ffmpeg 9.0.1이 드라이버 610 이상 요구해 591.86에서 불가(파이프라인은 libx264라 영향 없음). 기준값 C:\work\_ops\gpu_baseline.json"
+
+[[job]]
 id = "hermes:health-check"
 kind = "hermes_cron"
 name = "health-check"
