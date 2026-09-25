@@ -46,6 +46,14 @@ def main(argv):
         body = Path(argv[2]).read_text(encoding="utf-8") if argv[1] == "--file" else argv[1]
         ok = all(call("sendMessage", {"text": body[i:i + 4000]}) for i in range(0, len(body), 4000))
     elif kind in ("photo", "doc"):
+        # 관문(2026-09-25, CLAUDE#4e7b): 숏폼 제작물(음성·영상·장면)은 핏 제작함으로 간다(shorts-lab tools/notify/tg_send.py).
+        # 핏 세션이 원칙7만 보고 신솔라 방으로 보낸 사고 → 기억 대신 도구가 막는다. 정말 신솔라 방이어야 하면 --force.
+        p = str(Path(argv[1]).resolve())
+        if "--force" not in argv and (("AI숏폼" in p) or ("shorts-lab" in p)) and Path(p).suffix.lower() in (
+                ".mp3", ".wav", ".m4a", ".mp4", ".mov", ".png", ".jpg", ".jpeg", ".webp"):
+            sys.exit("숏폼 제작물은 핏 제작함으로: python C:/work/shorts-lab/tools/notify/tg_send.py "
+                     "doc|final|audio|photos <파일> --title \"설명\" (신솔라 방이 맞으면 --force)")
+        argv = [a for a in argv if a != "--force"]
         method, field = ("sendPhoto", "photo") if kind == "photo" else ("sendDocument", "document")
         with open(argv[1], "rb") as f:
             ok = call(method, {"caption": argv[2] if len(argv) > 2 else ""}, {field: f})
