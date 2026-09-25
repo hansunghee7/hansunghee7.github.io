@@ -59,6 +59,15 @@
             "command": "\"$CLAUDE_PROJECT_DIR/.claude/hooks/saegim-outage-notify.sh\""
           }
         ]
+      },
+      {
+        "matcher": "Bash|PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR/.claude/hooks/mail-wake.sh\""
+          }
+        ]
       }
     ]
   }
