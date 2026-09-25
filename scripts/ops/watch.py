@@ -29,6 +29,8 @@ KST = timezone(timedelta(hours=9))
 HERE = os.path.dirname(os.path.abspath(__file__))
 STATE_DIR = os.environ.get("OPS_STATE_DIR", r"C:\work\_ops")
 JOBS_FILE = os.environ.get("OPS_JOBS", "jobs.toml")  # 기기마다 대장을 나눈다(신PC: jobs.toml, 구PC: jobs_goosolar.toml)
+# 2026-09-25 탐: 대장은 저장소 main이 정본. 손 복사가 밀려 두 행이 감시에서 빠진 일(지투 발견) 뒤로, 매 회차 origin/main을 읽는다.
+REPO = os.environ.get("OPS_REPO", r"C:\work\hansunghee7.github.io")
 HOST = os.environ.get("OPS_HOST", "신PC")  # 알림에 어느 기기의 감시인지 표시
 MAILBOX = os.environ.get("OPS_MAILBOX", r"C:\work\solar-bible\mailbox\mailbox.py")
 # 사장님 폰으로 직접 알리는 스크립트(구PC의 tg_notify.py). 설정한 기기에서, 대장에 direct = true인 항목이 "멈춤"이 될 때만 쓴다(2026-09-21 사장님 승인: 신PC 응답 없음만)
@@ -129,6 +131,24 @@ def infer_period_min(run_times, default=1440):
 def is_stale(last, period_min, at, grace_min=60):
     """마지막 성공이 주기의 1.5배 + 여유보다 오래됐는가."""
     return (at - last).total_seconds() / 60 > 1.5 * period_min + grace_min
+
+
+def load_jobs():
+    """대장 읽기: 저장소 origin/main 사본이 정본. 읽히면 옆 파일도 그 내용으로 갱신(저장소를 못 읽을 때 쓸 예비본).
+    저장소가 없거나 git이 실패하면 옆 파일을 그대로 쓴다(구PC처럼 저장소가 없는 기기 포함)."""
+    local = os.path.join(HERE, JOBS_FILE)
+    if os.path.isdir(os.path.join(REPO, ".git")):
+        try:
+            subprocess.run(["git", "-C", REPO, "fetch", "-q", "origin", "main"], capture_output=True, timeout=60)
+            r = subprocess.run(["git", "-C", REPO, "show", f"origin/main:scripts/ops/{JOBS_FILE}"], capture_output=True, timeout=30)
+            if r.returncode == 0 and r.stdout:
+                jobs = tomllib.loads(r.stdout.decode("utf-8"))["job"]
+                with open(local, "wb") as f:
+                    f.write(r.stdout)
+                return jobs
+        except Exception:
+            pass
+    return tomllib.load(open(local, "rb"))["job"]
 
 
 def is_due(prev_entry, every_min, at):
@@ -390,7 +410,7 @@ def direct_notify(title, body):
 def main():
     dry = "--dry-run" in sys.argv
     at = now()
-    jobs = tomllib.load(open(os.path.join(HERE, JOBS_FILE), "rb"))["job"]
+    jobs = load_jobs()
     state_file = os.path.join(STATE_DIR, "state.json")
     prev = json.load(open(state_file, encoding="utf-8")) if os.path.exists(state_file) else {}
     results = evaluate(jobs, at, prev)
