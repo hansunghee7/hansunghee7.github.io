@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-25T15:10:32.811765+00:00",
+  "updated_at": "2026-09-25T20:45:26.761996+00:00",
   "note": "history는 매일 지난 24시간 집계를 누적한 것. latest_*는 최근 3일 창.",
   "history": [
     {
@@ -4397,16 +4397,16 @@
       "metrics": {
         "DeadClickCount": [
           {
-            "sessionsCount": 9,
-            "sessionsWithMetricPercentage": 11.11,
-            "sessionsWithoutMetricPercentage": 88.89,
+            "sessionsCount": 8,
+            "sessionsWithMetricPercentage": 12.5,
+            "sessionsWithoutMetricPercentage": 87.5,
             "pagesViews": 1,
             "subTotal": 1
           }
         ],
         "ExcessiveScroll": [
           {
-            "sessionsCount": 9,
+            "sessionsCount": 8,
             "sessionsWithMetricPercentage": 0,
             "sessionsWithoutMetricPercentage": 100,
             "pagesViews": 0,
@@ -4415,7 +4415,7 @@
         ],
         "RageClickCount": [
           {
-            "sessionsCount": 9,
+            "sessionsCount": 8,
             "sessionsWithMetricPercentage": 0,
             "sessionsWithoutMetricPercentage": 100,
             "pagesViews": 0,
@@ -4424,7 +4424,7 @@
         ],
         "QuickbackClick": [
           {
-            "sessionsCount": 9,
+            "sessionsCount": 8,
             "sessionsWithMetricPercentage": 0,
             "sessionsWithoutMetricPercentage": 100,
             "pagesViews": 0,
@@ -4433,7 +4433,7 @@
         ],
         "ScriptErrorCount": [
           {
-            "sessionsCount": 9,
+            "sessionsCount": 8,
             "sessionsWithMetricPercentage": 0,
             "sessionsWithoutMetricPercentage": 100,
             "pagesViews": 0,
@@ -4442,7 +4442,7 @@
         ],
         "ErrorClickCount": [
           {
-            "sessionsCount": 9,
+            "sessionsCount": 8,
             "sessionsWithMetricPercentage": 0,
             "sessionsWithoutMetricPercentage": 100,
             "pagesViews": 0,
@@ -4451,30 +4451,30 @@
         ],
         "ScrollDepth": [
           {
-            "averageScrollDepth": 54
+            "averageScrollDepth": 49.4
           }
         ],
         "Traffic": [
           {
-            "totalSessionCount": 9,
-            "totalBotSessionCount": 4,
-            "distinctUserCount": 16,
-            "pagesPerSessionPercentage": 1.125
+            "totalSessionCount": 8,
+            "totalBotSessionCount": 3,
+            "distinctUserCount": 14,
+            "pagesPerSessionPercentage": 1.1428571428571428
           }
         ],
         "EngagementTime": [
           {
-            "totalTime": 82,
-            "activeTime": 22
+            "totalTime": 90,
+            "activeTime": 23
           }
         ],
         "Browser": [
           {
-            "name": "MobileSafari",
-            "sessionsCount": 3
+            "name": "Other",
+            "sessionsCount": 2
           },
           {
-            "name": "Other",
+            "name": "MobileSafari",
             "sessionsCount": 2
           },
           {
@@ -4497,7 +4497,7 @@
         "Device": [
           {
             "name": "Mobile",
-            "sessionsCount": 6
+            "sessionsCount": 5
           },
           {
             "name": "PC",
@@ -4507,7 +4507,7 @@
         "OS": [
           {
             "name": "IOS",
-            "sessionsCount": 4
+            "sessionsCount": 3
           },
           {
             "name": "Android",
@@ -4525,7 +4525,7 @@
         "Country": [
           {
             "name": "Korea, Republic of",
-            "sessionsCount": 8
+            "sessionsCount": 7
           },
           {
             "name": "United States",
@@ -4539,7 +4539,7 @@
           },
           {
             "name": "주니어 PM은 왜 스스로 문제를 정의하지 못할까? - Simplifier",
-            "sessionsCount": 3
+            "sessionsCount": 2
           },
           {
             "name": "나의 클론이 화상회의를 '피클' - Simplifier",
@@ -4553,7 +4553,7 @@
         "ReferrerUrl": [
           {
             "name": "https://www.linkedin.com/",
-            "sessionsCount": 3
+            "sessionsCount": 2
           },
           {
             "name": null,
@@ -4587,14 +4587,10 @@
           },
           {
             "url": "https://simplifier.co.kr/logs/625/",
-            "visitsCount": 4
+            "visitsCount": 3
           },
           {
             "url": "https://simplifier.co.kr/logs/620/",
-            "visitsCount": 1
-          },
-          {
-            "url": "https://simplifier.co.kr/log.html",
             "visitsCount": 1
           },
           {
@@ -5153,18 +5149,18 @@
         "Url": "https://simplifier.co.kr/logs/625/"
       },
       {
-        "totalSessionCount": 0,
-        "totalBotSessionCount": 1,
-        "distinctUserCount": 1,
-        "pagesPerSessionPercentage": 1,
-        "Url": "https://simplifier.co.kr/log.html"
-      },
-      {
         "totalSessionCount": 1,
         "totalBotSessionCount": 0,
         "distinctUserCount": 1,
         "pagesPerSessionPercentage": 2,
         "Url": "https://simplifier.co.kr/logs/224/"
+      },
+      {
+        "totalSessionCount": 0,
+        "totalBotSessionCount": 1,
+        "distinctUserCount": 1,
+        "pagesPerSessionPercentage": 1,
+        "Url": "https://simplifier.co.kr/log.html"
       },
       {
         "totalSessionCount": 2,
