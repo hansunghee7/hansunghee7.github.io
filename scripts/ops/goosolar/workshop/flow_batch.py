@@ -4,6 +4,9 @@
 씬 목록(JSON)을 받아 씬마다: 설정 자동 선택 → 크레딧 확인 → 프롬프트 입력 → 생성 →
 새 <video> src가 생기면 직접 받아 씬 이름으로 저장. 화면 캡처와 AI 호출이 없다.
 멈춤 조건(사람·AI가 볼 차례): 설정이 안 맞음, 크레딧 상한 초과, 실패·정책·한도 문구, 시간 초과.
+2026-09-25 핏 예외표(ep21 8건) 반영: 씬에서 무슨 예외가 나든 STOP을 남기고 다음 포트로 넘어간다('실패'는 같은 포트 1회 재시도),
+대기 상한 3분, 멈춤 단어는 알림 영역(aria-live·alert·status)에서만, 새 계정 첫 화면(쿠키 '나중에', '시작하기' 창) 정리,
+썸네일에 마우스를 올려도 영상이 안 붙는 화면은 크게 보기를 열어 주소를 읽는다, 페이지를 오래 열어 두면 주소가 만료되니 계정마다 새로고침.
 
 사용: python flow_batch.py scenes.json out/ep13 [--model "Omni 1.1 Flash"] [--res 360p]
       [--ratio 9:16] [--mode 소재] [--max-credits 30] [--only 씬02,씬03]
@@ -30,7 +33,8 @@ def media_ids(pg):
 
 
 def video_url_for(pg, mid):
-    """썸네일에 마우스를 올리면 같은 id의 <video> src가 생긴다."""
+    """썸네일에 마우스를 올리면 같은 id의 <video> src가 생긴다. 안 생기는 화면(2026-09-25 9229 새 프로젝트)은
+    썸네일을 눌러 크게 보기에서 같은 id의 <video>를 읽고 목록으로 돌아온다."""
     for v in pg.locator("video").all():
         u = v.get_attribute("src") or ""
         if mid in u:
@@ -42,6 +46,17 @@ def video_url_for(pg, mid):
             u = v.get_attribute("src") or ""
             if mid in u:
                 return u
+        home = pg.url
+        img.click(); pg.wait_for_timeout(3000)
+        found = None
+        for v in pg.locator("video").all():
+            u = v.get_attribute("src") or ""
+            if mid in u:
+                found = u; break
+        pg.keyboard.press("Escape"); pg.wait_for_timeout(1000)
+        if pg.url != home:
+            pg.go_back(); pg.wait_for_timeout(2000)
+        return found
     return None
 
 
@@ -51,8 +66,41 @@ def log(f, rec):
     f.write(json.dumps(rec, ensure_ascii=False) + "\n"); f.flush()
 
 
+ALERT_SEL = "[aria-live], [role=alert], [role=status]"
+
+
+def alert_lines(pg):
+    """알림 영역 글자만 모은다. 몸통 전체를 보면 프롬프트·카드 제목 속 '한도' 같은 낱말에 걸렸다(2026-09-24 핏)."""
+    out = []
+    for e in pg.locator(ALERT_SEL).all():
+        try:
+            out += [l.strip() for l in e.inner_text().splitlines() if l.strip()]
+        except Exception:
+            pass
+    return out
+
+
+def first_run_cleanup(pg):
+    """새 계정 첫 실행: 쿠키 알림 '나중에', 환영 창의 '시작하기'를 닫는다(2026-09-24 핏 예외표 ④). 없으면 아무것도 안 한다."""
+    for name in ("나중에",):
+        b = pg.get_by_role("button", name=name, exact=True)
+        if b.count() and b.first.is_visible():
+            b.first.click(); pg.wait_for_timeout(800)
+    dlg = pg.get_by_role("dialog")
+    if dlg.count() and dlg.first.is_visible() and "시작하기" in dlg.first.inner_text():
+        close = dlg.first.get_by_role("button", name="닫기")
+        if close.count():
+            close.first.click()
+        else:
+            pg.keyboard.press("Escape")
+        pg.wait_for_timeout(800)
+
+
 def agent_off(pg):
     """새 계정·새 프로젝트는 프롬프트 칸이 에이전트(대화) 모드로 열리고 그때는 `설정 트리거`가 없다(2026-09-24 무료 계정)."""
+    # 에이전트 대화 창이 열린 채로 뜨면 에이전트 버튼이 가려진다(2026-09-24 핏, 9224~9226 전부) -> 창부터 닫는다
+    if pg.get_by_role("button", name="새로운 세션 시작").count():
+        pg.get_by_role("button", name="닫기").first.click(); pg.wait_for_timeout(1200)
     ag = pg.get_by_role("button", name="에이전트", exact=True)
     if ag.count() and ag.first.get_attribute("aria-pressed") == "true":
         ag.first.click(); pg.wait_for_timeout(1200)
@@ -103,13 +151,65 @@ def apply_settings(pg, a, dur):
     return ok and a.model in model, model.splitlines()[0], credits
 
 
+def download(pg, src):
+    r = pg.context.request.get(src)
+    return r.status, r.body()
+
+
+def run_scene(pg, a, s, out, lf, port, spent):
+    """씬 하나. 반환 status: ok / skip / retry('실패' 문구) / mismatch(설정이 안 맞음) / stop(그 밖의 모든 예외·한도·시간 초과)."""
+    t0 = time.time(); name = s["name"]; dest = out / f"{name}.mp4"
+    if dest.exists():
+        log(lf, {"scene": name, "status": "skip", "why": "already saved"}); return {"status": "skip"}
+    try:
+        ok, model, credits = apply_settings(pg, a, s["dur"])
+        if not ok:
+            log(lf, {"scene": name, "status": "STOP", "why": f"settings mismatch (model={model})", "port": port}); return {"status": "mismatch"}
+        if credits is None or spent + credits > a.max_credits:
+            log(lf, {"scene": name, "status": "STOP", "why": f"credit cap (spent {spent}, next {credits}, cap {a.max_credits})", "port": port}); return {"status": "stop"}
+        before = media_ids(pg)
+        base_alerts = set(alert_lines(pg))
+        box = pg.locator("[contenteditable=true]").first
+        box.click(); pg.keyboard.press("Control+A"); pg.keyboard.press("Delete")
+        pg.keyboard.insert_text(s["prompt"].strip()); pg.wait_for_timeout(700)
+        go = pg.get_by_role("button", name="생성 시작")
+        if not go.count() or go.is_disabled():
+            log(lf, {"scene": name, "status": "STOP", "why": "생성 시작 없음/비활성", "port": port}); return {"status": "stop"}
+        go.click()
+        src, why = None, None
+        while time.time() - t0 < a.timeout:
+            pg.wait_for_timeout(8000)
+            new = media_ids(pg) - before
+            if new:
+                src = video_url_for(pg, new.pop())
+                if src:
+                    break
+            hit = [l[:80] for l in alert_lines(pg) if l not in base_alerts and any(w in l for w in STOP_WORDS)]
+            if hit:
+                why = f"stop words in alert: {hit}"; break
+        if not src:
+            log(lf, {"scene": name, "status": "STOP", "why": why or "timeout", "sec": round(time.time() - t0), "port": port})
+            return {"status": "retry" if why and "실패" in why else "stop", "why": why or "timeout", "spent": credits}
+        status, body = download(pg, src)
+        if status != 200 or len(body) < 10000:  # 2026-09-25: 403 오류 페이지(111바이트)를 영상으로 저장하고 ok로 기록하던 버그
+            log(lf, {"scene": name, "status": "STOP", "why": f"download http {status}, {len(body)} bytes", "sec": round(time.time() - t0), "port": port})
+            return {"status": "stop", "spent": credits}
+        dest.write_bytes(body)
+        log(lf, {"scene": name, "status": "ok", "bytes": dest.stat().st_size, "http": status,
+                 "sec": round(time.time() - t0), "credits": credits, "model": model, "port": port})
+        return {"status": "ok", "spent": credits}
+    except Exception as e:  # 핏 예외표 ①: 한 씬의 예외가 배치 전체를 끝내지 않게(9222 '생성 시작' 없음으로 28분 방치)
+        log(lf, {"scene": name, "status": "STOP", "why": f"error: {type(e).__name__}: {str(e)[:150]}", "sec": round(time.time() - t0), "port": port})
+        return {"status": "stop"}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("scenes"); ap.add_argument("outdir")
     ap.add_argument("--model", default="Omni 1.1 Flash"); ap.add_argument("--res", default="360p")
     ap.add_argument("--ratio", default="9:16"); ap.add_argument("--mode", default="소재")
     ap.add_argument("--max-credits", type=int, default=30); ap.add_argument("--only", default="")
-    ap.add_argument("--timeout", type=int, default=600)
+    ap.add_argument("--timeout", type=int, default=180)  # 2026-09-25 핏: 10분 대기는 방치가 길다, 순수 생성은 1~2분
     ap.add_argument("--ports", default="9222",
                     help="쓸 계정 포트 순서(예: 9224,9225,9222). 크레딧·한도로 막히면 다음 포트로 넘어가 같은 씬부터 이어 한다")
     a = ap.parse_args()
@@ -121,7 +221,10 @@ def main():
     with open(out / "batch_log.jsonl", "a", encoding="utf-8") as lf, sync_playwright() as p:
       for port in ports:
         spent = 0
-        b = p.chromium.connect_over_cdp("http://127.0.0.1:%d" % port)
+        try:
+            b = p.chromium.connect_over_cdp("http://127.0.0.1:%d" % port)
+        except Exception as e:
+            log(lf, {"port": port, "status": "STOP", "why": f"cdp connect: {str(e)[:120]}"}); continue
         cands = [x for c in b.contexts for x in c.pages if "flow.google.com/project" in x.url]
         if not cands:
             pg = b.contexts[0].pages[0] if b.contexts[0].pages else b.contexts[0].new_page()
@@ -134,53 +237,33 @@ def main():
                 log(lf, {"port": port, "status": "STOP", "why": "no Flow project tab (사람이 프로젝트를 한 번 열어 둘 것)"}); continue
         else:
             pg = cands[0]
+            try:  # 오래 열어 둔 탭은 영상 주소 서명이 만료돼 403(2026-09-25 9229, 4.5시간)
+                pg.reload(wait_until="domcontentloaded"); pg.wait_for_timeout(5000)
+            except Exception:
+                pass
+        try:
+            first_run_cleanup(pg)
+        except Exception:
+            pass
         log(lf, {"port": port, "status": "account", "url": pg.url[-40:]})
         switch = False
         for s in scenes:
-            t0 = time.time(); name = s["name"]; dest = out / f"{name}.mp4"
-            if dest.exists():
-                log(lf, {"scene": name, "status": "skip", "why": "already saved"}); continue
-            try:
-                ok, model, credits = apply_settings(pg, a, s["dur"])
-            except Exception as e:
-                log(lf, {"scene": name, "status": "STOP", "why": f"settings error: {str(e)[:150]}"}); break
-            if not ok:
-                log(lf, {"scene": name, "status": "STOP", "why": f"settings mismatch (model={model})"}); break
-            if credits is None or spent + credits > a.max_credits:
-                log(lf, {"scene": name, "status": "STOP", "why": f"credit cap (spent {spent}, next {credits}, cap {a.max_credits})"}); switch = True; break
-            before = media_ids(pg)
-            base_lines = set(pg.locator("body").inner_text().splitlines())
-            box = pg.locator("[contenteditable=true]").first
-            box.click(); pg.keyboard.press("Control+A"); pg.keyboard.press("Delete")
-            pg.keyboard.insert_text(s["prompt"].strip()); pg.wait_for_timeout(700)
-            go = pg.get_by_role("button", name="생성 시작")
-            if go.is_disabled():
-                log(lf, {"scene": name, "status": "STOP", "why": "생성 시작 disabled"}); break
-            go.click(); spent += credits
-            src, why = None, None
-            while time.time() - t0 < a.timeout:
-                pg.wait_for_timeout(8000)
-                new = media_ids(pg) - before
-                if new:
-                    src = video_url_for(pg, new.pop())
-                    if src:
-                        break
-                fresh = [l for l in pg.locator("body").inner_text().splitlines()
-                         if l not in base_lines and l.strip() and l.strip() not in s["prompt"]]
-                hit = [l[:80] for l in fresh if any(w in l for w in STOP_WORDS)]
-                if hit:
-                    why = f"stop words on page: {hit}"; break
-            if not src:
-                log(lf, {"scene": name, "status": "STOP", "why": why or "timeout", "sec": round(time.time() - t0), "port": port})
-                switch = bool(why) and any(w in why for w in ("한도", "부족", "크레딧")); break
-            r = pg.context.request.get(src); dest.write_bytes(r.body())
-            log(lf, {"scene": name, "status": "ok", "bytes": dest.stat().st_size, "http": r.status,
-                     "sec": round(time.time() - t0), "credits": credits, "model": model, "port": port})
+          retried = False
+          while True:  # '실패'면 같은 포트에서 한 번 더
+            result = run_scene(pg, a, s, out, lf, port, spent)
+            spent += result.get("spent", 0)
+            if result["status"] == "retry" and not retried:
+                retried = True; log(lf, {"scene": s["name"], "status": "retry", "why": result["why"], "port": port}); continue
+            break
+          if result["status"] in ("ok", "skip"):
+            continue
+          # 무슨 이유든 이 계정에서 멈춘 씬은 다음 포트에서 같은 씬부터 다시(핏 예외표 ①). 설정 불일치만 사람이 볼 차례.
+          switch = result["status"] != "mismatch"; break
         else:
             break  # 모든 씬 끝
         if not switch:
-            break  # 크레딧·한도 말고 다른 이유로 멈췄으면 사람·AI가 볼 차례
-        log(lf, {"port": port, "status": "switch", "why": "credit/limit, next account"})
+            break  # 설정 불일치는 사람·AI가 볼 차례
+        log(lf, {"port": port, "status": "switch", "why": "scene stopped, next account"})
     sizes = {}
     for f in sorted(out.glob("*.mp4")):
         sizes.setdefault(f.stat().st_size, []).append(f.name)
