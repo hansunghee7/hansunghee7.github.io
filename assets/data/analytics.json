@@ -1,20 +1,13 @@
 {
-  "updated_at": "2026-09-25T12:51:55.539989+00:00",
+  "updated_at": "2026-09-25T20:00:51.789307+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 345,
-    "activeUsers": 255,
-    "newUsers": 255,
-    "returningUsers": 0
+    "sessions": 333,
+    "activeUsers": 250,
+    "newUsers": 248,
+    "returningUsers": 2
   },
   "daily": [
-    {
-      "date": "2026-08-26",
-      "sessions": 12,
-      "activeUsers": 7,
-      "newUsers": 7,
-      "returningUsers": 0
-    },
     {
       "date": "2026-08-27",
       "sessions": 31,
@@ -228,24 +221,20 @@
   ],
   "daily_leads": [
     {
-      "date": "2026-08-26",
-      "count": 1
-    },
-    {
       "date": "2026-08-28",
       "count": 2
     }
   ],
   "landing_types": {
-    "home": 164,
-    "log_home": 7,
-    "individual_post": 145,
+    "home": 154,
+    "log_home": 6,
+    "individual_post": 144,
     "other": 32
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 245
+      "sessions": 236
     },
     {
       "source": "google",
@@ -257,7 +246,7 @@
     },
     {
       "source": "searchadvisor.naver.com",
-      "sessions": 12
+      "sessions": 9
     },
     {
       "source": "(not set)",
@@ -309,7 +298,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 245
+      "sessions": 236
     },
     {
       "source": "google",
@@ -327,7 +316,7 @@
       "source": "searchadvisor.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 12
+      "sessions": 9
     },
     {
       "source": "l.facebook.com",
@@ -398,27 +387,22 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 310,
-    "section_view_voices": 229,
-    "section_view_book_class": 141,
-    "section_view_faq": 128,
-    "faq_open": 35,
-    "read_complete": 239
+    "section_view_proven": 283,
+    "section_view_voices": 207,
+    "section_view_book_class": 120,
+    "section_view_faq": 108,
+    "faq_open": 33,
+    "read_complete": 227
   },
   "contact_funnel": {
-    "contact_open": 32,
-    "generate_lead": 3,
-    "contact_error": 3
+    "contact_open": 21,
+    "generate_lead": 2,
+    "contact_error": 1
   },
   "leads_by_post": [
     {
       "path": "/",
       "title": "홈",
-      "count": 1
-    },
-    {
-      "path": "/log.html",
-      "title": "로그 목록",
       "count": 1
     },
     {
@@ -545,7 +529,7 @@
       "path": "/log_assets/markdown/003_회의실에서 목소리가 큰 사람이 가장 위험할 수 있다.html",
       "title": "/log_assets/markdown/003_회의실에서 목소리가 큰 사람이 가장 위험할 수 있다.html",
       "uniqueViews": 4,
-      "views": 17
+      "views": 16
     },
     {
       "path": "/logs/2/",
@@ -572,12 +556,6 @@
       "views": 3
     },
     {
-      "path": "/log_assets/markdown/611_당신의 서비스가 말을 한다면.html",
-      "title": "/log_assets/markdown/611_당신의 서비스가 말을 한다면.html",
-      "uniqueViews": 3,
-      "views": 10
-    },
-    {
       "path": "/log_assets/markdown/612_줄서서 먹는 가게의 사장은 뭐가 다를까.html",
       "title": "/log_assets/markdown/612_줄서서 먹는 가게의 사장은 뭐가 다를까.html",
       "uniqueViews": 3,
@@ -594,6 +572,12 @@
       "title": "자정이 가까워지도록 AI 얘기를 원 없이 나눴어요.",
       "uniqueViews": 3,
       "views": 3
+    },
+    {
+      "path": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
+      "title": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
+      "uniqueViews": 2,
+      "views": 6
     }
   ],
   "desktop_screen_resolutions": {
