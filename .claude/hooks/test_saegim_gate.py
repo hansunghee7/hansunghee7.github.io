@@ -112,5 +112,13 @@ class GateTest(unittest.TestCase):
         ev = {"tool_name": "Read", "tool_input": {"file_path": "docs/UX_GUIDE.md"}}
         self.assertEqual(self.run_gate(ev, [], project_dir=d), 0)
 
+    def test_jitu_worktree_original_passes(self):
+        ev = {"tool_name": "Read", "tool_input": {"file_path": r"C:\work\jitu-saegim-wt\docs\guides\UX_GUIDE.md"}}
+        self.assertEqual(self.run_gate(ev, []), 0)
+
+    def test_jitu_worktree_shell_passes(self):
+        ev = {"tool_name": "Bash", "tool_input": {"command": "cd /c/work/jitu-saegim-wt && grep -n '^#' docs/guides/UX_GUIDE.md"}}
+        self.assertEqual(self.run_gate(ev, []), 0)
+
 if __name__ == "__main__":
     unittest.main()

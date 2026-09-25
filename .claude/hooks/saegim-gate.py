@@ -43,6 +43,9 @@ UX_GUIDE_BLOCK_MSG = (
 # 공개 저장소 안내문(docs/UX_GUIDE.md)과 비공개 원문(simplifier-saegim/docs/guides/UX_GUIDE.md) 모두
 UX_GUIDE_PATH_RE = re.compile(r"(^|[/\\])ux_guide\.md$", re.IGNORECASE)
 UX_GUIDE_CMD_RE = re.compile(r"guides[/\\]+ux_guide\.md", re.IGNORECASE)
+# 지투는 예외: 지투 전용 워크트리 안의 원문은 통과(사장님 지시 2026-09-25, 열람 자유·수정만 텔레그램 컨펌).
+# 훅은 호출한 세션을 구분하지 못해 폴더 위치로만 판정한다(다른 세션이 이 경로로 열어도 통과된다).
+JITU_WORKTREE_RE = re.compile(r"jitu-saegim-wt(?![\w-])", re.IGNORECASE)
 
 
 def is_boss_facing(tool, tinput):
@@ -98,6 +101,9 @@ def decide(event, project_dir):
     tinput = event.get("tool_input") or {}
     if is_ux_guide_shortcut(tool, tinput):
         if os.environ.get("SAEGIM_GATE") == "off":
+            return 0, ""
+        target = tinput.get("file_path") or tinput.get("command") or ""
+        if JITU_WORKTREE_RE.search(target):
             return 0, ""
         if project_dir and os.path.exists(os.path.join(project_dir, ".claude", "uxguide-approved")):
             return 0, ""
