@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-24T22:44:16.811993+00:00",
+  "updated_at": "2026-09-25T06:09:38.116191+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 334,
-    "activeUsers": 244,
-    "newUsers": 246,
+    "sessions": 343,
+    "activeUsers": 253,
+    "newUsers": 255,
     "returningUsers": 0
   },
   "daily": [
@@ -220,9 +220,9 @@
     },
     {
       "date": "2026-09-25",
-      "sessions": 1,
-      "activeUsers": 0,
-      "newUsers": 0,
+      "sessions": 10,
+      "activeUsers": 9,
+      "newUsers": 9,
       "returningUsers": 0
     }
   ],
@@ -237,15 +237,15 @@
     }
   ],
   "landing_types": {
-    "home": 164,
+    "home": 168,
     "log_home": 7,
-    "individual_post": 137,
+    "individual_post": 145,
     "other": 32
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 242
+      "sessions": 245
     },
     {
       "source": "google",
@@ -253,7 +253,7 @@
     },
     {
       "source": "(not set)",
-      "sessions": 12
+      "sessions": 15
     },
     {
       "source": "searchadvisor.naver.com",
@@ -264,7 +264,15 @@
       "sessions": 10
     },
     {
+      "source": "(data not available)",
+      "sessions": 8
+    },
+    {
       "source": "l.facebook.com",
+      "sessions": 7
+    },
+    {
+      "source": "m.facebook.com",
       "sessions": 7
     },
     {
@@ -272,11 +280,7 @@
       "sessions": 7
     },
     {
-      "source": "(data not available)",
-      "sessions": 5
-    },
-    {
-      "source": "m.facebook.com",
+      "source": "m.search.naver.com",
       "sessions": 5
     },
     {
@@ -285,10 +289,6 @@
     },
     {
       "source": "facebook.com",
-      "sessions": 4
-    },
-    {
-      "source": "m.search.naver.com",
       "sessions": 4
     },
     {
@@ -309,7 +309,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 242
+      "sessions": 245
     },
     {
       "source": "google",
@@ -330,7 +330,19 @@
       "sessions": 10
     },
     {
+      "source": "(data not available)",
+      "medium": "(data not available)",
+      "campaign": "(cross-network)",
+      "sessions": 8
+    },
+    {
       "source": "l.facebook.com",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "sessions": 7
+    },
+    {
+      "source": "m.facebook.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 7
@@ -342,13 +354,7 @@
       "sessions": 7
     },
     {
-      "source": "(data not available)",
-      "medium": "(data not available)",
-      "campaign": "(cross-network)",
-      "sessions": 5
-    },
-    {
-      "source": "m.facebook.com",
+      "source": "m.search.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 5
@@ -361,12 +367,6 @@
     },
     {
       "source": "facebook.com",
-      "medium": "referral",
-      "campaign": "(referral)",
-      "sessions": 4
-    },
-    {
-      "source": "m.search.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 4
@@ -403,10 +403,10 @@
     "section_view_book_class": 141,
     "section_view_faq": 128,
     "faq_open": 35,
-    "read_complete": 238
+    "read_complete": 239
   },
   "contact_funnel": {
-    "contact_open": 30,
+    "contact_open": 31,
     "generate_lead": 3,
     "contact_error": 3
   },
@@ -436,12 +436,17 @@
     {
       "path": "/logs/625",
       "title": "/logs/625",
-      "sessions": 15
+      "sessions": 17
     },
     {
       "path": "/logs/620",
       "title": "/logs/620",
       "sessions": 11
+    },
+    {
+      "path": "/logs/631",
+      "title": "/logs/631",
+      "sessions": 5
     },
     {
       "path": "/logs/475",
@@ -497,11 +502,6 @@
       "path": "/logs/372",
       "title": "/logs/372",
       "sessions": 2
-    },
-    {
-      "path": "/logs/628",
-      "title": "/logs/628",
-      "sessions": 2
     }
   ],
   "top_viewed_posts": [
@@ -514,8 +514,8 @@
     {
       "path": "/logs/625/",
       "title": "주니어 PM은 왜 스스로 문제를 정의하지 못할까?",
-      "uniqueViews": 14,
-      "views": 16
+      "uniqueViews": 16,
+      "views": 18
     },
     {
       "path": "/logs/620/",
@@ -534,6 +534,12 @@
       "title": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
       "uniqueViews": 5,
       "views": 56
+    },
+    {
+      "path": "/logs/631/",
+      "title": "토큰을 아끼려다 기술이 늘었다",
+      "uniqueViews": 5,
+      "views": 5
     },
     {
       "path": "/log_assets/markdown/003_회의실에서 목소리가 큰 사람이 가장 위험할 수 있다.html",
@@ -588,27 +594,21 @@
       "title": "자정이 가까워지도록 AI 얘기를 원 없이 나눴어요.",
       "uniqueViews": 3,
       "views": 3
-    },
-    {
-      "path": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
-      "title": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
-      "uniqueViews": 2,
-      "views": 8
     }
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 240,
+    "total_desktop_sessions": 245,
     "excluded_invalid_sessions": 21,
     "by_resolution": [
       {
-        "resolution": "2560x1440",
-        "width": 2560,
-        "sessions": 44
-      },
-      {
         "resolution": "800x600",
         "width": 800,
+        "sessions": 45
+      },
+      {
+        "resolution": "2560x1440",
+        "width": 2560,
         "sessions": 44
       },
       {
@@ -619,7 +619,7 @@
       {
         "resolution": "1920x1080",
         "width": 1920,
-        "sessions": 32
+        "sessions": 34
       },
       {
         "resolution": "1536x960",
@@ -632,6 +632,11 @@
         "sessions": 6
       },
       {
+        "resolution": "1440x900",
+        "width": 1440,
+        "sessions": 5
+      },
+      {
         "resolution": "1536x864",
         "width": 1536,
         "sessions": 5
@@ -640,11 +645,6 @@
         "resolution": "3840x1080",
         "width": 3840,
         "sessions": 5
-      },
-      {
-        "resolution": "1440x900",
-        "width": 1440,
-        "sessions": 4
       },
       {
         "resolution": "1470x956",
@@ -672,6 +672,11 @@
         "sessions": 3
       },
       {
+        "resolution": "2000x2000",
+        "width": 2000,
+        "sessions": 3
+      },
+      {
         "resolution": "1024x1024",
         "width": 1024,
         "sessions": 2
@@ -694,11 +699,6 @@
       {
         "resolution": "1728x1117",
         "width": 1728,
-        "sessions": 2
-      },
-      {
-        "resolution": "2000x2000",
-        "width": 2000,
         "sessions": 2
       }
     ]
