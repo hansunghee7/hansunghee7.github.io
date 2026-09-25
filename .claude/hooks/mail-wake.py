@@ -5,8 +5,8 @@
 """
 import json, re, sys
 
-try:
-    data = json.load(sys.stdin)
+try:  # 윈도우 기본 인코딩(cp949)으로 읽으면 한글 이름이 깨진다(9/25 실측) -> 바이트를 UTF-8로 직접 푼다
+    data = json.loads(sys.stdin.buffer.read().decode("utf-8"))
 except Exception:
     sys.exit(0)
 cmd = str((data.get("tool_input") or {}).get("command", ""))
