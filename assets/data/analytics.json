@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-09-25T06:09:38.116191+00:00",
+  "updated_at": "2026-09-25T12:51:55.539989+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 343,
-    "activeUsers": 253,
+    "sessions": 345,
+    "activeUsers": 255,
     "newUsers": 255,
     "returningUsers": 0
   },
@@ -215,14 +215,14 @@
       "date": "2026-09-24",
       "sessions": 19,
       "activeUsers": 17,
-      "newUsers": 18,
-      "returningUsers": 0
+      "newUsers": 16,
+      "returningUsers": 1
     },
     {
       "date": "2026-09-25",
-      "sessions": 10,
-      "activeUsers": 9,
-      "newUsers": 9,
+      "sessions": 12,
+      "activeUsers": 11,
+      "newUsers": 11,
       "returningUsers": 0
     }
   ],
@@ -237,7 +237,7 @@
     }
   ],
   "landing_types": {
-    "home": 168,
+    "home": 164,
     "log_home": 7,
     "individual_post": 145,
     "other": 32
@@ -252,20 +252,16 @@
       "sessions": 25
     },
     {
-      "source": "(not set)",
-      "sessions": 15
+      "source": "linkedin.com",
+      "sessions": 16
     },
     {
       "source": "searchadvisor.naver.com",
       "sessions": 12
     },
     {
-      "source": "linkedin.com",
-      "sessions": 10
-    },
-    {
-      "source": "(data not available)",
-      "sessions": 8
+      "source": "(not set)",
+      "sessions": 7
     },
     {
       "source": "l.facebook.com",
@@ -282,6 +278,10 @@
     {
       "source": "m.search.naver.com",
       "sessions": 5
+    },
+    {
+      "source": "(data not available)",
+      "sessions": 4
     },
     {
       "source": "blog.naver.com",
@@ -318,22 +318,16 @@
       "sessions": 25
     },
     {
+      "source": "linkedin.com",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "sessions": 16
+    },
+    {
       "source": "searchadvisor.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 12
-    },
-    {
-      "source": "linkedin.com",
-      "medium": "referral",
-      "campaign": "(referral)",
-      "sessions": 10
-    },
-    {
-      "source": "(data not available)",
-      "medium": "(data not available)",
-      "campaign": "(cross-network)",
-      "sessions": 8
     },
     {
       "source": "l.facebook.com",
@@ -358,6 +352,12 @@
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 5
+    },
+    {
+      "source": "(data not available)",
+      "medium": "(data not available)",
+      "campaign": "(cross-network)",
+      "sessions": 4
     },
     {
       "source": "blog.naver.com",
@@ -398,7 +398,7 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 309,
+    "section_view_proven": 310,
     "section_view_voices": 229,
     "section_view_book_class": 141,
     "section_view_faq": 128,
@@ -406,7 +406,7 @@
     "read_complete": 239
   },
   "contact_funnel": {
-    "contact_open": 31,
+    "contact_open": 32,
     "generate_lead": 3,
     "contact_error": 3
   },
@@ -431,22 +431,22 @@
     {
       "path": "/logs/619",
       "title": "/logs/619",
-      "sessions": 19
+      "sessions": 20
     },
     {
       "path": "/logs/625",
       "title": "/logs/625",
-      "sessions": 17
+      "sessions": 16
     },
     {
       "path": "/logs/620",
       "title": "/logs/620",
-      "sessions": 11
+      "sessions": 12
     },
     {
       "path": "/logs/631",
       "title": "/logs/631",
-      "sessions": 5
+      "sessions": 6
     },
     {
       "path": "/logs/475",
@@ -489,11 +489,6 @@
       "sessions": 2
     },
     {
-      "path": "/logs/2",
-      "title": "/logs/2",
-      "sessions": 2
-    },
-    {
       "path": "/logs/34",
       "title": "/logs/34",
       "sessions": 2
@@ -501,6 +496,11 @@
     {
       "path": "/logs/372",
       "title": "/logs/372",
+      "sessions": 2
+    },
+    {
+      "path": "/logs/628",
+      "title": "/logs/628",
       "sessions": 2
     }
   ],
@@ -515,13 +515,19 @@
       "path": "/logs/625/",
       "title": "주니어 PM은 왜 스스로 문제를 정의하지 못할까?",
       "uniqueViews": 16,
-      "views": 18
+      "views": 17
     },
     {
       "path": "/logs/620/",
       "title": "팀이 커질수록 대표만 모르는 것",
-      "uniqueViews": 11,
-      "views": 11
+      "uniqueViews": 12,
+      "views": 12
+    },
+    {
+      "path": "/logs/631/",
+      "title": "토큰을 아끼려다 기술이 늘었다",
+      "uniqueViews": 6,
+      "views": 6
     },
     {
       "path": "/log_assets/markdown/130_왜 한국 스타트업은 미국 진출을 꿈꾸는가.html",
@@ -534,12 +540,6 @@
       "title": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
       "uniqueViews": 5,
       "views": 56
-    },
-    {
-      "path": "/logs/631/",
-      "title": "토큰을 아끼려다 기술이 늘었다",
-      "uniqueViews": 5,
-      "views": 5
     },
     {
       "path": "/log_assets/markdown/003_회의실에서 목소리가 큰 사람이 가장 위험할 수 있다.html",
