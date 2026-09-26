@@ -54,7 +54,7 @@ note = "2026-09-24 등록(지투 요청, 새김 고도화 과제0: 외부 고객
 id = "hermes:saegim-idle-check"
 kind = "hermes_cron"
 name = "saegim-idle-check"
-period_min = 360  # 09:30·15:30·21:30 KST, no-agent(scripts/ops/check_saegim_idle.py 사본). 연결한 채 5분 쉬었다 재조회
+period_min = 720  # 09:30·15:30·21:30 KST라 밤 간격이 12시간(21:30→09:30). 360이면 매일 새벽 오탐(9/26 07:38 경보). no-agent(scripts/ops/check_saegim_idle.py 사본). 연결한 채 5분 쉬었다 재조회
 note = "2026-09-25 탐 등록(백로그 41 합성 감시). 지투 점검 계정으로 list_sections → 300초 유휴 → 같은 세션 재조회. 실패 시 탐에게 우편. 등록 전 hermes cron run 성공(첫 조회 2.1초, 300초 뒤 재조회 2.1초)"
 
 [[job]]
