@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-26T20:00:48.250742+00:00",
+  "updated_at": "2026-09-26T20:45:34.634530+00:00",
   "range": "last_30_days",
   "totals": {
     "sessions": 311,
     "activeUsers": 239,
-    "newUsers": 234,
-    "returningUsers": 5
+    "newUsers": 235,
+    "returningUsers": 4
   },
   "daily": [
     {
@@ -215,8 +215,8 @@
       "date": "2026-09-26",
       "sessions": 5,
       "activeUsers": 5,
-      "newUsers": 3,
-      "returningUsers": 2
+      "newUsers": 4,
+      "returningUsers": 1
     },
     {
       "date": "2026-09-27",
@@ -233,7 +233,7 @@
     }
   ],
   "landing_types": {
-    "home": 138,
+    "home": 139,
     "log_home": 5,
     "individual_post": 146,
     "other": 27
@@ -241,7 +241,7 @@
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 216
+      "sessions": 217
     },
     {
       "source": "google",
@@ -305,7 +305,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 216
+      "sessions": 217
     },
     {
       "source": "google",
