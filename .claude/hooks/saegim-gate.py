@@ -33,6 +33,14 @@ BLOCK_MSG = (
     ".claude/saegim-outage 파일을 만들면 통과합니다(UX가이드 원문 열람은 별도로 대표 승인이 필요)."
 )
 
+DRAFT_MSG = (
+    "화면(HTML) 아티팩트는 부품별 가이드 규칙을 받은 뒤에만 발행합니다(사장님 \"넣자\" 2026-09-26). "
+    "mcp__saegim__draft_screen(doc=\"UX_GUIDE\", screen_type=\"제품 화면\" 등, parts=[이 화면의 부품 전부: 목록, 버튼, 입력칸, 메뉴, 상태 아이콘...])을 "
+    "먼저 부르고, 받은 rules대로 만든 뒤 rules의 id로 cite하세요. 조회를 한 번 했다는 것만으로는 통과하지 않습니다"
+    "(9/26 탐이 PIN 칸만 조회하고 목록·계정 줄은 짐작으로 그려 사장님이 지적). "
+    "가이드에 없는 부품은 지투에게 알리세요."
+)
+
 UX_GUIDE_BLOCK_MSG = (
     "UX가이드 원문 열람은 대표 승인이 필요합니다(사장님 지시 2026-09-24). 평소에는 새김 MCP로 보세요: "
     "mcp__saegim__lookup(doc=\"UX_GUIDE\", query=...) 또는 list_sections/get_section. "
@@ -60,6 +68,13 @@ def is_boss_facing(tool, tinput):
     return False
 
 
+def is_screen_publish(tool, tinput):
+    """화면(HTML) 아티팩트 발행: 부품별 규칙(draft_screen)까지 요구한다."""
+    if tool != "Artifact" or (tinput.get("action") or "publish") != "publish" or tinput.get("asset"):
+        return False
+    return str(tinput.get("file_path") or "").lower().endswith((".html", ".htm"))
+
+
 def is_ux_guide_shortcut(tool, tinput):
     if tool == "Read":
         path = (tinput.get("file_path") or "").replace("\\", "/")
@@ -70,8 +85,8 @@ def is_ux_guide_shortcut(tool, tinput):
 
 
 def scan(transcript_path):
-    """(조회 기록이 있는가, 가장 최근 새김 호출이 오류였는가)."""
-    seen, last_err, ids = False, False, {}
+    """(조회 기록이 있는가, 가장 최근 새김 호출이 오류였는가, 부품 목록을 넣은 draft_screen 기록이 있는가)."""
+    seen, last_err, drafted, ids = False, False, False, {}
     try:
         with open(transcript_path, encoding="utf-8") as f:
             for line in f:
@@ -89,11 +104,13 @@ def scan(transcript_path):
                         ids[b.get("id")] = b.get("name")
                         if b.get("name") in LOOKUP_TOOLS:
                             seen = True
+                        if b.get("name") == "mcp__saegim__draft_screen" and (b.get("input") or {}).get("parts"):
+                            drafted = seen = True
                     elif b.get("type") == "tool_result" and b.get("tool_use_id") in ids:
                         last_err = bool(b.get("is_error"))
     except OSError:
-        return True, False  # 기록을 못 읽으면 막지 않는다(fail-open)
-    return seen, last_err
+        return True, False, True  # 기록을 못 읽으면 막지 않는다(fail-open)
+    return seen, last_err, drafted
 
 
 def decide(event, project_dir):
@@ -116,7 +133,9 @@ def decide(event, project_dir):
         return 0, ""
     if project_dir and os.path.exists(os.path.join(project_dir, ".claude", "saegim-outage")):
         return 0, ""
-    seen, last_err = scan(event.get("transcript_path", ""))
+    seen, last_err, drafted = scan(event.get("transcript_path", ""))
+    if is_screen_publish(tool, tinput) and not (drafted or last_err):
+        return 2, DRAFT_MSG
     if seen or last_err:
         return 0, ""
     return 2, msg
