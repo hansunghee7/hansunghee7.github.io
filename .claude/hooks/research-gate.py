@@ -5,6 +5,10 @@
 예외: 프롬프트에 "[제미나이 불가: 이유]"를 적으면 통과(로그인 필요한 페이지, 파일 저장이 필요한 수집 등).
 """
 import json, re, sys
+try:
+    sys.stderr.reconfigure(encoding="utf-8")  # 윈도우 기본(cp949)로 쓰면 안내가 깨져 보임(9/26 실측)
+except Exception:
+    pass
 
 try:
     data = json.loads(sys.stdin.buffer.read().decode("utf-8"))
