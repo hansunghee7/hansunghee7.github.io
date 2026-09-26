@@ -22,6 +22,9 @@ def test_mailbox_to_note_untouched():
     cmd = 'python mailbox/mailbox.py send 노트 "제목" --from 지투 --body "사장님 결정"'
     assert run({"tool_name": "Bash", "tool_input": {"command": cmd}}) == 0
 
+def test_work_message_passes():
+    assert run({"tool_name": "SendMessage", "tool_input": {"to": "탐", "message": "[지투→탐] 노트 작업 순서를 같이 결정하고 싶습니다. 소셜 로그인과 공통 메뉴 중 무엇이 먼저 필요한지 요청드립니다"}}) == 0
+
 if __name__ == "__main__":
     for n, f in list(globals().items()):
         if n.startswith("test_"): f(); print("ok", n)
