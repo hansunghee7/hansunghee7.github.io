@@ -40,6 +40,16 @@ fi
 # 세션 의식은 스킬로 옮겨졌다(2026-09-20 구조 최적화). 스킬을 안 열고 진행하는 것을 막기 위해 매 세션 시작에 한 줄 상기시킨다.
 echo "📌 세션 의식: 첫 메시지가 '하이~'면 .claude/skills/session-start, '바이~'면 session-end 스킬을 먼저 연다. 인수인계 블록은 요약하지 말고 원문 그대로 출력한다."
 
+# 2026-09-27: 안전 분류기가 세션 후반부 Bash를 막아 정상 인수인계 커밋 없이 세션이
+# 끊기는 사고가 두 번 겹쳤다(탐, 텔레그램 토큰 반복 노출 추정). 다음 세션이 "인수인계가
+# 없다"며 진행상황.md 전체·아카이브를 뒤지는 것을 막기 위해, 최근 커밋 목록을 여기서
+# 미리 계산해 보여준다. 페르소나 이름으로 바로 골라 `git show <해시> -- docs/진행상황.md`만
+# 보면 되고, 파일 전체를 읽거나 grep으로 찾을 필요가 없다.
+if git rev-parse --verify HEAD >/dev/null 2>&1 && [ -f docs/진행상황.md ]; then
+  echo "🕘 최근 진행상황.md 커밋(최신 8개) — 자기 페르소나 줄만 골라 'git show <해시> -- docs/진행상황.md'로 본다:"
+  git log --format='   %h  %ad  %s' --date=format:'%m-%d %H:%M' -8 -- docs/진행상황.md 2>/dev/null
+fi
+
 # 감시가 찾은 문제(꺼진 서비스, 실패한 주기 작업)를 세션 시작 때 보여 준다. 상태 파일이 없으면 조용히 통과.
 if command -v python3 >/dev/null 2>&1; then PY=python3; elif command -v python >/dev/null 2>&1; then PY=python; else PY=""; fi
 [ -n "$PY" ] && "$PY" "$(dirname "${BASH_SOURCE[0]}")/ops-status.py" 2>/dev/null
