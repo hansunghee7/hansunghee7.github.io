@@ -38,8 +38,21 @@ class GateTest(unittest.TestCase):
     def test_artifact_publish_without_lookup_is_blocked(self):
         self.assertEqual(self.run_gate(ART, []), 2)
 
-    def test_artifact_publish_after_lookup_passes(self):
-        self.assertEqual(self.run_gate(ART, [use("mcp__saegim__lookup", "t1"), result("t1")]), 0)
+    def test_html_publish_after_lookup_only_is_blocked(self):
+        # 9/26: 조회 한 번은 통과권이 아니다. 화면(HTML)은 부품별 규칙(draft_screen parts)까지
+        self.assertEqual(self.run_gate(ART, [use("mcp__saegim__lookup", "t1"), result("t1")]), 2)
+
+    def test_html_publish_after_draft_screen_with_parts_passes(self):
+        d = {"message": {"role": "assistant", "content": [{"type": "tool_use", "id": "d1", "name": "mcp__saegim__draft_screen", "input": {"doc": "UX_GUIDE", "parts": ["목록", "버튼"]}}]}}
+        self.assertEqual(self.run_gate(ART, [d, result("d1")]), 0)
+
+    def test_html_publish_after_draft_screen_without_parts_is_blocked(self):
+        d = {"message": {"role": "assistant", "content": [{"type": "tool_use", "id": "d1", "name": "mcp__saegim__draft_screen", "input": {"doc": "UX_GUIDE"}}]}}
+        self.assertEqual(self.run_gate(ART, [d, result("d1")]), 2)
+
+    def test_markdown_publish_after_lookup_passes(self):
+        md = {"tool_name": "Artifact", "tool_input": {"action": "publish", "file_path": "a.md"}}
+        self.assertEqual(self.run_gate(md, [use("mcp__saegim__lookup", "t1"), result("t1")]), 0)
 
     def test_mail_to_boss_is_blocked_without_lookup(self):
         ev = {"tool_name": "Bash", "tool_input": {"command": "python mailbox/mailbox.py send 사장님 \"제목\" --from 탐 --ask x"}}
