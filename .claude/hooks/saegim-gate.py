@@ -19,6 +19,11 @@ UX가이드 원문 읽기(2026-09-24 사장님 지시 "UX가이드 열람은 대
 입력: stdin JSON(tool_name, tool_input, transcript_path). 막을 때 exit 2 + stderr(Claude가 읽고 조회 후 다시 시도).
 """
 import json
+import sys
+try:
+    sys.stderr.reconfigure(encoding="utf-8")  # 윈도우 기본(cp949)로 쓰면 안내가 깨져 보임(9/26 실측)
+except Exception:
+    pass
 import os
 import re
 import sys
