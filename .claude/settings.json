@@ -41,7 +41,7 @@
         ]
       },
       {
-        "matcher": "Agent",
+        "matcher": "Agent|Bash|PowerShell",
         "hooks": [
           {
             "type": "command",
