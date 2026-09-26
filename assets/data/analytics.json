@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-25T22:49:58.882911+00:00",
+  "updated_at": "2026-09-26T06:09:44.214825+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 334,
-    "activeUsers": 251,
-    "newUsers": 249,
-    "returningUsers": 2
+    "sessions": 336,
+    "activeUsers": 253,
+    "newUsers": 250,
+    "returningUsers": 3
   },
   "daily": [
     {
@@ -217,6 +217,13 @@
       "activeUsers": 12,
       "newUsers": 12,
       "returningUsers": 0
+    },
+    {
+      "date": "2026-09-26",
+      "sessions": 2,
+      "activeUsers": 2,
+      "newUsers": 1,
+      "returningUsers": 1
     }
   ],
   "daily_leads": [
@@ -226,9 +233,9 @@
     }
   ],
   "landing_types": {
-    "home": 154,
+    "home": 155,
     "log_home": 6,
-    "individual_post": 145,
+    "individual_post": 146,
     "other": 32
   },
   "top_sources": [
@@ -250,7 +257,7 @@
     },
     {
       "source": "(not set)",
-      "sessions": 7
+      "sessions": 8
     },
     {
       "source": "l.facebook.com",
@@ -265,12 +272,12 @@
       "sessions": 7
     },
     {
-      "source": "m.search.naver.com",
+      "source": "(data not available)",
       "sessions": 5
     },
     {
-      "source": "(data not available)",
-      "sessions": 4
+      "source": "m.search.naver.com",
+      "sessions": 5
     },
     {
       "source": "blog.naver.com",
@@ -337,16 +344,16 @@
       "sessions": 7
     },
     {
+      "source": "(data not available)",
+      "medium": "(data not available)",
+      "campaign": "(cross-network)",
+      "sessions": 5
+    },
+    {
       "source": "m.search.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 5
-    },
-    {
-      "source": "(data not available)",
-      "medium": "(data not available)",
-      "campaign": "(cross-network)",
-      "sessions": 4
     },
     {
       "source": "blog.naver.com",
@@ -392,7 +399,7 @@
     "section_view_book_class": 120,
     "section_view_faq": 108,
     "faq_open": 33,
-    "read_complete": 227
+    "read_complete": 228
   },
   "contact_funnel": {
     "contact_open": 21,
@@ -420,7 +427,7 @@
     {
       "path": "/logs/625",
       "title": "/logs/625",
-      "sessions": 16
+      "sessions": 17
     },
     {
       "path": "/logs/620",
@@ -490,16 +497,16 @@
   ],
   "top_viewed_posts": [
     {
+      "path": "/logs/625/",
+      "title": "주니어 PM은 왜 스스로 문제를 정의하지 못할까?",
+      "uniqueViews": 17,
+      "views": 18
+    },
+    {
       "path": "/logs/619/",
       "title": "AI가 우선순위까지 대신 정해줄 수 있을까",
       "uniqueViews": 16,
       "views": 71
-    },
-    {
-      "path": "/logs/625/",
-      "title": "주니어 PM은 왜 스스로 문제를 정의하지 못할까?",
-      "uniqueViews": 16,
-      "views": 17
     },
     {
       "path": "/logs/620/",
@@ -510,7 +517,7 @@
     {
       "path": "/logs/631/",
       "title": "토큰을 아끼려다 기술이 늘었다",
-      "uniqueViews": 7,
+      "uniqueViews": 8,
       "views": 7
     },
     {
@@ -582,7 +589,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 245,
+    "total_desktop_sessions": 246,
     "excluded_invalid_sessions": 21,
     "by_resolution": [
       {
@@ -603,7 +610,7 @@
       {
         "resolution": "1920x1080",
         "width": 1920,
-        "sessions": 34
+        "sessions": 35
       },
       {
         "resolution": "1536x960",
