@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-26T06:09:44.214825+00:00",
+  "updated_at": "2026-09-26T12:19:34.542261+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 336,
-    "activeUsers": 253,
-    "newUsers": 250,
+    "sessions": 337,
+    "activeUsers": 254,
+    "newUsers": 251,
     "returningUsers": 3
   },
   "daily": [
@@ -220,9 +220,9 @@
     },
     {
       "date": "2026-09-26",
-      "sessions": 2,
-      "activeUsers": 2,
-      "newUsers": 1,
+      "sessions": 3,
+      "activeUsers": 3,
+      "newUsers": 2,
       "returningUsers": 1
     }
   ],
@@ -235,7 +235,7 @@
   "landing_types": {
     "home": 155,
     "log_home": 6,
-    "individual_post": 146,
+    "individual_post": 147,
     "other": 32
   },
   "top_sources": [
@@ -273,7 +273,7 @@
     },
     {
       "source": "(data not available)",
-      "sessions": 5
+      "sessions": 6
     },
     {
       "source": "m.search.naver.com",
@@ -347,7 +347,7 @@
       "source": "(data not available)",
       "medium": "(data not available)",
       "campaign": "(cross-network)",
-      "sessions": 5
+      "sessions": 6
     },
     {
       "source": "m.search.naver.com",
@@ -427,7 +427,7 @@
     {
       "path": "/logs/625",
       "title": "/logs/625",
-      "sessions": 17
+      "sessions": 18
     },
     {
       "path": "/logs/620",
@@ -499,8 +499,8 @@
     {
       "path": "/logs/625/",
       "title": "주니어 PM은 왜 스스로 문제를 정의하지 못할까?",
-      "uniqueViews": 17,
-      "views": 18
+      "uniqueViews": 18,
+      "views": 19
     },
     {
       "path": "/logs/619/",
