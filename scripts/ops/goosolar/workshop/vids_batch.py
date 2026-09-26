@@ -42,7 +42,8 @@ def one_scene(pg, s, out, timeout):
     pg.get_by_role("button", name="AI 동영상 만들기", exact=False).first.click()
     box = pg.get_by_role("textbox", name="동영상을 설명하세요", exact=False)
     box.wait_for(timeout=30000)
-    setting = pg.get_by_role("button", name="Omni", exact=False).first.inner_text()
+    _sb = pg.get_by_role("button", name="Omni", exact=False).first
+    setting = _sb.inner_text() + " " + (_sb.get_attribute("aria-label") or "")  # 9/26 핏: 비율이 아이콘으로 바뀌어 글자엔 세로가 없고 숨은 이름엔 있음
     if "세로" not in setting:
         return {"status": "STOP", "why": f"setting not portrait: {setting}"}
     box.click(); pg.keyboard.insert_text(s["prompt"].strip()); pg.wait_for_timeout(700)
