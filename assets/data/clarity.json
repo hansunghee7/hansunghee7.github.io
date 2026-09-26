@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-26T20:45:26.745082+00:00",
+  "updated_at": "2026-09-26T23:05:44.676611+00:00",
   "note": "history는 매일 지난 24시간 집계를 누적한 것. latest_*는 최근 3일 창.",
   "history": [
     {
@@ -5524,7 +5524,7 @@
       {
         "totalSessionCount": 0,
         "totalBotSessionCount": 0,
-        "distinctUserCount": 3,
+        "distinctUserCount": 2,
         "pagesPerSessionPercentage": 1,
         "Url": null
       },
@@ -5634,18 +5634,18 @@
         "Url": "https://simplifier.co.kr/logs/620/?fbclid=IwZXh0bgNhZW0CMTEAcGRvZgVmZGlkFlDx674iKvHsU46KnhNfFJgWW69EIr9zcnRjBmFwcF9pZAo2NjI4NTY4Mzc5AAEeMGGkTHXF1YilA-z6uERIgdzt5cYFA1pnXvL-3XSn77FuJ8OZs5yo4U5wWMo_aem_hfn5blj43O6u26WpZBOcJA"
       },
       {
-        "totalSessionCount": 1,
-        "totalBotSessionCount": 0,
-        "distinctUserCount": 1,
-        "pagesPerSessionPercentage": 1,
-        "Url": "https://simplifier.co.kr/logs/383/"
-      },
-      {
         "totalSessionCount": 0,
         "totalBotSessionCount": 1,
         "distinctUserCount": 1,
         "pagesPerSessionPercentage": 1,
         "Url": "https://simplifier.co.kr/logs/135/"
+      },
+      {
+        "totalSessionCount": 1,
+        "totalBotSessionCount": 0,
+        "distinctUserCount": 1,
+        "pagesPerSessionPercentage": 1,
+        "Url": "https://simplifier.co.kr/logs/383/"
       },
       {
         "totalSessionCount": 0,
@@ -6158,8 +6158,8 @@
       {
         "totalSessionCount": 11,
         "totalBotSessionCount": 2,
-        "distinctUserCount": 15,
-        "pagesPerSessionPercentage": 1.125,
+        "distinctUserCount": 14,
+        "pagesPerSessionPercentage": 1.1333333333333333,
         "Source": ""
       },
       {
