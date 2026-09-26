@@ -50,6 +50,15 @@ class GateTest(unittest.TestCase):
         d = {"message": {"role": "assistant", "content": [{"type": "tool_use", "id": "d1", "name": "mcp__saegim__draft_screen", "input": {"doc": "UX_GUIDE"}}]}}
         self.assertEqual(self.run_gate(ART, [d, result("d1")]), 2)
 
+    def test_carvit_named_tools_count(self):
+        # 9/26 서버 이름 Carvit 변경: 새 이름·커넥터식 이름도 같은 도구로 인정
+        self.assertEqual(self.run_gate({"tool_name": "Artifact", "tool_input": {"action": "publish", "file_path": "a.md"}}, [use("mcp__carvit__lookup", "t1"), result("t1")]), 0)
+        d = {"message": {"role": "assistant", "content": [{"type": "tool_use", "id": "d1", "name": "mcp__claude_ai_Carvit__draft_screen", "input": {"doc": "UX_GUIDE", "parts": ["목록"]}}]}}
+        self.assertEqual(self.run_gate(ART, [d, result("d1")]), 0)
+
+    def test_unrelated_mcp_tool_does_not_count(self):
+        self.assertEqual(self.run_gate({"tool_name": "Artifact", "tool_input": {"action": "publish", "file_path": "a.md"}}, [use("mcp__other__lookup", "t1"), result("t1")]), 2)
+
     def test_markdown_publish_after_lookup_passes(self):
         md = {"tool_name": "Artifact", "tool_input": {"action": "publish", "file_path": "a.md"}}
         self.assertEqual(self.run_gate(md, [use("mcp__saegim__lookup", "t1"), result("t1")]), 0)

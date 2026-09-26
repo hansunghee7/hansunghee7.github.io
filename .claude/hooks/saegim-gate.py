@@ -23,19 +23,28 @@ import os
 import re
 import sys
 
-LOOKUP_TOOLS = ("mcp__saegim__lookup", "mcp__saegim__get_section", "mcp__saegim__list_sections")
+LOOKUP_TOOLS = ("lookup", "get_section", "list_sections")
+# 서버 이름이 새김(saegim)에서 Carvit으로 바뀐다(사장님 9/26). 연결 이름이 어느 쪽이든(예: mcp__saegim__lookup, mcp__carvit__lookup,
+# claude.ai 커넥터식 mcp__claude_ai_Carvit__lookup) 같은 도구로 본다.
+GUIDE_TOOL_RE = re.compile(r"^mcp__[A-Za-z0-9_]*?(?:saegim|carvit)[A-Za-z0-9_]*?__([A-Za-z_]+)$", re.IGNORECASE)
+
+
+def guide_tool(name):
+    """새김/Carvit MCP 도구면 짧은 이름(lookup 등), 아니면 None."""
+    m = GUIDE_TOOL_RE.match(str(name or ""))
+    return m.group(1).lower() if m else None
 BOSS_MAIL = re.compile(r"mailbox\.py\s+send\s+사장님")
 
 BLOCK_MSG = (
     "사장님께 드리는 보고·아티팩트·알림은 새김 조회가 먼저입니다(사장님 지시 2026-09-20). "
-    "mcp__saegim__lookup(doc=\"UX_GUIDE\", query=...)을 먼저 호출해 해당 절을 확인한 뒤 다시 시도하세요. "
+    "새김/Carvit MCP의 lookup(doc=\"UX_GUIDE\", query=...)을 먼저 호출해 해당 절을 확인한 뒤 다시 시도하세요. "
     "반영했으면 cite도 남깁니다. 새김이 끊겨 있으면 접속 불가를 사장님께 밝힌 뒤 "
     ".claude/saegim-outage 파일을 만들면 통과합니다(UX가이드 원문 열람은 별도로 대표 승인이 필요)."
 )
 
 DRAFT_MSG = (
     "화면(HTML) 아티팩트는 부품별 가이드 규칙을 받은 뒤에만 발행합니다(사장님 \"넣자\" 2026-09-26). "
-    "mcp__saegim__draft_screen(doc=\"UX_GUIDE\", screen_type=\"제품 화면\" 등, parts=[이 화면의 부품 전부: 목록, 버튼, 입력칸, 메뉴, 상태 아이콘...])을 "
+    "새김/Carvit MCP의 draft_screen(doc=\"UX_GUIDE\", screen_type=\"제품 화면\" 등, parts=[이 화면의 부품 전부: 목록, 버튼, 입력칸, 메뉴, 상태 아이콘...])을 "
     "먼저 부르고, 받은 rules대로 만든 뒤 rules의 id로 cite하세요. 조회를 한 번 했다는 것만으로는 통과하지 않습니다"
     "(9/26 탐이 PIN 칸만 조회하고 목록·계정 줄은 짐작으로 그려 사장님이 지적). "
     "가이드에 없는 부품은 지투에게 알리세요."
@@ -43,7 +52,7 @@ DRAFT_MSG = (
 
 UX_GUIDE_BLOCK_MSG = (
     "UX가이드 원문 열람은 대표 승인이 필요합니다(사장님 지시 2026-09-24). 평소에는 새김 MCP로 보세요: "
-    "mcp__saegim__lookup(doc=\"UX_GUIDE\", query=...) 또는 list_sections/get_section. "
+    "새김/Carvit MCP의 lookup(doc=\"UX_GUIDE\", query=...) 또는 list_sections/get_section. "
     "원문이 꼭 필요하면 사장님께 이유를 말씀드리고 채팅으로 승인을 받은 뒤 세션이 직접 .claude/uxguide-approved 파일을 만들고(사장님께 파일 생성을 요청하지 말 것), "
     "다 읽으면 지우세요(새김 장애 표시 .claude/saegim-outage로는 통과되지 않습니다)."
 )
@@ -91,7 +100,8 @@ def scan(transcript_path):
         with open(transcript_path, encoding="utf-8") as f:
             for line in f:
                 # 결과 줄에는 도구 이름이 없으므로 tool_result 줄도 읽는다
-                if "mcp__saegim__" not in line and "tool_result" not in line:
+                low = line.lower()
+                if "saegim" not in low and "carvit" not in low and "tool_result" not in line:
                     continue
                 try:
                     msg = (json.loads(line).get("message") or {}).get("content")
@@ -100,11 +110,12 @@ def scan(transcript_path):
                 if not isinstance(msg, list):
                     continue
                 for b in msg:
-                    if b.get("type") == "tool_use" and str(b.get("name", "")).startswith("mcp__saegim__"):
-                        ids[b.get("id")] = b.get("name")
-                        if b.get("name") in LOOKUP_TOOLS:
+                    short = guide_tool(b.get("name")) if b.get("type") == "tool_use" else None
+                    if short:
+                        ids[b.get("id")] = short
+                        if short in LOOKUP_TOOLS:
                             seen = True
-                        if b.get("name") == "mcp__saegim__draft_screen" and (b.get("input") or {}).get("parts"):
+                        if short == "draft_screen" and (b.get("input") or {}).get("parts"):
                             drafted = seen = True
                     elif b.get("type") == "tool_result" and b.get("tool_use_id") in ids:
                         last_err = bool(b.get("is_error"))
