@@ -24,7 +24,8 @@ if "[제미나이 불가:" in prompt:
 research = re.search(r"리서치|벤치마킹|웹\s*조사|자료\s*수집|출처|research|benchmark", prompt, re.I)
 if kind == "collector" or (kind in ("general-purpose", "claude") and research):
     sys.stderr.write(
-        "[리서치 관문] 웹 리서치는 클로드 서브에이전트가 아니라 구글 검색 연동 제미나이 API로 돌립니다(사장님 규칙 9/24, 관문 9/26). "
+        "[리서치 관문] 웹 리서치는 클로드 서브에이전트가 아니라 구글 검색 연동 제미나이로 돌립니다(사장님 규칙 9/24, 관문 9/26). "
+        "도구: python C:/work/hansunghee7.github.io/scripts/ops/vertex_research.py \"질문1\" \"질문2\" (Vertex AI, 무료 체험 크레딧, 검색 연동 9/26 실측 200). "
         "여러 질문은 병렬 호출로 한 번에. 제미나이로 안 되는 이유가 있으면 프롬프트에 \"[제미나이 불가: 이유]\"를 적고 다시 부르세요.")
     sys.exit(2)
 sys.exit(0)
