@@ -68,6 +68,12 @@ jobs:
         if: github.event_name == 'pull_request'
         run: python3 scripts/check_claude_md_size.py
 
+      # 2026-09-27 도입(사장님 지시): 탐_업무대장.md·클라우드탐_업무대장.md가
+      # 공유하는 N번호가 문서 규칙만으로는 반복해서 충돌했다(N50, N54).
+      - name: 업무대장 N번호 중복 검사
+        if: github.event_name == 'pull_request'
+        run: python3 scripts/check_n_collisions.py
+
       - name: Set up Ruby (GitHub Pages와 동일한 gem 구성)
         uses: ruby/setup-ruby@v1
         with:
