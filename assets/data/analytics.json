@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-27T06:36:01.414421+00:00",
+  "updated_at": "2026-09-27T13:12:13.615017+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 315,
-    "activeUsers": 244,
+    "sessions": 316,
+    "activeUsers": 245,
     "newUsers": 241,
-    "returningUsers": 3
+    "returningUsers": 4
   },
   "daily": [
     {
@@ -220,10 +220,10 @@
     },
     {
       "date": "2026-09-27",
-      "sessions": 3,
-      "activeUsers": 3,
+      "sessions": 4,
+      "activeUsers": 4,
       "newUsers": 3,
-      "returningUsers": 0
+      "returningUsers": 1
     }
   ],
   "daily_leads": [
@@ -233,7 +233,7 @@
     }
   ],
   "landing_types": {
-    "home": 131,
+    "home": 132,
     "log_home": 5,
     "individual_post": 152,
     "other": 27
@@ -272,12 +272,12 @@
       "sessions": 6
     },
     {
-      "source": "m.search.naver.com",
+      "source": "(not set)",
       "sessions": 5
     },
     {
-      "source": "(not set)",
-      "sessions": 4
+      "source": "m.search.naver.com",
+      "sessions": 5
     },
     {
       "source": "blog.naver.com",
@@ -396,10 +396,10 @@
   "engagement_events": {
     "section_view_proven": 116,
     "section_view_voices": 89,
-    "section_view_book_class": 61,
+    "section_view_book_class": 62,
     "section_view_faq": 57,
     "faq_open": 21,
-    "read_complete": 152
+    "read_complete": 153
   },
   "contact_funnel": {
     "contact_open": 18,
@@ -499,7 +499,7 @@
     {
       "path": "/logs/625/",
       "title": "주니어 PM은 왜 스스로 문제를 정의하지 못할까?",
-      "uniqueViews": 23,
+      "uniqueViews": 24,
       "views": 24
     },
     {
@@ -589,7 +589,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 248,
+    "total_desktop_sessions": 249,
     "excluded_invalid_sessions": 21,
     "by_resolution": [
       {
@@ -600,7 +600,7 @@
       {
         "resolution": "2560x1440",
         "width": 2560,
-        "sessions": 44
+        "sessions": 45
       },
       {
         "resolution": "1600x1600",
