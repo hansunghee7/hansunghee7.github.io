@@ -1,18 +1,18 @@
 {
-  "updated_at": "2026-09-27T15:12:52.535696+00:00",
+  "updated_at": "2026-09-27T20:45:32.097450+00:00",
   "site_url": "https://simplifier.co.kr/",
   "data_delay_note": "서치콘솔 데이터는 약 2일 지연 -- end_date는 이틀 전",
   "totals_28d": {
     "clicks": 22,
-    "impressions": 1263,
-    "ctr": 0.0174,
-    "position": 8.4
+    "impressions": 1291,
+    "ctr": 0.017,
+    "position": 8.5
   },
   "totals_90d": {
     "clicks": 25,
-    "impressions": 1320,
-    "ctr": 0.0189,
-    "position": 8.4
+    "impressions": 1348,
+    "ctr": 0.0185,
+    "position": 8.6
   },
   "daily_90d": [
     {
@@ -231,13 +231,20 @@
       "impressions": 22,
       "ctr": 0,
       "position": 8.0
+    },
+    {
+      "date": "2026-09-25",
+      "clicks": 0,
+      "impressions": 28,
+      "ctr": 0,
+      "position": 17.1
     }
   ],
   "top_queries_90d": [
     {
       "query": "pl pm 차이",
       "clicks": 0,
-      "impressions": 48,
+      "impressions": 51,
       "ctr": 0,
       "position": 6.3
     },
@@ -265,9 +272,9 @@
     {
       "query": "심플리파이어",
       "clicks": 5,
-      "impressions": 33,
-      "ctr": 0.1515,
-      "position": 5.3
+      "impressions": 35,
+      "ctr": 0.1429,
+      "position": 5.5
     },
     {
       "query": "simplifier",
@@ -296,13 +303,6 @@
       "impressions": 10,
       "ctr": 0,
       "position": 21.2
-    },
-    {
-      "query": "고객 확보",
-      "clicks": 0,
-      "impressions": 10,
-      "ctr": 0,
-      "position": 5.2
     },
     {
       "query": "yc 뜻",
@@ -583,15 +583,22 @@
       "impressions": 1,
       "ctr": 0,
       "position": 8
+    },
+    {
+      "query": "각 포터",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 86
     }
   ],
   "top_pages_90d": [
     {
       "page": "https://simplifier.co.kr/",
       "clicks": 11,
-      "impressions": 103,
-      "ctr": 0.1068,
-      "position": 3.9
+      "impressions": 105,
+      "ctr": 0.1048,
+      "position": 4.0
     },
     {
       "page": "https://simplifier.co.kr/log_assets/markdown/185_%EC%82%AC%EA%B3%A0%EC%9D%98%20%EC%A7%80%EB%8F%84%EB%A5%BC%20%EA%B7%B8%EB%A6%AC%EB%8A%94%20%EB%B2%95%20%27%EB%A1%9C%EC%A7%81%20%ED%8A%B8%EB%A6%AC%27.html",
@@ -617,9 +624,9 @@
     {
       "page": "https://simplifier.co.kr/log_assets/markdown/135_%EC%A0%9C%ED%92%88%EC%9D%98%20%EC%83%9D%EB%AA%85%EC%84%A0%2C%20Retention%20Curve.html",
       "clicks": 1,
-      "impressions": 30,
-      "ctr": 0.0333,
-      "position": 6.4
+      "impressions": 34,
+      "ctr": 0.0294,
+      "position": 6.9
     },
     {
       "page": "https://simplifier.co.kr/log_assets/markdown/605_%ED%82%A4%EC%9B%8C%EB%93%9C%EB%A1%9C%20%EC%95%8C%EC%95%84%EB%B3%B4%EB%8A%94%20%EC%84%9C%EB%B9%84%EC%8A%A4%EA%B8%B0%ED%9A%8D%EC%9E%90%2C%20PM%2C%20PO%EC%9D%98%20%EC%B0%A8%EC%9D%B4.html",
@@ -678,18 +685,18 @@
       "position": 14.8
     },
     {
+      "page": "https://simplifier.co.kr/log_assets/markdown/049_%EA%B0%9C%EA%B5%AC%EB%A6%AC%EA%B0%80%20%EC%9A%B0%EB%AC%BC%20%EB%B0%96%EC%9D%84%20%EB%82%98%EC%98%AC%20%EB%95%8C.html",
+      "clicks": 0,
+      "impressions": 10,
+      "ctr": 0,
+      "position": 8.1
+    },
+    {
       "page": "https://simplifier.co.kr/log/%ED%86%A0%ED%81%AC%EC%84%B8%EC%85%98.html",
       "clicks": 0,
       "impressions": 9,
       "ctr": 0,
       "position": 14.8
-    },
-    {
-      "page": "https://simplifier.co.kr/log_assets/markdown/049_%EA%B0%9C%EA%B5%AC%EB%A6%AC%EA%B0%80%20%EC%9A%B0%EB%AC%BC%20%EB%B0%96%EC%9D%84%20%EB%82%98%EC%98%AC%20%EB%95%8C.html",
-      "clicks": 0,
-      "impressions": 9,
-      "ctr": 0,
-      "position": 7.9
     },
     {
       "page": "https://simplifier.co.kr/log/Be-the-PO.html",
@@ -801,15 +808,15 @@
     {
       "device": "DESKTOP",
       "clicks": 22,
-      "impressions": 934,
-      "ctr": 0.0236,
-      "position": 7.8
+      "impressions": 951,
+      "ctr": 0.0231,
+      "position": 8.0
     },
     {
       "device": "MOBILE",
       "clicks": 2,
-      "impressions": 371,
-      "ctr": 0.0054,
+      "impressions": 382,
+      "ctr": 0.0052,
       "position": 10.0
     },
     {
@@ -824,9 +831,9 @@
     {
       "country": "kor",
       "clicks": 25,
-      "impressions": 1174,
-      "ctr": 0.0213,
-      "position": 8.4
+      "impressions": 1202,
+      "ctr": 0.0208,
+      "position": 8.6
     },
     {
       "country": "can",
