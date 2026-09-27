@@ -159,7 +159,7 @@ CLAUDE.md는 **상한 250줄**(CI가 초과 PR을 막음), **목표 200줄 이�
 
 ## 여러 기기·세션이 같이 작업할 때 <!-- id: 77f6 -->
 
-세션을 시작하면 가장 먼저 `git fetch origin --prune`으로 원격을 확인하고, 로컬이 `origin/main`보다 뒤처졌으면 먼저 따라잡는다. `git fetch origin <A> <B>`처럼 브랜치를 나열하지 않는다(하나라도 원격에 없으면 fetch 전체가 조용히 실패한다).
+세션을 시작하면 가장 먼저 `git fetch origin --prune`으로 원격을 확인하고, 로컬이 `origin/main`보다 뒤처졌으면 먼저 따라잡는다. `git fetch origin <A> <B>`처럼 브랜치를 나열하지 않는다(하나라도 원격에 없으면 fetch 전체가 조용히 실패한다). **공용 메인 폴더(`C:\work\hansunghee7.github.io`, `.git`이 디렉터리)는 항상 main 고정이다** — 작업 브랜치는 `git worktree add`로 만든 전용 워크트리에서만 쓴다. 두 규칙 모두 `session-start.sh`(자동 전환·fast-forward)와 `main-checkout-gate.py`(다른 브랜치 체크아웃 차단)가 관문으로 강제한다(2026-09-27, 지투 브랜치 방치로 세션이 132커밋 뒤처진 채 진행상황.md를 읽은 사고 재발방지, CLAUDE#4e7b).
 
 ### 커밋 교통정리: 세션은 main에 직접 push하지 않는다 <!-- id: d1f1 -->
 
