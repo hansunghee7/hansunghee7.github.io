@@ -1993,7 +1993,7 @@
         "rating": 10.0
       },
       "aladin": {
-        "sales_point": 305,
+        "sales_point": 310,
         "reviews": 9,
         "rating": 9.6,
         "design_rank": null,
@@ -2010,5 +2010,5 @@
       }
     }
   ],
-  "updated_at": "2026-09-27T20:06:21.511303+00:00"
+  "updated_at": "2026-09-27T22:56:47.840525+00:00"
 }
