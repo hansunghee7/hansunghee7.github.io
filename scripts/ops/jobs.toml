@@ -77,6 +77,13 @@ name = "daily_briefing"
 period_min = 1440
 
 [[job]]
+id = "hermes:communication_watcher"
+kind = "hermes_cron"
+name = "communication_watcher.py"
+period_min = 5
+note = "2026-09-27 탐 등록(N45 파일럿). 안티그래비티(비티)와의 파일 채널 새김Pass/ag-test/COMMUNICATION.md 최상단 메시지가 바뀌고 발신자가 비티면 텔레그램으로 알림(no-agent, AI 호출 없음, 비용 0). 등록 전 `hermes cron run`으로 실행 증거 확인(job 9cae058583f1, succeeded, 텔레그램 도착 스크린샷으로 확인)"
+
+[[job]]
 id = "hermes:stagnation"
 kind = "hermes_cron"
 name = "prompt: Stagnation detector"
