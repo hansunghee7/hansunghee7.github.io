@@ -99,6 +99,21 @@ if git rev-parse --verify HEAD >/dev/null 2>&1 && [ -f docs/진행상황.md ]; t
   git log --format='   %h  %ad  %s' --date=format:'%m-%d %H:%M' -8 -- docs/진행상황.md 2>/dev/null
 fi
 
+# 2026-09-27 사고 재발방지: 일부 페르소나(예: 핏)는 역할노트에 "인수인계 정본은
+# 진행상황.md가 아니라 다른 저장소"라는 예외가 적혀 있는데, 위 커밋-찾기 절차를
+# 기계적으로 따르다 이 예외를 놓쳐 옛 블록을 최신으로 잘못 보고한 사고가 있었다.
+# 문서에만 있는 예외는 세션마다 놓칠 수 있으므로, 훅이 매번 직접 확인해 보여준다.
+if [ -d docs ]; then
+  override_files=$(grep -l "정본은.*진행상황\.md가 아니라" docs/역할노트-*.md 2>/dev/null)
+  if [ -n "$override_files" ]; then
+    echo "⚠️ 인수인계 정본 위치 예외 — 자기 역할노트가 아래에 있으면 진행상황.md 커밋 대신 거기서 최신 블록을 읽는다:"
+    while IFS= read -r f; do
+      [ -z "$f" ] && continue
+      echo "   $(basename "$f"): $(grep -m1 "정본은.*진행상황\.md가 아니라" "$f" | sed 's/^> //')"
+    done <<< "$override_files"
+  fi
+fi
+
 # 감시가 찾은 문제(꺼진 서비스, 실패한 주기 작업)를 세션 시작 때 보여 준다. 상태 파일이 없으면 조용히 통과.
 if command -v python3 >/dev/null 2>&1; then PY=python3; elif command -v python >/dev/null 2>&1; then PY=python; else PY=""; fi
 [ -n "$PY" ] && "$PY" "$(dirname "${BASH_SOURCE[0]}")/ops-status.py" 2>/dev/null
