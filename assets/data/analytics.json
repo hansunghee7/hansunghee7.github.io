@@ -1,20 +1,13 @@
 {
-  "updated_at": "2026-09-27T13:12:13.615017+00:00",
+  "updated_at": "2026-09-27T20:00:43.387329+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 316,
-    "activeUsers": 245,
-    "newUsers": 241,
-    "returningUsers": 4
+    "sessions": 290,
+    "activeUsers": 240,
+    "newUsers": 237,
+    "returningUsers": 3
   },
   "daily": [
-    {
-      "date": "2026-08-28",
-      "sessions": 27,
-      "activeUsers": 9,
-      "newUsers": 6,
-      "returningUsers": 3
-    },
     {
       "date": "2026-08-29",
       "sessions": 19,
@@ -220,32 +213,27 @@
     },
     {
       "date": "2026-09-27",
-      "sessions": 4,
-      "activeUsers": 4,
-      "newUsers": 3,
-      "returningUsers": 1
+      "sessions": 5,
+      "activeUsers": 5,
+      "newUsers": 5,
+      "returningUsers": 0
     }
   ],
-  "daily_leads": [
-    {
-      "date": "2026-08-28",
-      "count": 2
-    }
-  ],
+  "daily_leads": [],
   "landing_types": {
-    "home": 132,
-    "log_home": 5,
-    "individual_post": 152,
-    "other": 27
+    "home": 126,
+    "log_home": 1,
+    "individual_post": 142,
+    "other": 23
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 219
+      "sessions": 205
     },
     {
       "source": "google",
-      "sessions": 22
+      "sessions": 21
     },
     {
       "source": "linkedin.com",
@@ -253,10 +241,6 @@
     },
     {
       "source": "facebook.com",
-      "sessions": 7
-    },
-    {
-      "source": "l.facebook.com",
       "sessions": 7
     },
     {
@@ -268,11 +252,11 @@
       "sessions": 7
     },
     {
-      "source": "searchadvisor.naver.com",
-      "sessions": 6
+      "source": "(not set)",
+      "sessions": 5
     },
     {
-      "source": "(not set)",
+      "source": "l.facebook.com",
       "sessions": 5
     },
     {
@@ -294,10 +278,6 @@
     {
       "source": "bing",
       "sessions": 1
-    },
-    {
-      "source": "brunch.co.kr",
-      "sessions": 1
     }
   ],
   "utm_campaigns": [
@@ -305,13 +285,13 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 219
+      "sessions": 205
     },
     {
       "source": "google",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 22
+      "sessions": 21
     },
     {
       "source": "linkedin.com",
@@ -321,12 +301,6 @@
     },
     {
       "source": "facebook.com",
-      "medium": "referral",
-      "campaign": "(referral)",
-      "sessions": 7
-    },
-    {
-      "source": "l.facebook.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 7
@@ -344,10 +318,10 @@
       "sessions": 7
     },
     {
-      "source": "searchadvisor.naver.com",
+      "source": "l.facebook.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 6
+      "sessions": 5
     },
     {
       "source": "m.search.naver.com",
@@ -378,46 +352,23 @@
       "medium": "organic",
       "campaign": "(organic)",
       "sessions": 1
-    },
-    {
-      "source": "brunch.co.kr",
-      "medium": "referral",
-      "campaign": "(referral)",
-      "sessions": 1
-    },
-    {
-      "source": "naver",
-      "medium": "organic",
-      "campaign": "(organic)",
-      "sessions": 1
     }
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 116,
-    "section_view_voices": 89,
-    "section_view_book_class": 62,
-    "section_view_faq": 57,
-    "faq_open": 21,
-    "read_complete": 153
+    "section_view_proven": 83,
+    "section_view_voices": 65,
+    "section_view_book_class": 43,
+    "section_view_faq": 40,
+    "faq_open": 19,
+    "read_complete": 63
   },
   "contact_funnel": {
-    "contact_open": 18,
-    "generate_lead": 2,
-    "contact_error": 1
+    "contact_open": 8,
+    "generate_lead": 0,
+    "contact_error": 0
   },
-  "leads_by_post": [
-    {
-      "path": "/",
-      "title": "홈",
-      "count": 1
-    },
-    {
-      "path": "/log_assets/markdown/300_뛰어난 PO는 데이터를 어떻게 볼까.html",
-      "title": "/log_assets/markdown/300_뛰어난 PO는 데이터를 어떻게 볼까.html",
-      "count": 1
-    }
-  ],
+  "leads_by_post": [],
   "top_landing_posts": [
     {
       "path": "/logs/625",
@@ -443,11 +394,6 @@
       "path": "/logs/475",
       "title": "/logs/475",
       "sessions": 4
-    },
-    {
-      "path": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
-      "title": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
-      "sessions": 3
     },
     {
       "path": "/logs/206",
@@ -485,13 +431,18 @@
       "sessions": 2
     },
     {
-      "path": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
-      "title": "/log_assets/markdown/002_오디세이, 매우 사적인 관람평.html",
+      "path": "/log_assets/markdown/003_회의실에서 목소리가 큰 사람이 가장 위험할 수 있다.html",
+      "title": "/log_assets/markdown/003_회의실에서 목소리가 큰 사람이 가장 위험할 수 있다.html",
       "sessions": 1
     },
     {
-      "path": "/log_assets/markdown/003_회의실에서 목소리가 큰 사람이 가장 위험할 수 있다.html",
-      "title": "/log_assets/markdown/003_회의실에서 목소리가 큰 사람이 가장 위험할 수 있다.html",
+      "path": "/log_assets/markdown/012_누가 주인인가요.html",
+      "title": "/log_assets/markdown/012_누가 주인인가요.html",
+      "sessions": 1
+    },
+    {
+      "path": "/log_assets/markdown/154_놓치면 후회할 거야  FOMO UX.html",
+      "title": "/log_assets/markdown/154_놓치면 후회할 거야  FOMO UX.html",
       "sessions": 1
     }
   ],
@@ -500,7 +451,7 @@
       "path": "/logs/625/",
       "title": "주니어 PM은 왜 스스로 문제를 정의하지 못할까?",
       "uniqueViews": 24,
-      "views": 24
+      "views": 25
     },
     {
       "path": "/logs/619/",
@@ -533,36 +484,6 @@
       "views": 10
     },
     {
-      "path": "/log_assets/markdown/003_회의실에서 목소리가 큰 사람이 가장 위험할 수 있다.html",
-      "title": "/log_assets/markdown/003_회의실에서 목소리가 큰 사람이 가장 위험할 수 있다.html",
-      "uniqueViews": 3,
-      "views": 8
-    },
-    {
-      "path": "/log_assets/markdown/009_PM의 고수는 감정을 어떻게 다룰까.html",
-      "title": "/log_assets/markdown/009_PM의 고수는 감정을 어떻게 다룰까.html",
-      "uniqueViews": 3,
-      "views": 5
-    },
-    {
-      "path": "/log_assets/markdown/130_왜 한국 스타트업은 미국 진출을 꿈꾸는가.html",
-      "title": "/log_assets/markdown/130_왜 한국 스타트업은 미국 진출을 꿈꾸는가.html",
-      "uniqueViews": 3,
-      "views": 10
-    },
-    {
-      "path": "/log_assets/markdown/178_'So What, Why So' 논리에 영혼을 불어넣다.html",
-      "title": "/log_assets/markdown/178_'So What, Why So' 논리에 영혼을 불어넣다.html",
-      "uniqueViews": 3,
-      "views": 3
-    },
-    {
-      "path": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
-      "title": "/log_assets/markdown/615_내 인생의 돛, 내가 잡고 있나.html",
-      "uniqueViews": 3,
-      "views": 22
-    },
-    {
       "path": "/logs/206/",
       "title": "평범을 거부한다. 헤더윅 스튜디오",
       "uniqueViews": 3,
@@ -581,21 +502,51 @@
       "views": 3
     },
     {
-      "path": "/log_assets/markdown/122_미국 진출은 누구에게 필요한 전략인가.html",
-      "title": "/log_assets/markdown/122_미국 진출은 누구에게 필요한 전략인가.html",
+      "path": "/log_assets/markdown/178_'So What, Why So' 논리에 영혼을 불어넣다.html",
+      "title": "/log_assets/markdown/178_'So What, Why So' 논리에 영혼을 불어넣다.html",
       "uniqueViews": 2,
-      "views": 5
+      "views": 2
+    },
+    {
+      "path": "/log_assets/markdown/185_사고의 지도를 그리는 법 '로직 트리'.html",
+      "title": "/log_assets/markdown/185_사고의 지도를 그리는 법 '로직 트리'.html",
+      "uniqueViews": 2,
+      "views": 2
+    },
+    {
+      "path": "/log_assets/markdown/612_줄서서 먹는 가게의 사장은 뭐가 다를까.html",
+      "title": "/log_assets/markdown/612_줄서서 먹는 가게의 사장은 뭐가 다를까.html",
+      "uniqueViews": 2,
+      "views": 2
+    },
+    {
+      "path": "/logs/115/",
+      "title": "미국 소비자는 진짜 '달라'",
+      "uniqueViews": 2,
+      "views": 2
+    },
+    {
+      "path": "/logs/178/",
+      "title": "'So What, Why So' 논리에 영혼을 불어넣다",
+      "uniqueViews": 2,
+      "views": 2
+    },
+    {
+      "path": "/logs/263/",
+      "title": "우선순위 설정의 프레임워크 'RICE'",
+      "uniqueViews": 2,
+      "views": 2
     }
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 249,
+    "total_desktop_sessions": 250,
     "excluded_invalid_sessions": 21,
     "by_resolution": [
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 46
+        "sessions": 47
       },
       {
         "resolution": "2560x1440",
