@@ -26,6 +26,14 @@
 import re
 import sys
 
+# Windows 콘솔(cp949 등)에서 직접 실행하면 이모지·줄표(—) 출력이
+# UnicodeEncodeError로 죽는다(2026-09-27 N66 실측 중 발견). CI(Ubuntu,
+# LANG=C.UTF-8)는 원래 문제없었지만, 로컬에서도 결과를 볼 수 있게
+# stdout을 UTF-8로 강제한다(표시 안 되는 글자는 깨진 문자로 대체할 뿐
+# 죽지 않는다).
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
 LEDGERS = ["docs/탐_업무대장.md", "docs/클라우드탐_업무대장.md"]
 ROW = re.compile(r"^\|\s*N(\d+)\s*\|\s*([^|]*)\|")
 TOKEN = re.compile(r"[#]?[0-9A-Za-z가-힣]{2,}")
