@@ -62,13 +62,25 @@ EVIDENCE/FAILURE-RECOVERY/STATUS 순서로 받습니다. 이미 이 정보가 �
 데스크톱 세션 등)에 따라 헤르메스 채널이 있을 수 있으니, 매 세션 실제로
 확인하고 감으로 판단하지 마세요.
 
-**위임 우편을 보낸 직후: 수동 재확인 대신 감시를 건다(2026-09-27, 전 페르소나 기본 규칙)**
+**⚠️ 실제 자동 실행 채널은 mailbox가 아니라 solar-bible `tasks/pending(-long)/`이다
+(2026-09-27 확인, cxo-db#242)**. `mailbox.py send 헤르메스 ...`로 우편만 보내면
+아무도 자동으로 안 읽는다 - 헤르메스의 크론 폴러(`solar-bible-tasks-poller`/
+`-long-poller`)는 solar-bible 저장소의 `tasks/pending/`(짧은 작업, 10분 이내)
+또는 `tasks/pending-long/`(긴 작업)에 `.md` 지시서 파일을 만들어 origin/main에
+push해야 집어간다. 지시서 제목 첫 줄에 `(내 이름 -> 헤르메스)`를 적으면 완료 시
+그 이름 앞으로 우편 알림이 자동으로 온다. 지시서는 산문 설명보다 **한 줄로 실행
+가능한 스크립트/명령**을 주는 편이 훨씬 잘 통한다(핏 N19: 산문 지시서 실패,
+스크립트 3연속 성공). 결과는 `tasks/done/<이름>.md`(원본 그대로)와
+`reports/<이름>-result.md`(의뢰+실제 응답+헤르메스 자신의 실행 피드백)로 나뉜다.
+
+**위임 지시서를 push한 직후: 수동 재확인 대신 감시를 건다(2026-09-27, 전 페르소나 기본 규칙)**
 우편함은 받는 쪽이 새 세션을 열 때만 자동으로 보이고, 헤르메스는 Claude 세션이 아니라
-`SendMessage`로 이쪽을 깨울 수도 없다 - 그래서 위임한 세션이 계속 떠 있으면 회신이 와도
-스스로 알아챌 방법이 없다("생각날 때마다 수동으로 재확인"은 놓치기 쉽다). `mailbox.py send
-헤르메스 ...`로 TASK를 보낸 직후, 같은 세션에서 바로 아래를 Monitor 도구의 `command`로 띄운다
-(직접 실행 후 방치하지 않는다 - `run_in_background`는 완료 시에만 알리므로 이벤트마다 알림받으려면
-Monitor를 쓴다):
+`SendMessage`로 이쪽을 깨울 수도 없다 - 그래서 위임한 세션이 계속 떠 있으면 완료 알림이 와도
+스스로 알아챌 방법이 없다("생각날 때마다 수동으로 재확인"은 놓치기 쉽다). 위 지시서를
+`tasks/pending(-long)/`에 push한 직후, 같은 세션에서 바로 아래를 Monitor 도구의 `command`로
+띄운다(직접 실행 후 방치하지 않는다 - `run_in_background`는 완료 시에만 알리므로 이벤트마다
+알림받으려면 Monitor를 쓴다). 이 완료 알림은 폴러가 `tasks/pending-long/`을 처리했을 때만
+자동으로 온다(`tasks/pending/`짧은 레인은 알림 없음, 결과는 `reports/`에서 직접 확인):
 
 ```
 python scripts/ops/watch_mailbox_reply.py --persona <내 이름> --keyword 헤르메스,<위임 주제 낱말>
