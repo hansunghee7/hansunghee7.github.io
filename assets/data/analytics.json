@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-26T22:12:46.483977+00:00",
+  "updated_at": "2026-09-27T13:12:13.615017+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 311,
-    "activeUsers": 239,
-    "newUsers": 235,
+    "sessions": 316,
+    "activeUsers": 245,
+    "newUsers": 241,
     "returningUsers": 4
   },
   "daily": [
@@ -206,24 +206,24 @@
     },
     {
       "date": "2026-09-25",
-      "sessions": 13,
-      "activeUsers": 12,
-      "newUsers": 12,
+      "sessions": 15,
+      "activeUsers": 15,
+      "newUsers": 15,
       "returningUsers": 0
     },
     {
       "date": "2026-09-26",
       "sessions": 5,
       "activeUsers": 5,
-      "newUsers": 4,
-      "returningUsers": 1
+      "newUsers": 5,
+      "returningUsers": 0
     },
     {
       "date": "2026-09-27",
-      "sessions": 1,
-      "activeUsers": 1,
-      "newUsers": 1,
-      "returningUsers": 0
+      "sessions": 4,
+      "activeUsers": 4,
+      "newUsers": 3,
+      "returningUsers": 1
     }
   ],
   "daily_leads": [
@@ -233,15 +233,15 @@
     }
   ],
   "landing_types": {
-    "home": 139,
+    "home": 132,
     "log_home": 5,
-    "individual_post": 147,
+    "individual_post": 152,
     "other": 27
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 217
+      "sessions": 219
     },
     {
       "source": "google",
@@ -249,14 +249,10 @@
     },
     {
       "source": "linkedin.com",
-      "sessions": 15
+      "sessions": 21
     },
     {
-      "source": "(not set)",
-      "sessions": 11
-    },
-    {
-      "source": "(data not available)",
+      "source": "facebook.com",
       "sessions": 7
     },
     {
@@ -276,6 +272,10 @@
       "sessions": 6
     },
     {
+      "source": "(not set)",
+      "sessions": 5
+    },
+    {
       "source": "m.search.naver.com",
       "sessions": 5
     },
@@ -284,12 +284,12 @@
       "sessions": 4
     },
     {
-      "source": "facebook.com",
-      "sessions": 4
+      "source": "daum",
+      "sessions": 3
     },
     {
-      "source": "daum",
-      "sessions": 2
+      "source": "(data not available)",
+      "sessions": 1
     },
     {
       "source": "bing",
@@ -305,7 +305,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 217
+      "sessions": 219
     },
     {
       "source": "google",
@@ -317,12 +317,12 @@
       "source": "linkedin.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 15
+      "sessions": 21
     },
     {
-      "source": "(data not available)",
-      "medium": "(data not available)",
-      "campaign": "(cross-network)",
+      "source": "facebook.com",
+      "medium": "referral",
+      "campaign": "(referral)",
       "sessions": 7
     },
     {
@@ -362,16 +362,16 @@
       "sessions": 4
     },
     {
-      "source": "facebook.com",
-      "medium": "referral",
-      "campaign": "(referral)",
-      "sessions": 4
-    },
-    {
       "source": "daum",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 2
+      "sessions": 3
+    },
+    {
+      "source": "(data not available)",
+      "medium": "(data not available)",
+      "campaign": "(cross-network)",
+      "sessions": 1
     },
     {
       "source": "bing",
@@ -394,12 +394,12 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 115,
+    "section_view_proven": 116,
     "section_view_voices": 89,
-    "section_view_book_class": 60,
-    "section_view_faq": 56,
+    "section_view_book_class": 62,
+    "section_view_faq": 57,
     "faq_open": 21,
-    "read_complete": 151
+    "read_complete": 153
   },
   "contact_funnel": {
     "contact_open": 18,
@@ -420,14 +420,14 @@
   ],
   "top_landing_posts": [
     {
+      "path": "/logs/625",
+      "title": "/logs/625",
+      "sessions": 23
+    },
+    {
       "path": "/logs/619",
       "title": "/logs/619",
       "sessions": 20
-    },
-    {
-      "path": "/logs/625",
-      "title": "/logs/625",
-      "sessions": 19
     },
     {
       "path": "/logs/620",
@@ -437,7 +437,7 @@
     {
       "path": "/logs/631",
       "title": "/logs/631",
-      "sessions": 7
+      "sessions": 9
     },
     {
       "path": "/logs/475",
@@ -499,8 +499,8 @@
     {
       "path": "/logs/625/",
       "title": "주니어 PM은 왜 스스로 문제를 정의하지 못할까?",
-      "uniqueViews": 19,
-      "views": 20
+      "uniqueViews": 24,
+      "views": 24
     },
     {
       "path": "/logs/619/",
@@ -512,13 +512,13 @@
       "path": "/logs/620/",
       "title": "팀이 커질수록 대표만 모르는 것",
       "uniqueViews": 13,
-      "views": 14
+      "views": 15
     },
     {
       "path": "/logs/631/",
       "title": "토큰을 아끼려다 기술이 늘었다",
-      "uniqueViews": 8,
-      "views": 7
+      "uniqueViews": 9,
+      "views": 9
     },
     {
       "path": "/logs/2/",
@@ -589,7 +589,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 247,
+    "total_desktop_sessions": 249,
     "excluded_invalid_sessions": 21,
     "by_resolution": [
       {
@@ -600,7 +600,7 @@
       {
         "resolution": "2560x1440",
         "width": 2560,
-        "sessions": 44
+        "sessions": 45
       },
       {
         "resolution": "1600x1600",
@@ -648,6 +648,11 @@
         "sessions": 4
       },
       {
+        "resolution": "2000x2000",
+        "width": 2000,
+        "sessions": 4
+      },
+      {
         "resolution": "1280x800",
         "width": 1280,
         "sessions": 3
@@ -660,11 +665,6 @@
       {
         "resolution": "1707x1067",
         "width": 1707,
-        "sessions": 3
-      },
-      {
-        "resolution": "2000x2000",
-        "width": 2000,
         "sessions": 3
       },
       {

@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
-# mailbox_courier.py - 우편함 배달원 (정책 개정판, 2026-09-20 사장님 결정)
+# mailbox_courier.py - 우편함 배달원 (정책 개정판, 2026-09-20 사장님 결정 / 2026-09-27 채널 정비)
 # 정책:
-#   1) 신솔라 텔레그램(사장님 폰)에는 "사장님이 결정하거나 확인할 일이 있는" 우편만 보낸다.
-#      = 받는이가 사장님이고 '요청:' 줄이 있는 우편. 요청이 없으면 우편함에만 둔다.
-#   2) 에이전트끼리의 우편(받는이가 사장님이 아닌 것)은 별도 '에이전트 채널'로 보낸다.
-#      사장님은 모니터링만 한다. 환경변수 TELEGRAM_AGENT_CHAT_ID가 없으면 아무 데도 안 보낸다.
+#   1) 사장님이 결정·확인할 일이 있는 우편(받는이=사장님, '요청:' 줄 있음)은
+#      **보낸이(페르소나)별 컨펌 그룹**으로 보낸다(2026-09-27부터: 신솔라 한 방에 다 섞이던 것을 분리).
+#      요청이 없으면 우편함에만 둔다.
+#   2) 에이전트끼리의 우편(받는이가 사장님이 아닌 것)은 "모니터링" 그룹으로 보낸다.
+#      사장님은 모니터링만 한다.
 #   3) '긴급' 표시는 발송 조건이 아니다. 요약 알림("N건 쌓임")은 없앴다(반복 발송 결함의 원인).
 #   4) 시험은 폰에 나가지 않는다: --dry-run, 또는 --mailbox-dir/--state-file 지정(시험 모드)에서는
 #      --really-send를 주지 않는 한 실제 발송을 하지 않는다.
 #   5) 개정 첫 실행은 기존 우편을 전부 "이미 처리"로 표시하고 아무것도 보내지 않는다(폭주 방지).
 #   6) 발송 직후 상태를 저장한다(같은 우편 중복 발송 방지).
-# 이전 판: mailbox_courier.py.bak_0920_policy
+# 이전 판: mailbox_courier.py.bak_0920_policy, mailbox_courier.py.bak_0927_channels
 
 import argparse
 import os
@@ -28,7 +29,18 @@ sys.stdout.reconfigure(encoding='utf-8')
 DEFAULT_MAILBOX_DIR = Path(r"C:\work\solar-bible\mailbox")
 STATE_FILE = Path(r"C:\Users\PC\AppData\Local\hermes\mailbox_courier_state.json")
 SOLAR_BIBLE_ROOT = Path(r"C:\work\solar-bible")
-ENV_FILE = Path(r"C:\Users\PC\AppData\Local\hermes\.env")
+ENV_FILE = Path(r"C:\Users\PC\.claude\channels\telegram\.env")  # 탐전용봇(2026-09-27, 신솔라 봇은 폐기)
+
+# 페르소나별 컨펌 그룹 + 모니터링 그룹 (2026-09-27 채널 정비, chat_id는 비밀이 아님)
+PERSONA_CHATS = {
+    "마야": "-5306851243",
+    "지투": "-5465604522",
+    "노트": "-5416791753",
+    "핏": "-5392146307",
+    "탐": "-5552561028",
+    "클탐": "-5265200657",
+}
+MONITOR_CHAT_ID = "-5512633066"
 
 # 하루 상한
 DAILY_LIMIT = 20
@@ -204,7 +216,7 @@ BASELINE_ID = 'policy_20260920'  # 개정 첫 실행 표시(기존 우편을 조
 
 
 def build_message_for_boss(sender, subject, body_first, ask):
-    """신솔라(사장님 폰)용. 사장님이 할 일이 있을 때만 쓴다.
+    """보낸이의 컨펌 그룹(사장님 폰)용. 사장님이 할 일이 있을 때만 쓴다.
     📬 탐 → 사장님 | 제목
     <무엇에 대한 것인지: 본문 첫 줄>
     👉 <사장님이 할 일>
@@ -261,24 +273,15 @@ def main():
 
     env = load_env()
     token = env.get('TELEGRAM_BOT_TOKEN', '')
-    boss_chat = env.get('TELEGRAM_ALLOWED_USERS', '').split(',')[0].strip()
-    agent_chat = env.get('TELEGRAM_AGENT_CHAT_ID', '').strip()
-    if not agent_chat:
-        # 그룹 id는 비밀이 아니다. .env는 헤르메스 도구로 못 고치므로(자격증명 보호),
-        # scripts 폴더의 courier_config.py(AGENT_CHAT_ID = "...")를 보조로 읽는다. 저장소에는 두지 않는다.
-        try:
-            import courier_config
-            agent_chat = str(getattr(courier_config, 'AGENT_CHAT_ID', '')).strip()
-        except ImportError:
-            pass
+    agent_chat = MONITOR_CHAT_ID
     if os.environ.get('COURIER_TEST_AGENT_CHAT'):
         agent_chat = os.environ['COURIER_TEST_AGENT_CHAT']   # 시험 전용(출력만 됨)
 
     mailbox_dir_env = os.environ.get('MAILBOX_DIR') or args.mailbox_dir
     test_mode = bool(mailbox_dir_env or args.state_file)
     live = (not dry_run) and (not test_mode or args.really_send)
-    if live and (not token or not boss_chat):
-        print("[WARN] TELEGRAM_BOT_TOKEN 또는 TELEGRAM_ALLOWED_USERS 없음. 발송 건너뜀.")
+    if live and not token:
+        print("[WARN] TELEGRAM_BOT_TOKEN 없음. 발송 건너뜀.")
         return 0
     if dry_run:
         print("[DRY-RUN] 실제 발송·상태 기록 없음.")
@@ -328,8 +331,12 @@ def main():
                 continue
             if _count(state, boss_key) >= BOSS_DAILY_LIMIT:
                 continue                        # 상한: 다음 날 다시 시도
+            persona_chat = PERSONA_CHATS.get(sender)
+            if not persona_chat:
+                print(f"[WARN] 모르는 보낸이 '{sender}' - 컨펌 그룹 없음, 모니터링으로 보냄: {rel_path}")
+                persona_chat = MONITOR_CHAT_ID
             msg = build_message_for_boss(sender, subject, body_first, ask)
-            chat, key = boss_chat, boss_key
+            chat, key = persona_chat, boss_key
         else:
             if not agent_chat:
                 notified.add(rel_path)          # 에이전트 채널 미설정: 어디에도 안 보낸다
@@ -348,8 +355,10 @@ def main():
             msg = build_message_agent(sender, recipient, subject, body_first)
             chat, key = agent_chat, agent_key
 
+        is_boss_msg = (key == boss_key)
         if not live:
-            where = '사장님(신솔라)' if chat == boss_chat else '에이전트 채널'
+            where = ('모니터링' if chat == MONITOR_CHAT_ID
+                     else f'컨펌-{sender}' if is_boss_msg else '모니터링')
             print(f"[{'DRY-RUN' if dry_run else 'TEST'}] 발송 예정 → {where}: {rel_path}")
             print("  " + msg.replace("\n", "\n  "))
             notified.add(rel_path)
@@ -360,7 +369,7 @@ def main():
             notified.add(rel_path)
             _inc(state, key)
             persist()                            # 발송 직후 저장
-            if chat == boss_chat:
+            if is_boss_msg:
                 sent_boss += 1
             else:
                 sent_agent += 1
@@ -368,7 +377,7 @@ def main():
             print(f"[ERROR] 발송 실패: {rel_path} → {result.get('description') or result.get('error')}")
 
     persist()
-    print(f"[INFO] 신솔라 {sent_boss}건, 에이전트 채널 {sent_agent}건 발송, 폰 미발송 처리 {held}건.")
+    print(f"[INFO] 컨펌 그룹 {sent_boss}건, 모니터링 {sent_agent}건 발송, 폰 미발송 처리 {held}건.")
     return 0
 
 
