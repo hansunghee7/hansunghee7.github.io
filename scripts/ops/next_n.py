@@ -23,7 +23,7 @@ LEDGERS = ["docs/탐_업무대장.md", "docs/클라우드탐_업무대장.md"]
 def latest_ledger_text(path):
     return subprocess.run(
         ["git", "show", f"origin/main:{path}"],
-        capture_output=True, text=True, check=True,
+        capture_output=True, text=True, encoding="utf-8", check=True,
     ).stdout
 
 
