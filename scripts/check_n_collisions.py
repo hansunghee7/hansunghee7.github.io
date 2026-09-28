@@ -11,10 +11,11 @@
 
 무엇을 잡나
 -----------
-각 표의 "| N<번호> | <안건> | ..." 형태 행(열린 항목·닫힌 항목 구분 없이)을
-전부 모아, 같은 번호가 두 문서 어느 쪽에서든 두 번 이상 나오면 살펴본다.
-본문 중 "N42 끝났으니"처럼 다른 문장 안에서 번호를 언급하는 것은 행 정의가
-아니라 세지 않는다.
+각 문서의 "| N<번호> | <안건> | ..." 표 행이나 "### [상태] N<번호>: <안건>"
+헤딩(2026-09-28 탐_업무대장.md 다이어트로 표→헤딩 전환, CLAUDE#4e7b) 형태의
+항목 정의를 전부 모아, 같은 번호가 두 문서 어느 쪽에서든 두 번 이상 나오면
+살펴본다. 본문 중 "N42 끝났으니"처럼 다른 문장 안에서 번호를 언급하는 것은
+항목 정의가 아니라 세지 않는다.
 
 이관(로컬탐 ↔ 클라우드탐)된 같은 안건은 양쪽 표에 같은 번호로 각자
 기록하는 게 정상이다(예: N59 방치 PR 이관) -- 이건 충돌이 아니다. "안건"
@@ -35,7 +36,8 @@ if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 LEDGERS = ["docs/탐_업무대장.md", "docs/클라우드탐_업무대장.md"]
-ROW = re.compile(r"^\|\s*N(\d+)\s*\|\s*([^|]*)\|")
+ROW_TABLE = re.compile(r"^\|\s*N(\d+)\s*\|\s*([^|]*)\|")
+ROW_HEADING = re.compile(r"^#{2,4}\s*(?:\[[^\]]*\]\s*)?N(\d+)\s*[:：]\s*(.+)$")
 TOKEN = re.compile(r"[#]?[0-9A-Za-z가-힣]{2,}")
 SIMILARITY_THRESHOLD = 0.12
 
@@ -47,7 +49,7 @@ def rows(path):
         return []
     found = []
     for line_no, line in enumerate(text.splitlines(), 1):
-        m = ROW.match(line)
+        m = ROW_TABLE.match(line) or ROW_HEADING.match(line)
         if m:
             found.append((int(m.group(1)), line_no, m.group(2).strip()))
     return found
