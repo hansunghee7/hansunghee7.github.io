@@ -1,20 +1,13 @@
 {
-  "updated_at": "2026-09-28T06:52:08.743894+00:00",
+  "updated_at": "2026-09-28T23:57:58.673861+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 295,
-    "activeUsers": 244,
-    "newUsers": 241,
-    "returningUsers": 3
+    "sessions": 283,
+    "activeUsers": 238,
+    "newUsers": 237,
+    "returningUsers": 1
   },
   "daily": [
-    {
-      "date": "2026-08-29",
-      "sessions": 19,
-      "activeUsers": 11,
-      "newUsers": 8,
-      "returningUsers": 3
-    },
     {
       "date": "2026-08-30",
       "sessions": 27,
@@ -220,31 +213,42 @@
     },
     {
       "date": "2026-09-28",
-      "sessions": 5,
-      "activeUsers": 4,
-      "newUsers": 4,
-      "returningUsers": 0
+      "sessions": 10,
+      "activeUsers": 8,
+      "newUsers": 7,
+      "returningUsers": 1
+    },
+    {
+      "date": "2026-09-29",
+      "sessions": 2,
+      "activeUsers": 2,
+      "newUsers": 1,
+      "returningUsers": 1
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 127,
+    "home": 117,
     "log_home": 1,
-    "individual_post": 146,
-    "other": 23
+    "individual_post": 151,
+    "other": 20
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 208
+      "sessions": 195
+    },
+    {
+      "source": "google",
+      "sessions": 22
     },
     {
       "source": "linkedin.com",
       "sessions": 22
     },
     {
-      "source": "google",
-      "sessions": 21
+      "source": "(not set)",
+      "sessions": 9
     },
     {
       "source": "facebook.com",
@@ -259,14 +263,6 @@
       "sessions": 7
     },
     {
-      "source": "(not set)",
-      "sessions": 5
-    },
-    {
-      "source": "l.facebook.com",
-      "sessions": 5
-    },
-    {
       "source": "m.search.naver.com",
       "sessions": 5
     },
@@ -275,12 +271,16 @@
       "sessions": 4
     },
     {
+      "source": "(data not available)",
+      "sessions": 3
+    },
+    {
       "source": "daum",
       "sessions": 3
     },
     {
-      "source": "(data not available)",
-      "sessions": 1
+      "source": "web.telegram.org",
+      "sessions": 3
     },
     {
       "source": "bing",
@@ -296,19 +296,19 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 208
+      "sessions": 195
+    },
+    {
+      "source": "google",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "sessions": 22
     },
     {
       "source": "linkedin.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 22
-    },
-    {
-      "source": "google",
-      "medium": "organic",
-      "campaign": "(organic)",
-      "sessions": 21
     },
     {
       "source": "facebook.com",
@@ -329,12 +329,6 @@
       "sessions": 7
     },
     {
-      "source": "l.facebook.com",
-      "medium": "referral",
-      "campaign": "(referral)",
-      "sessions": 5
-    },
-    {
       "source": "m.search.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
@@ -347,16 +341,22 @@
       "sessions": 4
     },
     {
+      "source": "(data not available)",
+      "medium": "(data not available)",
+      "campaign": "(cross-network)",
+      "sessions": 3
+    },
+    {
       "source": "daum",
       "medium": "organic",
       "campaign": "(organic)",
       "sessions": 3
     },
     {
-      "source": "(data not available)",
-      "medium": "(data not available)",
-      "campaign": "(cross-network)",
-      "sessions": 1
+      "source": "web.telegram.org",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "sessions": 3
     },
     {
       "source": "bing",
@@ -373,15 +373,15 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 85,
-    "section_view_voices": 67,
-    "section_view_book_class": 43,
-    "section_view_faq": 41,
-    "faq_open": 19,
-    "read_complete": 65
+    "section_view_proven": 61,
+    "section_view_voices": 49,
+    "section_view_book_class": 31,
+    "section_view_faq": 29,
+    "faq_open": 17,
+    "read_complete": 64
   },
   "contact_funnel": {
-    "contact_open": 8,
+    "contact_open": 6,
     "generate_lead": 0,
     "contact_error": 0
   },
@@ -405,7 +405,7 @@
     {
       "path": "/logs/631",
       "title": "/logs/631",
-      "sessions": 9
+      "sessions": 12
     },
     {
       "path": "/logs/475",
@@ -415,6 +415,11 @@
     {
       "path": "/logs/206",
       "title": "/logs/206",
+      "sessions": 3
+    },
+    {
+      "path": "/logs/628",
+      "title": "/logs/628",
       "sessions": 3
     },
     {
@@ -440,11 +445,6 @@
     {
       "path": "/logs/372",
       "title": "/logs/372",
-      "sessions": 2
-    },
-    {
-      "path": "/logs/628",
-      "title": "/logs/628",
       "sessions": 2
     },
     {
@@ -485,8 +485,8 @@
     {
       "path": "/logs/631/",
       "title": "토큰을 아끼려다 기술이 늘었다",
-      "uniqueViews": 9,
-      "views": 9
+      "uniqueViews": 12,
+      "views": 12
     },
     {
       "path": "/logs/2/",
@@ -501,6 +501,12 @@
       "views": 10
     },
     {
+      "path": "/logs/628/",
+      "title": "우리 회사의 핵심가치, 아무도 안 볼 때 동작하나요?",
+      "uniqueViews": 4,
+      "views": 5
+    },
+    {
       "path": "/logs/206/",
       "title": "평범을 거부한다. 헤더윅 스튜디오",
       "uniqueViews": 3,
@@ -513,12 +519,6 @@
       "views": 3
     },
     {
-      "path": "/logs/628/",
-      "title": "우리 회사의 핵심가치, 아무도 안 볼 때 동작하나요?",
-      "uniqueViews": 3,
-      "views": 3
-    },
-    {
       "path": "/log_assets/markdown/178_'So What, Why So' 논리에 영혼을 불어넣다.html",
       "title": "/log_assets/markdown/178_'So What, Why So' 논리에 영혼을 불어넣다.html",
       "uniqueViews": 2,
@@ -527,12 +527,6 @@
     {
       "path": "/log_assets/markdown/185_사고의 지도를 그리는 법 '로직 트리'.html",
       "title": "/log_assets/markdown/185_사고의 지도를 그리는 법 '로직 트리'.html",
-      "uniqueViews": 2,
-      "views": 2
-    },
-    {
-      "path": "/log_assets/markdown/612_줄서서 먹는 가게의 사장은 뭐가 다를까.html",
-      "title": "/log_assets/markdown/612_줄서서 먹는 가게의 사장은 뭐가 다를까.html",
       "uniqueViews": 2,
       "views": 2
     },
@@ -553,22 +547,28 @@
       "title": "우선순위 설정의 프레임워크 'RICE'",
       "uniqueViews": 2,
       "views": 2
+    },
+    {
+      "path": "/logs/318/",
+      "title": "성공적인 비즈니스 아이템을 찾는 법",
+      "uniqueViews": 2,
+      "views": 2
     }
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 251,
+    "total_desktop_sessions": 258,
     "excluded_invalid_sessions": 21,
     "by_resolution": [
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 47
+        "sessions": 48
       },
       {
         "resolution": "2560x1440",
         "width": 2560,
-        "sessions": 46
+        "sessions": 47
       },
       {
         "resolution": "1600x1600",
@@ -578,7 +578,7 @@
       {
         "resolution": "1920x1080",
         "width": 1920,
-        "sessions": 35
+        "sessions": 39
       },
       {
         "resolution": "1536x960",

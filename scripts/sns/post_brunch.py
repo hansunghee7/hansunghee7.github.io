@@ -46,9 +46,18 @@ def post(title: str, body: str, cover_path: str | None) -> str:
             raise
 
         if cover_path:
-            # 보이는 버튼을 클릭하면 네이티브 파일창이 뜨므로, 숨은 input에 바로 넣는다.
-            page.locator('input[type="file"][title="커버 이미지"]').set_input_files(cover_path)
-            page.wait_for_timeout(2000)
+            # "커버 이미지" title을 가진 input이 2개 있다(버튼용 + 실제 업로드용) --
+            # get_by_title은 strict mode 위반이 나므로 버튼을 역할로 찾아 좌표를 그대로
+            # 클릭한다(버튼 위에 투명 input이 겹쳐 있어 button.click()은 인터셉트당한다).
+            # 이 방식만 실제 타이틀 배경(표지) 이미지로 들어간다 -- 본문에 사진을 끼워 넣는
+            # 툴바의 "사진" 버튼이나 제목 바로 위 호버 아이콘으로 넣으면 본문 이미지로만
+            # 들어가고 타이틀 배경은 비게 된다(2026-09-28 실측, 사장님이 직접 화면 보고 확인).
+            btn = page.get_by_role("button", name="커버 이미지")
+            box = btn.bounding_box()
+            with page.expect_file_chooser(timeout=5000) as fc_info:
+                page.mouse.click(box["x"] + box["width"] / 2, box["y"] + box["height"] / 2)
+            fc_info.value.set_files(cover_path)
+            page.wait_for_timeout(2500)
 
         page.get_by_text("저장", exact=True).click()
         page.wait_for_timeout(2000)

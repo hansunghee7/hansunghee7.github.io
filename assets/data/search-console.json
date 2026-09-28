@@ -1,17 +1,17 @@
 {
-  "updated_at": "2026-09-27T23:02:51.444654+00:00",
+  "updated_at": "2026-09-28T20:45:42.281196+00:00",
   "site_url": "https://simplifier.co.kr/",
   "data_delay_note": "서치콘솔 데이터는 약 2일 지연 -- end_date는 이틀 전",
   "totals_28d": {
     "clicks": 22,
-    "impressions": 1291,
+    "impressions": 1292,
     "ctr": 0.017,
-    "position": 8.5
+    "position": 8.4
   },
   "totals_90d": {
     "clicks": 25,
-    "impressions": 1348,
-    "ctr": 0.0185,
+    "impressions": 1371,
+    "ctr": 0.0182,
     "position": 8.6
   },
   "daily_90d": [
@@ -238,15 +238,29 @@
       "impressions": 28,
       "ctr": 0,
       "position": 17.1
+    },
+    {
+      "date": "2026-09-26",
+      "clicks": 0,
+      "impressions": 23,
+      "ctr": 0,
+      "position": 9.2
     }
   ],
   "top_queries_90d": [
     {
       "query": "pl pm 차이",
       "clicks": 0,
-      "impressions": 51,
+      "impressions": 53,
       "ctr": 0,
-      "position": 6.3
+      "position": 6.4
+    },
+    {
+      "query": "pm pl",
+      "clicks": 0,
+      "impressions": 44,
+      "ctr": 0,
+      "position": 10.5
     },
     {
       "query": "5forces",
@@ -254,13 +268,6 @@
       "impressions": 42,
       "ctr": 0,
       "position": 9.3
-    },
-    {
-      "query": "pm pl",
-      "clicks": 0,
-      "impressions": 40,
-      "ctr": 0,
-      "position": 10.6
     },
     {
       "query": "pm pl 차이",
@@ -272,8 +279,8 @@
     {
       "query": "심플리파이어",
       "clicks": 5,
-      "impressions": 35,
-      "ctr": 0.1429,
+      "impressions": 36,
+      "ctr": 0.1389,
       "position": 5.5
     },
     {
@@ -286,9 +293,9 @@
     {
       "query": "pl pm",
       "clicks": 0,
-      "impressions": 11,
+      "impressions": 12,
       "ctr": 0,
-      "position": 10.7
+      "position": 10.8
     },
     {
       "query": "so what why so",
@@ -438,6 +445,13 @@
       "position": 9
     },
     {
+      "query": "pm/pl",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 9
+    },
+    {
       "query": "so what so why",
       "clicks": 1,
       "impressions": 1,
@@ -492,13 +506,6 @@
       "impressions": 1,
       "ctr": 0,
       "position": 17
-    },
-    {
-      "query": "pm/pl",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 9
     },
     {
       "query": "po project officer",
@@ -596,8 +603,8 @@
     {
       "page": "https://simplifier.co.kr/",
       "clicks": 11,
-      "impressions": 105,
-      "ctr": 0.1048,
+      "impressions": 106,
+      "ctr": 0.1038,
       "position": 4.0
     },
     {
@@ -615,6 +622,13 @@
       "position": 4.1
     },
     {
+      "page": "https://simplifier.co.kr/log_assets/markdown/135_%EC%A0%9C%ED%92%88%EC%9D%98%20%EC%83%9D%EB%AA%85%EC%84%A0%2C%20Retention%20Curve.html",
+      "clicks": 1,
+      "impressions": 36,
+      "ctr": 0.0278,
+      "position": 7.1
+    },
+    {
       "page": "https://simplifier.co.kr/log/%EC%9E%89%ED%81%AC%EB%93%9C%EC%9D%B8%EB%8C%80-%EA%B8%B0%ED%9A%8D%ED%95%99%EA%B3%BC.html",
       "clicks": 0,
       "impressions": 35,
@@ -622,18 +636,11 @@
       "position": 5.1
     },
     {
-      "page": "https://simplifier.co.kr/log_assets/markdown/135_%EC%A0%9C%ED%92%88%EC%9D%98%20%EC%83%9D%EB%AA%85%EC%84%A0%2C%20Retention%20Curve.html",
-      "clicks": 1,
-      "impressions": 34,
-      "ctr": 0.0294,
-      "position": 6.9
-    },
-    {
       "page": "https://simplifier.co.kr/log_assets/markdown/605_%ED%82%A4%EC%9B%8C%EB%93%9C%EB%A1%9C%20%EC%95%8C%EC%95%84%EB%B3%B4%EB%8A%94%20%EC%84%9C%EB%B9%84%EC%8A%A4%EA%B8%B0%ED%9A%8D%EC%9E%90%2C%20PM%2C%20PO%EC%9D%98%20%EC%B0%A8%EC%9D%B4.html",
       "clicks": 1,
-      "impressions": 24,
-      "ctr": 0.0417,
-      "position": 15.9
+      "impressions": 25,
+      "ctr": 0.04,
+      "position": 15.6
     },
     {
       "page": "https://simplifier.co.kr/log_assets/markdown/206_%ED%8F%89%EB%B2%94%EC%9D%84%20%EA%B1%B0%EB%B6%80%ED%95%9C%EB%8B%A4%20%27%ED%97%A4%EB%8D%94%EC%9C%85%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%27.html",
@@ -808,22 +815,22 @@
     {
       "device": "DESKTOP",
       "clicks": 22,
-      "impressions": 951,
-      "ctr": 0.0231,
+      "impressions": 967,
+      "ctr": 0.0228,
       "position": 8.0
     },
     {
       "device": "MOBILE",
       "clicks": 2,
-      "impressions": 382,
+      "impressions": 388,
       "ctr": 0.0052,
       "position": 10.0
     },
     {
       "device": "TABLET",
       "clicks": 1,
-      "impressions": 15,
-      "ctr": 0.0667,
+      "impressions": 16,
+      "ctr": 0.0625,
       "position": 7.2
     }
   ],
@@ -831,8 +838,8 @@
     {
       "country": "kor",
       "clicks": 25,
-      "impressions": 1202,
-      "ctr": 0.0208,
+      "impressions": 1224,
+      "ctr": 0.0204,
       "position": 8.6
     },
     {
