@@ -2012,13 +2012,13 @@
     {
       "date": "2026-09-29",
       "yes24": {
-        "mkt_rank": null,
-        "ad_rank": null,
-        "web_rank": null,
-        "uxui_rank": null,
-        "design_rank": null,
+        "mkt_rank": 152,
+        "ad_rank": 11,
+        "web_rank": 25,
+        "uxui_rank": 13,
+        "design_rank": 45,
         "econ_rank": null,
-        "sales_index": 2109,
+        "sales_index": 2169,
         "reviews": 18,
         "rating": 10.0
       },
@@ -2033,12 +2033,12 @@
       "kyobo": {
         "uxui_cat": null,
         "strategy_rank": null,
-        "badge_rank": null,
-        "badge_category": null,
+        "badge_rank": 786,
+        "badge_category": "경제/경영",
         "reviews": 0,
         "rating": null
       }
     }
   ],
-  "updated_at": "2026-09-28T17:02:01.761731+00:00"
+  "updated_at": "2026-09-28T20:05:32.606750+00:00"
 }
