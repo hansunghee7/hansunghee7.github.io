@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-27T22:34:54.927130+00:00",
+  "updated_at": "2026-09-28T06:52:08.743894+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 290,
-    "activeUsers": 240,
-    "newUsers": 237,
+    "sessions": 295,
+    "activeUsers": 244,
+    "newUsers": 241,
     "returningUsers": 3
   },
   "daily": [
@@ -217,26 +217,33 @@
       "activeUsers": 5,
       "newUsers": 5,
       "returningUsers": 0
+    },
+    {
+      "date": "2026-09-28",
+      "sessions": 5,
+      "activeUsers": 4,
+      "newUsers": 4,
+      "returningUsers": 0
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 126,
+    "home": 127,
     "log_home": 1,
-    "individual_post": 142,
+    "individual_post": 146,
     "other": 23
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 205
-    },
-    {
-      "source": "google",
-      "sessions": 21
+      "sessions": 208
     },
     {
       "source": "linkedin.com",
+      "sessions": 22
+    },
+    {
+      "source": "google",
       "sessions": 21
     },
     {
@@ -278,6 +285,10 @@
     {
       "source": "bing",
       "sessions": 1
+    },
+    {
+      "source": "lm.facebook.com",
+      "sessions": 1
     }
   ],
   "utm_campaigns": [
@@ -285,18 +296,18 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 205
-    },
-    {
-      "source": "google",
-      "medium": "organic",
-      "campaign": "(organic)",
-      "sessions": 21
+      "sessions": 208
     },
     {
       "source": "linkedin.com",
       "medium": "referral",
       "campaign": "(referral)",
+      "sessions": 22
+    },
+    {
+      "source": "google",
+      "medium": "organic",
+      "campaign": "(organic)",
       "sessions": 21
     },
     {
@@ -352,16 +363,22 @@
       "medium": "organic",
       "campaign": "(organic)",
       "sessions": 1
+    },
+    {
+      "source": "lm.facebook.com",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "sessions": 1
     }
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 83,
-    "section_view_voices": 65,
+    "section_view_proven": 85,
+    "section_view_voices": 67,
     "section_view_book_class": 43,
-    "section_view_faq": 40,
+    "section_view_faq": 41,
     "faq_open": 19,
-    "read_complete": 63
+    "read_complete": 65
   },
   "contact_funnel": {
     "contact_open": 8,
@@ -373,7 +390,7 @@
     {
       "path": "/logs/625",
       "title": "/logs/625",
-      "sessions": 23
+      "sessions": 27
     },
     {
       "path": "/logs/619",
@@ -383,7 +400,7 @@
     {
       "path": "/logs/620",
       "title": "/logs/620",
-      "sessions": 12
+      "sessions": 13
     },
     {
       "path": "/logs/631",
@@ -450,8 +467,8 @@
     {
       "path": "/logs/625/",
       "title": "주니어 PM은 왜 스스로 문제를 정의하지 못할까?",
-      "uniqueViews": 24,
-      "views": 25
+      "uniqueViews": 27,
+      "views": 28
     },
     {
       "path": "/logs/619/",
@@ -540,7 +557,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 250,
+    "total_desktop_sessions": 251,
     "excluded_invalid_sessions": 21,
     "by_resolution": [
       {
@@ -551,7 +568,7 @@
       {
         "resolution": "2560x1440",
         "width": 2560,
-        "sessions": 45
+        "sessions": 46
       },
       {
         "resolution": "1600x1600",
