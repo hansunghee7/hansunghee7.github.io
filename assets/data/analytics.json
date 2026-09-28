@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-09-28T15:44:14.012482+00:00",
+  "updated_at": "2026-09-28T20:00:49.660000+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 281,
+    "sessions": 282,
     "activeUsers": 237,
     "newUsers": 236,
     "returningUsers": 1
@@ -217,13 +217,20 @@
       "activeUsers": 8,
       "newUsers": 7,
       "returningUsers": 1
+    },
+    {
+      "date": "2026-09-29",
+      "sessions": 1,
+      "activeUsers": 1,
+      "newUsers": 0,
+      "returningUsers": 1
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 114,
+    "home": 115,
     "log_home": 1,
-    "individual_post": 150,
+    "individual_post": 151,
     "other": 20
   },
   "top_sources": [
@@ -241,7 +248,7 @@
     },
     {
       "source": "(not set)",
-      "sessions": 7
+      "sessions": 8
     },
     {
       "source": "facebook.com",
@@ -273,7 +280,7 @@
     },
     {
       "source": "web.telegram.org",
-      "sessions": 2
+      "sessions": 3
     },
     {
       "source": "bing",
@@ -349,7 +356,7 @@
       "source": "web.telegram.org",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 2
+      "sessions": 3
     },
     {
       "source": "bing",
@@ -371,7 +378,7 @@
     "section_view_book_class": 31,
     "section_view_faq": 29,
     "faq_open": 17,
-    "read_complete": 63
+    "read_complete": 64
   },
   "contact_funnel": {
     "contact_open": 6,
@@ -398,7 +405,7 @@
     {
       "path": "/logs/631",
       "title": "/logs/631",
-      "sessions": 11
+      "sessions": 12
     },
     {
       "path": "/logs/475",
@@ -478,8 +485,8 @@
     {
       "path": "/logs/631/",
       "title": "토큰을 아끼려다 기술이 늘었다",
-      "uniqueViews": 11,
-      "views": 11
+      "uniqueViews": 12,
+      "views": 12
     },
     {
       "path": "/logs/2/",
@@ -497,7 +504,7 @@
       "path": "/logs/628/",
       "title": "우리 회사의 핵심가치, 아무도 안 볼 때 동작하나요?",
       "uniqueViews": 4,
-      "views": 4
+      "views": 5
     },
     {
       "path": "/logs/206/",
@@ -550,7 +557,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 256,
+    "total_desktop_sessions": 257,
     "excluded_invalid_sessions": 21,
     "by_resolution": [
       {
@@ -571,7 +578,7 @@
       {
         "resolution": "1920x1080",
         "width": 1920,
-        "sessions": 37
+        "sessions": 38
       },
       {
         "resolution": "1536x960",
