@@ -16,6 +16,16 @@ set -uo pipefail
 
 cd "${CLAUDE_PROJECT_DIR:-.}" || exit 0
 
+# 2026-09-28 방어선 추가: git fetch/checkout/merge, ops-status.py 호출 중 하나가
+# 네트워크·디스크 문제로 멈추면 세션 시작 자체가 걸린다(훅에는 하네스 타임아웃이
+# 있지만 그 전까지 세션이 응답 없이 대기). 각 호출을 15초로 끊어 실패해도 그냥
+# 넘어가게 한다. timeout이 없는 환경(드문 경우)에서는 방어 없이 그대로 실행한다.
+if command -v timeout >/dev/null 2>&1; then
+  run_with_timeout() { timeout 15s "$@"; }
+else
+  run_with_timeout() { "$@"; }
+fi
+
 # git worktree에서는 .git이 디렉터리가 아니라 파일이다(전용 워크트리에서 작업하는 세션들).
 # -d가 아니라 -e로 존재를 본 뒤, 아래에서 -d로 "원본 체크아웃 여부"를 따로 판단한다.
 if [ ! -e .git ]; then
@@ -24,7 +34,7 @@ fi
 is_primary_checkout=0
 [ -d .git ] && is_primary_checkout=1
 
-if ! git fetch origin --prune --quiet 2>/dev/null; then
+if ! run_with_timeout git fetch origin --prune --quiet 2>/dev/null; then
   echo "⚠️ git fetch origin --prune 실패 — 원격(GitHub) 상태를 확인하지 못했습니다. 네트워크 또는 GitHub 접근 권한을 확인하세요."
   exit 0
 fi
@@ -48,7 +58,7 @@ current_branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "HEAD")
 #    전용 워크트리는 대상이 아니다 — 거기서는 다른 브랜치에 있는 게 정상이다.
 if [ "$is_primary_checkout" -eq 1 ] && [ "$current_branch" != "$default_branch" ]; then
   if is_clean; then
-    if git checkout --quiet "$default_branch" 2>/dev/null; then
+    if run_with_timeout git checkout --quiet "$default_branch" 2>/dev/null; then
       echo "🔧 공용 메인 폴더가 '$current_branch'에 멈춰 있어 '$default_branch'로 자동 전환했습니다(커밋 안 된 변경 없음, 안전한 전환). 새 작업 브랜치가 필요하면 전용 워크트리를 쓰세요(git worktree add)."
       current_branch="$default_branch"
     else
@@ -65,7 +75,7 @@ ahead=$(git rev-list --count "origin/$default_branch..HEAD" 2>/dev/null || echo 
 # ── 2) main 위에 있고 뒤처져 있고 깨끗하면 fast-forward까지 자동으로 한다(원본 체크아웃만).
 if [ "$is_primary_checkout" -eq 1 ] && [ "$current_branch" = "$default_branch" ] && [ "${behind:-0}" -gt 0 ]; then
   if is_clean; then
-    if git merge --ff-only --quiet "origin/$default_branch" 2>/dev/null; then
+    if run_with_timeout git merge --ff-only --quiet "origin/$default_branch" 2>/dev/null; then
       echo "✅ 자동 동기화: origin/$default_branch에서 ${behind}커밋을 받아 최신으로 맞췄습니다."
       behind=0
     else
@@ -116,6 +126,6 @@ fi
 
 # 감시가 찾은 문제(꺼진 서비스, 실패한 주기 작업)를 세션 시작 때 보여 준다. 상태 파일이 없으면 조용히 통과.
 if command -v python3 >/dev/null 2>&1; then PY=python3; elif command -v python >/dev/null 2>&1; then PY=python; else PY=""; fi
-[ -n "$PY" ] && "$PY" "$(dirname "${BASH_SOURCE[0]}")/ops-status.py" 2>/dev/null
+[ -n "$PY" ] && run_with_timeout "$PY" "$(dirname "${BASH_SOURCE[0]}")/ops-status.py" 2>/dev/null
 
 exit 0
