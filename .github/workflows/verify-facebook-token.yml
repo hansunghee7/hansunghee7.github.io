@@ -1,0 +1,25 @@
+name: Verify Facebook page token (N70 1단계)
+
+# N70(구PC 데이터 DB화)의 페이스북 게시물 좋아요/댓글 수집 전, FACEBOOK_PAGE_TOKEN이
+# 실제로 어느 페이지를 가리키는지 한 번 확인만 하는 임시 워크플로. 정체성(id/name)만
+# 로그에 남기고 토큰 값은 출력하지 않는다. 확인 끝나면 삭제할 것.
+on:
+  workflow_dispatch: {}
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verify token identity
+        env:
+          FACEBOOK_PAGE_TOKEN: ${{ secrets.FACEBOOK_PAGE_TOKEN }}
+        run: python scripts/verify_facebook_token.py
