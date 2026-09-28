@@ -11,6 +11,14 @@ name = "예약 발행 보조 시계(구PC cron, kick_publish.py)"
 note = "2026-09-20 신PC 작업 스케줄러에서 구PC cron으로 이전. 구PC 자신의 kick.last 갱신 시각을 확인(신PC 대장의 watcher:goosolar가 구PC 전체를 밖에서 봄)"
 
 [[job]]
+id = "cron:insight-build"
+kind = "file_age"
+path = "/home/goosloar/workshop/out/sns/insight_build.last"
+max_age_min = 1560
+name = "SNS 인사이트 파이프라인(구PC cron, run_sns_daily.sh→build_insight_db.py→Drive 업로드)"
+note = "2026-09-28 N70 완료. 매일 01:00 UTC(10:00 KST) 1회 실행. 26시간 여유(1560분)로 하루 1회 주기 감안. DONE=VERIFIED: crontab -l·last_run·insight_build.last·insight.db(로컬+Drive) 전부 직접 SSH 확인(reports/20260928-n70-goosolar-insight-cron-tam-verdict.md, solar-bible)"
+
+[[job]]
 id = "svc:hermes-agent"
 kind = "cmd"
 cmd = ["systemctl", "is-active", "hermes-agent"]
