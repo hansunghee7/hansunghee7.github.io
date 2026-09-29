@@ -253,10 +253,10 @@
       ]
     },
     "publishAt": "2026-10-01T00:00:00.000Z",
-    "status": "pending",
+    "status": "error",
     "approved_by": "사장님",
     "approved_quote": "우리 팀만 말하는 직원 편은 이미 제가 컨펌을 한 안입니다. 예약 등록 진행해주시고요. (2026-09-29, 채팅)",
-    "note": "full={\"data\": {\"platform\": \"facebook\", \"accountId\": \"facebook_1276868818845114\", \"issues\": [{\"code\": \"unsupported_format\", \"path\": [\"content\", \"media\", 0], \"params\": {\"field\": \"video\", \"format\": \"bin\", \"allowed\": \"mp4, mov, avi\"}, \"message\": \"Video format is not supported. Supported formats: mp4, mov, avi\"}]}, \"code\": 15051, \"message\": \"Publish content validation failed\", \"timestamp\": 1790682559700, \"requestId\": \"rm1923k7b2g1ufvoz38c2\"}"
+    "note": "full={\"data\": {\"platform\": \"facebook\", \"accountId\": \"facebook_1276868818845114\", \"issues\": [{\"code\": \"unsupported_format\", \"path\": [\"content\", \"media\", 0], \"params\": {\"field\": \"video\", \"format\": \"bin\", \"allowed\": \"mp4, mov, avi\"}, \"message\": \"Video format is not supported. Supported formats: mp4, mov, avi\"}]}, \"code\": 15051, \"message\": \"Publish content validation failed\", \"timestamp\": 1790682770927, \"requestId\": \"beg2capfkwbskph0ucyp6\"}"
   },
   {
     "id": "2026-10-01-ig-632",
@@ -279,9 +279,9 @@
       ]
     },
     "publishAt": "2026-10-01T00:00:00.000Z",
-    "status": "pending",
+    "status": "error",
     "approved_by": "사장님",
     "approved_quote": "우리 팀만 말하는 직원 편은 이미 제가 컨펌을 한 안입니다. 예약 등록 진행해주시고요. (2026-09-29, 채팅)",
-    "note": "full={\"data\": {\"platform\": \"instagram\", \"accountId\": \"instagram_17841401170630001\", \"issues\": [{\"code\": \"required\", \"path\": [\"content\", \"media\"], \"params\": {\"field\": \"image\"}, \"message\": \"Image is required\"}]}, \"code\": 15051, \"message\": \"Publish content validation failed\", \"timestamp\": 1790682562416, \"requestId\": \"491ondotzvizd155l7zod\"}"
+    "note": "full={\"data\": {\"platform\": \"instagram\", \"accountId\": \"instagram_17841401170630001\", \"issues\": [{\"code\": \"required\", \"path\": [\"content\", \"media\"], \"params\": {\"field\": \"image\"}, \"message\": \"Image is required\"}]}, \"code\": 15051, \"message\": \"Publish content validation failed\", \"timestamp\": 1790682771667, \"requestId\": \"sx4kgpzv0gh2kjzibcyy6\"}"
   }
 ]
