@@ -84,6 +84,15 @@
             "command": "\"$CLAUDE_PROJECT_DIR/.claude/hooks/main-checkout-gate.sh\""
           }
         ]
+      },
+      {
+        "matcher": "mcp__Claude_Browser__.*|mcp__claude-in-chrome__.*|mcp__computer-use__.*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR/.claude/hooks/subagent-blocking-gate.sh\""
+          }
+        ]
       }
     ],
     "PostToolUse": [
