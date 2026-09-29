@@ -16,7 +16,8 @@ def main():
     os.makedirs(OUT, exist_ok=True)
     for script in ("weekly_archive_candidates.py", "weekly_change_summary.py"):
         env = {**os.environ, "PYTHONUTF8": "1", "PYTHONIOENCODING": "utf-8"}  # 작업 스케줄러 콘솔이 cp949라 이모지 출력에서 죽는 것을 막는다
-        r = subprocess.run([sys.executable, os.path.join(HERE, script)], cwd=os.path.dirname(os.path.dirname(os.path.dirname(HERE))), env=env)
+        r = subprocess.run([sys.executable, os.path.join(HERE, script)], cwd=os.path.dirname(os.path.dirname(os.path.dirname(HERE))), env=env,
+                           creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))  # pythonw로 뜬 부모에서 자식 콘솔 창이 뜨지 않게(2026-09-29 N82)
         if r.returncode != 0:
             print(f"[FAIL] {script} 종료 코드 {r.returncode}")
             return r.returncode

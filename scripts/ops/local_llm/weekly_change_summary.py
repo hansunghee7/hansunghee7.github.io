@@ -45,7 +45,8 @@ def git_log(days: int = 7, repo: Path = REPO) -> list[str]:
     r = subprocess.run(
         ["git", "-c", "core.quotepath=off", "log", f"--since={days} days ago",
          "--pretty=format:%h %s"],
-        cwd=repo, capture_output=True, encoding="utf-8", errors="replace", check=True)
+        cwd=repo, capture_output=True, encoding="utf-8", errors="replace", check=True,
+        creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
     return [l for l in r.stdout.split("\n") if l.strip()]
 
 
