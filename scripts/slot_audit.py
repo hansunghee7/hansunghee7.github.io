@@ -58,7 +58,7 @@ def sns_items(root):
     items = {}
     q = json.loads((root / "assets/data/sns_publish_queue.json").read_text(encoding="utf-8"))
     for it in q:
-        if it.get("status") in ("cancelled", "error"):
+        if it.get("status") not in ("registered", "pending"):  # draft(승인 전)·cancelled·error는 등록으로 세지 않는다
             continue
         try:
             d = datetime.fromisoformat(it["publishAt"].replace("Z", "+00:00")).astimezone(KST).date()
