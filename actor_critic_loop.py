@@ -11,11 +11,13 @@ Actor(헤르메스, hx.sh ask)가 린트 에러를 고치고, Critic(ruff 종료
 사용: python actor_critic_loop.py <대상.py>
 """
 import ast
+import io
 import os
 import re
 import shutil
 import subprocess
 import sys
+import tokenize
 
 MAX_RETRIES = 3
 if hasattr(sys.stdout, "reconfigure"):
@@ -37,16 +39,27 @@ def run(cmd: list[str], stdin: str | None = None, timeout: int = 300) -> subproc
                           errors="replace", timeout=timeout, creationflags=NOWIN, check=False)
 
 
-def extract_code(reply: str) -> str | None:
-    """헤르메스 응답에서 순수 코드만 뽑는다. 문법이 안 맞으면 None(파일을 건드리지 않는다)."""
+def fingerprint(src: str) -> tuple:
+    """포맷 전용 모드의 불변량: AST(로직·docstring)와 주석 목록(shebang 포함)이 같아야 한다."""
+    comments = tuple(t.string.strip() for t in tokenize.generate_tokens(io.StringIO(src).readline)
+                     if t.type == tokenize.COMMENT)
+    return ast.dump(ast.parse(src)), comments
+
+
+def extract_code(reply: str, ref: str | None = None) -> str | None:
+    """헤르메스 응답에서 순수 코드만 뽑는다. 문법이 안 맞거나 ref(원본)와 로직·주석이 다르면 None(파일을 건드리지 않는다).
+    ref를 주면 '문법 정상 + 원본과 동일 지문'인 마지막 블록만 채택한다(실측: 도구 차단 후에도 헤르메스가 docstring·shebang을
+    조용히 지운 채 ruff를 통과시킨 사례가 있었다, 2026-09-30)."""
     # 펜스 블록 전부 수집 후 뒤에서부터 시도해 문법이 맞는 '마지막 블록'을 채택한다(펜스가 없으면 응답 전체가 후보).
     # '가장 긴 블록'은 실측에서 실패: 문제 예시 블록에 주석 해설이 붙어 수정본보다 길어졌다(2026-09-30 스트레스 테스트 2).
-    blocks = FENCE.findall(reply) or [reply]
+    blocks = FENCE.findall(reply) or [re.sub(r"(?m)^(session_id: |Warning: Unknown toolsets).*\n?", "", reply)]  # hermes CLI 노이즈 줄 제거
     for block in reversed(blocks):
         code = block.strip("\n") + "\n"
         try:
             ast.parse(code)
         except SyntaxError:
+            continue
+        if ref is not None and fingerprint(code) != fingerprint(ref):
             continue
         return code
     return None
@@ -69,15 +82,16 @@ def actor(path: str, feedback: str) -> tuple[bool, str]:
     with open(path, encoding="utf-8") as f:
         src = f.read()
     prompt = f"{guard}\n\n## 린트 에러 로그\n{feedback}\n\n## 소스 코드\n{src}"
-    r = run([BASH, HX, "ask"], stdin=prompt)
+    r = run([BASH, HX, "ask-pure"], stdin=prompt)  # 도구 차단 모드: 기본 ask는 헤르메스가 파일을 직접 고쳐 파서를 우회한다
     if r.returncode != 0:
         return False, f"헤르메스 호출 실패(exit {r.returncode}): {r.stderr.strip()[:300]}"
     if os.environ.get("ACL_DUMP"):  # 디버그: 헤르메스 원문 응답 보관(스트레스 테스트용)
         with open(os.environ["ACL_DUMP"], "a", encoding="utf-8") as f:
             f.write(r.stdout + "\n=====\n")
-    code = extract_code(r.stdout)
+    code = extract_code(r.stdout, ref=src)
     if code is None:
-        return False, "헤르메스 응답에서 문법이 맞는 코드를 추출하지 못함(파일은 그대로 둠)"
+        return False, ("헤르메스 응답에서 문법이 맞고 원본과 로직·주석(docstring, shebang 포함)이 같은 코드를 추출하지 못함"
+                       "(파일은 그대로 둠). 코드 전체를 빠짐없이 다시 출력할 것")
     with open(path, "w", encoding="utf-8", newline="\n") as f:
         f.write(code)
     return True, ""
