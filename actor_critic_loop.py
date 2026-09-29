@@ -39,14 +39,17 @@ def run(cmd: list[str], stdin: str | None = None, timeout: int = 300) -> subproc
 
 def extract_code(reply: str) -> str | None:
     """헤르메스 응답에서 순수 코드만 뽑는다. 문법이 안 맞으면 None(파일을 건드리지 않는다)."""
-    m = FENCE.search(reply)
-    code = m.group(1) if m else reply
-    code = code.strip("\n") + "\n"
-    try:
-        ast.parse(code)
-    except SyntaxError:
-        return None
-    return code
+    # 펜스 블록 전부 수집 후 뒤에서부터 시도해 문법이 맞는 '마지막 블록'을 채택한다(펜스가 없으면 응답 전체가 후보).
+    # '가장 긴 블록'은 실측에서 실패: 문제 예시 블록에 주석 해설이 붙어 수정본보다 길어졌다(2026-09-30 스트레스 테스트 2).
+    blocks = FENCE.findall(reply) or [reply]
+    for block in reversed(blocks):
+        code = block.strip("\n") + "\n"
+        try:
+            ast.parse(code)
+        except SyntaxError:
+            continue
+        return code
+    return None
 
 
 def critic(path: str) -> tuple[bool, str]:
