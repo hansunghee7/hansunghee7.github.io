@@ -82,6 +82,10 @@ def sns_items(root):
 
 
 def main():
+    try:  # 윈도우 기본 인코딩(cp949)에서 이모지·한글 출력이 깨지지 않게(훅에서 파이프로 받을 때)
+        sys.stdout.reconfigure(encoding="utf-8")
+    except AttributeError:
+        pass
     ap = argparse.ArgumentParser()
     ap.add_argument("--days", type=int, default=14)
     ap.add_argument("--today", default=None)
