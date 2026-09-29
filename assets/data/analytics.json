@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-29T20:45:40.757574+00:00",
+  "updated_at": "2026-09-29T23:13:21.091673+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 281,
-    "activeUsers": 240,
-    "newUsers": 239,
+    "sessions": 283,
+    "activeUsers": 241,
+    "newUsers": 240,
     "returningUsers": 1
   },
   "daily": [
@@ -220,23 +220,23 @@
     },
     {
       "date": "2026-09-30",
-      "sessions": 1,
-      "activeUsers": 1,
-      "newUsers": 1,
+      "sessions": 3,
+      "activeUsers": 2,
+      "newUsers": 2,
       "returningUsers": 0
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 115,
+    "home": 116,
     "log_home": 0,
-    "individual_post": 172,
+    "individual_post": 174,
     "other": 9
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 182
+      "sessions": 184
     },
     {
       "source": "linkedin.com",
@@ -248,7 +248,7 @@
     },
     {
       "source": "(not set)",
-      "sessions": 16
+      "sessions": 17
     },
     {
       "source": "(data not available)",
@@ -296,7 +296,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 182
+      "sessions": 184
     },
     {
       "source": "linkedin.com",
@@ -378,7 +378,7 @@
     "section_view_book_class": 26,
     "section_view_faq": 24,
     "faq_open": 17,
-    "read_complete": 68
+    "read_complete": 69
   },
   "contact_funnel": {
     "contact_open": 8,
@@ -410,7 +410,7 @@
     {
       "path": "/logs/301",
       "title": "/logs/301",
-      "sessions": 5
+      "sessions": 6
     },
     {
       "path": "/logs/475",
@@ -492,7 +492,7 @@
       "path": "/logs/301/",
       "title": "일에 끌려다닐 때는 어떻게 해야할까?",
       "uniqueViews": 5,
-      "views": 5
+      "views": 6
     },
     {
       "path": "/logs/2/",
@@ -557,7 +557,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 277,
+    "total_desktop_sessions": 278,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
@@ -578,7 +578,7 @@
       {
         "resolution": "1600x1600",
         "width": 1600,
-        "sessions": 43
+        "sessions": 44
       },
       {
         "resolution": "1536x960",
