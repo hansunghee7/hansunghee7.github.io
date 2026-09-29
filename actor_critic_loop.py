@@ -34,7 +34,7 @@ FAILOVER = ["solar-pro", "gemini", "nemotron", "qwen"]
 
 def run(cmd: list[str], stdin: str | None = None, timeout: int = 300) -> subprocess.CompletedProcess:
     return subprocess.run(cmd, input=stdin, capture_output=True, text=True, encoding="utf-8",
-                          errors="replace", timeout=timeout, creationflags=NOWIN)
+                          errors="replace", timeout=timeout, creationflags=NOWIN, check=False)
 
 
 def extract_code(reply: str) -> str | None:
@@ -99,9 +99,7 @@ def run_loop(path: str) -> dict:
             iterations += 1
             ok, note = actor(path, feedback)
             if not ok:
-                feedback = f"{feedback}
-
-[직전 시도 실패] {note}"  # 린트 로그를 잃지 않고 덧붙인다
+                feedback = f"{feedback}\n\n[직전 시도 실패] {note}"  # 린트 로그를 잃지 않고 덧붙인다
                 continue
             passed, feedback = critic(path)
     finally:
