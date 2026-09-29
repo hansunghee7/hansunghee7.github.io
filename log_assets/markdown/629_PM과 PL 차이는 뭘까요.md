@@ -15,6 +15,8 @@ channel_variants:
 permalink: /logs/629/
 next_url: "/logs/625/"
 next_title: "주니어 PM은 왜 스스로 문제를 정의하지 못할까?"
+prev_url: "/logs/636/"
+prev_title: "바쁜 하루가 끝났는데 남은 게 없다면"
 ---
 
 PM과 PL 차이는 뭘까요?
