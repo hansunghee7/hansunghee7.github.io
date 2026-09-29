@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-28T23:57:58.673861+00:00",
+  "updated_at": "2026-09-29T06:53:47.121207+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 283,
-    "activeUsers": 238,
-    "newUsers": 237,
+    "sessions": 287,
+    "activeUsers": 242,
+    "newUsers": 241,
     "returningUsers": 1
   },
   "daily": [
@@ -220,17 +220,17 @@
     },
     {
       "date": "2026-09-29",
-      "sessions": 2,
-      "activeUsers": 2,
-      "newUsers": 1,
+      "sessions": 6,
+      "activeUsers": 6,
+      "newUsers": 5,
       "returningUsers": 1
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 117,
+    "home": 119,
     "log_home": 1,
-    "individual_post": 151,
+    "individual_post": 155,
     "other": 20
   },
   "top_sources": [
@@ -248,7 +248,11 @@
     },
     {
       "source": "(not set)",
-      "sessions": 9
+      "sessions": 11
+    },
+    {
+      "source": "(data not available)",
+      "sessions": 7
     },
     {
       "source": "facebook.com",
@@ -269,10 +273,6 @@
     {
       "source": "blog.naver.com",
       "sessions": 4
-    },
-    {
-      "source": "(data not available)",
-      "sessions": 3
     },
     {
       "source": "daum",
@@ -311,6 +311,12 @@
       "sessions": 22
     },
     {
+      "source": "(data not available)",
+      "medium": "(data not available)",
+      "campaign": "(cross-network)",
+      "sessions": 7
+    },
+    {
       "source": "facebook.com",
       "medium": "referral",
       "campaign": "(referral)",
@@ -339,12 +345,6 @@
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 4
-    },
-    {
-      "source": "(data not available)",
-      "medium": "(data not available)",
-      "campaign": "(cross-network)",
-      "sessions": 3
     },
     {
       "source": "daum",
@@ -378,7 +378,7 @@
     "section_view_book_class": 31,
     "section_view_faq": 29,
     "faq_open": 17,
-    "read_complete": 64
+    "read_complete": 65
   },
   "contact_funnel": {
     "contact_open": 6,
@@ -398,14 +398,14 @@
       "sessions": 20
     },
     {
+      "path": "/logs/631",
+      "title": "/logs/631",
+      "sessions": 15
+    },
+    {
       "path": "/logs/620",
       "title": "/logs/620",
       "sessions": 13
-    },
-    {
-      "path": "/logs/631",
-      "title": "/logs/631",
-      "sessions": 12
     },
     {
       "path": "/logs/475",
@@ -433,6 +433,11 @@
       "sessions": 2
     },
     {
+      "path": "/logs/132",
+      "title": "/logs/132",
+      "sessions": 2
+    },
+    {
       "path": "/logs/178",
       "title": "/logs/178",
       "sessions": 2
@@ -456,11 +461,6 @@
       "path": "/log_assets/markdown/012_누가 주인인가요.html",
       "title": "/log_assets/markdown/012_누가 주인인가요.html",
       "sessions": 1
-    },
-    {
-      "path": "/log_assets/markdown/154_놓치면 후회할 거야  FOMO UX.html",
-      "title": "/log_assets/markdown/154_놓치면 후회할 거야  FOMO UX.html",
-      "sessions": 1
     }
   ],
   "top_viewed_posts": [
@@ -477,16 +477,16 @@
       "views": 71
     },
     {
+      "path": "/logs/631/",
+      "title": "토큰을 아끼려다 기술이 늘었다",
+      "uniqueViews": 15,
+      "views": 15
+    },
+    {
       "path": "/logs/620/",
       "title": "팀이 커질수록 대표만 모르는 것",
       "uniqueViews": 13,
       "views": 15
-    },
-    {
-      "path": "/logs/631/",
-      "title": "토큰을 아끼려다 기술이 늘었다",
-      "uniqueViews": 12,
-      "views": 12
     },
     {
       "path": "/logs/2/",
@@ -537,6 +537,12 @@
       "views": 2
     },
     {
+      "path": "/logs/132/",
+      "title": "PM, PL, TPM의 차이 한눈에 보기",
+      "uniqueViews": 2,
+      "views": 2
+    },
+    {
       "path": "/logs/178/",
       "title": "'So What, Why So' 논리에 영혼을 불어넣다",
       "uniqueViews": 2,
@@ -547,28 +553,22 @@
       "title": "우선순위 설정의 프레임워크 'RICE'",
       "uniqueViews": 2,
       "views": 2
-    },
-    {
-      "path": "/logs/318/",
-      "title": "성공적인 비즈니스 아이템을 찾는 법",
-      "uniqueViews": 2,
-      "views": 2
     }
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 258,
+    "total_desktop_sessions": 260,
     "excluded_invalid_sessions": 21,
     "by_resolution": [
+      {
+        "resolution": "2560x1440",
+        "width": 2560,
+        "sessions": 48
+      },
       {
         "resolution": "800x600",
         "width": 800,
         "sessions": 48
-      },
-      {
-        "resolution": "2560x1440",
-        "width": 2560,
-        "sessions": 47
       },
       {
         "resolution": "1600x1600",
@@ -578,7 +578,7 @@
       {
         "resolution": "1920x1080",
         "width": 1920,
-        "sessions": 39
+        "sessions": 40
       },
       {
         "resolution": "1536x960",
