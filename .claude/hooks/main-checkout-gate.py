@@ -9,6 +9,8 @@
 잊혔음 — id:4e7b에 따라 도구 관문으로 옮김). 근거: cxo-db 기록(2026-09-27), 사장님 지시
 "못박기".
 
+2026-09-29 확장: 원본 체크아웃에서의 `git commit`도 막는다(로컬 main에 미푸시 커밋이 쌓이는 경로).
+
 범위: 이 저장소(hansunghee7.github.io)의 원본 체크아웃에만 적용된다. 전용 워크트리
 (`git worktree add`로 만든 폴더, `.git`이 파일)에서는 어떤 브랜치를 써도 막지 않는다 —
 그게 원래 의도된 작업 방식이다(CLAUDE.md id:77f6, 각 세션은 자기 워크트리에서 작업).
@@ -24,6 +26,8 @@ import sys
 
 CHECKOUT_RE = re.compile(r"git\s+(checkout|switch)\s+(?P<flags>-[bcB]\s+)?(?P<target>[^\s]+)")
 SAFE_TARGETS = {"main", "-", ".", "--"}
+# 2026-09-29 추가: 공용 메인 폴더에서 main에 직접 커밋하는 것도 막는다(git -C <다른 폴더>는 대상 아님)
+COMMIT_RE = re.compile(r"(^|[;&|(]\s*)git\s+(?!-C\b)(?:-[^\s]+\s+)*commit\b")
 
 
 def project_dir():
@@ -67,6 +71,14 @@ def main():
     cmd = str((data.get("tool_input") or {}).get("command", ""))
     if has_directory_change(cmd):
         return 0
+
+    if COMMIT_RE.search(cmd) and is_primary_checkout(project_dir()):
+        sys.stderr.write(
+            f"[main-checkout-gate] 공용 메인 폴더({project_dir()})에서는 커밋하지 않습니다. main에 직접 push가 막혀 있어 "
+            "커밋이 로컬에만 쌓입니다(2026-09-29 미푸시 커밋 8건 사고). 전용 워크트리에서 작업하세요: "
+            "git worktree add <새 폴더 경로> -b claude/<작업이름> origin/main"
+        )
+        return 2
 
     target = extract_target(cmd)
     if not target:
