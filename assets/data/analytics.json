@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-29T06:53:47.121207+00:00",
+  "updated_at": "2026-09-29T14:12:38.254131+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 287,
-    "activeUsers": 242,
-    "newUsers": 241,
-    "returningUsers": 1
+    "sessions": 302,
+    "activeUsers": 256,
+    "newUsers": 254,
+    "returningUsers": 2
   },
   "daily": [
     {
@@ -213,46 +213,46 @@
     },
     {
       "date": "2026-09-28",
-      "sessions": 10,
-      "activeUsers": 8,
-      "newUsers": 7,
+      "sessions": 12,
+      "activeUsers": 10,
+      "newUsers": 9,
       "returningUsers": 1
     },
     {
       "date": "2026-09-29",
-      "sessions": 6,
-      "activeUsers": 6,
-      "newUsers": 5,
-      "returningUsers": 1
+      "sessions": 19,
+      "activeUsers": 18,
+      "newUsers": 16,
+      "returningUsers": 2
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 119,
+    "home": 124,
     "log_home": 1,
-    "individual_post": 155,
-    "other": 20
+    "individual_post": 168,
+    "other": 21
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 195
-    },
-    {
-      "source": "google",
-      "sessions": 22
+      "sessions": 202
     },
     {
       "source": "linkedin.com",
-      "sessions": 22
+      "sessions": 24
+    },
+    {
+      "source": "google",
+      "sessions": 21
     },
     {
       "source": "(not set)",
-      "sessions": 11
+      "sessions": 14
     },
     {
       "source": "(data not available)",
-      "sessions": 7
+      "sessions": 8
     },
     {
       "source": "facebook.com",
@@ -267,20 +267,24 @@
       "sessions": 7
     },
     {
+      "source": "blog.naver.com",
+      "sessions": 5
+    },
+    {
       "source": "m.search.naver.com",
       "sessions": 5
     },
     {
-      "source": "blog.naver.com",
-      "sessions": 4
-    },
-    {
       "source": "daum",
-      "sessions": 3
+      "sessions": 4
     },
     {
       "source": "web.telegram.org",
       "sessions": 3
+    },
+    {
+      "source": "talk.navercorp.com",
+      "sessions": 2
     },
     {
       "source": "bing",
@@ -296,25 +300,25 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 195
-    },
-    {
-      "source": "google",
-      "medium": "organic",
-      "campaign": "(organic)",
-      "sessions": 22
+      "sessions": 202
     },
     {
       "source": "linkedin.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 22
+      "sessions": 24
+    },
+    {
+      "source": "google",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "sessions": 21
     },
     {
       "source": "(data not available)",
       "medium": "(data not available)",
       "campaign": "(cross-network)",
-      "sessions": 7
+      "sessions": 8
     },
     {
       "source": "facebook.com",
@@ -335,28 +339,34 @@
       "sessions": 7
     },
     {
+      "source": "blog.naver.com",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "sessions": 5
+    },
+    {
       "source": "m.search.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 5
     },
     {
-      "source": "blog.naver.com",
-      "medium": "referral",
-      "campaign": "(referral)",
-      "sessions": 4
-    },
-    {
       "source": "daum",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 3
+      "sessions": 4
     },
     {
       "source": "web.telegram.org",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 3
+    },
+    {
+      "source": "talk.navercorp.com",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "sessions": 2
     },
     {
       "source": "bing",
@@ -375,13 +385,13 @@
   "engagement_events": {
     "section_view_proven": 61,
     "section_view_voices": 49,
-    "section_view_book_class": 31,
-    "section_view_faq": 29,
+    "section_view_book_class": 32,
+    "section_view_faq": 30,
     "faq_open": 17,
-    "read_complete": 65
+    "read_complete": 68
   },
   "contact_funnel": {
-    "contact_open": 6,
+    "contact_open": 8,
     "generate_lead": 0,
     "contact_error": 0
   },
@@ -400,12 +410,17 @@
     {
       "path": "/logs/631",
       "title": "/logs/631",
-      "sessions": 15
+      "sessions": 18
     },
     {
       "path": "/logs/620",
       "title": "/logs/620",
       "sessions": 13
+    },
+    {
+      "path": "/logs/301",
+      "title": "/logs/301",
+      "sessions": 4
     },
     {
       "path": "/logs/475",
@@ -420,6 +435,11 @@
     {
       "path": "/logs/628",
       "title": "/logs/628",
+      "sessions": 3
+    },
+    {
+      "path": "/logs/636",
+      "title": "/logs/636",
       "sessions": 3
     },
     {
@@ -451,16 +471,6 @@
       "path": "/logs/372",
       "title": "/logs/372",
       "sessions": 2
-    },
-    {
-      "path": "/log_assets/markdown/003_회의실에서 목소리가 큰 사람이 가장 위험할 수 있다.html",
-      "title": "/log_assets/markdown/003_회의실에서 목소리가 큰 사람이 가장 위험할 수 있다.html",
-      "sessions": 1
-    },
-    {
-      "path": "/log_assets/markdown/012_누가 주인인가요.html",
-      "title": "/log_assets/markdown/012_누가 주인인가요.html",
-      "sessions": 1
     }
   ],
   "top_viewed_posts": [
@@ -471,16 +481,16 @@
       "views": 28
     },
     {
+      "path": "/logs/631/",
+      "title": "토큰을 아끼려다 기술이 늘었다",
+      "uniqueViews": 17,
+      "views": 19
+    },
+    {
       "path": "/logs/619/",
       "title": "AI가 우선순위까지 대신 정해줄 수 있을까",
       "uniqueViews": 16,
       "views": 71
-    },
-    {
-      "path": "/logs/631/",
-      "title": "토큰을 아끼려다 기술이 늘었다",
-      "uniqueViews": 15,
-      "views": 15
     },
     {
       "path": "/logs/620/",
@@ -491,6 +501,12 @@
     {
       "path": "/logs/2/",
       "title": "오디세이, 매우 사적인 관람평",
+      "uniqueViews": 4,
+      "views": 4
+    },
+    {
+      "path": "/logs/301/",
+      "title": "일에 끌려다닐 때는 어떻게 해야할까?",
       "uniqueViews": 4,
       "views": 4
     },
@@ -519,6 +535,12 @@
       "views": 3
     },
     {
+      "path": "/logs/636/",
+      "title": "바쁜 하루가 끝났는데 남은 게 없다면",
+      "uniqueViews": 3,
+      "views": 3
+    },
+    {
       "path": "/log_assets/markdown/178_'So What, Why So' 논리에 영혼을 불어넣다.html",
       "title": "/log_assets/markdown/178_'So What, Why So' 논리에 영혼을 불어넣다.html",
       "uniqueViews": 2,
@@ -541,49 +563,42 @@
       "title": "PM, PL, TPM의 차이 한눈에 보기",
       "uniqueViews": 2,
       "views": 2
-    },
-    {
-      "path": "/logs/178/",
-      "title": "'So What, Why So' 논리에 영혼을 불어넣다",
-      "uniqueViews": 2,
-      "views": 2
-    },
-    {
-      "path": "/logs/263/",
-      "title": "우선순위 설정의 프레임워크 'RICE'",
-      "uniqueViews": 2,
-      "views": 2
     }
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 260,
-    "excluded_invalid_sessions": 21,
+    "total_desktop_sessions": 272,
+    "excluded_invalid_sessions": 22,
     "by_resolution": [
+      {
+        "resolution": "800x600",
+        "width": 800,
+        "sessions": 49
+      },
       {
         "resolution": "2560x1440",
         "width": 2560,
         "sessions": 48
       },
       {
-        "resolution": "800x600",
-        "width": 800,
-        "sessions": 48
+        "resolution": "1920x1080",
+        "width": 1920,
+        "sessions": 45
       },
       {
         "resolution": "1600x1600",
         "width": 1600,
-        "sessions": 42
-      },
-      {
-        "resolution": "1920x1080",
-        "width": 1920,
-        "sessions": 40
+        "sessions": 43
       },
       {
         "resolution": "1536x960",
         "width": 1536,
         "sessions": 17
+      },
+      {
+        "resolution": "2000x2000",
+        "width": 2000,
+        "sessions": 7
       },
       {
         "resolution": "1512x982",
@@ -616,11 +631,6 @@
         "sessions": 4
       },
       {
-        "resolution": "2000x2000",
-        "width": 2000,
-        "sessions": 4
-      },
-      {
         "resolution": "1280x800",
         "width": 1280,
         "sessions": 3
@@ -633,6 +643,11 @@
       {
         "resolution": "1707x1067",
         "width": 1707,
+        "sessions": 3
+      },
+      {
+        "resolution": "1920x1200",
+        "width": 1920,
         "sessions": 3
       },
       {
@@ -653,11 +668,6 @@
       {
         "resolution": "1710x1107",
         "width": 1710,
-        "sessions": 2
-      },
-      {
-        "resolution": "1728x1117",
-        "width": 1728,
         "sessions": 2
       }
     ]
