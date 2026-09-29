@@ -69,6 +69,9 @@ def actor(path: str, feedback: str) -> tuple[bool, str]:
     r = run([BASH, HX, "ask"], stdin=prompt)
     if r.returncode != 0:
         return False, f"헤르메스 호출 실패(exit {r.returncode}): {r.stderr.strip()[:300]}"
+    if os.environ.get("ACL_DUMP"):  # 디버그: 헤르메스 원문 응답 보관(스트레스 테스트용)
+        with open(os.environ["ACL_DUMP"], "a", encoding="utf-8") as f:
+            f.write(r.stdout + "\n=====\n")
     code = extract_code(r.stdout)
     if code is None:
         return False, "헤르메스 응답에서 문법이 맞는 코드를 추출하지 못함(파일은 그대로 둠)"
