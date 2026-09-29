@@ -39,8 +39,9 @@ def extract_persona(argv):
         persona = argv[i + 1]
         del argv[i:i + 2]
     else:
-        persona = "탐"
-        print(f"경고: --persona 없이 호출됨, 기본값 '{persona}'로 보냄")
+        sys.exit("❌ --persona 필수 옵션 (생략 불가)\n"
+                 "사용: python scripts/ops/tg_boss.py text \"메시지\" --persona 지투\n"
+                 f"가능한 페르소나: {', '.join(PERSONA_CHATS)}")
     if persona not in PERSONA_CHATS:
         sys.exit("알 수 없는 페르소나: " + persona + " (가능: " + ", ".join(PERSONA_CHATS) + ")")
     return persona
