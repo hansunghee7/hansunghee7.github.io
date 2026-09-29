@@ -2042,11 +2042,11 @@
     {
       "date": "2026-09-30",
       "yes24": {
-        "mkt_rank": 152,
+        "mkt_rank": 165,
         "ad_rank": 11,
         "web_rank": 25,
         "uxui_rank": 13,
-        "design_rank": 45,
+        "design_rank": 46,
         "econ_rank": null,
         "sales_index": 2169,
         "reviews": 18,
@@ -2063,12 +2063,12 @@
       "kyobo": {
         "uxui_cat": null,
         "strategy_rank": null,
-        "badge_rank": 786,
+        "badge_rank": 803,
         "badge_category": "경제/경영",
         "reviews": 0,
         "rating": null
       }
     }
   ],
-  "updated_at": "2026-09-29T15:05:57.696431+00:00"
+  "updated_at": "2026-09-29T20:06:19.553753+00:00"
 }
