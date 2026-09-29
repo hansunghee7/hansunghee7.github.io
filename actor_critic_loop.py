@@ -1,17 +1,27 @@
 """Actor-Critic 무한 훈육 루프.
 
-Actor(헤르메스, hx.sh ask)가 린트 에러를 고치고, Critic(ruff 종료코드)이 채점한다.
+Actor(헤르메스, hx.sh ask-pure)가 린트 에러를 고치고, Critic(ruff 종료코드)이 채점한다.
 합격(종료코드 0)하면 종료, 불합격이면 오답 노트를 붙여 재시도, MAX_RETRIES 초과 시 에스컬레이션한다.
 종료 시 지표 3개(Iterations / Status / Escalate)를 반드시 출력한다.
 
-안전장치: 헤르메스 응답은 파일에 바로 쓰지 않는다.
-  ① 코드 펜스(```python ... ```) 사이만 추출(펜스가 없으면 응답 전체를 후보로) → ② ast.parse 통과 시에만 덮어쓰기.
-  실패로 끝나면 원본을 복원한다(로컬 LLM 사족으로 파일이 깨지는 것 방지).
+모드(--mode):
+  format: 포맷 전용. ruff format + ruff check 둘 다 0이어야 하고, 수정본은 원본과 AST·주석이 100% 같아야 한다.
+  logic : 논리 린트 수정(미사용 import·변수 등). ruff check 0이 PASS 기준이고 AST 변경을 허용한다.
+          대신 문법(ast.parse)과 최상위 def/class 이름 보존만 검사한다(코드가 통째로 날아가는 것 방지).
 
-사용: python actor_critic_loop.py <대상.py>
+안전장치: 헤르메스 응답은 파일에 바로 쓰지 않는다.
+  ① 코드 펜스 사이만 추출(마지막 정상 블록, 펜스가 없으면 응답 전체) → ② ast.parse 통과 → ③ 모드별 불변량 검사 후에만 덮어쓰기.
+  실패로 끝나면 원본을 복원한다. 헤르메스는 도구 없는 순수 텍스트 모드(ask-pure)로만 부른다.
+
+훈련 데이터: PASS한 회차의 (오류 로그+원본 코드, 순수 수정 코드)를 .hermes/data/lora_raw/<mode>.jsonl에 추가한다.
+  .hermes/data/는 .gitignore 대상이다(공개 저장소 유출 금지).
+
+사용: python actor_critic_loop.py [--mode format|logic] <대상.py>
 """
+import argparse
 import ast
 import io
+import json
 import os
 import re
 import shutil
@@ -25,10 +35,18 @@ if hasattr(sys.stdout, "reconfigure"):
 ROOT = os.path.dirname(os.path.abspath(__file__))
 HX = os.path.join(ROOT, "scripts", "hx.sh").replace("\\", "/")  # bash는 역슬래시를 이스케이프로 먹는다
 REVIEWER = os.path.join(ROOT, ".hermes", "roles", "reviewer.md")
+DATA_DIR = os.path.join(ROOT, ".hermes", "data", "lora_raw")
 NOWIN = getattr(subprocess, "CREATE_NO_WINDOW", 0)  # Windows 팝업 금지(CLAUDE.md)
 # PATH의 bash는 WSL(System32)일 수 있어 Git Bash를 우선 쓴다
 BASH = next((b for b in ("C:/Program Files/Git/bin/bash.exe",) if os.path.exists(b)), "bash")
 FENCE = re.compile(r"```(?:python|py)?[ \t]*\r?\n(.*?)```", re.DOTALL)
+NOISE = re.compile(r"(?m)^(session_id: |Warning: Unknown toolsets).*\n?")  # hermes CLI 노이즈 줄
+MODES = ("format", "logic")
+LOGIC_NOTE = (
+    "## 이번 모드: 논리 린트 수정\n"
+    "린터가 지적한 항목(미사용 import, 미사용 변수 등)만 최소한으로 삭제·수정하라. "
+    "지적되지 않은 줄, 함수·클래스 이름, 동작은 그대로 두고 파일 전체를 빠짐없이 출력하라."
+)
 
 # 에스컬레이션 페일오버 순서(AI_ROUTING_POLICY): 솔라 프로 -> 제미나이 -> 네모트론 -> Qwen
 FAILOVER = ["solar-pro", "gemini", "nemotron", "qwen"]
@@ -46,55 +64,74 @@ def fingerprint(src: str) -> tuple:
     return ast.dump(ast.parse(src)), comments
 
 
-def extract_code(reply: str, ref: str | None = None) -> str | None:
-    """헤르메스 응답에서 순수 코드만 뽑는다. 문법이 안 맞거나 ref(원본)와 로직·주석이 다르면 None(파일을 건드리지 않는다).
-    ref를 주면 '문법 정상 + 원본과 동일 지문'인 마지막 블록만 채택한다(실측: 도구 차단 후에도 헤르메스가 docstring·shebang을
-    조용히 지운 채 ruff를 통과시킨 사례가 있었다, 2026-09-30)."""
-    # 펜스 블록 전부 수집 후 뒤에서부터 시도해 문법이 맞는 '마지막 블록'을 채택한다(펜스가 없으면 응답 전체가 후보).
-    # '가장 긴 블록'은 실측에서 실패: 문제 예시 블록에 주석 해설이 붙어 수정본보다 길어졌다(2026-09-30 스트레스 테스트 2).
-    blocks = FENCE.findall(reply) or [re.sub(r"(?m)^(session_id: |Warning: Unknown toolsets).*\n?", "", reply)]  # hermes CLI 노이즈 줄 제거
+def top_names(src: str) -> set[str]:
+    """최상위 함수·클래스 이름(논리 모드에서 코드가 통째로 사라지지 않았는지 보는 최소 불변량)."""
+    return {n.name for n in ast.parse(src).body if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef))}
+
+
+def acceptable(code: str, ref: str, mode: str) -> bool:
+    """모드별로 후보 코드를 파일에 써도 되는지 판정한다(code는 이미 문법 검사를 통과한 상태)."""
+    if mode == "format":
+        return fingerprint(code) == fingerprint(ref)
+    return top_names(code) >= top_names(ref)
+
+
+def extract_code(reply: str, ref: str | None = None, mode: str = "format") -> str | None:
+    """헤르메스 응답에서 순수 코드만 뽑는다. 문법이 안 맞거나 ref(원본) 대비 모드별 불변량을 어기면 None(파일을 건드리지 않는다).
+    펜스 블록 전부를 모아 뒤에서부터 '문법 정상 + 불변량 통과'인 첫 블록을 채택한다.
+    실측: '가장 긴 블록'은 주석 많은 예시 블록에 져서 실패, 도구 차단 후에도 docstring·shebang을 지운 응답이 ruff를 통과했다."""
+    blocks = FENCE.findall(reply) or [NOISE.sub("", reply)]
     for block in reversed(blocks):
         code = block.strip("\n") + "\n"
         try:
             ast.parse(code)
         except SyntaxError:
             continue
-        if ref is not None and fingerprint(code) != fingerprint(ref):
+        if ref is not None and not acceptable(code, ref, mode):
             continue
         return code
     return None
 
 
-def critic(path: str) -> tuple[bool, str]:
-    """ruff 두 관문(format, check)의 종료코드로 채점. 실패 시 출력 전체가 오답 노트."""
+def critic(path: str, mode: str = "format") -> tuple[bool, str]:
+    """ruff 종료코드로 채점. format 모드는 format+check, logic 모드는 check만. 실패 시 출력 전체가 오답 노트."""
+    gates = (["format", "--check", "--diff"], ["check"]) if mode == "format" else (["check"],)
     logs = []
-    for args in (["format", "--check", "--diff"], ["check"]):
+    for args in gates:
         r = run([sys.executable, "-m", "ruff", *args, path])
         if r.returncode != 0:
             logs.append(f"$ ruff {' '.join(args)}\n{r.stdout}{r.stderr}")
     return (not logs), "\n".join(logs)
 
 
-def actor(path: str, feedback: str) -> tuple[bool, str]:
-    """헤르메스에게 가드레일+린트 로그+소스를 넘기고, 걸러낸 코드만 파일에 쓴다."""
+def log_sample(mode: str, prompt: str, completion: str) -> None:
+    """검증(PASS)된 회차만 JSONL로 추가한다. 실패 회차는 정답이 아니므로 학습 데이터에 넣지 않는다."""
+    os.makedirs(DATA_DIR, exist_ok=True)
+    with open(os.path.join(DATA_DIR, f"{mode}.jsonl"), "a", encoding="utf-8") as f:
+        f.write(json.dumps({"prompt": prompt, "completion": completion}, ensure_ascii=False) + "\n")
+
+
+def actor(path: str, feedback: str, mode: str = "format") -> tuple[bool, str, tuple[str, str] | None]:
+    """헤르메스에게 가드레일+린트 로그+소스를 넘기고, 걸러낸 코드만 파일에 쓴다. (성공 여부, 실패 사유, (프롬프트, 코드))."""
     with open(REVIEWER, encoding="utf-8") as f:
         guard = f.read()
     with open(path, encoding="utf-8") as f:
         src = f.read()
-    prompt = f"{guard}\n\n## 린트 에러 로그\n{feedback}\n\n## 소스 코드\n{src}"
-    r = run([BASH, HX, "ask-pure"], stdin=prompt)  # 도구 차단 모드: 기본 ask는 헤르메스가 파일을 직접 고쳐 파서를 우회한다
+    sample_prompt = f"## 린트 에러 로그\n{feedback}\n\n## 소스 코드\n{src}"
+    mode_note = f"\n\n{LOGIC_NOTE}" if mode == "logic" else ""
+    r = run([BASH, HX, "ask-pure"], stdin=f"{guard}{mode_note}\n\n{sample_prompt}")  # 도구 차단: 기본 ask는 파일을 직접 고쳐 파서를 우회한다
     if r.returncode != 0:
-        return False, f"헤르메스 호출 실패(exit {r.returncode}): {r.stderr.strip()[:300]}"
+        return False, f"헤르메스 호출 실패(exit {r.returncode}): {r.stderr.strip()[:300]}", None
     if os.environ.get("ACL_DUMP"):  # 디버그: 헤르메스 원문 응답 보관(스트레스 테스트용)
         with open(os.environ["ACL_DUMP"], "a", encoding="utf-8") as f:
             f.write(r.stdout + "\n=====\n")
-    code = extract_code(r.stdout, ref=src)
+    code = extract_code(r.stdout, ref=src, mode=mode)
     if code is None:
-        return False, ("헤르메스 응답에서 문법이 맞고 원본과 로직·주석(docstring, shebang 포함)이 같은 코드를 추출하지 못함"
-                       "(파일은 그대로 둠). 코드 전체를 빠짐없이 다시 출력할 것")
+        need = "원본과 로직·주석(docstring, shebang 포함)이 같은" if mode == "format" else "원본의 함수·클래스를 모두 유지한"
+        return False, f"헤르메스 응답에서 문법이 맞고 {need} 코드를 추출하지 못함(파일은 그대로 둠). 코드 전체를 빠짐없이 다시 출력할 것", None
     with open(path, "w", encoding="utf-8", newline="\n") as f:
         f.write(code)
-    return True, ""
+    return True, "", (sample_prompt, code)
 
 
 def escalate(path: str, last_log: str) -> None:
@@ -103,19 +140,21 @@ def escalate(path: str, last_log: str) -> None:
     print(f"[escalate] 마지막 오답 노트:\n{last_log[:500]}")
 
 
-def run_loop(path: str) -> dict:
+def run_loop(path: str, mode: str = "format") -> dict:
     backup = path + ".orig"
     shutil.copyfile(path, backup)
     iterations, passed, feedback = 0, False, ""
     try:
-        passed, feedback = critic(path)  # 처음부터 합격이면 Actor 호출 없이 0회로 끝
+        passed, feedback = critic(path, mode)  # 처음부터 합격이면 Actor 호출 없이 0회로 끝
         while not passed and iterations < MAX_RETRIES:
             iterations += 1
-            ok, note = actor(path, feedback)
+            ok, note, sample = actor(path, feedback, mode)
             if not ok:
                 feedback = f"{feedback}\n\n[직전 시도 실패] {note}"  # 린트 로그를 잃지 않고 덧붙인다
                 continue
-            passed, feedback = critic(path)
+            passed, feedback = critic(path, mode)
+            if passed and sample:
+                log_sample(mode, *sample)
     finally:
         if not passed:
             shutil.copyfile(backup, path)  # 실패 시 원본 복원
@@ -133,6 +172,8 @@ def run_loop(path: str) -> dict:
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        sys.exit("사용: python actor_critic_loop.py <대상.py>")
-    sys.exit(0 if run_loop(sys.argv[1])["Status"] == "PASS" else 1)
+    ap = argparse.ArgumentParser()
+    ap.add_argument("target")
+    ap.add_argument("--mode", choices=MODES, default="format")
+    args = ap.parse_args()
+    sys.exit(0 if run_loop(args.target, args.mode)["Status"] == "PASS" else 1)

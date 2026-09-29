@@ -4,3 +4,5 @@ __pycache__/
 .claude/settings.local.json
 .claude/worktrees/
 .claude/hooks/token-leak-gate.log
+# Hermes LoRA 훈련 데이터(공개 저장소 유출 금지)
+.hermes/data/
