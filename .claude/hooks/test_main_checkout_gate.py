@@ -73,6 +73,31 @@ def test_untouched_non_git_command():
     assert run({"tool_name": "Bash", "tool_input": {"command": "ls -la"}}, d) == 0
 
 
+def test_blocks_commit_in_primary():
+    d = primary_checkout_dir()
+    assert run({"tool_name": "Bash", "tool_input": {"command": 'git add -A && git commit -m "x"'}}, d) == 2
+
+
+def test_allows_commit_in_worktree():
+    d = worktree_dir()
+    assert run({"tool_name": "Bash", "tool_input": {"command": 'git commit -m "x"'}}, d) == 0
+
+
+def test_allows_commit_with_dash_c_other_dir():
+    d = primary_checkout_dir()
+    assert run({"tool_name": "Bash", "tool_input": {"command": 'git -C /c/work/wt commit -m "x"'}}, d) == 0
+
+
+def test_allows_commit_after_cd_to_worktree():
+    d = primary_checkout_dir()
+    assert run({"tool_name": "Bash", "tool_input": {"command": 'cd /c/work/wt && git commit -m "x"'}}, d) == 0
+
+
+def test_commit_word_in_other_text_not_blocked():
+    d = primary_checkout_dir()
+    assert run({"tool_name": "Bash", "tool_input": {"command": 'echo "how to git commit later"'}}, d) == 0
+
+
 if __name__ == "__main__":
     for n, f in list(globals().items()):
         if n.startswith("test_"):
