@@ -74,6 +74,18 @@ jobs:
         if: github.event_name == 'pull_request'
         run: python3 scripts/check_n_collisions.py
 
+      # 2026-09-29 도입(탐, 사장님 승인): 훅(.claude/hooks)의 시험이 CI에서 안 돌아 관문이 깨져도 병합됐다.
+      # 훅이 깨지면 그 관문이 지키던 사고가 재발하므로(CLAUDE#4e7b) 시험 하나라도 실패하면 병합을 막는다.
+      - name: 훅 시험
+        if: github.event_name == 'pull_request'
+        run: |
+          fail=0
+          for t in .claude/hooks/test_*.py; do
+            echo "== $t"
+            PYTHONUTF8=1 python3 "$t" || fail=1
+          done
+          exit $fail
+
       - name: Set up Ruby (GitHub Pages와 동일한 gem 구성)
         uses: ruby/setup-ruby@v1
         with:
