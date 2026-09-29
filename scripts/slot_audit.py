@@ -54,6 +54,19 @@ def home_posts(root):
     return posts
 
 
+def draft_dates(root):
+    """status가 draft인 큐 항목의 게시일(KST) 집합(승인 전 초안)."""
+    q = json.loads((root / "assets/data/sns_publish_queue.json").read_text(encoding="utf-8"))
+    out = set()
+    for it in q:
+        if it.get("status") == "draft":
+            try:
+                out.add(datetime.fromisoformat(it["publishAt"].replace("Z", "+00:00")).astimezone(KST).date())
+            except (KeyError, ValueError):
+                pass
+    return out
+
+
 def sns_items(root):
     items = {}
     q = json.loads((root / "assets/data/sns_publish_queue.json").read_text(encoding="utf-8"))
@@ -72,40 +85,59 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--days", type=int, default=14)
     ap.add_argument("--today", default=None)
+    ap.add_argument("--brief", action="store_true", help="한 줄 요약만(세션 시작 훅용)")
     args = ap.parse_args()
     root = Path(__file__).resolve().parent.parent
     today = date.fromisoformat(args.today) if args.today else datetime.now(KST).date()
-    homes, sns = home_posts(root), sns_items(root)
-    gaps = []
-    print(f"발행 슬롯 감사 (기준일 {today}, 앞으로 {args.days}일, 어제부터 봄)")
+    homes, sns, drafts = home_posts(root), sns_items(root), draft_dates(root)
+    rows, gaps = [], []  # gaps: (날짜, 종류, 설명, 제안)
     for i in range(-1, args.days + 1):
         d = today + timedelta(days=i)
         dow = d.weekday()
         if dow in HOME_DOW:
             titles = homes.get(d)
-            state = "OK " + " / ".join(titles) if titles else "비어 있음"
+            rows.append(f"  {d} {DOW_KO[dow]} 홈페이지 : " + ("OK " + " / ".join(titles) if titles else "비어 있음"))
             if not titles:
-                gaps.append(f"{d}({DOW_KO[dow]}) 홈페이지 글 없음")
-            print(f"  {d} {DOW_KO[dow]} 홈페이지 : {state}")
+                gaps.append((d, "home", f"{d}({DOW_KO[dow]}) 홈페이지 글 없음",
+                             "주제 후보를 뽑아 컨펌 ①부터 시작"))
         elif dow in SNS_DOW:
             have = sns.get(d, set())
             miss = [c for c in SNS_CHANNELS if c not in have]
+            rows.append(f"  {d} {DOW_KO[dow]} SNS    : " + ("OK " + ", ".join(sorted(have)) if not miss else f"미등록 {', '.join(miss)}"))
             if miss:
-                gaps.append(f"{d}({DOW_KO[dow]}) SNS 미등록 채널: {', '.join(miss)}")
-            state = "OK " + ", ".join(sorted(have)) if not miss else f"미등록 {', '.join(miss)}"
-            print(f"  {d} {DOW_KO[dow]} SNS    : {state}")
-    print(f"  수동 채널(예약 불가, 당일 세션이 올림): {', '.join(MANUAL_CHANNELS)}")
-    # 토요일 마감: 다음 주 월·수·금이 다 찼는지
+                src = d - timedelta(days=1)  # 화·목 SNS의 원본은 전날(월·수) 홈페이지 글
+                if d in drafts:
+                    prop = "초안이 있음: 사장님 승인만 받으면 등록"
+                elif src in homes:
+                    prop = f"원본({src} 「{homes[src][0]}」)이 있음: 초안 생성 후 승인 요청"
+                else:
+                    prop = f"원본 글({src} 홈페이지)이 아직 없음: 그 글을 먼저 채워야 함"
+                gaps.append((d, "sns", f"{d}({DOW_KO[dow]}) SNS 미등록 채널: {', '.join(miss)}", prop))
     next_mon = today + timedelta(days=7 - today.weekday())
-    week = [next_mon + timedelta(days=k) for k in (0, 2, 4)]
-    missing_week = [str(d) for d in week if d not in homes]
+    missing_week = [str(next_mon + timedelta(days=k)) for k in (0, 2, 4) if (next_mon + timedelta(days=k)) not in homes]
+    future = sorted(g for g in gaps if g[0] >= today)  # 지난 슬롯은 참고만
+    if args.brief:
+        if not gaps:
+            print("📅 발행 슬롯 감사: 빈 슬롯 없음")
+        else:
+            nh = sum(1 for g in future if g[1] == "home")
+            ns = sum(1 for g in future if g[1] == "sns")
+            print(f"📅 발행 슬롯 감사: 앞으로 빈 슬롯 {len(future)}개(홈페이지 {nh}, SNS {ns}). 마야 세션이면 첫 보고 전에 `python scripts/slot_audit.py`를 돌려 사장님께 제안할 것을 정한다.")
+        return
+    print(f"발행 슬롯 감사 (기준일 {today}, 앞으로 {args.days}일, 어제부터 봄)")
+    print(chr(10).join(rows))
+    print(f"  수동 채널(예약 불가, 당일 세션이 올림): {', '.join(MANUAL_CHANNELS)}")
     print(f"  다음 주({next_mon}~) 월·수·금 홈페이지: " + ("3편 모두 예약됨" if not missing_week else f"빠짐 {', '.join(missing_week)}"))
-    if gaps:
-        print("\n빈 슬롯:")
-        for g in gaps:
-            print("  -", g)
-        sys.exit(1)
-    print("\n빈 슬롯 없음")
+    if not gaps:
+        print(chr(10) + "빈 슬롯 없음")
+        return
+    print(chr(10) + "빈 슬롯:")
+    for g in sorted(gaps):
+        print("  -", g[2], "<-", g[3])
+    if future:
+        top = future[0]
+        print(chr(10) + f"오늘 사장님께 제안할 첫 번째(가장 가까운 슬롯): {top[2]}. {top[3]}.")
+    sys.exit(1)
 
 
 if __name__ == "__main__":

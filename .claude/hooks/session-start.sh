@@ -128,4 +128,9 @@ fi
 if command -v python3 >/dev/null 2>&1; then PY=python3; elif command -v python >/dev/null 2>&1; then PY=python; else PY=""; fi
 [ -n "$PY" ] && run_with_timeout "$PY" "$(dirname "${BASH_SOURCE[0]}")/ops-status.py" 2>/dev/null
 
+# 2026-09-29 사장님 지시(마야 세션): 매 세션 시작 때 스케줄 대비 미등록 게시물을 체크해 마야가 사장님께 먼저
+# 제안하게 한다(사장님이 매번 물어보며 챙기던 시간을 줄이려는 것). 한 줄 요약만 내고, 마야는 이어서
+# `python scripts/slot_audit.py`(빈 슬롯별 제안 포함)를 돌려 첫 보고에 쓴다. 실패해도 세션 시작을 막지 않는다.
+[ -n "$PY" ] && [ -f scripts/slot_audit.py ] && run_with_timeout "$PY" scripts/slot_audit.py --brief 2>/dev/null
+
 exit 0
