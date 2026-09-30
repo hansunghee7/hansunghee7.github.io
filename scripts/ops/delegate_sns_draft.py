@@ -2,7 +2,7 @@
 """마야 카드 실행기: 홈페이지 글 1편 -> SNS 채널별 초안(링크드인·페이스북·인스타·스레드). Tier: Local(Ollama).
 
 엔진은 초안 JSON만 낸다. 큐(assets/data/sns_publish_queue.json)에는 아무것도 쓰지 않는다. 마야가 읽고 고친 뒤 사장님 승인을 받는다.
-검증기(코드): 봉투 스키마(채널 4개 외 키 금지) / 채널별 글자수 한도 / 괄호 없음 / 긴 줄표 없음 / 글 URL 포함·다른 URL 없음 / 원문에 없는 숫자 금지 / 채널끼리 같은 초안 금지(1회 실측 후 추가).
+검증기(코드): 봉투 스키마(채널 4개 외 키 금지) / 채널별 글자수 한도 / 괄호 없음 / 긴 줄표 없음 / 글 URL 포함·다른 URL 없음 / 원문에 없는 숫자·영문 표기 금지 / 채널 간 유사도 / 링크드인 하한 / 반말·명령형 시작 금지(마야 검토 반영). 단서 표현 소실은 경고만.
 검증 실패 채널은 사유를 붙여 그 채널만 다시 시도(최대 3회). 그래도 실패하면 제안 없이 "거절"로 표시한다(마야가 직접 씀).
 사용: python scripts/ops/delegate_sns_draft.py 629 [--model qwen2.5-coder:14b]
 출력: 마지막 줄 JSON 지표(통과 채널, 시도 횟수, 자율 교정 횟수, 토큰, 지연). 초안 저장: .hermes/data/delegations/<시각>/sns_<번호>.json
@@ -24,6 +24,10 @@ NOWIN = getattr(subprocess, "CREATE_NO_WINDOW", 0)
 LIMITS = {"linkedin": 1500, "facebook": 1000, "instagram": 1500, "threads": 500}
 HINTS = {"linkedin": "전문적이지만 담백한 어조, 문단 2~3개", "facebook": "친근한 어조, 짧은 문단",
          "instagram": "캡션 톤, 줄바꿈 활용, 해시태그 없음", "threads": "한두 문장 핵심만, 대화하듯"}
+MINS = {"linkedin": 400}  # 마야 검토(2026-09-30): 상한이 아니라 하한이 없는 게 문제였다
+SIMILAR = 0.6  # 채널 초안끼리 글자열 유사도가 이 값을 넘으면 반려(링크드인·페이스북이 거의 같았다)
+HEDGES = ("가상의 상황", "회사마다", "공식 정의")  # 원문의 단서 표현: 하나도 남지 않으면 경고만(거칠어서 반려는 안 함)
+SENT = re.compile(r"(?<=[.!?])\s+")
 BAD_CHARS = "()（）"
 DASHES = "—–―"
 ENVELOPE = {
@@ -63,7 +67,37 @@ def validate(channel: str, text: str, url: str, source: str) -> list[str]:
     extra = sorted(set(re.findall(r"\d+", text)) - known)
     if extra:
         why.append(f"원문에 없는 숫자 {extra}")
+    if channel in MINS and len(text) < MINS[channel]:
+        why.append(f"글자수 {len(text)}자로 하한 {MINS[channel]}자 미달")
+    body = text.replace(url, " ").strip()
+    sents = [x.strip() for x in SENT.split(body) if x.strip()]
+    plain = [re.sub(r"[.!?…\s]+$", "", x) for x in sents]
+    informal = [x for x in plain if re.search(r"(자|해라|하라)$", x) or (re.search(r"[가-힣]다$", x) and not re.search(r"니다$", x))]
+    if informal:
+        why.append(f"반말 어미 문장(존댓말로 통일): {informal[:2]}")
+    if plain and re.search(r"(세요|십시오|해라|하라|보자|봅시다)$", plain[0]):
+        why.append("첫 문장이 명령형(설명하듯 시작할 것)")
+    known_en = {w.lower() for w in re.findall(r"[A-Za-z][A-Za-z\-]+", source)}
+    extra_en = sorted({w for w in re.findall(r"[A-Za-z][A-Za-z\-]+", body) if w.lower() not in known_en})
+    if extra_en:
+        why.append(f"원문에 없는 영문 표기 {extra_en}")
     return why
+
+
+def warnings(channel: str, text: str, source: str) -> list[str]:
+    """반려하지 않고 마야에게 알리는 경고."""
+    if channel != "threads" and any(h in source for h in HEDGES) and not any(h in text for h in HEDGES):
+        return ["원문의 단서 표현(가상의 상황·회사마다·공식 정의 중 하나)이 초안에 남지 않음: 단정문으로 읽힐 수 있음"]
+    return []
+
+
+def similar_to_passed(text: str, passed: dict) -> str:
+    from difflib import SequenceMatcher
+    for c, t in passed.items():
+        r = SequenceMatcher(None, text, t).ratio()
+        if r > SIMILAR:
+            return f"{c} 초안과 글자열 유사도 {r:.2f}로 {SIMILAR} 초과: 채널 성격에 맞게 문장 구성을 다르게 쓸 것"
+    return ""
 
 
 def ask(prompt: str, model: str) -> tuple[str, int, int]:
@@ -84,7 +118,7 @@ def main() -> None:
         sys.exit("입력이 4000자를 넘습니다(카드 한도)")
     source = f"{title}\n{body}"
     passed, notes, rejected_why = {}, {}, {}
-    m = {"post": a.post_no, "model": a.model, "attempts": 0, "envelope_violations": 0, "tokens": {"in": 0, "out": 0}}
+    m = {"post": a.post_no, "model": a.model, "attempts": 0, "envelope_violations": 0, "warnings": {}, "tokens": {"in": 0, "out": 0}}
     t0 = time.time()
     for attempt in range(3):
         todo = [c for c in LIMITS if c not in passed]
@@ -94,10 +128,14 @@ def main() -> None:
         spec = "\n".join(f"- {c}: {LIMITS[c]}자 이내, {HINTS[c]}" for c in todo)
         fb = "".join(f"\n[{c} 이전 시도 거절 사유] {'; '.join(w)}" for c, w in notes.items() if c in todo)
         prompt = (f"아래 블로그 글을 SNS 채널별 초안으로 바꿔라. 글 내용에 없는 사실·숫자를 만들지 마라. 괄호와 긴 줄표를 쓰지 마라. "
+                  f"모든 문장을 존댓말(입니다·합니다체)로 통일하고, 첫 문장을 명령형(알아보세요, 확인하세요)으로 시작하지 마라. 원문에 없는 영문 약어 풀이를 추가하지 마라. "
+                  f"원문이 조심스럽게 말한 대목(가상의 상황, 회사마다 다름, 공식 정의 아님)은 단정문으로 바꾸지 말고 단서를 남겨라. 채널끼리 문장 구성이 겹치지 않게 각 채널 성격에 맞게 다르게 써라. "
                   f"각 초안 끝에 이 URL을 그대로 한 번 넣어라: {url}\n채널별 조건:\n{spec}{fb}\n\n"
                   f'출력은 JSON 하나만: {{"drafts":[{{"channel":"...","text":"..."}}]}}. 요청한 채널만, 다른 키 금지.\n\n'
                   f"## 제목\n{title}\n\n## 본문\n{body}")
         out, tin, tout = ask(prompt, a.model)
+        if os.environ.get("SNS_DUMP"):  # 디버그: 엔진 원문 응답 보관
+            open(os.environ["SNS_DUMP"], "a", encoding="utf-8").write(out + "\n=====\n")
         m["tokens"]["in"] += tin
         m["tokens"]["out"] += tout
         try:
@@ -111,13 +149,17 @@ def main() -> None:
             continue
         for d in data["drafts"]:
             why = validate(d["channel"], d["text"], url, source)
-            if d["text"] in passed.values():  # 1차 실측에서 페이스북·인스타 초안이 글자까지 같았다(채널별 초안의 의미가 없음)
-                why.append("다른 채널 초안과 글자까지 같음: 채널 성격에 맞게 다르게 쓸 것")
+            sim = similar_to_passed(d["text"], passed) if d["channel"] != "threads" else ""  # 스레드는 짧은 요약이라 제외
+            if sim:
+                why.append(sim)
             if why:
                 notes[d["channel"]] = why
             else:
                 passed[d["channel"]] = d["text"]
                 notes.pop(d["channel"], None)
+                warn = warnings(d["channel"], d["text"], source)
+                if warn:
+                    m["warnings"][d["channel"]] = warn
     m["latency_s"] = round(time.time() - t0, 1)
     m["passed_channels"] = sorted(passed)
     m["rejected"] = {c: notes.get(c, ["봉투 위반 또는 응답 없음"]) for c in LIMITS if c not in passed}
@@ -127,7 +169,7 @@ def main() -> None:
     path = os.path.join(out_dir, f"sns_{a.post_no}.json")
     with open(path, "w", encoding="utf-8") as f:
         json.dump({"post": a.post_no, "status": "draft", "drafts": [{"channel": c, "text": passed[c]} for c in LIMITS if c in passed],
-                   "rejected": m["rejected"]}, f, ensure_ascii=False, indent=2)
+                   "rejected": m["rejected"], "warnings": m["warnings"]}, f, ensure_ascii=False, indent=2)
     m["saved"] = os.path.relpath(path, ROOT).replace("\\", "/")
     print(json.dumps(m, ensure_ascii=False))
 
