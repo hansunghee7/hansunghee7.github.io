@@ -31,3 +31,8 @@ exclude:
   # 이 exclude 목록을 그대로 읽어서 명시적으로 추가한다(2026-09-17,
   # 내부 도구 설정 파일이 대시 금지 규칙에 잘못 걸린 사고 재발 방지).
   - .claude/
+  # 헤르메스 훈련 루프 도구와 시험 대상 파일은 사이트에 서빙하지 않는다
+  - actor_critic_loop.py
+  - bench/
+  - test_lint_dummy.py
+  - test_lint_logic_dummy.py
