@@ -169,6 +169,9 @@ def apply_edits(src: str, reply: str, feedback: str) -> tuple[str | None, str, l
             return None, f"줄 번호가 범위 밖이거나 중복: {n}", None
         if n not in flagged:
             return None, f"린트가 지적하지 않은 줄({n})은 고칠 수 없음. 고칠 수 있는 줄: {sorted(flagged)}", None
+        if lines[n - 1].rstrip().endswith(":"):
+            # 실측: def 줄만 지우면 본문이 위 함수의 죽은 코드로 붙어 문법·ruff를 통과한 채 동작이 바뀌었다(가짜 PASS)
+            return None, f"줄 {n}은 블록 머리 줄(def/class/if 등, ':'로 끝남)이라 수정·삭제할 수 없음", None
         if "\n" in new or "\r" in new:
             return None, f"replace는 한 줄이어야 함(줄 {n})", None
         if not set(WORD.findall(new)) - {"_"} <= set(WORD.findall(lines[n - 1])):  # '_ = f()'는 관용 표현이라 허용
