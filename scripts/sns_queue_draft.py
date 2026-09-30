@@ -41,7 +41,7 @@ def main():
     head, body = text.split("---\n", 2)[1], text.split("---\n", 2)[2].strip()
     title = re.search(r'^title:\s*"?(.*?)"?\s*$', head, re.M).group(1)
     body = re.sub(r"\[([^\]]+)\]\((https?://[^)]+)\)", r"\1 \2", body)  # 마크다운 링크는 평문으로
-    body += f"\n\nfrom https://simplifier.co.kr/logs/{a.post_no}/"
+    # 본문 끝에 "from 원문 링크" 줄을 붙이지 않는다(사장님 지시 2026-09-30, 글 안 콜투액션 링크로 충분)
     cover = next((root / "log_assets/images").glob(f"{a.post_no}_*_cover.jpg"), None)
     if cover is None:
         m = re.search(r"^image:\s*'?\"?(https?://[^'\"\s]+)", head, re.M)
