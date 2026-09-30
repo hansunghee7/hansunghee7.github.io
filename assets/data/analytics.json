@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-29T23:13:21.091673+00:00",
+  "updated_at": "2026-09-30T06:42:04.535453+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 283,
-    "activeUsers": 241,
-    "newUsers": 240,
-    "returningUsers": 1
+    "sessions": 287,
+    "activeUsers": 245,
+    "newUsers": 245,
+    "returningUsers": 0
   },
   "daily": [
     {
@@ -215,28 +215,28 @@
       "date": "2026-09-29",
       "sessions": 24,
       "activeUsers": 23,
-      "newUsers": 21,
-      "returningUsers": 2
+      "newUsers": 22,
+      "returningUsers": 1
     },
     {
       "date": "2026-09-30",
-      "sessions": 3,
-      "activeUsers": 2,
-      "newUsers": 2,
+      "sessions": 7,
+      "activeUsers": 6,
+      "newUsers": 6,
       "returningUsers": 0
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 116,
+    "home": 119,
     "log_home": 0,
-    "individual_post": 174,
+    "individual_post": 177,
     "other": 9
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 184
+      "sessions": 186
     },
     {
       "source": "linkedin.com",
@@ -248,11 +248,11 @@
     },
     {
       "source": "(not set)",
-      "sessions": 17
+      "sessions": 18
     },
     {
       "source": "(data not available)",
-      "sessions": 9
+      "sessions": 11
     },
     {
       "source": "facebook.com",
@@ -271,12 +271,12 @@
       "sessions": 5
     },
     {
-      "source": "m.search.naver.com",
+      "source": "daum",
       "sessions": 5
     },
     {
-      "source": "daum",
-      "sessions": 4
+      "source": "m.search.naver.com",
+      "sessions": 5
     },
     {
       "source": "web.telegram.org",
@@ -296,7 +296,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 184
+      "sessions": 186
     },
     {
       "source": "linkedin.com",
@@ -314,7 +314,7 @@
       "source": "(data not available)",
       "medium": "(data not available)",
       "campaign": "(cross-network)",
-      "sessions": 9
+      "sessions": 11
     },
     {
       "source": "facebook.com",
@@ -341,16 +341,16 @@
       "sessions": 5
     },
     {
+      "source": "daum",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "sessions": 5
+    },
+    {
       "source": "m.search.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 5
-    },
-    {
-      "source": "daum",
-      "medium": "organic",
-      "campaign": "(organic)",
-      "sessions": 4
     },
     {
       "source": "web.telegram.org",
@@ -373,10 +373,10 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 42,
-    "section_view_voices": 37,
-    "section_view_book_class": 26,
-    "section_view_faq": 24,
+    "section_view_proven": 43,
+    "section_view_voices": 38,
+    "section_view_book_class": 27,
+    "section_view_faq": 25,
     "faq_open": 17,
     "read_complete": 69
   },
@@ -410,7 +410,7 @@
     {
       "path": "/logs/301",
       "title": "/logs/301",
-      "sessions": 6
+      "sessions": 7
     },
     {
       "path": "/logs/475",
@@ -491,8 +491,8 @@
     {
       "path": "/logs/301/",
       "title": "일에 끌려다닐 때는 어떻게 해야할까?",
-      "uniqueViews": 5,
-      "views": 6
+      "uniqueViews": 6,
+      "views": 7
     },
     {
       "path": "/logs/2/",
@@ -557,18 +557,18 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 278,
+    "total_desktop_sessions": 280,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 50
+        "sessions": 51
       },
       {
         "resolution": "1920x1080",
         "width": 1920,
-        "sessions": 48
+        "sessions": 49
       },
       {
         "resolution": "2560x1440",
