@@ -281,7 +281,7 @@ def escalate(path: str, last_log: str) -> None:
 def run_loop(path: str, mode: str = "format", select: str | None = None) -> dict:
     backup = path + ".orig"
     shutil.copyfile(path, backup)
-    iterations, passed, feedback = 0, False, ""
+    iterations, passed, feedback, guard_rejects = 0, False, "", 0
     select = select or ("F" if mode == "logic" else None)
     try:
         passed, feedback = critic(path, mode, select)  # 처음부터 합격이면 Actor 호출 없이 0회로 끝
@@ -289,6 +289,7 @@ def run_loop(path: str, mode: str = "format", select: str | None = None) -> dict
             iterations += 1
             ok, note, sample = actor(path, feedback, mode)
             if not ok:
+                guard_rejects += 1  # 가드·파서가 거부한 회차 수(오케스트레이션 벤치 지표)
                 feedback = f"{feedback}\n\n[직전 시도 실패] {note}"  # 린트 로그를 잃지 않고 덧붙인다
                 continue
             passed, feedback = critic(path, mode, select)
@@ -302,6 +303,7 @@ def run_loop(path: str, mode: str = "format", select: str | None = None) -> dict
             "Iterations": iterations,
             "Status": "PASS" if passed else "FAIL",
             "Escalate": (not passed) and iterations >= MAX_RETRIES,
+            "GuardRejects": guard_rejects,
         }
         for k, v in result.items():
             print(f"[metric] {k}: {v}")
