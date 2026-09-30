@@ -1,20 +1,13 @@
 {
-  "updated_at": "2026-09-30T14:03:14.813887+00:00",
+  "updated_at": "2026-09-30T20:00:53.370343+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 292,
-    "activeUsers": 249,
-    "newUsers": 247,
+    "sessions": 287,
+    "activeUsers": 245,
+    "newUsers": 243,
     "returningUsers": 2
   },
   "daily": [
-    {
-      "date": "2026-08-31",
-      "sessions": 7,
-      "activeUsers": 6,
-      "newUsers": 6,
-      "returningUsers": 0
-    },
     {
       "date": "2026-09-01",
       "sessions": 3,
@@ -220,23 +213,23 @@
     },
     {
       "date": "2026-09-30",
-      "sessions": 10,
-      "activeUsers": 9,
-      "newUsers": 7,
+      "sessions": 12,
+      "activeUsers": 11,
+      "newUsers": 9,
       "returningUsers": 2
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 107,
+    "home": 104,
     "log_home": 0,
-    "individual_post": 177,
-    "other": 10
+    "individual_post": 176,
+    "other": 9
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 186
+      "sessions": 181
     },
     {
       "source": "linkedin.com",
@@ -244,7 +237,7 @@
     },
     {
       "source": "google",
-      "sessions": 22
+      "sessions": 21
     },
     {
       "source": "facebook.com",
@@ -276,7 +269,7 @@
     },
     {
       "source": "(data not available)",
-      "sessions": 3
+      "sessions": 4
     },
     {
       "source": "lm.facebook.com",
@@ -300,7 +293,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 186
+      "sessions": 181
     },
     {
       "source": "linkedin.com",
@@ -312,7 +305,7 @@
       "source": "google",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 22
+      "sessions": 21
     },
     {
       "source": "facebook.com",
@@ -354,7 +347,7 @@
       "source": "(data not available)",
       "medium": "(data not available)",
       "campaign": "(cross-network)",
-      "sessions": 3
+      "sessions": 4
     },
     {
       "source": "lm.facebook.com",
@@ -438,6 +431,11 @@
       "sessions": 4
     },
     {
+      "path": "/logs/132",
+      "title": "/logs/132",
+      "sessions": 3
+    },
+    {
       "path": "/logs/206",
       "title": "/logs/206",
       "sessions": 3
@@ -445,16 +443,6 @@
     {
       "path": "/log_assets/markdown/178_'So What, Why So' 논리에 영혼을 불어넣다.html",
       "title": "/log_assets/markdown/178_'So What, Why So' 논리에 영혼을 불어넣다.html",
-      "sessions": 2
-    },
-    {
-      "path": "/log_assets/markdown/185_사고의 지도를 그리는 법 '로직 트리'.html",
-      "title": "/log_assets/markdown/185_사고의 지도를 그리는 법 '로직 트리'.html",
-      "sessions": 2
-    },
-    {
-      "path": "/logs/132",
-      "title": "/logs/132",
       "sessions": 2
     },
     {
@@ -470,6 +458,11 @@
     {
       "path": "/logs/372",
       "title": "/logs/372",
+      "sessions": 2
+    },
+    {
+      "path": "/logs/589",
+      "title": "/logs/589",
       "sessions": 2
     }
   ],
@@ -529,6 +522,12 @@
       "views": 4
     },
     {
+      "path": "/logs/132/",
+      "title": "PM, PL, TPM의 차이 한눈에 보기",
+      "uniqueViews": 3,
+      "views": 3
+    },
+    {
       "path": "/logs/206/",
       "title": "평범을 거부한다. 헤더윅 스튜디오",
       "uniqueViews": 3,
@@ -547,33 +546,27 @@
       "views": 2
     },
     {
-      "path": "/log_assets/markdown/185_사고의 지도를 그리는 법 '로직 트리'.html",
-      "title": "/log_assets/markdown/185_사고의 지도를 그리는 법 '로직 트리'.html",
-      "uniqueViews": 2,
-      "views": 2
-    },
-    {
       "path": "/logs/115/",
       "title": "미국 소비자는 진짜 '달라'",
       "uniqueViews": 2,
       "views": 2
     },
     {
-      "path": "/logs/132/",
-      "title": "PM, PL, TPM의 차이 한눈에 보기",
+      "path": "/logs/178/",
+      "title": "'So What, Why So' 논리에 영혼을 불어넣다",
       "uniqueViews": 2,
       "views": 2
     }
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 283,
+    "total_desktop_sessions": 284,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 51
+        "sessions": 52
       },
       {
         "resolution": "1920x1080",
