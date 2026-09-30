@@ -5,6 +5,7 @@
 서버는 localhost:11434(외부 전송 없음). temperature 0, 컨텍스트 8192.
 """
 import json
+import os
 import sys
 import urllib.request
 
@@ -19,7 +20,11 @@ def main() -> None:
         out = json.load(r)
     sys.stdout.reconfigure(encoding="utf-8")
     print(out.get("response", ""))
-    print(f"USAGE {out.get('prompt_eval_count', 0)} {out.get('eval_count', 0)}", file=sys.stderr)
+    usage = f"USAGE {out.get('prompt_eval_count', 0)} {out.get('eval_count', 0)}"
+    print(usage, file=sys.stderr)
+    if os.environ.get("ACL_USAGE_LOG"):  # 오케스트레이션 벤치가 토큰을 집계하는 통로
+        with open(os.environ["ACL_USAGE_LOG"], "a", encoding="utf-8") as f:
+            f.write(usage + "\n")
 
 
 if __name__ == "__main__":
