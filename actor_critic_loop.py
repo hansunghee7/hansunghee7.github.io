@@ -139,15 +139,19 @@ def has_call(line: str) -> bool:
 
 def parse_edits(reply: str) -> list | None:
     """응답에서 마지막으로 해석되는 JSON 배열(줄 수정 목록)을 찾는다. 중첩 괄호·문자열 안의 대괄호가 있어 정규식 대신 raw_decode."""
-    text, dec, found = NOISE.sub("", reply), json.JSONDecoder(), None
-    for i, ch in enumerate(text):
-        if ch == "[":
+    text, dec, found, i = NOISE.sub("", reply), json.JSONDecoder(), None, 0
+    while i < len(text):
+        if text[i] == "[":
             try:
-                obj, _ = dec.raw_decode(text, i)
+                obj, end = dec.raw_decode(text, i)
             except ValueError:
+                i += 1
                 continue
             if isinstance(obj, list):
                 found = obj
+                i = end  # 해석된 배열 안(문자열 속 'argv[0]' 등)은 다시 보지 않는다: 안쪽 [0]이 진짜 답을 덮어쓰던 버그 수정
+                continue
+        i += 1
     return found
 
 
