@@ -13,7 +13,10 @@ import urllib.request
 def main() -> None:
     sys.stdin.reconfigure(encoding="utf-8")
     body = {"model": sys.argv[1], "prompt": sys.stdin.read(), "stream": False,
-            "options": {"temperature": 0, "num_ctx": 8192, "num_predict": 1500}}
+            "options": {"temperature": 0, "num_ctx": int(os.environ.get("OLLAMA_NUM_CTX", "8192")),
+                        "num_predict": int(os.environ.get("OLLAMA_NUM_PREDICT", "1500"))}}
+    if os.environ.get("OLLAMA_JSON"):  # 문법이 맞는 JSON만 내게 한다(스키마 검증은 호출자 몫)
+        body["format"] = "json"
     req = urllib.request.Request("http://localhost:11434/api/generate", json.dumps(body).encode(),
                                  {"Content-Type": "application/json"})
     with urllib.request.urlopen(req, timeout=300) as r:
