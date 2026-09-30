@@ -43,11 +43,13 @@ FENCE = re.compile(r"```(?:python|py)?[ \t]*\r?\n(.*?)```", re.DOTALL)
 NOISE = re.compile(r"(?m)^(session_id: |Warning: Unknown toolsets).*\n?")  # hermes CLI 노이즈 줄
 MODES = ("format", "logic")
 LOGIC_NOTE = (
-    "## 이번 모드: 논리 린트 수정(줄 번호 삭제 방식)\n"
-    "코드를 다시 쓰지 마라. 위 린트 오류를 해결하려면 삭제해야 하는 원본 코드의 줄 번호만 JSON 배열로 출력하라. "
-    "예: [12, 14]. 배열 외에는 아무것도 출력하지 마라. 줄 번호는 아래 '소스 코드'의 왼쪽 번호를 그대로 쓴다."
+    "## 이번 모드: 논리 린트 수정(줄 단위 치환 방식)\n"
+    "코드를 다시 쓰지 마라. 위 린트 오류를 해결하려고 고쳐야 하는 줄만 JSON 객체 배열로 출력하라. "
+    '형식: [{"line": 5, "replace": "import os, sys"}]. line은 아래 \'소스 코드\' 왼쪽 번호, '
+    'replace는 그 줄을 대체할 코드 한 줄 전체(들여쓰기 포함)다. 줄을 통째로 지우려면 "replace": "" 로 쓴다. '
+    "린트가 지적한 줄만 고치고, 원래 줄에 없던 새 이름·코드를 만들지 마라. 배열 외에는 아무것도 출력하지 마라."
 )
-JSON_ARRAY = re.compile(r"\[[\d,\s]*\]")
+WORD = re.compile(r"\w+")
 # 삭제를 허용하는 줄: 미사용 import(F401)·미사용 변수(F841)로 지적된 줄만. F821(미정의) 등의 줄은 대상 아님
 # (실측: 다중 이름 import 줄을 통째로 지운 뒤 생긴 F821 사용 줄 11개를 헤르메스가 연쇄로 지우려 했다).
 FLAGGED = re.compile(r"(?m)^F(?:401|841)\b[^\n]*\n\s*-->\s.*?:(\d+):\d+")
@@ -117,22 +119,61 @@ def log_sample(mode: str, prompt: str, completion: str) -> None:
         f.write(json.dumps({"prompt": prompt, "completion": completion}, ensure_ascii=False) + "\n")
 
 
-def delete_lines(src: str, reply: str, feedback: str) -> tuple[str | None, str]:
-    """logic 모드: 헤르메스가 답한 줄 번호 배열을 읽어 해당 줄을 지운다. (새 소스 또는 None, 실패 사유).
-    ① 응답의 마지막 JSON 배열만 읽고 ② 번호는 린트가 지적한 줄에 속해야 하며 ③ 큰 번호부터(역순) 지워 번호가 밀리지 않게 한다."""
-    arrays = JSON_ARRAY.findall(NOISE.sub("", reply))
-    if not arrays:
-        return None, "응답에서 줄 번호 JSON 배열을 찾지 못함. [12, 14] 형태의 배열만 출력할 것"
-    nums = json.loads(arrays[-1])
+def has_call(line: str) -> bool:
+    """줄이 함수 호출(부작용 가능)을 포함하는지. 지우면 동작이 바뀔 수 있어 삭제 대신 호출을 남기게 한다."""
+    try:
+        return any(isinstance(n, ast.Call) for n in ast.walk(ast.parse(line.strip())))
+    except SyntaxError:
+        return False
+
+
+def parse_edits(reply: str) -> list | None:
+    """응답에서 마지막으로 해석되는 JSON 배열(줄 수정 목록)을 찾는다. 중첩 괄호·문자열 안의 대괄호가 있어 정규식 대신 raw_decode."""
+    text, dec, found = NOISE.sub("", reply), json.JSONDecoder(), None
+    for i, ch in enumerate(text):
+        if ch == "[":
+            try:
+                obj, _ = dec.raw_decode(text, i)
+            except ValueError:
+                continue
+            if isinstance(obj, list):
+                found = obj
+    return found
+
+
+def apply_edits(src: str, reply: str, feedback: str) -> tuple[str | None, str, list | None]:
+    """logic 모드: 헤르메스의 [{"line","replace"}] 배열을 원본 줄에 적용한다. (새 소스 또는 None, 실패 사유, 검증된 수정 목록).
+    ① 줄 번호는 F401/F841로 지적된 줄만 ② replace는 한 줄이며 원래 줄에 없던 이름(단어)을 만들 수 없다(환각 주입 방지)
+    ③ 줄 수가 변하지 않는 치환은 번호가 밀리지 않고, 삭제("")는 큰 번호부터(역순) 처리한다."""
+    edits = parse_edits(reply)
+    if not edits:
+        return None, '응답에서 수정 목록 JSON 배열을 찾지 못함. [{"line": 5, "replace": "..."}] 형태의 배열만 출력할 것', None
     lines = src.splitlines(keepends=True)
     flagged = {int(n) for n in FLAGGED.findall(feedback)}
-    if not nums or len(set(nums)) != len(nums) or any(n < 1 or n > len(lines) for n in nums):
-        return None, f"줄 번호가 비었거나 중복·범위 밖: {nums}"
-    if not set(nums) <= flagged:
-        return None, f"린트가 지적하지 않은 줄({sorted(set(nums) - flagged)})은 지울 수 없음. 지적된 줄: {sorted(flagged)}"
-    for n in sorted(nums, reverse=True):
-        del lines[n - 1]
-    return "".join(lines), ""
+    seen: set[int] = set()
+    for e in edits:
+        if not (isinstance(e, dict) and isinstance(e.get("line"), int) and isinstance(e.get("replace"), str)):
+            return None, f'형식 위반: {e!r}. {{"line": 정수, "replace": 문자열}} 객체만 허용', None
+        n, new = e["line"], e["replace"]
+        if n < 1 or n > len(lines) or n in seen:
+            return None, f"줄 번호가 범위 밖이거나 중복: {n}", None
+        if n not in flagged:
+            return None, f"린트가 지적하지 않은 줄({n})은 고칠 수 없음. 고칠 수 있는 줄: {sorted(flagged)}", None
+        if "\n" in new or "\r" in new:
+            return None, f"replace는 한 줄이어야 함(줄 {n})", None
+        if not set(WORD.findall(new)) - {"_"} <= set(WORD.findall(lines[n - 1])):  # '_ = f()'는 관용 표현이라 허용
+            return None, f"줄 {n}: 원래 줄에 없던 이름을 만들 수 없음(치환은 원래 줄의 부분집합만 허용)", None
+        if not new.strip() and has_call(lines[n - 1]):
+            return None, (f"줄 {n}은 함수 호출을 포함해 통째로 지우면 부작용이 사라짐. "
+                          "호출은 남기고 미사용 변수만 떼어라(예: '    f()' 또는 '    _ = f()')"), None
+        seen.add(n)
+    for e in sorted(edits, key=lambda e: e["line"], reverse=True):
+        n, new = e["line"], e["replace"]
+        if new.strip():
+            lines[n - 1] = new.rstrip() + ("\n" if lines[n - 1].endswith("\n") else "")
+        else:
+            del lines[n - 1]
+    return "".join(lines), "", edits
 
 
 def actor(path: str, feedback: str, mode: str = "format") -> tuple[bool, str, tuple[str, str] | None]:
@@ -151,7 +192,7 @@ def actor(path: str, feedback: str, mode: str = "format") -> tuple[bool, str, tu
         with open(os.environ["ACL_DUMP"], "a", encoding="utf-8") as f:
             f.write(r.stdout + "\n=====\n")
     if mode == "logic":
-        code, why = delete_lines(src, r.stdout, feedback)
+        code, why, edits = apply_edits(src, r.stdout, feedback)
         try:
             if code is not None:
                 ast.parse(code)
@@ -163,7 +204,7 @@ def actor(path: str, feedback: str, mode: str = "format") -> tuple[bool, str, tu
             return False, why, None
         with open(path, "w", encoding="utf-8", newline="\n") as f:
             f.write(code)
-        return True, "", (sample_prompt, JSON_ARRAY.findall(NOISE.sub("", r.stdout))[-1])
+        return True, "", (sample_prompt, json.dumps(edits, ensure_ascii=False))
     code = extract_code(r.stdout, ref=src, mode=mode)
     if code is None:
         need = "원본과 로직·주석(docstring, shebang 포함)이 같은" if mode == "format" else "원본의 함수·클래스를 모두 유지한"
@@ -194,7 +235,7 @@ def run_loop(path: str, mode: str = "format", select: str | None = None) -> dict
                 continue
             passed, feedback = critic(path, mode, select)
             if passed and sample:
-                log_sample("logic_lines" if mode == "logic" else mode, *sample)
+                log_sample("logic_replace" if mode == "logic" else mode, *sample)
     finally:
         if not passed:
             shutil.copyfile(backup, path)  # 실패 시 원본 복원
