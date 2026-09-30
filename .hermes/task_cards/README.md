@@ -31,3 +31,4 @@
 - [maya_sns_draft.md](maya_sns_draft.md): 마야, 홈페이지 글에서 SNS 채널별 초안(Local, 초안 전용). 초안 상태.
 - [note_pr_description.md](note_pr_description.md): 노트, PR 설명 초안(Local, 초안 전용). 초안 상태.
 - [fit_tone_tags.md](fit_tone_tags.md): 핏, 음성 대본 톤 태그 초안(Local, 초안 전용). 초안 상태.
+- [jitu_name_scrub.md](jitu_name_scrub.md): 지투, 우편·알림 초안의 고객명 노출 검사와 치환(Local). 초안 상태.
