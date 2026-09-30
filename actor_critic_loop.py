@@ -74,6 +74,8 @@ def ask_backend(prompt: str) -> subprocess.CompletedProcess:
     if backend.startswith("openrouter:"):
         script = os.path.join(ROOT, "scripts", "ops", "or_ask.py")
         return run([os.environ.get("ACL_PYTHON", sys.executable), script, backend.split(":", 1)[1]], stdin=prompt)
+    if backend.startswith("ollama:"):
+        return run([sys.executable, os.path.join(ROOT, "scripts", "ops", "ollama_ask.py"), backend.split(":", 1)[1]], stdin=prompt, timeout=600)
     return run([BASH, HX, "ask-pure"], stdin=prompt)
 
 
