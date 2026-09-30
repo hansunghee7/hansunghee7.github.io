@@ -240,7 +240,7 @@ def actor(path: str, feedback: str, mode: str = "format") -> tuple[bool, str, tu
         src = f.read()
     shown = "".join(f"{i:>4}| {ln}" for i, ln in enumerate(src.splitlines(keepends=True), 1)) if mode == "logic" else src
     sample_prompt = f"## 린트 에러 로그\n{feedback}\n\n## 소스 코드\n{shown}"
-    mode_note = f"\n\n{LOGIC_NOTE}" if mode == "logic" else ""
+    mode_note = f"\n\n{LOGIC_NOTE}{os.environ.get('ACL_EXTRA_NOTE', '')}" if mode == "logic" else ""
     r = ask_backend(f"{guard}{mode_note}\n\n{sample_prompt}")
     if r.returncode != 0:
         return False, f"헤르메스 호출 실패(exit {r.returncode}): {r.stderr.strip()[:300]}", None
