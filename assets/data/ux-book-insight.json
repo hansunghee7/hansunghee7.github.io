@@ -2072,13 +2072,13 @@
     {
       "date": "2026-10-01",
       "yes24": {
-        "mkt_rank": 165,
-        "ad_rank": 11,
-        "web_rank": 25,
-        "uxui_rank": 13,
-        "design_rank": 46,
+        "mkt_rank": 163,
+        "ad_rank": 10,
+        "web_rank": 28,
+        "uxui_rank": 16,
+        "design_rank": 48,
         "econ_rank": null,
-        "sales_index": 2169,
+        "sales_index": 2079,
         "reviews": 18,
         "rating": 10.0
       },
@@ -2100,5 +2100,5 @@
       }
     }
   ],
-  "updated_at": "2026-09-30T15:16:22.690687+00:00"
+  "updated_at": "2026-09-30T20:05:52.370566+00:00"
 }

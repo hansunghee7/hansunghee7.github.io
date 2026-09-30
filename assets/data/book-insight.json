@@ -1045,9 +1045,9 @@
         "info_mgmt_rank": null
       },
       "kyobo": {
-        "category_rank": null,
-        "badge_rank": null,
-        "badge_category": null,
+        "category_rank": 9,
+        "badge_rank": 702,
+        "badge_category": "자기계발",
         "reviews": 0,
         "rating": null
       },
@@ -1060,5 +1060,5 @@
       }
     }
   ],
-  "updated_at": "2026-09-30T15:14:52.162549+00:00"
+  "updated_at": "2026-09-30T20:04:19.145139+00:00"
 }
