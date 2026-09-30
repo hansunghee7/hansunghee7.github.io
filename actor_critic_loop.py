@@ -52,7 +52,7 @@ LOGIC_NOTE = (
 WORD = re.compile(r"\w+")
 # 삭제를 허용하는 줄: 미사용 import(F401)·미사용 변수(F841)로 지적된 줄만. F821(미정의) 등의 줄은 대상 아님
 # (실측: 다중 이름 import 줄을 통째로 지운 뒤 생긴 F821 사용 줄 11개를 헤르메스가 연쇄로 지우려 했다).
-FLAGGED = re.compile(r"(?m)^F(?:401|841)\b[^\n]*\n\s*-->\s.*?:(\d+):\d+")
+FLAGGED = re.compile(r"(?m)^F(?:401|811|841)\b[^\n]*\n\s*-->\s.*?:(\d+):\d+")  # F811: 중복 정의 줄(단, def 한 줄만 지우면 문법 검사가 거부)
 
 # 에스컬레이션 페일오버 순서(AI_ROUTING_POLICY): 솔라 프로 -> 제미나이 -> 네모트론 -> Qwen
 FAILOVER = ["solar-pro", "gemini", "nemotron", "qwen"]
@@ -61,6 +61,16 @@ FAILOVER = ["solar-pro", "gemini", "nemotron", "qwen"]
 def run(cmd: list[str], stdin: str | None = None, timeout: int = 300) -> subprocess.CompletedProcess:
     return subprocess.run(cmd, input=stdin, capture_output=True, text=True, encoding="utf-8",
                           errors="replace", timeout=timeout, creationflags=NOWIN, check=False)
+
+
+def ask_backend(prompt: str) -> subprocess.CompletedProcess:
+    """Actor 모델 선택. 기본은 로컬 헤르메스(도구 차단 ask-pure: 기본 ask는 파일을 직접 고쳐 파서를 우회한다).
+    ACL_BACKEND=openrouter:<모델 id>이면 scripts/ops/or_ask.py로 호출한다(키는 OPENROUTER_API_KEY 환경변수, ACL_PYTHON=litellm 설치된 python)."""
+    backend = os.environ.get("ACL_BACKEND", "hermes")
+    if backend.startswith("openrouter:"):
+        script = os.path.join(ROOT, "scripts", "ops", "or_ask.py")
+        return run([os.environ.get("ACL_PYTHON", sys.executable), script, backend.split(":", 1)[1]], stdin=prompt)
+    return run([BASH, HX, "ask-pure"], stdin=prompt)
 
 
 def fingerprint(src: str) -> tuple:
@@ -185,7 +195,7 @@ def actor(path: str, feedback: str, mode: str = "format") -> tuple[bool, str, tu
     shown = "".join(f"{i:>4}| {ln}" for i, ln in enumerate(src.splitlines(keepends=True), 1)) if mode == "logic" else src
     sample_prompt = f"## 린트 에러 로그\n{feedback}\n\n## 소스 코드\n{shown}"
     mode_note = f"\n\n{LOGIC_NOTE}" if mode == "logic" else ""
-    r = run([BASH, HX, "ask-pure"], stdin=f"{guard}{mode_note}\n\n{sample_prompt}")  # 도구 차단: 기본 ask는 파일을 직접 고쳐 파서를 우회한다
+    r = ask_backend(f"{guard}{mode_note}\n\n{sample_prompt}")
     if r.returncode != 0:
         return False, f"헤르메스 호출 실패(exit {r.returncode}): {r.stderr.strip()[:300]}", None
     if os.environ.get("ACL_DUMP"):  # 디버그: 헤르메스 원문 응답 보관(스트레스 테스트용)
