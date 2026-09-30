@@ -47,9 +47,13 @@ LOGIC_NOTE = (
     "코드를 다시 쓰지 마라. 위 린트 오류를 해결하려고 고쳐야 하는 줄만 JSON 객체 배열로 출력하라. "
     '형식: [{"line": 5, "replace": "import os, sys"}]. line은 아래 \'소스 코드\' 왼쪽 번호, '
     'replace는 그 줄을 대체할 코드 한 줄 전체(들여쓰기 포함)다. 줄을 통째로 지우려면 "replace": "" 로 쓴다. '
-    "린트가 지적한 줄만 고치고, 원래 줄에 없던 새 이름·코드를 만들지 마라. 배열 외에는 아무것도 출력하지 마라."
+    "린트가 지적한 줄만 고치고, 원래 줄에 없던 새 이름·코드를 만들지 마라. 배열 외에는 아무것도 출력하지 마라.\n"
+    "여러 줄 블록(함수 전체)을 지워야 할 때만 범위 형식을 쓴다: "
+    '[{"start_line": 1, "end_line": 2, "replace": ""}]. 범위는 함수 정의 하나를 데코레이터 없이 처음부터 끝까지 정확히 덮어야 하고 replace는 "" 만 허용한다. '
+    "F811(중복 정의)은 나중(아래) 정의는 그대로 두고, 'from line N'이 가리키는 앞선(위) 정의 블록을 범위로 지운다."
 )
 WORD = re.compile(r"\w+")
+DUP_FROM = re.compile(r"(?m)^F811\b[^\n]*from line (\d+)")
 # 삭제를 허용하는 줄: 미사용 import(F401)·미사용 변수(F841)로 지적된 줄만. F821(미정의) 등의 줄은 대상 아님
 # (실측: 다중 이름 import 줄을 통째로 지운 뒤 생긴 F821 사용 줄 11개를 헤르메스가 연쇄로 지우려 했다).
 FLAGGED = re.compile(r"(?m)^F(?:401|811|841)\b[^\n]*\n\s*-->\s.*?:(\d+):\d+")  # F811: 중복 정의 줄(단, def 한 줄만 지우면 문법 검사가 거부)
@@ -122,11 +126,22 @@ def critic(path: str, mode: str = "format", select: str | None = None) -> tuple[
     return (not logs), "\n".join(logs)
 
 
+def model_tag() -> str:
+    """생성 주체 태그. ACL_MODEL_TAG가 우선, 아니면 백엔드에서 유도한다.
+    로컬 헤르메스의 실제 모델은 `hermes status` 기준 solar-pro4(Upstage Solar)다(8B가 아님)."""
+    if os.environ.get("ACL_MODEL_TAG"):
+        return os.environ["ACL_MODEL_TAG"]
+    b = os.environ.get("ACL_BACKEND", "hermes")
+    if b.startswith("openrouter:"):
+        return b.split(":", 1)[1].split("/")[-1].removesuffix("-instruct")
+    return "hermes-solar-pro4"
+
+
 def log_sample(mode: str, prompt: str, completion: str) -> None:
-    """검증(PASS)된 회차만 JSONL로 추가한다. 실패 회차는 정답이 아니므로 학습 데이터에 넣지 않는다."""
+    """검증(PASS)된 회차만 JSONL로 추가한다. 실패 회차는 정답이 아니므로 학습 데이터에 넣지 않는다. model = 생성 주체 태그."""
     os.makedirs(DATA_DIR, exist_ok=True)
     with open(os.path.join(DATA_DIR, f"{mode}.jsonl"), "a", encoding="utf-8") as f:
-        f.write(json.dumps({"prompt": prompt, "completion": completion}, ensure_ascii=False) + "\n")
+        f.write(json.dumps({"prompt": prompt, "completion": completion, "model": model_tag()}, ensure_ascii=False) + "\n")
 
 
 def has_call(line: str) -> bool:
@@ -164,10 +179,26 @@ def apply_edits(src: str, reply: str, feedback: str) -> tuple[str | None, str, l
         return None, '응답에서 수정 목록 JSON 배열을 찾지 못함. [{"line": 5, "replace": "..."}] 형태의 배열만 출력할 것', None
     lines = src.splitlines(keepends=True)
     flagged = {int(n) for n in FLAGGED.findall(feedback)}
+    dup_from = {int(n) for n in DUP_FROM.findall(feedback)}  # F811 'from line N': 앞선(죽은) 정의의 시작 줄
     seen: set[int] = set()
     for e in edits:
+        if isinstance(e, dict) and "start_line" in e:  # 범위 삭제: 함수 정의 하나를 통째로
+            a, b = e.get("start_line"), e.get("end_line")
+            if not (isinstance(a, int) and isinstance(b, int) and e.get("replace") == "" and set(e) == {"start_line", "end_line", "replace"}):
+                return None, f'형식 위반: {e!r}. 범위는 {{"start_line": 정수, "end_line": 정수, "replace": ""}}만 허용', None
+            if a < 1 or b < a or b > len(lines) or seen & set(range(a, b + 1)):
+                return None, f"범위 {a}-{b}가 파일 밖이거나 다른 수정과 겹침", None
+            if a not in dup_from:
+                return None, f"범위 삭제는 F811이 'from line N'으로 가리킨 앞선 정의({sorted(dup_from)}의 시작 줄)에만 허용됨", None
+            node = next((n for n in ast.walk(ast.parse(src))
+                         if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef)) and n.lineno == a), None)
+            if node is None or node.decorator_list or node.end_lineno != b:
+                return None, (f"범위 {a}-{b}가 데코레이터 없는 함수 정의 하나의 처음부터 끝까지와 정확히 일치하지 않음"
+                              f"(그 정의는 {a}-{getattr(node, 'end_lineno', '?')}줄)"), None
+            seen |= set(range(a, b + 1))
+            continue
         if not (isinstance(e, dict) and isinstance(e.get("line"), int) and isinstance(e.get("replace"), str)):
-            return None, f'형식 위반: {e!r}. {{"line": 정수, "replace": 문자열}} 객체만 허용', None
+            return None, f'형식 위반: {e!r}. {{"line": 정수, "replace": 문자열}} 또는 범위 객체만 허용', None
         n, new = e["line"], e["replace"]
         if n < 1 or n > len(lines) or n in seen:
             return None, f"줄 번호가 범위 밖이거나 중복: {n}", None
@@ -184,7 +215,10 @@ def apply_edits(src: str, reply: str, feedback: str) -> tuple[str | None, str, l
             return None, (f"줄 {n}은 함수 호출을 포함해 통째로 지우면 부작용이 사라짐. "
                           "호출은 남기고 미사용 변수만 떼어라(예: '    f()' 또는 '    _ = f()')"), None
         seen.add(n)
-    for e in sorted(edits, key=lambda e: e["line"], reverse=True):
+    for e in sorted(edits, key=lambda e: e.get("start_line", e.get("line")), reverse=True):
+        if "start_line" in e:
+            del lines[e["start_line"] - 1:e["end_line"]]
+            continue
         n, new = e["line"], e["replace"]
         if new.strip():
             lines[n - 1] = new.rstrip() + ("\n" if lines[n - 1].endswith("\n") else "")

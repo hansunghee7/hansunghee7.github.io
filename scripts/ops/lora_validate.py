@@ -69,7 +69,7 @@ def main() -> None:
     rows = [json.loads(line) for line in open(path, encoding="utf-8") if line.strip()]
     ok, bad, seen = [], [], set()
     for r in rows:
-        key = (r["prompt"], r["completion"])
+        key = (r["prompt"], r["completion"], r.get("model"))  # 다른 모델이 낸 같은 정답은 별개 샘플
         why = "완전 중복" if key in seen else check(r)
         seen.add(key)
         (ok if why is None else bad).append((r, why))
@@ -86,6 +86,10 @@ def main() -> None:
     for r, w in bad:
         print("  거부:", w)
     print(f"고유 prompt {len({r['prompt'] for r, _ in ok})} / 고유 completion {len({r['completion'] for r, _ in ok})}")
+    by_model = {}
+    for r, _ in ok:
+        by_model[r.get("model", "untagged(태그 도입 전)")] = by_model.get(r.get("model", "untagged(태그 도입 전)"), 0) + 1
+    print("모델별 통과:", by_model)
 
 
 if __name__ == "__main__":
