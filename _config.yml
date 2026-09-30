@@ -36,3 +36,5 @@ exclude:
   - bench/
   - test_lint_dummy.py
   - test_lint_logic_dummy.py
+  # 운영 스크립트 폴더(117개 파일)는 사이트에 서빙하지 않는다. 사이트·워크플로가 라이브 주소로 내려받는 곳은 없다(2026-09-30 점검)
+  - scripts/
