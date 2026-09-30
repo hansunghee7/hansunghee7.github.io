@@ -180,6 +180,8 @@ def apply_edits(src: str, reply: str, feedback: str) -> tuple[str | None, str, l
     lines = src.splitlines(keepends=True)
     flagged = {int(n) for n in FLAGGED.findall(feedback)}
     dup_from = {int(n) for n in DUP_FROM.findall(feedback)}  # F811 'from line N': 앞선(죽은) 정의의 시작 줄
+    # 중복 import는 앞선 줄을 지워도 나중 줄이 이름을 다시 묶으므로 같은 결과다(실측: Llama가 프롬프트의 '앞선 정의 삭제' 안내대로 위쪽 줄을 지우려 함)
+    flagged |= {n for n in dup_from if 1 <= n <= len(lines) and lines[n - 1].lstrip().startswith(("import ", "from "))}
     seen: set[int] = set()
     for i, e in enumerate(edits):
         if (isinstance(e, dict) and set(e) == {"start_line", "end_line", "replace"}
