@@ -16,6 +16,7 @@ def main() -> None:
     import litellm
 
     litellm.drop_params = True
+    sys.stdin.reconfigure(encoding="utf-8")  # Windows 기본 cp949로 읽으면 한글 프롬프트가 깨진다(실측)
     resp = litellm.completion(
         model=f"openrouter/{sys.argv[1]}",
         messages=[{"role": "user", "content": sys.stdin.read()}],
