@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-30T06:42:04.535453+00:00",
+  "updated_at": "2026-09-30T14:03:14.813887+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 287,
-    "activeUsers": 245,
-    "newUsers": 245,
-    "returningUsers": 0
+    "sessions": 292,
+    "activeUsers": 249,
+    "newUsers": 247,
+    "returningUsers": 2
   },
   "daily": [
     {
@@ -213,25 +213,25 @@
     },
     {
       "date": "2026-09-29",
-      "sessions": 24,
-      "activeUsers": 23,
-      "newUsers": 22,
+      "sessions": 26,
+      "activeUsers": 24,
+      "newUsers": 23,
       "returningUsers": 1
     },
     {
       "date": "2026-09-30",
-      "sessions": 7,
-      "activeUsers": 6,
-      "newUsers": 6,
-      "returningUsers": 0
+      "sessions": 10,
+      "activeUsers": 9,
+      "newUsers": 7,
+      "returningUsers": 2
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 119,
+    "home": 107,
     "log_home": 0,
     "individual_post": 177,
-    "other": 9
+    "other": 10
   },
   "top_sources": [
     {
@@ -240,31 +240,27 @@
     },
     {
       "source": "linkedin.com",
-      "sessions": 24
+      "sessions": 25
     },
     {
       "source": "google",
-      "sessions": 21
-    },
-    {
-      "source": "(not set)",
-      "sessions": 18
-    },
-    {
-      "source": "(data not available)",
-      "sessions": 11
+      "sessions": 22
     },
     {
       "source": "facebook.com",
-      "sessions": 7
+      "sessions": 11
     },
     {
       "source": "m.facebook.com",
-      "sessions": 7
+      "sessions": 9
     },
     {
       "source": "maru-connect.webflow.io",
       "sessions": 7
+    },
+    {
+      "source": "(not set)",
+      "sessions": 6
     },
     {
       "source": "blog.naver.com",
@@ -279,16 +275,24 @@
       "sessions": 5
     },
     {
+      "source": "(data not available)",
+      "sessions": 3
+    },
+    {
+      "source": "lm.facebook.com",
+      "sessions": 3
+    },
+    {
       "source": "web.telegram.org",
       "sessions": 3
     },
     {
-      "source": "talk.navercorp.com",
+      "source": "l.facebook.com",
       "sessions": 2
     },
     {
-      "source": "lm.facebook.com",
-      "sessions": 1
+      "source": "talk.navercorp.com",
+      "sessions": 2
     }
   ],
   "utm_campaigns": [
@@ -302,31 +306,25 @@
       "source": "linkedin.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 24
+      "sessions": 25
     },
     {
       "source": "google",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 21
-    },
-    {
-      "source": "(data not available)",
-      "medium": "(data not available)",
-      "campaign": "(cross-network)",
-      "sessions": 11
+      "sessions": 22
     },
     {
       "source": "facebook.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 7
+      "sessions": 11
     },
     {
       "source": "m.facebook.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 7
+      "sessions": 9
     },
     {
       "source": "maru-connect.webflow.io",
@@ -353,32 +351,44 @@
       "sessions": 5
     },
     {
+      "source": "(data not available)",
+      "medium": "(data not available)",
+      "campaign": "(cross-network)",
+      "sessions": 3
+    },
+    {
+      "source": "lm.facebook.com",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "sessions": 3
+    },
+    {
       "source": "web.telegram.org",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 3
     },
     {
-      "source": "talk.navercorp.com",
+      "source": "l.facebook.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 2
     },
     {
-      "source": "lm.facebook.com",
+      "source": "talk.navercorp.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 1
+      "sessions": 2
     }
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 43,
+    "section_view_proven": 44,
     "section_view_voices": 38,
     "section_view_book_class": 27,
     "section_view_faq": 25,
     "faq_open": 17,
-    "read_complete": 69
+    "read_complete": 72
   },
   "contact_funnel": {
     "contact_open": 8,
@@ -400,12 +410,12 @@
     {
       "path": "/logs/631",
       "title": "/logs/631",
-      "sessions": 18
+      "sessions": 17
     },
     {
       "path": "/logs/620",
       "title": "/logs/620",
-      "sessions": 13
+      "sessions": 14
     },
     {
       "path": "/logs/301",
@@ -418,18 +428,18 @@
       "sessions": 4
     },
     {
-      "path": "/logs/206",
-      "title": "/logs/206",
-      "sessions": 3
-    },
-    {
       "path": "/logs/628",
       "title": "/logs/628",
-      "sessions": 3
+      "sessions": 4
     },
     {
       "path": "/logs/636",
       "title": "/logs/636",
+      "sessions": 4
+    },
+    {
+      "path": "/logs/206",
+      "title": "/logs/206",
       "sessions": 3
     },
     {
@@ -485,8 +495,8 @@
     {
       "path": "/logs/620/",
       "title": "팀이 커질수록 대표만 모르는 것",
-      "uniqueViews": 13,
-      "views": 15
+      "uniqueViews": 14,
+      "views": 16
     },
     {
       "path": "/logs/301/",
@@ -513,6 +523,12 @@
       "views": 5
     },
     {
+      "path": "/logs/636/",
+      "title": "바쁜 하루가 끝났는데 남은 게 없다면",
+      "uniqueViews": 4,
+      "views": 4
+    },
+    {
       "path": "/logs/206/",
       "title": "평범을 거부한다. 헤더윅 스튜디오",
       "uniqueViews": 3,
@@ -521,12 +537,6 @@
     {
       "path": "/logs/6/",
       "title": "자정이 가까워지도록 AI 얘기를 원 없이 나눴어요.",
-      "uniqueViews": 3,
-      "views": 3
-    },
-    {
-      "path": "/logs/636/",
-      "title": "바쁜 하루가 끝났는데 남은 게 없다면",
       "uniqueViews": 3,
       "views": 3
     },
@@ -557,7 +567,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 280,
+    "total_desktop_sessions": 283,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
@@ -578,7 +588,7 @@
       {
         "resolution": "1600x1600",
         "width": 1600,
-        "sessions": 44
+        "sessions": 45
       },
       {
         "resolution": "1536x960",
@@ -588,17 +598,17 @@
       {
         "resolution": "2000x2000",
         "width": 2000,
-        "sessions": 7
+        "sessions": 8
+      },
+      {
+        "resolution": "1440x900",
+        "width": 1440,
+        "sessions": 6
       },
       {
         "resolution": "1512x982",
         "width": 1512,
         "sessions": 6
-      },
-      {
-        "resolution": "1440x900",
-        "width": 1440,
-        "sessions": 5
       },
       {
         "resolution": "1536x864",
