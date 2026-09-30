@@ -39,9 +39,10 @@ def main() -> None:
     a = ap.parse_args()
     targets = sorted(os.path.relpath(p, ROOT).replace("\\", "/") for p in glob.glob(os.path.join(ROOT, "bench", "hard_*.py")))
     jobs = [(t, i) for t in targets for i in range(1, a.n + 1)]
-    with ThreadPoolExecutor(4) as ex:
+    with ThreadPoolExecutor(int(os.environ.get("ACL_PAR", "4"))) as ex:
         rows = list(ex.map(lambda j: one(j[0], j[1], a.extra), jobs))
     out = os.path.join(ROOT, ".hermes", "data", "bench_results", f"{a.tag}.jsonl")
+    os.makedirs(os.path.dirname(out), exist_ok=True)
     with open(out, "w", encoding="utf-8") as f:
         f.writelines(json.dumps(r, ensure_ascii=False) + "\n" for r in rows)
     for t in targets:
