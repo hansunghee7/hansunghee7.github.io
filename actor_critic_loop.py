@@ -181,7 +181,10 @@ def apply_edits(src: str, reply: str, feedback: str) -> tuple[str | None, str, l
     flagged = {int(n) for n in FLAGGED.findall(feedback)}
     dup_from = {int(n) for n in DUP_FROM.findall(feedback)}  # F811 'from line N': 앞선(죽은) 정의의 시작 줄
     seen: set[int] = set()
-    for e in edits:
+    for i, e in enumerate(edits):
+        if (isinstance(e, dict) and set(e) == {"start_line", "end_line", "replace"}
+                and e["start_line"] == e["end_line"] and isinstance(e["start_line"], int) and e["replace"] == ""):
+            edits[i] = e = {"line": e["start_line"], "replace": ""}  # 한 줄짜리 범위는 한 줄 삭제와 같다(같은 가드 적용). 실측: Llama가 import 한 줄을 범위로 답함
         if isinstance(e, dict) and "start_line" in e:  # 범위 삭제: 함수 정의 하나를 통째로
             a, b = e.get("start_line"), e.get("end_line")
             if not (isinstance(a, int) and isinstance(b, int) and e.get("replace") == "" and set(e) == {"start_line", "end_line", "replace"}):
