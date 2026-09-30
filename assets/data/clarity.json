@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-30T16:22:58.932595+00:00",
+  "updated_at": "2026-09-30T20:45:30.571253+00:00",
   "note": "history는 매일 지난 24시간 집계를 누적한 것. latest_*는 최근 3일 창.",
   "history": [
     {
@@ -5546,8 +5546,8 @@
           {
             "totalSessionCount": 9,
             "totalBotSessionCount": 1,
-            "distinctUserCount": 12,
-            "pagesPerSessionPercentage": 1.25
+            "distinctUserCount": 11,
+            "pagesPerSessionPercentage": 1.2727272727272727
           }
         ],
         "EngagementTime": [
@@ -5684,10 +5684,6 @@
           {
             "url": "https://simplifier.co.kr/logs/301/",
             "visitsCount": 2
-          },
-          {
-            "url": "https://simplifier.co.kr/logs/146/",
-            "visitsCount": 1
           },
           {
             "url": "https://simplifier.co.kr/logs/636/",
