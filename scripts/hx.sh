@@ -65,11 +65,15 @@ case "$cmd" in
     # 우편함 배달원을 지금 한 번 실행한다(폴링을 기다리지 않는 즉시 배달). 인자 없는 고정 명령이라 안전하다.
     # 배달원은 상태 파일로 중복 발송을 막으므로 크론과 겹쳐 실행돼도 같은 우편을 두 번 보내지 않는다.
     ps_run "${UTF8} python 'C:\Users\PC\AppData\Local\hermes\scripts\mailbox_courier.py'" ;;
-  ask)
+  ask|ask-pure)
     # 업무지시는 따옴표 문제를 피하려고 base64로 실어 보내고, 신PC 임시 폴더에 파일로 내려 --query-file로 읽힌다.
+    # ask-pure: 도구 없는 순수 텍스트 모드(2026-09-30 실측). 기본 ask는 헤르메스가 파일 도구로 디스크를 직접 고친다(해시 변화 확인).
+    # 존재하지 않는 툴셋 이름을 주면 켜지는 도구가 0개가 되고(경고만 출력), 파일 수정 지시에도 파일이 그대로였다.
+    # --max-turns 1은 도구 호출 반복을 한 번으로 묶는 이중 안전장치.
+    EXTRA=""; [ "$cmd" = ask-pure ] && EXTRA="-t no_tools --max-turns 1"
     b64=$(base64 -w0)
     [ -n "$b64" ] || { echo "표준입력이 비었음" >&2; exit 2; }
-    ps_run "${UTF8} \$t=[Text.Encoding]::UTF8.GetString([Convert]::FromBase64String('$b64')); \$f=Join-Path \$env:TEMP ('hx_'+[guid]::NewGuid().ToString('N')+'.txt'); [IO.File]::WriteAllText(\$f,\$t,(New-Object Text.UTF8Encoding \$false)); try { hermes chat --query-file \$f --oneshot -Q } finally { Remove-Item -LiteralPath \$f -ErrorAction SilentlyContinue }" ;;
+    ps_run "${UTF8} \$t=[Text.Encoding]::UTF8.GetString([Convert]::FromBase64String('$b64')); \$f=Join-Path \$env:TEMP ('hx_'+[guid]::NewGuid().ToString('N')+'.txt'); [IO.File]::WriteAllText(\$f,\$t,(New-Object Text.UTF8Encoding \$false)); try { hermes chat --query-file \$f --oneshot -Q $EXTRA } finally { Remove-Item -LiteralPath \$f -ErrorAction SilentlyContinue }" ;;
   put)
     [ "${HX_MODE:-}" = lite ] && { echo "거부: lite 모드(hx_lite.sh)에서는 put(스크립트 교체)을 쓸 수 없음" >&2; exit 3; }
     # 스크립트 배포(사장님 허용 2026-09-20: 보안·되돌릴 수 없는 것 외의 스크립트 수정).
