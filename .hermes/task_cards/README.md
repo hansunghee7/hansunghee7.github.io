@@ -28,3 +28,5 @@
 ## 등록된 카드
 
 - [lint_fix.md](lint_fix.md): 탐, 린트 수정(F401·F811·F841). 첫 공식 카드.
+- [maya_sns_draft.md](maya_sns_draft.md): 마야, 홈페이지 글에서 SNS 채널별 초안(Local, 초안 전용). 초안 상태.
+- [note_pr_description.md](note_pr_description.md): 노트, PR 설명 초안(Local, 초안 전용). 초안 상태.
