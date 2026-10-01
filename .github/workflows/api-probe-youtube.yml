@@ -1,0 +1,42 @@
+# 일회용 점검(2026-10-01, N103 비티 B2 판정): 기존 YOUTUBE_API_KEY로 댓글 본문(commentThreads)을 가져올 수 있는지 숫자만 출력한다.
+# 로그는 공개이므로 댓글 내용은 출력하지 않는다. 점검 뒤 이 파일을 삭제한다.
+name: api-probe-youtube
+on: workflow_dispatch
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: probe
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: |
+          python3 - <<'PY'
+          import json, os, urllib.request, urllib.parse
+          K = os.environ["YOUTUBE_API_KEY"]
+          def g(path, **p):
+              p["key"] = K
+              try:
+                  with urllib.request.urlopen("https://www.googleapis.com/youtube/v3/%s?%s" % (path, urllib.parse.urlencode(p)), timeout=30) as r:
+                      return r.status, json.load(r)
+              except urllib.error.HTTPError as e:
+                  return e.code, json.loads(e.read().decode("utf-8", "ignore") or "{}")
+          s, d = g("channels", part="contentDetails,statistics", forHandle="@sinkihanapt")
+          print("channels", s)
+          ch = d["items"][0]; up = ch["contentDetails"]["relatedPlaylists"]["uploads"]
+          s, d = g("playlistItems", part="contentDetails", playlistId=up, maxResults=10)
+          vids = [i["contentDetails"]["videoId"] for i in d["items"]]
+          print("videos", len(vids))
+          s, d = g("videos", part="statistics", id=",".join(vids))
+          cc = {v["id"]: int(v["statistics"].get("commentCount", 0)) for v in d["items"]}
+          print("commentCount per video:", sorted(cc.values(), reverse=True))
+          tot = 0
+          for v in vids:
+              s, d = g("commentThreads", part="snippet", videoId=v, maxResults=20, textFormat="plainText")
+              n = len(d.get("items", [])) if s == 200 else -1
+              chars = sum(len(i["snippet"]["topLevelComment"]["snippet"]["textDisplay"]) for i in d.get("items", [])) if s == 200 else 0
+              tot += max(n, 0)
+              print("commentThreads", v[:4] + "..", "status", s, "threads", n, "chars", chars, "" if s == 200 else d.get("error", {}).get("errors", [{}])[0].get("reason"))
+          print("total threads fetched", tot)
+          PY
