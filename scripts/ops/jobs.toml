@@ -181,3 +181,11 @@ path = 'C:\work\_ops\gpu_usage.csv'
 max_age_min = 15
 name = "GPU 사용 패턴 표본 수집(작업 스케줄러 simplifier-gpu-sample, 1분마다)"
 note = "2026-09-30 탐 등록(N92 측정용). pythonw로 창 없이 1분마다 VRAM·사용률·프로세스를 gpu_usage.csv에 한 줄 추가. 15분 넘게 안 갱신되면 멈춤. 1회 실행 종료 코드 0·행 추가 확인(14:57). 측정 끝나면 작업 삭제."
+
+[[job]]
+id = "cron:bt-loop"
+kind = "file_age"
+path = 'C:\work\_ops\bt\last_run'
+max_age_min = 6000
+name = "비티 상시 검토 루프(작업 스케줄러 simplifier-bt-loop, 월·목 10:00, bt_loop.py)"
+note = "2026-10-01 등록(N71, 사장님 지시). 큐 C:/work/_ops/bt/queue.md의 `대기` 첫 항목을 구PC agy에 보내 답을 replies/에 저장하고 탐에게 우편을 보낸다. 한도 가드: 7일 2회, 간격 36시간, 실패 시 24시간 쉼. 실행이 건너뛰어도(대기 없음·가드) last_run은 갱신되므로 4일 넘게 안 바뀌면 스케줄러가 멈춘 것. 수동 1회 실행 성공 증거: 10/1 22:00 B1 답 4017자 저장."
