@@ -11,7 +11,7 @@
   python scripts/ops/gemini_fast.py "질문"            # 순환 호출, 답과 지연(초), 사용한 키 지문 출력
   python scripts/ops/gemini_fast.py --each "질문"     # 키별로 1회씩 호출해 지연 비교
 """
-import argparse, hashlib, json, os, re, sys, time, urllib.error, urllib.request
+import argparse, hashlib, json, re, sys, time, urllib.error, urllib.request
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 

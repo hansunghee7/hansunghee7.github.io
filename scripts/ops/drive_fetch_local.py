@@ -24,7 +24,6 @@ r"""drive_fetch_local.py: 구글 드라이브 파일을 클로드 컨텍스트�
 import argparse
 import datetime
 import json
-import os
 import shutil
 import sys
 import time
