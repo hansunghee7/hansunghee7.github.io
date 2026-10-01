@@ -92,6 +92,11 @@ class Exporter:
         pg = self.ctx.new_page()
         pg.on("download", lambda d, n=name: self.ready.__setitem__(n, d))
         pg.goto(f"https://docs.google.com/videos/d/{doc}/edit", wait_until="domcontentloaded", timeout=60000)
+        pg.wait_for_timeout(6000)
+        for _ in range(3):  # 기능 안내 팝업(예: "더욱 정밀하게 수정하세요")이 메뉴를 가린다(2026-10-01 핏)
+            ok = pg.get_by_role("button", name="확인", exact=True)
+            if ok.count() == 0: break
+            ok.first.click(); pg.wait_for_timeout(1500)
         pg.get_by_role("menuitem", name="파일").wait_for(timeout=40000); pg.wait_for_timeout(3000)
         pg.get_by_role("menuitem", name="파일").click(); pg.wait_for_timeout(800)
         pg.get_by_role("menuitem", name="다운로드", exact=False).first.hover(); pg.wait_for_timeout(800)
