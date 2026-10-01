@@ -6,7 +6,7 @@ def run(payload):
     return p.returncode
 
 def test_blocks_boss_context():
-    assert run({"tool_name": "SendMessage", "tool_input": {"to": "탐", "message": "[지투→탐] 사장님이 깨진 화면을 봤는데 검수 결과입니다"}}) == 2
+    assert run({"tool_name": "SendMessage", "tool_input": {"to": "탐", "message": "[지투→탐] UX 가이드 업데이트: 사장님이 깨진 화면을 봤는데 검수 결과입니다"}}) == 2
 
 def test_allows_update_only():
     assert run({"tool_name": "SendMessage", "tool_input": {"to": "탐", "message": "[지투→탐] UX 가이드 업데이트(2026-09-26.17): 1.29 상태 아이콘 - 뜻은 아이콘마다 올리면 표시"}}) == 0
@@ -15,7 +15,7 @@ def test_other_sender_untouched():
     assert run({"tool_name": "SendMessage", "tool_input": {"to": "탐", "message": "[노트→탐] 사장님 확인 요청 pinBase 전달"}}) == 0
 
 def test_mailbox_blocked():
-    cmd = 'python mailbox/mailbox.py send 탐 "제목" --from 지투 --body "판정: 위반입니다"'
+    cmd = 'python mailbox/mailbox.py send 탐 "제목" --from 지투 --body "UX 가이드 판정: 위반입니다"'
     assert run({"tool_name": "Bash", "tool_input": {"command": cmd}}) == 2
 
 def test_mailbox_to_note_untouched():
@@ -24,6 +24,15 @@ def test_mailbox_to_note_untouched():
 
 def test_work_message_passes():
     assert run({"tool_name": "SendMessage", "tool_input": {"to": "탐", "message": "[지투→탐] 노트 작업 순서를 같이 결정하고 싶습니다. 소셜 로그인과 공통 메뉴 중 무엇이 먼저 필요한지 요청드립니다"}}) == 0
+
+def test_ops_message_with_boss_context_passes():
+    # 2026-10-01 사장님: 탐과는 어떤 소통도 가능(사이트맵 같은 운영 업무, 사장님 언급 포함)
+    cmd = 'python mailbox/mailbox.py send 탐 "사이트맵" --from 지투 --body "사장님 지시로 사이트맵에 새 URL 8개를 반영해 주세요"'
+    assert run({"tool_name": "Bash", "tool_input": {"command": cmd}}) == 0
+
+def test_direct_ux_fix_request_blocked():
+    cmd = 'python mailbox/mailbox.py send 탐 "화면" --from 지투 --body "로그인 버튼 크기를 바꿔 주세요"'
+    assert run({"tool_name": "Bash", "tool_input": {"command": cmd}}) == 2
 
 if __name__ == "__main__":
     for n, f in list(globals().items()):
