@@ -189,3 +189,11 @@ path = 'C:\work\_ops\bt\last_run'
 max_age_min = 6000
 name = "비티 상시 검토 루프(작업 스케줄러 simplifier-bt-loop, 월·목 10:00, bt_loop.py)"
 note = "2026-10-01 등록(N71, 사장님 지시). 큐 C:/work/_ops/bt/queue.md의 `대기` 첫 항목을 구PC agy에 보내 답을 replies/에 저장하고 탐에게 우편을 보낸다. 한도 가드: 7일 2회, 간격 36시간, 실패 시 24시간 쉼. 실행이 건너뛰어도(대기 없음·가드) last_run은 갱신되므로 4일 넘게 안 바뀌면 스케줄러가 멈춘 것. 수동 1회 실행 성공 증거: 10/1 22:00 B1 답 4017자 저장."
+
+[[job]]
+id = "gh:data:Fetch YouTube deep analytics"
+kind = "gh_workflow"
+repo = "hansunghee7/carvit-insight-data"
+workflow = "Fetch YouTube deep analytics"
+name = "유튜브 상세 Analytics(비공개 저장소 carvit-insight-data, 하루 2회 06:17·20:17 KST)"
+note = "2026-10-01 등록(N103). 읽기 전용 OAuth 토큰으로 영상별 지표·유지율 곡선·공유 수를 data/youtube_deep.json에 기록. 수동 1회 실행 성공 증거: 15영상·유지율 14곡선·일별 27일. 첫 예약 자동 실행(10/2 06:17 KST) 확인 필요."
