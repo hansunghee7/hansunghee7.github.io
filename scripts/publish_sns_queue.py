@@ -17,6 +17,7 @@ disallowed_domain으로 거부하기 때문이다(2026-09-24 실측). 업로드 
 import json
 import mimetypes
 import os
+import re
 import sys
 import urllib.error
 import urllib.parse
@@ -124,6 +125,24 @@ def register(item, api_key):
     return False, f"full={json.dumps(data, ensure_ascii=False)[:800]}"
 
 
+def policy_problem(item):
+    """사장님 게시 정책을 어긴 항목이면 이유를, 아니면 None을 돌려준다.
+
+    문서에만 있던 규칙이 세션마다 빠져 이미지 없는 글과 링크 2개 글이 실제로
+    게시됐다(2026-10-02 사장님이 링크드인에서 발견). 그래서 등록 직전에 막는다.
+    - 대표 이미지 필수(사장님 지시 2026-09-28): content.media_source가 비면 등록하지 않는다.
+    - 콜투액션은 관련글 링크 1개만(사장님 지시 2026-09-30·10-02): 본문 URL이 2개 이상이면
+      등록하지 않는다(원문 링크 "from https://..." 줄을 넣지 않는다).
+    """
+    content = item.get("content") or {}
+    if not content.get("media_source"):
+        return "대표 이미지(content.media_source)가 없습니다"
+    urls = re.findall(r"https?://\S+", content.get("body") or "")
+    if len(urls) > 1:
+        return f"본문 링크가 {len(urls)}개입니다(관련글 링크 1개만 허용)"
+    return None
+
+
 def main():
     api_key = os.environ.get("AITOEARN_API_KEY")
     if not api_key:
@@ -136,6 +155,13 @@ def main():
             continue
         if not item.get("approved_by"):
             print(f"[SKIP] {item['id']}: approved_by 없음(사장님 승인 인용 필요)")
+            continue
+        problem = policy_problem(item)
+        if problem:
+            item["status"] = "error"
+            item["note"] = f"정책 관문: {problem}"
+            print(f"[BLOCK] {item['id']}: {problem}")
+            changed = True
             continue
         ok, result = register(item, api_key)
         if ok:
