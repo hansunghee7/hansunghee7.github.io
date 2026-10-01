@@ -1,0 +1,42 @@
+# 일회용 점검(2026-10-01, N103): 기존 FACEBOOK_PAGE_TOKEN으로 페이지에 연결된 인스타 계정과 인사이트 권한이 있는지 예/아니오와 상태 코드만 출력한다.
+# 로그는 공개이므로 토큰·게시물 내용은 출력하지 않는다. 점검 뒤 이 파일을 삭제한다.
+name: api-probe-meta
+on: workflow_dispatch
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: probe
+        env:
+          T: ${{ secrets.FACEBOOK_PAGE_TOKEN }}
+        run: |
+          python3 - <<'PY'
+          import json, os, urllib.parse, urllib.request, urllib.error
+          T = os.environ["T"]; B = "https://graph.facebook.com/v26.0/"
+          def g(path, **p):
+              p["access_token"] = T
+              try:
+                  with urllib.request.urlopen(B + path + "?" + urllib.parse.urlencode(p), timeout=30) as r:
+                      return r.status, json.load(r)
+              except urllib.error.HTTPError as e:
+                  try: d = json.load(e)
+                  except Exception: d = {}
+                  return e.code, d
+          s, d = g("me", fields="id,name,instagram_business_account{id,username,followers_count,media_count}")
+          print("me status", s, "page name len", len(d.get("name", "")))
+          ig = d.get("instagram_business_account")
+          print("instagram_business_account linked:", bool(ig))
+          if s != 200: print("error:", (d.get("error") or {}).get("message", "")[:160])
+          if ig:
+              print("ig username:", ig.get("username"), "followers:", ig.get("followers_count"), "media_count:", ig.get("media_count"))
+              s2, m = g(ig["id"] + "/media", fields="id,media_type,media_product_type,timestamp", limit=5)
+              print("media list status", s2, "items", len(m.get("data", [])) if s2 == 200 else (m.get("error") or {}).get("message", "")[:160])
+              if s2 == 200 and m.get("data"):
+                  mid = m["data"][0]["id"]; mt = m["data"][0].get("media_product_type")
+                  s3, i = g(mid + "/insights", metric="reach,saved,shares" + (",follows" if mt in ("REELS",) else ""))
+                  print("media insights status", s3, "type", mt, "metrics", [x["name"] for x in i.get("data", [])] if s3 == 200 else (i.get("error") or {}).get("message", "")[:200])
+              s4, a = g(ig["id"] + "/insights", metric="reach", period="day")
+              print("account insights status", s4, "" if s4 == 200 else (a.get("error") or {}).get("message", "")[:160])
+          PY
