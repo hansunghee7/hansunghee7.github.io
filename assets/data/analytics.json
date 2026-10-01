@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-30T23:13:17.854250+00:00",
+  "updated_at": "2026-10-01T07:12:41.902163+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 287,
-    "activeUsers": 245,
-    "newUsers": 243,
-    "returningUsers": 2
+    "sessions": 298,
+    "activeUsers": 255,
+    "newUsers": 251,
+    "returningUsers": 4
   },
   "daily": [
     {
@@ -215,21 +215,28 @@
       "date": "2026-09-30",
       "sessions": 12,
       "activeUsers": 11,
-      "newUsers": 9,
-      "returningUsers": 2
+      "newUsers": 10,
+      "returningUsers": 1
+    },
+    {
+      "date": "2026-10-01",
+      "sessions": 11,
+      "activeUsers": 10,
+      "newUsers": 7,
+      "returningUsers": 3
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 104,
+    "home": 111,
     "log_home": 0,
-    "individual_post": 176,
+    "individual_post": 183,
     "other": 9
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 181
+      "sessions": 187
     },
     {
       "source": "linkedin.com",
@@ -240,19 +247,23 @@
       "sessions": 21
     },
     {
+      "source": "(not set)",
+      "sessions": 11
+    },
+    {
       "source": "facebook.com",
       "sessions": 11
     },
     {
       "source": "m.facebook.com",
-      "sessions": 9
+      "sessions": 10
     },
     {
       "source": "maru-connect.webflow.io",
       "sessions": 7
     },
     {
-      "source": "(not set)",
+      "source": "(data not available)",
       "sessions": 6
     },
     {
@@ -266,10 +277,6 @@
     {
       "source": "m.search.naver.com",
       "sessions": 5
-    },
-    {
-      "source": "(data not available)",
-      "sessions": 4
     },
     {
       "source": "lm.facebook.com",
@@ -293,7 +300,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 181
+      "sessions": 187
     },
     {
       "source": "linkedin.com",
@@ -317,13 +324,19 @@
       "source": "m.facebook.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 9
+      "sessions": 10
     },
     {
       "source": "maru-connect.webflow.io",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 7
+    },
+    {
+      "source": "(data not available)",
+      "medium": "(data not available)",
+      "campaign": "(cross-network)",
+      "sessions": 6
     },
     {
       "source": "blog.naver.com",
@@ -342,12 +355,6 @@
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 5
-    },
-    {
-      "source": "(data not available)",
-      "medium": "(data not available)",
-      "campaign": "(cross-network)",
-      "sessions": 4
     },
     {
       "source": "lm.facebook.com",
@@ -376,15 +383,15 @@
   ],
   "ai_referrals": [],
   "engagement_events": {
-    "section_view_proven": 44,
-    "section_view_voices": 38,
-    "section_view_book_class": 27,
-    "section_view_faq": 25,
+    "section_view_proven": 45,
+    "section_view_voices": 39,
+    "section_view_book_class": 28,
+    "section_view_faq": 26,
     "faq_open": 17,
-    "read_complete": 72
+    "read_complete": 73
   },
   "contact_funnel": {
-    "contact_open": 8,
+    "contact_open": 9,
     "generate_lead": 0,
     "contact_error": 0
   },
@@ -393,7 +400,7 @@
     {
       "path": "/logs/625",
       "title": "/logs/625",
-      "sessions": 28
+      "sessions": 29
     },
     {
       "path": "/logs/619",
@@ -413,16 +420,16 @@
     {
       "path": "/logs/301",
       "title": "/logs/301",
-      "sessions": 7
-    },
-    {
-      "path": "/logs/475",
-      "title": "/logs/475",
-      "sessions": 4
+      "sessions": 8
     },
     {
       "path": "/logs/628",
       "title": "/logs/628",
+      "sessions": 6
+    },
+    {
+      "path": "/logs/475",
+      "title": "/logs/475",
       "sessions": 4
     },
     {
@@ -471,7 +478,7 @@
       "path": "/logs/625/",
       "title": "주니어 PM은 왜 스스로 문제를 정의하지 못할까?",
       "uniqueViews": 29,
-      "views": 29
+      "views": 30
     },
     {
       "path": "/logs/631/",
@@ -494,6 +501,12 @@
     {
       "path": "/logs/301/",
       "title": "일에 끌려다닐 때는 어떻게 해야할까?",
+      "uniqueViews": 7,
+      "views": 8
+    },
+    {
+      "path": "/logs/628/",
+      "title": "우리 회사의 핵심가치, 아무도 안 볼 때 동작하나요?",
       "uniqueViews": 6,
       "views": 7
     },
@@ -508,12 +521,6 @@
       "title": "1화 신학기 개강",
       "uniqueViews": 4,
       "views": 10
-    },
-    {
-      "path": "/logs/628/",
-      "title": "우리 회사의 핵심가치, 아무도 안 볼 때 동작하나요?",
-      "uniqueViews": 4,
-      "views": 5
     },
     {
       "path": "/logs/636/",
@@ -560,18 +567,18 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 284,
+    "total_desktop_sessions": 291,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
-        "resolution": "800x600",
-        "width": 800,
-        "sessions": 52
-      },
-      {
         "resolution": "1920x1080",
         "width": 1920,
-        "sessions": 49
+        "sessions": 54
+      },
+      {
+        "resolution": "800x600",
+        "width": 800,
+        "sessions": 53
       },
       {
         "resolution": "2560x1440",
@@ -581,7 +588,7 @@
       {
         "resolution": "1600x1600",
         "width": 1600,
-        "sessions": 45
+        "sessions": 46
       },
       {
         "resolution": "1536x960",
