@@ -75,7 +75,7 @@ def main():
         out, rc = r.stdout, r.returncode
     except subprocess.TimeoutExpired:
         out, rc = "", 124
-    bad = rc != 0 or len(out.strip()) < 300 or re.search(r"quota|rate.?limit|429|exhaust|한도", out[:600], re.I)
+    bad = rc != 0 or len(out.strip()) < 300 or (len(out.strip()) < 1500 and re.search(r"quota|rate.?limit|429|exhaust", out, re.I))  # 긴 정상 답에 "한도"가 나오는 오탐 방지(10/1 B3)
     if bad:
         st["next_allowed"] = (now + timedelta(hours=BACKOFF_H)).isoformat()
         STATE.write_text(json.dumps(st, ensure_ascii=False, indent=1), encoding="utf-8")
