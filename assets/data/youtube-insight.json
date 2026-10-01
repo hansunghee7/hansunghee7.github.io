@@ -1398,7 +1398,7 @@
         },
         {
           "date": "2026-10-01",
-          "views": 2918,
+          "views": 2920,
           "likes": 26,
           "comments": 0
         }
@@ -1614,7 +1614,7 @@
         },
         {
           "date": "2026-10-01",
-          "views": 1250,
+          "views": 1245,
           "likes": 2,
           "comments": 0
         }
@@ -1799,12 +1799,12 @@
       {
         "date": "2026-10-01",
         "subscribers": 34,
-        "total_views": 23396,
+        "total_views": 23759,
         "video_count": 15
       }
     ],
     "title": "신기한 아파트사전",
     "id": "UCTbS2jSG1BvBl4c6EsVx7sA"
   },
-  "updated_at": "2026-09-30T16:29:36.962440Z"
+  "updated_at": "2026-10-01T00:09:03.994453Z"
 }
