@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-01T20:45:35.244803+00:00",
+  "updated_at": "2026-10-01T23:26:23.411313+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 303,
-    "activeUsers": 259,
-    "newUsers": 256,
+    "sessions": 305,
+    "activeUsers": 261,
+    "newUsers": 258,
     "returningUsers": 3
   },
   "daily": [
@@ -220,23 +220,23 @@
     },
     {
       "date": "2026-10-02",
-      "sessions": 2,
-      "activeUsers": 2,
-      "newUsers": 1,
+      "sessions": 4,
+      "activeUsers": 4,
+      "newUsers": 3,
       "returningUsers": 1
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 111,
+    "home": 112,
     "log_home": 0,
-    "individual_post": 188,
+    "individual_post": 189,
     "other": 9
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 192
+      "sessions": 194
     },
     {
       "source": "linkedin.com",
@@ -247,16 +247,16 @@
       "sessions": 23
     },
     {
+      "source": "(not set)",
+      "sessions": 11
+    },
+    {
       "source": "facebook.com",
       "sessions": 11
     },
     {
       "source": "m.facebook.com",
       "sessions": 11
-    },
-    {
-      "source": "(not set)",
-      "sessions": 10
     },
     {
       "source": "maru-connect.webflow.io",
@@ -300,7 +300,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 192
+      "sessions": 194
     },
     {
       "source": "linkedin.com",
@@ -394,12 +394,12 @@
     }
   ],
   "engagement_events": {
-    "section_view_proven": 45,
-    "section_view_voices": 39,
+    "section_view_proven": 46,
+    "section_view_voices": 40,
     "section_view_book_class": 27,
     "section_view_faq": 25,
     "faq_open": 17,
-    "read_complete": 73
+    "read_complete": 75
   },
   "contact_funnel": {
     "contact_open": 9,
@@ -534,6 +534,12 @@
       "views": 10
     },
     {
+      "path": "/logs/6/",
+      "title": "자정이 가까워지도록 AI 얘기를 원 없이 나눴어요.",
+      "uniqueViews": 4,
+      "views": 3
+    },
+    {
       "path": "/logs/636/",
       "title": "바쁜 하루가 끝났는데 남은 게 없다면",
       "uniqueViews": 4,
@@ -548,12 +554,6 @@
     {
       "path": "/logs/206/",
       "title": "평범을 거부한다. 헤더윅 스튜디오",
-      "uniqueViews": 3,
-      "views": 3
-    },
-    {
-      "path": "/logs/6/",
-      "title": "자정이 가까워지도록 AI 얘기를 원 없이 나눴어요.",
       "uniqueViews": 3,
       "views": 3
     },
@@ -578,7 +578,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 295,
+    "total_desktop_sessions": 296,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
@@ -592,14 +592,14 @@
         "sessions": 54
       },
       {
-        "resolution": "2560x1440",
-        "width": 2560,
+        "resolution": "1600x1600",
+        "width": 1600,
         "sessions": 49
       },
       {
-        "resolution": "1600x1600",
-        "width": 1600,
-        "sessions": 48
+        "resolution": "2560x1440",
+        "width": 2560,
+        "sessions": 49
       },
       {
         "resolution": "1536x960",
