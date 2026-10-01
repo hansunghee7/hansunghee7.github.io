@@ -1,20 +1,13 @@
 {
-  "updated_at": "2026-10-01T14:40:02.229722+00:00",
+  "updated_at": "2026-10-01T20:00:51.963005+00:00",
   "range": "last_30_days",
   "totals": {
     "sessions": 303,
-    "activeUsers": 260,
-    "newUsers": 258,
-    "returningUsers": 2
+    "activeUsers": 259,
+    "newUsers": 256,
+    "returningUsers": 3
   },
   "daily": [
-    {
-      "date": "2026-09-01",
-      "sessions": 3,
-      "activeUsers": 3,
-      "newUsers": 3,
-      "returningUsers": 0
-    },
     {
       "date": "2026-09-02",
       "sessions": 4,
@@ -220,15 +213,22 @@
     },
     {
       "date": "2026-10-01",
-      "sessions": 16,
+      "sessions": 17,
       "activeUsers": 15,
       "newUsers": 13,
       "returningUsers": 2
+    },
+    {
+      "date": "2026-10-02",
+      "sessions": 2,
+      "activeUsers": 2,
+      "newUsers": 1,
+      "returningUsers": 1
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 110,
+    "home": 111,
     "log_home": 0,
     "individual_post": 188,
     "other": 9
@@ -240,7 +240,7 @@
     },
     {
       "source": "linkedin.com",
-      "sessions": 25
+      "sessions": 24
     },
     {
       "source": "google",
@@ -256,7 +256,7 @@
     },
     {
       "source": "(not set)",
-      "sessions": 8
+      "sessions": 10
     },
     {
       "source": "maru-connect.webflow.io",
@@ -306,7 +306,7 @@
       "source": "linkedin.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 25
+      "sessions": 24
     },
     {
       "source": "google",
@@ -396,8 +396,8 @@
   "engagement_events": {
     "section_view_proven": 45,
     "section_view_voices": 39,
-    "section_view_book_class": 28,
-    "section_view_faq": 26,
+    "section_view_book_class": 27,
+    "section_view_faq": 25,
     "faq_open": 17,
     "read_complete": 73
   },
@@ -578,7 +578,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 293,
+    "total_desktop_sessions": 295,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
@@ -589,16 +589,16 @@
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 53
-      },
-      {
-        "resolution": "1600x1600",
-        "width": 1600,
-        "sessions": 48
+        "sessions": 54
       },
       {
         "resolution": "2560x1440",
         "width": 2560,
+        "sessions": 49
+      },
+      {
+        "resolution": "1600x1600",
+        "width": 1600,
         "sessions": 48
       },
       {
