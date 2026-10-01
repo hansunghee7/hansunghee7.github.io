@@ -1,4 +1,4 @@
-import sys, time, json
+import sys, time
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 prompt = Path(sys.argv[1]).read_text(encoding="utf-8").strip()

@@ -8,7 +8,7 @@
 사용: python post_rocketpunch.py --file post.txt [--post]
 post.txt: 첫 줄 제목, 빈 줄, 본문, 끝 줄 "from <원문 URL>"(사장님 기존 게시물과 같은 모양)
 """
-import argparse, json, re, sys, time
+import argparse, json, re, sys
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 
