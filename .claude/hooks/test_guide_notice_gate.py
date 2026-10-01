@@ -15,7 +15,7 @@ def test_other_sender_untouched():
     assert run({"tool_name": "SendMessage", "tool_input": {"to": "탐", "message": "[노트→탐] 사장님 확인 요청 pinBase 전달"}}) == 0
 
 def test_mailbox_blocked():
-    cmd = 'python mailbox/mailbox.py send 탐 "제목" --from 지투 --body "UX 가이드 판정: 위반입니다"'
+    cmd = 'python mailbox/mailbox.py send 탐 "제목" --from 지투 --body "UX 가이드 업데이트 판정: 위반입니다"'
     assert run({"tool_name": "Bash", "tool_input": {"command": cmd}}) == 2
 
 def test_mailbox_to_note_untouched():
@@ -33,6 +33,11 @@ def test_ops_message_with_boss_context_passes():
 def test_direct_ux_fix_request_blocked():
     cmd = 'python mailbox/mailbox.py send 탐 "화면" --from 지투 --body "로그인 버튼 크기를 바꿔 주세요"'
     assert run({"tool_name": "Bash", "tool_input": {"command": cmd}}) == 2
+
+def test_ops_message_mentioning_guide_passes():
+    # "가이드 v29를 MCP로 받아 쓰라"는 업무 요청은 가이드 알림이 아니다(10/1 사이트맵 요청이 막혔던 건)
+    cmd = 'python mailbox/mailbox.py send 탐 "요청" --from 지투 --body "사장님 지시입니다. 가이드 v29를 MCP로 받아 쓰시고 사이트맵을 갱신해 주세요"'
+    assert run({"tool_name": "Bash", "tool_input": {"command": cmd}}) == 0
 
 if __name__ == "__main__":
     for n, f in list(globals().items()):
