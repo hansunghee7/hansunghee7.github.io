@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-01T07:12:41.902163+00:00",
+  "updated_at": "2026-10-01T14:40:02.229722+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 298,
-    "activeUsers": 255,
-    "newUsers": 251,
-    "returningUsers": 4
+    "sessions": 303,
+    "activeUsers": 260,
+    "newUsers": 258,
+    "returningUsers": 2
   },
   "daily": [
     {
@@ -215,28 +215,28 @@
       "date": "2026-09-30",
       "sessions": 12,
       "activeUsers": 11,
-      "newUsers": 10,
-      "returningUsers": 1
+      "newUsers": 11,
+      "returningUsers": 0
     },
     {
       "date": "2026-10-01",
-      "sessions": 11,
-      "activeUsers": 10,
-      "newUsers": 7,
-      "returningUsers": 3
+      "sessions": 16,
+      "activeUsers": 15,
+      "newUsers": 13,
+      "returningUsers": 2
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 111,
+    "home": 110,
     "log_home": 0,
-    "individual_post": 183,
+    "individual_post": 188,
     "other": 9
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 187
+      "sessions": 192
     },
     {
       "source": "linkedin.com",
@@ -244,11 +244,7 @@
     },
     {
       "source": "google",
-      "sessions": 21
-    },
-    {
-      "source": "(not set)",
-      "sessions": 11
+      "sessions": 23
     },
     {
       "source": "facebook.com",
@@ -256,14 +252,18 @@
     },
     {
       "source": "m.facebook.com",
-      "sessions": 10
+      "sessions": 11
+    },
+    {
+      "source": "(not set)",
+      "sessions": 8
     },
     {
       "source": "maru-connect.webflow.io",
       "sessions": 7
     },
     {
-      "source": "(data not available)",
+      "source": "m.search.naver.com",
       "sessions": 6
     },
     {
@@ -275,8 +275,8 @@
       "sessions": 5
     },
     {
-      "source": "m.search.naver.com",
-      "sessions": 5
+      "source": "(data not available)",
+      "sessions": 3
     },
     {
       "source": "lm.facebook.com",
@@ -300,7 +300,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 187
+      "sessions": 192
     },
     {
       "source": "linkedin.com",
@@ -312,7 +312,7 @@
       "source": "google",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 21
+      "sessions": 23
     },
     {
       "source": "facebook.com",
@@ -324,7 +324,7 @@
       "source": "m.facebook.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 10
+      "sessions": 11
     },
     {
       "source": "maru-connect.webflow.io",
@@ -333,9 +333,9 @@
       "sessions": 7
     },
     {
-      "source": "(data not available)",
-      "medium": "(data not available)",
-      "campaign": "(cross-network)",
+      "source": "m.search.naver.com",
+      "medium": "referral",
+      "campaign": "(referral)",
       "sessions": 6
     },
     {
@@ -351,10 +351,10 @@
       "sessions": 5
     },
     {
-      "source": "m.search.naver.com",
-      "medium": "referral",
-      "campaign": "(referral)",
-      "sessions": 5
+      "source": "(data not available)",
+      "medium": "(data not available)",
+      "campaign": "(cross-network)",
+      "sessions": 3
     },
     {
       "source": "lm.facebook.com",
@@ -379,9 +379,20 @@
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 2
+    },
+    {
+      "source": "chatgpt.com",
+      "medium": "ai-assistant",
+      "campaign": "(ai-assistant)",
+      "sessions": 1
     }
   ],
-  "ai_referrals": [],
+  "ai_referrals": [
+    {
+      "source": "chatgpt.com",
+      "sessions": 1
+    }
+  ],
   "engagement_events": {
     "section_view_proven": 45,
     "section_view_voices": 39,
@@ -458,6 +469,11 @@
       "sessions": 2
     },
     {
+      "path": "/logs/224",
+      "title": "/logs/224",
+      "sessions": 2
+    },
+    {
       "path": "/logs/34",
       "title": "/logs/34",
       "sessions": 2
@@ -465,11 +481,6 @@
     {
       "path": "/logs/372",
       "title": "/logs/372",
-      "sessions": 2
-    },
-    {
-      "path": "/logs/589",
-      "title": "/logs/589",
       "sessions": 2
     }
   ],
@@ -567,7 +578,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 291,
+    "total_desktop_sessions": 293,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
@@ -581,14 +592,14 @@
         "sessions": 53
       },
       {
-        "resolution": "2560x1440",
-        "width": 2560,
+        "resolution": "1600x1600",
+        "width": 1600,
         "sessions": 48
       },
       {
-        "resolution": "1600x1600",
-        "width": 1600,
-        "sessions": 46
+        "resolution": "2560x1440",
+        "width": 2560,
+        "sessions": 48
       },
       {
         "resolution": "1536x960",
