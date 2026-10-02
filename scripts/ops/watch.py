@@ -54,7 +54,10 @@ def run(cmd, timeout=90, stdin=None):
     try:
         # 작업 스케줄러에서 15분마다 돌 때 콘솔 창이 깜빡이지 않게 한다(Windows)
         flags = getattr(subprocess, "CREATE_NO_WINDOW", 0)
-        p = subprocess.run(cmd, capture_output=True, timeout=timeout, encoding="utf-8", errors="replace", input=stdin, creationflags=flags)
+        if stdin is None:
+            p = subprocess.run(cmd, capture_output=True, timeout=timeout, encoding="utf-8", errors="replace", stdin=subprocess.DEVNULL, creationflags=flags)
+        else:
+            p = subprocess.run(cmd, capture_output=True, timeout=timeout, encoding="utf-8", errors="replace", input=stdin, creationflags=flags)
         return p.returncode, p.stdout
     except Exception as exc:  # 실행 파일이 없거나 시간 초과
         return 1, f"{type(exc).__name__}: {exc}"

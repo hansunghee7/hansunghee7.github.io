@@ -92,7 +92,7 @@ class WatchTest(unittest.TestCase):
         import subprocess
         import tempfile
         d = tempfile.mkdtemp()
-        run = lambda *c: subprocess.run(["git", "-C", d, *c], capture_output=True, check=True)
+        run = lambda *c: subprocess.run(["git", "-C", d, *c], capture_output=True, check=True, stdin=subprocess.DEVNULL)
         run("init", "-q", "-b", "main")
         run("config", "user.email", "t@t")
         run("config", "user.name", "t")

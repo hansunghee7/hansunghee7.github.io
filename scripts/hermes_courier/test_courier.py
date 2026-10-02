@@ -29,7 +29,7 @@ def run(agent_chat=None, extra=()):
     if agent_chat:
         env['COURIER_TEST_AGENT_CHAT'] = agent_chat
     r = subprocess.run([sys.executable, str(SCRIPT), '--mailbox-dir', str(MB), '--state-file', str(ST), *extra],
-                       capture_output=True, text=True, encoding='utf-8', env=env)
+                       capture_output=True, text=True, encoding='utf-8', env=env, stdin=subprocess.DEVNULL)
     return (r.stdout + r.stderr).strip(), r.returncode
 
 
