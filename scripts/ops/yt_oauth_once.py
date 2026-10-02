@@ -1,6 +1,7 @@
 """유튜브 Analytics 읽기 전용 OAuth 동의를 1회 받아 리프레시 토큰을 파일로 저장한다 (2026-10-01, N103).
 
-사용: python yt_oauth_once.py <client_secret_*.json> [--out C:/work/_ops/yt_oauth/token.json]
+사용: python yt_oauth_once.py <client_secret_*.json | 기존 token.json> [--out C:/work/_ops/yt_oauth/token.json]
+  두 번째 채널(예: Simplifier1974)은 같은 OAuth 클라이언트를 쓰므로 기존 token.json을 첫 인자로 주면 그 안의 클라이언트 정보로 동의를 받는다(10/2).
 흐름: 로컬 127.0.0.1 임시 서버를 열고 동의 주소(auth_url.txt)를 만든다. 채널 주인이 브라우저에서 허용하면
 구글이 임시 서버로 코드를 돌려주고, 이 스크립트가 코드를 토큰으로 바꿔 파일에 저장한다.
 - 비밀값(클라이언트 비밀번호·토큰)은 화면과 로그에 출력하지 않는다. 저장 파일은 저장소 밖(_ops)에만 둔다.
@@ -16,7 +17,12 @@ PORT = 0  # 0이면 빈 포트를 운영체제가 골라 준다(8765는 다른 �
 def main():
     src = Path(sys.argv[1])
     out = Path(sys.argv[sys.argv.index("--out") + 1]) if "--out" in sys.argv else Path("C:/work/_ops/yt_oauth/token.json")
-    cfg = json.loads(src.read_text(encoding="utf-8"))["installed"]
+    raw = json.loads(src.read_text(encoding="utf-8"))
+    if "installed" in raw:
+        cfg = raw["installed"]
+    else:  # 기존 token.json: 같은 클라이언트로 다른 채널 동의를 받는다(값은 출력하지 않음)
+        cfg = {"client_id": raw["client_id"], "client_secret": raw["client_secret"],
+               "auth_uri": "https://accounts.google.com/o/oauth2/auth", "token_uri": "https://oauth2.googleapis.com/token"}
     result = {}
     state = secrets.token_urlsafe(16)
     class H(http.server.BaseHTTPRequestHandler):
