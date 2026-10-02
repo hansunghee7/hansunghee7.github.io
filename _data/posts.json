@@ -1825,8 +1825,8 @@
 "related": [
 260,
 539,
-240,
-101
+101,
+240
 ]
 },
 {
@@ -5981,7 +5981,7 @@
 411,
 564,
 412,
-408
+75
 ]
 },
 {
@@ -9012,6 +9012,21 @@
 ]
 },
 {
+"id": 630,
+"title": "AI로 만든 화면에 사고가 나면 누구 책임일까요?",
+"category": "Be the PO",
+"date": "Oct 2. 2026",
+"date_sort": "20261002",
+"url": "/logs/630/",
+"image": "/log_assets/images/630_AI%EB%A1%9C%20%EB%A7%8C%EB%93%A0%20%ED%99%94%EB%A9%B4%EC%97%90%20%EC%82%AC%EA%B3%A0%EA%B0%80%20%EB%82%98%EB%A9%B4%20%EB%88%84%EA%B5%AC%20%EC%B1%85%EC%9E%84%EC%9D%BC%EA%B9%8C%EC%9A%94_cover.jpg",
+"related": [
+193,
+27,
+297,
+139
+]
+},
+{
 "id": 631,
 "title": "토큰을 아끼려다 기술이 늘었다",
 "category": "기획일상",
@@ -9051,9 +9066,9 @@
 "image": "/log_assets/images/636_%EB%B0%94%EC%81%9C%20%ED%95%98%EB%A3%A8%EA%B0%80%20%EB%81%9D%EB%82%AC%EB%8A%94%EB%8D%B0%20%EB%82%A8%EC%9D%80%20%EA%B2%8C%20%EC%97%86%EB%8B%A4%EB%A9%B4_cover.jpg",
 "related": [
 301,
+630,
 9,
-629,
-379
+629
 ]
 }
 ]
