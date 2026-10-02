@@ -124,6 +124,13 @@ if [ -d docs ]; then
   fi
 fi
 
+# 2026-10-03 팀 서랍 1단계 시범(사장님 결정: 1~2일 써 보고 MCP 전환 검토): 세션 시작 카드를 먼저 읽게 한다.
+# 문서에만 두면 세션이 놓치므로 훅이 매번 경로를 보여 준다(CLAUDE#4e7b).
+if [ -d docs/세션카드 ]; then
+  echo "🪪 세션 시작 카드(시범 10/3~10/5): 인수인계보다 먼저 docs/세션카드/<내 이름>.md 를 읽는다. 있는 카드: $(ls docs/세션카드 2>/dev/null | sed 's/\.md$//' | tr '
+' ' ')"
+fi
+
 # 감시가 찾은 문제(꺼진 서비스, 실패한 주기 작업)를 세션 시작 때 보여 준다. 상태 파일이 없으면 조용히 통과.
 if command -v python3 >/dev/null 2>&1; then PY=python3; elif command -v python >/dev/null 2>&1; then PY=python; else PY=""; fi
 [ -n "$PY" ] && run_with_timeout "$PY" "$(dirname "${BASH_SOURCE[0]}")/ops-status.py" 2>/dev/null
