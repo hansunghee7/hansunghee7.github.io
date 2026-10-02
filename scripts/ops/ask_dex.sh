@@ -33,7 +33,8 @@ fi
 # 표준입력을 닫지 않으면 "Reading additional input from stdin"에서 끝없이 기다린다(10/2 실측) → < /dev/null.
 cd "$WORKDIR"
 t0=$(date +%s); rc=0
-timeout 600 codex exec -C "$WORKDIR" --sandbox workspace-write -o "$OUT" "$(cat "$CARD")" < /dev/null > "$OUT.log" 2>&1 || rc=$?
+# 카드는 표준입력(-)으로 넘긴다: 인자로 넘기면 긴 카드(약 30KB)에서 "Argument list too long"으로 실행 전에 실패한다(10/3 실측).
+timeout 600 codex exec -C "$WORKDIR" --sandbox workspace-write -o "$OUT" - < "$CARD" > "$OUT.log" 2>&1 || rc=$?
 calllog 덱스 $(( $(date +%s)-t0 )) $rc "$OUT"
 echo "답 저장: $OUT ($(wc -c < "$OUT") bytes)"
 echo "다음: git -C $WORKDIR diff 를 탐이 읽고 검사를 직접 다시 돌린다. 커밋은 바뀐 파일 이름을 하나씩 지정한다(테스트 산출물 섞임 방지, 10/2)."
