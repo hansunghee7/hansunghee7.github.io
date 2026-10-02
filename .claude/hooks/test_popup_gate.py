@@ -9,7 +9,9 @@ block = ["notepad foo.txt", "notepad.exe a.md", "cd x && notepad a.txt", "echo h
          "cmd /c start x.html", "Start-Process notepad a.txt", "Start-Process -FilePath notepad.exe", "python -c \"import os; os.startfile('a')\"",
          "explorer.exe C:/work/a.txt", "Invoke-Item a.txt", "ii a.txt", "ls | notepad"]
 ok = ["bash start_chromes.sh", "git log --start", "git log --since=x --start", "bash .claude/hooks/session-start.sh", "restart-service x",
-      "Start-Sleep 3", "python scripts/start_server.py", "npm start", "echo notepad", "git commit -m 'notepad 금지 추가'", "ls docs", "ssh pc start-job"]
+      "Start-Sleep 3", "python scripts/start_server.py", "npm start", "echo notepad", "git commit -m 'notepad 금지 추가'", "ls docs", "ssh pc start-job",
+      "schtasks //Query //XML | grep -iE 'Command|Start In'", "echo \"x; notepad a\"",
+      "python - <<'EOF'\nx = (POS + r\"start(?:x)\")\nstart = 3\nEOF", "start = 3"]
 bad = []
 for c in block:
     for t in ("Bash", "PowerShell"):
