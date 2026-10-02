@@ -1089,7 +1089,38 @@
       "millie": {
         "category_rank": 77
       }
+    },
+    {
+      "date": "2026-10-03",
+      "yes24": {
+        "category_rank": null,
+        "category2_rank": null,
+        "sales_index": 660,
+        "reviews": 3,
+        "rating": 10.0
+      },
+      "aladin": {
+        "sales_point": 749,
+        "reviews": 2,
+        "rating": 10.0,
+        "planning_rank": null,
+        "info_mgmt_rank": null
+      },
+      "kyobo": {
+        "category_rank": 10,
+        "badge_rank": 776,
+        "badge_category": "자기계발",
+        "reviews": 0,
+        "rating": null
+      },
+      "ridibooks": {
+        "rating_count": 0,
+        "rating": 0.0
+      },
+      "millie": {
+        "category_rank": 76
+      }
     }
   ],
-  "updated_at": "2026-10-02T14:57:53.330748+00:00"
+  "updated_at": "2026-10-02T20:03:58.879185+00:00"
 }
