@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-02T20:45:33.327247+00:00",
+  "updated_at": "2026-10-02T23:16:38.773448+00:00",
   "range": "last_30_days",
   "totals": {
     "sessions": 323,
@@ -399,7 +399,7 @@
     "section_view_book_class": 27,
     "section_view_faq": 25,
     "faq_open": 17,
-    "read_complete": 76
+    "read_complete": 77
   },
   "contact_funnel": {
     "contact_open": 11,
