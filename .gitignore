@@ -6,3 +6,4 @@ __pycache__/
 .claude/hooks/token-leak-gate.log
 # Hermes LoRA 훈련 데이터(공개 저장소 유출 금지)
 .hermes/data/
+scripts/hermes_courier/tmb/
