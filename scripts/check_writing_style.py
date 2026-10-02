@@ -28,6 +28,14 @@ PR의 변경분(base와 head 사이 새로 추가된 줄)만 본다. 기존 파�
 있던 줄까지 잡으면 관련 없는 PR마다 헛경보가 뜨고, 헛경보가 잦은 검사는
 무시당한다(check_exposure_changes.py와 같은 이유).
 
+홈페이지 글 분량(2026-10-02 추가, 사장님 확정)
+-----------------------------------------------
+`log_assets/markdown/`에 **새로 추가된** 글 중 frontmatter `date`가
+2026-10-03 이후인 글은 본문(frontmatter 제외, 공백 포함)이 1,500자를 넘으면
+막는다. 목표는 1,000자 안팎이다(WRITING_GUIDE.md 5-2절). 옛 기준 "2,500자
+이내"는 상한만 있어 1,540자 초안이 그대로 컨펌까지 올라간 일이 있었다
+(2026-10-02 사장님 "글이 너무 길어요"). 기존 글 수정은 잡지 않는다.
+
 사용법: python scripts/check_writing_style.py [base] [head]
 기본값: base=origin/main, head=HEAD
 """
@@ -119,14 +127,52 @@ def find_violations(base, head="HEAD"):
     return findings
 
 
+POST_DIR = "log_assets/markdown/"
+LENGTH_LIMIT = 1500
+LENGTH_FROM_DATE = "2026-10-03"
+
+
+def added_post_files(base, head="HEAD"):
+    out = git("diff", "--name-only", "--diff-filter=A", f"{base}...{head}")
+    return [f for f in out.splitlines() if f.startswith(POST_DIR) and f.endswith(".md")]
+
+
+def post_body_length(path):
+    """(본문 글자 수, date 문자열)을 돌려준다. frontmatter가 없으면 (None, None)."""
+    text = open(path, encoding="utf-8").read()
+    parts = text.split("---", 2)
+    if len(parts) < 3:
+        return None, None
+    m = re.search(r"^date:\s*(\S+)", parts[1], re.M)
+    return len(parts[2].strip()), (m.group(1) if m else "")
+
+
+def find_long_posts(base, head="HEAD"):
+    long_posts = []
+    for path in added_post_files(base, head):
+        length, date = post_body_length(path)
+        if length is None or date[:10] < LENGTH_FROM_DATE:
+            continue
+        if length > LENGTH_LIMIT:
+            long_posts.append((path, length))
+    return long_posts
+
+
 def main():
     base = sys.argv[1] if len(sys.argv) > 1 else "origin/main"
     head = sys.argv[2] if len(sys.argv) > 2 else "HEAD"
     findings = find_violations(base, head)
+    long_posts = find_long_posts(base, head)
+
+    if long_posts:
+        print(f"\n새 홈페이지 글 분량이 {LENGTH_LIMIT}자를 넘습니다(목표 1,000자 안팎, WRITING_GUIDE.md 5-2절):\n")
+        for path, length in long_posts:
+            print(f"  {path}  {length}자")
+        print("\n주제에서 벗어난 문단부터 빼서 줄이세요.")
 
     if not findings:
         print("긴 줄표(em/en dash) 없음.")
-        return 0
+        return 1 if long_posts else 0
 
     print(f"\n새로 추가된 줄에서 긴 줄표를 발견했습니다 ({len(findings)}건):\n")
     for path, line_no, snippet in findings:
