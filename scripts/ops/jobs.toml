@@ -36,12 +36,7 @@ kind = "hermes_cron"
 name = "mailbox-courier"
 period_min = 10
 
-[[job]]
-id = "hermes:claude-md-polish-check"
-kind = "hermes_cron"
-name = "claude-md-polish-check"
-period_min = 1440  # 매일 08:00 KST, no-agent 스크립트(AI 판정 불필요, 기계적 git 날짜·태그 확인)
-note = "2026-09-23 등록(사장님 지시: 폴리싱 반영 누락 재발방지를 사람이 아니라 헤르메스가 확인). 폴리싱_기록.md 14일 초과 또는 [본문 반영 대기] 태그 7일 초과면 스크립트가 mailbox.py로 탐에게 알리고(정상이면 무출력) 헤르메스 크론 자체도 --deliver bot-chat이라 사장님 폰(신솔라 개인 채팅방)으로 실시간으로 간다. 처음엔 --deliver telegram으로 했다가 사장님이 그건 '에이전트 요청'이라는 공용 릴레이 채널(메시지가 너무 많아 놓침)로 간다고 지적(2026-09-23)해 bot-chat(신PC 기본 프로필의 개인 봇 채팅, 신솔라)으로 교정. 등록 전 hermes cron run으로 실행 증거 확인(job becee1dfed34, 2026-09-23 22:48 succeeded)"
+# 2026-10-02 탐 N104: 헤르메스 크론 claude-md-polish-check은 구PC cron(~/ops/checks/run_check.sh)으로 이관, 신PC 헤르메스 쪽은 pause(되돌리려면 hermes cron resume). 감시는 구PC 대장.
 
 [[job]]
 id = "hermes:check-customer-mcp-daily"
@@ -76,12 +71,7 @@ kind = "hermes_cron"
 name = "daily_briefing"
 period_min = 1440
 
-[[job]]
-id = "hermes:communication_watcher"
-kind = "hermes_cron"
-name = "communication_watcher.py"
-period_min = 5
-note = "2026-09-27 탐 등록(N45 파일럿). 안티그래비티(비티)와의 파일 채널 새김Pass/ag-test/COMMUNICATION.md 최상단 메시지가 바뀌고 발신자가 비티면 텔레그램으로 알림(no-agent, AI 호출 없음, 비용 0). 등록 전 `hermes cron run`으로 실행 증거 확인(job 9cae058583f1, succeeded, 텔레그램 도착 스크린샷으로 확인)"
+# 2026-10-02 탐 N104: 헤르메스 크론 communication_watcher.py은 구PC cron(~/ops/checks/run_check.sh)으로 이관, 신PC 헤르메스 쪽은 pause(되돌리려면 hermes cron resume). 감시는 구PC 대장.
 
 [[job]]
 id = "hermes:stagnation"
