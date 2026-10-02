@@ -35,4 +35,4 @@ simplifier-way 원칙4 참고).
 ### UX_GUIDE.md 절을 근거로 고쳤으면, 커밋 메시지에 인용 태그를 남긴다 <!-- id: a0b4 -->
 
 커밋 메시지 본문에 `UX_GUIDE#<id>`를 남깁니다(집계 도구는 커밋 메시지만 셈).
-규칙·집계 명령·실측은 [docs/UX_GUIDE.md](../../docs/UX_GUIDE.md) 6절.
+규칙·집계 명령·실측은 새김 `lookup(doc="UX_GUIDE", query="인용 태그 집계")`로 조회한다(원문은 비공개 새김 저장소, 6절).
