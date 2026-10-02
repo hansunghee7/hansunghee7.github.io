@@ -201,6 +201,7 @@
     <p class="sec-note">배포 전 → 배포 후 → 매일 아침, 시점이 다른 세 겹입니다. 대응 절차는 저장소 CLAUDE.md의 "배포 사고 대응 매뉴얼"에 있습니다.</p>
 
     <div class="log-list">
+      <div class="log-item"><span class="dot done"></span><div><b>2026-10-02</b>: 숏폼 성과 수집을 공식 API(YouTube Analytics, Meta Graph)로 비공개 저장소 <code>carvit-insight-data</code>에 연결하고 편별 성과 표를 자동 생성. 구PC 네이버 클립 수집기에 편 ID·팔로잉 수를 추가하고 같은 표로 올림. 외부 연동 20 → 21.</div></div>
       <div class="log-item"><span class="dot done"></span><div><b>배포 전 — Build check</b> (push마다) · GitHub Pages와 같은 gem 구성으로 미리 빌드해 실패를 몇 분 안에 빨간 X로 표시. 실패 시 사장님 이메일로 알림.
         <span class="files">.github/workflows/build-check.yml · Gemfile</span>
       </div></div>
@@ -216,7 +217,7 @@
 
   <!-- ===== 외부 연동 ===== -->
   <section class="sec">
-    <h2>연결된 외부 서비스 20개</h2>
+    <h2>연결된 외부 서비스 21개</h2>
     <p class="sec-note">위 다이어그램에 다 담기지 않는 폰트 CDN까지 포함한 전체 목록입니다.</p>
 
     <div class="tbl">
@@ -244,6 +245,7 @@
       <div class="tbl-group">분석 · 검색엔진 등록</div>
       <div class="tbl-row"><div class="svc">Google Analytics 4</div><div class="role">방문 데이터 수집 + Data API로 대시보드 재조회</div><div class="where">_includes/site-analytics.html · scripts/fetch_ga4.py</div></div>
       <div class="tbl-row"><div class="svc">Google Search Console</div><div class="role">검색 노출 확인 (GA4 태그로 소유권 자동 인증) + Search Analytics API로 대시보드 재조회</div><div class="where">.github/workflows/fetch-search-console.yml · scripts/fetch_gsc.py</div></div>
+      <div class="tbl-row"><div class="svc">YouTube Analytics API · Meta Graph API</div><div class="role">숏폼 편별 성과(유지율·구독 증감·릴스 도달·일별 팔로워) 하루 2회 수집 + 구PC가 네이버 클립 조회를 하루 1회 올림 → 편별 성과 표</div><div class="where">비공개 저장소 carvit-insight-data (data/episode_table.md)</div></div>
       <div class="tbl-row"><div class="svc">네이버 서치어드바이저</div><div class="role">네이버 검색 등록</div><div class="where">meta 태그, _includes/site-analytics.html</div></div>
       <div class="tbl-row"><div class="svc">Microsoft Clarity</div><div class="role">히트맵 · 세션 리플레이 + Data Export API로 대시보드 재조회</div><div class="where">_includes/site-analytics.html · scripts/fetch_clarity.py</div></div>
 
