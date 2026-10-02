@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-01T20:45:28.147203+00:00",
+  "updated_at": "2026-10-02T16:14:05.009401+00:00",
   "note": "history는 매일 지난 24시간 집계를 누적한 것. latest_*는 최근 3일 창.",
   "history": [
     {
@@ -5963,17 +5963,289 @@
           }
         ]
       }
+    },
+    {
+      "date": "2026-10-01",
+      "metrics": {
+        "DeadClickCount": [
+          {
+            "sessionsCount": 21,
+            "sessionsWithMetricPercentage": 9.52,
+            "sessionsWithoutMetricPercentage": 90.48,
+            "pagesViews": 3,
+            "subTotal": 53
+          }
+        ],
+        "ExcessiveScroll": [
+          {
+            "sessionsCount": 21,
+            "sessionsWithMetricPercentage": 0,
+            "sessionsWithoutMetricPercentage": 100,
+            "pagesViews": 0,
+            "subTotal": 0
+          }
+        ],
+        "RageClickCount": [
+          {
+            "sessionsCount": 21,
+            "sessionsWithMetricPercentage": 0,
+            "sessionsWithoutMetricPercentage": 100,
+            "pagesViews": 0,
+            "subTotal": 0
+          }
+        ],
+        "QuickbackClick": [
+          {
+            "sessionsCount": 21,
+            "sessionsWithMetricPercentage": 4.76,
+            "sessionsWithoutMetricPercentage": 95.24,
+            "pagesViews": 1,
+            "subTotal": 1
+          }
+        ],
+        "ScriptErrorCount": [
+          {
+            "sessionsCount": 21,
+            "sessionsWithMetricPercentage": 0,
+            "sessionsWithoutMetricPercentage": 100,
+            "pagesViews": 0,
+            "subTotal": 0
+          }
+        ],
+        "ErrorClickCount": [
+          {
+            "sessionsCount": 21,
+            "sessionsWithMetricPercentage": 0,
+            "sessionsWithoutMetricPercentage": 100,
+            "pagesViews": 0,
+            "subTotal": 0
+          }
+        ],
+        "ScrollDepth": [
+          {
+            "averageScrollDepth": 55.44
+          }
+        ],
+        "Traffic": [
+          {
+            "totalSessionCount": 21,
+            "totalBotSessionCount": 4,
+            "distinctUserCount": 24,
+            "pagesPerSessionPercentage": 1.4137931034482758
+          }
+        ],
+        "EngagementTime": [
+          {
+            "totalTime": 117,
+            "activeTime": 49
+          }
+        ],
+        "Browser": [
+          {
+            "name": "Chrome",
+            "sessionsCount": 7
+          },
+          {
+            "name": "ChromeMobile",
+            "sessionsCount": 4
+          },
+          {
+            "name": "Other",
+            "sessionsCount": 2
+          },
+          {
+            "name": "Edge",
+            "sessionsCount": 2
+          },
+          {
+            "name": "MobileSafari",
+            "sessionsCount": 2
+          },
+          {
+            "name": "Safari",
+            "sessionsCount": 2
+          },
+          {
+            "name": "SamsungInternet",
+            "sessionsCount": 2
+          }
+        ],
+        "Device": [
+          {
+            "name": "PC",
+            "sessionsCount": 12
+          },
+          {
+            "name": "Mobile",
+            "sessionsCount": 9
+          }
+        ],
+        "OS": [
+          {
+            "name": "Windows",
+            "sessionsCount": 10
+          },
+          {
+            "name": "IOS",
+            "sessionsCount": 6
+          },
+          {
+            "name": "Android",
+            "sessionsCount": 3
+          },
+          {
+            "name": "MacOSX",
+            "sessionsCount": 2
+          }
+        ],
+        "Country": [
+          {
+            "name": "Korea, Republic of",
+            "sessionsCount": 16
+          },
+          {
+            "name": "United States",
+            "sessionsCount": 5
+          }
+        ],
+        "PageTitle": [
+          {
+            "name": "Simplifier - 스타트업 코칭·기업 강연 한성희",
+            "sessionsCount": 7
+          },
+          {
+            "name": "PM과 PL 차이는 뭘까요? - Simplifier",
+            "sessionsCount": 3
+          },
+          {
+            "name": "주니어 PM은 왜 스스로 문제를 정의하지 못할까? - Simplifier",
+            "sessionsCount": 2
+          },
+          {
+            "name": "자정이 가까워지도록 AI 얘기를 원 없이 나눴어요. - Simplifier",
+            "sessionsCount": 2
+          },
+          {
+            "name": "상상도 못 할 비밀을 가진 클럽 - Simplifier",
+            "sessionsCount": 1
+          },
+          {
+            "name": "PM, PL, TPM의 차이 한눈에 보기 - Simplifier",
+            "sessionsCount": 1
+          },
+          {
+            "name": "우리 팀만 말하는 직원 어떻게 해야하나요? - Simplifier",
+            "sessionsCount": 1
+          },
+          {
+            "name": "우리 회사의 핵심가치, 아무도 안 볼 때 동작하나요? - Simplifier",
+            "sessionsCount": 1
+          },
+          {
+            "name": "AI가 못 뺏는 능력 하나 - Simplifier",
+            "sessionsCount": 1
+          },
+          {
+            "name": "AI로 만든 화면에 사고가 나면 누구 책임일까요? - Simplifier",
+            "sessionsCount": 1
+          }
+        ],
+        "ReferrerUrl": [
+          {
+            "name": null,
+            "sessionsCount": 11
+          },
+          {
+            "name": "https://m.search.naver.com/",
+            "sessionsCount": 4
+          },
+          {
+            "name": "https://simplifier.co.kr/logs/6/",
+            "sessionsCount": 2
+          },
+          {
+            "name": "https://simplifier.co.kr/",
+            "sessionsCount": 2
+          },
+          {
+            "name": "https://simplifier.co.kr/log/Be-the-PO.html",
+            "sessionsCount": 2
+          },
+          {
+            "name": "https://simplifier.co.kr/logs/629/",
+            "sessionsCount": 1
+          },
+          {
+            "name": "https://simplifier.co.kr/logs/630/",
+            "sessionsCount": 1
+          },
+          {
+            "name": "https://search.naver.com/",
+            "sessionsCount": 1
+          },
+          {
+            "name": "https://www.google.com/",
+            "sessionsCount": 1
+          },
+          {
+            "name": "https://simplifier.co.kr/log/%EA%B8%B0%ED%9A%8D%EC%9D%BC%EC%83%81.html",
+            "sessionsCount": 1
+          }
+        ],
+        "PopularPages": [
+          {
+            "url": "https://simplifier.co.kr/",
+            "visitsCount": 10
+          },
+          {
+            "url": "https://simplifier.co.kr/logs/629/",
+            "visitsCount": 3
+          },
+          {
+            "url": "https://simplifier.co.kr/logs/625/",
+            "visitsCount": 2
+          },
+          {
+            "url": "https://simplifier.co.kr/logs/6/",
+            "visitsCount": 2
+          },
+          {
+            "url": "https://simplifier.co.kr/logs/619/",
+            "visitsCount": 1
+          },
+          {
+            "url": "https://simplifier.co.kr/logs/132/",
+            "visitsCount": 1
+          },
+          {
+            "url": "https://simplifier.co.kr/logs/472/",
+            "visitsCount": 1
+          },
+          {
+            "url": "https://simplifier.co.kr/logs/474/",
+            "visitsCount": 1
+          },
+          {
+            "url": "https://simplifier.co.kr/logs/605/",
+            "visitsCount": 1
+          },
+          {
+            "url": "https://simplifier.co.kr/logs/526/",
+            "visitsCount": 1
+          }
+        ]
+      }
     }
   ],
   "latest_by_url": {
     "DeadClickCount": [
       {
-        "sessionsCount": 2,
-        "sessionsWithMetricPercentage": 50,
-        "sessionsWithoutMetricPercentage": 50,
-        "pagesViews": 1,
-        "subTotal": 1,
-        "Url": "https://simplifier.co.kr/logs/631/?sfnsn=mo"
+        "sessionsCount": 1,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/630/"
       },
       {
         "sessionsCount": 1,
@@ -5984,28 +6256,20 @@
         "Url": "https://simplifier.co.kr/logs/607/"
       },
       {
+        "sessionsCount": 1,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/526/"
+      },
+      {
         "sessionsCount": 2,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/99/"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/177/"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/636/"
+        "Url": "https://simplifier.co.kr/logs/6/"
       },
       {
         "sessionsCount": 1,
@@ -6016,7 +6280,7 @@
         "Url": "https://simplifier.co.kr/logs/481/"
       },
       {
-        "sessionsCount": 5,
+        "sessionsCount": 3,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -6024,9 +6288,9 @@
         "Url": "https://simplifier.co.kr/logs/301/"
       },
       {
-        "sessionsCount": 11,
-        "sessionsWithMetricPercentage": 45.45,
-        "sessionsWithoutMetricPercentage": 54.55,
+        "sessionsCount": 12,
+        "sessionsWithMetricPercentage": 41.67,
+        "sessionsWithoutMetricPercentage": 58.33,
         "pagesViews": 5,
         "subTotal": 5,
         "Url": "https://simplifier.co.kr/"
@@ -6037,7 +6301,15 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/186/"
+        "Url": "https://simplifier.co.kr/logs/461/"
+      },
+      {
+        "sessionsCount": 1,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/190/"
       },
       {
         "sessionsCount": 1,
@@ -6053,23 +6325,15 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/631/"
+      },
+      {
+        "sessionsCount": 1,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
         "Url": "https://simplifier.co.kr/logs/620/?fbclid=IwZXh0bgNhZW0CMTEAcGRvZgVmZGlkFlD2NyXjS8NR0Ukeh9lh7PMjhsUmFVpzcnRjBmFwcF9pZAo2NjI4NTY4Mzc5AAEebDvVK65HvonpU2ADG-Q_EY51_gep2RmwRPVZImW40uWN0OpkNfeP2lB2HdM_aem_NZ2W5c6I_4vAhszqxEr7pg"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/628/"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/77/"
       },
       {
         "sessionsCount": 2,
@@ -6077,10 +6341,18 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/628/"
+      },
+      {
+        "sessionsCount": 3,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
         "Url": "https://simplifier.co.kr/logs/625/"
       },
       {
-        "sessionsCount": 1,
+        "sessionsCount": 2,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -6101,6 +6373,14 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/619/"
+      },
+      {
+        "sessionsCount": 1,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
         "Url": "https://simplifier.co.kr/logs/162/"
       },
       {
@@ -6112,14 +6392,6 @@
         "Url": "https://simplifier.co.kr/logs/292/"
       },
       {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/631/?fbclid=IwY2xjawUoIKlleHRuA2FlbQIxMQBwZG9mBXNydGMGYXBwX2lkDDM1MDY4NTUzMTcyOAABHuYpAr323aMy9f0GtDBXYiOHBlu7DzPnBs8eulz7dM1qoUC5Lit9eBO0XNvB_aem_i-yyF5dYxbDXnonxwMo0RQ"
-      },
-      {
         "sessionsCount": 2,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
@@ -6128,25 +6400,9 @@
         "Url": "https://simplifier.co.kr/logs/132/"
       },
       {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/631/?fbclid=IwY2xjawUn6PlleHRuA2FlbQIxMQBwZG9mBWJyaWQRMXdROEc1QlJrOUdLYUZ6T3lzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEeFiacpveyMZiutEuEbdpeh_GZDP9sdhaQc0OGJcK55JBd8sanaLrjD4m4jqA_aem_-v0MYmEqXMU6mTvKXN8XAA"
-      },
-      {
-        "sessionsCount": 2,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/631/?fbclid=IwY2xjawUn9H5leHRuA2FlbQIxMQBwZG9mBXNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR78lkCA3J8zsPhN_XipuV80ZqwBTM9bIEpcYNj6Q2umu88A7BMBdR0nKso8fA_aem_YfZKtHNHG7AVzrAXw_MdOQ"
-      },
-      {
-        "sessionsCount": 4,
-        "sessionsWithMetricPercentage": 25,
-        "sessionsWithoutMetricPercentage": 75,
+        "sessionsCount": 3,
+        "sessionsWithMetricPercentage": 33.33,
+        "sessionsWithoutMetricPercentage": 66.67,
         "pagesViews": 1,
         "subTotal": 1,
         "Url": "https://simplifier.co.kr/logs/235/"
@@ -6157,7 +6413,23 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/618/"
+      },
+      {
+        "sessionsCount": 2,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
         "Url": "https://simplifier.co.kr/logs/632/"
+      },
+      {
+        "sessionsCount": 3,
+        "sessionsWithMetricPercentage": 33.33,
+        "sessionsWithoutMetricPercentage": 66.67,
+        "pagesViews": 1,
+        "subTotal": 29,
+        "Url": "https://simplifier.co.kr/logs/629/"
       },
       {
         "sessionsCount": 1,
@@ -6165,17 +6437,33 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/522/"
+        "Url": "https://simplifier.co.kr/logs/472/"
+      },
+      {
+        "sessionsCount": 1,
+        "sessionsWithMetricPercentage": 100,
+        "sessionsWithoutMetricPercentage": 0,
+        "pagesViews": 1,
+        "subTotal": 23,
+        "Url": "https://simplifier.co.kr/logs/605/"
+      },
+      {
+        "sessionsCount": 2,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
+        "Url": "https://simplifier.co.kr/#partners.trevari.co.kr#partners.trevari.co.kr#partners.trevari.co.kr"
       }
     ],
     "ExcessiveScroll": [
       {
-        "sessionsCount": 2,
+        "sessionsCount": 1,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/631/?sfnsn=mo"
+        "Url": "https://simplifier.co.kr/logs/630/"
       },
       {
         "sessionsCount": 1,
@@ -6186,28 +6474,20 @@
         "Url": "https://simplifier.co.kr/logs/607/"
       },
       {
+        "sessionsCount": 1,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/526/"
+      },
+      {
         "sessionsCount": 2,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/99/"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/177/"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/636/"
+        "Url": "https://simplifier.co.kr/logs/6/"
       },
       {
         "sessionsCount": 1,
@@ -6218,7 +6498,7 @@
         "Url": "https://simplifier.co.kr/logs/481/"
       },
       {
-        "sessionsCount": 5,
+        "sessionsCount": 3,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -6226,7 +6506,7 @@
         "Url": "https://simplifier.co.kr/logs/301/"
       },
       {
-        "sessionsCount": 11,
+        "sessionsCount": 12,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -6239,7 +6519,15 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/186/"
+        "Url": "https://simplifier.co.kr/logs/461/"
+      },
+      {
+        "sessionsCount": 1,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/190/"
       },
       {
         "sessionsCount": 1,
@@ -6255,23 +6543,15 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/631/"
+      },
+      {
+        "sessionsCount": 1,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
         "Url": "https://simplifier.co.kr/logs/620/?fbclid=IwZXh0bgNhZW0CMTEAcGRvZgVmZGlkFlD2NyXjS8NR0Ukeh9lh7PMjhsUmFVpzcnRjBmFwcF9pZAo2NjI4NTY4Mzc5AAEebDvVK65HvonpU2ADG-Q_EY51_gep2RmwRPVZImW40uWN0OpkNfeP2lB2HdM_aem_NZ2W5c6I_4vAhszqxEr7pg"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/628/"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/77/"
       },
       {
         "sessionsCount": 2,
@@ -6279,10 +6559,18 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/628/"
+      },
+      {
+        "sessionsCount": 3,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
         "Url": "https://simplifier.co.kr/logs/625/"
       },
       {
-        "sessionsCount": 1,
+        "sessionsCount": 2,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -6303,6 +6591,14 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/619/"
+      },
+      {
+        "sessionsCount": 1,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
         "Url": "https://simplifier.co.kr/logs/162/"
       },
       {
@@ -6314,14 +6610,6 @@
         "Url": "https://simplifier.co.kr/logs/292/"
       },
       {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/631/?fbclid=IwY2xjawUoIKlleHRuA2FlbQIxMQBwZG9mBXNydGMGYXBwX2lkDDM1MDY4NTUzMTcyOAABHuYpAr323aMy9f0GtDBXYiOHBlu7DzPnBs8eulz7dM1qoUC5Lit9eBO0XNvB_aem_i-yyF5dYxbDXnonxwMo0RQ"
-      },
-      {
         "sessionsCount": 2,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
@@ -6330,23 +6618,7 @@
         "Url": "https://simplifier.co.kr/logs/132/"
       },
       {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/631/?fbclid=IwY2xjawUn6PlleHRuA2FlbQIxMQBwZG9mBWJyaWQRMXdROEc1QlJrOUdLYUZ6T3lzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEeFiacpveyMZiutEuEbdpeh_GZDP9sdhaQc0OGJcK55JBd8sanaLrjD4m4jqA_aem_-v0MYmEqXMU6mTvKXN8XAA"
-      },
-      {
-        "sessionsCount": 2,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/631/?fbclid=IwY2xjawUn9H5leHRuA2FlbQIxMQBwZG9mBXNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR78lkCA3J8zsPhN_XipuV80ZqwBTM9bIEpcYNj6Q2umu88A7BMBdR0nKso8fA_aem_YfZKtHNHG7AVzrAXw_MdOQ"
-      },
-      {
-        "sessionsCount": 4,
+        "sessionsCount": 3,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -6359,7 +6631,23 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/618/"
+      },
+      {
+        "sessionsCount": 2,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
         "Url": "https://simplifier.co.kr/logs/632/"
+      },
+      {
+        "sessionsCount": 3,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/629/"
       },
       {
         "sessionsCount": 1,
@@ -6367,17 +6655,33 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/522/"
+        "Url": "https://simplifier.co.kr/logs/472/"
+      },
+      {
+        "sessionsCount": 1,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/605/"
+      },
+      {
+        "sessionsCount": 2,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
+        "Url": "https://simplifier.co.kr/#partners.trevari.co.kr#partners.trevari.co.kr#partners.trevari.co.kr"
       }
     ],
     "RageClickCount": [
       {
-        "sessionsCount": 2,
+        "sessionsCount": 1,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/631/?sfnsn=mo"
+        "Url": "https://simplifier.co.kr/logs/630/"
       },
       {
         "sessionsCount": 1,
@@ -6388,28 +6692,20 @@
         "Url": "https://simplifier.co.kr/logs/607/"
       },
       {
+        "sessionsCount": 1,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/526/"
+      },
+      {
         "sessionsCount": 2,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/99/"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/177/"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/636/"
+        "Url": "https://simplifier.co.kr/logs/6/"
       },
       {
         "sessionsCount": 1,
@@ -6420,7 +6716,7 @@
         "Url": "https://simplifier.co.kr/logs/481/"
       },
       {
-        "sessionsCount": 5,
+        "sessionsCount": 3,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -6428,7 +6724,7 @@
         "Url": "https://simplifier.co.kr/logs/301/"
       },
       {
-        "sessionsCount": 11,
+        "sessionsCount": 12,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -6441,7 +6737,15 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/186/"
+        "Url": "https://simplifier.co.kr/logs/461/"
+      },
+      {
+        "sessionsCount": 1,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/190/"
       },
       {
         "sessionsCount": 1,
@@ -6457,23 +6761,15 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/631/"
+      },
+      {
+        "sessionsCount": 1,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
         "Url": "https://simplifier.co.kr/logs/620/?fbclid=IwZXh0bgNhZW0CMTEAcGRvZgVmZGlkFlD2NyXjS8NR0Ukeh9lh7PMjhsUmFVpzcnRjBmFwcF9pZAo2NjI4NTY4Mzc5AAEebDvVK65HvonpU2ADG-Q_EY51_gep2RmwRPVZImW40uWN0OpkNfeP2lB2HdM_aem_NZ2W5c6I_4vAhszqxEr7pg"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/628/"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/77/"
       },
       {
         "sessionsCount": 2,
@@ -6481,10 +6777,18 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/628/"
+      },
+      {
+        "sessionsCount": 3,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
         "Url": "https://simplifier.co.kr/logs/625/"
       },
       {
-        "sessionsCount": 1,
+        "sessionsCount": 2,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -6505,6 +6809,14 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/619/"
+      },
+      {
+        "sessionsCount": 1,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
         "Url": "https://simplifier.co.kr/logs/162/"
       },
       {
@@ -6516,14 +6828,6 @@
         "Url": "https://simplifier.co.kr/logs/292/"
       },
       {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/631/?fbclid=IwY2xjawUoIKlleHRuA2FlbQIxMQBwZG9mBXNydGMGYXBwX2lkDDM1MDY4NTUzMTcyOAABHuYpAr323aMy9f0GtDBXYiOHBlu7DzPnBs8eulz7dM1qoUC5Lit9eBO0XNvB_aem_i-yyF5dYxbDXnonxwMo0RQ"
-      },
-      {
         "sessionsCount": 2,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
@@ -6532,23 +6836,7 @@
         "Url": "https://simplifier.co.kr/logs/132/"
       },
       {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/631/?fbclid=IwY2xjawUn6PlleHRuA2FlbQIxMQBwZG9mBWJyaWQRMXdROEc1QlJrOUdLYUZ6T3lzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEeFiacpveyMZiutEuEbdpeh_GZDP9sdhaQc0OGJcK55JBd8sanaLrjD4m4jqA_aem_-v0MYmEqXMU6mTvKXN8XAA"
-      },
-      {
-        "sessionsCount": 2,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/631/?fbclid=IwY2xjawUn9H5leHRuA2FlbQIxMQBwZG9mBXNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR78lkCA3J8zsPhN_XipuV80ZqwBTM9bIEpcYNj6Q2umu88A7BMBdR0nKso8fA_aem_YfZKtHNHG7AVzrAXw_MdOQ"
-      },
-      {
-        "sessionsCount": 4,
+        "sessionsCount": 3,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -6561,7 +6849,23 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/618/"
+      },
+      {
+        "sessionsCount": 2,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
         "Url": "https://simplifier.co.kr/logs/632/"
+      },
+      {
+        "sessionsCount": 3,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/629/"
       },
       {
         "sessionsCount": 1,
@@ -6569,17 +6873,33 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/522/"
+        "Url": "https://simplifier.co.kr/logs/472/"
+      },
+      {
+        "sessionsCount": 1,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/605/"
+      },
+      {
+        "sessionsCount": 2,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
+        "Url": "https://simplifier.co.kr/#partners.trevari.co.kr#partners.trevari.co.kr#partners.trevari.co.kr"
       }
     ],
     "QuickbackClick": [
       {
-        "sessionsCount": 2,
-        "sessionsWithMetricPercentage": 50,
-        "sessionsWithoutMetricPercentage": 50,
-        "pagesViews": 2,
-        "subTotal": 2,
-        "Url": "https://simplifier.co.kr/logs/631/?sfnsn=mo"
+        "sessionsCount": 1,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/630/"
       },
       {
         "sessionsCount": 1,
@@ -6590,28 +6910,20 @@
         "Url": "https://simplifier.co.kr/logs/607/"
       },
       {
+        "sessionsCount": 1,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/526/"
+      },
+      {
         "sessionsCount": 2,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/99/"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/177/"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/636/"
+        "Url": "https://simplifier.co.kr/logs/6/"
       },
       {
         "sessionsCount": 1,
@@ -6622,7 +6934,7 @@
         "Url": "https://simplifier.co.kr/logs/481/"
       },
       {
-        "sessionsCount": 5,
+        "sessionsCount": 3,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -6630,11 +6942,11 @@
         "Url": "https://simplifier.co.kr/logs/301/"
       },
       {
-        "sessionsCount": 11,
-        "sessionsWithMetricPercentage": 9.09,
-        "sessionsWithoutMetricPercentage": 90.91,
-        "pagesViews": 1,
-        "subTotal": 1,
+        "sessionsCount": 12,
+        "sessionsWithMetricPercentage": 16.67,
+        "sessionsWithoutMetricPercentage": 83.33,
+        "pagesViews": 2,
+        "subTotal": 2,
         "Url": "https://simplifier.co.kr/"
       },
       {
@@ -6643,7 +6955,15 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/186/"
+        "Url": "https://simplifier.co.kr/logs/461/"
+      },
+      {
+        "sessionsCount": 1,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/190/"
       },
       {
         "sessionsCount": 1,
@@ -6659,23 +6979,15 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/631/"
+      },
+      {
+        "sessionsCount": 1,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
         "Url": "https://simplifier.co.kr/logs/620/?fbclid=IwZXh0bgNhZW0CMTEAcGRvZgVmZGlkFlD2NyXjS8NR0Ukeh9lh7PMjhsUmFVpzcnRjBmFwcF9pZAo2NjI4NTY4Mzc5AAEebDvVK65HvonpU2ADG-Q_EY51_gep2RmwRPVZImW40uWN0OpkNfeP2lB2HdM_aem_NZ2W5c6I_4vAhszqxEr7pg"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/628/"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/77/"
       },
       {
         "sessionsCount": 2,
@@ -6683,10 +6995,18 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/628/"
+      },
+      {
+        "sessionsCount": 3,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
         "Url": "https://simplifier.co.kr/logs/625/"
       },
       {
-        "sessionsCount": 1,
+        "sessionsCount": 2,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -6707,6 +7027,14 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/619/"
+      },
+      {
+        "sessionsCount": 1,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
         "Url": "https://simplifier.co.kr/logs/162/"
       },
       {
@@ -6718,14 +7046,6 @@
         "Url": "https://simplifier.co.kr/logs/292/"
       },
       {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/631/?fbclid=IwY2xjawUoIKlleHRuA2FlbQIxMQBwZG9mBXNydGMGYXBwX2lkDDM1MDY4NTUzMTcyOAABHuYpAr323aMy9f0GtDBXYiOHBlu7DzPnBs8eulz7dM1qoUC5Lit9eBO0XNvB_aem_i-yyF5dYxbDXnonxwMo0RQ"
-      },
-      {
         "sessionsCount": 2,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
@@ -6734,23 +7054,7 @@
         "Url": "https://simplifier.co.kr/logs/132/"
       },
       {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/631/?fbclid=IwY2xjawUn6PlleHRuA2FlbQIxMQBwZG9mBWJyaWQRMXdROEc1QlJrOUdLYUZ6T3lzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEeFiacpveyMZiutEuEbdpeh_GZDP9sdhaQc0OGJcK55JBd8sanaLrjD4m4jqA_aem_-v0MYmEqXMU6mTvKXN8XAA"
-      },
-      {
-        "sessionsCount": 2,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/631/?fbclid=IwY2xjawUn9H5leHRuA2FlbQIxMQBwZG9mBXNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR78lkCA3J8zsPhN_XipuV80ZqwBTM9bIEpcYNj6Q2umu88A7BMBdR0nKso8fA_aem_YfZKtHNHG7AVzrAXw_MdOQ"
-      },
-      {
-        "sessionsCount": 4,
+        "sessionsCount": 3,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -6763,7 +7067,23 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/618/"
+      },
+      {
+        "sessionsCount": 2,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
         "Url": "https://simplifier.co.kr/logs/632/"
+      },
+      {
+        "sessionsCount": 3,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/629/"
       },
       {
         "sessionsCount": 1,
@@ -6771,17 +7091,33 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/522/"
+        "Url": "https://simplifier.co.kr/logs/472/"
+      },
+      {
+        "sessionsCount": 1,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/605/"
+      },
+      {
+        "sessionsCount": 2,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
+        "Url": "https://simplifier.co.kr/#partners.trevari.co.kr#partners.trevari.co.kr#partners.trevari.co.kr"
       }
     ],
     "ScriptErrorCount": [
       {
-        "sessionsCount": 2,
+        "sessionsCount": 1,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/631/?sfnsn=mo"
+        "Url": "https://simplifier.co.kr/logs/630/"
       },
       {
         "sessionsCount": 1,
@@ -6792,28 +7128,20 @@
         "Url": "https://simplifier.co.kr/logs/607/"
       },
       {
+        "sessionsCount": 1,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/526/"
+      },
+      {
         "sessionsCount": 2,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/99/"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/177/"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/636/"
+        "Url": "https://simplifier.co.kr/logs/6/"
       },
       {
         "sessionsCount": 1,
@@ -6824,7 +7152,7 @@
         "Url": "https://simplifier.co.kr/logs/481/"
       },
       {
-        "sessionsCount": 5,
+        "sessionsCount": 3,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -6832,7 +7160,7 @@
         "Url": "https://simplifier.co.kr/logs/301/"
       },
       {
-        "sessionsCount": 11,
+        "sessionsCount": 12,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -6845,7 +7173,15 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/186/"
+        "Url": "https://simplifier.co.kr/logs/461/"
+      },
+      {
+        "sessionsCount": 1,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/190/"
       },
       {
         "sessionsCount": 1,
@@ -6861,23 +7197,15 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/631/"
+      },
+      {
+        "sessionsCount": 1,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
         "Url": "https://simplifier.co.kr/logs/620/?fbclid=IwZXh0bgNhZW0CMTEAcGRvZgVmZGlkFlD2NyXjS8NR0Ukeh9lh7PMjhsUmFVpzcnRjBmFwcF9pZAo2NjI4NTY4Mzc5AAEebDvVK65HvonpU2ADG-Q_EY51_gep2RmwRPVZImW40uWN0OpkNfeP2lB2HdM_aem_NZ2W5c6I_4vAhszqxEr7pg"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/628/"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/77/"
       },
       {
         "sessionsCount": 2,
@@ -6885,10 +7213,18 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/628/"
+      },
+      {
+        "sessionsCount": 3,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
         "Url": "https://simplifier.co.kr/logs/625/"
       },
       {
-        "sessionsCount": 1,
+        "sessionsCount": 2,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -6909,6 +7245,14 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/619/"
+      },
+      {
+        "sessionsCount": 1,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
         "Url": "https://simplifier.co.kr/logs/162/"
       },
       {
@@ -6920,14 +7264,6 @@
         "Url": "https://simplifier.co.kr/logs/292/"
       },
       {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/631/?fbclid=IwY2xjawUoIKlleHRuA2FlbQIxMQBwZG9mBXNydGMGYXBwX2lkDDM1MDY4NTUzMTcyOAABHuYpAr323aMy9f0GtDBXYiOHBlu7DzPnBs8eulz7dM1qoUC5Lit9eBO0XNvB_aem_i-yyF5dYxbDXnonxwMo0RQ"
-      },
-      {
         "sessionsCount": 2,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
@@ -6936,23 +7272,7 @@
         "Url": "https://simplifier.co.kr/logs/132/"
       },
       {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/631/?fbclid=IwY2xjawUn6PlleHRuA2FlbQIxMQBwZG9mBWJyaWQRMXdROEc1QlJrOUdLYUZ6T3lzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEeFiacpveyMZiutEuEbdpeh_GZDP9sdhaQc0OGJcK55JBd8sanaLrjD4m4jqA_aem_-v0MYmEqXMU6mTvKXN8XAA"
-      },
-      {
-        "sessionsCount": 2,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/631/?fbclid=IwY2xjawUn9H5leHRuA2FlbQIxMQBwZG9mBXNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR78lkCA3J8zsPhN_XipuV80ZqwBTM9bIEpcYNj6Q2umu88A7BMBdR0nKso8fA_aem_YfZKtHNHG7AVzrAXw_MdOQ"
-      },
-      {
-        "sessionsCount": 4,
+        "sessionsCount": 3,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -6965,7 +7285,23 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/618/"
+      },
+      {
+        "sessionsCount": 2,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
         "Url": "https://simplifier.co.kr/logs/632/"
+      },
+      {
+        "sessionsCount": 3,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/629/"
       },
       {
         "sessionsCount": 1,
@@ -6973,17 +7309,33 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/522/"
+        "Url": "https://simplifier.co.kr/logs/472/"
+      },
+      {
+        "sessionsCount": 1,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/605/"
+      },
+      {
+        "sessionsCount": 2,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
+        "Url": "https://simplifier.co.kr/#partners.trevari.co.kr#partners.trevari.co.kr#partners.trevari.co.kr"
       }
     ],
     "ErrorClickCount": [
       {
-        "sessionsCount": 2,
+        "sessionsCount": 1,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/631/?sfnsn=mo"
+        "Url": "https://simplifier.co.kr/logs/630/"
       },
       {
         "sessionsCount": 1,
@@ -6994,28 +7346,20 @@
         "Url": "https://simplifier.co.kr/logs/607/"
       },
       {
+        "sessionsCount": 1,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/526/"
+      },
+      {
         "sessionsCount": 2,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/99/"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/177/"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/636/"
+        "Url": "https://simplifier.co.kr/logs/6/"
       },
       {
         "sessionsCount": 1,
@@ -7026,7 +7370,7 @@
         "Url": "https://simplifier.co.kr/logs/481/"
       },
       {
-        "sessionsCount": 5,
+        "sessionsCount": 3,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -7034,7 +7378,7 @@
         "Url": "https://simplifier.co.kr/logs/301/"
       },
       {
-        "sessionsCount": 11,
+        "sessionsCount": 12,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -7047,7 +7391,15 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/186/"
+        "Url": "https://simplifier.co.kr/logs/461/"
+      },
+      {
+        "sessionsCount": 1,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/190/"
       },
       {
         "sessionsCount": 1,
@@ -7063,23 +7415,15 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/631/"
+      },
+      {
+        "sessionsCount": 1,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
         "Url": "https://simplifier.co.kr/logs/620/?fbclid=IwZXh0bgNhZW0CMTEAcGRvZgVmZGlkFlD2NyXjS8NR0Ukeh9lh7PMjhsUmFVpzcnRjBmFwcF9pZAo2NjI4NTY4Mzc5AAEebDvVK65HvonpU2ADG-Q_EY51_gep2RmwRPVZImW40uWN0OpkNfeP2lB2HdM_aem_NZ2W5c6I_4vAhszqxEr7pg"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/628/"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/77/"
       },
       {
         "sessionsCount": 2,
@@ -7087,10 +7431,18 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/628/"
+      },
+      {
+        "sessionsCount": 3,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
         "Url": "https://simplifier.co.kr/logs/625/"
       },
       {
-        "sessionsCount": 1,
+        "sessionsCount": 2,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -7111,6 +7463,14 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/619/"
+      },
+      {
+        "sessionsCount": 1,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
         "Url": "https://simplifier.co.kr/logs/162/"
       },
       {
@@ -7122,14 +7482,6 @@
         "Url": "https://simplifier.co.kr/logs/292/"
       },
       {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/631/?fbclid=IwY2xjawUoIKlleHRuA2FlbQIxMQBwZG9mBXNydGMGYXBwX2lkDDM1MDY4NTUzMTcyOAABHuYpAr323aMy9f0GtDBXYiOHBlu7DzPnBs8eulz7dM1qoUC5Lit9eBO0XNvB_aem_i-yyF5dYxbDXnonxwMo0RQ"
-      },
-      {
         "sessionsCount": 2,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
@@ -7138,23 +7490,7 @@
         "Url": "https://simplifier.co.kr/logs/132/"
       },
       {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/631/?fbclid=IwY2xjawUn6PlleHRuA2FlbQIxMQBwZG9mBWJyaWQRMXdROEc1QlJrOUdLYUZ6T3lzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEeFiacpveyMZiutEuEbdpeh_GZDP9sdhaQc0OGJcK55JBd8sanaLrjD4m4jqA_aem_-v0MYmEqXMU6mTvKXN8XAA"
-      },
-      {
-        "sessionsCount": 2,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/631/?fbclid=IwY2xjawUn9H5leHRuA2FlbQIxMQBwZG9mBXNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR78lkCA3J8zsPhN_XipuV80ZqwBTM9bIEpcYNj6Q2umu88A7BMBdR0nKso8fA_aem_YfZKtHNHG7AVzrAXw_MdOQ"
-      },
-      {
-        "sessionsCount": 4,
+        "sessionsCount": 3,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -7167,7 +7503,23 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/618/"
+      },
+      {
+        "sessionsCount": 2,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
         "Url": "https://simplifier.co.kr/logs/632/"
+      },
+      {
+        "sessionsCount": 3,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/629/"
       },
       {
         "sessionsCount": 1,
@@ -7175,73 +7527,93 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Url": "https://simplifier.co.kr/logs/522/"
+        "Url": "https://simplifier.co.kr/logs/472/"
+      },
+      {
+        "sessionsCount": 1,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
+        "Url": "https://simplifier.co.kr/logs/605/"
+      },
+      {
+        "sessionsCount": 2,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
+        "Url": "https://simplifier.co.kr/#partners.trevari.co.kr#partners.trevari.co.kr#partners.trevari.co.kr"
       }
     ],
     "ScrollDepth": [
       {
-        "averageScrollDepth": 91.33,
-        "Url": "https://simplifier.co.kr/logs/631/?sfnsn=mo"
+        "averageScrollDepth": 75,
+        "Url": "https://simplifier.co.kr/logs/630/"
       },
       {
         "averageScrollDepth": 19,
         "Url": "https://simplifier.co.kr/logs/607/"
       },
       {
-        "averageScrollDepth": 50.5,
-        "Url": "https://simplifier.co.kr/logs/99/"
+        "averageScrollDepth": 86,
+        "Url": "https://simplifier.co.kr/logs/526/"
       },
       {
-        "averageScrollDepth": 89,
-        "Url": "https://simplifier.co.kr/logs/177/"
-      },
-      {
-        "averageScrollDepth": 100,
-        "Url": "https://simplifier.co.kr/logs/636/"
+        "averageScrollDepth": 87,
+        "Url": "https://simplifier.co.kr/logs/6/"
       },
       {
         "averageScrollDepth": 13,
         "Url": "https://simplifier.co.kr/logs/481/"
       },
       {
-        "averageScrollDepth": 61.2,
+        "averageScrollDepth": 71.33,
         "Url": "https://simplifier.co.kr/logs/301/"
       },
       {
-        "averageScrollDepth": 44.36,
+        "averageScrollDepth": 53.19,
         "Url": "https://simplifier.co.kr/"
       },
       {
-        "averageScrollDepth": 99,
-        "Url": "https://simplifier.co.kr/logs/186/"
+        "averageScrollDepth": 70,
+        "Url": "https://simplifier.co.kr/logs/461/"
+      },
+      {
+        "averageScrollDepth": 71,
+        "Url": "https://simplifier.co.kr/logs/190/"
       },
       {
         "averageScrollDepth": 21,
         "Url": "https://simplifier.co.kr/logs/627/"
       },
       {
-        "averageScrollDepth": 70,
-        "Url": "https://simplifier.co.kr/logs/620/?fbclid=IwZXh0bgNhZW0CMTEAcGRvZgVmZGlkFlD2NyXjS8NR0Ukeh9lh7PMjhsUmFVpzcnRjBmFwcF9pZAo2NjI4NTY4Mzc5AAEebDvVK65HvonpU2ADG-Q_EY51_gep2RmwRPVZImW40uWN0OpkNfeP2lB2HdM_aem_NZ2W5c6I_4vAhszqxEr7pg"
+        "averageScrollDepth": 20,
+        "Url": "https://simplifier.co.kr/logs/631/"
       },
       {
         "averageScrollDepth": 39,
         "Url": "https://simplifier.co.kr/logs/628/"
       },
       {
-        "averageScrollDepth": 99,
-        "Url": "https://simplifier.co.kr/logs/77/"
+        "averageScrollDepth": 70,
+        "Url": "https://simplifier.co.kr/logs/620/?fbclid=IwZXh0bgNhZW0CMTEAcGRvZgVmZGlkFlD2NyXjS8NR0Ukeh9lh7PMjhsUmFVpzcnRjBmFwcF9pZAo2NjI4NTY4Mzc5AAEebDvVK65HvonpU2ADG-Q_EY51_gep2RmwRPVZImW40uWN0OpkNfeP2lB2HdM_aem_NZ2W5c6I_4vAhszqxEr7pg"
       },
       {
-        "averageScrollDepth": 56,
+        "averageScrollDepth": 36.25,
         "Url": "https://simplifier.co.kr/logs/625/"
       },
       {
-        "averageScrollDepth": 78,
+        "averageScrollDepth": 39.33,
         "Url": "https://simplifier.co.kr/logs/224/"
       },
       {
         "averageScrollDepth": 13,
         "Url": "https://simplifier.co.kr/?utm_source=chatgpt.com"
+      },
+      {
+        "averageScrollDepth": 34,
+        "Url": "https://simplifier.co.kr/logs/619/"
       },
       {
         "averageScrollDepth": 61,
@@ -7252,48 +7624,52 @@
         "Url": "https://simplifier.co.kr/logs/292/"
       },
       {
-        "averageScrollDepth": 53,
-        "Url": "https://simplifier.co.kr/logs/631/?fbclid=IwY2xjawUoIKlleHRuA2FlbQIxMQBwZG9mBXNydGMGYXBwX2lkDDM1MDY4NTUzMTcyOAABHuYpAr323aMy9f0GtDBXYiOHBlu7DzPnBs8eulz7dM1qoUC5Lit9eBO0XNvB_aem_i-yyF5dYxbDXnonxwMo0RQ"
-      },
-      {
-        "averageScrollDepth": 78.5,
+        "averageScrollDepth": 54.5,
         "Url": "https://simplifier.co.kr/logs/132/"
       },
       {
-        "averageScrollDepth": 82,
-        "Url": "https://simplifier.co.kr/logs/631/?fbclid=IwY2xjawUn6PlleHRuA2FlbQIxMQBwZG9mBWJyaWQRMXdROEc1QlJrOUdLYUZ6T3lzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEeFiacpveyMZiutEuEbdpeh_GZDP9sdhaQc0OGJcK55JBd8sanaLrjD4m4jqA_aem_-v0MYmEqXMU6mTvKXN8XAA"
-      },
-      {
-        "averageScrollDepth": 19.75,
-        "Url": "https://simplifier.co.kr/logs/631/?fbclid=IwY2xjawUn9H5leHRuA2FlbQIxMQBwZG9mBXNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR78lkCA3J8zsPhN_XipuV80ZqwBTM9bIEpcYNj6Q2umu88A7BMBdR0nKso8fA_aem_YfZKtHNHG7AVzrAXw_MdOQ"
-      },
-      {
-        "averageScrollDepth": 75.5,
+        "averageScrollDepth": 74,
         "Url": "https://simplifier.co.kr/logs/235/"
       },
       {
-        "averageScrollDepth": 40,
+        "averageScrollDepth": 33,
+        "Url": "https://simplifier.co.kr/logs/618/"
+      },
+      {
+        "averageScrollDepth": 56.5,
         "Url": "https://simplifier.co.kr/logs/632/"
       },
       {
-        "averageScrollDepth": 64,
-        "Url": "https://simplifier.co.kr/logs/522/"
+        "averageScrollDepth": 86.33,
+        "Url": "https://simplifier.co.kr/logs/629/"
+      },
+      {
+        "averageScrollDepth": 63,
+        "Url": "https://simplifier.co.kr/logs/472/"
+      },
+      {
+        "averageScrollDepth": 99,
+        "Url": "https://simplifier.co.kr/logs/605/"
+      },
+      {
+        "averageScrollDepth": 62.5,
+        "Url": "https://simplifier.co.kr/#partners.trevari.co.kr#partners.trevari.co.kr#partners.trevari.co.kr"
       }
     ],
     "Traffic": [
       {
         "totalSessionCount": 0,
         "totalBotSessionCount": 0,
-        "distinctUserCount": 2,
+        "distinctUserCount": 4,
         "pagesPerSessionPercentage": 1,
         "Url": null
       },
       {
-        "totalSessionCount": 2,
+        "totalSessionCount": 1,
         "totalBotSessionCount": 0,
         "distinctUserCount": 1,
-        "pagesPerSessionPercentage": 1.5,
-        "Url": "https://simplifier.co.kr/logs/631/?sfnsn=mo"
+        "pagesPerSessionPercentage": 1,
+        "Url": "https://simplifier.co.kr/logs/630/"
       },
       {
         "totalSessionCount": 1,
@@ -7310,60 +7686,25 @@
         "Url": "https://simplifier.co.kr/logs/146/"
       },
       {
-        "totalSessionCount": 2,
-        "totalBotSessionCount": 0,
-        "distinctUserCount": 2,
-        "pagesPerSessionPercentage": 1,
-        "Url": "https://simplifier.co.kr/logs/99/"
-      },
-      {
-        "totalSessionCount": 0,
-        "totalBotSessionCount": 1,
-        "distinctUserCount": 1,
-        "pagesPerSessionPercentage": 1,
-        "Url": "https://simplifier.co.kr/logs/271/"
-      },
-      {
-        "totalSessionCount": 0,
-        "totalBotSessionCount": 1,
-        "distinctUserCount": 1,
-        "pagesPerSessionPercentage": 1,
-        "Url": "https://simplifier.co.kr/logs/636/?fbclid=IwZXh0bgNhZW0CMTEAcGRvZgRzcnRjBmFwcF9pZAwyNTYyODEwNDA1NTgAAR6XM_hrLk-QsSBh1BvgKcEyop3CJqAmAR7B-ydLYt7eAAZFWppke_uTrsA87A_aem_-Yk4TaqOF5XBr_ivxJ0_ug"
-      },
-      {
-        "totalSessionCount": 0,
-        "totalBotSessionCount": 1,
-        "distinctUserCount": 1,
-        "pagesPerSessionPercentage": 1,
-        "Url": "https://simplifier.co.kr/logs/301/?fbclid=IwZXh0bgNhZW0CMTEAcGRvZgRzcnRjBmFwcF9pZAwyNTYyODEwNDA1NTgAAR54dg54GTIiWcaNhwruKt44GSf2z4qe5FQYj0ebojOnpqig9YUfnSPF_l71XQ_aem_yxUVhyFrwQdDvCkUjYyGHw"
-      },
-      {
         "totalSessionCount": 1,
         "totalBotSessionCount": 0,
         "distinctUserCount": 1,
         "pagesPerSessionPercentage": 1,
-        "Url": "https://simplifier.co.kr/logs/177/"
+        "Url": "https://simplifier.co.kr/logs/526/"
       },
       {
-        "totalSessionCount": 1,
+        "totalSessionCount": 0,
         "totalBotSessionCount": 1,
-        "distinctUserCount": 2,
+        "distinctUserCount": 1,
         "pagesPerSessionPercentage": 1,
         "Url": "https://simplifier.co.kr/logs/636/"
       },
       {
-        "totalSessionCount": 0,
-        "totalBotSessionCount": 1,
+        "totalSessionCount": 2,
+        "totalBotSessionCount": 0,
         "distinctUserCount": 1,
-        "pagesPerSessionPercentage": 1,
-        "Url": "https://simplifier.co.kr/logs/636/?fbclid=IwZXh0bgNhZW0CMTEAcGRvZgRzcnRjBmFwcF9pZAwyNTYyODEwNDA1NTgAAR5ABr5THUaHNyAszTUciZ5OgX11W_zCCn3JnZA57NqeZbOxNavHkE31Qb9eRw_aem_uJ_o3EFcx1r_M8B8QvNVrw"
-      },
-      {
-        "totalSessionCount": 0,
-        "totalBotSessionCount": 1,
-        "distinctUserCount": 1,
-        "pagesPerSessionPercentage": 1,
-        "Url": "https://simplifier.co.kr/logs/636/?fbclid=IwZXh0bgNhZW0CMTEAcGRvZgRzcnRjBmFwcF9pZAwyNTYyODEwNDA1NTgAAR4q1jeX1MKYr9aY_w9VKu7OdmzJUQFMlFsRGwr7Kz2UrvsBM1wTFxi37_reaQ_aem_IvrtdlPtuHCwoBr4ySVE9A"
+        "pagesPerSessionPercentage": 1.5,
+        "Url": "https://simplifier.co.kr/logs/6/"
       },
       {
         "totalSessionCount": 1,
@@ -7373,24 +7714,17 @@
         "Url": "https://simplifier.co.kr/logs/481/"
       },
       {
-        "totalSessionCount": 5,
+        "totalSessionCount": 3,
         "totalBotSessionCount": 0,
-        "distinctUserCount": 5,
+        "distinctUserCount": 3,
         "pagesPerSessionPercentage": 1,
         "Url": "https://simplifier.co.kr/logs/301/"
       },
       {
-        "totalSessionCount": 0,
-        "totalBotSessionCount": 1,
-        "distinctUserCount": 1,
-        "pagesPerSessionPercentage": 1,
-        "Url": "https://simplifier.co.kr/logs/96/"
-      },
-      {
-        "totalSessionCount": 11,
-        "totalBotSessionCount": 3,
-        "distinctUserCount": 14,
-        "pagesPerSessionPercentage": 1.2142857142857142,
+        "totalSessionCount": 12,
+        "totalBotSessionCount": 4,
+        "distinctUserCount": 15,
+        "pagesPerSessionPercentage": 1.25,
         "Url": "https://simplifier.co.kr/"
       },
       {
@@ -7398,7 +7732,14 @@
         "totalBotSessionCount": 0,
         "distinctUserCount": 1,
         "pagesPerSessionPercentage": 1,
-        "Url": "https://simplifier.co.kr/logs/186/"
+        "Url": "https://simplifier.co.kr/logs/461/"
+      },
+      {
+        "totalSessionCount": 1,
+        "totalBotSessionCount": 0,
+        "distinctUserCount": 1,
+        "pagesPerSessionPercentage": 1,
+        "Url": "https://simplifier.co.kr/logs/190/"
       },
       {
         "totalSessionCount": 1,
@@ -7412,6 +7753,20 @@
         "totalBotSessionCount": 0,
         "distinctUserCount": 1,
         "pagesPerSessionPercentage": 1,
+        "Url": "https://simplifier.co.kr/logs/631/"
+      },
+      {
+        "totalSessionCount": 1,
+        "totalBotSessionCount": 0,
+        "distinctUserCount": 1,
+        "pagesPerSessionPercentage": 1,
+        "Url": "https://simplifier.co.kr/logs/620/?fbclid=IwZXh0bgNhZW0CMTEAcGRvZgVmZGlkFlD2NyXjS8NR0Ukeh9lh7PMjhsUmFVpzcnRjBmFwcF9pZAo2NjI4NTY4Mzc5AAEebDvVK65HvonpU2ADG-Q_EY51_gep2RmwRPVZImW40uWN0OpkNfeP2lB2HdM_aem_NZ2W5c6I_4vAhszqxEr7pg"
+      },
+      {
+        "totalSessionCount": 2,
+        "totalBotSessionCount": 0,
+        "distinctUserCount": 2,
+        "pagesPerSessionPercentage": 1,
         "Url": "https://simplifier.co.kr/logs/628/"
       },
       {
@@ -7422,32 +7777,18 @@
         "Url": "https://simplifier.co.kr/logs/274/"
       },
       {
-        "totalSessionCount": 1,
-        "totalBotSessionCount": 0,
-        "distinctUserCount": 1,
-        "pagesPerSessionPercentage": 1,
-        "Url": "https://simplifier.co.kr/logs/620/?fbclid=IwZXh0bgNhZW0CMTEAcGRvZgVmZGlkFlD2NyXjS8NR0Ukeh9lh7PMjhsUmFVpzcnRjBmFwcF9pZAo2NjI4NTY4Mzc5AAEebDvVK65HvonpU2ADG-Q_EY51_gep2RmwRPVZImW40uWN0OpkNfeP2lB2HdM_aem_NZ2W5c6I_4vAhszqxEr7pg"
-      },
-      {
-        "totalSessionCount": 1,
+        "totalSessionCount": 0,
         "totalBotSessionCount": 0,
         "distinctUserCount": 1,
         "pagesPerSessionPercentage": 1,
         "Url": "https://simplifier.co.kr/logs/77/"
       },
       {
-        "totalSessionCount": 2,
+        "totalSessionCount": 3,
         "totalBotSessionCount": 0,
         "distinctUserCount": 2,
-        "pagesPerSessionPercentage": 1,
+        "pagesPerSessionPercentage": 1.3333333333333333,
         "Url": "https://simplifier.co.kr/logs/625/"
-      },
-      {
-        "totalSessionCount": 1,
-        "totalBotSessionCount": 0,
-        "distinctUserCount": 1,
-        "pagesPerSessionPercentage": 1,
-        "Url": "https://simplifier.co.kr/logs/224/"
       },
       {
         "totalSessionCount": 0,
@@ -7455,6 +7796,13 @@
         "distinctUserCount": 1,
         "pagesPerSessionPercentage": 1,
         "Url": "https://simplifier.co.kr/log.html"
+      },
+      {
+        "totalSessionCount": 2,
+        "totalBotSessionCount": 0,
+        "distinctUserCount": 2,
+        "pagesPerSessionPercentage": 1.5,
+        "Url": "https://simplifier.co.kr/logs/224/"
       },
       {
         "totalSessionCount": 0,
@@ -7481,6 +7829,13 @@
         "totalSessionCount": 1,
         "totalBotSessionCount": 0,
         "distinctUserCount": 1,
+        "pagesPerSessionPercentage": 1,
+        "Url": "https://simplifier.co.kr/logs/619/"
+      },
+      {
+        "totalSessionCount": 1,
+        "totalBotSessionCount": 0,
+        "distinctUserCount": 1,
         "pagesPerSessionPercentage": 2,
         "Url": "https://simplifier.co.kr/logs/162/"
       },
@@ -7499,13 +7854,6 @@
         "Url": "https://simplifier.co.kr/logs/632/?fbclid=IwZXh0bgNhZW0CMTEAcGRvZgRzcnRjBmFwcF9pZAwyNTYyODEwNDA1NTgAAR5BDVPBgP1I7sjCkWYvhZkmAuD9JfayCnT2NDyv-pOY2-IICFP3cm2b3VAPvg_aem_eGWfEJpzlqc6duY6FBiAFw"
       },
       {
-        "totalSessionCount": 1,
-        "totalBotSessionCount": 0,
-        "distinctUserCount": 1,
-        "pagesPerSessionPercentage": 1,
-        "Url": "https://simplifier.co.kr/logs/631/?fbclid=IwY2xjawUoIKlleHRuA2FlbQIxMQBwZG9mBXNydGMGYXBwX2lkDDM1MDY4NTUzMTcyOAABHuYpAr323aMy9f0GtDBXYiOHBlu7DzPnBs8eulz7dM1qoUC5Lit9eBO0XNvB_aem_i-yyF5dYxbDXnonxwMo0RQ"
-      },
-      {
         "totalSessionCount": 2,
         "totalBotSessionCount": 0,
         "distinctUserCount": 2,
@@ -7517,56 +7865,21 @@
         "totalBotSessionCount": 1,
         "distinctUserCount": 1,
         "pagesPerSessionPercentage": 1,
-        "Url": "https://simplifier.co.kr/logs/301/?fbclid=IwZXh0bgNhZW0CMTEAcGRvZgRzcnRjBmFwcF9pZAwyNTYyODEwNDA1NTgAAR5XSq7wo8KbKVckZ7hbM1Wh_poo8eCvec-uofMX8XmcHNGjFHPxNsO_l4ZCIw_aem_d1tE8yyyXCVOMMUY4PYkpA"
+        "Url": "https://simplifier.co.kr/logs/474/"
+      },
+      {
+        "totalSessionCount": 3,
+        "totalBotSessionCount": 0,
+        "distinctUserCount": 1,
+        "pagesPerSessionPercentage": 1,
+        "Url": "https://simplifier.co.kr/logs/235/"
       },
       {
         "totalSessionCount": 1,
         "totalBotSessionCount": 0,
         "distinctUserCount": 1,
         "pagesPerSessionPercentage": 1,
-        "Url": "https://simplifier.co.kr/logs/631/?fbclid=IwY2xjawUn6PlleHRuA2FlbQIxMQBwZG9mBWJyaWQRMXdROEc1QlJrOUdLYUZ6T3lzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEeFiacpveyMZiutEuEbdpeh_GZDP9sdhaQc0OGJcK55JBd8sanaLrjD4m4jqA_aem_-v0MYmEqXMU6mTvKXN8XAA"
-      },
-      {
-        "totalSessionCount": 0,
-        "totalBotSessionCount": 1,
-        "distinctUserCount": 1,
-        "pagesPerSessionPercentage": 1,
-        "Url": "https://simplifier.co.kr/logs/9/"
-      },
-      {
-        "totalSessionCount": 0,
-        "totalBotSessionCount": 1,
-        "distinctUserCount": 1,
-        "pagesPerSessionPercentage": 1,
-        "Url": "https://simplifier.co.kr/logs/301/?fbclid=IwZXh0bgNhZW0CMTEAcGRvZgRzcnRjBmFwcF9pZAwyNTYyODEwNDA1NTgAAR7pUOsarOdE5J7Z4RjQuPYFtcHf1upANbAtsHIl6GB598cMYY5TYCnhPBjIUg_aem_BOiK7xK7L3UgpMLIrOmw1w"
-      },
-      {
-        "totalSessionCount": 0,
-        "totalBotSessionCount": 1,
-        "distinctUserCount": 1,
-        "pagesPerSessionPercentage": 1,
-        "Url": "https://simplifier.co.kr/logs/474/"
-      },
-      {
-        "totalSessionCount": 0,
-        "totalBotSessionCount": 0,
-        "distinctUserCount": 1,
-        "pagesPerSessionPercentage": 1,
-        "Url": "https://simplifier.co.kr/logs/27/"
-      },
-      {
-        "totalSessionCount": 2,
-        "totalBotSessionCount": 0,
-        "distinctUserCount": 1,
-        "pagesPerSessionPercentage": 2,
-        "Url": "https://simplifier.co.kr/logs/631/?fbclid=IwY2xjawUn9H5leHRuA2FlbQIxMQBwZG9mBXNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR78lkCA3J8zsPhN_XipuV80ZqwBTM9bIEpcYNj6Q2umu88A7BMBdR0nKso8fA_aem_YfZKtHNHG7AVzrAXw_MdOQ"
-      },
-      {
-        "totalSessionCount": 4,
-        "totalBotSessionCount": 0,
-        "distinctUserCount": 1,
-        "pagesPerSessionPercentage": 1,
-        "Url": "https://simplifier.co.kr/logs/235/"
+        "Url": "https://simplifier.co.kr/logs/618/"
       },
       {
         "totalSessionCount": 0,
@@ -7576,25 +7889,53 @@
         "Url": "https://simplifier.co.kr/logs/599/"
       },
       {
-        "totalSessionCount": 1,
+        "totalSessionCount": 2,
         "totalBotSessionCount": 0,
-        "distinctUserCount": 1,
+        "distinctUserCount": 2,
         "pagesPerSessionPercentage": 1,
         "Url": "https://simplifier.co.kr/logs/632/"
+      },
+      {
+        "totalSessionCount": 3,
+        "totalBotSessionCount": 0,
+        "distinctUserCount": 3,
+        "pagesPerSessionPercentage": 1,
+        "Url": "https://simplifier.co.kr/logs/629/"
+      },
+      {
+        "totalSessionCount": 0,
+        "totalBotSessionCount": 1,
+        "distinctUserCount": 1,
+        "pagesPerSessionPercentage": 1,
+        "Url": "https://simplifier.co.kr/?fbclid=IwZXh0bgNhZW0CMTEAcGRvZgRzcnRjBmFwcF9pZAwyNTYyODEwNDA1NTgAAR4-2GdO2j7IY-0fVHODBBRkdln9oZO-p4e6LpFZBRA9EApxjGviYilIdq7Qcg_aem_dD_OdjtKenthkY849_y0iA"
       },
       {
         "totalSessionCount": 1,
         "totalBotSessionCount": 0,
         "distinctUserCount": 1,
-        "pagesPerSessionPercentage": 2,
-        "Url": "https://simplifier.co.kr/logs/522/"
+        "pagesPerSessionPercentage": 1,
+        "Url": "https://simplifier.co.kr/logs/472/"
+      },
+      {
+        "totalSessionCount": 1,
+        "totalBotSessionCount": 0,
+        "distinctUserCount": 1,
+        "pagesPerSessionPercentage": 1,
+        "Url": "https://simplifier.co.kr/logs/605/"
+      },
+      {
+        "totalSessionCount": 2,
+        "totalBotSessionCount": 0,
+        "distinctUserCount": 1,
+        "pagesPerSessionPercentage": 1,
+        "Url": "https://simplifier.co.kr/#partners.trevari.co.kr#partners.trevari.co.kr#partners.trevari.co.kr"
       }
     ],
     "EngagementTime": [
       {
-        "totalTime": 150,
-        "activeTime": 150,
-        "Url": "https://simplifier.co.kr/logs/631/?sfnsn=mo"
+        "totalTime": 27,
+        "activeTime": 27,
+        "Url": "https://simplifier.co.kr/logs/630/"
       },
       {
         "totalTime": 0,
@@ -7602,19 +7943,14 @@
         "Url": "https://simplifier.co.kr/logs/607/"
       },
       {
-        "totalTime": 190,
-        "activeTime": 2,
-        "Url": "https://simplifier.co.kr/logs/99/"
+        "totalTime": 48,
+        "activeTime": 48,
+        "Url": "https://simplifier.co.kr/logs/526/"
       },
       {
-        "totalTime": 10,
-        "activeTime": 10,
-        "Url": "https://simplifier.co.kr/logs/177/"
-      },
-      {
-        "totalTime": 22,
-        "activeTime": 16,
-        "Url": "https://simplifier.co.kr/logs/636/"
+        "totalTime": 20,
+        "activeTime": 20,
+        "Url": "https://simplifier.co.kr/logs/6/"
       },
       {
         "totalTime": 1,
@@ -7622,19 +7958,24 @@
         "Url": "https://simplifier.co.kr/logs/481/"
       },
       {
-        "totalTime": 29,
-        "activeTime": 28,
+        "totalTime": 40,
+        "activeTime": 39,
         "Url": "https://simplifier.co.kr/logs/301/"
       },
       {
-        "totalTime": 74,
-        "activeTime": 42,
+        "totalTime": 128,
+        "activeTime": 82,
         "Url": "https://simplifier.co.kr/"
       },
       {
-        "totalTime": 27,
-        "activeTime": 19,
-        "Url": "https://simplifier.co.kr/logs/186/"
+        "totalTime": 16,
+        "activeTime": 16,
+        "Url": "https://simplifier.co.kr/logs/461/"
+      },
+      {
+        "totalTime": 23,
+        "activeTime": 23,
+        "Url": "https://simplifier.co.kr/logs/190/"
       },
       {
         "totalTime": 2,
@@ -7642,34 +7983,39 @@
         "Url": "https://simplifier.co.kr/logs/627/"
       },
       {
+        "totalTime": 12,
+        "activeTime": 4,
+        "Url": "https://simplifier.co.kr/logs/631/"
+      },
+      {
+        "totalTime": 10,
+        "activeTime": 5,
+        "Url": "https://simplifier.co.kr/logs/628/"
+      },
+      {
         "totalTime": 17,
         "activeTime": 15,
         "Url": "https://simplifier.co.kr/logs/620/?fbclid=IwZXh0bgNhZW0CMTEAcGRvZgVmZGlkFlD2NyXjS8NR0Ukeh9lh7PMjhsUmFVpzcnRjBmFwcF9pZAo2NjI4NTY4Mzc5AAEebDvVK65HvonpU2ADG-Q_EY51_gep2RmwRPVZImW40uWN0OpkNfeP2lB2HdM_aem_NZ2W5c6I_4vAhszqxEr7pg"
       },
       {
-        "totalTime": 8,
-        "activeTime": 5,
-        "Url": "https://simplifier.co.kr/logs/628/"
-      },
-      {
-        "totalTime": 103,
-        "activeTime": 103,
-        "Url": "https://simplifier.co.kr/logs/77/"
-      },
-      {
-        "totalTime": 508,
-        "activeTime": 82,
+        "totalTime": 627,
+        "activeTime": 52,
         "Url": "https://simplifier.co.kr/logs/625/"
       },
       {
-        "totalTime": 5,
-        "activeTime": 5,
+        "totalTime": 6,
+        "activeTime": 6,
         "Url": "https://simplifier.co.kr/logs/224/"
       },
       {
         "totalTime": 5,
         "activeTime": 5,
         "Url": "https://simplifier.co.kr/?utm_source=chatgpt.com"
+      },
+      {
+        "totalTime": 6,
+        "activeTime": 4,
+        "Url": "https://simplifier.co.kr/logs/619/"
       },
       {
         "totalTime": 157,
@@ -7682,48 +8028,53 @@
         "Url": "https://simplifier.co.kr/logs/292/"
       },
       {
-        "totalTime": 15,
-        "activeTime": 12,
-        "Url": "https://simplifier.co.kr/logs/631/?fbclid=IwY2xjawUoIKlleHRuA2FlbQIxMQBwZG9mBXNydGMGYXBwX2lkDDM1MDY4NTUzMTcyOAABHuYpAr323aMy9f0GtDBXYiOHBlu7DzPnBs8eulz7dM1qoUC5Lit9eBO0XNvB_aem_i-yyF5dYxbDXnonxwMo0RQ"
-      },
-      {
-        "totalTime": 28,
-        "activeTime": 28,
+        "totalTime": 26,
+        "activeTime": 26,
         "Url": "https://simplifier.co.kr/logs/132/"
       },
       {
-        "totalTime": 8,
+        "totalTime": 314,
         "activeTime": 8,
-        "Url": "https://simplifier.co.kr/logs/631/?fbclid=IwY2xjawUn6PlleHRuA2FlbQIxMQBwZG9mBWJyaWQRMXdROEc1QlJrOUdLYUZ6T3lzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEeFiacpveyMZiutEuEbdpeh_GZDP9sdhaQc0OGJcK55JBd8sanaLrjD4m4jqA_aem_-v0MYmEqXMU6mTvKXN8XAA"
-      },
-      {
-        "totalTime": 782,
-        "activeTime": 251,
-        "Url": "https://simplifier.co.kr/logs/631/?fbclid=IwY2xjawUn9H5leHRuA2FlbQIxMQBwZG9mBXNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR78lkCA3J8zsPhN_XipuV80ZqwBTM9bIEpcYNj6Q2umu88A7BMBdR0nKso8fA_aem_YfZKtHNHG7AVzrAXw_MdOQ"
-      },
-      {
-        "totalTime": 399,
-        "activeTime": 94,
         "Url": "https://simplifier.co.kr/logs/235/"
       },
       {
         "totalTime": 8,
+        "activeTime": 5,
+        "Url": "https://simplifier.co.kr/logs/618/"
+      },
+      {
+        "totalTime": 7,
         "activeTime": 6,
         "Url": "https://simplifier.co.kr/logs/632/"
       },
       {
-        "totalTime": 15,
-        "activeTime": 15,
-        "Url": "https://simplifier.co.kr/logs/522/"
+        "totalTime": 38,
+        "activeTime": 38,
+        "Url": "https://simplifier.co.kr/logs/629/"
+      },
+      {
+        "totalTime": 26,
+        "activeTime": 26,
+        "Url": "https://simplifier.co.kr/logs/472/"
+      },
+      {
+        "totalTime": 43,
+        "activeTime": 43,
+        "Url": "https://simplifier.co.kr/logs/605/"
+      },
+      {
+        "totalTime": 185,
+        "activeTime": 34,
+        "Url": "https://simplifier.co.kr/#partners.trevari.co.kr#partners.trevari.co.kr#partners.trevari.co.kr"
       }
     ]
   },
   "latest_by_source": {
     "DeadClickCount": [
       {
-        "sessionsCount": 13,
-        "sessionsWithMetricPercentage": 30.77,
-        "sessionsWithoutMetricPercentage": 69.23,
+        "sessionsCount": 18,
+        "sessionsWithMetricPercentage": 22.22,
+        "sessionsWithoutMetricPercentage": 77.78,
         "pagesViews": 4,
         "subTotal": 4,
         "Source": ""
@@ -7737,7 +8088,7 @@
         "Source": "google"
       },
       {
-        "sessionsCount": 2,
+        "sessionsCount": 7,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -7753,14 +8104,6 @@
         "Source": "daum"
       },
       {
-        "sessionsCount": 3,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Source": "l.facebook.com"
-      },
-      {
         "sessionsCount": 1,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
@@ -7774,22 +8117,14 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Source": "m.trevari.co.kr"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
         "Source": "www.linkedin.com"
       },
       {
-        "sessionsCount": 9,
-        "sessionsWithMetricPercentage": 11.11,
-        "sessionsWithoutMetricPercentage": 88.89,
-        "pagesViews": 1,
-        "subTotal": 1,
+        "sessionsCount": 10,
+        "sessionsWithMetricPercentage": 20,
+        "sessionsWithoutMetricPercentage": 80,
+        "pagesViews": 3,
+        "subTotal": 53,
         "Source": "simplifier.co.kr"
       },
       {
@@ -7798,23 +8133,7 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Source": "lm.facebook.com"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
         "Source": "m.facebook.com"
-      },
-      {
-        "sessionsCount": 2,
-        "sessionsWithMetricPercentage": 50,
-        "sessionsWithoutMetricPercentage": 50,
-        "pagesViews": 1,
-        "subTotal": 1,
-        "Source": "talk.navercorp.com"
       },
       {
         "sessionsCount": 3,
@@ -7827,7 +8146,7 @@
     ],
     "ExcessiveScroll": [
       {
-        "sessionsCount": 13,
+        "sessionsCount": 18,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -7843,7 +8162,7 @@
         "Source": "google"
       },
       {
-        "sessionsCount": 2,
+        "sessionsCount": 7,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -7859,14 +8178,6 @@
         "Source": "daum"
       },
       {
-        "sessionsCount": 3,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Source": "l.facebook.com"
-      },
-      {
         "sessionsCount": 1,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
@@ -7880,18 +8191,10 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Source": "m.trevari.co.kr"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
         "Source": "www.linkedin.com"
       },
       {
-        "sessionsCount": 9,
+        "sessionsCount": 10,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -7904,23 +8207,7 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Source": "lm.facebook.com"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
         "Source": "m.facebook.com"
-      },
-      {
-        "sessionsCount": 2,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Source": "talk.navercorp.com"
       },
       {
         "sessionsCount": 3,
@@ -7933,7 +8220,7 @@
     ],
     "RageClickCount": [
       {
-        "sessionsCount": 13,
+        "sessionsCount": 18,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -7949,7 +8236,7 @@
         "Source": "google"
       },
       {
-        "sessionsCount": 2,
+        "sessionsCount": 7,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -7965,14 +8252,6 @@
         "Source": "daum"
       },
       {
-        "sessionsCount": 3,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Source": "l.facebook.com"
-      },
-      {
         "sessionsCount": 1,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
@@ -7986,18 +8265,10 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Source": "m.trevari.co.kr"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
         "Source": "www.linkedin.com"
       },
       {
-        "sessionsCount": 9,
+        "sessionsCount": 10,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -8010,23 +8281,7 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Source": "lm.facebook.com"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
         "Source": "m.facebook.com"
-      },
-      {
-        "sessionsCount": 2,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Source": "talk.navercorp.com"
       },
       {
         "sessionsCount": 3,
@@ -8039,11 +8294,11 @@
     ],
     "QuickbackClick": [
       {
-        "sessionsCount": 13,
-        "sessionsWithMetricPercentage": 7.69,
-        "sessionsWithoutMetricPercentage": 92.31,
-        "pagesViews": 1,
-        "subTotal": 1,
+        "sessionsCount": 18,
+        "sessionsWithMetricPercentage": 11.11,
+        "sessionsWithoutMetricPercentage": 88.89,
+        "pagesViews": 2,
+        "subTotal": 2,
         "Source": ""
       },
       {
@@ -8055,7 +8310,7 @@
         "Source": "google"
       },
       {
-        "sessionsCount": 2,
+        "sessionsCount": 7,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -8071,14 +8326,6 @@
         "Source": "daum"
       },
       {
-        "sessionsCount": 3,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Source": "l.facebook.com"
-      },
-      {
         "sessionsCount": 1,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
@@ -8092,18 +8339,10 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Source": "m.trevari.co.kr"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
         "Source": "www.linkedin.com"
       },
       {
-        "sessionsCount": 9,
+        "sessionsCount": 10,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -8116,23 +8355,7 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Source": "lm.facebook.com"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
         "Source": "m.facebook.com"
-      },
-      {
-        "sessionsCount": 2,
-        "sessionsWithMetricPercentage": 50,
-        "sessionsWithoutMetricPercentage": 50,
-        "pagesViews": 2,
-        "subTotal": 2,
-        "Source": "talk.navercorp.com"
       },
       {
         "sessionsCount": 3,
@@ -8145,7 +8368,7 @@
     ],
     "ScriptErrorCount": [
       {
-        "sessionsCount": 13,
+        "sessionsCount": 18,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -8161,7 +8384,7 @@
         "Source": "google"
       },
       {
-        "sessionsCount": 2,
+        "sessionsCount": 7,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -8177,14 +8400,6 @@
         "Source": "daum"
       },
       {
-        "sessionsCount": 3,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Source": "l.facebook.com"
-      },
-      {
         "sessionsCount": 1,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
@@ -8198,18 +8413,10 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Source": "m.trevari.co.kr"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
         "Source": "www.linkedin.com"
       },
       {
-        "sessionsCount": 9,
+        "sessionsCount": 10,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -8222,23 +8429,7 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Source": "lm.facebook.com"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
         "Source": "m.facebook.com"
-      },
-      {
-        "sessionsCount": 2,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Source": "talk.navercorp.com"
       },
       {
         "sessionsCount": 3,
@@ -8251,7 +8442,7 @@
     ],
     "ErrorClickCount": [
       {
-        "sessionsCount": 13,
+        "sessionsCount": 18,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -8267,7 +8458,7 @@
         "Source": "google"
       },
       {
-        "sessionsCount": 2,
+        "sessionsCount": 7,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -8283,14 +8474,6 @@
         "Source": "daum"
       },
       {
-        "sessionsCount": 3,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Source": "l.facebook.com"
-      },
-      {
         "sessionsCount": 1,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
@@ -8304,18 +8487,10 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Source": "m.trevari.co.kr"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
         "Source": "www.linkedin.com"
       },
       {
-        "sessionsCount": 9,
+        "sessionsCount": 10,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -8328,23 +8503,7 @@
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
         "subTotal": 0,
-        "Source": "lm.facebook.com"
-      },
-      {
-        "sessionsCount": 1,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
         "Source": "m.facebook.com"
-      },
-      {
-        "sessionsCount": 2,
-        "sessionsWithMetricPercentage": 0,
-        "sessionsWithoutMetricPercentage": 100,
-        "pagesViews": 0,
-        "subTotal": 0,
-        "Source": "talk.navercorp.com"
       },
       {
         "sessionsCount": 3,
@@ -8357,15 +8516,15 @@
     ],
     "ScrollDepth": [
       {
-        "averageScrollDepth": 35.07,
+        "averageScrollDepth": 43.09,
         "Source": ""
       },
       {
-        "averageScrollDepth": 79.17,
+        "averageScrollDepth": 71.17,
         "Source": "google"
       },
       {
-        "averageScrollDepth": 66.67,
+        "averageScrollDepth": 61.78,
         "Source": "naver"
       },
       {
@@ -8373,36 +8532,20 @@
         "Source": "daum"
       },
       {
-        "averageScrollDepth": 32.2,
-        "Source": "l.facebook.com"
-      },
-      {
         "averageScrollDepth": 13,
         "Source": "chatgpt.com"
       },
       {
-        "averageScrollDepth": 23,
-        "Source": "m.trevari.co.kr"
-      },
-      {
-        "averageScrollDepth": 59,
+        "averageScrollDepth": 73,
         "Source": "www.linkedin.com"
       },
       {
-        "averageScrollDepth": 72.08,
+        "averageScrollDepth": 63.38,
         "Source": "simplifier.co.kr"
-      },
-      {
-        "averageScrollDepth": 53,
-        "Source": "lm.facebook.com"
       },
       {
         "averageScrollDepth": 70,
         "Source": "m.facebook.com"
-      },
-      {
-        "averageScrollDepth": 91.33,
-        "Source": "talk.navercorp.com"
       },
       {
         "averageScrollDepth": 71.33,
@@ -8411,10 +8554,10 @@
     ],
     "Traffic": [
       {
-        "totalSessionCount": 13,
-        "totalBotSessionCount": 8,
-        "distinctUserCount": 26,
-        "pagesPerSessionPercentage": 1.1071428571428572,
+        "totalSessionCount": 18,
+        "totalBotSessionCount": 6,
+        "distinctUserCount": 30,
+        "pagesPerSessionPercentage": 1.1875,
         "Source": ""
       },
       {
@@ -8425,10 +8568,10 @@
         "Source": "google"
       },
       {
-        "totalSessionCount": 2,
+        "totalSessionCount": 7,
         "totalBotSessionCount": 0,
-        "distinctUserCount": 2,
-        "pagesPerSessionPercentage": 1.5,
+        "distinctUserCount": 7,
+        "pagesPerSessionPercentage": 1.2857142857142858,
         "Source": "naver"
       },
       {
@@ -8437,20 +8580,6 @@
         "distinctUserCount": 1,
         "pagesPerSessionPercentage": 1,
         "Source": "daum"
-      },
-      {
-        "totalSessionCount": 0,
-        "totalBotSessionCount": 4,
-        "distinctUserCount": 4,
-        "pagesPerSessionPercentage": 1,
-        "Source": "www.facebook.com"
-      },
-      {
-        "totalSessionCount": 3,
-        "totalBotSessionCount": 0,
-        "distinctUserCount": 2,
-        "pagesPerSessionPercentage": 1.6666666666666667,
-        "Source": "l.facebook.com"
       },
       {
         "totalSessionCount": 1,
@@ -8463,43 +8592,22 @@
         "totalSessionCount": 1,
         "totalBotSessionCount": 0,
         "distinctUserCount": 1,
-        "pagesPerSessionPercentage": 2,
-        "Source": "m.trevari.co.kr"
-      },
-      {
-        "totalSessionCount": 1,
-        "totalBotSessionCount": 0,
-        "distinctUserCount": 1,
         "pagesPerSessionPercentage": 1,
         "Source": "www.linkedin.com"
       },
       {
-        "totalSessionCount": 9,
+        "totalSessionCount": 10,
         "totalBotSessionCount": 0,
         "distinctUserCount": 6,
-        "pagesPerSessionPercentage": 1.4444444444444444,
+        "pagesPerSessionPercentage": 1.6,
         "Source": "simplifier.co.kr"
       },
       {
         "totalSessionCount": 1,
-        "totalBotSessionCount": 0,
-        "distinctUserCount": 1,
-        "pagesPerSessionPercentage": 1,
-        "Source": "lm.facebook.com"
-      },
-      {
-        "totalSessionCount": 1,
-        "totalBotSessionCount": 4,
-        "distinctUserCount": 5,
+        "totalBotSessionCount": 3,
+        "distinctUserCount": 4,
         "pagesPerSessionPercentage": 1,
         "Source": "m.facebook.com"
-      },
-      {
-        "totalSessionCount": 2,
-        "totalBotSessionCount": 0,
-        "distinctUserCount": 1,
-        "pagesPerSessionPercentage": 1.5,
-        "Source": "talk.navercorp.com"
       },
       {
         "totalSessionCount": 3,
@@ -8511,18 +8619,18 @@
     ],
     "EngagementTime": [
       {
-        "totalTime": 92,
-        "activeTime": 23,
+        "totalTime": 127,
+        "activeTime": 49,
         "Source": ""
       },
       {
-        "totalTime": 180,
-        "activeTime": 100,
+        "totalTime": 179,
+        "activeTime": 98,
         "Source": "google"
       },
       {
-        "totalTime": 81,
-        "activeTime": 62,
+        "totalTime": 36,
+        "activeTime": 31,
         "Source": "naver"
       },
       {
@@ -8531,44 +8639,24 @@
         "Source": "daum"
       },
       {
-        "totalTime": 524,
-        "activeTime": 170,
-        "Source": "l.facebook.com"
-      },
-      {
         "totalTime": 5,
         "activeTime": 5,
         "Source": "chatgpt.com"
       },
       {
-        "totalTime": 5,
-        "activeTime": 5,
-        "Source": "m.trevari.co.kr"
-      },
-      {
-        "totalTime": 16,
-        "activeTime": 16,
+        "totalTime": 6,
+        "activeTime": 6,
         "Source": "www.linkedin.com"
       },
       {
-        "totalTime": 240,
-        "activeTime": 61,
+        "totalTime": 209,
+        "activeTime": 29,
         "Source": "simplifier.co.kr"
-      },
-      {
-        "totalTime": 15,
-        "activeTime": 12,
-        "Source": "lm.facebook.com"
       },
       {
         "totalTime": 17,
         "activeTime": 15,
         "Source": "m.facebook.com"
-      },
-      {
-        "totalTime": 150,
-        "activeTime": 150,
-        "Source": "talk.navercorp.com"
       },
       {
         "totalTime": 40,
