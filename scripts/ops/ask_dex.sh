@@ -20,7 +20,7 @@ esac
 if grep -Eiq '(api[_-]?key|token|password|secret|sk-[A-Za-z0-9])' "$CARD"; then
   echo "카드에 비밀값 의심 문자열이 있음: 보내지 않음" >&2; exit 3
 fi
-# [확인 필요] 아래 codex 호출의 비대화형 하위 명령, 샌드박스 옵션 이름은 공식 문서 대조 전이라 확정이 아니다.
+# 10/2 공식 문서 대조: 비대화형은 codex exec, 샌드박스는 read-only/workspace-write. 첫 시험 전까지는 미검증 초안.
 cd "$WORKDIR"
 timeout 600 codex exec --sandbox workspace-write "$(cat "$CARD")" > "$OUT"
 echo "답 저장: $OUT ($(wc -c < "$OUT") bytes)"
