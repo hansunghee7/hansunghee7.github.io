@@ -9,7 +9,7 @@ AI 창 안의 글자로 완료 판정 → 삽입 → 제목을 씬 이름으로 
       [--download1080]        씬을 만들 때마다 옆 탭에서 "파일 → 다운로드 → MP4"(1080x1920) 렌더링을 걸어 두고
                               다음 씬 생성을 계속한다. 결과는 out/<편>_1080/<씬>.mp4 (2026-09-24 사장님 화질 결정 ③)
       [--download1080-only]   생성 없이, 이 폴더 batch_log.jsonl에 기록된 문서들만 1080으로 받는다
-scenes_en.json: [{"name": "씬02", "prompt": "<순수 영어 문장>"}, ...]
+scenes_en.json: [{"name": "씬02", "prompt": "<순수 영어 문장>", "image": "<선택: 참조 이미지 경로, 있으면 애니메이션 처리 탭>"}, ...]
   (Vids는 한글·대괄호 프롬프트를 약관 위반으로 거부한다. 핏 GENERATION_PIPELINES §3 4번)
 """
 import argparse, json, sys, time
@@ -25,6 +25,9 @@ def log(f, rec):
     f.write(json.dumps(rec, ensure_ascii=False) + "\n"); f.flush()
 
 
+ORIENT = "portrait"  # main()에서 --orient로 바꾼다
+
+
 def panel_lines(pg):
     """AI 창(heading "AI 동영상 클립") 아래 글자만. 화면 전체를 보면 툴바 "텍스트 삽입"을 완료로 오인한다."""
     lines = [l.strip() for l in pg.locator("body").aria_snapshot().splitlines() if l.strip()]
@@ -35,17 +38,25 @@ def panel_lines(pg):
 def one_scene(pg, s, out, timeout):
     t0 = time.time()
     pg.goto("https://docs.google.com/videos/create", wait_until="domcontentloaded", timeout=60000)
-    pg.get_by_role("button", name="세로 동영상 만들기").wait_for(timeout=30000)
-    pg.get_by_role("button", name="세로 동영상 만들기").click(); pg.wait_for_timeout(600)
-    if pg.get_by_role("button", name="세로 동영상 만들기").get_attribute("aria-pressed") != "true":
-        return {"status": "STOP", "why": "portrait not pressed"}
+    word = "가로" if ORIENT == "landscape" else "세로"  # 롱폼은 가로(핏 2026-10-02, --orient landscape)
+    pg.get_by_role("button", name=f"{word} 동영상 만들기").wait_for(timeout=30000)
+    pg.get_by_role("button", name=f"{word} 동영상 만들기").click(); pg.wait_for_timeout(600)
+    if pg.get_by_role("button", name=f"{word} 동영상 만들기").get_attribute("aria-pressed") != "true":
+        return {"status": "STOP", "why": f"{ORIENT} not pressed"}
     pg.get_by_role("button", name="AI 동영상 만들기", exact=False).first.click()
     box = pg.get_by_role("textbox", name="동영상을 설명하세요", exact=False)
     box.wait_for(timeout=30000)
     _sb = pg.get_by_role("button", name="Omni", exact=False).first
     setting = _sb.inner_text() + " " + (_sb.get_attribute("aria-label") or "")  # 9/26 핏: 비율이 아이콘으로 바뀌어 글자엔 세로가 없고 숨은 이름엔 있음
-    if "세로" not in setting:
-        return {"status": "STOP", "why": f"setting not portrait: {setting}"}
+    if word not in setting:
+        return {"status": "STOP", "why": f"setting not {ORIENT}: {setting}"}
+    if s.get("image"):  # 참조 이미지가 있는 장면: "애니메이션 처리" 탭에 올리고 움직임만 설명한다(핏 2026-10-02, ep32 카사 밀라 실제 건물)
+        pg.get_by_role("tab", name="애니메이션 처리").click(); pg.wait_for_timeout(1200)
+        pg.get_by_role("button", name="이미지 추가").click(); pg.wait_for_timeout(1000)
+        pg.locator("input[type=file]").first.set_input_files(str(Path(s["image"]).expanduser())); pg.wait_for_timeout(6000)
+        if not pg.get_by_role("img", name="업로드된 이미지 미리보기").count():
+            return {"status": "STOP", "why": "image upload failed"}
+        box = pg.get_by_role("textbox", name="이미지를 추가한 후", exact=False)
     box.click(); pg.keyboard.insert_text(s["prompt"].strip()); pg.wait_for_timeout(700)
     go = pg.get_by_role("button", name="생성", exact=True)
     if go.is_disabled():
@@ -128,11 +139,14 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("scenes"); ap.add_argument("outdir")
     ap.add_argument("--only", default=""); ap.add_argument("--timeout", type=int, default=600)
+    ap.add_argument("--orient", choices=["portrait", "landscape"], default="portrait")
     ap.add_argument("--download1080", action="store_true")
     ap.add_argument("--download1080-only", action="store_true")
     ap.add_argument("--ports", default="9222",
                     help="쓸 계정 포트 순서(예: 9226,9222). AI 창에 한도 문구가 뜨면 다음 포트로 넘어가 같은 씬부터 이어 한다")
     a = ap.parse_args()
+    global ORIENT
+    ORIENT = a.orient
     scenes = json.loads(Path(a.scenes).read_text(encoding="utf-8"))
     if a.only:
         keep = set(a.only.split(",")); scenes = [s for s in scenes if s["name"] in keep]
