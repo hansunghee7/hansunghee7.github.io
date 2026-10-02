@@ -11,6 +11,8 @@ r"""GPU 공용 관문 (N92, 탐 2026-10-01). 4090 한 장을 핏·탐·마야가
   - 5GB 미만 작은 작업은 확인만 하고 통과한다(예약도 안 한다).
   - 20GB 이상 큰 작업은 새벽 01~06시에만 통과한다. 급하면 --now(사유가 기록에 남는다).
   - 남은 VRAM은 nvidia-smi 값에서 다른 사람의 살아 있는 예약을 뺀 값이다(예약 직후 로딩 전의 겹침을 막는다).
+  - 새벽(01~06시)에 예약으로 설명되지 않는 점유 때문에 모자라면 ComfyUI 모델을 내리고 한 번 더 본다
+    (사장님 2026-10-02: 사장님이 에이전트 없을 때 연습으로 띄운 것은 새벽 정기 작업이 내려도 된다). 결과 reclaim-night.
 기록: C:\work\_ops\gpu_gate_log.csv (시각, 누가, 요청 GB, 남은 GB, 결과, 메모). 프로세스별 VRAM은 윈도우가 안 줘서
 이 기록이 "누가 언제 얼마" 정본이다.
 """
@@ -62,6 +64,22 @@ def log(who, gb, free_gb, result, note):
         w.writerow([time.strftime("%Y-%m-%d %H:%M:%S"), who, gb, round(free_gb, 1), result, note])
 
 
+COMFY_FREE = "http://127.0.0.1:8188/free"
+
+
+def reclaim_unreserved():
+    """예약 없는 점유(사장님 연습용 ComfyUI 등)의 모델을 내린다. 프로세스는 끄지 않고 ComfyUI 공식 /free만 부른다."""
+    import urllib.request
+    try:
+        req = urllib.request.Request(COMFY_FREE, data=b'{"unload_models": true, "free_memory": true}',
+                                     headers={"Content-Type": "application/json"}, method="POST")
+        urllib.request.urlopen(req, timeout=10).read()
+        time.sleep(5)
+        return "comfy-free"
+    except Exception as e:
+        return f"comfy-free 실패({type(e).__name__})"
+
+
 def need(gb, who, note="", now_flag=False, ttl_min=30):
     """통과하면 (True, 메시지), 아니면 (False, 이유). 다른 스크립트가 import해서 쓴다."""
     now = time.time()
@@ -77,6 +95,12 @@ def need(gb, who, note="", now_flag=False, ttl_min=30):
         log(who, gb, avail_gb, "deny-daytime", note)
         return False, (f"큰 작업({gb}GB)은 새벽 {NIGHT[0]:02d}~{NIGHT[1]:02d}시에만 돌립니다. "
                        "지금 꼭 필요하면 --now를 붙이세요(기록에 남습니다).")
+    if avail_gb < gb and NIGHT[0] <= hour < NIGHT[1] and others < gb:
+        # 예약으로 설명되지 않는 점유가 있다: 새벽이면 사장님 연습용 점유를 내리고 한 번 더 본다.
+        how = reclaim_unreserved()
+        free, total = free_mib()
+        avail_gb = (free - MARGIN_MIB) / 1024 - others
+        log(who, gb, avail_gb, "reclaim-night", f"{how}; {note}")
     if avail_gb < gb:
         holders = ", ".join(f"{r['who']} {r['gb']}GB" for r in mine_removed) or "예약 없음"
         log(who, gb, avail_gb, "deny-full", note)
