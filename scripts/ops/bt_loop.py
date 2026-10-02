@@ -2,7 +2,8 @@
 
 큐(C:/work/_ops/bt/queue.md)에서 상태 `대기`인 첫 항목을 골라 비티(구PC agy)에게 검토를 맡기고,
 답을 replies/에 저장한 뒤 큐 항목을 `비티답변`으로 바꾸고 탐에게 우편을 보낸다.
-- 비티의 한도를 지키는 가드: 7일에 최대 2회, 호출 간격 36시간 이상, 실패(한도·빈 답)면 24시간 쉰다.
+- 횟수 제한 없음(사장님 2026-10-02: "7일 2회 제한을 두지 말고 쓰세요, 지식 상승을 주 2일로 한정할 필요 없다").
+  한 번 실행에 `대기` 항목을 모두(최대 10건) 보낸다. 실제 실패(한도 문구·빈 답)가 나면 그때만 24시간 쉰다.
 - 답은 가설이다. 채택·반려 판정은 탐 세션이 실측으로 한다(무료 엔진은 판정하지 않는다, CLAUDE.md).
 - 고객 정보·비밀값·가격·전략은 대상 파일에 넣지 않는다(큐에 올리기 전 탐이 확인).
 사용: python bt_loop.py [--dry-run] [--force]   (스케줄러는 pythonw로 숨김 실행)
@@ -54,9 +55,6 @@ def main():
     if not force:
         if st.get("next_allowed") and now < datetime.fromisoformat(st["next_allowed"]):
             print("skip: 쉬는 중 until", st["next_allowed"]); LAST_RUN.write_text(now.strftime("%F %T") + " skip-backoff\n"); return 0
-        calls = [datetime.fromisoformat(c) for c in st["calls"] if now - datetime.fromisoformat(c) < timedelta(days=7)]
-        if len(calls) >= MAX_PER_7D or (calls and now - max(calls) < timedelta(hours=MIN_GAP_H)):
-            print("skip: 한도 가드(7일 %d회, 마지막 %s)" % (len(calls), max(calls) if calls else None)); LAST_RUN.write_text(now.strftime("%F %T") + " skip-guard\n"); return 0
     text = QUEUE.read_text(encoding="utf-8")
     pending = [i for i in parse_queue(text) if i["status"] == "대기"]
     if not pending:
@@ -97,4 +95,9 @@ def main():
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    rc = 0
+    for _ in range(10):  # 대기 항목을 다 보낼 때까지(실패·빈 큐·dry-run이면 멈춤)
+        rc = main()
+        if rc != 0 or "--dry-run" in sys.argv or " ok " not in (LAST_RUN.read_text(encoding="utf-8") if LAST_RUN.exists() else ""):
+            break
+    sys.exit(rc)
