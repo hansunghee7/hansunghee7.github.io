@@ -36,11 +36,11 @@ kind = "hermes_cron"
 name = "mailbox-courier"
 period_min = 10
 
-# 2026-10-02 탐 N104: 헤르메스 크론 claude-md-polish-check은 구PC cron(~/ops/checks/run_check.sh)으로 이관, 신PC 헤르메스 쪽은 pause(되돌리려면 hermes cron resume). 감시는 구PC 대장.
+# 2026-10-02 탐 N105: 헤르메스 크론 claude-md-polish-check은 구PC cron(~/ops/checks/run_check.sh)으로 이관, 신PC 헤르메스 쪽은 pause(되돌리려면 hermes cron resume). 감시는 구PC 대장.
 
-# 2026-10-02 탐 N104: 헤르메스 크론 check-customer-mcp-daily은 구PC cron(~/ops/checks/run_check.sh)으로 이관, 신PC 헤르메스 쪽은 pause(되돌리려면 hermes cron resume). 감시는 구PC 대장.
+# 2026-10-02 탐 N105: 헤르메스 크론 check-customer-mcp-daily은 구PC cron(~/ops/checks/run_check.sh)으로 이관, 신PC 헤르메스 쪽은 pause(되돌리려면 hermes cron resume). 감시는 구PC 대장.
 
-# 2026-10-02 탐 N104: 헤르메스 크론 saegim-idle-check은 구PC cron(~/ops/checks/run_check.sh)으로 이관, 신PC 헤르메스 쪽은 pause(되돌리려면 hermes cron resume). 감시는 구PC 대장.
+# 2026-10-02 탐 N105: 헤르메스 크론 saegim-idle-check은 구PC cron(~/ops/checks/run_check.sh)으로 이관, 신PC 헤르메스 쪽은 pause(되돌리려면 hermes cron resume). 감시는 구PC 대장.
 
 [[job]]
 id = "hermes:gpu-driver-check"
@@ -61,7 +61,7 @@ kind = "hermes_cron"
 name = "daily_briefing"
 period_min = 1440
 
-# 2026-10-02 탐 N104: 헤르메스 크론 communication_watcher.py은 구PC cron(~/ops/checks/run_check.sh)으로 이관, 신PC 헤르메스 쪽은 pause(되돌리려면 hermes cron resume). 감시는 구PC 대장.
+# 2026-10-02 탐 N105: 헤르메스 크론 communication_watcher.py은 구PC cron(~/ops/checks/run_check.sh)으로 이관, 신PC 헤르메스 쪽은 pause(되돌리려면 hermes cron resume). 감시는 구PC 대장.
 
 [[job]]
 id = "hermes:stagnation"
