@@ -1,4 +1,4 @@
-"""홈페이지 글 하나에서 SNS 큐 "초안" 항목(링크드인·페이스북·인스타)을 만든다.
+"""홈페이지 글 하나에서 SNS 큐 "초안" 항목(페이스북·인스타)을 만든다.
 
 왜: 원칙(사장님 2026-09-29) 월·수 홈페이지 글은 화·목에 SNS로 예약한다. 손으로 큐를 채우다 보니
 원본이 없거나 잊어서 슬롯이 비었다. 이 스크립트는 글이 있으면 초안을 자동으로 만들어 준다.
@@ -7,7 +7,9 @@
 pending 항목만 등록하므로 이 초안은 사장님 승인 전에는 절대 등록되지 않는다. 승인하면
 status를 "pending"으로, approved_by/approved_quote를 채워 커밋한다.
 
-규칙(실측 2026-09-29): 링크드인은 이미지 1장이 규격 미달(최소 2장)이라 텍스트만, 페이스북·인스타는 표지
+규칙(실측 2026-09-29): AItoEarn 링크드인은 이미지 1장을 거부(최소 2장)해 사진 없이 나갔다. 대표 이미지는
+필수라(사장님 2026-09-28·10-02) 링크드인은 이 큐에서 빼고 링크드인 자체 예약 기능으로 올린다
+(마야_프로세스표.md). 페이스북·인스타는 표지
 이미지를 저장소 파일(log_assets/images/...)로 넣는다(URL을 넣으면 확장자 없이 .bin으로 올라가 실패).
 
 사용법: python scripts/sns_queue_draft.py 633 --date 2026-10-06 [--time 09:00]
@@ -21,7 +23,6 @@ from pathlib import Path
 
 KST = timezone(timedelta(hours=9))
 CHANNELS = [
-    ("li", "linkedin", "linkedin_uZRuHj0FqV", {}, False),
     ("fb", "facebook", "facebook_1276868818845114", {"content_category": "post"}, True),
     ("ig", "instagram", "instagram_17841401170630001", {"media_type": "IMAGE"}, True),
 ]
