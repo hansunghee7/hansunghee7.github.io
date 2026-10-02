@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-02T06:59:38.866829+00:00",
+  "updated_at": "2026-10-02T14:00:00.870728+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 319,
-    "activeUsers": 275,
-    "newUsers": 273,
+    "sessions": 322,
+    "activeUsers": 277,
+    "newUsers": 275,
     "returningUsers": 2
   },
   "daily": [
@@ -220,17 +220,17 @@
     },
     {
       "date": "2026-10-02",
-      "sessions": 18,
-      "activeUsers": 18,
-      "newUsers": 17,
-      "returningUsers": 1
+      "sessions": 21,
+      "activeUsers": 21,
+      "newUsers": 19,
+      "returningUsers": 2
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 115,
+    "home": 116,
     "log_home": 0,
-    "individual_post": 198,
+    "individual_post": 201,
     "other": 11
   },
   "top_sources": [
@@ -239,12 +239,16 @@
       "sessions": 204
     },
     {
+      "source": "linkedin.com",
+      "sessions": 25
+    },
+    {
       "source": "google",
       "sessions": 24
     },
     {
-      "source": "linkedin.com",
-      "sessions": 24
+      "source": "(not set)",
+      "sessions": 12
     },
     {
       "source": "m.facebook.com",
@@ -255,10 +259,6 @@
       "sessions": 11
     },
     {
-      "source": "(not set)",
-      "sessions": 10
-    },
-    {
       "source": "m.search.naver.com",
       "sessions": 8
     },
@@ -267,16 +267,16 @@
       "sessions": 7
     },
     {
+      "source": "(data not available)",
+      "sessions": 6
+    },
+    {
       "source": "blog.naver.com",
       "sessions": 5
     },
     {
       "source": "daum",
       "sessions": 5
-    },
-    {
-      "source": "(data not available)",
-      "sessions": 4
     },
     {
       "source": "lm.facebook.com",
@@ -303,15 +303,15 @@
       "sessions": 204
     },
     {
-      "source": "google",
-      "medium": "organic",
-      "campaign": "(organic)",
-      "sessions": 24
-    },
-    {
       "source": "linkedin.com",
       "medium": "referral",
       "campaign": "(referral)",
+      "sessions": 25
+    },
+    {
+      "source": "google",
+      "medium": "organic",
+      "campaign": "(organic)",
       "sessions": 24
     },
     {
@@ -339,6 +339,12 @@
       "sessions": 7
     },
     {
+      "source": "(data not available)",
+      "medium": "(data not available)",
+      "campaign": "(cross-network)",
+      "sessions": 6
+    },
+    {
       "source": "blog.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
@@ -349,12 +355,6 @@
       "medium": "organic",
       "campaign": "(organic)",
       "sessions": 5
-    },
-    {
-      "source": "(data not available)",
-      "medium": "(data not available)",
-      "campaign": "(cross-network)",
-      "sessions": 4
     },
     {
       "source": "lm.facebook.com",
@@ -411,7 +411,7 @@
     {
       "path": "/logs/625",
       "title": "/logs/625",
-      "sessions": 29
+      "sessions": 30
     },
     {
       "path": "/logs/619",
@@ -464,6 +464,11 @@
       "sessions": 3
     },
     {
+      "path": "/logs/629",
+      "title": "/logs/629",
+      "sessions": 3
+    },
+    {
       "path": "/logs/632",
       "title": "/logs/632",
       "sessions": 3
@@ -477,11 +482,6 @@
       "path": "/logs/178",
       "title": "/logs/178",
       "sessions": 2
-    },
-    {
-      "path": "/logs/34",
-      "title": "/logs/34",
-      "sessions": 2
     }
   ],
   "top_viewed_posts": [
@@ -489,7 +489,7 @@
       "path": "/logs/625/",
       "title": "주니어 PM은 왜 스스로 문제를 정의하지 못할까?",
       "uniqueViews": 29,
-      "views": 30
+      "views": 31
     },
     {
       "path": "/logs/619/",
@@ -552,6 +552,12 @@
       "views": 4
     },
     {
+      "path": "/logs/629/",
+      "title": "PM과 PL 차이는 뭘까요?",
+      "uniqueViews": 4,
+      "views": 4
+    },
+    {
       "path": "/logs/206/",
       "title": "평범을 거부한다. 헤더윅 스튜디오",
       "uniqueViews": 3,
@@ -568,17 +574,11 @@
       "title": "AI가 못 뺏는 능력 하나",
       "uniqueViews": 3,
       "views": 3
-    },
-    {
-      "path": "/logs/632/",
-      "title": "우리 팀만 말하는 직원 어떻게 해야하나요?",
-      "uniqueViews": 3,
-      "views": 3
     }
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 306,
+    "total_desktop_sessions": 308,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
@@ -632,6 +632,11 @@
         "sessions": 5
       },
       {
+        "resolution": "1463x915",
+        "width": 1463,
+        "sessions": 4
+      },
+      {
         "resolution": "1470x956",
         "width": 1470,
         "sessions": 4
@@ -644,11 +649,6 @@
       {
         "resolution": "1280x800",
         "width": 1280,
-        "sessions": 3
-      },
-      {
-        "resolution": "1463x915",
-        "width": 1463,
         "sessions": 3
       },
       {
