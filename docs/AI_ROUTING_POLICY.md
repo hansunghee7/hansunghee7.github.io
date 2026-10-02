@@ -9,7 +9,7 @@
 |---|---|---|
 | Claude 서브에이전트 | `.claude/agents/`에 `explorer`, `collector`(둘 다 하이쿠, main 병합). 로그상 기존 Agent 호출 11건은 전부 `model: sonnet` 지정, 서브에이전트 호출의 79%가 소넷 | [공식] 모델 지정 지원, 신규 2종은 사용 0건 |
 | MCP | Gmail·캘린더 끔(사용 0회). Drive, Unsplash(콘텐츠 이미지에 사용), Docs, saegim, scheduled-tasks 등 유지 | 효과는 새 세션 값으로 측정 대기 |
-| 헤르메스 | v0.21.3. 기본 모델 nemotron(OpenRouter 무료, 하루 1,000회 공유), 서브 solar-pro4. `delegation` 설정은 없음(기본값). 프로필 default, ling, nemo, solar, collector | [공식] delegation 지원, 이 환경 [미설정] |
+| 헤르메스 | v0.21.3. 기본 모델 nemotron(OpenRouter 무료, 하루 1,000회 공유), 서브 solar-pro4. `delegation` 설정은 없음(기본값). 프로필 default, ling, nemo, solar, collector(collector·ling·nemo·solar는 보관 검토 중, 10/2 F3) | [공식] delegation 지원, 이 환경 [미설정] |
 | 헤르메스 웹 조사 | 오늘 3갈래 조사 1건을 돌렸으나 결과 파일 없이 종료(원인 미확인). 수집 카드 3건은 성공 보고가 왔으나 인용 대조 일치 0/16(지원사업·경쟁), 7/18(서비스 공지) | 수집은 되고 **신뢰는 낮음**, 코드 대조 필수 |
 | 헤르메스 브라우저 | `collector` 프로필에서 브라우저 도구 가용 확인(설정 `browser.backend=off` + 크롬 경로). 페이지를 실제로 연 성공 사례는 아직 없음(첫 실행이 브라우저 기동에서 멈춤, 프로필 잠금 추정) | [공식] 기능 있음, 이 환경 [미검증] |
 | 4090 로컬 | Ollama 11개 모델(qwen2.5-coder:14b, qwen2.5:32b, exaone3.5 32b·7.8b, 비전 4종, hermes3:8b, 임베딩). 14B 실측 1회: 생성 9.6 tok/s, 콜드 로딩 18.6초, 한국어 로그 요약 1문장 정확(표본 1, GPU를 다른 앱이 7.3GB 사용 중이었음). 주간 가공 스크립트 2건(`scripts/ops/local_llm/`) 운영 중 | [커스텀] 운영, 헤르메스↔로컬 연결은 [미검증] |
