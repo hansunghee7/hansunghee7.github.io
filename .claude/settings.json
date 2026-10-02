@@ -93,6 +93,33 @@
             "command": "\"$CLAUDE_PROJECT_DIR/.claude/hooks/subagent-blocking-gate.sh\""
           }
         ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR/.claude/hooks/hermes-mailbox-gate.sh\""
+          }
+        ]
+      },
+      {
+        "matcher": "mcp__saegim__cite",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR/.claude/hooks/cite-note-gate.sh\""
+          }
+        ]
+      },
+      {
+        "matcher": "Bash|PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR/.claude/hooks/popup-gate.sh\""
+          }
+        ]
       }
     ],
     "PostToolUse": [
