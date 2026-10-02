@@ -6,7 +6,7 @@
 - 비밀값(클라이언트 비밀번호·토큰)은 화면과 로그에 출력하지 않는다. 저장 파일은 저장소 밖(_ops)에만 둔다.
 - 범위는 읽기 전용 yt-analytics.readonly 하나(최소 권한).
 """
-import base64, hashlib, http.server, json, os, secrets, sys, threading, urllib.parse, urllib.request
+import base64, hashlib, http.server, json, secrets, sys, threading, urllib.parse, urllib.request
 from pathlib import Path
 
 SCOPE = "https://www.googleapis.com/auth/yt-analytics.readonly"

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 미검증 초안, 첫 시험 뒤 확정. 아직 한 번도 실행하지 않았다(2026-10-02, 탐).
+# 2026-10-02 탐: 첫 시험(yt_oauth_once.py F401) 통과 뒤 확정. 같은 호출 방식으로 30초, 토큰 7,008, 탐 재검사 통과.
 # 탐이 덱스(OpenAI Codex CLI)에게 작업 카드 1장을 주고 결과를 파일로 받는다. ask_bt.sh와 같은 "소환해서 한 번 받고 끝" 방식이다.
 # 사용: scripts/ops/ask_dex.sh <작업카드.md> [출력파일.md]
 # 원칙:
@@ -20,8 +20,10 @@ esac
 if grep -Eiq '(api[_-]?key|token|password|secret|sk-[A-Za-z0-9])' "$CARD"; then
   echo "카드에 비밀값 의심 문자열이 있음: 보내지 않음" >&2; exit 3
 fi
-# 10/2 공식 문서 대조: 비대화형은 codex exec, 샌드박스는 read-only/workspace-write. 첫 시험 전까지는 미검증 초안.
+# 비대화형은 codex exec. 윈도우는 ~/.codex/config.toml의 [windows] sandbox = "unelevated"가 있어야
+# workspace-write가 적용된다(없으면 read-only로 떨어져 명령이 전부 거절됨, 10/2 실측).
+# 표준입력을 닫지 않으면 "Reading additional input from stdin"에서 끝없이 기다린다(10/2 실측) → < /dev/null.
 cd "$WORKDIR"
-timeout 600 codex exec --sandbox workspace-write "$(cat "$CARD")" > "$OUT"
+timeout 600 codex exec -C "$WORKDIR" --sandbox workspace-write -o "$OUT" "$(cat "$CARD")" < /dev/null > "$OUT.log" 2>&1
 echo "답 저장: $OUT ($(wc -c < "$OUT") bytes)"
 echo "다음: git -C $WORKDIR diff 를 탐이 읽고 검사를 직접 다시 돌린다."
