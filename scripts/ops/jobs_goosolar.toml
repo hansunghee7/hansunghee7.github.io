@@ -11,14 +11,6 @@ name = "예약 발행 보조 시계(구PC cron, kick_publish.py)"
 note = "2026-09-20 신PC 작업 스케줄러에서 구PC cron으로 이전. 구PC 자신의 kick.last 갱신 시각을 확인(신PC 대장의 watcher:goosolar가 구PC 전체를 밖에서 봄)"
 
 [[job]]
-id = "cron:insight-build"
-kind = "file_age"
-path = "/home/goosloar/workshop/out/sns/insight_build.last"
-max_age_min = 1560
-name = "SNS 인사이트 파이프라인(구PC cron, run_sns_daily.sh→build_insight_db.py→Drive 업로드)"
-note = "2026-09-28 N70 완료. 매일 01:00 UTC(10:00 KST) 1회 실행. 26시간 여유(1560분)로 하루 1회 주기 감안. DONE=VERIFIED: crontab -l·last_run·insight_build.last·insight.db(로컬+Drive) 전부 직접 SSH 확인(reports/20260928-n70-goosolar-insight-cron-tam-verdict.md, solar-bible)"
-
-[[job]]
 id = "svc:hermes-agent"
 kind = "cmd"
 cmd = ["systemctl", "is-active", "hermes-agent"]
@@ -160,3 +152,75 @@ expect = 405
 name = "심플리파이어 다이얼로그(워커 응답, 405가 정상)"
 note = "질문 실사용 점검은 무료 한도 때문에 하루 1회로 별도 추가 예정"
 
+
+[[job]]
+id = "cron:workshop-chromes"
+kind = "file_age"
+path = "/home/goosloar/workshop/logs/chromes.last"
+max_age_min = 15
+name = "구PC 작업실 크롬 5개 자동 복구(start_chromes.sh, 5분마다·재부팅 때)"
+note = "2026-09-24 등록(사장님 지시: 재부팅 뒤에도 로그인 유지된 크롬 5개가 자동으로 떠야 함). 응답 없는 포트만 다시 켠다. 다시 켠 기록은 ~/workshop/logs/start_chromes.log"
+
+[[job]]
+id = "cron:sns-daily-read"
+kind = "file_age"
+path = "/home/goosloar/workshop/out/sns/last_run"
+max_age_min = 1560
+name = "구PC SNS 숫자 읽기 매일 10:00 KST(run_sns_daily.sh, 크롬 확장 대체)"
+note = "2026-09-24 등록(사장님 결정: 확장과 3일 나란히 비교 뒤 스튜디오 데이터 연결). 11개 채널 중 8개 이상 팔로워를 읽어야 last_run 갱신. 비교표 out/sns/compare_<날짜>.md"
+
+[[job]]
+id = "cron:factory-runner"
+kind = "file_age"
+path = "/home/goosloar/workshop/logs/factory.last"
+max_age_min = 15
+name = "구PC 숏폼 공장 러너(factory_runner.py, 5분마다, 큐의 씬 생성을 무인으로 진행)"
+note = "2026-10-01 등록(핏, 사장님 지시: 신PC 없이 구PC 안에서 자체 실행). 증거: ep28 Flow 16씬을 크론이 집어 무인 완주(96크레딧), 완료 우편 도착. 15분 안에 factory.last 갱신이 없으면 크론이나 러너 이상. 작업 상태 ~/workshop/queue/<작업>/status, 코드 shorts-lab tools/factory/"
+
+[[job]]
+id = "cron:backup-private"
+kind = "file_age"
+path = "/home/goosloar/ops/backup/last-run.txt"
+max_age_min = 2160
+name = "비공개 저장소 2곳(경험DB, 새김) 일일 백업(구PC cron 03:30 KST, backup_private.sh)"
+note = "2026-10-02 탐: 신PC 작업 스케줄러 simplifier-backup-private에서 이관(사장님 지시: 안정화된 작업은 구PC). 미러·번들은 ~/backup/private-repos, 드라이브는 rclone gdrive:_backup/simplifier-private-repos. 드라이브 업로드까지 성공해야 last-run.txt 갱신. 이관 때 1회 실행 종료 코드 0·복원 시험 4건 OK 확인. rclone 공용 client_id가 2026 중 종료 예정(경고) - 자체 client_id 필요"
+
+[[job]]
+id = "cron:claude-md-polish-check"
+kind = "file_age"
+path = "/home/goosloar/ops/checks/claude-md-polish-check.ok"
+max_age_min = 1560
+name = "CLAUDE.md 폴리싱 점검(구PC cron 08:00 KST, run_check.sh)"
+note = "2026-10-02 탐 N105: 신PC 헤르메스 크론 claude-md-polish-check에서 이관. 이상이면 탐 우편+사장님 텔레그램. 성공 시 .ok 갱신. 이관 때 1회 실행 rc=0 확인"
+
+[[job]]
+id = "cron:communication-watcher"
+kind = "file_age"
+path = "/home/goosloar/ops/checks/communication-watcher.ok"
+max_age_min = 30
+name = "비티 파일 채널 감시(구PC cron 5분, COMMUNICATION.md 최상단 변경 시 텔레그램)"
+note = "2026-10-02 탐 N105: 신PC 헤르메스 communication_watcher.py에서 이관. 드라이브 폴더는 구PC rclone 마운트 ~/carvit-pass/ag-test. 알림은 ~/ops/tg_notify.py. 이관 때 1회 실행 rc=0 확인"
+
+[[job]]
+id = "cron:check-customer-mcp-daily"
+kind = "file_age"
+path = "/home/goosloar/ops/checks/check-customer-mcp-daily.ok"
+max_age_min = 1560
+name = "고객 MCP 읽기 경로 일일 점검(구PC cron 08:00 KST, 지투 1순위)"
+note = "2026-10-02 탐 N105: 신PC 헤르메스 check-customer-mcp-daily에서 이관. 실패 시 지투 긴급 우편+사장님 텔레그램. mcp 패키지는 신PC와 같은 1.30.0으로 고정(2.2.0에서 list_sections 연결 실패 실측). 이관 때 1회 실행 rc=0"
+
+[[job]]
+id = "cron:saegim-idle-check"
+kind = "file_age"
+path = "/home/goosloar/ops/checks/saegim-idle-check.ok"
+max_age_min = 480
+name = "새김 세션 유휴 점검(구PC cron 09:30·15:30·21:30 KST)"
+note = "2026-10-02 탐 N105: 신PC 헤르메스 saegim-idle-check에서 이관. 300초 유휴 뒤 재조회. 이관 때 1회 실행 rc=0"
+
+[[job]]
+id = "cron:dialog-daily"
+kind = "file_age"
+path = "/home/goosloar/ops/checks/dialog-daily.ok"
+max_age_min = 1500
+name = "다이얼로그 실사용 점검(구PC cron 매일 09:10 KST)"
+note = "2026-10-02 탐 B41, 사장님 승인. 질문 1개를 실제로 보내 답 80자 이상·근거 글 1개 이상 확인. 등록 전 1회 실행 rc=0(답 586자, 근거 9)."
