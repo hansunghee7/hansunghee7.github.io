@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-03T20:45:27.780102+00:00",
+  "updated_at": "2026-10-03T23:16:24.767850+00:00",
   "note": "history는 매일 지난 24시간 집계를 누적한 것. latest_*는 최근 3일 창.",
   "history": [
     {
@@ -6620,11 +6620,11 @@
         "Url": "https://simplifier.co.kr/logs/614/"
       },
       {
-        "sessionsCount": 3,
-        "sessionsWithMetricPercentage": 33.33,
-        "sessionsWithoutMetricPercentage": 66.67,
-        "pagesViews": 1,
-        "subTotal": 1,
+        "sessionsCount": 2,
+        "sessionsWithMetricPercentage": 0,
+        "sessionsWithoutMetricPercentage": 100,
+        "pagesViews": 0,
+        "subTotal": 0,
         "Url": "https://simplifier.co.kr/logs/235/"
       },
       {
@@ -6830,7 +6830,7 @@
         "Url": "https://simplifier.co.kr/logs/614/"
       },
       {
-        "sessionsCount": 3,
+        "sessionsCount": 2,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -7040,7 +7040,7 @@
         "Url": "https://simplifier.co.kr/logs/614/"
       },
       {
-        "sessionsCount": 3,
+        "sessionsCount": 2,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -7250,7 +7250,7 @@
         "Url": "https://simplifier.co.kr/logs/614/"
       },
       {
-        "sessionsCount": 3,
+        "sessionsCount": 2,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -7460,7 +7460,7 @@
         "Url": "https://simplifier.co.kr/logs/614/"
       },
       {
-        "sessionsCount": 3,
+        "sessionsCount": 2,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -7670,7 +7670,7 @@
         "Url": "https://simplifier.co.kr/logs/614/"
       },
       {
-        "sessionsCount": 3,
+        "sessionsCount": 2,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -8024,7 +8024,7 @@
         "Url": "https://simplifier.co.kr/logs/474/"
       },
       {
-        "totalSessionCount": 3,
+        "totalSessionCount": 2,
         "totalBotSessionCount": 0,
         "distinctUserCount": 1,
         "pagesPerSessionPercentage": 1,
@@ -8179,8 +8179,8 @@
         "Url": "https://simplifier.co.kr/logs/614/"
       },
       {
-        "totalTime": 314,
-        "activeTime": 8,
+        "totalTime": 307,
+        "activeTime": 1,
         "Url": "https://simplifier.co.kr/logs/235/"
       },
       {
@@ -8263,11 +8263,11 @@
         "Source": "www.linkedin.com"
       },
       {
-        "sessionsCount": 16,
-        "sessionsWithMetricPercentage": 12.5,
-        "sessionsWithoutMetricPercentage": 87.5,
-        "pagesViews": 3,
-        "subTotal": 53,
+        "sessionsCount": 15,
+        "sessionsWithMetricPercentage": 6.67,
+        "sessionsWithoutMetricPercentage": 93.33,
+        "pagesViews": 2,
+        "subTotal": 52,
         "Source": "simplifier.co.kr"
       },
       {
@@ -8321,7 +8321,7 @@
         "Source": "www.linkedin.com"
       },
       {
-        "sessionsCount": 16,
+        "sessionsCount": 15,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -8379,7 +8379,7 @@
         "Source": "www.linkedin.com"
       },
       {
-        "sessionsCount": 16,
+        "sessionsCount": 15,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -8437,7 +8437,7 @@
         "Source": "www.linkedin.com"
       },
       {
-        "sessionsCount": 16,
+        "sessionsCount": 15,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -8495,7 +8495,7 @@
         "Source": "www.linkedin.com"
       },
       {
-        "sessionsCount": 16,
+        "sessionsCount": 15,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -8553,7 +8553,7 @@
         "Source": "www.linkedin.com"
       },
       {
-        "sessionsCount": 16,
+        "sessionsCount": 15,
         "sessionsWithMetricPercentage": 0,
         "sessionsWithoutMetricPercentage": 100,
         "pagesViews": 0,
@@ -8591,7 +8591,7 @@
         "Source": "www.linkedin.com"
       },
       {
-        "averageScrollDepth": 51.07,
+        "averageScrollDepth": 50.19,
         "Source": "simplifier.co.kr"
       },
       {
@@ -8636,10 +8636,10 @@
         "Source": "www.linkedin.com"
       },
       {
-        "totalSessionCount": 16,
+        "totalSessionCount": 15,
         "totalBotSessionCount": 0,
         "distinctUserCount": 7,
-        "pagesPerSessionPercentage": 1.6875,
+        "pagesPerSessionPercentage": 1.7333333333333334,
         "Source": "simplifier.co.kr"
       },
       {
@@ -8684,7 +8684,7 @@
         "Source": "www.linkedin.com"
       },
       {
-        "totalTime": 222,
+        "totalTime": 215,
         "activeTime": 21,
         "Source": "simplifier.co.kr"
       },
