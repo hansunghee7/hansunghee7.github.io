@@ -15,7 +15,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 LEDGER = os.environ.get("LEDGER_FILE") or os.path.join(ROOT, "docs", "탐_업무대장.md")
 DECIDED = re.compile(r"사장님[^\n]{0,12}(판단|결정|확정|지시|승인|정정|합의|제안)")
-WAITING = re.compile(r"선택 대기|사장님 할 일|사장님 결정 대기|사장님 결정 필요|결정 대기")
+WAITING = re.compile(r"선택 대기|결정 대기|결정 필요|선택 필요|사장님 할 일:[^\n]*(선택|결정)")
 
 
 def blocks():
@@ -42,18 +42,25 @@ def main():
         return 0
     bad = 0
     for status, nid, title, lines in blocks():
-        if status not in ("사장님", "확인필요"):
+        if status in ("완료", "드랍"):
             continue
-        dec = [l for l in lines if DECIDED.search(l)]
-        wait = [l for l in lines if WAITING.search(l)]
+        # 칸은 위에서 아래로 시간순이라 가정: "선택 대기" 문구보다 뒤에 사장님 결정·지시 줄이 있으면 그 대기 문구는 낡았을 가능성이 큼.
+        # 이미 정정한 줄("정정", "결정 완료", "결정됨", "없음")은 제외해 오탐을 줄인다.
+        FIXED = re.compile(r"정정|결정 완료|결정됨|대기 없음|결정 예정: 없음")
+        stale = []
+        for idx, l in enumerate(lines):
+            if WAITING.search(l) and not FIXED.search(l) and any(DECIDED.search(x) for x in lines[idx + 1:]):
+                stale.append(l)
         if "--boss" in a and status == "사장님":
             print(f"\n## {nid} [{status}] {title}")
             for l in lines:
                 if DECIDED.search(l) or WAITING.search(l):
                     print("  " + l.strip())
-        if dec and wait and "--boss" not in a:
+        if stale and "--boss" not in a:
             bad += 1
-            print(f"⚠ {nid} [{status}] {title}: 사장님 결정·지시 기록 {len(dec)}줄이 있는데 '선택 대기' 문구도 남아 있음 -> 칸을 읽고 상태·문구를 고칠 것")
+            print(f"⚠ {nid} [{status}] {title}: 낡았을 수 있는 대기 문구 {len(stale)}줄(뒤에 사장님 결정·지시 기록이 있음) -> 칸을 읽고 고칠 것")
+            for l in stale[:2]:
+                print("    " + l.strip()[:160])
     if "--boss" not in a:
         print("모순 칸 없음" if not bad else f"모순 {bad}건")
     return 1 if bad else 0
