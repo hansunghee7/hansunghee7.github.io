@@ -1,20 +1,13 @@
 {
-  "updated_at": "2026-10-03T12:40:06.037309+00:00",
+  "updated_at": "2026-10-03T20:00:43.729703+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 332,
-    "activeUsers": 283,
-    "newUsers": 281,
-    "returningUsers": 2
+    "sessions": 329,
+    "activeUsers": 282,
+    "newUsers": 279,
+    "returningUsers": 3
   },
   "daily": [
-    {
-      "date": "2026-09-03",
-      "sessions": 5,
-      "activeUsers": 4,
-      "newUsers": 3,
-      "returningUsers": 1
-    },
     {
       "date": "2026-09-04",
       "sessions": 6,
@@ -224,19 +217,26 @@
       "activeUsers": 8,
       "newUsers": 7,
       "returningUsers": 1
+    },
+    {
+      "date": "2026-10-04",
+      "sessions": 2,
+      "activeUsers": 2,
+      "newUsers": 1,
+      "returningUsers": 1
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 118,
+    "home": 116,
     "log_home": 0,
-    "individual_post": 208,
+    "individual_post": 207,
     "other": 11
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 206
+      "sessions": 202
     },
     {
       "source": "linkedin.com",
@@ -244,11 +244,15 @@
     },
     {
       "source": "google",
-      "sessions": 25
+      "sessions": 24
     },
     {
       "source": "m.facebook.com",
       "sessions": 13
+    },
+    {
+      "source": "(not set)",
+      "sessions": 11
     },
     {
       "source": "facebook.com",
@@ -257,10 +261,6 @@
     {
       "source": "m.search.naver.com",
       "sessions": 11
-    },
-    {
-      "source": "(not set)",
-      "sessions": 9
     },
     {
       "source": "maru-connect.webflow.io",
@@ -276,7 +276,7 @@
     },
     {
       "source": "(data not available)",
-      "sessions": 3
+      "sessions": 4
     },
     {
       "source": "lm.facebook.com",
@@ -300,7 +300,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 206
+      "sessions": 202
     },
     {
       "source": "linkedin.com",
@@ -312,7 +312,7 @@
       "source": "google",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 25
+      "sessions": 24
     },
     {
       "source": "m.facebook.com",
@@ -354,7 +354,7 @@
       "source": "(data not available)",
       "medium": "(data not available)",
       "campaign": "(cross-network)",
-      "sessions": 3
+      "sessions": 4
     },
     {
       "source": "lm.facebook.com",
@@ -400,12 +400,12 @@
     }
   ],
   "engagement_events": {
-    "section_view_proven": 49,
-    "section_view_voices": 44,
+    "section_view_proven": 50,
+    "section_view_voices": 46,
     "section_view_book_class": 30,
     "section_view_faq": 28,
     "faq_open": 17,
-    "read_complete": 79
+    "read_complete": 78
   },
   "contact_funnel": {
     "contact_open": 12,
@@ -528,6 +528,12 @@
       "views": 8
     },
     {
+      "path": "/logs/6/",
+      "title": "자정이 가까워지도록 AI 얘기를 원 없이 나눴어요.",
+      "uniqueViews": 5,
+      "views": 5
+    },
+    {
       "path": "/logs/629/",
       "title": "PM과 PL 차이는 뭘까요?",
       "uniqueViews": 5,
@@ -558,8 +564,8 @@
       "views": 10
     },
     {
-      "path": "/logs/6/",
-      "title": "자정이 가까워지도록 AI 얘기를 원 없이 나눴어요.",
+      "path": "/logs/481/",
+      "title": "내가 GS에서 강의를 하는 이유",
       "uniqueViews": 4,
       "views": 4
     },
@@ -574,17 +580,11 @@
       "title": "평범을 거부한다. 헤더윅 스튜디오",
       "uniqueViews": 3,
       "views": 3
-    },
-    {
-      "path": "/logs/224/",
-      "title": "나의 클론이 화상회의를 '피클'",
-      "uniqueViews": 3,
-      "views": 5
     }
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 317,
+    "total_desktop_sessions": 318,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
@@ -595,7 +595,7 @@
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 55
+        "sessions": 56
       },
       {
         "resolution": "1600x1600",
