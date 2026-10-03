@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-10-03T06:31:38.836871+00:00",
+  "updated_at": "2026-10-03T12:40:06.037309+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 330,
+    "sessions": 332,
     "activeUsers": 283,
     "newUsers": 281,
     "returningUsers": 2
@@ -220,17 +220,17 @@
     },
     {
       "date": "2026-10-03",
-      "sessions": 10,
-      "activeUsers": 7,
+      "sessions": 12,
+      "activeUsers": 8,
       "newUsers": 7,
-      "returningUsers": 0
+      "returningUsers": 1
     }
   ],
   "daily_leads": [],
   "landing_types": {
     "home": 118,
     "log_home": 0,
-    "individual_post": 206,
+    "individual_post": 208,
     "other": 11
   },
   "top_sources": [
@@ -240,7 +240,7 @@
     },
     {
       "source": "linkedin.com",
-      "sessions": 28
+      "sessions": 30
     },
     {
       "source": "google",
@@ -306,7 +306,7 @@
       "source": "linkedin.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 28
+      "sessions": 30
     },
     {
       "source": "google",
@@ -427,7 +427,7 @@
     {
       "path": "/logs/631",
       "title": "/logs/631",
-      "sessions": 17
+      "sessions": 18
     },
     {
       "path": "/logs/620",
@@ -460,6 +460,11 @@
       "sessions": 4
     },
     {
+      "path": "/logs/632",
+      "title": "/logs/632",
+      "sessions": 4
+    },
+    {
       "path": "/logs/206",
       "title": "/logs/206",
       "sessions": 3
@@ -472,11 +477,6 @@
     {
       "path": "/logs/629",
       "title": "/logs/629",
-      "sessions": 3
-    },
-    {
-      "path": "/logs/632",
-      "title": "/logs/632",
       "sessions": 3
     },
     {
@@ -501,7 +501,7 @@
       "path": "/logs/631/",
       "title": "토큰을 아끼려다 기술이 늘었다",
       "uniqueViews": 18,
-      "views": 20
+      "views": 22
     },
     {
       "path": "/logs/619/",
@@ -567,7 +567,7 @@
       "path": "/logs/632/",
       "title": "우리 팀만 말하는 직원 어떻게 해야하나요?",
       "uniqueViews": 4,
-      "views": 4
+      "views": 5
     },
     {
       "path": "/logs/206/",
@@ -584,7 +584,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 316,
+    "total_desktop_sessions": 317,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
@@ -623,14 +623,14 @@
         "sessions": 7
       },
       {
-        "resolution": "1512x982",
-        "width": 1512,
+        "resolution": "1463x915",
+        "width": 1463,
         "sessions": 7
       },
       {
-        "resolution": "1463x915",
-        "width": 1463,
-        "sessions": 6
+        "resolution": "1512x982",
+        "width": 1512,
+        "sessions": 7
       },
       {
         "resolution": "1536x864",
