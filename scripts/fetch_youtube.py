@@ -52,8 +52,9 @@ if hasattr(sys.stdout, "reconfigure"):
 
 KST = timezone(timedelta(hours=9))
 API_KEY = os.environ.get("YOUTUBE_API_KEY")
-CHANNEL_HANDLE = "sinkihanapt"  # 신기한 아파트사전. @ 없이.
-OUT_PATH = os.path.join("assets", "data", "youtube-insight.json")
+# 기본은 신기한 아파트사전. 다른 채널은 환경변수로 같은 수집기를 한 번 더 돌린다(2026-10-03 N108: 심플리파이어 본체 채널 레트로 실사판 성과).
+CHANNEL_HANDLE = os.environ.get("YT_HANDLE", "sinkihanapt")  # @ 없이.
+OUT_PATH = os.environ.get("YT_OUT", os.path.join("assets", "data", "youtube-insight.json"))
 MAX_SCANNED_UPLOADS = 100
 MAX_SHORT_SECONDS = 180
 

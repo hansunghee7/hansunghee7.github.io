@@ -50,11 +50,20 @@ jobs:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: python scripts/fetch_youtube.py
 
+      # N108(2026-10-03): 심플리파이어 본체 채널(다크 런칭 대상 아님). 공개 숫자만, 실패해도 위 수집은 살린다.
+      - name: Fetch Simplifier channel insight
+        continue-on-error: true
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          YT_HANDLE: Simplifiers1974
+          YT_OUT: assets/data/youtube-insight-simplifier.json
+        run: python scripts/fetch_youtube.py
+
       - name: Commit if any changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add assets/data/youtube-insight.json
+          git add assets/data/youtube-insight.json assets/data/youtube-insight-simplifier.json 2>/dev/null || git add assets/data/youtube-insight.json
           if git diff --cached --quiet; then
             echo "no changes to commit"
           else
