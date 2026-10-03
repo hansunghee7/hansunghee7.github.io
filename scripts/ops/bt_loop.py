@@ -27,6 +27,9 @@ PREAMBLE = (
 )
 
 
+QUOTA = Path(__file__).resolve().parent / "quota.py"
+
+
 def load_state():
     if STATE.exists():
         return json.loads(STATE.read_text(encoding="utf-8"))
@@ -66,11 +69,18 @@ def main():
     prompt = PREAMBLE + "\n=== 검토 대상 ===\n" + target + "\n\n=== 질문 ===\n" + it["question"] + "\n"
     if dry:
         print("dry-run: %s %s (%d bytes 프롬프트)" % (it["id"], it["title"], len(prompt.encode("utf-8")))); return 0
+    # 한도 관문(10/3 사장님 지시 "한도는 탐이 관리"): 막혔거나 주간 예산을 다 썼으면 부르지 않고 건너뛴다.
+    q = subprocess.run([sys.executable, str(QUOTA), "check", "비티", "--who", "탐"], capture_output=True, text=True, encoding="utf-8", creationflags=NOWIN)
+    if q.returncode != 0:
+        print("skip:", q.stdout.strip()); LAST_RUN.write_text(now.strftime("%F %T") + " skip-quota" + chr(10)); return 0
     cmd = ["ssh", "-o", "ConnectTimeout=15", "-o", "BatchMode=yes", "goosolar",
            'cd ~/carvit-pass/ag-test && timeout 280 ~/.local/bin/agy -p "$(cat)"']
     try:
         r = subprocess.run(cmd, input=prompt, capture_output=True, text=True, encoding="utf-8", timeout=330, creationflags=NOWIN)
         out, rc = r.stdout, r.returncode
+        m = re.search(r"Individual quota reached.*", r.stderr or "")
+        if m:  # 한도 오류는 stderr에만 나온다. 대장에 막힘을 적어 다른 호출도 멈추게 한다
+            subprocess.run([sys.executable, str(QUOTA), "hit", "비티", m.group(0)], creationflags=NOWIN)
     except subprocess.TimeoutExpired:
         out, rc = "", 124
     bad = rc != 0 or len(out.strip()) < 300 or (len(out.strip()) < 1500 and re.search(r"quota|rate.?limit|429|exhaust", out, re.I))  # 긴 정상 답에 "한도"가 나오는 오탐 방지(10/1 B3)
