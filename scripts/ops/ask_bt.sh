@@ -20,9 +20,15 @@ Q="${1:?질문 파일 경로}"; OUT="${2:-/tmp/bt_reply_$(date +%Y%m%d_%H%M).md}
 # 둘은 한도 풀이 다르다(비티 = 제미나이 계열 공유, 비티-sonnet 별도). 근거 docs/processes/N114_비티모델비교_1003.md
 # BT_MODEL=claude-sonnet-4-6 처럼 지정하면 그 모델만 쓴다.
 QUOTA="$(dirname "$0")/quota.py"
-if [ -n "${BT_MODEL:-}" ]; then ORDER="sonnet"; [ "$BT_MODEL" = "gemini" ] && ORDER="gemini"; else ORDER="gemini sonnet"; fi
+# 2026-10-03(N120, 사장님 "무료 먼저, 막히면 GCP 크레딧"): 안티그래비티 제미나이가 막히면 Vertex 제미나이(개인 GCP 무료 크레딧)로 넘어가고, 그것도 하루 상한이면 Sonnet.
+if [ -n "${BT_MODEL:-}" ]; then ORDER="sonnet"; [ "$BT_MODEL" = "gemini" ] && ORDER="gemini"; [ "$BT_MODEL" = "vertex" ] && ORDER="vertex"; else ORDER="gemini vertex sonnet"; fi
 rc=99
 for M in $ORDER; do
+  if [ "$M" = vertex ]; then  # 호출 기록·하루 상한은 ask_vertex.py가 관리(C:/work/_ops/vertex_usage.csv), 종료 코드 3 = 하루 상한
+    rc=0; python "$(dirname "$0")/ask_vertex.py" "$Q" "$OUT" --who 탐 || rc=$?
+    if [ "$rc" = 0 ]; then echo "쓴 모델: Vertex 제미나이(GCP 크레딧)" >&2; break; fi
+    echo "Vertex 건너뜀(rc=$rc)" >&2; rc=99; continue
+  fi
   if [ "$M" = gemini ]; then POOL=비티; MARG=""; else POOL=비티-sonnet; MARG="--model claude-sonnet-4-6"; fi
   # 한도 관문(10/3, 사장님 지시 "한도는 탐이 관리"): 막혔거나 주간 예산을 다 썼으면 이 모델은 건너뛴다.
   python "$QUOTA" check "$POOL" --who 탐 || continue
