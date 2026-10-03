@@ -28,6 +28,8 @@ PREAMBLE = (
 
 
 QUOTA = Path(__file__).resolve().parent / "quota.py"
+# 검토 루프는 Sonnet이 기본(사장님 결정 10/3, N114: 백로그 피드백 전제 맞음 4/6 대 제미나이 0/6). 제미나이 한도는 핏 주제 추천·독립 검증용으로 아낀다.
+MODEL, POOL = "claude-sonnet-4-6", "비티-sonnet"
 
 
 def load_state():
@@ -70,19 +72,28 @@ def main():
     if dry:
         print("dry-run: %s %s (%d bytes 프롬프트)" % (it["id"], it["title"], len(prompt.encode("utf-8")))); return 0
     # 한도 관문(10/3 사장님 지시 "한도는 탐이 관리"): 막혔거나 주간 예산을 다 썼으면 부르지 않고 건너뛴다.
-    q = subprocess.run([sys.executable, str(QUOTA), "check", "비티", "--who", "탐"], capture_output=True, text=True, encoding="utf-8", creationflags=NOWIN)
+    q = subprocess.run([sys.executable, str(QUOTA), "check", POOL, "--who", "탐"], capture_output=True, text=True, encoding="utf-8", creationflags=NOWIN)
     if q.returncode != 0:
         print("skip:", q.stdout.strip()); LAST_RUN.write_text(now.strftime("%F %T") + " skip-quota" + chr(10)); return 0
     cmd = ["ssh", "-o", "ConnectTimeout=15", "-o", "BatchMode=yes", "goosolar",
-           'cd ~/carvit-pass/ag-test && timeout 280 ~/.local/bin/agy -p "$(cat)"']
+           'cd ~/carvit-pass/ag-test && timeout 280 ~/.local/bin/agy --model %s -p "$(cat)"' % MODEL]
     try:
         r = subprocess.run(cmd, input=prompt, capture_output=True, text=True, encoding="utf-8", timeout=330, creationflags=NOWIN)
         out, rc = r.stdout, r.returncode
         m = re.search(r"Individual quota reached.*", r.stderr or "")
         if m:  # 한도 오류는 stderr에만 나온다. 대장에 막힘을 적어 다른 호출도 멈추게 한다
-            subprocess.run([sys.executable, str(QUOTA), "hit", "비티", m.group(0)], creationflags=NOWIN)
+            subprocess.run([sys.executable, str(QUOTA), "hit", POOL, m.group(0)], creationflags=NOWIN)
     except subprocess.TimeoutExpired:
         out, rc = "", 124
+    try:  # 한도 대장(quota.py)이 세도록 호출 기록을 남긴다(10/3: 이 루프만 기록이 빠져 있었음)
+        calls = Path("C:/work/_ops/agent_calls.csv")
+        new_file = not calls.exists()
+        with calls.open("a", encoding="utf-8") as f:
+            if new_file:
+                f.write("time,who,sec,rc,out_bytes,limit_hit" + chr(10))
+            f.write("%s,%s,%d,%s,%d,0%s" % (now.strftime("%F %T"), POOL, int((datetime.now() - now).total_seconds()), rc, len(out.encode("utf-8")), chr(10)))
+    except OSError:
+        pass
     bad = rc != 0 or len(out.strip()) < 300 or (len(out.strip()) < 1500 and re.search(r"quota|rate.?limit|429|exhaust", out, re.I))  # 긴 정상 답에 "한도"가 나오는 오탐 방지(10/1 B3)
     if bad:
         st["next_allowed"] = (now + timedelta(hours=BACKOFF_H)).isoformat()
