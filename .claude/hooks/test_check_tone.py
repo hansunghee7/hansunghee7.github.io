@@ -48,6 +48,15 @@ class ToneTest(unittest.TestCase):
     def test_pin_request_allowed_only_with_improvement_task_tag(self):
         self.assertEqual(self.kinds("사장님이 PIN을 입력해 주세요. [PIN 개선 과제: N116]"), [])
 
+    def test_stopping_at_a_block_needs_a_resolution_path(self):
+        k = "막힌 데서 멈춤(해결 경로 표시 없음)"
+        self.assertIn(k, self.kinds("자동 검사에 막혀 멈춥니다."))
+        self.assertIn(k, self.kinds("권한이 거부되어 더 못 진행합니다."))
+        self.assertEqual(self.kinds("자동 검사에 막혀 멈춥니다. [해결 경로: 개선 과제 N126]"), [])
+
+    def test_past_blocks_that_were_resolved_are_not_flagged(self):
+        self.assertEqual(self.kinds("막혔던 편집은 이번에 통과했습니다."), [])
+
     def test_decisions_and_reports_are_not_action_requests(self):
         self.assertEqual(self.kinds("사장님이 정하실 것: 2단계 시작 시점입니다."), [])
         self.assertEqual(self.kinds("사장님이 어제 PIN을 입력하셨고 지투가 이어서 처리했습니다."), [])
