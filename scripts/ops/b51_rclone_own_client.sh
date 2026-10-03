@@ -7,6 +7,7 @@
 # 사용:
 #   bash scripts/ops/b51_rclone_own_client.sh check     # 사전 점검만(아무것도 안 바꿈)
 #   bash scripts/ops/b51_rclone_own_client.sh start     # 백업 → 키 교체 → 동의 주소 출력(사장님이 브라우저에서 허용할 때까지 대기)
+#   bash scripts/ops/b51_rclone_own_client.sh consent   # 동의 주소만 다시 받기(키 교체는 건드리지 않음)
 #   bash scripts/ops/b51_rclone_own_client.sh verify    # 경고 없이 목록이 읽히는지, 마운트 다시 걸기
 #   bash scripts/ops/b51_rclone_own_client.sh rollback  # 백업본으로 되돌림(공용 client_id가 살아 있는 동안은 그대로 다시 동작)
 set -u
@@ -21,7 +22,8 @@ check)
   (netstat -ano 2>/dev/null | grep -q "127.0.0.1:$PORT .*LISTENING" && echo "신PC 통로 $PORT 사용 중" || echo "신PC 통로 $PORT 비어 있음")
   ;;
 start)
-  ssh -o BatchMode=yes $H "cp $CONF $BAK && echo 백업 완료" || exit 1
+  # 백업은 한 번만: 다시 실행해도 원래 설정 백업을 덮어쓰지 않는다(10/3 실측: 재실행하면 되돌릴 원본이 사라질 뻔함).
+  ssh -o BatchMode=yes $H "test -f $BAK && echo '백업 이미 있음(덮어쓰지 않음)' || (cp $CONF $BAK && echo 백업 완료)" || exit 1
   # 키 교체: 값은 표준입력으로만. rclone.conf의 [gdrive]에 client_id·client_secret을 넣는다.
   python -c "import json;d=json.load(open('$TOKEN_JSON',encoding='utf-8'));print(json.dumps({'i':d['client_id'],'s':d['client_secret']}))" | ssh -o BatchMode=yes $H 'python3 -c "
 import json,sys,configparser,os
@@ -30,9 +32,15 @@ c=configparser.RawConfigParser(); c.optionxform=str; c.read(p)
 c.set(\"gdrive\",\"client_id\",k[\"i\"]); c.set(\"gdrive\",\"client_secret\",k[\"s\"])
 c.write(open(p,\"w\")); print(\"키 교체 완료(값 미출력)\")
 "' || { echo "키 교체 실패 → rollback 하세요"; exit 1; }
-  echo "이제 동의 주소가 나옵니다. 'http://127.0.0.1:$PORT/auth?state=...' 줄을 사장님께 링크로 드리고, 허용이 끝나면 이 명령이 스스로 끝납니다."
+  exec bash "$0" consent
+  ;;
+consent)
+  # 동의만 다시 받는다(키 교체는 건드리지 않음). 출력은 줄 단위로 바로 내보낸다:
+  # 10/3 실측에서 grep이 출력을 모아 두는 바람에 동의 주소가 화면에 안 나왔다.
+  echo "아래에 'http://127.0.0.1:$PORT/auth?state=...' 주소가 나옵니다. Ctrl을 누른 채 클릭하고 구글에서 허용하면 이 명령이 스스로 끝납니다."
+  ssh -o BatchMode=yes $H "pkill -f '[r]clone config reconnect' 2>/dev/null; sleep 1; true"
   # -L: 신PC의 53682를 구PC 53682로. 구PC에는 화면이 없어 브라우저 자동 열기는 실패하고 주소만 찍힌다(정상).
-  ssh -o BatchMode=yes -L $PORT:127.0.0.1:$PORT $H "$R config reconnect gdrive: --auto-confirm 2>&1 | grep -v -i 'token\|secret'"
+  ssh -o BatchMode=yes -L $PORT:127.0.0.1:$PORT $H "$R config reconnect gdrive: --auto-confirm 2>&1 | grep --line-buffered -o -E 'http://127\.0\.0\.1:$PORT/auth[^ ]*|Success|Error.*|Failed.*|[Cc]ouldn.t.*'"
   ;;
 verify)
   ssh -o BatchMode=yes $H "$R lsd gdrive: --max-depth 1 2>&1 | head -5; echo ---; $R lsd gdrive: 2>&1 | grep -c 'being retired' | sed 's/^/경고 줄 수: /'; (fusermount -u \$HOME/carvit-pass/ag-test 2>/dev/null; $R mount gdrive:'새김Pass/ag-test' \$HOME/carvit-pass/ag-test --vfs-cache-mode writes --vfs-cache-max-age 24h --dir-cache-time 1m --daemon && ls \$HOME/carvit-pass/ag-test | head -3)"
@@ -40,5 +48,5 @@ verify)
 rollback)
   ssh -o BatchMode=yes $H "cp $BAK $CONF && echo 되돌림 완료 && $R lsd gdrive: --max-depth 1 2>&1 | head -3"
   ;;
-*) echo "check | start | verify | rollback"; exit 64;;
+*) echo "check | start | consent | verify | rollback"; exit 64;;
 esac
