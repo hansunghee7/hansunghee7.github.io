@@ -5,7 +5,7 @@
 출력: 문제 있으면 exit 2 + stderr에 고칠 지침 → Claude가 답변을 다시 쓴다.
       stop_hook_active 가 true 면(이미 훅 때문에 다시 쓴 답변) 무한 루프 방지로 통과.
 """
-import json, re, sys
+import json, os, re, sys, time
 
 # 1) 사장님의 결정을 "위반·번복"으로 몰아가는 표현
 ACCUSE = [
@@ -62,6 +62,21 @@ def check(text):
             problems.append(("사장님께 행동 요청(사유 표시 없음)", span))
     return problems
 
+HUMAN_LOG = os.environ.get("HUMAN_TOUCH_LOG", "C:/work/_ops/human_touch_log.jsonl")
+
+def log_human_touch(text):
+    """[사람 개입 필요: 사유] 표시가 있는 답변을 기록한다(시각, 사유, 표시 앞뒤 한 줄). 기록 실패는 답변을 막지 않는다."""
+    try:
+        for m in re.finditer(HUMAN_TAG, text):
+            line_start = text.rfind("\n", 0, m.start()) + 1
+            line_end = text.find("\n", m.end())
+            line = text[line_start: line_end if line_end >= 0 else len(text)].strip()
+            os.makedirs(os.path.dirname(HUMAN_LOG), exist_ok=True)
+            with open(HUMAN_LOG, "a", encoding="utf-8") as f:
+                f.write(json.dumps({"t": time.strftime("%F %T"), "reason": m.group(1), "line": line[:300]}, ensure_ascii=False) + "\n")
+    except Exception:
+        pass
+
 if __name__ == "__main__":
     try:
         data = json.load(sys.stdin) if not sys.stdin.isatty() else {}
@@ -72,7 +87,9 @@ if __name__ == "__main__":
         raise
     except Exception:
         sys.exit(0)  # 검사기 자체 오류로 답변을 막지 않는다
-    if not probs: sys.exit(0)
+    if not probs:
+        log_human_touch(text)  # 사유를 달고 사람 개입을 요청한 답변은 기록(매주 "없앨 수 있는 개입"을 골라 제품 개선으로 연결)
+        sys.exit(0)
     if any(k.startswith("사장님께 행동 요청") for k, _ in probs):
         print("사장님께 행동을 시키는 문장이 있습니다. 에이전틱 원칙(CLAUDE.md id:ag01): 사람은 4종(자격증명·PIN, 비가역·돈 승인, 제품·방향 결정, 규칙상 금지)에만 개입합니다. "
               "먼저 에이전트가 직접 할 수 있는지(스크립트·도구·브라우저·헤르메스·재시도·기록 찾기) 확인해서 직접 하세요. 정말 불가피하면 같은 답변에 [사람 개입 필요: 사유] 한 줄을 다세요.", file=sys.stderr)
