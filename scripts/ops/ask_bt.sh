@@ -16,16 +16,24 @@ calllog() {  # calllog <누구> <초> <rc> <출력파일>
   [ "$hit" = 1 ] && echo "⚠ 한도 신호 감지: $4 원문을 docs/processes에 기록할 것" >&2; return 0
 }
 Q="${1:?질문 파일 경로}"; OUT="${2:-/tmp/bt_reply_$(date +%Y%m%d_%H%M).md}"
-# 모델(사장님 결정 10/3, N114): 기본은 Sonnet(검토·출제·백로그 피드백). 제미나이는 독립 검증이 꼭 필요할 때만 BT_MODEL=gemini.
-# 둘은 한도 풀이 다르다(비티 = 제미나이, 비티-sonnet). 근거 docs/processes/N114_비티모델비교_1003.md
-MODEL="${BT_MODEL:-claude-sonnet-4-6}"; POOL=비티-sonnet; MARG="--model $MODEL"
-[ "$MODEL" = "gemini" ] && MARG="" && POOL=비티
-# 한도 관문(10/3, 사장님 지시 "한도는 탐이 관리"): 막혔거나 주간 예산을 다 썼으면 부르지 않는다.
+# 모델(사장님 결정 10/3): 비티가 있는 이유는 다양성(다른 회사 모델의 눈)이라 **제미나이 먼저**, 한도가 막히면 Sonnet으로 자동 전환(페일오버).
+# 둘은 한도 풀이 다르다(비티 = 제미나이 계열 공유, 비티-sonnet 별도). 근거 docs/processes/N114_비티모델비교_1003.md
+# BT_MODEL=claude-sonnet-4-6 처럼 지정하면 그 모델만 쓴다.
 QUOTA="$(dirname "$0")/quota.py"
-python "$QUOTA" check "$POOL" --who 탐 || { echo "한도 관문에서 멈춤: python $QUOTA status 로 확인" >&2; exit 4; }
-t0=$(date +%s); rc=0
-ssh -o ConnectTimeout=15 -o BatchMode=yes goosolar "cd ~/carvit-pass/ag-test && timeout 240 ~/.local/bin/agy $MARG -p \"\$(cat)\"" < "$Q" > "$OUT" 2> "$OUT.err" || rc=$?
-calllog "$POOL" $(( $(date +%s)-t0 )) $rc "$OUT"
-# 한도 오류는 stderr에만 나온다("Individual quota reached ... Resets in 130h"). 만나면 대장에 막힘을 기록한다.
-if grep -q "quota reached\|RESOURCE_EXHAUSTED" "$OUT.err" 2>/dev/null; then python "$QUOTA" hit "$POOL" "$(grep -m1 -o 'Individual quota reached.*' "$OUT.err")"; fi
+if [ -n "${BT_MODEL:-}" ]; then ORDER="sonnet"; [ "$BT_MODEL" = "gemini" ] && ORDER="gemini"; else ORDER="gemini sonnet"; fi
+rc=99
+for M in $ORDER; do
+  if [ "$M" = gemini ]; then POOL=비티; MARG=""; else POOL=비티-sonnet; MARG="--model claude-sonnet-4-6"; fi
+  # 한도 관문(10/3, 사장님 지시 "한도는 탐이 관리"): 막혔거나 주간 예산을 다 썼으면 이 모델은 건너뛴다.
+  python "$QUOTA" check "$POOL" --who 탐 || continue
+  t0=$(date +%s); rc=0
+  ssh -o ConnectTimeout=15 -o BatchMode=yes goosolar "cd ~/carvit-pass/ag-test && timeout 240 ~/.local/bin/agy $MARG -p \"\$(cat)\"" < "$Q" > "$OUT" 2> "$OUT.err" || rc=$?
+  calllog "$POOL" $(( $(date +%s)-t0 )) $rc "$OUT"
+  # 한도 오류는 stderr에만 나온다("Individual quota reached ... Resets in 130h"). 대장에 막힘을 적고 다음 모델로 넘어간다.
+  if grep -q "quota reached\|RESOURCE_EXHAUSTED" "$OUT.err" 2>/dev/null; then
+    python "$QUOTA" hit "$POOL" "$(grep -m1 -o 'Individual quota reached.*' "$OUT.err")"; continue
+  fi
+  echo "쓴 모델: $POOL" >&2; break
+done
+[ "$rc" = 99 ] && { echo "모든 모델이 한도 관문에서 멈춤: python $QUOTA status 로 확인" >&2; exit 4; }
 echo "답 저장: $OUT ($(wc -c < "$OUT") bytes)"
