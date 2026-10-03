@@ -97,6 +97,14 @@ kind = "cmd"
 cmd = ["python", 'C:\\work\\_ops\\gemini_ping.py']
 name = "제미나이 API(검증 키 살아 있음, 한도 소모 없음)"
 
+[[job]]
+id = "fn:quota"
+kind = "cmd"
+cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\quota.py', "watch"]
+every_min = 60
+name = "외부 모델 무료 한도(비티·덱스, quota.py)"
+note = "2026-10-03 탐 등록(사장님 지시: 한도는 탐이 관리). 막힘(한도 오류 기록, 풀림 시각까지)이나 주간 예산 80% 이상이면 붉음. 비티 제미나이 주 10회 추정 중 핏 3·탐 7. 상세 docs/processes/비티_한도_조건.md. 붉을 때 할 일: 출처가 필요 없는 일은 BT_MODEL=claude-sonnet-4-6, 웹 출처가 필요한 일은 덱스."
+
 # ---------- PC 보안(하루 1회, 1회 실패에 알림) ----------
 [[job]]
 id = "pc:disk"

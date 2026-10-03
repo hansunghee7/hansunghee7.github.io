@@ -16,7 +16,15 @@ calllog() {  # calllog <누구> <초> <rc> <출력파일>
   [ "$hit" = 1 ] && echo "⚠ 한도 신호 감지: $4 원문을 docs/processes에 기록할 것" >&2; return 0
 }
 Q="${1:?질문 파일 경로}"; OUT="${2:-/tmp/bt_reply_$(date +%Y%m%d_%H%M).md}"
+# 모델: BT_MODEL=claude-sonnet-4-6 이면 제미나이와 다른 한도 풀(비티-sonnet)을 쓴다(10/3 실측, 사장님 결정: 출처가 필요 없는 일은 Sonnet 먼저).
+MODEL="${BT_MODEL:-}"; POOL=비티; MARG=""
+[ -n "$MODEL" ] && MARG="--model $MODEL" && POOL=비티-sonnet
+# 한도 관문(10/3, 사장님 지시 "한도는 탐이 관리"): 막혔거나 주간 예산을 다 썼으면 부르지 않는다.
+QUOTA="$(dirname "$0")/quota.py"
+python "$QUOTA" check "$POOL" --who 탐 || { echo "한도 관문에서 멈춤: python $QUOTA status 로 확인" >&2; exit 4; }
 t0=$(date +%s); rc=0
-ssh -o ConnectTimeout=15 -o BatchMode=yes goosolar 'cd ~/carvit-pass/ag-test && timeout 240 ~/.local/bin/agy -p "$(cat)"' < "$Q" > "$OUT" || rc=$?
-calllog 비티 $(( $(date +%s)-t0 )) $rc "$OUT"
+ssh -o ConnectTimeout=15 -o BatchMode=yes goosolar "cd ~/carvit-pass/ag-test && timeout 240 ~/.local/bin/agy $MARG -p \"\$(cat)\"" < "$Q" > "$OUT" 2> "$OUT.err" || rc=$?
+calllog "$POOL" $(( $(date +%s)-t0 )) $rc "$OUT"
+# 한도 오류는 stderr에만 나온다("Individual quota reached ... Resets in 130h"). 만나면 대장에 막힘을 기록한다.
+if grep -q "quota reached\|RESOURCE_EXHAUSTED" "$OUT.err" 2>/dev/null; then python "$QUOTA" hit "$POOL" "$(grep -m1 -o 'Individual quota reached.*' "$OUT.err")"; fi
 echo "답 저장: $OUT ($(wc -c < "$OUT") bytes)"
