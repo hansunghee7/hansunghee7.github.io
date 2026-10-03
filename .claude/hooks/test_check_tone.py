@@ -32,6 +32,18 @@ class ToneTest(unittest.TestCase):
     def test_hostile_framing_still_caught(self):
         self.assertIn("적대 프레이밍", self.kinds("사장님이 원칙을 번복하셨습니다."))
 
+    def test_asking_boss_to_act_is_caught_without_reason(self):
+        k = "사장님께 행동 요청(사유 표시 없음)"
+        self.assertIn(k, self.kinds("사장님이 확장 새로고침을 눌러 주세요."))
+        self.assertIn(k, self.kinds("사장님이 PowerShell에서 명령을 실행해 주시면 됩니다."))
+
+    def test_reason_tag_allows_asking(self):
+        self.assertEqual(self.kinds("사장님이 PIN을 입력해 주세요. [사람 개입 필요: 자격증명]"), [])
+
+    def test_decisions_and_reports_are_not_action_requests(self):
+        self.assertEqual(self.kinds("사장님이 정하실 것: 2단계 시작 시점입니다."), [])
+        self.assertEqual(self.kinds("사장님이 어제 PIN을 입력하셨고 지투가 이어서 처리했습니다."), [])
+
 
 if __name__ == "__main__":
     unittest.main()
