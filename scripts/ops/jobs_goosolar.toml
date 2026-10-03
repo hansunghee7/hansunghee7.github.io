@@ -224,3 +224,35 @@ path = "/home/goosloar/ops/checks/dialog-daily.ok"
 max_age_min = 1500
 name = "다이얼로그 실사용 점검(구PC cron 매일 09:10 KST)"
 note = "2026-10-02 탐 B41, 사장님 승인. 질문 1개를 실제로 보내 답 80자 이상·근거 글 1개 이상 확인. 등록 전 1회 실행 rc=0(답 586자, 근거 9)."
+
+[[job]]
+id = "cron:flow-credits"
+kind = "file_age"
+path = "/home/goosloar/workshop/logs/flow_credits.last"
+max_age_min = 300
+name = "구PC Flow 크레딧 현황 수집(flow_credits.py, 매시 7분, 계정별 잔액·갱신 시각)"
+note = "2026-10-03 등록(핏, 사장님 지시: Flow 무료 크레딧 실시간 현황). 기록 ~/workshop/logs/flow_credits.jsonl. 공장 러너가 돌고 있으면 그 회차는 건너뛰므로(잠금 공유) 긴 작업 중엔 몇 시간 비는 것이 정상, 5시간 넘게 갱신 없으면 이상. 코드 shorts-lab tools/factory/flow_credits.py"
+
+[[job]]
+id = "cron:credits-board"
+kind = "file_age"
+path = "/home/goosloar/workshop/logs/credits_board.last"
+max_age_min = 1560
+name = "구PC 영상 크레딧 현황판 텔레그램(credits_board.py, 매일 08:00 KST)"
+note = "2026-10-03 등록(핏, 사장님 지시: 매일 아침 텔레그램 요약). Flow 실측(flow_credits.jsonl)+Vids 추정(vids_quota.jsonl)+대기열 남은 컷. 26시간 넘게 갱신 없으면 이상(.last 끝이 fail이면 전송 실패). 코드 shorts-lab tools/factory/credits_board.py"
+
+[[job]]
+id = "cron:vids-probe"
+kind = "file_age"
+path = "/home/goosloar/workshop/logs/vids_probe.last"
+max_age_min = 180
+name = "구PC Vids 한도 풀림 실측(vids_probe.py, 매시 37분, 막힌 계정만 실제 장면 1컷 시도)"
+note = "2026-10-03 등록(핏, 사장님 지시: Vids 열리는 시각 측정). 막혀 있으면 한도 문구만 뜨고 소비 없음, 풀리면 그 컷이 작업 결과물로 저장. 시도 기록 vids_quota.jsonl, 풀림 전환 vids_probe.jsonl. .last 는 매 실행 처음에 남김. 코드 shorts-lab tools/factory/vids_probe.py"
+
+[[job]]
+id = "cron:simplifier-posts"
+kind = "file_age"
+path = "/home/goosloar/ops/checks/simplifier-posts.ok"
+max_age_min = 780
+name = "심플리파이어 개인 계정 게시물 반응(구PC cron 매일 10:20·20:20 KST, read_tracked_posts.py)"
+note = "2026-10-03 탐 N108(핏 요청, 레트로 실사판 1호). 구PC SNS 크롬 9227에서 track_posts.json의 게시물(인스타 릴스·링크드인 등) 반응 수를 읽어 carvit-insight-data data/simplifier_posts.json에 쌓음. 등록 전 1회 실행 push rc 0(인스타 좋아요 1, 링크드인 노출 90). 첫 자동 실행 10/3 20:20 확인 필요. 원본 scripts/ops/goosolar/workshop/read_tracked_posts.py"
