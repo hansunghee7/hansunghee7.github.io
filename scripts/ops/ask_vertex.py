@@ -4,7 +4,7 @@
 왜: 비티(안티그래비티)가 주간 한도로 막혀도 검토를 이어가려고. 개인 GCP 결제 계정 010823의 무료 체험 크레딧을 쓴다
     (사장님 10/3: 무료 키 먼저, 막히면 GCP 크레딧. 카빗 계정 크레딧은 건드리지 않는다).
 인증: gcloud 토큰(hansunghee7 계정). 키 값 없음. 질문 파일에는 고객 정보·비밀값·가격·전략을 넣지 않는다.
-관문(코드로 강제): 하루 호출 수 상한(DAY_CALLS)과 하루 추정 비용 상한(DAY_KRW)을 넘으면 멈춘다(종료 코드 3).
+관문(코드로 강제): 하루 호출 수 상한(DAY_CALLS)·하루 추정 비용 상한(DAY_KRW)·몫별 상한(WHO_KRW, 검색 SEARCH_KRW)을 넘으면 멈춘다(종료 코드 3).
 기록: C:/work/_ops/vertex_usage.csv (호출마다 토큰·검색 횟수·추정 비용). 추정 단가는 실측 전 값이라
       PRICE_* 환경변수로 고치고, 실제 비용은 결제 보고서(프로젝트별)로 대조한다.
 
@@ -21,6 +21,10 @@ ACCOUNT = "hansunghee7@gmail.com"
 LOG = Path("C:/work/_ops/vertex_usage.csv")
 DAY_CALLS = int(os.environ.get("VERTEX_DAY_CALLS", "20"))
 DAY_KRW = float(os.environ.get("VERTEX_DAY_KRW", "3400"))  # 잔액 ₩326,145 − 긴급 영상 ₩50,000 ÷ 81일 (대장 N120)
+# 몫별 하루 상한(원, 사장님 승인 10/4, 대장 N120): 합계 DAY_KRW와 함께 코드로 강제한다. who가 목록에 없으면 예비 몫.
+WHO_KRW = {"지투": 500.0, "비티": 500.0, "타미": 300.0, "헤르메스": 1000.0}
+RESERVE_KRW = 300.0  # 탐 등 목록 밖
+SEARCH_KRW = 800.0   # 검색 연동(search=1) 호출의 비용 합 상한(몫 상한과 별개로 같이 적용)
 # 추정 단가(원, 백만 토큰당·검색 1건당). [추정] 실측 전 값. 결제 보고서와 대조해 고친다.
 PRICE_IN = float(os.environ.get("PRICE_IN_KRW_PER_M", "450"))
 PRICE_OUT = float(os.environ.get("PRICE_OUT_KRW_PER_M", "3500"))
@@ -34,16 +38,26 @@ def token():
                           creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0), timeout=60).stdout.strip()
 
 
-def today_use():
+def bucket(who):
+    return who if who in WHO_KRW else "예비"
+
+
+def today_use(who=None):
+    """오늘 전체 호출 수·비용, 그리고 who 몫·검색 몫의 비용 합을 돌려준다."""
     if not LOG.exists():
-        return 0, 0.0
+        return 0, 0.0, 0.0, 0.0
     d = datetime.now().strftime("%Y-%m-%d")
-    n, krw = 0, 0.0
+    n, krw, mine, srch = 0, 0.0, 0.0, 0.0
     for r in csv.DictReader(LOG.open(encoding="utf-8")):
         if r["time"].startswith(d):
             n += 1
-            krw += float(r["est_krw"] or 0)
-    return n, krw
+            c = float(r["est_krw"] or 0)
+            krw += c
+            if who is not None and bucket(r["who"]) == bucket(who):
+                mine += c
+            if r["search"] == "1":
+                srch += c
+    return n, krw, mine, srch
 
 
 def main():
@@ -55,7 +69,14 @@ def main():
     ap.add_argument("--model", default="gemini-3.6-flash")
     a = ap.parse_args()
     out = Path(a.out) if a.out else Path(f"C:/work/_ops/bt/replies/vertex_{datetime.now():%Y%m%d_%H%M}.md")
-    n, krw = today_use()
+    n, krw, mine, srch = today_use(a.who)
+    cap = WHO_KRW.get(a.who, RESERVE_KRW)
+    if mine >= cap:
+        print(f"{a.who if a.who in WHO_KRW else '예비'} 몫 상한 초과: 오늘 약 ₩{mine:,.0f} (상한 ₩{cap:,.0f}).", file=sys.stderr)
+        return 3
+    if a.search and srch >= SEARCH_KRW:
+        print(f"검색 몫 상한 초과: 오늘 약 ₩{srch:,.0f} (상한 ₩{SEARCH_KRW:,.0f}).", file=sys.stderr)
+        return 3
     if n >= DAY_CALLS or krw >= DAY_KRW:
         print(f"하루 상한 초과: 오늘 {n}회·약 ₩{krw:,.0f} (상한 {DAY_CALLS}회·₩{DAY_KRW:,.0f}). 내일 다시 또는 상한 환경변수 조정은 탐이 판단.", file=sys.stderr)
         return 3
