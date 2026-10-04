@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-03T22:26:40.403075+00:00",
+  "updated_at": "2026-10-04T06:49:28.186084+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 329,
-    "activeUsers": 282,
-    "newUsers": 279,
+    "sessions": 330,
+    "activeUsers": 284,
+    "newUsers": 281,
     "returningUsers": 3
   },
   "daily": [
@@ -213,9 +213,9 @@
     },
     {
       "date": "2026-10-03",
-      "sessions": 12,
-      "activeUsers": 8,
-      "newUsers": 7,
+      "sessions": 13,
+      "activeUsers": 10,
+      "newUsers": 9,
       "returningUsers": 1
     },
     {
@@ -228,7 +228,7 @@
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 116,
+    "home": 112,
     "log_home": 0,
     "individual_post": 207,
     "other": 11
@@ -236,11 +236,11 @@
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 202
+      "sessions": 204
     },
     {
       "source": "linkedin.com",
-      "sessions": 30
+      "sessions": 31
     },
     {
       "source": "google",
@@ -251,20 +251,20 @@
       "sessions": 13
     },
     {
-      "source": "(not set)",
-      "sessions": 11
+      "source": "m.search.naver.com",
+      "sessions": 13
     },
     {
       "source": "facebook.com",
       "sessions": 11
     },
     {
-      "source": "m.search.naver.com",
-      "sessions": 11
-    },
-    {
       "source": "maru-connect.webflow.io",
       "sessions": 7
+    },
+    {
+      "source": "(not set)",
+      "sessions": 5
     },
     {
       "source": "blog.naver.com",
@@ -273,10 +273,6 @@
     {
       "source": "daum",
       "sessions": 5
-    },
-    {
-      "source": "(data not available)",
-      "sessions": 4
     },
     {
       "source": "lm.facebook.com",
@@ -293,6 +289,10 @@
     {
       "source": "talk.navercorp.com",
       "sessions": 2
+    },
+    {
+      "source": "(data not available)",
+      "sessions": 1
     }
   ],
   "utm_campaigns": [
@@ -300,13 +300,13 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 202
+      "sessions": 204
     },
     {
       "source": "linkedin.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 30
+      "sessions": 31
     },
     {
       "source": "google",
@@ -321,13 +321,13 @@
       "sessions": 13
     },
     {
-      "source": "facebook.com",
+      "source": "m.search.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 11
+      "sessions": 13
     },
     {
-      "source": "m.search.naver.com",
+      "source": "facebook.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 11
@@ -349,12 +349,6 @@
       "medium": "organic",
       "campaign": "(organic)",
       "sessions": 5
-    },
-    {
-      "source": "(data not available)",
-      "medium": "(data not available)",
-      "campaign": "(cross-network)",
-      "sessions": 4
     },
     {
       "source": "lm.facebook.com",
@@ -379,6 +373,12 @@
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 2
+    },
+    {
+      "source": "(data not available)",
+      "medium": "(data not available)",
+      "campaign": "(cross-network)",
+      "sessions": 1
     },
     {
       "source": "chatgpt.com",
@@ -405,7 +405,7 @@
     "section_view_book_class": 30,
     "section_view_faq": 28,
     "faq_open": 17,
-    "read_complete": 78
+    "read_complete": 79
   },
   "contact_funnel": {
     "contact_open": 12,
@@ -584,7 +584,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 318,
+    "total_desktop_sessions": 319,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
@@ -600,7 +600,7 @@
       {
         "resolution": "1600x1600",
         "width": 1600,
-        "sessions": 53
+        "sessions": 54
       },
       {
         "resolution": "2560x1440",
