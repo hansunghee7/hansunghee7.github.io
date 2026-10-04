@@ -72,6 +72,21 @@ def launched(tools):
     return False
 
 
+def tool_blob(tools):
+    out = []
+    for name, inp in tools:
+        out.append(name)
+        out.extend(str(v) for v in inp.values())
+    return " ".join(out)
+
+
+def topic_matches(tag_text, tools):
+    """태그에 적은 낱말(경로·스크립트·로그 이름)이 이번 턴 도구 호출에 실제로 나와야 한다(무관한 태그 방지, 2026-10-04)."""
+    blob = tool_blob(tools)
+    toks = [t for t in re.split(r"[\s,:;|/\\()\[\]]+", tag_text) if len(t) >= 4]
+    return any(t in blob for t in toks)
+
+
 def fresh_local_log(tag_text):
     for m in re.finditer(r"[A-Za-z]:[\\/][^\s,|\]]+", tag_text):
         p = m.group(0).rstrip(").,")
@@ -94,8 +109,10 @@ def check(text, tools):
         return None
     m = TAG_RUN.search(text)
     if m:
-        if launched(tools) or fresh_local_log(m.group(1)):
+        if fresh_local_log(m.group(1)):
             return None
+        if launched(tools):
+            return None if topic_matches(m.group(1), tools) else "run-tag-topic-mismatch"
         return "run-tag-without-evidence"
     return "no-tag"
 
@@ -122,7 +139,10 @@ if __name__ == "__main__":
         sys.exit(0)  # 검사기 오류로 답변을 막지 않는다
     if not verdict:
         sys.exit(0)
-    if verdict == "run-tag-without-evidence":
+    if verdict == "run-tag-topic-mismatch":
+        print("[지금 돌고 있는 것] 태그의 내용이 이번 턴에 실제로 건 실행(명령·경로)과 맞지 않습니다. 약속한 바로 그 작업을 걸고, "
+              "태그에는 그 명령에 나오는 스크립트·로그 이름을 적으세요. 무관한 크론·PR 대기로 채우지 마세요.", file=sys.stderr)
+    elif verdict == "run-tag-without-evidence":
         print("[지금 돌고 있는 것] 표지가 있지만 이번 턴에 실행을 건 흔적(백그라운드 Bash, Monitor, nohup, 예약 도구)이나 "
               "최근 15분 안에 갱신된 로컬 로그가 없습니다. 실제로 실행을 걸거나, 아무것도 안 돌면 [실행 대기: 이유와 풀리는 조건]으로 바꾸세요.",
               file=sys.stderr)
