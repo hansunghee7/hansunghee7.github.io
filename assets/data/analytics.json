@@ -1,20 +1,13 @@
 {
-  "updated_at": "2026-10-04T13:22:07.656577+00:00",
+  "updated_at": "2026-10-04T20:00:41.805277+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 331,
-    "activeUsers": 285,
-    "newUsers": 282,
+    "sessions": 326,
+    "activeUsers": 280,
+    "newUsers": 277,
     "returningUsers": 3
   },
   "daily": [
-    {
-      "date": "2026-09-04",
-      "sessions": 6,
-      "activeUsers": 6,
-      "newUsers": 6,
-      "returningUsers": 0
-    },
     {
       "date": "2026-09-05",
       "sessions": 4,
@@ -220,15 +213,15 @@
     },
     {
       "date": "2026-10-04",
-      "sessions": 3,
-      "activeUsers": 3,
-      "newUsers": 2,
+      "sessions": 4,
+      "activeUsers": 4,
+      "newUsers": 3,
       "returningUsers": 1
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 114,
+    "home": 109,
     "log_home": 0,
     "individual_post": 207,
     "other": 11
@@ -236,7 +229,7 @@
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 205
+      "sessions": 202
     },
     {
       "source": "linkedin.com",
@@ -244,7 +237,7 @@
     },
     {
       "source": "google",
-      "sessions": 24
+      "sessions": 22
     },
     {
       "source": "m.facebook.com",
@@ -252,7 +245,7 @@
     },
     {
       "source": "m.search.naver.com",
-      "sessions": 13
+      "sessions": 12
     },
     {
       "source": "facebook.com",
@@ -283,16 +276,16 @@
       "sessions": 3
     },
     {
+      "source": "(data not available)",
+      "sessions": 2
+    },
+    {
       "source": "l.facebook.com",
       "sessions": 2
     },
     {
       "source": "talk.navercorp.com",
       "sessions": 2
-    },
-    {
-      "source": "(data not available)",
-      "sessions": 1
     }
   ],
   "utm_campaigns": [
@@ -300,7 +293,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 205
+      "sessions": 202
     },
     {
       "source": "linkedin.com",
@@ -312,7 +305,7 @@
       "source": "google",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 24
+      "sessions": 22
     },
     {
       "source": "m.facebook.com",
@@ -324,7 +317,7 @@
       "source": "m.search.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 13
+      "sessions": 12
     },
     {
       "source": "facebook.com",
@@ -363,6 +356,12 @@
       "sessions": 3
     },
     {
+      "source": "(data not available)",
+      "medium": "(data not available)",
+      "campaign": "(cross-network)",
+      "sessions": 2
+    },
+    {
       "source": "l.facebook.com",
       "medium": "referral",
       "campaign": "(referral)",
@@ -373,12 +372,6 @@
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 2
-    },
-    {
-      "source": "(data not available)",
-      "medium": "(data not available)",
-      "campaign": "(cross-network)",
-      "sessions": 1
     },
     {
       "source": "chatgpt.com",
@@ -400,12 +393,12 @@
     }
   ],
   "engagement_events": {
-    "section_view_proven": 51,
-    "section_view_voices": 47,
-    "section_view_book_class": 30,
-    "section_view_faq": 29,
-    "faq_open": 17,
-    "read_complete": 79
+    "section_view_proven": 48,
+    "section_view_voices": 45,
+    "section_view_book_class": 29,
+    "section_view_faq": 28,
+    "faq_open": 10,
+    "read_complete": 76
   },
   "contact_funnel": {
     "contact_open": 12,
@@ -442,7 +435,7 @@
     {
       "path": "/logs/628",
       "title": "/logs/628",
-      "sessions": 7
+      "sessions": 8
     },
     {
       "path": "/logs/636",
@@ -524,8 +517,8 @@
     {
       "path": "/logs/628/",
       "title": "우리 회사의 핵심가치, 아무도 안 볼 때 동작하나요?",
-      "uniqueViews": 7,
-      "views": 8
+      "uniqueViews": 8,
+      "views": 9
     },
     {
       "path": "/logs/6/",
@@ -584,7 +577,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 319,
+    "total_desktop_sessions": 320,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
@@ -615,7 +608,7 @@
       {
         "resolution": "2000x2000",
         "width": 2000,
-        "sessions": 8
+        "sessions": 9
       },
       {
         "resolution": "1440x900",
