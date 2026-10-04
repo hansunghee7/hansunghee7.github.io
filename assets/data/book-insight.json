@@ -1162,9 +1162,9 @@
         "rating": 10.0
       },
       "aladin": {
-        "sales_point": null,
-        "reviews": 0,
-        "rating": null,
+        "sales_point": 749,
+        "reviews": 2,
+        "rating": 10.0,
         "planning_rank": null,
         "info_mgmt_rank": null
       },
@@ -1180,9 +1180,9 @@
         "rating": 0.0
       },
       "millie": {
-        "category_rank": null
+        "category_rank": 83
       }
     }
   ],
-  "updated_at": "2026-10-04T20:04:01.992338+00:00"
+  "updated_at": "2026-10-04T22:54:45.923471+00:00"
 }
