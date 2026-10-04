@@ -2173,12 +2173,12 @@
         "rating": 10.0
       },
       "aladin": {
-        "sales_point": null,
-        "reviews": 0,
-        "rating": null,
+        "sales_point": 320,
+        "reviews": 9,
+        "rating": 9.6,
         "design_rank": null,
         "brand_rank": null,
-        "ad_rank": null
+        "ad_rank": 26
       },
       "kyobo": {
         "uxui_cat": null,
@@ -2190,5 +2190,5 @@
       }
     }
   ],
-  "updated_at": "2026-10-03T22:48:02.196637+00:00"
+  "updated_at": "2026-10-04T08:35:25.833792+00:00"
 }
