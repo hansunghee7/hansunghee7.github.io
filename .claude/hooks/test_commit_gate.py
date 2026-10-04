@@ -7,7 +7,7 @@ spec = importlib.util.spec_from_file_location("commit_gate", Path(__file__).pare
 gate = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(gate)
 
-BG = [("Bash", {"command": "ssh x 'nohup ./run.sh &'", "run_in_background": False})]
+BG = [("Bash", {"command": "ssh x 'nohup ./run.sh >> logs/x.log &'", "run_in_background": False})]
 
 
 class CommitGateTest(unittest.TestCase):
@@ -26,7 +26,7 @@ class CommitGateTest(unittest.TestCase):
         # 2026-10-04: 약속한 작업과 무관한 태그를 달아 통과하던 구멍
         text = "화질 점검을 진행합니다. [지금 돌고 있는 것: lf01 화질 점검 ffmpeg 프레임 추출]"
         wrong = [("Bash", {"command": "gh pr merge --auto", "run_in_background": True})]
-        right = [("Bash", {"command": "ffmpeg -i lf01_clip.mp4 frame.png"})]
+        right = [("Bash", {"command": "nohup ffmpeg -i lf01_clip.mp4 frame.png &", "run_in_background": True})]
         self.assertEqual(gate.check(text, wrong), "run-tag-topic-mismatch")
         self.assertIsNone(gate.check(text, right + wrong[:0]))
 
