@@ -44,12 +44,32 @@ def session_model(path):
     return ""
 
 
+# 예외(핏 2026-10-05, 사장님 승인 "훅 예외 승인하고 훅도 다시 쓰세요", 허용은 예외 적용 포함): 서브에이전트가 기계적 반복을 맡도록
+# scripts/ops/browser_lease.py 임대가 살아 있는 동안만 claude-in-chrome 도구를 허용한다. 9/29 사고 조건을 그대로 막는다:
+# Claude_Browser·computer-use는 계속 차단, 임대는 자동 만료(최대 120분)·한 번에 한 명, 허용 호출은 factory_browser_lease.log에 남긴다.
+# 임대 파일이 없거나 읽지 못하면 기존대로 차단한다.
+def lease_ok():
+    try:
+        from datetime import datetime, timedelta, timezone
+        d = json.load(open(r"C:\work\_ops\factory_browser_lease.json", encoding="utf-8"))
+        kst = timezone(timedelta(hours=9))
+        if datetime.fromisoformat(d["expires"]) > datetime.now(kst):
+            with open(r"C:\work\_ops\factory_browser_lease.log", "a", encoding="utf-8") as lg:
+                lg.write(f"{datetime.now(kst):%m-%d %H:%M:%S} {d.get('who')} {tool}\n")
+            return True
+    except Exception:
+        pass
+    return False
+
+
 if tool.startswith(BLOCKING):
     who = ""
     if data.get("agent_id"):
         who = "서브에이전트"
     elif "haiku" in session_model(str(data.get("transcript_path") or "")).lower():
         who = "하이쿠 세션(경량 모델)"
+    if who and data.get("agent_id") and tool.startswith("mcp__claude-in-chrome__") and lease_ok():
+        sys.exit(0)
     if who:
         sys.stderr.write(
             f"[대기형 도구 관문] {who}는 {tool}을(를) 쓸 수 없습니다(세션 제어권을 붙잡아 다른 세션까지 멈춘 사고, 2026-09-29). "
