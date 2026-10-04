@@ -20,7 +20,7 @@ class CommitGateTest(unittest.TestCase):
         text = "구현을 진행합니다. [지금 돌고 있는 것: 구PC logs/x.log]"
         self.assertEqual(gate.check(text, []), "run-tag-without-evidence")
         self.assertIsNone(gate.check(text, BG))
-        self.assertIsNone(gate.check(text, [("Monitor", {})]))
+        self.assertIsNone(gate.check(text, [("Monitor", {"command": "tail -f logs/x.log"})]))
 
     def test_tag_must_match_launched_work(self):
         # 2026-10-04: 약속한 작업과 무관한 태그를 달아 통과하던 구멍
