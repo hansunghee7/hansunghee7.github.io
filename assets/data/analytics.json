@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-04T06:49:28.186084+00:00",
+  "updated_at": "2026-10-04T13:22:07.656577+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 330,
-    "activeUsers": 284,
-    "newUsers": 281,
+    "sessions": 331,
+    "activeUsers": 285,
+    "newUsers": 282,
     "returningUsers": 3
   },
   "daily": [
@@ -220,15 +220,15 @@
     },
     {
       "date": "2026-10-04",
-      "sessions": 2,
-      "activeUsers": 2,
-      "newUsers": 1,
+      "sessions": 3,
+      "activeUsers": 3,
+      "newUsers": 2,
       "returningUsers": 1
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 112,
+    "home": 114,
     "log_home": 0,
     "individual_post": 207,
     "other": 11
@@ -236,7 +236,7 @@
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 204
+      "sessions": 205
     },
     {
       "source": "linkedin.com",
@@ -264,7 +264,7 @@
     },
     {
       "source": "(not set)",
-      "sessions": 5
+      "sessions": 6
     },
     {
       "source": "blog.naver.com",
@@ -300,7 +300,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 204
+      "sessions": 205
     },
     {
       "source": "linkedin.com",
@@ -400,10 +400,10 @@
     }
   ],
   "engagement_events": {
-    "section_view_proven": 50,
-    "section_view_voices": 46,
+    "section_view_proven": 51,
+    "section_view_voices": 47,
     "section_view_book_class": 30,
-    "section_view_faq": 28,
+    "section_view_faq": 29,
     "faq_open": 17,
     "read_complete": 79
   },
