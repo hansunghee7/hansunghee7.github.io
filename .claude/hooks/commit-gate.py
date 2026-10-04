@@ -101,6 +101,11 @@ def check(text, tools):
 
 
 if __name__ == "__main__":
+    for _s in (sys.stdin, sys.stderr):  # Windows 기본 인코딩(cp949)에서 한글 입출력이 깨지지 않게
+        try:
+            _s.reconfigure(encoding="utf-8")
+        except Exception:
+            pass
     try:
         data = json.load(sys.stdin) if not sys.stdin.isatty() else {}
         if data.get("stop_hook_active"):
