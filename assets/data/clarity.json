@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-04T15:17:58.112475+00:00",
+  "updated_at": "2026-10-04T20:45:28.942632+00:00",
   "note": "history는 매일 지난 24시간 집계를 누적한 것. latest_*는 최근 3일 창.",
   "history": [
     {
@@ -6477,16 +6477,16 @@
       "metrics": {
         "DeadClickCount": [
           {
-            "sessionsCount": 4,
-            "sessionsWithMetricPercentage": 50,
-            "sessionsWithoutMetricPercentage": 50,
-            "pagesViews": 2,
-            "subTotal": 2
+            "sessionsCount": 1,
+            "sessionsWithMetricPercentage": 0,
+            "sessionsWithoutMetricPercentage": 100,
+            "pagesViews": 0,
+            "subTotal": 0
           }
         ],
         "ExcessiveScroll": [
           {
-            "sessionsCount": 4,
+            "sessionsCount": 1,
             "sessionsWithMetricPercentage": 0,
             "sessionsWithoutMetricPercentage": 100,
             "pagesViews": 0,
@@ -6495,7 +6495,7 @@
         ],
         "RageClickCount": [
           {
-            "sessionsCount": 4,
+            "sessionsCount": 1,
             "sessionsWithMetricPercentage": 0,
             "sessionsWithoutMetricPercentage": 100,
             "pagesViews": 0,
@@ -6504,16 +6504,16 @@
         ],
         "QuickbackClick": [
           {
-            "sessionsCount": 4,
-            "sessionsWithMetricPercentage": 25,
-            "sessionsWithoutMetricPercentage": 75,
-            "pagesViews": 1,
-            "subTotal": 1
+            "sessionsCount": 1,
+            "sessionsWithMetricPercentage": 0,
+            "sessionsWithoutMetricPercentage": 100,
+            "pagesViews": 0,
+            "subTotal": 0
           }
         ],
         "ScriptErrorCount": [
           {
-            "sessionsCount": 4,
+            "sessionsCount": 1,
             "sessionsWithMetricPercentage": 0,
             "sessionsWithoutMetricPercentage": 100,
             "pagesViews": 0,
@@ -6522,7 +6522,7 @@
         ],
         "ErrorClickCount": [
           {
-            "sessionsCount": 4,
+            "sessionsCount": 1,
             "sessionsWithMetricPercentage": 0,
             "sessionsWithoutMetricPercentage": 100,
             "pagesViews": 0,
@@ -6531,32 +6531,24 @@
         ],
         "ScrollDepth": [
           {
-            "averageScrollDepth": 57.5
+            "averageScrollDepth": 100
           }
         ],
         "Traffic": [
           {
-            "totalSessionCount": 4,
-            "totalBotSessionCount": 1,
+            "totalSessionCount": 1,
+            "totalBotSessionCount": 3,
             "distinctUserCount": 4,
-            "pagesPerSessionPercentage": 1.3333333333333333
+            "pagesPerSessionPercentage": 1
           }
         ],
         "EngagementTime": [
           {
-            "totalTime": 19,
-            "activeTime": 18
+            "totalTime": 9,
+            "activeTime": 9
           }
         ],
         "Browser": [
-          {
-            "name": "MobileSafari",
-            "sessionsCount": 2
-          },
-          {
-            "name": "Edge",
-            "sessionsCount": 1
-          },
           {
             "name": "InstagramApp",
             "sessionsCount": 1
@@ -6565,80 +6557,44 @@
         "Device": [
           {
             "name": "Mobile",
-            "sessionsCount": 3
-          },
-          {
-            "name": "PC",
             "sessionsCount": 1
           }
         ],
         "OS": [
           {
-            "name": "IOS",
-            "sessionsCount": 2
-          },
-          {
             "name": "Android",
-            "sessionsCount": 1
-          },
-          {
-            "name": "Windows",
             "sessionsCount": 1
           }
         ],
         "Country": [
           {
             "name": "Korea, Republic of",
-            "sessionsCount": 3
-          },
-          {
-            "name": "United States",
             "sessionsCount": 1
           }
         ],
         "PageTitle": [
           {
             "name": "Simplifier - 스타트업 코칭·기업 강연 한성희",
-            "sessionsCount": 4
-          },
-          {
-            "name": "자정이 가까워지도록 AI 얘기를 원 없이 나눴어요. - Simplifier",
-            "sessionsCount": 1
-          },
-          {
-            "name": "내가 GS에서 강의를 하는 이유 - Simplifier",
             "sessionsCount": 1
           }
         ],
         "ReferrerUrl": [
           {
             "name": null,
-            "sessionsCount": 3
-          },
-          {
-            "name": "https://m.trevari.co.kr/",
-            "sessionsCount": 2
-          },
-          {
-            "name": "https://simplifier.co.kr/",
             "sessionsCount": 1
           }
         ],
         "PopularPages": [
           {
-            "url": "https://simplifier.co.kr/",
-            "visitsCount": 4
+            "url": "https://simplifier.co.kr/logs/628/",
+            "visitsCount": 2
           },
           {
             "url": "https://simplifier.co.kr/logs/630/",
             "visitsCount": 1
           },
           {
-            "url": "https://simplifier.co.kr/logs/6/",
-            "visitsCount": 1
-          },
-          {
-            "url": "https://simplifier.co.kr/logs/481/",
+            "url": "https://simplifier.co.kr/",
             "visitsCount": 1
           }
         ]
@@ -7907,6 +7863,13 @@
         "Url": "https://simplifier.co.kr/logs/301/"
       },
       {
+        "totalSessionCount": 0,
+        "totalBotSessionCount": 1,
+        "distinctUserCount": 1,
+        "pagesPerSessionPercentage": 1,
+        "Url": "https://simplifier.co.kr/logs/628/?fbclid=IwZXh0bgNhZW0CMTEAcGRvZgRzcnRjBmFwcF9pZAwyNTYyODEwNDA1NTgAAR7m0Dkx2G4D1l4XFbwAb3EdyM4k8X7CUDxBKu1TKAr3jOH8Kdnnf2JTVaiSFw_aem_UfuM-PxpiSID3psJxWSiFg"
+      },
+      {
         "totalSessionCount": 13,
         "totalBotSessionCount": 4,
         "distinctUserCount": 12,
@@ -7970,18 +7933,18 @@
         "Url": "https://simplifier.co.kr/logs/224/"
       },
       {
-        "totalSessionCount": 0,
-        "totalBotSessionCount": 0,
-        "distinctUserCount": 1,
-        "pagesPerSessionPercentage": 1,
-        "Url": "https://simplifier.co.kr/logs/495/"
-      },
-      {
         "totalSessionCount": 1,
         "totalBotSessionCount": 0,
         "distinctUserCount": 1,
         "pagesPerSessionPercentage": 1,
         "Url": "https://simplifier.co.kr/logs/619/"
+      },
+      {
+        "totalSessionCount": 0,
+        "totalBotSessionCount": 1,
+        "distinctUserCount": 1,
+        "pagesPerSessionPercentage": 1,
+        "Url": "https://simplifier.co.kr/logs/628/?fbclid=IwZXh0bgNhZW0CMTEAcGRvZgRzcnRjBmFwcF9pZAwyNTYyODEwNDA1NTgAAR5sE5FFBYUiV2VeUvt7vs-JSx9mwYJlZIKOcDKiHtpbaZCTarN0sVKoHelpuw_aem_xRN0B7h5Sak3w785-0aSiA"
       },
       {
         "totalSessionCount": 1,
@@ -7996,13 +7959,6 @@
         "distinctUserCount": 1,
         "pagesPerSessionPercentage": 1,
         "Url": "https://simplifier.co.kr/logs/614/"
-      },
-      {
-        "totalSessionCount": 0,
-        "totalBotSessionCount": 1,
-        "distinctUserCount": 1,
-        "pagesPerSessionPercentage": 1,
-        "Url": "https://simplifier.co.kr/logs/474/"
       },
       {
         "totalSessionCount": 1,
@@ -8509,9 +8465,9 @@
     "Traffic": [
       {
         "totalSessionCount": 17,
-        "totalBotSessionCount": 6,
-        "distinctUserCount": 26,
-        "pagesPerSessionPercentage": 1.096774193548387,
+        "totalBotSessionCount": 5,
+        "distinctUserCount": 24,
+        "pagesPerSessionPercentage": 1.103448275862069,
         "Source": ""
       },
       {
@@ -8527,6 +8483,13 @@
         "distinctUserCount": 7,
         "pagesPerSessionPercentage": 1.1428571428571428,
         "Source": "naver"
+      },
+      {
+        "totalSessionCount": 0,
+        "totalBotSessionCount": 2,
+        "distinctUserCount": 2,
+        "pagesPerSessionPercentage": 1,
+        "Source": "www.facebook.com"
       },
       {
         "totalSessionCount": 2,
