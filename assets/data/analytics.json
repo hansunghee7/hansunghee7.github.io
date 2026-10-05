@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-04T22:32:04.004122+00:00",
+  "updated_at": "2026-10-05T07:01:44.661983+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 326,
-    "activeUsers": 280,
-    "newUsers": 277,
-    "returningUsers": 3
+    "sessions": 327,
+    "activeUsers": 281,
+    "newUsers": 279,
+    "returningUsers": 2
   },
   "daily": [
     {
@@ -215,8 +215,15 @@
       "date": "2026-10-04",
       "sessions": 4,
       "activeUsers": 4,
-      "newUsers": 3,
-      "returningUsers": 1
+      "newUsers": 4,
+      "returningUsers": 0
+    },
+    {
+      "date": "2026-10-05",
+      "sessions": 1,
+      "activeUsers": 1,
+      "newUsers": 1,
+      "returningUsers": 0
     }
   ],
   "daily_leads": [],
@@ -229,7 +236,7 @@
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 202
+      "sessions": 203
     },
     {
       "source": "linkedin.com",
@@ -244,20 +251,16 @@
       "sessions": 13
     },
     {
+      "source": "facebook.com",
+      "sessions": 12
+    },
+    {
       "source": "m.search.naver.com",
       "sessions": 12
     },
     {
-      "source": "facebook.com",
-      "sessions": 11
-    },
-    {
       "source": "maru-connect.webflow.io",
       "sessions": 7
-    },
-    {
-      "source": "(not set)",
-      "sessions": 6
     },
     {
       "source": "blog.naver.com",
@@ -268,6 +271,10 @@
       "sessions": 5
     },
     {
+      "source": "(not set)",
+      "sessions": 3
+    },
+    {
       "source": "lm.facebook.com",
       "sessions": 3
     },
@@ -276,16 +283,16 @@
       "sessions": 3
     },
     {
-      "source": "(data not available)",
-      "sessions": 2
-    },
-    {
       "source": "l.facebook.com",
       "sessions": 2
     },
     {
       "source": "talk.navercorp.com",
       "sessions": 2
+    },
+    {
+      "source": "(data not available)",
+      "sessions": 1
     }
   ],
   "utm_campaigns": [
@@ -293,7 +300,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 202
+      "sessions": 203
     },
     {
       "source": "linkedin.com",
@@ -314,16 +321,16 @@
       "sessions": 13
     },
     {
-      "source": "m.search.naver.com",
+      "source": "facebook.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 12
     },
     {
-      "source": "facebook.com",
+      "source": "m.search.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 11
+      "sessions": 12
     },
     {
       "source": "maru-connect.webflow.io",
@@ -356,12 +363,6 @@
       "sessions": 3
     },
     {
-      "source": "(data not available)",
-      "medium": "(data not available)",
-      "campaign": "(cross-network)",
-      "sessions": 2
-    },
-    {
       "source": "l.facebook.com",
       "medium": "referral",
       "campaign": "(referral)",
@@ -374,9 +375,21 @@
       "sessions": 2
     },
     {
+      "source": "(data not available)",
+      "medium": "(data not available)",
+      "campaign": "(cross-network)",
+      "sessions": 1
+    },
+    {
       "source": "chatgpt.com",
       "medium": "ai-assistant",
       "campaign": "(ai-assistant)",
+      "sessions": 1
+    },
+    {
+      "source": "m.trevari.co.kr",
+      "medium": "referral",
+      "campaign": "(referral)",
       "sessions": 1
     },
     {
@@ -393,7 +406,7 @@
     }
   ],
   "engagement_events": {
-    "section_view_proven": 48,
+    "section_view_proven": 49,
     "section_view_voices": 45,
     "section_view_book_class": 29,
     "section_view_faq": 28,
@@ -563,21 +576,21 @@
       "views": 4
     },
     {
+      "path": "/logs/618/",
+      "title": "AI가 못 뺏는 능력 하나",
+      "uniqueViews": 4,
+      "views": 4
+    },
+    {
       "path": "/logs/632/",
       "title": "우리 팀만 말하는 직원 어떻게 해야하나요?",
       "uniqueViews": 4,
       "views": 5
-    },
-    {
-      "path": "/logs/206/",
-      "title": "평범을 거부한다. 헤더윅 스튜디오",
-      "uniqueViews": 3,
-      "views": 3
     }
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 320,
+    "total_desktop_sessions": 321,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
@@ -588,7 +601,7 @@
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 56
+        "sessions": 57
       },
       {
         "resolution": "1600x1600",
