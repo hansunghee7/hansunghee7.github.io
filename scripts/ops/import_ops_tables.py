@@ -104,6 +104,32 @@ def parse_tam_ledger(path):
     return out
 
 
+def parse_handoffs(path, keep=3):
+    """진행상황.md의 인수인계 블록(`## [페르소나] 상태: ...`)을 페르소나별 최신 keep개만 읽는다(파일 안에서 위쪽이 최신). 본문 전체를 raw.body에 보존한다."""
+    try:
+        lines = Path(path).read_text(encoding='utf-8', errors='replace').splitlines()
+    except OSError:
+        return []
+    blocks, cur = [], None
+    for ln in lines:
+        m = re.match(r'^##\s*\[([^\]]+)\]\s*(.*)$', ln)
+        if m:
+            cur = {'owner': m[1].strip(), 'head': m[2].strip(), 'body': []}
+            blocks.append(cur)
+        elif ln.startswith('## '):
+            cur = None
+        elif cur is not None:
+            cur['body'].append(ln)
+    seen, out = {}, []
+    for b in blocks:
+        seen[b['owner']] = seen.get(b['owner'], 0) + 1
+        if seen[b['owner']] > keep:
+            continue
+        out.append({'owner': b['owner'], 'section': 'handoff', 'no': str(seen[b['owner']]), 'title': b['head'][:300], 'status': b['head'][:40], 'source_date': None, 'next_action': None, 'evidence': None,
+                    'result': None, 'cost': None, 'decider': None, 'raw': {'head': b['head'], 'body': chr(10).join(b['body']).strip()}, 'source': 'docs/진행상황.md'})
+    return out
+
+
 def plan():
     P = {}
     P['agent_calls'] = [{'called_at': ts(r['time']), 'who': r['who'], 'sec': num(r['sec']), 'rc': num(r['rc'], int), 'out_bytes': num(r['out_bytes'], int), 'limit_hit': r.get('limit_hit'), 'source': 'agent_calls.csv'} for r in read_csv(OPS / 'agent_calls.csv')]
@@ -121,6 +147,7 @@ def plan():
                               'source_date': pick(r, '출처·날짜', '날짜·근거', '닫은 날', '날짜'), 'next_action': r.get('다음 행동'), 'evidence': pick(r, '완료 증거', '증거'),
                               'result': r.get('결과'), 'cost': r.get('비용'), 'decider': r.get('결정자'), 'raw': r, 'source': rel})
     tasks += parse_tam_ledger(REPO / PERSONAS['탐'])
+    tasks += parse_handoffs(REPO / 'docs/진행상황.md')
     P['tasks'] = tasks
     P['sns_posts'] = [{'post_date': r.get('날짜'), 'title': r.get('글(원문)'), 'channel': r.get('채널'), 'method': r.get('방식'), 'status': r.get('상태'), 'scheduled': r.get('예약/발행 시각'), 'note': r.get('참고'), 'raw': r, 'source': 'docs/SNS_등록대장.md'}
                       for hdr, rows in md_tables(REPO / 'docs/SNS_등록대장.md') if hdr[:2] == ['날짜', '글(원문)'] for r in rows]
