@@ -68,6 +68,33 @@ def total_since(start="2026-10-05"):
     return sum(float(r["est_krw"] or 0) for r in csv.DictReader(LOG.open(encoding="utf-8")) if r["time"][:10] >= start)
 
 
+def free_failover(a, out, prompt, reason):
+    """GCP 하루 상한 도달·Vertex 분당 한도(429) 때 무료 키 풀로 넘긴다(사장님 지시 10/5: 상한에 닿으면 무료로 장애 전환).
+    무료 키(gemini_fast의 대장 키들)를 오늘 호출이 적은 순으로 시도하고, 요청 모델이 안 되면 기본 무료 모델로 한 번 더. 기록: vertex_failover.csv."""
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import gemini_fast as g
+    keys = sorted(g.load_keys(), key=lambda k: g.read_counter().get(g.today_pt(), {}).get(k["fp"], {}).get("calls", 0))
+    ok, used = False, ""
+    for model in dict.fromkeys([a.model, g.DEFAULT_MODEL]):
+        for k in keys:
+            r = g.call(k, prompt, model, search=a.search)
+            if r.get("ok"):
+                out.parent.mkdir(parents=True, exist_ok=True)
+                out.write_text(r["text"], encoding="utf-8")
+                ok, used = True, model
+                break
+        if ok:
+            break
+    fl = Path("C:/work/_ops/vertex_failover.csv")
+    new = not fl.exists()
+    with fl.open("a", encoding="utf-8", newline="") as f:
+        if new:
+            f.write("time,who,reason,model,ok\n")
+        f.write(f"{datetime.now():%Y-%m-%d %H:%M:%S},{a.who},{reason},{used or a.model},{int(ok)}\n")
+    print(f"무료 키로 전환({reason}): {'성공 ' + used if ok else '실패(무료 키도 모두 막힘)'}", file=sys.stderr)
+    return 0 if ok else 2
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("q")
@@ -87,11 +114,11 @@ def main():
         return 3
     tot = total_since()
     if tot >= TOTAL_KRW:
-        print(f"누적 상한 초과: 10/5부터 약 ₩{tot:,.0f} (상한 ₩{TOTAL_KRW:,.0f}). 결제 화면 대조 뒤 탐이 조정.", file=sys.stderr)
-        return 3
+        print(f"누적 상한 초과: 10/5부터 약 ₩{tot:,.0f} (상한 ₩{TOTAL_KRW:,.0f}). 무료 키로 전환.", file=sys.stderr)
+        return free_failover(a, out, Path(a.q).read_text(encoding="utf-8"), "누적상한") if not os.environ.get("VERTEX_NO_FAILOVER") else 3
     if n >= DAY_CALLS or krw >= DAY_KRW:
-        print(f"하루 상한 초과: 오늘 {n}회·약 ₩{krw:,.0f} (상한 {DAY_CALLS}회·₩{DAY_KRW:,.0f}). 내일 다시 또는 상한 환경변수 조정은 탐이 판단.", file=sys.stderr)
-        return 3
+        print(f"하루 상한 초과: 오늘 {n}회·약 ₩{krw:,.0f} (상한 {DAY_CALLS}회·₩{DAY_KRW:,.0f}). 무료 키로 전환.", file=sys.stderr)
+        return free_failover(a, out, Path(a.q).read_text(encoding="utf-8"), "일상한") if not os.environ.get("VERTEX_NO_FAILOVER") else 3
     prompt = Path(a.q).read_text(encoding="utf-8")
     url = f"https://aiplatform.googleapis.com/v1/projects/{PROJECT}/locations/{REGION}/publishers/google/models/{a.model}:generateContent"
     body = {"contents": [{"role": "user", "parts": [{"text": prompt}]}]}
@@ -110,6 +137,8 @@ def main():
     except urllib.error.HTTPError as e:
         rc = 2
         text = f"[호출 실패 HTTP {e.code}] {e.read().decode('utf-8', 'replace')[:500]}"
+        if e.code in (429, 500, 503) and not os.environ.get("VERTEX_NO_FAILOVER"):  # 분당 한도(Resource exhausted)·일시 장애도 무료 키로
+            return free_failover(a, out, prompt, f"HTTP{e.code}")
     except Exception as e:  # 네트워크·토큰 오류
         rc = 2
         text = f"[호출 실패 {type(e).__name__}] {e}"
