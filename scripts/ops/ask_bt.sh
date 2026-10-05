@@ -21,9 +21,16 @@ Q="${1:?질문 파일 경로}"; OUT="${2:-/tmp/bt_reply_$(date +%Y%m%d_%H%M).md}
 # BT_MODEL=claude-sonnet-4-6 처럼 지정하면 그 모델만 쓴다.
 QUOTA="$(dirname "$0")/quota.py"
 # 2026-10-03(N120, 사장님 "무료 먼저, 막히면 GCP 크레딧"): 안티그래비티 제미나이가 막히면 Vertex 제미나이(개인 GCP 무료 크레딧)로 넘어가고, 그것도 하루 상한이면 Sonnet.
-if [ -n "${BT_MODEL:-}" ]; then ORDER="sonnet"; [ "$BT_MODEL" = "gemini" ] && ORDER="gemini"; [ "$BT_MODEL" = "vertex" ] && ORDER="vertex"; else ORDER="gemini vertex sonnet"; fi
+if [ -n "${BT_MODEL:-}" ]; then ORDER="sonnet"; [ "$BT_MODEL" = "gemini" ] && ORDER="gemini"; [ "$BT_MODEL" = "vertex" ] && ORDER="vertex"; [ "$BT_MODEL" = "router" ] && ORDER="router"; else ORDER="gemini router vertex sonnet"; fi
 rc=99
 for M in $ORDER; do
+  if [ "$M" = router ]; then  # 옴니라우터 무료 콤보(사장님 10/5 "옴니라우터 실사용"): 크레딧을 쓰기 전에 무료 풀로, 호출 기록 who=비티-라우터
+    t0=$(date +%s); rc=0
+    python -c "import sys; sys.path.insert(0, r'$(dirname "$0")'); import omni_gateway as g; r = g.chat(open(sys.argv[1], encoding='utf-8').read(), model='hermes-flash', agent='bt-test', max_tokens=4096, timeout=90, startup_wait=60); open(sys.argv[2], 'w', encoding='utf-8').write(r.get('text', '')); sys.exit(0 if r['ok'] else 1)" "$Q" "$OUT" 2>/dev/null || rc=$?
+    calllog "비티-라우터" $(( $(date +%s)-t0 )) $rc "$OUT"
+    if [ "$rc" = 0 ]; then echo "쓴 모델: 옴니라우터 무료 콤보(hermes-flash)" >&2; break; fi
+    echo "라우터 건너뜀(rc=$rc)" >&2; rc=99; continue
+  fi
   if [ "$M" = vertex ]; then  # 호출 기록·하루 상한은 ask_vertex.py가 관리(C:/work/_ops/vertex_usage.csv), 종료 코드 3 = 하루 상한
     rc=0; python "$(dirname "$0")/ask_vertex.py" "$Q" "$OUT" --who 탐 || rc=$?
     if [ "$rc" = 0 ]; then echo "쓴 모델: Vertex 제미나이(GCP 크레딧)" >&2; break; fi
