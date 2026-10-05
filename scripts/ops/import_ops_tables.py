@@ -242,8 +242,8 @@ def main():
         insert_all(t, rows)
         if old:
             # 에이전트가 직접 쓴 작업 기록(section=worklog, worklog.py)은 문서에서 오는 행이 아니므로 지우지 않는다(10/5, 대장 N156 G2)
-            opsdb.delete(t, {'id': f'lte.{old}', 'section': 'neq.worklog'} if t == 'tasks' else {'id': f'lte.{old}'})
-    counts = {t: (opsdb.count(t, {'section': 'neq.worklog'}) if t == 'tasks' else opsdb.count(t)) for t in P}
+            opsdb.delete(t, {'id': f'lte.{old}', 'section': 'not.in.(worklog,step,run)'} if t == 'tasks' else {'id': f'lte.{old}'})
+    counts = {t: (opsdb.count(t, {'section': 'not.in.(worklog,step,run)'}) if t == 'tasks' else opsdb.count(t)) for t in P}
     # 로그 표는 도구가 DB에 직접 쓴 기록이 더 있을 수 있어 DB ≥ 원본이면 정상, 나머지 표는 같아야 정상
     bad = [t for t, rows in P.items() if (counts[t] < len(rows) if t in LOGS else counts[t] != len(rows))]
     print('확인(DB 행 수):', counts)
