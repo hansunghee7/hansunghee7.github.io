@@ -17,7 +17,8 @@ REPO = HERE.parent.parent
 OUT_ROOT = Path(r'C:\work\_ops\reviews')
 BASH = r'C:\Program Files\Git\bin\bash.exe'
 CODE_EXT = ('.py', '.js', '.sh', '.toml', '.ps1', '.html', '.css')
-MAX_PR = 5
+MAX_PR = 15  # 한 번 실행의 상한(목표가 더 커도 이 수까지, 나머지는 다음 실행에서)
+LOOKBACK_DAYS = 14
 MAX_DIFF = 40_000
 SECRET = re.compile(r'(api[_-]?key|password|secret|sk-[A-Za-z0-9]|AIza[0-9A-Za-z_-]{20})', re.I)
 FLAGS = getattr(subprocess, 'CREATE_NO_WINDOW', 0)
@@ -47,7 +48,12 @@ def ask(script, card, out, extra_env=None):
 
 def main():
     dry = '--dry' in sys.argv
-    since = (datetime.now(timezone.utc) - timedelta(hours=25)).strftime('%Y-%m-%dT%H:%M:%SZ')
+    sys.path.insert(0, str(HERE))
+    import dynamic_quota as dq
+    st = dq.measure()  # 어제까지 기록·이월 갱신, 오늘 목표 계산(다이나믹 한도)
+    need = max(0, st['today']['targets']['덱스'] - dq.used_on('덱스', datetime.now().strftime('%Y-%m-%d')))
+    reviewed = {int(m.group(1)) for f in OUT_ROOT.glob('*/dex_pr*.md') for m in [re.search(r'dex_pr(\d+)', f.name)] if m}
+    since = (datetime.now(timezone.utc) - timedelta(days=LOOKBACK_DAYS)).strftime('%Y-%m-%dT%H:%M:%SZ')
     r = run(['gh', 'pr', 'list', '--state', 'merged', '--search', f'merged:>={since}', '--json', 'number,title', '--limit', '30'], cwd=str(REPO), timeout=120)
     if r.returncode != 0:
         print('gh 실패:', r.stderr[:200])
@@ -56,12 +62,13 @@ def main():
     day = OUT_ROOT / datetime.now().strftime('%Y%m%d')
     day.mkdir(parents=True, exist_ok=True)
     lines, done = [], 0
-    for pr in sorted(prs, key=lambda x: x['number']):
-        if done >= MAX_PR:
+    print(f'덱스 오늘 목표 {st["today"]["targets"]["덱스"]}회 중 남은 {need}회 → 리뷰할 PR 최대 {min(need, MAX_PR)}건 (미검수 {len([p for p in prs if p["number"] not in reviewed])}건)')
+    for pr in sorted(prs, key=lambda x: -x['number']):  # 최근 것부터, 밀린 것은 뒤에서 채운다
+        if done >= min(need, MAX_PR):
             break
         n = pr['number']
-        if (day / f'dex_pr{n}.md').exists():
-            continue  # 오늘 이미 보냄
+        if n in reviewed:
+            continue  # 이미 리뷰함
         diff = code_diff(n)
         if not diff:
             continue

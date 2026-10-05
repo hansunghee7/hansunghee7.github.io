@@ -145,6 +145,14 @@ every_min = 1440
 name = "상시 검수 큐(하루 병합 코드 PR을 덱스·비티에게 독립 리뷰, review_queue.py)"
 note = "2026-10-05 탐 등록(대장 N161, 사장님 지시 비티·덱스 최대 활용). 결과 C:/work/_ops/reviews/날짜/INDEX.md, 탐이 다음 날 읽고 판정. 하루 PR 최대 5건. 종료 코드 1 = gh/도구 오류"
 
+[[job]]
+id = "fn:dynamic-quota"
+kind = "cmd"
+cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\dynamic_quota.py', 'measure']
+every_min = 1440
+name = "다이나믹 한도 일일 측정(덱스·비티·타미 목표 이월, GCP 일 상한 재계산, dynamic_quota.py)"
+note = "2026-10-05 탐 등록(대장 N163, 사장님 지시). 어제까지 기록을 남기고 오늘 목표 계산, 여러 번 돌려도 같은 결과. 상태 C:/work/_ops/dynamic_quota.json"
+
 # ---------- PC 보안(하루 1회, 1회 실패에 알림) ----------
 [[job]]
 id = "pc:disk"
