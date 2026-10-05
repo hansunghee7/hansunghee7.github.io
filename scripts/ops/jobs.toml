@@ -113,6 +113,14 @@ every_min = 360
 name = "개인 GCP 무료 크레딧(Vertex) 사용량·만료(vertex_watch.py)"
 note = "2026-10-03 탐 등록(대장 N120, 사장님 승인: 비티·리서치가 남는 크레딧을 쓴다). 읽는 곳 C:/work/_ops/vertex_usage.csv(ask_vertex.py가 호출마다 기록, 추정 비용). 붉음 = 오늘 추정이 하루 상한 ₩3,400의 80% 이상 / 7일 합계가 주간 예산 초과 / 만료(12/23) 14일 전부터. 붉을 때 할 일: 호출 기록 확인, 결제 보고서(프로젝트별)와 대조, 소진처 파악, 만료 임박이면 사장님께 결정 요청. 하루 상한은 ask_vertex.py가 코드로 막고 월 예산 알림 ₩150,000은 결제 계정에 있음. 정책 docs/제미나이_키_정책.md."
 
+[[job]]
+id = "fn:opsdb-sync"
+kind = "cmd"
+cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\import_ops_tables.py']
+every_min = 60
+name = "운영 상태 DB 동기화(업무대장·SNS·성과·계정 md와 로그 CSV를 DB로, import_ops_tables.py)"
+note = "2026-10-05 탐 등록(대장 N156, 사장님 지시 ASAP 이관). 원본은 읽기만 하고 DB는 복사본. 행 수 불일치면 종료 코드 1로 붉음. 로그는 이어 붙이기, 표는 새 행을 먼저 넣고 옛 행을 지움(멱등). 읽는 쪽 opsdb.py"
+
 # ---------- PC 보안(하루 1회, 1회 실패에 알림) ----------
 [[job]]
 id = "pc:disk"

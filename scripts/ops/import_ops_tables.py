@@ -70,6 +70,40 @@ def pick(d, *names):
     return None
 
 
+def parse_tam_ledger(path):
+    """탐 업무대장은 표가 아니라 `### [상태] N번: 제목` 제목 아래 불릿으로 쓴다. 제목 한 줄이 한 건이고, 본문 전체는 raw.body에 그대로 보존한다."""
+    try:
+        lines = Path(path).read_text(encoding='utf-8', errors='replace').splitlines()
+    except OSError:
+        return []
+    blocks, cur = [], None
+    for ln in lines:
+        m = re.match(r'^###\s*\[([^\]]+)\]\s*(.*)$', ln)
+        if m:
+            cur = {'status': m[1].strip(), 'head': m[2].strip(), 'body': []}
+            blocks.append(cur)
+        elif ln.startswith('#') and not ln.startswith('###'):
+            cur = None
+        elif cur is not None:
+            cur['body'].append(ln)
+    out = []
+    for b in blocks:
+        n = re.match(r'^(N\d+)\s*[:：]\s*(.*)$', b['head'])
+        no, title = (n[1], n[2]) if n else (None, b['head'])
+        body = '\n'.join(b['body']).strip()
+
+        def bullet(prefix):
+            for ln in b['body']:
+                if ln.lstrip('- ').startswith(prefix):
+                    return ln.lstrip('- ').strip()[:1500]
+            return None
+        closed = b['status'].startswith('완료')
+        out.append({'owner': '탐', 'section': 'closed' if closed else 'open', 'no': no, 'title': title[:300], 'status': b['status'], 'source_date': None,
+                    'next_action': bullet('다음'), 'evidence': bullet('[완료'), 'result': bullet('결론'), 'cost': None, 'decider': None,
+                    'raw': {'head': b['head'], 'body': body}, 'source': PERSONAS['탐']})
+    return out
+
+
 def plan():
     P = {}
     P['agent_calls'] = [{'called_at': ts(r['time']), 'who': r['who'], 'sec': num(r['sec']), 'rc': num(r['rc'], int), 'out_bytes': num(r['out_bytes'], int), 'limit_hit': r.get('limit_hit'), 'source': 'agent_calls.csv'} for r in read_csv(OPS / 'agent_calls.csv')]
@@ -86,6 +120,7 @@ def plan():
                 tasks.append({'owner': owner, 'section': sec, 'no': r.get('#'), 'title': r.get('안건'), 'status': r.get('상태') or ('닫힘' if sec == 'closed' else None),
                               'source_date': pick(r, '출처·날짜', '날짜·근거', '닫은 날', '날짜'), 'next_action': r.get('다음 행동'), 'evidence': pick(r, '완료 증거', '증거'),
                               'result': r.get('결과'), 'cost': r.get('비용'), 'decider': r.get('결정자'), 'raw': r, 'source': rel})
+    tasks += parse_tam_ledger(REPO / PERSONAS['탐'])
     P['tasks'] = tasks
     P['sns_posts'] = [{'post_date': r.get('날짜'), 'title': r.get('글(원문)'), 'channel': r.get('채널'), 'method': r.get('방식'), 'status': r.get('상태'), 'scheduled': r.get('예약/발행 시각'), 'note': r.get('참고'), 'raw': r, 'source': 'docs/SNS_등록대장.md'}
                       for hdr, rows in md_tables(REPO / 'docs/SNS_등록대장.md') if hdr[:2] == ['날짜', '글(원문)'] for r in rows]
@@ -99,6 +134,19 @@ def plan():
     return P
 
 
+LOGS = ('agent_calls', 'gpu_gate_log', 'vertex_usage')  # 계속 이어 붙는 로그(쓰는 스크립트는 건드리지 않고, DB에 없는 뒷부분만 이어 붙인다)
+
+
+def insert_all(t, rows):
+    for i in range(0, len(rows), 200):
+        opsdb.insert(t, rows[i:i + 200])
+
+
+def last_id(t):
+    r = opsdb.select(t, 'id', order='id.desc', limit=1)
+    return r[0]['id'] if r else 0
+
+
 def main():
     P = plan()
     for t, rows in P.items():
@@ -106,12 +154,21 @@ def main():
     if '--dry' in sys.argv:
         return
     for t, rows in P.items():
-        opsdb.delete(t, {'id': 'gt.0'})
-        for i in range(0, len(rows), 200):
-            opsdb.insert(t, rows[i:i + 200])
-    print('확인(DB 행 수):', {t: opsdb.count(t) for t in P})
-    bad = [t for t, rows in P.items() if opsdb.count(t) != len(rows)]
+        n = opsdb.count(t)
+        if t in LOGS and len(rows) >= n and '--full' not in sys.argv:
+            insert_all(t, rows[n:])  # 로그는 이어 붙이기만 한다(앞부분은 그대로)
+            continue
+        # 표 전체 교체: 새 행을 먼저 넣고 옛 행을 지운다(비는 순간이 없다)
+        old = last_id(t)
+        insert_all(t, rows)
+        if old:
+            opsdb.delete(t, {'id': f'lte.{old}'})
+    counts = {t: opsdb.count(t) for t in P}
+    bad = [t for t, rows in P.items() if counts[t] != len(rows)]
+    print('확인(DB 행 수):', counts)
     print('불일치:', bad or '없음')
+    if bad:
+        sys.exit(1)
 
 
 if __name__ == '__main__':
