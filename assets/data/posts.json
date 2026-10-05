@@ -2006,7 +2006,7 @@
 318,
 143,
 258,
-33
+328
 ]
 },
 {
@@ -8272,8 +8272,8 @@
 "related": [
 596,
 270,
-592,
-307
+307,
+592
 ]
 },
 {
@@ -8543,7 +8543,7 @@
 578,
 225,
 402,
-181
+366
 ]
 },
 {
@@ -9057,6 +9057,21 @@
 ]
 },
 {
+"id": 633,
+"title": "AI에게 맡겼는데 왜 더 바빠졌을까",
+"category": "Be the PO",
+"date": "Oct 5. 2026",
+"date_sort": "20261005",
+"url": "/logs/633/",
+"image": "/log_assets/images/633_AI%EC%97%90%EA%B2%8C%20%EB%A7%A1%EA%B2%BC%EB%8A%94%EB%8D%B0%20%EC%99%9C%20%EB%8D%94%20%EB%B0%94%EB%B9%A0%EC%A1%8C%EC%9D%84%EA%B9%8C_cover.jpg",
+"related": [
+27,
+5,
+636,
+623
+]
+},
+{
 "id": 636,
 "title": "바쁜 하루가 끝났는데 남은 게 없다면",
 "category": "Be the PO",
@@ -9065,10 +9080,10 @@
 "url": "/logs/636/",
 "image": "/log_assets/images/636_%EB%B0%94%EC%81%9C%20%ED%95%98%EB%A3%A8%EA%B0%80%20%EB%81%9D%EB%82%AC%EB%8A%94%EB%8D%B0%20%EB%82%A8%EC%9D%80%20%EA%B2%8C%20%EC%97%86%EB%8B%A4%EB%A9%B4_cover.jpg",
 "related": [
+633,
 301,
 630,
-9,
-629
+9
 ]
 }
 ]
