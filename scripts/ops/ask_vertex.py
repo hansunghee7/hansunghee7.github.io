@@ -75,7 +75,14 @@ def free_failover(a, out, prompt, reason):
     import gemini_fast as g
     keys = sorted(g.load_keys(), key=lambda k: g.read_counter().get(g.today_pt(), {}).get(k["fp"], {}).get("calls", 0))
     ok, used = False, ""
-    for model in dict.fromkeys([a.model, g.DEFAULT_MODEL]):
+    if not a.search and not os.environ.get("VERTEX_NO_ROUTER"):  # 1순위: OmniRoute 콤보(무료 모델 풀을 한 입구로, 크레딧이 끝난 뒤에도 같은 길). 일반 대화 호출만
+        import omni_gateway as og
+        r = og.chat(prompt, model="hermes-flash")
+        if r.get("ok"):
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_text(r["text"], encoding="utf-8")
+            ok, used = True, "router:" + str(r.get("model"))
+    for model in ([] if ok else dict.fromkeys([a.model, g.DEFAULT_MODEL])):
         for k in keys:
             r = g.call(k, prompt, model, search=a.search)
             if r.get("ok"):
