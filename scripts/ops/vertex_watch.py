@@ -7,6 +7,7 @@
 사용: python scripts/ops/vertex_watch.py
 """
 import csv, os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from datetime import date, datetime, timedelta
 from pathlib import Path
 
@@ -30,14 +31,22 @@ def main():
             if t.date() == today:
                 n_today += 1
                 krw_today += krw
+    try:  # 실사용(Cloud Monitoring 토큰×공개 단가)과 다이나믹 일 상한 기준으로 판정(10/5: 우리 기록은 실제의 1/200이었음)
+        import gcp_usage
+        import dynamic_quota
+        krw_today = max(krw_today, gcp_usage.today_krw())
+        krw_week = max(krw_week, gcp_usage.spent_since((today - timedelta(days=6)).isoformat()))
+        DAY = dynamic_quota.vertex_day_cap()
+    except Exception:  # noqa: BLE001
+        DAY = DAY_KRW
     msgs, red = [], False
-    if krw_today >= DAY_KRW * 0.8:
-        red = True; msgs.append(f"오늘 추정 ₩{krw_today:,.0f}가 하루 상한 ₩{DAY_KRW:,.0f}의 80% 이상")
-    if krw_week > DAY_KRW * 7:
-        red = True; msgs.append(f"7일 추정 ₩{krw_week:,.0f}가 주간 예산 ₩{DAY_KRW*7:,.0f} 초과")
+    if krw_today >= DAY * 0.8:
+        red = True; msgs.append(f"오늘 실사용 약 ₩{krw_today:,.0f}가 다이나믹 일 상한 ₩{DAY:,.0f}의 80% 이상")
+    if krw_week > DAY * 7:
+        red = True; msgs.append(f"7일 실사용 약 ₩{krw_week:,.0f}가 주간 예산 ₩{DAY*7:,.0f} 초과")
     if d_left <= WARN_DAYS:
         red = True; msgs.append(f"크레딧 만료 {d_left}일 전({EXPIRY}), 남은 일 정리·유료 전환 여부 사장님 결정")
-    print(f"Vertex 크레딧: 오늘 {n_today}회·추정 ₩{krw_today:,.0f} / 7일 ₩{krw_week:,.0f} / 만료까지 {d_left}일" + (" | " + "; ".join(msgs) if msgs else ""))
+    print(f"Vertex 크레딧: 오늘 우리 호출 {n_today}회·실사용 약 ₩{krw_today:,.0f} / 7일 ₩{krw_week:,.0f} / 만료까지 {d_left}일" + (" | " + "; ".join(msgs) if msgs else ""))
     return 1 if red else 0
 
 

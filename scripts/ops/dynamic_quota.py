@@ -17,7 +17,7 @@ BASE = {'덱스': 25, '비티': 10, '타미': 5}      # 하루 기본 목표 호
 CEIL = {'덱스': 60, '비티': 40, '타미': 20}     # 천장(무한 이월 방지)
 ALIAS = {'덱스': ['덱스'], '비티': ['비티', '비티-sonnet'], '타미': ['타미']}
 CARRY_DECAY = 0.5                               # 지난 이월분은 매일 절반만 남긴다
-DEFAULT_BUDGET = {'balance': 326145, 'as_of': '2026-10-05', 'expiry': '2026-12-23', 'safety': 0.85, 'max_day': 15000}
+DEFAULT_BUDGET = {'balance': 326145, 'as_of': '2026-10-03', 'expiry': '2026-12-23', 'safety': 0.85, 'max_day': 15000}
 
 
 def load_state():
@@ -55,7 +55,11 @@ def vertex_day_cap(today=None):
     """오늘의 GCP 일 상한(원) = (잔액 − 기준일부터 어제까지 쓴 추정 비용) × 안전율 ÷ 만료까지 남은 일수. 덜 쓰면 자동으로 오른다."""
     b = budget()
     today = today or date.today()
-    spent = vertex_spent(b['as_of'], before=today.isoformat())
+    try:  # 실제 사용량(Cloud Monitoring 토큰 × 공개 단가). API가 막히면 우리 호출 기록으로 대체
+        import gcp_usage
+        spent = gcp_usage.spent_since(b['as_of'], before=today.isoformat())
+    except Exception:  # noqa: BLE001
+        spent = vertex_spent(b['as_of'], before=today.isoformat())
     days_left = max(1, (date.fromisoformat(b['expiry']) - today).days)
     cap = (b['balance'] - spent) * b['safety'] / days_left
     return round(min(max(cap, 0.0), b['max_day']), 1)
