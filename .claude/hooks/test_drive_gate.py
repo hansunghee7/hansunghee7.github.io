@@ -7,6 +7,10 @@ import tempfile
 from pathlib import Path
 
 H = Path(__file__).with_name("drive-gate.py")
+_reg = tempfile.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8")
+json.dump({"goals": [{"id": "G1", "title": "라우터", "active": True, "since": "2026-10-05", "boss_quote": "시험", "keywords": ["라우터", "수파베이스"], "next": "시험"}]}, _reg, ensure_ascii=False)
+_reg.close()
+ENV = {**os.environ, "DRIVE_FILE": _reg.name}
 
 
 def run(final_text, active_flag=False):
@@ -17,7 +21,7 @@ def run(final_text, active_flag=False):
         p = f.name
     try:
         raw = json.dumps({"transcript_path": p, "stop_hook_active": active_flag}).encode("utf-8")
-        return subprocess.run([sys.executable, str(H)], input=raw, capture_output=True).returncode
+        return subprocess.run([sys.executable, str(H)], input=raw, capture_output=True, env=ENV).returncode
     finally:
         os.unlink(p)
 
@@ -44,4 +48,5 @@ if run(block[0], True) != 0:
     bad.append("stop_hook_active는 통과해야함")
 n = len(block) + len(ok) + 1
 print("통과" if not bad else "실패: " + "; ".join(bad), f"({n - len(bad)}/{n})")
+os.unlink(_reg.name)
 sys.exit(1 if bad else 0)

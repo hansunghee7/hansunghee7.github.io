@@ -9,11 +9,12 @@
       (c) [사람 개입 필요: …] 표지가 없으면 → exit 2로 되돌려 보낸다("묻지 말고 다음 단계를 지금 실행"). stop_hook_active면 통과(한 턴에 한 번만 되돌림).
 예외: [사람 개입 필요: 자격증명|비가역|돈|제품 결정|방향 결정|규칙상 금지|외부 발신|계정 생성] 표지가 있으면 통과. 기록: C:/work/_ops/drive_gate_log.jsonl"""
 import json
+import os
 import re
 import sys
 import time
 
-DRIVE = r"C:\work\_ops\tam_drive.json"
+DRIVE = os.environ.get("DRIVE_FILE") or r"C:\work\_ops\tam_drive.json"  # 시험은 DRIVE_FILE로 임시 장부를 쓴다(CI에는 C:/work/_ops가 없음)
 LOG = r"C:\work\_ops\drive_gate_log.jsonl"
 ASK = re.compile(r"(시작|진행|착수|실행|전환|적용)(해도|할까요|하시겠|해도 될까요|해도 되겠|하면 될까요)|정하실 것:[^\n]*[?？]")
 WAIT_SELF = re.compile(r"\[실행 대기:\s*사장님의[^\]]{0,40}(선택|시작|답|결정|승인|응답|여부)[^\]]*\]")
