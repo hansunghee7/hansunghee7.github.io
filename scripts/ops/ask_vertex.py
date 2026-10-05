@@ -159,7 +159,7 @@ def main():
     except urllib.error.HTTPError as e:
         rc = 2
         text = f"[호출 실패 HTTP {e.code}] {e.read().decode('utf-8', 'replace')[:500]}"
-        if e.code in (429, 500, 503) and not os.environ.get("VERTEX_NO_FAILOVER"):  # 분당 한도(Resource exhausted)·일시 장애도 무료 키로
+        if e.code in (401, 402, 403, 429, 500, 503) and not os.environ.get("VERTEX_NO_FAILOVER"):  # 403·402 = 크레딧 소진·결제 비활성(10/31 관찰 뒤 소진 대비)  # 분당 한도(Resource exhausted)·일시 장애도 무료 키로
             return free_failover(a, out, prompt, f"HTTP{e.code}")
     except Exception as e:  # 네트워크·토큰 오류
         rc = 2
