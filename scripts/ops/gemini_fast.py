@@ -99,6 +99,11 @@ def call(key, prompt, model):
 
 def ask(prompt, model=DEFAULT_MODEL):
     """오늘 호출이 적은 키부터 시도하고, 실패(429·5xx 등)하면 다음 키로 넘긴다."""
+    import os
+    if os.environ.get("GEMINI_FAST_ORDER", "vertex") == "vertex":  # 사장님 10/5: GCP 무료 크레딧을 만료(12/23) 전에 쓰도록 Vertex를 먼저, 무료 키는 예비로
+        r = vertex_fallback(prompt, None)
+        if r.get("ok"):
+            return r
     day = read_counter().get(today_pt(), {})
     keys = sorted(load_keys(), key=lambda k: day.get(k["fp"], {}).get("calls", 0))
     if not keys:
@@ -114,6 +119,7 @@ def ask(prompt, model=DEFAULT_MODEL):
 def vertex_fallback(prompt, last):
     """무료 키가 모두 실패(429 등)하면 GCP 무료 크레딧(Vertex)으로 한 번 더 시도해 끊김을 막는다(사장님 미션 2026-10-05).
     ask_vertex.py가 하루 호출·비용 상한을 강제하므로 여기서는 상한을 다시 만들지 않는다. 호출 기록은 vertex_usage.csv에 남는다."""
+    import os
     import subprocess
     import tempfile
     qf = Path(tempfile.gettempdir()) / "gemini_fast_vx_q.md"
@@ -122,7 +128,7 @@ def vertex_fallback(prompt, last):
     of.unlink(missing_ok=True)
     t = time.time()
     try:
-        r = subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "ask_vertex.py"), str(qf), str(of), "--who", "탐"],
+        r = subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "ask_vertex.py"), str(qf), str(of), "--who", "탐", "--model", os.environ.get("VERTEX_MODEL", "gemini-3.8-flash")],
                            capture_output=True, text=True, encoding="utf-8", errors="ignore", timeout=180,
                            creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
     except Exception as e:  # noqa: BLE001

@@ -19,12 +19,13 @@ PROJECT = "project-e59cbc25-e96a-44f5-ac6"  # My First Project(개인 계정, �
 REGION = "global"  # vertex_research.py와 같은 경로(gemini-3.6-flash는 global에서 200, 9/26 실측)
 ACCOUNT = "hansunghee7@gmail.com"
 LOG = Path("C:/work/_ops/vertex_usage.csv")
-DAY_CALLS = int(os.environ.get("VERTEX_DAY_CALLS", "20"))
-DAY_KRW = float(os.environ.get("VERTEX_DAY_KRW", "3400"))  # 잔액 ₩326,145 − 긴급 영상 ₩50,000 ÷ 81일 (대장 N120)
+DAY_CALLS = int(os.environ.get("VERTEX_DAY_CALLS", "100000"))  # 사장님 10/5: 호출 수 상한은 사실상 없앤다(전체 금액의 일 상한만 건다)
+DAY_KRW = float(os.environ.get("VERTEX_DAY_KRW", "4100"))  # 사장님 10/5: 잔액 ₩326,145 전부를 12/23 만료까지 쓰는 일 상한(÷78일). 추정 단가가 실측 전이라 아래 누적 상한도 같이 건다
+TOTAL_KRW = float(os.environ.get("VERTEX_TOTAL_KRW", "277000"))  # 10/5부터 누적 추정 비용 상한(잔액의 85%). 추정이 실제보다 낮게 나올 위험에 대한 안전판, 결제 화면 대조(대장 N160) 뒤에 조정
 # 몫별 하루 상한(원, 사장님 승인 10/4, 대장 N120): 합계 DAY_KRW와 함께 코드로 강제한다. who가 목록에 없으면 예비 몫.
-WHO_KRW = {"지투": 500.0, "비티": 500.0, "타미": 300.0, "헤르메스": 1000.0}
-RESERVE_KRW = 300.0  # 탐 등 목록 밖
-SEARCH_KRW = 800.0   # 검색 연동(search=1) 호출의 비용 합 상한(몫 상한과 별개로 같이 적용)
+WHO_KRW = {}  # 사장님 10/5: 사람별 몫 상한을 없앴다(모두가 최대한 쓰고 전체 일 상한만 건다). 예전 값: 지투·비티 500, 타미 300, 헤르메스 1000
+RESERVE_KRW = float("inf")
+SEARCH_KRW = float("inf")  # 검색 몫 상한도 없앰
 # 추정 단가(원, 백만 토큰당·검색 1건당). [추정] 실측 전 값. 결제 보고서와 대조해 고친다.
 PRICE_IN = float(os.environ.get("PRICE_IN_KRW_PER_M", "450"))
 PRICE_OUT = float(os.environ.get("PRICE_OUT_KRW_PER_M", "3500"))
@@ -60,6 +61,13 @@ def today_use(who=None):
     return n, krw, mine, srch
 
 
+def total_since(start="2026-10-05"):
+    """10/5부터 누적 추정 비용(원)."""
+    if not LOG.exists():
+        return 0.0
+    return sum(float(r["est_krw"] or 0) for r in csv.DictReader(LOG.open(encoding="utf-8")) if r["time"][:10] >= start)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("q")
@@ -76,6 +84,10 @@ def main():
         return 3
     if a.search and srch >= SEARCH_KRW:
         print(f"검색 몫 상한 초과: 오늘 약 ₩{srch:,.0f} (상한 ₩{SEARCH_KRW:,.0f}).", file=sys.stderr)
+        return 3
+    tot = total_since()
+    if tot >= TOTAL_KRW:
+        print(f"누적 상한 초과: 10/5부터 약 ₩{tot:,.0f} (상한 ₩{TOTAL_KRW:,.0f}). 결제 화면 대조 뒤 탐이 조정.", file=sys.stderr)
         return 3
     if n >= DAY_CALLS or krw >= DAY_KRW:
         print(f"하루 상한 초과: 오늘 {n}회·약 ₩{krw:,.0f} (상한 {DAY_CALLS}회·₩{DAY_KRW:,.0f}). 내일 다시 또는 상한 환경변수 조정은 탐이 판단.", file=sys.stderr)
