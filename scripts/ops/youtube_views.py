@@ -9,6 +9,7 @@ import json
 import re
 import subprocess
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -67,8 +68,12 @@ def main():
         raise RuntimeError('모든 탭을 못 읽음')
     print(f'채널 목록 영상 {total}개 → 새로 연결 {linked}, 새 항목 {created}, 조회수 기록 대상 {len(snaps)}개')
     if not dry:
-        opsdb.insert('metrics_snapshots', snaps)
-        print('조회수 기록', len(snaps), '| metrics_snapshots 행 수', opsdb.count('metrics_snapshots'))
+        # 같은 날(UTC) 이미 쌓은 영상은 건너뛴다(재실행·이중 실행 때 중복 방지, 덱스·비티 리뷰 10/5 채택)
+        today = datetime.now(timezone.utc).strftime('%Y-%m-%d')
+        done = {r['content_id'] for r in opsdb.select('metrics_snapshots', 'content_id', where={'source': 'eq.yt-dlp', 'captured_at': f'gte.{today}T00:00:00+00:00'}, limit=5000)}
+        fresh_snaps = [x for x in snaps if x['content_id'] not in done]
+        opsdb.insert('metrics_snapshots', fresh_snaps)
+        print(f'조회수 기록 {len(fresh_snaps)} (오늘 이미 있음 {len(snaps) - len(fresh_snaps)}) | metrics_snapshots 행 수', opsdb.count('metrics_snapshots'))
     return 0
 
 
