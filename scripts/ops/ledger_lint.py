@@ -61,6 +61,11 @@ def main():
             print(f"⚠ {nid} [{status}] {title}: 낡았을 수 있는 대기 문구 {len(stale)}줄(뒤에 사장님 결정·지시 기록이 있음) -> 칸을 읽고 고칠 것")
             for l in stale[:2]:
                 print("    " + l.strip()[:160])
+    # 측정 먼저 규칙(사장님 2026-10-05 "탐과 일할 때는 측정(정답지)을 먼저 만드는 작업이 1번, 그 뒤에 설계"): N160 이후 [진행] 칸에는 측정 기준·정답지 줄이 있어야 한다
+    nomeasure = [(i, t) for st, i, t, ls in blocks() if st == "진행" and re.fullmatch(r"N\d+", i) and int(i[1:]) >= 160 and not any(re.search(r"측정|정답지", l) for l in ls)]
+    for i, t in nomeasure:
+        bad += 1
+        print(f"⚠ {i} [진행] {t[:60]}: 측정 기준(정답지 출처)이 적혀 있지 않음 -> 설계 전에 '측정:' 줄부터 적을 것")
     if "--boss" not in a:
         print("모순 칸 없음" if not bad else f"모순 {bad}건")
     return 1 if bad else 0
