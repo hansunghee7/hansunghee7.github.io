@@ -63,6 +63,27 @@ def log(who, gb, free_gb, result, note):
             w.writerow(["time", "who", "need_gb", "free_gb", "result", "note"])
         w.writerow([time.strftime("%Y-%m-%d %H:%M:%S"), who, gb, round(free_gb, 1), result, note])
 
+    _log_db(who, gb, free_gb, result, note)
+
+
+def _log_db(who, gb, free_gb, result, note):
+    """자원이용부(N156, 2026-10-05 사장님 지시 "공용자원은 DB에 기록하고 쓰게"): 같은 기록을 운영 상태 DB의 gpu_gate_log에도 남긴다.
+    실패하거나 느려도 관문은 절대 멈추지 않는다(3초 안에 못 끝나면 포기, CSV가 정본이고 DB는 import_ops_tables.py가 빠진 줄을 채운다)."""
+    import threading
+
+    def work():
+        try:
+            sys.path.insert(0, str(Path(__file__).resolve().parent))
+            import opsdb
+            from datetime import datetime, timezone, timedelta
+            at = datetime.now(timezone(timedelta(hours=9))).isoformat()
+            opsdb.insert("gpu_gate_log", [{"logged_at": at, "who": who, "need_gb": gb, "free_gb": round(free_gb, 1), "result": result, "note": note, "source": "gpu_gate.py"}])
+        except BaseException:
+            pass
+    th = threading.Thread(target=work, daemon=True)
+    th.start()
+    th.join(3)
+
 
 COMFY_FREE = "http://127.0.0.1:8188/free"
 

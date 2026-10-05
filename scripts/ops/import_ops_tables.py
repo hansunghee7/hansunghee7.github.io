@@ -134,7 +134,20 @@ def plan():
     return P
 
 
-LOGS = ('agent_calls', 'gpu_gate_log', 'vertex_usage')  # 계속 이어 붙는 로그(쓰는 스크립트는 건드리지 않고, DB에 없는 뒷부분만 이어 붙인다)
+LOGS = ('agent_calls', 'gpu_gate_log', 'vertex_usage')
+LOG_TIME = {'agent_calls': 'called_at', 'gpu_gate_log': 'logged_at', 'vertex_usage': 'used_at'}
+LOG_EXTRA = {'agent_calls': 'sec', 'gpu_gate_log': 'result', 'vertex_usage': 'in_tok'}
+
+
+def log_key(t, r):
+    """로그 한 줄의 비교 키: 시각(UTC 초)·누가·표별 한 칸. DB는 UTC, CSV는 KST로 와서 같은 시각으로 맞춘다."""
+    at = r.get(LOG_TIME[t])
+    try:
+        at = datetime.fromisoformat(at).astimezone(timezone.utc).strftime('%Y-%m-%d %H:%M:%S') if at else ''
+    except ValueError:
+        at = str(at)
+    ex = r.get(LOG_EXTRA[t])
+    return (at, r.get('who'), float(ex) if isinstance(ex, (int, float)) else ex)  # 계속 이어 붙는 로그(쓰는 스크립트는 건드리지 않고, DB에 없는 뒷부분만 이어 붙인다)
 
 
 def insert_all(t, rows):
@@ -154,9 +167,11 @@ def main():
     if '--dry' in sys.argv:
         return
     for t, rows in P.items():
-        n = opsdb.count(t)
-        if t in LOGS and len(rows) >= n and '--full' not in sys.argv:
-            insert_all(t, rows[n:])  # 로그는 이어 붙이기만 한다(앞부분은 그대로)
+        if t in LOGS and '--full' not in sys.argv:
+            # 로그는 지우지 않고 DB에 없는 줄만 채운다. 관문 같은 도구가 DB에 직접 쓰기 시작해도 중복이 생기지 않게 시각·누가·결과 키로 비교한다
+            tcol = LOG_TIME[t]
+            have = {log_key(t, r) for r in opsdb.select(t, tcol + ',who,' + LOG_EXTRA[t], limit=100000)}
+            insert_all(t, [r for r in rows if log_key(t, r) not in have])
             continue
         # 표 전체 교체: 새 행을 먼저 넣고 옛 행을 지운다(비는 순간이 없다)
         old = last_id(t)
