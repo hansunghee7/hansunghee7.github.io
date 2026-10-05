@@ -552,12 +552,18 @@
       "media_source": [
         "log_assets/images/632_우리 팀만 말하는 직원 어떻게 해야하나요_cover.jpg"
       ],
-      "media": []
+      "media": [
+        {
+          "url": "https://assets.aitoearn.ai/6aaa7cad7289c684e3dad254/publish/media/202610/yRgS1NsNsO9iFKNegRoyg.jpg"
+        }
+      ]
     },
     "publishAt": "2026-10-05T23:25:00.000Z",
-    "status": "pending",
+    "status": "registered",
     "approved_by": "사장님",
     "approved_quote": "추천안대로 진행 (2026-10-02, 채팅: 632 페이스북을 사진+관련글 링크 1개로 다시 올려 신원 확인 효과 확인). 업무대장 N21: 10/6 08:00 세션에서 시험 게시(사장님 10/2 결정)",
-    "note": "N21 신원 확인(10/2 10시 제출) 뒤 첫 시험 게시. 10/2 재시도는 제출 전(09:53)이라 무효"
+    "note": "N21 신원 확인(10/2 10시 제출) 뒤 첫 시험 게시. 10/2 재시도는 제출 전(09:53)이라 무효",
+    "flowId": "8230f045-43a2-44f2-b4db-c7b59333fa60",
+    "registered_at": "2026-10-05T22:55:50.000Z"
   }
 ]
