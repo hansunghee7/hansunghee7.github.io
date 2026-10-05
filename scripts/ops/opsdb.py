@@ -60,8 +60,10 @@ def select(table, cols='*', where=None, order=None, limit=None):
     q = [f'select={urllib.parse.quote(cols, safe=",*()")}']
     if isinstance(where, dict):
         q += [f'{k}={urllib.parse.quote(str(v), safe=".,*()")}' for k, v in where.items()]
-    elif where:
-        q.append(where)
+    elif where:  # 문자열 조건은 & 로 나눈 각 조각의 값 부분을 인코딩한다(공백·한글이 든 값이 주소를 깨지 않게)
+        for part in str(where).split('&'):
+            k, _, v = part.partition('=')
+            q.append(f'{k}={urllib.parse.quote(v, safe=".,*()")}')
     if order:
         q.append(f'order={order}')
     if limit:
@@ -98,7 +100,7 @@ def count(table, where=None):
     if isinstance(where, dict):
         q = '&' + '&'.join(f'{k}={urllib.parse.quote(str(v), safe=".,*()")}' for k, v in where.items())
     elif where:
-        q = '&' + where
+        q = '&' + '&'.join(f'{k}={urllib.parse.quote(v, safe=".,*()")}' for k, _, v in (p.partition('=') for p in str(where).split('&')))
     st, _, h = _call('GET', f'/{table}?select=id{q}&limit=1', prefer='count=exact', extra={'Range-Unit': 'items', 'Range': '0-0'})
     rng = h.get('Content-Range', '*/0')
     return int(rng.split('/')[-1]) if rng.split('/')[-1].isdigit() else 0
