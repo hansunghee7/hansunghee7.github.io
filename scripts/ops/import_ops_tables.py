@@ -132,6 +132,39 @@ def parse_handoffs(path, keep=3, owner_override=None, source=None):
     return out
 
 
+PROCESS_DOCS = {'탐': REPO / 'docs/탐_프로세스표.md', '핏': REPO / 'docs/핏_프로세스표.md', '마야': REPO / 'docs/마야_프로세스표.md', '지투': REPO / 'docs/지투_프로세스표.md',
+                '노트': REPO / 'docs/노트_프로세스표.md', '클라우드탐': REPO / 'docs/클라우드탐_프로세스표.md',
+                '핏/보이스': SHORTS / '보이스메이킹_프로세스표.md', '핏/파이프라인': SHORTS / 'GENERATION_PIPELINES.md'}
+BOSS_LINE = re.compile(r'사장님[^\n]{0,20}(지시|결정|확정|정정|승인|합의|요청)|\b20\d\d-\d\d-\d\d\b[^\n]{0,12}사장님')
+
+
+def parse_process_docs():
+    """공정 문서(프로세스표·파이프라인)를 절 단위(최대 6천 자, 넘으면 ### 로 더 쪼갬)로 잘라 tasks 표 section='process' 행으로 만든다(G2, 사장님 10/5:
+    에이전트가 일하는 단계에서 그 단계의 사장님 지시만 읽게 하려는 목적, 문서 전체를 읽는 토큰을 줄인다). 읽기는 scripts/ops/proc.py."""
+    rows = []
+    for owner, path in PROCESS_DOCS.items():
+        try:
+            text = Path(path).read_text(encoding='utf-8', errors='replace').replace('\r\n', '\n')
+        except OSError:
+            continue
+        parts = re.split(r'(?m)^(?=## )', text)
+        units = []
+        for pt in parts:
+            if len(pt) > 6000 and '\n### ' in pt:
+                head = pt.split('\n', 1)[0]
+                for sub in re.split(r'(?m)^(?=### )', pt):
+                    if sub.strip():
+                        units.append((head if sub.startswith('## ') else head + ' / ' + sub.split('\n', 1)[0], sub))
+            elif pt.strip():
+                units.append((pt.split('\n', 1)[0], pt))
+        for i, (title, body) in enumerate(units, 1):
+            boss = [l.strip()[:300] for l in body.split('\n') if BOSS_LINE.search(l)][:12]
+            rows.append({'owner': owner, 'section': 'process', 'no': str(i), 'title': title.lstrip('# ').strip()[:200], 'status': '', 'source_date': None,
+                         'next_action': None, 'evidence': None, 'result': None, 'cost': None, 'decider': None,  # 다른 행과 열 이름을 맞춘다(한 번에 넣을 때 필요)
+                         'raw': {'body': body[:12000], 'boss_lines': boss, 'bytes': len(body.encode('utf-8'))}, 'source': Path(path).name})
+    return rows
+
+
 def plan():
     P = {}
     P['agent_calls'] = [{'called_at': ts(r['time']), 'who': r['who'], 'sec': num(r['sec']), 'rc': num(r['rc'], int), 'out_bytes': num(r['out_bytes'], int), 'limit_hit': r.get('limit_hit'), 'source': 'agent_calls.csv'} for r in read_csv(OPS / 'agent_calls.csv')]
@@ -150,6 +183,7 @@ def plan():
                               'result': r.get('결과'), 'cost': r.get('비용'), 'decider': r.get('결정자'), 'raw': r, 'source': rel})
     tasks += parse_tam_ledger(REPO / PERSONAS['탐'])
     tasks += parse_handoffs(REPO / 'docs/진행상황.md')
+    tasks += parse_process_docs()
     tasks += parse_handoffs(SHORTS / 'KPI_과제.md', owner_override='핏', source='shorts-lab pilot-shorts2/KPI_과제.md')  # 핏의 인수인계 정본
     P['tasks'] = tasks
     P['sns_posts'] = [{'post_date': r.get('날짜'), 'title': r.get('글(원문)'), 'channel': r.get('채널'), 'method': r.get('방식'), 'status': r.get('상태'), 'scheduled': r.get('예약/발행 시각'), 'note': r.get('참고'), 'raw': r, 'source': 'docs/SNS_등록대장.md'}
