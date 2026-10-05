@@ -54,6 +54,15 @@ def main():
     print('-- 진행'); [print(line(r)) for r in P]
     print('-- 확인필요'); [print(line(r)) for r in C]
     print('-- 대기' + ('' if full else f' (처음 8개만, 전체는 --full-list)')); [print(line(r)) for r in (W if full else W[:8])]
+    if who == '탐':  # 사장님이 지시한 목표 장부(.claude/hooks/drive-gate.py가 같은 파일을 봄): 묻지 말고 다음 단계를 실행한다
+        try:
+            import json
+            gs = [g for g in json.load(open(r'C:\work\_ops\tam_drive.json', encoding='utf-8')).get('goals', []) if g.get('active')]
+            print('\n===== 사장님 지시 목표(활성, 이미 승인됨: 시작 여부를 묻지 말고 다음 단계를 실행) =====')
+            for g in gs:
+                print(f"- {g['id']} {g['title']} ({g.get('since', '')})\n    다음: {g.get('next', '')[:230]}\n    완료 기준: {g.get('done_when', '')}")
+        except Exception:
+            print('\n(목표 장부 C:/work/_ops/tam_drive.json 을 못 읽음)')
     print('\n===== 감시 상태판 문제 줄 =====')
     try:
         bad = [l.strip() for l in STATUS.read_text(encoding='utf-8', errors='replace').splitlines() if l.strip().startswith(('🔴', '🟡', '| 🔴', '| 🟡'))]
