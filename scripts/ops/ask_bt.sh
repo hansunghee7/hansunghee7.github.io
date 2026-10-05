@@ -32,7 +32,8 @@ for M in $ORDER; do
     echo "라우터 건너뜀(rc=$rc)" >&2; rc=99; continue
   fi
   if [ "$M" = vertex ]; then  # 호출 기록·하루 상한은 ask_vertex.py가 관리(C:/work/_ops/vertex_usage.csv), 종료 코드 3 = 하루 상한
-    rc=0; python "$(dirname "$0")/ask_vertex.py" "$Q" "$OUT" --who 탐 || rc=$?
+    t0=$(date +%s); rc=0; python "$(dirname "$0")/ask_vertex.py" "$Q" "$OUT" --who 비티 || rc=$?
+    calllog "비티-vertex" $(( $(date +%s)-t0 )) $rc "$OUT"  # 10/5 사장님 지적: 비티 Vertex 호출이 who=탐으로만 찍혀 비티 사용량이 2회로 보였음 → 비티 몫으로 기록
     if [ "$rc" = 0 ]; then echo "쓴 모델: Vertex 제미나이(GCP 크레딧)" >&2; break; fi
     echo "Vertex 건너뜀(rc=$rc)" >&2; rc=99; continue
   fi
