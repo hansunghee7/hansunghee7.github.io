@@ -17,7 +17,8 @@ BASE = {'덱스': 25, '비티': 10, '타미': 5}      # 하루 기본 목표 호
 CEIL = {'덱스': 60, '비티': 40, '타미': 20}     # 천장(무한 이월 방지)
 ALIAS = {'덱스': ['덱스'], '비티': ['비티', '비티-sonnet'], '타미': ['타미']}
 CARRY_DECAY = 0.5                               # 지난 이월분은 매일 절반만 남긴다
-DEFAULT_BUDGET = {'balance': 326145, 'as_of': '2026-10-03', 'expiry': '2026-12-23', 'safety': 0.85, 'max_day': 15000}
+DEFAULT_BUDGET = {'balance': 326145, 'as_of': '2026-10-03', 'expiry': '2026-12-23', 'safety': 0.85, 'max_day': 15000,
+                  'observe_until': '2026-10-12', 'floor_remaining': 100000}  # 관찰 기간(사장님 10/5 "7일은 그냥 써보죠"): 이 날까지 일 상한 없이 쓰되 남은 잔액이 floor 아래로 내려가면 평시 계산으로 복귀
 
 
 def load_state():
@@ -51,6 +52,18 @@ def vertex_spent(start, before=None):
     return tot
 
 
+def remaining(today=None):
+    """남은 크레딧 추정(원) = 기준 잔액 − 기준일부터 어제까지 API 실사용(오늘 분 제외)."""
+    b = budget()
+    today = today or date.today()
+    try:
+        import gcp_usage
+        spent = gcp_usage.spent_since(b['as_of'], before=today.isoformat())
+    except Exception:  # noqa: BLE001
+        spent = vertex_spent(b['as_of'], before=today.isoformat())
+    return round(b['balance'] - spent, 1)
+
+
 def vertex_day_cap(today=None):
     """오늘의 GCP 일 상한(원) = (잔액 − 기준일부터 어제까지 쓴 추정 비용) × 안전율 ÷ 만료까지 남은 일수. 덜 쓰면 자동으로 오른다."""
     b = budget()
@@ -61,6 +74,8 @@ def vertex_day_cap(today=None):
     except Exception:  # noqa: BLE001
         spent = vertex_spent(b['as_of'], before=today.isoformat())
     days_left = max(1, (date.fromisoformat(b['expiry']) - today).days)
+    if b.get('observe_until') and today.isoformat() <= b['observe_until'] and (b['balance'] - spent) > b['floor_remaining']:
+        return round(b['balance'] - spent - b['floor_remaining'], 1)  # 관찰 기간: 사실상 상한 없음(바닥선까지 허용)
     cap = (b['balance'] - spent) * b['safety'] / days_left
     return round(min(max(cap, 0.0), b['max_day']), 1)
 
@@ -98,6 +113,11 @@ def measure(today=None):
             rec[a] = {'target': tgt, 'used': used, 'carry_after': s['carry'][a]}
         recs[key] = rec
         d += timedelta(days=1)
+    try:  # 일별 실제 지출(API)을 상태에 남겨 관찰 기간 끝에 곡선을 본다
+        import gcp_usage
+        s['gcp_daily'] = {d: {'krw': v['krw'], 'in': v['input'], 'out': v['output']} for d, v in sorted(gcp_usage.daily_usage().items()) if d >= budget()['as_of']}
+    except Exception:  # noqa: BLE001
+        pass
     s['today'] = {'date': today.isoformat(), 'targets': {a: target_for(a, s['carry'].get(a, 0)) for a in BASE}, 'vertex_day_cap': vertex_day_cap(today)}
     save_state(s)
     return s

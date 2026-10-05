@@ -40,6 +40,13 @@ def main():
     except Exception:  # noqa: BLE001
         DAY = DAY_KRW
     msgs, red = [], False
+    try:
+        rem = dynamic_quota.remaining(today)
+        fl = dynamic_quota.budget().get('floor_remaining', 100000)
+        if rem < fl + 50000:
+            red = True; msgs.append(f"남은 크레딧 추정 ₩{rem:,.0f}가 바닥선 ₩{fl:,.0f}+5만 이내(관찰 기간 중이어도 평시 상한으로 복귀 임박)")
+    except Exception:  # noqa: BLE001
+        rem = None
     if krw_today >= DAY * 0.8:
         red = True; msgs.append(f"오늘 실사용 약 ₩{krw_today:,.0f}가 다이나믹 일 상한 ₩{DAY:,.0f}의 80% 이상")
     if krw_week > DAY * 7:
