@@ -74,10 +74,13 @@ def bump(fp_, ok, secs):
     COUNTER.write_text(json.dumps(c, ensure_ascii=False, indent=1), encoding="utf-8")
 
 
-def call(key, prompt, model):
+def call(key, prompt, model, search=False):
     assert key["fp"] not in dialog_fps(), "다이얼로그 키는 사용 금지"
     url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
-    body = json.dumps({"contents": [{"parts": [{"text": prompt}]}]}).encode()
+    payload = {"contents": [{"parts": [{"text": prompt}]}]}
+    if search:
+        payload["tools"] = [{"google_search": {}}]  # 연동 호출은 무료 키에서 429가 잦아 실패하면 다음 키로 넘어간다
+    body = json.dumps(payload).encode()
     req = urllib.request.Request(url, body, {"Content-Type": "application/json", "x-goog-api-key": key["value"]})
     t = time.time()
     try:

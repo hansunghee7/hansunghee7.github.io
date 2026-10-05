@@ -137,6 +137,14 @@ every_min = 1440
 name = "유튜브 조회수 자동 수집(공개 목록 yt-dlp → 운영 DB metrics_snapshots, youtube_views.py)"
 note = "2026-10-05 탐 등록(대장 N156 후속, 사장님 지시). 키 불필요, 하루 1회. 영상 id 연결은 발행 순서 기준이고 업로드 날짜 17/17 검증함. 채널 주소는 저장소 밖 C:/work/_ops/ops-data/yt_channels.json. 종료 코드 1 = 목록 못 읽음/DB 오류"
 
+[[job]]
+id = "fn:review-queue"
+kind = "cmd"
+cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\opseview_queue.py']
+every_min = 1440
+name = "상시 검수 큐(하루 병합 코드 PR을 덱스·비티에게 독립 리뷰, review_queue.py)"
+note = "2026-10-05 탐 등록(대장 N161, 사장님 지시 비티·덱스 최대 활용). 결과 C:/work/_ops/reviews/날짜/INDEX.md, 탐이 다음 날 읽고 판정. 하루 PR 최대 5건. 종료 코드 1 = gh/도구 오류"
+
 # ---------- PC 보안(하루 1회, 1회 실패에 알림) ----------
 [[job]]
 id = "pc:disk"
