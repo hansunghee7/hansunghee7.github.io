@@ -67,6 +67,15 @@
         ]
       },
       {
+        "matcher": "Read|Grep|Bash|PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR/.claude/hooks/db-gate.sh\""
+          }
+        ]
+      },
+      {
         "matcher": "SendMessage|Bash|PowerShell",
         "hooks": [
           {
