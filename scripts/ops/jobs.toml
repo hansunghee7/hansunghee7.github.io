@@ -160,6 +160,13 @@ cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\boss_said.py', 'sync
 every_min = 60
 name = "사장님 말 원장(세션 대화 기록에서 사장님 발화를 원문 그대로 운영 DB에, boss_said.py)"
 note = "2026-10-05 탐 등록(대장 N166, 사장님 지적: 같은 지시를 반복해도 저장 안 됨). 키·토큰 모양 제외, 중복 제외. 종료 코드 1 = DB 오류"
+[[job]]
+id = "fn:recall-cache"
+kind = "cmd"
+cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\recall.py', 'build']
+every_min = 60
+name = "기억 도우미 캐시(공정 카드+사장님 발화를 로컬로 내려받아 훅이 0.1초에 검색, recall.py)"
+note = "2026-10-05 탐 등록(대장 N166). boss_said 적재(fn:boss-said) 뒤에 갱신. 종료 코드 1 = DB 오류"
 # ---------- PC 보안(하루 1회, 1회 실패에 알림) ----------
 [[job]]
 id = "pc:disk"
