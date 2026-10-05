@@ -129,6 +129,14 @@ every_min = 1440
 name = "문서 DB 증분 갱신(바뀐 md만 적재+로컬 bge-m3 임베딩, docs_incremental.py)"
 note = "2026-10-05 탐 등록(대장 N156). 안 바뀐 행은 건드리지 않음(멱등, 2회째 실행 0건 실측). ollama가 꺼져 있으면 적재만 하고 다음 실행에서 임베딩을 채운다. 종료 코드 1 = DB 오류"
 
+[[job]]
+id = "fn:opsdb-youtube"
+kind = "cmd"
+cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\youtube_views.py']
+every_min = 1440
+name = "유튜브 조회수 자동 수집(공개 목록 yt-dlp → 운영 DB metrics_snapshots, youtube_views.py)"
+note = "2026-10-05 탐 등록(대장 N156 후속, 사장님 지시). 키 불필요, 하루 1회. 영상 id 연결은 발행 순서 기준이고 업로드 날짜 17/17 검증함. 채널 주소는 저장소 밖 C:/work/_ops/ops-data/yt_channels.json. 종료 코드 1 = 목록 못 읽음/DB 오류"
+
 # ---------- PC 보안(하루 1회, 1회 실패에 알림) ----------
 [[job]]
 id = "pc:disk"
