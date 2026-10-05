@@ -12,14 +12,29 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import opsdb  # noqa: E402
 
 STATUS = Path(r'C:\work\_ops\STATUS.md')
+SOURCES = [Path(r'C:\work\hansunghee7.github.io\docs\진행상황.md'), Path(r'C:\work\shorts-lab\pilot-shorts2\KPI_과제.md')]  # 인수인계 정본
+
+
+def ensure_fresh():
+    """인수인계 정본(md)이 DB 마지막 동기화보다 새로우면 바로 한 번 동기화한다(바이 직후 새 세션이 하이를 하면 시간당 자동 동기화를 기다리지 않게)."""
+    import subprocess
+    from datetime import timezone
+    last = opsdb.select('tasks', 'imported_at', order='id.desc', limit=1)
+    if last:
+        at = datetime.fromisoformat(last[0]['imported_at']).astimezone(timezone.utc).timestamp()
+        if all(s.stat().st_mtime <= at for s in SOURCES if s.exists()):
+            return False
+    subprocess.run([sys.executable, str(Path(__file__).resolve().parent / 'import_ops_tables.py')], capture_output=True, timeout=240)
+    return True
 
 
 def main():
     sys.stdout.reconfigure(encoding='utf-8')
     who = sys.argv[1] if len(sys.argv) > 1 else '탐'
+    synced = ensure_fresh()
     full = '--full-list' in sys.argv
     h = opsdb.select('tasks', 'title,raw', where={'owner': f'eq.{who}', 'section': 'eq.handoff', 'no': 'eq.1'}, limit=1)
-    print(f'===== {who} 최신 인수인계(원문) =====')
+    print(f'===== {who} 최신 인수인계(원문)' + (' (md가 DB보다 새로워 방금 동기화함)' if synced else '') + ' =====')
     if h:
         print('## [' + who + '] ' + h[0]['raw'].get('head', '') + '\n' + h[0]['raw'].get('body', ''))
     else:
