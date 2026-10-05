@@ -21,7 +21,7 @@ Q="${1:?질문 파일 경로}"; OUT="${2:-/tmp/bt_reply_$(date +%Y%m%d_%H%M).md}
 # BT_MODEL=claude-sonnet-4-6 처럼 지정하면 그 모델만 쓴다.
 QUOTA="$(dirname "$0")/quota.py"
 # 2026-10-03(N120, 사장님 "무료 먼저, 막히면 GCP 크레딧"): 안티그래비티 제미나이가 막히면 Vertex 제미나이(개인 GCP 무료 크레딧)로 넘어가고, 그것도 하루 상한이면 Sonnet.
-if [ -n "${BT_MODEL:-}" ]; then ORDER="sonnet"; [ "$BT_MODEL" = "gemini" ] && ORDER="gemini"; [ "$BT_MODEL" = "vertex" ] && ORDER="vertex"; [ "$BT_MODEL" = "router" ] && ORDER="router"; else ORDER="gemini router vertex sonnet"; fi
+if [ -n "${BT_MODEL:-}" ]; then ORDER="sonnet"; [ "$BT_MODEL" = "gemini" ] && ORDER="gemini"; [ "$BT_MODEL" = "vertex" ] && ORDER="vertex"; [ "$BT_MODEL" = "router" ] && ORDER="router"; else ORDER="gemini router sonnet vertex"; fi  # 사장님 10/5: 무료(안티그래비티 제미나이 → 라우터 무료 풀) → 소넷 → GCP(Vertex 크레딧) 순으로 장애 전환
 rc=99
 for M in $ORDER; do
   if [ "$M" = router ]; then  # 옴니라우터 무료 콤보(사장님 10/5 "옴니라우터 실사용"): 크레딧을 쓰기 전에 무료 풀로, 호출 기록 who=비티-라우터
