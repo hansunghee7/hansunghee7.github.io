@@ -104,7 +104,7 @@ def parse_tam_ledger(path):
     return out
 
 
-def parse_handoffs(path, keep=3):
+def parse_handoffs(path, keep=3, owner_override=None, source=None):
     """진행상황.md의 인수인계 블록(`## [페르소나] 상태: ...`)을 페르소나별 최신 keep개만 읽는다(파일 안에서 위쪽이 최신). 본문 전체를 raw.body에 보존한다."""
     try:
         lines = Path(path).read_text(encoding='utf-8', errors='replace').splitlines()
@@ -122,11 +122,13 @@ def parse_handoffs(path, keep=3):
             cur['body'].append(ln)
     seen, out = {}, []
     for b in blocks:
+        if owner_override:
+            b['owner'] = owner_override  # 예: 핏은 '[핏(로컬)]' 블록을 '핏'으로 통일
         seen[b['owner']] = seen.get(b['owner'], 0) + 1
         if seen[b['owner']] > keep:
             continue
         out.append({'owner': b['owner'], 'section': 'handoff', 'no': str(seen[b['owner']]), 'title': b['head'][:300], 'status': b['head'][:40], 'source_date': None, 'next_action': None, 'evidence': None,
-                    'result': None, 'cost': None, 'decider': None, 'raw': {'head': b['head'], 'body': chr(10).join(b['body']).strip()}, 'source': 'docs/진행상황.md'})
+                    'result': None, 'cost': None, 'decider': None, 'raw': {'head': b['head'], 'body': chr(10).join(b['body']).strip()}, 'source': source or 'docs/진행상황.md'})
     return out
 
 
@@ -148,6 +150,7 @@ def plan():
                               'result': r.get('결과'), 'cost': r.get('비용'), 'decider': r.get('결정자'), 'raw': r, 'source': rel})
     tasks += parse_tam_ledger(REPO / PERSONAS['탐'])
     tasks += parse_handoffs(REPO / 'docs/진행상황.md')
+    tasks += parse_handoffs(SHORTS / 'KPI_과제.md', owner_override='핏', source='shorts-lab pilot-shorts2/KPI_과제.md')  # 핏의 인수인계 정본
     P['tasks'] = tasks
     P['sns_posts'] = [{'post_date': r.get('날짜'), 'title': r.get('글(원문)'), 'channel': r.get('채널'), 'method': r.get('방식'), 'status': r.get('상태'), 'scheduled': r.get('예약/발행 시각'), 'note': r.get('참고'), 'raw': r, 'source': 'docs/SNS_등록대장.md'}
                       for hdr, rows in md_tables(REPO / 'docs/SNS_등록대장.md') if hdr[:2] == ['날짜', '글(원문)'] for r in rows]
@@ -206,7 +209,8 @@ def main():
         if old:
             opsdb.delete(t, {'id': f'lte.{old}'})
     counts = {t: opsdb.count(t) for t in P}
-    bad = [t for t, rows in P.items() if counts[t] != len(rows)]
+    # 로그 표는 도구가 DB에 직접 쓴 기록이 더 있을 수 있어 DB ≥ 원본이면 정상, 나머지 표는 같아야 정상
+    bad = [t for t, rows in P.items() if (counts[t] < len(rows) if t in LOGS else counts[t] != len(rows))]
     print('확인(DB 행 수):', counts)
     print('불일치:', bad or '없음')
     if bad:
