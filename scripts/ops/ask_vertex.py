@@ -20,15 +20,25 @@ REGION = "global"  # vertex_research.py와 같은 경로(gemini-3.6-flash는 glo
 ACCOUNT = "hansunghee7@gmail.com"
 LOG = Path("C:/work/_ops/vertex_usage.csv")
 DAY_CALLS = int(os.environ.get("VERTEX_DAY_CALLS", "100000"))  # 사장님 10/5: 호출 수 상한은 사실상 없앤다(전체 금액의 일 상한만 건다)
-DAY_KRW = float(os.environ.get("VERTEX_DAY_KRW", "4100"))  # 사장님 10/5: 잔액 ₩326,145 전부를 12/23 만료까지 쓰는 일 상한(÷78일). 추정 단가가 실측 전이라 아래 누적 상한도 같이 건다
+def _dyn_day_krw():
+    """다이나믹 한도(N163): (남은 잔액×안전율)÷만료까지 남은 일수, 덜 쓰면 자동으로 오른다. 환경변수 VERTEX_DAY_KRW가 있으면 그 값."""
+    try:
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        import dynamic_quota
+        return dynamic_quota.vertex_day_cap()
+    except Exception:  # noqa: BLE001
+        return 4100.0
+
+
+DAY_KRW = float(os.environ["VERTEX_DAY_KRW"]) if os.environ.get("VERTEX_DAY_KRW") else _dyn_day_krw()  # 사장님 10/5: 잔액 ₩326,145 전부를 12/23 만료까지 쓰는 일 상한(÷78일). 추정 단가가 실측 전이라 아래 누적 상한도 같이 건다
 TOTAL_KRW = float(os.environ.get("VERTEX_TOTAL_KRW", "277000"))  # 10/5부터 누적 추정 비용 상한(잔액의 85%). 추정이 실제보다 낮게 나올 위험에 대한 안전판, 결제 화면 대조(대장 N160) 뒤에 조정
 # 몫별 하루 상한(원, 사장님 승인 10/4, 대장 N120): 합계 DAY_KRW와 함께 코드로 강제한다. who가 목록에 없으면 예비 몫.
 WHO_KRW = {}  # 사장님 10/5: 사람별 몫 상한을 없앴다(모두가 최대한 쓰고 전체 일 상한만 건다). 예전 값: 지투·비티 500, 타미 300, 헤르메스 1000
 RESERVE_KRW = float("inf")
 SEARCH_KRW = float("inf")  # 검색 몫 상한도 없앰
 # 추정 단가(원, 백만 토큰당·검색 1건당). [추정] 실측 전 값. 결제 보고서와 대조해 고친다.
-PRICE_IN = float(os.environ.get("PRICE_IN_KRW_PER_M", "450"))
-PRICE_OUT = float(os.environ.get("PRICE_OUT_KRW_PER_M", "3500"))
+PRICE_IN = float(os.environ.get("PRICE_IN_KRW_PER_M", "2038"))  # 10/5 Cloud Billing 카탈로그 실제 단가(3.6·3.8 Flash Global 입력). 예전 추정 450은 4.5배 낮았음
+PRICE_OUT = float(os.environ.get("PRICE_OUT_KRW_PER_M", "10191"))  # 같은 출처 실제 출력 단가(예전 추정 3500은 2.9배 낮았음)
 PRICE_SEARCH = float(os.environ.get("PRICE_SEARCH_KRW", "50"))
 HEAD = "time,who,model,search,in_tok,out_tok,search_q,est_krw,sec,rc"
 
@@ -112,6 +122,11 @@ def main():
     a = ap.parse_args()
     out = Path(a.out) if a.out else Path(f"C:/work/_ops/bt/replies/vertex_{datetime.now():%Y%m%d_%H%M}.md")
     n, krw, mine, srch = today_use(a.who)
+    try:  # 호출 기록(ask_vertex 경유분)이 아니라 프로젝트 전체 실사용(API)을 기준으로 일 상한을 본다(핏 등 직접 호출 포함, 10/5 실측: 기록의 약 200배)
+        import gcp_usage
+        krw = max(krw, gcp_usage.today_krw())
+    except Exception:  # noqa: BLE001
+        pass
     cap = WHO_KRW.get(a.who, RESERVE_KRW)
     if mine >= cap:
         print(f"{a.who if a.who in WHO_KRW else '예비'} 몫 상한 초과: 오늘 약 ₩{mine:,.0f} (상한 ₩{cap:,.0f}).", file=sys.stderr)
@@ -144,7 +159,7 @@ def main():
     except urllib.error.HTTPError as e:
         rc = 2
         text = f"[호출 실패 HTTP {e.code}] {e.read().decode('utf-8', 'replace')[:500]}"
-        if e.code in (429, 500, 503) and not os.environ.get("VERTEX_NO_FAILOVER"):  # 분당 한도(Resource exhausted)·일시 장애도 무료 키로
+        if e.code in (401, 402, 403, 429, 500, 503) and not os.environ.get("VERTEX_NO_FAILOVER"):  # 403·402 = 크레딧 소진·결제 비활성(10/31 관찰 뒤 소진 대비)  # 분당 한도(Resource exhausted)·일시 장애도 무료 키로
             return free_failover(a, out, prompt, f"HTTP{e.code}")
     except Exception as e:  # 네트워크·토큰 오류
         rc = 2
