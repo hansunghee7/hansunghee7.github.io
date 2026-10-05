@@ -99,6 +99,14 @@ def insert(table, rows):
     return len(rows)
 
 
+def patch(table, where, values):
+    """조건에 맞는 행의 일부 열만 고친다(id 같은 자동 번호 열은 값으로 넣을 수 없어 upsert 대신 이것을 쓴다). where는 필수."""
+    if not where:
+        raise ValueError('patch에는 조건이 필요합니다')
+    q = '&'.join(f'{k}={urllib.parse.quote(str(v), safe=".,*()")}' for k, v in where.items())
+    _call('PATCH', f'/{table}?{q}', values, prefer='return=minimal')
+
+
 def delete(table, where):
     """where는 필수(조건 없는 전체 삭제는 막는다)."""
     if not where:
