@@ -1,20 +1,13 @@
 {
-  "updated_at": "2026-10-05T07:01:44.661983+00:00",
+  "updated_at": "2026-10-05T16:16:49.498985+00:00",
   "range": "last_30_days",
   "totals": {
     "sessions": 327,
-    "activeUsers": 281,
-    "newUsers": 279,
-    "returningUsers": 2
+    "activeUsers": 280,
+    "newUsers": 276,
+    "returningUsers": 4
   },
   "daily": [
-    {
-      "date": "2026-09-05",
-      "sessions": 4,
-      "activeUsers": 4,
-      "newUsers": 4,
-      "returningUsers": 0
-    },
     {
       "date": "2026-09-06",
       "sessions": 8,
@@ -220,31 +213,31 @@
     },
     {
       "date": "2026-10-05",
-      "sessions": 1,
-      "activeUsers": 1,
-      "newUsers": 1,
-      "returningUsers": 0
+      "sessions": 5,
+      "activeUsers": 5,
+      "newUsers": 2,
+      "returningUsers": 3
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 109,
+    "home": 112,
     "log_home": 0,
-    "individual_post": 207,
+    "individual_post": 206,
     "other": 11
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 203
+      "sessions": 201
     },
     {
       "source": "linkedin.com",
-      "sessions": 31
+      "sessions": 32
     },
     {
       "source": "google",
-      "sessions": 22
+      "sessions": 21
     },
     {
       "source": "m.facebook.com",
@@ -259,6 +252,10 @@
       "sessions": 12
     },
     {
+      "source": "(not set)",
+      "sessions": 7
+    },
+    {
       "source": "maru-connect.webflow.io",
       "sessions": 7
     },
@@ -269,10 +266,6 @@
     {
       "source": "daum",
       "sessions": 5
-    },
-    {
-      "source": "(not set)",
-      "sessions": 3
     },
     {
       "source": "lm.facebook.com",
@@ -300,19 +293,19 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 203
+      "sessions": 201
     },
     {
       "source": "linkedin.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 31
+      "sessions": 32
     },
     {
       "source": "google",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 22
+      "sessions": 21
     },
     {
       "source": "m.facebook.com",
@@ -406,8 +399,8 @@
     }
   ],
   "engagement_events": {
-    "section_view_proven": 49,
-    "section_view_voices": 45,
+    "section_view_proven": 50,
+    "section_view_voices": 46,
     "section_view_book_class": 29,
     "section_view_faq": 28,
     "faq_open": 10,
@@ -486,13 +479,13 @@
       "sessions": 3
     },
     {
-      "path": "/log_assets/markdown/178_'So What, Why So' 논리에 영혼을 불어넣다.html",
-      "title": "/log_assets/markdown/178_'So What, Why So' 논리에 영혼을 불어넣다.html",
+      "path": "/logs/178",
+      "title": "/logs/178",
       "sessions": 2
     },
     {
-      "path": "/logs/178",
-      "title": "/logs/178",
+      "path": "/logs/34",
+      "title": "/logs/34",
       "sessions": 2
     }
   ],
@@ -534,14 +527,14 @@
       "views": 9
     },
     {
-      "path": "/logs/6/",
-      "title": "자정이 가까워지도록 AI 얘기를 원 없이 나눴어요.",
-      "uniqueViews": 5,
+      "path": "/logs/629/",
+      "title": "PM과 PL 차이는 뭘까요?",
+      "uniqueViews": 6,
       "views": 5
     },
     {
-      "path": "/logs/629/",
-      "title": "PM과 PL 차이는 뭘까요?",
+      "path": "/logs/6/",
+      "title": "자정이 가까워지도록 AI 얘기를 원 없이 나눴어요.",
       "uniqueViews": 5,
       "views": 5
     },
@@ -590,7 +583,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 321,
+    "total_desktop_sessions": 323,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
@@ -601,7 +594,7 @@
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 57
+        "sessions": 58
       },
       {
         "resolution": "1600x1600",
@@ -624,13 +617,13 @@
         "sessions": 9
       },
       {
-        "resolution": "1440x900",
-        "width": 1440,
-        "sessions": 7
-      },
-      {
         "resolution": "1463x915",
         "width": 1463,
+        "sessions": 8
+      },
+      {
+        "resolution": "1440x900",
+        "width": 1440,
         "sessions": 7
       },
       {
