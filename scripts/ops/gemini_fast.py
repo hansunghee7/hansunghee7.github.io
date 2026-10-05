@@ -108,7 +108,28 @@ def ask(prompt, model=DEFAULT_MODEL):
         last = call(k, prompt, model)
         if last["ok"]:
             return last
-    return last
+    return vertex_fallback(prompt, last)
+
+
+def vertex_fallback(prompt, last):
+    """무료 키가 모두 실패(429 등)하면 GCP 무료 크레딧(Vertex)으로 한 번 더 시도해 끊김을 막는다(사장님 미션 2026-10-05).
+    ask_vertex.py가 하루 호출·비용 상한을 강제하므로 여기서는 상한을 다시 만들지 않는다. 호출 기록은 vertex_usage.csv에 남는다."""
+    import subprocess
+    import tempfile
+    qf = Path(tempfile.gettempdir()) / "gemini_fast_vx_q.md"
+    of = Path(tempfile.gettempdir()) / "gemini_fast_vx_a.md"
+    qf.write_text(prompt, encoding="utf-8")
+    of.unlink(missing_ok=True)
+    t = time.time()
+    try:
+        r = subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "ask_vertex.py"), str(qf), str(of), "--who", "탐"],
+                           capture_output=True, text=True, encoding="utf-8", errors="ignore", timeout=180,
+                           creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
+    except Exception as e:  # noqa: BLE001
+        return {**(last or {"ok": False}), "vertex": type(e).__name__}
+    if r.returncode == 0 and of.exists():
+        return {"ok": True, "text": of.read_text(encoding="utf-8", errors="ignore"), "secs": round(time.time() - t, 2), "fp": "vertex"}
+    return {**(last or {"ok": False}), "ok": False, "vertex": f"rc={r.returncode}"}
 
 
 def poller_usage_today():
