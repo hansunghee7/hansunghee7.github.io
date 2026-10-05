@@ -14,6 +14,9 @@ step·run 행은 시간당 거울 갱신이 지우지 않는다. 추가는 자�
   proc.py steps 핏                 그 공정의 단계 카드 전체(사장님 말 포함, 짧게)
   proc.py show 자막 [--who 핏]     키워드로 찾기(단계 카드 + 옛 문서 절)
   proc.py list [--who 핏]
+옛 md 프로세스표를 DB 카드로 옮기기(이관)
+  proc.py import-md docs/지투_프로세스표.md 지투로고 [--section "로고"] [--dry]   그 절의 목록·표 줄을 카드로(같은 제목은 건너뜀)
+
 작업 1건을 단계별로 진행(누락·망각 방지)
   proc.py run start 핏 "lf05 롱폼 조립" [--who 핏]        체크리스트를 만들고 각 단계의 사장님 말을 함께 보여 줌 → 작업 번호(run id)
   proc.py run done <run id> <단계번호> --evidence "파일·로그 경로" [--who 핏]     증거 없이는 완료 처리 안 됨(환각 방지)
@@ -159,6 +162,55 @@ def cmd_list(a):
         print(f"[{r['owner']}#{r['no']}·{tag}] {r['title'][:60]}")
 
 
+BOSS_HINT = re.compile(r'(사장님[^.\n]{0,30}(지시|결정|확정|정정|승인|합의|요청|말씀)[^.\n]{0,20})|(\(?20\d\d-\d\d-\d\d[^)\n]{0,20}\)?)')
+
+
+def cmd_import_md(a):
+    path = Path(a.md)
+    text = path.read_text(encoding='utf-8', errors='replace').replace('\r\n', '\n')
+    parts = re.split(r'(?m)^(?=#{2,3} )', text)
+    if a.section:
+        parts = [x for x in parts if a.section in x.split('\n', 1)[0]]
+    if not parts:
+        sys.exit(f'절 제목에 "{a.section}"가 든 부분이 없습니다')
+    items = []
+    for part in parts:
+        head = part.split('\n', 1)[0].lstrip('# ').strip()
+        for line in part.split('\n')[1:]:
+            ls = line.strip()
+            if re.match(r'^\|[\s:-]+\|', ls) or not ls:
+                continue
+            if ls.startswith('|'):
+                cells = [c.strip() for c in ls.strip('|').split('|')]
+                if cells and cells[0] in ('순서', '번호', '단계', '#'):
+                    continue
+                title = (cells[1] if len(cells) > 1 else cells[0])[:60]
+                body = ' / '.join(c for c in cells[1:] if c) or ls
+            elif re.match(r'^([-*]|\d+[.)])\s', ls) and not line.startswith(('  ', '\t')):
+                body = re.sub(r'^([-*]|\d+[.)])\s*', '', ls)
+                m = re.match(r'\*\*(.+?)\*\*', body)
+                title = (m.group(1) if m else body)[:60]
+            else:
+                continue
+            title = re.sub(r'[`*]', '', title).strip(' :')
+            hint = ' '.join(h[0] or h[2] for h in BOSS_HINT.findall(body))[:200]
+            items.append((f'{head[:20]}: {title}'[:100], body[:600], hint))
+    existing = {r['title'] for r in steps_of(a.proc)}
+    new = [it for it in items if it[0] not in existing]
+    print(f'{path.name}: 후보 {len(items)}개 중 새로 {len(new)}개 ({"미리보기" if a.dry else "등록"})')
+    for title, body, hint in new[:60]:
+        if a.dry:
+            print('  -', title)
+            continue
+        clean(title, body, hint)
+        allrows = opsdb.select('tasks', 'no', where={'section': 'eq.step', 'owner': f'eq.{a.proc}'}, limit=1000)
+        seq = max([int(r['no']) for r in allrows] + [0]) + 1
+        opsdb.insert('tasks', [row(owner=a.proc, section='step', no=str(seq), title=title, status='사용', next_action=body, source='proc.py import-md',
+                                  raw={'boss': hint, 'tool': '', 'by': a.who or '', 'at': now(), 'history': [], 'from': path.name})])
+    if len(new) > 60:
+        print(f'(60개까지만 등록: 나머지 {len(new) - 60}개는 --section 으로 나눠서)')
+
+
 def cmd_run(a):
     if a.sub == 'start':
         rs = steps_of(a.proc)
@@ -218,13 +270,14 @@ def main():
     p = sub.add_parser('steps'); p.add_argument('proc')
     p = sub.add_parser('show'); p.add_argument('kw'); p.add_argument('--who')
     p = sub.add_parser('list'); p.add_argument('--who')
+    p = sub.add_parser('import-md'); p.add_argument('md'); p.add_argument('proc'); p.add_argument('--section'); p.add_argument('--dry', action='store_true'); p.add_argument('--who')
     p = sub.add_parser('run'); rs = p.add_subparsers(dest='sub', required=True)
     q = rs.add_parser('start'); q.add_argument('proc'); q.add_argument('name'); q.add_argument('--who')
     q = rs.add_parser('done'); q.add_argument('rid'); q.add_argument('step', type=int); q.add_argument('--evidence'); q.add_argument('--who')
     q = rs.add_parser('skip'); q.add_argument('rid'); q.add_argument('step', type=int); q.add_argument('--why'); q.add_argument('--who')
     q = rs.add_parser('status'); q.add_argument('rid')
     a = ap.parse_args()
-    {'add': cmd_add, 'amend': cmd_amend, 'retire': cmd_retire, 'steps': cmd_steps, 'show': cmd_show, 'list': cmd_list, 'run': cmd_run}[a.cmd](a)
+    {'add': cmd_add, 'amend': cmd_amend, 'retire': cmd_retire, 'steps': cmd_steps, 'show': cmd_show, 'list': cmd_list, 'run': cmd_run, 'import-md': cmd_import_md}[a.cmd](a)
 
 
 if __name__ == '__main__':
