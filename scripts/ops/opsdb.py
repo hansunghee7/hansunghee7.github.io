@@ -38,7 +38,19 @@ def _conf():
     return cfg['OPS_DATA_URL'].rstrip('/') + '/rest/v1', cfg['OPS_DATA_SECRET_KEY']
 
 
+def _access_log(method, path):
+    """DB 사용 기록(값 없음): 시각·방식·표. 에이전트가 DB를 얼마나 쓰는지(도입 효과) 재는 용도, 실패해도 호출을 막지 않는다."""
+    try:
+        import os
+        import time
+        with open(r'C:\work\_ops\opsdb_access.jsonl', 'a', encoding='utf-8') as f:
+            f.write(json.dumps({'t': time.strftime('%F %T'), 'm': method, 'table': path.split('?')[0].lstrip('/')[:40], 'who': os.environ.get('OPSDB_WHO', ''), 'cmd': os.path.basename(sys.argv[0])[:30]}, ensure_ascii=False) + '\n')
+    except Exception:
+        pass
+
+
 def _call(method, path, body=None, prefer=None, extra=None):
+    _access_log(method, path)
     base, key = _conf()
     headers = {'apikey': key, 'Content-Type': 'application/json', 'User-Agent': 'carvit-opsdb'}
     if prefer:
