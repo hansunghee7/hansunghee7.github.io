@@ -114,6 +114,82 @@ class WatchTest(unittest.TestCase):
         self.assertEqual(a, [])
 
 
+class BoundaryTest(unittest.TestCase):
+    """is_due·merge_state·보조 함수의 경계·실패 입력 시험."""
+
+    def test_parse_iso_returns_none_on_bad_input(self):
+        self.assertIsNone(w.parse_iso("not-a-date"))
+        self.assertIsNone(w.parse_iso(None))
+        self.assertEqual(w.parse_iso(T0.isoformat()), T0)
+
+    def test_is_due_true_for_missing_empty_or_garbage_checked(self):
+        self.assertTrue(w.is_due({}, 60, T0))
+        self.assertTrue(w.is_due({"checked": ""}, 60, T0))
+        self.assertTrue(w.is_due({"checked": "garbage"}, 60, T0))
+
+    def test_is_due_two_minute_tolerance_edges(self):
+        prev = {"checked": T0.isoformat()}
+        self.assertFalse(w.is_due(prev, 60, T0 + timedelta(minutes=57, seconds=59)))
+        self.assertTrue(w.is_due(prev, 60, T0 + timedelta(minutes=58)))
+        self.assertTrue(w.is_due(prev, 60, T0 + timedelta(minutes=60)))
+
+    def test_is_due_false_when_clock_goes_backwards(self):
+        prev = {"checked": T0.isoformat()}
+        self.assertFalse(w.is_due(prev, 60, T0 - timedelta(minutes=10)))
+
+    def test_is_stale_boundary(self):
+        edge = 1.5 * 100 + 60  # 210분
+        self.assertFalse(w.is_stale(T0, 100, T0 + timedelta(minutes=edge)))
+        self.assertTrue(w.is_stale(T0, 100, T0 + timedelta(minutes=edge, seconds=1)))
+
+    def test_infer_period_defaults_and_floor(self):
+        self.assertEqual(w.infer_period_min([]), 1440)
+        self.assertEqual(w.infer_period_min([T0, T0 + timedelta(hours=1)]), 1440)
+        self.assertEqual(w.infer_period_min([T0] * 3), 1440)  # 간격이 전부 0이면 기본값
+        self.assertEqual(w.infer_period_min([T0 + timedelta(seconds=10 * i) for i in range(4)]), 1)  # 최소 1분
+
+    def test_merge_state_since_kept_while_status_unchanged_and_reset_on_change(self):
+        r = {"id": "a", "name": "A", "status": "fail", "detail": "x"}
+        s1, _ = w.merge_state({"a": {"status": "ok", "fails": 0, "since": "old"}}, [r], T0)
+        self.assertEqual(s1["a"]["since"], T0.isoformat())
+        later = T0 + timedelta(minutes=5)
+        s2, _ = w.merge_state(s1, [r], later)
+        self.assertEqual(s2["a"]["since"], T0.isoformat())
+        self.assertEqual(s2["a"]["fails"], 2)
+        self.assertEqual(s2["a"]["checked"], later.isoformat())
+
+    def test_merge_state_warn_is_not_a_failure(self):
+        r = {"id": "a", "name": "A", "status": "warn", "detail": "x"}
+        prev = {"a": {"status": "fail", "fails": 1, "fail_after": 2}}
+        new, alerts = w.merge_state(prev, [r], T0)
+        self.assertEqual(new["a"]["fails"], 0)
+        self.assertEqual(alerts, [])  # 알림 임계 전 실패였으므로 복구 알림도 없음
+
+    def test_merge_state_down_alert_fires_only_once(self):
+        r = {"id": "a", "name": "A", "status": "fail", "detail": "x"}
+        state = {"a": {"status": "ok", "fails": 0}}
+        kinds = []
+        for _ in range(4):
+            state, alerts = w.merge_state(state, [r], T0)
+            kinds.append([k for k, _ in alerts])
+        self.assertEqual(kinds, [[], ["down"], [], []])
+
+    def test_merge_state_recovery_after_alerted_failure_alerts_up(self):
+        r = {"id": "a", "name": "A", "status": "ok", "detail": "x"}
+        prev = {"a": {"status": "fail", "fails": 3, "fail_after": 2}}
+        _, alerts = w.merge_state(prev, [r], T0)
+        self.assertEqual([k for k, _ in alerts], ["up"])
+
+    def test_merge_state_empty_prev_never_alerts_even_if_failing(self):
+        r = {"id": "a", "name": "A", "status": "fail", "detail": "x", "fail_after": 1}
+        new, alerts = w.merge_state({}, [r], T0)
+        self.assertEqual(alerts, [])
+        self.assertEqual(new["a"]["fails"], 1)
+
+    def test_merge_state_empty_results_gives_empty_state(self):
+        self.assertEqual(w.merge_state({"a": {"status": "ok"}}, [], T0), ({}, []))
+
+
 class DirectAlertTest(unittest.TestCase):
     def test_check_tcp_any_port(self):
         import socket
