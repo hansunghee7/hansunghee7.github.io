@@ -74,6 +74,8 @@ def vertex_day_cap(today=None):
     except Exception:  # noqa: BLE001
         spent = vertex_spent(b['as_of'], before=today.isoformat())
     days_left = max(1, (date.fromisoformat(b['expiry']) - today).days)
+    if b.get('special_day') and today.isoformat() <= b.get('special_until', '0000-00-00'):  # 특별시기(사장님 10/7): 기간 중 일 상한을 고정값으로
+        return float(b['special_day'])
     if b.get('observe_until') and today.isoformat() <= b['observe_until'] and (b['balance'] - spent) > b['floor_remaining']:
         return round(b['balance'] - spent - b['floor_remaining'], 1)  # 관찰 기간: 사실상 상한 없음(바닥선까지 허용)
     cap = (b['balance'] - spent) * b['safety'] / days_left
