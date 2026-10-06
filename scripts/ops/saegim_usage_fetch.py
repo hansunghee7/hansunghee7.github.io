@@ -3,19 +3,51 @@
 
 simplifier-cxo-db의 gcp-usage 워크플로가 만든 artifact(saegim-usage)의 가장 최근 성공 실행을 받아
 C:/work/_ops/saegim_usage/<수집일>.json 으로 저장하고, C:/work/_ops/saegim_usage_daily.md 에 날짜별 한 줄을 쓴다.
-같은 수집일은 건너뛴다(멱등). 운영 DB 표는 새 표 DDL이 필요해 아직 쓰지 않는다(파일이 정본, 10/31 결정 자료의 재료).
+같은 collected_at은 건너뛰고, 같은 수집일의 이후 수집값은 별도 파일로 저장한다. 운영 DB 표는 새 표 DDL이 필요해 아직 쓰지 않는다(파일이 정본, 10/31 결정 자료의 재료).
 종료 코드 0 = 정상, 1 = 성공한 실행·산출물 없음, 2 = gh 오류.
 """
 import json
 import subprocess
 import sys
 import tempfile
+from datetime import datetime, timezone
 from pathlib import Path
 
 REPO = "hansunghee7/simplifier-cxo-db"
 OUT = Path("C:/work/_ops/saegim_usage")
 SUMMARY = Path("C:/work/_ops/saegim_usage_daily.md")
 NW = getattr(subprocess, "CREATE_NO_WINDOW", 0)
+
+
+def pick_dest(out_dir, data):
+    """Return a destination for data, or None if its collected_at is already saved."""
+    collected_at = data["collected_at"]
+    day = collected_at[:10]
+    out_dir = Path(out_dir)
+
+    for path in out_dir.glob(f"{day}*.json"):
+        try:
+            saved = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        if saved.get("collected_at") == collected_at:
+            return None
+
+    first = out_dir / f"{day}.json"
+    if not first.exists():
+        return first
+
+    timestamp = datetime.fromisoformat(collected_at.replace("Z", "+00:00"))
+    utc_time = timestamp.astimezone(timezone.utc).strftime("%H%M%S")
+    base = out_dir / f"{day}-{utc_time}.json"
+    if not base.exists():
+        return base
+    suffix = 2
+    while True:
+        candidate = out_dir / f"{day}-{utc_time}-{suffix}.json"
+        if not candidate.exists():
+            return candidate
+        suffix += 1
 
 
 def gh(args, timeout=120):
@@ -41,14 +73,14 @@ def main():
         data = json.loads(f.read_text(encoding="utf-8"))
     day = data["collected_at"][:10]
     OUT.mkdir(parents=True, exist_ok=True)
-    dest = OUT / f"{day}.json"
-    if dest.exists():
+    dest = pick_dest(OUT, data)
+    if dest is None:
         print(f"{day} 이미 있음(실행 {run['databaseId']}, {run['event']})")
         return 0
     dest.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
     last = max(data["requests_daily"])
     cost = data.get("cost_krw_est", {})
-    line = (f"{day} | 마지막 집계일 {last} 요청 {data['requests_daily'][last]:.0f} | 30일 요청 {data['requests_30d']} | 5xx(30일) {data['errors_5xx_30d']} | "
+    line = (f"{data['collected_at'][:16]} | 마지막 집계일 {last} 요청 {data['requests_daily'][last]:.0f} | 30일 요청 {data['requests_30d']} | 5xx(30일) {data['errors_5xx_30d']} | "
             f"인스턴스 초(30일) {data['billable_instance_seconds_30d']} | 비용 추정 무료분 제외 {cost.get('no_free_tier')}원·포함 {cost.get('with_free_tier')}원 | 실행 {run['databaseId']}({run['event']})")
     new = not SUMMARY.exists()
     with SUMMARY.open("a", encoding="utf-8") as s:
