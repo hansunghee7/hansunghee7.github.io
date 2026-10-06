@@ -92,7 +92,7 @@ def sentences(text):
 
 CLAIM_WORD = re.compile(r"(연구|조사|논문|통계)")
 CLAIM_NUM = re.compile(r"(\d|에 따르면|결과)")
-SOURCE_MARK = re.compile(r"(출처|https?://|\(\s*\d{4}|\[\d+\]|참고)")
+SOURCE_MARK = re.compile(r"(출처|https?://|\(\s*\d{4}|\[\d+\]|참고|Science Advances|Nature|학술지|저널|Journal)")
 
 
 def unsourced_claims(text):
@@ -394,6 +394,7 @@ LINT_CASES = [
     ("인용 안의 평어체는 세지 않는다", dict(text="사장님은 “이건 아직 부족하다 그래서 다시 한다”고 말씀하셨습니다. 그대로 반영했습니다.", context="generic"), 0),
     ("출처 없는 연구 문장은 경고(독립 평가에서 나온 규칙)", dict(text="하루 20분이 넘게 걸린다는 연구가 있습니다. 그래서 순서를 바꿨습니다.", context="generic"), 1),
     ("출처가 같은 문장에 있으면 통과", dict(text="하루 20분이 걸린다는 연구가 있습니다(출처: 2024 업무 시간 조사). 그래서 순서를 바꿨습니다.", context="generic"), 0),
+    ("학술지 이름이 같은 문장에 있으면 출처로 인정", dict(text="Science Advances에 실린 연구에서는 개인 창의성은 오르지만 집단 참신함은 줄었다고 합니다. 그래서 순서를 바꿨습니다.", context="generic"), 0),
     ("회사 이름 노출은 오류", dict(text="Carvit은 Simplifier가 만들었습니다.", context="carvit"), 2),
     ("홈페이지 맥락에서는 회사 이름 허용", dict(text="심플리파이어는 강연과 코칭을 합니다.", context="home"), 0),
 ]
