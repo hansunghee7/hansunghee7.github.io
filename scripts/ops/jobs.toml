@@ -298,7 +298,7 @@ note = "2026-10-06 탐 등록(대장 N103, 사장님 지시 SNS 수치 통합). 
 [[job]]
 id = "fn:vertex-metrics"
 kind = "cmd"
-cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\opsertex_daily_metrics.py']
+cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\vertex_daily_metrics.py']
 every_min = 1440
 name = "Vertex·라우터 일일 지표(호출·비용·무료 전환·라우터 통과·최종 실패, vertex_daily_metrics.py)"
 note = "2026-10-06 탐 등록(대장 N160 G1 완료 기준의 1주 비교 숫자). 결과 C:/work/_ops/vertex_metrics.md(멱등, 매번 전체 다시 씀). 종료 코드 1 = 로그 읽기 오류"
