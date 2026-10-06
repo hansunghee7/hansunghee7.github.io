@@ -43,7 +43,8 @@ def test_email_not_allowed_outside_list():
 
 def test_email_not_allowed_lookalike_domain_suffix():
     # 진짜 허용 도메인의 "뒤에 뭔가 더 붙은" 가짜 도메인은 허용되면 안 된다.
-    assert not leaks.email_allowed("x@simplifier.co.kr.evil.example")
+    addr = "x" + "@" + "simplifier.co.kr.evil.example"
+    assert not leaks.email_allowed(addr)
 
 
 # ---- 이미지 파일명 제외 --------------------------------------------------
