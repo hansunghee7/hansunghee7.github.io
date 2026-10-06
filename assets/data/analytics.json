@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-05T16:16:49.498985+00:00",
+  "updated_at": "2026-10-06T00:58:10.495522+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 327,
-    "activeUsers": 280,
-    "newUsers": 276,
+    "sessions": 329,
+    "activeUsers": 282,
+    "newUsers": 278,
     "returningUsers": 4
   },
   "daily": [
@@ -217,19 +217,26 @@
       "activeUsers": 5,
       "newUsers": 2,
       "returningUsers": 3
+    },
+    {
+      "date": "2026-10-06",
+      "sessions": 2,
+      "activeUsers": 2,
+      "newUsers": 2,
+      "returningUsers": 0
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 112,
+    "home": 113,
     "log_home": 0,
-    "individual_post": 206,
+    "individual_post": 207,
     "other": 11
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 201
+      "sessions": 202
     },
     {
       "source": "linkedin.com",
@@ -276,16 +283,16 @@
       "sessions": 3
     },
     {
+      "source": "(data not available)",
+      "sessions": 2
+    },
+    {
       "source": "l.facebook.com",
       "sessions": 2
     },
     {
       "source": "talk.navercorp.com",
       "sessions": 2
-    },
-    {
-      "source": "(data not available)",
-      "sessions": 1
     }
   ],
   "utm_campaigns": [
@@ -293,7 +300,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 201
+      "sessions": 202
     },
     {
       "source": "linkedin.com",
@@ -356,6 +363,12 @@
       "sessions": 3
     },
     {
+      "source": "(data not available)",
+      "medium": "(data not available)",
+      "campaign": "(cross-network)",
+      "sessions": 2
+    },
+    {
       "source": "l.facebook.com",
       "medium": "referral",
       "campaign": "(referral)",
@@ -366,12 +379,6 @@
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 2
-    },
-    {
-      "source": "(data not available)",
-      "medium": "(data not available)",
-      "campaign": "(cross-network)",
-      "sessions": 1
     },
     {
       "source": "chatgpt.com",
@@ -479,13 +486,13 @@
       "sessions": 3
     },
     {
-      "path": "/logs/178",
-      "title": "/logs/178",
+      "path": "/logs/162",
+      "title": "/logs/162",
       "sessions": 2
     },
     {
-      "path": "/logs/34",
-      "title": "/logs/34",
+      "path": "/logs/178",
+      "title": "/logs/178",
       "sessions": 2
     }
   ],
@@ -583,7 +590,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 323,
+    "total_desktop_sessions": 324,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
@@ -594,7 +601,7 @@
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 58
+        "sessions": 59
       },
       {
         "resolution": "1600x1600",
