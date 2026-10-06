@@ -62,6 +62,12 @@ def main():
     day = OUT_ROOT / datetime.now().strftime('%Y%m%d')
     day.mkdir(parents=True, exist_ok=True)
     lines, done = [], 0
+    idx = day / 'INDEX.md'
+    old = idx.read_text(encoding='utf-8') if idx.exists() else f'# 검수 큐 {day.name}\n'
+
+    def flush():  # 10/6 비티 지적(PR 1958): 시간 제한으로 끊겨도 지금까지의 INDEX는 남게 PR마다 쓴다
+        idx.write_text(old + '\n'.join(lines) + ('\n' if lines else ''), encoding='utf-8')
+
     print(f'덱스 오늘 목표 {st["today"]["targets"]["덱스"]}회 중 남은 {need}회 → 리뷰할 PR 최대 {min(need, MAX_PR)}건 (미검수 {len([p for p in prs if p["number"] not in reviewed])}건)')
     for pr in sorted(prs, key=lambda x: -x['number']):  # 최근 것부터, 밀린 것은 뒤에서 채운다
         if done >= min(need, MAX_PR):
@@ -85,9 +91,8 @@ def main():
         # 서로 다른 계열의 두 번째 의견을 섞는다(사장님 10/5 "소넷 쓰면 해결"): 홀수 PR은 비티-소넷(클로드 계열, 크레딧 안 씀), 짝수 PR은 기본 순서(제미나이 계열)
         rc_b = ask('ask_bt.sh', card, day / f'bt_pr{n}.md', {'BT_MODEL': 'sonnet'} if n % 2 else None)
         lines.append(f'- #{n} {pr["title"]}: 덱스 rc={rc_d} → dex_pr{n}.md / 비티 rc={rc_b} → bt_pr{n}.md')
-    idx = day / 'INDEX.md'
-    old = idx.read_text(encoding='utf-8') if idx.exists() else f'# 검수 큐 {day.name}\n'
-    idx.write_text(old + '\n'.join(lines) + ('\n' if lines else ''), encoding='utf-8')
+        flush()
+    flush()
     print(f'병합 PR {len(prs)}건 중 리뷰 대상 {done}건', '\n'.join(lines))
     return 0
 
