@@ -276,3 +276,11 @@ cmd = ['C:\work\_ops\n152\venv\Scripts\python.exe', 'C:\work\_ops\n152\maya_coll
 every_min = 1440
 name = "마야 KPI 글별 좋아요·조회수 수집(컴포지오 경유 인스타 simplifier_seoul·sinkihanapt, maya_collect.py)"
 note = "2026-10-06 탐 등록(대장 N152 후속, 마야 N14 우선). 결과 C:/work/_ops/n152/maya_metrics.json(계정·글별 좋아요·댓글·조회·도달·저장·공유). 종료 코드 1 = 인스타 글 0건(연결 만료·키 문제). 페북 Page는 OAuth 190으로 미수집, 링크드인은 컴포지오 도구 없음(화면 읽기). 첫 자동 실행 결과 확인 필요"
+
+[[job]]
+id = "fn:gcp-usage-schedule"
+kind = "cmd"
+cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\check_gcp_usage_schedule.py']
+every_min = 720
+name = "새김 사용량 정기 실행 확인(simplifier-cxo-db gcp-usage 매일 09:20 KST, check_gcp_usage_schedule.py)"
+note = "2026-10-06 탐 등록(대장 N164). 첫 정기 실행이 10/6 09:20에 오지 않아 수동 실행으로 대체했다. 종료 코드 1 = 36시간 안에 정기 실행 성공 없음(수동 실행은 세지 않음), 2 = gh 오류. 10/7 09:20 이후 처음 성공하면 초록이 된다"
