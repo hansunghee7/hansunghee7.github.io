@@ -1188,7 +1188,7 @@
       "yes24": {
         "category_rank": 124,
         "category2_rank": 17,
-        "sales_index": 690,
+        "sales_index": 630,
         "reviews": 3,
         "rating": 10.0
       },
@@ -1200,8 +1200,8 @@
         "info_mgmt_rank": null
       },
       "kyobo": {
-        "category_rank": 7,
-        "badge_rank": 544,
+        "category_rank": 6,
+        "badge_rank": 414,
         "badge_category": "자기계발",
         "reviews": 0,
         "rating": null
@@ -1215,5 +1215,5 @@
       }
     }
   ],
-  "updated_at": "2026-10-05T17:22:39.454849+00:00"
+  "updated_at": "2026-10-06T01:13:40.624974+00:00"
 }
