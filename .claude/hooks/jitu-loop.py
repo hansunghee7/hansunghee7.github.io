@@ -10,6 +10,10 @@
   stop       Stop: 지투 세션의 마지막 답변이 "정하실 것"에서 결정을 묻는데 ① 추천이 없거나 ② 답이 없을 때의 기본값·마감이 없으면 막는다(exit 2),
              또는 ③ 30분 넘게 전에 이미 물은 결정(ask 기록)과 거의 같은 질문이면 "한 줄 상태만"으로 막는다. "정하실 것: 없음"은 통과.
              사장님 지시 2026-10-06 ①②(탑티어 PM의 결정 요청: 추천+기본값+마감, 같은 결정을 되묻지 않기). stop_hook_active면 통과(무한 반복 방지).
+  pre-send   PreToolUse(SendMessage): 지투가 노트에게 보내는 메시지를 본다(사장님 지시 2026-10-06). ① 새 일을 시키는 요청("...해 주세요/달라")에는 `[영역: 이름]`
+             표지가 있고 그 영역에 "요구사항을 빠짐없이 모았다는 확신(req ready)"이 기록돼 있어야 한다. 반응이 빨라도 취합이 끝나기 전에는 전달하지 않는다.
+             ② 노트의 개발을 멈추거나 바꾸라는 요청("멈춰/중단/스펙 변경/보류해 주세요" 등)에는 `[멈춤·변경 이득: 근거 한 줄]` 표지가 있어야 한다.
+             정보 전달·검토 결과·병합 알림처럼 일을 시키지 않는 메시지는 통과한다. 노트가 아닌 상대, 지투가 아닌 세션도 통과.
   post-bash  PostToolUse(Bash): 지투 세션에서 `gh pr merge`가 병합되면 "예측 한 줄과 점검일을 남겨라"(보강 1),
              `git revert`·`git reset --hard`·`gh pr revert`를 하면 "검사 공백을 남겨라"(보강 4)를 상기시킨다(막지 않는다).
 지투 세션 판정: 트랜스크립트의 첫 사용자 발화에 '지투'가 있을 때(queue-gate.py와 같은 방식).
@@ -162,6 +166,41 @@ def load_asks():
     return rows
 
 
+AREA_TAG = re.compile(r"\[영역\s*[:：]\s*([^\]]+)\]")
+GAIN_TAG = re.compile(r"\[멈춤[·.,]?\s*변경 이득\s*[:：]\s*([^\]]{12,})\]")
+STOP_REQ = re.compile(r"(멈춰|멈추어|멈춤|중단|보류|롤백|되돌려|스펙[을를]? 바꿔|스펙 변경|계획[을를]? 바꿔|다시 만들어)[^.\n]{0,12}(주세요|달라|해 주|해주)")
+NEW_REQ = re.compile(r"(만들어|추가해|구현해|고쳐|수정해|진행해|착수해|올려|반영해|적용해|처리해|개선해|바꿔)\s*(주세요|달라|주시기)")
+
+
+def send_problem(to, msg):
+    """노트에게 보내는 메시지의 문제(없으면 빈 문자열)."""
+    if "노트" not in str(to):
+        return ""
+    stop = STOP_REQ.search(msg)
+    if stop:
+        if not GAIN_TAG.search(msg):
+            return ("노트의 개발을 멈추거나 바꾸라는 요청입니다. 지금 멈추고 바꾸는 편이 확실히 이득일 때만 보냅니다. 메시지에 "
+                    "`[멈춤·변경 이득: 이득 근거를 12자 이상 한 줄(무엇을 얼마나 아끼거나 막는지)]` 표지를 넣으세요. "
+                    "근거가 확실하지 않으면 보내지 말고 취합을 더 하세요(사장님 지시 2026-10-06).")
+        return ""
+    if NEW_REQ.search(msg):
+        m = AREA_TAG.search(msg)
+        if not m:
+            return ("노트에게 새 일을 시키는 요청입니다. 해당 영역의 요구사항을 빠짐없이 모은 뒤에 보냅니다. `python scripts/ops/jitu_po.py req add --area 영역 --text ...`로 "
+                    "모은 항목을 기록하고, 선행 작업·충돌·고객/DB 영향·확인 방법을 점검한 뒤 `req ready 영역 --note ...`로 확신을 기록하고, "
+                    "메시지에 `[영역: 영역]` 표지를 넣으세요(사장님 지시 2026-10-06: 완벽히 취합하고 확신이 들 때 전달).")
+        area = m.group(1).strip()
+        try:
+            r = subprocess.run([sys.executable, TOOL, "req", "check-send", area], capture_output=True, timeout=20,
+                               creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
+        except Exception:
+            return ""
+        if r.returncode != 0:
+            return (r.stderr.decode("utf-8", "replace").strip() or f"영역 [{area}]은 아직 전달할 수 없습니다") + \
+                   ". 빠진 것을 점검하고 `req ready` 뒤에 보내세요."
+    return ""
+
+
 def run_due():
     try:
         r = subprocess.run([sys.executable, TOOL, "due", "--quiet"], capture_output=True, timeout=20,
@@ -193,6 +232,16 @@ def main(argv):
         if problems:
             sys.stderr.write("[결정 요청 관문] " + " / ".join(problems) + ". 고쳐서 다시 답하세요(보고 형식 8·9번, docs/사장님_보고_형식.md). "
                              "물은 결정은 `python scripts/ops/jitu_po.py ask add --text ... --rec ... --default ...`로 기록합니다.")
+            return 2
+        return 0
+
+    if mode == "pre-send":
+        ti = data.get("tool_input") or {}
+        if not is_jitu(data):
+            return 0
+        problem = send_problem(ti.get("to", ""), str(ti.get("message", "")))
+        if problem:
+            sys.stderr.write("[노트 요청 관문] " + problem)
             return 2
         return 0
 

@@ -8,6 +8,8 @@
   predict  보강 1  예측과 결과의 짝: 변경마다 "무엇이 얼마나 바뀔지" 한 줄과 점검일, 점검일에 실제 값을 적는다.
   ask      결정 요청 기록(2026-10-06 사장님 지시 ①②): 보스에게 결정을 물을 때 추천·답이 없을 때의 기본값·마감을 같이 적고,
            한 번 물은 결정은 답이 올 때까지 다시 묻지 않고 한 줄 상태만 남긴다. 물어보기 전에 `ask find 낱말`로 이미 물었는지 본다.
+  req      요구사항 취합(2026-10-06 사장님 지시): 사장님·고객의 개선 요구를 영역별로 모으고, "빠짐없이 모았다는 확신"이 들 때만 `req ready 영역`을
+           기록한 뒤 노트에게 전달한다. 새 항목이 들어오면 확신이 취소된다. 훅(jitu-loop pre-send)이 영역 없는 새 요청과 이득 근거 없는 멈춤·변경 요청을 막는다.
   due      루프와 결정 요청에서 기한 지난 것만 모아 보인다(훅이 하이~ 때 이걸 부른다).
 저장: C:/work/_ops/jitu_po/*.jsonl (저장소 밖. 고객 신호가 들어가므로 공개 저장소에 두지 않는다). JITU_PO_DIR로 바꿀 수 있다.
 비밀값·고객 이름 원문은 넣지 않는다(호출자 별칭만).
@@ -19,10 +21,11 @@ import os
 import sys
 
 ROOT = os.environ.get("JITU_PO_DIR", "C:/work/_ops/jitu_po")
-FILES = {"gap": "gaps.jsonl", "kpi": "kpi.jsonl", "feedback": "feedback.jsonl", "predict": "predictions.jsonl", "ask": "asks.jsonl"}
+FILES = {"gap": "gaps.jsonl", "kpi": "kpi.jsonl", "feedback": "feedback.jsonl", "predict": "predictions.jsonl", "ask": "asks.jsonl", "req": "requirements.jsonl"}
 KPI_EVERY_DAYS = 7
 FEEDBACK_TRIAGE_DAYS = 1
 FEEDBACK_REPLY_DAYS = 7
+REQ_COLLECT_DAYS = 1  # 모으기 시작 후 이 날수가 지나도 확신(ready)이 없으면 due에 올린다
 ASK_STATUS_DAYS = 1  # 이 날수가 지나도 답이 없으면 due에 올려 '다시 묻지 말고 상태 한 줄만'을 상기
 FB_STATES = ["new", "triaged", "backlog", "replied", "dropped"]
 
@@ -254,9 +257,77 @@ def ask_list(a):
         print(f"{r['id']} [{state}] {r['date']} {r['text'][:70]} | 추천 {r['rec'][:30]} | 기본값 {r['default'][:30]}" + (f" | 마감 {r['due']}" if r["due"] else ""))
 
 
+# ---------------- req (요구사항 취합 후 전달, 개발 중 멈춤·변경은 확실한 이득일 때만) ----------------
+def req_state(area):
+    """영역 상태: 항목 수, 마지막 확신 시각, 확신 뒤 새 항목 여부."""
+    items, ready_idx, last_item_idx = [], -1, -1
+    rows = [r for r in load("req") if r.get("area") == area]
+    for i, r in enumerate(rows):
+        if r["kind"] == "item":
+            items.append(r)
+            last_item_idx = i
+        elif r["kind"] == "ready":
+            ready_idx = i
+    return {"items": len(items), "ready": ready_idx >= 0 and last_item_idx < ready_idx, "had_ready": ready_idx >= 0,
+            "first": items[0]["date"] if items else "", "rows": rows}
+
+
+def req_add(a):
+    rows = load("req")
+    rid = next_id([r for r in rows if r["kind"] == "item"], "R")
+    rows.append({"id": rid, "kind": "item", "date": str(today()), "area": a.area, "text": a.text, "source": a.source})
+    save("req", rows)
+    st = req_state(a.area)
+    print(f"{rid} 영역 [{a.area}]에 추가(항목 {st['items']}개)" + (" - 이전 확신이 취소되었습니다. 다시 점검 뒤 ready를 기록하세요" if st["had_ready"] else ""))
+
+
+def req_ready(a):
+    st = req_state(a.area)
+    if st["items"] == 0:
+        sys.exit("모은 항목이 없는 영역입니다")
+    if len(a.note.strip()) < 20:
+        sys.exit("확신 근거(note)를 20자 이상 쓰세요: 선행 작업, 서로 충돌하는 요구, 고객·DB 영향, 확인 방법을 점검한 결과")
+    rows = load("req")
+    rows.append({"id": "", "kind": "ready", "date": str(today()), "area": a.area, "note": a.note})
+    save("req", rows)
+    print(f"영역 [{a.area}] 확신 기록(항목 {st['items']}개). 이제 노트에게 [영역: {a.area}] 표지를 달아 전달할 수 있습니다")
+
+
+def req_sent(a):
+    rows = load("req")
+    rows.append({"id": "", "kind": "sent", "date": str(today()), "area": a.area, "to": a.to, "ref": a.ref})
+    save("req", rows)
+    print(f"영역 [{a.area}] 전달 기록: {a.to} {a.ref}")
+
+
+def req_list(a):
+    areas = sorted({r["area"] for r in load("req")})
+    for ar in areas:
+        if a.area and ar != a.area:
+            continue
+        st = req_state(ar)
+        label = "확신 있음" if st["ready"] else ("확신 취소(새 항목)" if st["had_ready"] else "취합 중")
+        print(f"[{ar}] {label}, 항목 {st['items']}개, 시작 {st['first']}")
+        for r in st["rows"]:
+            if r["kind"] == "item":
+                print(f"   {r['id']} ({r['source']}) {r['text'][:80]}")
+            elif r["kind"] == "ready":
+                print(f"   - 확신 {r['date']}: {r['note'][:80]}")
+            elif r["kind"] == "sent":
+                print(f"   - 전달 {r['date']}: {r['to']} {r['ref'][:60]}")
+
+
+def req_check(a):
+    st = req_state(a.area)
+    if st["ready"]:
+        print("확신 있음")
+        return
+    sys.exit(f"영역 [{a.area}]은 아직 전달할 수 없습니다(" + ("항목 없음" if not st["items"] else "확신 기록 없음 또는 새 항목으로 취소됨") + ")")
+
+
 # ---------------- due ----------------
 def due_items():
-    out = {"gap": [], "kpi": [], "feedback": [], "predict": [], "ask": []}
+    out = {"gap": [], "kpi": [], "feedback": [], "predict": [], "ask": [], "req": []}
     for r in load("gap"):
         if not r.get("added"):
             out["gap"].append(f"{r['id']} {r['what']}(없던 검사: {r['missing']})")
@@ -279,6 +350,10 @@ def due_items():
             overdue = bool(r["due"]) and r["due"] < str(today())
             if age >= ASK_STATUS_DAYS or overdue:
                 out["ask"].append(f"{r['id']} 답 대기 {age}일{'(마감 지남)' if overdue else ''}: {r['text'][:50]} (다시 묻지 말고 한 줄 상태만, 기본값: {r['default'][:30]})")
+    for ar in sorted({r["area"] for r in load("req")}):
+        st = req_state(ar)
+        if not st["ready"] and st["items"] and days_since(st["first"]) >= REQ_COLLECT_DAYS:
+            out["req"].append(f"영역 [{ar}] 취합 {days_since(st['first'])}일째, 항목 {st['items']}개, 확신 미기록(빠진 것 점검 뒤 req ready, 서두르지 말고 완벽히)")
     for r in load("predict"):
         if not r["verdict"] and r["check_on"] <= str(today()):
             out["predict"].append(f"{r['id']} 점검일 {r['check_on']} 지남: {r['change'][:50]}")
@@ -290,9 +365,9 @@ def due(a):
     n = sum(len(v) for v in d.values())
     if a.quiet and n == 0:
         return
-    names = {"gap": "검사 공백(보강 4)", "kpi": "지표 측정(보강 2)", "feedback": "고객 신호(보강 3)", "predict": "예측 점검(보강 1)", "ask": "결정 요청(답 대기)"}
+    names = {"gap": "검사 공백(보강 4)", "kpi": "지표 측정(보강 2)", "feedback": "고객 신호(보강 3)", "predict": "예측 점검(보강 1)", "ask": "결정 요청(답 대기)", "req": "요구사항 취합 중"}
     print(f"🔁 지투 루프 점검: 기한 지난 것 {n}건")
-    for k in ("gap", "kpi", "feedback", "predict", "ask"):
+    for k in ("gap", "kpi", "feedback", "predict", "ask", "req"):
         for line in d[k]:
             print(f"  - {names[k]}: {line}")
     if n:
@@ -341,6 +416,15 @@ def build():
     x = q.add_parser("find"); x.add_argument("words", nargs="+"); x.set_defaults(fn=ask_find)
     x = q.add_parser("answer"); x.add_argument("id"); x.add_argument("--answer", required=True); x.set_defaults(fn=ask_answer)
     x = q.add_parser("list"); x.add_argument("--open", action="store_true"); x.set_defaults(fn=ask_list)
+
+    rq = sub.add_parser("req").add_subparsers(dest="sub", required=True)
+    x = rq.add_parser("add"); x.add_argument("--area", required=True); x.add_argument("--text", required=True)
+    x.add_argument("--source", default="사장님"); x.set_defaults(fn=req_add)
+    x = rq.add_parser("ready"); x.add_argument("area"); x.add_argument("--note", required=True, help="빠진 것 점검 결과(선행·충돌·고객/DB 영향·확인 방법) 20자 이상")
+    x.set_defaults(fn=req_ready)
+    x = rq.add_parser("sent"); x.add_argument("area"); x.add_argument("--to", default="노트"); x.add_argument("--ref", default=""); x.set_defaults(fn=req_sent)
+    x = rq.add_parser("list"); x.add_argument("--area", default=""); x.set_defaults(fn=req_list)
+    x = rq.add_parser("check-send"); x.add_argument("area"); x.set_defaults(fn=req_check)
 
     x = sub.add_parser("due"); x.add_argument("--quiet", action="store_true"); x.set_defaults(fn=due)
     return p
