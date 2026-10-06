@@ -1,20 +1,13 @@
 {
-  "updated_at": "2026-10-06T14:21:07.026151+00:00",
+  "updated_at": "2026-10-06T20:00:53.491348+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 336,
-    "activeUsers": 287,
-    "newUsers": 285,
-    "returningUsers": 2
+    "sessions": 329,
+    "activeUsers": 283,
+    "newUsers": 279,
+    "returningUsers": 4
   },
   "daily": [
-    {
-      "date": "2026-09-06",
-      "sessions": 8,
-      "activeUsers": 5,
-      "newUsers": 6,
-      "returningUsers": 0
-    },
     {
       "date": "2026-09-07",
       "sessions": 8,
@@ -224,19 +217,26 @@
       "activeUsers": 9,
       "newUsers": 7,
       "returningUsers": 2
+    },
+    {
+      "date": "2026-10-07",
+      "sessions": 1,
+      "activeUsers": 1,
+      "newUsers": 0,
+      "returningUsers": 1
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 114,
+    "home": 110,
     "log_home": 0,
-    "individual_post": 213,
+    "individual_post": 210,
     "other": 11
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 205
+      "sessions": 199
     },
     {
       "source": "linkedin.com",
@@ -244,7 +244,7 @@
     },
     {
       "source": "google",
-      "sessions": 21
+      "sessions": 19
     },
     {
       "source": "m.search.naver.com",
@@ -259,12 +259,12 @@
       "sessions": 12
     },
     {
-      "source": "maru-connect.webflow.io",
+      "source": "(not set)",
       "sessions": 7
     },
     {
-      "source": "(not set)",
-      "sessions": 6
+      "source": "maru-connect.webflow.io",
+      "sessions": 7
     },
     {
       "source": "daum",
@@ -300,7 +300,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 205
+      "sessions": 199
     },
     {
       "source": "linkedin.com",
@@ -312,7 +312,7 @@
       "source": "google",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 21
+      "sessions": 19
     },
     {
       "source": "m.search.naver.com",
@@ -406,12 +406,12 @@
     }
   ],
   "engagement_events": {
-    "section_view_proven": 51,
-    "section_view_voices": 46,
-    "section_view_book_class": 29,
-    "section_view_faq": 28,
-    "faq_open": 10,
-    "read_complete": 77
+    "section_view_proven": 47,
+    "section_view_voices": 42,
+    "section_view_book_class": 24,
+    "section_view_faq": 23,
+    "faq_open": 9,
+    "read_complete": 76
   },
   "contact_funnel": {
     "contact_open": 12,
@@ -536,7 +536,7 @@
     {
       "path": "/logs/618/",
       "title": "AI가 못 뺏는 능력 하나",
-      "uniqueViews": 6,
+      "uniqueViews": 7,
       "views": 6
     },
     {
@@ -544,6 +544,12 @@
       "title": "PM과 PL 차이는 뭘까요?",
       "uniqueViews": 6,
       "views": 6
+    },
+    {
+      "path": "/logs/2/",
+      "title": "오디세이, 매우 사적인 관람평",
+      "uniqueViews": 5,
+      "views": 5
     },
     {
       "path": "/logs/6/",
@@ -560,12 +566,6 @@
     {
       "path": "/logs/132/",
       "title": "PM, PL, TPM의 차이 한눈에 보기",
-      "uniqueViews": 4,
-      "views": 4
-    },
-    {
-      "path": "/logs/2/",
-      "title": "오디세이, 매우 사적인 관람평",
       "uniqueViews": 4,
       "views": 4
     },
@@ -590,7 +590,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 327,
+    "total_desktop_sessions": 328,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
@@ -611,7 +611,7 @@
       {
         "resolution": "2560x1440",
         "width": 2560,
-        "sessions": 50
+        "sessions": 51
       },
       {
         "resolution": "1536x960",
