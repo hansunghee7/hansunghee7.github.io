@@ -125,8 +125,9 @@ def vertex_fallback(prompt, last):
     import os
     import subprocess
     import tempfile
-    qf = Path(tempfile.gettempdir()) / "gemini_fast_vx_q.md"
-    of = Path(tempfile.gettempdir()) / "gemini_fast_vx_a.md"
+    uid = f"{os.getpid()}_{int(time.time() * 1000)}"  # 동시 호출이 서로의 질문·답 파일을 덮어쓰지 않게 호출마다 다른 이름(덱스·비티 공통 지적 채택, 2026-10-06)
+    qf = Path(tempfile.gettempdir()) / f"gemini_fast_vx_q_{uid}.md"
+    of = Path(tempfile.gettempdir()) / f"gemini_fast_vx_a_{uid}.md"
     qf.write_text(prompt, encoding="utf-8")
     of.unlink(missing_ok=True)
     t = time.time()
@@ -135,9 +136,14 @@ def vertex_fallback(prompt, last):
                            capture_output=True, text=True, encoding="utf-8", errors="ignore", timeout=180,
                            creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
     except Exception as e:  # noqa: BLE001
+        qf.unlink(missing_ok=True)
         return {**(last or {"ok": False}), "vertex": type(e).__name__}
+    qf.unlink(missing_ok=True)  # 호출마다 이름이 달라 쌓이지 않게 지운다
     if r.returncode == 0 and of.exists():
-        return {"ok": True, "text": of.read_text(encoding="utf-8", errors="ignore"), "secs": round(time.time() - t, 2), "fp": "vertex"}
+        text = of.read_text(encoding="utf-8", errors="ignore")
+        of.unlink(missing_ok=True)
+        return {"ok": True, "text": text, "secs": round(time.time() - t, 2), "fp": "vertex"}
+    of.unlink(missing_ok=True)
     return {**(last or {"ok": False}), "ok": False, "vertex": f"rc={r.returncode}"}
 
 
