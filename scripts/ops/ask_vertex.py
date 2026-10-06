@@ -18,6 +18,9 @@ from pathlib import Path
 PROJECT = "project-e59cbc25-e96a-44f5-ac6"  # My First Project(개인 계정, 무료 체험 크레딧)
 REGION = "global"  # vertex_research.py와 같은 경로(gemini-3.6-flash는 global에서 200, 9/26 실측)
 ACCOUNT = "hansunghee7@gmail.com"
+# 10/7 회사 결제 크레딧(₩408K, 12/10 만료)을 먼저 태운다: 새 프로젝트 + simon@ 토큰. 로그인이 만료됐거나 실패하면 개인 쪽으로 내려간다.
+COMPANY_PROJECT = "simplifier-vertex-credit"
+COMPANY_ACCOUNT = "simon@simplifier.co.kr"
 LOG = Path("C:/work/_ops/vertex_usage.csv")
 DAY_CALLS = int(os.environ.get("VERTEX_DAY_CALLS", "100000"))  # 사장님 10/5: 호출 수 상한은 사실상 없앤다(전체 금액의 일 상한만 건다)
 def _dyn_day_krw():
@@ -43,9 +46,9 @@ PRICE_SEARCH = float(os.environ.get("PRICE_SEARCH_KRW", "50"))
 HEAD = "time,who,model,search,in_tok,out_tok,search_q,est_krw,sec,rc"
 
 
-def token():
+def token(account=None):
     exe = shutil.which("gcloud") or shutil.which("gcloud.cmd")
-    return subprocess.run([exe, "auth", "print-access-token", f"--account={ACCOUNT}"], capture_output=True, text=True,
+    return subprocess.run([exe, "auth", "print-access-token", f"--account={account or ACCOUNT}"], capture_output=True, text=True,
                           creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0), timeout=60).stdout.strip()
 
 
@@ -142,12 +145,19 @@ def main():
         print(f"하루 상한 초과: 오늘 {n}회·약 ₩{krw:,.0f} (상한 {DAY_CALLS}회·₩{DAY_KRW:,.0f}). 무료 키로 전환.", file=sys.stderr)
         return free_failover(a, out, Path(a.q).read_text(encoding="utf-8"), "일상한") if not os.environ.get("VERTEX_NO_FAILOVER") else 3
     prompt = Path(a.q).read_text(encoding="utf-8")
-    url = f"https://aiplatform.googleapis.com/v1/projects/{PROJECT}/locations/{REGION}/publishers/google/models/{a.model}:generateContent"
+    proj, tok = PROJECT, ""
+    if not os.environ.get("VERTEX_NO_COMPANY"):
+        tok = token(COMPANY_ACCOUNT)  # 만료면 빈 문자열 → 개인 쪽
+        if tok:
+            proj = COMPANY_PROJECT
+    if proj == PROJECT:
+        tok = token()
+    url = f"https://aiplatform.googleapis.com/v1/projects/{proj}/locations/{REGION}/publishers/google/models/{a.model}:generateContent"
     body = {"contents": [{"role": "user", "parts": [{"text": prompt}]}]}
     if a.search:
         body["tools"] = [{"googleSearch": {}}]
     req = urllib.request.Request(url, data=json.dumps(body).encode("utf-8"),
-                                 headers={"Authorization": "Bearer " + token(), "Content-Type": "application/json"})
+                                 headers={"Authorization": "Bearer " + tok, "Content-Type": "application/json"})
     t0 = datetime.now()
     rc, text, usage, sq = 0, "", {}, 0
     try:
@@ -157,6 +167,10 @@ def main():
         usage = r.get("usageMetadata", {})
         sq = len((cand.get("groundingMetadata") or {}).get("webSearchQueries", []))
     except urllib.error.HTTPError as e:
+        if proj == COMPANY_PROJECT and e.code in (401, 403) and not os.environ.get("VERTEX_NO_COMPANY"):  # 회사 쪽 권한·로그인 문제: 개인 프로젝트로 한 번 더
+            os.environ["VERTEX_NO_COMPANY"] = "1"
+            print(f"회사 프로젝트 HTTP{e.code}: 개인 프로젝트로 재시도", file=sys.stderr)
+            return main()
         rc = 2
         text = f"[호출 실패 HTTP {e.code}] {e.read().decode('utf-8', 'replace')[:500]}"
         if e.code in (401, 402, 403, 429, 500, 503) and not os.environ.get("VERTEX_NO_FAILOVER"):  # 403·402 = 크레딧 소진·결제 비활성(10/31 관찰 뒤 소진 대비)  # 분당 한도(Resource exhausted)·일시 장애도 무료 키로
@@ -175,6 +189,7 @@ def main():
         if new:
             f.write(HEAD + "\n")
         f.write(f"{datetime.now():%Y-%m-%d %H:%M:%S},{a.who},{a.model},{int(a.search)},{tin},{tout},{sq},{est:.2f},{sec},{rc}\n")
+    print(f"청구 프로젝트: {proj}", file=sys.stderr)
     print(f"답 저장: {out} ({len(text)}자) 토큰 입력 {tin}·출력 {tout}·검색 {sq}건·추정 약 ₩{est:,.1f}·{sec}초", file=sys.stderr)
     return rc
 
