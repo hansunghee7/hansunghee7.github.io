@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-06T00:58:10.495522+00:00",
+  "updated_at": "2026-10-06T07:33:21.036430+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 329,
-    "activeUsers": 282,
-    "newUsers": 278,
-    "returningUsers": 4
+    "sessions": 333,
+    "activeUsers": 285,
+    "newUsers": 283,
+    "returningUsers": 2
   },
   "daily": [
     {
@@ -215,28 +215,28 @@
       "date": "2026-10-05",
       "sessions": 5,
       "activeUsers": 5,
-      "newUsers": 2,
-      "returningUsers": 3
+      "newUsers": 4,
+      "returningUsers": 1
     },
     {
       "date": "2026-10-06",
-      "sessions": 2,
-      "activeUsers": 2,
-      "newUsers": 2,
-      "returningUsers": 0
+      "sessions": 6,
+      "activeUsers": 6,
+      "newUsers": 5,
+      "returningUsers": 1
     }
   ],
   "daily_leads": [],
   "landing_types": {
     "home": 113,
     "log_home": 0,
-    "individual_post": 207,
+    "individual_post": 210,
     "other": 11
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 202
+      "sessions": 204
     },
     {
       "source": "linkedin.com",
@@ -251,31 +251,39 @@
       "sessions": 13
     },
     {
+      "source": "m.search.naver.com",
+      "sessions": 13
+    },
+    {
       "source": "facebook.com",
       "sessions": 12
-    },
-    {
-      "source": "m.search.naver.com",
-      "sessions": 12
-    },
-    {
-      "source": "(not set)",
-      "sessions": 7
     },
     {
       "source": "maru-connect.webflow.io",
       "sessions": 7
     },
     {
+      "source": "daum",
+      "sessions": 6
+    },
+    {
+      "source": "(not set)",
+      "sessions": 5
+    },
+    {
       "source": "blog.naver.com",
       "sessions": 5
     },
     {
-      "source": "daum",
-      "sessions": 5
+      "source": "(data not available)",
+      "sessions": 3
     },
     {
       "source": "lm.facebook.com",
+      "sessions": 3
+    },
+    {
+      "source": "talk.navercorp.com",
       "sessions": 3
     },
     {
@@ -283,15 +291,7 @@
       "sessions": 3
     },
     {
-      "source": "(data not available)",
-      "sessions": 2
-    },
-    {
       "source": "l.facebook.com",
-      "sessions": 2
-    },
-    {
-      "source": "talk.navercorp.com",
       "sessions": 2
     }
   ],
@@ -300,7 +300,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 202
+      "sessions": 204
     },
     {
       "source": "linkedin.com",
@@ -321,13 +321,13 @@
       "sessions": 13
     },
     {
-      "source": "facebook.com",
+      "source": "m.search.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 12
+      "sessions": 13
     },
     {
-      "source": "m.search.naver.com",
+      "source": "facebook.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 12
@@ -339,19 +339,31 @@
       "sessions": 7
     },
     {
+      "source": "daum",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "sessions": 6
+    },
+    {
       "source": "blog.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 5
     },
     {
-      "source": "daum",
-      "medium": "organic",
-      "campaign": "(organic)",
-      "sessions": 5
+      "source": "(data not available)",
+      "medium": "(data not available)",
+      "campaign": "(cross-network)",
+      "sessions": 3
     },
     {
       "source": "lm.facebook.com",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "sessions": 3
+    },
+    {
+      "source": "talk.navercorp.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 3
@@ -363,19 +375,7 @@
       "sessions": 3
     },
     {
-      "source": "(data not available)",
-      "medium": "(data not available)",
-      "campaign": "(cross-network)",
-      "sessions": 2
-    },
-    {
       "source": "l.facebook.com",
-      "medium": "referral",
-      "campaign": "(referral)",
-      "sessions": 2
-    },
-    {
-      "source": "talk.navercorp.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 2
@@ -406,12 +406,12 @@
     }
   ],
   "engagement_events": {
-    "section_view_proven": 50,
+    "section_view_proven": 51,
     "section_view_voices": 46,
     "section_view_book_class": 29,
     "section_view_faq": 28,
     "faq_open": 10,
-    "read_complete": 76
+    "read_complete": 77
   },
   "contact_funnel": {
     "contact_open": 12,
@@ -466,6 +466,16 @@
       "sessions": 4
     },
     {
+      "path": "/logs/618",
+      "title": "/logs/618",
+      "sessions": 4
+    },
+    {
+      "path": "/logs/629",
+      "title": "/logs/629",
+      "sessions": 4
+    },
+    {
       "path": "/logs/632",
       "title": "/logs/632",
       "sessions": 4
@@ -481,18 +491,8 @@
       "sessions": 3
     },
     {
-      "path": "/logs/629",
-      "title": "/logs/629",
-      "sessions": 3
-    },
-    {
       "path": "/logs/162",
       "title": "/logs/162",
-      "sessions": 2
-    },
-    {
-      "path": "/logs/178",
-      "title": "/logs/178",
       "sessions": 2
     }
   ],
@@ -534,10 +534,16 @@
       "views": 9
     },
     {
+      "path": "/logs/618/",
+      "title": "AI가 못 뺏는 능력 하나",
+      "uniqueViews": 6,
+      "views": 6
+    },
+    {
       "path": "/logs/629/",
       "title": "PM과 PL 차이는 뭘까요?",
       "uniqueViews": 6,
-      "views": 5
+      "views": 6
     },
     {
       "path": "/logs/6/",
@@ -576,12 +582,6 @@
       "views": 4
     },
     {
-      "path": "/logs/618/",
-      "title": "AI가 못 뺏는 능력 하나",
-      "uniqueViews": 4,
-      "views": 4
-    },
-    {
       "path": "/logs/632/",
       "title": "우리 팀만 말하는 직원 어떻게 해야하나요?",
       "uniqueViews": 4,
@@ -590,7 +590,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 324,
+    "total_desktop_sessions": 327,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
@@ -621,7 +621,7 @@
       {
         "resolution": "2000x2000",
         "width": 2000,
-        "sessions": 9
+        "sessions": 10
       },
       {
         "resolution": "1463x915",
@@ -659,6 +659,11 @@
         "sessions": 4
       },
       {
+        "resolution": "1920x1200",
+        "width": 1920,
+        "sessions": 4
+      },
+      {
         "resolution": "1280x800",
         "width": 1280,
         "sessions": 3
@@ -666,11 +671,6 @@
       {
         "resolution": "1707x1067",
         "width": 1707,
-        "sessions": 3
-      },
-      {
-        "resolution": "1920x1200",
-        "width": 1920,
         "sessions": 3
       },
       {
@@ -684,13 +684,13 @@
         "sessions": 2
       },
       {
-        "resolution": "1680x1050",
-        "width": 1680,
+        "resolution": "1366x768",
+        "width": 1366,
         "sessions": 2
       },
       {
-        "resolution": "1710x1107",
-        "width": 1710,
+        "resolution": "1680x1050",
+        "width": 1680,
         "sessions": 2
       }
     ]
