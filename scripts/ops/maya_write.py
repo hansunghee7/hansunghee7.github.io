@@ -9,6 +9,7 @@
   lint  <파일|--text 문자열>      기계 검사(증명 불가 형용사, 문체 혼용, 제품 이름·회사 이름·용어, 길이)
   card  <종류> <파일>             독립 평가자(덱스·비티)에게 줄 채점 카드(마크다운)를 만든다
   log   add ...                  평가 기록 한 건을 쌓는다(점수 검증, 독립 평가 여부 자동 표시)
+  exp add|snap|report            링크드인 A/B 실험 등록·12h/24h 측정·사전 약속 규칙 판정
   routecase "<발화>" <종류|none>  실제 발화와 정답을 쌓는다(고치기 전에 먼저 맞는지 보고 기록 = 보류 시험)
   report [--days N]              종류별 평균, 가장 낮은 항목, 린트 통과율, 다음 개선 후보 3개
   selftest                       라우터·린트 시험 묶음을 돌려 통과 여부를 출력
@@ -268,6 +269,106 @@ def report(days=None, rb=None, path=None):
     return "\n".join(lines), [t for _, t in top]
 
 
+# ---------------------------------------------------------------- exp (링크드인 A/B 실험, 2026-10-06)
+EXP_PATH = HERE.parent.parent / "assets" / "data" / "linkedin_experiment.json"
+EXP_RULE = {
+    "min_per_group": 4,
+    "likes_ratio": 1.5,
+    "impressions_floor": 0.8,
+    "text": "각 그룹 4건 이상이 모이면 12시간 시점 좋아요 중앙값을 비교한다. A(직접 해 본 경험담) 중앙값이 B(일반 고민 칼럼)의 1.5배 이상이고 A의 노출 중앙값이 B의 0.8배 이상이면 'A 우위', B가 A의 1.5배 이상이면 'B 우위', 그 밖은 '차이 불분명'. 4건씩이라 결과는 방향으로만 쓰고 다음 4주에 같은 기준으로 반복해 확인한다.",
+}
+
+
+def _median(xs):
+    xs = sorted(xs)
+    n = len(xs)
+    return None if not n else (xs[n // 2] if n % 2 else (xs[n // 2 - 1] + xs[n // 2]) / 2)
+
+
+def exp_load(path=None):
+    path = Path(path or EXP_PATH)
+    if path.exists():
+        return json.loads(path.read_text(encoding="utf-8"))
+    return {"rule": EXP_RULE, "posts": []}
+
+
+def exp_save(d, path=None):
+    path = Path(path or EXP_PATH)
+    path.write_text(json.dumps(d, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
+
+
+def exp_add(post, group, title, planned, note="", path=None):
+    if group not in ("A", "B"):
+        raise ValueError("그룹은 A 또는 B")
+    d = exp_load(path)
+    if any(p["post"] == post for p in d["posts"]):
+        raise ValueError(f"이미 있는 글: {post}")
+    d["posts"].append({"post": post, "group": group, "title": title, "planned": planned, "note": note, "snaps": {}})
+    exp_save(d, path)
+    return d
+
+
+def exp_snap(post, when, likes, impressions, comments=None, path=None):
+    if when not in ("12h", "24h"):
+        raise ValueError("시점은 12h 또는 24h")
+    d = exp_load(path)
+    for p in d["posts"]:
+        if p["post"] == post:
+            p["snaps"][when] = {"likes": likes, "impressions": impressions, "comments": comments,
+                                "at": datetime.now(KST).isoformat(timespec="minutes")}
+            exp_save(d, path)
+            return p
+    raise ValueError(f"등록되지 않은 글: {post}")
+
+
+def exp_verdict(posts, rule=None):
+    """사전 약속한 규칙으로만 판정한다(결과를 보고 기준을 바꾸지 않는다)."""
+    rule = rule or EXP_RULE
+    g = {"A": [], "B": []}
+    for p in posts:
+        s = p.get("snaps", {}).get("12h")
+        if s and s.get("likes") is not None and s.get("impressions") is not None:
+            g[p["group"]].append((s["likes"], s["impressions"]))
+    nA, nB = len(g["A"]), len(g["B"])
+    res = {"nA": nA, "nB": nB}
+    if nA < rule["min_per_group"] or nB < rule["min_per_group"]:
+        res["verdict"] = f"표본 부족(A {nA}건, B {nB}건, 각 {rule['min_per_group']}건 필요)"
+        return res
+    lA, lB = _median([x[0] for x in g["A"]]), _median([x[0] for x in g["B"]])
+    iA, iB = _median([x[1] for x in g["A"]]), _median([x[1] for x in g["B"]])
+    res.update(likes_A=lA, likes_B=lB, imp_A=iA, imp_B=iB)
+    if lB and lA >= rule["likes_ratio"] * lB and iA >= rule["impressions_floor"] * iB:
+        res["verdict"] = "A 우위(방향)"
+    elif lA and lB >= rule["likes_ratio"] * lA and iB >= rule["impressions_floor"] * iA:
+        res["verdict"] = "B 우위(방향)"
+    else:
+        res["verdict"] = "차이 불분명"
+    return res
+
+
+def exp_report(path=None):
+    d = exp_load(path)
+    lines = ["# 링크드인 A/B 실험 점검", "", "사전 약속: " + d.get("rule", EXP_RULE)["text"], ""]
+    for p in sorted(d["posts"], key=lambda x: x["planned"]):
+        s12, s24 = p["snaps"].get("12h"), p["snaps"].get("24h")
+        f = lambda s: "미측정" if not s else f"좋아요 {s['likes']}·노출 {s['impressions']}"
+        lines.append(f"- [{p['group']}] {p['planned']} {p['post']} {p['title'][:22]} | 12h {f(s12)} | 24h {f(s24)}")
+    v = exp_verdict(d["posts"], d.get("rule"))
+    lines += ["", f"판정: {v['verdict']}"]
+    if "likes_A" in v:
+        lines.append(f"  12h 좋아요 중앙값 A {v['likes_A']} / B {v['likes_B']}, 노출 중앙값 A {v['imp_A']} / B {v['imp_B']}")
+    return "\n".join(lines)
+
+
+EXP_CASES = [
+    ("표본 부족", [{"group": "A", "snaps": {"12h": {"likes": 20, "impressions": 900}}}] * 3 + [{"group": "B", "snaps": {"12h": {"likes": 5, "impressions": 800}}}] * 4, "표본 부족"),
+    ("A 우위", [{"group": "A", "snaps": {"12h": {"likes": 20, "impressions": 900}}}] * 4 + [{"group": "B", "snaps": {"12h": {"likes": 10, "impressions": 900}}}] * 4, "A 우위"),
+    ("B 우위", [{"group": "A", "snaps": {"12h": {"likes": 5, "impressions": 900}}}] * 4 + [{"group": "B", "snaps": {"12h": {"likes": 12, "impressions": 900}}}] * 4, "B 우위"),
+    ("차이 불분명(1.5배 미만)", [{"group": "A", "snaps": {"12h": {"likes": 12, "impressions": 900}}}] * 4 + [{"group": "B", "snaps": {"12h": {"likes": 10, "impressions": 900}}}] * 4, "차이 불분명"),
+    ("노출이 너무 작으면 A 우위가 아님", [{"group": "A", "snaps": {"12h": {"likes": 20, "impressions": 300}}}] * 4 + [{"group": "B", "snaps": {"12h": {"likes": 10, "impressions": 900}}}] * 4, "차이 불분명"),
+]
+
+
 # ---------------------------------------------------------------- selftest
 ROUTE_CASES = [
     ("홈 제목과 부제를 써 줘", "ux"), ("확인 창 버튼 문구 정해 줘", "ux"), ("오류 문구가 불친절하다 고쳐 줘", "ux"),
@@ -315,6 +416,13 @@ def selftest():
             ok_lint += 1
         else:
             fails.append(f"lint {name}: 기대 {exp}, 결과 {got}")
+    ok_exp = 0
+    for name, posts, exp_word in EXP_CASES:
+        got = exp_verdict(posts)["verdict"]
+        if got.startswith(exp_word):
+            ok_exp += 1
+        else:
+            fails.append(f"exp {name}: 기대 {exp_word}, 결과 {got}")
     held = []
     if CASES_PATH.exists():
         for line in CASES_PATH.read_text(encoding="utf-8").splitlines():
@@ -331,7 +439,7 @@ def selftest():
                 missing.append(g)
     if missing:
         fails.append(f"플레이북이 가리키는 파일 없음: {missing}")
-    print(f"route {ok_route}/{len(ROUTE_CASES)}, lint {ok_lint}/{len(LINT_CASES)}, 가이드 파일 경로 {'정상' if not missing else '문제'}")
+    print(f"route {ok_route}/{len(ROUTE_CASES)}, lint {ok_lint}/{len(LINT_CASES)}, 실험 판정 {ok_exp}/{len(EXP_CASES)}, 가이드 파일 경로 {'정상' if not missing else '문제'}")
     for f in fails:
         print("  실패:", f)
     return 0 if not fails else 1
@@ -351,6 +459,9 @@ def main(argv=None):
     a.add_argument("--context", default="generic"); a.add_argument("--title"); a.add_argument("--sub")
     a = sp.add_parser("routecase"); a.add_argument("request"); a.add_argument("expected", help="ux|copy|tech|brand|naming|none")
     a.add_argument("--tuned", action="store_true", help="이 발화를 보고 키워드를 고쳤으면 표시(보류 시험에서 빠진다)")
+    a = sp.add_parser("exp"); a.add_argument("action", choices=["add", "snap", "report"])
+    a.add_argument("--post"); a.add_argument("--group"); a.add_argument("--title", default=""); a.add_argument("--planned"); a.add_argument("--note", default="")
+    a.add_argument("--when"); a.add_argument("--likes", type=int); a.add_argument("--impressions", type=int); a.add_argument("--comments", type=int)
     a = sp.add_parser("report"); a.add_argument("--days", type=int)
     sp.add_parser("selftest")
     args = ap.parse_args(argv)
@@ -404,6 +515,17 @@ def main(argv=None):
         with CASES_PATH.open("a", encoding="utf-8", newline="\n") as f:
             f.write(json.dumps({"ts": datetime.now(KST).isoformat(timespec="seconds"), "request": args.request, "expected": exp, "got": got, "tuned": args.tuned}, ensure_ascii=False) + "\n")
         print("기록함:", "맞음" if got == exp else f"틀림(결과 {got})", "→", CASES_PATH)
+        return 0
+    if args.cmd == "exp":
+        try:
+            if args.action == "add":
+                exp_add(args.post, args.group, args.title, args.planned, args.note); print("등록함:", args.post, args.group)
+            elif args.action == "snap":
+                exp_snap(args.post, args.when, args.likes, args.impressions, args.comments); print("측정 기록:", args.post, args.when)
+            else:
+                print(exp_report())
+        except (ValueError, TypeError) as e:
+            print(f"거부: {e}", file=sys.stderr); return 2
         return 0
     if args.cmd == "report":
         text, _ = report(args.days, rb)
