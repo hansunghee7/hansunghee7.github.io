@@ -19,7 +19,9 @@ calllog() {  # calllog <누구> <초> <rc> <출력파일>
 }
 CARD="${1:?작업 카드 파일 경로}"
 OUT="${2:-/tmp/dex_reply_$(date +%Y%m%d_%H%M).md}"
-WORKDIR="${DEX_WORKDIR:?격리 작업 폴더 경로를 DEX_WORKDIR에 지정}"
+# 2026-10-06: 환경변수를 안 줘서 호출이 실패한 일이 N160·N161·10/6에 반복돼 기본 격리 폴더를 둔다(지정하면 그 값을 쓴다)
+WORKDIR="${DEX_WORKDIR:-/c/work/_ops/dex/topicwork}"
+mkdir -p "$WORKDIR" 2>/dev/null || true
 # 관문: 작업 폴더가 저장소 본 폴더이거나 비밀 폴더 아래면 멈춘다.
 case "$WORKDIR" in
   */hansunghee7.github.io|*/hansunghee7.github.io/*|*secrets*) echo "격리 폴더가 아님: $WORKDIR" >&2; exit 2;;
