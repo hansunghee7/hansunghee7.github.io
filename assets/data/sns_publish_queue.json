@@ -253,10 +253,10 @@
       ]
     },
     "publishAt": "2026-10-01T00:00:00.000Z",
-    "status": "registered",
+    "status": "cancelled",
     "approved_by": "사장님",
     "approved_quote": "우리 팀만 말하는 직원 편은 이미 제가 컨펌을 한 안입니다. 예약 등록 진행해주시고요. (2026-09-29, 채팅)",
-    "note": "full={\"data\": {\"platform\": \"facebook\", \"accountId\": \"facebook_1276868818845114\", \"issues\": [{\"code\": \"unsupported_format\", \"path\": [\"content\", \"media\", 0], \"params\": {\"field\": \"video\", \"format\": \"bin\", \"allowed\": \"mp4, mov, avi\"}, \"message\": \"Video format is not supported. Supported formats: mp4, mov, avi\"}]}, \"code\": 15051, \"message\": \"Publish content validation failed\", \"timestamp\": 1790682770927, \"requestId\": \"beg2capfkwbskph0ucyp6\"}",
+    "note": "full={\"data\": {\"platform\": \"facebook\", \"accountId\": \"facebook_1276868818845114\", \"issues\": [{\"code\": \"unsupported_format\", \"path\": [\"content\", \"media\", 0], \"params\": {\"field\": \"video\", \"format\": \"bin\", \"allowed\": \"mp4, mov, avi\"}, \"message\": \"Video format is not supported. Supported formats: mp4, mov, avi\"}]}, \"code\": 15051, \"message\": \"Publish content validation failed\", \"timestamp\": 1790682770927, \"requestId\": \"beg2capfkwbskph0ucyp6\"} | 2026-10-06 사장님 결정: Simplifier 페이지 폐지, 페이스북은 개인 프로필 직접 게시. 이 항목은 게시 안 됨(Meta 368)이라 취소 표시. AItoEarn 쪽 예약은 채널 연결 해제로 함께 정리",
     "flowId": "d505aa97-9ce1-4d8c-bb20-dced309dea7b",
     "registered_at": "2026-09-29T11:56:39.000Z"
   },
@@ -401,8 +401,8 @@
       ]
     },
     "publishAt": "2026-10-06T00:00:00.000Z",
-    "status": "registered",
-    "note": "승인됨(2026-09-30). from 원문 링크 줄 제거",
+    "status": "cancelled",
+    "note": "승인됨(2026-09-30). from 원문 링크 줄 제거 | 2026-10-06 사장님 결정: Simplifier 페이지 폐지, 페이스북은 개인 프로필 직접 게시. 이 항목은 게시 안 됨(Meta 368)이라 취소 표시. AItoEarn 쪽 예약은 채널 연결 해제로 함께 정리",
     "approved_by": "사장님",
     "approved_quote": "본문 내용 마야와 저의 작업과정 같아서 좋았습니다. 아래 내용(from 원문 링크 줄)만 삭제하고 승인합니다. (위의 콜투액션만 있어도 충분합니다.) (2026-09-30, 채팅)",
     "flowId": "aafb60c9-e8ea-4ca3-abab-cf2e1cec5d19",
@@ -475,8 +475,8 @@
       ]
     },
     "publishAt": "2026-10-08T00:00:00.000Z",
-    "status": "registered",
-    "note": "승인됨(2026-09-30). from 원문 링크 줄 없음",
+    "status": "cancelled",
+    "note": "승인됨(2026-09-30). from 원문 링크 줄 없음 | 2026-10-06 사장님 결정: Simplifier 페이지 폐지, 페이스북은 개인 프로필 직접 게시. 이 항목은 게시 안 됨(Meta 368)이라 취소 표시. AItoEarn 쪽 예약은 채널 연결 해제로 함께 정리",
     "approved_by": "사장님",
     "approved_quote": "승인 (2026-09-30, 채팅, 634번 텔레그램 전문 확인 뒤)",
     "flowId": "10e12bd6-8e85-4933-8416-f4fe368b2d83",
@@ -531,10 +531,10 @@
       ]
     },
     "publishAt": "2026-10-02T00:53:00.000Z",
-    "status": "registered",
+    "status": "cancelled",
     "approved_by": "사장님",
     "approved_quote": "추천안대로 진행 (2026-10-02, 채팅: 10/1 실패한 632 페이스북을 사진+관련글 링크 1개로 지금 다시 올려 신원 확인 효과 확인)",
-    "note": "10/1 페이스북 실패(Meta 368 신원 확인) 뒤 사장님 신원 확인, 재게시로 해제 여부 확인",
+    "note": "10/1 페이스북 실패(Meta 368 신원 확인) 뒤 사장님 신원 확인, 재게시로 해제 여부 확인 | 2026-10-06 사장님 결정: Simplifier 페이지 폐지, 페이스북은 개인 프로필 직접 게시. 이 항목은 게시 안 됨(Meta 368)이라 취소 표시. AItoEarn 쪽 예약은 채널 연결 해제로 함께 정리",
     "flowId": "cbe1a87d-ae18-432e-9ac4-d23617d659be",
     "registered_at": "2026-10-02T00:47:16.000Z"
   },
@@ -559,10 +559,10 @@
       ]
     },
     "publishAt": "2026-10-05T23:25:00.000Z",
-    "status": "registered",
+    "status": "cancelled",
     "approved_by": "사장님",
     "approved_quote": "추천안대로 진행 (2026-10-02, 채팅: 632 페이스북을 사진+관련글 링크 1개로 다시 올려 신원 확인 효과 확인). 업무대장 N21: 10/6 08:00 세션에서 시험 게시(사장님 10/2 결정)",
-    "note": "N21 신원 확인(10/2 10시 제출) 뒤 첫 시험 게시. 10/2 재시도는 제출 전(09:53)이라 무효",
+    "note": "N21 신원 확인(10/2 10시 제출) 뒤 첫 시험 게시. 10/2 재시도는 제출 전(09:53)이라 무효 | 2026-10-06 사장님 결정: Simplifier 페이지 폐지, 페이스북은 개인 프로필 직접 게시. 이 항목은 게시 안 됨(Meta 368)이라 취소 표시. AItoEarn 쪽 예약은 채널 연결 해제로 함께 정리",
     "flowId": "8230f045-43a2-44f2-b4db-c7b59333fa60",
     "registered_at": "2026-10-05T22:55:50.000Z"
   }
