@@ -85,6 +85,22 @@ jobs:
             PYTHONUTF8=1 python3 "$t" || fail=1
           done
           exit $fail
+      - name: 운영 스크립트 시험
+        if: github.event_name == 'pull_request'
+        timeout-minutes: 3
+        env:
+          PYTHONUTF8: "1"
+        run: |
+          shopt -s nullglob
+          tests=(scripts/ops/tests/test_*.py)
+          if ((${#tests[@]} == 0)); then
+            echo "운영 스크립트 시험 파일이 없어 건너뜁니다."
+            exit 0
+          fi
+          if ! python3 -m pytest --version >/dev/null 2>&1; then
+            python3 -m pip install pytest
+          fi
+          python3 -m pytest scripts/ops/tests -q
 
       # 2026-10-06 도입(탐 N171): jobs.toml 한 줄에 제어 문자(0x0b)가 들어가 파싱이 깨져
       # 감시 대장 38건이 멈췄는데 CI가 못 잡았다(PR 1943).
