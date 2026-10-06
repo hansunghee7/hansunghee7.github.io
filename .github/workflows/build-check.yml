@@ -86,6 +86,12 @@ jobs:
           done
           exit $fail
 
+      # 2026-10-06 도입(탐 N171): jobs.toml 한 줄에 제어 문자(0x0b)가 들어가 파싱이 깨져
+      # 감시 대장 38건이 멈췄는데 CI가 못 잡았다(PR 1943).
+      - name: 감시 대장(jobs.toml) 파싱 검사
+        if: github.event_name == 'pull_request'
+        run: python3 scripts/check_jobs_toml.py
+
       - name: Set up Ruby (GitHub Pages와 동일한 gem 구성)
         uses: ruby/setup-ruby@v1
         with:
