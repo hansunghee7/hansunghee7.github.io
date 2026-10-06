@@ -34,7 +34,7 @@ def _dyn_day_krw():
 
 
 DAY_KRW = float(os.environ["VERTEX_DAY_KRW"]) if os.environ.get("VERTEX_DAY_KRW") else _dyn_day_krw()  # 사장님 10/5: 잔액 ₩326,145 전부를 12/23 만료까지 쓰는 일 상한(÷78일). 추정 단가가 실측 전이라 아래 누적 상한도 같이 건다
-TOTAL_KRW = float(os.environ.get("VERTEX_TOTAL_KRW", "277000"))  # 10/5부터 누적 추정 비용 상한(잔액의 85%). 추정이 실제보다 낮게 나올 위험에 대한 안전판, 결제 화면 대조(대장 N160) 뒤에 조정
+TOTAL_KRW = float(os.environ.get("VERTEX_TOTAL_KRW", "600000"))  # 10/5부터 누적 추정 비용 상한. 10/7 회사 크레딧 ₩408K 추가로 두 풀 합계 약 ₩711K의 85%로 올림(월 30~40만 원 사용 사장님 10/7). 추정이 실제보다 낮게 나올 위험에 대한 안전판, 결제 화면 대조(대장 N160) 뒤에 조정
 # 몫별 하루 상한(원, 사장님 승인 10/4, 대장 N120): 합계 DAY_KRW와 함께 코드로 강제한다. who가 목록에 없으면 예비 몫.
 WHO_KRW = {}  # 사장님 10/5: 사람별 몫 상한을 없앴다(모두가 최대한 쓰고 전체 일 상한만 건다). 예전 값: 지투·비티 500, 타미 300, 헤르메스 1000
 RESERVE_KRW = float("inf")
