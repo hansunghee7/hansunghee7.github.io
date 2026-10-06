@@ -437,6 +437,71 @@
     </figure>
   </section>
 
+  <!-- ===== 카빗 사이트·서비스 연계도 (2026-10-06 노트 추가) ===== -->
+  <section class="sec">
+    <h2>카빗 사이트와 서비스는 이렇게 이어집니다<button type="button" class="info-dot" aria-label="설명 보기">ⓘ<span class="info-text">2026-10-06에 코드(simplifier-saegim의 mcp_server.py·pass_pin.py·cloudflare/mcp-proxy·cloudflare/mail-inbox·.github/workflows, carvit-ai의 index.html·menu.json, saegim-pass의 config.js·cloud.js)와 대조해 그렸습니다. 코드에서 확인된 선만 그렸고, 실시간 상태가 아니라 점검 시점의 구조입니다.</span></button></h2>
+    <figure class="diagram-card">
+      <svg viewBox="0 0 1200 540" role="img" aria-label="방문자는 carvit.ai 사이트에서 로그인 링크로 mcp.carvit.ai에 들어가고, 이 Worker가 Cloud Run의 새김 서버로 요청을 넘긴다. AI 도구도 같은 주소의 /mcp로 연결한다. 새김 서버는 Supabase에 가이드와 기록을 읽고 쓰고, 로그인은 WorkOS AuthKit(구글·깃허브)을 거친다. 카빗 패스 크롬 확장은 WorkOS로 로그인하고 새김 서버에서 PIN 잠금을 받는다. 가이드 원본이 바뀌거나 매일 새벽 3시(한국시간)에 GitHub Actions의 reseed-guides가 Supabase의 가이드 절을 갱신한다. 카빗 대표 메일 주소로 온 메일은 별도 Worker가 받아 텔레그램으로 알린다.">
+        <defs>
+          <marker id="arrow4" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--dim)"></path></marker>
+          <marker id="arrow4-warn" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--warn)"></path></marker>
+        </defs>
+
+        <rect class="node-box" x="30" y="40" width="200" height="64" rx="9"></rect>
+        <text class="node-title" x="130" y="65" text-anchor="middle">방문자·고객</text>
+        <text class="node-sub" x="130" y="82" text-anchor="middle">브라우저</text>
+        <rect class="node-box" x="290" y="40" width="230" height="64" rx="9"></rect>
+        <text class="node-title" x="405" y="65" text-anchor="middle">carvit.ai 사이트</text>
+        <text class="node-sub" x="405" y="82" text-anchor="middle">carvit-ai 저장소 · 정적 페이지</text>
+        <rect class="node-box" x="560" y="40" width="230" height="64" rx="9"></rect>
+        <text class="node-title" x="675" y="65" text-anchor="middle">mcp.carvit.ai</text>
+        <text class="node-sub" x="675" y="82" text-anchor="middle">Cloudflare Worker(mcp-proxy)</text>
+        <rect class="node-box hub" x="860" y="22" width="310" height="100" rx="9"></rect>
+        <text class="node-title" x="1015" y="47" text-anchor="middle">새김 서버 (Cloud Run)</text>
+        <text class="node-sub" x="1015" y="64" text-anchor="middle">mcp_server.py · 화면과 MCP 도구와 PIN 잠금</text>
+        <rect class="node-box" x="30" y="250" width="200" height="64" rx="9"></rect>
+        <text class="node-title" x="130" y="275" text-anchor="middle">AI 도구</text>
+        <text class="node-sub" x="130" y="292" text-anchor="middle">Claude Code·Codex 등</text>
+        <rect class="node-box" x="330" y="250" width="230" height="64" rx="9"></rect>
+        <text class="node-title" x="445" y="275" text-anchor="middle">WorkOS AuthKit</text>
+        <text class="node-sub" x="445" y="292" text-anchor="middle">구글·깃허브 로그인 중계</text>
+        <rect class="node-box" x="640" y="250" width="200" height="64" rx="9"></rect>
+        <text class="node-title" x="740" y="275" text-anchor="middle">카빗 패스 확장</text>
+        <text class="node-sub" x="740" y="292" text-anchor="middle">saegim-pass · 크롬</text>
+        <rect class="node-box" x="930" y="250" width="240" height="64" rx="9"></rect>
+        <text class="node-title" x="1050" y="275" text-anchor="middle">Supabase</text>
+        <text class="node-sub" x="1050" y="292" text-anchor="middle">가이드 절·사용 기록·계정</text>
+        <rect class="node-box" x="30" y="430" width="230" height="64" rx="9"></rect>
+        <text class="node-title" x="145" y="455" text-anchor="middle">가이드 원본</text>
+        <text class="node-sub" x="145" y="472" text-anchor="middle">docs/guides/UX_GUIDE.md</text>
+        <rect class="node-box" x="340" y="430" width="300" height="64" rx="9"></rect>
+        <text class="node-title" x="490" y="455" text-anchor="middle">GitHub Actions</text>
+        <text class="node-sub" x="490" y="472" text-anchor="middle">reseed-guides · deploy-cloud-run · 증거 집계</text>
+        <rect class="node-box" x="860" y="430" width="310" height="64" rx="9"></rect>
+        <text class="node-title" x="1015" y="455" text-anchor="middle">카빗 대표 메일 받은편지함</text>
+        <text class="node-sub" x="1015" y="472" text-anchor="middle">mail-inbox Worker → 텔레그램 지투 방</text>
+        <g class="edge" marker-end="url(#arrow4)"><line x1="232" y1="72" x2="288" y2="72"></line></g>
+        <g class="edge" marker-end="url(#arrow4)"><line x1="522" y1="72" x2="558" y2="72"></line></g>
+        <text class="edge-label" x="540" y="62" text-anchor="middle">로그인 링크</text>
+        <g class="edge" marker-end="url(#arrow4)"><line x1="792" y1="72" x2="858" y2="72"></line></g>
+        <g class="edge" marker-end="url(#arrow4)"><path d="M130,248 L130,170 L675,170 L675,106" fill="none"></path></g>
+        <text class="edge-label" x="400" y="162" text-anchor="middle">MCP 연결 /mcp (설치 코드)</text>
+        <g class="edge" marker-end="url(#arrow4)"><line x1="840" y1="290" x2="880" y2="124"></line></g>
+        <text class="edge-label" x="792" y="205" text-anchor="end">PIN 잠금</text>
+        <g class="edge" marker-end="url(#arrow4)"><line x1="870" y1="124" x2="520" y2="248"></line></g>
+        <text class="edge-label" x="660" y="190" text-anchor="middle">로그인 중계</text>
+        <g class="edge" marker-end="url(#arrow4)"><line x1="638" y1="282" x2="562" y2="282"></line></g>
+        <text class="edge-label" x="600" y="272" text-anchor="middle">로그인</text>
+        <g class="edge" marker-end="url(#arrow4)"><line x1="1050" y1="124" x2="1050" y2="248"></line></g>
+        <text class="edge-label" x="1062" y="190" text-anchor="start">가이드·기록 읽기 쓰기</text>
+        <g class="edge auto"><line x1="262" y1="462" x2="338" y2="462" marker-end="url(#arrow4-warn)"></line></g>
+        <g class="edge auto"><path d="M590,428 L590,380 L1050,380 L1050,316" fill="none" marker-end="url(#arrow4-warn)"></path></g>
+        <text class="edge-label auto" x="820" y="372" text-anchor="middle">reseed-guides: 매일 03:00 KST + 원본 변경 때 가이드 절 갱신</text>
+      </svg>
+      <figcaption>실선은 사람이나 도구가 시작하는 흐름, 주황 점선은 GitHub Actions가 스스로 돌며 가이드를 갱신하는 자동 흐름입니다. 방문자와 AI 도구는 모두 mcp.carvit.ai(Cloudflare Worker)를 지나 Cloud Run의 새김 서버로 들어가고, 가이드와 사용 기록은 Supabase에 있습니다. 카빗 패스 확장은 Worker를 거치지 않고 Cloud Run 주소로 PIN 잠금을 받습니다. 카빗 대표 메일 받은편지함은 이 흐름과 따로 도는 메일 접수 Worker입니다.</figcaption>
+    </figure>
+  </section>
+
   <!-- ===== 감시망 ===== -->
   <section class="sec">
     <h2>장애를 잡는 3중 감시망<button type="button" class="info-dot" aria-label="설명 보기">ⓘ<span class="info-text">2026-08-29 하루에 사이트 전체 빌드 실패 2번 + 로고 자산 격리 사고 1번을 겪은 뒤 같은 날 밤 구축했습니다. 세 경로가 서로 독립이라(각각 GitHub Actions / 외부 SaaS / claude.ai) 하나가 죽어도 나머지가 잡습니다.</span></button></h2>
@@ -537,6 +602,9 @@
     <p class="sec-note">이 구조를 처음 점검했을 때(2026-08-29) 나온 항목과 처리 결과입니다.</p>
 
     <div class="log-list">
+      <div class="log-item"><span class="dot done"></span><div><b>2026-10-06</b>: 카빗 사이트·서비스 연계도 한 장 추가(노트). 방문자와 AI 도구가 mcp.carvit.ai를 지나 새김 서버·Supabase로 이어지는 길, 카빗 패스 확장의 로그인과 PIN 잠금, 가이드 원본이 reseed로 심기는 길을 코드와 대조해 그렸고 확인하지 못한 선은 그리지 않았습니다.
+        <span class="files">insight-7b3e9f2c/system-map.html</span>
+      </div></div>
       <div class="log-item"><span class="dot done"></span><div><b>2026-10-06</b>: SNS 콘텐츠 제작·발행·성과 수집 연계도를 추가했습니다(탐 요청, 마야 작성). 글 원본에서 홈페이지 예약 공개, 인스타 큐(초안, 사장님 승인, AItoEarn), 네이버·브런치 예약발행, 크롬 직접 등록으로 나뉘고, 성과는 네 갈래 수집을 거쳐 마야 KPI 분석으로 모입니다. 코드와 선 하나씩 대조해 그렸고, 코드에 없는 크롬 직접 등록 길은 설명 말풍선에 기준을 밝혔습니다.
         <span class="files">insight-7b3e9f2c/system-map.html</span>
       </div></div>
