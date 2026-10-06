@@ -302,3 +302,12 @@ cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\vertex_daily_metrics
 every_min = 1440
 name = "Vertex·라우터 일일 지표(호출·비용·무료 전환·라우터 통과·최종 실패, vertex_daily_metrics.py)"
 note = "2026-10-06 탐 등록(대장 N160 G1 완료 기준의 1주 비교 숫자). 결과 C:/work/_ops/vertex_metrics.md(멱등, 매번 전체 다시 씀). 종료 코드 1 = 로그 읽기 오류"
+
+[[job]]
+id = "fn:saegim-usage"
+kind = "cmd"
+cmd = ["python", 'C:/work/hansunghee7.github.io/scripts/ops/saegim_usage_fetch.py']
+timeout = 180
+every_min = 1440
+name = "새김 서버 사용량 받기(gcp-usage 산출물 → C:/work/_ops/saegim_usage, saegim_usage_fetch.py)"
+note = "2026-10-06 탐 등록(대장 N164·G3 다음 단계). 최근 성공 실행의 artifact를 날짜별 파일과 일일 요약 한 줄로 쌓는다(멱등). 운영 DB 표는 새 표 DDL 필요라 보류. 종료 코드 1 = 성공 실행·산출물 없음, 2 = gh 오류. 10/12 중간 보고·10/31 결정 자료의 재료"
