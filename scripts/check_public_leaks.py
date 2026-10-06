@@ -74,7 +74,7 @@ def email_allowed(addr):
 def added_lines(base, head):
     """(파일 경로, 추가된 줄) 목록. 바이너리는 git이 빼 준다."""
     out = subprocess.run(
-        ["git", "diff", "--unified=0", "--no-color", f"{base}...{head}"],
+        ["git", "-c", "core.quotepath=false", "diff", "--unified=0", "--no-color", f"{base}...{head}"],  # 한글 파일명이 따옴표로 감싸져 통째로 건너뛰던 구멍(10/6 H1 P1)
         capture_output=True, text=True, encoding="utf-8", errors="replace", check=True,
     ).stdout
     path = None

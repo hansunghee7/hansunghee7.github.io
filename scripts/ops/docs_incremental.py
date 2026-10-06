@@ -5,6 +5,7 @@
 임베딩: 로컬 ollama(bge-m3)만 쓴다. 비공개 문서가 외부로 나가지 않는다. ollama가 꺼져 있으면 적재만 하고 임베딩은 다음 실행으로 넘긴다(종료 코드 0, 빈 행 수를 출력).
 사용: python scripts/ops/docs_incremental.py [--dry]    종료 코드 1 = DB 오류"""
 import json
+import os
 import sys
 import urllib.request
 from pathlib import Path
@@ -40,6 +41,13 @@ def main():
     now = {r['path'] for r in rows}
     changed = [r for r in rows if old.get(r['path']) != (r['mtime'], r['bytes'])]
     gone = [p for p in old if p not in now]
+    missing = [k for k, root in imp.ROOTS.items() if not os.path.isdir(root)]
+    if missing:  # 이 PC에 없는 저장소의 문서를 '사라짐'으로 보고 지우던 구멍(10/6 H1 P1)
+        print('저장소 폴더 없음 → 삭제 건너뜀:', missing)
+        gone = []
+    if len(gone) > max(20, int(len(old) * 0.2)):
+        print(f'삭제 대상 {len(gone)}개가 너무 많아 중단(DB {len(old)}개)')
+        return 1
     print(f'DB {len(old)}개 / 지금 {len(rows)}개 → 새로·바뀐 {len(changed)}개, 사라진 {len(gone)}개')
     if dry:
         return 0

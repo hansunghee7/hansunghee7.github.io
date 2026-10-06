@@ -23,7 +23,7 @@ import opsdb  # noqa: E402
 
 PROJ = Path(os.path.expanduser('~')) / '.claude' / 'projects'
 KST = timezone(timedelta(hours=9))
-SECRET = re.compile(r'(sk-[A-Za-z0-9_-]{10,}|AIza[0-9A-Za-z_-]{20,}|sb_secret_[\w-]+|sbp_[0-9a-f]{20,}|ghp_\w{20,}|github_pat_\w{20,}|xox[bp]-[\w-]+|-----BEGIN[\s\S]{0,40}|eyJ[\w-]{20,}\.[\w-]{10,}\.[\w-]{10,})')
+SECRET = re.compile(r'(sk-[A-Za-z0-9_-]{10,}|AIza[0-9A-Za-z_-]{20,}|sb_secret_[\w-]+|sbp_[0-9a-f]{20,}|ghp_\w{20,}|github_pat_\w{20,}|xox[bp]-[\w-]+|-----BEGIN[\s\S]*?(?:-----END[^-]*-----|$)|eyJ[\w-]{20,}\.[\w-]{10,}\.[\w-]{10,})')
 SKIP = ('<system-reminder', 'SYSTEM NOTIFICATION', '[Subagent hand-back]', '<cross-session-message', '<task-notification', '<command-name>', '<local-command', 'Stop hook feedback', 'Caveat:')
 PERSONAS = ['클라우드탐', '탐', '핏', '마야', '지투', '노트', '비티', '덱스', '타미']
 
