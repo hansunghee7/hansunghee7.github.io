@@ -53,7 +53,19 @@ NAV_LINK = re.compile(r"<a\b[^>]*href=", re.I)
 
 
 def git(*args):
-    return subprocess.run(["git", *args], capture_output=True, text=True).stdout
+    return subprocess.run(["git", "-c", "core.quotepath=false", *args], capture_output=True, text=True).stdout  # 한글 파일명 따옴표 방지(10/6 H1 P1)
+
+
+def verify_refs(base, head):
+    """기준·대상 커밋과 공통 조상이 없으면 검사를 못 하므로 실패로 알린다(얕은 clone·없는 ref에서 '변경 없음'으로 통과하던 구멍, 10/6 H1 P1)."""
+    for ref in (base, head):
+        if subprocess.run(["git", "rev-parse", "--verify", "--quiet", ref], capture_output=True).returncode:
+            print(f"검사 불가: 커밋 {ref}을 찾을 수 없습니다.")
+            return False
+    if subprocess.run(["git", "merge-base", base, head], capture_output=True).returncode:
+        print(f"검사 불가: {base}와 {head}의 공통 조상이 없습니다(얕은 clone이면 fetch-depth를 늘리세요).")
+        return False
+    return True
 
 
 ROBOTS_NOINDEX = re.compile(r"<meta[^>]+name=[\"']robots[\"'][^>]*noindex|^noindex:\s*true|^sitemap:\s*false", re.I | re.M)
@@ -155,6 +167,8 @@ def approval_text(base, head="HEAD"):
 def main():
     base = sys.argv[1] if len(sys.argv) > 1 else "origin/main"
     head = sys.argv[2] if len(sys.argv) > 2 else "HEAD"   # 과거 커밋 검증용
+    if not verify_refs(base, head):
+        return 1
     findings = find_exposure(base, head)
 
     if not findings:

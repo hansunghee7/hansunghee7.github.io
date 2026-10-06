@@ -158,9 +158,23 @@ def find_long_posts(base, head="HEAD"):
     return long_posts
 
 
+def verify_refs(base, head):
+    """커밋을 못 찾거나 공통 조상이 없으면 '줄표 없음'으로 통과하지 않고 실패한다(10/6 H1 P1)."""
+    for ref in (base, head):
+        if subprocess.run(["git", "rev-parse", "--verify", "--quiet", ref], capture_output=True).returncode:
+            print(f"검사 불가: 커밋 {ref}을 찾을 수 없습니다.")
+            return False
+    if subprocess.run(["git", "merge-base", base, head], capture_output=True).returncode:
+        print(f"검사 불가: {base}와 {head}의 공통 조상이 없습니다(얕은 clone이면 fetch-depth를 늘리세요).")
+        return False
+    return True
+
+
 def main():
     base = sys.argv[1] if len(sys.argv) > 1 else "origin/main"
     head = sys.argv[2] if len(sys.argv) > 2 else "HEAD"
+    if not verify_refs(base, head):
+        return 1
     findings = find_violations(base, head)
     long_posts = find_long_posts(base, head)
 
