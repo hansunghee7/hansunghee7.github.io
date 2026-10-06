@@ -28,6 +28,23 @@ CHANNELS = [
 ]
 
 
+def add_utm(body, source, post_no):
+    """본문 속 simplifier.co.kr 글 링크에 UTM을 붙인다(docs/UTM_규칙.md, 2026-10-06 마야).
+
+    왜: 링크에 UTM이 없으면 GA4에서 어느 글·채널이 방문을 만들었는지 못 나눈다(마야 KPI: 좋아요·조회수를
+    홈페이지 유입으로 연결). campaign은 이 SNS 글의 홈페이지 원본 번호(new_<번호>), content는 링크가 가리키는 글 번호.
+    """
+    def repl(m):
+        url, link_id, query = m.group(0), m.group(1), m.group(2) or ""
+        if "utm_" in query:
+            return url
+        base = f"https://simplifier.co.kr/logs/{link_id}" + ("/" if url.rstrip("?").split("?")[0].endswith("/") else "")
+        extra = (query[1:] + "&") if query else ""
+        return (f"{base}?{extra}utm_source={source}&utm_medium=social"
+                f"&utm_campaign=new_{post_no}&utm_content=post_{link_id}")
+    return re.sub(r"https://simplifier\.co\.kr/logs/(\d+)/?(\?\S*)?", repl, body)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("post_no")
@@ -63,7 +80,7 @@ def main():
         item_id = f"{a.date}-{pid}-{a.post_no}"
         if item_id in existing:
             continue
-        content = {"title": title, "body": body}
+        content = {"title": title, "body": add_utm(body, plat, a.post_no)}
         if needs_img and cover:
             content["media_source"] = [str(cover.relative_to(root)).replace("\\", "/")]
         q.append({"id": item_id, "post_ref": a.post_no, "platform": plat, "accountId": acc, "option": opt,
