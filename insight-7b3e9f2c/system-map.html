@@ -256,6 +256,100 @@
     </figure>
   </section>
 
+  <!-- ===== AI 모델 길목 (2026-10-06 추가) ===== -->
+  <section class="sec">
+    <h2>에이전트가 AI 모델을 부르는 길<button type="button" class="info-dot" aria-label="설명 보기">ⓘ<span class="info-text">2026-10-06에 코드(scripts/ops/ask_bt.sh·ask_dex.sh·ask_vertex.py·omni_gateway.py·or_ask.py·quota.py)와 대조해 그렸습니다. 코드에서 확인된 길만 그렸고, 실시간 상태가 아니라 점검 시점의 구조입니다.</span></button></h2>
+    <figure class="diagram-card">
+      <svg viewBox="0 0 1200 560" role="img" aria-label="에이전트 세션이 비티를 부르면 제미나이, 옴니라우터, 소넷, Vertex 순서로 한도나 오류가 날 때 다음 길로 넘어간다. Vertex 상한에 닿으면 무료 모델 묶음으로 간다. 덱스는 Codex CLI를 격리 폴더에서 실행한다. quota.py가 호출을 기록하고 막힘을 판정한다. 헤르메스는 OpenRouter 무료 모델을 쓴다.">
+        <defs>
+          <marker id="arrow3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--dim)"></path></marker>
+          <marker id="arrow3-warn" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--warn)"></path></marker>
+        </defs>
+
+        <rect class="node-box hub" x="30" y="250" width="200" height="64" rx="9"></rect>
+        <text class="node-title" x="130" y="275" text-anchor="middle">에이전트 세션</text>
+        <text class="node-sub" x="130" y="292" text-anchor="middle">탐·마야·지투·핏·노트</text>
+
+        <rect class="node-box" x="280" y="132" width="150" height="56" rx="9"></rect>
+        <text class="node-title" x="355" y="157" text-anchor="middle">비티 자문</text>
+        <text class="node-sub" x="355" y="174" text-anchor="middle">ask_bt.sh</text>
+
+        <rect class="node-box" x="500" y="130" width="140" height="60" rx="9"></rect>
+        <text class="node-title" x="570" y="155" text-anchor="middle">① 제미나이</text>
+        <text class="node-sub" x="570" y="172" text-anchor="middle">안티그래비티 · 무료</text>
+
+        <rect class="node-box" x="670" y="130" width="140" height="60" rx="9"></rect>
+        <text class="node-title" x="740" y="155" text-anchor="middle">② 옴니라우터</text>
+        <text class="node-sub" x="740" y="172" text-anchor="middle">무료 모델 묶음</text>
+
+        <rect class="node-box" x="840" y="130" width="140" height="60" rx="9"></rect>
+        <text class="node-title" x="910" y="155" text-anchor="middle">③ 소넷</text>
+        <text class="node-sub" x="910" y="172" text-anchor="middle">Claude</text>
+
+        <rect class="node-box" x="1010" y="130" width="140" height="60" rx="9"></rect>
+        <text class="node-title" x="1080" y="155" text-anchor="middle">④ Vertex</text>
+        <text class="node-sub" x="1080" y="172" text-anchor="middle">GCP 크레딧</text>
+
+        <rect class="node-box" x="280" y="330" width="150" height="56" rx="9"></rect>
+        <text class="node-title" x="355" y="355" text-anchor="middle">덱스 자문</text>
+        <text class="node-sub" x="355" y="372" text-anchor="middle">ask_dex.sh</text>
+
+        <rect class="node-box" x="500" y="328" width="200" height="60" rx="9"></rect>
+        <text class="node-title" x="600" y="353" text-anchor="middle">Codex CLI</text>
+        <text class="node-sub" x="600" y="370" text-anchor="middle">격리 폴더에서만 실행</text>
+
+        <rect class="node-box" x="30" y="450" width="220" height="64" rx="9"></rect>
+        <text class="node-title" x="140" y="475" text-anchor="middle">quota.py 한도 관문</text>
+        <text class="node-sub" x="140" y="492" text-anchor="middle">비티·덱스 호출을 기록하고 막힘 판정</text>
+
+        <rect class="node-box" x="310" y="450" width="160" height="64" rx="9"></rect>
+        <text class="node-title" x="390" y="475" text-anchor="middle">헤르메스</text>
+        <text class="node-sub" x="390" y="492" text-anchor="middle">로컬 실행·수집</text>
+
+        <rect class="node-box" x="520" y="450" width="220" height="64" rx="9"></rect>
+        <text class="node-title" x="630" y="475" text-anchor="middle">OpenRouter 무료 모델</text>
+        <text class="node-sub" x="630" y="492" text-anchor="middle">nemotron · 하루 1,000회 공유</text>
+
+        <rect class="node-box" x="790" y="450" width="260" height="64" rx="9"></rect>
+        <text class="node-title" x="920" y="475" text-anchor="middle">or_ask.py (LiteLLM)</text>
+        <text class="node-sub" x="920" y="492" text-anchor="middle">OpenRouter 모델 비교 시험용 · 상시 길목 아님</text>
+
+        <g class="edge" marker-end="url(#arrow3)"><line x1="230" y1="262" x2="296" y2="180"></line></g>
+        <text class="edge-label" x="240" y="215" text-anchor="end">자문 요청</text>
+
+        <g class="edge" marker-end="url(#arrow3)"><line x1="432" y1="160" x2="498" y2="160"></line></g>
+
+        <g class="edge" marker-end="url(#arrow3)"><line x1="642" y1="160" x2="668" y2="160"></line></g>
+
+        <g class="edge" marker-end="url(#arrow3)"><line x1="812" y1="160" x2="838" y2="160"></line></g>
+
+        <g class="edge" marker-end="url(#arrow3)"><line x1="982" y1="160" x2="1008" y2="160"></line></g>
+
+        <text class="edge-label" x="745" y="112" text-anchor="middle">한도·오류가 나면 다음 길로</text>
+
+        <g class="edge auto"><path d="M1080,192 L1080,240 L740,240 L740,194" fill="none" marker-end="url(#arrow3-warn)"></path></g>
+        <text class="edge-label auto" x="910" y="258" text-anchor="middle">Vertex 상한에 닿으면 무료 모델 묶음으로</text>
+
+        <g class="edge" marker-end="url(#arrow3)"><line x1="230" y1="300" x2="296" y2="352"></line></g>
+        <text class="edge-label" x="240" y="332" text-anchor="end">자문 요청</text>
+
+        <g class="edge" marker-end="url(#arrow3)"><line x1="432" y1="358" x2="498" y2="358"></line></g>
+
+        <g class="edge" marker-end="url(#arrow3)"><line x1="140" y1="316" x2="140" y2="448"></line></g>
+        <text class="edge-label" x="152" y="390" text-anchor="start">호출 전 확인</text>
+
+        <g class="edge" marker-end="url(#arrow3)"><line x1="215" y1="316" x2="340" y2="448"></line></g>
+        <text class="edge-label" x="296" y="420" text-anchor="end">실행 위임</text>
+
+        <g class="edge" marker-end="url(#arrow3)"><line x1="472" y1="482" x2="518" y2="482"></line></g>
+
+        <g class="edge" marker-end="url(#arrow3)"><line x1="742" y1="482" x2="788" y2="482"></line></g>
+
+      </svg>
+      <figcaption>비티는 무료 길부터 차례로 갑니다: 안티그래비티 제미나이, 옴니라우터 무료 묶음, 소넷, 마지막이 GCP 크레딧(Vertex)입니다. 주황 점선은 Vertex 상한에 닿으면 무료 묶음으로 돌아가는 장애 전환입니다. 덱스는 질문 답변이 아니라 코드를 실행하는 길이라 비티와 이어지지 않습니다. 헤르메스는 OpenRouter 무료 모델을 기본으로 씁니다. LiteLLM은 OpenRouter 모델을 비교해 보는 시험 호출기(or_ask.py)에서만 쓰이고 평소 길목이 아닙니다.</figcaption>
+    </figure>
+  </section>
+
   <!-- ===== 감시망 ===== -->
   <section class="sec">
     <h2>장애를 잡는 3중 감시망<button type="button" class="info-dot" aria-label="설명 보기">ⓘ<span class="info-text">2026-08-29 하루에 사이트 전체 빌드 실패 2번 + 로고 자산 격리 사고 1번을 겪은 뒤 같은 날 밤 구축했습니다. 세 경로가 서로 독립이라(각각 GitHub Actions / 외부 SaaS / claude.ai) 하나가 죽어도 나머지가 잡습니다.</span></button></h2>
@@ -356,7 +450,7 @@
     <p class="sec-note">이 구조를 처음 점검했을 때(2026-08-29) 나온 항목과 처리 결과입니다.</p>
 
     <div class="log-list">
-      <div class="log-item"><span class="dot done"></span><div><b>2026-10-06</b>: 재점검. 워크플로 파일을 <code>ls .github/workflows/*.yml</code>로 다시 세니 21개로, 2026-09-19 이후 <code>publish-sns.yml</code>(승인된 SNS 큐 발행)과 <code>verify-facebook-token.yml</code>(토큰이 가리키는 페이지 확인용 임시 워크플로) 2개가 늘어 통계 타일·다이어그램 노드를 고침. 새로 생긴 것: ① <b>감시 대장</b> <code>scripts/ops/jobs.toml</code>에 주기 작업 40건을 등록하고 15분마다 점검해 결과를 상태판으로 모음(CI가 대장 파싱 오류를 PR 단계에서 막음). 새 정기 작업은 지금 1회 실행해 성공을 확인한 뒤 등록하고 첫 자동 실행까지 확인해야 완료로 침. ② <b>운영 DB</b>: 업무대장·공정 카드·작업 기록·SNS와 유튜브 성과 시계열을 DB에 쌓고, 기록은 도구로 직접 씀. ③ <b>알림 채널</b>은 텔레그램 하나로 통일. ④ 외부 서비스 표에 Telegram 봇·Google Cloud(Vertex AI)·Composio·AItoEarn을 추가. 정리한 것: 클라우드 세션을 원격으로 띄워 일을 맡기는 경로는 크레딧이 줄지 않고 대화 길이만 늘어 접음(루틴 정지). 글 발행 경로 그림은 그대로 맞아서 두고, 운영 쪽은 "운영 자동화는 이렇게 돕니다" 그림을 새로 추가함. 점검 시점의 스냅샷이라는 성격은 같음.
+      <div class="log-item"><span class="dot done"></span><div><b>2026-10-06</b>: 재점검. 워크플로 파일을 <code>ls .github/workflows/*.yml</code>로 다시 세니 21개로, 2026-09-19 이후 <code>publish-sns.yml</code>(승인된 SNS 큐 발행)과 <code>verify-facebook-token.yml</code>(토큰이 가리키는 페이지 확인용 임시 워크플로) 2개가 늘어 통계 타일·다이어그램 노드를 고침. 새로 생긴 것: ① <b>감시 대장</b> <code>scripts/ops/jobs.toml</code>에 주기 작업 40건을 등록하고 15분마다 점검해 결과를 상태판으로 모음(CI가 대장 파싱 오류를 PR 단계에서 막음). 새 정기 작업은 지금 1회 실행해 성공을 확인한 뒤 등록하고 첫 자동 실행까지 확인해야 완료로 침. ② <b>운영 DB</b>: 업무대장·공정 카드·작업 기록·SNS와 유튜브 성과 시계열을 DB에 쌓고, 기록은 도구로 직접 씀. ③ <b>알림 채널</b>은 텔레그램 하나로 통일. ④ 외부 서비스 표에 Telegram 봇·Google Cloud(Vertex AI)·Composio·AItoEarn을 추가. 정리한 것: 클라우드 세션을 원격으로 띄워 일을 맡기는 경로는 크레딧이 줄지 않고 대화 길이만 늘어 접음(루틴 정지). 글 발행 경로 그림은 그대로 맞아서 두고, 운영 쪽은 "운영 자동화는 이렇게 돕니다"와 "에이전트가 AI 모델을 부르는 길" 그림 2장을 새로 추가함(영상·SNS 제작, 데이터 파이프라인, 카빗 그림은 다음 차례). 점검 시점의 스냅샷이라는 성격은 같음.
         <span class="files">insight-7b3e9f2c/system-map.html · scripts/ops/jobs.toml · .github/workflows/</span>
       </div></div>
       <div class="log-item"><span class="dot done"></span><div><b>2026-09-24</b>: <code>relay-local-to-cloud.yml</code>의 자동 트리거(진행상황.md push마다 클라우드 루틴 /fire)를 끄고 수동 실행만 남김. 9/18 이후 실제 릴레이 요청 0건, 9/20 이후 루틴 헛실행 52회, 일부는 Bash 승인 대기로 쌓임. 세션 간 전달은 우편함으로 대체됨. 워크플로 파일과 클라우드 루틴 자체는 남겨 둠(되돌리기 쉬움). 외부 연동 수 변화 없음.</div></div>
