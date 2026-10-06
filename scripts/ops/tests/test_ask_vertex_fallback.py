@@ -207,10 +207,20 @@ class FreeFailoverBody(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
-        cwd = os.getcwd()
-        os.chdir(self.tmp.name)  # vertex_failover.csv(고정 경로)가 임시 폴더 아래로 가게
-        os.makedirs("C:/work/_ops")  # 코드는 이 폴더를 만들지 않는다(운영 PC에는 이미 있음)
-        self.addCleanup(os.chdir, cwd)
+        # free_failover는 기록 파일 경로를 함수 안에서 Path("…/vertex_failover.csv")로 직접 만든다(모듈 상수 없음).
+        # 소스를 고치지 않고, 모듈의 Path 호출 중 그 파일 이름만 임시 경로로 돌려 운영 PC의 실제 기록을 건드리지 않는다.
+        self.fail_csv = Path(self.tmp.name) / "vertex_failover.csv"
+        real_path = Path
+        fail_csv = self.fail_csv
+
+        def redirected(*parts):
+            if parts and str(parts[0]).replace("\\", "/").endswith("/vertex_failover.csv"):
+                return fail_csv
+            return real_path(*parts)
+
+        p = mock.patch.object(av, "Path", side_effect=redirected)
+        p.start()
+        self.addCleanup(p.stop)
         env = mock.patch.dict(os.environ)
         env.start()
         self.addCleanup(env.stop)
@@ -244,7 +254,7 @@ class FreeFailoverBody(unittest.TestCase):
         self.assertEqual(av.free_failover(self.ns(), self.out, "질문", "HTTP403"), 0)
         self.assertEqual(self.out.read_text(encoding="utf-8"), "라우터 답")
         self.assertEqual(self.calls, [])
-        self.assertIn("HTTP403,router:m1", "".join(Path("C:/work/_ops/vertex_failover.csv").read_text(encoding="utf-8").splitlines()[1:]).replace(" ", ""))
+        self.assertIn("HTTP403,router:m1", "".join(self.fail_csv.read_text(encoding="utf-8").splitlines()[1:]).replace(" ", ""))
 
     def test_router_failure_then_least_used_key_first(self):
         self.results[("req-model", "k_idle")] = {"ok": True, "text": "키 답"}
@@ -260,7 +270,7 @@ class FreeFailoverBody(unittest.TestCase):
     def test_all_blocked_returns_2_and_records_failure(self):
         self.assertEqual(av.free_failover(self.ns(), self.out, "질문", "HTTP403"), 2)
         self.assertFalse(self.out.exists())
-        self.assertTrue(Path("C:/work/_ops/vertex_failover.csv").read_text(encoding="utf-8").rstrip().endswith(",0"))
+        self.assertTrue(self.fail_csv.read_text(encoding="utf-8").rstrip().endswith(",0"))
 
     def test_router_skipped_for_search_and_when_disabled(self):
         self.results[("req-model", "k_idle")] = {"ok": True, "text": "x"}
