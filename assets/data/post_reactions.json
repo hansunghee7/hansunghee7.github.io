@@ -10,43 +10,6 @@
  },
  {
   "date": "2026-10-06",
-  "channel": "linkedin",
-  "post": "636",
-  "title": "바쁜 하루가 끝났는데 남은 게 없다면",
-  "likes": 22,
-  "comments": 1,
-  "impressions": 831
- },
- {
-  "date": "2026-10-06",
-  "channel": "linkedin",
-  "post": "632",
-  "title": "우리 팀만 말하는 직원 어떻게 해야하나요?",
-  "likes": 20,
-  "comments": 1,
-  "impressions": 1076
- },
- {
-  "date": "2026-10-06",
-  "channel": "linkedin",
-  "post": null,
-  "title": "클로드코드 지투와 서비스 로고를 함께 만든 이야기(Carvit)",
-  "likes": 8,
-  "comments": null,
-  "impressions": 1593
- },
- {
-  "date": "2026-10-06",
-  "channel": "linkedin",
-  "post": "625",
-  "title": "주니어 PM은 왜 '뭘 풀어야 하죠?' 앞에서 조용해질까요? (영상)",
-  "likes": 4,
-  "comments": null,
-  "impressions": 294,
-  "note": "재생 4"
- },
- {
-  "date": "2026-10-06",
   "channel": "remember",
   "post": "633",
   "title": "AI에게 맡겼는데 왜 더 바빠졌을까",
@@ -128,5 +91,50 @@
   "comments": null,
   "impressions": null,
   "note": "게시 직후, 읽지 못함"
+ },
+ {
+  "date": "2026-10-06",
+  "channel": "linkedin",
+  "post": "632",
+  "title": "우리 팀만 말하는 직원 어떻게 해야하나요?",
+  "likes": 20,
+  "comments": 1,
+  "impressions": 1112
+ },
+ {
+  "date": "2026-10-06",
+  "channel": "linkedin",
+  "post": "636",
+  "title": "바쁜 하루가 끝났는데 남은 게 없다면",
+  "likes": 22,
+  "comments": 1,
+  "impressions": 854
+ },
+ {
+  "date": "2026-10-06",
+  "channel": "linkedin",
+  "post": "633",
+  "title": "AI에게 맡겼는데 왜 더 바빠졌을까",
+  "likes": 3,
+  "comments": null,
+  "impressions": 678
+ },
+ {
+  "date": "2026-10-06",
+  "channel": "linkedin",
+  "post": null,
+  "title": "클로드코드 지투와 서비스 로고를 함께 만든 이야기",
+  "likes": 8,
+  "comments": null,
+  "impressions": 1638
+ },
+ {
+  "date": "2026-10-06",
+  "channel": "linkedin",
+  "post": null,
+  "title": "주니어 PM은 왜 '뭘 풀어야 하죠?' 앞에서 조용해질까요?(영상, 10/3)",
+  "likes": 4,
+  "comments": null,
+  "impressions": 313
  }
 ]

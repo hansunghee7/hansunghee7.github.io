@@ -31,11 +31,11 @@
           },
           {
             "type": "command",
-            "command": "\"$CLAUDE_PROJECT_DIR/.claude/hooks/queue-gate.sh\""
+            "command": "\"$CLAUDE_PROJECT_DIR/.claude/hooks/save-gate.sh\""
           },
           {
             "type": "command",
-            "command": "\"$CLAUDE_PROJECT_DIR/.claude/hooks/save-gate.sh\""
+            "command": "\"$CLAUDE_PROJECT_DIR/.claude/hooks/jitu-loop.sh\" stop"
           }
         ]
       }
@@ -50,6 +50,10 @@
           {
             "type": "command",
             "command": "\"$CLAUDE_PROJECT_DIR/.claude/hooks/recall-hook.sh\""
+          },
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR/.claude/hooks/jitu-loop.sh\" prompt"
           }
         ]
       }
@@ -153,6 +157,15 @@
             "command": "\"$CLAUDE_PROJECT_DIR/.claude/hooks/popup-gate.sh\""
           }
         ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR/.claude/hooks/jitu-loop.sh\" pre-bash"
+          }
+        ]
       }
     ],
     "PostToolUse": [
@@ -180,6 +193,15 @@
           {
             "type": "command",
             "command": "\"$CLAUDE_PROJECT_DIR/.claude/hooks/mail-wake.sh\""
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR/.claude/hooks/jitu-loop.sh\" post-bash"
           }
         ]
       }
