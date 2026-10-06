@@ -43,8 +43,14 @@ def _access_log(method, path):
     try:
         import os
         import time
+        who = os.environ.get('OPSDB_WHO', '')
+        if not who:  # 환경변수가 없으면 명령줄의 --who 값(proc.py·worklog.py가 받는다)으로 호출자를 구분한다(2026-10-06 호출자 전부 미지정이던 구멍)
+            for i, a in enumerate(sys.argv[:-1]):
+                if a == '--who':
+                    who = sys.argv[i + 1][:20]
+                    break
         with open(r'C:\work\_ops\opsdb_access.jsonl', 'a', encoding='utf-8') as f:
-            f.write(json.dumps({'t': time.strftime('%F %T'), 'm': method, 'table': path.split('?')[0].lstrip('/')[:40], 'who': os.environ.get('OPSDB_WHO', ''), 'cmd': os.path.basename(sys.argv[0])[:30]}, ensure_ascii=False) + '\n')
+            f.write(json.dumps({'t': time.strftime('%F %T'), 'm': method, 'table': path.split('?')[0].lstrip('/')[:40], 'who': who, 'cmd': os.path.basename(sys.argv[0])[:30]}, ensure_ascii=False) + '\n')
     except Exception:
         pass
 
