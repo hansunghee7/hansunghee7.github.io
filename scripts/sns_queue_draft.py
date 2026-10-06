@@ -23,7 +23,7 @@ from pathlib import Path
 
 KST = timezone(timedelta(hours=9))
 CHANNELS = [
-    ("fb", "facebook", "facebook_1276868818845114", {"content_category": "post"}, True),
+    # 페이스북 Simplifier 페이지는 폐지(사장님 2026-10-06): 팔로워 0, Meta 368 미게시. 개인 프로필은 크롬 직접 게시.
     ("ig", "instagram", "instagram_17841401170630001", {"media_type": "IMAGE"}, True),
 ]
 
