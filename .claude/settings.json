@@ -166,6 +166,15 @@
             "command": "\"$CLAUDE_PROJECT_DIR/.claude/hooks/jitu-loop.sh\" pre-bash"
           }
         ]
+      },
+      {
+        "matcher": "SendMessage",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR/.claude/hooks/jitu-loop.sh\" pre-send"
+          }
+        ]
       }
     ],
     "PostToolUse": [
