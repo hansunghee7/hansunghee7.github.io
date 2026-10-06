@@ -31,10 +31,6 @@
           },
           {
             "type": "command",
-            "command": "\"$CLAUDE_PROJECT_DIR/.claude/hooks/queue-gate.sh\""
-          },
-          {
-            "type": "command",
             "command": "\"$CLAUDE_PROJECT_DIR/.claude/hooks/save-gate.sh\""
           }
         ]
