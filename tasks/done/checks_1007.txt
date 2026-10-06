@@ -1,0 +1,5 @@
+최근 36시간 정기 실행 성공 1건
+exit=0
+text=477자 sources=9 top_similarity=0.63 error=None
+OK
+exit=0
