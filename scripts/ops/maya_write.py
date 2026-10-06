@@ -89,6 +89,20 @@ def sentences(text):
     return out
 
 
+CLAIM_WORD = re.compile(r"(연구|조사|논문|통계)")
+CLAIM_NUM = re.compile(r"(\d|에 따르면|결과)")
+SOURCE_MARK = re.compile(r"(출처|https?://|\(\s*\d{4}|\[\d+\]|참고)")
+
+
+def unsourced_claims(text):
+    """연구·조사 같은 말로 근거를 대면서 같은 문장에 출처 표시가 없는 문장(독립 평가 10/6 카피 '신뢰증거' 2점에서 나온 규칙)."""
+    out = []
+    for s in sentences(text):
+        if CLAIM_WORD.search(s) and CLAIM_NUM.search(s) and not SOURCE_MARK.search(s) and "테크리포트" not in s and "버전" not in s:
+            out.append(s[:60])
+    return out
+
+
 def lint(text, context="generic", title=None, sub=None, rb=None):
     """기계가 셀 수 있는 규칙만 검사한다. 판단이 필요한 품질은 독립 평가자가 한다."""
     rb = rb or load_rubrics()
@@ -123,6 +137,10 @@ def lint(text, context="generic", title=None, sub=None, rb=None):
             n = text.count(w)
             if n:
                 add("warn", "용어", f"'{w}' {n}회: {why}")
+
+    uc = unsourced_claims(text)
+    if uc:
+        add("warn", "출처없는근거", f"근거로 든 문장 {len(uc)}개에 출처 표시가 없다(링크·출처·연도 중 하나를 같은 문장에): " + " / ".join(uc[:2]))
 
     pol, pla, pla_ex = 0, 0, []
     for s in sentences(text):
@@ -273,6 +291,8 @@ LINT_CASES = [
     ("제목과 짧은 부제는 통과한다", dict(text="", title="디자이너와 개발자의 기준을 하나로 맞춥니다", sub="AI가 화면을 만들 때도 팀의 UX 가이드를 따르고, 쓴 기준을 남깁니다.", context="carvit"), 0),
     ("문체 혼용은 경고", dict(text="이 글은 실험 결과를 정리합니다. 표본이 작았고 범위도 좁았다. 그래서 일반화하지 않습니다.", context="generic"), 1),
     ("인용 안의 평어체는 세지 않는다", dict(text="사장님은 “이건 아직 부족하다 그래서 다시 한다”고 말씀하셨습니다. 그대로 반영했습니다.", context="generic"), 0),
+    ("출처 없는 연구 문장은 경고(독립 평가에서 나온 규칙)", dict(text="하루 20분이 넘게 걸린다는 연구가 있습니다. 그래서 순서를 바꿨습니다.", context="generic"), 1),
+    ("출처가 같은 문장에 있으면 통과", dict(text="하루 20분이 걸린다는 연구가 있습니다(출처: 2024 업무 시간 조사). 그래서 순서를 바꿨습니다.", context="generic"), 0),
     ("회사 이름 노출은 오류", dict(text="Carvit은 Simplifier가 만들었습니다.", context="carvit"), 2),
     ("홈페이지 맥락에서는 회사 이름 허용", dict(text="심플리파이어는 강연과 코칭을 합니다.", context="home"), 0),
 ]
