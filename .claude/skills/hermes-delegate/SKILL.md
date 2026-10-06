@@ -67,7 +67,7 @@ EVIDENCE/FAILURE-RECOVERY/STATUS 순서로 받습니다. 이미 이 정보가 �
 검증한 근거, DONE=VERIFIED)` + `## 문제점/개선사항(내 관점)`. ③·④를 나란히 두면 양쪽이
 "같은 일"을 다르게 기억하는 지점(의뢰 내용 유실·해석 차이·검증 누락)이 바로 드러난다.
 배경: `mailbox.py send 헤르메스`로 보낸 의뢰가 헤르메스가 안 보는 채널이라 조용히 사라진
-실제 사고(N42). 상세·구현: solar-bible `docs/hermes-channel-design.md`.
+실제 사고(N42). 상세·구현: `solar-bible/docs/hermes-channel-design.md`.
 
 **한큐(단일 지시, 무인) vs 커뮤니케이션 루프(대화형, 중간 확인) 선택(2026-09-27, 핏 사고 반영)**:
 여러 단계가 순서·GPU·설정 파일 같은 자원을 공유하면 자연어로 "순서대로 해라"라고 주지 않는다 -
