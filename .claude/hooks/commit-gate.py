@@ -9,6 +9,10 @@
   (A) [지금 돌고 있는 것: <무엇, 로그나 작업 위치>] — 그리고 이번 턴에 실제로 실행을 걸었어야 한다
       (Bash run_in_background, Monitor, nohup·ssh로 시작, 예약 도구) 또는 태그 안의 로컬 로그 경로가 최근 15분 안에 갱신됐어야 한다.
   (B) [실행 대기: <이유와 풀리는 시각·조건>] — 아무것도 안 돌고 있음을 솔직히 밝히는 표지.
+      단 조건이 시각이 아니라 기계가 지켜볼 수 있는 **사건**(동의·클릭·연결·회신·승인·병합·도착 등)이면 (B)만으로는 통과하지 못한다.
+      (C) 그 사건을 지켜보는 감시를 이번 턴에 걸었거나(run_in_background, Monitor, 예약 도구),
+          [감시 중: <스크립트·작업 이름 또는 로그 경로>]를 달고 그 이름이 실제로 떠 있는 프로세스·최근 로그와 맞아야 한다.
+      사고(2026-10-06 탐): "마야 계정 연결 동의 대기"를 [실행 대기]로만 쓰고 감시를 걸지 않아, 사장님이 클릭해도 아무도 이어받지 않을 상태였다.
 입력: stdin JSON(Claude Code Stop 훅 규격). 출력: 위반이면 exit 2 + stderr 지침, stop_hook_active면 통과.
 """
 import json
@@ -26,6 +30,10 @@ PROMISE = re.compile(
 NEGATED = re.compile(r"(하지|않|못)\s*[^.\n]{0,6}(겠습니다)")
 TAG_RUN = re.compile(r"\[지금 돌고 있는 것:\s*([^\]]+)\]")
 TAG_WAIT = re.compile(r"\[실행 대기:\s*[^\]]{4,}\]")
+TAG_WATCH = re.compile(r"\[감시 중:\s*([^\]]+)\]")
+# 시각이 아니라 사건을 기다리는 말(기계가 지켜볼 수 있는 것). 시각 표현이 같이 있으면 예약 대기로 보고 통과시킨다.
+EVENT_WORDS = re.compile(r"동의|클릭|허용|회신|답장|응답|승인|연결(되|이|을)|병합|머지|도착|완료(되|시)|풀리(면|고)|끝나(면|고)|CI|통과(하|되)|오면|들어오면")
+TIME_WORDS = re.compile(r"\d{1,2}:\d{2}|\d{1,2}시|\d{1,2}/\d{1,2}|내일|모레|월요일|화요일|수요일|목요일|금요일|토요일|일요일|\d+\s*(분|시간|일)\s*(뒤|후)|주간|매일|아침|저녁|밤")
 LAUNCH_HINT = re.compile(r"nohup|setsid|\bat\s+now|schtasks|Start-Process|run_in_background|crontab|CronCreate|ScheduleWakeup")
 
 
@@ -98,7 +106,36 @@ def fresh_local_log(tag_text):
     return False
 
 
+def process_running(name_tokens):
+    """이름 낱말이 실행 중인 프로세스 명령줄에 있는지(Windows). 확인 실패는 '없음'으로 본다."""
+    try:
+        import subprocess
+        out = subprocess.run(
+            ["powershell", "-NoProfile", "-Command",
+             "Get-CimInstance Win32_Process | Where-Object { $_.Name -match 'python|node|bash|pwsh|powershell' } | ForEach-Object { $_.CommandLine }"],
+            capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=20,
+            creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0)).stdout
+    except Exception:
+        return False
+    return any(t in out for t in name_tokens)
+
+
+def watch_evidence(text, tools):
+    if launched(tools):
+        return True
+    m = TAG_WATCH.search(text)
+    if not m:
+        return False
+    if fresh_local_log(m.group(1)):
+        return True
+    toks = [t for t in re.split(r"[\s,:;|/\()\[\]]+", m.group(1)) if len(t) >= 4]
+    return bool(toks) and process_running(toks)
+
+
 def check(text, tools):
+    w = TAG_WAIT.search(text)
+    if w and EVENT_WORDS.search(w.group(0)) and not TIME_WORDS.search(w.group(0)) and not watch_evidence(text, tools):
+        return "wait-event-no-watch"
     if not PROMISE.search(text):
         return None
     # "~하지 않겠습니다"만 있는 답변은 약속이 아니다
@@ -142,6 +179,11 @@ if __name__ == "__main__":
     if verdict == "run-tag-topic-mismatch":
         print("[지금 돌고 있는 것] 태그의 내용이 이번 턴에 실제로 건 실행(명령·경로)과 맞지 않습니다. 약속한 바로 그 작업을 걸고, "
               "태그에는 그 명령에 나오는 스크립트·로그 이름을 적으세요. 무관한 크론·PR 대기로 채우지 마세요.", file=sys.stderr)
+    elif verdict == "wait-event-no-watch":
+        print("[실행 대기]의 조건이 시각이 아니라 기계가 지켜볼 수 있는 사건(동의·클릭·연결·회신·승인·병합 등)인데 그 사건을 지켜보는 감시가 없습니다"
+              "(2026-10-06 탐 사고: 감시 없이 대기만 적어 사장님이 클릭해도 아무도 이어받지 않음). 지금 그 자리에서 사건을 폴링하는 스크립트를 "
+              "run_in_background로 걸거나(완료 시 다음 일까지 하도록) Monitor·예약 도구를 걸고 [감시 중: 스크립트 이름, 로그 위치]를 다세요. "
+              "시각 대기라면 조건에 시각을 쓰세요. 정말 사람 결정만 기다리는 것이면 [실행 대기]가 아니라 정하실 것에 쓰세요.", file=sys.stderr)
     elif verdict == "run-tag-without-evidence":
         print("[지금 돌고 있는 것] 표지가 있지만 이번 턴에 실행을 건 흔적(백그라운드 Bash, Monitor, nohup, 예약 도구)이나 "
               "최근 15분 안에 갱신된 로컬 로그가 없습니다. 실제로 실행을 걸거나, 아무것도 안 돌면 [실행 대기: 이유와 풀리는 조건]으로 바꾸세요.",
