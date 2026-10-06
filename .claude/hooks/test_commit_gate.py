@@ -34,6 +34,17 @@ class CommitGateTest(unittest.TestCase):
         text = "크레딧 갱신 뒤 재개하겠습니다. [실행 대기: 9225 크레딧 22:50 갱신]"
         self.assertIsNone(gate.check(text, []))
 
+    def test_event_wait_needs_watch(self):
+        # 2026-10-06 탐 사고: 동의 클릭을 기다린다면서 감시를 걸지 않음
+        text = "마야 계정 연결 뒤 재실행합니다. [실행 대기: 마야 계정 연결 동의, 연결되면 maya_collect.py 재실행]"
+        self.assertEqual(gate.check(text, []), "wait-event-no-watch")
+        self.assertIsNone(gate.check(text, [("Bash", {"command": "python maya_wait.py", "run_in_background": True})]))
+        self.assertIsNone(gate.check(text, [("Monitor", {"command": "python maya_wait.py"})]))
+        self.assertEqual(gate.check("대기합니다. [실행 대기: 사장님 동의 클릭이 오면 진행] [감시 중: 존재하지않는이름_zzzz]", []), "wait-event-no-watch")
+
+    def test_event_wait_with_time_passes(self):
+        self.assertIsNone(gate.check("[실행 대기: 20:17 정기 실행 뒤 결과 확인]", []))
+
     def test_no_promise_passes(self):
         self.assertIsNone(gate.check("구PC 한 컷이 성공했습니다. 결과를 기록했습니다.", []))
         self.assertIsNone(gate.check("이번에는 재시도하지 않겠습니다.", []))
