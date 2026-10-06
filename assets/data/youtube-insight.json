@@ -836,7 +836,7 @@
         },
         {
           "date": "2026-10-06",
-          "views": 1041,
+          "views": 1042,
           "likes": 15,
           "comments": 1
         }
@@ -1698,7 +1698,7 @@
         },
         {
           "date": "2026-10-06",
-          "views": 3096,
+          "views": 3105,
           "likes": 27,
           "comments": 0
         }
@@ -1896,7 +1896,7 @@
         },
         {
           "date": "2026-10-06",
-          "views": 237,
+          "views": 242,
           "likes": 4,
           "comments": 0
         }
@@ -2064,7 +2064,7 @@
         },
         {
           "date": "2026-10-06",
-          "views": 1273,
+          "views": 1276,
           "likes": 2,
           "comments": 0
         }
@@ -2102,7 +2102,7 @@
         },
         {
           "date": "2026-10-06",
-          "views": 530,
+          "views": 531,
           "likes": 7,
           "comments": 0
         }
@@ -2122,7 +2122,7 @@
         },
         {
           "date": "2026-10-06",
-          "views": 1343,
+          "views": 1344,
           "likes": 11,
           "comments": 1
         }
@@ -2144,8 +2144,8 @@
       "history": [
         {
           "date": "2026-10-06",
-          "views": 1555,
-          "likes": 11,
+          "views": 1652,
+          "likes": 12,
           "comments": 0
         }
       ],
@@ -2366,5 +2366,5 @@
     "title": "신기한 아파트사전",
     "id": "UCTbS2jSG1BvBl4c6EsVx7sA"
   },
-  "updated_at": "2026-10-05T19:27:17.423518Z"
+  "updated_at": "2026-10-06T01:24:36.222226Z"
 }
