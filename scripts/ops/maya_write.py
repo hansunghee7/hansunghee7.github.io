@@ -69,7 +69,7 @@ def route(request, rb=None):
                    reason=f"{rb['types'][top]['name']} 단서: {', '.join(hits[top])}")
     if res["type"]:
         res["playbook"] = rb["types"][res["type"]]["playbook"]
-        res["rubric"] = [i["id"] for i in rb["common"]] + [i["id"] for i in rb["types"][res["type"]]["rubric"]]
+        res["rubric"] = ([] if rb["types"][res["type"]].get("no_common") else [i["id"] for i in rb["common"]]) + [i["id"] for i in rb["types"][res["type"]]["rubric"]]
     return res
 
 
@@ -167,7 +167,7 @@ def numbers_in(text):
 def make_card(kind, text, rb=None):
     rb = rb or load_rubrics()
     t = rb["types"][kind]
-    items = rb["common"] + t["rubric"]
+    items = ([] if t.get("no_common") else rb["common"]) + t["rubric"]
     lines = [f"# 글 평가 카드: {t['name']}", "",
              "너는 글 맥락을 모르는 독립 평가자다. 아래 글을 아래 항목 각각에 1~5점으로 채점한다. 쓴 사람을 봐주지 않는다.",
              "근거 없이 높은 점수를 주지 않는다. 해당 없는 항목은 3점으로 두고 이유에 '해당 없음'이라고 쓴다.", "",
@@ -183,7 +183,8 @@ def make_card(kind, text, rb=None):
 
 # ---------------------------------------------------------------- log
 def rubric_ids(kind, rb):
-    return [i["id"] for i in rb["common"]] + [i["id"] for i in rb["types"][kind]["rubric"]]
+    base = [] if rb["types"][kind].get("no_common") else [i["id"] for i in rb["common"]]
+    return base + [i["id"] for i in rb["types"][kind]["rubric"]]
 
 
 def log_add(kind, artifact, scores, evaluator, entry_kind="production", notes="", lint_summary=None, rb=None, path=None):
@@ -369,6 +370,58 @@ EXP_CASES = [
 ]
 
 
+# ---------------------------------------------------------------- draft (오케스트레이션: 마야는 쓰지 않고 지시와 판정만)
+import subprocess
+import concurrent.futures as _cf
+
+STRATEGIES = {
+    "scene": "첫 문장은 글쓴이가 한 일의 장면(사실 1번)으로 시작한다. 구조: 장면, 처방, 우리 팀 링크 실패, 평준화 이유와 연구, 마무리.",
+    "fail": "첫 문장은 우리 팀이 AI가 준 링크를 열어 본 실패(사실 5번)로 시작한다. 구조: 실패, 그래서 코칭 현장에서 한 처방(장면), 평준화 이유와 연구, 마무리.",
+    "order": "첫 문장은 글쓴이가 코칭 현장에서 한 말(사실 1번의 대사)을 그대로 인용하며 시작한다. 구조: 대사, 처방(질문 예), 평준화 이유, 우리 팀 링크 실패로 반전, 마무리.",
+}
+_TOKEN = re.compile(r"[0-9]+[0-9,.]*%?|[A-Za-z][A-Za-z-]{2,}")
+
+
+def new_tokens(brief_text, out_text):
+    """지시서(사실 목록)에 없던 숫자·영문 단어. 모델이 지어낸 사실을 잡는 1차 관문(완전하지 않다)."""
+    known = {t.lower() for t in _TOKEN.findall(brief_text)}
+    return sorted({t for t in _TOKEN.findall(out_text) if t.lower() not in known})
+
+
+def _run_variant(name, instr, brief_text, outdir, model, rb):
+    prompt = brief_text.rstrip() + "\n\n[이 버전의 전략]\n" + instr + "\n제목은 쓰지 않는다. 본문만 쓴다.\n"
+    pf, of = Path(outdir) / f"{name}.prompt.txt", Path(outdir) / f"{name}.md"
+    pf.write_text(prompt, encoding="utf-8", newline="\n")
+    script = HERE / "ask_vertex.py"
+    r = subprocess.run([sys.executable, str(script), str(pf), str(of), "--who", "마야", "--model", model],
+                       capture_output=True, text=True, encoding="utf-8", timeout=280,
+                       creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
+    if r.returncode != 0 or not of.exists():
+        return {"name": name, "error": (r.stderr or r.stdout)[-200:]}
+    text = of.read_text(encoding="utf-8").strip()
+    lr = lint(text, "home", rb=rb)
+    return {"name": name, "instr": instr, "file": str(of), "chars": len(text), "lint": lr["status"],
+            "issues": [i["message"][:70] for i in lr["issues"]], "new": new_tokens(brief_text, text), "text": text}
+
+
+def draft(brief_path, outdir, strategies, model="gemini-3.8-flash", rb=None):
+    rb = rb or load_rubrics()
+    Path(outdir).mkdir(parents=True, exist_ok=True)
+    brief_text = Path(brief_path).read_text(encoding="utf-8")
+    with _cf.ThreadPoolExecutor(len(strategies)) as ex:
+        res = list(ex.map(lambda kv: _run_variant(kv[0], kv[1], brief_text, outdir, model, rb), strategies))
+    lines = [f"[마야] 제미나이 {model} 작성 비교 ({len(res)}개 버전, 같은 사실 목록·같은 규칙, 전략만 다름)", ""]
+    for r in res:
+        if "error" in r:
+            lines += [f"## {r['name']}: 작성 실패 ({r['error']})", ""]
+            continue
+        flag = ("지시서에 없던 숫자·영문: " + ", ".join(r["new"])) if r["new"] else "지시서에 없던 숫자·영문 없음"
+        lines += [f"## 버전 {r['name']} ({r['chars']}자, 린트 {r['lint']}, {flag})", f"전략: {r['instr']}", "", r["text"], "", "---", ""]
+    out = Path(outdir) / "compare.md"
+    out.write_text("\n".join(lines), encoding="utf-8", newline="\n")
+    return res, out
+
+
 # ---------------------------------------------------------------- selftest
 ROUTE_CASES = [
     ("홈 제목과 부제를 써 줘", "ux"), ("확인 창 버튼 문구 정해 줘", "ux"), ("오류 문구가 불친절하다 고쳐 줘", "ux"),
@@ -424,6 +477,12 @@ def selftest():
             ok_exp += 1
         else:
             fails.append(f"exp {name}: 기대 {exp_word}, 결과 {got}")
+    ok_new = 0
+    nt = new_tokens("열세 개 중 두 개 Science Advances", "열세 개 중 두 개 Science Advances 94% 그리고 ChatGPT")
+    if nt == ["94%", "ChatGPT"]:
+        ok_new = 1
+    else:
+        fails.append(f"new_tokens: 기대 ['94%', 'ChatGPT'], 결과 {nt}")
     held = []
     if CASES_PATH.exists():
         for line in CASES_PATH.read_text(encoding="utf-8").splitlines():
@@ -440,7 +499,7 @@ def selftest():
                 missing.append(g)
     if missing:
         fails.append(f"플레이북이 가리키는 파일 없음: {missing}")
-    print(f"route {ok_route}/{len(ROUTE_CASES)}, lint {ok_lint}/{len(LINT_CASES)}, 실험 판정 {ok_exp}/{len(EXP_CASES)}, 가이드 파일 경로 {'정상' if not missing else '문제'}")
+    print(f"route {ok_route}/{len(ROUTE_CASES)}, lint {ok_lint}/{len(LINT_CASES)}, 실험 판정 {ok_exp}/{len(EXP_CASES)}, 새사실검사 {ok_new}/1, 가이드 파일 경로 {'정상' if not missing else '문제'}")
     for f in fails:
         print("  실패:", f)
     return 0 if not fails else 1
@@ -458,6 +517,9 @@ def main(argv=None):
     a.add_argument("--scores", required=True, help='JSON 문자열 또는 JSON 파일 경로'); a.add_argument("--evaluator", required=True)
     a.add_argument("--kind", choices=["baseline", "production"], default="production"); a.add_argument("--notes", default=""); a.add_argument("--lint-file")
     a.add_argument("--context", default="generic"); a.add_argument("--title"); a.add_argument("--sub")
+    a = sp.add_parser("draft"); a.add_argument("--brief", required=True); a.add_argument("--out", required=True)
+    a.add_argument("--strategies", default="scene,fail,order", help="이름 목록(scene,fail,order) 또는 '이름=지시문' 여러 개를 세미콜론으로")
+    a.add_argument("--model", default="gemini-3.8-flash"); a.add_argument("--send", action="store_true", help="비교 문서를 텔레그램 컨펌 방으로 보낸다")
     a = sp.add_parser("routecase"); a.add_argument("request"); a.add_argument("expected", help="ux|copy|tech|brand|naming|none")
     a.add_argument("--tuned", action="store_true", help="이 발화를 보고 키워드를 고쳤으면 표시(보류 시험에서 빠진다)")
     a = sp.add_parser("exp"); a.add_argument("action", choices=["add", "snap", "report"])
@@ -506,6 +568,29 @@ def main(argv=None):
         except ValueError as e:
             print(f"기록 거부: {e}", file=sys.stderr); return 2
         print("기록함:", json.dumps({k: rec[k] for k in ("ts", "type", "kind", "evaluator", "independent")}, ensure_ascii=False), "→", LOG_PATH)
+        return 0
+    if args.cmd == "draft":
+        raw = args.strategies
+        parts = [x.strip() for x in (raw.split(";") if "=" in raw else raw.split(",")) if x.strip()]
+        strat = []
+        for part in parts:
+            if "=" in part:
+                k, v = part.split("=", 1)
+                strat.append((k.strip(), v.strip()))
+            elif part in STRATEGIES:
+                strat.append((part, STRATEGIES[part]))
+            else:
+                print(f"알 수 없는 전략: {part} (가능: {list(STRATEGIES)})", file=sys.stderr)
+                return 2
+        res, out = draft(args.brief, args.out, strat, args.model, rb)
+        for r in res:
+            print(r["name"], ("실패:" + r["error"]) if "error" in r else f"{r['chars']}자 린트 {r['lint']} 새사실 {r['new'] or '없음'} 경고 {r['issues'] or '없음'}")
+        print("비교 문서:", out)
+        if args.send:
+            tg = HERE / "tg_boss.py"
+            r = subprocess.run([sys.executable, str(tg), "text", "--file", str(out), "--persona", "마야"], capture_output=True,
+                               text=True, encoding="utf-8", creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
+            print("텔레그램:", (r.stdout or r.stderr).strip()[-80:])
         return 0
     if args.cmd == "routecase":
         exp = None if args.expected == "none" else args.expected
