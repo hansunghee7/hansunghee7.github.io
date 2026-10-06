@@ -6,7 +6,9 @@
   kpi      보강 2  외부 고객 지표 주간 기록(활성 호출자·활성화·유지·찾지 못한 검색률·피드백 수). 7일 넘게 안 재면 기한 지남.
   feedback 보강 3  고객 신호(feedback 호출·찾지 못한 검색·사용 기록 이상)의 수집→분류→백로그→회신 상태.
   predict  보강 1  예측과 결과의 짝: 변경마다 "무엇이 얼마나 바뀔지" 한 줄과 점검일, 점검일에 실제 값을 적는다.
-  due      네 루프에서 기한 지난 것만 모아 보인다(훅이 하이~ 때 이걸 부른다).
+  ask      결정 요청 기록(2026-10-06 사장님 지시 ①②): 보스에게 결정을 물을 때 추천·답이 없을 때의 기본값·마감을 같이 적고,
+           한 번 물은 결정은 답이 올 때까지 다시 묻지 않고 한 줄 상태만 남긴다. 물어보기 전에 `ask find 낱말`로 이미 물었는지 본다.
+  due      루프와 결정 요청에서 기한 지난 것만 모아 보인다(훅이 하이~ 때 이걸 부른다).
 저장: C:/work/_ops/jitu_po/*.jsonl (저장소 밖. 고객 신호가 들어가므로 공개 저장소에 두지 않는다). JITU_PO_DIR로 바꿀 수 있다.
 비밀값·고객 이름 원문은 넣지 않는다(호출자 별칭만).
 """
@@ -17,10 +19,11 @@ import os
 import sys
 
 ROOT = os.environ.get("JITU_PO_DIR", "C:/work/_ops/jitu_po")
-FILES = {"gap": "gaps.jsonl", "kpi": "kpi.jsonl", "feedback": "feedback.jsonl", "predict": "predictions.jsonl"}
+FILES = {"gap": "gaps.jsonl", "kpi": "kpi.jsonl", "feedback": "feedback.jsonl", "predict": "predictions.jsonl", "ask": "asks.jsonl"}
 KPI_EVERY_DAYS = 7
 FEEDBACK_TRIAGE_DAYS = 1
 FEEDBACK_REPLY_DAYS = 7
+ASK_STATUS_DAYS = 1  # 이 날수가 지나도 답이 없으면 due에 올려 '다시 묻지 말고 상태 한 줄만'을 상기
 FB_STATES = ["new", "triaged", "backlog", "replied", "dropped"]
 
 
@@ -194,9 +197,66 @@ def pr_list(a):
         print(f"적중률: {hit}/{len(done)}")
 
 
+# ---------------- ask (결정 요청: 추천 + 기본값 + 마감, 한 번만 묻기) ----------------
+def now_iso():
+    return os.environ.get("JITU_PO_NOW") or dt.datetime.now().strftime("%Y-%m-%dT%H:%M")
+
+
+def tokens(text):
+    import re
+    return {w for w in re.findall(r"[가-힣A-Za-z0-9]{2,}", text.lower())}
+
+
+def similar(a, b, floor=0.6, minshared=4):
+    """두 글의 낱말 겹침(작은 쪽 기준). 같은 결정을 다시 묻는지 거칠게 판정한다."""
+    ta, tb = tokens(a), tokens(b)
+    if not ta or not tb:
+        return False
+    shared = len(ta & tb)
+    return shared >= minshared and shared / min(len(ta), len(tb)) >= floor
+
+
+def ask_add(a):
+    rows = load("ask")
+    r = {"id": next_id(rows, "A"), "date": str(today()), "created": a.created or now_iso(), "text": a.text, "rec": a.rec,
+         "default": a.default, "due": a.due or "", "answer": "", "answered": ""}
+    rows.append(r)
+    save("ask", rows)
+    print(f"{r['id']} 결정 요청 기록: 추천 [{a.rec}] / 답이 없으면 [{a.default}]" + (f" / 마감 {a.due}" if a.due else ""))
+
+
+def ask_find(a):
+    hit = False
+    for r in load("ask"):
+        hay = r["text"] + " " + r["rec"]
+        if all(w in hay for w in a.words):  # 조사(메일을·메일은)에 흔들리지 않게 낱말이 글 안에 들어 있는지로 본다
+            hit = True
+            state = f"답 {r['answer']}" if r["answer"] else f"답 대기({days_since(r['date'])}일)"
+            print(f"{r['id']} [{state}] {r['date']} {r['text'][:80]} | 추천: {r['rec'][:40]} | 기본값: {r['default'][:40]}")
+    if not hit:
+        print("이미 물은 비슷한 결정 없음")
+
+
+def ask_answer(a):
+    rows = load("ask")
+    r = find(rows, a.id)
+    r["answer"] = a.answer
+    r["answered"] = str(today())
+    save("ask", rows)
+    print(f"{a.id} 답 기록: {a.answer}")
+
+
+def ask_list(a):
+    for r in load("ask"):
+        if a.open and r["answer"]:
+            continue
+        state = f"답 {r['answer']}" if r["answer"] else "답 대기"
+        print(f"{r['id']} [{state}] {r['date']} {r['text'][:70]} | 추천 {r['rec'][:30]} | 기본값 {r['default'][:30]}" + (f" | 마감 {r['due']}" if r["due"] else ""))
+
+
 # ---------------- due ----------------
 def due_items():
-    out = {"gap": [], "kpi": [], "feedback": [], "predict": []}
+    out = {"gap": [], "kpi": [], "feedback": [], "predict": [], "ask": []}
     for r in load("gap"):
         if not r.get("added"):
             out["gap"].append(f"{r['id']} {r['what']}(없던 검사: {r['missing']})")
@@ -213,6 +273,12 @@ def due_items():
             out["feedback"].append(f"{r['id']} 분류 안 함 {age}일: {r['text'][:50]}")
         elif r["state"] in ("triaged", "backlog") and days_since(r["date"]) >= FEEDBACK_REPLY_DAYS and not r["reply"]:
             out["feedback"].append(f"{r['id']} 회신 안 함 {days_since(r['date'])}일: {r['text'][:50]}")
+    for r in load("ask"):
+        if not r["answer"]:
+            age = days_since(r["date"])
+            overdue = bool(r["due"]) and r["due"] < str(today())
+            if age >= ASK_STATUS_DAYS or overdue:
+                out["ask"].append(f"{r['id']} 답 대기 {age}일{'(마감 지남)' if overdue else ''}: {r['text'][:50]} (다시 묻지 말고 한 줄 상태만, 기본값: {r['default'][:30]})")
     for r in load("predict"):
         if not r["verdict"] and r["check_on"] <= str(today()):
             out["predict"].append(f"{r['id']} 점검일 {r['check_on']} 지남: {r['change'][:50]}")
@@ -224,9 +290,9 @@ def due(a):
     n = sum(len(v) for v in d.values())
     if a.quiet and n == 0:
         return
-    names = {"gap": "검사 공백(보강 4)", "kpi": "지표 측정(보강 2)", "feedback": "고객 신호(보강 3)", "predict": "예측 점검(보강 1)"}
+    names = {"gap": "검사 공백(보강 4)", "kpi": "지표 측정(보강 2)", "feedback": "고객 신호(보강 3)", "predict": "예측 점검(보강 1)", "ask": "결정 요청(답 대기)"}
     print(f"🔁 지투 루프 점검: 기한 지난 것 {n}건")
-    for k in ("gap", "kpi", "feedback", "predict"):
+    for k in ("gap", "kpi", "feedback", "predict", "ask"):
         for line in d[k]:
             print(f"  - {names[k]}: {line}")
     if n:
@@ -267,6 +333,14 @@ def build():
     x.add_argument("--verdict", required=True, choices=["적중", "빗나감", "판정불가"]); x.add_argument("--lesson", default="")
     x.set_defaults(fn=pr_check)
     x = r.add_parser("list"); x.add_argument("--open", action="store_true"); x.set_defaults(fn=pr_list)
+
+    q = sub.add_parser("ask").add_subparsers(dest="sub", required=True)
+    x = q.add_parser("add"); x.add_argument("--text", required=True, help="무엇을 정해 달라는지 한 줄")
+    x.add_argument("--rec", required=True, help="추천과 한 줄 이유"); x.add_argument("--default", required=True, help="답이 없을 때 어떻게 되는지(기본값)")
+    x.add_argument("--due", default="", help="마감 YYYY-MM-DD(선택)"); x.add_argument("--created", default=""); x.set_defaults(fn=ask_add)
+    x = q.add_parser("find"); x.add_argument("words", nargs="+"); x.set_defaults(fn=ask_find)
+    x = q.add_parser("answer"); x.add_argument("id"); x.add_argument("--answer", required=True); x.set_defaults(fn=ask_answer)
+    x = q.add_parser("list"); x.add_argument("--open", action="store_true"); x.set_defaults(fn=ask_list)
 
     x = sub.add_parser("due"); x.add_argument("--quiet", action="store_true"); x.set_defaults(fn=due)
     return p
