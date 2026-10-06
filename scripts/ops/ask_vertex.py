@@ -167,7 +167,7 @@ def main():
         usage = r.get("usageMetadata", {})
         sq = len((cand.get("groundingMetadata") or {}).get("webSearchQueries", []))
     except urllib.error.HTTPError as e:
-        if proj == COMPANY_PROJECT and e.code in (401, 403) and not os.environ.get("VERTEX_NO_COMPANY"):  # 회사 쪽 권한·로그인 문제: 개인 프로젝트로 한 번 더
+        if proj == COMPANY_PROJECT and e.code in (401, 402, 403, 429) and not os.environ.get("VERTEX_NO_COMPANY"):  # 회사 쪽 권한·로그인·크레딧 소진·한도 문제: 개인 프로젝트로 한 번 더
             os.environ["VERTEX_NO_COMPANY"] = "1"
             print(f"회사 프로젝트 HTTP{e.code}: 개인 프로젝트로 재시도", file=sys.stderr)
             return main()
@@ -178,6 +178,8 @@ def main():
     except Exception as e:  # 네트워크·토큰 오류
         rc = 2
         text = f"[호출 실패 {type(e).__name__}] {e}"
+        if not os.environ.get("VERTEX_NO_FAILOVER"):  # 토큰 발급·네트워크 오류도 무료 경로로(소진 대비)
+            return free_failover(a, out, prompt, type(e).__name__)
     sec = int((datetime.now() - t0).total_seconds())
     tin, tout = int(usage.get("promptTokenCount", 0)), int(usage.get("candidatesTokenCount", 0)) + int(usage.get("thoughtsTokenCount", 0))
     est = tin / 1e6 * PRICE_IN + tout / 1e6 * PRICE_OUT + sq * PRICE_SEARCH

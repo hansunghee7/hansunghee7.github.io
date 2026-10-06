@@ -81,9 +81,37 @@ def ask_free(qs, common, model):
 
 
 def ask_vertex(qs, common, model):
-    """② 개인 GCP 무료 크레딧(Vertex AI)."""
+    """② GCP 무료 크레딧(Vertex AI). 회사 프로젝트 먼저, 402·403·429 등으로 막히면 개인 프로젝트(ask_vertex.py와 같은 순서)."""
+    body = build(qs, common)
+    try:
+        import ask_vertex as av
+        ctok = av.token(av.COMPANY_ACCOUNT)  # 로그인 만료면 빈 문자열 -> 개인으로
+        if ctok:
+            res = post(f"https://aiplatform.googleapis.com/v1/projects/{av.COMPANY_PROJECT}/locations/{REGION}/publishers/google/models/{model}:generateContent",
+                       {"Authorization": "Bearer " + ctok}, body)
+            if "error" not in res:
+                return {**res, "project": "company"}
+            print(f"[경로] 회사 프로젝트 실패({res['error']}), 개인 프로젝트로", file=sys.stderr)
+    except Exception as e:  # noqa: BLE001
+        print(f"[경로] 회사 프로젝트 건너뜀({type(e).__name__})", file=sys.stderr)
     url = f"https://aiplatform.googleapis.com/v1/projects/{PROJECT}/locations/{REGION}/publishers/google/models/{model}:generateContent"
-    return post(url, {"Authorization": "Bearer " + token()}, build(qs, common))
+    try:
+        return {**post(url, {"Authorization": "Bearer " + token()}, body), "project": "personal"}
+    except Exception as e:  # noqa: BLE001  gcloud 토큰 실패 등
+        return {"error": type(e).__name__, "code": 0, "detail": str(e)[:200]}
+
+
+def ask_nosearch(qs, common):
+    """③ 마지막 폴백: 검색 연동 없는 무료 호출(gemini_fast: 라우터·키 풀). 답 맨 위에 '검색 없음'을 표시한다."""
+    try:
+        import gemini_fast as g
+        q = build(qs, common)["contents"][0]["parts"][0]["text"]
+        r = g.ask(q)
+    except Exception as e:  # noqa: BLE001
+        return {"error": "무료 폴백 실패", "code": 0, "detail": str(e)[:200]}
+    if not r.get("ok"):
+        return {"error": "무료 폴백 실패", "code": 0, "detail": str(r.get("status"))}
+    return {"text": "[검색 없음: 구글 검색 연동 불가, 모델 지식으로만 답함]" + NL + NL + r.get("text", ""), "sources": [], "usage": {}}
 
 
 def ask_batch(qs, common, model, route="auto"):
@@ -95,7 +123,13 @@ def ask_batch(qs, common, model, route="auto"):
         print(f"[경로] 무료 키 실패({res['error']}), " + ("Vertex로 넘어갑니다" if route == "auto" else "끝"), file=sys.stderr)
         if route == "free":
             return {**res, "route": "free"}
-    return {**ask_vertex(qs, common, model), "route": "vertex"}
+    res = ask_vertex(qs, common, model)
+    if "error" in res and res.get("code") in (0, 401, 402, 403, 429, 500, 503) and not os.environ.get("VERTEX_NO_FAILOVER"):
+        print(f"[경로] Vertex 실패({res['error']}), 검색 없는 무료 호출로", file=sys.stderr)
+        fb = ask_nosearch(qs, common)
+        if "error" not in fb:
+            return {**fb, "route": "free-nosearch"}
+    return {**res, "route": "vertex"}
 
 
 def recent(topic):

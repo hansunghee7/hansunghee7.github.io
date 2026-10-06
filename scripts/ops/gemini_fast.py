@@ -107,6 +107,8 @@ def ask(prompt, model=DEFAULT_MODEL):
         r = vertex_fallback(prompt, None)
         if r.get("ok"):
             return r
+        if r.get("vertex_tried_free"):  # ask_vertex가 이미 무료 키 풀·라우터까지 돌았으니 아래에서 같은 일을 되풀이하지 않는다
+            return r
     day = read_counter().get(today_pt(), {})
     keys = sorted(load_keys(), key=lambda k: day.get(k["fp"], {}).get("calls", 0))
     if not keys:
@@ -142,9 +144,10 @@ def vertex_fallback(prompt, last):
     if r.returncode == 0 and of.exists():
         text = of.read_text(encoding="utf-8", errors="ignore")
         of.unlink(missing_ok=True)
-        return {"ok": True, "text": text, "secs": round(time.time() - t, 2), "fp": "vertex"}
+        fp = "free" if "무료 키로 전환" in (r.stderr or "") else "vertex"  # ask_vertex가 무료로 내려갔으면 Vertex 사용으로 세지 않는다
+        return {"ok": True, "text": text, "secs": round(time.time() - t, 2), "fp": fp}
     of.unlink(missing_ok=True)
-    return {**(last or {"ok": False}), "ok": False, "vertex": f"rc={r.returncode}"}
+    return {**(last or {"ok": False}), "ok": False, "vertex": f"rc={r.returncode}", "vertex_tried_free": "무료 키로 전환" in (r.stderr or "")}
 
 
 def poller_usage_today():
