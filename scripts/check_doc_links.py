@@ -9,6 +9,7 @@
 """
 import json
 import os
+import posixpath
 import re
 import subprocess
 import sys
@@ -21,7 +22,7 @@ LINK = re.compile(r'(?<!\!)\[(?:[^\]\[]|\[[^\]]*\])*\]\(\s*(<[^>]+>|[^)\s]+)(?:\
 
 
 def tracked():
-    out = subprocess.run(["git", "ls-files", "-z"], capture_output=True, text=True, check=True).stdout
+    out = subprocess.run(["git", "ls-files", "-z"], capture_output=True, check=True).stdout.decode("utf-8")
     return [f for f in out.split("\0") if f]  # -z: 한글 파일명이 이스케이프되지 않게
 
 
@@ -40,13 +41,13 @@ def find_broken(files):
     fileset = set(files)
     dirs = {""}
     for f in files:
-        d = os.path.dirname(f)
+        d = posixpath.dirname(f)
         while d and d not in dirs:
             dirs.add(d)
-            d = os.path.dirname(d)
+            d = posixpath.dirname(d)
     by_base = defaultdict(list)
     for f in files:
-        by_base[os.path.basename(f)].append(f)
+        by_base[posixpath.basename(f)].append(f)
     res = []
     for f in files:
         if not (f.startswith("docs/") and f.endswith(".md")):
@@ -59,15 +60,16 @@ def find_broken(files):
                 path = urllib.parse.unquote(raw.partition("#")[0].split("?")[0])
                 if not path or path.startswith("/"):
                     continue  # 사이트 루트 기준(/로 시작) 링크는 상대 경로가 아니라 이번 점검 밖
-                tgt = os.path.normpath(os.path.join(os.path.dirname(f), path))
+                tgt = posixpath.normpath(posixpath.join(posixpath.dirname(f), path))
                 if not tgt.startswith("..") and (tgt in fileset or tgt in dirs or tgt + ".md" in fileset):
                     continue
-                res.append({"file": f, "line": n, "link": raw, "target": tgt, "candidates": by_base.get(os.path.basename(path.rstrip("/")), []),
+                res.append({"file": f, "line": n, "link": raw, "target": tgt, "candidates": by_base.get(posixpath.basename(path.rstrip("/")), []),
                             "excluded": f in EXCL_FILES or f.startswith(EXCL_PREFIX)})
     return res
 
 
 def main():
+    sys.stdout.reconfigure(encoding="utf-8")
     res = find_broken(tracked())
     if "--json" in sys.argv:
         print(json.dumps(res, ensure_ascii=False, indent=1))
