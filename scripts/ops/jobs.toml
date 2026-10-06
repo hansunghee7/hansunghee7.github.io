@@ -142,6 +142,7 @@ id = "fn:review-queue"
 kind = "cmd"
 cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\review_queue.py']
 every_min = 1440
+timeout = 900
 name = "상시 검수 큐(하루 병합 코드 PR을 덱스·비티에게 독립 리뷰, review_queue.py)"
 note = "2026-10-05 탐 등록(대장 N161, 사장님 지시 비티·덱스 최대 활용). 결과 C:/work/_ops/reviews/날짜/INDEX.md, 탐이 다음 날 읽고 판정. 하루 PR 최대 5건. 종료 코드 1 = gh/도구 오류"
 
