@@ -38,6 +38,17 @@ def main():
     print("  명령별:", dict(by_cmd.most_common(6)))
     print("  호출자별:", dict(by_who))
     print("  표별:", dict(by_tab.most_common(6)))
+    # G2 완료 기준: 에이전트 3명 이상의 일일 DB 조회 기록(조회=GET). 호출자는 OPSDB_WHO 또는 --who로 구분된다(10/6부터).
+    per = collections.defaultdict(collections.Counter)
+    for r in acc:
+        if r.get("m") == "GET" and r.get("who"):
+            per[r["t"][:10]][r["who"]] += 1
+    for day in sorted(per):
+        who = per[day]
+        mark = "달성" if len(who) >= 3 else f"{len(who)}명"
+        print(f"  G2 {day} 조회한 에이전트 {len(who)}명({mark}):", dict(who.most_common()))
+    unk = sum(1 for r in acc if r.get("m") == "GET" and not r.get("who"))
+    print(f"  호출자 미지정 조회 {unk}건(--who를 붙이면 구분됨)")
     gb = collections.Counter(g["t"][:10] for g in gate if g["decision"] == "block")
     print("  md 통읽기 시도 막힘(일별):", dict(sorted(gb.items())))
 
