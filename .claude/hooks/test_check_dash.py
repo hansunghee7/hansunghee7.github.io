@@ -8,7 +8,7 @@ ENV = {**os.environ, "GIT_CONFIG_GLOBAL": os.devnull, "GIT_CONFIG_SYSTEM": os.de
 
 
 def git(cwd, *a):
-    subprocess.run(["git", "-C", str(cwd), "-c", "user.name=t", "-c", "user.email=t@example.invalid", *a], check=True, capture_output=True, env=ENV)
+    subprocess.run(["git", "-C", str(cwd), "-c", "user.name=t", "-c", "user.email=t", *a], check=True, capture_output=True, env=ENV)
 
 
 def mkrepo(root, origin="https://github.com/hansunghee7/hansunghee7.github.io.git", config=""):
