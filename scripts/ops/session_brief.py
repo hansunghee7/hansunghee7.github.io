@@ -31,6 +31,16 @@ def ensure_fresh():
     return True
 
 
+def open_orders():
+    """클라우드 관제탑이 올린 로컬 지시서(tasks/todo/*.md)를 보인다. 끝난 지시서는 tasks/done/으로 옮긴다(git mv)."""
+    root = Path(__file__).resolve().parents[2]
+    files = sorted(f for f in (root / 'tasks' / 'todo').glob('*.md') if f.name.lower() != 'readme.md')
+    print(f'\n===== 열린 지시서 {len(files)}개 (tasks/todo, 클라우드가 올림: 끝나면 tasks/done으로 git mv) =====')
+    for f in files:
+        first = f.read_text(encoding='utf-8').splitlines()[:1]
+        print(f"- {f.name}: {first[0].lstrip('# ') if first else ''}")
+
+
 def cloud_main(who):
     """클라우드 세션용(운영 DB·C:/work 경로가 없을 때): 저장소 안 파일만으로 인수인계 원문과 업무대장 진행 건을 보인다.
     정본은 docs/진행상황.md(핏은 shorts-lab KPI_과제.md라 add_repo 뒤 직접), 업무대장은 docs/<이름>_업무대장.md."""
@@ -46,6 +56,7 @@ def cloud_main(who):
         for l in ledger.read_text(encoding='utf-8').splitlines():
             if l.startswith('#') and re.search(r'진행|확인필요|사장님', l):
                 print('-', l[:140])
+    open_orders()
     print('\n(운영 DB·감시 상태판은 로컬 전용이라 생략. 기억 스냅샷: 비공개 저장소 simplifier-cxo-db reports/tam_memory/MEMORY.md)')
 
 
@@ -86,6 +97,7 @@ def main():
                 print(f"- {g['id']} {g['title']} ({g.get('since', '')})\n    다음: {g.get('next', '')[:230]}\n    완료 기준: {g.get('done_when', '')}")
         except Exception:
             print('\n(목표 장부 C:/work/_ops/tam_drive.json 을 못 읽음)')
+    open_orders()
     print('\n===== 감시 상태판 문제 줄 =====')
     try:
         bad = [l.strip() for l in STATUS.read_text(encoding='utf-8', errors='replace').splitlines() if l.strip().startswith(('🔴', '🟡', '| 🔴', '| 🟡'))]
