@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-07T20:45:44.815429+00:00",
+  "updated_at": "2026-10-07T23:51:07.290560+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 331,
-    "activeUsers": 286,
-    "newUsers": 280,
+    "sessions": 335,
+    "activeUsers": 290,
+    "newUsers": 284,
     "returningUsers": 6
   },
   "daily": [
@@ -220,9 +220,9 @@
     },
     {
       "date": "2026-10-08",
-      "sessions": 2,
-      "activeUsers": 2,
-      "newUsers": 2,
+      "sessions": 6,
+      "activeUsers": 6,
+      "newUsers": 6,
       "returningUsers": 0
     }
   ],
@@ -230,7 +230,7 @@
   "landing_types": {
     "home": 111,
     "log_home": 0,
-    "individual_post": 211,
+    "individual_post": 215,
     "other": 13
   },
   "top_sources": [
@@ -271,6 +271,10 @@
       "sessions": 6
     },
     {
+      "source": "(data not available)",
+      "sessions": 5
+    },
+    {
       "source": "blog.naver.com",
       "sessions": 5
     },
@@ -289,10 +293,6 @@
     {
       "source": "l.facebook.com",
       "sessions": 2
-    },
-    {
-      "source": "(data not available)",
-      "sessions": 1
     }
   ],
   "utm_campaigns": [
@@ -345,6 +345,12 @@
       "sessions": 6
     },
     {
+      "source": "(data not available)",
+      "medium": "(data not available)",
+      "campaign": "(cross-network)",
+      "sessions": 5
+    },
+    {
       "source": "blog.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
@@ -373,12 +379,6 @@
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 2
-    },
-    {
-      "source": "(data not available)",
-      "medium": "(data not available)",
-      "campaign": "(cross-network)",
-      "sessions": 1
     },
     {
       "source": "chatgpt.com",
@@ -428,7 +428,7 @@
     {
       "path": "/logs/619",
       "title": "/logs/619",
-      "sessions": 21
+      "sessions": 22
     },
     {
       "path": "/logs/631",
@@ -438,7 +438,7 @@
     {
       "path": "/logs/620",
       "title": "/logs/620",
-      "sessions": 14
+      "sessions": 16
     },
     {
       "path": "/logs/301",
@@ -448,7 +448,7 @@
     {
       "path": "/logs/628",
       "title": "/logs/628",
-      "sessions": 8
+      "sessions": 9
     },
     {
       "path": "/logs/618",
@@ -506,8 +506,8 @@
     {
       "path": "/logs/619/",
       "title": "AI가 우선순위까지 대신 정해줄 수 있을까",
-      "uniqueViews": 18,
-      "views": 73
+      "uniqueViews": 19,
+      "views": 74
     },
     {
       "path": "/logs/631/",
@@ -518,18 +518,18 @@
     {
       "path": "/logs/620/",
       "title": "팀이 커질수록 대표만 모르는 것",
-      "uniqueViews": 14,
-      "views": 16
-    },
-    {
-      "path": "/logs/301/",
-      "title": "일에 끌려다닐 때는 어떻게 해야할까?",
-      "uniqueViews": 8,
-      "views": 9
+      "uniqueViews": 16,
+      "views": 18
     },
     {
       "path": "/logs/628/",
       "title": "우리 회사의 핵심가치, 아무도 안 볼 때 동작하나요?",
+      "uniqueViews": 9,
+      "views": 10
+    },
+    {
+      "path": "/logs/301/",
+      "title": "일에 끌려다닐 때는 어떻게 해야할까?",
       "uniqueViews": 8,
       "views": 9
     },
@@ -590,7 +590,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 335,
+    "total_desktop_sessions": 336,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
@@ -621,7 +621,7 @@
       {
         "resolution": "2000x2000",
         "width": 2000,
-        "sessions": 10
+        "sessions": 11
       },
       {
         "resolution": "1463x915",
