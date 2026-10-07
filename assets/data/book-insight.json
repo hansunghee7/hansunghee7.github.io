@@ -1248,8 +1248,8 @@
     {
       "date": "2026-10-08",
       "yes24": {
-        "category_rank": 120,
-        "category2_rank": 18,
+        "category_rank": 119,
+        "category2_rank": 20,
         "sales_index": 630,
         "reviews": 3,
         "rating": 10.0
@@ -1263,7 +1263,7 @@
       },
       "kyobo": {
         "category_rank": 6,
-        "badge_rank": 508,
+        "badge_rank": 510,
         "badge_category": "자기계발",
         "reviews": 0,
         "rating": null
@@ -1273,9 +1273,9 @@
         "rating": 0.0
       },
       "millie": {
-        "category_rank": 47
+        "category_rank": 77
       }
     }
   ],
-  "updated_at": "2026-10-07T15:50:10.095572+00:00"
+  "updated_at": "2026-10-07T20:04:18.385488+00:00"
 }
