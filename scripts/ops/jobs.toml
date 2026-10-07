@@ -25,6 +25,12 @@ name = "pending-detector"
 period_min = 1
 
 [[job]]
+id = "hermes:todo-detector"
+kind = "hermes_cron"
+name = "todo-detector"
+period_min = 1  # 2026-10-07 탐(N171/N173): 이 저장소 tasks/todo 새 지시서를 토큰 0으로 감지, 기록 C:/work/_ops/todo_inbox.log, 본체 scripts/hermes_ops/todo_detector.py
+
+[[job]]
 id = "hermes:relay-watcher"
 kind = "hermes_cron"
 name = "relay-watcher"
