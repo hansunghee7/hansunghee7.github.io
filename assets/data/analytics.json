@@ -1,20 +1,13 @@
 {
-  "updated_at": "2026-10-07T14:38:35.395669+00:00",
+  "updated_at": "2026-10-07T20:00:48.563792+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 337,
-    "activeUsers": 289,
-    "newUsers": 283,
+    "sessions": 331,
+    "activeUsers": 286,
+    "newUsers": 280,
     "returningUsers": 6
   },
   "daily": [
-    {
-      "date": "2026-09-07",
-      "sessions": 8,
-      "activeUsers": 6,
-      "newUsers": 5,
-      "returningUsers": 1
-    },
     {
       "date": "2026-09-08",
       "sessions": 7,
@@ -224,19 +217,26 @@
       "activeUsers": 7,
       "newUsers": 3,
       "returningUsers": 4
+    },
+    {
+      "date": "2026-10-08",
+      "sessions": 2,
+      "activeUsers": 2,
+      "newUsers": 2,
+      "returningUsers": 0
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 115,
+    "home": 111,
     "log_home": 0,
-    "individual_post": 213,
+    "individual_post": 211,
     "other": 13
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 202
+      "sessions": 197
     },
     {
       "source": "linkedin.com",
@@ -244,7 +244,7 @@
     },
     {
       "source": "google",
-      "sessions": 19
+      "sessions": 18
     },
     {
       "source": "m.search.naver.com",
@@ -300,7 +300,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 202
+      "sessions": 197
     },
     {
       "source": "linkedin.com",
@@ -312,7 +312,7 @@
       "source": "google",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 19
+      "sessions": 18
     },
     {
       "source": "m.search.naver.com",
@@ -408,10 +408,10 @@
   "engagement_events": {
     "section_view_proven": 49,
     "section_view_voices": 44,
-    "section_view_book_class": 25,
-    "section_view_faq": 24,
+    "section_view_book_class": 26,
+    "section_view_faq": 25,
     "faq_open": 9,
-    "read_complete": 80
+    "read_complete": 75
   },
   "contact_funnel": {
     "contact_open": 16,
@@ -486,13 +486,13 @@
       "sessions": 4
     },
     {
-      "path": "/logs/206",
-      "title": "/logs/206",
-      "sessions": 3
-    },
-    {
       "path": "/logs/162",
       "title": "/logs/162",
+      "sessions": 2
+    },
+    {
+      "path": "/logs/178",
+      "title": "/logs/178",
       "sessions": 2
     }
   ],
@@ -590,18 +590,18 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 333,
+    "total_desktop_sessions": 335,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
         "resolution": "1920x1080",
         "width": 1920,
-        "sessions": 61
+        "sessions": 62
       },
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 61
+        "sessions": 62
       },
       {
         "resolution": "1600x1600",
