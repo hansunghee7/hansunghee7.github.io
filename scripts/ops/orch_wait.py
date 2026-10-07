@@ -11,7 +11,7 @@ CLOUD = {'main': '/home/user/hansunghee7.github.io', 'solar': '/home/user/solar-
 
 def done_files(repo):
     subprocess.run(['git', 'fetch', '-q', '--depth', '1', 'origin', 'main'], cwd=repo, capture_output=True, timeout=120)
-    p = subprocess.run(['git', 'ls-tree', '--name-only', 'origin/main', 'tasks/done/'], cwd=repo, capture_output=True, text=True, encoding='utf-8', timeout=60)
+    p = subprocess.run(['git', '-c', 'core.quotepath=false', 'ls-tree', '--name-only', 'origin/main', 'tasks/done/'], cwd=repo, capture_output=True, text=True, encoding='utf-8', timeout=60)
     return {l.split('/')[-1].strip('"') for l in p.stdout.splitlines()}
 
 
