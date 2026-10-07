@@ -58,3 +58,10 @@
 ## lf06 롱폼 조립 (핏 대행, 10/7 13:15)
 - 완료: `shorts-lab/channels/mysterious-apt/episodes/lf06-under-floor-19f/05-assemble/lf06_v1_자막.mp4`(1920x1080, 299.97초, 로컬에만 있음). 근거 shorts-lab 브랜치 `claude/lf06-tam-1007`의 `pilot-shorts2/KPI_과제.md` 맨 위 블록, 로그 C:/work/_ops/orch/lf06_assemble.log.
 - 컨펌 준비: 핏이 눈 확인(끝 20초 구간, 우하단 워터마크 가능성) 뒤 video_page.py로 컨펌 페이지를 만들어 텔레그램 핏 컨펌방에 보낸다. 아직 컨펌 요청은 나가지 않았다.
+
+## lf06 v3 확정 (핏 대행, 10/7 14시경)
+- 확정본 `shorts-lab/.../lf06-under-floor-19f/05-assemble/lf06_v3_자막.mp4`(1920x1080, 4분 40초, 로컬에만 있음). 자막 시간 역전 2곳을 고친 재조립이고 컨펌 완료 처리해 핏 발행 공정으로 넘김. 근거: shorts-lab 브랜치 `claude/lf06-tam-1007`의 `pilot-shorts2/KPI_과제.md` 맨 위 블록. 핏-조립 3단계 시간 역전 검사 개선안도 거기에 기록.
+
+## 클라우드 탐 전면 이관 (사장님 지시 10/7 14시경)
+- 로컬 `tasks/todo`에 남은 4건은 클라우드 크레딧 소진을 위해 클라우드 탐이 맡는다: ① N172 a5 요청서 재발행(분류기가 세 번 거부, 완성본 C:/work/_ops/n174/keeper_request_v7.html은 로컬 파일이므로 클라우드가 못 읽으면 로컬에서 사장님이 직접 발행) ② CLAUDE.md GUI 예외 PR #2052와 교본 SOP PR #2053 병합(분류기 거부로 로컬 탐이 병합 못 함, CI 통과 상태) ③ N174 recall@3 20문항 점검(초안 C:/work/_ops/n174/s1/recall20_questions.md, 문서 9개에 걸침, 12개 이상으로 보강 필요)과 측정.
+- 주의: 위 ①·③의 입력은 로컬 파일이라 클라우드 탐이 직접 읽지 못한다. 로컬이 필요하면 `tasks/todo`에 지시서로 올려 달라(todo-detector 크론이 감지).
