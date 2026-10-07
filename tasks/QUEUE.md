@@ -49,3 +49,7 @@
 3. 이미 큐에 있는 날짜 건(N93·N103·N112·N149·N71·N81)은 날짜가 DB와 같다.
 4. 정체 후보(헤르메스 카드 결과): N110·N108. 상태는 바꾸지 않는다. 정리는 사장님 확인 뒤.
 5. 진행 29건 중 상한 5건 밖은 일괄 변경하지 않았다.
+
+## lf06 롱폼 조립 (핏 대행, 10/7 13:15)
+- 완료: `shorts-lab/channels/mysterious-apt/episodes/lf06-under-floor-19f/05-assemble/lf06_v1_자막.mp4`(1920x1080, 299.97초, 로컬에만 있음). 근거 shorts-lab 브랜치 `claude/lf06-tam-1007`의 `pilot-shorts2/KPI_과제.md` 맨 위 블록, 로그 C:/work/_ops/orch/lf06_assemble.log.
+- 컨펌 준비: 핏이 눈 확인(끝 20초 구간, 우하단 워터마크 가능성) 뒤 video_page.py로 컨펌 페이지를 만들어 텔레그램 핏 컨펌방에 보낸다. 아직 컨펌 요청은 나가지 않았다.
