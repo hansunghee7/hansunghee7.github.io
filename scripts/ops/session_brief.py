@@ -9,7 +9,10 @@ from datetime import datetime
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-import opsdb  # noqa: E402
+try:
+    import opsdb  # noqa: E402
+except Exception:  # 클라우드엔 운영 DB 설정이 없다
+    opsdb = None
 
 STATUS = Path(r'C:\work\_ops\STATUS.md')
 SOURCES = [Path(r'C:\work\hansunghee7.github.io\docs\진행상황.md'), Path(r'C:\work\shorts-lab\pilot-shorts2\KPI_과제.md')]  # 인수인계 정본
@@ -28,9 +31,29 @@ def ensure_fresh():
     return True
 
 
+def cloud_main(who):
+    """클라우드 세션용(운영 DB·C:/work 경로가 없을 때): 저장소 안 파일만으로 인수인계 원문과 업무대장 진행 건을 보인다.
+    정본은 docs/진행상황.md(핏은 shorts-lab KPI_과제.md라 add_repo 뒤 직접), 업무대장은 docs/<이름>_업무대장.md."""
+    sys.stdout.reconfigure(encoding='utf-8')
+    root = Path(__file__).resolve().parents[2]
+    prog = (root / 'docs' / '진행상황.md').read_text(encoding='utf-8')
+    m = re.search(r'^## \[' + re.escape(who) + r'\].*?(?=^---\s*$|^## \[)', prog, re.S | re.M)
+    print(f'===== {who} 최신 인수인계(원문, 클라우드 모드: 저장소 docs/진행상황.md) =====')
+    print(m.group(0).rstrip() if m else '(진행상황.md에 해당 블록 없음)')
+    ledger = root / 'docs' / f'{who}_업무대장.md'
+    print(f'\n===== {who} 업무대장 제목 줄(진행·확인필요·사장님 상태만) =====')
+    if ledger.exists():
+        for l in ledger.read_text(encoding='utf-8').splitlines():
+            if l.startswith('#') and re.search(r'진행|확인필요|사장님', l):
+                print('-', l[:140])
+    print('\n(운영 DB·감시 상태판은 로컬 전용이라 생략. 기억 스냅샷: 비공개 저장소 simplifier-cxo-db reports/tam_memory/MEMORY.md)')
+
+
 def main():
     sys.stdout.reconfigure(encoding='utf-8')
     who = sys.argv[1] if len(sys.argv) > 1 else '탐'
+    if opsdb is None or not STATUS.exists() or '--cloud' in sys.argv:
+        return cloud_main(who)
     synced = ensure_fresh()
     full = '--full-list' in sys.argv
     h = opsdb.select('tasks', 'title,raw', where={'owner': f'eq.{who}', 'section': 'eq.handoff', 'no': 'eq.1'}, limit=1)
