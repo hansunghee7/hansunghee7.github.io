@@ -13,7 +13,7 @@ def main():
         repo.mkdir()
         subprocess.run(["git", "init", str(repo)], check=True, capture_output=True)
         subprocess.run(
-            ["git", "-C", str(repo), "config", "user.email", "test@example.com"],
+            ["git", "-C", str(repo), "config", "user.email", "tester-local"],
             check=True,
         )
         subprocess.run(

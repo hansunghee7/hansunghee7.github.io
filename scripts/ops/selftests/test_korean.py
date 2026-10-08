@@ -5,7 +5,7 @@ d = tempfile.mkdtemp()
 try:
     os.makedirs(os.path.join(d, "docs"))
     open(os.path.join(d, "docs", "\uac00\ub098.md"), "w", encoding="utf-8").write("x")
-    for c in (["init", "-q"], ["add", "-A"], ["-c", "user.name=t", "-c", "user.email=t@l", "commit", "-qm", "i"]):
+    for c in (["init", "-q"], ["add", "-A"], ["-c", "user.name=t", "-c", "user.email=tester-local", "commit", "-qm", "i"]):
         subprocess.run(["git", "-C", d] + c, check=True, capture_output=True)
     cards = os.path.join(d, "c.json")
     json.dump([{"id": "k", "title": "t", "do": "docs/\uac00\ub098.md \ucc38\uc870"}], open(cards, "w", encoding="utf-8"))

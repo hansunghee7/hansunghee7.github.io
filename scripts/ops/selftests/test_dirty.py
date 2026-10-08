@@ -26,7 +26,7 @@ def run():
         archive = root / "archive"
         repo.mkdir()
         subprocess.run(["git", "init", "-q"], cwd=str(repo), check=True)
-        subprocess.run(["git", "config", "user.email", "test@example.invalid"], cwd=str(repo), check=True)
+        subprocess.run(["git", "config", "user.email", "tester-local"], cwd=str(repo), check=True)
         subprocess.run(["git", "config", "user.name", "Test"], cwd=str(repo), check=True)
         tracked = {
             "a/tstate.json": "before-state\n",
