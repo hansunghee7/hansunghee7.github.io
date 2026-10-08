@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-08T20:45:32.545028+00:00",
+  "updated_at": "2026-10-08T23:58:08.470030+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 335,
-    "activeUsers": 292,
-    "newUsers": 288,
+    "sessions": 336,
+    "activeUsers": 293,
+    "newUsers": 289,
     "returningUsers": 4
   },
   "daily": [
@@ -217,11 +217,18 @@
       "activeUsers": 13,
       "newUsers": 12,
       "returningUsers": 1
+    },
+    {
+      "date": "2026-10-09",
+      "sessions": 1,
+      "activeUsers": 1,
+      "newUsers": 1,
+      "returningUsers": 0
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 108,
+    "home": 109,
     "log_home": 0,
     "individual_post": 217,
     "other": 13
@@ -229,7 +236,7 @@
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 196
+      "sessions": 197
     },
     {
       "source": "linkedin.com",
@@ -293,7 +300,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 196
+      "sessions": 197
     },
     {
       "source": "linkedin.com",
