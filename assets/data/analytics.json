@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-08T07:23:02.397278+00:00",
+  "updated_at": "2026-10-08T14:46:01.999958+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 341,
-    "activeUsers": 295,
-    "newUsers": 289,
-    "returningUsers": 6
+    "sessions": 342,
+    "activeUsers": 296,
+    "newUsers": 293,
+    "returningUsers": 3
   },
   "daily": [
     {
@@ -215,32 +215,32 @@
       "date": "2026-10-07",
       "sessions": 7,
       "activeUsers": 7,
-      "newUsers": 3,
-      "returningUsers": 4
+      "newUsers": 6,
+      "returningUsers": 1
     },
     {
       "date": "2026-10-08",
-      "sessions": 12,
-      "activeUsers": 12,
-      "newUsers": 11,
+      "sessions": 13,
+      "activeUsers": 13,
+      "newUsers": 12,
       "returningUsers": 1
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 119,
+    "home": 115,
     "log_home": 0,
-    "individual_post": 216,
+    "individual_post": 217,
     "other": 13
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 200
+      "sessions": 201
     },
     {
       "source": "linkedin.com",
-      "sessions": 35
+      "sessions": 36
     },
     {
       "source": "google",
@@ -248,7 +248,7 @@
     },
     {
       "source": "m.search.naver.com",
-      "sessions": 16
+      "sessions": 17
     },
     {
       "source": "m.facebook.com",
@@ -259,16 +259,16 @@
       "sessions": 13
     },
     {
-      "source": "(not set)",
-      "sessions": 10
-    },
-    {
       "source": "(data not available)",
       "sessions": 7
     },
     {
       "source": "maru-connect.webflow.io",
       "sessions": 7
+    },
+    {
+      "source": "(not set)",
+      "sessions": 6
     },
     {
       "source": "daum",
@@ -300,13 +300,13 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 200
+      "sessions": 201
     },
     {
       "source": "linkedin.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 35
+      "sessions": 36
     },
     {
       "source": "google",
@@ -318,7 +318,7 @@
       "source": "m.search.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 16
+      "sessions": 17
     },
     {
       "source": "m.facebook.com",
@@ -397,6 +397,12 @@
       "medium": "organic",
       "campaign": "(organic)",
       "sessions": 1
+    },
+    {
+      "source": "naver.com",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "sessions": 1
     }
   ],
   "ai_referrals": [
@@ -428,7 +434,7 @@
     {
       "path": "/logs/619",
       "title": "/logs/619",
-      "sessions": 22
+      "sessions": 24
     },
     {
       "path": "/logs/631",
@@ -453,7 +459,7 @@
     {
       "path": "/logs/618",
       "title": "/logs/618",
-      "sessions": 5
+      "sessions": 6
     },
     {
       "path": "/logs/636",
@@ -506,8 +512,8 @@
     {
       "path": "/logs/619/",
       "title": "AI가 우선순위까지 대신 정해줄 수 있을까",
-      "uniqueViews": 19,
-      "views": 74
+      "uniqueViews": 20,
+      "views": 76
     },
     {
       "path": "/logs/631/",
@@ -537,7 +543,7 @@
       "path": "/logs/618/",
       "title": "AI가 못 뺏는 능력 하나",
       "uniqueViews": 7,
-      "views": 7
+      "views": 8
     },
     {
       "path": "/logs/2/",
