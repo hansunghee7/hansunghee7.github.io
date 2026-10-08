@@ -4,7 +4,7 @@
 계정 칸에는 이메일이 들어가므로 읽을 때는 기본으로 가려서(앞 2글자만) 보여 주고, --show-account를 줘야 전체가 나온다. 값은 로그·화면에 남기지 않는다.
 
 쓰기(있으면 고치고 없으면 넣는다. 준 칸만 바뀐다)
-  ledgerdb.py upsert w01 --account a@b.com --port 8101 --credit 1250.5 --read-at 2026-10-08T12:00:00+09:00 --cut 100 --deduct 20 --status 정상 --reason ""
+  ledgerdb.py upsert w01 --account <계정> --port 8101 --credit 1250.5 --read-at 2026-10-08T12:00:00+09:00 --cut 100 --deduct 20 --status 정상 --reason ""
   ledgerdb.py upsert w01 --credit 1100 --read-at now          (잔여만 갱신. now = 지금 시각)
 읽기
   ledgerdb.py select                   전체(계정은 가림)
