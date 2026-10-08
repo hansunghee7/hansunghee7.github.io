@@ -1,20 +1,13 @@
 {
-  "updated_at": "2026-10-08T14:46:01.999958+00:00",
+  "updated_at": "2026-10-08T20:00:57.083758+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 342,
-    "activeUsers": 296,
-    "newUsers": 293,
-    "returningUsers": 3
+    "sessions": 335,
+    "activeUsers": 292,
+    "newUsers": 288,
+    "returningUsers": 4
   },
   "daily": [
-    {
-      "date": "2026-09-08",
-      "sessions": 7,
-      "activeUsers": 5,
-      "newUsers": 5,
-      "returningUsers": 0
-    },
     {
       "date": "2026-09-09",
       "sessions": 10,
@@ -228,7 +221,7 @@
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 115,
+    "home": 108,
     "log_home": 0,
     "individual_post": 217,
     "other": 13
@@ -236,19 +229,19 @@
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 201
+      "sessions": 196
     },
     {
       "source": "linkedin.com",
       "sessions": 36
     },
     {
-      "source": "google",
-      "sessions": 18
-    },
-    {
       "source": "m.search.naver.com",
       "sessions": 17
+    },
+    {
+      "source": "google",
+      "sessions": 16
     },
     {
       "source": "m.facebook.com",
@@ -300,7 +293,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 201
+      "sessions": 196
     },
     {
       "source": "linkedin.com",
@@ -309,16 +302,16 @@
       "sessions": 36
     },
     {
-      "source": "google",
-      "medium": "organic",
-      "campaign": "(organic)",
-      "sessions": 18
-    },
-    {
       "source": "m.search.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 17
+    },
+    {
+      "source": "google",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "sessions": 16
     },
     {
       "source": "m.facebook.com",
@@ -412,12 +405,12 @@
     }
   ],
   "engagement_events": {
-    "section_view_proven": 49,
-    "section_view_voices": 44,
-    "section_view_book_class": 26,
-    "section_view_faq": 25,
+    "section_view_proven": 46,
+    "section_view_voices": 41,
+    "section_view_book_class": 24,
+    "section_view_faq": 23,
     "faq_open": 9,
-    "read_complete": 75
+    "read_complete": 73
   },
   "contact_funnel": {
     "contact_open": 17,
@@ -564,12 +557,6 @@
       "views": 5
     },
     {
-      "path": "/logs/6/",
-      "title": "자정이 가까워지도록 AI 얘기를 원 없이 나눴어요.",
-      "uniqueViews": 5,
-      "views": 5
-    },
-    {
       "path": "/logs/636/",
       "title": "바쁜 하루가 끝났는데 남은 게 없다면",
       "uniqueViews": 5,
@@ -592,6 +579,12 @@
       "title": "우선순위 설정의 프레임워크 'RICE'",
       "uniqueViews": 4,
       "views": 4
+    },
+    {
+      "path": "/logs/475/",
+      "title": "1화 신학기 개강",
+      "uniqueViews": 4,
+      "views": 10
     }
   ],
   "desktop_screen_resolutions": {
