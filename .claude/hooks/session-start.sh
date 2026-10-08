@@ -72,17 +72,23 @@ fi
 behind=$(git rev-list --count "HEAD..origin/$default_branch" 2>/dev/null || echo 0)
 ahead=$(git rev-list --count "origin/$default_branch..HEAD" 2>/dev/null || echo 0)
 
-# ── 2) main 위에 있고 뒤처져 있고 깨끗하면 fast-forward까지 자동으로 한다(원본 체크아웃만).
+# ── 2) main 위에 있고 뒤처져 있으면 fast-forward까지 자동으로 한다(원본 체크아웃만). 미커밋 변경이 있어도 시도하고, git이 겹침을 거절하면 변경은 보존된다.
 if [ "$is_primary_checkout" -eq 1 ] && [ "$current_branch" = "$default_branch" ] && [ "${behind:-0}" -gt 0 ]; then
-  if is_clean; then
-    if run_with_timeout git merge --ff-only --quiet "origin/$default_branch" 2>/dev/null; then
+  was_clean=0
+  is_clean && was_clean=1
+  if run_with_timeout git merge --ff-only --quiet "origin/$default_branch" 2>/dev/null; then
+    if [ "$was_clean" -eq 1 ]; then
       echo "✅ 자동 동기화: origin/$default_branch에서 ${behind}커밋을 받아 최신으로 맞췄습니다."
-      behind=0
+    else
+      echo "✅ 자동 동기화(미커밋 변경 보존): origin/$default_branch에서 ${behind}커밋을 받았습니다."
+    fi
+    behind=0
+  else
+    if [ "$was_clean" -eq 0 ]; then
+      echo "⚠️ 미커밋 변경과 겹쳐 자동 동기화하지 못했습니다. 겹친 파일을 먼저 정리하세요 (behind ${behind})"
     else
       echo "⚠️ 자동 동기화 실패(fast-forward 불가, 로컬에 origin에 없는 커밋이 있을 수 있음). 직접 확인: git pull --ff-only origin $default_branch"
     fi
-  else
-    echo "⚠️ 커밋 안 된 변경이 있어 자동 동기화를 건너뜁니다. 지금 로컬 문서는 origin/$default_branch보다 최대 ${behind}커밋 낡았을 수 있습니다(git status로 변경부터 확인)."
   fi
 fi
 
