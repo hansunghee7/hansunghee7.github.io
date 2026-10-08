@@ -132,6 +132,7 @@ id = "fn:opsdb-docs"
 kind = "cmd"
 cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\docs_incremental.py']
 every_min = 1440
+timeout = 900
 name = "문서 DB 증분 갱신(바뀐 md만 적재+로컬 bge-m3 임베딩, docs_incremental.py)"
 note = "2026-10-05 탐 등록(대장 N156). 안 바뀐 행은 건드리지 않음(멱등, 2회째 실행 0건 실측). ollama가 꺼져 있으면 적재만 하고 다음 실행에서 임베딩을 채운다. 종료 코드 1 = DB 오류"
 
