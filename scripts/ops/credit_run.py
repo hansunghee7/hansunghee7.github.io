@@ -9,7 +9,7 @@
 사용: python credit_run.py --who 탐 --model claude-haiku-5-5 --prompt-file q.md [--out a.md] [--daily-usd 5] [--dry]
 환경: CLAUDE_BIN(기본 claude), CREDIT_LEDGER(기본 C:/work/_ops/claude_api_usage.csv, 폴더가 없으면 현재 폴더)
 """
-import argparse, csv, json, os, subprocess, sys, tempfile, time
+import argparse, csv, json, os, shutil, subprocess, sys, tempfile, time
 from pathlib import Path
 
 
@@ -81,12 +81,14 @@ def main():
     env = dict(os.environ)
     env["ANTHROPIC_API_KEY"] = key
     env.pop("ANTHROPIC_API_KEY_OPS", None)
-    cmd = [os.environ.get("CLAUDE_BIN", "claude"), "-p", prompt, "--model", a.model, "--output-format", "json"]
+    # 윈도우의 npm 설치본은 claude.cmd 라서 which 로 찾고, 프롬프트는 인자가 아니라 표준입력으로 준다(따옴표·줄바꿈·길이 문제 방지)
+    claude_bin = os.environ.get("CLAUDE_BIN") or shutil.which("claude") or "claude"
+    cmd = [claude_bin, "-p", "--model", a.model, "--output-format", "json"]
     ts = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
     flags = getattr(subprocess, "CREATE_NO_WINDOW", 0)
     with tempfile.TemporaryDirectory() as cwd:  # project hooks must not run
         try:
-            r = subprocess.run(cmd, cwd=cwd, env=env, capture_output=True, text=True, encoding="utf-8", timeout=300, creationflags=flags)
+            r = subprocess.run(cmd, input=prompt, cwd=cwd, env=env, capture_output=True, text=True, encoding="utf-8", timeout=300, creationflags=flags)
         except Exception as e:
             append_ledger(led, [ts, a.who, a.model, 0, 0, 0, "fail:" + type(e).__name__])
             print("CALL-FAIL", type(e).__name__, file=sys.stderr)
