@@ -78,7 +78,9 @@ def check(text):
             problems.append(("사장님께 행동 요청(사유 표시 없음)", span))
     return problems
 
-HUMAN_LOG = os.environ.get("HUMAN_TOUCH_LOG", "C:/work/_ops/human_touch_log.jsonl")
+# 윈도우(로컬)는 기존 경로. 리눅스(클라우드)에서 "C:/..."는 저장소 안 상대 폴더가 돼 untracked 경고를 내므로 홈 아래로 보낸다(2026-10-08).
+_DEFAULT_LOG = "C:/work/_ops/human_touch_log.jsonl" if os.name == "nt" else os.path.expanduser("~/.claude/human_touch_log.jsonl")
+HUMAN_LOG = os.environ.get("HUMAN_TOUCH_LOG", _DEFAULT_LOG)
 
 def log_human_touch(text):
     """[사람 개입 필요: 사유] 표시가 있는 답변을 기록한다(시각, 사유, 표시 앞뒤 한 줄). 기록 실패는 답변을 막지 않는다."""
