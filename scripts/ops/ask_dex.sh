@@ -37,7 +37,10 @@ fi
 cd "$WORKDIR"
 t0=$(date +%s); rc=0
 # 카드는 표준입력(-)으로 넘긴다: 인자로 넘기면 긴 카드(약 30KB)에서 "Argument list too long"으로 실행 전에 실패한다(10/3 실측).
-timeout 600 codex exec -C "$WORKDIR" --sandbox workspace-write -o "$OUT" - < "$CARD" > "$OUT.log" 2>&1 || rc=$?
+# 윈도우용 codex는 "/c/work/..." 같은 git-bash 경로를 -C로 받으면 "지정된 경로를 찾을 수 없습니다(os error 3)"로 죽는다(10/8 실측: C:/ 경로는 되고 /c/ 경로는 실패).
+# 그래서 윈도우식 경로(C:/...)로 바꿔 넘긴다. cygpath가 없으면(리눅스 등) 원래 값을 쓴다.
+WIN_WORKDIR="$(cygpath -m "$WORKDIR" 2>/dev/null || echo "$WORKDIR")"
+timeout 600 codex exec -C "$WIN_WORKDIR" --sandbox workspace-write -o "$OUT" - < "$CARD" > "$OUT.log" 2>&1 || rc=$?
 calllog 덱스 $(( $(date +%s)-t0 )) $rc "$OUT"
 echo "답 저장: $OUT ($(wc -c < "$OUT") bytes)"
 echo "다음: git -C $WORKDIR diff 를 탐이 읽고 검사를 직접 다시 돌린다. 커밋은 바뀐 파일 이름을 하나씩 지정한다(테스트 산출물 섞임 방지, 10/2)."
