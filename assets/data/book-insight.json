@@ -1310,22 +1310,22 @@
     {
       "date": "2026-10-10",
       "yes24": {
-        "category_rank": 113,
-        "category2_rank": 19,
+        "category_rank": 110,
+        "category2_rank": 18,
         "sales_index": 690,
         "reviews": 3,
         "rating": 10.0
       },
       "aladin": {
-        "sales_point": null,
-        "reviews": 0,
-        "rating": null,
+        "sales_point": 749,
+        "reviews": 2,
+        "rating": 10.0,
         "planning_rank": null,
         "info_mgmt_rank": null
       },
       "kyobo": {
-        "category_rank": 5,
-        "badge_rank": 502,
+        "category_rank": 6,
+        "badge_rank": 504,
         "badge_category": "자기계발",
         "reviews": 0,
         "rating": null
@@ -1335,9 +1335,9 @@
         "rating": 0.0
       },
       "millie": {
-        "category_rank": 55
+        "category_rank": 85
       }
     }
   ],
-  "updated_at": "2026-10-09T15:33:10.388796+00:00"
+  "updated_at": "2026-10-09T20:03:45.124979+00:00"
 }

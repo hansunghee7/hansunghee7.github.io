@@ -2348,17 +2348,17 @@
         "uxui_rank": null,
         "design_rank": null,
         "econ_rank": null,
-        "sales_index": 1971,
+        "sales_index": 1911,
         "reviews": 18,
         "rating": 10.0
       },
       "aladin": {
-        "sales_point": null,
-        "reviews": 0,
-        "rating": null,
+        "sales_point": 340,
+        "reviews": 9,
+        "rating": 9.6,
         "design_rank": null,
         "brand_rank": null,
-        "ad_rank": null
+        "ad_rank": 27
       },
       "kyobo": {
         "uxui_cat": null,
@@ -2370,5 +2370,5 @@
       }
     }
   ],
-  "updated_at": "2026-10-09T15:35:16.291360+00:00"
+  "updated_at": "2026-10-09T20:05:45.696130+00:00"
 }
