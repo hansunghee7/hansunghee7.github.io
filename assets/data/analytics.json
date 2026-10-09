@@ -1,20 +1,13 @@
 {
-  "updated_at": "2026-10-09T14:29:00.875959+00:00",
+  "updated_at": "2026-10-09T20:00:44.886036+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 348,
-    "activeUsers": 302,
-    "newUsers": 298,
+    "sessions": 340,
+    "activeUsers": 295,
+    "newUsers": 291,
     "returningUsers": 4
   },
   "daily": [
-    {
-      "date": "2026-09-09",
-      "sessions": 10,
-      "activeUsers": 8,
-      "newUsers": 8,
-      "returningUsers": 0
-    },
     {
       "date": "2026-09-10",
       "sessions": 1,
@@ -224,26 +217,37 @@
       "activeUsers": 11,
       "newUsers": 10,
       "returningUsers": 1
+    },
+    {
+      "date": "2026-10-10",
+      "sessions": 2,
+      "activeUsers": 1,
+      "newUsers": 1,
+      "returningUsers": 0
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 125,
+    "home": 117,
     "log_home": 0,
     "individual_post": 219,
-    "other": 13
+    "other": 12
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 203
+      "sessions": 194
     },
     {
       "source": "linkedin.com",
-      "sessions": 37
+      "sessions": 39
     },
     {
       "source": "google",
+      "sessions": 17
+    },
+    {
+      "source": "m.facebook.com",
       "sessions": 17
     },
     {
@@ -251,20 +255,12 @@
       "sessions": 17
     },
     {
-      "source": "m.facebook.com",
+      "source": "facebook.com",
       "sessions": 14
     },
     {
-      "source": "facebook.com",
-      "sessions": 13
-    },
-    {
       "source": "(not set)",
-      "sessions": 12
-    },
-    {
-      "source": "(data not available)",
-      "sessions": 11
+      "sessions": 10
     },
     {
       "source": "maru-connect.webflow.io",
@@ -273,6 +269,10 @@
     {
       "source": "daum",
       "sessions": 6
+    },
+    {
+      "source": "(data not available)",
+      "sessions": 5
     },
     {
       "source": "blog.naver.com",
@@ -300,18 +300,24 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 203
+      "sessions": 194
     },
     {
       "source": "linkedin.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 37
+      "sessions": 39
     },
     {
       "source": "google",
       "medium": "organic",
       "campaign": "(organic)",
+      "sessions": 17
+    },
+    {
+      "source": "m.facebook.com",
+      "medium": "referral",
+      "campaign": "(referral)",
       "sessions": 17
     },
     {
@@ -321,22 +327,10 @@
       "sessions": 17
     },
     {
-      "source": "m.facebook.com",
-      "medium": "referral",
-      "campaign": "(referral)",
-      "sessions": 14
-    },
-    {
       "source": "facebook.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 13
-    },
-    {
-      "source": "(data not available)",
-      "medium": "(data not available)",
-      "campaign": "(cross-network)",
-      "sessions": 11
+      "sessions": 14
     },
     {
       "source": "maru-connect.webflow.io",
@@ -349,6 +343,12 @@
       "medium": "organic",
       "campaign": "(organic)",
       "sessions": 6
+    },
+    {
+      "source": "(data not available)",
+      "medium": "(data not available)",
+      "campaign": "(cross-network)",
+      "sessions": 5
     },
     {
       "source": "blog.naver.com",
@@ -379,6 +379,12 @@
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 2
+    },
+    {
+      "source": "bing",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "sessions": 1
     },
     {
       "source": "chatgpt.com",
@@ -412,9 +418,9 @@
     }
   ],
   "engagement_events": {
-    "section_view_proven": 54,
-    "section_view_voices": 46,
-    "section_view_book_class": 27,
+    "section_view_proven": 51,
+    "section_view_voices": 45,
+    "section_view_book_class": 26,
     "section_view_faq": 26,
     "faq_open": 10,
     "read_complete": 75
@@ -596,7 +602,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 350,
+    "total_desktop_sessions": 352,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
@@ -637,7 +643,7 @@
       {
         "resolution": "1536x864",
         "width": 1536,
-        "sessions": 8
+        "sessions": 10
       },
       {
         "resolution": "1440x900",
