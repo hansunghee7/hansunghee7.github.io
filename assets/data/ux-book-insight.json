@@ -2338,7 +2338,37 @@
         "reviews": 0,
         "rating": null
       }
+    },
+    {
+      "date": "2026-10-10",
+      "yes24": {
+        "mkt_rank": null,
+        "ad_rank": null,
+        "web_rank": null,
+        "uxui_rank": null,
+        "design_rank": null,
+        "econ_rank": null,
+        "sales_index": 1971,
+        "reviews": 18,
+        "rating": 10.0
+      },
+      "aladin": {
+        "sales_point": null,
+        "reviews": 0,
+        "rating": null,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "uxui_cat": null,
+        "strategy_rank": null,
+        "badge_rank": null,
+        "badge_category": null,
+        "reviews": 0,
+        "rating": null
+      }
     }
   ],
-  "updated_at": "2026-10-09T09:18:34.363130+00:00"
+  "updated_at": "2026-10-09T15:35:16.291360+00:00"
 }
