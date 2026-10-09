@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-09T07:22:51.066235+00:00",
+  "updated_at": "2026-10-09T14:29:00.875959+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 341,
-    "activeUsers": 297,
-    "newUsers": 293,
+    "sessions": 348,
+    "activeUsers": 302,
+    "newUsers": 298,
     "returningUsers": 4
   },
   "daily": [
@@ -220,15 +220,15 @@
     },
     {
       "date": "2026-10-09",
-      "sessions": 6,
-      "activeUsers": 5,
-      "newUsers": 5,
-      "returningUsers": 0
+      "sessions": 13,
+      "activeUsers": 11,
+      "newUsers": 10,
+      "returningUsers": 1
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 114,
+    "home": 125,
     "log_home": 0,
     "individual_post": 219,
     "other": 13
@@ -236,19 +236,19 @@
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 200
+      "sessions": 203
     },
     {
       "source": "linkedin.com",
-      "sessions": 36
+      "sessions": 37
+    },
+    {
+      "source": "google",
+      "sessions": 17
     },
     {
       "source": "m.search.naver.com",
       "sessions": 17
-    },
-    {
-      "source": "google",
-      "sessions": 16
     },
     {
       "source": "m.facebook.com",
@@ -259,12 +259,12 @@
       "sessions": 13
     },
     {
-      "source": "(data not available)",
-      "sessions": 9
+      "source": "(not set)",
+      "sessions": 12
     },
     {
-      "source": "(not set)",
-      "sessions": 8
+      "source": "(data not available)",
+      "sessions": 11
     },
     {
       "source": "maru-connect.webflow.io",
@@ -300,25 +300,25 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 200
+      "sessions": 203
     },
     {
       "source": "linkedin.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 36
+      "sessions": 37
+    },
+    {
+      "source": "google",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "sessions": 17
     },
     {
       "source": "m.search.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 17
-    },
-    {
-      "source": "google",
-      "medium": "organic",
-      "campaign": "(organic)",
-      "sessions": 16
     },
     {
       "source": "m.facebook.com",
@@ -336,7 +336,7 @@
       "source": "(data not available)",
       "medium": "(data not available)",
       "campaign": "(cross-network)",
-      "sessions": 9
+      "sessions": 11
     },
     {
       "source": "maru-connect.webflow.io",
@@ -412,12 +412,12 @@
     }
   ],
   "engagement_events": {
-    "section_view_proven": 47,
-    "section_view_voices": 41,
-    "section_view_book_class": 24,
-    "section_view_faq": 23,
-    "faq_open": 9,
-    "read_complete": 74
+    "section_view_proven": 54,
+    "section_view_voices": 46,
+    "section_view_book_class": 27,
+    "section_view_faq": 26,
+    "faq_open": 10,
+    "read_complete": 75
   },
   "contact_funnel": {
     "contact_open": 17,
@@ -596,7 +596,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 346,
+    "total_desktop_sessions": 350,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
@@ -625,14 +625,19 @@
         "sessions": 17
       },
       {
+        "resolution": "1463x915",
+        "width": 1463,
+        "sessions": 11
+      },
+      {
         "resolution": "2000x2000",
         "width": 2000,
         "sessions": 11
       },
       {
-        "resolution": "1463x915",
-        "width": 1463,
-        "sessions": 10
+        "resolution": "1536x864",
+        "width": 1536,
+        "sessions": 8
       },
       {
         "resolution": "1440x900",
@@ -645,9 +650,9 @@
         "sessions": 7
       },
       {
-        "resolution": "1536x864",
-        "width": 1536,
-        "sessions": 7
+        "resolution": "1280x800",
+        "width": 1280,
+        "sessions": 5
       },
       {
         "resolution": "1470x956",
@@ -677,11 +682,6 @@
       {
         "resolution": "1024x1024",
         "width": 1024,
-        "sessions": 3
-      },
-      {
-        "resolution": "1280x800",
-        "width": 1280,
         "sessions": 3
       },
       {
