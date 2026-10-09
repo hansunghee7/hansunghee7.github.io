@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-09T20:45:31.419917+00:00",
+  "updated_at": "2026-10-09T23:32:55.448313+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 340,
-    "activeUsers": 295,
+    "sessions": 341,
+    "activeUsers": 296,
     "newUsers": 291,
-    "returningUsers": 4
+    "returningUsers": 5
   },
   "daily": [
     {
@@ -220,15 +220,15 @@
     },
     {
       "date": "2026-10-10",
-      "sessions": 2,
-      "activeUsers": 1,
+      "sessions": 3,
+      "activeUsers": 2,
       "newUsers": 1,
-      "returningUsers": 0
+      "returningUsers": 1
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 117,
+    "home": 118,
     "log_home": 0,
     "individual_post": 219,
     "other": 12
@@ -260,7 +260,7 @@
     },
     {
       "source": "(not set)",
-      "sessions": 10
+      "sessions": 11
     },
     {
       "source": "maru-connect.webflow.io",
@@ -602,13 +602,13 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 352,
+    "total_desktop_sessions": 353,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 67
+        "sessions": 68
       },
       {
         "resolution": "1920x1080",
