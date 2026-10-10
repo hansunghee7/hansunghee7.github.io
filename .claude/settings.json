@@ -190,7 +190,7 @@
         ]
       },
       {
-        "matcher": "mcp__github__add_issue_comment|mcp__github__add_reply_to_pull_request_comment|mcp__github__pull_request_review_write|mcp__github__add_comment_to_pending_review",
+        "matcher": "mcp__github__add_issue_comment|mcp__github__add_reply_to_pull_request_comment|mcp__github__pull_request_review_write|mcp__github__add_comment_to_pending_review|Bash",
         "hooks": [
           {
             "type": "command",

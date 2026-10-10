@@ -151,6 +151,9 @@ def check(text, tools):
         if launched(tools):
             return None if topic_matches(m.group(1), tools) else "run-tag-topic-mismatch"
         return "run-tag-without-evidence"
+    # 2026-10-10 좁힘(사장님 승인): 표지가 없어도 이번 턴에 실제 실행을 건 흔적(백그라운드·감시·예약)이 있으면 통과
+    if launched(tools):
+        return None
     return "no-tag"
 
 

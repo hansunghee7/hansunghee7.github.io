@@ -17,7 +17,10 @@ spec = importlib.util.spec_from_file_location("commit_gate", Path(__file__).pare
 cg = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(cg)
 
-STUCK = re.compile(r"(막혔|막혀|막힌|안\s*됩니다|안\s*됐|되지\s*않|실패했|실패합니다|멈췄|멈춰|동작하지\s*않|못\s*했|못\s*받|열리지\s*않|내려받아지지)")
+# 2026-10-10 좁힘(사장님 승인 "추천대로 적용"): '되지 않·못 했·멈춰·못 받·막힌'은 통계·위험 안내·설명 문장에 오탐이 잦아 뺐다(한 세션 5회 재현).
+# 코드 표기(백틱)는 판정에서 제외한다. 막힘을 직접 말하는 표현만 남긴다.
+STUCK = re.compile(r"(막혔|막혀|안\s*됩니다|안\s*됐|실패했|실패합니다|멈췄|동작하지\s*않|열리지\s*않|내려받아지지)")
+CODE = re.compile(r"(```.*?```|`[^`\n]*`)", re.S)
 NOT_STUCK = re.compile(r"(막히지\s*않|막힘\s*없|막힌\s*곳\s*없|실패\s*없|문제\s*없)")
 PROC_REF = re.compile(r"(프로세스표|GENERATION_PIPELINES|구PC_작업실_영상레시피|영상레시피|업무대장|DAILY_ROUTINE|session-start|hermes-delegate|ink-desk)")
 
@@ -31,6 +34,7 @@ def consulted(tools):
 
 
 def check(text, tools):
+    text = CODE.sub("", text)
     if not STUCK.search(text):
         return None
     stripped = NOT_STUCK.sub("", text)
