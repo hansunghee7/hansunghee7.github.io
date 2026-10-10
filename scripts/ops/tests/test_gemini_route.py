@@ -126,5 +126,43 @@ class NoSecrets(Base):
         self.assertIsNone(re.search(gr.KEY_LIKE, gr.mask(f"x {FAKE_TOK}")))
 
 
+class GenConfig(Base):
+    def _bodies(self, plan, **kw):
+        bodies = []
+
+        def post(url, headers, body, timeout):
+            bodies.append(body)
+            for k, code in plan.items():
+                if k in url:
+                    return code, (OKJSON if code == 200 else None)
+            return 0, None
+        with mock.patch.object(gr, "_http_post", side_effect=post):
+            gr.call("질문", **kw)
+        return bodies
+
+    def test_genconfig_passthrough_free_and_vertex(self):
+        gc = {"maxOutputTokens": 32768, "temperature": 0.8}
+        free = self._bodies({"generativelanguage": 200}, generation_config=gc)
+        self.assertEqual(free[0]["generationConfig"], gc)
+        vtx = self._bodies({"generativelanguage": 429, "simplifier-vertex-credit": 200}, generation_config=gc)
+        self.assertEqual(vtx[-1]["generationConfig"], gc)
+        rec = json.loads((self.tmp / "route.jsonl").read_text(encoding="utf-8").splitlines()[-1])
+        self.assertEqual((rec["gen_keys"], rec["max_output_tokens"]), (["maxOutputTokens", "temperature"], 32768))
+        self.assertNotIn("0.8", json.dumps(rec))
+
+    def test_genconfig_rejects_unknown_key(self):
+        with self.assertRaises(ValueError):
+            gr.call("질문", generation_config={"maxOutputTokens": 10, "tools": []})
+
+    def test_genconfig_rejects_bad_max_tokens(self):
+        for bad in (0, 65537, "100", 1.5, True):
+            with self.assertRaises(ValueError):
+                gr.call("질문", generation_config={"maxOutputTokens": bad})
+
+    def test_no_genconfig_no_field(self):
+        b = self._bodies({"generativelanguage": 200})
+        self.assertNotIn("generationConfig", b[0])
+
+
 if __name__ == "__main__":
     unittest.main()

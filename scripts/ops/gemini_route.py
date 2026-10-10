@@ -108,10 +108,30 @@ def _quota_blocked(pool):
 
 
 # ---- 본체 ----
-def _body(prompt, search):
+GEN_KEYS = {"maxOutputTokens", "temperature", "topP", "topK", "stopSequences", "candidateCount", "responseMimeType", "thinkingConfig"}
+
+
+def _check_gen(gc):
+    """generation_config 검증(본문 오염 방지). None이면 None."""
+    if gc is None:
+        return None
+    if not isinstance(gc, dict):
+        raise ValueError("generation_config는 dict여야 한다")
+    bad = sorted(set(gc) - GEN_KEYS)
+    if bad:
+        raise ValueError(f"허용되지 않는 generation_config 키: {bad}")
+    m = gc.get("maxOutputTokens")
+    if "maxOutputTokens" in gc and (isinstance(m, bool) or not isinstance(m, int) or not 1 <= m <= 65536):
+        raise ValueError("maxOutputTokens는 1~65536 정수여야 한다")
+    return gc
+
+
+def _body(prompt, search, generation_config=None):
     b = {"contents": [{"role": "user", "parts": [{"text": prompt}]}]}
     if search:
         b["tools"] = [{"googleSearch": {}}]
+    if generation_config:
+        b["generationConfig"] = generation_config
     return b
 
 
@@ -123,10 +143,14 @@ def _parse(j):
     return text, src, (j or {}).get("usageMetadata", {}), len(g.get("webSearchQueries", []))
 
 
-def _log(who, route, status, ms, nbytes):
+def _log(who, route, status, ms, nbytes, gen=None):
     try:
         ROUTE_LOG.parent.mkdir(parents=True, exist_ok=True)
         rec = {"time": f"{datetime.now():%Y-%m-%d %H:%M:%S}", "who": who, "route": route, "status": status, "ms": ms, "bytes": nbytes}
+        if gen:  # 키 이름과 maxOutputTokens 값만 남긴다
+            rec["gen_keys"] = sorted(gen)
+            if "maxOutputTokens" in gen:
+                rec["max_output_tokens"] = gen["maxOutputTokens"]
         with ROUTE_LOG.open("a", encoding="utf-8") as f:
             f.write(json.dumps(rec, ensure_ascii=False) + "\n")
     except OSError:
@@ -143,14 +167,15 @@ def _vertex_usage_row(who, model, search, tin, tout, sq, est, sec, rc):
         f.write(f"{datetime.now():%Y-%m-%d %H:%M:%S},{who},{model},{int(search)},{tin},{tout},{sq},{est:.2f},{sec},{rc}\n")
 
 
-def call(prompt, model="gemini-3.6-flash", search=False, who="unknown", timeout=300):
-    """반환: dict(text, route, status, cost_note, sources, exit_code). route=free|vertex-company|vertex-personal|none."""
+def call(prompt, model="gemini-3.6-flash", search=False, who="unknown", timeout=300, generation_config=None):
+    """generation_config: 선택 dict(허용 키 화이트리스트, 요청 본문 generationConfig로 그대로). 반환: dict(text, route, status, cost_note, sources, exit_code). route=free|vertex-company|vertex-personal|none."""
+    gen = _check_gen(generation_config)
     timeout = int(os.environ.get("VERTEX_TIMEOUT") or timeout)
     attempts = []  # (route, status 문자열)
     capped = False
 
     def done(text, route, status, cost, src, t0, code):
-        _log(who, route, status, int((time.time() - t0) * 1000), len(text.encode("utf-8")))
+        _log(who, route, status, int((time.time() - t0) * 1000), len(text.encode("utf-8")), gen)
         return {"text": text, "route": route, "status": status, "cost_note": cost, "sources": src, "exit_code": code, "tried": attempts}
 
     t_all = time.time()
@@ -161,12 +186,12 @@ def call(prompt, model="gemini-3.6-flash", search=False, who="unknown", timeout=
         for name, val in keys:
             t0 = time.time()
             code, j = _http_post(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
-                                 {"x-goog-api-key": val}, _body(prompt, search), timeout)
+                                 {"x-goog-api-key": val}, _body(prompt, search, gen), timeout)
             if code == 200 and j:
                 text, src, _u, _q = _parse(j)
                 return done(text, "free", "ok", "무료 키(비용 0)", src, t0, 0)
             attempts.append(("free", f"HTTP{code}"))
-            _log(who, "free", f"HTTP{code}", int((time.time() - t0) * 1000), 0)
+            _log(who, "free", f"HTTP{code}", int((time.time() - t0) * 1000), 0, gen)
             if code == 429:  # 429는 분당/일 어느 쪽인지 모르므로 짧게(1분)만 막고 다음 호출에서 다시 본다
                 _quota_hit(fpool, f"who={who} HTTP429 Resets in 1m")
             if code not in FALL_CODES and code != 0:
@@ -204,7 +229,7 @@ def call(prompt, model="gemini-3.6-flash", search=False, who="unknown", timeout=
                 continue
             t0 = time.time()
             url = f"https://aiplatform.googleapis.com/v1/projects/{proj}/locations/{av.REGION}/publishers/google/models/{model}:generateContent"
-            code, j = _http_post(url, {"Authorization": "Bearer " + tok}, _body(prompt, search), timeout)
+            code, j = _http_post(url, {"Authorization": "Bearer " + tok}, _body(prompt, search, gen), timeout)
             tok = ""
             if code == 200 and j:
                 text, src, u, sq = _parse(j)
@@ -217,7 +242,7 @@ def call(prompt, model="gemini-3.6-flash", search=False, who="unknown", timeout=
                     pass
                 return done(text, route, "ok", f"추정 약 ₩{est:,.1f}(입력 {tin}·출력 {tout}·검색 {sq}건)", src, t0, 0)
             attempts.append((route, f"HTTP{code}"))
-            _log(who, route, f"HTTP{code}", int((time.time() - t0) * 1000), 0)
+            _log(who, route, f"HTTP{code}", int((time.time() - t0) * 1000), 0, gen)
             if code == 429:
                 _quota_hit("제미나이-" + route, f"who={who} HTTP429 Resets in 1m")
 
@@ -246,9 +271,20 @@ def main(argv=None):
     ap.add_argument("--search", action="store_true")
     ap.add_argument("--model", default="gemini-3.6-flash")
     ap.add_argument("--timeout", type=int, default=300)
+    ap.add_argument("--max-output-tokens", type=int, default=None)
+    ap.add_argument("--temperature", type=float, default=None)
     a = ap.parse_args(argv)
     prompt = Path(a.q[1:]).read_text(encoding="utf-8") if a.q.startswith("@") else a.q
-    r = call(prompt, model=a.model, search=a.search, who=a.who, timeout=a.timeout)
+    gc = {}
+    if a.max_output_tokens is not None:
+        gc["maxOutputTokens"] = a.max_output_tokens
+    if a.temperature is not None:
+        gc["temperature"] = a.temperature
+    try:
+        r = call(prompt, model=a.model, search=a.search, who=a.who, timeout=a.timeout, generation_config=gc or None)
+    except ValueError as e:
+        print(str(e), file=sys.stderr)
+        return 2
     if r["exit_code"] == 0:
         print(r["text"])
         for s in r["sources"]:
