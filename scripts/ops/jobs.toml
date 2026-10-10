@@ -327,3 +327,11 @@ path = 'C:/work/_ops/night_u5/log.jsonl'
 max_age_min = 2160
 name = "신PC 새벽 실행기(u5 제미나이 동영상, 작업 스케줄러 핏_신PC새벽1차 02:30·2차 05:30 + 0~60분 무작위)"
 note = "2026-10-09 핏 등록(핏-영상생성 #34, 사장님 승인). 로그가 36시간 넘게 안 갱신되면 멈춤. 흔한 원인: 전용 크롬 로그아웃, u5 STOP 파일(C:/work/_ops/night_u5/STOP, 차단 문구 때 자동 생성, 계정 단위 정지). 첫 자동 실행 결과는 로그와 텔레그램 요약으로 확인."
+
+[[job]]
+id = "cron:fit-db-sync"
+kind = "file_age"
+path = 'C:/work/shorts-lab/pilot-shorts2/발행대장.json'
+max_age_min = 180
+name = "핏 장부 DB 동기화(작업 스케줄러 핏_장부DB동기화, 30분마다 fit_db.py sync: 대본·조립·발행 장부 파일을 갱신해 수파베이스 fit_* 표에 반영)"
+note = "2026-10-10 핏 등록(핏-발행 #18). 발행대장.json이 3시간 넘게 안 바뀌면 멈춤. 원인: 작업 스케줄러 실패, 시트 미러 읽기 실패, DB 키 문제."
