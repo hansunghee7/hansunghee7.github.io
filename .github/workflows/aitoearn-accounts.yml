@@ -1,0 +1,24 @@
+name: AItoEarn accounts (read-only)
+
+# 수동 실행 전용. AItoEarn에 연결된 채널 계정(플랫폼·accountId)을 읽기만 한다.
+# 왜: 스레드 등 새 채널의 accountId를 큐에 넣으려면 먼저 알아야 하는데, 키가 GitHub Secret에만 있어 로컬에서 못 읽는다(N17).
+# 쓰기 요청 없음, 저장소 변경 없음. 출력에는 토큰·키를 내지 않는다.
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  list:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: List accounts
+        env:
+          AITOEARN_API_KEY: ${{ secrets.AITOEARN_API_KEY }}
+        run: python scripts/aitoearn_accounts.py
