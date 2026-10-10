@@ -50,7 +50,9 @@ def main():
         items = find_list(data) if data else []
         print(f"GET {p} -> {st}, 항목 {len(items)}")
         for it in items:
-            if isinstance(it, dict):
+            # 공개 저장소의 Actions 로그에 남으므로 한성희 개인 계정만 출력한다(다크 런칭 채널은 내지 않는다, 2026-10-11)
+            name = str(it.get("nickname", "")) if isinstance(it, dict) else ""
+            if isinstance(it, dict) and ("한성희" in name or "Sunghee" in name):
                 print("  ", {k: str(it[k])[:40] for k in SAFE_KEYS if k in it})
                 found = True
         if found:
