@@ -448,3 +448,21 @@ every_min = 1440
 timeout = 300
 name = "수집 파이프 대장 동기화(감시 상태판의 마지막 성공을 data_pipelines에 옮김, pipeline_sync.py)"
 note = "2026-10-11 탐 등록(사장님 허용). 근거 있는 파이프만 add-run 으로 기록(실행마다 실행 기록 1행 추가). 종료 코드 2 = 상태 파일 오류, 그 밖 실패 = 대장 DB 조회 오류. 근거 없는 파이프는 목록만 출력"
+
+[[job]]
+id = "file:tami-growth-metrics"
+kind = "file_age"
+path = 'C:\work\hermes-juniors\tami\작업\측정\growth.csv'
+max_age_min = 11520
+severity = "warn"
+name = "타미 성장 지표 주 1회 점검(growth_metrics.py 수동 실행, 산출 growth.csv 나이 8일 기준)"
+note = "2026-10-11 탐 등록(N93). 실행 자동화(스케줄러)는 아직 없음, 수동 실행 도구라 10/8 점검이 빠졌던 것. 1회 실행 종료 코드 0·growth.csv 10행 갱신 확인. 8일 넘게 안 갱신되면 주의"
+
+[[job]]
+id = "file:tami-clarity-metrics"
+kind = "file_age"
+path = 'C:\work\hermes-juniors\tami\작업\측정\clarity.csv'
+max_age_min = 11520
+severity = "warn"
+name = "타미 맑은 정신 지표 주 1회 점검(clarity_metrics.py 수동 실행, 산출 clarity.csv 나이 8일 기준)"
+note = "2026-10-11 탐 등록(N93). 실행 자동화(스케줄러)는 아직 없음. 1회 실행 종료 코드 0·clarity.csv 1250행 갱신 확인. 8일 넘게 안 갱신되면 주의"
