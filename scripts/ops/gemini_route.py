@@ -4,6 +4,8 @@
 왜: 호출부마다 무료 키/Vertex 순서를 따로 구현해서 첫 호출부터 429가 나고 기록도 흩어졌다.
     정본 정책 docs/제미나이_키_정책.md 의 순서를 한 곳에서 지킨다.
 순서: ① 무료 AI Studio 키 -> ② 회사 Vertex(simplifier-vertex-credit) -> ③ 개인 Vertex.
+    search=True 는 ①을 건너뛰고(무료 티어는 3 계열 검색 불가라 429 확정) 검색 전용 키(GEMINI_SEARCH_API_KEY, 결제 연결 유료 티어, 월 5,000회 무료 구간)
+    -> 회사 Vertex -> 개인 Vertex. 검색 키는 월·일 상한 장부(gemini_search_ledger.csv)와 무효 상태 파일(24시간 건너뜀)로 지킨다. 키가 없으면 조용히 건너뜀.
     429·한도·차단(401/402/403)·과부하(5xx)·인증 실패는 다음 단계로 낙하하고 quota.py 대장에 막힘을 기록한다.
 금액 관문: ask_vertex.py 의 DAY_KRW(일)·TOTAL_KRW(누적)를 import해 그대로 쓴다. 넘으면 Vertex 단계는 거부한다(무료 단계는 영향 없음).
 재사용: 키 읽기=gemini_fast.load_keys(대장 role=fast 키)+환경 변수 이름(GOOGLE_API_KEY, GEMINI_API_KEY), Vertex 토큰·단가·기록=ask_vertex.
@@ -22,13 +24,19 @@ import sys
 import time
 import urllib.error
 import urllib.request
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 ROUTE_LOG = Path("C:/work/_ops/gemini_route_log.jsonl")
 FREE_ENV_NAMES = ("GOOGLE_API_KEY", "GEMINI_API_KEY")  # pass.py envput 으로 이미 들어가 있는 환경 변수 이름만 읽는다
+SEARCH_ENV = "GEMINI_SEARCH_API_KEY"  # 값은 읽기만 한다. 출력·로그·반환 금지
+SEARCH_LEDGER = Path("C:/work/_ops/gemini_search_ledger.csv")
+SEARCH_STATE = Path("C:/work/_ops/gemini_search_state.json")
+SEARCH_FREE_MONTH = 5000  # 구글 공식: 유료 티어 월 5,000회 검색 무료(3 계열 공유), 10/11 확인
+SEARCH_INVALID_CODES = (401, 402, 403)
+SEARCH_INVALID_HOURS = 24
 FALL_CODES = (401, 402, 403, 429, 500, 502, 503, 504)  # 이 코드면 다음 단계로 낙하
 EXIT = {"ok": 0, "failed": 2, "capped": 3, "noauth": 4}
 KEY_LIKE = re.compile(r"AIza[0-9A-Za-z_\-]{20,}|ya29\.[0-9A-Za-z_\-\.]{20,}|Bearer\s+[0-9A-Za-z_\-\.]{20,}|sk-[0-9A-Za-z_\-]{20,}")
@@ -107,6 +115,90 @@ def _quota_blocked(pool):
         return False
 
 
+# ---- 검색 전용 키: 장부·상태 ----
+def _env_int(name, default):
+    try:
+        v = int(os.environ.get(name, ""))
+        return v if v > 0 else default
+    except ValueError:
+        return default
+
+
+def _search_caps():
+    return _env_int("GEMINI_SEARCH_DAY_CAP", 200), _env_int("GEMINI_SEARCH_MONTH_CAP", 4500)
+
+
+def _search_usage(now=None):
+    """(오늘 쿼리 수, 이번 달 쿼리 수). 장부가 없거나 깨져도 0."""
+    now = now or datetime.now()
+    day, mon = f"{now:%Y-%m-%d}", f"{now:%Y-%m}"
+    d = m = 0
+    try:
+        for line in SEARCH_LEDGER.read_text(encoding="utf-8").splitlines()[1:]:
+            parts = line.split(",")
+            if len(parts) < 3 or not parts[0].startswith(mon):
+                continue
+            try:
+                n = int(parts[2])
+            except ValueError:
+                continue
+            m += n
+            if parts[0].startswith(day):
+                d += n
+    except OSError:
+        pass
+    return d, m
+
+
+def _search_ledger_add(who, queries, model):
+    try:
+        SEARCH_LEDGER.parent.mkdir(parents=True, exist_ok=True)
+        new = not SEARCH_LEDGER.exists()
+        with SEARCH_LEDGER.open("a", encoding="utf-8", newline="") as f:
+            if new:
+                f.write("날짜,who,검색쿼리수,모델\n")
+            f.write(f"{datetime.now():%Y-%m-%d %H:%M:%S},{str(who).replace(',', ' ')},{int(queries)},{str(model).replace(',', ' ')}\n")
+    except OSError:
+        pass
+
+
+def _search_state_read():
+    try:
+        return json.loads(SEARCH_STATE.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+
+
+def _search_state_write(status, code=None):
+    try:
+        SEARCH_STATE.parent.mkdir(parents=True, exist_ok=True)
+        SEARCH_STATE.write_text(json.dumps({"status": status, "since": f"{datetime.now():%Y-%m-%d %H:%M:%S}", "http": code}, ensure_ascii=False), encoding="utf-8")
+    except OSError:
+        pass
+
+
+def _search_invalid_until():
+    """무효 상태가 아직 유효하면 해제 시각, 아니면 None."""
+    st = _search_state_read()
+    if st.get("status") != "search-key-invalid":
+        return None
+    try:
+        until = datetime.strptime(st["since"], "%Y-%m-%d %H:%M:%S") + timedelta(hours=SEARCH_INVALID_HOURS)
+    except (KeyError, ValueError):
+        return None
+    return until if datetime.now() < until else None
+
+
+def search_status():
+    """감시 상태판용 한 줄. 키 값은 쓰지 않는다."""
+    d, m = _search_usage()
+    dcap, mcap = _search_caps()
+    until = _search_invalid_until()
+    state = f"search-key-invalid({until:%m-%d %H:%M}까지 건너뜀)" if until else "정상"
+    key = "있음" if os.environ.get(SEARCH_ENV) else "없음"
+    return (f"검색 전용 키 {key} · 오늘 {d}/{dcap} · 이번 달 {m}/{mcap} · 남은 무료 한도 {max(SEARCH_FREE_MONTH - m, 0)}/{SEARCH_FREE_MONTH}회 · 상태 {state}")
+
+
 # ---- 본체 ----
 GEN_KEYS = {"maxOutputTokens", "temperature", "topP", "topK", "stopSequences", "candidateCount", "responseMimeType", "thinkingConfig"}
 
@@ -143,10 +235,12 @@ def _parse(j):
     return text, src, (j or {}).get("usageMetadata", {}), len(g.get("webSearchQueries", []))
 
 
-def _log(who, route, status, ms, nbytes, gen=None):
+def _log(who, route, status, ms, nbytes, gen=None, search=False):
     try:
         ROUTE_LOG.parent.mkdir(parents=True, exist_ok=True)
         rec = {"time": f"{datetime.now():%Y-%m-%d %H:%M:%S}", "who": who, "route": route, "status": status, "ms": ms, "bytes": nbytes}
+        if search:
+            rec["search"] = True
         if gen:  # 키 이름과 maxOutputTokens 값만 남긴다
             rec["gen_keys"] = sorted(gen)
             if "maxOutputTokens" in gen:
@@ -175,14 +269,16 @@ def call(prompt, model="gemini-3.6-flash", search=False, who="unknown", timeout=
     capped = False
 
     def done(text, route, status, cost, src, t0, code):
-        _log(who, route, status, int((time.time() - t0) * 1000), len(text.encode("utf-8")), gen)
+        _log(who, route, status, int((time.time() - t0) * 1000), len(text.encode("utf-8")), gen, search)
         return {"text": text, "route": route, "status": status, "cost_note": cost, "sources": src, "exit_code": code, "tried": attempts}
 
     t_all = time.time()
     # ① 무료 키
-    keys = _free_keys()
+    keys = [] if search else _free_keys()  # 검색 요청은 무료 키를 부르지 않는다(무료 티어 검색 불가, 429 확정)
     fpool = "제미나이-무료" + ("-검색" if search else "")  # 검색 연동은 무료 키에서 따로 막혀 있어(10/11 진단) 검색 429가 일반 호출까지 막지 않게 풀을 나눈다
-    if not _quota_blocked(fpool):
+    if search:
+        pass
+    elif not _quota_blocked(fpool):
         for name, val in keys:
             t0 = time.time()
             code, j = _http_post(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
@@ -198,8 +294,38 @@ def call(prompt, model="gemini-3.6-flash", search=False, who="unknown", timeout=
                 break  # 400 등 질문 자체 문제는 키를 바꿔도 소용없음
     else:
         attempts.append(("free", "skipped_blocked"))
-    if not keys:
+    if not keys and not search:
         attempts.append(("free", "no_key"))
+
+    # 검색 전용 키 단계(키가 없으면 조용히 건너뜀)
+    search_tried = False
+    skey = os.environ.get(SEARCH_ENV) if search else None
+    if skey:
+        until = _search_invalid_until()
+        d, m = _search_usage()
+        dcap, mcap = _search_caps()
+        if until:
+            attempts.append(("search-key", "skipped_invalid"))
+        elif d >= dcap or m >= mcap:
+            attempts.append(("search-key", "cap"))
+            _log(who, "search-key", "검색 키 상한", 0, 0, gen, True)
+        else:
+            search_tried = True
+            smodel = os.environ.get("GEMINI_SEARCH_MODEL") or model
+            t0 = time.time()
+            code, j = _http_post(f"https://generativelanguage.googleapis.com/v1beta/models/{smodel}:generateContent",
+                                 {"x-goog-api-key": skey}, _body(prompt, True, gen), timeout)
+            if code == 200 and j:
+                text, src, _u, sq = _parse(j)
+                _search_ledger_add(who, sq or 1, smodel)
+                if _search_state_read().get("status") == "search-key-invalid":
+                    _search_state_write("ok")
+                return done(text, "search-key", "ok", f"검색 전용 키(월 {SEARCH_FREE_MONTH}회 무료 구간, 검색 {sq or 1}건)", src, t0, 0)
+            attempts.append(("search-key", f"HTTP{code}"))
+            _log(who, "search-key", f"HTTP{code}", int((time.time() - t0) * 1000), 0, gen, True)
+            if code in SEARCH_INVALID_CODES:
+                _search_state_write("search-key-invalid", code)
+    skey = ""
 
     # ②·③ Vertex
     import ask_vertex as av
@@ -242,7 +368,7 @@ def call(prompt, model="gemini-3.6-flash", search=False, who="unknown", timeout=
                     pass
                 return done(text, route, "ok", f"추정 약 ₩{est:,.1f}(입력 {tin}·출력 {tout}·검색 {sq}건)", src, t0, 0)
             attempts.append((route, f"HTTP{code}"))
-            _log(who, route, f"HTTP{code}", int((time.time() - t0) * 1000), 0, gen)
+            _log(who, route, f"HTTP{code}", int((time.time() - t0) * 1000), 0, gen, search)
             if code == 429:
                 _quota_hit("제미나이-" + route, f"who={who} HTTP429 Resets in 1m")
 
@@ -250,7 +376,7 @@ def call(prompt, model="gemini-3.6-flash", search=False, who="unknown", timeout=
     if capped and not any(s.startswith("HTTP") for r, s in attempts if r != "free"):
         code, status = EXIT["capped"], "capped"
         msg = f"[라우터 거부] {cap_msg}. 무료 키는 이미 실패({_free_summary(attempts)}). 내일 또는 상한 조정 뒤 다시."
-    elif auth_missing == 2 and not keys:
+    elif auth_missing == 2 and not keys and not search_tried:
         code, status = EXIT["noauth"], "noauth"
         msg = "[라우터 실패] 쓸 수 있는 인증이 없음(무료 키·회사/개인 gcloud 토큰 모두 없음). 환경 변수 이름 GOOGLE_API_KEY 또는 gcloud 로그인을 확인."
     else:
@@ -266,7 +392,8 @@ def _free_summary(attempts):
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description="제미나이 공용 라우터(무료 키 -> 회사 Vertex -> 개인 Vertex)")
-    ap.add_argument("q", help="질문 문장, 또는 @파일경로")
+    ap.add_argument("q", nargs="?", help="질문 문장, 또는 @파일경로")
+    ap.add_argument("--search-status", action="store_true", help="검색 전용 키 오늘/이번 달 사용량과 남은 무료 한도를 한 줄로 출력")
     ap.add_argument("--who", default="unknown")
     ap.add_argument("--search", action="store_true")
     ap.add_argument("--model", default="gemini-3.6-flash")
@@ -274,6 +401,11 @@ def main(argv=None):
     ap.add_argument("--max-output-tokens", type=int, default=None)
     ap.add_argument("--temperature", type=float, default=None)
     a = ap.parse_args(argv)
+    if a.search_status:
+        print(search_status())
+        return 0
+    if not a.q:
+        ap.error("질문이 필요합니다(또는 --search-status)")
     prompt = Path(a.q[1:]).read_text(encoding="utf-8") if a.q.startswith("@") else a.q
     gc = {}
     if a.max_output_tokens is not None:
