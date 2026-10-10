@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-10T15:50:39.466373+00:00",
+  "updated_at": "2026-10-10T20:45:33.003889+00:00",
   "note": "history는 매일 지난 24시간 집계를 누적한 것. latest_*는 최근 3일 창.",
   "history": [
     {
@@ -7613,16 +7613,16 @@
       "metrics": {
         "DeadClickCount": [
           {
-            "sessionsCount": 10,
-            "sessionsWithMetricPercentage": 10,
-            "sessionsWithoutMetricPercentage": 90,
+            "sessionsCount": 8,
+            "sessionsWithMetricPercentage": 12.5,
+            "sessionsWithoutMetricPercentage": 87.5,
             "pagesViews": 1,
             "subTotal": 1
           }
         ],
         "ExcessiveScroll": [
           {
-            "sessionsCount": 10,
+            "sessionsCount": 8,
             "sessionsWithMetricPercentage": 0,
             "sessionsWithoutMetricPercentage": 100,
             "pagesViews": 0,
@@ -7631,7 +7631,7 @@
         ],
         "RageClickCount": [
           {
-            "sessionsCount": 10,
+            "sessionsCount": 8,
             "sessionsWithMetricPercentage": 0,
             "sessionsWithoutMetricPercentage": 100,
             "pagesViews": 0,
@@ -7640,16 +7640,16 @@
         ],
         "QuickbackClick": [
           {
-            "sessionsCount": 10,
-            "sessionsWithMetricPercentage": 20,
-            "sessionsWithoutMetricPercentage": 80,
+            "sessionsCount": 8,
+            "sessionsWithMetricPercentage": 25,
+            "sessionsWithoutMetricPercentage": 75,
             "pagesViews": 3,
             "subTotal": 3
           }
         ],
         "ScriptErrorCount": [
           {
-            "sessionsCount": 10,
+            "sessionsCount": 8,
             "sessionsWithMetricPercentage": 0,
             "sessionsWithoutMetricPercentage": 100,
             "pagesViews": 0,
@@ -7658,7 +7658,7 @@
         ],
         "ErrorClickCount": [
           {
-            "sessionsCount": 10,
+            "sessionsCount": 8,
             "sessionsWithMetricPercentage": 0,
             "sessionsWithoutMetricPercentage": 100,
             "pagesViews": 0,
@@ -7667,21 +7667,21 @@
         ],
         "ScrollDepth": [
           {
-            "averageScrollDepth": 75.94
+            "averageScrollDepth": 65.4
           }
         ],
         "Traffic": [
           {
-            "totalSessionCount": 10,
+            "totalSessionCount": 8,
             "totalBotSessionCount": 0,
-            "distinctUserCount": 6,
-            "pagesPerSessionPercentage": 1.8
+            "distinctUserCount": 5,
+            "pagesPerSessionPercentage": 1.875
           }
         ],
         "EngagementTime": [
           {
-            "totalTime": 81,
-            "activeTime": 23
+            "totalTime": 52,
+            "activeTime": 18
           }
         ],
         "Browser": [
@@ -7691,7 +7691,7 @@
           },
           {
             "name": "Chrome",
-            "sessionsCount": 4
+            "sessionsCount": 2
           },
           {
             "name": "Edge",
@@ -7705,7 +7705,7 @@
           },
           {
             "name": "PC",
-            "sessionsCount": 5
+            "sessionsCount": 3
           }
         ],
         "OS": [
@@ -7715,7 +7715,7 @@
           },
           {
             "name": "Windows",
-            "sessionsCount": 4
+            "sessionsCount": 2
           },
           {
             "name": "MacOSX",
@@ -7725,7 +7725,7 @@
         "Country": [
           {
             "name": "Korea, Republic of",
-            "sessionsCount": 9
+            "sessionsCount": 7
           },
           {
             "name": "United States",
@@ -7736,10 +7736,6 @@
           {
             "name": "Simplifier - 스타트업 코칭·기업 강연 한성희",
             "sessionsCount": 7
-          },
-          {
-            "name": "그리드 시스템, 구글 애플이 사랑한 격자 구조 - Simplifier",
-            "sessionsCount": 2
           },
           {
             "name": "자정이 가까워지도록 AI 얘기를 원 없이 나눴어요. - Simplifier",
@@ -7760,20 +7756,12 @@
           {
             "name": "트레바리가 내 삶을 바꾼 이유 - Simplifier",
             "sessionsCount": 1
-          },
-          {
-            "name": "화장실의 UX, 공항과 기차역이 말해주는 공간 디자인 - Simplifier",
-            "sessionsCount": 1
           }
         ],
         "ReferrerUrl": [
           {
             "name": "simplifier.co.kr",
-            "sessionsCount": 4
-          },
-          {
-            "name": "search.naver.com",
-            "sessionsCount": 2
+            "sessionsCount": 3
           },
           {
             "name": "www.linkedin.com",
@@ -7784,10 +7772,6 @@
           {
             "url": "https://simplifier.co.kr/",
             "visitsCount": 7
-          },
-          {
-            "url": "https://simplifier.co.kr/logs/110/",
-            "visitsCount": 2
           },
           {
             "url": "https://simplifier.co.kr/logs/6/",
@@ -7807,10 +7791,6 @@
           },
           {
             "url": "https://simplifier.co.kr/logs/631/",
-            "visitsCount": 1
-          },
-          {
-            "url": "https://simplifier.co.kr/logs/64/",
             "visitsCount": 1
           }
         ]
@@ -8538,13 +8518,6 @@
         "Url": "https://simplifier.co.kr/logs/6/"
       },
       {
-        "totalSessionCount": 0,
-        "totalBotSessionCount": 1,
-        "distinctUserCount": 0,
-        "pagesPerSessionPercentage": null,
-        "Url": "https://simplifier.co.kr./"
-      },
-      {
         "totalSessionCount": 14,
         "totalBotSessionCount": 2,
         "distinctUserCount": 12,
@@ -8674,8 +8647,8 @@
         "Url": "https://simplifier.co.kr/logs/6/"
       },
       {
-        "totalTime": 175,
-        "activeTime": 18,
+        "totalTime": 173,
+        "activeTime": 16,
         "Url": "https://simplifier.co.kr/"
       },
       {
@@ -9107,7 +9080,7 @@
     "Traffic": [
       {
         "totalSessionCount": 15,
-        "totalBotSessionCount": 4,
+        "totalBotSessionCount": 3,
         "distinctUserCount": 10,
         "pagesPerSessionPercentage": 1.5333333333333334,
         "Source": ""
@@ -9171,8 +9144,8 @@
     ],
     "EngagementTime": [
       {
-        "totalTime": 209,
-        "activeTime": 19,
+        "totalTime": 208,
+        "activeTime": 18,
         "Source": ""
       },
       {
