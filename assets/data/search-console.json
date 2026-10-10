@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-09T20:45:30.864772+00:00",
+  "updated_at": "2026-10-10T00:02:16.304814+00:00",
   "site_url": "https://simplifier.co.kr/",
   "data_delay_note": "서치콘솔 데이터는 약 2일 지연 -- end_date는 이틀 전",
   "totals_28d": {
     "clicks": 19,
-    "impressions": 1205,
-    "ctr": 0.0158,
+    "impressions": 1158,
+    "ctr": 0.0164,
     "position": 8.6
   },
   "totals_90d": {
