@@ -347,6 +347,7 @@ note = "2026-10-11 탐 등록(사장님 지시: 위임 관문 경고->차단 전
 # ---------- 2026-10-11 탐 수집 파이프 대장(pipeline_db.py) 맞춤: 감시 id 없던 파이프와 구PC 항목의 신PC 상태판 반영 ----------
 [[job]]
 id = "file:fit-kpi-daily"
+severity = "warn"
 kind = "file_age"
 path = 'C:/work/shorts-lab/pilot-shorts2/KPI_팔로워.md'
 max_age_min = 2880
@@ -355,6 +356,7 @@ note = "2026-10-11 등록(파이프 대장 맞춤, 사장님 허용). 정산 약
 
 [[job]]
 id = "file:fit-cut-ledger"
+severity = "warn"
 kind = "file_age"
 path = 'C:/work/shorts-lab/pilot-shorts2/컷대장.jsonl'
 max_age_min = 10080
@@ -363,6 +365,7 @@ note = "2026-10-11 등록(파이프 대장 맞춤). 자동 주기가 없어 편 
 
 [[job]]
 id = "file:gcp-usage-monitoring"
+severity = "warn"
 kind = "file_age"
 path = 'C:/work/_ops/gcp_usage_cache.json'
 max_age_min = 4320
@@ -372,6 +375,7 @@ note = "2026-10-11 등록(파이프 대장 맞춤). 정기 실행이 아니라 �
 # ---- 구PC 대장(jobs_goosolar.toml)과 같은 id 를 신PC 상태판에도 올린다(pipeline_sync.py 는 신PC state.json 만 읽음) ----
 [[job]]
 id = "gh:site:Fetch ink queue"
+severity = "warn"
 kind = "gh_workflow"
 repo = "hansunghee7/hansunghee7.github.io"
 workflow = "Fetch ink queue"
@@ -380,6 +384,7 @@ note = "2026-10-11 구PC 대장과 같은 id 를 신PC 상태판에 반영(파�
 
 [[job]]
 id = "gh:site:Site health check"
+severity = "warn"
 kind = "gh_workflow"
 repo = "hansunghee7/hansunghee7.github.io"
 workflow = "Site health check"
@@ -388,6 +393,7 @@ note = "2026-10-11 구PC 대장과 같은 id 를 신PC 상태판에 반영(파�
 
 [[job]]
 id = "gh:site:Sync agent corpus"
+severity = "warn"
 kind = "gh_workflow"
 repo = "hansunghee7/hansunghee7.github.io"
 workflow = "Sync agent corpus"
@@ -396,6 +402,7 @@ note = "2026-10-11 구PC 대장과 같은 id 를 신PC 상태판에 반영(파�
 
 [[job]]
 id = "cron:flow-credits"
+severity = "warn"
 kind = "cmd"
 cmd = ["python", 'C:\work\_ops\remote_file_age.py', "goosolar", "/home/goosloar/workshop/logs/flow_credits.last", "300"]
 timeout = 60
@@ -405,6 +412,7 @@ note = "2026-10-11 구PC 대장 id 를 신PC 상태판에도 반영. 구PC 접�
 
 [[job]]
 id = "cron:simplifier-posts"
+severity = "warn"
 kind = "cmd"
 cmd = ["python", 'C:\work\_ops\remote_file_age.py', "goosolar", "/home/goosloar/ops/checks/simplifier-posts.ok", "780"]
 timeout = 60
@@ -414,6 +422,7 @@ note = "2026-10-11 구PC 대장 id 를 신PC 상태판에도 반영"
 
 [[job]]
 id = "cron:sns-daily-read"
+severity = "warn"
 kind = "cmd"
 cmd = ["python", 'C:\work\_ops\remote_file_age.py', "goosolar", "/home/goosloar/workshop/out/sns/last_run", "1560"]
 timeout = 60
@@ -423,6 +432,7 @@ note = "2026-10-11 구PC 대장 id 를 신PC 상태판에도 반영"
 
 [[job]]
 id = "cron:vids-probe"
+severity = "warn"
 kind = "cmd"
 cmd = ["python", 'C:\work\_ops\remote_file_age.py', "goosolar", "/home/goosloar/workshop/logs/vids_probe.last", "180"]
 timeout = 60
