@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-09T23:32:55.448313+00:00",
+  "updated_at": "2026-10-10T07:05:01.614030+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 341,
-    "activeUsers": 296,
-    "newUsers": 291,
-    "returningUsers": 5
+    "sessions": 342,
+    "activeUsers": 297,
+    "newUsers": 293,
+    "returningUsers": 4
   },
   "daily": [
     {
@@ -220,23 +220,23 @@
     },
     {
       "date": "2026-10-10",
-      "sessions": 3,
-      "activeUsers": 2,
-      "newUsers": 1,
-      "returningUsers": 1
+      "sessions": 4,
+      "activeUsers": 3,
+      "newUsers": 3,
+      "returningUsers": 0
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 118,
+    "home": 119,
     "log_home": 0,
-    "individual_post": 219,
+    "individual_post": 220,
     "other": 12
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 194
+      "sessions": 196
     },
     {
       "source": "linkedin.com",
@@ -260,7 +260,7 @@
     },
     {
       "source": "(not set)",
-      "sessions": 11
+      "sessions": 12
     },
     {
       "source": "maru-connect.webflow.io",
@@ -300,7 +300,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 194
+      "sessions": 196
     },
     {
       "source": "linkedin.com",
@@ -418,12 +418,12 @@
     }
   ],
   "engagement_events": {
-    "section_view_proven": 51,
-    "section_view_voices": 45,
+    "section_view_proven": 52,
+    "section_view_voices": 46,
     "section_view_book_class": 26,
     "section_view_faq": 26,
     "faq_open": 10,
-    "read_complete": 76
+    "read_complete": 78
   },
   "contact_funnel": {
     "contact_open": 17,
@@ -570,6 +570,12 @@
       "views": 5
     },
     {
+      "path": "/logs/6/",
+      "title": "자정이 가까워지도록 AI 얘기를 원 없이 나눴어요.",
+      "uniqueViews": 5,
+      "views": 4
+    },
+    {
       "path": "/logs/636/",
       "title": "바쁜 하루가 끝났는데 남은 게 없다면",
       "uniqueViews": 5,
@@ -592,12 +598,6 @@
       "title": "우선순위 설정의 프레임워크 'RICE'",
       "uniqueViews": 4,
       "views": 4
-    },
-    {
-      "path": "/logs/475/",
-      "title": "1화 신학기 개강",
-      "uniqueViews": 4,
-      "views": 10
     }
   ],
   "desktop_screen_resolutions": {
