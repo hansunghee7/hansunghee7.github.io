@@ -32,13 +32,14 @@ def parse_stale_line(line):
 
 
 def parse_stale(text):
+    """'성공 기록 없음' 때문에 stale 인 줄만 (slug, 감시 id)로 돌려준다(다른 이유의 stale 은 건드리지 않음)."""
     out = []
     for ln in text.splitlines():
         if ln.startswith('신선도'):
             continue
         r = parse_stale_line(ln)
-        if r:
-            out.append(r)
+        if r and r[2]:
+            out.append(r[:2])
     return out
 
 
@@ -47,9 +48,13 @@ def evidence(entry):
     st = entry.get('status')
     if st not in ('ok', 'fail'):
         return None
+    checked = str(entry.get('checked', ''))
     m = LAST_RE.search(entry.get('detail', '') or '')
-    when = ('감시가 기록한 마지막 실행 ' + m.group(1)) if m else '감시 점검 ' + str(entry.get('checked', ''))[:16].replace('T', ' ')
-    return st == 'ok', f"pipeline_sync: 감시 {entry.get('id')} {st}, {when} (상태판 근거)"
+    at = checked
+    if m and checked[:4].isdigit():  # 'MM-DD HH:MM'에 점검 시각의 연도·시간대를 붙인다
+        at = f"{checked[:4]}-{m.group(1).replace(' ', 'T')}:00{checked[-6:] if re.search(r'[+-]\d\d:\d\d$', checked) else ''}"
+    when = ('감시가 기록한 마지막 실행 ' + m.group(1)) if m else '감시 점검 ' + checked[:16].replace('T', ' ')
+    return st == 'ok', f"pipeline_sync: 감시 {entry.get('id')} {st}, {when} (상태판 근거)", at
 
 
 def run_tool(*args):
@@ -63,25 +68,32 @@ def main(argv=None):
     ap.add_argument('--dry', action='store_true', help='기록하지 않고 계획만 출력')
     ap.add_argument('--state', default=STATE)
     a = ap.parse_args(argv)
-    state = json.load(open(a.state, encoding='utf-8')) if os.path.exists(a.state) else {}
+    try:
+        with open(a.state, encoding='utf-8') as f:
+            state = json.load(f)
+        if not isinstance(state, dict):
+            raise ValueError('최상위가 객체가 아님')
+    except (OSError, ValueError) as e:
+        print(f'상태 파일 오류: {a.state} ({e})')
+        sys.exit(2)
     code, out = run_tool('stale')
     if code:
         sys.exit('stale 조회 실패: ' + out[:200])
     rows = parse_stale(out)
     todo, none = [], []
-    for slug, watch, _ in rows:
+    for slug, watch in rows:
         ev = evidence(state[watch]) if watch and watch in state else None
         if ev:
             todo.append((slug, ev))
         else:
             none.append(f"{slug} (감시 {watch or '-'})")
     print(f"stale {len(rows)}개 중 근거 있음 {len(todo)}, 근거 없음 {len(none)}")
-    for slug, (ok, note) in todo:
+    for slug, (ok, note, at) in todo:
         flag = 'yes' if ok else 'no'
         if a.dry:
-            print(f'[dry] add-run {slug} --ok {flag} --note "{note}"')
+            print(f'[dry] add-run {slug} --ok {flag} --at {at} --note "{note}"')
             continue
-        c, o = run_tool('add-run', slug, '--ok', flag, '--note', note)
+        c, o = run_tool('add-run', slug, '--ok', flag, '--at', at, '--note', note)
         print(f"{slug}: {o.splitlines()[-1] if o else c}")
     print('근거 없음: ' + (', '.join(none) or '없음'))
 

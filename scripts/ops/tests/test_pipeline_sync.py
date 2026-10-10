@@ -19,11 +19,13 @@ class T(unittest.TestCase):
         self.assertIsNone(ps.parse_stale_line('a  b  [부분]  기준 1시간  성공 기록 없음  대장 x  감시 -')[1])
 
     def test_parse_stale_skips_header(self):
-        self.assertEqual(len(ps.parse_stale('신선도 기준을 넘긴 파이프라인 1개\n' + LINE)), 1)
+        other = LINE.replace('성공 기록 없음', '마지막 성공 2026-10-06 22:39 (96.3시간 전)')
+        self.assertEqual(ps.parse_stale('신선도 기준을 넘긴 파이프라인 2개\n' + LINE + '\n' + other), [('dynamic-quota', 'fn:dynamic-quota')])
 
     def test_evidence(self):
-        ok, note = ps.evidence({'id': 'a', 'status': 'ok', 'detail': '마지막 실행 10-11 07:14 (x)', 'checked': '2026-10-11T07:38:00'})
+        ok, note, at = ps.evidence({'id': 'a', 'status': 'ok', 'detail': '마지막 실행 10-11 07:14 (x)', 'checked': '2026-10-11T07:38:00.123456+09:00'})
         self.assertTrue(ok)
+        self.assertEqual(at, '2026-10-11T07:14:00+09:00')
         self.assertIn('10-11 07:14', note)
         self.assertFalse(ps.evidence({'id': 'a', 'status': 'fail', 'detail': ''})[0])
         self.assertIsNone(ps.evidence({'id': 'a', 'status': 'warn'}))
