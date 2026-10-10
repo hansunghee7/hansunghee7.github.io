@@ -201,6 +201,18 @@ def call(prompt, model="gemini-3.6-flash", search=False, who="unknown", timeout=
     if not keys:
         attempts.append(("free", "no_key"))
 
+    # ①-b 제미나이 웹앱(구PC 로그인 크롬). 검색 요청이고 GEMINI_WEB=1 일 때만, 무료 키가 실패한 뒤에만(기본 꺼짐, 실사용 전 사장님 확인)
+    if search and os.environ.get("GEMINI_WEB") == "1":
+        try:
+            import gemini_web
+            t0 = time.time()
+            w = gemini_web.ask(prompt, who=who, timeout=min(timeout, 150))
+        except Exception:  # noqa: BLE001  웹 갈래의 어떤 오류도 Vertex 낙하를 막지 않는다
+            w = {"exit_code": 1, "status": "error", "port": None}
+        if w["exit_code"] == 0:
+            return done(w["text"], "gemini-web", "ok", w["cost_note"], w["sources"], t0, 0)
+        attempts.append(("gemini-web", w["status"]))
+
     # ②·③ Vertex
     import ask_vertex as av
     stages = [("vertex-company", av.COMPANY_PROJECT, av.COMPANY_ACCOUNT), ("vertex-personal", av.PROJECT, av.ACCOUNT)]
