@@ -52,7 +52,10 @@ if data.get("tool_name") == "Bash" or (not repo and ti.get("command")):
             sys.stderr.write("[첫 화면 관문] room_readme_gate.py를 찾지 못해 검사를 건너뜁니다: " + README_GATE + "\n")
             sys.exit(0)
         try:
-            r = subprocess.run([sys.executable, README_GATE, target], capture_output=True, text=True, encoding="utf-8", timeout=90)
+            # 받는 사람이 여는 화면 기준(규약 7절): 명령에 PR 주소(pull/N)가 있으면 그 PR 본문, 없으면 저장소 README를 검사한다
+            pr = re.search(r"/pull/(\d+)", cmd)
+            args = [sys.executable, README_GATE, target] + (["--pr", pr.group(1)] if pr else [])
+            r = subprocess.run(args, capture_output=True, text=True, encoding="utf-8", timeout=90)
         except Exception as e:
             block("첫 화면 관문을 실행하지 못했습니다(" + str(e)[:80] + "). 방 링크·초대를 주기 전에 room_readme_gate.py를 직접 통과시키세요.")
         if r.returncode == 0:

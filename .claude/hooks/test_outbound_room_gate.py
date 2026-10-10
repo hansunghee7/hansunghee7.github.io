@@ -6,6 +6,7 @@ BODY = "[탐→클로이 #3] 답 감사합니다. 매뉴얼을 한 곳으로 합
 _d = Path(tempfile.mkdtemp())
 FAIL = _d / "f.py"; FAIL.write_text("import sys; print('FAIL x'); sys.exit(1)", encoding="utf-8")
 PASS = _d / "p.py"; PASS.write_text("print('PASS')", encoding="utf-8")
+PRONLY = _d / "pr.py"; PRONLY.write_text("import sys; a=sys.argv; ok='--pr' in a and a[a.index('--pr')+1]=='7'; print('PASS' if ok else 'FAIL x'); sys.exit(0 if ok else 1)", encoding="utf-8")
 def a(t): return {"type": "assistant", "message": {"role": "assistant", "content": [{"type": "text", "text": t}]}}
 def u(t): return {"type": "user", "message": {"role": "user", "content": t}}
 def run(repo, rows, body=BODY, raw=None, bash=None, env=None):
@@ -31,6 +32,8 @@ cases = [
     ("Bash 내부 방 댓글은 대상 아님", run("", [u("x")], bash='gh pr comment 3 -R acme/agent-chatroom --body "hi"'), 0),
     ("Bash 초대는 첫 화면 관문 실패 시 막음", run("", [], bash="gh api repos/acme/chatroom-zitu/collaborators/bob -X PUT", env={"ROOM_README_GATE": str(FAIL)}), 2),
     ("Bash 초대는 첫 화면 관문 통과 시 통과", run("", [], bash="gh api repos/acme/chatroom-zitu/collaborators/bob -X PUT", env={"ROOM_README_GATE": str(PASS)}), 0),
+    ("PR 주소로 초대하면 관문에 --pr 번호를 넘김(통과)", run("", [], bash="gh api repos/acme/chatroom-zitu/collaborators/bob -X PUT # https://github.com/acme/chatroom-zitu/pull/7", env={"ROOM_README_GATE": str(PRONLY)}), 0),
+    ("저장소 주소로 초대하면 --pr 없이 README 검사(막음)", run("", [], bash="gh api repos/acme/chatroom-zitu/collaborators/bob -X PUT", env={"ROOM_README_GATE": str(PRONLY)}), 2),
     ("Bash 무관 명령은 통과", run("", [], bash="git status"), 0),
     ("깨진 입력은 통과", 0 if run("chatroom-zitu", [], raw=b"not json") == 0 else 1, 0),
 ]
