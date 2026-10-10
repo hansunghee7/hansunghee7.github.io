@@ -335,3 +335,11 @@ path = 'C:/work/shorts-lab/pilot-shorts2/발행대장.json'
 max_age_min = 180
 name = "핏 장부 DB 동기화(작업 스케줄러 핏_장부DB동기화, 30분마다 fit_db.py sync: 대본·조립·발행 장부 파일을 갱신해 수파베이스 fit_* 표에 반영)"
 note = "2026-10-10 핏 등록(핏-발행 #18). 발행대장.json이 3시간 넘게 안 바뀌면 멈춤. 원인: 작업 스케줄러 실패, 시트 미러 읽기 실패, DB 키 문제."
+
+[[job]]
+id = "fn:delegation-audit"
+kind = "cmd"
+cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\delegation_audit.py', 'watch']
+every_min = 1440
+name = "위임 비율 정기 실측과 판정일 감시(delegation_audit.py, 판정일 2026-10-18)"
+note = "2026-10-11 탐 등록(사장님 지시: 위임 관문 경고->차단 전환은 오탐이 줄어든 뒤 실측해 정한다). 하루 한 번 아침 실측해 C:/work/_ops/deleg_audit/history.csv에 한 행. 붉음 = 직전 실측 36시간 초과 또는 판정일 이후 결정 미기록(위임 관문 차단 전환 판정 대기). 결정은 delegation_audit.py decide로 기록. 첫 자동 실행 결과는 다음 날 아침 확인"
