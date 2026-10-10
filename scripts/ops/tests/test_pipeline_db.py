@@ -229,3 +229,17 @@ def test_seed_secret_in_row_rejected(fake, tmp_path):
     with pytest.raises(SystemExit):
         pdb.main(['seed', str(tmp_path)])
     assert not fake.calls
+
+
+def test_parse_at_converts_to_utc_and_rejects_bad_or_future():
+    assert pdb.parse_at("2026-10-11T07:14:00+09:00") == "2026-10-10T22:14:00+00:00"
+    with pytest.raises(SystemExit):
+        pdb.parse_at("yesterday")
+    with pytest.raises(SystemExit):
+        pdb.parse_at("2999-01-01T00:00:00+00:00")
+
+
+def test_add_run_at_sets_ran_at(fake):
+    fake.tables['data_pipelines'] = [{'slug': 'dynamic-quota'}]
+    pdb.main(["add-run", "dynamic-quota", "--ok", "yes", "--at", "2026-10-11T07:14:00+09:00"])
+    assert "2026-10-10T22:14:00+00:00" in json.dumps(fake.calls, default=str)

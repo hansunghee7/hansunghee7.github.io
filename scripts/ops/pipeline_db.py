@@ -203,13 +203,27 @@ def need_pipeline(slug):
         die(f'파이프라인 없음: {slug} (status 로 목록 확인)')
 
 
+def parse_at(s):
+    """--at ISO 시각 -> UTC ISO 문자열. 형식이 틀리거나 미래면 거부(시간대 없으면 로컬 시각으로 본다)."""
+    try:
+        t = datetime.datetime.fromisoformat(str(s).strip())
+    except ValueError:
+        die(f'--at 형식 오류(ISO 8601 필요): {s}')
+    t = t.astimezone() if t.tzinfo is None else t
+    t = t.astimezone(datetime.timezone.utc)
+    if t > datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(minutes=1):
+        die(f'--at 미래 시각 거부: {s}')
+    return t.isoformat()
+
+
 def cmd_add_run(a):
     ok = parse_bool(a.ok)
+    at = parse_at(a.at) if getattr(a, 'at', None) else None
     row = gate_row({'pipeline_slug': a.slug, 'note': a.note, 'evidence': a.evidence})
     row['ok'] = ok
     if a.rows is not None:
         row['rows_in'] = a.rows
-    row['ran_at'] = now_iso()
+    row['ran_at'] = at or now_iso()
     row = {k: v for k, v in row.items() if v is not None}
     need_pipeline(a.slug)
     _, body, _h = call(opsdb._call, 'POST', '/pipeline_runs', [row], 'return=representation')
@@ -313,6 +327,7 @@ def build_parser():
     p = sub.add_parser('howto'); p.add_argument('slug')
     p = sub.add_parser('add-run'); p.add_argument('slug')
     p.add_argument('--ok', required=True)
+    p.add_argument('--at', help='실제 실행 시각 ISO 8601(없으면 지금, 미래 거부)')
     p.add_argument('--rows', type=int)
     p.add_argument('--note')
     p.add_argument('--evidence')
