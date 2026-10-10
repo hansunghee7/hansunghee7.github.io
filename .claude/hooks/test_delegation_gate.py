@@ -90,6 +90,16 @@ class GateTest(unittest.TestCase):
         r = self.run_gate(self.transcript(self.calls(10)), "block", DELEGATION_CALLS="5")
         self.assertEqual(r.returncode, 2)
 
+    def test_9_extended_delegation_commands(self):
+        for cmd in ("python scripts/ops/ask_vertex.py q", "python vertex_research.py x", "python gemini_route.py x",
+                    "python api_run.py x", "python credit_run.py x", "python orch_wait.py x",
+                    "claude -p 'hi'", "python session_brief.py --cloud"):
+            ev = self.calls(60) + [use(950, command=cmd)] + self.calls(60, 100)
+            r = self.run_gate(self.transcript(ev), "block")
+            self.assertEqual(r.returncode, 0, cmd)
+            if os.path.exists(self.state):
+                os.remove(self.state)
+
     def test_8_persona_scope(self):
         p = self.transcript(self.calls(120))
         r = self.run_gate(p, "block", DELEGATION_GATE_PERSONAS="zzzz-nomatch")

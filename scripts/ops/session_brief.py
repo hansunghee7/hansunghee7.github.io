@@ -18,6 +18,19 @@ STATUS = Path(r'C:\work\_ops\STATUS.md')
 SOURCES = [Path(r'C:\work\hansunghee7.github.io\docs\진행상황.md'), Path(r'C:\work\shorts-lab\pilot-shorts2\KPI_과제.md')]  # 인수인계 정본
 
 
+ORCH_LINES = [
+    "===== 오케스트레이션 2.0 기본값 (사장님 지시 2026-10-11, 모든 에이전트) =====",
+    "- 직접 손일(반복 Bash·수집·측정)보다 위임이 기본: 서브에이전트·덱스·비티·헤르메스·백그라운드 스크립트로 맡기고 요약·판정만 받는다.",
+    "- 정본: docs/오케스트레이터_일하는_방식.md. 위임 관문 훅이 위임 없는 100회/15만 자 구간마다 확인을 보낸다(기본 warn).",
+    "- 소넷 서브에이전트는 예외 관문(무상 2회 실패·100줄 이내 복잡 코드)만. 클로드 API는 래퍼 레이어로(정본 '여섯째 갈래').",
+]
+
+
+def print_orch():
+    print()
+    print(chr(10).join(ORCH_LINES))
+
+
 def ensure_fresh():
     """인수인계 정본(md)이 DB 마지막 동기화보다 새로우면 바로 한 번 동기화한다(바이 직후 새 세션이 하이를 하면 시간당 자동 동기화를 기다리지 않게)."""
     import subprocess
@@ -57,6 +70,7 @@ def cloud_main(who):
             if l.startswith('#') and re.search(r'진행|확인필요|사장님', l):
                 print('-', l[:140])
     open_orders()
+    print_orch()
     print('\n(운영 DB·감시 상태판은 로컬 전용이라 생략. 기억 스냅샷: 비공개 저장소 simplifier-cxo-db reports/tam_memory/MEMORY.md)')
 
 
@@ -98,6 +112,7 @@ def main():
         except Exception:
             print('\n(목표 장부 C:/work/_ops/tam_drive.json 을 못 읽음)')
     open_orders()
+    print_orch()
     print('\n===== 감시 상태판 문제 줄 =====')
     try:
         bad = [l.strip() for l in STATUS.read_text(encoding='utf-8', errors='replace').splitlines() if l.strip().startswith(('🔴', '🟡', '| 🔴', '| 🟡'))]

@@ -3,7 +3,7 @@
 
 근거(핏 세션 2026-10-11 실측): Bash 887회, Agent 0회, 덱스·비티 0회, 도구 출력의 약 80%가 Bash.
 규칙: 직전 위임 기록 이후 구간에서 도구 호출 수 또는 도구 출력 글자 수가 임계를 넘고, 그 구간에 위임 기록이 없으면 동작한다.
-위임 기록: Agent 호출, Bash/PowerShell 명령의 ask_dex.sh·ask_bt.sh·hx.sh·nohup·setsid 또는 run_in_background=true,
+위임 기록: Agent 호출, Bash/PowerShell 명령의 ask_dex.sh·ask_bt.sh·hx.sh·nohup·setsid·ask_vertex.py·vertex_research.py·gemini_route.py·api_run.py·credit_run.py·orch_wait.py·claude -p·--cloud 또는 run_in_background=true,
 Monitor·CronCreate·ScheduleWakeup·SendMessage 호출.
 환경변수: DELEGATION_CALLS(기본 100), DELEGATION_CHARS(기본 150000),
 DELEGATION_GATE_MODE(warn 기본 | block), DELEGATION_GATE_PERSONAS(쉼표 목록, 비면 모든 세션),
@@ -17,7 +17,7 @@ import sys
 
 DELEGATION_TOOLS = {"Agent", "Task", "Monitor", "CronCreate", "ScheduleWakeup", "SendMessage",
                     "mcp__scheduled-tasks__create_scheduled_task", "mcp__ccd_session_mgmt__send_message"}
-DELEGATION_CMD = re.compile(r"ask_dex\.sh|ask_bt\.sh|hx\.sh|\bnohup\b|\bsetsid\b")
+DELEGATION_CMD = re.compile(r"ask_dex\.sh|ask_bt\.sh|hx\.sh|\bnohup\b|\bsetsid\b|ask_vertex\.py|vertex_research\.py|gemini_route\.py|api_run\.py|credit_run\.py|orch_wait\.py|\bclaude\s+-p\b|--cloud\b")
 DEFAULT_STATE = "C:/work/_ops/delegation_gate_state.json"
 
 
