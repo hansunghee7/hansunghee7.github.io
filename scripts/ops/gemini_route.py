@@ -206,7 +206,7 @@ def call(prompt, model="gemini-3.6-flash", search=False, who="unknown", timeout=
         try:
             import gemini_web
             t0 = time.time()
-            w = gemini_web.ask(prompt, who=who, timeout=min(timeout, 150))
+            w = gemini_web.ask(prompt, who=who)  # 전체 예산은 GEMINI_WEB_TIMEOUT(기본 60초)
         except Exception:  # noqa: BLE001  웹 갈래의 어떤 오류도 Vertex 낙하를 막지 않는다
             w = {"exit_code": 1, "status": "error", "port": None}
         if w["exit_code"] == 0:

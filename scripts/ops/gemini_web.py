@@ -20,6 +20,8 @@ import os
 import subprocess
 import sys
 import time
+import threading
+from time import time as _wall  # 잠금 시각용(시험이 time 을 가짜로 바꿔도 영향 없음)
 from datetime import datetime
 from pathlib import Path
 
@@ -32,6 +34,10 @@ REMOTE_SCRIPT = Path(__file__).resolve().parents[2] / "tools" / "gemini_web" / "
 DAY_CAP = int(os.environ.get("GEMINI_WEB_DAY_CAP", "8"))
 MIN_GAP_SEC = int(os.environ.get("GEMINI_WEB_MIN_GAP", "90"))
 MAX_Q = 1500
+WEB_TIMEOUT = lambda: int(os.environ.get("GEMINI_WEB_TIMEOUT", "60"))  # noqa: E731  웹 갈래 전체 예산(초). 초과하면 즉시 Vertex로 낙하. ssh 버퍼 +10초
+SSH_BUFFER = 10
+# 구글 워크스페이스 계정 포트: 구PC 헤드리스에서 동작하지 않는다(사장님 정책 2026-10-11, 공정 카드 핏 #73). 환경변수로 지정해도 거부한다.
+HARD_REJECT_PORTS = ("9222", "9223", "9226")
 STOP_STATUSES = ("blocked", "login", "mismatch", "consent")  # 이 결과면 그 계정은 그날 중지
 EXIT_OK, EXIT_FAIL = 0, 2
 
@@ -40,8 +46,46 @@ def enabled():
     return os.environ.get("GEMINI_WEB") == "1"
 
 
-def ports():
+def _requested_ports():
     return [p.strip() for p in os.environ.get("GEMINI_WEB_PORTS", "9224,9225").split(",") if p.strip()]
+
+
+def ports():
+    return [p for p in _requested_ports() if p not in HARD_REJECT_PORTS]
+
+
+def rejected_ports():
+    return [p for p in _requested_ports() if p in HARD_REJECT_PORTS]
+
+
+class _Lock:
+    """상태 파일 잠금: O_EXCL 잠금 파일 + 짧은 재시도, 30초 넘은 잠금은 회수한다."""
+    def __init__(self, path):
+        self.path = Path(str(path) + ".lock")
+
+    def __enter__(self):
+        end = _wall() + 10
+        self.path.parent.mkdir(parents=True, exist_ok=True)
+        while True:
+            try:
+                os.close(os.open(str(self.path), os.O_CREAT | os.O_EXCL | os.O_WRONLY))
+                return self
+            except FileExistsError:
+                try:
+                    if _wall() - self.path.stat().st_mtime > 30:
+                        self.path.unlink()
+                        continue
+                except OSError:
+                    continue
+                if _wall() > end:
+                    raise TimeoutError("상태 잠금을 얻지 못함")
+                threading.Event().wait(0.05)
+
+    def __exit__(self, *a):
+        try:
+            self.path.unlink()
+        except OSError:
+            pass
 
 
 def _today():
@@ -93,10 +137,10 @@ def pick_account(st, now=None):
 
 def _run_remote(port, question, timeout):
     """원격 실행기를 부르고 JSON 한 줄을 읽는다. 시험에서 가짜로 바꾼다. 반환: dict."""
-    cmd = f"f=$(mktemp); cat > $f; {REMOTE_PY} {REMOTE_DIR}/gemini_web_ask.py --port {int(port)} --question-file $f --timeout {int(timeout)}; rm -f $f"
+    cmd = f"{REMOTE_PY} {REMOTE_DIR}/gemini_web_ask.py --port {int(port)} --question-file - --timeout {int(timeout)}"  # 질문은 표준입력으로(임시 파일 없음)
     try:
         r = subprocess.run(["ssh", "-o", "BatchMode=yes", "-o", "ConnectTimeout=10", SSH_HOST, cmd], input=question, capture_output=True,
-                           text=True, encoding="utf-8", timeout=timeout + 60,
+                           text=True, encoding="utf-8", timeout=timeout + SSH_BUFFER,
                            creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
     except (subprocess.TimeoutExpired, OSError) as e:
         return {"status": "error", "text": "", "sources": [], "secs": 0, "note": f"ssh 실패: {type(e).__name__}"}
@@ -108,7 +152,7 @@ def _run_remote(port, question, timeout):
     return {"status": "error", "text": "", "sources": [], "secs": 0, "note": f"원격 출력 없음(rc={r.returncode})"}
 
 
-def ask(question, who="unknown", timeout=150):
+def ask(question, who="unknown", timeout=None):
     """반환: call()과 같은 키 dict(text, route, status, cost_note, sources, exit_code, tried). route=gemini-web|none. 실패해도 예외 없음."""
     def fail(status, note, port=None):
         return {"text": note, "route": "none", "status": status, "cost_note": "비용 없음", "sources": [], "exit_code": EXIT_FAIL, "tried": [("gemini-web", status)], "port": port}
@@ -116,22 +160,35 @@ def ask(question, who="unknown", timeout=150):
     q = (question or "").strip()
     if not q or len(q) > MAX_Q:
         return fail("rejected", f"질문 길이 1~{MAX_Q}자만 허용(현재 {len(q)}자)")
-    st = load_state()
-    port, why = pick_account(st)
-    if port is None:
-        return fail("throttled", f"쓸 수 있는 계정 없음: {why}")
-    day = st.setdefault(_today(), {})
-    a = day.setdefault(port, {"calls": 0})
-    a["calls"] += 1  # 호출 직전에 센다: 도중에 죽어도 횟수는 남는다
-    a["last"] = time.time()
-    save_state(st)
+    timeout = int(timeout) if timeout else WEB_TIMEOUT()
+    rj = rejected_ports()
+    if rj:
+        _log(who, ",".join(rj), "port_rejected", 0, 0)  # 이유 한 줄: 워크스페이스 포트는 구PC 헤드리스에서 안 된다(정책 2026-10-11)
+    try:
+        with _Lock(STATE):  # 읽기·선택·횟수 기록을 한 번에: 동시 호출이 같은 포트를 고르지 않게
+            st = load_state()
+            port, why = pick_account(st)
+            if port is None:
+                return fail("throttled", f"쓸 수 있는 계정 없음: {why}")
+            day = st.setdefault(_today(), {})
+            a = day.setdefault(port, {"calls": 0})
+            a["calls"] += 1  # 호출 직전에 센다: 도중에 죽어도 횟수는 남는다
+            a["last"] = time.time()
+            save_state(st)
+    except TimeoutError:
+        return fail("throttled", "상태 잠금 대기 초과")
     res = _run_remote(port, q, timeout)
     status = str(res.get("status", "error"))
     text = str(res.get("text", ""))
     _log(who, port, status, res.get("secs", 0), len(text.encode("utf-8")))
     if status in STOP_STATUSES:
-        a["stopped"] = f"{status} {datetime.now():%H:%M}"
-        save_state(st)
+        try:
+            with _Lock(STATE):
+                st = load_state()
+                st.setdefault(_today(), {}).setdefault(port, {"calls": 1})["stopped"] = f"{status} {datetime.now():%H:%M}"
+                save_state(st)
+        except TimeoutError:
+            pass
         return fail(status, f"[gemini-web 계정 {port} 오늘 중지] {res.get('note', '')}", port)
     if status != "ok" or not text.strip():
         return fail(status if status != "ok" else "empty", f"[gemini-web 실패] {res.get('note', '')}", port)
@@ -153,7 +210,7 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description="제미나이 웹앱 경유 질문(구PC, 사람 빈도 이하)")
     ap.add_argument("q", nargs="?", help="질문 문장, 또는 @파일경로")
     ap.add_argument("--who", default="unknown")
-    ap.add_argument("--timeout", type=int, default=150)
+    ap.add_argument("--timeout", type=int, default=None)
     ap.add_argument("--install", action="store_true")
     ap.add_argument("--status", action="store_true")
     a = ap.parse_args(argv)

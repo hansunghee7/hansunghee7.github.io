@@ -8,6 +8,7 @@ import importlib.util
 import json
 import sys
 import tempfile
+import threading
 import types
 import unittest
 from pathlib import Path
@@ -116,6 +117,107 @@ class Web(unittest.TestCase):
         with self.remote({"status": "ok", "text": " ", "sources": [], "secs": 3, "note": ""}):
             r = gw.ask("q")
         self.assertEqual((r["status"], r["exit_code"]), ("empty", 2))
+
+
+    def test_workspace_ports_hard_rejected_even_if_env_sets_them(self):
+        with mock.patch.dict("os.environ", {"GEMINI_WEB_PORTS": "9222,9223,9226,9225"}), self.remote(OK):
+            r = gw.ask("q")
+        self.assertEqual(r["port"], "9225")
+        self.assertEqual(self.calls, ["9225"])
+        self.assertIn("port_rejected", (self.tmp / "log.jsonl").read_text(encoding="utf-8"))
+        with mock.patch.dict("os.environ", {"GEMINI_WEB_PORTS": "9222,9226"}), self.remote() as m:
+            self.assertEqual(gw.ask("q")["status"], "throttled")
+        m.assert_not_called()
+
+    def test_concurrent_asks_never_pick_same_port(self):
+        got, gate = [], threading.Barrier(2)
+
+        def fake(port, q, timeout):
+            got.append(port)
+            threading.Event().wait(0.3)
+            return OK
+        res = []
+
+        def go():
+            gate.wait()
+            res.append(gw.ask("q"))
+        with mock.patch.object(gw, "_run_remote", side_effect=fake):
+            ts = [threading.Thread(target=go) for _ in range(2)]
+            [t.start() for t in ts]
+            [t.join() for t in ts]
+        self.assertEqual(sorted(got), ["9001", "9002"])
+
+    def test_stale_lock_reclaimed(self):
+        lk = Path(str(gw.STATE) + ".lock")
+        lk.write_text("x")
+        import os
+        old = os.path.getmtime(lk) - 60
+        os.utime(lk, (old, old))
+        with self.remote(OK):
+            self.assertEqual(gw.ask("q")["status"], "ok")
+
+    def test_total_budget_default_60_and_env(self):
+        seen = []
+        with mock.patch.object(gw, "_run_remote", side_effect=lambda p, q, t: seen.append(t) or OK):
+            gw.ask("q")
+            self.t[0] += 200
+            with mock.patch.dict("os.environ", {"GEMINI_WEB_TIMEOUT": "30"}):
+                gw.ask("q")
+        self.assertEqual(seen, [60, 30])
+
+
+class RemoteLogic(unittest.TestCase):
+    """구PC 실행기의 새 응답 판정(가짜 DOM). 브라우저 없음."""
+    @classmethod
+    def setUpClass(cls):
+        sp = importlib.util.spec_from_file_location("gwa", OPS.parents[1] / "tools" / "gemini_web" / "gemini_web_ask.py")
+        cls.m = importlib.util.module_from_spec(sp)
+        sp.loader.exec_module(cls.m)
+
+    def run_wait(self, reads, body="", timeout=40):
+        clock = [0.0]
+        it = iter(reads)
+        cur = [reads[0]]
+
+        def read():
+            try:
+                cur[0] = next(it)
+            except StopIteration:
+                pass
+            return cur[0]
+        return self.m.wait_answer(read, lambda: False, lambda: body, lambda s: clock.__setitem__(0, clock[0] + s), lambda: clock[0],
+                                  self.m.h("이전 답"), 1, timeout)
+
+    def test_only_old_answer_no_new_node_is_error(self):
+        st, txt, _s, note = self.run_wait([{"text": "이전 답", "sources": [], "n": 1}] * 30)
+        self.assertEqual(st, "error")
+        self.assertEqual(txt, "")
+
+    def test_new_node_is_ok(self):
+        old = {"text": "이전 답", "sources": [], "n": 1}
+        new = {"text": "4", "sources": [{"title": "t", "uri": "https://e.x"}], "n": 2}
+        st, txt, src, _n = self.run_wait([old, old] + [new] * 10)
+        self.assertEqual((st, txt, src[0]["uri"]), ("ok", "4", "https://e.x"))
+
+    def test_same_node_count_but_changed_hash_is_ok(self):
+        st, txt, _s, _n = self.run_wait([{"text": "다른 답", "sources": [], "n": 1}] * 10)
+        self.assertEqual((st, txt), ("ok", "다른 답"))
+
+    def test_long_block_notice_detected_in_first_600_chars(self):
+        long_txt = "죄송합니다. 도와드릴 수 없습니다. " + "안내 " * 300
+        self.assertGreater(len(long_txt), 200)
+        st, _t, _s, note = self.run_wait([{"text": long_txt, "sources": [], "n": 2}] * 10)
+        self.assertEqual(st, "blocked")
+
+    def test_block_word_after_600_chars_ignored_and_normal_answer_ok(self):
+        txt = "정상 답변 " * 150 + " 정책에 따라"
+        st, *_ = self.run_wait([{"text": txt, "sources": [], "n": 2}] * 10)
+        self.assertEqual(st, "ok")
+        self.assertEqual(self.m.block_phrase("서울은 오늘 맑습니다"), "")
+
+    def test_stops_if_screen_shows_block_before_any_answer(self):
+        st, *_ = self.run_wait([{"text": "", "sources": [], "n": 1}] * 20, body="요청이 너무 많아 한도에 도달했습니다")
+        self.assertEqual(st, "blocked")
 
 
 class RouteFall(unittest.TestCase):
