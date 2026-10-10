@@ -50,11 +50,17 @@ for M in $ORDER; do
   # 한도 관문(10/3, 사장님 지시 "한도는 탐이 관리"): 막혔거나 주간 예산을 다 썼으면 이 모델은 건너뛴다.
   python "$QUOTA" check "$POOL" --who 탐 || continue
   t0=$(date +%s); rc=0
-  ssh -o ConnectTimeout=15 -o BatchMode=yes goosolar "cd ~/carvit-pass/ag-test && timeout 240 ~/.local/bin/agy $MARG -p \"\$(cat)\"" < "$Q" > "$OUT" 2> "$OUT.err" || rc=$?
+  ssh -o ConnectTimeout=15 -o BatchMode=yes goosolar "cd ~/carvit-pass/ag-test && timeout 240 ~/.local/bin/agy $MARG -p \"\$(printf '%s\\n\\n' '도구나 명령을 실행하지 말고 아래 텍스트만 읽고 글로만 답하라.'; cat)\"" < "$Q" > "$OUT" 2> "$OUT.err" || rc=$?
   calllog "$POOL" $(( $(date +%s)-t0 )) $rc "$OUT"
   # 한도 문구는 stderr("Individual quota reached ... Resets in 130h")에도 stdout 짧은 답에도 나온다. 대장에 막힘을 적고 다음 풀로 같은 호출 안에서 낙하한다(10/7).
-  if limit_blocked "$OUT" || [ "$rc" != 0 ]; then
+  # 2026-10-11 실측: 큰 코드 카드(1.6만~3만 자)에서 비티(agy 헤드리스)가 '도구 권한을 물어볼 수 없어 자동 거절'로 답 없이 끝나는데 종료 코드는 0이었다(답 28바이트).
+  # 빈 답(100바이트 미만) 또는 stderr의 'no output produced'는 실패로 보고 다음 풀로 낙하한다.
+  EMPTY=0; [ "$(wc -c < "$OUT" 2>/dev/null || echo 0)" -lt 100 ] && EMPTY=1
+  grep -q "no output produced" "$OUT.err" 2>/dev/null && EMPTY=1
+  if limit_blocked "$OUT" || [ "$rc" != 0 ] || [ "$EMPTY" = 1 ]; then
+    [ "$EMPTY" = 1 ] && [ "$rc" = 0 ] && rc=98
     MSG="$(grep -m1 -Ehio 'Individual quota reached.*|.*(rate limit|quota|RESOURCE_EXHAUSTED|429|한도).*' "$OUT.err" "$OUT" 2>/dev/null | head -1)"
+    [ "$EMPTY" = 1 ] && MSG="${MSG:-빈 답(도구 권한 자동 거절 의심)}"
     LAST="$POOL 실패(rc=$rc) ${MSG:-원인 불명}"; LAST="${LAST:0:200}"
     limit_blocked "$OUT" && python "$QUOTA" hit "$POOL" "${MSG:-limit}"
     echo "$POOL 건너뜀: 다음 풀로 낙하" >&2; rc=99; continue
