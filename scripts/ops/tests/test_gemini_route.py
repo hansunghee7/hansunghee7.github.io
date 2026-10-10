@@ -46,6 +46,7 @@ class Base(unittest.TestCase):
         self.addCleanup(mock.patch.stopall)
         for n in (gr.SEARCH_ENV, "GEMINI_SEARCH_MONTH_CAP", "GEMINI_SEARCH_DAY_CAP", "GEMINI_SEARCH_MODEL"):
             os.environ.pop(n, None)
+        os.environ["HERMES_ENV_FILE"] = str(self.tmp / "no_such.env")  # 실제 설정 파일을 읽지 않게 한다
         self.urls = []
 
     def server(self, plan):
@@ -301,6 +302,46 @@ class SearchKey(Base):
         self.assertIn("이번 달 7/4500", line)
         self.assertIn("4993/5000", line)
         self.assertEqual(gr.main(["--search-status"]), 0)
+
+
+class SearchKeyFile(Base):
+    def _env(self, text):
+        p = self.tmp / "h.env"
+        p.write_text(text, encoding="utf-8")
+        os.environ["HERMES_ENV_FILE"] = str(p)
+
+    def test_env_wins_over_file(self):
+        self._env(f"{gr.SEARCH_ENV}=FILEVAL1234\n")
+        os.environ[gr.SEARCH_ENV] = SKEY
+        self.assertEqual(gr._search_key(), (SKEY, "환경 변수"))
+        self.assertIn("있음(환경 변수)", gr.search_status())
+
+    def test_file_used_when_no_env(self):
+        self._env(f"OTHER=zzz\n{gr.SEARCH_ENV}={SKEY}\n")
+        self.assertEqual(gr._search_key(), (SKEY, "설정 파일"))
+        self.assertIn("있음(설정 파일)", gr.search_status())
+
+    def test_none_when_missing(self):
+        self.assertEqual(gr._search_key(), (None, None))  # 파일 없음
+        self._env("OTHER=zzz\n")
+        self.assertEqual(gr._search_key(), (None, None))  # 변수 없음
+        self.assertIn("검색 전용 키 없음", gr.search_status())
+
+    def test_quotes_and_set_prefix(self):
+        for line in (f'{gr.SEARCH_ENV}="{SKEY}"', f"set {gr.SEARCH_ENV}='{SKEY}'", f"  {gr.SEARCH_ENV} = {SKEY}  "):
+            self._env(line + "\n")
+            self.assertEqual(gr._search_key()[0], SKEY, line)
+
+    def test_other_variables_not_read(self):
+        self._env(f"GEMINI_API_KEY=OTHERSECRET99\nX_{gr.SEARCH_ENV}=NOPE12345\n")
+        self.assertEqual(gr._search_key(), (None, None))
+
+    def test_no_key_value_in_status_or_logs(self):
+        self._env(f"{gr.SEARCH_ENV}={SKEY}\n")
+        self.server({"generativelanguage": 200})
+        gr.call("질문", search=True, who="t")
+        blob = gr.search_status() + (self.tmp / "route.jsonl").read_text(encoding="utf-8")
+        self.assertNotIn(SKEY, blob)
 
 
 if __name__ == "__main__":

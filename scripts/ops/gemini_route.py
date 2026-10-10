@@ -189,13 +189,31 @@ def _search_invalid_until():
     return until if datetime.now() < until else None
 
 
+def _search_key():
+    """(값, 출처) 반환. 환경 변수 -> 헤르메스 설정 파일 순. 없으면 (None, None). 파일은 이 변수 이름의 행만 읽는다."""
+    v = os.environ.get(SEARCH_ENV)
+    if v:
+        return v, "환경 변수"
+    path = os.environ.get("HERMES_ENV_FILE") or os.path.join(os.environ.get("LOCALAPPDATA") or "", "hermes", ".env")
+    try:
+        with open(path, encoding="utf-8", errors="ignore") as f:
+            for line in f:
+                m = re.match(rf"^\s*(?:set\s+)?{SEARCH_ENV}\s*=\s*['\"]?([^\s'\"]+)", line, re.I)
+                if m:
+                    return m.group(1), "설정 파일"
+    except OSError:
+        pass
+    return None, None
+
+
 def search_status():
     """감시 상태판용 한 줄. 키 값은 쓰지 않는다."""
     d, m = _search_usage()
     dcap, mcap = _search_caps()
     until = _search_invalid_until()
     state = f"search-key-invalid({until:%m-%d %H:%M}까지 건너뜀)" if until else "정상"
-    key = "있음" if os.environ.get(SEARCH_ENV) else "없음"
+    _v, src = _search_key()
+    key = f"있음({src})" if src else "없음"
     return (f"검색 전용 키 {key} · 오늘 {d}/{dcap} · 이번 달 {m}/{mcap} · 남은 무료 한도 {max(SEARCH_FREE_MONTH - m, 0)}/{SEARCH_FREE_MONTH}회 · 상태 {state}")
 
 
@@ -299,7 +317,7 @@ def call(prompt, model="gemini-3.6-flash", search=False, who="unknown", timeout=
 
     # 검색 전용 키 단계(키가 없으면 조용히 건너뜀)
     search_tried = False
-    skey = os.environ.get(SEARCH_ENV) if search else None
+    skey = _search_key()[0] if search else None
     if skey:
         until = _search_invalid_until()
         d, m = _search_usage()
