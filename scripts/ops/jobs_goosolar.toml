@@ -47,6 +47,7 @@ kind = "gh_workflow"
 repo = "hansunghee7/hansunghee7.github.io"
 workflow = "Fetch Naver content"
 name = "Fetch Naver content"
+period_min = 750  # 2026-10-10: 추정주기(약 504분)가 GitHub schedule 지연(10/9 공백 16.5h)에 걸려 오탐 -> 약 1.5배로 여유. 판정 임계=1.5*주기+60분
 
 [[job]]
 id = "gh:site:Fetch SNS public"
@@ -54,6 +55,7 @@ kind = "gh_workflow"
 repo = "hansunghee7/hansunghee7.github.io"
 workflow = "Fetch SNS public"
 name = "Fetch SNS public"
+period_min = 750  # 2026-10-10: 추정주기(약 504분)가 GitHub schedule 지연(10/9 공백 16.5h)에 걸려 오탐 -> 약 1.5배로 여유. 판정 임계=1.5*주기+60분
 
 [[job]]
 id = "gh:site:Fetch Search Console"
@@ -228,7 +230,7 @@ note = "2026-10-02 탐 N105: 신PC 헤르메스 check-customer-mcp-daily에서 �
 id = "cron:saegim-idle-check"
 kind = "file_age"
 path = "/home/goosloar/ops/checks/saegim-idle-check.ok"
-max_age_min = 480
+max_age_min = 780  # 2026-10-10: cron 21:30->09:30 야간 공백 720분 + 여유 60분(기존 480은 매일 오탐)
 name = "새김 세션 유휴 점검(구PC cron 09:30·15:30·21:30 KST)"
 note = "2026-10-02 탐 N105: 신PC 헤르메스 saegim-idle-check에서 이관. 300초 유휴 뒤 재조회. 이관 때 1회 실행 rc=0"
 

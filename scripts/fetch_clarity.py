@@ -23,7 +23,9 @@ URL별 분해는 "어느 페이지에서 사용자가 막히는가"를, 소스�
 """
 import json
 import os
+import re
 import sys
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -45,6 +47,30 @@ def call_api(token, num_of_days, dimension1=None):
     })
     with urllib.request.urlopen(req, timeout=60) as resp:
         return json.loads(resp.read().decode("utf-8"))
+
+
+def mask_secrets(text):
+    """응답 본문에 섞일 수 있는 키·토큰 모양 값(긴 영숫자/JWT)을 가린다."""
+    return re.sub(r"[A-Za-z0-9_\-\.]{24,}", "***", text)
+
+
+def call_api_retry_400(token, num_of_days, dimension1=None, sleep=time.sleep):
+    """HTTP 400이면 응답 본문 앞 300자(마스킹)를 남기고 5초 뒤 1회만 재시도.
+    그래도 400이면 본문을 남기고 예외를 다시 던진다(종료 코드 유지). 다른 코드는 그대로 전파."""
+    for attempt in (1, 2):
+        try:
+            return call_api(token, num_of_days, dimension1)
+        except urllib.error.HTTPError as e:
+            if e.code != 400:
+                raise
+            try:
+                body = e.read().decode("utf-8", "replace")
+            except Exception:
+                body = ""
+            print(f"Clarity API HTTP 400 (시도 {attempt}/2) 본문: {mask_secrets(body)[:300]}")
+            if attempt == 2:
+                raise
+            sleep(5)
 
 
 def normalize(value):
@@ -91,9 +117,9 @@ def main():
     window_date = (now - timedelta(days=1)).date().isoformat()
 
     try:
-        daily_totals = to_metric_map(call_api(token, 1))
-        by_url = to_metric_map(call_api(token, 3, "URL"))
-        by_source = to_metric_map(call_api(token, 3, "Source"))
+        daily_totals = to_metric_map(call_api_retry_400(token, 1))
+        by_url = to_metric_map(call_api_retry_400(token, 3, "URL"))
+        by_source = to_metric_map(call_api_retry_400(token, 3, "Source"))
     except urllib.error.HTTPError as e:
         if e.code == 429:
             # 하루 호출 한도 초과 -- 기존 파일을 지우지 말고 조용히 넘어간다.
