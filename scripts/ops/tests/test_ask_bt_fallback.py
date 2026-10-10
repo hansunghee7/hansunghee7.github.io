@@ -24,6 +24,7 @@ case "$mode" in
   limit_out) echo "You have hit the rate limit. Try later." ;;
   limit_err) echo "Individual quota reached. Resets in 130h" >&2; exit 1 ;;
   fail) echo "boom" >&2; exit 255 ;;
+  empty) echo "jetski: no output produced — a tool required the command permission" >&2 ;;
 esac
 """
 
@@ -100,6 +101,13 @@ def test_falls_through_router_sonnet_to_vertex(env):
     assert r.returncode == 0, r.stderr
     assert "<!-- 답한 풀: Vertex" in text and "from vertex" in text
     assert "비티-vertex" in csv and "비티-sonnet" in csv
+
+
+def test_empty_answer_with_rc0_falls_to_next_pool(env):
+    # 2026-10-11 실측: 비티(agy 헤드리스)가 도구 권한 자동 거절로 답 없이 종료 코드 0으로 끝나던 경우
+    r, text, csv = run(env, FAKE_GEMINI="empty", FAKE_ROUTER="ok")
+    assert r.returncode == 0, r.stderr
+    assert "<!-- 답한 풀: 옴니라우터" in text and "from router" in text
 
 
 def test_falls_to_sonnet_before_vertex(env):
