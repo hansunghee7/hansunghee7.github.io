@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-10T20:45:33.003889+00:00",
+  "updated_at": "2026-10-10T23:46:00.103186+00:00",
   "note": "history는 매일 지난 24시간 집계를 누적한 것. latest_*는 최근 3일 창.",
   "history": [
     {
@@ -8490,13 +8490,6 @@
     ],
     "Traffic": [
       {
-        "totalSessionCount": 0,
-        "totalBotSessionCount": 1,
-        "distinctUserCount": 0,
-        "pagesPerSessionPercentage": null,
-        "Url": "https://simplifier.co.kr/logs/628/?fbclid=IwZXh0bgNhZW0CMTEAcGRvZgRzcnRjBmFwcF9pZAwyNTYyODEwNDA1NTgAAR55dE6i7HM0mu5Z7utWQhnxW6cqffof32V8YQbIitTm-Vv4bhBA60DoCixMeA_aem_lqtvIEVjOJpRLvaDYvk2-A"
-      },
-      {
         "totalSessionCount": 1,
         "totalBotSessionCount": 0,
         "distinctUserCount": 1,
@@ -8523,20 +8516,6 @@
         "distinctUserCount": 12,
         "pagesPerSessionPercentage": 1.5,
         "Url": "https://simplifier.co.kr/"
-      },
-      {
-        "totalSessionCount": 0,
-        "totalBotSessionCount": 1,
-        "distinctUserCount": 0,
-        "pagesPerSessionPercentage": null,
-        "Url": "https://simplifier.co.kr/logs/619/?fbclid=IwZXh0bgNhZW0CMTEAcGRvZgRzcnRjBmFwcF9pZAwyNTYyODEwNDA1NTgAAR4FBNMsOva1CKPDaatEp3sK5cCz1iVenD-zEkGRYwsEL1MIiGTVIvgvHmRqtA_aem_E1bCotEGye9yBJIsfYS-2A"
-      },
-      {
-        "totalSessionCount": 0,
-        "totalBotSessionCount": 1,
-        "distinctUserCount": 0,
-        "pagesPerSessionPercentage": null,
-        "Url": "https://simplifier.co.kr/logs/620/?fbclid=IwZXh0bgNhZW0CMTEAcGRvZgRzcnRjBmFwcF9pZAwyNTYyODEwNDA1NTgAAR7l8wkzIxivUfDFtdOay5Omyj_FWgT52oLqBpjAIU9vT1E1F636V1tng1P_uA_aem_3DWg2je73JXD1hfFIBOQWg"
       },
       {
         "totalSessionCount": 2,
@@ -8572,20 +8551,6 @@
         "distinctUserCount": 0,
         "pagesPerSessionPercentage": null,
         "Url": "https://simplifier.co.kr/log.html"
-      },
-      {
-        "totalSessionCount": 0,
-        "totalBotSessionCount": 1,
-        "distinctUserCount": 0,
-        "pagesPerSessionPercentage": null,
-        "Url": "https://simplifier.co.kr/logs/620/?fbclid=IwZXh0bgNhZW0CMTEAcGRvZgRzcnRjBmFwcF9pZAwyNTYyODEwNDA1NTgAAR6Hbv-wOSL-_lE7KBCq1epgRuZVsv96_pdnPhZA3uAIMQE6i8N1IVgAxvys-w_aem_YQAj_DGWJxd7HAMuVd6CPA"
-      },
-      {
-        "totalSessionCount": 0,
-        "totalBotSessionCount": 1,
-        "distinctUserCount": 0,
-        "pagesPerSessionPercentage": null,
-        "Url": "https://simplifier.co.kr/logs/620/?fbclid=IwZXh0bgNhZW0CMTEAcGRvZgRzcnRjBmFwcF9pZAwyNTYyODEwNDA1NTgAAR5Cg9CESbRVrzGgOBGKKuNjv0pqY0I2rHttlv5Ic1Wo0icPM84hbjkgt0n0AA_aem_bLMqhXuCQv5KIgIUnCgfMA"
       },
       {
         "totalSessionCount": 2,
@@ -9114,13 +9079,6 @@
         "Source": "daum"
       },
       {
-        "totalSessionCount": 0,
-        "totalBotSessionCount": 1,
-        "distinctUserCount": 0,
-        "pagesPerSessionPercentage": null,
-        "Source": "www.facebook.com"
-      },
-      {
         "totalSessionCount": 6,
         "totalBotSessionCount": 0,
         "distinctUserCount": 6,
@@ -9133,13 +9091,6 @@
         "distinctUserCount": 4,
         "pagesPerSessionPercentage": 3,
         "Source": "simplifier.co.kr"
-      },
-      {
-        "totalSessionCount": 0,
-        "totalBotSessionCount": 4,
-        "distinctUserCount": 0,
-        "pagesPerSessionPercentage": null,
-        "Source": "m.facebook.com"
       }
     ],
     "EngagementTime": [
