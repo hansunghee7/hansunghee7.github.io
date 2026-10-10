@@ -1,0 +1,4 @@
+sk-[A-Za-z0-9]{20,}
+AKIA[0-9A-Z]{16}
+^-----BEGIN
+(?i)(secret|api[_-]?key)\w*\s*=

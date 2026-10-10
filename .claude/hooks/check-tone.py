@@ -78,7 +78,9 @@ def check(text):
             problems.append(("사장님께 행동 요청(사유 표시 없음)", span))
     return problems
 
-HUMAN_LOG = os.environ.get("HUMAN_TOUCH_LOG", "C:/work/_ops/human_touch_log.jsonl")
+# 윈도우(로컬)는 기존 경로. 리눅스(클라우드)에서 "C:/..."는 저장소 안 상대 폴더가 돼 untracked 경고를 내므로 홈 아래로 보낸다(2026-10-08).
+_DEFAULT_LOG = "C:/work/_ops/human_touch_log.jsonl" if os.name == "nt" else os.path.expanduser("~/.claude/human_touch_log.jsonl")
+HUMAN_LOG = os.environ.get("HUMAN_TOUCH_LOG", _DEFAULT_LOG)
 
 def log_human_touch(text):
     """[사람 개입 필요: 사유] 표시가 있는 답변을 기록한다(시각, 사유, 표시 앞뒤 한 줄). 기록 실패는 답변을 막지 않는다."""
@@ -93,12 +95,42 @@ def log_human_touch(text):
     except Exception:
         pass
 
+
+def check_cite(text):
+    declarations = ["\uAE30\uB85D\uC5D0 \uB530\uB974\uBA74", "\uBB38\uC11C\uC5D0 \uB530\uB974\uBA74", "\uD504\uB85C\uC138\uC2A4\uD45C\uC5D0", "\uACF5\uC815 \uCE74\uB4DC", "\uC5C5\uBB34\uB300\uC7A5\uC5D0"]
+    markers = re.compile(r"(?:docs/[^\s,;:!?)]*|[^\s/\\]+\.md|" + re.escape("\uce74\ub4dc") + r"\s*#\d+|" + re.escape("\ucd9c\ucc98") + r"|\b[0-9a-fA-F]{7,16}\b|https?://[^\s]+|\b\d{4}-\d{2}-\d{2}\b|\b\d{1,2}/\d{1,2}\b)")
+    warnings = []
+    log_path = os.environ.get("CITE_LOG") or ("C:/work/_ops/cite_warn.jsonl" if os.path.isdir("C:/work/_ops") else "")
+    # Split on sentence-ending punctuation while retaining each sentence.
+    sentences = re.findall(r"[^.!?\n]+[.!?]?", text)
+    for sentence in sentences:
+        if not any(term in sentence for term in declarations):
+            continue
+        ok = bool(markers.search(sentence))
+        entry = {"time": time.strftime("%Y-%m-%dT%H:%M:%S"), "sentence": sentence.strip(), "ok": ok}
+        if not log_path:
+            warnings.append(entry)
+            continue
+        try:
+            parent = os.path.dirname(log_path)
+            if parent: os.makedirs(parent, exist_ok=True)
+            with open(log_path, "a", encoding="utf-8") as f:
+                f.write(json.dumps(entry, ensure_ascii=True) + "\n")
+        except Exception:
+            pass
+        warnings.append(entry)
+    return warnings
+
 if __name__ == "__main__":
     try:
         data = json.load(sys.stdin) if not sys.stdin.isatty() else {}
         if data.get("stop_hook_active"): sys.exit(0)
         text = data.get("_text") or (last_assistant_text(data["transcript_path"]) if data.get("transcript_path") else "")
         probs = check(text) if text else []
+        try:
+            if text: check_cite(text)
+        except Exception:
+            pass
     except SystemExit:
         raise
     except Exception:
