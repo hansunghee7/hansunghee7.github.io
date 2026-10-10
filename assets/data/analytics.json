@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-10T07:05:01.614030+00:00",
+  "updated_at": "2026-10-10T13:54:59.841255+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 342,
-    "activeUsers": 297,
-    "newUsers": 293,
+    "sessions": 346,
+    "activeUsers": 299,
+    "newUsers": 295,
     "returningUsers": 4
   },
   "daily": [
@@ -220,15 +220,15 @@
     },
     {
       "date": "2026-10-10",
-      "sessions": 4,
-      "activeUsers": 3,
-      "newUsers": 3,
-      "returningUsers": 0
+      "sessions": 8,
+      "activeUsers": 6,
+      "newUsers": 5,
+      "returningUsers": 1
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 119,
+    "home": 126,
     "log_home": 0,
     "individual_post": 220,
     "other": 12
@@ -236,11 +236,11 @@
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 196
+      "sessions": 198
     },
     {
       "source": "linkedin.com",
-      "sessions": 39
+      "sessions": 41
     },
     {
       "source": "google",
@@ -255,12 +255,12 @@
       "sessions": 17
     },
     {
-      "source": "facebook.com",
+      "source": "(not set)",
       "sessions": 14
     },
     {
-      "source": "(not set)",
-      "sessions": 12
+      "source": "facebook.com",
+      "sessions": 14
     },
     {
       "source": "maru-connect.webflow.io",
@@ -300,13 +300,13 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 196
+      "sessions": 198
     },
     {
       "source": "linkedin.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 39
+      "sessions": 41
     },
     {
       "source": "google",
@@ -418,8 +418,8 @@
     }
   ],
   "engagement_events": {
-    "section_view_proven": 52,
-    "section_view_voices": 46,
+    "section_view_proven": 53,
+    "section_view_voices": 48,
     "section_view_book_class": 26,
     "section_view_faq": 26,
     "faq_open": 10,
@@ -525,7 +525,7 @@
       "path": "/logs/631/",
       "title": "토큰을 아끼려다 기술이 늘었다",
       "uniqueViews": 19,
-      "views": 23
+      "views": 24
     },
     {
       "path": "/logs/620/",
@@ -573,7 +573,7 @@
       "path": "/logs/6/",
       "title": "자정이 가까워지도록 AI 얘기를 원 없이 나눴어요.",
       "uniqueViews": 5,
-      "views": 4
+      "views": 5
     },
     {
       "path": "/logs/636/",
@@ -602,7 +602,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 353,
+    "total_desktop_sessions": 355,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
@@ -633,7 +633,7 @@
       {
         "resolution": "1463x915",
         "width": 1463,
-        "sessions": 11
+        "sessions": 12
       },
       {
         "resolution": "2000x2000",
@@ -646,13 +646,13 @@
         "sessions": 10
       },
       {
-        "resolution": "1440x900",
-        "width": 1440,
-        "sessions": 7
-      },
-      {
         "resolution": "1512x982",
         "width": 1512,
+        "sessions": 8
+      },
+      {
+        "resolution": "1440x900",
+        "width": 1440,
         "sessions": 7
       },
       {
