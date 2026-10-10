@@ -343,3 +343,98 @@ cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\delegation_audit.py'
 every_min = 1440
 name = "위임 비율 정기 실측과 판정일 감시(delegation_audit.py, 판정일 2026-10-18)"
 note = "2026-10-11 탐 등록(사장님 지시: 위임 관문 경고->차단 전환은 오탐이 줄어든 뒤 실측해 정한다). 하루 한 번 아침 실측해 C:/work/_ops/deleg_audit/history.csv에 한 행. 붉음 = 직전 실측 36시간 초과 또는 판정일 이후 결정 미기록(위임 관문 차단 전환 판정 대기). 결정은 delegation_audit.py decide로 기록. 첫 자동 실행 결과는 다음 날 아침 확인"
+
+# ---------- 2026-10-11 탐 수집 파이프 대장(pipeline_db.py) 맞춤: 감시 id 없던 파이프와 구PC 항목의 신PC 상태판 반영 ----------
+[[job]]
+id = "file:fit-kpi-daily"
+kind = "file_age"
+path = 'C:/work/shorts-lab/pilot-shorts2/KPI_팔로워.md'
+max_age_min = 2880
+name = "핏 KPI 일일표(kpi_daily.py, 하루 1회, 파이프 fit-kpi-daily)"
+note = "2026-10-11 등록(파이프 대장 맞춤, 사장님 허용). 정산 약 2일 지연이 있어 이틀 넘게 안 바뀌면 멈춤으로 본다. 수동 실행: python shorts-lab/tools/perf/kpi_daily.py (실행 전 두 저장소 git pull)"
+
+[[job]]
+id = "file:fit-cut-ledger"
+kind = "file_age"
+path = 'C:/work/shorts-lab/pilot-shorts2/컷대장.jsonl'
+max_age_min = 10080
+name = "컷 고유번호 대장(cut_ledger.py build, 편 작업 때 수동, 파이프 fit-cut-ledger)"
+note = "2026-10-11 등록(파이프 대장 맞춤). 자동 주기가 없어 편 작업이 없으면 낡을 수 있으므로 7일 넘게 안 바뀌면 멈춤으로 본다(작업 쉬는 주는 오탐 가능). 수동 실행: python shorts-lab/tools/factory/cut_ledger.py build"
+
+[[job]]
+id = "file:gcp-usage-monitoring"
+kind = "file_age"
+path = 'C:/work/_ops/gcp_usage_cache.json'
+max_age_min = 4320
+name = "GCP Vertex 실제 사용량 조회 캐시(gcp_usage.py가 실행될 때 갱신, 파이프 gcp-usage-monitoring)"
+note = "2026-10-11 등록(파이프 대장 맞춤). 정기 실행이 아니라 필요 시 실행이라 3일 넘게 안 돌면 멈춤으로 본다. 수동 실행: python scripts/ops/gcp_usage.py"
+
+# ---- 구PC 대장(jobs_goosolar.toml)과 같은 id 를 신PC 상태판에도 올린다(pipeline_sync.py 는 신PC state.json 만 읽음) ----
+[[job]]
+id = "gh:site:Fetch ink queue"
+kind = "gh_workflow"
+repo = "hansunghee7/hansunghee7.github.io"
+workflow = "Fetch ink queue"
+name = "Fetch ink queue"
+note = "2026-10-11 구PC 대장과 같은 id 를 신PC 상태판에 반영(파이프 ink-queue)"
+
+[[job]]
+id = "gh:site:Site health check"
+kind = "gh_workflow"
+repo = "hansunghee7/hansunghee7.github.io"
+workflow = "Site health check"
+name = "Site health check"
+note = "2026-10-11 구PC 대장과 같은 id 를 신PC 상태판에 반영(파이프 site-health-probe)"
+
+[[job]]
+id = "gh:site:Sync agent corpus"
+kind = "gh_workflow"
+repo = "hansunghee7/hansunghee7.github.io"
+workflow = "Sync agent corpus"
+name = "Sync agent corpus"
+note = "2026-10-11 구PC 대장과 같은 id 를 신PC 상태판에 반영(파이프 sync-agent-corpus)"
+
+[[job]]
+id = "cron:flow-credits"
+kind = "cmd"
+cmd = ["python", 'C:\work\_ops\remote_file_age.py', "goosolar", "/home/goosloar/workshop/logs/flow_credits.last", "300"]
+timeout = 60
+every_min = 60
+name = "구PC Flow 크레딧 현황 수집(구PC 파일 나이를 ssh로 확인, 파이프 flow-credits-oldpc)"
+note = "2026-10-11 구PC 대장 id 를 신PC 상태판에도 반영. 구PC 접속 불가 때도 붉어진다(watcher:goosolar와 같이 보면 구분 가능)"
+
+[[job]]
+id = "cron:simplifier-posts"
+kind = "cmd"
+cmd = ["python", 'C:\work\_ops\remote_file_age.py', "goosolar", "/home/goosloar/ops/checks/simplifier-posts.ok", "780"]
+timeout = 60
+every_min = 60
+name = "심플리파이어 개인 계정 게시물 반응(구PC 파일 나이를 ssh로 확인, 파이프 goosolar-simplifier-posts)"
+note = "2026-10-11 구PC 대장 id 를 신PC 상태판에도 반영"
+
+[[job]]
+id = "cron:sns-daily-read"
+kind = "cmd"
+cmd = ["python", 'C:\work\_ops\remote_file_age.py', "goosolar", "/home/goosloar/workshop/out/sns/last_run", "1560"]
+timeout = 60
+every_min = 60
+name = "구PC SNS 숫자 읽기 매일 10:00(구PC 파일 나이를 ssh로 확인, 파이프 goosolar-sns-daily-read)"
+note = "2026-10-11 구PC 대장 id 를 신PC 상태판에도 반영"
+
+[[job]]
+id = "cron:vids-probe"
+kind = "cmd"
+cmd = ["python", 'C:\work\_ops\remote_file_age.py', "goosolar", "/home/goosloar/workshop/logs/vids_probe.last", "180"]
+timeout = 60
+every_min = 60
+name = "구PC Vids 한도 풀림 실측(구PC 파일 나이를 ssh로 확인, 파이프 vids-probe)"
+note = "2026-10-11 구PC 대장 id 를 신PC 상태판에도 반영"
+
+[[job]]
+id = "fn:pipeline-sync"
+kind = "cmd"
+cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\pipeline_sync.py']
+every_min = 1440
+timeout = 300
+name = "수집 파이프 대장 동기화(감시 상태판의 마지막 성공을 data_pipelines에 옮김, pipeline_sync.py)"
+note = "2026-10-11 탐 등록(사장님 허용). 근거 있는 파이프만 add-run 으로 기록(실행마다 실행 기록 1행 추가). 종료 코드 2 = 상태 파일 오류, 그 밖 실패 = 대장 DB 조회 오류. 근거 없는 파이프는 목록만 출력"
