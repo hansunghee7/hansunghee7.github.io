@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""제미나이 웹앱 경유 질문(라우터 갈래 'gemini-web'). 2026-10-11 G1, 기본 꺼짐.
+"""제미나이 웹앱 경유 질문(라우터 갈래 'gemini-web'). 2026-10-11 G1, 기본 켜짐(사장님 결정 2026-10-11, GEMINI_WEB=0 으로 끈다).
 
 왜: 무료 AI Studio 키는 검색 연동 요청만 429이고, Vertex는 GCP 크레딧이 끝나면 못 쓴다. 구PC 크롬에 이미 로그인된
     제미나이 웹앱으로 질문하면 크레딧 없이 검색 답과 출처 링크를 받는다(이미지 생성은 같은 방식으로 이미 성공, logos_gem_batch.py).
-위치: gemini_route.call() 안에서 ① 무료 키가 실패한 뒤, ② 회사 Vertex 앞. 환경 변수 GEMINI_WEB=1 일 때만 켜진다.
+위치: gemini_route.call() 의 검색 요청에서 검색 전용 키 뒤, 회사 Vertex 앞. GEMINI_WEB=0 이 아니면 켜진다.
 사람 빈도(메모리 규칙: 외부 자동화는 사람 빈도로, 계정을 바꿔 두드리지 않기, 차단 문구가 종료 조건):
   - 계정(포트)마다 하루 DAY_CAP 건, 같은 계정 호출 사이 MIN_GAP_SEC 초 이상, 질문 길이 MAX_Q 자.
   - 차단 문구·로그인 화면·계정 불일치가 나오면 그 계정은 그날 중지(다른 계정은 계속, 전면 중단 아님). 같은 계정을 재시도하지 않는다.
@@ -43,7 +43,7 @@ EXIT_OK, EXIT_FAIL = 0, 2
 
 
 def enabled():
-    return os.environ.get("GEMINI_WEB") == "1"
+    return os.environ.get("GEMINI_WEB") != "0"
 
 
 def _requested_ports():

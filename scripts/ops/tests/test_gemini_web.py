@@ -2,7 +2,7 @@
 
 실행: python -m pytest scripts/ops/tests/test_gemini_web.py
 시험하는 것: 하루 상한, 호출 간격, 차단 문구 시 그 계정만 중지(다른 계정은 계속), 출처 파싱, 질문 길이 제한,
-            라우터 낙하 순서(기본 꺼짐 / 켜면 무료 키 뒤·Vertex 앞 / 웹 실패 시 Vertex로 낙하 / 검색 아닌 요청은 건너뜀).
+            라우터 낙하 순서(검색 키 -> 웹앱 기본 켜짐, GEMINI_WEB=0 만 끔 -> Vertex / 검색 아닌 요청은 건너뜀).
 """
 import importlib.util
 import json
@@ -221,11 +221,14 @@ class RemoteLogic(unittest.TestCase):
 
 
 class RouteFall(unittest.TestCase):
+    """검색 요청 최종 순서: 검색 전용 키 -> 웹앱(기본 켜짐) -> 회사 Vertex -> 개인 Vertex. 무료 키는 검색에서 안 부른다."""
     def setUp(self):
         self.tmp = Path(tempfile.mkdtemp())
         patches = [mock.patch.object(gr, "ROUTE_LOG", self.tmp / "route.jsonl"), mock.patch.object(av, "LOG", self.tmp / "usage.csv"),
                    mock.patch.object(quota, "STATE", self.tmp / "quota_state.json"),
+                   mock.patch.object(gr, "SEARCH_LEDGER", self.tmp / "sl.csv"), mock.patch.object(gr, "SEARCH_STATE", self.tmp / "ss.json"),
                    mock.patch.object(gr, "_free_keys", return_value=[("K", "k")]),
+                   mock.patch.object(gr, "_search_key", return_value=("sk", "env")),
                    mock.patch.object(gr, "_token", return_value="t"), mock.patch.object(gr, "_day_krw", return_value=0.0),
                    mock.patch.object(av, "total_since", return_value=0.0), mock.patch.object(gw, "STATE", self.tmp / "ws.json"),
                    mock.patch.object(gw, "LOG", self.tmp / "wl.jsonl")]
@@ -236,53 +239,57 @@ class RouteFall(unittest.TestCase):
 
     def post(self, plan):
         def f(url, headers, body, timeout):
-            self.urls.append(url)
+            self.urls.append((url, headers.get("x-goog-api-key")))
             for k, code in plan.items():
                 if k in url:
                     return code, (OKJSON if code == 200 else None)
             return 0, None
         return mock.patch.object(gr, "_http_post", side_effect=f)
 
-    def test_default_off_goes_straight_to_vertex(self):
-        with mock.patch.dict("os.environ", {}, clear=False) as e, mock.patch.object(gw, "_run_remote") as rr, \
-                self.post({"generativelanguage": 429, "simplifier-vertex-credit": 200}):
-            e.pop("GEMINI_WEB", None)
-            r = gr.call("q", search=True)
-        self.assertEqual(r["route"], "vertex-company")
-        rr.assert_not_called()
+    ENV_ON = {"GEMINI_WEB_PORTS": "9001"}
 
-    def test_on_search_free_429_uses_web_before_vertex(self):
-        with mock.patch.dict("os.environ", {"GEMINI_WEB": "1", "GEMINI_WEB_PORTS": "9001"}), mock.patch.object(gw, "_run_remote", return_value=OK), \
-                self.post({"generativelanguage": 429, "simplifier-vertex-credit": 200}):
+    def test_search_key_ok_never_touches_web(self):
+        with mock.patch.dict("os.environ", self.ENV_ON), mock.patch.object(gw, "_run_remote") as rr, self.post({"generativelanguage": 200}):
+            r = gr.call("q", search=True)
+        self.assertEqual(r["route"], "search-key")
+        rr.assert_not_called()
+        self.assertEqual([k for u, k in self.urls], ["sk"])  # 무료 키("k")는 검색에서 안 쓴다
+
+    def test_search_key_fails_then_web_before_vertex(self):
+        with mock.patch.dict("os.environ", self.ENV_ON), mock.patch.object(gw, "_run_remote", return_value=OK),                 self.post({"generativelanguage": 429, "simplifier-vertex-credit": 200}):
             r = gr.call("q", search=True, who="탐")
         self.assertEqual((r["route"], r["exit_code"]), ("gemini-web", 0))
         self.assertEqual(r["sources"][0]["uri"], "https://e.x/cal")
-        self.assertFalse(any("aiplatform" in u for u in self.urls))  # Vertex 호출 없음
+        self.assertFalse(any("aiplatform" in u for u, _k in self.urls))
 
-    def test_on_web_fail_falls_to_company_vertex(self):
-        bad = {"status": "blocked", "text": "", "sources": [], "secs": 2, "note": "차단 문구"}
-        with mock.patch.dict("os.environ", {"GEMINI_WEB": "1", "GEMINI_WEB_PORTS": "9001"}), mock.patch.object(gw, "_run_remote", return_value=bad), \
-                self.post({"generativelanguage": 429, "simplifier-vertex-credit": 200}):
+    def test_web_on_by_default_when_env_unset(self):
+        with mock.patch.dict("os.environ", self.ENV_ON) as e, mock.patch.object(gw, "_run_remote", return_value=OK), self.post({"generativelanguage": 429}):
+            e.pop("GEMINI_WEB", None)
             r = gr.call("q", search=True)
-        self.assertEqual(r["route"], "vertex-company")
-        self.assertEqual([t[0] for t in r["tried"]], ["free", "gemini-web"])
+        self.assertEqual(r["route"], "gemini-web")
 
-    def test_on_but_not_search_skips_web(self):
-        with mock.patch.dict("os.environ", {"GEMINI_WEB": "1"}), mock.patch.object(gw, "_run_remote") as rr, \
-                self.post({"generativelanguage": 429, "simplifier-vertex-credit": 200}):
-            r = gr.call("q", search=False)
+    def test_web_off_only_when_zero(self):
+        with mock.patch.dict("os.environ", {"GEMINI_WEB": "0"}), mock.patch.object(gw, "_run_remote") as rr,                 self.post({"generativelanguage": 429, "simplifier-vertex-credit": 200}):
+            r = gr.call("q", search=True)
         self.assertEqual(r["route"], "vertex-company")
         rr.assert_not_called()
 
-    def test_free_success_never_touches_web(self):
-        with mock.patch.dict("os.environ", {"GEMINI_WEB": "1"}), mock.patch.object(gw, "_run_remote") as rr, self.post({"generativelanguage": 200}):
+    def test_web_fail_falls_to_company_vertex(self):
+        bad = {"status": "blocked", "text": "", "sources": [], "secs": 2, "note": "차단 문구"}
+        with mock.patch.dict("os.environ", self.ENV_ON), mock.patch.object(gw, "_run_remote", return_value=bad),                 self.post({"generativelanguage": 429, "simplifier-vertex-credit": 200}):
             r = gr.call("q", search=True)
-        self.assertEqual(r["route"], "free")
+        self.assertEqual(r["route"], "vertex-company")
+        self.assertEqual([t[0] for t in r["tried"]], ["search-key", "gemini-web"])
+
+    def test_non_search_skips_web_keeps_old_order(self):
+        with mock.patch.dict("os.environ", self.ENV_ON), mock.patch.object(gw, "_run_remote") as rr,                 self.post({"generativelanguage": 429, "simplifier-vertex-credit": 200}):
+            r = gr.call("q", search=False)
+        self.assertEqual(r["route"], "vertex-company")
+        self.assertEqual(self.urls[0][1], "k")  # 비검색은 무료 키 먼저
         rr.assert_not_called()
 
     def test_web_exception_does_not_break_fall(self):
-        with mock.patch.dict("os.environ", {"GEMINI_WEB": "1"}), mock.patch.object(gw, "ask", side_effect=RuntimeError("boom")), \
-                self.post({"generativelanguage": 429, "simplifier-vertex-credit": 200}):
+        with mock.patch.dict("os.environ", self.ENV_ON), mock.patch.object(gw, "ask", side_effect=RuntimeError("boom")),                 self.post({"generativelanguage": 429, "simplifier-vertex-credit": 200}):
             r = gr.call("q", search=True)
         self.assertEqual(r["route"], "vertex-company")
 
