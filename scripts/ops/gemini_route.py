@@ -345,6 +345,18 @@ def call(prompt, model="gemini-3.6-flash", search=False, who="unknown", timeout=
                 _search_state_write("search-key-invalid", code)
     skey = ""
 
+    # 제미나이 웹앱(구PC 로그인 크롬). 검색 요청에서 검색 전용 키 뒤·Vertex 앞. 기본 켜짐(사장님 2026-10-11), GEMINI_WEB=0 일 때만 끔
+    if search and os.environ.get("GEMINI_WEB") != "0":
+        try:
+            import gemini_web
+            t0 = time.time()
+            w = gemini_web.ask(prompt, who=who)  # 전체 예산은 GEMINI_WEB_TIMEOUT(기본 60초)
+        except Exception:  # noqa: BLE001  웹 갈래의 어떤 오류도 Vertex 낙하를 막지 않는다
+            w = {"exit_code": 1, "status": "error", "port": None}
+        if w["exit_code"] == 0:
+            return done(w["text"], "gemini-web", "ok", w["cost_note"], w["sources"], t0, 0)
+        attempts.append(("gemini-web", w["status"]))
+
     # ②·③ Vertex
     import ask_vertex as av
     stages = [("vertex-company", av.COMPANY_PROJECT, av.COMPANY_ACCOUNT), ("vertex-personal", av.PROJECT, av.ACCOUNT)]

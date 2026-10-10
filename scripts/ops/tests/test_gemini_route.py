@@ -40,7 +40,7 @@ class Base(unittest.TestCase):
                    mock.patch.object(av, "total_since", return_value=0.0),
                    mock.patch.object(gr, "SEARCH_LEDGER", self.tmp / "search_ledger.csv"),
                    mock.patch.object(gr, "SEARCH_STATE", self.tmp / "search_state.json"),
-                   mock.patch.dict("os.environ", {}, clear=False)]
+                   mock.patch.dict("os.environ", {"GEMINI_WEB": "0"}, clear=False)]  # 웹앱 갈래는 기본 켜짐이라 여기선 끈다(실제 ssh 호출 방지)
         for p in patches:
             p.start()
         self.addCleanup(mock.patch.stopall)
