@@ -61,3 +61,7 @@
 - LinkedIn 연결(사장님 클릭 1회) → 팔로워 0 채널에서 게시 검증 → 실전.
 - Instagram(simplifier_seoul) AItoEarn 직접 연결 재시도.
 - 브런치·리멤버·로켓펀치 공식 API 유무 계속 조사.
+
+## AItoEarn 연결 계정: 한성희 개인 스레드 (2026-10-11 실측, 사장님이 공개 저장소 기록 허용)
+
+- 스레드 `threads_27970520025980891`(N17 큐 항목에 쓸 accountId). 링크드인·인스타 ID는 큐 파일에 이미 있음. 계정 조회는 워크플로 aitoearn-accounts.yml(읽기 전용)

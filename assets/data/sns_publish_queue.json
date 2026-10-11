@@ -582,7 +582,7 @@
       ]
     },
     "publishAt": "2026-10-13T00:00:00.000Z",
-    "status": "draft",
-    "note": "초안(승인 전). 승인하면 status=pending, approved_by·approved_quote 기입"
+    "status": "cancelled",
+    "note": "초안(승인 전). 승인하면 status=pending, approved_by·approved_quote 기입 | 2026-10-11 폐기: 사장님 위임(성과루프로 주제·제목 판단), 링크드인 20건 실측에서 AI 트렌드 칼럼형·설명형 제목이 최저군(노출 595~825, 좋아요 6). 홈페이지 글은 10/12 예약 그대로"
   }
 ]
