@@ -140,6 +140,26 @@ def policy_problem(item):
     urls = re.findall(r"https?://\S+", content.get("body") or "")
     if len(urls) > 1:
         return f"본문 링크가 {len(urls)}개입니다(관련글 링크 1개만 허용)"
+    return image_check_problem(item)
+
+
+def image_check_problem(item):
+    """이미지 선정 조건 8개 채점 기록이 없으면 등록하지 않는다(2026-10-11 마야 사고, 9/19 KPT 7번 재발).
+
+    조건 8개는 문서(질문하기_파이프라인.md 5-2절)에만 있어 세션마다 빠졌다. 큐 항목에
+    image_check {"idea": 빅아이디어 한 문장, "score": "7/8", "source": 출처, "file": 채점 파일 경로(저장소 안)}가
+    있어야 한다. 2026-10-12 이후 게시 예정 항목부터 적용한다(이미 컨펌된 이전 항목은 제외).
+    """
+    if str(item.get("publishAt") or "")[:10] < "2026-10-12":
+        return None
+    chk = item.get("image_check") or {}
+    if not str(chk.get("idea") or "").strip():
+        return "image_check.idea(빅아이디어 한 문장)가 없습니다. 이미지 선정 조건 8개로 채점한 기록이 필요합니다"
+    if not re.fullmatch(r"[0-8]/8", str(chk.get("score") or "")):
+        return "image_check.score가 '7/8' 형식이 아닙니다"
+    f = str(chk.get("file") or "")
+    if not f or not (Path(__file__).resolve().parents[1] / f).exists():
+        return f"image_check.file({f or '없음'})이 저장소에 없습니다. 채점 파일을 저장소에 둡니다"
     return None
 
 
