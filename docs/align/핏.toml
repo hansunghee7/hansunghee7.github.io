@@ -1,0 +1,58 @@
+# 슈퍼얼라인 설정: 핏 (유튜브 구독자 KPI). 이 설정의 상위 점검은 shorts-lab tools/perf/kpi_align_check.py 가 하고, 여기는 공통 점검기로 읽을 수 있는 핵심만 둔다.
+goal = "유튜브 구독자 1순위(첫 목표 100명): 쇼츠 매일 + 롱폼 주 3회, 가설대장·도구 관문·주간 루프로 운영"
+
+[[check]]
+name = "세션 카드에 KPI 절"
+type = "file_contains"
+path = 'C:\work\hansunghee7.github.io\docs\세션카드\핏.md'
+text = "KPI 기본 고려"
+
+[[check]]
+name = "역할 노트에 KPI 정본 포인터"
+type = "file_contains"
+path = 'C:\work\hansunghee7.github.io\docs\역할노트-핏.md'
+text = "KPI_구독퍼널_설계"
+
+[[check]]
+name = "관문 연결: yt_api.py"
+type = "file_contains"
+path = 'C:\work\shorts-lab\tools\publish\yt_api.py'
+text = "kpi_gate"
+
+[[check]]
+name = "관문 연결: publish_week.py"
+type = "file_contains"
+path = 'C:\work\shorts-lab\tools\publish\publish_week.py'
+text = "kpi_gate"
+
+[[check]]
+name = "관문 연결: aitoearn_publish.py"
+type = "file_contains"
+path = 'C:\work\shorts-lab\tools\publish\aitoearn_publish.py'
+text = "kpi_gate"
+
+[[check]]
+name = "작업 스케줄러: 핏_주간성과루프"
+type = "schtask"
+task = "핏_주간성과루프"
+
+[[check]]
+name = "작업 스케줄러: 핏_초기성과스냅숏"
+type = "schtask"
+task = "핏_초기성과스냅숏"
+
+[[check]]
+name = "감시 대장: 주간 루프"
+type = "jobs_id"
+id = "file:fit-weekly-loop"
+
+[[check]]
+name = "감시 대장: 초기 성과 스냅숏"
+type = "jobs_id"
+id = "file:fit-early-snapshot"
+
+[[check]]
+name = "주간 보고서 8일 이내 갱신"
+type = "file_age"
+path = 'C:\work\shorts-lab\pilot-shorts2\주간_성과루프.md'
+max_hours = 192

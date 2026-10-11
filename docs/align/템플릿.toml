@@ -1,0 +1,34 @@
+# 슈퍼얼라인 설정 템플릿: 복사해서 docs/align/<내 이름>.toml 로 만들고 목표와 점검 목록을 채운다. 정본: docs/슈퍼얼라인.md
+goal = "사장님과 합의한 1순위 목표를 한 줄로"
+
+# 1. 새 세션이 읽는 곳에 목표가 있는가
+[[check]]
+name = "세션 카드에 목표 절"
+type = "file_contains"
+path = 'C:\work\hansunghee7.github.io\docs\세션카드\<내 이름>.md'
+text = "<목표를 알리는 고정 문구>"
+
+[[check]]
+name = "역할 노트에 정본 포인터"
+type = "file_contains"
+path = 'C:\work\hansunghee7.github.io\docs\역할노트-<내 이름>.md'
+text = "<정본 문서 이름>"
+
+# 2. 도구 관문이 연결돼 있는가 (산출물을 내보내는 도구 파일에 관문 호출이 있는가)
+[[check]]
+name = "관문 연결: <도구 이름>"
+type = "file_contains"
+path = '<도구 파일 경로>'
+text = "<관문 모듈 이름>"
+
+# 3. 자동 작업이 등록되고 갱신되는가
+[[check]]
+name = "감시 대장 등록"
+type = "jobs_id"
+id = "<jobs.toml 의 id>"
+
+[[check]]
+name = "주간 결과 파일 갱신"
+type = "file_age"
+path = '<주간 결과 파일>'
+max_hours = 192
