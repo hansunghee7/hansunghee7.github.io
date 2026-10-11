@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-10T22:58:01.951598+00:00",
+  "updated_at": "2026-10-11T07:11:03.501610+00:00",
   "range": "last_30_days",
   "totals": {
     "sessions": 346,
@@ -228,15 +228,15 @@
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 119,
+    "home": 114,
     "log_home": 0,
-    "individual_post": 220,
+    "individual_post": 219,
     "other": 13
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 198
+      "sessions": 197
     },
     {
       "source": "linkedin.com",
@@ -259,10 +259,6 @@
       "sessions": 14
     },
     {
-      "source": "(not set)",
-      "sessions": 8
-    },
-    {
       "source": "daum",
       "sessions": 7
     },
@@ -275,7 +271,15 @@
       "sessions": 5
     },
     {
+      "source": "(not set)",
+      "sessions": 3
+    },
+    {
       "source": "lm.facebook.com",
+      "sessions": 3
+    },
+    {
+      "source": "naver",
       "sessions": 3
     },
     {
@@ -289,10 +293,6 @@
     {
       "source": "l.facebook.com",
       "sessions": 2
-    },
-    {
-      "source": "(data not available)",
-      "sessions": 1
     }
   ],
   "utm_campaigns": [
@@ -300,7 +300,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 198
+      "sessions": 197
     },
     {
       "source": "linkedin.com",
@@ -357,6 +357,12 @@
       "sessions": 3
     },
     {
+      "source": "naver",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "sessions": 3
+    },
+    {
       "source": "talk.navercorp.com",
       "medium": "referral",
       "campaign": "(referral)",
@@ -373,12 +379,6 @@
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 2
-    },
-    {
-      "source": "(data not available)",
-      "medium": "(data not available)",
-      "campaign": "(cross-network)",
-      "sessions": 1
     },
     {
       "source": "bing",
@@ -396,12 +396,6 @@
       "source": "m.trevari.co.kr",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 1
-    },
-    {
-      "source": "naver",
-      "medium": "organic",
-      "campaign": "(organic)",
       "sessions": 1
     },
     {
