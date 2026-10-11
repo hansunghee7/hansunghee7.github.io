@@ -1,0 +1,20 @@
+# 슈퍼얼라인 설정: 진입점 일치 점검 (정책 문서의 정본 경로와 훅 안내 문구가 같은 순서를 가리키는가). 정본: docs/슈퍼얼라인.md, 경로 정본 docs/제미나이_키_정책.md
+goal = "리서치 진입점(훅 안내, 도구, 정책 문서)이 같은 정본 순서(검색 전용 키 -> Vertex)를 가리킨다"
+
+[[check]]
+name = "정책 문서에 검색 전용 키 낙하 순서"
+type = "file_contains"
+path = 'C:\work\hansunghee7.github.io\docs\제미나이_키_정책.md'
+text = "검색 전용 키"
+
+[[check]]
+name = "research-gate 훅 안내에 검색 전용 키 순서"
+type = "file_contains"
+path = 'C:\work\hansunghee7.github.io\.claude\hooks\research-gate.py'
+text = "검색 전용 키"
+
+[[check]]
+name = "vertex_research.py에 검색 전용 키 경로"
+type = "file_contains"
+path = 'C:\work\hansunghee7.github.io\scripts\ops\vertex_research.py'
+text = "search-key"

@@ -20,7 +20,7 @@ if tool in ("Bash", "PowerShell"):
     cmd = str((data.get("tool_input") or {}).get("command", ""))
     if re.search(r"google_?search|googleSearch", cmd) and "vertex_research.py" not in cmd and "[제미나이 불가:" not in cmd:
         sys.stderr.write("[리서치 관문] 검색 연동 제미나이는 vertex_research.py로만 부릅니다(질문을 모아 API 1회, 주제당 첫 조사+보충 1회). "
-                         "사용: python C:/work/_ops/tools/vertex_research.py --topic \"주제\" \"질문1\" \"질문2\" ...")
+                         "사용: python scripts/ops/vertex_research.py --topic \"주제\" \"질문1\" \"질문2\" ... (경로: 검색 전용 키 -> Vertex, 상세 docs/제미나이_키_정책.md)")
         sys.exit(2)
     sys.exit(0)
 if tool != "Agent":
@@ -34,7 +34,7 @@ research = re.search(r"리서치|벤치마킹|웹\s*조사|자료\s*수집|출�
 if kind == "collector" or (kind in ("general-purpose", "claude") and research):
     sys.stderr.write(
         "[리서치 관문] 웹 리서치는 클로드 서브에이전트가 아니라 구글 검색 연동 제미나이로 돌립니다(사장님 규칙 9/24, 관문 9/26). "
-        "도구: python C:/work/_ops/tools/vertex_research.py \"질문1\" \"질문2\" (Vertex AI, 무료 체험 크레딧, 검색 연동 9/26 실측 200). "
+        "도구: python scripts/ops/vertex_research.py --topic \"주제\" \"질문1\" \"질문2\" (경로: 검색 전용 키 -> Vertex, 상세 docs/제미나이_키_정책.md). "
         "여러 질문은 병렬 호출로 한 번에. 제미나이로 안 되는 이유가 있으면 프롬프트에 \"[제미나이 불가: 이유]\"를 적고 다시 부르세요.")
     sys.exit(2)
 sys.exit(0)

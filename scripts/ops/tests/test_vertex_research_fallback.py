@@ -45,6 +45,10 @@ class Base(unittest.TestCase):
         self.token.start()
         self.addCleanup(self.token.stop)
         self.posts = []
+        # 기본: 검색 전용 키 없음(실제 키·장부·네트워크 금지). 개별 시험에서 바꾼다.
+        self.sk = mock.patch.object(vr, "ask_search_key", return_value=err(0, "검색 키 없음"))
+        self.sk_mock = self.sk.start()
+        self.addCleanup(self.sk.stop)
 
     def script_posts(self, *results):
         """post 호출을 순서대로 results로 답하고, 호출된 URL을 self.posts에 쌓는다."""
@@ -142,18 +146,49 @@ class VertexOrder(Base):
 
 
 class RouteSwitch(Base):
-    def test_auto_tries_free_keys_before_vertex(self):
-        with mock.patch.object(vr, "ask_free", return_value=dict(OK)) as f, mock.patch.object(vr, "ask_vertex") as v:
+    def test_auto_tries_search_key_first(self):
+        self.sk_mock.return_value = dict(OK)
+        with mock.patch.object(vr, "ask_free") as f, mock.patch.object(vr, "ask_vertex") as v:
             res = self.batch("auto")
-        f.assert_called_once()
+        self.sk_mock.assert_called_once()
+        f.assert_not_called()
         v.assert_not_called()
+        self.assertEqual(res["route"], "search-key")
+
+    def test_auto_search_key_failure_falls_to_vertex(self):
+        for e in (err(0, "검색 키 없음"), err(0, "검색 키 cap"), err(429), err(503)):
+            with self.subTest(e=e["error"]):
+                self.sk_mock.return_value = e
+                self.script_posts(dict(OK))
+                with mock.patch.object(vr, "ask_free") as f:
+                    res = self.batch("auto")
+                f.assert_not_called()
+                self.assertEqual((res["route"], res["project"]), ("vertex", "company"))
+
+    def test_route_search_key_does_not_continue(self):
+        self.sk_mock.return_value = err(429)
+        with mock.patch.object(vr, "ask_vertex") as v:
+            res = self.batch("search-key")
+        v.assert_not_called()
+        self.assertEqual((res["route"], res["error"]), ("search-key", "HTTP 429"))
+
+    def test_route_free_does_not_use_search_key(self):
+        with mock.patch.object(vr, "ask_free", return_value=dict(OK)):
+            res = self.batch("free")
+        self.sk_mock.assert_not_called()
         self.assertEqual(res["route"], "free")
 
-    def test_auto_free_error_goes_to_vertex(self):
-        self.script_posts(dict(OK))
-        with mock.patch.object(vr, "ask_free", return_value=err(429)):
-            res = self.batch("auto")
-        self.assertEqual((res["route"], res["project"]), ("vertex", "company"))
+    def test_ask_search_key_wraps_gemini_route_stage(self):
+        self.sk.stop()
+        gr = types.SimpleNamespace(search_key_stage=mock.Mock(return_value=(True, None, (200, {"candidates": [{"content": {"parts": [{"text": "답"}]}}]}, "m", 0))))
+        with mock.patch.dict(sys.modules, {"gemini_route": gr}):
+            res = vr.ask_search_key(["Q1"], "공통", "m")
+            self.assertEqual(res["text"], "답")
+            gr.search_key_stage.return_value = (True, ("search-key", "HTTP429"), None)
+            self.assertEqual(vr.ask_search_key(["Q1"], "공통", "m")["error"], "검색 키 HTTP429")
+            gr.search_key_stage.return_value = (False, None, None)
+            self.assertIn("error", vr.ask_search_key(["Q1"], "공통", "m"))
+        self.sk.start()
 
     def test_route_free_does_not_continue_to_vertex(self):
         with mock.patch.object(vr, "ask_free", return_value=err(429)), mock.patch.object(vr, "ask_vertex") as v:
