@@ -1,0 +1,75 @@
+# 슈퍼얼라인 설정: 마야 (링크드인·SNS 게시물별 좋아요·조회수 → 홈페이지 유입). 정본: docs/슈퍼얼라인.md, 마야 KPI 정본: docs/마야_KPI.md
+goal = "게시물별 좋아요·조회수를 높여 홈페이지 유입을 늘린다(사장님 2026-10-06). 글·제목·이미지는 KPI 근거와 가설 id로 제안하고, 이미지는 조건 8개 채점 기록으로만 등록한다"
+
+# 1. 새 세션이 읽는 곳에 목표와 기본 프로세스가 있는가
+[[check]]
+name = "세션 카드에 기본 프로세스(KPI 판단→제안)"
+type = "file_contains"
+path = 'docs/세션카드/마야.md'
+text = "기본 프로세스"
+
+[[check]]
+name = "세션 카드에 이미지 조건 8개·관문 규칙"
+type = "file_contains"
+path = 'docs/세션카드/마야.md'
+text = "image_check"
+
+[[check]]
+name = "역할 노트에 KPI 정본 포인터"
+type = "file_contains"
+path = 'docs/역할노트-마야.md'
+text = "마야_KPI.md"
+
+# 2. 도구 관문이 모든 내보내기 경로에 연결돼 있는가
+[[check]]
+name = "관문 연결: publish_sns_queue.py(이미지 채점 기록)"
+type = "file_contains"
+path = 'scripts/publish_sns_queue.py'
+text = "image_check_problem"
+
+[[check]]
+name = "관문 존재: maya_propose.py(KPI 근거·가설·판정)"
+type = "file_contains"
+path = 'scripts/ops/maya_propose.py'
+text = "hyp_ids"
+
+[[check]]
+name = "관문 경유: 외부 예약 워크플로가 관문 스크립트(publish_sns_queue.py)만 호출"
+type = "file_contains"
+path = '.github/workflows/publish-sns.yml'
+text = "publish_sns_queue.py"
+
+# 3. 자동 작업이 등록되고 갱신되는가
+[[check]]
+name = "감시 대장: 마야 성과 수집(N14)"
+type = "jobs_id"
+id = "fn:maya-collect"
+
+[[check]]
+name = "감시 대장: 마야 주간 점검"
+type = "jobs_id"
+id = "file:maya-weekly-loop"
+
+[[check]]
+name = "작업 스케줄러: 마야_주간점검"
+type = "schtask"
+task = "마야_주간점검"
+
+[[check]]
+name = "주간 점검 결과 8일 이내 갱신"
+type = "file_age"
+path = 'C:/work/_ops/maya_weekly.md'
+max_hours = 192
+
+# 4. 판정 장치: 열린 가설마다 사전 판정 기준이 있는가
+[[check]]
+name = "가설대장의 모든 가설에 판정 규칙(rule)"
+type = "cmd_ok"
+cmd = ["python", "-c", "import json,sys;L=[json.loads(l) for l in open('assets/data/maya_hypotheses.jsonl',encoding='utf-8') if l.strip()];sys.exit(0 if L and all(x.get('rule') for x in L) else 1)"]
+
+# 5. 문서 일관성
+[[check]]
+name = "마야 KPI 문서에 측정 장부 포인터"
+type = "file_contains"
+path = 'docs/마야_KPI.md'
+text = "마야_성과관찰.md"
