@@ -18,3 +18,9 @@ name = "vertex_research.py에 검색 전용 키 경로"
 type = "file_contains"
 path = 'C:\work\hansunghee7.github.io\scripts\ops\vertex_research.py'
 text = "search-key"
+
+[[check]]
+name = "리서치 등급 구분"
+type = "file_contains"
+path = 'C:\work\hansunghee7.github.io\docs\AI_ROUTING_POLICY.md'
+text = "[리서치: 슈퍼"
