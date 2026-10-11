@@ -2,7 +2,7 @@
 """마야 자동 단계표(슈퍼프로세스 5부품, 2026-10-11). 증거 파일을 읽어 글 한 편의 단계별 빈칸('-')을 보여 준다.
 사람이 '했다'고 쓰는 표가 아니다. 증거가 있어야 채워진다. 읽기 전용.
 
-단계(홈페이지 글 한 편): 카드(작업 카드 파일) → 경험(카드의 사장님 경험 칸) → 예약(발행 계획 상태) → 글번호(url) → SNS(링크드인·인스타 큐 항목) → 반응수집(post_reactions) → 실험(링크드인 A/B 기록)
+단계(홈페이지 글 한 편): 카드(작업 카드 파일) → 경험(카드의 경험 칸 또는 다이얼로그 요약) → 예약(발행 계획 상태) → 글번호(url) → SNS(링크드인·인스타 큐 항목) → 반응수집(post_reactions) → 실험(링크드인 A/B 기록)
 증거: assets/data/publish_plan.json, sns_publish_queue.json, post_reactions.json, linkedin_experiment.json, simplifier-cxo-db/ink/카드/<날짜>-*.md
 
 사용: python scripts/ops/maya_stages.py [--from 2026-10-01] [--md 출력경로]
@@ -50,7 +50,9 @@ def main():
         if cf:
             head = (CARDS / cf).read_text(encoding="utf-8").split("---")[1] if (CARDS / cf).read_text(encoding="utf-8").startswith("---") else ""
             m2 = re.search(r"^경험:\s*(.+)$", head, re.M)
-            exp_ok = "OK" if m2 and m2.group(1).strip().strip('"') else "-"
+            # 심플리파이어 다이얼로그 답변은 사장님 쓴 글 400여 편·책 2권 기반이라 사장님 경험·글로 취급(사장님 지시 2026-10-11)
+            m3 = re.search(r"요약_경로:\s*\"?(\S.+)", head)
+            exp_ok = "OK" if (m2 and m2.group(1).strip().strip('"')) or m3 else "-"
         resv = "OK" if re.search(r"예약|완료", p["status"]) else "-"
         qs = [q for q in queue if post and q["post_ref"] == post and q["status"] != "cancelled"]
         sns = ",".join(sorted({q["platform"][:2] for q in qs})) or "-"
