@@ -19,6 +19,26 @@ type = "file_contains"
 path = 'C:\work\hansunghee7.github.io\docs\탐_KPI.md'
 text = "KPI 순위"
 
+# KPI 1순위(국가지원 사전지표) 보강. 아래 3건은 비공개 저장소(simplifier-cxo-db) 파일을 본다.
+# 주의: 비공개 PR(공고표·KPI1 개정)이 main에 병합되기 전에는 공고표가 없고 KPI 문서에 P8·묶음 0이 없어 FAIL이 날 수 있다.
+[[check]]
+name = "KPI1: 공고표 갱신 14일 이내 (비공개 저장소)"
+type = "file_age"
+path = 'C:\work\simplifier-cxo-db\reports\grants\공고표.md'
+max_hours = 336
+
+[[check]]
+name = "KPI1: 비공개 KPI 문서에 P8 (기술 우수성 증빙)"
+type = "file_contains"
+path = 'C:\work\simplifier-cxo-db\reports\kpi\탐_KPI1_국가지원_사전지표.md'
+text = "P8"
+
+[[check]]
+name = "KPI1: 비공개 KPI 문서에 묶음 0 (자격 게이트)"
+type = "file_contains"
+path = 'C:\work\simplifier-cxo-db\reports\kpi\탐_KPI1_국가지원_사전지표.md'
+text = "묶음 0"
+
 [[check]]
 name = "탐_KPI.md 갱신 14일 이내"
 type = "file_age"
