@@ -50,11 +50,14 @@ def main():
     rc, align = run(["scripts/ops/align_check.py", "마야"])
     pend = old_pending()
     _, stages = run(["scripts/ops/maya_stages.py"])
+    _, due = run(["scripts/ops/maya_measure_due.py"])
+    _, expr = run(["scripts/ops/maya_write.py", "exp", "report"])
     blanks = sum(line.count("| - ") for line in stages.splitlines()[2:])
     body = [f"# 마야 주간 점검 ({datetime.now():%Y-%m-%d %H:%M} 자동 생성, scripts/ops/maya_weekly.py)", "",
             "## 1. 슈퍼얼라인", align.strip(), "",
             f"## 2. 7일 넘게 응답 없는 제안: {len(pend)}건"] + [f"- {t}" for t in pend] + [
             "", f"## 3. 글 단계표 빈칸: {blanks}개(maya_stages.py 표 기준)", "",
+            "## 4. KPI 측정 기한(R2)", due.strip(), "", "## 5. 링크드인 실험 점검(R5)", expr.strip(), "",
             "## 한계", "있는가를 확인하며, 제안이 정직한지·이미지 채점이 맞는지는 사람이 샘플로 본다."]
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text("\n".join(body) + "\n", encoding="utf-8", newline="\n")

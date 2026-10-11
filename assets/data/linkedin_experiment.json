@@ -12,7 +12,12 @@
    "title": "AI 데모보다 지금 더 중요해진 것",
    "planned": "2026-10-08",
    "note": "첫 문장: 독자에게 던지는 일반 질문(B)",
-   "snaps": {}
+   "snaps": {
+    "12h": {
+     "missed": "게시(10/8) 후 12시간 값을 재지 않았음(측정 루프 부재, 환경요건 R2 보강 전). 3일 경과 현재값은 좋아요 6·노출 595로 linkedin_activity_20261011.json에 있음",
+     "at": "2026-10-12T00:09+09:00"
+    }
+   }
   },
   {
    "post": "637",
@@ -29,6 +34,20 @@
    "planned": "2026-10-15",
    "note": "첫 문장: 독자에게 던지는 일반 질문(B)",
    "snaps": {}
+  },
+  {
+   "post": "narr-malgwi",
+   "group": "A",
+   "title": "말귀를 못 알아듣는 건 탐 탓이 아니었다",
+   "planned": "2026-10-13",
+   "note": "첫 문장: 직접 해 본 일(A). 사장님 서사형, H2·H3 표본",
+   "snaps": {},
+   "attrs": {
+    "image_source": "nano-banana",
+    "image_score": "7/8",
+    "has_link": false,
+    "hypotheses": "H2,H3"
+   }
   }
  ]
 }
