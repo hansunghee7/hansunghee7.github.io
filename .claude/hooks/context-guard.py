@@ -4,7 +4,7 @@
 컨텍스트 사용량 = 전사의 마지막 assistant 메시지 usage (input + cache_read + cache_creation 토큰).
 비율 = 사용량 / CONTEXT_WINDOW_TOKENS(기본 1000000). 60% 이상에서 5% 단계마다 세션당 한 번만 안내한다.
 같은 시점에 최근 30회 도구 호출 중 25회 이상이 직접 손일(Bash·PowerShell·Edit·Write·MultiEdit)이고 위임 기록이 없으면 한 줄을 더 낸다.
-환경변수: CONTEXT_WINDOW_TOKENS, CONTEXT_GUARD_STATE_PATH(기본 C:/work/_ops/context_guard_state.json),
+환경변수: CONTEXT_WINDOW_TOKENS, CONTEXT_GUARD_STATE_DIR(기본 C:/work/_ops/context_guard, 세션별 파일), CONTEXT_GUARD_TAIL_BYTES(기본 3145728, 전사 끝에서 이만큼만 읽음),
 CONTEXT_GUARD_MODE(warn 기본 | block: 종료 코드 2로 에이전트 눈에 보이게 함).
 파싱 실패·usage 없음은 조용히 통과(fail-open). 세션을 막지 않는다.
 """
@@ -13,11 +13,9 @@ import os
 import re
 import sys
 
-DEFAULT_STATE = "C:/work/_ops/context_guard_state.json"
+DEFAULT_STATE_DIR = "C:/work/_ops/context_guard"
 HAND_TOOLS = {"Bash", "PowerShell", "Edit", "Write", "MultiEdit"}
-DELEGATION_TOOLS = {"Agent", "Task", "Monitor", "CronCreate", "ScheduleWakeup", "SendMessage",
-                    "mcp__scheduled-tasks__create_scheduled_task", "mcp__ccd_session_mgmt__send_message"}
-DELEGATION_CMD = re.compile(r"ask_dex\.sh|ask_bt\.sh|hx\.sh|\bnohup\b|\bsetsid\b|ask_vertex\.py|vertex_research\.py|gemini_route\.py|api_run\.py|credit_run\.py|orch_wait\.py|\bclaude\s+-p\b|--cloud\b")
+DEFAULT_TAIL_BYTES = 3145728
 START_RATIO = 0.60
 STEP = 5
 WINDOW = 30
@@ -25,42 +23,60 @@ HAND_MIN = 25
 
 
 def is_delegation(name, inp):
-    if name in DELEGATION_TOOLS:
+    """위임 = Agent(Task)·SendMessage 호출, 또는 Bash/PowerShell 입력의 run_in_background=true. 명령 문자열 단어는 보지 않는다."""
+    if name in ("Agent", "Task", "SendMessage"):
         return True
-    if name in ("Bash", "PowerShell"):
-        return inp.get("run_in_background") is True or bool(DELEGATION_CMD.search(str(inp.get("command", ""))))
-    return False
+    return name in ("Bash", "PowerShell") and inp.get("run_in_background") is True
+
+
+def tail_lines(path):
+    """파일 끝에서 최대 CONTEXT_GUARD_TAIL_BYTES만 읽어 줄 목록을 돌려준다. 중간에서 시작했으면 잘린 첫 줄은 버린다."""
+    try:
+        n = int(os.environ.get("CONTEXT_GUARD_TAIL_BYTES", DEFAULT_TAIL_BYTES))
+        if n <= 0:
+            n = DEFAULT_TAIL_BYTES
+    except Exception:
+        n = DEFAULT_TAIL_BYTES
+    with open(path, "rb") as f:
+        size = f.seek(0, os.SEEK_END)
+        start = max(0, size - n)
+        f.seek(start)
+        data = f.read()
+    lines = data.split(b"\n")
+    if start > 0:
+        lines = lines[1:]
+    return lines
 
 
 def scan(path):
-    """(마지막 usage 합계 또는 None, 최근 30회 도구 호출 [(name, is_delegation)])."""
+    """(마지막 usage 합계 또는 None, 최근 30회 도구 호출 [(name, is_delegation)] 시간순). 끝에서 거꾸로 읽는다."""
     usage = None
-    calls = []
-    with open(path, encoding="utf-8", errors="replace") as f:
-        for line in f:
+    rev = []
+    for raw in reversed(tail_lines(path)):
+        if usage is not None and len(rev) >= WINDOW:
+            break
+        try:
+            ev = json.loads(raw.decode("utf-8", errors="replace"))
+        except Exception:
+            continue
+        if not isinstance(ev, dict) or ev.get("type") != "assistant":
+            continue
+        m = ev.get("message") or {}
+        u = m.get("usage")
+        if usage is None and isinstance(u, dict):
             try:
-                ev = json.loads(line)
+                tot = sum(int(u.get(k) or 0) for k in ("input_tokens", "cache_read_input_tokens", "cache_creation_input_tokens"))
             except Exception:
-                continue
-            if not isinstance(ev, dict) or ev.get("type") != "assistant":
-                continue
-            m = ev.get("message") or {}
-            u = m.get("usage")
-            if isinstance(u, dict):
-                try:
-                    tot = sum(int(u.get(k) or 0) for k in ("input_tokens", "cache_read_input_tokens", "cache_creation_input_tokens"))
-                except Exception:
-                    tot = 0
-                if tot > 0:
-                    usage = tot
-            c = m.get("content")
-            if isinstance(c, list):
-                for p in c:
-                    if isinstance(p, dict) and p.get("type") == "tool_use":
-                        name = p.get("name", "")
-                        calls.append((name, is_delegation(name, p.get("input") or {})))
-                calls = calls[-WINDOW:]
-    return usage, calls
+                tot = 0
+            if tot > 0:
+                usage = tot
+        c = m.get("content")
+        if isinstance(c, list):
+            for p in reversed(c):
+                if isinstance(p, dict) and p.get("type") == "tool_use" and len(rev) < WINDOW:
+                    name = p.get("name", "")
+                    rev.append((name, is_delegation(name, p.get("input") or {})))
+    return usage, rev[::-1]
 
 
 def window_size():
@@ -86,20 +102,27 @@ def hand_heavy(calls):
     return sum(1 for n, _ in calls if n in HAND_TOOLS) >= HAND_MIN
 
 
-def load_state(sp):
+def state_file(sid):
+    d = os.environ.get("CONTEXT_GUARD_STATE_DIR", DEFAULT_STATE_DIR)
+    return os.path.join(d, re.sub(r"[^A-Za-z0-9_.-]", "_", sid)[:100] + ".json")
+
+
+def load_level(fp):
     try:
-        with open(sp, encoding="utf-8") as f:
-            s = json.load(f)
-        return s if isinstance(s, dict) else {}
+        with open(fp, encoding="utf-8") as f:
+            return int(json.load(f)["level"])
     except Exception:
-        return {}
+        return 0
 
 
-def save_state(sp, state):
+def save_level(fp, level):
+    """임시 파일에 쓴 뒤 os.replace로 바꿔 끼운다(원자적)."""
     try:
-        os.makedirs(os.path.dirname(sp) or ".", exist_ok=True)
-        with open(sp, "w", encoding="utf-8") as f:
-            json.dump(state, f)
+        os.makedirs(os.path.dirname(fp), exist_ok=True)
+        tmp = fp + ".tmp%d" % os.getpid()
+        with open(tmp, "w", encoding="utf-8") as f:
+            json.dump({"level": level}, f)
+        os.replace(tmp, fp)
     except Exception:
         pass
 
@@ -117,16 +140,10 @@ def evaluate(data):
     if not lvl:
         return []
     sid = str(data.get("session_id") or os.path.basename(path))
-    sp = os.environ.get("CONTEXT_GUARD_STATE_PATH", DEFAULT_STATE)
-    state = load_state(sp)
-    try:
-        last = int(state.get(sid, 0))
-    except Exception:
-        last = 0
-    if lvl <= last:
+    fp = state_file(sid)
+    if lvl <= load_level(fp):
         return []
-    state[sid] = lvl
-    save_state(sp, state)
+    save_level(fp, lvl)
     out = [f"컨텍스트 {round(ratio * 100)}% 사용. 압축 준비 시점입니다(공정 카드 공용-오케스트레이션 #4).\n"
            "① 진행 중 서브에이전트·감시·막힌 것·하지 말 것을 한 블록으로 정리\n"
            "② 사장님께 압축 후 한 번에 입력할 한 문장을 제시\n"
