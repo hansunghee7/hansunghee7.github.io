@@ -279,6 +279,33 @@ def _vertex_usage_row(who, model, search, tin, tout, sq, est, sec, rc):
         f.write(f"{datetime.now():%Y-%m-%d %H:%M:%S},{who},{model},{int(search)},{tin},{tout},{sq},{est:.2f},{sec},{rc}\n")
 
 
+def search_key_stage(prompt, model, gen, timeout, who):
+    """검색 전용 키 한 단계(장부·상한·무효 상태 규칙 포함). 반환 (시도함, (route,status) 또는 None, 성공 시 (code,j,model,t0) 또는 None). vertex_research.py도 재사용."""
+    skey = _search_key()[0]
+    if not skey:
+        return False, None, None
+    if _search_invalid_until():
+        return False, ("search-key", "skipped_invalid"), None
+    d, m = _search_usage()
+    dcap, mcap = _search_caps()
+    if d >= dcap or m >= mcap:
+        _log(who, "search-key", "검색 키 상한", 0, 0, gen, True)
+        return False, ("search-key", "cap"), None
+    smodel = os.environ.get("GEMINI_SEARCH_MODEL") or model
+    t0 = time.time()
+    code, j = _http_post(f"https://generativelanguage.googleapis.com/v1beta/models/{smodel}:generateContent",
+                         {"x-goog-api-key": skey}, _body(prompt, True, gen), timeout)
+    if code == 200 and j:
+        _search_ledger_add(who, _parse(j)[3] or 1, smodel)
+        if _search_state_read().get("status") == "search-key-invalid":
+            _search_state_write("ok")
+        return True, None, (code, j, smodel, t0)
+    _log(who, "search-key", f"HTTP{code}", int((time.time() - t0) * 1000), 0, gen, True)
+    if code in SEARCH_INVALID_CODES:
+        _search_state_write("search-key-invalid", code)
+    return True, ("search-key", f"HTTP{code}"), None
+
+
 def call(prompt, model="gemini-3.6-flash", search=False, who="unknown", timeout=300, generation_config=None):
     """generation_config: 선택 dict(허용 키 화이트리스트, 요청 본문 generationConfig로 그대로). 반환: dict(text, route, status, cost_note, sources, exit_code). route=free|vertex-company|vertex-personal|none."""
     gen = _check_gen(generation_config)
@@ -316,34 +343,13 @@ def call(prompt, model="gemini-3.6-flash", search=False, who="unknown", timeout=
         attempts.append(("free", "no_key"))
 
     # 검색 전용 키 단계(키가 없으면 조용히 건너뜀)
-    search_tried = False
-    skey = _search_key()[0] if search else None
-    if skey:
-        until = _search_invalid_until()
-        d, m = _search_usage()
-        dcap, mcap = _search_caps()
-        if until:
-            attempts.append(("search-key", "skipped_invalid"))
-        elif d >= dcap or m >= mcap:
-            attempts.append(("search-key", "cap"))
-            _log(who, "search-key", "검색 키 상한", 0, 0, gen, True)
-        else:
-            search_tried = True
-            smodel = os.environ.get("GEMINI_SEARCH_MODEL") or model
-            t0 = time.time()
-            code, j = _http_post(f"https://generativelanguage.googleapis.com/v1beta/models/{smodel}:generateContent",
-                                 {"x-goog-api-key": skey}, _body(prompt, True, gen), timeout)
-            if code == 200 and j:
-                text, src, _u, sq = _parse(j)
-                _search_ledger_add(who, sq or 1, smodel)
-                if _search_state_read().get("status") == "search-key-invalid":
-                    _search_state_write("ok")
-                return done(text, "search-key", "ok", f"검색 전용 키(월 {SEARCH_FREE_MONTH}회 무료 구간, 검색 {sq or 1}건)", src, t0, 0)
-            attempts.append(("search-key", f"HTTP{code}"))
-            _log(who, "search-key", f"HTTP{code}", int((time.time() - t0) * 1000), 0, gen, True)
-            if code in SEARCH_INVALID_CODES:
-                _search_state_write("search-key-invalid", code)
-    skey = ""
+    search_tried, att, hit = search_key_stage(prompt, model, gen, timeout, who) if search else (False, None, None)
+    if att:
+        attempts.append(att)
+    if hit:
+        code, j, smodel, t0 = hit
+        text, src, _u, sq = _parse(j)
+        return done(text, "search-key", "ok", f"검색 전용 키(월 {SEARCH_FREE_MONTH}회 무료 구간, 검색 {sq or 1}건)", src, t0, 0)
 
     # 제미나이 웹앱(구PC 로그인 크롬). 검색 요청에서 검색 전용 키 뒤·Vertex 앞. 기본 켜짐(사장님 2026-10-11), GEMINI_WEB=0 일 때만 끔
     if search and os.environ.get("GEMINI_WEB") != "0":

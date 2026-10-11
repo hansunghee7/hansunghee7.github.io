@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""구글 검색 연동 제미나이 리서치(무료 AI Studio 키 먼저, 막히면 Vertex AI 무료 크레딧). 2026-09-26 탐, 10/3 순서 보정.
+"""구글 검색 연동 제미나이 리서치(검색 전용 키 먼저, 막히면 Vertex AI; 10/12 정본 순서). 2026-09-26 탐, 10/3 순서 보정.
 
 경로(사장님 합의 2026-10-03, 정본 docs/제미나이_키_정책.md): ① 무료 AI Studio 키(키 대장의 일반 키, 값은 화면에 안 냄)로 먼저
     호출하고, 429·한도·차단이면 ② 개인 GCP 무료 크레딧(Vertex)으로 넘어간다. --route free|vertex|auto(기본 auto).
@@ -80,6 +80,19 @@ def ask_free(qs, common, model):
     return last
 
 
+def ask_search_key(qs, common, model, who="탐"):
+    """검색 전용 유료 키(정본 docs/제미나이_키_정책.md 첫 단계). 월·일 상한 장부와 무효 상태는 gemini_route.search_key_stage가 처리한다(로직 복제 없음)."""
+    try:
+        import gemini_route as gr
+        prompt = build(qs, common)["contents"][0]["parts"][0]["text"]
+        tried, att, hit = gr.search_key_stage(prompt, model, None, 300, who)
+    except Exception as e:  # noqa: BLE001
+        return {"error": "검색 키 단계 실패", "code": 0, "detail": type(e).__name__}
+    if hit:
+        return parse(hit[1])
+    return {"error": "검색 키 " + (att[1] if att else "없음"), "code": 0}
+
+
 def ask_vertex(qs, common, model):
     """② GCP 무료 크레딧(Vertex AI). 회사 프로젝트 먼저, 402·403·429 등으로 막히면 개인 프로젝트(ask_vertex.py와 같은 순서)."""
     body = build(qs, common)
@@ -115,14 +128,20 @@ def ask_nosearch(qs, common):
 
 
 def ask_batch(qs, common, model, route="auto"):
-    """질문 여러 개를 번호 붙여 한 요청으로. 무료 키 먼저, 한도 오류면 Vertex. 결과에 route를 붙인다."""
-    if route in ("free", "auto"):
+    """질문 여러 개를 번호 붙여 한 요청으로. auto=검색 전용 키 -> Vertex(정본 docs/제미나이_키_정책.md). free는 명시할 때만. 결과에 route를 붙인다."""
+    if route in ("search-key", "auto"):
+        res = ask_search_key(qs, common, model)
+        if "error" not in res:
+            return {**res, "route": "search-key"}
+        print(f"[경로] 검색 전용 키 실패({res['error']}), " + ("Vertex로 넘어갑니다" if route == "auto" else "끝"), file=sys.stderr)
+        if route == "search-key":
+            return {**res, "route": "search-key"}
+    if route == "free":
         res = ask_free(qs, common, model)
         if "error" not in res:
             return {**res, "route": "free"}
-        print(f"[경로] 무료 키 실패({res['error']}), " + ("Vertex로 넘어갑니다" if route == "auto" else "끝"), file=sys.stderr)
-        if route == "free":
-            return {**res, "route": "free"}
+        print(f"[경로] 무료 키 실패({res['error']}), 끝", file=sys.stderr)
+        return {**res, "route": "free"}
     res = ask_vertex(qs, common, model)
     if "error" in res and res.get("code") in (0, 401, 402, 403, 429, 500, 503) and not os.environ.get("VERTEX_NO_FAILOVER"):
         print(f"[경로] Vertex 실패({res['error']}), 검색 없는 무료 호출로", file=sys.stderr)
@@ -170,7 +189,7 @@ def main():
     ap.add_argument("--topic", help="조사 주제 이름(같은 주제는 첫 조사+보충 1회까지)")
     ap.add_argument("--followup", action="store_true", help="첫 조사 뒤 모자란 것 보충(1회)")
     ap.add_argument("--more", default="", help="보충 뒤에도 더 부를 때 이유")
-    ap.add_argument("--route", choices=("auto", "free", "vertex"), default="auto", help="auto=무료 키 먼저, 막히면 Vertex")
+    ap.add_argument("--route", choices=("auto", "search-key", "free", "vertex"), default="auto", help="auto=검색 전용 키 먼저, 막히면 Vertex(정본 순서)")
     ap.add_argument("--check-only", action="store_true", help="API 없이 관문 판정만(시험용)")
     a = ap.parse_args()
     qs = list(a.questions)
