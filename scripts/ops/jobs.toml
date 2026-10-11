@@ -476,3 +476,13 @@ timeout = 120
 severity = "warn"
 name = "타미 실패 라우팅(solar-bible 결과 파일의 실패 신호를 감지해 탐 우편함으로 알리고 Vertex를 권장, tami_failure_router.py)"
 note = "2026-10-11 탐 등록(사장님 10/11: 타미 실패를 라우팅 장치로 활용). 처리 기록 C:/work/_ops/tami_router_state.json, 실패 기록 tami_failures.jsonl. 첫 실행은 기존 결과를 알림 없이 처리 완료로만 기록"
+
+# ---------- 2026-10-11 핏 주간 성과 루프 ----------
+[[job]]
+id = "file:fit-weekly-loop"
+severity = "warn"
+kind = "file_age"
+path = 'C:/work/shorts-lab/pilot-shorts2/주간_성과루프.md'
+max_age_min = 11520
+name = "핏 주간 성과 루프(weekly_loop_run.py, 작업 스케줄러 핏_주간성과루프 월 08:40)"
+note = "2026-10-11 핏 등록(사장님 지시: 성과 데이터로 다음 실험을 자동 결정). 8일 넘게 안 바뀌면 멈춤으로 본다. 수동 실행: python shorts-lab/tools/perf/weekly_loop_run.py. 첫 자동 실행 10/12 월 08:40, 확인 대기."
