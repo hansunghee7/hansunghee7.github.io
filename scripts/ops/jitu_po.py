@@ -123,17 +123,21 @@ def kpi_add(a):
     r = {"id": next_id(rows, "K"), "date": str(today()), "week": a.week or dt.date.today().strftime("%G-W%V"),
          "ext_active_callers_7d": a.active, "ext_views_7d": a.views, "ext_cites_7d": a.cites,
          "ext_misses_7d": a.misses, "ext_feedback_7d": a.feedback,
-         "activated": a.activated or "", "retained": a.retained or "", "note": a.note or ""}
+         "activated": a.activated or "", "retained": a.retained or "", "note": a.note or "",
+         # 지투 KPI(사장님 지정 2026-10-12): UX MCP와 Carvit 전체 상품의 고객수. 획득(신규)과 리텐션(이탈)으로 나눠 적는다
+         "customers": a.customers, "new_customers": a.new_customers, "lost_customers": a.lost_customers}
     r["miss_rate"] = round(a.misses / a.views, 3) if a.views else None
     rows.append(r)
     save("kpi", rows)
-    print(f"{r['id']} 기록: 활성 호출자 {a.active}, 조회 {a.views}, 인용 {a.cites}, 찾지 못한 검색 {a.misses}(비율 {r['miss_rate']}), 피드백 {a.feedback}")
+    print(f"{r['id']} 기록: 고객수 {a.customers}(신규 {a.new_customers}, 이탈 {a.lost_customers}), 활성 호출자 {a.active}, 조회 {a.views}, 인용 {a.cites}, 찾지 못한 검색 {a.misses}(비율 {r['miss_rate']}), 피드백 {a.feedback}")
+    if a.customers is None:
+        print("⚠ 지투 KPI인 고객수(--customers)가 비었습니다. 외부 고객 회사 수를 적어야 이 측정이 KPI 기록으로 칩니다.")
 
 
 def kpi_list(a):
     rows = load("kpi")
     for r in rows[-(a.last or 8):]:
-        print(f"{r['id']} {r['date']} {r['week']} 활성 {r['ext_active_callers_7d']} 조회 {r['ext_views_7d']} 인용 {r['ext_cites_7d']} "
+        print(f"{r['id']} {r['date']} {r['week']} 고객 {r.get('customers', '-')}(신규 {r.get('new_customers', '-')} 이탈 {r.get('lost_customers', '-')}) 활성 {r['ext_active_callers_7d']} 조회 {r['ext_views_7d']} 인용 {r['ext_cites_7d']} "
               f"미스 {r['ext_misses_7d']}({r['miss_rate']}) 피드백 {r['ext_feedback_7d']} | 활성화 {r['activated'] or '-'} 유지 {r['retained'] or '-'} | {r['note']}")
 
 
@@ -338,6 +342,8 @@ def due_items():
         d = days_since(kpis[-1]["date"])
         if d >= KPI_EVERY_DAYS:
             out["kpi"].append(f"마지막 측정 {d}일 전({kpis[-1]['date']})")
+        if kpis[-1].get("customers") is None:
+            out["kpi"].append("지투 KPI인 고객수가 마지막 측정에 기록되지 않았다(--customers)")
     for r in load("feedback"):
         age = days_since(r["updated"])
         if r["state"] == "new" and age >= FEEDBACK_TRIAGE_DAYS:
@@ -390,6 +396,8 @@ def build():
     for name in ("active", "views", "cites", "misses", "feedback"):
         x.add_argument(f"--{name}", type=int, required=True)
     x.add_argument("--activated", default=""); x.add_argument("--retained", default=""); x.add_argument("--note", default="")
+    for name in ("customers", "new-customers", "lost-customers"):  # 지투 KPI: 고객수(외부 고객 회사 수), 이번 주 신규, 이번 주 이탈
+        x.add_argument(f"--{name}", type=int, default=None)
     x.set_defaults(fn=kpi_add)
     x = k.add_parser("list"); x.add_argument("--last", type=int, default=8); x.set_defaults(fn=kpi_list)
 
