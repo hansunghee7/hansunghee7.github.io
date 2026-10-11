@@ -2,7 +2,7 @@
 
 실패면 _ops/tami_failures.jsonl 에 한 줄 + 탐 우편함에 한 통(--dry 면 출력만). 처리한 파일명은 상태 파일에 기록(중복 방지).
 """
-import argparse, json, re, subprocess, sys
+import argparse, json, os, re, subprocess, sys, time
 from datetime import datetime
 from pathlib import Path
 
@@ -10,6 +10,7 @@ REPORTS = Path("C:/work/solar-bible/reports")
 STATE = Path("C:/work/_ops/tami_router_state.json")
 FAILS = Path("C:/work/_ops/tami_failures.jsonl")
 MAILBOX = "C:/work/solar-bible/mailbox/mailbox.py"
+MAX_MAILS, FRESH_SEC = 5, 60
 NEXT = ("GCP Vertex (ask_vertex.py, 핏#52 4단계)", "타미는 3단계라 실패하면 4단계부터")
 NEG = re.compile(r"(성공\s*/\s*실패|(막힌 곳|막힘|실패|오류|에러|failure)\s*[:：]?\s*(없음|없다|없었|0\s*건?\b|0\b)|실패\s*0|막힌 곳 없|실패(시|하면|할 경우)|rc\s*=\s*0|관문 막힘)", re.I)
 SIG = [("rc/exit", re.compile(r"(rc\s*=\s*|exit[ _]code\s*[:=]?\s*)([1-9]\d*)", re.I)),
@@ -22,7 +23,7 @@ def result_text(md):
     out, on = [], False
     for ln in md.splitlines():
         if ln.startswith("## "):
-            on = ln.startswith("## 결과")
+            on = ln.strip() == "## 결과"
             continue
         if on:
             out.append(ln)
@@ -57,19 +58,26 @@ def mail(name, quote, dry):
 
 
 def run(reports=REPORTS, state=STATE, fails=FAILS, dry=False):
-    done = set(json.loads(state.read_text(encoding="utf-8"))) if state.exists() else None
+    try:
+        done = set(json.loads(state.read_text(encoding="utf-8"))) if state.exists() else None
+        if done is not None and not all(isinstance(x, str) for x in done):
+            raise ValueError("목록이 아님")
+    except (ValueError, TypeError, OSError) as e:
+        raise StateError(f"상태 파일 오류: {state} ({e})")
     if done is None and not dry:  # 첫 실행: 쌓인 옛 결과는 알림 폭주를 막으려고 처리 완료로만 기록
         done = {f.name for f in Path(reports).glob("*-result.md")}
-        state.parent.mkdir(parents=True, exist_ok=True)
-        state.write_text(json.dumps(sorted(done), ensure_ascii=False), encoding="utf-8")
+        save_state(state, done)
         print(f"첫 실행: 기존 {len(done)}건을 처리 완료로 기록(알림 없음)")
         return []
     done = done or set()
-    found = []
+    found, extra = [], []
     for f in sorted(Path(reports).glob("*-result.md")):
-        if f.name in done:
+        if f.name in done or time.time() - f.stat().st_mtime < FRESH_SEC:  # 쓰는 중일 수 있는 파일은 다음 실행에
             continue
-        hit = detect(f.read_text(encoding="utf-8", errors="replace"))
+        md = f.read_text(encoding="utf-8", errors="replace")
+        if "## 의뢰(원본)" not in md:  # 타미 결과가 아닌 보고서는 대상 아님
+            continue
+        hit = detect(md)
         done.add(f.name)
         if not hit:
             continue
@@ -79,11 +87,26 @@ def run(reports=REPORTS, state=STATE, fails=FAILS, dry=False):
             fails.parent.mkdir(parents=True, exist_ok=True)
             with fails.open("a", encoding="utf-8") as fh:
                 fh.write(json.dumps(rec, ensure_ascii=False) + "\n")
-        mail(f.name, hit[1], dry)
+        if len(found) <= MAX_MAILS:
+            mail(f.name, hit[1], dry)
+        else:
+            extra.append(f.name)
+    if extra:
+        mail(f"(외 {len(extra)}건)", ", ".join(extra)[:300], dry)
     if not dry:
-        state.parent.mkdir(parents=True, exist_ok=True)
-        state.write_text(json.dumps(sorted(done), ensure_ascii=False), encoding="utf-8")
+        save_state(state, done)
     return found
+
+
+def save_state(state, done):
+    state.parent.mkdir(parents=True, exist_ok=True)
+    tmp = state.with_name(state.name + ".tmp")
+    tmp.write_text(json.dumps(sorted(done), ensure_ascii=False), encoding="utf-8")
+    os.replace(tmp, state)
+
+
+class StateError(Exception):
+    pass
 
 
 if __name__ == "__main__":
@@ -92,5 +115,9 @@ if __name__ == "__main__":
     ap.add_argument("--reports", default=str(REPORTS))
     ap.add_argument("--state", default=str(STATE))
     a = ap.parse_args()
-    r = run(Path(a.reports), Path(a.state), dry=a.dry)
+    try:
+        r = run(Path(a.reports), Path(a.state), dry=a.dry)
+    except StateError as e:
+        print(e, file=sys.stderr)
+        sys.exit(2)
     print(f"실패 판정 {len(r)}건: " + ", ".join(n for n, _ in r))
