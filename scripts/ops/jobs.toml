@@ -486,3 +486,12 @@ path = 'C:/work/shorts-lab/pilot-shorts2/주간_성과루프.md'
 max_age_min = 11520
 name = "핏 주간 성과 루프(weekly_loop_run.py, 작업 스케줄러 핏_주간성과루프 월 08:40)"
 note = "2026-10-11 핏 등록(사장님 지시: 성과 데이터로 다음 실험을 자동 결정). 8일 넘게 안 바뀌면 멈춤으로 본다. 수동 실행: python shorts-lab/tools/perf/weekly_loop_run.py. 첫 자동 실행 10/12 월 08:40, 확인 대기."
+
+[[job]]
+id = "file:fit-early-snapshot"
+severity = "warn"
+kind = "file_age"
+path = 'C:/work/shorts-lab/pilot-shorts2/early_snapshots.jsonl'
+max_age_min = 1500
+name = "핏 초기 성과 스냅숏(early_snapshot.py, 작업 스케줄러 핏_초기성과스냅숏 하루 4회)"
+note = "2026-10-11 핏 등록(사장님: 12~24시간 성과 측정이 KPI 관리의 키). 공개 후 50시간 이내 영상이 없는 날은 줄이 안 늘어 오탐 가능(그 경우 로그에 '영상 없음'). 하루 넘게 안 바뀌면 경고. 수동: python shorts-lab/tools/perf/early_snapshot.py"
