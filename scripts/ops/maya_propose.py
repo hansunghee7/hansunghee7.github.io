@@ -37,6 +37,11 @@ def main():
     ap.add_argument("--verdict", default="", choices=["", "진행", "보류", "폐기"])
     ap.add_argument("--why", default="")
     ap.add_argument("--send", action="store_true")
+    ap.add_argument("--kind", default="post", choices=["post", "image", "other"],
+                    help="image면 후보 11장을 던지지 않고 추천 1장+대안 1장만 올린다(--rec, --alt, --scores 필수)")
+    ap.add_argument("--rec", default="", help="image: 추천 이미지 이름(어느 출처의 어떤 장면인지)")
+    ap.add_argument("--alt", default="", help="image: 대안 이미지 이름")
+    ap.add_argument("--scores", default="", help="image: 이미지 조건 8개 채점 '추천점수,대안점수' 예 7/8,7/8")
     a = ap.parse_args()
     miss = [n for n, v in (("--kpi", a.kpi.strip()), ("--hyp", a.hyp.strip()), ("--verdict", a.verdict), ("--why", a.why.strip())) if not v]
     if miss:
@@ -48,6 +53,15 @@ def main():
     if a.hyp != "none" and a.hyp not in hyp_ids():
         print(f"제안 관문 거부: 가설 id {a.hyp} 가 가설대장에 없다(있는 것: {sorted(hyp_ids())} 또는 none)")
         return 2
+    if a.kind == "image":
+        sc = a.scores.split(",")
+        if not (a.rec.strip() and a.alt.strip() and len(sc) == 2 and all(re.fullmatch(r"[6-8]/8", x.strip()) for x in sc)):
+            print("제안 관문 거부: 이미지 제안은 --rec(추천 1장), --alt(대안 1장), --scores 6/8 이상 두 개가 필요하다(후보를 여러 장 던지지 않는다)")
+            return 2
+        if not re.search(r"좋아요|노출|조회|유입", a.kpi):
+            print("제안 관문 거부: 이미지 제안의 KPI 근거에 좋아요·노출·조회·유입 중 어떤 지표를 올리는지 적어야 한다")
+            return 2
+        a.title = f"{a.title} (추천: {a.rec}, 대안: {a.alt}, 채점 {a.scores})"
     now = datetime.now(timezone(timedelta(hours=9))).strftime("%Y-%m-%d %H:%M")
     rec = {"at": now, "title": a.title, "kpi": a.kpi, "hyp": a.hyp, "verdict": a.verdict, "why": a.why, "boss": "대기"}
     with LEDGER.open("a", encoding="utf-8", newline="\n") as f:
