@@ -1,5 +1,5 @@
 # 슈퍼얼라인 설정: 마야 (링크드인·SNS 게시물별 좋아요·조회수 → 홈페이지 유입). 정본: docs/슈퍼얼라인.md, 마야 KPI 정본: docs/마야_KPI.md
-goal = "게시물별 좋아요·조회수를 높여 홈페이지 유입을 늘린다(사장님 2026-10-06). 글·제목·이미지는 KPI 근거와 가설 id로 제안하고, 이미지는 조건 8개 채점 기록으로만 등록한다"
+goal = "게시물별 좋아요·조회수를 높여 홈페이지 유입을 늘린다(사장님 2026-10-06). 4주 목표: 링크드인 12시간 좋아요 중앙값 24→30, 노출 2,130→2,600. 글·제목·이미지는 KPI 근거와 가설 id로 제안하고, 이미지는 조건 8개 채점 기록으로만 등록한다"
 
 # 1. 새 세션이 읽는 곳에 목표와 기본 프로세스가 있는가
 [[check]]
@@ -71,6 +71,25 @@ max_hours = 192
 name = "가설대장의 모든 가설에 판정 규칙(rule)"
 type = "cmd_ok"
 cmd = ["python", "-c", "import json,sys;L=[json.loads(l) for l in open('assets/data/maya_hypotheses.jsonl',encoding='utf-8') if l.strip()];sys.exit(0 if L and all(x.get('rule') for x in L) else 1)"]
+
+# 4-2. KPI 측정이 실제로 돌고 있는가(없으면 목표는 숫자로 닫히지 않는다)
+[[check]]
+name = "KPI 숫자 목표가 정본에 있다(좋아요 24→30)"
+type = "file_contains"
+path = 'docs/마야_KPI.md'
+text = "24 → 30"
+
+[[check]]
+name = "홈페이지 유입 측정: GA4 스냅숏 8일 이내 갱신"
+type = "file_age"
+path = 'assets/data/analytics.json'
+max_hours = 192
+
+[[check]]
+name = "링크드인 성과 측정: 화면 읽기 기록 8일 이내 갱신(post_reactions.json)"
+type = "file_age"
+path = 'assets/data/post_reactions.json'
+max_hours = 192
 
 # 5. 문서 일관성
 [[check]]
