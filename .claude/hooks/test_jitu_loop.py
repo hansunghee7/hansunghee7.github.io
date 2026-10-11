@@ -103,7 +103,7 @@ class HookModeTest(unittest.TestCase):
     def test_prompt_nothing_due_silent(self):
         with tempfile.TemporaryDirectory() as d:
             env = {"JITU_PO_DIR": d, "JITU_PO_TODAY": "2026-10-06"}
-            run([TOOL, "kpi", "add", "--active", "2", "--views", "10", "--cites", "1", "--misses", "0", "--feedback", "0"], env=env)
+            run([TOOL, "kpi", "add", "--active", "2", "--views", "10", "--cites", "1", "--misses", "0", "--feedback", "0", "--customers", "1"], env=env)
             r = run([HOOK, "prompt"], json.dumps({"prompt": "하이~ 지투"}), env)
             self.assertEqual(r.stdout.decode("utf-8").strip(), "")
 
@@ -131,9 +131,14 @@ class LoopToolTest(unittest.TestCase):
         self.assertNotIn("검사 공백", self.tool("due"))
 
     def test_kpi_due_after_seven_days(self):
-        self.tool("kpi", "add", "--active", "2", "--views", "150", "--cites", "50", "--misses", "6", "--feedback", "0")
+        self.tool("kpi", "add", "--active", "2", "--views", "150", "--cites", "50", "--misses", "6", "--feedback", "0", "--customers", "1")
         self.assertEqual(self.tool("due", "--quiet", today="2026-10-12").strip(), "")
         self.assertIn("지표 측정", self.tool("due", today="2026-10-13"))
+
+    def test_kpi_without_customers_is_due(self):
+        """지투 KPI는 고객수(사장님 지정 2026-10-12): 고객수 없이 잰 측정은 같은 날에도 기한 지남으로 나온다."""
+        self.tool("kpi", "add", "--active", "2", "--views", "150", "--cites", "50", "--misses", "6", "--feedback", "0")
+        self.assertIn("고객수", self.tool("due", today="2026-10-12"))
 
     def test_kpi_never_measured_is_due(self):
         self.assertIn("한 번도 안 쟀다", self.tool("due"))
