@@ -1,47 +1,29 @@
-# 슈퍼얼라인 설정: 탐 (오케스트레이션 2.0: 위임이 기본값). 정본: docs/슈퍼얼라인.md, 목표 정본: docs/오케스트레이터_일하는_방식.md
-goal = "오케스트레이션 2.0 상시 기본값: 에이전트가 직접 손일 대신 위임하고, 압축 후 재개로 세션을 잇고, 이를 도구 관문이 강제한다"
+# 슈퍼얼라인 설정: 탐 (KPI 1순위 국가지원 사전지표, 2순위 사장님 손과 대기 시간 줄이기). 정본: docs/슈퍼얼라인.md, KPI 정본: docs/탐_KPI.md
+goal = "KPI 1순위 국가지원 사전지표 달성, 2순위 사장님 손과 대기 시간 줄이기"
 
 [[check]]
-name = "세션 카드에 오케스트레이션 2.0 절"
+name = "세션 카드에 KPI 기본 고려 절"
 type = "file_contains"
 path = 'C:\work\hansunghee7.github.io\docs\세션카드\탐.md'
-text = "오케스트레이션 2.0 기본값"
+text = "KPI 기본 고려"
 
 [[check]]
-name = "역할 노트에 정본 포인터"
+name = "역할 노트에 탐_KPI.md 포인터"
 type = "file_contains"
 path = 'C:\work\hansunghee7.github.io\docs\역할노트-탐.md'
-text = "오케스트레이션 2.0 기본값"
+text = "탐_KPI.md"
 
 [[check]]
-name = "세션 시작 훅이 2.0을 알림"
+name = "탐_KPI.md에 KPI 순위 절"
 type = "file_contains"
-path = 'C:\work\hansunghee7.github.io\.claude\hooks\session-start.sh'
-text = "오케스트레이션 2.0"
+path = 'C:\work\hansunghee7.github.io\docs\탐_KPI.md'
+text = "KPI 순위"
 
 [[check]]
-name = "위임 관문 훅 등록"
-type = "file_contains"
-path = 'C:\work\hansunghee7.github.io\.claude\settings.json'
-text = "delegation-gate.sh"
-
-[[check]]
-name = "위임 관문이 차단 모드로 설정됨 (기본은 경고라 모델에게 안 보임)"
-type = "file_contains"
-path = 'C:\work\hansunghee7.github.io\.claude\settings.json'
-text = "DELEGATION_GATE_MODE"
-
-[[check]]
-name = "컨텍스트 가드 훅 등록"
-type = "file_contains"
-path = 'C:\work\hansunghee7.github.io\.claude\settings.json'
-text = "context-guard.sh"
-
-[[check]]
-name = "정본 문서가 자동 압축 65%를 말함"
-type = "file_contains"
-path = 'C:\work\hansunghee7.github.io\docs\오케스트레이터_일하는_방식.md'
-text = "65%"
+name = "탐_KPI.md 갱신 14일 이내"
+type = "file_age"
+path = 'C:\work\hansunghee7.github.io\docs\탐_KPI.md'
+max_hours = 336
 
 [[check]]
 name = "감시 대장: 타미 실패 라우터"
@@ -59,12 +41,54 @@ type = "schtask"
 task = "simplifier-tami-growth-weekly"
 
 [[check]]
-name = "작업 스케줄러: 타미 명확도 주간"
+name = "보조 점검: 세션 카드에 오케스트레이션 2.0 절"
+type = "file_contains"
+path = 'C:\work\hansunghee7.github.io\docs\세션카드\탐.md'
+text = "오케스트레이션 2.0 기본값"
+
+[[check]]
+name = "보조 점검: 역할 노트에 정본 포인터"
+type = "file_contains"
+path = 'C:\work\hansunghee7.github.io\docs\역할노트-탐.md'
+text = "오케스트레이션 2.0 기본값"
+
+[[check]]
+name = "보조 점검: 세션 시작 훅이 2.0을 알림"
+type = "file_contains"
+path = 'C:\work\hansunghee7.github.io\.claude\hooks\session-start.sh'
+text = "오케스트레이션 2.0"
+
+[[check]]
+name = "보조 점검: 위임 관문 훅 등록"
+type = "file_contains"
+path = 'C:\work\hansunghee7.github.io\.claude\settings.json'
+text = "delegation-gate.sh"
+
+[[check]]
+name = "보조 점검: 위임 관문이 차단 모드로 설정됨 (기본은 경고라 모델에게 안 보임)"
+type = "file_contains"
+path = 'C:\work\hansunghee7.github.io\.claude\settings.json'
+text = "DELEGATION_GATE_MODE"
+
+[[check]]
+name = "보조 점검: 컨텍스트 가드 훅 등록"
+type = "file_contains"
+path = 'C:\work\hansunghee7.github.io\.claude\settings.json'
+text = "context-guard.sh"
+
+[[check]]
+name = "보조 점검: 정본 문서가 자동 압축 65%를 말함"
+type = "file_contains"
+path = 'C:\work\hansunghee7.github.io\docs\오케스트레이터_일하는_방식.md'
+text = "65%"
+
+[[check]]
+name = "보조 점검: 작업 스케줄러: 타미 명확도 주간"
 type = "schtask"
 task = "simplifier-tami-clarity-weekly"
 
 [[check]]
-name = "타미 실패 라우터 상태 파일 갱신"
+name = "보조 점검: 타미 실패 라우터 상태 파일 갱신"
 type = "file_age"
 path = 'C:\work\_ops\tami_router_state.json'
 max_hours = 192
