@@ -47,6 +47,18 @@ def main():
             lines.append("- ⚠ 마지막 측정에 고객수가 비어 있다. 이번 주 안에 `kpi add --customers N`으로 적는다.")
         if age >= jp.KPI_EVERY_DAYS:
             lines.append(f"- ⚠ 마지막 측정이 {age}일 전이다(주 1회 기준 초과).")
+    lines += ["", "## 일일 수집(최근 7일, kpi_daily.jsonl)"]
+    daily = []
+    try:
+        import json as _json
+        with open(os.path.join(os.path.dirname(OUT), "kpi_daily.jsonl"), encoding="utf-8") as _f:
+            daily = [_json.loads(l) for l in _f if l.strip()][-7:]
+    except OSError:
+        pass
+    if not daily:
+        lines.append("- 일일 수집 기록 없음(jitu_kpi_daily.py가 돌지 않았다)")
+    for d in daily:
+        lines.append(f"- {d['date']}: 조회 {d.get('views_24h')}, 방문 {d.get('visits_24h')}(EU 제외), 문의 7일 {d.get('inquiries_7d')}, 고객수 {d.get('customers')}")
     lines += ["", "## 열린 예측(점검일 7일 안 또는 지남)"]
     n = 0
     for r in jp.load("predict"):
