@@ -12,14 +12,18 @@ import sys
 from datetime import datetime, timedelta
 from pathlib import Path
 
-sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if sys.stdout is not None:  # pythonw(스케줄러)는 stdout이 없다. 첫 자동 실행 시험에서 이 줄이 죽었다(10/11)
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 ROOT = Path(__file__).resolve().parents[2]
 OUT = Path("C:/work/_ops/maya_weekly.md")
 NOWIN = getattr(subprocess, "CREATE_NO_WINDOW", 0)
 
 
+PY = sys.executable.replace("pythonw.exe", "python.exe")  # 자식은 콘솔 파이썬으로(출력 포획)
+
+
 def run(args):
-    r = subprocess.run([sys.executable, *args], cwd=ROOT, capture_output=True, text=True, encoding="utf-8",
+    r = subprocess.run([PY, *args], cwd=ROOT, capture_output=True, text=True, encoding="utf-8",
                        errors="replace", creationflags=NOWIN)
     return r.returncode, (r.stdout or "") + (r.stderr or "")
 
@@ -54,7 +58,8 @@ def main():
             "## 한계", "있는가를 확인하며, 제안이 정직한지·이미지 채점이 맞는지는 사람이 샘플로 본다."]
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text("\n".join(body) + "\n", encoding="utf-8", newline="\n")
-    print(f"wrote {OUT} align_rc={rc} old_pending={len(pend)} blanks={blanks}")
+    if sys.stdout is not None:
+        print(f"wrote {OUT} align_rc={rc} old_pending={len(pend)} blanks={blanks}")
     return rc
 
 
