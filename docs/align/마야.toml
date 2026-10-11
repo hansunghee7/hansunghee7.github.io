@@ -39,6 +39,11 @@ type = "file_contains"
 path = '.github/workflows/publish-sns.yml'
 text = "publish_sns_queue.py"
 
+[[check]]
+name = "관문 동작 시험: 이미지 채점 관문이 우회 9가지를 실제로 막는가(pytest)"
+type = "cmd_ok"
+cmd = ["python", "-m", "pytest", "scripts/ops/tests/test_image_gate.py", "-q"]
+
 # 3. 자동 작업이 등록되고 갱신되는가
 [[check]]
 name = "감시 대장: 마야 성과 수집(N14)"

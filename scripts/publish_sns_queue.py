@@ -14,6 +14,7 @@ disallowed_domain으로 거부하기 때문이다(2026-09-24 실측). 업로드 
 
 사용법: AITOEARN_API_KEY=... python scripts/publish_sns_queue.py
 """
+import hashlib
 import json
 import mimetypes
 import os
@@ -143,23 +144,56 @@ def policy_problem(item):
     return image_check_problem(item)
 
 
-def image_check_problem(item):
-    """이미지 선정 조건 8개 채점 기록이 없으면 등록하지 않는다(2026-10-11 마야 사고, 9/19 KPT 7번 재발).
+IMAGE_SOURCES = ("unsplash", "nano-banana", "local-krea2")
 
-    조건 8개는 문서(질문하기_파이프라인.md 5-2절)에만 있어 세션마다 빠졌다. 큐 항목에
-    image_check {"idea": 빅아이디어 한 문장, "score": "7/8", "source": 출처, "file": 채점 파일 경로(저장소 안)}가
-    있어야 한다. 2026-10-12 이후 게시 예정 항목부터 적용한다(이미 컨펌된 이전 항목은 제외).
+
+def image_check_problem(item):
+    """이미지 선정 조건 8개 채점 기록이 없거나 위조·불일치면 등록하지 않는다(2026-10-11 마야 사고, 9/19 KPT 7번 재발).
+
+    조건 8개는 문서(질문하기_파이프라인.md 5-2절)에만 있어 세션마다 빠졌다. 큐 항목의 image_check.file이
+    저장소 안 JSON 채점 파일을 가리켜야 하고, 그 파일이 아래를 모두 만족해야 한다(덱스 독립 검증 10/11 지적 반영).
+      queue_id==항목 id, source 3종 중 하나, idea 10자 이상, conditions 1~8이 0/1, score==합계(6/8 이상, 1번 필수),
+      image가 media_source에 있고 sha256이 실제 파일과 일치. 채점 파일은 `scripts/ops/maya_image_score.py`로 만든다.
+    publishAt이 없거나 형식 오류면 막는다(실패 폐쇄). 2026-10-12 전 게시분은 컨펌이 끝난 항목이라 제외한다.
     """
-    if str(item.get("publishAt") or "")[:10] < "2026-10-12":
+    root = Path(__file__).resolve().parents[1]
+    try:
+        day = datetime.fromisoformat(str(item.get("publishAt")).replace("Z", "+00:00")).date().isoformat()
+    except Exception:
+        return f"publishAt({item.get('publishAt')!r}) 형식 오류: 이미지 채점 관문을 적용할 수 없어 막습니다"
+    if day < "2026-10-12":
         return None
-    chk = item.get("image_check") or {}
-    if not str(chk.get("idea") or "").strip():
-        return "image_check.idea(빅아이디어 한 문장)가 없습니다. 이미지 선정 조건 8개로 채점한 기록이 필요합니다"
-    if not re.fullmatch(r"[0-8]/8", str(chk.get("score") or "")):
-        return "image_check.score가 '7/8' 형식이 아닙니다"
-    f = str(chk.get("file") or "")
-    if not f or not (Path(__file__).resolve().parents[1] / f).exists():
-        return f"image_check.file({f or '없음'})이 저장소에 없습니다. 채점 파일을 저장소에 둡니다"
+    f = str((item.get("image_check") or {}).get("file") or "")
+    if not f:
+        return "image_check.file(이미지 조건 8개 채점 파일)이 없습니다"
+    try:
+        p = (root / f).resolve()
+        p.relative_to(root.resolve())
+        if not p.is_file() or p.suffix != ".json":
+            return f"image_check.file({f})이 저장소 안 JSON 파일이 아닙니다"
+        d = json.loads(p.read_text(encoding="utf-8"))
+        conds = d.get("conditions") or {}
+        vals = [conds.get(str(i)) for i in range(1, 9)]
+        if any(v not in (0, 1) for v in vals):
+            return "채점 파일 conditions 1~8이 모두 0 또는 1이어야 합니다"
+        total = sum(vals)
+        if d.get("queue_id") != item.get("id"):
+            return "채점 파일 queue_id가 이 큐 항목 id와 다릅니다(다른 글의 채점 재사용 금지)"
+        if d.get("source") not in IMAGE_SOURCES:
+            return f"채점 파일 source는 {IMAGE_SOURCES} 중 하나여야 합니다"
+        if len(str(d.get("idea") or "").strip()) < 10:
+            return "채점 파일 idea(빅아이디어 한 문장)가 10자 미만입니다"
+        if d.get("score") != f"{total}/8" or total < 6 or vals[0] != 1:
+            return f"채점 점수 {total}/8 (6/8 이상이고 1번 빅아이디어 조건이 충족돼야 합니다)"
+        img = str(d.get("image") or "")
+        if img not in (item.get("content", {}).get("media_source") or []):
+            return "채점한 이미지가 content.media_source에 없습니다"
+        ip = (root / img).resolve()
+        ip.relative_to(root.resolve())
+        if hashlib.sha256(ip.read_bytes()).hexdigest() != d.get("sha256"):
+            return "채점한 이미지와 실제 게시 이미지가 다릅니다(sha256 불일치)"
+    except Exception as e:
+        return f"이미지 채점 검증 오류(실패 폐쇄): {type(e).__name__}: {e}"
     return None
 
 
