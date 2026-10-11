@@ -495,3 +495,13 @@ path = 'C:/work/shorts-lab/pilot-shorts2/early_snapshots.jsonl'
 max_age_min = 1500
 name = "핏 초기 성과 스냅숏(early_snapshot.py, 작업 스케줄러 핏_초기성과스냅숏 하루 4회)"
 note = "2026-10-11 핏 등록(사장님: 12~24시간 성과 측정이 KPI 관리의 키). 공개 후 50시간 이내 영상이 없는 날은 줄이 안 늘어 오탐 가능(그 경우 로그에 '영상 없음'). 하루 넘게 안 바뀌면 경고. 수동: python shorts-lab/tools/perf/early_snapshot.py"
+
+# ---------- 2026-10-11 마야 주간 점검(슈퍼얼라인) ----------
+[[job]]
+id = "file:maya-weekly-loop"
+severity = "warn"
+kind = "file_age"
+path = 'C:/work/_ops/maya_weekly.md'
+max_age_min = 11520
+name = "마야 주간 점검(maya_weekly.py: 슈퍼얼라인·응답 없는 제안·단계표 빈칸, 작업 스케줄러 마야_주간점검 토 09:00)"
+note = "2026-10-11 마야 등록(사장님 지시: 핏의 슈퍼얼라인을 마야에 적용). 8일 넘게 안 바뀌면 멈춤으로 본다. 수동 실행: python scripts/ops/maya_weekly.py. 첫 자동 실행 10/17 토 09:00, 확인 대기."
