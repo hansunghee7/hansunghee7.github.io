@@ -117,6 +117,24 @@ def gap_list(a):
         print(f"{r['id']} [{state}] {r['date']} {r['what']} | 없던 검사: {r['missing']} | 추가: {r.get('added') or '-'}")
 
 
+# ---------------- KPI 연결 관문(슈퍼얼라인, 2026-10-12) ----------------
+KPI_WORDS = ("고객수", "획득", "리텐션", "유지", "첫 연결", "가입")
+
+
+def kpi_gate(kpi: str, what: str) -> None:
+    """결정 요청과 예측은 지투 KPI(고객수)와 이어져야 기록된다. '해당없음:이유(10자 이상)'는 통과하되 기록에 남는다.
+    실제 저장소(C:/work/_ops/jitu_po)에서만 강제한다(시험용 임시 저장소는 JITU_PO_KPI_GATE=on으로 켠다)."""
+    forced = os.environ.get("JITU_PO_KPI_GATE") == "on"
+    if os.path.abspath(ROOT) != os.path.abspath("C:/work/_ops/jitu_po") and not forced:
+        return
+    k = (kpi or "").strip()
+    if k.startswith("해당없음:") and len(k.split(":", 1)[1].strip()) >= 10:
+        return
+    if len(k) >= 8 and any(w in k for w in KPI_WORDS):
+        return
+    sys.exit(f"[KPI 관문] {what}에는 --kpi가 필요합니다: 지투 KPI(고객수 획득·리텐션)에 어떻게 도움이 되는지 8자 이상(예: '가입 24시간 내 첫 연결을 늘려 고객 획득'). 정말 무관하면 --kpi '해당없음:이유 10자 이상'. 정본 docs/지투_KPI.md")
+
+
 # ---------------- kpi (보강 2) ----------------
 def kpi_add(a):
     rows = load("kpi")
@@ -173,9 +191,10 @@ def fb_list(a):
 
 # ---------------- predict (보강 1) ----------------
 def pr_add(a):
+    kpi_gate(a.kpi, "예측")
     rows = load("predict")
     r = {"id": next_id(rows, "P"), "date": str(today()), "change": a.change, "expect": a.expect, "metric": a.metric,
-         "check_on": a.check_on, "actual": "", "verdict": "", "lesson": ""}
+         "check_on": a.check_on, "actual": "", "verdict": "", "lesson": "", "kpi": a.kpi or ""}
     rows.append(r)
     save("predict", rows)
     print(f"{r['id']} 예측 기록: 점검일 {a.check_on}")
@@ -224,9 +243,10 @@ def similar(a, b, floor=0.6, minshared=4):
 
 
 def ask_add(a):
+    kpi_gate(a.kpi, "결정 요청")
     rows = load("ask")
     r = {"id": next_id(rows, "A"), "date": str(today()), "created": a.created or now_iso(), "text": a.text, "rec": a.rec,
-         "default": a.default, "due": a.due or "", "answer": "", "answered": ""}
+         "default": a.default, "due": a.due or "", "answer": "", "answered": "", "kpi": a.kpi or ""}
     rows.append(r)
     save("ask", rows)
     print(f"{r['id']} 결정 요청 기록: 추천 [{a.rec}] / 답이 없으면 [{a.default}]" + (f" / 마감 {a.due}" if a.due else ""))
@@ -411,7 +431,8 @@ def build():
 
     r = sub.add_parser("predict").add_subparsers(dest="sub", required=True)
     x = r.add_parser("add"); x.add_argument("--change", required=True); x.add_argument("--expect", required=True)
-    x.add_argument("--metric", required=True); x.add_argument("--check-on", required=True, dest="check_on"); x.set_defaults(fn=pr_add)
+    x.add_argument("--metric", required=True); x.add_argument("--check-on", required=True, dest="check_on")
+    x.add_argument("--kpi", default="", help="지투 KPI(고객수)와의 연결 한 줄. 정말 무관하면 '해당없음:이유'"); x.set_defaults(fn=pr_add)
     x = r.add_parser("check"); x.add_argument("id"); x.add_argument("--actual", required=True)
     x.add_argument("--verdict", required=True, choices=["적중", "빗나감", "판정불가"]); x.add_argument("--lesson", default="")
     x.set_defaults(fn=pr_check)
@@ -420,7 +441,8 @@ def build():
     q = sub.add_parser("ask").add_subparsers(dest="sub", required=True)
     x = q.add_parser("add"); x.add_argument("--text", required=True, help="무엇을 정해 달라는지 한 줄")
     x.add_argument("--rec", required=True, help="추천과 한 줄 이유"); x.add_argument("--default", required=True, help="답이 없을 때 어떻게 되는지(기본값)")
-    x.add_argument("--due", default="", help="마감 YYYY-MM-DD(선택)"); x.add_argument("--created", default=""); x.set_defaults(fn=ask_add)
+    x.add_argument("--due", default="", help="마감 YYYY-MM-DD(선택)"); x.add_argument("--created", default="")
+    x.add_argument("--kpi", default="", help="지투 KPI(고객수)와의 연결 한 줄. 정말 무관하면 '해당없음:이유'"); x.set_defaults(fn=ask_add)
     x = q.add_parser("find"); x.add_argument("words", nargs="+"); x.set_defaults(fn=ask_find)
     x = q.add_parser("answer"); x.add_argument("id"); x.add_argument("--answer", required=True); x.set_defaults(fn=ask_answer)
     x = q.add_parser("list"); x.add_argument("--open", action="store_true"); x.set_defaults(fn=ask_list)

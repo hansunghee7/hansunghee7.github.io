@@ -505,3 +505,13 @@ path = 'C:/work/_ops/maya_weekly.md'
 max_age_min = 11520
 name = "마야 주간 점검(maya_weekly.py: 슈퍼얼라인·응답 없는 제안·단계표 빈칸, 작업 스케줄러 마야_주간점검 토 09:00)"
 note = "2026-10-11 마야 등록(사장님 지시: 핏의 슈퍼얼라인을 마야에 적용). 8일 넘게 안 바뀌면 멈춤으로 본다. 수동 실행: python scripts/ops/maya_weekly.py. 첫 자동 실행 10/17 토 09:00, 확인 대기."
+
+# ---------- 2026-10-12 지투 주간 KPI 루프(슈퍼얼라인) ----------
+[[job]]
+id = "file:jitu-weekly-kpi"
+severity = "warn"
+kind = "file_age"
+path = 'C:/work/_ops/jitu_po/주간_KPI.md'
+max_age_min = 11520
+name = "지투 주간 KPI 루프(jitu_weekly_loop.py: 고객수 추이·열린 예측·슈퍼얼라인, 작업 스케줄러 지투_주간KPI 월 08:50)"
+note = "2026-10-12 지투 등록(사장님 지정 KPI=고객수). 8일 넘게 안 바뀌면 멈춤으로 본다. 수동 실행: python scripts/ops/jitu_weekly_loop.py. 첫 자동 실행 결과는 2026-10-19 월 08:50 이후 확인."
