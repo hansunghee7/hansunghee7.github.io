@@ -86,3 +86,19 @@ name = "KPI 정본 문서"
 type = "file_contains"
 path = 'docs/지투_KPI.md'
 text = "고객수"
+
+[[check]]
+name = "일일 KPI 수집 스케줄러: 지투_일일KPI"
+type = "schtask"
+task = "지투_일일KPI"
+
+[[check]]
+name = "감시 대장: 지투 일일 KPI"
+type = "jobs_id"
+id = "file:jitu-kpi-daily"
+
+[[check]]
+name = "일일 수집 결과 갱신"
+type = "file_age"
+path = 'C:/work/_ops/jitu_po/kpi_daily.jsonl'
+max_hours = 60
