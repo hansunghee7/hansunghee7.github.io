@@ -1,6 +1,6 @@
 {
   "env": {
-    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "60",
+    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "65",
     "CONTEXT_GUARD_MODE": "block"
   },
   "hooks": {
