@@ -1,20 +1,13 @@
 {
-  "updated_at": "2026-10-11T14:16:53.793191+00:00",
+  "updated_at": "2026-10-11T20:00:45.974555+00:00",
   "range": "last_30_days",
   "totals": {
     "sessions": 346,
-    "activeUsers": 299,
-    "newUsers": 295,
+    "activeUsers": 298,
+    "newUsers": 294,
     "returningUsers": 4
   },
   "daily": [
-    {
-      "date": "2026-09-11",
-      "sessions": 1,
-      "activeUsers": 1,
-      "newUsers": 1,
-      "returningUsers": 0
-    },
     {
       "date": "2026-09-12",
       "sessions": 1,
@@ -220,7 +213,7 @@
     },
     {
       "date": "2026-10-11",
-      "sessions": 1,
+      "sessions": 2,
       "activeUsers": 1,
       "newUsers": 1,
       "returningUsers": 0
@@ -228,9 +221,9 @@
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 114,
+    "home": 113,
     "log_home": 0,
-    "individual_post": 219,
+    "individual_post": 220,
     "other": 13
   },
   "top_sources": [
@@ -459,7 +452,7 @@
     {
       "path": "/logs/618",
       "title": "/logs/618",
-      "sessions": 7
+      "sessions": 8
     },
     {
       "path": "/logs/636",
@@ -543,7 +536,7 @@
       "path": "/logs/618/",
       "title": "AI가 못 뺏는 능력 하나",
       "uniqueViews": 8,
-      "views": 9
+      "views": 10
     },
     {
       "path": "/logs/2/",
@@ -596,7 +589,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 356,
+    "total_desktop_sessions": 357,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
@@ -630,14 +623,14 @@
         "sessions": 12
       },
       {
-        "resolution": "2000x2000",
-        "width": 2000,
+        "resolution": "1536x864",
+        "width": 1536,
         "sessions": 11
       },
       {
-        "resolution": "1536x864",
-        "width": 1536,
-        "sessions": 10
+        "resolution": "2000x2000",
+        "width": 2000,
+        "sessions": 11
       },
       {
         "resolution": "1512x982",
