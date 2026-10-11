@@ -23,16 +23,16 @@
    "post": "637",
    "group": "B",
    "title": "팀이 AI로 쓴 보고서, 대표는 왜 결론을 못 찾을까",
-   "planned": "2026-10-13",
-   "note": "첫 문장: 독자에게 던지는 일반 질문(B)",
+   "planned": "2026-10-15",
+   "note": "첫 문장: 독자에게 던지는 일반 질문(B) | 10/13→10/15 이동(사장님 10/12 추천대로)",
    "snaps": {}
   },
   {
    "post": "638",
    "group": "B",
    "title": "저성과자 면담, 대표는 무엇을 준비해야 할까요",
-   "planned": "2026-10-15",
-   "note": "첫 문장: 독자에게 던지는 일반 질문(B)",
+   "planned": "2026-10-20",
+   "note": "첫 문장: 독자에게 던지는 일반 질문(B) | 10/15→10/20 이동(637 이동에 따른 연쇄)",
    "snaps": {}
   },
   {
@@ -45,9 +45,11 @@
    "attrs": {
     "image_source": "nano-banana",
     "image_score": "7/8",
-    "has_link": false,
-    "hypotheses": "H2,H3"
-   }
+    "has_link": true,
+    "hypotheses": "H2,H3",
+    "link_utm": "new_narr_malgwi"
+   },
+   "published_at": "2026-10-13T09:00:00+09:00"
   }
  ]
 }
