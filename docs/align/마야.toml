@@ -91,6 +91,23 @@ type = "file_age"
 path = 'assets/data/post_reactions.json'
 max_hours = 192
 
+# 4-3. 환경요건 R1~R7(docs/마야_KPI_환경요건.md): 작동하는가
+[[check]]
+name = "R2 측정 기한: 게시 12시간 값이 기한을 넘겨 비어 있는 글이 없다"
+type = "cmd_ok"
+cmd = ["python", "scripts/ops/maya_measure_due.py"]
+
+[[check]]
+name = "R5 판정 장치: exp report가 실제로 돈다"
+type = "cmd_ok"
+cmd = ["python", "scripts/ops/maya_write.py", "exp", "report"]
+
+[[check]]
+name = "환경요건 정본이 있다"
+type = "file_contains"
+path = 'docs/마야_KPI_환경요건.md'
+text = "R3. 글별 홈페이지 유입"
+
 # 5. 문서 일관성
 [[check]]
 name = "마야 KPI 문서에 측정 장부 포인터"

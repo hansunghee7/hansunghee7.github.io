@@ -352,7 +352,7 @@ def exp_report(path=None):
     lines = ["# 링크드인 A/B 실험 점검", "", "사전 약속: " + d.get("rule", EXP_RULE)["text"], ""]
     for p in sorted(d["posts"], key=lambda x: x["planned"]):
         s12, s24 = p["snaps"].get("12h"), p["snaps"].get("24h")
-        f = lambda s: "미측정" if not s else f"좋아요 {s['likes']}·노출 {s['impressions']}"
+        f = lambda s: "미측정" if not s else ("측정 못함(사유 기록)" if s.get("missed") else f"좋아요 {s['likes']}·노출 {s['impressions']}")
         lines.append(f"- [{p['group']}] {p['planned']} {p['post']} {p['title'][:22]} | 12h {f(s12)} | 24h {f(s24)}")
     v = exp_verdict(d["posts"], d.get("rule"))
     lines += ["", f"판정: {v['verdict']}"]
