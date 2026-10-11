@@ -1,0 +1,147 @@
+{
+ "collected": "2026-10-11",
+ "source": "https://www.linkedin.com/in/simplifier/recent-activity/all/ (사장님 크롬, 페이지 본문 '노출수' 분할 파싱, 20건)",
+ "note": "좋아요는 각 글 끝 숫자열의 첫 수를 읽은 값(반응 합계 추정), 댓글은 둘째 수일 때만 적음. 게시 후 경과는 '3일/1주/2개월' 같은 표시 기준이라 12시간 값이 아님. 제목은 첫 줄 요약.",
+ "posts": [
+  {
+   "age": "3일",
+   "title": "AI 데모보다 지금 더 중요해진 것",
+   "impressions": 595,
+   "likes": 6,
+   "comments": null
+  },
+  {
+   "age": "5일",
+   "title": "AI에게 맡겼는데 왜 더 바빠졌을까",
+   "impressions": 825,
+   "likes": 6,
+   "comments": null
+  },
+  {
+   "age": "1주",
+   "title": "클로드코드 지투와 서비스 로고를 함께 만든 이야기",
+   "impressions": 1776,
+   "likes": 9,
+   "comments": null
+  },
+  {
+   "age": "1주",
+   "title": "주니어 PM은 왜 '뭘 풀어야 하죠?' 앞에서",
+   "impressions": 361,
+   "likes": 4,
+   "comments": null
+  },
+  {
+   "age": "1주",
+   "title": "우리 팀만 말하는 직원 어떻게 해야하나요?",
+   "impressions": 1268,
+   "likes": 20,
+   "comments": 1
+  },
+  {
+   "age": "1주",
+   "title": "바쁜 하루가 끝났는데 남은 게 없다면",
+   "impressions": 960,
+   "likes": 22,
+   "comments": 1
+  },
+  {
+   "age": "2주",
+   "title": "토큰을 아끼려다 기술이 늘었다",
+   "impressions": 3828,
+   "likes": 29,
+   "comments": 2
+  },
+  {
+   "age": "2주",
+   "title": "주니어 PM은 왜 스스로 문제를 정의하지 못할까",
+   "impressions": 4530,
+   "likes": 64,
+   "comments": null
+  },
+  {
+   "age": "2주",
+   "title": "팀이 커질수록 대표만 모르는 것",
+   "impressions": 2141,
+   "likes": 24,
+   "comments": 2
+  },
+  {
+   "age": "3주",
+   "title": "AI가 우선순위까지 대신 정해줄 수 있을까",
+   "impressions": 742,
+   "likes": 18,
+   "comments": null
+  },
+  {
+   "age": "1개월",
+   "title": "릴스 크리에이터가 된 사연",
+   "impressions": 2117,
+   "likes": 24,
+   "comments": 5
+  },
+  {
+   "age": "1개월",
+   "title": "유튜브 프로젝트를 시작했습니다",
+   "impressions": 3304,
+   "likes": 47,
+   "comments": 8
+  },
+  {
+   "age": "1개월",
+   "title": "내 인생의 돛, 내가 잡고 있나?",
+   "impressions": 2022,
+   "likes": 35,
+   "comments": 10
+  },
+  {
+   "age": "1개월",
+   "title": "UX의 언어들 Spin off #",
+   "impressions": 1797,
+   "likes": 22,
+   "comments": null
+  },
+  {
+   "age": "1개월",
+   "title": "줄서서 먹는 가게의 사장은 뭐가 다른가",
+   "impressions": 11317,
+   "likes": 89,
+   "comments": 14
+  },
+  {
+   "age": "1개월",
+   "title": "'UX의 언어들' Spin Off",
+   "impressions": 2420,
+   "likes": 36,
+   "comments": null
+  },
+  {
+   "age": "2개월",
+   "title": "오디세이, 매우 사적인 관람평",
+   "impressions": 3115,
+   "likes": 12,
+   "comments": 4
+  },
+  {
+   "age": "2개월",
+   "title": "회의실에서 가장 목소리가 큰 사람",
+   "impressions": 4244,
+   "likes": 40,
+   "comments": 4
+  },
+  {
+   "age": "2개월",
+   "title": "놀라운 선물을 받았습니다",
+   "impressions": 2610,
+   "likes": 74,
+   "comments": 12
+  },
+  {
+   "age": "2개월",
+   "title": "굿바이 히가시노",
+   "impressions": 3285,
+   "likes": 66,
+   "comments": 20
+  }
+ ]
+}
