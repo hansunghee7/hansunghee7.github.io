@@ -29,25 +29,25 @@ def env(monkeypatch, tmp_path):
 
 def test_ratio_below_threshold_is_silent(tmp_path, monkeypatch):
     env(monkeypatch, tmp_path)
-    p = make(tmp_path, [asst(590000)])
+    p = make(tmp_path, [asst(490000)])
     assert cg.evaluate({"transcript_path": p, "session_id": "s"}) == []
 
 
-def test_ratio_at_60_warns_with_guidance(tmp_path, monkeypatch):
+def test_ratio_at_50_warns_with_guidance(tmp_path, monkeypatch):
     env(monkeypatch, tmp_path)
-    p = make(tmp_path, [asst(600000)])
+    p = make(tmp_path, [asst(500000)])
     out = cg.evaluate({"transcript_path": p, "session_id": "s"})
-    assert len(out) == 1 and "60%" in out[0] and "새 일은 시작하지 않음" in out[0]
+    assert len(out) == 1 and "50%" in out[0] and "새 일은 시작하지 않음" in out[0]
 
 
 def test_same_step_only_once_then_next_step(tmp_path, monkeypatch):
     env(monkeypatch, tmp_path)
     d = {"session_id": "s"}
-    d["transcript_path"] = make(tmp_path, [asst(620000)])
+    d["transcript_path"] = make(tmp_path, [asst(520000)])
     assert cg.evaluate(d)
-    assert cg.evaluate(d) == []  # 같은 60% 단계 중복 없음
-    d["transcript_path"] = make(tmp_path, [asst(660000)])
-    assert cg.evaluate(d)  # 65% 단계
+    assert cg.evaluate(d) == []  # 같은 50% 단계 중복 없음
+    d["transcript_path"] = make(tmp_path, [asst(560000)])
+    assert cg.evaluate(d)  # 55% 단계
     d["session_id"] = "other"
     assert cg.evaluate(d)  # 세션별 독립
 
@@ -111,3 +111,16 @@ def test_command_words_do_not_count_as_delegation():
     assert cg.is_delegation("Bash", {"command": "ls", "run_in_background": True})
     assert cg.is_delegation("Agent", {}) and cg.is_delegation("SendMessage", {})
     assert not cg.is_delegation("Monitor", {})
+
+
+def test_boundary_49_percent_is_silent(tmp_path, monkeypatch):
+    env(monkeypatch, tmp_path)
+    p = make(tmp_path, [asst(490000)])
+    assert cg.evaluate({"transcript_path": p, "session_id": "s"}) == []
+
+
+def test_boundary_50_percent_warns(tmp_path, monkeypatch):
+    env(monkeypatch, tmp_path)
+    p = make(tmp_path, [asst(500000)])
+    out = cg.evaluate({"transcript_path": p, "session_id": "s"})
+    assert len(out) == 1 and "50%" in out[0]

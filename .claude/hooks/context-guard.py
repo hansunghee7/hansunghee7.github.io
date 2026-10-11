@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Stop 훅 `컨텍스트 가드`: 컨텍스트 사용 비율이 60% 이상이면 압축 준비를 안내한다(공정 카드 공용-오케스트레이션 #4).
+"""Stop 훅 `컨텍스트 가드`: 컨텍스트 사용 비율이 50% 이상이면 압축 준비를 안내한다(공정 카드 공용-오케스트레이션 #4).
 
 컨텍스트 사용량 = 전사의 마지막 assistant 메시지 usage (input + cache_read + cache_creation 토큰).
-비율 = 사용량 / CONTEXT_WINDOW_TOKENS(기본 1000000). 60% 이상에서 5% 단계마다 세션당 한 번만 안내한다.
+비율 = 사용량 / CONTEXT_WINDOW_TOKENS(기본 1000000). 50% 이상에서 5% 단계마다 세션당 한 번만 안내한다.
 같은 시점에 최근 30회 도구 호출 중 25회 이상이 직접 손일(Bash·PowerShell·Edit·Write·MultiEdit)이고 위임 기록이 없으면 한 줄을 더 낸다.
 환경변수: CONTEXT_WINDOW_TOKENS, CONTEXT_GUARD_STATE_DIR(기본 C:/work/_ops/context_guard, 세션별 파일), CONTEXT_GUARD_TAIL_BYTES(기본 3145728, 전사 끝에서 이만큼만 읽음),
 CONTEXT_GUARD_MODE(warn 기본 | block: 종료 코드 2로 에이전트 눈에 보이게 함).
@@ -16,7 +16,7 @@ import sys
 DEFAULT_STATE_DIR = "C:/work/_ops/context_guard"
 HAND_TOOLS = {"Bash", "PowerShell", "Edit", "Write", "MultiEdit"}
 DEFAULT_TAIL_BYTES = 3145728
-START_RATIO = 0.60
+START_RATIO = 0.50
 STEP = 5
 WINDOW = 30
 HAND_MIN = 25
@@ -88,7 +88,7 @@ def window_size():
 
 
 def level_of(ratio):
-    """60% 이상이면 5% 단계 값(60, 65, ...), 아니면 0."""
+    """50% 이상이면 5% 단계 값(50, 55, 60, ...), 아니면 0."""
     if ratio < START_RATIO:
         return 0
     return int(round(ratio * 100, 6) // STEP * STEP)
