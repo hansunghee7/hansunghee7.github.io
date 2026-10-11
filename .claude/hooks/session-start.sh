@@ -132,11 +132,14 @@ if [ -d docs ]; then
   fi
 fi
 
-# 2026-10-03 Carvit Pass 1단계 시범(사장님 결정: 10/10 실측 판정 뒤 MCP 전환, 조기 도입은 사장님 선택): 세션 시작 카드를 먼저 읽게 한다.
-# 문서에만 두면 세션이 놓치므로 훅이 매번 경로를 보여 준다(CLAUDE#4e7b).
+# 세션 시작 카드(정식 도입 2026-10-11, 사장님 결정). 끄기: 파일 C:/work/_ops/session_card_off 를 만들면 카드 줄을 출력하지 않는다(롤백: docs/세션카드/롤백.md).
+# 문서에만 두면 세션이 놓치므로 훅이 매번 경로를 보여 준다(CLAUDE#4e7b). 시각, on/off, 저장소 이름만 card_reads.jsonl에 남긴다.
 if [ -d docs/세션카드 ]; then
-  echo "🪪 세션 시작 카드(시범 10/3~10/10): 인수인계보다 먼저 docs/세션카드/<내 이름>.md 를 읽는다. 있는 카드: $(ls docs/세션카드 2>/dev/null | sed 's/\.md$//' | tr '
-' ' ')"
+  if [ -f C:/work/_ops/session_card_off ]; then _card=off; else _card=on; fi
+  if [ "$_card" = on ]; then
+    echo "🪪 세션 시작 카드(정식 도입 2026-10-11): 인수인계보다 먼저 docs/세션카드/<내 이름>.md 를 읽는다. 있는 카드: $(ls docs/세션카드 2>/dev/null | sed 's/\.md$//' | grep -v -e '^롤백$' -e '^README$' | tr '\n' ' ')"
+  fi
+  { printf '{"ts":"%s","card":"%s","repo":"%s"}\n' "$(date +%Y-%m-%dT%H:%M:%S)" "$_card" "$(basename "$PWD")" >> C:/work/_ops/card_reads.jsonl; } 2>/dev/null || true
 fi
 
 # 감시가 찾은 문제(꺼진 서비스, 실패한 주기 작업)를 세션 시작 때 보여 준다. 상태 파일이 없으면 조용히 통과.
