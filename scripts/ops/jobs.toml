@@ -466,3 +466,13 @@ max_age_min = 11520
 severity = "warn"
 name = "타미 맑은 정신 지표 주 1회 점검(clarity_metrics.py 수동 실행, 산출 clarity.csv 나이 8일 기준)"
 note = "2026-10-11 탐 등록(N93). 실행 자동화(스케줄러)는 아직 없음. 1회 실행 종료 코드 0·clarity.csv 1250행 갱신 확인. 8일 넘게 안 갱신되면 주의"
+
+[[job]]
+id = "fn:tami-failure-router"
+kind = "cmd"
+cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\tami_failure_router.py']
+every_min = 10
+timeout = 120
+severity = "warn"
+name = "타미 실패 라우팅(solar-bible 결과 파일의 실패 신호를 감지해 탐 우편함으로 알리고 Vertex를 권장, tami_failure_router.py)"
+note = "2026-10-11 탐 등록(사장님 10/11: 타미 실패를 라우팅 장치로 활용). 처리 기록 C:/work/_ops/tami_router_state.json, 실패 기록 tami_failures.jsonl. 첫 실행은 기존 결과를 알림 없이 처리 완료로만 기록"
