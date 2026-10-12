@@ -28,6 +28,15 @@ if tool != "Agent":
 ti = data.get("tool_input") or {}
 kind = str(ti.get("subagent_type") or "general-purpose")
 prompt = str(ti.get("prompt") or "")
+if "[리서치: 슈퍼" in prompt:
+    # 슈퍼리서치 5단계 체크(사장님 2026-10-12): 비티·덱스 자문 단계 누락 방지. 정본 docs/AI_ROUTING_POLICY.md '슈퍼 5단계 체크'
+    chk = [l for l in prompt.splitlines() if "[슈퍼체크:" in l]
+    need = ("제미나이", "링크대조", "비티", "덱스", "사장님보고")
+    if not chk or any(w not in chk[0] for w in need):
+        sys.stderr.write(
+            "[리서치 관문] 슈퍼리서치 지시서에는 5단계 체크 줄이 필요합니다(정본 docs/AI_ROUTING_POLICY.md '슈퍼 5단계 체크'). "
+            "예: [슈퍼체크: 제미나이·링크대조·비티·덱스·사장님보고]")
+        sys.exit(2)
 if "[제미나이 불가:" in prompt:
     sys.exit(0)
 research = re.search(r"리서치|벤치마킹|웹\s*조사|자료\s*수집|출처|research|benchmark", prompt, re.I)

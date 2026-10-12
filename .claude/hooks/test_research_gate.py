@@ -18,6 +18,10 @@ cases = [
     ("저장소판 vertex_research.py도 통과", ("Bash", "", "python scripts/ops/vertex_research.py --topic x a b"), 0),
     ("Agent 안내에 정본 순서(검색 전용 키)", ("Agent", "collector", "자료 수집", "검색 전용 키"), 2),
     ("Bash 안내에 정본 순서(검색 전용 키)", ("Bash", "", "python -c \"g='googleSearch'\"", "검색 전용 키"), 2),
+    ("슈퍼+체크 줄 있으면 통과", ("Agent", "explorer", "[리서치: 슈퍼, 근거: 사장님 2026-10-12]\n[슈퍼체크: 제미나이·링크대조·비티·덱스·사장님보고]"), 0),
+    ("슈퍼인데 체크 없으면 차단", ("Agent", "explorer", "[리서치: 슈퍼, 근거: 사장님 2026-10-12] 조사", "슈퍼체크"), 2),
+    ("슈퍼 체크 줄에 단어 누락이면 차단", ("Agent", "explorer", "[리서치: 슈퍼, 근거: x]\n[슈퍼체크: 제미나이·링크대조·비티]"), 2),
+    ("일반 리서치는 영향 없음", ("Agent", "explorer", "[리서치: 일반] 가격 조회"), 0),
     ("안내에 옛 문구(무료 체험 크레딧) 없음", ("Agent", "collector", "자료 수집", "무료 체험 크레딧"), -1),
 ]
 bad = [n for n, a, want in cases if run(*a) != want]
