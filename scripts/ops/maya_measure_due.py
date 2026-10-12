@@ -5,7 +5,9 @@
   python scripts/ops/maya_measure_due.py set <글> key=value ...   글의 속성·상태 기록(published_at, status, attrs.image_source 등)
   python scripts/ops/maya_measure_due.py miss <글> "사유"          12시간 값을 못 쟀다고 남긴다(판정에서는 빠지고 기록은 남음)
 기한: published_at(KST ISO)이 있으면 +12시간, 없으면 planned 날짜 09:00 KST +12시간. status가 cancelled인 글은 제외한다.
+  일일 읽기 파일(C:/work/_ops/maya_linkedin/)에 기한 이후 10시간 안의 값이 있으면 측정으로 본다(`apply`가 장부에 기록). 기한+10시간까지 값이 없으면 '기한 지남'.
 """
+import glob
 import json
 import sys
 from datetime import datetime, timedelta, timezone
@@ -14,6 +16,7 @@ from pathlib import Path
 if sys.stdout is not None:
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 KST = timezone(timedelta(hours=9))
+DAILY = "C:/work/_ops/maya_linkedin/*.json"  # 예약 세션 maya-linkedin-daily-read(매일 21:30)가 쓰는 글별 성과 읽기 결과
 PATH = Path(__file__).resolve().parents[2] / "assets" / "data" / "linkedin_experiment.json"
 
 
@@ -32,6 +35,24 @@ def due_at(p):
     return day + timedelta(hours=12)
 
 
+def daily_match(p, due):
+    """기한(due) 이후 10시간 안에 읽은 일일 파일에서 이 글을 찾는다. 찾으면 (likes, impressions, 읽은 시각)."""
+    key = p["title"][:10]
+    for f in sorted(glob.glob(DAILY)):
+        try:
+            d = json.loads(Path(f).read_text(encoding="utf-8"))
+            at = datetime.fromisoformat(d["collected"]).astimezone(KST)
+        except Exception:
+            continue
+        if not (due <= at <= due + timedelta(hours=10)):
+            continue
+        for q in d.get("posts") or []:
+            if key and key in (q.get("title") or ""):
+                if q.get("likes") is not None and q.get("impressions") is not None:
+                    return q["likes"], q["impressions"], at
+    return None
+
+
 def status(now=None):
     now = now or datetime.now(KST)
     rows = []
@@ -42,7 +63,9 @@ def status(now=None):
         d = due_at(p)
         if s:
             state = "기록(미측정 사유)" if s.get("missed") else "측정 완료"
-        elif now >= d:
+        elif daily_match(p, d):
+            state = "일일 읽기로 측정(apply 필요)"
+        elif now >= d + timedelta(hours=10):
             state = "기한 지남"
         else:
             state = "대기"
@@ -64,6 +87,22 @@ def main():
             tgt[last] = {"true": True, "false": False}.get(v, v)
         save(d)
         print("ok", json.dumps(p, ensure_ascii=False)[:300])
+        return 0
+    if a and a[0] == "apply":
+        d = load()
+        n = 0
+        for p in d["posts"]:
+            if p.get("status") == "cancelled" or (p.get("snaps") or {}).get("12h"):
+                continue
+            m = daily_match(p, due_at(p))
+            if m:
+                p.setdefault("snaps", {})["12h"] = {"likes": m[0], "impressions": m[1], "comments": None,
+                                                    "at": m[2].isoformat(timespec="minutes"),
+                                                    "note": "일일 읽기(21:30) 값, 기한 이후 10시간 안"}
+                n += 1
+        if n:
+            save(d)
+        print(f"apply: {n}건 기록")
         return 0
     if a and a[0] == "miss":
         d = load()

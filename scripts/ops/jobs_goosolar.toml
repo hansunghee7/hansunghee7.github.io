@@ -273,3 +273,11 @@ path = "/home/goosloar/ops/checks/simplifier-posts.ok"
 max_age_min = 780
 name = "심플리파이어 개인 계정 게시물 반응(구PC cron 매일 10:20·20:20 KST, read_tracked_posts.py)"
 note = "2026-10-03 탐 N108(핏 요청, 레트로 실사판 1호). 구PC SNS 크롬 9227에서 track_posts.json의 게시물(인스타 릴스·링크드인 등) 반응 수를 읽어 carvit-insight-data data/simplifier_posts.json에 쌓음. 등록 전 1회 실행 push rc 0(인스타 좋아요 1, 링크드인 노출 90). 첫 자동 실행 10/3 20:20 확인 필요. 원본 scripts/ops/goosolar/workshop/read_tracked_posts.py"
+
+[[job]]
+id = "cron:maya-linkedin"
+kind = "file_age"
+path = "/home/goosloar/ops/checks/maya-linkedin.ok"
+max_age_min = 1560
+name = "마야 링크드인 글별 노출·좋아요(구PC cron 매일 21:05 KST, read_maya_linkedin.py)"
+note = "2026-10-12 마야(사장님 지시: 구PC 무인 프로필로 매일 자동 읽기). 구PC SNS 크롬 9227(링크드인 로그인됨)에서 내 활동 페이지를 하루 1번 열어 글 16개의 노출·좋아요를 ~/workshop/out/maya/latest.json에 남김. 등록 전 1회 실행 16/16 글 노출 읽음(토큰 29·주니어PM 64가 화면 수치와 일치). 원본 scripts/ops/goosolar/workshop/read_maya_linkedin.py. 첫 자동 실행 10/12 21:05 KST 확인 필요" 
