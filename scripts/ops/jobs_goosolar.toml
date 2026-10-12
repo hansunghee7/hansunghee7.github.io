@@ -281,3 +281,11 @@ path = "/home/goosloar/ops/checks/maya-linkedin.ok"
 max_age_min = 1560
 name = "마야 링크드인 글별 노출·좋아요(구PC cron 매일 21:05 KST, read_maya_linkedin.py)"
 note = "2026-10-12 마야(사장님 지시: 구PC 무인 프로필로 매일 자동 읽기). 구PC SNS 크롬 9227(링크드인 로그인됨)에서 내 활동 페이지를 하루 1번 열어 글 16개의 노출·좋아요를 ~/workshop/out/maya/latest.json에 남김. 등록 전 1회 실행 16/16 글 노출 읽음(토큰 29·주니어PM 64가 화면 수치와 일치). 원본 scripts/ops/goosolar/workshop/read_maya_linkedin.py. 첫 자동 실행 10/12 21:05 KST 확인 필요" 
+
+[[job]]
+id = "cron:maya-remember"
+kind = "file_age"
+path = "/home/goosloar/ops/checks/maya-remember.ok"
+max_age_min = 1560
+name = "마야 리멤버 커넥트 글별 좋아요·댓글(구PC cron 매일 21:10 KST, read_maya_remember.py)"
+note = "2026-10-12 마야(N14). 구PC SNS 크롬 9227에서 내 게시물 화면을 하루 1번 읽음. 등록 전 1회 실행 20글 읽음. 원본 scripts/ops/goosolar/workshop/read_maya_remember.py. 첫 자동 실행 10/13 21:10 KST 확인 필요"

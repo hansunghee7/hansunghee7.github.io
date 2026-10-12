@@ -37,6 +37,13 @@ def main():
     (OUT / name).write_text(json.dumps(rec, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
     (OUT.parent / "maya_linkedin_latest.json").write_text(json.dumps(rec, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
     print("ok", name, len(rec["posts"]), "글")
+    # 리멤버(좋아요·댓글)는 같은 구PC 읽기의 부산물이라 실패해도 링크드인 결과는 유지한다
+    r2 = subprocess.run(["ssh", "-o", "ConnectTimeout=20", "goosolar", "cat ~/workshop/out/maya/remember_latest.json"],
+                        capture_output=True, text=True, encoding="utf-8", timeout=60,
+                        creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
+    if r2.returncode == 0 and r2.stdout.strip():
+        (OUT.parent / "maya_remember_latest.json").write_text(r2.stdout, encoding="utf-8", newline="\n")
+        print("ok remember", len(json.loads(r2.stdout)["posts"]), "글")
     return 0
 
 
