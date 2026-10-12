@@ -1,20 +1,13 @@
 {
-  "updated_at": "2026-10-12T07:20:15.379905+00:00",
+  "updated_at": "2026-10-12T16:53:41.741973+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 353,
-    "activeUsers": 305,
+    "sessions": 355,
+    "activeUsers": 306,
     "newUsers": 301,
-    "returningUsers": 4
+    "returningUsers": 5
   },
   "daily": [
-    {
-      "date": "2026-09-12",
-      "sessions": 1,
-      "activeUsers": 1,
-      "newUsers": 1,
-      "returningUsers": 0
-    },
     {
       "date": "2026-09-13",
       "sessions": 3,
@@ -220,15 +213,15 @@
     },
     {
       "date": "2026-10-12",
-      "sessions": 7,
-      "activeUsers": 7,
-      "newUsers": 7,
-      "returningUsers": 0
+      "sessions": 10,
+      "activeUsers": 9,
+      "newUsers": 8,
+      "returningUsers": 1
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 119,
+    "home": 122,
     "log_home": 0,
     "individual_post": 224,
     "other": 13
@@ -244,7 +237,7 @@
     },
     {
       "source": "google",
-      "sessions": 18
+      "sessions": 19
     },
     {
       "source": "m.search.naver.com",
@@ -259,16 +252,16 @@
       "sessions": 14
     },
     {
+      "source": "(not set)",
+      "sessions": 7
+    },
+    {
       "source": "daum",
       "sessions": 7
     },
     {
       "source": "maru-connect.webflow.io",
       "sessions": 7
-    },
-    {
-      "source": "(not set)",
-      "sessions": 5
     },
     {
       "source": "blog.naver.com",
@@ -312,7 +305,7 @@
       "source": "google",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 18
+      "sessions": 19
     },
     {
       "source": "m.search.naver.com",
@@ -418,12 +411,12 @@
     }
   ],
   "engagement_events": {
-    "section_view_proven": 55,
-    "section_view_voices": 50,
+    "section_view_proven": 56,
+    "section_view_voices": 51,
     "section_view_book_class": 27,
     "section_view_faq": 27,
     "faq_open": 14,
-    "read_complete": 78
+    "read_complete": 76
   },
   "contact_funnel": {
     "contact_open": 18,
@@ -458,14 +451,14 @@
       "sessions": 9
     },
     {
-      "path": "/logs/628",
-      "title": "/logs/628",
+      "path": "/logs/618",
+      "title": "/logs/618",
       "sessions": 9
     },
     {
-      "path": "/logs/618",
-      "title": "/logs/618",
-      "sessions": 8
+      "path": "/logs/628",
+      "title": "/logs/628",
+      "sessions": 9
     },
     {
       "path": "/logs/132",
@@ -503,8 +496,8 @@
       "sessions": 2
     },
     {
-      "path": "/logs/178",
-      "title": "/logs/178",
+      "path": "/logs/206",
+      "title": "/logs/206",
       "sessions": 2
     }
   ],
@@ -549,7 +542,7 @@
       "path": "/logs/618/",
       "title": "AI가 못 뺏는 능력 하나",
       "uniqueViews": 8,
-      "views": 10
+      "views": 11
     },
     {
       "path": "/logs/2/",
@@ -602,7 +595,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 362,
+    "total_desktop_sessions": 364,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
@@ -613,7 +606,7 @@
       {
         "resolution": "1920x1080",
         "width": 1920,
-        "sessions": 67
+        "sessions": 68
       },
       {
         "resolution": "1600x1600",
@@ -638,7 +631,7 @@
       {
         "resolution": "1536x864",
         "width": 1536,
-        "sessions": 11
+        "sessions": 12
       },
       {
         "resolution": "2000x2000",
