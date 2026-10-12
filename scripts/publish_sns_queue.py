@@ -82,6 +82,18 @@ def attach_media(item, api_key):
     content["media"] = [{"url": upload_media(src, api_key)} for src in sources]
 
 
+def final_body(content):
+    """실제로 게시되는 본문: 제목이 있으면 본문 첫 줄로 붙인다(register와 글자 수 관문이 같은 값을 보게 한다)."""
+    title = (content.get("title") or "").strip()
+    body = content.get("body") or ""
+    if title and not body.lstrip().startswith(title):
+        return f"{title}\n\n{body}"
+    return body
+
+
+THREADS_MAX = 500  # AItoEarn threads.constants.ts maxBodyLength/maxTotalTextLength. 한 게시 = 한 글(답글 이어붙이기 미지원)
+
+
 def register(item, api_key):
     try:
         attach_media(item, api_key)
@@ -141,6 +153,10 @@ def policy_problem(item):
     urls = re.findall(r"https?://\S+", content.get("body") or "")
     if len(urls) > 1:
         return f"본문 링크가 {len(urls)}개입니다(관련글 링크 1개만 허용)"
+    if item.get("platform") == "threads":
+        n = len(final_body(content))
+        if n > THREADS_MAX:
+            return f"스레드 본문이 {n}자입니다(제목 포함 {THREADS_MAX}자 이하만 가능, 답글 이어붙이기 미지원이라 요약본을 따로 써야 합니다)"
     return image_check_problem(item)
 
 
