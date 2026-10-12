@@ -124,10 +124,19 @@ def main():
     print("ok: %s -> %s (%d자)" % (it["id"], rep, len(out))); return 0
 
 
+def log_history(rc):  # 실행 이력 한 줄(N71, 10/12): 시각,종료코드. 실패해도 본 동작에 영향 없음
+    try:
+        with open("C:/work/_ops/bt_loop_history.csv", "a", encoding="utf-8") as f:
+            f.write("%s,rc=%s\n" % (datetime.now().strftime("%F %T"), rc))
+    except Exception:
+        pass
+
+
 if __name__ == "__main__":
     rc = 0
     for _ in range(10):  # 대기 항목을 다 보낼 때까지(실패·빈 큐·dry-run이면 멈춤)
         rc = main()
         if rc != 0 or "--dry-run" in sys.argv or " ok " not in (LAST_RUN.read_text(encoding="utf-8") if LAST_RUN.exists() else ""):
             break
+    log_history(rc)
     sys.exit(rc)
