@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-12T19:46:01.638569+00:00",
+  "updated_at": "2026-10-12T20:45:32.392097+00:00",
   "note": "history는 매일 지난 24시간 집계를 누적한 것. latest_*는 최근 3일 창.",
   "history": [
     {
@@ -7916,16 +7916,16 @@
       "metrics": {
         "DeadClickCount": [
           {
-            "sessionsCount": 6,
-            "sessionsWithMetricPercentage": 16.67,
-            "sessionsWithoutMetricPercentage": 83.33,
-            "pagesViews": 1,
-            "subTotal": 1
+            "sessionsCount": 5,
+            "sessionsWithMetricPercentage": 0,
+            "sessionsWithoutMetricPercentage": 100,
+            "pagesViews": 0,
+            "subTotal": 0
           }
         ],
         "ExcessiveScroll": [
           {
-            "sessionsCount": 6,
+            "sessionsCount": 5,
             "sessionsWithMetricPercentage": 0,
             "sessionsWithoutMetricPercentage": 100,
             "pagesViews": 0,
@@ -7934,7 +7934,7 @@
         ],
         "RageClickCount": [
           {
-            "sessionsCount": 6,
+            "sessionsCount": 5,
             "sessionsWithMetricPercentage": 0,
             "sessionsWithoutMetricPercentage": 100,
             "pagesViews": 0,
@@ -7943,16 +7943,16 @@
         ],
         "QuickbackClick": [
           {
-            "sessionsCount": 6,
-            "sessionsWithMetricPercentage": 16.67,
-            "sessionsWithoutMetricPercentage": 83.33,
+            "sessionsCount": 5,
+            "sessionsWithMetricPercentage": 20,
+            "sessionsWithoutMetricPercentage": 80,
             "pagesViews": 1,
             "subTotal": 1
           }
         ],
         "ScriptErrorCount": [
           {
-            "sessionsCount": 6,
+            "sessionsCount": 5,
             "sessionsWithMetricPercentage": 0,
             "sessionsWithoutMetricPercentage": 100,
             "pagesViews": 0,
@@ -7961,7 +7961,7 @@
         ],
         "ErrorClickCount": [
           {
-            "sessionsCount": 6,
+            "sessionsCount": 5,
             "sessionsWithMetricPercentage": 0,
             "sessionsWithoutMetricPercentage": 100,
             "pagesViews": 0,
@@ -7970,21 +7970,21 @@
         ],
         "ScrollDepth": [
           {
-            "averageScrollDepth": 90.29
+            "averageScrollDepth": 88.67
           }
         ],
         "Traffic": [
           {
-            "totalSessionCount": 6,
+            "totalSessionCount": 5,
             "totalBotSessionCount": 2,
-            "distinctUserCount": 6,
-            "pagesPerSessionPercentage": 1.1666666666666667
+            "distinctUserCount": 5,
+            "pagesPerSessionPercentage": 1.2
           }
         ],
         "EngagementTime": [
           {
-            "totalTime": 57,
-            "activeTime": 44
+            "totalTime": 67,
+            "activeTime": 50
           }
         ],
         "Browser": [
@@ -7995,16 +7995,12 @@
           {
             "name": "MobileSafari",
             "sessionsCount": 2
-          },
-          {
-            "name": "Edge",
-            "sessionsCount": 1
           }
         ],
         "Device": [
           {
             "name": "PC",
-            "sessionsCount": 4
+            "sessionsCount": 3
           },
           {
             "name": "Mobile",
@@ -8013,11 +8009,11 @@
         ],
         "OS": [
           {
-            "name": "Windows",
-            "sessionsCount": 3
+            "name": "IOS",
+            "sessionsCount": 2
           },
           {
-            "name": "IOS",
+            "name": "Windows",
             "sessionsCount": 2
           },
           {
@@ -8029,16 +8025,12 @@
           {
             "name": "Korea, Republic of",
             "sessionsCount": 5
-          },
-          {
-            "name": "United States",
-            "sessionsCount": 1
           }
         ],
         "PageTitle": [
           {
             "name": "Simplifier - 스타트업 코칭·기업 강연 한성희",
-            "sessionsCount": 5
+            "sessionsCount": 4
           },
           {
             "name": "PM, PL, TPM의 차이 한눈에 보기 - Simplifier",
@@ -8070,7 +8062,7 @@
         "PopularPages": [
           {
             "url": "https://simplifier.co.kr/",
-            "visitsCount": 5
+            "visitsCount": 4
           },
           {
             "url": "https://simplifier.co.kr/logs/132/",
