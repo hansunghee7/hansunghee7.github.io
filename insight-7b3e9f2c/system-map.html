@@ -74,7 +74,7 @@
 
   <div class="stats">
     <div class="stat"><div class="n">21</div><div class="l">GitHub Actions 자동화 워크플로</div></div>
-    <div class="stat"><div class="n">25</div><div class="l">연결된 외부 서비스</div></div>
+    <div class="stat"><div class="n">26</div><div class="l">연결된 외부 서비스</div></div>
     <div class="stat"><div class="n">9</div><div class="l">참조 없는 죽은 파일 — 삭제 완료</div></div>
     <div class="stat"><div class="n">587</div><div class="l">log.html 한 페이지에 박제된 글 수</div></div>
   </div>
@@ -608,7 +608,7 @@
 
   <!-- ===== 외부 연동 ===== -->
   <section class="sec">
-    <h2>연결된 외부 서비스 25개</h2>
+    <h2>연결된 외부 서비스 26개</h2>
     <p class="sec-note">위 다이어그램에 다 담기지 않는 폰트 CDN까지 포함한 전체 목록입니다.</p>
 
     <div class="tbl">
@@ -634,6 +634,7 @@
       <div class="tbl-row"><div class="svc">Supabase</div><div class="role">블로그 본문 벡터 DB (simplifier-agent) + "질문하기" 접수함 questions 테이블(이메일은 여기에만, 행 단위 보안으로 anon은 삽입만). 별도 운영 DB에는 업무대장·공정 카드·작업 기록·SNS·유튜브 성과 시계열을 둠</div><div class="where">scripts/ops/opsdb.py · scripts/sync_agent_corpus.py · supabase/questions.sql · _includes/question_form.html</div></div>
       <div class="tbl-row"><div class="svc">Voyage AI</div><div class="role">텍스트 임베딩 생성</div><div class="where">scripts/sync_agent_corpus.py</div></div>
       <div class="tbl-row"><div class="svc">Google Cloud · Vertex AI</div><div class="role">외부 모델 자문(비티)과 일일 사용량·지출 감시. 사용량은 Cloud Monitoring·Billing API로 읽음(읽기 전용 계정)</div><div class="where">scripts/ops/ask_vertex.py · gcp_usage.py · vertex_watch.py</div></div>
+      <div class="tbl-row"><div class="svc">Anthropic Claude API (연결 도우미)</div><div class="role">카빗 연결 화면의 '지투에게 물어보기' 창구(꺼짐 상태로 배포, 사장님 켜기 승인 전). 로그인한 고객 질문을 개인 식별 문자열을 가린 뒤 작은 모델(claude-haiku-5-5)에 보내 고정 연결 안내 문서만 근거로 답함. 키는 상담 전용, 월 토큰 상한은 서버 코드</div><div class="where">simplifier-saegim: helper_chat.py · helper_copy.py · .github/workflows/deploy-cloud-run.yml(SAEGIM_HELPER_API_KEY)</div></div>
 
       <div class="tbl-group">분석 · 검색엔진 등록</div>
       <div class="tbl-row"><div class="svc">Google Analytics 4</div><div class="role">방문 데이터 수집 + Data API로 대시보드 재조회</div><div class="where">_includes/site-analytics.html · scripts/fetch_ga4.py</div></div>
@@ -686,6 +687,9 @@
     <p class="sec-note">이 구조를 처음 점검했을 때(2026-08-29) 나온 항목과 처리 결과입니다.</p>
 
     <div class="log-list">
+      <div class="log-item"><span class="dot done"></span><div><b>2026-10-12</b>: 카빗 연결 도우미('지투에게 물어보기') 외부 연동 추가(노트). 서버가 Anthropic Claude API를 부르는 길이 새로 생김(질문 마스킹 → 고정 안내 문서 근거 → 폴백). 배포 스위치 SAEGIM_HELPER는 꺼짐, 키 비밀값·기록 표(helper_chats)·처리방침 승인 전까지 호출 없음. 외부 연동 25 → 26.
+        <span class="files">insight-7b3e9f2c/system-map.html</span>
+      </div></div>
       <div class="log-item"><span class="dot done"></span><div><b>2026-10-09</b>: 외부 에이전트 교신방 연동 추가. 외부 파트너마다 비공개 저장소(chatroom-zitu, chatroom-hackathon)를 두고 PR 댓글로 교신한다. chatroom-zitu에는 Slack 관전 중계(<code>slack-spectator.yml</code>, 웹후크 비밀값은 저장소 시크릿)가 있고, 외부 방 발신은 훅 <code>outbound-room-gate</code>가 사장님 승인 없이는 막는다. 절차 정본은 비공개 cxo-db standards/agent-comm-setup-process.md.
         <span class="files">insight-7b3e9f2c/system-map.html</span>
       </div></div>
