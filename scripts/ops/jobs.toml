@@ -533,3 +533,13 @@ path = 'C:/work/_ops/winfactory/logs/tick.log'
 max_age_min = 120
 name = "핏 신PC Flow 작업기 틱(winworker_tick.py, 작업 스케줄러 핏_신PC작업기틱 30분마다)"
 note = "2026-10-12 핏 등록(재발방지: 신PC 작업기는 자동 기동이 없어 크레딧이 남아도 안 돌았다). 2시간 넘게 로그가 안 바뀌면 멈춤. 첫 실행 확인: 10/12 20:22 두 계정 작업기 호출 성공."
+
+# ---------- 2026-10-12 마야 링크드인 글별 성과 가져오기(사장님 지시: 구PC 무인 프로필로 매일 자동 읽기) ----------
+[[job]]
+id = "file:maya-linkedin-daily"
+severity = "warn"
+kind = "file_age"
+path = 'C:/work/_ops/maya_linkedin_latest.json'
+max_age_min = 2880
+name = "마야 링크드인 글별 성과 가져오기(구PC cron 21:05 KST read_maya_linkedin.py → 신PC 작업 스케줄러 maya_linkedin_pull 21:15, maya_linkedin_pull.py)"
+note = "2026-10-12 마야 등록. 읽기는 구PC SNS 크롬 9227(링크드인 로그인됨)이 하고 구PC 쪽 감시는 jobs_goosolar.toml cron:maya-linkedin. 이틀 넘게 안 바뀌면 멈춤(로그인 만료·구PC 꺼짐 의심). 실행본은 C:/work/_ops/maya_linkedin_pull.py(원본 scripts/ops/maya_linkedin_pull.py). 첫 자동 실행은 10/13 21:15 확인 필요."
