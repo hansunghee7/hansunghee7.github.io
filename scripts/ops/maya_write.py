@@ -514,6 +514,10 @@ def selftest():
                 missing.append(g)
     if missing:
         fails.append(f"플레이북이 가리키는 파일 없음: {missing}")
+    # 사장님 2026-10-12·13: 덱스·비티는 기술 전문가라 글 평가에서 제외한다. 평가표가 이 둘을 평가자로 다시 가리키면 막는다(CLAUDE#4e7b).
+    raw = json.dumps(rb, ensure_ascii=False).replace("덱스·비티 제외", "").replace("덱스·비티는 글 평가에서 제외", "")
+    if "덱스" in raw or "비티" in raw:
+        fails.append("평가표(maya_write_rubrics.json)가 덱스·비티를 글 평가자로 가리킨다(사장님 2026-10-12: 글 평가 제외)")
     print(f"route {ok_route}/{len(ROUTE_CASES)}, lint {ok_lint}/{len(LINT_CASES)}, 실험 판정 {ok_exp}/{len(EXP_CASES)}, 새사실검사 {ok_new}/1, 가이드 파일 경로 {'정상' if not missing else '문제'}")
     for f in fails:
         print("  실패:", f)

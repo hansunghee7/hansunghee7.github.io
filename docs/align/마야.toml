@@ -44,6 +44,11 @@ name = "관문 동작 시험: 이미지 채점 관문이 우회 9가지를 실�
 type = "cmd_ok"
 cmd = ["python", "-m", "pytest", "scripts/ops/tests/test_image_gate.py", "-q"]
 
+[[check]]
+name = "관문 동작 시험: 글쓰기 도구 selftest(평가표가 덱스·비티를 글 평가자로 다시 가리키면 실패, 시점반복 린트 포함)"
+type = "cmd_ok"
+cmd = ["python", "scripts/ops/maya_write.py", "selftest"]
+
 # 3. 자동 작업이 등록되고 갱신되는가
 [[check]]
 name = "감시 대장: 마야 성과 수집(N14)"
