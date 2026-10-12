@@ -154,6 +154,14 @@ def lint(text, context="generic", title=None, sub=None, rb=None):
     if pol and pla:
         add("warn", "문체혼용", f"합니다체 {pol}문장과 평어체 {pla}문장이 섞임. 평어체 예: {' / '.join(pla_ex)}")
 
+    # 시점 표현이 글 안에서 되풀이되면 독자는 사건이 언제 몇 번 일어났는지 헷갈린다(2026-10-13 사장님 지적: A형 글에 '얼마 전'이 흩어져 시점이 뒤죽박죽).
+    # 같은 표현의 반복과, 서로 다른 시점 표현이 3개 이상 섞인 것을 경고한다.
+    anchors = re.findall(r"얼마 전|지난 (?:주|달|해|금요일|월요일|화요일|수요일|목요일|토요일|일요일)|최근|이번 주|이번 달|며칠 전|어제|오늘 아침|작년|올해 초", text)
+    rep = sorted({a for a in anchors if anchors.count(a) >= 2})
+    if rep:
+        add("warn", "시점반복", "시점 표현이 되풀이된다: " + ", ".join(f"'{a}' {anchors.count(a)}회" for a in rep) + ". 시점은 한 곳에서 한 번 밝히고 뒤는 '그날'·'그 뒤'로 잇는다")
+    elif len(set(anchors)) >= 3:
+        add("warn", "시점혼재", "서로 다른 시점 표현이 " + str(len(set(anchors))) + "개: " + ", ".join(sorted(set(anchors))) + ". 사건 순서가 헷갈리지 않는지 처음부터 소리 내어 읽어 본다")
     level = 2 if any(i["level"] == "error" for i in issues) else (1 if issues else 0)
     return {"status": ["pass", "warn", "error"][level], "code": level, "issues": issues,
             "polite": pol, "plain": pla, "chars": len(text)}
@@ -453,6 +461,8 @@ LINT_CASES = [
     ("출처 없는 연구 문장은 경고(독립 평가에서 나온 규칙)", dict(text="하루 20분이 넘게 걸린다는 연구가 있습니다. 그래서 순서를 바꿨습니다.", context="generic"), 1),
     ("출처가 같은 문장에 있으면 통과", dict(text="하루 20분이 걸린다는 연구가 있습니다(출처: 2024 업무 시간 조사). 그래서 순서를 바꿨습니다.", context="generic"), 0),
     ("학술지 이름이 같은 문장에 있으면 출처로 인정", dict(text="Science Advances에 실린 연구에서는 개인 창의성은 오르지만 집단 참신함은 줄었다고 합니다. 그래서 순서를 바꿨습니다.", context="generic"), 0),
+    ("시점 표현이 되풀이되면 경고(A형 글 v7 사고, 2026-10-13)", dict(text="얼마 전 회의에서 말씀드렸습니다. 그런데 얼마 전 저희 팀도 같은 일을 겪었습니다. 그래서 순서를 바꿨습니다.", context="generic"), 1),
+    ("시점 표현이 한 번이면 통과", dict(text="얼마 전 회의에서 말씀드렸습니다. 그런데 저희 팀도 같은 일을 겪었습니다. 그래서 순서를 바꿨습니다.", context="generic"), 0),
     ("회사 이름 노출은 오류", dict(text="Carvit은 Simplifier가 만들었습니다.", context="carvit"), 2),
     ("홈페이지 맥락에서는 회사 이름 허용", dict(text="심플리파이어는 강연과 코칭을 합니다.", context="home"), 0),
 ]
