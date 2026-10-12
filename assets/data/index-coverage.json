@@ -1,27 +1,27 @@
 {
-  "updated_at": "2026-10-05T00:22:34.950237+00:00",
+  "updated_at": "2026-10-12T00:48:14.909305+00:00",
   "site_url": "https://simplifier.co.kr/",
   "partial": false,
-  "sitemap_url_count": 460,
-  "inspected_count": 460,
+  "sitemap_url_count": 463,
+  "inspected_count": 463,
   "summary": {
     "by_verdict": {
-      "NEUTRAL": 442,
-      "PASS": 18
+      "NEUTRAL": 444,
+      "PASS": 19
     },
     "by_coverage_state": {
-      "Discovered - currently not indexed": 357,
-      "URL is unknown to Google": 85,
-      "Submitted and indexed": 18
+      "Discovered - currently not indexed": 367,
+      "URL is unknown to Google": 77,
+      "Submitted and indexed": 19
     }
   },
   "posts_summary": {
-    "total": 446,
-    "indexed": 10,
+    "total": 449,
+    "indexed": 11,
     "by_coverage_state": {
-      "Discovered - currently not indexed": 354,
-      "URL is unknown to Google": 82,
-      "Submitted and indexed": 10
+      "Discovered - currently not indexed": 361,
+      "URL is unknown to Google": 77,
+      "Submitted and indexed": 11
     }
   },
   "not_indexed_posts": [
@@ -67,7 +67,7 @@
     },
     {
       "path": "/logs/13/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -102,7 +102,7 @@
     },
     {
       "path": "/logs/21/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -127,7 +127,7 @@
     },
     {
       "path": "/logs/27/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -142,7 +142,7 @@
     },
     {
       "path": "/logs/30/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -172,7 +172,7 @@
     },
     {
       "path": "/logs/36/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -182,7 +182,7 @@
     },
     {
       "path": "/logs/38/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -207,17 +207,17 @@
     },
     {
       "path": "/logs/46/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
       "path": "/logs/47/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
       "path": "/logs/48/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -237,17 +237,17 @@
     },
     {
       "path": "/logs/52/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
       "path": "/logs/53/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
       "path": "/logs/54/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -262,12 +262,12 @@
     },
     {
       "path": "/logs/57/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
       "path": "/logs/58/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -277,7 +277,7 @@
     },
     {
       "path": "/logs/60/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -297,12 +297,12 @@
     },
     {
       "path": "/logs/65/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
       "path": "/logs/66/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -337,27 +337,27 @@
     },
     {
       "path": "/logs/76/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
       "path": "/logs/78/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
       "path": "/logs/79/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
       "path": "/logs/80/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
       "path": "/logs/82/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -377,7 +377,7 @@
     },
     {
       "path": "/logs/89/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -497,7 +497,7 @@
     },
     {
       "path": "/logs/118/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -522,12 +522,12 @@
     },
     {
       "path": "/logs/124/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
       "path": "/logs/125/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -557,7 +557,7 @@
     },
     {
       "path": "/logs/134/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -572,12 +572,12 @@
     },
     {
       "path": "/logs/137/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
       "path": "/logs/138/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -602,7 +602,7 @@
     },
     {
       "path": "/logs/143/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -612,7 +612,7 @@
     },
     {
       "path": "/logs/145/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -622,7 +622,7 @@
     },
     {
       "path": "/logs/147/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -647,7 +647,7 @@
     },
     {
       "path": "/logs/152/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -662,7 +662,7 @@
     },
     {
       "path": "/logs/155/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -682,12 +682,12 @@
     },
     {
       "path": "/logs/160/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
       "path": "/logs/161/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -707,7 +707,7 @@
     },
     {
       "path": "/logs/165/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -722,7 +722,7 @@
     },
     {
       "path": "/logs/169/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -767,7 +767,7 @@
     },
     {
       "path": "/logs/179/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -842,7 +842,7 @@
     },
     {
       "path": "/logs/196/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -852,7 +852,7 @@
     },
     {
       "path": "/logs/198/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -902,7 +902,7 @@
     },
     {
       "path": "/logs/209/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -912,12 +912,12 @@
     },
     {
       "path": "/logs/211/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
       "path": "/logs/212/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -957,7 +957,7 @@
     },
     {
       "path": "/logs/220/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -987,12 +987,12 @@
     },
     {
       "path": "/logs/229/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
       "path": "/logs/231/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -1002,7 +1002,7 @@
     },
     {
       "path": "/logs/233/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -1022,7 +1022,7 @@
     },
     {
       "path": "/logs/238/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -1042,7 +1042,7 @@
     },
     {
       "path": "/logs/243/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -1072,7 +1072,7 @@
     },
     {
       "path": "/logs/249/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -1092,12 +1092,12 @@
     },
     {
       "path": "/logs/254/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
       "path": "/logs/256/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -1127,12 +1127,12 @@
     },
     {
       "path": "/logs/262/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
       "path": "/logs/263/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -1212,7 +1212,7 @@
     },
     {
       "path": "/logs/304/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -1227,12 +1227,12 @@
     },
     {
       "path": "/logs/313/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
       "path": "/logs/314/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -1302,12 +1302,12 @@
     },
     {
       "path": "/logs/346/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
       "path": "/logs/348/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -1327,7 +1327,7 @@
     },
     {
       "path": "/logs/352/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -1342,7 +1342,7 @@
     },
     {
       "path": "/logs/360/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -1352,7 +1352,7 @@
     },
     {
       "path": "/logs/365/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -1362,7 +1362,7 @@
     },
     {
       "path": "/logs/369/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -1402,7 +1402,7 @@
     },
     {
       "path": "/logs/382/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -1412,7 +1412,7 @@
     },
     {
       "path": "/logs/386/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -1422,17 +1422,17 @@
     },
     {
       "path": "/logs/390/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
       "path": "/logs/391/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
       "path": "/logs/393/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -1457,7 +1457,7 @@
     },
     {
       "path": "/logs/399/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -1497,7 +1497,7 @@
     },
     {
       "path": "/logs/410/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -1522,7 +1522,7 @@
     },
     {
       "path": "/logs/416/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -1537,7 +1537,7 @@
     },
     {
       "path": "/logs/421/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -1552,7 +1552,7 @@
     },
     {
       "path": "/logs/424/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -1582,7 +1582,7 @@
     },
     {
       "path": "/logs/435/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -1602,7 +1602,7 @@
     },
     {
       "path": "/logs/443/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -1612,7 +1612,7 @@
     },
     {
       "path": "/logs/447/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -1632,7 +1632,7 @@
     },
     {
       "path": "/logs/453/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -1672,7 +1672,7 @@
     },
     {
       "path": "/logs/473/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -1682,12 +1682,12 @@
     },
     {
       "path": "/logs/475/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
       "path": "/logs/476/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -1712,7 +1712,7 @@
     },
     {
       "path": "/logs/486/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -1737,7 +1737,7 @@
     },
     {
       "path": "/logs/494/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -1757,7 +1757,7 @@
     },
     {
       "path": "/logs/500/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -1767,12 +1767,12 @@
     },
     {
       "path": "/logs/503/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
       "path": "/logs/504/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -1832,7 +1832,7 @@
     },
     {
       "path": "/logs/524/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -1872,7 +1872,7 @@
     },
     {
       "path": "/logs/536/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -1882,7 +1882,7 @@
     },
     {
       "path": "/logs/539/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -1902,7 +1902,7 @@
     },
     {
       "path": "/logs/548/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -1917,7 +1917,7 @@
     },
     {
       "path": "/logs/562/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -1932,7 +1932,7 @@
     },
     {
       "path": "/logs/565/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -1942,12 +1942,12 @@
     },
     {
       "path": "/logs/567/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
       "path": "/logs/568/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -1982,7 +1982,7 @@
     },
     {
       "path": "/logs/578/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -1997,17 +1997,17 @@
     },
     {
       "path": "/logs/583/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
       "path": "/logs/585/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
       "path": "/logs/586/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -2027,7 +2027,7 @@
     },
     {
       "path": "/logs/592/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -2047,12 +2047,12 @@
     },
     {
       "path": "/logs/596/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
       "path": "/logs/597/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -2077,17 +2077,17 @@
     },
     {
       "path": "/logs/605/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
       "path": "/logs/606/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
       "path": "/logs/607/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -2112,22 +2112,22 @@
     },
     {
       "path": "/logs/614/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
       "path": "/logs/615/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
       "path": "/logs/616/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
       "path": "/logs/617/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
@@ -2172,27 +2172,27 @@
     },
     {
       "path": "/logs/622/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
       "path": "/logs/623/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
       "path": "/logs/624/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
       "path": "/logs/628/",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     },
     {
       "path": "/logs/636/",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "last_crawl": null
     },
     {
@@ -2202,7 +2202,17 @@
     },
     {
       "path": "/logs/630/",
+      "coverage_state": "Discovered - currently not indexed",
+      "last_crawl": null
+    },
+    {
+      "path": "/logs/633/",
       "coverage_state": "URL is unknown to Google",
+      "last_crawl": null
+    },
+    {
+      "path": "/logs/635/",
+      "coverage_state": "Discovered - currently not indexed",
       "last_crawl": null
     }
   ],
@@ -2213,13 +2223,13 @@
       "verdict": "PASS",
       "coverage_state": "Submitted and indexed",
       "indexing_state": "INDEXING_ALLOWED",
-      "last_crawl": "2026-10-03T14:07:15Z",
+      "last_crawl": "2026-10-11T16:37:14Z",
       "google_canonical": "/"
     },
     {
       "path": "/log.html",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -2269,13 +2279,13 @@
       "verdict": "PASS",
       "coverage_state": "Submitted and indexed",
       "indexing_state": "INDEXING_ALLOWED",
-      "last_crawl": "2026-08-28T11:41:07Z",
+      "last_crawl": "2026-10-07T22:19:05Z",
       "google_canonical": "/log/Be-the-PO.html"
     },
     {
       "path": "/log/대한민국-스타트업-미국진출을-묻다.html",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -2299,7 +2309,7 @@
     {
       "path": "/log/기획자의-프레임웍.html",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -2387,7 +2397,7 @@
     {
       "path": "/logs/13/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -2443,7 +2453,7 @@
     {
       "path": "/logs/21/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -2483,7 +2493,7 @@
     {
       "path": "/logs/27/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -2507,7 +2517,7 @@
     {
       "path": "/logs/30/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -2555,7 +2565,7 @@
     {
       "path": "/logs/36/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -2571,7 +2581,7 @@
     {
       "path": "/logs/38/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -2611,7 +2621,7 @@
     {
       "path": "/logs/46/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -2619,7 +2629,7 @@
     {
       "path": "/logs/47/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -2627,7 +2637,7 @@
     {
       "path": "/logs/48/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -2659,7 +2669,7 @@
     {
       "path": "/logs/52/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -2667,7 +2677,7 @@
     {
       "path": "/logs/53/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -2675,7 +2685,7 @@
     {
       "path": "/logs/54/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -2699,7 +2709,7 @@
     {
       "path": "/logs/57/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -2707,7 +2717,7 @@
     {
       "path": "/logs/58/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -2723,7 +2733,7 @@
     {
       "path": "/logs/60/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -2755,7 +2765,7 @@
     {
       "path": "/logs/65/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -2763,7 +2773,7 @@
     {
       "path": "/logs/66/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -2819,7 +2829,7 @@
     {
       "path": "/logs/76/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -2827,7 +2837,7 @@
     {
       "path": "/logs/78/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -2835,7 +2845,7 @@
     {
       "path": "/logs/79/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -2843,7 +2853,7 @@
     {
       "path": "/logs/80/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -2851,7 +2861,7 @@
     {
       "path": "/logs/82/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -2883,7 +2893,7 @@
     {
       "path": "/logs/89/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -3083,7 +3093,7 @@
     {
       "path": "/logs/118/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -3123,7 +3133,7 @@
     {
       "path": "/logs/124/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -3131,7 +3141,7 @@
     {
       "path": "/logs/125/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -3187,7 +3197,7 @@
     {
       "path": "/logs/134/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -3211,7 +3221,7 @@
     {
       "path": "/logs/137/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -3219,7 +3229,7 @@
     {
       "path": "/logs/138/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -3259,7 +3269,7 @@
     {
       "path": "/logs/143/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -3275,7 +3285,7 @@
     {
       "path": "/logs/145/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -3291,7 +3301,7 @@
     {
       "path": "/logs/147/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -3331,7 +3341,7 @@
     {
       "path": "/logs/152/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -3355,7 +3365,7 @@
     {
       "path": "/logs/155/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -3387,7 +3397,7 @@
     {
       "path": "/logs/160/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -3395,7 +3405,7 @@
     {
       "path": "/logs/161/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -3427,7 +3437,7 @@
     {
       "path": "/logs/165/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -3451,7 +3461,7 @@
     {
       "path": "/logs/169/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -3523,7 +3533,7 @@
     {
       "path": "/logs/179/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -3643,7 +3653,7 @@
     {
       "path": "/logs/196/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -3659,7 +3669,7 @@
     {
       "path": "/logs/198/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -3739,7 +3749,7 @@
     {
       "path": "/logs/209/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -3755,7 +3765,7 @@
     {
       "path": "/logs/211/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -3763,7 +3773,7 @@
     {
       "path": "/logs/212/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -3827,7 +3837,7 @@
     {
       "path": "/logs/220/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -3883,7 +3893,7 @@
     {
       "path": "/logs/229/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -3899,7 +3909,7 @@
     {
       "path": "/logs/231/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -3915,7 +3925,7 @@
     {
       "path": "/logs/233/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -3947,7 +3957,7 @@
     {
       "path": "/logs/238/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -3979,7 +3989,7 @@
     {
       "path": "/logs/243/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -4027,7 +4037,7 @@
     {
       "path": "/logs/249/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -4059,7 +4069,7 @@
     {
       "path": "/logs/254/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -4067,7 +4077,7 @@
     {
       "path": "/logs/256/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -4115,7 +4125,7 @@
     {
       "path": "/logs/262/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -4123,7 +4133,7 @@
     {
       "path": "/logs/263/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -4259,7 +4269,7 @@
     {
       "path": "/logs/304/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -4283,7 +4293,7 @@
     {
       "path": "/logs/313/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -4291,7 +4301,7 @@
     {
       "path": "/logs/314/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -4403,7 +4413,7 @@
     {
       "path": "/logs/346/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -4411,7 +4421,7 @@
     {
       "path": "/logs/348/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -4443,7 +4453,7 @@
     {
       "path": "/logs/352/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -4467,7 +4477,7 @@
     {
       "path": "/logs/360/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -4483,7 +4493,7 @@
     {
       "path": "/logs/365/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -4499,7 +4509,7 @@
     {
       "path": "/logs/369/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -4563,7 +4573,7 @@
     {
       "path": "/logs/382/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -4579,7 +4589,7 @@
     {
       "path": "/logs/386/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -4595,7 +4605,7 @@
     {
       "path": "/logs/390/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -4603,7 +4613,7 @@
     {
       "path": "/logs/391/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -4611,7 +4621,7 @@
     {
       "path": "/logs/393/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -4651,7 +4661,7 @@
     {
       "path": "/logs/399/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -4715,7 +4725,7 @@
     {
       "path": "/logs/410/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -4755,7 +4765,7 @@
     {
       "path": "/logs/416/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -4779,7 +4789,7 @@
     {
       "path": "/logs/421/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -4803,7 +4813,7 @@
     {
       "path": "/logs/424/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -4851,7 +4861,7 @@
     {
       "path": "/logs/435/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -4883,7 +4893,7 @@
     {
       "path": "/logs/443/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -4899,7 +4909,7 @@
     {
       "path": "/logs/447/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -4931,7 +4941,7 @@
     {
       "path": "/logs/453/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -4995,7 +5005,7 @@
     {
       "path": "/logs/473/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5011,7 +5021,7 @@
     {
       "path": "/logs/475/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5019,7 +5029,7 @@
     {
       "path": "/logs/476/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5067,7 +5077,7 @@
     {
       "path": "/logs/486/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5115,7 +5125,7 @@
     {
       "path": "/logs/494/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5147,7 +5157,7 @@
     {
       "path": "/logs/500/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5163,7 +5173,7 @@
     {
       "path": "/logs/503/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5171,7 +5181,7 @@
     {
       "path": "/logs/504/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5267,7 +5277,7 @@
     {
       "path": "/logs/524/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5331,7 +5341,7 @@
     {
       "path": "/logs/536/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5355,7 +5365,7 @@
     {
       "path": "/logs/539/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5387,7 +5397,7 @@
     {
       "path": "/logs/548/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5419,7 +5429,7 @@
     {
       "path": "/logs/562/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5443,7 +5453,7 @@
     {
       "path": "/logs/565/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5459,7 +5469,7 @@
     {
       "path": "/logs/567/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5467,7 +5477,7 @@
     {
       "path": "/logs/568/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5523,7 +5533,7 @@
     {
       "path": "/logs/578/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5547,7 +5557,7 @@
     {
       "path": "/logs/583/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5555,7 +5565,7 @@
     {
       "path": "/logs/585/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5563,7 +5573,7 @@
     {
       "path": "/logs/586/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5595,7 +5605,7 @@
     {
       "path": "/logs/592/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5627,7 +5637,7 @@
     {
       "path": "/logs/596/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5635,7 +5645,7 @@
     {
       "path": "/logs/597/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5675,7 +5685,7 @@
     {
       "path": "/logs/605/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5683,7 +5693,7 @@
     {
       "path": "/logs/606/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5691,7 +5701,7 @@
     {
       "path": "/logs/607/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5731,7 +5741,7 @@
     {
       "path": "/logs/614/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5739,7 +5749,7 @@
     {
       "path": "/logs/615/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5747,7 +5757,7 @@
     {
       "path": "/logs/616/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5755,7 +5765,7 @@
     {
       "path": "/logs/617/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5827,7 +5837,7 @@
     {
       "path": "/logs/622/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5835,7 +5845,7 @@
     {
       "path": "/logs/623/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5843,7 +5853,7 @@
     {
       "path": "/logs/624/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5859,7 +5869,7 @@
     {
       "path": "/logs/628/",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5867,7 +5877,7 @@
     {
       "path": "/logs/636/",
       "verdict": "NEUTRAL",
-      "coverage_state": "Discovered - currently not indexed",
+      "coverage_state": "URL is unknown to Google",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
@@ -5883,7 +5893,31 @@
     {
       "path": "/logs/630/",
       "verdict": "NEUTRAL",
+      "coverage_state": "Discovered - currently not indexed",
+      "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+      "last_crawl": null,
+      "google_canonical": null
+    },
+    {
+      "path": "/logs/633/",
+      "verdict": "NEUTRAL",
       "coverage_state": "URL is unknown to Google",
+      "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+      "last_crawl": null,
+      "google_canonical": null
+    },
+    {
+      "path": "/logs/634/",
+      "verdict": "PASS",
+      "coverage_state": "Submitted and indexed",
+      "indexing_state": "INDEXING_ALLOWED",
+      "last_crawl": "2026-10-10T19:52:10Z",
+      "google_canonical": "/logs/634/"
+    },
+    {
+      "path": "/logs/635/",
+      "verdict": "NEUTRAL",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
       "last_crawl": null,
       "google_canonical": null
