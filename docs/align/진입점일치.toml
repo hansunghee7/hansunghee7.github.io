@@ -24,3 +24,9 @@ name = "리서치 등급 구분"
 type = "file_contains"
 path = 'C:\work\hansunghee7.github.io\docs\AI_ROUTING_POLICY.md'
 text = "[리서치: 슈퍼"
+
+[[check]]
+name = "슈퍼리서치 5단계 체크 표지"
+type = "file_contains"
+path = 'C:\work\hansunghee7.github.io\docs\AI_ROUTING_POLICY.md'
+text = "[슈퍼체크:"
