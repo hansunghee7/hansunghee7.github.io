@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-11T23:11:35.766025+00:00",
+  "updated_at": "2026-10-12T07:20:15.379905+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 347,
-    "activeUsers": 299,
-    "newUsers": 295,
+    "sessions": 353,
+    "activeUsers": 305,
+    "newUsers": 301,
     "returningUsers": 4
   },
   "daily": [
@@ -220,38 +220,38 @@
     },
     {
       "date": "2026-10-12",
-      "sessions": 1,
-      "activeUsers": 1,
-      "newUsers": 1,
+      "sessions": 7,
+      "activeUsers": 7,
+      "newUsers": 7,
       "returningUsers": 0
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 114,
+    "home": 119,
     "log_home": 0,
-    "individual_post": 220,
+    "individual_post": 224,
     "other": 13
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 198
+      "sessions": 201
     },
     {
       "source": "linkedin.com",
-      "sessions": 43
+      "sessions": 44
     },
     {
       "source": "google",
       "sessions": 18
     },
     {
-      "source": "m.facebook.com",
-      "sessions": 17
+      "source": "m.search.naver.com",
+      "sessions": 18
     },
     {
-      "source": "m.search.naver.com",
+      "source": "m.facebook.com",
       "sessions": 17
     },
     {
@@ -267,12 +267,12 @@
       "sessions": 7
     },
     {
-      "source": "blog.naver.com",
+      "source": "(not set)",
       "sessions": 5
     },
     {
-      "source": "(not set)",
-      "sessions": 3
+      "source": "blog.naver.com",
+      "sessions": 5
     },
     {
       "source": "lm.facebook.com",
@@ -300,13 +300,13 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 198
+      "sessions": 201
     },
     {
       "source": "linkedin.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 43
+      "sessions": 44
     },
     {
       "source": "google",
@@ -315,13 +315,13 @@
       "sessions": 18
     },
     {
-      "source": "m.facebook.com",
+      "source": "m.search.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 17
+      "sessions": 18
     },
     {
-      "source": "m.search.naver.com",
+      "source": "m.facebook.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 17
@@ -393,6 +393,12 @@
       "sessions": 1
     },
     {
+      "source": "linkedin",
+      "medium": "social",
+      "campaign": "new_narr_malgwi",
+      "sessions": 1
+    },
+    {
       "source": "m.trevari.co.kr",
       "medium": "referral",
       "campaign": "(referral)",
@@ -412,15 +418,15 @@
     }
   ],
   "engagement_events": {
-    "section_view_proven": 53,
-    "section_view_voices": 48,
-    "section_view_book_class": 26,
-    "section_view_faq": 26,
-    "faq_open": 10,
-    "read_complete": 77
+    "section_view_proven": 55,
+    "section_view_voices": 50,
+    "section_view_book_class": 27,
+    "section_view_faq": 27,
+    "faq_open": 14,
+    "read_complete": 78
   },
   "contact_funnel": {
-    "contact_open": 17,
+    "contact_open": 18,
     "generate_lead": 0,
     "contact_error": 0
   },
@@ -462,14 +468,14 @@
       "sessions": 8
     },
     {
-      "path": "/logs/636",
-      "title": "/logs/636",
+      "path": "/logs/132",
+      "title": "/logs/132",
       "sessions": 5
     },
     {
-      "path": "/logs/132",
-      "title": "/logs/132",
-      "sessions": 4
+      "path": "/logs/636",
+      "title": "/logs/636",
+      "sessions": 5
     },
     {
       "path": "/logs/224",
@@ -558,6 +564,12 @@
       "views": 6
     },
     {
+      "path": "/logs/132/",
+      "title": "PM, PL, TPM의 차이 한눈에 보기",
+      "uniqueViews": 5,
+      "views": 5
+    },
+    {
       "path": "/logs/481/",
       "title": "내가 GS에서 강의를 하는 이유",
       "uniqueViews": 5,
@@ -576,12 +588,6 @@
       "views": 5
     },
     {
-      "path": "/logs/132/",
-      "title": "PM, PL, TPM의 차이 한눈에 보기",
-      "uniqueViews": 4,
-      "views": 4
-    },
-    {
       "path": "/logs/224/",
       "title": "나의 클론이 화상회의를 '피클'",
       "uniqueViews": 4,
@@ -596,7 +602,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 357,
+    "total_desktop_sessions": 362,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
@@ -607,12 +613,12 @@
       {
         "resolution": "1920x1080",
         "width": 1920,
-        "sessions": 63
+        "sessions": 67
       },
       {
         "resolution": "1600x1600",
         "width": 1600,
-        "sessions": 54
+        "sessions": 55
       },
       {
         "resolution": "2560x1440",
