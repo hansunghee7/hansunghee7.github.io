@@ -37,7 +37,7 @@ def test_ratio_at_60_warns_with_guidance(tmp_path, monkeypatch):
     env(monkeypatch, tmp_path)
     p = make(tmp_path, [asst(600000)])
     out = cg.evaluate({"transcript_path": p, "session_id": "s"})
-    assert len(out) == 1 and "60%" in out[0] and "새 일은 시작하지 않음" in out[0]
+    assert len(out) == 1 and "60%" in out[0] and "멈추지 말고 계속" in out[0]
 
 
 def test_same_step_only_once_then_next_step(tmp_path, monkeypatch):
