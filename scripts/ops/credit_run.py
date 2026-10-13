@@ -27,7 +27,7 @@ def today_total(path):
     if path.exists():
         with open(path, encoding="utf-8", newline="") as f:
             for row in csv.DictReader(f):
-                if row.get("ts", "").startswith(day) and row.get("status") == "ok":
+                if row.get("ts", "").startswith(day) and str(row.get("status")).startswith("ok"):
                     try:
                         total += float(row.get("cost_usd") or 0)
                     except ValueError:

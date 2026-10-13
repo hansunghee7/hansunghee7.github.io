@@ -61,9 +61,33 @@ rows = list(csv.DictReader(open(ledger, encoding="utf-8", newline="")))
 # sonnet: 1000*2 + 500*10 = 7000 per million -> 0.007
 if abs(float(rows[-1]["cost_usd"]) - 0.007) > 1e-9:
     fail.append("sonnet cost wrong: %s" % rows[-1])
+# 가격표: 오퍼스 1000*5 + 500*25 = 17500 -> 0.0175, 페이블 35000 -> 0.035
+for m, want in (("claude-opus-5-5", 0.0175), ("claude-fable-5", 0.035)):
+    r = run({"ANTHROPIC_API_KEY_OPS": "dummy-value"}, ["--model", m])
+    rows = list(csv.DictReader(open(ledger, encoding="utf-8", newline="")))
+    if r.returncode != 0 or abs(float(rows[-1]["cost_usd"]) - want) > 1e-9 or rows[-1]["status"] != "ok":
+        fail.append("%s cost wrong: %s" % (m, rows[-1]))
+# 모르는 모델: 0원이 아니라 최고 단가(페이블)로, '가격미확인' 표시
+r = run({"ANTHROPIC_API_KEY_OPS": "dummy-value"}, ["--model", "claude-unknown-9"])
+rows = list(csv.DictReader(open(ledger, encoding="utf-8", newline="")))
+if r.returncode != 0 or abs(float(rows[-1]["cost_usd"]) - 0.035) > 1e-9 or "가격미확인" not in rows[-1]["status"]:
+    fail.append("unknown model wrong: %s" % rows[-1])
+# 기본 경보선 100: 이미 쓴 금액이 경보선을 넘어도 멈추지 않고(0), 경보 로그가 남는다
 r = run({"ANTHROPIC_API_KEY_OPS": "dummy-value"}, ["--daily-usd", "0.001"])
+if r.returncode != 0 or "DAILY-ALERT" not in r.stderr or not (tmp / "api_run_alerts.log").exists():
+    fail.append("alert-only expected 0 got %s" % r.returncode)
+# --hard-stop 이면 옛 동작(3)
+r = run({"ANTHROPIC_API_KEY_OPS": "dummy-value"}, ["--daily-usd", "0.001", "--hard-stop"])
 if r.returncode != 3:
-    fail.append("cap expected 3 got %s" % r.returncode)
+    fail.append("hard-stop expected 3 got %s" % r.returncode)
+# 기본 경보선이 100 인지(--dry 출력)
+r = run({"ANTHROPIC_API_KEY_OPS": "dummy-value"}, ["--dry"])
+if "cap=100.00" not in r.stdout:
+    fail.append("default cap not 100: %s" % r.stdout)
+# 타임아웃 인자 허용
+r = run({"ANTHROPIC_API_KEY_OPS": "dummy-value"}, ["--timeout", "30"])
+if r.returncode != 0:
+    fail.append("timeout arg failed")
 r = run({"ANTHROPIC_API_KEY_OPS": "dummy-value"}, ["--dry"])
 if r.returncode != 0 or not r.stdout.startswith("DRY ok"):
     fail.append("dry wrong")
