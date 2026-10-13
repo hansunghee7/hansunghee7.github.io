@@ -20,7 +20,7 @@ note = "2026-09-21 허용 사용자 제한·WoL 확인 응답 개편. 봇이 죽
 [[job]]
 id = "tcp:sinpc-up"
 kind = "tcp"
-host = "100.67.79.19"
+host = "desktop-2udnsls"
 ports = [22, 11434]
 direct = true
 name = "신PC 응답(포트 22 또는 11434)"

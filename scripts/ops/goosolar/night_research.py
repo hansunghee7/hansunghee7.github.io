@@ -32,7 +32,7 @@ KST = timezone(timedelta(hours=9))
 MODEL = "groq/compound"
 PACE_S = 75  # 질문 사이 간격(초)
 ENV_PATH = os.path.expanduser("~/hermes-agent/.env")
-SHIN_PC = ("100.67.79.19", (22, 11434))  # Tailscale 고정 주소(유선 DHCP 주소는 바뀐다, 2026-09-22 교정)
+SHIN_PC = ("desktop-2udnsls", (22, 11434))  # Tailscale 이름(MagicDNS, 2026-10-13 새 개인 망으로 이전해 주소 대신 이름 사용, 옛 주소 100.67.79.19) (유선 DHCP 주소는 바뀐다, 2026-09-22 교정)
 
 SYSTEM = (
     "너는 근거 수집 도우미다. 웹 검색으로 페이지를 실제로 열어 확인한 내용만 쓴다. "
