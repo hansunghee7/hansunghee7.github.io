@@ -551,3 +551,44 @@ cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\credit_daily_report.
 every_min = 60
 name = "클로드 API 프로모션 크레딧 소진(99.50달러, 10/27 21시까지 98.5 이상, credit_daily_report.py)"
 note = "2026-10-13 탐 등록(사장님 지시: 일일 리포트를 사장님과 탐이 인지). 매시간 장부를 읽어 상태 갱신(텔레그램 없음), 지연·위험이면 붉음(종료 코드 1)이고 세션 시작 때 '지금 문제' 줄로 뜬다. 한국시간 21시 이후 오늘 안 보냈으면 텔레그램 5줄도 보낸다(작업 스케줄러 simplifier-credit-daily 21:00이 정시 전송, 둘 다 하루 1회 표식으로 중복 방지). 붉을 때 할 일: C:/work/_ops/credit_daily/credit_actions.md의 명령 실행(예비 작업 추가 발주, 계획서 3절). 정상·앞섬이면 초록. 콘솔 잔액 대조는 record-console로 기록. 만료 뒤(10/28) 이 항목과 스케줄러 작업은 삭제."
+
+# ---------- 2026-10-13 핏 등록: 공개 후처리·시트 대조·색인·공장 스냅샷·유튜브 실시간(첫 자동 실행이 전부 실패했다가 고침: cmd의 set PYTHONUTF8=1 && 뒤 공백 때문에 값이 "1 "이 돼 파이썬이 시작 못 함) ----------
+[[job]]
+id = "cron:fit-post-publish"
+kind = "file_age"
+path = 'C:/work/_ops/post_publish.log'
+max_age_min = 180
+name = "핏 공개 후처리(작업 스케줄러 핏_공개후처리, 매시 :32, post_publish.py: 질문 댓글·고정·좋아요·재생목록·관련 동영상)"
+note = "2026-10-13 핏 등록(핏-발행 #37). 로그가 3시간 넘게 안 바뀌면 멈춤. 흔한 원인: cmd 안 set PYTHONUTF8=1 뒤 공백(값이 1+공백이면 파이썬이 시작 안 함, 로그에 preconfig_init_utf8_mode), 9231 터널 끊김."
+
+[[job]]
+id = "cron:fit-factory-snapshot"
+kind = "file_age"
+path = 'C:/work/_ops/factory_snapshot.log'
+max_age_min = 180
+name = "핏 공장 스냅샷(작업 스케줄러 핏_공장스냅샷, 매시 :40, factory_snapshot.py: 7계정 크레딧·마지막 컷·경보 스냅샷)"
+note = "2026-10-13 핏 등록. 로그가 3시간 넘게 안 바뀌면 멈춤. 원인: 작업 스케줄러 실패, 터널 끊김, 크롬 응답 없음."
+
+[[job]]
+id = "cron:fit-yt-live"
+kind = "file_age"
+path = 'C:/work/shorts-lab/pilot-shorts2/yt_live_history.jsonl'
+max_age_min = 180
+name = "핏 유튜브 실시간 스냅샷(작업 스케줄러 핏_유튜브실시간, 매시 :20, yt_live_snapshot.py: 구독자·영상별 조회 기록)"
+note = "2026-10-13 핏 등록(KPI 구독 증가 포인트). 기록 파일이 3시간 넘게 안 바뀌면 멈춤. 원인: 유튜브 토큰 만료, 작업 스케줄러 실패."
+
+[[job]]
+id = "cron:fit-sheet-reconcile"
+kind = "file_age"
+path = 'C:/work/shorts-lab/pilot-shorts2/시트대조.md'
+max_age_min = 1800
+name = "핏 시트 대조(작업 스케줄러 핏_시트대조, 매일 09:20, sheet_reconcile.py: 사장님 시트와 유튜브·장부 대조)"
+note = "2026-10-13 핏 등록. 시트대조.md가 30시간 넘게 안 바뀌면 멈춤. 원인: 작업 스케줄러 실패, 시트 미러 읽기 실패."
+
+[[job]]
+id = "cron:fit-episode-index"
+kind = "file_age"
+path = 'C:/work/_ops/episode_index.log'
+max_age_min = 1800
+name = "핏 편 색인(작업 스케줄러 핏_색인, 매일 09:35, episode_index.py: 색인과 수파베이스 fit_episodes 갱신)"
+note = "2026-10-13 핏 등록(핏-발행 #39). 로그가 30시간 넘게 안 바뀌면 멈춤. 원인: 작업 스케줄러 실패, DB 키 문제."
