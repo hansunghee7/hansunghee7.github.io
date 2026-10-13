@@ -2462,11 +2462,11 @@
     {
       "date": "2026-10-14",
       "yes24": {
-        "mkt_rank": null,
-        "ad_rank": null,
-        "web_rank": null,
-        "uxui_rank": null,
-        "design_rank": null,
+        "mkt_rank": 197,
+        "ad_rank": 16,
+        "web_rank": 45,
+        "uxui_rank": 19,
+        "design_rank": 50,
         "econ_rank": null,
         "sales_index": 1869,
         "reviews": 18,
@@ -2490,5 +2490,5 @@
       }
     }
   ],
-  "updated_at": "2026-10-13T16:25:11.148053+00:00"
+  "updated_at": "2026-10-13T20:05:46.499242+00:00"
 }
