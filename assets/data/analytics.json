@@ -1,20 +1,13 @@
 {
-  "updated_at": "2026-10-13T07:41:47.757320+00:00",
+  "updated_at": "2026-10-13T15:12:04.170317+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 358,
-    "activeUsers": 309,
-    "newUsers": 305,
+    "sessions": 357,
+    "activeUsers": 307,
+    "newUsers": 303,
     "returningUsers": 4
   },
   "daily": [
-    {
-      "date": "2026-09-13",
-      "sessions": 3,
-      "activeUsers": 3,
-      "newUsers": 3,
-      "returningUsers": 0
-    },
     {
       "date": "2026-09-14",
       "sessions": 25,
@@ -220,27 +213,27 @@
     },
     {
       "date": "2026-10-13",
-      "sessions": 2,
-      "activeUsers": 2,
-      "newUsers": 2,
+      "sessions": 4,
+      "activeUsers": 3,
+      "newUsers": 3,
       "returningUsers": 0
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 122,
+    "home": 124,
     "log_home": 0,
-    "individual_post": 224,
+    "individual_post": 222,
     "other": 13
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 204
+      "sessions": 202
     },
     {
       "source": "linkedin.com",
-      "sessions": 44
+      "sessions": 45
     },
     {
       "source": "google",
@@ -267,12 +260,12 @@
       "sessions": 7
     },
     {
-      "source": "blog.naver.com",
+      "source": "(not set)",
       "sessions": 5
     },
     {
-      "source": "(not set)",
-      "sessions": 4
+      "source": "blog.naver.com",
+      "sessions": 5
     },
     {
       "source": "lm.facebook.com",
@@ -300,13 +293,13 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 204
+      "sessions": 202
     },
     {
       "source": "linkedin.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 44
+      "sessions": 45
     },
     {
       "source": "google",
@@ -424,10 +417,10 @@
     }
   ],
   "engagement_events": {
-    "section_view_proven": 57,
-    "section_view_voices": 51,
-    "section_view_book_class": 28,
-    "section_view_faq": 28,
+    "section_view_proven": 58,
+    "section_view_voices": 52,
+    "section_view_book_class": 29,
+    "section_view_faq": 29,
     "faq_open": 14,
     "read_complete": 77
   },
@@ -509,8 +502,8 @@
       "sessions": 2
     },
     {
-      "path": "/logs/206",
-      "title": "/logs/206",
+      "path": "/logs/34",
+      "title": "/logs/34",
       "sessions": 2
     }
   ],
@@ -608,7 +601,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 367,
+    "total_desktop_sessions": 369,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
@@ -639,7 +632,7 @@
       {
         "resolution": "1463x915",
         "width": 1463,
-        "sessions": 12
+        "sessions": 13
       },
       {
         "resolution": "1536x864",
