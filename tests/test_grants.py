@@ -37,6 +37,7 @@ class GrantsTest(unittest.TestCase):
         self.assertTrue(found)
         for f in found:
             self.assertIn("grant", f.split(","), "시간당 거울이 지원현황(section=grant) 행을 지우면 안 된다")
+            self.assertIn("fact", f.split(","), "시간당 거울이 자격 사실표(section=fact) 행을 지우면 안 된다")
 
 
 if __name__ == "__main__":
