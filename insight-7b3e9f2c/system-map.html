@@ -592,6 +592,7 @@
     <p class="sec-note">배포 전 → 배포 후 → 매일 아침, 시점이 다른 세 겹입니다. 대응 절차는 저장소 CLAUDE.md의 "배포 사고 대응 매뉴얼"에 있습니다.</p>
 
     <div class="log-list">
+      <div class="log-item"><span class="dot done"></span><div><b>2026-10-13</b>: 새김(simplifier-saegim) GitHub Actions 분 사용량 절감(한도 90% 대응). Test는 같은 PR의 앞 실행을 취소하고 pip 캐시를 쓰며, Deploy to Cloud Run은 PR에서 Dockerfile·requirements 등 컨테이너 파일이 바뀔 때만 돌고 시험 파일(test_*.py)만 바뀐 병합은 배포하지 않는다. 배포 뒤 단계로 마이그레이션 누락 점검(check_schema_applied.py, 경고만)을 추가. <span class="files">simplifier-saegim .github/workflows/test.yml · deploy-cloud-run.yml (PR 607·608·606)</span></div></div>
       <div class="log-item"><span class="dot done"></span><div><b>2026-10-02</b>: 숏폼 성과 수집을 공식 API(YouTube Analytics, Meta Graph)로 비공개 저장소 <code>carvit-insight-data</code>에 연결하고 편별 성과 표를 자동 생성. 구PC 네이버 클립 수집기에 편 ID·팔로잉 수를 추가하고 같은 표로 올림. 외부 연동 20 → 21.</div></div>
       <div class="log-item"><span class="dot done"></span><div><b>배포 전 — Build check</b> (push마다) · GitHub Pages와 같은 gem 구성으로 미리 빌드해 실패를 몇 분 안에 빨간 X로 표시. 실패 시 사장님 이메일로 알림.
         <span class="files">.github/workflows/build-check.yml · Gemfile</span>
