@@ -1410,7 +1410,7 @@
         "rating": 10.0
       },
       "aladin": {
-        "sales_point": 749,
+        "sales_point": 747,
         "reviews": 2,
         "rating": 10.0,
         "planning_rank": null,
@@ -1432,5 +1432,5 @@
       }
     }
   ],
-  "updated_at": "2026-10-12T20:03:59.034102+00:00"
+  "updated_at": "2026-10-13T01:55:23.596940+00:00"
 }

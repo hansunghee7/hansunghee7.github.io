@@ -2448,7 +2448,7 @@
         "rating": 9.6,
         "design_rank": null,
         "brand_rank": null,
-        "ad_rank": 22
+        "ad_rank": 25
       },
       "kyobo": {
         "uxui_cat": null,
@@ -2460,5 +2460,5 @@
       }
     }
   ],
-  "updated_at": "2026-10-12T20:06:20.498873+00:00"
+  "updated_at": "2026-10-13T01:57:47.899667+00:00"
 }
