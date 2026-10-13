@@ -149,6 +149,11 @@ def lint(text, context="generic", title=None, sub=None, rb=None, body=False):
         elif n > bc["max"]:
             add("error", "분량초과", f"본문 {n}자: 상한 {bc['max']}자(WRITING_GUIDE 5-2절). 주제에서 벗어난 문단부터 뺀다")
 
+    # 사장님 2026-10-13: 고객·회사를 'A사'처럼 알파벳으로 부르지 않는다. '스타트업', '한 회사'처럼 일반 명사로 쓴다.
+    anon = sorted(set(re.findall(r"(?<![A-Za-z0-9])[A-Z]사(?=도|는|은|가|를|의|와|과|에|로|만|이|$|[\s,.\"'」)])", text)))
+    if anon:
+        add("warn", "익명표기", "회사를 알파벳으로 부르는 표현: " + ", ".join(anon) + ". '스타트업', '한 회사'로 바꾼다(사장님 2026-10-13)")
+
     uc = unsourced_claims(text)
     if uc:
         add("warn", "출처없는근거", f"근거로 든 문장 {len(uc)}개에 출처 표시가 없다(링크·출처·연도 중 하나를 같은 문장에): " + " / ".join(uc[:2]))
@@ -495,6 +500,7 @@ LINT_CASES = [
     ("본문 분량 하한 미만은 경고(716자 초안 사고, 2026-10-13)", dict(text="이 글은 실험 결과를 정리합니다. " * 30, context="home", body=True), 1),
     ("본문 분량 범위 안은 통과", dict(text="이 글은 실험 결과를 정리합니다. " * 62, context="home", body=True), 0),
     ("본문 분량 상한 초과는 오류", dict(text="이 글은 실험 결과를 정리합니다. " * 110, context="home", body=True), 2),
+    ("A사 같은 알파벳 익명표기는 경고(사장님 2026-10-13)", dict(text="제가 코칭했던 A사도 그랬습니다. 그래서 순서를 바꿨습니다.", context="home"), 1),
     ("회사 이름 노출은 오류", dict(text="Carvit은 Simplifier가 만들었습니다.", context="carvit"), 2),
     ("홈페이지 맥락에서는 회사 이름 허용", dict(text="심플리파이어는 강연과 코칭을 합니다.", context="home"), 0),
 ]
