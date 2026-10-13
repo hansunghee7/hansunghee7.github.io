@@ -1,4 +1,0 @@
-! Branch claude/maya-align-1013d is checked out in the current worktree (C:/work/maya-align-d); skipping local delete
-  To finish cleanup, first navigate out of the worktree, then run:
-  git worktree remove C:/work/maya-align-d && git branch -D claude/maya-align-1013d
-finished
