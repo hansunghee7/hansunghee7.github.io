@@ -18,6 +18,20 @@ if sys.stdout is not None:
 KST = timezone(timedelta(hours=9))
 DAILY = "C:/work/_ops/maya_linkedin/*.json"  # 예약 세션 maya-linkedin-daily-read(매일 21:30)가 쓰는 글별 성과 읽기 결과
 PATH = Path(__file__).resolve().parents[2] / "assets" / "data" / "linkedin_experiment.json"
+# 2026-10-13 12시간 전용 읽기(linkedin_12h_read.py)가 쌓는 스냅샷 장부. 일일 파일에 값이 없을 때만 보간 후보로 쓴다(기존 판정 불변).
+SNAPS = "C:/work/_ops/linkedin_collect/snapshots.jsonl"
+
+
+def snapshot_interp(p, due, now):
+    """기한+10시간이 지났는데 일일 파일 값이 없을 때, 앞뒤 스냅샷 선형 보간값을 돌려준다(없으면 None). 보간 표기가 붙는다."""
+    if now < due + timedelta(hours=10):
+        return None
+    try:
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        import linkedin_12h as L
+        return L.interpolate_at(L.load_snapshots(SNAPS), p["title"], due)
+    except Exception:
+        return None
 
 
 def load():
@@ -65,6 +79,8 @@ def status(now=None):
             state = "기록(미측정 사유)" if s.get("missed") else "측정 완료"
         elif daily_match(p, d):
             state = "일일 읽기로 측정(apply 필요)"
+        elif snapshot_interp(p, d, now):
+            state = "보간값으로 측정(apply 필요)"
         elif now >= d + timedelta(hours=10):
             state = "기한 지남"
         else:
@@ -95,6 +111,13 @@ def main():
             if p.get("status") == "cancelled" or (p.get("snaps") or {}).get("12h"):
                 continue
             m = daily_match(p, due_at(p))
+            if not m:
+                ip = snapshot_interp(p, due_at(p), datetime.now(KST))
+                if ip:  # 보간값은 실측과 구분되도록 interpolated 표기를 남긴다(KPI 중앙값에서 분리 집계용)
+                    p.setdefault("snaps", {})["12h"] = {"likes": ip["likes"], "impressions": ip["impressions"], "comments": None,
+                                                        "at": ip["at"], "interpolated": True, "note": ip["note"]}
+                    n += 1
+                continue
             if m:
                 p.setdefault("snaps", {})["12h"] = {"likes": m[0], "impressions": m[1], "comments": None,
                                                     "at": m[2].isoformat(timespec="minutes"),

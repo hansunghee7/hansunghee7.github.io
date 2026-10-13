@@ -1,0 +1,11 @@
+# 미등록 초안(2026-10-13). 등록 전 조건: linkedin_12h_read.py 를 1회 실행해 성공 증거를 확인한 뒤 jobs.toml 에 아래 블록을 옮긴다.
+# 신PC 작업 스케줄러 'linkedin_12h_read'를 10분마다 실행: pythonw.exe scripts/ops/linkedin_12h_read.py (대부분 skip 으로 즉시 종료)
+# 감시 대장에 넣을 때는 state 파일 갱신이 아니라 읽기 성공 여부가 목적이므로 snapshots.jsonl 의 나이로 본다(글이 없는 날은 안 바뀌니 severity=warn, max_age_min 넉넉히).
+[[job]]
+id = "file:linkedin-12h-snapshots"
+severity = "warn"
+kind = "file_age"
+path = 'C:/work/_ops/linkedin_collect/snapshots.jsonl'
+max_age_min = 4320
+name = "링크드인 게시 후 12시간 전용 읽기 스냅샷(신PC 작업 스케줄러 linkedin_12h_read, linkedin_12h_read.py)"
+note = "2026-10-13 설계서 추천 A. 하루 최대 2회, 차단 문구 시 그날 중지, 연속 2일 실패 시 3일 쉼+miss 기록. 첫 자동 실행 결과 확인 필요."
