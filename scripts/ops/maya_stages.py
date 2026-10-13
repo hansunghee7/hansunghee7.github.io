@@ -32,6 +32,13 @@ def main():
     plan = [p for p in load("publish_plan.json") if p["date"] >= a.since and p["track"].startswith("홈페이지")]
     queue = load("sns_publish_queue.json")
     react = load("post_reactions.json")
+    # 링크드인·리멤버는 구PC 무인 프로필이 매일 읽은 결과(maya_linkedin_pull.py가 가져옴)도 반응수집 증거로 본다(2026-10-13)
+    auto_heads = []
+    for fn in ("C:/work/_ops/maya_linkedin_latest.json",):
+        try:
+            auto_heads += [q.get("title") or "" for q in json.loads(Path(fn).read_text(encoding="utf-8")).get("posts", [])]
+        except Exception:
+            pass
     exp = {e["post"]: e for e in load("linkedin_experiment.json")["posts"]}
     titles = [t for t in load("posts.json") if t["id"] >= 600]
     cards = [c.name for c in CARDS.glob("*.md")] if CARDS.exists() else []
@@ -56,7 +63,7 @@ def main():
         resv = "OK" if re.search(r"예약|완료", p["status"]) else "-"
         qs = [q for q in queue if post and q["post_ref"] == post and q["status"] != "cancelled"]
         sns = ",".join(sorted({q["platform"][:2] for q in qs})) or "-"
-        rc = "OK" if post and any(r["post"] == post for r in react) else "-"
+        rc = "OK" if post and (any(r["post"] == post for r in react) or any(p["topic"][:10] and p["topic"][:10] in h for h in auto_heads)) else "-"
         ex = "OK" if post in exp and any(exp[post]["snaps"].values()) else ("등록만" if post in exp else "-")
         cells = [card, exp_ok, resv, post or "-", sns, rc, ex]
         blanks += sum(1 for c in (card, exp_ok, resv, sns, rc, ex) if c == "-")
