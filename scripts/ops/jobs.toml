@@ -543,3 +543,11 @@ path = 'C:/work/_ops/maya_linkedin_latest.json'
 max_age_min = 2880
 name = "마야 링크드인 글별 성과 가져오기(구PC cron 21:05 KST read_maya_linkedin.py → 신PC 작업 스케줄러 maya_linkedin_pull 21:15, maya_linkedin_pull.py)"
 note = "2026-10-12 마야 등록. 읽기는 구PC SNS 크롬 9227(링크드인 로그인됨)이 하고 구PC 쪽 감시는 jobs_goosolar.toml cron:maya-linkedin. 이틀 넘게 안 바뀌면 멈춤(로그인 만료·구PC 꺼짐 의심). 실행본은 C:/work/_ops/maya_linkedin_pull.py(원본 scripts/ops/maya_linkedin_pull.py). 첫 자동 실행은 10/13 21:15 확인 필요."
+
+[[job]]
+id = "fn:credit-daily"
+kind = "cmd"
+cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\credit_daily_report.py', "status"]
+every_min = 60
+name = "클로드 API 프로모션 크레딧 소진(99.50달러, 10/27 21시까지 98.5 이상, credit_daily_report.py)"
+note = "2026-10-13 탐 등록(사장님 지시: 일일 리포트를 사장님과 탐이 인지). 매시간 장부를 읽어 상태 갱신(텔레그램 없음), 지연·위험이면 붉음(종료 코드 1)이고 세션 시작 때 '지금 문제' 줄로 뜬다. 한국시간 21시 이후 오늘 안 보냈으면 텔레그램 5줄도 보낸다(작업 스케줄러 simplifier-credit-daily 21:00이 정시 전송, 둘 다 하루 1회 표식으로 중복 방지). 붉을 때 할 일: C:/work/_ops/credit_daily/credit_actions.md의 명령 실행(예비 작업 추가 발주, 계획서 3절). 정상·앞섬이면 초록. 콘솔 잔액 대조는 record-console로 기록. 만료 뒤(10/28) 이 항목과 스케줄러 작업은 삭제."
