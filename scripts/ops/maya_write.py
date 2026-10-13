@@ -104,7 +104,7 @@ def unsourced_claims(text):
     return out
 
 
-def lint(text, context="generic", title=None, sub=None, rb=None):
+def lint(text, context="generic", title=None, sub=None, rb=None, body=False):
     """기계가 셀 수 있는 규칙만 검사한다. 판단이 필요한 품질은 독립 평가자가 한다."""
     rb = rb or load_rubrics()
     cfg = rb["lint"]
@@ -138,6 +138,16 @@ def lint(text, context="generic", title=None, sub=None, rb=None):
             n = text.count(w)
             if n:
                 add("warn", "용어", f"'{w}' {n}회: {why}")
+
+    if body:
+        # 홈페이지 글 본문 분량(WRITING_GUIDE 5-2절: 목표 1,000자 안팎, 상한 1,500자, 공백 포함). 2026-10-13 사장님 "글이 너무 짧은데" 재발 방지:
+        # 초안이 716자·691자로 컨펌까지 올라간 일. 상한만 있고 하한이 없던 것이 원인이었다.
+        bc = cfg["body_chars"]
+        n = len(text.strip())
+        if n < bc["min"]:
+            add("warn", "분량부족", f"본문 {n}자: 목표 {bc['target']}자 안팎(하한 {bc['min']}자, WRITING_GUIDE 5-2절). 재료(사실 목록)가 모자란 것이므로 늘려 쓰지 말고 다이얼로그·원문 대조로 재료부터 더한다")
+        elif n > bc["max"]:
+            add("error", "분량초과", f"본문 {n}자: 상한 {bc['max']}자(WRITING_GUIDE 5-2절). 주제에서 벗어난 문단부터 뺀다")
 
     uc = unsourced_claims(text)
     if uc:
@@ -402,7 +412,10 @@ def new_tokens(brief_text, out_text):
 
 
 def _run_variant(name, instr, brief_text, outdir, model, rb):
-    prompt = brief_text.rstrip() + "\n\n[이 버전의 전략]\n" + instr + "\n제목은 쓰지 않는다. 본문만 쓴다.\n"
+    bc = rb["lint"]["body_chars"]
+    # 분량은 지시서에 적혀 있든 말든 도구가 항상 붙인다(문서 기억에 맡기지 않는다, CLAUDE#4e7b)
+    prompt = (brief_text.rstrip() + "\n\n[이 버전의 전략]\n" + instr + "\n제목은 쓰지 않는다. 본문만 쓴다.\n"
+              + f"[분량] 공백 포함 {bc['target']}~{bc['target'] + 300}자로 쓴다(상한 {bc['max']}자). 사실 목록이 모자라 분량이 안 나오면 지어내지 말고 짧게 끝낸다.\n")
     pf, of = Path(outdir) / f"{name}.prompt.txt", Path(outdir) / f"{name}.md"
     pf.write_text(prompt, encoding="utf-8", newline="\n")
     script = HERE / "ask_vertex.py"
@@ -412,13 +425,29 @@ def _run_variant(name, instr, brief_text, outdir, model, rb):
     if r.returncode != 0 or not of.exists():
         return {"name": name, "error": (r.stderr or r.stdout)[-200:]}
     text = of.read_text(encoding="utf-8").strip()
-    lr = lint(text, "home", rb=rb)
+    lr = lint(text, "home", rb=rb, body=True)
     return {"name": name, "instr": instr, "file": str(of), "chars": len(text), "lint": lr["status"],
             "issues": [i["message"][:70] for i in lr["issues"]], "new": new_tokens(brief_text, text), "text": text}
 
 
-def draft(brief_path, outdir, strategies, model="gemini-3.8-flash", rb=None):
+def brief_problem(brief_text, rb):
+    """사실 재료가 모자란 지시서는 초안을 만들지 않는다(2026-10-13: 사실 6줄로 쓴 초안이 700자라 사장님이 '너무 짧다'고 지적).
+    [사실 목록] 블록의 글자 수를 센다. 블록이 없으면 지시서 전체를 센다."""
+    m = re.search(r"\[사실 목록.*?(?=\n\[문체 규칙|\Z)", brief_text, re.S)
+    facts = (m.group(0) if m else brief_text)
+    need = rb["lint"]["body_chars"]["brief_facts_min"]
+    n = len(facts.strip())
+    if n < need:
+        return f"사실 목록이 {n}자로 모자랍니다(최소 {need}자). 다이얼로그·원문 대조로 재료를 먼저 더하세요(분량은 재료에서 나옵니다)"
+    return None
+
+
+def draft(brief_path, outdir, strategies, model="gemini-3.8-flash", rb=None, allow_thin=False):
     rb = rb or load_rubrics()
+    if not allow_thin:
+        bp = brief_problem(Path(brief_path).read_text(encoding="utf-8"), rb)
+        if bp:
+            raise SystemExit("초안 중단: " + bp + " (그래도 쓰려면 --allow-thin-brief)")
     Path(outdir).mkdir(parents=True, exist_ok=True)
     brief_text = Path(brief_path).read_text(encoding="utf-8")
     with _cf.ThreadPoolExecutor(len(strategies)) as ex:
@@ -463,6 +492,9 @@ LINT_CASES = [
     ("학술지 이름이 같은 문장에 있으면 출처로 인정", dict(text="Science Advances에 실린 연구에서는 개인 창의성은 오르지만 집단 참신함은 줄었다고 합니다. 그래서 순서를 바꿨습니다.", context="generic"), 0),
     ("시점 표현이 되풀이되면 경고(A형 글 v7 사고, 2026-10-13)", dict(text="얼마 전 회의에서 말씀드렸습니다. 그런데 얼마 전 저희 팀도 같은 일을 겪었습니다. 그래서 순서를 바꿨습니다.", context="generic"), 1),
     ("시점 표현이 한 번이면 통과", dict(text="얼마 전 회의에서 말씀드렸습니다. 그런데 저희 팀도 같은 일을 겪었습니다. 그래서 순서를 바꿨습니다.", context="generic"), 0),
+    ("본문 분량 하한 미만은 경고(716자 초안 사고, 2026-10-13)", dict(text="이 글은 실험 결과를 정리합니다. " * 30, context="home", body=True), 1),
+    ("본문 분량 범위 안은 통과", dict(text="이 글은 실험 결과를 정리합니다. " * 62, context="home", body=True), 0),
+    ("본문 분량 상한 초과는 오류", dict(text="이 글은 실험 결과를 정리합니다. " * 110, context="home", body=True), 2),
     ("회사 이름 노출은 오류", dict(text="Carvit은 Simplifier가 만들었습니다.", context="carvit"), 2),
     ("홈페이지 맥락에서는 회사 이름 허용", dict(text="심플리파이어는 강연과 코칭을 합니다.", context="home"), 0),
 ]
@@ -530,13 +562,13 @@ def main(argv=None):
     sp = ap.add_subparsers(dest="cmd", required=True)
     a = sp.add_parser("route"); a.add_argument("request")
     a = sp.add_parser("lint"); a.add_argument("file", nargs="?"); a.add_argument("--text"); a.add_argument("--title"); a.add_argument("--sub")
-    a.add_argument("--context", choices=["carvit", "home", "generic"], default="generic"); a.add_argument("--json", action="store_true"); a.add_argument("--numbers", action="store_true")
+    a.add_argument("--context", choices=["carvit", "home", "generic"], default="generic"); a.add_argument("--json", action="store_true"); a.add_argument("--numbers", action="store_true"); a.add_argument("--body", action="store_true", help="홈페이지 글 본문 분량(900~1,500자)도 검사")
     a = sp.add_parser("card"); a.add_argument("kind"); a.add_argument("file")
     a = sp.add_parser("log"); a.add_argument("action", choices=["add"]); a.add_argument("--type", required=True); a.add_argument("--artifact", required=True)
     a.add_argument("--scores", required=True, help='JSON 문자열 또는 JSON 파일 경로'); a.add_argument("--evaluator", required=True)
     a.add_argument("--kind", choices=["baseline", "production"], default="production"); a.add_argument("--notes", default=""); a.add_argument("--lint-file")
     a.add_argument("--context", default="generic"); a.add_argument("--title"); a.add_argument("--sub")
-    a = sp.add_parser("draft"); a.add_argument("--brief", required=True); a.add_argument("--out", required=True)
+    a = sp.add_parser("draft"); a.add_argument("--brief", required=True); a.add_argument("--out", required=True); a.add_argument("--allow-thin-brief", action="store_true")
     a.add_argument("--strategies", default="scene,fail,order", help="이름 목록(scene,fail,order) 또는 '이름=지시문' 여러 개를 세미콜론으로")
     a.add_argument("--model", default="gemini-3.8-flash"); a.add_argument("--send", action="store_true", help="비교 문서를 텔레그램 컨펌 방으로 보낸다")
     a = sp.add_parser("routecase"); a.add_argument("request"); a.add_argument("expected", help="ux|copy|tech|brand|naming|none")
@@ -555,7 +587,7 @@ def main(argv=None):
         return 0
     if args.cmd == "lint":
         text = args.text if args.text is not None else (Path(args.file).read_text(encoding="utf-8") if args.file else "")
-        res = lint(text, args.context, args.title, args.sub, rb)
+        res = lint(text, args.context, args.title, args.sub, rb, body=args.body)
         if args.numbers:
             res["numbers"] = numbers_in(text)
         if args.json:
@@ -601,7 +633,7 @@ def main(argv=None):
             else:
                 print(f"알 수 없는 전략: {part} (가능: {list(STRATEGIES)})", file=sys.stderr)
                 return 2
-        res, out = draft(args.brief, args.out, strat, args.model, rb)
+        res, out = draft(args.brief, args.out, strat, args.model, rb, allow_thin=args.allow_thin_brief)
         for r in res:
             print(r["name"], ("실패:" + r["error"]) if "error" in r else f"{r['chars']}자 린트 {r['lint']} 새사실 {r['new'] or '없음'} 경고 {r['issues'] or '없음'}")
         print("비교 문서:", out)
