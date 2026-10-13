@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-13T01:38:18.060668+00:00",
+  "updated_at": "2026-10-13T07:41:47.757320+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 356,
-    "activeUsers": 307,
-    "newUsers": 302,
-    "returningUsers": 5
+    "sessions": 358,
+    "activeUsers": 309,
+    "newUsers": 305,
+    "returningUsers": 4
   },
   "daily": [
     {
@@ -213,22 +213,22 @@
     },
     {
       "date": "2026-10-12",
-      "sessions": 10,
-      "activeUsers": 9,
-      "newUsers": 8,
-      "returningUsers": 1
+      "sessions": 11,
+      "activeUsers": 10,
+      "newUsers": 10,
+      "returningUsers": 0
     },
     {
       "date": "2026-10-13",
-      "sessions": 1,
-      "activeUsers": 1,
-      "newUsers": 1,
+      "sessions": 2,
+      "activeUsers": 2,
+      "newUsers": 2,
       "returningUsers": 0
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 123,
+    "home": 122,
     "log_home": 0,
     "individual_post": 224,
     "other": 13
@@ -236,7 +236,7 @@
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 202
+      "sessions": 204
     },
     {
       "source": "linkedin.com",
@@ -259,10 +259,6 @@
       "sessions": 14
     },
     {
-      "source": "(not set)",
-      "sessions": 7
-    },
-    {
       "source": "daum",
       "sessions": 7
     },
@@ -273,6 +269,10 @@
     {
       "source": "blog.naver.com",
       "sessions": 5
+    },
+    {
+      "source": "(not set)",
+      "sessions": 4
     },
     {
       "source": "lm.facebook.com",
@@ -300,7 +300,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 202
+      "sessions": 204
     },
     {
       "source": "linkedin.com",
@@ -379,6 +379,12 @@
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 2
+    },
+    {
+      "source": "(data not available)",
+      "medium": "(data not available)",
+      "campaign": "(cross-network)",
+      "sessions": 1
     },
     {
       "source": "bing",
@@ -418,12 +424,12 @@
     }
   ],
   "engagement_events": {
-    "section_view_proven": 56,
+    "section_view_proven": 57,
     "section_view_voices": 51,
-    "section_view_book_class": 27,
-    "section_view_faq": 27,
+    "section_view_book_class": 28,
+    "section_view_faq": 28,
     "faq_open": 14,
-    "read_complete": 76
+    "read_complete": 77
   },
   "contact_funnel": {
     "contact_open": 18,
@@ -602,18 +608,18 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 365,
+    "total_desktop_sessions": 367,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 70
+        "sessions": 71
       },
       {
         "resolution": "1920x1080",
         "width": 1920,
-        "sessions": 68
+        "sessions": 69
       },
       {
         "resolution": "1600x1600",
