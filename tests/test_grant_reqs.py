@@ -46,7 +46,9 @@ class GrantReqsTest(unittest.TestCase):
         late = {"source_date": "2026-12-01", "raw": '{"impact": "상"}'}
         self.assertEqual(gr.boss_tier(hi, 14, t), 1)
         self.assertEqual(gr.boss_tier(mid, 14, t), 2)
-        self.assertEqual(gr.boss_tier(late, 14, t), 3)
+        soon = {"source_date": "2026-11-15", "raw": '{"impact": "상"}'}
+        self.assertEqual(gr.boss_tier(soon, 14, t), 3)
+        self.assertEqual(gr.boss_tier(late, 14, t), 4)
 
     def test_rejects_ids(self):
         for bad in ("123-45-67890", "110111-1234567", "sk-" + "a" * 20):
