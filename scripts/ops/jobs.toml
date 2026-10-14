@@ -592,3 +592,11 @@ path = 'C:/work/_ops/episode_index.log'
 max_age_min = 1800
 name = "핏 편 색인(작업 스케줄러 핏_색인, 매일 09:35, episode_index.py: 색인과 수파베이스 fit_episodes 갱신)"
 note = "2026-10-13 핏 등록(핏-발행 #39). 로그가 30시간 넘게 안 바뀌면 멈춤. 원인: 작업 스케줄러 실패, DB 키 문제."
+
+[[job]]
+id = "fn:kstartup-watch"
+kind = "cmd"
+cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\kstartup_watch.py']
+every_min = 720
+name = "K-Startup 모집중 공고 감시(새 공고 기록, 창업도약·초격차·AI 등 관심 키워드는 텔레그램 알림, kstartup_watch.py)"
+note = "2026-10-14 탐 등록(공정 카드 탐-공고수집 #2, 사장님 결정: 창업도약 다음 회차 준비). 상태 C:/work/_ops/grants_prep/ks_seen.json, 하루 2회(사람 빈도). 종료 코드 1 = 목록 파싱 0건(페이지 구조 변경). 첫 실행은 기준선 저장이라 알림 없음. 첫 자동 실행 결과 확인 필요."
