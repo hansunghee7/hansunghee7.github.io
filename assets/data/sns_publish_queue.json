@@ -623,8 +623,8 @@
       ]
     },
     "publishAt": "2026-10-14T23:27:00.000Z",
-    "status": "pending",
-    "note": "사장님 지시로 10/20 예약에서 10/15 즉시 게시로 변경(홈페이지 글 먼저 공개). 본문은 사장님 확정 본문 1안 그대로.",
+    "status": "error",
+    "note": "정책 관문: 채점 파일 queue_id가 이 큐 항목 id와 다릅니다(다른 글의 채점 재사용 금지)",
     "image_check": {
       "file": "assets/data/image_scores/2026-10-20-ig-639.json"
     },
@@ -645,11 +645,11 @@
       ]
     },
     "publishAt": "2026-10-14T23:27:00.000Z",
-    "status": "pending",
+    "status": "error",
     "image_check": {
       "file": "assets/data/image_scores/2026-10-20-th-639.json"
     },
-    "note": "사장님 지시로 10/20 예약에서 10/15 즉시 게시로 변경(홈페이지 글 먼저 공개). 본문은 사장님 확정 본문 1안 그대로.",
+    "note": "정책 관문: 채점 파일 queue_id가 이 큐 항목 id와 다릅니다(다른 글의 채점 재사용 금지)",
     "approved_by": "사장님",
     "approved_quote": "모든 SNS 채널에 올려주세요 (2026-10-15 08:00대, 채팅. 홈페이지 639 먼저 공개한 뒤 바로 게시)"
   }
