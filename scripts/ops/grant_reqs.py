@@ -3,8 +3,11 @@
 우선순위·일정·임팩트로 요건을 채울 실천항목을 정한다).
 저장: 운영 DB tasks 표의 section='req'(요건 매핑)와 section='act'(실천항목). grants.py·facts.py·doc_ledger.py와 같은 방식, 새 표 없음.
 
+공통요건(section='creq'): 여러 사업이 같이 묻는 요건(업력·소재지·근로자 수·재무 등)을 한 번만 적고 우리 상태의 정본으로 쓴다.
+  no=C번호 · owner=분류(A~E) · title=공통요건명 · status=충족|미충족|확인필요 · result=우리 값 · evidence=출처 · raw=JSON(fact=F번호)
+  사업별 요건(req)은 --common C번호로 공통요건에 연결하고, 사업마다 다른 기준값(예: 업력 3~7년)과 판정만 적는다.
 req 열 대응: no=Q번호 · owner=지원사업 G번호 · title=요건 · status=충족|미충족|확인필요|해당없음 · source_date=마지막 확인일 ·
-             result=우리 사실(F번호 포함) · evidence=근거(공식 URL 또는 출처) · next_action=채우는 방법 · raw=JSON(cat=A~E, fact=F번호)
+             result=우리 사실(F번호 포함) · evidence=근거(공식 URL 또는 출처) · next_action=채우는 방법 · raw=JSON(cat=A~E, fact=F번호, common=C번호)
              분류: A 자격(업력·소재지·법인·업종) / B 고객 실증 / C 기술성 / D 재무 / E 제품 성숙도 (공고표 정본의 5분류와 같다)
 act 열 대응: no=A번호 · title=실천항목 · owner=담당(탐|사장님|세무사) · status=대기|진행|완료 · source_date=기한 ·
              result=임팩트 한 줄 · next_action=완료 기준 · raw=JSON(grants=G번호들, fills=Q번호들, priority=1~3, impact=상|중|하)
@@ -14,6 +17,9 @@ act 열 대응: no=A번호 · title=실천항목 · owner=담당(탐|사장님|�
   python scripts/ops/grant_reqs.py req list [--grant G14]
   python scripts/ops/grant_reqs.py req add --grant G14 --cat A --title "업력 3년 초과 7년 이내" --status 충족 --fact F01 --result "..." --evidence "..." --next "..."
   python scripts/ops/grant_reqs.py req set Q03 --status 충족 --result "..." [--next ..] [--evidence ..]
+  python scripts/ops/grant_reqs.py common list
+  python scripts/ops/grant_reqs.py common add --cat A --title "업력" --status 충족 --fact F01 --result "..." --evidence "..."
+  python scripts/ops/grant_reqs.py common set C01 --status 충족 --result "..."
   python scripts/ops/grant_reqs.py matrix
   python scripts/ops/grant_reqs.py act list [--status 대기]
   python scripts/ops/grant_reqs.py act add --title "..." --who 탐 --due 2026-10-21 --priority 1 --impact 상 --grants G14 --fills Q05,Q06 --result "..." --done "..."
@@ -110,7 +116,7 @@ def cmd_req_add(a):
     row = {c: None for c in COLS}
     row.update(owner=a.grant, section="req", no=no, title=a.title[:200], status=a.status, source_date=time.strftime("%Y-%m-%d"),
                next_action=(a.next or "")[:400], evidence=(a.evidence or "")[:300], result=(a.result or "")[:400], decider="사장님",
-               raw=json.dumps({"cat": a.cat, "fact": a.fact}, ensure_ascii=False), source="grant_reqs.py")
+               raw=json.dumps({"cat": a.cat, "fact": a.fact, "common": a.common}, ensure_ascii=False), source="grant_reqs.py")
     opsdb.insert("tasks", [row])
     print(f"등록: {no} {a.grant} {a.title} ({a.status})")
 
@@ -135,6 +141,66 @@ def cmd_req_set(a):
         sys.exit("바꿀 값이 없습니다")
     vals["source_date"] = time.strftime("%Y-%m-%d")
     opsdb.patch("tasks", {"section": "eq.req", "no": f"eq.{a.no}"}, vals)
+    print(f"갱신: {a.no}")
+
+
+def common_usage(reqs):
+    """공통요건 번호별로 연결된 사업별 요건 수: {C번호: 개수}."""
+    out = {}
+    for r in reqs:
+        c = raw_of(r).get("common")
+        if c:
+            out[c] = out.get(c, 0) + 1
+    return out
+
+
+def cmd_common_list(a):
+    rs = rows_of("creq")
+    if not rs:
+        print("(공통요건이 비어 있습니다)")
+        return
+    use = common_usage(rows_of("req"))
+    print(f"## 공통요건 ({time.strftime('%Y-%m-%d')} 기준, {len(rs)}건)\n")
+    print("| 번호 | 분류 | 공통요건 | 우리 상태 | 우리 값 | 사실표 | 연결된 사업 요건 |")
+    print("|---|---|---|---|---|---|---|")
+    for r in rs:
+        print(f"| {r['no']} | {r['owner']} | {cell(r['title'], 24)} | {r['status']} | {cell(r['result'], 44)} | {raw_of(r).get('fact') or ''} | {use.get(r['no'], 0)} |")
+
+
+def cmd_common_add(a):
+    clean(a.title, a.result, a.evidence)
+    if a.cat not in CATS or a.status not in ("충족", "미충족", "확인필요"):
+        sys.exit(f"분류는 {CATS}, 상태는 충족·미충족·확인필요 중 하나")
+    rs = rows_of("creq")
+    if any((r.get("title") or "").strip() == a.title.strip() for r in rs):
+        sys.exit("같은 공통요건이 이미 있습니다(set 으로 고치세요)")
+    no = next_no(rs, "C")
+    row = {c: None for c in COLS}
+    row.update(owner=a.cat, section="creq", no=no, title=a.title[:200], status=a.status, source_date=time.strftime("%Y-%m-%d"),
+               evidence=(a.evidence or "")[:300], result=(a.result or "")[:400], decider="사장님",
+               raw=json.dumps({"fact": a.fact}, ensure_ascii=False), source="grant_reqs.py")
+    opsdb.insert("tasks", [row])
+    print(f"등록: {no} {a.title} ({a.status})")
+
+
+def cmd_common_set(a):
+    rs = opsdb.select("tasks", "*", where={"section": "eq.creq", "no": f"eq.{a.no}"}, limit=1)
+    if not rs:
+        sys.exit(f"{a.no} 를 찾지 못했습니다")
+    clean(a.result, a.evidence)
+    vals = {}
+    if a.status:
+        if a.status not in ("충족", "미충족", "확인필요"):
+            sys.exit("상태는 충족·미충족·확인필요 중 하나")
+        vals["status"] = a.status
+    if a.result is not None:
+        vals["result"] = a.result[:400]
+    if a.evidence is not None:
+        vals["evidence"] = a.evidence[:300]
+    if not vals:
+        sys.exit("바꿀 값이 없습니다")
+    vals["source_date"] = time.strftime("%Y-%m-%d")
+    opsdb.patch("tasks", {"section": "eq.creq", "no": f"eq.{a.no}"}, vals)
     print(f"갱신: {a.no}")
 
 
@@ -217,7 +283,7 @@ def main():
     s = rq.add_parser("add")
     for k in ("grant", "cat", "title", "status"):
         s.add_argument("--" + k, required=True)
-    for k in ("fact", "result", "evidence", "next"):
+    for k in ("fact", "common", "result", "evidence", "next"):
         s.add_argument("--" + k)
     s.set_defaults(f=cmd_req_add)
     s = rq.add_parser("set")
@@ -225,6 +291,20 @@ def main():
     for k in ("status", "result", "evidence", "next"):
         s.add_argument("--" + k)
     s.set_defaults(f=cmd_req_set)
+    cm = top.add_parser("common").add_subparsers(dest="cmd", required=True)
+    s = cm.add_parser("list")
+    s.set_defaults(f=cmd_common_list)
+    s = cm.add_parser("add")
+    for k in ("cat", "title", "status"):
+        s.add_argument("--" + k, required=True)
+    for k in ("fact", "result", "evidence"):
+        s.add_argument("--" + k)
+    s.set_defaults(f=cmd_common_add)
+    s = cm.add_parser("set")
+    s.add_argument("no")
+    for k in ("status", "result", "evidence"):
+        s.add_argument("--" + k)
+    s.set_defaults(f=cmd_common_set)
     s = top.add_parser("matrix")
     s.set_defaults(f=cmd_matrix)
     ac = top.add_parser("act").add_subparsers(dest="cmd", required=True)
