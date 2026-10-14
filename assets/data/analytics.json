@@ -1,20 +1,13 @@
 {
-  "updated_at": "2026-10-14T12:58:56.741847+00:00",
+  "updated_at": "2026-10-14T20:01:00.160206+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 366,
-    "activeUsers": 311,
-    "newUsers": 307,
+    "sessions": 341,
+    "activeUsers": 297,
+    "newUsers": 293,
     "returningUsers": 4
   },
   "daily": [
-    {
-      "date": "2026-09-14",
-      "sessions": 25,
-      "activeUsers": 17,
-      "newUsers": 15,
-      "returningUsers": 2
-    },
     {
       "date": "2026-09-15",
       "sessions": 8,
@@ -224,19 +217,26 @@
       "activeUsers": 5,
       "newUsers": 4,
       "returningUsers": 1
+    },
+    {
+      "date": "2026-10-15",
+      "sessions": 1,
+      "activeUsers": 1,
+      "newUsers": 1,
+      "returningUsers": 0
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 131,
+    "home": 125,
     "log_home": 0,
-    "individual_post": 226,
-    "other": 13
+    "individual_post": 212,
+    "other": 10
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 203
+      "sessions": 189
     },
     {
       "source": "linkedin.com",
@@ -244,7 +244,7 @@
     },
     {
       "source": "google",
-      "sessions": 21
+      "sessions": 19
     },
     {
       "source": "m.search.naver.com",
@@ -252,11 +252,11 @@
     },
     {
       "source": "m.facebook.com",
-      "sessions": 17
+      "sessions": 14
     },
     {
       "source": "facebook.com",
-      "sessions": 14
+      "sessions": 12
     },
     {
       "source": "(not set)",
@@ -267,16 +267,16 @@
       "sessions": 7
     },
     {
-      "source": "maru-connect.webflow.io",
-      "sessions": 7
-    },
-    {
       "source": "blog.naver.com",
       "sessions": 5
     },
     {
       "source": "naver",
       "sessions": 5
+    },
+    {
+      "source": "maru-connect.webflow.io",
+      "sessions": 4
     },
     {
       "source": "lm.facebook.com",
@@ -300,7 +300,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 203
+      "sessions": 189
     },
     {
       "source": "linkedin.com",
@@ -312,7 +312,7 @@
       "source": "google",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 21
+      "sessions": 19
     },
     {
       "source": "m.search.naver.com",
@@ -324,24 +324,18 @@
       "source": "m.facebook.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 17
+      "sessions": 14
     },
     {
       "source": "facebook.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 14
+      "sessions": 12
     },
     {
       "source": "daum",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 7
-    },
-    {
-      "source": "maru-connect.webflow.io",
-      "medium": "referral",
-      "campaign": "(referral)",
       "sessions": 7
     },
     {
@@ -355,6 +349,12 @@
       "medium": "organic",
       "campaign": "(organic)",
       "sessions": 5
+    },
+    {
+      "source": "maru-connect.webflow.io",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "sessions": 4
     },
     {
       "source": "lm.facebook.com",
@@ -379,6 +379,12 @@
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 2
+    },
+    {
+      "source": "(data not available)",
+      "medium": "(data not available)",
+      "campaign": "(cross-network)",
+      "sessions": 1
     },
     {
       "source": "bing",
@@ -418,12 +424,12 @@
     }
   ],
   "engagement_events": {
-    "section_view_proven": 59,
-    "section_view_voices": 53,
-    "section_view_book_class": 30,
-    "section_view_faq": 30,
+    "section_view_proven": 56,
+    "section_view_voices": 50,
+    "section_view_book_class": 28,
+    "section_view_faq": 28,
     "faq_open": 14,
-    "read_complete": 79
+    "read_complete": 72
   },
   "contact_funnel": {
     "contact_open": 18,
@@ -436,11 +442,6 @@
       "path": "/logs/625",
       "title": "/logs/625",
       "sessions": 30
-    },
-    {
-      "path": "/logs/619",
-      "title": "/logs/619",
-      "sessions": 24
     },
     {
       "path": "/logs/631",
@@ -463,18 +464,23 @@
       "sessions": 9
     },
     {
+      "path": "/logs/619",
+      "title": "/logs/619",
+      "sessions": 9
+    },
+    {
       "path": "/logs/628",
       "title": "/logs/628",
       "sessions": 9
     },
     {
-      "path": "/logs/132",
-      "title": "/logs/132",
-      "sessions": 6
-    },
-    {
       "path": "/logs/224",
       "title": "/logs/224",
+      "sessions": 7
+    },
+    {
+      "path": "/logs/132",
+      "title": "/logs/132",
       "sessions": 6
     },
     {
@@ -516,12 +522,6 @@
       "views": 32
     },
     {
-      "path": "/logs/619/",
-      "title": "AI가 우선순위까지 대신 정해줄 수 있을까",
-      "uniqueViews": 20,
-      "views": 76
-    },
-    {
       "path": "/logs/631/",
       "title": "토큰을 아끼려다 기술이 늘었다",
       "uniqueViews": 19,
@@ -532,6 +532,12 @@
       "title": "팀이 커질수록 대표만 모르는 것",
       "uniqueViews": 16,
       "views": 18
+    },
+    {
+      "path": "/logs/619/",
+      "title": "AI가 우선순위까지 대신 정해줄 수 있을까",
+      "uniqueViews": 9,
+      "views": 10
     },
     {
       "path": "/logs/628/",
@@ -549,7 +555,13 @@
       "path": "/logs/618/",
       "title": "AI가 못 뺏는 능력 하나",
       "uniqueViews": 8,
-      "views": 11
+      "views": 10
+    },
+    {
+      "path": "/logs/224/",
+      "title": "나의 클론이 화상회의를 '피클'",
+      "uniqueViews": 7,
+      "views": 9
     },
     {
       "path": "/logs/132/",
@@ -558,32 +570,20 @@
       "views": 6
     },
     {
-      "path": "/logs/2/",
-      "title": "오디세이, 매우 사적인 관람평",
-      "uniqueViews": 6,
-      "views": 6
-    },
-    {
-      "path": "/logs/224/",
-      "title": "나의 클론이 화상회의를 '피클'",
-      "uniqueViews": 6,
-      "views": 8
-    },
-    {
       "path": "/logs/629/",
       "title": "PM과 PL 차이는 뭘까요?",
       "uniqueViews": 6,
       "views": 6
     },
     {
-      "path": "/logs/481/",
-      "title": "내가 GS에서 강의를 하는 이유",
+      "path": "/logs/2/",
+      "title": "오디세이, 매우 사적인 관람평",
       "uniqueViews": 5,
       "views": 5
     },
     {
-      "path": "/logs/6/",
-      "title": "자정이 가까워지도록 AI 얘기를 원 없이 나눴어요.",
+      "path": "/logs/481/",
+      "title": "내가 GS에서 강의를 하는 이유",
       "uniqueViews": 5,
       "views": 5
     },
@@ -598,6 +598,12 @@
       "title": "우선순위 설정의 프레임워크 'RICE'",
       "uniqueViews": 4,
       "views": 4
+    },
+    {
+      "path": "/logs/475/",
+      "title": "1화 신학기 개강",
+      "uniqueViews": 4,
+      "views": 10
     }
   ],
   "desktop_screen_resolutions": {
