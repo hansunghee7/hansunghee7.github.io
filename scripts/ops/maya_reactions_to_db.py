@@ -16,6 +16,26 @@ SRC = Path(__file__).resolve().parents[2] / 'assets' / 'data' / 'post_reactions.
 LABEL = {'linkedin': '링크드인', 'remember': '리멤버 커넥트', 'rocketpunch': '로켓펀치', 'facebook': '페이스북 개인'}
 
 
+LI_LATEST = Path(r'C:/work/_ops/maya_linkedin_latest.json')  # 구PC 일일 자동 읽기 결과(N30)
+
+
+def linkedin_daily(allrows):
+    """일일 자동 읽기(maya_linkedin_latest.json) 16글을 행으로 바꾼다. 기존 글번호와 제목 앞 10자로 맞추고, 못 맞추면 제목 해시로 id를 만든다."""
+    import hashlib
+    if not LI_LATEST.exists():
+        return []
+    d = json.loads(LI_LATEST.read_text(encoding='utf-8'))
+    known = {(x.get('title') or '')[:10]: x['post'] for x in allrows if x['channel'] == 'linkedin' and x.get('post')}
+    day = d['collected'][:10]
+    out = []
+    for p in d['posts']:
+        t = p['title']
+        post = known.get(t[:10]) or 't' + hashlib.md5(t.encode('utf-8')).hexdigest()[:6]
+        out.append({'date': day, 'channel': 'linkedin', 'post': post, 'title': t, 'likes': p.get('likes'),
+                    'comments': None, 'impressions': p.get('impressions')})
+    return out
+
+
 def main():
     dry = '--dry' in sys.argv
     if not SRC.exists():
@@ -24,6 +44,7 @@ def main():
     allrows = json.loads(SRC.read_text(encoding='utf-8'))
     rows = [r for r in allrows if r.get('post')]  # 글번호 없는 행(계정 합계 등)은 글별 장부에서 뺀다
     print('글번호 없어 제외', len(allrows) - len(rows), '행')
+    rows += linkedin_daily(allrows)
     chans = sorted({r['channel'] for r in rows})
     channels = [{'id': f'{c}-han', 'platform': c, 'label': f'{LABEL.get(c, c)} 한성희', 'active': True, 'source': 'screen-read'} for c in chans]
     items = {}
