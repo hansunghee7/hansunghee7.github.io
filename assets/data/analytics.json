@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-14T20:45:36.990093+00:00",
+  "updated_at": "2026-10-14T22:40:03.098650+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 341,
-    "activeUsers": 297,
+    "sessions": 342,
+    "activeUsers": 298,
     "newUsers": 293,
-    "returningUsers": 4
+    "returningUsers": 5
   },
   "daily": [
     {
@@ -220,15 +220,15 @@
     },
     {
       "date": "2026-10-15",
-      "sessions": 1,
-      "activeUsers": 1,
+      "sessions": 2,
+      "activeUsers": 2,
       "newUsers": 1,
-      "returningUsers": 0
+      "returningUsers": 1
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 125,
+    "home": 126,
     "log_home": 0,
     "individual_post": 212,
     "other": 10
@@ -260,7 +260,7 @@
     },
     {
       "source": "(not set)",
-      "sessions": 9
+      "sessions": 10
     },
     {
       "source": "daum",
@@ -424,10 +424,10 @@
     }
   ],
   "engagement_events": {
-    "section_view_proven": 56,
-    "section_view_voices": 50,
-    "section_view_book_class": 28,
-    "section_view_faq": 28,
+    "section_view_proven": 57,
+    "section_view_voices": 51,
+    "section_view_book_class": 29,
+    "section_view_faq": 29,
     "faq_open": 14,
     "read_complete": 72
   },
@@ -608,13 +608,13 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 377,
+    "total_desktop_sessions": 378,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 71
+        "sessions": 72
       },
       {
         "resolution": "1920x1080",
