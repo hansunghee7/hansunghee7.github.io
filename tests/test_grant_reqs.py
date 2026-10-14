@@ -34,6 +34,10 @@ class GrantReqsTest(unittest.TestCase):
         ]
         self.assertEqual([r["no"] for r in sorted(rows, key=gr.act_sort_key)], ["A3", "A1", "A2"])
 
+    def test_common_usage(self):
+        rows = [{"raw": '{"common": "C01"}'}, {"raw": {"common": "C01"}}, {"raw": '{"common": "C02"}'}, {"raw": "{}"}]
+        self.assertEqual(gr.common_usage(rows), {"C01": 2, "C02": 1})
+
     def test_rejects_ids(self):
         for bad in ("123-45-67890", "110111-1234567", "sk-" + "a" * 20):
             with self.assertRaises(SystemExit):
@@ -44,7 +48,7 @@ class GrantReqsTest(unittest.TestCase):
         found = re.findall(r"not\.in\.\(([^)]*)\)", src)
         self.assertTrue(found)
         for f in found:
-            for sec in ("req", "act"):
+            for sec in ("req", "act", "creq"):
                 self.assertIn(sec, f.split(","), f"시간당 거울이 section={sec} 행을 지우면 안 된다")
 
 
