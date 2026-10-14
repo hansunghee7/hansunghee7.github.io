@@ -56,3 +56,58 @@ name = "주간 보고서 8일 이내 갱신"
 type = "file_age"
 path = 'C:\work\shorts-lab\pilot-shorts2\주간_성과루프.md'
 max_hours = 192
+
+[[check]]
+name = "작업 스케줄러: 핏_공개후처리"
+type = "schtask"
+task = "핏_공개후처리"
+
+[[check]]
+name = "감시 대장: 핏_공개후처리"
+type = "jobs_id"
+id = "cron:fit-post-publish"
+
+[[check]]
+name = "작업 스케줄러: 핏_공장스냅샷"
+type = "schtask"
+task = "핏_공장스냅샷"
+
+[[check]]
+name = "감시 대장: 핏_공장스냅샷"
+type = "jobs_id"
+id = "cron:fit-factory-snapshot"
+
+[[check]]
+name = "작업 스케줄러: 핏_유튜브실시간"
+type = "schtask"
+task = "핏_유튜브실시간"
+
+[[check]]
+name = "감시 대장: 핏_유튜브실시간"
+type = "jobs_id"
+id = "cron:fit-yt-live"
+
+[[check]]
+name = "작업 스케줄러: 핏_시트대조"
+type = "schtask"
+task = "핏_시트대조"
+
+[[check]]
+name = "감시 대장: 핏_시트대조"
+type = "jobs_id"
+id = "cron:fit-sheet-reconcile"
+
+[[check]]
+name = "작업 스케줄러: 핏_색인"
+type = "schtask"
+task = "핏_색인"
+
+[[check]]
+name = "감시 대장: 핏_색인"
+type = "jobs_id"
+id = "cron:fit-episode-index"
+
+[[check]]
+name = "공개 후처리 로그에 시작 실패(PYTHONUTF8 값 오류)가 없다"
+type = "cmd_fails"
+cmd = ["python", "-c", "import sys;t=open(r'C:/work/_ops/post_publish.log',encoding='utf-8',errors='replace').read()[-3000:];sys.exit(0 if 'preconfig_init_utf8_mode' in t else 1)"]
