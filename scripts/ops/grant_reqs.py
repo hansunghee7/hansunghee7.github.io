@@ -219,8 +219,9 @@ def cmd_matrix(a):
         print(f"| {g} | {c['충족']} | {c['미충족']} | {c['확인필요']} | {c['해당없음']} |")
 
 
-def boss_tier(r, days=14, today=None):
-    """사장님 백로그 순위: 1=임팩트 상이면서 긴급, 2=긴급, 3=그 밖. 긴급 = 기한이 days일 이내(지난 것 포함)."""
+def boss_tier(r, days=14, today=None, far=45):
+    """사장님 백로그 순위: 1=임팩트 상이면서 긴급, 2=긴급, 3=긴급은 아니지만 far일 이내, 4=far일보다 먼 것.
+    긴급 = 기한이 days일 이내(지난 것 포함)."""
     import datetime
     due = r.get("source_date") or ""
     try:
@@ -230,7 +231,9 @@ def boss_tier(r, days=14, today=None):
     urgent = left is not None and left <= days
     if urgent and raw_of(r).get("impact") == "상":
         return 1
-    return 2 if urgent else 3
+    if urgent:
+        return 2
+    return 4 if left is not None and left > far else 3
 
 
 def cmd_boss(a):
@@ -240,7 +243,7 @@ def cmd_boss(a):
         return
     rs.sort(key=lambda r: (boss_tier(r, a.days), r.get("source_date") or "9999-99-99"))
     print(f"## 지원사업 사장님 백로그 ({time.strftime('%Y-%m-%d')} 기준, 긴급 = 기한 {a.days}일 이내)\n")
-    names = {1: "1순위 임팩트 큼 + 긴급", 2: "2순위 긴급", 3: "3순위 아직 여유"}
+    names = {1: "1순위 임팩트 큼 + 긴급", 2: "2순위 긴급", 3: "3순위 한 달 안팎 여유", 4: "4순위 먼 일정(45일 이후)"}
     cur = None
     for r in rs:
         t = boss_tier(r, a.days)
