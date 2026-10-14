@@ -38,6 +38,16 @@ class GrantReqsTest(unittest.TestCase):
         rows = [{"raw": '{"common": "C01"}'}, {"raw": {"common": "C01"}}, {"raw": '{"common": "C02"}'}, {"raw": "{}"}]
         self.assertEqual(gr.common_usage(rows), {"C01": 2, "C02": 1})
 
+    def test_boss_tier(self):
+        import datetime
+        t = datetime.date(2026, 10, 14)
+        hi = {"source_date": "2026-10-20", "raw": '{"impact": "상"}'}
+        mid = {"source_date": "2026-10-20", "raw": '{"impact": "중"}'}
+        late = {"source_date": "2026-12-01", "raw": '{"impact": "상"}'}
+        self.assertEqual(gr.boss_tier(hi, 14, t), 1)
+        self.assertEqual(gr.boss_tier(mid, 14, t), 2)
+        self.assertEqual(gr.boss_tier(late, 14, t), 3)
+
     def test_rejects_ids(self):
         for bad in ("123-45-67890", "110111-1234567", "sk-" + "a" * 20):
             with self.assertRaises(SystemExit):

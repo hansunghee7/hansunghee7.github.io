@@ -23,6 +23,7 @@ act 열 대응: no=A번호 · title=실천항목 · owner=담당(탐|사장님|�
   python scripts/ops/grant_reqs.py matrix
   python scripts/ops/grant_reqs.py act list [--status 대기]
   python scripts/ops/grant_reqs.py act add --title "..." --who 탐 --due 2026-10-21 --priority 1 --impact 상 --grants G14 --fills Q05,Q06 --result "..." --done "..."
+  python scripts/ops/grant_reqs.py boss [--days 14]     # 사장님 백로그: 1순위=임팩트 상+긴급, 2순위=긴급, 3순위=나머지
   python scripts/ops/grant_reqs.py act set A02 --status 진행 [--due ..] [--done ..]
 """
 import argparse
@@ -218,6 +219,38 @@ def cmd_matrix(a):
         print(f"| {g} | {c['충족']} | {c['미충족']} | {c['확인필요']} | {c['해당없음']} |")
 
 
+def boss_tier(r, days=14, today=None):
+    """사장님 백로그 순위: 1=임팩트 상이면서 긴급, 2=긴급, 3=그 밖. 긴급 = 기한이 days일 이내(지난 것 포함)."""
+    import datetime
+    due = r.get("source_date") or ""
+    try:
+        left = (datetime.date.fromisoformat(due) - (today or datetime.date.today())).days
+    except Exception:
+        left = None
+    urgent = left is not None and left <= days
+    if urgent and raw_of(r).get("impact") == "상":
+        return 1
+    return 2 if urgent else 3
+
+
+def cmd_boss(a):
+    rs = [r for r in rows_of("act") if r.get("owner") == "사장님" and r.get("status") != "완료"]
+    if not rs:
+        print("(사장님 백로그가 비어 있습니다)")
+        return
+    rs.sort(key=lambda r: (boss_tier(r, a.days), r.get("source_date") or "9999-99-99"))
+    print(f"## 지원사업 사장님 백로그 ({time.strftime('%Y-%m-%d')} 기준, 긴급 = 기한 {a.days}일 이내)\n")
+    names = {1: "1순위 임팩트 큼 + 긴급", 2: "2순위 긴급", 3: "3순위 아직 여유"}
+    cur = None
+    for r in rs:
+        t = boss_tier(r, a.days)
+        if t != cur:
+            cur = t
+            print(f"\n### {names[t]}")
+        w = raw_of(r)
+        print(f"- {r['no']} {r['source_date'] or ''} {r['title']} [{w.get('impact') or ''}] → {r['next_action'] or ''}")
+
+
 def cmd_act_list(a):
     rs = rows_of("act")
     if a.status:
@@ -308,6 +341,9 @@ def main():
     s = top.add_parser("matrix")
     s.set_defaults(f=cmd_matrix)
     ac = top.add_parser("act").add_subparsers(dest="cmd", required=True)
+    s = top.add_parser("boss")
+    s.add_argument("--days", type=int, default=14)
+    s.set_defaults(f=cmd_boss)
     s = ac.add_parser("list")
     s.add_argument("--status")
     s.set_defaults(f=cmd_act_list)
