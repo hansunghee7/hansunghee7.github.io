@@ -150,7 +150,8 @@ def build():
         rs = opsdb.select('tasks', 'id,owner,raw', where={'section': 'eq.boss', 'source_date': f'gte.{since}', 'id': f'gt.{off}'}, order='id.asc', limit=1000)
         if not rs:
             break
-        boss += rs
+        # 대체된 결정(raw.superseded_by)은 1차에서 뺀다(10/15 페이블 수명주기 설계 3절: 시간 창이 아니라 대체 표시로 내린다)
+        boss += [r for r in rs if not (r.get('raw') or {}).get('superseded_by')]
         off = rs[-1]['id']
     logs = []
     for sec in LOG_SECTIONS:

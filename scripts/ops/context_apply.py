@@ -8,6 +8,7 @@
 소넷(api_run.py)이 카드 제목·할 일만 고친 JSON을 내고, 실행기가 검사(제목 1~200자, 사장님 원문 칸은 건드리지 않음) 뒤 반영한다. 하루 최대 REWRITE_MAX건, 이전 값은 로그와 카드 이력에 남는다.
 사용:
   python scripts/ops/context_apply.py [판정파일] [--dry]     기본 = 가장 최근 a2_*.md
+  python scripts/ops/context_apply.py --supersede <새 결정 id> <옛 결정 id...> --why "이유"   사장님 결정 원장 대체 표시(옛 결정은 1차 검색에서 빠짐)
   python scripts/ops/context_apply.py --undo <run_id>        그 실행에서 숨긴 카드를 원래 상태로"""
 import json
 import re
@@ -126,6 +127,35 @@ def apply(path, dry=False):
     return run, refs, done, fixed
 
 
+def supersede(new_id, old_ids, why="", dry=False):
+    """사장님 결정 원장(section=boss): 새 결정이 옛 결정을 대체함을 표시한다. 옛 행은 기억 도우미 1차에서 빠지고 원장에는 남는다."""
+    import opsdb
+    run = time.strftime("%Y%m%d_%H%M%S")
+    new = opsdb.select("tasks", "id,raw", where={"section": "eq.boss", "id": f"eq.{new_id}"}, limit=1)
+    if not new:
+        print(f"대체 표시 실패: 새 결정 {new_id} 없음")
+        return 1
+    done = []
+    for oid in old_ids:
+        old = opsdb.select("tasks", "id,raw", where={"section": "eq.boss", "id": f"eq.{oid}"}, limit=1)
+        if not old or dry:
+            continue
+        raw = dict(old[0]["raw"] or {})
+        prev = raw.get("superseded_by")
+        raw["superseded_by"] = new_id
+        raw["superseded_why"] = why
+        opsdb.patch("tasks", {"id": f"eq.{oid}"}, {"raw": raw})
+        with LOG.open("a", encoding="utf-8") as f:
+            f.write(json.dumps({"run": run, "id": oid, "op": "supersede", "prev_sup": prev, "new": new_id, "why": why}, ensure_ascii=False) + "\n")
+        done.append(oid)
+    if done:
+        raw = dict(new[0]["raw"] or {})
+        raw["supersedes"] = sorted(set((raw.get("supersedes") or []) + done))
+        opsdb.patch("tasks", {"id": f"eq.{new_id}"}, {"raw": raw})
+    print(f"대체 표시(실행 {run}, 되돌리기: --undo {run}): 결정 {new_id}가 {done or old_ids} 대체")
+    return 0
+
+
 def undo(run):
     import opsdb
     n = 0
@@ -133,7 +163,16 @@ def undo(run):
         e = json.loads(ln)
         if e["run"] != run:
             continue
-        if e.get("op") == "rewrite":
+        if e.get("op") == "supersede":
+            r = opsdb.select("tasks", "id,raw", where={"id": f"eq.{e['id']}"}, limit=1)[0]
+            raw = dict(r["raw"] or {})
+            raw.pop("superseded_why", None)
+            if e.get("prev_sup"):
+                raw["superseded_by"] = e["prev_sup"]
+            else:
+                raw.pop("superseded_by", None)
+            opsdb.patch("tasks", {"id": f"eq.{e['id']}"}, {"raw": raw})
+        elif e.get("op") == "rewrite":
             opsdb.patch("tasks", {"id": f"eq.{e['id']}"}, {"title": e["prev_title"], "next_action": e["prev_do"]})
         else:
             opsdb.patch("tasks", {"id": f"eq.{e['id']}"}, {"status": e["prev"]})
@@ -146,6 +185,10 @@ def main():
     a = sys.argv[1:]
     if a[:1] == ["--undo"]:
         return undo(a[1])
+    if a[:1] == ["--supersede"]:  # --supersede 새결정id 옛결정id [옛결정id...] [--why "이유"]
+        why = a[a.index("--why") + 1] if "--why" in a else ""
+        ids = [int(x) for x in a[1:] if x.isdigit()]
+        return supersede(ids[0], ids[1:], why, dry="--dry" in a)
     files = [x for x in a if not x.startswith("--")]
     path = files[0] if files else max(DIR.glob("a2_*.md"), key=lambda p: p.stat().st_mtime, default=None)
     if not path:
