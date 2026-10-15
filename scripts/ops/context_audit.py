@@ -88,6 +88,7 @@ REVIEW = """너는 AI 에이전트 팀의 컨텍스트 설계 책임자다. 1차
 ⑦ 너는 전체 판을 보는 판정자다(사장님 10/15: "판정은 전체 판을 바라보는 에이전트가 했으면 좋겠다, 그게 에이전틱 시스템"). 실수한 에이전트나 고친 에이전트가 아니라 네가 아래 수정 경험 장부를 보고 판정한다.
 형식(한국어, 50줄 이내):
 A. 최종 제안 3~5개. 각각 = 제목 / 문제 근거 / 고칠 곳(정본) / 영향받는 곳 / 부작용 위험과 시험 / 우선순위(효과·위험).
+B0. 혼란 정보: 아래 '혼란 정보 후보' 카드마다 숨김(1차에서 내림)·유지·정본 표시 보강 중 하나와 이유. 찾아야 하는 것은 찾기 쉽게, 혼란스럽게 만드는 정보는 찾기 어렵게(사장님 10/15).
 B. 장부 판정: 장부의 각 건(CF번호)마다 한 줄 = 판정(채택·기각·보류·다음 수준으로 올림) / 이유 / 재발 신호가 실수를 제대로 잡는지(신호가 틀리면 고칠 신호).
 C. 운영 판정 질문이 있으면 답한다: {questions}
 
@@ -140,7 +141,11 @@ def ledger_view():
         r = subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "ctxfix.py"), "list"], capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=120)
         rows = r.stdout.strip().splitlines()
         rc = subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "ctxfix.py"), "recheck"], capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=300)
-        return "\n".join(rows[:30]) + "\n[오늘 재발 판정]\n" + rc.stdout.strip()[:2000]
+        # 혼란 정보 후보(사장님 10/15 "혼란스럽게 만드는 정보는 찾기 어렵게"): 폐기·대체 표시가 있는데 1차 자리에 남은 카드
+        cs = subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "confusion_scan.py"), "--top", "25"], capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=120)
+        cf = Path("C:/work/_ops/context_audit") / f"confusion_{datetime.now():%Y%m%d}.md"
+        conf = ("\n[혼란 정보 후보]\n" + cf.read_text(encoding="utf-8")[:2500]) if cs.returncode == 0 and cf.exists() else ""
+        return "\n".join(rows[:30]) + "\n[오늘 재발 판정]\n" + rc.stdout.strip()[:2000] + conf
     except Exception as e:  # noqa: BLE001
         return f"(장부 읽기 실패: {e})"
 
