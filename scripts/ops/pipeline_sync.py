@@ -59,6 +59,27 @@ def evidence(entry):
     return st == 'ok', f"pipeline_sync: 감시 {entry.get('id')} {st}, {when} (상태판 근거)", at
 
 
+GH_REPOS = {'site': 'hansunghee7/hansunghee7.github.io', 'data': 'hansunghee7/carvit-insight-data'}
+
+
+def gh_evidence(watch):
+    """감시 대장(jobs.toml)에 없는 'gh:<site|data>:<워크플로 이름>' 파이프는 GitHub 실행 기록에서 마지막 성공을 직접 읽는다.
+    10/16 타미 당직 판정: GA4·Clarity·서치콘솔 등 워크플로는 매일 성공하는데 감시 대장에 없어 근거 없음으로 4일 넘게 정체로 보였다."""
+    m = re.match(r'gh:([a-z]+):(.+)$', watch or '')
+    if not m or m.group(1) not in GH_REPOS:
+        return None
+    try:
+        r = subprocess.run(['gh', 'run', 'list', '-R', GH_REPOS[m.group(1)], '--workflow', m.group(2), '--status', 'success', '-L', '1', '--json', 'updatedAt'],
+                           capture_output=True, text=True, encoding='utf-8', creationflags=NOWIN, timeout=60)
+        runs = json.loads(r.stdout or '[]') if r.returncode == 0 else []
+    except (OSError, subprocess.SubprocessError, ValueError):
+        return None
+    if not runs:
+        return None
+    at = runs[0]['updatedAt']
+    return True, f"pipeline_sync: GitHub 실행 기록 {m.group(2)} 성공 {at[:16].replace('T', ' ')} UTC", at
+
+
 def run_tool(*args):
     r = subprocess.run([sys.executable, '-X', 'utf8', DB_TOOL, *args], capture_output=True, text=True, encoding='utf-8',
                        creationflags=NOWIN, timeout=60)
@@ -84,7 +105,7 @@ def main(argv=None):
     rows = parse_stale(out)
     todo, none = [], []
     for slug, watch, no_record in rows:
-        ev = evidence(state[watch]) if watch and watch in state else None
+        ev = evidence(state[watch]) if watch and watch in state else gh_evidence(watch)
         if ev and (no_record or ev[0]):
             todo.append((slug, ev))
         else:
