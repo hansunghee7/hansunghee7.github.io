@@ -27,6 +27,9 @@ STATE = OUT / "state.json"
 STATUS = Path("C:/work/_ops/STATUS.md")
 FIT_DB = Path("C:/work/shorts-lab/tools/factory/fit_db.py")
 MAILBOX = Path("C:/work/solar-bible/mailbox/mailbox.py")
+CHANNEL_REPO = "hansunghee7/tami-duty-channel"  # 비공개, 타미 계정(ilovetommy)만 협업자(사장님 허용 10/15)
+CHANNELS = {"탐": 1, "핏": 2, "마야": 3}  # 담당별 채널 PR 번호(병합 금지), 그 세션이 구독한다
+TAMI_GH = Path("C:/work/_ops/tami_gh")  # 타미 계정 gh 로그인 폴더(키 값은 운영체제 자격 증명 저장소)
 HERMES = Path(os.environ.get("LOCALAPPDATA", "")) / "hermes" / "bin" / "hermes.exe"
 TAMI_HOME = Path(os.environ.get("LOCALAPPDATA", "")) / "hermes" / "profiles" / "tami"
 MODELS = ("claude-fable-5-1", "claude-opus-5-5")  # 페이블 먼저, 안 되면 오퍼스(프로모션 크레딧 적용 확인 10/15)
@@ -177,6 +180,12 @@ def main():
                             "--ask", "판정의 '누가 무엇을' 중 내 몫을 처리하고, 끝나면 공장 장부·대장 상태를 고친다"],
                            capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=60, creationflags=FLAGS, cwd=str(MAILBOX.parent.parent))
         sent.append(f"{who}{'' if r.returncode == 0 else '(실패)'}")
+        # 떠 있는 세션을 바로 깨우기(10/15 실측: 타미 계정 댓글 → 구독 세션 약 27초 뒤 깨어남, 교신 001 안내서 4절 C 방식). 우편은 닫힌 세션용으로 그대로 둔다
+        if who in CHANNELS and TAMI_GH.exists():
+            c = subprocess.run(["gh", "pr", "review", str(CHANNELS[who]), "--repo", CHANNEL_REPO, "--comment", "--body", body[:60000]],
+                               capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=60, creationflags=FLAGS,
+                               env=dict(os.environ, GH_CONFIG_DIR=str(TAMI_GH)))
+            sent[-1] += "+채널" if c.returncode == 0 else "+채널실패"
     boss_line = next((ln for ln in verdict.splitlines() if "사장님이 할 일" in ln), "")
     tg_note = "텔레그램 안 보냄(사장님 할 일 없음)"
     if boss_line and "없음" not in boss_line:
