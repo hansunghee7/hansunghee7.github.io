@@ -1,0 +1,181 @@
+<title>Carvit Context 대시보드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: 한 계정 콘솔(왼쪽 메뉴 + 본문). 본문은 지표별 막대 그래프 3장 + 등급별 변화 자리 1장 + 시안 메모.
+   막대 하나가 한 기준: 실측=검정 채움, 예시=빗금, 측정 전=점선 테두리. 강조색 없음(가이드 1.34), 축 값과 단위 표기(가이드 1.36). */
+:root{
+  --radius:0.625rem;
+  --background:oklch(1 0 0); --foreground:oklch(0.145 0 0);
+  --card:oklch(1 0 0); --muted:oklch(0.97 0 0); --muted-foreground:oklch(0.556 0 0);
+  --primary:oklch(0.205 0 0); --primary-foreground:oklch(0.985 0 0);
+  --border:oklch(0.922 0 0); --ring:oklch(0.708 0 0);
+  --warn:oklch(0.65 0.18 75);
+  --font-sans:'Geist',ui-sans-serif,system-ui,-apple-system,'Segoe UI','Noto Sans KR','Malgun Gothic',sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{background:var(--background);color:var(--foreground);font-family:var(--font-sans);font-size:15px;line-height:1.6;word-break:keep-all;overflow-wrap:anywhere;margin:0;padding-inline:20px}
+.wrap{max-width:1120px;margin-inline:auto}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:16px;border-bottom:1px solid var(--border)}
+.logo{font-weight:600;font-size:18px;letter-spacing:-.02em}
+.acct{font-size:13px;color:var(--muted-foreground)}
+.shell{display:grid;grid-template-columns:200px minmax(0,1fr);gap:40px;padding-block:32px 64px}
+.side{display:flex;flex-direction:column;gap:2px;align-self:start;position:sticky;top:16px}
+.side a{display:block;padding:8px 12px;border-radius:8px;font-size:14px;color:var(--muted-foreground)}
+.side a.on{background:var(--muted);color:var(--foreground);font-weight:500}
+.side hr{border:0;border-top:1px solid var(--border);margin:8px 0}
+main{min-width:0}
+h1{font-size:clamp(26px,2vw + 16px,36px);line-height:1.15;font-weight:500;letter-spacing:-.03em;margin:0 0 10px}
+.lead{color:var(--muted-foreground);margin:0 0 24px;max-width:62ch}
+h2{font-size:18px;font-weight:600;letter-spacing:-.01em;margin:40px 0 6px}
+.sub{color:var(--muted-foreground);font-size:13px;margin:0 0 14px}
+.seg{display:inline-flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.seg span{border:1px solid var(--border);border-radius:99px;padding:6px 14px;font-size:13px;color:var(--muted-foreground)}
+.seg .on{background:var(--primary);color:var(--primary-foreground);border-color:var(--primary)}
+.seg .lock{border-style:dashed}
+.chip{display:inline-block;font-size:11.5px;font-weight:500;border:1px solid var(--border);border-radius:99px;padding:0 8px;line-height:20px;color:var(--foreground);white-space:nowrap}
+.chip.warn{color:var(--warn);border-color:var(--warn)}
+.legend{display:flex;flex-wrap:wrap;gap:16px;font-size:12.5px;color:var(--muted-foreground);margin:6px 0 16px}
+.legend i{display:inline-block;width:18px;height:12px;border-radius:2px;vertical-align:-1px;margin-right:6px}
+.lg-real{background:var(--foreground)}
+.lg-ex{background:repeating-linear-gradient(135deg,var(--foreground) 0 2px,transparent 2px 5px);border:1px solid var(--foreground)}
+.lg-none{border:1.5px dashed var(--muted-foreground)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.card{border:1px solid var(--border);border-radius:var(--radius);padding:16px 16px 10px;min-width:0}
+.card h3{margin:0 0 2px;font-size:15px;font-weight:600}
+.card .u{font-size:12.5px;color:var(--muted-foreground);margin:0 0 4px}
+.chart{inline-size:100%;overflow:hidden}
+.chart svg{inline-size:100%;block-size:auto;display:block}
+.chart text{font-family:var(--font-sans);fill:var(--foreground);font-size:12.5px}
+.chart .m{fill:var(--muted-foreground);font-size:11.5px}
+.chart .grid-l{stroke:var(--border);stroke-width:1}
+.txt{font-size:13.5px;color:var(--muted-foreground);margin:0}
+.note{border:1px solid var(--border);background:var(--muted);border-radius:var(--radius);padding:16px 18px;font-size:13.5px}
+.note ul{margin:8px 0 0;padding-left:18px}
+.note li{margin:3px 0}
+@media (max-width:760px){
+  .shell{grid-template-columns:minmax(0,1fr);gap:20px;padding-block:20px 48px}
+  .side{flex-direction:row;overflow-x:auto;position:static;gap:6px;border-bottom:1px solid var(--border);padding-bottom:10px}
+  .side a{white-space:nowrap;min-height:44px;display:inline-flex;align-items:center}
+  .side hr{display:none}
+}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="logo">Carvit</div>
+    <div class="acct">내 계정 · 에이전트 팀 1개 연결됨</div>
+  </header>
+
+  <div class="shell">
+    <nav class="side" aria-label="콘솔 메뉴">
+      <a>개요</a>
+      <a>UX</a>
+      <a>Create</a>
+      <a>Pass</a>
+      <a class="on" aria-current="page">Context</a>
+      <hr>
+      <a>연결</a>
+      <a>설정</a>
+    </nav>
+
+    <main>
+      <h1>Context</h1>
+      <p class="lead">에이전트 팀이 일을 얼마나 빨리, 얼마나 사람 손 없이, 얼마나 되돌림 없이 해냈는지를 기준과 나란히 놓고 봅니다.</p>
+
+      <div class="seg" aria-label="보기 이름"><span class="on">퍼포먼스 트렌드</span></div>
+      <div class="legend" aria-label="막대 범례">
+        <span><i class="lg-real"></i>실측</span>
+        <span><i class="lg-ex"></i>예시 숫자(화면 구성용)</span>
+        <span><i class="lg-none"></i>측정 전</span>
+      </div>
+
+      <h2>활동</h2>
+      <p class="sub">얼마나 일하고 있는지를 보여 주는 지표입니다. 많다고 좋은 것은 아니어서 결과 지표와 함께 봅니다.</p>
+      <div class="grid" id="charts-activity"></div>
+
+      <h2>결과</h2>
+      <p class="sub">일이 어떻게 끝났는지 보여 주는 지표입니다. 위에서부터 대표님이 먼저 궁금해할 순서입니다. 요청 완료 시간, 사람 개입 비율, PR 되돌림 비율은 낮을수록, 이어받기 점수는 높을수록 좋습니다.</p>
+      <div class="grid" id="charts-result"></div>
+
+      <h2>시안 메모</h2>
+      <div class="note">
+        <b>바뀐 점(v4 대비)</b>: 처음 고객에게 필요 없는 것을 뺐고, 항목을 대표님이 궁금해할 순서로 다시 놓았습니다.
+        <ul>
+          <li>뺀 것: "다른 고객 평균(3팀 이상부터)"와 "문서 등급을 적용했을 때" 자리. 둘 다 근거가 쌓인 뒤에 다시 넣습니다.</li>
+          <li>결과 순서: 요청 완료 시간(얼마나 빨라졌나), 사람 개입 비율(내 손이 덜 가나), 이어받기 점수(담당자가 바뀌어도 이어지나), PR 되돌림 비율(망가뜨리지 않나). 활동은 그 아래 보조입니다. 순서는 제가 고객 입장에서 추정한 것이고, 월요일 질문으로 확인합니다.</li>
+          <li>추가(v6): 결과 지표에 "성공 한 건당 비용(CPSO)"을 넣었습니다. 병합 PR 한 건을 끝내는 데 든 노력을 보는 지표입니다. 우리 팀에서 먼저 측정해 보고, 값이 믿을 만하면 고객이 API로 기록을 보내 분석 리포트를 받는 형태를 검토합니다.</li>
+          <li>측정 현황: 금액 계산은 장부에 병합 PR 번호가 없어 하루 단위까지만 가능하고, 비용 쪽도 일부만 연결돼 있어 지금은 "측정 전"으로 둡니다. "지금"은 예시 숫자입니다.</li>
+          <li>"지금"은 예시 숫자입니다. 실제 화면에서는 연결된 에이전트 팀의 기록이 들어옵니다.</li>
+          <li>Carvit 에이전트 팀 실측: PR 되돌림 0.3%(병합 1,000건 중 제목에 되돌림 표시 3건, 근사치), 교신 가능 에이전트 3명(이번 주 GitHub 교신방에서 말머리 댓글을 쓴 탐·핏·지투, 우편으로만 교신한 에이전트는 제외), 정본 문서 186개(docs 폴더, 아카이브 제외).</li>
+          <li>메뉴 순서(임시): 공개 사이트 머리 메뉴 순서(UX, Create, Pass 다음 Context)를 따랐습니다. 로그인 뒤 콘솔 구조는 지투가 설계해 사장님이 컨펌하기 전이라, 확정되면 다시 맞춥니다.</li>
+          <li>추가(v7): 순서를 바꿨습니다. 활동을 먼저, 결과를 그 뒤에 둡니다(사장님 10/15). 병합 PR 수는 회사 저장소 기록으로 연결했습니다(지난 7일 168건, 그 전 7일 650건, 작성자가 봇이 아닌 PR 기준이며 자동 병합 PR도 사람 계정 이름으로 올라가 있어 완전히 걸러지지는 않습니다).</li>
+          <li>측정 전으로 남은 것과 이유: 요청 완료 시간(회사 저장소가 이슈를 쓰지 않아 열림에서 닫힘을 잴 수 없습니다, 요청을 남기는 곳부터 정해야 합니다), 사람 개입 비율(`[사람]` 말머리 규칙이 있어야 계산됩니다), 이어받기 점수(5문항 시험을 돌려야 합니다), 성공 한 건당 비용(PR 댓글에 교신이 거의 없어, 교신 기록을 PR과 이어야 계산됩니다).</li>
+        </ul>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script>
+/* 막대 그래프 생성기: 한 그래프의 막대는 한 눈금 척도를 공유한다. kind=real|ex|none */
+(function(){
+  var NS='http://www.w3.org/2000/svg';
+  function el(n,a,t){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(t!=null)e.textContent=t;return e}
+  function chart(spec){
+    var W=360,L=84,R=24,rowH=44,top=10,H=top+spec.rows.length*rowH+34,pw=W-L-R;
+    var s=el('svg',{viewBox:'0 0 '+W+' '+H,role:'img','aria-label':spec.aria});
+    var defs=el('defs',{});
+    var p=el('pattern',{id:'hatch',width:6,height:6,patternUnits:'userSpaceOnUse',patternTransform:'rotate(45)'});
+    p.appendChild(el('rect',{width:6,height:6,fill:'oklch(1 0 0)'}));
+    p.appendChild(el('rect',{width:2,height:6,fill:'oklch(0.145 0 0)'}));
+    defs.appendChild(p);s.appendChild(defs);
+    function x(v){return L+pw*v/spec.max}
+    spec.ticks.forEach(function(t){
+      s.appendChild(el('line',{x1:x(t),y1:top,x2:x(t),y2:H-26,'class':'grid-l'}));
+      s.appendChild(el('text',{x:x(t),y:H-8,'text-anchor':'middle','class':'m'},spec.fmt(t)));
+    });
+    spec.rows.forEach(function(r,i){
+      var y=top+i*rowH+8;
+      s.appendChild(el('text',{x:L-8,y:y+16,'text-anchor':'end'},r.label));
+      if(r.kind==='none'){
+        s.appendChild(el('rect',{x:L,y:y,width:56,height:24,rx:3,fill:'oklch(1 0 0)',stroke:'oklch(0.556 0 0)','stroke-width':1.5,'stroke-dasharray':'4 3'}));
+        s.appendChild(el('text',{x:L+64,y:y+16,'class':'m'},'측정 전'));
+      }else{
+        var w=pw*r.v/spec.max;
+        s.appendChild(el('rect',{x:L,y:y,width:w,height:24,rx:3,fill:r.kind==='real'?'oklch(0.145 0 0)':'url(#hatch)',stroke:'oklch(0.145 0 0)','stroke-width':1}));
+        s.appendChild(el('text',{x:L+w+6,y:y+16},r.text));
+      }
+    });
+    return s;
+  }
+  function mk(host,list){var h=document.getElementById(host);list.forEach(function(sp){
+    var c=document.createElement('div');c.className='card';
+    c.innerHTML='<h3></h3><p class="u"></p><div class="chart"></div>';
+    c.querySelector('h3').textContent=sp.t;c.querySelector('.u').textContent=sp.u;
+    c.querySelector('.chart').appendChild(chart(sp));h.appendChild(c);});}
+  var N={label:'도입 전',kind:'none'};
+  mk('charts-result',[
+    {t:'요청 완료 시간',u:'이슈 열림에서 닫힘까지 중앙값, 단위 시간, 낮을수록 좋음',max:10,ticks:[0,5,10],fmt:function(v){return v+'시간'},aria:'요청 완료 시간 비교. 지금 6.5시간(예시), 도입 전과 Carvit 에이전트 팀은 측정 전',
+     rows:[N,{label:'지금',kind:'ex',v:6.5,text:'6.5시간'},{label:'Carvit 팀',kind:'none'}]},
+    {t:'사람 개입 비율',u:'일 처리 중 사람이 직접 챙긴 비율, 단위 퍼센트, 낮을수록 좋음',max:50,ticks:[0,25,50],fmt:function(v){return v+'%'},aria:'사람 개입 비율 비교. 지금 35퍼센트(예시), 도입 전과 Carvit 에이전트 팀은 측정 전',
+     rows:[N,{label:'지금',kind:'ex',v:35,text:'35%'},{label:'Carvit 팀',kind:'none'}]},
+    {t:'이어받기 점수',u:'5문항 정답률, 단위 점, 높을수록 좋음',max:100,ticks:[0,50,100],fmt:function(v){return v+'점'},aria:'이어받기 점수 비교. 지금 72점(예시), 도입 전과 Carvit 에이전트 팀은 측정 전',
+     rows:[N,{label:'지금',kind:'ex',v:72,text:'72점'},{label:'Carvit 팀',kind:'none'}]},
+    {t:'PR 되돌림 비율',u:'병합 PR 중 되돌린 비율, 단위 퍼센트, 낮을수록 좋음',max:6,ticks:[0,2,4,6],fmt:function(v){return v+'%'},aria:'PR 되돌림 비율 비교. 지금 4퍼센트(예시), Carvit 에이전트 팀 0.3퍼센트(실측, 병합 1000건 중 3건), 도입 전 측정 전',
+     rows:[N,{label:'지금',kind:'ex',v:4,text:'4%'},{label:'Carvit 팀',kind:'real',v:0.3,text:'0.3% (3/1,000)'}]},
+    {t:'성공 한 건당 비용(CPSO)',u:'병합 PR 한 건을 끝내는 데 든 노력, 금액이 연결되기 전에는 한 건당 교신 수(회)로 봅니다, 낮을수록 좋음',max:10,ticks:[0,5,10],fmt:function(v){return v+'회'},aria:'성공 한 건당 비용 비교. 지금 6회(예시), 도입 전과 Carvit 에이전트 팀은 측정 전',
+     rows:[N,{label:'지금',kind:'ex',v:6,text:'6회'},{label:'Carvit 팀',kind:'none'}]}
+  ]);
+  mk('charts-activity',[
+    {t:'교신 가능 에이전트 수',u:'명단에 등록되고 그 주 말머리 댓글을 쓴 에이전트, 단위 명',max:8,ticks:[0,2,4,6,8],fmt:function(v){return v+'명'},aria:'교신 가능 에이전트 수 비교. 지금 4명(예시), Carvit 에이전트 팀 3명(실측), 도입 전 측정 전',
+     rows:[N,{label:'지금',kind:'ex',v:4,text:'4명'},{label:'Carvit 팀',kind:'real',v:3,text:'3명'}]},
+    {t:'병합 PR 수',u:'지난 7일(10/8~10/14), 작성자가 봇이 아닌 병합 PR, 단위 건',max:200,ticks:[0,100,200],fmt:function(v){return v+'건'},aria:'병합 PR 수 비교. 지금 12건(예시), Carvit 에이전트 팀 168건(실측, 10월 8일부터 14일), 도입 전 측정 전',
+     rows:[N,{label:'지금',kind:'ex',v:12,text:'12건'},{label:'Carvit 팀',kind:'real',v:168,text:'168건'}]},
+    {t:'정본 문서 수',u:'지정 폴더의 문서 파일, 누적, 단위 개',max:200,ticks:[0,100,200],fmt:function(v){return v+'개'},aria:'정본 문서 수 비교. 지금 18개(예시), Carvit 에이전트 팀 186개(실측), 도입 전 측정 전',
+     rows:[N,{label:'지금',kind:'ex',v:18,text:'18개'},{label:'Carvit 팀',kind:'real',v:186,text:'186개'}]}
+  ]);
+  })();
+</script>
