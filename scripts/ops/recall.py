@@ -60,6 +60,37 @@ def tokens(text):
     return list(dict.fromkeys(out))
 
 
+DOC_RE = re.compile(r'^(CLAUDE\.md|\.claude/skills/[^/]+/SKILL\.md|docs/[^/]+\.md)$')
+
+
+def doc_chunks():
+    """2차 정본 문서 색인(마찰 #1, 마야 10/15): origin/main의 CLAUDE.md·스킬·docs/*.md(역할노트·정책 포함)를 제목(헤딩) 단위로 쪼갠다.
+    공정 카드·대화 기록에 안 잡히고 문서 안에만 있는 확정 결정(예: CTA 문구)을 찾기 위한 것. 실패하면 빈 목록(1차 검색은 영향 없음)."""
+    import subprocess
+    repo = str(Path(__file__).resolve().parents[2])
+    git = ['git', '-c', 'core.quotepath=false', '-C', repo]
+    try:
+        names = subprocess.run(git + ['ls-tree', '-r', '--name-only', 'origin/main'], capture_output=True, text=True, encoding='utf-8', timeout=30).stdout.split('\n')
+    except Exception:  # noqa: BLE001
+        return []
+    out = []
+    for n in (x for x in names if DOC_RE.match(x)):
+        try:
+            txt = subprocess.run(git + ['show', f'origin/main:{n}'], capture_output=True, text=True, encoding='utf-8', timeout=30).stdout
+        except Exception:  # noqa: BLE001
+            continue
+        head, buf = Path(n).stem, []
+        for ln in txt.split('\n') + ['# ']:
+            if ln.startswith('#'):
+                body = ' '.join(buf)[:500]
+                if body.strip():
+                    out.append({'f': n, 'h': head, 'd': re.sub(r'\s+', ' ', body)})
+                head, buf = ln.lstrip('# ').strip()[:80], []
+            else:
+                buf.append(ln)
+    return out
+
+
 def build():
     import opsdb
     cards, boss = [], []
@@ -94,10 +125,11 @@ def build():
             logs = [r for r in logs if r['sec'] != sec or (drop := drop - 1) < 0]
     data = {'at': time.strftime('%F %T'),
             'logs': [{'s': r['sec'], 'p': r['owner'], 'no': r.get('no') or '', 't': (r.get('title') or '')[:300], 'd': ' '.join(str(r.get(k) or '') for k in ('next_action', 'result', 'evidence'))[:400], 'at': r.get('source_date') or ''} for r in logs],
+            'docs': doc_chunks(),
             'cards': [{'p': r['owner'], 'no': r['no'], 't': r['title'], 'd': (r.get('next_action') or '')[:400], 'b': (r['raw'].get('boss') or '')[:400]} for r in cards],
             'boss': [{'at': r['raw'].get('at', ''), 'w': r['owner'], 'x': re.sub(r'\s+', ' ', r['raw'].get('text', ''))[:500]} for r in boss]}
     CACHE.write_text(json.dumps(data, ensure_ascii=False), encoding='utf-8')
-    print(f"캐시 갱신: 카드 {len(data['cards'])}개, 사장님 발화 {len(data['boss'])}건, 업무 기록 {len(data['logs'])}건 ({data['at']})")
+    print(f"캐시 갱신: 정본 문서 {len(data['docs'])}덩어리, 카드 {len(data['cards'])}개, 사장님 발화 {len(data['boss'])}건, 업무 기록 {len(data['logs'])}건 ({data['at']})")
 
 
 def query(text, n_cards=3, n_boss=3, n_logs=2, min_hits=2, history=False):
@@ -134,10 +166,16 @@ def query(text, n_cards=3, n_boss=3, n_logs=2, min_hits=2, history=False):
         hits = uh(blob)
         if hits >= max(min_hits, 3):
             ls.append((hits * 3 + sum(3 for t in qx if t in g['t'].lower()), g))
+    ds = []
+    for d in data.get('docs', []):
+        hits = uh((d['h'] + ' ' + d['d']).lower())
+        if hits >= max(min_hits, 3):
+            ds.append((hits * 3 + sum(3 for t in qx if t in d['h'].lower()), d))
+    ds.sort(key=lambda x: -x[0])
     ls.sort(key=lambda x: -x[0])
     cs.sort(key=lambda x: -x[0])
     bs.sort(key=lambda x: (-x[0], x[1]['at']))
-    return {'cards': [c for _, c in cs[:n_cards]], 'boss': [b for _, b in bs[:n_boss]], 'logs': [g for _, g in ls[:n_logs]], 'q': q}
+    return {'cards': [c for _, c in cs[:n_cards]], 'boss': [b for _, b in bs[:n_boss]], 'logs': [g for _, g in ls[:n_logs]], 'docs': [d for _, d in ds[:2]], 'q': q}
 
 
 def render(res):
@@ -146,6 +184,8 @@ def render(res):
         lines.append(f"· 공정 카드 [{c['p']}#{c['no']}] {c['t'][:60]}" + (f" ★사장님: {c['b'][:160]}" if c['b'] else ''))
     for b in res['boss']:
         lines.append(f"· 사장님이 {b['at'][:16]}에 한 말: {b['x'][:200]}")
+    for d in res.get('docs', []):
+        lines.append(f"· 정본 문서 {d['f']} > {d['h'][:50]}: {d['d'][:140]}")
     for g in res.get('logs', []):
         lines.append(f"· 업무 기록({g['s']}) [{g['p']}{('#' + g['no']) if g['no'] else ''}] {g['t'][:120]}")
     return lines
