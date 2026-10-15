@@ -5,7 +5,10 @@ Claude API(api_run.py, 프로모션 크레딧)로 '반복되는 실수 → 원�
 하지 않는 일: 문서·DB·훅을 직접 고치지 않는다(덱스·비티 의견 10/15: 제안만 하고 승인 뒤 반영, 근거 표시, 되돌릴 수 있게). 반영은 탐이 PR로.
 비밀값 보호: 명령 원문에 key·token·secret·password·Bearer 같은 말이 있으면 그 줄은 보내지 않는다.
 산출: C:/work/_ops/context_audit/YYYYMMDD_HHMM.md (집계표 + 모델 제안). 실패하면 종료 코드 1.
-사용: python scripts/ops/context_audit.py [--hours 24] [--model claude-sonnet-5-5] [--dry]"""
+2단계(사장님 10/15 "한 곳 고치면 영향 주는 것까지 고려, 사이드 이펙트 없어야, DB 구조화·문서·DB 활용 전략 이해"):
+  1차 제안에 나온 파일·훅·표 이름마다 context_graph.json(context_graph.py)으로 '이것을 언급하는 곳'을 찾아 붙이고,
+  상위 모델(기본 오퍼스)이 우리 정본 전략(슈퍼프로세스, 문서 다이어트 기준)을 읽은 상태로 영향 범위·부작용·시험 방법까지 다시 검토한다.
+사용: python scripts/ops/context_audit.py [--hours 24] [--model claude-sonnet-5-5] [--review-model claude-opus-5-5] [--dry]"""
 import collections
 import json
 import re
@@ -75,6 +78,64 @@ PROMPT = """너는 AI 에이전트 팀(탐·마야·지투·핏·노트)의 '컨
 """
 
 
+REVIEW = """너는 AI 에이전트 팀의 컨텍스트 설계 책임자다. 1차 감수 제안을 받아, 고쳤을 때 다른 곳이 깨지지 않는지(사이드 이펙트) 검토해 최종 제안으로 다듬는다.
+원칙: ① 제안만 한다(직접 고치지 않음). ② 각 제안마다 '고칠 곳'과 '영향받는 곳'(아래 연관관계 지도에서 인용)을 적는다. ③ 영향받는 곳이 깨질 위험과 그것을 확인하는 시험(재생할 로그, 돌릴 시험 파일, 확인 명령)을 적는다.
+④ 문서와 DB의 역할을 지킨다: 판정 가능한 규칙은 도구 관문(훅·스크립트)에, 왜·예외는 문서에, 상태·기록은 DB에(아래 정본 전략 발췌). ⑤ 근거가 약하면 '추정', 확인할 질문을 낸다. ⑥ 같은 문제를 여러 곳에서 고치면 정본 한 곳을 정하고 나머지는 가리키게 한다.
+형식(한국어, 40줄 이내): 최종 제안 3~5개. 각각 = 제목 / 문제 근거 / 고칠 곳(정본) / 영향받는 곳 / 부작용 위험과 시험 / 우선순위(효과·위험).
+
+[1차 제안]
+{first}
+
+[연관관계 지도 발췌: 이름 → 이것을 언급하는 곳]
+{impacts}
+
+[정본 전략 발췌]
+{strategy}
+"""
+
+
+def impacts_for(text, limit=10):
+    try:
+        g = json.loads(Path("C:/work/_ops/context_graph.json").read_text(encoding="utf-8"))["edges"]
+    except (OSError, ValueError, KeyError):
+        return "(연관관계 지도 없음: python scripts/ops/context_graph.py build)"
+    nodes = set(g) | {t for v in g.values() for t in v}
+    hits = []
+    for n in sorted(nodes, key=len, reverse=True):
+        base = n.split("/")[-1]
+        stem = base.rsplit(".", 1)[0]
+        alt = {base, stem, stem.replace("-", "_"), stem.replace("_", "-")}  # save-gate.py ↔ save_gate 표기 차이(10/15 2단계 검토가 지도에서 못 찾음)
+        if len(stem) >= 5 and any(x in text for x in alt) and n not in hits:
+            hits.append(n)
+    out = []
+    for n in hits[:limit]:
+        used_by = sorted(k for k, v in g.items() if n in v)
+        out.append(f"- {n}: {len(used_by)}곳 → " + ", ".join(used_by[:12]) + (" ..." if len(used_by) > 12 else ""))
+    return "\n".join(out) or "(1차 제안에 지도와 겹치는 이름 없음)"
+
+
+def strategy_excerpt():
+    repo = Path(__file__).resolve().parents[2]
+    parts = []
+    for f, n in (("docs/슈퍼프로세스.md", 40), ("docs/문서_다이어트_기준.md", 30)):
+        r = subprocess.run(["git", "-c", "core.quotepath=false", "-C", "C:/work/hansunghee7.github.io", "show", f"origin/main:{f}"], capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=30)
+        parts.append(f"## {f}\n" + "\n".join(r.stdout.splitlines()[:n]))
+    return "\n\n".join(parts)
+
+
+def review(first, summary, a, stamp, api):
+    model = a[a.index("--review-model") + 1] if "--review-model" in a else "claude-opus-5-5"
+    q = OUT / f"q2_{stamp}.md"
+    q.write_text(REVIEW.format(first=first, impacts=impacts_for(first), strategy=strategy_excerpt()), encoding="utf-8")
+    o = OUT / f"a2_{stamp}.md"
+    r = subprocess.run([sys.executable, str(api), "--who", "컨텍스트감수", "--model", model, "--prompt-file", str(q), "--max-tokens", "12000", "--out", str(o)],
+                       capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=900,
+                       creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
+    if r.returncode != 0 or not o.exists() or not o.read_text(encoding="utf-8").strip():
+        return "(2단계 검토 실패, 1차 제안만 사용: " + ((r.stderr or r.stdout).strip().splitlines() or ["원인 불명"])[-1][:160] + ")"
+    return o.read_text(encoding="utf-8")
+
+
 def main():
     sys.stdout.reconfigure(encoding="utf-8")
     a = sys.argv
@@ -95,7 +156,9 @@ def main():
     if r.returncode != 0 or not af.exists():
         print("컨텍스트 감수 실패: " + ((r.stderr or r.stdout).strip().splitlines() or ["원인 불명"])[-1][:200])
         return 1
-    rf.write_text(f"# 컨텍스트 감수 {stamp} (최근 {hours}시간, 기록 {total}건, 제안 전용)\n\n## 모델 제안\n{af.read_text(encoding='utf-8')}\n\n## 집계\n{summary}\n", encoding="utf-8")
+    first = af.read_text(encoding="utf-8")
+    final = review(first, summary, a, stamp, api)
+    rf.write_text(f"# 컨텍스트 감수 {stamp} (최근 {hours}시간, 기록 {total}건, 제안 전용)\n\n## 최종 제안(영향 검토 반영)\n{final}\n\n## 1차 제안\n{first}\n\n## 집계\n{summary}\n", encoding="utf-8")
     print(f"컨텍스트 감수 완료: {rf} (기록 {total}건)")
     return 0
 
