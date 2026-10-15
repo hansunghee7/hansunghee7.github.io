@@ -114,13 +114,14 @@ def episode_states():
         if not ep or (ep in eps and eps[ep]['at'] >= at):
             continue
         eps[ep] = {'at': at, 'gate': r.get('gate', ''), 'st': r.get('status', ''), 'x': (r.get('response_text') or r.get('note') or '')[:160]}
-    names = {}
+    names, descs = {}, {}
     for d in (SHORTS / 'channels').glob('*/episodes/*'):
         meta = d / '06-publish' / 'meta.json'
         try:
             m = json.loads(meta.read_text(encoding='utf-8'))
             # 설명문까지 넣는다: 태그는 '사모예드', 사장님은 '사모에드'처럼 표기가 갈린다
-            names[d.name] = ' '.join([m.get('title', '')] + list(m.get('hashtags') or []) + [(m.get('description') or '')[:300]])
+            names[d.name] = ' '.join([m.get('title', '')] + list(m.get('hashtags') or []))
+            descs[d.name] = (m.get('description') or '')[:300]
         except (OSError, ValueError):
             pass
     try:
@@ -130,7 +131,8 @@ def episode_states():
     except (OSError, ValueError):
         pass
     for ep, v in eps.items():
-        v['n'] = (ep.replace('-', ' ') + ' ' + names.get(ep, ''))[:900]
+        v['n'] = (ep.replace('-', ' ') + ' ' + names.get(ep, ''))[:600]
+        v['d'] = descs.get(ep, '')
     return eps
 
 
@@ -223,6 +225,10 @@ def query(text, n_cards=3, n_boss=3, n_logs=2, min_hits=2, history=False):
         if len(t) < 2:
             continue
         m = [e for e, v in eps.items() if t in v.get('n', '').lower()]
+        # 설명문은 흔한 낱말('공간'·'기준'·'사용')이 걸려 엉뚱한 편이 붙었다(10/16). 설명문으로는 4자 이상이고 한 편에만 있는 낱말만 인정한다(예: 사모에드)
+        if not m and len(t) >= 4:
+            m = [e for e, v in eps.items() if t in v.get('d', '').lower()]
+            m = m if len(m) == 1 else []
         if 0 < len(m) <= 3:
             ep_words.add(t)
             ep_hit += [e for e in m if e not in ep_hit]
