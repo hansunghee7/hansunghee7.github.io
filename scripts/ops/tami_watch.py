@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""페이블 타미 당직(2026-10-15 탐, 사장님: "페이블 타미 세팅하죠, 최고의 활용 포인트" / 사용 범위 = 이상이 있을 때만 부르기).
+"""오퍼스 타미 당직(구 페이블 타미)(2026-10-15 탐, 사장님: "페이블 타미 세팅하죠, 최고의 활용 포인트" / 사용 범위 = 이상이 있을 때만 부르기).
 매시간 스크립트가 숫자만 본다(토큰 0). 이상이 있을 때만 타미(헤르메스 tami 프로필)를 페이블 모델로 1회 깨워 원인을 판정하게 하고 텔레그램으로 알린다.
 보는 것(v1):
   ① 공장(구PC·신PC 브라우저 계정별): 크레딧 READ_H시간 넘게 못 읽음 / 크레딧 MIN_CREDIT 이상인데 새 컷이 IDLE_H시간 넘게 없음  (fit_db.py factory)
@@ -32,7 +32,7 @@ CHANNELS = {"탐": 1, "핏": 2, "마야": 3}  # 담당별 채널 PR 번호(병�
 TAMI_GH = Path("C:/work/_ops/tami_gh")  # 타미 계정 gh 로그인 폴더(키 값은 운영체제 자격 증명 저장소)
 HERMES = Path(os.environ.get("LOCALAPPDATA", "")) / "hermes" / "bin" / "hermes.exe"
 TAMI_HOME = Path(os.environ.get("LOCALAPPDATA", "")) / "hermes" / "profiles" / "tami"
-MODELS = ("claude-fable-5-1", "claude-opus-5-5")  # 페이블 먼저, 안 되면 오퍼스(프로모션 크레딧 적용 확인 10/15)
+MODELS = ("claude-opus-5-5",)  # 오퍼스 타미(사장님 10/16 "오퍼스 타미로 가죠", 페이블은 프로모션 크레딧 미적용으로 거절됨)
 READ_H, IDLE_H, MIN_CREDIT, REPEAT_H = 8, 12, 6, 6
 FLAGS = getattr(subprocess, "CREATE_NO_WINDOW", 0)
 
