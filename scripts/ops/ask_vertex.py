@@ -146,6 +146,15 @@ def free_failover(a, out, prompt, reason):
     return 0 if ok else 2
 
 
+def prompt_text(q):
+    """질문 인자: 파일 경로면 그 내용, 아니면 인자 문자열 자체를 질문으로 쓴다(마찰 #3, 마야 10/15: 텍스트를 넘기면 OSError)."""
+    try:
+        if len(q) < 260 and Path(q).is_file():
+            return Path(q).read_text(encoding="utf-8")
+    except OSError:
+        pass
+    return q
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("q")
@@ -171,11 +180,11 @@ def main():
     tot = total_since()
     if tot >= TOTAL_KRW:
         print(f"누적 상한 초과: 10/5부터 약 ₩{tot:,.0f} (상한 ₩{TOTAL_KRW:,.0f}). 무료 키로 전환.", file=sys.stderr)
-        return free_failover(a, out, Path(a.q).read_text(encoding="utf-8"), "누적상한") if not os.environ.get("VERTEX_NO_FAILOVER") else 3
+        return free_failover(a, out, prompt_text(a.q), "누적상한") if not os.environ.get("VERTEX_NO_FAILOVER") else 3
     if n >= DAY_CALLS or krw >= DAY_KRW:
         print(f"하루 상한 초과: 오늘 {n}회·약 ₩{krw:,.0f} (상한 {DAY_CALLS}회·₩{DAY_KRW:,.0f}). 무료 키로 전환.", file=sys.stderr)
-        return free_failover(a, out, Path(a.q).read_text(encoding="utf-8"), "일상한") if not os.environ.get("VERTEX_NO_FAILOVER") else 3
-    prompt = Path(a.q).read_text(encoding="utf-8")
+        return free_failover(a, out, prompt_text(a.q), "일상한") if not os.environ.get("VERTEX_NO_FAILOVER") else 3
+    prompt = prompt_text(a.q)
     proj, tok = PROJECT, ""
     if not os.environ.get("VERTEX_NO_COMPANY"):
         tok = token(COMPANY_ACCOUNT)  # 만료면 빈 문자열 → 개인 쪽
