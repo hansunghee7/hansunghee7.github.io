@@ -139,3 +139,25 @@ def test_query_finds_canonical_doc_chunk_when_no_card_or_boss_hit(tmp_path, monk
     res = recall.query("쇼츠 마지막 줄 문구 채널 이름")
     assert [d["f"] for d in res["docs"]] == ["docs/예시_정본.md"]
     assert any("정본 문서 docs/예시_정본.md" in line for line in recall.render(res))
+
+
+def test_query_episode_state_first_and_hides_stale_hold_card(tmp_path, monkeypatch):
+    # 10/15 사모에드 사고: 편을 물으면 컨펌대장 마지막 사건이 맨 위, 같은 편 '보류' 손글씨 카드는 1차에서 빠진다
+    cache = tmp_path / "cache.json"
+    cache.write_text(json.dumps({
+        "cards": [
+            {"p": "핏-대본", "no": 41, "t": "사모에드 음성대본 보류 상태", "d": "사모에드 쇼츠 보류", "b": ""},
+            {"p": "핏-발행", "no": 17, "t": "쇼츠 상태 발행대장 사모에드", "d": "쇼츠 상태", "b": ""},
+        ],
+        "boss": [],
+        "eps": {
+            "ep46-samoyed-walk": {"at": "2026-10-15T08:59:22Z", "gate": "조립본", "st": "컨펌", "x": "", "n": "ep46 samoyed walk 사모에드 산책"},
+            "ep01-x": {"at": "2026-10-01T00:00:00Z", "gate": "음성", "st": "컨펌", "x": "", "n": "ep01 x 복도"},
+        },
+    }, ensure_ascii=False), encoding="utf-8")
+    monkeypatch.setattr(recall, "CACHE", cache)
+    res = recall.query("사모에드 쇼츠 상태 알려줘")
+    assert [e["ep"] for e in res["eps"]] == ["ep46-samoyed-walk"]
+    assert all(c["no"] != 41 for c in res["cards"])
+    lines = recall.render(res)
+    assert lines[0].startswith("· 편 상태") and "17:59 KST" in lines[0]
