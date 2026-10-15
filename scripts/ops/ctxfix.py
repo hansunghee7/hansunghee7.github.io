@@ -12,6 +12,7 @@
   python scripts/ops/ctxfix.py set CF001 --status 반영 --evidence "PR 1234" [--after "오기록 0/7건"] [--note "..."]
   python scripts/ops/ctxfix.py list [--company simplifier] [--status 채택]
   python scripts/ops/ctxfix.py patterns          공통 패턴별 성공·실패 집계(회사 이름 없이)
+  python scripts/ops/ctxfix.py findcheck         --query가 있는 건마다 기억 도우미로 찾기 시험(못 찾으면 위치·형태 조정 필요)
   python scripts/ops/ctxfix.py recheck           반영된 건마다 '재발 신호'를 반영일 이후 기록에서 찾아 성공·재발을 자동 판정
 
 재발 방지 루프(사장님 10/15: "실수 원인을 명확히 진단, 에이전트에게 스스로 재발방지책을 세우게 하면 늘 빈틈이 있고 시간이 지나면 재발, 에이전틱하게 해결"):
@@ -88,7 +89,7 @@ def cmd_set(a):
         vals["status"] = a.status
         if a.status == "반영":
             raw["applied"] = time.strftime("%Y-%m-%d %H:%M:%S")  # 재발은 이 시각 이후 기록만 센다
-    for k in ("cause", "level", "signal"):
+    for k in ("cause", "level", "signal", "query"):
         v = getattr(a, k, None)
         if v:
             raw[k] = v
@@ -160,6 +161,27 @@ def cmd_recheck(a):
             print(f"{r['no']} 재발 0건({int(days)}일째, 7일 뒤 성공 판정): {r['title']}")
 
 
+def cmd_findcheck(a):
+    """찾기 시험(사장님 10/15 구조 진단): 장부의 --query(실수한 에이전트가 물었을 질문)로 기억 도우미(recall)를 돌려
+    고칠 곳(정본)이나 제목이 1·2차 결과에 나오는지 본다. 안 나오면 '위치·형태 조정 필요'로 표시한다."""
+    import recall
+    for r in rows():
+        raw = raw_of(r)
+        q = raw.get("query")
+        if not q:
+            continue
+        res = recall.query(q) or {}
+        lines = "\n".join(recall.render(res)) if res else ""
+        target = (r.get("next_action") or "").split()[0] if r.get("next_action") else ""
+        key = Path(target).name if target else ""
+        found = bool(lines) and ((key and key in lines) or (r["title"][:12] in lines) or (r["no"] in lines))
+        verdict = "찾음" if found else "못 찾음 → 위치·형태 조정 필요(1차 카드 승격·정본 통합·동의어)"
+        raw.setdefault("history", []).append(f"{time.strftime('%Y-%m-%d')} 찾기 시험: {verdict}")
+        raw["findable"] = found
+        opsdb.patch("tasks", {"section": "eq.ctxfix", "no": f"eq.{r['no']}"}, {"raw": raw})
+        print(f"{r['no']} 찾기 시험 '{q}': {verdict}")
+
+
 def cmd_patterns(a):
     """회사 이름 없이 패턴별 성공·실패만(중앙 지식)."""
     agg = collections.defaultdict(collections.Counter)
@@ -197,13 +219,15 @@ def main():
     p.add_argument("--cause")
     p.add_argument("--level")
     p.add_argument("--signal")
+    p.add_argument("--query", help="찾기 시험 질문(실수한 에이전트가 물었을 말)")
     p = sp.add_parser("list")
     p.add_argument("--company")
     p.add_argument("--status")
     sp.add_parser("patterns")
     sp.add_parser("recheck")
+    sp.add_parser("findcheck")
     a = ap.parse_args()
-    {"add": cmd_add, "set": cmd_set, "list": cmd_list, "patterns": cmd_patterns, "recheck": cmd_recheck}[a.cmd](a)
+    {"add": cmd_add, "set": cmd_set, "list": cmd_list, "patterns": cmd_patterns, "recheck": cmd_recheck, "findcheck": cmd_findcheck}[a.cmd](a)
     return 0
 
 
