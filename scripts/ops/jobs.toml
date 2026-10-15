@@ -629,3 +629,10 @@ kind = "hermes_cron"
 name = "context-audit"
 period_min = 1440
 note = "2026-10-15 탐 등록(사장님: 우리 컨텍스트만 관리하는 전문 에이전트, 오류·실수 감지해 문서·DB 개선). context_audit.py가 최근 24시간 마찰 기록을 모아 Claude API로 개선 제안만 만든다(C:/work/_ops/context_audit/). 반영은 탐이 PR로. 첫 자동 실행 결과 확인 필요."
+
+[[job]]
+id = "hermes:tami-watch"
+kind = "hermes_cron"
+name = "tami-watch"
+period_min = 60
+note = "2026-10-15 탐 등록(사장님: 페이블 타미 세팅, 이상이 있을 때만 부르기). 래퍼 tami_watch_wrap.py → scripts/ops/tami_watch.py. 공장 장부·상태판 빨간 줄을 매시간 보고, 이상이 있을 때만 타미(claude-fable-5-1)가 읽기 전용 진단 후 텔레그램. 1회 실행 성공(10/15 22:42, 이상 6건 판정·텔레그램 보냄). 첫 자동 실행 23:20 확인 필요."
