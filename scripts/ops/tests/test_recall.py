@@ -102,4 +102,4 @@ def test_query_too_few_tokens_returns_empty_without_reading_cache(tmp_path, monk
     cache = tmp_path / "cache.json"
     _write_cache(cache)
     monkeypatch.setattr(recall, "CACHE", cache)
-    assert recall.query("음") == {"cards": [], "boss": [], "q": []}
+    assert recall.query("음") == {"cards": [], "boss": [], "logs": [], "q": []}
