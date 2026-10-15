@@ -154,14 +154,13 @@ def policy_problem(item):
         n = len(final_body(content))
         if n > THREADS_MAX:
             return f"스레드 본문이 {n}자입니다(제목 포함 {THREADS_MAX}자 이하만 가능, 답글 이어붙이기 미지원이라 요약본을 따로 써야 합니다)"
-    body = content.get("body") or ""
-    urls = re.findall(r"https?://\S+", body)
-    if len(urls) != 1:
-        return f"본문 링크가 {len(urls)}개입니다(관련글 링크 딱 1개만 허용)"
-    if "심플리파이어 로그를 함께 봐 주세요" not in body:
-        return "CTA 정본 문구('혹시 ~궁금하시다면 심플리파이어 로그를 함께 봐 주세요')가 없습니다(공정 마야-SNS게시 #3)"
-    if "전문:" in body or any(l.strip().startswith("from ") for l in body.splitlines()):
-        return "원문 링크 줄('전문:'·'from')이 있습니다(공정 마야-SNS게시 #3)"
+    # 본문 규칙(링크 1개·CTA·원문 줄 금지)의 정본은 scripts/sns/post_gate.py(모든 게시 경로 공용).
+    # 큐 본문에는 제목이 따로 있어(final_body가 붙인다) 첫 줄 검사는 하지 않는다.
+    sys.path.insert(0, str(Path(__file__).resolve().parent / "sns"))
+    from post_gate import text_problems
+    problems = text_problems(content.get("body") or "")
+    if problems:
+        return problems[0]
     return image_check_problem(item)
 
 
