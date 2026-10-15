@@ -196,4 +196,10 @@ if __name__ == "__main__":
               "세션은 대화 턴 사이에 스스로 움직이지 못합니다. 지금 그 자리에서 실행을 걸고(run_in_background, Monitor, nohup) "
               "[지금 돌고 있는 것: 무엇, 로그 위치] 한 줄을 달거나, 아무것도 안 돌고 있다면 [실행 대기: 이유와 풀리는 시각·조건]을 다세요. "
               "약속만 하고 끝내지 마세요.", file=sys.stderr)
+    try:  # 마찰 #1(마야 10/15): 한 가지 표지만 알려 주면 같은 답변을 여러 번 고친다 → 필요한 표지 전체를 함께 보여 준다
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        from marker_checklist import CHECKLIST
+        print(CHECKLIST, file=sys.stderr)
+    except Exception:
+        pass
     sys.exit(2)

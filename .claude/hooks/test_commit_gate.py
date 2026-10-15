@@ -52,3 +52,12 @@ class CommitGateTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def test_block_message_includes_full_marker_checklist():
+    import subprocess, sys, json as _j
+    r = subprocess.run([sys.executable, str(Path(__file__).parent / "commit-gate.py")],
+                       input=_j.dumps({"_text": "내일 정리하겠습니다.", "_tools": []}),
+                       capture_output=True, text=True, encoding="utf-8")
+    assert r.returncode == 2
+    assert "한 답변에 필요한 표지 전체" in r.stderr and "[사람 개입 필요" in r.stderr
