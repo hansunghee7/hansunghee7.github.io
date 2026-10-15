@@ -150,6 +150,10 @@ def policy_problem(item):
     content = item.get("content") or {}
     if not content.get("media_source"):
         return "대표 이미지(content.media_source)가 없습니다"
+    if item.get("platform") == "threads":
+        n = len(final_body(content))
+        if n > THREADS_MAX:
+            return f"스레드 본문이 {n}자입니다(제목 포함 {THREADS_MAX}자 이하만 가능, 답글 이어붙이기 미지원이라 요약본을 따로 써야 합니다)"
     body = content.get("body") or ""
     urls = re.findall(r"https?://\S+", body)
     if len(urls) != 1:
@@ -158,10 +162,6 @@ def policy_problem(item):
         return "CTA 정본 문구('혹시 ~궁금하시다면 심플리파이어 로그를 함께 봐 주세요')가 없습니다(공정 마야-SNS게시 #3)"
     if "전문:" in body or any(l.strip().startswith("from ") for l in body.splitlines()):
         return "원문 링크 줄('전문:'·'from')이 있습니다(공정 마야-SNS게시 #3)"
-    if item.get("platform") == "threads":
-        n = len(final_body(content))
-        if n > THREADS_MAX:
-            return f"스레드 본문이 {n}자입니다(제목 포함 {THREADS_MAX}자 이하만 가능, 답글 이어붙이기 미지원이라 요약본을 따로 써야 합니다)"
     return image_check_problem(item)
 
 
