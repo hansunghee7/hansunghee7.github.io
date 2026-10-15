@@ -15,7 +15,7 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
-REPO = Path(__file__).resolve().parents[2]
+REPO = Path("C:/work/hansunghee7.github.io")  # 래퍼가 임시 폴더에 풀어 실행해도 git 기록은 공용 폴더에서 읽는다(10/15 빈 지도 사고)
 OUT = Path("C:/work/_ops/context_graph.json")
 SCOPE = re.compile(r"^(CLAUDE\.md|\.claude/settings\.json|\.claude/(skills|rules|hooks)/.+\.(md|py|sh)|docs/[^/]+\.md|scripts/ops/[^/]+\.(py|sh|toml))$")
 ID_RE = re.compile(r"(?:CLAUDE|WAY|UX_GUIDE)#[0-9a-z]{4}")
@@ -50,6 +50,9 @@ def build():
             t = m.group(1) or m.group(2)
             if t:
                 edges[f].add(f"db:{t}")
+    if not files:
+        print("지도 실패: origin/main 파일 목록이 비었습니다(git 위치 확인)")
+        sys.exit(1)
     data = {"files": len(files), "edges": {k: sorted(v) for k, v in edges.items()}, "id_defined_in": ids_def}
     OUT.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
     n = sum(len(v) for v in edges.values())
