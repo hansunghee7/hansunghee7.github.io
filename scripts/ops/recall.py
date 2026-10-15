@@ -17,8 +17,12 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 CACHE = Path(r'C:\work\_ops\recall_cache.json')
 JOSA = ('에서는', '으로는', '이라는', '에서', '으로', '에게', '한테', '까지', '부터', '처럼', '보다', '하고', '이나', '이랑', '은', '는', '이', '가', '을', '를', '의', '에', '로', '와', '과', '도', '만', '요', '죠', '야', '나')
-STOP = {'그냥', '이제', '그리고', '그런데', '그래서', '하는', '있는', '없는', '있어', '있다', '해서', '해주', '주세', '것이', '거를', '이거', '저거', '우리', '탐이', '사장', '사장님', '같은', '대한', '위해', '때문', '아니', '정말', '지금', '계속', '다시', '이런', '그런', '어떤', '어떻', '하면', '해요', '하세요', '합니다', '입니다', '있나', '있는지', '되었', '되어', '됩니다', '않고', '않는', '말고', '그게', '이게', '뭐가', '무엇', '어디', '언제', '얼마', '몇개'}
+STOP = {'그냥', '이제', '그리고', '그런데', '그래서', '하는', '있는', '없는', '있어', '있다', '해서', '해주', '주세', '것이', '거를', '이거', '저거', '우리', '탐이', '사장', '사장님', '같은', '대한', '위해', '때문', '아니', '정말', '지금', '계속', '다시', '이런', '그런', '어떤', '어떻', '하면', '해요', '하세요', '합니다', '입니다', '있나', '있는지', '되었', '되어', '됩니다', '않고', '않는', '말고', '그게', '이게', '뭐가', '무엇', '어디', '언제', '얼마', '몇개', '어떻게', '됐지', '됐나', '됐나요', '어디까지'}
 
+# 편 상태 정본(10/15 핏 사모에드 사고, 페이블 진단 개선안 C): 편을 물으면 손글씨 카드보다 컨펌대장의 마지막 사건을 맨 위에 둔다
+SHORTS = Path(r'C:\work\shorts-lab')
+EP_LEDGER = SHORTS / 'pilot-shorts2' / '컨펌대장.jsonl'
+EP_HOLD = re.compile(r'(보류|대기|중단|만들지 마|하지 마)')
 LOG_CAP = 2000
 LOG_SECTIONS = ('worklog', 'handoff', 'closed', 'open', 'fact', 'history')
 # 같은 뜻으로 쓰이는 말(사장님은 '깃 배포', 기록은 'Actions 분 절감'으로 적은 사고): 묶음 안의 말은 서로 바꿔 찾는다.
@@ -91,6 +95,45 @@ def doc_chunks():
     return out
 
 
+def episode_states():
+    """편마다 컨펌대장 마지막 사건과 이름(제목·태그·주제)을 모은다. shorts-lab이 없는 기기면 빈 값."""
+    eps = {}
+    try:
+        lines = EP_LEDGER.read_text(encoding='utf-8').splitlines()
+    except OSError:
+        return eps
+    for ln in lines:
+        try:
+            r = json.loads(ln)
+        except ValueError:
+            continue
+        ep = r.get('episode') or ''
+        at = r.get('response_at') or r.get('requested_at') or ''
+        if not re.match(r'\d{4}-', at):
+            at = ''  # version 칸('v1')은 시각이 아니다(첫 시험에서 'v1'이 최신으로 뽑힌 오류)
+        if not ep or (ep in eps and eps[ep]['at'] >= at):
+            continue
+        eps[ep] = {'at': at, 'gate': r.get('gate', ''), 'st': r.get('status', ''), 'x': (r.get('response_text') or r.get('note') or '')[:160]}
+    names = {}
+    for d in (SHORTS / 'channels').glob('*/episodes/*'):
+        meta = d / '06-publish' / 'meta.json'
+        try:
+            m = json.loads(meta.read_text(encoding='utf-8'))
+            # 설명문까지 넣는다: 태그는 '사모예드', 사장님은 '사모에드'처럼 표기가 갈린다
+            names[d.name] = ' '.join([m.get('title', '')] + list(m.get('hashtags') or []) + [(m.get('description') or '')[:300]])
+        except (OSError, ValueError):
+            pass
+    try:
+        for r in json.loads((SHORTS / 'pilot-shorts2' / '대본대장.json').read_text(encoding='utf-8')).get('rows', []):
+            if r.get('ep'):
+                names[r['ep']] = names.get(r['ep'], '') + ' ' + (r.get('topic') or '')
+    except (OSError, ValueError):
+        pass
+    for ep, v in eps.items():
+        v['n'] = (ep.replace('-', ' ') + ' ' + names.get(ep, ''))[:900]
+    return eps
+
+
 def build():
     import opsdb
     cards, boss = [], []
@@ -126,6 +169,7 @@ def build():
     data = {'at': time.strftime('%F %T'),
             'logs': [{'s': r['sec'], 'p': r['owner'], 'no': r.get('no') or '', 't': (r.get('title') or '')[:300], 'd': ' '.join(str(r.get(k) or '') for k in ('next_action', 'result', 'evidence'))[:400], 'at': r.get('source_date') or ''} for r in logs],
             'docs': doc_chunks(),
+            'eps': episode_states(),
             'cards': [{'p': r['owner'], 'no': r['no'], 't': r['title'], 'd': (r.get('next_action') or '')[:400], 'b': (r['raw'].get('boss') or '')[:400]} for r in cards],
             'boss': [{'at': r['raw'].get('at', ''), 'w': r['owner'], 'x': re.sub(r'\s+', ' ', r['raw'].get('text', ''))[:500]} for r in boss]}
     CACHE.write_text(json.dumps(data, ensure_ascii=False), encoding='utf-8')
@@ -171,15 +215,34 @@ def query(text, n_cards=3, n_boss=3, n_logs=2, min_hits=2, history=False):
         hits = uh((d['h'] + ' ' + d['d']).lower())
         if hits >= max(min_hits, 3):
             ds.append((hits * 3 + sum(3 for t in qx if t in d['h'].lower()), d))
+    # 편 상태: 질문 낱말이 편 이름에 있고 그 낱말이 편 3개 이하에만 나오면(흔한 말 제외) 그 편으로 본다
+    eps = data.get('eps', {})
+    ep_hit, ep_words = [], set()
+    for t in q:
+        if len(t) < 2:
+            continue
+        m = [e for e, v in eps.items() if t in v.get('n', '').lower()]
+        if 0 < len(m) <= 3:
+            ep_words.add(t)
+            ep_hit += [e for e in m if e not in ep_hit]
+    if ep_hit:
+        # 같은 편을 '보류' 등으로 적은 손글씨 카드는 1차에서 뺀다(정본은 편 사건 기록)
+        cs = [(s, c) for s, c in cs if not (EP_HOLD.search(c['t']) and any(w in c['t'].lower() for w in ep_words))]
     ds.sort(key=lambda x: -x[0])
     ls.sort(key=lambda x: -x[0])
     cs.sort(key=lambda x: -x[0])
     bs.sort(key=lambda x: (-x[0], x[1]['at']))
-    return {'cards': [c for _, c in cs[:n_cards]], 'boss': [b for _, b in bs[:n_boss]], 'logs': [g for _, g in ls[:n_logs]], 'docs': [d for _, d in ds[:2]], 'q': q}
+    return {'cards': [c for _, c in cs[:n_cards]], 'boss': [b for _, b in bs[:n_boss]], 'logs': [g for _, g in ls[:n_logs]], 'docs': [d for _, d in ds[:2]], 'q': q,
+            'eps': [dict(eps[e], ep=e) for e in ep_hit[:3]]}
 
 
 def render(res):
     lines = []
+    for e in res.get('eps', []):
+        at = e['at']
+        if at.endswith('Z'):  # 컨펌대장은 UTC로 적는다, 사람 눈엔 한국 시각
+            at = time.strftime('%Y-%m-%d %H:%M', time.gmtime(time.mktime(time.strptime(at[:19], '%Y-%m-%dT%H:%M:%S')) - time.timezone + 9 * 3600)) + ' KST'
+        lines.append(f"· 편 상태(정본=컨펌대장 마지막 사건) [{e['ep']}] {at[:20]} {e['gate']} {e['st']}: {e['x'][:120]}")
     for c in res['cards']:
         lines.append(f"· 공정 카드 [{c['p']}#{c['no']}] {c['t'][:60]}" + (f" ★사장님: {c['b'][:160]}" if c['b'] else ''))
     for b in res['boss']:
@@ -204,7 +267,7 @@ def main():
         if not prompt or len(prompt) < 8 or prompt.lstrip().startswith(('<', '/')) or 'SYSTEM NOTIFICATION' in prompt[:200]:
             return
         res = query(prompt)
-        if res and (res['cards'] or res['boss'] or res.get('logs')):
+        if res and (res['cards'] or res['boss'] or res.get('logs') or res.get('eps')):
             print('[기억 도우미] 이 주제로 프로세스표(수파베이스)·사장님 말 원장·업무 기록에 이미 있는 기억입니다. 답하기 전에 이것과 모순되지 않게 하세요:')
             print('\n'.join(render(res)))
         return
