@@ -126,3 +126,16 @@ def test_synonym_group_does_not_inflate_hits(tmp_path, monkeypatch):
     monkeypatch.setattr(recall, "CACHE", cache)
     res = recall.query("한도 확인")
     assert res["cards"] == []
+
+
+def test_query_finds_canonical_doc_chunk_when_no_card_or_boss_hit(tmp_path, monkeypatch):
+    """마찰 #1(마야 10/15): 공정 카드·발화에 없고 정본 문서 안에만 있는 확정 결정도 찾는다."""
+    cache = tmp_path / "cache.json"
+    data = {"at": "x", "cards": [], "boss": [], "logs": [],
+            "docs": [{"f": "docs/예시_정본.md", "h": "쇼츠 마지막 줄 문구", "d": "마지막 줄에는 채널 이름을 반드시 넣는다"},
+                     {"f": "docs/다른.md", "h": "무관한 절", "d": "전혀 다른 내용"}]}
+    cache.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+    monkeypatch.setattr(recall, "CACHE", cache)
+    res = recall.query("쇼츠 마지막 줄 문구 채널 이름")
+    assert [d["f"] for d in res["docs"]] == ["docs/예시_정본.md"]
+    assert any("정본 문서 docs/예시_정본.md" in line for line in recall.render(res))
