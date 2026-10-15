@@ -137,7 +137,11 @@ def ledger_view():
         r = subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "ctxfix.py"), "list"], capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=120)
         rows = r.stdout.strip().splitlines()
         rc = subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "ctxfix.py"), "recheck"], capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=300)
-        return "\n".join(rows[:30]) + "\n[오늘 재발 판정]\n" + rc.stdout.strip()[:2000]
+        # 혼란 정보 후보(사장님 10/15 "혼란스럽게 만드는 정보는 찾기 어렵게"): 폐기·대체 표시가 있는데 1차 자리에 남은 카드
+        cs = subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "confusion_scan.py"), "--top", "25"], capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=120)
+        cf = Path("C:/work/_ops/context_audit") / f"confusion_{datetime.now():%Y%m%d}.md"
+        conf = ("\n[혼란 정보 후보]\n" + cf.read_text(encoding="utf-8")[:2500]) if cs.returncode == 0 and cf.exists() else ""
+        return "\n".join(rows[:30]) + "\n[오늘 재발 판정]\n" + rc.stdout.strip()[:2000] + conf
     except Exception as e:  # noqa: BLE001
         return f"(장부 읽기 실패: {e})"
 
