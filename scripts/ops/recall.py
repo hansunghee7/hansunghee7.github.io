@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """기억 도우미(G5, 2026-10-05 탐, 사장님: "새 세션이 되면 잊어버리고 사장이 이상한 얘기하는 사람처럼 만든다. 해당 대화를 할 때는 프로세스표에서 기억을 찾아서(수파베이스) 답해 주길"):
-사장님이 말을 걸면 답하기 전에 ① 공정 단계 카드(DB section=step) ② 사장님 말 원장(section=boss) ③ 업무 기록(worklog·handoff·closed·open·fact·history, 2026-10-15 추가)에서 같은 주제의 기억을 찾아 짧게 보여 준다.
+사장님이 말을 걸면 답하기 전에 ① 공정 단계 카드(DB section=step) ② 사장님 말 원장(section=boss, 최근 14일 = 최신 의사결정)에서 같은 주제의 기억을 찾아 짧게 보여 준다. 이것이 1차 검색이다.
+슈퍼색인관리(사장님 10/15 명명): 1차=정본 프로세스(공정 카드)+최신 의사결정, 2차=정본 문서, 그 밖(업무 기록 worklog·handoff·closed·open·fact·history)은 히스토리라 1차 결과에 섞지 않는다. 히스토리는 `--history`로만 본다.
 사고(2026-10-15): 노트가 10/13에 적은 'GitHub Actions 분 절감' 행이 worklog 구역이라 이 도구가 한 번도 찾지 못해 사장님이 같은 설명을 되풀이하셨다(공정 카드 탐 #65·#68).
 속도: 매번 DB를 부르면 1초 이상 걸리므로 시간당 한 번 로컬 캐시(C:/work/_ops/recall_cache.json)로 내려받고, 조회는 캐시만 읽는다(수십 ms).
 사용:
@@ -81,12 +82,13 @@ def build():
     print(f"캐시 갱신: 카드 {len(data['cards'])}개, 사장님 발화 {len(data['boss'])}건, 업무 기록 {len(data['logs'])}건 ({data['at']})")
 
 
-def query(text, n_cards=3, n_boss=3, n_logs=2, min_hits=2):
+def query(text, n_cards=3, n_boss=3, n_logs=2, min_hits=2, history=False):
     try:
         data = json.loads(CACHE.read_text(encoding='utf-8'))
     except (OSError, ValueError):
         return None
     q = tokens(text)
+    qx = expand(q, text)
     if len(q) < 2:
         return {'cards': [], 'boss': [], 'logs': [], 'q': q}
     def score(blob, tw=1):
@@ -94,9 +96,9 @@ def query(text, n_cards=3, n_boss=3, n_logs=2, min_hits=2):
         return sum(tw for t in q if t in b)
     cs = []
     for c in data['cards']:
-        s = score(c['t'], 3) + score(c['d'], 1) + score(c['b'], 2)
-        hits = sum(1 for t in q if t in (c['t'] + c['d'] + c['b']).lower())
-        if hits >= min_hits:
+        s = sum(3 for t in qx if t in c['t'].lower()) + sum(1 for t in qx if t in c['d'].lower()) + sum(2 for t in qx if t in c['b'].lower())
+        hits = sum(1 for t in qx if t in (c['t'] + c['d'] + c['b']).lower())
+        if hits >= max(min_hits, 3 if len(qx) > len(q) else min_hits):
             cs.append((s, c))
     bs = []
     for b in data['boss']:
@@ -104,8 +106,7 @@ def query(text, n_cards=3, n_boss=3, n_logs=2, min_hits=2):
         if hits >= max(min_hits, min(3, len(q) // 2)) and b['x'] != text.strip():
             bs.append((hits * 10 + (1 if b['at'] > '2026-10-05' else 0), b))
     ls = []
-    qx = expand(q, text)
-    for g in data.get('logs', []):
+    for g in (data.get('logs', []) if history else []):
         blob = (g['t'] + ' ' + g['d']).lower()
         hits = sum(1 for t in qx if t in blob)
         if hits >= max(min_hits, 3):
@@ -144,8 +145,9 @@ def main():
             print('[기억 도우미] 이 주제로 프로세스표(수파베이스)·사장님 말 원장·업무 기록에 이미 있는 기억입니다. 답하기 전에 이것과 모순되지 않게 하세요:')
             print('\n'.join(render(res)))
         return
-    text = ' '.join(a)
-    res = query(text)
+    hist = '--history' in a
+    text = ' '.join(x for x in a if x != '--history')
+    res = query(text, history=hist)
     if res is None:
         sys.exit('캐시가 없습니다: python scripts/ops/recall.py build')
     out = render(res)
