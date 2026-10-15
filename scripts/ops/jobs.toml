@@ -444,7 +444,7 @@ note = "2026-10-11 구PC 대장 id 를 신PC 상태판에도 반영"
 id = "fn:pipeline-sync"
 kind = "cmd"
 cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\pipeline_sync.py']
-every_min = 1440
+every_min = 60
 timeout = 300
 name = "수집 파이프 대장 동기화(감시 상태판의 마지막 성공을 data_pipelines에 옮김, pipeline_sync.py)"
 note = "2026-10-11 탐 등록(사장님 허용). 근거 있는 파이프만 add-run 으로 기록(실행마다 실행 기록 1행 추가). 종료 코드 2 = 상태 파일 오류, 그 밖 실패 = 대장 DB 조회 오류. 근거 없는 파이프는 목록만 출력"
