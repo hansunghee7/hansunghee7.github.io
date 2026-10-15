@@ -12,6 +12,9 @@ OPS = Path("C:/work/_ops/context_pilot")
 
 
 def row(label, v, text):
+    """값이 없으면(측정 실패·기록 없음) 막대 대신 '측정 전' 줄로 둔다(검수 큐 PR 2264 지적: None이 JS로 들어가 화면 전체가 깨짐)."""
+    if v is None:
+        return "{label:'%s',kind:'none'}" % label
     return "{label:'%s',kind:'real',v:%s,text:'%s'}" % (label, v, text)
 
 
@@ -54,7 +57,7 @@ def main():
     h = patch(h, "PR 되돌림 비율", None, row("Carvit 팀", rp, "%s%% (%s/%s)" % (rp, m["revert_count_14d"], m["merged_pr_14d"])),
               new_aria="PR 되돌림 비율 비교. Carvit 에이전트 팀 %s퍼센트(실측, 최근 14일 병합 %s건 중 %s건), 지금은 시안 예시" % (rp, m["merged_pr_14d"], m["revert_count_14d"]))
     c = m["cpso_krw"]
-    h = patch(h, "성공 한 건당 비용(CPSO)", "병합 PR 한 건당 GCP 호출 비용(원), 클로드·Azure 제외 하한값, 낮을수록 좋음", row("Carvit 팀", c, "₩%s" % format(c, ",")),
+    h = patch(h, "성공 한 건당 비용(CPSO)", "병합 PR 한 건당 GCP 호출 비용(원), 클로드·Azure 제외 하한값, 낮을수록 좋음", row("Carvit 팀", c, "₩%s" % (format(c, ",") if c is not None else "")),
               new_max=1000, new_ticks="[0,500,1000]", new_fmt="'₩'+v",
               new_aria="성공 한 건당 비용 비교. Carvit 에이전트 팀 %s원(실측 하한값), 지금은 시안 예시, 도입 전은 측정 전" % c)
     h = h.replace("{label:'지금',kind:'ex',v:6,text:'6회'}", "{label:'지금',kind:'ex',v:900,text:'₩900'}")
