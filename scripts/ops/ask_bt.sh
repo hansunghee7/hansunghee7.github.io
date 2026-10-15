@@ -70,5 +70,8 @@ done
 [ "$rc" = 99 ] && { echo "모든 풀 실패(종료 3). 마지막 오류: ${LAST:-한도 관문에서 전부 멈춤, python $QUOTA status 확인}" >&2; exit 3; }
 echo "쓴 모델: $USED" >&2
 # 어느 풀이 답했는지 결과 파일 맨 위에 한 줄 남긴다
-{ echo "<!-- 답한 풀: $USED -->"; cat "$OUT"; } > "$OUT.tmp" && mv "$OUT.tmp" "$OUT"
+# 마찰 #2(마야 10/15): 주석은 눈에 안 띄어 옴니라우터·Vertex 답을 비티 의견으로 오해했다 → 보이는 글로 실제 사용 모델을 맨 위에 쓰고, 비티(안티그래비티 제미나이)가 아니면 "비티 아님"을 못 박는다.
+case "$USED" in 비티) WHO_LINE="답한 모델: 비티(안티그래비티 제미나이)";; *) WHO_LINE="답한 모델: $USED — 비티(안티그래비티 제미나이) 아님. 비티 의견으로 보고하지 말 것";; esac
+echo "$WHO_LINE" >&2
+{ echo "<!-- 답한 풀: $USED -->"; echo "> $WHO_LINE"; echo; cat "$OUT"; } > "$OUT.tmp" && mv "$OUT.tmp" "$OUT"
 echo "답 저장: $OUT ($(wc -c < "$OUT") bytes)"
