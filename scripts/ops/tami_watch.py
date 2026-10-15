@@ -29,7 +29,7 @@ FIT_DB = Path("C:/work/shorts-lab/tools/factory/fit_db.py")
 MAILBOX = Path("C:/work/solar-bible/mailbox/mailbox.py")
 HERMES = Path(os.environ.get("LOCALAPPDATA", "")) / "hermes" / "bin" / "hermes.exe"
 TAMI_HOME = Path(os.environ.get("LOCALAPPDATA", "")) / "hermes" / "profiles" / "tami"
-MODEL = "claude-fable-5-1"
+MODELS = ("claude-fable-5-1", "claude-opus-5-5")  # 페이블 먼저, 안 되면 오퍼스(프로모션 크레딧 적용 확인 10/15)
 READ_H, IDLE_H, MIN_CREDIT, REPEAT_H = 8, 12, 6, 6
 FLAGS = getattr(subprocess, "CREATE_NO_WINDOW", 0)
 
@@ -131,12 +131,17 @@ def wake_tami(items):
          "고치기·재시작·삭제·발송은 절대 하지 않는다. 참고: 공장 장부 `python C:/work/shorts-lab/tools/factory/fit_db.py factory`, 상태판 C:/work/_ops/STATUS.md, 감시 대장 C:/work/hansunghee7.github.io/scripts/ops/jobs.toml.\n"
          "출력(한국어, 12줄 이내): 신호마다 '원인(확인됨/추정) / 근거 한 줄 / 누가 무엇을 하면 되는지(핏·탐·사장님)'. 끝에 '사장님이 할 일: 없음' 또는 한 줄.\n\n이상 신호:\n- " + "\n- ".join(items))
     env = dict(os.environ, ANTHROPIC_API_KEY=key, HERMES_HOME=str(TAMI_HOME), PYTHONIOENCODING="utf-8")
-    r = subprocess.run([str(HERMES), "chat", "-q", q, "--oneshot", "-Q", "--provider", "anthropic", "-m", MODEL],
-                       capture_output=True, text=True, encoding="utf-8", errors="replace", env=env, timeout=900, creationflags=FLAGS)
-    text = re.sub(r"\x1b\[[0-9;]*m", "", (r.stdout or "") + ("\n" + r.stderr if r.returncode else "")).replace(key, "***")
-    with (Path("C:/work/_ops") / "agent_calls.csv").open("a", encoding="utf-8") as f:
-        f.write(f"{time.strftime('%F %T')},타미-페이블,0,{r.returncode},{len(text.encode())},0\n")
-    return text.strip()[-3000:]
+    # 판정이 안 나오면(10/15 22:50 실측: 페이블이 '잔액 부족' 400 → 헤르메스가 로컬 qwen으로 넘어가 엉뚱한 실패) 다음 모델로. 판정 성공 = '사장님이 할 일' 줄이 있음
+    for model in MODELS:
+        r = subprocess.run([str(HERMES), "chat", "-q", q, "--oneshot", "-Q", "--provider", "anthropic", "-m", model],
+                           capture_output=True, text=True, encoding="utf-8", errors="replace", env=env, timeout=900, creationflags=FLAGS)
+        text = re.sub(r"\x1b\[[0-9;]*m", "", (r.stdout or "") + ("\n" + r.stderr if r.returncode else "")).replace(key, "***")
+        ok = "사장님이 할 일" in text
+        with (Path("C:/work/_ops") / "agent_calls.csv").open("a", encoding="utf-8") as f:
+            f.write(f"{time.strftime('%F %T')},타미-{model},0,{r.returncode if ok else 9},{len(text.encode())},0\n")
+        if ok:
+            return f"(판정 모델: {model})\n" + text.strip()[-3000:]
+    return "판정 실패(모든 모델): " + text.strip()[-400:]
 
 
 def main():
