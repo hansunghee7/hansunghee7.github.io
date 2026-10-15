@@ -328,3 +328,14 @@ class ParseHandoffs(TempDir):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def test_doc_sections_cover_every_section_the_importer_writes():
+    """표 교체 때 지우는 칸(DOC_SECTIONS)이 이 도구가 만드는 칸과 같아야 한다. 에이전트 칸(ctxfix 등)이 지워지던 10/16 사고 회귀 방지."""
+    import re
+    from pathlib import Path
+    import import_ops_tables as m
+    src = Path(m.__file__).read_text(encoding='utf-8')
+    written = set(re.findall(r"'section': '([a-z]+)'", src)) | set(re.findall(r"'(closed|open|history)'", src.split('sec = ', 1)[1].split('\n', 1)[0]))
+    assert written <= set(m.DOC_SECTIONS)
+    assert 'ctxfix' not in m.DOC_SECTIONS and 'worklog' not in m.DOC_SECTIONS

@@ -70,6 +70,11 @@ def pick(d, *names):
     return None
 
 
+# 이 도구가 문서에서 만들어 tasks 표에 넣는 칸. 표 교체 때 이 칸들만 지운다(그 밖의 칸은 에이전트가 직접 쓴 기록).
+DOC_SECTIONS = ('open', 'closed', 'history', 'handoff', 'process')
+DOC_IN = 'in.(' + ','.join(DOC_SECTIONS) + ')'
+
+
 def parse_tam_ledger(path):
     """탐 업무대장은 표가 아니라 `### [상태] N번: 제목` 제목 아래 불릿으로 쓴다. 제목 한 줄이 한 건이고, 본문 전체는 raw.body에 그대로 보존한다."""
     try:
@@ -241,9 +246,10 @@ def main():
         old = last_id(t)
         insert_all(t, rows)
         if old:
-            # 에이전트가 직접 쓴 작업 기록(section=worklog, worklog.py)은 문서에서 오는 행이 아니므로 지우지 않는다(10/5, 대장 N156 G2)
-            opsdb.delete(t, {'id': f'lte.{old}', 'section': 'not.in.(worklog,step,run,boss,grant,fact,doc,req,act,creq)'} if t == 'tasks' else {'id': f'lte.{old}'})
-    counts = {t: (opsdb.count(t, {'section': 'not.in.(worklog,step,run,boss,grant,fact,doc,req,act,creq)'}) if t == 'tasks' else opsdb.count(t)) for t in P}
+            # 문서에서 만든 칸(DOC_SECTIONS)만 지운다. 에이전트가 직접 쓴 칸(worklog·step·boss·ctxfix 등)은 남긴다.
+            # 10/16: 예전엔 '지우지 않을 칸' 목록이라 새 칸(ctxfix 재발 대장)이 빠져 매시간 지워졌다 → 지울 칸 목록으로 뒤집음
+            opsdb.delete(t, {'id': f'lte.{old}', 'section': DOC_IN} if t == 'tasks' else {'id': f'lte.{old}'})
+    counts = {t: (opsdb.count(t, {'section': DOC_IN}) if t == 'tasks' else opsdb.count(t)) for t in P}
     # 로그 표는 도구가 DB에 직접 쓴 기록이 더 있을 수 있어 DB ≥ 원본이면 정상, 나머지 표는 같아야 정상
     bad = [t for t, rows in P.items() if (counts[t] < len(rows) if t in LOGS else counts[t] != len(rows))]
     print('확인(DB 행 수):', counts)
