@@ -34,6 +34,9 @@ def read_env(path):
     return out
 
 
+INVITE_REQ = None
+
+
 def mail_counts():
     env = read_env(MAIL_ENV)
     if not env.get("MAIL_URL") or not env.get("MAIL_READ_KEY"):
@@ -46,6 +49,10 @@ def mail_counts():
     except Exception:
         return None, None
     items = data if isinstance(data, list) else data.get("mails") or data.get("items") or []
+    # 사전체험(초대 요청)은 hello@로 오는 "[초대 요청]" 메일이다. 우리 도메인 주소는 내부 시험이라 뺀다(주소는 출력하지 않는다)
+    global INVITE_REQ
+    INVITE_REQ = sum(1 for m in items if "[초대 요청]" in str(m.get("subject") or "")
+                     and "@simplifier.co.kr" not in str(m.get("preview") or "") and "@carvit.ai" not in str(m.get("preview") or ""))
     cutoff = dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=7)
     recent = 0
     for m in items:
@@ -94,7 +101,8 @@ def main():
     total, recent = mail_counts()
     views, visits = last_visits()
     row = {"date": today, "inquiries_total": total, "inquiries_7d": recent,
-           "views_24h": views, "visits_24h": visits, "customers": last_customers()}
+           "views_24h": views, "visits_24h": visits, "customers": last_customers(),
+           "invite_requests_ext": INVITE_REQ}
     rows = []
     try:
         with open(OUT, encoding="utf-8") as f:

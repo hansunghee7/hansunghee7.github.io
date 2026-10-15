@@ -58,7 +58,7 @@ def main():
     if not daily:
         lines.append("- 일일 수집 기록 없음(jitu_kpi_daily.py가 돌지 않았다)")
     for d in daily:
-        lines.append(f"- {d['date']}: 조회 {d.get('views_24h')}, 방문 {d.get('visits_24h')}(EU 제외), 문의 7일 {d.get('inquiries_7d')}, 고객수 {d.get('customers')}")
+        lines.append(f"- {d['date']}: 조회 {d.get('views_24h')}, 방문 {d.get('visits_24h')}(EU 제외), 문의 7일 {d.get('inquiries_7d')}, 사전체험 신청(외부) {d.get('invite_requests_ext')}, 고객수 {d.get('customers')}")
     lines += ["", "## 열린 예측(점검일 7일 안 또는 지남)"]
     n = 0
     for r in jp.load("predict"):
