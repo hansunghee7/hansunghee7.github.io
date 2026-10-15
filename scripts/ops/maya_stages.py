@@ -75,7 +75,7 @@ def main():
         cells = [card, exp_ok, dir_ok, resv, post or "-", sns, rc, ex]
         blanks += sum(1 for c in (card, exp_ok, resv, sns, rc, ex) if c == "-")
         rows.append((p["date"], p["topic"][:28], *cells))
-    head = "| 날짜 | 주제 | 카드 | 경험 | 방향 | 예약 | 글번호 | SNS큐 | 반응수집 | 실험 |\n|---|---|---|---|---|---|---|---|---|\n"
+    head = "| 날짜 | 주제 | 카드 | 경험 | 방향 | 예약 | 글번호 | SNS큐 | 반응수집 | 실험 |\n|---|---|---|---|---|---|---|---|---|---|\n"
     out = head + "\n".join("| " + " | ".join(str(c) for c in r) + " |" for r in rows)
     out += f"\n\n글 {len(rows)}편, 빈칸 {blanks}개 (빈칸 '-' = 증거 파일에 없음)"
     print(out)
