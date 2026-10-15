@@ -73,5 +73,5 @@ echo "쓴 모델: $USED" >&2
 # 마찰 #2(마야 10/15): 주석은 눈에 안 띄어 옴니라우터·Vertex 답을 비티 의견으로 오해했다 → 보이는 글로 실제 사용 모델을 맨 위에 쓰고, 비티(안티그래비티 제미나이)가 아니면 "비티 아님"을 못 박는다.
 case "$USED" in 비티) WHO_LINE="답한 모델: 비티(안티그래비티 제미나이)";; *) WHO_LINE="답한 모델: $USED — 비티(안티그래비티 제미나이) 아님. 비티 의견으로 보고하지 말 것";; esac
 echo "$WHO_LINE" >&2
-{ echo "> $WHO_LINE"; echo; echo "<!-- 답한 풀: $USED -->"; cat "$OUT"; } > "$OUT.tmp" && mv "$OUT.tmp" "$OUT"
+{ echo "<!-- 답한 풀: $USED -->"; echo "> $WHO_LINE"; echo; cat "$OUT"; } > "$OUT.tmp" && mv "$OUT.tmp" "$OUT"
 echo "답 저장: $OUT ($(wc -c < "$OUT") bytes)"
