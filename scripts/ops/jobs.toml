@@ -614,3 +614,11 @@ kind = "hermes_cron"
 name = "context-dashboard"
 period_min = 1440
 note = "2026-10-15 탐 등록(Carvit Context 대시보드 완성, 사장님 지시). 래퍼가 origin/main의 context_measure.py→context_build.py를 실행해 C:/work/_ops/context_pilot/context_dashboard_live.html과 measure_live.json 생성. 첫 자동 실행 결과 확인 필요."
+
+[[job]]
+id = "fn:bizinfo-watch"
+kind = "cmd"
+cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\bizinfo_watch.py']
+every_min = 720
+name = "기업마당 지원사업 공고 감시(새 공고 기록, 창업도약·AI·SaaS·바우처 등 관심 키워드는 텔레그램 알림, bizinfo_watch.py)"
+note = "2026-10-15 탐 등록(공정 카드 탐-공고수집 #2 출처 두 번째, 타미 전담 후보 시험). 상태 C:/work/_ops/grants_prep/biz_seen.json, 하루 2회(사람 빈도). 종료 코드 1 = 목록 파싱 0건(페이지 구조 변경). 첫 자동 실행 결과 확인 필요."
