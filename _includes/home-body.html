@@ -578,6 +578,44 @@
     .new-bottom-gallery { grid-template-columns: repeat(3, 1fr); gap: 8px; }
     .new-gallery-item:nth-child(4), .new-gallery-item:nth-child(5) { display: none; }
   }
+
+  /* ===== 히어로 한 줄 + Carvit 영역 (사장님 2026-10-15 승인, 시안: 지투 / 문구: 마야 검수 통과) =====
+     간격은 이 사이트의 섹션 리듬을 그대로 따른다: PC 130px(.yc-title margin-top이 만듦), 모바일 96px. */
+  .hero-sub { max-width: 620px; margin: 40px auto 0; text-align: center; font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-weight: 400; font-size: clamp(16px, 1.9vw, 19px); line-height: 1.75; color: #f5f3ee; word-break: keep-all; }
+  .hero-sub-link { display: block; width: fit-content; margin: 14px auto 0; font-size: 14px; color: #f5f3ee; text-decoration: none; border-bottom: 1px solid rgba(245,243,238,0.35); padding-bottom: 2px; }
+  .carvit-section { position: relative; z-index: 40; background: #080808; color: #f5f3ee; }
+  .cv-title { font-family: 'Source Serif 4', 'Noto Serif KR', serif; font-weight: 300; font-size: clamp(30px, 4.4vw, 46px); line-height: 1.3; text-align: center; margin: 0 auto 20px; max-width: 860px; color: #f5f3ee; word-break: keep-all; text-wrap: balance; }
+  .cv-lead { text-align: center; color: #c9c8c2; font-weight: 300; font-size: 16px; line-height: 1.8; max-width: 680px; margin: 0 auto 56px; word-break: keep-all; }
+  .cv-cards, .cv-nums, .cv-team { list-style: none; margin: 0; padding: 0; }
+  .cv-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 72px; }
+  .cv-card { border: 1px solid rgba(245,243,238,0.16); border-radius: 12px; padding: 32px 28px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  .cv-eye { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 11.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #8f8b82; }
+  .cv-card h4 { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 22px; font-weight: 600; line-height: 1.35; margin: 0; color: #f5f3ee; word-break: keep-all; }
+  .cv-card p { margin: 0; font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 14.5px; font-weight: 300; color: #c9c8c2; line-height: 1.7; word-break: keep-all; }
+  .cv-nums { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; text-align: center; margin-bottom: 20px; }
+  .cv-nums b { display: block; font-family: 'Source Serif 4', serif; font-weight: 200; font-size: clamp(44px, 6vw, 72px); line-height: 1; color: #f5f3ee; font-variant-numeric: tabular-nums; }
+  .cv-nums span { display: block; margin-top: 10px; font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 12.5px; letter-spacing: 0.05em; color: #8f8b82; }
+  .cv-fine { text-align: center; font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 12.5px; line-height: 1.7; color: #8f8b82; margin: 0 auto 64px; max-width: 760px; word-break: keep-all; }
+  .cv-team { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px 18px; margin-bottom: 20px; }
+  .cv-team li { display: flex; flex-direction: column; align-items: center; gap: 8px; width: 64px; }
+  .cv-team img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; object-position: 50% 20%; background: #111; border: 1px solid rgba(245,243,238,0.16); }
+  .cv-team span { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 12px; color: #8f8b82; }
+  .cv-teamcap { text-align: center; font-family: 'Pretendard Variable', 'Pretendard', sans-serif; color: #c9c8c2; font-weight: 300; font-size: 14.5px; line-height: 1.7; margin: 0 0 56px; word-break: keep-all; }
+  .cv-cta { text-align: center; }
+  .cv-btn { display: inline-block; background: #f5f3ee; color: #080808; font-family: 'Boska', serif; font-style: italic; font-weight: 400; font-size: 18px; padding: 16px 44px; border-radius: 999px; text-decoration: none; transition: background .2s, color .2s, transform .2s; }
+  .cv-btn:hover { background: #ffffff; transform: translateY(-1px); }
+  @media (max-width: 860px) { .cv-cards { grid-template-columns: 1fr; } }
+  @media (max-width: 760px) {
+    .carvit-section { padding-bottom: 96px; padding-left: 16px; padding-right: 16px; }
+    .carvit-section .yc-title { margin-top: 0; }
+    /* 모바일 섹션 간격 96px: 고객 후기(.story-section)의 아래 여백은 이미 96px라 후기→Carvit은 그대로 이어지고,
+       Carvit→LOG는 위 .carvit-section의 padding-bottom 96px가 만든다 */
+    .cv-nums { gap: 12px; }
+    .cv-nums span { font-size: 11.5px; letter-spacing: 0; }
+    .cv-lead { margin-bottom: 40px; }
+    .cv-cards { margin-bottom: 56px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .cv-btn { transition: none; } }
 </style>
 <noscript><style>
   .proven-wrap, #proven-fade { opacity:1 !important; }
@@ -605,6 +643,7 @@
     <div id="hero-fade">
       <h1>Simplifier turns<br class="br-m"> complexity<br class="br-d"> <span class="into-word">into</span><br class="br-m"> <span class="accent">explosive growth.</span></h1>
       <p class="hero-footnote"><span class="q">"폭발적 성장은 갑작스럽게 오는 것이 아닙니다. 단순화해온 모든 것이 마침내 위로 향할 곳밖에 남지 않은 순간에 찾아옵니다."</span><span class="who">— 한성희</span></p>
+      <p class="hero-sub">300+ 스타트업을 코칭했고, 지금은 AI 에이전트 팀과 스타트업 성장을 가속하는 서비스를 만듭니다.<a class="hero-sub-link" href="#carvit">Carvit 보기</a></p>
       <div class="scroll-cue"><span class="chev"></span></div>
     </div>
   </section>
@@ -674,6 +713,35 @@
       <div class="quote-attribution"><div class="quote-avatar"><img src="/assets/testimonials/f.png" alt="기업 HR Leader"></div>기업 HR Leader</div>
     </div>
   </div>
+</section>
+
+<section class="carvit-section wrap" id="carvit">
+  <h2 class="yc-title">CARVIT</h2>
+  <h3 class="cv-title">코칭하는 팀이 직접 만들어 쓰는 서비스, Carvit</h3>
+  <p class="cv-lead">스타트업의 성장을 AI 에이전트가 가속하게 하는 서비스 Carvit를, 창업자와 AI 에이전트 팀이 직접 만들고 씁니다.</p>
+  <ul class="cv-cards">
+    <li class="cv-card"><span class="cv-eye">UX · On Air</span><h4>AI가 팀의 목표와 가이드에 맞춰 화면을 만듭니다</h4><p>기존 가이드, 서비스 화면, URL을 제공하면 에이전트용 가이드로 만들고, 바로 디자인 된 서비스로 만듭니다.</p></li>
+    <li class="cv-card"><span class="cv-eye">Create · Beta</span><h4>에이전트가 영상 제작 전 과정을 관리합니다</h4><p>성과 분석, 주제 제안, 영상 제작, 5개 채널 운영을 에이전트가 직접 하고 있습니다.</p></li>
+    <li class="cv-card"><span class="cv-eye">Pass · Beta</span><h4>에이전트가 인프라 세팅을 직접 할 수 있게 합니다</h4><p>키 값을 에이전트에게 보여 주지 않고 금고가 대신 넣어 줍니다.</p></li>
+  </ul>
+  <ul class="cv-nums">
+    <li><b>356</b><span>우리 팀 자체 가이드 조회</span></li>
+    <li><b>806</b><span>회사 저장소 병합 PR</span></li>
+    <li><b>33</b><span>영상 제작(8/28~10/14)</span></li>
+  </ul>
+  <p class="cv-fine">2026-10-14 기준 우리 팀 자체 기록입니다. 가이드 조회와 병합 PR은 10/1~10/14, 영상은 8/28~10/14 집계이며 고객 사용 수치나 매출이 아닙니다.</p>
+  <ul class="cv-team">
+      <li><img src="/assets/carvit/team/founder.jpg" alt="Simon" width="56" height="56" loading="lazy" decoding="async"><span>Simon</span></li>
+      <li><img src="/assets/carvit/team/fit.jpg" alt="핏" width="56" height="56" loading="lazy" decoding="async"><span>핏</span></li>
+      <li><img src="/assets/carvit/team/tam.jpg" alt="탐" width="56" height="56" loading="lazy" decoding="async"><span>탐</span></li>
+      <li><img src="/assets/carvit/team/jitu.jpg" alt="지투" width="56" height="56" loading="lazy" decoding="async"><span>지투</span></li>
+      <li><img src="/assets/carvit/team/note.jpg" alt="노트" width="56" height="56" loading="lazy" decoding="async"><span>노트</span></li>
+      <li><img src="/assets/carvit/team/maya.jpg" alt="마야" width="56" height="56" loading="lazy" decoding="async"><span>마야</span></li>
+      <li><img src="/assets/carvit/team/dex.jpg" alt="덱스" width="56" height="56" loading="lazy" decoding="async"><span>덱스</span></li>
+      <li><img src="/assets/carvit/team/bt.jpg" alt="비티" width="56" height="56" loading="lazy" decoding="async"><span>비티</span></li>
+  </ul>
+  <p class="cv-teamcap">창업자와 일곱 AI 에이전트가 영상, 인프라, 제품, 개발, 글, 코드 검토를 나눠 맡습니다.</p>
+  <div class="cv-cta"><a class="cv-btn" href="https://carvit.ai/ko/">Carvit 둘러보기</a></div>
 </section>
 
 <section class="yc-sections wrap">
