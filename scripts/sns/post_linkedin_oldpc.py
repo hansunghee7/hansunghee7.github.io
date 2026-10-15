@@ -5,7 +5,7 @@ post_rocketpunch.py와 같은 방식: 구PC 무인 크롬(링크드인 로그인
 → (--post일 때만) 게시 → 내 활동 맨 위 글 확인. 기본은 모의 실행(끝까지 채우고 화면 저장 뒤 창을 닫는다).
 사용: venv/bin/python post_linkedin.py --text out/maya/li639.txt --image out/maya/cover639.jpg [--post]
 """
-import argparse, json, re, time
+import argparse, json, re, sys, time
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 
@@ -27,17 +27,10 @@ def main():
     ap.add_argument("--title", required=True, help="글 제목(본문 첫 줄과 같아야 한다)")
     a = ap.parse_args()
     text = Path(a.text).read_text(encoding="utf-8").strip()
-    # 게시 전 관문(2026-10-15 마야, 공정 마야-SNS게시 #2·#3): 첫 줄=제목, 관련 글 링크 딱 1개, CTA 정본 문구, 원문 링크·from 줄 금지
-    problems = []
-    first = text.splitlines()[0].strip() if text.strip() else ""
-    if first != a.title.strip():
-        problems.append("첫 줄이 제목과 다름")
-    if text.count("simplifier.co.kr/logs/") != 1:
-        problems.append("관련 글 링크가 1개가 아님")
-    if "심플리파이어 로그를 함께 봐 주세요" not in text:
-        problems.append("CTA 정본 문구 없음")
-    if "전문:" in text or any(l.strip().startswith("from ") for l in text.splitlines()):
-        problems.append("원문 링크 줄(전문:/from) 있음")
+    # 게시 전 관문: 규칙 정본은 같은 폴더의 post_gate.py(구PC에도 같이 복사, 공용-에이전트마찰개선 #5)
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from post_gate import text_problems
+    problems = text_problems(text, a.title)
     if problems:
         print(json.dumps({"status": "STOP", "why": problems}, ensure_ascii=False))
         return 1
