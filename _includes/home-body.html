@@ -598,6 +598,10 @@
   .cv-team img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; object-position: 50% 20%; background: #111; border: 1px solid rgba(245,243,238,0.16); }
   .cv-team span { font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 12px; color: #8f8b82; }
   .cv-teamcap { text-align: center; font-family: 'Pretendard Variable', 'Pretendard', sans-serif; color: #c9c8c2; font-weight: 300; font-size: 14.5px; line-height: 1.7; margin: 0 0 56px; word-break: keep-all; }
+  .cv-help { position: relative; display: inline-block; margin-left: 8px; vertical-align: middle; }
+  .cv-help-btn { width: 18px; height: 18px; padding: 0; border-radius: 50%; border: 1px solid rgba(245,243,238,0.4); background: transparent; color: #c9c8c2; font: 600 11px/16px 'Pretendard Variable', 'Pretendard', sans-serif; cursor: help; }
+  .cv-help-tip { position: absolute; left: 50%; bottom: calc(100% + 10px); transform: translateX(-50%); width: 300px; max-width: 80vw; padding: 12px 14px; border-radius: 10px; background: #1b1b1b; border: 1px solid rgba(245,243,238,0.18); color: #e9e7e1; font-size: 12.5px; line-height: 1.7; text-align: left; opacity: 0; visibility: hidden; transition: opacity .15s; pointer-events: none; z-index: 5; }
+  .cv-help:hover .cv-help-tip, .cv-help-btn:focus + .cv-help-tip { opacity: 1; visibility: visible; }
   .cv-cta { text-align: center; }
   .cv-btn { display: inline-block; background: #f5f3ee; color: #080808; font-family: 'Boska', serif; font-style: italic; font-weight: 400; font-size: 18px; padding: 16px 44px; border-radius: 999px; text-decoration: none; transition: background .2s, color .2s, transform .2s; }
   .cv-btn:hover { background: #ffffff; transform: translateY(-1px); }
@@ -735,7 +739,7 @@
       <li><img src="/assets/carvit/team/dex.jpg" alt="덱스" width="56" height="56" loading="lazy" decoding="async"><span>덱스</span></li>
       <li><img src="/assets/carvit/team/bt.jpg" alt="비티" width="56" height="56" loading="lazy" decoding="async"><span>비티</span></li>
   </ul>
-  <p class="cv-teamcap">창업자와 일곱 AI 에이전트가 영상, 인프라, 제품, 개발, 글, 코드 검토를 나눠 맡습니다.</p>
+  <p class="cv-teamcap">창업자와 일곱 AI 에이전트가 영상, 인프라, 제품, 개발, 글, 코드 검토를 나눠 맡습니다.<span class="cv-help"><button type="button" class="cv-help-btn" aria-label="숫자 기준 안내" aria-describedby="cv-help-tip">?</button><span class="cv-help-tip" id="cv-help-tip" role="tooltip">2026-10-14 기준 우리 팀 자체 기록입니다. 가이드 조회와 병합 PR은 10/1~10/14, 영상은 8/28~10/14 집계이며 고객 사용 수치나 매출이 아닙니다.</span></span></p>
   <div class="cv-cta"><a class="cv-btn" href="https://carvit.ai/ko/">Carvit 둘러보기</a></div>
 </section>
 
