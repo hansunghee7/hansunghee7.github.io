@@ -622,3 +622,10 @@ cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\bizinfo_watch.py']
 every_min = 720
 name = "기업마당 지원사업 공고 감시(새 공고 기록, 창업도약·AI·SaaS·바우처 등 관심 키워드는 텔레그램 알림, bizinfo_watch.py)"
 note = "2026-10-15 탐 등록(공정 카드 탐-공고수집 #2 출처 두 번째, 타미 전담 후보 시험). 상태 C:/work/_ops/grants_prep/biz_seen.json, 하루 2회(사람 빈도). 종료 코드 1 = 목록 파싱 0건(페이지 구조 변경). 첫 자동 실행 결과 확인 필요."
+
+[[job]]
+id = "hermes:context-audit"
+kind = "hermes_cron"
+name = "context-audit"
+period_min = 1440
+note = "2026-10-15 탐 등록(사장님: 우리 컨텍스트만 관리하는 전문 에이전트, 오류·실수 감지해 문서·DB 개선). context_audit.py가 최근 24시간 마찰 기록을 모아 Claude API로 개선 제안만 만든다(C:/work/_ops/context_audit/). 반영은 탐이 PR로. 첫 자동 실행 결과 확인 필요."
