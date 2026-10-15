@@ -31,6 +31,15 @@ class T(unittest.TestCase):
         self.assertFalse(ps.evidence({'id': 'a', 'status': 'fail', 'detail': ''})[0])
         self.assertIsNone(ps.evidence({'id': 'a', 'status': 'warn'}))
 
+    def test_pick_evidence_prefers_github_for_gh_watch(self):
+        state = {'gh:site:X': {'id': 'gh:site:X', 'status': 'ok', 'detail': '마지막 성공 10-15 23:19', 'checked': '2026-10-16T02:38:00+09:00'},
+                 'fn:a': {'id': 'fn:a', 'status': 'ok', 'detail': '마지막 실행 10-16 07:00', 'checked': '2026-10-16T07:38:00+09:00'}}
+        live = (True, 'gh live', '2026-10-15T21:40:41Z')
+        self.assertEqual(ps.pick_evidence('gh:site:X', state, gh=lambda w: live), live)
+        self.assertEqual(ps.pick_evidence('gh:site:X', state, gh=lambda w: None)[2], '2026-10-15T23:19:00+09:00')
+        self.assertEqual(ps.pick_evidence('fn:a', state, gh=lambda w: live)[2], '2026-10-16T07:00:00+09:00')
+        self.assertIsNone(ps.pick_evidence(None, state, gh=lambda w: live))
+
 
 if __name__ == '__main__':
     unittest.main()
