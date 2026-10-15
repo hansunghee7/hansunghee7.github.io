@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """기억 도우미(G5, 2026-10-05 탐, 사장님: "새 세션이 되면 잊어버리고 사장이 이상한 얘기하는 사람처럼 만든다. 해당 대화를 할 때는 프로세스표에서 기억을 찾아서(수파베이스) 답해 주길"):
-사장님이 말을 걸면 답하기 전에 ① 공정 단계 카드(DB section=step) ② 사장님 말 원장(section=boss)에서 같은 주제의 기억을 찾아 짧게 보여 준다.
+사장님이 말을 걸면 답하기 전에 ① 공정 단계 카드(DB section=step) ② 사장님 말 원장(section=boss) ③ 업무 기록(worklog·handoff·closed·open·fact·history, 2026-10-15 추가)에서 같은 주제의 기억을 찾아 짧게 보여 준다.
+사고(2026-10-15): 노트가 10/13에 적은 'GitHub Actions 분 절감' 행이 worklog 구역이라 이 도구가 한 번도 찾지 못해 사장님이 같은 설명을 되풀이하셨다(공정 카드 탐 #65·#68).
 속도: 매번 DB를 부르면 1초 이상 걸리므로 시간당 한 번 로컬 캐시(C:/work/_ops/recall_cache.json)로 내려받고, 조회는 캐시만 읽는다(수십 ms).
 사용:
   python scripts/ops/recall.py build                      캐시 갱신(카드 전체 + 최근 14일 사장님 발화)
@@ -16,6 +17,20 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 CACHE = Path(r'C:\work\_ops\recall_cache.json')
 JOSA = ('에서는', '으로는', '이라는', '에서', '으로', '에게', '한테', '까지', '부터', '처럼', '보다', '하고', '이나', '이랑', '은', '는', '이', '가', '을', '를', '의', '에', '로', '와', '과', '도', '만', '요', '죠', '야', '나')
 STOP = {'그냥', '이제', '그리고', '그런데', '그래서', '하는', '있는', '없는', '있어', '있다', '해서', '해주', '주세', '것이', '거를', '이거', '저거', '우리', '탐이', '사장', '사장님', '같은', '대한', '위해', '때문', '아니', '정말', '지금', '계속', '다시', '이런', '그런', '어떤', '어떻', '하면', '해요', '하세요', '합니다', '입니다', '있나', '있는지', '되었', '되어', '됩니다', '않고', '않는', '말고', '그게', '이게', '뭐가', '무엇', '어디', '언제', '얼마', '몇개'}
+
+LOG_SECTIONS = ('worklog', 'handoff', 'closed', 'open', 'fact', 'history')
+# 같은 뜻으로 쓰이는 말(사장님은 '깃 배포', 기록은 'Actions 분 절감'으로 적은 사고): 묶음 안의 말은 서로 바꿔 찾는다.
+SYN = (('배포', 'deploy', '디플로이', 'actions', '워크플로'), ('분', 'minutes', '분량', '사용량'), ('한도', '상한', 'limit', '2000', '2,000'), ('횟수', '회수', '묶음', '줄이기', '절감'), ('깃', 'git', 'github', '깃허브'))
+
+
+def expand(q, text=''):
+    out = list(q)
+    raw = text.lower()
+    for g in SYN:
+        # '깃배포'처럼 붙여 쓴 말도 잡도록 두 글자 이상 동의어는 원문 부분 문자열로도 찾는다
+        if any(t in g for t in q) or any((len(w) >= 2 or w == '깃') and w in raw for w in g):
+            out += [x for x in g if x not in out]
+    return out
 
 
 def tokens(text):
@@ -49,21 +64,31 @@ def build():
             break
         boss += rs
         off = rs[-1]['id']
+    logs = []
+    for sec in LOG_SECTIONS:
+        off = 0
+        while True:
+            rs = opsdb.select('tasks', 'id,owner,no,title,status,next_action,result,evidence,source_date', where={'section': f'eq.{sec}', 'id': f'gt.{off}'}, order='id.asc', limit=1000)
+            if not rs:
+                break
+            logs += [dict(r, sec=sec) for r in rs]
+            off = rs[-1]['id']
     data = {'at': time.strftime('%F %T'),
+            'logs': [{'s': r['sec'], 'p': r['owner'], 'no': r.get('no') or '', 't': (r.get('title') or '')[:300], 'd': ' '.join(str(r.get(k) or '') for k in ('next_action', 'result', 'evidence'))[:400], 'at': r.get('source_date') or ''} for r in logs],
             'cards': [{'p': r['owner'], 'no': r['no'], 't': r['title'], 'd': (r.get('next_action') or '')[:400], 'b': (r['raw'].get('boss') or '')[:400]} for r in cards],
             'boss': [{'at': r['raw'].get('at', ''), 'w': r['owner'], 'x': re.sub(r'\s+', ' ', r['raw'].get('text', ''))[:500]} for r in boss]}
     CACHE.write_text(json.dumps(data, ensure_ascii=False), encoding='utf-8')
-    print(f"캐시 갱신: 카드 {len(data['cards'])}개, 사장님 발화 {len(data['boss'])}건 ({data['at']})")
+    print(f"캐시 갱신: 카드 {len(data['cards'])}개, 사장님 발화 {len(data['boss'])}건, 업무 기록 {len(data['logs'])}건 ({data['at']})")
 
 
-def query(text, n_cards=3, n_boss=3, min_hits=2):
+def query(text, n_cards=3, n_boss=3, n_logs=2, min_hits=2):
     try:
         data = json.loads(CACHE.read_text(encoding='utf-8'))
     except (OSError, ValueError):
         return None
     q = tokens(text)
     if len(q) < 2:
-        return {'cards': [], 'boss': [], 'q': q}
+        return {'cards': [], 'boss': [], 'logs': [], 'q': q}
     def score(blob, tw=1):
         b = blob.lower()
         return sum(tw for t in q if t in b)
@@ -78,9 +103,17 @@ def query(text, n_cards=3, n_boss=3, min_hits=2):
         hits = sum(1 for t in q if t in b['x'].lower())
         if hits >= max(min_hits, min(3, len(q) // 2)) and b['x'] != text.strip():
             bs.append((hits * 10 + (1 if b['at'] > '2026-10-05' else 0), b))
+    ls = []
+    qx = expand(q, text)
+    for g in data.get('logs', []):
+        blob = (g['t'] + ' ' + g['d']).lower()
+        hits = sum(1 for t in qx if t in blob)
+        if hits >= max(min_hits, 3):
+            ls.append((hits * 3 + sum(3 for t in qx if t in g['t'].lower()), g))
+    ls.sort(key=lambda x: -x[0])
     cs.sort(key=lambda x: -x[0])
     bs.sort(key=lambda x: (-x[0], x[1]['at']))
-    return {'cards': [c for _, c in cs[:n_cards]], 'boss': [b for _, b in bs[:n_boss]], 'q': q}
+    return {'cards': [c for _, c in cs[:n_cards]], 'boss': [b for _, b in bs[:n_boss]], 'logs': [g for _, g in ls[:n_logs]], 'q': q}
 
 
 def render(res):
@@ -89,6 +122,8 @@ def render(res):
         lines.append(f"· 공정 카드 [{c['p']}#{c['no']}] {c['t'][:60]}" + (f" ★사장님: {c['b'][:160]}" if c['b'] else ''))
     for b in res['boss']:
         lines.append(f"· 사장님이 {b['at'][:16]}에 한 말: {b['x'][:200]}")
+    for g in res.get('logs', []):
+        lines.append(f"· 업무 기록({g['s']}) [{g['p']}{('#' + g['no']) if g['no'] else ''}] {g['t'][:120]}")
     return lines
 
 
@@ -105,8 +140,8 @@ def main():
         if not prompt or len(prompt) < 8 or prompt.lstrip().startswith(('<', '/')) or 'SYSTEM NOTIFICATION' in prompt[:200]:
             return
         res = query(prompt)
-        if res and (res['cards'] or res['boss']):
-            print('[기억 도우미] 이 주제로 프로세스표(수파베이스)와 사장님 말 원장에 이미 있는 기억입니다. 답하기 전에 이것과 모순되지 않게 하세요:')
+        if res and (res['cards'] or res['boss'] or res.get('logs')):
+            print('[기억 도우미] 이 주제로 프로세스표(수파베이스)·사장님 말 원장·업무 기록에 이미 있는 기억입니다. 답하기 전에 이것과 모순되지 않게 하세요:')
             print('\n'.join(render(res)))
         return
     text = ' '.join(a)
