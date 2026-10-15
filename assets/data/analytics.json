@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-14T22:40:03.098650+00:00",
+  "updated_at": "2026-10-15T05:54:07.107570+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 342,
-    "activeUsers": 298,
-    "newUsers": 293,
+    "sessions": 355,
+    "activeUsers": 307,
+    "newUsers": 302,
     "returningUsers": 5
   },
   "daily": [
@@ -220,27 +220,27 @@
     },
     {
       "date": "2026-10-15",
-      "sessions": 2,
-      "activeUsers": 2,
-      "newUsers": 1,
-      "returningUsers": 1
+      "sessions": 15,
+      "activeUsers": 12,
+      "newUsers": 10,
+      "returningUsers": 2
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 126,
+    "home": 139,
     "log_home": 0,
-    "individual_post": 212,
+    "individual_post": 219,
     "other": 10
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 189
+      "sessions": 193
     },
     {
       "source": "linkedin.com",
-      "sessions": 48
+      "sessions": 50
     },
     {
       "source": "google",
@@ -251,6 +251,10 @@
       "sessions": 18
     },
     {
+      "source": "(not set)",
+      "sessions": 17
+    },
+    {
       "source": "m.facebook.com",
       "sessions": 14
     },
@@ -259,12 +263,12 @@
       "sessions": 12
     },
     {
-      "source": "(not set)",
-      "sessions": 10
-    },
-    {
       "source": "daum",
       "sessions": 7
+    },
+    {
+      "source": "(data not available)",
+      "sessions": 6
     },
     {
       "source": "blog.naver.com",
@@ -279,20 +283,16 @@
       "sessions": 4
     },
     {
+      "source": "linkedin",
+      "sessions": 3
+    },
+    {
       "source": "lm.facebook.com",
       "sessions": 3
     },
     {
       "source": "talk.navercorp.com",
       "sessions": 3
-    },
-    {
-      "source": "web.telegram.org",
-      "sessions": 3
-    },
-    {
-      "source": "l.facebook.com",
-      "sessions": 2
     }
   ],
   "utm_campaigns": [
@@ -300,13 +300,13 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 189
+      "sessions": 193
     },
     {
       "source": "linkedin.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 48
+      "sessions": 50
     },
     {
       "source": "google",
@@ -337,6 +337,12 @@
       "medium": "organic",
       "campaign": "(organic)",
       "sessions": 7
+    },
+    {
+      "source": "(data not available)",
+      "medium": "(data not available)",
+      "campaign": "(cross-network)",
+      "sessions": 6
     },
     {
       "source": "blog.naver.com",
@@ -381,10 +387,10 @@
       "sessions": 2
     },
     {
-      "source": "(data not available)",
-      "medium": "(data not available)",
-      "campaign": "(cross-network)",
-      "sessions": 1
+      "source": "linkedin",
+      "medium": "social",
+      "campaign": "new_639",
+      "sessions": 2
     },
     {
       "source": "bing",
@@ -424,15 +430,15 @@
     }
   ],
   "engagement_events": {
-    "section_view_proven": 57,
-    "section_view_voices": 51,
-    "section_view_book_class": 29,
-    "section_view_faq": 29,
-    "faq_open": 14,
-    "read_complete": 72
+    "section_view_proven": 65,
+    "section_view_voices": 58,
+    "section_view_book_class": 33,
+    "section_view_faq": 34,
+    "faq_open": 16,
+    "read_complete": 75
   },
   "contact_funnel": {
-    "contact_open": 18,
+    "contact_open": 19,
     "generate_lead": 0,
     "contact_error": 0
   },
@@ -489,6 +495,11 @@
       "sessions": 5
     },
     {
+      "path": "/logs/639",
+      "title": "/logs/639",
+      "sessions": 5
+    },
+    {
       "path": "/logs/475",
       "title": "/logs/475",
       "sessions": 4
@@ -506,11 +517,6 @@
     {
       "path": "/logs/162",
       "title": "/logs/162",
-      "sessions": 2
-    },
-    {
-      "path": "/logs/34",
-      "title": "/logs/34",
       "sessions": 2
     }
   ],
@@ -608,18 +614,18 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 378,
+    "total_desktop_sessions": 390,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
+      {
+        "resolution": "1920x1080",
+        "width": 1920,
+        "sessions": 77
+      },
       {
         "resolution": "800x600",
         "width": 800,
         "sessions": 72
-      },
-      {
-        "resolution": "1920x1080",
-        "width": 1920,
-        "sessions": 70
       },
       {
         "resolution": "1600x1600",
@@ -634,7 +640,7 @@
       {
         "resolution": "1463x915",
         "width": 1463,
-        "sessions": 17
+        "sessions": 21
       },
       {
         "resolution": "1536x960",
@@ -649,7 +655,7 @@
       {
         "resolution": "2000x2000",
         "width": 2000,
-        "sessions": 11
+        "sessions": 12
       },
       {
         "resolution": "1512x982",
