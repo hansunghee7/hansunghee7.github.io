@@ -24,8 +24,23 @@ def main():
     ap.add_argument("--text", required=True)
     ap.add_argument("--image", required=True)
     ap.add_argument("--post", action="store_true")
+    ap.add_argument("--title", required=True, help="글 제목(본문 첫 줄과 같아야 한다)")
     a = ap.parse_args()
     text = Path(a.text).read_text(encoding="utf-8").strip()
+    # 게시 전 관문(2026-10-15 마야, 공정 마야-SNS게시 #2·#3): 첫 줄=제목, 관련 글 링크 딱 1개, CTA 정본 문구, 원문 링크·from 줄 금지
+    problems = []
+    first = text.splitlines()[0].strip() if text.strip() else ""
+    if first != a.title.strip():
+        problems.append("첫 줄이 제목과 다름")
+    if text.count("simplifier.co.kr/logs/") != 1:
+        problems.append("관련 글 링크가 1개가 아님")
+    if "심플리파이어 로그를 함께 봐 주세요" not in text:
+        problems.append("CTA 정본 문구 없음")
+    if "전문:" in text or any(l.strip().startswith("from ") for l in text.splitlines()):
+        problems.append("원문 링크 줄(전문:/from) 있음")
+    if problems:
+        print(json.dumps({"status": "STOP", "why": problems}, ensure_ascii=False))
+        return 1
     paras = [p for p in re.split(r"\n\s*\n", text) if p.strip()]
     res = {"chars": len(text), "paragraphs": len(paras), "posted": False, "steps": []}
     with sync_playwright() as p:
