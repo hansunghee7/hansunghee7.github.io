@@ -134,6 +134,11 @@ def find_legacy(kw, who=None):
 
 
 def cmd_show(a):
+    # 숨긴 카드도 번호로 연다(10/15 핏 감사: 정본 카드가 숨긴 카드 번호를 근거로 인용). 예: proc.py show 핏-대본 41
+    if a.no is not None:
+        r = get_step(a.kw, a.no)
+        print(f"== 단계 카드 [{r['owner']}]" + (" (숨김: 기본 검색에서 빠진 이력)" if r['status'] == '숨김' else "") + " " + fmt_step(r))
+        return
     shown = 0
     cards = opsdb.select('tasks', 'owner,no,title,next_action,status,raw', where={'section': 'eq.step', 'or': f'(title.ilike.*{a.kw}*,next_action.ilike.*{a.kw}*,raw->>boss.ilike.*{a.kw}*)'}, limit=40)
     for r in cards:
@@ -154,11 +159,22 @@ def cmd_show(a):
 
 
 def cmd_list(a):
-    rs = opsdb.select('tasks', 'owner,section,no,title,status,raw', where={'section': 'in.(step,process)'}, order='owner.asc,id.asc', limit=800)
+    # 10/15 핏 감사: limit 800 한 번만 읽어 '--who 핏'에 7장만 보였다. 담당 필터를 DB에 걸고 끝까지 넘겨 읽는다
+    where = {'section': 'in.(step,process)'}
+    if a.who:
+        where['owner'] = f'like.{a.who}*'
+    rs, off = [], 0
+    while True:
+        page = opsdb.select('tasks', 'id,owner,section,no,title,status,raw', where=dict(where, id=f'gt.{off}'), order='id.asc', limit=1000)
+        if not page:
+            break
+        rs += page
+        off = page[-1]['id']
+    rs.sort(key=lambda r: (r['owner'], r['id']))
     for r in rs:
-        if (a.who and not r['owner'].startswith(a.who)) or r['status'] == '숨김':
+        if r['status'] == '숨김' and not a.all:
             continue
-        tag = '카드' if r['section'] == 'step' else '옛문서'
+        tag = ('카드' if r['section'] == 'step' else '옛문서') + ('·숨김' if r['status'] == '숨김' else '')
         print(f"[{r['owner']}#{r['no']}·{tag}] {r['title'][:60]}")
 
 
@@ -268,8 +284,8 @@ def main():
     p = sub.add_parser('amend'); p.add_argument('proc'); p.add_argument('no', type=int); p.add_argument('--title'); p.add_argument('--do'); p.add_argument('--boss'); p.add_argument('--tool'); p.add_argument('--who')
     p = sub.add_parser('retire'); p.add_argument('proc'); p.add_argument('no', type=int); p.add_argument('--why', required=True)
     p = sub.add_parser('steps'); p.add_argument('proc')
-    p = sub.add_parser('show'); p.add_argument('kw'); p.add_argument('--who')
-    p = sub.add_parser('list'); p.add_argument('--who')
+    p = sub.add_parser('show'); p.add_argument('kw'); p.add_argument('no', nargs='?', type=int); p.add_argument('--who')
+    p = sub.add_parser('list'); p.add_argument('--who'); p.add_argument('--all', action='store_true', help='숨긴 카드도 보기')
     p = sub.add_parser('import-md'); p.add_argument('md'); p.add_argument('proc'); p.add_argument('--section'); p.add_argument('--dry', action='store_true'); p.add_argument('--who')
     p = sub.add_parser('run'); rs = p.add_subparsers(dest='sub', required=True)
     q = rs.add_parser('start'); q.add_argument('proc'); q.add_argument('name'); q.add_argument('--who')
