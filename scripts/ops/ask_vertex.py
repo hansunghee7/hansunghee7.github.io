@@ -46,7 +46,38 @@ PRICE_SEARCH = float(os.environ.get("PRICE_SEARCH_KRW", "50"))
 HEAD = "time,who,model,search,in_tok,out_tok,search_q,est_krw,sec,rc"
 
 
+SA_ENV = Path("C:/work/_ops/ops-data/.env")  # 금고(pass.py envput)가 서비스 계정 키를 넣어 주는 파일. 에이전트는 값을 읽지 않고 이 코드만 읽는다.
+SA_VAR = "TAM_VERTEX_SA_JSON"
+
+
+def sa_token():
+    """회사 프로젝트용 서비스 계정 토큰. 회사 계정 로그인(3일쯤마다 비밀번호 재인증)과 무관해서 사장님 로그인이 필요 없다(탐 #30, 10/15).
+    금고가 쓴 .env의 값은 여러 줄 JSON이라 SA_VAR 줄부터 닫는 중괄호 줄까지 이어 붙여 읽는다. 값은 출력·기록하지 않는다."""
+    try:
+        lines = SA_ENV.read_text(encoding="utf-8").splitlines()
+        for i, ln in enumerate(lines):
+            if ln.startswith(SA_VAR + "="):
+                buf = [ln.split("=", 1)[1]]
+                for m in lines[i + 1:]:
+                    buf.append(m)
+                    if m.strip() == "}":
+                        break
+                info = json.loads("\n".join(buf))
+                from google.oauth2 import service_account
+                from google.auth.transport.requests import Request
+                c = service_account.Credentials.from_service_account_info(info, scopes=["https://www.googleapis.com/auth/cloud-platform"])
+                c.refresh(Request())
+                return c.token or ""
+    except Exception:  # noqa: BLE001  파일·라이브러리·네트워크 어느 쪽이든 실패하면 gcloud 로그인 방식으로 넘어간다
+        return ""
+    return ""
+
+
 def token(account=None):
+    if account == COMPANY_ACCOUNT and not os.environ.get("VERTEX_NO_SA"):
+        t = sa_token()
+        if t:
+            return t
     exe = shutil.which("gcloud") or shutil.which("gcloud.cmd")
     return subprocess.run([exe, "auth", "print-access-token", f"--account={account or ACCOUNT}"], capture_output=True, text=True,
                           creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0), timeout=60).stdout.strip()
