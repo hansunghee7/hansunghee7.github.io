@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """수집 파이프 대장 밀도 동기화(2026-10-11): 감시 대장이 이미 아는 '마지막 성공'을 data_pipelines 에 옮긴다.
 근거: 감시가 쓰는 상태 기록 C:/work/_ops/state.json(상태판 STATUS.md 와 같은 내용의 기계용 사본, jobs.toml 항목 id 로 색인).
-방법: `pipeline_db.py stale` 로 성공 기록 없는 파이프와 감시 id 를 읽고, 감시 상태가 ok/fail 이면 `pipeline_db.py add-run` 을 호출한다(DB 직접 쓰기 없음, 키 값은 이 코드에 없다).
+방법: `pipeline_db.py stale` 로 신선도를 넘긴 파이프와 감시 id 를 읽고(성공 기록이 오래된 것은 감시가 ok일 때만), 감시 상태가 ok/fail 이면 `pipeline_db.py add-run` 을 호출한다(DB 직접 쓰기 없음, 키 값은 이 코드에 없다).
 근거를 못 찾은 파이프는 건드리지 않고 목록만 낸다.
 사용: python scripts/ops/pipeline_sync.py [--dry] [--state 경로]"""
 import argparse
@@ -32,14 +32,16 @@ def parse_stale_line(line):
 
 
 def parse_stale(text):
-    """'성공 기록 없음' 때문에 stale 인 줄만 (slug, 감시 id)로 돌려준다(다른 이유의 stale 은 건드리지 않음)."""
+    """stale 줄을 (slug, 감시 id, 성공기록없음 여부)로 돌려준다.
+    10/15 수정(타미 당직 판정): 예전엔 '성공 기록 없음'만 옮겨 적어, 한 번 성공한 뒤 기록이 멈춘 파이프 24개가 10/11부터 정체로 보였다.
+    이제 오래된 성공도 대상에 넣되, 그런 줄은 감시가 ok일 때만 성공을 적는다(main)."""
     out = []
     for ln in text.splitlines():
         if ln.startswith('신선도'):
             continue
         r = parse_stale_line(ln)
-        if r and r[2]:
-            out.append(r[:2])
+        if r:
+            out.append(r)
     return out
 
 
@@ -81,9 +83,9 @@ def main(argv=None):
         sys.exit('stale 조회 실패: ' + out[:200])
     rows = parse_stale(out)
     todo, none = [], []
-    for slug, watch in rows:
+    for slug, watch, no_record in rows:
         ev = evidence(state[watch]) if watch and watch in state else None
-        if ev:
+        if ev and (no_record or ev[0]):
             todo.append((slug, ev))
         else:
             none.append(f"{slug} (감시 {watch or '-'})")
