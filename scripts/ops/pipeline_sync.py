@@ -80,6 +80,16 @@ def gh_evidence(watch):
     return True, f"pipeline_sync: GitHub 실행 기록 {m.group(2)} 성공 {at[:16].replace('T', ' ')} UTC", at
 
 
+def pick_evidence(watch, state, gh=None):
+    """GitHub 워크플로(gh:)는 실제 실행 기록을 먼저 보고, 못 읽으면 감시 상태 파일로 내려간다.
+    10/16 타미 당직 판정: 상태 파일이 02:38에 멈춰 06:40 사이트 점검 성공을 못 옮겨 9시간 정체로 보였다."""
+    gh = gh or gh_evidence
+    ev = gh(watch) if (watch or '').startswith('gh:') else None
+    if not ev and watch and watch in state:
+        ev = evidence(state[watch])
+    return ev
+
+
 def run_tool(*args):
     r = subprocess.run([sys.executable, '-X', 'utf8', DB_TOOL, *args], capture_output=True, text=True, encoding='utf-8',
                        creationflags=NOWIN, timeout=60)
@@ -105,7 +115,7 @@ def main(argv=None):
     rows = parse_stale(out)
     todo, none = [], []
     for slug, watch, no_record in rows:
-        ev = evidence(state[watch]) if watch and watch in state else gh_evidence(watch)
+        ev = pick_evidence(watch, state)
         if ev and (no_record or ev[0]):
             todo.append((slug, ev))
         else:
