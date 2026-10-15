@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-15T20:45:33.640498+00:00",
+  "updated_at": "2026-10-15T22:41:19.591182+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 353,
-    "activeUsers": 305,
-    "newUsers": 300,
+    "sessions": 354,
+    "activeUsers": 306,
+    "newUsers": 301,
     "returningUsers": 5
   },
   "daily": [
@@ -217,13 +217,20 @@
       "activeUsers": 18,
       "newUsers": 15,
       "returningUsers": 3
+    },
+    {
+      "date": "2026-10-16",
+      "sessions": 1,
+      "activeUsers": 1,
+      "newUsers": 1,
+      "returningUsers": 0
     }
   ],
   "daily_leads": [],
   "landing_types": {
     "home": 137,
     "log_home": 0,
-    "individual_post": 218,
+    "individual_post": 219,
     "other": 10
   },
   "top_sources": [
@@ -241,7 +248,7 @@
     },
     {
       "source": "m.search.naver.com",
-      "sessions": 18
+      "sessions": 19
     },
     {
       "source": "(not set)",
@@ -311,7 +318,7 @@
       "source": "m.search.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 18
+      "sessions": 19
     },
     {
       "source": "m.facebook.com",
@@ -428,7 +435,7 @@
     "section_view_book_class": 33,
     "section_view_faq": 34,
     "faq_open": 11,
-    "read_complete": 76
+    "read_complete": 77
   },
   "contact_funnel": {
     "contact_open": 19,
