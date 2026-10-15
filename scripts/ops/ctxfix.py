@@ -112,7 +112,7 @@ def cmd_list(a):
         w["status"] = f"eq.{a.status}"
     for r in rows(w):
         raw = raw_of(r)
-        print(f"{r['no']} [{r['owner']}] {r['status']} | {r['title']} | 패턴: {raw.get('pattern', '')} | 고칠 곳: {r.get('next_action') or ''} | 결과: {r.get('result') or ''}")
+        print(f"{r['no']} [{r['owner']}] {r['status']} | {r['title']} | 패턴: {raw.get('pattern', '')} | 원인: {raw.get('cause', '')} | 수준: {raw.get('level', '')} | 신호: {raw.get('signal', '')} | 고칠 곳: {r.get('next_action') or ''} | 전: {raw.get('before', '')} | 결과: {r.get('result') or ''}")
 
 
 def signal_hits(signal, since):
