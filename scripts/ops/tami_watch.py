@@ -4,6 +4,8 @@
 보는 것(v1):
   ① 공장(구PC·신PC 브라우저 계정별): 크레딧 READ_H시간 넘게 못 읽음 / 크레딧 MIN_CREDIT 이상인데 새 컷이 IDLE_H시간 넘게 없음  (fit_db.py factory)
   ② 수집·주기 작업: 상태판(C:/work/_ops/STATUS.md)의 🔴 줄
+  ③ 데이터 수집 파이프 대장(opsdb data_pipelines): 작동 중인데 마지막 성공이 신선도 기준을 넘은 파이프
+판정 연결: 담당 에이전트 우편함(공장=핏, 파이프=대장 담당, 나머지=탐), 사장님 할 일이 있을 때만 텔레그램.
 같은 이상 묶음은 REPEAT_H시간 안에 다시 깨우지 않는다(상태 C:/work/_ops/tami_watch/state.json).
 타미 권한: 읽기 전용 진단 지시(파일·로그 읽기, 구PC는 ssh goosolar로 읽기만). 고치기·재시작·발송은 하지 않고 판정과 추천만 낸다.
 키: api_run.find_key()로 실행할 때만 환경변수로 넘긴다(설정 파일에 키를 쓰지 않음, 값은 출력하지 않음).
@@ -24,6 +26,7 @@ OUT = Path("C:/work/_ops/tami_watch")
 STATE = OUT / "state.json"
 STATUS = Path("C:/work/_ops/STATUS.md")
 FIT_DB = Path("C:/work/shorts-lab/tools/factory/fit_db.py")
+MAILBOX = Path("C:/work/solar-bible/mailbox/mailbox.py")
 HERMES = Path(os.environ.get("LOCALAPPDATA", "")) / "hermes" / "bin" / "hermes.exe"
 TAMI_HOME = Path(os.environ.get("LOCALAPPDATA", "")) / "hermes" / "profiles" / "tami"
 MODEL = "claude-fable-5-1"
@@ -70,9 +73,42 @@ def status_anomalies(text):
     return out
 
 
+def pipeline_anomalies(rows, now):
+    """데이터 수집 파이프 대장(data_pipelines): '작동' 파이프의 마지막 성공이 기준 신선도를 넘으면 이상(사장님 10/15 "데이터 파이프라인 수집도 판정")."""
+    out = []
+    for p in rows:
+        if p.get("status") != "작동" or not p.get("freshness_hours"):
+            continue
+        ls = p.get("last_success")
+        try:
+            age = (now - datetime.fromisoformat(str(ls)).astimezone().replace(tzinfo=None)).total_seconds() / 3600 if ls else None
+        except ValueError:
+            age = None
+        if age is None or age > float(p["freshness_hours"]):
+            out.append((age, f"[수집 파이프·{p.get('owner') or '탐'}] {p.get('name', p.get('slug'))} — 마지막 성공 " + (f"{age:.0f}시간 전" if age is not None else "기록 없음") + f"(기준 {p['freshness_hours']}시간)"))
+    ages = [a for a, _ in out if a is not None]
+    # 여러 파이프가 거의 같은 시각에 멈췄으면 파이프마다가 아니라 '마지막 성공을 옮겨 적는 동기화'가 멈춘 것(10/15 첫 실행: 28개가 97~134시간 전으로 몰림)
+    if len(out) >= 5 and ages and max(ages) - min(ages) < 48:
+        return [f"[수집 파이프·탐] 대장의 마지막 성공 기록이 {len(out)}개 파이프에서 함께 멈춤({min(ages):.0f}~{max(ages):.0f}시간 전) — 파이프 고장보다 동기화(pipeline_sync.py) 정체 의심"]
+    return [t for _, t in out]
+
+
+def owner_of(item):
+    """이상 신호를 받을 에이전트: 공장은 핏, 수집 파이프는 대장의 담당, 나머지 주기 작업은 탐."""
+    if item.startswith(("[구PC", "[신PC", "공장")):
+        return "핏"
+    m = re.match(r"\[수집 파이프·([^\]]+)\]", item)
+    return m.group(1) if m else "탐"
+
+
 def collect():
     now = datetime.now()
     items = []
+    try:
+        import opsdb
+        items += pipeline_anomalies(opsdb.select("data_pipelines", "slug,name,owner,status,freshness_hours,last_success", limit=500), now)
+    except Exception as e:  # DB가 안 되면 파이프 판정만 빠진다
+        items.append(f"수집 파이프 대장 읽기 실패: {str(e)[:80]}")
     try:
         r = subprocess.run([sys.executable, str(FIT_DB), "factory"], capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=120, creationflags=FLAGS,
                            env=dict(os.environ, PYTHONIOENCODING="utf-8"))
@@ -126,9 +162,23 @@ def main():
     rep = OUT / f"report_{time.strftime('%Y%m%d_%H%M')}.md"
     rep.write_text("## 이상 신호\n- " + "\n- ".join(items) + "\n\n## 페이블 타미 판정\n" + verdict, encoding="utf-8")
     STATE.write_text(json.dumps({"hash": h, "at": time.time(), "report": str(rep)}, ensure_ascii=False), encoding="utf-8")
-    msg = f"[타미 당직] 이상 {len(items)}건\n" + "\n".join("· " + x for x in items[:6]) + "\n\n" + verdict[-1500:]
-    tg = subprocess.run([sys.executable, str(HERE / "tg_boss.py"), "text", msg, "--persona", "탐"], capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=60, creationflags=FLAGS)
-    print(f"타미 당직: 이상 {len(items)}건 판정 → {rep} / 텔레그램 {'보냄' if tg.returncode == 0 else '실패 ' + (tg.stderr or tg.stdout)[-120:]}")
+    # 판정을 일할 에이전트에게 연결(사장님 10/15 "판정한 게 핏이나 워크플로우에게 연결되는 구조인가요?"): 담당 우편함으로, 사장님 할 일이 있을 때만 텔레그램
+    owners = sorted({owner_of(x) for x in items})
+    sent = []
+    for who in owners:
+        mine = [x for x in items if owner_of(x) == who]
+        body = "이상 신호(" + who + " 담당):\n- " + "\n- ".join(mine) + f"\n\n페이블 타미 판정 전문: {rep}\n\n" + verdict[-2500:]
+        r = subprocess.run([sys.executable, str(MAILBOX), "send", who, f"타미 당직 이상 {len(mine)}건", "--from", "타미", "--body", body,
+                            "--ask", "판정의 '누가 무엇을' 중 내 몫을 처리하고, 끝나면 공장 장부·대장 상태를 고친다"],
+                           capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=60, creationflags=FLAGS, cwd=str(MAILBOX.parent.parent))
+        sent.append(f"{who}{'' if r.returncode == 0 else '(실패)'}")
+    boss_line = next((ln for ln in verdict.splitlines() if "사장님이 할 일" in ln), "")
+    tg_note = "텔레그램 안 보냄(사장님 할 일 없음)"
+    if boss_line and "없음" not in boss_line:
+        msg = f"[타미 당직] 사장님 확인 필요\n{boss_line.strip()}\n\n" + "\n".join("· " + x for x in items[:6])
+        tg = subprocess.run([sys.executable, str(HERE / "tg_boss.py"), "text", msg, "--persona", "탐"], capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=60, creationflags=FLAGS)
+        tg_note = "텔레그램 " + ("보냄" if tg.returncode == 0 else "실패")
+    print(f"타미 당직: 이상 {len(items)}건 판정 → {rep} / 우편: {', '.join(sent)} / {tg_note}")
     return 0
 
 
