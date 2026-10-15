@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-15T05:54:07.107570+00:00",
+  "updated_at": "2026-10-15T12:45:28.113617+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 355,
-    "activeUsers": 307,
-    "newUsers": 302,
-    "returningUsers": 5
+    "sessions": 358,
+    "activeUsers": 309,
+    "newUsers": 303,
+    "returningUsers": 6
   },
   "daily": [
     {
@@ -220,23 +220,23 @@
     },
     {
       "date": "2026-10-15",
-      "sessions": 15,
-      "activeUsers": 12,
-      "newUsers": 10,
-      "returningUsers": 2
+      "sessions": 18,
+      "activeUsers": 15,
+      "newUsers": 11,
+      "returningUsers": 4
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 139,
+    "home": 135,
     "log_home": 0,
-    "individual_post": 219,
+    "individual_post": 221,
     "other": 10
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 193
+      "sessions": 194
     },
     {
       "source": "linkedin.com",
@@ -244,19 +244,19 @@
     },
     {
       "source": "google",
-      "sessions": 19
+      "sessions": 20
     },
     {
       "source": "m.search.naver.com",
       "sessions": 18
     },
     {
-      "source": "(not set)",
-      "sessions": 17
-    },
-    {
       "source": "m.facebook.com",
       "sessions": 14
+    },
+    {
+      "source": "(not set)",
+      "sessions": 12
     },
     {
       "source": "facebook.com",
@@ -300,7 +300,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 193
+      "sessions": 194
     },
     {
       "source": "linkedin.com",
@@ -312,7 +312,7 @@
       "source": "google",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 19
+      "sessions": 20
     },
     {
       "source": "m.search.naver.com",
@@ -431,11 +431,11 @@
   ],
   "engagement_events": {
     "section_view_proven": 65,
-    "section_view_voices": 58,
+    "section_view_voices": 59,
     "section_view_book_class": 33,
     "section_view_faq": 34,
     "faq_open": 16,
-    "read_complete": 75
+    "read_complete": 76
   },
   "contact_funnel": {
     "contact_open": 19,
@@ -460,13 +460,13 @@
       "sessions": 16
     },
     {
-      "path": "/logs/301",
-      "title": "/logs/301",
-      "sessions": 9
-    },
-    {
       "path": "/logs/618",
       "title": "/logs/618",
+      "sessions": 10
+    },
+    {
+      "path": "/logs/301",
+      "title": "/logs/301",
       "sessions": 9
     },
     {
@@ -540,6 +540,12 @@
       "views": 18
     },
     {
+      "path": "/logs/618/",
+      "title": "AI가 못 뺏는 능력 하나",
+      "uniqueViews": 9,
+      "views": 11
+    },
+    {
       "path": "/logs/619/",
       "title": "AI가 우선순위까지 대신 정해줄 수 있을까",
       "uniqueViews": 9,
@@ -558,22 +564,16 @@
       "views": 9
     },
     {
-      "path": "/logs/618/",
-      "title": "AI가 못 뺏는 능력 하나",
-      "uniqueViews": 8,
-      "views": 10
+      "path": "/logs/132/",
+      "title": "PM, PL, TPM의 차이 한눈에 보기",
+      "uniqueViews": 7,
+      "views": 6
     },
     {
       "path": "/logs/224/",
       "title": "나의 클론이 화상회의를 '피클'",
       "uniqueViews": 7,
       "views": 9
-    },
-    {
-      "path": "/logs/132/",
-      "title": "PM, PL, TPM의 차이 한눈에 보기",
-      "uniqueViews": 6,
-      "views": 6
     },
     {
       "path": "/logs/629/",
@@ -614,13 +614,13 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 390,
+    "total_desktop_sessions": 392,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
         "resolution": "1920x1080",
         "width": 1920,
-        "sessions": 77
+        "sessions": 78
       },
       {
         "resolution": "800x600",
@@ -635,7 +635,7 @@
       {
         "resolution": "2560x1440",
         "width": 2560,
-        "sessions": 52
+        "sessions": 53
       },
       {
         "resolution": "1463x915",
