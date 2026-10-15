@@ -20,7 +20,8 @@ class T(unittest.TestCase):
 
     def test_parse_stale_skips_header(self):
         other = LINE.replace('성공 기록 없음', '마지막 성공 2026-10-06 22:39 (96.3시간 전)')
-        self.assertEqual(ps.parse_stale('신선도 기준을 넘긴 파이프라인 2개\n' + LINE + '\n' + other), [('dynamic-quota', 'fn:dynamic-quota')])
+        self.assertEqual(ps.parse_stale('신선도 기준을 넘긴 파이프라인 2개\n' + LINE + '\n' + other),
+                         [('dynamic-quota', 'fn:dynamic-quota', True), ('dynamic-quota', 'fn:dynamic-quota', False)])
 
     def test_evidence(self):
         ok, note, at = ps.evidence({'id': 'a', 'status': 'ok', 'detail': '마지막 실행 10-11 07:14 (x)', 'checked': '2026-10-11T07:38:00.123456+09:00'})
