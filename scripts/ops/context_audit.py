@@ -81,7 +81,14 @@ PROMPT = """너는 AI 에이전트 팀(탐·마야·지투·핏·노트)의 '컨
 REVIEW = """너는 AI 에이전트 팀의 컨텍스트 설계 책임자다. 1차 감수 제안을 받아, 고쳤을 때 다른 곳이 깨지지 않는지(사이드 이펙트) 검토해 최종 제안으로 다듬는다.
 원칙: ① 제안만 한다(직접 고치지 않음). ② 각 제안마다 '고칠 곳'과 '영향받는 곳'(아래 연관관계 지도에서 인용)을 적는다. ③ 영향받는 곳이 깨질 위험과 그것을 확인하는 시험(재생할 로그, 돌릴 시험 파일, 확인 명령)을 적는다.
 ④ 문서와 DB의 역할을 지킨다: 판정 가능한 규칙은 도구 관문(훅·스크립트)에, 왜·예외는 문서에, 상태·기록은 DB에(아래 정본 전략 발췌). ⑤ 근거가 약하면 '추정', 확인할 질문을 낸다. ⑥ 같은 문제를 여러 곳에서 고치면 정본 한 곳을 정하고 나머지는 가리키게 한다.
-형식(한국어, 40줄 이내): 최종 제안 3~5개. 각각 = 제목 / 문제 근거 / 고칠 곳(정본) / 영향받는 곳 / 부작용 위험과 시험 / 우선순위(효과·위험).
+⑦ 너는 전체 판을 보는 판정자다(사장님 10/15: "판정은 전체 판을 바라보는 에이전트가 했으면 좋겠다, 그게 에이전틱 시스템"). 실수한 에이전트나 고친 에이전트가 아니라 네가 아래 수정 경험 장부를 보고 판정한다.
+형식(한국어, 50줄 이내):
+A. 최종 제안 3~5개. 각각 = 제목 / 문제 근거 / 고칠 곳(정본) / 영향받는 곳 / 부작용 위험과 시험 / 우선순위(효과·위험).
+B. 장부 판정: 장부의 각 건(CF번호)마다 한 줄 = 판정(채택·기각·보류·다음 수준으로 올림) / 이유 / 재발 신호가 실수를 제대로 잡는지(신호가 틀리면 고칠 신호).
+C. 운영 판정 질문이 있으면 답한다: {questions}
+
+[수정 경험 장부(회사 simplifier): 상태·원인·수준·신호·결과]
+{ledger}
 
 [1차 제안]
 {first}
@@ -123,10 +130,33 @@ def strategy_excerpt():
     return "\n\n".join(parts)
 
 
+def ledger_view():
+    """수정 경험 장부(ctxfix, 운영 DB) 현황을 판정 재료로 붙인다. 실패하면 비운다(1차·영향 검토는 그대로 진행)."""
+    try:
+        r = subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "ctxfix.py"), "list"], capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=120)
+        rows = r.stdout.strip().splitlines()
+        rc = subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "ctxfix.py"), "recheck"], capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=300)
+        return "\n".join(rows[:30]) + "\n[오늘 재발 판정]\n" + rc.stdout.strip()[:2000]
+    except Exception as e:  # noqa: BLE001
+        return f"(장부 읽기 실패: {e})"
+
+
+# 날짜가 오면 판정자가 답할 운영 질문(사람이 아니라 전체 판을 보는 감수 에이전트가 판정, 사장님 10/15)
+JUDGE_QUESTIONS = (
+    ("2026-10-22", "슈퍼프로세스 ⑦ 사고 회수 루프 자동판(원인 분류·고침 수준·재발 신호·매일 재판정)을 전 에이전트 정본 방식으로 채택할지: 지난 1주 장부의 성공·실패·신호 품질을 근거로 채택/보완 후 재판정/폐기 중 하나와 이유 3줄."),
+)
+
+
+def judge_questions():
+    today = datetime.now().strftime("%Y-%m-%d")
+    qs = [q for d, q in JUDGE_QUESTIONS if today >= d]
+    return " / ".join(qs) if qs else "(오늘 판정할 운영 질문 없음)"
+
+
 def review(first, summary, a, stamp, api):
     model = a[a.index("--review-model") + 1] if "--review-model" in a else "claude-opus-5-5"
     q = OUT / f"q2_{stamp}.md"
-    q.write_text(REVIEW.format(first=first, impacts=impacts_for(first), strategy=strategy_excerpt()), encoding="utf-8")
+    q.write_text(REVIEW.format(first=first, impacts=impacts_for(first), strategy=strategy_excerpt(), ledger=ledger_view(), questions=judge_questions()), encoding="utf-8")
     o = OUT / f"a2_{stamp}.md"
     r = subprocess.run([sys.executable, str(api), "--who", "컨텍스트감수", "--model", model, "--prompt-file", str(q), "--max-tokens", "12000", "--out", str(o)],
                        capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=900,
