@@ -150,9 +150,14 @@ def policy_problem(item):
     content = item.get("content") or {}
     if not content.get("media_source"):
         return "대표 이미지(content.media_source)가 없습니다"
-    urls = re.findall(r"https?://\S+", content.get("body") or "")
-    if len(urls) > 1:
-        return f"본문 링크가 {len(urls)}개입니다(관련글 링크 1개만 허용)"
+    body = content.get("body") or ""
+    urls = re.findall(r"https?://\S+", body)
+    if len(urls) != 1:
+        return f"본문 링크가 {len(urls)}개입니다(관련글 링크 딱 1개만 허용)"
+    if "심플리파이어 로그를 함께 봐 주세요" not in body:
+        return "CTA 정본 문구('혹시 ~궁금하시다면 심플리파이어 로그를 함께 봐 주세요')가 없습니다(공정 마야-SNS게시 #3)"
+    if "전문:" in body or any(l.strip().startswith("from ") for l in body.splitlines()):
+        return "원문 링크 줄('전문:'·'from')이 있습니다(공정 마야-SNS게시 #3)"
     if item.get("platform") == "threads":
         n = len(final_body(content))
         if n > THREADS_MAX:
