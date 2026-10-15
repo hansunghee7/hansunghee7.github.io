@@ -19,6 +19,7 @@ CACHE = Path(r'C:\work\_ops\recall_cache.json')
 JOSA = ('에서는', '으로는', '이라는', '에서', '으로', '에게', '한테', '까지', '부터', '처럼', '보다', '하고', '이나', '이랑', '은', '는', '이', '가', '을', '를', '의', '에', '로', '와', '과', '도', '만', '요', '죠', '야', '나')
 STOP = {'그냥', '이제', '그리고', '그런데', '그래서', '하는', '있는', '없는', '있어', '있다', '해서', '해주', '주세', '것이', '거를', '이거', '저거', '우리', '탐이', '사장', '사장님', '같은', '대한', '위해', '때문', '아니', '정말', '지금', '계속', '다시', '이런', '그런', '어떤', '어떻', '하면', '해요', '하세요', '합니다', '입니다', '있나', '있는지', '되었', '되어', '됩니다', '않고', '않는', '말고', '그게', '이게', '뭐가', '무엇', '어디', '언제', '얼마', '몇개'}
 
+LOG_CAP = 2000
 LOG_SECTIONS = ('worklog', 'handoff', 'closed', 'open', 'fact', 'history')
 # 같은 뜻으로 쓰이는 말(사장님은 '깃 배포', 기록은 'Actions 분 절감'으로 적은 사고): 묶음 안의 말은 서로 바꿔 찾는다.
 SYN = (('배포', 'deploy', '디플로이', 'actions', '워크플로'), ('분', 'minutes', '분량', '사용량'), ('한도', '상한', 'limit', '2000', '2,000'), ('횟수', '회수', '묶음', '줄이기', '절감'), ('깃', 'git', 'github', '깃허브'),
@@ -26,13 +27,23 @@ SYN = (('배포', 'deploy', '디플로이', 'actions', '워크플로'), ('분', 
        ('슈퍼오케스트라', '오케스트레이션', '오케스트레이터', '비상모드'), ('슈퍼버닝', '버닝', '백로그버닝'), ('슈퍼인덱싱', '색인관리', '슈퍼색인'))
 
 
-def expand(q, text=''):
-    out = list(q)
+def syn_groups(q, text=''):
+    """질의에서 켜진 동의어 그룹마다 새로 붙는 말 목록(그룹 하나는 적중 1점으로만 센다, 비티 10/15 지적)."""
     raw = text.lower()
+    out = []
     for g in SYN:
         # '깃배포'처럼 붙여 쓴 말도 잡도록 두 글자 이상 동의어는 원문 부분 문자열로도 찾는다
         if any(t in g for t in q) or any((len(w) >= 2 or w == '깃') and w in raw for w in g):
-            out += [x for x in g if x not in out]
+            extra = [x for x in g if x not in q]
+            if extra:
+                out.append(extra)
+    return out
+
+
+def expand(q, text=''):
+    out = list(q)
+    for extra in syn_groups(q, text):
+        out += [x for x in extra if x not in out]
     return out
 
 
@@ -76,6 +87,11 @@ def build():
                 break
             logs += [dict(r, sec=sec) for r in rs]
             off = rs[-1]['id']
+        # 이력 캐시가 끝없이 커지지 않게 구역마다 최근 2000행까지만 둔다(비티 10/15 지적)
+        n_sec = sum(1 for r in logs if r['sec'] == sec)
+        if n_sec > LOG_CAP:
+            drop = n_sec - LOG_CAP
+            logs = [r for r in logs if r['sec'] != sec or (drop := drop - 1) < 0]
     data = {'at': time.strftime('%F %T'),
             'logs': [{'s': r['sec'], 'p': r['owner'], 'no': r.get('no') or '', 't': (r.get('title') or '')[:300], 'd': ' '.join(str(r.get(k) or '') for k in ('next_action', 'result', 'evidence'))[:400], 'at': r.get('source_date') or ''} for r in logs],
             'cards': [{'p': r['owner'], 'no': r['no'], 't': r['title'], 'd': (r.get('next_action') or '')[:400], 'b': (r['raw'].get('boss') or '')[:400]} for r in cards],
@@ -93,13 +109,18 @@ def query(text, n_cards=3, n_boss=3, n_logs=2, min_hits=2, history=False):
     qx = expand(q, text)
     if len(q) < 2:
         return {'cards': [], 'boss': [], 'logs': [], 'q': q}
+    units = [[t] for t in q] + syn_groups(q, text)
+
+    def uh(blob):
+        return sum(1 for u in units if any(t in blob for t in u))
+
     def score(blob, tw=1):
         b = blob.lower()
         return sum(tw for t in q if t in b)
     cs = []
     for c in data['cards']:
         s = sum(3 for t in qx if t in c['t'].lower()) + sum(1 for t in qx if t in c['d'].lower()) + sum(2 for t in qx if t in c['b'].lower())
-        hits = sum(1 for t in qx if t in (c['t'] + c['d'] + c['b']).lower())
+        hits = uh((c['t'] + c['d'] + c['b']).lower())
         if hits >= max(min_hits, 3 if len(qx) > len(q) else min_hits):
             cs.append((s, c))
     bs = []
@@ -110,7 +131,7 @@ def query(text, n_cards=3, n_boss=3, n_logs=2, min_hits=2, history=False):
     ls = []
     for g in (data.get('logs', []) if history else []):
         blob = (g['t'] + ' ' + g['d']).lower()
-        hits = sum(1 for t in qx if t in blob)
+        hits = uh(blob)
         if hits >= max(min_hits, 3):
             ls.append((hits * 3 + sum(3 for t in qx if t in g['t'].lower()), g))
     ls.sort(key=lambda x: -x[0])

@@ -103,3 +103,26 @@ def test_query_too_few_tokens_returns_empty_without_reading_cache(tmp_path, monk
     _write_cache(cache)
     monkeypatch.setattr(recall, "CACHE", cache)
     assert recall.query("음") == {"cards": [], "boss": [], "logs": [], "q": []}
+
+
+# ---------------------------------------------------------------------------
+# 동의어 그룹은 적중 1점으로만 센다(비티 리뷰 10/15)
+# ---------------------------------------------------------------------------
+
+def test_syn_groups_counts_one_unit_per_group():
+    q = ["한도"]
+    groups = recall.syn_groups(q, "한도")
+    assert len(groups) == 1
+    assert "limit" in groups[0] and "한도" not in groups[0]
+
+
+def test_synonym_group_does_not_inflate_hits(tmp_path, monkeypatch):
+    # 카드 본문에 같은 그룹의 동의어가 여러 개 있어도 질의 단어가 하나뿐이면 3점 문턱을 못 넘는다
+    cache = tmp_path / "cache.json"
+    cache.write_text(json.dumps({
+        "at": "2026-10-15 00:00:00", "boss": [], "logs": [],
+        "cards": [{"p": "탐", "no": "1", "t": "무관한 카드", "d": "limit 2000 2,000 상한", "b": ""}],
+    }, ensure_ascii=False), encoding="utf-8")
+    monkeypatch.setattr(recall, "CACHE", cache)
+    res = recall.query("한도 확인")
+    assert res["cards"] == []
