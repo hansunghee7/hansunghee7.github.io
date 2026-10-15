@@ -16,12 +16,30 @@
 설정: 탐전용봇 설정(~/.claude/channels/telegram/.env)의 TELEGRAM_BOT_TOKEN.
 값은 화면·로그에 출력하지 않는다.
 """
+import hashlib
+import json
+import os
 import sys
+import time
 from pathlib import Path
 
 import requests
 
 ENV = Path(r"C:\Users\PC\.claude\channels\telegram\.env")
+# 발송 기록(10/16, 사장님: 텔레그램 중복 제거·교통정리). 기록이 없어 무엇이 몇 번 가는지 셀 수 없었다 → 내용 대신 지문·앞부분만 남긴다.
+OUTBOX_LOG = Path(os.environ.get("OPS_STATE_DIR", r"C:\work\_ops")) / "tg_outbox_log.jsonl"
+
+
+def log_send(persona, method, ok, body):
+    try:
+        text = str(body or "")
+        row = {"t": time.strftime("%Y-%m-%dT%H:%M:%S"), "via": "tg_boss", "room": persona, "method": method, "ok": ok,
+               "chars": len(text), "sha": hashlib.sha1(text.encode("utf-8")).hexdigest()[:12],
+               "head": " ".join(text.split())[:60], "cwd": os.getcwd()}
+        with open(OUTBOX_LOG, "a", encoding="utf-8") as f:
+            f.write(json.dumps(row, ensure_ascii=False) + "\n")
+    except Exception:
+        pass  # 기록 실패로 발송을 막지 않는다
 
 PERSONA_CHATS = {
     "마야": "-5306851243",
@@ -61,6 +79,8 @@ def call(method, data, persona, files=None):
     r = requests.post(f"https://api.telegram.org/bot{tok}/{method}", data={"chat_id": cid, **data},
                       files=files, timeout=120).json()
     print(method, "ok" if r.get("ok") else "실패: " + str(r.get("description")))
+    fname = getattr(next(iter(files.values())), "name", "") if files else ""
+    log_send(persona, method, bool(r.get("ok")), data.get("text") or data.get("caption") or fname)
     return bool(r.get("ok"))
 
 
