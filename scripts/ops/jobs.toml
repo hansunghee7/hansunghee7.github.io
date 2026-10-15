@@ -600,3 +600,10 @@ cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\kstartup_watch.py']
 every_min = 720
 name = "K-Startup 모집중 공고 감시(새 공고 기록, 창업도약·초격차·AI 등 관심 키워드는 텔레그램 알림, kstartup_watch.py)"
 note = "2026-10-14 탐 등록(공정 카드 탐-공고수집 #2, 사장님 결정: 창업도약 다음 회차 준비). 상태 C:/work/_ops/grants_prep/ks_seen.json, 하루 2회(사람 빈도). 종료 코드 1 = 목록 파싱 0건(페이지 구조 변경). 첫 실행은 기준선 저장이라 알림 없음. 첫 자동 실행 결과 확인 필요."
+
+# ---------- GCP 크레딧 일일 보고(타미 시험 A, 2026-10-15 탐 #71): 매일 08:30 KST, 첫 자동 실행 10/16 확인 ----------
+[[job]]
+id = "hermes:gcp-credit-report"
+kind = "hermes_cron"
+name = "gcp-credit-report"
+period_min = 1440  # 하루 1회. no-agent 스크립트(gcp_credit_report_wrap.py)라 0토큰, 전달은 일주일 시험 동안 local
