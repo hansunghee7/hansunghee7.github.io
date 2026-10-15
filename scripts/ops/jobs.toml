@@ -570,6 +570,14 @@ name = "핏 공장 스냅샷(작업 스케줄러 핏_공장스냅샷, 매시 :40
 note = "2026-10-13 핏 등록. 로그가 3시간 넘게 안 바뀌면 멈춤. 원인: 작업 스케줄러 실패, 터널 끊김, 크롬 응답 없음."
 
 [[job]]
+id = "cron:fit-flow-credits-newpc"
+kind = "file_age"
+path = 'C:/work/_ops/flow_credits_local.jsonl'
+max_age_min = 480
+name = "핏 신PC Flow 크레딧 읽기(factory_snapshot.py --read-bg가 6시간 넘게 낡으면 flow_credits_local.py 실행, u5·u0)"
+note = "2026-10-16 핏 등록(핏-영상생성 #78). 8시간 넘게 안 바뀌면 멈춤. 10/15~16 23시간 미수집 원인: cmd 한 줄 따옴표 깨짐, 분리 실행 자식의 stdout 없음. 잠금 파일 pilot-shorts2/공장_스냅샷_읽기중.lock이 20분 넘게 남아 있으면 읽기 실패."
+
+[[job]]
 id = "cron:fit-yt-live"
 kind = "file_age"
 path = 'C:/work/shorts-lab/pilot-shorts2/yt_live_history.jsonl'
