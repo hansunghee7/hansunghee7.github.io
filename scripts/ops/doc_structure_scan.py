@@ -114,8 +114,28 @@ def main():
                             capture_output=True, text=True, encoding="utf-8", errors="replace", creationflags=FLAGS)
         if r2.returncode == 0 and o2.exists():
             o.write_text(first + "\n" + o2.read_text(encoding="utf-8"), encoding="utf-8")
+    o.write_text(o.read_text(encoding="utf-8") + "\n\n" + refcheck(o.read_text(encoding="utf-8")), encoding="utf-8")
     print(f"문서 구조 스캔 완료: {o}")
     return 0
+
+
+def refcheck(text):
+    """이동 제안마다 저장소 전체(스크립트·워크플로·훅 포함)에서 경로·파일 이름 참조를 센다(10/15: 오퍼스가 '언급 0'이라 한 4개 중 3개가 스크립트 참조)."""
+    m = re.search(r"```actions\s*(\[.*?\])\s*```", text, re.S)
+    try:
+        acts = json.loads(m.group(1)) if m else []
+    except ValueError:
+        return "## 참조 검사\n(actions 블록을 읽지 못함)"
+    lines = ["## 참조 검사(스크립트·워크플로 포함, 옮기기 전 필수)"]
+    for x in acts:
+        repo = REPOS.get(x.get("repo", ""), (None,))[0]
+        f = x.get("file", "")
+        if not repo or not f:
+            continue
+        stem = Path(f).stem
+        hits = [h for h in git(repo, "grep", "-l", "-F", stem).splitlines() if h != f and "아카이브" not in h and "_이력/" not in h]
+        lines.append(f"- {'안전' if not hits else '참조 있음'}: {f}" + (f" ← {', '.join(hits[:4])}" if hits else ""))
+    return "\n".join(lines)
 
 
 if __name__ == "__main__":
