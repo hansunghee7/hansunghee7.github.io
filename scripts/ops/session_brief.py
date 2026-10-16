@@ -26,6 +26,43 @@ ORCH_LINES = [
 ]
 
 
+# 기한 넘은 열린 일(사장님 10/16 "기한 넘은 열린 일을 맨 위에, 이래야 재발방지"): 10/14 '크레딧 신청은 가능하면 오늘'을
+# 이틀 뒤 세션이 앞으로 할 일처럼 말한 사고. 카드에 순서만 있고 상태·기한이 안 보였다.
+# 판정은 카드의 기한 칸(raw.due, proc.py --due)으로만 한다. '오늘' 같은 말로 추정하면 규칙 카드까지 걸려 11건 중 10건이 오탐이었다(10/16 실측).
+# 기한 칸 채우기는 슈퍼사서(context_audit.py)가 사장님 원문에 기한 말이 있는데 칸이 빈 카드를 찾아 맡는다.
+CLOSED = re.compile(r'^\s*\[?(완료|보류|폐기|정정|닫힘|접음)')
+
+
+def overdue_steps(who=None, today=None, limit=8, rows=None):
+    """기한(raw.due)이 지났는데 아직 닫히지 않은 공정 카드 단계. who가 없으면 전체."""
+    today = today or datetime.now().strftime('%Y-%m-%d')
+    if rows is None:
+        rows = opsdb.select('tasks', 'owner,no,title,raw', where={'section': 'eq.step', 'status': 'eq.사용'}, limit=5000) if opsdb else []
+    out = []
+    for r in rows:
+        own = r.get('owner') or ''
+        if who and not (own == who or own.startswith(who + '-')):
+            continue
+        due = str((r.get('raw') or {}).get('due', ''))[:10]
+        if not due or due >= today or CLOSED.match(r.get('title') or ''):
+            continue
+        days = (datetime.strptime(today, '%Y-%m-%d') - datetime.strptime(due, '%Y-%m-%d')).days
+        out.append((days, f"- [{own} #{r.get('no')}] 기한 {due}, {days}일 지남: {(r.get('title') or '')[:60]}"))
+    return [s for _, s in sorted(out, reverse=True)[:limit]]
+
+
+def print_overdue(who):
+    try:
+        lines = overdue_steps(who)
+    except Exception as e:  # noqa: BLE001
+        print(f'(기한 넘은 일 확인 실패: {e})')
+        return
+    if lines:
+        print(f'===== ⚠ 기한 넘은 열린 일 {len(lines)}건 (기한이 지났는데 아직 안 닫힘:앞으로 할 일이 아니라 늦은 일로 보고하고 먼저 처리. 끝나면 proc.py amend로 제목 앞에 "완료") =====')
+        print('\n'.join(lines))
+        print()
+
+
 def print_orch():
     print()
     print(chr(10).join(ORCH_LINES))
@@ -81,6 +118,7 @@ def main():
         return cloud_main(who)
     synced = ensure_fresh()
     full = '--full-list' in sys.argv
+    print_overdue(who)
     h = opsdb.select('tasks', 'title,raw', where={'owner': f'eq.{who}', 'section': 'eq.handoff', 'no': 'eq.1'}, limit=1)
     print(f'===== {who} 최신 인수인계(원문)' + (' (md가 DB보다 새로워 방금 동기화함)' if synced else '') + ' =====')
     if h:

@@ -34,7 +34,16 @@ def actions(text):
         acts = json.loads(m.group(1))
     except ValueError:
         return []
-    return [x for x in acts if isinstance(x, dict) and x.get("op") == "rewrite" and REF.fullmatch(str(x.get("card", ""))) and x.get("instruction")]
+    ok = []
+    for x in acts:
+        if not isinstance(x, dict) or not REF.fullmatch(str(x.get("card", ""))):
+            continue
+        if x.get("op") == "rewrite" and x.get("instruction"):
+            ok.append(x)
+        # 기한 칸 채우기(10/16 사장님: 기한 넘은 열린 일을 세션 시작 맨 위에) — 사장님 원문에 기한이 있는데 칸이 빈 카드
+        elif x.get("op") == "due" and re.fullmatch(r"20\d\d-\d\d-\d\d", str(x.get("due", ""))):
+            ok.append(x)
+    return ok
 
 
 def worker_rewrite(card, instruction):
@@ -115,6 +124,15 @@ def apply(path, dry=False):
         if dry:
             fixed.append(f"{act['card']}(시험)")
             continue
+        if act["op"] == "due":
+            raw = dict(r["raw"] or {})
+            prev = raw.get("due")
+            raw["due"] = act["due"]
+            opsdb.patch("tasks", {"id": f"eq.{r['id']}"}, {"raw": raw})
+            with LOG.open("a", encoding="utf-8") as f:
+                f.write(json.dumps({"run": run, "id": r["id"], "card": act["card"], "op": "due", "prev_due": prev, "due": act["due"], "src": str(path)}, ensure_ascii=False) + "\n")
+            fixed.append(f"{act['card']}(기한 {act['due']})")
+            continue
         new = worker_rewrite(r, act["instruction"])
         if not new:
             continue
@@ -171,6 +189,14 @@ def undo(run):
                 raw["superseded_by"] = e["prev_sup"]
             else:
                 raw.pop("superseded_by", None)
+            opsdb.patch("tasks", {"id": f"eq.{e['id']}"}, {"raw": raw})
+        elif e.get("op") == "due":
+            r = opsdb.select("tasks", "id,raw", where={"id": f"eq.{e['id']}"}, limit=1)[0]
+            raw = dict(r["raw"] or {})
+            if e.get("prev_due"):
+                raw["due"] = e["prev_due"]
+            else:
+                raw.pop("due", None)
             opsdb.patch("tasks", {"id": f"eq.{e['id']}"}, {"raw": raw})
         elif e.get("op") == "rewrite":
             opsdb.patch("tasks", {"id": f"eq.{e['id']}"}, {"title": e["prev_title"], "next_action": e["prev_do"]})
