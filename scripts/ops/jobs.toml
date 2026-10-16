@@ -644,3 +644,11 @@ kind = "hermes_cron"
 name = "tami-watch"
 period_min = 60
 note = "2026-10-15 탐 등록(사장님: 페이블 타미 세팅, 이상이 있을 때만 부르기). 래퍼 tami_watch_wrap.py → scripts/ops/tami_watch.py. 공장 장부·상태판 빨간 줄을 매시간 보고, 이상이 있을 때만 타미(claude-fable-5-1)가 읽기 전용 진단 후 텔레그램. 1회 실행 성공(10/15 22:42, 이상 6건 판정·텔레그램 보냄). 첫 자동 실행 23:20 확인 필요."
+
+[[job]]
+id = "fn:actions-budget"
+kind = "cmd"
+cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\actions_budget_watch.py']
+every_min = 1440
+name = "GitHub Actions 유료 사용량·사고 우회 배포(actions_budget_watch.py)"
+note = "2026-10-16 탐 등록(공정 카드 탐#109, 사장님 10/15 '소액 상한, 유료 최소화', 상한 5달러). 실행 기록으로 이번 달 비공개 저장소 분을 근사(청구 API는 gh 토큰 권한 없음). 붉음 = 추정 유료 4달러(80%) 이상 또는 오늘 사고 우회 배포 있음. 붉을 때 할 일: 상위 소비 작업 확인(C:/work/_ops/actions_minutes_1016.py), 사장님께 '원문 X → 근거 Y' 형식으로 보고."
