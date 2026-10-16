@@ -86,6 +86,8 @@ REVIEW = """너는 AI 에이전트 팀의 컨텍스트 설계 책임자다. 1차
    - 형태: 같은 규칙이 여러 곳이면 정본 하나 + 나머지는 가리키는 한 줄. 판정 가능한 규칙은 훅·도구로.
    - 찾기 시험: 그 실수를 한 에이전트가 물었을 질문 한 줄을 적어라(장부의 --query). 고친 뒤 기억 도우미가 그 질문으로 규칙을 찾아내면 성공이다.
 ⑨ 문서량·구조(사장님 10/16: 위치만이 아니라 구조·내용·문서량까지): 아래 '문서량 점검'에서 상한을 넘은 자동 로드 문서는 에이전트가 끝까지 못 읽고 일하는 원인이다. 넘친 문서마다 무엇을 어디로 옮겨(공정 카드·하위 문서·히스토리) 몇 줄로 줄일지 A에 제안하고, 마찰 기록과 연결되면 그 연결을 적는다.
+   - 순서: 자동 로드 문서는 넘치면 뒤가 잘리므로 핵심 규칙(매번 지켜야 하는 것)이 앞에, 이력·예시는 뒤나 하위 문서에 있어야 한다. 순서가 거꾸로면 옮길 절을 제안한다.
+   - 구조: 아래 '문서 구조 스캔 발췌'의 같은 사실 여러 곳 묶음과 묻힌 규칙 중 오늘 마찰과 겹치는 것은 정본 하나와 가리키는 줄로 정리하도록 A에 넣는다.
 ⑦ 너는 전체 판을 보는 판정자다(사장님 10/15: "판정은 전체 판을 바라보는 에이전트가 했으면 좋겠다, 그게 에이전틱 시스템"). 실수한 에이전트나 고친 에이전트가 아니라 네가 아래 수정 경험 장부를 보고 판정한다.
 형식(한국어, 50줄 이내):
 A. 최종 제안 3~5개. 각각 = 제목 / 문제 근거 / 고칠 곳(정본) / 영향받는 곳 / 부작용 위험과 시험 / 우선순위(효과·위험).
@@ -108,6 +110,9 @@ D. 실행 지시: 정본 표시 보강처럼 카드 글을 고쳐야 하는 것�
 
 [문서량 점검: 자동으로 읽히는 문서의 길이 / 상한]
 {volume}
+
+[문서 구조 스캔 발췌(최근 docscan): 같은 사실이 여러 곳 / 묻혀 있는 규칙]
+{structure}
 """
 
 
@@ -193,6 +198,20 @@ def volume_view():
     return "\n".join(out) or "(상한 90%를 넘은 자동 로드 문서 없음)"
 
 
+def structure_view(limit=2500):
+    """가장 최근 문서 구조 스캔(doc_structure_scan.py 결과 docscan_YYYYMMDD_HHMM.md)에서 3절(같은 사실 여러 곳)·5절(묻힌 규칙)만 붙인다."""
+    try:
+        files = sorted(p for p in OUT.glob("docscan_2*.md"))
+        if not files:
+            return "(문서 구조 스캔 결과 없음: python scripts/ops/doc_structure_scan.py)"
+        text = files[-1].read_text(encoding="utf-8", errors="replace")
+        parts = re.split(r"(?m)^## ", text)
+        keep = [p for p in parts if p.startswith("3.") or p.startswith("5.")]
+        return f"({files[-1].name})\n" + "\n".join("## " + p.strip() for p in keep)[:limit]
+    except Exception as e:  # noqa: BLE001
+        return f"(구조 스캔 읽기 실패: {e})"
+
+
 # 날짜가 오면 판정자가 답할 운영 질문(사람이 아니라 전체 판을 보는 감수 에이전트가 판정, 사장님 10/15)
 JUDGE_QUESTIONS = (
     ("2026-10-22", "슈퍼프로세스 ⑦ 사고 회수 루프 자동판(원인 분류·고침 수준·재발 신호·매일 재판정)을 전 에이전트 정본 방식으로 채택할지: 지난 1주 장부의 성공·실패·신호 품질을 근거로 채택/보완 후 재판정/폐기 중 하나와 이유 3줄."),
@@ -208,7 +227,7 @@ def judge_questions():
 def review(first, summary, a, stamp, api):
     model = a[a.index("--review-model") + 1] if "--review-model" in a else "claude-opus-5-5"
     q = OUT / f"q2_{stamp}.md"
-    q.write_text(REVIEW.format(first=first, impacts=impacts_for(first), strategy=strategy_excerpt(), ledger=ledger_view(), questions=judge_questions(), volume=volume_view()), encoding="utf-8")
+    q.write_text(REVIEW.format(first=first, impacts=impacts_for(first), strategy=strategy_excerpt(), ledger=ledger_view(), questions=judge_questions(), volume=volume_view(), structure=structure_view()), encoding="utf-8")
     o = OUT / f"a2_{stamp}.md"
     r = subprocess.run([sys.executable, str(api), "--who", "컨텍스트감수", "--model", model, "--prompt-file", str(q), "--max-tokens", "12000", "--out", str(o)],
                        capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=900,
