@@ -652,3 +652,11 @@ cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\actions_budget_watch
 every_min = 1440
 name = "GitHub Actions 유료 사용량·사고 우회 배포(actions_budget_watch.py)"
 note = "2026-10-16 탐 등록(공정 카드 탐#109, 사장님 10/15 '소액 상한, 유료 최소화', 상한 5달러). 실행 기록으로 이번 달 비공개 저장소 분을 근사(청구 API는 gh 토큰 권한 없음). 붉음 = 추정 유료 4달러(80%) 이상 또는 오늘 사고 우회 배포 있음. 붉을 때 할 일: 상위 소비 작업 확인(C:/work/_ops/actions_minutes_1016.py), 사장님께 '원문 X → 근거 Y' 형식으로 보고."
+
+[[job]]
+id = "fn:saegim-runner"
+kind = "cmd"
+cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\runner_watch.py']
+every_min = 60
+name = "Carvit 시험 자체 실행기(saegim-test, 구PC·오라클) 생존"
+note = "2026-10-16 탐 등록(공정 카드 탐#113·#114, 사장님 승인 '구PC 실행기 등록 승인'·'시험 연결 승인'). 붉음 = saegim-test 실행기가 모두 offline(Carvit PR 시험이 대기열에 쌓임). 붉을 때 할 일: ssh goosolar '~/actions-runner/keepalive.sh' 실행 뒤 다시 확인, 로그 ~/actions-runner/_diag/(run_nohup.log·keepalive.log·job_gate.log). 급하면 test.yml runs-on을 ubuntu-latest로 되돌리는 PR(유료분 사용)."
