@@ -43,6 +43,7 @@ ok = [
     ('승인', '[저장 불필요: 이미 카드에 반영됨] 네', None),
     ('깃허브 액션 이슈는 어떻게 관리하실건가요?', '설명', None),
     ('진행 상황 알려줘요', '설명', None),
+    ('Base directory for this skill: C:\\x\n\n승인된 산출물은 확정 전에 옮긴다', '마감', None),
 ]
 bad = []
 for b, f, c in block:
