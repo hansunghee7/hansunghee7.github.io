@@ -95,6 +95,10 @@ B0. 혼란 정보: 아래 '혼란 정보 후보' 카드마다 숨김(1차에서 
 B. 장부 판정: 장부의 각 건(CF번호)마다 한 줄 = 판정(채택·기각·보류·다음 수준으로 올림) / 이유 / 재발 신호가 실수를 제대로 잡는지(신호가 틀리면 고칠 신호).
 C. 운영 판정 질문이 있으면 답한다: {questions}
 D. 실행 지시: 정본 표시 보강처럼 카드 글을 고쳐야 하는 것은 실행 담당(소넷)이 네 지시대로 바로 고친다. 맨 끝에 ```actions 코드 블록 하나로 JSON 배열을 쓴다. 원소 = {{"op":"rewrite","card":"카드명#번호","instruction":"무엇을 어떻게 고칠지 한두 문장(예: 정본 마야#38을 가리키는 한 줄만 남기고 옛 규칙 문장은 뺀다)"}}. 최대 5개, 확신 있는 것만. 사장님 결정의 해석이 갈리는 것(어느 값이 맞는가)은 넣지 말고 C에 질문으로 남겨라. 없으면 [].
+   기한 칸 채우기: 아래 '기한 칸 후보'에서 사장님 원문이 할 일의 마감을 말하는 카드(예: "오늘 가능하면 오늘" → 지시 날짜, "10/22까지" → 그 날짜)에만 {{"op":"due","card":"카드명#번호","due":"YYYY-MM-DD"}}를 넣는다. 규칙·교훈 카드(원문의 '오늘'이 마감이 아닌 것)는 넣지 마라. 기한이 지난 카드는 세션 시작 요약 맨 위에 '늦은 일'로 뜬다(사장님 10/16 재발방지).
+
+[기한 칸 후보: 사장님 원문에 마감 말이 있는데 기한 칸이 빈 카드 / 이미 기한이 지난 카드]
+{due}
 
 [수정 경험 장부(회사 simplifier): 상태·원인·수준·신호·결과]
 {ledger}
@@ -198,6 +202,31 @@ def volume_view():
     return "\n".join(out) or "(상한 90%를 넘은 자동 로드 문서 없음)"
 
 
+DUE_WORDS = re.compile(r"오늘|당일|\d{1,2}/\d{1,2}\s*까지|까지\s*(해|완료|제출)|today")
+
+
+def due_view(days=14, limit=20):
+    """기한 칸 후보(최근 지시, 원문에 마감 말, due 없음)와 이미 지난 기한(session_brief.overdue_steps)."""
+    try:
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        import opsdb
+        import session_brief
+        rows = opsdb.select("tasks", "owner,no,title,raw", where={"section": "eq.step", "status": "eq.사용"}, limit=5000)
+        since = (datetime.now() - timedelta(days=days)).strftime("%Y-%m-%d")
+        cand = []
+        for r in rows:
+            raw = r.get("raw") or {}
+            if raw.get("due") or str(raw.get("at", ""))[:10] < since or not DUE_WORDS.search(str(raw.get("boss", ""))):
+                continue
+            if session_brief.CLOSED.match(r.get("title") or ""):
+                continue
+            cand.append(f"- {r['owner']}#{r['no']} (지시 {str(raw.get('at'))[:10]}) {r['title'][:50]} / 원문: {str(raw.get('boss'))[:120]}")
+        late = session_brief.overdue_steps(None, limit=15, rows=rows)
+        return ("후보:\n" + ("\n".join(cand[:limit]) or "(없음)") + "\n이미 지남:\n" + ("\n".join(late) or "(없음)"))
+    except Exception as e:  # noqa: BLE001
+        return f"(기한 점검 실패: {e})"
+
+
 def structure_view(limit=2500):
     """가장 최근 문서 구조 스캔(doc_structure_scan.py 결과 docscan_YYYYMMDD_HHMM.md)에서 3절(같은 사실 여러 곳)·5절(묻힌 규칙)만 붙인다."""
     try:
@@ -227,7 +256,7 @@ def judge_questions():
 def review(first, summary, a, stamp, api):
     model = a[a.index("--review-model") + 1] if "--review-model" in a else "claude-opus-5-5"
     q = OUT / f"q2_{stamp}.md"
-    q.write_text(REVIEW.format(first=first, impacts=impacts_for(first), strategy=strategy_excerpt(), ledger=ledger_view(), questions=judge_questions(), volume=volume_view(), structure=structure_view()), encoding="utf-8")
+    q.write_text(REVIEW.format(first=first, impacts=impacts_for(first), strategy=strategy_excerpt(), ledger=ledger_view(), questions=judge_questions(), volume=volume_view(), structure=structure_view(), due=due_view()), encoding="utf-8")
     o = OUT / f"a2_{stamp}.md"
     r = subprocess.run([sys.executable, str(api), "--who", "컨텍스트감수", "--model", model, "--prompt-file", str(q), "--max-tokens", "12000", "--out", str(o)],
                        capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=900,

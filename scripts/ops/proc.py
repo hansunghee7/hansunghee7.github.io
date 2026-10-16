@@ -66,6 +66,8 @@ def fmt_step(r, brief=False):
         s += f"\n    할 일: {r['next_action'][:250]}"
     if raw.get('boss'):
         s += f"\n    ★ 사장님: {raw['boss'][:300]}"
+    if raw.get('due'):
+        s += f"\n    기한: {raw['due']}"
     if raw.get('tool') and not brief:
         s += f"\n    도구: {raw['tool']}"
     return s
@@ -79,7 +81,7 @@ def cmd_add(a):
     allrows = opsdb.select('tasks', 'no', where={'section': 'eq.step', 'owner': f'eq.{a.proc}'}, limit=1000)
     seq = max([int(r['no']) for r in allrows] + [0]) + 1
     opsdb.insert('tasks', [row(owner=a.proc, section='step', no=str(seq), title=a.title[:200], status='사용', next_action=(a.do or '')[:600], source='proc.py',
-                              raw={'boss': a.boss or '', 'tool': a.tool or '', 'by': a.who or '', 'at': now(), 'history': []})])
+                              raw={'boss': a.boss or '', 'tool': a.tool or '', 'by': a.who or '', 'at': now(), 'history': [], **({'due': a.due} if a.due else {})})])
     print(f'단계 추가: [{a.proc} #{seq}] {a.title}  (현재 {len(cur) + 1}단계)')
 
 
@@ -104,6 +106,11 @@ def cmd_amend(a):
         raw['boss'] = a.boss
     if a.tool is not None:
         raw['tool'] = a.tool
+    if a.due is not None:  # 기한(YYYY-MM-DD), 빈 값이면 지움. 세션 시작 요약이 지난 기한을 맨 위에 띄운다(10/16)
+        if a.due:
+            raw['due'] = a.due
+        else:
+            raw.pop('due', None)
     r['raw'] = raw
     opsdb.patch('tasks', {'id': f"eq.{r['id']}"}, {'title': r['title'], 'next_action': r['next_action'], 'raw': raw})
     print(f'고침: [{a.proc} #{a.no}] 이전 내용은 이력에 보존됨(최근 10개)')
@@ -280,8 +287,8 @@ def main():
     sys.stdout.reconfigure(encoding='utf-8')
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest='cmd', required=True)
-    p = sub.add_parser('add'); p.add_argument('proc'); p.add_argument('title'); p.add_argument('--do'); p.add_argument('--boss'); p.add_argument('--tool'); p.add_argument('--who')
-    p = sub.add_parser('amend'); p.add_argument('proc'); p.add_argument('no', type=int); p.add_argument('--title'); p.add_argument('--do'); p.add_argument('--boss'); p.add_argument('--tool'); p.add_argument('--who')
+    p = sub.add_parser('add'); p.add_argument('proc'); p.add_argument('title'); p.add_argument('--do'); p.add_argument('--boss'); p.add_argument('--tool'); p.add_argument('--who'); p.add_argument('--due', help='기한 YYYY-MM-DD(지나면 세션 시작 요약 맨 위)')
+    p = sub.add_parser('amend'); p.add_argument('proc'); p.add_argument('no', type=int); p.add_argument('--title'); p.add_argument('--do'); p.add_argument('--boss'); p.add_argument('--tool'); p.add_argument('--who'); p.add_argument('--due', help='기한 YYYY-MM-DD, 빈 값이면 지움')
     p = sub.add_parser('retire'); p.add_argument('proc'); p.add_argument('no', type=int); p.add_argument('--why', required=True)
     p = sub.add_parser('steps'); p.add_argument('proc')
     p = sub.add_parser('show'); p.add_argument('kw'); p.add_argument('no', nargs='?', type=int); p.add_argument('--who')
