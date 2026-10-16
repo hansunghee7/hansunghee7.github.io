@@ -8,8 +8,8 @@ import context_audit as c  # noqa: E402
 
 
 def test_review_prompt_carries_volume_section():
-    p = c.REVIEW.format(first="x", impacts="x", strategy="x", ledger="x", questions="x", volume="- CLAUDE.md: 260줄 / 상한 250 (넘침)")
-    assert "문서량 점검" in p and "260줄" in p and "⑨" in p
+    p = c.REVIEW.format(first="x", impacts="x", strategy="x", ledger="x", questions="x", volume="- CLAUDE.md: 260줄 / 상한 250 (넘침)", structure="## 3. 같은 사실")
+    assert "문서량 점검" in p and "260줄" in p and "⑨" in p and "구조 스캔 발췌" in p and "순서" in p
 
 
 def test_volume_rules_cover_auto_loaded_docs():
