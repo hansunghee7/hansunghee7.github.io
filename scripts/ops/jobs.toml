@@ -656,10 +656,10 @@ note = "2026-10-16 탐 등록(공정 카드 탐#109, 사장님 10/15 '소액 상
 [[job]]
 id = "fn:saegim-runner"
 kind = "cmd"
-cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\runner_watch.py']
-every_min = 60
-name = "Carvit 시험 자체 실행기(saegim-test, 구PC·오라클) 생존"
-note = "2026-10-16 탐 등록(공정 카드 탐#113·#114, 사장님 승인 '구PC 실행기 등록 승인'·'시험 연결 승인'). 붉음 = saegim-test 실행기가 모두 offline(Carvit PR 시험이 대기열에 쌓임). 붉을 때 할 일: ssh goosolar '~/actions-runner/keepalive.sh' 실행 뒤 다시 확인, 로그 ~/actions-runner/_diag/(run_nohup.log·keepalive.log·job_gate.log). 급하면 test.yml runs-on을 ubuntu-latest로 되돌리는 PR(유료분 사용)."
+cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\runner_watch.py', "--switch"]
+every_min = 15
+name = "Carvit 시험 자체 실행기(saegim-test, 구PC·오라클) 생존·자동 우회"
+note = "2026-10-16 탐 등록(공정 카드 탐#113·#114, 사장님 승인 '구PC 실행기 등록 승인'·'시험 연결 승인'·'자동우회 승인'). --switch: 연속 2회(15분 간격) offline이면 saegim 저장소 변수 SAEGIM_CI_RUNNER를 ubuntu-latest로 바꿔 Carvit CI(test, changes, container-smoke)가 깃허브 실행기(유료분)로 자동 우회하고, online이 되면 self-hosted,saegim-test로 자동 복귀(상태 C:/work/_ops/runner_watch_state.json). 붉음 = 자체 실행기 offline 또는 우회 중. 붉을 때 할 일: ssh goosolar '~/actions-runner/keepalive.sh' 실행 뒤 다시 확인, 로그 ~/actions-runner/_diag/(run_nohup.log·keepalive.log·job_gate.log)."
 
 [[job]]
 id = "fn:agentmail-e2e"
