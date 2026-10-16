@@ -25,10 +25,19 @@ NOT_STUCK = re.compile(r"(막히지\s*않|막힘\s*없|막힌\s*곳\s*없|실패
 PROC_REF = re.compile(r"(프로세스표|GENERATION_PIPELINES|구PC_작업실_영상레시피|영상레시피|업무대장|DAILY_ROUTINE|session-start|hermes-delegate|ink-desk)")
 
 
-def consulted(tools):
+# 2026-10-13 추가(사장님 지적 "사장한테 뭐 시킬 때 기록 찾는 훅이 왜 안 도나", 10/12에도 같은 질문): 사장님께 사람 개입을 요청하는 답변은 막힘 표현이 없어도
+# 이번 턴에 기록 검색(recall.py·ledger_lint·opsdb·proc.py·프로세스표·업무대장·Grep docs)을 한 흔적이 있어야 한다.
+ASK_TAG = re.compile(r"\[사람 개입 필요:")
+RECORD_REF = re.compile(r"(recall\.py|ledger_lint|opsdb\.py|proc\.py|pipeline_db|session_brief|프로세스표|업무대장|진행상황\.md|docs[/\\]|[/\\]docs\b)")
+# 2026-10-16 추가(사장님 승인, 카드 탐#106): 돈 이야기(상한·결제·과금 등)를 하는 답변은 사람 개입 요청이 없어도
+# 같은 턴에 기록 검색을 해야 한다. 사고: Actions 예산 조언이 사장님 10/15 원문을 확인하지 않은 채 세 번 바뀜.
+MONEY = re.compile(r"(\$\s?\d|\d\s?달러|₩\s?\d|\d\s?만\s?원|결제|과금|청구|요금제|상한|예산)")
+
+
+def consulted(tools, ref=PROC_REF):
     for name, inp in tools:
         blob = name + " " + " ".join(str(v) for v in inp.values())
-        if name in ("Read", "Grep", "Glob", "Bash", "PowerShell", "Skill") and PROC_REF.search(blob):
+        if name in ("Read", "Grep", "Glob", "Bash", "PowerShell", "Skill") and ref.search(blob):
             return True
     return False
 
@@ -75,6 +84,10 @@ def turn_has_error(path):
 
 def check(text, tools, has_error=True):
     """has_error: 이번 턴 도구 결과에 오류가 하나라도 있는가. 없으면(설명·통계·보고 문장의 오탐) 통과한다(2026-10-11 좁힘)."""
+    if ASK_TAG.search(text) and not consulted(tools, RECORD_REF):
+        return "ask-without-record-lookup"
+    if MONEY.search(CODE.sub("", text)) and not consulted(tools, RECORD_REF):
+        return "money-without-record-lookup"
     if not has_error:
         return None
     text = CODE.sub("", text)
@@ -113,6 +126,14 @@ if __name__ == "__main__":
         sys.exit(0)
     if not verdict:
         sys.exit(0)
+    if verdict == "ask-without-record-lookup":
+        print("사장님께 사람 개입을 요청하는 답변인데 이번 턴에 기록(recall.py·ledger_lint.py --find·프로세스표·업무대장)을 찾아본 흔적이 없습니다(사장님 지시 2026-10-13). "
+              "이미 사장님이 해 둔 일(예: SNS 연결)이거나 정해 둔 결정일 수 있으니, 먼저 기록을 검색해 대조한 뒤 필요한 부탁만 남기고 다시 답하세요.", file=sys.stderr)
+        sys.exit(2)
+    if verdict == "money-without-record-lookup":
+        print("돈 이야기(상한·결제·과금·예산 등)가 있는 답변인데 이번 턴에 기록(recall.py·proc.py·업무대장)을 찾아본 흔적이 없습니다(사장님 승인 2026-10-16, 카드 탐#106). "
+              "사장님이 이미 정한 예산 원칙이 있을 수 있으니 먼저 기록을 검색해 대조하고, 바꾸자는 제안이면 '기존 원문 X → 새 근거 Y' 형식으로 다시 답하세요.", file=sys.stderr)
+        sys.exit(2)
     print("막혔다는 말이 있지만 이번 턴에 절차 기록(프로세스표·GENERATION_PIPELINES·영상레시피·업무대장)을 찾아 읽은 흔적이 없습니다(사장님 지시 2026-10-04). "
           "추측으로 다시 시도하지 말고, 먼저 해당 프로세스표/절차 기록을 검색·열람해 기록된 단계와 대조한 뒤 어느 단계에서 막혔는지 다시 답하세요. "
           "기록에 없으면 그 사실을 적고 프로세스표에 추가하세요.", file=sys.stderr)

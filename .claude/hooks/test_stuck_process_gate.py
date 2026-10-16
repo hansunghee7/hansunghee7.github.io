@@ -25,6 +25,14 @@ class StuckGateTest(unittest.TestCase):
         self.assertIsNone(sg.check("Vids 내려받기가 안 됩니다.", READ))
         self.assertIsNone(sg.check("막혔습니다.", [("Grep", {"pattern": "삽입", "path": "GENERATION_PIPELINES.md"})]))
 
+    def test_money_talk_needs_record_lookup(self):
+        # 2026-10-16 사장님 승인(카드 탐#106): 돈 이야기는 같은 턴 기록 검색 필수
+        self.assertEqual(sg.check("Actions 상한을 20달러로 올리세요.", OTHER, False), "money-without-record-lookup")
+        self.assertEqual(sg.check("월 $5 결제가 필요합니다.", [], False), "money-without-record-lookup")
+        self.assertIsNone(sg.check("Actions 상한을 20달러로 올리세요.", [("Bash", {"command": "python scripts/ops/recall.py 예산"})], False))
+        self.assertIsNone(sg.check("배포를 마쳤습니다.", OTHER, False))
+        self.assertIsNone(sg.check("코드 `budget = 상한` 만 보입니다.", OTHER, False))
+
     def test_negated_or_clean_text_passes(self):
         self.assertIsNone(sg.check("막힘 없이 통과했습니다.", []))
         self.assertIsNone(sg.check("결과를 기록했습니다.", []))
