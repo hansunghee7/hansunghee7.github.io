@@ -95,6 +95,24 @@ def approved(entries, now):
     return used <= 1  # 지금 호출이 이미 기록에 있으면 1
 
 
+SCRIPT = re.compile(r"[\w:/\\.~-]+\.(?:sh|py|ps1)\b")
+
+
+def script_deploys(cmd):
+    """명령이 실행하는 스크립트 파일 안에 배포 명령이 있으면 True(감시 스크립트 속 배포 우회 방지). 시험 파일은 제외."""
+    for p in SCRIPT.findall(cmd):
+        if re.search(r"(^|[/\\])test_[^/\\]*$", p):
+            continue
+        path = re.sub(r"^/([a-zA-Z])/", r"\1:/", p)
+        try:
+            with open(path, encoding="utf-8", errors="replace") as f:
+                if DEPLOY.search(f.read(200_000)):
+                    return True
+        except Exception:
+            continue
+    return False
+
+
 def main():
     try:
         data = json.loads(sys.stdin.buffer.read().decode("utf-8"))
@@ -103,7 +121,7 @@ def main():
     if data.get("tool_name") not in ("Bash", "PowerShell"):
         return 0
     cmd = str((data.get("tool_input") or {}).get("command", ""))
-    if not DEPLOY.search(cmd):
+    if not DEPLOY.search(cmd) and not script_deploys(cmd):
         return 0
     entries = []
     try:
