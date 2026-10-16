@@ -38,7 +38,8 @@ def parse(path):
         c = ev.get('message', {}).get('content', [])
         parts = [c] if isinstance(c, str) else [p.get('text', '') for p in c if isinstance(p, dict) and p.get('type') == 'text']
         joined = '\n'.join(parts).strip()
-        if joined and 'SYSTEM NOTIFICATION' not in joined and not joined.startswith(('<system-reminder>', '<cross-session', '<task-notification', '[Subagent', 'Stop hook feedback')):
+        # 스킬 본문(Base directory for this skill…)·메타 글은 사장님 말이 아니다(10/16 마야 마감 턴 오탐)
+        if joined and not ev.get('isMeta') and 'SYSTEM NOTIFICATION' not in joined and not joined.startswith(('<system-reminder>', '<cross-session', '<task-notification', '[Subagent', 'Stop hook feedback', 'Base directory for this skill', '<ci-monitor-event>', 'Another Claude session')):
             start, boss = i, joined
     texts, cmds = [], []
     for ev in events[start + 1:]:
