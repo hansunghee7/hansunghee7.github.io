@@ -110,6 +110,7 @@ def write_calls(path: Path, rows):
 
 
 def test_summary_no_files_all_zero(tmp_path, monkeypatch):
+    monkeypatch.setattr(quota, "BUDGET", {**quota.BUDGET, "비티": {"total": 10, "핏": 3, "탐": 7}})  # 예산 판정 로직 시험(실제 예산은 10/16부터 해제)
     monkeypatch.setattr(quota, "CALLS", tmp_path / "agent_calls.csv")
     monkeypatch.setattr(quota, "STATE", tmp_path / "quota_state.json")
     worst, lines = quota.summary(NOW)
@@ -140,6 +141,7 @@ def test_summary_ignores_unknown_who(tmp_path, monkeypatch):
 
 
 def test_summary_budget_near_limit_raises_worst(tmp_path, monkeypatch):
+    monkeypatch.setattr(quota, "BUDGET", {**quota.BUDGET, "비티": {"total": 10, "핏": 3, "탐": 7}})  # 예산 판정 로직 시험(실제 예산은 10/16부터 해제)
     calls = tmp_path / "agent_calls.csv"
     monkeypatch.setattr(quota, "CALLS", calls)
     monkeypatch.setattr(quota, "STATE", tmp_path / "quota_state.json")
