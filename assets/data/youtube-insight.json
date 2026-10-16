@@ -262,7 +262,7 @@
         },
         {
           "date": "2026-10-16",
-          "views": 4540,
+          "views": 4543,
           "likes": 28,
           "comments": 4
         }
@@ -2132,7 +2132,7 @@
         },
         {
           "date": "2026-10-16",
-          "views": 1393,
+          "views": 1394,
           "likes": 15,
           "comments": 1
         }
@@ -2310,7 +2310,7 @@
         },
         {
           "date": "2026-10-16",
-          "views": 3200,
+          "views": 3201,
           "likes": 29,
           "comments": 1
         }
@@ -2636,7 +2636,7 @@
         },
         {
           "date": "2026-10-16",
-          "views": 264,
+          "views": 265,
           "likes": 5,
           "comments": 0
         }
@@ -3082,7 +3082,7 @@
         },
         {
           "date": "2026-10-16",
-          "views": 818,
+          "views": 833,
           "likes": 7,
           "comments": 0
         }
@@ -3162,7 +3162,7 @@
         },
         {
           "date": "2026-10-16",
-          "views": 1433,
+          "views": 1436,
           "likes": 11,
           "comments": 1
         }
@@ -3244,7 +3244,7 @@
         },
         {
           "date": "2026-10-16",
-          "views": 1856,
+          "views": 1858,
           "likes": 12,
           "comments": 0
         }
@@ -3320,7 +3320,7 @@
         },
         {
           "date": "2026-10-16",
-          "views": 1660,
+          "views": 1661,
           "likes": 10,
           "comments": 0
         }
@@ -3376,7 +3376,7 @@
         },
         {
           "date": "2026-10-16",
-          "views": 1161,
+          "views": 1162,
           "likes": 14,
           "comments": 0
         }
@@ -3414,7 +3414,7 @@
         },
         {
           "date": "2026-10-16",
-          "views": 572,
+          "views": 574,
           "likes": 9,
           "comments": 1
         }
@@ -3454,7 +3454,7 @@
         },
         {
           "date": "2026-10-16",
-          "views": 1475,
+          "views": 1476,
           "likes": 7,
           "comments": 1
         }
@@ -3488,7 +3488,7 @@
         },
         {
           "date": "2026-10-16",
-          "views": 1218,
+          "views": 1222,
           "likes": 18,
           "comments": 1
         }
@@ -3516,7 +3516,7 @@
         },
         {
           "date": "2026-10-16",
-          "views": 1447,
+          "views": 1486,
           "likes": 32,
           "comments": 2
         }
@@ -3544,7 +3544,7 @@
       "history": [
         {
           "date": "2026-10-16",
-          "views": 1265,
+          "views": 1433,
           "likes": 12,
           "comments": 1
         }
@@ -3559,6 +3559,28 @@
           "text": "거장이 지은 독특한 명작과 살기 편한 집 중 여러분의 선택은 어느 쪽인가요?",
           "likes": 2,
           "published_at": "2026-10-15T09:32:14Z"
+        }
+      ]
+    },
+    "hVigA6b64Dw": {
+      "history": [
+        {
+          "date": "2026-10-16",
+          "views": 10,
+          "likes": 1,
+          "comments": 1
+        }
+      ],
+      "title": "80kg 소파를 혼자 들 수 있는 베테랑의 반전 비밀은?",
+      "published_at": "2026-10-16T08:00:31Z",
+      "thumbnail": "https://i.ytimg.com/vi/hVigA6b64Dw/maxresdefault.jpg",
+      "duration_seconds": 65,
+      "top_comments": [
+        {
+          "author": "@sinkihanapt",
+          "text": "무거운 가구나 짐을 옮길 때 직접 써보신 기발한 요령이 있으신가요?",
+          "likes": 0,
+          "published_at": "2026-10-16T08:32:16Z"
         }
       ]
     }
@@ -3828,11 +3850,11 @@
         "date": "2026-10-16",
         "subscribers": 70,
         "total_views": 37400,
-        "video_count": 29
+        "video_count": 30
       }
     ],
     "title": "신기한 아파트 사전",
     "id": "UCTbS2jSG1BvBl4c6EsVx7sA"
   },
-  "updated_at": "2026-10-15T23:14:37.465699Z"
+  "updated_at": "2026-10-16T14:59:00.250233Z"
 }
