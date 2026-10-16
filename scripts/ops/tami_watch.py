@@ -147,8 +147,10 @@ def wake_tami(items):
     q = ("너는 우리 회사 당직이다(읽기 전용). 아래 이상 신호의 원인을 진단하라. 파일·로그를 읽어 근거를 확인하고, 구PC는 `ssh goosolar`로 읽기만 하라. "
          "고치기·재시작·삭제·발송은 절대 하지 않는다. 참고: 공장 장부 `python C:/work/shorts-lab/tools/factory/fit_db.py factory`, 상태판 C:/work/_ops/STATUS.md, 감시 대장 C:/work/hansunghee7.github.io/scripts/ops/jobs.toml.\n"
          "출력(한국어, 12줄 이내): 신호마다 '원인(확인됨/추정) / 근거 한 줄 / 누가 무엇을 하면 되는지(핏·탐·사장님)'. 끝에 '사장님이 할 일: 없음' 또는 한 줄.\n\n이상 신호:\n- " + "\n- ".join(items))
-    env = dict(os.environ, ANTHROPIC_API_KEY=key, HERMES_HOME=str(TAMI_HOME), PYTHONIOENCODING="utf-8")
+    env = dict(os.environ, ANTHROPIC_API_KEY=key, ANTHROPIC_TOKEN=key, HERMES_HOME=str(TAMI_HOME), PYTHONIOENCODING="utf-8")
     # 판정이 안 나오면(10/15 22:50 실측: 페이블이 '잔액 부족' 400 → 헤르메스가 로컬 qwen으로 넘어가 엉뚱한 실패) 다음 모델로. 판정 성공 = '사장님이 할 일' 줄이 있음
+    # 10/16 실측: 헤르메스는 ANTHROPIC_API_KEY보다 자격증명 풀·ANTHROPIC_TOKEN을 먼저 봐서 클로드 코드 로그인 토큰(구독, API 크레딧 없음)으로
+    # 호출해 '크레딧 부족' 400이 났다(10/15 22:41부터 52회). 운영 키를 최우선 자리(ANTHROPIC_TOKEN)에도 넣으면 거절 0·대체 0.
     log = Path(TAMI_HOME) / "logs" / "agent.log"
     for model in MODELS:
         start = log.stat().st_size if log.exists() else 0
