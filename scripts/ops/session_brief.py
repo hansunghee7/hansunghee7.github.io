@@ -37,7 +37,7 @@ def overdue_steps(who=None, today=None, limit=8, rows=None):
     """기한(raw.due)이 지났는데 아직 닫히지 않은 공정 카드 단계. who가 없으면 전체."""
     today = today or datetime.now().strftime('%Y-%m-%d')
     if rows is None:
-        rows = opsdb.select('tasks', 'owner,no,title,raw', where={'section': 'eq.step', 'status': 'eq.사용'}, limit=5000) if opsdb else []
+        rows = opsdb.select('tasks', 'owner,no,title,raw', where={'section': 'eq.step', 'status': 'eq.사용', 'raw->>due': 'not.is.null'}, limit=1000) if opsdb else []  # 서버가 한 번에 1000행까지라 전체를 받으면 빠진다(10/16)
     out = []
     for r in rows:
         own = r.get('owner') or ''
