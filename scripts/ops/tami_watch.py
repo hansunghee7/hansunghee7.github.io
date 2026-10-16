@@ -125,6 +125,20 @@ def collect():
     return items
 
 
+def fell_back(log, start):
+    """이번 호출에서 헤르메스가 대체 모델로 넘어갔으면 그 이유 한 줄, 아니면 빈 문자열."""
+    try:
+        with open(log, "rb") as f:
+            f.seek(start)
+            new = f.read().decode("utf-8", "replace")
+    except OSError:
+        return ""
+    if "credit balance is too low" in new:
+        return "클로드 크레딧 부족(400)"
+    m = re.search(r"Fallback activated: ([^\n]+)", new)
+    return ("대체 모델 전환 " + m.group(1)[:80]) if m else ""
+
+
 def wake_tami(items):
     import api_run
     key = api_run.find_key()
@@ -135,11 +149,18 @@ def wake_tami(items):
          "출력(한국어, 12줄 이내): 신호마다 '원인(확인됨/추정) / 근거 한 줄 / 누가 무엇을 하면 되는지(핏·탐·사장님)'. 끝에 '사장님이 할 일: 없음' 또는 한 줄.\n\n이상 신호:\n- " + "\n- ".join(items))
     env = dict(os.environ, ANTHROPIC_API_KEY=key, HERMES_HOME=str(TAMI_HOME), PYTHONIOENCODING="utf-8")
     # 판정이 안 나오면(10/15 22:50 실측: 페이블이 '잔액 부족' 400 → 헤르메스가 로컬 qwen으로 넘어가 엉뚱한 실패) 다음 모델로. 판정 성공 = '사장님이 할 일' 줄이 있음
+    log = Path(TAMI_HOME) / "logs" / "agent.log"
     for model in MODELS:
+        start = log.stat().st_size if log.exists() else 0
         r = subprocess.run([str(HERMES), "chat", "-q", q, "--oneshot", "-Q", "--provider", "anthropic", "-m", model],
                            capture_output=True, text=True, encoding="utf-8", errors="replace", env=env, timeout=900, creationflags=FLAGS)
         text = re.sub(r"\x1b\[[0-9;]*m", "", (r.stdout or "") + ("\n" + r.stderr if r.returncode else "")).replace(key, "***")
-        ok = "사장님이 할 일" in text
+        # 10/16 실측: 클로드가 '잔액 부족'으로 거절되면 헤르메스가 무료 대체 모델(qwen·nemotron)로 넘어가 답하는데,
+        # 겉으로는 '판정 모델: claude-opus-5-5'로 찍혔다(10/15 22:41부터 52회). 무료 엔진은 판정 금지라 대체 모델 답은 실패로 본다.
+        fell = fell_back(log, start)
+        if fell:
+            text = f"(클로드 호출 실패로 대체 모델이 답함: {fell}, 판정으로 쓰지 않음)\n" + text
+        ok = "사장님이 할 일" in text and not fell
         with (Path("C:/work/_ops") / "agent_calls.csv").open("a", encoding="utf-8") as f:
             f.write(f"{time.strftime('%F %T')},타미-{model},0,{r.returncode if ok else 9},{len(text.encode())},0\n")
         if ok:

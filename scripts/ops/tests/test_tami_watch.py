@@ -37,3 +37,17 @@ def test_pipeline_stale_and_owner_routing():
     assert tw.owner_of(out[0]) == "마야"
     assert tw.owner_of("[신PC u5] 크레딧") == "핏"
     assert tw.owner_of("[수집·주기 작업] x") == "탐"
+
+
+def test_fell_back_detects_credit_refusal_and_fallback(tmp_path):
+    import tami_watch as t
+    log = tmp_path / "agent.log"
+    log.write_text("old line Fallback activated: a → b\n", encoding="utf-8")
+    start = log.stat().st_size
+    assert t.fell_back(log, start) == ""
+    with open(log, "a", encoding="utf-8") as f:
+        f.write("x Your credit balance is too low to access\n")
+    assert "크레딧" in t.fell_back(log, start)
+    log2 = tmp_path / "b.log"
+    log2.write_text("y Fallback activated: qwen → nemotron\n", encoding="utf-8")
+    assert "대체 모델" in t.fell_back(log2, 0)
