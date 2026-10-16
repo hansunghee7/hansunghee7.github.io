@@ -38,6 +38,17 @@ def test_pattern():
     assert not g.DEPLOY.search('git commit -m "gh workflow run deploy 관문"')
 
 
+def test_script_scan(tmp_path):
+    s = tmp_path / "note_watch_x.sh"
+    s.write_text("sleep 1\ngh workflow run deploy-cloud-run.yml\n", encoding="utf-8")
+    assert g.script_deploys(f"nohup bash {s} &")
+    s.write_text("gh pr view 1\n", encoding="utf-8")
+    assert not g.script_deploys(f"bash {s}")
+    t = tmp_path / "test_x.py"
+    t.write_text("x = 'a && gh workflow run deploy'\n", encoding="utf-8")
+    assert not g.script_deploys(f"python -m pytest {t}")
+
+
 def test_no_approval_blocks():
     assert not g.approved([user("상태 알려줘"), call()], NOW)
 
