@@ -28,6 +28,8 @@ LOG_SECTIONS = ('worklog', 'handoff', 'closed', 'open', 'fact', 'history')
 # 같은 뜻으로 쓰이는 말(사장님은 '깃 배포', 기록은 'Actions 분 절감'으로 적은 사고): 묶음 안의 말은 서로 바꿔 찾는다.
 SYN = (('배포', 'deploy', '디플로이', 'actions', '워크플로'), ('분', 'minutes', '분량', '사용량'), ('한도', '상한', 'limit', '2000', '2,000'), ('횟수', '회수', '묶음', '줄이기', '절감'), ('깃', 'git', 'github', '깃허브'),
        # 슈퍼 계열 이름과 옛 이름은 같은 뜻(사장님 10/15 "슈퍼로 다 맞출까요", 별칭 방식: docs/슈퍼_용어집.md)
+       # 지원사업 회사 이름(사장님은 '구글', 지원현황 DB는 'Google'로 적는다, 10/16 CF004)
+       ('구글', 'google'), ('엔비디아', 'nvidia', '인셉션', 'inception'), ('마이크로소프트', 'microsoft', '애저', 'azure'), ('아마존', 'aws'), ('앤트로픽', 'anthropic', '클로드'),
        ('슈퍼오케스트라', '오케스트레이션', '오케스트레이터', '비상모드'), ('슈퍼버닝', '버닝', '백로그버닝'), ('슈퍼인덱싱', '색인관리', '슈퍼색인', '문서리팩토링', '구조문서'),
        ('슈퍼사서', '사서', '감수', '컨텍스트감수', 'context-audit'))
 
@@ -137,6 +139,26 @@ def episode_states():
     return eps
 
 
+GRANT_GENERIC = {'지원', '사업', '프로그램', 'program', 'startup', 'startups', '스타트업', '신청', '크레딧', 'cloud', '클라우드', '2026', '지원사업', 'for', '혜택', '참가', '확인'}
+
+
+def grant_states():
+    """지원사업 상태 정본(지원현황 DB, section=grant). 10/16 CF004: 구글 크레딧을 10/14에 신청했는데(G18 지원함) 1차 검색에 이 층이 없어
+    탐이 순서 카드를 상태로 읽고 '미신청'으로 보고했다. 슈퍼사서 판정: 카드 문구만으론 부족, 1차에 지원현황 층을 넣는다."""
+    try:
+        import opsdb
+        rs = opsdb.select('tasks', 'no,title,status,next_action,source_date,raw', where={'section': 'eq.grant'}, order='id.asc', limit=1000)
+    except Exception:
+        return []
+    out = []
+    for r in rs:
+        raw = r.get('raw') or {}
+        raw = json.loads(raw) if isinstance(raw, str) else raw
+        out.append({'no': r['no'], 't': r['title'] or '', 'st': r['status'] or '', 'org': str(raw.get('org', '')), 'memo': str(raw.get('memo', ''))[:160],
+                    'next': (r.get('next_action') or '')[:120], 'at': r.get('source_date') or ''})
+    return out
+
+
 def build():
     import opsdb
     cards, boss = [], []
@@ -174,6 +196,7 @@ def build():
             'logs': [{'s': r['sec'], 'p': r['owner'], 'no': r.get('no') or '', 't': (r.get('title') or '')[:300], 'd': ' '.join(str(r.get(k) or '') for k in ('next_action', 'result', 'evidence'))[:400], 'at': r.get('source_date') or ''} for r in logs],
             'docs': doc_chunks(),
             'eps': episode_states(),
+            'grants': grant_states(),
             'cards': [{'p': r['owner'], 'no': r['no'], 't': r['title'], 'd': (r.get('next_action') or '')[:400], 'b': (r['raw'].get('boss') or '')[:400]} for r in cards],
             'boss': [{'at': r['raw'].get('at', ''), 'w': r['owner'], 'x': re.sub(r'\s+', ' ', r['raw'].get('text', ''))[:500]} for r in boss]}
     CACHE.write_text(json.dumps(data, ensure_ascii=False), encoding='utf-8')
@@ -236,12 +259,20 @@ def query(text, n_cards=3, n_boss=3, n_logs=2, min_hits=2, history=False):
     if ep_hit:
         # 같은 편을 '보류' 등으로 적은 손글씨 카드는 1차에서 뺀다(정본은 편 사건 기록)
         cs = [(s, c) for s, c in cs if not (EP_HOLD.search(c['t']) and any(w in c['t'].lower() for w in ep_words))]
+    # 지원사업 상태: 회사·사업 이름 낱말(흔한 말 제외)이 사업명·기관에 있으면 지원현황 DB 행을 1차로 보인다(10/16 CF004)
+    gs = []
+    for g in data.get('grants', []):
+        blob = (g['t'] + ' ' + g['org']).lower()
+        hits = sum(1 for t in qx if len(t) >= 2 and t not in GRANT_GENERIC and t in blob)
+        if hits:
+            gs.append((hits, g))
+    gs.sort(key=lambda x: -x[0])
     ds.sort(key=lambda x: -x[0])
     ls.sort(key=lambda x: -x[0])
     cs.sort(key=lambda x: -x[0])
     bs.sort(key=lambda x: (-x[0], x[1]['at']))
     return {'cards': [c for _, c in cs[:n_cards]], 'boss': [b for _, b in bs[:n_boss]], 'logs': [g for _, g in ls[:n_logs]], 'docs': [d for _, d in ds[:2]], 'q': q,
-            'eps': [dict(eps[e], ep=e) for e in ep_hit[:3]]}
+            'eps': [dict(eps[e], ep=e) for e in ep_hit[:3]], 'grants': [g for _, g in gs[:2]]}
 
 
 def render(res):
@@ -251,6 +282,8 @@ def render(res):
         if at.endswith('Z'):  # 컨펌대장은 UTC로 적는다, 사람 눈엔 한국 시각
             at = time.strftime('%Y-%m-%d %H:%M', time.gmtime(time.mktime(time.strptime(at[:19], '%Y-%m-%dT%H:%M:%S')) - time.timezone + 9 * 3600)) + ' KST'
         lines.append(f"· 편 상태(정본=컨펌대장 마지막 사건) [{e['ep']}] {at[:20]} {e['gate']} {e['st']}: {e['x'][:120]}")
+    for g in res.get('grants', []):
+        lines.append(f"· 지원현황(정본=지원현황 DB) [{g['no']}] {g['t'][:60]} — 상태 {g['st']} ({g['at']})" + (f" / {g['memo'][:100]}" if g['memo'] else '') + (f" / 다음: {g['next'][:80]}" if g['next'] else ''))
     for c in res['cards']:
         lines.append(f"· 공정 카드 [{c['p']}#{c['no']}] {c['t'][:60]}" + (f" ★사장님: {c['b'][:160]}" if c['b'] else ''))
     for b in res['boss']:

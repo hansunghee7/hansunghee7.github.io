@@ -161,3 +161,17 @@ def test_query_episode_state_first_and_hides_stale_hold_card(tmp_path, monkeypat
     assert all(c["no"] != 41 for c in res["cards"])
     lines = recall.render(res)
     assert lines[0].startswith("· 편 상태") and "17:59 KST" in lines[0]
+
+
+def test_query_shows_grant_state_first_for_company_name(tmp_path, monkeypatch):
+    import json as _j
+    import recall as r
+    cache = tmp_path / "c.json"
+    cache.write_text(_j.dumps({"cards": [], "boss": [], "logs": [], "docs": [], "eps": {},
+                               "grants": [{"no": "G18", "t": "Google for Startups Cloud Program - AI program", "st": "지원함", "org": "Google Cloud (민간)", "memo": "10/14 접수", "next": "", "at": "2026-10-16"},
+                                          {"no": "G48", "t": "정주영 창업경진대회 현장 참가자 혜택", "st": "준비중", "org": "아산나눔재단", "memo": "", "next": "", "at": ""}]}), encoding="utf-8")
+    monkeypatch.setattr(r, "CACHE", cache)
+    res = r.query("구글 크레딧 신청했나요")
+    assert [g["no"] for g in res["grants"]] == ["G18"]
+    assert "지원현황(정본=지원현황 DB) [G18]" in r.render(res)[0]
+    assert r.query("엔비디아 혜택 확인")["grants"] == []
