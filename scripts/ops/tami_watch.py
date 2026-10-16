@@ -7,7 +7,8 @@
   ③ 데이터 수집 파이프 대장(opsdb data_pipelines): 작동 중인데 마지막 성공이 신선도 기준을 넘은 파이프
 판정 연결: 담당 에이전트 우편함(공장=핏, 파이프=대장 담당, 나머지=탐), 사장님 할 일이 있을 때만 텔레그램.
 같은 이상 묶음은 REPEAT_H시간 안에 다시 깨우지 않는다(상태 C:/work/_ops/tami_watch/state.json).
-타미 권한: 읽기 전용 진단 지시(파일·로그 읽기, 구PC는 ssh goosolar로 읽기만). 고치기·재시작·발송은 하지 않고 판정과 추천만 낸다.
+타미 권한: 진단은 읽기 전용(파일·로그 읽기, 구PC는 ssh goosolar로 읽기만). 공장(구PC·신PC) 신호에 한해 1차 조치를 한다(사장님 10/16 "핏의 제안 범위대로
+  페이블 타미가 구피시 신피시 공장 1차 관리", 공정 카드 핏-영상생성 #81): 허용 조치 5종을 FIX 스크립트로만 실행하고(명령을 직접 짓지 않음), 그 밖의 고치기·재시작·발송은 하지 않는다.
 키: api_run.find_key()로 실행할 때만 환경변수로 넘긴다(설정 파일에 키를 쓰지 않음, 값은 출력하지 않음).
 사용: python scripts/ops/tami_watch.py [--dry] [--force]   (--dry = 이상 목록만, --force = 반복 억제 무시)"""
 import hashlib
@@ -26,6 +27,7 @@ OUT = Path("C:/work/_ops/tami_watch")
 STATE = OUT / "state.json"
 STATUS = Path("C:/work/_ops/STATUS.md")
 FIT_DB = Path("C:/work/shorts-lab/tools/factory/fit_db.py")
+FIX = Path("C:/work/shorts-lab/tools/factory/factory_fix.py")  # 공장 1차 조치 도구(허용 5종·하루 1회·기록, 핏 관리)
 MAILBOX = Path("C:/work/solar-bible/mailbox/mailbox.py")
 CHANNEL_REPO = "hansunghee7/tami-duty-channel"  # 비공개, 타미 계정(ilovetommy)만 협업자(사장님 허용 10/15)
 CHANNELS = {"탐": 1, "핏": 2, "마야": 3}  # 담당별 채널 PR 번호(병합 금지), 그 세션이 구독한다
@@ -145,8 +147,12 @@ def wake_tami(items):
     if not key:
         return "타미 깨우기 실패: 키 없음"
     q = ("너는 우리 회사 당직이다(읽기 전용). 아래 이상 신호의 원인을 진단하라. 파일·로그를 읽어 근거를 확인하고, 구PC는 `ssh goosolar`로 읽기만 하라. "
-         "고치기·재시작·삭제·발송은 절대 하지 않는다. 참고: 공장 장부 `python C:/work/shorts-lab/tools/factory/fit_db.py factory`, 상태판 C:/work/_ops/STATUS.md, 감시 대장 C:/work/hansunghee7.github.io/scripts/ops/jobs.toml.\n"
-         "출력(한국어, 12줄 이내): 신호마다 '원인(확인됨/추정) / 근거 한 줄 / 누가 무엇을 하면 되는지(핏·탐·사장님)'. 끝에 '사장님이 할 일: 없음' 또는 한 줄.\n\n이상 신호:\n- " + "\n- ".join(items))
+         "고치기·재시작·삭제·발송은 하지 않는다. 단 공장 신호([구PC …]·[신PC …])는 진단 뒤 필요하면 아래 허용 조치만 실행해 먼저 해결을 시도하라(사장님 10/16 승인): "
+         f"`python {FIX} queue-next --pc old|new`(대기열이 비고 편이 끝났을 때 다음 편), `unrest --pc old|new --port N`(크레딧 있는데 쉬는 계정), `unlock`(20분 넘은 잠금), "
+         "`rerun --pc old|new --port N`(작업기 1회 재실행), `reread --pc old|new --port N`(크레딧 다시 읽기). 먼저 --dry로 확인한 뒤 실행한다. 이 밖의 명령으로 고치지 말고, "
+         "프롬프트·코드·컷·크론·PAUSE·voice_ok는 손대지 말고 핏에게 넘겨라. "
+         "포트: 구PC mylovesimplifying 9224, myloveplanning 9225, 7hansunghee 9229, hansunghee7777 9230, hansunghee7 9231 / 신PC u5 9333, u0 9334. 참고: 공장 장부 `python C:/work/shorts-lab/tools/factory/fit_db.py factory`, 상태판 C:/work/_ops/STATUS.md, 감시 대장 C:/work/hansunghee7.github.io/scripts/ops/jobs.toml.\n"
+         "출력(한국어, 14줄 이내): 신호마다 '원인(확인됨/추정) / 근거 한 줄 / 조치(타미가 한 것 또는 없음) / 남은 일은 누가(핏·탐·사장님)'. 끝에 '사장님이 할 일: 없음' 또는 한 줄.\n\n이상 신호:\n- " + "\n- ".join(items))
     env = dict(os.environ, ANTHROPIC_API_KEY=key, ANTHROPIC_TOKEN=key, HERMES_HOME=str(TAMI_HOME), PYTHONIOENCODING="utf-8")
     # 판정이 안 나오면(10/15 22:50 실측: 페이블이 '잔액 부족' 400 → 헤르메스가 로컬 qwen으로 넘어가 엉뚱한 실패) 다음 모델로. 판정 성공 = '사장님이 할 일' 줄이 있음
     # 10/16 실측: 헤르메스는 ANTHROPIC_API_KEY보다 자격증명 풀·ANTHROPIC_TOKEN을 먼저 봐서 클로드 코드 로그인 토큰(구독, API 크레딧 없음)으로
@@ -190,6 +196,13 @@ def main():
         print(f"타미 당직: 이상 {len(items)}건(이미 보고함, {REPEAT_H}시간 안 반복 억제)")
         return 0
     verdict = wake_tami(items)
+    if any(owner_of(x) == "핏" for x in items):  # 타미가 실제로 한 조치는 판정 글이 아니라 조치 기록에서 옮긴다(말과 행동 대조)
+        try:
+            fixes = subprocess.run([sys.executable, str(FIX), "log"], capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=60,
+                                   creationflags=FLAGS).stdout.strip()
+        except (OSError, subprocess.SubprocessError):
+            fixes = "조치 기록 읽기 실패"
+        verdict += "\n\n[오늘 공장 조치 기록(factory_fix.py log)]\n" + fixes
     rep = OUT / f"report_{time.strftime('%Y%m%d_%H%M')}.md"
     rep.write_text("## 이상 신호\n- " + "\n- ".join(items) + "\n\n## 페이블 타미 판정\n" + verdict, encoding="utf-8")
     STATE.write_text(json.dumps({"hash": h, "at": time.time(), "report": str(rep)}, ensure_ascii=False), encoding="utf-8")
