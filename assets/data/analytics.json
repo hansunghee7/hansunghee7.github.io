@@ -1,20 +1,13 @@
 {
-  "updated_at": "2026-10-16T12:37:23.205802+00:00",
+  "updated_at": "2026-10-16T20:00:59.845930+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 358,
-    "activeUsers": 309,
-    "newUsers": 305,
+    "sessions": 353,
+    "activeUsers": 305,
+    "newUsers": 301,
     "returningUsers": 4
   },
   "daily": [
-    {
-      "date": "2026-09-16",
-      "sessions": 5,
-      "activeUsers": 4,
-      "newUsers": 4,
-      "returningUsers": 0
-    },
     {
       "date": "2026-09-17",
       "sessions": 4,
@@ -228,27 +221,27 @@
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 131,
+    "home": 130,
     "log_home": 0,
-    "individual_post": 218,
-    "other": 10
+    "individual_post": 215,
+    "other": 9
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 195
+      "sessions": 194
     },
     {
       "source": "linkedin.com",
-      "sessions": 50
-    },
-    {
-      "source": "google",
-      "sessions": 20
+      "sessions": 49
     },
     {
       "source": "m.search.naver.com",
       "sessions": 20
+    },
+    {
+      "source": "google",
+      "sessions": 17
     },
     {
       "source": "m.facebook.com",
@@ -300,25 +293,25 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 195
+      "sessions": 194
     },
     {
       "source": "linkedin.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 50
-    },
-    {
-      "source": "google",
-      "medium": "organic",
-      "campaign": "(organic)",
-      "sessions": 20
+      "sessions": 49
     },
     {
       "source": "m.search.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 20
+    },
+    {
+      "source": "google",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "sessions": 17
     },
     {
       "source": "m.facebook.com",
@@ -435,7 +428,7 @@
     "section_view_book_class": 35,
     "section_view_faq": 36,
     "faq_open": 11,
-    "read_complete": 90
+    "read_complete": 88
   },
   "contact_funnel": {
     "contact_open": 19,
@@ -447,7 +440,7 @@
     {
       "path": "/logs/625",
       "title": "/logs/625",
-      "sessions": 30
+      "sessions": 28
     },
     {
       "path": "/logs/631",
@@ -475,11 +468,6 @@
       "sessions": 9
     },
     {
-      "path": "/logs/619",
-      "title": "/logs/619",
-      "sessions": 8
-    },
-    {
       "path": "/logs/132",
       "title": "/logs/132",
       "sessions": 7
@@ -487,6 +475,11 @@
     {
       "path": "/logs/224",
       "title": "/logs/224",
+      "sessions": 7
+    },
+    {
+      "path": "/logs/619",
+      "title": "/logs/619",
       "sessions": 7
     },
     {
@@ -524,8 +517,8 @@
     {
       "path": "/logs/625/",
       "title": "주니어 PM은 왜 스스로 문제를 정의하지 못할까?",
-      "uniqueViews": 30,
-      "views": 32
+      "uniqueViews": 28,
+      "views": 30
     },
     {
       "path": "/logs/631/",
@@ -558,12 +551,6 @@
       "views": 9
     },
     {
-      "path": "/logs/619/",
-      "title": "AI가 우선순위까지 대신 정해줄 수 있을까",
-      "uniqueViews": 8,
-      "views": 9
-    },
-    {
       "path": "/logs/132/",
       "title": "PM, PL, TPM의 차이 한눈에 보기",
       "uniqueViews": 7,
@@ -574,6 +561,12 @@
       "title": "나의 클론이 화상회의를 '피클'",
       "uniqueViews": 7,
       "views": 9
+    },
+    {
+      "path": "/logs/619/",
+      "title": "AI가 우선순위까지 대신 정해줄 수 있을까",
+      "uniqueViews": 7,
+      "views": 8
     },
     {
       "path": "/logs/629/",
