@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-16T05:50:41.254791+00:00",
+  "updated_at": "2026-10-16T12:37:23.205802+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 354,
-    "activeUsers": 306,
-    "newUsers": 301,
-    "returningUsers": 5
+    "sessions": 358,
+    "activeUsers": 309,
+    "newUsers": 305,
+    "returningUsers": 4
   },
   "daily": [
     {
@@ -215,28 +215,28 @@
       "date": "2026-10-15",
       "sessions": 21,
       "activeUsers": 18,
-      "newUsers": 15,
-      "returningUsers": 3
+      "newUsers": 16,
+      "returningUsers": 2
     },
     {
       "date": "2026-10-16",
-      "sessions": 1,
-      "activeUsers": 1,
-      "newUsers": 1,
+      "sessions": 5,
+      "activeUsers": 4,
+      "newUsers": 4,
       "returningUsers": 0
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 137,
+    "home": 131,
     "log_home": 0,
-    "individual_post": 219,
+    "individual_post": 218,
     "other": 10
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 192
+      "sessions": 195
     },
     {
       "source": "linkedin.com",
@@ -244,15 +244,11 @@
     },
     {
       "source": "google",
-      "sessions": 19
+      "sessions": 20
     },
     {
       "source": "m.search.naver.com",
-      "sessions": 19
-    },
-    {
-      "source": "(not set)",
-      "sessions": 15
+      "sessions": 20
     },
     {
       "source": "m.facebook.com",
@@ -263,24 +259,24 @@
       "sessions": 12
     },
     {
-      "source": "(data not available)",
-      "sessions": 7
-    },
-    {
       "source": "daum",
       "sessions": 7
     },
     {
       "source": "naver",
-      "sessions": 5
+      "sessions": 7
+    },
+    {
+      "source": "linkedin",
+      "sessions": 6
+    },
+    {
+      "source": "(not set)",
+      "sessions": 4
     },
     {
       "source": "blog.naver.com",
       "sessions": 4
-    },
-    {
-      "source": "linkedin",
-      "sessions": 3
     },
     {
       "source": "lm.facebook.com",
@@ -293,6 +289,10 @@
     {
       "source": "talk.navercorp.com",
       "sessions": 3
+    },
+    {
+      "source": "web.telegram.org",
+      "sessions": 3
     }
   ],
   "utm_campaigns": [
@@ -300,7 +300,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 192
+      "sessions": 195
     },
     {
       "source": "linkedin.com",
@@ -312,13 +312,13 @@
       "source": "google",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 19
+      "sessions": 20
     },
     {
       "source": "m.search.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 19
+      "sessions": 20
     },
     {
       "source": "m.facebook.com",
@@ -333,12 +333,6 @@
       "sessions": 12
     },
     {
-      "source": "(data not available)",
-      "medium": "(data not available)",
-      "campaign": "(cross-network)",
-      "sessions": 7
-    },
-    {
       "source": "daum",
       "medium": "organic",
       "campaign": "(organic)",
@@ -348,6 +342,12 @@
       "source": "naver",
       "medium": "organic",
       "campaign": "(organic)",
+      "sessions": 7
+    },
+    {
+      "source": "linkedin",
+      "medium": "social",
+      "campaign": "new_639",
       "sessions": 5
     },
     {
@@ -387,7 +387,7 @@
       "sessions": 2
     },
     {
-      "source": "linkedin",
+      "source": "threads",
       "medium": "social",
       "campaign": "new_639",
       "sessions": 2
@@ -430,12 +430,12 @@
     }
   ],
   "engagement_events": {
-    "section_view_proven": 66,
-    "section_view_voices": 59,
-    "section_view_book_class": 33,
-    "section_view_faq": 34,
+    "section_view_proven": 73,
+    "section_view_voices": 65,
+    "section_view_book_class": 35,
+    "section_view_faq": 36,
     "faq_open": 11,
-    "read_complete": 77
+    "read_complete": 90
   },
   "contact_funnel": {
     "contact_open": 19,
@@ -594,38 +594,38 @@
       "views": 5
     },
     {
+      "path": "/logs/6/",
+      "title": "자정이 가까워지도록 AI 얘기를 원 없이 나눴어요.",
+      "uniqueViews": 5,
+      "views": 9
+    },
+    {
       "path": "/logs/636/",
       "title": "바쁜 하루가 끝났는데 남은 게 없다면",
       "uniqueViews": 5,
       "views": 5
     },
     {
-      "path": "/logs/475/",
-      "title": "1화 신학기 개강",
-      "uniqueViews": 4,
-      "views": 10
-    },
-    {
-      "path": "/logs/6/",
-      "title": "자정이 가까워지도록 AI 얘기를 원 없이 나눴어요.",
+      "path": "/logs/292/",
+      "title": "정주영회장님 후배들을 만나고 왔습니다.",
       "uniqueViews": 4,
       "views": 4
     }
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 393,
+    "total_desktop_sessions": 398,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
         "resolution": "1920x1080",
         "width": 1920,
-        "sessions": 79
+        "sessions": 82
       },
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 72
+        "sessions": 73
       },
       {
         "resolution": "1600x1600",
@@ -665,7 +665,7 @@
       {
         "resolution": "1440x900",
         "width": 1440,
-        "sessions": 7
+        "sessions": 8
       },
       {
         "resolution": "1280x800",
