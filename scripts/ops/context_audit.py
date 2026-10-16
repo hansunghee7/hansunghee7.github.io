@@ -211,8 +211,9 @@ def due_view(days=14, limit=20):
         sys.path.insert(0, str(Path(__file__).resolve().parent))
         import opsdb
         import session_brief
-        rows = opsdb.select("tasks", "owner,no,title,raw", where={"section": "eq.step", "status": "eq.사용"}, limit=5000)
         since = (datetime.now() - timedelta(days=days)).strftime("%Y-%m-%d")
+        # 서버가 한 번에 1000행까지라 최근 지시만 받는다(10/16, 전체 1138행에서 잘림)
+        rows = opsdb.select("tasks", "owner,no,title,raw", where={"section": "eq.step", "status": "eq.사용", "raw->>at": f"gte.{since}"}, limit=1000)
         cand = []
         for r in rows:
             raw = r.get("raw") or {}
@@ -221,7 +222,7 @@ def due_view(days=14, limit=20):
             if session_brief.CLOSED.match(r.get("title") or ""):
                 continue
             cand.append(f"- {r['owner']}#{r['no']} (지시 {str(raw.get('at'))[:10]}) {r['title'][:50]} / 원문: {str(raw.get('boss'))[:120]}")
-        late = session_brief.overdue_steps(None, limit=15, rows=rows)
+        late = session_brief.overdue_steps(None, limit=15)
         return ("후보:\n" + ("\n".join(cand[:limit]) or "(없음)") + "\n이미 지남:\n" + ("\n".join(late) or "(없음)"))
     except Exception as e:  # noqa: BLE001
         return f"(기한 점검 실패: {e})"
