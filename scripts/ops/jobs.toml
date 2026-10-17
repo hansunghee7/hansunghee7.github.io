@@ -200,6 +200,8 @@ id = "pc:ports"
 kind = "pc"
 check = "ports"
 name = "외부에 열린 포트 변화"
+# 기준선(C:\work\_ops\ports_baseline.json)은 순수 JSON이라 주석을 못 달아 여기 적음:
+# 27036=steam(Steam 홈 스트리밍), 55920=StSess(AhnLab Safe Transaction) 2026-10-17 추가, 노란불 오탐 제거
 [[job]]
 id = "watcher:goosolar"
 kind = "cmd"
@@ -404,7 +406,8 @@ note = "2026-10-11 구PC 대장과 같은 id 를 신PC 상태판에 반영(파�
 id = "cron:flow-credits"
 severity = "warn"
 kind = "cmd"
-cmd = ["python", 'C:\work\_ops\remote_file_age.py', "goosolar", "/home/goosloar/workshop/logs/flow_credits.last", "300"]
+# 리더 슬롯 간격이 5h 넘어 300분은 구조적 오탐(2026-10-17 조사)
+cmd = ["python", 'C:\work\_ops\remote_file_age.py', "goosolar", "/home/goosloar/workshop/logs/flow_credits.last", "360"]
 timeout = 60
 every_min = 60
 name = "구PC Flow 크레딧 현황 수집(구PC 파일 나이를 ssh로 확인, 파이프 flow-credits-oldpc)"
