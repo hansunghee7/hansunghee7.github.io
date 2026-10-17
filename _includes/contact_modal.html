@@ -52,10 +52,10 @@
     </button>
     <p class="eyebrow-modal">Contact</p>
     <h2>{% if page.lang == 'en' %}Let's find the best answer together{% else %}함께 최선의 답을 찾겠습니다{% endif %}</h2>
-    <p class="modal-desc">{% if page.lang == 'en' %}Coaching, speaking, or a partnership idea. Tell us anything.{% else %}코칭, 강연, 협업 제안 등 어떤 말씀이든 편하게 남겨주세요.{% endif %}</p>
+    <p class="modal-desc">{% if page.lang == 'en' %}Coaching, a talk, or a partnership idea. Feel free to tell me anything.{% else %}코칭, 강연, 협업 제안 등 어떤 말씀이든 편하게 남겨주세요.{% endif %}</p>
     <form id="contact-form" novalidate>
       <div class="form-group">
-        <label>{% if page.lang == 'en' %}What can we help you with?{% else %}어떤 일로 연락 주셨나요?{% endif %} <span class="cf-required">*</span></label>
+        <label>{% if page.lang == 'en' %}What would you like to talk about?{% else %}어떤 일로 연락 주셨나요?{% endif %} <span class="cf-required">*</span></label>
         <div class="cf-types" role="radiogroup" aria-label="{% if page.lang == 'en' %}Inquiry type{% else %}문의 유형{% endif %}">
           <button type="button" class="cf-type" data-type="coaching" role="radio" aria-checked="false">
             <b>{% if page.lang == 'en' %}Startup coaching{% else %}스타트업 코칭{% endif %}</b><span>{% if page.lang == 'en' %}Growth after PMF, product, team{% else %}PMF 이후 성장·프로덕트·조직{% endif %}</span>
@@ -73,7 +73,7 @@
         <input type="text" id="cf-org" name="org" autocomplete="organization" placeholder="{% if page.lang == 'en' %}e.g. Learning &amp; Development team, Acme Corp.{% else %}예: OO그룹 인재개발원 / OO에이전시{% endif %}">
       </div>
       <div class="form-group">
-        <label for="cf-phone">{% if page.lang == 'en' %}Phone number{% else %}회신받으실 전화번호{% endif %} <span class="cf-optional">{% if page.lang == 'en' %}(optional, helps us reply faster){% else %}(선택, 남겨주시면 더 빠르게 연락드려요){% endif %}</span></label>
+        <label for="cf-phone">{% if page.lang == 'en' %}Phone number{% else %}회신받으실 전화번호{% endif %} <span class="cf-optional">{% if page.lang == 'en' %}(optional, helps me reply faster){% else %}(선택, 남겨주시면 더 빠르게 연락드려요){% endif %}</span></label>
         <input type="tel" id="cf-phone" name="phone" autocomplete="tel" placeholder="{% if page.lang == 'en' %}+1 555 123 4567{% else %}010-1234-5678{% endif %}">
       </div>
       <div class="form-group">
@@ -239,7 +239,7 @@
       var invalidEl = null, invalidMsg = '';
       if (!selectedType) {
         invalidEl = typesGroup;
-        invalidMsg = '{% if page.lang == 'en' %}Please choose what you are contacting us about.{% else %}어떤 일로 연락 주셨는지 먼저 골라주세요.{% endif %}';
+        invalidMsg = '{% if page.lang == 'en' %}Please choose what you are contacting me about.{% else %}어떤 일로 연락 주셨는지 먼저 골라주세요.{% endif %}';
       } else if (data.phone && !isValidPhone(data.phone)) {
         // 전화번호는 선택 항목이라 비어있으면 통과시키되, 뭔가 입력했다면 형식은 맞아야 한다.
         invalidEl = phoneEl;
