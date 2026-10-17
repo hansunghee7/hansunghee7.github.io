@@ -42,9 +42,19 @@ def fetch():
 
 
 def main():
-    items = parse(fetch())
+    raw = fetch()
+    items = parse(raw)
     if not items:
-        print("목록 파싱 0건: 페이지 구조가 바뀌었을 수 있음")
+        msg = "목록 파싱 0건: 페이지 구조가 바뀌었을 수 있음"
+        try:
+            dump = STATE.parent / ("ks_parse0_" + time.strftime("%Y%m%d_%H%M%S") + ".html")
+            dump.parent.mkdir(parents=True, exist_ok=True)
+            data = raw.encode("utf-8")
+            dump.write_bytes(data)
+            msg += f" (응답 {len(data)}바이트 저장: {dump})"
+        except Exception:
+            pass
+        print(msg)
         return 1
     old = json.loads(STATE.read_text(encoding="utf-8")) if STATE.exists() else None
     cur = {k: v for k, v in items}
