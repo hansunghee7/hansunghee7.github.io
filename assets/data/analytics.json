@@ -1,20 +1,13 @@
 {
-  "updated_at": "2026-10-17T11:42:19.619390+00:00",
+  "updated_at": "2026-10-17T20:00:45.718808+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 360,
-    "activeUsers": 311,
-    "newUsers": 307,
-    "returningUsers": 4
+    "sessions": 367,
+    "activeUsers": 315,
+    "newUsers": 310,
+    "returningUsers": 5
   },
   "daily": [
-    {
-      "date": "2026-09-17",
-      "sessions": 4,
-      "activeUsers": 4,
-      "newUsers": 4,
-      "returningUsers": 0
-    },
     {
       "date": "2026-09-18",
       "sessions": 8,
@@ -220,27 +213,27 @@
     },
     {
       "date": "2026-10-17",
-      "sessions": 5,
-      "activeUsers": 5,
-      "newUsers": 5,
-      "returningUsers": 0
+      "sessions": 15,
+      "activeUsers": 14,
+      "newUsers": 12,
+      "returningUsers": 2
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 136,
+    "home": 138,
     "log_home": 0,
-    "individual_post": 215,
+    "individual_post": 219,
     "other": 9
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 199
+      "sessions": 201
     },
     {
       "source": "linkedin.com",
-      "sessions": 49
+      "sessions": 51
     },
     {
       "source": "m.search.naver.com",
@@ -252,11 +245,11 @@
     },
     {
       "source": "m.facebook.com",
-      "sessions": 14
+      "sessions": 15
     },
     {
       "source": "facebook.com",
-      "sessions": 12
+      "sessions": 13
     },
     {
       "source": "daum",
@@ -300,13 +293,13 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 199
+      "sessions": 201
     },
     {
       "source": "linkedin.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 49
+      "sessions": 51
     },
     {
       "source": "m.search.naver.com",
@@ -324,13 +317,13 @@
       "source": "m.facebook.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 14
+      "sessions": 15
     },
     {
       "source": "facebook.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 12
+      "sessions": 13
     },
     {
       "source": "daum",
@@ -436,10 +429,10 @@
     }
   ],
   "engagement_events": {
-    "section_view_proven": 75,
-    "section_view_voices": 67,
-    "section_view_book_class": 37,
-    "section_view_faq": 39,
+    "section_view_proven": 82,
+    "section_view_voices": 70,
+    "section_view_book_class": 42,
+    "section_view_faq": 44,
     "faq_open": 11,
     "read_complete": 88
   },
@@ -506,9 +499,9 @@
       "sessions": 5
     },
     {
-      "path": "/logs/475",
-      "title": "/logs/475",
-      "sessions": 4
+      "path": "/logs/641",
+      "title": "/logs/641",
+      "sessions": 5
     },
     {
       "path": "/logs/629",
@@ -521,9 +514,9 @@
       "sessions": 4
     },
     {
-      "path": "/logs/162",
-      "title": "/logs/162",
-      "sessions": 2
+      "path": "/logs/475",
+      "title": "/logs/475",
+      "sessions": 3
     }
   ],
   "top_viewed_posts": [
@@ -582,6 +575,12 @@
       "views": 8
     },
     {
+      "path": "/logs/6/",
+      "title": "자정이 가까워지도록 AI 얘기를 원 없이 나눴어요.",
+      "uniqueViews": 6,
+      "views": 11
+    },
+    {
       "path": "/logs/629/",
       "title": "PM과 PL 차이는 뭘까요?",
       "uniqueViews": 6,
@@ -600,38 +599,32 @@
       "views": 5
     },
     {
-      "path": "/logs/6/",
-      "title": "자정이 가까워지도록 AI 얘기를 원 없이 나눴어요.",
-      "uniqueViews": 5,
-      "views": 9
-    },
-    {
       "path": "/logs/636/",
       "title": "바쁜 하루가 끝났는데 남은 게 없다면",
       "uniqueViews": 5,
       "views": 5
     },
     {
-      "path": "/logs/292/",
-      "title": "정주영회장님 후배들을 만나고 왔습니다.",
-      "uniqueViews": 4,
-      "views": 4
+      "path": "/logs/641/",
+      "title": "AI에이전트에게 조심스러워지게 된 사연",
+      "uniqueViews": 5,
+      "views": 6
     }
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 401,
+    "total_desktop_sessions": 407,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
         "resolution": "1920x1080",
         "width": 1920,
-        "sessions": 82
+        "sessions": 85
       },
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 74
+        "sessions": 75
       },
       {
         "resolution": "1600x1600",
@@ -646,7 +639,7 @@
       {
         "resolution": "1463x915",
         "width": 1463,
-        "sessions": 22
+        "sessions": 23
       },
       {
         "resolution": "1536x960",
@@ -654,13 +647,13 @@
         "sessions": 17
       },
       {
-        "resolution": "1536x864",
-        "width": 1536,
-        "sessions": 12
-      },
-      {
         "resolution": "2000x2000",
         "width": 2000,
+        "sessions": 13
+      },
+      {
+        "resolution": "1536x864",
+        "width": 1536,
         "sessions": 12
       },
       {
