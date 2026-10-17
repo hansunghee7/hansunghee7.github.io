@@ -175,3 +175,33 @@ def test_template_missing_message(tmp_path):
     p = subprocess.run([sys.executable, "-X", "utf8", str(tool_dir / "jitu_po.py"), "fb", "notice-draft", "F-1"],
                        capture_output=True, text=True, encoding="utf-8", env=env, cwd=str(tmp_path), stdin=subprocess.DEVNULL)
     assert p.returncode == 0 and "제목: " in p.stdout
+
+
+def _ship(tmp, *prs, extra=()):
+    args = ["fb", "ship", "F-1"]
+    for x in prs:
+        args += ["--pr", x]
+    return run(tmp, *args, "--shipped", "2026-10-16", "--notice-what", "a", "--notice-next", "b", *extra)
+
+
+def test_reship_repo_form_replaces_bare_number(tmp_path):
+    run(tmp_path, "fb", "add", "--source", "면담", "--text", "t")
+    _ship(tmp_path, "37", "12")
+    _ship(tmp_path, "carvit.ai#37")
+    assert rows(tmp_path)[0]["prs"] == ["carvit.ai#37", 12]
+    _ship(tmp_path, "37")
+    assert rows(tmp_path)[0]["prs"] == ["carvit.ai#37", 12]
+
+
+def test_reship_same_value_no_duplicate(tmp_path):
+    run(tmp_path, "fb", "add", "--source", "면담", "--text", "t")
+    _ship(tmp_path, "saegim#667", "saegim#667", "5")
+    _ship(tmp_path, "simplifier-saegim#667", "5")
+    assert rows(tmp_path)[0]["prs"] == ["saegim#667", 5]
+
+
+def test_replace_pr(tmp_path):
+    run(tmp_path, "fb", "add", "--source", "면담", "--text", "t")
+    _ship(tmp_path, "37", "saegim#667")
+    _ship(tmp_path, "carvit.ai#40", extra=("--replace-pr",))
+    assert rows(tmp_path)[0]["prs"] == ["carvit.ai#40"]
