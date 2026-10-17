@@ -14,7 +14,13 @@ try:
 except Exception:
     pass
 
-TARGET = re.compile(r"(업무대장|진행상황)[^\s'\"/\\]*\.md|_업무대장\.md", re.I)
+TARGET = re.compile(r"(업무대장|진행상황)[^\s'\"/\\]*\.md|_업무대장\.md|(공장_스냅샷|공장_현황|발행대장|생산_우선순위_정본)\.md", re.I)
+FIT = re.compile(r"(공장_스냅샷|공장_현황|발행대장|생산_우선순위_정본)\.md")
+FIT_MSG = ("[DB 관문] 공장·제작·발행 현황은 md 문서가 아니라 핏 장부 DB에서 먼저 읽습니다(사장님 10/14: 현황판 요청 때 문서부터 찾는 반복).\n"
+           "· 공장현황판(계정별 크레딧·작업): python C:/work/shorts-lab/tools/factory/fit_db.py factory\n"
+           "· 편별 대본→컷→조립→발행: python C:/work/shorts-lab/tools/factory/fit_db.py pipeline  (한 편: ep <편ID>)\n"
+           "· 앞으로 발행 일정: python C:/work/shorts-lab/tools/factory/fit_db.py schedule\n"
+           "DB가 최대 1시간 뒤처질 수 있어 방금 바뀐 건은 명령에 \"[DB 불가: 이유]\"를 적고 다시 하세요. 줄 범위가 정해진 작은 읽기(limit 150 이하)는 통과합니다.")
 READ_VERB = re.compile(r"(?<![\w-])(cat|grep|egrep|rg|Select-String|Get-Content)(?![\w-])", re.I)
 SAFE_VERB = re.compile(r"(?<![\w-])(git|sed\s+-n|head|tail|wc|ls|Test-Path|stat)(?![\w-])", re.I)
 LOG = r"C:\work\_ops\db_gate_log.jsonl"
@@ -52,7 +58,7 @@ def main():
             log(tool, "pass", "작은 읽기 " + path)
             return 0
         log(tool, "block", path)
-        sys.stderr.write(MSG.format(f=m.group(0)))
+        sys.stderr.write(FIT_MSG if FIT.search(m.group(0)) else MSG.format(f=m.group(0)))
         return 2
     if tool == "Grep":
         blob = f"{ti.get('path', '')} {ti.get('glob', '')}"
@@ -60,7 +66,7 @@ def main():
         if not m:
             return 0
         log(tool, "block", blob)
-        sys.stderr.write(MSG.format(f=m.group(0)))
+        sys.stderr.write(FIT_MSG if FIT.search(m.group(0)) else MSG.format(f=m.group(0)))
         return 2
     if tool in ("Bash", "PowerShell"):
         cmd = str(ti.get("command", ""))
@@ -76,7 +82,7 @@ def main():
             return 0
         if READ_VERB.search(cmd) and not first.startswith("git"):
             log(tool, "block", cmd)
-            sys.stderr.write(MSG.format(f=m.group(0)))
+            sys.stderr.write(FIT_MSG if FIT.search(m.group(0)) else MSG.format(f=m.group(0)))
             return 2
     return 0
 

@@ -48,6 +48,24 @@ def ago_h(stamp, now):
     return (now - t).total_seconds() / 3600
 
 
+def resting_before_reset(note, reset_kst, now):
+    """note에 '휴식'(rest)이 들어 있고 현재 KST가 그 계정의 리셋 시각(reset_kst, 'HH:MM') 이전이면 True.
+    이 경우 '크레딧 남음·새 컷 0' 신호는 이상이 아니라 '대기'다(리셋되면 다시 돈다).
+    리셋 시각을 지났거나(또는 못 읽거나) note가 휴식이 아니면 False → 진짜 고장은 그대로 경보로 남는다.
+    리셋 시각은 fit_db.py factory가 계정별로 이미 KST로 계산해 주는 값(reset_kst 칸)을 그대로 읽는다.
+    TODO(자정 넘김): 이른 새벽 리셋(예: 01:53)은 밤 시간대엔 '지남'으로 보지만, IDLE_H(12h) 관문이
+    먼저 걸러 실제 오경보는 드물다. 계정별 '휴식 시작 시각'이 데이터에 생기면 그걸로 보강할 것."""
+    low = (note or "").lower()
+    if "휴식" not in low and "rest" not in low:
+        return False
+    m = re.match(r"\s*(\d{1,2}):(\d{2})", reset_kst or "")
+    if not m:
+        return False
+    reset_min = int(m[1]) * 60 + int(m[2])
+    now_min = now.hour * 60 + now.minute
+    return now_min < reset_min
+
+
 def factory_anomalies(csv_text, now):
     out = []
     lines = [x for x in csv_text.splitlines() if x.count(",") >= 6]
@@ -65,7 +83,13 @@ def factory_anomalies(csv_text, now):
             out.append(f"[{pc} {acct}] 크레딧을 {r:.0f}시간째 못 읽음(마지막 {read_at})")
         lc = ago_h(last_cut, now)
         if cr is not None and cr >= MIN_CREDIT and (lc is None or lc > IDLE_H):
-            out.append(f"[{pc} {acct}] 크레딧 {cr} 남았는데 새 컷이 " + (f"{lc:.0f}시간째 없음" if lc else "기록 없음") + f" (메모: {c[7] if len(c) > 7 else ''})")
+            reset_kst = c[4] if len(c) > 4 else ""
+            note = c[7] if len(c) > 7 else ""
+            if resting_before_reset(note, reset_kst, now):
+                # 휴식 중이고 리셋 전 → 이상이 아니라 '대기'. 경보 목록에서 빼 타미를 깨우지 않고, 관측용으로만 stderr에 남긴다.
+                print(f"[대기] [{pc} {acct}] 휴식 중(리셋 {reset_kst} KST 전), 새 컷 없음 — 경보 보류", file=sys.stderr)
+            else:
+                out.append(f"[{pc} {acct}] 크레딧 {cr} 남았는데 새 컷이 " + (f"{lc:.0f}시간째 없음" if lc else "기록 없음") + f" (메모: {note})")
     return out
 
 

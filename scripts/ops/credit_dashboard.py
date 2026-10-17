@@ -1,0 +1,338 @@
+# -*- coding: utf-8 -*-
+"""크레딧 현황판 — 온디맨드 집계(2026-10-18 탐, 사장님 지시 "크레딧 현황판 보여줘 하면 바로 수치가 뜨게").
+
+왜: 지금은 사장님이 물을 때마다 손으로 grants/quota를 긁어 표를 만든다. 이 도구 하나로 모든 소스를
+한 번에 모아 markdown 표를 낸다. 판정('계획대로?')은 사람이 하므로 넣지 않는다 — 데이터만 모은다.
+
+모으는 소스(정본에서 읽고, 모르면 '미확인'. 지어내지 않는다):
+  1) 큰 클라우드/API 크레딧 프로그램: grants.py(운영 DB section='grant')의 AWS(G20)·Azure(G21)·
+     GCP(G18)·Anthropic(G19)·NVIDIA(G22) 행 → 규모·상태·만료·다음 할 일.
+  2) GCP 실사용/잔여: vertex_budget.json 기준 잔액 − 이후 API 실사용(gcp_usage.py)으로 추정.
+     tam-vertex 서비스 계정으로 Cloud Billing API 읽기를 시도하되, 막히면 '권한 필요'로 표기(억지로 뚫지 않음).
+  3) 무료 모델 쿼터: quota.py status(비티·비티-sonnet·덱스) 파싱.
+  4) Flow 영상 크레딧: 핏 영역 — flow_credits_local.jsonl의 계정별 최근 잔여 요약(상세는 핏 현황판).
+  5) Claude Max 주간/5h: get_usage는 세션 전용 MCP라 스크립트가 못 부른다 → "세션에서만 실측"으로 명시,
+     마지막 pace_log(pace/usage.csv) 값을 참고로 표시.
+  6) Azure/AWS 실사용 $: Cost API 키가 아직 없어 '자동연동 대기(키 필요)' placeholder.
+     키가 생기면 refresh가 Azure Cost Management / AWS Cost Explorer를 읽도록 함수 자리(스텁)만 둠.
+
+사용:
+    python scripts/ops/credit_dashboard.py show       # 현황판 표(markdown). 캐시 있으면 쓰고 없으면 그 자리서 소스 읽기
+    python scripts/ops/credit_dashboard.py refresh     # 자동 연동 가능한 소스를 다시 읽어 캐시에 저장
+
+캐시: C:/work/_ops/credit_state.json (레포 밖 런타임 STATE, 새 DB 표를 만들지 않는다 — DDL 승인 불필요).
+"""
+import json
+import subprocess
+import sys
+import time
+from datetime import date, datetime
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+try:
+    sys.stdout.reconfigure(encoding="utf-8")
+except (AttributeError, ValueError):
+    pass
+
+OPS = Path("C:/work/_ops")
+CACHE = OPS / "credit_state.json"
+CACHE_MAX_AGE = 3600  # show가 캐시를 그대로 쓰는 최대 나이(초). 넘으면 그 자리서 다시 읽는다.
+
+# grants DB의 G번호 → 현황판에 보일 이름. GCP(G18)를 반드시 포함(지난 표 누락 지적).
+GRANT_MAP = [
+    ("G18", "GCP (Google for Startups)"),
+    ("G19", "Anthropic (Claude Startups)"),
+    ("G20", "AWS (Activate)"),
+    ("G21", "Azure (MS for Startups)"),
+    ("G22", "NVIDIA (Inception)"),
+]
+
+
+def _short(s, n=46):
+    s = (s or "").replace("|", "/").replace("\n", " ").strip()
+    return s if len(s) <= n else s[: n - 1] + "…"
+
+
+# ---------------------------------------------------------------- 소스별 수집(각 소스는 실패해도 전체를 막지 않는다)
+
+def collect_grants():
+    """소스 1: 큰 클라우드/API 크레딧 프로그램(grants DB section='grant')."""
+    rows = []
+    try:
+        import grants
+        for no, label in GRANT_MAP:
+            try:
+                r = grants.find(no)
+            except SystemExit:
+                rows.append({"name": label, "scale": "미확인", "used": "—", "expiry": "미확인",
+                             "state": f"{no} 행 없음", "note": "grants DB에서 못 찾음"})
+                continue
+            w = grants.raw_of(r)
+            rows.append({
+                "name": label,
+                "scale": _short(w.get("amount") or r.get("result") or "미확인", 54),
+                "used": "—",  # 프로그램 승인 전/직후라 실사용 잔액은 소스 2(GCP)·소스 6(Azure/AWS Cost API)에서 채운다
+                "expiry": _short(w.get("window") or "미확인", 30),
+                "state": r.get("status") or "미확인",
+                "note": _short(r.get("next_action") or "", 40),
+            })
+    except Exception as e:  # noqa: BLE001
+        rows.append({"name": "크레딧 프로그램", "scale": "", "used": "", "expiry": "",
+                     "state": "읽기 실패", "note": f"grants DB 오류: {type(e).__name__}"})
+    return rows
+
+
+def gcp_billing_probe():
+    """소스 2 보조: tam-vertex SA로 Cloud Billing API 읽기 가능 여부만 확인(실수치 경로). 막으면 사유 반환, 억지로 뚫지 않는다."""
+    try:
+        import urllib.error
+        import urllib.request
+
+        import ask_vertex as av
+        t = av.sa_token()
+        if not t:
+            return False, "SA 토큰 없음(패스 envput 필요)"
+        req = urllib.request.Request("https://cloudbilling.googleapis.com/v1/billingAccounts",
+                                     headers={"Authorization": "Bearer " + t})
+        with urllib.request.urlopen(req, timeout=30) as r:
+            data = json.loads(r.read().decode("utf-8", "replace"))
+        accts = data.get("billingAccounts", [])
+        return True, f"{len(accts)}개 결제계정 읽기 OK"
+    except urllib.error.HTTPError as e:  # noqa: F821
+        code = e.code
+        if code == 403:
+            return False, "billing 읽기 권한 필요(Cloud Billing API 비활성/권한 없음)"
+        return False, f"billing API HTTP {code}"
+    except Exception as e:  # noqa: BLE001
+        return False, f"billing 읽기 권한 필요({type(e).__name__})"
+
+
+def collect_gcp_actual():
+    """소스 2: GCP 무료크레딧 실사용/잔여(vertex_budget.json 기준잔액 − 이후 실사용 추정). simon+hansunghee7 합산."""
+    row = {"name": "GCP 무료크레딧(실사용)", "scale": "미확인", "used": "미확인",
+           "expiry": "미확인", "state": "추정", "note": ""}
+    billing_ok, billing_msg = gcp_billing_probe()
+    try:
+        b = json.loads((OPS / "vertex_budget.json").read_text(encoding="utf-8"))
+        balance = b.get("balance")
+        as_of = b.get("as_of", "")
+        expiry = b.get("expiry", "미확인")
+        # 기준일(as_of) 이후 API 실사용 합계(회사+개인 캐시)
+        total_used = 0.0
+        used_known = False
+        try:
+            import gcp_usage
+            caches = ["gcp_usage_cache.json", "gcp_usage_cache_simplifier-vertex-credit.json"]
+            for cf in caches:
+                p = OPS / cf
+                if not p.exists():
+                    continue
+                daily = json.loads(p.read_text(encoding="utf-8")).get("daily", {})
+                for day, v in daily.items():
+                    if day > as_of:
+                        total_used += float(v.get("krw", 0) if isinstance(v, dict) else v or 0)
+                        used_known = True
+        except Exception:  # noqa: BLE001
+            used_known = False
+        remain = (balance - total_used) if (balance is not None and used_known) else None
+        row["scale"] = f"₩{balance:,} 기준({as_of})" if balance is not None else "미확인"
+        if remain is not None:
+            row["used"] = f"사용 ₩{total_used:,.0f} / 잔여 약 ₩{remain:,.0f}(추정)"
+        else:
+            row["used"] = "미확인(실사용 캐시 없음)"
+        row["expiry"] = expiry
+        note = b.get("note", "")
+        # 회사/개인 분해가 note에 있으면 요약
+        row["note"] = _short("회사+개인 합산, 잔액은 추정. " + billing_msg, 60)
+        row["_billing"] = {"ok": billing_ok, "msg": billing_msg}
+    except Exception as e:  # noqa: BLE001
+        row["note"] = f"vertex_budget.json 오류: {type(e).__name__}; {billing_msg}"
+        row["_billing"] = {"ok": billing_ok, "msg": billing_msg}
+    return [row]
+
+
+def collect_quota():
+    """소스 3: 무료 모델 쿼터(quota.py status: 비티·비티-sonnet·덱스)."""
+    rows = []
+    try:
+        out = subprocess.run([sys.executable, str(HERE / "quota.py"), "status"],
+                             capture_output=True, text=True, encoding="utf-8", timeout=30,
+                             creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0)).stdout
+        for line in out.splitlines():
+            line = line.strip()
+            if not line or ":" not in line:
+                continue
+            pool, rest = line.split(":", 1)
+            rest = rest.strip()
+            blocked = "막힘" in rest
+            rows.append({
+                "name": f"무료모델 {pool.strip()}",
+                "scale": "주간(한도 미공개, 세기만)",
+                "used": _short(rest.split("/")[0].strip(), 40),
+                "expiry": "주 단위 리셋",
+                "state": "막힘" if blocked else "통과",
+                "note": _short(rest, 50) if blocked else "",
+            })
+    except Exception as e:  # noqa: BLE001
+        rows.append({"name": "무료모델 쿼터", "scale": "", "used": "", "expiry": "",
+                     "state": "읽기 실패", "note": f"quota.py 오류: {type(e).__name__}"})
+    return rows
+
+
+def collect_flow():
+    """소스 4: Flow 영상 크레딧(핏 영역). flow_credits_local.jsonl의 계정별 최근 잔여 요약. 상세는 핏 현황판."""
+    row = {"name": "Flow 영상 크레딧(핏 영역)", "scale": "계정별", "used": "미확인",
+           "expiry": "일 단위 충전", "state": "핏 영역", "note": "상세는 핏 현황판"}
+    try:
+        p = OPS / "flow_credits_local.jsonl"
+        if not p.exists():
+            row["used"] = "로그 없음"
+            return [row]
+        latest = {}  # acct/u → (ts, credits)
+        for line in p.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                d = json.loads(line)
+            except ValueError:
+                continue
+            key = d.get("u") or d.get("acct") or "?"
+            ts = d.get("ts", "")
+            if key not in latest or ts >= latest[key][0]:
+                latest[key] = (ts, d.get("credits"))
+        if latest:
+            parts = [f"{k} {v[1]}" for k, v in sorted(latest.items())]
+            row["used"] = _short("잔여 " + ", ".join(parts), 56)
+            row["note"] = _short("최근 로그 기준, 상세는 핏 현황판", 40)
+    except Exception as e:  # noqa: BLE001
+        row["note"] = f"flow 로그 오류: {type(e).__name__}"
+    return [row]
+
+
+def collect_claude_max():
+    """소스 5: Claude Max 주간/5h. get_usage는 세션 전용 MCP라 스크립트가 못 부른다 → 명시 + 마지막 pace_log 참고."""
+    row = {"name": "Claude Max (주간/5h)", "scale": "구독 한도", "used": "세션에서만 실측(파이프라인 자동 불가)",
+           "expiry": "토 18시 리셋", "state": "세션 전용", "note": "get_usage MCP 필요"}
+    try:
+        p = OPS / "pace" / "usage.csv"
+        if p.exists():
+            lines = [l for l in p.read_text(encoding="utf-8").splitlines() if l.strip()]
+            if len(lines) >= 2:
+                last = lines[-1].split(",")
+                # 열: 기록시각_UTC,주간%,5시간%,컨텍스트%,...
+                ts, wk, h5 = last[0], last[1], last[2]
+                row["used"] = f"세션 실측값만. 마지막 pace_log({ts[:16]}): 주간 {wk}% · 5h {h5}%"
+    except Exception as e:  # noqa: BLE001
+        row["note"] = f"pace 로그 오류: {type(e).__name__}"
+    return [row]
+
+
+# ---- 소스 6 스텁: Azure/AWS 실사용 $. 키가 생기면 여기서 Cost API를 읽는다(지금은 호출하지 않는다). ----
+
+def read_azure_cost():
+    """[스텁] Azure Cost Management(Query Usage) 읽기. 키가 생기면 구현.
+    구현 시: AZURE_* 자격증명으로 /subscriptions/{id}/providers/Microsoft.CostManagement/query 호출,
+    실제 사용 $를 돌려준다. 지금은 호출하지 않는다(키 없음)."""
+    return None
+
+
+def read_aws_cost():
+    """[스텁] AWS Cost Explorer(GetCostAndUsage) 읽기. 키가 생기면 구현.
+    구현 시: AWS_* 자격증명으로 ce:GetCostAndUsage 호출, 실제 사용 $를 돌려준다. 지금은 호출하지 않는다(키 없음)."""
+    return None
+
+
+def collect_cloud_cost_stub():
+    """소스 6: Azure/AWS 실사용 $ — Cost API 키가 아직 없어 placeholder."""
+    rows = []
+    for name, fn in (("Azure 실사용 $", read_azure_cost), ("AWS 실사용 $", read_aws_cost)):
+        val = fn()
+        if val is None:
+            rows.append({"name": name, "scale": "—", "used": "자동연동 대기(키 필요)", "expiry": "—",
+                         "state": "미연동", "note": "Cost API 키 생기면 refresh가 자동 집계"})
+        else:
+            rows.append(val)
+    return rows
+
+
+# ---------------------------------------------------------------- 집계·캐시·출력
+
+def gather():
+    """모든 소스를 한 번에 모아 행 목록과 메타를 돌려준다."""
+    rows = []
+    rows += collect_grants()
+    rows += collect_gcp_actual()
+    rows += collect_quota()
+    rows += collect_flow()
+    rows += collect_claude_max()
+    rows += collect_cloud_cost_stub()
+    return {"at": time.time(), "generated": datetime.now().strftime("%Y-%m-%d %H:%M"), "rows": rows}
+
+
+def save_cache(state):
+    try:
+        OPS.mkdir(parents=True, exist_ok=True)
+        CACHE.write_text(json.dumps(state, ensure_ascii=False, indent=1), encoding="utf-8")
+        return True
+    except OSError:
+        return False
+
+
+def load_cache():
+    try:
+        return json.loads(CACHE.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+
+
+def render(state):
+    rows = state.get("rows", [])
+    out = [f"## 크레딧 현황판 ({state.get('generated', '')} 기준)", ""]
+    out.append("| 크레딧/한도 | 규모 | 사용(잔여) | 만료 | 상태 | 비고 |")
+    out.append("|---|---|---|---|---|---|")
+    for r in rows:
+        out.append("| {name} | {scale} | {used} | {expiry} | {state} | {note} |".format(
+            name=r.get("name", ""), scale=r.get("scale", "") or "—", used=r.get("used", "") or "—",
+            expiry=r.get("expiry", "") or "—", state=r.get("state", "") or "—", note=r.get("note", "") or ""))
+    out.append("")
+    out.append("데이터만 모읍니다(계획대로인지 판정은 사람이). 잔액·추정 표기는 소스 한계를 그대로 둡니다. "
+               "GCP 프로그램(G18)·무료크레딧 둘 다 포함, Azure/AWS 실사용 $는 Cost API 키가 생기면 자동연동.")
+    return "\n".join(out)
+
+
+def cmd_show():
+    state = load_cache()
+    fresh = state and (time.time() - state.get("at", 0) < CACHE_MAX_AGE)
+    if not fresh:
+        state = gather()  # 캐시가 없거나 오래됐으면 그 자리서 소스 읽기(저장은 refresh의 몫, show는 읽기만)
+    print(render(state))
+    return 0
+
+
+def cmd_refresh():
+    state = gather()
+    ok = save_cache(state)
+    print(render(state))
+    print("")
+    print(f"[refresh] 캐시 {'저장' if ok else '저장 실패'}: {CACHE}")
+    b = next((r.get("_billing") for r in state["rows"] if r.get("_billing")), None)
+    if b:
+        print(f"[refresh] GCP billing 읽기: {'가능' if b['ok'] else '불가'} — {b['msg']}")
+    return 0
+
+
+def main(argv):
+    cmd = argv[0] if argv else "show"
+    if cmd == "show":
+        return cmd_show()
+    if cmd == "refresh":
+        return cmd_refresh()
+    print(__doc__)
+    return 64
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv[1:]))
