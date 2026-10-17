@@ -167,8 +167,44 @@ def kpi_list(a):
 # customer 칸은 실명 대신 별칭만 받는다. 실명 판정은 어려우므로 허용 형식만 통과시킨다(고객<숫자>|내부|신규가입자).
 
 CUSTOMER_RE = re.compile(r"^(고객\d{1,4}|내부|신규가입자)$")
-NOTICE_TEMPLATE = os.environ.get("JITU_PO_NOTICE_TEMPLATE") or os.path.join(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "docs", "mailcopy", "개선_반영_안내_틀.md")
+TEMPLATE_REL = os.path.join("docs", "mailcopy", "개선_반영_안내_틀.md")
+# --pr에 쓰는 저장소 별칭 허용 목록. 숫자만 넣으면 예전처럼 정수로 저장한다(기존 기록 호환).
+PR_REPOS = {"site": "hansunghee7.github.io", "carvit.ai": "carvit.ai", "saegim": "simplifier-saegim"}
+PR_RE = re.compile(r"^(?:([A-Za-z0-9._-]+)#)?(\d{1,6})$")
+
+
+def parse_pr(v):
+    v = (v or "").strip().lstrip("#")
+    m = PR_RE.match(v)
+    allowed = ", ".join(f"{k}={full}" for k, full in PR_REPOS.items())
+    if not m:
+        sys.exit(f"--pr 형식이 아닙니다: {v}. 숫자(123) 또는 저장소#번호(carvit.ai#37)로 쓰세요. 허용 저장소: {allowed}")
+    repo, num = m.group(1), int(m.group(2))
+    if repo is None:
+        return num
+    for alias, full in PR_REPOS.items():
+        if repo.lower() in (alias, full.lower()):
+            return f"{alias}#{num}"
+    sys.exit(f"허용 목록에 없는 저장소입니다: {repo}. 허용 저장소: {allowed}")
+
+
+def pr_label(n):
+    return f"#{n}" if isinstance(n, int) else str(n)
+
+
+def find_template():
+    """틀 찾기 순서: JITU_PO_TEMPLATE(옛 이름 JITU_PO_NOTICE_TEMPLATE) -> 스크립트 기준 -> 현재 폴더 기준."""
+    tried = []
+    for env in ("JITU_PO_TEMPLATE", "JITU_PO_NOTICE_TEMPLATE"):
+        if os.environ.get(env):
+            tried.append(os.environ[env])
+    tried.append(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), TEMPLATE_REL))
+    tried.append(os.path.join(os.getcwd(), TEMPLATE_REL))
+    for p in tried:
+        if os.path.isfile(p):
+            return p
+    print(f"틀 파일을 찾지 못했습니다: {', '.join(tried)}. JITU_PO_TEMPLATE로 경로를 지정하세요.", file=sys.stderr)
+    sys.exit(1)
 
 
 def check_customer(v):
@@ -204,7 +240,7 @@ def fb_ship(a):
     if a.customer:
         r["customer"] = check_customer(a.customer)
     prs = list(r.get("prs") or [])
-    for n in a.pr:
+    for n in (parse_pr(x) for x in a.pr):
         if n not in prs:
             prs.append(n)
     r["prs"] = prs
@@ -212,7 +248,7 @@ def fb_ship(a):
     r["notice"] = {"what": a.notice_what, "before": a.notice_before or "", "after": a.notice_after or "", "next": a.notice_next}
     r["updated"] = str(today())
     save("feedback", rows)
-    print(f"{a.id} 배포 기록: PR {', '.join('#' + str(n) for n in prs)} / 배포 {r['shipped']} / 안내 아직 안 보냄(notice-draft로 초안)")
+    print(f"{a.id} 배포 기록: PR {', '.join(pr_label(n) for n in prs)} / 배포 {r['shipped']} / 안내 아직 안 보냄(notice-draft로 초안)")
 
 
 def fb_notified(a):
@@ -227,11 +263,12 @@ def fb_notified(a):
 
 
 def load_notice_template():
-    with open(NOTICE_TEMPLATE, encoding="utf-8") as f:
+    tpl = find_template()
+    with open(tpl, encoding="utf-8") as f:
         text = f.read()
     m = re.search(r"<!-- 틀 시작 -->\s*(.*?)\s*<!-- 틀 끝 -->", text, re.S)
     if not m:
-        sys.exit(f"안내 틀에서 '<!-- 틀 시작 -->'~'<!-- 틀 끝 -->' 구간을 찾지 못했습니다: {NOTICE_TEMPLATE}")
+        sys.exit(f"안내 틀에서 '<!-- 틀 시작 -->'~'<!-- 틀 끝 -->' 구간을 찾지 못했습니다: {tpl}")
     return m.group(1).replace("\r\n", "\n").strip("`\n")
 
 
@@ -249,7 +286,7 @@ def fb_notice_draft(a):
     out = load_notice_template()
     for k, v in values.items():
         out = out.replace("{" + k + "}", v)
-    print(f"[안내 초안] {a.id} 받는 분: {r.get('customer') or '(별칭 없음)'} / PR {', '.join('#' + str(x) for x in r.get('prs') or [])} (출력만 합니다. 발송은 하지 않습니다)")
+    print(f"[안내 초안] {a.id} 받는 분: {r.get('customer') or '(별칭 없음)'} / PR {', '.join(pr_label(x) for x in r.get('prs') or [])} (출력만 합니다. 발송은 하지 않습니다)")
     print(out)
 
 
@@ -455,7 +492,7 @@ def due_items():
         elif r["state"] in ("triaged", "backlog") and days_since(r["date"]) >= FEEDBACK_REPLY_DAYS and not r["reply"]:
             out["feedback"].append(f"{r['id']} 회신 안 함 {days_since(r['date'])}일: {r['text'][:50]}")
         if r.get("shipped") and not r.get("notified"):
-            out["notice"].append(f"{r['id']} 배포 {r['shipped']}, 안내 안 함({r.get('customer') or '별칭 없음'}): {r['text'][:50]} (fb notice-draft {r['id']})")
+            out["notice"].append(f"{r['id']} 배포 {r['shipped']}, 안내 안 함({r.get('customer') or '별칭 없음'}) PR {', '.join(pr_label(x) for x in r.get('prs') or []) or '-'}: {r['text'][:50]} (fb notice-draft {r['id']})")
     for r in load("ask"):
         if not r["answer"]:
             age = days_since(r["date"])
@@ -513,7 +550,7 @@ def build():
     x.add_argument("--who", default=""); x.add_argument("--text", required=True)
     x.add_argument("--customer", default="", help="별칭만: 고객<숫자>|내부|신규가입자 (실명 금지)"); x.set_defaults(fn=fb_add)
     x = f.add_parser("ship", help="개선이 배포되면 PR·배포일·안내 내용을 채운다")
-    x.add_argument("id"); x.add_argument("--pr", type=int, action="append", required=True, help="PR 번호(여러 번 가능)")
+    x.add_argument("id"); x.add_argument("--pr", action="append", required=True, help="PR 번호 123 또는 저장소#번호 carvit.ai#37(별칭 site·carvit.ai·saegim, 여러 번 가능)")
     x.add_argument("--shipped", required=True, help="배포일 YYYY-MM-DD"); x.add_argument("--notice-what", required=True, dest="notice_what", help="바뀐 것 한 줄")
     x.add_argument("--notice-before", default="", dest="notice_before", help="바뀌기 전 화면 링크")
     x.add_argument("--notice-after", default="", dest="notice_after", help="바뀐 뒤 화면 링크")
