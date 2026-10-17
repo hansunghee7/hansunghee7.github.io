@@ -1,3 +1,5 @@
+{%- include lang_pair.html -%}
+{%- if page.lang == 'en' -%}{%- assign lang_href = lp_ko | default: '/' -%}{%- else -%}{%- assign lang_href = lp_en | default: '/en/' -%}{%- endif -%}
 <style>
   /* Header 공통 스타일 */
   :root { --nav-height: 68px; }
@@ -67,12 +69,42 @@
   /* CTA는 YC의 Apply처럼 메뉴 맨 아래에 고정 */
   .mobile-menu-cta { display:block; text-align:center; margin-top: auto; margin-bottom: 8px; padding:18px 0; border-radius:999px; background:#f5f3ee; color:#080808; font-weight:500; font-family: 'Boska', 'Source Serif 4', serif; font-style: italic; border:none; cursor:pointer; width:100%; font-size:21px; flex-shrink: 0; touch-action: manipulation; }
 
+  /* 언어 링크: 보조 동작이라 Contact 필 버튼보다 작은 텍스트 링크. 휴대폰에서는 햄버거 메뉴 안으로 */
+  .nav-lang { font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:13px; color:#c9c8c2; text-decoration:none; transition: color .2s; }
+  .nav-lang:hover, .nav-lang:focus { color:#f5f3ee; }
+  .mobile-lang { font-family:'Pretendard Variable','Pretendard',sans-serif; font-size:16px; color:#8f8b82; text-decoration:none; padding:17px 0; border-top:1px solid rgba(245,243,238,0.14); margin-top:10px; touch-action: manipulation; }
+  .mobile-lang:hover { color:#f5f3ee; }
   @media (max-width:860px){ .nav-links{ display:none; } .nav-burger{ display:flex; } .nav-actions .nav-apply { display:none; } }
+  @media (max-width:860px){ .nav-actions .nav-lang { display:none; } }
 </style>
 
 <header class="nav">
   <div class="nav-inner">
-    <div class="nav-links">
+{% if page.lang == 'en' %}    <div class="nav-links">
+      <div class="nav-item">
+        <button type="button">About</button>
+        <div class="dropdown-menu">
+          <a href="/en/about/" class="primary"><span class="cat-name">Han Sunghee</span></a>
+          <a href="/en/speaking/"><span class="cat-name">Speaking &amp; Workshops</span></a>
+        </div>
+      </div>
+    </div>
+
+    <a href="/en/" class="nav-logo"><img src="/log_assets/images/logo_white.png" alt="Simplifier"></a>
+
+    <div class="nav-right">
+      <div class="nav-links">
+        <div class="nav-item">
+          <button type="button">Writing (Korean)</button>
+          <div class="dropdown-menu">
+            <a href="/log.html"><span class="cat-name">Simplifier Log</span></a>
+            <div class="dropdown-sep"></div>
+            <a href="https://www.yes24.com/product/goods/147079674" target="_blank" rel="noopener"><span class="cat-name">The Planner's Questions</span></a>
+            <a href="https://www.yes24.com/product/goods/193444437" target="_blank" rel="noopener"><span class="cat-name">The Languages of UX</span></a>
+          </div>
+        </div>
+      </div>
+    </div>{% else %}    <div class="nav-links">
       <div class="nav-item">
         <button type="button">Startup</button>
         <div class="dropdown-menu">
@@ -122,11 +154,12 @@
           </div>
         </div>
       </div>
-    </div>
+    </div>{% endif %}
 
     <div class="nav-actions">
+      {% if page.lang == 'en' %}<a class="nav-lang" href="{{ lang_href }}" hreflang="ko" lang="ko">한국어</a>{% else %}<a class="nav-lang" href="{{ lang_href }}" hreflang="en" lang="en">English</a>{% endif %}
       <button type="button" class="nav-apply open-contact-modal">Contact</button>
-      <button class="nav-burger" id="nav-burger" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobile-menu">
+      <button class="nav-burger" id="nav-burger" aria-label="{% if page.lang == 'en' %}Open menu{% else %}메뉴 열기{% endif %}" aria-expanded="false" aria-controls="mobile-menu">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -137,7 +170,20 @@
      header에 backdrop-filter가 걸려 있으면 그 안의 position:fixed 요소가
      뷰포트가 아닌 header를 기준으로 잡혀서 높이가 무너집니다. -->
 <nav class="mobile-menu" id="mobile-menu">
-    <details class="mobile-details"><summary class="mobile-summary">Startup</summary>
+{% if page.lang == 'en' %}    <details class="mobile-details"><summary class="mobile-summary">About</summary>
+      <div class="mobile-submenu">
+        <a href="/en/about/" class="primary">Han Sunghee</a>
+        <a href="/en/speaking/">Speaking &amp; Workshops</a>
+      </div>
+    </details>
+    <details class="mobile-details"><summary class="mobile-summary">Writing (Korean)</summary>
+      <div class="mobile-submenu">
+        <a href="/log.html">Simplifier Log</a>
+        <div class="mobile-sep"></div>
+        <a href="https://www.yes24.com/product/goods/147079674" target="_blank" rel="noopener">The Planner's Questions</a>
+        <a href="https://www.yes24.com/product/goods/193444437" target="_blank" rel="noopener">The Languages of UX</a>
+      </div>
+    </details>{% else %}    <details class="mobile-details"><summary class="mobile-summary">Startup</summary>
       <div class="mobile-submenu">
         <a href="/log/스타트업-인사이트.html">스타트업 인사이트</a>
         <div class="mobile-sep"></div>
@@ -169,7 +215,8 @@
         <a href="https://www.yes24.com/product/goods/193444437" target="_blank" rel="noopener">UX의 언어들</a>
         <a href="https://www.classu.co.kr/new/class/1019442" target="_blank" rel="noopener">유니콘의 리더십</a>
       </div>
-    </details>
+    </details>{% endif %}
+    {% if page.lang == 'en' %}<a class="mobile-lang" href="{{ lang_href }}" hreflang="ko" lang="ko">한국어</a>{% else %}<a class="mobile-lang" href="{{ lang_href }}" hreflang="en" lang="en">English</a>{% endif %}
     <button type="button" class="mobile-menu-cta open-contact-modal">Contact</button>
 </nav>
 

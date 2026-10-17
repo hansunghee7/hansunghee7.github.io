@@ -45,52 +45,52 @@
 <div id="contact-modal-overlay">
   <div class="modal-bg" data-close-modal></div>
   <div class="modal-content" tabindex="-1">
-    <button type="button" data-close-modal aria-label="닫기" class="modal-close">
+    <button type="button" data-close-modal aria-label="{% if page.lang == 'en' %}Close{% else %}닫기{% endif %}" class="modal-close">
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true">
         <path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
       </svg>
     </button>
     <p class="eyebrow-modal">Contact</p>
-    <h2>함께 최선의 답을 찾겠습니다</h2>
-    <p class="modal-desc">코칭, 강연, 협업 제안 등 어떤 말씀이든 편하게 남겨주세요.</p>
+    <h2>{% if page.lang == 'en' %}Let's find the best answer together{% else %}함께 최선의 답을 찾겠습니다{% endif %}</h2>
+    <p class="modal-desc">{% if page.lang == 'en' %}Coaching, speaking, or a partnership idea. Tell us anything.{% else %}코칭, 강연, 협업 제안 등 어떤 말씀이든 편하게 남겨주세요.{% endif %}</p>
     <form id="contact-form" novalidate>
       <div class="form-group">
-        <label>어떤 일로 연락 주셨나요? <span class="cf-required">*</span></label>
-        <div class="cf-types" role="radiogroup" aria-label="문의 유형">
+        <label>{% if page.lang == 'en' %}What can we help you with?{% else %}어떤 일로 연락 주셨나요?{% endif %} <span class="cf-required">*</span></label>
+        <div class="cf-types" role="radiogroup" aria-label="{% if page.lang == 'en' %}Inquiry type{% else %}문의 유형{% endif %}">
           <button type="button" class="cf-type" data-type="coaching" role="radio" aria-checked="false">
-            <b>스타트업 코칭</b><span>PMF 이후 성장·프로덕트·조직</span>
+            <b>{% if page.lang == 'en' %}Startup coaching{% else %}스타트업 코칭{% endif %}</b><span>{% if page.lang == 'en' %}Growth after PMF, product, team{% else %}PMF 이후 성장·프로덕트·조직{% endif %}</span>
           </button>
           <button type="button" class="cf-type" data-type="speaking" role="radio" aria-checked="false">
-            <b>강연 · 워크숍 섭외</b><span>리더십 · PM/PO · UX</span>
+            <b>{% if page.lang == 'en' %}Speaking &amp; workshops{% else %}강연 · 워크숍 섭외{% endif %}</b><span>{% if page.lang == 'en' %}Leadership · PM/PO · UX{% else %}리더십 · PM/PO · UX{% endif %}</span>
           </button>
           <button type="button" class="cf-type" data-type="other" role="radio" aria-checked="false">
-            <b>그 외</b><span>취재 · 협업 · 기타</span>
+            <b>{% if page.lang == 'en' %}Other{% else %}그 외{% endif %}</b><span>{% if page.lang == 'en' %}Press · partnership · other{% else %}취재 · 협업 · 기타{% endif %}</span>
           </button>
         </div>
       </div>
       <div class="form-group" id="cf-org-group" hidden>
-        <label for="cf-org">기관 · 회사명 <span class="cf-optional">(선택)</span></label>
-        <input type="text" id="cf-org" name="org" autocomplete="organization" placeholder="예: OO그룹 인재개발원 / OO에이전시">
+        <label for="cf-org">{% if page.lang == 'en' %}Organization or company{% else %}기관 · 회사명{% endif %} <span class="cf-optional">{% if page.lang == 'en' %}(optional){% else %}(선택){% endif %}</span></label>
+        <input type="text" id="cf-org" name="org" autocomplete="organization" placeholder="{% if page.lang == 'en' %}e.g. Learning &amp; Development team, Acme Corp.{% else %}예: OO그룹 인재개발원 / OO에이전시{% endif %}">
       </div>
       <div class="form-group">
-        <label for="cf-phone">회신받으실 전화번호 <span class="cf-optional">(선택, 남겨주시면 더 빠르게 연락드려요)</span></label>
-        <input type="tel" id="cf-phone" name="phone" autocomplete="tel" placeholder="010-1234-5678">
+        <label for="cf-phone">{% if page.lang == 'en' %}Phone number{% else %}회신받으실 전화번호{% endif %} <span class="cf-optional">{% if page.lang == 'en' %}(optional, helps us reply faster){% else %}(선택, 남겨주시면 더 빠르게 연락드려요){% endif %}</span></label>
+        <input type="tel" id="cf-phone" name="phone" autocomplete="tel" placeholder="{% if page.lang == 'en' %}+1 555 123 4567{% else %}010-1234-5678{% endif %}">
       </div>
       <div class="form-group">
-        <label for="cf-email">회신받으실 이메일 주소를 알려주세요 <span class="cf-required">*</span></label>
+        <label for="cf-email">{% if page.lang == 'en' %}Your email address{% else %}회신받으실 이메일 주소를 알려주세요{% endif %} <span class="cf-required">*</span></label>
         <input type="email" id="cf-email" name="email" autocomplete="email" required>
       </div>
       <div class="form-group">
-        <label for="cf-message">전달하고 싶은 내용을 남겨주세요 <span class="cf-required">*</span></label>
+        <label for="cf-message">{% if page.lang == 'en' %}Your message{% else %}전달하고 싶은 내용을 남겨주세요{% endif %} <span class="cf-required">*</span></label>
         <textarea id="cf-message" name="message" required rows="5"></textarea>
       </div>
-      <p id="cf-error" class="cf-error">빠짐없이 입력해주세요.</p>
-      <button type="submit" id="cf-submit">보내기 <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <p id="cf-error" class="cf-error">{% if page.lang == 'en' %}Please fill in all required fields.{% else %}빠짐없이 입력해주세요.{% endif %}</p>
+      <button type="submit" id="cf-submit">{% if page.lang == 'en' %}Send{% else %}보내기{% endif %} <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </form>
   </div>
 </div>
 
-<div id="copy-toast" role="status" aria-live="polite">이메일 주소가 복사되었습니다.</div>
+<div id="copy-toast" role="status" aria-live="polite">{% if page.lang == 'en' %}Email address copied.{% else %}이메일 주소가 복사되었습니다.{% endif %}</div>
 
 <script>
 (function initContactModal() {
@@ -239,17 +239,17 @@
       var invalidEl = null, invalidMsg = '';
       if (!selectedType) {
         invalidEl = typesGroup;
-        invalidMsg = '어떤 일로 연락 주셨는지 먼저 골라주세요.';
+        invalidMsg = '{% if page.lang == 'en' %}Please choose what you are contacting us about.{% else %}어떤 일로 연락 주셨는지 먼저 골라주세요.{% endif %}';
       } else if (data.phone && !isValidPhone(data.phone)) {
         // 전화번호는 선택 항목이라 비어있으면 통과시키되, 뭔가 입력했다면 형식은 맞아야 한다.
         invalidEl = phoneEl;
-        invalidMsg = '전화번호 형식을 다시 확인해주세요.';
+        invalidMsg = '{% if page.lang == 'en' %}Please check the phone number format.{% else %}전화번호 형식을 다시 확인해주세요.{% endif %}';
       } else if (!data.email || !isValidEmail(data.email)) {
         invalidEl = emailEl;
-        invalidMsg = data.email ? '이메일 형식을 다시 확인해주세요.' : '이메일을 입력해주세요.';
+        invalidMsg = data.email ? '{% if page.lang == 'en' %}Please check the email format.{% else %}이메일 형식을 다시 확인해주세요.{% endif %}' : '{% if page.lang == 'en' %}Please enter your email.{% else %}이메일을 입력해주세요.{% endif %}';
       } else if (!data.message) {
         invalidEl = messageEl;
-        invalidMsg = '전달하실 내용을 입력해주세요.';
+        invalidMsg = '{% if page.lang == 'en' %}Please enter your message.{% else %}전달하실 내용을 입력해주세요.{% endif %}';
       }
 
       if (invalidEl) {
@@ -277,15 +277,15 @@
           /* ← 이 사이트의 핵심 전환. 유형을 같이 보내야 GA4에서
              "강연 섭외가 몇 건인지"를 코칭과 나눠 볼 수 있습니다. */
           track('generate_lead', 'submitted', selectedType);
-          form.reset(); selectType(null); closeModal(); showToast('문의가 정상적으로 접수되었습니다.');
+          form.reset(); selectType(null); closeModal(); showToast('{% if page.lang == 'en' %}Thank you. Your message has been sent.{% else %}문의가 정상적으로 접수되었습니다.{% endif %}');
         } else {
           track('contact_error', 'failed');
-          showToast('전송에 실패했습니다. 잠시 후 다시 시도해주세요.');
+          showToast('{% if page.lang == 'en' %}Sending failed. Please try again in a moment.{% else %}전송에 실패했습니다. 잠시 후 다시 시도해주세요.{% endif %}');
         }
       })
       .catch(function () {
         track('contact_error', 'failed');
-        showToast('전송에 실패했습니다. 잠시 후 다시 시도해주세요.');
+        showToast('{% if page.lang == 'en' %}Sending failed. Please try again in a moment.{% else %}전송에 실패했습니다. 잠시 후 다시 시도해주세요.{% endif %}');
       })
       .finally(function () { submitBtn.disabled = false; });
     });

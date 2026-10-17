@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="{% if page.lang == 'en' %}en{% else %}ko{% endif %}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,7 @@
     {% if page.keywords %}<meta name="keywords" content="{{ page.keywords }}">{% endif %}
 
     <!-- 이 사이트가 원본임을 명시 (중복 콘텐츠 방지) -->
-    <link rel="canonical" href="https://simplifier.co.kr{{ page.url }}">
+    <link rel="canonical" href="https://simplifier.co.kr{{ page.url }}">{% include hreflang.html %}
     {% if page.noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
 
     {%- comment -%}
@@ -477,6 +477,10 @@
         background-color: #f5f3ee;
         color: #080808;
       }
+      /* 언어 링크: 글 머리에도 같은 위치(오른쪽)에 작은 텍스트 링크로. 짝 페이지가 없으면 영어 홈으로 */
+      .log-nav-lang { position: absolute; right: 32px; top: 50%; transform: translateY(-50%); font-family: 'Pretendard Variable', 'Pretendard', sans-serif; font-size: 13px; color: #c9c8c2; text-decoration: none; transition: color .2s; }
+      .log-nav-lang:hover, .log-nav-lang:focus { color: #f5f3ee; }
+      @media (max-width: 600px) { .log-nav-lang { right: 16px; font-size: 12.5px; } }
 
       /* 읽기 진행바: width 대신 scaleX(transform)로 갱신 -- 매 스크롤마다
          레이아웃을 다시 계산하지 않고 컴포지터 단계에서만 처리된다. */
@@ -550,6 +554,7 @@
       </span>
       {% endif %}
 
+      {% if page.lang == 'en' %}<a class="log-nav-lang" href="{{ lp_ko | default: '/' }}" hreflang="ko" lang="ko">한국어</a>{% else %}<a class="log-nav-lang" href="{{ lp_en | default: '/en/' }}" hreflang="en" lang="en">English</a>{% endif %}
       <div class="log-nav-progress"><div class="log-nav-progress-bar" id="readProgressBar"></div></div>
     </header>
     {% if page.dialogue %}

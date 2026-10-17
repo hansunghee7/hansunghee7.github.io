@@ -1,0 +1,14 @@
+{%- comment -%}
+  현재 페이지의 언어 짝을 찾아 lp_ko, lp_en 변수에 담는다(출력 없음).
+  우선순위: front matter의 ko_url/en_url → _data/lang_pairs.yml.
+{%- endcomment -%}
+{%- assign lp_ko = page.ko_url -%}
+{%- assign lp_en = page.en_url -%}
+{%- if lp_ko == nil or lp_en == nil -%}
+  {%- for lp in site.data.lang_pairs -%}
+    {%- if lp.ko == page.url or lp.en == page.url -%}
+      {%- assign lp_ko = lp.ko -%}
+      {%- assign lp_en = lp.en -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
