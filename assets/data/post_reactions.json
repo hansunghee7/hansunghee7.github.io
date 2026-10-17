@@ -136,5 +136,75 @@
   "likes": 4,
   "comments": null,
   "impressions": 313
+ },
+ {
+  "date": "2026-10-18",
+  "channel": "linkedin",
+  "post": "641",
+  "title": "AI에이전트에게 조심스러워지게 된 사연",
+  "likes": 16,
+  "comments": 7,
+  "impressions": 2554,
+  "note": "반응 16(본인 포함), 퍼감 1, 노출 2,554. 게시 약 11시간 전 읽음"
+ },
+ {
+  "date": "2026-10-18",
+  "channel": "instagram",
+  "post": "641",
+  "title": "AI에이전트에게 조심스러워지게 된 사연",
+  "likes": 6,
+  "comments": 2,
+  "impressions": null,
+  "note": "simplifier_seoul 최신 게시물(DelYHfelx9d) 10시간 전. 아이콘 옆 숫자 6/2/1 중 6=좋아요, 2=댓글(본인 링크 댓글 포함, 외부 1)로 해석, 1은 공유/리포스트 추정. 노출 비공개"
+ },
+ {
+  "date": "2026-10-18",
+  "channel": "threads",
+  "post": "641",
+  "title": "AI에이전트에게 조심스러워지게 된 사연",
+  "likes": 2,
+  "comments": 1,
+  "impressions": null,
+  "note": "올바른 계정 @simplifier_seoul로 재확인(앞서 @sinkihanapt는 다른 계정이라 제외). 10시간 전 글, 본문 뒤 숫자 2/1을 좋아요2·답글1로 해석(아이콘 라벨 미확인, 두번째 글은 링크용 자기 답글). 조회수 비노출"
+ },
+ {
+  "date": "2026-10-18",
+  "channel": "facebook",
+  "post": "641",
+  "title": "AI에이전트에게 조심스러워지게 된 사연",
+  "likes": 4,
+  "comments": 0,
+  "impressions": null,
+  "note": "개인 프로필 10시간 전 게시물. 반응 4(좋아요 3+웃겨요 1). 댓글 표시 없음(0으로 보임), 노출은 인사이트 화면 미열람"
+ },
+ {
+  "date": "2026-10-18",
+  "channel": "remember",
+  "post": "641",
+  "title": "AI에이전트에게 조심스러워지게 된 사연",
+  "likes": 1,
+  "comments": 0,
+  "impressions": null,
+  "note": "내 게시물 10시간 전. 좋아요 1, 댓글 수 표시 없음(0), 조회수 비노출"
+ },
+ {
+  "date": "2026-10-18",
+  "channel": "rocketpunch",
+  "post": "641",
+  "title": "AI에이전트에게 조심스러워지게 된 사연",
+  "likes": 1,
+  "comments": 0,
+  "impressions": null,
+  "note": "10시간 전 게시물. Boost 1(좋아요에 해당), 댓글 표시 없음, 재게시 0, 조회수 비노출"
+ },
+ {
+  "date": "2026-10-18",
+  "channel": "brunch",
+  "post": "641",
+  "title": "AI에이전트에게 조심스러워지게 된 사연",
+  "likes": 8,
+  "comments": 0,
+  "impressions": null,
+  "note": "brunch.co.kr/@simplifier/665, 10시간 전. 라이킷 8, 댓글 수 표시 없음(0), 조회수는 통계 화면 미열람"
  }
 ]
