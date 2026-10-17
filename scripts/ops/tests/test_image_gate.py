@@ -88,3 +88,13 @@ def test_bad_source_and_short_idea_blocked():
     assert psq.image_check_problem(item()) is not None
     setup_files(idea="짧음")
     assert psq.image_check_problem(item()) is not None
+
+
+def test_boss_pick_allows_low_score_only_with_boss_approval():
+    c = {str(i): (1 if i >= 5 else 0) for i in range(1, 9)}
+    setup_files(conditions=c, score="4/8")
+    pick = {"file": SCORE, "boss_pick": "팀 단체 사진 그대로 올리세요 (사장님 10/17)"}
+    assert psq.image_check_problem(item(image_check=pick)) is not None
+    assert psq.image_check_problem(item(image_check=pick, approved_by="사장님")) is None
+    setup_files(conditions=c, score="8/8")
+    assert psq.image_check_problem(item(image_check=pick, approved_by="사장님")) is not None

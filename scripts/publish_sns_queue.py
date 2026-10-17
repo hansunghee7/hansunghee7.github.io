@@ -203,8 +203,14 @@ def image_check_problem(item):
             return f"채점 파일 source는 {IMAGE_SOURCES} 중 하나여야 합니다"
         if len(str(d.get("idea") or "").strip()) < 10:
             return "채점 파일 idea(빅아이디어 한 문장)가 10자 미만입니다"
-        if d.get("score") != f"{total}/8" or total < 6 or vals[0] != 1:
-            return f"채점 점수 {total}/8 (6/8 이상이고 1번 빅아이디어 조건이 충족돼야 합니다)"
+        if d.get("score") != f"{total}/8":
+            return f"채점 파일 score({d.get('score')})가 조건 합계 {total}/8과 다릅니다"
+        # 사장님이 이미지를 직접 지정한 경우(boss_pick에 원문 인용)는 점수 기준 대신 그 지정을 따른다(2026-10-17 마야 #131).
+        # 채점은 그대로 정직하게 남기고(위조 금지), 인용은 항목의 approved_by가 사장님일 때만 인정한다.
+        boss_pick = str((item.get("image_check") or {}).get("boss_pick") or "").strip()
+        if not (boss_pick and len(boss_pick) >= 10 and item.get("approved_by") == "사장님"):
+            if total < 6 or vals[0] != 1:
+                return f"채점 점수 {total}/8 (6/8 이상이고 1번 빅아이디어 조건이 충족돼야 합니다. 사장님 지정 이미지면 image_check.boss_pick에 원문 인용)"
         img = str(d.get("image") or "")
         if img not in (item.get("content", {}).get("media_source") or []):
             return "채점한 이미지가 content.media_source에 없습니다"
