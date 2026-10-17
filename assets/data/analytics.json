@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-16T22:13:07.884851+00:00",
+  "updated_at": "2026-10-17T05:35:49.671468+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 353,
-    "activeUsers": 305,
-    "newUsers": 301,
+    "sessions": 358,
+    "activeUsers": 309,
+    "newUsers": 305,
     "returningUsers": 4
   },
   "daily": [
@@ -213,15 +213,22 @@
     },
     {
       "date": "2026-10-16",
-      "sessions": 5,
-      "activeUsers": 4,
-      "newUsers": 4,
+      "sessions": 7,
+      "activeUsers": 6,
+      "newUsers": 5,
+      "returningUsers": 1
+    },
+    {
+      "date": "2026-10-17",
+      "sessions": 3,
+      "activeUsers": 3,
+      "newUsers": 3,
       "returningUsers": 0
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 130,
+    "home": 134,
     "log_home": 0,
     "individual_post": 215,
     "other": 9
@@ -229,7 +236,7 @@
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 194
+      "sessions": 197
     },
     {
       "source": "linkedin.com",
@@ -256,20 +263,20 @@
       "sessions": 7
     },
     {
+      "source": "linkedin",
+      "sessions": 7
+    },
+    {
       "source": "naver",
       "sessions": 7
     },
     {
-      "source": "linkedin",
-      "sessions": 6
+      "source": "blog.naver.com",
+      "sessions": 4
     },
     {
       "source": "(not set)",
-      "sessions": 4
-    },
-    {
-      "source": "blog.naver.com",
-      "sessions": 4
+      "sessions": 3
     },
     {
       "source": "lm.facebook.com",
@@ -293,7 +300,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 194
+      "sessions": 197
     },
     {
       "source": "linkedin.com",
@@ -341,7 +348,7 @@
       "source": "linkedin",
       "medium": "social",
       "campaign": "new_639",
-      "sessions": 5
+      "sessions": 6
     },
     {
       "source": "blog.naver.com",
@@ -398,6 +405,12 @@
       "sessions": 1
     },
     {
+      "source": "github.com",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "sessions": 1
+    },
+    {
       "source": "linkedin",
       "medium": "social",
       "campaign": "new_narr_malgwi",
@@ -423,10 +436,10 @@
     }
   ],
   "engagement_events": {
-    "section_view_proven": 73,
-    "section_view_voices": 65,
-    "section_view_book_class": 35,
-    "section_view_faq": 36,
+    "section_view_proven": 75,
+    "section_view_voices": 67,
+    "section_view_book_class": 37,
+    "section_view_faq": 39,
     "faq_open": 11,
     "read_complete": 88
   },
@@ -517,20 +530,20 @@
     {
       "path": "/logs/625/",
       "title": "주니어 PM은 왜 스스로 문제를 정의하지 못할까?",
-      "uniqueViews": 28,
-      "views": 30
+      "uniqueViews": 30,
+      "views": 33
     },
     {
       "path": "/logs/631/",
       "title": "토큰을 아끼려다 기술이 늘었다",
-      "uniqueViews": 19,
-      "views": 24
+      "uniqueViews": 20,
+      "views": 25
     },
     {
       "path": "/logs/620/",
       "title": "팀이 커질수록 대표만 모르는 것",
-      "uniqueViews": 16,
-      "views": 18
+      "uniqueViews": 17,
+      "views": 19
     },
     {
       "path": "/logs/618/",
@@ -607,7 +620,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 398,
+    "total_desktop_sessions": 401,
     "excluded_invalid_sessions": 22,
     "by_resolution": [
       {
@@ -618,7 +631,7 @@
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 73
+        "sessions": 74
       },
       {
         "resolution": "1600x1600",
@@ -633,7 +646,7 @@
       {
         "resolution": "1463x915",
         "width": 1463,
-        "sessions": 21
+        "sessions": 22
       },
       {
         "resolution": "1536x960",
@@ -651,14 +664,14 @@
         "sessions": 12
       },
       {
-        "resolution": "1512x982",
-        "width": 1512,
+        "resolution": "1440x900",
+        "width": 1440,
         "sessions": 9
       },
       {
-        "resolution": "1440x900",
-        "width": 1440,
-        "sessions": 8
+        "resolution": "1512x982",
+        "width": 1512,
+        "sessions": 9
       },
       {
         "resolution": "1280x800",
