@@ -5,8 +5,9 @@
 post_linkedin_oldpc.py) 수동 채널(페이스북 개인, 로켓펀치, 리멤버)에는 관문이 없었다.
 규칙을 이 파일 하나에 두고 모든 경로가 같은 검사를 통과하게 한다. 정본: 공정 마야-SNS게시 #2·#3.
   - 첫 줄 = 글 제목(제목을 줄 때만 검사)
-  - 본문 링크는 딱 1개, 그 링크는 관련 글(simplifier.co.kr/logs/)
-  - 9/28 확정 CTA 문구 "심플리파이어 로그를 함께 봐 주세요"
+  - 본문 링크는 딱 1개. 독자가 보고 싶은 곳으로 바로 건다(팀 페이지, 신청 페이지 등).
+    우리 로그 글(simplifier.co.kr/logs/)을 걸 때만 9/28 확정 CTA 문구 "심플리파이어 로그를 함께 봐 주세요"가 필요하다.
+    (사장님 2026-10-17, 공정 마야-SNS게시 #8: 두 번 클릭하게 하면 글 올린 사람을 싫어한다)
   - 원문 링크 줄("전문:", "from ...") 금지
   - 링크드인은 예외(사장님 2026-10-17, 공정 마야 #121): CTA 정본 문구와 "결론부터 말하면"을 쓰지 않는다.
     사장님이 쓴 글처럼 읽히지 않는 상투구라서다. 관련 글 링크 1개 규칙은 그대로다.
@@ -40,14 +41,13 @@ def text_problems(text, title=None, channel=""):
             problems.append("첫 줄이 글 제목과 다릅니다(제목을 첫 줄에 넣을 것)")
     urls = re.findall(r"https?://\S+", text)
     if len(urls) != 1:
-        problems.append(f"본문 링크가 {len(urls)}개입니다(관련글 링크 딱 1개만 허용)")
-    elif LOG_LINK not in urls[0]:
-        problems.append(f"본문 링크가 관련 글({LOG_LINK})이 아닙니다")
+        problems.append(f"본문 링크가 {len(urls)}개입니다(독자가 갈 곳 딱 1개만 허용)")
+    log_link = len(urls) == 1 and LOG_LINK in urls[0]
     if is_linkedin(channel):
         for phrase in LINKEDIN_BANNED:
             if phrase in text:
                 problems.append(f"링크드인 글에 '{phrase}'가 있습니다(사장님이 안 쓴 것 같은 상투구, 공정 마야 #121)")
-    elif CTA not in text:
+    elif log_link and CTA not in text:
         problems.append("CTA 정본 문구('혹시 ~궁금하시다면 심플리파이어 로그를 함께 봐 주세요')가 없습니다(공정 마야-SNS게시 #3)")
     if "전문:" in text or any(l.strip().startswith("from ") for l in lines):
         problems.append("원문 링크 줄('전문:'·'from')이 있습니다(공정 마야-SNS게시 #3)")

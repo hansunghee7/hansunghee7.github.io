@@ -25,9 +25,10 @@ def test_two_links_blocked():
     assert any("2개" in p for p in pg.text_problems(GOOD + "\nhttps://example.com/x"))
 
 
-def test_link_must_be_related_log():
-    t = GOOD.replace("https://www.simplifier.co.kr/logs/230/", "https://example.com/post")
-    assert any("관련 글" in p for p in pg.text_problems(t))
+def test_direct_link_allowed_without_cta():
+    # 사장님 10/17: 독자가 보고 싶은 곳(팀 페이지 등)으로 바로 거는 링크는 로그 CTA 없이 통과(공정 마야-SNS게시 #8)
+    t = GOOD.replace("https://www.simplifier.co.kr/logs/230/", "https://carvit.ai/ko/team/").replace(pg.CTA, "아래 링크에서 만나 보세요")
+    assert pg.text_problems(t) == []
 
 
 def test_cta_required():
