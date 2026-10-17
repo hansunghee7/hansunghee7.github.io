@@ -707,12 +707,12 @@
       ]
     },
     "publishAt": "2026-10-17T05:39:00.000Z",
-    "status": "error",
+    "status": "cancelled",
     "image_check": {
       "file": "assets/data/image_scores/2026-10-17-fb-641.json",
       "boss_pick": "팀 단체 사진 그대로 올리세요.. 지투이야기는 흥미를 끌기위한 목적이고 / 팀을 소개시키는게 본질적인 목표임 (사장님 2026-10-17 채팅)"
     },
-    "note": "full={\"data\": {}, \"code\": 15021, \"message\": \"The connected account was not found or has been unbound, please re-authorize the platform account and retry\", \"timestamp\": 1792214476879, \"requestId\": \"up8egeawz1av2kwdwdvuk\"}",
+    "note": "full={\"data\": {}, \"code\": 15021, \"message\": \"The connected account was not found or has been unbound, please re-authorize the platform account and retry\", \"timestamp\": 1792214476879, \"requestId\": \"up8egeawz1av2kwdwdvuk\"} 취소: Simplifier 페이지는 폐지(사장님 10/6, 마야 프로세스표 11절). 페이스북 개인 프로필은 인스타 자동 공유로 나간다. 마야 실수로 만든 항목.",
     "approved_by": "사장님",
     "approved_quote": "전 SNS에 ... 에이전트에 조심스러워진 사연 한방에 올리죠 (2026-10-17 14시대, 채팅. 홈페이지 641 먼저 공개한 뒤 바로 게시)"
   },
