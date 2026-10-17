@@ -5,6 +5,8 @@
   gap      보강 4  검사 공백 원장: 사고마다 "어떤 검사가 없었나"와 "추가한 검사"를 짝으로 남긴다. 추가한 검사가 비면 열린 건.
   kpi      보강 2  외부 고객 지표 주간 기록(활성 호출자·활성화·유지·찾지 못한 검색률·피드백 수). 7일 넘게 안 재면 기한 지남.
   feedback 보강 3  고객 신호(feedback 호출·찾지 못한 검색·사용 기록 이상)의 수집→분류→백로그→회신 상태.
+           개선이 배포되면 `feedback ship`(PR·배포일·안내 내용) → `feedback notice-draft`(안내 초안 출력만) → `feedback notified`(보낸 날).
+           배포됐는데 안내 안 한 건은 due에 뜬다. 안내 문안 틀: docs/mailcopy/개선_반영_안내_틀.md
   predict  보강 1  예측과 결과의 짝: 변경마다 "무엇이 얼마나 바뀔지" 한 줄과 점검일, 점검일에 실제 값을 적는다.
   ask      결정 요청 기록(2026-10-06 사장님 지시 ①②): 보스에게 결정을 물을 때 추천·답이 없을 때의 기본값·마감을 같이 적고,
            한 번 물은 결정은 답이 올 때까지 다시 묻지 않고 한 줄 상태만 남긴다. 물어보기 전에 `ask find 낱말`로 이미 물었는지 본다.
@@ -18,6 +20,7 @@ import argparse
 import datetime as dt
 import json
 import os
+import re
 import sys
 
 ROOT = os.environ.get("JITU_PO_DIR", "C:/work/_ops/jitu_po")
@@ -160,13 +163,94 @@ def kpi_list(a):
 
 
 # ---------------- feedback (보강 3) ----------------
+# 개선 반영 안내(2026-10-17 사장님 결정): 고객 의견 -> PR·배포 -> 안내 메일을 한 행에서 잇는다.
+# customer 칸은 실명 대신 별칭만 받는다. 실명 판정은 어려우므로 허용 형식만 통과시킨다(고객<숫자>|내부|신규가입자).
+
+CUSTOMER_RE = re.compile(r"^(고객\d{1,4}|내부|신규가입자)$")
+NOTICE_TEMPLATE = os.environ.get("JITU_PO_NOTICE_TEMPLATE") or os.path.join(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "docs", "mailcopy", "개선_반영_안내_틀.md")
+
+
+def check_customer(v):
+    v = (v or "").strip()
+    if v and not CUSTOMER_RE.match(v):
+        sys.exit(f"[별칭 관문] --customer는 별칭만 받습니다(고객<숫자>|내부|신규가입자, 예: 고객1). 받은 값은 허용 형식이 아닙니다. 실명·회사명은 넣지 마세요.")
+    return v
+
+
+def check_date(v, what):
+    try:
+        dt.date.fromisoformat(v)
+    except ValueError:
+        sys.exit(f"{what}는 YYYY-MM-DD 형식이어야 합니다: {v}")
+    return v
+
+
 def fb_add(a):
+    customer = check_customer(getattr(a, "customer", ""))
     rows = load("feedback")
     r = {"id": next_id(rows, "F"), "date": str(today()), "source": a.source, "who": a.who or "", "text": a.text,
          "state": "new", "kind": "", "action": "", "reply": "", "updated": str(today())}
+    if customer:
+        r["customer"] = customer
     rows.append(r)
     save("feedback", rows)
     print(f"{r['id']} 수집 (state=new, 하루 안에 분류)")
+
+
+def fb_ship(a):
+    rows = load("feedback")
+    r = find(rows, a.id)
+    if a.customer:
+        r["customer"] = check_customer(a.customer)
+    prs = list(r.get("prs") or [])
+    for n in a.pr:
+        if n not in prs:
+            prs.append(n)
+    r["prs"] = prs
+    r["shipped"] = check_date(a.shipped, "--shipped")
+    r["notice"] = {"what": a.notice_what, "before": a.notice_before or "", "after": a.notice_after or "", "next": a.notice_next}
+    r["updated"] = str(today())
+    save("feedback", rows)
+    print(f"{a.id} 배포 기록: PR {', '.join('#' + str(n) for n in prs)} / 배포 {r['shipped']} / 안내 아직 안 보냄(notice-draft로 초안)")
+
+
+def fb_notified(a):
+    rows = load("feedback")
+    r = find(rows, a.id)
+    if not r.get("shipped"):
+        sys.exit(f"{a.id}는 배포 기록(ship)이 없습니다. 먼저 fb ship으로 PR·배포일·안내 내용을 채우세요")
+    r["notified"] = check_date(a.date, "--date")
+    r["updated"] = str(today())
+    save("feedback", rows)
+    print(f"{a.id} 안내 보낸 날 기록: {r['notified']}")
+
+
+def load_notice_template():
+    with open(NOTICE_TEMPLATE, encoding="utf-8") as f:
+        text = f.read()
+    m = re.search(r"<!-- 틀 시작 -->\s*(.*?)\s*<!-- 틀 끝 -->", text, re.S)
+    if not m:
+        sys.exit(f"안내 틀에서 '<!-- 틀 시작 -->'~'<!-- 틀 끝 -->' 구간을 찾지 못했습니다: {NOTICE_TEMPLATE}")
+    return m.group(1).replace("\r\n", "\n").strip("`\n")
+
+
+def fb_notice_draft(a):
+    r = find(load("feedback"), a.id)
+    n = r.get("notice") or {}
+    if not r.get("shipped") or not n:
+        sys.exit(f"{a.id}는 배포·안내 내용이 비어 있습니다. 먼저 fb ship으로 채우세요")
+    if n.get("before") or n.get("after"):
+        screens = f"바뀌기 전: {n.get('before') or '(없음)'}\n바뀐 뒤: {n.get('after') or '(없음)'}"
+    else:
+        screens = "화면 사진은 따로 없어요. 바로 열어서 보시면 돼요."
+    values = {"말씀": (a.quote or r.get("text", "")).strip(), "바뀐것": n.get("what", ""), "화면전후": screens,
+              "다음": n.get("next", ""), "배포일": r.get("shipped", "")}
+    out = load_notice_template()
+    for k, v in values.items():
+        out = out.replace("{" + k + "}", v)
+    print(f"[안내 초안] {a.id} 받는 분: {r.get('customer') or '(별칭 없음)'} / PR {', '.join('#' + str(x) for x in r.get('prs') or [])} (출력만 합니다. 발송은 하지 않습니다)")
+    print(out)
 
 
 def fb_triage(a):
@@ -351,7 +435,7 @@ def req_check(a):
 
 # ---------------- due ----------------
 def due_items():
-    out = {"gap": [], "kpi": [], "feedback": [], "predict": [], "ask": [], "req": []}
+    out = {"gap": [], "kpi": [], "feedback": [], "predict": [], "ask": [], "req": [], "notice": []}
     for r in load("gap"):
         if not r.get("added"):
             out["gap"].append(f"{r['id']} {r['what']}(없던 검사: {r['missing']})")
@@ -370,6 +454,8 @@ def due_items():
             out["feedback"].append(f"{r['id']} 분류 안 함 {age}일: {r['text'][:50]}")
         elif r["state"] in ("triaged", "backlog") and days_since(r["date"]) >= FEEDBACK_REPLY_DAYS and not r["reply"]:
             out["feedback"].append(f"{r['id']} 회신 안 함 {days_since(r['date'])}일: {r['text'][:50]}")
+        if r.get("shipped") and not r.get("notified"):
+            out["notice"].append(f"{r['id']} 배포 {r['shipped']}, 안내 안 함({r.get('customer') or '별칭 없음'}): {r['text'][:50]} (fb notice-draft {r['id']})")
     for r in load("ask"):
         if not r["answer"]:
             age = days_since(r["date"])
@@ -391,9 +477,10 @@ def due(a):
     n = sum(len(v) for v in d.values())
     if a.quiet and n == 0:
         return
-    names = {"gap": "검사 공백(보강 4)", "kpi": "지표 측정(보강 2)", "feedback": "고객 신호(보강 3)", "predict": "예측 점검(보강 1)", "ask": "결정 요청(답 대기)", "req": "요구사항 취합 중"}
+    names = {"gap": "검사 공백(보강 4)", "kpi": "지표 측정(보강 2)", "feedback": "고객 신호(보강 3)", "predict": "예측 점검(보강 1)", "ask": "결정 요청(답 대기)", "req": "요구사항 취합 중",
+             "notice": "개선 반영 안내(배포됐는데 안내 안 함)"}
     print(f"🔁 지투 루프 점검: 기한 지난 것 {n}건")
-    for k in ("gap", "kpi", "feedback", "predict", "ask", "req"):
+    for k in ("gap", "kpi", "feedback", "predict", "ask", "req", "notice"):
         for line in d[k]:
             print(f"  - {names[k]}: {line}")
     if n:
@@ -421,9 +508,21 @@ def build():
     x.set_defaults(fn=kpi_add)
     x = k.add_parser("list"); x.add_argument("--last", type=int, default=8); x.set_defaults(fn=kpi_list)
 
-    f = sub.add_parser("feedback").add_subparsers(dest="sub", required=True)
+    f = sub.add_parser("feedback", aliases=["fb"]).add_subparsers(dest="sub", required=True)
     x = f.add_parser("add"); x.add_argument("--source", required=True, help="feedback도구|찾지못한검색|사용기록|면담")
-    x.add_argument("--who", default=""); x.add_argument("--text", required=True); x.set_defaults(fn=fb_add)
+    x.add_argument("--who", default=""); x.add_argument("--text", required=True)
+    x.add_argument("--customer", default="", help="별칭만: 고객<숫자>|내부|신규가입자 (실명 금지)"); x.set_defaults(fn=fb_add)
+    x = f.add_parser("ship", help="개선이 배포되면 PR·배포일·안내 내용을 채운다")
+    x.add_argument("id"); x.add_argument("--pr", type=int, action="append", required=True, help="PR 번호(여러 번 가능)")
+    x.add_argument("--shipped", required=True, help="배포일 YYYY-MM-DD"); x.add_argument("--notice-what", required=True, dest="notice_what", help="바뀐 것 한 줄")
+    x.add_argument("--notice-before", default="", dest="notice_before", help="바뀌기 전 화면 링크")
+    x.add_argument("--notice-after", default="", dest="notice_after", help="바뀐 뒤 화면 링크")
+    x.add_argument("--notice-next", required=True, dest="notice_next", help="고객이 다음에 해 볼 일 한 줄")
+    x.add_argument("--customer", default="", help="별칭을 이때 채워도 된다"); x.set_defaults(fn=fb_ship)
+    x = f.add_parser("notified", help="안내 메일을 보낸 날을 기록한다"); x.add_argument("id"); x.add_argument("--date", required=True)
+    x.set_defaults(fn=fb_notified)
+    x = f.add_parser("notice-draft", help="고정 틀로 안내 메일 초안을 화면에 출력만 한다(발송 없음)"); x.add_argument("id")
+    x.add_argument("--quote", default="", help="첫 줄에 인용할 고객 말씀(비우면 text 칸)"); x.set_defaults(fn=fb_notice_draft)
     x = f.add_parser("triage"); x.add_argument("id"); x.add_argument("--kind", required=True, help="버그|UX|요청|내용공백|칭찬|잡음")
     x.add_argument("--state", choices=FB_STATES[1:], default="triaged"); x.add_argument("--action", default="")
     x.add_argument("--reply", default=""); x.set_defaults(fn=fb_triage)
