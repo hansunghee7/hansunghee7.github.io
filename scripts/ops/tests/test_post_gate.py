@@ -45,3 +45,21 @@ def test_cli_exit_codes(tmp_path):
     f.write_text(GOOD, encoding="utf-8")
     assert pg.main(["--file", str(f), "--title", "숫자로 일하는 팀의 첫 달"]) == 0
     assert pg.main(["--file", str(f), "--title", "틀린 제목"]) == 1
+
+
+LI = ("숫자로 일하는 팀의 첫 달\n\n본문 한 단락입니다.\n\n"
+      "같은 이야기를 홈페이지에 더 길게 썼습니다.\n"
+      "https://www.simplifier.co.kr/logs/230/")
+
+
+def test_linkedin_passes_without_cta():
+    assert pg.text_problems(LI, "숫자로 일하는 팀의 첫 달", "linkedin") == []
+
+
+def test_linkedin_blocks_cta_and_conclusion_first():
+    assert any("상투구" in p for p in pg.text_problems(GOOD, None, "linkedin"))
+    assert any("결론부터" in p for p in pg.text_problems(LI + "\n결론부터 말하면 이렇습니다.", None, "링크드인"))
+
+
+def test_other_channels_still_need_cta():
+    assert any("CTA" in p for p in pg.text_problems(LI, None, "facebook"))
