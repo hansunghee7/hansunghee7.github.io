@@ -529,7 +529,7 @@
 
     <header class="log-nav" id="mainLogNav">
       <a href="/" class="log-nav-logo">
-        <img src="/log_assets/images/logo_white.png" alt="Simplifier">
+        <img src="/log_assets/images/logo_white_sm.webp" alt="Simplifier">
       </a>
 
       {% if page.category %}
@@ -590,14 +590,16 @@
     </div>
 {% endif %}
 
-<div class="article-body" id="articleBody">
+{%- comment -%} 글 본문은 <article>로 감싸 검색엔진이 본문을 알아보게 한다(클래스·id는 그대로라 CSS·JS는 영향 없음). 홈/로그 목록(index-mode)은 글이 아니라 div 그대로. {%- endcomment -%}
+{% if page.url == '/' or page.url == '/log.html' or page.is_index %}{% assign body_tag = 'div' %}{% else %}{% assign body_tag = 'article' %}{% endif %}
+<{{ body_tag }} class="article-body" id="articleBody">
     {{ content }}
     {%- comment -%} 질문하기 폼: _data/question_form.yml 의 enabled 가 true 일 때만 그려진다 (docs/질문하기_파이프라인.md) {%- endcomment -%}
     {% include question_form.html %}
     {% include post_cta.html %}
     {% include post_nav.html %}
     {% include related_posts.html %}
-</div>
+</{{ body_tag }}>
 
 {% if page.url == '/' or page.url == '/log.html' or page.is_index %}
     {% include footer.html %}
