@@ -22,11 +22,12 @@
 
 캐시: C:/work/_ops/credit_state.json (레포 밖 런타임 STATE, 새 DB 표를 만들지 않는다 — DDL 승인 불필요).
 """
+import csv
 import json
 import subprocess
 import sys
 import time
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -153,6 +154,43 @@ def collect_gcp_actual():
     return [row]
 
 
+def collect_vertex_agents(days=7):
+    """소스 2 상세: GCP/Vertex 실소비의 에이전트(who)별 내역(vertex_usage.csv, 최근 N일).
+
+    위 'GCP 무료크레딧(실사용)' 총 소비를 '누가 얼마나 썼나'로 쪼갠다(사장님 지적: 비티가 GCP를
+    연결해 쓰는데 quota.py 안티그래비티 풀 수치만 보여 Vertex 사용이 표에 안 드러났다).
+    CSV는 utf-8(한글 who). est_krw 합을 추정비용(원)으로, 행 수를 호출수로 집계하고 많은 순 정렬."""
+    p = OPS / "vertex_usage.csv"
+    agg = {}  # who → [호출수, est_krw 합]
+    err = None
+    cutoff = datetime.now() - timedelta(days=days)
+    try:
+        with p.open(encoding="utf-8", newline="") as f:
+            for r in csv.DictReader(f):
+                ts = (r.get("time") or "").strip()
+                try:
+                    t = datetime.strptime(ts, "%Y-%m-%d %H:%M:%S")
+                except ValueError:
+                    continue
+                if t < cutoff:
+                    continue
+                who = (r.get("who") or "?").strip() or "?"
+                try:
+                    krw = float(r.get("est_krw") or 0)
+                except ValueError:
+                    krw = 0.0
+                a = agg.setdefault(who, [0, 0.0])
+                a[0] += 1
+                a[1] += krw
+    except FileNotFoundError:
+        err = "vertex_usage.csv 없음"
+    except OSError as e:  # noqa: BLE001
+        err = f"vertex_usage.csv 오류: {type(e).__name__}"
+    rows = [{"who": w, "calls": c, "krw": k} for w, (c, k) in agg.items()]
+    rows.sort(key=lambda x: (-x["calls"], -x["krw"]))
+    return {"days": days, "rows": rows, "err": err}
+
+
 def collect_quota():
     """소스 3: 무료 모델 쿼터(quota.py status: 비티·비티-sonnet·덱스)."""
     rows = []
@@ -269,7 +307,8 @@ def gather():
     rows += collect_flow()
     rows += collect_claude_max()
     rows += collect_cloud_cost_stub()
-    return {"at": time.time(), "generated": datetime.now().strftime("%Y-%m-%d %H:%M"), "rows": rows}
+    return {"at": time.time(), "generated": datetime.now().strftime("%Y-%m-%d %H:%M"), "rows": rows,
+            "vertex_agents": collect_vertex_agents()}
 
 
 def save_cache(state):
@@ -300,7 +339,37 @@ def render(state):
     out.append("")
     out.append("데이터만 모읍니다(계획대로인지 판정은 사람이). 잔액·추정 표기는 소스 한계를 그대로 둡니다. "
                "GCP 프로그램(G18)·무료크레딧 둘 다 포함, Azure/AWS 실사용 $는 Cost API 키가 생기면 자동연동.")
+    out.append("")
+    out += render_vertex_agents(state.get("vertex_agents"))
     return "\n".join(out)
+
+
+def render_vertex_agents(va):
+    """위 'GCP 무료크레딧(실사용)' 총 소비를 에이전트(who)별로 쪼갠 섹션. 비티의 Vertex 사용이 여기서 드러난다."""
+    if not va:
+        return []
+    days = va.get("days", 7)
+    out = [f"## GCP/Vertex 에이전트별 사용(최근 {days}일)", ""]
+    if va.get("err"):
+        out.append(f"(집계 불가: {va['err']})")
+        return out
+    agent_rows = va.get("rows", [])
+    if not agent_rows:
+        out.append("(최근 기록 없음)")
+        return out
+    out.append("| 에이전트(who) | 호출수 | 추정비용(원) |")
+    out.append("|---|---:|---:|")
+    tot_c = tot_k = 0
+    for r in agent_rows:
+        out.append("| {who} | {calls} | {krw:,.0f} |".format(
+            who=r.get("who", "?"), calls=r.get("calls", 0), krw=r.get("krw", 0.0)))
+        tot_c += r.get("calls", 0)
+        tot_k += r.get("krw", 0.0)
+    out.append("| **합계** | **{c}** | **{k:,.0f}** |".format(c=tot_c, k=tot_k))
+    out.append("")
+    out.append("위 'GCP 무료크레딧(실사용)' 소비를 주체별로 쪼갠 내역입니다(vertex_usage.csv 실측, 많은 순). "
+               "비티 등 에이전트가 GCP 연결로 쓰는 Vertex가 여기 잡힙니다.")
+    return out
 
 
 def cmd_show():
@@ -308,6 +377,8 @@ def cmd_show():
     fresh = state and (time.time() - state.get("at", 0) < CACHE_MAX_AGE)
     if not fresh:
         state = gather()  # 캐시가 없거나 오래됐으면 그 자리서 소스 읽기(저장은 refresh의 몫, show는 읽기만)
+    elif "vertex_agents" not in state:
+        state["vertex_agents"] = collect_vertex_agents()  # 옛 캐시엔 이 키가 없다 — 그 자리서 집계
     print(render(state))
     return 0
 
