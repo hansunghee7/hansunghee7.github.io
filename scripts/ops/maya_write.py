@@ -6,7 +6,7 @@
 
 하위 명령
   route "<요청 문장>"            글 종류 판별과 작업 순서(가이드, 작성 도구, 검사, 독립 평가, 컨펌)를 출력
-  lint  <파일|--text 문자열>      기계 검사(증명 불가 형용사, 문체 혼용, 제품 이름·회사 이름·용어, 길이)
+  lint  <파일|--text 문자열>      기계 검사(증명 불가 형용사, 문체 혼용, 제품 이름·회사 이름·용어, 길이, 불쾌한 골짜기 U1~U12)
   card  <종류> <파일>             독립 평가용 채점 카드(마크다운)를 만든다(평가자는 제미나이 블라인드 호출, 덱스·비티는 글 평가에서 제외, 사장님 2026-10-12)
   log   add ...                  평가 기록 한 건을 쌓는다(점수 검증, 독립 평가 여부 자동 표시)
   exp add|snap|report            링크드인 A/B 실험 등록·12h/24h 측정·사전 약속 규칙 판정
@@ -104,6 +104,69 @@ def unsourced_claims(text):
     return out
 
 
+# 불쾌한 골짜기 규칙(사장님 2026-10-17). 근거: simplifier-cxo-db/ink/분석/2026-10-17_불쾌한골짜기_분석.md 4절(규칙 8개 중 정규식 가능한 7개).
+# 시제품: C:/work/_ops/maya_uncanny/uncanny_lint.py. 실측 글당 위반 수: 대표 직접수정본 0, 대표 2023~24 0.38, 마야 초안 2.62.
+# (규칙 이름, 등급, 정규식, 최소 횟수, 이유). 경험글 전용 규칙(U1-결론부터, U12)은 uncanny() 안에서 context로 따로 건다.
+EXPERIENCE_CONTEXTS = ("linkedin", "essay")
+UNCANNY_RULES = [
+    # 분석 4절 규칙 1: 해설자 문장. "결론부터 말하면"은 WRITING_GUIDE 5-2절(AEO)과 충돌해 사장님 결정 전이라 UNCANNY_CONCLUSION으로 따로 둔다
+    ("U1-요약선언", "error", r"(?:핵심은|요컨대|한마디로 말하면|정리하면)", 1,
+     "결론·요약을 선언하는 해설자 문장. 지우고 장면으로 보여 준다"),
+    ("U2-셈이죠", "error", r"셈(?:이죠|입니다|이니까요|이에요)", 1,
+     "교훈을 한 줄로 접는 마무리 문장(대표 수정본은 전부 삭제). 지운다"),
+    # 규칙 2: 대구 프레임은 글당 1회
+    ("U3-대구프레임", "warn", r"[가-힣]+(?:이|가) 아니라 [^.?!\n]{1,40}(?:입니다|이다|다|죠)[.?!]", 2,
+     "'A가 아니라 B입니다' 대구가 2회 이상. 한 번만 남기거나 장면으로 바꾼다"),
+    # 규칙 6: 채팅 말투·추상 평가어·상투 은유(대표 2023~24 글 비율 0~1.7%)
+    ("U4-상투은유", "warn", r"(?:스노우볼|궤를 같이|문을 두드|다음 문을|여정|열쇠|나침반)", 1,
+     "AI가 즐겨 쓰는 은유. 대표의 구체 동작·감정 단어로 바꾼다"),
+    ("U5-인터뷰말투", "warn", r"(?:었|았|였|했|웠|렸)어요[.!]", 1,
+     "채팅 답변의 해요체 과거형을 그대로 옮김. 합니다체 또는 '~더군요/~네요'로 바꾼다"),
+    ("U6-추상평가어", "warn", r"(?:소극적으로|반가웠|용기가 생겼|뜻깊)", 1,
+     "추상 평가어. 몸으로 느낀 욕구·온도어(도전욕, 승부욕, 턱없이)로 바꾼다"),
+    # 규칙 5: 화자는 한성희(가상 장면, 3인칭 일반화 금지)
+    ("U7-가상장면", "error", r"가상의 (?:상황|예시|장면)", 1,
+     "가상 장면은 대표 글이 아니다. 대표의 실제 경험(다이얼로그) 장면으로 바꾸거나 빼고 쓴다"),
+    ("U9-3인칭대표", "warn", r"(?<![가-힣])대표(?:는|가|의|에게)(?![가-힣])", 3,
+     "'대표는…' 3인칭 일반화가 3회 이상. '저는/제가' 경험으로 옮긴다"),
+    # 규칙 3: 우리 쪽(에이전트·제품)은 이름으로 부른다. 익명화는 남(고객사)에만
+    ("U8-모호지칭", "warn", r"(?<![가-힣])(?:그|한|어떤) (?:에이전트|팀원|프로그램)", 2,
+     "주인공을 이름 없이 부름. 우리 쪽(에이전트·제품)은 이름·역할로 부른다(지투, CTO에이전트)"),
+    # 규칙 8: 감정 기호는 자기 처지에만
+    ("U10-ㅎㅎ", "warn", r"(?:ㅎㅎ|ㅋㅋ)", 1,
+     "합니다체 글의 ㅎㅎ. 빼거나 ';;;'·';-)'를 맞는 자리에 쓴다"),
+]
+# 규칙 1 중 "결론부터 말하면": 사장님 결정 전(분석 6절). 링크드인·경험글에서만 경고, 정보형 글(home·generic·carvit)엔 걸지 않는다
+UNCANNY_CONCLUSION = re.compile(r"결론부터 말(?:하면|씀드리면)")
+# 규칙 8: 마무리를 독자에게 되묻지 않는다
+UNCANNY_QUESTION_END = re.compile(r"(?:계신가요|있으신가요|어떨까요|하시나요|인가요)\?")
+# 규칙 7: 합니다체 경험글은 감탄 어미를 섞는다
+UNCANNY_EXCLAIM = re.compile(r"(?:더군요|더라고요|네요|하고요|거든요|군요)")
+
+
+def uncanny(text, context="generic"):
+    """불쾌한 골짜기 규칙 검사. (등급, 규칙, 이유) 목록을 돌려준다."""
+    out = []
+    for rid, lvl, pat, minc, why in UNCANNY_RULES:
+        hits = list(re.finditer(pat, text))
+        if len(hits) >= minc:
+            m = hits[0]
+            ex = text[max(0, m.start() - 15): m.end() + 15].replace("\n", " ")
+            out.append((lvl, rid, f"{len(hits)}회: {why} | 예: …{ex}…"))
+    paras = [p for p in re.split(r"\n\s*\n", text) if len(p.strip()) > 5 and not re.match(r"^\s*[-*]\s", p)]
+    if paras and UNCANNY_QUESTION_END.search(paras[-1]):
+        out.append(("warn", "U11-질문마무리", "마지막 문단이 독자에게 되묻는 질문. 대표 수정본은 권유·감정 기호로 닫았다"))
+    if context in EXPERIENCE_CONTEXTS:
+        n = len(UNCANNY_CONCLUSION.findall(text))
+        if n:
+            out.append(("warn", "U1-결론부터", f"'결론부터 말하면' {n}회: 경험글의 해설자 문장. 장면으로 보여 준다(사장님 결정 전이라 경고만)"))
+        ss = [x.strip() for x in re.split(r"(?<=[.?!])\s+|\n+", text) if len(re.sub(r"\W", "", x)) >= 4]
+        formal = sum(1 for x in ss if re.search(r"니다$", re.sub(r"[\s.?!~…;:\-)(ㅎ\"']+$", "", x)))
+        if len(re.sub(r"\s", "", text)) >= 600 and ss and formal / len(ss) > 0.5 and not UNCANNY_EXCLAIM.search(text):
+            out.append(("warn", "U12-감탄어미없음", "합니다체 경험글(600자 이상)에 '~더군요/~네요/~하고요/~거든요'가 한 번도 없음. 대표 수정본은 글당 2~3회"))
+    return out
+
+
 def lint(text, context="generic", title=None, sub=None, rb=None, body=False):
     """기계가 셀 수 있는 규칙만 검사한다. 판단이 필요한 품질은 독립 평가자가 한다."""
     rb = rb or load_rubrics()
@@ -177,6 +240,8 @@ def lint(text, context="generic", title=None, sub=None, rb=None, body=False):
         add("warn", "시점반복", "시점 표현이 되풀이된다: " + ", ".join(f"'{a}' {anchors.count(a)}회" for a in rep) + ". 시점은 한 곳에서 한 번 밝히고 뒤는 '그날'·'그 뒤'로 잇는다")
     elif len(set(anchors)) >= 3:
         add("warn", "시점혼재", "서로 다른 시점 표현이 " + str(len(set(anchors))) + "개: " + ", ".join(sorted(set(anchors))) + ". 사건 순서가 헷갈리지 않는지 처음부터 소리 내어 읽어 본다")
+    for lvl, rid, msg in uncanny(text, context):
+        add(lvl, rid, msg)
     level = 2 if any(i["level"] == "error" for i in issues) else (1 if issues else 0)
     return {"status": ["pass", "warn", "error"][level], "code": level, "issues": issues,
             "polite": pol, "plain": pla, "chars": len(text)}
@@ -568,7 +633,7 @@ def main(argv=None):
     sp = ap.add_subparsers(dest="cmd", required=True)
     a = sp.add_parser("route"); a.add_argument("request")
     a = sp.add_parser("lint"); a.add_argument("file", nargs="?"); a.add_argument("--text"); a.add_argument("--title"); a.add_argument("--sub")
-    a.add_argument("--context", choices=["carvit", "home", "generic"], default="generic"); a.add_argument("--json", action="store_true"); a.add_argument("--numbers", action="store_true"); a.add_argument("--body", action="store_true", help="홈페이지 글 본문 분량(900~1,500자)도 검사")
+    a.add_argument("--context", choices=["carvit", "home", "generic", "linkedin", "essay"], default="generic", help="linkedin·essay=경험글(불쾌한 골짜기 경험글 규칙까지 검사)"); a.add_argument("--json", action="store_true"); a.add_argument("--numbers", action="store_true"); a.add_argument("--body", action="store_true", help="홈페이지 글 본문 분량(900~1,500자)도 검사")
     a = sp.add_parser("card"); a.add_argument("kind"); a.add_argument("file")
     a = sp.add_parser("log"); a.add_argument("action", choices=["add"]); a.add_argument("--type", required=True); a.add_argument("--artifact", required=True)
     a.add_argument("--scores", required=True, help='JSON 문자열 또는 JSON 파일 경로'); a.add_argument("--evaluator", required=True)
