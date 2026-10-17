@@ -132,3 +132,46 @@ def test_old_rows_compatible(tmp_path):
     assert "개선 반영 안내" not in run(tmp_path, "due").stdout
     ship(tmp_path)
     assert rows(tmp_path)[0]["who"] == "jay" and rows(tmp_path)[0]["prs"] == [123, 124]
+
+
+def test_pr_repo_form_saved_and_shown(tmp_path):
+    run(tmp_path, "fb", "add", "--source", "면담", "--text", "t", "--customer", "고객2")
+    run(tmp_path, "fb", "ship", "F-1", "--pr", "carvit.ai#37", "--pr", "saegim#667", "--pr", "simplifier-saegim#668",
+        "--pr", "site#12", "--pr", "55", "--shipped", "2026-10-16", "--notice-what", "a", "--notice-next", "b")
+    assert rows(tmp_path)[0]["prs"] == ["carvit.ai#37", "saegim#667", "saegim#668", "site#12", 55]
+    due = run(tmp_path, "due").stdout
+    assert "PR carvit.ai#37, saegim#667, saegim#668, site#12, #55" in due
+    draft = run(tmp_path, "fb", "notice-draft", "F-1").stdout
+    assert "PR carvit.ai#37, saegim#667, saegim#668, site#12, #55" in draft
+
+
+def test_pr_repo_form_rejected(tmp_path):
+    run(tmp_path, "fb", "add", "--source", "면담", "--text", "t")
+    for bad in ("other#3", "carvit.ai#", "abc", "carvit.ai#x1"):
+        p = run(tmp_path, "fb", "ship", "F-1", "--pr", bad, "--shipped", "2026-10-16", "--notice-what", "a",
+                "--notice-next", "b", ok=False)
+        assert p.returncode != 0 and "허용 저장소" in p.stderr and "site=hansunghee7.github.io" in p.stderr
+    assert "prs" not in rows(tmp_path)[0]
+
+
+def test_template_missing_message(tmp_path):
+    import shutil
+    tool_dir = tmp_path / "solo"
+    tool_dir.mkdir()
+    shutil.copy(TOOL, tool_dir / "jitu_po.py")
+    data = tmp_path / "data"
+    run(data, "fb", "add", "--source", "면담", "--text", "t")
+    run(data, "fb", "ship", "F-1", "--pr", "1", "--shipped", "2026-10-16", "--notice-what", "a", "--notice-next", "b")
+    env = dict(os.environ, JITU_PO_DIR=str(data), JITU_PO_TODAY="2026-10-17", PYTHONIOENCODING="utf-8")
+    for k in ("JITU_PO_TEMPLATE", "JITU_PO_NOTICE_TEMPLATE"):
+        env.pop(k, None)
+    p = subprocess.run([sys.executable, "-X", "utf8", str(tool_dir / "jitu_po.py"), "fb", "notice-draft", "F-1"],
+                       capture_output=True, text=True, encoding="utf-8", env=env, cwd=str(tmp_path), stdin=subprocess.DEVNULL)
+    assert p.returncode == 1
+    assert "틀 파일을 찾지 못했습니다:" in p.stderr and "JITU_PO_TEMPLATE로 경로를 지정하세요." in p.stderr
+    assert "Traceback" not in p.stderr
+    # 환경변수로 지정하면 찾는다
+    env["JITU_PO_TEMPLATE"] = str(TOOL.parent.parent.parent / "docs" / "mailcopy" / "개선_반영_안내_틀.md")
+    p = subprocess.run([sys.executable, "-X", "utf8", str(tool_dir / "jitu_po.py"), "fb", "notice-draft", "F-1"],
+                       capture_output=True, text=True, encoding="utf-8", env=env, cwd=str(tmp_path), stdin=subprocess.DEVNULL)
+    assert p.returncode == 0 and "제목: " in p.stdout
