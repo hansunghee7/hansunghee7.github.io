@@ -75,6 +75,7 @@ def blocked_until(st, pool, now):
 def summary(now):
     st, rows, lines = load_state(), load_calls(now), []
     worst = 0
+    blocked, over_budget = [], []  # 붉은 이유를 맨 앞에 보이려고 모은다
     for pool, bud in BUDGET.items():
         used = [r for r in rows if r["pool"] == pool]
         ok = [r for r in used if r["rc"] == "0"]
@@ -84,10 +85,18 @@ def summary(now):
             part += f" / 예산 {bud['total']}"
             if len(used) >= bud["total"] * 0.8:
                 worst = max(worst, 1)
+                over_budget.append(f"{pool} 예산 {len(used)}/{bud['total']}회")
         if b:
             part += f" / 막힘, {b:%m-%d %H:%M} 풀림"
             worst = max(worst, 1)
+            blocked.append((pool, b))
         lines.append(part)
+    # 붉을 때(막힌 풀 있음 또는 예산 초과)는 원인을 맨 앞 한 줄로 — 정상 풀 숫자에 가려지지 않게
+    if blocked:
+        why = ", ".join(f"{pool} 막힘, {b:%m-%d %H:%M} 해제" for pool, b in blocked)
+        lines.insert(0, f"붉은 이유 = {why}")
+    elif over_budget:
+        lines.insert(0, f"붉은 이유 = {', '.join(over_budget)} 초과")
     return worst, lines
 
 
