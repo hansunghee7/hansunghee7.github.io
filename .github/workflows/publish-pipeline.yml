@@ -12,6 +12,8 @@ name: Publish log pipeline
 #      같은 내용으로 매번 다시 써서, 새 글이 필러 페이지에도 자동으로
 #      반영되게 한다(예전엔 수동 스냅샷이라 새 글이 안 잡혔음).
 #   6. sitemap.xml 동기화
+#   7. 새 글 표지의 640px webp 썸네일 생성(log_assets/thumbs/, 카테고리 허브·홈
+#      카드가 원본 대신 씀. 사장님 지시 2026-10-18, 사람 손 없이)
 # 을 실행하고, 바뀐 파일이 있으면 같은 브랜치에 커밋해서 되돌려 놓습니다.
 # 기존 글은 절대 건드리지 않도록 각 스크립트가 변경 없는 파일엔 손을 대지
 # 않는 것을 전제로 만들어졌습니다(스크립트 안 주석 참고) -- 이 전제 덕분에
@@ -53,7 +55,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: pip install pyyaml
+        run: pip install pyyaml pillow
 
       - name: Regenerate and commit (retries on push races)
         run: |
@@ -100,11 +102,15 @@ jobs:
             # 아님). 그 스텁은 log_assets/markdown/ 아래 생기므로 이미 그
             # 경로가 git add 대상에 포함돼 있다.
             python scripts/generate_short_links.py
+            # posts.json이 갱신된 뒤에 돌아야 새 글 표지가 목록에 잡힌다. 이미 있는
+            # 썸네일은 건너뛰어 멱등적이다. 이미지 하나가 깨져도 경고만 남기고
+            # 종료 코드 0이라 파이프라인을 막지 않는다.
+            python scripts/make_cover_thumbs.py
 
             # log_assets/images도 포함해야 합니다 -- sanitize_cover_images.py가
             # 이미지 파일 이름을 바꾸는데, 이걸 빼면 front matter만 새 이름으로
             # 커밋되고 실제 파일 이름은 옛날 그대로라 링크가 깨집니다.
-            git add log_assets/markdown log_assets/images log.html assets/data/posts.json _data/posts.json sitemap.xml
+            git add log_assets/markdown log_assets/images log_assets/thumbs log.html assets/data/posts.json _data/posts.json sitemap.xml
 
             if git diff --cached --quiet; then
               echo "커밋할 변경 없음"

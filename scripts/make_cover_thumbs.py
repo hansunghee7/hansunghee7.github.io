@@ -14,6 +14,11 @@ r"""
 이미 있으면 건너뛰므로 새 글이 생긴 뒤 다시 돌려도 된다.
 썸네일이 없는 새 글은 레이아웃의 onerror가 원본으로 대신 보여준다.
 
+자동 실행: .github/workflows/publish-pipeline.yml이 새 글이 main에 들어올 때마다
+이 스크립트를 돌리고 log_assets/thumbs/를 같은 커밋에 넣는다(사람 손 없음).
+그 파이프라인이 글 하나 때문에 멈추면 안 되므로, 이미지 하나가 깨져 있어도
+경고만 남기고 나머지를 계속 만든다(종료 코드는 0).
+
 사용법: python scripts/make_cover_thumbs.py
 """
 import json
@@ -32,7 +37,7 @@ def main():
     posts = json.load(open(os.path.join(ROOT, "_data", "posts.json"), encoding="utf8"))
     out_dir = os.path.join(ROOT, "log_assets", "thumbs")
     os.makedirs(out_dir, exist_ok=True)
-    made = skipped = missing = 0
+    made = skipped = missing = failed = 0
     for p in posts:
         img = p.get("image") or ""
         if not img.startswith("/log_assets/images/"):
@@ -51,13 +56,19 @@ def main():
         if not os.path.exists(src):
             missing += 1
             continue
-        with Image.open(src) as im:
-            im = im.convert("RGB")
-            if im.width > WIDTH:
-                im = im.resize((WIDTH, round(im.height * WIDTH / im.width)), Image.LANCZOS)
-            im.save(dst, "WEBP", quality=QUALITY, method=6)
-        made += 1
-    print(f"만듦 {made}, 이미 있음 {skipped}, 원본 없음 {missing}")
+        try:
+            with Image.open(src) as im:
+                im = im.convert("RGB")
+                if im.width > WIDTH:
+                    im = im.resize((WIDTH, round(im.height * WIDTH / im.width)), Image.LANCZOS)
+                im.save(dst, "WEBP", quality=QUALITY, method=6)
+            made += 1
+        except Exception as e:  # 깨진 이미지 하나가 발행 파이프라인 전체를 막지 않게
+            print(f"경고: 썸네일 실패 {src}: {e}", file=sys.stderr)
+            if os.path.exists(dst):
+                os.remove(dst)
+            failed += 1
+    print(f"만듦 {made}, 이미 있음 {skipped}, 원본 없음 {missing}, 실패 {failed}")
     return 0
 
 
