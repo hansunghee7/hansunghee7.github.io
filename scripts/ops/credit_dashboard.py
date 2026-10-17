@@ -9,6 +9,9 @@
      GCP(G18)·Anthropic(G19)·NVIDIA(G22) 행 → 규모·상태·만료·다음 할 일.
   2) GCP 실사용/잔여: vertex_budget.json 기준 잔액 − 이후 API 실사용(gcp_usage.py)으로 추정.
      tam-vertex 서비스 계정으로 Cloud Billing API 읽기를 시도하되, 막히면 '권한 필요'로 표기(억지로 뚫지 않음).
+  2b) GCP 전체 비용(인프라 포함·실측): Vertex뿐 아니라 saegim-mcp 서버 호스팅 등 모든 서비스 실비를
+     BigQuery 결제 export에서 서비스별로 읽는다(tam-vertex SA). 중요: Cloud Billing API v1은 결제계정 메타·
+     SKU 단가만 주고 '얼마 썼나'는 안 준다 — 실비는 export 경유가 유일. export 미설정·권한 없으면 '권한 필요'.
   3) 무료 모델 쿼터: quota.py status(비티·비티-sonnet·덱스) 파싱.
   4) Flow 영상 크레딧: 핏 영역 — flow_credits_local.jsonl의 계정별 최근 잔여 요약(상세는 핏 현황판).
   5) Claude Max 주간/5h: get_usage는 세션 전용 MCP라 스크립트가 못 부른다 → "세션에서만 실측"으로 명시,
@@ -24,6 +27,7 @@
 """
 import csv
 import json
+import os
 import subprocess
 import sys
 import time
@@ -151,6 +155,119 @@ def collect_gcp_actual():
     except Exception as e:  # noqa: BLE001
         row["note"] = f"vertex_budget.json 오류: {type(e).__name__}; {billing_msg}"
         row["_billing"] = {"ok": billing_ok, "msg": billing_msg}
+    return [row]
+
+
+# ---- 소스 2b: GCP 전체 비용(인프라 포함). Vertex뿐 아니라 saegim-mcp 서버 호스팅 등 모든 서비스 실비. ----
+# 읽는 길은 BigQuery 결제 export 하나뿐이다. Cloud Billing API v1(billingAccounts/billingInfo/services)은
+# "결제계정 메타·SKU 단가"만 주고 "실제 얼마 썼나"는 주지 않는다(2026-10-18 tam-vertex SA 실측 확인). 실비는
+# 결제계정→BigQuery export를 켠 뒤 그 데이터셋을 질의해야 나온다. export가 없거나 권한이 없으면 사유만 돌려준다.
+
+GCP_BILLING_PROJECT = os.environ.get("GCP_BILLING_PROJECT", "simplifier-vertex-credit")
+GCP_BILLING_BQ_DATASET = os.environ.get("GCP_BILLING_BQ_DATASET", "")  # 비우면 'billing' 들어간 데이터셋 자동 탐색
+
+
+def _bq_call(path, body=None, token=None, method="GET"):
+    import urllib.error
+    import urllib.request
+    url = "https://bigquery.googleapis.com/bigquery/v2/" + path
+    data = json.dumps(body).encode("utf-8") if body is not None else None
+    req = urllib.request.Request(url, data=data, method=method,
+                                 headers={"Authorization": "Bearer " + token,
+                                          "Content-Type": "application/json"})
+    with urllib.request.urlopen(req, timeout=60) as r:
+        return json.loads(r.read().decode("utf-8", "replace"))
+
+
+def read_gcp_total_cost(days=30):
+    """GCP 결제계정의 최근 N일 실비를 서비스별로 읽는다(BigQuery 결제 export 경유). tam-vertex SA 토큰.
+
+    돌려주는 값: (data, reason).
+      - data: {"total": 원화아닌원통화합, "currency": "KRW"/"USD", "by_service": [(서비스, 금액), ...],
+               "days": N, "project": 질의프로젝트} — 읽기 성공 시.
+      - data=None, reason="…": export 미설정·권한 없음·API 막힘 등. 억지로 뚫지 않고 사유만 전한다.
+    export 표준 테이블명은 gcp_billing_export_v1_<결제계정ID>. 데이터셋은 환경변수 또는 'billing' 포함 자동탐색.
+    """
+    import urllib.error
+    try:
+        import ask_vertex as av
+        token = av.sa_token()
+    except Exception as e:  # noqa: BLE001
+        return None, f"SA 토큰 로드 실패({type(e).__name__})"
+    if not token:
+        return None, "SA 토큰 없음(패스 envput 필요)"
+    proj = GCP_BILLING_PROJECT
+    try:
+        # 1) 데이터셋 찾기(환경변수 우선, 없으면 'billing' 포함 자동탐색)
+        ds = GCP_BILLING_BQ_DATASET
+        if not ds:
+            lst = _bq_call(f"projects/{proj}/datasets", token=token)
+            datasets = [d["datasetReference"]["datasetId"] for d in lst.get("datasets", [])]
+            if not datasets:
+                return None, "BigQuery 결제 export 미설정(데이터셋 없음) — 콘솔에서 export 켜야 함"
+            cand = [d for d in datasets if "billing" in d.lower()]
+            if not cand:
+                return None, f"결제 export 데이터셋 못 찾음(있는 데이터셋: {', '.join(datasets[:3])}…) — GCP_BILLING_BQ_DATASET 지정 필요"
+            ds = cand[0]
+        # 2) 서비스별 실비 질의(비용 + 크레딧 = 순비용). 표준 export 테이블 와일드카드.
+        sql = (
+            "SELECT service.description AS svc, currency AS cur, "
+            "SUM(cost) + SUM(IFNULL((SELECT SUM(c.amount) FROM UNNEST(credits) c), 0)) AS net "
+            f"FROM `{proj}.{ds}.gcp_billing_export_v1_*` "
+            f"WHERE usage_start_time >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL {int(days)} DAY) "
+            "GROUP BY svc, cur ORDER BY net DESC"
+        )
+        res = _bq_call(f"projects/{proj}/queries", body={"query": sql, "useLegacySql": False, "timeoutMs": 55000},
+                       token=token, method="POST")
+        rows = res.get("rows", [])
+        by_service = []
+        total = 0.0
+        currency = ""
+        for r in rows:
+            f = r.get("f", [])
+            svc = f[0].get("v") if len(f) > 0 else "?"
+            cur = f[1].get("v") if len(f) > 1 else ""
+            net = float(f[2].get("v") or 0) if len(f) > 2 else 0.0
+            currency = currency or cur
+            by_service.append((svc or "(미분류)", net))
+            total += net
+        return {"total": total, "currency": currency or "?", "by_service": by_service,
+                "days": days, "project": proj}, "OK"
+    except urllib.error.HTTPError as e:
+        code = e.code
+        try:
+            msg = json.loads(e.read().decode("utf-8", "replace")).get("error", {}).get("message", "")
+        except Exception:  # noqa: BLE001
+            msg = ""
+        if code == 403:
+            if "gcp_billing_export" in msg or "Not found: Table" in msg:
+                return None, "결제 export 테이블 없음 — 콘솔에서 export 켜야 함"
+            return None, "BigQuery/결제 export 읽기 권한 필요(SA에 bigquery.dataViewer+jobUser 부여 필요)"
+        if code == 404:
+            return None, "export 테이블 없음(gcp_billing_export_v1_*) — 콘솔에서 export 켜야 함"
+        return None, f"BigQuery HTTP {code}"
+    except Exception as e:  # noqa: BLE001
+        return None, f"GCP 전체비용 읽기 실패({type(e).__name__})"
+
+
+def collect_gcp_total(days=30):
+    """소스 2b 행: GCP 전체 비용(인프라 포함, 실측). 읽히면 서비스별 합, 안 되면 '권한 필요'."""
+    row = {"name": "GCP 전체 비용(인프라 포함·실측)", "scale": f"최근 {days}일", "used": "권한 필요",
+           "expiry": "—", "state": "권한 필요", "note": ""}
+    data, reason = read_gcp_total_cost(days)
+    if data is None:
+        row["note"] = _short(reason, 72)
+        row["_gcp_total"] = {"ok": False, "reason": reason}
+        return [row]
+    cur = data["currency"]
+    sym = "₩" if cur == "KRW" else ("$" if cur == "USD" else "")
+    top = ", ".join(f"{s} {sym}{v:,.0f}" for s, v in data["by_service"][:3]) or "내역 없음"
+    row["scale"] = f"최근 {days}일 · {data['project']}"
+    row["used"] = f"합계 {sym}{data['total']:,.0f} ({cur})"
+    row["state"] = "실측"
+    row["note"] = _short("상위: " + top, 72)
+    row["_gcp_total"] = {"ok": True, "total": data["total"], "currency": cur,
+                         "by_service": data["by_service"], "days": days}
     return [row]
 
 
@@ -303,6 +420,7 @@ def gather():
     rows = []
     rows += collect_grants()
     rows += collect_gcp_actual()
+    rows += collect_gcp_total()
     rows += collect_quota()
     rows += collect_flow()
     rows += collect_claude_max()
@@ -392,6 +510,10 @@ def cmd_refresh():
     b = next((r.get("_billing") for r in state["rows"] if r.get("_billing")), None)
     if b:
         print(f"[refresh] GCP billing 읽기: {'가능' if b['ok'] else '불가'} — {b['msg']}")
+    g = next((r.get("_gcp_total") for r in state["rows"] if r.get("_gcp_total")), None)
+    if g:
+        print(f"[refresh] GCP 전체비용(실측): {'가능' if g['ok'] else '권한 필요'} — "
+              f"{g.get('reason') if not g['ok'] else format(g.get('total', 0), ',.0f') + ' ' + g.get('currency', '')}")
     return 0
 
 
