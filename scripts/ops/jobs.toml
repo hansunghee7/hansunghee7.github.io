@@ -109,7 +109,7 @@ kind = "cmd"
 cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\quota.py', "watch"]
 every_min = 60
 name = "외부 모델 무료 한도(비티·덱스, quota.py)"
-note = "2026-10-03 탐 등록(사장님 지시: 한도는 탐이 관리). 막힘(한도 오류 기록, 풀림 시각까지)이나 주간 예산 80% 이상이면 붉음. 비티 제미나이 주 10회 추정 중 핏 3·탐 7. 상세 docs/processes/비티_한도_조건.md. 붉을 때 할 일: 출처가 필요 없는 일은 BT_MODEL=claude-sonnet-4-6, 웹 출처가 필요한 일은 덱스."
+note = "2026-10-03 탐 등록(사장님 지시: 한도는 탐이 관리). 막힘(한도 오류 기록, 풀림 시각까지)이나 주간 예산 80% 이상이면 붉음. 비티 제미나이 주 10회 추정 중 핏 3·탐 7. 상세 docs/processes/비티_한도_조건.md. 붉을 때 할 일: 출처가 필요 없는 일은 BT_MODEL=claude-sonnet-4-6, 웹 출처가 필요한 일은 덱스. [리셋 실측 2026-10-18 탐 N112] 리셋은 고정 시각이 아니라 '막힌 순간부터 롤링'이다(quota.py parse_reset: blocked_until = hit_at + 오류의 Resets-in, 매 60분 watch가 이미 정확히 반영하므로 별도 예약 점검 불필요). 실측: 비티 10/3 hit→Resets in 130h14m(≈5.4일), 비티-sonnet 10/14 hit→81h33m(≈3.4일)로 두 풀 다 데이터 1건씩이라 '주기 고정'은 추정. 덱스는 quota_state에 안 잡히고 agent_calls.csv limit_hit로만 보임(최근 7일 28회), 복구 중앙값 0.2h·최대 8.7h의 짧은 롤링이라 고정 리셋 시각 없음(추정). 결론: 고정 리셋시각 기반 예약 작업은 추가 안 함 — 롤링 모델이라 현 watch로 충분."
 
 [[job]]
 id = "fn:vertex-credit"
