@@ -280,7 +280,7 @@ def render(res):
     for e in res.get('eps', []):
         at = e['at']
         if at.endswith('Z'):  # 컨펌대장은 UTC로 적는다, 사람 눈엔 한국 시각
-            at = time.strftime('%Y-%m-%d %H:%M', time.gmtime(time.mktime(time.strptime(at[:19], '%Y-%m-%dT%H:%M:%S')) - time.timezone + 9 * 3600)) + ' KST'
+            at = time.strftime('%Y-%m-%d %H:%M', time.gmtime(time.mktime(time.strptime(at[:16], '%Y-%m-%dT%H:%M')) - time.timezone + 9 * 3600)) + ' KST'
         lines.append(f"· 편 상태(정본=컨펌대장 마지막 사건) [{e['ep']}] {at[:20]} {e['gate']} {e['st']}: {e['x'][:120]}")
     for g in res.get('grants', []):
         lines.append(f"· 지원현황(정본=지원현황 DB) [{g['no']}] {g['t'][:60]} — 상태 {g['st']} ({g['at']})" + (f" / {g['memo'][:100]}" if g['memo'] else '') + (f" / 다음: {g['next'][:80]}" if g['next'] else ''))
