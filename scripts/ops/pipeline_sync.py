@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 """수집 파이프 대장 밀도 동기화(2026-10-11): 감시 대장이 이미 아는 '마지막 성공'을 data_pipelines 에 옮긴다.
 근거: 감시가 쓰는 상태 기록 C:/work/_ops/state.json(상태판 STATUS.md 와 같은 내용의 기계용 사본, jobs.toml 항목 id 로 색인).
-방법: `pipeline_db.py stale` 로 신선도를 넘긴 파이프와 감시 id 를 읽고(성공 기록이 오래된 것은 감시가 ok일 때만), 감시 상태가 ok/fail 이면 `pipeline_db.py add-run` 을 호출한다(DB 직접 쓰기 없음, 키 값은 이 코드에 없다).
+방법(10/18 eager): 기준을 넘긴 파이프뿐 아니라 대장 last_success 가 감시의 실제 최신 성공보다 낡은 파이프도 옮긴다(freshness 기준값은 그대로).
+`pipeline_db.py stale` 로 신선도를 넘긴 파이프와 감시 id 를 읽고(성공 기록이 오래된 것은 감시가 ok일 때만), 감시 상태가 ok/fail 이면 `pipeline_db.py add-run` 을 호출한다(DB 직접 쓰기 없음, 키 값은 이 코드에 없다).
 근거를 못 찾은 파이프는 건드리지 않고 목록만 낸다.
 사용: python scripts/ops/pipeline_sync.py [--dry] [--state 경로]"""
 import argparse
+import datetime
 import json
 import os
 import re
@@ -92,6 +94,64 @@ def pick_evidence(watch, state, gh=None):
     return ev
 
 
+def parse_last_success(text):
+    """`pipeline_db.py last-success` 출력 -> {slug: (last_success datetime 또는 None, 감시 id 또는 None)}"""
+    out = {}
+    for ln in text.splitlines():
+        parts = ln.split('\t')
+        if len(parts) != 3:
+            continue
+        slug, ls, watch = parts
+        out[slug] = (to_dt(ls) if ls != '-' else None, None if watch in ('-', '') else watch)
+    return out
+
+
+def to_dt(s):
+    """ISO 문자열 -> 시간대 있는 datetime(시간대 없으면 로컬로 본다). 못 읽으면 None."""
+    try:
+        t = datetime.datetime.fromisoformat(str(s).strip().replace('Z', '+00:00'))
+    except ValueError:
+        return None
+    return t.astimezone() if t.tzinfo is None else t
+
+
+def ledger_is_behind(last_success, at):
+    """대장 last_success 가 근거 시각보다 낡았으면 True(근거 시각을 못 읽으면 False). add-run 이 멱등 키가 없어,
+    옮긴 뒤엔 ran_at=근거 시각이 되어 이 값이 거짓이 되는 것이 순차 재실행 중복을 막는 보호다(동시 실행은 못 막음)."""
+    t = to_dt(at)
+    if t is None:
+        return False
+    return last_success is None or last_success < t
+
+
+def real_run_time(ev):
+    """근거 시각이 '실제 마지막 실행/성공 시각'인지(감시 점검 시각이면 점검마다 새 값이라 eager 대상에서 뺀다: 점검 때마다 행이 쌓이는 것을 막는다)."""
+    return '감시 점검' not in ev[1]
+
+
+def plan(stale_rows, ledger, state, gh=None):
+    """(todo, none) 계산. 기준을 넘긴 줄(stale_rows)과 '대장이 현실보다 낡은' 파이프(ledger 전체)를 합친다.
+    성공 근거는 대장이 낡았을 때만 옮긴다. 실패 근거는 기준을 넘긴 파이프에서만 옮긴다(기존 동작)."""
+    todo, none, seen = [], [], set()
+    for slug, watch, no_record in stale_rows:
+        seen.add(slug)
+        ev = pick_evidence(watch, state, gh)
+        last = ledger.get(slug, (None, None))[0]
+        if ev and ev[0] and not ledger_is_behind(last, ev[2]):
+            none.append(f"{slug} (감시 {watch or '-'}, 대장이 이미 최신)")
+        elif ev and (no_record or ev[0]):
+            todo.append((slug, ev))
+        else:
+            none.append(f"{slug} (감시 {watch or '-'})")
+    for slug, (last, watch) in sorted(ledger.items()):
+        if slug in seen or not watch:
+            continue
+        ev = pick_evidence(watch, state, gh)
+        if ev and ev[0] and real_run_time(ev) and ledger_is_behind(last, ev[2]):
+            todo.append((slug, ev))
+    return todo, none
+
+
 def run_tool(*args):
     r = subprocess.run([sys.executable, '-X', 'utf8', DB_TOOL, *args], capture_output=True, text=True, encoding='utf-8',
                        creationflags=NOWIN, timeout=60)
@@ -115,14 +175,11 @@ def main(argv=None):
     if code:
         sys.exit('stale 조회 실패: ' + out[:200])
     rows = parse_stale(out)
-    todo, none = [], []
-    for slug, watch, no_record in rows:
-        ev = pick_evidence(watch, state)
-        if ev and (no_record or ev[0]):
-            todo.append((slug, ev))
-        else:
-            none.append(f"{slug} (감시 {watch or '-'})")
-    print(f"stale {len(rows)}개 중 근거 있음 {len(todo)}, 근거 없음 {len(none)}")
+    code, lout = run_tool('last-success')
+    if code:
+        sys.exit('last-success 조회 실패: ' + lout[:200])
+    todo, none = plan(rows, parse_last_success(lout), state)
+    print(f"stale {len(rows)}개 중 옮길 것 {len(todo)}, 근거 없음 {len(none)}")
     for slug, (ok, note, at) in todo:
         flag = 'yes' if ok else 'no'
         if a.dry:

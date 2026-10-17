@@ -150,6 +150,12 @@ def cmd_status(a):
     print('\n합계: ' + ', '.join(f'{k} {v}' for k, v in cnt.items()) + f', stale {stale}')
 
 
+def cmd_last_success(a):
+    """조회 전용: 모든 파이프의 대장 last_success(UTC ISO, 없으면 -)와 감시 id 를 탭으로 구분해 한 줄씩 낸다(pipeline_sync 의 낡음 판정용)."""
+    for r in sel('v_pipeline_status', order='slug.asc'):
+        print(f"{r['slug']}\t{r.get('last_success') or '-'}\t{r.get('watch_job_id') or '-'}")
+
+
 def cmd_stale(a):
     rows = [r for r in sel('v_pipeline_status', order='slug.asc') if r.get('stale')]
     if not rows:
@@ -323,6 +329,7 @@ def build_parser():
     sub = ap.add_subparsers(dest='cmd', required=True)
     sub.add_parser('status')
     sub.add_parser('stale')
+    sub.add_parser('last-success')
     sub.add_parser('ledgers')
     p = sub.add_parser('howto'); p.add_argument('slug')
     p = sub.add_parser('add-run'); p.add_argument('slug')
@@ -340,7 +347,7 @@ def build_parser():
     return ap
 
 
-CMDS = {'status': cmd_status, 'stale': cmd_stale, 'howto': cmd_howto, 'ledgers': cmd_ledgers, 'add-run': cmd_add_run,
+CMDS = {'status': cmd_status, 'stale': cmd_stale, 'last-success': cmd_last_success, 'howto': cmd_howto, 'ledgers': cmd_ledgers, 'add-run': cmd_add_run,
         'set-status': cmd_set_status, 'register': cmd_register, 'seed': cmd_seed}
 
 
