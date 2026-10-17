@@ -69,11 +69,12 @@ def _calc_p90(data: list[float]) -> float:
 def recommend_threshold(intervals: list[float]) -> dict[str, Any]:
     """관측된 간격 데이터를 바탕으로 통계 지표와 권장 신선도 기준을 계산하는 순수 함수.
 
-    공식: recommended = math.ceil(max(관측 최대 간격 * 1.5, 중앙값 * 3))
+    공식: recommended = math.ceil(max(p90 간격 * 1.5, 중앙값 * 3))
     - 중앙값 * 3: GitHub 큐 지연이나 단발성 일시 장애로 2회 연속 누락되어도
                  경계값 거짓 경보(False Alarm)를 내지 않도록 완충.
-    - 최대 간격 * 1.5: 주말·야간 스케줄 불규칙성이나 관측된 최장 배치 간격을
-                      안전하게 수용하여 진짜 영구 정지만 감지.
+    - p90 간격 * 1.5: 주말·야간 스케줄 불규칙성을 수용하되, 단일 이상치(한 번의
+                     비정상적 큰 간격)가 기준을 부풀려 장애 감지를 늦추지 않도록
+                     최대 대신 p90(상위 10% 경계)을 쓴다. (덱스 슈퍼리뷰 2026-10-18)
 
     Args:
         intervals: 성공 실행 간 간격(h) 리스트
@@ -101,8 +102,8 @@ def recommend_threshold(intervals: list[float]) -> dict[str, Any]:
     m_val = round(max(intervals), 2)
     p90_val = round(_calc_p90(intervals), 2)
 
-    # 공식 적용 후 시간 단위 올림
-    raw_rec = max(m_val * 1.5, med * 3.0)
+    # 공식 적용 후 시간 단위 올림. 최대 대신 p90을 써서 단일 이상치에 덜 민감(덱스 슈퍼리뷰).
+    raw_rec = max(p90_val * 1.5, med * 3.0)
     rec = int(math.ceil(raw_rec))
 
     return {

@@ -30,11 +30,12 @@ def test_intervals_hours_too_few():
 
 
 def test_recommend_threshold_normal_calculation():
-    """정상 표본: max(max*1.5, median*3) 올림. [1,2,2,5] -> max(7.5,6.0)=7.5 -> 8."""
+    """정상 표본: max(p90*1.5, median*3) 올림. [1,2,2,5] -> p90=4.1, max(6.15,6.0)=6.15 -> 7."""
     result = recommend_threshold([1.0, 2.0, 2.0, 5.0])
-    assert result["recommended"] == 8
+    assert result["recommended"] == 7
     assert result["median"] == 2.0
     assert result["max"] == 5.0
+    assert result["p90"] == 4.1
     assert result["comment"] == "정상 산출"
 
 
