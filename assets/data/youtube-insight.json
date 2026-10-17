@@ -268,8 +268,8 @@
         },
         {
           "date": "2026-10-17",
-          "views": 4543,
-          "likes": 28,
+          "views": 4544,
+          "likes": 29,
           "comments": 4
         }
       ],
@@ -566,7 +566,7 @@
         },
         {
           "date": "2026-10-17",
-          "views": 5191,
+          "views": 5192,
           "likes": 34,
           "comments": 5
         }
@@ -595,16 +595,16 @@
           "published_at": "2026-10-14T09:37:15Z"
         },
         {
-          "author": "@ejay0509",
-          "text": "아파트는 철옹성이다 ㅡ군사요새같지 !  요새는 어플깔고 어플에 등록하고 들어오라고 한다 어이가 없지 !  ㅡㅡ시대에역행 하는 폐쇄적사고와 생활방식",
-          "likes": 1,
-          "published_at": "2026-09-02T22:57:28Z"
-        },
-        {
           "author": "@ubin1757",
           "text": "잘못된게진짜많네요",
           "likes": 1,
           "published_at": "2026-09-03T00:13:16Z"
+        },
+        {
+          "author": "@ejay0509",
+          "text": "아파트는 철옹성이다 ㅡ군사요새같지 !  요새는 어플깔고 어플에 등록하고 들어오라고 한다 어이가 없지 !  ㅡㅡ시대에역행 하는 폐쇄적사고와 생활방식",
+          "likes": 1,
+          "published_at": "2026-09-02T22:57:28Z"
         }
       ]
     },
@@ -1594,7 +1594,7 @@
         },
         {
           "date": "2026-10-17",
-          "views": 381,
+          "views": 382,
           "likes": 6,
           "comments": 0
         }
@@ -1800,7 +1800,7 @@
         },
         {
           "date": "2026-10-17",
-          "views": 1587,
+          "views": 1589,
           "likes": 16,
           "comments": 1
         }
@@ -2370,7 +2370,7 @@
         },
         {
           "date": "2026-10-17",
-          "views": 3201,
+          "views": 3202,
           "likes": 29,
           "comments": 1
         }
@@ -3178,7 +3178,7 @@
         },
         {
           "date": "2026-10-17",
-          "views": 837,
+          "views": 844,
           "likes": 7,
           "comments": 0
         }
@@ -3264,7 +3264,7 @@
         },
         {
           "date": "2026-10-17",
-          "views": 1438,
+          "views": 1439,
           "likes": 11,
           "comments": 1
         }
@@ -3352,7 +3352,7 @@
         },
         {
           "date": "2026-10-17",
-          "views": 1858,
+          "views": 1859,
           "likes": 12,
           "comments": 0
         }
@@ -3626,7 +3626,7 @@
         },
         {
           "date": "2026-10-17",
-          "views": 1222,
+          "views": 1224,
           "likes": 18,
           "comments": 1
         }
@@ -3660,7 +3660,7 @@
         },
         {
           "date": "2026-10-17",
-          "views": 1486,
+          "views": 1493,
           "likes": 32,
           "comments": 2
         }
@@ -3694,7 +3694,7 @@
         },
         {
           "date": "2026-10-17",
-          "views": 1435,
+          "views": 1436,
           "likes": 12,
           "comments": 1
         }
@@ -3722,7 +3722,7 @@
         },
         {
           "date": "2026-10-17",
-          "views": 11,
+          "views": 12,
           "likes": 1,
           "comments": 1
         }
@@ -3737,6 +3737,28 @@
           "text": "무거운 가구나 짐을 옮길 때 직접 써보신 기발한 요령이 있으신가요?",
           "likes": 0,
           "published_at": "2026-10-16T08:32:16Z"
+        }
+      ]
+    },
+    "Fsb5YCMIUuo": {
+      "history": [
+        {
+          "date": "2026-10-17",
+          "views": 1254,
+          "likes": 16,
+          "comments": 1
+        }
+      ],
+      "title": "사전점검 때 완벽했던 아파트가 입주 후 금이 가는 이유",
+      "published_at": "2026-10-17T08:00:03Z",
+      "thumbnail": "https://i.ytimg.com/vi/Fsb5YCMIUuo/maxresdefault.jpg",
+      "duration_seconds": 84,
+      "top_comments": [
+        {
+          "author": "@sinkihanapt",
+          "text": "사전점검 때는 멀쩡했는데 입주 후 뒤늦게 발견해 속상했던 하자가 있으신가요?",
+          "likes": 1,
+          "published_at": "2026-10-17T08:32:14Z"
         }
       ]
     }
@@ -4010,13 +4032,13 @@
       },
       {
         "date": "2026-10-17",
-        "subscribers": 70,
-        "total_views": 37400,
-        "video_count": 30
+        "subscribers": 73,
+        "total_views": 39077,
+        "video_count": 32
       }
     ],
     "title": "신기한 아파트 사전",
     "id": "UCTbS2jSG1BvBl4c6EsVx7sA"
   },
-  "updated_at": "2026-10-16T22:59:05.654746Z"
+  "updated_at": "2026-10-17T13:53:38.940008Z"
 }
