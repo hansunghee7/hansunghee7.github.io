@@ -221,7 +221,7 @@
   .card-item:hover{ border-color:rgba(245,243,238,0.25); transform:translateY(-4px); }
   .card-item:hover .card-thumb{ transform:scale(1.05); }
   .card-thumb-wrap{ width:100%; aspect-ratio:1.9/1; overflow:hidden; position:relative; border-bottom:1px solid rgba(245,243,238,0.05); background-color:#14140f; }
-  .card-thumb{ width:100%; height:100%; background-size:cover; background-position:center; transition:transform .4s ease; }
+  .card-thumb{ display:block; width:100%; height:100%; object-fit:cover; object-position:center; transition:transform .4s ease; }
   .card-content{ padding:12px; display:flex; flex-direction:column; justify-content:flex-start; flex-grow:1; }
   .card-meta{ display:flex; align-items:baseline; justify-content:space-between; gap:10px; margin-bottom:4px; }
   .card-category{ font-size:11.5px; color:#8f8b82; font-weight:500; margin:0; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-transform:uppercase; letter-spacing:0.05em; }
@@ -291,7 +291,12 @@
   <div class="card-grid" id="cardGrid">
     {% for p in topic_posts %}
     <a href="{{ p.url }}" class="card-item">
-      <div class="card-thumb-wrap"><div class="card-thumb" style="background-image: url('{{ p.image }}');"></div></div>
+      {% comment %} 표지는 CSS background-image가 아니라 <img loading="lazy">로 건다.
+         background-image는 화면 밖 카드까지 144장을 한 번에 받아 한 페이지가 18MB까지
+         나갔다(2026-10-17 북 QA). 썸네일(640px webp)은 scripts/make_cover_thumbs.py가
+         만들고, 아직 없는 새 글은 onerror가 원본으로 대신 보여준다. {% endcomment %}
+      {% assign thumb_src = p.image | replace: "/log_assets/images/", "/log_assets/thumbs/" | replace: ".jpg", ".webp" %}
+      <div class="card-thumb-wrap"><img class="card-thumb" src="{{ thumb_src }}" alt="" width="640" height="337" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='{{ p.image }}'"></div>
       <div class="card-content">
         <div class="card-meta">
           <div class="card-category">{{ p.category }}</div>

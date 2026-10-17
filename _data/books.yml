@@ -9,7 +9,7 @@ books:
     isbn: "9791171520947"
     pages: 240
     price: 18000
-    cover_image: "/assets/books/book-question.png"
+    cover_image: "/assets/books/book-question.webp"
     purchase_url: "https://www.yes24.com/product/goods/147079674"
     retailers:
       - name: "예스24"
@@ -93,7 +93,7 @@ books:
     isbn: "9791171521470"
     pages: 214
     price: 17000
-    cover_image: "/assets/books/book-ux.png"
+    cover_image: "/assets/books/book-ux.webp"
     purchase_url: "https://www.yes24.com/product/goods/193444437"
     retailers:
       - name: "예스24"
