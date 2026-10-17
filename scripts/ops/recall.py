@@ -275,6 +275,43 @@ def query(text, n_cards=3, n_boss=3, n_logs=2, min_hits=2, history=False):
             'eps': [dict(eps[e], ep=e) for e in ep_hit[:3]], 'grants': [g for _, g in gs[:2]]}
 
 
+def _embed(text):
+    """질의 임베딩(로컬 bge-m3). ollama가 꺼져 있으면 None → kb_search는 trgm+주입만 쓴다. 절대 예외를 올리지 않는다."""
+    try:
+        import json as _json
+        import urllib.request
+        req = urllib.request.Request('http://127.0.0.1:11434/api/embeddings',
+                                     data=_json.dumps({'model': 'bge-m3', 'prompt': text[:3000]}).encode(),
+                                     headers={'Content-Type': 'application/json'})
+        v = _json.loads(urllib.request.urlopen(req, timeout=3).read())['embedding']
+        return v + [0.0] * (1024 - len(v))
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def kb_layer(text, match_count=8):
+    """1차 검색에 지식DB 층(자원·정본·문서임베딩)을 추가로 읽는다(kb_search RPC). 기존 캐시 기반 검색은 그대로 두고 덧붙이기만 한다.
+    RPC 미적용·DB 오류·ollama 꺼짐 어느 경우든 조용히 빈 목록(1차 검색 영향 없음)."""
+    try:
+        import opsdb
+        rows = opsdb.rpc('kb_search', {'q': text, 'q_embedding': _embed(text), 'match_count': match_count})
+        return rows if isinstance(rows, list) else []
+    except Exception:  # noqa: BLE001
+        return []
+
+
+def render_kb(rows):
+    lines = []
+    for r in rows:
+        if r.get('rank') == 0:  # 결정적 주입(자원·정본): 0순위 권위
+            fresh = f" (확인 {str(r.get('last_verified'))[:10]})" if r.get('last_verified') else ''
+            state = f" [{r.get('fact_state')}]" if r.get('fact_state') else ''
+            lines.append(f"· 지식DB 0순위[{r.get('src')}:{r.get('ref_id')}] {r.get('title')}: {(r.get('content') or '')[:180]}{state}{fresh}")
+        else:
+            lines.append(f"· 지식DB 문서[{r.get('ref_id')}] {r.get('title')} ({r.get('dt')}): {(r.get('content') or '')[:120]}")
+    return lines
+
+
 def render(res):
     lines = []
     for e in res.get('eps', []):
@@ -308,16 +345,21 @@ def main():
         if not prompt or len(prompt) < 8 or prompt.lstrip().startswith(('<', '/')) or 'SYSTEM NOTIFICATION' in prompt[:200]:
             return
         res = query(prompt)
-        if res and (res['cards'] or res['boss'] or res.get('logs') or res.get('eps')):
-            print('[기억 도우미] 이 주제로 프로세스표(수파베이스)·사장님 말 원장·업무 기록에 이미 있는 기억입니다. 답하기 전에 이것과 모순되지 않게 하세요:')
-            print('\n'.join(render(res)))
+        kb = render_kb(kb_layer(prompt))
+        has_cache = res and (res['cards'] or res['boss'] or res.get('logs') or res.get('eps'))
+        if has_cache or kb:
+            print('[기억 도우미] 이 주제로 프로세스표(수파베이스)·사장님 말 원장·업무 기록·지식DB에 이미 있는 기억입니다. 답하기 전에 이것과 모순되지 않게 하세요:')
+            if has_cache:
+                print('\n'.join(render(res)))
+            if kb:
+                print('\n'.join(kb))
         return
     hist = '--history' in a
     text = ' '.join(x for x in a if x != '--history')
     res = query(text, history=hist)
     if res is None:
         sys.exit('캐시가 없습니다: python scripts/ops/recall.py build')
-    out = render(res)
+    out = render(res) + render_kb(kb_layer(text))
     print('\n'.join(out) if out else '(관련 기억 없음)')
 
 
