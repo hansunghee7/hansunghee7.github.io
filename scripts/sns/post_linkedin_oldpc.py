@@ -30,7 +30,7 @@ def main():
     # 게시 전 관문: 규칙 정본은 같은 폴더의 post_gate.py(구PC에도 같이 복사, 공용-에이전트마찰개선 #5)
     sys.path.insert(0, str(Path(__file__).resolve().parent))
     from post_gate import text_problems
-    problems = text_problems(text, a.title)
+    problems = text_problems(text, a.title, "linkedin")
     if problems:
         print(json.dumps({"status": "STOP", "why": problems}, ensure_ascii=False))
         return 1

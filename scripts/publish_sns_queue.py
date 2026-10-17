@@ -158,7 +158,7 @@ def policy_problem(item):
     # 큐 본문에는 제목이 따로 있어(final_body가 붙인다) 첫 줄 검사는 하지 않는다.
     sys.path.insert(0, str(Path(__file__).resolve().parent / "sns"))
     from post_gate import text_problems
-    problems = text_problems(content.get("body") or "")
+    problems = text_problems(content.get("body") or "", channel=item.get("platform") or "")
     if problems:
         return problems[0]
     return image_check_problem(item)
