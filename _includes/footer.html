@@ -31,12 +31,14 @@
       <div class="footer-brand">
         <!-- 기본 로고 이미지 경로 통일 -->
         <img src="/log_assets/images/logo_white.png" alt="Simplifier">
-        <p>복잡함을 단순화하는 순간<br>성장은 자연스럽게 따라옵니다.</p>
+        <p>{% if page.lang == 'en' %}The moment you simplify complexity,<br>growth follows naturally.{% else %}복잡함을 단순화하는 순간<br>성장은 자연스럽게 따라옵니다.{% endif %}</p>
       </div>
       <div class="footer-info">
-        <p>주식회사 심플리파이어</p>
+{% if page.lang == 'en' %}        <p>Simplifier Inc.</p>
+        <p>Suite 388, 3F, Seonggok Bldg., 128 Teheran-ro, Gangnam-gu, Seoul, Republic of Korea</p>
+        <p>CEO Han Sunghee</p>{% else %}        <p>주식회사 심플리파이어</p>
         <p>서울 강남구 테헤란로 128 성곡빌딩 3F 388호</p>
-        <p>대표 한성희</p>
+        <p>대표 한성희</p>{% endif %}
       </div>
     </div>
     <div class="footer-bottom">

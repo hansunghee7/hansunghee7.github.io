@@ -1,0 +1,10 @@
+# 한국어 페이지와 영어 페이지의 짝(언어별 고유 URL).
+# _includes/hreflang.html(hreflang 링크)과 _includes/header.html(언어 링크)이 읽는다.
+# 페이지 front matter에 ko_url/en_url을 두면 그 값이 이 표보다 우선한다.
+# 짝이 없는 페이지(블로그 글 등)의 언어 링크는 /en/ 또는 / 홈으로 간다.
+- ko: /
+  en: /en/
+- ko: /about/
+  en: /en/about/
+- ko: /speaking/
+  en: /en/speaking/
