@@ -702,12 +702,12 @@
       ]
     },
     "publishAt": "2026-10-17T05:41:00.000Z",
-    "status": "pending",
+    "status": "error",
     "image_check": {
       "file": "assets/data/image_scores/2026-10-17-fb-641.json",
       "boss_pick": "팀 단체 사진 그대로 올리세요.. 지투이야기는 흥미를 끌기위한 목적이고 / 팀을 소개시키는게 본질적인 목표임 (사장님 2026-10-17 채팅)"
     },
-    "note": "사장님 지시로 홈페이지 641 공개(10/17) 직후 전 SNS 게시. 본문은 사장님 수정본 그대로, 끝 팀 링크만 SNS 규칙(로그 링크 1개+CTA)으로 바꿈.",
+    "note": "정책 관문: 이미지 채점 검증 오류(실패 폐쇄): FileNotFoundError: [Errno 2] No such file or directory: '/home/runner/work/hansunghee7.github.io/hansunghee7.github.io/log_assets/images\\\\641_AI에이전트에게 조심스러워지게 된 사연_cover.jpg'",
     "approved_by": "사장님",
     "approved_quote": "전 SNS에 ... 에이전트에 조심스러워진 사연 한방에 올리죠 (2026-10-17 14시대, 채팅. 홈페이지 641 먼저 공개한 뒤 바로 게시)"
   },
@@ -727,12 +727,12 @@
       ]
     },
     "publishAt": "2026-10-17T05:41:00.000Z",
-    "status": "pending",
+    "status": "error",
     "image_check": {
       "file": "assets/data/image_scores/2026-10-17-ig-641.json",
       "boss_pick": "팀 단체 사진 그대로 올리세요.. 지투이야기는 흥미를 끌기위한 목적이고 / 팀을 소개시키는게 본질적인 목표임 (사장님 2026-10-17 채팅)"
     },
-    "note": "사장님 지시로 홈페이지 641 공개(10/17) 직후 전 SNS 게시. 본문은 사장님 수정본 그대로, 끝 팀 링크만 SNS 규칙(로그 링크 1개+CTA)으로 바꿈.",
+    "note": "정책 관문: 이미지 채점 검증 오류(실패 폐쇄): FileNotFoundError: [Errno 2] No such file or directory: '/home/runner/work/hansunghee7.github.io/hansunghee7.github.io/log_assets/images\\\\641_AI에이전트에게 조심스러워지게 된 사연_cover_ig.jpg'",
     "approved_by": "사장님",
     "approved_quote": "전 SNS에 ... 에이전트에 조심스러워진 사연 한방에 올리죠 (2026-10-17 14시대, 채팅. 홈페이지 641 먼저 공개한 뒤 바로 게시)"
   },
@@ -750,12 +750,12 @@
       ]
     },
     "publishAt": "2026-10-17T05:41:00.000Z",
-    "status": "pending",
+    "status": "error",
     "image_check": {
       "file": "assets/data/image_scores/2026-10-17-th-641.json",
       "boss_pick": "팀 단체 사진 그대로 올리세요.. 지투이야기는 흥미를 끌기위한 목적이고 / 팀을 소개시키는게 본질적인 목표임 (사장님 2026-10-17 채팅)"
     },
-    "note": "사장님 지시로 홈페이지 641 공개(10/17) 직후 전 SNS 게시. 본문은 사장님 수정본 그대로, 끝 팀 링크만 SNS 규칙(로그 링크 1개+CTA)으로 바꿈. 스레드 500자 제한으로 사장님 문장만 줄인 요약본.",
+    "note": "정책 관문: 이미지 채점 검증 오류(실패 폐쇄): FileNotFoundError: [Errno 2] No such file or directory: '/home/runner/work/hansunghee7.github.io/hansunghee7.github.io/log_assets/images\\\\641_AI에이전트에게 조심스러워지게 된 사연_cover.jpg'",
     "approved_by": "사장님",
     "approved_quote": "전 SNS에 ... 에이전트에 조심스러워진 사연 한방에 올리죠 (2026-10-17 14시대, 채팅. 홈페이지 641 먼저 공개한 뒤 바로 게시)"
   }
