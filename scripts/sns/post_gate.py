@@ -24,6 +24,8 @@ from pathlib import Path
 CTA = "심플리파이어 로그를 함께 봐 주세요"
 LOG_LINK = "simplifier.co.kr/logs/"
 LINKEDIN_BANNED = (CTA, "결론부터 말하면")
+# 신청 링크처럼 독자가 바로 갈 곳이 여럿인 글(사장님 10/19 크레딧 글: MS·AWS·NVIDIA)을 위해 직접 링크는 3개까지.
+MAX_DIRECT_LINKS = 3
 
 
 def is_linkedin(channel):
@@ -40,9 +42,15 @@ def text_problems(text, title=None, channel=""):
         if first != title.strip():
             problems.append("첫 줄이 글 제목과 다릅니다(제목을 첫 줄에 넣을 것)")
     urls = re.findall(r"https?://\S+", text)
-    if len(urls) != 1:
-        problems.append(f"본문 링크가 {len(urls)}개입니다(독자가 갈 곳 딱 1개만 허용)")
-    log_link = len(urls) == 1 and LOG_LINK in urls[0]
+    log_link = any(LOG_LINK in u for u in urls)
+    # 인스타·스레드는 본문 링크가 안 걸리거나 늦게 달려 링크를 첫 댓글·답글로 단다(공정 마야-SNS게시 #9): 본문 0개 허용.
+    link_in_comment = any(k in (channel or "").lower() for k in ("instagram", "인스타", "threads", "스레드"))
+    if log_link and len(urls) != 1:
+        problems.append(f"로그 글 링크를 걸 때는 링크가 딱 1개여야 합니다(지금 {len(urls)}개)")
+    elif not urls and not link_in_comment:
+        problems.append("본문 링크가 없습니다(독자가 갈 곳을 바로 걸 것)")
+    elif len(urls) > MAX_DIRECT_LINKS:
+        problems.append(f"본문 링크가 {len(urls)}개입니다(독자가 바로 갈 곳은 {MAX_DIRECT_LINKS}개까지)")
     if is_linkedin(channel):
         for phrase in LINKEDIN_BANNED:
             if phrase in text:

@@ -64,3 +64,16 @@ def test_linkedin_blocks_cta_and_conclusion_first():
 
 def test_other_channels_still_need_cta():
     assert any("CTA" in p for p in pg.text_problems(LI, None, "facebook"))
+
+
+def test_three_direct_links_allowed_and_four_blocked():
+    # 사장님 10/19 크레딧 글: 신청 링크 3개를 바로 건다(공정 마야-SNS게시 #8)
+    base = "제목\n\n본문\n\nhttps://a.example/1\nhttps://b.example/2\nhttps://c.example/3"
+    assert pg.text_problems(base) == []
+    assert pg.text_problems(base + "\nhttps://d.example/4") != []
+
+
+def test_instagram_body_without_link_allowed():
+    # 인스타·스레드는 링크를 첫 댓글·답글로 단다(공정 마야-SNS게시 #9)
+    assert pg.text_problems("제목\n\n본문만 있습니다", channel="instagram") == []
+    assert pg.text_problems("제목\n\n본문만 있습니다", channel="facebook") != []
