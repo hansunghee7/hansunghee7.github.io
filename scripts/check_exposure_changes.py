@@ -50,6 +50,8 @@ SITEMAP_LOC = re.compile(r"<loc>\s*(\S+?)\s*</loc>")
 # (옛 /log_assets/markdown/ 패턴은 과거 이력·리다이렉트 스텁용으로 남겨둠).
 ROUTINE_PUBLISH = re.compile(r"/log_assets/markdown/|/logs/\d+/")
 NAV_LINK = re.compile(r"<a\b[^>]*href=", re.I)
+# 링크 주소만 뽑는다(따옴표 있는 것과 없는 것 모두).
+NAV_HREF = re.compile(r"""<a\b[^>]*?\bhref=(?:"([^"]*)"|'([^']*)'|([^\s>"']+))""", re.I)
 
 
 def git(*args):
@@ -115,6 +117,38 @@ def diff_lines(base, path, head="HEAD"):
     return added, removed
 
 
+def new_nav_links(added, removed):
+    """추가된 줄 중 "새로 생긴 링크"만 돌려준다.
+
+    줄 단위로 보면 로고 <img> 파일명만 바꿔도 그 줄의 <a href>가 "추가된 링크"로
+    잡힌다(2026-10-17 로고 경량화 PR #2389 오탐). 링크 주소(href)가 삭제된 줄에도
+    같은 개수만큼 있으면 기존 링크의 이미지·텍스트만 바뀐 것이니 새 메뉴로 세지
+    않는다. 주소가 바뀌었거나 새로 생긴 href는 그대로 잡는다. href를 읽지 못한
+    <a> 줄은 안전하게 새 링크로 본다.
+    """
+    left = {}
+    for line in removed:
+        for m in NAV_HREF.finditer(line):
+            href = next(g for g in m.groups() if g is not None)
+            left[href] = left.get(href, 0) + 1
+    found = []
+    for line in added:
+        if not NAV_LINK.search(line):
+            continue
+        hrefs = [next(g for g in m.groups() if g is not None) for m in NAV_HREF.finditer(line)]
+        fresh = False
+        if not hrefs:
+            fresh = True
+        for href in hrefs:
+            if left.get(href, 0) > 0:
+                left[href] -= 1
+            else:
+                fresh = True
+        if fresh:
+            found.append(line)
+    return found
+
+
 def find_exposure(base, head="HEAD"):
     findings = []
     for path in changed_files(base, head):
@@ -135,7 +169,7 @@ def find_exposure(base, head="HEAD"):
                     findings.append(("AI 노출", f"llms.txt에 추가: {line.strip()[:90]}"))
 
         elif path.endswith(("header.html", "header-preview.html")):
-            new_links = [l for l in added if NAV_LINK.search(l)]
+            new_links = new_nav_links(added, removed)
             for line in new_links:
                 findings.append(("메뉴 노출", f"{path}에 링크 추가: {line.strip()[:90]}"))
 

@@ -120,3 +120,44 @@ def test_is_site_excluded_no_exclude_key_at_all(tmp_path):
     cfg = tmp_path / "_config.yml"
     cfg.write_text("title: Site\npermalink: /:title/\n", encoding="utf-8")
     assert not check_exposure_changes.is_site_excluded("docs/internal", str(cfg))
+
+
+# ---- check_exposure_changes.new_nav_links ---------------------------------
+
+LOGO_OLD = '<a href="/" class="nav-logo"><img src="/a.png" alt="S"></a>'
+LOGO_NEW = '<a href="/" class="nav-logo"><img src="/a.webp" alt="S"></a>'
+
+
+def test_nav_link_image_only_change_is_not_new():
+    assert check_exposure_changes.new_nav_links([LOGO_NEW], [LOGO_OLD]) == []
+
+
+def test_nav_link_brand_new_href_is_flagged():
+    new = '<a href="/secret/" class="x">Secret</a>'
+    assert check_exposure_changes.new_nav_links([new], []) == [new]
+
+
+def test_nav_link_changed_href_is_flagged():
+    new = '<a href="/other/" class="nav-logo"><img src="/a.png" alt="S"></a>'
+    assert check_exposure_changes.new_nav_links([new], [LOGO_OLD]) == [new]
+
+
+def test_nav_link_duplicate_of_existing_href_is_flagged():
+    # 같은 주소 링크가 하나 지워지고 둘이 추가되면 하나는 새 링크다
+    assert check_exposure_changes.new_nav_links([LOGO_NEW, LOGO_NEW], [LOGO_OLD]) == [LOGO_NEW]
+
+
+def test_nav_link_unreadable_href_is_flagged():
+    odd = "<a class='x' href=>"
+    assert check_exposure_changes.new_nav_links([odd], [LOGO_OLD]) == [odd]
+
+
+def test_nav_link_single_and_unquoted_href_matched():
+    old = "<a class=x href=/p/>t</a>"
+    new = "<a class=x href='/p/'>t2</a>"
+    assert check_exposure_changes.new_nav_links([new], [old]) == []
+
+
+def test_nav_non_link_lines_ignored():
+    assert check_exposure_changes.new_nav_links(["<img src='/a.webp'>"], []) == []
+
