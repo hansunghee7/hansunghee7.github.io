@@ -246,7 +246,8 @@ note = "2026-10-02 탐 B41, 사장님 승인. 질문 1개를 실제로 보내 �
 id = "cron:flow-credits"
 kind = "file_age"
 path = "/home/goosloar/workshop/logs/flow_credits.last"
-max_age_min = 300
+# 리더 슬롯 간격이 5h 넘어 300분은 구조적 오탐(2026-10-17 조사)
+max_age_min = 360
 name = "구PC Flow 크레딧 현황 수집(flow_credits.py, 매시 7분, 계정별 잔액·갱신 시각)"
 note = "2026-10-03 등록(핏, 사장님 지시: Flow 무료 크레딧 실시간 현황). 기록 ~/workshop/logs/flow_credits.jsonl. 공장 러너가 돌고 있으면 그 회차는 건너뛰므로(잠금 공유) 긴 작업 중엔 몇 시간 비는 것이 정상, 5시간 넘게 갱신 없으면 이상. 코드 shorts-lab tools/factory/flow_credits.py"
 
