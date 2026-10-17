@@ -132,6 +132,12 @@ def count(table, where=None):
     return int(rng.split('/')[-1]) if rng.split('/')[-1].isdigit() else 0
 
 
+def rpc(fn, args=None):
+    """저장 함수(RPC) 호출: POST /rpc/<fn>. args는 함수 인자 dict. 결과(행 목록/스칼라)를 그대로 돌려준다.
+    PostgREST는 기존 함수 호출만 가능하다(함수 생성은 SQL 편집기 몫)."""
+    return _call('POST', f'/rpc/{fn}', args or {})[1]
+
+
 def to_md(rows, cols=None):
     """사람·에이전트가 읽는 간결한 표(파이프·구분선 없이 탭 구분 CSV에 가깝게, 토큰을 줄인다)."""
     if not rows:
