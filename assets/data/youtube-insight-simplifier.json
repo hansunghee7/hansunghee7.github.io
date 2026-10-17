@@ -91,6 +91,12 @@
           "views": 120,
           "likes": 0,
           "comments": 0
+        },
+        {
+          "date": "2026-10-18",
+          "views": 120,
+          "likes": 0,
+          "comments": 0
         }
       ],
       "title": "주니어 PM은 왜 스스로 문제를 정의하지 못할까? #Shorts",
@@ -191,10 +197,16 @@
         "subscribers": 0,
         "total_views": 120,
         "video_count": 1
+      },
+      {
+        "date": "2026-10-18",
+        "subscribers": 0,
+        "total_views": 120,
+        "video_count": 1
       }
     ],
     "title": "SIMPLIFIER STUDIO",
     "id": "UCCMaBuYb9TkbC3e8dTNYL0w"
   },
-  "updated_at": "2026-10-17T13:53:42.306004Z"
+  "updated_at": "2026-10-17T22:36:38.653660Z"
 }
