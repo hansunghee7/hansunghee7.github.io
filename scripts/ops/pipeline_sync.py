@@ -17,6 +17,7 @@ DB_TOOL = str(HERE / 'pipeline_db.py')
 STATE = os.environ.get('OPS_STATE_DIR', r'C:\work\_ops') + r'\state.json'
 NOWIN = getattr(subprocess, 'CREATE_NO_WINDOW', 0)
 LAST_RE = re.compile(r'마지막\s*(?:실행|성공|갱신)?\s*(\d{2}-\d{2} \d{2}:\d{2})')
+TZ_RE = re.compile(r'[+-]\d\d:\d\d$')  # f-string 식 안에 역슬래시를 못 쓰는 3.11 대응으로 밖에서 컴파일
 
 
 def parse_stale_line(line):
@@ -54,7 +55,8 @@ def evidence(entry):
     m = LAST_RE.search(entry.get('detail', '') or '')
     at = checked
     if m and checked[:4].isdigit():  # 'MM-DD HH:MM'에 점검 시각의 연도·시간대를 붙인다
-        at = f"{checked[:4]}-{m.group(1).replace(' ', 'T')}:00{checked[-6:] if re.search(r'[+-]\d\d:\d\d$', checked) else ''}"
+        tz = checked[-6:] if TZ_RE.search(checked) else ''
+        at = f"{checked[:4]}-{m.group(1).replace(' ', 'T')}:00{tz}"
     when = ('감시가 기록한 마지막 실행 ' + m.group(1)) if m else '감시 점검 ' + checked[:16].replace('T', ' ')
     return st == 'ok', f"pipeline_sync: 감시 {entry.get('id')} {st}, {when} (상태판 근거)", at
 
