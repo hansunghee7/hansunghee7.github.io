@@ -163,7 +163,10 @@ def collect_gcp_actual():
 # "결제계정 메타·SKU 단가"만 주고 "실제 얼마 썼나"는 주지 않는다(2026-10-18 tam-vertex SA 실측 확인). 실비는
 # 결제계정→BigQuery export를 켠 뒤 그 데이터셋을 질의해야 나온다. export가 없거나 권한이 없으면 사유만 돌려준다.
 
-GCP_BILLING_PROJECT = os.environ.get("GCP_BILLING_PROJECT", "simplifier-vertex-credit")
+# 결제 export는 saegim-mcp 프로젝트의 billing_export 데이터셋에 켜져 있다(결제계정 0138DC-0B0E4F-A034AE,
+# 사장님 콘솔 실측 2026-10-18). tam-vertex SA는 saegim-mcp에 BigQuery 데이터뷰어+작업사용자 권한을 받았고,
+# 이 결제계정 하나에 saegim-mcp·simplifier-vertex-credit·simplifier-saegim 등 모든 프로젝트 비용이 모인다.
+GCP_BILLING_PROJECT = os.environ.get("GCP_BILLING_PROJECT", "saegim-mcp")
 GCP_BILLING_BQ_DATASET = os.environ.get("GCP_BILLING_BQ_DATASET", "")  # 비우면 'billing' 들어간 데이터셋 자동 탐색
 
 
