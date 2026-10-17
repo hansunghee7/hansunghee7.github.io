@@ -188,6 +188,23 @@ def parse_pr(v):
     sys.exit(f"허용 목록에 없는 저장소입니다: {repo}. 허용 저장소: {allowed}")
 
 
+def pr_num(n):
+    return n if isinstance(n, int) else int(str(n).rsplit("#", 1)[1])
+
+
+def merge_pr(prs, n):
+    """같은 값은 한 번만 둔다. 저장소#번호가 오면 같은 번호의 숫자만 항목을 그 값으로 바꾼다.
+    숫자만 오면 같은 번호의 저장소#번호가 이미 있을 때 덧붙이지 않는다(덜 구체적인 값)."""
+    if n in prs:
+        return prs
+    if isinstance(n, int):
+        return prs if any(pr_num(x) == n for x in prs) else prs + [n]
+    num = pr_num(n)
+    if num in prs:
+        return [n if x == num else x for x in prs]
+    return prs + [n]
+
+
 def pr_label(n):
     return f"#{n}" if isinstance(n, int) else str(n)
 
@@ -239,10 +256,9 @@ def fb_ship(a):
     r = find(rows, a.id)
     if a.customer:
         r["customer"] = check_customer(a.customer)
-    prs = list(r.get("prs") or [])
+    prs = [] if a.replace_pr else list(r.get("prs") or [])
     for n in (parse_pr(x) for x in a.pr):
-        if n not in prs:
-            prs.append(n)
+        prs = merge_pr(prs, n)
     r["prs"] = prs
     r["shipped"] = check_date(a.shipped, "--shipped")
     r["notice"] = {"what": a.notice_what, "before": a.notice_before or "", "after": a.notice_after or "", "next": a.notice_next}
@@ -555,6 +571,7 @@ def build():
     x.add_argument("--notice-before", default="", dest="notice_before", help="바뀌기 전 화면 링크")
     x.add_argument("--notice-after", default="", dest="notice_after", help="바뀐 뒤 화면 링크")
     x.add_argument("--notice-next", required=True, dest="notice_next", help="고객이 다음에 해 볼 일 한 줄")
+    x.add_argument("--replace-pr", action="store_true", dest="replace_pr", help="기존 prs를 이번에 넣은 --pr 값으로 통째로 바꾼다")
     x.add_argument("--customer", default="", help="별칭을 이때 채워도 된다"); x.set_defaults(fn=fb_ship)
     x = f.add_parser("notified", help="안내 메일을 보낸 날을 기록한다"); x.add_argument("id"); x.add_argument("--date", required=True)
     x.set_defaults(fn=fb_notified)
