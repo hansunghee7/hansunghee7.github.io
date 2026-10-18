@@ -212,9 +212,9 @@ def send_problem(to, msg):
     return ""
 
 
-def run_due():
+def run_due(args=("due", "--quiet")):
     try:
-        r = subprocess.run([sys.executable, TOOL, "due", "--quiet"], capture_output=True, timeout=20,
+        r = subprocess.run([sys.executable, TOOL, *args], capture_output=True, timeout=20,
                            creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
         return r.stdout.decode("utf-8", "replace").strip()
     except Exception:
@@ -231,6 +231,11 @@ def main(argv):
     if mode == "prompt":
         if GREETING.match(str(data.get("prompt", ""))):
             out = run_due()
+            if out:
+                print(out)
+        elif is_jitu(data):
+            # 사전체험 신청은 하이~ 때만이 아니라 지투 세션의 매 발화마다 본다(긴 세션에서 신청을 놓친 10/18 사고)
+            out = run_due(("lead", "alert"))
             if out:
                 print(out)
         return 0
