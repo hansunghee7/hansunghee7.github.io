@@ -31,7 +31,7 @@ import glob
 import json
 import os
 import sys
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 
 # KST(+09:00) 고정 - 이 운영은 한국 시간 기준.
 KST = timezone(timedelta(hours=9))
@@ -137,13 +137,6 @@ def read_entries(path=None, day_dir=None):
     return merged
 
 
-def filter_by_date(rows, since=None, until=None):
-    """Filter rows by the YYYY-MM-DD portion of ts, inclusively."""
-    return [row for row in rows
-            if (not since or str(row.get("ts", ""))[:10] >= since)
-            and (not until or str(row.get("ts", ""))[:10] <= until)]
-
-
 def summarize_runs(rows, top=10):
     """Build a file-independent summary of run rows."""
     statuses = {s: 0 for s in _ALLOWED_STATUS}
@@ -185,6 +178,38 @@ def _print_rows(rows, as_json):
               f"{e.get('task','?')} ({e.get('tool','?')}) :: {e.get('result','')}")
 
 
+def _parse_date(value):
+    """Parse a YYYY-MM-DD query boundary, with an argparse-friendly error."""
+    try:
+        if (not isinstance(value, str) or len(value) != 10
+                or value[4] != "-" or value[7] != "-"):
+            raise ValueError
+        return date.fromisoformat(value)
+    except (TypeError, ValueError):
+        raise argparse.ArgumentTypeError(
+            f"invalid date {value!r}; expected YYYY-MM-DD"
+        )
+
+
+def filter_by_date(rows, since=None, until=None):
+    """Keep rows whose ts calendar date falls within inclusive boundaries."""
+    since = _parse_date(since) if isinstance(since, str) else since
+    until = _parse_date(until) if isinstance(until, str) else until
+    filtered = []
+    for row in rows:
+        ts = row.get("ts", "")
+        try:
+            row_date = date.fromisoformat(ts[:10])
+        except (TypeError, ValueError):
+            continue
+        if since is not None and row_date < since:
+            continue
+        if until is not None and row_date > until:
+            continue
+        filtered.append(row)
+    return filtered
+
+
 def _cmd_log(args):
     ok = append(args.who, args.task, args.tool, status=args.status, result=args.result,
                 path=args.path, day_dir=args.dir)
@@ -203,6 +228,7 @@ def _cmd_tail(args):
 
 def _cmd_query(args):
     rows = read_entries(path=args.path, day_dir=args.dir)
+    rows = filter_by_date(rows, args.since, args.until)
     if args.who:
         rows = [e for e in rows if e.get("who") == args.who]
     if args.status:
@@ -256,6 +282,10 @@ def main(argv=None):
     pq = sub.add_parser("query", help="who/status 로 거르기")
     pq.add_argument("--who", default=None)
     pq.add_argument("--status", default=None, choices=[*_ALLOWED_STATUS, None])
+    pq.add_argument("--since", type=_parse_date, default=None, metavar="YYYY-MM-DD",
+                    help="포함할 시작 날짜")
+    pq.add_argument("--until", type=_parse_date, default=None, metavar="YYYY-MM-DD",
+                    help="포함할 마지막 날짜")
     pq.add_argument("--n", type=int, default=50)
     pq.add_argument("--json", action="store_true")
     pq.set_defaults(func=_cmd_query)

@@ -10,8 +10,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent / "ops"))
 from run_log import (  # noqa: E402
-    append, build_entry, read_entries, _day_stamp, _day_path, FILE_PREFIX,
-    summarize_runs, filter_by_date,
+    append, build_entry, read_entries, filter_by_date, _day_stamp, _day_path, FILE_PREFIX,
+    summarize_runs,
 )
 
 
@@ -122,6 +122,30 @@ def test_append_never_raises_on_bad_path():
 def test_read_entries_missing_dir_is_empty():
     with tempfile.TemporaryDirectory() as d:
         assert read_entries(day_dir=os.path.join(d, "nope")) == []
+
+
+def _date_rows():
+    return [
+        {"ts": "2026-10-17T23:59:59+09:00", "task": "before"},
+        {"ts": "2026-10-18T00:00:00+09:00", "task": "start"},
+        {"ts": "2026-10-19T12:00:00+09:00", "task": "end"},
+        {"ts": "2026-10-20T00:00:00+09:00", "task": "after"},
+    ]
+
+
+def test_filter_since_includes_boundary_and_later():
+    rows = filter_by_date(_date_rows(), since="2026-10-18")
+    assert [row["task"] for row in rows] == ["start", "end", "after"]
+
+
+def test_filter_until_includes_boundary_and_earlier():
+    rows = filter_by_date(_date_rows(), until="2026-10-19")
+    assert [row["task"] for row in rows] == ["before", "start", "end"]
+
+
+def test_filter_since_until_inclusive_range():
+    rows = filter_by_date(_date_rows(), since="2026-10-18", until="2026-10-19")
+    assert [row["task"] for row in rows] == ["start", "end"]
 
 
 if __name__ == "__main__":
