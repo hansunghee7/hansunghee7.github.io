@@ -36,7 +36,10 @@ from datetime import datetime, timedelta, timezone
 
 import urllib.request
 
-from playwright.sync_api import sync_playwright
+try:  # 순수 함수(병합 등) 시험 시 playwright 없이도 모듈이 로드되도록 조건부 import
+    from playwright.sync_api import sync_playwright
+except ImportError:  # pragma: no cover
+    sync_playwright = None
 
 # 로컬(Windows, cp949) 콘솔에서 em dash 등 일부 문자를 못 찍어 print()가
 # 죽는 바람에, 이미 파일 저장까지 끝난 뒤인데도 "전체 실패"로 잘못 보이는
@@ -75,14 +78,72 @@ def html_to_text(html):
     return re.sub(r"\s+", " ", text)
 
 
-def upsert(history, today, record):
-    """같은 날짜 레코드가 있으면 덮어쓴다 (재실행 대비, idempotent)."""
+_SKIP_KEYS = ("date", "later_values", "suspect_stale")
+
+
+def merge_day_record(existing, incoming, at):
+    """같은 날짜 레코드 병합(마야 규칙 2026-10-18, 탐 #156). 그날 첫 성공값이 정본.
+
+    - '데이터 없음' = 값이 None 이거나 키가 없을 때만. 0 은 실제 값이라 보존한다.
+    - 기존 필드가 '없음'이면 새 실행 값으로 채운다(새 값도 None 이면 None 유지).
+    - 기존 필드에 이미 값이 있으면(0 포함) 바꾸지 않는다.
+    - 뒤 실행이 다른 non-null 값을 가져오면 버리지 않고 existing["later_values"]에
+      {"field": "<소스>.<필드>", "value": <값>, "at": at} 로 진단용 기록(브리핑 미사용).
+    date 키는 병합하지 않는다. existing 을 제자리 수정해 돌려준다.
+    """
+    later = existing.setdefault("later_values", [])
+    for src, inc_val in incoming.items():
+        if src in _SKIP_KEYS:
+            continue
+        if existing.get(src) is None:          # 소스 자체가 '없음' -> 통째로 채움
+            existing[src] = inc_val
+            continue
+        if not isinstance(inc_val, dict) or not isinstance(existing.get(src), dict):
+            continue                           # 비정상 구조면 기존 유지
+        for field, new_v in inc_val.items():
+            cur = existing[src].get(field)
+            if cur is None:                    # 빈칸 -> 채움(새 값 None 이면 그대로)
+                if new_v is not None:
+                    existing[src][field] = new_v
+            elif new_v is not None and new_v != cur:   # 이미 값 있음 + 다른 non-null
+                later.append({"field": f"{src}.{field}", "value": new_v, "at": at})
+    if not later:
+        existing.pop("later_values", None)     # 빈 리스트는 남기지 않음
+    return existing
+
+
+def upsert(history, today, record, at=None):
+    """같은 날짜면 '빈칸만 채우는' 병합(마야 규칙), 새 날짜면 추가. idempotent."""
+    if at is None:
+        at = datetime.now(timezone.utc).isoformat(timespec="minutes")
     for i, entry in enumerate(history):
         if entry["date"] == today:
-            history[i] = record
+            history[i] = merge_day_record(entry, record, at)
             return
     history.append(record)
     history.sort(key=lambda e: e["date"])
+
+
+def mark_suspect_stale(history, days=3):
+    """최근 days일 동안 같은 소스.필드 non-null 값이 완전히 동일하면 마지막 레코드에
+    suspect_stale 로 표시한다(예: 예스24 캐시 의심 진단용). 그 외엔 표시를 지운다."""
+    if len(history) < days:
+        return
+    recent = history[-days:]
+    last = recent[-1]
+    stale = []
+    for src, val in last.items():
+        if src in _SKIP_KEYS or not isinstance(val, dict):
+            continue
+        for field, v in val.items():
+            if v is None:
+                continue
+            if all(isinstance(r.get(src), dict) and r[src].get(field) == v for r in recent):
+                stale.append(f"{src}.{field}")
+    if stale:
+        last["suspect_stale"] = sorted(stale)
+    else:
+        last.pop("suspect_stale", None)
 
 
 def save(out_path, book_meta, record, today):
@@ -93,6 +154,7 @@ def save(out_path, book_meta, record, today):
     data["book"] = book_meta
     data.setdefault("history", [])
     upsert(data["history"], today, record)
+    mark_suspect_stale(data["history"])
     data["updated_at"] = datetime.now(timezone.utc).isoformat()
 
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
