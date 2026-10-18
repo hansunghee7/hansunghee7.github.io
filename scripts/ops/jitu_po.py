@@ -24,7 +24,11 @@ import re
 import sys
 
 ROOT = os.environ.get("JITU_PO_DIR", "C:/work/_ops/jitu_po")
-FILES = {"gap": "gaps.jsonl", "kpi": "kpi.jsonl", "feedback": "feedback.jsonl", "predict": "predictions.jsonl", "ask": "asks.jsonl", "req": "requirements.jsonl"}
+FILES = {"gap": "gaps.jsonl", "kpi": "kpi.jsonl", "feedback": "feedback.jsonl", "predict": "predictions.jsonl", "ask": "asks.jsonl", "req": "requirements.jsonl",
+         "lead": "leads.jsonl"}
+# 사전체험 신청(hello@ 수신함의 "[초대 요청]")은 지투 KPI(고객수)에 바로 닿는 신호라 다른 루프보다 먼저 보인다(사장님 10/18 지적)
+MAIL_ENV = os.environ.get("CARVIT_MAIL_ENV", "C:/work/_ops/secrets/carvit_mail_read.env")
+INTERNAL_DOMAINS = ("@simplifier.co.kr", "@carvit.ai")
 KPI_EVERY_DAYS = 7
 FEEDBACK_TRIAGE_DAYS = 1
 FEEDBACK_REPLY_DAYS = 7
@@ -486,9 +490,75 @@ def req_check(a):
     sys.exit(f"영역 [{a.area}]은 아직 전달할 수 없습니다(" + ("항목 없음" if not st["items"] else "확신 기록 없음 또는 새 항목으로 취소됨") + ")")
 
 
+# ---------------- lead (사전체험 신청) ----------------
+def fetch_invite_requests():
+    """hello@ 수신함에서 외부 사전체험 신청만. 읽기 실패면 None(없음과 구분)."""
+    import urllib.request
+    env = {}
+    try:
+        with open(MAIL_ENV, encoding="utf-8") as f:
+            for line in f:
+                if "=" in line and not line.startswith("#"):
+                    k, v = line.strip().split("=", 1)
+                    env[k] = v.strip().strip('"')
+        req = urllib.request.Request(env["MAIL_URL"].rstrip("/") + "/mail",
+                                     headers={"Authorization": "Bearer " + env["MAIL_READ_KEY"], "User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(req, timeout=15) as r:
+            data = json.loads(r.read().decode("utf-8"))
+    except Exception:
+        return None
+    items = data if isinstance(data, list) else data.get("mails") or data.get("items") or []
+    out = []
+    for m in items:
+        if "[초대 요청]" not in str(m.get("subject") or ""):
+            continue
+        found = re.search(r"초대 요청 이메일:\s*(\S+)", str(m.get("preview") or ""))
+        email = found.group(1) if found else ""
+        if not email or any(d in email for d in INTERNAL_DOMAINS):
+            continue
+        out.append({"mail_id": str(m.get("id")), "email": email, "at": str(m.get("received_at") or "")})
+    return out
+
+
+def open_leads():
+    reqs = fetch_invite_requests()
+    if reqs is None:
+        return None
+    done = {r["mail_id"] for r in load("lead")}
+    return [r for r in reqs if r["mail_id"] not in done]
+
+
+def lead_list(a):
+    reqs = fetch_invite_requests()
+    if reqs is None:
+        sys.exit("수신함을 읽지 못했습니다(키 파일·네트워크 확인)")
+    st = {r["mail_id"]: r for r in load("lead")}
+    for r in reqs:
+        s = st.get(r["mail_id"])
+        print(f"{r['at'][:16]} {r['email']} 메일 {r['mail_id']} 상태: {(s['state'] + ' ' + s.get('note', '')) if s else '미처리'}")
+
+
+def lead_mark(a):
+    rows = [r for r in load("lead") if r["mail_id"] != a.mail_id]
+    rows.append({"mail_id": a.mail_id, "state": a.state, "note": a.note, "date": str(today())})
+    save("lead", rows)
+    print(f"신청 {a.mail_id} → {a.state}")
+
+
+def lead_alert(a):
+    """훅용: 미처리 신청이 있을 때만 한 줄(주소는 쓰지 않고 개수만)."""
+    ol = open_leads()
+    if ol:
+        print(f"🚨 사전체험 신청 미처리 {len(ol)}건(고객 획득 최우선, 하던 일보다 먼저): `python scripts/ops/jitu_po.py lead list`로 보고 "
+              "사장님께 신청자와 초대 추천을 올린 뒤 `lead mark <메일 id> asked|invited|dropped --note ...`")
+
+
 # ---------------- due ----------------
 def due_items():
-    out = {"gap": [], "kpi": [], "feedback": [], "predict": [], "ask": [], "req": [], "notice": []}
+    out = {"lead": [], "gap": [], "kpi": [], "feedback": [], "predict": [], "ask": [], "req": [], "notice": []}
+    ol = open_leads()
+    if ol:
+        out["lead"].append(f"미처리 {len(ol)}건(가장 오래된 것 {min(r['at'] for r in ol)[:16]}), `jitu_po.py lead list`")
     for r in load("gap"):
         if not r.get("added"):
             out["gap"].append(f"{r['id']} {r['what']}(없던 검사: {r['missing']})")
@@ -531,9 +601,9 @@ def due(a):
     if a.quiet and n == 0:
         return
     names = {"gap": "검사 공백(보강 4)", "kpi": "지표 측정(보강 2)", "feedback": "고객 신호(보강 3)", "predict": "예측 점검(보강 1)", "ask": "결정 요청(답 대기)", "req": "요구사항 취합 중",
-             "notice": "개선 반영 안내(배포됐는데 안내 안 함)"}
+             "notice": "개선 반영 안내(배포됐는데 안내 안 함)", "lead": "🚨 사전체험 신청(고객 획득 최우선)"}
     print(f"🔁 지투 루프 점검: 기한 지난 것 {n}건")
-    for k in ("gap", "kpi", "feedback", "predict", "ask", "req", "notice"):
+    for k in ("lead", "gap","kpi", "feedback", "predict", "ask", "req", "notice"):
         for line in d[k]:
             print(f"  - {names[k]}: {line}")
     if n:
@@ -610,6 +680,12 @@ def build():
     x = rq.add_parser("check-send"); x.add_argument("area"); x.set_defaults(fn=req_check)
 
     x = sub.add_parser("due"); x.add_argument("--quiet", action="store_true"); x.set_defaults(fn=due)
+
+    ld = sub.add_parser("lead").add_subparsers(dest="sub", required=True)
+    x = ld.add_parser("list"); x.set_defaults(fn=lead_list)
+    x = ld.add_parser("mark"); x.add_argument("mail_id"); x.add_argument("state", choices=["asked", "invited", "dropped"])
+    x.add_argument("--note", default=""); x.set_defaults(fn=lead_mark)
+    x = ld.add_parser("alert"); x.set_defaults(fn=lead_alert)
     return p
 
 
