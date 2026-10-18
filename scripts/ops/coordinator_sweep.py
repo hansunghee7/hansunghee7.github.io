@@ -4,10 +4,13 @@
 새 에이전트도, 상주 데몬도 아니다. 운영 DB tasks 표에서 **열린 업무대장**(section=open)만
 읽어(읽기 전용) 모닝 브리핑에 한 줄로 얹을 요약을 낸다. 어떤 표도 쓰지 않는다.
 
-뽑는 3가지:
+뽑는 2가지:
   1) 같은 일 두 곳(중복)  : 제목을 정규화해 거의 같은 열린 작업이 서로 다른 번호/담당으로 2개 이상.
+                           단, 날짜·회차(N주차·N월·숫자)만 다른 반복 업무 템플릿은 중복으로 보지 않는다.
   2) 주인 없는 일(미배정)  : 열린 상태인데 담당(owner)이 비었거나 '미정/미상'.
-  3) 막힌 지 3일(정체)     : 열린 상태로 마지막으로 손댄 날짜(source_date/status/raw 안의 M/D)가 3일 이상 지남.
+
+('정체(stale)' 지표는 뺐다 — 갱신 시각 신호가 없어 source_date(대개 생성일)로 판정하면
+열린 작업 대부분이 정체로 잡혀 노이즈뿐이다. 갱신 시각이 생기면 다시 넣는다.)
 
 데이터: python scripts/ops/opsdb.py 가 쓰는 opsdb.select 를 그대로 import 해서 읽는다(DB 직접 접속 없음,
 새 비밀값 없음). '열린' 정본은 section=='open' 이고, 그 안에서 완료·종결·취소·폐기·이관·닫힘·병합 상태는 제외한다.
@@ -16,7 +19,7 @@
 사용:
   python scripts/ops/coordinator_sweep.py            # 사람용 한 줄 + 분류별 상세
   python scripts/ops/coordinator_sweep.py --json     # 기계용 JSON
-  python scripts/ops/coordinator_sweep.py --stale-days 3 --dup-threshold 0.85
+  python scripts/ops/coordinator_sweep.py --dup-threshold 0.85
 """
 import argparse
 import datetime as _dt
@@ -33,8 +36,6 @@ RESOLVED_PREFIXES = ('완료', '종결', '취소', '폐기', '이관', '닫힘',
 # 담당이 비었다고 볼 값.
 UNASSIGNED_VALUES = {'', '미정', '미상', '?', 'none', 'tbd', '-'}
 KST = _dt.timezone(_dt.timedelta(hours=9))
-_DATE_ISO = re.compile(r'(20\d{2})[-./](\d{1,2})[-./](\d{1,2})')
-_DATE_MD = re.compile(r'(?<!\d)(\d{1,2})[/.](\d{1,2})(?!\d)')
 
 
 def is_resolved_status(status):
@@ -75,6 +76,26 @@ def title_similarity(a, b):
     return difflib.SequenceMatcher(None, na, nb).ratio()
 
 
+def _strip_variable_tokens(norm):
+    """정규화된 제목에서 숫자·회차 토큰(숫자, N주차/N월의 숫자부)을 떼어 뼈대만 남긴다.
+    '정기 10월 1주차 수집' → '정기 월 주차 수집'. 숫자를 지우면 주차·월 같은 공통어만 남는다."""
+    t = re.sub(r'\d+', ' ', norm)
+    return re.sub(r'\s+', ' ', t).strip()
+
+
+def is_recurring_variant(a, b):
+    """두 제목이 '날짜·회차·숫자만 다른 반복 업무 템플릿'이면 True(=중복 아님).
+
+    정규화 제목이 서로 다르지만(=완전 동일 복제는 아님) 숫자 토큰을 제거하면 같아지는 경우.
+    예: '[정기] 10월 1주차 수집' vs '[정기] 10월 2주차 수집' → True.
+    완전히 같은 제목(진짜 중복)은 숫자를 빼도 같지만 na==nb라 False로 걸러 중복으로 남긴다."""
+    na, nb = normalize_title(a), normalize_title(b)
+    if not na or not nb or na == nb:
+        return False
+    sa, sb = _strip_variable_tokens(na), _strip_variable_tokens(nb)
+    return bool(sa) and sa == sb
+
+
 def find_duplicate_groups(items, threshold=0.85):
     """items: [{'no','title','owner',...}]. 번호가 서로 다른데 제목이 거의 같은 묶음을 찾는다.
 
@@ -90,54 +111,16 @@ def find_duplicate_groups(items, threshold=0.85):
                 continue
             if str(items[i].get('no')) == str(items[j].get('no')):
                 continue  # 같은 번호는 중복이 아니다
-            if title_similarity(items[i].get('title', ''), items[j].get('title', '')) >= threshold:
+            ti, tj = items[i].get('title', ''), items[j].get('title', '')
+            if is_recurring_variant(ti, tj):
+                continue  # 날짜·회차만 다른 반복 템플릿은 중복 아님
+            if title_similarity(ti, tj) >= threshold:
                 grp.append(j)
         if len(grp) >= 2:
             for k in grp:
                 used.add(k)
             groups.append([items[k] for k in grp])
     return groups
-
-
-def extract_latest_date(texts, today):
-    """여러 텍스트에서 날짜(YYYY-MM-DD 또는 M/D)를 모두 뽑아 가장 최근(=오늘에 가장 가까운 과거) 날짜를 돌려준다.
-
-    M/D는 연도를 올해로 보되, 그 날짜가 오늘보다 미래면 작년으로 돌린다(연말→연초 경계). 없으면 None."""
-    found = []
-    for raw in texts:
-        if not raw:
-            continue
-        s = str(raw)
-        for y, m, d in _DATE_ISO.findall(s):
-            try:
-                found.append(_dt.date(int(y), int(m), int(d)))
-            except ValueError:
-                pass
-        # ISO로 이미 잡힌 부분과 겹칠 수 있으나 날짜 집합이라 무해하다.
-        for m, d in _DATE_MD.findall(s):
-            mo, da = int(m), int(d)
-            if not (1 <= mo <= 12 and 1 <= da <= 31):
-                continue
-            try:
-                cand = _dt.date(today.year, mo, da)
-            except ValueError:
-                continue
-            if cand > today:
-                try:
-                    cand = _dt.date(today.year - 1, mo, da)
-                except ValueError:
-                    continue
-            found.append(cand)
-    if not found:
-        return None
-    return max(d for d in found if d <= today) if any(d <= today for d in found) else None
-
-
-def is_stale(last_date, today, days=3):
-    """마지막으로 손댄 날짜가 오늘보다 days일 이상 전이면 True(경계값 days일 정확히도 True)."""
-    if last_date is None:
-        return False
-    return (today - last_date).days >= days
 
 
 # ── DB 읽기(읽기 전용) ──────────────────────────────────────────────────────
@@ -161,46 +144,22 @@ def fetch_open_tasks():
     return [r for r in rows if not is_resolved_status(r.get('status'))]
 
 
-def _row_date_texts(row):
-    """한 행에서 날짜가 들어있을 법한 텍스트를 모은다."""
-    texts = [row.get('source_date'), row.get('status')]
-    raw = row.get('raw')
-    if isinstance(raw, dict):
-        for k in ('다음 행동', '출처·날짜', '날짜·근거', '상태', 'body'):
-            v = raw.get(k)
-            if isinstance(v, str):
-                texts.append(v)
-    return texts
-
-
 # ── 집계 ────────────────────────────────────────────────────────────────────
 
-def build_report(rows, today, stale_days=3, dup_threshold=0.85):
+def build_report(rows, today, dup_threshold=0.85):
     dup_groups = find_duplicate_groups(rows, threshold=dup_threshold)
 
     unassigned = [r for r in rows if is_unassigned(r.get('owner'))]
 
-    stale = []
-    for r in rows:
-        last = extract_latest_date(_row_date_texts(r), today)
-        if is_stale(last, today, days=stale_days):
-            stale.append({**r, '_last_date': last.isoformat() if last else None})
-
     return {
         'date': today.isoformat(),
         'open_task_count': len(rows),
-        'stale_days': stale_days,
         'duplicates': [
             [{'no': m.get('no'), 'title': m.get('title'), 'owner': m.get('owner')} for m in grp]
             for grp in dup_groups
         ],
         'unassigned': [
             {'no': r.get('no'), 'title': r.get('title'), 'owner': r.get('owner')} for r in unassigned
-        ],
-        'stale': [
-            {'no': r.get('no'), 'title': r.get('title'), 'owner': r.get('owner'),
-             'last_date': r.get('_last_date'), 'status': r.get('status')}
-            for r in stale
         ],
     }
 
@@ -211,8 +170,8 @@ def _short(title, n=54):
 
 
 def format_text(rep):
-    one = '코디네이터 스윕: 중복 %d · 미배정 %d · %d일정체 %d' % (
-        len(rep['duplicates']), len(rep['unassigned']), rep['stale_days'], len(rep['stale']))
+    one = '코디네이터 스윕: 중복 %d · 미배정 %d' % (
+        len(rep['duplicates']), len(rep['unassigned']))
     lines = [one, '(열린 업무대장 %d건 기준, %s KST)' % (rep['open_task_count'], rep['date']), '']
 
     lines.append('■ 같은 일 두 곳(중복): %d' % len(rep['duplicates']))
@@ -230,22 +189,12 @@ def format_text(rep):
     else:
         for r in rep['unassigned']:
             lines.append('  %s / %r · %s' % (r['no'], r['owner'], _short(r['title'])))
-
-    lines.append('■ 막힌 지 %d일(정체): %d' % (rep['stale_days'], len(rep['stale'])))
-    lines.append('  (기준: 행 안에서 찾은 가장 최근 날짜 — 대개 생성일. 손댄 날짜가 따로 안 적힌 작업은 오래돼 보일 수 있음)')
-    if not rep['stale']:
-        lines.append('  없음')
-    else:
-        for r in rep['stale']:
-            lines.append('  %s / %s · 마지막 %s · %s' % (
-                r['no'], r['owner'], r['last_date'] or '?', _short(r['title'])))
     return '\n'.join(lines)
 
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description='코디네이터 최소 스윕(읽기 전용)')
     ap.add_argument('--json', action='store_true', help='기계용 JSON 출력')
-    ap.add_argument('--stale-days', type=int, default=3)
     ap.add_argument('--dup-threshold', type=float, default=0.85)
     a = ap.parse_args(argv)
     try:
@@ -254,7 +203,7 @@ def main(argv=None):
         pass
     today = _dt.datetime.now(KST).date()
     rows = fetch_open_tasks()
-    rep = build_report(rows, today, stale_days=a.stale_days, dup_threshold=a.dup_threshold)
+    rep = build_report(rows, today, dup_threshold=a.dup_threshold)
     if a.json:
         print(json.dumps(rep, ensure_ascii=False, indent=2))
     else:

@@ -52,6 +52,38 @@ def t_dup_distinct_titles_none():
 
 
 @test
+def t_recurring_template_not_dup():
+    # 날짜·회차만 다른 반복 업무 템플릿은 중복으로 보지 않는다.
+    items = [
+        {'no': 'N40', 'title': '[정기] 10월 1주차 수집', 'owner': '마야'},
+        {'no': 'N41', 'title': '[정기] 10월 2주차 수집', 'owner': '마야'},
+    ]
+    assert cs.find_duplicate_groups(items, threshold=0.85) == []
+    # is_recurring_variant 자체도 True.
+    assert cs.is_recurring_variant('[정기] 10월 1주차 수집', '[정기] 10월 2주차 수집') is True
+
+
+@test
+def t_similar_non_numeric_diff_still_dup():
+    # 숫자를 빼도 서로 다른 진짜 유사 제목(차이가 숫자가 아님)은 여전히 중복.
+    items = [
+        {'no': 'N50', 'title': '2026 유튜브 등록 설정 작업', 'owner': '핏'},
+        {'no': 'N51', 'title': '2026 유튜브 등록 설정 정리', 'owner': '지투'},
+    ]
+    groups = cs.find_duplicate_groups(items, threshold=0.85)
+    assert len(groups) == 1, groups
+    assert {m['no'] for m in groups[0]} == {'N50', 'N51'}, groups
+    # 숫자(2026)가 공통이어도 뼈대가 달라 반복 템플릿이 아니다.
+    assert cs.is_recurring_variant('2026 유튜브 등록 설정 작업', '2026 유튜브 등록 설정 정리') is False
+
+
+@test
+def t_recurring_variant_identical_is_genuine_dup():
+    # 숫자까지 완전히 같은 제목은 반복 변형이 아니라 진짜 복제 → is_recurring_variant False.
+    assert cs.is_recurring_variant('롱폼 3관문 운영', '롱폼 3관문 운영') is False
+
+
+@test
 def t_unassigned():
     assert cs.is_unassigned('') is True
     assert cs.is_unassigned(None) is True
@@ -73,36 +105,16 @@ def t_resolved_status():
 
 
 @test
-def t_stale_boundary():
-    # 경계값: 정확히 3일 → 정체(True), 2일 → 아님.
-    assert cs.is_stale(_dt.date(2026, 10, 15), TODAY, days=3) is True   # 3일
-    assert cs.is_stale(_dt.date(2026, 10, 16), TODAY, days=3) is False  # 2일
-    assert cs.is_stale(_dt.date(2026, 10, 14), TODAY, days=3) is True   # 4일
-    assert cs.is_stale(None, TODAY, days=3) is False
-    assert cs.is_stale(_dt.date(2026, 10, 18), TODAY, days=3) is False  # 오늘
-
-
-@test
-def t_extract_latest_date():
-    # source_date 'M/D'에서 날짜를 뽑고, 여러 개면 가장 최근 과거를 고른다.
-    assert cs.extract_latest_date(['사장님 10/3'], TODAY) == _dt.date(2026, 10, 3)
-    assert cs.extract_latest_date(['사장님 10/3', '핏 10/12'], TODAY) == _dt.date(2026, 10, 12)
-    # YYYY-MM-DD 혼재.
-    assert cs.extract_latest_date(['상태 2026-10-10', '사장님 9/30'], TODAY) == _dt.date(2026, 10, 10)
-    # 오늘보다 미래인 12/25는 작년으로 돌려 과거가 된다.
-    assert cs.extract_latest_date(['12/25'], TODAY) == _dt.date(2025, 12, 25)
-    # 날짜 없음.
-    assert cs.extract_latest_date(['안건 설명만 있음', None], TODAY) is None
-
-
-@test
-def t_stale_integration_via_extract():
-    # 10/3이 마지막이면 오늘(10/18) 기준 정체.
-    last = cs.extract_latest_date(['사장님 10/3'], TODAY)
-    assert cs.is_stale(last, TODAY, days=3) is True
-    # 10/17이 마지막이면 1일 전 → 정체 아님.
-    last2 = cs.extract_latest_date(['핏 10/17'], TODAY)
-    assert cs.is_stale(last2, TODAY, days=3) is False
+def t_build_report_has_no_stale():
+    # 정체 지표는 뺐다 — 보고에 stale 키가 없고 중복·미배정만 남는다.
+    rows = [
+        {'no': 'N1', 'title': '주인 없는 일', 'owner': '', 'status': '진행'},
+        {'no': 'N2', 'title': '담당 있는 일', 'owner': '탐', 'status': '진행'},
+    ]
+    rep = cs.build_report(rows, TODAY)
+    assert 'stale' not in rep and 'stale_days' not in rep, rep
+    assert set(rep.keys()) >= {'duplicates', 'unassigned', 'open_task_count', 'date'}, rep
+    assert len(rep['unassigned']) == 1 and rep['unassigned'][0]['no'] == 'N1', rep
 
 
 def run():
