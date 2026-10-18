@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-18T20:45:30.307478+00:00",
+  "updated_at": "2026-10-18T22:32:52.129719+00:00",
   "note": "history는 매일 지난 24시간 집계를 누적한 것. latest_*는 최근 3일 창.",
   "history": [
     {
@@ -8999,16 +8999,16 @@
       "metrics": {
         "DeadClickCount": [
           {
-            "sessionsCount": 7,
-            "sessionsWithMetricPercentage": 14.29,
-            "sessionsWithoutMetricPercentage": 85.71000000000001,
-            "pagesViews": 1,
-            "subTotal": 1
+            "sessionsCount": 6,
+            "sessionsWithMetricPercentage": 0,
+            "sessionsWithoutMetricPercentage": 100,
+            "pagesViews": 0,
+            "subTotal": 0
           }
         ],
         "ExcessiveScroll": [
           {
-            "sessionsCount": 7,
+            "sessionsCount": 6,
             "sessionsWithMetricPercentage": 0,
             "sessionsWithoutMetricPercentage": 100,
             "pagesViews": 0,
@@ -9017,7 +9017,7 @@
         ],
         "RageClickCount": [
           {
-            "sessionsCount": 7,
+            "sessionsCount": 6,
             "sessionsWithMetricPercentage": 0,
             "sessionsWithoutMetricPercentage": 100,
             "pagesViews": 0,
@@ -9026,16 +9026,16 @@
         ],
         "QuickbackClick": [
           {
-            "sessionsCount": 7,
-            "sessionsWithMetricPercentage": 28.57,
-            "sessionsWithoutMetricPercentage": 71.43,
+            "sessionsCount": 6,
+            "sessionsWithMetricPercentage": 33.33,
+            "sessionsWithoutMetricPercentage": 66.67,
             "pagesViews": 3,
             "subTotal": 3
           }
         ],
         "ScriptErrorCount": [
           {
-            "sessionsCount": 7,
+            "sessionsCount": 6,
             "sessionsWithMetricPercentage": 0,
             "sessionsWithoutMetricPercentage": 100,
             "pagesViews": 0,
@@ -9044,7 +9044,7 @@
         ],
         "ErrorClickCount": [
           {
-            "sessionsCount": 7,
+            "sessionsCount": 6,
             "sessionsWithMetricPercentage": 0,
             "sessionsWithoutMetricPercentage": 100,
             "pagesViews": 0,
@@ -9053,21 +9053,21 @@
         ],
         "ScrollDepth": [
           {
-            "averageScrollDepth": 77.19
+            "averageScrollDepth": 75.67
           }
         ],
         "Traffic": [
           {
-            "totalSessionCount": 7,
+            "totalSessionCount": 6,
             "totalBotSessionCount": 1,
-            "distinctUserCount": 7,
-            "pagesPerSessionPercentage": 2.2857142857142856
+            "distinctUserCount": 6,
+            "pagesPerSessionPercentage": 2.5
           }
         ],
         "EngagementTime": [
           {
-            "totalTime": 98,
-            "activeTime": 93
+            "totalTime": 113,
+            "activeTime": 107
           }
         ],
         "Browser": [
@@ -9082,16 +9082,12 @@
           {
             "name": "SamsungInternet",
             "sessionsCount": 1
-          },
-          {
-            "name": "Edge",
-            "sessionsCount": 1
           }
         ],
         "Device": [
           {
             "name": "PC",
-            "sessionsCount": 5
+            "sessionsCount": 4
           },
           {
             "name": "Mobile",
@@ -9114,10 +9110,6 @@
           {
             "name": "IOS",
             "sessionsCount": 1
-          },
-          {
-            "name": "Windows",
-            "sessionsCount": 1
           }
         ],
         "Country": [
@@ -9126,18 +9118,18 @@
             "sessionsCount": 4
           },
           {
-            "name": "United States",
-            "sessionsCount": 2
+            "name": "Singapore",
+            "sessionsCount": 1
           },
           {
-            "name": "Singapore",
+            "name": "United States",
             "sessionsCount": 1
           }
         ],
         "PageTitle": [
           {
             "name": "Simplifier | 스타트업 코칭·강연과 AI 에이전트 서비스 Carvit, 한성희",
-            "sessionsCount": 6
+            "sessionsCount": 5
           },
           {
             "name": "1인 기업 어떻게 창업해야 할까요? - Simplifier",
@@ -9189,7 +9181,7 @@
         "PopularPages": [
           {
             "url": "https://simplifier.co.kr/",
-            "visitsCount": 6
+            "visitsCount": 5
           },
           {
             "url": "https://simplifier.co.kr/logs/241/",
