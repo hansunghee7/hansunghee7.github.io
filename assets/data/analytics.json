@@ -1,20 +1,13 @@
 {
-  "updated_at": "2026-10-18T12:08:22.378075+00:00",
+  "updated_at": "2026-10-18T20:00:47.636383+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 372,
-    "activeUsers": 319,
-    "newUsers": 314,
+    "sessions": 365,
+    "activeUsers": 312,
+    "newUsers": 307,
     "returningUsers": 5
   },
   "daily": [
-    {
-      "date": "2026-09-18",
-      "sessions": 8,
-      "activeUsers": 8,
-      "newUsers": 8,
-      "returningUsers": 0
-    },
     {
       "date": "2026-09-19",
       "sessions": 3,
@@ -220,23 +213,23 @@
     },
     {
       "date": "2026-10-18",
-      "sessions": 2,
-      "activeUsers": 2,
-      "newUsers": 1,
+      "sessions": 3,
+      "activeUsers": 3,
+      "newUsers": 2,
       "returningUsers": 1
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 142,
+    "home": 141,
     "log_home": 0,
-    "individual_post": 219,
+    "individual_post": 213,
     "other": 10
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 206
+      "sessions": 198
     },
     {
       "source": "linkedin.com",
@@ -248,7 +241,7 @@
     },
     {
       "source": "google",
-      "sessions": 17
+      "sessions": 18
     },
     {
       "source": "m.facebook.com",
@@ -300,7 +293,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 206
+      "sessions": 198
     },
     {
       "source": "linkedin.com",
@@ -318,7 +311,7 @@
       "source": "google",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 17
+      "sessions": 18
     },
     {
       "source": "m.facebook.com",
@@ -436,11 +429,11 @@
     }
   ],
   "engagement_events": {
-    "section_view_proven": 84,
-    "section_view_voices": 72,
-    "section_view_book_class": 44,
-    "section_view_faq": 46,
-    "faq_open": 11,
+    "section_view_proven": 85,
+    "section_view_voices": 73,
+    "section_view_book_class": 45,
+    "section_view_faq": 47,
+    "faq_open": 12,
     "read_complete": 88
   },
   "contact_funnel": {
@@ -594,18 +587,6 @@
       "views": 6
     },
     {
-      "path": "/logs/2/",
-      "title": "오디세이, 매우 사적인 관람평",
-      "uniqueViews": 5,
-      "views": 5
-    },
-    {
-      "path": "/logs/481/",
-      "title": "내가 GS에서 강의를 하는 이유",
-      "uniqueViews": 5,
-      "views": 5
-    },
-    {
       "path": "/logs/636/",
       "title": "바쁜 하루가 끝났는데 남은 게 없다면",
       "uniqueViews": 5,
@@ -616,17 +597,29 @@
       "title": "AI에이전트에게 조심스러워지게 된 사연",
       "uniqueViews": 5,
       "views": 6
+    },
+    {
+      "path": "/logs/2/",
+      "title": "오디세이, 매우 사적인 관람평",
+      "uniqueViews": 4,
+      "views": 4
+    },
+    {
+      "path": "/logs/481/",
+      "title": "내가 GS에서 강의를 하는 이유",
+      "uniqueViews": 4,
+      "views": 4
     }
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 411,
+    "total_desktop_sessions": 412,
     "excluded_invalid_sessions": 23,
     "by_resolution": [
       {
         "resolution": "1920x1080",
         "width": 1920,
-        "sessions": 86
+        "sessions": 87
       },
       {
         "resolution": "800x600",
