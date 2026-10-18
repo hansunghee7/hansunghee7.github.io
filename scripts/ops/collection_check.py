@@ -6,8 +6,11 @@
 
 점검 규칙:
   1. 빈 값 회귀  — 직전 날 non-null이던 소스.필드가 최신 날 null로 떨어짐(수집 실패 의심).
-  2. 급변        — 판매·순위 계열(sales_index/sales_point/*_rank)이 직전 대비
-                   비정상적으로 큰 비율 변동(기본 ±70%, --threshold로 조정).
+  2. 급변        — 판매 계열(sales_index/sales_point)은 직전 대비 비정상적으로 큰
+                   비율 변동(기본 ±70%, --threshold로 조정).
+                   순위 계열(*_rank)은 비율이 아니라 절대 순위 차이로 판정한다
+                   (기본 50계단, --rank-jump로 조정). 순위는 1→2가 100%처럼
+                   최상위권 정상 변동이 매일 오탐되므로 비율이 부적절하다.
                    리뷰 수·평점은 급변 대상에서 제외(마야 규칙과 일치).
   3. 최신 레코드 누락 소스 — history 최신 날에 아예 빠진 소스.
 
@@ -24,14 +27,22 @@ import json
 import sys
 from typing import Any, Dict, List, Optional
 
-# 급변(비율 변동) 점검 대상 필드. 판매지수·세일즈포인트와 모든 *_rank 계열.
+# 급변 점검 대상 필드. 판매지수·세일즈포인트(비율)와 모든 *_rank 계열(절대차).
 # 리뷰 수·평점은 제외(원래 잘 안 변하므로 급변 판정 대상이 아니다).
 _VELOCITY_EXACT = {"sales_index", "sales_point"}
 
+# 순위 급변 기본 임계(계단 수). 이보다 더 크게 순위가 뛰면 급변으로 본다.
+DEFAULT_RANK_JUMP = 50
+
 
 def is_velocity_field(field: str) -> bool:
-    """급변(비율 변동) 점검 대상 필드인지. 판매 계열 + *_rank 계열."""
+    """급변 점검 대상 필드인지. 판매 계열 + *_rank 계열."""
     return field in _VELOCITY_EXACT or field.endswith("_rank")
+
+
+def is_rank_field(field: str) -> bool:
+    """순위 계열(작을수록 좋음, 절대 순위 차이로 급변 판정)인지."""
+    return field.endswith("_rank")
 
 
 def _source_fields(source_value: Any) -> Dict[str, Any]:
@@ -39,11 +50,19 @@ def _source_fields(source_value: Any) -> Dict[str, Any]:
     return source_value if isinstance(source_value, dict) else {}
 
 
-def check_history(history: List[Dict[str, Any]], threshold: float = 0.70) -> List[Dict[str, Any]]:
+def check_history(
+    history: List[Dict[str, Any]],
+    threshold: float = 0.70,
+    rank_jump: int = DEFAULT_RANK_JUMP,
+) -> List[Dict[str, Any]]:
     """history(레코드 리스트)를 점검해 경고 목록을 반환한다. 순수 함수.
 
     각 경고는 dict: {kind, source, field, prev, curr, date, detail}.
       kind: 'null_regression' | 'spike' | 'missing_source'
+
+    급변 판정은 두 갈래:
+      - 판매 계열(sales_index/sales_point): 비율 변동 > threshold.
+      - 순위 계열(*_rank): 절대 순위 차이 > rank_jump(계단).
     """
     warnings: List[Dict[str, Any]] = []
     if not history or len(history) < 1:
@@ -100,13 +119,30 @@ def check_history(history: List[Dict[str, Any]], threshold: float = 0.70) -> Lis
                 })
                 continue
 
-            # 2) 급변: 판매·순위 계열만, 둘 다 숫자이고 직전이 0이 아닐 때.
+            # 2) 급변: 판매·순위 계열만, 둘 다 숫자(bool 제외)일 때.
             if not is_velocity_field(field):
                 continue
             if not isinstance(prev_val, (int, float)) or isinstance(prev_val, bool):
                 continue
             if not isinstance(curr, (int, float)) or isinstance(curr, bool):
                 continue
+
+            if is_rank_field(field):
+                # 순위 계열: 절대 순위 차이로 판정(비율은 1→2=100%처럼 오탐).
+                jump = abs(curr - prev_val)
+                if jump > rank_jump:
+                    warnings.append({
+                        "kind": "spike",
+                        "source": src,
+                        "field": field,
+                        "prev": prev_val,
+                        "curr": curr,
+                        "date": latest_date,
+                        "detail": f"{src}.{field} 직전 {prev_val} → 최신 {curr} (순위 {jump:.0f}계단 변동, 임계 {rank_jump}계단)",
+                    })
+                continue
+
+            # 판매 계열: 비율 변동(직전이 0이면 비율 계산 불가라 건너뜀).
             if prev_val == 0:
                 continue
             ratio = abs(curr - prev_val) / abs(prev_val)
@@ -124,7 +160,7 @@ def check_history(history: List[Dict[str, Any]], threshold: float = 0.70) -> Lis
     return warnings
 
 
-def check_file(path: str, threshold: float = 0.70) -> Dict[str, Any]:
+def check_file(path: str, threshold: float = 0.70, rank_jump: int = DEFAULT_RANK_JUMP) -> Dict[str, Any]:
     """파일 하나를 읽어 점검한다. 결과 dict 반환(읽기 오류 포함)."""
     try:
         with open(path, "r", encoding="utf-8") as f:
@@ -135,7 +171,7 @@ def check_file(path: str, threshold: float = 0.70) -> Dict[str, Any]:
         return {"path": path, "error": f"읽기 실패: {e}", "warnings": []}
 
     history = data.get("history", []) if isinstance(data, dict) else []
-    warnings = check_history(history, threshold=threshold)
+    warnings = check_history(history, threshold=threshold, rank_jump=rank_jump)
     return {
         "path": path,
         "error": None,
@@ -168,14 +204,16 @@ def main(argv: Optional[List[str]] = None) -> int:
     ap = argparse.ArgumentParser(description="수집 데이터(JSON) 점검기 — 빈 값·급변·누락을 코드 기준으로 경고")
     ap.add_argument("paths", nargs="+", help="점검할 JSON 경로(여럿 가능)")
     ap.add_argument("--threshold", type=float, default=0.70,
-                    help="급변 판정 비율 임계(기본 0.70 = ±70%%)")
+                    help="판매 계열 급변 비율 임계(기본 0.70 = ±70%%)")
+    ap.add_argument("--rank-jump", dest="rank_jump", type=int, default=DEFAULT_RANK_JUMP,
+                    help=f"순위 계열(*_rank) 급변 절대차 임계(기본 {DEFAULT_RANK_JUMP}계단)")
     ap.add_argument("--strict", action="store_true",
                     help="경고가 하나라도 있으면 exit 1(기본은 경고만 내고 exit 0)")
     ap.add_argument("--json", dest="as_json", action="store_true",
                     help="결과를 JSON으로 출력")
     args = ap.parse_args(argv)
 
-    results = [check_file(p, threshold=args.threshold) for p in args.paths]
+    results = [check_file(p, threshold=args.threshold, rank_jump=args.rank_jump) for p in args.paths]
     total_warnings = sum(len(r["warnings"]) for r in results)
     any_error = any(r.get("error") for r in results)
 

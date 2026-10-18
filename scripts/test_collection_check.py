@@ -54,6 +54,49 @@ def test_spike_detected():
     check("급변 감지(category_rank)", kinds(check_history(h2)) == ["spike"])
 
 
+# 2-b) 순위 결함(비티·덱스 교차검증): *_rank은 비율이 아니라 절대 순위 차이로 판정.
+def test_rank_spike_uses_absolute_jump():
+    # ① 최상위권 소폭 변동(1→2)은 비율로는 100%지만 절대차 1계단이라 spike 아님.
+    h_top = [
+        {"date": "2026-01-01", "yes24": {"category_rank": 1}},
+        {"date": "2026-01-02", "yes24": {"category_rank": 2}},
+    ]
+    check("순위 1→2는 급변 아님(절대차 1계단)", check_history(h_top) == [])
+    # 2→4도 비율 100%지만 2계단이라 무경고.
+    h_top2 = [
+        {"date": "2026-01-01", "yes24": {"category_rank": 2}},
+        {"date": "2026-01-02", "yes24": {"category_rank": 4}},
+    ]
+    check("순위 2→4는 급변 아님(절대차 2계단)", check_history(h_top2) == [])
+    # ② 큰 계단(5→300)은 spike, detail에 '계단' 표기.
+    h_big = [
+        {"date": "2026-01-01", "millie": {"category_rank": 5}},
+        {"date": "2026-01-02", "millie": {"category_rank": 300}},
+    ]
+    w_big = check_history(h_big)
+    check("순위 5→300은 급변", kinds(w_big) == ["spike"])
+    check("순위 급변 detail에 계단 표기", "계단" in w_big[0]["detail"])
+    # --rank-jump 인자로 임계 조정 가능(기본 50 → 400이면 5→300=295계단은 통과).
+    check("rank_jump 인자 반영(400이면 무경고)", check_history(h_big, rank_jump=400) == [])
+
+
+# 2-c) 판매 계열(sales_point)은 여전히 비율로 판정(절대차 임계 영향 안 받음).
+def test_sales_still_ratio():
+    # 100→500 = +400% > 70% → spike. rank_jump를 크게 줘도 비율이라 여전히 급변.
+    h = [
+        {"date": "2026-01-01", "aladin": {"sales_point": 100}},
+        {"date": "2026-01-02", "aladin": {"sales_point": 500}},
+    ]
+    check("sales_point 비율 급변", kinds(check_history(h, rank_jump=9999)) == ["spike"])
+    check("sales_point detail에 % 표기", "%" in check_history(h)[0]["detail"])
+    # 소폭(100→150=+50%)은 무경고.
+    h2 = [
+        {"date": "2026-01-01", "aladin": {"sales_point": 100}},
+        {"date": "2026-01-02", "aladin": {"sales_point": 150}},
+    ]
+    check("sales_point 소폭 무경고", check_history(h2) == [])
+
+
 # 3) 소폭 변동은 경고 없음(임계 이하).
 def test_small_change_no_spike():
     history = [
@@ -130,6 +173,8 @@ if __name__ == "__main__":
     for fn in [
         test_null_regression,
         test_spike_detected,
+        test_rank_spike_uses_absolute_jump,
+        test_sales_still_ratio,
         test_small_change_no_spike,
         test_reviews_rating_excluded,
         test_zero_is_valid,
