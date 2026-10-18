@@ -2624,7 +2624,42 @@
         "yes24.ad_rank",
         "yes24.sales_index"
       ]
+    },
+    {
+      "date": "2026-10-19",
+      "yes24": {
+        "mkt_rank": 196,
+        "ad_rank": 12,
+        "web_rank": 46,
+        "uxui_rank": 22,
+        "design_rank": 62,
+        "econ_rank": null,
+        "sales_index": 1809,
+        "reviews": 18,
+        "rating": 10.0
+      },
+      "aladin": {
+        "sales_point": 320,
+        "reviews": 9,
+        "rating": 9.6,
+        "design_rank": null,
+        "brand_rank": null,
+        "ad_rank": null
+      },
+      "kyobo": {
+        "uxui_cat": null,
+        "strategy_rank": null,
+        "badge_rank": null,
+        "badge_category": null,
+        "reviews": 0,
+        "rating": null
+      },
+      "suspect_stale": [
+        "aladin.sales_point",
+        "yes24.ad_rank",
+        "yes24.sales_index"
+      ]
     }
   ],
-  "updated_at": "2026-10-18T12:50:06.801764+00:00"
+  "updated_at": "2026-10-18T20:05:50.052648+00:00"
 }
