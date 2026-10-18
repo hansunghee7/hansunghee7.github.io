@@ -213,6 +213,15 @@
             "command": "\"$CLAUDE_PROJECT_DIR/.claude/hooks/outbound-room-gate.sh\""
           }
         ]
+      },
+      {
+        "matcher": "Write|Edit|MultiEdit|Bash|PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR/.claude/hooks/rejection-evidence-gate.sh\""
+          }
+        ]
       }
     ],
     "PostToolUse": [
