@@ -653,8 +653,9 @@ id = "fn:actions-budget"
 kind = "cmd"
 cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\actions_budget_watch.py']
 every_min = 1440
+timeout = 360
 name = "GitHub Actions 유료 사용량·사고 우회 배포(actions_budget_watch.py)"
-note = "2026-10-16 탐 등록(공정 카드 탐#109, 사장님 10/15 '소액 상한, 유료 최소화', 상한 5달러). 실행 기록으로 이번 달 비공개 저장소 분을 근사(청구 API는 gh 토큰 권한 없음). 붉음 = 추정 유료 4달러(80%) 이상 또는 오늘 사고 우회 배포 있음. 붉을 때 할 일: 상위 소비 작업 확인(C:/work/_ops/actions_minutes_1016.py), 사장님께 '원문 X → 근거 Y' 형식으로 보고."
+note = "2026-10-16 탐 등록(공정 카드 탐#109, 사장님 10/15 '소액 상한, 유료 최소화', 상한 5달러). 실행 기록으로 이번 달 비공개 저장소 분을 근사(청구 API는 gh 토큰 권한 없음). 붉음 = 추정 유료 4달러(80%) 이상 또는 오늘 사고 우회 배포 있음. 붉을 때 할 일: 상위 소비 작업 확인(C:/work/_ops/actions_minutes_1016.py), 사장님께 '원문 X → 근거 Y' 형식으로 보고. 2026-10-19 탐: timeout=360 추가(기본 90초보다 스크립트 실측 소요(3분22초, REPOS 7곳·host-pinned 스캔 16건)가 길어 매번 '실패'로 잘못 잡혔다, 실제 exit=0)."
 
 [[job]]
 id = "fn:saegim-runner"
