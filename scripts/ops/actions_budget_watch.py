@@ -66,7 +66,7 @@ def main():
     manual_ok = len({r["sha"] for r in runs if r["ok"]})
 
     print(f"이번 달 비공개 저장소 Actions 약 {total}분(무료 {FREE_MIN}분), 추정 유료 ${paid:.2f} / 상한 ${CAP_USD:.0f}"
-          f" · 오늘 수동 배포 성공 {manual_ok}건(상한 3) · 사고 우회 {len(incidents)}건")
+          f" · 오늘 수동 배포 성공 {manual_ok}건 · 사고 우회 {len(incidents)}건")
     for m in incidents:
         print(" -", m)
     red = paid >= CAP_USD * ALERT_RATIO or bool(incidents)
