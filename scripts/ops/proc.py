@@ -35,6 +35,12 @@ import opsdb  # noqa: E402
 WHO = {'탐', '핏', '마야', '지투', '노트', '비티', '덱스', '타미', '클라우드탐'}
 SECRET = re.compile(r'(sk-[A-Za-z0-9]{10,}|AIza[0-9A-Za-z_-]{20,}|sb_secret_|sbp_[0-9a-f]{20,}|ghp_|github_pat_|-----BEGIN)', re.I)
 COLS = ('owner', 'section', 'no', 'title', 'status', 'source_date', 'next_action', 'evidence', 'result', 'cost', 'decider', 'raw', 'source')
+# 완료를 실측 숫자로만 받는 공정(사장님 10/18 "완료는 실측 숫자로", 공정 카드 카빗DM #6). 숫자 하나 + 경로·PR·URL 하나가 있어야 한다.
+MEASURED_PROCS = {'카빗DM'}
+
+
+def measured(ev: str) -> bool:
+    return bool(re.search(r'\d', ev or '')) and bool(re.search(r'[/\\]|https?://|#\d+|PR\s?\d+', ev or ''))
 
 
 def now():
@@ -271,6 +277,9 @@ def cmd_run(a):
         clean(a.evidence)
         if not a.evidence or len(a.evidence.strip()) < 3:
             sys.exit('증거(파일·로그 경로나 확인한 값)가 필요합니다: --evidence "..." (했다는 말만으로는 완료 처리 안 됨)')
+        if r['owner'] in MEASURED_PROCS and not measured(a.evidence):
+            sys.exit(f'{r["owner"]} 공정은 실측 숫자로만 완료합니다(사장님 10/18): --evidence에 잰 숫자(초·행동 수·건수 등)와 '
+                     '로그·파일 경로나 PR·URL을 같이 적으세요. 예: "시험 계정 사람 행동 6번·첫 답장 21초, C:/work/_ops/x/log.jsonl"')
         r['status'], r['evidence'] = '완료', a.evidence[:400]
     else:
         clean(a.why)
