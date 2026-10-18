@@ -7,7 +7,11 @@
 import json
 import subprocess
 import sys
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
+
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
 
 REPOS = ["hansunghee7/simplifier-saegim", "hansunghee7/simplifier-cxo-db", "hansunghee7/shorts-lab",
          "hansunghee7/solar-bible", "hansunghee7/carvit-ai", "hansunghee7/saegim-pass"]
@@ -25,13 +29,44 @@ def gh(args):
     return r.stdout if r.returncode == 0 else ""
 
 
-def minutes(run):
+def job_minutes(arg):
+    """run 하나의 잡들 중 자체 실행기가 아닌 잡만 잡마다 분 올림(최소 1분)해 합산."""
+    repo, rid = arg
+    out = gh(["api", f"repos/{repo}/actions/runs/{rid}/jobs?per_page=100", "--jq",
+              "[.jobs[] | {l: .labels, s: .started_at, c: .completed_at}]"])
     try:
-        s = datetime.fromisoformat(run["startedAt"].replace("Z", "+00:00"))
-        e = datetime.fromisoformat(run["updatedAt"].replace("Z", "+00:00"))
-    except Exception:  # noqa: BLE001
+        jobs = json.loads(out or "[]")
+    except ValueError:
         return 0
-    return max(1, -(-int((e - s).total_seconds()) // 60))
+    total = 0
+    for j in jobs:
+        if "self-hosted" in (j.get("l") or []):
+            continue
+        try:
+            a = datetime.fromisoformat(j["s"].replace("Z", "+00:00"))
+            b = datetime.fromisoformat(j["c"].replace("Z", "+00:00"))
+        except Exception:  # noqa: BLE001
+            continue
+        total += max(1, -(-int(max(0, (b - a).total_seconds())) // 60))
+    return total
+
+
+def month_runs(repo, month_start):
+    """이번 달 run id를 2일 구간으로 나눠 모은다(목록 1000개 제한 회피, id로 중복 제거)."""
+    runs = {}
+    d0 = datetime.fromisoformat(month_start)
+    end = datetime.now() + timedelta(days=1)
+    while d0 < end:
+        d1 = d0 + timedelta(days=2)
+        rng = f"{d0:%Y-%m-%d}..{d1:%Y-%m-%d}"
+        part = json.loads(gh(["run", "list", "-R", repo, "--limit", "1000", "--created", rng,
+                              "--json", "databaseId"]) or "[]")
+        if len(part) >= 1000:
+            print("경고: 구간 잘림", repo, rng)
+        for r in part:
+            runs[r["databaseId"]] = r
+        d0 = d1
+    return list(runs)
 
 
 def main():
@@ -41,9 +76,9 @@ def main():
     for repo in REPOS:
         if gh(["api", f"repos/{repo}", "--jq", ".private"]).strip() != "true":
             continue
-        out = gh(["run", "list", "-R", repo, "--limit", "1000", "--created", f">={month_start}",
-                  "--json", "startedAt,updatedAt"])
-        total += sum(minutes(r) for r in json.loads(out or "[]"))
+        ids = month_runs(repo, month_start)
+        with ThreadPoolExecutor(8) as ex:
+            total += sum(ex.map(job_minutes, [(repo, i) for i in ids]))
     paid = max(0, total - FREE_MIN) * USD_PER_MIN
 
     # 오늘(KST) 수동 배포와 사고 우회 횟수
