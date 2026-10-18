@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-18T20:00:47.636383+00:00",
+  "updated_at": "2026-10-18T20:45:41.924264+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 365,
-    "activeUsers": 312,
-    "newUsers": 307,
+    "sessions": 366,
+    "activeUsers": 313,
+    "newUsers": 308,
     "returningUsers": 5
   },
   "daily": [
@@ -213,15 +213,15 @@
     },
     {
       "date": "2026-10-18",
-      "sessions": 3,
-      "activeUsers": 3,
-      "newUsers": 2,
+      "sessions": 4,
+      "activeUsers": 4,
+      "newUsers": 3,
       "returningUsers": 1
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 141,
+    "home": 142,
     "log_home": 0,
     "individual_post": 213,
     "other": 10
@@ -241,7 +241,7 @@
     },
     {
       "source": "google",
-      "sessions": 18
+      "sessions": 19
     },
     {
       "source": "m.facebook.com",
@@ -311,7 +311,7 @@
       "source": "google",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 18
+      "sessions": 19
     },
     {
       "source": "m.facebook.com",
@@ -429,15 +429,15 @@
     }
   ],
   "engagement_events": {
-    "section_view_proven": 85,
-    "section_view_voices": 73,
-    "section_view_book_class": 45,
-    "section_view_faq": 47,
+    "section_view_proven": 86,
+    "section_view_voices": 74,
+    "section_view_book_class": 46,
+    "section_view_faq": 48,
     "faq_open": 12,
-    "read_complete": 88
+    "read_complete": 94
   },
   "contact_funnel": {
-    "contact_open": 19,
+    "contact_open": 20,
     "generate_lead": 0,
     "contact_error": 0
   },
@@ -587,33 +587,33 @@
       "views": 6
     },
     {
+      "path": "/logs/641/",
+      "title": "AI에이전트에게 조심스러워지게 된 사연",
+      "uniqueViews": 6,
+      "views": 7
+    },
+    {
+      "path": "/logs/481/",
+      "title": "내가 GS에서 강의를 하는 이유",
+      "uniqueViews": 5,
+      "views": 5
+    },
+    {
       "path": "/logs/636/",
       "title": "바쁜 하루가 끝났는데 남은 게 없다면",
       "uniqueViews": 5,
       "views": 5
     },
     {
-      "path": "/logs/641/",
-      "title": "AI에이전트에게 조심스러워지게 된 사연",
-      "uniqueViews": 5,
-      "views": 6
-    },
-    {
       "path": "/logs/2/",
       "title": "오디세이, 매우 사적인 관람평",
-      "uniqueViews": 4,
-      "views": 4
-    },
-    {
-      "path": "/logs/481/",
-      "title": "내가 GS에서 강의를 하는 이유",
       "uniqueViews": 4,
       "views": 4
     }
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 412,
+    "total_desktop_sessions": 413,
     "excluded_invalid_sessions": 23,
     "by_resolution": [
       {
