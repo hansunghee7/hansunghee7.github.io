@@ -95,18 +95,26 @@ def merge_day_record(existing, incoming, at):
     for src, inc_val in incoming.items():
         if src in _SKIP_KEYS:
             continue
-        if existing.get(src) is None:          # 소스 자체가 '없음' -> 통째로 채움
-            existing[src] = inc_val
+        if existing.get(src) is None:          # 소스 자체가 '없음' -> 통째로 채움(얕은 참조 방지 복사)
+            existing[src] = inc_val.copy() if isinstance(inc_val, dict) else inc_val
             continue
-        if not isinstance(inc_val, dict) or not isinstance(existing.get(src), dict):
-            continue                           # 비정상 구조면 기존 유지
+        if not isinstance(inc_val, dict):
+            continue                           # 새 값이 dict 아니면 병합 불가, 기존 유지
+        if not isinstance(existing[src], dict):
+            existing[src] = inc_val.copy()     # 기존이 비정상(비-dict)이면 정상 dict로 교체(영구 skip 방지)
+            continue
         for field, new_v in inc_val.items():
             cur = existing[src].get(field)
             if cur is None:                    # 빈칸 -> 채움(새 값 None 이면 그대로)
                 if new_v is not None:
                     existing[src][field] = new_v
             elif new_v is not None and new_v != cur:   # 이미 값 있음 + 다른 non-null
-                later.append({"field": f"{src}.{field}", "value": new_v, "at": at})
+                field_key = f"{src}.{field}"
+                # 같은 필드의 직전 기록값과 다를 때만 추가(재실행 중복 누적 방지, 비티 슈퍼리뷰)
+                last_v = next((it["value"] for it in reversed(later)
+                               if it.get("field") == field_key), None)
+                if new_v != last_v:
+                    later.append({"field": field_key, "value": new_v, "at": at})
     if not later:
         existing.pop("later_values", None)     # 빈 리스트는 남기지 않음
     return existing
@@ -120,6 +128,7 @@ def upsert(history, today, record, at=None):
         if entry["date"] == today:
             history[i] = merge_day_record(entry, record, at)
             return
+    record.setdefault("date", today)           # date 누락 시 KeyError 방지(비티 슈퍼리뷰)
     history.append(record)
     history.sort(key=lambda e: e["date"])
 

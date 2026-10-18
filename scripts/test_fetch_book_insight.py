@@ -74,6 +74,52 @@ def test_upsert_same_date_merges_not_replaces():
     assert history[0]["yes24"]["rating"] == 9.0        # 빈칸 채움
 
 
+def test_later_values_no_duplicate_on_rerun():
+    """비티 슈퍼리뷰: 같은 다른값이 재실행마다 들어와도 later_values에 한 번만."""
+    existing = {"date": "2026-10-18", "millie": {"category_rank": 85}}
+    incoming = {"date": "2026-10-18", "millie": {"category_rank": 55}}
+    merge_day_record(existing, incoming, "2026-10-18T07:01")
+    merge_day_record(existing, incoming, "2026-10-18T13:01")  # 같은 55 재유입
+    assert existing["later_values"] == [
+        {"field": "millie.category_rank", "value": 55, "at": "2026-10-18T07:01"}
+    ]
+
+
+def test_later_values_logs_new_different_value():
+    """다른 값으로 또 바뀌면 그때는 추가(55 -> 60)."""
+    existing = {"date": "2026-10-18", "millie": {"category_rank": 85}}
+    merge_day_record(existing, {"millie": {"category_rank": 55}}, "A")
+    merge_day_record(existing, {"millie": {"category_rank": 60}}, "B")
+    assert existing["later_values"] == [
+        {"field": "millie.category_rank", "value": 55, "at": "A"},
+        {"field": "millie.category_rank", "value": 60, "at": "B"},
+    ]
+
+
+def test_nondict_existing_replaced_by_dict():
+    """비티 슈퍼리뷰: 기존 소스가 비-dict면 이후 정상 dict로 교체(영구 skip 방지)."""
+    existing = {"date": "2026-10-18", "yes24": "오류문자열"}
+    incoming = {"date": "2026-10-18", "yes24": {"sales_point": 588}}
+    out = merge_day_record(existing, incoming, AT)
+    assert out["yes24"] == {"sales_point": 588}
+
+
+def test_new_source_is_copied_not_aliased():
+    """비티 슈퍼리뷰: 새 소스는 복사본으로 담아 호출측 수정이 history를 오염시키지 않는다."""
+    inc_src = {"category_rank": 55}
+    existing = {"date": "2026-10-18", "yes24": {"sales_point": 588}}
+    out = merge_day_record(existing, {"millie": inc_src}, AT)
+    inc_src["category_rank"] = 999          # 호출측이 원본을 바꿔도
+    assert out["millie"]["category_rank"] == 55
+
+
+def test_upsert_append_without_date_does_not_crash():
+    """비티 슈퍼리뷰: record에 date 키가 없어도 upsert가 today로 채워 크래시 안 함."""
+    history = []
+    upsert(history, "2026-10-18", {"yes24": {"sales_point": 100}})
+    assert history[0]["date"] == "2026-10-18"
+
+
 def test_suspect_stale_marks_three_day_identical():
     """최근 3일 동일 non-null -> suspect_stale 표시."""
     history = [
