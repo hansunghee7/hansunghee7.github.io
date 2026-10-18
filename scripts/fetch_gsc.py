@@ -29,8 +29,9 @@ from datetime import datetime, timedelta, timezone
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 
-OUT_PATH = "assets/data/search-console.json"
-SITE_MARKER = "simplifier.co.kr"
+# 2026-10-18 carvit.ai 추가(지투): 같은 스크립트를 환경변수로 사이트·출력 파일만 바꿔 한 번 더 돌린다
+OUT_PATH = os.environ.get("GSC_OUT_PATH", "assets/data/search-console.json")
+SITE_MARKER = os.environ.get("GSC_SITE_MARKER", "simplifier.co.kr")
 
 
 def get_service():

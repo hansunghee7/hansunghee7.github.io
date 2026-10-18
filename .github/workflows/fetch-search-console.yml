@@ -56,11 +56,21 @@ jobs:
           GA4_SERVICE_ACCOUNT_JSON: ${{ secrets.GA4_SERVICE_ACCOUNT_JSON }}
         run: python scripts/fetch_gsc.py
 
+      - name: Fetch Search Console report (carvit.ai)
+        env:
+          GA4_SERVICE_ACCOUNT_JSON: ${{ secrets.GA4_SERVICE_ACCOUNT_JSON }}
+          GSC_SITE_MARKER: carvit.ai
+          GSC_OUT_PATH: assets/data/search-console-carvit.json
+        # 2026-10-18 서비스 계정을 carvit.ai 속성에 '제한적'(읽기)으로 추가했다. 실패해도 simplifier 수집은 커밋되게 한다
+        continue-on-error: true
+        run: python scripts/fetch_gsc.py
+
       - name: Commit changes if any
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add assets/data/search-console.json
+          if [ -f assets/data/search-console-carvit.json ]; then git add assets/data/search-console-carvit.json; fi
           if git diff --cached --quiet; then
             echo "no changes to commit"
           else
