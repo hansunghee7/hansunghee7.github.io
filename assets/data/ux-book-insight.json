@@ -2658,8 +2658,15 @@
         "aladin.sales_point",
         "yes24.ad_rank",
         "yes24.sales_index"
+      ],
+      "later_values": [
+        {
+          "field": "aladin.sales_point",
+          "value": 310,
+          "at": "2026-10-18T22:21+00:00"
+        }
       ]
     }
   ],
-  "updated_at": "2026-10-18T20:05:50.052648+00:00"
+  "updated_at": "2026-10-18T22:21:55.362226+00:00"
 }
