@@ -1560,9 +1560,9 @@
       "yes24": {
         "category_rank": null,
         "category2_rank": null,
-        "sales_index": null,
+        "sales_index": 588,
         "reviews": 0,
-        "rating": null
+        "rating": 10.0
       },
       "aladin": {
         "sales_point": 739,
@@ -1584,8 +1584,34 @@
       },
       "millie": {
         "category_rank": 55
-      }
+      },
+      "later_values": [
+        {
+          "field": "yes24.reviews",
+          "value": 3,
+          "at": "2026-10-18T01:11+00:00"
+        },
+        {
+          "field": "aladin.reviews",
+          "value": 0,
+          "at": "2026-10-18T01:11+00:00"
+        },
+        {
+          "field": "millie.category_rank",
+          "value": 85,
+          "at": "2026-10-18T01:11+00:00"
+        }
+      ],
+      "suspect_stale": [
+        "aladin.rating",
+        "aladin.reviews",
+        "kyobo.reviews",
+        "ridibooks.rating",
+        "ridibooks.rating_count",
+        "yes24.rating",
+        "yes24.sales_index"
+      ]
     }
   ],
-  "updated_at": "2026-10-17T22:03:39.710612+00:00"
+  "updated_at": "2026-10-18T01:11:18.851985+00:00"
 }
