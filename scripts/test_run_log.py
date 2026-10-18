@@ -11,7 +11,53 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent / "ops"))
 from run_log import (  # noqa: E402
     append, build_entry, read_entries, _day_stamp, _day_path, FILE_PREFIX,
+    summarize_runs, filter_by_date,
 )
+
+
+def test_summary_who_counts_and_status_distribution():
+    rows = [
+        {"who": "a", "status": "ok", "ts": "2026-10-18T10:00:00"},
+        {"who": "a", "status": "fail", "ts": "2026-10-18T11:00:00"},
+        {"who": "b", "status": "skip", "ts": "2026-10-19T10:00:00"},
+    ]
+    result = summarize_runs(rows)
+    assert result["who"]["a"]["total"] == 2
+    assert result["who"]["a"]["ok"] == 1 and result["who"]["a"]["fail"] == 1
+    assert result["who"]["b"]["skip"] == 1
+
+
+def test_summary_success_rate_uses_all_rows():
+    result = summarize_runs([{"who": "a", "status": "ok"}, {"who": "a", "status": "fail"}])
+    assert result["who"]["a"]["success_rate"] == 50.0
+
+
+def test_summary_daily_total_and_fail_counts():
+    result = summarize_runs([
+        {"ts": "2026-10-18T10:00", "status": "fail"},
+        {"ts": "2026-10-18T11:00", "status": "ok"},
+        {"ts": "2026-10-19T10:00", "status": "fail"},
+    ])
+    assert result["by_day"]["2026-10-18"] == {"total": 2, "fail": 1}
+
+
+def test_summary_recent_failures_top_n():
+    rows = [{"ts": f"2026-10-18T{hour:02}:00", "status": "fail", "who": "a",
+             "task": str(hour), "result": "bad"} for hour in range(1, 5)]
+    assert [r["task"] for r in summarize_runs(rows, top=2)["recent_failures"]] == ["4", "3"]
+
+
+def test_summary_empty_and_missing_status_are_safe():
+    assert summarize_runs([]) == {"who": {}, "by_day": {}, "recent_failures": []}
+    result = summarize_runs([{"ts": "2026-10-18T10:00"}])
+    assert result["who"]["(unknown)"]["total"] == 1
+    assert result["who"]["(unknown)"]["ok"] == 0
+
+
+def test_filter_by_date_inclusive():
+    rows = [{"ts": "2026-10-17T23:00"}, {"ts": "2026-10-18T01:00"},
+            {"ts": "2026-10-19T01:00"}]
+    assert filter_by_date(rows, since="2026-10-18", until="2026-10-18") == [rows[1]]
 
 
 def test_build_entry_has_required_fields():
