@@ -1,7 +1,7 @@
 """비공개 저장소 GitHub Actions 사용량 감시(2026-10-16 탐, 공정 카드 탐#65·#109).
 
 사장님 10/15 원문: "한도 초과 시 소액 상한을 열어 두고, 앞으로 유료결제가 최소화되도록 관리".
-10/18 사장님이 5,000원을 충전했고 추가 충전은 없다. 환율 1,400원/$ 가정으로 상한은 약 3.6달러(5000/1400).
+10/18 사장님이 5달러를 충전했고(5,000원과 같은 뜻) 추가 충전은 없다. 청구 화면 예산은 $5.00(10/18 밤 실측 $1.66 사용). 추정은 잡마다 분을 올려 실제보다 높게 나온다.
 깃허브 청구 API는 gh 토큰에 user 권한이 없어 못 읽으므로, 실행 기록으로 이번 달 분을 근사한다(실행마다 올림).
 붉음(종료 코드 1) = 추정 유료 금액이 상한의 80% 이상, 또는 오늘 사고 우회 배포가 있음. watch.py가 알린다.
 측정 불완전(종료 코드 2) = gh 호출 실패(반환코드≠0, API 한도 403 포함)가 1건이라도 있음. 이때 합계는 하한값이다.
@@ -21,7 +21,7 @@ if hasattr(sys.stdout, "reconfigure"):
 REPOS = ["hansunghee7/simplifier-saegim", "hansunghee7/simplifier-cxo-db", "hansunghee7/shorts-lab",
          "hansunghee7/solar-bible", "hansunghee7/carvit-ai", "hansunghee7/saegim-pass"]
 FREE_MIN = 2000
-CAP_USD = 3.6  # 5,000원 / 1,400원per$ 가정
+CAP_USD = 5.0  # 청구 화면 예산 상한(사장님 10/18 충전액)
 USD_PER_MIN = 0.006  # 리눅스 기본 러너 단가 추정. 청구 화면과 어긋나면 이 값을 맞춘다
 ALERT_RATIO = 0.8
 DEPLOY_WF = "deploy-cloud-run.yml"
@@ -145,7 +145,7 @@ def main():
                     incidents.append(msg)
     manual_ok = len({r["sha"] for r in runs if r["ok"]})
 
-    print(f"이번 달 비공개 저장소 Actions 약 {total}분(무료 {FREE_MIN}분), 추정 유료 ${paid:.2f} / 상한 ${CAP_USD:.1f}"
+    print(f"이번 달 비공개 저장소 Actions 약 {total}분(무료 {FREE_MIN}분), 추정 유료 ${paid:.2f} / 상한 ${CAP_USD:.0f}"
           f" · 오늘 수동 배포 성공 {manual_ok}건 · 사고 우회 {len(incidents)}건"
           + (" (하한값)" if _fail_count else ""))
     for m in incidents:
