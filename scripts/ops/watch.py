@@ -209,6 +209,11 @@ def check_gh(job, gh_runs, at):
     if runs is None:
         return "warn", "GitHub 조회 실패(gh 인증 확인)"
     mine = sorted((r for r in runs if r["status"] == "completed"), key=lambda r: r["createdAt"], reverse=True)
+    trig = job.get("trigger_filter")
+    if trig:
+        filtered = [r for r in mine if r["event"] == trig]
+        if filtered:  # 해당 트리거 실행 기록이 아예 없으면 전체로 대체 판단
+            mine = filtered
     if not mine:
         return "warn", "실행 기록이 없음"
     last = mine[0]
