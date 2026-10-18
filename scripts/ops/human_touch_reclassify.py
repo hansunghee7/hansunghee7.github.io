@@ -31,20 +31,35 @@ TS_FMT = "%Y-%m-%d %H:%M:%S"
 # CLAUDE.md 에이전틱 원칙의 사람 개입 4종에서 출발한다.
 #   ① 자격증명  ② 비가역·돈 승인  ③ 제품·방향 결정  ④ 규칙상 금지(계정생성·외부발신·결제)
 #
-# "실제 판단" = 사람이 무언가를 고르거나 승인하는 결정을 내린 것.
-# "분류·전달만" = 사람이 결정한 게 아니라 규칙·기능 한계 탓에 기계적으로 손을
-#                 거친 것(자격증명 입력, 외부 발신 대리, 계정 생성 등) → 자동화 후보.
-# 나머지(특히 뭉뚱그린 "규칙상 금지")는 키워드로 가려지지 않으면 "미분류".
+# 분류는 4개:
+#   "실제 판단"       = 사람이 무언가를 고르거나 승인하는 결정을 내린 것.
+#   "분류·전달만"     = 사람이 결정한 게 아니라 규칙·기능 한계 탓에 기계적으로 손을
+#                       거친 것(외부 발신 대리, 계정 생성 등) → 자동화(제품으로 없애기) 1순위 후보.
+#   "위임불가가능"    = 자격증명. OTP·2FA·CAPTCHA·실제 외부 로그인처럼 에이전트가
+#                       대신 못 하는 개입이 섞여 있어, 자동화 후보 집계에서 빼고
+#                       사람이 직접 봐야 할 "확인 필요"로 둔다(비티·덱스 슈퍼리뷰 ①).
+#   "미분류"          = 뭉뚱그린 "규칙상 금지" 등. 명확한 신호가 없으면 여기 남긴다.
+#
+# 자동화 1순위 후보 Top은 "분류·전달만"에서만 뽑는다(자격증명 제외).
 
 JUDGMENT = {"제품 결정", "방향 결정", "비가역", "돈"}
-RELAY = {"자격증명", "외부 발신", "계정 생성"}
+RELAY = {"외부 발신", "계정 생성"}
+BLOCKED = {"자격증명"}  # 위임 불가 가능 → 자동화 후보에서 제외
 
 JUDGMENT_LABEL = "실제 판단"
 RELAY_LABEL = "분류·전달만"
+BLOCKED_LABEL = "위임불가가능"
 UNSURE_LABEL = "미분류"
 
-# "규칙상 금지" 같은 모호 카테고리를 line 본문으로 재분류할 때 쓰는 명백한 키워드.
-RELAY_KEYWORDS = (
+# "규칙상 금지" 같은 모호 카테고리의 line 기반 재분류는 보수적으로 한다(슈퍼리뷰 ②).
+# 아래 구체 구절은 하나만 있어도 "분류·전달만"으로 본다(명확한 신호).
+RELAY_STRONG_PHRASES = (
+    "복사해서 붙여넣", "복사해 붙여넣", "복사하여 붙여넣",
+    "PIN 입력", "PIN을 입력", "인증번호 입력", "인증번호를 입력",
+    "외부로 전송", "외부로 발신", "메일을 보내", "메일 발송", "메일 발신",
+)
+# 약한 키워드는 '입력'·'전달' 하나만으로 승격시키지 않는다. 둘 이상 동시에 있을 때만 이동.
+RELAY_WEAK_KEYWORDS = (
     "발신", "전송", "메일", "이메일", "계정 생성", "로그인",
     "복사", "붙여넣", "붙여 넣", "전달", "입력", "PIN", "인증번호",
     "OAuth", "동의", "결제", "업로드", "게시",
@@ -57,7 +72,7 @@ JUDGMENT_KEYWORDS = (
 def classify(reason, line=""):
     """(category, bucket) 순수 함수. 부작용 없음.
 
-    category: '실제 판단' | '분류·전달만' | '미분류'
+    category: '실제 판단' | '분류·전달만' | '위임불가가능' | '미분류'
     bucket:   집계용 라벨(사유값 또는 '미분류').
     """
     reason = (reason or "").strip()
@@ -65,11 +80,16 @@ def classify(reason, line=""):
 
     if reason in JUDGMENT:
         return JUDGMENT_LABEL, reason
+    if reason in BLOCKED:
+        return BLOCKED_LABEL, reason
     if reason in RELAY:
         return RELAY_LABEL, reason
 
-    # 알려진 카테고리가 아니거나 "규칙상 금지"처럼 모호한 경우: 본문 키워드로만 이동.
-    if any(k in line for k in RELAY_KEYWORDS):
+    # 알려진 카테고리가 아니거나 "규칙상 금지"처럼 모호한 경우: 본문 기반 재분류는
+    # 과승격을 막기 위해 명확한 신호일 때만 이동하고, 애매하면 미분류로 남긴다.
+    strong = any(p in line for p in RELAY_STRONG_PHRASES)
+    weak_hits = sum(1 for k in RELAY_WEAK_KEYWORDS if k in line)
+    if strong or weak_hits >= 2:
         return RELAY_LABEL, reason or "(사유없음)"
     if any(k in line for k in JUDGMENT_KEYWORDS):
         return JUDGMENT_LABEL, reason or "(사유없음)"
@@ -125,6 +145,7 @@ def summarize(entries):
     """분류별 건수 + 버킷별 세부 Counter를 담은 dict 반환."""
     cat_counts = Counter()
     relay_buckets = Counter()
+    blocked_buckets = Counter()
     unsure_buckets = Counter()
     unsure_lines = []
     for e in entries:
@@ -132,6 +153,8 @@ def summarize(entries):
         cat_counts[cat] += 1
         if cat == RELAY_LABEL:
             relay_buckets[bucket] += 1
+        elif cat == BLOCKED_LABEL:
+            blocked_buckets[bucket] += 1
         elif cat == UNSURE_LABEL:
             unsure_buckets[bucket] += 1
             ln = (e.get("line") or "").strip()
@@ -141,6 +164,7 @@ def summarize(entries):
         "total": len(entries),
         "by_category": dict(cat_counts),
         "relay_buckets": relay_buckets,
+        "blocked_buckets": blocked_buckets,
         "unsure_buckets": unsure_buckets,
         "unsure_lines": unsure_lines,
     }
@@ -158,13 +182,27 @@ def render_text(summ, days, top):
     bc = summ["by_category"]
     j = bc.get(JUDGMENT_LABEL, 0)
     r = bc.get(RELAY_LABEL, 0)
+    b = bc.get(BLOCKED_LABEL, 0)
     u = bc.get(UNSURE_LABEL, 0)
-    out.append(f"  실제 판단 {j}건 · 분류·전달만 {r}건 · 미분류 {u}건")
+    out.append(
+        f"  실제 판단 {j}건 · 분류·전달만 {r}건 · "
+        f"위임불가가능(확인필요) {b}건 · 미분류 {u}건"
+    )
 
     out.append("")
-    out.append(f"■ 자동화 1순위 후보 (분류·전달만) Top {top}")
+    out.append(f"■ 자동화 1순위 후보 (분류·전달만, 자격증명 제외) Top {top}")
     if summ["relay_buckets"]:
         for name, cnt in summ["relay_buckets"].most_common(top):
+            out.append(f"    {cnt:>4}  {name}")
+    else:
+        out.append("    (없음)")
+
+    out.append("")
+    out.append(
+        f"■ 위임불가가능 (자격증명 — OTP·2FA·실제 로그인 섞임, 사람 확인 필요) Top {top}"
+    )
+    if summ["blocked_buckets"]:
+        for name, cnt in summ["blocked_buckets"].most_common(top):
             out.append(f"    {cnt:>4}  {name}")
     else:
         out.append("    (없음)")
@@ -191,6 +229,7 @@ def render_json(summ, days, top):
             "total": summ["total"],
             "by_category": summ["by_category"],
             "relay_top": summ["relay_buckets"].most_common(top),
+            "blocked_top": summ["blocked_buckets"].most_common(top),
             "unsure_top": summ["unsure_buckets"].most_common(top),
             "unsure_line_samples": summ["unsure_lines"][:top],
         },
