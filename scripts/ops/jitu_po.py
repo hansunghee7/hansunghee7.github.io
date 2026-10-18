@@ -12,6 +12,10 @@
            한 번 물은 결정은 답이 올 때까지 다시 묻지 않고 한 줄 상태만 남긴다. 물어보기 전에 `ask find 낱말`로 이미 물었는지 본다.
   req      요구사항 취합(2026-10-06 사장님 지시): 사장님·고객의 개선 요구를 영역별로 모으고, "빠짐없이 모았다는 확신"이 들 때만 `req ready 영역`을
            기록한 뒤 노트에게 전달한다. 새 항목이 들어오면 확신이 취소된다. 훅(jitu-loop pre-send)이 영역 없는 새 요청과 이득 근거 없는 멈춤·변경 요청을 막는다.
+  ut       카빗 UT(유저빌리티테스트, 사장님 2026-10-18 명명): 맥락 없는 새 세션을 깨워 실제 경로를 체험시키고 피드백을 받아 개선한다.
+           `ut add`(경로·테스터·과제) → `ut result`(막힌 곳·행동 수·걸린 초, 반영 R-번호) → 개선 배포 뒤 `ut add --retest UT-n`으로 같은 경로 재측정.
+           결과 없이 2일 넘은 UT와, 개선을 반영했는데 재측정 안 한 UT는 due에 뜬다. 방법: docs/카빗_UT.md
+  lead     사전체험 신청(hello@ 수신함 "[초대 요청]") 미처리 감시. 지투 세션 매 발화마다 훅이 alert를 띄운다.
   due      루프와 결정 요청에서 기한 지난 것만 모아 보인다(훅이 하이~ 때 이걸 부른다).
 저장: C:/work/_ops/jitu_po/*.jsonl (저장소 밖. 고객 신호가 들어가므로 공개 저장소에 두지 않는다). JITU_PO_DIR로 바꿀 수 있다.
 비밀값·고객 이름 원문은 넣지 않는다(호출자 별칭만).
@@ -25,7 +29,8 @@ import sys
 
 ROOT = os.environ.get("JITU_PO_DIR", "C:/work/_ops/jitu_po")
 FILES = {"gap": "gaps.jsonl", "kpi": "kpi.jsonl", "feedback": "feedback.jsonl", "predict": "predictions.jsonl", "ask": "asks.jsonl", "req": "requirements.jsonl",
-         "lead": "leads.jsonl"}
+         "lead": "leads.jsonl", "ut": "ut.jsonl"}
+UT_RESULT_DAYS = 2
 # 사전체험 신청(hello@ 수신함의 "[초대 요청]")은 지투 KPI(고객수)에 바로 닿는 신호라 다른 루프보다 먼저 보인다(사장님 10/18 지적)
 MAIL_ENV = os.environ.get("CARVIT_MAIL_ENV", "C:/work/_ops/secrets/carvit_mail_read.env")
 INTERNAL_DOMAINS = ("@simplifier.co.kr", "@carvit.ai")
@@ -490,6 +495,44 @@ def req_check(a):
     sys.exit(f"영역 [{a.area}]은 아직 전달할 수 없습니다(" + ("항목 없음" if not st["items"] else "확신 기록 없음 또는 새 항목으로 취소됨") + ")")
 
 
+# ---------------- ut (카빗 유저빌리티테스트) ----------------
+def ut_add(a):
+    rows = load("ut")
+    r = {"id": next_id(rows, "UT"), "date": str(today()), "path": a.path, "tester": a.tester, "task": a.task,
+         "retest_of": a.retest or "", "result": "", "blocks": "", "actions": None, "seconds": None, "reqs": [], "result_date": ""}
+    rows.append(r)
+    save("ut", rows)
+    print(f"{r['id']} 카빗 UT 기록: 경로 [{a.path}] 테스터 {a.tester}{' (재측정: ' + a.retest + ')' if a.retest else ''}")
+
+
+def ut_result(a):
+    rows = load("ut")
+    r = find(rows, a.id)
+    r.update({"result": a.text, "blocks": a.blocks or "", "actions": a.actions, "seconds": a.seconds,
+              "reqs": [x.strip() for x in (a.reqs or "").split(",") if x.strip()], "result_date": str(today())})
+    save("ut", rows)
+    print(f"{r['id']} 결과 기록(반영 요구 {', '.join(r['reqs']) or '없음'})")
+
+
+def ut_list(a):
+    for r in load("ut"):
+        nums = f" 행동 {r['actions']}·{r['seconds']}초" if r.get("actions") is not None else ""
+        print(f"{r['id']} {r['date']} [{r['path']}] {r['tester']}{' 재측정 ' + r['retest_of'] if r.get('retest_of') else ''}: "
+              f"{(r['result'] or '결과 대기')[:60]}{nums} 반영 {','.join(r.get('reqs') or []) or '-'}")
+
+
+def ut_due():
+    rows = load("ut")
+    retested = {r["retest_of"] for r in rows if r.get("retest_of")}
+    out = []
+    for r in rows:
+        if not r["result"] and days_since(r["date"]) >= UT_RESULT_DAYS:
+            out.append(f"{r['id']} 결과 없이 {days_since(r['date'])}일: [{r['path']}] {r['tester']}")
+        elif r["result"] and r.get("reqs") and r["id"] not in retested and days_since(r["result_date"]) >= 7:
+            out.append(f"{r['id']} 개선 요구 {','.join(r['reqs'])} 반영 뒤 재측정 안 함(배포됐으면 ut add --retest {r['id']})")
+    return out
+
+
 # ---------------- lead (사전체험 신청) ----------------
 def fetch_invite_requests():
     """hello@ 수신함에서 외부 사전체험 신청만. 읽기 실패면 None(없음과 구분)."""
@@ -555,7 +598,7 @@ def lead_alert(a):
 
 # ---------------- due ----------------
 def due_items():
-    out = {"lead": [], "gap": [], "kpi": [], "feedback": [], "predict": [], "ask": [], "req": [], "notice": []}
+    out = {"lead": [], "gap": [], "kpi": [], "feedback": [], "predict": [], "ask": [], "req": [], "notice": [], "ut": ut_due()}
     ol = open_leads()
     if ol:
         out["lead"].append(f"미처리 {len(ol)}건(가장 오래된 것 {min(r['at'] for r in ol)[:16]}), `jitu_po.py lead list`")
@@ -601,9 +644,9 @@ def due(a):
     if a.quiet and n == 0:
         return
     names = {"gap": "검사 공백(보강 4)", "kpi": "지표 측정(보강 2)", "feedback": "고객 신호(보강 3)", "predict": "예측 점검(보강 1)", "ask": "결정 요청(답 대기)", "req": "요구사항 취합 중",
-             "notice": "개선 반영 안내(배포됐는데 안내 안 함)", "lead": "🚨 사전체험 신청(고객 획득 최우선)"}
+             "notice": "개선 반영 안내(배포됐는데 안내 안 함)", "lead": "🚨 사전체험 신청(고객 획득 최우선)", "ut": "카빗 UT"}
     print(f"🔁 지투 루프 점검: 기한 지난 것 {n}건")
-    for k in ("lead", "gap","kpi", "feedback", "predict", "ask", "req", "notice"):
+    for k in ("lead", "ut", "gap", "kpi", "feedback", "predict", "ask", "req", "notice"):
         for line in d[k]:
             print(f"  - {names[k]}: {line}")
     if n:
@@ -680,6 +723,15 @@ def build():
     x = rq.add_parser("check-send"); x.add_argument("area"); x.set_defaults(fn=req_check)
 
     x = sub.add_parser("due"); x.add_argument("--quiet", action="store_true"); x.set_defaults(fn=due)
+
+    u = sub.add_parser("ut").add_subparsers(dest="sub", required=True)
+    x = u.add_parser("add"); x.add_argument("--path", required=True, help="체험 경로(예: 초대메일→가입→첫 DM)")
+    x.add_argument("--tester", required=True, help="테스터 세션 이름(맥락 없는 새 세션)"); x.add_argument("--task", required=True)
+    x.add_argument("--retest", default="", help="재측정이면 원래 UT 번호"); x.set_defaults(fn=ut_add)
+    x = u.add_parser("result"); x.add_argument("id"); x.add_argument("--text", required=True)
+    x.add_argument("--blocks", default=""); x.add_argument("--actions", type=int, default=None); x.add_argument("--seconds", type=int, default=None)
+    x.add_argument("--reqs", default="", help="반영한 요구 번호(쉼표)"); x.set_defaults(fn=ut_result)
+    x = u.add_parser("list"); x.set_defaults(fn=ut_list)
 
     ld = sub.add_parser("lead").add_subparsers(dest="sub", required=True)
     x = ld.add_parser("list"); x.set_defaults(fn=lead_list)
