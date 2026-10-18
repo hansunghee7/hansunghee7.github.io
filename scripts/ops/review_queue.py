@@ -40,6 +40,14 @@ def code_diff(n):
     return ''.join(keep)
 
 
+def dex_env():
+    # 덱스 검수는 Azure gpt-5-mini로 보낸다. REVIEW_DEX_PROVIDER=default 이면 예전 방식(롤백 스위치).
+    env = {'DEX_WORKDIR': r'C:\work\_ops\dex_wd'}
+    if os.environ.get('REVIEW_DEX_PROVIDER', '') != 'default':
+        env['DEX_PROVIDER'] = 'azure'
+    return env
+
+
 def ask(script, card, out, extra_env=None):
     env = {**os.environ, **(extra_env or {})}
     r = run([BASH, str(HERE / script), str(card), str(out)], env=env, timeout=900)
@@ -87,7 +95,7 @@ def main():
         if dry:
             lines.append(f'- #{n} {pr["title"]}: (dry) 카드 {card.stat().st_size}바이트')
             continue
-        rc_d = ask('ask_dex.sh', card, day / f'dex_pr{n}.md', {'DEX_WORKDIR': r'C:\work\_ops\dex_wd'})
+        rc_d = ask('ask_dex.sh', card, day / f'dex_pr{n}.md', dex_env())
         # 서로 다른 계열의 두 번째 의견을 섞는다(사장님 10/5 "소넷 쓰면 해결"): 홀수 PR은 비티-소넷(클로드 계열, 크레딧 안 씀), 짝수 PR은 기본 순서(제미나이 계열)
         rc_b = ask('ask_bt.sh', card, day / f'bt_pr{n}.md', {'BT_MODEL': 'sonnet'} if n % 2 else None)
         lines.append(f'- #{n} {pr["title"]}: 덱스 rc={rc_d} → dex_pr{n}.md / 비티 rc={rc_b} → bt_pr{n}.md')
