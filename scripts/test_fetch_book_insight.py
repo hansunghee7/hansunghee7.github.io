@@ -131,6 +131,28 @@ def test_suspect_stale_marks_three_day_identical():
     assert history[-1]["suspect_stale"] == ["yes24.sales_point"]
 
 
+def test_suspect_stale_ignores_reviews_and_rating():
+    """마야 2026-10-18: 리뷰 수·평점은 며칠 동일해도 캐시 의심 아님(판매·순위만 본다)."""
+    history = [
+        {"date": "2026-10-16", "yes24": {"reviews": 12, "rating": 9.2}},
+        {"date": "2026-10-17", "yes24": {"reviews": 12, "rating": 9.2}},
+        {"date": "2026-10-18", "yes24": {"reviews": 12, "rating": 9.2}},
+    ]
+    mark_suspect_stale(history)
+    assert "suspect_stale" not in history[-1]
+
+
+def test_suspect_stale_marks_rank_fields():
+    """*_rank 계열은 판매·순위라 3일 동일 시 표시."""
+    history = [
+        {"date": "2026-10-16", "millie": {"category_rank": 55}},
+        {"date": "2026-10-17", "millie": {"category_rank": 55}},
+        {"date": "2026-10-18", "millie": {"category_rank": 55}},
+    ]
+    mark_suspect_stale(history)
+    assert history[-1]["suspect_stale"] == ["millie.category_rank"]
+
+
 def test_suspect_stale_absent_when_changing():
     """값이 변하면 표시 안 함."""
     history = [

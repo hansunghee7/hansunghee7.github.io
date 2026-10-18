@@ -133,9 +133,15 @@ def upsert(history, today, record, at=None):
     history.sort(key=lambda e: e["date"])
 
 
+def _is_volatile_field(field):
+    """매일 변하는 게 정상인 '판매·순위 계열'만 캐시 의심 대상(마야 2026-10-18).
+    리뷰 수·평점은 원래 며칠씩 안 변해 잡음이라 제외한다."""
+    return field in ("sales_index", "sales_point") or field.endswith("_rank")
+
+
 def mark_suspect_stale(history, days=3):
-    """최근 days일 동안 같은 소스.필드 non-null 값이 완전히 동일하면 마지막 레코드에
-    suspect_stale 로 표시한다(예: 예스24 캐시 의심 진단용). 그 외엔 표시를 지운다."""
+    """최근 days일 동안 같은 소스.판매·순위필드 non-null 값이 완전히 동일하면 마지막
+    레코드에 suspect_stale 로 표시한다(예: 예스24 캐시 의심 진단용). 그 외엔 표시를 지운다."""
     if len(history) < days:
         return
     recent = history[-days:]
@@ -145,7 +151,7 @@ def mark_suspect_stale(history, days=3):
         if src in _SKIP_KEYS or not isinstance(val, dict):
             continue
         for field, v in val.items():
-            if v is None:
+            if v is None or not _is_volatile_field(field):
                 continue
             if all(isinstance(r.get(src), dict) and r[src].get(field) == v for r in recent):
                 stale.append(f"{src}.{field}")
