@@ -1603,15 +1603,9 @@
         }
       ],
       "suspect_stale": [
-        "aladin.rating",
-        "aladin.reviews",
-        "kyobo.reviews",
-        "ridibooks.rating",
-        "ridibooks.rating_count",
-        "yes24.rating",
         "yes24.sales_index"
       ]
     }
   ],
-  "updated_at": "2026-10-18T01:11:18.851985+00:00"
+  "updated_at": "2026-10-18T01:18:59.893792+00:00"
 }

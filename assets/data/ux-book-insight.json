@@ -2621,14 +2621,10 @@
         }
       ],
       "suspect_stale": [
-        "aladin.rating",
-        "aladin.reviews",
-        "kyobo.reviews",
         "yes24.ad_rank",
-        "yes24.rating",
         "yes24.sales_index"
       ]
     }
   ],
-  "updated_at": "2026-10-18T01:12:59.881742+00:00"
+  "updated_at": "2026-10-18T01:20:44.196725+00:00"
 }
