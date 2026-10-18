@@ -19,7 +19,8 @@ if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
 REPOS = ["hansunghee7/simplifier-saegim", "hansunghee7/simplifier-cxo-db", "hansunghee7/shorts-lab",
-         "hansunghee7/solar-bible", "hansunghee7/carvit-ai", "hansunghee7/saegim-pass"]
+         "hansunghee7/solar-bible", "hansunghee7/carvit-staging", "hansunghee7/carvit-insight-data",
+         "hansunghee7/saegim-pass"]
 FREE_MIN = 2000
 CAP_USD = 5.0  # 청구 화면 예산 상한(사장님 10/18 충전액)
 USD_PER_MIN = 0.006  # 리눅스 기본 러너 단가 추정. 청구 화면과 어긋나면 이 값을 맞춘다

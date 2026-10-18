@@ -37,7 +37,7 @@ def test_ok_reports_pinned_and_exit_0(monkeypatch, capsys):
     monkeypatch.setattr(subprocess, "run", fake_run_factory())
     assert w.main() == 0
     out = capsys.readouterr().out
-    assert "호스트 직접 지정 워크플로: 6개" in out and "ci.yml" in out
+    assert f"호스트 직접 지정 워크플로: {len(w.REPOS)}개" in out and "ci.yml" in out
     assert "측정 불완전" not in out
 
 
