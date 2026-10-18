@@ -238,3 +238,43 @@ def test_merge_state_empty_results_is_empty():
     at = datetime(2026, 9, 1, 5, 0, tzinfo=KST)
     new, alerts = watch.merge_state({}, [], at)
     assert new == {} and alerts == []
+
+
+# ---------------------------------------------------------------------------
+# check_gh(job, gh_runs, at)
+# ---------------------------------------------------------------------------
+
+def _run(event, conclusion, created, status="completed"):
+    return {"status": status, "event": event, "conclusion": conclusion, "createdAt": created}
+
+
+def test_check_gh_trigger_filter_ignores_failed_push_when_schedule_ok():
+    """push 트리거의 일회성 실패(10-18 23:31 cancelled류)가 매일 schedule 건강 판정을 가리지 않아야 한다."""
+    job = {"repo": "r", "workflow": "w", "period_min": 1440, "trigger_filter": "schedule"}
+    runs = [
+        _run("push", "cancelled", "2026-10-18T14:31:00Z"),  # 가장 최신이지만 push라 무시
+        _run("schedule", "success", "2026-10-17T11:21:00Z"),
+    ]
+    at = datetime(2026, 10, 18, 15, 0, tzinfo=KST)
+    status, detail = watch.check_gh(job, {("r", "w"): runs}, at)
+    assert status == "ok" and "10-17" in detail
+
+
+def test_check_gh_no_trigger_filter_uses_latest_run_any_event():
+    job = {"repo": "r", "workflow": "w", "period_min": 1440}
+    runs = [
+        _run("push", "cancelled", "2026-10-18T14:31:00Z"),
+        _run("schedule", "success", "2026-10-17T11:21:00Z"),
+    ]
+    at = datetime(2026, 10, 18, 15, 0, tzinfo=KST)
+    status, detail = watch.check_gh(job, {("r", "w"): runs}, at)
+    assert status == "fail" and "cancelled" in detail
+
+
+def test_check_gh_trigger_filter_falls_back_when_no_matching_event():
+    """schedule 실행 기록이 아예 없으면 전체 기록으로 판단(빈 결과로 'warn 실행 기록 없음'을 내지 않는다)."""
+    job = {"repo": "r", "workflow": "w", "period_min": 1440, "trigger_filter": "schedule"}
+    runs = [_run("push", "success", "2026-10-18T14:31:00Z")]
+    at = datetime(2026, 10, 18, 15, 0, tzinfo=KST)
+    status, detail = watch.check_gh(job, {("r", "w"): runs}, at)
+    assert status == "ok"
