@@ -137,6 +137,38 @@ def read_entries(path=None, day_dir=None):
     return merged
 
 
+def summarize_runs(rows, top=10):
+    """Build a file-independent summary of run rows."""
+    statuses = {s: 0 for s in _ALLOWED_STATUS}
+    by_who = {}
+    by_day = {}
+    failures = []
+    for row in rows:
+        who = row.get("who") or "(unknown)"
+        status = row.get("status")
+        day = str(row.get("ts", ""))[:10] or "(unknown)"
+        stats = by_who.setdefault(who, {"total": 0, **statuses.copy()})
+        stats["total"] += 1
+        if status in _ALLOWED_STATUS:
+            stats[status] += 1
+        day_stats = by_day.setdefault(day, {"total": 0, "fail": 0})
+        day_stats["total"] += 1
+        if status == "fail":
+            day_stats["fail"] += 1
+            failures.append(row)
+    for stats in by_who.values():
+        stats["success_rate"] = (stats["ok"] / stats["total"] * 100) if stats["total"] else 0.0
+    failures.sort(key=lambda row: str(row.get("ts", "")), reverse=True)
+    return {
+        "who": dict(sorted(by_who.items())),
+        "by_day": dict(sorted(by_day.items())),
+        "recent_failures": [
+            {key: row.get(key, "") for key in ("ts", "who", "task", "result")}
+            for row in failures[:max(0, top)]
+        ],
+    }
+
+
 def _print_rows(rows, as_json):
     if as_json:
         print(json.dumps(rows, ensure_ascii=False, indent=1))
@@ -209,6 +241,25 @@ def _cmd_query(args):
     return 0
 
 
+def _cmd_summary(args):
+    rows = filter_by_date(read_entries(path=args.path, day_dir=args.dir), args.since, args.until)
+    summary = summarize_runs(rows, top=args.top)
+    if args.json:
+        print(json.dumps(summary, ensure_ascii=False, indent=2))
+    else:
+        print("Who:")
+        for who, stats in summary["who"].items():
+            print(f"{who}: total={stats['total']} ok={stats['ok']} fail={stats['fail']} "
+                  f"skip={stats['skip']} partial={stats['partial']} success={stats['success_rate']:.1f}%")
+        print("By day:")
+        for day, stats in summary["by_day"].items():
+            print(f"{day}: total={stats['total']} fail={stats['fail']}")
+        print("Recent failures:")
+        for row in summary["recent_failures"]:
+            print(f"{row['ts']} {row['who']} / {row['task']} :: {row['result']}")
+    return 0
+
+
 def main(argv=None):
     p = argparse.ArgumentParser(description="주기·위임 작업 실행 기록 한 줄 표준")
     p.add_argument("--path", default=None, help="특정 파일 직접 지정(기본은 날짜별 파일)")
@@ -238,6 +289,13 @@ def main(argv=None):
     pq.add_argument("--n", type=int, default=50)
     pq.add_argument("--json", action="store_true")
     pq.set_defaults(func=_cmd_query)
+
+    ps = sub.add_parser("summary", help="Summarize runs by who and date")
+    ps.add_argument("--since", default=None, help="Inclusive start date (YYYY-MM-DD)")
+    ps.add_argument("--until", default=None, help="Inclusive end date (YYYY-MM-DD)")
+    ps.add_argument("--top", type=int, default=10, help="Number of recent failures")
+    ps.add_argument("--json", action="store_true")
+    ps.set_defaults(func=_cmd_summary)
 
     args = p.parse_args(argv)
     return args.func(args)
