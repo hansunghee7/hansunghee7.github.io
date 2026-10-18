@@ -1,18 +1,18 @@
 {
-  "updated_at": "2026-10-18T06:35:47.351709+00:00",
+  "updated_at": "2026-10-18T14:04:03.836350+00:00",
   "site_url": "https://carvit.ai/",
   "data_delay_note": "서치콘솔 데이터는 약 2일 지연 -- end_date는 이틀 전",
   "totals_28d": {
     "clicks": 4,
-    "impressions": 204,
-    "ctr": 0.0196,
-    "position": 6.2
+    "impressions": 227,
+    "ctr": 0.0176,
+    "position": 5.9
   },
   "totals_90d": {
     "clicks": 4,
-    "impressions": 204,
-    "ctr": 0.0196,
-    "position": 6.2
+    "impressions": 227,
+    "ctr": 0.0176,
+    "position": 5.9
   },
   "daily_90d": [
     {
@@ -140,15 +140,22 @@
       "impressions": 12,
       "ctr": 0,
       "position": 6.2
+    },
+    {
+      "date": "2026-10-16",
+      "clicks": 0,
+      "impressions": 23,
+      "ctr": 0,
+      "position": 4.1
     }
   ],
   "top_queries_90d": [
     {
       "query": "carvit",
       "clicks": 2,
-      "impressions": 140,
-      "ctr": 0.0143,
-      "position": 5.9
+      "impressions": 160,
+      "ctr": 0.0125,
+      "position": 5.6
     },
     {
       "query": "car vit",
@@ -183,9 +190,9 @@
     {
       "page": "https://carvit.ai/",
       "clicks": 4,
-      "impressions": 197,
-      "ctr": 0.0203,
-      "position": 6.1
+      "impressions": 219,
+      "ctr": 0.0183,
+      "position": 5.9
     },
     {
       "page": "https://carvit.ai/terms/",
@@ -211,9 +218,16 @@
     {
       "page": "https://carvit.ai/tech-report/logo-making-process/",
       "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 9.5
+    },
+    {
+      "page": "https://carvit.ai/ko/",
+      "clicks": 0,
       "impressions": 3,
       "ctr": 0,
-      "position": 8.7
+      "position": 2
     },
     {
       "page": "https://carvit.ai/ux-mcp/",
@@ -223,11 +237,11 @@
       "position": 5.3
     },
     {
-      "page": "https://carvit.ai/ko/",
+      "page": "https://carvit.ai/ko/terms/",
       "clicks": 0,
       "impressions": 2,
       "ctr": 0,
-      "position": 2
+      "position": 7
     },
     {
       "page": "https://carvit.ai/tech-report/",
@@ -265,13 +279,6 @@
       "position": 7
     },
     {
-      "page": "https://carvit.ai/ko/terms/",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 9
-    },
-    {
       "page": "https://carvit.ai/tech-report/agent-launch-qa/",
       "clicks": 0,
       "impressions": 1,
@@ -290,16 +297,16 @@
     {
       "device": "MOBILE",
       "clicks": 2,
-      "impressions": 147,
-      "ctr": 0.0136,
-      "position": 6.0
+      "impressions": 163,
+      "ctr": 0.0123,
+      "position": 5.9
     },
     {
       "device": "DESKTOP",
       "clicks": 2,
-      "impressions": 55,
-      "ctr": 0.0364,
-      "position": 6.5
+      "impressions": 62,
+      "ctr": 0.0323,
+      "position": 6.1
     },
     {
       "device": "TABLET",
@@ -313,9 +320,9 @@
     {
       "country": "mex",
       "clicks": 1,
-      "impressions": 22,
-      "ctr": 0.0455,
-      "position": 8.4
+      "impressions": 24,
+      "ctr": 0.0417,
+      "position": 8.3
     },
     {
       "country": "tur",
@@ -334,9 +341,9 @@
     {
       "country": "aut",
       "clicks": 0,
-      "impressions": 5,
+      "impressions": 6,
       "ctr": 0,
-      "position": 4
+      "position": 3.7
     },
     {
       "country": "bra",
