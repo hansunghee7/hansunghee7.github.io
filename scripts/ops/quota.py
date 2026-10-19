@@ -32,10 +32,19 @@ BUDGET = {
     # 2026-10-16 사장님 "페이블/오퍼스/비티/덱스를 최대한 활용": 자체 예산을 풀고 세기만 한다. 실제 한도는 막힘(리셋 시각)으로 잡힌다.
     "비티": None,
     "비티-sonnet": None,
+    "비티-vertex": None,  # 비티(GCP 풀). 안티그래비티가 막혀도 이 풀로 검수는 계속된다(10/19 정정). 세기만 하고 막힘 기록은 없다.
     "덱스": None,
 }
 # agent_calls.csv의 who 값 → 풀과 사용자. 핏 도구는 who=비티로 쓰지만 시각으로 구분이 안 돼 note 열이 생기기 전까지는 합산으로 본다.
-WHO_MAP = {"비티": ("비티", None), "비티-sonnet": ("비티-sonnet", None), "덱스": ("덱스", None)}
+WHO_MAP = {"비티": ("비티", None), "비티-sonnet": ("비티-sonnet", None), "비티-vertex": ("비티-vertex", None), "덱스": ("덱스", None)}
+
+# 10/19 사고: 상태판의 '비티 막힘'이 안티그래비티 풀만 뜻하는데 비티 전체가 막힌 것으로 읽혔다. 막힘 문구에 풀의 정체와 계속 쓰는 길을 함께 적는다.
+BT_GCP_HINT = "비티(GCP 풀=Vertex)는 계속 가능: BT_MODEL=vertex bash scripts/ops/ask_bt.sh <카드> <출력>. 보고엔 '비티(GCP 풀)'로 적고 '비티 없음'이라 쓰지 않는다"
+POOL_LABEL = {"비티": "비티(안티그래비티 풀)"}
+
+
+def pool_label(pool):
+    return POOL_LABEL.get(pool, pool)
 
 
 def load_calls(now):
@@ -93,8 +102,9 @@ def summary(now):
         lines.append(part)
     # 붉을 때(막힌 풀 있음 또는 예산 초과)는 원인을 맨 앞 한 줄로 — 정상 풀 숫자에 가려지지 않게
     if blocked:
-        why = ", ".join(f"{pool} 막힘, {b:%m-%d %H:%M} 해제" for pool, b in blocked)
-        lines.insert(0, f"붉은 이유 = {why}")
+        why = ", ".join(f"{pool_label(pool)} 막힘, {b:%m-%d %H:%M} 해제" for pool, b in blocked)
+        hint = f" / {BT_GCP_HINT}" if any(pool == "비티" for pool, _ in blocked) else ""
+        lines.insert(0, f"붉은 이유 = {why}{hint}")
     elif over_budget:
         lines.insert(0, f"붉은 이유 = {', '.join(over_budget)} 초과")
     return worst, lines
@@ -124,7 +134,10 @@ def main(argv):
         who = argv[argv.index("--who") + 1] if "--who" in argv else None
         b = blocked_until(load_state(), pool, now)
         if b:
-            print(f"{pool} 막힘: {b:%m-%d %H:%M}까지(한도 초과 기록). 다른 풀을 쓰세요(비티 → 비티-sonnet 또는 덱스).")
+            if pool == "비티":
+                print(f"{pool_label(pool)} 막힘: {b:%m-%d %H:%M}까지(한도 초과 기록). {BT_GCP_HINT}. 비티-sonnet은 Claude 계열이라 이종 검수가 아니다.")
+            else:
+                print(f"{pool} 막힘: {b:%m-%d %H:%M}까지(한도 초과 기록). 다른 풀을 쓰세요.")
             return 2
         bud = BUDGET.get(pool)
         used = [r for r in load_calls(now) if r["pool"] == pool]
