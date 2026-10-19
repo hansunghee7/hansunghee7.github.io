@@ -1,20 +1,13 @@
 {
-  "updated_at": "2026-10-19T14:50:36.986821+00:00",
+  "updated_at": "2026-10-19T20:00:53.405196+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 371,
-    "activeUsers": 318,
-    "newUsers": 313,
+    "sessions": 369,
+    "activeUsers": 316,
+    "newUsers": 311,
     "returningUsers": 5
   },
   "daily": [
-    {
-      "date": "2026-09-19",
-      "sessions": 3,
-      "activeUsers": 2,
-      "newUsers": 2,
-      "returningUsers": 0
-    },
     {
       "date": "2026-09-20",
       "sessions": 14,
@@ -228,7 +221,7 @@
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 146,
+    "home": 144,
     "log_home": 0,
     "individual_post": 214,
     "other": 10
@@ -236,7 +229,7 @@
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 202
+      "sessions": 200
     },
     {
       "source": "linkedin.com",
@@ -300,7 +293,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 202
+      "sessions": 200
     },
     {
       "source": "linkedin.com",
@@ -436,8 +429,8 @@
     }
   ],
   "engagement_events": {
-    "section_view_proven": 87,
-    "section_view_voices": 75,
+    "section_view_proven": 86,
+    "section_view_voices": 74,
     "section_view_book_class": 46,
     "section_view_faq": 48,
     "faq_open": 12,
