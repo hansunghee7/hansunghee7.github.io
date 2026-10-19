@@ -2699,8 +2699,35 @@
       "suspect_stale": [
         "yes24.ad_rank",
         "yes24.sales_index"
+      ],
+      "later_values": [
+        {
+          "field": "yes24.mkt_rank",
+          "value": 191,
+          "at": "2026-10-19T20:06+00:00"
+        },
+        {
+          "field": "yes24.web_rank",
+          "value": 43,
+          "at": "2026-10-19T20:06+00:00"
+        },
+        {
+          "field": "yes24.uxui_rank",
+          "value": 17,
+          "at": "2026-10-19T20:06+00:00"
+        },
+        {
+          "field": "yes24.design_rank",
+          "value": 58,
+          "at": "2026-10-19T20:06+00:00"
+        },
+        {
+          "field": "yes24.sales_index",
+          "value": 1764,
+          "at": "2026-10-19T20:06+00:00"
+        }
       ]
     }
   ],
-  "updated_at": "2026-10-19T15:54:21.821935+00:00"
+  "updated_at": "2026-10-19T20:06:36.756799+00:00"
 }
