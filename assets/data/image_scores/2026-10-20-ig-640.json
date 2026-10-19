@@ -1,0 +1,19 @@
+{
+  "queue_id": "2026-10-20-ig-640",
+  "image": "log_assets/images/640_난생 처음 AWS, AZURE, NVIDIA에 가입을 했습니다_cover.jpg",
+  "sha256": "3f47bcfc7b529a704c8de71373b3debbe0da8d0386c65140bb7cb3f0bb48731e",
+  "source": "nano-banana",
+  "idea": "늘 쓰던 무료 인프라가 한계에 부딪힌 1인 회사가, 팀원처럼 모인 에이전트들과 서버 앞에서 크레딧 지원사업을 찾아 나선다",
+  "conditions": {
+    "1": 1,
+    "2": 0,
+    "3": 0,
+    "4": 1,
+    "5": 1,
+    "6": 1,
+    "7": 1,
+    "8": 0
+  },
+  "score": "5/8",
+  "note": "독립 채점(제미나이 이미지 호출, 글 내용 모르는 평가자) 2회 모두 5/8, 1번 빅아이디어 충족. 감점: 연출된 AI 느낌(3), 정보성 약함(2), 시선이 모니터로 분산(8). 대표 이미지는 사장님이 10/17에 직접 지정(boss_pick). 채점 원문 C:/work/_ops/maya_briefs/credit_post/eval/"
+}
