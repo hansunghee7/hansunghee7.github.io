@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-19T06:11:48.321558+00:00",
+  "updated_at": "2026-10-19T14:50:36.986821+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 370,
-    "activeUsers": 317,
-    "newUsers": 312,
+    "sessions": 371,
+    "activeUsers": 318,
+    "newUsers": 313,
     "returningUsers": 5
   },
   "daily": [
@@ -220,15 +220,15 @@
     },
     {
       "date": "2026-10-19",
-      "sessions": 1,
-      "activeUsers": 1,
-      "newUsers": 1,
+      "sessions": 2,
+      "activeUsers": 2,
+      "newUsers": 2,
       "returningUsers": 0
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 145,
+    "home": 146,
     "log_home": 0,
     "individual_post": 214,
     "other": 10
@@ -236,7 +236,7 @@
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 201
+      "sessions": 202
     },
     {
       "source": "linkedin.com",
@@ -300,7 +300,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 201
+      "sessions": 202
     },
     {
       "source": "linkedin.com",
@@ -620,7 +620,7 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 415,
+    "total_desktop_sessions": 416,
     "excluded_invalid_sessions": 23,
     "by_resolution": [
       {
@@ -631,7 +631,7 @@
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 76
+        "sessions": 77
       },
       {
         "resolution": "1600x1600",
