@@ -64,7 +64,13 @@ def test_bypass_is_logged(docs, tmp_path):
 
 
 def test_row_add_numbers_and_gate_accepts(docs, tmp_path):
-    rid = ledger_row.add_row("bt", "새 과제", "다음에 할 일", docs=docs)
+    rid = ledger_row.add_row("bt", "새 과제", "다음에 할 일", docs=docs, remote="")
     assert rid == "BT4"
     assert gate(docs, "bt", f"{LEDGER}: {rid}\n", tmp_path).returncode == 0
-    assert ledger_row.add_row("dex", "또 하나", "z", docs=docs) == "DX3"
+    assert ledger_row.add_row("dex", "또 하나", "z", docs=docs, remote="") == "DX3"
+
+
+def test_row_number_uses_higher_of_local_and_origin(docs):
+    # 10/19 사고: 다른 체크아웃이 같은 번호(DX5)를 따로 만들어 충돌했다. origin/main이 더 앞서 있으면 그 다음 번호를 쓴다.
+    remote = "### [대기] DX9: 원격에서 먼저 생긴 행\n다음 행동: q\n"
+    assert ledger_row.add_row("dex", "새 행", "n", docs=docs, remote=remote) == "DX10"
