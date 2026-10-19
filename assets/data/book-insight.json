@@ -1639,8 +1639,15 @@
       "suspect_stale": [
         "aladin.sales_point",
         "yes24.sales_index"
+      ],
+      "later_values": [
+        {
+          "field": "millie.category_rank",
+          "value": 86,
+          "at": "2026-10-19T07:56+00:00"
+        }
       ]
     }
   ],
-  "updated_at": "2026-10-18T22:19:52.739727+00:00"
+  "updated_at": "2026-10-19T07:56:10.691114+00:00"
 }
