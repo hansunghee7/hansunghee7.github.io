@@ -18,11 +18,26 @@ def next_id(text, pfx):
     return f"{pfx}{max(nums, default=0) + 1}"
 
 
-def add_row(agent, title, nxt, status="대기", conclusion="", docs=DOCS):
+def origin_text(name):
+    """origin/main의 같은 문서 본문(없거나 git이 없으면 빈 문자열). 체크아웃마다 번호가 겹치는 일(10/19 DX5 충돌)을 막으려 번호는 둘 중 큰 값 + 1로 정한다."""
+    import subprocess
+    root = Path(__file__).resolve().parents[2]
+    try:
+        subprocess.run(["git", "-C", str(root), "fetch", "-q", "origin", "main"], capture_output=True, timeout=30, stdin=subprocess.DEVNULL)
+        r = subprocess.run(["git", "-C", str(root), "show", f"origin/main:docs/{name}"], capture_output=True, timeout=30, stdin=subprocess.DEVNULL)
+        return r.stdout.decode("utf-8", "replace") if r.returncode == 0 else ""
+    except Exception:
+        return ""
+
+
+def add_row(agent, title, nxt, status="대기", conclusion="", docs=DOCS, remote=None):
     pfx, name = CFG[agent]
     path = Path(docs) / name
     text = path.read_text(encoding="utf-8")
-    rid = next_id(text, pfx)
+    if remote is None:
+        remote = origin_text(name)
+    local_n, remote_n = int(next_id(text, pfx)[len(pfx):]), int(next_id(remote, pfx)[len(pfx):])
+    rid = f"{pfx}{max(local_n, remote_n)}"
     row = f"\n### [{status}] {rid}: {title}\n"
     if conclusion:
         row += f"결론: {conclusion}\n"
