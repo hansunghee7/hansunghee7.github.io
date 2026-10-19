@@ -163,8 +163,9 @@ def collect_gcp_actual():
 # "결제계정 메타·SKU 단가"만 주고 "실제 얼마 썼나"는 주지 않는다(2026-10-18 tam-vertex SA 실측 확인). 실비는
 # 결제계정→BigQuery export를 켠 뒤 그 데이터셋을 질의해야 나온다. export가 없거나 권한이 없으면 사유만 돌려준다.
 
-GCP_BILLING_PROJECT = os.environ.get("GCP_BILLING_PROJECT", "simplifier-vertex-credit")
-GCP_BILLING_BQ_DATASET = os.environ.get("GCP_BILLING_BQ_DATASET", "")  # 비우면 'billing' 들어간 데이터셋 자동 탐색
+# 2026-10-20 실측: 결제 export는 이미 켜져 있고 위치는 프로젝트 saegim-mcp, 데이터셋 billing_export(결제계정 0138DC)다. 예전 기본값(simplifier-vertex-credit)에는 데이터셋이 없어 "export 미설정"으로 잘못 나왔다.
+GCP_BILLING_PROJECT = os.environ.get("GCP_BILLING_PROJECT", "saegim-mcp")
+GCP_BILLING_BQ_DATASET = os.environ.get("GCP_BILLING_BQ_DATASET", "billing_export")  # 기본은 실제 위치를 못 박음(자동 탐색은 다른 'billing' 데이터셋을 집을 수 있음). 환경변수를 빈 문자열로 주면 자동 탐색(비티 리뷰 반영)
 
 
 def _bq_call(path, body=None, token=None, method="GET"):

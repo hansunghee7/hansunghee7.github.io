@@ -281,6 +281,10 @@ def _vertex_usage_row(who, model, search, tin, tout, sq, est, sec, rc):
 
 def search_key_stage(prompt, model, gen, timeout, who):
     """검색 전용 키 한 단계(장부·상한·무효 상태 규칙 포함). 반환 (시도함, (route,status) 또는 None, 성공 시 (code,j,model,t0) 또는 None). vertex_research.py도 재사용."""
+    # 2026-10-20 사장님 지시("크레딧이 안 덮는 지출 Gemini API ₩7,324는 Vertex로 ASAP"): AI Studio 결제는 GCP 크레딧 제외라 검색 전용 유료 키 단계를 기본으로 끈다.
+    # 검색은 곧바로 Vertex(크레딧 적용)로 낙하한다. 다시 켜려면 환경변수 GEMINI_SEARCH_KEY_ENABLED=1(크레딧이 끝난 뒤나 Vertex 장애 때). 근거: 결제 export 실측, 탐#219.
+    if os.environ.get("GEMINI_SEARCH_KEY_ENABLED") != "1":
+        return False, None, None
     skey = _search_key()[0]
     if not skey:
         return False, None, None

@@ -246,7 +246,7 @@ class RouteFall(unittest.TestCase):
             return 0, None
         return mock.patch.object(gr, "_http_post", side_effect=f)
 
-    ENV_ON = {"GEMINI_WEB_PORTS": "9001"}
+    ENV_ON = {"GEMINI_WEB_PORTS": "9001", "GEMINI_SEARCH_KEY_ENABLED": "1"}  # 검색키 단계는 기본 꺼짐(유료 AI Studio 경로 차단, 10/20), 이 시험은 켠 상태를 시험한다
 
     def test_search_key_ok_never_touches_web(self):
         with mock.patch.dict("os.environ", self.ENV_ON), mock.patch.object(gw, "_run_remote") as rr, self.post({"generativelanguage": 200}):
