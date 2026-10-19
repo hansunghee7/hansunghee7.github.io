@@ -63,6 +63,10 @@ class StuckGateTest(unittest.TestCase):
         C = [("Bash", {"command": "tail -3 C:/work/_ops/agent_calls.csv"})]
         self.assertIsNone(sg.check("비티는 지금 한도로 막혀 있습니다.", V, False))
         self.assertIsNone(sg.check("비티 막힘 때문에 보류합니다.", C, False))
+        self.assertEqual(sg.check("비티는 지금 쓸 수 없습니다.", OTHER, False), "bt-claim-without-vertex-check")
+        # 파일 이름만 언급한 명령(ls)은 증거가 아니다(덱스 리뷰 10/19)
+        self.assertEqual(sg.check("비티 막힘입니다.", [("Bash", {"command": "ls C:/work/_ops/agent_calls.csv.bak"})], False), "bt-claim-without-vertex-check")
+        self.assertIsNone(sg.check("비티 막힘입니다.", [("Read", {"file_path": "C:/work/_ops/agent_calls.csv"})], False))
         self.assertIsNone(sg.check("비티(GCP 풀)로 답을 받았습니다.", OTHER, False))
         self.assertIsNone(sg.check("비티는 막히지 않았습니다.", OTHER, False))
 

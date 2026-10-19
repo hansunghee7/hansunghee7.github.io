@@ -37,9 +37,10 @@ MONEY = re.compile(r"(\$\s?\d|\d\s?달러|₩\s?\d|\d\s?만\s?원|결제|과금|
 
 # 2026-10-19 추가(노트 요청, 사장님 "추천대로 진행", 사고: 비티(GCP 풀=Vertex)가 되는데 '비티 없음'으로 보고, cxo-db #490·노트 #65~#69):
 # "비티 없음/막힘/한도로 막힘" 보고는 같은 턴에 Vertex 경로(ask_bt.sh BT_MODEL=vertex) 호출이나 agent_calls.csv 확인 흔적이 있어야 한다.
-BT_CLAIM = re.compile(r"(비티[^.\n]{0,10}(없음|없습니다|막힘|막혔|막혀|불가)|비티\s*한도[^.\n]{0,8}(막|소진|초과)|한도로\s*막)")
+BT_CLAIM = re.compile(r"(비티[^.\n]{0,10}(없음|없습니다|막힘|막혔|막혀|불가|쓸\s*수\s*없|못\s*씁|사용\s*안)|비티\s*한도[^.\n]{0,8}(막|소진|초과)|한도로\s*막)")
 BT_NEG = re.compile(r"(비티[^.\n]{0,10}(막히지|막힘\s*없|불가\s*아님)|막히지\s*않)")
-BT_EVIDENCE = re.compile(r"(BT_MODEL\s*=\s*vertex|ask_bt\.sh[^\n]*vertex|agent_calls\.csv)")
+# 증거(덱스 리뷰 10/19 반영): agent_calls.csv는 언급이 아니라 읽는 명령(tail·head·cat·grep·Get-Content·Read)과 함께일 때만 인정한다.
+BT_EVIDENCE = re.compile(r"(BT_MODEL\s*=\s*vertex|ask_bt\.sh[^\n]*vertex|(?:tail|head|cat|grep|type|Get-Content|Read)\b[^\n]*agent_calls\.csv)")
 
 
 def consulted(tools, ref=PROC_REF):
