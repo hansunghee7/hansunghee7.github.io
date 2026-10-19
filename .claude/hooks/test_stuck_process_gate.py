@@ -49,9 +49,34 @@ class StuckGateTest(unittest.TestCase):
         p = os.path.join(d, "t.jsonl")
         with open(p, "w", encoding="utf-8") as f:
             f.write(raw if raw is not None else chr(10).join(json.dumps(e) for e in events) + chr(10))
+        self.logpath = os.path.join(d, "gate_log.jsonl")
         r = subprocess.run([sys.executable, str(Path(__file__).parent / "stuck-process-gate.py")],
-                           input=json.dumps({"transcript_path": p}), capture_output=True, text=True, encoding="utf-8")
+                           input=json.dumps({"transcript_path": p}), capture_output=True, text=True, encoding="utf-8",
+                           env={**os.environ, "STUCK_GATE_LOG": self.logpath})
         return r.returncode
+
+    def test_bt_claim_needs_vertex_check(self):
+        # 2026-10-19 노트 요청(cxo-db #490): 비티 없음·막힘 보고는 같은 턴 Vertex 경로 확인 흔적 필요
+        for t in ("비티는 지금 한도로 막혀 있습니다.", "비티 없음, 소넷으로 대신합니다.", "비티 막힘 때문에 보류합니다."):
+            self.assertEqual(sg.check(t, OTHER, False), "bt-claim-without-vertex-check", t)
+        V = [("Bash", {"command": "BT_MODEL=vertex bash scripts/ops/ask_bt.sh q.md out.md"})]
+        C = [("Bash", {"command": "tail -3 C:/work/_ops/agent_calls.csv"})]
+        self.assertIsNone(sg.check("비티는 지금 한도로 막혀 있습니다.", V, False))
+        self.assertIsNone(sg.check("비티 막힘 때문에 보류합니다.", C, False))
+        self.assertEqual(sg.check("비티는 지금 쓸 수 없습니다.", OTHER, False), "bt-claim-without-vertex-check")
+        # 파일 이름만 언급한 명령(ls)은 증거가 아니다(덱스 리뷰 10/19)
+        self.assertEqual(sg.check("비티 막힘입니다.", [("Bash", {"command": "ls C:/work/_ops/agent_calls.csv.bak"})], False), "bt-claim-without-vertex-check")
+        self.assertIsNone(sg.check("비티 막힘입니다.", [("Read", {"file_path": "C:/work/_ops/agent_calls.csv"})], False))
+        self.assertIsNone(sg.check("비티(GCP 풀)로 답을 받았습니다.", OTHER, False))
+        self.assertIsNone(sg.check("비티는 막히지 않았습니다.", OTHER, False))
+
+    def test_firing_is_logged_without_text(self):
+        u = {"type": "user", "message": {"content": [{"type": "text", "text": "해줘"}]}}
+        fin = {"type": "assistant", "message": {"content": [{"type": "text", "text": "월 $5 결제가 필요합니다."}]}}
+        self.assertEqual(self._run([u, fin]), 2)
+        rec = json.loads(open(self.logpath, encoding="utf-8").read().splitlines()[0])
+        self.assertEqual(rec["verdict"], "money-without-record-lookup")
+        self.assertNotIn("결제", json.dumps(rec, ensure_ascii=False))
 
     def test_transcript_end_to_end(self):
         u = {"type": "user", "message": {"content": [{"type": "text", "text": "해줘"}]}}
