@@ -9,6 +9,7 @@
 """
 import importlib.util
 import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -32,6 +33,13 @@ RECORD_REF = re.compile(r"(recall\.py|ledger_lint|opsdb\.py|proc\.py|pipeline_db
 # 2026-10-16 추가(사장님 승인, 카드 탐#106): 돈 이야기(상한·결제·과금 등)를 하는 답변은 사람 개입 요청이 없어도
 # 같은 턴에 기록 검색을 해야 한다. 사고: Actions 예산 조언이 사장님 10/15 원문을 확인하지 않은 채 세 번 바뀜.
 MONEY = re.compile(r"(\$\s?\d|\d\s?달러|₩\s?\d|\d\s?만\s?원|결제|과금|청구|요금제|상한|예산)")
+
+
+# 2026-10-19 추가(노트 요청, 사장님 "추천대로 진행", 사고: 비티(GCP 풀=Vertex)가 되는데 '비티 없음'으로 보고, cxo-db #490·노트 #65~#69):
+# "비티 없음/막힘/한도로 막힘" 보고는 같은 턴에 Vertex 경로(ask_bt.sh BT_MODEL=vertex) 호출이나 agent_calls.csv 확인 흔적이 있어야 한다.
+BT_CLAIM = re.compile(r"(비티[^.\n]{0,10}(없음|없습니다|막힘|막혔|막혀|불가)|비티\s*한도[^.\n]{0,8}(막|소진|초과)|한도로\s*막)")
+BT_NEG = re.compile(r"(비티[^.\n]{0,10}(막히지|막힘\s*없|불가\s*아님)|막히지\s*않)")
+BT_EVIDENCE = re.compile(r"(BT_MODEL\s*=\s*vertex|ask_bt\.sh[^\n]*vertex|agent_calls\.csv)")
 
 
 def consulted(tools, ref=PROC_REF):
@@ -84,6 +92,9 @@ def turn_has_error(path):
 
 def check(text, tools, has_error=True):
     """has_error: 이번 턴 도구 결과에 오류가 하나라도 있는가. 없으면(설명·통계·보고 문장의 오탐) 통과한다(2026-10-11 좁힘)."""
+    plain = CODE.sub("", text)
+    if BT_CLAIM.search(BT_NEG.sub("", plain)) and not consulted(tools, BT_EVIDENCE):
+        return "bt-claim-without-vertex-check"
     if ASK_TAG.search(text) and not consulted(tools, RECORD_REF):
         return "ask-without-record-lookup"
     if MONEY.search(CODE.sub("", text)) and not consulted(tools, RECORD_REF):
@@ -126,6 +137,17 @@ if __name__ == "__main__":
         sys.exit(0)
     if not verdict:
         sys.exit(0)
+    # 2026-10-19: 발동 기록(오탐률 기준선 복원용, 덱스 #132 설계). 원문은 남기지 않고 분기·시각·오류 여부만 쓴다. 기록 실패는 무시한다.
+    try:
+        import datetime
+        with open(os.environ.get("STUCK_GATE_LOG", "C:/work/_ops/stuck_gate_log.jsonl"), "a", encoding="utf-8") as _f:
+            _f.write(json.dumps({"ts": datetime.datetime.now().isoformat(timespec="seconds"), "verdict": verdict, "has_error": bool(err), "rule": "2026-10-19"}, ensure_ascii=False) + "\n")
+    except Exception:
+        pass
+    if verdict == "bt-claim-without-vertex-check":
+        print("비티 없음·막힘·한도 보고인데 이번 턴에 Vertex 경로 확인 흔적(ask_bt.sh BT_MODEL=vertex 호출 또는 agent_calls.csv 최근 행 확인)이 없습니다(사장님 10/19 승인, 노트 요청, cxo-db #490). "
+              "비티(GCP 풀=Vertex)는 안티그래비티가 막혀도 계속 됩니다. `BT_MODEL=vertex bash scripts/ops/ask_bt.sh <카드> <출력>`으로 실제 호출하거나 agent_calls.csv를 확인한 뒤 다시 답하세요.", file=sys.stderr)
+        sys.exit(2)
     if verdict == "ask-without-record-lookup":
         print("사장님께 사람 개입을 요청하는 답변인데 이번 턴에 기록(recall.py·ledger_lint.py --find·프로세스표·업무대장)을 찾아본 흔적이 없습니다(사장님 지시 2026-10-13). "
               "이미 사장님이 해 둔 일(예: SNS 연결)이거나 정해 둔 결정일 수 있으니, 먼저 기록을 검색해 대조한 뒤 필요한 부탁만 남기고 다시 답하세요.", file=sys.stderr)
