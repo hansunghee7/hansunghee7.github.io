@@ -98,15 +98,36 @@ def launch(port):
         stdout=log, stderr=log, stdin=subprocess.DEVNULL, start_new_session=True, close_fds=True)
 
 
+REPORT_EXTRA = {9222: "flow-free1", 9227: "sns-a", 9228: "sns-b"}  # 재기동 대상은 아니고 메모리 보고에만 넣는다
+
+
+def report():
+    """점검용 숫자만 JSON 한 줄로 낸다(읽기 전용). 공장현황 스냅샷(factory_snapshot.py)이 매시 가져간다."""
+    import json
+    mem = {}
+    for ln in Path("/proc/meminfo").read_text().splitlines():
+        k, v = ln.split(":", 1)
+        mem[k] = int(v.split()[0]) // 1024
+    ports = {}
+    for p, prof in {**PROFILE, **REPORT_EXTRA}.items():
+        PROFILE.setdefault(p, prof)
+        s = stat(p)
+        ports[p] = {"days": round(s["days"], 1), "mb": round(s["mb"])} if s else None
+    print(json.dumps({"avail_mb": mem.get("MemAvailable"), "total_mb": mem.get("MemTotal"), "ports": ports}))
+
+
 def main():
     ap = argparse.ArgumentParser()
+    ap.add_argument("--json", action="store_true", help="메모리·기동일수만 JSON으로 출력(읽기 전용)")
     ap.add_argument("--port", type=int)
     ap.add_argument("--apply", action="store_true")
     ap.add_argument("--restore", action="store_true", help="그 포트 크롬이 죽어 있으면 같은 프로필로 다시 켠다(작업기 잠금을 잡을 수 있을 때만)")
     ap.add_argument("--max-days", type=float, default=14)
     ap.add_argument("--max-mb", type=float, default=2048)
     a = ap.parse_args()
-    ports = [a.port] if a.port else list(REFRESH)
+    if a.json:
+        report(); return 0
+    ports =[a.port] if a.port else list(REFRESH)
     cands = []
     for p in ports:
         if p not in REFRESH:
