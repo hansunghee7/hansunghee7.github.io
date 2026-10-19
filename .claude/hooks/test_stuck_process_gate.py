@@ -33,6 +33,23 @@ class StuckGateTest(unittest.TestCase):
         self.assertIsNone(sg.check("배포를 마쳤습니다.", OTHER, False))
         self.assertIsNone(sg.check("코드 `budget = 상한` 만 보입니다.", OTHER, False))
 
+    def test_proposal_needs_record_lookup(self):
+        # 2026-10-20 사장님 지시: 제안·추천·"정하실 것: (없음 아님)"은 같은 턴 기록 검색 필수
+        self.assertEqual(sg.check("정하실 것: A안으로 갈지 정해 주세요.", OTHER, False), "propose-without-record-lookup")
+        self.assertEqual(sg.check("제 추천은 B안입니다.", [], False), "propose-without-record-lookup")
+        self.assertEqual(sg.check("이렇게 제안합니다.", OTHER, False), "propose-without-record-lookup")
+        rec = [("Bash", {"command": "python scripts/ops/recall.py 로그인 방식"})]
+        self.assertIsNone(sg.check("정하실 것: A안으로 갈지 정해 주세요.", rec, False))
+        self.assertIsNone(sg.check("제 추천은 B안입니다.", [("Bash", {"command": "python scripts/ops/proc.py list"})], False))
+        # 10/20 리뷰 반영: 띄어쓰기·변형 표현도 잡는다
+        for t in ("이렇게 제안 합니다.", "B안을 추천드립니다.", "이 방식을 권장합니다.", "한도 유지를 제안드립니다.", "그렇게 제의합니다."):
+            self.assertEqual(sg.check(t, OTHER, False), "propose-without-record-lookup", t)
+        # 정하실 것: 없음, 제안이 아닌 보고, 코드 안 문구는 통과
+        self.assertIsNone(sg.check("정하실 것: 없음.", OTHER, False))
+        self.assertIsNone(sg.check("정하실 것: 없음", [], False))
+        self.assertIsNone(sg.check("배포를 마쳤습니다.", OTHER, False))
+        self.assertIsNone(sg.check("코드 `제 추천은` 문자열만 보입니다.", OTHER, False))
+
     def test_negated_or_clean_text_passes(self):
         self.assertIsNone(sg.check("막힘 없이 통과했습니다.", []))
         self.assertIsNone(sg.check("결과를 기록했습니다.", []))
