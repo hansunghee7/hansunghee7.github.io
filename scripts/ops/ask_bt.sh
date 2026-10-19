@@ -27,7 +27,7 @@ Q="${1:?질문 파일 경로}"; OUT="${2:-/tmp/bt_reply_$(date +%Y%m%d_%H%M).md}
 # BT_MODEL=claude-sonnet-4-6 처럼 지정하면 그 모델만 쓴다.
 QUOTA="$(dirname "$0")/quota.py"
 # 2026-10-03(N120, 사장님 "무료 먼저, 막히면 GCP 크레딧"): 안티그래비티 제미나이가 막히면 Vertex 제미나이(개인 GCP 무료 크레딧)로 넘어가고, 그것도 하루 상한이면 Sonnet.
-if [ -n "${BT_MODEL:-}" ]; then ORDER="sonnet"; [ "$BT_MODEL" = "gemini" ] && ORDER="gemini"; [ "$BT_MODEL" = "vertex" ] && ORDER="vertex"; [ "$BT_MODEL" = "router" ] && ORDER="router"; else ORDER="gemini router sonnet vertex"; fi  # 사장님 10/5: 무료(안티그래비티 제미나이 → 라우터 무료 풀) → 소넷 → GCP(Vertex 크레딧) 순으로 장애 전환
+if [ -n "${BT_MODEL:-}" ]; then ORDER="sonnet"; [ "$BT_MODEL" = "gemini" ] && ORDER="gemini"; [ "$BT_MODEL" = "vertex" ] && ORDER="vertex"; [ "$BT_MODEL" = "router" ] && ORDER="router"; else ORDER="gemini vertex router sonnet"; fi  # 사장님 10/19: 비티는 GCP 크레딧(Vertex 제미나이 풀)으로 한도 제한 없이 쓴다(탐#71 정식 멤버화·10/18 "비티 GCP 많이 쓰게"). 순서: 안티그래비티 제미나이 → Vertex(GCP 크레딧, 비티 GCP 풀) → 라우터 무료 풀 → 소넷(마지막, 비티 아님)
 rc=99; LAST=""; USED=""
 for M in $ORDER; do
   rm -f "$OUT.err" "$OUT.log"  # 앞 풀의 stderr가 다음 풀 판정에 섞이지 않게
@@ -71,7 +71,7 @@ done
 echo "쓴 모델: $USED" >&2
 # 어느 풀이 답했는지 결과 파일 맨 위에 한 줄 남긴다
 # 마찰 #2(마야 10/15): 주석은 눈에 안 띄어 옴니라우터·Vertex 답을 비티 의견으로 오해했다 → 보이는 글로 실제 사용 모델을 맨 위에 쓰고, 비티(안티그래비티 제미나이)가 아니면 "비티 아님"을 못 박는다.
-case "$USED" in 비티) WHO_LINE="답한 모델: 비티(안티그래비티 제미나이)";; *) WHO_LINE="답한 모델: $USED — 비티(안티그래비티 제미나이) 아님. 비티 의견으로 보고하지 말 것";; esac
+case "$USED" in 비티) WHO_LINE="답한 모델: 비티(안티그래비티 제미나이)";; Vertex*) WHO_LINE="답한 모델: 비티(GCP 풀: Vertex 제미나이, 크레딧) — 안티그래비티가 막혔을 때의 정식 비티 경로(사장님 10/19). 보고 때 '비티(GCP 풀)'로 쓴다";; *) WHO_LINE="답한 모델: $USED — 비티(안티그래비티 제미나이) 아님. 비티 의견으로 보고하지 말 것";; esac
 echo "$WHO_LINE" >&2
 { echo "<!-- 답한 풀: $USED -->"; echo "> $WHO_LINE"; echo; cat "$OUT"; } > "$OUT.tmp" && mv "$OUT.tmp" "$OUT"
 echo "답 저장: $OUT ($(wc -c < "$OUT") bytes)"
