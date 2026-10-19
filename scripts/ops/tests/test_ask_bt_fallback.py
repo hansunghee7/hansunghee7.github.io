@@ -55,6 +55,8 @@ def env(tmp_path):
     e = dict(os.environ)
     e["PATH"] = str(bindir) + os.pathsep + e["PATH"]
     e["AGENT_CALLS_CSV"] = (tmp_path / "calls.csv").as_posix()
+    e["LEDGER_GATE"] = "off"  # 대장 관문은 test_ledger_gate.py가 따로 시험한다
+    e["LEDGER_GATE_LOG"] = (tmp_path / "bypass.log").as_posix()
     for k in ("BT_MODEL", "FAKE_GEMINI", "FAKE_ROUTER", "FAKE_SONNET", "FAKE_VERTEX"):
         e.pop(k, None)
     return e, tmp_path

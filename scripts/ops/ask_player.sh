@@ -31,6 +31,7 @@ TS="$(date +%Y%m%d_%H%M%S)"
 BRANCH="claude/${AGENT}-player-${TS}"
 
 [ -f "$CARD" ] || { echo "작업 카드 없음: $CARD" >&2; exit 2; }
+source "$(dirname "$0")/ledger_gate.sh"; ledger_gate "$AGENT" "$CARD" || exit $?  # 2026-10-19 대장 관문
 # 카드 1차 비밀값 관문.
 if grep -Eiq "$SECRET_RE" "$CARD"; then
   echo "카드에 비밀값 의심 문자열이 있음: 보내지 않음(소독 후 다시)" >&2; exit 3

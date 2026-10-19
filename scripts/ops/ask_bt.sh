@@ -22,6 +22,7 @@ calllog() {  # calllog <누구> <초> <rc> <출력파일>
   [ "$hit" = 1 ] && echo "⚠ 한도 신호 감지: $4 원문을 docs/processes에 기록할 것" >&2; return 0
 }
 Q="${1:?질문 파일 경로}"; OUT="${2:-/tmp/bt_reply_$(date +%Y%m%d_%H%M).md}"
+source "$(dirname "$0")/ledger_gate.sh"; ledger_gate bt "$Q" || exit $?  # 2026-10-19 대장 관문: 카드에 "대장: BT<번호>" 필요(상세 ledger_gate.sh)
 # 모델(사장님 결정 10/3): 비티가 있는 이유는 다양성(다른 회사 모델의 눈)이라 **제미나이 먼저**, 한도가 막히면 Sonnet으로 자동 전환(페일오버).
 # 둘은 한도 풀이 다르다(비티 = 제미나이 계열 공유, 비티-sonnet 별도). 근거 docs/processes/N114_비티모델비교_1003.md
 # BT_MODEL=claude-sonnet-4-6 처럼 지정하면 그 모델만 쓴다.

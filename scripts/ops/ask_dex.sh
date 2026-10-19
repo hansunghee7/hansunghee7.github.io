@@ -18,6 +18,7 @@ calllog() {  # calllog <누구> <초> <rc> <출력파일>
   [ "$hit" = 1 ] && echo "⚠ 한도 신호 감지: $4 원문을 docs/processes에 기록할 것" >&2; return 0
 }
 CARD="${1:?작업 카드 파일 경로}"
+source "$(dirname "$0")/ledger_gate.sh"; ledger_gate dex "$CARD" || exit $?  # 2026-10-19 대장 관문: 카드에 "대장: DX<번호>" 필요(상세 ledger_gate.sh)
 OUT="${2:-/tmp/dex_reply_$(date +%Y%m%d_%H%M).md}"
 # 2026-10-06: 환경변수를 안 줘서 호출이 실패한 일이 N160·N161·10/6에 반복돼 기본 격리 폴더를 둔다(지정하면 그 값을 쓴다)
 WORKDIR="${DEX_WORKDIR:-/c/work/_ops/dex/topicwork}"
