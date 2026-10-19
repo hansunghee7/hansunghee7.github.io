@@ -41,6 +41,9 @@ class StuckGateTest(unittest.TestCase):
         rec = [("Bash", {"command": "python scripts/ops/recall.py 로그인 방식"})]
         self.assertIsNone(sg.check("정하실 것: A안으로 갈지 정해 주세요.", rec, False))
         self.assertIsNone(sg.check("제 추천은 B안입니다.", [("Bash", {"command": "python scripts/ops/proc.py list"})], False))
+        # 10/20 리뷰 반영: 띄어쓰기·변형 표현도 잡는다
+        for t in ("이렇게 제안 합니다.", "B안을 추천드립니다.", "이 방식을 권장합니다.", "한도 유지를 제안드립니다.", "그렇게 제의합니다."):
+            self.assertEqual(sg.check(t, OTHER, False), "propose-without-record-lookup", t)
         # 정하실 것: 없음, 제안이 아닌 보고, 코드 안 문구는 통과
         self.assertIsNone(sg.check("정하실 것: 없음.", OTHER, False))
         self.assertIsNone(sg.check("정하실 것: 없음", [], False))
