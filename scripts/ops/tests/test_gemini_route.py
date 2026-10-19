@@ -177,16 +177,19 @@ class SearchKey(Base):
     def setUp(self):
         super().setUp()
         os.environ[gr.SEARCH_ENV] = SKEY
-        os.environ["GEMINI_SEARCH_KEY_ENABLED"] = "1"  # 2026-10-20: 기본은 꺼짐(크레딧 제외 결제 방지). 이 클래스는 켠 상태를 시험한다
-        self.addCleanup(os.environ.pop, "GEMINI_SEARCH_KEY_ENABLED", None)
+        # 2026-10-20: 기본은 꺼짐(크레딧 제외 결제 방지). 이 클래스는 켠 상태를 시험한다(기존 값은 시험 뒤 복원: 덱스 리뷰 반영)
+        p = mock.patch.dict("os.environ", {"GEMINI_SEARCH_KEY_ENABLED": "1"})
+        p.start()
+        self.addCleanup(p.stop)
 
     def test_search_key_stage_is_off_by_default(self):
-        # 사장님 10/20: 유료 AI Studio 키는 크레딧이 안 덮으므로 기본 꺼짐 → 검색은 Vertex로 간다
-        os.environ.pop("GEMINI_SEARCH_KEY_ENABLED")
+        # 사장님 10/20: 유료 AI Studio 키는 크레딧이 안 덮으므로 기본 꺼짐 → 검색은 Vertex로 간다.
+        # 검색 호출은 무료 키 단계를 건너뛰므로 generativelanguage(AI Studio) 주소가 한 번도 불리면 안 된다(비티 리뷰 반영: 주소에 'search'가 없어 이전 검증은 항상 통과했음)
+        os.environ.pop("GEMINI_SEARCH_KEY_ENABLED", None)
         with self.server({"generativelanguage": 200, "simplifier-vertex-credit": 200}):
             r = gr.call("질문", search=True)
         self.assertNotEqual(r["route"], "search-key")
-        self.assertFalse([u for u in self.urls if "generativelanguage" in u and "search" in u.lower()])
+        self.assertEqual(self._gen_urls(), [])
 
     def _ledger_add(self, n, when=None):
         gr._search_ledger_add("시험", n, "m")
