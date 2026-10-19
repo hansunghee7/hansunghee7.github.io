@@ -33,8 +33,11 @@ DEFAULT_COMMON = "한국어로. 공식 문서 등 1차 출처 기준 사실만, 
 NL = chr(10)
 
 
+PERSONAL_ACCOUNT = "hansunghee7@gmail.com"  # ask_vertex.ACCOUNT와 같은 개인 계정. 계정을 안 박으면 gcloud 기본 계정(10/20에 만료된 회사 계정으로 바뀜)을 써서 CalledProcessError가 났다(핏 10/20 보고).
+
+
 def token():
-    return subprocess.run([shutil.which("gcloud"), "auth", "print-access-token"], capture_output=True, text=True, timeout=30, check=True).stdout.strip()
+    return subprocess.run([shutil.which("gcloud"), "auth", "print-access-token", f"--account={PERSONAL_ACCOUNT}"], capture_output=True, text=True, timeout=30, check=True).stdout.strip()
 
 
 def build(qs, common):
