@@ -33,6 +33,9 @@ RECORD_REF = re.compile(r"(recall\.py|ledger_lint|opsdb\.py|proc\.py|pipeline_db
 # 2026-10-16 추가(사장님 승인, 카드 탐#106): 돈 이야기(상한·결제·과금 등)를 하는 답변은 사람 개입 요청이 없어도
 # 같은 턴에 기록 검색을 해야 한다. 사고: Actions 예산 조언이 사장님 10/15 원문을 확인하지 않은 채 세 번 바뀜.
 MONEY = re.compile(r"(\$\s?\d|\d\s?달러|₩\s?\d|\d\s?만\s?원|결제|과금|청구|요금제|상한|예산)")
+# 2026-10-20 추가(사장님 지시 "앞으로 사장에게 제안을 할 때는 필수로 과거 기록 찾고 제안", 카드 탐-관문): 제안·추천·"정하실 것: (없음 아님)"이 있는 답변은
+# 같은 턴에 기록 검색(recall.py·proc.py·ledger_lint·opsdb·프로세스표·업무대장)을 한 흔적이 있어야 한다. 사고: 이미 정한 결정을 되묻는 제안이 반복됨(10/20 Claude Code 로그인 방식 재질문 등).
+PROPOSE = re.compile(r"(정하실\s*것\s*[:：]\s*(?!\s*없음)\S|제\s*추천은|추천합니다|제안합니다|제안드립니다|제안\s*[:：])")
 
 
 # 2026-10-19 추가(노트 요청, 사장님 "추천대로 진행", 사고: 비티(GCP 풀=Vertex)가 되는데 '비티 없음'으로 보고, cxo-db #490·노트 #65~#69):
@@ -100,6 +103,8 @@ def check(text, tools, has_error=True):
         return "ask-without-record-lookup"
     if MONEY.search(CODE.sub("", text)) and not consulted(tools, RECORD_REF):
         return "money-without-record-lookup"
+    if PROPOSE.search(CODE.sub("", text)) and not consulted(tools, RECORD_REF):
+        return "propose-without-record-lookup"
     if not has_error:
         return None
     text = CODE.sub("", text)
@@ -152,6 +157,10 @@ if __name__ == "__main__":
     if verdict == "ask-without-record-lookup":
         print("사장님께 사람 개입을 요청하는 답변인데 이번 턴에 기록(recall.py·ledger_lint.py --find·프로세스표·업무대장)을 찾아본 흔적이 없습니다(사장님 지시 2026-10-13). "
               "이미 사장님이 해 둔 일(예: SNS 연결)이거나 정해 둔 결정일 수 있으니, 먼저 기록을 검색해 대조한 뒤 필요한 부탁만 남기고 다시 답하세요.", file=sys.stderr)
+        sys.exit(2)
+    if verdict == "propose-without-record-lookup":
+        print("사장님께 제안·추천·결정 요청(정하실 것)을 하는 답변인데 이번 턴에 기록(recall.py·proc.py·ledger_lint.py --find·프로세스표·업무대장)을 찾아본 흔적이 없습니다(사장님 지시 2026-10-20). "
+              "먼저 기록을 검색해 이미 정한 결정·선례가 있는지 대조하고, 기존 결정을 바꾸자는 제안이면 '기존 원문 X → 새 근거 Y' 형식으로, 이미 정해진 것은 되묻지 말고 실행으로 다시 답하세요.", file=sys.stderr)
         sys.exit(2)
     if verdict == "money-without-record-lookup":
         print("돈 이야기(상한·결제·과금·예산 등)가 있는 답변인데 이번 턴에 기록(recall.py·proc.py·업무대장)을 찾아본 흔적이 없습니다(사장님 승인 2026-10-16, 카드 탐#106). "
