@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-19T20:45:31.735132+00:00",
+  "updated_at": "2026-10-19T23:53:57.972501+00:00",
   "note": "history는 매일 지난 24시간 집계를 누적한 것. latest_*는 최근 3일 창.",
   "history": [
     {
@@ -9227,7 +9227,7 @@
             "sessionsWithMetricPercentage": 40,
             "sessionsWithoutMetricPercentage": 60,
             "pagesViews": 2,
-            "subTotal": 3
+            "subTotal": 4
           }
         ],
         "ExcessiveScroll": [
@@ -9277,7 +9277,7 @@
         ],
         "ScrollDepth": [
           {
-            "averageScrollDepth": 68.2
+            "averageScrollDepth": 43.83
           }
         ],
         "Traffic": [
@@ -9290,8 +9290,8 @@
         ],
         "EngagementTime": [
           {
-            "totalTime": 45,
-            "activeTime": 28
+            "totalTime": 46,
+            "activeTime": 30
           }
         ],
         "Browser": [
@@ -9438,7 +9438,7 @@
         "sessionsWithMetricPercentage": 27.27,
         "sessionsWithoutMetricPercentage": 72.73,
         "pagesViews": 3,
-        "subTotal": 3,
+        "subTotal": 4,
         "Url": "https://simplifier.co.kr/"
       },
       {
@@ -10146,7 +10146,7 @@
         "Url": "https://simplifier.co.kr/logs/481/"
       },
       {
-        "averageScrollDepth": 52.58,
+        "averageScrollDepth": 49.38,
         "Url": "https://simplifier.co.kr/"
       },
       {
@@ -10502,8 +10502,8 @@
         "Url": "https://simplifier.co.kr/logs/481/"
       },
       {
-        "totalTime": 44,
-        "activeTime": 40,
+        "totalTime": 45,
+        "activeTime": 41,
         "Url": "https://simplifier.co.kr/"
       },
       {
@@ -10560,7 +10560,7 @@
         "sessionsWithMetricPercentage": 26.67,
         "sessionsWithoutMetricPercentage": 73.33,
         "pagesViews": 4,
-        "subTotal": 5,
+        "subTotal": 6,
         "Source": ""
       },
       {
@@ -10808,7 +10808,7 @@
     ],
     "ScrollDepth": [
       {
-        "averageScrollDepth": 44.47,
+        "averageScrollDepth": 42.61,
         "Source": ""
       },
       {
@@ -10881,8 +10881,8 @@
     ],
     "EngagementTime": [
       {
-        "totalTime": 47,
-        "activeTime": 27,
+        "totalTime": 48,
+        "activeTime": 28,
         "Source": ""
       },
       {
