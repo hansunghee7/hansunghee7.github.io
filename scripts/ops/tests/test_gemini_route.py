@@ -177,6 +177,16 @@ class SearchKey(Base):
     def setUp(self):
         super().setUp()
         os.environ[gr.SEARCH_ENV] = SKEY
+        os.environ["GEMINI_SEARCH_KEY_ENABLED"] = "1"  # 2026-10-20: 기본은 꺼짐(크레딧 제외 결제 방지). 이 클래스는 켠 상태를 시험한다
+        self.addCleanup(os.environ.pop, "GEMINI_SEARCH_KEY_ENABLED", None)
+
+    def test_search_key_stage_is_off_by_default(self):
+        # 사장님 10/20: 유료 AI Studio 키는 크레딧이 안 덮으므로 기본 꺼짐 → 검색은 Vertex로 간다
+        os.environ.pop("GEMINI_SEARCH_KEY_ENABLED")
+        with self.server({"generativelanguage": 200, "simplifier-vertex-credit": 200}):
+            r = gr.call("질문", search=True)
+        self.assertNotEqual(r["route"], "search-key")
+        self.assertFalse([u for u in self.urls if "generativelanguage" in u and "search" in u.lower()])
 
     def _ledger_add(self, n, when=None):
         gr._search_ledger_add("시험", n, "m")
