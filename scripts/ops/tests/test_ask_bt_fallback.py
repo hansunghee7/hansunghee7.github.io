@@ -82,36 +82,37 @@ def test_first_pool_ok_no_fallback(env):
 
 
 def test_gemini_limit_in_stderr_falls_to_router(env):
-    r, text, csv = run(env, FAKE_GEMINI="limit_err", FAKE_ROUTER="ok")
+    r, text, csv = run(env, FAKE_GEMINI="limit_err", FAKE_VERTEX="fail", FAKE_ROUTER="ok")
     assert r.returncode == 0, r.stderr
     assert "<!-- 답한 풀: 옴니라우터" in text and "from router" in text
 
 
 def test_gemini_limit_message_in_stdout_falls(env):
     # 한도 문구가 stdout에 rc=0으로 나와도 낙하해야 한다(보고된 결함)
-    r, text, csv = run(env, FAKE_GEMINI="limit_out", FAKE_ROUTER="ok")
+    r, text, csv = run(env, FAKE_GEMINI="limit_out", FAKE_VERTEX="fail", FAKE_ROUTER="ok")
     assert r.returncode == 0, r.stderr
     assert "rate limit" not in text
     assert "from router" in text
     assert "비티,"  in csv and ",1\n" in csv  # 비티 풀 한도 신호가 기록됨
 
 
-def test_falls_through_router_sonnet_to_vertex(env):
-    r, text, csv = run(env, FAKE_GEMINI="limit_out", FAKE_ROUTER="fail", FAKE_SONNET="limit_err")
+def test_gemini_limit_falls_to_vertex_first(env):
+    # 2026-10-19: 비티(GCP 풀=Vertex)가 라우터·소넷보다 먼저(PR 2457)
+    r, text, csv = run(env, FAKE_GEMINI="limit_out", FAKE_ROUTER="ok", FAKE_SONNET="ok")
     assert r.returncode == 0, r.stderr
     assert "<!-- 답한 풀: Vertex" in text and "from vertex" in text
-    assert "비티-vertex" in csv and "비티-sonnet" in csv
+    assert "비티-sonnet" not in csv
 
 
 def test_empty_answer_with_rc0_falls_to_next_pool(env):
     # 2026-10-11 실측: 비티(agy 헤드리스)가 도구 권한 자동 거절로 답 없이 종료 코드 0으로 끝나던 경우
-    r, text, csv = run(env, FAKE_GEMINI="empty", FAKE_ROUTER="ok")
+    r, text, csv = run(env, FAKE_GEMINI="empty", FAKE_VERTEX="fail", FAKE_ROUTER="ok")
     assert r.returncode == 0, r.stderr
     assert "<!-- 답한 풀: 옴니라우터" in text and "from router" in text
 
 
-def test_falls_to_sonnet_before_vertex(env):
-    r, text, _ = run(env, FAKE_GEMINI="limit_out", FAKE_ROUTER="fail", FAKE_SONNET="ok")
+def test_falls_to_sonnet_after_vertex_and_router_fail(env):
+    r, text, _ = run(env, FAKE_GEMINI="limit_out", FAKE_VERTEX="fail", FAKE_ROUTER="fail", FAKE_SONNET="ok")
     assert r.returncode == 0, r.stderr
     assert "<!-- 답한 풀: 비티-sonnet -->" in text
 
@@ -119,7 +120,7 @@ def test_falls_to_sonnet_before_vertex(env):
 def test_all_fail_exit_3_with_last_error(env):
     r, text, _ = run(env, FAKE_GEMINI="limit_err", FAKE_ROUTER="fail", FAKE_SONNET="limit_err", FAKE_VERTEX="fail")
     assert r.returncode == 3
-    assert "마지막 오류" in r.stderr and "Vertex 실패" in r.stderr
+    assert "마지막 오류" in r.stderr and "비티-sonnet 실패" in r.stderr
 
 
 def test_explicit_model_does_not_fall_to_others(env):
