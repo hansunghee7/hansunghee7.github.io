@@ -290,3 +290,11 @@ path = "/home/goosloar/ops/checks/maya-remember.ok"
 max_age_min = 1560
 name = "마야 리멤버 커넥트 글별 좋아요·댓글(구PC cron 매일 21:10 KST, read_maya_remember.py)"
 note = "2026-10-12 마야(N14). 구PC SNS 크롬 9227에서 내 게시물 화면을 하루 1번 읽음. 등록 전 1회 실행 20글 읽음. 원본 scripts/ops/goosolar/workshop/read_maya_remember.py. 첫 자동 실행 10/13 21:10 KST 확인 필요"
+
+[[job]]
+id = "cron:chrome-recycle"
+kind = "file_age"
+path = "/home/goosloar/workshop/logs/chrome_recycle.cron.log"
+max_age_min = 90
+name = "구PC 상주 크롬 정기 재기동(구PC cron 30분마다 :27·:57, chrome_recycle.py)"
+note = "2026-10-19 핏(사장님 허용 10/19, 공정 카드 핏-영상생성 #92·#93). 14일 초과 또는 2GB 초과 크롬을 작업기 잠금·갱신 시각 창 조건이 맞을 때만 한 포트씩 재기동, --restore 로 죽은 포트도 복구. 등록 전 9223 정식 재기동 성공(로그인 유지). 원본 scripts/ops/goosolar/workshop/chrome_recycle.py. 첫 자동 실행 10/19 :27 UTC 확인 필요"
