@@ -7,7 +7,7 @@ date: 2026-10-19T09:00:00+09:00
 date_string: Oct 19. 2026
 keywords: 스타트업 크레딧, AWS Activate, Microsoft for Startups, NVIDIA Inception, 스타트업 지원 프로그램, 인프라 비용, 1인 창업, AI 에이전트
 about: 1인 회사가 AI 에이전트 팀과 서비스를 만들다 인프라 비용에 막혀 AWS, 마이크로소프트, NVIDIA 스타트업 프로그램에 처음 지원해 크레딧을 받은 과정과 신청 링크
-published: false
+published: true
 scheduled: true
 channel_variants:
   threads: ''
