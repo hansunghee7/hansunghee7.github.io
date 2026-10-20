@@ -432,7 +432,7 @@ def req_state(area):
     """영역 상태: 항목 수, 마지막 확신 시각, 확신 뒤 새 항목 여부."""
     items, ready_idx, last_item_idx = [], -1, -1
     rows = [r for r in load("req") if r.get("area") == area]
-    dropped = {r.get("target") for r in rows if r["kind"] == "drop"}
+    dropped = {r.get("target") for r in rows if r["kind"] in ("drop", "done")}
     for i, r in enumerate(rows):
         if r["kind"] == "item" and r["id"] not in dropped:
             items.append(r)
@@ -487,6 +487,22 @@ def req_drop(a):
     print(f"{a.id} 백로그에서 뺌: {a.reason} (영역 [{item['area']}] 남은 항목 {st['items']}개)")
 
 
+def req_done(a):
+    """항목 하나가 이미 구현·배포돼 있어 남은 일이 없다고 표시한다(근거 필수). 이력은 남기고 남은 항목 수에서 뺀다."""
+    rows = load("req")
+    item = next((r for r in rows if r["kind"] == "item" and r["id"] == a.id), None)
+    if not item:
+        sys.exit(f"{a.id} 항목이 없습니다")
+    if any(r["kind"] in ("drop", "done") and r.get("target") == a.id for r in rows):
+        sys.exit(f"{a.id}는 이미 뺀 항목입니다")
+    if len(a.evidence.strip()) < 8:
+        sys.exit("완료 근거(evidence)를 8자 이상 쓰세요(PR 번호·파일·실측)")
+    rows.append({"id": "", "kind": "done", "date": str(today()), "area": item["area"], "target": a.id, "reason": a.evidence})
+    save("req", rows)
+    st = req_state(item["area"])
+    print(f"{a.id} 완료 표시: {a.evidence} (영역 [{item['area']}] 남은 항목 {st['items']}개)")
+
+
 def req_list(a):
     areas = sorted({r["area"] for r in load("req")})
     for ar in areas:
@@ -495,10 +511,11 @@ def req_list(a):
         st = req_state(ar)
         label = "확신 있음" if st["ready"] else ("확신 취소(새 항목)" if st["had_ready"] else "취합 중")
         print(f"[{ar}] {label}, 항목 {st['items']}개, 시작 {st['first']}")
-        dropped = {r.get("target"): r for r in st["rows"] if r["kind"] == "drop"}
+        dropped = {r.get("target"): r for r in st["rows"] if r["kind"] in ("drop", "done")}
         for r in st["rows"]:
             if r["kind"] == "item" and r["id"] in dropped:
-                print(f"   {r['id']} [뺌 {dropped[r['id']]['date']}: {dropped[r['id']]['reason'][:50]}]")
+                d = dropped[r['id']]
+                print(f"   {r['id']} [{'완료' if d['kind'] == 'done' else '뺌'} {d['date']}: {d['reason'][:50]}]")
             elif r["kind"] == "item":
                 print(f"   {r['id']} ({r['source']}) {r['text'][:80]}")
             elif r["kind"] == "ready":
@@ -739,6 +756,7 @@ def build():
     x = rq.add_parser("ready"); x.add_argument("area"); x.add_argument("--note", required=True, help="빠진 것 점검 결과(선행·충돌·고객/DB 영향·확인 방법) 20자 이상")
     x.set_defaults(fn=req_ready)
     x = rq.add_parser("sent"); x.add_argument("area"); x.add_argument("--to", default="노트"); x.add_argument("--ref", default=""); x.set_defaults(fn=req_sent)
+    x = rq.add_parser("done"); x.add_argument("id"); x.add_argument("--evidence", required=True); x.set_defaults(fn=req_done)
     x = rq.add_parser("drop"); x.add_argument("id"); x.add_argument("--reason", required=True); x.set_defaults(fn=req_drop)
     x = rq.add_parser("list"); x.add_argument("--area", default=""); x.set_defaults(fn=req_list)
     x = rq.add_parser("check-send"); x.add_argument("area"); x.set_defaults(fn=req_check)
