@@ -309,7 +309,7 @@ id = "fn:gcp-usage-schedule"
 kind = "cmd"
 cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\check_gcp_usage_schedule.py']
 every_min = 720
-name = "새김 사용량 정기 실행 확인(simplifier-cxo-db gcp-usage 매일 09:20 KST, check_gcp_usage_schedule.py)"
+name = "카빗 사용량 정기 실행 확인(simplifier-cxo-db gcp-usage 매일 09:20 KST, check_gcp_usage_schedule.py)"
 note = "2026-10-06 탐 등록(대장 N164). 첫 정기 실행이 10/6 09:20에 오지 않아 수동 실행으로 대체했다. 종료 코드 1 = 36시간 안에 정기 실행 성공 없음(수동 실행은 세지 않음), 2 = gh 오류. 10/7 09:20 이후 처음 성공하면 초록이 된다"
 
 [[job]]
@@ -335,7 +335,7 @@ kind = "cmd"
 cmd = ["python", 'C:/work/hansunghee7.github.io/scripts/ops/saegim_usage_fetch.py']
 timeout = 180
 every_min = 1440
-name = "새김 서버 사용량 받기(gcp-usage 산출물 → C:/work/_ops/saegim_usage, saegim_usage_fetch.py)"
+name = "카빗 서버 사용량 받기(gcp-usage 산출물 → C:/work/_ops/saegim_usage, saegim_usage_fetch.py)"
 note = "2026-10-06 탐 등록(대장 N164·G3 다음 단계). 최근 성공 실행의 artifact를 날짜별 파일과 일일 요약 한 줄로 쌓는다(멱등). 운영 DB 표는 새 표 DDL 필요라 보류. 종료 코드 1 = 성공 실행·산출물 없음, 2 = gh 오류. 10/12 중간 보고·10/31 결정 자료의 재료"
 
 [[job]]

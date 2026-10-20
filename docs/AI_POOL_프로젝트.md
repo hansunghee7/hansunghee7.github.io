@@ -114,7 +114,7 @@ fallback·delegation 호출에도 쓰였다. **위 Phase 2 조사 절의 반려 
   model_name으로 별도 풀 추가(Gemini와 rate limit·품질 프로필이 달라
   분리, 원안 3번 판단 기준)`GROQ_API_KEY`를 로컬
   `litellm-proxy/.env`에 등록(주의: 이 프록시는 Windows 시스템
-  환경변수가 아니라 이 로컬 `.env` 파일에서 값을 읽는다 — saegim 때와
+  환경변수가 아니라 이 로컬 `.env` 파일에서 값을 읽는다 — Carvit 때와
   다른 지점이라 처음에 잘못 안내했다 정정함) → 프록시 재시작 →
   실제 `groq-pool` 모델로 chat completion 성공 확인(`GPT OSS 120B`,
   "1+1은?" → "2" 정답).

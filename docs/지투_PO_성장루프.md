@@ -47,7 +47,7 @@
 
 - 수집 원천: ① `feedback` 도구 호출(`usage`·`usage_company`의 recent_feedback), ② 찾지 못한 검색(recent_misses), ③ 사용 기록 이상(호출이 끊김), ④ 면담 메모. 지표 측정 때 함께 훑는다.
 - 기록: `jitu_po.py feedback add --source 찾지못한검색 --who <별칭> --text "..."` → 하루 안에 `feedback triage <번호> --kind 버그|UX|요청|내용공백|칭찬|잡음 --state triaged|backlog|dropped --action "조치"`.
-- 백로그로: `--state backlog`로 올릴 때 새김 UX 백로그(simplifier-saegim/docs/새김_UX_백로그.md) 행 번호를 `--action`에 적는다.
+- 백로그로: `--state backlog`로 올릴 때 카빗 UX 백로그(simplifier-saegim/docs/새김_UX_백로그.md) 행 번호를 `--action`에 적는다.
 - 회신: 고객에게 가는 메시지는 사장님 컨펌 문안만 보낸다(지투 고객 발송 규칙). 회신하면 `--reply "문안 요지"`, `--state replied`. 7일 넘게 회신 없이 backlog에 머물면 `due`에 나온다.
 - 고객 이름·메일·비밀값은 기록장에 넣지 않는다(호출자 별칭만).
 - 하지 않을 것: 고객 피드백의 자동 수정·자동 회신. 제미나이 조사도 "사람 승인 거침이 일반적"이라고 했고, 우리 규칙상 고객 발송은 컨펌이다. 신호는 주 5건 이상 들어오는 때(그때 분류 틀을 다시 본다).
