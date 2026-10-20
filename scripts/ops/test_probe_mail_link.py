@@ -60,6 +60,24 @@ class T(unittest.TestCase):
             raise urllib.error.HTTPError("u", 403, "x", {}, None)
         self.assertEqual(p.main([], op), 4)
 
+    def test_code_option(self):
+        rows = [{"received_at": "2026-10-20T01:00:00Z", "text_body": "color #123456 https://x.io/a/1234567 코드 482913 입니다"}]
+        self.assertEqual(p.latest_by(rows, p.extract_code), "482913")
+        rows = [{"received_at": "1", "text_body": "", "html_body": "<style>.a{x:999999}</style><p>Code: <b>73920184</b></p>"}]
+        self.assertEqual(p.latest_by(rows, p.extract_code), "73920184")
+        self.assertEqual(p.main(["--code"], opener_for([{"received_at": "1", "text_body": "no digits 12345"}])), 2)
+
+    def test_any_link_option(self):
+        rows = [{"received_at": "1", "text_body": "https://evil.example/x https://github.com/help https://github.com/users/x/emails/confirm?token=abc"}]
+        self.assertEqual(p.latest_by(rows, p.extract_any_link), "https://github.com/users/x/emails/confirm?token=abc")
+        self.assertIsNone(p.latest_by([{"received_at": "1", "text_body": "https://github.com.evil.com/x"}], p.extract_any_link))
+
+    def test_options_exit_codes(self):
+        rows = [{"received_at": "1", "text_body": "코드 112233 https://github.com/verify?t=1"}]
+        self.assertEqual(p.main(["--code"], opener_for(rows)), 0)
+        self.assertEqual(p.main(["--any-link"], opener_for(rows)), 0)
+        self.assertEqual(p.main(["--any-link"], opener_for([])), 2)
+
 
 if __name__ == "__main__":
     unittest.main()
