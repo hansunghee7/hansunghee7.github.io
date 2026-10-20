@@ -437,11 +437,11 @@ note = "2026-10-11 구PC 대장 id 를 신PC 상태판에도 반영"
 id = "cron:vids-probe"
 severity = "warn"
 kind = "cmd"
-cmd = ["python", 'C:\work\_ops\remote_file_age.py', "goosolar", "/home/goosloar/workshop/logs/vids_probe.last", "180"]
+cmd = ["python", 'C:\work\_ops\remote_file_age.py', "goosolar", "/home/goosloar/workshop/logs/vids_probe.last", "360"]
 timeout = 60
 every_min = 60
-name = "구PC Vids 한도 풀림 실측(구PC 파일 나이를 ssh로 확인, 파이프 vids-probe)"
-note = "2026-10-11 구PC 대장 id 를 신PC 상태판에도 반영"
+name = "구PC Vids 한도 풀림 실측(구PC 파일 나이를 ssh로 확인, 파이프 vids-probe, factory_runner가 4시간마다 호출)"
+note = "2026-10-20 정정: 매시 37분 cron이 아니라 구PC factory_runner.py가 마지막 시도 4시간(240분) 뒤 호출(crontab에 vids 없음, 실측). 공장 작업이 10분을 넘으면 그 회차는 건너뜀. 최대 나이 180분은 오탐이라 간격의 1.5배인 360분으로 올림. 제미나이 풀(localhost:4000) 항목 폐기는 사장님 결정이라 미변경"
 
 [[job]]
 id = "fn:pipeline-sync"
