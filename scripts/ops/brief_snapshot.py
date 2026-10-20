@@ -22,7 +22,9 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-sys.stdout.reconfigure(encoding="utf-8")
+for _s in (sys.stdout, sys.stderr):  # pythonw(작업 스케줄러)는 표준출력이 None이라 가드 필요
+    if _s is not None:
+        _s.reconfigure(encoding="utf-8")
 import opsdb  # noqa: E402
 
 KST = dt.timezone(dt.timedelta(hours=9))
