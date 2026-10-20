@@ -1,18 +1,18 @@
 {
-  "updated_at": "2026-10-20T15:12:40.092803+00:00",
+  "updated_at": "2026-10-20T20:45:41.049896+00:00",
   "site_url": "https://carvit.ai/",
   "data_delay_note": "서치콘솔 데이터는 약 2일 지연 -- end_date는 이틀 전",
   "totals_28d": {
     "clicks": 5,
-    "impressions": 242,
-    "ctr": 0.0207,
-    "position": 6.2
+    "impressions": 255,
+    "ctr": 0.0196,
+    "position": 6.1
   },
   "totals_90d": {
     "clicks": 5,
-    "impressions": 242,
-    "ctr": 0.0207,
-    "position": 6.2
+    "impressions": 255,
+    "ctr": 0.0196,
+    "position": 6.1
   },
   "daily_90d": [
     {
@@ -154,15 +154,29 @@
       "impressions": 15,
       "ctr": 0.0667,
       "position": 10.5
+    },
+    {
+      "date": "2026-10-18",
+      "clicks": 0,
+      "impressions": 13,
+      "ctr": 0,
+      "position": 4.4
     }
   ],
   "top_queries_90d": [
     {
       "query": "carvit",
       "clicks": 3,
-      "impressions": 171,
-      "ctr": 0.0175,
-      "position": 5.8
+      "impressions": 182,
+      "ctr": 0.0165,
+      "position": 5.7
+    },
+    {
+      "query": "carvait",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 2.5
     },
     {
       "query": "car vit",
@@ -170,13 +184,6 @@
       "impressions": 1,
       "ctr": 0,
       "position": 79
-    },
-    {
-      "query": "carvait",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 4
     },
     {
       "query": "carviet",
@@ -204,16 +211,16 @@
     {
       "page": "https://carvit.ai/",
       "clicks": 5,
-      "impressions": 233,
-      "ctr": 0.0215,
+      "impressions": 244,
+      "ctr": 0.0205,
       "position": 6.2
     },
     {
       "page": "https://carvit.ai/brand/",
       "clicks": 0,
-      "impressions": 8,
+      "impressions": 12,
       "ctr": 0,
-      "position": 5.5
+      "position": 5.4
     },
     {
       "page": "https://carvit.ai/tech-report/logo-making-process/",
@@ -242,6 +249,13 @@
       "impressions": 4,
       "ctr": 0,
       "position": 5.8
+    },
+    {
+      "page": "https://carvit.ai/create/",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 7.3
     },
     {
       "page": "https://carvit.ai/ko/terms/",
@@ -298,13 +312,6 @@
       "impressions": 1,
       "ctr": 0,
       "position": 8
-    },
-    {
-      "page": "https://carvit.ai/create/",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 5
     },
     {
       "page": "https://carvit.ai/ko/create/",
@@ -388,32 +395,32 @@
     {
       "device": "MOBILE",
       "clicks": 3,
-      "impressions": 175,
-      "ctr": 0.0171,
+      "impressions": 185,
+      "ctr": 0.0162,
       "position": 5.7
     },
     {
       "device": "DESKTOP",
       "clicks": 2,
-      "impressions": 65,
-      "ctr": 0.0308,
-      "position": 7.6
+      "impressions": 67,
+      "ctr": 0.0299,
+      "position": 7.4
     },
     {
       "device": "TABLET",
       "clicks": 0,
-      "impressions": 2,
+      "impressions": 3,
       "ctr": 0,
-      "position": 7
+      "position": 5
     }
   ],
   "by_country_90d": [
     {
       "country": "mex",
       "clicks": 1,
-      "impressions": 27,
-      "ctr": 0.037,
-      "position": 8.3
+      "impressions": 30,
+      "ctr": 0.0333,
+      "position": 8.2
     },
     {
       "country": "kor",
@@ -423,25 +430,25 @@
       "position": 3.7
     },
     {
+      "country": "tur",
+      "clicks": 1,
+      "impressions": 8,
+      "ctr": 0.125,
+      "position": 5
+    },
+    {
+      "country": "aut",
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 3.5
+    },
+    {
       "country": "tha",
       "clicks": 1,
       "impressions": 7,
       "ctr": 0.1429,
       "position": 3.3
-    },
-    {
-      "country": "tur",
-      "clicks": 1,
-      "impressions": 7,
-      "ctr": 0.1429,
-      "position": 4.9
-    },
-    {
-      "country": "aut",
-      "clicks": 0,
-      "impressions": 6,
-      "ctr": 0,
-      "position": 3.7
     },
     {
       "country": "bra",
