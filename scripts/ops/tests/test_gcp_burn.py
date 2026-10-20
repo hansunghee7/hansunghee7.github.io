@@ -158,6 +158,24 @@ class GcpBurnTest(unittest.TestCase):
         self.assertEqual(seen["VERTEX_NO_ROUTER"], "1")
         self.assertTrue(str(seen["cmd"][1]).endswith("ask_vertex.py"))
 
+    def test_entry_survives_pythonw_none_stdout(self):
+        """pythonw처럼 stdout/stderr가 None이어도 죽지 않고 run.log와 last_run을 남긴다."""
+        self.q.write_text("", encoding="utf-8")
+        argv = ["--queue", str(self.q), "--ledger", str(self.l), "--results", str(self.r)]
+        orig_main, so, se = gb.main, sys.stdout, sys.stderr
+        gb.main = lambda a=None: orig_main(a, remain_fn=lambda: 1_000_000, today=TODAY)
+        sys.stdout = sys.stderr = None
+        try:
+            rc = gb.entry(argv, base=self.d)
+        finally:
+            log = sys.stdout
+            sys.stdout, sys.stderr, gb.main = so, se, orig_main
+            if log not in (None, so):
+                log.close()
+        self.assertEqual(rc, 0)
+        self.assertIn("rc=0", (self.d / "last_run").read_text(encoding="utf-8"))
+        self.assertIn("끝:", (self.d / "run.log").read_text(encoding="utf-8"))
+
 
 if __name__ == "__main__":
     unittest.main()
