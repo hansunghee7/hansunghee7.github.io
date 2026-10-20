@@ -86,6 +86,20 @@ class T(unittest.TestCase):
         self.assertEqual(ps.plan([], {'a': (None, 'fn:a')}, st)[0], [])
         self.assertEqual([t[0] for t in ps.plan([('a', 'fn:a', True)], {'a': (None, 'fn:a')}, st)[0]], ['a'])
 
+    def test_default_watch_for_ledger_without_watch_id(self):
+        """감시 id 가 빈 index-coverage 는 기본 근거(GitHub 워크플로 실행 기록)로 옮긴다(10/05에 멈춘 last_success 보정)."""
+        live = (True, 'gh live', '2026-10-19T07:32:00Z')
+        seen = []
+
+        def gh(w):
+            seen.append(w)
+            return live
+        ledger = {'index-coverage': (ps.to_dt('2026-10-05T09:22:00+09:00'), None)}
+        todo, _ = ps.plan([], ledger, {}, gh=gh)
+        self.assertEqual([t[0] for t in todo], ['index-coverage'])
+        self.assertEqual(seen, ['gh:site:Fetch Index Coverage'])
+        self.assertEqual(ps.plan([], {'zzz': (None, None)}, {}, gh=gh)[0], [])
+
 
 if __name__ == '__main__':
     unittest.main()
