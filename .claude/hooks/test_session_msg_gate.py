@@ -19,13 +19,13 @@ def user(text, minutes_ago=1):
     return {"type": "user", "timestamp": ts(minutes_ago), "message": {"role": "user", "content": text}}
 
 
-def run(to, rows):
+def run(to, rows, tool="SendMessage"):
     with tempfile.NamedTemporaryFile("w", suffix=".jsonl", delete=False, encoding="utf-8") as f:
         for r in rows:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
         path = f.name
     try:
-        payload = {"tool_name": "SendMessage", "tool_input": {"to": to, "message": "x"}, "transcript_path": path}
+        payload = {"tool_name": tool, "tool_input": ({"session_id": to, "message": "x"} if tool != "SendMessage" else {"to": to, "message": "x"}), "transcript_path": path}
         p = subprocess.run([sys.executable, HOOK], input=json.dumps(payload).encode("utf-8"), capture_output=True)
         return p.returncode
     finally:
@@ -33,6 +33,12 @@ def run(to, rows):
 
 
 class GateTest(unittest.TestCase):
+    def test_app_send_message_blocked_without_approval(self):
+        self.assertEqual(run("local_2a6d1c6f-829e", [user("안녕")], tool="mcp__ccd_session_mgmt__send_message"), 2)
+
+    def test_app_send_message_allowed_with_approval(self):
+        self.assertEqual(run("local_x", [user("세션메시지 사용을 승인합니다", 10)], tool="mcp__ccd_session_mgmt__send_message"), 0)
+
     def test_subagent_not_targeted(self):
         self.assertEqual(run("explorer-1", []), 0)
 

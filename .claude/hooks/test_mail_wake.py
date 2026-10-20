@@ -21,7 +21,7 @@ class MailWakeTest(unittest.TestCase):
         self.assertEqual(code, 0)
         ctx = json.loads(out)["hookSpecificOutput"]["additionalContext"]
         self.assertIn("'노트'", ctx)
-        self.assertIn("SendMessage", ctx)
+        self.assertIn("카빗DM", ctx)
 
     def test_quoted_recipient_is_unquoted(self):
         code, out = run("python solar-bible/mailbox/mailbox.py send '지투' t")

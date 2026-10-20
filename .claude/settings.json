@@ -215,7 +215,7 @@
         ]
       },
       {
-        "matcher": "SendMessage",
+        "matcher": "SendMessage|mcp__ccd_session_mgmt__send_message",
         "hooks": [
           {
             "type": "command",
