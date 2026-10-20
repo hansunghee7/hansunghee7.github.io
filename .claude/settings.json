@@ -175,7 +175,7 @@
         ]
       },
       {
-        "matcher": "mcp__saegim__cite|mcp__carvit__cite|mcp__carvit-tam__cite",
+        "matcher": "mcp__saegim__cite|mcp__carvit__cite",
         "hooks": [
           {
             "type": "command",
