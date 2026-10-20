@@ -228,6 +228,33 @@ def main(argv=None, ask=None, remain_fn=None, today=None):
     return 3 if stopped else (2 if failed else 0)
 
 
+def entry(argv=None, base=None):
+    """작업 스케줄러(pythonw) 진입점. pythonw는 stdout/stderr가 None이라 reconfigure에서 죽는다(PR 2477 유형).
+    None이면 base/run.log로 돌리고, 끝나면 base/last_run에 시각과 종료 코드를 남긴다(jobs.toml file_age 감시용)."""
+    base = Path(base or BASE)
+    base.mkdir(parents=True, exist_ok=True)
+    log = None
+    if sys.stdout is None or sys.stderr is None:
+        log = open(base / "run.log", "a", encoding="utf-8")
+        log.write(f"\n=== {now()} (pythonw) ===\n")
+        if sys.stdout is None:
+            sys.stdout = log
+        if sys.stderr is None:
+            sys.stderr = log
+    for s in (sys.stdout, sys.stderr):
+        if s is not log and hasattr(s, "reconfigure"):
+            s.reconfigure(encoding="utf-8")
+    rc = 1
+    try:
+        rc = main(argv)
+    except Exception as e:  # noqa: BLE001
+        print(f"오류: {type(e).__name__}: {str(e)[:200]}", file=sys.stderr)
+    finally:
+        (base / "last_run").write_text(f"{now()} rc={rc}\n", encoding="utf-8")
+        if log is not None:
+            log.flush()
+    return rc
+
+
 if __name__ == "__main__":
-    sys.stdout.reconfigure(encoding="utf-8")
-    sys.exit(main())
+    sys.exit(entry())
