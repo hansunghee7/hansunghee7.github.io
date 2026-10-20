@@ -72,16 +72,26 @@ def carvit():
             "requests_2xx_7d": int(sum(ok[k] for k in days)), "errors_5xx_30d": d.get("errors_5xx_30d")}
 
 
-def push(path, day):
-    git = ["git", "-C", str(CXO)]
-    subprocess.run(git + ["pull", "-q", "--rebase", "origin", "main"], creationflags=NW, check=False)
-    subprocess.run(git + ["add", str(path)], creationflags=NW, check=True)
-    if subprocess.run(git + ["diff", "--cached", "--quiet"], creationflags=NW).returncode == 0:
+def push(path, day, cxo=None):
+    """main이 아닌 브랜치에서는 pull·commit·push를 하지 않는다(2026-10-20: 다른 브랜치에 커밋이 섞이고 push 거절로 종료 1).
+
+    산출 파일은 이미 로컬에 써 둔 뒤라 파일은 항상 갱신된다. 반환: 0 성공, 1 가드 거절.
+    """
+    cxo = Path(cxo) if cxo else CXO
+    git = ["git", "-C", str(cxo)]
+    cur = subprocess.run(git + ["branch", "--show-current"], stdin=subprocess.DEVNULL, creationflags=NW, capture_output=True, text=True).stdout.strip()
+    if cur != "main":
+        print(f"push 건너뜀: {cxo} 가 main이 아니라 '{cur or '(detached)'}' 브랜치입니다. 산출 파일은 로컬에 저장됨. 폴더를 main으로 돌린 뒤 다시 실행하세요.", file=sys.stderr)
+        return 1
+    subprocess.run(git + ["pull", "-q", "--rebase", "origin", "main"], stdin=subprocess.DEVNULL, capture_output=True, creationflags=NW, check=False)
+    subprocess.run(git + ["add", str(path)], stdin=subprocess.DEVNULL, capture_output=True, creationflags=NW, check=True)
+    if subprocess.run(git + ["diff", "--cached", "--quiet"], stdin=subprocess.DEVNULL, capture_output=True, creationflags=NW).returncode == 0:
         print("변경 없음")
-        return
-    subprocess.run(git + ["commit", "-qm", f"briefs: {day} 사장님 오늘 스냅샷"], creationflags=NW, check=True)
-    subprocess.run(git + ["push", "-q", "origin", "HEAD:main"], creationflags=NW, check=True)
+        return 0
+    subprocess.run(git + ["commit", "-qm", f"briefs: {day} 사장님 오늘 스냅샷"], stdin=subprocess.DEVNULL, capture_output=True, creationflags=NW, check=True)
+    subprocess.run(git + ["push", "-q", "origin", "HEAD:main"], stdin=subprocess.DEVNULL, capture_output=True, creationflags=NW, check=True)
     print("push 완료")
+    return 0
 
 
 def main():
@@ -97,8 +107,9 @@ def main():
     path.write_text(json.dumps(snap, ensure_ascii=False, indent=1), encoding="utf-8")
     print(path, f"마감 {len(snap['deadlines'])} · 결정대기 {snap['boss_open']['count']} · 진행 지원사업 {len(snap['grants']['live'])}")
     if not a.no_push and not a.out:
-        push(path, f"{now:%Y-%m-%d}")
+        return push(path, f"{now:%Y-%m-%d}")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
