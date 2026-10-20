@@ -35,6 +35,10 @@ class GateTest(unittest.TestCase):
         event = dict(event, transcript_path=transcript(lines))
         return gate.decide(event, project_dir)[0]
 
+    def test_hyphen_server_name_is_recognized(self):
+        d = {"message": {"role": "assistant", "content": [{"type": "tool_use", "id": "d1", "name": "mcp__carvit-jitu__draft_screen", "input": {"doc": "UX_GUIDE_STUDIO", "parts": ["x"]}}]}}
+        self.assertEqual(self.run_gate(ART, [d, result("d1")]), 0)
+
     def test_artifact_publish_without_lookup_is_blocked(self):
         self.assertEqual(self.run_gate(ART, []), 2)
 
