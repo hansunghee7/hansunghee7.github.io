@@ -84,6 +84,10 @@ def gh_evidence(watch):
     return True, f"pipeline_sync: GitHub 실행 기록 {m.group(2)} 성공 {at[:16].replace('T', ' ')} UTC", at
 
 
+# 대장에 감시 id 가 비어 있는 파이프의 기본 근거(10/21: index-coverage 는 워크플로가 매일 성공하는데 감시 id 가 없어 last_success 가 10/05에 멈춘 채 경보)
+DEFAULT_WATCH = {'index-coverage': 'gh:site:Fetch Index Coverage'}
+
+
 def pick_evidence(watch, state, gh=None):
     """GitHub 워크플로(gh:)는 실제 실행 기록을 먼저 보고, 못 읽으면 감시 상태 파일로 내려간다.
     10/16 타미 당직 판정: 상태 파일이 02:38에 멈춰 06:40 사이트 점검 성공을 못 옮겨 9시간 정체로 보였다."""
@@ -135,6 +139,7 @@ def plan(stale_rows, ledger, state, gh=None):
     todo, none, seen = [], [], set()
     for slug, watch, no_record in stale_rows:
         seen.add(slug)
+        watch = watch or DEFAULT_WATCH.get(slug)
         ev = pick_evidence(watch, state, gh)
         last = ledger.get(slug, (None, None))[0]
         if ev and ev[0] and not ledger_is_behind(last, ev[2]):
@@ -144,6 +149,7 @@ def plan(stale_rows, ledger, state, gh=None):
         else:
             none.append(f"{slug} (감시 {watch or '-'})")
     for slug, (last, watch) in sorted(ledger.items()):
+        watch = watch or DEFAULT_WATCH.get(slug)
         if slug in seen or not watch:
             continue
         ev = pick_evidence(watch, state, gh)
