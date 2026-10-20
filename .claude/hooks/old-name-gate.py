@@ -44,7 +44,7 @@ def new_words(new_text, old_text):
 
 def main():
     try:
-        data = json.load(sys.stdin)
+        data = json.loads(sys.stdin.buffer.read().decode("utf-8"))
     except Exception:
         return 0
     tool = data.get("tool_name", "")
