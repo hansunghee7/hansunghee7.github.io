@@ -16,7 +16,6 @@ if not m:
 to = m.group(1).strip("\"'")
 if to in ("전체", "사장님"):
     sys.exit(0)
-msg = (f"[우편 알림 규칙] '{to}'에게 우편을 보냈습니다. 받는 쪽이 행동해야 하는 우편이면, "
-       f"ListAgents로 '{to}' 세션이 떠 있는지 보고 떠 있으면 SendMessage로도 같은 요지를 보내세요"
-       "(우편은 새 세션을 열 때만 읽힙니다). 회신이 필요하면 내 업무대장에 '확인필요'로 올려 두세요.")
+msg = (f"[우편 알림 규칙] '{to}'에게 우편을 보냈습니다. 에이전트 간 연락은 카빗DM(dm_send)이 기본이고 우편은 카빗DM에 등록되지 않은 에이전트에게만 씁니다. "
+       "세션 메시지(SendMessage·send_message)는 사장님 승인을 받은 뒤에만 보낼 수 있습니다. 회신이 필요하면 내 업무대장에 '확인필요'로 올려 두세요.")
 print(json.dumps({"hookSpecificOutput": {"hookEventName": "PostToolUse", "additionalContext": msg}}))
