@@ -644,6 +644,7 @@
       <div class="tbl-row"><div class="svc">Google Analytics 4</div><div class="role">방문 데이터 수집 + Data API로 대시보드 재조회</div><div class="where">_includes/site-analytics.html · scripts/fetch_ga4.py</div></div>
       <div class="tbl-row"><div class="svc">Google Search Console</div><div class="role">검색 노출 확인 (GA4 태그로 소유권 자동 인증) + Search Analytics API로 대시보드 재조회(simplifier.co.kr, 2026-10-18부터 carvit.ai도 search-console-carvit.json으로 수집)</div><div class="where">.github/workflows/fetch-search-console.yml · scripts/fetch_gsc.py</div></div>
       <div class="tbl-row"><div class="svc">YouTube Analytics API · Meta Graph API</div><div class="role">숏폼 편별 성과(유지율·구독 증감·릴스 도달·일별 팔로워) 하루 2회 수집 + 구PC가 네이버 클립 조회를 하루 1회 올림 → 편별 성과 표</div><div class="where">비공개 저장소 carvit-insight-data (data/episode_table.md)</div></div>
+      <div class="tbl-row"><div class="svc">구PC 깃허브 자체 실행기 · 보조 SSD</div><div class="role">Carvit 배포 작업 폴더(_work)를 보조 SSD(59.6GB, 라벨 carvit-fast, /srv/carvit-fast에 UUID+nofail 마운트)의 runner-work로 심볼릭 링크해 OS 디스크 여유를 지키고 장애를 분리. 기존 HDD는 /srv/carvit-store(1TB, 백업), /srv/carvit-bulk(500GB). Docker 저장소 이전은 아직 안 함</div><div class="where">구PC(goosolar), 이름표 saegim-test</div></div>
       <div class="tbl-row"><div class="svc">네이버 서치어드바이저</div><div class="role">네이버 검색 등록</div><div class="where">meta 태그, _includes/site-analytics.html</div></div>
       <div class="tbl-row"><div class="svc">Microsoft Clarity</div><div class="role">히트맵 · 세션 리플레이 + Data Export API로 대시보드 재조회</div><div class="where">_includes/site-analytics.html · scripts/fetch_clarity.py · carvit.ai는 별도 프로젝트(Carvit 20261018, carvit.ai 저장소 assets/analytics.js, 2026-10-18)</div></div>
       <div class="tbl-row"><div class="svc">Composio</div><div class="role">인스타그램 두 계정의 글별 좋아요·댓글·조회·도달 수집 → 운영 DB</div><div class="where">scripts/ops/maya_metrics_to_db.py (수집기는 저장소 밖)</div></div>
@@ -704,6 +705,9 @@
         <span class="files">insight-7b3e9f2c/system-map.html</span>
       </div></div>
       <div class="log-item"><span class="dot done"></span><div><b>2026-10-07</b>: 영상 제작 연계도 한 장 추가(탐 요청, 핏 작성). 주제 시트의 대본에서 음성, 영어 제작시트, 구PC 공장 큐(Flow, 소진 시 Vids), 제미나이 앱·로컬 영상, 조립, 핏 제작함 컨펌, 주간 예약 등록까지의 길을 shorts-lab 코드와 대조해 그렸고, 코드로 확인하지 못한 생성 조작은 설명 말풍선에 문서 기준이라고 밝혔습니다.
+        <span class="files">insight-7b3e9f2c/system-map.html</span>
+      </div></div>
+      <div class="log-item"><span class="dot done"></span><div><b>2026-10-20</b>: 구PC 보조 SSD를 깃허브 자체 실행기의 작업 폴더로 연결(탐). 새 작업 폴더에서 Reseed UX guides 작업이 성공했습니다. Docker 저장소 이전은 containerd 경로를 실측한 뒤 진행합니다.
         <span class="files">insight-7b3e9f2c/system-map.html</span>
       </div></div>
       <div class="log-item"><span class="dot done"></span><div><b>2026-10-06</b>: 카빗 사이트·서비스 연계도 한 장 추가(노트). 방문자와 AI 도구가 mcp.carvit.ai를 지나 새김 서버·Supabase로 이어지는 길, 카빗 패스 확장의 로그인과 PIN 잠금, 가이드 원본이 reseed로 심기는 길을 코드와 대조해 그렸고 확인하지 못한 선은 그리지 않았습니다.
