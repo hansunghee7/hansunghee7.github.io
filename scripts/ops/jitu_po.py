@@ -432,8 +432,9 @@ def req_state(area):
     """영역 상태: 항목 수, 마지막 확신 시각, 확신 뒤 새 항목 여부."""
     items, ready_idx, last_item_idx = [], -1, -1
     rows = [r for r in load("req") if r.get("area") == area]
+    dropped = {r.get("target") for r in rows if r["kind"] == "drop"}
     for i, r in enumerate(rows):
-        if r["kind"] == "item":
+        if r["kind"] == "item" and r["id"] not in dropped:
             items.append(r)
             last_item_idx = i
         elif r["kind"] == "ready":
@@ -470,6 +471,22 @@ def req_sent(a):
     print(f"영역 [{a.area}] 전달 기록: {a.to} {a.ref}")
 
 
+def req_drop(a):
+    """항목 하나를 백로그에서 뺀다(사장님 삭제 지시). 원장 줄은 지우지 않고 drop 기록을 더해 이력을 남긴다."""
+    rows = load("req")
+    item = next((r for r in rows if r["kind"] == "item" and r["id"] == a.id), None)
+    if not item:
+        sys.exit(f"{a.id} 항목이 없습니다")
+    if any(r["kind"] == "drop" and r.get("target") == a.id for r in rows):
+        sys.exit(f"{a.id}는 이미 뺀 항목입니다")
+    if len(a.reason.strip()) < 8:
+        sys.exit("뺀 이유(reason)를 8자 이상 쓰세요(누가 언제 무엇을 근거로 정했는지)")
+    rows.append({"id": "", "kind": "drop", "date": str(today()), "area": item["area"], "target": a.id, "reason": a.reason})
+    save("req", rows)
+    st = req_state(item["area"])
+    print(f"{a.id} 백로그에서 뺌: {a.reason} (영역 [{item['area']}] 남은 항목 {st['items']}개)")
+
+
 def req_list(a):
     areas = sorted({r["area"] for r in load("req")})
     for ar in areas:
@@ -478,8 +495,11 @@ def req_list(a):
         st = req_state(ar)
         label = "확신 있음" if st["ready"] else ("확신 취소(새 항목)" if st["had_ready"] else "취합 중")
         print(f"[{ar}] {label}, 항목 {st['items']}개, 시작 {st['first']}")
+        dropped = {r.get("target"): r for r in st["rows"] if r["kind"] == "drop"}
         for r in st["rows"]:
-            if r["kind"] == "item":
+            if r["kind"] == "item" and r["id"] in dropped:
+                print(f"   {r['id']} [뺌 {dropped[r['id']]['date']}: {dropped[r['id']]['reason'][:50]}]")
+            elif r["kind"] == "item":
                 print(f"   {r['id']} ({r['source']}) {r['text'][:80]}")
             elif r["kind"] == "ready":
                 print(f"   - 확신 {r['date']}: {r['note'][:80]}")
@@ -719,6 +739,7 @@ def build():
     x = rq.add_parser("ready"); x.add_argument("area"); x.add_argument("--note", required=True, help="빠진 것 점검 결과(선행·충돌·고객/DB 영향·확인 방법) 20자 이상")
     x.set_defaults(fn=req_ready)
     x = rq.add_parser("sent"); x.add_argument("area"); x.add_argument("--to", default="노트"); x.add_argument("--ref", default=""); x.set_defaults(fn=req_sent)
+    x = rq.add_parser("drop"); x.add_argument("id"); x.add_argument("--reason", required=True); x.set_defaults(fn=req_drop)
     x = rq.add_parser("list"); x.add_argument("--area", default=""); x.set_defaults(fn=req_list)
     x = rq.add_parser("check-send"); x.add_argument("area"); x.set_defaults(fn=req_check)
 
