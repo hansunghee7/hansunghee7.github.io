@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""점검 계정(probe@carvit.ai)으로 온 Carvit 로그인 링크를 읽어 표준출력에 한 개만 낸다(읽기 전용).
+"""점검 계정(점검 계정 주소)으로 온 Carvit 로그인 링크를 읽어 표준출력에 한 개만 낸다(읽기 전용).
 
-흐름: 사장님이 로그인 창에 probe@carvit.ai 를 넣어 링크를 보낸다 -> 이 스크립트가 메일 Worker의
+흐름: 사장님이 로그인 창에 점검 계정 주소 를 넣어 링크를 보낸다 -> 이 스크립트가 메일 Worker의
 점검 읽기 경로(GET /mail?since=<ISO>, 전용 키)에서 최신 점검 메일을 받아 https://mcp.carvit.ai 링크만 뽑는다.
 
 - 키: 환경 변수 PROBE_MAIL_READ_KEY(또는 MAIL_PROBE_READ_KEY), 없으면 헤르메스 설정 파일
