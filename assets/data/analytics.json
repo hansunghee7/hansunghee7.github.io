@@ -1,20 +1,13 @@
 {
-  "updated_at": "2026-10-20T12:50:43.403992+00:00",
+  "updated_at": "2026-10-20T20:00:48.156830+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 374,
-    "activeUsers": 321,
-    "newUsers": 316,
+    "sessions": 359,
+    "activeUsers": 309,
+    "newUsers": 304,
     "returningUsers": 5
   },
   "daily": [
-    {
-      "date": "2026-09-20",
-      "sessions": 14,
-      "activeUsers": 13,
-      "newUsers": 12,
-      "returningUsers": 1
-    },
     {
       "date": "2026-09-21",
       "sessions": 9,
@@ -228,15 +221,15 @@
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 146,
+    "home": 138,
     "log_home": 0,
-    "individual_post": 217,
+    "individual_post": 211,
     "other": 10
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 202
+      "sessions": 191
     },
     {
       "source": "linkedin.com",
@@ -244,11 +237,11 @@
     },
     {
       "source": "m.search.naver.com",
-      "sessions": 22
+      "sessions": 21
     },
     {
       "source": "google",
-      "sessions": 19
+      "sessions": 18
     },
     {
       "source": "m.facebook.com",
@@ -256,7 +249,7 @@
     },
     {
       "source": "facebook.com",
-      "sessions": 13
+      "sessions": 12
     },
     {
       "source": "daum",
@@ -300,7 +293,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 202
+      "sessions": 191
     },
     {
       "source": "linkedin.com",
@@ -312,13 +305,13 @@
       "source": "m.search.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 22
+      "sessions": 21
     },
     {
       "source": "google",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 19
+      "sessions": 18
     },
     {
       "source": "m.facebook.com",
@@ -330,7 +323,7 @@
       "source": "facebook.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 13
+      "sessions": 12
     },
     {
       "source": "daum",
@@ -436,15 +429,15 @@
     }
   ],
   "engagement_events": {
-    "section_view_proven": 87,
-    "section_view_voices": 75,
-    "section_view_book_class": 47,
-    "section_view_faq": 49,
+    "section_view_proven": 85,
+    "section_view_voices": 74,
+    "section_view_book_class": 46,
+    "section_view_faq": 48,
     "faq_open": 12,
     "read_complete": 95
   },
   "contact_funnel": {
-    "contact_open": 20,
+    "contact_open": 19,
     "generate_lead": 0,
     "contact_error": 0
   },
@@ -453,7 +446,7 @@
     {
       "path": "/logs/625",
       "title": "/logs/625",
-      "sessions": 29
+      "sessions": 28
     },
     {
       "path": "/logs/631",
@@ -463,7 +456,7 @@
     {
       "path": "/logs/620",
       "title": "/logs/620",
-      "sessions": 16
+      "sessions": 14
     },
     {
       "path": "/logs/618",
@@ -493,7 +486,7 @@
     {
       "path": "/logs/619",
       "title": "/logs/619",
-      "sessions": 7
+      "sessions": 6
     },
     {
       "path": "/logs/636",
@@ -521,17 +514,17 @@
       "sessions": 4
     },
     {
-      "path": "/logs/475",
-      "title": "/logs/475",
-      "sessions": 3
+      "path": "/logs/162",
+      "title": "/logs/162",
+      "sessions": 2
     }
   ],
   "top_viewed_posts": [
     {
       "path": "/logs/625/",
       "title": "주니어 PM은 왜 스스로 문제를 정의하지 못할까?",
-      "uniqueViews": 32,
-      "views": 35
+      "uniqueViews": 31,
+      "views": 34
     },
     {
       "path": "/logs/631/",
@@ -542,8 +535,8 @@
     {
       "path": "/logs/620/",
       "title": "팀이 커질수록 대표만 모르는 것",
-      "uniqueViews": 18,
-      "views": 20
+      "uniqueViews": 16,
+      "views": 18
     },
     {
       "path": "/logs/628/",
@@ -584,8 +577,8 @@
     {
       "path": "/logs/619/",
       "title": "AI가 우선순위까지 대신 정해줄 수 있을까",
-      "uniqueViews": 7,
-      "views": 8
+      "uniqueViews": 6,
+      "views": 7
     },
     {
       "path": "/logs/629/",
