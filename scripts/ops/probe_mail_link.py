@@ -30,7 +30,7 @@ LINK_RE = re.compile(r"https://mcp\.carvit\.ai/[^\s\"'<>)\]]+")
 
 GH_LINK_RE = re.compile(r"https://(?:www\.)?github\.com/[^\s\"'<>)\]]+")
 CODE_RE = re.compile(r"(?<![\w#.\-/=%&?])(\d{6,8})(?![\w.\-/%])")
-TAG_RE = re.compile(r"<(style|script)[^>]*>.*?</>|<[^>]+>", re.S | re.I)
+TAG_RE = re.compile(r"<(style|script)[^>]*>.*?</\1>|<[^>]+>", re.S | re.I)
 
 
 def find_key(env_file=None):
