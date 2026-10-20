@@ -1727,8 +1727,20 @@
       },
       "suspect_stale": [
         "aladin.sales_point"
+      ],
+      "later_values": [
+        {
+          "field": "yes24.reviews",
+          "value": 0,
+          "at": "2026-10-20T23:03+00:00"
+        },
+        {
+          "field": "millie.category_rank",
+          "value": 57,
+          "at": "2026-10-20T23:03+00:00"
+        }
       ]
     }
   ],
-  "updated_at": "2026-10-20T20:04:00.236552+00:00"
+  "updated_at": "2026-10-20T23:03:12.154581+00:00"
 }
