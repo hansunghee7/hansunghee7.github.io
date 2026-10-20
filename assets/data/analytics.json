@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-19T23:06:10.401986+00:00",
+  "updated_at": "2026-10-20T06:00:09.478921+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 369,
-    "activeUsers": 316,
-    "newUsers": 311,
+    "sessions": 372,
+    "activeUsers": 319,
+    "newUsers": 314,
     "returningUsers": 5
   },
   "daily": [
@@ -213,31 +213,31 @@
     },
     {
       "date": "2026-10-19",
-      "sessions": 2,
-      "activeUsers": 2,
-      "newUsers": 2,
+      "sessions": 5,
+      "activeUsers": 5,
+      "newUsers": 5,
       "returningUsers": 0
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 144,
+    "home": 145,
     "log_home": 0,
-    "individual_post": 214,
+    "individual_post": 216,
     "other": 10
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 200
+      "sessions": 201
     },
     {
       "source": "linkedin.com",
-      "sessions": 51
+      "sessions": 52
     },
     {
       "source": "m.search.naver.com",
-      "sessions": 21
+      "sessions": 22
     },
     {
       "source": "google",
@@ -293,19 +293,19 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 200
+      "sessions": 201
     },
     {
       "source": "linkedin.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 51
+      "sessions": 52
     },
     {
       "source": "m.search.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 21
+      "sessions": 22
     },
     {
       "source": "google",
@@ -429,12 +429,12 @@
     }
   ],
   "engagement_events": {
-    "section_view_proven": 86,
-    "section_view_voices": 74,
-    "section_view_book_class": 46,
-    "section_view_faq": 48,
+    "section_view_proven": 87,
+    "section_view_voices": 75,
+    "section_view_book_class": 47,
+    "section_view_faq": 49,
     "faq_open": 12,
-    "read_complete": 94
+    "read_complete": 95
   },
   "contact_funnel": {
     "contact_open": 20,
@@ -446,7 +446,7 @@
     {
       "path": "/logs/625",
       "title": "/logs/625",
-      "sessions": 28
+      "sessions": 29
     },
     {
       "path": "/logs/631",
@@ -464,13 +464,13 @@
       "sessions": 10
     },
     {
-      "path": "/logs/301",
-      "title": "/logs/301",
-      "sessions": 9
-    },
-    {
       "path": "/logs/628",
       "title": "/logs/628",
+      "sessions": 10
+    },
+    {
+      "path": "/logs/301",
+      "title": "/logs/301",
       "sessions": 9
     },
     {
@@ -523,8 +523,8 @@
     {
       "path": "/logs/625/",
       "title": "주니어 PM은 왜 스스로 문제를 정의하지 못할까?",
-      "uniqueViews": 31,
-      "views": 34
+      "uniqueViews": 32,
+      "views": 35
     },
     {
       "path": "/logs/631/",
@@ -539,16 +539,16 @@
       "views": 20
     },
     {
+      "path": "/logs/628/",
+      "title": "우리 회사의 핵심가치, 아무도 안 볼 때 동작하나요?",
+      "uniqueViews": 10,
+      "views": 11
+    },
+    {
       "path": "/logs/618/",
       "title": "AI가 못 뺏는 능력 하나",
       "uniqueViews": 9,
       "views": 11
-    },
-    {
-      "path": "/logs/628/",
-      "title": "우리 회사의 핵심가치, 아무도 안 볼 때 동작하나요?",
-      "uniqueViews": 9,
-      "views": 10
     },
     {
       "path": "/logs/301/",
@@ -613,13 +613,13 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 416,
+    "total_desktop_sessions": 418,
     "excluded_invalid_sessions": 23,
     "by_resolution": [
       {
         "resolution": "1920x1080",
         "width": 1920,
-        "sessions": 88
+        "sessions": 89
       },
       {
         "resolution": "800x600",
@@ -707,13 +707,13 @@
         "sessions": 3
       },
       {
-        "resolution": "1024x2160",
-        "width": 1024,
-        "sessions": 2
+        "resolution": "2560x1080",
+        "width": 2560,
+        "sessions": 3
       },
       {
-        "resolution": "1680x1050",
-        "width": 1680,
+        "resolution": "1024x2160",
+        "width": 1024,
         "sessions": 2
       }
     ]
