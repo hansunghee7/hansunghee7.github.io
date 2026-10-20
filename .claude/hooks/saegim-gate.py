@@ -31,7 +31,7 @@ import sys
 LOOKUP_TOOLS = ("lookup", "get_section", "list_sections")
 # 서버 이름이 새김(saegim)에서 Carvit으로 바뀐다(사장님 9/26). 연결 이름이 어느 쪽이든(예: mcp__saegim__lookup, mcp__carvit__lookup,
 # claude.ai 커넥터식 mcp__claude_ai_Carvit__lookup) 같은 도구로 본다.
-GUIDE_TOOL_RE = re.compile(r"^mcp__[A-Za-z0-9_]*?(?:saegim|carvit)[A-Za-z0-9_]*?__([A-Za-z_]+)$", re.IGNORECASE)
+GUIDE_TOOL_RE = re.compile(r"^mcp__[A-Za-z0-9_-]*?(?:saegim|carvit)[A-Za-z0-9_-]*?__([A-Za-z_]+)$", re.IGNORECASE)
 
 
 def guide_tool(name):
