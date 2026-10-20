@@ -10,8 +10,8 @@ HOOK = os.path.join(os.path.dirname(os.path.abspath(__file__)), "old-name-gate.p
 
 def run(payload):
     env = dict(os.environ, OLD_NAME_GATE_LOG=os.path.join(tempfile.gettempdir(), "old_name_gate_test.log"))
-    p = subprocess.run([sys.executable, HOOK], input=json.dumps(payload), capture_output=True, text=True, encoding="utf-8", env=env)
-    return p.returncode, p.stderr
+    p = subprocess.run([sys.executable, HOOK], input=json.dumps(payload, ensure_ascii=False).encode("utf-8"), capture_output=True, env=dict(env, PYTHONUTF8="0", PYTHONIOENCODING="cp949"))
+    return p.returncode, p.stderr.decode("utf-8", "replace")
 
 
 def edit(new, old="x"):
