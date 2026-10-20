@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "saegim": {
+    "carvit-tam": {
       "type": "http",
       "url": "${SAEGIM_MCP_URL}",
       "headers": {
