@@ -112,14 +112,14 @@ id = "gh:saegim:Reseed UX guides"
 kind = "gh_workflow"
 repo = "hansunghee7/simplifier-saegim"
 workflow = "Reseed UX guides (심플리파이어 scope)"
-name = "새김 UX 가이드 재시드"
+name = "카빗 UX 가이드 재시드"
 
 [[job]]
 id = "gh:saegim:Daily GCP usage"
 kind = "gh_workflow"
 repo = "hansunghee7/simplifier-saegim"
 workflow = "Daily GCP usage (새김 일일 사용량·비용)"
-name = "새김 일일 사용량·비용"
+name = "카빗 일일 사용량·비용"
 period_min = 1440
 
 # ---------- 에이전트가 쓰는 서비스 ----------
@@ -127,7 +127,7 @@ period_min = 1440
 id = "svc:saegim"
 kind = "http"
 url = "https://saegim-mcp-175301711490.asia-northeast3.run.app/"
-name = "새김 서버(홈)"
+name = "카빗 서버(홈)"
 
 # 기능 점검: 에이전트가 실제로 쓰는 것이 동작하는지(비밀값 없이 가능한 범위). 실제 질문·세션 유지 시험은 별도 추가 예정
 [[job]]
@@ -135,7 +135,7 @@ id = "fn:saegim-mcp-endpoint"
 kind = "http"
 url = "https://saegim-mcp-175301711490.asia-northeast3.run.app/mcp"
 expect = 405
-name = "새김 MCP 엔드포인트(GET 405가 정상)"
+name = "카빗 MCP 엔드포인트(GET 405가 정상)"
 
 [[job]]
 id = "fn:saegim-mcp-auth"
@@ -144,7 +144,7 @@ url = "https://saegim-mcp-175301711490.asia-northeast3.run.app/mcp"
 method = "POST"
 body = "{}"
 expect = 401
-name = "새김 MCP 인증(토큰 없는 POST 401이 정상)"
+name = "카빗 MCP 인증(토큰 없는 POST 401이 정상)"
 
 [[job]]
 id = "fn:dialog-worker"
@@ -199,7 +199,7 @@ id = "cron:backup-private"
 kind = "file_age"
 path = "/home/goosloar/ops/backup/last-run.txt"
 max_age_min = 2160
-name = "비공개 저장소 2곳(경험DB, 새김) 일일 백업(구PC cron 03:30 KST, backup_private.sh)"
+name = "비공개 저장소 2곳(경험DB, 카빗) 일일 백업(구PC cron 03:30 KST, backup_private.sh)"
 note = "2026-10-02 탐: 신PC 작업 스케줄러 simplifier-backup-private에서 이관(사장님 지시: 안정화된 작업은 구PC). 미러·번들은 ~/backup/private-repos, 드라이브는 rclone gdrive:_backup/simplifier-private-repos. 드라이브 업로드까지 성공해야 last-run.txt 갱신. 이관 때 1회 실행 종료 코드 0·복원 시험 4건 OK 확인. rclone 공용 client_id가 2026 중 종료 예정(경고) - 자체 client_id 필요"
 
 [[job]]
@@ -231,7 +231,7 @@ id = "cron:saegim-idle-check"
 kind = "file_age"
 path = "/home/goosloar/ops/checks/saegim-idle-check.ok"
 max_age_min = 780  # 2026-10-10: cron 21:30->09:30 야간 공백 720분 + 여유 60분(기존 480은 매일 오탐)
-name = "새김 세션 유휴 점검(구PC cron 09:30·15:30·21:30 KST)"
+name = "카빗 세션 유휴 점검(구PC cron 09:30·15:30·21:30 KST)"
 note = "2026-10-02 탐 N105: 신PC 헤르메스 saegim-idle-check에서 이관. 300초 유휴 뒤 재조회. 이관 때 1회 실행 rc=0"
 
 [[job]]

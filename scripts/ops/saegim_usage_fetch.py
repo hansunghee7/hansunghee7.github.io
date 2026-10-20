@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""새김 서버 사용량 산출물을 받아 로컬에 쌓고 일일 요약 한 줄을 남긴다(대장 N164·G3, 2026-10-06 탐).
+"""카빗 서버 사용량 산출물을 받아 로컬에 쌓고 일일 요약 한 줄을 남긴다(대장 N164·G3, 2026-10-06 탐).
 
 simplifier-cxo-db의 gcp-usage 워크플로가 만든 artifact(saegim-usage)의 가장 최근 성공 실행을 받아
 C:/work/_ops/saegim_usage/<수집일>.json 으로 저장하고, C:/work/_ops/saegim_usage_daily.md 에 날짜별 한 줄을 쓴다.
@@ -85,7 +85,7 @@ def main():
     new = not SUMMARY.exists()
     with SUMMARY.open("a", encoding="utf-8") as s:
         if new:
-            s.write("# 새김 서버 사용량 일일 요약 (saegim_usage_fetch.py가 한 줄씩 추가)\n\n")
+            s.write("# 카빗 서버 사용량 일일 요약 (saegim_usage_fetch.py가 한 줄씩 추가)\n\n")
         s.write(line + "\n")
     print("저장", dest.name, "|", line[:120])
     return 0

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-r"""새김 MCP 세션 유지 점검(백로그 41, 2026-09-25 탐): 고객처럼 한 번 연결해 조회하고,
+r"""카빗 MCP 세션 유지 점검(백로그 41, 2026-09-25 탐): 고객처럼 한 번 연결해 조회하고,
 연결을 쥔 채 몇 분 쉬었다가 같은 세션으로 다시 조회한다. 끊김("Truncated response body" 등, 백로그 40)이
 유휴 뒤 재조회에서 나는지를 사람보다 먼저 잡기 위한 합성 감시.
 
@@ -61,7 +61,7 @@ def main() -> int:
     except Exception as e:  # 끊김은 대개 여기로 온다(전송 계층 예외)
         print(f"FAIL {type(e).__name__}: {str(e)[:150]}"); rc = 1
     if rc:
-        subprocess.run([sys.executable, MAILBOX, "send", "탐", "[감시] 새김 세션 유지 점검 실패", "--from", "헤르메스",
+        subprocess.run([sys.executable, MAILBOX, "send", "탐", "[감시] 카빗 세션 유지 점검 실패", "--from", "헤르메스",
                         "--body", "check_saegim_idle.py 실패(백로그 40 끊김 재현 가능성). 헤르메스 크론 출력의 FAIL 줄 참고."],
                        capture_output=True, timeout=30)
     return rc

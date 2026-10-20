@@ -100,7 +100,7 @@ class GateTest(unittest.TestCase):
         self.assertEqual(self.run_gate(ev, []), 2)
 
     def test_reading_ux_guide_md_after_lookup_is_still_gated(self):
-        # 2026-09-24: 원문 열람은 대표 승인. 새김 조회를 했어도 원문은 못 연다
+        # 2026-09-24: 원문 열람은 대표 승인. 카빗 조회를 했어도 원문은 못 연다
         ev = {"tool_name": "Read", "tool_input": {"file_path": "docs/UX_GUIDE.md"}}
         self.assertEqual(self.run_gate(ev, [use("mcp__saegim__lookup", "t1"), result("t1")]), 2)
 

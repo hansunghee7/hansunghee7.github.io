@@ -15,7 +15,7 @@ path = 'docs/세션카드/지투.md'
 text = "jitu_po.py kpi add --customers"
 
 [[check]]
-name = "역할 노트(비공개 새김 저장소)에 KPI 정본 포인터"
+name = "역할 노트(비공개 카빗 저장소)에 KPI 정본 포인터"
 type = "file_contains"
 path = 'C:\work\simplifier-saegim\docs\역할노트-지투.md'
 text = "지투_KPI.md"
