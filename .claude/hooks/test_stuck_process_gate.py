@@ -33,6 +33,13 @@ class StuckGateTest(unittest.TestCase):
         self.assertIsNone(sg.check("배포를 마쳤습니다.", OTHER, False))
         self.assertIsNone(sg.check("코드 `budget = 상한` 만 보입니다.", OTHER, False))
 
+    def test_defer_to_next_session_needs_record_lookup(self):
+        # 2026-10-21 사장님 승인: "다음 세션에서 이어서 확인" 미룸은 같은 턴 기록 검색 필수, 인수인계 문장은 통과
+        self.assertEqual(sg.check("이 판단은 다음 세션에서 이어서 하겠습니다.", OTHER, False), "defer-without-record-lookup")
+        self.assertIsNone(sg.check("이 판단은 다음 세션에서 이어서 하겠습니다.", [("Bash", {"command": "python scripts/ops/recall.py 9226"})], False))
+        self.assertIsNone(sg.check("인수인계에 적었습니다. 다음 세션에서 이어서 확인합니다.", OTHER, False))
+        self.assertIsNone(sg.check("배포를 마쳤습니다.", OTHER, False))
+
     def test_proposal_needs_record_lookup(self):
         # 2026-10-20 사장님 지시: 제안·추천·"정하실 것: (없음 아님)"은 같은 턴 기록 검색 필수
         self.assertEqual(sg.check("정하실 것: A안으로 갈지 정해 주세요.", OTHER, False), "propose-without-record-lookup")

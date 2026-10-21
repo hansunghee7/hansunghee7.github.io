@@ -46,6 +46,12 @@ BT_NEG = re.compile(r"(비티[^.\n]{0,10}(막히지|막힘\s*없|불가\s*아님
 BT_EVIDENCE = re.compile(r"(BT_MODEL\s*=\s*vertex|ask_bt\.sh[^\n]*vertex|(?:tail|head|cat|grep|type|Get-Content|Read)\b[^\n]*agent_calls\.csv)")
 
 
+# 2026-10-21 추가(사장님 승인 "승인", 공정 카드 핏-공장현황#28): 지금 확인할 수 있는 일을 "다음 세션에서 이어서 확인·판단하겠습니다"로 미루는 답변은
+# 같은 턴에 기록 검색이 있어야 한다. 사고: lf13 9223·9226 작업기 부재를 기록(proc.py show, recall.py) 대조 없이 미룸. 인수인계·바이~ 마감 문장은 제외한다.
+DEFER = re.compile(r"다음\s*세션[^.\n]{0,25}(이어|확인|판단|진행|하겠습니다|합니다)")
+DEFER_OK = re.compile(r"(인수인계|바이~|세션\s*마감|세션을\s*닫)")
+
+
 def consulted(tools, ref=PROC_REF):
     for name, inp in tools:
         blob = name + " " + " ".join(str(v) for v in inp.values())
@@ -105,6 +111,8 @@ def check(text, tools, has_error=True):
         return "money-without-record-lookup"
     if PROPOSE.search(CODE.sub("", text)) and not consulted(tools, RECORD_REF):
         return "propose-without-record-lookup"
+    if DEFER.search(CODE.sub("", text)) and not DEFER_OK.search(text) and not consulted(tools, RECORD_REF):
+        return "defer-without-record-lookup"
     if not has_error:
         return None
     text = CODE.sub("", text)
@@ -161,6 +169,10 @@ if __name__ == "__main__":
     if verdict == "propose-without-record-lookup":
         print("사장님께 제안·추천·결정 요청(정하실 것)을 하는 답변인데 이번 턴에 기록(recall.py·proc.py·ledger_lint.py --find·프로세스표·업무대장)을 찾아본 흔적이 없습니다(사장님 지시 2026-10-20). "
               "먼저 기록을 검색해 이미 정한 결정·선례가 있는지 대조하고, 기존 결정을 바꾸자는 제안이면 '기존 원문 X → 새 근거 Y' 형식으로, 이미 정해진 것은 되묻지 말고 실행으로 다시 답하세요.", file=sys.stderr)
+        sys.exit(2)
+    if verdict == "defer-without-record-lookup":
+        print("'다음 세션에서 이어서 확인·판단'으로 미루는 답변인데 이번 턴에 기록(recall.py·proc.py show·ledger_lint.py --find·프로세스표·업무대장)을 찾아본 흔적이 없습니다(사장님 승인 2026-10-21, 공정 카드 핏-공장현황#28). "
+              "지금 할 수 있는 확인은 이번 턴에 끝내세요. 먼저 기록을 검색해 대조한 뒤 다시 답하세요. 세션 마감이면 '인수인계'를 명시하세요.", file=sys.stderr)
         sys.exit(2)
     if verdict == "money-without-record-lookup":
         print("돈 이야기(상한·결제·과금·예산 등)가 있는 답변인데 이번 턴에 기록(recall.py·proc.py·업무대장)을 찾아본 흔적이 없습니다(사장님 승인 2026-10-16, 카드 탐#106). "
