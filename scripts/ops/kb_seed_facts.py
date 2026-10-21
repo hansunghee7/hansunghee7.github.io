@@ -25,7 +25,7 @@ FACTS = [
     {
         'id': 'self-hosted-runner', 'kind': 'infra', 'label': '자체 GitHub 실행기(구PC)', 'owner': '탐',
         'aliases': ['구피시', '자체실행기', 'saegim-test', 'self-hosted runner', 'github actions', 'ubuntu-latest', '실행기'],
-        'note': '구PC 자체 GitHub 실행기. Carvit/saegim 배포는 여기(무료). 이 저장소 22개 워크플로는 아직 ubuntu-latest(유료).',
+        'note': '구PC 자체 GitHub 실행기. Carvit 배포는 여기(무료). 이 저장소 22개 워크플로는 아직 ubuntu-latest(유료).',
         'fact_state': 'current', 'last_verified': NOW,
     },
     {
