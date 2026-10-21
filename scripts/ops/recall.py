@@ -378,7 +378,7 @@ def query(text, n_cards=3, n_boss=3, n_logs=2, min_hits=2, history=False):
     cs = []
     for c, blob in zip(data['cards'], card_blobs):
         if drop_stale and stale_mark(c['t']):
-            continue  # 제목 앞 [대체됨]·[폐기] 카드는 현행 카드를 가린다(기준선 D3). 이력은 --history로 본다
+            continue  # 제목 앞 [대체됨]·[폐기] 카드는 현행 카드를 가린다(2026-10-21 기준선 측정). 이력은 --history로 본다
         s = sum(3 for t in qx if t in c['t'].lower()) + sum(1 for t in qx if t in c['d'].lower()) + sum(2 for t in qx if t in c['b'].lower())
         # 공정 이름(예: 핏-영상생성)도 주제 낱말이라 적중에 넣는다(카드 본문에는 주제어가 빠지는 일이 잦다)
         hits = uh(blob)
