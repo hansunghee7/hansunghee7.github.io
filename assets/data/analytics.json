@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-21T06:01:12.741808+00:00",
+  "updated_at": "2026-10-21T13:03:27.840612+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 361,
-    "activeUsers": 311,
-    "newUsers": 306,
+    "sessions": 367,
+    "activeUsers": 315,
+    "newUsers": 310,
     "returningUsers": 5
   },
   "daily": [
@@ -220,27 +220,27 @@
     },
     {
       "date": "2026-10-21",
-      "sessions": 1,
-      "activeUsers": 1,
-      "newUsers": 1,
+      "sessions": 6,
+      "activeUsers": 5,
+      "newUsers": 5,
       "returningUsers": 0
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 138,
+    "home": 141,
     "log_home": 0,
-    "individual_post": 213,
+    "individual_post": 215,
     "other": 10
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 192
+      "sessions": 194
     },
     {
       "source": "linkedin.com",
-      "sessions": 53
+      "sessions": 54
     },
     {
       "source": "m.search.naver.com",
@@ -259,6 +259,10 @@
       "sessions": 12
     },
     {
+      "source": "naver",
+      "sessions": 8
+    },
+    {
       "source": "daum",
       "sessions": 7
     },
@@ -267,11 +271,11 @@
       "sessions": 7
     },
     {
-      "source": "naver",
-      "sessions": 7
+      "source": "blog.naver.com",
+      "sessions": 4
     },
     {
-      "source": "blog.naver.com",
+      "source": "web.telegram.org",
       "sessions": 4
     },
     {
@@ -289,10 +293,6 @@
     {
       "source": "talk.navercorp.com",
       "sessions": 3
-    },
-    {
-      "source": "web.telegram.org",
-      "sessions": 3
     }
   ],
   "utm_campaigns": [
@@ -300,13 +300,13 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 192
+      "sessions": 194
     },
     {
       "source": "linkedin.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 53
+      "sessions": 54
     },
     {
       "source": "m.search.naver.com",
@@ -333,13 +333,13 @@
       "sessions": 12
     },
     {
-      "source": "daum",
+      "source": "naver",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 7
+      "sessions": 8
     },
     {
-      "source": "naver",
+      "source": "daum",
       "medium": "organic",
       "campaign": "(organic)",
       "sessions": 7
@@ -352,6 +352,12 @@
     },
     {
       "source": "blog.naver.com",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "sessions": 4
+    },
+    {
+      "source": "web.telegram.org",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 4
@@ -370,12 +376,6 @@
     },
     {
       "source": "talk.navercorp.com",
-      "medium": "referral",
-      "campaign": "(referral)",
-      "sessions": 3
-    },
-    {
-      "source": "web.telegram.org",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 3
@@ -436,12 +436,12 @@
     }
   ],
   "engagement_events": {
-    "section_view_proven": 85,
-    "section_view_voices": 74,
+    "section_view_proven": 86,
+    "section_view_voices": 75,
     "section_view_book_class": 46,
     "section_view_faq": 48,
     "faq_open": 12,
-    "read_complete": 96
+    "read_complete": 97
   },
   "contact_funnel": {
     "contact_open": 19,
@@ -468,7 +468,7 @@
     {
       "path": "/logs/628",
       "title": "/logs/628",
-      "sessions": 11
+      "sessions": 12
     },
     {
       "path": "/logs/618",
@@ -549,7 +549,7 @@
       "path": "/logs/628/",
       "title": "우리 회사의 핵심가치, 아무도 안 볼 때 동작하나요?",
       "uniqueViews": 11,
-      "views": 12
+      "views": 13
     },
     {
       "path": "/logs/618/",
@@ -620,18 +620,18 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 420,
+    "total_desktop_sessions": 424,
     "excluded_invalid_sessions": 23,
     "by_resolution": [
       {
         "resolution": "1920x1080",
         "width": 1920,
-        "sessions": 90
+        "sessions": 92
       },
       {
         "resolution": "800x600",
         "width": 800,
-        "sessions": 78
+        "sessions": 79
       },
       {
         "resolution": "1600x1600",
