@@ -16,7 +16,7 @@
   - 캐시: 30분이 지나면 훅·직접 실행 때 뒤에서 새로 만들고, 3시간이 지나면 결과 맨 위에 캐시 시각을 알린다.
   - 지식DB 층 오류는 삼키지 않고 결과 끝에 원인 한 줄(값·키 없이)을 보인다.
   - 출력에서 이메일·전화번호·키 형식은 가린다(캐시 원본은 그대로).
-  변경별 효과를 따로 재려고 환경 변수 RECALL_OFF=rank,norm,syn,stale,histdoc,mask 로 하나씩 끌 수 있다(기본은 모두 켬)."""
+  변경별 효과를 따로 재려고 환경 변수 RECALL_OFF=rank,norm,syn,stale,histdoc,docname,mask 로 하나씩 끌 수 있다(기본은 모두 켬)."""
 import json
 import os
 import re
@@ -364,7 +364,8 @@ def query(text, n_cards=3, n_boss=3, n_logs=2, min_hits=2, history=False):
 
     # 층 사이 비교용 적중 비율 = 맞힌 단위 수 / 전체 단위 수(IDF 무게는 시험에서 오히려 나빠져 쓰지 않는다, 2026-10-21 d1idf)
     card_blobs = [((c['p'] + ' ' if use_rank else '') + c['t'] + c['d'] + c['b']).lower() for c in data['cards']]
-    doc_blobs = [(d['h'] + ' ' + d['d']).lower() for d in data.get('docs', [])]
+    # 문서는 절 단위로 쪼개 주제어(파일 이름)가 첫 절에만 남는다. 카드에 공정 이름을 넣듯 절마다 파일 이름 낱말을 붙인다(스위치 docname)
+    doc_blobs = [((Path(d['f']).stem.replace('_', ' ') + ' ' if on('docname') else '') + d['h'] + ' ' + d['d']).lower() for d in data.get('docs', [])]
 
     def ratio(blob):
         # 제목 가중(BM25F식)도 시험했으나 상위3 적중은 그대로이고 혼입이 1건 늘어 쓰지 않는다(2026-10-21 d1w)
