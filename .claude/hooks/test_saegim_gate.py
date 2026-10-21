@@ -60,6 +60,19 @@ class GateTest(unittest.TestCase):
         d = {"message": {"role": "assistant", "content": [{"type": "tool_use", "id": "d1", "name": "mcp__claude_ai_Carvit__draft_screen", "input": {"doc": "UX_GUIDE", "parts": ["목록"]}}]}}
         self.assertEqual(self.run_gate(ART, [d, result("d1")]), 0)
 
+    def test_carvit_named_tools_full_cases(self):
+        # 등록 이름 이중 허용: carvit 이름으로 같은 케이스(조회 인정, 오류 시 장애 통과, 원문 열람은 여전히 막음)
+        md = {"tool_name": "Artifact", "tool_input": {"action": "publish", "file_path": "a.md"}}
+        self.assertEqual(self.run_gate(md, [use("mcp__carvit__get_section", "t1"), result("t1")]), 0)
+        self.assertEqual(self.run_gate(ART, [use("mcp__carvit__lookup", "t1"), result("t1", err=True)]), 0)
+        self.assertEqual(self.run_gate(ART, [use("mcp__carvit__cite", "t2"), result("t2", err=True)]), 0)
+        d = {"message": {"role": "assistant", "content": [{"type": "tool_use", "id": "d1", "name": "mcp__carvit__draft_screen", "input": {"doc": "UX_GUIDE", "parts": ["목록"]}}]}}
+        self.assertEqual(self.run_gate(ART, [d, result("d1")]), 0)
+        ev = {"tool_name": "Read", "tool_input": {"file_path": "docs/UX_GUIDE.md"}}
+        self.assertEqual(self.run_gate(ev, [use("mcp__carvit__lookup", "t1"), result("t1")]), 2)
+        mail = {"tool_name": "Bash", "tool_input": {"command": "python mailbox/mailbox.py send 사장님 \"제목\" --from 탐 --ask x"}}
+        self.assertEqual(self.run_gate(mail, [use("mcp__carvit__lookup", "t1"), result("t1")]), 0)
+
     def test_unrelated_mcp_tool_does_not_count(self):
         self.assertEqual(self.run_gate({"tool_name": "Artifact", "tool_input": {"action": "publish", "file_path": "a.md"}}, [use("mcp__other__lookup", "t1"), result("t1")]), 2)
 
