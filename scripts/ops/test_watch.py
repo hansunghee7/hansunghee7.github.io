@@ -206,5 +206,29 @@ class DirectAlertTest(unittest.TestCase):
         self.assertIsNone(w.direct_notify("t", "b"))
 
 
+class OnFailTest(unittest.TestCase):
+    def test_valid_values_pass_through(self):
+        for v in ("retry-3", "alert", "ignore"):
+            self.assertEqual(w.job_on_fail({"id": "x", "on_fail": v}), v)
+
+    def test_missing_field_defaults_to_alert(self):
+        self.assertEqual(w.job_on_fail({"id": "x"}), "alert")
+
+    def test_unknown_value_warns_and_falls_back(self):
+        import contextlib, io
+        buf = io.StringIO()
+        with contextlib.redirect_stderr(buf):
+            self.assertEqual(w.job_on_fail({"id": "x", "on_fail": "retry-9"}), "alert")
+        self.assertIn("경고", buf.getvalue())
+
+    def test_real_jobs_toml_parses_and_every_on_fail_is_valid(self):
+        import tomllib
+        jobs = tomllib.load(open(Path(__file__).parent / "jobs.toml", "rb"))["job"]
+        filled = [j for j in jobs if "on_fail" in j]
+        self.assertTrue(filled)
+        for j in jobs:
+            self.assertIn(j.get("on_fail", "alert"), w.ON_FAIL_VALUES, j["id"])
+
+
 if __name__ == "__main__":
     unittest.main()

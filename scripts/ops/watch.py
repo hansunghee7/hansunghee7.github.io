@@ -42,6 +42,8 @@ ICON = {"ok": "🟢", "pending": "⚪", "warn": "🟡", "fail": "🔴"}
 #  - GitHub 예약 작업, 명령 점검: 6시간(작업 주기가 하루~2시간이고 실패는 한 번에 확정되므로 1회 실패에 알림).
 #  - PC 보안 상태: 하루 1회(1회 실패에 알림).
 DEFAULT_EVERY = {"gh_workflow": 360, "pc": 1440, "cmd": 360, "git_file_lines": 360, "git_file_age": 360}
+ON_FAIL_VALUES = ("retry-3", "alert", "ignore")  # 대장 on_fail 칸의 허용값. 지금은 기록·검증만(재시도 실행기는 아직 없음, N192)
+DEFAULT_ON_FAIL = "alert"
 DEFAULT_FAIL_AFTER = {"gh_workflow": 1, "pc": 1, "cmd": 1, "git_file_lines": 1, "git_file_age": 1}
 DEFAULT_TICK = 30
 
@@ -152,6 +154,15 @@ def load_jobs():
         except Exception:
             pass
     return tomllib.load(open(local, "rb"))["job"]
+
+
+def job_on_fail(j):
+    """대장 항목의 on_fail 값. 칸이 없으면 기본(alert), 모르는 값이면 경고를 내고 기본으로 본다."""
+    v = j.get("on_fail", DEFAULT_ON_FAIL)
+    if v not in ON_FAIL_VALUES:
+        print(f"경고: {j.get('id', '?')}의 on_fail={v!r}은 알 수 없는 값(허용 {', '.join(ON_FAIL_VALUES)}), {DEFAULT_ON_FAIL}로 처리", file=sys.stderr)
+        return DEFAULT_ON_FAIL
+    return v
 
 
 def is_due(prev_entry, every_min, at):
@@ -364,7 +375,7 @@ def evaluate(jobs, at, prev=None):
             st, detail = "warn", f"점검 자체가 실패: {type(exc).__name__}: {str(exc)[:80]}"
         if st == "fail" and j.get("severity") == "warn":
             st = "warn"
-        results.append({"id": j["id"], "name": j["name"], "status": st, "detail": detail, "owner": j.get("owner", "탐"), "note": j.get("note", ""), "direct": bool(j.get("direct")),
+        results.append({"id": j["id"], "name": j["name"], "status": st, "detail": detail, "owner": j.get("owner", "탐"), "note": j.get("note", ""), "direct": bool(j.get("direct")), "on_fail": job_on_fail(j),
                         "fail_after": j.get("fail_after", DEFAULT_FAIL_AFTER.get(j["kind"], 2))})
     return results
 

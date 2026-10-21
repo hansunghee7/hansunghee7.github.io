@@ -1,6 +1,7 @@
 # 주기 작업·서비스·PC 상태 대장 (watch.py가 읽는다). 새 주기 작업을 만들면 여기에 한 항목을 추가한다.
 # 등록 = 지금 1회 실행해 성공 증거를 확인한 뒤 이 대장에 적는 것까지(DONE=VERIFIED, 사장님 지시 2026-09-20).
 # kind: hermes_cron | gh_workflow | tcp | http | cmd | file_age | git_file_lines | git_file_age | pc.  every_min: 점검 주기(분). 기본 30, gh_workflow·cmd 360, pc 1440. fail_after: 연속 실패 몇 번째에 알릴지(기본 2, gh_workflow·pc·cmd는 1).   severity = "warn"이면 죽어 있어도 🟡 주의로만 본다.
+# on_fail(선택): 작업이 실패했을 때의 행동 기록. retry-3 | alert | ignore, 안 적으면 alert. 지금은 기록·검증만 하고 재시도 실행기는 아직 없다(2026-10-21 N192). 근거: docs/_이력/2026-10-18_jobs_실패정책_분석.md(비티 권고, 사람 표시 10건만 alert로 채움).
 # period_min을 안 적은 gh_workflow는 최근 실행 간격의 중앙값으로 자동 계산한다.
 
 # ---------- 헤르메스 크론(신PC). "ok"는 AI 실행 종료일 뿐이라 결과물 확인(stuck_glob)을 함께 건다 ----------
@@ -50,6 +51,7 @@ period_min = 10
 
 [[job]]
 id = "hermes:gpu-driver-check"
+on_fail = "alert"
 kind = "hermes_cron"
 name = "gpu-driver-check"
 period_min = 60  # no-agent(scripts/ops/gpu_check.py 사본). 드라이버 버전이 기록값과 같으면 즉시 조용히 끝남
@@ -71,6 +73,7 @@ period_min = 1440
 
 [[job]]
 id = "hermes:stagnation"
+on_fail = "alert"
 kind = "hermes_cron"
 name = "prompt: Stagnation detector"
 period_min = 1440
@@ -105,6 +108,7 @@ name = "제미나이 API(검증 키 살아 있음, 한도 소모 없음)"
 
 [[job]]
 id = "fn:quota"
+on_fail = "alert"
 kind = "cmd"
 cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\quota.py', "watch"]
 every_min = 60
@@ -113,6 +117,7 @@ note = "2026-10-03 탐 등록(사장님 지시: 한도는 탐이 관리). 막힘
 
 [[job]]
 id = "fn:vertex-credit"
+on_fail = "alert"
 kind = "cmd"
 cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\vertex_watch.py']
 every_min = 360
@@ -155,6 +160,7 @@ note = "2026-10-05 탐 등록(대장 N161, 사장님 지시 비티·덱스 최�
 
 [[job]]
 id = "fn:dynamic-quota"
+on_fail = "alert"
 kind = "cmd"
 cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\dynamic_quota.py', 'measure']
 every_min = 1440
@@ -372,6 +378,7 @@ note = "2026-10-10 핏 등록(핏-발행 #18). 발행대장.json이 3시간 넘�
 
 [[job]]
 id = "fn:delegation-audit"
+on_fail = "alert"
 kind = "cmd"
 cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\delegation_audit.py', 'watch']
 every_min = 1440
@@ -581,6 +588,7 @@ note = "2026-10-12 마야 등록. 읽기는 구PC SNS 크롬 9227(링크드인 �
 
 [[job]]
 id = "fn:credit-daily"
+on_fail = "alert"
 kind = "cmd"
 cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\credit_daily_report.py', "status"]
 every_min = 60
@@ -675,6 +683,7 @@ note = "2026-10-15 탐 등록(사장님: 우리 컨텍스트만 관리하는 전
 
 [[job]]
 id = "hermes:tami-watch"
+on_fail = "alert"
 kind = "hermes_cron"
 name = "tami-watch"
 period_min = 60
@@ -682,6 +691,7 @@ note = "2026-10-15 탐 등록(사장님: 페이블 타미 세팅, 이상이 있�
 
 [[job]]
 id = "fn:actions-budget"
+on_fail = "alert"
 kind = "cmd"
 cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\actions_budget_watch.py']
 every_min = 1440
@@ -691,6 +701,7 @@ note = "2026-10-16 탐 등록(공정 카드 탐#109, 사장님 10/15 '소액 상
 
 [[job]]
 id = "fn:saegim-runner"
+on_fail = "alert"
 kind = "cmd"
 cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\runner_watch.py', "--switch"]
 every_min = 15
