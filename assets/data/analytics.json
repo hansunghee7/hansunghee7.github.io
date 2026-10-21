@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-20T22:40:55.199166+00:00",
+  "updated_at": "2026-10-21T06:01:12.741808+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 359,
-    "activeUsers": 309,
-    "newUsers": 304,
+    "sessions": 361,
+    "activeUsers": 311,
+    "newUsers": 306,
     "returningUsers": 5
   },
   "daily": [
@@ -213,9 +213,16 @@
     },
     {
       "date": "2026-10-20",
-      "sessions": 2,
-      "activeUsers": 2,
-      "newUsers": 2,
+      "sessions": 3,
+      "activeUsers": 3,
+      "newUsers": 3,
+      "returningUsers": 0
+    },
+    {
+      "date": "2026-10-21",
+      "sessions": 1,
+      "activeUsers": 1,
+      "newUsers": 1,
       "returningUsers": 0
     }
   ],
@@ -223,21 +230,21 @@
   "landing_types": {
     "home": 138,
     "log_home": 0,
-    "individual_post": 211,
+    "individual_post": 213,
     "other": 10
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 191
+      "sessions": 192
     },
     {
       "source": "linkedin.com",
-      "sessions": 52
+      "sessions": 53
     },
     {
       "source": "m.search.naver.com",
-      "sessions": 21
+      "sessions": 22
     },
     {
       "source": "google",
@@ -264,12 +271,12 @@
       "sessions": 7
     },
     {
-      "source": "(not set)",
+      "source": "blog.naver.com",
       "sessions": 4
     },
     {
-      "source": "blog.naver.com",
-      "sessions": 4
+      "source": "(not set)",
+      "sessions": 3
     },
     {
       "source": "lm.facebook.com",
@@ -293,19 +300,19 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 191
+      "sessions": 192
     },
     {
       "source": "linkedin.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 52
+      "sessions": 53
     },
     {
       "source": "m.search.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 21
+      "sessions": 22
     },
     {
       "source": "google",
@@ -434,7 +441,7 @@
     "section_view_book_class": 46,
     "section_view_faq": 48,
     "faq_open": 12,
-    "read_complete": 95
+    "read_complete": 96
   },
   "contact_funnel": {
     "contact_open": 19,
@@ -459,13 +466,13 @@
       "sessions": 14
     },
     {
-      "path": "/logs/618",
-      "title": "/logs/618",
-      "sessions": 10
-    },
-    {
       "path": "/logs/628",
       "title": "/logs/628",
+      "sessions": 11
+    },
+    {
+      "path": "/logs/618",
+      "title": "/logs/618",
       "sessions": 10
     },
     {
@@ -489,6 +496,11 @@
       "sessions": 6
     },
     {
+      "path": "/logs/629",
+      "title": "/logs/629",
+      "sessions": 5
+    },
+    {
       "path": "/logs/636",
       "title": "/logs/636",
       "sessions": 5
@@ -502,11 +514,6 @@
       "path": "/logs/641",
       "title": "/logs/641",
       "sessions": 5
-    },
-    {
-      "path": "/logs/629",
-      "title": "/logs/629",
-      "sessions": 4
     },
     {
       "path": "/logs/632",
@@ -541,8 +548,8 @@
     {
       "path": "/logs/628/",
       "title": "우리 회사의 핵심가치, 아무도 안 볼 때 동작하나요?",
-      "uniqueViews": 10,
-      "views": 11
+      "uniqueViews": 11,
+      "views": 12
     },
     {
       "path": "/logs/618/",
@@ -575,16 +582,16 @@
       "views": 12
     },
     {
+      "path": "/logs/629/",
+      "title": "PM과 PL 차이는 뭘까요?",
+      "uniqueViews": 7,
+      "views": 7
+    },
+    {
       "path": "/logs/619/",
       "title": "AI가 우선순위까지 대신 정해줄 수 있을까",
       "uniqueViews": 6,
       "views": 7
-    },
-    {
-      "path": "/logs/629/",
-      "title": "PM과 PL 차이는 뭘까요?",
-      "uniqueViews": 6,
-      "views": 6
     },
     {
       "path": "/logs/641/",
@@ -613,13 +620,13 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 419,
+    "total_desktop_sessions": 420,
     "excluded_invalid_sessions": 23,
     "by_resolution": [
       {
         "resolution": "1920x1080",
         "width": 1920,
-        "sessions": 89
+        "sessions": 90
       },
       {
         "resolution": "800x600",
