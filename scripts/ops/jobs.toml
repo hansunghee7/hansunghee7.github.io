@@ -238,6 +238,14 @@ name = "GPU 사용 패턴 표본 수집(작업 스케줄러 simplifier-gpu-sampl
 note = "2026-09-30 탐 등록(N92 측정용). pythonw로 창 없이 1분마다 VRAM·사용률·프로세스를 gpu_usage.csv에 한 줄 추가. 15분 넘게 안 갱신되면 멈춤. 1회 실행 종료 코드 0·행 추가 확인(14:57). 측정 끝나면 작업 삭제."
 
 [[job]]
+id = "cron:mem-sample"
+kind = "file_age"
+path = 'C:\work\_ops\mem_sample\latest.txt'
+max_age_min = 20
+name = "신PC 메모리 표본 수집(작업 스케줄러 simplifier-mem-sample, 5분마다, mem_sample.py)"
+note = "2026-10-21 탐 등록(사장님 지시: 신PC 메모리 악화·갑작스런 재부팅 원인 측정). pythonw로 창 없이 5분마다 램·커밋·상위 프로세스·크롬 최상위·공장 크롬(9333·9334) 탭 수를 C:/work/_ops/mem_sample/날짜.jsonl에 한 줄 추가하고 latest.txt를 갱신. 20분 넘게 안 갱신되면 멈춤. 판정 없음, 14일 보관. 원인 확정 뒤 간격을 늘리거나 삭제."
+
+[[job]]
 id = "cron:bt-loop"
 kind = "file_age"
 path = 'C:\work\_ops\bt\last_run'
