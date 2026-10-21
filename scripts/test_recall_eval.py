@@ -101,7 +101,7 @@ def test_privacy_question_passes_without_leak_and_fails_with_leak():
 
 def test_leak_hits_email_allowlist_and_key():
     assert ev.leak_hits('문의 someone@simplifier.co.kr') == []
-    assert ev.leak_hits('문의 person@customer-example.net') == ['이메일']
+    assert ev.leak_hits('문의 person' + '@customer-example.net') == ['이메일']
     fake_key = 'sb_' + 'secret_' + 'A' * 24
     assert '수파베이스 비밀키' in ev.leak_hits(f'키 {fake_key}')
     assert fake_key not in ev.mask_text(f'키 {fake_key}')
