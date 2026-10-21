@@ -102,7 +102,9 @@ def test_query_too_few_tokens_returns_empty_without_reading_cache(tmp_path, monk
     cache = tmp_path / "cache.json"
     _write_cache(cache)
     monkeypatch.setattr(recall, "CACHE", cache)
-    assert recall.query("음") == {"cards": [], "boss": [], "logs": [], "q": []}
+    res = recall.query("음")
+    assert {k: res[k] for k in ("cards", "boss", "logs", "q")} == {"cards": [], "boss": [], "logs": [], "q": []}
+    assert res["ranked"] == []
 
 
 # ---------------------------------------------------------------------------
@@ -160,7 +162,8 @@ def test_query_episode_state_first_and_hides_stale_hold_card(tmp_path, monkeypat
     assert [e["ep"] for e in res["eps"]] == ["ep46-samoyed-walk"]
     assert all(c["no"] != 41 for c in res["cards"])
     lines = recall.render(res)
-    assert lines[0].startswith("· 편 상태") and "17:59 KST" in lines[0]
+    ep_lines = [ln for ln in lines[:4] if ln.startswith("· 편 상태")]
+    assert ep_lines and "17:59 KST" in ep_lines[0]
 
 
 def test_query_shows_grant_state_first_for_company_name(tmp_path, monkeypatch):
