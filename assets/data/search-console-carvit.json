@@ -1,17 +1,17 @@
 {
-  "updated_at": "2026-10-20T23:10:53.509392+00:00",
+  "updated_at": "2026-10-21T15:23:20.035940+00:00",
   "site_url": "https://carvit.ai/",
   "data_delay_note": "서치콘솔 데이터는 약 2일 지연 -- end_date는 이틀 전",
   "totals_28d": {
     "clicks": 5,
-    "impressions": 255,
-    "ctr": 0.0196,
+    "impressions": 284,
+    "ctr": 0.0176,
     "position": 6.1
   },
   "totals_90d": {
     "clicks": 5,
-    "impressions": 255,
-    "ctr": 0.0196,
+    "impressions": 284,
+    "ctr": 0.0176,
     "position": 6.1
   },
   "daily_90d": [
@@ -161,15 +161,29 @@
       "impressions": 13,
       "ctr": 0,
       "position": 4.4
+    },
+    {
+      "date": "2026-10-19",
+      "clicks": 0,
+      "impressions": 29,
+      "ctr": 0,
+      "position": 5.4
     }
   ],
   "top_queries_90d": [
     {
       "query": "carvit",
       "clicks": 3,
-      "impressions": 182,
-      "ctr": 0.0165,
-      "position": 5.7
+      "impressions": 205,
+      "ctr": 0.0146,
+      "position": 5.6
+    },
+    {
+      "query": "carviet",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 10
     },
     {
       "query": "carvait",
@@ -184,13 +198,6 @@
       "impressions": 1,
       "ctr": 0,
       "position": 79
-    },
-    {
-      "query": "carviet",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 11
     },
     {
       "query": "carvite",
@@ -211,16 +218,16 @@
     {
       "page": "https://carvit.ai/",
       "clicks": 5,
-      "impressions": 244,
-      "ctr": 0.0205,
-      "position": 6.2
+      "impressions": 273,
+      "ctr": 0.0183,
+      "position": 6.1
     },
     {
       "page": "https://carvit.ai/brand/",
       "clicks": 0,
-      "impressions": 12,
+      "impressions": 16,
       "ctr": 0,
-      "position": 5.4
+      "position": 6.5
     },
     {
       "page": "https://carvit.ai/tech-report/logo-making-process/",
@@ -237,6 +244,13 @@
       "position": 5.7
     },
     {
+      "page": "https://carvit.ai/create/",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 7.5
+    },
+    {
       "page": "https://carvit.ai/ko/",
       "clicks": 0,
       "impressions": 4,
@@ -249,13 +263,6 @@
       "impressions": 4,
       "ctr": 0,
       "position": 5.8
-    },
-    {
-      "page": "https://carvit.ai/create/",
-      "clicks": 0,
-      "impressions": 3,
-      "ctr": 0,
-      "position": 7.3
     },
     {
       "page": "https://carvit.ai/ko/terms/",
@@ -395,32 +402,32 @@
     {
       "device": "MOBILE",
       "clicks": 3,
-      "impressions": 185,
-      "ctr": 0.0162,
-      "position": 5.7
+      "impressions": 206,
+      "ctr": 0.0146,
+      "position": 5.8
     },
     {
       "device": "DESKTOP",
       "clicks": 2,
-      "impressions": 67,
-      "ctr": 0.0299,
-      "position": 7.4
+      "impressions": 74,
+      "ctr": 0.027,
+      "position": 7.0
     },
     {
       "device": "TABLET",
       "clicks": 0,
-      "impressions": 3,
+      "impressions": 4,
       "ctr": 0,
-      "position": 5
+      "position": 4.8
     }
   ],
   "by_country_90d": [
     {
       "country": "mex",
       "clicks": 1,
-      "impressions": 30,
-      "ctr": 0.0333,
-      "position": 8.2
+      "impressions": 34,
+      "ctr": 0.0294,
+      "position": 8.3
     },
     {
       "country": "kor",
@@ -432,9 +439,9 @@
     {
       "country": "tur",
       "clicks": 1,
-      "impressions": 8,
-      "ctr": 0.125,
-      "position": 5
+      "impressions": 9,
+      "ctr": 0.1111,
+      "position": 4.7
     },
     {
       "country": "aut",
