@@ -1,0 +1,77 @@
+{
+  "_note": "[옛이름 허용: 옛 이름 스캐너 설정이라 검색 패턴과 시스템 ID를 인용해야 함] 이 파일의 목록을 늘리면 래칫(ratchet)이 실패한다. 줄이는 것은 항상 허용.",
+  "config_version": "2026-10-21.1",
+  "pattern": "saegim|새김",
+  "output_dir": "C:/work/_ops/name_scan",
+  "collector_timeout_sec": 60,
+  "max_file_bytes": 2097152,
+  "repos": [
+    "C:/work/hansunghee7.github.io",
+    "C:/work/simplifier-saegim",
+    "C:/work/saegim-pass-dev"
+  ],
+  "github_owner": "hansunghee7",
+  "github_target_repos": [
+    "hansunghee7.github.io",
+    "simplifier-saegim",
+    "saegim-pass-dev",
+    "shorts-lab",
+    "simplifier-cxo-db"
+  ],
+  "ratchet": {
+    "history_rules": 17,
+    "explain_files": 11,
+    "external": 0
+  },
+  "history_rules": [
+    {"id": "H01", "repo": "hansunghee7.github.io", "dated_glob": "docs/진행상황_아카이브/*.md", "frozen_through": "2026-10-20", "owner": "탐", "reason": "날짜별 옛 진행 기록(바꾸지 않는 역사). 새 날짜 파일은 자동 제외하지 않는다", "expires": "2027-06-30"},
+    {"id": "H02", "repo": "hansunghee7.github.io", "file": "docs/CLAUDE_md_근거_이력.md", "owner": "탐", "reason": "개편 전 원문 보존본", "expires": "2027-06-30"},
+    {"id": "H03", "repo": "hansunghee7.github.io", "file": "docs/진행상황.md", "owner": "탐", "reason": "진행 기록(히스토리)", "expires": "2027-06-30"},
+    {"id": "H04", "repo": "hansunghee7.github.io", "file": "docs/탐_업무대장.md", "owner": "탐", "reason": "업무 기록(히스토리)", "expires": "2027-06-30"},
+    {"id": "H05", "repo": "hansunghee7.github.io", "file": "docs/탐_업무대장_히스토리.md", "owner": "탐", "reason": "업무 기록(히스토리)", "expires": "2027-06-30"},
+    {"id": "H06", "repo": "hansunghee7.github.io", "file": "docs/노트_업무대장.md", "owner": "탐", "reason": "업무 기록(히스토리)", "expires": "2027-06-30"},
+    {"id": "H07", "repo": "hansunghee7.github.io", "file": "docs/지투_업무대장.md", "owner": "탐", "reason": "업무 기록(히스토리)", "expires": "2027-06-30"},
+    {"id": "H08", "repo": "hansunghee7.github.io", "file": "docs/산출물_인덱스.md", "owner": "탐", "reason": "산출물 이력 인덱스", "expires": "2027-06-30"},
+    {"id": "H09", "repo": "hansunghee7.github.io", "file": "docs/_이력/인프라_코드_리뷰_1006.md", "owner": "탐", "reason": "과거 리뷰 기록", "expires": "2027-06-30"},
+    {"id": "H10", "repo": "hansunghee7.github.io", "file": "docs/지시서/2026-09-17_로컬탐_에이전트OS개선_구솔라리눅스전환.md", "owner": "탐", "reason": "과거 지시서(히스토리)", "expires": "2027-06-30"},
+    {"id": "H11", "repo": "hansunghee7.github.io", "file": "docs/지시서/2026-09-16_로컬탐_헤르메스모델라우팅.md", "owner": "탐", "reason": "과거 지시서(히스토리)", "expires": "2027-06-30"},
+    {"id": "H12", "repo": "hansunghee7.github.io", "section_file": "docs/이름_정책.md", "section_heading": "변경 기록", "owner": "탐", "reason": "이름 변경 기록 절(역사)", "expires": "2027-06-30"},
+    {"id": "H13", "repo": "hansunghee7.github.io", "file": "docs/saegim_소거_백로그.md", "owner": "탐", "reason": "소거 백로그 기록", "expires": "2027-06-30"},
+    {"id": "H14", "repo": "hansunghee7.github.io", "file": "docs/폴리싱_기록.md", "owner": "탐", "reason": "폴리싱 기록(히스토리)", "expires": "2027-06-30"},
+    {"id": "H15", "repo": "hansunghee7.github.io", "file": "docs/오케스트레이터_일하는_방식.md", "owner": "탐", "reason": "사례 인용 기록", "expires": "2027-06-30"},
+    {"id": "H16", "repo": "hansunghee7.github.io", "file": "docs/주기작업_신뢰성_체계.md", "owner": "탐", "reason": "사고 사례 인용", "expires": "2027-06-30"},
+    {"id": "H17", "repo": "hansunghee7.github.io", "file": "docs/에이전틱_원칙.md", "owner": "탐", "reason": "사고 사례 인용", "expires": "2027-06-30"}
+  ],
+  "explain_files": [
+    {"repo": "hansunghee7.github.io", "file": "scripts/ops/name_scan.py", "reason": "옛 이름 스캐너"},
+    {"repo": "hansunghee7.github.io", "file": "scripts/ops/name_scan_config.json", "reason": "스캐너 설정"},
+    {"repo": "hansunghee7.github.io", "file": "scripts/test_name_scan.py", "reason": "스캐너 시험"},
+    {"repo": "hansunghee7.github.io", "file": "scripts/check_saegim_names.py", "reason": "기준표 래칫 검사"},
+    {"repo": "hansunghee7.github.io", "file": "scripts/test_check_saegim_names.py", "reason": "래칫 검사 시험"},
+    {"repo": "hansunghee7.github.io", "file": "docs/saegim_baseline.json", "reason": "래칫 기준표"},
+    {"repo": "hansunghee7.github.io", "file": ".claude/hooks/old-name-gate.py", "reason": "쓰기 관문"},
+    {"repo": "hansunghee7.github.io", "file": ".claude/hooks/old-name-gate.sh", "reason": "쓰기 관문 실행기"},
+    {"repo": "hansunghee7.github.io", "file": ".claude/hooks/test_old_name_gate.py", "reason": "쓰기 관문 시험"},
+    {"repo": "hansunghee7.github.io", "file": "docs/이름_정책.md", "reason": "이름 정책 문서"},
+    {"repo": "hansunghee7.github.io", "file": "docs/옛이름_소거_슈퍼프로젝트.md", "reason": "소거 설계 문서"}
+  ],
+  "planned": [
+    {"id": "P01", "kinds": ["content", "path", "branch", "tag"], "repo": "simplifier-saegim", "match": ".*", "step": "D", "deadline": "2026-12-31", "owner": "탐", "note": "제품 저장소 전체: 새 프로젝트로 이전하며 소거"},
+    {"id": "P02", "kinds": ["content", "path", "branch", "tag"], "repo": "saegim-pass-dev", "match": ".*", "step": "C", "deadline": "2026-12-31", "owner": "탐", "note": "패스 저장소 전체: 저장소 이름 변경과 함께 소거"},
+    {"id": "P03", "kinds": ["ghrepo"], "match": "saegim|새김", "step": "C", "deadline": "2026-12-31", "owner": "탐", "note": "저장소 이름 변경"},
+    {"id": "P04", "kinds": ["env"], "match": "saegim", "step": "P4", "deadline": "2026-12-31", "owner": "탐", "note": "옛 환경변수 이름 제거"},
+    {"id": "P05", "kinds": ["ghvar", "ghsecret"], "match": "saegim", "step": "P4", "deadline": "2026-12-31", "owner": "탐", "note": "저장소 변수·비밀 이름 교체"},
+    {"id": "P06", "kinds": ["gcp_project", "gcp_run", "gcp_sa", "gcp_secret"], "match": "saegim", "step": "D", "deadline": "2026-12-31", "owner": "탐", "note": "GCP 시스템 ID: 새 프로젝트로 이전"},
+    {"id": "P07", "kinds": ["process", "task"], "match": "saegim", "step": "C", "deadline": "2026-12-31", "owner": "탐", "note": "실행 경로·작업 이름: 저장소 이름 변경 시 갱신"},
+    {"id": "P08", "kinds": ["mcp"], "match": "saegim", "step": "P4", "deadline": "2026-12-31", "owner": "탐", "note": "MCP 서버 이름 교체"}
+  ],
+  "external": [],
+  "manual_checks": [
+    {"layer": 2, "what": "구PC 전체(환경변수·작업·프로세스·MCP)"},
+    {"layer": 2, "what": "셸 프로필·별칭, 바로가기, 서비스 등록, IDE 설정 이름"},
+    {"layer": 3, "what": "GitHub 패키지·릴리스·팀"},
+    {"layer": 3, "what": "GCP 버킷·컨테이너 이미지 저장소·스케줄러 작업·풀·공급자 이름"},
+    {"layer": 3, "what": "DNS 레코드, OAuth 리디렉션 주소, 웹훅 주소"},
+    {"layer": 3, "what": "Cloudflare Worker 이름·경로, Supabase 프로젝트 이름"}
+  ]
+}
