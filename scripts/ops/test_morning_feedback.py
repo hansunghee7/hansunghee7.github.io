@@ -68,6 +68,57 @@ class T(unittest.TestCase):
             self.assertIn("- N2 ", fb.calls[0])
             self.assertNotIn("- N1 ", fb.calls[0])
 
+    def test_corrupt_state_recovery_cap_10(self):
+        with tempfile.TemporaryDirectory() as d:
+            (Path(d) / "state.json").write_text("{깨진", encoding="utf-8")
+            fb, fd = Fake(), Fake()
+            r = self.go(d, rows(30), fb, fd)
+            self.assertEqual(sum(1 for ln in fb.calls[0].splitlines() if ln.startswith("- N")), 10)
+            self.assertTrue((Path(d) / "state.json.bak").exists())
+            self.assertIn("복구", Path(r["path"]).read_text(encoding="utf-8"))
+            # 다음 실행은 정상 상한 20, 이미 처리한 10행은 제외되고 나머지 20행이 후보
+            fb2, fd2 = Fake(), Fake()
+            r2 = self.go(d, rows(30), fb2, fd2, "2026-10-23")
+            self.assertEqual(r2["changed"], 20)
+
+    def test_failed_call_keeps_state(self):
+        with tempfile.TemporaryDirectory() as d:
+            bad = lambda c, o: (1, "")
+            r = self.go(d, rows(3), Fake(), bad)
+            self.assertEqual(r["rc"], 1)
+            self.assertEqual(mf.load_state(Path(d) / "state.json")[0], {})
+            r2 = self.go(d, rows(3), bad, bad, "2026-10-23")  # 둘 다 실패
+            self.assertEqual(r2["rc"], 1)
+            r3 = self.go(d, rows(3), Fake(), Fake(), "2026-10-24")  # 다음 날 다시 처리
+            self.assertEqual((r3["rc"], r3["changed"]), (0, 3))
+            self.assertEqual(len(mf.load_state(Path(d) / "state.json")[0]), 3)
+
+    def test_atomic_replace(self):
+        with tempfile.TemporaryDirectory() as d:
+            used = []
+            real = mf.os.replace
+            mf.os.replace = lambda a, b: (used.append((Path(a).name, Path(b).name)), real(a, b))[1]
+            try:
+                self.go(d, rows(2), Fake(), Fake())
+            finally:
+                mf.os.replace = real
+            self.assertIn(("state.json.tmp", "state.json"), used)
+            self.assertFalse((Path(d) / "state.json.tmp").exists())
+
+    def test_kst_date(self):
+        import datetime
+        utc = datetime.timezone.utc
+        self.assertEqual(mf.kst_today(datetime.datetime(2026, 10, 21, 16, 0, tzinfo=utc)), "2026-10-22")
+        self.assertEqual(mf.kst_today(datetime.datetime(2026, 10, 21, 14, 59, tzinfo=utc)), "2026-10-21")
+
+    def test_rerun_suffix(self):
+        with tempfile.TemporaryDirectory() as d:
+            p1 = self.go(d, rows(1), Fake(), Fake())["path"]
+            p2 = self.go(d, rows(1, nxt="바뀜"), Fake(), Fake())["path"]
+            p3 = self.go(d, rows(1, nxt="또 바뀜"), Fake(), Fake())["path"]
+            self.assertEqual([Path(p).name for p in (p1, p2, p3)], ["2026-10-22.md", "2026-10-22-2.md", "2026-10-22-3.md"])
+            self.assertTrue(all(Path(p).exists() for p in (p1, p2, p3)))
+
 
 if __name__ == "__main__":
     unittest.main()
