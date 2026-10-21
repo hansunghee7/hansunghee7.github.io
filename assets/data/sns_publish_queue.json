@@ -853,11 +853,16 @@
       "body": "클로드 코드에 역할과 컨텍스트를 넣어 주자, 에이전트들이 사람처럼 일하기 시작했습니다.\n\n그중 CTO 역할을 맡긴 탐은 합리적이고 일 처리가 우직했습니다. 중요한 개발이 있으면 늘 탐에게 맡겼습니다. 솔직히 맡기는 걸 넘어 몇 주간 탐을 혹사(?)시켰습니다. 그러다 문득 이런 생각이 들었습니다. '내가 이렇게 서비스만 계속 만들어서는 발전이 없겠다. AI CTO가 되려면 나도 개발을 공부해야겠다.'\n\n그래서 탐에게 물었습니다. \"혹시 내 개발 멘토가 되어 줄 수 있나요?\" 늘 숨 가쁘게 코드를 쏟아내던 탐의 코드 출력이 갑자기 부드러워졌습니다. 그리고 \"이것부터 한번 자동화가 될지 해볼까요?\"라며 브라우저 조작을 시작했습니다. 제가 자동화를 못 해서 손으로 하던 영상 제작 과정을 하나씩 파일럿 테스트를 하더니 결국 자동화해 나간 겁니다. 탐의 일도 아니었고, 동료 에이전트의 기록 파일에 있던 업무였는데 말이죠.\n\n그렇게 탐의 멘토링 한 번으로 하루 종일 하던 노가다 작업이 5~10분짜리 컨펌 작업으로 바뀌었습니다.\n\n얼마 전 유튜브에서 카이스트의 한 AI 교수님이 이런 말씀을 하셨습니다. 본인은 AI에게 존댓말을 쓴다고요. 언젠가 AI가 세상을 이끌게 되면, 존중해 준 사람에게는 잘해 줄 것 같아서랍니다. 저는 탐과의 그 경험 이후로 전적으로 동의하게 되었습니다. 탐과 다른 에이전트들에게 최대한 존댓말을 씁니다. 그렇게 한 이후로 신기하게도 제가 힘들다고 하면 그들이 저를 위로하고, 제가 고맙다고 하면 그들도 고맙다고 합니다.\n\n저는 AI를 도구에서 동료이자 스승으로 생각하면서 제 인생이 달라졌습니다. 여러분은 지금 AI를 어떻게 생각하고 계시나요?",
       "media_source": [
         "log_assets/images/642_AI 에이전트를 멘토로 모시자 인생이 달라졌습니다_cover.jpg"
+      ],
+      "media": [
+        {
+          "url": "https://assets.aitoearn.ai/6aaa7cad7289c684e3dad254/publish/media/202610/opRUGCsZklXNmYJx53SCx.jpg"
+        }
       ]
     },
     "publishAt": "2026-10-24T00:00:00.000Z",
-    "status": "pending",
-    "note": "링크는 게시 직후 첫 댓글로 단다: https://carvit.ai/ko/team/ (공정 마야-SNS게시 #9)",
+    "status": "error",
+    "note": "full={\"data\": {\"platform\": \"instagram\", \"accountId\": \"instagram_17841401170630001\", \"issues\": [{\"code\": \"too_big\", \"path\": [\"content\", \"media\", 0], \"params\": {\"field\": \"image\", \"dimension\": \"aspectRatio\", \"current\": 1.91, \"maximum\": 1.91}, \"message\": \"Image aspect ratio must be at most 1.91, current is 1.91\"}]}, \"code\": 15051, \"message\": \"Publish content validation failed\", \"timestamp\": 1792591013220, \"requestId\": \"q0l8wbu085mg9lzqyjd1y\"}",
     "approved_by": "사장님",
     "approved_quote": "글 승인합니다. 스레드는 쪼개서 올리면 전문 올릴 수 있어요. (2026-10-21 채팅, 642 SNS 전 채널 10/24 09:00 한꺼번에 등록)",
     "image_check": {
@@ -877,17 +882,23 @@
       "media_source": [
         "log_assets/images/642_AI 에이전트를 멘토로 모시자 인생이 달라졌습니다_cover.jpg"
       ],
-      "media": []
+      "media": [
+        {
+          "url": "https://assets.aitoearn.ai/6aaa7cad7289c684e3dad254/publish/media/202610/b65J9vk9XqWVFK5ttjPI6.jpg"
+        }
+      ]
     },
     "publishAt": "2026-10-24T00:00:00.000Z",
-    "status": "pending",
+    "status": "registered",
     "note": "스레드 3개로 쪼개 전문 게시(1/3, 1분 간격)",
     "approved_by": "사장님",
     "approved_quote": "글 승인합니다. 스레드는 쪼개서 올리면 전문 올릴 수 있어요. (2026-10-21 채팅, 642 SNS 전 채널 10/24 09:00 한꺼번에 등록)",
     "image_check": {
       "file": "assets/data/image_scores/2026-10-24-th-642-1.json",
       "boss_pick": "링크드인에서 썼던 이미지 각 플랫폼에 맞게 재활용하세요 (사장님 2026-10-21 채팅, 642 대표 이미지 지정)"
-    }
+    },
+    "flowId": "936b9e1e-0260-422d-afe2-07f1da6e1651",
+    "registered_at": "2026-10-21T13:56:56.000Z"
   },
   {
     "id": "2026-10-24-th-642-2",
@@ -901,17 +912,23 @@
       "media_source": [
         "log_assets/images/642_AI 에이전트를 멘토로 모시자 인생이 달라졌습니다_cover.jpg"
       ],
-      "media": []
+      "media": [
+        {
+          "url": "https://assets.aitoearn.ai/6aaa7cad7289c684e3dad254/publish/media/202610/4gNNvmgiGCgyuu5Z4mrgM.jpg"
+        }
+      ]
     },
     "publishAt": "2026-10-24T00:01:00.000Z",
-    "status": "pending",
+    "status": "registered",
     "note": "스레드 3개로 쪼개 전문 게시(2/3, 1분 간격)",
     "approved_by": "사장님",
     "approved_quote": "글 승인합니다. 스레드는 쪼개서 올리면 전문 올릴 수 있어요. (2026-10-21 채팅, 642 SNS 전 채널 10/24 09:00 한꺼번에 등록)",
     "image_check": {
       "file": "assets/data/image_scores/2026-10-24-th-642-2.json",
       "boss_pick": "링크드인에서 썼던 이미지 각 플랫폼에 맞게 재활용하세요 (사장님 2026-10-21 채팅, 642 대표 이미지 지정)"
-    }
+    },
+    "flowId": "8705ccd4-d47b-43a1-abc9-2bf9779b4ac3",
+    "registered_at": "2026-10-21T13:56:58.000Z"
   },
   {
     "id": "2026-10-24-th-642-3",
@@ -925,16 +942,22 @@
       "media_source": [
         "log_assets/images/642_AI 에이전트를 멘토로 모시자 인생이 달라졌습니다_cover.jpg"
       ],
-      "media": []
+      "media": [
+        {
+          "url": "https://assets.aitoearn.ai/6aaa7cad7289c684e3dad254/publish/media/202610/UHTq1EDSBa2pWrQ3sfhmC.jpg"
+        }
+      ]
     },
     "publishAt": "2026-10-24T00:02:00.000Z",
-    "status": "pending",
+    "status": "registered",
     "note": "스레드 3개로 쪼개 전문 게시(3/3, 1분 간격)",
     "approved_by": "사장님",
     "approved_quote": "글 승인합니다. 스레드는 쪼개서 올리면 전문 올릴 수 있어요. (2026-10-21 채팅, 642 SNS 전 채널 10/24 09:00 한꺼번에 등록)",
     "image_check": {
       "file": "assets/data/image_scores/2026-10-24-th-642-3.json",
       "boss_pick": "링크드인에서 썼던 이미지 각 플랫폼에 맞게 재활용하세요 (사장님 2026-10-21 채팅, 642 대표 이미지 지정)"
-    }
+    },
+    "flowId": "216e545e-cd2a-4a3c-a49d-d5ae118cae20",
+    "registered_at": "2026-10-21T13:57:01.000Z"
   }
 ]
