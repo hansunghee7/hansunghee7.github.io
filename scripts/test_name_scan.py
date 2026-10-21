@@ -67,7 +67,7 @@ class ClassifyTest(unittest.TestCase):
         self.assertEqual(self.cat(content("r", "old/log.md"))[0][0], "violation")
 
     def test_section_rule_splits_hits(self):
-        f = content("r", "pol.md", n=3, hit_lines={2: 1, 10: 1, 11: 1}, sections={"변경 기록": [9, 10, 11]})
+        f = content("r", "pol.md", n=3, hit_lines={2: 1, 10: 1, 11: 1}, sections={"H3": [9, 10, 11]})
         got = self.cat(f)
         self.assertIn(("history", "H3", 2), got)
         self.assertIn(("violation", "", 1), got)
@@ -88,7 +88,8 @@ class ClassifyTest(unittest.TestCase):
     def test_violation_exit_code_and_new_violation_diff(self):
         res = ns.new_result(1, "files:r")
         res["findings"].append(content("r", "a.py"))
-        rep = ns.build_report([res], self.cfg, TODAY, "t", {"date": "d", "violation_keys": []}, (1,))
+        prev0 = {"date": "d", "baseline_ok": True, "layers_run": [1], "violation_counts": {}}
+        rep = ns.build_report([res], self.cfg, TODAY, "t", prev0, (1,))
         self.assertEqual(rep["exit_code"], 1)
         self.assertEqual(len(rep["new_violations"]), 1)
         rep2 = ns.build_report([res], self.cfg, TODAY, "t", rep, (1,))
@@ -238,6 +239,17 @@ class ReadOnlyGuardTest(unittest.TestCase):
             ["gcloud", "projects", "delete", "p"], ["gcloud", "run", "services", "delete", "s"], ["gcloud", "secrets", "versions", "access", "latest"],
             ["gcloud", "secrets", "list", "set"], ["schtasks", "/delete", "/tn", "x"], ["schtasks", "/query", "/v"],
             ["powershell", "-Command", "Remove-Item C:\\x"], ["git", "push"], ["git", "ls-files", "commit"], ["curl", "http://x"],
+            # 리뷰 지적: gh api 는 GET만, -f/-F/--input 거부
+            ["gh", "api", "repos/o/r", "--method", "DELETE"], ["gh", "api", "repos/o/r", "-X", "PATCH"], ["gh", "api", "repos/o/r", "--method=DELETE"],
+            ["gh", "api", "repos/o/r", "-F", "a=b"], ["gh", "api", "repos/o/r", "--input", "x.json"], ["gh", "api", "repos/o/r", "--field", "a=b"],
+            ["gh", "api", "repos/o/r", "--raw-field", "a=b"],
+            # git 전역 옵션 우회·추가 인자
+            ["git", "-c", "core.pager=evil", "ls-files", "-z"], ["git", "--exec-path=/x", "ls-files", "-z"], ["git", "ls-files", "-z", "--other"],
+            ["git", "-C", "/x", "for-each-ref", "--format=%(refname:short)", "refs/tags"],
+            # 파워셸 중간 인자 주입
+            ns.PS_HEAD + ["Remove-Item x", "-Command", ns.PS_PROCESSES], ns.PS_HEAD[:3] + ["-EncodedCommand", "AAAA", "-Command", ns.PS_PROCESSES],
+            ["powershell", "-Command", "Remove-Item x", "-NoProfile", "-NonInteractive", "-Command", ns.PS_PROCESSES],
+            ns.PS_HEAD + [ns.PS_PROCESSES, "extra"], ns.PS_HEAD + [ns.PS_PROCESSES + "; Remove-Item x"],
         ]
         for argv in bad:
             with self.assertRaises(ns.ForbiddenCommand, msg=" ".join(argv)):
@@ -248,9 +260,9 @@ class ReadOnlyGuardTest(unittest.TestCase):
             ["git", "ls-files", "-z"], ["git", "for-each-ref", "--format=%(refname:short)", "refs/tags"],
             ["gh", "repo", "list", "o", "--limit", "300", "--json", "name", "--jq", ".[].name"],
             ["gh", "secret", "list", "-R", "o/r", "--json", "name"], ["gh", "api", "repos/o/r/contents/.github/workflows", "--jq", ".[].name"],
-            ["gcloud", "projects", "list", "--format=value(projectId)"], ["gcloud", "run", "services", "list", "--project", "p"],
+            ["gh", "api", "repos/o/r", "--method", "GET"], ["gh", "api", "repos/o/r", "-X", "get"],            ["gcloud", "projects", "list", "--format=value(projectId)"], ["gcloud", "run", "services", "list", "--project", "p"],
             ["gcloud", "iam", "service-accounts", "list", "--project", "p"], ["gcloud", "secrets", "list", "--project", "p"],
-            ["schtasks", "/query", "/fo", "csv", "/nh"], ["powershell", "-NoProfile", "-Command", ns.PS_PROCESSES],
+            ["schtasks", "/query", "/fo", "csv", "/nh"], ns.PS_HEAD + [ns.PS_PROCESSES],
         ]
         for argv in good:
             ns.check_readonly(argv)
@@ -260,6 +272,154 @@ class ReadOnlyGuardTest(unittest.TestCase):
         with self.assertRaises(ns.ForbiddenCommand):
             ns.run_cmd(["gh", "repo", "delete", "x"], runner=lambda *a: called.append(a))
         self.assertEqual(called, [])
+
+
+class ReviewFixTest(unittest.TestCase):
+    def test_stderr_raw_text_never_stored(self):
+        secret = "ghp_SECRETTOKEN123 something broke"
+
+        def fake(argv, timeout, cwd=None):
+            return 1, b"", ("fatal: " + secret).encode()
+
+        res = ns.collect_github({"github_owner": "o", "github_target_repos": ["a"]}, runner=fake)
+        rep = ns.build_report([res], {"ratchet": {}}, TODAY, "t", None, (3,))
+        blob = json.dumps(rep, ensure_ascii=False) + ns.render_md(rep)
+        self.assertNotIn("ghp_SECRETTOKEN123", blob)
+        self.assertNotIn("something broke", blob)
+        self.assertEqual({u["reason"] for u in res["unverified"]}, {"기타"})
+        self.assertEqual(ns.short_reason(b"HTTP 404: Not Found"), "없음(404)")
+        self.assertEqual(ns.short_reason(b"Reauthentication failed"), "인증 필요")
+        self.assertEqual(ns.short_reason(b"operation timed out"), "시간 초과")
+
+        def boom():
+            raise RuntimeError(secret)
+
+        out = ns.run_collectors([(3, "x", boom)], timeout=1)
+        self.assertNotIn("SECRETTOKEN", json.dumps(out, ensure_ascii=False))
+
+    def test_multiple_section_rules_same_file(self):
+        cfg = {"history_rules": [
+            {"id": "HA", "repo": "r", "section_file": "p.md", "section_heading": "변경 기록", "expires": "2027-01-01"},
+            {"id": "HB", "repo": "r", "section_file": "p.md", "section_heading": "사고 이력", "expires": "2027-01-01"}],
+            "planned": [], "external": [], "explain_files": []}
+        with tempfile.TemporaryDirectory() as d:
+            def git(*a):
+                subprocess.run(["git", *a], cwd=d, check=True, capture_output=True)
+            git("init", "-q")
+            body = "# 정책\n%s 본문\n## 변경 기록\n%s a\n## 중간\n%s 중간\n## 사고 이력\n%s b\n%s c\n" % ((OLD,) * 5)
+            (Path(d) / "p.md").write_text(body, encoding="utf-8")
+            git("add", "p.md")
+            repo = os.path.basename(os.path.abspath(d))
+            for r in cfg["history_rules"]:
+                r["repo"] = repo
+            res = ns.collect_repo(d, cfg)
+        f = [x for x in res["findings"] if x["kind"] == "content"][0]
+        self.assertEqual(set(f["sections"]), {"HA", "HB"})
+        got = {(c, rid): n for c, rid, n, _ in ns.classify(f, cfg, TODAY)}
+        self.assertEqual(got, {("history", "HA"): 1, ("history", "HB"): 2, ("violation", ""): 2})
+
+    def _res(self, layer, fail=0, crashed=False, hits=None):
+        r = ns.new_result(layer, "c%d" % layer)
+        r["fail"] = fail
+        r["crashed"] = crashed
+        for rel, n in (hits or {}).items():
+            r["findings"].append(content("r", rel, n))
+        return r
+
+    def test_baseline_requires_all_layers_ok(self):
+        cfg = {"ratchet": {}}
+        ok = ns.build_report([self._res(1), self._res(2), self._res(3)], cfg, TODAY, "t", None, (1, 2, 3))
+        self.assertTrue(ok["baseline_ok"])
+        bad = ns.build_report([self._res(1), self._res(2), self._res(3, fail=1)], cfg, TODAY, "t", None, (1, 2, 3))
+        self.assertFalse(bad["baseline_ok"])  # 층 1이 성공해도 다른 층 실패면 기준선 아님
+        crash = ns.build_report([self._res(1, crashed=True)], cfg, TODAY, "t", None, (1,))
+        self.assertFalse(crash["baseline_ok"])
+
+    def test_count_increase_is_new_violation(self):
+        cfg = {"ratchet": {}}
+        first = ns.build_report([self._res(1, hits={"a.py": 2, "b.py": 1})], cfg, TODAY, "t", None, (1,))
+        again = ns.build_report([self._res(1, hits={"a.py": 2, "b.py": 1})], cfg, TODAY, "t", first, (1,))
+        self.assertEqual(again["new_violations"], [])
+        grown = ns.build_report([self._res(1, hits={"a.py": 5, "b.py": 1})], cfg, TODAY, "t", first, (1,))
+        self.assertEqual(grown["new_violations"], ["1|content|r|a.py"])
+        shrunk = ns.build_report([self._res(1, hits={"a.py": 1})], cfg, TODAY, "t", first, (1,))
+        self.assertEqual(shrunk["new_violations"], [])
+        self.assertEqual(shrunk["resolved_violations"], ["1|content|r|b.py"])
+
+    def test_compare_only_same_layer_combination(self):
+        cfg = {"ratchet": {}}
+        first = ns.build_report([self._res(1, hits={"a.py": 1})], cfg, TODAY, "t", None, (1,))
+        other = ns.build_report([self._res(1, hits={"a.py": 1, "z.py": 1}), self._res(2)], cfg, TODAY, "t", first, (1, 2))
+        self.assertIsNone(other["prev_date"])
+        self.assertEqual(other["new_violations"], [])
+        # 정상이 아닌 이전 스캔은 기준선이 아니다
+        bad_prev = dict(first, baseline_ok=False)
+        self.assertEqual(ns.build_report([self._res(1, hits={"a.py": 9})], cfg, TODAY, "t", bad_prev, (1,))["new_violations"], [])
+
+    def test_output_dir_overlap_rejected(self):
+        with tempfile.TemporaryDirectory() as d:
+            repo = Path(d) / "repo"
+            (repo / "sub").mkdir(parents=True)
+            with self.assertRaises(SystemExit):
+                ns.check_out_dir(repo / "sub" / "out", [repo])  # 저장소 안
+            with self.assertRaises(SystemExit):
+                ns.check_out_dir(repo, [repo])  # 같은 폴더
+            with self.assertRaises(SystemExit):
+                ns.check_out_dir(Path(d), [repo])  # 출력 폴더가 저장소를 품음
+            ns.check_out_dir(Path(d) / "elsewhere", [repo])
+            with self.assertRaises(SystemExit):
+                ns.main(["--layers", "1", "--out", str(repo / "out"), "--repos", str(repo), "--no-write"])
+
+    def test_results_dir_always_excluded_from_scan(self):
+        with tempfile.TemporaryDirectory() as d:
+            def git(*a):
+                subprocess.run(["git", *a], cwd=d, check=True, capture_output=True)
+            git("init", "-q")
+            (Path(d) / "res").mkdir()
+            (Path(d) / "res" / "x.md").write_text(OLD, encoding="utf-8")
+            (Path(d) / "keep.md").write_text(OLD, encoding="utf-8")
+            git("add", "res", "keep.md")
+            res = ns.collect_repo(d, {"history_rules": [], "_exclude_dirs": [str(Path(d) / "res")]})
+            self.assertEqual([f["subject"] for f in res["findings"] if f["kind"] == "content"], ["keep.md"])
+
+    def test_summary_separates_records_and_hits(self):
+        cfg = {"ratchet": {}}
+        r = self._res(1, hits={"a.py": 7})
+        r["findings"].append(ns.finding(1, "path", "%s_x.md" % OLD, "r"))
+        rep = ns.build_report([r], cfg, TODAY, "t", None, (1,))
+        s1 = rep["summary"]["1"]
+        self.assertEqual(s1["violation"], 2)  # 발견 레코드 수
+        self.assertEqual(s1["hits_by_cat"]["violation"], 8)  # 적중 횟수
+        self.assertEqual(s1["by_kind"]["violation"], {"content": [1, 7], "path": [1, 1]})
+        md = ns.render_md(rep)
+        self.assertIn("2 (8)", md)
+        self.assertIn("내용 적중 1레코드/7적중", md)
+        self.assertIn("파일·폴더 이름 적중 1레코드/1적중", md)
+
+    def test_exit_codes_and_strict(self):
+        cfg = {"ratchet": {}, "manual_checks": [{"layer": 3, "what": "수동"}]}
+        unv = self._res(3)
+        rep = ns.build_report([unv], cfg, TODAY, "t", None, (3,))
+        self.assertEqual(rep["totals"]["violation"], 0)
+        self.assertFalse(rep["complete"])
+        self.assertEqual(rep["exit_code"], 0)  # 기본: 미확인 때문에 막지 않는다
+        self.assertIn("complete=false", ns.render_md(rep))
+        self.assertEqual(ns.build_report([unv], cfg, TODAY, "t", None, (3,), strict=True)["exit_code"], 2)
+        viol = ns.build_report([self._res(1, hits={"a.py": 1})], cfg, TODAY, "t", None, (1,), strict=True)
+        self.assertEqual(viol["exit_code"], 1)  # 위반이 우선
+        clean = ns.build_report([self._res(1)], {"ratchet": {}}, TODAY, "t", None, (1,), strict=True)
+        self.assertTrue(clean["complete"])
+        self.assertEqual(clean["exit_code"], 0)
+
+    def test_main_strict_exit_code(self):
+        import contextlib
+        import io
+        from unittest import mock
+        fake = [(2, "x", lambda: ns.new_result(2, "x"))]  # 실제 PC 상태에 기대지 않는다(수동 확인 항목이 남아 complete=false)
+        with tempfile.TemporaryDirectory() as d, mock.patch.object(ns, "build_collectors", return_value=fake):
+            with contextlib.redirect_stdout(io.StringIO()):
+                self.assertEqual(ns.main(["--layers", "2", "--out", str(Path(d) / "o1"), "--no-write"]), 0)
+                self.assertEqual(ns.main(["--layers", "2", "--out", str(Path(d) / "o2"), "--no-write", "--strict"]), 2)
 
 
 class RepoCollectorTest(unittest.TestCase):
