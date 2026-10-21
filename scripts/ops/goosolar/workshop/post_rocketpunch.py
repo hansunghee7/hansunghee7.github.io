@@ -8,7 +8,7 @@
 사용: python post_rocketpunch.py --file post.txt [--post]
 post.txt: 첫 줄 제목, 빈 줄, 본문, 끝 줄 "from <원문 URL>"(사장님 기존 게시물과 같은 모양)
 """
-import argparse, json, re, sys
+import argparse, json, re, sys, time
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 
@@ -26,8 +26,10 @@ PASTE_JS = """(t) => {
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--file", required=True); ap.add_argument("--post", action="store_true")
+    ap.add_argument("--image", default="")  # 2026-10-21 마야: 없으면 본문 파일과 같은 이름의 .jpg/.png를 찾는다(크론 줄을 안 바꾸고 사진을 붙이려고)
     a = ap.parse_args()
     text = Path(a.file).read_text(encoding="utf-8").strip()
+    img = a.image or next((str(q) for q in (Path(a.file).with_suffix(".jpg"), Path(a.file).with_suffix(".png")) if q.exists()), "")
     body = re.sub(r"\n{2,}", "\n\n", text)  # 문단 사이는 빈 줄 하나(마야 실측: \n 하나면 문단이 붙어 보임)
     res = {"chars_local": len(body), "posted": False}
     if len(body) > 2000:
@@ -35,9 +37,12 @@ def main():
     with sync_playwright() as p:
         b = p.chromium.connect_over_cdp(f"http://127.0.0.1:{PORT}")
         pg = b.contexts[0].new_page()
-        pg.goto("https://www.rocketpunch.com/", wait_until="domcontentloaded", timeout=45000); pg.wait_for_timeout(5000)
+        pg.goto("https://www.rocketpunch.com/feed", wait_until="domcontentloaded", timeout=45000); pg.wait_for_timeout(5000)
         # 구PC 크롬에서는 로켓펀치가 영어 화면(/en)으로 고정된다(2026-09-24). 한국어·영어 이름을 둘 다 본다.
         btn = pg.get_by_role("button", name=re.compile(r"^(게시하기|Post)$"))
+        if not btn.count():  # 2026-10-17: 영어 화면에서 Post가 button 역할이 아닌 요소로 바뀜(마야)
+            btn = pg.locator("button, a, [role=button], div, span").filter(has_text=re.compile(r"^\s*(게시하기|Post)\s*$")).last
+            btn = btn if btn.count() else pg.get_by_role("button", name=re.compile(r"^(게시하기|Post)$"))
         res["write_buttons"] = btn.count()
         if not res["write_buttons"]:
             res.update(status="STOP", why="게시하기 버튼 없음(로그인 확인)"); print(json.dumps(res, ensure_ascii=False)); return 1
@@ -45,6 +50,15 @@ def main():
         ed = pg.locator("div.tiptap.ProseMirror[contenteditable=true]")
         ed.first.wait_for(timeout=15000)
         res["paste"] = pg.evaluate(PASTE_JS, body); pg.wait_for_timeout(1500)
+        if img:  # 2026-10-21: 편집 창 안 파일 입력에 표지를 넣는다. 못 넣으면 사진 없이 올리지 않고 멈춘다.
+            scope_m = pg.locator("div.z_modal").filter(has=ed.first)
+            fin = (scope_m.last if scope_m.count() else pg).locator("input[type=file]")
+            res["file_inputs"] = fin.count()
+            if not res["file_inputs"]:
+                res.update(status="STOP", why="사진 입력칸 없음: 사진 없이 게시하지 않음"); print(json.dumps(res, ensure_ascii=False)); pg.close(); return 1
+            fin.first.set_input_files(img); pg.wait_for_timeout(4000)
+            res["image"] = Path(img).name
+            res["img_preview"] = (scope_m.last if scope_m.count() else pg).locator("img").count()
         m = re.search(r"(\d[\d,]*)\s*/\s*2,?000", pg.locator("body").inner_text())
         res["counter"] = m.group(0) if m else None
         res["editor_head"] = ed.first.inner_text()[:60]
