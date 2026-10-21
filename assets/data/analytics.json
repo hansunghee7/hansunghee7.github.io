@@ -1,20 +1,13 @@
 {
-  "updated_at": "2026-10-21T13:03:27.840612+00:00",
+  "updated_at": "2026-10-21T20:00:58.870726+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 367,
-    "activeUsers": 315,
-    "newUsers": 310,
+    "sessions": 358,
+    "activeUsers": 309,
+    "newUsers": 304,
     "returningUsers": 5
   },
   "daily": [
-    {
-      "date": "2026-09-21",
-      "sessions": 9,
-      "activeUsers": 8,
-      "newUsers": 7,
-      "returningUsers": 1
-    },
     {
       "date": "2026-09-22",
       "sessions": 53,
@@ -220,23 +213,23 @@
     },
     {
       "date": "2026-10-21",
-      "sessions": 6,
-      "activeUsers": 5,
-      "newUsers": 5,
+      "sessions": 7,
+      "activeUsers": 6,
+      "newUsers": 6,
       "returningUsers": 0
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 141,
+    "home": 139,
     "log_home": 0,
-    "individual_post": 215,
+    "individual_post": 209,
     "other": 10
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 194
+      "sessions": 189
     },
     {
       "source": "linkedin.com",
@@ -271,16 +264,8 @@
       "sessions": 7
     },
     {
-      "source": "blog.naver.com",
-      "sessions": 4
-    },
-    {
       "source": "web.telegram.org",
       "sessions": 4
-    },
-    {
-      "source": "(not set)",
-      "sessions": 3
     },
     {
       "source": "lm.facebook.com",
@@ -293,6 +278,14 @@
     {
       "source": "talk.navercorp.com",
       "sessions": 3
+    },
+    {
+      "source": "(not set)",
+      "sessions": 2
+    },
+    {
+      "source": "blog.naver.com",
+      "sessions": 2
     }
   ],
   "utm_campaigns": [
@@ -300,7 +293,7 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 194
+      "sessions": 189
     },
     {
       "source": "linkedin.com",
@@ -351,12 +344,6 @@
       "sessions": 6
     },
     {
-      "source": "blog.naver.com",
-      "medium": "referral",
-      "campaign": "(referral)",
-      "sessions": 4
-    },
-    {
       "source": "web.telegram.org",
       "medium": "referral",
       "campaign": "(referral)",
@@ -379,6 +366,12 @@
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 3
+    },
+    {
+      "source": "blog.naver.com",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "sessions": 2
     },
     {
       "source": "l.facebook.com",
@@ -436,15 +429,15 @@
     }
   ],
   "engagement_events": {
-    "section_view_proven": 86,
-    "section_view_voices": 75,
-    "section_view_book_class": 46,
-    "section_view_faq": 48,
-    "faq_open": 12,
-    "read_complete": 97
+    "section_view_proven": 84,
+    "section_view_voices": 73,
+    "section_view_book_class": 44,
+    "section_view_faq": 47,
+    "faq_open": 10,
+    "read_complete": 96
   },
   "contact_funnel": {
-    "contact_open": 19,
+    "contact_open": 18,
     "generate_lead": 0,
     "contact_error": 0
   },
@@ -461,11 +454,6 @@
       "sessions": 19
     },
     {
-      "path": "/logs/620",
-      "title": "/logs/620",
-      "sessions": 14
-    },
-    {
       "path": "/logs/628",
       "title": "/logs/628",
       "sessions": 12
@@ -478,6 +466,11 @@
     {
       "path": "/logs/301",
       "title": "/logs/301",
+      "sessions": 9
+    },
+    {
+      "path": "/logs/620",
+      "title": "/logs/620",
       "sessions": 9
     },
     {
@@ -542,8 +535,8 @@
     {
       "path": "/logs/620/",
       "title": "팀이 커질수록 대표만 모르는 것",
-      "uniqueViews": 16,
-      "views": 18
+      "uniqueViews": 11,
+      "views": 13
     },
     {
       "path": "/logs/628/",
@@ -600,12 +593,6 @@
       "views": 7
     },
     {
-      "path": "/logs/481/",
-      "title": "내가 GS에서 강의를 하는 이유",
-      "uniqueViews": 5,
-      "views": 5
-    },
-    {
       "path": "/logs/636/",
       "title": "바쁜 하루가 끝났는데 남은 게 없다면",
       "uniqueViews": 5,
@@ -616,17 +603,23 @@
       "title": "오디세이, 매우 사적인 관람평",
       "uniqueViews": 4,
       "views": 4
+    },
+    {
+      "path": "/logs/481/",
+      "title": "내가 GS에서 강의를 하는 이유",
+      "uniqueViews": 4,
+      "views": 4
     }
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 424,
+    "total_desktop_sessions": 425,
     "excluded_invalid_sessions": 23,
     "by_resolution": [
       {
         "resolution": "1920x1080",
         "width": 1920,
-        "sessions": 92
+        "sessions": 93
       },
       {
         "resolution": "800x600",
