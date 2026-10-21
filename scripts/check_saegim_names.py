@@ -23,7 +23,8 @@ BASELINE = ROOT / "docs" / "saegim_baseline.json"
 PATTERN = re.compile(r"saegim|새김", re.IGNORECASE)
 # 검사에서 빼는 것: 기준표 자신, 옛 기록(바꾸지 않는 역사), 이 검사와 시험
 SKIP_PREFIXES = ("docs/진행상황_아카이브/",)
-SKIP_FILES = {"docs/saegim_baseline.json", "scripts/check_saegim_names.py", "scripts/test_check_saegim_names.py"}
+SKIP_FILES = {"docs/saegim_baseline.json", "scripts/check_saegim_names.py", "scripts/test_check_saegim_names.py",
+              "scripts/ops/name_scan.py", "scripts/ops/name_scan_config.json", "scripts/test_name_scan.py"}
 
 
 def tracked_files(root=ROOT):
