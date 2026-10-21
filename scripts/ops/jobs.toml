@@ -296,6 +296,14 @@ name = "구PC 실행 로그 한 장 요약(작업 스케줄러 탐_log_digest, �
 note = "2026-10-20 탐 등록(사장님 승인, 공정자산 후보 ②). ssh로 구PC 지난 24시간 실행 로그를 모아 규칙 기반 요약을 C:/work/_ops/log_digest/<KST 날짜>.md에 쓴다(읽기 전용). 감시는 폴더 갱신 시각(새 날짜 파일이 생길 때 바뀜, 같은 파일 덮어쓰기로는 안 바뀜). 1회 실행 증거: 10/20 16:41 Start-ScheduledTask 결과 0, 2026-10-20.md 2420바이트. 첫 자동 실행(10/21 08:50) 확인은 탐."
 
 [[job]]
+id = "cron:morning-feedback"
+kind = "file_age"
+path = 'C:\work\_ops\morning_feedback\last_run'
+max_age_min = 1560
+name = "비티·덱스 아침 피드백(작업 스케줄러 탐_morning_feedback, 매일 08:30, morning_feedback.py, pythonw)"
+note = "2026-10-21 탐 등록(대장 N112, 사장님: 비티·덱스 상시 활용). 어제와 달라진 탐 열린 행(제목·상태·다음 행동 해시 비교, 20행 상한, 비밀 단어 가림)만 카드로 만들어 비티(BT_MODEL=vertex, GCP 풀)와 덱스에게 빠진 위험·더 나은 순서 3줄을 받아 C:/work/_ops/morning_feedback/<날짜>.md에 저장(운영 DB는 읽기만, 외부 발신 없음). 바뀐 행이 없으면 호출 0회. last_run에 시각·rc·호출 수. 1회 실행 증거: 10/21 12:31 rc=0 calls=2(비티 1·덱스 1), 첫 실행이라 68행 전체가 후보. 작업 스케줄러 항목은 PR 병합 뒤 만든다(스크립트가 병합 전엔 공용 폴더에 없음). 첫 자동 실행(10/22 08:30) 확인은 탐."
+
+[[job]]
 id = "fn:maya-collect"
 kind = "cmd"
 cmd = ['C:\work\_ops\n152\venv\Scripts\python.exe', 'C:\work\_ops\n152\maya_collect.py']
