@@ -769,3 +769,23 @@ workflow = "Update proof stats (새김 홈)"
 period_min = 10080
 name = "Carvit 홈 근거 숫자 갱신(매주 월 04:00 KST, 자체 실행기)"
 note = "2026-10-18 노트 등록. 수동 1회 성공 run 39113282911(goosolar). 첫 예약 자동 실행(10/19 월 04:00 KST) 확인 필요."
+
+[[job]]
+id = "fn:name-scan-daily"
+on_fail = "alert"
+kind = "cmd"
+cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\name_scan_daily.py']
+every_min = 1440
+timeout = 900
+name = "매일 옛 이름 스캔(3층 스캐너 name_scan.py 결과를 md와 한 줄 요약으로, name_scan_daily.py)"
+note = "2026-10-22 탐 등록(옛 이름 소거 10/30 목표 매일 점검). 결과 C:/work/_ops/name_scan/날짜.md, 한 줄 C:/work/_ops/name_scan/latest.txt. name_scan.py 종료 코드 1은 위반 있음이라 정상 경로이고 래퍼는 판정 줄을 못 읽거나 스캔이 죽을 때만 종료 코드 2로 붉음."
+
+[[job]]
+id = "fn:env-alias-daily"
+on_fail = "alert"
+kind = "cmd"
+cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\env_alias_daily.py']
+every_min = 1440
+timeout = 900
+name = "매일 별칭 사용 관찰(제품 저장소 24시간 Actions 로그의 옛 환경변수 읽힘 건수와 이 PC 옛·새 이름 존재, env_alias_daily.py)"
+note = "2026-10-22 탐 등록(S5). 로그 내용은 저장하지 않고 건수만, 환경변수는 이름만. 결과 한 줄 C:/work/_ops/name_scan/alias_latest.txt, 건수가 0이 아니면 줄 끝에 주의(종료 코드는 0)."
