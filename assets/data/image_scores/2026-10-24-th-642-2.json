@@ -1,0 +1,19 @@
+{
+  "queue_id": "2026-10-24-th-642-2",
+  "image": "log_assets/images/642_AI 에이전트를 멘토로 모시자 인생이 달라졌습니다_cover.jpg",
+  "sha256": "49a8364b0805206e895787c9b23b49c170fb5ebf04194324c9f12794cfc25ebd",
+  "source": "nano-banana",
+  "idea": "대표가 AI CTO에게 개발 멘토를 부탁하자 AI가 영상 제작을 자동화해 주고 존댓말로 대하자 동료이자 스승이 된다",
+  "conditions": {
+    "1": 0,
+    "2": 0,
+    "3": 1,
+    "4": 0,
+    "5": 1,
+    "6": 0,
+    "7": 1,
+    "8": 0
+  },
+  "score": "3/8",
+  "note": "독립 채점(제미나이 이미지 호출) 3/8, 1번 미충족. 대표 이미지는 사장님이 지정(boss_pick). 원문 C:/work/_ops/maya_briefs/642_sns/eval/out1.json"
+}
