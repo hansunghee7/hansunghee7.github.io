@@ -300,7 +300,7 @@ def refresh_in_background(res, lock=None):
 LAYER_ORDER = ('eps', 'grants', 'cards', 'boss', 'docs', 'logs')
 
 
-def merge_ranked(layers, total=10, doc_slot=3):
+def merge_ranked(layers, total=10, doc_slot=3, ep_slot=4):
     """층마다 (적중 비율, 항목) 목록(층 안 순서 유지)을 받아 한 줄로 합친다.
     고정 층 순서로 이으면 정본 문서가 늘 7위 밑으로 밀리고, 흔한 낱말 하나로 걸린 편 상태·지원현황이 1위를 차지했다(2026-10-21 기준선).
     그래서 층 머리끼리 적중 비율로 고르고(같으면 LAYER_ORDER), 정본 문서가 있으면 가장 나은 문서 하나는 doc_slot위 안에 둔다."""
@@ -326,6 +326,13 @@ def merge_ranked(layers, total=10, doc_slot=3):
             fill = [x for x in rest if x[0] != 'docs'][:doc_slot - len(top)]
             rest = [x for x in rest if x not in fill]
             out = top + fill + extra + rest
+    # 편을 물으면 컨펌대장 마지막 사건이 눈에 띄는 자리에 있어야 한다(2026-10-15 사모에드 사고). 맨 위는 아니어도 상위 ep_slot위 안에 가장 나은 편 하나를 둔다
+    if ep_slot and layers.get('eps'):
+        idx = next((i for i, (k, _) in enumerate(out) if k == 'eps'), None)
+        if idx is None or idx >= ep_slot:
+            item = out.pop(idx)[1] if idx is not None else layers['eps'][0][1]
+            out.insert(min(ep_slot - 1, len(out)), ('eps', item))
+            out = out[:total]
     return out
 
 
