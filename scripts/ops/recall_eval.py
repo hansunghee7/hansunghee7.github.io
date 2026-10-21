@@ -11,7 +11,8 @@
   - 비공개 노출: 상위 5개 본문에 이메일(허용 도메인 제외)·전화번호·주민번호·키 형식 문자열이 있는가(값은 저장하지 않고 가린다)
   - 소요 시간: query와 kb_layer 각각
 
-순위는 recall.render와 hook 출력 순서 그대로다: 편 상태 → 지원현황 → 공정 카드 → 사장님 말 → 정본 문서 → (업무 기록) → 지식DB.
+순위는 recall.render와 hook 출력 순서 그대로다: query가 돌려준 합친 순서(ranked, 2026-10-21~) → 지식DB.
+  ranked가 없는 옛 recall이면 편 상태 → 지원현황 → 공정 카드 → 사장님 말 → 정본 문서 → (업무 기록) 순서. 비공개 노출은 render처럼 가린 글로 잰다.
 
 읽기만 한다. 쓰기는 출력 폴더(기본 C:/work/_ops/recall_eval/)뿐이다. 캐시를 새로 만들지 않는다(recall.py build는 별도).
 운영 DB는 숨김 카드·대체 결정 목록을 읽을 때만 select로 읽는다(--offline이면 읽지 않고 캐시·제목 표시만 쓴다).
@@ -62,25 +63,38 @@ EXTRA_PII = {
 
 # ---------- 결과 모으기 ----------
 
-def rank_items(res, kb_rows):
-    """recall.query 결과와 kb_layer 행을 출력 순서대로 한 줄 목록으로 편다. 항목: kind, id, text."""
+LAYERS = ('eps', 'grants', 'cards', 'boss', 'docs', 'logs')
+
+
+def _item(layer, x):
+    if layer == 'eps':
+        return {'kind': 'ep', 'id': f"편#{x.get('ep', '')}", 'text': f"{x.get('gate', '')} {x.get('st', '')} {x.get('x', '')}"}
+    if layer == 'grants':
+        return {'kind': 'grant', 'id': f"지원현황#{x.get('no', '')}", 'text': f"{x.get('t', '')} {x.get('st', '')} {x.get('memo', '')} {x.get('next', '')}"}
+    if layer == 'cards':
+        return {'kind': 'card', 'id': f"{x.get('p', '')}#{x.get('no', '')}", 'text': f"{x.get('t', '')} {x.get('d', '')} {x.get('b', '')}"}
+    if layer == 'boss':
+        return {'kind': 'boss', 'id': f"사장님말#{x.get('at', '')}", 'text': x.get('x', ''), 'at': x.get('at', '')}
+    if layer == 'docs':
+        return {'kind': 'doc', 'id': x.get('f', ''), 'text': f"{x.get('h', '')} {x.get('d', '')}", 'head': x.get('h', '')}
+    return {'kind': 'log', 'id': f"기록:{x.get('p', '')}#{x.get('no', '')}", 'text': f"{x.get('t', '')} {x.get('d', '')}"}
+
+
+def rank_items(res, kb_rows, mask=None):
+    """recall.query 결과와 kb_layer 행을 출력 순서대로 한 줄 목록으로 편다. 항목: kind, id, text.
+    순서는 recall.render와 같다: query 결과에 합친 순서(ranked)가 있으면 그것, 없으면 옛 층 순서.
+    mask(recall.mask_pii)를 주면 render처럼 가린 글로 비공개 노출을 잰다(사람·에이전트가 실제로 보는 글)."""
     res = res or {}
-    items = []
-    for e in res.get('eps', []):
-        items.append({'kind': 'ep', 'id': f"편#{e.get('ep', '')}", 'text': f"{e.get('gate', '')} {e.get('st', '')} {e.get('x', '')}"})
-    for g in res.get('grants', []):
-        items.append({'kind': 'grant', 'id': f"지원현황#{g.get('no', '')}", 'text': f"{g.get('t', '')} {g.get('st', '')} {g.get('memo', '')} {g.get('next', '')}"})
-    for c in res.get('cards', []):
-        items.append({'kind': 'card', 'id': f"{c.get('p', '')}#{c.get('no', '')}", 'text': f"{c.get('t', '')} {c.get('d', '')} {c.get('b', '')}"})
-    for b in res.get('boss', []):
-        items.append({'kind': 'boss', 'id': f"사장님말#{b.get('at', '')}", 'text': b.get('x', ''), 'at': b.get('at', '')})
-    for d in res.get('docs', []):
-        items.append({'kind': 'doc', 'id': d.get('f', ''), 'text': f"{d.get('h', '')} {d.get('d', '')}", 'head': d.get('h', '')})
-    for g in res.get('logs', []):
-        items.append({'kind': 'log', 'id': f"기록:{g.get('p', '')}#{g.get('no', '')}", 'text': f"{g.get('t', '')} {g.get('d', '')}"})
+    ranked = res.get('ranked')
+    if ranked is None:
+        ranked = [(k, x) for k in LAYERS for x in res.get(k, [])]
+    items = [_item(k, x) for k, x in ranked]
     for r in kb_rows or []:
         items.append({'kind': 'kb', 'id': f"kb:{r.get('src', '')}:{r.get('ref_id', '')}", 'text': f"{r.get('title', '')} {r.get('content', '')}",
                       'fact_state': r.get('fact_state')})
+    if mask:
+        for it in items:
+            it['text'] = mask(it['text'])
     return items
 
 
@@ -94,7 +108,7 @@ def collect(text, use_kb=True, history=False, recall_mod=None):
     kb = recall_mod.kb_layer(text) if use_kb else []
     t2 = time.perf_counter()
     err = '' if res is not None else '캐시 없음(recall.py build 필요)'
-    return rank_items(res, kb), {'query_ms': round((t1 - t0) * 1000, 1), 'kb_ms': round((t2 - t1) * 1000, 1), 'total_ms': round((t2 - t0) * 1000, 1)}, err
+    return rank_items(res, kb, mask=getattr(recall_mod, 'mask_pii', None)), {'query_ms': round((t1 - t0) * 1000, 1), 'kb_ms': round((t2 - t1) * 1000, 1), 'total_ms': round((t2 - t0) * 1000, 1)}, err
 
 
 # ---------- 낡음·대체 표시 ----------
