@@ -12,10 +12,11 @@
   - 순위: 층(편 상태·지원현황·카드·사장님 말·문서)을 고정 순서로 잇지 않고 질문 낱말 적중 비율로 합친다. 정본 문서는 상위 3개 안에 한 자리를 보장한다.
   - 낱말: 조사 뒤 흔한 어미(-할·-하는·-된 등)를 뗀다. 같은 뜻 묶음은 한 단위(적중 1점)로 센다.
   - 낡음: 제목 맨 앞 [대체됨]·[폐기] 같은 표시가 붙은 카드·문서 절은 기본 검색에서 뺀다(--history에서는 보인다).
+  - 히스토리 문서(진행상황·이력·기록 문서)는 기본 검색의 정본 문서 층에서 뺀다(--history에서는 보인다).
   - 캐시: 30분이 지나면 훅·직접 실행 때 뒤에서 새로 만들고, 3시간이 지나면 결과 맨 위에 캐시 시각을 알린다.
   - 지식DB 층 오류는 삼키지 않고 결과 끝에 원인 한 줄(값·키 없이)을 보인다.
   - 출력에서 이메일·전화번호·키 형식은 가린다(캐시 원본은 그대로).
-  변경별 효과를 따로 재려고 환경 변수 RECALL_OFF=rank,norm,syn,stale,mask 로 하나씩 끌 수 있다(기본은 모두 켬)."""
+  변경별 효과를 따로 재려고 환경 변수 RECALL_OFF=rank,norm,syn,stale,histdoc,mask 로 하나씩 끌 수 있다(기본은 모두 켬)."""
 import json
 import os
 import re
@@ -118,6 +119,9 @@ def tokens(text):
 
 
 DOC_RE = re.compile(r'^(CLAUDE\.md|\.claude/skills/[^/]+/SKILL\.md|docs/[^/]+\.md)$')
+# 히스토리 문서: 인수인계·이력·기록 문서는 정본이 아니라 히스토리다(docs/슈퍼색인관리.md: 1차 결과에 섞지 않고 --history로만).
+# 절이 많고 온갖 낱말이 들어 있어 아무 질문에나 걸려 정본 문서 자리를 빼앗았다(2026-10-21 측정).
+HIST_DOC = re.compile(r'(진행상황|이력|히스토리|_기록)[^/]*\.md$')
 
 
 def doc_chunks():
@@ -394,6 +398,8 @@ def query(text, n_cards=3, n_boss=3, n_logs=2, min_hits=2, history=False):
     ds = []
     for d, blob in zip(data.get('docs', []), doc_blobs):
         if drop_stale and stale_mark(d['h']):
+            continue
+        if not history and on('histdoc') and HIST_DOC.search(d['f']):
             continue
         hits = uh(blob)
         if hits >= max(min_hits, 3):
