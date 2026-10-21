@@ -1,9 +1,10 @@
-"""Carvit 저장소 자체 실행기(saegim-test) 생존 감시와 자동 우회(2026-10-16 탐, 공정 카드 탐#113·#114).
+"""[옛이름 허용: 유료 실행기 관문이 옛 이름과 새 이름을 함께 인식해야 함]
+Carvit 저장소 자체 실행기(saegim-test) 생존 감시와 자동 우회(2026-10-16 탐, 공정 카드 탐#113·#114).
 
 이름표 saegim-test를 단 실행기 중 하나라도 online이면 정상(종료 코드 0). 모두 offline이면 1 → watch.py가 알린다.
 실행기가 다 꺼지면 Carvit PR 시험이 줄을 서서 기다린다. 구PC 복구: ssh goosolar '~/actions-runner/keepalive.sh'
 
---switch(사장님 10/16 '자동우회 승인'): 연속 2회 offline이면 저장소 변수 SAEGIM_CI_RUNNER를 ["ubuntu-latest"]로 바꿔
+--switch(사장님 10/16 '자동우회 승인'): 연속 2회 offline이면 저장소 변수 CARVIT_CI_RUNNER(새 이름 우선)와 SAEGIM_CI_RUNNER(옛 이름)를 같은 값 ["ubuntu-latest"]로 바꿔
 Carvit CI(test.yml·deploy-cloud-run.yml의 changes·container-smoke)가 깃허브 실행기로 돌게 하고, 다시 online이면
 ["self-hosted","saegim-test"]로 되돌린다. 변수가 없으면(404) 워크플로 기본값 = 자체 실행기.
 종료 코드: 자체 실행기 online(정상 경로) 0, 우회 중·offline·조회 실패 1.
@@ -15,7 +16,9 @@ from pathlib import Path
 
 REPO = "hansunghee7/simplifier-saegim"
 LABEL = "saegim-test"
-VAR = "SAEGIM_CI_RUNNER"
+VAR_NEW = "CARVIT_CI_RUNNER"  # 새 이름(읽기 우선, 2026-10-21 B3 P2 S1-1)
+VAR_OLD = "SAEGIM_CI_RUNNER"  # 옛 이름(이행 기간 동안 같은 값으로 함께 씀, P4에서 제거)
+VARS = (VAR_NEW, VAR_OLD)
 SELF_VALUE = '["self-hosted","saegim-test"]'
 HOSTED_VALUE = '["ubuntu-latest"]'
 OFFLINE_THRESHOLD = 2
@@ -53,22 +56,44 @@ def read_runners():
     return runners, ""
 
 
-def read_var():
-    """(값, 오류). 변수가 없으면 (None, "")."""
-    r = gh(["api", f"repos/{REPO}/actions/variables/{VAR}"])
+def _read_one(name):
+    """(값, 오류, 존재). 변수가 없으면 (None, "", False)."""
+    r = gh(["api", f"repos/{REPO}/actions/variables/{name}"])
     if r.returncode != 0:
         if "404" in (r.stderr or "") or "Not Found" in (r.stderr or "") + (r.stdout or ""):
-            return None, ""
-        return None, (r.stderr or "")[:200] or "변수 조회 실패"
-    return json.loads(r.stdout).get("value"), ""
+            return None, "", False
+        return None, (r.stderr or "")[:200] or "변수 조회 실패", False
+    return json.loads(r.stdout).get("value"), "", True
+
+
+def read_var():
+    """(값, 오류). 새 이름 우선, 없으면 옛 이름. 둘 다 없으면 (None, "")."""
+    for name in VARS:
+        value, err, exists = _read_one(name)
+        if err:
+            return None, err
+        if exists:
+            return value, ""
+    return None, ""
 
 
 def write_var(value, exists):
-    if exists:
-        r = gh(["api", "-X", "PATCH", f"repos/{REPO}/actions/variables/{VAR}", "-f", f"value={value}"])
-    else:
-        r = gh(["api", "-X", "POST", f"repos/{REPO}/actions/variables", "-f", f"name={VAR}", "-f", f"value={value}"])
-    return r.returncode == 0, (r.stderr or "")[:200]
+    """두 이름에 같은 값을 쓴다. 이름별로 존재를 확인해 있으면 PATCH, 없으면 POST(exists 인자는 호환용)."""
+    ok_all, errs = True, []
+    for name in VARS:
+        _, err, there = _read_one(name)
+        if err:
+            ok_all = False
+            errs.append(err)
+            continue
+        if there:
+            r = gh(["api", "-X", "PATCH", f"repos/{REPO}/actions/variables/{name}", "-f", f"value={value}"])
+        else:
+            r = gh(["api", "-X", "POST", f"repos/{REPO}/actions/variables", "-f", f"name={name}", "-f", f"value={value}"])
+        if r.returncode != 0:
+            ok_all = False
+            errs.append((r.stderr or "")[:200])
+    return ok_all, "; ".join(errs)[:200]
 
 
 def load_state():
@@ -113,7 +138,7 @@ def main(argv):
         print(f"자체 실행기 offline 연속 {streak}회"
               + (" (이미 깃허브 실행기로 우회 중)" if is_hosted(var_value) else f" (전환 기준 {OFFLINE_THRESHOLD}회)"))
     save_state(state)
-    print(f"{VAR} = {var_value if var_value is not None else '(없음 = 자체 실행기)'}")
+    print(f"{VAR_NEW}/{VAR_OLD} = {var_value if var_value is not None else '(없음 = 자체 실행기)'}")
     return 0 if online and not is_hosted(var_value) else 1
 
 

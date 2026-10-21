@@ -1,4 +1,5 @@
-"""paid-runner-gate: 유료(깃허브 실행기) 전환·실행만 막고 무료 배포는 통과."""
+"""[옛이름 허용: 유료 실행기 관문이 옛 이름과 새 이름을 함께 인식해야 함]
+paid-runner-gate: 유료(깃허브 실행기) 전환·실행만 막고 무료 배포는 통과."""
 import importlib.util
 import json
 import os
@@ -41,6 +42,16 @@ class PaidRunnerGateTest(unittest.TestCase):
         self.assertEqual(code, 2)
         self.assertIn("사장님 컨펌", err)
         self.assertEqual(self._run("gh variable set SAEGIM_CI_RUNNER --body '[\"ubuntu-latest\"]'")[0], 2)
+
+    def test_carvit_name_switch_to_hosted_blocked(self):
+        code, err = self._run("gh variable set CARVIT_DEPLOY_RUNNER ubuntu-latest")
+        self.assertEqual(code, 2)
+        self.assertIn("사장님 컨펌", err)
+        self.assertEqual(self._run("gh variable set CARVIT_CI_RUNNER --body '[\"ubuntu-latest\"]'")[0], 2)
+
+    def test_carvit_name_self_hosted_passes(self):
+        self.assertEqual(self._run("gh variable set CARVIT_DEPLOY_RUNNER -R x --body '[\"self-hosted\",\"saegim-test\"]'")[0], 0)
+        self.assertEqual(self._run("gh variable set CARVIT_CI_RUNNER --body '[\"self-hosted\",\"saegim-test\"]'")[0], 0)
 
     def test_hosted_workflow_run_blocked(self):
         self.assertEqual(self._run("gh workflow run reseed-guides.yml -R hansunghee7/simplifier-saegim")[0], 2)
