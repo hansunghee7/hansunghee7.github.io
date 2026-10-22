@@ -101,7 +101,7 @@ def measure(today=None):
     s.setdefault('carry', {a: 0 for a in BASE})
     recs = s.setdefault('records', {})
     days = sorted(recs)
-    start = date.fromisoformat(days[-1]) + timedelta(days=1) if days else today  # 제도 시작일(오늘) 이전은 소급 채점하지 않는다
+    start = date.fromisoformat(days[-1]) + timedelta(days=1) if days else date.fromisoformat(budget()['as_of'])  # 기록이 비면 제도 시작 기준일(as_of)부터 채점해 이월이 쌓이게 한다
     d = start
     while d < today:
         key = d.isoformat()
