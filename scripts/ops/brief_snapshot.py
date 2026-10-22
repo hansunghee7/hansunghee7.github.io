@@ -10,6 +10,7 @@
   boss_open   : section='open'·status='사장님' 결정 대기 건수와 오래된 3건
   grants      : 지원사업 표(section='grant') 상태별 건수 + 준비중·지원함·대기 건
   carvit      : C:/work/_ops/saegim_usage 최신 파일의 서버 정상 요청(어제·7일 합)
+  trends      : notice_digest.jsonl(공고 중 눈여겨볼 후보)의 최근 2일 최대 5건(2026-10-22 마야, 스타트업 동향 칸)
 
 사용: python scripts/ops/brief_snapshot.py [--no-push] [--out 경로]
 """
@@ -96,6 +97,25 @@ def push(path, day, cxo=None):
     return 0
 
 
+DIGEST = Path("C:/work/_ops/grants_prep/notice_digest.jsonl")
+
+
+def trends(today, days=2, limit=5):
+    """공고 후보(digest) 최근 N일. 파일이 없으면 빈 목록(첫 후보가 쌓이기 전)."""
+    if not DIGEST.exists():
+        return []
+    since = (today - dt.timedelta(days=days)).isoformat()
+    out = []
+    for ln in DIGEST.read_text(encoding="utf-8").splitlines():
+        try:
+            r = json.loads(ln)
+        except ValueError:
+            continue
+        if r.get("at", "")[:10] >= since:
+            out.append({"source": r.get("source"), "title": (r.get("title") or "")[:70], "url": r.get("url")})
+    return out[-limit:]
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--no-push", action="store_true")
@@ -103,7 +123,8 @@ def main():
     a = ap.parse_args()
     now = dt.datetime.now(KST)
     snap = {"generated_at": now.isoformat(timespec="seconds"), "deadlines": deadlines(now.date()),
-            "boss_open": boss_open(), "grants": grants(), "carvit": carvit()}
+            "boss_open": boss_open(), "grants": grants(), "carvit": carvit(),
+            "trends": trends(now.date())}
     path = Path(a.out) if a.out else CXO / "brief_snapshot" / f"{now:%Y-%m-%d}.json"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(snap, ensure_ascii=False, indent=1), encoding="utf-8")
