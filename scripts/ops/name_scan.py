@@ -600,17 +600,26 @@ def collect_gcp(runner=None, timeout=60):
             add_unverified(res, w, "gcloud 없음")
         return res
     deadline = time.monotonic() + timeout - 5
+    MIN_CALL = 5
+
+    class BudgetExhausted(Exception):
+        pass
 
     def call(argv):
-        left = max(5, deadline - time.monotonic())
+        left = deadline - time.monotonic()
+        if left < MIN_CALL:
+            raise BudgetExhausted()
         return run_cmd(argv, timeout=left, runner=runner)
 
+    budget_exhausted = False
     try:
         rc, out, err = call(["gcloud", "projects", "list", "--format=value(projectId)", "--quiet"])
+    except BudgetExhausted:
+        rc, out, err, budget_exhausted = 1, b"", b"", True
     except Exception as e:  # noqa: BLE001
         rc, out, err = 1, b"", b"timed out" if error_code(e) == "시간 초과" else b""
     if rc != 0:
-        reason = short_reason(err)
+        reason = "시간 예산 소진" if budget_exhausted else short_reason(err)
         for w in ("GCP 프로젝트 목록", "Cloud Run 서비스 목록", "서비스 계정 목록", "비밀 이름 목록"):
             add_unverified(res, w, reason)
         return res
@@ -620,6 +629,12 @@ def collect_gcp(runner=None, timeout=60):
         if matches(p):
             res["findings"].append(finding(3, "gcp_project", p, None))
     for p in projects:
+        # 남은 시간 예산이 바닥나면 이후 프로젝트는 호출 없이 바로 미확인으로 남긴다(강제 5초 호출 반복이
+        # 외부 데드라인을 넘겨 수집기 전체가 '시간 초과'로 찍히는 것을 막는다).
+        if deadline - time.monotonic() < MIN_CALL:
+            for what in ("Cloud Run 서비스", "서비스 계정", "비밀 이름"):
+                add_unverified(res, "%s %s" % (what, p), "시간 예산 소진")
+            continue
         for kind, what, argv in (
             ("gcp_run", "Cloud Run 서비스", ["gcloud", "run", "services", "list", "--project", p, "--format=value(metadata.name)", "--quiet"]),
             ("gcp_sa", "서비스 계정", ["gcloud", "iam", "service-accounts", "list", "--project", p, "--format=value(email)", "--quiet"]),
@@ -627,6 +642,9 @@ def collect_gcp(runner=None, timeout=60):
         ):
             try:
                 rc, out, err = call(argv)
+            except BudgetExhausted:
+                add_unverified(res, "%s %s" % (what, p), "시간 예산 소진")
+                continue
             except Exception as e:  # noqa: BLE001
                 add_unverified(res, "%s %s" % (what, p), error_code(e))
                 continue

@@ -1,9 +1,9 @@
 {
   "_note": "[옛이름 허용: 옛 이름 스캐너 설정이라 검색 패턴과 시스템 ID를 인용해야 함] 이 파일의 목록을 늘리면 래칫(ratchet)이 실패한다. 줄이는 것은 항상 허용.",
-  "config_version": "2026-10-22.1",
+  "config_version": "2026-10-22.2",
   "pattern": "saegim|새김",
   "output_dir": "C:/work/_ops/name_scan",
-  "collector_timeout_sec": 120,
+  "collector_timeout_sec": 240,
   "max_file_bytes": 2097152,
   "repos": [
     "C:/work/hansunghee7.github.io",
@@ -26,7 +26,7 @@
   ],
   "ratchet": {
     "history_rules": 17,
-    "explain_files": 11,
+    "explain_files": 12,
     "external": 0
   },
   "history_rules": [
@@ -59,7 +59,8 @@
     {"repo": "hansunghee7.github.io", "file": ".claude/hooks/old-name-gate.sh", "reason": "쓰기 관문 실행기"},
     {"repo": "hansunghee7.github.io", "file": ".claude/hooks/test_old_name_gate.py", "reason": "쓰기 관문 시험"},
     {"repo": "hansunghee7.github.io", "file": "docs/이름_정책.md", "reason": "이름 정책 문서"},
-    {"repo": "hansunghee7.github.io", "file": "docs/옛이름_소거_슈퍼프로젝트.md", "reason": "소거 설계 문서"}
+    {"repo": "hansunghee7.github.io", "file": "docs/옛이름_소거_슈퍼프로젝트.md", "reason": "소거 설계 문서"},
+    {"repo": "hansunghee7.github.io", "file": ".claude/hooks/old-name-gate.log", "reason": "쓰기 관문이 차단한 옛 이름 시도를 남기는 로그라 패턴을 인용해야 기록이 된다"}
   ],
   "planned": [
     {"id": "P01", "kinds": ["content", "path", "branch", "tag"], "repo": "simplifier-saegim", "match": ".*", "step": "D", "deadline": "2026-12-31", "owner": "탐", "note": "제품 저장소 전체: 새 프로젝트로 이전하며 소거"},
@@ -69,7 +70,8 @@
     {"id": "P05", "kinds": ["ghvar", "ghsecret"], "match": "saegim", "step": "P4", "deadline": "2026-12-31", "owner": "탐", "note": "저장소 변수·비밀 이름 교체"},
     {"id": "P06", "kinds": ["gcp_project", "gcp_run", "gcp_sa", "gcp_secret"], "match": "saegim", "step": "D", "deadline": "2026-12-31", "owner": "탐", "note": "GCP 시스템 ID: 새 프로젝트로 이전"},
     {"id": "P07", "kinds": ["process", "task"], "match": "saegim", "step": "C", "deadline": "2026-12-31", "owner": "탐", "note": "실행 경로·작업 이름: 저장소 이름 변경 시 갱신"},
-    {"id": "P08", "kinds": ["mcp"], "match": "saegim", "step": "P4", "deadline": "2026-12-31", "owner": "탐", "note": "MCP 서버 이름 교체"}
+    {"id": "P08", "kinds": ["mcp"], "match": "saegim", "step": "P4", "deadline": "2026-12-31", "owner": "탐", "note": "MCP 서버 이름 교체"},
+    {"id": "P09", "kinds": ["remote_file", "remote_cron"], "match": "^구PC:", "step": "2-6", "deadline": "2026-12-31", "owner": "탐", "note": "구PC 저장소 복사본(ops/repos·player-bt-* 스냅샷)의 옛 이름 흔적: 복사본 자체를 옛이름_소거_2차_프로젝트.md 2-6단계에서 정리할 때까지는 위반으로 매일 새로 세지 않고 예정으로 추적"}
   ],
   "external": [],
   "manual_checks": [

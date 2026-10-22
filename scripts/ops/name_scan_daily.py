@@ -1,6 +1,8 @@
-"""매일 옛 이름 스캔 래퍼: name_scan.py(읽기 전용)를 돌려 결과 md와 한 줄 요약을 남긴다.
+"""매일 옛 이름 스캔 래퍼: name_scan.py(읽기 전용)를 돌려 결과 md·json과 한 줄 요약을 남긴다.
 
-산출물: C:/work/_ops/name_scan/YYYY-MM-DD.md (전문), latest.txt (한 줄 요약, 감시 대장이 갱신 시각을 본다).
+산출물: C:/work/_ops/name_scan/YYYY-MM-DD.md·json(name_scan.py가 직접 씀, 다음날 기준선 비교에 쓰인다),
+latest.txt(한 줄 요약, 감시 대장이 갱신 시각을 본다). --no-write를 주면 json이 영영 안 남아
+기준선 비교가 매번 "없음"이 되므로(2026-10-22 사고) 반드시 기본 쓰기 경로로 돌린다.
 name_scan.py의 종료 코드 1은 '위반 있음'이라 정상 경로다. 그 밖(스캔 자체 실패)만 실패로 본다.
 """
 import datetime as dt
@@ -34,15 +36,17 @@ def summary_line(s, today):
 
 def main():
     today = dt.date.today().isoformat()
-    p = subprocess.run([sys.executable, str(HERE / "name_scan.py"), "--no-write"], capture_output=True,
+    p = subprocess.run([sys.executable, str(HERE / "name_scan.py")], capture_output=True,
                        timeout=900, creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
     text = p.stdout.decode("utf-8", errors="replace")
     s = parse_summary(text)
     if p.returncode not in (0, 1) or s is None:
         print("스캔 실패: rc=%s, 판정 줄 %s" % (p.returncode, "없음" if s is None else "있음"))
         return 2
+    if not (OUT_DIR / (today + ".json")).exists():
+        print("스캔 실패: json 미작성(%s)" % (OUT_DIR / (today + ".json")))
+        return 2
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    (OUT_DIR / (today + ".md")).write_text(text, encoding="utf-8")
     line = summary_line(s, today)
     (OUT_DIR / "latest.txt").write_text(line + "\n", encoding="utf-8")
     print(line)
