@@ -144,7 +144,7 @@ fi
 if [ -d docs/세션카드 ]; then
   if [ -f C:/work/_ops/session_card_off ]; then _card=off; else _card=on; fi
   if [ "$_card" = on ]; then
-    echo "🪪 세션 시작 카드(정식 도입 2026-10-11): 인수인계보다 먼저 docs/세션카드/<내 이름>.md 를 읽는다. 있는 카드: $(ls docs/세션카드 2>/dev/null | sed 's/\.md$//' | grep -v -e '^롤백$' -e '^README$' | tr '\n' ' ')"
+    echo "🪪 세션 시작 카드(정식 도입 2026-10-11): 인수인계보다 먼저 docs/세션카드/<내 이름>.md 를 읽는다(카빗 신원 이름의 `카빗_` 접두는 떼고 찾는다: 카빗_탐 → 탐, 카빗_노트 → 노트, 카빗_지투 → 지투). 있는 카드: $(ls docs/세션카드 2>/dev/null | sed 's/\.md$//' | grep -v -e '^롤백$' -e '^README$' | tr '\n' ' ')"
   fi
   { printf '{"ts":"%s","card":"%s","repo":"%s"}\n' "$(date +%Y-%m-%dT%H:%M:%S)" "$_card" "$(basename "$PWD")" >> C:/work/_ops/card_reads.jsonl; } 2>/dev/null || true
 fi
