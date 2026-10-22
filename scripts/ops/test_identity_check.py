@@ -67,3 +67,24 @@ def test_monitor_line_unknown_process_list_is_silent(tmp_path, monkeypatch):
     cfg.write_text('{}', encoding='utf-8')
     monkeypatch.setattr(ic, 'running_commandlines', lambda: None)
     assert ic.monitor_line('tam', str(tmp_path / '_ops')) == ''
+
+
+def test_monitor_line_ignores_unrelated_process_with_same_path(tmp_path):
+    root = tmp_path / '_ops'
+    cfg = root / 'carvit_tam' / 'autoreceive_config.json'
+    cfg.parent.mkdir(parents=True)
+    cfg.write_text('{}', encoding='utf-8')
+    fake = ['python unrelated.py --arg ' + cfg.as_posix()]
+    assert '모니터 꺼짐' in ic.monitor_line('tam', str(root), cmdlines=fake)
+
+
+def test_monitor_line_silent_without_ops_root_on_unknown_platform(monkeypatch):
+    monkeypatch.delenv('CARVIT_OPS_ROOT', raising=False)
+    monkeypatch.setattr(ic.os, 'name', 'posix')
+    assert ic.monitor_line('tam', cmdlines=[]) == ''
+
+
+def test_monitor_line_env_ops_root(tmp_path, monkeypatch):
+    root = tmp_path / 'ops'
+    monkeypatch.setenv('CARVIT_OPS_ROOT', str(root))
+    assert '설정 없음' in ic.monitor_line('tam', cmdlines=[])

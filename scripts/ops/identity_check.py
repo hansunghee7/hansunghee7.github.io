@@ -104,18 +104,24 @@ def running_commandlines():
                 capture_output=True, timeout=12, creationflags=subprocess.CREATE_NO_WINDOW)
         else:
             out = subprocess.run(['pgrep', '-af', 'python'], capture_output=True, timeout=12)
-        return out.stdout.decode('utf-8', 'replace').splitlines()
+        lines = out.stdout.decode('utf-8', 'replace').splitlines()
+        # 조회 실패나 빈 결과는 '꺼짐'이 아니라 '모르겠음'이다(이 훅 자신도 파이썬이라 정상이면 비지 않는다).
+        return lines if out.returncode == 0 and any(l.strip() for l in lines) else None
     except (OSError, subprocess.SubprocessError):
         return None
 
 
-def monitor_line(key, ops_root='C:/work/_ops', cmdlines=None):
+def monitor_line(key, ops_root=None, cmdlines=None):
     """항목 15: 세션 시작 때 내 수신기(모니터) 상태 한 줄. 켜져 있으면 ''.
 
     설정 파일이 없으면 만들라고, 있는데 프로세스가 없으면 켜는 명령을 보여 준다.
     프로세스 목록을 못 읽으면(None) 틀린 경고를 내지 않도록 ''을 돌려준다.
     """
     if not key:
+        return ''
+    # 설정 폴더 위치: 인자 > 환경변수 CARVIT_OPS_ROOT > Windows 기본값. Linux에서 위치를 모르면 틀린 경고 대신 침묵한다.
+    ops_root = ops_root or os.environ.get('CARVIT_OPS_ROOT') or ('C:/work/_ops' if os.name == 'nt' else '')
+    if not ops_root:
         return ''
     cfg = Path(ops_root) / f'carvit_{key}' / 'autoreceive_config.json'
     if not cfg.exists():
@@ -125,7 +131,8 @@ def monitor_line(key, ops_root='C:/work/_ops', cmdlines=None):
     if lines is None:
         return ''
     want = _norm(cfg)
-    if any(want in _norm(l) for l in lines):
+    # 설정 경로만 같고 다른 프로그램인 줄을 '켜짐'으로 오인하지 않도록 수신기 이름도 같이 본다.
+    if any(want in _norm(l) and 'autoreceive' in _norm(l).replace(want, '') for l in lines):
         return ''
     # 수신기 스크립트는 설정의 workdir(공용 메인 폴더)에 있다. 전용 워크트리에는 .carvit이 없다.
     try:
