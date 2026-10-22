@@ -26,6 +26,11 @@ else
   run_with_timeout() { "$@"; }
 fi
 
+# 카빗 신원 대조(P2H, 카빗DM 2차): 출력 맨 위에 내 이름 한 줄을 보이고(사장님 10/22: 이름을 먼저 붙이고 의식을 시킨다), 연결 서버 이름이 섞였으면 경고한다. 이름만 보고 토큰은 읽지 않는다. 실패해도 세션 시작을 막지 않는다.
+if command -v python3 >/dev/null 2>&1; then _IPY=python3; elif command -v python >/dev/null 2>&1; then _IPY=python; else _IPY=""; fi
+[ -n "$_IPY" ] && [ -f scripts/ops/identity_check.py ] && run_with_timeout "$_IPY" scripts/ops/identity_check.py 2>/dev/null
+
+
 # git worktree에서는 .git이 디렉터리가 아니라 파일이다(전용 워크트리에서 작업하는 세션들).
 # -d가 아니라 -e로 존재를 본 뒤, 아래에서 -d로 "원본 체크아웃 여부"를 따로 판단한다.
 if [ ! -e .git ]; then
