@@ -626,7 +626,7 @@
         },
         {
           "date": "2026-10-22",
-          "views": 5200,
+          "views": 5202,
           "likes": 34,
           "comments": 5
         }
@@ -1232,7 +1232,7 @@
         },
         {
           "date": "2026-10-22",
-          "views": 1071,
+          "views": 1072,
           "likes": 15,
           "comments": 1
         }
@@ -2866,7 +2866,7 @@
         },
         {
           "date": "2026-10-22",
-          "views": 2289,
+          "views": 2291,
           "likes": 20,
           "comments": 6
         }
@@ -2883,16 +2883,16 @@
           "published_at": "2026-09-22T11:33:19Z"
         },
         {
-          "author": "@박수soo",
-          "text": "택배 배달 일꾼들 막고..잘 먹고 사는지...",
-          "likes": 1,
-          "published_at": "2026-09-22T13:00:11Z"
-        },
-        {
           "author": "@None논논휴흏",
           "text": "저100m  저만큼 일을못하니 비용이 오르니깐\n추가 비용을 일반인 우리한테 전가시키는것 같은데?",
           "likes": 2,
           "published_at": "2026-09-22T12:07:38Z"
+        },
+        {
+          "author": "@박수soo",
+          "text": "택배 배달 일꾼들 막고..잘 먹고 사는지...",
+          "likes": 1,
+          "published_at": "2026-09-22T13:00:11Z"
         },
         {
           "author": "@마하赫晙",
@@ -3658,7 +3658,7 @@
         },
         {
           "date": "2026-10-22",
-          "views": 879,
+          "views": 881,
           "likes": 7,
           "comments": 0
         }
@@ -3774,7 +3774,7 @@
         },
         {
           "date": "2026-10-22",
-          "views": 1459,
+          "views": 1462,
           "likes": 11,
           "comments": 1
         }
@@ -4170,7 +4170,7 @@
         },
         {
           "date": "2026-10-22",
-          "views": 586,
+          "views": 587,
           "likes": 9,
           "comments": 1
         }
@@ -4380,7 +4380,7 @@
         },
         {
           "date": "2026-10-22",
-          "views": 1502,
+          "views": 1503,
           "likes": 32,
           "comments": 2
         }
@@ -4554,7 +4554,7 @@
         },
         {
           "date": "2026-10-22",
-          "views": 1444,
+          "views": 1446,
           "likes": 18,
           "comments": 1
         }
@@ -4634,8 +4634,8 @@
         },
         {
           "date": "2026-10-22",
-          "views": 1295,
-          "likes": 23,
+          "views": 1298,
+          "likes": 22,
           "comments": 1
         }
       ],
@@ -4662,7 +4662,7 @@
         },
         {
           "date": "2026-10-22",
-          "views": 1390,
+          "views": 1393,
           "likes": 8,
           "comments": 1
         }
@@ -4684,8 +4684,8 @@
       "history": [
         {
           "date": "2026-10-22",
-          "views": 1439,
-          "likes": 14,
+          "views": 1499,
+          "likes": 15,
           "comments": 2
         }
       ],
@@ -4705,6 +4705,28 @@
           "text": "갱폼은\n타워크레인으로 올리는데?",
           "likes": 1,
           "published_at": "2026-10-21T08:24:51Z"
+        }
+      ]
+    },
+    "AQKnNPLJ5RQ": {
+      "history": [
+        {
+          "date": "2026-10-22",
+          "views": 119,
+          "likes": 5,
+          "comments": 1
+        }
+      ],
+      "title": "새 엘리베이터로 교체 후 자꾸 갇히는 이유",
+      "published_at": "2026-10-22T08:00:35Z",
+      "thumbnail": "https://i.ytimg.com/vi/AQKnNPLJ5RQ/maxresdefault.jpg",
+      "duration_seconds": 70,
+      "top_comments": [
+        {
+          "author": "@sinkihanapt",
+          "text": "엘리베이터를 새로 바꾼 뒤 잦은 고장이나 갇힘을 겪어보신 적이 있으신가요?",
+          "likes": 0,
+          "published_at": "2026-10-22T08:05:00Z"
         }
       ]
     }
@@ -5008,13 +5030,93 @@
       },
       {
         "date": "2026-10-22",
-        "subscribers": 87,
-        "total_views": 48622,
-        "video_count": 37
+        "subscribers": 88,
+        "total_views": 51819,
+        "video_count": 38
       }
     ],
     "title": "신기한 아파트 사전",
     "id": "UCTbS2jSG1BvBl4c6EsVx7sA"
   },
-  "updated_at": "2026-10-21T23:35:01.762880Z"
+  "updated_at": "2026-10-22T11:39:13.023136Z",
+  "longform": {
+    "PxE6OYT5_wQ": {
+      "history": [
+        {
+          "date": "2026-10-22",
+          "views": 30,
+          "likes": 1,
+          "comments": 1
+        }
+      ],
+      "title": "19층 바닥에서 들리는 이상한 소리의 비밀",
+      "published_at": "2026-10-20T08:00:38Z",
+      "duration_seconds": 280
+    },
+    "-TkHmm-xkcU": {
+      "history": [
+        {
+          "date": "2026-10-22",
+          "views": 5666,
+          "likes": 6,
+          "comments": 1
+        }
+      ],
+      "title": "강남 아파트가 정말 이 구조 맞나요?",
+      "published_at": "2026-10-17T07:00:20Z",
+      "duration_seconds": 283
+    },
+    "dqhmE4Y-A3Q": {
+      "history": [
+        {
+          "date": "2026-10-22",
+          "views": 43,
+          "likes": 1,
+          "comments": 1
+        }
+      ],
+      "title": "성인 둘도 못 드는 소파를 혼자서 가볍게 옮기는 비밀",
+      "published_at": "2026-10-15T07:00:20Z",
+      "duration_seconds": 288
+    },
+    "Qz8K3v3wF4M": {
+      "history": [
+        {
+          "date": "2026-10-22",
+          "views": 98,
+          "likes": 2,
+          "comments": 1
+        }
+      ],
+      "title": "아파트에 불이 났는데 도망가다 죽을 수 있다고?",
+      "published_at": "2026-10-12T07:00:10Z",
+      "duration_seconds": 275
+    },
+    "f397goWwCLs": {
+      "history": [
+        {
+          "date": "2026-10-22",
+          "views": 328,
+          "likes": 1,
+          "comments": 1
+        }
+      ],
+      "title": "누수 책임의 반전. 과연 누가 책임을?",
+      "published_at": "2026-10-11T07:00:10Z",
+      "duration_seconds": 289
+    },
+    "bkcNZ9DZdVs": {
+      "history": [
+        {
+          "date": "2026-10-22",
+          "views": 982,
+          "likes": 2,
+          "comments": 0
+        }
+      ],
+      "title": "택배 배달을 거부당한 명품단지의 현실",
+      "published_at": "2026-10-06T07:50:04Z",
+      "duration_seconds": 312
+    }
+  }
 }
