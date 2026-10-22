@@ -33,6 +33,13 @@ class StuckGateTest(unittest.TestCase):
         self.assertIsNone(sg.check("배포를 마쳤습니다.", OTHER, False))
         self.assertIsNone(sg.check("코드 `budget = 상한` 만 보입니다.", OTHER, False))
 
+    def test_rate_cap_is_not_money_talk(self):
+        # 알림 횟수·빈도 상한은 돈 이야기가 아니다(카빗DM 3차 항목 19)
+        self.assertIsNone(sg.check("수신기 시간당 상한 6회를 넘어 깨우지 않음이 찍혔습니다.", [], False))
+        self.assertIsNone(sg.check("max_alerts_per_hour 설정으로 상한 초과 경고가 사라집니다.", [], False))
+        # 돈 상한은 그대로 걸린다
+        self.assertEqual(sg.check("예산 상한을 20달러로 올리세요.", [], False), "money-without-record-lookup")
+
     def test_defer_to_next_session_needs_record_lookup(self):
         # 2026-10-21 사장님 승인: "다음 세션에서 이어서 확인" 미룸은 같은 턴 기록 검색 필수, 인수인계 문장은 통과
         self.assertEqual(sg.check("이 판단은 다음 세션에서 이어서 하겠습니다.", OTHER, False), "defer-without-record-lookup")
