@@ -38,6 +38,8 @@ class StuckGateTest(unittest.TestCase):
         self.assertIsNone(sg.check("수신기 시간당 상한 6회를 넘어 깨우지 않음이 찍혔습니다.", [], False))
         self.assertIsNone(sg.check("max_alerts_per_hour 설정을 올렸습니다.", [], False))
         self.assertIsNone(sg.check("알림 발송 상한을 올렸습니다.", [], False))
+        # 지운 자리를 붙이지 않는다: "$알림 상한5"가 "$5"로 합쳐져 걸리면 안 된다(확장프로그램·소넷 검토 지적)
+        self.assertIsNone(sg.check("$알림 상한5회", [], False))
         # 돈 상한은 그대로 걸린다
         self.assertEqual(sg.check("이번 달 지출이 상한 초과했습니다.", [], False), "money-without-record-lookup")  # 오퍼스 검토 반영
         self.assertEqual(sg.check("API 비용의 하루 상한을 확인하세요", [], False), "money-without-record-lookup")  # 비티 검토 반영
