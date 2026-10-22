@@ -804,3 +804,12 @@ every_min = 10080
 timeout = 900
 name = "롱폼 검색 유입 주간 기록(유튜브 검색 조회·비중·5편 이동평균, search_weekly.py)"
 note = "2026-10-22 핏 등록(핏-발행#63, 슈퍼구루 2호 ③, 사장님 승인). 리포트 pilot-shorts2/검색유입_주간.md. 노출·클릭률은 API 미지원이라 스튜디오 값 필요. 첫 실행 성공 확인(공개 롱폼 5편)."
+
+[[job]]
+id = "fn:text-post-verify"
+kind = "cmd"
+cmd = ["python", 'C:\work\shorts-lab\tools\publish\text_post_verify.py', "--no-notify"]
+every_min = 1440
+timeout = 600
+name = "글 채널 게시 확인·지연 점검(링크드인·페북·인스타·스레드, text_post_verify.py)"
+note = "2026-10-22 핏 등록(마야 요청 슈퍼발행 글 채널 보강 ②, 핏-발행#63 계열). 종료 코드 1 = 지연·어긋남 있음(붉음). 첫 실행 게시확인 16건·문제 0건. 알림은 jobs 감시가 붉음을 알리므로 --no-notify."
