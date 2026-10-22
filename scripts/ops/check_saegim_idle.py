@@ -16,9 +16,9 @@ SECRETS_ENV = Path(r"C:\work\_ops\secrets\jitu_check_tenant.env")
 MAILBOX = r"C:\work\solar-bible\mailbox\mailbox.py"
 # 헤르메스 번들 파이썬의 mcp는 pywin32 없이 깔려 import에서 죽는다(지투 실측 2026-09-24). 시스템 파이썬으로 다시 실행한다.
 SYS_PY = r"C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\python.exe"
-if os.path.exists(SYS_PY) and os.path.normcase(sys.executable) != os.path.normcase(SYS_PY) and not os.environ.get("SAEGIM_IDLE_CHILD"):
+if os.path.exists(SYS_PY) and os.path.normcase(sys.executable) != os.path.normcase(SYS_PY) and not os.environ.get("CARVIT_IDLE_CHILD"):
     _env = {k: v for k, v in os.environ.items() if k not in ("PYTHONPATH", "PYTHONHOME")}
-    _env.update(SAEGIM_IDLE_CHILD="1", PYTHONIOENCODING="utf-8")
+    _env.update(CARVIT_IDLE_CHILD="1", PYTHONIOENCODING="utf-8")
     sys.exit(subprocess.run([SYS_PY, os.path.abspath(__file__), *sys.argv[1:]], env=_env).returncode)
 
 
