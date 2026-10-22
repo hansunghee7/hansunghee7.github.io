@@ -10,7 +10,8 @@ origin/main의 규칙 문서(CLAUDE.md·스킬·rules·docs), 훅(.claude/hooks)
 """
 import json
 import re
-import subprocess
+import subprocess
+_NW = getattr(subprocess, "CREATE_NO_WINDOW", 0)  # pythonw 등 콘솔 없는 부모가 git을 부르면 호출마다 CMD 창이 깜빡인다(사장님 10/22, 1분에 20회)
 import sys
 from collections import defaultdict
 from pathlib import Path
@@ -23,7 +24,7 @@ TABLE_RE = re.compile(r"select\(\s*['\"]([a-z_]+)['\"]|section['\"]?\s*[:=]\s*['
 
 
 def git(*a):
-    return subprocess.run(["git", "-c", "core.quotepath=false", "-C", str(REPO)] + list(a), capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=120).stdout
+    return subprocess.run(["git", "-c", "core.quotepath=false", "-C", str(REPO)] + list(a), capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=120, creationflags=_NW).stdout
 
 
 def build():

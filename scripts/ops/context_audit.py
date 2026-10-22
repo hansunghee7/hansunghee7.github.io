@@ -12,7 +12,8 @@ Claude API(api_run.py, 프로모션 크레딧)로 '반복되는 실수 → 원�
 import collections
 import json
 import re
-import subprocess
+import subprocess
+_NW = getattr(subprocess, "CREATE_NO_WINDOW", 0)  # pythonw 등 콘솔 없는 부모가 git을 부르면 호출마다 CMD 창이 깜빡인다(사장님 10/22, 1분에 20회)
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -144,7 +145,7 @@ def strategy_excerpt():
     repo = Path(__file__).resolve().parents[2]
     parts = []
     for f, n in (("docs/슈퍼프로세스.md", 40), ("docs/문서_다이어트_기준.md", 30)):
-        r = subprocess.run(["git", "-c", "core.quotepath=false", "-C", "C:/work/hansunghee7.github.io", "show", f"origin/main:{f}"], capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=30)
+        r = subprocess.run(["git", "-c", "core.quotepath=false", "-C", "C:/work/hansunghee7.github.io", "show", f"origin/main:{f}"], capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=30, creationflags=_NW)
         parts.append(f"## {f}\n" + "\n".join(r.stdout.splitlines()[:n]))
     return "\n\n".join(parts)
 
@@ -152,11 +153,11 @@ def strategy_excerpt():
 def ledger_view():
     """수정 경험 장부(ctxfix, 운영 DB) 현황을 판정 재료로 붙인다. 실패하면 비운다(1차·영향 검토는 그대로 진행)."""
     try:
-        r = subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "ctxfix.py"), "list"], capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=120)
+        r = subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "ctxfix.py"), "list"], capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=120, creationflags=_NW)
         rows = r.stdout.strip().splitlines()
-        rc = subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "ctxfix.py"), "recheck"], capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=300)
+        rc = subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "ctxfix.py"), "recheck"], capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=300, creationflags=_NW)
         # 혼란 정보 후보(사장님 10/15 "혼란스럽게 만드는 정보는 찾기 어렵게"): 폐기·대체 표시가 있는데 1차 자리에 남은 카드
-        cs = subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "confusion_scan.py"), "--top", "25"], capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=120)
+        cs = subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "confusion_scan.py"), "--top", "25"], capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=120, creationflags=_NW)
         cf = Path("C:/work/_ops/context_audit") / f"confusion_{datetime.now():%Y%m%d}.md"
         conf = ("\n[혼란 정보 후보]\n" + cf.read_text(encoding="utf-8")[:2500]) if cs.returncode == 0 and cf.exists() else ""
         return "\n".join(rows[:30]) + "\n[오늘 재발 판정]\n" + rc.stdout.strip()[:2000] + conf
@@ -183,11 +184,11 @@ def volume_view():
     out = []
     try:
         ls = subprocess.run(["git", "-c", "core.quotepath=false", "-C", repo, "ls-tree", "-r", "--name-only", "origin/main"],
-                            capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=60).stdout.splitlines()
+                            capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=60, creationflags=_NW).stdout.splitlines()
         for pat, limit, why in VOLUME_RULES:
             for f in [x for x in ls if fnmatch.fnmatch(x, pat)]:
                 n = len(subprocess.run(["git", "-C", repo, "show", f"origin/main:{f}"], capture_output=True, text=True,
-                                       encoding="utf-8", errors="replace", timeout=30).stdout.splitlines())
+                                       encoding="utf-8", errors="replace", timeout=30, creationflags=_NW).stdout.splitlines())
                 if n > limit * 0.9:
                     out.append(f"- {f}: {n}줄 / 상한 {limit} ({'넘침' if n > limit else '90% 이상'}, {why})")
         cutoff = datetime.now().timestamp() - 30 * 86400
