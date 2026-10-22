@@ -109,7 +109,7 @@ def check(text, tools, has_error=True):
         return "bt-claim-without-vertex-check"
     if ASK_TAG.search(text) and not consulted(tools, RECORD_REF):
         return "ask-without-record-lookup"
-    if MONEY.search(NOT_MONEY.sub("", CODE.sub("", text))) and not consulted(tools, RECORD_REF):
+    if MONEY.search(NOT_MONEY.sub(" ", CODE.sub("", text))) and not consulted(tools, RECORD_REF):
         return "money-without-record-lookup"
     if PROPOSE.search(CODE.sub("", text)) and not consulted(tools, RECORD_REF):
         return "propose-without-record-lookup"
