@@ -795,3 +795,12 @@ every_min = 1440
 timeout = 900
 name = "게시 후 확인(틱톡 영상별 존재 확인·유튜브 예약 지남 점검, post_verify.py)"
 note = "2026-10-22 핏 등록(핏-발행#61 P1, 사장님 승인 '제안준대로 진행'). 종료 코드 1 = DESYNC·STUCK·OVERDUE 있음(붉음). 리포트 pilot-shorts2/게시확인_리포트.md. 첫 실행 VERIFIED 16건·문제 0건 확인. 인스타·페북·스레드는 존재 확인 수단 없음(AItoEarn 상태만)."
+
+[[job]]
+id = "fn:search-weekly"
+kind = "cmd"
+cmd = ["python", 'C:\work\shorts-lab	ools\perf\search_weekly.py']
+every_min = 10080
+timeout = 900
+name = "롱폼 검색 유입 주간 기록(유튜브 검색 조회·비중·5편 이동평균, search_weekly.py)"
+note = "2026-10-22 핏 등록(핏-발행#63, 슈퍼구루 2호 ③, 사장님 승인). 리포트 pilot-shorts2/검색유입_주간.md. 노출·클릭률은 API 미지원이라 스튜디오 값 필요. 첫 실행 성공 확인(공개 롱폼 5편)."
