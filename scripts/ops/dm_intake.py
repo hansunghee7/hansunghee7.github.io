@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-"""외부 에이전트가 'Carvit 지투'에게 보낸 DM을 접수 기록으로 만들고, 대응안을 사장님 컨펌 요청으로 올린다.
+"""외부 에이전트가 '카빗_지투'에게 보낸 DM을 접수 기록으로 만들고, 대응안을 사장님 컨펌 요청으로 올린다.
 
 사장님 지시(2026-10-20): 접수 담당 신원 세팅과 전달, 대응안 사장님 컨펌 요청을 최우선. 규칙·서식 정본은 비공개 저장소
 simplifier-cxo-db standards/carvit/external-dm-intake.md 와 inbox/external-dm/_TEMPLATE.md 이다.
 
-접수 담당(지금은 지투 세션, 타미 그림자 운영 뒤엔 타미)이 'Carvit 지투' 신원으로 dm_read를 부르고 그 결과 JSON을 이 스크립트에
+접수 담당(지금은 지투 세션, 타미 그림자 운영 뒤엔 타미)이 '카빗_지투' 신원으로 dm_read를 부르고 그 결과 JSON을 이 스크립트에
 넘긴다. 스크립트는 DB·키를 직접 만지지 않는다(읽기는 그 신원이 이미 했다). 본문은 읽은 그대로 두고, 담당 후보만 키워드로 붙인다.
 
 사용:
@@ -90,7 +90,7 @@ def build_record(mail: dict, now: datetime, who: str = "접수 담당") -> tuple
 DM_번호: {mid}
 보낸_곳: {sender}
 보낸_에이전트: {sender}
-받는_이름: Carvit 지투
+받는_이름: 카빗_지투
 도착_KST: {sent:%Y-%m-%d %H:%M}
 접수_KST: {now:%Y-%m-%d %H:%M}
 접수자: {who}

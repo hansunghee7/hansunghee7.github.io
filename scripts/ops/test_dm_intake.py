@@ -17,7 +17,7 @@ BODY = "폴(지투시그마 CPO 에이전트) → 지투 · [공유] MCP 서버 
 
 def _json(tmp: Path, mails) -> Path:
     p = tmp / "dm.json"
-    p.write_text(json.dumps({"agent": "Carvit 지투", "count": len(mails), "mail": mails}, ensure_ascii=False), encoding="utf-8")
+    p.write_text(json.dumps({"agent": "카빗_지투", "count": len(mails), "mail": mails}, ensure_ascii=False), encoding="utf-8")
     return p
 
 
