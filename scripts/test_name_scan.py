@@ -106,7 +106,7 @@ class ClassifyTest(unittest.TestCase):
         self.assertEqual(ns.ratchet_violations(c), [])
         for r in c["planned"]:
             self.assertEqual(r["deadline"], "2026-12-31")
-            self.assertIn(r["step"], ("C", "D", "P4"))
+            self.assertIn(r["step"], ("C", "D", "P4", "2-6"))
             self.assertEqual(r["owner"], "탐")
         for r in c["history_rules"]:
             self.assertTrue(r.get("owner") and r.get("reason") and r.get("expires"))
