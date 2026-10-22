@@ -38,6 +38,7 @@ class StuckGateTest(unittest.TestCase):
         self.assertIsNone(sg.check("수신기 시간당 상한 6회를 넘어 깨우지 않음이 찍혔습니다.", [], False))
         self.assertIsNone(sg.check("max_alerts_per_hour 설정으로 상한 초과 경고가 사라집니다.", [], False))
         # 돈 상한은 그대로 걸린다
+        self.assertEqual(sg.check("API 비용의 하루 상한을 확인하세요", [], False), "money-without-record-lookup")  # 비티 검토 반영
         self.assertEqual(sg.check("예산 상한을 20달러로 올리세요.", [], False), "money-without-record-lookup")
 
     def test_defer_to_next_session_needs_record_lookup(self):
