@@ -37,7 +37,8 @@ PATTERN = re.compile(NEEDLE, re.IGNORECASE)
 PATTERN_NFD = re.compile(unicodedata.normalize("NFD", NEEDLE), re.IGNORECASE)
 CATEGORIES = ("history", "explain", "planned", "external", "unverified", "violation")
 CAT_KO = {"history": "히스토리", "explain": "설명", "planned": "예정", "external": "외부제약", "unverified": "미확인", "violation": "위반"}
-KIND_KO = {"content": "내용 적중", "path": "파일·폴더 이름 적중", "branch": "브랜치 이름", "tag": "태그 이름", "ratchet": "허용목록 증가"}
+KIND_KO = {"content": "내용 적중", "path": "파일·폴더 이름 적중", "branch": "브랜치 이름", "tag": "태그 이름", "ratchet": "허용목록 증가",
+           "remote_file": "원격 PC 파일 적중", "remote_cron": "원격 PC 크론 적중"}
 LAYER_KO = {0: "설정", 1: "층1 파일", 2: "층2 실행환경", 3: "층3 외부서비스"}
 
 # ---------------------------------------------------------------- 읽기 전용 호출 관문
@@ -79,6 +80,19 @@ GH_GCLOUD_SPECS = {
     ("gcloud", "iam", "service-accounts", "list"): ({"--project": r"[\w.:-]+", "--format": r"value\([\w.]+\)", "--quiet": None}, []),
     ("gcloud", "secrets", "list"): ({"--project": r"[\w.:-]+", "--format": r"value\([\w.]+\)", "--quiet": None}, []),
 }
+
+
+# 구PC(원격) 읽기: 고정 형태의 ssh만. 원격 명령은 개수·파일 경로만 내보내고 내용 줄은 내보내지 않는다.
+# [옛이름 허용: 스캐너가 검색 패턴 자체를 원격 명령에 인용해야 함]
+SSH_HEAD = ["ssh", "-o", "ConnectTimeout=8", "-o", "BatchMode=yes"]
+REMOTE_CRON_SCRIPT = "crontab -l 2>/dev/null | grep -Eic 'saegim|새김'"
+REMOTE_FILES_RX = (r"grep -rIcE 'saegim\|새김' (?:\$HOME/[\w./*-]+ )+--exclude-dir=\.git --exclude-dir=node_modules --exclude-dir=__pycache__ "
+                   r"--exclude-dir=backup --exclude='\*\.log' --exclude='\*\.bak\*' 2>/dev/null \| grep -v ':0\$'")
+
+
+def remote_files_script(roots):
+    return ("grep -rIcE 'saegim|새김' " + " ".join(roots) + " --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=__pycache__ "
+            "--exclude-dir=backup --exclude='*.log' --exclude='*.bak*' 2>/dev/null | grep -v ':0$'")
 
 
 class ForbiddenCommand(Exception):
@@ -140,6 +154,12 @@ def check_readonly(argv):
     if tokens[0] == "powershell":
         if len(tokens) != 5 or tokens[:4] != PS_HEAD or tokens[4] not in PS_ALLOWED:
             raise ForbiddenCommand("허용되지 않은 파워셸 호출")
+        return
+    if tokens[0] == "ssh":
+        if len(tokens) != 7 or tokens[:5] != SSH_HEAD or not re.fullmatch(r"[\w.-]+", tokens[5]):
+            raise ForbiddenCommand("허용되지 않은 ssh 호출")
+        if tokens[6] != REMOTE_CRON_SCRIPT and not re.fullmatch(REMOTE_FILES_RX, tokens[6]):
+            raise ForbiddenCommand("허용되지 않은 원격 명령")
         return
     if tokens[0] == "schtasks":
         if [t.lower() for t in tokens] != ["schtasks", "/query", "/fo", "csv", "/nh"]:
@@ -439,6 +459,34 @@ def collect_tasks(runner=None, timeout=60):
             if matches(row[0]):
                 res["findings"].append(finding(2, "task", row[0], None))
     res["stats"] = {"tasks_seen": len(seen)}
+    return res
+
+
+def collect_remote(host_cfg, runner=None, timeout=60):
+    """구PC 같은 원격 PC: 크론 줄 수와 옛 이름이 든 파일 경로·건수만 읽는다(내용 줄은 읽지 않는다)."""
+    name, host = host_cfg["name"], host_cfg["host"]
+    res = new_result(2, "remote:" + name)
+    head = SSH_HEAD + [host]
+    rc, out, err = run_cmd(head + [REMOTE_CRON_SCRIPT], timeout=timeout, runner=runner)
+    if rc not in (0, 1):  # grep -c 는 0건이면 종료 코드 1
+        add_unverified(res, name + " 크론", short_reason(err))
+    else:
+        res["ok"] += 1
+        n = int((dec(out).strip() or "0").split()[0])
+        if n:
+            res["findings"].append(finding(2, "remote_cron", name + " crontab", None, count=n))
+    rc, out, err = run_cmd(head + [remote_files_script(host_cfg["roots"])], timeout=timeout, runner=runner)
+    if rc not in (0, 1):
+        add_unverified(res, name + " 파일", short_reason(err))
+        return res
+    res["ok"] += 1
+    files = 0
+    for line in dec(out).splitlines():
+        path, _, cnt = line.rpartition(":")
+        if path and cnt.isdigit() and int(cnt):
+            files += 1
+            res["findings"].append(finding(2, "remote_file", "%s:%s" % (name, path), None, count=int(cnt)))
+    res["stats"] = {"remote_files_hit": files}
     return res
 
 
@@ -845,6 +893,8 @@ def build_collectors(cfg, layers, repos, runner=None, timeout=60):
     if 2 in layers:
         cs += [(2, "env_names", lambda: collect_env_names(runner, timeout)), (2, "scheduled_tasks", lambda: collect_tasks(runner, timeout)),
                (2, "processes", lambda: collect_processes(runner, timeout)), (2, "mcp_servers", lambda: collect_mcp())]
+        for h in cfg.get("remote_hosts", []):
+            cs.append((2, "remote:" + h["name"], lambda h=h: collect_remote(h, runner, timeout)))
     if 3 in layers:
         cs += [(3, "github", lambda: collect_github(cfg, runner, timeout)), (3, "gcp", lambda: collect_gcp(runner, timeout))]
     return cs
