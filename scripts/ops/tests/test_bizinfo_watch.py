@@ -20,6 +20,8 @@ def test_parse_empty_returns_empty_list():
     assert bw.parse("<html>구조가 바뀐 페이지</html>") == []
 
 
-def test_hit_matches_keywords_case_insensitive():
-    assert "AI" in bw.hit("2026 ai 바우처")
-    assert bw.hit("소상공인 컨설팅") == []
+def test_classify_is_case_insensitive_and_skips_unrelated():
+    # 키워드 판정은 notice_filter.classify로 옮겼다(2026-10-22 마야): 바우처는 후보, 무관한 공고는 None
+    assert bw.classify("2026 ai 바우처") == "digest"
+    assert bw.classify("소상공인 컨설팅") is None
+    assert bw.classify("시설농업 AI로봇 실증기반 구축사업") is None
