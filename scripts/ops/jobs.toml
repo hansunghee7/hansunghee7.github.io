@@ -63,11 +63,8 @@ kind = "hermes_cron"
 name = "health-check"
 period_min = 30
 
-[[job]]
-id = "hermes:daily_briefing"
-kind = "hermes_cron"
-name = "daily_briefing"
-period_min = 1440
+# 2026-10-22 마야: hermes daily_briefing(AI 에이전트 동향 8대 트렌드 텔레그램 DM)은 사장님 지시로 통폐합해 일시 정지했다(사장님 '통폐합 가능', 마야#204).
+# 되돌리려면 hermes cron resume 4dceb5c48d72. 우리와 닿는 동향은 슈퍼인박스 인사이트 칸과 구글 알리미(우리 업종 알리미)가 맡는다. 정지된 크론은 감시하지 않는다.
 
 # 2026-10-02 탐 N105: 헤르메스 크론 communication_watcher.py은 구PC cron(~/ops/checks/run_check.sh)으로 이관, 신PC 헤르메스 쪽은 pause(되돌리려면 hermes cron resume). 감시는 구PC 대장.
 
