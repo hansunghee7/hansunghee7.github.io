@@ -98,21 +98,48 @@ def push(path, day, cxo=None):
 
 
 DIGEST = Path("C:/work/_ops/grants_prep/notice_digest.jsonl")
+ALERT_FEEDS = Path("C:/work/_ops/grants_prep/alert_feeds.json")  # 구글 알리미 RSS 주소 목록(주소 자체가 열쇠라 저장소 밖)
+
+
+def alert_items(since):
+    """구글 알리미 RSS(Atom) 항목 중 since(YYYY-MM-DD) 이후 것. 못 읽으면 빈 목록(브리핑을 막지 않는다)."""
+    import html
+    import re
+    import urllib.parse
+    import urllib.request
+    if not ALERT_FEEDS.exists():
+        return []
+    out = []
+    for url in json.loads(ALERT_FEEDS.read_text(encoding="utf-8")):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+            xml = urllib.request.urlopen(req, timeout=30).read().decode("utf-8")
+        except OSError:
+            continue
+        for e in re.findall(r"<entry>(.*?)</entry>", xml, re.S):
+            when = (re.search(r"<published>([^<]+)", e) or re.search(r"<updated>([^<]+)", e))
+            title = re.search(r"<title[^>]*>(.*?)</title>", e, re.S)
+            link = re.search(r'<link[^>]*href="([^"]+)"', e)
+            if not (when and title and link) or when.group(1)[:10] < since:
+                continue
+            t = re.sub(r"<[^>]+>", "", html.unescape(html.unescape(title.group(1))))
+            q = urllib.parse.parse_qs(urllib.parse.urlparse(html.unescape(link.group(1))).query)
+            out.append({"source": "알리미", "title": t[:70], "url": (q.get("url") or [link.group(1)])[0]})
+    return out
 
 
 def trends(today, days=2, limit=5):
     """공고 후보(digest) 최근 N일. 파일이 없으면 빈 목록(첫 후보가 쌓이기 전)."""
-    if not DIGEST.exists():
-        return []
     since = (today - dt.timedelta(days=days)).isoformat()
     out = []
-    for ln in DIGEST.read_text(encoding="utf-8").splitlines():
+    for ln in (DIGEST.read_text(encoding="utf-8").splitlines() if DIGEST.exists() else []):
         try:
             r = json.loads(ln)
         except ValueError:
             continue
         if r.get("at", "")[:10] >= since:
             out.append({"source": r.get("source"), "title": (r.get("title") or "")[:70], "url": r.get("url")})
+    out += alert_items(since)
     return out[-limit:]
 
 
