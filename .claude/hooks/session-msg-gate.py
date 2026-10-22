@@ -15,10 +15,10 @@ except Exception:
 
 PERSONAS = {"지투", "탐", "노트", "마야", "핏", "북", "폴", "덱스", "비티", "페이브", "타미"}
 APPROVE = re.compile(r"승인|써도|써라|보내|허용|오케이|ㅇㅋ|\bok\b|진행")
-TOPIC = re.compile(r"세션\s*메시지")
+TOPIC = re.compile(r"세션\s*메[시세]지")  # 사장님은 '세션메세지'로도 쓰신다(2026-10-22)
 NOT_HUMAN = ("SYSTEM NOTIFICATION", "<system-reminder>", "<task-notification>", "<wake reason",
              "Stop hook feedback", "<cross-session-message", "<side-sessions-event>")
-WINDOW_MIN = 120
+WINDOW_MIN = 1440  # 사장님 2026-10-22: 제약을 풀어 달라는 지시로 120분에서 하루로 늘림
 
 
 def text_of(content):
@@ -74,7 +74,7 @@ def main():
             pass  # 시각을 못 읽으면 문구만 본다
         sys.exit(0)
     block("에이전트끼리 세션 메시지는 사장님 승인이 있어야 쓸 수 있습니다(사장님 2026-10-20, 장애 예외 없음). "
-          "먼저 카빗DM(dm_send)으로 보내세요. 꼭 세션 메시지가 필요하면 사장님께 알리고 '세션메시지 사용 승인'을 받은 뒤 다시 시도하세요(승인은 120분간 유효).")
+          "먼저 카빗DM(dm_send)으로 보내세요. 꼭 세션 메시지가 필요하면 사장님께 알리고 '세션메시지 사용 승인'을 받은 뒤 다시 시도하세요(승인은 24시간 유효, '세션메세지'로 써도 됩니다).")
 
 
 main()
