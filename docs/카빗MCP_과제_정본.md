@@ -142,7 +142,7 @@
 
 남은 기술 실측:
 
-- PyPI 게시(B5): 신뢰 게시자 등록 완료(10/22, 프로젝트 carvit-autoreceive, 저장소 hansunghee7/simplifier-saegim, 워크플로 publish-autoreceive.yml, 환경 pypi). 첫 수동 실행은 구PC 실행기 시스템 파이썬의 PEP 668 때문에 uv 설치 단계에서 실패했고 PyPI에는 아무것도 올라가지 않았다. 수정 PR(임시 venv, 작성자 Carvit hello@carvit.ai) 병합 뒤 0.1.1 실행과 `uvx` 설치 확인이 남았다. 신뢰 게시자가 실제로 동작하는지는 그때 처음 확인된다.
+- PyPI 게시(B5): 신뢰 게시자 등록 완료(10/22, 프로젝트 carvit-autoreceive, 저장소 hansunghee7/simplifier-saegim, 워크플로 publish-autoreceive.yml, 환경 pypi). 첫 수동 실행은 구PC 실행기 시스템 파이썬의 PEP 668 때문에 uv 설치 단계에서 실패했고 PyPI에는 아무것도 올라가지 않았다. 수정 PR(임시 venv, 작성자 Carvit 역할 주소(고객 문의 주소)) 병합 뒤 0.1.1 실행과 `uvx` 설치 확인이 남았다. 신뢰 게시자가 실제로 동작하는지는 그때 처음 확인된다.
 - B4 S2 재현: 같은 주소의 계정 커넥터가 있을 때와 없을 때를 번갈아 재현하는 반복 시험(사장님 계정 조작 필요).
 
 보류: Help 소통 결과 전달(카드 #36·#37, 첫 외부 사용자가 설치에서 막힐 때 만든다).
