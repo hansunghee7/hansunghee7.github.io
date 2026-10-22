@@ -8,7 +8,7 @@ carvit_tam 과 carvit-jitu 가 함께 있으면) 에이전트가 남의 이름�
 사용: python scripts/ops/identity_check.py [--cwd 폴더] [--claude-json 경로] [--persona 탐]
 종료 코드: 0 정상(내 이름 한 줄 출력), 1 경고(섞임·미등록·기대 이름 불일치·이름 없음).
 """
-import argparse, json, os, re, sys, time
+import argparse, json, os, re, subprocess, sys, time
 from pathlib import Path
 
 LOG = Path('C:/work/_ops/identity_check.log')
@@ -81,6 +81,63 @@ def who_line(servers):
     return f'🪪 너는 {p}({srv})이다. 세션 시작 의식(session-start 스킬)을 먼저 하세요. 이미 했다면 건너뛴다.'
 
 
+def persona_key(servers):
+    """서버 이름이 한 사람 것으로 정해지면 그 영문 이름(예: tam), 아니면 ''."""
+    keys = set()
+    for s in servers:
+        if persona_of(s)[0] == 'known':
+            keys.add(re.fullmatch(r'carvit(?:_kabit)?[-_](.+)', s).group(1).replace('kabit-', ''))
+    return keys.pop() if len(keys) == 1 else ''
+
+
+def _norm(p):
+    return str(p).replace(chr(92), '/').lower()
+
+
+def running_commandlines():
+    """실행 중인 파이썬 프로세스의 명령줄 목록(실패하면 None: 모르면 경고하지 않는다)."""
+    try:
+        if os.name == 'nt':
+            out = subprocess.run(
+                ['powershell', '-NoProfile', '-Command',
+                 "Get-CimInstance Win32_Process -Filter \"Name like 'python%'\" | ForEach-Object { $_.CommandLine }"],
+                capture_output=True, timeout=12, creationflags=subprocess.CREATE_NO_WINDOW)
+        else:
+            out = subprocess.run(['pgrep', '-af', 'python'], capture_output=True, timeout=12)
+        return out.stdout.decode('utf-8', 'replace').splitlines()
+    except (OSError, subprocess.SubprocessError):
+        return None
+
+
+def monitor_line(key, ops_root='C:/work/_ops', cmdlines=None):
+    """항목 15: 세션 시작 때 내 수신기(모니터) 상태 한 줄. 켜져 있으면 ''.
+
+    설정 파일이 없으면 만들라고, 있는데 프로세스가 없으면 켜는 명령을 보여 준다.
+    프로세스 목록을 못 읽으면(None) 틀린 경고를 내지 않도록 ''을 돌려준다.
+    """
+    if not key:
+        return ''
+    cfg = Path(ops_root) / f'carvit_{key}' / 'autoreceive_config.json'
+    if not cfg.exists():
+        return (f'🔴 카빗DM 모니터 설정 없음({cfg.as_posix()}): 수신이 꺼진 채 시작했다. '
+                'autoreceive_setup으로 코드를 받아 설정을 만든 뒤 모니터를 켠다(앱 세션 제외 안내가 나와도 stdout+Monitor 방식은 앱에서 돈다).')
+    lines = running_commandlines() if cmdlines is None else cmdlines
+    if lines is None:
+        return ''
+    want = _norm(cfg)
+    if any(want in _norm(l) for l in lines):
+        return ''
+    # 수신기 스크립트는 설정의 workdir(공용 메인 폴더)에 있다. 전용 워크트리에는 .carvit이 없다.
+    try:
+        workdir = json.loads(cfg.read_text(encoding='utf-8')).get('workdir') or ''
+    except (OSError, ValueError):
+        workdir = ''
+    workdir = workdir or Path(__file__).resolve().parent.parent.parent.as_posix()
+    return ('🔴 카빗DM 모니터 꺼짐: 새 세션은 모니터 없이 시작한다. 첫 보고 전에 Monitor 도구(timeout_ms 1800000)로 켠다: '
+            f'python {workdir}/.carvit/autoreceive/carvit_autoreceive.py --config {cfg.as_posix()} '
+            '(신호 1건이나 30분 만료 뒤에는 같은 명령으로 다시 건다)')
+
+
 def main():
     try:
         sys.stdout.reconfigure(encoding='utf-8')
@@ -91,6 +148,7 @@ def main():
     ap.add_argument('--claude-json', default=str(Path.home() / '.claude.json'))
     ap.add_argument('--persona', default=os.environ.get('CARVIT_PERSONA', ''))
     ap.add_argument('--no-log', action='store_true')
+    ap.add_argument('--no-monitor', action='store_true', help='수신기 상태 확인을 건너뛴다')
     a = ap.parse_args()
     servers = servers_for(a.cwd, a.claude_json)
     warns = check(servers, a.persona or None)
@@ -108,6 +166,10 @@ def main():
     line = who_line(servers)
     if line:
         print(line)
+    if not a.no_monitor:
+        ml = monitor_line(persona_key(servers))
+        if ml:
+            print(ml)
     return 0
 
 
