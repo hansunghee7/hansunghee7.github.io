@@ -114,6 +114,7 @@ def cloud_main(who):
 def main():
     sys.stdout.reconfigure(encoding='utf-8')
     who = sys.argv[1] if len(sys.argv) > 1 else '탐'
+    who = re.sub(r'^(카빗_|carvit[_-])', '', who, flags=re.I)  # 카빗 신원 이름(카빗_탐)을 페르소나 이름(탐)으로
     if opsdb is None or not STATUS.exists() or '--cloud' in sys.argv:
         return cloud_main(who)
     synced = ensure_fresh()
