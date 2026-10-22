@@ -830,3 +830,11 @@ path = 'C:\work\_ops\flash_logger.alive'
 max_age_min = 10
 name = "콘솔 창 깜빡임 상시 기록기(작업 스케줄러 핏_창기록, 로그온 때 시작, console_flash_logger.py)"
 note = "2026-10-22 핏 등록(핏-영상생성#113). 창이 뜰 때마다 시각·부모→자식 프로세스를 C:/work/_ops/flash_log.jsonl에 기록(3일 보관). 30초마다 alive 파일 갱신, 10분 넘게 안 갱신되면 멈춤. 읽기: console_flash_logger.py --report 10. 절차 docs/콘솔창_범인색출_절차.md, 스킬 console-flash-hunt"
+
+[[job]]
+id = "cron:meeting-brief"
+kind = "file_age"
+path = 'C:\work\_ops\meeting_brief\last-run.txt'
+max_age_min = 600
+name = "마야 회의록 자동 브리핑(클로드 앱 예약 작업 maya-meeting-brief, 매일 07·13·17·22시 07분)"
+note = "2026-10-22 마야#228 등록. 클로드 데스크톱 앱이 이 PC에서 새 세션으로 돌리는 예약 작업이라 앱이 꺼져 있으면 멈춘다. 실행 끝에 생존 신호 파일(last-run.txt)을 남기고, 10시간 넘게 갱신이 없으면 멈춤으로 본다(가장 긴 정상 간격 9시간)."
