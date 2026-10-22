@@ -219,8 +219,26 @@ def main():
                 short_count = 0
                 for vid, item in details.items():
                     duration = parse_duration_seconds(item.get("contentDetails", {}).get("duration"))
-                    if duration is None or duration > MAX_SHORT_SECONDS:
-                        continue  # 숏츠가 아니면 건너뜀(롱폼은 이 페이지 범위 밖)
+                    if duration is None:
+                        continue
+                    if duration > MAX_SHORT_SECONDS:
+                        # 롱폼은 숏츠 카드와 섞이지 않게 별도 키 longform에 조회·좋아요·댓글 수만 쌓는다(핏-KPI #25).
+                        # 시청 시간·영상별 구독 증가는 Data API에 없다(Analytics API 인증이 필요).
+                        lf = data.setdefault("longform", {}).setdefault(vid, {"history": []})
+                        lf["title"] = item.get("snippet", {}).get("title")
+                        lf["published_at"] = item.get("snippet", {}).get("publishedAt")
+                        lf["duration_seconds"] = duration
+                        lstats = item.get("statistics", {})
+                        try:
+                            upsert(lf["history"], today, {
+                                "date": today,
+                                "views": int(lstats.get("viewCount", 0)),
+                                "likes": int(lstats["likeCount"]) if "likeCount" in lstats else None,
+                                "comments": int(lstats["commentCount"]) if "commentCount" in lstats else None,
+                            })
+                        except ValueError:
+                            pass
+                        continue
                     short_count += 1
                     snippet = item.get("snippet", {})
                     vstats = item.get("statistics", {})
