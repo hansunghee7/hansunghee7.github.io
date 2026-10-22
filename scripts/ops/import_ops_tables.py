@@ -4,6 +4,7 @@
 표 정의: cxo-db reports/n155/schema_v1_phaseA.sql. 사용: python scripts/ops/import_ops_tables.py [--dry] [--with-steps]
 --with-steps: 슈퍼프로젝트 문서의 '## 진행표' 절을 project_steps 표로도 복사한다(옵션이 없으면 예전 동작 그대로)."""
 import csv
+import os
 import re
 import sys
 from datetime import datetime, timezone, timedelta
@@ -230,7 +231,13 @@ def last_id(t):
     return r[0]['id'] if r else 0
 
 
-STEP_DOCS = ['docs/옛이름_소거_슈퍼프로젝트.md']  # '## 진행표' 절을 가진 슈퍼프로젝트 문서(새 문서는 여기에 더한다)
+STEP_DOCS = ['docs/옛이름_소거_슈퍼프로젝트.md', 'cxo:projects/카빗페이지/헌장.md']  # 'cxo:' 는 비공개 저장소(환경변수 CXO_DB_REPO, 기본 C:/work/simplifier-cxo-db) 안 경로. '## 진행표' 절을 가진 슈퍼프로젝트 문서(새 문서는 여기에 더한다)
+
+
+def step_path(p):
+    if p.startswith('cxo:'):
+        return Path(os.environ.get('CXO_DB_REPO', r'C:\work\simplifier-cxo-db')) / p[4:]
+    return REPO / p
 
 
 def parse_project_tables(paths):
@@ -243,7 +250,7 @@ def parse_project_tables(paths):
             lines = path.read_text(encoding='utf-8', errors='replace').splitlines()
         except OSError:
             continue
-        project = re.sub(r'_슈퍼프로젝트$', '', path.stem)
+        project = path.parent.name if path.stem == '헌장' else re.sub(r'_슈퍼프로젝트$', '', path.stem)
         in_sec, hdr, ord_ = False, None, 0
         for i, line in enumerate(lines):
             if re.match(r'^#{1,6}\s', line):
@@ -282,7 +289,7 @@ def main():
     P = plan()
     for t, rows in P.items():
         print(f'{t}: {len(rows)}행')
-    steps = parse_project_tables([REPO / p for p in STEP_DOCS]) if '--with-steps' in sys.argv else None
+    steps = parse_project_tables([step_path(p) for p in STEP_DOCS]) if '--with-steps' in sys.argv else None
     if steps is not None:
         print(f'project_steps: {len(steps)}행')
     if '--dry' in sys.argv:
