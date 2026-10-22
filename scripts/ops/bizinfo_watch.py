@@ -16,8 +16,9 @@ sys.stdout.reconfigure(encoding="utf-8")
 URL = "https://www.bizinfo.go.kr/sii/siia/selectSIIA200View.do"
 DETAIL = "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId="
 STATE = Path("C:/work/_ops/grants_prep/biz_seen.json")
-KEYWORDS = ("창업도약", "초격차", "DIPS", "창업중심대학", "TIPS", "팁스", "AI", "인공지능", "에이전트", "SaaS", "클라우드", "바우처", "스케일업")
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "scripts" / "ops"))
+from notice_filter import classify, record_digest  # noqa: E402  분류 규칙은 notice_filter.py 한 곳에서 고친다
 
 
 def parse(raw):
@@ -26,10 +27,6 @@ def parse(raw):
     for m in re.finditer(r'pblancId=(PBLN_\d+)"\s+title="([^"]*)"', raw):
         out.setdefault(m.group(1), html.unescape(m.group(2)).strip())
     return list(out.items())
-
-
-def hit(title):
-    return [k for k in KEYWORDS if k.lower() in title.lower()]
 
 
 def fetch():
@@ -56,13 +53,15 @@ def main():
     print(f"새 공고 {len(new)}건")
     hot = []
     for k, v in new.items():
-        h = hit(v)
-        print(f"- {k} {v}" + (f" [관심: {','.join(h)}]" if h else ""))
-        if h:
+        tier = classify(v)
+        print(f"- {k} {v}" + (f" [{tier}]" if tier else ""))
+        if tier == "core":
             hot.append(f"{v}\n{DETAIL}{k}")
+        elif tier == "digest":
+            record_digest("기업마당", k, v, f"{DETAIL}{k}")
     if hot:
-        msg = "기업마당 새 공고(관심 키워드):\n" + "\n\n".join(hot)
-        subprocess.run([sys.executable, str(ROOT / "scripts" / "ops" / "tg_boss.py"), "text", msg, "--persona", "탐"],
+        msg = "기업마당 새 공고(핵심 프로그램, 지원 여부 결정이 필요할 수 있음):\n" + "\n\n".join(hot)
+        subprocess.run([sys.executable, str(ROOT / "scripts" / "ops" / "tg_boss.py"), "text", msg, "--persona", "마야"],
                        creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0), timeout=60)
     return 0
 
