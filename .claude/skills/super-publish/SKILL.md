@@ -38,7 +38,7 @@ description: 마야가 홈페이지 글과 SNS 글(링크드인·페이스북·�
 
 ## 하루 1회 점검
 
-- 자동: `python C:\work\shorts-lab	ools\publish	ext_post_verify.py`(감시 대장에 하루 1회 등록, 핏-발행#63). 큐 registered 항목을 AItoEarn 상태와 대조해 예약 30분 초과 상태 0·6은 지연, 취소·오류·작업 없음은 어긋남으로 보고, 지연·어긋남일 때만 알린다. [실측: 2026-10-22 게시 확인 16건, 문제 0건]
+- 자동: `python C:/work/shorts-lab/tools/publish/text_post_verify.py`(감시 대장에 하루 1회 등록, 핏-발행#63). 큐 registered 항목을 AItoEarn 상태와 대조해 예약 30분 초과 상태 0·6은 지연, 취소·오류·작업 없음은 어긋남으로 보고, 지연·어긋남일 때만 알린다. [실측: 2026-10-22 게시 확인 16건, 문제 0건]
 - 마야 첫 세션: `python scripts/slot_audit.py`로 빈 슬롯을 본다. 알림이 왔으면 그 글부터 처리한다. 문제가 없으면 따로 보내지 않는다.
 
 ## 원장 상태 칸
