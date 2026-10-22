@@ -131,13 +131,13 @@ def doc_chunks():
     repo = str(Path(__file__).resolve().parents[2])
     git = ['git', '-c', 'core.quotepath=false', '-C', repo]
     try:
-        names = subprocess.run(git + ['ls-tree', '-r', '--name-only', 'origin/main'], capture_output=True, text=True, encoding='utf-8', timeout=30).stdout.split('\n')
+        names = subprocess.run(git + ['ls-tree', '-r', '--name-only', 'origin/main'], capture_output=True, text=True, encoding='utf-8', timeout=30, creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0)).stdout.split('\n')
     except Exception:  # noqa: BLE001
         return []
     out = []
     for n in (x for x in names if DOC_RE.match(x)):
         try:
-            txt = subprocess.run(git + ['show', f'origin/main:{n}'], capture_output=True, text=True, encoding='utf-8', timeout=30).stdout
+            txt = subprocess.run(git + ['show', f'origin/main:{n}'], capture_output=True, text=True, encoding='utf-8', timeout=30, creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0)).stdout
         except Exception:  # noqa: BLE001
             continue
         head, buf = Path(n).stem, []
