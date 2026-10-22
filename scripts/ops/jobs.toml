@@ -822,3 +822,11 @@ every_min = 60
 timeout = 300
 name = "제작현황판 갱신(factory_board.py: 유튜브 실측 발행 여부·옛 편 분리, 결과 pilot-shorts2/공장_현황.md)"
 note = "2026-10-22 핏 등록(사장님 지적: 제작판이 옛 내용). 조회는 fit_db.py make. 1회 실행 성공 확인."
+
+[[job]]
+id = "svc:console-flash-logger"
+kind = "file_age"
+path = 'C:\work\_ops\flash_logger.alive'
+max_age_min = 10
+name = "콘솔 창 깜빡임 상시 기록기(작업 스케줄러 핏_창기록, 로그온 때 시작, console_flash_logger.py)"
+note = "2026-10-22 핏 등록(핏-영상생성#113). 창이 뜰 때마다 시각·부모→자식 프로세스를 C:/work/_ops/flash_log.jsonl에 기록(3일 보관). 30초마다 alive 파일 갱신, 10분 넘게 안 갱신되면 멈춤. 읽기: console_flash_logger.py --report 10. 절차 docs/콘솔창_범인색출_절차.md, 스킬 console-flash-hunt"
