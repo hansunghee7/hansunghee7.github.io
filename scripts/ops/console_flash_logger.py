@@ -15,6 +15,7 @@ import time
 from collections import Counter, deque
 
 LOG = r"C:\work\_ops\flash_log.jsonl"
+ALIVE = r"C:\work\_ops\flash_logger.alive"  # 살아 있음 표시(감시 대장 file_age가 본다)
 KEEP_SEC = 3 * 86400
 CONSOLE_CLASSES = ("ConsoleWindowClass", "CASCADIA_HOSTING_WINDOW_CLASS", "PseudoConsoleWindow")
 
