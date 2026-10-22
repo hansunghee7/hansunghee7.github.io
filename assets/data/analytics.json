@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-21T22:47:06.328740+00:00",
+  "updated_at": "2026-10-22T06:06:27.074267+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 360,
-    "activeUsers": 311,
-    "newUsers": 306,
+    "sessions": 364,
+    "activeUsers": 312,
+    "newUsers": 307,
     "returningUsers": 5
   },
   "daily": [
@@ -220,15 +220,15 @@
     },
     {
       "date": "2026-10-22",
-      "sessions": 2,
-      "activeUsers": 2,
-      "newUsers": 2,
-      "returningUsers": 0
+      "sessions": 5,
+      "activeUsers": 4,
+      "newUsers": 3,
+      "returningUsers": 1
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 140,
+    "home": 143,
     "log_home": 0,
     "individual_post": 210,
     "other": 10
@@ -236,11 +236,11 @@
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 190
+      "sessions": 191
     },
     {
       "source": "linkedin.com",
-      "sessions": 54
+      "sessions": 55
     },
     {
       "source": "m.search.naver.com",
@@ -260,7 +260,7 @@
     },
     {
       "source": "naver",
-      "sessions": 9
+      "sessions": 10
     },
     {
       "source": "daum",
@@ -300,13 +300,13 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 190
+      "sessions": 191
     },
     {
       "source": "linkedin.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 54
+      "sessions": 55
     },
     {
       "source": "m.search.naver.com",
@@ -336,7 +336,7 @@
       "source": "naver",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 9
+      "sessions": 10
     },
     {
       "source": "daum",
@@ -620,13 +620,13 @@
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 427,
+    "total_desktop_sessions": 430,
     "excluded_invalid_sessions": 23,
     "by_resolution": [
       {
         "resolution": "1920x1080",
         "width": 1920,
-        "sessions": 93
+        "sessions": 94
       },
       {
         "resolution": "800x600",
@@ -646,7 +646,7 @@
       {
         "resolution": "1463x915",
         "width": 1463,
-        "sessions": 24
+        "sessions": 25
       },
       {
         "resolution": "1536x960",
@@ -656,7 +656,7 @@
       {
         "resolution": "1536x864",
         "width": 1536,
-        "sessions": 13
+        "sessions": 14
       },
       {
         "resolution": "2000x2000",
