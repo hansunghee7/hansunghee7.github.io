@@ -451,5 +451,44 @@ class RepoCollectorTest(unittest.TestCase):
             self.assertEqual([f["count"] for f in res["findings"] if f["subject"] == "a.py"], [2])
 
 
+class RemoteHostTest(unittest.TestCase):
+    CFG = {"name": "구PC", "host": "h1", "roots": ["$HOME/ops", "$HOME/player-bt-*"]}
+
+    def test_remote_collects_paths_and_counts_only(self):
+        def fake(argv, timeout, cwd=None):
+            if argv[-1] == ns.REMOTE_CRON_SCRIPT:
+                return 0, b"2\n", b""
+            return 0, "/home/u/ops/jobs.toml:3\n/home/u/ops/b.py:0\n/home/u/x/a:1\n".encode(), b""
+
+        res = ns.collect_remote(self.CFG, runner=fake)
+        subj = sorted((f["kind"], f["subject"], f["count"]) for f in res["findings"])
+        self.assertEqual(subj, [("remote_cron", "구PC crontab", 2), ("remote_file", "구PC:/home/u/ops/jobs.toml", 3), ("remote_file", "구PC:/home/u/x/a", 1)])
+        self.assertEqual(res["unverified"], [])
+
+    def test_remote_zero_hits_and_ssh_failure(self):
+        ok = ns.collect_remote(self.CFG, runner=lambda a, t, cwd=None: (1, b"0\n", b""))
+        self.assertEqual((ok["findings"], ok["unverified"]), ([], []))
+        bad = ns.collect_remote(self.CFG, runner=lambda a, t, cwd=None: (255, b"", b"ssh: connect to host timed out"))
+        self.assertEqual(len(bad["unverified"]), 2)
+        self.assertEqual(bad["findings"], [])
+
+    def test_remote_findings_are_violations_unless_planned(self):
+        f = ns.finding(2, "remote_file", "구PC:/home/u/ops/jobs.toml", None, count=3)
+        self.assertEqual(ns.classify(f, {}, TODAY)[0][0], "violation")
+
+    def test_ssh_gate_accepts_only_fixed_forms(self):
+        h = ns.SSH_HEAD + ["h1"]
+        ns.check_readonly(h + [ns.REMOTE_CRON_SCRIPT])
+        ns.check_readonly(h + [ns.remote_files_script(self.CFG["roots"])])
+        for bad in (["ssh", "h1", "ls"], h + ["rm -rf ~"], h + [ns.REMOTE_CRON_SCRIPT + "; rm x"], h + [ns.remote_files_script(["/etc"])],
+                    ns.SSH_HEAD + ["h 1", ns.REMOTE_CRON_SCRIPT], ns.SSH_HEAD[:3] + ["h1", ns.REMOTE_CRON_SCRIPT]):
+            with self.assertRaises(ns.ForbiddenCommand):
+                ns.check_readonly(bad)
+
+    def test_build_collectors_adds_remote_hosts(self):
+        cs = ns.build_collectors({"remote_hosts": [self.CFG]}, (2,), [], None, 5)
+        self.assertIn("remote:구PC", [c[1] for c in cs])
+
+
 if __name__ == "__main__":
     unittest.main()

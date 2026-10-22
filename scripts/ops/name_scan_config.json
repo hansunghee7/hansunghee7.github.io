@@ -1,14 +1,20 @@
 {
   "_note": "[옛이름 허용: 옛 이름 스캐너 설정이라 검색 패턴과 시스템 ID를 인용해야 함] 이 파일의 목록을 늘리면 래칫(ratchet)이 실패한다. 줄이는 것은 항상 허용.",
-  "config_version": "2026-10-21.1",
+  "config_version": "2026-10-22.1",
   "pattern": "saegim|새김",
   "output_dir": "C:/work/_ops/name_scan",
-  "collector_timeout_sec": 60,
+  "collector_timeout_sec": 120,
   "max_file_bytes": 2097152,
   "repos": [
     "C:/work/hansunghee7.github.io",
     "C:/work/simplifier-saegim",
-    "C:/work/saegim-pass-dev"
+    "C:/work/saegim-pass-dev",
+    "C:/work/solar-bible",
+    "C:/work/shorts-lab",
+    "C:/work/simplifier-cxo-db"
+  ],
+  "remote_hosts": [
+    {"name": "구PC", "host": "goosolar", "roots": ["$HOME/ops", "$HOME/solar-bible", "$HOME/work", "$HOME/player-bt-*", "$HOME/goosolar-tam", "$HOME/workshop/*.py"]}
   ],
   "github_owner": "hansunghee7",
   "github_target_repos": [
@@ -67,7 +73,7 @@
   ],
   "external": [],
   "manual_checks": [
-    {"layer": 2, "what": "구PC 전체(환경변수·작업·프로세스·MCP)"},
+    {"layer": 2, "what": "구PC의 환경변수·작업·프로세스·MCP(크론과 지정 폴더의 파일 경로는 자동 스캔)"},
     {"layer": 2, "what": "셸 프로필·별칭, 바로가기, 서비스 등록, IDE 설정 이름"},
     {"layer": 3, "what": "GitHub 패키지·릴리스·팀"},
     {"layer": 3, "what": "GCP 버킷·컨테이너 이미지 저장소·스케줄러 작업·풀·공급자 이름"},
