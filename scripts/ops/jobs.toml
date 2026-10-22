@@ -799,7 +799,7 @@ note = "2026-10-22 핏 등록(핏-발행#61 P1, 사장님 승인 '제안준대�
 [[job]]
 id = "fn:search-weekly"
 kind = "cmd"
-cmd = ["python", 'C:\work\shorts-lab	ools\perf\search_weekly.py']
+cmd = ["python", 'C:\work\shorts-lab\tools\perf\search_weekly.py']
 every_min = 10080
 timeout = 900
 name = "롱폼 검색 유입 주간 기록(유튜브 검색 조회·비중·5편 이동평균, search_weekly.py)"
