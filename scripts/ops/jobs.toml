@@ -813,3 +813,12 @@ every_min = 1440
 timeout = 600
 name = "글 채널 게시 확인·지연 점검(링크드인·페북·인스타·스레드, text_post_verify.py)"
 note = "2026-10-22 핏 등록(마야 요청 슈퍼발행 글 채널 보강 ②, 핏-발행#63 계열). 종료 코드 1 = 지연·어긋남 있음(붉음). 첫 실행 게시확인 16건·문제 0건. 알림은 jobs 감시가 붉음을 알리므로 --no-notify."
+
+[[job]]
+id = "fn:factory-board"
+kind = "cmd"
+cmd = ["python", 'C:\work\shorts-lab\tools\factory\factory_board.py']
+every_min = 60
+timeout = 300
+name = "제작현황판 갱신(factory_board.py: 유튜브 실측 발행 여부·옛 편 분리, 결과 pilot-shorts2/공장_현황.md)"
+note = "2026-10-22 핏 등록(사장님 지적: 제작판이 옛 내용). 조회는 fit_db.py make. 1회 실행 성공 확인."
