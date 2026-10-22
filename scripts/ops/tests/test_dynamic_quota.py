@@ -155,7 +155,17 @@ class Measure(Base):
         s = {"records": {last_day: {}}, "carry": carry or {a: 0 for a in dq.BASE}}
         dq.STATE.write_text(json.dumps(s), encoding="utf-8")
 
-    def test_first_run_does_not_backfill(self):
+    def test_empty_state_scores_from_as_of_and_accumulates_carry(self):
+        self.write_budget(as_of="2026-10-01")
+        s = dq.measure(TODAY)  # 빈 상태: 10/1~10/3 세 날을 채점
+        self.assertEqual(sorted(s["records"]), ["2026-10-01", "2026-10-02", "2026-10-03"])
+        self.assertEqual(s["records"]["2026-10-01"]["덱스"]["carry_after"], 25.0)
+        self.assertGreater(s["carry"]["덱스"], 0)
+        self.assertGreater(s["today"]["targets"]["덱스"], dq.BASE["덱스"])
+        self.assertEqual(s["today"]["targets"]["덱스"], dq.target_for("덱스", s["carry"]["덱스"]))
+
+    def test_first_run_on_as_of_day_does_not_backfill(self):
+        self.write_budget(as_of=TODAY.isoformat())
         s = dq.measure(TODAY)
         self.assertEqual(s["records"], {})
         self.assertEqual(s["today"]["targets"], dict(dq.BASE))
@@ -195,6 +205,7 @@ class Measure(Base):
         self.assertEqual(a["today"], b["today"])
 
     def test_corrupt_state_starts_fresh(self):
+        self.write_budget(as_of=TODAY.isoformat())
         dq.STATE.write_text("{깨진", encoding="utf-8")
         s = dq.measure(TODAY)
         self.assertEqual(s["records"], {})
