@@ -175,7 +175,7 @@
         ]
       },
       {
-        "matcher": "mcp__saegim__cite|mcp__carvit__cite",
+        "matcher": "mcp__saegim__cite|mcp__carvit[A-Za-z0-9_-]*__cite",
         "hooks": [
           {
             "type": "command",
