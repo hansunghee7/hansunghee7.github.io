@@ -1,20 +1,13 @@
 {
-  "updated_at": "2026-10-22T13:05:26.784538+00:00",
+  "updated_at": "2026-10-22T20:00:57.646381+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 367,
-    "activeUsers": 315,
-    "newUsers": 310,
+    "sessions": 314,
+    "activeUsers": 268,
+    "newUsers": 263,
     "returningUsers": 5
   },
   "daily": [
-    {
-      "date": "2026-09-22",
-      "sessions": 53,
-      "activeUsers": 50,
-      "newUsers": 48,
-      "returningUsers": 2
-    },
     {
       "date": "2026-09-23",
       "sessions": 4,
@@ -220,35 +213,35 @@
     },
     {
       "date": "2026-10-22",
-      "sessions": 8,
-      "activeUsers": 7,
-      "newUsers": 6,
+      "sessions": 9,
+      "activeUsers": 8,
+      "newUsers": 7,
       "returningUsers": 1
     }
   ],
   "daily_leads": [],
   "landing_types": {
-    "home": 143,
+    "home": 138,
     "log_home": 0,
-    "individual_post": 213,
-    "other": 10
+    "individual_post": 168,
+    "other": 8
   },
   "top_sources": [
     {
       "source": "(direct)",
-      "sessions": 192
+      "sessions": 150
     },
     {
       "source": "linkedin.com",
-      "sessions": 55
+      "sessions": 54
     },
     {
       "source": "m.search.naver.com",
-      "sessions": 24
+      "sessions": 23
     },
     {
       "source": "google",
-      "sessions": 18
+      "sessions": 15
     },
     {
       "source": "m.facebook.com",
@@ -275,15 +268,7 @@
       "sessions": 4
     },
     {
-      "source": "(not set)",
-      "sessions": 3
-    },
-    {
       "source": "lm.facebook.com",
-      "sessions": 3
-    },
-    {
-      "source": "maru-connect.webflow.io",
       "sessions": 3
     },
     {
@@ -291,7 +276,15 @@
       "sessions": 3
     },
     {
-      "source": "blog.naver.com",
+      "source": "(not set)",
+      "sessions": 2
+    },
+    {
+      "source": "l.facebook.com",
+      "sessions": 2
+    },
+    {
+      "source": "threads",
       "sessions": 2
     }
   ],
@@ -300,25 +293,25 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 192
+      "sessions": 150
     },
     {
       "source": "linkedin.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 55
+      "sessions": 54
     },
     {
       "source": "m.search.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 24
+      "sessions": 23
     },
     {
       "source": "google",
       "medium": "organic",
       "campaign": "(organic)",
-      "sessions": 18
+      "sessions": 15
     },
     {
       "source": "m.facebook.com",
@@ -363,22 +356,10 @@
       "sessions": 3
     },
     {
-      "source": "maru-connect.webflow.io",
-      "medium": "referral",
-      "campaign": "(referral)",
-      "sessions": 3
-    },
-    {
       "source": "talk.navercorp.com",
       "medium": "referral",
       "campaign": "(referral)",
       "sessions": 3
-    },
-    {
-      "source": "blog.naver.com",
-      "medium": "referral",
-      "campaign": "(referral)",
-      "sessions": 2
     },
     {
       "source": "l.facebook.com",
@@ -396,6 +377,12 @@
       "source": "bing",
       "medium": "organic",
       "campaign": "(organic)",
+      "sessions": 1
+    },
+    {
+      "source": "blog.naver.com",
+      "medium": "referral",
+      "campaign": "(referral)",
       "sessions": 1
     },
     {
@@ -436,12 +423,12 @@
     }
   ],
   "engagement_events": {
-    "section_view_proven": 84,
-    "section_view_voices": 73,
-    "section_view_book_class": 44,
-    "section_view_faq": 47,
-    "faq_open": 10,
-    "read_complete": 98
+    "section_view_proven": 80,
+    "section_view_voices": 69,
+    "section_view_book_class": 43,
+    "section_view_faq": 45,
+    "faq_open": 8,
+    "read_complete": 76
   },
   "contact_funnel": {
     "contact_open": 18,
@@ -476,24 +463,24 @@
       "sessions": 9
     },
     {
-      "path": "/logs/620",
-      "title": "/logs/620",
-      "sessions": 9
-    },
-    {
-      "path": "/logs/132",
-      "title": "/logs/132",
+      "path": "/logs/224",
+      "title": "/logs/224",
       "sessions": 7
     },
     {
-      "path": "/logs/224",
-      "title": "/logs/224",
+      "path": "/logs/620",
+      "title": "/logs/620",
       "sessions": 7
     },
     {
       "path": "/logs/629",
       "title": "/logs/629",
       "sessions": 7
+    },
+    {
+      "path": "/logs/132",
+      "title": "/logs/132",
+      "sessions": 6
     },
     {
       "path": "/logs/619",
@@ -540,20 +527,14 @@
       "views": 26
     },
     {
-      "path": "/logs/620/",
-      "title": "팀이 커질수록 대표만 모르는 것",
-      "uniqueViews": 11,
-      "views": 13
-    },
-    {
       "path": "/logs/628/",
       "title": "우리 회사의 핵심가치, 아무도 안 볼 때 동작하나요?",
       "uniqueViews": 11,
       "views": 13
     },
     {
-      "path": "/logs/618/",
-      "title": "AI가 못 뺏는 능력 하나",
+      "path": "/logs/620/",
+      "title": "팀이 커질수록 대표만 모르는 것",
       "uniqueViews": 9,
       "views": 11
     },
@@ -570,10 +551,10 @@
       "views": 9
     },
     {
-      "path": "/logs/132/",
-      "title": "PM, PL, TPM의 차이 한눈에 보기",
-      "uniqueViews": 7,
-      "views": 7
+      "path": "/logs/618/",
+      "title": "AI가 못 뺏는 능력 하나",
+      "uniqueViews": 8,
+      "views": 10
     },
     {
       "path": "/logs/224/",
@@ -582,10 +563,16 @@
       "views": 9
     },
     {
+      "path": "/logs/132/",
+      "title": "PM, PL, TPM의 차이 한눈에 보기",
+      "uniqueViews": 6,
+      "views": 6
+    },
+    {
       "path": "/logs/6/",
       "title": "자정이 가까워지도록 AI 얘기를 원 없이 나눴어요.",
-      "uniqueViews": 7,
-      "views": 12
+      "uniqueViews": 6,
+      "views": 11
     },
     {
       "path": "/logs/619/",
@@ -606,21 +593,21 @@
       "views": 5
     },
     {
-      "path": "/logs/2/",
-      "title": "오디세이, 매우 사적인 관람평",
-      "uniqueViews": 4,
-      "views": 4
-    },
-    {
       "path": "/logs/481/",
       "title": "내가 GS에서 강의를 하는 이유",
       "uniqueViews": 4,
       "views": 4
+    },
+    {
+      "path": "/logs/632/",
+      "title": "우리 팀만 말하는 직원 어떻게 해야하나요?",
+      "uniqueViews": 4,
+      "views": 5
     }
   ],
   "desktop_screen_resolutions": {
     "range": "last_90_days",
-    "total_desktop_sessions": 430,
+    "total_desktop_sessions": 431,
     "excluded_invalid_sessions": 23,
     "by_resolution": [
       {
