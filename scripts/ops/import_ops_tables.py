@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """전수조사 이관 1단계(N156, 2026-10-05 탐): 로그 CSV 3개와 업무대장·SNS·성과·계정 md 표를 운영 상태 DB로 복사한다.
 원본은 읽기만 한다(md·csv는 그대로). 다시 실행하면 각 표를 비우고 다시 채운다(복사본이라 안전). 모든 행의 원본 전체를 raw(jsonb)에도 저장해 정보 손실이 없게 한다.
-표 정의: cxo-db reports/n155/schema_v1_phaseA.sql. 사용: python scripts/ops/import_ops_tables.py [--dry]"""
+표 정의: cxo-db reports/n155/schema_v1_phaseA.sql. 사용: python scripts/ops/import_ops_tables.py [--dry] [--with-steps]
+--with-steps: 슈퍼프로젝트 문서의 '## 진행표' 절을 project_steps 표로도 복사한다(옵션이 없으면 예전 동작 그대로)."""
 import csv
 import re
 import sys
@@ -229,12 +230,65 @@ def last_id(t):
     return r[0]['id'] if r else 0
 
 
+STEP_DOCS = ['docs/옛이름_소거_슈퍼프로젝트.md']  # '## 진행표' 절을 가진 슈퍼프로젝트 문서(새 문서는 여기에 더한다)
+
+
+def parse_project_tables(paths):
+    """문서들의 '## 진행표' 절 안 표(머리 줄에 순서·항목·상태가 있는 것)를 project_steps 행으로 돌려준다. 절이 없으면 빈 목록."""
+    cells = lambda l: [c.strip() for c in l.strip().strip('|').split('|')]
+    out = []
+    for path in paths:
+        path = Path(path)
+        try:
+            lines = path.read_text(encoding='utf-8', errors='replace').splitlines()
+        except OSError:
+            continue
+        project = re.sub(r'_슈퍼프로젝트$', '', path.stem)
+        in_sec, hdr, ord_ = False, None, 0
+        for i, line in enumerate(lines):
+            if re.match(r'^#{1,6}\s', line):
+                in_sec = line.startswith('## 진행표')
+                hdr = None
+                continue
+            if not in_sec or not line.lstrip().startswith('|'):
+                if not line.lstrip().startswith('|'):
+                    hdr = None
+                continue
+            if SEP.match(line):
+                continue
+            c = cells(line)
+            if hdr is None:
+                nxt = lines[i + 1] if i + 1 < len(lines) else ''
+                hdr = c if SEP.match(nxt) and all(k in c for k in ('순서', '항목', '상태')) else False
+                continue
+            if not hdr or not any(c):
+                continue
+            c += [''] * (len(hdr) - len(c))
+            d = dict(zip(hdr, c))
+            ord_ += 1
+            out.append({'project': project, 'ord': ord_, 'step_no': d.get('순서'), 'item': d.get('항목'), 'status': d.get('상태'),
+                        'pr': d.get('PR'), 'ci': d.get('CI'), 'next': d.get('다음 단계'), 'source': path.as_posix()})
+    return out
+
+
+def replace_steps(rows):
+    """project_steps 표 교체(새 행을 먼저 넣고 옛 행을 지운다). 같은 (project, ord)가 겹치지 않게 옛 행을 먼저 지우는 대신 프로젝트별로 지우고 넣는다."""
+    for proj in sorted({r['project'] for r in rows}):
+        opsdb.delete('project_steps', {'project': f'eq.{proj}'})
+    insert_all('project_steps', rows)
+
+
 def main():
     P = plan()
     for t, rows in P.items():
         print(f'{t}: {len(rows)}행')
+    steps = parse_project_tables([REPO / p for p in STEP_DOCS]) if '--with-steps' in sys.argv else None
+    if steps is not None:
+        print(f'project_steps: {len(steps)}행')
     if '--dry' in sys.argv:
         return
+    if steps:
+        replace_steps(steps)
     for t, rows in P.items():
         if t in LOGS and '--full' not in sys.argv:
             # 로그는 지우지 않고 DB에 없는 줄만 채운다. 관문 같은 도구가 DB에 직접 쓰기 시작해도 중복이 생기지 않게 시각·누가·결과 키로 비교한다
