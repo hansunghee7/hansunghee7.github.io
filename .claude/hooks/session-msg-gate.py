@@ -5,6 +5,7 @@
 대상인데 대화 기록을 못 읽으면 막는다(안전 우선). 정본 규칙: 공정 카드 노트 #121(카빗DM 우선 도그푸딩)."""
 import datetime
 import json
+import os
 import re
 import sys
 
@@ -42,6 +43,9 @@ def block(msg):
 
 
 def main():
+    # 2026-10-23 사장님: 카빗DM 2차 종료, 세션메시지·우편함 재활성화 -> 기본 꺼짐. SESSION_MSG_GATE=1일 때만 승인제를 다시 켠다.
+    if os.environ.get("SESSION_MSG_GATE") != "1":
+        sys.exit(0)
     try:
         data = json.loads(sys.stdin.buffer.read().decode("utf-8"))
     except Exception:

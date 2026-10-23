@@ -19,14 +19,15 @@ def user(text, minutes_ago=1):
     return {"type": "user", "timestamp": ts(minutes_ago), "message": {"role": "user", "content": text}}
 
 
-def run(to, rows, tool="SendMessage"):
+def run(to, rows, tool="SendMessage", gate="1"):
     with tempfile.NamedTemporaryFile("w", suffix=".jsonl", delete=False, encoding="utf-8") as f:
         for r in rows:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
         path = f.name
     try:
         payload = {"tool_name": tool, "tool_input": ({"session_id": to, "message": "x"} if tool != "SendMessage" else {"to": to, "message": "x"}), "transcript_path": path}
-        p = subprocess.run([sys.executable, HOOK], input=json.dumps(payload).encode("utf-8"), capture_output=True)
+        env = dict(os.environ, SESSION_MSG_GATE=gate)
+        p = subprocess.run([sys.executable, HOOK], input=json.dumps(payload).encode("utf-8"), capture_output=True, env=env)
         return p.returncode
     finally:
         os.unlink(path)
@@ -68,6 +69,9 @@ class GateTest(unittest.TestCase):
         rows = [{"type": "user", "timestamp": ts(1), "message": {"role": "user", "content": [
             {"type": "tool_result", "content": "세션메시지 승인"}]}}]
         self.assertEqual(run("지투", rows), 2)
+
+    def test_gate_off_by_default_allows_everything(self):
+        self.assertEqual(run("지투", [user("안녕")], gate="0"), 0)
 
 
 if __name__ == "__main__":
