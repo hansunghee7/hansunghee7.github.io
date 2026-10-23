@@ -333,16 +333,16 @@
           "published_at": "2026-09-01T04:50:12Z"
         },
         {
-          "author": "@김승구-b2e",
-          "text": "제트펌프는 뭐냐 궁금하다😊대단하네\n모터가 힘이쎈거냐?",
-          "likes": 1,
-          "published_at": "2026-08-30T05:52:18Z"
-        },
-        {
           "author": "@sinkihanapt",
           "text": "아파트의 숨은 이야기가 궁금하다면 구독하고 다음 영상도 확인하세요.",
           "likes": 0,
           "published_at": "2026-10-14T09:38:53Z"
+        },
+        {
+          "author": "@김승구-b2e",
+          "text": "제트펌프는 뭐냐 궁금하다😊대단하네\n모터가 힘이쎈거냐?",
+          "likes": 1,
+          "published_at": "2026-08-30T05:52:18Z"
         }
       ]
     },
@@ -679,16 +679,16 @@
           "published_at": "2026-10-14T09:37:15Z"
         },
         {
-          "author": "@ubin1757",
-          "text": "잘못된게진짜많네요",
-          "likes": 1,
-          "published_at": "2026-09-03T00:13:16Z"
-        },
-        {
           "author": "@ejay0509",
           "text": "아파트는 철옹성이다 ㅡ군사요새같지 !  요새는 어플깔고 어플에 등록하고 들어오라고 한다 어이가 없지 !  ㅡㅡ시대에역행 하는 폐쇄적사고와 생활방식",
           "likes": 1,
           "published_at": "2026-09-02T22:57:28Z"
+        },
+        {
+          "author": "@ubin1757",
+          "text": "잘못된게진짜많네요",
+          "likes": 1,
+          "published_at": "2026-09-03T00:13:16Z"
         }
       ]
     },
@@ -3382,7 +3382,7 @@
         },
         {
           "date": "2026-10-24",
-          "views": 125,
+          "views": 126,
           "likes": 0,
           "comments": 0
         }
@@ -3850,7 +3850,7 @@
         },
         {
           "date": "2026-10-24",
-          "views": 907,
+          "views": 909,
           "likes": 7,
           "comments": 0
         }
@@ -4510,7 +4510,7 @@
         },
         {
           "date": "2026-10-24",
-          "views": 1489,
+          "views": 1490,
           "likes": 7,
           "comments": 1
         }
@@ -4679,16 +4679,16 @@
       "duration_seconds": 102,
       "top_comments": [
         {
-          "author": "@dpark9076",
-          "text": "100%찬성.\n사람과 접촉으로 오는불편함보다.\n로봇에 비춰지는 내 모습이 차라리 편하다고 느끼기 때문에.",
-          "likes": 1,
-          "published_at": "2026-10-15T10:41:21Z"
-        },
-        {
           "author": "@sinkihanapt",
           "text": "여러분 아파트에 배달 로봇이 도입된다면 찬성하시나요, 아니면 반대하시나요?",
           "likes": 1,
           "published_at": "2026-10-14T08:34:34Z"
+        },
+        {
+          "author": "@dpark9076",
+          "text": "100%찬성.\n사람과 접촉으로 오는불편함보다.\n로봇에 비춰지는 내 모습이 차라리 편하다고 느끼기 때문에.",
+          "likes": 1,
+          "published_at": "2026-10-15T10:41:21Z"
         }
       ]
     },
@@ -4878,7 +4878,7 @@
         },
         {
           "date": "2026-10-24",
-          "views": 1454,
+          "views": 1460,
           "likes": 18,
           "comments": 1
         }
@@ -5022,7 +5022,7 @@
         },
         {
           "date": "2026-10-24",
-          "views": 1394,
+          "views": 1395,
           "likes": 8,
           "comments": 1
         }
@@ -5096,7 +5096,7 @@
         },
         {
           "date": "2026-10-24",
-          "views": 694,
+          "views": 703,
           "likes": 11,
           "comments": 1
         }
@@ -5118,7 +5118,7 @@
       "history": [
         {
           "date": "2026-10-24",
-          "views": 1342,
+          "views": 1361,
           "likes": 14,
           "comments": 3
         }
@@ -5461,14 +5461,14 @@
       {
         "date": "2026-10-24",
         "subscribers": 89,
-        "total_views": 52632,
+        "total_views": 52740,
         "video_count": 39
       }
     ],
     "title": "신기한 아파트 사전",
     "id": "UCTbS2jSG1BvBl4c6EsVx7sA"
   },
-  "updated_at": "2026-10-23T15:25:06.134703Z",
+  "updated_at": "2026-10-23T23:25:55.332303Z",
   "longform": {
     "PxE6OYT5_wQ": {
       "history": [
@@ -5486,7 +5486,7 @@
         },
         {
           "date": "2026-10-24",
-          "views": 152,
+          "views": 194,
           "likes": 1,
           "comments": 1
         }
@@ -5511,7 +5511,7 @@
         },
         {
           "date": "2026-10-24",
-          "views": 5665,
+          "views": 5668,
           "likes": 6,
           "comments": 1
         }
@@ -5586,7 +5586,7 @@
         },
         {
           "date": "2026-10-24",
-          "views": 331,
+          "views": 332,
           "likes": 1,
           "comments": 1
         }
@@ -5611,7 +5611,7 @@
         },
         {
           "date": "2026-10-24",
-          "views": 983,
+          "views": 984,
           "likes": 2,
           "comments": 0
         }
