@@ -35,7 +35,7 @@ permissions:
 
 jobs:
   dispatch:
-    runs-on: ubuntu-latest
+    runs-on: ${{ fromJSON(vars.HOME_CI_RUNNER || '["ubuntu-latest"]') }}
     timeout-minutes: 2
     if: github.event.head_commit.author.email != 'noreply@anthropic.com'
     steps:
