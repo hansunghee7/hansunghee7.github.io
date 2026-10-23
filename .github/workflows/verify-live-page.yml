@@ -31,7 +31,7 @@ on:
 
 jobs:
   verify:
-    runs-on: ${{ fromJSON(vars.HOME_CI_RUNNER || '["ubuntu-latest"]') }}
+    runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
