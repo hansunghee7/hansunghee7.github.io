@@ -16,6 +16,8 @@ channel_variants:
 permalink: /logs/640/
 next_url: "/logs/641/"
 next_title: "AI에이전트에게 조심스러워지게 된 사연"
+prev_url: "/logs/642/"
+prev_title: "AI 에이전트를 멘토로 모시자 인생이 달라졌습니다"
 ---
 
 요즘 저는 AI 에이전트 팀원들과 함께 Carvit([carvit.ai](https://carvit.ai/ko/))을 만들고 있습니다. 그런데 서비스가 커질수록 매주 받는 클로드 코드 사용량으로는 턱없이 부족하더군요. 제미나이API로 자료조사를 하고 서비스를 하나둘씩 늘릴수록, 무료 인프라로는 한계에 부딪치기 시작했습니다.
