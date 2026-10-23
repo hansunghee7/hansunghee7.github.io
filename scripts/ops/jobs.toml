@@ -838,3 +838,13 @@ path = 'C:\work\_ops\meeting_brief\last-run.txt'
 max_age_min = 600
 name = "마야 회의록 자동 브리핑(클로드 앱 예약 작업 maya-meeting-brief, 매일 07·13·17·22시 07분)"
 note = "2026-10-22 마야#228 등록. 클로드 데스크톱 앱이 이 PC에서 새 세션으로 돌리는 예약 작업이라 앱이 꺼져 있으면 멈춘다. 실행 끝에 생존 신호 파일(last-run.txt)을 남기고, 10시간 넘게 갱신이 없으면 멈춤으로 본다(가장 긴 정상 간격 9시간)."
+
+[[job]]
+id = "fn:sched-skip"
+on_fail = "alert"
+kind = "cmd"
+cmd = ["python", 'C:\work\hansunghee7.github.io\scripts\ops\sched_skip_watch.py', "--sessions"]
+every_min = 10
+fail_after = 1
+name = "클로드 앱 예약 실행기 막힘(동시 3개 한도로 건너뜀, sched_skip_watch.py)"
+note = "2026-10-23 마야 등록(사장님 지시 '개선과제 진행'). 사고: 마루 강의록 예약(13:40)이 global_limit으로 424번 건너뛰어 7시간 안 돌았고 회의록 자동 브리핑도 멈췄는데 앱은 알리지 않음. 읽는 곳 %LOCALAPPDATA%/Claude/logs/main.log. 붉음 = global_limit 건너뜀 10분 이상, 또는 per_task_limit이 창(30분) 거의 내내. 붉을 때 할 일: 출력의 per_task 작업(앞선 실행이 안 끝난 예약 세션)을 앱에서 닫는다. 등록 전 1회 실행: 붉음 4건 재현(fit-kpi-tick·maya-morning-secretary 앞선 실행 미종료, maya-meeting-brief·maya-maru-lecture-note 한도 가득)."
