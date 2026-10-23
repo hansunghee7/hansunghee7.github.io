@@ -1,0 +1,48 @@
+name: Pages deploy
+
+# GitHub Pages 배포를 내장 빌드 대신 이 워크플로로 한다(빌드를 runs-on 변수 실행기에서 돌린다).
+# 빌드 방식은 build-check.yml과 같다(github-pages gem, Ruby 3.3).
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ${{ fromJSON(vars.HOME_CI_RUNNER || '["ubuntu-latest"]') }}
+    timeout-minutes: 15
+    env:
+      LANG: C.UTF-8
+      LC_ALL: C.UTF-8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+      - name: Build with Jekyll
+        run: JEKYLL_ENV=production bundle exec jekyll build -d _site
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ${{ fromJSON(vars.HOME_CI_RUNNER || '["ubuntu-latest"]') }}
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
