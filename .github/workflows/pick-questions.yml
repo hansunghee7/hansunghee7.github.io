@@ -21,10 +21,13 @@ jobs:
   pick:
     if: contains(github.event.issue.labels.*.name, 'question-candidates')
     runs-on: ${{ fromJSON(vars.HOME_CI_RUNNER || '["ubuntu-latest"]') }}
+    # 자체 실행기(변수 켜짐)에서만 컨테이너로 돈다. 꺼짐이면 null이라 호스트 그대로.
+    container: ${{ vars.HOME_CI_RUNNER && fromJSON('{"image":"python:3.12","options":"--user 1000:1000 -e HOME=/tmp/home -e PIP_USER=1"}') || null }}
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
+        if: ${{ !vars.HOME_CI_RUNNER }}
         with:
           python-version: "3.12"
       - run: pip install supabase
