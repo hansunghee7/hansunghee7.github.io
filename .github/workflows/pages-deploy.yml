@@ -20,6 +20,8 @@ concurrency:
 jobs:
   build:
     runs-on: ${{ fromJSON(vars.HOME_CI_RUNNER || '["ubuntu-latest"]') }}
+    # 자체 실행기(변수 켜짐)에서만 컨테이너로 돈다. 꺼짐이면 null이라 호스트 그대로.
+    container: ${{ vars.HOME_CI_RUNNER && fromJSON('{"image":"ruby:3.3","options":"--user 1000:1000 -e HOME=/tmp/home"}') || null }}
     timeout-minutes: 15
     env:
       LANG: C.UTF-8
@@ -27,9 +29,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
+        if: ${{ !vars.HOME_CI_RUNNER }}
         with:
           ruby-version: "3.3"
           bundler-cache: true
+      - name: Install gems (컨테이너)
+        if: ${{ vars.HOME_CI_RUNNER }}
+        run: |
+          mkdir -p "$HOME"
+          bundle config set --local path vendor/bundle
+          bundle install --quiet
       - name: Build with Jekyll
         run: JEKYLL_ENV=production bundle exec jekyll build -d _site
       - uses: actions/upload-pages-artifact@v3
