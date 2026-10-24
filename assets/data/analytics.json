@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-24T05:50:54.658041+00:00",
+  "updated_at": "2026-10-24T12:08:34.593768+00:00",
   "range": "last_30_days",
   "totals": {
-    "sessions": 319,
-    "activeUsers": 273,
-    "newUsers": 268,
+    "sessions": 321,
+    "activeUsers": 275,
+    "newUsers": 270,
     "returningUsers": 5
   },
   "daily": [
@@ -220,9 +220,9 @@
     },
     {
       "date": "2026-10-24",
-      "sessions": 5,
-      "activeUsers": 5,
-      "newUsers": 5,
+      "sessions": 7,
+      "activeUsers": 7,
+      "newUsers": 7,
       "returningUsers": 0
     }
   ],
@@ -230,7 +230,7 @@
   "landing_types": {
     "home": 140,
     "log_home": 0,
-    "individual_post": 170,
+    "individual_post": 172,
     "other": 9
   },
   "top_sources": [
@@ -244,7 +244,7 @@
     },
     {
       "source": "m.search.naver.com",
-      "sessions": 24
+      "sessions": 26
     },
     {
       "source": "google",
@@ -312,7 +312,7 @@
       "source": "m.search.naver.com",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 24
+      "sessions": 26
     },
     {
       "source": "google",
@@ -477,12 +477,12 @@
     {
       "path": "/logs/629",
       "title": "/logs/629",
-      "sessions": 7
+      "sessions": 8
     },
     {
       "path": "/logs/132",
       "title": "/logs/132",
-      "sessions": 6
+      "sessions": 7
     },
     {
       "path": "/logs/620",
@@ -542,8 +542,8 @@
     {
       "path": "/logs/629/",
       "title": "PM과 PL 차이는 뭘까요?",
-      "uniqueViews": 9,
-      "views": 9
+      "uniqueViews": 10,
+      "views": 10
     },
     {
       "path": "/logs/224/",
@@ -572,8 +572,8 @@
     {
       "path": "/logs/132/",
       "title": "PM, PL, TPM의 차이 한눈에 보기",
-      "uniqueViews": 6,
-      "views": 6
+      "uniqueViews": 7,
+      "views": 7
     },
     {
       "path": "/logs/6/",
